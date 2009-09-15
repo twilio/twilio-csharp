@@ -17,8 +17,8 @@ outgoing calls. See http://www.twilio.com/docs for more information.
 ### FILES
  * **twiliorest.cs**: include this namespace in your code
  * **example.cs**: example usage of TwilioRest client
- * **make.bat**: imple makefile to build the example code (requires that Visual
-            Studio .Net is installed and the 'csc' command is in your PATH)
+ * **make.bat**: imple makefile to build the example code (requires that Visual 
+ Studio .Net is installed and the 'csc' command is in your PATH)
 
 ### LICENSE
 The Twilio SDK is distributed under the MIT License
