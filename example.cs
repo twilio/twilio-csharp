@@ -56,5 +56,14 @@ class MainClass
         Console.WriteLine(account.request(String.Format(
             "/{0}/Accounts/{1}/Recordings/RE67147f4464d55f390577137b97fc3667", 
             API_VERSION, ACCOUNT_SID), "DELETE"));
-    }
+
+        // 6. Send SMS Message
+        h = new Hashtable();
+        h.Add("From", CALLER_ID);
+        h.Add("To", "415-555-1212");
+        h.Add("Body", "The answer is 42.");
+        Console.WriteLine(account.request(String.Format(
+            "/{0}/Accounts/{1}/SMS/Messages",
+            API_VERSION, ACCOUNT_SID), "POST", h));
+        
 }
