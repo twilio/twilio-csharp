@@ -1,5 +1,15 @@
 MCS=/usr/bin/mcs
 
-all:
+all: build
+
+build: twiliorest.dll example.exe
+
+twiliorest.dll:
 	$(MCS) twiliorest.cs -target:library -r:System.Web
-	$(MCS) example.cs -r:TwilioRest
+
+example.exe:
+	$(MCS) example.cs -r:TwilioRest 
+
+clean: 
+	rm twiliorest.dll
+	rm example.exe
