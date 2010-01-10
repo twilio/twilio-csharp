@@ -32,7 +32,7 @@ using System.Collections;
 
 namespace TwilioRest
 {
-    class Account
+    public class Account
     {
         const string TWILIO_API_URL = "https://api.twilio.com";
         
