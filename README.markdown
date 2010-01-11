@@ -19,6 +19,10 @@ outgoing calls. See http://www.twilio.com/docs for more information.
  * **examples/**: examples of usage with TwilioRest client
  * **Makefile**: makefile to build the library and example code (requires Mono and the mcs command line tool)
 
+### TESTING EXAMPLES
+ * With mono or alternative runtime make sure to have the library in your path before running.
+ * From command line: export MONO_PATH=$MONO_PATH:<path>/twilio-csharp/libs
+
 ### LINKING
  * Use -r:TwilioRest flag with msc to build.  
 
