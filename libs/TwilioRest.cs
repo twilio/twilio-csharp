@@ -80,11 +80,10 @@ namespace TwilioRest
             {
                 foreach(DictionaryEntry d in vars)
                 {
-                    data += "&" + d.Key.ToString() + "=" + 
-                        HttpUtility.UrlEncode(d.Value.ToString());
+                    data += d.Key.ToString() + "=" + 
+                        HttpUtility.UrlEncode(d.Value.ToString()) + "&";
                 }
                 
-                data = data.Substring(1);
             }
             
             // 2. setup basic authenication
@@ -100,6 +99,7 @@ namespace TwilioRest
                                String.Format("Basic {0}", authstring));
             client.Headers.Add("Content-Type", 
                                "application/x-www-form-urlencoded");
+            
             byte[] resp = client.UploadData(uri, method, postbytes);
             
             return Encoding.ASCII.GetString(resp);
@@ -162,13 +162,25 @@ namespace TwilioRest
                     var_list += "&" + d.Key.ToString() + "=" + 
                         HttpUtility.UrlEncode(d.Value.ToString());
                 }
+
+
+                string response_str = "";
+                using (StreamReader sr = new StreamReader(e.Response.GetResponseStream()))
+                {
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        response_str += line;
+                    }
+                }
+
                 
                 message = String.Format("TwilioRestException occurred in the request you sent: \n{0}\n\tURLL: {1}\n\tMETHOD:{2}\n\tVARS:{3}\n\tRESPONSE:{4}",
                                         message,
                                         url,
                                         method,
                                         var_list,
-                                        response);
+                                        response_str);
                 
                 throw new TwilioRestException(message, e);
             }

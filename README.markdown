@@ -15,10 +15,12 @@ addition, you will need to choose a 'Caller' and 'Called' before making
 outgoing calls. See http://www.twilio.com/docs for more information.
 
 ### FILES
- * **twiliorest.cs**: include this namespace in your code
- * **example.cs**: example usage of TwilioRest client
- * **make.bat**: imple makefile to build the example code (requires that Visual 
- Studio .Net is installed and the 'csc' command is in your PATH)
+ * **lib/TwilioRest.cs**: build and link this library in your code
+ * **examples/**: examples of usage with TwilioRest client
+ * **Makefile**: makefile to build the library and example code (requires Mono and the mcs command line tool)
+
+### LINKING
+ * Use -r:TwilioRest flag with msc to build.  
 
 ### LICENSE
 The Twilio SDK is distributed under the MIT License

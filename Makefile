@@ -1,15 +1,24 @@
 MCS=/usr/bin/mcs
 
+LIBS=TwilioRest.dll
+EXAMPLES=CompletedCalls.exe \
+	DeleteRecording.exe \
+	ListRecordings.exe \
+	ListSMS.exe \
+	Notifications.exe \
+	OutboundCall.exe \
+	SendSMS.exe
+
 all: build
 
-build: twiliorest.dll example.exe
+build: $(LIBS) $(EXAMPLES)
 
-twiliorest.dll:
-	$(MCS) twiliorest.cs -target:library -r:System.Web
+%.dll:
+	$(MCS) libs/$*.cs -target:library -r:System.Web
 
-example.exe:
-	$(MCS) example.cs -r:TwilioRest 
+%.exe: 
+	$(MCS) examples/$*.cs -r:TwilioRest -lib:libs/
 
 clean: 
-	rm twiliorest.dll
-	rm example.exe
+	$(rm libs/*.dll)
+	$(rm examples/*.exe)
