@@ -79,24 +79,27 @@ namespace TwilioRest
             if (vars != null)
             {
                 foreach(DictionaryEntry d in vars)
+                {
                     data += "&" + d.Key.ToString() + "=" + 
                         HttpUtility.UrlEncode(d.Value.ToString());
+                }
+                
                 data = data.Substring(1);
             }
             
             // 2. setup basic authenication
-            string authstring = Convert.ToBase64String(
-                Encoding.ASCII.GetBytes(String.Format("{0}:{1}",
-                this.id, this.token)));
+            string authstring = Convert.ToBase64String(Encoding.ASCII.GetBytes(String.Format("{0}:{1}",
+                                                       this.id, this.token)));
             
             // 3. perform POST/PUT/DELETE using WebClient
             ServicePointManager.Expect100Continue = false;
             Byte[] postbytes = Encoding.ASCII.GetBytes(data);
             WebClient client = new WebClient();
+            
             client.Headers.Add("Authorization",
-                String.Format("Basic {0}", authstring));
+                               String.Format("Basic {0}", authstring));
             client.Headers.Add("Content-Type", 
-                "application/x-www-form-urlencoded");
+                               "application/x-www-form-urlencoded");
             byte[] resp = client.UploadData(uri, method, postbytes);
             
             return Encoding.ASCII.GetString(resp);
@@ -158,16 +161,7 @@ namespace TwilioRest
         
         public string request(string path, string method)
         {
-            if (path == null || path.Length <= 0)
-                throw(new ArgumentException("Invalid path parameter"));
-            method = method.ToUpper();
-            if (method == null || (method != "GET" && method != "PUT" && 
-                method != "DELETE"))
-                throw(new ArgumentException("Invalid method parameter"));
-            
-            if (method == "GET")
-                return _download(_build_uri(path), null);
-            return _upload(_build_uri(path), method, null);
+            return this.request(path, method, null);
         }
     }
 
