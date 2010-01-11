@@ -173,22 +173,29 @@ namespace TwilioRest
 
 
     [Serializable()]
-    class TwilioRestException : System.Exception {
+    public class TwilioRestException : System.Exception {
 
-        public TwilioRestException() {
+        public TwilioRestException() : base()
+        {
             
         }
         
-        public TwilioRestException(string message) {
+        public TwilioRestException(string message) : base(message)
+        {
             
         }
 
-        public TwilioRestException(string message, System.Exception innerException) {
+        public TwilioRestException(string message,
+                                   System.Exception innerException)
+            : base(message, innerException)
+        {
             
         }
 
         protected TwilioRestException(System.Runtime.Serialization.SerializationInfo info,
-                                             System.Runtime.Serialization.StreamingContext context) {
+                                      System.Runtime.Serialization.StreamingContext context)
+            : base(info, context)
+        {
 
         }
         
