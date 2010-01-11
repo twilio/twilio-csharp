@@ -112,18 +112,48 @@ namespace TwilioRest
         
         public string request(string path, string method, Hashtable vars)
         {
+            String response = "";
+            
             if (path == null || path.Length <= 0)
                 throw(new ArgumentException("Invalid path parameter"));
+            
             method = method.ToUpper();
             if (method == null || (method != "GET" && method != "POST" &&
-                method != "PUT" && method != "DELETE"))
+                                   method != "PUT" && method != "DELETE"))
+            {
                 throw(new ArgumentException("Invalid method parameter"));
-            if (method != "GET" && vars.Count <= 0)
-                throw(new ArgumentException("No vars parameters"));
+            }
             
-            if (method == "GET")
-                return _download(_build_uri(path), vars);
-            return _upload(_build_uri(path), method, vars);
+            if (method != "GET" && vars.Count <= 0)
+            {
+                throw(new ArgumentException("No vars parameters"));
+            }
+            
+            try
+            {
+                if (method == "GET")
+                {
+                    response = _download(_build_uri(path), vars);
+                }
+                else
+                {
+                    response = _upload(_build_uri(path), method, vars);
+                }
+            }
+            catch(WebException e)
+            {
+                string message = e.Message;
+                
+                if (e.Status != WebExceptionStatus.TrustFailure)
+                {
+                    throw new TwilioRestException(message, e);
+                }
+                
+                throw new TwilioRestException("You do not trust the people who " +
+                                              "issued the certificate being used by twiliorest.dll.", e);
+            }
+
+            return response;
         }
         
         public string request(string path, string method)
@@ -139,5 +169,28 @@ namespace TwilioRest
                 return _download(_build_uri(path), null);
             return _upload(_build_uri(path), method, null);
         }
+    }
+
+
+    [Serializable()]
+    class TwilioRestException : System.Exception {
+
+        public TwilioRestException() {
+            
+        }
+        
+        public TwilioRestException(string message) {
+            
+        }
+
+        public TwilioRestException(string message, System.Exception innerException) {
+            
+        }
+
+        protected TwilioRestException(System.Runtime.Serialization.SerializationInfo info,
+                                             System.Runtime.Serialization.StreamingContext context) {
+
+        }
+        
     }
 }
