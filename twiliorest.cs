@@ -115,7 +115,7 @@ namespace TwilioRest
         
         public string request(string path, string method, Hashtable vars)
         {
-            String response = "";
+            string response = null;
             
             if (path == null || path.Length <= 0)
                 throw(new ArgumentException("Invalid path parameter"));
@@ -131,29 +131,46 @@ namespace TwilioRest
             {
                 throw(new ArgumentException("No vars parameters"));
             }
-            
+
+            string url = _build_uri(path);
             try
             {
                 if (method == "GET")
                 {
-                    response = _download(_build_uri(path), vars);
+                    response = _download(url, vars);
                 }
                 else
                 {
-                    response = _upload(_build_uri(path), method, vars);
+                    response = _upload(url, method, vars);
                 }
             }
             catch(WebException e)
             {
                 string message = e.Message;
-                
-                if (e.Status != WebExceptionStatus.TrustFailure)
+
+                switch(e.Status)
                 {
-                    throw new TwilioRestException(message, e);
+                    case WebExceptionStatus.TrustFailure:
+                        message = "You do not trust the people who " +
+                            "issued the certificate being used by twiliorest.dll.";
+                        break;
+                }
+
+                string var_list = "";
+                foreach(DictionaryEntry d in vars)
+                {
+                    var_list += "&" + d.Key.ToString() + "=" + 
+                        HttpUtility.UrlEncode(d.Value.ToString());
                 }
                 
-                throw new TwilioRestException("You do not trust the people who " +
-                                              "issued the certificate being used by twiliorest.dll.", e);
+                message = String.Format("TwilioRestException occurred in the request you sent: \n{0}\n\tURLL: {1}\n\tMETHOD:{2}\n\tVARS:{3}\n\tRESPONSE:{4}",
+                                        message,
+                                        url,
+                                        method,
+                                        var_list,
+                                        response);
+                
+                throw new TwilioRestException(message, e);
             }
 
             return response;
