@@ -1,12 +1,12 @@
 ### C# .NET Twilio REST SDK
 
-### DESCRIPTION
+### Description
 The Twilio REST SDK simplifies the process of makes calls to the Twilio REST.
 The Twilio REST API lets to you initiate outgoing calls, list previous call,
 and much more.  See http://www.twilio.com/docs for more information.
 
 
-### USAGE
+### Usage
 Include the 'using TwilioRest' line at the top of your C# code and put the
 TwilioRest.cs file in the same directory as your code.   As shown in
 example.cs, you will need to specify the ACCOUNT_ID and
@@ -26,5 +26,5 @@ outgoing calls. See http://www.twilio.com/docs for more information.
 ### LINKING
  * Use -r:TwilioRest flag with msc to build.  
 
-### LICENSE
+### License
 The Twilio SDK is distributed under the MIT License
