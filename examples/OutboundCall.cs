@@ -12,7 +12,7 @@ using TwilioRest;
 class OutboundCall
 {
     // Twilio REST API version
-    const string API_VERSION = "2008-08-01";
+    const string API_VERSION = "2010-04-01";
     
     // Twilio AccountSid and AuthToken
     const string ACCOUNT_SID = "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
@@ -32,8 +32,8 @@ class OutboundCall
         try
         {
             h = new Hashtable();
-            h.Add("Caller", CALLER_ID);
-            h.Add("Called", "415-555-1212");
+            h.Add("From", CALLER_ID);
+            h.Add("To", "415-555-1212");
             h.Add("Url", "http://demo.twilio.com/welcome");
             h.Add("Method", "POST");
             Console.WriteLine(account.request(

@@ -12,7 +12,7 @@ using TwilioRest;
 class DeleteRecordings
 {
     // Twilio REST API version
-    const string API_VERSION = "2008-08-01";
+    const string API_VERSION = "2010-04-01";
     
     // Twilio AccountSid and AuthToken
     const string ACCOUNT_SID = "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
