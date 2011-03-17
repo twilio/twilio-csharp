@@ -127,11 +127,6 @@ namespace TwilioRest
                 throw(new ArgumentException("Invalid method parameter"));
             }
             
-            if (method != "GET" && vars.Count <= 0)
-            {
-                throw(new ArgumentException("No vars parameters"));
-            }
-
             string url = _build_uri(path);
             try
             {
