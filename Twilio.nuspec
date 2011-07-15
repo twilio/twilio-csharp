@@ -4,11 +4,12 @@
 		<id>Twilio</id>
 		<version>3.0</version>
 		<authors>Twilio</authors>
-		<description>Twilio REST API wrapper</description>
+		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
-		<projectUrl>http://github.com/johnsheehan/Twilio</projectUrl>
+		<projectUrl>http://github.com/twilio/twilio-csharp</projectUrl>
 		<iconUrl>http://www.twilio.com/packages/company/img/logos_downloadable_round.png</iconUrl>
-		<tags>REST SMS voice telephony phone</tags>
+		<licenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.txt</licenseUrl>
+		<tags>REST SMS voice telephony phone twilio twiml</tags>
 		<dependencies>
 			<dependency id="RestSharp" />
 		</dependencies>

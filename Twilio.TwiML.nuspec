@@ -6,9 +6,10 @@
 		<authors>Twilio</authors>
 		<description>Twilio TwiML generator. If using ASP.NET MVC, install Twilio.Mvc instead.</description>
 		<language>en-US</language>
-		<projectUrl>http://github.com/johnsheehan/Twilio</projectUrl>
+		<projectUrl>http://github.com/twilio/twilio-csharp</projectUrl>
 		<iconUrl>http://www.twilio.com/packages/company/img/logos_downloadable_round.png</iconUrl>
-		<tags>REST SMS voice telephony phone</tags>
+		<licenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.txt</licenseUrl>
+		<tags>REST SMS voice telephony phone twilio twiml</tags>
 		<dependencies>
 			<dependency id="Twilio" />
 		</dependencies>
