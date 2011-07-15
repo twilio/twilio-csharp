@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<metadata>
+		<id>Twilio</id>
+		<version>3.0</version>
+		<authors>Twilio</authors>
+		<description>Twilio REST API wrapper</description>
+		<language>en-US</language>
+		<projectUrl>http://github.com/johnsheehan/Twilio</projectUrl>
+		<iconUrl>http://www.twilio.com/packages/company/img/logos_downloadable_round.png</iconUrl>
+		<tags>REST SMS voice telephony phone</tags>
+		<dependencies>
+			<dependency id="RestSharp" />
+		</dependencies>
+	</metadata>
+</package>
