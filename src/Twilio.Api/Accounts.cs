@@ -87,5 +87,19 @@ namespace Twilio
 
 			return Execute<Account>(request);
 		}
+
+		/// <summary>
+		/// Update the status associated with the currently authenticated account. Makes a POST request to an Account Instance resource.
+		/// </summary>
+		/// <param name="status">Status can be 'active', 'suspended', or 'closed'.</param>
+		public Account UpdateAccountStatus(string status)
+		{
+			var request = new RestRequest(Method.POST);
+			request.Resource = "Accounts/{AccountSid}";
+			request.RootElement = "Account";
+			request.AddParameter("Status", status);
+
+			return Execute<Account>(request);
+		}
 	}
 }
