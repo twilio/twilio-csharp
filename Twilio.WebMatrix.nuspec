@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio.WebMatrix</id>
-		<version>3.0</version>
+		<version>3.0.1</version>
 		<authors>Twilio</authors>
 		<description>Twilio helpers for WebMatrix and ASP.NET Web Pages</description>
 		<language>en-US</language>
