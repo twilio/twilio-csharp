@@ -49,8 +49,8 @@ namespace Twilio
 
 			if (callSid.HasValue()) request.AddParameter("CallSid", callSid);
 			if (dateCreated.HasValue) request.AddParameter("DateCreated", dateCreated.Value.ToString("yyyy-MM-dd"));
-			if (pageNumber.HasValue) request.AddParameter("page", pageNumber.Value);
-			if (count.HasValue) request.AddParameter("num", count.Value);
+			if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
+			if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
 			return Execute<RecordingResult>(request);
 		}

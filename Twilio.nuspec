@@ -9,7 +9,7 @@
 		<projectUrl>http://github.com/twilio/twilio-csharp</projectUrl>
 		<iconUrl>http://www.twilio.com/packages/company/img/logos_downloadable_round.png</iconUrl>
 		<licenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.txt</licenseUrl>
-		<tags>REST SMS voice telephony phone twilio twiml</tags>
+		<tags>REST SMS voice telephony phone twilio twiml ASPNETWEBPAGES</tags>
 		<dependencies>
 			<dependency id="RestSharp" />
 		</dependencies>

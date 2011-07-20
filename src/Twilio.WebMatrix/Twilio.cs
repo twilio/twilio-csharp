@@ -26,7 +26,7 @@ namespace Twilio.WebMatrix
 		/// <param name="body">The contents of the message, up to 160 characters</param>
 		/// <param name="statusCallbackUrl">The URL to notify of the message status</param>
 		/// <returns>An SMSMessage Instance resource</returns>
-		public static SmsMessage SendSms(string from, string to, string body, string statusCallbackUrl)
+		public static SMSMessage SendSms(string from, string to, string body, string statusCallbackUrl)
 		{
 			CheckForCredentials();
 

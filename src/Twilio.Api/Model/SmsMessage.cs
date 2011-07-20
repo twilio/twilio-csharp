@@ -21,7 +21,7 @@ namespace Twilio
 	/// <summary>
 	/// An SMSMessage instance resource represents a single Twilio SMSMessage.
 	/// </summary>
-	public class SmsMessage : TwilioBase
+	public class SMSMessage : TwilioBase
 	{
 		/// <summary>
 		/// A 34 character string that uniquely identifies this resource.

@@ -90,8 +90,8 @@ namespace Twilio
 			request.AddParameter("ConferenceSid", conferenceSid);
 
 			if (muted.HasValue) request.AddParameter("Muted", muted.Value);
-			if (pageNumber.HasValue) request.AddParameter("page", pageNumber.Value);
-			if (count.HasValue) request.AddParameter("num", count.Value);
+			if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
+			if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
 			return Execute<ParticipantResult>(request);
 		}

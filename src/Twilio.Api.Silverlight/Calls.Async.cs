@@ -67,8 +67,8 @@ namespace Twilio
 			if (options.StartTime.HasValue) request.AddParameter(startTimeParameterName, options.StartTime.Value.ToString("yyyy-MM-dd"));
 			if (options.EndTime.HasValue) request.AddParameter(endTimeParameterName, options.EndTime.Value.ToString("yyyy-MM-dd"));
 
-			if (options.Count.HasValue) request.AddParameter("num", options.Count.Value);
-			if (options.PageNumber.HasValue) request.AddParameter("page", options.PageNumber.Value);
+			if (options.Count.HasValue) request.AddParameter("PageSize", options.Count.Value);
+			if (options.PageNumber.HasValue) request.AddParameter("Page", options.PageNumber.Value);
 
 			if (options.ParentCallSid.HasValue()) request.AddParameter("ParentCallSid", options.ParentCallSid);
 		}

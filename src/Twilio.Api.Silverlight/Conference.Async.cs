@@ -61,8 +61,8 @@ namespace Twilio
 			if (options.DateCreated.HasValue) request.AddParameter(dateCreatedParameterName, options.DateCreated.Value.ToString("yyyy-MM-dd"));
 			if (options.DateUpdated.HasValue) request.AddParameter(dateUpdatedParameterName, options.DateUpdated.Value.ToString("yyyy-MM-dd"));
 
-			if (options.Count.HasValue) request.AddParameter("num", options.Count.Value);
-			if (options.PageNumber.HasValue) request.AddParameter("page", options.PageNumber.Value);
+			if (options.Count.HasValue) request.AddParameter("PageSize", options.Count.Value);
+			if (options.PageNumber.HasValue) request.AddParameter("Page", options.PageNumber.Value);
 		}
 
 		/// <summary>
@@ -108,8 +108,8 @@ namespace Twilio
 			request.AddParameter("ConferenceSid", conferenceSid);
 
 			if (muted.HasValue) request.AddParameter("Muted", muted.Value);
-			if (pageNumber.HasValue) request.AddParameter("page", pageNumber.Value);
-			if (count.HasValue) request.AddParameter("num", count.Value);
+			if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
+			if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
 			ExecuteAsync<ParticipantResult>(request, (response) => callback(response));
 		}

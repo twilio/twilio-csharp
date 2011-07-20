@@ -64,8 +64,8 @@ namespace Twilio
 
 			if (phoneNumber.HasValue()) request.AddParameter("PhoneNumber", phoneNumber);
 			if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
-			if (pageNumber.HasValue) request.AddParameter("page", pageNumber.Value);
-			if (count.HasValue) request.AddParameter("num", count.Value);
+			if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
+			if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
 			return Execute<OutgoingCallerIdResult>(request);
 		}

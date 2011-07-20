@@ -15,6 +15,7 @@
 #endregion
 
 using RestSharp;
+using System.Reflection;
 
 
 namespace Twilio
@@ -49,7 +50,13 @@ namespace Twilio
 			AccountSid = accountSid;
 			AuthToken = authToken;
 
+			// silverlight friendly way to get current version
+			var assembly = Assembly.GetExecutingAssembly();
+			AssemblyName assemblyName = new AssemblyName(assembly.FullName);
+			var version = assemblyName.Version;
+
 			_client = new RestClient();
+			_client.UserAgent = "twilio-csharp/" + version; 
 			_client.Authenticator = new HttpBasicAuthenticator(AccountSid, AuthToken);
 			_client.BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion);
 

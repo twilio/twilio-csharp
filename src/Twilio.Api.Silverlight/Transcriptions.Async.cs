@@ -42,8 +42,8 @@ namespace Twilio
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Transcriptions";
-			if (pageNumber.HasValue) request.AddParameter("page", pageNumber.Value);
-			if (count.HasValue) request.AddParameter("num", count.Value);
+			if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
+			if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
 			ExecuteAsync<TranscriptionResult>(request, (response) => callback(response));
 		}
@@ -61,8 +61,8 @@ namespace Twilio
 			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}/Transcriptions";
 			request.AddUrlSegment("RecordingSid", recordingSid);
 
-			if (pageNumber.HasValue) request.AddParameter("page", pageNumber.Value);
-			if (count.HasValue) request.AddParameter("num", count.Value);
+			if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
+			if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
 			ExecuteAsync<TranscriptionResult>(request, (response) => callback(response));
 		}

@@ -25,6 +25,6 @@ namespace Twilio
 		/// <summary>
 		/// List of ShortCode resources returned by API
 		/// </summary>
-		public TwilioList<SmsShortCode> ShortCodes { get; set; }
+		public TwilioList<SMSShortCode> ShortCodes { get; set; }
 	}
 }

@@ -29,14 +29,14 @@ namespace Twilio
 		/// Makes a GET request to an SMSMessage Instance resource.
 		/// </summary>
 		/// <param name="smsMessageSid">The Sid of the message to retrieve</param>
-		public SmsMessage GetSmsMessage(string smsMessageSid)
+		public SMSMessage GetSmsMessage(string smsMessageSid)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/SMS/Messages/{SMSMessageSid}";
 			request.RootElement = "SMSMessage";
 			request.AddUrlSegment("SMSMessageSid", smsMessageSid);
 
-			return Execute<SmsMessage>(request);
+			return Execute<SMSMessage>(request);
 		}
 
 		/// <summary>
@@ -44,9 +44,9 @@ namespace Twilio
 		/// The list includes paging information and is sorted by DateSent, with most recent messages first.
 		/// Makes a GET request to the SMSMessage List resource.
 		/// </summary>
-		public SmsMessageResult GetSmsMessages()
+		public SmsMessageResult ListSmsMessages()
 		{
-			return GetSmsMessages(null, null, null, null, null);
+			return ListSmsMessages(null, null, null, null, null);
 		}
 
 		/// <summary>
@@ -58,7 +58,7 @@ namespace Twilio
 		/// <param name="dateSent">(Optional) The date the message was sent (GMT)</param>
 		/// <param name="pageNumber">(Optional) The page to start retrieving results from</param>
 		/// <param name="count">(Optional) The number of results to retrieve</param>
-		public SmsMessageResult GetSmsMessages(string to, string from, DateTime? dateSent, int? pageNumber, int? count)
+		public SmsMessageResult ListSmsMessages(string to, string from, DateTime? dateSent, int? pageNumber, int? count)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/SMS/Messages";
@@ -67,8 +67,8 @@ namespace Twilio
 			if (to.HasValue()) request.AddParameter("To", to);
 			if (from.HasValue()) request.AddParameter("From", from);
 			if (dateSent.HasValue) request.AddParameter("DateSent", dateSent.Value.ToString("yyyy-MM-dd"));
-			if (pageNumber.HasValue) request.AddParameter("page", pageNumber.Value);
-			if (count.HasValue) request.AddParameter("num", count.Value);
+			if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
+			if (count.HasValue) request.AddParameter("pagesize", count.Value);
 
 			return Execute<SmsMessageResult>(request);
 		}
@@ -80,7 +80,7 @@ namespace Twilio
 		/// <param name="from">The phone number to send the message from. Must be a Twilio-provided or ported local (not toll-free) number. Validated outgoing caller IDs cannot be used.</param>
 		/// <param name="to">The phone number to send the message to. If using the Sandbox, this number must be a validated outgoing caller ID</param>
 		/// <param name="body">The message to send. Must be 160 characters or less.</param>
-		public SmsMessage SendSmsMessage(string from, string to, string body)
+		public SMSMessage SendSmsMessage(string from, string to, string body)
 		{
 			return SendSmsMessage(from, to, body, string.Empty);
 		}
@@ -93,7 +93,7 @@ namespace Twilio
 		/// <param name="to">The phone number to send the message to. If using the Sandbox, this number must be a validated outgoing caller ID</param>
 		/// <param name="body">The message to send. Must be 160 characters or less.</param>
 		/// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the SmsSid as well as SmsStatus=sent or SmsStatus=failed</param>
-		public SmsMessage SendSmsMessage(string from, string to, string body, string statusCallback)
+		public SMSMessage SendSmsMessage(string from, string to, string body, string statusCallback)
 		{
 			Validate.IsValidLength(body, 160);
 			Require.Argument("from", from);
@@ -107,7 +107,7 @@ namespace Twilio
 			request.AddParameter("Body", body);
 			if (statusCallback.HasValue()) request.AddParameter("StatusCallback", statusCallback);
 
-			return Execute<SmsMessage>(request);
+			return Execute<SMSMessage>(request);
 		}
 
 		/// <summary>
@@ -115,7 +115,7 @@ namespace Twilio
 		/// Makes a GET request to a ShortCode Instance resource.
 		/// </summary>
 		/// <param name="shortCodeSid">The Sid of the ShortCode resource to return</param>
-		public SmsShortCode GetShortCode(string shortCodeSid)
+		public SMSShortCode GetShortCode(string shortCodeSid)
 		{
 			Require.Argument("shortCodeSid", shortCodeSid);
 
@@ -123,7 +123,7 @@ namespace Twilio
 			request.Resource = "Accounts/{AccountSid}/SMS/ShortCodes/{ShortCodeSid}";
 			request.AddParameter("ShortCodeSid", shortCodeSid);
 
-			return Execute<SmsShortCode>(request);
+			return Execute<SMSShortCode>(request);
 		}
 
 		/// <summary>
@@ -137,7 +137,7 @@ namespace Twilio
 		/// <param name="smsMethod">The HTTP method that should be used to request the SmsUrl. Either GET or POST.</param>
 		/// <param name="smsFallbackUrl">A URL that Twilio will request if an error occurs requesting or executing the TwiML at the SmsUrl.</param>
 		/// <param name="smsFallbackMethod">The HTTP method that should be used to request the SmsFallbackUrl. Either GET or POST.</param>
-		public SmsShortCode UpdateShortCode(string shortCodeSid, string friendlyName, string apiVersion, string smsUrl, string smsMethod, string smsFallbackUrl, string smsFallbackMethod)
+		public SMSShortCode UpdateShortCode(string shortCodeSid, string friendlyName, string apiVersion, string smsUrl, string smsMethod, string smsFallbackUrl, string smsFallbackMethod)
 		{
 			Require.Argument("shortCodeSid", shortCodeSid);
 
@@ -152,7 +152,7 @@ namespace Twilio
 			if (smsFallbackUrl.HasValue()) request.AddParameter("SmsFallbackUrl", smsFallbackUrl);
 			if (smsFallbackMethod.HasValue()) request.AddParameter("SmsFallbackMethod", smsFallbackMethod);
 
-			return Execute<SmsShortCode>(request);
+			return Execute<SMSShortCode>(request);
 		}
 
 		/// <summary>

@@ -61,8 +61,8 @@ namespace Twilio
 			request.Resource = "Accounts/{AccountSid}/Applications";
 
 			if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
-			if (pageNumber.HasValue) request.AddParameter("page", pageNumber.Value);
-			if (count.HasValue) request.AddParameter("num", count.Value);
+			if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
+			if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
 			ExecuteAsync<ApplicationResult>(request, callback);
 		}

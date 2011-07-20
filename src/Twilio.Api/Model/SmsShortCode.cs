@@ -8,7 +8,7 @@ namespace Twilio
 	/// <summary>
 	/// Represents a single ShortCode Instance resource
 	/// </summary>
-	public class SmsShortCode : TwilioBase
+	public class SMSShortCode : TwilioBase
 	{
 		/// <summary>
 		/// A 34 character string that uniquely idetifies this resource.

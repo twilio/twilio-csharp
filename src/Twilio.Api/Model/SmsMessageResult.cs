@@ -25,6 +25,6 @@ namespace Twilio
 		/// <summary>
 		/// List of SMSMessage resources returned by API
 		/// </summary>
-		public TwilioList<SmsMessage> SmsMessages { get; set; }
+		public TwilioList<SMSMessage> SMSMessages { get; set; }
 	}
 }
