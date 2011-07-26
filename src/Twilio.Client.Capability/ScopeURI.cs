@@ -27,6 +27,8 @@ namespace Twilio
 
 		Dictionary<string, object> ObjectToUrlQuery(object obj)
 		{
+			if (obj == null) return new Dictionary<string, object>();
+
 			var type = obj.GetType();
 			var props = type.GetProperties();
 

@@ -12,6 +12,7 @@
 		<tags>REST SMS voice telephony phone twilio twiml</tags>
 		<dependencies>
 			<dependency id="Twilio" />
+			<dependency id="Twilio.Client" />
 		</dependencies>
 	</metadata>
 </package>
