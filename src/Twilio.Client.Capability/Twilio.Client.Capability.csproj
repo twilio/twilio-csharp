@@ -8,8 +8,8 @@
     <ProjectGuid>{238D5C71-D65F-43B5-8C49-7624E6E294C9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TwilioCapability</RootNamespace>
-    <AssemblyName>TwilioCapability</AssemblyName>
+    <RootNamespace>Twilio</RootNamespace>
+    <AssemblyName>Twilio.Client.Capability</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Twilio.Client.Capability.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Twilio.Client.Capability.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="JWT">
