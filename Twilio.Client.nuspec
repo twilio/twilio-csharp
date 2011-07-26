@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
 	<metadata>
-		<id>Twilio</id>
+		<id>Twilio.Client</id>
 		<version>3.1.0</version>
 		<authors>Twilio</authors>
-		<description>Twilio REST API helper library</description>
+		<description>Twilio Client capability token generator for use with the Twilio Client for browsers JavaScript SDK.</description>
 		<language>en-US</language>
 		<projectUrl>http://github.com/twilio/twilio-csharp</projectUrl>
 		<iconUrl>http://www.twilio.com/packages/company/img/logos_downloadable_round.png</iconUrl>
 		<licenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.txt</licenseUrl>
-		<tags>REST SMS voice telephony phone twilio twiml ASPNETWEBPAGES</tags>
+		<tags>REST SMS voice telephony phone twilio twiml</tags>
 		<dependencies>
-			<dependency id="RestSharp" />
+			<dependency id="JWT" />
 		</dependencies>
 	</metadata>
 </package>

@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio.Mvc</id>
-		<version>3.0.1</version>
+		<version>3.1.0</version>
 		<authors>Twilio</authors>
 		<description>Twilio helpers for ASP.NET MVC</description>
 		<language>en-US</language>

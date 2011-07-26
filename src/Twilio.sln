@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{36CA862C-F8AB-4362-81F0-7B2116AF27FD}"
 	ProjectSection(SolutionItems) = preProject
 		..\LICENSE.txt = ..\LICENSE.txt
+		..\Twilio.Client.nuspec = ..\Twilio.Client.nuspec
 		..\Twilio.Mvc.nuspec = ..\Twilio.Mvc.nuspec
 		..\Twilio.nuspec = ..\Twilio.nuspec
 		..\Twilio.TwiML.nuspec = ..\Twilio.TwiML.nuspec
@@ -30,6 +31,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.WebMatrix", "Twilio.WebMatrix\Twilio.WebMatrix.csproj", "{D4EC9211-7F9B-45A0-B620-909C02841E60}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Mvc", "Twilio.Mvc\Twilio.Mvc.csproj", "{5D0AFE27-1CBE-4E63-ADBC-A778B598E7B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Client.Capability", "Twilio.Client.Capability\Twilio.Client.Capability.csproj", "{238D5C71-D65F-43B5-8C49-7624E6E294C9}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -114,6 +117,16 @@ Global
 		{5D0AFE27-1CBE-4E63-ADBC-A778B598E7B3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{5D0AFE27-1CBE-4E63-ADBC-A778B598E7B3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{5D0AFE27-1CBE-4E63-ADBC-A778B598E7B3}.Release|x86.ActiveCfg = Release|Any CPU
+		{238D5C71-D65F-43B5-8C49-7624E6E294C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{238D5C71-D65F-43B5-8C49-7624E6E294C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{238D5C71-D65F-43B5-8C49-7624E6E294C9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{238D5C71-D65F-43B5-8C49-7624E6E294C9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{238D5C71-D65F-43B5-8C49-7624E6E294C9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{238D5C71-D65F-43B5-8C49-7624E6E294C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{238D5C71-D65F-43B5-8C49-7624E6E294C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{238D5C71-D65F-43B5-8C49-7624E6E294C9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{238D5C71-D65F-43B5-8C49-7624E6E294C9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{238D5C71-D65F-43B5-8C49-7624E6E294C9}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
