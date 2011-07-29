@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio.TwiML</id>
-		<version>3.1.0</version>
+		<version>3.1.2</version>
 		<authors>Twilio</authors>
 		<description>Twilio TwiML generator. If using ASP.NET MVC, install Twilio.Mvc instead.</description>
 		<language>en-US</language>

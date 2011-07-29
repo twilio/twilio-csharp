@@ -19,13 +19,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.TwiML", "Twilio.Twim
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.TwiML.Tests", "Twilio.Twiml.Tests\Twilio.TwiML.Tests.csproj", "{35E6CB68-D17E-4E16-960D-75D638335FAF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{86AE3CC1-5BB7-4438-AB08-732292C3754C}"
-	ProjectSection(SolutionItems) = preProject
-		Local.testsettings = Local.testsettings
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
-		Twilio.vsmdi = Twilio.vsmdi
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Api.Silverlight", "Twilio.Api.Silverlight\Twilio.Api.Silverlight.csproj", "{08218C33-9EE0-4B7B-874B-83CCEB8FE4DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.WebMatrix", "Twilio.WebMatrix\Twilio.WebMatrix.csproj", "{D4EC9211-7F9B-45A0-B620-909C02841E60}"
@@ -35,9 +28,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Client.Capability", "Twilio.Client.Capability\Twilio.Client.Capability.csproj", "{238D5C71-D65F-43B5-8C49-7624E6E294C9}"
 EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = Twilio.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
