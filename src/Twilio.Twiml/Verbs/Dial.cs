@@ -12,6 +12,7 @@ namespace Twilio.TwiML
 		{
 			Element = new XElement("Dial");
 			AllowedChildren.Add("Number");
+			AllowedChildren.Add("Client");
 			AllowedChildren.Add("Conference");
 
 			AllowedAttributes.Add("timeout");

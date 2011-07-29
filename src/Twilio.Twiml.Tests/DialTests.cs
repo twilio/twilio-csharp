@@ -8,6 +8,7 @@ using System.Xml.Schema;
 using System.IO;
 using System.Xml;
 using Xunit;
+using System.Diagnostics;
 
 namespace Twilio.TwiML.Tests
 {
@@ -115,6 +116,40 @@ namespace Twilio.TwiML.Tests
 			var response = new TwilioResponse();
 			response.Dial(new Conference("room1"), new { action = "dial.xml", method = "GET", timeout = "30", hangupOnStar = "true", timeLimit = "1000", callerId = "555-111-2222" });
 			
+			Assert.True(IsValidTwiML(response.ToXDocument()));
+		}
+
+		[Fact]
+		public void Can_Generate_Dial_And_Client_Noun()
+		{
+			var response = new TwilioResponse();
+			response.Dial(new Client("Jenny"));
+
+			Assert.True(IsValidTwiML(response.ToXDocument()));
+		}
+
+		[Fact]
+		public void Can_Generate_Dial_Multiple_Clients()
+		{
+			var response = new TwilioResponse();
+			response.DialClients("Jenny", "Tommy", "Olive");
+
+			Assert.True(IsValidTwiML(response.ToXDocument()));
+		}
+
+		[Fact]
+		public void Can_Generate_Dial_And_Mixed_Number_And_Client_Nouns()
+		{
+			var response = new TwilioResponse();
+			response.Dial(
+				new Number("+15551112222"),
+				new Client("Tommy"),
+				new Number("+15553334444"),
+				new Number("+15556667777"),
+				new Client("Jenny")
+			);
+
+			Debug.Write(response.ToString());
 			Assert.True(IsValidTwiML(response.ToXDocument()));
 		}
 	}

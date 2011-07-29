@@ -6,7 +6,7 @@ using System.Xml.Linq;
 
 namespace Twilio.TwiML
 {
-	public class Number : ElementBase
+	public class Number : ElementBase, IDialNoun
 	{
 		public Number(string number)
 		{

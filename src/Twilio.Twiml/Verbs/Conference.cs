@@ -6,7 +6,7 @@ using System.Xml.Linq;
 
 namespace Twilio.TwiML
 {
-	public class Conference : ElementBase
+	public class Conference : ElementBase, IDialNoun
 	{
 		public Conference()
 		{

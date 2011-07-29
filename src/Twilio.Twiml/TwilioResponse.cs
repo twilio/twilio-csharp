@@ -54,6 +54,20 @@ namespace Twilio.TwiML
 			return EndDial();
 		}
 
+		public TwilioResponse Dial(Client client)
+		{
+			BeginDial();
+			Add(client);
+			return EndDial();
+		}
+
+		public TwilioResponse Dial(Client client, object dialAttributes)
+		{
+			BeginDial(dialAttributes);
+			Add(client);
+			return EndDial();
+		}
+
 		public TwilioResponse Dial(Conference conf)
 		{
 			BeginDial();
@@ -97,6 +111,29 @@ namespace Twilio.TwiML
 			{
 				Add(new Number(number));
 			}
+			return EndDial();
+		}
+
+		public TwilioResponse DialClients(params string[] clients)
+		{
+			BeginDial();
+			var dial = new Dial();
+			foreach (var client in clients)
+			{
+				Add(new Client(client));
+			}
+			return EndDial();
+		}
+
+		public TwilioResponse Dial(params IDialNoun[] dialTargets)
+		{
+			BeginDial();
+
+			foreach (IDialNoun noun in dialTargets)
+			{
+				Add((ElementBase)noun);
+			}
+
 			return EndDial();
 		}
 

@@ -50,6 +50,8 @@
     <Compile Include="RequestValidator.cs" />
     <Compile Include="TwilioResponse.cs" />
     <Compile Include="Verbs\Conference.cs" />
+    <Compile Include="Verbs\Client.cs" />
+    <Compile Include="Verbs\IDialNoun.cs" />
     <Compile Include="Verbs\IVerb.cs" />
     <Compile Include="Verbs\Pause.cs" />
     <Compile Include="Verbs\Number.cs" />

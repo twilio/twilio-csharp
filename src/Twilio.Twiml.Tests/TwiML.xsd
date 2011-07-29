@@ -63,6 +63,7 @@
 		<xs:sequence maxOccurs="unbounded" minOccurs="0">
 			<xs:choice>
 				<xs:element name="Number" type="NumberType"></xs:element>
+				<xs:element name="Client" type="ClientType"></xs:element>
 				<xs:element name="Conference" type="conferenceType"></xs:element>
 			</xs:choice>
 		</xs:sequence>
@@ -83,6 +84,12 @@
 				<xs:attribute name="sendDigits" type="xs:string"></xs:attribute>
 				<xs:attribute name="url" type="xs:string"></xs:attribute>
 			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="ClientType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string"></xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
 
