@@ -76,7 +76,7 @@ namespace Twilio
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}";
 			request.RootElement = "Conference";
 
-			request.AddParameter("ConferenceSid", conferenceSid);
+			request.AddUrlSegment("ConferenceSid", conferenceSid);
 
 			ExecuteAsync<Conference>(request, (response) => callback(response));
 		}
@@ -105,7 +105,7 @@ namespace Twilio
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants";
 
-			request.AddParameter("ConferenceSid", conferenceSid);
+			request.AddUrlSegment("ConferenceSid", conferenceSid);
 
 			if (muted.HasValue) request.AddParameter("Muted", muted.Value);
 			if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
@@ -126,8 +126,8 @@ namespace Twilio
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}";
 			request.RootElement = "Participant";
 
-			request.AddParameter("ConferenceSid", conferenceSid);
-			request.AddParameter("CallSid", callSid);
+			request.AddUrlSegment("ConferenceSid", conferenceSid);
+			request.AddUrlSegment("CallSid", callSid);
 
 			ExecuteAsync<Participant>(request, (response) => callback(response));
 		}
@@ -144,8 +144,8 @@ namespace Twilio
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}";
 			request.RootElement = "Participant";
 
-			request.AddParameter("ConferenceSid", conferenceSid);
-			request.AddParameter("CallSid", callSid);
+			request.AddUrlSegment("ConferenceSid", conferenceSid);
+			request.AddUrlSegment("CallSid", callSid);
 			request.AddParameter("Muted", true);
 
 			ExecuteAsync<Participant>(request, (response) => callback(response));
@@ -163,8 +163,8 @@ namespace Twilio
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}";
 			request.RootElement = "Participant";
 
-			request.AddParameter("ConferenceSid", conferenceSid);
-			request.AddParameter("CallSid", callSid);
+			request.AddUrlSegment("ConferenceSid", conferenceSid);
+			request.AddUrlSegment("CallSid", callSid);
 			request.AddParameter("Muted", false);
 
 			ExecuteAsync<Participant>(request, (response) => callback(response));
@@ -180,8 +180,8 @@ namespace Twilio
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}";
-			request.AddParameter("ConferenceSid", conferenceSid);
-			request.AddParameter("CallSid", callSid);
+			request.AddUrlSegment("ConferenceSid", conferenceSid);
+			request.AddUrlSegment("CallSid", callSid);
 
 			ExecuteAsync(request, (response) => callback(response.StatusCode == System.Net.HttpStatusCode.NoContent));
 		}

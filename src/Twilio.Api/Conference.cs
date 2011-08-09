@@ -60,7 +60,7 @@ namespace Twilio
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}";
 			request.RootElement = "Conference";
 
-			request.AddParameter("ConferenceSid", conferenceSid);
+			request.AddUrlSegment("ConferenceSid", conferenceSid);
 
 			return Execute<Conference>(request);
 		}
@@ -87,7 +87,7 @@ namespace Twilio
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants";
 
-			request.AddParameter("ConferenceSid", conferenceSid);
+			request.AddUrlSegment("ConferenceSid", conferenceSid);
 
 			if (muted.HasValue) request.AddParameter("Muted", muted.Value);
 			if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
@@ -107,8 +107,8 @@ namespace Twilio
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}";
 			request.RootElement = "Participant";
 
-			request.AddParameter("ConferenceSid", conferenceSid);
-			request.AddParameter("CallSid", callSid);
+			request.AddUrlSegment("ConferenceSid", conferenceSid);
+			request.AddUrlSegment("CallSid", callSid);
 
 			return Execute<Participant>(request);
 		}
@@ -124,8 +124,8 @@ namespace Twilio
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}";
 			request.RootElement = "Participant";
 
-			request.AddParameter("ConferenceSid", conferenceSid);
-			request.AddParameter("CallSid", callSid);
+			request.AddUrlSegment("ConferenceSid", conferenceSid);
+			request.AddUrlSegment("CallSid", callSid);
 			request.AddParameter("Muted", true);
 
 			return Execute<Participant>(request);
@@ -142,8 +142,8 @@ namespace Twilio
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}";
 			request.RootElement = "Participant";
 
-			request.AddParameter("ConferenceSid", conferenceSid);
-			request.AddParameter("CallSid", callSid);
+			request.AddUrlSegment("ConferenceSid", conferenceSid);
+			request.AddUrlSegment("CallSid", callSid);
 			request.AddParameter("Muted", false);
 
 			return Execute<Participant>(request);
@@ -158,8 +158,8 @@ namespace Twilio
 		{
 			var request = new RestRequest(Method.DELETE);
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}";
-			request.AddParameter("ConferenceSid", conferenceSid);
-			request.AddParameter("CallSid", callSid);
+			request.AddUrlSegment("ConferenceSid", conferenceSid);
+			request.AddUrlSegment("CallSid", callSid);
 
 			var response = Execute(request);
 			return response.StatusCode == System.Net.HttpStatusCode.NoContent;
