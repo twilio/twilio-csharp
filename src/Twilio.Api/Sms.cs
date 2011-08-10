@@ -121,7 +121,7 @@ namespace Twilio
 
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/SMS/ShortCodes/{ShortCodeSid}";
-			request.AddParameter("ShortCodeSid", shortCodeSid);
+			request.AddUrlSegment("ShortCodeSid", shortCodeSid);
 
 			return Execute<SMSShortCode>(request);
 		}
@@ -143,7 +143,7 @@ namespace Twilio
 
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/SMS/ShortCodes/{ShortCodeSid}";
-			request.AddParameter("ShortCodeSid", shortCodeSid);
+			request.AddUrlSegment("ShortCodeSid", shortCodeSid);
 
 			if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
 			if (apiVersion.HasValue()) request.AddParameter("ApiVersion", apiVersion);
