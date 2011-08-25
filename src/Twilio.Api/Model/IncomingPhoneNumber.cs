@@ -95,5 +95,13 @@ namespace Twilio
 		/// The HTTP method Twilio will use when requesting the above URL. Either GET or POST.
 		/// </summary>
 		public string SmsFallbackMethod { get; set; }
+		/// <summary>
+		/// The ApplicationSid assigned to this number for SMS requests
+		/// </summary>
+		public string SmsApplicationSid { get; set; }
+		/// <summary>
+		/// The ApplicationSid assigned to this number for voice requests
+		/// </summary>
+		public string VoiceApplicationSid { get; set; }
 	}
 }
