@@ -25,7 +25,7 @@ namespace Twilio
 		/// <summary>
 		/// Exception encountered during API request
 		/// </summary>
-		public RestException Exception { get; set; }
+		public RestException RestException { get; set; }
 		/// <summary>
 		/// The URI for this resource, relative to https://api.twilio.com
 		/// </summary>
