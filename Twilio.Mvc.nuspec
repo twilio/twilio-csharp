@@ -11,6 +11,7 @@
 		<licenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.txt</licenseUrl>
 		<tags>REST SMS voice telephony phone twilio twiml</tags>
 		<dependencies>
+			<dependency id="Twilio" />
 			<dependency id="Twilio.TwiML" />
 		</dependencies>
 	</metadata>
