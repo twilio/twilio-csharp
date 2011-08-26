@@ -58,6 +58,9 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Twilio.Api.Silverlight\AvailablePhoneNumbers.Aysnc.cs">
+      <Link>AvailablePhoneNumbers.Aysnc.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api.Silverlight\Sandbox.Async.cs">
       <Link>Sandbox.Async.cs</Link>
     </Compile>
