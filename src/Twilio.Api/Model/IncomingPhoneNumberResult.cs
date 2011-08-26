@@ -20,7 +20,7 @@ namespace Twilio
 	/// <summary>
 	/// Twilio API call result with paging information
 	/// </summary>
-	public class IncomingPhoneNumberResult
+	public class IncomingPhoneNumberResult : TwilioBase
 	{
 		/// <summary>
 		/// List of IncomingPhoneNumber instances returned by API

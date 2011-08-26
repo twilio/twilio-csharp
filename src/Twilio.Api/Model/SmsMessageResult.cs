@@ -20,7 +20,7 @@ namespace Twilio
 	/// <summary>
 	/// Twilio API call result with paging information
 	/// </summary>
-	public class SmsMessageResult
+	public class SmsMessageResult : TwilioBase
 	{
 		/// <summary>
 		/// List of SMSMessage resources returned by API

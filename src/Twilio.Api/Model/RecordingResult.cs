@@ -20,7 +20,7 @@ namespace Twilio
 	/// <summary>
 	/// Twilio API call result with paging information
 	/// </summary>
-	public class RecordingResult
+	public class RecordingResult : TwilioBase
 	{
 		/// <summary>
 		/// List of Recording instances returned by API
