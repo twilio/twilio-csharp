@@ -20,7 +20,7 @@ namespace Twilio
 	/// <summary>
 	/// Twilio API call result with paging information
 	/// </summary>
-	public class AvailablePhoneNumberResult
+	public class AvailablePhoneNumberResult : TwilioBase
 	{
 		/// <summary>
 		/// List of AvailablePhoneNumbers search results

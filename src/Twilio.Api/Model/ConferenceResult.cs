@@ -20,7 +20,7 @@ namespace Twilio
 	/// <summary>
 	/// Twilio API call result with paging information
 	/// </summary>
-	public class ConferenceResult
+	public class ConferenceResult : TwilioBase
 	{
 		/// <summary>
 		/// List of Conference instances returned from API call

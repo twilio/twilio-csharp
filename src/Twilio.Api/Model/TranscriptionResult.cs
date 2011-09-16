@@ -20,7 +20,7 @@ namespace Twilio
 	/// <summary>
 	/// Twilio API call result with paging information
 	/// </summary>
-	public class TranscriptionResult
+	public class TranscriptionResult : TwilioBase
 	{
 		/// <summary>
 		/// List of Transcription resources returned by API

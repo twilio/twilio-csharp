@@ -20,7 +20,7 @@ namespace Twilio
 	/// <summary>
 	/// Twilio API call result with paging information
 	/// </summary>
-	public class NotificationResult
+	public class NotificationResult : TwilioBase
 	{
 		/// <summary>
 		/// List of Notification instances returned by API
