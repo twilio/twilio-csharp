@@ -14,6 +14,7 @@
 //   limitations under the License. 
 #endregion
 
+using System;
 using RestSharp;
 
 
@@ -70,6 +71,32 @@ namespace Twilio
 			request.RootElement = "Account";
 
 			request.AddParameter("FriendlyName", friendlyName);
+
+			return Execute<Account>(request);
+		}
+
+		/// <summary>
+		/// Changes the status of a subaccount. You must be authenticated as the master account to call this method on a subaccount.
+		/// WARNING: When closing an account, Twilio will release all phone numbers assigned to it and shut it down completely. 
+		/// You can't ever use a closed account to make and receive phone calls or send and receive SMS messages. 
+		/// It's closed, gone, kaput. It will still appear in your accounts list, and you will still have access to historical 
+		/// data for that subaccount, but you cannot reopen a closed account.
+		/// </summary>
+		/// <param name="subAccountSid">The subaccount to change the status on</param>
+		/// <param name="status">The status to change the subaccount to</param>
+		public Account ChangeSubAccountStatus(string subAccountSid, AccountStatus status)
+		{
+			if (subAccountSid == AccountSid)
+			{
+				throw new InvalidOperationException("Subaccount status can only be changed when authenticated from the master account.");
+			}
+
+			var request = new RestRequest(Method.POST);
+			request.Resource = "Accounts/{AccountSid}";
+			request.RootElement = "Account";
+
+			request.AddParameter("Status", status.ToString().ToLower());
+			request.AddUrlSegment("AccountSid", subAccountSid);
 
 			return Execute<Account>(request);
 		}

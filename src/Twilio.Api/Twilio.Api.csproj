@@ -102,6 +102,7 @@
     <Compile Include="Conference.cs" />
     <Compile Include="AvailablePhoneNumbers.cs" />
     <Compile Include="Applications.cs" />
+    <Compile Include="Model\AccountStatus.cs" />
     <Compile Include="Model\Application.cs" />
     <Compile Include="Model\ApplicationResult.cs" />
     <Compile Include="Model\ApplicationOptions.cs" />
