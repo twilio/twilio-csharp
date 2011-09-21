@@ -9,7 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{36CA862C
 	ProjectSection(SolutionItems) = preProject
 		..\LICENSE.txt = ..\LICENSE.txt
 		..\Twilio.Client.nuspec = ..\Twilio.Client.nuspec
-		..\Twilio.Mvc.nuspec = ..\Twilio.Mvc.nuspec
 		..\Twilio.nuspec = ..\Twilio.nuspec
 		..\Twilio.TwiML.nuspec = ..\Twilio.TwiML.nuspec
 		..\Twilio.WebMatrix.nuspec = ..\Twilio.WebMatrix.nuspec

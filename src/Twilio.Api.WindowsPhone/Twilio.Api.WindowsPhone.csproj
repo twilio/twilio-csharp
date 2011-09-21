@@ -61,8 +61,14 @@
     <Compile Include="..\Twilio.Api.Silverlight\Applications.Async.cs">
       <Link>Applications.Async.cs</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\AuthorizedConnectApps.Async.cs">
+      <Link>AuthorizedConnectApps.Async.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api.Silverlight\AvailablePhoneNumbers.Aysnc.cs">
       <Link>AvailablePhoneNumbers.Aysnc.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\ConnectApps.Async.cs">
+      <Link>ConnectApps.Async.cs</Link>
     </Compile>
     <Compile Include="..\Twilio.Api.Silverlight\Sandbox.Async.cs">
       <Link>Sandbox.Async.cs</Link>
@@ -84,6 +90,12 @@
     </Compile>
     <Compile Include="..\Twilio.Api\Model\ApplicationResult.cs">
       <Link>Model\ApplicationResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\AuthorizedConnectApp.cs">
+      <Link>Model\AuthorizedConnectApp.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\AuthorizedConnectAppResult.cs">
+      <Link>Model\AuthorizedConnectAppResult.cs</Link>
     </Compile>
     <Compile Include="..\Twilio.Api\Model\AvailablePhoneNumber.cs">
       <Link>Model\AvailablePhoneNumber.cs</Link>
@@ -118,6 +130,12 @@
     <Compile Include="..\Twilio.Api\Model\ConferenceResult.cs">
       <Link>Model\ConferenceResult.cs</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api\Model\ConnectApp.cs">
+      <Link>Model\ConnectApp.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\ConnectAppResult.cs">
+      <Link>Model\ConnectAppResult.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api\Model\DeleteStatus.cs">
       <Link>Model\DeleteStatus.cs</Link>
     </Compile>
@@ -147,6 +165,9 @@
     </Compile>
     <Compile Include="..\Twilio.Api\Model\ParticipantResult.cs">
       <Link>Model\ParticipantResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\Permission.cs">
+      <Link>Model\Permission.cs</Link>
     </Compile>
     <Compile Include="..\Twilio.Api\Model\PhoneNumberOptions.cs">
       <Link>Model\PhoneNumberOptions.cs</Link>
