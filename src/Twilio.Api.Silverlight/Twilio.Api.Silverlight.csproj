@@ -53,9 +53,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.0.2\lib\sl4\Newtonsoft.Json.Silverlight.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp.Silverlight, Version=101.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="RestSharp.Silverlight, Version=102.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RestSharp.101.3\lib\sl4\RestSharp.Silverlight.dll</HintPath>
+      <HintPath>..\packages\RestSharp.102.1\lib\sl4\RestSharp.Silverlight.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="system" />

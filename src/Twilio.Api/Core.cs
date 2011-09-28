@@ -73,6 +73,16 @@ namespace Twilio
 		/// <param name="request">The RestRequest to execute (will use client credentials)</param>
 		public T Execute<T>(RestRequest request) where T : new()
 		{
+			request.OnBeforeDeserialization = (resp) =>
+			{
+				// for individual resources when there's an error to make
+				// sure that RestException props are populated
+				if (((int)resp.StatusCode) >= 400)
+				{
+					request.RootElement = "";
+				}
+			};
+
 			var response = _client.Execute<T>(request);
 			return response.Data;
 		}

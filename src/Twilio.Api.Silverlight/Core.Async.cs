@@ -35,6 +35,16 @@ namespace Twilio
 		/// <param name="callback">The callback function to execute when the async request completes</param>
 		public void ExecuteAsync<T>(RestRequest request, Action<T> callback) where T : new()
 		{
+			request.OnBeforeDeserialization = (resp) =>
+			{
+				// for individual resources when there's an error to make
+				// sure that RestException props are populated
+				if (((int)resp.StatusCode) >= 400)
+				{
+					request.RootElement = "";
+				}
+			};
+
 			_client.ExecuteAsync<T>(request, (response) =>
 			{
 				callback(response.Data);

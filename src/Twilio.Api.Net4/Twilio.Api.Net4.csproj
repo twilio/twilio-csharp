@@ -3,61 +3,53 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.20506</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{21E25E45-A334-4178-BD5C-5B875A2911FD}</ProjectGuid>
-    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <ProjectGuid>{A76DB40D-07F2-40F2-98CD-4DFCF56782F0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Twilio.WindowsPhone</RootNamespace>
-    <AssemblyName>Twilio.Api.WindowsPhone</AssemblyName>
+    <RootNamespace>Twilio</RootNamespace>
+    <AssemblyName>Twilio.Api</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
-    <TargetFrameworkProfile>WindowsPhone</TargetFrameworkProfile>
-    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
-    <SilverlightApplication>false</SilverlightApplication>
-    <ValidateXaml>true</ValidateXaml>
-    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>Bin\Debug</OutputPath>
-    <DefineConstants>TRACE;DEBUG;WINDOWS_PHONE</DefineConstants>
-    <NoStdLib>true</NoStdLib>
-    <NoConfig>true</NoConfig>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;FRAMEWORK</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>Bin\Debug\Twilio.Api.WindowsPhone.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>Bin\Release</OutputPath>
-    <DefineConstants>TRACE;WINDOWS_PHONE</DefineConstants>
-    <NoStdLib>true</NoStdLib>
-    <NoConfig>true</NoConfig>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;FRAMEWORK</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>Bin\Release\Twilio.Api.WindowsPhone.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="mscorlib" />
-    <Reference Include="Newtonsoft.Json.WindowsPhone">
-      <HintPath>..\packages\Newtonsoft.Json.4.0.2\lib\sl3-wp\Newtonsoft.Json.WindowsPhone.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp.WindowsPhone, Version=102.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RestSharp.102.1\lib\sl3-wp\RestSharp.WindowsPhone.dll</HintPath>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.102.1\lib\net4-client\RestSharp.dll</HintPath>
     </Reference>
-    <Reference Include="System.Windows" />
-    <Reference Include="system" />
+    <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Twilio.Api.Silverlight\Accounts.Async.cs">
+      <Link>Accounts.Async.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api.Silverlight\Applications.Async.cs">
       <Link>Applications.Async.cs</Link>
     </Compile>
@@ -67,14 +59,65 @@
     <Compile Include="..\Twilio.Api.Silverlight\AvailablePhoneNumbers.Aysnc.cs">
       <Link>AvailablePhoneNumbers.Aysnc.cs</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Calls.Async.cs">
+      <Link>Calls.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Conference.Async.cs">
+      <Link>Conference.Async.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api.Silverlight\ConnectApps.Async.cs">
       <Link>ConnectApps.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Core.Async.cs">
+      <Link>Core.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\IncomingPhoneNumbers.Async.cs">
+      <Link>IncomingPhoneNumbers.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Notifications.Aysnc.cs">
+      <Link>Notifications.Aysnc.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\OutgoingCallerIds.Async.cs">
+      <Link>OutgoingCallerIds.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Recordings.Async.cs">
+      <Link>Recordings.Async.cs</Link>
     </Compile>
     <Compile Include="..\Twilio.Api.Silverlight\Sandbox.Async.cs">
       <Link>Sandbox.Async.cs</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Sms.Async.cs">
+      <Link>Sms.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Transcriptions.Async.cs">
+      <Link>Transcriptions.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Accounts.cs">
+      <Link>Accounts.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Applications.cs">
+      <Link>Applications.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\AuthorizedConnectApps.cs">
+      <Link>AuthorizedConnectApps.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\AvailablePhoneNumbers.cs">
+      <Link>AvailablePhoneNumbers.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Calls.cs">
+      <Link>Calls.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Conference.cs">
+      <Link>Conference.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\ConnectApps.cs">
+      <Link>ConnectApps.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api\Core.cs">
       <Link>Core.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\IncomingPhoneNumbers.cs">
+      <Link>IncomingPhoneNumbers.cs</Link>
     </Compile>
     <Compile Include="..\Twilio.Api\Model\Account.cs">
       <Link>Model\Account.cs</Link>
@@ -211,47 +254,38 @@
     <Compile Include="..\Twilio.Api\Model\ValidationRequest.cs">
       <Link>Model\ValidationRequest.cs</Link>
     </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Accounts.Async.cs">
-      <Link>Accounts.Async.cs</Link>
+    <Compile Include="..\Twilio.Api\Notifications.cs">
+      <Link>Notifications.cs</Link>
     </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Calls.Async.cs">
-      <Link>Calls.Async.cs</Link>
+    <Compile Include="..\Twilio.Api\OutgoingCallerIds.cs">
+      <Link>OutgoingCallerIds.cs</Link>
     </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Conference.Async.cs">
-      <Link>Conference.Async.cs</Link>
+    <Compile Include="..\Twilio.Api\Properties\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Core.Async.cs">
-      <Link>Core.Async.cs</Link>
+    <Compile Include="..\Twilio.Api\Recordings.cs">
+      <Link>Recordings.cs</Link>
     </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\IncomingPhoneNumbers.Async.cs">
-      <Link>IncomingPhoneNumbers.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Notifications.Aysnc.cs">
-      <Link>Notifications.Aysnc.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\OutgoingCallerIds.Async.cs">
-      <Link>OutgoingCallerIds.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Recordings.Async.cs">
-      <Link>Recordings.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Sms.Async.cs">
-      <Link>Sms.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Transcriptions.Async.cs">
-      <Link>Transcriptions.Async.cs</Link>
+    <Compile Include="..\Twilio.Api\Sandbox.cs">
+      <Link>Sandbox.cs</Link>
     </Compile>
     <Compile Include="..\Twilio.Api\SharedAssemblyInfo.cs">
       <Link>SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\Twilio.Api\Sms.cs">
+      <Link>Sms.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Transcriptions.cs">
+      <Link>Transcriptions.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
-  <ProjectExtensions />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
