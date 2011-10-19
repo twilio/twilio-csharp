@@ -79,7 +79,7 @@ namespace Twilio
 		/// <param name="phoneNumber">The phone number to verify. Should be formatted with a '+' and country code e.g., +16175551212 (E.164 format). Twilio will also accept unformatted US numbers e.g., (415) 555-1212, 415-555-1212.</param>
 		/// <param name="friendlyName">A human readable description for the new caller ID with maximum length 64 characters. Defaults to a nicely formatted version of the number.</param>
 		/// <param name="callDelay">The number of seconds, between 0 and 60, to delay before initiating the validation call. Defaults to 0.</param>
-		public ValidationRequestResult AddOutgoingCallerId(string phoneNumber, string friendlyName, int? callDelay)
+		public ValidationRequestResult AddOutgoingCallerId(string phoneNumber, string friendlyName, int? callDelay, string extension)
 		{
 			Require.Argument("PhoneNumber", phoneNumber);
 			if (callDelay.HasValue) Validate.IsBetween(callDelay.Value, 0, 60);
@@ -91,6 +91,7 @@ namespace Twilio
 
 			if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
 			if (callDelay.HasValue) request.AddParameter("CallDelay", callDelay.Value);
+            if (extension.HasValue()) request.AddParameter("Extension", extension);
 
 			return Execute<ValidationRequestResult>(request);
 		}
