@@ -49,7 +49,6 @@ namespace Twilio
 		/// <summary>
 		/// List ConnectApps on current account with filters
 		/// </summary>
-		/// <param name="friendlyName">Optional friendly name to match</param>
 		/// <param name="pageNumber">Page number to start retrieving results from</param>
 		/// <param name="count">How many results to return</param>
 		public ConnectAppResult ListConnectApps(int? pageNumber, int? count)
