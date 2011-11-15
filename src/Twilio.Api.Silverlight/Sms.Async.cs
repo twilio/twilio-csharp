@@ -1,24 +1,7 @@
-﻿#region License
-//   Copyright 2010 John Sheehan
-//
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   you may not use this file except in compliance with the License.
-//   You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-//   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
-//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   See the License for the specific language governing permissions and
-//   limitations under the License. 
-#endregion
-
-using System;
+﻿using System;
 using RestSharp;
 using RestSharp.Extensions;
 using RestSharp.Validation;
-
 
 namespace Twilio
 {
@@ -32,9 +15,8 @@ namespace Twilio
 		public void GetSmsMessage(string smsMessageSid, Action<SMSMessage> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/SMS/Messages/{SMSMessageSid}";
-			request.RootElement = "SMSMessage";
-			request.AddUrlSegment("SMSMessageSid", smsMessageSid);
+			request.Resource = "Accounts/{AccountSid}/SMS/Messages/{SMSMessageSid}.json";
+						request.AddUrlSegment("SMSMessageSid", smsMessageSid);
 
 			ExecuteAsync<SMSMessage>(request, (response) => callback(response));
 		}
@@ -60,9 +42,8 @@ namespace Twilio
 		public void ListSmsMessages(string to, string from, DateTime? dateSent, int? pageNumber, int? count, Action<SmsMessageResult> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/SMS/Messages";
-			request.RootElement = "SMSMessages";
-
+			request.Resource = "Accounts/{AccountSid}/SMS/Messages.json";
+			
 			if (to.HasValue()) request.AddParameter("To", to);
 			if (from.HasValue()) request.AddParameter("From", from);
 			if (dateSent.HasValue) request.AddParameter("DateSent", dateSent.Value.ToString("yyyy-MM-dd"));
@@ -100,7 +81,7 @@ namespace Twilio
 			Require.Argument("body", body);
 
 			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}/SMS/Messages";
+			request.Resource = "Accounts/{AccountSid}/SMS/Messages.json";
 			request.AddParameter("From", from);
 			request.AddParameter("To", to);
 			request.AddParameter("Body", body);
@@ -120,7 +101,7 @@ namespace Twilio
 			Require.Argument("shortCodeSid", shortCodeSid);
 
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/SMS/ShortCodes/{ShortCodeSid}";
+			request.Resource = "Accounts/{AccountSid}/SMS/ShortCodes/{ShortCodeSid}.json";
 			request.AddUrlSegment("ShortCodeSid", shortCodeSid);
 
 			ExecuteAsync<SMSShortCode>(request, (response) => callback(response));
@@ -143,7 +124,7 @@ namespace Twilio
 			Require.Argument("shortCodeSid", shortCodeSid);
 
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/SMS/ShortCodes/{ShortCodeSid}";
+			request.Resource = "Accounts/{AccountSid}/SMS/ShortCodes/{ShortCodeSid}.json";
 			request.AddUrlSegment("ShortCodeSid", shortCodeSid);
 
 			if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
@@ -165,7 +146,7 @@ namespace Twilio
 		public void ListShortCodes(string shortCode, string friendlyName, Action<SmsShortCodeResult> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/SMS/ShortCodes}";
+			request.Resource = "Accounts/{AccountSid}/SMS/ShortCodes}.json";
 
 			if (shortCode.HasValue()) request.AddParameter("ShortCode", shortCode);
 			if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);

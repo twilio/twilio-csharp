@@ -1,24 +1,7 @@
-﻿#region License
-//   Copyright 2010 John Sheehan
-//
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   you may not use this file except in compliance with the License.
-//   You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-//   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
-//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   See the License for the specific language governing permissions and
-//   limitations under the License. 
-#endregion
-
-using System;
+﻿using System;
 using RestSharp;
 using RestSharp.Extensions;
 using RestSharp.Validation;
-
 
 namespace Twilio
 {
@@ -31,7 +14,7 @@ namespace Twilio
 		public void GetSandbox(Action<Sandbox> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/Sandbox";
+			request.Resource = "Accounts/{AccountSid}/Sandbox.json";
 
 			ExecuteAsync<Sandbox>(request, callback);
 		}
@@ -47,7 +30,7 @@ namespace Twilio
 		public void UpdateSandbox(string voiceUrl, string voiceMethod, string smsUrl, string smsMethod, Action<Sandbox> callback)
 		{
 			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}/Sandbox";
+			request.Resource = "Accounts/{AccountSid}/Sandbox.json";
 
 			request.AddParameter("VoiceUrl", voiceUrl);
 			request.AddParameter("VoiceMethod", voiceMethod);

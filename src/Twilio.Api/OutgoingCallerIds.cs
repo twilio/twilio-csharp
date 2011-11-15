@@ -1,23 +1,6 @@
-﻿#region License
-//   Copyright 2010 John Sheehan
-//
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   you may not use this file except in compliance with the License.
-//   You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-//   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
-//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   See the License for the specific language governing permissions and
-//   limitations under the License. 
-#endregion
-
-using RestSharp;
+﻿using RestSharp;
 using RestSharp.Extensions;
 using RestSharp.Validation;
-
 
 namespace Twilio
 {
@@ -31,9 +14,8 @@ namespace Twilio
 		public OutgoingCallerId GetOutgoingCallerId(string outgoingCallerIdSid)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/OutgoingCallerIds/{OutgoingCallerIdSid}";
-			request.RootElement = "OutgoingCallerId";
-			request.AddParameter("OutgoingCallerIdSid", outgoingCallerIdSid, ParameterType.UrlSegment);
+			request.Resource = "Accounts/{AccountSid}/OutgoingCallerIds/{OutgoingCallerIdSid}.json";
+						request.AddParameter("OutgoingCallerIdSid", outgoingCallerIdSid, ParameterType.UrlSegment);
 
 			return Execute<OutgoingCallerId>(request);
 		}
@@ -59,9 +41,8 @@ namespace Twilio
 		public OutgoingCallerIdResult ListOutgoingCallerIds(string phoneNumber, string friendlyName, int? pageNumber, int? count)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/OutgoingCallerIds";
-			request.RootElement = "OutgoingCallerIds";
-
+			request.Resource = "Accounts/{AccountSid}/OutgoingCallerIds.json";
+			
 			if (phoneNumber.HasValue()) request.AddParameter("PhoneNumber", phoneNumber);
 			if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
 			if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
@@ -79,20 +60,19 @@ namespace Twilio
 		/// <param name="phoneNumber">The phone number to verify. Should be formatted with a '+' and country code e.g., +16175551212 (E.164 format). Twilio will also accept unformatted US numbers e.g., (415) 555-1212, 415-555-1212.</param>
 		/// <param name="friendlyName">A human readable description for the new caller ID with maximum length 64 characters. Defaults to a nicely formatted version of the number.</param>
 		/// <param name="callDelay">The number of seconds, between 0 and 60, to delay before initiating the validation call. Defaults to 0.</param>
-        /// <param name="extension">Digits to dial after connecting the validation call.</param>
+		/// <param name="extension">Digits to dial after connecting the validation call.</param>
 		public ValidationRequestResult AddOutgoingCallerId(string phoneNumber, string friendlyName, int? callDelay, string extension)
 		{
 			Require.Argument("PhoneNumber", phoneNumber);
 			if (callDelay.HasValue) Validate.IsBetween(callDelay.Value, 0, 60);
 
 			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}/OutgoingCallerIds";
-			request.RootElement = "ValidationRequest";
-			request.AddParameter("PhoneNumber", phoneNumber);
+			request.Resource = "Accounts/{AccountSid}/OutgoingCallerIds.json";
+						request.AddParameter("PhoneNumber", phoneNumber);
 
 			if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
 			if (callDelay.HasValue) request.AddParameter("CallDelay", callDelay.Value);
-            if (extension.HasValue()) request.AddParameter("Extension", extension);
+			if (extension.HasValue()) request.AddParameter("Extension", extension);
 
 			return Execute<ValidationRequestResult>(request);
 		}
@@ -110,9 +90,8 @@ namespace Twilio
 			Validate.IsValidLength(friendlyName, 64);
 
 			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}/OutgoingCallerIds/{OutgoingCallerIdSid}";
-			request.RootElement = "OutgoingCallerId";
-
+			request.Resource = "Accounts/{AccountSid}/OutgoingCallerIds/{OutgoingCallerIdSid}.json";
+			
 			request.AddParameter("OutgoingCallerIdSid", outgoingCallerIdSid, ParameterType.UrlSegment);
 			request.AddParameter("FriendlyName", friendlyName);
 
@@ -128,7 +107,7 @@ namespace Twilio
 		{
 			Require.Argument("OutgoingCallerIdSid", outgoingCallerIdSid);
 			var request = new RestRequest(Method.DELETE);
-			request.Resource = "Accounts/{AccountSid}/OutgoingCallerIds/{OutgoingCallerIdSid}";
+			request.Resource = "Accounts/{AccountSid}/OutgoingCallerIds/{OutgoingCallerIdSid}.json";
 
 			request.AddParameter("OutgoingCallerIdSid", outgoingCallerIdSid, ParameterType.UrlSegment);
 

@@ -1,20 +1,4 @@
-﻿#region License
-//   Copyright 2010 John Sheehan
-//
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   you may not use this file except in compliance with the License.
-//   You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-//   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
-//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   See the License for the specific language governing permissions and
-//   limitations under the License. 
-#endregion
-
-using RestSharp;
+﻿using RestSharp;
 using RestSharp.Extensions;
 using RestSharp.Validation;
 
@@ -30,7 +14,7 @@ namespace Twilio
 		public CallResult ListCalls()
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/Calls";
+			request.Resource = "Accounts/{AccountSid}/Calls.json";
 
 			return Execute<CallResult>(request);
 		}
@@ -44,7 +28,7 @@ namespace Twilio
 		public CallResult ListCalls(CallListRequest options)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/Calls";
+			request.Resource = "Accounts/{AccountSid}/Calls.json";
 
 			AddCallListOptions(options, request);
 
@@ -59,9 +43,8 @@ namespace Twilio
 		public Call GetCall(string callSid)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}";
-			request.RootElement = "Call";
-
+			request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}.json";
+			
 			request.AddParameter("CallSid", callSid, ParameterType.UrlSegment);
 
 			return Execute<Call>(request);
@@ -106,9 +89,8 @@ namespace Twilio
 			Require.Argument("To", options.To);
 
 			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}/Calls";
-			request.RootElement = "Call";
-
+			request.Resource = "Accounts/{AccountSid}/Calls.json";
+			
 			AddCallOptions(options, request);
 
 			return Execute<Call>(request);
@@ -124,9 +106,8 @@ namespace Twilio
 			Require.Argument("CallSid", callSid);
 
 			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}";
-			request.RootElement = "Call";
-
+			request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}.json";
+			
 			request.AddUrlSegment("CallSid", callSid);
 			request.AddParameter("Status", style.ToString().ToLower());
 
@@ -145,9 +126,8 @@ namespace Twilio
 			Require.Argument("Url", redirectUrl);
 
 			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}";
-			request.RootElement = "Call";
-
+			request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}.json";
+			
 			request.AddParameter("CallSid", callSid, ParameterType.UrlSegment);
 			request.AddParameter("Url", redirectUrl);
 			if (redirectMethod.HasValue()) request.AddParameter("Method", redirectMethod);

@@ -1,23 +1,6 @@
-﻿#region License
-//   Copyright 2010 John Sheehan
-//
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   you may not use this file except in compliance with the License.
-//   You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-//   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
-//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   See the License for the specific language governing permissions and
-//   limitations under the License. 
-#endregion
-
-using System;
+﻿using System;
 using RestSharp;
 using RestSharp.Extensions;
-
 
 namespace Twilio
 {
@@ -30,7 +13,7 @@ namespace Twilio
 		public void ListConferences(Action<ConferenceResult> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/Conferences";
+			request.Resource = "Accounts/{AccountSid}/Conferences.json";
 
 			ExecuteAsync<ConferenceResult>(request, (response) => callback(response));
 		}
@@ -43,7 +26,7 @@ namespace Twilio
 		public void ListConferences(ConferenceListRequest options, Action<ConferenceResult> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/Conferences";
+			request.Resource = "Accounts/{AccountSid}/Conferences.json";
 
 			AddConferenceListOptions(options, request);
 
@@ -73,9 +56,8 @@ namespace Twilio
 		public void GetConference(string conferenceSid, Action<Conference> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}";
-			request.RootElement = "Conference";
-
+			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}.json";
+			
 			request.AddUrlSegment("ConferenceSid", conferenceSid);
 
 			ExecuteAsync<Conference>(request, (response) => callback(response));
@@ -103,7 +85,7 @@ namespace Twilio
 		public void ListConferenceParticipants(string conferenceSid, bool? muted, int? pageNumber, int? count, Action<ParticipantResult> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants";
+			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants.json";
 
 			request.AddUrlSegment("ConferenceSid", conferenceSid);
 
@@ -123,9 +105,8 @@ namespace Twilio
 		public void GetConferenceParticipant(string conferenceSid, string callSid, Action<Participant> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}";
-			request.RootElement = "Participant";
-
+			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";
+			
 			request.AddUrlSegment("ConferenceSid", conferenceSid);
 			request.AddUrlSegment("CallSid", callSid);
 
@@ -141,9 +122,8 @@ namespace Twilio
 		public void MuteConferenceParticipant(string conferenceSid, string callSid, Action<Participant> callback)
 		{
 			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}";
-			request.RootElement = "Participant";
-
+			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";
+			
 			request.AddUrlSegment("ConferenceSid", conferenceSid);
 			request.AddUrlSegment("CallSid", callSid);
 			request.AddParameter("Muted", true);
@@ -160,9 +140,8 @@ namespace Twilio
 		public void UnmuteConferenceParticipant(string conferenceSid, string callSid, Action<Participant> callback)
 		{
 			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}";
-			request.RootElement = "Participant";
-
+			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";
+			
 			request.AddUrlSegment("ConferenceSid", conferenceSid);
 			request.AddUrlSegment("CallSid", callSid);
 			request.AddParameter("Muted", false);
@@ -179,7 +158,7 @@ namespace Twilio
 		public void KickConferenceParticipant(string conferenceSid, string callSid, Action<bool> callback)
 		{
 			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}";
+			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";
 			request.AddUrlSegment("ConferenceSid", conferenceSid);
 			request.AddUrlSegment("CallSid", callSid);
 

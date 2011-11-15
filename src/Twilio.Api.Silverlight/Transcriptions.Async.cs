@@ -1,23 +1,6 @@
-﻿#region License
-//   Copyright 2010 John Sheehan
-//
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   you may not use this file except in compliance with the License.
-//   You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-//   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
-//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   See the License for the specific language governing permissions and
-//   limitations under the License. 
-#endregion
-
-using System;
+﻿using System;
 using RestSharp;
 using RestSharp.Extensions;
-
 
 namespace Twilio
 {
@@ -41,7 +24,7 @@ namespace Twilio
 		public void ListTranscriptions(int? pageNumber, int? count, Action<TranscriptionResult> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/Transcriptions";
+			request.Resource = "Accounts/{AccountSid}/Transcriptions.json";
 			if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
 			if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
@@ -58,7 +41,7 @@ namespace Twilio
 		public void ListTranscriptions(string recordingSid, int? pageNumber, int? count, Action<TranscriptionResult> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}/Transcriptions";
+			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}/Transcriptions.json";
 			request.AddUrlSegment("RecordingSid", recordingSid);
 
 			if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
@@ -75,9 +58,8 @@ namespace Twilio
 		public void GetTranscription(string transcriptionSid, Action<Transcription> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/Transcriptions/{TranscriptionSid}";
-			request.RootElement = "Transcription";
-			request.AddParameter("TranscriptionSid", transcriptionSid, ParameterType.UrlSegment);
+			request.Resource = "Accounts/{AccountSid}/Transcriptions/{TranscriptionSid}.json";
+						request.AddParameter("TranscriptionSid", transcriptionSid, ParameterType.UrlSegment);
 
 			ExecuteAsync<Transcription>(request, (response) => callback(response));
 		}
@@ -90,7 +72,7 @@ namespace Twilio
 		public void GetTranscriptionText(string transcriptionSid, Action<string> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/Transcriptions/{TranscriptionSid}.txt";
+			request.Resource = "Accounts/{AccountSid}/Transcriptions/{TranscriptionSid}.txt.json";
 			request.AddParameter("TranscriptionSid", transcriptionSid, ParameterType.UrlSegment);
 
 			ExecuteAsync(request, (response) => callback(response.Content));

@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>3.2.3</version>
+		<version>3.3.0</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -14,6 +14,11 @@
 			<dependency id="RestSharp" />
 		</dependencies>
 		<releaseNotes>
+			* 3.3.0 - Restored paging information for list resource responses.
+			          Restructured REST API objects to match JSON datastructures instead of XML.
+			          Fixed incorrect StatusCallback parameter name for IncomingPhoneNumber and Application.
+					  Fixed incorrect paging parameter name.
+					  
 			* 3.2.3 - Added 'extension' parameter to the AddOutgoingCallerIds method
 		</releaseNotes>
 	</metadata>

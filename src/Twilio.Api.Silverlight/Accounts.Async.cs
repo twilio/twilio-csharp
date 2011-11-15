@@ -1,20 +1,4 @@
-﻿#region License
-//   Copyright 2010 John Sheehan
-//
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   you may not use this file except in compliance with the License.
-//   You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-//   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
-//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   See the License for the specific language governing permissions and
-//   limitations under the License. 
-#endregion
-
-using System;
+﻿using System;
 using RestSharp;
 
 namespace Twilio
@@ -28,9 +12,8 @@ namespace Twilio
 		public void GetAccount(Action<Account> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}";
-			request.RootElement = "Account";
-
+			request.Resource = "Accounts/{AccountSid}.json";
+			
 			ExecuteAsync<Account>(request, (response) => { callback(response); });
 		}
 
@@ -42,9 +25,8 @@ namespace Twilio
 		public void GetAccount(string accountSid, Action<Account> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}";
-			request.RootElement = "Account";
-
+			request.Resource = "Accounts/{AccountSid}.json";
+			
 			request.AddUrlSegment("AccountSid", accountSid);
 
 			ExecuteAsync<Account>(request, (response) => { callback(response); });
@@ -57,7 +39,7 @@ namespace Twilio
 		public void ListSubAccounts(Action<AccountResult> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts";
+			request.Resource = "Accounts.json";
 
 			ExecuteAsync<AccountResult>(request, (response) => { callback(response); });
 		}
@@ -70,24 +52,23 @@ namespace Twilio
 		public void CreateSubAccount(string friendlyName, Action<Account> callback)
 		{
 			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts";
-			request.RootElement = "Account";
-
+			request.Resource = "Accounts.json";
+			
 			request.AddParameter("FriendlyName", friendlyName);
 
 			ExecuteAsync<Account>(request, (response) => { callback(response); });
 		}
 
-        /// <summary>
-        /// Changes the status of a subaccount. You must be authenticated as the master account to call this method on a subaccount.
+		/// <summary>
+		/// Changes the status of a subaccount. You must be authenticated as the master account to call this method on a subaccount.
 		/// WARNING: When closing an account, Twilio will release all phone numbers assigned to it and shut it down completely. 
 		/// You can't ever use a closed account to make and receive phone calls or send and receive SMS messages. 
 		/// It's closed, gone, kaput. It will still appear in your accounts list, and you will still have access to historical 
 		/// data for that subaccount, but you cannot reopen a closed account.
-        /// /// </summary>
-        /// <param name="subAccountSid">The subaccount to change the status on</param>
-        /// <param name="status">The status to change the subaccount to</param>
-        /// <param name="callback">Method to call upon successful completion</param>
+		/// /// </summary>
+		/// <param name="subAccountSid">The subaccount to change the status on</param>
+		/// <param name="status">The status to change the subaccount to</param>
+		/// <param name="callback">Method to call upon successful completion</param>
 		public void ChangeSubAccountStatus(string subAccountSid, AccountStatus status, Action<Account> callback)
 		{
 			if (subAccountSid == AccountSid)
@@ -96,9 +77,8 @@ namespace Twilio
 			}
 
 			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}";
-			request.RootElement = "Account";
-
+			request.Resource = "Accounts/{AccountSid}.json";
+			
 			request.AddParameter("Status", status.ToString().ToLower());
 			request.AddUrlSegment("AccountSid", subAccountSid);
 
@@ -113,9 +93,8 @@ namespace Twilio
 		public void UpdateAccountName(string friendlyName, Action<Account> callback)
 		{
 			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}";
-			request.RootElement = "Account";
-			request.AddParameter("FriendlyName", friendlyName);
+			request.Resource = "Accounts/{AccountSid}.json";
+						request.AddParameter("FriendlyName", friendlyName);
 
 			ExecuteAsync<Account>(request, (response) => { callback(response); });
 		}

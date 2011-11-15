@@ -1,23 +1,6 @@
-﻿#region License
-//   Copyright 2010 John Sheehan
-//
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   you may not use this file except in compliance with the License.
-//   You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-//   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
-//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   See the License for the specific language governing permissions and
-//   limitations under the License. 
-#endregion
-
-using RestSharp;
+﻿using RestSharp;
 using RestSharp.Extensions;
 using RestSharp.Validation;
-
 
 namespace Twilio
 {
@@ -30,9 +13,8 @@ namespace Twilio
 		public IncomingPhoneNumber GetIncomingPhoneNumber(string incomingPhoneNumberSid)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}";
-			request.RootElement = "IncomingPhoneNumber";
-
+			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}.json";
+			
 			request.AddUrlSegment("IncomingPhoneNumberSid", incomingPhoneNumberSid);
 
 			return Execute<IncomingPhoneNumber>(request);
@@ -56,7 +38,7 @@ namespace Twilio
 		public IncomingPhoneNumberResult ListIncomingPhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers";
+			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers.json";
 
 			if (phoneNumber.HasValue()) request.AddParameter("PhoneNumber", phoneNumber);
 			if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
@@ -74,9 +56,8 @@ namespace Twilio
 		public IncomingPhoneNumber AddIncomingPhoneNumber(PhoneNumberOptions options)
 		{
 			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers";
-			request.RootElement = "IncomingPhoneNumber";
-
+			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers.json";
+			
 			if (options.PhoneNumber.HasValue())
 			{
 				request.AddParameter("PhoneNumber", options.PhoneNumber);
@@ -102,9 +83,8 @@ namespace Twilio
 			Require.Argument("IncomingPhoneNumberSid", incomingPhoneNumberSid);
 
 			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}";
-			request.RootElement = "IncomingPhoneNumber";
-
+			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}.json";
+			
 			request.AddParameter("IncomingPhoneNumberSid", incomingPhoneNumberSid, ParameterType.UrlSegment);
 			AddPhoneNumberOptionsToRequest(request, options);
 			AddSmsOptionsToRequest(request, options);
@@ -120,7 +100,7 @@ namespace Twilio
 		{
 			Require.Argument("IncomingPhoneNumberSid", incomingPhoneNumberSid);
 			var request = new RestRequest(Method.DELETE);
-			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}";
+			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}.json";
 
 			request.AddParameter("IncomingPhoneNumberSid", incomingPhoneNumberSid, ParameterType.UrlSegment);
 

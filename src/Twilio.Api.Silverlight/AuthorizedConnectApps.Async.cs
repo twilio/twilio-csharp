@@ -1,20 +1,4 @@
-﻿#region License
-//   Copyright 2010 John Sheehan
-//
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   you may not use this file except in compliance with the License.
-//   You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-//   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
-//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   See the License for the specific language governing permissions and
-//   limitations under the License. 
-#endregion
-
-using System;
+﻿using System;
 using RestSharp;
 using RestSharp.Extensions;
 using RestSharp.Validation;
@@ -31,9 +15,8 @@ namespace Twilio
 		public void GetAuthorizedConnectApp(string authorizedConnectAppSid, Action<AuthorizedConnectApp> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/AuthorizedConnectApps/{AuthorizedConnectAppSid}";
-			request.RootElement = "AuthorizedConnectApp";
-
+			request.Resource = "Accounts/{AccountSid}/AuthorizedConnectApps/{AuthorizedConnectAppSid}.json";
+			
 			request.AddUrlSegment("AuthorizedConnectAppSid", authorizedConnectAppSid);
 
 			ExecuteAsync<AuthorizedConnectApp>(request, (response) => { callback(response); });
@@ -57,7 +40,7 @@ namespace Twilio
 		public void ListAuthorizedConnectApps(int? pageNumber, int? count, Action<AuthorizedConnectAppResult> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/AuthorizedConnectApps";
+			request.Resource = "Accounts/{AccountSid}/AuthorizedConnectApps.json";
 
 			if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
 			if (count.HasValue) request.AddParameter("PageSize", count.Value);

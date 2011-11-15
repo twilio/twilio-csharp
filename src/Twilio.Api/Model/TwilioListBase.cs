@@ -1,29 +1,12 @@
-#region License
-//   Copyright 2010 John Sheehan
-//
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   you may not use this file except in compliance with the License.
-//   You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-//   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
-//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   See the License for the specific language governing permissions and
-//   limitations under the License. 
-#endregion
-
 using System;
 using System.Collections.Generic;
 
 namespace Twilio
 {
 	/// <summary>
-	/// List with paging information
+	/// Base class for list resource data
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	public class TwilioList<T> : List<T>
+	public class TwilioListBase : TwilioBase
 	{
 		/// <summary>
 		/// The current page number. Zero-indexed, so the first page is 0.
@@ -49,10 +32,6 @@ namespace Twilio
 		/// The position in the overall list of the last item in this page.
 		/// </summary>
 		public int End { get; set; }
-		/// <summary>
-		/// The URI of the current page.
-		/// </summary>
-		public Uri Uri { get; set; }
 		/// <summary>
 		/// The URI for the first page of this list.
 		/// </summary>

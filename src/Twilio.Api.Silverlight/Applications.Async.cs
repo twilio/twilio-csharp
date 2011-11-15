@@ -1,20 +1,4 @@
-﻿#region License
-//   Copyright 2010 John Sheehan
-//
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   you may not use this file except in compliance with the License.
-//   You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-//   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
-//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   See the License for the specific language governing permissions and
-//   limitations under the License. 
-#endregion
-
-using System;
+﻿using System;
 using RestSharp;
 using RestSharp.Extensions;
 using RestSharp.Validation;
@@ -31,9 +15,8 @@ namespace Twilio
 		public void GetApplication(string applicationSid, Action<Application> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/Applications/{ApplicationSid}";
-			request.RootElement = "Application";
-
+			request.Resource = "Accounts/{AccountSid}/Applications/{ApplicationSid}.json";
+			
 			request.AddUrlSegment("ApplicationSid", applicationSid);
 
 			ExecuteAsync<Application>(request, (response) => { callback(response); });
@@ -58,7 +41,7 @@ namespace Twilio
 		public void ListApplications(string friendlyName, int? pageNumber, int? count, Action<ApplicationResult> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/Applications";
+			request.Resource = "Accounts/{AccountSid}/Applications.json";
 
 			if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
 			if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
@@ -76,9 +59,8 @@ namespace Twilio
 		public void AddApplication(string friendlyName, ApplicationOptions options, Action<Application> callback)
 		{
 			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}/Applications";
-			request.RootElement = "Application";
-
+			request.Resource = "Accounts/{AccountSid}/Applications.json";
+			
 			Require.Argument("FriendlyName", friendlyName);
 			Validate.IsValidLength(friendlyName, 64);
 			request.AddParameter("FriendlyName", friendlyName);
@@ -114,10 +96,9 @@ namespace Twilio
 			Require.Argument("ApplicationSid", applicationSid);
 
 			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}/Applications/{ApplicationSid}";
+			request.Resource = "Accounts/{AccountSid}/Applications/{ApplicationSid}.json";
 			request.AddUrlSegment("ApplicationSid", applicationSid);
-			request.RootElement = "Application";
-
+			
 			if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
 			if (options != null)
 			{
@@ -146,7 +127,7 @@ namespace Twilio
 		{
 			Require.Argument("ApplicationSid", applicationSid);
 			var request = new RestRequest(Method.DELETE);
-			request.Resource = "Accounts/{AccountSid}/Applications/{ApplicationSid}";
+			request.Resource = "Accounts/{AccountSid}/Applications/{ApplicationSid}.json";
 
 			request.AddUrlSegment("ApplicationSid", applicationSid);
 

@@ -1,22 +1,5 @@
-﻿#region License
-//   Copyright 2010 John Sheehan
-//
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   you may not use this file except in compliance with the License.
-//   You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-//   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
-//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   See the License for the specific language governing permissions and
-//   limitations under the License. 
-#endregion
-
-using System;
+﻿using System;
 using RestSharp;
-
 
 namespace Twilio
 {
@@ -28,9 +11,8 @@ namespace Twilio
 		public Account GetAccount()
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}";
-			request.RootElement = "Account";
-
+			request.Resource = "Accounts/{AccountSid}.json";
+			
 			return Execute<Account>(request);
 		}
 
@@ -41,9 +23,8 @@ namespace Twilio
 		public Account GetAccount(string accountSid)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}";
-			request.RootElement = "Account";
-
+			request.Resource = "Accounts/{AccountSid}.json";
+			
 			request.AddUrlSegment("AccountSid", accountSid);
 
 			return Execute<Account>(request);
@@ -55,7 +36,7 @@ namespace Twilio
 		public AccountResult ListSubAccounts()
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts";
+			request.Resource = "Accounts.json";
 
 			return Execute<AccountResult>(request);
 		}
@@ -67,9 +48,8 @@ namespace Twilio
 		public Account CreateSubAccount(string friendlyName)
 		{
 			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts";
-			request.RootElement = "Account";
-
+			request.Resource = "Accounts.json";
+			
 			request.AddParameter("FriendlyName", friendlyName);
 
 			return Execute<Account>(request);
@@ -92,9 +72,8 @@ namespace Twilio
 			}
 
 			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}";
-			request.RootElement = "Account";
-
+			request.Resource = "Accounts/{AccountSid}.json";
+			
 			request.AddParameter("Status", status.ToString().ToLower());
 			request.AddUrlSegment("AccountSid", subAccountSid);
 
@@ -108,8 +87,7 @@ namespace Twilio
 		public Account UpdateAccountName(string friendlyName)
 		{
 			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}";
-			request.RootElement = "Account";
+			request.Resource = "Accounts/{AccountSid}.json";
 			request.AddParameter("FriendlyName", friendlyName);
 
 			return Execute<Account>(request);
