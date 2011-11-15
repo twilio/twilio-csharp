@@ -36,9 +36,6 @@
     <Reference Include="JWT">
       <HintPath>..\packages\JWT.1.1\lib\3.5\JWT.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.0.3\lib\net35\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />

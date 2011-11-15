@@ -49,12 +49,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.0.3\lib\sl4\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp.Silverlight, Version=102.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RestSharp.102.2\lib\sl4\RestSharp.Silverlight.dll</HintPath>
+    <Reference Include="RestSharp.Silverlight">
+      <HintPath>..\packages\RestSharp.102.3\lib\sl4\RestSharp.Silverlight.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="system" />

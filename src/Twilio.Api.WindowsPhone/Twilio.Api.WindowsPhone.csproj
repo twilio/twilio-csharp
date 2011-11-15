@@ -44,12 +44,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.0.3\lib\sl3-wp\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp.WindowsPhone, Version=102.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RestSharp.102.2\lib\sl3-wp\RestSharp.WindowsPhone.dll</HintPath>
+    <Reference Include="RestSharp.WindowsPhone">
+      <HintPath>..\packages\RestSharp.102.3\lib\sl3-wp\RestSharp.WindowsPhone.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="system" />
