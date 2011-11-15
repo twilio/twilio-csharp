@@ -1,5 +1,6 @@
 ﻿using RestSharp;
 using System.Reflection;
+using RestSharp.Deserializers;
 
 namespace Twilio
 {
@@ -65,6 +66,8 @@ namespace Twilio
 					request.RootElement = "";
 				}
 			};
+
+			request.DateFormat = "ddd, dd MMM yyyy HH:mm:ss '+0000'";
 
 			var response = _client.Execute<T>(request);
 			return response.Data;
