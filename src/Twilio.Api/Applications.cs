@@ -87,7 +87,7 @@ namespace Twilio
 				if (options.VoiceFallbackUrl != null) request.AddParameter("VoiceFallbackUrl", options.VoiceFallbackUrl);
 				if (options.VoiceFallbackMethod.HasValue()) request.AddParameter("VoiceFallbackMethod", options.VoiceFallbackMethod.ToString());
 				if (options.VoiceCallerIdLookup.HasValue) request.AddParameter("VoiceCallerIdLookup", options.VoiceCallerIdLookup.Value);
-				if (options.StatusCallback.HasValue()) request.AddParameter("StatusCallbackUrl", options.StatusCallback);
+				if (options.StatusCallback.HasValue()) request.AddParameter("StatusCallback", options.StatusCallback);
 				if (options.StatusCallbackMethod.HasValue()) request.AddParameter("StatusCallbackMethod", options.StatusCallbackMethod.ToString());
 				if (options.SmsUrl != null) request.AddParameter("SmsUrl", options.SmsUrl);
 				if (options.SmsMethod.HasValue()) request.AddParameter("SmsMethod", options.SmsMethod.ToString());
@@ -121,7 +121,7 @@ namespace Twilio
 				if (options.VoiceFallbackUrl != null) request.AddParameter("VoiceFallbackUrl", options.VoiceFallbackUrl);
 				if (options.VoiceFallbackMethod.HasValue()) request.AddParameter("VoiceFallbackMethod", options.VoiceFallbackMethod.ToString());
 				if (options.VoiceCallerIdLookup.HasValue) request.AddParameter("VoiceCallerIdLookup", options.VoiceCallerIdLookup.Value);
-				if (options.StatusCallback.HasValue()) request.AddParameter("StatusCallbackUrl", options.StatusCallback);
+				if (options.StatusCallback.HasValue()) request.AddParameter("StatusCallback", options.StatusCallback);
 				if (options.StatusCallbackMethod.HasValue()) request.AddParameter("StatusCallbackMethod", options.StatusCallbackMethod.ToString());
 				if (options.SmsUrl != null) request.AddParameter("SmsUrl", options.SmsUrl);
 				if (options.SmsMethod.HasValue()) request.AddParameter("SmsMethod", options.SmsMethod.ToString());
