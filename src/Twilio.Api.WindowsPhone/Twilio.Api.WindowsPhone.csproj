@@ -44,9 +44,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
-    <Reference Include="RestSharp.WindowsPhone, Version=102.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="RestSharp.WindowsPhone, Version=102.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RestSharp.102.4\lib\sl3-wp\RestSharp.WindowsPhone.dll</HintPath>
+      <HintPath>..\packages\RestSharp.102.5\lib\sl3-wp\RestSharp.WindowsPhone.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="system" />
