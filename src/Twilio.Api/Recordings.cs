@@ -76,7 +76,7 @@ namespace Twilio
 		public string GetRecordingText(string recordingSid)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}.txtF";
+			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}.txt";
 			request.AddParameter("RecordingSid", recordingSid, ParameterType.UrlSegment);
 
 			var response = Execute(request);
