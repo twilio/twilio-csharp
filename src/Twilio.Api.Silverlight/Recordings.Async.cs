@@ -44,7 +44,7 @@ namespace Twilio
 		public void GetRecording(string recordingSid, Action<Recording> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}.xml.json";
+			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}.json";
 			
 			request.AddParameter("RecordingSid", recordingSid, ParameterType.UrlSegment);
 
@@ -59,7 +59,7 @@ namespace Twilio
 		public void DeleteRecording(string recordingSid, Action<DeleteStatus> callback)
 		{
 			var request = new RestRequest(Method.DELETE);
-			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}.xml.json";
+			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}.json";
 			
 			request.AddParameter("RecordingSid", recordingSid, ParameterType.UrlSegment);
 
@@ -74,7 +74,7 @@ namespace Twilio
 		public void GetRecordingText(string recordingSid, Action<string> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}.txt.json";
+			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}.txt";
 			request.AddParameter("RecordingSid", recordingSid, ParameterType.UrlSegment);
 
 			ExecuteAsync(request, (response) => callback(response.Content));
