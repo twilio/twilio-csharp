@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Linq;
 using RestSharp;
+using RestSharp.Extensions;
+using System.Text;
+using Newtonsoft.Json.Linq;
 
 #if WINDOWS_PHONE
 using System.Windows;
@@ -24,9 +27,17 @@ namespace Twilio
 				// sure that RestException props are populated
 				if (((int)resp.StatusCode) >= 400)
 				{
-					request.RootElement = "";
+					// have to read the bytes so .Content doesn't get populated
+					var content = resp.RawBytes.AsString();
+					var json = JObject.Parse(content);
+					var newJson = new JObject();
+					newJson["RestException"] = json;
+					resp.Content = null;
+					resp.RawBytes = Encoding.UTF8.GetBytes(newJson.ToString());
 				}
 			};
+
+			request.DateFormat = "ddd, dd MMM yyyy HH:mm:ss '+0000'";
 
 			_client.ExecuteAsync<T>(request, (response) =>
 			{
