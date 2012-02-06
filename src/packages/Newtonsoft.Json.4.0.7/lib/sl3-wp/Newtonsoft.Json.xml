@@ -147,6 +147,11 @@
             </summary>
             <value>The depth of the current token in the JSON document.</value>
         </member>
+        <member name="P:Newtonsoft.Json.JsonReader.Culture">
+            <summary>
+            Gets or sets the culture used when reading JSON. Defaults to <see cref="P:System.Globalization.CultureInfo.InvariantCulture"/>.
+            </summary>
+        </member>
         <member name="T:Newtonsoft.Json.JsonReader.State">
             <summary>
             Specifies the state of the reader.
@@ -2412,11 +2417,6 @@
             <returns>
             	<c>true</c> if LineNumber and LinePosition can be provided; otherwise, <c>false</c>.
             </returns>
-        </member>
-        <member name="P:Newtonsoft.Json.JsonTextReader.Culture">
-            <summary>
-            Gets or sets the culture used when reading JSON. Defaults to <see cref="P:System.Globalization.CultureInfo.InvariantCulture"/>.
-            </summary>
         </member>
         <member name="P:Newtonsoft.Json.JsonTextReader.LineNumber">
             <summary>
