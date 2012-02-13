@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>3.3.3</version>
+		<version>3.3.5</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -16,10 +16,10 @@
 		<releaseNotes>
 			* 3.3.3 - Fixed RestException never being populated. Updated to JSON.NET 4.0.7
 			* 3.3.2 - Resolve NuGet assembly issue with RestSharp
-            * 3.3.1 - Compatibility with latest version of RestSharp
+			* 3.3.1 - Compatibility with latest version of RestSharp
 			* 3.3.0 - Restored paging information for list resource responses.
-			          Restructured REST API objects to match JSON datastructures instead of XML.
-			          Fixed incorrect StatusCallback parameter name for IncomingPhoneNumber and Application.
+					  Restructured REST API objects to match JSON datastructures instead of XML.
+					  Fixed incorrect StatusCallback parameter name for IncomingPhoneNumber and Application.
 					  Fixed incorrect paging parameter name.
 					  
 			* 3.2.3 - Added 'extension' parameter to the AddOutgoingCallerIds method
