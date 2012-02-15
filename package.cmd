@@ -1,5 +1,7 @@
 tools\nuget.exe update -self
 
+rd download /s /q
+
 if not exist download mkdir download
 if not exist download\WindowsPhone mkdir download\WindowsPhone
 if not exist download\WindowsPhone mkdir download\Silverlight
@@ -12,7 +14,6 @@ if not exist download\package\twilioclient mkdir download\package\twilioclient
 
 if not exist download\package\twilio\lib mkdir download\package\twilio\lib
 if not exist download\package\twilio\lib\3.5 mkdir download\package\twilio\lib\3.5
-if not exist download\package\twilio\lib\4.0 mkdir download\package\twilio\lib\4.0
 if not exist download\package\twilio\lib\SL3-WP7 mkdir download\package\twilio\lib\SL3-WP7
 if not exist download\package\twilio\lib\SL4 mkdir download\package\twilio\lib\SL4
 
@@ -41,7 +42,6 @@ copy src\Twilio.Client.Capability\bin\Release\*.* download
 copy LICENSE.txt download
 
 copy src\Twilio.Api\bin\Release\Twilio.Api.* download\package\twilio\lib\3.5\
-copy src\Twilio.Api.Net4\bin\Release\Twilio.Api.* download\package\twilio\lib\4.0\
 copy src\Twilio.Api.Silverlight\bin\Release\Twilio.Api.Silverlight.* download\package\twilio\lib\SL4\
 copy src\Twilio.Api.WindowsPhone\bin\Release\Twilio.Api.WindowsPhone.* download\package\twilio\lib\SL3-WP7\
 
