@@ -144,6 +144,7 @@ namespace Twilio
 			if (options.SendDigits.HasValue()) request.AddParameter("SendDigits", options.SendDigits);
 			if (options.IfMachine.HasValue()) request.AddParameter("IfMachine", options.IfMachine);
 			if (options.Timeout.HasValue) request.AddParameter("Timeout", options.Timeout.Value);
+			if (options.Record) request.AddParameter("Record", "true");
 		}
 
 		/// <summary>

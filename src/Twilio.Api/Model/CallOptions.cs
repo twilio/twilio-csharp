@@ -55,5 +55,9 @@ namespace Twilio
 		/// The HTTP method that Twilio should use to request the FallbackUrl. Must be either GET or POST. Defaults to POST.
 		/// </summary>
 		public string FallbackMethod { get; set; }
+		/// <summary>
+		/// Set this parameter to 'true' to record the entirety of a phone call. The RecordingUrl will be sent to the StatusCallback URL. Defaults to 'false'.
+		/// </summary>
+		public bool Record { get; set; }
 	}
 }
