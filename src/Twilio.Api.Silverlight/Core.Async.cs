@@ -50,7 +50,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="request">The RestRequest to execute (will use client credentials)</param>
 		/// <param name="callback">The callback function to execute when the async request completes</param>
-		public void ExecuteAsync(RestRequest request, Action<RestResponse> callback)
+		public void ExecuteAsync(RestRequest request, Action<IRestResponse> callback)
 		{
 			_client.ExecuteAsync(request, (response) =>
 			{
