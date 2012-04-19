@@ -14,6 +14,9 @@ namespace Twilio.TwiML
     /// </remarks>
 	public class Pause : ElementBase
 	{
+        /// <summary>
+        /// Initializes a new instance of the Pause class.
+        /// </summary>
 		public Pause()
 		{
 			Element = new XElement("Pause");

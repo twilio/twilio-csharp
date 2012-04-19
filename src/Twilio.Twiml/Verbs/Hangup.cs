@@ -14,6 +14,9 @@ namespace Twilio.TwiML
     /// </remarks>
 	public class Hangup : ElementBase
 	{
+        /// <summary>
+        /// Initializes a new instance of the Hangup class.
+        /// </summary>
 		public Hangup()
 		{
 			Element = new XElement("Hangup");

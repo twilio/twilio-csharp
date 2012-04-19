@@ -14,6 +14,10 @@ namespace Twilio.TwiML
     /// </remarks>
 	public class Number : ElementBase, IDialNoun
 	{
+        /// <summary>
+        /// Initializes a new instance of the Number class using the specified number.
+        /// </summary>
+        /// <param name="number"></param>
 		public Number(string number)
 		{
 			Element = new XElement("Number", number);
@@ -21,7 +25,12 @@ namespace Twilio.TwiML
 			AllowedAttributes.Add("sendDigits");
 		}
 
-		public Number(string number, object attributes) : this(number)
+		/// <summary>
+        /// Initializes a new instance of the Number class using the specified number and attributes
+		/// </summary>
+		/// <param name="number"></param>
+		/// <param name="attributes"></param>
+        public Number(string number, object attributes) : this(number)
 		{
 			AddAttributesFromObject(attributes);
 		}

@@ -21,6 +21,9 @@ namespace Twilio.TwiML
     /// </remarks>
 	public class Gather : ElementBase
 	{
+        /// <summary>
+        /// Initializes a new instance of the Gather class.
+        /// </summary>
 		public Gather()
 		{
 			Element = new XElement("Gather");

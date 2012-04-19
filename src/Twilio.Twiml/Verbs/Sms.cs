@@ -11,6 +11,9 @@ namespace Twilio.TwiML
     /// </summary>
 	public class Sms : ElementBase
 	{
+        /// <summary>
+        /// Initializes a new instance of the Sms class.
+        /// </summary>
 		public Sms()
 		{
 			Element = new XElement("Sms");

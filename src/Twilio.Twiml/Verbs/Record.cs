@@ -14,6 +14,9 @@ namespace Twilio.TwiML
     /// </remarks>
 	public class Record : ElementBase
 	{
+        /// <summary>
+        /// Initializes a new instance of the Record class.
+        /// </summary>
 		public Record()
 		{
 			Element = new XElement("Record");
@@ -28,6 +31,10 @@ namespace Twilio.TwiML
 			AllowedAttributes.Add("playBeep");
 		}
 
+        /// <summary>
+        /// Initializes a new instance of the Record class using the provided attributes
+        /// </summary>
+        /// <param name="attributes">An anonymous type containing the Record attributes and their values</param>
 		public Record(object attributes) : this()
 		{
 			AddAttributesFromObject(attributes);

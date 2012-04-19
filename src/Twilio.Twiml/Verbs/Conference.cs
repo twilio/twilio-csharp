@@ -27,6 +27,9 @@ namespace Twilio.TwiML
     /// </remarks>
 	public class Conference : ElementBase, IDialNoun
 	{
+        /// <summary>
+        /// Initializes a new instance of the Conference class.
+        /// </summary>
 		public Conference()
 		{
 			Element = new XElement("Conference");

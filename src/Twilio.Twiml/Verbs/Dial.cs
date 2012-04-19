@@ -19,6 +19,9 @@ namespace Twilio.TwiML
     /// </remarks>
 	public class Dial : ElementBase
 	{
+        /// <summary>
+        /// Initializes a new instance of the Dial class.
+        /// </summary>
 		public Dial()
 		{
 			Element = new XElement("Dial");

@@ -12,6 +12,9 @@ namespace Twilio.TwiML
     /// </remarks>
 	public class TwilioResponse : ElementBase
 	{
+        /// <summary>
+        /// Initializes a new instance of the TwilioResponse class.
+        /// </summary>
 		public TwilioResponse()
 		{
 			Element = new XElement("Response");

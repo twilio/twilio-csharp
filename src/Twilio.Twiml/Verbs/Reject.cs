@@ -11,12 +11,19 @@ namespace Twilio.TwiML
     /// </summary>
 	public class Reject : ElementBase
 	{
+        /// <summary>
+        /// Initializes a new instance of the Reject class.
+        /// </summary>
 		public Reject()
 		{
 			Element = new XElement("Reject");
 			AllowedAttributes.Add("reason");
 		}
 
+        /// <summary>
+        /// Initializes a new instance of the Reject class using the specified Reason
+        /// </summary>
+        /// <param name="reason">Tells Twilio what message to play when rejecting a call.  Takes the values "rejected" and "busy."</param>
 		public Reject(string reason) : this()
 		{
 			SetAttributeValue("reason", reason);	
