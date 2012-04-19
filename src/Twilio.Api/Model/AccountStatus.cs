@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Twilio
 {
+    /// <summary>
+    /// The status of an <see cref="Account">Account</see>
+    /// </summary>
 	public enum AccountStatus
 	{
 		/// <summary>
