@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>3.4.0</version>
+		<version>3.4.2</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -11,9 +11,11 @@
 		<licenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.txt</licenseUrl>
 		<tags>REST SMS voice telephony phone twilio twiml ASPNETWEBPAGES</tags>
 		<dependencies>
+			<dependency id="Newtonsoft.Json" />
 			<dependency id="RestSharp" />
 		</dependencies>
 		<releaseNotes>
+			* 3.4.2 - Updated references to resolve issues with RestSharp and JSON.NET
 			* 3.4.0 - Add CallOptions.Record to enable full-call recording
             * 3.3.7 - Another package-only fix. Assembly version is still 3.3.6
 			* 3.3.6 - Fix corrupt package.

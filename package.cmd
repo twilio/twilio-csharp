@@ -4,7 +4,7 @@ rd download /s /q
 
 if not exist download mkdir download
 if not exist download\WindowsPhone mkdir download\WindowsPhone
-if not exist download\WindowsPhone mkdir download\Silverlight
+if not exist download\Silverlight mkdir download\Silverlight
 if not exist download\package mkdir download\package
 if not exist download\package\twilio mkdir download\package\twilio
 if not exist download\package\twiliomvc mkdir download\package\twiliomvc
@@ -30,7 +30,7 @@ if not exist download\package\twilioclient\lib mkdir download\package\twilioclie
 if not exist download\package\twilioclient\lib\3.5 mkdir download\package\twilioclient\lib\3.5
 
 tools\ilmerge.exe /lib:src\Twilio.Api\bin\Release /internalize /ndebug /v2 /out:download\Twilio.Api.dll Twilio.Api.dll RestSharp.dll
-tools\ilmerge.exe /lib:src\Twilio.Api.Silverlight\bin\Release /internalize /ndebug /targetplatform:v4,"C:\Program Files (x86)\Microsoft Silverlight\4.0.60531.0" /out:download\Twilio.Api.Silverlight.dll RestSharp.Silverlight.dll
+tools\ilmerge.exe /lib:src\Twilio.Api.Silverlight\bin\Release /internalize /ndebug /targetplatform:v4,"C:\Program Files (x86)\Microsoft Silverlight\4.1.10111.0" /out:download\Twilio.Api.Silverlight.dll RestSharp.Silverlight.dll
 
 copy src\Twilio.Api\bin\Release\*.* download
 copy src\Twilio.Api.Silverlight\bin\Release\*.* download\Silverlight\
