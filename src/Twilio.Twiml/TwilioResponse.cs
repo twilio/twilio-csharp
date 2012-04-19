@@ -3,6 +3,13 @@ using System.Xml.Linq;
 
 namespace Twilio.TwiML
 {
+    /// <summary>
+    /// The root element of Twilio's XML Markup.
+    /// </summary>
+    /// <remarks>
+    /// In any TwiML response to a Twilio request, all verb elements must be nested 
+    /// within this element. Any other structure is considered invalid.
+    /// </remarks>
 	public class TwilioResponse : ElementBase
 	{
 		public TwilioResponse()

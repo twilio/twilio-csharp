@@ -6,6 +6,12 @@ using System.Xml.Linq;
 
 namespace Twilio.TwiML
 {
+    /// <summary>
+    ///  Waits silently for a specific number of seconds.
+    /// </summary>
+    /// <remarks>
+    /// If &lt;Pause&gt; is the first verb in a TwiML document, Twilio will wait the specified number of seconds before picking up the call.
+    /// </remarks>
 	public class Pause : ElementBase
 	{
 		public Pause()

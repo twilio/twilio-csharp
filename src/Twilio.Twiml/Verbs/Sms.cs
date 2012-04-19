@@ -6,6 +6,9 @@ using System.Xml.Linq;
 
 namespace Twilio.TwiML
 {
+    /// <summary>
+    /// Sends an SMS message to a phone number.
+    /// </summary>
 	public class Sms : ElementBase
 	{
 		public Sms()

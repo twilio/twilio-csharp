@@ -3,6 +3,12 @@ using System.Xml.Linq;
 
 namespace Twilio.TwiML
 {
+    /// <summary>
+    /// Transfers control of a call to the TwiML at a different URL.
+    /// </summary>
+    /// <remarks>
+    /// All verbs after &lt;Redirect&gt; are unreachable and ignored
+    /// </remarks>
 	public class Redirect : ElementBase
 	{
 		public Redirect()

@@ -6,6 +6,9 @@ using System.Xml.Linq;
 
 namespace Twilio.TwiML
 {
+    /// <summary>
+    /// Rejects an incoming call to your Twilio number without billing you
+    /// </summary>
 	public class Reject : ElementBase
 	{
 		public Reject()

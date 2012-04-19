@@ -6,6 +6,17 @@ using System.Xml.Linq;
 
 namespace Twilio.TwiML
 {
+    /// <summary>
+    /// Connects the current caller to another phone.
+    /// </summary>
+    /// <remarks>
+    /// If the called party picks up, the two parties are connected and can communicate 
+    /// until one hangs up. If the called party does not pick up, if a busy signal is 
+    /// received, or if the number doesn't exist, the dial verb will finish.  When the 
+    /// dialed call ends, Twilio makes a GET or POST request to the 'action' URL if 
+    /// provided. Call flow will continue using the TwiML received in response to that 
+    /// request.
+    /// </remarks>
 	public class Dial : ElementBase
 	{
 		public Dial()

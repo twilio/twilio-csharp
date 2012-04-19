@@ -6,6 +6,12 @@ using System.Xml.Linq;
 
 namespace Twilio.TwiML
 {
+    /// <summary>
+    /// Converts text to speech that is read back to the caller.
+    /// </summary>
+    /// <remarks>
+    /// Useful for development or saying dynamic text that is difficult to pre-record.
+    /// </remarks>
 	public class Say : ElementBase
 	{
 		public Say(string text)

@@ -6,6 +6,12 @@ using System.Xml.Linq;
 
 namespace Twilio.TwiML
 {
+    /// <summary>
+    /// Records the caller's voice and returns to you the URL of a file containing the audio recording.
+    /// </summary>
+    /// <remarks>
+    /// You can optionally generate text transcriptions of recorded calls by setting the 'transcribe' attribute of the &lt;Record&gt; verb to 'true'
+    /// </remarks>
 	public class Record : ElementBase
 	{
 		public Record()
