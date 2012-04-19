@@ -55,8 +55,12 @@ namespace Twilio
 		/// The URL that Twilio will request to pass status parameters (such as call ended) to your application.
 		/// </summary>
 		public string StatusCallback { get; set; }
-		/// <summary>
-		/// The HTTP method Twilio will use to make requests to the StatusCallbackUrl. Either GET or POST.
+        /// <summary>
+        /// The URL that Twilio will request to pass status parameters (such as call ended) to your application.
+        /// </summary>
+        public string SmsStatusCallback { get; set; }
+        /// <summary>
+        /// Twilio will make a POST request to this URL to pass status parameters (such as sent or failed) to your application if you specify this application's Sid as the ApplicationSid on an outgoing SMS request.
 		/// </summary>
 		public string StatusCallbackMethod { get; set; }
 		/// <summary>

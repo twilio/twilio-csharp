@@ -21,6 +21,7 @@ namespace Twilio
 		/// The HTTP method that should be used to request the VoiceFallbackUrl. Either GET or POST. Defaults to POST.
 		/// </summary>
 		public string VoiceFallbackMethod { get; set; }
+
 		/// <summary>
 		/// The URL that Twilio should request when somebody sends an SMS to the phone number using this application.
 		/// </summary>
@@ -37,6 +38,7 @@ namespace Twilio
 		/// The HTTP method that should be used to request the SmsFallbackUrl. Must be either GET or POST. Defaults to POST.
 		/// </summary>
 		public string SmsFallbackMethod { get; set; }
+
 		/// <summary>
 		/// Do a lookup of a caller's name from the CNAM database and post it to your app. Either true or false. Defaults to false.
 		/// </summary>
@@ -45,9 +47,13 @@ namespace Twilio
 		/// The URL that Twilio will request to pass status parameters (such as call ended) to your application.
 		/// </summary>
 		public string StatusCallback { get; set; }
-		/// <summary>
+        /// <summary>
+        /// Twilio will make a POST request to this URL to pass status parameters (such as sent or failed) to your application if you specify this application's Sid as the ApplicationSid on an outgoing SMS request.
+        /// </summary>
+        public string SmsStatusCallback { get; set; }
+        /// <summary>
 		/// The HTTP method Twilio will use to make requests to the StatusCallback URL. Either GET or POST. Defaults to POST.
 		/// </summary>
 		public string StatusCallbackMethod { get; set; }
-	}
+    }
 }
