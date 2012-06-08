@@ -43,7 +43,7 @@ To install WebMatrix/ASP.NET Web Pages helpers, search for Twilio in the WebMatr
 	var response = new TwilioResponse();
 	response.Say("Hello Monkey");
 	response.Play("http://demo.twilio.com/hellomonkey/monkey.mp3");
-	response.BeginGather(new { numDigits = 1, action = "hello-monkey-handle-key.php", method = "POST" });
+	response.BeginGather(new { numDigits = 1, action = "hello-monkey-handle-key.cshtml", method = "POST" });
 	response.Say("To speak to a real monkey, press 1. Press 2 to record your own monkey howl. Press any other key to start over.");
 	response.EndGather();
 

@@ -116,6 +116,11 @@ namespace Twilio
 
 		private void AddPhoneNumberOptionsToRequest(RestRequest request, PhoneNumberOptions options)
 		{
+            if (options.AccountSid.HasValue())
+            {
+                request.AddParameter("AccountSid", options.AccountSid);
+            }
+
 			if (options.FriendlyName.HasValue())
 			{
 				Validate.IsValidLength(options.FriendlyName, 64);
