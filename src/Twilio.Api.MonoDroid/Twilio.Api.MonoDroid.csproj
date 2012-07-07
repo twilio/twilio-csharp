@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FBB12CB6-7255-4F5C-825D-FAC178682422}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Twilio.Api.MonoDroid</RootNamespace>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <AssemblyName>Twilio.Api.MonoDroid</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AndroidLinkMode>None</AndroidLinkMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="RestSharp.MonoDroid">
+      <HintPath>..\packages\OtherDependencies\RestSharp.MonoDroid.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.MonoDroid">
+      <HintPath>..\packages\OtherDependencies\Newtonsoft.Json.MonoDroid.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Twilio.Api\Model\Account.cs">
+      <Link>Model\Account.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\AccountStatus.cs">
+      <Link>Model\AccountStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\Application.cs">
+      <Link>Model\Application.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\ApplicationOptions.cs">
+      <Link>Model\ApplicationOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\ApplicationResult.cs">
+      <Link>Model\ApplicationResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\AuthorizedConnectApp.cs">
+      <Link>Model\AuthorizedConnectApp.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\AuthorizedConnectAppResult.cs">
+      <Link>Model\AuthorizedConnectAppResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\AvailablePhoneNumber.cs">
+      <Link>Model\AvailablePhoneNumber.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\AvailablePhoneNumberListRequest.cs">
+      <Link>Model\AvailablePhoneNumberListRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\AvailablePhoneNumberResult.cs">
+      <Link>Model\AvailablePhoneNumberResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\Call.cs">
+      <Link>Model\Call.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\CallListRequest.cs">
+      <Link>Model\CallListRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\CallOptions.cs">
+      <Link>Model\CallOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\CallResult.cs">
+      <Link>Model\CallResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\ComparisonType.cs">
+      <Link>Model\ComparisonType.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\Conference.cs">
+      <Link>Model\Conference.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\ConferenceListRequest.cs">
+      <Link>Model\ConferenceListRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\ConferenceResult.cs">
+      <Link>Model\ConferenceResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\ConnectApp.cs">
+      <Link>Model\ConnectApp.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\ConnectAppResult.cs">
+      <Link>Model\ConnectAppResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\DeleteStatus.cs">
+      <Link>Model\DeleteStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\HangupStyle.cs">
+      <Link>Model\HangupStyle.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\IncomingPhoneNumber.cs">
+      <Link>Model\IncomingPhoneNumber.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\IncomingPhoneNumberResult.cs">
+      <Link>Model\IncomingPhoneNumberResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\Notification.cs">
+      <Link>Model\Notification.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\NotificationResult.cs">
+      <Link>Model\NotificationResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\OutgoingCallerId.cs">
+      <Link>Model\OutgoingCallerId.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\OutgoingCallerIdResult.cs">
+      <Link>Model\OutgoingCallerIdResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\Participant.cs">
+      <Link>Model\Participant.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\ParticipantResult.cs">
+      <Link>Model\ParticipantResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\Permission.cs">
+      <Link>Model\Permission.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\PhoneNumberOptions.cs">
+      <Link>Model\PhoneNumberOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\Recording.cs">
+      <Link>Model\Recording.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\RecordingResult.cs">
+      <Link>Model\RecordingResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\RestException.cs">
+      <Link>Model\RestException.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\Sandbox.cs">
+      <Link>Model\Sandbox.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\SmsMessage.cs">
+      <Link>Model\SmsMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\SmsMessageResult.cs">
+      <Link>Model\SmsMessageResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\SmsShortCode.cs">
+      <Link>Model\SmsShortCode.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\SmsShortCodeResult.cs">
+      <Link>Model\SmsShortCodeResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\Transcription.cs">
+      <Link>Model\Transcription.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\TranscriptionResult.cs">
+      <Link>Model\TranscriptionResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\TwilioBase.cs">
+      <Link>Model\TwilioBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\TwilioListBase.cs">
+      <Link>Model\TwilioListBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\ValidationRequest.cs">
+      <Link>Model\ValidationRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Accounts.Async.cs">
+      <Link>Accounts.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Applications.Async.cs">
+      <Link>Applications.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\AuthorizedConnectApps.Async.cs">
+      <Link>AuthorizedConnectApps.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\AvailablePhoneNumbers.Aysnc.cs">
+      <Link>AvailablePhoneNumbers.Aysnc.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Calls.Async.cs">
+      <Link>Calls.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Conference.Async.cs">
+      <Link>Conference.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\ConnectApps.Async.cs">
+      <Link>ConnectApps.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Core.Async.cs">
+      <Link>Core.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\IncomingPhoneNumbers.Async.cs">
+      <Link>IncomingPhoneNumbers.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Notifications.Aysnc.cs">
+      <Link>Notifications.Aysnc.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\OutgoingCallerIds.Async.cs">
+      <Link>OutgoingCallerIds.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Recordings.Async.cs">
+      <Link>Recordings.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Sandbox.Async.cs">
+      <Link>Sandbox.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Sms.Async.cs">
+      <Link>Sms.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Transcriptions.Async.cs">
+      <Link>Transcriptions.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Core.cs">
+      <Link>Core.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\SharedAssemblyInfo.cs">
+      <Link>SharedAssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+</Project>

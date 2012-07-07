@@ -30,3 +30,4 @@ _ReSharper*/
 TwilioTest/
 TwilioTestPhone/
 download/
+*.sln.userprefs
