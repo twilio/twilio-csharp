@@ -12,5 +12,10 @@
         public string Direction { get; set; }
         public string ForwardedFrom { get; set; }
         public string CallerName { get; set; }
+
+        //optional parameters only populated by the Gather or Record verbs
+        public string Digits { get; set; }
+        public string RecordingUrl { get; set; }
+        public string RecordingDuration { get; set; }
     }
 }
