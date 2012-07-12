@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio.Mvc</id>
-		<version>3.1.4</version>
+		<version>3.1.5</version>
 		<authors>Twilio</authors>
 		<description>Twilio helpers for ASP.NET MVC</description>
 		<language>en-US</language>
@@ -15,6 +15,7 @@
 			<dependency id="Twilio.TwiML" />
 		</dependencies>
     <releaseNotes>
+      * 3.1.4 - Added properties to the VoiceRequest class to support Gather and Recod parameters
       * 3.1.4 - Added new classes to support model binding of Twilio requests
     </releaseNotes>
 	</metadata>
