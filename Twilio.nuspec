@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>3.4.4</version>
+		<version>3.4.5</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -15,26 +15,27 @@
 			<dependency id="RestSharp" />
 		</dependencies>
 		<releaseNotes>
+      * 3.4.5 - Fixing package fail
       * 3.4.4 - Changed SMS message length validation
       * 3.4.3 - Added and updated some XML Doc Comments
-                Added SmsStatusCallback property
-                Fixed number transfer bug
-                Fixed CallListOptions bug
-                Updated to latest versions of RestSharp and Json.NET
-			* 3.4.2 - Updated references to resolve issues with RestSharp and JSON.NET
-			* 3.4.0 - Add CallOptions.Record to enable full-call recording
-            * 3.3.7 - Another package-only fix. Assembly version is still 3.3.6
-			* 3.3.6 - Fix corrupt package.
-			* 3.3.5 - Bind against JSON.Net 4.0.8. 
-			* 3.3.3 - Fixed RestException never being populated. Updated to JSON.NET 4.0.7
-			* 3.3.2 - Resolve NuGet assembly issue with RestSharp
-			* 3.3.1 - Compatibility with latest version of RestSharp
-			* 3.3.0 - Restored paging information for list resource responses.
-					  Restructured REST API objects to match JSON datastructures instead of XML.
-					  Fixed incorrect StatusCallback parameter name for IncomingPhoneNumber and Application.
-					  Fixed incorrect paging parameter name.
-					  
-			* 3.2.3 - Added 'extension' parameter to the AddOutgoingCallerIds method
-		</releaseNotes>
+          Added SmsStatusCallback property
+          Fixed number transfer bug
+          Fixed CallListOptions bug
+          Updated to latest versions of RestSharp and Json.NET
+      * 3.4.2 - Updated references to resolve issues with RestSharp and JSON.NET
+      * 3.4.0 - Add CallOptions.Record to enable full-call recording
+      * 3.3.7 - Another package-only fix. Assembly version is still 3.3.6
+      * 3.3.6 - Fix corrupt package.
+      * 3.3.5 - Bind against JSON.Net 4.0.8.
+      * 3.3.3 - Fixed RestException never being populated. Updated to JSON.NET 4.0.7
+      * 3.3.2 - Resolve NuGet assembly issue with RestSharp
+      * 3.3.1 - Compatibility with latest version of RestSharp
+      * 3.3.0 - Restored paging information for list resource responses.
+      Restructured REST API objects to match JSON datastructures instead of XML.
+      Fixed incorrect StatusCallback parameter name for IncomingPhoneNumber and Application.
+      Fixed incorrect paging parameter name.
+
+      * 3.2.3 - Added 'extension' parameter to the AddOutgoingCallerIds method
+    </releaseNotes>
 	</metadata>
 </package>
