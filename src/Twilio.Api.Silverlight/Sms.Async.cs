@@ -75,7 +75,6 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
 		public void SendSmsMessage(string from, string to, string body, string statusCallback, Action<SMSMessage> callback)
 		{
-			Validate.IsValidLength(body, 160);
 			Require.Argument("from", from);
 			Require.Argument("to", to);
 			Require.Argument("body", body);

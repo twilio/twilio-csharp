@@ -76,7 +76,6 @@ namespace Twilio
 		/// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the SmsSid as well as SmsStatus=sent or SmsStatus=failed</param>
 		public SMSMessage SendSmsMessage(string from, string to, string body, string statusCallback)
 		{
-			Validate.IsValidLength(body, 160);
 			Require.Argument("from", from);
 			Require.Argument("to", to);
 			Require.Argument("body", body);
