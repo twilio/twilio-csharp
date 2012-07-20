@@ -17,5 +17,11 @@
         public string Digits { get; set; }
         public string RecordingUrl { get; set; }
         public string RecordingDuration { get; set; }
-    }
+
+        //optional parameters only populated when recording transcription is true
+        public string TranscriptionSid {get;set;}
+        public string TranscriptionText {get;set;}
+        public string TranscriptionStatus {get;set;}
+        public string TranscriptionUrl {get;set;}
+        public string RecordingSid {get;set;}
 }
