@@ -24,5 +24,10 @@
         public string TranscriptionStatus { get; set; }
         public string TranscriptionUrl { get; set; }
         public string RecordingSid { get; set; }
+
+        //optional parameters only populated when the <Dial> verb is used to init a call
+        public string DialCallStatus { get; set; }
+        public string DialCallSid { get; set; }
+        public string DialCallDuration { get; set; }
     }
 }
