@@ -51,10 +51,12 @@
     <Compile Include="TwilioResponse.cs" />
     <Compile Include="Verbs\Conference.cs" />
     <Compile Include="Verbs\Client.cs" />
+    <Compile Include="Verbs\Enqueue.cs" />
     <Compile Include="Verbs\IDialNoun.cs" />
     <Compile Include="Verbs\IVerb.cs" />
     <Compile Include="Verbs\Pause.cs" />
     <Compile Include="Verbs\Number.cs" />
+    <Compile Include="Verbs\Queue.cs" />
     <Compile Include="Verbs\Reject.cs" />
     <Compile Include="Verbs\Hangup.cs" />
     <Compile Include="Verbs\Dial.cs" />

@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Twilio.TwiML.Verbs
 {
+    /// <summary>
+    /// Represents a TwiML Verb
+    /// </summary>
 	public interface IVerb
 	{
 		void Add(IVerb child);

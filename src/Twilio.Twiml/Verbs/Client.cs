@@ -19,6 +19,10 @@ namespace Twilio.TwiML
     /// </remarks>
 	public class Client : ElementBase, IDialNoun
 	{
+        /// <summary>
+        /// Initializes a new instance of the Client class
+        /// </summary>
+        /// <param name="clientName">The name of the client</param>
 		public Client(string clientName)
 		{
 			Element = new XElement("Client", clientName);

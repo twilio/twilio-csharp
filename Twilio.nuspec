@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>3.4.5</version>
+		<version>3.5.0</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -15,13 +15,14 @@
 			<dependency id="RestSharp" />
 		</dependencies>
 		<releaseNotes>
+      * 3.5.0 - Adding Queue Capability
       * 3.4.5 - Fixing package fail
       * 3.4.4 - Changed SMS message length validation
       * 3.4.3 - Added and updated some XML Doc Comments
-          Added SmsStatusCallback property
-          Fixed number transfer bug
-          Fixed CallListOptions bug
-          Updated to latest versions of RestSharp and Json.NET
+      Added SmsStatusCallback property
+      Fixed number transfer bug
+      Fixed CallListOptions bug
+      Updated to latest versions of RestSharp and Json.NET
       * 3.4.2 - Updated references to resolve issues with RestSharp and JSON.NET
       * 3.4.0 - Add CallOptions.Record to enable full-call recording
       * 3.3.7 - Another package-only fix. Assembly version is still 3.3.6

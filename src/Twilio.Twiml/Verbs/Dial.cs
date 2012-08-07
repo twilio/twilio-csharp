@@ -7,7 +7,7 @@ using System.Xml.Linq;
 namespace Twilio.TwiML
 {
     /// <summary>
-    /// Connects the current caller to another phone.
+    /// Connects the current caller to another phone number, Client, Conference or Queue
     /// </summary>
     /// <remarks>
     /// If the called party picks up, the two parties are connected and can communicate 
@@ -28,6 +28,7 @@ namespace Twilio.TwiML
 			AllowedChildren.Add("Number");
 			AllowedChildren.Add("Client");
 			AllowedChildren.Add("Conference");
+            AllowedChildren.Add("Queue");
 
 			AllowedAttributes.Add("timeout");
 			AllowedAttributes.Add("callerId");
@@ -37,11 +38,20 @@ namespace Twilio.TwiML
 			AllowedAttributes.Add("timeLimit");
 		}
 
+        /// <summary>
+        /// Initializes a new instance of the Dial class.
+        /// </summary>
+        /// <param name="number"></param>
 		public Dial(string number) : this()
 		{
 			Element.Add(number);
 		}
 
+        /// <summary>
+        /// Initializes a new instance of the Dial class.
+        /// </summary>
+        /// <param name="number">The phone number to dial</param>
+        /// <param name="attributes"></param>
 		public Dial(string number, object attributes) : this(number)
 		{
 			AddAttributesFromObject(attributes);

@@ -42,12 +42,23 @@ namespace Twilio.TwiML
 			AllowedAttributes.Add("endConferenceOnExit");
 		}
 
-		public Conference(string room) : this()
+        /// <summary>
+        /// Initializes a new instance of the Conference class.
+        /// </summary>
+        /// <param name="room">The name of the conference room</param>
+        public Conference(string room)
+            : this()
 		{
 			Element = new XElement("Conference", room);
 		}
 
-		public Conference(string room, object attributes) : this(room)
+        /// <summary>
+        /// Initializes a new instance of the Conference class.
+        /// </summary>
+        /// <param name="room">The name of the conference room</param>
+        ///<param name="attributes"></param>
+        public Conference(string room, object attributes)
+            : this(room)
 		{
 			AddAttributesFromObject(attributes);
 		}

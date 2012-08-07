@@ -25,12 +25,22 @@ namespace Twilio.TwiML
 			AllowedAttributes.Add("statusCallback");
 		}
 
+        /// <summary>
+        /// Initializes a new instance of the Sms class
+        /// </summary>
+        /// <param name="message">The Sms message body</param>
 		public Sms(string message) : this()
 		{
 			Element.Add(message);
 		}
 
-		public Sms(string message, object attributes) : this(message)
+        /// <summary>
+        /// Initializes a new instance of the Sms class
+        /// </summary>
+        /// <param name="message">The Sms message body</param>
+        /// <param name="attributes">Additional parameters of the Sms verb</param>
+        public Sms(string message, object attributes)
+            : this(message)
 		{
 			AddAttributesFromObject(attributes);
 		}

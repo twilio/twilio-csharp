@@ -38,6 +38,10 @@ namespace Twilio.TwiML
 			AllowedAttributes.Add("timeout");
 		}
 
+        /// <summary>
+        /// Initializes a new instance of the Gather class.
+        /// <param name="attributes"></param>
+        /// </summary>
 		public Gather(object attributes) : this()
 		{
 			AddAttributesFromObject(attributes);

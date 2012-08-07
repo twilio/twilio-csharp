@@ -91,6 +91,9 @@
     <Compile Include="..\Twilio.Api.Silverlight\OutgoingCallerIds.Async.cs">
       <Link>OutgoingCallerIds.Async.cs</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Queues.Async.cs">
+      <Link>Queues.Async.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api.Silverlight\Recordings.Async.cs">
       <Link>Recordings.Async.cs</Link>
     </Compile>
@@ -118,10 +121,16 @@
     <Compile Include="Model\ConnectApp.cs" />
     <Compile Include="Model\ConnectAppResult.cs" />
     <Compile Include="Model\AuthorizedConnectAppResult.cs" />
+    <Compile Include="Model\DequeueStatus.cs" />
     <Compile Include="Model\Permission.cs" />
+    <Compile Include="Model\Queue.cs" />
+    <Compile Include="Model\QueueMember.cs" />
+    <Compile Include="Model\QueueMemberResult.cs" />
+    <Compile Include="Model\QueueResult.cs" />
     <Compile Include="Model\SmsShortCodeResult.cs" />
     <Compile Include="Model\DeleteStatus.cs" />
     <Compile Include="Model\SmsShortCode.cs" />
+    <Compile Include="Queues.cs" />
     <Compile Include="Sandbox.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="IncomingPhoneNumbers.cs" />

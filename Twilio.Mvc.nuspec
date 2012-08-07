@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio.Mvc</id>
-		<version>3.1.8</version>
+		<version>3.1.9</version>
 		<authors>Twilio</authors>
 		<description>Twilio helpers for ASP.NET MVC</description>
 		<language>en-US</language>
@@ -15,6 +15,7 @@
 			<dependency id="Twilio.TwiML" />
 		</dependencies>
     <releaseNotes>
+      * 3.1.9 - Adding doc comments
       * 3.1.8 - Added Dial Status Callback properties
       * 3.1.7 - Added properties to the VoiceRequest class to support Transcription
       * 3.1.6 - Fixing package fail

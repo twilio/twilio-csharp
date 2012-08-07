@@ -130,6 +130,9 @@
     <Compile Include="..\Twilio.Api\Model\DeleteStatus.cs">
       <Link>Model\DeleteStatus.cs</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api\Model\DequeueStatus.cs">
+      <Link>Model\DequeueStatus.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api\Model\HangupStyle.cs">
       <Link>Model\HangupStyle.cs</Link>
     </Compile>
@@ -162,6 +165,18 @@
     </Compile>
     <Compile Include="..\Twilio.Api\Model\PhoneNumberOptions.cs">
       <Link>Model\PhoneNumberOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\Queue.cs">
+      <Link>Model\Queue.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\QueueMember.cs">
+      <Link>Model\QueueMember.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\QueueMemberResult.cs">
+      <Link>Model\QueueMemberResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\QueueResult.cs">
+      <Link>Model\QueueResult.cs</Link>
     </Compile>
     <Compile Include="..\Twilio.Api\Model\Recording.cs">
       <Link>Model\Recording.cs</Link>
@@ -212,6 +227,7 @@
     <Compile Include="Conference.Async.cs" />
     <Compile Include="ConnectApps.Async.cs" />
     <Compile Include="AuthorizedConnectApps.Async.cs" />
+    <Compile Include="Queues.Async.cs" />
     <Compile Include="Sandbox.Async.cs" />
     <Compile Include="Core.Async.cs" />
     <Compile Include="IncomingPhoneNumbers.Async.cs" />

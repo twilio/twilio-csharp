@@ -7,6 +7,9 @@ using Twilio.TwiML.Verbs;
 
 namespace Twilio.TwiML
 {
+    /// <summary>
+    /// Provides an abstract base class for TwiML nouns and verbs
+    /// </summary>
 	public abstract class ElementBase
 	{
 		public List<string> AllowedChildren { get; set; }
@@ -14,6 +17,9 @@ namespace Twilio.TwiML
 		public XElement Element { get; set; }
 		protected Stack<ElementBase> Current { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the ElementBase class
+        /// </summary>
 		public ElementBase()
 		{
 			AllowedAttributes = new List<string>();
@@ -21,6 +27,11 @@ namespace Twilio.TwiML
 			Current = new Stack<ElementBase>();
 		}
 
+        /// <summary>
+        /// Adds a new element to the TwiML response
+        /// </summary>
+        /// <param name="verb"></param>
+        /// <returns></returns>
 		protected ElementBase Add(ElementBase verb)
 		{
 			var root = Element;
@@ -41,6 +52,10 @@ namespace Twilio.TwiML
 			return this;
 		}
 
+        /// <summary>
+        /// Enumerates the properties of the provided object and converts them to element attributes
+        /// </summary>
+        /// <param name="attributes"></param>
 		public void AddAttributesFromObject(object attributes)
 		{
 			foreach (var prop in attributes.GetType().GetProperties())
@@ -49,6 +64,12 @@ namespace Twilio.TwiML
 			}
 		}
 
+        /// <summary>
+        /// Returns the value of an element attribute
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <returns></returns>
 		public T GetAttributeValue<T>(string key)
 		{
 			if (Element.Attributes(key) != null)
@@ -59,6 +80,11 @@ namespace Twilio.TwiML
 			return default(T);
 		}
 
+        /// <summary>
+        /// Sets the value of an element attribute
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
 		public void SetAttributeValue(string key, object value)
 		{
 			if (AllowedAttributes.Contains(key))

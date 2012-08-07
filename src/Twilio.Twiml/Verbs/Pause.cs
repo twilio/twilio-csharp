@@ -23,7 +23,12 @@ namespace Twilio.TwiML
 			AllowedAttributes.Add("length");
 		}
 
-		public Pause(int seconds) : this()
+        /// <summary>
+        /// Initializes a new instance of the Pause class, pausing for the specified number of seconds.
+        /// </summary>
+        /// <param name="seconds">The number of seconds to pause</param>
+        public Pause(int seconds)
+            : this()
 		{
 			SetAttributeValue("length", seconds);
 		}

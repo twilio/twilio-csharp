@@ -6,7 +6,14 @@
     /// <remarks>http://www.twilio.com/docs/api/twiml/sms/twilio_request</remarks>
     public class SmsRequest : TwilioRequest
     {
+        /// <summary>
+        /// A 34 character unique identifier for the message. May be used to later retrieve this message from the REST API
+        /// </summary>
         public string SmsSid { get; set; }
+
+        /// <summary>
+        /// The text body of the SMS message. Up to 160 characters long
+        /// </summary>
         public string Body { get; set; }
     }
 }

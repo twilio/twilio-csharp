@@ -14,12 +14,22 @@ namespace Twilio.TwiML
     /// </remarks>
 	public class Play : ElementBase
 	{
+        /// <summary>
+        /// Initializes a new instance of the Play class
+        /// </summary>
+        /// <param name="url">The URL of the audio file to be played</param>
 		public Play(string url)
 		{
 			Element = new XElement("Play", url);
 		}
 
-		public Play(string url, object attributes) : this(url)
+        /// <summary>
+        /// Initializes a new instance of the Play class
+        /// </summary>
+        /// <param name="url">The URL of the audio file to be played</param>
+        /// <param name="attributes">Additional parameters of the Play verb</param>
+        public Play(string url, object attributes)
+            : this(url)
 		{
 			AddAttributesFromObject(attributes);
 		}
