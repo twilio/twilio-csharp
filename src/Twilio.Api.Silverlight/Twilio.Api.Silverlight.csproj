@@ -17,6 +17,8 @@
     <SilverlightApplication>false</SilverlightApplication>
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <!-- This property group is only here to support building this project using the 
        MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
@@ -50,11 +52,11 @@
   <ItemGroup>
     <Reference Include="mscorlib" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.4.5.3\lib\sl4\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.10\lib\sl4\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp.Silverlight, Version=102.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.103.0.0\lib\sl4\RestSharp.Silverlight.dll</HintPath>
+    <Reference Include="RestSharp.Silverlight, Version=104.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RestSharp.104.1\lib\sl4\RestSharp.Silverlight.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="system" />
@@ -214,6 +216,21 @@
     <Compile Include="..\Twilio.Api\Model\TwilioListBase.cs">
       <Link>Model\TwilioListBase.cs</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api\Model\UsageRecord.cs">
+      <Link>Model\UsageRecord.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\UsageResult.cs">
+      <Link>Model\UsageResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\UsageTrigger.cs">
+      <Link>Model\UsageTrigger.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\UsageTriggerOptions.cs">
+      <Link>Model\UsageTriggerOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\UsageTriggerResult.cs">
+      <Link>Model\UsageTriggerResult.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api\Model\ValidationRequest.cs">
       <Link>Model\ValidationRequest.cs</Link>
     </Compile>
@@ -237,6 +254,7 @@
     <Compile Include="Recordings.Async.cs" />
     <Compile Include="Sms.Async.cs" />
     <Compile Include="Transcriptions.Async.cs" />
+    <Compile Include="Usage.Async.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -249,6 +267,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -17,6 +17,8 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation />
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,11 +43,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.7\lib\net35\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.10\lib\net35\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp, Version=103.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="RestSharp, Version=104.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RestSharp.103.2\lib\net35-client\RestSharp.dll</HintPath>
+      <HintPath>..\packages\RestSharp.104.1\lib\net35-client\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -106,6 +108,9 @@
     <Compile Include="..\Twilio.Api.Silverlight\Transcriptions.Async.cs">
       <Link>Transcriptions.Async.cs</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Usage.Async.cs">
+      <Link>Usage.Async.cs</Link>
+    </Compile>
     <Compile Include="Accounts.cs" />
     <Compile Include="Calls.cs" />
     <Compile Include="Conference.cs" />
@@ -130,6 +135,11 @@
     <Compile Include="Model\SmsShortCodeResult.cs" />
     <Compile Include="Model\DeleteStatus.cs" />
     <Compile Include="Model\SmsShortCode.cs" />
+    <Compile Include="Model\UsageRecord.cs" />
+    <Compile Include="Model\UsageResult.cs" />
+    <Compile Include="Model\UsageTrigger.cs" />
+    <Compile Include="Model\UsageTriggerOptions.cs" />
+    <Compile Include="Model\UsageTriggerResult.cs" />
     <Compile Include="Queues.cs" />
     <Compile Include="Sandbox.cs" />
     <Compile Include="Core.cs" />
@@ -174,6 +184,7 @@
     <Compile Include="SharedAssemblyInfo.cs" />
     <Compile Include="Sms.cs" />
     <Compile Include="Transcriptions.cs" />
+    <Compile Include="Usage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -191,4 +202,5 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
 </Project>
