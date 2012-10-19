@@ -63,6 +63,22 @@ namespace Twilio
         /// <returns></returns>
         public void ListUsage(string category, string interval, DateTime? startDate, DateTime? endDate, Action<UsageResult> callback)
         {
+            ListUsage(category, interval, startDate, endDate, null, null, callback);
+        }
+
+        /// <summary>
+        /// Returns a list of usage resources for a specific category, within a specific date range, grouped by a specific time interval
+        /// </summary>
+        /// <param name="category">The category used to filter the usage data</param>
+        /// <param name="interval">The time interval used to group the usage data</param>
+        /// <param name="startDate">The start date of the filter range</param>
+        /// <param name="endDate">The end date of the filter range</param>
+        /// <param name="pageNumber">(Optional) The page to start retrieving results from</param>
+        /// <param name="count">(Optional) The number of results to retrieve</param>
+        /// <param name="callback"></param>
+        /// <returns></returns>
+        public void ListUsage(string category, string interval, DateTime? startDate, DateTime? endDate, int? pageNumber, int? count, Action<UsageResult> callback)
+        {
             var request = new RestRequest();
             string resourceUrlRoot = "Accounts/{{AccountSid}}/Usage/Records{0}";
 
@@ -79,10 +95,11 @@ namespace Twilio
             if (!string.IsNullOrEmpty(category)) { request.AddParameter("Category", category.ToLower()); }
             if (startDate.HasValue) { request.AddParameter("StartDate", startDate.Value.ToString("yyyy-MM-dd")); }
             if (endDate.HasValue) { request.AddParameter("EndDate", endDate.Value.ToString("yyyy-MM-dd")); }
+            if (pageNumber.HasValue) { request.AddParameter("Page", pageNumber.Value); }
+            if (count.HasValue) { request.AddParameter("PageSize", count.Value); }
 
             ExecuteAsync<UsageResult>(request, (response) => callback(response));
         }
-
         /// <summary>
         /// Returns a list of usage triggers
         /// </summary>

@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>3.5.2</version>
+		<version>3.5.3</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -15,6 +15,7 @@
 			<dependency id="RestSharp" />
 		</dependencies>
 		<releaseNotes>
+      * 3.5.3 - Added paging properties to UsageRecord API
       * 3.5.2 - Adding Usage Capability
       Enabled NuGet package restore in the solution
       Updated project NuGet references

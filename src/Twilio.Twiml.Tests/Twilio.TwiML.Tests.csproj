@@ -98,6 +98,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="TwiMLSchemaTest.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
