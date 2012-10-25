@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>3.5.4</version>
+		<version>3.5.5</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -15,6 +15,8 @@
 			<dependency id="RestSharp" />
 		</dependencies>
 		<releaseNotes>
+      * 3.5.5 - Removed support for Windows Phone 7.0 SDK
+      Added support for Windows Phone 7.1 SDK
       * 3.5.4 - Fixed package to support Mango tooling
       * 3.5.3 - Added paging properties to UsageRecord API
       * 3.5.2 - Adding Usage Capability
