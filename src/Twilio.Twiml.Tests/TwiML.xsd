@@ -127,9 +127,6 @@
         </xs:restriction>
       </xs:simpleType>
     </xs:attribute>
-    
-		<!--<xs:attribute name="transcribe" type="xs:string"></xs:attribute>-->
-		<!--<xs:attribute name="transcribeCallback" type="xs:string"></xs:attribute>-->
 	</xs:complexType>
 
   <!-- <Number> -->
