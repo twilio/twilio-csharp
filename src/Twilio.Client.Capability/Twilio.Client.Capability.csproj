@@ -34,6 +34,15 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\Twilio.Client.Capability.xml</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseWithPackage|AnyCPU'">
+    <OutputPath>bin\ReleaseWithPackage\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>bin\Release\Twilio.Client.Capability.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="JWT, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\JWT.1.2\lib\3.5\JWT.dll</HintPath>
@@ -62,8 +71,14 @@
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
+  </Target>-->
+  
+  <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'ReleaseWithPackage' ">
+    <MakeDir Directories="$(MSBuildProjectDirectory)..\..\..\Download\package\twilioclient\lib\3.5" />
+    <CreateItem Include="$(TargetDir)\$(ProjectName).*">
+      <Output TaskParameter="Include" ItemName="FilesToCopy"/>
+    </CreateItem>
+    <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(MSBuildProjectDirectory)..\..\..\download\package\twilioclient\lib\3.5\" />
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  
 </Project>

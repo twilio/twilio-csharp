@@ -34,6 +34,18 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\Twilio.Twiml.xml</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseWithPackage|AnyCPU'">
+    <OutputPath>bin\ReleaseWithPackage\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>bin\Release\Twilio.Twiml.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -73,8 +85,14 @@
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
+  </Target>-->
+
+  <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'ReleaseWithPackage' ">
+    <MakeDir Directories="$(MSBuildProjectDirectory)..\..\..\Download\package\twiliotwiml\lib\3.5" />
+    <CreateItem Include="$(TargetDir)\$(ProjectName).*">
+      <Output TaskParameter="Include" ItemName="FilesToCopy"/>
+    </CreateItem>
+    <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(MSBuildProjectDirectory)..\..\..\download\package\twiliotwiml\lib\3.5\" />
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  
 </Project>

@@ -44,6 +44,19 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>Bin\Release\Twilio.Api.WindowsPhone.xml</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseWithPackage|AnyCPU'">
+    <OutputPath>bin\ReleaseWithPackage\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS_PHONE</DefineConstants>
+    <DocumentationFile>Bin\Release\Twilio.Api.WindowsPhone.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -294,8 +307,16 @@
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
+  </Target>-->
+
+  <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'ReleaseWithPackage' ">
+    <MakeDir Directories="$(MSBuildProjectDirectory)..\..\..\Download\package\twilio\lib\SL3-WP7" />
+    <MakeDir Directories="$(MSBuildProjectDirectory)..\..\..\Download\package\twilio\lib\SL4-WINDOWSPHONE71" />
+    <CreateItem Include="$(TargetDir)\$(ProjectName).*">
+      <Output TaskParameter="Include" ItemName="FilesToCopy"/>
+    </CreateItem>
+    <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(MSBuildProjectDirectory)..\..\..\download\package\twilio\lib\SL3-WP7\" />
+    <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(MSBuildProjectDirectory)..\..\..\download\package\twilio\lib\SL4-WINDOWSPHONE71\" />
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
