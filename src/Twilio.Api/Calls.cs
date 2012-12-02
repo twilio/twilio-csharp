@@ -140,7 +140,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="callSid">The Sid of the call to update</param>
 		/// <param name="options">Which settings to update. Only properties with values set will be updated.</param>
-		public Call updateCall(string callSid, CallOptions options)
+		public Call UpdateCall(string callSid, CallOptions options)
 		{
 			Require.Argument("CallSid", callSid);
 			var request = new RestRequest(Method.POST);
