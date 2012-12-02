@@ -50,8 +50,40 @@ namespace Twilio
 		/// <summary>
 		/// Create a new application
 		/// </summary>
+		/// <param name="options">Parameters to use when creating application</param>
+		public Application AddApplication(ApplicationOptions options)
+		{
+			var request = new RestRequest(Method.POST);
+			request.Resource = "Accounts/{AccountSid}/Applications.json";
+
+			Require.Argument("FriendlyName", options.FriendlyName);
+			Validate.IsValidLength(friendlyName, 64);
+
+			// some check for null. in those cases an empty string is a valid value (to remove a URL assignment)
+			if (options != null)
+			{
+				request.AddParameter("FriendlyName", options.FriendlyName);
+				if (options.VoiceUrl != null) request.AddParameter("VoiceUrl", options.VoiceUrl);
+				if (options.VoiceMethod.HasValue()) request.AddParameter("VoiceMethod", options.VoiceMethod.ToString());
+				if (options.VoiceFallbackUrl != null) request.AddParameter("VoiceFallbackUrl", options.VoiceFallbackUrl);
+				if (options.VoiceFallbackMethod.HasValue()) request.AddParameter("VoiceFallbackMethod", options.VoiceFallbackMethod.ToString());
+				if (options.VoiceCallerIdLookup.HasValue) request.AddParameter("VoiceCallerIdLookup", options.VoiceCallerIdLookup.Value);
+				if (options.StatusCallback.HasValue()) request.AddParameter("StatusCallback", options.StatusCallback);
+				if (options.StatusCallbackMethod.HasValue()) request.AddParameter("StatusCallbackMethod", options.StatusCallbackMethod.ToString());
+				if (options.SmsUrl != null) request.AddParameter("SmsUrl", options.SmsUrl);
+				if (options.SmsMethod.HasValue()) request.AddParameter("SmsMethod", options.SmsMethod.ToString());
+				if (options.SmsFallbackUrl != null) request.AddParameter("SmsFallbackUrl", options.SmsFallbackUrl);
+				if (options.SmsFallbackMethod.HasValue()) request.AddParameter("SmsFallbackMethod", options.SmsFallbackMethod.ToString());
+			}
+
+			return Execute<Application>(request);
+		}
+
+		/// <summary>
+		/// Create a new application
+		/// </summary>
 		/// <param name="friendlyName">The friendly name to name the application</param>
-		/// <param name="options">Optional parameters to use when purchasing number</param>
+		/// <param name="options">Optional parameters to use when creating application</param>
 		public Application AddApplication(string friendlyName, ApplicationOptions options)
 		{
 			var request = new RestRequest(Method.POST);
