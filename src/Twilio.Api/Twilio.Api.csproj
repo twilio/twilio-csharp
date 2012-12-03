@@ -66,6 +66,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Net" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -140,6 +141,7 @@
     <Compile Include="Model\ConnectAppResult.cs" />
     <Compile Include="Model\AuthorizedConnectAppResult.cs" />
     <Compile Include="Model\DequeueStatus.cs" />
+    <Compile Include="Model\OutgoingCallerIdOptions.cs" />
     <Compile Include="Model\Permission.cs" />
     <Compile Include="Model\Queue.cs" />
     <Compile Include="Model\QueueMember.cs" />
@@ -207,17 +209,14 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>-->
-  
   <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'ReleaseWithPackage' ">
     <MakeDir Directories="$(MSBuildProjectDirectory)..\..\..\Download\package\twilio\lib\3.5" />
     <CreateItem Include="$(TargetDir)\$(ProjectName).*">
-      <Output TaskParameter="Include" ItemName="FilesToCopy"/>
+      <Output TaskParameter="Include" ItemName="FilesToCopy" />
     </CreateItem>
     <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(MSBuildProjectDirectory)..\..\..\download\package\twilio\lib\3.5\" />
   </Target>
-
   <!--<Exec Command="&quot;c:\Program Files (x86)\Microsoft\ILMerge\ilmerge.exe&quot; /lib:$(OutDir) /internalize /ndebug /v2 /out:$(MSBuildProjectDirectory)\..\..\download\Twilio.Api.dll Twilio.Api.dll RestSharp.dll Newtonsoft.Json.dll" />-->
-  
   <PropertyGroup>
     <PostBuildEvent>
     </PostBuildEvent>

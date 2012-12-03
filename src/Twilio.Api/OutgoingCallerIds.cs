@@ -63,19 +63,42 @@ namespace Twilio
 		/// <param name="extension">Digits to dial after connecting the validation call.</param>
 		public ValidationRequestResult AddOutgoingCallerId(string phoneNumber, string friendlyName, int? callDelay, string extension)
 		{
-			Require.Argument("PhoneNumber", phoneNumber);
-			if (callDelay.HasValue) Validate.IsBetween(callDelay.Value, 0, 60);
+            var options = new OutgoingCallerIdOptions()
+            {
+                FriendlyName = friendlyName,
+                CallDelay = callDelay,
+                Extension = extension
+            };
 
-			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}/OutgoingCallerIds.json";
-						request.AddParameter("PhoneNumber", phoneNumber);
-
-			if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
-			if (callDelay.HasValue) request.AddParameter("CallDelay", callDelay.Value);
-			if (extension.HasValue()) request.AddParameter("Extension", extension);
-
-			return Execute<ValidationRequestResult>(request);
+            return AddOutgoingCallerId(phoneNumber, options);
 		}
+
+        /// <summary>
+        /// Adds a new validated CallerID to your account. 
+        /// After making this request, Twilio will return to you a validation code and dial the phone number given to perform validation. 
+        /// The code returned must be entered via the phone before the CallerID will be added to your account.
+        /// Makes a POST request to an OutgoingCallerIds List resource.
+        /// </summary>
+        /// <param name="phoneNumber">The phone number to verify. Should be formatted with a '+' and country code e.g., +16175551212 (E.164 format). Twilio will also accept unformatted US numbers e.g., (415) 555-1212, 415-555-1212.</param>
+        /// <param name="options">Optional parameters to use when purchasing number</param>
+        public ValidationRequestResult AddOutgoingCallerId(string phoneNumber, OutgoingCallerIdOptions options)
+        {
+            Require.Argument("PhoneNumber", phoneNumber);
+            if (options.CallDelay.HasValue) Validate.IsBetween(options.CallDelay.Value, 0, 60);
+
+            var request = new RestRequest(Method.POST);
+            request.Resource = "Accounts/{AccountSid}/OutgoingCallerIds.json";
+            request.AddParameter("PhoneNumber", phoneNumber);
+
+            if (options.FriendlyName.HasValue()) request.AddParameter("FriendlyName", options.FriendlyName);
+            if (options.CallDelay.HasValue) request.AddParameter("CallDelay", options.CallDelay.Value);
+            if (options.Extension.HasValue()) request.AddParameter("Extension", options.Extension);
+
+            if (options.StatusCallback.HasValue()) request.AddParameter("StatusCallback", options.StatusCallback);
+            if (options.StatusCallbackMethod.HasValue()) request.AddParameter("StatusCallbackMethod", options.StatusCallbackMethod);
+
+            return Execute<ValidationRequestResult>(request);
+        }
 
 		/// <summary>
 		/// Update the FriendlyName associated with a validated outgoing caller ID entry.

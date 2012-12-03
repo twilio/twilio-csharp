@@ -167,6 +167,9 @@
     <Compile Include="..\Twilio.Api\Model\OutgoingCallerId.cs">
       <Link>Model\OutgoingCallerId.cs</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api\Model\OutgoingCallerIdOptions.cs">
+      <Link>Model\OutgoingCallerIdOptions.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api\Model\OutgoingCallerIdResult.cs">
       <Link>Model\OutgoingCallerIdResult.cs</Link>
     </Compile>
@@ -286,13 +289,11 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>-->
-
   <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'ReleaseWithPackage' ">
     <MakeDir Directories="$(MSBuildProjectDirectory)..\..\..\Download\package\twilio\lib\SL4" />
     <CreateItem Include="$(TargetDir)\$(ProjectName).*">
-      <Output TaskParameter="Include" ItemName="FilesToCopy"/>
+      <Output TaskParameter="Include" ItemName="FilesToCopy" />
     </CreateItem>
     <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(MSBuildProjectDirectory)..\..\..\download\package\twilio\lib\SL4\" />
   </Target>
-
 </Project>

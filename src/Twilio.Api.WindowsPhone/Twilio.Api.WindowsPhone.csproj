@@ -180,6 +180,9 @@
     <Compile Include="..\Twilio.Api\Model\OutgoingCallerId.cs">
       <Link>Model\OutgoingCallerId.cs</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api\Model\OutgoingCallerIdOptions.cs">
+      <Link>Model\OutgoingCallerIdOptions.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api\Model\OutgoingCallerIdResult.cs">
       <Link>Model\OutgoingCallerIdResult.cs</Link>
     </Compile>

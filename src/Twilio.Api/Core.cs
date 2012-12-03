@@ -31,6 +31,7 @@ namespace Twilio
         /// </summary>
         public string BaseUrl { get { return _baseUri; } }
 
+#if !WINDOWS_PHONE && !SILVERLIGHT
         /// <summary>
         /// Gets or sets the Proxy to use for requests made with this instance.
         /// </summary>
@@ -39,6 +40,7 @@ namespace Twilio
             get { return _client.Proxy; }
             set { _client.Proxy = value; }
         }
+#endif
 
         /// <summary>
 		/// Initializes a new client with the specified credentials.
