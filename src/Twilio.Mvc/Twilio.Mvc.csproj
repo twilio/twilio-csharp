@@ -57,6 +57,7 @@
     <Compile Include="..\Twilio.Api\SharedAssemblyInfo.cs">
       <Link>SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="HttpStatusCodeResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SmsRequest.cs" />
     <Compile Include="StatusCallbackRequest.cs" />
@@ -77,13 +78,11 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>-->
-
   <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'ReleaseWithPackage' ">
     <MakeDir Directories="$(MSBuildProjectDirectory)..\..\..\Download\package\twiliomvc\lib\3.5" />
     <CreateItem Include="$(TargetDir)\$(ProjectName).*">
-      <Output TaskParameter="Include" ItemName="FilesToCopy"/>
+      <Output TaskParameter="Include" ItemName="FilesToCopy" />
     </CreateItem>
     <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(MSBuildProjectDirectory)..\..\..\download\package\twiliomvc\lib\3.5\" />
   </Target>
-  
 </Project>
