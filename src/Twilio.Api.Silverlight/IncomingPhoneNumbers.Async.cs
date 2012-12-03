@@ -98,6 +98,25 @@ namespace Twilio
 			ExecuteAsync<IncomingPhoneNumber>(request, (response) => callback(response));
 		}
 
+        /// <summary>
+        /// Transfer phone numbes between master and sub accounts
+        /// </summary>
+        /// <param name="incomingPhoneNumberSid">The Sid of the phone number to move</param>
+        /// <param name="sourceAccountSid">The AccountSid of the current owning account to move the phone number from</param>
+        /// <param name="targetAccountSid">The AccountSid of the account to move the phone number to</param>
+        /// <param name="callback">Method to call upon successful completion</param>
+        public void TransferIncomingPhoneNumber(string incomingPhoneNumberSid, string sourceAccountSid, string targetAccountSid, Action<IncomingPhoneNumber> callback)
+        {
+            var request = new RestRequest(Method.POST);
+            request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}.json";
+
+            request.AddParameter("AccountSid", sourceAccountSid, ParameterType.UrlSegment);
+            request.AddParameter("IncomingPhoneNumberSid", incomingPhoneNumberSid, ParameterType.UrlSegment);
+            request.AddParameter("AccountSid", targetAccountSid, ParameterType.GetOrPost);
+
+            ExecuteAsync<IncomingPhoneNumber>(request, (response) => callback(response));
+        }
+
 		/// <summary>
 		/// Remove (deprovision) a phone number from the current account. Makes a DELETE request to an IncomingPhoneNumber Instance resource.
 		/// </summary>
