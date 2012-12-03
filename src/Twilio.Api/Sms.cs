@@ -76,21 +76,36 @@ namespace Twilio
 		/// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the SmsSid as well as SmsStatus=sent or SmsStatus=failed</param>
 		public SMSMessage SendSmsMessage(string from, string to, string body, string statusCallback)
 		{
-			Require.Argument("from", from);
-			Require.Argument("to", to);
-			Require.Argument("body", body);
+            return SendSmsMessage(from, to, body, statusCallback, string.Empty);
+        }
 
-			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}/SMS/Messages.json";
-			request.AddParameter("From", from);
-			request.AddParameter("To", to);
-			request.AddParameter("Body", body);
-			if (statusCallback.HasValue()) request.AddParameter("StatusCallback", statusCallback);
+        /// <summary>
+        /// Send a new SMS message to the specified recipients
+        /// Makes a POST request to the SMSMessages List resource.
+        /// </summary>
+        /// <param name="from">The phone number to send the message from. Must be a Twilio-provided or ported local (not toll-free) number. Validated outgoing caller IDs cannot be used.</param>
+        /// <param name="to">The phone number to send the message to. If using the Sandbox, this number must be a validated outgoing caller ID</param>
+        /// <param name="body">The message to send. Must be 160 characters or less.</param>
+        /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the SmsSid as well as SmsStatus=sent or SmsStatus=failed</param>
+        /// <param name="applicationSid">Twilio will POST SmsSid as well as SmsStatus=sent or SmsStatus=failed to the URL in the SmsStatusCallback property of this Application. If the StatusCallback parameter above is also passed, the Application's SmsStatusCallback parameter will take precedence.</param>
+        public SMSMessage SendSmsMessage(string from, string to, string body, string statusCallback, string applicationSid)
+        {
+            Require.Argument("from", from);
+            Require.Argument("to", to);
+            Require.Argument("body", body);
 
-			return Execute<SMSMessage>(request);
-		}
+            var request = new RestRequest(Method.POST);
+            request.Resource = "Accounts/{AccountSid}/SMS/Messages.json";
+            request.AddParameter("From", from);
+            request.AddParameter("To", to);
+            request.AddParameter("Body", body);
+            if (statusCallback.HasValue()) request.AddParameter("StatusCallback", statusCallback);
+            if (applicationSid.HasValue()) request.AddParameter("ApplicationSid", statusCallback);
 
-		/// <summary>
+            return Execute<SMSMessage>(request);
+        }
+        
+        /// <summary>
 		/// Retrieve the details for a specific ShortCode instance.
 		/// Makes a GET request to a ShortCode Instance resource.
 		/// </summary>
