@@ -134,5 +134,27 @@ namespace Twilio
 
 			return Execute<Call>(request);
 		}
+
+		/// <summary>
+		/// Update a Call with the given CallOptions
+		/// </summary>
+		/// <param name="callSid">The Sid of the call to update</param>
+		/// <param name="options">Which settings to update. Only properties with values set will be updated.</param>
+		public Call UpdateCall(string callSid, CallOptions options)
+		{
+			Require.Argument("CallSid", callSid);
+			var request = new RestRequest(Method.POST);
+			request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}.json";
+
+			request.AddParameter("CallSid", callSid, ParameterType.UrlSegment);
+			if (options != null)
+			{
+				if (options.Url != null) request.AddParameter("Url", options.Url);
+				if (options.Method != null) request.AddParameter("Method", options.Method);
+				if (options.Status != null) request.AddParameter("Status", options.Status);
+			}
+
+			return Execute<Call>(request);
+		}
 	}
 }
