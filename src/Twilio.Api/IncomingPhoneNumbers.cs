@@ -92,6 +92,24 @@ namespace Twilio
 			return Execute<IncomingPhoneNumber>(request);
 		}
 
+        /// <summary>
+        /// Transfer phone numbes between master and sub accounts
+        /// </summary>
+        /// <param name="incomingPhoneNumberSid">The Sid of the phone number to move</param>
+        /// <param name="sourceAccountSid">The AccountSid of the current owning account to move the phone number from</param>
+        /// <param name="targetAccountSid">The AccountSid of the account to move the phone number to</param>
+        public IncomingPhoneNumber TransferIncomingPhoneNumber(string incomingPhoneNumberSid, string sourceAccountSid, string targetAccountSid)
+        {
+            var request = new RestRequest(Method.POST);
+            request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}.json";
+
+            request.AddParameter("AccountSid", sourceAccountSid, ParameterType.UrlSegment);
+            request.AddParameter("IncomingPhoneNumberSid", incomingPhoneNumberSid, ParameterType.UrlSegment);
+            request.AddParameter("AccountSid", targetAccountSid, ParameterType.GetOrPost);
+
+            return Execute<IncomingPhoneNumber>(request);
+        }
+
 		/// <summary>
 		/// Remove (deprovision) a phone number from the current account
 		/// </summary>
