@@ -160,7 +160,7 @@ namespace Twilio
 		public void ListShortCodes(string shortCode, string friendlyName, Action<SmsShortCodeResult> callback)
 		{
 			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/SMS/ShortCodes}.json";
+			request.Resource = "Accounts/{AccountSid}/SMS/{ShortCodes}.json";
 
 			if (shortCode.HasValue()) request.AddParameter("ShortCode", shortCode);
 			if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
