@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>3.5.5</version>
+		<version>3.5.6</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -15,6 +15,12 @@
 			<dependency id="RestSharp" />
 		</dependencies>
 		<releaseNotes>
+      * 3.5.6 - Added ApplicationSid overload to SendSmsMessage
+      General code cleanup
+      Exposed IWebProxy to allow proxies to be set
+      Added a way to transfer numbers between master and sub accounts
+      Added OutgoingCallerIdOptions class and changed associated methods 
+      Fixed bug in ListShortCodes
       * 3.5.5 - Removed support for Windows Phone 7.0 SDK
       Added support for Windows Phone 7.1 SDK
       * 3.5.4 - Fixed package to support Mango tooling
