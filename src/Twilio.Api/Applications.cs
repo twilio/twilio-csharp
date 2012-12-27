@@ -15,7 +15,7 @@ namespace Twilio
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Applications/{ApplicationSid}.json";
-			
+
 			request.AddUrlSegment("ApplicationSid", applicationSid);
 
 			return Execute<Application>(request);
@@ -84,9 +84,8 @@ namespace Twilio
 		/// Tries to update the application's properties, and returns the updated resource representation if successful.
 		/// </summary>
 		/// <param name="applicationSid">The Sid of the application to update</param>
-		/// <param name="friendlyName">The friendly name to rename the application to (optional, null to leave as-is)</param>
 		/// <param name="options">Which settings to update. Only properties with values set will be updated.</param>
-		public Application UpdateApplication(string applicationSid, string friendlyName, ApplicationOptions options)
+		public Application UpdateApplication(string applicationSid, ApplicationOptions options)
 		{
 			Require.Argument("ApplicationSid", applicationSid);
 
@@ -97,6 +96,7 @@ namespace Twilio
 			if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
 			if (options != null)
 			{
+				if (options.FriendlyName.HasValue()) request.AddParameter("FriendlyName", options.FriendlyName.ToString());
 				if (options.VoiceUrl != null) request.AddParameter("VoiceUrl", options.VoiceUrl);
 				if (options.VoiceMethod.HasValue()) request.AddParameter("VoiceMethod", options.VoiceMethod.ToString());
 				if (options.VoiceFallbackUrl != null) request.AddParameter("VoiceFallbackUrl", options.VoiceFallbackUrl);
@@ -111,6 +111,21 @@ namespace Twilio
 			}
 
 			return Execute<Application>(request);
+		}
+
+		/// <summary>
+		/// Tries to update the application's properties, and returns the updated resource representation if successful.
+		/// </summary>
+		/// <param name="applicationSid">The Sid of the application to update</param>
+		/// <param name="friendlyName">The friendly name to rename the application to (optional, null to leave as-is)</param>
+		/// <param name="options">Which settings to update. Only properties with values set will be updated.</param>
+		public Application UpdateApplication(string applicationSid, string friendlyName, ApplicationOptions options)
+		{
+			if (friendlyName.HasValue())
+			{
+				options.FriendlyName = friendlyName;
+			}
+			return UpdateApplication(applicationSid, options);
 		}
 
 		/// <summary>
