@@ -158,6 +158,7 @@
     <Compile Include="Core.cs" />
     <Compile Include="IncomingPhoneNumbers.cs" />
     <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\AccountOptions.cs" />
     <Compile Include="Model\AvailablePhoneNumber.cs" />
     <Compile Include="Model\AvailablePhoneNumberResult.cs" />
     <Compile Include="Model\Call.cs" />
