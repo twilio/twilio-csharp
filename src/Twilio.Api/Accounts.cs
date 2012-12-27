@@ -1,5 +1,7 @@
 ﻿using System;
 using RestSharp;
+using RestSharp.Extensions;
+using RestSharp.Validation;
 
 namespace Twilio
 {
@@ -90,6 +92,20 @@ namespace Twilio
 			request.Resource = "Accounts/{AccountSid}.json";
 			request.AddParameter("FriendlyName", friendlyName);
 
+			return Execute<Account>(request);
+		}
+
+		public Account UpdateAccount(string accountSid, AccountOptions options) 
+		{
+			Require.Argument("AccountSid", applicationSid);
+			var request = new RestRequest(Method.POST);
+			request.Resource = "Accounts/{AccountSid}.json";
+			request.AddUrlSegment("AccountSid", accountSid);
+			if (options != null)
+			{
+				if (options.Status != null) request.AddParameter("Status", options.Status);
+				if (options.FriendlyName) request.AddParameter("FriendlyName", options.FriendlyName);
+			}
 			return Execute<Account>(request);
 		}
 	}
