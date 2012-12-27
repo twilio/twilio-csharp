@@ -97,14 +97,14 @@ namespace Twilio
 
 		public Account UpdateAccount(string accountSid, AccountOptions options) 
 		{
-			Require.Argument("AccountSid", applicationSid);
+			Require.Argument("AccountSid", accountSid);
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}.json";
 			request.AddUrlSegment("AccountSid", accountSid);
 			if (options != null)
 			{
 				if (options.Status != null) request.AddParameter("Status", options.Status);
-				if (options.FriendlyName) request.AddParameter("FriendlyName", options.FriendlyName);
+				if (options.FriendlyName != null) request.AddParameter("FriendlyName", options.FriendlyName);
 			}
 			return Execute<Account>(request);
 		}
