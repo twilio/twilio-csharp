@@ -29,13 +29,8 @@ namespace Twilio
 		/// <param name="isoCountryCode">Two-character ISO country code (US or CA)</param>
 		public AvailablePhoneNumberResult ListAvailableTollFreePhoneNumbers(string isoCountryCode)
 		{
-			Require.Argument("isoCountryCode", isoCountryCode);
-
-			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/TollFree.json";
-			request.AddUrlSegment("IsoCountryCode", isoCountryCode);
-
-			return Execute<AvailablePhoneNumberResult>(request);
+			var options = new AvailablePhoneNumberListRequest();
+			return ListAvailableTollFreePhoneNumbers(isoCountryCode, options);
 		}
 
 		/// <summary>
@@ -45,14 +40,30 @@ namespace Twilio
 		/// <param name="contains">Value to use when filtering search. Accepts numbers or characters.</param>
 		public AvailablePhoneNumberResult ListAvailableTollFreePhoneNumbers(string isoCountryCode, string contains)
 		{
+			var options = new AvailablePhoneNumberListRequest();
+			options.Contains = contains;
+
+			return ListAvailableTollFreePhoneNumbers(isoCountryCode, options);
+		}
+
+		/// <summary>
+		/// Search available toll-free phone numbers.  Makes a GET request to the AvailablePhoneNumber List resource.
+		/// </summary>
+		/// <param name="isoCountryCode">Two-character ISO country code (US or CA)</param>
+		/// <param name="options">Search filter options</param>
+		public AvailablePhoneNumberResult ListAvailableTollFreePhoneNumbers(string isoCountryCode, AvailablePhoneNumberListRequest options)
+		{
 			Require.Argument("isoCountryCode", isoCountryCode);
-			Require.Argument("contains", contains);
 
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/TollFree.json";
 			request.AddUrlSegment("IsoCountryCode", isoCountryCode);
 
-			request.AddParameter("Contains", contains);
+			if (options != null) 
+			{
+				if (options.AreaCode != null) request.AddParameter("AreaCode", options.AreaCode);
+				if (options.Contains != null) request.AddParameter("Contains", options.Contains);
+			}
 
 			return Execute<AvailablePhoneNumberResult>(request);
 		}
