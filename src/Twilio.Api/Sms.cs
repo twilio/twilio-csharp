@@ -136,7 +136,7 @@ namespace Twilio
 		{
 			Require.Argument("shortCodeSid", shortCodeSid);
 
-			var request = new RestRequest();
+			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/SMS/ShortCodes/{ShortCodeSid}.json";
 			request.AddUrlSegment("ShortCodeSid", shortCodeSid);
 
