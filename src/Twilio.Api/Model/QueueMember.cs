@@ -25,6 +25,6 @@ namespace Twilio
         /// <summary>
         /// The callers current position in the Queue
         /// </summary>
-        public int? CurrentPosition { get; set; }
+        public int? Position { get; set; }
     }
 }
