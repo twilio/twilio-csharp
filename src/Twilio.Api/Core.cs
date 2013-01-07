@@ -58,7 +58,7 @@ namespace Twilio
 		/// </summary>
 		/// <typeparam name="T">The type of object to create and populate with the returned data.</typeparam>
 		/// <param name="request">The RestRequest to execute (will use client credentials)</param>
-		public T Execute<T>(RestRequest request) where T : new()
+		public virtual T Execute<T>(RestRequest request) where T : new()
 		{
 			request.OnBeforeDeserialization = (resp) =>
 			{
@@ -86,7 +86,7 @@ namespace Twilio
 		/// Execute a manual REST request
 		/// </summary>
 		/// <param name="request">The RestRequest to execute (will use client credentials)</param>
-		public IRestResponse Execute(IRestRequest request)
+		public virtual IRestResponse Execute(IRestRequest request)
 		{
 			return _client.Execute(request);
 		}
