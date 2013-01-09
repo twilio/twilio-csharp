@@ -142,7 +142,6 @@
     <Compile Include="Model\AuthorizedConnectAppResult.cs" />
     <Compile Include="Model\DequeueStatus.cs" />
     <Compile Include="Model\OutgoingCallerIdOptions.cs" />
-    <Compile Include="Model\Permission.cs" />
     <Compile Include="Model\Queue.cs" />
     <Compile Include="Model\QueueMember.cs" />
     <Compile Include="Model\QueueMemberResult.cs" />

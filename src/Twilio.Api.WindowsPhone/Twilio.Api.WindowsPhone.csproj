@@ -195,9 +195,6 @@
     <Compile Include="..\Twilio.Api\Model\ParticipantResult.cs">
       <Link>Model\ParticipantResult.cs</Link>
     </Compile>
-    <Compile Include="..\Twilio.Api\Model\Permission.cs">
-      <Link>Model\Permission.cs</Link>
-    </Compile>
     <Compile Include="..\Twilio.Api\Model\PhoneNumberOptions.cs">
       <Link>Model\PhoneNumberOptions.cs</Link>
     </Compile>

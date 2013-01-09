@@ -27,7 +27,7 @@ namespace Twilio
 		/// <summary>
 		/// The set of permissions that you have authorized for this Connect App. Valid permisisons are get-all or post-all.
 		/// </summary>
-		public List<Permission> Permissions { get; set; }
+		public List<string> Permissions { get; set; }
 		/// <summary>
 		/// A human readable name for the Connect App.
 		/// </summary>
