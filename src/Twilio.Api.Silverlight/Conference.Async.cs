@@ -35,7 +35,7 @@ namespace Twilio
 
 		private void AddConferenceListOptions(ConferenceListRequest options, RestRequest request)
 		{
-			if (options.Status.HasValue) request.AddParameter("Status", options.Status);
+			if (options.Status != null) request.AddParameter("Status", options.Status);
 			if (options.FriendlyName.HasValue()) request.AddParameter("FriendlyName", options.FriendlyName);
 
 			var dateCreatedParameterName = GetParameterNameWithEquality(options.DateCreatedComparison, "DateCreated");
