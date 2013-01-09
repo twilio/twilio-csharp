@@ -4,7 +4,6 @@ using System.Reflection;
 using RestSharp.Deserializers;
 using Newtonsoft.Json.Linq;
 using System.Text;
-using System.Net;
 
 namespace Twilio
 {
@@ -13,42 +12,28 @@ namespace Twilio
 	/// </summary>
 	public partial class TwilioRestClient
 	{
-        string _apiVersion = "2010-04-01";
-        string _baseUri = "https://api.twilio.com/";
-
-        private string AccountSid { get; set; }
-        private string AuthToken { get; set; }
+		/// <summary>
+		/// Twilio API version to use when making requests
+		/// </summary>
+		public string ApiVersion { get; set; }
+		/// <summary>
+		/// Base URL of API (defaults to https://api.twilio.com)
+		/// </summary>
+		public string BaseUrl { get; set; }
+		private string AccountSid { get; set; }
+		private string AuthToken { get; set; }
 
 		private RestClient _client;
 
-        /// <summary>
-        /// Gets the Twilio API version used when making requests
-        /// </summary>
-        public string ApiVersion { get { return _apiVersion; } }
-
-        /// <summary>
-        /// Gets the Base URL of the Twilio API (defaults to https://api.twilio.com)
-        /// </summary>
-        public string BaseUrl { get { return _baseUri; } }
-
-#if !WINDOWS_PHONE && !SILVERLIGHT
-        /// <summary>
-        /// Gets or sets the Proxy to use for requests made with this instance.
-        /// </summary>
-        public IWebProxy Proxy
-        {
-            get { return _client.Proxy; }
-            set { _client.Proxy = value; }
-        }
-#endif
-
-        /// <summary>
+		/// <summary>
 		/// Initializes a new client with the specified credentials.
 		/// </summary>
 		/// <param name="accountSid">The AccountSid to authenticate with</param>
 		/// <param name="authToken">The AuthToken to authenticate with</param>
 		public TwilioRestClient(string accountSid, string authToken)
 		{
+			ApiVersion = "2010-04-01"; 
+			BaseUrl = "https://api.twilio.com/";
 			AccountSid = accountSid;
 			AuthToken = authToken;
 
@@ -61,7 +46,7 @@ namespace Twilio
 			_client.UserAgent = "twilio-csharp/" + version; 
 			_client.Authenticator = new HttpBasicAuthenticator(AccountSid, AuthToken);
 			_client.BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion);
-            
+
 			// if acting on a subaccount, use request.AddUrlSegment("AccountSid", "value")
 			// to override for that request.
 			_client.AddDefaultUrlSegment("AccountSid", AccountSid); 
@@ -73,7 +58,7 @@ namespace Twilio
 		/// </summary>
 		/// <typeparam name="T">The type of object to create and populate with the returned data.</typeparam>
 		/// <param name="request">The RestRequest to execute (will use client credentials)</param>
-		public T Execute<T>(RestRequest request) where T : new()
+		public virtual T Execute<T>(RestRequest request) where T : new()
 		{
 			request.OnBeforeDeserialization = (resp) =>
 			{
@@ -101,7 +86,7 @@ namespace Twilio
 		/// Execute a manual REST request
 		/// </summary>
 		/// <param name="request">The RestRequest to execute (will use client credentials)</param>
-		public IRestResponse Execute(IRestRequest request)
+		public virtual IRestResponse Execute(IRestRequest request)
 		{
 			return _client.Execute(request);
 		}
