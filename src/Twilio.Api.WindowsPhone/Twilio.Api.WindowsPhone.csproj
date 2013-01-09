@@ -84,6 +84,9 @@
     <Compile Include="..\Twilio.Api.Silverlight\ConnectApps.Async.cs">
       <Link>ConnectApps.Async.cs</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Notifications.Async.cs">
+      <Link>Notifications.Async.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api.Silverlight\Queues.Async.cs">
       <Link>Queues.Async.cs</Link>
     </Compile>
@@ -278,9 +281,6 @@
     </Compile>
     <Compile Include="..\Twilio.Api.Silverlight\IncomingPhoneNumbers.Async.cs">
       <Link>IncomingPhoneNumbers.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Notifications.Aysnc.cs">
-      <Link>Notifications.Aysnc.cs</Link>
     </Compile>
     <Compile Include="..\Twilio.Api.Silverlight\OutgoingCallerIds.Async.cs">
       <Link>OutgoingCallerIds.Async.cs</Link>

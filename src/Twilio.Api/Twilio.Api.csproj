@@ -101,8 +101,8 @@
     <Compile Include="..\Twilio.Api.Silverlight\IncomingPhoneNumbers.Async.cs">
       <Link>IncomingPhoneNumbers.Async.cs</Link>
     </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Notifications.Aysnc.cs">
-      <Link>Notifications.Aysnc.cs</Link>
+    <Compile Include="..\Twilio.Api.Silverlight\Notifications.Async.cs">
+      <Link>Notifications.Async.cs</Link>
     </Compile>
     <Compile Include="..\Twilio.Api.Silverlight\OutgoingCallerIds.Async.cs">
       <Link>OutgoingCallerIds.Async.cs</Link>

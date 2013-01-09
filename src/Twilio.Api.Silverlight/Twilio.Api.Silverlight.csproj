@@ -265,7 +265,7 @@
     <Compile Include="Sandbox.Async.cs" />
     <Compile Include="Core.Async.cs" />
     <Compile Include="IncomingPhoneNumbers.Async.cs" />
-    <Compile Include="Notifications.Aysnc.cs" />
+    <Compile Include="Notifications.Async.cs" />
     <Compile Include="OutgoingCallerIds.Async.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recordings.Async.cs" />
