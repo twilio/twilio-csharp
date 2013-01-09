@@ -10,7 +10,7 @@ namespace Twilio
 		/// <summary>
 		/// Only show conferences currently in with this status. May be init, in-progress, or completed.
 		/// </summary>
-		public int? Status { get; set; }
+		public string Status { get; set; }
 		/// <summary>
 		/// List conferences who's FriendlyName is the exact match of this string.
 		/// </summary>
