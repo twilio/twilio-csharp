@@ -5,6 +5,12 @@ namespace Twilio
 	/// </summary>
 	public class ApplicationOptions
 	{
+
+		/// <summary>
+		/// The Application friendly name
+		/// </summary>
+		public string FriendlyName { get; set; }
+
 		/// <summary>
 		/// The URL that Twilio should request when somebody dials the a phone number using this application.
 		/// </summary>
