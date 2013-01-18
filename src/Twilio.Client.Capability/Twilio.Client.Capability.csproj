@@ -44,9 +44,6 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="JWT, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\JWT.1.2\lib\3.5\JWT.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -66,19 +63,23 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\jwt\JWT\JWT.csproj">
+      <Project>{a80b51b8-ddf6-4026-98a4-b59653e50b38}</Project>
+      <Name>JWT</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>-->
-  
   <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'ReleaseWithPackage' ">
     <MakeDir Directories="$(MSBuildProjectDirectory)..\..\..\Download\package\twilioclient\lib\3.5" />
     <CreateItem Include="$(TargetDir)\$(ProjectName).*">
-      <Output TaskParameter="Include" ItemName="FilesToCopy"/>
+      <Output TaskParameter="Include" ItemName="FilesToCopy" />
     </CreateItem>
     <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(MSBuildProjectDirectory)..\..\..\download\package\twilioclient\lib\3.5\" />
   </Target>
-  
 </Project>
