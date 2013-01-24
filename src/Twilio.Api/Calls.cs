@@ -8,7 +8,6 @@ namespace Twilio
 	{
 		/// <summary>
 		/// Returns a paged list of phone calls made to and from the account.
-		/// Sorted by DateUpdated with most-recent calls first.
 		/// Makes a GET request to the Calls List resource.
 		/// </summary>
 		public CallResult ListCalls()
@@ -21,7 +20,6 @@ namespace Twilio
 
 		/// <summary>
 		/// Returns a paged list of phone calls made to and from the account.
-		/// Sorted by DateUpdated with most-recent calls first.
 		/// Makes a GET request to the Calls List resource.
 		/// </summary>
 		/// <param name="options">List filter options. If an property is set the list will be filtered by that value.</param>

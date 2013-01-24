@@ -6,7 +6,7 @@ namespace Twilio
 	{
 		/// <summary>
 		/// Returns a list of conferences within an account. 
-		/// The list includes paging information and is sorted by DateUpdated, with most recent conferences first.
+		/// The list includes paging information.
 		/// Makes a GET request to the Conferences List resource.
 		/// </summary>
 		public ConferenceResult ListConferences()
@@ -19,7 +19,7 @@ namespace Twilio
 
 		/// <summary>
 		/// Returns a list of conferences within an account. 
-		/// The list includes paging information and is sorted by DateUpdated, with most recent conferences first.
+		/// The list includes paging information.
 		/// Makes a POST request to the Conferences List resource.
 		/// </summary>
 		/// <param name="options">List filter options. Only properties with values are included in request.</param>
