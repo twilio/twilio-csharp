@@ -7,7 +7,7 @@ namespace Twilio
 	public partial class TwilioRestClient
 	{
 		/// <summary>
-		/// Returns a set of Transcriptions that includes paging information, sorted by 'DateUpdated', with most recent transcripts first.
+		/// Returns a set of Transcriptions that includes paging information.
 		/// Makes a GET request to the Transcriptions List resource.
 		/// </summary>
 		public TranscriptionResult ListTranscriptions()
@@ -16,7 +16,7 @@ namespace Twilio
 		}
 
 		/// <summary>
-		/// Returns a paged set of Transcriptions that includes paging information, sorted by 'DateUpdated', with most recent transcripts first.
+		/// Returns a paged set of Transcriptions that includes paging information.
 		/// Makes a GET request to the Transcriptions List resource.
 		/// </summary>
 		/// <param name="pageNumber">The page to start retrieving results from</param>
@@ -32,8 +32,8 @@ namespace Twilio
 		}
 
 		/// <summary>
-		/// Returns a set of Transcriptions for a specific recording that includes paging information, sorted by 'DateUpdated',
-		/// with most recent transcripts first. Makes a GET request to a Recording Transcriptions List resource.
+		/// Returns a set of Transcriptions for a specific recording that includes paging information.
+		/// Makes a GET request to a Recording Transcriptions List resource.
 		/// </summary>
 		/// <param name="recordingSid">The Sid of the recording to retrieve transcriptions for</param>
 		/// <param name="pageNumber">The page to start retrieving results from</param>
