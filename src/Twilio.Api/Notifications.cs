@@ -22,7 +22,7 @@ namespace Twilio
 
 		/// <summary>
 		/// Returns a list of notifications generated for an account. 
-		/// The list includes paging information and is sorted by DateUpdated, with most recent notifications first.
+		/// The list includes paging information.
 		/// Makes a GET request to a Notifications List resource.
 		/// </summary>
 		public NotificationResult ListNotifications()
@@ -32,7 +32,7 @@ namespace Twilio
 
 		/// <summary>
 		/// Returns a filtered list of notifications generated for an account. 
-		/// The list includes paging information and is sorted by DateUpdated, with most recent notifications first.
+		/// The list includes paging information.
 		/// Makes a GET request to a Notifications List resource.
 		/// </summary>
 		/// <param name="log">Only show notifications for this log, using the integer log values: 0 is ERROR, 1 is WARNING</param>

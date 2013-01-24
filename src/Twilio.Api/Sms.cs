@@ -23,7 +23,7 @@ namespace Twilio
 
 		/// <summary>
 		/// Returns a list of SMS messages. 
-		/// The list includes paging information and is sorted by DateSent, with most recent messages first.
+		/// The list includes paging information.
 		/// Makes a GET request to the SMSMessage List resource.
 		/// </summary>
 		public SmsMessageResult ListSmsMessages()
@@ -32,7 +32,7 @@ namespace Twilio
 		}
 
 		/// <summary>
-		/// Returns a filtered list of SMS messages. The list includes paging information and is sorted by DateSent, with most recent messages first.
+		/// Returns a filtered list of SMS messages. The list includes paging information.
 		/// Makes a GET request to the SMSMessages List resource.
 		/// </summary>
 		/// <param name="to">(Optional) The phone number of the message recipient</param>
