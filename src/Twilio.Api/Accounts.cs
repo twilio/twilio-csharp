@@ -41,6 +41,20 @@ namespace Twilio
 			return Execute<AccountResult>(request);
 		}
 
+        /// <summary>
+        /// List subaccounts that match the provided FriendlyName for the authenticated account. Makes a GET request to the Account List resource.
+        /// </summary>
+        /// <param name="friendlyName">Name associated with this account</param>
+        public AccountResult ListSubAccounts(string friendlyName)
+        {
+            var request = new RestRequest();
+            request.Resource = "Accounts.json";
+
+            request.AddParameter("FriendlyName", friendlyName);
+
+            return Execute<AccountResult>(request);
+        }
+
 		/// <summary>
 		/// Creates a new subaccount under the authenticated account. Makes a POST request to the Account List resource.
 		/// </summary>
@@ -92,5 +106,5 @@ namespace Twilio
 
 			return Execute<Account>(request);
 		}
-	}
+    }
 }
