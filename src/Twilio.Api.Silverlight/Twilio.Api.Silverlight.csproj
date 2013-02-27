@@ -253,7 +253,7 @@
     </Compile>
     <Compile Include="Accounts.Async.cs" />
     <Compile Include="Applications.Async.cs" />
-    <Compile Include="AvailablePhoneNumbers.Aysnc.cs" />
+    <Compile Include="AvailablePhoneNumbers.Async.cs" />
     <Compile Include="Calls.Async.cs" />
     <Compile Include="Conference.Async.cs" />
     <Compile Include="ConnectApps.Async.cs" />

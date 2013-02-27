@@ -80,12 +80,6 @@
     <Compile Include="..\Twilio.Api.Silverlight\Applications.Async.cs">
       <Link>Applications.Async.cs</Link>
     </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\AuthorizedConnectApps.Async.cs">
-      <Link>AuthorizedConnectApps.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\AvailablePhoneNumbers.Aysnc.cs">
-      <Link>AvailablePhoneNumbers.Aysnc.cs</Link>
-    </Compile>
     <Compile Include="..\Twilio.Api.Silverlight\Calls.Async.cs">
       <Link>Calls.Async.cs</Link>
     </Compile>
@@ -126,6 +120,8 @@
       <Link>Usage.Async.cs</Link>
     </Compile>
     <Compile Include="Accounts.cs" />
+    <Compile Include="AuthorizedConnectApps.Async.cs" />
+    <Compile Include="AvailablePhoneNumbers.Async.cs" />
     <Compile Include="Calls.cs" />
     <Compile Include="Conference.cs" />
     <Compile Include="AvailablePhoneNumbers.cs" />

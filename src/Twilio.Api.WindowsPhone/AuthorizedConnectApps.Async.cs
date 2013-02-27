@@ -1,0 +1,51 @@
+﻿using System;
+using RestSharp;
+using RestSharp.Extensions;
+using RestSharp.Validation;
+
+namespace Twilio
+{
+	public partial class TwilioRestClient
+	{
+		/// <summary>
+		/// Retrieve the details for an AuthorizedConnectApp instance. Makes a GET request to an AuthorizedConnectApp Instance resource.
+		/// </summary>
+		/// <param name="authorizedConnectAppSid">The Sid of the AuthorizedConnectApp to retrieve</param>
+		/// <param name="callback">Method to call upon successful completion</param>
+		public void GetAuthorizedConnectApp(string authorizedConnectAppSid, Action<AuthorizedConnectApp> callback)
+		{
+			var request = new RestRequest();
+			request.Resource = "Accounts/{AccountSid}/AuthorizedConnectApps/{AuthorizedConnectAppSid}.json";
+			
+			request.AddUrlSegment("AuthorizedConnectAppSid", authorizedConnectAppSid);
+
+			ExecuteAsync<AuthorizedConnectApp>(request, (response) => { callback(response); });
+		}
+
+		/// <summary>
+		/// List AuthorizedConnectApps on current account
+		/// </summary>
+		/// <param name="callback">Method to call upon successful completion</param>
+		public void ListAuthorizedConnectApps(Action<AuthorizedConnectAppResult> callback)
+		{
+			ListAuthorizedConnectApps(null, null, (response) => { callback(response); });
+		}
+
+		/// <summary>
+		/// List AuthorizedConnectApps on current account with filters
+		/// </summary>
+		/// <param name="pageNumber">Page number to start retrieving results from</param>
+		/// <param name="count">How many results to return</param>
+		/// <param name="callback">Method to call upon successful completion</param>
+		public void ListAuthorizedConnectApps(int? pageNumber, int? count, Action<AuthorizedConnectAppResult> callback)
+		{
+			var request = new RestRequest();
+			request.Resource = "Accounts/{AccountSid}/AuthorizedConnectApps.json";
+
+			if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
+			if (count.HasValue) request.AddParameter("PageSize", count.Value);
+
+			ExecuteAsync<AuthorizedConnectAppResult>(request, (response) => { callback(response); });
+		}
+	}
+}
