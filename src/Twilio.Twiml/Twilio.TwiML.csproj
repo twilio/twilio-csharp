@@ -66,6 +66,7 @@
     <Compile Include="Verbs\Enqueue.cs" />
     <Compile Include="Verbs\IDialNoun.cs" />
     <Compile Include="Verbs\IVerb.cs" />
+    <Compile Include="Verbs\Leave.cs" />
     <Compile Include="Verbs\Pause.cs" />
     <Compile Include="Verbs\Number.cs" />
     <Compile Include="Verbs\Queue.cs" />
@@ -86,13 +87,11 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>-->
-
   <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'ReleaseWithPackage' ">
     <MakeDir Directories="$(MSBuildProjectDirectory)..\..\..\Download\package\twiliotwiml\lib\3.5" />
     <CreateItem Include="$(TargetDir)\$(ProjectName).*">
-      <Output TaskParameter="Include" ItemName="FilesToCopy"/>
+      <Output TaskParameter="Include" ItemName="FilesToCopy" />
     </CreateItem>
     <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(MSBuildProjectDirectory)..\..\..\download\package\twiliotwiml\lib\3.5\" />
   </Target>
-  
 </Project>
