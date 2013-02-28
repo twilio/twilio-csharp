@@ -5,8 +5,8 @@ C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe /nologo /maxcpucount /
 rd download /s /q
 
 if not exist download mkdir download
-if not exist download\WindowsPhone mkdir download\WindowsPhone
-if not exist download\Silverlight mkdir download\Silverlight
+REM if not exist download\WindowsPhone mkdir download\WindowsPhone
+REM if not exist download\Silverlight mkdir download\Silverlight
 if not exist download\package mkdir download\package
 if not exist download\package\twilio mkdir download\package\twilio
 if not exist download\package\twiliomvc mkdir download\package\twiliomvc
@@ -32,16 +32,16 @@ if not exist download\package\twiliowebmatrix\lib\3.5 mkdir download\package\twi
 if not exist download\package\twilioclient\lib mkdir download\package\twilioclient\lib
 if not exist download\package\twilioclient\lib\3.5 mkdir download\package\twilioclient\lib\3.5
 
-tools\ilmerge.exe /lib:src\Twilio.Api\bin\Release /internalize /ndebug /v2 /out:download\Twilio.Api.dll Twilio.Api.dll RestSharp.dll
-tools\ilmerge.exe /lib:src\Twilio.Api.Silverlight\bin\Release /internalize /ndebug /targetplatform:v4,"C:\Program Files (x86)\Microsoft Silverlight\4.1.10111.0" /out:download\Twilio.Api.Silverlight.dll RestSharp.Silverlight.dll
+REM tools\ilmerge.exe /lib:src\Twilio.Api\bin\Release /internalize /ndebug /v2 /out:download\Twilio.Api.dll Twilio.Api.dll RestSharp.dll
+REM tools\ilmerge.exe /lib:src\Twilio.Api.Silverlight\bin\Release /internalize /ndebug /targetplatform:v4,"C:\Program Files (x86)\Microsoft Silverlight\4.1.10111.0" /out:download\Twilio.Api.Silverlight.dll RestSharp.Silverlight.dll
 
-copy src\Twilio.Api\bin\Release\*.* download
-copy src\Twilio.Api.Silverlight\bin\Release\*.* download\Silverlight\
-copy src\Twilio.Api.WindowsPhone\bin\Release\*.* download\WindowsPhone\
-copy src\Twilio.Mvc\bin\Release\*.* download
-copy src\Twilio.Twiml\bin\Release\*.* download
-copy src\Twilio.WebMatrix\bin\Release\*.* download
-copy src\Twilio.Client.Capability\bin\Release\*.* download
+REM copy src\Twilio.Api\bin\Release\*.* download
+REM copy src\Twilio.Api.Silverlight\bin\Release\*.* download\Silverlight\
+REM copy src\Twilio.Api.WindowsPhone\bin\Release\*.* download\WindowsPhone\
+REM copy src\Twilio.Mvc\bin\Release\*.* download
+REM copy src\Twilio.Twiml\bin\Release\*.* download
+REM copy src\Twilio.WebMatrix\bin\Release\*.* download
+REM copy src\Twilio.Client.Capability\bin\Release\*.* download
 copy LICENSE.txt download
 
 copy src\Twilio.Api\bin\Release\Twilio.Api.* download\package\twilio\lib\3.5\
