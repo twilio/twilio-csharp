@@ -1,6 +1,6 @@
 REM tools\nuget.exe update -self
 
-msbuild src/Twilio.sln
+C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe /nologo /maxcpucount /nr:true /verbosity:minimal /p:BuildInParallel=true /p:Configuration=Release /p:RestorePackages=true /t:Rebuild src/Twilio.sln
 
 rd download /s /q
 
