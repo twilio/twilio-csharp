@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>3.5.6</version>
+		<version>3.5.7</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -15,11 +15,16 @@
 			<dependency id="RestSharp" />
 		</dependencies>
 		<releaseNotes>
+      * 3.5.7 - Added new overload to UpdateApplication that takes only the applicationSid and ApplicationOptions object.  This overload uses the FriendlyName property from the ApplicationOptions.
+      - Changed the Status property in ConferenceListRequest to a string, since thats what the values actually are
+      - Change the QueueMember CurrentPosition property name to Position to match the API
+      - Changed UpdateShortCode to use POST
+      - Added the ability to filter by friendlyname, a list of subsccounts
       * 3.5.6 - Added ApplicationSid overload to SendSmsMessage
       General code cleanup
       Exposed IWebProxy to allow proxies to be set
       Added a way to transfer numbers between master and sub accounts
-      Added OutgoingCallerIdOptions class and changed associated methods 
+      Added OutgoingCallerIdOptions class and changed associated methods
       Fixed bug in ListShortCodes
       * 3.5.5 - Removed support for Windows Phone 7.0 SDK
       Added support for Windows Phone 7.1 SDK
