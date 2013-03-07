@@ -18,7 +18,6 @@ namespace Twilio.TwiML
 		{
 			Element = new XElement("Sip");
 			AllowedChildren.Add("Uri");
-			AllowedChildren.Add("Headers");
 
 			AllowedAttributes.Add("username");
 			AllowedAttributes.Add("password");
