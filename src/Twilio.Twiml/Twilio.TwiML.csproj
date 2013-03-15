@@ -74,12 +74,14 @@
     <Compile Include="Verbs\Hangup.cs" />
     <Compile Include="Verbs\Dial.cs" />
     <Compile Include="Verbs\Redirect.cs" />
+    <Compile Include="Verbs\Sip.cs" />
     <Compile Include="Verbs\Sms.cs" />
     <Compile Include="Verbs\Record.cs" />
     <Compile Include="Verbs\Play.cs" />
     <Compile Include="Verbs\Gather.cs" />
     <Compile Include="Verbs\Say.cs" />
     <Compile Include="Verbs\ElementBase.cs" />
+    <Compile Include="Verbs\Uri.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

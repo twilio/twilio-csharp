@@ -25,6 +25,17 @@ namespace Twilio.TwiML
 			AllowedAttributes.Add("method");
 		}
 
+
+        public Sip(string address) : this()
+        {
+            Element.Add(address);
+        }
+
+        public Sip(string address, object attributes)
+            : this(address)
+        {
+            AddAttributesFromObject(attributes);
+        }
 	}
 }
 

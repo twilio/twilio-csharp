@@ -14,13 +14,19 @@ namespace Twilio.TwiML
 		/// <summary>
 		/// Initializes a new instance of the Uri class.
 		/// </summary>
-		public Uri(string uri) : this() 
+		public Uri(string uri)
 		{
 			Element = new XElement("Uri");
-			Element.Add(uri)
+            Element.Add(uri);
+
 			AllowedAttributes.Add("username");
 			AllowedAttributes.Add("password");
 		}
+
+        public Uri(string uri, object attributes) : this (uri) 
+        {
+            AddAttributesFromObject(attributes);
+        }
 
 	}
 }
