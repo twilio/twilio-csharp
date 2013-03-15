@@ -1,21 +1,22 @@
 ﻿using System;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Twilio.TwiML.Tests.DocExamples
 {
+    [TestClass]
 	public class GatherTests : TestBase
 	{
-		[Fact]
+		[TestMethod]
 		public void Example_1()
 		{
 			var response = new TwilioResponse();
 			response.Gather();
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
 		// http://www.twilio.com/docs/api/twiml/gather#examples-2
-		[Fact]
+		[TestMethod]
 		public void Example_2()
 		{
 			var response = new TwilioResponse();
@@ -24,11 +25,11 @@ namespace Twilio.TwiML.Tests.DocExamples
 			response.EndGather();
 			response.Say("We didn't receive any input. Goodbye!");
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
 		// http://www.twilio.com/docs/api/twiml/gather#hints
-		[Fact]
+		[TestMethod]
 		public void Advanced()
 		{
 			var response = new TwilioResponse();
@@ -37,7 +38,7 @@ namespace Twilio.TwiML.Tests.DocExamples
 			response.EndGather();
 			response.Redirect("/process_gather.php?Digits=TIMEOUT", "GET");
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 	}
 }

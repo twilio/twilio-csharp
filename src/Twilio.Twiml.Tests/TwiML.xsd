@@ -106,6 +106,7 @@
 				<xs:element name="Client" type="ClientType"></xs:element>
 				<xs:element name="Conference" type="ConferenceType"></xs:element>
         <xs:element name="Queue" type="QueueType"></xs:element>
+        <xs:element name="Sip" type="SipType" maxOccurs="1"></xs:element>
 			</xs:choice>
 		</xs:sequence>
 		<xs:attribute name="action" type="xs:string"></xs:attribute>
@@ -174,6 +175,27 @@
     </xs:simpleContent>
   </xs:complexType>
 
+  <!-- <Sip> -->
+  <xs:complexType name="SipType" mixed="true">
+    <xs:choice>
+      <xs:element name="Uri" type="UriType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+    </xs:choice>
+    <xs:attribute name="url" type="xs:string"></xs:attribute>
+    <xs:attribute name="method" type="MethodType"></xs:attribute>
+    <xs:attribute name="username" type="xs:string"></xs:attribute>
+    <xs:attribute name="password" type="xs:string"></xs:attribute>
+  </xs:complexType>
+
+  <!-- <Uri> -->
+  <xs:complexType name="UriType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="username" type="xs:string"></xs:attribute>
+        <xs:attribute name="password" type="xs:string"></xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
   <!-- <Queue> -->
   <xs:complexType name="QueueType">
     <xs:simpleContent>

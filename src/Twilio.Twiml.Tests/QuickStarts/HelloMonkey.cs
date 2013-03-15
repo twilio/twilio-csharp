@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Twilio.TwiML.Tests.QuickStarts
 {
+    [TestClass]
 	public class HelloMonkey : TestBase
 	{
-		[Fact]
+		[TestMethod]
 		public void _1_0()
 		{
 			var response = new TwilioResponse();
 			response.Say("Hello monkey");
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[Fact]
+		[TestMethod]
 		public void _1_1()
 		{
 			var name = "Monkey";
@@ -25,10 +26,10 @@ namespace Twilio.TwiML.Tests.QuickStarts
 			var response = new TwilioResponse();
 			response.Say("Hello " + name);
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[Fact]
+		[TestMethod]
 		public void _1_2()
 		{
 			var name = "Monkey";
@@ -37,10 +38,10 @@ namespace Twilio.TwiML.Tests.QuickStarts
 			response.Say("Hello " + name);
 			response.Play("http://demo.twilio.com/hellomonkey/monkey.mp3");
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[Fact]
+		[TestMethod]
 		public void _1_3a()
 		{
 			var name = "Monkey";
@@ -52,20 +53,20 @@ namespace Twilio.TwiML.Tests.QuickStarts
 			response.Say("To speak to a real monkey, press 1. Press any other key to start over.");
 			response.EndGather();
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[Fact]
+		[TestMethod]
 		public void _1_3b()
 		{
 			var response = new TwilioResponse();
 			response.Dial("+13105551212");
 			response.Say("The call failed or the remote party hung up. Goodbye.");
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[Fact]
+		[TestMethod]
 		public void _1_4a()
 		{
 			var name = "Monkey";
@@ -77,10 +78,10 @@ namespace Twilio.TwiML.Tests.QuickStarts
 			response.Say("To speak to a real monkey, press 1. Press 2 to record your own monkey howl. Press any other key to start over.");
 			response.EndGather();
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[Fact]
+		[TestMethod]
 		public void _1_4b()
 		{
 			var digits = 1;
@@ -97,10 +98,10 @@ namespace Twilio.TwiML.Tests.QuickStarts
 				response.Record(new { maxLength = 30, action = "hello-monkey-handle-recording.php" });
 			}
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[Fact]
+		[TestMethod]
 		public void _1_4c()
 		{
 			var recordingUrl = "http://example.com/example.mp3";
@@ -110,7 +111,7 @@ namespace Twilio.TwiML.Tests.QuickStarts
 			response.Play(recordingUrl);
 			response.Say("Goodbye");
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 	}
 }

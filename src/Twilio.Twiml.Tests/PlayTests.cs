@@ -1,36 +1,38 @@
 ﻿using System;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 
 namespace Twilio.TwiML.Tests
 {
+    [TestClass]
 	public class PlayTests : TestBase
 	{
-		[Fact]
+		[TestMethod]
 		public void Can_Generate_Single_Play()
 		{
 			var response = new TwilioResponse();
 			response.Play("Hello world");
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[Fact]
+		[TestMethod]
 		public void Can_Generate_Single_Play_And_Attributes()
 		{
 			var response = new TwilioResponse();
 			response.Play("Hello world", new { loop = 3 });
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[Fact]
+		[TestMethod]
 		public void Can_Generate_Consecutive_Mixed_Plays()
 		{
 			var response = new TwilioResponse();
 			response.Play("Hello world");
 			response.Play("Hello world2", new { loop = 3 });
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 	}
 }

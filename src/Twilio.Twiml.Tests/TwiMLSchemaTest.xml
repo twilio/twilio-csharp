@@ -14,6 +14,14 @@
     <Conference beep="true" endConferenceOnExit="true" maxParticipants="1" muted="true" startConferenceOnEnter="true" waitMethod="sdsa" waitUrl="asdsa">sdsads</Conference>
     <Client method="dsddsa" url="asdsad">sdasd</Client>
     <Queue method="asdasdsa" url="asdsad">sadasdsad</Queue>
+    <Sip username="asdasd" password="asdasdsa" url="asdasd" method="asdsadas">
+      <Uri password="sadsad" username="asdsad">sdcsdf</Uri>
+    </Sip>
+    <Sip>asdasdsad</Sip>
+    <Sip>
+      <Uri password="adsasd" username="asdasd" />
+      <Uri password="ADSa" username="asdasd" />
+    </Sip>
   </Dial>
   <Enqueue action="sadasd" method="asdsad" waitMethod="dsasd" waitUrl="sadasd">adssad</Enqueue>
   <Leave />

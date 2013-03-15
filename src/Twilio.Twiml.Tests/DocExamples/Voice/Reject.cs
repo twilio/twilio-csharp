@@ -1,26 +1,27 @@
 ﻿using System;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Twilio.TwiML.Tests.DocExamples
 {
+    [TestClass]
 	public class RejectTests : TestBase
 	{
-		[Fact]
+		[TestMethod]
 		public void Example_1()
 		{
 			var response = new TwilioResponse();
 			response.Reject();
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[Fact]
+		[TestMethod]
 		public void Example_2()
 		{
 			var response = new TwilioResponse();
 			response.Reject("busy");
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 	}
 }

@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Twilio.TwiML.Tests.QuickStarts
 {
+    [TestClass]
 	public class SmsHelloMonkey : TestBase
 	{
-		[Fact]
+		[TestMethod]
 		public void _1_0()
 		{
 			var response = new TwilioResponse();
 			response.Sms("Hello, Mobile Monkey");
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[Fact]
+		[TestMethod]
 		public void _2_0()
 		{
 			var name = "Monkey";
@@ -25,10 +26,10 @@ namespace Twilio.TwiML.Tests.QuickStarts
 			var response = new TwilioResponse();
 			response.Sms(name + ", thanks for the message!");
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[Fact]
+		[TestMethod]
 		public void _4_0()
 		{
 			var name = "Monkey";
@@ -38,10 +39,10 @@ namespace Twilio.TwiML.Tests.QuickStarts
 			var response = new TwilioResponse();
 			response.Sms(name + " has messaged " + to + " " + counter + " times");
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[Fact]
+		[TestMethod]
 		public void _5_0()
 		{
 			var name = "Monkey";
@@ -50,7 +51,7 @@ namespace Twilio.TwiML.Tests.QuickStarts
 			response.Say("Hello " + name);
 			response.Say(name + ", thanks for the call!");
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 	}
 }

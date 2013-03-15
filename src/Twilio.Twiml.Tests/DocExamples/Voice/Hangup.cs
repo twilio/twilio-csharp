@@ -1,17 +1,18 @@
 ﻿using System;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Twilio.TwiML.Tests.DocExamples
 {
+    [TestClass]
 	public class HangupTests : TestBase
 	{
-		[Fact]
+		[TestMethod]
 		public void Example_1()
 		{
 			var response = new TwilioResponse();
 			response.Hangup();
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 	}
 }

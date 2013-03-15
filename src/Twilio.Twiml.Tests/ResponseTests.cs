@@ -4,18 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 
 using System.Xml.Linq;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Twilio.TwiML.Tests
 {
-	public class ResponseTests : TestBase
+    [TestClass]
+    public class ResponseTests : TestBase
 	{
-		[Fact]
+		[TestMethod]
 		public void Can_Generate_Empty_Response()
 		{
 			var response = new TwilioResponse();
 
-			Assert.True(IsValidTwiML(response.ToXDocument()));
+			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 	}
 }
