@@ -15,11 +15,11 @@ namespace Twilio
 		/// <summary>
 		/// Twilio API version to use when making requests
 		/// </summary>
-		public string ApiVersion { get; set; }
+        public string ApiVersion { get; private set; }
 		/// <summary>
 		/// Base URL of API (defaults to https://api.twilio.com)
 		/// </summary>
-		public string BaseUrl { get; set; }
+        public string BaseUrl { get; private set; }
 		private string AccountSid { get; set; }
 		private string AuthToken { get; set; }
 
