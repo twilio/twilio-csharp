@@ -96,6 +96,9 @@
     <Compile Include="..\Twilio.Api\Model\Account.cs">
       <Link>Model\Account.cs</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api\Model\AccountResult.cs">
+      <Link>Model\AccountResult.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api\Model\AccountStatus.cs">
       <Link>Model\AccountStatus.cs</Link>
     </Compile>

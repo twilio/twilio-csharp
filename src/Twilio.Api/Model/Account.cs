@@ -33,15 +33,4 @@ namespace Twilio
 		/// </summary>
 		public string AuthToken { get; set; }
 	}
-
-	/// <summary>
-	/// Twilio API call result with paging information
-	/// </summary>
-	public class AccountResult
-	{
-		/// <summary>
-		/// List of accounts returned by API
-		/// </summary>
-		public List<Account> Accounts { get; set; }
-	}
 }

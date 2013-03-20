@@ -128,6 +128,7 @@
     <Compile Include="Applications.cs" />
     <Compile Include="ConnectApps.cs" />
     <Compile Include="AuthorizedConnectApps.cs" />
+    <Compile Include="Model\AccountResult.cs" />
     <Compile Include="Model\AccountStatus.cs" />
     <Compile Include="Model\Application.cs" />
     <Compile Include="Model\ApplicationResult.cs" />
