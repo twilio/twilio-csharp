@@ -44,8 +44,9 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="JWT, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\JWT.1.2\lib\3.5\JWT.dll</HintPath>
+    <Reference Include="JWT, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\JWT.1.3.1\lib\3.5\JWT.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -72,13 +73,11 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>-->
-  
   <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'ReleaseWithPackage' ">
     <MakeDir Directories="$(MSBuildProjectDirectory)..\..\..\Download\package\twilioclient\lib\3.5" />
     <CreateItem Include="$(TargetDir)\$(ProjectName).*">
-      <Output TaskParameter="Include" ItemName="FilesToCopy"/>
+      <Output TaskParameter="Include" ItemName="FilesToCopy" />
     </CreateItem>
     <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(MSBuildProjectDirectory)..\..\..\download\package\twilioclient\lib\3.5\" />
   </Target>
-  
 </Project>

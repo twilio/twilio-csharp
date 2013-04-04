@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>3.5.8</version>
+		<version>3.5.</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -15,6 +15,7 @@
 			<dependency id="RestSharp" />
 		</dependencies>
 		<releaseNotes>
+      * 3.5.9 - Updated Json.NET reference
       * 3.5.8 - Added call params to support Sip Auth
       * 3.5.7 - Added new overload to UpdateApplication that takes only the applicationSid and ApplicationOptions object.  This overload uses the FriendlyName property from the ApplicationOptions.
       - Changed the Status property in ConferenceListRequest to a string, since thats what the values actually are
