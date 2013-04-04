@@ -36,12 +36,17 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6FE9C8DF-946E-4136-8FE0-4EC5520BF57F}"
 	ProjectSection(SolutionItems) = preProject
 		Local.testsettings = Local.testsettings
-		Twilio.vsmdi = Twilio.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+		Twilio1.vsmdi = Twilio1.vsmdi
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Api.Tests.Integration", "Twilio.Api.Tests.Integration\Twilio.Api.Tests.Integration.csproj", "{2E1A3B46-C072-48E0-92BF-F2901036979F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Api.Tests.Unit", "Twilio.Api.Tests.Unit\Twilio.Api.Tests.Unit.csproj", "{452307A7-3D51-422F-B0A7-AE1E4BC67F9B}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = Twilio.vsmdi
+		CategoryFile = Twilio1.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -174,6 +179,36 @@ Global
 		{238D5C71-D65F-43B5-8C49-7624E6E294C9}.ReleaseWithPackage|Mixed Platforms.ActiveCfg = ReleaseWithPackage|Any CPU
 		{238D5C71-D65F-43B5-8C49-7624E6E294C9}.ReleaseWithPackage|Mixed Platforms.Build.0 = ReleaseWithPackage|Any CPU
 		{238D5C71-D65F-43B5-8C49-7624E6E294C9}.ReleaseWithPackage|x86.ActiveCfg = ReleaseWithPackage|Any CPU
+		{2E1A3B46-C072-48E0-92BF-F2901036979F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E1A3B46-C072-48E0-92BF-F2901036979F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E1A3B46-C072-48E0-92BF-F2901036979F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2E1A3B46-C072-48E0-92BF-F2901036979F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2E1A3B46-C072-48E0-92BF-F2901036979F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2E1A3B46-C072-48E0-92BF-F2901036979F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E1A3B46-C072-48E0-92BF-F2901036979F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E1A3B46-C072-48E0-92BF-F2901036979F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2E1A3B46-C072-48E0-92BF-F2901036979F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{2E1A3B46-C072-48E0-92BF-F2901036979F}.Release|x86.ActiveCfg = Release|Any CPU
+		{2E1A3B46-C072-48E0-92BF-F2901036979F}.ReleaseWithPackage|Any CPU.ActiveCfg = Release|Any CPU
+		{2E1A3B46-C072-48E0-92BF-F2901036979F}.ReleaseWithPackage|Any CPU.Build.0 = Release|Any CPU
+		{2E1A3B46-C072-48E0-92BF-F2901036979F}.ReleaseWithPackage|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2E1A3B46-C072-48E0-92BF-F2901036979F}.ReleaseWithPackage|Mixed Platforms.Build.0 = Release|Any CPU
+		{2E1A3B46-C072-48E0-92BF-F2901036979F}.ReleaseWithPackage|x86.ActiveCfg = Release|Any CPU
+		{452307A7-3D51-422F-B0A7-AE1E4BC67F9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{452307A7-3D51-422F-B0A7-AE1E4BC67F9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{452307A7-3D51-422F-B0A7-AE1E4BC67F9B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{452307A7-3D51-422F-B0A7-AE1E4BC67F9B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{452307A7-3D51-422F-B0A7-AE1E4BC67F9B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{452307A7-3D51-422F-B0A7-AE1E4BC67F9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{452307A7-3D51-422F-B0A7-AE1E4BC67F9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{452307A7-3D51-422F-B0A7-AE1E4BC67F9B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{452307A7-3D51-422F-B0A7-AE1E4BC67F9B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{452307A7-3D51-422F-B0A7-AE1E4BC67F9B}.Release|x86.ActiveCfg = Release|Any CPU
+		{452307A7-3D51-422F-B0A7-AE1E4BC67F9B}.ReleaseWithPackage|Any CPU.ActiveCfg = Release|Any CPU
+		{452307A7-3D51-422F-B0A7-AE1E4BC67F9B}.ReleaseWithPackage|Any CPU.Build.0 = Release|Any CPU
+		{452307A7-3D51-422F-B0A7-AE1E4BC67F9B}.ReleaseWithPackage|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{452307A7-3D51-422F-B0A7-AE1E4BC67F9B}.ReleaseWithPackage|Mixed Platforms.Build.0 = Release|Any CPU
+		{452307A7-3D51-422F-B0A7-AE1E4BC67F9B}.ReleaseWithPackage|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
