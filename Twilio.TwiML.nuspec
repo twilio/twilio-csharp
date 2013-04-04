@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio.TwiML</id>
-		<version>3.2.0</version>
+		<version>3.3.0</version>
 		<authors>Twilio</authors>
 		<description>Twilio TwiML generator. If using ASP.NET MVC, install Twilio.Mvc instead.</description>
 		<language>en-US</language>
@@ -11,6 +11,7 @@
 		<licenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.txt</licenseUrl>
 		<tags>REST SMS voice telephony phone twilio twiml</tags>
     <releaseNotes>
+      * 3.3.0 - Adding Sip
       * 3.2.0 - Adding Queue Verb
       Adding document comments
     </releaseNotes>
