@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>3.5.</version>
+		<version>3.5.9</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
