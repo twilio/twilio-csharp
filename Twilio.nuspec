@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>3.5.10</version>
+		<version>3.5.11</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -11,10 +11,10 @@
 		<licenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.txt</licenseUrl>
 		<tags>REST SMS voice telephony phone twilio twiml ASPNETWEBPAGES</tags>
 		<dependencies>
-			<dependency id="Newtonsoft.Json" />
 			<dependency id="RestSharp" />
 		</dependencies>
 		<releaseNotes>
+      * 3.5.11 - Removed JSON.NET dependency
       * 3.5.10 - Fixing bad build
       * 3.5.9 - Updated Json.NET reference
       * 3.5.8 - Added call params to support Sip Auth
