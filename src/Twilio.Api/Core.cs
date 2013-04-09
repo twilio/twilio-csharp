@@ -2,8 +2,8 @@
 using RestSharp.Extensions;
 using System.Reflection;
 using RestSharp.Deserializers;
-using Newtonsoft.Json.Linq;
 using System.Text;
+using System;
 
 namespace Twilio
 {
@@ -67,11 +67,11 @@ namespace Twilio
 				if (((int)resp.StatusCode) >= 400)
 				{
 					// have to read the bytes so .Content doesn't get populated
-					var content = resp.RawBytes.AsString();
-					var json = JObject.Parse(content);
-					var newJson = new JObject();
-					newJson["RestException"] = json;
-					resp.Content = null;
+                    string restException = "{{ \"RestException\" : {0} }}";
+					var content = resp.RawBytes.AsString(); //get the response content
+                    var newJson = string.Format(restException, content);
+
+                    resp.Content = null;
 					resp.RawBytes = Encoding.UTF8.GetBytes(newJson.ToString());
 				}
 			};
