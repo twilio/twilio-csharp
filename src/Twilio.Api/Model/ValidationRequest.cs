@@ -11,7 +11,11 @@ namespace Twilio
 		/// The unique id of the Account to which the Validation Request belongs.
 		/// </summary>
 		public string AccountSid { get; set; }
-		/// <summary>
+        /// <summary>
+        /// The unique id of the Call created for this validation attempt
+        /// </summary>
+        public string CallSid { get; set; }
+        /// <summary>
 		/// The friendly name you provided, if any.
 		/// </summary>
 		public string FriendlyName { get; set; }
