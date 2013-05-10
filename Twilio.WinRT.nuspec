@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<metadata>
+		<id>Twilio.WinRT</id>
+		<version>0.0.1-alpha</version>
+		<authors>Twilio</authors>
+		<description>Twilio REST API helper library for Windows Store Apps</description>
+		<language>en-US</language>
+		<projectUrl>http://github.com/twilio/twilio-csharp</projectUrl>
+		<iconUrl>http://www.twilio.com/packages/company/img/logos_downloadable_round.png</iconUrl>
+		<licenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.txt</licenseUrl>
+		<tags>REST SMS voice telephony phone twilio twiml Windows8 WinRT WinJS</tags>
+		<dependencies>
+			<dependency id="RestRT" />
+		</dependencies>
+		<releaseNotes>
+    </releaseNotes>
+	</metadata>
+</package>

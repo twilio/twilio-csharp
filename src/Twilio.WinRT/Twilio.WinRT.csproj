@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B73FB286-30FD-48A5-B022-CC5FC5D6F27F}</ProjectGuid>
+    <OutputType>winmdobj</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Twilio</RootNamespace>
+    <AssemblyName>Twilio</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Accounts.cs" />
+    <Compile Include="Applications.cs" />
+    <Compile Include="AuthorizedConnectApps.cs" />
+    <Compile Include="AvailablePhoneNumbers.cs" />
+    <Compile Include="Calls.cs" />
+    <Compile Include="Conference.cs" />
+    <Compile Include="ConnectApps.cs" />
+    <Compile Include="Core.cs" />
+    <Compile Include="IncomingPhoneNumbers.cs" />
+    <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\AccountStatus.cs" />
+    <Compile Include="Model\AccountResult.cs" />
+    <Compile Include="Model\Application.cs" />
+    <Compile Include="Model\ApplicationOptions.cs" />
+    <Compile Include="Model\ApplicationResult.cs" />
+    <Compile Include="Model\AuthorizedConnectApp.cs" />
+    <Compile Include="Model\AuthorizedConnectAppResult.cs" />
+    <Compile Include="Model\AvailablePhoneNumber.cs" />
+    <Compile Include="Model\AvailablePhoneNumberListRequest.cs" />
+    <Compile Include="Model\AvailablePhoneNumberResult.cs" />
+    <Compile Include="Model\Call.cs" />
+    <Compile Include="Model\CallListRequest.cs" />
+    <Compile Include="Model\CallOptions.cs" />
+    <Compile Include="Model\CallResult.cs" />
+    <Compile Include="Model\ComparisonType.cs" />
+    <Compile Include="Model\Conference.cs" />
+    <Compile Include="Model\ConferenceListRequest.cs" />
+    <Compile Include="Model\ConferenceResult.cs" />
+    <Compile Include="Model\ConnectApp.cs" />
+    <Compile Include="Model\ConnectAppResult.cs" />
+    <Compile Include="Model\DeleteStatus.cs" />
+    <Compile Include="Model\DequeueStatus.cs" />
+    <Compile Include="Model\HangupStyle.cs" />
+    <Compile Include="Model\IDirectlyAddressable.cs" />
+    <Compile Include="Model\IncomingPhoneNumber.cs" />
+    <Compile Include="Model\IncomingPhoneNumberResult.cs" />
+    <Compile Include="Model\Notification.cs" />
+    <Compile Include="Model\NotificationResult.cs" />
+    <Compile Include="Model\OutgoingCallerId.cs" />
+    <Compile Include="Model\OutgoingCallerIdOptions.cs" />
+    <Compile Include="Model\OutgoingCallerIdResult.cs" />
+    <Compile Include="Model\Participant.cs" />
+    <Compile Include="Model\ParticipantResult.cs" />
+    <Compile Include="Model\Permission.cs" />
+    <Compile Include="Model\PhoneNumberOptions.cs" />
+    <Compile Include="Model\Queue.cs" />
+    <Compile Include="Model\QueueMember.cs" />
+    <Compile Include="Model\QueueMemberResult.cs" />
+    <Compile Include="Model\QueueResult.cs" />
+    <Compile Include="Model\Recording.cs" />
+    <Compile Include="Model\RecordingResult.cs" />
+    <Compile Include="Model\RestException.cs" />
+    <Compile Include="Model\Sandbox.cs" />
+    <Compile Include="Model\SmsMessage.cs" />
+    <Compile Include="Model\SmsMessageResult.cs" />
+    <Compile Include="Model\SmsShortCode.cs" />
+    <Compile Include="Model\SmsShortCodeResult.cs" />
+    <Compile Include="Model\Transcription.cs" />
+    <Compile Include="Model\TranscriptionResult.cs" />
+    <Compile Include="Model\TwilioBase.cs" />
+    <Compile Include="Model\TwilioListBase.cs" />
+    <Compile Include="Model\UsageRecord.cs" />
+    <Compile Include="Model\UsageResult.cs" />
+    <Compile Include="Model\UsageTrigger.cs" />
+    <Compile Include="Model\UsageTriggerOptions.cs" />
+    <Compile Include="Model\UsageTriggerResult.cs" />
+    <Compile Include="Model\ValidationRequest.cs" />
+    <Compile Include="Notifications.cs" />
+    <Compile Include="OutgoingCallerIds.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queues.cs" />
+    <Compile Include="Recordings.cs" />
+    <Compile Include="SharedAssemblyInfo.cs" />
+    <Compile Include="Sms.cs" />
+    <Compile Include="Transcriptions.cs" />
+    <Compile Include="UnderscoreMappingResolver.cs" />
+    <Compile Include="Usage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="RestRT, Version=0.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RestRT.0.0.5-alpha\lib\windows8\RestRT.winmd</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
+    <VisualStudioVersion>11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
