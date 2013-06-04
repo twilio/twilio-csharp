@@ -354,6 +354,24 @@ namespace Twilio.TwiML
 			return EndDial();
 		}
 
+        /// <summary>
+        /// Simultaniously dial multiple Numbers, Clients, Conferences and Queues. The first of these calls to answer will be connected to the current caller, while the rest of the connection attempts are canceled.
+        /// </summary>
+        /// <param name="dialTargets">An array of Numbers, Clients, Conferences or Queues to dial</param>
+        /// <param name="dialAttributes"></param>
+        /// <returns></returns>
+        public TwilioResponse Dial(object dialAttributes, params IDialNoun[] dialTargets)
+        {
+            BeginDial(dialAttributes);
+
+            foreach (IDialNoun noun in dialTargets)
+            {
+                Add((ElementBase)noun);
+            }
+
+            return EndDial();
+        }
+
 		protected TwilioResponse BeginDial()
 		{
 			Current.Push(new Dial());
