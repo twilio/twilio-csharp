@@ -29,7 +29,8 @@ namespace Twilio.TwiML.Mvc
 
 		public TwiMLResult(TwilioResponse response)
 		{
-			data = response.ToXDocument();
+			if (response != null)
+				data = response.ToXDocument();
 		}
 
 		public override void ExecuteResult(ControllerContext controllerContext)
