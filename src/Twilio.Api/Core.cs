@@ -48,7 +48,6 @@ namespace Twilio
             _client.AddDefaultHeader("Accept-charset", "utf-8");
             _client.BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion);
 
-
 			// if acting on a subaccount, use request.AddUrlSegment("AccountSid", "value")
 			// to override for that request.
 			_client.AddDefaultUrlSegment("AccountSid", AccountSid); 
