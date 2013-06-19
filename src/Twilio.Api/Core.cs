@@ -45,7 +45,9 @@ namespace Twilio
 			_client = new RestClient();
 			_client.UserAgent = "twilio-csharp/" + version; 
 			_client.Authenticator = new HttpBasicAuthenticator(AccountSid, AuthToken);
-			_client.BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion);
+            _client.AddDefaultHeader("Accept-charset", "utf-8");
+            _client.BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion);
+
 
 			// if acting on a subaccount, use request.AddUrlSegment("AccountSid", "value")
 			// to override for that request.
