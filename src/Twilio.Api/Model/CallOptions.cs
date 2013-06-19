@@ -63,11 +63,11 @@ namespace Twilio
 		/// If this is a Sip call, set the authorization username for your Sip
 		/// endpoint
 		/// </summary>
-		public bool SipAuthUsername { get; set; }
+		public string SipAuthUsername { get; set; }
 		/// <summary>
 		/// If this is a Sip call, set the authorization password for your Sip
 		/// endpoint
 		/// </summary>
-		public bool SipAuthPassword { get; set; }
+		public string SipAuthPassword { get; set; }
 	}
 }

@@ -145,6 +145,8 @@ namespace Twilio
 			if (options.IfMachine.HasValue()) request.AddParameter("IfMachine", options.IfMachine);
 			if (options.Timeout.HasValue) request.AddParameter("Timeout", options.Timeout.Value);
 			if (options.Record) request.AddParameter("Record", "true");
+			if (options.SipAuthUsername.HasValue()) request.AddParameter("SipAuthUsername", options.SipAuthUsername);
+			if (options.SipAuthPassword.HasValue()) request.AddParameter("SipAuthPassword", options.SipAuthPassword);
 		}
 
 		/// <summary>
