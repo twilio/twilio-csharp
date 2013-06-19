@@ -294,50 +294,6 @@ namespace Twilio.TwiML
 		}
 
         /// <summary>
-        /// Simultaniously dial multiple phone numbers. The first of these calls to answer will be connected to the current caller, while the rest of the connection attempts are canceled.
-        /// </summary>
-        /// <param name="addresses">An array of phone numbers to dial</param>
-        /// <returns></returns>
-        public TwilioResponse DialSip(params string[] addresses)
-        {
-            BeginDial();
-
-            var sip = new Sip();
-            Current.Push(sip);
-
-            foreach (var number in addresses)
-            {
-                Add(new Twilio.TwiML.Uri(number));
-            }
-
-            Add(Current.Pop());
-
-            return EndDial();
-        }
-
-        /// <summary>
-        /// Simultaniously dial multiple phone numbers. The first of these calls to answer will be connected to the current caller, while the rest of the connection attempts are canceled.
-        /// </summary>
-        /// <param name="numbers">An array of phone numbers to dial</param>
-        /// <returns></returns>
-        public TwilioResponse DialSip(IEnumerable<Twilio.TwiML.Uri> uris)
-        {
-            BeginDial();
-
-            var sip = new Sip();
-            Current.Push(sip);
-            
-            foreach (var uri in uris)
-            {
-                Add(uri);
-            }
-
-            Add(Current.Pop());
-
-            return EndDial();
-        }
-
-        /// <summary>
         /// Simultaniously dial multiple Numbers, Clients, Conferences and Queues. The first of these calls to answer will be connected to the current caller, while the rest of the connection attempts are canceled.
         /// </summary>
         /// <param name="dialTargets">An array of Numbers, Clients, Conferences or Queues to dial</param>

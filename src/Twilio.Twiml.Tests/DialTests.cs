@@ -182,29 +182,6 @@ namespace Twilio.TwiML.Tests
             );
 
             Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
-        }
-
-        [TestMethod]
-        public void Can_Generate_Dial_Multiple_Sips()
-        {
-            var response = new TwilioResponse();
-            response.DialSip("asdasd", "asdasd", "asdasd" );
-
-            Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
-        }
-
-        [TestMethod]
-        public void Can_Generate_Dial_Multiple_Sips_And_Attributes()
-        {
-            List<Twilio.TwiML.Uri> uris = new List<Twilio.TwiML.Uri>();
-            uris.Add(new Twilio.TwiML.Uri("asdasd", new { username = "asdasd", password = "asdasd" }));
-            uris.Add(new Twilio.TwiML.Uri("asdasd", new { username = "asdasd", password = "asdasd" }));
-            uris.Add(new Twilio.TwiML.Uri("asdasd", new { username = "asdasd", password = "asdasd" }));
-
-            var response = new TwilioResponse();
-            response.DialSip(uris);
-
-            Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
-        }
+        }       
 	}
 }
