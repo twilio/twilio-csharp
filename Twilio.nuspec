@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>3.5.14</version>
+		<version>3.5.15</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -14,6 +14,7 @@
 			<dependency id="RestSharp" />
 		</dependencies>
 		<releaseNotes>
+      * 3.5.15 - Added new overload for RedirectCall to take optional parameters
       * 3.5.14 - Added new default header Accept-Chartset: utf-8
       * 3.5.13 - Fix Sip authentication properties
       * 3.5.12 - Added CallSid property to ValidationRequestResult

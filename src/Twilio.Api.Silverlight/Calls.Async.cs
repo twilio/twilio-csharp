@@ -168,26 +168,51 @@ namespace Twilio
 			ExecuteAsync<Call>(request, (response) => callback(response));
 		}
 
-		/// <summary>
-		/// Redirect a call in progress to a new TwiML URL
-		/// </summary>
-		/// <param name="callSid">The Sid of the call to redirect</param>
-		/// <param name="redirectUrl">The URL to redirect the call to.</param>
-		/// <param name="redirectMethod">The HTTP method to use when requesting the redirectUrl</param>
-		/// <param name="callback">Method to call upon successful completion</param>
-		public void RedirectCall(string callSid, string redirectUrl, string redirectMethod, Action<Call> callback)
-		{
-			Require.Argument("CallSid", callSid);
-			Require.Argument("Url", redirectUrl);
+        /// <summary>
+        /// Redirect a call in progress to a new TwiML URL.  Makes a POST request to a Call Instance resource.
+        /// </summary>
+        /// <param name="callSid">The Sid of the call to redirect</param>
+        /// <param name="redirectUrl">The URL to redirect the call to.</param>
+        /// <param name="redirectMethod">The HTTP method to use when requesting the redirectUrl</param>
+        /// <param name="callback">Method to call upon successful completion</param>
+        public void RedirectCall(string callSid, string redirectUrl, string redirectMethod, Action<Call> callback)
+        {
+            Require.Argument("CallSid", callSid);
+            Require.Argument("Url", redirectUrl);
 
-			var request = new RestRequest(Method.POST);
-			request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}.json";
-			
-			request.AddParameter("CallSid", callSid, ParameterType.UrlSegment);
-			request.AddParameter("Url", redirectUrl);
-			if (redirectMethod.HasValue()) request.AddParameter("Method", redirectMethod);
+            CallOptions options = new CallOptions();
+            options.Url = redirectUrl;
+            options.Method = redirectMethod;
 
-			ExecuteAsync<Call>(request, (response) => callback(response));
-		}
+            RedirectCall(callSid, options, callback);
+        }
+
+        /// <summary>
+        /// Redirect a call in progress to a new TwiML URL.  Makes a POST request to a Call Instance resource.
+        /// </summary>
+        /// <param name="callSid">The Sid of the call to redirect</param>
+        /// <param name="options">Call settings. Only Url, Method, FallbackUrl, FallbackMethod, StatusCallback and StatusCallbackMethod properties with values set will be used.</param>
+        /// <param name="callback">Method to call upon successful completion</param>
+        public void RedirectCall(string callSid, CallOptions options, Action<Call> callback)
+        {
+            Require.Argument("CallSid", callSid);
+            Require.Argument("Url", options.Url);
+
+            var request = new RestRequest(Method.POST);
+            request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}.json";
+
+            request.AddParameter("CallSid", callSid, ParameterType.UrlSegment);
+            request.AddParameter("Url", options.Url);
+            if (options.Method.HasValue()) request.AddParameter("Method", options.Method);
+
+            if (options.FallbackUrl.HasValue()) request.AddParameter("FallbackUrl", options.FallbackUrl);
+            if (options.FallbackMethod.HasValue()) request.AddParameter("FallbackMethod", options.FallbackMethod);
+
+            if (options.StatusCallback.HasValue()) request.AddParameter("StatusCallback", options.StatusCallback);
+            if (options.StatusCallbackMethod.HasValue()) request.AddParameter("StatusCallbackMethod", options.StatusCallbackMethod);
+
+            ExecuteAsync<Call>(request, (response) => callback(response));
+        }
+
 	}
 }
