@@ -159,7 +159,7 @@ namespace Twilio
         /// <param name="callbackUrl">The URL to call once a trigger value has been met</param>
         /// <param name="callback"></param>
         /// <returns></returns>
-        public void CreateUsageTrigger(string usageCategory, double triggerValue, string callbackUrl, Action<UsageTrigger> callback)
+        public void CreateUsageTrigger(string usageCategory, string triggerValue, string callbackUrl, Action<UsageTrigger> callback)
         {
             var options = new UsageTriggerOptions();
             options.UsageCategory = usageCategory;

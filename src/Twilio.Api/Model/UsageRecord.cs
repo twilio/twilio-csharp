@@ -51,7 +51,7 @@ namespace Twilio
         /// <summary>
         /// The units in which Usage is measured. For example minutes for calls, messages for SMS
         /// </summary>
-        public string UsageUnits { get; set; }
+        public string UsageUnit { get; set; }
         
         /// <summary>
         /// The total price of the usage, in USD

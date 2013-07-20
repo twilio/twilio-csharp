@@ -50,7 +50,7 @@ namespace Twilio
         /// <summary>
         /// The value at which the trigger will fire. Must be a positive numeric value
         /// </summary>
-        public double TriggerValue { get; set; }
+        public string TriggerValue { get; set; }
 
         /// <summary>
         /// The current value of the field the trigger is watching

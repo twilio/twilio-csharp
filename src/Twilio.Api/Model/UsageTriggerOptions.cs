@@ -13,7 +13,7 @@
         /// <summary>
         /// The trigger will fire when usage reaches this value
         /// </summary>
-        public double TriggerValue { get; set; }
+        public string TriggerValue { get; set; }
 
         /// <summary>
         /// Twilio will make a request to this url when the trigger fires
