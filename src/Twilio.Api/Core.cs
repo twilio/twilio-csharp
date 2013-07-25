@@ -4,6 +4,7 @@ using System.Reflection;
 using RestSharp.Deserializers;
 using System.Text;
 using System;
+using System.Net;
 
 namespace Twilio
 {
@@ -12,14 +13,43 @@ namespace Twilio
 	/// </summary>
 	public partial class TwilioRestClient
 	{
-		/// <summary>
-		/// Twilio API version to use when making requests
-		/// </summary>
-        public string ApiVersion { get; private set; }
-		/// <summary>
+		
+
+        /// <summary>
+ 		/// Twilio API version to use when making requests
+ 		/// </summary>
+       public string ApiVersion { get; private set; }
+		
+        private string _baseUrl;
+        
+        /// <summary>
 		/// Base URL of API (defaults to https://api.twilio.com)
 		/// </summary>
-        public string BaseUrl { get; private set; }
+        /// 
+        public string BaseUrl {
+            get
+            {
+                return _baseUrl;
+            }
+            set
+            {
+                _baseUrl = value;
+                SetClientBaseURL();
+            }
+        }
+
+
+        
+        /// <summary>
+        /// The HTTP proxy to route API requests thru
+        /// </summary>
+        public IWebProxy Proxy
+        {
+            get { return _client.Proxy; }
+            set { _client.Proxy = value; }
+        }
+        
+
 		private string AccountSid { get; set; }
 		private string AuthToken { get; set; }
 
@@ -46,12 +76,17 @@ namespace Twilio
 			_client.UserAgent = "twilio-csharp/" + version; 
 			_client.Authenticator = new HttpBasicAuthenticator(AccountSid, AuthToken);
             _client.AddDefaultHeader("Accept-charset", "utf-8");
-            _client.BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion);
+
 
 			// if acting on a subaccount, use request.AddUrlSegment("AccountSid", "value")
 			// to override for that request.
 			_client.AddDefaultUrlSegment("AccountSid", AccountSid); 
 		}
+
+        void SetClientBaseURL()
+        {
+            _client.BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion);
+        }
 
 #if FRAMEWORK
 		/// <summary>
