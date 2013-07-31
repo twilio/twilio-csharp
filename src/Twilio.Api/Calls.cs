@@ -150,7 +150,11 @@ namespace Twilio
             if (options.FallbackUrl.HasValue()) request.AddParameter("FallbackUrl", options.FallbackUrl);
             if (options.FallbackMethod.HasValue()) request.AddParameter("FallbackMethod", options.FallbackMethod);
 
-            if (options.StatusCallback.HasValue()) request.AddParameter("StatusCallback", options.StatusCallback);
+            if (options.StatusCallback.HasValue())
+            {
+                request.AddParameter("StatusCallback", options.StatusCallback);
+                request.AddParameter("StatusCallbackUrl", options.StatusCallback); //workaround for issue DEVX-401
+            }
             if (options.StatusCallbackMethod.HasValue()) request.AddParameter("StatusCallbackMethod", options.StatusCallbackMethod);
 
             return Execute<Call>(request);
