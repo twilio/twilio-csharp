@@ -130,6 +130,7 @@
     <Compile Include="Model\ApplicationResult.cs" />
     <Compile Include="Model\ApplicationOptions.cs" />
     <Compile Include="Model\AuthorizedConnectApp.cs" />
+    <Compile Include="Model\Capabilities.cs" />
     <Compile Include="Model\ConnectApp.cs" />
     <Compile Include="Model\ConnectAppResult.cs" />
     <Compile Include="Model\AuthorizedConnectAppResult.cs" />

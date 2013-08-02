@@ -43,5 +43,13 @@ namespace Twilio
 		/// Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires InLata to be set as well.
 		/// </summary>
 		public string InRateCenter { get; set; }
+        /// <summary>
+        /// Set to ‘true’ or ‘false’. If true, the response will contain SMS enabled phone numbers. The voice capability is independent of the SMS capability
+        /// </summary>
+        public bool? SmsEnabled { get; set; }
+        /// <summary>
+        /// Set to ‘true’ or ‘false’. If true, the response will contain Voice enabled phone numbers.The SMS capability is independent of the Voice capability.
+        /// </summary>
+        public bool? VoiceEnabled { get; set; }
 	}
 }
