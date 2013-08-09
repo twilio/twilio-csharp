@@ -124,6 +124,8 @@
     <Compile Include="Applications.cs" />
     <Compile Include="ConnectApps.cs" />
     <Compile Include="AuthorizedConnectApps.cs" />
+    <Compile Include="Images.cs" />
+    <Compile Include="Messages.cs" />
     <Compile Include="Model\AccountResult.cs" />
     <Compile Include="Model\AccountStatus.cs" />
     <Compile Include="Model\Application.cs" />
@@ -133,7 +135,11 @@
     <Compile Include="Model\ConnectApp.cs" />
     <Compile Include="Model\ConnectAppResult.cs" />
     <Compile Include="Model\AuthorizedConnectAppResult.cs" />
+    <Compile Include="Model\Image.cs" />
+    <Compile Include="Model\ImageResult.cs" />
+    <Compile Include="Model\MessageResult.cs" />
     <Compile Include="Model\DequeueStatus.cs" />
+    <Compile Include="Model\Message.cs" />
     <Compile Include="Model\OutgoingCallerIdOptions.cs" />
     <Compile Include="Model\Queue.cs" />
     <Compile Include="Model\QueueMember.cs" />
