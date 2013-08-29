@@ -90,7 +90,7 @@ namespace Twilio
         /// <param name="to">The phone number to send the message to. If using the Sandbox, this number must be a validated outgoing caller ID</param>
         /// <param name="body">The message to send. Must be 160 characters or less.</param>
         /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the SmsSid as well as SmsStatus=sent or SmsStatus=failed</param>
-        /// <param name="applicationSid">Twilio will POST SmsSid as well as SmsStatus=sent or SmsStatus=failed to the URL in the SmsStatusCallback property of this Application. If the StatusCallback parameter above is also passed, the Application's SmsStatusCallback parameter will take precedence.</param>
+        /// <param name="applicationSid"></param>
         public Message SendMessage(string from, string to, string body, string[] mediaUrls, string statusCallback, string applicationSid)
         {
             Require.Argument("from", from);
