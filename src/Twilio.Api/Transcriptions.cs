@@ -78,5 +78,19 @@ namespace Twilio
 			var response = Execute(request);
 			return response.Content;
 		}
+
+		/// <summary>
+		/// Delete the specified transcription instance. Makes a DELETE request to a Transcription Instance resource.
+		/// </summary>
+		public DeleteStatus DeleteTranscription(string transcriptionSid)
+		{
+			var request = new RestRequest(Method.DELETE);
+			request.Resource = "Accounts/{AccountSid}/Transcription/{TranscriptionSid}.json";
+			
+			request.AddParameter("TranscriptionSid", transcriptionSid, ParameterType.UrlSegment);
+
+			var response = Execute(request);
+			return response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed;
+		}
 	}
 }
