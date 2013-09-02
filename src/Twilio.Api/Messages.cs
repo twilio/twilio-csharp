@@ -31,30 +31,40 @@ namespace Twilio
         /// </summary>
         public MessageResult ListMessages()
         {
-            return ListMessages(null, null, null, null, null);
+            return ListMessages(new MessageListRequest());
         }
 
         /// <summary>
         /// Returns a filtered list of Messages. The list includes paging information.
         /// Makes a GET request to the Messages List resource.
         /// </summary>
-        /// <param name="to">(Optional) The phone number of the message recipient</param>
-        /// <param name="from">(Optional) The phone number of the message sender</param>
-        /// <param name="dateSent">(Optional) The date the message was sent (GMT)</param>
-        /// <param name="pageNumber">(Optional) The page to start retrieving results from</param>
-        /// <param name="count">(Optional) The number of results to retrieve</param>
-        public MessageResult ListMessages(string to, string from, DateTime? dateSent, int? pageNumber, int? count)
+        /// <param name="options">The list filters for the request</param>
+        public MessageResult ListMessages(MessageListRequest options) 
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Messages.json";
-
-            if (to.HasValue()) request.AddParameter("To", to);
-            if (from.HasValue()) request.AddParameter("From", from);
-            if (dateSent.HasValue) request.AddParameter("DateSent", dateSent.Value.ToString("yyyy-MM-dd"));
-            if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
-            if (count.HasValue) request.AddParameter("PageSize", count.Value);
-
+            AddMessageListOptions(options, request);
             return Execute<MessageResult>(request);
+        }
+
+        /// <summary>
+        /// Add the options to the request
+        /// </summary>
+        private void AddMessageListOptions(MessageListRequest options, RestRequest request)
+        {
+            if (options.To.HasValue()) request.AddParameter("To", options.To);
+            if (options.From.HasValue()) request.AddParameter("From", options.From);
+
+            // Construct the date filter
+            if (options.DateSent.HasValue)
+            {
+                var dateSentParameterName = GetParameterNameWithEquality(options.DateSentComparison, "DateSent");
+                request.AddParameter(dateSentParameterName, options.DateSent.Value.ToString("yyyy-MM-dd"));
+            }
+
+            // Paging options
+            if (options.PageNumber.HasValue) request.AddParameter("Page", options.PageNumber.Value);
+            if (options.Count.HasValue) request.AddParameter("PageSize", options.Count.Value);
         }
 
         /// <summary>

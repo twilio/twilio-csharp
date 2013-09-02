@@ -6,11 +6,12 @@ namespace Twilio
 	/// <summary>
 	/// Twilio API call result with paging information
 	/// </summary>
-	public class MessageResult : TwilioListBase
+	public class MediaResult : TwilioListBase
 	{
 		/// <summary>
-		/// List of Message resources returned by API
+		/// List of Media resources returned by API
 		/// </summary>  
-		public List<Message> Messages { get; set; }
+		public List<Media> Medias { get; set; }
 	}
 }
+
