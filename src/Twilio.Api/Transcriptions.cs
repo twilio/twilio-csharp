@@ -85,7 +85,7 @@ namespace Twilio
 		public DeleteStatus DeleteTranscription(string transcriptionSid)
 		{
 			var request = new RestRequest(Method.DELETE);
-			request.Resource = "Accounts/{AccountSid}/Transcription/{TranscriptionSid}.json";
+			request.Resource = "Accounts/{AccountSid}/Transcriptions/{TranscriptionSid}.json";
 			
 			request.AddParameter("TranscriptionSid", transcriptionSid, ParameterType.UrlSegment);
 
