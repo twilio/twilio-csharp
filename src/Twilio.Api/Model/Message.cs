@@ -32,16 +32,27 @@ namespace Twilio
         /// </summary>
         public string From { get; set; }
         /// <summary>
-        /// The phone number that received the message in E.164 format. For incoming messages, this will be one of your Twilio phone numbers. For outgoing messages, this will be the remote phone.
+        /// The phone number that received the message in E.164 format. For 
+        /// incoming messages, this will be one of your Twilio phone numbers. 
+        /// For outgoing messages, this will be the remote phone.
         /// </summary>
         public string To { get; set; }
         /// <summary>
-        /// The text body of the Message. Up to 160 characters long.
+        /// The text body of the Message.
         /// </summary>
         public string Body { get; set; }
 
+        /// <summary>
+        /// The number of body segments associated with this message. In
+        /// a common case, an ASCII message of 180 characters will be split into
+        /// one segment with 160 characters and one with 20 characters, so
+        /// NumSegments would be 2 for that message.
+        /// </summary>
         public int NumSegments { get; set; }
 
+        /// <summary>
+        /// The number of images associated with this MMS
+        /// </summary>
         public int NumImages { get; set; }
         
 
@@ -61,6 +72,5 @@ namespace Twilio
         /// The version of the Twilio API used to process the Message.
         /// </summary>
         public string ApiVersion { get; set; }
-
     }
 }

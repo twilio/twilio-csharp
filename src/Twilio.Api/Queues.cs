@@ -79,7 +79,7 @@ namespace Twilio
             request.Resource = "Accounts/{AccountSid}/Queues/{QueueSid}.json";
 
             request.AddParameter("QueueSid", queueSid, ParameterType.UrlSegment);
-            request.AddParameter("FriendlyName", friendlyName);
+            if (!string.IsNullOrEmpty(friendlyName)) request.AddParameter("FriendlyName", friendlyName);
             request.AddParameter("MaxSize", maxSize);
 
             return Execute<Queue>(request);
