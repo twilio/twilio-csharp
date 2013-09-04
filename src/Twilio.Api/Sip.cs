@@ -11,9 +11,9 @@ namespace Twilio
     public partial class TwilioRestClient
     {
         /// <summary>
-        /// 
+        /// Locates and returns a specific SIP Domain resource
         /// </summary>
-        /// <param name="sipDomainSid"></param>
+        /// <param name="sipDomainSid">The Sid of the SIP Domain to locate</param>
         /// <returns></returns>
         public SipDomain GetSipDomain(string sipDomainSid)
         {
@@ -25,7 +25,7 @@ namespace Twilio
         }
 
         /// <summary>
-        /// 
+        /// Return a list of all SIP Domain resources
         /// </summary>
         /// <returns></returns>
         public SipDomainResult ListSipDomains()
@@ -34,7 +34,7 @@ namespace Twilio
         }
 
         /// <summary>
-        /// 
+        /// Return a list of all SIP Domain resources
         /// </summary>
         /// <param name="dateSent"></param>
         /// <param name="pageNumber"></param>
@@ -53,9 +53,9 @@ namespace Twilio
         }
 
         /// <summary>
-        /// 
+        /// Creates a new SIP Domain resource
         /// </summary>
-        /// <param name="domainName"></param>
+        /// <param name="domainName">The name of the SIP Domain to create.  You must pick a unique domain name that ends in ".sip.twilio.com"</param>
         /// <returns></returns>
         public SipDomain CreateSipDomain(string domainName)
         {
@@ -64,10 +64,9 @@ namespace Twilio
         }
 
         /// <summary>
-        /// 
+        /// Creates a new SIP Domain resource
         /// </summary>
-        /// <param name="friendlyName"></param>
-        /// <param name="domainName"></param>
+        /// <param name="options">Optional parameters to use when creating a new SIP domain.  DomainName is required and you must pick a unique domain name that ends in ".sip.twilio.com"</param>
         /// <returns></returns>
         public SipDomain CreateSipDomain(SipDomainOptions options)
         {
@@ -94,9 +93,10 @@ namespace Twilio
         }
 
         /// <summary>
-        /// 
+        /// Updates a specific SIP Domain resource
         /// </summary>
-        /// <param name="sipDomainSid"></param>
+        /// <param name="sipDomainSid">The Sid of the SIP Domain to update</param>
+        /// <param name="options">Optional parameters for a SIP domain</param>
         /// <returns></returns>
         public SipDomain UpdateSipDomain(string sipDomainSid, SipDomainOptions options)
         {
@@ -107,17 +107,15 @@ namespace Twilio
 
             request.AddParameter("SipDomainSid", sipDomainSid, ParameterType.UrlSegment);
             
-            //request.AddObject(domain);
-
             AddSipDomainOptions(options, request);
 
             return Execute<SipDomain>(request);
         }
 
         /// <summary>
-        /// 
+        /// Deletes a specific SIP Domain resource
         /// </summary>
-        /// <param name="sipDomainSid"></param>
+        /// <param name="sipDomainSid">The Sid of the SIP Domain to delete</param>
         /// <returns></returns>
         public DeleteStatus DeleteSipDomain(string sipDomainSid)
         {
@@ -133,10 +131,10 @@ namespace Twilio
 
 
         /// <summary>
-        /// 
+        /// Gets a specific IpAccessControlList mapping for a SIP Domain
         /// </summary>
-        /// <param name="sipDomainSid"></param>
-        /// <param name="ipAccessControlListMappingSid"></param>
+        /// <param name="sipDomainSid">The Sid of the mapped SIP Domain</param>
+        /// <param name="ipAccessControlListMappingSid">The Sid of the mapped IpAccessControlList</param>
         /// <returns></returns>
         public IpAccessControlListMapping GetIpAccessControlListMapping(string sipDomainSid, string ipAccessControlListMappingSid)
         {
@@ -148,16 +146,20 @@ namespace Twilio
             return Execute<IpAccessControlListMapping>(request);
         }
 
-
+        /// <summary>
+        /// Lists all IpAccessControlLists mapped to a SIP Domain
+        /// </summary>
+        /// <param name="sipDomainSid">The Sid of the SIP Domain to list mappings for</param>
+        /// <returns></returns>
         public IpAccessControlListMappingResult ListIpAccessControlListMappings(string sipDomainSid)
         {
             return ListIpAccessControlListMappings(sipDomainSid, null, null, null);
         }
 
         /// <summary>
-        /// 
+        /// Lists all IpAccessControlLists mapped to a SIP Domain
         /// </summary>
-        /// <param name="sipDomainSid"></param>
+        /// <param name="sipDomainSid">The Sid of the SIP Domain to list mappings for</param>
         /// <param name="dateSent"></param>
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
@@ -178,10 +180,10 @@ namespace Twilio
         }
 
         /// <summary>
-        /// 
+        /// Maps an IpAccessControlList to a specific SIP Domain
         /// </summary>
-        /// <param name="sipDomainSid"></param>
-        /// <param name="ipAccessControlListSid"></param>
+        /// <param name="sipDomainSid">The Sid of the SIP Domain to map to</param>
+        /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList to map to</param>
         /// <returns></returns>
         public IpAccessControlListMapping CreateIpAccessControlListMapping(string sipDomainSid, string ipAccessControlListSid)
         {
@@ -197,10 +199,10 @@ namespace Twilio
         }
 
         /// <summary>
-        /// 
+        /// Deletes a IpAccessControlListMapping from a SIP Domain
         /// </summary>
-        /// <param name="sipDomainSid"></param>
-        /// <param name="ipAccessControlListMappingSid"></param>
+        /// <param name="sipDomainSid">The Sid of the SIP Domain</param>
+        /// <param name="ipAccessControlListMappingSid">The Sid of the IpAccessControlListMapping to delete</param>
         /// <returns></returns>
         public DeleteStatus DeleteIpAccessControlListMapping(string sipDomainSid, string ipAccessControlListMappingSid)
         {
@@ -216,8 +218,12 @@ namespace Twilio
             return response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed;
         }
 
-
-        //credentiallistmappings GET/POST/DLETE
+        /// <summary>
+        /// Gets a specific CredentialList mapping for a SIP Domain
+        /// </summary>
+        /// <param name="sipDomainSid">The Sid of the mapped SIP Domain</param>
+        /// <param name="ipAccessControlListMappingSid">The Sid of the mapped CredentialList</param>
+        /// <returns></returns>
         public Message GetCredentialListMapping(string sipDomainSid, string credentialListMappingSid)
         {
             var request = new RestRequest();
@@ -228,11 +234,24 @@ namespace Twilio
             return Execute<Message>(request);
         }
 
+        /// <summary>
+        /// Lists all CredentialLists mapped to a SIP Domain
+        /// </summary>
+        /// <param name="sipDomainSid">The Sid of the SIP Domain to list mappings for</param>
+        /// <returns></returns>
         public CredentialListMappingResult ListCredentialListMappings(string sipDomainSid)
         {
             return ListCredentialListMappings(sipDomainSid, null, null, null);
         }
 
+        /// <summary>
+        /// Lists all IpAccessControlLists mapped to a SIP Domain
+        /// </summary>
+        /// <param name="sipDomainSid">The Sid of the SIP Domain to list mappings for</param>
+        /// <param name="pageNumber"></param>
+        /// <param name="dateSent"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         public CredentialListMappingResult ListCredentialListMappings(string sipDomainSid, DateTime? dateSent, int? pageNumber, int? count)
         {
             var request = new RestRequest();
@@ -247,10 +266,10 @@ namespace Twilio
         }
 
         /// <summary>
-        /// 
+        /// Maps a CredentialList to a specific SIP Domain
         /// </summary>
-        /// <param name="sipDomainSid"></param>
-        /// <param name="credentialListSid"></param>
+        /// <param name="sipDomainSid">The Sid of the SIP Domain to map to</param>
+        /// <param name="credentialListSid">The Sid of the CredentialList to map to</param>
         /// <returns></returns>
         public IpAccessControlListMapping CreateCredentialListMapping(string sipDomainSid, string credentialListSid)
         {
@@ -266,27 +285,30 @@ namespace Twilio
         }
 
         /// <summary>
-        /// 
+        /// Deletes a CredentialListMapping from a SIP Domain
         /// </summary>
-        /// <param name="sipDomainSid"></param>
-        /// <param name="credentialListSid"></param>
+        /// <param name="sipDomainSid">The Sid of the SIP Domain</param>
+        /// <param name="credentialListMappingSid">The Sid of the CredentialListMapping to delete</param>
         /// <returns></returns>
-        public DeleteStatus DeleteCredentialListMapping(string sipDomainSid, string credentialListSid)
+        public DeleteStatus DeleteCredentialListMapping(string sipDomainSid, string credentialListMappingSid)
         {
             Require.Argument("SipDomainSid", sipDomainSid);
 
             var request = new RestRequest(Method.DELETE);
-            request.Resource = "Accounts/{AccountSid}/SIP/Domains/{SipDomainSid}/CredentialListMappings/{CredentialListSid}.json";
+            request.Resource = "Accounts/{AccountSid}/SIP/Domains/{SipDomainSid}/CredentialListMappings/{CredentialListMappingSid}.json";
             request.AddUrlSegment("SipDomainSid", sipDomainSid);
 
-            request.AddParameter("CredentialListSid", credentialListSid, ParameterType.UrlSegment);
+            request.AddParameter("CredentialListMappingSid", credentialListMappingSid, ParameterType.UrlSegment);
 
             var response = Execute(request);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed;
         }
 
-        //ipaccesscontrollists GET/POST
-        //GetIpAccessControlList
+        /// <summary>
+        /// Gets a specific IpAccessControlList resource
+        /// </summary>
+        /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList resource</param>
+        /// <returns></returns>
         public IpAccessControlList GetIpAccessControlList(string ipAccessControlListSid)
         {
             var request = new RestRequest();
@@ -296,11 +318,22 @@ namespace Twilio
             return Execute<IpAccessControlList>(request);
         }
 
+        /// <summary>
+        /// Lists all IpAccessControlLists for this account
+        /// </summary>
+        /// <returns></returns>
         public IpAccessControlListResult ListIpAccessControlLists() 
         {
             return ListIpAccessControlLists(null, null, null);
         }
 
+        /// <summary>
+        /// Lists all IpAccessControlLists for this account
+        /// </summary>
+        /// <param name="pageNumber"></param>
+        /// <param name="dateSent"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         public IpAccessControlListResult ListIpAccessControlLists(DateTime? dateSent, int? pageNumber, int? count)
         {
             var request = new RestRequest();
