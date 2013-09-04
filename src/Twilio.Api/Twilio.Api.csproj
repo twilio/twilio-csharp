@@ -157,8 +157,6 @@
     <Compile Include="Model\CredentialListMappingResult.cs" />
     <Compile Include="Model\CredentialListResult.cs" />
     <Compile Include="Model\CredentialResult.cs" />
-    <Compile Include="Model\Image.cs" />
-    <Compile Include="Model\ImageResult.cs" />
     <Compile Include="Model\IpAccessControlList.cs" />
     <Compile Include="Model\IpAccessControlListResult.cs" />
     <Compile Include="Model\IpAccessControlListMapping.cs" />
