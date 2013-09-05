@@ -106,6 +106,9 @@
     <Compile Include="..\Twilio.Api.Silverlight\Sandbox.Async.cs">
       <Link>Sandbox.Async.cs</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Sip.Async.cs">
+      <Link>Sip.Async.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api.Silverlight\Sms.Async.cs">
       <Link>Sms.Async.cs</Link>
     </Compile>

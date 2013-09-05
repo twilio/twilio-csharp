@@ -143,6 +143,24 @@
     <Compile Include="..\Twilio.Api\Model\ConnectAppResult.cs">
       <Link>Model\ConnectAppResult.cs</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api\Model\Credential.cs">
+      <Link>Model\Credential.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\CredentialList.cs">
+      <Link>Model\CredentialList.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\CredentialListMapping.cs">
+      <Link>Model\CredentialListMapping.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\CredentialListMappingResult.cs">
+      <Link>Model\CredentialListMappingResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\CredentialListResult.cs">
+      <Link>Model\CredentialListResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\CredentialResult.cs">
+      <Link>Model\CredentialResult.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api\Model\DeleteStatus.cs">
       <Link>Model\DeleteStatus.cs</Link>
     </Compile>
@@ -157,6 +175,42 @@
     </Compile>
     <Compile Include="..\Twilio.Api\Model\IncomingPhoneNumberResult.cs">
       <Link>Model\IncomingPhoneNumberResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\IpAccessControlList.cs">
+      <Link>Model\IpAccessControlList.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\IpAccessControlListMapping.cs">
+      <Link>Model\IpAccessControlListMapping.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\IpAccessControlListMappingResult.cs">
+      <Link>Model\IpAccessControlListMappingResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\IpAccessControlListResult.cs">
+      <Link>Model\IpAccessControlListResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\IpAddress.cs">
+      <Link>Model\IpAddress.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\IpAddressResult.cs">
+      <Link>Model\IpAddressResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\Media.cs">
+      <Link>Model\Media.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\MediaListRequest.cs">
+      <Link>Model\MediaListRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\MediaResult.cs">
+      <Link>Model\MediaResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\Message.cs">
+      <Link>Model\Message.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\MessageListRequest.cs">
+      <Link>Model\MessageListRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\MessageResult.cs">
+      <Link>Model\MessageResult.cs</Link>
     </Compile>
     <Compile Include="..\Twilio.Api\Model\Notification.cs">
       <Link>Model\Notification.cs</Link>
@@ -205,6 +259,15 @@
     </Compile>
     <Compile Include="..\Twilio.Api\Model\Sandbox.cs">
       <Link>Model\Sandbox.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\SipDomain.cs">
+      <Link>Model\SipDomain.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\SipDomainOptions.cs">
+      <Link>Model\SipDomainOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\SipDomainResult.cs">
+      <Link>Model\SipDomainResult.cs</Link>
     </Compile>
     <Compile Include="..\Twilio.Api\Model\SmsMessage.cs">
       <Link>Model\SmsMessage.cs</Link>
@@ -266,6 +329,7 @@
     <Compile Include="OutgoingCallerIds.Async.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recordings.Async.cs" />
+    <Compile Include="Sip.Async.cs" />
     <Compile Include="Sms.Async.cs" />
     <Compile Include="Transcriptions.Async.cs" />
     <Compile Include="Usage.Async.cs" />
