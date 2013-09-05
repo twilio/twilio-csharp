@@ -117,8 +117,8 @@
     </Compile>
     <Compile Include="Accounts.cs" />
     <Compile Include="Applications.cs" />
-    <Compile Include="AuthorizedConnectApps.cs" />
     <Compile Include="AuthorizedConnectApps.Async.cs" />
+    <Compile Include="AuthorizedConnectApps.cs" />
     <Compile Include="AvailablePhoneNumbers.cs" />
     <Compile Include="AvailablePhoneNumbers.Async.cs" />
     <Compile Include="Calls.cs" />
@@ -128,6 +128,7 @@
     <Compile Include="IncomingPhoneNumbers.cs" />
     <Compile Include="Media.cs" />
     <Compile Include="Messages.cs" />
+    <Compile Include="Model\MediaListRequest.cs" />
     <Compile Include="Notifications.cs" />
     <Compile Include="OutgoingCallerIds.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -150,7 +151,6 @@
     <Compile Include="Model\AuthorizedConnectAppResult.cs" />
     <Compile Include="Model\ConnectApp.cs" />
     <Compile Include="Model\ConnectAppResult.cs" />
-    <Compile Include="Model\AuthorizedConnectAppResult.cs" />
     <Compile Include="Model\Credential.cs" />
     <Compile Include="Model\CredentialList.cs" />
     <Compile Include="Model\CredentialListMapping.cs" />
@@ -168,7 +168,6 @@
     <Compile Include="Model\Media.cs" />
     <Compile Include="Model\MediaResult.cs" />
     <Compile Include="Model\Message.cs" />
-    <Compile Include="Model\MessageResult.cs" />
     <Compile Include="Model\MessageListRequest.cs" />
     <Compile Include="Model\OutgoingCallerIdOptions.cs" />
     <Compile Include="Model\Queue.cs" />
@@ -216,15 +215,7 @@
     <Compile Include="Model\TwilioBase.cs" />
     <Compile Include="Model\TwilioListBase.cs" />
     <Compile Include="Model\ValidationRequest.cs" />
-    <Compile Include="Notifications.cs" />
-    <Compile Include="OutgoingCallerIds.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Recordings.cs" />
-    <Compile Include="SharedAssemblyInfo.cs" />
     <Compile Include="Sip.cs" />
-    <Compile Include="Sms.cs" />
-    <Compile Include="Transcriptions.cs" />
-    <Compile Include="Usage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
