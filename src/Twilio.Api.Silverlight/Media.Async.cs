@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using RestSharp;
+﻿using RestSharp;
 using RestSharp.Extensions;
-using RestSharp.Validation;
+using System;
 
 namespace Twilio
 {
@@ -14,47 +10,63 @@ namespace Twilio
         /// <summary>
         /// Get the details for a specific Media instance.
         /// </summary>
-        /// <param name="mediaSid">The Sid of the media resource</param>
-        /// <returns></returns>
-        public Media GetMedia(string mediaSid)
+        public void GetMedia(string mediaSid, Action<Media> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Media/{MediaSid}.json";
             request.AddUrlSegment("MediaSid", mediaSid);
-            return Execute<Media>(request);
+            ExecuteAsync<Media>(request, (response) => callback(response));
         }
 
         /// <summary>
         /// Retrieve a list of Media objects with no list filters
         /// </summary>
-        public MediaResult ListMedia()
+        public void ListMedia(Action<MediaResult> callback)
         {
-            return ListMedia(new MediaListRequest());
+            ListMedia(new MediaListRequest(), callback);
         }
 
         /// <summary>
         /// Return a filtered list of Media objects. The list includes paging
         /// information.
         /// </summary>
-        public MediaResult ListMedia(MediaListRequest options)
+        public void ListMedia(MediaListRequest options, Action<MediaResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Media.json";
             AddMediaListOptions(options, request);
-            return Execute<MediaResult>(request);
+            ExecuteAsync<MediaResult>(request, (response) => callback(response));
         }
 
         /// <summary>
         /// List all media for a particular message
         /// </summary>
         /// <param name="messageSid">The message sid to filter on</param>
-        public MediaResult ListMessageMedia(string messageSid, MediaListRequest options)
+        public void ListMessageMedia(string messageSid, MediaListRequest options, Action<MediaResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Messages/{MessageSid}/Media.json";
             request.AddUrlSegment("MessageSid", messageSid);
             AddMediaListOptions(options, request);
-            return Execute<MediaResult>(request);
+            ExecuteAsync<MediaResult>(request, (response) => callback(response));
+        }
+
+        /// <summary>
+        /// Add the options to the request
+        /// </summary>
+        private void AddMediaListOptions(MediaListRequest options, RestRequest request)
+        {
+            if (options.ParentSid.HasValue()) request.AddParameter("ParentSid", options.ParentSid);
+            // Construct the date filter
+            if (options.DateCreated.HasValue)
+            {
+                var dateCreatedParameterName = GetParameterNameWithEquality(options.DateCreatedComparison, "DateCreated");
+                request.AddParameter(dateCreatedParameterName, options.DateCreated.Value.ToString("yyyy-MM-dd"));
+            }
+
+            // Paging options
+            if (options.PageNumber.HasValue) request.AddParameter("Page", options.PageNumber.Value);
+            if (options.Count.HasValue) request.AddParameter("PageSize", options.Count.Value);
         }
 
         /// <summary>
@@ -62,15 +74,14 @@ namespace Twilio
         /// Media Instance resource.
         /// </summary>
         /// <param name="mediaSid">The Sid of the media to delete</param>
-        public DeleteStatus DeleteMedia(string mediaSid)
+        public void DeleteMedia(string mediaSid, Action<DeleteStatus> callback)
         {
             var request = new RestRequest(Method.DELETE);
             request.Resource = "Accounts/{AccountSid}/Media/{MediaSid}.json";
 
             request.AddParameter("MediaSid", mediaSid, ParameterType.UrlSegment);
 
-            var response = Execute(request);
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed;
+            ExecuteAsync(request, (response) => { callback(response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed); });
         }
     }
 }

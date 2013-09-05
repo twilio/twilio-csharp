@@ -321,6 +321,8 @@
     <Compile Include="Conference.Async.cs" />
     <Compile Include="ConnectApps.Async.cs" />
     <Compile Include="AuthorizedConnectApps.Async.cs" />
+    <Compile Include="Media.Async.cs" />
+    <Compile Include="Messages.Async.cs" />
     <Compile Include="Queues.Async.cs" />
     <Compile Include="Sandbox.Async.cs" />
     <Compile Include="Core.Async.cs" />

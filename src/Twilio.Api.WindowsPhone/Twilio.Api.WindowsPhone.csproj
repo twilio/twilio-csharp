@@ -75,6 +75,12 @@
     <Compile Include="..\Twilio.Api.Silverlight\ConnectApps.Async.cs">
       <Link>ConnectApps.Async.cs</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Media.Async.cs">
+      <Link>Media.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Messages.Async.cs">
+      <Link>Messages.Async.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api.Silverlight\Notifications.Async.cs">
       <Link>Notifications.Async.cs</Link>
     </Compile>
