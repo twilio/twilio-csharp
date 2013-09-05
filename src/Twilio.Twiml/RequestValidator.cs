@@ -41,7 +41,7 @@ namespace Twilio.TwiML
 			// http://www.twilio.com/docs/security-reliability/security
 			// Take the full URL of the request, from the protocol (http...) through the end of the query string (everything after the ?)
 			var value = new StringBuilder();
-			var fullUrl = string.IsNullOrEmpty(urlOverride) ? context.Request.Url.ToString() : urlOverride;
+			var fullUrl = string.IsNullOrEmpty(urlOverride) ? context.Request.Url.AbsoluteUri : urlOverride;
 
 			value.Append(fullUrl);
 
