@@ -61,12 +61,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestValidator.cs" />
     <Compile Include="TwilioResponse.cs" />
+    <Compile Include="Verbs\Body.cs" />
     <Compile Include="Verbs\Conference.cs" />
     <Compile Include="Verbs\Client.cs" />
     <Compile Include="Verbs\Enqueue.cs" />
     <Compile Include="Verbs\IDialNoun.cs" />
+    <Compile Include="Verbs\IMessageNoun.cs" />
     <Compile Include="Verbs\IVerb.cs" />
     <Compile Include="Verbs\Leave.cs" />
+    <Compile Include="Verbs\Media.cs" />
+    <Compile Include="Verbs\Message.cs" />
     <Compile Include="Verbs\Pause.cs" />
     <Compile Include="Verbs\Number.cs" />
     <Compile Include="Verbs\Queue.cs" />

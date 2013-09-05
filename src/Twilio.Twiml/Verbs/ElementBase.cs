@@ -58,10 +58,13 @@ namespace Twilio.TwiML
         /// <param name="attributes"></param>
 		public void AddAttributesFromObject(object attributes)
 		{
-			foreach (var prop in attributes.GetType().GetProperties())
-			{
-				Element.SetAttributeValue(prop.Name, prop.GetValue(attributes, null));
-			}
+            if (attributes != null)
+            {
+                foreach (var prop in attributes.GetType().GetProperties())
+                {
+                    Element.SetAttributeValue(prop.Name, prop.GetValue(attributes, null));
+                }
+            }
 		}
 
         /// <summary>
