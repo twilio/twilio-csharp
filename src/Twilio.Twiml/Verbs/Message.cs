@@ -30,7 +30,7 @@ namespace Twilio.TwiML
         /// <summary>
         /// Initializes a new instance of the Message class
         /// </summary>
-        /// <param name="message">The Message body</param>
+        /// <param name="body">The Message body</param>
 		public Message(string body) : this()
 		{
 			Element.Add(body);
@@ -39,7 +39,7 @@ namespace Twilio.TwiML
         /// <summary>
         /// Initializes a new instance of the Message class
         /// </summary>
-        /// <param name="message">The Message body</param>
+        /// <param name="attributes">The Message body</param>
         public Message(object attributes)
             : this()
         {
@@ -51,7 +51,7 @@ namespace Twilio.TwiML
         /// <summary>
         /// Initializes a new instance of the Message class
         /// </summary>
-        /// <param name="message">The Message body</param>
+        /// <param name="body">The Message body</param>
         /// <param name="attributes">Additional parameters of the Message verb</param>
         public Message(string body, object attributes)
             : this(body)

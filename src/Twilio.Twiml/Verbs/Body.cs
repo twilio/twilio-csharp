@@ -11,7 +11,7 @@ namespace Twilio.TwiML
         /// <summary>
         /// Initializes a new instance of the Body class.
         /// </summary>
-        /// <param name="number"></param>
+        /// <param name="body"></param>
 		public Body(string body)
 		{
 			Element = new XElement("Body", body);

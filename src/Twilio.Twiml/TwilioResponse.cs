@@ -238,9 +238,9 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Adds the current caller to a Queue
+        /// Connects the current caller to a SIP address
         /// </summary>
-        /// <param name="queue">The Queue to add the user to</param>
+        /// <param name="sip">The SIP endpoint to dial</param>
         /// <returns></returns>
         public TwilioResponse Dial(Sip sip)
         {
@@ -250,9 +250,9 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Adds the current caller to a Queue
+        /// Connects the current caller to a SIP address
         /// </summary>
-        /// <param name="queue">The Queue to add the user to</param>
+        /// <param name="sip">The SIP endpoint to dial</param>
         /// <param name="dialAttributes"></param>
         /// <returns></returns>
         public TwilioResponse Dial(Sip sip, object dialAttributes)
@@ -422,7 +422,7 @@ namespace Twilio.TwiML
         /// <summary>
         /// Send an Message to a phone number
         /// </summary>
-        /// <param name="text">The Message body</param>
+        /// <param name="body">The Message body</param>
         /// <returns></returns>
         public TwilioResponse Message(string body)
         {
@@ -432,7 +432,7 @@ namespace Twilio.TwiML
         /// <summary>
         /// Send an Message to a phone number
         /// </summary>
-        /// <param name="text">The Message body</param>
+        /// <param name="body">The Message body</param>
         /// <param name="attributes"></param>
         /// <returns></returns>
         public TwilioResponse Message(string body, object attributes)

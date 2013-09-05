@@ -11,7 +11,7 @@ namespace Twilio.TwiML
         /// <summary>
         /// Initializes a new instance of the Media class.
         /// </summary>
-        /// <param name="number"></param>
+        /// <param name="url"></param>
 		public Media(string url)
 		{
 			Element = new XElement("Media", url);
