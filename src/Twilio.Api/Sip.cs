@@ -346,6 +346,11 @@ namespace Twilio
             return Execute<IpAccessControlListResult>(request);
         }
 
+        /// <summary>
+        /// Creates a new IpAccessControlList resource
+        /// </summary>
+        /// <param name="friendlyName">The name of the IpAccessControlList to create.</param>
+        /// <returns></returns>
         public IpAccessControlList CreateIpAccessControlList(string friendlyName)
         {
             var request = new RestRequest(Method.POST);
@@ -356,6 +361,12 @@ namespace Twilio
             return Execute<IpAccessControlList>(request);
         }
 
+        /// <summary>
+        /// Updates a specific IpAccessControlList resource
+        /// </summary>
+        /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList to update</param>
+        /// <param name="friendlyName">The name of the IpAccessControlList</param>
+        /// <returns></returns>
         public IpAccessControlList UpdateIpAccessControlList(string ipAccessControlListSid, string friendlyName)
         {
             var request = new RestRequest(Method.POST);
@@ -367,6 +378,11 @@ namespace Twilio
             return Execute<IpAccessControlList>(request);
         }
 
+        /// <summary>
+        /// Deletes a specific IpAccessControlList resource
+        /// </summary>
+        /// <param name="sipDomainSid">The Sid of the IpAccessControlList Domain to delete</param>
+        /// <returns></returns>
         public DeleteStatus DeleteIpAccessControlList(string ipAccessControlListSid)
         {
             var request = new RestRequest(Method.DELETE);
@@ -378,7 +394,12 @@ namespace Twilio
             return response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed;
         }
 
-        //ipaddress GET/POST/DELETE
+        /// <summary>
+        /// Locates and returns a specific IpAddress resource located in an IpAccessControlList
+        /// </summary>
+        /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList</param>
+        /// <param name="ipAddressSid">The Sid of the IpAddress to locate</param>
+        /// <returns></returns>
         public IpAddress GetIpAddress(string ipAccessControlListSid, string ipAddressSid)
         {
             var request = new RestRequest();
@@ -389,11 +410,24 @@ namespace Twilio
             return Execute<IpAddress>(request);
         }
 
+        /// <summary>
+        /// Return a lists all IpAddresses associated with an IpAccessControlList
+        /// </summary>
+        /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList</param>
+        /// <returns></returns>
         public IpAddressResult ListIpAddresses(string ipAccessControlListSid)
         {
             return ListIpAddresses(ipAccessControlListSid, null, null, null);
         }
 
+        /// <summary>
+        /// Return a lists all IpAddresses associated with an IpAccessControlList
+        /// </summary>
+        /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList</param>
+        /// <param name="dateSent"></param>
+        /// <param name="pageNumber"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         public IpAddressResult ListIpAddresses(string ipAccessControlListSid, DateTime? dateSent, int? pageNumber, int? count)
         {
             var request = new RestRequest();
@@ -407,6 +441,13 @@ namespace Twilio
             return Execute<IpAddressResult>(request);
         }
 
+        /// <summary>
+        /// Creates a new IpAddress resource
+        /// </summary>
+        /// <param name="ipAccessControlListSid">The Sid of the IpAccessControList to add the IpAddress to</param>
+        /// <param name="friendlyName">The name of the IpAddress to create.</param>
+        /// <param name="ipAddress">The address value of the IpAddress</param>
+        /// <returns></returns>
         public IpAddress CreateIpAddress(string ipAccessControlListSid, string friendlyName, string ipAddress)
         {
             var request = new RestRequest(Method.POST);
@@ -419,6 +460,14 @@ namespace Twilio
             return Execute<IpAddress>(request);
         }
 
+        /// <summary>
+        /// Updates a specific IpAddress resource
+        /// </summary>
+        /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList</param>
+        /// <param name="ipAddressSid">The Sid of the IpAddress to update</param>
+        /// <param name="friendlyName">The name of the IpAddress</param>
+        /// <param name="ipAddress">The address value of the IpAddress</param>
+        /// <returns></returns>
         public IpAddress UpdateIpAddress(string ipAccessControlListSid, string ipAddressSid, string friendlyName, string ipAddress)
         {
             var request = new RestRequest(Method.POST);
@@ -432,6 +481,11 @@ namespace Twilio
             return Execute<IpAddress>(request);
         }
 
+        /// <summary>
+        /// Deletes a specific IpAddress resource
+        /// </summary>
+        /// <param name="sipDomainSid">The Sid of the IpAddress to delete</param>
+        /// <returns></returns>
         public DeleteStatus DeleteIpAddress(string ipAccessControlListSid, string ipAddressSid)
         {
             var request = new RestRequest(Method.DELETE);
@@ -444,7 +498,11 @@ namespace Twilio
             return response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed;
         }
 
-        //credentiallists GET/POST
+        /// <summary>
+        /// Locates and returns a specific CredentialList resource
+        /// </summary>
+        /// <param name="credentialListSid">The Sid of the CredentialList to locate</param>
+        /// <returns></returns>
         public CredentialList GetCredentialList(string credentialListSid)
         {
             var request = new RestRequest();
@@ -454,11 +512,22 @@ namespace Twilio
             return Execute<CredentialList>(request);
         }
 
+        /// <summary>
+        /// Return a list all CredentialsList resources
+        /// </summary>
+        /// <returns></returns>
         public CredentialListResult ListCredentialLists()
         {
             return ListCredentialLists(null, null, null);
         }
 
+        /// <summary>
+        /// Return a list all CredentialsList resources
+        /// </summary>
+        /// <param name="dateSent"></param>
+        /// <param name="pageNumber"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         public CredentialListResult ListCredentialLists(DateTime? dateSent, int? pageNumber, int? count)
         {
             var request = new RestRequest();
@@ -471,6 +540,11 @@ namespace Twilio
             return Execute<CredentialListResult>(request);
         }
 
+        /// <summary>
+        /// Creates a new CredentialList resource
+        /// </summary>
+        /// <param name="friendlyName">The name of the CredentialList to create.</param>
+        /// <returns></returns>
         public CredentialList CreateCredentialList(string friendlyName)
         {
             var request = new RestRequest(Method.POST);
@@ -481,6 +555,12 @@ namespace Twilio
             return Execute<CredentialList>(request);
         }
 
+        /// <summary>
+        /// Updates a specific CredentialList resource
+        /// </summary>
+        /// <param name="credentialListSid">The Sid of the CredentialList</param>
+        /// <param name="friendlyName">The name of the CredentialList</param>
+        /// <returns></returns>
         public CredentialList UpdateCredentialList(string credentialListSid, string friendlyName)
         {
             var request = new RestRequest(Method.POST);
@@ -492,6 +572,11 @@ namespace Twilio
             return Execute<CredentialList>(request);
         }
 
+        /// <summary>
+        /// Deletes a specific CredentialList resource
+        /// </summary>
+        /// <param name="sipDomainSid">The Sid of the CredentialList to delete</param>
+        /// <returns></returns>
         public DeleteStatus DeleteCredentialList(string credentialListSid)
         {
             var request = new RestRequest(Method.DELETE);
@@ -503,7 +588,12 @@ namespace Twilio
             return response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed;
         }
 
-        //credentials GET/POST/DELETE
+        /// <summary>
+        /// Locates and returns a specific Credential in a CredentialList resource
+        /// </summary>
+        /// <param name="credentialListSid">The Sid of the CredentialList</param>
+        /// <param name="credentialSid">The Sid of the Credential to locate</param>
+        /// <returns></returns>
         public Credential GetCredential(string credentialListSid, string credentialSid)
         {
             var request = new RestRequest();
@@ -514,11 +604,24 @@ namespace Twilio
             return Execute<Credential>(request);
         }
 
+        /// <summary>
+        /// List all Credentials for a CredentialList
+        /// </summary>
+        /// <param name="credentialListSid"></param>
+        /// <returns></returns>
         public CredentialResult ListCredentials(string credentialListSid)
         {
             return ListCredentials(credentialListSid, null, null, null);
         }
 
+        /// <summary>
+        /// List all Credentials for a CredentialList
+        /// </summary>
+        /// <param name="credentialListSid">The Sid of the CredentialList</param>
+        /// <param name="dateSent"></param>
+        /// <param name="pageNumber"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         public CredentialResult ListCredentials(string credentialListSid, DateTime? dateSent, int? pageNumber, int? count)
         {
             var request = new RestRequest();
@@ -532,6 +635,13 @@ namespace Twilio
             return Execute<CredentialResult>(request);
         }
 
+        /// <summary>
+        /// Create a new Credential resource in a CredentialList
+        /// </summary>
+        /// <param name="credentialListSid">The Sid of the CredentialList to add the new Credential to</param>
+        /// <param name="username">The Credential Username</param>
+        /// <param name="password">The Credential Password</param>
+        /// <returns></returns>
         public Credential CreateCredential(string credentialListSid, string username, string password)
         {
             var request = new RestRequest(Method.POST);
@@ -544,6 +654,14 @@ namespace Twilio
             return Execute<Credential>(request);
         }
 
+        /// <summary>
+        /// Updates a specific Credential resource
+        /// </summary>
+        /// <param name="credentialListSid">The Sid of the CredentialList that contains the Credential</param>
+        /// <param name="credentialSid">The Sid of the Credential to update</param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public Credential UpdateCredential(string credentialListSid, string credentialSid, string username, string password)
         {
             var request = new RestRequest(Method.POST);
@@ -557,6 +675,12 @@ namespace Twilio
             return Execute<Credential>(request);
         }
 
+        /// <summary>
+        /// Deletes a Credential from a CredentialList
+        /// </summary>
+        /// <param name="credentialListSid">The Sid of the CredentialList to delete from</param>
+        /// <param name="credentialSid">The Sid of the Credential to delete</param>
+        /// <returns></returns>
         public DeleteStatus DeleteCredential(string credentialListSid, string credentialSid)
         {
             var request = new RestRequest(Method.DELETE);
