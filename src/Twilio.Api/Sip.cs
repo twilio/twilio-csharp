@@ -437,7 +437,7 @@ namespace Twilio
         public IpAddress CreateIpAddress(string ipAccessControlListSid, string friendlyName, string ipAddress)
         {
             var request = new RestRequest(Method.POST);
-            request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/Addresses.json";
+            request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses.json";
             request.AddUrlSegment("IpAccessControlListSid", ipAccessControlListSid);
 
             request.AddParameter("FriendlyName", friendlyName);
@@ -475,7 +475,7 @@ namespace Twilio
         public DeleteStatus DeleteIpAddress(string ipAccessControlListSid, string ipAddressSid)
         {
             var request = new RestRequest(Method.DELETE);
-            request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/Addresses/{IpAddressSid}.json";
+            request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses/{IpAddressSid}.json";
 
             request.AddParameter("IpAccessControlListSid", ipAccessControlListSid, ParameterType.UrlSegment);
             request.AddParameter("IpAddressSid", ipAddressSid, ParameterType.UrlSegment);
