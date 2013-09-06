@@ -30,22 +30,20 @@ namespace Twilio
         /// <returns></returns>
         public SipDomainResult ListSipDomains()
         {
-            return ListSipDomains(null, null, null);
+            return ListSipDomains(null, null);
         }
 
         /// <summary>
         /// Return a list of all SIP Domain resources
         /// </summary>
-        /// <param name="dateSent"></param>
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public SipDomainResult ListSipDomains(DateTime? dateSent, int? pageNumber, int? count)
+        public SipDomainResult ListSipDomains(int? pageNumber, int? count)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/Domains.json";
 
-            if (dateSent.HasValue) request.AddParameter("DateSent", dateSent.Value.ToString("yyyy-MM-dd"));
             if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
             if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
@@ -139,18 +137,17 @@ namespace Twilio
         /// <returns></returns>
         public IpAccessControlListMappingResult ListIpAccessControlListMappings(string sipDomainSid)
         {
-            return ListIpAccessControlListMappings(sipDomainSid, null, null, null);
+            return ListIpAccessControlListMappings(sipDomainSid, null, null);
         }
 
         /// <summary>
         /// Lists all IpAccessControlLists mapped to a SIP Domain
         /// </summary>
         /// <param name="sipDomainSid">The Sid of the SIP Domain to list mappings for</param>
-        /// <param name="dateSent"></param>
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public IpAccessControlListMappingResult ListIpAccessControlListMappings(string sipDomainSid, DateTime? dateSent, int? pageNumber, int? count)
+        public IpAccessControlListMappingResult ListIpAccessControlListMappings(string sipDomainSid, int? pageNumber, int? count)
         {
             Require.Argument("SipDomainSid", sipDomainSid);
 
@@ -158,7 +155,6 @@ namespace Twilio
             request.Resource = "Accounts/{AccountSid}/SIP/Domains/{SipDomainSid}/IpAccessControlListMappings.json";
             request.AddUrlSegment("SipDomainSid", sipDomainSid);
 
-            if (dateSent.HasValue) request.AddParameter("DateSent", dateSent.Value.ToString("yyyy-MM-dd"));
             if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
             if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
@@ -227,24 +223,22 @@ namespace Twilio
         /// <returns></returns>
         public CredentialListMappingResult ListCredentialListMappings(string sipDomainSid)
         {
-            return ListCredentialListMappings(sipDomainSid, null, null, null);
+            return ListCredentialListMappings(sipDomainSid, null, null);
         }
 
         /// <summary>
         /// Lists all IpAccessControlLists mapped to a SIP Domain
         /// </summary>
         /// <param name="sipDomainSid">The Sid of the SIP Domain to list mappings for</param>
-        /// <param name="pageNumber"></param>
-        /// <param name="dateSent"></param>
+        /// <param name="pageNumber"></param>        
         /// <param name="count"></param>
         /// <returns></returns>
-        public CredentialListMappingResult ListCredentialListMappings(string sipDomainSid, DateTime? dateSent, int? pageNumber, int? count)
+        public CredentialListMappingResult ListCredentialListMappings(string sipDomainSid, int? pageNumber, int? count)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/Domains/{SipDomainSid}/CredentialListMappings.json";
             request.AddUrlSegment("SipDomainSid", sipDomainSid);
 
-            if (dateSent.HasValue) request.AddParameter("DateSent", dateSent.Value.ToString("yyyy-MM-dd"));
             if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
             if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
@@ -310,22 +304,20 @@ namespace Twilio
         /// <returns></returns>
         public IpAccessControlListResult ListIpAccessControlLists() 
         {
-            return ListIpAccessControlLists(null, null, null);
+            return ListIpAccessControlLists(null, null);
         }
 
         /// <summary>
         /// Lists all IpAccessControlLists for this account
         /// </summary>
         /// <param name="pageNumber"></param>
-        /// <param name="dateSent"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public IpAccessControlListResult ListIpAccessControlLists(DateTime? dateSent, int? pageNumber, int? count)
+        public IpAccessControlListResult ListIpAccessControlLists(int? pageNumber, int? count)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists.json";
 
-            if (dateSent.HasValue) request.AddParameter("DateSent", dateSent.Value.ToString("yyyy-MM-dd"));
             if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
             if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
@@ -403,24 +395,22 @@ namespace Twilio
         /// <returns></returns>
         public IpAddressResult ListIpAddresses(string ipAccessControlListSid)
         {
-            return ListIpAddresses(ipAccessControlListSid, null, null, null);
+            return ListIpAddresses(ipAccessControlListSid, null, null);
         }
 
         /// <summary>
         /// Return a lists all IpAddresses associated with an IpAccessControlList
         /// </summary>
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList</param>
-        /// <param name="dateSent"></param>
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public IpAddressResult ListIpAddresses(string ipAccessControlListSid, DateTime? dateSent, int? pageNumber, int? count)
+        public IpAddressResult ListIpAddresses(string ipAccessControlListSid, int? pageNumber, int? count)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/Addresses.json";
             request.AddUrlSegment("IpAccessControlListSid", ipAccessControlListSid);
 
-            if (dateSent.HasValue) request.AddParameter("DateSent", dateSent.Value.ToString("yyyy-MM-dd"));
             if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
             if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
@@ -504,22 +494,20 @@ namespace Twilio
         /// <returns></returns>
         public CredentialListResult ListCredentialLists()
         {
-            return ListCredentialLists(null, null, null);
+            return ListCredentialLists(null, null);
         }
 
         /// <summary>
         /// Return a list all CredentialsList resources
         /// </summary>
-        /// <param name="dateSent"></param>
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public CredentialListResult ListCredentialLists(DateTime? dateSent, int? pageNumber, int? count)
+        public CredentialListResult ListCredentialLists(int? pageNumber, int? count)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists.json";
 
-            if (dateSent.HasValue) request.AddParameter("DateSent", dateSent.Value.ToString("yyyy-MM-dd"));
             if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
             if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
@@ -597,24 +585,22 @@ namespace Twilio
         /// <returns></returns>
         public CredentialResult ListCredentials(string credentialListSid)
         {
-            return ListCredentials(credentialListSid, null, null, null);
+            return ListCredentials(credentialListSid, null, null);
         }
 
         /// <summary>
         /// List all Credentials for a CredentialList
         /// </summary>
         /// <param name="credentialListSid">The Sid of the CredentialList</param>
-        /// <param name="dateSent"></param>
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public CredentialResult ListCredentials(string credentialListSid, DateTime? dateSent, int? pageNumber, int? count)
+        public CredentialResult ListCredentials(string credentialListSid, int? pageNumber, int? count)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials.json";
             request.AddUrlSegment("CredentialListSid", credentialListSid); 
 
-            if (dateSent.HasValue) request.AddParameter("DateSent", dateSent.Value.ToString("yyyy-MM-dd"));
             if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
             if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
