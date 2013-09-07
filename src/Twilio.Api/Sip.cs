@@ -452,7 +452,7 @@ namespace Twilio
             request.AddUrlSegment("IpAddressSid", ipAddressSid);
 
             request.AddParameter("FriendlyName", friendlyName);
-            request.AddParameter("IpAddressSid", ipAddressSid);
+            request.AddParameter("IpAddress", ipAddress);
 
             return Execute<IpAddress>(request);
         }
