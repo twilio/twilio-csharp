@@ -12,12 +12,12 @@ if not "%PackageVersion%" == "" (
 )
 
 REM Build
-%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src/Twilio.sln /p:Configuration="%config%" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.sln /p:Configuration="%config%" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
 if not "%errorlevel%=="0" goto failure
 
 REM Unit tests
-%GallioEcho% src\Twilio.Tests.Api.Integration\bin\%config%\Twilio.Tests.Api.Integration.Tests.dll
-if not "%errorlevel%=="0" goto failure
+REM %GallioEcho% src\Twilio.Tests.Api.Integration\bin\%config%\Twilio.Tests.Api.Integration.Tests.dll
+REM if not "%errorlevel%=="0" goto failure
 
 REM Package Folders Setup
 
