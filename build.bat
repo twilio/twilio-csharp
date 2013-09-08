@@ -1,52 +1,58 @@
 REM tools\nuget.exe update -self
 
-C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe /nologo /maxcpucount /nr:true /verbosity:minimal /p:BuildInParallel=true /p:Configuration=Release /p:RestorePackages=true /t:Rebuild src/Twilio.sln
+@echo Off
+set config=%1
+if "%config%" == "" (
+   set config=Release
+)
 
-rd download /s /q
+set version=
+if not "%PackageVersion%" == "" (
+   set version=-Version %PackageVersion%
+)
+
+REM Build
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src/Twilio.sln /p:Configuration="%config%" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
+if not "%errorlevel%=="0" goto failure
+
+REM Unit tests
+%GallioEcho% src\Twilio.Tests.Api.Integration\bin\%config%\Twilio.Tests.Api.Integration.Tests.dll
+if not "%errorlevel%=="0" goto failure
+
+REM Package Folders Setup
+
+rd download /s /q  REM delete the old stuff
 
 if not exist download mkdir download
-REM if not exist download\WindowsPhone mkdir download\WindowsPhone
-REM if not exist download\Silverlight mkdir download\Silverlight
 if not exist download\package mkdir download\package
-if not exist download\package\twilio mkdir download\package\twilio
-if not exist download\package\twiliomvc mkdir download\package\twiliomvc
-if not exist download\package\twiliotwiml mkdir download\package\twiliotwiml
-if not exist download\package\twiliowebmatrix mkdir download\package\twiliowebmatrix
-if not exist download\package\twilioclient mkdir download\package\twilioclient
 
+if not exist download\package\twilio mkdir download\package\twilio
 if not exist download\package\twilio\lib mkdir download\package\twilio\lib
 if not exist download\package\twilio\lib\3.5 mkdir download\package\twilio\lib\3.5
-REM if not exist download\package\twilio\lib\SL3-WP7 mkdir download\package\twilio\lib\SL3-WP7
 if not exist download\package\twilio\lib\SL4-WINDOWSPHONE71 mkdir download\package\twilio\lib\SL4-WINDOWSPHONE71
 if not exist download\package\twilio\lib\SL4 mkdir download\package\twilio\lib\SL4
 
+if not exist download\package\twiliomvc mkdir download\package\twiliomvc
 if not exist download\package\twiliomvc\lib mkdir download\package\twiliomvc\lib
 if not exist download\package\twiliomvc\lib\3.5 mkdir download\package\twiliomvc\lib\3.5
 
+if not exist download\package\twiliotwiml mkdir download\package\twiliotwiml
 if not exist download\package\twiliotwiml\lib mkdir download\package\twiliotwiml\lib
 if not exist download\package\twiliotwiml\lib\3.5 mkdir download\package\twiliotwiml\lib\3.5
 
+if not exist download\package\twiliowebmatrix mkdir download\package\twiliowebmatrix
 if not exist download\package\twiliowebmatrix\lib mkdir download\package\twiliowebmatrix\lib
 if not exist download\package\twiliowebmatrix\lib\3.5 mkdir download\package\twiliowebmatrix\lib\3.5
 
+if not exist download\package\twilioclient mkdir download\package\twilioclient
 if not exist download\package\twilioclient\lib mkdir download\package\twilioclient\lib
 if not exist download\package\twilioclient\lib\3.5 mkdir download\package\twilioclient\lib\3.5
 
-REM tools\ilmerge.exe /lib:src\Twilio.Api\bin\Release /internalize /ndebug /v2 /out:download\Twilio.Api.dll Twilio.Api.dll RestSharp.dll
-REM tools\ilmerge.exe /lib:src\Twilio.Api.Silverlight\bin\Release /internalize /ndebug /targetplatform:v4,"C:\Program Files (x86)\Microsoft Silverlight\4.1.10111.0" /out:download\Twilio.Api.Silverlight.dll RestSharp.Silverlight.dll
-
-REM copy src\Twilio.Api\bin\Release\*.* download
-REM copy src\Twilio.Api.Silverlight\bin\Release\*.* download\Silverlight\
-REM copy src\Twilio.Api.WindowsPhone\bin\Release\*.* download\WindowsPhone\
-REM copy src\Twilio.Mvc\bin\Release\*.* download
-REM copy src\Twilio.Twiml\bin\Release\*.* download
-REM copy src\Twilio.WebMatrix\bin\Release\*.* download
-REM copy src\Twilio.Client.Capability\bin\Release\*.* download
+REM Copy files into Nuget Package structure
 copy LICENSE.txt download
 
 copy src\Twilio.Api\bin\Release\Twilio.Api.* download\package\twilio\lib\3.5\
 copy src\Twilio.Api.Silverlight\bin\Release\Twilio.Api.Silverlight.* download\package\twilio\lib\SL4\
-REM copy src\Twilio.Api.WindowsPhone\bin\Release\Twilio.Api.WindowsPhone.* download\package\twilio\lib\SL3-WP7\
 copy src\Twilio.Api.WindowsPhone\bin\Release\Twilio.Api.WindowsPhone.* download\package\twilio\lib\SL4-WINDOWSPHONE71\
 
 copy src\Twilio.Mvc\bin\Release\Twilio.Mvc.* download\package\twiliomvc\lib\3.5\
@@ -54,8 +60,23 @@ copy src\Twilio.Twiml\bin\Release\Twilio.Twiml.* download\package\twiliotwiml\li
 copy src\Twilio.WebMatrix\bin\Release\Twilio.WebMatrix.* download\package\twiliowebmatrix\lib\3.5\
 copy src\Twilio.Client.Capability\bin\Release\Twilio.Client.Capability.* download\package\twilioclient\lib\3.5\
 
-tools\nuget.exe pack Twilio.nuspec -BasePath download\package\twilio -o download
-tools\nuget.exe pack Twilio.Mvc.nuspec -BasePath download\package\twiliomvc -o download
-tools\nuget.exe pack Twilio.TwiML.nuspec -BasePath download\package\twiliotwiml -o download
-tools\nuget.exe pack Twilio.WebMatrix.nuspec -BasePath download\package\twiliowebmatrix -o download
-tools\nuget.exe pack Twilio.Client.nuspec -BasePath download\package\twilioclient -o download
+REM Create Packages
+mkdir Build
+cmd /c %nuget% pack "Twilio.nuspec" -BasePath download\package\twilio -o download
+cmd /c %nuget% pack "Twilio.Mvc.nuspec" -BasePath download\package\twiliomvc -o download
+cmd /c %nuget% pack "Twilio.TwiML.nuspec" -BasePath download\package\twiliotwiml -o download
+cmd /c %nuget% pack "Twilio.WebMatrix.nuspec" -BasePath download\package\twiliowebmatrix -o download
+cmd /c %nuget% pack "Twilio.Client.nuspec" -BasePath download\package\twilioclient -o download
+if not "%errorlevel%=="0" goto failure
+
+:success
+
+REM use github status API to indicate commit compile success
+
+exit 0
+
+:failure
+
+REM use github status API to indicate commit compile success
+
+exit -1
