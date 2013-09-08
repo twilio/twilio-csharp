@@ -76,7 +76,7 @@ namespace Twilio
 
         private static void AddSipDomainOptions(SipDomainOptions options, RestRequest request)
         {
-            request.AddParameter("DomainName", options.DomainName);
+            if (options.DomainName.HasValue()) request.AddParameter("DomainName", options.DomainName);
 
             if (options.AuthType.HasValue()) request.AddParameter("AuthType", options.AuthType);
             if (options.FriendlyName.HasValue()) request.AddParameter("FriendlyName", options.FriendlyName);

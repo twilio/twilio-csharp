@@ -89,8 +89,7 @@ namespace Twilio
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/SIP/Domains/{SipDomainSid}.json";
 
-            request.AddParameter("SipDomainSid", sipDomainSid, ParameterType.UrlSegment);
-            
+            request.AddUrlSegment("SipDomainSid", sipDomainSid);
             AddSipDomainOptions(options, request);
 
             return Execute<SipDomain>(request);
@@ -451,8 +450,8 @@ namespace Twilio
             request.AddUrlSegment("IpAccessControlListSid", ipAccessControlListSid);
             request.AddUrlSegment("IpAddressSid", ipAddressSid);
 
-            request.AddParameter("FriendlyName", friendlyName);
-            request.AddParameter("IpAddress", ipAddress);
+            if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
+            if (ipAddress.HasValue()) request.AddParameter("IpAddress", ipAddress);
 
             return Execute<IpAddress>(request);
         }
@@ -641,8 +640,8 @@ namespace Twilio
             request.AddUrlSegment("CredentialListSid", credentialListSid);
             request.AddUrlSegment("CredentialSid", credentialSid);
 
-            request.AddParameter("Username", username);
-            request.AddParameter("Password", password);
+            if (username.HasValue()) request.AddParameter("Username", username);
+            if (password.HasValue()) request.AddParameter("Password", password);
 
             return Execute<Credential>(request);
         }
