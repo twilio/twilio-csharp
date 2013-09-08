@@ -14,7 +14,7 @@ REM Build
 if not "%errorlevel%"=="0" goto failure
 
 REM Unit tests
-"%GallioEcho%" src\Twilio.Tests.Api.Integration\bin\%config%\Twilio.Tests.Api.Integration.Tests.dll
+"%GallioEcho%" src\Twilio.Tests.Api.Integration\bin\%config%\Twilio.Api.Tests.Integration.dll
 if not "%errorlevel%"=="0" goto failure
 
 REM Package Folders Setup
