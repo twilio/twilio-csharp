@@ -12,7 +12,8 @@ if not "%PackageVersion%" == "" (
 )
 
 REM Build
-%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.sln /p:Configuration="%config%" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
+REM %WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.sln /p:Configuration="%config%" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe /nologo /maxcpucount /nr:true /verbosity:minimal /p:BuildInParallel=true /p:Configuration=Release /p:RestorePackages=true /t:Rebuild src/Twilio.sln
 if not "%errorlevel%=="0" goto failure
 
 REM Unit tests
