@@ -66,7 +66,7 @@ cmd /c %nuget% pack "Twilio.Mvc.nuspec" -BasePath download\package\twiliomvc -o 
 cmd /c %nuget% pack "Twilio.TwiML.nuspec" -BasePath download\package\twiliotwiml -o download
 cmd /c %nuget% pack "Twilio.WebMatrix.nuspec" -BasePath download\package\twiliowebmatrix -o download
 cmd /c %nuget% pack "Twilio.Client.nuspec" -BasePath download\package\twilioclient -o download
-if not "%errorlevel%=="0" goto failure
+if not "%errorlevel%"=="0" goto failure
 
 :success
 
