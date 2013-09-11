@@ -89,8 +89,7 @@ namespace Twilio
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/SIP/Domains/{SipDomainSid}.json";
 
-            request.AddParameter("SipDomainSid", sipDomainSid, ParameterType.UrlSegment);
-            
+            request.AddUrlSegment("SipDomainSid", sipDomainSid);
             AddSipDomainOptions(options, request);
 
             return Execute<SipDomain>(request);
@@ -381,7 +380,7 @@ namespace Twilio
         public IpAddress GetIpAddress(string ipAccessControlListSid, string ipAddressSid)
         {
             var request = new RestRequest();
-            request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/Addresses/{IpAddressSid}.json";
+            request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses/{IpAddressSid}.json";
             request.AddUrlSegment("IpAccessControlListSid", ipAccessControlListSid);
             request.AddUrlSegment("IpAddressSid", ipAddressSid);
 
@@ -408,7 +407,7 @@ namespace Twilio
         public IpAddressResult ListIpAddresses(string ipAccessControlListSid, int? pageNumber, int? count)
         {
             var request = new RestRequest();
-            request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/Addresses.json";
+            request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses.json";
             request.AddUrlSegment("IpAccessControlListSid", ipAccessControlListSid);
 
             if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
@@ -447,12 +446,12 @@ namespace Twilio
         public IpAddress UpdateIpAddress(string ipAccessControlListSid, string ipAddressSid, string friendlyName, string ipAddress)
         {
             var request = new RestRequest(Method.POST);
-            request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/Addresses/{IpAddressSid}.json";
+            request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses/{IpAddressSid}.json";
             request.AddUrlSegment("IpAccessControlListSid", ipAccessControlListSid);
             request.AddUrlSegment("IpAddressSid", ipAddressSid);
 
-            request.AddParameter("FriendlyName", friendlyName);
-            request.AddParameter("IpAddressSid", ipAddressSid);
+            if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
+            if (ipAddress.HasValue()) request.AddParameter("IpAddress", ipAddress);
 
             return Execute<IpAddress>(request);
         }
@@ -641,8 +640,8 @@ namespace Twilio
             request.AddUrlSegment("CredentialListSid", credentialListSid);
             request.AddUrlSegment("CredentialSid", credentialSid);
 
-            request.AddParameter("Username", username);
-            request.AddParameter("Password", password);
+            if (username.HasValue()) request.AddParameter("Username", username);
+            if (password.HasValue()) request.AddParameter("Password", password);
 
             return Execute<Credential>(request);
         }
