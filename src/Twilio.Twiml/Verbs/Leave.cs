@@ -15,7 +15,6 @@ namespace Twilio.Twiml.Verbs
         /// <summary>
         /// Initializes a new instance of the Leave class.
         /// </summary>
-        /// <param name="name"></param>
         public Leave()
         {
             Element = new XElement("Leave");

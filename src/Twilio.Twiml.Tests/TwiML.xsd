@@ -16,6 +16,7 @@
           <xs:element name="Gather" type="GatherType"></xs:element>
           <xs:element name="Record" type="RecordType"></xs:element>
           <xs:element name="Sms" type="SmsType"></xs:element>
+          <xs:element name="Message" type="MessageType"></xs:element>
           <xs:element name="Dial" type="DialType"></xs:element>
           <xs:element name="Enqueue" type="EnqueueType"></xs:element>
           <xs:element name="Leave" type="LeaveType"></xs:element>
@@ -265,6 +266,31 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
+
+  <!-- <Message> -->
+  <xs:complexType name="MessageType" mixed="true">
+    <xs:sequence maxOccurs="unbounded" minOccurs="0">
+      <xs:choice>
+        <xs:element name="Body" type="BodyType"></xs:element>
+        <xs:element name="Media" type="MediaType"></xs:element>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="from" type="xs:string"></xs:attribute>
+    <xs:attribute name="to" type="xs:string"></xs:attribute>
+    <xs:attribute name="action" type="xs:string"></xs:attribute>
+    <xs:attribute name="method" type="MethodType"></xs:attribute>
+    <xs:attribute name="statusCallback" type="xs:string"></xs:attribute>
+  </xs:complexType>
+  
+  <!-- <Body> -->
+  <xs:simpleType name="BodyType">
+    <xs:restriction base="xs:string"></xs:restriction>
+  </xs:simpleType>
+
+  <!-- <Media> -->
+  <xs:simpleType name="MediaType">
+    <xs:restriction base="xs:anyURI"></xs:restriction>
+  </xs:simpleType>
 
   <!-- <Reject> -->
 	<xs:complexType name="RejectType">

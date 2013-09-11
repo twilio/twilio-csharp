@@ -91,6 +91,12 @@
     <Compile Include="..\Twilio.Api.Silverlight\IncomingPhoneNumbers.Async.cs">
       <Link>IncomingPhoneNumbers.Async.cs</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Media.Async.cs">
+      <Link>Media.Async.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Messages.Async.cs">
+      <Link>Messages.Async.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api.Silverlight\Notifications.Async.cs">
       <Link>Notifications.Async.cs</Link>
     </Compile>
@@ -106,6 +112,9 @@
     <Compile Include="..\Twilio.Api.Silverlight\Sandbox.Async.cs">
       <Link>Sandbox.Async.cs</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api.Silverlight\Sip.Async.cs">
+      <Link>Sip.Async.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api.Silverlight\Sms.Async.cs">
       <Link>Sms.Async.cs</Link>
     </Compile>
@@ -116,30 +125,68 @@
       <Link>Usage.Async.cs</Link>
     </Compile>
     <Compile Include="Accounts.cs" />
+    <Compile Include="Applications.cs" />
     <Compile Include="AuthorizedConnectApps.Async.cs" />
+    <Compile Include="AuthorizedConnectApps.cs" />
+    <Compile Include="AvailablePhoneNumbers.cs" />
     <Compile Include="AvailablePhoneNumbers.Async.cs" />
     <Compile Include="Calls.cs" />
     <Compile Include="Conference.cs" />
-    <Compile Include="AvailablePhoneNumbers.cs" />
-    <Compile Include="Applications.cs" />
+    <Compile Include="Core.cs" />
     <Compile Include="ConnectApps.cs" />
-    <Compile Include="AuthorizedConnectApps.cs" />
+    <Compile Include="IncomingPhoneNumbers.cs" />
+    <Compile Include="Media.cs" />
+    <Compile Include="Messages.cs" />
+    <Compile Include="Model\MediaListRequest.cs" />
+    <Compile Include="Notifications.cs" />
+    <Compile Include="OutgoingCallerIds.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queues.cs" />
+    <Compile Include="Recordings.cs" />
+    <Compile Include="Sandbox.cs" />
+    <Compile Include="SharedAssemblyInfo.cs" />
+    <Compile Include="Sms.cs" />
+    <Compile Include="Transcriptions.cs" />
+    <Compile Include="Usage.cs" />
+    <Compile Include="Model\Account.cs" />
     <Compile Include="Model\AccountResult.cs" />
     <Compile Include="Model\AccountStatus.cs" />
     <Compile Include="Model\Application.cs" />
     <Compile Include="Model\ApplicationResult.cs" />
     <Compile Include="Model\ApplicationOptions.cs" />
+    <Compile Include="Model\AvailablePhoneNumber.cs" />
+    <Compile Include="Model\AvailablePhoneNumberResult.cs" />
     <Compile Include="Model\AuthorizedConnectApp.cs" />
     <Compile Include="Model\Capabilities.cs" />
+    <Compile Include="Model\AuthorizedConnectAppResult.cs" />
     <Compile Include="Model\ConnectApp.cs" />
     <Compile Include="Model\ConnectAppResult.cs" />
-    <Compile Include="Model\AuthorizedConnectAppResult.cs" />
+    <Compile Include="Model\Credential.cs" />
+    <Compile Include="Model\CredentialList.cs" />
+    <Compile Include="Model\CredentialListMapping.cs" />
+    <Compile Include="Model\CredentialListMappingResult.cs" />
+    <Compile Include="Model\CredentialListResult.cs" />
+    <Compile Include="Model\CredentialResult.cs" />
+    <Compile Include="Model\IpAccessControlList.cs" />
+    <Compile Include="Model\IpAccessControlListResult.cs" />
+    <Compile Include="Model\IpAccessControlListMapping.cs" />
+    <Compile Include="Model\IpAccessControlListMappingResult.cs" />
+    <Compile Include="Model\IpAddress.cs" />
+    <Compile Include="Model\IpAddressResult.cs" />
+    <Compile Include="Model\MessageResult.cs" />
     <Compile Include="Model\DequeueStatus.cs" />
+    <Compile Include="Model\Media.cs" />
+    <Compile Include="Model\MediaResult.cs" />
+    <Compile Include="Model\Message.cs" />
+    <Compile Include="Model\MessageListRequest.cs" />
     <Compile Include="Model\OutgoingCallerIdOptions.cs" />
     <Compile Include="Model\Queue.cs" />
     <Compile Include="Model\QueueMember.cs" />
     <Compile Include="Model\QueueMemberResult.cs" />
     <Compile Include="Model\QueueResult.cs" />
+    <Compile Include="Model\SipDomain.cs" />
+    <Compile Include="Model\SipDomainOptions.cs" />
+    <Compile Include="Model\SipDomainResult.cs" />
     <Compile Include="Model\SmsShortCodeResult.cs" />
     <Compile Include="Model\DeleteStatus.cs" />
     <Compile Include="Model\SmsShortCode.cs" />
@@ -148,13 +195,6 @@
     <Compile Include="Model\UsageTrigger.cs" />
     <Compile Include="Model\UsageTriggerOptions.cs" />
     <Compile Include="Model\UsageTriggerResult.cs" />
-    <Compile Include="Queues.cs" />
-    <Compile Include="Sandbox.cs" />
-    <Compile Include="Core.cs" />
-    <Compile Include="IncomingPhoneNumbers.cs" />
-    <Compile Include="Model\Account.cs" />
-    <Compile Include="Model\AvailablePhoneNumber.cs" />
-    <Compile Include="Model\AvailablePhoneNumberResult.cs" />
     <Compile Include="Model\Call.cs" />
     <Compile Include="Model\CallResult.cs" />
     <Compile Include="Model\CallListRequest.cs" />
@@ -185,14 +225,7 @@
     <Compile Include="Model\TwilioBase.cs" />
     <Compile Include="Model\TwilioListBase.cs" />
     <Compile Include="Model\ValidationRequest.cs" />
-    <Compile Include="Notifications.cs" />
-    <Compile Include="OutgoingCallerIds.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Recordings.cs" />
-    <Compile Include="SharedAssemblyInfo.cs" />
-    <Compile Include="Sms.cs" />
-    <Compile Include="Transcriptions.cs" />
-    <Compile Include="Usage.cs" />
+    <Compile Include="Sip.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

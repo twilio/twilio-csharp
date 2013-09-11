@@ -29,4 +29,9 @@
   <Redirect method="asdsa">asdasdsa</Redirect>
   <Reject reason="busy"/>
   <Pause length="0"/>
+  <Message>asdasdsadasdsad</Message>
+  <Message>
+    <Body>asdasdasdasdsad</Body>
+    <Media>asdasdasdasdsaddsa</Media>
+  </Message>
 </Response>

@@ -28,6 +28,7 @@ namespace Twilio.TwiML
 			AllowedChildren.Add("Reject");
 			AllowedChildren.Add("Redirect");
 			AllowedChildren.Add("Sms");
+            AllowedChildren.Add("Message");
 			AllowedChildren.Add("Hangup");
 			AllowedChildren.Add("Pause");
             AllowedChildren.Add("Enqueue");
@@ -237,9 +238,9 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Adds the current caller to a Queue
+        /// Connects the current caller to a SIP address
         /// </summary>
-        /// <param name="queue">The Queue to add the user to</param>
+        /// <param name="sip">The SIP endpoint to dial</param>
         /// <returns></returns>
         public TwilioResponse Dial(Sip sip)
         {
@@ -249,9 +250,9 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Adds the current caller to a Queue
+        /// Connects the current caller to a SIP address
         /// </summary>
-        /// <param name="queue">The Queue to add the user to</param>
+        /// <param name="sip">The SIP endpoint to dial</param>
         /// <param name="dialAttributes"></param>
         /// <returns></returns>
         public TwilioResponse Dial(Sip sip, object dialAttributes)
@@ -417,6 +418,55 @@ namespace Twilio.TwiML
 			Add(new Hangup());
 			return this;
 		}
+
+        /// <summary>
+        /// Send an Message to a phone number
+        /// </summary>
+        /// <param name="body">The Message body</param>
+        /// <returns></returns>
+        public TwilioResponse Message(string body)
+        {
+            return Message(body, null);
+        }
+
+        /// <summary>
+        /// Send an Message to a phone number
+        /// </summary>
+        /// <param name="body">The Message body</param>
+        /// <param name="attributes"></param>
+        /// <returns></returns>
+        public TwilioResponse Message(string body, object attributes)
+        {
+            Add(new Message(body, attributes));
+            return this;
+        }
+
+        public TwilioResponse Message(string[] mediaUrls)
+        {
+            return Message(mediaUrls, null);
+        }
+
+        public TwilioResponse Message(string[] mediaUrls, object attributes)
+        {
+            return Message(null, mediaUrls, attributes);
+        }
+
+        public TwilioResponse Message(string body, string[] mediaUrls, object attributes)
+        {
+            var message = new Message(attributes);
+            Current.Push(message);
+
+            if (!string.IsNullOrEmpty(body)) { Add(new Body(body)); }
+
+            foreach (var m in mediaUrls)
+            {
+                Add(new Media(m));
+            }
+
+            Add(Current.Pop());
+
+            return this;
+        }
 
         /// <summary>
         /// Waits silently for a specific number of seconds
