@@ -52,13 +52,10 @@ namespace Twilio
 		{
 			Require.Argument("isoCountryCode", isoCountryCode);
 			Require.Argument("contains", contains);
-
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/TollFree.json";
 			request.AddUrlSegment("IsoCountryCode", isoCountryCode);
-
 			request.AddParameter("Contains", contains);
-
 			ExecuteAsync<AvailablePhoneNumberResult>(request, (response) => callback(response));
 		}
 
@@ -73,9 +70,9 @@ namespace Twilio
 			if (options.InRegion.HasValue()) request.AddParameter("InRegion", options.InRegion);
 			if (options.NearLatLong.HasValue()) request.AddParameter("NearLatLong", options.NearLatLong);
 			if (options.NearNumber.HasValue()) request.AddParameter("NearNumber", options.NearNumber);
-            if (options.SmsEnabled.HasValue) request.AddParameter("SmsEnabled", options.SmsEnabled.Value);
-            if (options.VoiceEnabled.HasValue) request.AddParameter("VoiceEnabled", options.VoiceEnabled.Value);
+			if (options.SmsEnabled.HasValue) request.AddParameter("SmsEnabled", options.SmsEnabled.Value);
+			if (options.VoiceEnabled.HasValue) request.AddParameter("VoiceEnabled", options.VoiceEnabled.Value);
+			if (options.MmsEnabled.HasValue) request.AddParameter("MmsEnabled", options.MmsEnabled.Value);
 		}
-
 	}
 }

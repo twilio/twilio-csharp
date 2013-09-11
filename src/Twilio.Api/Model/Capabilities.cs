@@ -9,5 +9,6 @@ namespace Twilio
     {
         public bool Voice { get; set; }
         public bool SMS { get; set; }
+        public bool MMS { get; set; }
     }
 }
