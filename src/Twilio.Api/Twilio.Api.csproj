@@ -137,6 +137,7 @@
     <Compile Include="IncomingPhoneNumbers.cs" />
     <Compile Include="Media.cs" />
     <Compile Include="Messages.cs" />
+    <Compile Include="Model\Capabilities.cs" />
     <Compile Include="Model\MediaListRequest.cs" />
     <Compile Include="Notifications.cs" />
     <Compile Include="OutgoingCallerIds.cs" />

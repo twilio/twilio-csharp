@@ -44,6 +44,6 @@ namespace Twilio
 		/// </summary>
 		public string IsoCountry { get; set; }
 
-        public Capabilities Capabilities { get; set; }        
+		public Capabilities Capabilities { get; set; }
 	}
 }
