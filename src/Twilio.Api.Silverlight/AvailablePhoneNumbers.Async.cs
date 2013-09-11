@@ -73,6 +73,9 @@ namespace Twilio
 			if (options.InRegion.HasValue()) request.AddParameter("InRegion", options.InRegion);
 			if (options.NearLatLong.HasValue()) request.AddParameter("NearLatLong", options.NearLatLong);
 			if (options.NearNumber.HasValue()) request.AddParameter("NearNumber", options.NearNumber);
+
+            if (options.SmsEnabled.HasValue) request.AddParameter("SmsEnabled", options.SmsEnabled.Value);
+            if (options.VoiceEnabled.HasValue) request.AddParameter("VoiceEnabled", options.VoiceEnabled.Value);
 		}
 
 	}

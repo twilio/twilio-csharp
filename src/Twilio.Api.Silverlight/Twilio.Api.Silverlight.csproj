@@ -125,6 +125,9 @@
     <Compile Include="..\Twilio.Api\Model\CallResult.cs">
       <Link>Model\CallResult.cs</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api\Model\Capabilities.cs">
+      <Link>Model\Capabilities.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api\Model\ComparisonType.cs">
       <Link>Model\ComparisonType.cs</Link>
     </Compile>
