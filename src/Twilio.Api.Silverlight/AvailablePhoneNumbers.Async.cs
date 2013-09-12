@@ -76,6 +76,7 @@ namespace Twilio
 
             if (options.SmsEnabled.HasValue) request.AddParameter("SmsEnabled", options.SmsEnabled.Value);
             if (options.VoiceEnabled.HasValue) request.AddParameter("VoiceEnabled", options.VoiceEnabled.Value);
+			if (options.MmsEnabled.HasValue) request.AddParameter("MmsEnabled", options.MmsEnabled.Value);
 		}
 
 	}
