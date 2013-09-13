@@ -189,6 +189,15 @@
     <Compile Include="..\Twilio.Api\Model\DequeueStatus.cs">
       <Link>Model\DequeueStatus.cs</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api\Model\Domain.cs">
+      <Link>Model\Domain.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\DomainOptions.cs">
+      <Link>Model\DomainOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\DomainResult.cs">
+      <Link>Model\DomainResult.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api\Model\HangupStyle.cs">
       <Link>Model\HangupStyle.cs</Link>
     </Compile>
@@ -281,15 +290,6 @@
     </Compile>
     <Compile Include="..\Twilio.Api\Model\Sandbox.cs">
       <Link>Model\Sandbox.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api\Model\SipDomain.cs">
-      <Link>Model\SipDomain.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api\Model\SipDomainOptions.cs">
-      <Link>Model\SipDomainOptions.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api\Model\SipDomainResult.cs">
-      <Link>Model\SipDomainResult.cs</Link>
     </Compile>
     <Compile Include="..\Twilio.Api\Model\SmsMessage.cs">
       <Link>Model\SmsMessage.cs</Link>

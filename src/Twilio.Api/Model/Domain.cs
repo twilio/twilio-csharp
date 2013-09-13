@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Twilio
 {
-    public class SipDomain : TwilioBase
+    public class Domain : TwilioBase
     {
         public string Sid { get; set; }
         public string FriendlyName {get;set;}

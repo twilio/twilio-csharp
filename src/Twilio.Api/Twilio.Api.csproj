@@ -56,7 +56,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="RestSharp, Version=104.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.104.1\lib\net35-client\RestSharp.dll</HintPath>
+      <HintPath>..\..\..\..\visual studio 2010\Projects\ConsoleApplication3\packages\RestSharp.104.1\lib\net35-client\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -158,7 +158,6 @@
     <Compile Include="Model\AvailablePhoneNumber.cs" />
     <Compile Include="Model\AvailablePhoneNumberResult.cs" />
     <Compile Include="Model\AuthorizedConnectApp.cs" />
-    <Compile Include="Model\Capabilities.cs" />
     <Compile Include="Model\AuthorizedConnectAppResult.cs" />
     <Compile Include="Model\ConnectApp.cs" />
     <Compile Include="Model\ConnectAppResult.cs" />
@@ -185,9 +184,9 @@
     <Compile Include="Model\QueueMember.cs" />
     <Compile Include="Model\QueueMemberResult.cs" />
     <Compile Include="Model\QueueResult.cs" />
-    <Compile Include="Model\SipDomain.cs" />
-    <Compile Include="Model\SipDomainOptions.cs" />
-    <Compile Include="Model\SipDomainResult.cs" />
+    <Compile Include="Model\Domain.cs" />
+    <Compile Include="Model\DomainOptions.cs" />
+    <Compile Include="Model\DomainResult.cs" />
     <Compile Include="Model\SmsShortCodeResult.cs" />
     <Compile Include="Model\DeleteStatus.cs" />
     <Compile Include="Model\SmsShortCode.cs" />
