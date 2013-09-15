@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Twilio
 {
-    public class SipDomainResult : TwilioListBase
+    public class DomainResult : TwilioListBase
     {
-        public List<SipDomain> SipDomains { get; set; }
+        public List<Domain> Domains { get; set; }
     }
 }
