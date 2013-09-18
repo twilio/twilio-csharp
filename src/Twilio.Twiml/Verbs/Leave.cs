@@ -5,7 +5,7 @@ using System.Text;
 using Twilio.TwiML;
 using System.Xml.Linq;
 
-namespace Twilio.Twiml.Verbs
+namespace Twilio.TwiML
 {
     /// <summary>
     /// Transfers control of a call that is in a queue so that the caller exits the queue and execution continues with the next verb after the original Enqueue

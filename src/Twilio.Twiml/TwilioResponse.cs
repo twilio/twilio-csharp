@@ -420,6 +420,16 @@ namespace Twilio.TwiML
 		}
 
         /// <summary>
+        /// Removes a caller from a Queue and continues execution with the next TwiML verb.
+        /// </summary>
+        /// <returns></returns>
+        public TwilioResponse Leave()
+        {
+            Add(new Leave());
+            return this;
+        }
+
+        /// <summary>
         /// Send an Message to a phone number
         /// </summary>
         /// <param name="body">The Message body</param>
