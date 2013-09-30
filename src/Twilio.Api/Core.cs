@@ -4,6 +4,7 @@ using System.Reflection;
 using RestSharp.Deserializers;
 using System.Text;
 using System;
+using System.Net;
 
 namespace Twilio
 {
@@ -20,6 +21,11 @@ namespace Twilio
 		/// Base URL of API (defaults to https://api.twilio.com)
 		/// </summary>
         public string BaseUrl { get; private set; }
+
+#if FRAMEWORK
+        public WebProxy Proxy { get; set; }
+#endif
+
 		private string AccountSid { get; set; }
 		private string AuthToken { get; set; }
 
@@ -48,6 +54,10 @@ namespace Twilio
 			_client.AddDefaultHeader("Accept-charset", "utf-8");
 			_client.BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion);
 			_client.Timeout = 3050;
+
+#if FRAMEWORK
+            if (this.Proxy != null) { _client.Proxy = this.Proxy; }
+#endif
 
 			// if acting on a subaccount, use request.AddUrlSegment("AccountSid", "value")
 			// to override for that request.
