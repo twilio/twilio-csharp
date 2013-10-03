@@ -28,6 +28,7 @@ namespace Twilio
 
 		private string AccountSid { get; set; }
 		private string AuthToken { get; set; }
+        private string AccountResourceSid { get; set; }
 
 		private RestClient _client;
 
@@ -36,33 +37,41 @@ namespace Twilio
 		/// </summary>
 		/// <param name="accountSid">The AccountSid to authenticate with</param>
 		/// <param name="authToken">The AuthToken to authenticate with</param>
-		public TwilioRestClient(string accountSid, string authToken)
-		{
-			ApiVersion = "2010-04-01"; 
-			BaseUrl = "https://api.twilio.com/";
-			AccountSid = accountSid;
-			AuthToken = authToken;
+        public TwilioRestClient(string accountSid, string authToken) : this(accountSid, authToken, accountSid) { }
 
-			// silverlight friendly way to get current version
-			var assembly = Assembly.GetExecutingAssembly();
-			AssemblyName assemblyName = new AssemblyName(assembly.FullName);
-			var version = assemblyName.Version;
+        /// <summary>
+        /// Initializes a new client with the specified credentials.
+        /// </summary>
+        /// <param name="accountSid">The AccountSid to authenticate with</param>
+        /// <param name="authToken">The AuthToken to authenticate with</param>
+        public TwilioRestClient(string accountSid, string authToken, string accountResourceSid)
+        {
+            ApiVersion = "2010-04-01";
+            BaseUrl = "https://api.twilio.com/";
+            AccountSid = accountSid;
+            AuthToken = authToken;
+            AccountResourceSid = accountResourceSid;
 
-			_client = new RestClient();
-			_client.UserAgent = "twilio-csharp/" + version; 
-			_client.Authenticator = new HttpBasicAuthenticator(AccountSid, AuthToken);
-			_client.AddDefaultHeader("Accept-charset", "utf-8");
-			_client.BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion);
-			_client.Timeout = 3050;
+            // silverlight friendly way to get current version
+            var assembly = Assembly.GetExecutingAssembly();
+            AssemblyName assemblyName = new AssemblyName(assembly.FullName);
+            var version = assemblyName.Version;
+
+            _client = new RestClient();
+            _client.UserAgent = "twilio-csharp/" + version;
+            _client.Authenticator = new HttpBasicAuthenticator(AccountSid, AuthToken);
+            _client.AddDefaultHeader("Accept-charset", "utf-8");
+            _client.BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion);
+            _client.Timeout = 3050;
 
 #if FRAMEWORK
             if (this.Proxy != null) { _client.Proxy = this.Proxy; }
 #endif
 
-			// if acting on a subaccount, use request.AddUrlSegment("AccountSid", "value")
-			// to override for that request.
-			_client.AddDefaultUrlSegment("AccountSid", AccountSid); 
-		}
+            // if acting on a subaccount, use request.AddUrlSegment("AccountSid", "value")
+            // to override for that request.
+            _client.AddDefaultUrlSegment("AccountSid", AccountResourceSid); 
+        }
 
 #if FRAMEWORK
 		/// <summary>
