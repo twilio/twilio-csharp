@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>3.6.2</version>
+		<version>3.6.3</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -14,13 +14,14 @@
 			<dependency id="RestSharp" />
 		</dependencies>
 		<releaseNotes>
+      * 3.6.3 - Added overloads to the SendMessage method
       * 3.6.2 - Updated RestSharp Reference
-              - Readded Proxy property
+      - Readded Proxy property
       * 3.6.1 - Added new SIP endpoints
       - Added new Message and Media endpoints
       * 3.5.17 - Added workaround for problem redirecting calls
       * 3.5.16 - Changed TriggerValue from double to string to support offset value syntax
-               - Fixed spelling issue preventing UsageUnits from deserializing correctly 
+      - Fixed spelling issue preventing UsageUnits from deserializing correctly
       * 3.5.15 - Added new overload for RedirectCall to take optional parameters
       * 3.5.14 - Added new default header Accept-Chartset: utf-8
       * 3.5.13 - Fix Sip authentication properties
