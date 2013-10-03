@@ -32,6 +32,7 @@ namespace Twilio.TwiML
 			AllowedChildren.Add("Hangup");
 			AllowedChildren.Add("Pause");
             AllowedChildren.Add("Enqueue");
+            AllowedChildren.Add("Leave");
         }
 
         /// <summary>
