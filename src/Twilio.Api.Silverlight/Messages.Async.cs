@@ -69,6 +69,44 @@ namespace Twilio
         /// Makes a POST request to the Messages List resource.
         /// </summary>
         /// <param name="from">The phone number to send the message from. Must be a Twilio-provided or ported local (not toll-free) number. Validated outgoing caller IDs cannot be used.</param>
+        /// <param name="to">The phone number to send the message to.</param>
+        /// <param name="body">The message to send. Must be 160 characters or less.</param>
+        public void SendMessage(string from, string to, string body, Action<Message> callback)
+        {
+            SendMessage(from, to, body, new string[0], string.Empty, callback);
+        }
+
+        /// <summary>
+        /// Send a new Message to the specified recipients.
+        /// Makes a POST request to the Messages List resource.
+        /// </summary>
+        /// <param name="from">The phone number to send the message from. Must be a Twilio-provided or ported local (not toll-free) number. Validated outgoing caller IDs cannot be used.</param>
+        /// <param name="to">The phone number to send the message to.</param>
+        /// <param name="body">The message to send. Must be 160 characters or less.</param>
+        /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the MessageSid as well as MessageStatus=sent or MessageStatus=failed</param>
+        public void SendMessage(string from, string to, string body, string statusCallback, Action<Message> callback)
+        {
+            SendMessage(from, to, body, new string[0], statusCallback, callback);
+        }
+
+        /// <summary>
+        /// Send a new Message to the specified recipients.
+        /// Makes a POST request to the Messages List resource.
+        /// </summary>
+        /// <param name="from">The phone number to send the message from. Must be a Twilio-provided or ported local (not toll-free) number. Validated outgoing caller IDs cannot be used.</param>
+        /// <param name="to">The phone number to send the message to.</param>
+        /// <param name="mediaUrls">An array of URLs where each member of the array points to a media file to be sent with the message.  You can include a maximum of 10 media URLs</param>
+        public void SendMessage(string from, string to, string[] mediaUrls, Action<Message> callback)
+        {
+            SendMessage(from, to, String.Empty, mediaUrls, string.Empty, callback);
+        }
+        
+
+        /// <summary>
+        /// Send a new Message to the specified recipients.
+        /// Makes a POST request to the Messages List resource.
+        /// </summary>
+        /// <param name="from">The phone number to send the message from. Must be a Twilio-provided or ported local (not toll-free) number. Validated outgoing caller IDs cannot be used.</param>
         /// <param name="to">The phone number to send the message to. If using the Sandbox, this number must be a validated outgoing caller ID</param>
         /// <param name="body">The message to send. Must be 160 characters or less.</param>
         public void SendMessage(string from, string to, string body, string[] mediaUrls, Action<Message> callback)

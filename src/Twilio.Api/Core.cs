@@ -23,6 +23,9 @@ namespace Twilio
         public string BaseUrl { get; private set; }
 
 #if FRAMEWORK
+        /// <summary>
+        /// 
+        /// </summary>
         public WebProxy Proxy { get; set; }
 #endif
 
@@ -44,6 +47,7 @@ namespace Twilio
         /// </summary>
         /// <param name="accountSid">The AccountSid to authenticate with</param>
         /// <param name="authToken">The AuthToken to authenticate with</param>
+        /// <param name="accountResourceSid"></param>
         public TwilioRestClient(string accountSid, string authToken, string accountResourceSid)
         {
             ApiVersion = "2010-04-01";
