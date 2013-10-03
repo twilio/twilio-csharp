@@ -16,6 +16,7 @@
 		<releaseNotes>
       * 3.6.3 - Added overloads to the SendMessage method
               - Fixed Sms references in SendMessage docs
+              - Added second constructor to allow explicit setting of the Account resource
       * 3.6.2 - Updated RestSharp Reference
       - Readded Proxy property
       * 3.6.1 - Added new SIP endpoints
