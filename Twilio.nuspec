@@ -15,6 +15,7 @@
 		</dependencies>
 		<releaseNotes>
       * 3.6.3 - Added overloads to the SendMessage method
+              - Fixed Sms references in SendMessage docs
       * 3.6.2 - Updated RestSharp Reference
       - Readded Proxy property
       * 3.6.1 - Added new SIP endpoints

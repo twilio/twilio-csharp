@@ -66,7 +66,7 @@ namespace Twilio
         /// <param name="from">The phone number to send the message from. Must be a Twilio-provided or ported local (not toll-free) number. Validated outgoing caller IDs cannot be used.</param>
         /// <param name="to">The phone number to send the message to.</param>
         /// <param name="body">The message to send. Must be 160 characters or less.</param>
-        /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the SmsSid as well as SmsStatus=sent or SmsStatus=failed</param>
+        /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the MessageSid as well as MessageStatus=sent or MessageStatus=failed</param>
         public Message SendMessage(string from, string to, string body, string statusCallback)
         {
             return SendMessage(from, to, body, new string[0], statusCallback);
@@ -105,7 +105,7 @@ namespace Twilio
         /// <param name="to">The phone number to send the message to. If using the Sandbox, this number must be a validated outgoing caller ID</param>
         /// <param name="body">The message to send. Must be 160 characters or less.</param>
         /// <param name="mediaUrls">An array of URLs where each member of the array points to a media file to be sent with the message.  You can include a maximum of 10 media URLs</param>
-        /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the SmsSid as well as SmsStatus=sent or SmsStatus=failed</param>
+        /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the MessageSid as well as MessageStatus=sent or MessageStatus=failed</param>
         public Message SendMessage(string from, string to, string body, string[] mediaUrls, string statusCallback)
         {
             return SendMessage(from, to, body, mediaUrls, statusCallback, string.Empty);
@@ -119,7 +119,7 @@ namespace Twilio
         /// <param name="to">The phone number to send the message to. If using the Sandbox, this number must be a validated outgoing caller ID</param>
         /// <param name="body">The message to send. Must be 160 characters or less.</param>
         /// <param name="mediaUrls">An array of URLs where each member of the array points to a media file to be sent with the message.  You can include a maximum of 10 media URLs</param>
-        /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the SmsSid as well as SmsStatus=sent or SmsStatus=failed</param>
+        /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the MessageSid as well as MessageStatus=sent or MessageStatus=failed</param>
         /// <param name="applicationSid"></param>
         public Message SendMessage(string from, string to, string body, string[] mediaUrls, string statusCallback, string applicationSid)
         {
