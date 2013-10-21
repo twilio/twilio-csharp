@@ -49,7 +49,36 @@ namespace Twilio
 			return Execute<IncomingPhoneNumberResult>(request);
 		}
 
-		/// <summary>
+        /// <summary>
+        /// List all incoming phone mobile numbers on current account
+        /// </summary>
+        public IncomingPhoneNumberResult ListIncomingMobilePhoneNumbers()
+        {
+            return ListIncomingMobilePhoneNumbers(null, null, null, null);
+        }
+
+        /// <summary>
+        /// List incoming phone mobile numbers on current account with filters
+        /// </summary>
+        /// <param name="phoneNumber">Optional phone number to match</param>
+        /// <param name="friendlyName">Optional friendly name to match</param>
+        /// <param name="pageNumber">Page number to start retrieving results from</param>
+        /// <param name="count">How many results to return</param>
+        public IncomingPhoneNumberResult ListIncomingMobilePhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count)
+        {
+            var request = new RestRequest();
+            request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/Mobile.json";
+
+            if (phoneNumber.HasValue()) request.AddParameter("PhoneNumber", phoneNumber);
+            if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
+
+            if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
+            if (count.HasValue) request.AddParameter("PageSize", count.Value);
+
+            return Execute<IncomingPhoneNumberResult>(request);
+        }
+        
+        /// <summary>
 		/// Purchase/provision a local phone number
 		/// </summary>
 		/// <param name="options">Optional parameters to use when purchasing number</param>

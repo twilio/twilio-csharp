@@ -59,6 +59,26 @@ namespace Twilio
 			ExecuteAsync<AvailablePhoneNumberResult>(request, (response) => callback(response));
 		}
 
+        /// <summary>
+        /// Search available mobile phone numbers.  Makes a GET request to the AvailablePhoneNumber List resource.
+        /// </summary>
+        /// <param name="isoCountryCode">Two-character ISO country code (US or CA)</param>
+        /// <param name="options">Search filter options. Only properties with values set will be used.</param>
+        /// <param name="callback">Method to call upon successful completion</param>
+        public void ListAvailableMobilePhoneNumbers(string isoCountryCode, AvailablePhoneNumberListRequest options, Action<AvailablePhoneNumberResult> callback)
+        {
+            Require.Argument("isoCountryCode", isoCountryCode);
+
+            var request = new RestRequest();
+            request.Resource = "Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/Mobile.json";
+            request.AddUrlSegment("IsoCountryCode", isoCountryCode);
+
+            AddNumberSearchParameters(options, request);
+
+            ExecuteAsync<AvailablePhoneNumberResult>(request, (response) => callback(response));
+        }
+
+
 		private void AddNumberSearchParameters(AvailablePhoneNumberListRequest options, RestRequest request)
 		{
 			if (options.AreaCode.HasValue()) request.AddParameter("AreaCode", options.AreaCode);
