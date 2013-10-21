@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>3.6.4</version>
+		<version>3.6.5</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -14,6 +14,8 @@
 			<dependency id="RestSharp" />
 		</dependencies>
 		<releaseNotes>
+      * 3.6.5 - Added new Mobile resources
+              - Added missing Local and TollFree resources
       * 3.6.4 - Fixing a bad upload
       * 3.6.3 - Added overloads to the SendMessage method
               - Fixed Sms references in SendMessage docs
