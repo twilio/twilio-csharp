@@ -50,7 +50,65 @@ namespace Twilio
 		}
 
         /// <summary>
-        /// List all incoming phone mobile numbers on current account
+        /// List all incoming local phone numbers on current account
+        /// </summary>
+        public IncomingPhoneNumberResult ListIncomingLocalPhoneNumbers()
+        {
+            return ListIncomingMobilePhoneNumbers(null, null, null, null);
+        }
+
+        /// <summary>
+        /// List incoming local phone numbers on current account with filters
+        /// </summary>
+        /// <param name="phoneNumber">Optional phone number to match</param>
+        /// <param name="friendlyName">Optional friendly name to match</param>
+        /// <param name="pageNumber">Page number to start retrieving results from</param>
+        /// <param name="count">How many results to return</param>
+        public IncomingPhoneNumberResult ListIncomingLocalPhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count)
+        {
+            var request = new RestRequest();
+            request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/Local.json";
+
+            if (phoneNumber.HasValue()) request.AddParameter("PhoneNumber", phoneNumber);
+            if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
+
+            if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
+            if (count.HasValue) request.AddParameter("PageSize", count.Value);
+
+            return Execute<IncomingPhoneNumberResult>(request);
+        }
+
+        /// <summary>
+        /// List all incoming toll free phone numbers on current account
+        /// </summary>
+        public IncomingPhoneNumberResult ListIncomingTollFreePhoneNumbers()
+        {
+            return ListIncomingMobilePhoneNumbers(null, null, null, null);
+        }
+
+        /// <summary>
+        /// List incoming toll free phone numbers on current account with filters
+        /// </summary>
+        /// <param name="phoneNumber">Optional phone number to match</param>
+        /// <param name="friendlyName">Optional friendly name to match</param>
+        /// <param name="pageNumber">Page number to start retrieving results from</param>
+        /// <param name="count">How many results to return</param>
+        public IncomingPhoneNumberResult ListIncomingTollFreePhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count)
+        {
+            var request = new RestRequest();
+            request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/TollFree.json";
+
+            if (phoneNumber.HasValue()) request.AddParameter("PhoneNumber", phoneNumber);
+            if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
+
+            if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
+            if (count.HasValue) request.AddParameter("PageSize", count.Value);
+
+            return Execute<IncomingPhoneNumberResult>(request);
+        }
+
+        /// <summary>
+        /// List all incoming mobile phone numbers on current account
         /// </summary>
         public IncomingPhoneNumberResult ListIncomingMobilePhoneNumbers()
         {
@@ -58,7 +116,7 @@ namespace Twilio
         }
 
         /// <summary>
-        /// List incoming phone mobile numbers on current account with filters
+        /// List incoming mobile phone numbers on current account with filters
         /// </summary>
         /// <param name="phoneNumber">Optional phone number to match</param>
         /// <param name="friendlyName">Optional friendly name to match</param>
@@ -79,7 +137,7 @@ namespace Twilio
         }
         
         /// <summary>
-		/// Purchase/provision a local phone number
+		/// Purchase/provision a phone number
 		/// </summary>
 		/// <param name="options">Optional parameters to use when purchasing number</param>
 		public IncomingPhoneNumber AddIncomingPhoneNumber(PhoneNumberOptions options)
@@ -101,6 +159,46 @@ namespace Twilio
 
 			return Execute<IncomingPhoneNumber>(request);
 		}
+
+        /// <summary>
+        /// Purchase/provision a local phone number
+        /// </summary>
+        /// <param name="options">Optional parameters to use when purchasing number</param>
+        public IncomingPhoneNumber AddIncomingLocalPhoneNumber(PhoneNumberOptions options)
+        {
+            Require.Argument("PhoneNumber", options.PhoneNumber);
+
+            var request = new RestRequest(Method.POST);
+            request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/Local.json";
+
+            //PhoneNumber is required for this resource
+            request.AddParameter("PhoneNumber", options.PhoneNumber);
+
+            AddPhoneNumberOptionsToRequest(request, options);
+            AddSmsOptionsToRequest(request, options);
+
+            return Execute<IncomingPhoneNumber>(request);
+        }
+
+        /// <summary>
+        /// Purchase/provision a toll free phone number
+        /// </summary>
+        /// <param name="options">Optional parameters to use when purchasing number</param>
+        public IncomingPhoneNumber AddIncomingTollFreePhoneNumber(PhoneNumberOptions options)
+        {
+            Require.Argument("PhoneNumber", options.PhoneNumber);
+
+            var request = new RestRequest(Method.POST);
+            request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/TollFree.json";
+
+            //PhoneNumber is required for this resource
+            request.AddParameter("PhoneNumber", options.PhoneNumber);
+
+            AddPhoneNumberOptionsToRequest(request, options);
+            AddSmsOptionsToRequest(request, options);
+
+            return Execute<IncomingPhoneNumber>(request);
+        }
 
 		/// <summary>
 		/// Update the settings of an incoming phone number
