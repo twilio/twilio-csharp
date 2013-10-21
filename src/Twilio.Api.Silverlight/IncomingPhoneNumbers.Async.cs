@@ -56,7 +56,7 @@ namespace Twilio
         /// <summary>
         /// List all incoming phone mobile numbers on current account
         /// </summary>
-        public void ListIncomingMobilePhoneNumbers(Action<IncomingPhoneNumberResult> callback
+        public void ListIncomingMobilePhoneNumbers(Action<IncomingPhoneNumberResult> callback)
         {
             ListIncomingMobilePhoneNumbers(null, null, null, null, callback);
         }
