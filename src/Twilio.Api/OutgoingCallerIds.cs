@@ -11,7 +11,7 @@ namespace Twilio
 		/// Makes a GET request to an OutgoingCallerId Instance resource.
 		/// </summary>
 		/// <param name="outgoingCallerIdSid">The Sid of the entry to retrieve</param>
-		public OutgoingCallerId GetOutgoingCallerId(string outgoingCallerIdSid)
+        public virtual OutgoingCallerId GetOutgoingCallerId(string outgoingCallerIdSid)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/OutgoingCallerIds/{OutgoingCallerIdSid}.json";
@@ -24,7 +24,7 @@ namespace Twilio
 		/// Returns a list of validated outgoing caller IDs. The list includes paging information.
 		/// Makes a GET request to an OutgoingCallerIds List resource.
 		/// </summary>
-		public OutgoingCallerIdResult ListOutgoingCallerIds()
+        public virtual OutgoingCallerIdResult ListOutgoingCallerIds()
 		{
 			return ListOutgoingCallerIds(null, null, null, null);
 		}
@@ -38,7 +38,7 @@ namespace Twilio
 		/// <param name="pageNumber">If present, start the results from the specified page</param>
 		/// <param name="count">If present, return the specified number of results, up to 1000</param>
 		/// <returns></returns>
-		public OutgoingCallerIdResult ListOutgoingCallerIds(string phoneNumber, string friendlyName, int? pageNumber, int? count)
+        public virtual OutgoingCallerIdResult ListOutgoingCallerIds(string phoneNumber, string friendlyName, int? pageNumber, int? count)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/OutgoingCallerIds.json";
@@ -61,7 +61,7 @@ namespace Twilio
 		/// <param name="friendlyName">A human readable description for the new caller ID with maximum length 64 characters. Defaults to a nicely formatted version of the number.</param>
 		/// <param name="callDelay">The number of seconds, between 0 and 60, to delay before initiating the validation call. Defaults to 0.</param>
 		/// <param name="extension">Digits to dial after connecting the validation call.</param>
-		public ValidationRequestResult AddOutgoingCallerId(string phoneNumber, string friendlyName, int? callDelay, string extension)
+        public virtual ValidationRequestResult AddOutgoingCallerId(string phoneNumber, string friendlyName, int? callDelay, string extension)
 		{
             var options = new OutgoingCallerIdOptions()
             {
@@ -81,7 +81,7 @@ namespace Twilio
         /// </summary>
         /// <param name="phoneNumber">The phone number to verify. Should be formatted with a '+' and country code e.g., +16175551212 (E.164 format). Twilio will also accept unformatted US numbers e.g., (415) 555-1212, 415-555-1212.</param>
         /// <param name="options">Optional parameters to use when purchasing number</param>
-        public ValidationRequestResult AddOutgoingCallerId(string phoneNumber, OutgoingCallerIdOptions options)
+        public virtual ValidationRequestResult AddOutgoingCallerId(string phoneNumber, OutgoingCallerIdOptions options)
         {
             Require.Argument("PhoneNumber", phoneNumber);
             if (options.CallDelay.HasValue) Validate.IsBetween(options.CallDelay.Value, 0, 60);
@@ -106,7 +106,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="outgoingCallerIdSid">The Sid of the outgoing caller ID entry</param>
 		/// <param name="friendlyName">The name to update the FriendlyName to</param>
-		public OutgoingCallerId UpdateOutgoingCallerIdName(string outgoingCallerIdSid, string friendlyName)
+        public virtual OutgoingCallerId UpdateOutgoingCallerIdName(string outgoingCallerIdSid, string friendlyName)
 		{
 			Require.Argument("OutgoingCallerIdSid", outgoingCallerIdSid);
 			Require.Argument("FriendlyName", friendlyName);
@@ -126,7 +126,7 @@ namespace Twilio
 		/// Makes a DELETE request to an OutgoingCallerId Instance resource.
 		/// </summary>
 		/// <param name="outgoingCallerIdSid">The Sid to remove</param>
-		public DeleteStatus DeleteOutgoingCallerId(string outgoingCallerIdSid)
+        public virtual DeleteStatus DeleteOutgoingCallerId(string outgoingCallerIdSid)
 		{
 			Require.Argument("OutgoingCallerIdSid", outgoingCallerIdSid);
 			var request = new RestRequest(Method.DELETE);

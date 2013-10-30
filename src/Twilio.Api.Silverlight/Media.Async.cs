@@ -10,7 +10,7 @@ namespace Twilio
         /// <summary>
         /// Get the details for a specific Media instance.
         /// </summary>
-        public void GetMedia(string mediaSid, Action<Media> callback)
+        public virtual void GetMedia(string mediaSid, Action<Media> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Media/{MediaSid}.json";
@@ -21,7 +21,7 @@ namespace Twilio
         /// <summary>
         /// Retrieve a list of Media objects with no list filters
         /// </summary>
-        public void ListMedia(Action<MediaResult> callback)
+        public virtual void ListMedia(Action<MediaResult> callback)
         {
             ListMedia(new MediaListRequest(), callback);
         }
@@ -30,7 +30,7 @@ namespace Twilio
         /// Return a filtered list of Media objects. The list includes paging
         /// information.
         /// </summary>
-        public void ListMedia(MediaListRequest options, Action<MediaResult> callback)
+        public virtual void ListMedia(MediaListRequest options, Action<MediaResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Media.json";
@@ -42,7 +42,7 @@ namespace Twilio
         /// List all media for a particular message
         /// </summary>
         /// <param name="messageSid">The message sid to filter on</param>
-        public void ListMessageMedia(string messageSid, MediaListRequest options, Action<MediaResult> callback)
+        public virtual void ListMessageMedia(string messageSid, MediaListRequest options, Action<MediaResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Messages/{MessageSid}/Media.json";
@@ -74,7 +74,7 @@ namespace Twilio
         /// Media Instance resource.
         /// </summary>
         /// <param name="mediaSid">The Sid of the media to delete</param>
-        public void DeleteMedia(string mediaSid, Action<DeleteStatus> callback)
+        public virtual void DeleteMedia(string mediaSid, Action<DeleteStatus> callback)
         {
             var request = new RestRequest(Method.DELETE);
             request.Resource = "Accounts/{AccountSid}/Media/{MediaSid}.json";

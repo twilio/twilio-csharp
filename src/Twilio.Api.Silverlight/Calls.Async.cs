@@ -12,7 +12,7 @@ namespace Twilio
 		/// Sorted by DateUpdated with most-recent calls first.
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void ListCalls(Action<CallResult> callback)
+        public virtual void ListCalls(Action<CallResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Calls.json";
@@ -26,7 +26,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="options">List filter options. If an property is set the list will be filtered by that value.</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void ListCalls(CallListRequest options, Action<CallResult> callback)
+        public virtual void ListCalls(CallListRequest options, Action<CallResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Calls.json";
@@ -61,7 +61,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="callSid">The Sid of the Call resource to retrieve</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void GetCall(string callSid, Action<Call> callback)
+        public virtual void GetCall(string callSid, Action<Call> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}.json";
@@ -78,7 +78,7 @@ namespace Twilio
 		/// <param name="to">The number to call formatted with a '+' and country code e.g., +16175551212 (E.164 format). Twilio will also accept unformatted US numbers e.g., (415) 555-1212, 415-555-1212.</param>
 		/// <param name="url">The fully qualified URL that should be consulted when the call connects. Just like when you set a URL for your inbound calls. URL should return TwiML.</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void InitiateOutboundCall(string from, string to, string url, Action<Call> callback)
+        public virtual void InitiateOutboundCall(string from, string to, string url, Action<Call> callback)
 		{
 			InitiateOutboundCall(from, to, url, null, callback);
 		}
@@ -91,7 +91,7 @@ namespace Twilio
 		/// <param name="url">The fully qualified URL that should be consulted when the call connects. Just like when you set a URL for your inbound calls. URL should return TwiML.</param>
 		/// <param name="statusCallback">A URL that Twilio will request when the call ends to notify your app.</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void InitiateOutboundCall(string from, string to, string url, string statusCallback, Action<Call> callback)
+        public virtual void InitiateOutboundCall(string from, string to, string url, string statusCallback, Action<Call> callback)
 		{
 			InitiateOutboundCall(new CallOptions
 			{
@@ -108,7 +108,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="options">Call settings. Only properties with values set will be used.</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void InitiateOutboundCall(CallOptions options, Action<Call> callback)
+        public virtual void InitiateOutboundCall(CallOptions options, Action<Call> callback)
 		{
 			Require.Argument("From", options.From);
 			Require.Argument("To", options.To);
@@ -155,7 +155,7 @@ namespace Twilio
 		/// <param name="callSid">The Sid of the call to hang up.</param>
 		/// <param name="style">'Canceled' will attempt to hangup calls that are queued or ringing but not affect calls already in progress. 'Completed' will attempt to hang up a call even if it's already in progress.</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void HangupCall(string callSid, HangupStyle style, Action<Call> callback)
+        public virtual void HangupCall(string callSid, HangupStyle style, Action<Call> callback)
 		{
 			Require.Argument("CallSid", callSid);
 
@@ -175,7 +175,7 @@ namespace Twilio
         /// <param name="redirectUrl">The URL to redirect the call to.</param>
         /// <param name="redirectMethod">The HTTP method to use when requesting the redirectUrl</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public void RedirectCall(string callSid, string redirectUrl, string redirectMethod, Action<Call> callback)
+        public virtual void RedirectCall(string callSid, string redirectUrl, string redirectMethod, Action<Call> callback)
         {
             Require.Argument("CallSid", callSid);
             Require.Argument("Url", redirectUrl);
@@ -193,7 +193,7 @@ namespace Twilio
         /// <param name="callSid">The Sid of the call to redirect</param>
         /// <param name="options">Call settings. Only Url, Method, FallbackUrl, FallbackMethod, StatusCallback and StatusCallbackMethod properties with values set will be used.</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public void RedirectCall(string callSid, CallOptions options, Action<Call> callback)
+        public virtual void RedirectCall(string callSid, CallOptions options, Action<Call> callback)
         {
             Require.Argument("CallSid", callSid);
             Require.Argument("Url", options.Url);

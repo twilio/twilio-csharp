@@ -12,7 +12,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="smsMessageSid">The Sid of the message to retrieve</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void GetSmsMessage(string smsMessageSid, Action<SMSMessage> callback)
+        public virtual void GetSmsMessage(string smsMessageSid, Action<SMSMessage> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/SMS/Messages/{SMSMessageSid}.json";
@@ -25,7 +25,7 @@ namespace Twilio
 		/// Returns a list of SMS messages. The list includes paging information and is sorted by DateSent, with most recent messages first.
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void ListSmsMessages(Action<SmsMessageResult> callback)
+        public virtual void ListSmsMessages(Action<SmsMessageResult> callback)
 		{
 			ListSmsMessages(null, null, null, null, null, callback);
 		}
@@ -39,7 +39,7 @@ namespace Twilio
 		/// <param name="pageNumber">(Optional) The page to start retrieving results from</param>
 		/// <param name="count">(Optional) The number of results to retrieve</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void ListSmsMessages(string to, string from, DateTime? dateSent, int? pageNumber, int? count, Action<SmsMessageResult> callback)
+        public virtual void ListSmsMessages(string to, string from, DateTime? dateSent, int? pageNumber, int? count, Action<SmsMessageResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/SMS/Messages.json";
@@ -60,7 +60,7 @@ namespace Twilio
 		/// <param name="to">The phone number to send the message to. If using the Sandbox, this number must be a validated outgoing caller ID</param>
 		/// <param name="body">The message to send. Must be 160 characters or less.</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void SendSmsMessage(string from, string to, string body, Action<SMSMessage> callback)
+        public virtual void SendSmsMessage(string from, string to, string body, Action<SMSMessage> callback)
 		{
 			SendSmsMessage(from, to, body, string.Empty, callback);
 		}
@@ -73,7 +73,7 @@ namespace Twilio
 		/// <param name="body">The message to send. Must be 160 characters or less.</param>
 		/// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the SmsSid as well as SmsStatus=sent or SmsStatus=failed</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void SendSmsMessage(string from, string to, string body, string statusCallback, Action<SMSMessage> callback)
+        public virtual void SendSmsMessage(string from, string to, string body, string statusCallback, Action<SMSMessage> callback)
 		{
             SendSmsMessage(from, to, body, statusCallback, string.Empty, callback);
 		}
@@ -87,7 +87,7 @@ namespace Twilio
         /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the SmsSid as well as SmsStatus=sent or SmsStatus=failed</param>
         /// <param name="callback">Method to call upon successful completion</param>
         /// <param name="applicationSid">Twilio will POST SmsSid as well as SmsStatus=sent or SmsStatus=failed to the URL in the SmsStatusCallback property of this Application. If the StatusCallback parameter above is also passed, the Application's SmsStatusCallback parameter will take precedence.</param>
-        public void SendSmsMessage(string from, string to, string body, string statusCallback, string applicationSid, Action<SMSMessage> callback)
+        public virtual void SendSmsMessage(string from, string to, string body, string statusCallback, string applicationSid, Action<SMSMessage> callback)
         {
             Require.Argument("from", from);
             Require.Argument("to", to);
@@ -110,7 +110,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="shortCodeSid">The Sid of the ShortCode resource to return</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void GetShortCode(string shortCodeSid, Action<SMSShortCode> callback)
+        public virtual void GetShortCode(string shortCodeSid, Action<SMSShortCode> callback)
 		{
 			Require.Argument("shortCodeSid", shortCodeSid);
 
@@ -133,7 +133,7 @@ namespace Twilio
 		/// <param name="smsFallbackUrl">A URL that Twilio will request if an error occurs requesting or executing the TwiML at the SmsUrl.</param>
 		/// <param name="smsFallbackMethod">The HTTP method that should be used to request the SmsFallbackUrl. Either GET or POST.</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void UpdateShortCode(string shortCodeSid, string friendlyName, string apiVersion, string smsUrl, string smsMethod, string smsFallbackUrl, string smsFallbackMethod, Action<SMSShortCode> callback)
+        public virtual void UpdateShortCode(string shortCodeSid, string friendlyName, string apiVersion, string smsUrl, string smsMethod, string smsFallbackUrl, string smsFallbackMethod, Action<SMSShortCode> callback)
 		{
 			Require.Argument("shortCodeSid", shortCodeSid);
 
@@ -157,7 +157,7 @@ namespace Twilio
 		/// <param name="shortCode">Only show the ShortCode resources that match this pattern. You can specify partial numbers and use '*' as a wildcard for any digit.</param>
 		/// <param name="friendlyName">Only show the ShortCode resources with friendly names that exactly match this name.</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void ListShortCodes(string shortCode, string friendlyName, Action<SmsShortCodeResult> callback)
+        public virtual void ListShortCodes(string shortCode, string friendlyName, Action<SmsShortCodeResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/SMS/ShortCodes.json";
