@@ -10,7 +10,7 @@ namespace Twilio
 		/// Returns a set of Transcriptions that includes paging information.
 		/// Makes a GET request to the Transcriptions List resource.
 		/// </summary>
-		public TranscriptionResult ListTranscriptions()
+        public virtual TranscriptionResult ListTranscriptions()
 		{
 			return ListTranscriptions(null, null);
 		}
@@ -21,7 +21,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="pageNumber">The page to start retrieving results from</param>
 		/// <param name="count">The number of results to retrieve</param>
-		public TranscriptionResult ListTranscriptions(int? pageNumber, int? count)
+        public virtual TranscriptionResult ListTranscriptions(int? pageNumber, int? count)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Transcriptions.json";
@@ -38,7 +38,7 @@ namespace Twilio
 		/// <param name="recordingSid">The Sid of the recording to retrieve transcriptions for</param>
 		/// <param name="pageNumber">The page to start retrieving results from</param>
 		/// <param name="count">The number of results to retrieve</param>
-		public TranscriptionResult ListTranscriptions(string recordingSid, int? pageNumber, int? count)
+        public virtual TranscriptionResult ListTranscriptions(string recordingSid, int? pageNumber, int? count)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}/Transcriptions.json";
@@ -55,7 +55,7 @@ namespace Twilio
 		/// Makes a GET request to a Transcription Instance resource.
 		/// </summary>
 		/// <param name="transcriptionSid">The Sid of the transcription to retrieve</param>
-		public Transcription GetTranscription(string transcriptionSid)
+        public virtual Transcription GetTranscription(string transcriptionSid)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Transcriptions/{TranscriptionSid}.json";
@@ -69,7 +69,7 @@ namespace Twilio
 		/// Makes a GET request to a Transcription Instance resource.
 		/// </summary>
 		/// <param name="transcriptionSid">The Sid of the transcription to retrieve</param>
-		public string GetTranscriptionText(string transcriptionSid)
+        public virtual string GetTranscriptionText(string transcriptionSid)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Transcriptions/{TranscriptionSid}.txt.json";
@@ -82,7 +82,7 @@ namespace Twilio
 		/// <summary>
 		/// Delete the specified transcription instance. Makes a DELETE request to a Transcription Instance resource.
 		/// </summary>
-		public DeleteStatus DeleteTranscription(string transcriptionSid)
+        public virtual DeleteStatus DeleteTranscription(string transcriptionSid)
 		{
 			var request = new RestRequest(Method.DELETE);
 			request.Resource = "Accounts/{AccountSid}/Transcriptions/{TranscriptionSid}.json";
