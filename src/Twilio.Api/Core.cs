@@ -66,7 +66,7 @@ namespace Twilio
             _client.Authenticator = new HttpBasicAuthenticator(AccountSid, AuthToken);
             _client.AddDefaultHeader("Accept-charset", "utf-8");
             _client.BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion);
-            _client.Timeout = 3050;
+            _client.Timeout = 30500;
 
 #if FRAMEWORK
             if (this.Proxy != null) { _client.Proxy = this.Proxy; }
