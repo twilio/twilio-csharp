@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>3.6.8</version>
+		<version>3.6.9</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -14,6 +14,7 @@
 			<dependency id="RestSharp" />
 		</dependencies>
 		<releaseNotes>
+      * 3.6.9 - Changed the way Proxies are set
       * 3.6.8 - No, seriously.  Changing Accept-charset this time.
       * 3.6.7 - Changed to only add Accept-Charset header to Framework assemblies
       * 3.6.6 - Updated RestSharp reference
