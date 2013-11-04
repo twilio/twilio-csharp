@@ -64,7 +64,11 @@ namespace Twilio
             _client = new RestClient();
             _client.UserAgent = "twilio-csharp/" + version;
             _client.Authenticator = new HttpBasicAuthenticator(AccountSid, AuthToken);
+
+#if FRAMEWORK
             _client.AddDefaultHeader("Accept-charset", "utf-8");
+#endif
+
             _client.BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion);
             _client.Timeout = 3050;
 
