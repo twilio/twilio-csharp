@@ -26,7 +26,10 @@ namespace Twilio
         /// <summary>
         /// 
         /// </summary>
-        public WebProxy Proxy { get; set; }
+        public IWebProxy Proxy {
+            get { return _client.Proxy; }
+            set { _client.Proxy = value; }
+        }
 #endif
 
 		private string AccountSid { get; set; }
@@ -71,10 +74,6 @@ namespace Twilio
 
             _client.BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion);
             _client.Timeout = 3050;
-
-#if FRAMEWORK
-            if (this.Proxy != null) { _client.Proxy = this.Proxy; }
-#endif
 
             // if acting on a subaccount, use request.AddUrlSegment("AccountSid", "value")
             // to override for that request.
