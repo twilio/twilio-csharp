@@ -12,7 +12,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="connectAppSid">The Sid of the ConnectApp to retrieve</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void GetConnectApp(string connectAppSid, Action<ConnectApp> callback)
+        public virtual void GetConnectApp(string connectAppSid, Action<ConnectApp> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/ConnectApps/{ConnectAppSid}.json";
@@ -26,7 +26,7 @@ namespace Twilio
 		/// List ConnectApps on current account
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void ListConnectApps(Action<ConnectAppResult> callback)
+        public virtual void ListConnectApps(Action<ConnectAppResult> callback)
 		{
 			ListConnectApps(null, null, (response) => { callback(response); });
 		}
@@ -37,7 +37,7 @@ namespace Twilio
 		/// <param name="pageNumber">Page number to start retrieving results from</param>
 		/// <param name="count">How many results to return</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void ListConnectApps(int? pageNumber, int? count, Action<ConnectAppResult> callback)
+        public virtual void ListConnectApps(int? pageNumber, int? count, Action<ConnectAppResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/ConnectApps.json";
@@ -61,7 +61,7 @@ namespace Twilio
 		/// <param name="companyName">The company name for this Connect App. (optional, null to leave as-is)</param>
 		/// <param name="homepageUrl">The public URL where users can obtain more information about this Connect App. (optional, null to leave as-is)</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void UpdateConnectApp(string connectAppSid, string friendlyName, string authorizeRedirectUrl, string deauthorizeCallbackUrl,
+        public virtual void UpdateConnectApp(string connectAppSid, string friendlyName, string authorizeRedirectUrl, string deauthorizeCallbackUrl,
 			string deauthorizeCallbackMethod, string permissions, string description, string companyName, string homepageUrl, Action<ConnectApp> callback)
 		{
 			Require.Argument("ConnectAppSid", connectAppSid);

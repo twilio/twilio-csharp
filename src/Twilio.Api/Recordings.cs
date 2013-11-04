@@ -11,7 +11,7 @@ namespace Twilio
 		/// The list includes paging information.
 		/// Makes a GET request to the Recordings List resource.
 		/// </summary>
-		public RecordingResult ListRecordings()
+        public virtual RecordingResult ListRecordings()
 		{
 			return ListRecordings(null, null, null, null);
 		}
@@ -25,7 +25,7 @@ namespace Twilio
 		/// <param name="dateCreated">(Optional) The date the recording was created (GMT)</param>
 		/// <param name="pageNumber">The page to start retrieving results from</param>
 		/// <param name="count">How many results to retrieve</param>
-		public RecordingResult ListRecordings(string callSid, DateTime? dateCreated, int? pageNumber, int? count)
+        public virtual RecordingResult ListRecordings(string callSid, DateTime? dateCreated, int? pageNumber, int? count)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Recordings.json";
@@ -43,7 +43,7 @@ namespace Twilio
 		/// Makes a GET request to a Recording Instance resource.
 		/// </summary>
 		/// <param name="recordingSid">The Sid of the recording to retrieve</param>
-		public Recording GetRecording(string recordingSid)
+        public virtual Recording GetRecording(string recordingSid)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}.json";
@@ -57,7 +57,7 @@ namespace Twilio
 		/// Delete the specified recording instance. Makes a DELETE request to a Recording Instance resource.
 		/// </summary>
 		/// <param name="recordingSid">The Sid of the recording to delete</param>
-		public DeleteStatus DeleteRecording(string recordingSid)
+        public virtual DeleteStatus DeleteRecording(string recordingSid)
 		{
 			var request = new RestRequest(Method.DELETE);
 			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}.json";
@@ -73,7 +73,7 @@ namespace Twilio
 		/// Makes a GET request to a Recording Instance resource.
 		/// </summary>
 		/// <param name="recordingSid">The Sid of the recording to retreive the transcription for</param>
-		public string GetRecordingText(string recordingSid)
+        public virtual string GetRecordingText(string recordingSid)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}.txt";
