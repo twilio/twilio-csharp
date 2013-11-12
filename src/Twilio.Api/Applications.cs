@@ -11,7 +11,7 @@ namespace Twilio
 		/// Retrieve the details for an application instance. Makes a GET request to an Application Instance resource.
 		/// </summary>
 		/// <param name="applicationSid">The Sid of the application to retrieve</param>
-		public Application GetApplication(string applicationSid)
+        public virtual Application GetApplication(string applicationSid)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Applications/{ApplicationSid}.json";
@@ -24,7 +24,7 @@ namespace Twilio
 		/// <summary>
 		/// List applications on current account
 		/// </summary>
-		public ApplicationResult ListApplications()
+        public virtual ApplicationResult ListApplications()
 		{
 			return ListApplications(null, null, null);
 		}
@@ -35,7 +35,7 @@ namespace Twilio
 		/// <param name="friendlyName">Optional friendly name to match</param>
 		/// <param name="pageNumber">Page number to start retrieving results from</param>
 		/// <param name="count">How many results to return</param>
-		public ApplicationResult ListApplications(string friendlyName, int? pageNumber, int? count)
+        public virtual ApplicationResult ListApplications(string friendlyName, int? pageNumber, int? count)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Applications.json";
@@ -52,7 +52,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="friendlyName">The friendly name to name the application</param>
 		/// <param name="options">Optional parameters to use when purchasing number</param>
-		public Application AddApplication(string friendlyName, ApplicationOptions options)
+        public virtual Application AddApplication(string friendlyName, ApplicationOptions options)
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/Applications.json";
@@ -86,7 +86,7 @@ namespace Twilio
 		/// <param name="applicationSid">The Sid of the application to update</param>
 		/// <param name="friendlyName">The friendly name to rename the application to (optional, null to leave as-is)</param>
 		/// <param name="options">Which settings to update. Only properties with values set will be updated.</param>
-		public Application UpdateApplication(string applicationSid, string friendlyName, ApplicationOptions options)
+        public virtual Application UpdateApplication(string applicationSid, string friendlyName, ApplicationOptions options)
 		{
 			Require.Argument("ApplicationSid", applicationSid);
 
@@ -117,7 +117,7 @@ namespace Twilio
 		/// Delete this application. If this application's sid is assigned to any IncomingPhoneNumber resources as a VoiceApplicationSid or SmsApplicationSid it will be removed.
 		/// </summary>
 		/// <param name="applicationSid">The Sid of the number to remove</param>
-		public DeleteStatus DeleteApplication(string applicationSid)
+        public virtual DeleteStatus DeleteApplication(string applicationSid)
 		{
 			Require.Argument("ApplicationSid", applicationSid);
 			var request = new RestRequest(Method.DELETE);

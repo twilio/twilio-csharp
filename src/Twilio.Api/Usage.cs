@@ -10,7 +10,8 @@ namespace Twilio
         /// Returns a list of all usage resources
         /// </summary>
         /// <returns></returns>
-        public UsageResult ListUsage() {
+        public virtual UsageResult ListUsage()
+        {
             return ListUsage("");
         }
 
@@ -19,7 +20,8 @@ namespace Twilio
         /// </summary>
         /// <param name="category">The category used to filter the usage data</param>
         /// <returns></returns>
-        public UsageResult ListUsage(string category) {
+        public virtual UsageResult ListUsage(string category)
+        {
             return ListUsage(category, "");
         }
 
@@ -41,7 +43,7 @@ namespace Twilio
         /// <param name="startDate">The start date of the filter range</param>
         /// <param name="endDate">The end date of the filter range</param>
         /// <returns></returns>
-        public UsageResult ListUsage(string category, DateTime? startDate, DateTime? endDate)
+        public virtual UsageResult ListUsage(string category, DateTime? startDate, DateTime? endDate)
         {
             return ListUsage(category, "", startDate, endDate);
         }
@@ -54,7 +56,7 @@ namespace Twilio
         /// <param name="startDate">The start date of the filter range</param>
         /// <param name="endDate">The end date of the filter range</param>
         /// <returns></returns>
-        public UsageResult ListUsage(string category, string interval, DateTime? startDate, DateTime? endDate)
+        public virtual UsageResult ListUsage(string category, string interval, DateTime? startDate, DateTime? endDate)
         {
             return ListUsage(category, interval, startDate, endDate, null, null);
         }
@@ -69,7 +71,7 @@ namespace Twilio
         /// <param name="pageNumber">(Optional) The page to start retrieving results from</param>
         /// <param name="count">(Optional) The number of results to retrieve</param>
         /// <returns></returns>
-        public UsageResult ListUsage(string category, string interval, DateTime? startDate, DateTime? endDate, int? pageNumber, int? count)
+        public virtual UsageResult ListUsage(string category, string interval, DateTime? startDate, DateTime? endDate, int? pageNumber, int? count)
         {
             var request = new RestRequest();
             string resourceUrlRoot = "Accounts/{{AccountSid}}/Usage/Records{0}";
@@ -97,7 +99,7 @@ namespace Twilio
         /// Returns a list of usage triggers
         /// </summary>
         /// <returns></returns>
-        public UsageTriggerResult ListUsageTriggers()
+        public virtual UsageTriggerResult ListUsageTriggers()
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Usage/Triggers.json";
@@ -112,7 +114,7 @@ namespace Twilio
         /// <param name="usageCategory">The usage category this trigger watches</param>
         /// <param name="triggerBy">The value at which the trigger will fire</param>
         /// <returns></returns>
-        public UsageTriggerResult ListUsageTriggers(string recurring, string usageCategory, string triggerBy)
+        public virtual UsageTriggerResult ListUsageTriggers(string recurring, string usageCategory, string triggerBy)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Usage/Triggers.json";
@@ -129,7 +131,7 @@ namespace Twilio
         /// </summary>
         /// <param name="usageTriggerSid">The Sid of the Usage Trigger to locate</param>
         /// <returns></returns>
-        public UsageTrigger GetUsageTrigger(string usageTriggerSid)
+        public virtual UsageTrigger GetUsageTrigger(string usageTriggerSid)
         {
             Require.Argument("UsageTriggerSid", usageTriggerSid);
 
@@ -148,7 +150,7 @@ namespace Twilio
         /// <param name="triggerValue">The value to trigger on</param>
         /// <param name="callbackUrl">The URL to call once a trigger value has been met</param>
         /// <returns></returns>
-        public UsageTrigger CreateUsageTrigger(string usageCategory, string triggerValue, string callbackUrl)
+        public virtual UsageTrigger CreateUsageTrigger(string usageCategory, string triggerValue, string callbackUrl)
         {
             var options = new UsageTriggerOptions();
             options.UsageCategory = usageCategory;
@@ -163,7 +165,7 @@ namespace Twilio
         /// </summary>
         /// <param name="options">A UsageTriggerOption object that defines the different trigger options</param>
         /// <returns></returns>
-        public UsageTrigger CreateUsageTrigger(UsageTriggerOptions options)
+        public virtual UsageTrigger CreateUsageTrigger(UsageTriggerOptions options)
         {
             Require.Argument("UsageCategory", options.UsageCategory);
             Require.Argument("TriggerValue", options.TriggerValue);
@@ -194,7 +196,7 @@ namespace Twilio
         /// <param name="callbackUrl">The URL to call once a trigger value has been met</param>
         /// <param name="callbackMethod">The HTTP method used when requesting the callback URL</param>
         /// <returns></returns>
-        public UsageTrigger UpdateUsageTrigger(string usageTriggerSid, string friendlyName, string callbackUrl, string callbackMethod)
+        public virtual UsageTrigger UpdateUsageTrigger(string usageTriggerSid, string friendlyName, string callbackUrl, string callbackMethod)
         {
             Require.Argument("UsageTriggerSid", usageTriggerSid);
 
@@ -217,7 +219,7 @@ namespace Twilio
         /// </summary>
         /// <param name="usageTriggerSid">The Sid of the UsageTrigger to delete</param>
         /// <returns></returns>
-        public DeleteStatus DeleteUsageTrigger(string usageTriggerSid)
+        public virtual DeleteStatus DeleteUsageTrigger(string usageTriggerSid)
         {
             Require.Argument("UsageTriggerSid", usageTriggerSid);
 

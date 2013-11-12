@@ -10,7 +10,7 @@ namespace Twilio
         /// </summary>
         /// <param name="callback">Method to call upon successful completion</param>
         /// <returns></returns>
-        public void ListQueues(Action<QueueResult> callback)
+        public virtual void ListQueues(Action<QueueResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Queues.json";
@@ -24,7 +24,7 @@ namespace Twilio
         /// <param name="friendlyName">The name of the Queue</param>
         /// <param name="callback">Method to call upon successful completion</param>
         /// <returns></returns>
-        public void CreateQueue(string friendlyName, Action<Queue> callback)
+        public virtual void CreateQueue(string friendlyName, Action<Queue> callback)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/Queues.json";
@@ -41,7 +41,7 @@ namespace Twilio
         /// <param name="maxSize">The maximum number of calls allowed in the queue</param>
         /// <param name="callback">Method to call upon successful completion</param>
         /// <returns></returns>
-        public void CreateQueue(string friendlyName, int maxSize, Action<Queue> callback)
+        public virtual void CreateQueue(string friendlyName, int maxSize, Action<Queue> callback)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/Queues.json";
@@ -58,7 +58,7 @@ namespace Twilio
         /// <param name="queueSid">The Sid of the Queue to locate</param>
         /// <param name="callback">Method to call upon successful completion</param>
         /// <returns></returns>
-        public void GetQueue(string queueSid, Action<Queue> callback)
+        public virtual void GetQueue(string queueSid, Action<Queue> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Queues/{QueueSid}.json";
@@ -76,7 +76,7 @@ namespace Twilio
         /// <param name="maxSize">The maximum number of calls allowed in the queue</param>
         /// <param name="callback">Method to call upon successful completion</param>
         /// <returns></returns>
-        public void UpdateQueue(string queueSid, string friendlyName, int maxSize, Action<Queue> callback)
+        public virtual void UpdateQueue(string queueSid, string friendlyName, int maxSize, Action<Queue> callback)
         {
             Require.Argument("QueueSid", queueSid);
 
@@ -96,7 +96,7 @@ namespace Twilio
         /// <param name="queueSid">The Sid of the Queue to delete</param>
         /// <param name="callback">Method to call upon successful completion</param>
         /// <returns></returns>
-        public void DeleteQueue(string queueSid, Action<DeleteStatus> callback)
+        public virtual void DeleteQueue(string queueSid, Action<DeleteStatus> callback)
         {
             Require.Argument("QueueSid", queueSid);
             var request = new RestRequest(Method.DELETE);
@@ -113,7 +113,7 @@ namespace Twilio
         /// <param name="queueSid">The Sid of the Queue to locate</param>
         /// <param name="callback">Method to call upon successful completion</param>
         /// <returns></returns>
-        public void ListQueueMembers(string queueSid, Action<QueueMemberResult> callback)
+        public virtual void ListQueueMembers(string queueSid, Action<QueueMemberResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Queues/{QueueSid}/Members.json";
@@ -129,7 +129,7 @@ namespace Twilio
         /// <param name="queueSid">The Sid of the Queue to locate</param>
         /// <param name="callback">Method to call upon successful completion</param>
         /// <returns></returns>
-        public void GetFirstQueueMember(string queueSid, Action<QueueMember> callback)
+        public virtual void GetFirstQueueMember(string queueSid, Action<QueueMember> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Queues/{QueueSid}/Members/Front.json";
@@ -146,7 +146,7 @@ namespace Twilio
         /// <param name="callSid">The Sid of the Call to locate</param>
         /// <param name="callback">Method to call upon successful completion</param>
         /// <returns></returns>
-        public void GetQueueMember(string queueSid, string callSid, Action<QueueMember> callback)
+        public virtual void GetQueueMember(string queueSid, string callSid, Action<QueueMember> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Queues/{QueueSid}/Members/{CallSid}.json";
@@ -164,7 +164,7 @@ namespace Twilio
         /// <param name="url">A Url containing TwiML intructions to execute when the call is dequeued</param>
         /// <param name="callback">Method to call upon successful completion</param>
         /// <returns></returns>
-        public void DequeueFirstQueueMember(string queueSid, string url, Action<DequeueStatus> callback)
+        public virtual void DequeueFirstQueueMember(string queueSid, string url, Action<DequeueStatus> callback)
         {
             DequeueFirstQueueMember(queueSid, url, string.Empty, callback);
         }
@@ -177,7 +177,7 @@ namespace Twilio
         /// <param name="method">The method to use to request the Url</param>
         /// <param name="callback">Method to call upon successful completion</param>
         /// <returns></returns>
-        public void DequeueFirstQueueMember(string queueSid, string url, string method, Action<DequeueStatus> callback)
+        public virtual void DequeueFirstQueueMember(string queueSid, string url, string method, Action<DequeueStatus> callback)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/Queues/{QueueSid}/Members/Front.json";
@@ -197,7 +197,7 @@ namespace Twilio
         /// <param name="url">A Url containing TwiML intructions to execute when the call is dequeued</param>
         /// <param name="callback">Method to call upon successful completion</param>
         /// <returns></returns>
-        public void DequeueQueueMember(string queueSid, string callSid, string url, Action<DequeueStatus> callback)
+        public virtual void DequeueQueueMember(string queueSid, string callSid, string url, Action<DequeueStatus> callback)
         {
             DequeueQueueMember(queueSid, callSid, url, string.Empty, callback);
         }
@@ -211,7 +211,7 @@ namespace Twilio
         /// <param name="method">The method to use to request the Url</param>
         /// <param name="callback">Method to call upon successful completion</param>
         /// <returns></returns>
-        public void DequeueQueueMember(string queueSid, string callSid, string url, string method, Action<DequeueStatus> callback)
+        public virtual void DequeueQueueMember(string queueSid, string callSid, string url, string method, Action<DequeueStatus> callback)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/Queues/{QueueSid}/Members/{CallSid}.json";

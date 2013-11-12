@@ -18,7 +18,7 @@ namespace Twilio
 		/// <typeparam name="T">The type of object to create and populate with the returned data.</typeparam>
 		/// <param name="request">The RestRequest to execute (will use client credentials)</param>
 		/// <param name="callback">The callback function to execute when the async request completes</param>
-		public void ExecuteAsync<T>(RestRequest request, Action<T> callback) where T : new()
+        public virtual void ExecuteAsync<T>(RestRequest request, Action<T> callback) where T : new()
 		{
 			request.OnBeforeDeserialization = (resp) =>
 			{
@@ -27,7 +27,7 @@ namespace Twilio
 				if (((int)resp.StatusCode) >= 400)
 				{
 					// have to read the bytes so .Content doesn't get populated
-                    string restException = "{{ \"RestException\" : {0} }}";
+                    var restException = "{{ \"RestException\" : {0} }}";
                     var content = resp.RawBytes.AsString(); //get the response content
                     var newJson = string.Format(restException, content);
 
@@ -38,10 +38,7 @@ namespace Twilio
 
 			request.DateFormat = "ddd, dd MMM yyyy HH:mm:ss '+0000'";
 
-			_client.ExecuteAsync<T>(request, (response) =>
-			{
-				callback(response.Data);
-			});
+			_client.ExecuteAsync<T>(request, (response) => callback(response.Data));
 		}
 
 		/// <summary>
@@ -49,12 +46,9 @@ namespace Twilio
 		/// </summary>
 		/// <param name="request">The RestRequest to execute (will use client credentials)</param>
 		/// <param name="callback">The callback function to execute when the async request completes</param>
-		public void ExecuteAsync(RestRequest request, Action<IRestResponse> callback)
+        public virtual void ExecuteAsync(RestRequest request, Action<IRestResponse> callback)
 		{
-			_client.ExecuteAsync(request, (response) =>
-			{
-				callback(response);
-			});
+			_client.ExecuteAsync(request, callback);
 		}
 	}
 }
