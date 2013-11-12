@@ -73,7 +73,7 @@ namespace Twilio
 #endif
 
             _client.BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion);
-            _client.Timeout = 3050;
+            _client.Timeout = 30500;
 
             // if acting on a subaccount, use request.AddUrlSegment("AccountSid", "value")
             // to override for that request.
