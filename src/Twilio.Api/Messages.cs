@@ -139,7 +139,7 @@ namespace Twilio
             }
 
             if (statusCallback.HasValue()) request.AddParameter("StatusCallback", statusCallback);
-            if (applicationSid.HasValue()) request.AddParameter("ApplicationSid", statusCallback);
+            if (applicationSid.HasValue()) request.AddParameter("ApplicationSid", applicationSid);
 
             return Execute<Message>(request);
         }
