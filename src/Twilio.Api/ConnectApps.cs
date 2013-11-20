@@ -11,7 +11,7 @@ namespace Twilio
 		/// Retrieve the details for an ConnectApp instance. Makes a GET request to an ConnectApp Instance resource.
 		/// </summary>
 		/// <param name="connectAppSid">The Sid of the ConnectApp to retrieve</param>
-        public virtual ConnectApp GetConnectApp(string connectAppSid)
+		public ConnectApp GetConnectApp(string connectAppSid)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/ConnectApps/{ConnectAppSid}.json";
@@ -24,7 +24,7 @@ namespace Twilio
 		/// <summary>
 		/// List ConnectApps on current account
 		/// </summary>
-        public virtual ConnectAppResult ListConnectApps()
+		public ConnectAppResult ListConnectApps()
 		{
 			return ListConnectApps(null, null);
 		}
@@ -34,7 +34,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="pageNumber">Page number to start retrieving results from</param>
 		/// <param name="count">How many results to return</param>
-        public virtual ConnectAppResult ListConnectApps(int? pageNumber, int? count)
+		public ConnectAppResult ListConnectApps(int? pageNumber, int? count)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/ConnectApps.json";
@@ -57,7 +57,7 @@ namespace Twilio
 		/// <param name="description">A more detailed human readable description of the Connect App. (optional, null to leave as-is)</param>
 		/// <param name="companyName">The company name for this Connect App. (optional, null to leave as-is)</param>
 		/// <param name="homepageUrl">The public URL where users can obtain more information about this Connect App. (optional, null to leave as-is)</param>
-        public virtual ConnectApp UpdateConnectApp(string connectAppSid, string friendlyName, string authorizeRedirectUrl, string deauthorizeCallbackUrl,
+		public ConnectApp UpdateConnectApp(string connectAppSid, string friendlyName, string authorizeRedirectUrl, string deauthorizeCallbackUrl,
 			string deauthorizeCallbackMethod, string permissions, string description, string companyName, string homepageUrl)
 		{
 			Require.Argument("ConnectAppSid", connectAppSid);

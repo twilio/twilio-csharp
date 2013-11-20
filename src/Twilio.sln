@@ -42,6 +42,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Api.Tests.Integration", "Twilio.Api.Tests.Integration\Twilio.Api.Tests.Integration.csproj", "{2E1A3B46-C072-48E0-92BF-F2901036979F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugFormsApplication", "MessageWindowsFormsApplication\DebugFormsApplication.csproj", "{7F377503-C4B3-4016-9502-B77E01D6CB8E}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Twilio1.vsmdi
@@ -192,6 +194,21 @@ Global
 		{2E1A3B46-C072-48E0-92BF-F2901036979F}.ReleaseWithPackage|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{2E1A3B46-C072-48E0-92BF-F2901036979F}.ReleaseWithPackage|Mixed Platforms.Build.0 = Release|Any CPU
 		{2E1A3B46-C072-48E0-92BF-F2901036979F}.ReleaseWithPackage|x86.ActiveCfg = Release|Any CPU
+		{7F377503-C4B3-4016-9502-B77E01D6CB8E}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{7F377503-C4B3-4016-9502-B77E01D6CB8E}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{7F377503-C4B3-4016-9502-B77E01D6CB8E}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{7F377503-C4B3-4016-9502-B77E01D6CB8E}.Debug|x86.ActiveCfg = Debug|x86
+		{7F377503-C4B3-4016-9502-B77E01D6CB8E}.Debug|x86.Build.0 = Debug|x86
+		{7F377503-C4B3-4016-9502-B77E01D6CB8E}.Release|Any CPU.ActiveCfg = Release|x86
+		{7F377503-C4B3-4016-9502-B77E01D6CB8E}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{7F377503-C4B3-4016-9502-B77E01D6CB8E}.Release|Mixed Platforms.Build.0 = Release|x86
+		{7F377503-C4B3-4016-9502-B77E01D6CB8E}.Release|x86.ActiveCfg = Release|x86
+		{7F377503-C4B3-4016-9502-B77E01D6CB8E}.Release|x86.Build.0 = Release|x86
+		{7F377503-C4B3-4016-9502-B77E01D6CB8E}.ReleaseWithPackage|Any CPU.ActiveCfg = Release|x86
+		{7F377503-C4B3-4016-9502-B77E01D6CB8E}.ReleaseWithPackage|Mixed Platforms.ActiveCfg = Release|x86
+		{7F377503-C4B3-4016-9502-B77E01D6CB8E}.ReleaseWithPackage|Mixed Platforms.Build.0 = Release|x86
+		{7F377503-C4B3-4016-9502-B77E01D6CB8E}.ReleaseWithPackage|x86.ActiveCfg = Release|x86
+		{7F377503-C4B3-4016-9502-B77E01D6CB8E}.ReleaseWithPackage|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

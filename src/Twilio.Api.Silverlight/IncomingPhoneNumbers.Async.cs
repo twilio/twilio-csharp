@@ -12,7 +12,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="incomingPhoneNumberSid">The Sid of the number to retrieve</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void GetIncomingPhoneNumber(string incomingPhoneNumberSid, Action<IncomingPhoneNumber> callback)
+		public void GetIncomingPhoneNumber(string incomingPhoneNumberSid, Action<IncomingPhoneNumber> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}.json";
@@ -26,7 +26,7 @@ namespace Twilio
 		/// List all incoming phone numbers on current account. Makes a GET request to the IncomingPhoneNumber List resource.
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListIncomingPhoneNumbers(Action<IncomingPhoneNumberResult> callback)
+		public void ListIncomingPhoneNumbers(Action<IncomingPhoneNumberResult> callback)
 		{
 			ListIncomingPhoneNumbers(null, null, null, null, callback);
 		}
@@ -39,7 +39,7 @@ namespace Twilio
 		/// <param name="pageNumber">Page number to start retrieving results from</param>
 		/// <param name="count">How many results to return</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListIncomingPhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
+		public void ListIncomingPhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers.json";
@@ -53,99 +53,12 @@ namespace Twilio
 			ExecuteAsync<IncomingPhoneNumberResult>(request, (response) => callback(response));
 		}
 
-        /// <summary>
-        /// List all incoming local phone numbers on current account
-        /// </summary>
-        public virtual void ListIncomingLocalPhoneNumbers(Action<IncomingPhoneNumberResult> callback)
-        {
-            ListIncomingMobilePhoneNumbers(null, null, null, null, callback);
-        }
-
-        /// <summary>
-        /// List incoming local phone numbers on current account with filters
-        /// </summary>
-        /// <param name="phoneNumber">Optional phone number to match</param>
-        /// <param name="friendlyName">Optional friendly name to match</param>
-        /// <param name="pageNumber">Page number to start retrieving results from</param>
-        /// <param name="count">How many results to return</param>
-        public virtual void ListIncomingLocalPhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
-        {
-            var request = new RestRequest();
-            request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/Local.json";
-
-            if (phoneNumber.HasValue()) request.AddParameter("PhoneNumber", phoneNumber);
-            if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
-
-            if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
-            if (count.HasValue) request.AddParameter("PageSize", count.Value);
-
-            ExecuteAsync<IncomingPhoneNumberResult>(request, (response) => callback(response));
-        }
-
-        /// <summary>
-        /// List all incoming toll free phone numbers on current account
-        /// </summary>
-        public virtual void ListIncomingTollFreePhoneNumbers(Action<IncomingPhoneNumberResult> callback)
-        {
-            ListIncomingMobilePhoneNumbers(null, null, null, null, callback);
-        }
-
-        /// <summary>
-        /// List incoming toll free phone numbers on current account with filters
-        /// </summary>
-        /// <param name="phoneNumber">Optional phone number to match</param>
-        /// <param name="friendlyName">Optional friendly name to match</param>
-        /// <param name="pageNumber">Page number to start retrieving results from</param>
-        /// <param name="count">How many results to return</param>
-        public virtual void ListIncomingTollFreePhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
-        {
-            var request = new RestRequest();
-            request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/TollFree.json";
-
-            if (phoneNumber.HasValue()) request.AddParameter("PhoneNumber", phoneNumber);
-            if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
-
-            if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
-            if (count.HasValue) request.AddParameter("PageSize", count.Value);
-
-            ExecuteAsync<IncomingPhoneNumberResult>(request, (response) => callback(response));
-        }
-
-        /// <summary>
-        /// List all incoming mobile phone numbers on current account
-        /// </summary>
-        public virtual void ListIncomingMobilePhoneNumbers(Action<IncomingPhoneNumberResult> callback)
-        {
-            ListIncomingMobilePhoneNumbers(null, null, null, null, callback);
-        }
-
-        /// <summary>
-        /// List incoming mobile phone numbers on current account with filters
-        /// </summary>
-        /// <param name="phoneNumber">Optional phone number to match</param>
-        /// <param name="friendlyName">Optional friendly name to match</param>
-        /// <param name="pageNumber">Page number to start retrieving results from</param>
-        /// <param name="count">How many results to return</param>
-        public virtual void ListIncomingMobilePhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
-        {
-            var request = new RestRequest();
-            request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/Mobile.json";
-
-            if (phoneNumber.HasValue()) request.AddParameter("PhoneNumber", phoneNumber);
-            if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
-
-            if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
-            if (count.HasValue) request.AddParameter("PageSize", count.Value);
-
-            ExecuteAsync<IncomingPhoneNumberResult>(request, (response) => callback(response));
-        }
-
 		/// <summary>
-		/// Purchase/provision a phone number.
+		/// Purchase/provision a local phone number. Makes a POST request to the IncomingPhoneNumber List resource.
 		/// </summary>
 		/// <param name="options">Optional parameters to use when purchasing number</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void AddIncomingPhoneNumber(PhoneNumberOptions options, Action<IncomingPhoneNumber> callback)
+		public void AddIncomingPhoneNumber(PhoneNumberOptions options, Action<IncomingPhoneNumber> callback)
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers.json";
@@ -165,55 +78,13 @@ namespace Twilio
 			ExecuteAsync<IncomingPhoneNumber>(request, (response) => callback(response));
 		}
 
-        /// <summary>
-        /// Purchase/provision a local phone number
-        /// </summary>
-        /// <param name="options">Optional parameters to use when purchasing number</param>
-        /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void AddIncomingLocalPhoneNumber(PhoneNumberOptions options, Action<IncomingPhoneNumber> callback)
-        {
-            Require.Argument("PhoneNumber", options.PhoneNumber);
-
-            var request = new RestRequest(Method.POST);
-            request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/Local.json";
-
-            //PhoneNumber is required for this resource
-            request.AddParameter("PhoneNumber", options.PhoneNumber);
-
-            AddPhoneNumberOptionsToRequest(request, options);
-            AddSmsOptionsToRequest(request, options);
-
-            ExecuteAsync<IncomingPhoneNumber>(request, (response) => callback(response));
-        }
-
-        /// <summary>
-        /// Purchase/provision a toll free phone number
-        /// </summary>
-        /// <param name="options">Optional parameters to use when purchasing number</param>
-        /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void AddIncomingTollFreePhoneNumber(PhoneNumberOptions options, Action<IncomingPhoneNumber> callback)
-        {
-            Require.Argument("PhoneNumber", options.PhoneNumber);
-
-            var request = new RestRequest(Method.POST);
-            request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/TollFree.json";
-
-            //PhoneNumber is required for this resource
-            request.AddParameter("PhoneNumber", options.PhoneNumber);
-
-            AddPhoneNumberOptionsToRequest(request, options);
-            AddSmsOptionsToRequest(request, options);
-
-            ExecuteAsync<IncomingPhoneNumber>(request, (response) => callback(response));
-        }
-
 		/// <summary>
-		/// Update the settings of an incoming phone number.
+		/// Update the settings of an incoming phone number. Makes a POST request to an IncomingPhoneNumber Instance resource.
 		/// </summary>
 		/// <param name="incomingPhoneNumberSid">The Sid of the phone number to update</param>
 		/// <param name="options">Which settings to update. Only properties with values set will be updated.</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void UpdateIncomingPhoneNumber(string incomingPhoneNumberSid, PhoneNumberOptions options, Action<IncomingPhoneNumber> callback)
+		public void UpdateIncomingPhoneNumber(string incomingPhoneNumberSid, PhoneNumberOptions options, Action<IncomingPhoneNumber> callback)
 		{
 			Require.Argument("IncomingPhoneNumberSid", incomingPhoneNumberSid);
 
@@ -234,7 +105,7 @@ namespace Twilio
         /// <param name="sourceAccountSid">The AccountSid of the current owning account to move the phone number from</param>
         /// <param name="targetAccountSid">The AccountSid of the account to move the phone number to</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void TransferIncomingPhoneNumber(string incomingPhoneNumberSid, string sourceAccountSid, string targetAccountSid, Action<IncomingPhoneNumber> callback)
+        public void TransferIncomingPhoneNumber(string incomingPhoneNumberSid, string sourceAccountSid, string targetAccountSid, Action<IncomingPhoneNumber> callback)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}.json";
@@ -247,11 +118,11 @@ namespace Twilio
         }
 
 		/// <summary>
-		/// Remove (deprovision) a phone number from the current account.
+		/// Remove (deprovision) a phone number from the current account. Makes a DELETE request to an IncomingPhoneNumber Instance resource.
 		/// </summary>
 		/// <param name="incomingPhoneNumberSid">The Sid of the number to remove</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void DeleteIncomingPhoneNumber(string incomingPhoneNumberSid, Action<DeleteStatus> callback)
+		public void DeleteIncomingPhoneNumber(string incomingPhoneNumberSid, Action<DeleteStatus> callback)
 		{
 			Require.Argument("IncomingPhoneNumberSid", incomingPhoneNumberSid);
 			var request = new RestRequest(Method.DELETE);
@@ -262,7 +133,7 @@ namespace Twilio
 			ExecuteAsync(request, (response) => { callback(response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed); });
 		}
 
-        private void AddPhoneNumberOptionsToRequest(RestRequest request, PhoneNumberOptions options)
+		private void AddPhoneNumberOptionsToRequest(RestRequest request, PhoneNumberOptions options)
 		{
             if (options.AccountSid.HasValue())
             {

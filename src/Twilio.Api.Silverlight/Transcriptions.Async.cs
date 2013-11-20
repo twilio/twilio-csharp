@@ -10,7 +10,7 @@ namespace Twilio
 		/// Returns a set of Transcriptions that includes paging information, sorted by 'DateUpdated', with most recent transcripts first.
 		/// </summary>
 		/// <param name="callback">The method to call upon the completion of the request</param>
-        public virtual void ListTranscriptions(Action<TranscriptionResult> callback)
+		public void ListTranscriptions(Action<TranscriptionResult> callback)
 		{
 			ListTranscriptions(null, null, null, callback);
 		}
@@ -21,7 +21,7 @@ namespace Twilio
 		/// <param name="pageNumber">The page to start retrieving results from</param>
 		/// <param name="count">The number of results to retrieve</param>
 		/// <param name="callback">The method to call upon the completion of the request</param>
-        public virtual void ListTranscriptions(int? pageNumber, int? count, Action<TranscriptionResult> callback)
+		public void ListTranscriptions(int? pageNumber, int? count, Action<TranscriptionResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Transcriptions.json";
@@ -38,7 +38,7 @@ namespace Twilio
 		/// <param name="pageNumber">The page to start retrieving results from</param>
 		/// <param name="count">The number of results to retrieve</param>
 		/// <param name="callback">Method to call upon completion of request</param>
-        public virtual void ListTranscriptions(string recordingSid, int? pageNumber, int? count, Action<TranscriptionResult> callback)
+		public void ListTranscriptions(string recordingSid, int? pageNumber, int? count, Action<TranscriptionResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}/Transcriptions.json";
@@ -55,7 +55,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="transcriptionSid">The Sid of the transcription to retrieve</param>
 		/// <param name="callback">Method to call upon completion of request</param>
-        public virtual void GetTranscription(string transcriptionSid, Action<Transcription> callback)
+		public void GetTranscription(string transcriptionSid, Action<Transcription> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Transcriptions/{TranscriptionSid}.json";
@@ -69,7 +69,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="transcriptionSid">The Sid of the transcription to retrieve</param>
 		/// <param name="callback">Method to call upon completion of the request</param>
-        public virtual void GetTranscriptionText(string transcriptionSid, Action<string> callback)
+		public void GetTranscriptionText(string transcriptionSid, Action<string> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Transcriptions/{TranscriptionSid}.txt.json";

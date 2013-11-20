@@ -12,7 +12,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="applicationSid">The Sid of the application to retrieve</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void GetApplication(string applicationSid, Action<Application> callback)
+		public void GetApplication(string applicationSid, Action<Application> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Applications/{ApplicationSid}.json";
@@ -26,7 +26,7 @@ namespace Twilio
 		/// List applications on current account
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListApplications(Action<ApplicationResult> callback)
+		public void ListApplications(Action<ApplicationResult> callback)
 		{
 			ListApplications(null, null, null, callback);
 		}
@@ -38,7 +38,7 @@ namespace Twilio
 		/// <param name="pageNumber">Page number to start retrieving results from</param>
 		/// <param name="count">How many results to return</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListApplications(string friendlyName, int? pageNumber, int? count, Action<ApplicationResult> callback)
+		public void ListApplications(string friendlyName, int? pageNumber, int? count, Action<ApplicationResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Applications.json";
@@ -56,7 +56,7 @@ namespace Twilio
 		/// <param name="friendlyName">The friendly name to name the application</param>
 		/// <param name="options">Optional parameters to use when purchasing number</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void AddApplication(string friendlyName, ApplicationOptions options, Action<Application> callback)
+		public void AddApplication(string friendlyName, ApplicationOptions options, Action<Application> callback)
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/Applications.json";
@@ -91,7 +91,7 @@ namespace Twilio
 		/// <param name="friendlyName">The friendly name to rename the application to (optional, null to leave as-is)</param>
 		/// <param name="options">Which settings to update. Only properties with values set will be updated.</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void UpdateApplication(string applicationSid, string friendlyName, ApplicationOptions options, Action<Application> callback)
+		public void UpdateApplication(string applicationSid, string friendlyName, ApplicationOptions options, Action<Application> callback)
 		{
 			Require.Argument("ApplicationSid", applicationSid);
 
@@ -123,7 +123,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="applicationSid">The Sid of the number to remove</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void DeleteApplication(string applicationSid, Action<DeleteStatus> callback)
+		public void DeleteApplication(string applicationSid, Action<DeleteStatus> callback)
 		{
 			Require.Argument("ApplicationSid", applicationSid);
 			var request = new RestRequest(Method.DELETE);

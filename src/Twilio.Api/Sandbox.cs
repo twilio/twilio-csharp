@@ -11,7 +11,7 @@ namespace Twilio
 		/// Twilio accounts upgraded prior to February 2010 may not have a Sandbox resource, and in this case you will receive a 404 (Not Found) response.
 		/// Makes a GET request to the Sandbox Instance resource.
 		/// </summary>
-        public virtual Sandbox GetSandbox()
+		public Sandbox GetSandbox()
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Sandbox.json";
@@ -27,7 +27,7 @@ namespace Twilio
 		/// <param name="voiceMethod">The HTTP method to use for incoming calls to your sandbox number.</param>
 		/// <param name="smsUrl">The URL to use for incoming SMS text messages sent to your sandbox number.</param>
 		/// <param name="smsMethod">The HTTP method to use for incoming text messages sent to your sandbox number.</param>
-        public virtual Sandbox UpdateSandbox(string voiceUrl, string voiceMethod, string smsUrl, string smsMethod)
+		public Sandbox UpdateSandbox(string voiceUrl, string voiceMethod, string smsUrl, string smsMethod)
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/Sandbox.json";

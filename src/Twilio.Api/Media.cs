@@ -16,7 +16,7 @@ namespace Twilio
         /// </summary>
         /// <param name="mediaSid">The Sid of the media resource</param>
         /// <returns></returns>
-        public virtual Media GetMedia(string mediaSid)
+        public Media GetMedia(string mediaSid)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Media/{MediaSid}.json";
@@ -27,7 +27,7 @@ namespace Twilio
         /// <summary>
         /// Retrieve a list of Media objects with no list filters
         /// </summary>
-        public virtual MediaResult ListMedia()
+        public MediaResult ListMedia()
         {
             return ListMedia(new MediaListRequest());
         }
@@ -36,7 +36,7 @@ namespace Twilio
         /// Return a filtered list of Media objects. The list includes paging
         /// information.
         /// </summary>
-        public virtual MediaResult ListMedia(MediaListRequest options)
+        public MediaResult ListMedia(MediaListRequest options)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Media.json";
@@ -48,7 +48,7 @@ namespace Twilio
         /// List all media for a particular message
         /// </summary>
         /// <param name="messageSid">The message sid to filter on</param>
-        public virtual MediaResult ListMessageMedia(string messageSid, MediaListRequest options)
+        public MediaResult ListMessageMedia(string messageSid, MediaListRequest options)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Messages/{MessageSid}/Media.json";
@@ -62,7 +62,7 @@ namespace Twilio
         /// Media Instance resource.
         /// </summary>
         /// <param name="mediaSid">The Sid of the media to delete</param>
-        public virtual DeleteStatus DeleteMedia(string mediaSid)
+        public DeleteStatus DeleteMedia(string mediaSid)
         {
             var request = new RestRequest(Method.DELETE);
             request.Resource = "Accounts/{AccountSid}/Media/{MediaSid}.json";

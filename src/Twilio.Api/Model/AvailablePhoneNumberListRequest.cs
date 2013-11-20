@@ -44,9 +44,7 @@ namespace Twilio
 		/// </summary>
 		public string InRateCenter { get; set; }
 		/// <summary>
-		/// Set to 'true' or 'false'. If true, the response will contain SMS
-        /// enabled phone numbers. The voice capability is independent of
-        /// the SMS capability
+		/// Set to 'true' or 'false'. If true, the response will contain SMS enabled phone numbers. The voice capability is independent of the SMS capability
 		/// </summary>
 		public bool? SmsEnabled { get; set; }
 		/// <summary>
@@ -56,9 +54,8 @@ namespace Twilio
 		/// </summary>
 		public bool? VoiceEnabled { get; set; }
 		/// Set to 'true' or 'false'. If true, the response will contain MMS 
-		/// enabled phone numbers. The MMS capability is independent of the
-        /// SMS capability.
+		/// enabled phone numbers. The MMS capability is independent of the SMS capability.
 		/// </summary>
 		public bool? MmsEnabled { get; set; }
-    }
+	}
 }

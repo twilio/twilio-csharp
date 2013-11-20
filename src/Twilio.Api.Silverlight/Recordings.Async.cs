@@ -10,7 +10,7 @@ namespace Twilio
 		/// Returns a list of Recordings, each representing a recording generated during the course of a phone call. The list includes paging information.
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListRecordings(Action<RecordingResult> callback)
+		public void ListRecordings(Action<RecordingResult> callback)
 		{
 			ListRecordings(null, null, null, null, callback);
 		}
@@ -23,7 +23,7 @@ namespace Twilio
 		/// <param name="pageNumber">The page to start retrieving results from</param>
 		/// <param name="count">How many results to retrieve</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListRecordings(string callSid, DateTime? dateCreated, int? pageNumber, int? count, Action<RecordingResult> callback)
+		public void ListRecordings(string callSid, DateTime? dateCreated, int? pageNumber, int? count, Action<RecordingResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Recordings.json";
@@ -41,7 +41,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="recordingSid">The Sid of the recording to retrieve</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void GetRecording(string recordingSid, Action<Recording> callback)
+		public void GetRecording(string recordingSid, Action<Recording> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}.json";
@@ -56,7 +56,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="recordingSid">The Sid of the recording to delete</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void DeleteRecording(string recordingSid, Action<DeleteStatus> callback)
+		public void DeleteRecording(string recordingSid, Action<DeleteStatus> callback)
 		{
 			var request = new RestRequest(Method.DELETE);
 			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}.json";
@@ -71,7 +71,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="recordingSid">The Sid of the recording to retreive the transcription for</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void GetRecordingText(string recordingSid, Action<string> callback)
+		public void GetRecordingText(string recordingSid, Action<string> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}.txt";
