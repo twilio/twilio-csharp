@@ -9,7 +9,7 @@ namespace Twilio
 		/// The list includes paging information.
 		/// Makes a GET request to the Conferences List resource.
 		/// </summary>
-        public virtual ConferenceResult ListConferences()
+		public ConferenceResult ListConferences()
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Conferences.json";
@@ -23,7 +23,7 @@ namespace Twilio
 		/// Makes a POST request to the Conferences List resource.
 		/// </summary>
 		/// <param name="options">List filter options. Only properties with values are included in request.</param>
-        public virtual ConferenceResult ListConferences(ConferenceListRequest options)
+		public ConferenceResult ListConferences(ConferenceListRequest options)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Conferences.json";
@@ -37,7 +37,7 @@ namespace Twilio
 		/// Retrieve details for specific conference. Makes a GET request to a Conference Instance resource.
 		/// </summary>
 		/// <param name="conferenceSid">The Sid of the conference to retrieve</param>
-        public virtual Conference GetConference(string conferenceSid)
+		public Conference GetConference(string conferenceSid)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}.json";
@@ -52,7 +52,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="conferenceSid">The Sid of the conference</param>
 		/// <param name="muted">Set to null to retrieve all, true to retrieve muted, false to retrieve unmuted</param>
-        public virtual ParticipantResult ListConferenceParticipants(string conferenceSid, bool? muted)
+		public ParticipantResult ListConferenceParticipants(string conferenceSid, bool? muted)
 		{
 			return ListConferenceParticipants(conferenceSid, muted, null, null);
 		}
@@ -64,7 +64,7 @@ namespace Twilio
 		/// <param name="muted">Set to null to retrieve all, true to retrieve muted, false to retrieve unmuted</param>
 		/// <param name="pageNumber">Which page number to start retrieving from</param>
 		/// <param name="count">How many participants to retrieve</param>
-        public virtual ParticipantResult ListConferenceParticipants(string conferenceSid, bool? muted, int? pageNumber, int? count)
+		public ParticipantResult ListConferenceParticipants(string conferenceSid, bool? muted, int? pageNumber, int? count)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants.json";
@@ -83,7 +83,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="conferenceSid">The Sid of the conference</param>
 		/// <param name="callSid">The Sid of the call instance</param>
-        public virtual Participant GetConferenceParticipant(string conferenceSid, string callSid)
+		public Participant GetConferenceParticipant(string conferenceSid, string callSid)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";
@@ -99,7 +99,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="conferenceSid">The Sid of the conference</param>
 		/// <param name="callSid">The Sid of the call to mute</param>
-        public virtual Participant MuteConferenceParticipant(string conferenceSid, string callSid)
+		public Participant MuteConferenceParticipant(string conferenceSid, string callSid)
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";
@@ -116,7 +116,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="conferenceSid">The Sid of the conference</param>
 		/// <param name="callSid">The Sid of the call to unmute</param>
-        public virtual Participant UnmuteConferenceParticipant(string conferenceSid, string callSid)
+		public Participant UnmuteConferenceParticipant(string conferenceSid, string callSid)
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";
@@ -133,7 +133,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="conferenceSid">The Sid of the conference</param>
 		/// <param name="callSid">The Sid of the call to remove</param>
-        public virtual bool KickConferenceParticipant(string conferenceSid, string callSid)
+		public bool KickConferenceParticipant(string conferenceSid, string callSid)
 		{
 			var request = new RestRequest(Method.DELETE);
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";

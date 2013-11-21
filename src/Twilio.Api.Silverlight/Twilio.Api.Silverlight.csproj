@@ -65,9 +65,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
-    <Reference Include="RestSharp.Silverlight, Version=104.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="RestSharp.Silverlight, Version=104.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RestSharp.104.3.3\lib\sl4\RestSharp.Silverlight.dll</HintPath>
+      <HintPath>..\packages\RestSharp.104.2.0\lib\sl4\RestSharp.Silverlight.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="system" />

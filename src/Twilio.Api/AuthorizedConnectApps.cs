@@ -11,7 +11,7 @@ namespace Twilio
 		/// Retrieve the details for an AuthorizedConnectApp instance. Makes a GET request to an AuthorizedConnectApp Instance resource.
 		/// </summary>
 		/// <param name="authorizedConnectAppSid">The Sid of the AuthorizedConnectApp to retrieve</param>
-        public virtual AuthorizedConnectApp GetAuthorizedConnectApp(string authorizedConnectAppSid)
+		public AuthorizedConnectApp GetAuthorizedConnectApp(string authorizedConnectAppSid)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/AuthorizedConnectApps/{AuthorizedConnectAppSid}.json";
@@ -24,7 +24,7 @@ namespace Twilio
 		/// <summary>
 		/// List AuthorizedConnectApps on current account
 		/// </summary>
-        public virtual AuthorizedConnectAppResult ListAuthorizedConnectApps()
+		public AuthorizedConnectAppResult ListAuthorizedConnectApps()
 		{
 			return ListAuthorizedConnectApps(null, null);
 		}
@@ -34,7 +34,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="pageNumber">Page number to start retrieving results from</param>
 		/// <param name="count">How many results to return</param>
-        public virtual AuthorizedConnectAppResult ListAuthorizedConnectApps(int? pageNumber, int? count)
+		public AuthorizedConnectAppResult ListAuthorizedConnectApps(int? pageNumber, int? count)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/AuthorizedConnectApps.json";

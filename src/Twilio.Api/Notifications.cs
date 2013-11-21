@@ -10,7 +10,7 @@ namespace Twilio
 		/// Retrieve the details of a specific notification. Makes a GET request to a Notification Instance resource.
 		/// </summary>
 		/// <param name="notificationSid">The Sid of the notification to retrieve</param>
-        public virtual Notification GetNotification(string notificationSid)
+		public Notification GetNotification(string notificationSid)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Notifications/{NotificationSid}.json";
@@ -25,7 +25,7 @@ namespace Twilio
 		/// The list includes paging information.
 		/// Makes a GET request to a Notifications List resource.
 		/// </summary>
-        public virtual NotificationResult ListNotifications()
+		public NotificationResult ListNotifications()
 		{
 			return ListNotifications(null, null, null, null);
 		}
@@ -39,7 +39,7 @@ namespace Twilio
 		/// <param name="messageDate">Only show notifications for this date (in GMT)</param>
 		/// <param name="pageNumber">The page number to start retrieving results from</param>
 		/// <param name="count">How many notifications to return</param>
-        public virtual NotificationResult ListNotifications(int? log, DateTime? messageDate, int? pageNumber, int? count)
+		public NotificationResult ListNotifications(int? log, DateTime? messageDate, int? pageNumber, int? count)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Notifications.json";
@@ -56,7 +56,7 @@ namespace Twilio
 		/// Deletes a notification from your account. Makes a DELETE request to a Notification Instance resource.
 		/// </summary>
 		/// <param name="notificationSid">The Sid of the notification to delete</param>
-        public virtual DeleteStatus DeleteNotification(string notificationSid)
+		public DeleteStatus DeleteNotification(string notificationSid)
 		{
 			Require.Argument("NotificationSid", notificationSid);
 			var request = new RestRequest(Method.DELETE);

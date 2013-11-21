@@ -12,7 +12,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="authorizedConnectAppSid">The Sid of the AuthorizedConnectApp to retrieve</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public virtual void GetAuthorizedConnectApp(string authorizedConnectAppSid, Action<AuthorizedConnectApp> callback)
+		public void GetAuthorizedConnectApp(string authorizedConnectAppSid, Action<AuthorizedConnectApp> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/AuthorizedConnectApps/{AuthorizedConnectAppSid}.json";
@@ -26,7 +26,7 @@ namespace Twilio
 		/// List AuthorizedConnectApps on current account
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public virtual void ListAuthorizedConnectApps(Action<AuthorizedConnectAppResult> callback)
+		public void ListAuthorizedConnectApps(Action<AuthorizedConnectAppResult> callback)
 		{
 			ListAuthorizedConnectApps(null, null, (response) => { callback(response); });
 		}
@@ -37,7 +37,7 @@ namespace Twilio
 		/// <param name="pageNumber">Page number to start retrieving results from</param>
 		/// <param name="count">How many results to return</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public virtual void ListAuthorizedConnectApps(int? pageNumber, int? count, Action<AuthorizedConnectAppResult> callback)
+		public void ListAuthorizedConnectApps(int? pageNumber, int? count, Action<AuthorizedConnectAppResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/AuthorizedConnectApps.json";

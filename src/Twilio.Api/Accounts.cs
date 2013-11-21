@@ -1,5 +1,6 @@
 ﻿using System;
 using RestSharp;
+using System.Collections.Generic;
 
 namespace Twilio
 {
@@ -8,7 +9,7 @@ namespace Twilio
 		/// <summary>
 		/// Retrieve the account details for the currently authenticated account. Makes a GET request to an Account Instance resource.
 		/// </summary>
-        public virtual Account GetAccount()
+		public Account GetAccount()
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}.json";
@@ -20,7 +21,7 @@ namespace Twilio
 		/// Retrieve the account details for a subaccount. Makes a GET request to an Account Instance resource.
 		/// </summary>
 		/// <param name="accountSid">The Sid of the subaccount to retrieve</param>
-        public virtual Account GetAccount(string accountSid)
+		public Account GetAccount(string accountSid)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}.json";
@@ -33,7 +34,7 @@ namespace Twilio
 		/// <summary>
 		/// List all subaccounts created for the authenticated account. Makes a GET request to the Account List resource.
 		/// </summary>
-        public virtual AccountResult ListSubAccounts()
+		public AccountResult ListSubAccounts()
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts.json";
@@ -45,7 +46,7 @@ namespace Twilio
         /// List subaccounts that match the provided FriendlyName for the authenticated account. Makes a GET request to the Account List resource.
         /// </summary>
         /// <param name="friendlyName">Name associated with this account</param>
-        public virtual AccountResult ListSubAccounts(string friendlyName)
+        public AccountResult ListSubAccounts(string friendlyName)
         {
             var request = new RestRequest();
             request.Resource = "Accounts.json";
@@ -54,12 +55,38 @@ namespace Twilio
 
             return Execute<AccountResult>(request);
         }
+        /// <summary>
+        /// List subaccounts that match the provided FriendlyName for the authenticated account. Makes a GET request to the Account List resource.
+        /// </summary>
+        /// <param name="friendlyName">Name associated with this account</param>
+        public AccountResult ListSubAccounts(string friendlyName, AccountStatus AccountFilter)
+        {
+            AccountResult accounts = (AccountResult)ListSubAccounts(friendlyName);
+            AccountResult accountsFilter= new AccountResult();
 
+            try
+            {
+                foreach (var a in accounts.Accounts)
+                {
+                    if (a.Status == AccountFilter.ToString() )
+                    {
+                        accountsFilter.Accounts.Add(a);
+                
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new System.Exception(ex.Message);
+             }
+        
+            return accountsFilter;
+        }
 		/// <summary>
 		/// Creates a new subaccount under the authenticated account. Makes a POST request to the Account List resource.
 		/// </summary>
 		/// <param name="friendlyName">Name associated with this account for your own reference (can be empty string)</param>
-        public virtual Account CreateSubAccount(string friendlyName)
+		public Account CreateSubAccount(string friendlyName)
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts.json";
@@ -78,7 +105,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="subAccountSid">The subaccount to change the status on</param>
 		/// <param name="status">The status to change the subaccount to</param>
-        public virtual Account ChangeSubAccountStatus(string subAccountSid, AccountStatus status)
+		public Account ChangeSubAccountStatus(string subAccountSid, AccountStatus status)
 		{
 			if (subAccountSid == AccountSid)
 			{
@@ -98,7 +125,7 @@ namespace Twilio
 		/// Update the friendly name associated with the currently authenticated account. Makes a POST request to an Account Instance resource.
 		/// </summary>
 		/// <param name="friendlyName">Name to use when updating</param>
-        public virtual Account UpdateAccountName(string friendlyName)
+		public Account UpdateAccountName(string friendlyName)
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}.json";
