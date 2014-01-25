@@ -65,7 +65,7 @@ namespace Twilio
             var version = assemblyName.Version;
 
             _client = new RestClient();
-            _client.UserAgent = "twilio-csharp/" + version;
+            _client.UserAgent = "twilio-csharp/" + version + " (.NET " + Environment.Version.ToString() + ")";
             _client.Authenticator = new HttpBasicAuthenticator(AccountSid, AuthToken);
 
 #if FRAMEWORK
