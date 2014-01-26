@@ -53,9 +53,9 @@
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Twilio.Api\Twilio.Api.csproj">
+    <ProjectReference Include="..\Twilio.Api.Net35\Twilio.Api.Net35.csproj">
       <Project>{894FF9E8-4DBF-4472-8AE2-1A6A988E105B}</Project>
-      <Name>Twilio.Api</Name>
+      <Name>Twilio.Api.Net35</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

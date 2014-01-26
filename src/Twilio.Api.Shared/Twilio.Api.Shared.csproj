@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F9C37D61-2764-42EF-95BF-F17A938E3012}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Twilio.Api.Shared</RootNamespace>
+    <AssemblyName>Twilio.Api.Shared</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\AccountResult.cs" />
+    <Compile Include="Model\AccountStatus.cs" />
+    <Compile Include="Model\Application.cs" />
+    <Compile Include="Model\ApplicationOptions.cs" />
+    <Compile Include="Model\ApplicationResult.cs" />
+    <Compile Include="Model\AuthorizedConnectApp.cs" />
+    <Compile Include="Model\AuthorizedConnectAppResult.cs" />
+    <Compile Include="Model\AvailablePhoneNumber.cs" />
+    <Compile Include="Model\AvailablePhoneNumberListRequest.cs" />
+    <Compile Include="Model\AvailablePhoneNumberResult.cs" />
+    <Compile Include="Model\Call.cs" />
+    <Compile Include="Model\CallListRequest.cs" />
+    <Compile Include="Model\CallOptions.cs" />
+    <Compile Include="Model\CallResult.cs" />
+    <Compile Include="Model\Capabilities.cs" />
+    <Compile Include="Model\ComparisonType.cs" />
+    <Compile Include="Model\Conference.cs" />
+    <Compile Include="Model\ConferenceListRequest.cs" />
+    <Compile Include="Model\ConferenceResult.cs" />
+    <Compile Include="Model\ConnectApp.cs" />
+    <Compile Include="Model\ConnectAppResult.cs" />
+    <Compile Include="Model\Credential.cs" />
+    <Compile Include="Model\CredentialList.cs" />
+    <Compile Include="Model\CredentialListMapping.cs" />
+    <Compile Include="Model\CredentialListMappingResult.cs" />
+    <Compile Include="Model\CredentialListResult.cs" />
+    <Compile Include="Model\CredentialResult.cs" />
+    <Compile Include="Model\DeleteStatus.cs" />
+    <Compile Include="Model\DequeueStatus.cs" />
+    <Compile Include="Model\Domain.cs" />
+    <Compile Include="Model\DomainOptions.cs" />
+    <Compile Include="Model\DomainResult.cs" />
+    <Compile Include="Model\HangupStyle.cs" />
+    <Compile Include="Model\IncomingPhoneNumber.cs" />
+    <Compile Include="Model\IncomingPhoneNumberResult.cs" />
+    <Compile Include="Model\IpAccessControlList.cs" />
+    <Compile Include="Model\IpAccessControlListMapping.cs" />
+    <Compile Include="Model\IpAccessControlListMappingResult.cs" />
+    <Compile Include="Model\IpAccessControlListResult.cs" />
+    <Compile Include="Model\IpAddress.cs" />
+    <Compile Include="Model\IpAddressResult.cs" />
+    <Compile Include="Model\Media.cs" />
+    <Compile Include="Model\MediaListRequest.cs" />
+    <Compile Include="Model\MediaResult.cs" />
+    <Compile Include="Model\Message.cs" />
+    <Compile Include="Model\MessageListRequest.cs" />
+    <Compile Include="Model\MessageResult.cs" />
+    <Compile Include="Model\Notification.cs" />
+    <Compile Include="Model\NotificationResult.cs" />
+    <Compile Include="Model\OutgoingCallerId.cs" />
+    <Compile Include="Model\OutgoingCallerIdOptions.cs" />
+    <Compile Include="Model\OutgoingCallerIdResult.cs" />
+    <Compile Include="Model\Participant.cs" />
+    <Compile Include="Model\ParticipantResult.cs" />
+    <Compile Include="Model\PhoneNumberOptions.cs" />
+    <Compile Include="Model\Queue.cs" />
+    <Compile Include="Model\QueueMember.cs" />
+    <Compile Include="Model\QueueMemberResult.cs" />
+    <Compile Include="Model\QueueResult.cs" />
+    <Compile Include="Model\Recording.cs" />
+    <Compile Include="Model\RecordingResult.cs" />
+    <Compile Include="Model\RestException.cs" />
+    <Compile Include="Model\Sandbox.cs" />
+    <Compile Include="Model\SmsMessage.cs" />
+    <Compile Include="Model\SmsMessageResult.cs" />
+    <Compile Include="Model\SmsShortCode.cs" />
+    <Compile Include="Model\SmsShortCodeResult.cs" />
+    <Compile Include="Model\Transcription.cs" />
+    <Compile Include="Model\TranscriptionResult.cs" />
+    <Compile Include="Model\TwilioBase.cs" />
+    <Compile Include="Model\TwilioListBase.cs" />
+    <Compile Include="Model\UsageRecord.cs" />
+    <Compile Include="Model\UsageResult.cs" />
+    <Compile Include="Model\UsageTrigger.cs" />
+    <Compile Include="Model\UsageTriggerOptions.cs" />
+    <Compile Include="Model\UsageTriggerResult.cs" />
+    <Compile Include="Model\ValidationRequest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
