@@ -10,7 +10,7 @@ namespace Twilio.Api.Tests.Integration
         public void ShouldFailToSendSmsMessageWithInvalidCredentials()
         {
             var client = new TwilioRestClient("Foo", "Bar");
-            var result = client.SendSmsMessage("+15005550006", "+13144586142", ".NET Unit Test Message");
+            var result = client.SendMessage("+15005550006", "+13144586142", ".NET Unit Test Message");
 
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.RestException);

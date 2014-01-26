@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using RestSharp;
-using RestSharp.Extensions;
-using RestSharp.Validation;
 
 namespace Twilio
 {
@@ -19,7 +16,7 @@ namespace Twilio
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Messages/{MessageSid}.json";
-            request.AddUrlSegment("MessageSid", messageSid);
+            request.Parameters.Add(new Parameter() { Name = "MessageSid", Value = messageSid, Type = ParameterType.UrlSegment });
 
             return Execute<Message>(request);
         }
@@ -43,7 +40,9 @@ namespace Twilio
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Messages.json";
-            AddMessageListOptions(options, request);
+            
+            //AddMessageListOptions(options, request);
+            
             return Execute<MessageResult>(request);
         }
 
@@ -123,23 +122,24 @@ namespace Twilio
         /// <param name="applicationSid"></param>
         public virtual Message SendMessage(string from, string to, string body, string[] mediaUrls, string statusCallback, string applicationSid)
         {
-            Require.Argument("from", from);
-            Require.Argument("to", to);
+            //Require.Argument("from", from);
+            //Require.Argument("to", to);
 
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/Messages.json";
-            request.AddParameter("From", from);
-            request.AddParameter("To", to);
+
+            request.Parameters.Add(new Parameter() { Name = "From", Value=from, Type = ParameterType.GetOrPost });
+            request.Parameters.Add(new Parameter() { Name = "To", Value=to, Type = ParameterType.GetOrPost });
             
-            if (body.HasValue()) request.AddParameter("Body", body);
+            if (body.HasValue()) request.Parameters.Add(new Parameter() { Name = "Body", Value=body, Type = ParameterType.GetOrPost });
 
             for (int i = 0; i < mediaUrls.Length; i++)
             {
-                request.AddParameter("MediaUrl", mediaUrls[i]);
+                request.Parameters.Add(new Parameter() { Name = "MediaUrl", Value=mediaUrls[i], Type = ParameterType.GetOrPost });
             }
 
-            if (statusCallback.HasValue()) request.AddParameter("StatusCallback", statusCallback);
-            if (applicationSid.HasValue()) request.AddParameter("ApplicationSid", applicationSid);
+            if (statusCallback.HasValue()) request.Parameters.Add(new Parameter() { Name = "StatusCallback", Value=statusCallback, Type = ParameterType.GetOrPost });
+            if (applicationSid.HasValue()) request.Parameters.Add(new Parameter() { Name = "ApplicationSid", Value=applicationSid, Type = ParameterType.GetOrPost });
 
             return Execute<Message>(request);
         }

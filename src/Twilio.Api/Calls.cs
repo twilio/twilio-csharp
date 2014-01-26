@@ -1,8 +1,4 @@
-﻿using RestSharp;
-using RestSharp.Extensions;
-using RestSharp.Validation;
-
-namespace Twilio
+﻿namespace Twilio
 {
 	public partial class TwilioRestClient
 	{
@@ -28,7 +24,7 @@ namespace Twilio
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Calls.json";
 
-			AddCallListOptions(options, request);
+			//AddCallListOptions(options, request);
 
 			return Execute<CallResult>(request);
 		}
@@ -42,8 +38,8 @@ namespace Twilio
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}.json";
-			
-			request.AddParameter("CallSid", callSid, ParameterType.UrlSegment);
+
+            request.Parameters.Add(new Parameter() { Name = "CallSid", Value = callSid, Type = ParameterType.UrlSegment });
 
 			return Execute<Call>(request);
 		}
@@ -83,13 +79,13 @@ namespace Twilio
 		/// <param name="options">Call settings. Only properties with values set will be used.</param>
         public virtual Call InitiateOutboundCall(CallOptions options)
 		{
-			Require.Argument("From", options.From);
-			Require.Argument("To", options.To);
+			//Require.Argument("From", options.From);
+			//Require.Argument("To", options.To);
 
-			var request = new RestRequest(Method.POST);
+			var request = new RestRequest("POST");
 			request.Resource = "Accounts/{AccountSid}/Calls.json";
 			
-			AddCallOptions(options, request);
+			//AddCallOptions(options, request);
 
 			return Execute<Call>(request);
 		}
@@ -101,13 +97,13 @@ namespace Twilio
 		/// <param name="style">'Canceled' will attempt to hangup calls that are queued or ringing but not affect calls already in progress. 'Completed' will attempt to hang up a call even if it's already in progress.</param>
         public virtual Call HangupCall(string callSid, HangupStyle style)
 		{
-			Require.Argument("CallSid", callSid);
+			//Require.Argument("CallSid", callSid);
 
-			var request = new RestRequest(Method.POST);
+			var request = new RestRequest("POST");
 			request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}.json";
-			
-			request.AddUrlSegment("CallSid", callSid);
-			request.AddParameter("Status", style.ToString().ToLower());
+
+            request.Parameters.Add(new Parameter() { Name = "CallSid", Value = callSid, Type = ParameterType.UrlSegment });
+            request.Parameters.Add(new Parameter() { Name = "Status", Value = style.ToString().ToLower(), Type = ParameterType.GetOrPost });
 
 			return Execute<Call>(request);
 		}
@@ -120,8 +116,8 @@ namespace Twilio
 		/// <param name="redirectMethod">The HTTP method to use when requesting the redirectUrl</param>
         public virtual Call RedirectCall(string callSid, string redirectUrl, string redirectMethod)
 		{
-			Require.Argument("CallSid", callSid);
-			Require.Argument("Url", redirectUrl);
+			//Require.Argument("CallSid", callSid);
+			//Require.Argument("Url", redirectUrl);
 
             CallOptions options = new CallOptions();
             options.Url = redirectUrl;
@@ -137,25 +133,26 @@ namespace Twilio
         /// <param name="options">Call settings. Only Url, Method, FallbackUrl, FallbackMethod, StatusCallback and StatusCallbackMethod properties with values set will be used.</param>
         public virtual Call RedirectCall(string callSid, CallOptions options)
         {
-            Require.Argument("CallSid", callSid);
-            Require.Argument("Url", options.Url);
+            //Require.Argument("CallSid", callSid);
+            //Require.Argument("Url", options.Url);
 
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}.json";
 
-            request.AddParameter("CallSid", callSid, ParameterType.UrlSegment);
-            request.AddParameter("Url", options.Url);
-            if (options.Method.HasValue()) request.AddParameter("Method", options.Method);
+            request.Parameters.Add(new Parameter() { Name = "CallSid", Value = callSid, Type = ParameterType.UrlSegment });
+            request.Parameters.Add(new Parameter() { Name = "Url", Value=options.Url, Type = ParameterType.GetOrPost});
 
-            if (options.FallbackUrl.HasValue()) request.AddParameter("FallbackUrl", options.FallbackUrl);
-            if (options.FallbackMethod.HasValue()) request.AddParameter("FallbackMethod", options.FallbackMethod);
+            if (options.Method.HasValue()) request.Parameters.Add(new Parameter() { Name = "Method", Value=options.Method, Type = ParameterType.GetOrPost});
+
+            if (options.FallbackUrl.HasValue()) request.Parameters.Add(new Parameter() { Name = "FallbackUrl", Value=options.FallbackUrl, Type = ParameterType.GetOrPost});
+            if (options.FallbackMethod.HasValue()) request.Parameters.Add(new Parameter() { Name = "FallbackMethod", Value=options.FallbackMethod, Type = ParameterType.GetOrPost});
 
             if (options.StatusCallback.HasValue())
             {
-                request.AddParameter("StatusCallback", options.StatusCallback);
-                request.AddParameter("StatusCallbackUrl", options.StatusCallback); //workaround for issue DEVX-401
+                request.Parameters.Add(new Parameter() { Name = "StatusCallback", Value=options.StatusCallback, Type = ParameterType.GetOrPost});
+                request.Parameters.Add(new Parameter() { Name = "StatusCallbackUrl", Value=options.StatusCallback, Type = ParameterType.GetOrPost}); //workaround for issue DEVX-401
             }
-            if (options.StatusCallbackMethod.HasValue()) request.AddParameter("StatusCallbackMethod", options.StatusCallbackMethod);
+            if (options.StatusCallbackMethod.HasValue()) request.Parameters.Add(new Parameter() { Name = "StatusCallbackMethod", Value = options.StatusCallbackMethod, Type = ParameterType.GetOrPost });
 
             return Execute<Call>(request);
         }

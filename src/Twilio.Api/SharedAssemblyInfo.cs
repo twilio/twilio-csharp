@@ -1,14 +1,11 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-[assembly: AssemblyCompany("Twilio")]
-[assembly: AssemblyProduct("Twilio")]
-[assembly: AssemblyCopyright("Copyright Twilio")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-
-[assembly: ComVisible(false)]
-
-[assembly: AssemblyVersion("3.4.1.0")]
-[assembly: AssemblyFileVersion("3.4.1.0")]
+namespace Twilio
+{
+    class SharedAssemblyInfo
+    {
+    }
+}

@@ -55,10 +55,6 @@
     <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RestSharp, Version=104.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RestSharp.104.4.0\lib\net35-client\RestSharp.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -71,85 +67,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Twilio.Api.Silverlight\Accounts.Async.cs">
-      <Link>Accounts.Async.cs</Link>
+    <Compile Include="../SimpleRestClient/*.cs">
+      <Link>SimpleRestClient/%(Filename)</Link>
     </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Applications.Async.cs">
-      <Link>Applications.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Calls.Async.cs">
-      <Link>Calls.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Conference.Async.cs">
-      <Link>Conference.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\ConnectApps.Async.cs">
-      <Link>ConnectApps.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Core.Async.cs">
-      <Link>Core.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\IncomingPhoneNumbers.Async.cs">
-      <Link>IncomingPhoneNumbers.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Media.Async.cs">
-      <Link>Media.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Messages.Async.cs">
-      <Link>Messages.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Notifications.Async.cs">
-      <Link>Notifications.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\OutgoingCallerIds.Async.cs">
-      <Link>OutgoingCallerIds.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Queues.Async.cs">
-      <Link>Queues.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Recordings.Async.cs">
-      <Link>Recordings.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Sandbox.Async.cs">
-      <Link>Sandbox.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Sip.Async.cs">
-      <Link>Sip.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Sms.Async.cs">
-      <Link>Sms.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Transcriptions.Async.cs">
-      <Link>Transcriptions.Async.cs</Link>
-    </Compile>
-    <Compile Include="..\Twilio.Api.Silverlight\Usage.Async.cs">
-      <Link>Usage.Async.cs</Link>
-    </Compile>
-    <Compile Include="Accounts.cs" />
-    <Compile Include="Applications.cs" />
-    <Compile Include="AuthorizedConnectApps.Async.cs" />
-    <Compile Include="AuthorizedConnectApps.cs" />
-    <Compile Include="AvailablePhoneNumbers.cs" />
-    <Compile Include="AvailablePhoneNumbers.Async.cs" />
     <Compile Include="Calls.cs" />
-    <Compile Include="Conference.cs" />
     <Compile Include="Core.cs" />
-    <Compile Include="ConnectApps.cs" />
-    <Compile Include="IncomingPhoneNumbers.cs" />
-    <Compile Include="Media.cs" />
     <Compile Include="Messages.cs" />
     <Compile Include="Model\Capabilities.cs" />
     <Compile Include="Model\MediaListRequest.cs" />
-    <Compile Include="Notifications.cs" />
-    <Compile Include="OutgoingCallerIds.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queues.cs" />
-    <Compile Include="Recordings.cs" />
-    <Compile Include="Sandbox.cs" />
-    <Compile Include="SharedAssemblyInfo.cs" />
-    <Compile Include="Sms.cs" />
-    <Compile Include="Transcriptions.cs" />
-    <Compile Include="Usage.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\AccountResult.cs" />
     <Compile Include="Model\AccountStatus.cs" />
@@ -226,10 +152,7 @@
     <Compile Include="Model\TwilioBase.cs" />
     <Compile Include="Model\TwilioListBase.cs" />
     <Compile Include="Model\ValidationRequest.cs" />
-    <Compile Include="Sip.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Include="SharedAssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
