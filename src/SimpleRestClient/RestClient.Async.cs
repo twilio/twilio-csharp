@@ -22,10 +22,10 @@ namespace Simple
             return ExecuteAsync(restrequest, (restresponse, asyncHandle) => DeserializeResponse(restrequest, callback, restresponse, asyncHandle));
         }
 
-        //public virtual RestRequestAsyncHandle ExecuteAsync(RestRequest restrequest, Action<IRestResponse> callback)
-        //{
-        //    return this.ExecuteAsync(restrequest, (restresponse, asyncHandle) => callback(restresponse));
-        //}
+        public virtual RestRequestAsyncHandle ExecuteAsync(RestRequest restrequest, Action<RestResponse> callback)
+        {
+            return this.ExecuteAsync(restrequest, (restresponse, asyncHandle) => callback(restresponse));
+        }
 
         public RestRequestAsyncHandle ExecuteAsync(RestRequest restrequest, Action<RestResponse, RestRequestAsyncHandle> callback)
         {

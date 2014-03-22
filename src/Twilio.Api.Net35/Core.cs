@@ -20,6 +20,7 @@ namespace Twilio
 		/// </summary>
         public string BaseUrl { get; private set; }
 
+#if FRAMEWORK
         /// <summary>
         /// 
         /// </summary>
@@ -27,19 +28,11 @@ namespace Twilio
             get { return _client.Proxy; }
             set { _client.Proxy = value; }
         }
+#endif
 
 		private string AccountSid { get; set; }
 		private string AuthToken { get; set; }
         private string AccountResourceSid { get; set; }
-
-        private string AuthorizationToken
-        {
-            get
-            {
-                var token = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", this.AccountSid, this.AuthToken)));
-                return string.Format("Basic {0}", token);
-            }
-        }
 
 		private RestClient _client;
 
@@ -71,15 +64,27 @@ namespace Twilio
 
             _client = new RestClient();
             _client.UserAgent = "twilio-csharp/" + version + " (.NET " + Environment.Version.ToString() + ")";
-
             //_client.Authenticator = new HttpBasicAuthenticator(AccountSid, AuthToken);
-            _client.DefaultParameters.Add(new Parameter() { Name = "Authorization", Value = AuthorizationToken, Type = ParameterType.HttpHeader });
+
+#if FRAMEWORK
+            _client.AddDefaultHeader("Accept-charset", "utf-8");
+            _client.AddDefaultHeader("Authorization", Authenticate());
+#endif
+
             _client.BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion);
             _client.Timeout = 30500;
 
             // if acting on a subaccount, use request.AddUrlSegment("AccountSid", "value")
             // to override for that request.
-            _client.DefaultParameters.Add(new Parameter() { Name = "AccountSid", Value = AccountResourceSid, Type = ParameterType.UrlSegment });
+            _client.AddDefaultUrlSegment("AccountSid", AccountResourceSid); 
+        }
+
+        private string Authenticate()
+        {
+            var token = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", this.AccountSid, this.AuthToken)));
+            var authHeader = string.Format("Basic {0}", token);
+
+            return authHeader;
         }
 
 		/// <summary>
@@ -100,13 +105,8 @@ namespace Twilio
 					var content = resp.RawBytes.AsString(); //get the response content
                     var newJson = string.Format(restException, content);
 
-                    System.Diagnostics.Debug.WriteLine(resp.RawBytes);
-
                     resp.Content = null;
-                    byte[] newbytes= Encoding.UTF8.GetBytes(newJson.ToString());
-					resp.RawBytes = newbytes;
-
-                    System.Diagnostics.Debug.WriteLine(resp.RawBytes);
+					resp.RawBytes = Encoding.UTF8.GetBytes(newJson.ToString());
 				}
 			};
 
@@ -114,17 +114,16 @@ namespace Twilio
 
 			var response = _client.Execute<T>(request);
 			return response.Data;
-            
 		}
 
 		/// <summary>
 		/// Execute a manual REST request
 		/// </summary>
 		/// <param name="request">The RestRequest to execute (will use client credentials)</param>
-        //public virtual IRestResponse Execute(IRestRequest request)
-        //{
-        //    return _client.Execute(request);
-        //}
+        public virtual RestResponse Execute(RestRequest request)
+        {
+            return _client.Execute(request);
+        }
 
 		private string GetParameterNameWithEquality(ComparisonType? comparisonType, string parameterName)
 		{

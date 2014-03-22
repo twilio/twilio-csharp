@@ -76,13 +76,48 @@
     <Compile Include="..\Twilio.Api.Shared\Model\*.cs">
       <Link>Model\%(FileName)</Link>
     </Compile>
+    <Compile Include="Accounts.Async.cs" />
+    <Compile Include="Accounts.cs" />
+    <Compile Include="Applications.Async.cs" />
+    <Compile Include="Applications.cs" />
+    <Compile Include="AuthorizedConnectApps.Async.cs" />
+    <Compile Include="AuthorizedConnectApps.cs" />
+    <Compile Include="AvailablePhoneNumbers.Async.cs" />
+    <Compile Include="AvailablePhoneNumbers.cs" />
     <Compile Include="Calls.Async.cs" />
     <Compile Include="Calls.cs" />
+    <Compile Include="Conference.Async.cs" />
+    <Compile Include="Conference.cs" />
+    <Compile Include="ConnectApps.Async.cs" />
+    <Compile Include="ConnectApps.cs" />
     <Compile Include="Core.Async.cs" />
     <Compile Include="Core.cs" />
+    <Compile Include="IncomingPhoneNumbers.Async.cs" />
+    <Compile Include="IncomingPhoneNumbers.cs" />
+    <Compile Include="Media.Async.cs" />
+    <Compile Include="Media.cs" />
+    <Compile Include="Messages.Async.cs" />
     <Compile Include="Messages.cs" />
+    <Compile Include="Notifications.Async.cs" />
+    <Compile Include="Notifications.cs" />
+    <Compile Include="OutgoingCallerIds.Async.cs" />
+    <Compile Include="OutgoingCallerIds.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queues.Async.cs" />
+    <Compile Include="Queues.cs" />
+    <Compile Include="Recordings.Async.cs" />
+    <Compile Include="Recordings.cs" />
+    <Compile Include="Sandbox.Async.cs" />
+    <Compile Include="Sandbox.cs" />
     <Compile Include="SharedAssemblyInfo.cs" />
+    <Compile Include="Sip.Async.cs" />
+    <Compile Include="Sip.cs" />
+    <Compile Include="Sms.Async.cs" />
+    <Compile Include="Sms.cs" />
+    <Compile Include="Transcriptions.Async.cs" />
+    <Compile Include="Transcriptions.cs" />
+    <Compile Include="Usage.Async.cs" />
+    <Compile Include="Usage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

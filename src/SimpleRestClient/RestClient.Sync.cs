@@ -9,11 +9,16 @@ namespace Simple
 {
     public partial class RestClient
     {
-        public RestResponse<T> Execute<T>(RestRequest restrequest)
+        public virtual RestResponse<T> Execute<T>(RestRequest request) where T : new()
+        {
+            return Deserialize<T>(request, Execute(request));
+        }
+
+        public RestResponse Execute(RestRequest restrequest)
         {
             var webrequest = ConfigureRequest(restrequest);
 
-            var restresponse = new RestResponse<T>();
+            var restresponse = new RestResponse();
 
             try
             {
@@ -54,7 +59,7 @@ namespace Simple
                 }
             }
 
-            restresponse = Deserialize<T>(restrequest, restresponse);
+//            restresponse = Deserialize<T>(restrequest, restresponse);
 
             return restresponse;
         }

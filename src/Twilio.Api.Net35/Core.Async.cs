@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Linq;
-using System.Text;
 using Simple;
+using System.Text;
 
 namespace Twilio
 {
@@ -41,9 +40,9 @@ namespace Twilio
 		/// </summary>
 		/// <param name="request">The RestRequest to execute (will use client credentials)</param>
 		/// <param name="callback">The callback function to execute when the async request completes</param>
-        //public virtual void ExecuteAsync(RestRequest request, Action<IRestResponse> callback)
-        //{
-        //    _client.ExecuteAsync(request, callback);
-        //}
+        public virtual void ExecuteAsync(RestRequest request, Action<RestResponse> callback)
+        {
+            _client.ExecuteAsync(request, callback);
+        }
 	}
 }

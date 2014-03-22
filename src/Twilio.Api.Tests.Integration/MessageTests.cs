@@ -23,26 +23,30 @@ namespace Twilio.Api.Tests.Integration
             Assert.IsNotNull(result.Sid);
         }
 
-        //[TestMethod]
-        //public void ShouldSendSmsMessageAsynchronously()
-        //{
-        //    manualResetEvent = new ManualResetEvent(false);
+        [TestMethod]
+        public void ShouldSendSmsMessageAsynchronously()
+        {
+            manualResetEvent = new ManualResetEvent(false);
 
-        //    var client = new TwilioRestClient(Credentials.TestAccountSid, Credentials.TestAuthToken);
+            var client = new TwilioRestClient(Credentials.TestAccountSid, Credentials.TestAuthToken);
 
-        //    Message result = null;
-        //    client.SendMessage("+15005550006", "+13144586142", ".NET Unit Test Message", message =>
-        //    {
-        //        result = message;
-        //        manualResetEvent.Set();
-        //    });
+            Message result = null;
+            client.SendMessage("+15005550006", "+13144586142", ".NET Unit Test Message", message =>
+            {
+                result = message;
 
-        //    manualResetEvent.WaitOne();
+                if (result.RestException != null)
+                    System.Diagnostics.Debug.WriteLine(result.RestException.Message);
+                
+                manualResetEvent.Set();
+            });
 
-        //    Assert.IsNotNull(result);
-        //    Assert.IsNull(result.RestException);
-        //    Assert.IsNotNull(result.Sid);
-        //}
+            manualResetEvent.WaitOne();
+
+            Assert.IsNotNull(result);
+            Assert.IsNull(result.RestException);
+            Assert.IsNotNull(result.Sid);
+        }
 
         [TestMethod]
         public void ShouldSendSmsMessageWithLongMessage()

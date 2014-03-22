@@ -22,6 +22,12 @@ namespace Simple
             this.Method = method;
         }
 
+        public RestRequest(Method method)
+            : this()
+        {
+            this.Method = method.ToString();
+        }
+
         public string Method { get; set; }
         public string Resource { get; set; }
         public List<Parameter> Parameters { get; set; }

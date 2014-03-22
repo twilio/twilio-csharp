@@ -23,6 +23,26 @@ namespace Simple
 
         public List<Parameter> DefaultParameters { get; set; }
 
+        public void AddDefaultHeader(string name, string value)
+        {
+            this.AddDefaultParameter(new Parameter() { Name = name, Value = value, Type = ParameterType.HttpHeader });
+        }
+
+        public void AddDefaultUrlSegment(string name, string value)
+        {
+            this.AddDefaultParameter(new Parameter() { Name = name, Value = value, Type = ParameterType.UrlSegment });
+        }
+
+        public void AddDefaultParameter(Parameter p)
+        {
+            //if (p.Type == ParameterType.RequestBody)
+            //{
+            //    throw new NotSupportedException(
+            //        "Cannot set request body from default headers. Use Request.AddBody() instead.");
+            //}
+
+            this.DefaultParameters.Add(p);
+        }        
         private HttpWebRequest ConfigureRequest(RestRequest restrequest)
         {
             foreach (var param in this.DefaultParameters)
