@@ -1,7 +1,4 @@
 ﻿using System;
-using RestSharp;
-using RestSharp.Extensions;
-using RestSharp.Validation;
 
 namespace Twilio
 {
@@ -64,9 +61,9 @@ namespace Twilio
         public virtual void UpdateConnectApp(string connectAppSid, string friendlyName, string authorizeRedirectUrl, string deauthorizeCallbackUrl,
 			string deauthorizeCallbackMethod, string permissions, string description, string companyName, string homepageUrl, Action<ConnectApp> callback)
 		{
-			Require.Argument("ConnectAppSid", connectAppSid);
+			//Require.Argument("ConnectAppSid", connectAppSid);
 
-			var request = new RestRequest(Method.POST);
+			var request = new RestRequest("POST");
 			request.Resource = "Accounts/{AccountSid}/ConnectApps/{ConnectAppSid}.json";
 			request.AddUrlSegment("ConnectAppSid", connectAppSid);
 			

@@ -1,7 +1,4 @@
 ﻿using System;
-using RestSharp;
-using RestSharp.Extensions;
-using RestSharp.Validation;
 
 namespace Twilio
 {
@@ -89,11 +86,11 @@ namespace Twilio
         /// <param name="applicationSid">Twilio will POST SmsSid as well as SmsStatus=sent or SmsStatus=failed to the URL in the SmsStatusCallback property of this Application. If the StatusCallback parameter above is also passed, the Application's SmsStatusCallback parameter will take precedence.</param>
         public virtual void SendSmsMessage(string from, string to, string body, string statusCallback, string applicationSid, Action<SMSMessage> callback)
         {
-            Require.Argument("from", from);
-            Require.Argument("to", to);
-            Require.Argument("body", body);
+            //Require.Argument("from", from);
+            //Require.Argument("to", to);
+            //Require.Argument("body", body);
 
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/SMS/Messages.json";
             request.AddParameter("From", from);
             request.AddParameter("To", to);
@@ -112,7 +109,7 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void GetShortCode(string shortCodeSid, Action<SMSShortCode> callback)
 		{
-			Require.Argument("shortCodeSid", shortCodeSid);
+			//Require.Argument("shortCodeSid", shortCodeSid);
 
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/SMS/ShortCodes/{ShortCodeSid}.json";
@@ -135,7 +132,7 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void UpdateShortCode(string shortCodeSid, string friendlyName, string apiVersion, string smsUrl, string smsMethod, string smsFallbackUrl, string smsFallbackMethod, Action<SMSShortCode> callback)
 		{
-			Require.Argument("shortCodeSid", shortCodeSid);
+			//Require.Argument("shortCodeSid", shortCodeSid);
 
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/SMS/ShortCodes/{ShortCodeSid}.json";

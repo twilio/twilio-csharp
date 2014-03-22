@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-namespace Twilio
+namespace Simple
 {
     public class JsonDeserializer
     {
@@ -18,7 +18,7 @@ namespace Twilio
             Culture = CultureInfo.InvariantCulture;
         }
 
-        public T Deserialize<T>(IRestResponse response)
+        public T Deserialize<T>(RestResponse response)
         {
             var target = Activator.CreateInstance<T>();
 

@@ -1,6 +1,4 @@
 ﻿using System;
-using RestSharp;
-using RestSharp.Extensions;
 
 namespace Twilio
 {

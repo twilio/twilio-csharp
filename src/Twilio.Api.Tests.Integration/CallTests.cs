@@ -21,25 +21,25 @@ namespace Twilio.Api.Tests.Integration
             Assert.IsNotNull(result.Sid);
         }
 
-        //[TestMethod]
-        //public void ShouldInitiateOutboundCallAsynchronously()
-        //{
-        //    manualResetEvent = new ManualResetEvent(false);
-            
-        //    var client = new TwilioRestClient(Credentials.TestAccountSid, Credentials.TestAuthToken);
-        //    Call result = null;
-        //    client.InitiateOutboundCall("+15005550006", "+13144586142", "http://www.example.com/phone/", call =>
-        //    {
-        //        result = call;
-        //        manualResetEvent.Set();
-        //    });
+        [TestMethod]
+        public void ShouldInitiateOutboundCallAsynchronously()
+        {
+            manualResetEvent = new ManualResetEvent(false);
 
-        //    manualResetEvent.WaitOne();
+            var client = new TwilioRestClient(Credentials.TestAccountSid, Credentials.TestAuthToken);
+            Call result = null;
+            client.InitiateOutboundCall("+15005550006", "+13144586142", "http://www.example.com/phone/", call =>
+            {
+                result = call;
+                manualResetEvent.Set();
+            });
 
-        //    Assert.IsNotNull(result);
-        //    Assert.IsNull(result.RestException);
-        //    Assert.IsNotNull(result.Sid);
-        //}
+            manualResetEvent.WaitOne();
+
+            Assert.IsNotNull(result);
+            Assert.IsNull(result.RestException);
+            Assert.IsNotNull(result.Sid);
+        }
         
         [TestMethod]
         public void ShouldFailToInitiateOutboundCallWithInvalidFromNumber()
@@ -91,25 +91,26 @@ namespace Twilio.Api.Tests.Integration
             Assert.IsNotNull(result.Calls);
         }
 
-        //[TestMethod]
-        //public void ShouldListCallsAsynchronously()
-        //{
-        //    manualResetEvent = new ManualResetEvent(false);
+        [TestMethod]
+        public void ShouldListCallsAsynchronously()
+        {
+            manualResetEvent = new ManualResetEvent(false);
 
-        //    var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
 
-        //    CallResult result = null;
-        //    client.ListCalls(calls => {
-        //        result = calls;
-        //        manualResetEvent.Set();
-        //    });
+            CallResult result = null;
+            client.ListCalls(calls =>
+            {
+                result = calls;
+                manualResetEvent.Set();
+            });
 
-        //    manualResetEvent.WaitOne();
+            manualResetEvent.WaitOne();
 
-        //    Assert.IsNotNull(result);
-        //    Assert.IsNull(result.RestException);
-        //    Assert.IsNotNull(result.Calls);
-        //}
+            Assert.IsNotNull(result);
+            Assert.IsNull(result.RestException);
+            Assert.IsNotNull(result.Calls);
+        }
 
         [TestMethod]
         public void ShouldListCallsWithFilters()

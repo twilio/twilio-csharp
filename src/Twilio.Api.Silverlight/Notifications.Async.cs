@@ -1,6 +1,4 @@
 ﻿using System;
-using RestSharp;
-using RestSharp.Validation;
 
 namespace Twilio
 {
@@ -58,8 +56,8 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void DeleteNotification(string notificationSid, Action<DeleteStatus> callback)
 		{
-			Require.Argument("NotificationSid", notificationSid);
-			var request = new RestRequest(Method.DELETE);
+			//Require.Argument("NotificationSid", notificationSid);
+			var request = new RestRequest("DELETE");
 			request.Resource = "Accounts/{AccountSid}/Notifications/{NotificationSid}.json";
 
 			request.AddParameter("NotificationSid", notificationSid, ParameterType.UrlSegment);

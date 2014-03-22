@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Linq;
-using RestSharp;
-using RestSharp.Extensions;
 using System.Text;
 
 #if WINDOWS_PHONE

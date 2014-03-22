@@ -1,5 +1,4 @@
 ﻿using System;
-using RestSharp;
 
 namespace Twilio
 {
@@ -51,7 +50,7 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void CreateSubAccount(string friendlyName, Action<Account> callback)
 		{
-			var request = new RestRequest(Method.POST);
+			var request = new RestRequest("POST");
 			request.Resource = "Accounts.json";
 			
 			request.AddParameter("FriendlyName", friendlyName);
@@ -76,7 +75,7 @@ namespace Twilio
 				throw new InvalidOperationException("Subaccount status can only be changed when authenticated from the master account.");
 			}
 
-			var request = new RestRequest(Method.POST);
+			var request = new RestRequest("POST");
 			request.Resource = "Accounts/{AccountSid}.json";
 			
 			request.AddParameter("Status", status.ToString().ToLower());
@@ -92,7 +91,7 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void UpdateAccountName(string friendlyName, Action<Account> callback)
 		{
-			var request = new RestRequest(Method.POST);
+			var request = new RestRequest("POST");
 			request.Resource = "Accounts/{AccountSid}.json";
 						request.AddParameter("FriendlyName", friendlyName);
 

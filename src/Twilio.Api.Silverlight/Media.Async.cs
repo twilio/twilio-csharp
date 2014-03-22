@@ -1,6 +1,4 @@
-﻿using RestSharp;
-using RestSharp.Extensions;
-using System;
+﻿using System;
 
 namespace Twilio
 {
@@ -76,7 +74,7 @@ namespace Twilio
         /// <param name="mediaSid">The Sid of the media to delete</param>
         public virtual void DeleteMedia(string mediaSid, Action<DeleteStatus> callback)
         {
-            var request = new RestRequest(Method.DELETE);
+            var request = new RestRequest("DELETE");
             request.Resource = "Accounts/{AccountSid}/Media/{MediaSid}.json";
 
             request.AddParameter("MediaSid", mediaSid, ParameterType.UrlSegment);

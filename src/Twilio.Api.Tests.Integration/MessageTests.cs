@@ -12,8 +12,11 @@ namespace Twilio.Api.Tests.Integration
         [TestMethod]
         public void ShouldSendSmsMessage()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var result = client.SendMessage("+12027336427", "+13144586142", ".NET Unit Test Message");
+            var client = new TwilioRestClient(Credentials.TestAccountSid, Credentials.TestAuthToken);
+            var result = client.SendMessage("+15005550006", "+13144586142", ".NET Unit Test Message");
+
+            if (result.RestException!=null)
+                System.Diagnostics.Debug.WriteLine(result.RestException.Message);
 
             Assert.IsNotNull(result);
             Assert.IsNull(result.RestException);
@@ -42,15 +45,14 @@ namespace Twilio.Api.Tests.Integration
         //}
 
         [TestMethod]
-        public void ShouldFailToSendSmsMessageWithLongMessage()
+        public void ShouldSendSmsMessageWithLongMessage()
         {
             var client = new TwilioRestClient(Credentials.TestAccountSid, Credentials.TestAuthToken);
             var result = client.SendMessage("+15005550006", "+13144586142", "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz");
 
             Assert.IsNotNull(result);
-            Assert.IsNotNull(result.RestException);
-            Assert.IsTrue( int.Parse(result.RestException.Status) < 401);
-            Assert.IsNull(result.Sid);
+            Assert.IsNull(result.RestException);
+            Assert.IsNotNull(result.Sid);
         }
 
         [TestMethod]
@@ -102,12 +104,6 @@ namespace Twilio.Api.Tests.Integration
         public void ShouldListSmsMessages()
         {
             var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            //Message message = client.SendMessage("", "", ".NET Unit Test Message");
-
-            //Assert.IsNotNull(message.Sid);
-
-            //var smsSid = message.Sid;
-
             MessageResult messages = client.ListMessages();
 
             Assert.IsNotNull(messages);

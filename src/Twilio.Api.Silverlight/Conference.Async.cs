@@ -1,6 +1,4 @@
 ﻿using System;
-using RestSharp;
-using RestSharp.Extensions;
 
 namespace Twilio
 {
@@ -121,7 +119,7 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void MuteConferenceParticipant(string conferenceSid, string callSid, Action<Participant> callback)
 		{
-			var request = new RestRequest(Method.POST);
+			var request = new RestRequest("POST");
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";
 			
 			request.AddUrlSegment("ConferenceSid", conferenceSid);
@@ -139,7 +137,7 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void UnmuteConferenceParticipant(string conferenceSid, string callSid, Action<Participant> callback)
 		{
-			var request = new RestRequest(Method.POST);
+			var request = new RestRequest("POST");
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";
 			
 			request.AddUrlSegment("ConferenceSid", conferenceSid);
@@ -157,7 +155,7 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void KickConferenceParticipant(string conferenceSid, string callSid, Action<bool> callback)
 		{
-			var request = new RestRequest(Method.POST);
+			var request = new RestRequest("POST");
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";
 			request.AddUrlSegment("ConferenceSid", conferenceSid);
 			request.AddUrlSegment("CallSid", callSid);

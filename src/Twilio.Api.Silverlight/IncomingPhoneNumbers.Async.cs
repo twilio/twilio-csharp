@@ -1,7 +1,4 @@
 ﻿using System;
-using RestSharp;
-using RestSharp.Extensions;
-using RestSharp.Validation;
 
 namespace Twilio
 {
@@ -147,7 +144,7 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void AddIncomingPhoneNumber(PhoneNumberOptions options, Action<IncomingPhoneNumber> callback)
 		{
-			var request = new RestRequest(Method.POST);
+			var request = new RestRequest("POST");
 			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers.json";
 			
 			if (options.PhoneNumber.HasValue())
@@ -172,9 +169,9 @@ namespace Twilio
         /// <param name="callback">Method to call upon successful completion</param>
         public virtual void AddIncomingLocalPhoneNumber(PhoneNumberOptions options, Action<IncomingPhoneNumber> callback)
         {
-            Require.Argument("PhoneNumber", options.PhoneNumber);
+           //Require.Argument("PhoneNumber", options.PhoneNumber);
 
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/Local.json";
 
             //PhoneNumber is required for this resource
@@ -193,9 +190,9 @@ namespace Twilio
         /// <param name="callback">Method to call upon successful completion</param>
         public virtual void AddIncomingTollFreePhoneNumber(PhoneNumberOptions options, Action<IncomingPhoneNumber> callback)
         {
-            Require.Argument("PhoneNumber", options.PhoneNumber);
+           //Require.Argument("PhoneNumber", options.PhoneNumber);
 
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/TollFree.json";
 
             //PhoneNumber is required for this resource
@@ -215,9 +212,9 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void UpdateIncomingPhoneNumber(string incomingPhoneNumberSid, PhoneNumberOptions options, Action<IncomingPhoneNumber> callback)
 		{
-			Require.Argument("IncomingPhoneNumberSid", incomingPhoneNumberSid);
+			//Require.Argument("IncomingPhoneNumberSid", incomingPhoneNumberSid);
 
-			var request = new RestRequest(Method.POST);
+			var request = new RestRequest("POST");
 			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}.json";
 			
 			request.AddParameter("IncomingPhoneNumberSid", incomingPhoneNumberSid, ParameterType.UrlSegment);
@@ -236,7 +233,7 @@ namespace Twilio
         /// <param name="callback">Method to call upon successful completion</param>
         public virtual void TransferIncomingPhoneNumber(string incomingPhoneNumberSid, string sourceAccountSid, string targetAccountSid, Action<IncomingPhoneNumber> callback)
         {
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}.json";
 
             request.AddParameter("AccountSid", sourceAccountSid, ParameterType.UrlSegment);
@@ -253,8 +250,8 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void DeleteIncomingPhoneNumber(string incomingPhoneNumberSid, Action<DeleteStatus> callback)
 		{
-			Require.Argument("IncomingPhoneNumberSid", incomingPhoneNumberSid);
-			var request = new RestRequest(Method.DELETE);
+			//Require.Argument("IncomingPhoneNumberSid", incomingPhoneNumberSid);
+			var request = new RestRequest("DELETE");
 			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}.json";
 
 			request.AddParameter("IncomingPhoneNumberSid", incomingPhoneNumberSid, ParameterType.UrlSegment);
@@ -271,7 +268,7 @@ namespace Twilio
 
 			if (options.FriendlyName.HasValue())
 			{
-				Validate.IsValidLength(options.FriendlyName, 64);
+				//Validate.IsValidLength(options.FriendlyName, 64);
 				request.AddParameter("FriendlyName", options.FriendlyName);
 			}
 			// some check for null. in those cases an empty string is a valid value (to remove a URL assignment)

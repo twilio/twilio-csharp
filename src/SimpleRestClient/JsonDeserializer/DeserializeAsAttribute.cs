@@ -16,7 +16,7 @@
 
 using System;
 
-namespace Twilio
+namespace Simple
 {
     /// <summary>
     /// Allows control how class and property names and values are deserialized by XmlAttributeDeserializer

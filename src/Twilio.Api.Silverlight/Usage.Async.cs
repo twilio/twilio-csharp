@@ -1,6 +1,4 @@
 ﻿using System;
-using RestSharp;
-using RestSharp.Validation;
 
 namespace Twilio
 {
@@ -141,7 +139,7 @@ namespace Twilio
         /// <returns></returns>
         public virtual void GetUsageTrigger(string usageTriggerSid, Action<UsageTrigger> callback)
         {
-            Require.Argument("UsageTriggerSid", usageTriggerSid);
+            //Require.Argument("UsageTriggerSid", usageTriggerSid);
 
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Usage/Triggers/{UsageTriggerSid}.json";
@@ -177,14 +175,14 @@ namespace Twilio
         /// <returns></returns>
         public virtual void CreateUsageTrigger(UsageTriggerOptions options, Action<UsageTrigger> callback)
         {
-            Require.Argument("UsageCategory", options.UsageCategory);
-            Require.Argument("TriggerValue", options.TriggerValue);
-            Require.Argument("CallbackUrl", options.CallbackUrl);
+            //Require.Argument("UsageCategory", options.UsageCategory);
+            //Require.Argument("TriggerValue", options.TriggerValue);
+            //Require.Argument("CallbackUrl", options.CallbackUrl);
 
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Usage/Triggers.json";
 
-            request.Method = Method.POST;
+            request.Method = "POST";
 
             request.AddParameter("UsageCategory", options.UsageCategory);
             request.AddParameter("TriggerValue", options.TriggerValue);
@@ -209,12 +207,12 @@ namespace Twilio
         /// <returns></returns>
         public virtual void UpdateUsageTrigger(string usageTriggerSid, string friendlyName, string callbackUrl, string callbackMethod, Action<UsageTrigger> callback)
         {
-            Require.Argument("UsageTriggerSid", usageTriggerSid);
+            //Require.Argument("UsageTriggerSid", usageTriggerSid);
 
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Usage/Triggers/{UsageTriggerSid}.json";
 
-            request.Method = Method.POST;
+            request.Method = "POST";
 
             request.AddUrlSegment("UsageTriggerSid", usageTriggerSid);
 
@@ -233,12 +231,12 @@ namespace Twilio
         /// <returns></returns>
         public virtual void DeleteUsageTrigger(string usageTriggerSid, Action<DeleteStatus> callback)
         {
-            Require.Argument("UsageTriggerSid", usageTriggerSid);
+            //Require.Argument("UsageTriggerSid", usageTriggerSid);
 
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Usage/Triggers/{UsageTriggerSid}.json";
 
-            request.Method = Method.DELETE;
+            request.Method = "DELETE";
 
             request.AddUrlSegment("UsageTriggerSid", usageTriggerSid);
 

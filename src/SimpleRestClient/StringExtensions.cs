@@ -6,7 +6,7 @@ using System.IO;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace Twilio
+namespace Simple
 {
     public static class StringExtensions
     {

@@ -1,7 +1,4 @@
 ﻿using System;
-using RestSharp;
-using RestSharp.Extensions;
-using RestSharp.Validation;
 
 namespace Twilio
 {
@@ -29,7 +26,7 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void UpdateSandbox(string voiceUrl, string voiceMethod, string smsUrl, string smsMethod, Action<Sandbox> callback)
 		{
-			var request = new RestRequest(Method.POST);
+			var request = new RestRequest("POST");
 			request.Resource = "Accounts/{AccountSid}/Sandbox.json";
 
 			request.AddParameter("VoiceUrl", voiceUrl);

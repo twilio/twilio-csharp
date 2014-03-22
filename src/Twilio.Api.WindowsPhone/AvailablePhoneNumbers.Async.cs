@@ -1,7 +1,4 @@
 ﻿using System;
-using RestSharp;
-using RestSharp.Extensions;
-using RestSharp.Validation;
 
 namespace Twilio
 {
@@ -15,7 +12,7 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
 		public virtual void ListAvailableLocalPhoneNumbers(string isoCountryCode, AvailablePhoneNumberListRequest options, Action<AvailablePhoneNumberResult> callback)
 		{
-			Require.Argument("isoCountryCode", isoCountryCode);
+			//Require.Argument("isoCountryCode", isoCountryCode);
 
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/Local.json";
@@ -33,7 +30,7 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
 		public virtual void ListAvailableTollFreePhoneNumbers(string isoCountryCode, Action<AvailablePhoneNumberResult> callback)
 		{
-			Require.Argument("isoCountryCode", isoCountryCode);
+			//Require.Argument("isoCountryCode", isoCountryCode);
 
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/TollFree.json";
@@ -50,8 +47,8 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
 		public virtual void ListAvailableTollFreePhoneNumbers(string isoCountryCode, string contains, Action<AvailablePhoneNumberResult> callback)
 		{
-			Require.Argument("isoCountryCode", isoCountryCode);
-			Require.Argument("contains", contains);
+			//Require.Argument("isoCountryCode", isoCountryCode);
+			//Require.Argument("contains", contains);
 
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/TollFree.json";

@@ -1,7 +1,4 @@
 ﻿using System;
-using RestSharp;
-using RestSharp.Extensions;
-using RestSharp.Validation;
 
 namespace Twilio
 {
@@ -58,11 +55,11 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void AddApplication(string friendlyName, ApplicationOptions options, Action<Application> callback)
 		{
-			var request = new RestRequest(Method.POST);
+			var request = new RestRequest("POST");
 			request.Resource = "Accounts/{AccountSid}/Applications.json";
 			
-			Require.Argument("FriendlyName", friendlyName);
-			Validate.IsValidLength(friendlyName, 64);
+			//Require.Argument("FriendlyName", friendlyName);
+			//Validate.IsValidLength(friendlyName, 64);
 			request.AddParameter("FriendlyName", friendlyName);
 
 			// some check for null. in those cases an empty string is a valid value (to remove a URL assignment)
@@ -93,9 +90,9 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void UpdateApplication(string applicationSid, string friendlyName, ApplicationOptions options, Action<Application> callback)
 		{
-			Require.Argument("ApplicationSid", applicationSid);
+			//Require.Argument("ApplicationSid", applicationSid);
 
-			var request = new RestRequest(Method.POST);
+			var request = new RestRequest("POST");
 			request.Resource = "Accounts/{AccountSid}/Applications/{ApplicationSid}.json";
 			request.AddUrlSegment("ApplicationSid", applicationSid);
 			
@@ -125,8 +122,8 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void DeleteApplication(string applicationSid, Action<DeleteStatus> callback)
 		{
-			Require.Argument("ApplicationSid", applicationSid);
-			var request = new RestRequest(Method.DELETE);
+			//Require.Argument("ApplicationSid", applicationSid);
+			var request = new RestRequest("DELETE");
 			request.Resource = "Accounts/{AccountSid}/Applications/{ApplicationSid}.json";
 
 			request.AddUrlSegment("ApplicationSid", applicationSid);

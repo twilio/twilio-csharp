@@ -1,7 +1,4 @@
-﻿using RestSharp;
-using RestSharp.Extensions;
-using RestSharp.Validation;
-using System;
+﻿using System;
 
 namespace Twilio
 {
@@ -138,10 +135,10 @@ namespace Twilio
         /// <param name="applicationSid"></param>
         public virtual void SendMessage(string from, string to, string body, string[] mediaUrls, string statusCallback, string applicationSid, Action<Message> callback)
         {
-            Require.Argument("from", from);
-            Require.Argument("to", to);
+           //Require.Argument("from", from);
+           //Require.Argument("to", to);
 
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/Messages.json";
             request.AddParameter("From", from);
             request.AddParameter("To", to);

@@ -1,6 +1,4 @@
 ﻿using System;
-using RestSharp;
-using RestSharp.Extensions;
 
 namespace Twilio
 {
@@ -58,7 +56,7 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void DeleteRecording(string recordingSid, Action<DeleteStatus> callback)
 		{
-			var request = new RestRequest(Method.DELETE);
+			var request = new RestRequest("DELETE");
 			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}.json";
 			
 			request.AddParameter("RecordingSid", recordingSid, ParameterType.UrlSegment);

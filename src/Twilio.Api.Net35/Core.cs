@@ -2,6 +2,7 @@
 using System.Text;
 using System;
 using System.Net;
+using Simple;
 
 namespace Twilio
 {
@@ -19,7 +20,6 @@ namespace Twilio
 		/// </summary>
         public string BaseUrl { get; private set; }
 
-#if FRAMEWORK
         /// <summary>
         /// 
         /// </summary>
@@ -27,7 +27,6 @@ namespace Twilio
             get { return _client.Proxy; }
             set { _client.Proxy = value; }
         }
-#endif
 
 		private string AccountSid { get; set; }
 		private string AuthToken { get; set; }
@@ -75,11 +74,6 @@ namespace Twilio
 
             //_client.Authenticator = new HttpBasicAuthenticator(AccountSid, AuthToken);
             _client.DefaultParameters.Add(new Parameter() { Name = "Authorization", Value = AuthorizationToken, Type = ParameterType.HttpHeader });
-
-#if FRAMEWORK
-            _client.DefaultParameters.Add(new Parameter() { Name = "Accept-charset", Value = "utf-8", Type = ParameterType.HttpHeader });
-#endif
-
             _client.BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion);
             _client.Timeout = 30500;
 
@@ -88,7 +82,6 @@ namespace Twilio
             _client.DefaultParameters.Add(new Parameter() { Name = "AccountSid", Value = AccountResourceSid, Type = ParameterType.UrlSegment });
         }
 
-#if FRAMEWORK
 		/// <summary>
 		/// Execute a manual REST request
 		/// </summary>
@@ -114,8 +107,6 @@ namespace Twilio
 					resp.RawBytes = newbytes;
 
                     System.Diagnostics.Debug.WriteLine(resp.RawBytes);
-
-                    string foo = "bar";
 				}
 			};
 
@@ -134,7 +125,6 @@ namespace Twilio
         //{
         //    return _client.Execute(request);
         //}
-#endif
 
 		private string GetParameterNameWithEquality(ComparisonType? comparisonType, string parameterName)
 		{

@@ -1,7 +1,4 @@
 ﻿using System;
-using RestSharp;
-using RestSharp.Validation;
-using RestSharp.Extensions;
 
 namespace Twilio
 {
@@ -66,7 +63,7 @@ namespace Twilio
         /// <returns></returns>
         public virtual void CreateDomain(DomainOptions options, Action<Domain> callback)
         {
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/SIP/Domains.json";
 
             AddDomainOptions(options, request);
@@ -96,9 +93,9 @@ namespace Twilio
         /// <returns></returns>
         public virtual void UpdateDomain(string domainSid, DomainOptions options, Action<Domain> callback)
         {
-            Require.Argument("DomainSid", domainSid);
+           //Require.Argument("DomainSid", domainSid);
 
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/SIP/Domains/{DomainSid}.json";
 
             request.AddParameter("DomainSid", domainSid, ParameterType.UrlSegment);
@@ -115,8 +112,8 @@ namespace Twilio
         /// <returns></returns>
         public virtual void DeleteDomain(string domainSid, Action<DeleteStatus> callback)
         {
-            Require.Argument("DomainSid", domainSid);
-            var request = new RestRequest(Method.DELETE);
+           //Require.Argument("DomainSid", domainSid);
+            var request = new RestRequest("DELETE");
             request.Resource = "Accounts/{AccountSid}/SIP/Domains/{DomainSid}.json";
 
             request.AddParameter("DomainSid", domainSid, ParameterType.UrlSegment);
@@ -160,7 +157,7 @@ namespace Twilio
         /// <returns></returns>
         public virtual void ListIpAccessControlListMappings(string domainSid, int? pageNumber, int? count, Action<IpAccessControlListMappingResult> callback)
         {
-            Require.Argument("DomainSid", domainSid);
+           //Require.Argument("DomainSid", domainSid);
 
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings.json";
@@ -180,9 +177,9 @@ namespace Twilio
         /// <returns></returns>
         public virtual void CreateIpAccessControlListMapping(string domainSid, string ipAccessControlListSid, Action<IpAccessControlListMapping> callback)
         {
-            Require.Argument("DomainSid", domainSid);
+           //Require.Argument("DomainSid", domainSid);
 
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings.json";
             request.AddUrlSegment("DomainSid", domainSid);
 
@@ -199,9 +196,9 @@ namespace Twilio
         /// <returns></returns>
         public virtual void DeleteIpAccessControlListMapping(string domainSid, string ipAccessControlListMappingSid, Action<DeleteStatus> callback)
         {
-            Require.Argument("DomainSid", domainSid);
+           //Require.Argument("DomainSid", domainSid);
 
-            var request = new RestRequest(Method.DELETE);
+            var request = new RestRequest("DELETE");
             request.Resource = "Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings/{IpAccessControlListMappingSid}.json";
             request.AddUrlSegment("DomainSid", domainSid);
 
@@ -263,9 +260,9 @@ namespace Twilio
         /// <returns></returns>
         public virtual void CreateCredentialListMapping(string domainSid, string credentialListSid, Action<IpAccessControlListMapping> callback)
         {
-            Require.Argument("DomainSid", domainSid);
+           //Require.Argument("DomainSid", domainSid);
 
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings.json";
             request.AddUrlSegment("DomainSid", domainSid);
 
@@ -282,9 +279,9 @@ namespace Twilio
         /// <returns></returns>
         public virtual void DeleteCredentialListMapping(string domainSid, string credentialListMappingSid, Action<DeleteStatus> callback)
         {
-            Require.Argument("DomainSid", domainSid);
+           //Require.Argument("DomainSid", domainSid);
 
-            var request = new RestRequest(Method.DELETE);
+            var request = new RestRequest("DELETE");
             request.Resource = "Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings/{CredentialListMappingSid}.json";
             request.AddUrlSegment("DomainSid", domainSid);
 
@@ -341,7 +338,7 @@ namespace Twilio
         /// <returns></returns>
         public virtual void CreateIpAccessControlList(string friendlyName, Action<IpAccessControlList> callback)
         {
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists.json";
 
             request.AddParameter("FriendlyName", friendlyName);
@@ -357,7 +354,7 @@ namespace Twilio
         /// <returns></returns>
         public virtual void UpdateIpAccessControlList(string ipAccessControlListSid, string friendlyName, Action<IpAccessControlList> callback)
         {
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}.json";
             request.AddUrlSegment("IpAccessControlListSid", ipAccessControlListSid);
 
@@ -373,7 +370,7 @@ namespace Twilio
         /// <returns></returns>
         public virtual void DeleteIpAccessControlList(string ipAccessControlListSid, Action<DeleteStatus> callback)
         {
-            var request = new RestRequest(Method.DELETE);
+            var request = new RestRequest("DELETE");
             request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}.json";
 
             request.AddParameter("IpAccessControlListSid", ipAccessControlListSid, ParameterType.UrlSegment);
@@ -435,7 +432,7 @@ namespace Twilio
         /// <returns></returns>
         public virtual void CreateIpAddress(string ipAccessControlListSid, string friendlyName, string ipAddress, Action<IpAddress> callback)
         {
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/Addresses.json";
             request.AddUrlSegment("IpAccessControlListSid", ipAccessControlListSid);
 
@@ -455,7 +452,7 @@ namespace Twilio
         /// <returns></returns>
         public virtual void UpdateIpAddress(string ipAccessControlListSid, string ipAddressSid, string friendlyName, string ipAddress, Action<IpAddress> callback)
         {
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/Addresses/{IpAddressSid}.json";
             request.AddUrlSegment("IpAccessControlListSid", ipAccessControlListSid);
             request.AddUrlSegment("IpAddressSid", ipAddressSid);
@@ -473,7 +470,7 @@ namespace Twilio
         /// <returns></returns>
         public virtual void DeleteIpAddress(string ipAccessControlListSid, string ipAddressSid, Action<DeleteStatus> callback)
         {
-            var request = new RestRequest(Method.DELETE);
+            var request = new RestRequest("DELETE");
             request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/Addresses/{IpAddressSid}.json";
 
             request.AddParameter("IpAccessControlListSid", ipAccessControlListSid, ParameterType.UrlSegment);
@@ -529,7 +526,7 @@ namespace Twilio
         /// <returns></returns>
         public virtual void CreateCredentialList(string friendlyName, Action<CredentialList> callback)
         {
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists.json";
 
             request.AddParameter("FriendlyName", friendlyName);
@@ -545,7 +542,7 @@ namespace Twilio
         /// <returns></returns>
         public virtual void UpdateCredentialList(string credentialListSid, string friendlyName, Action<CredentialList> callback)
         {
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}.json";
             request.AddUrlSegment("CredentialListSid", credentialListSid);
 
@@ -561,7 +558,7 @@ namespace Twilio
         /// <returns></returns>
         public virtual void DeleteCredentialList(string credentialListSid, Action<DeleteStatus> callback)
         {
-            var request = new RestRequest(Method.DELETE);
+            var request = new RestRequest("DELETE");
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}.json";
 
             request.AddParameter("CredentialListSid", credentialListSid, ParameterType.UrlSegment);
@@ -623,7 +620,7 @@ namespace Twilio
         /// <returns></returns>
         public virtual void CreateCredential(string credentialListSid, string username, string password, Action<Credential> callback)
         {
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials.json";
             request.AddUrlSegment("CredentialListSid", credentialListSid);
 
@@ -643,7 +640,7 @@ namespace Twilio
         /// <returns></returns>
         public virtual void UpdateCredential(string credentialListSid, string credentialSid, string username, string password, Action<Credential> callback)
         {
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials/{CredentialSid}.json";
             request.AddUrlSegment("CredentialListSid", credentialListSid);
             request.AddUrlSegment("CredentialSid", credentialSid);
@@ -662,7 +659,7 @@ namespace Twilio
         /// <returns></returns>
         public virtual void DeleteCredential(string credentialListSid, string credentialSid, Action<DeleteStatus> callback)
         {
-            var request = new RestRequest(Method.DELETE);
+            var request = new RestRequest("DELETE");
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials/{CredentialSid}.json";
 
             request.AddParameter("CredentialListSid", credentialListSid, ParameterType.UrlSegment);

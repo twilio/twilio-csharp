@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Simple;
 
-namespace Twilio
+namespace Simple
 {
     public class UriBuilder
     {
@@ -53,25 +54,12 @@ namespace Twilio
             // build and attach querystring 
             if (parameters != null && parameters.Any())
             {
-                var data = EncodeParameters(parameters);
+                var data = Simple.Utilities.EncodeParameters(parameters);
                 assembled = string.Format("{0}?{1}", assembled, data);
             }
 
             return new Uri(assembled);
 
-        }
-
-        private static string EncodeParameters(IEnumerable<Parameter> parameters)
-        {
-            var querystring = new StringBuilder();
-            foreach (var p in parameters)
-            {
-                if (querystring.Length > 1)
-                    querystring.Append("&");
-                querystring.AppendFormat("{0}={1}", p.Name.UrlEncode(), (p.Value.ToString()).UrlEncode());
-            }
-
-            return querystring.ToString();
         }
     }
 }

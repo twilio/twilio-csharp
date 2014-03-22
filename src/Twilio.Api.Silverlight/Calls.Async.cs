@@ -1,7 +1,4 @@
 ﻿using System;
-using RestSharp;
-using RestSharp.Extensions;
-using RestSharp.Validation;
 
 namespace Twilio
 {
@@ -110,11 +107,11 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void InitiateOutboundCall(CallOptions options, Action<Call> callback)
 		{
-			Require.Argument("From", options.From);
-			Require.Argument("To", options.To);
-			Require.Argument("Url", options.Url);
+			//Require.Argument("From", options.From);
+			//Require.Argument("To", options.To);
+			//Require.Argument("Url", options.Url);
 
-			var request = new RestRequest(Method.POST);
+			var request = new RestRequest("POST");
 			request.Resource = "Accounts/{AccountSid}/Calls.json";
 			
 			AddCallOptions(options, request);
@@ -157,9 +154,9 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void HangupCall(string callSid, HangupStyle style, Action<Call> callback)
 		{
-			Require.Argument("CallSid", callSid);
+			//Require.Argument("CallSid", callSid);
 
-			var request = new RestRequest(Method.POST);
+			var request = new RestRequest("POST");
 			request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}.json";
 			
 			request.AddUrlSegment("CallSid", callSid);
@@ -177,8 +174,8 @@ namespace Twilio
         /// <param name="callback">Method to call upon successful completion</param>
         public virtual void RedirectCall(string callSid, string redirectUrl, string redirectMethod, Action<Call> callback)
         {
-            Require.Argument("CallSid", callSid);
-            Require.Argument("Url", redirectUrl);
+           //Require.Argument("CallSid", callSid);
+           //Require.Argument("Url", redirectUrl);
 
             CallOptions options = new CallOptions();
             options.Url = redirectUrl;
@@ -195,10 +192,10 @@ namespace Twilio
         /// <param name="callback">Method to call upon successful completion</param>
         public virtual void RedirectCall(string callSid, CallOptions options, Action<Call> callback)
         {
-            Require.Argument("CallSid", callSid);
-            Require.Argument("Url", options.Url);
+           //Require.Argument("CallSid", callSid);
+           //Require.Argument("Url", options.Url);
 
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}.json";
 
             request.AddParameter("CallSid", callSid, ParameterType.UrlSegment);

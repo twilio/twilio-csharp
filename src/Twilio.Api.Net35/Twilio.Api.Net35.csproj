@@ -67,13 +67,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="../SimpleRestClient/*.cs">
-      <Link>SimpleRestClient/%(Filename)</Link>
+    <Compile Include="..\SimpleRestClient\*.cs">
+      <Link>SimpleRestClient\%(FileName)</Link>
     </Compile>
-    <Compile Include="../Twilio.Api.Shared/Model/*.cs">
-      <Link>Model/%(Filename)</Link>
+    <Compile Include="..\SimpleRestClient\JsonDeserializer\*.cs">
+      <Link>SimpleRestClient\JsonDeserializer\%(FileName)</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api.Shared\Model\*.cs">
+      <Link>Model\%(FileName)</Link>
+    </Compile>
+    <Compile Include="Calls.Async.cs" />
     <Compile Include="Calls.cs" />
+    <Compile Include="Core.Async.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Messages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

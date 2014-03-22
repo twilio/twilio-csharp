@@ -1,6 +1,5 @@
-﻿using RestSharp;
-using System;
-using RestSharp.Validation;
+﻿using System;
+
 namespace Twilio
 {
     public partial class TwilioRestClient
@@ -26,7 +25,7 @@ namespace Twilio
         /// <returns></returns>
         public virtual void CreateQueue(string friendlyName, Action<Queue> callback)
         {
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/Queues.json";
 
             request.AddParameter("FriendlyName", friendlyName);
@@ -43,7 +42,7 @@ namespace Twilio
         /// <returns></returns>
         public virtual void CreateQueue(string friendlyName, int maxSize, Action<Queue> callback)
         {
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/Queues.json";
 
             request.AddParameter("FriendlyName", friendlyName);
@@ -78,9 +77,9 @@ namespace Twilio
         /// <returns></returns>
         public virtual void UpdateQueue(string queueSid, string friendlyName, int maxSize, Action<Queue> callback)
         {
-            Require.Argument("QueueSid", queueSid);
+           //Require.Argument("QueueSid", queueSid);
 
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/Queues/{QueueSid}.json";
 
             request.AddParameter("QueueSid", queueSid, ParameterType.UrlSegment);
@@ -98,8 +97,8 @@ namespace Twilio
         /// <returns></returns>
         public virtual void DeleteQueue(string queueSid, Action<DeleteStatus> callback)
         {
-            Require.Argument("QueueSid", queueSid);
-            var request = new RestRequest(Method.DELETE);
+           //Require.Argument("QueueSid", queueSid);
+            var request = new RestRequest("DELETE");
             request.Resource = "Accounts/{AccountSid}/Queues/{QueueSid}.json";
 
             request.AddParameter("QueueSid", queueSid, ParameterType.UrlSegment);
@@ -179,7 +178,7 @@ namespace Twilio
         /// <returns></returns>
         public virtual void DequeueFirstQueueMember(string queueSid, string url, string method, Action<DequeueStatus> callback)
         {
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/Queues/{QueueSid}/Members/Front.json";
 
             request.AddParameter("QueueSid", queueSid, ParameterType.UrlSegment);
@@ -213,7 +212,7 @@ namespace Twilio
         /// <returns></returns>
         public virtual void DequeueQueueMember(string queueSid, string callSid, string url, string method, Action<DequeueStatus> callback)
         {
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/Queues/{QueueSid}/Members/{CallSid}.json";
 
             request.AddParameter("QueueSid", queueSid, ParameterType.UrlSegment);

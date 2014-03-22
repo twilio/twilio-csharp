@@ -1,7 +1,4 @@
 ﻿using System;
-using RestSharp;
-using RestSharp.Extensions;
-using RestSharp.Validation;
 
 namespace Twilio
 {
@@ -79,10 +76,10 @@ namespace Twilio
         /// <param name="callback">Method to call upon successful completion</param>
         public virtual void AddOutgoingCallerId(string phoneNumber, OutgoingCallerIdOptions options, Action<ValidationRequestResult> callback)
         {
-            Require.Argument("PhoneNumber", phoneNumber);
-            if (options.CallDelay.HasValue) Validate.IsBetween(options.CallDelay.Value, 0, 60);
+           //Require.Argument("PhoneNumber", phoneNumber);
+            //if (options.CallDelay.HasValue) Validate.IsBetween(options.CallDelay.Value, 0, 60);
 
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("POST");
             request.Resource = "Accounts/{AccountSid}/OutgoingCallerIds.json";
             request.AddParameter("PhoneNumber", phoneNumber);
 
@@ -104,11 +101,11 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void UpdateOutgoingCallerIdName(string outgoingCallerIdSid, string friendlyName, Action<OutgoingCallerId> callback)
 		{
-			Require.Argument("OutgoingCallerIdSid", outgoingCallerIdSid);
-			Require.Argument("FriendlyName", friendlyName);
-			Validate.IsValidLength(friendlyName, 64);
+			//Require.Argument("OutgoingCallerIdSid", outgoingCallerIdSid);
+			//Require.Argument("FriendlyName", friendlyName);
+			//Validate.IsValidLength(friendlyName, 64);
 
-			var request = new RestRequest(Method.POST);
+			var request = new RestRequest("POST");
 			request.Resource = "Accounts/{AccountSid}/OutgoingCallerIds/{OutgoingCallerIdSid}.json";
 			
 			request.AddParameter("OutgoingCallerIdSid", outgoingCallerIdSid, ParameterType.UrlSegment);
@@ -124,8 +121,8 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void DeleteOutgoingCallerId(string outgoingCallerIdSid, Action<DeleteStatus> callback)
 		{
-			Require.Argument("OutgoingCallerIdSid", outgoingCallerIdSid);
-			var request = new RestRequest(Method.DELETE);
+			//Require.Argument("OutgoingCallerIdSid", outgoingCallerIdSid);
+			var request = new RestRequest("DELETE");
 			request.Resource = "Accounts/{AccountSid}/OutgoingCallerIds/{OutgoingCallerIdSid}.json";
 
 			request.AddParameter("OutgoingCallerIdSid", outgoingCallerIdSid, ParameterType.UrlSegment);

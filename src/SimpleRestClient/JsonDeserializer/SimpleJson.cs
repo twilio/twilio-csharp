@@ -63,13 +63,13 @@ using System.Globalization;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
-using Twilio.Reflection;
+using Simple.Reflection;
 
 
 // ReSharper disable LoopCanBeConvertedToQuery
 // ReSharper disable RedundantExplicitArrayCreation
 // ReSharper disable SuggestUseVarKeywordEvident
-namespace Twilio
+namespace Simple
 {
     /// <summary>
     /// Represents the json array.
@@ -482,7 +482,7 @@ namespace Twilio
     }
 }
 
-namespace Twilio
+namespace Simple
 {
     /// <summary>
     /// This class encodes and decodes JSON strings.

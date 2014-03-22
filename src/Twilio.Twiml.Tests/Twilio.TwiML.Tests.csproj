@@ -66,7 +66,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Twilio.Api\SharedAssemblyInfo.cs">
+    <Compile Include="..\Twilio.Api.Net35\SharedAssemblyInfo.cs">
       <Link>SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="DocExamples\Sms\Redirect.cs" />
@@ -99,12 +99,6 @@
     <Compile Include="ResponseTests.cs" />
     <Compile Include="SayTests.cs" />
     <Compile Include="TestBase.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Twilio.Twiml\Twilio.TwiML.csproj">
-      <Project>{D810C485-249B-499D-B5BA-8D6507E11DED}</Project>
-      <Name>Twilio.TwiML</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="TwiML.xsd">
