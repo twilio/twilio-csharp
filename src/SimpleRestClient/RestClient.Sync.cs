@@ -9,12 +9,18 @@ namespace Simple
 {
     public partial class RestClient
     {
+        /// <summary>
+        /// Execute a generic synchronous HTTP request
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public virtual RestResponse<T> Execute<T>(RestRequest request) where T : new()
         {
             return Deserialize<T>(request, Execute(request));
         }
 
-        public RestResponse Execute(RestRequest restrequest)
+        internal RestResponse Execute(RestRequest restrequest)
         {
             var webrequest = ConfigureRequest(restrequest);
 
@@ -58,8 +64,6 @@ namespace Simple
                     restresponse.ResponseStatus = ResponseStatus.Error;
                 }
             }
-
-//            restresponse = Deserialize<T>(restrequest, restresponse);
 
             return restresponse;
         }

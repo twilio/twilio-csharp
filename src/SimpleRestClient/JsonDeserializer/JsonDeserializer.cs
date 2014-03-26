@@ -6,18 +6,38 @@ using System.Linq;
 
 namespace Simple
 {
+    /// <summary>
+    /// A simple Json deserializer
+    /// </summary>
     public class JsonDeserializer
     {
-        public string RootElement { get; set; }
-        public string Namespace { get; set; }
+        //public string RootElement { get; set; }
+        //public string Namespace { get; set; }
+
+        /// <summary>
+        /// A format string for formattin datetime values
+        /// </summary>
         public string DateFormat { get; set; }
+
+        /// <summary>
+        /// Culture information
+        /// </summary>
         public CultureInfo Culture { get; set; }
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public JsonDeserializer()
         {
             Culture = CultureInfo.InvariantCulture;
         }
 
+        /// <summary>
+        /// Deserialize content from a RestResponse to a generic type
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="response"></param>
+        /// <returns></returns>
         public T Deserialize<T>(RestResponse response)
         {
             var target = Activator.CreateInstance<T>();
@@ -26,16 +46,16 @@ namespace Simple
             {
                 var objType = target.GetType();
 
-                if (RootElement.HasValue())
-                {
-                    var root = FindRoot(response.Content);
-                    target = (T)BuildList(objType, root);
-                }
-                else
-                {
+                //if (RootElement.HasValue())
+                //{
+                //    var root = FindRoot(response.Content);
+                //    target = (T)BuildList(objType, root);
+                //}
+                //else
+                //{
                     var data = SimpleJson.DeserializeObject(response.Content);
                     target = (T)BuildList(objType, data);
-                }
+                //}
             }
             else if (target is IDictionary)
             {
@@ -54,10 +74,10 @@ namespace Simple
         private object FindRoot(string content)
         {
             var data = (IDictionary<string, object>)SimpleJson.DeserializeObject(content);
-            if (RootElement.HasValue() && data.ContainsKey(RootElement))
-            {
-                return data[RootElement];
-            }
+            //if (RootElement.HasValue() && data.ContainsKey(RootElement))
+            //{
+            //    return data[RootElement];
+            //}
             return data;
         }
 

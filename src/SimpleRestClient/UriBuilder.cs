@@ -6,11 +6,15 @@ using Simple;
 
 namespace Simple
 {
+    /// <summary>
+    /// Builds Uri's from a base URL, resource and parameters
+    /// </summary>
     public class UriBuilder
     {
         /// <summary>
         /// Assembles URL to call based on parameters, method and resource
         /// </summary>
+        /// <param name="baseUrl"></param>
         /// <param name="request">RestRequest to execute</param>
         /// <returns>Assembled System.Uri</returns>
         public static Uri Build(string baseUrl, RestRequest request)

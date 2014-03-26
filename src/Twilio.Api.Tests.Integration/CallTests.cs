@@ -194,22 +194,22 @@ namespace Twilio.Api.Tests.Integration
         //    client.HangupCall(originalCall.Sid, HangupStyle.Completed);
         //}
 
-        [TestMethod]
-        public void ShouldHangupCall()
-        {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            Call originalCall = client.InitiateOutboundCall("+13144586142", "+13215946383", "http://devin.webscript.io/twilioconf?conf=" + Utilities.MakeRandomFriendlyName());
+        //[TestMethod]
+        //public void ShouldHangupCall()
+        //{
+        //    var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+        //    Call originalCall = client.InitiateOutboundCall("+13144586142", "+13215946383", "http://devin.webscript.io/twilioconf?conf=" + Utilities.MakeRandomFriendlyName());
 
-            Assert.IsNotNull(originalCall.Sid);
+        //    Assert.IsNotNull(originalCall.Sid);
 
-            var callSid = originalCall.Sid;
+        //    var callSid = originalCall.Sid;
 
-            client.HangupCall(originalCall.Sid, HangupStyle.Completed);
+        //    client.HangupCall(originalCall.Sid, HangupStyle.Completed);
 
-            Call updatedcall = client.GetCall(callSid);
+        //    Call updatedcall = client.GetCall(callSid);
 
-            Assert.AreEqual("completed", updatedcall.Status);
+        //    Assert.AreEqual("completed", updatedcall.Status);
             
-        }
+        //}
     }
 }

@@ -8,6 +8,9 @@ using System.Text.RegularExpressions;
 
 namespace Simple
 {
+    /// <summary>
+    /// Method Extensions
+    /// </summary>
     public static class StringExtensions
     {
         /// <summary>
@@ -169,6 +172,7 @@ namespace Simple
         /// Parses most common JSON date formats
         /// </summary>
         /// <param name="input">JSON value to parse</param>
+        /// <param name="culture"></param>
         /// <returns>DateTime</returns>
         public static DateTime ParseJsonDate(this string input, CultureInfo culture)
         {
@@ -286,6 +290,7 @@ namespace Simple
         /// Converts a string to pascal case
         /// </summary>
         /// <param name="lowercaseAndUnderscoredWord">String to convert</param>
+        /// <param name="culture"></param>
         /// <returns>string</returns>
         public static string ToPascalCase(this string lowercaseAndUnderscoredWord, CultureInfo culture)
         {
@@ -297,6 +302,7 @@ namespace Simple
         /// </summary>
         /// <param name="text">String to convert</param>
         /// <param name="removeUnderscores">Option to remove underscores</param>
+        /// <param name="culture"></param>
         /// <returns></returns>
         public static string ToPascalCase(this string text, bool removeUnderscores, CultureInfo culture)
         {
@@ -331,6 +337,7 @@ namespace Simple
         /// Converts a string to camel case
         /// </summary>
         /// <param name="lowercaseAndUnderscoredWord">String to convert</param>
+        /// <param name="culture"></param>
         /// <returns>String</returns>
         public static string ToCamelCase(this string lowercaseAndUnderscoredWord, CultureInfo culture)
         {
@@ -395,6 +402,12 @@ namespace Simple
             return string.Format("_{0}", pascalCasedWord);
         }
 
+        /// <summary>
+        /// Converts an object from one type to another
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="newType"></param>
+        /// <returns></returns>
         public static object ChangeType(this object source, Type newType)
         {
 #if FRAMEWORK
@@ -404,6 +417,13 @@ namespace Simple
 #endif
         }
 
+        /// <summary>
+        /// Converts an object from one type to another
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="newType"></param>
+        /// <param name="culture"></param>
+        /// <returns></returns>
         public static object ChangeType(this object source, Type newType, CultureInfo culture)
         {
 #if FRAMEWORK || SILVERLIGHT || WINDOWS_PHONE

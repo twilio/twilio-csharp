@@ -43,7 +43,9 @@ namespace Twilio
 		/// The ISO country code of this phone number.
 		/// </summary>
 		public string IsoCountry { get; set; }
-
+		/// <summary>
+		/// 
+		/// </summary>
 		public Capabilities Capabilities { get; set; }
 	}
 }

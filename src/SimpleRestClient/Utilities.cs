@@ -6,8 +6,16 @@ using Simple;
 
 namespace Simple
 {
+    /// <summary>
+    /// Utility methods
+    /// </summary>
     public class Utilities
     {
+        /// <summary>
+        /// Encodes a parameters collection as a set of form encoded values
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         public static string EncodeParameters(IEnumerable<Parameter> parameters)
         {
             var querystring = new StringBuilder();

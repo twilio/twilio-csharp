@@ -8,28 +8,43 @@ using System.Threading;
 
 namespace Simple
 {
+    /// <summary>
+    /// A simple class for making requests to HTTP API's
+    /// </summary>
     public partial class RestClient
     {
         private TimeOutState _timeoutState;
 
+        /// <summary>
+        /// Execute a generic asynchronous HTTP request
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="restrequest"></param>
+        /// <param name="callback"></param>
+        /// <returns></returns>
         public virtual RestRequestAsyncHandle ExecuteAsync<T>(RestRequest restrequest, Action<RestResponse<T>> callback)
         {
             return this.ExecuteAsync<T>(restrequest, (restresponse, asyncHandle) => callback(restresponse));
         }
 
-        public virtual RestRequestAsyncHandle ExecuteAsync<T>(RestRequest restrequest, Action<RestResponse<T>, RestRequestAsyncHandle> callback)
+        internal virtual RestRequestAsyncHandle ExecuteAsync<T>(RestRequest restrequest, Action<RestResponse<T>, RestRequestAsyncHandle> callback)
         {
             return ExecuteAsync(restrequest, (restresponse, asyncHandle) => DeserializeResponse(restrequest, callback, restresponse, asyncHandle));
         }
 
+        /// <summary>
+        /// Execute an asynchronous HTTP request
+        /// </summary>
+        /// <param name="restrequest"></param>
+        /// <param name="callback"></param>
+        /// <returns></returns>
         public virtual RestRequestAsyncHandle ExecuteAsync(RestRequest restrequest, Action<RestResponse> callback)
         {
             return this.ExecuteAsync(restrequest, (restresponse, asyncHandle) => callback(restresponse));
         }
 
-        public RestRequestAsyncHandle ExecuteAsync(RestRequest restrequest, Action<RestResponse, RestRequestAsyncHandle> callback)
+        internal RestRequestAsyncHandle ExecuteAsync(RestRequest restrequest, Action<RestResponse, RestRequestAsyncHandle> callback)
         {
-            //var restResponse = new RestResponse();
             var asyncHandle = new RestRequestAsyncHandle();
 
             Action<RestResponse> response_cb = r =>
@@ -131,9 +146,6 @@ namespace Simple
 
         private static void GetRawResponseAsync(IAsyncResult result, Action<HttpWebResponse> callback)
         {
-            //var response = new RestResponse();
-            //response.ResponseStatus = ResponseStatus.None;
-
             HttpWebResponse raw = null;
 
             try
@@ -205,9 +217,19 @@ namespace Simple
         }
     }
 
+    /// <summary>
+    /// Holds the timout state for an individual request
+    /// </summary>
     public class TimeOutState
     {
+        /// <summary>
+        /// Has this request timed out
+        /// </summary>
         public bool TimedOut { get; set; }
+
+        /// <summary>
+        /// The current HttpWebRequest
+        /// </summary>
         public HttpWebRequest Request { get; set; }
     }
 }

@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Simple
 {
+    /// <summary>
+    /// Holds a single HTTP request parameter
+    /// </summary>
     public class Parameter
     {
         /// <summary>

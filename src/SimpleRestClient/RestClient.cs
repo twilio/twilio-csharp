@@ -10,39 +10,65 @@ namespace Simple
 {
     public partial class RestClient
     {
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public RestClient()
         {
             this.DefaultParameters = new List<Parameter>();
             this.Timeout = 30000; //30 seconds as the default
         }
 
+        /// <summary>
+        /// The proxy to use when making HTTP Requests
+        /// </summary>
         public IWebProxy Proxy { get; set; }
+
+        /// <summary>
+        /// The Root URL for requests
+        /// </summary>
         public string BaseUrl { get; set; }
+
+        /// <summary>
+        /// The request timeout value
+        /// </summary>
         public int Timeout { get; set; }
+
+        /// <summary>
+        /// The HTTP UserAgent string to include in the request
+        /// </summary>
         public string UserAgent { get; set; }
 
+        /// <summary>
+        /// A collection of parameters to include in all requests
+        /// </summary>
         public List<Parameter> DefaultParameters { get; set; }
 
+        /// <summary>
+        /// Adds an HTTP header to all requests
+        /// </summary>
+        /// <param name="name">Header name</param>
+        /// <param name="value">Header value</param>
         public void AddDefaultHeader(string name, string value)
         {
             this.AddDefaultParameter(new Parameter() { Name = name, Value = value, Type = ParameterType.HttpHeader });
         }
 
+        /// <summary>
+        /// Adds a URL segment to seach and replace in all requests
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
         public void AddDefaultUrlSegment(string name, string value)
         {
             this.AddDefaultParameter(new Parameter() { Name = name, Value = value, Type = ParameterType.UrlSegment });
         }
 
-        public void AddDefaultParameter(Parameter p)
+        private void AddDefaultParameter(Parameter p)
         {
-            //if (p.Type == ParameterType.RequestBody)
-            //{
-            //    throw new NotSupportedException(
-            //        "Cannot set request body from default headers. Use Request.AddBody() instead.");
-            //}
-
             this.DefaultParameters.Add(p);
-        }        
+        }   
+     
         private HttpWebRequest ConfigureRequest(RestRequest restrequest)
         {
             foreach (var param in this.DefaultParameters)
@@ -62,6 +88,7 @@ namespace Simple
 
             webrequest.Method = restrequest.Method;
             webrequest.Accept = "application/json";
+            webrequest.KeepAlive = true;
 
             foreach (var param in restrequest.Parameters.Where(p => p.Type == ParameterType.HttpHeader))
             {
@@ -108,7 +135,7 @@ namespace Simple
                 // to a transport or framework exception.  HTTP errors should attempt to 
                 // be deserialized 
 
-                if (response.ResponseStatus == ResponseStatus.Completed && (response.ErrorException == null ||  response.RawBytes.Length > 0))
+                if (response.ResponseStatus == ResponseStatus.Completed && response.ErrorException == null && response.RawBytes.Length > 0)
                 {
                     JsonDeserializer deserializer = new JsonDeserializer();
                     restresponse.Data = deserializer.Deserialize<T>(response);

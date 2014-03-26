@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Simple;
 using System.Net;
@@ -12,10 +12,6 @@ namespace SimpleRestClient.Tests
     [TestClass]
     public class SynchronousRequestTests
     {
-        // deserialization error
-        // http timeout
-        // dns failure
-
         private const string BASE_URL = "http://localhost:18080/";
 
         [TestMethod]

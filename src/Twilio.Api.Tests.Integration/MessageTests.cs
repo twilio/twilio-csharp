@@ -82,27 +82,27 @@ namespace Twilio.Api.Tests.Integration
             Assert.IsNull(result.Sid);
         }
 
-        //[TestMethod]
-        //public void ShouldFailToSendSmsMessageAsynchronouslyWithInvalidFromNumber()
-        //{
-        //    manualResetEvent = new ManualResetEvent(false);
+        [TestMethod]
+        public void ShouldFailToSendSmsMessageAsynchronouslyWithInvalidFromNumber()
+        {
+            manualResetEvent = new ManualResetEvent(false);
 
-        //    Message result = null;
-        //    var client = new TwilioRestClient(Credentials.TestAccountSid, Credentials.TestAuthToken);
+            Message result = null;
+            var client = new TwilioRestClient(Credentials.TestAccountSid, Credentials.TestAuthToken);
 
-        //    client.SendMessage("+15005550006", "+15005550001", ".NET Unit Test Message", message =>
-        //    {
-        //        result = message;
-        //        manualResetEvent.Set();
-        //    });
+            client.SendMessage("+15005550006", "+15005550001", ".NET Unit Test Message", message =>
+            {
+                result = message;
+                manualResetEvent.Set();
+            });
 
-        //    manualResetEvent.WaitOne();
+            manualResetEvent.WaitOne();
 
-        //    Assert.IsNotNull(result);
-        //    Assert.IsNotNull(result.RestException);
-        //    Assert.AreEqual("21211", result.RestException.Code);
-        //    Assert.IsNull(result.Sid);
-        //}
+            Assert.IsNotNull(result);
+            Assert.IsNotNull(result.RestException);
+            Assert.AreEqual("21211", result.RestException.Code);
+            Assert.IsNull(result.Sid);
+        }
 
         [TestMethod]
         public void ShouldListSmsMessages()
