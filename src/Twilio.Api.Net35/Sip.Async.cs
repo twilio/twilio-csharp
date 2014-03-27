@@ -9,6 +9,7 @@ namespace Twilio
         /// Locates and returns a specific SIP Domain resource
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain to locate</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void GetDomain(string domainSid, Action<Domain> callback)
         {
@@ -31,9 +32,9 @@ namespace Twilio
         /// <summary>
         /// Return a list of all SIP Domain resources
         /// </summary>
-
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void ListDomains(int? pageNumber, int? count, Action<DomainResult> callback)
         {
@@ -50,6 +51,7 @@ namespace Twilio
         /// Creates a new SIP Domain resource
         /// </summary>
         /// <param name="domainName">The name of the SIP Domain to create.  You must pick a unique domain name that ends in ".sip.twilio.com"</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void CreateDomain(string domainName, Action<Domain> callback)
         {
@@ -61,6 +63,7 @@ namespace Twilio
         /// Creates a new SIP Domain resource
         /// </summary>
         /// <param name="options">Optional parameters to use when creating a new SIP domain.  DomainName is required and you must pick a unique domain name that ends in ".sip.twilio.com"</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void CreateDomain(DomainOptions options, Action<Domain> callback)
         {
@@ -91,6 +94,7 @@ namespace Twilio
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain to update</param>
         /// <param name="options">Optional parameters for a SIP domain</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void UpdateDomain(string domainSid, DomainOptions options, Action<Domain> callback)
         {
@@ -110,6 +114,7 @@ namespace Twilio
         /// Deletes a specific SIP Domain resource
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain to delete</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void DeleteDomain(string domainSid, Action<DeleteStatus> callback)
         {
@@ -128,6 +133,7 @@ namespace Twilio
         /// </summary>
         /// <param name="domainSid">The Sid of the mapped SIP Domain</param>
         /// <param name="ipAccessControlListMappingSid">The Sid of the mapped IpAccessControlList</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void GetIpAccessControlListMapping(string domainSid, string ipAccessControlListMappingSid, Action<IpAccessControlListMapping> callback)
         {
@@ -143,6 +149,7 @@ namespace Twilio
         /// Lists all IpAccessControlLists mapped to a SIP Domain
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain to list mappings for</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void ListIpAccessControlListMappings(string domainSid, Action<IpAccessControlListMappingResult> callback)
         {
@@ -155,6 +162,7 @@ namespace Twilio
         /// <param name="domainSid">The Sid of the SIP Domain to list mappings for</param>
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void ListIpAccessControlListMappings(string domainSid, int? pageNumber, int? count, Action<IpAccessControlListMappingResult> callback)
         {
@@ -175,6 +183,7 @@ namespace Twilio
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain to map to</param>
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList to map to</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void CreateIpAccessControlListMapping(string domainSid, string ipAccessControlListSid, Action<IpAccessControlListMapping> callback)
         {
@@ -194,6 +203,7 @@ namespace Twilio
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain</param>
         /// <param name="ipAccessControlListMappingSid">The Sid of the IpAccessControlListMapping to delete</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void DeleteIpAccessControlListMapping(string domainSid, string ipAccessControlListMappingSid, Action<DeleteStatus> callback)
         {
@@ -213,6 +223,7 @@ namespace Twilio
         /// </summary>
         /// <param name="domainSid">The Sid of the mapped SIP Domain</param>
         /// <param name="credentialListMappingSid">The Sid of the mapped CredentialList</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void GetCredentialListMapping(string domainSid, string credentialListMappingSid, Action<CredentialListMapping> callback)
         {
@@ -228,6 +239,7 @@ namespace Twilio
         /// Lists all CredentialLists mapped to a SIP Domain
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain to list mappings for</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void ListCredentialListMappings(string domainSid, Action<CredentialListMappingResult> callback)
         {
@@ -240,6 +252,7 @@ namespace Twilio
         /// <param name="domainSid">The Sid of the SIP Domain to list mappings for</param>
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void ListCredentialListMappings(string domainSid, int? pageNumber, int? count, Action<CredentialListMappingResult> callback)
         {
@@ -258,6 +271,7 @@ namespace Twilio
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain to map to</param>
         /// <param name="credentialListSid">The Sid of the CredentialList to map to</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void CreateCredentialListMapping(string domainSid, string credentialListSid, Action<IpAccessControlListMapping> callback)
         {
@@ -277,6 +291,7 @@ namespace Twilio
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain</param>
         /// <param name="credentialListMappingSid">The Sid of the CredentialListMapping to delete</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void DeleteCredentialListMapping(string domainSid, string credentialListMappingSid, Action<DeleteStatus> callback)
         {
@@ -295,6 +310,7 @@ namespace Twilio
         /// Gets a specific IpAccessControlList resource
         /// </summary>
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList resource</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void GetIpAccessControlList(string ipAccessControlListSid, Action<IpAccessControlList> callback)
         {
@@ -318,8 +334,8 @@ namespace Twilio
         /// Lists all IpAccessControlLists for this account
         /// </summary>
         /// <param name="pageNumber"></param>
-
         /// <param name="count"></param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void ListIpAccessControlLists(int? pageNumber, int? count, Action<IpAccessControlListResult> callback)
         {
@@ -336,6 +352,7 @@ namespace Twilio
         /// Creates a new IpAccessControlList resource
         /// </summary>
         /// <param name="friendlyName">The name of the IpAccessControlList to create.</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void CreateIpAccessControlList(string friendlyName, Action<IpAccessControlList> callback)
         {
@@ -352,6 +369,7 @@ namespace Twilio
         /// </summary>
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList to update</param>
         /// <param name="friendlyName">The name of the IpAccessControlList</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void UpdateIpAccessControlList(string ipAccessControlListSid, string friendlyName, Action<IpAccessControlList> callback)
         {
@@ -368,6 +386,7 @@ namespace Twilio
         /// Deletes a specific IpAccessControlList resource
         /// </summary>
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList Domain to delete</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void DeleteIpAccessControlList(string ipAccessControlListSid, Action<DeleteStatus> callback)
         {
@@ -384,6 +403,7 @@ namespace Twilio
         /// </summary>
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList</param>
         /// <param name="ipAddressSid">The Sid of the IpAddress to locate</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void GetIpAddress(string ipAccessControlListSid, string ipAddressSid, Action<IpAddress> callback)
         {
@@ -399,6 +419,7 @@ namespace Twilio
         /// Return a lists all IpAddresses associated with an IpAccessControlList
         /// </summary>
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void ListIpAddresses(string ipAccessControlListSid, Action<IpAddressResult> callback)
         {
@@ -411,6 +432,7 @@ namespace Twilio
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList</param>
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void ListIpAddresses(string ipAccessControlListSid, int? pageNumber, int? count, Action<IpAddressResult> callback)
         {
@@ -430,6 +452,7 @@ namespace Twilio
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControList to add the IpAddress to</param>
         /// <param name="friendlyName">The name of the IpAddress to create.</param>
         /// <param name="ipAddress">The address value of the IpAddress</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void CreateIpAddress(string ipAccessControlListSid, string friendlyName, string ipAddress, Action<IpAddress> callback)
         {
@@ -450,6 +473,7 @@ namespace Twilio
         /// <param name="ipAddressSid">The Sid of the IpAddress to update</param>
         /// <param name="friendlyName">The name of the IpAddress</param>
         /// <param name="ipAddress">The address value of the IpAddress</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void UpdateIpAddress(string ipAccessControlListSid, string ipAddressSid, string friendlyName, string ipAddress, Action<IpAddress> callback)
         {
@@ -467,7 +491,9 @@ namespace Twilio
         /// <summary>
         /// Deletes a specific IpAddress resource
         /// </summary>
-        /// <param name="domainSid">The Sid of the IpAddress to delete</param>
+        /// <param name="ipAccessControlListSid"></param>
+        /// <param name="ipAddressSid">The Sid of the IpAddress to delete</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void DeleteIpAddress(string ipAccessControlListSid, string ipAddressSid, Action<DeleteStatus> callback)
         {
@@ -484,6 +510,7 @@ namespace Twilio
         /// Locates and returns a specific CredentialList resource
         /// </summary>
         /// <param name="credentialListSid">The Sid of the CredentialList to locate</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void GetCredentialList(string credentialListSid, Action<CredentialList> callback)
         {
@@ -508,6 +535,7 @@ namespace Twilio
         /// </summary>
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void ListCredentialLists(int? pageNumber, int? count, Action<CredentialListResult> callback)
         {
@@ -524,6 +552,7 @@ namespace Twilio
         /// Creates a new CredentialList resource
         /// </summary>
         /// <param name="friendlyName">The name of the CredentialList to create.</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void CreateCredentialList(string friendlyName, Action<CredentialList> callback)
         {
@@ -540,6 +569,7 @@ namespace Twilio
         /// </summary>
         /// <param name="credentialListSid">The Sid of the CredentialList</param>
         /// <param name="friendlyName">The name of the CredentialList</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void UpdateCredentialList(string credentialListSid, string friendlyName, Action<CredentialList> callback)
         {
@@ -555,7 +585,8 @@ namespace Twilio
         /// <summary>
         /// Deletes a specific CredentialList resource
         /// </summary>
-        /// <param name="domainSid">The Sid of the CredentialList to delete</param>
+        /// <param name="credentialListSid">The Sid of the CredentialList to delete</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void DeleteCredentialList(string credentialListSid, Action<DeleteStatus> callback)
         {
@@ -572,6 +603,7 @@ namespace Twilio
         /// </summary>
         /// <param name="credentialListSid">The Sid of the CredentialList</param>
         /// <param name="credentialSid">The Sid of the Credential to locate</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void GetCredential(string credentialListSid, string credentialSid, Action<Credential> callback)
         {
@@ -587,6 +619,7 @@ namespace Twilio
         /// List all Credentials for a CredentialList
         /// </summary>
         /// <param name="credentialListSid"></param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void ListCredentials(string credentialListSid, Action<CredentialResult> callback)
         {
@@ -599,6 +632,7 @@ namespace Twilio
         /// <param name="credentialListSid">The Sid of the CredentialList</param>
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void ListCredentials(string credentialListSid, int? pageNumber, int? count, Action<CredentialResult> callback)
         {
@@ -618,6 +652,7 @@ namespace Twilio
         /// <param name="credentialListSid">The Sid of the CredentialList to add the new Credential to</param>
         /// <param name="username">The Credential Username</param>
         /// <param name="password">The Credential Password</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void CreateCredential(string credentialListSid, string username, string password, Action<Credential> callback)
         {
@@ -638,6 +673,7 @@ namespace Twilio
         /// <param name="credentialSid">The Sid of the Credential to update</param>
         /// <param name="username"></param>
         /// <param name="password"></param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void UpdateCredential(string credentialListSid, string credentialSid, string username, string password, Action<Credential> callback)
         {
@@ -657,6 +693,7 @@ namespace Twilio
         /// </summary>
         /// <param name="credentialListSid">The Sid of the CredentialList to delete from</param>
         /// <param name="credentialSid">The Sid of the Credential to delete</param>
+        /// <param name="callback"></param>
         /// <returns></returns>
         public virtual void DeleteCredential(string credentialListSid, string credentialSid, Action<DeleteStatus> callback)
         {

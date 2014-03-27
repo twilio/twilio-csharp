@@ -453,7 +453,8 @@ namespace Twilio
         /// <summary>
         /// Deletes a specific IpAddress resource
         /// </summary>
-        /// <param name="domainSid">The Sid of the IpAddress to delete</param>
+        /// <param name="ipAccessControlListSid">The Sid of the IpAddress to delete</param>
+        /// <param name="ipAddressSid"></param>
         /// <returns></returns>
         public virtual DeleteStatus DeleteIpAddress(string ipAccessControlListSid, string ipAddressSid)
         {
@@ -542,7 +543,7 @@ namespace Twilio
         /// <summary>
         /// Deletes a specific CredentialList resource
         /// </summary>
-        /// <param name="domainSid">The Sid of the CredentialList to delete</param>
+        /// <param name="credentialListSid">The Sid of the CredentialList to delete</param>
         /// <returns></returns>
         public virtual DeleteStatus DeleteCredentialList(string credentialListSid)
         {

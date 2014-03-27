@@ -41,6 +41,8 @@ namespace Twilio
         /// List all media for a particular message
         /// </summary>
         /// <param name="messageSid">The message sid to filter on</param>
+        /// <param name="options"></param>
+        /// <param name="callback"></param>
         public virtual void ListMessageMedia(string messageSid, MediaListRequest options, Action<MediaResult> callback)
         {
             var request = new RestRequest();
@@ -73,6 +75,7 @@ namespace Twilio
         /// Media Instance resource.
         /// </summary>
         /// <param name="mediaSid">The Sid of the media to delete</param>
+        /// <param name="callback"></param>
         public virtual void DeleteMedia(string mediaSid, Action<DeleteStatus> callback)
         {
             var request = new RestRequest(Method.DELETE);

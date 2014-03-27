@@ -87,7 +87,9 @@ namespace Twilio
 		/// The ApplicationSid assigned to this number for voice requests
 		/// </summary>
 		public string VoiceApplicationSid { get; set; }
-
+        /// <summary>
+        /// A set of boolean properties that indicate whether a phone number can receive calls or messages
+        /// </summary>
         public Capabilities Capabilities { get; set; }
 	}
 }

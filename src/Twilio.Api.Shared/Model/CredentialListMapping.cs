@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Twilio
 {
+    /// <summary>
+    /// A CredentialLists instance associated with this domain
+    /// </summary>
     public class CredentialListMapping : TwilioBase
     {
         /// <summary>

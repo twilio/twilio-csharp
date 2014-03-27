@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Twilio
 {
+    /// <summary>
+    /// A piece of media, such as an image, associated with a message
+    /// </summary>
     public class Media : TwilioBase
     {
         /// <summary>

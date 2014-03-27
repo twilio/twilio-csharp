@@ -42,6 +42,7 @@ namespace Twilio
         /// List all media for a particular message
         /// </summary>
         /// <param name="messageSid">The message sid to filter on</param>
+        /// <param name="options"></param>
         public virtual MediaResult ListMessageMedia(string messageSid, MediaListRequest options)
         {
             var request = new RestRequest();

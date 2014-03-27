@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Twilio
 {
+    /// <summary>
+    /// An inbound or outbound message
+    /// </summary>
     public class Message : TwilioBase
     {
         /// <summary>

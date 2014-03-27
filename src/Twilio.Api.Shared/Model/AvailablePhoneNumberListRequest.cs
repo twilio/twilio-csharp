@@ -55,7 +55,8 @@ namespace Twilio
 		/// Voice capability.
 		/// </summary>
 		public bool? VoiceEnabled { get; set; }
-		/// Set to 'true' or 'false'. If true, the response will contain MMS 
+        /// <summary>
+        /// Set to 'true' or 'false'. If true, the response will contain MMS 
 		/// enabled phone numbers. The MMS capability is independent of the
         /// SMS capability.
 		/// </summary>

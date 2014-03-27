@@ -66,6 +66,7 @@ namespace Twilio
         /// <param name="friendlyName">Optional friendly name to match</param>
         /// <param name="pageNumber">Page number to start retrieving results from</param>
         /// <param name="count">How many results to return</param>
+        /// <param name="callback"></param>
         public virtual void ListIncomingLocalPhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
         {
             var request = new RestRequest();
@@ -95,6 +96,7 @@ namespace Twilio
         /// <param name="friendlyName">Optional friendly name to match</param>
         /// <param name="pageNumber">Page number to start retrieving results from</param>
         /// <param name="count">How many results to return</param>
+        /// <param name="callback"></param>
         public virtual void ListIncomingTollFreePhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
         {
             var request = new RestRequest();
@@ -124,6 +126,7 @@ namespace Twilio
         /// <param name="friendlyName">Optional friendly name to match</param>
         /// <param name="pageNumber">Page number to start retrieving results from</param>
         /// <param name="count">How many results to return</param>
+        /// <param name="callback"></param>
         public virtual void ListIncomingMobilePhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
         {
             var request = new RestRequest();

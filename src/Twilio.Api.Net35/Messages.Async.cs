@@ -10,6 +10,7 @@ namespace Twilio
         /// Makes a GET request to an Message Instance resource.
         /// </summary>
         /// <param name="messageSid">The Sid of the message to retrieve</param>
+        /// <param name="callback"></param>
         public virtual void GetMessage(string messageSid, Action<Message> callback)
         {
             var request = new RestRequest();
@@ -34,6 +35,7 @@ namespace Twilio
         /// Makes a GET request to the Messages List resource.
         /// </summary>
         /// <param name="options">The list filters for the request</param>
+        /// <param name="callback"></param>
         public virtual void ListMessages(MessageListRequest options, Action<MessageResult> callback)
         {
             var request = new RestRequest();
@@ -69,6 +71,7 @@ namespace Twilio
         /// <param name="from">The phone number to send the message from. Must be a Twilio-provided or ported local (not toll-free) number. Validated outgoing caller IDs cannot be used.</param>
         /// <param name="to">The phone number to send the message to.</param>
         /// <param name="body">The message to send. Must be 160 characters or less.</param>
+        /// <param name="callback"></param>
         public virtual void SendMessage(string from, string to, string body, Action<Message> callback)
         {
             SendMessage(from, to, body, new string[0], string.Empty, callback);
@@ -82,6 +85,7 @@ namespace Twilio
         /// <param name="to">The phone number to send the message to.</param>
         /// <param name="body">The message to send. Must be 160 characters or less.</param>
         /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the MessageSid as well as MessageStatus=sent or MessageStatus=failed</param>
+        /// <param name="callback"></param>
         public virtual void SendMessage(string from, string to, string body, string statusCallback, Action<Message> callback)
         {
             SendMessage(from, to, body, new string[0], statusCallback, callback);
@@ -94,6 +98,7 @@ namespace Twilio
         /// <param name="from">The phone number to send the message from. Must be a Twilio-provided or ported local (not toll-free) number. Validated outgoing caller IDs cannot be used.</param>
         /// <param name="to">The phone number to send the message to.</param>
         /// <param name="mediaUrls">An array of URLs where each member of the array points to a media file to be sent with the message.  You can include a maximum of 10 media URLs</param>
+        /// <param name="callback"></param>
         public virtual void SendMessage(string from, string to, string[] mediaUrls, Action<Message> callback)
         {
             SendMessage(from, to, String.Empty, mediaUrls, string.Empty, callback);
@@ -107,6 +112,8 @@ namespace Twilio
         /// <param name="from">The phone number to send the message from. Must be a Twilio-provided or ported local (not toll-free) number. Validated outgoing caller IDs cannot be used.</param>
         /// <param name="to">The phone number to send the message to. If using the Sandbox, this number must be a validated outgoing caller ID</param>
         /// <param name="body">The message to send. Must be 160 characters or less.</param>
+        /// <param name="mediaUrls"></param>
+        /// <param name="callback"></param>
         public virtual void SendMessage(string from, string to, string body, string[] mediaUrls, Action<Message> callback)
         {
             SendMessage(from, to, body, mediaUrls, string.Empty, callback);
@@ -120,6 +127,8 @@ namespace Twilio
         /// <param name="to">The phone number to send the message to. If using the Sandbox, this number must be a validated outgoing caller ID</param>
         /// <param name="body">The message to send. Must be 160 characters or less.</param>
         /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the SmsSid as well as SmsStatus=sent or SmsStatus=failed</param>
+        /// <param name="mediaUrls"></param>
+        /// <param name="callback"></param>
         public virtual void SendMessage(string from, string to, string body, string[] mediaUrls, string statusCallback, Action<Message> callback)
         {
             SendMessage(from, to, body, mediaUrls, statusCallback, string.Empty, callback);
@@ -134,6 +143,8 @@ namespace Twilio
         /// <param name="body">The message to send. Must be 160 characters or less.</param>
         /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the SmsSid as well as SmsStatus=sent or SmsStatus=failed</param>
         /// <param name="applicationSid"></param>
+        /// <param name="mediaUrls"></param>
+        /// <param name="callback"></param>
         public virtual void SendMessage(string from, string to, string body, string[] mediaUrls, string statusCallback, string applicationSid, Action<Message> callback)
         {
             Require.Argument("from", from);
