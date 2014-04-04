@@ -130,6 +130,7 @@ namespace SimpleRestClient.Tests
 
             Assert.AreEqual(HttpStatusCode.BadRequest, restresponse.StatusCode);
             Assert.AreEqual("BAD REQUEST", restresponse.StatusDescription);
+            Assert.AreEqual(ResponseStatus.Completed, restresponse.ResponseStatus);
         }
 
         [TestMethod]
@@ -152,6 +153,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(HttpStatusCode.BadRequest, restresponse.StatusCode);
             Assert.AreEqual( (int)sourcecontent.Length, restresponse.RawBytes.Length);
             CollectionAssert.AreEquivalent(sourcecontent, restresponse.RawBytes);
+            Assert.AreEqual(ResponseStatus.Completed, restresponse.ResponseStatus);
         }
 
         [TestMethod]
@@ -165,8 +167,38 @@ namespace SimpleRestClient.Tests
             var restresponse = wrapper.ParseWebException(webexception);
 
             Assert.IsNotNull(restresponse.ErrorException);
-            Assert.IsNotNull(restresponse.ErrorMessage);
             Assert.AreEqual(message, restresponse.ErrorMessage);
+            Assert.AreEqual(ResponseStatus.Error, restresponse.ResponseStatus);
+        }
+
+        [TestMethod]
+        public void When_Async_Http_Request_Times_Out_Then_Populate_Exception_Properties()
+        {
+            var message = "The request was aborted: The request was canceled.";
+
+            var webexception = new WebException(message, null, WebExceptionStatus.RequestCanceled, null);
+
+            var wrapper = new HttpWebRequestWrapper();
+            var restresponse = wrapper.ParseWebException(webexception, new TimeOutState() { TimedOut=true });
+
+            Assert.IsNotNull(restresponse.ErrorException);
+            Assert.AreEqual(message, restresponse.ErrorMessage);
+            Assert.AreEqual(ResponseStatus.TimedOut, restresponse.ResponseStatus);
+        }
+
+        [TestMethod]
+        public void When_Async_Http_Request_Is_Aborted_Then_Populate_Exception_Properties()
+        {
+            var message = "The request was aborted: The request was canceled.";
+
+            var webexception = new WebException(message, null, WebExceptionStatus.RequestCanceled, null);
+
+            var wrapper = new HttpWebRequestWrapper();
+            var restresponse = wrapper.ParseWebException(webexception, new TimeOutState() { TimedOut = false });
+
+            Assert.IsNotNull(restresponse.ErrorException);
+            Assert.AreEqual(message, restresponse.ErrorMessage);
+            Assert.AreEqual(ResponseStatus.Aborted, restresponse.ResponseStatus);
         }
 
         [TestMethod]

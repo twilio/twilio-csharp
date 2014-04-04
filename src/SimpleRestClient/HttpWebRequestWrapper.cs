@@ -23,21 +23,22 @@ namespace Simple
             // return the underlying HTTP response, otherwise assume a
             // transport exception (ex: connection timeout) and
             // rethrow the exception
-            if (timeoutstate != null && exc.Status == WebExceptionStatus.RequestCanceled)
+            if (exc.Response is HttpWebResponse)
             {
-                restresponse.ResponseStatus = timeoutstate.TimedOut ? ResponseStatus.TimedOut : ResponseStatus.Aborted;
+                var errorresponse = exc.Response as HttpWebResponse;
+                restresponse = ExtractResponse(errorresponse);
             }
             else
             {
-                if (exc.Response is HttpWebResponse)
+                restresponse.ErrorException = exc;
+                restresponse.ErrorMessage = exc.Message;
+
+                if (timeoutstate != null && exc.Status == WebExceptionStatus.RequestCanceled)
                 {
-                    var errorresponse = exc.Response as HttpWebResponse;
-                    restresponse = ExtractResponse(errorresponse);
+                    restresponse.ResponseStatus = timeoutstate.TimedOut ? ResponseStatus.TimedOut : ResponseStatus.Aborted;
                 }
                 else
                 {
-                    restresponse.ErrorException = exc;
-                    restresponse.ErrorMessage = exc.Message;
                     restresponse.ResponseStatus = ResponseStatus.Error;
                 }
             }

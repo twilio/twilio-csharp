@@ -55,10 +55,12 @@ namespace Simple
 
             var asyncResult = webrequest.BeginGetResponse(r => ProcessHttpWebResponseCallback(r, responseCallback), webrequest);
 
-            SetTimeout(asyncResult, _timeoutState);
+            if (Timeout != 0)
+            {
+                ThreadPool.RegisterWaitForSingleObject(asyncResult.AsyncWaitHandle, new WaitOrTimerCallback(TimeoutCallback), _timeoutState, this.Timeout, true);
+            }
             
             asyncHandle.WebRequest = webrequest;
-
             return asyncHandle;
         }
 
@@ -66,23 +68,16 @@ namespace Simple
         {
             var restresponse = new RestResponse() { ResponseStatus = ResponseStatus.None };
 
-            if (_timeoutState.TimedOut)
+            try
             {
-                restresponse.ResponseStatus = ResponseStatus.TimedOut;
+                var webRequest = (HttpWebRequest)result.AsyncState;
+                var webresponse = webRequest.EndGetResponse(result) as HttpWebResponse;
+                restresponse = this.WebRequest.ExtractResponse(webresponse);
+                webresponse.Close();
             }
-            else
+            catch (WebException exc)
             {
-                try
-                {
-                    var webRequest = (HttpWebRequest)result.AsyncState;
-                    var webresponse = webRequest.EndGetResponse(result) as HttpWebResponse;
-                    restresponse = this.WebRequest.ExtractResponse(webresponse);
-                    webresponse.Close();
-                }
-                catch (WebException exc)
-                {
-                    restresponse = this.WebRequest.ParseWebException(exc);
-                }
+                restresponse = this.WebRequest.ParseWebException(exc);
             }
 
             callback(restresponse);
@@ -91,14 +86,6 @@ namespace Simple
         private void DeserializeResponse<T>(RestRequest request, Action<RestResponse<T>, RestRequestAsyncHandle> callback, RestResponse response, RestRequestAsyncHandle asyncHandle)
         {
             callback(Deserialize<T>(request, response), asyncHandle);
-        }
-
-        private void SetTimeout(IAsyncResult asyncResult, TimeOutState timeOutState)
-        {
-            if (Timeout != 0)
-            {
-                ThreadPool.RegisterWaitForSingleObject(asyncResult.AsyncWaitHandle, new WaitOrTimerCallback(TimeoutCallback), timeOutState, Timeout, true);
-            }
         }
 
         private static void TimeoutCallback(object state, bool timedOut)
