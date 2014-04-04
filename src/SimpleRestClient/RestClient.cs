@@ -45,6 +45,26 @@ namespace Simple
         public List<Parameter> DefaultParameters { get; set; }
 
         /// <summary>
+        /// create instance by default if none exists
+        /// </summary>
+        private HttpWebRequestWrapper _requestwrapper;
+        public HttpWebRequestWrapper WebRequest 
+        {
+            get
+            {
+                if (_requestwrapper == null)
+                {
+                    _requestwrapper = new HttpWebRequestWrapper();
+                }
+                return _requestwrapper;
+            } 
+            set 
+            {
+                _requestwrapper = value;
+            }
+        }
+
+        /// <summary>
         /// Adds an HTTP header to all requests
         /// </summary>
         /// <param name="name">Header name</param>
@@ -69,51 +89,6 @@ namespace Simple
             this.DefaultParameters.Add(p);
         }   
      
-        private HttpWebRequest ConfigureRequest(RestRequest restrequest)
-        {
-            foreach (var param in this.DefaultParameters)
-            {
-                if (!restrequest.Parameters.Any(p => p.Name == param.Name))
-                {
-                    restrequest.Parameters.Add(param);
-                }
-            }
-
-            var webrequest = (HttpWebRequest)WebRequest.Create(Simple.UriBuilder.Build(this.BaseUrl, restrequest));
-
-            webrequest.Timeout = this.Timeout;
-            webrequest.Proxy = this.Proxy;
-            webrequest.Headers.Add("Accept-charset", "utf-8");
-            webrequest.UserAgent = this.UserAgent;
-
-            webrequest.Method = restrequest.Method;
-            webrequest.Accept = "application/json";
-            webrequest.KeepAlive = true;
-
-            foreach (var param in restrequest.Parameters.Where(p => p.Type == ParameterType.HttpHeader))
-            {
-                webrequest.Headers.Add(param.Name, param.Value.ToString());
-            }
-
-            if (restrequest.Method == "POST" || restrequest.Method == "PUT")
-            {
-                webrequest.ContentType = "application/x-www-form-urlencoded";
-
-                var querystring = Utilities.EncodeParameters(restrequest.Parameters);
-
-                var bytes = Encoding.UTF8.GetBytes(querystring.ToString());
-
-                webrequest.ContentLength = bytes.Length;
-
-                using (var requestStream = webrequest.GetRequestStream())
-                {
-                    requestStream.Write(bytes, 0, bytes.Length);
-                }
-            }
-
-            return webrequest;
-        }
-
         private RestResponse<T> Deserialize<T>(RestRequest request, RestResponse response)
         {
             request.OnBeforeDeserialization(response);

@@ -15,54 +15,25 @@ namespace Simple
         /// <typeparam name="T"></typeparam>
         /// <param name="request"></param>
         /// <returns></returns>
-        public virtual RestResponse<T> Execute<T>(RestRequest request) where T : new()
+        public RestResponse<T> Execute<T>(RestRequest request)
         {
             return Deserialize<T>(request, Execute(request));
         }
 
         internal RestResponse Execute(RestRequest restrequest)
         {
-            var webrequest = ConfigureRequest(restrequest);
-
-            var restresponse = new RestResponse();
+            var webrequest = this.WebRequest.ConfigureRequest(this, restrequest);
+            var restresponse = new RestResponse() { ResponseStatus = ResponseStatus.None };
 
             try
             {
                 var webresponse = (HttpWebResponse)webrequest.GetResponse();
-
-                restresponse.StatusCode = webresponse.StatusCode;
-                restresponse.StatusDescription = webresponse.StatusDescription;
-
-                var stream = webresponse.GetResponseStream();
-                restresponse.RawBytes = stream.ReadAsBytes();
-
-                restresponse.ResponseStatus = ResponseStatus.Completed;
+                restresponse = this.WebRequest.ExtractResponse(webresponse);
+                webresponse.Close();
             }
             catch (WebException exc)
             {
-                // Check to see if this is an HTTP error or a transport error.
-                // In cases where an HTTP error occurs ( status code >= 400 )
-                // return the underlying HTTP response, otherwise assume a
-                // transport exception (ex: connection timeout) and
-                // rethrow the exception
-
-                if (exc.Response is HttpWebResponse)
-                {
-                    var errorresponse = exc.Response as HttpWebResponse;
-                    restresponse.StatusCode = errorresponse.StatusCode;
-                    restresponse.StatusDescription = errorresponse.StatusDescription;
-
-                    var stream = errorresponse.GetResponseStream();
-                    restresponse.RawBytes = stream.ReadAsBytes();
-
-                    restresponse.ResponseStatus = ResponseStatus.Completed;
-                }
-                else
-                {
-                    restresponse.ErrorException = exc;
-                    restresponse.ErrorMessage = exc.Message;
-                    restresponse.ResponseStatus = ResponseStatus.Error;
-                }
+                restresponse = this.WebRequest.ParseWebException(exc);
             }
 
             return restresponse;
