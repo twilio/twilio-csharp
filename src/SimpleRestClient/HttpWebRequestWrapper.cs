@@ -68,7 +68,7 @@ namespace Simple
             if (HttpWebRequestType != null)
             {
                 return (HttpWebRequest)Activator.CreateInstance(HttpWebRequestType);
-            }
+            }         
 
             return (HttpWebRequest)WebRequest.Create(uri);
         }

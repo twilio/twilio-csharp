@@ -14,35 +14,29 @@ namespace SimpleRestClient.Tests
     public class AsynchronousRequestTests
     {
         ManualResetEvent manualResetEvent;
-        private const string BASE_URL = "http://localhost:18080/";
+        private const string BASE_URL = "http://example.com/";
 
-        //[TestMethod]
-        //public void When_A_DefaultParameter_Header_Is_Present()
-        //{
-        //    manualResetEvent = new ManualResetEvent(false);
+        [TestMethod]
+        public void When_A_DefaultParameter_Header_Is_Present()
+        {
+            manualResetEvent = new ManualResetEvent(false);
+            string token = AuthorizationToken;
 
-        //    string token = AuthorizationToken;
+            var client = new RestClient();
+            client.DefaultParameters.Add(new Parameter() { Name = "Authorization", Value = token, Type = ParameterType.HttpHeader });
+            client.BaseUrl = BASE_URL;
 
-        //    using (SimpleServer.Create(BASE_URL, Generic<RequestBodyCapturer>()))
-        //    {
-        //        var client = new RestClient();
-        //        client.DefaultParameters.Add(new Parameter() { Name = "Authorization", Value = token, Type = ParameterType.HttpHeader });
-        //        client.BaseUrl = BASE_URL;
+            client.WebRequest = new HttpWebRequestWrapper() { HttpWebRequestType = typeof(FakeHttpWebRequest)};
 
-        //        var request = new RestRequest();
-        //        request.Resource = RequestBodyCapturer.VALIDATE_DEFAULTPARAMETER_HEADER;
+            var request = new RestRequest();
 
-        //        var response = client.ExecuteAsync<Test>(request, c => {                    
-        //            manualResetEvent.Set();
-        //        });
+            var response = client.ExecuteAsync(request, r =>
+            {                
+                manualResetEvent.Set();
+            });
 
-        //        manualResetEvent.WaitOne();
-
-        //        Assert.IsTrue(RequestBodyCapturer.CapturedHasBasicAuthenticationHeader);
-        //        Assert.AreEqual(token, RequestBodyCapturer.CapturedBasicAuthenticationHeaderValue);
-
-        //    }
-        //}
+            manualResetEvent.WaitOne();
+        }
 
         //[TestMethod]
         //public void When_Authorization_Fails()
@@ -331,13 +325,13 @@ namespace SimpleRestClient.Tests
         //    };
         //}
 
-        //private string AuthorizationToken
-        //{
-        //    get
-        //    {
-        //        var token = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "test", "user")));
-        //        return string.Format("Basic {0}", token);
-        //    }
-        //}
+        private string AuthorizationToken
+        {
+            get
+            {
+                var token = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "test", "user")));
+                return string.Format("Basic {0}", token);
+            }
+        }
     }
 }

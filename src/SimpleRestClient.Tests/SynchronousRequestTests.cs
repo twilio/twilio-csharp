@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
+using System.Threading.Tasks;
 
 namespace SimpleRestClient.Tests
 {
@@ -355,6 +356,7 @@ namespace SimpleRestClient.Tests
 
     public class FakeHttpWebRequest : HttpWebRequest
     {
+        private FakeHttpWebResponse _httpwebresponse;
         private static readonly SerializationInfo SerializationInfo;
         private readonly MemoryStream _requestStream;
 
@@ -385,6 +387,9 @@ namespace SimpleRestClient.Tests
             : base(SerializationInfo, new StreamingContext())
         {
             _requestStream = new MemoryStream();
+
+            FakeHttpWebResponse.InitializeHttpWebResponse(HttpStatusCode.OK, "OK");
+            _httpwebresponse = new FakeHttpWebResponse();
         }
 
         /// <summary>
@@ -410,6 +415,57 @@ namespace SimpleRestClient.Tests
             return _requestStream;
         }
 
+        public override WebResponse GetResponse()
+        {
+            return _httpwebresponse;
+        }
+
+        public override IAsyncResult BeginGetResponse(AsyncCallback callback, object state)
+        {
+            Task<WebResponse> f = Task<WebResponse>.Factory.StartNew(
+                _ =>
+                {
+                    System.Diagnostics.Debug.WriteLine("Foo");
+
+                    FakeHttpWebResponse.InitializeHttpWebResponse(HttpStatusCode.OK, "OK");
+                    return new FakeHttpWebResponse(new MemoryStream());
+                },
+                state
+            );
+
+            if (callback != null) f.ContinueWith((res) => callback(f));
+            return f;
+        }
+
+        public override WebResponse EndGetResponse(IAsyncResult asyncResult)
+        {
+            return ((Task<WebResponse>)asyncResult).Result;
+        }
+
         #endregion
     }
+
+    //public class FakeAsyncResult : IAsyncResult
+    //{
+    //    public object AsyncState
+    //    {
+    //        get { throw new NotImplementedException(); }
+    //    }
+
+    //    public System.Threading.WaitHandle AsyncWaitHandle
+    //    {
+    //        get { return new System.Threading.WaitHandle(); }
+    //    }
+
+    //    public bool CompletedSynchronously
+    //    {
+    //        get { throw new NotImplementedException(); }
+    //    }
+
+    //    public bool IsCompleted
+    //    {
+    //        get { throw new NotImplementedException(); }
+    //    }
+    //}
+
 }

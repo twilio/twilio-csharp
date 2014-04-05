@@ -58,13 +58,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="AsynchronousRequestTests.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="AsynchronousRequestTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RequestBodyCapturer.cs" />
-    <Compile Include="SimpleServer.cs" />
-    <Compile Include="SynchronousRequestTests.cs" />
-    <Compile Include="Test.cs" />
+    <Compile Include="SynchronousRequestTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="UriBuilderTests.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -77,6 +77,7 @@ namespace Simple
     [GeneratedCode("simple-json", "1.0.0")]
     [EditorBrowsable(EditorBrowsableState.Never)]
     [SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix")]
+    //[ExcludeFromCodeCoverage]
 #if SIMPLE_JSON_OBJARRAYINTERNAL
     internal
 #else
