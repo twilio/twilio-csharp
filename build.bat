@@ -14,7 +14,7 @@ REM Build
 if not "%errorlevel%"=="0" goto failure
 
 REM Unit tests
-"%GallioEcho%" src\SimpleRestClient.Tests\bin\Release\SimpleRestClient.Tests.dll
+"%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\Release\SimpleRestClient.Tests.dll
 REM "%GallioEcho%" src\Twilio.Api.Tests.Integration\bin\Release\Twilio.Api.Tests.Integration.dll
 if not "%errorlevel%"=="0" goto failure
 
