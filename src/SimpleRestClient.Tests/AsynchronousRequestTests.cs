@@ -26,13 +26,60 @@ namespace SimpleRestClient.Tests
             client.DefaultParameters.Add(new Parameter() { Name = "Authorization", Value = token, Type = ParameterType.HttpHeader });
             client.BaseUrl = BASE_URL;
 
-            client.WebRequest = new HttpWebRequestWrapper() { HttpWebRequestType = typeof(FakeHttpWebRequest)};
+            client.WebRequest = new HttpWebRequestWrapper() { 
+                Request = new FakeHttpWebRequest(r=>
+                    {
+                        FakeHttpWebResponse.InitializeHttpWebResponse(HttpStatusCode.OK, "OK");
+                        return new FakeHttpWebResponse(new MemoryStream());
+                    }) 
+            };
 
             var request = new RestRequest();
 
             var response = client.ExecuteAsync(request, r =>
             {                
                 manualResetEvent.Set();
+
+                Console.WriteLine(r.ResponseStatus);
+                Console.WriteLine(r.StatusCode);
+
+                Assert.AreEqual(ResponseStatus.Completed, r.ResponseStatus);
+                Assert.AreEqual(HttpStatusCode.OK, r.StatusCode);
+            });
+
+            manualResetEvent.WaitOne();
+        }
+
+        [TestMethod]
+        public void B_When_A_DefaultParameter_Header_Is_Present()
+        {
+            manualResetEvent = new ManualResetEvent(false);
+            string token = AuthorizationToken;
+
+            var client = new RestClient();
+            client.DefaultParameters.Add(new Parameter() { Name = "Authorization", Value = token, Type = ParameterType.HttpHeader });
+            client.BaseUrl = BASE_URL;
+
+            client.WebRequest = new HttpWebRequestWrapper()
+            {
+                Request = new FakeHttpWebRequest(r =>
+                {
+                    FakeHttpWebResponse.InitializeHttpWebResponse(HttpStatusCode.BadRequest, "BAD REQUEST");
+                    return new FakeHttpWebResponse(new MemoryStream());
+                })
+            };
+
+            var request = new RestRequest();
+
+            var response = client.ExecuteAsync(request, r =>
+            {
+                manualResetEvent.Set();
+
+                Console.WriteLine(r.ResponseStatus);
+                Console.WriteLine(r.StatusCode);
+
+                Assert.AreEqual(ResponseStatus.Completed, r.ResponseStatus);
+                Assert.AreEqual(HttpStatusCode.BadRequest, r.StatusCode);
             });
 
             manualResetEvent.WaitOne();

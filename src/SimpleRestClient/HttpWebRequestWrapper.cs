@@ -61,13 +61,13 @@ namespace Simple
             return restresponse;
         }
 
-        public Type HttpWebRequestType { get; set; }
+        internal HttpWebRequest Request { get; set; }
 
         public HttpWebRequest HttpWebRequestFactory(Uri uri)
         {
-            if (HttpWebRequestType != null)
+            if (this.Request != null)
             {
-                return (HttpWebRequest)Activator.CreateInstance(HttpWebRequestType);
+                return this.Request;
             }         
 
             return (HttpWebRequest)WebRequest.Create(uri);
