@@ -37,12 +37,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp">
-      <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -58,13 +52,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="AsynchronousRequestTests.cs">
+    <Compile Include="ExecuteTests.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Extensions.cs" />
     <Compile Include="Fakes\FakeHttpWebRequest.cs" />
     <Compile Include="Fakes\FakeHttpWebResponse.cs" />
-    <Compile Include="JsonTests.cs" />
+    <Compile Include="JsonDeserializerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\CultureChange.cs" />
     <Compile Include="Resources\EmployeeTracker.cs" />
@@ -77,9 +71,10 @@
     <Compile Include="Resources\Oddball.cs" />
     <Compile Include="Resources\SOUser.cs" />
     <Compile Include="Resources\twitter.cs" />
-    <Compile Include="SynchronousRequestTests.cs">
+    <Compile Include="RequestTests.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ResponseTests.cs" />
     <Compile Include="UriBuilderTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -87,9 +82,6 @@
       <Project>{2b09b37d-4049-4416-bdab-14008bfa96d8}</Project>
       <Name>SimpleRestClient</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Data\4sq.txt">

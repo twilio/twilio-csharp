@@ -16,7 +16,6 @@
 
 using System;
 using System.Collections.Generic;
-using RestSharp.Serializers;
 
 namespace SimpleRestClient.Tests
 {
@@ -119,15 +118,15 @@ namespace SimpleRestClient.Tests
 		public DateTime Value { get; set; }
 	}
 
-	public class OrderedProperties
-	{
-		[SerializeAs(Index = 2)]
-		public string Name { get; set; }
-		[SerializeAs(Index = 3)]
-		public int Age { get; set; }
-		[SerializeAs(Index = 1)]
-		public DateTime StartDate { get; set; }
-	}
+    //public class OrderedProperties
+    //{
+    //    [SerializeAs(Index = 2)]
+    //    public string Name { get; set; }
+    //    [SerializeAs(Index = 3)]
+    //    public int Age { get; set; }
+    //    [SerializeAs(Index = 1)]
+    //    public DateTime StartDate { get; set; }
+    //}
 
 	public class ObjectProperties
 	{

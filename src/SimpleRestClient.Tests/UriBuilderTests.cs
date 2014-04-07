@@ -7,9 +7,6 @@ using Simple;
 
 namespace SimpleRestClient.Tests
 {
-    /// <summary>
-    /// Note: These tests do not handle QueryString building, which is handled in Http, not RestClient
-    /// </summary>
     [TestClass]
     public class UriBuilderTests
     {

@@ -26,7 +26,7 @@ using System.Linq;
 namespace SimpleRestClient.Tests
 {
     [TestClass]
-    public class JsonTests
+    public class JsonDeserializerTests
     {
         private const string AlternativeCulture = "pt-PT";
 
