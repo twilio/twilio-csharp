@@ -18,9 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5B7D8C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6FE9C8DF-946E-4136-8FE0-4EC5520BF57F}"
 	ProjectSection(SolutionItems) = preProject
-		Local.runsettings = Local.runsettings
-		Local.testsettings = Local.testsettings
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+		SimpleRestClient.runsettings = SimpleRestClient.runsettings
 		Twilio1.vsmdi = Twilio1.vsmdi
 	EndProjectSection
 EndProject

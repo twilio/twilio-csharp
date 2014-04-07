@@ -64,6 +64,44 @@ namespace SimpleRestClient.Tests
             {
                 Request = new FakeHttpWebRequest(r =>
                 {
+                    var sourcecontent = Encoding.ASCII.GetBytes("{\"code\": 90011, \"message\": \"Param From must be specified.\", \"more_info\": \"https://www.twilio.com/docs/errors/90011\", \"status\": 400}");
+                    var stream = new MemoryStream(sourcecontent);
+                    
+                    FakeHttpWebResponse.InitializeHttpWebResponse(HttpStatusCode.BadRequest, "BAD REQUEST", (int)sourcecontent.Length);
+                    return new FakeHttpWebResponse(stream);
+                })
+            };
+
+            var request = new RestRequest();
+
+            var response = client.ExecuteAsync(request, r =>
+            {
+                manualResetEvent.Set();
+
+                Console.WriteLine(r.ResponseStatus);
+                Console.WriteLine(r.StatusCode);
+
+                Assert.AreEqual(ResponseStatus.Completed, r.ResponseStatus);
+                Assert.AreEqual(HttpStatusCode.BadRequest, r.StatusCode);
+            });
+
+            manualResetEvent.WaitOne();
+        }
+
+        [TestMethod]
+        public void C_When_A_DefaultParameter_Header_Is_Present()
+        {
+            manualResetEvent = new ManualResetEvent(false);
+            string token = AuthorizationToken;
+
+            var client = new RestClient();
+            client.DefaultParameters.Add(new Parameter() { Name = "Authorization", Value = token, Type = ParameterType.HttpHeader });
+            client.BaseUrl = BASE_URL;
+
+            client.WebRequest = new HttpWebRequestWrapper()
+            {
+                Request = new FakeHttpWebRequest(r =>
+                {
                     FakeHttpWebResponse.InitializeHttpWebResponse(HttpStatusCode.BadRequest, "BAD REQUEST");
                     return new FakeHttpWebResponse(new MemoryStream());
                 })

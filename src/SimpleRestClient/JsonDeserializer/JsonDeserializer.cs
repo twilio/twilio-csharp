@@ -11,7 +11,7 @@ namespace Simple
     /// </summary>
     public class JsonDeserializer
     {
-        //public string RootElement { get; set; }
+        public string RootElement { get; set; }
         //public string Namespace { get; set; }
 
         /// <summary>
@@ -46,16 +46,16 @@ namespace Simple
             {
                 var objType = target.GetType();
 
-                //if (RootElement.HasValue())
-                //{
-                //    var root = FindRoot(response.Content);
-                //    target = (T)BuildList(objType, root);
-                //}
-                //else
-                //{
+                if (RootElement.HasValue())
+                {
+                    var root = FindRoot(response.Content);
+                    target = (T)BuildList(objType, root);
+                }
+                else
+                {
                     var data = SimpleJson.DeserializeObject(response.Content);
                     target = (T)BuildList(objType, data);
-                //}
+                }
             }
             else if (target is IDictionary)
             {
@@ -74,10 +74,10 @@ namespace Simple
         private object FindRoot(string content)
         {
             var data = (IDictionary<string, object>)SimpleJson.DeserializeObject(content);
-            //if (RootElement.HasValue() && data.ContainsKey(RootElement))
-            //{
-            //    return data[RootElement];
-            //}
+            if (RootElement.HasValue() && data.ContainsKey(RootElement))
+            {
+                return data[RootElement];
+            }
             return data;
         }
 

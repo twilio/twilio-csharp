@@ -87,6 +87,21 @@ namespace SimpleRestClient.Tests
 
         public override WebResponse EndGetResponse(IAsyncResult asyncResult)
         {
+            var response = ((Task<WebResponse>)asyncResult).Result as HttpWebResponse;
+
+            if ((int)response.StatusCode >= 400)
+            {
+                var stream = response.GetResponseStream();
+
+                var webexception = new WebException(
+               "The remote server returned an error: (400) Bad Request.",
+               null,
+               WebExceptionStatus.ProtocolError,
+               new FakeHttpWebResponse(stream));
+
+               throw webexception;
+            }
+            
             return ((Task<WebResponse>)asyncResult).Result;
         }
 

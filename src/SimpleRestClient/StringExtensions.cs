@@ -81,43 +81,43 @@ namespace Simple
             // Ansi as default
             Encoding encoding = Encoding.UTF8;
 
-#if FRAMEWORK
+//#if FRAMEWORK
 			return encoding.GetString(buffer);
-#else
-            if (buffer == null || buffer.Length == 0)
-                return "";
+//#else
+//            if (buffer == null || buffer.Length == 0)
+//                return "";
 
-            /*
-                EF BB BF		UTF-8 
-                FF FE UTF-16	little endian 
-                FE FF UTF-16	big endian 
-                FF FE 00 00		UTF-32, little endian 
-                00 00 FE FF		UTF-32, big-endian 
-                */
+//            /*
+//                EF BB BF		UTF-8 
+//                FF FE UTF-16	little endian 
+//                FE FF UTF-16	big endian 
+//                FF FE 00 00		UTF-32, little endian 
+//                00 00 FE FF		UTF-32, big-endian 
+//                */
 
-            if (buffer[0] == 0xef && buffer[1] == 0xbb && buffer[2] == 0xbf)
-            {
-                encoding = Encoding.UTF8;
-            }
-            else if (buffer[0] == 0xfe && buffer[1] == 0xff)
-            {
-                encoding = Encoding.Unicode;
-            }
-            else if (buffer[0] == 0xfe && buffer[1] == 0xff)
-            {
-                encoding = Encoding.BigEndianUnicode; // utf-16be
-            }
+//            if (buffer[0] == 0xef && buffer[1] == 0xbb && buffer[2] == 0xbf)
+//            {
+//                encoding = Encoding.UTF8;
+//            }
+//            else if (buffer[0] == 0xfe && buffer[1] == 0xff)
+//            {
+//                encoding = Encoding.Unicode;
+//            }
+//            else if (buffer[0] == 0xfe && buffer[1] == 0xff)
+//            {
+//                encoding = Encoding.BigEndianUnicode; // utf-16be
+//            }
 
-            using (MemoryStream stream = new MemoryStream())
-            {
-                stream.Write(buffer, 0, buffer.Length);
-                stream.Seek(0, SeekOrigin.Begin);
-                using (StreamReader reader = new StreamReader(stream, encoding))
-                {
-                    return reader.ReadToEnd();
-                }
-            }
-#endif
+//            using (MemoryStream stream = new MemoryStream())
+//            {
+//                stream.Write(buffer, 0, buffer.Length);
+//                stream.Seek(0, SeekOrigin.Begin);
+//                using (StreamReader reader = new StreamReader(stream, encoding))
+//                {
+//                    return reader.ReadToEnd();
+//                }
+//            }
+//#endif
         }
 
         /// <summary>
@@ -221,15 +221,15 @@ namespace Simple
         private static DateTime ParseFormattedDate(string input, CultureInfo culture)
         {
             var formats = new[] {
-				"u", 
-				"s", 
-				"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", 
-				"yyyy-MM-ddTHH:mm:ssZ", 
-				"yyyy-MM-dd HH:mm:ssZ", 
-				"yyyy-MM-ddTHH:mm:ss", 
-				"yyyy-MM-ddTHH:mm:sszzzzzz",
-				"M/d/yyyy h:mm:ss tt" // default format for invariant culture
-			};
+                "u", 
+                "s", 
+                "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", 
+                "yyyy-MM-ddTHH:mm:ssZ", 
+                "yyyy-MM-dd HH:mm:ssZ", 
+                "yyyy-MM-ddTHH:mm:ss", 
+                "yyyy-MM-ddTHH:mm:sszzzzzz",
+                "M/d/yyyy h:mm:ss tt" // default format for invariant culture
+            };
 
             DateTime date;
             if (DateTime.TryParseExact(input, formats, culture, DateTimeStyles.None, out date))
@@ -410,11 +410,11 @@ namespace Simple
         /// <returns></returns>
         public static object ChangeType(this object source, Type newType)
         {
-#if FRAMEWORK
+//#if FRAMEWORK
 			return Convert.ChangeType(source, newType);
-#else
-            return Convert.ChangeType(source, newType, null);
-#endif
+//#else
+//            return Convert.ChangeType(source, newType, null);
+//#endif
         }
 
         /// <summary>
@@ -426,11 +426,11 @@ namespace Simple
         /// <returns></returns>
         public static object ChangeType(this object source, Type newType, CultureInfo culture)
         {
-#if FRAMEWORK || SILVERLIGHT || WINDOWS_PHONE
+//#if FRAMEWORK || SILVERLIGHT || WINDOWS_PHONE
 			return Convert.ChangeType(source, newType, culture);
-#else
-            return Convert.ChangeType(source, newType, null);
-#endif
+//#else
+//            return Convert.ChangeType(source, newType, null);
+//#endif
         }
 
         /// <summary>
@@ -443,24 +443,24 @@ namespace Simple
         /// <returns></returns>
         public static object FindEnumValue(this Type type, string value, CultureInfo culture)
         {
-#if FRAMEWORK
-			var ret = Enum.GetValues( type )
-			.Cast<Enum>()
-			.FirstOrDefault(v => v.ToString().GetNameVariants(culture).Contains(value, StringComparer.Create(culture, true)));
+//#if FRAMEWORK
+            var ret = Enum.GetValues( type )
+            .Cast<Enum>()
+            .FirstOrDefault(v => v.ToString().GetNameVariants(culture).Contains(value, StringComparer.Create(culture, true)));
 
-			if (ret == null)
-			{
-				var enumValueAsUnderlyingType = Convert.ChangeType(value, Enum.GetUnderlyingType(type), culture);
-				if (enumValueAsUnderlyingType != null && Enum.IsDefined(type, enumValueAsUnderlyingType))
-				{
-					ret = (Enum) Enum.ToObject(type, enumValueAsUnderlyingType);
-				}
-			}
+            if (ret == null)
+            {
+                var enumValueAsUnderlyingType = Convert.ChangeType(value, Enum.GetUnderlyingType(type), culture);
+                if (enumValueAsUnderlyingType != null && Enum.IsDefined(type, enumValueAsUnderlyingType))
+                {
+                    ret = (Enum) Enum.ToObject(type, enumValueAsUnderlyingType);
+                }
+            }
 
-			return ret;
-#else
-            return Enum.Parse(type, value, true);
-#endif
+            return ret;
+//#else
+//            return Enum.Parse(type, value, true);
+//#endif
         }
 
     }
