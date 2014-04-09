@@ -144,7 +144,6 @@
     <Compile Include="Messages.cs" />
     <Compile Include="Model\Capabilities.cs" />
     <Compile Include="Model\Feedback.cs" />
-    <Compile Include="Model\FeedbackSummary.cs" />
     <Compile Include="Model\Issue.cs" />
     <Compile Include="Model\MediaListRequest.cs" />
     <Compile Include="Notifications.cs" />
