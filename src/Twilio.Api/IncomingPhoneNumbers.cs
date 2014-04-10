@@ -54,7 +54,7 @@ namespace Twilio
         /// </summary>
         public virtual IncomingPhoneNumberResult ListIncomingLocalPhoneNumbers()
         {
-            return ListIncomingMobilePhoneNumbers(null, null, null, null);
+            return ListIncomingLocalPhoneNumbers(null, null, null, null);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Twilio
         /// </summary>
         public virtual IncomingPhoneNumberResult ListIncomingTollFreePhoneNumbers()
         {
-            return ListIncomingMobilePhoneNumbers(null, null, null, null);
+            return ListIncomingTollFreePhoneNumbers(null, null, null, null);
         }
 
         /// <summary>

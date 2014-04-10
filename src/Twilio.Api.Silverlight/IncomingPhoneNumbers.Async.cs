@@ -58,7 +58,7 @@ namespace Twilio
         /// </summary>
         public virtual void ListIncomingLocalPhoneNumbers(Action<IncomingPhoneNumberResult> callback)
         {
-            ListIncomingMobilePhoneNumbers(null, null, null, null, callback);
+            ListIncomingLocalPhoneNumbers(null, null, null, null, callback);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Twilio
         /// </summary>
         public virtual void ListIncomingTollFreePhoneNumbers(Action<IncomingPhoneNumberResult> callback)
         {
-            ListIncomingMobilePhoneNumbers(null, null, null, null, callback);
+            ListIncomingTollFreePhoneNumbers(null, null, null, null, callback);
         }
 
         /// <summary>
