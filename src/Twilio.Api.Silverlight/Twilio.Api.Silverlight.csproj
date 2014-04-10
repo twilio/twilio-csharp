@@ -182,9 +182,6 @@
     <Compile Include="..\Twilio.Api\Model\Feedback.cs">
       <Link>Model\Feedback.cs</Link>
     </Compile>
-    <Compile Include="..\Twilio.Api\Model\FeedbackSummary.cs">
-      <Link>Model\FeedbackSummary.cs</Link>
-    </Compile>
     <Compile Include="..\Twilio.Api\Model\HangupStyle.cs">
       <Link>Model\HangupStyle.cs</Link>
     </Compile>
