@@ -10,7 +10,7 @@ namespace Twilio
 		/// Returns a list of conferences within an account. The list includes paging information and is sorted by DateUpdated, with most recent conferences first.
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void ListConferences(Action<ConferenceResult> callback)
+        public virtual void ListConferences(Action<ConferenceResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Conferences.json";
@@ -23,7 +23,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="options">List filter options. Only properties with values are included in request.</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void ListConferences(ConferenceListRequest options, Action<ConferenceResult> callback)
+        public virtual void ListConferences(ConferenceListRequest options, Action<ConferenceResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Conferences.json";
@@ -33,7 +33,7 @@ namespace Twilio
 			ExecuteAsync<ConferenceResult>(request, (response) => callback(response));
 		}
 
-		private void AddConferenceListOptions(ConferenceListRequest options, RestRequest request)
+        private void AddConferenceListOptions(ConferenceListRequest options, RestRequest request)
 		{
 			if (options.Status.HasValue()) request.AddParameter("Status", options.Status);
 			if (options.FriendlyName.HasValue()) request.AddParameter("FriendlyName", options.FriendlyName);
@@ -53,7 +53,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="conferenceSid">The Sid of the conference to retrieve</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void GetConference(string conferenceSid, Action<Conference> callback)
+        public virtual void GetConference(string conferenceSid, Action<Conference> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}.json";
@@ -69,7 +69,7 @@ namespace Twilio
 		/// <param name="conferenceSid">The Sid of the conference</param>
 		/// <param name="muted">Set to null to retrieve all, true to retrieve muted, false to retrieve unmuted</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void ListConferenceParticipants(string conferenceSid, bool? muted, Action<ParticipantResult> callback)
+        public virtual void ListConferenceParticipants(string conferenceSid, bool? muted, Action<ParticipantResult> callback)
 		{
 			ListConferenceParticipants(conferenceSid, muted, null, null, callback);
 		}
@@ -82,7 +82,7 @@ namespace Twilio
 		/// <param name="pageNumber">Which page number to start retrieving from</param>
 		/// <param name="count">How many participants to retrieve</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void ListConferenceParticipants(string conferenceSid, bool? muted, int? pageNumber, int? count, Action<ParticipantResult> callback)
+        public virtual void ListConferenceParticipants(string conferenceSid, bool? muted, int? pageNumber, int? count, Action<ParticipantResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants.json";
@@ -102,7 +102,7 @@ namespace Twilio
 		/// <param name="conferenceSid">The Sid of the conference</param>
 		/// <param name="callSid">The Sid of the call instance</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void GetConferenceParticipant(string conferenceSid, string callSid, Action<Participant> callback)
+        public virtual void GetConferenceParticipant(string conferenceSid, string callSid, Action<Participant> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";
@@ -119,7 +119,7 @@ namespace Twilio
 		/// <param name="conferenceSid">The Sid of the conference</param>
 		/// <param name="callSid">The Sid of the call to mute</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void MuteConferenceParticipant(string conferenceSid, string callSid, Action<Participant> callback)
+        public virtual void MuteConferenceParticipant(string conferenceSid, string callSid, Action<Participant> callback)
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";
@@ -137,7 +137,7 @@ namespace Twilio
 		/// <param name="conferenceSid">The Sid of the conference</param>
 		/// <param name="callSid">The Sid of the call to unmute</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void UnmuteConferenceParticipant(string conferenceSid, string callSid, Action<Participant> callback)
+        public virtual void UnmuteConferenceParticipant(string conferenceSid, string callSid, Action<Participant> callback)
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";
@@ -155,7 +155,7 @@ namespace Twilio
 		/// <param name="conferenceSid">The Sid of the conference</param>
 		/// <param name="callSid">The Sid of the call to remove</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void KickConferenceParticipant(string conferenceSid, string callSid, Action<bool> callback)
+        public virtual void KickConferenceParticipant(string conferenceSid, string callSid, Action<bool> callback)
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";

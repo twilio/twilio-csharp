@@ -26,7 +26,10 @@ namespace Twilio
         /// <summary>
         /// 
         /// </summary>
-        public WebProxy Proxy { get; set; }
+        public IWebProxy Proxy {
+            get { return _client.Proxy; }
+            set { _client.Proxy = value; }
+        }
 #endif
 
 		private string AccountSid { get; set; }
@@ -62,7 +65,7 @@ namespace Twilio
             var version = assemblyName.Version;
 
             _client = new RestClient();
-            _client.UserAgent = "twilio-csharp/" + version;
+            _client.UserAgent = "twilio-csharp/" + version + " (.NET " + Environment.Version.ToString() + ")";
             _client.Authenticator = new HttpBasicAuthenticator(AccountSid, AuthToken);
 
 #if FRAMEWORK
@@ -70,11 +73,7 @@ namespace Twilio
 #endif
 
             _client.BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion);
-            _client.Timeout = 3050;
-
-#if FRAMEWORK
-            if (this.Proxy != null) { _client.Proxy = this.Proxy; }
-#endif
+            _client.Timeout = 30500;
 
             // if acting on a subaccount, use request.AddUrlSegment("AccountSid", "value")
             // to override for that request.

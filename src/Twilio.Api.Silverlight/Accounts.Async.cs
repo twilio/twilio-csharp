@@ -9,7 +9,7 @@ namespace Twilio
 		/// Retrieve the account details for the currently authenticated account
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void GetAccount(Action<Account> callback)
+		public virtual void GetAccount(Action<Account> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}.json";
@@ -22,7 +22,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="accountSid">The Sid of the subaccount to retrieve</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void GetAccount(string accountSid, Action<Account> callback)
+        public virtual void GetAccount(string accountSid, Action<Account> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}.json";
@@ -36,7 +36,7 @@ namespace Twilio
 		/// List all subaccounts created for the authenticated account
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void ListSubAccounts(Action<AccountResult> callback)
+        public virtual void ListSubAccounts(Action<AccountResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts.json";
@@ -49,7 +49,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="friendlyName">Name associated with this account for your own reference (can be empty string)</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void CreateSubAccount(string friendlyName, Action<Account> callback)
+        public virtual void CreateSubAccount(string friendlyName, Action<Account> callback)
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts.json";
@@ -69,7 +69,7 @@ namespace Twilio
 		/// <param name="subAccountSid">The subaccount to change the status on</param>
 		/// <param name="status">The status to change the subaccount to</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void ChangeSubAccountStatus(string subAccountSid, AccountStatus status, Action<Account> callback)
+        public virtual void ChangeSubAccountStatus(string subAccountSid, AccountStatus status, Action<Account> callback)
 		{
 			if (subAccountSid == AccountSid)
 			{
@@ -90,7 +90,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="friendlyName">Name to use when updating</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void UpdateAccountName(string friendlyName, Action<Account> callback)
+        public virtual void UpdateAccountName(string friendlyName, Action<Account> callback)
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}.json";

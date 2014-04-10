@@ -12,7 +12,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="incomingPhoneNumberSid">The Sid of the number to retrieve</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void GetIncomingPhoneNumber(string incomingPhoneNumberSid, Action<IncomingPhoneNumber> callback)
+        public virtual void GetIncomingPhoneNumber(string incomingPhoneNumberSid, Action<IncomingPhoneNumber> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}.json";
@@ -26,7 +26,7 @@ namespace Twilio
 		/// List all incoming phone numbers on current account. Makes a GET request to the IncomingPhoneNumber List resource.
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void ListIncomingPhoneNumbers(Action<IncomingPhoneNumberResult> callback)
+        public virtual void ListIncomingPhoneNumbers(Action<IncomingPhoneNumberResult> callback)
 		{
 			ListIncomingPhoneNumbers(null, null, null, null, callback);
 		}
@@ -39,7 +39,7 @@ namespace Twilio
 		/// <param name="pageNumber">Page number to start retrieving results from</param>
 		/// <param name="count">How many results to return</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void ListIncomingPhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
+        public virtual void ListIncomingPhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers.json";
@@ -56,9 +56,9 @@ namespace Twilio
         /// <summary>
         /// List all incoming local phone numbers on current account
         /// </summary>
-        public void ListIncomingLocalPhoneNumbers(Action<IncomingPhoneNumberResult> callback)
+        public virtual void ListIncomingLocalPhoneNumbers(Action<IncomingPhoneNumberResult> callback)
         {
-            ListIncomingMobilePhoneNumbers(null, null, null, null, callback);
+            ListIncomingLocalPhoneNumbers(null, null, null, null, callback);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Twilio
         /// <param name="friendlyName">Optional friendly name to match</param>
         /// <param name="pageNumber">Page number to start retrieving results from</param>
         /// <param name="count">How many results to return</param>
-        public void ListIncomingLocalPhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
+        public virtual void ListIncomingLocalPhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/Local.json";
@@ -85,9 +85,9 @@ namespace Twilio
         /// <summary>
         /// List all incoming toll free phone numbers on current account
         /// </summary>
-        public void ListIncomingTollFreePhoneNumbers(Action<IncomingPhoneNumberResult> callback)
+        public virtual void ListIncomingTollFreePhoneNumbers(Action<IncomingPhoneNumberResult> callback)
         {
-            ListIncomingMobilePhoneNumbers(null, null, null, null, callback);
+            ListIncomingTollFreePhoneNumbers(null, null, null, null, callback);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Twilio
         /// <param name="friendlyName">Optional friendly name to match</param>
         /// <param name="pageNumber">Page number to start retrieving results from</param>
         /// <param name="count">How many results to return</param>
-        public void ListIncomingTollFreePhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
+        public virtual void ListIncomingTollFreePhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/TollFree.json";
@@ -114,7 +114,7 @@ namespace Twilio
         /// <summary>
         /// List all incoming mobile phone numbers on current account
         /// </summary>
-        public void ListIncomingMobilePhoneNumbers(Action<IncomingPhoneNumberResult> callback)
+        public virtual void ListIncomingMobilePhoneNumbers(Action<IncomingPhoneNumberResult> callback)
         {
             ListIncomingMobilePhoneNumbers(null, null, null, null, callback);
         }
@@ -126,7 +126,7 @@ namespace Twilio
         /// <param name="friendlyName">Optional friendly name to match</param>
         /// <param name="pageNumber">Page number to start retrieving results from</param>
         /// <param name="count">How many results to return</param>
-        public void ListIncomingMobilePhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
+        public virtual void ListIncomingMobilePhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/Mobile.json";
@@ -145,7 +145,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="options">Optional parameters to use when purchasing number</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void AddIncomingPhoneNumber(PhoneNumberOptions options, Action<IncomingPhoneNumber> callback)
+        public virtual void AddIncomingPhoneNumber(PhoneNumberOptions options, Action<IncomingPhoneNumber> callback)
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers.json";
@@ -170,7 +170,7 @@ namespace Twilio
         /// </summary>
         /// <param name="options">Optional parameters to use when purchasing number</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public void AddIncomingLocalPhoneNumber(PhoneNumberOptions options, Action<IncomingPhoneNumber> callback)
+        public virtual void AddIncomingLocalPhoneNumber(PhoneNumberOptions options, Action<IncomingPhoneNumber> callback)
         {
             Require.Argument("PhoneNumber", options.PhoneNumber);
 
@@ -191,7 +191,7 @@ namespace Twilio
         /// </summary>
         /// <param name="options">Optional parameters to use when purchasing number</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public void AddIncomingTollFreePhoneNumber(PhoneNumberOptions options, Action<IncomingPhoneNumber> callback)
+        public virtual void AddIncomingTollFreePhoneNumber(PhoneNumberOptions options, Action<IncomingPhoneNumber> callback)
         {
             Require.Argument("PhoneNumber", options.PhoneNumber);
 
@@ -213,7 +213,7 @@ namespace Twilio
 		/// <param name="incomingPhoneNumberSid">The Sid of the phone number to update</param>
 		/// <param name="options">Which settings to update. Only properties with values set will be updated.</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void UpdateIncomingPhoneNumber(string incomingPhoneNumberSid, PhoneNumberOptions options, Action<IncomingPhoneNumber> callback)
+        public virtual void UpdateIncomingPhoneNumber(string incomingPhoneNumberSid, PhoneNumberOptions options, Action<IncomingPhoneNumber> callback)
 		{
 			Require.Argument("IncomingPhoneNumberSid", incomingPhoneNumberSid);
 
@@ -234,7 +234,7 @@ namespace Twilio
         /// <param name="sourceAccountSid">The AccountSid of the current owning account to move the phone number from</param>
         /// <param name="targetAccountSid">The AccountSid of the account to move the phone number to</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public void TransferIncomingPhoneNumber(string incomingPhoneNumberSid, string sourceAccountSid, string targetAccountSid, Action<IncomingPhoneNumber> callback)
+        public virtual void TransferIncomingPhoneNumber(string incomingPhoneNumberSid, string sourceAccountSid, string targetAccountSid, Action<IncomingPhoneNumber> callback)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}.json";
@@ -251,7 +251,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="incomingPhoneNumberSid">The Sid of the number to remove</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-		public void DeleteIncomingPhoneNumber(string incomingPhoneNumberSid, Action<DeleteStatus> callback)
+        public virtual void DeleteIncomingPhoneNumber(string incomingPhoneNumberSid, Action<DeleteStatus> callback)
 		{
 			Require.Argument("IncomingPhoneNumberSid", incomingPhoneNumberSid);
 			var request = new RestRequest(Method.DELETE);
@@ -262,7 +262,7 @@ namespace Twilio
 			ExecuteAsync(request, (response) => { callback(response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed); });
 		}
 
-		private void AddPhoneNumberOptionsToRequest(RestRequest request, PhoneNumberOptions options)
+        private void AddPhoneNumberOptionsToRequest(RestRequest request, PhoneNumberOptions options)
 		{
             if (options.AccountSid.HasValue())
             {
