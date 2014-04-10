@@ -1,6 +1,5 @@
 ﻿    using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Net;
 using System.Reflection;
@@ -89,7 +88,7 @@ namespace Simple
             this.DefaultParameters.Add(p);
         }   
      
-        private RestResponse<T> Deserialize<T>(RestRequest request, RestResponse response)
+        internal RestResponse<T> Deserialize<T>(RestRequest request, RestResponse response)
         {
             request.OnBeforeDeserialization(response);
 

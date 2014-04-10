@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.IO;
 using System.Globalization;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Simple
@@ -69,11 +69,11 @@ namespace Simple
         }
 
         /// <summary>
-		/// Converts a byte array to a string, using its byte order mark to convert it to the right encoding.
-		/// http://www.shrinkrays.net/code-snippets/csharp/an-extension-method-for-converting-a-byte-array-to-a-string.aspx
-		/// </summary>
-		/// <param name="buffer">An array of bytes to convert</param>
-		/// <returns>The byte as a string.</returns>
+        /// Converts a byte array to a string, using its byte order mark to convert it to the right encoding.
+        /// http://www.shrinkrays.net/code-snippets/csharp/an-extension-method-for-converting-a-byte-array-to-a-string.aspx
+        /// </summary>
+        /// <param name="buffer">An array of bytes to convert</param>
+        /// <returns>The byte as a string.</returns>
         public static string AsString(this byte[] buffer)
         {
             if (buffer == null) return "";
@@ -81,7 +81,7 @@ namespace Simple
             // Ansi as default
             Encoding encoding = Encoding.UTF8;
 
-			return encoding.GetString(buffer);
+            return encoding.GetString(buffer);
         }
 
         /// <summary>
@@ -127,10 +127,10 @@ namespace Simple
         /// </summary>
         /// <param name="input">String to process</param>
         /// <returns>string</returns>
-        public static string RemoveUnderscoresAndDashes(this string input)
-        {
-            return input.Replace("_", "").Replace("-", ""); // avoiding regex
-        }
+        //public static string RemoveUnderscoresAndDashes(this string input)
+        //{
+        //    return input.Replace("_", "").Replace("-", ""); // avoiding regex
+        //}
 
         /// <summary>
         /// Parses most common JSON date formats
@@ -245,10 +245,10 @@ namespace Simple
         /// <param name="input">String to check</param>
         /// <param name="pattern">Pattern to match</param>
         /// <returns>bool</returns>
-        public static bool Matches(this string input, string pattern)
-        {
-            return Regex.IsMatch(input, pattern);
-        }
+        //public static bool Matches(this string input, string pattern)
+        //{
+        //    return Regex.IsMatch(input, pattern);
+        //}
 
         /// <summary>
         /// Converts a string to pascal case
@@ -372,10 +372,10 @@ namespace Simple
         /// <param name="source"></param>
         /// <param name="newType"></param>
         /// <returns></returns>
-        public static object ChangeType(this object source, Type newType)
-        {
-			return Convert.ChangeType(source, newType);
-        }
+        //public static object ChangeType(this object source, Type newType)
+        //{
+        //    return Convert.ChangeType(source, newType);
+        //}
 
         /// <summary>
         /// Converts an object from one type to another
@@ -386,7 +386,7 @@ namespace Simple
         /// <returns></returns>
         public static object ChangeType(this object source, Type newType, CultureInfo culture)
         {
-			return Convert.ChangeType(source, newType, culture);
+            return Convert.ChangeType(source, newType, culture);
         }
 
         /// <summary>

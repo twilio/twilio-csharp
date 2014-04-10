@@ -16,6 +16,40 @@ namespace SimpleRestClient.Tests
         ManualResetEvent manualResetEvent;
         private const string BASE_URL = "http://example.com/";
 
+        //[TestMethod]
+        //public void When_Request_Is_Aborted()
+        //{
+        //    manualResetEvent = new ManualResetEvent(false);
+
+        //    var client = new RestClient();
+        //    client.BaseUrl = "http://api.twilio.com";
+
+        //    client.WebRequest = new HttpWebRequestWrapper()
+        //    {
+        //        Request = new FakeHttpWebRequest(r =>
+        //        {
+        //            FakeHttpWebResponse.InitializeHttpWebResponse(HttpStatusCode.OK, "OK");
+        //            return new FakeHttpWebResponse(new MemoryStream());
+        //        })
+        //    };
+
+        //    var request = new RestRequest();
+
+        //    var response = client.ExecuteAsync(request, r =>
+        //    {
+        //        manualResetEvent.Set();
+
+        //        //Console.WriteLine(r.ResponseStatus);
+        //        //Console.WriteLine(r.ErrorException.Message);
+
+        //        Assert.AreEqual(ResponseStatus.Error, r.ResponseStatus);
+        //        //Assert.IsNotNull(r.ErrorException);
+        //    });
+
+        //    response.Abort();
+        //    manualResetEvent.WaitOne();
+        //}
+
         [TestMethod]
         public void When_200OK_Response_Is_Returned_Then_Set_Proper_Response_Values()
         {
@@ -47,6 +81,8 @@ namespace SimpleRestClient.Tests
 
             manualResetEvent.WaitOne();
         }
+
+        
 
         [TestMethod]
         public void When_400BadRequest_Response_Is_Returned_Then_Set_Proper_Response_Values()
