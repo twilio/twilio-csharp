@@ -3,6 +3,7 @@ using System.Text;
 using System;
 using System.Net;
 using Simple;
+using System.Threading.Tasks;
 
 namespace Twilio
 {
@@ -23,7 +24,8 @@ namespace Twilio
         /// <summary>
         /// 
         /// </summary>
-        public IWebProxy Proxy {
+        public IWebProxy Proxy
+        {
             get { return _client.Proxy; }
             set { _client.Proxy = value; }
         }
@@ -70,7 +72,7 @@ namespace Twilio
 
             // if acting on a subaccount, use request.AddUrlSegment("AccountSid", "value")
             // to override for that request.
-            _client.AddDefaultUrlSegment("AccountSid", AccountResourceSid); 
+            _client.AddDefaultUrlSegment("AccountSid", AccountResourceSid);
         }
 
         private string Authenticate()
@@ -86,7 +88,7 @@ namespace Twilio
         /// </summary>
         /// <typeparam name="T">The type of object to create and populate with the returned data.</typeparam>
         /// <param name="request">The RestRequest to execute (will use client credentials)</param>
-        public virtual T Execute<T>(RestRequest request) where T : new()
+        public virtual async Task<T> Execute<T>(RestRequest request) where T : new()
         {
             request.OnBeforeDeserialization = (resp) =>
             {
@@ -106,7 +108,7 @@ namespace Twilio
 
             request.DateFormat = "ddd, dd MMM yyyy HH:mm:ss '+0000'";
 
-            var response = _client.Execute<T>(request);
+            var response = await _client.ExecuteAsync<T>(request);
             return response.Data;
         }
 
@@ -114,9 +116,9 @@ namespace Twilio
         /// Execute a manual REST request
         /// </summary>
         /// <param name="request">The RestRequest to execute (will use client credentials)</param>
-        public virtual RestResponse Execute(RestRequest request)
+        public virtual async Task<RestResponse> Execute(RestRequest request)
         {
-            return _client.Execute(request);
+            return await _client.ExecuteAsync(request);
         }
 
         private string GetParameterNameWithEquality(ComparisonType? comparisonType, string parameterName)

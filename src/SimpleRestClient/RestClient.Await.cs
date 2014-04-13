@@ -1,29 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using Simple;
+
+#if PCL
+using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
+#endif
 
-namespace Twilio
+namespace Simple
 {
-    public class RestClient
+#if PCL
+    /// <summary>
+    /// A simple class for making requests to HTTP API's
+    /// </summary>
+    public partial class RestClient
     {
+
         public async Task<RestResponse<T>> ExecuteAsync<T>(RestRequest restrequest)
         {
             var restresponse = await ExecuteAsync(restrequest);
-            return await Deserialize<T>(restrequest, restresponse);
+            var data = Deserialize<T>(restrequest, restresponse);
+            return data;
         }
 
         public async Task<RestResponse> ExecuteAsync(RestRequest restrequest)
         {
             var httpclient = new HttpClient();
-            var request = new HttpRequestMessage(restrequest.Method, restrequest.Uri);
+
+            var method = (HttpMethod)Enum.Parse(typeof(HttpMethod), restrequest.Method, true);
+            var request = new HttpRequestMessage(method, Simple.UriBuilder.Build(this.BaseUrl, restrequest));
 
             httpclient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", "");
-            //request.Content = new FormUrlEncodedContent();
-            
+            //request.Content = new FormUrlEncodedContent(restrequest.Parameters);
+
             var response = await httpclient.SendAsync(request);
 
             //var restresponse = new RestResponse() { ResponseStatus = ResponseStatus.None };
@@ -35,18 +47,6 @@ namespace Twilio
 
             //restresponse = this.WebRequest.ParseWebException(exc);
         }
-
-        public async Task<RestResponse<T>> Deserialize<T>(RestRequest restrequest, RestResponse restresponse) {
-            return new RestResponse<T>();
-        }
     }
-
-    public class RestRequest {
-        public HttpMethod Method { get; set; }
-        public string Uri { get; set; }
-    }
-
-    public class RestResponse { }
-
-    public class RestResponse<T> { }
+#endif
 }

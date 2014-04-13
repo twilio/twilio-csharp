@@ -1,5 +1,5 @@
-﻿using System;
-using Simple;
+﻿using Simple;
+using System.Threading.Tasks;
 
 namespace Twilio
 {
@@ -9,24 +9,23 @@ namespace Twilio
         /// Locates and returns a specific SIP Domain resource
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain to locate</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void GetDomain(string domainSid, Action<Domain> callback)
+        public virtual async Task<Domain> GetDomain(string domainSid)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/Domains/{DomainSid}.json";
             request.AddUrlSegment("DomainSid", domainSid);
 
-            ExecuteAsync<Domain>(request, (response) => callback(response));
+            return await Execute<Domain>(request);
         }
 
         /// <summary>
         /// Return a list of all SIP Domain resources
         /// </summary>
         /// <returns></returns>
-        public virtual void ListDomains(Action<DomainResult> callback)
+        public virtual async Task<DomainResult> ListDomains()
         {
-            ListDomains(null, null, callback);
+            return await ListDomains(null, null);
         }
 
         /// <summary>
@@ -34,9 +33,8 @@ namespace Twilio
         /// </summary>
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void ListDomains(int? pageNumber, int? count, Action<DomainResult> callback)
+        public virtual async Task<DomainResult> ListDomains(int? pageNumber, int? count)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/Domains.json";
@@ -44,65 +42,60 @@ namespace Twilio
             if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
             if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
-            ExecuteAsync<DomainResult>(request, (response) => callback(response));
+            return await Execute<DomainResult>(request);
         }
 
         /// <summary>
         /// Creates a new SIP Domain resource
         /// </summary>
         /// <param name="domainName">The name of the SIP Domain to create.  You must pick a unique domain name that ends in ".sip.twilio.com"</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void CreateDomain(string domainName, Action<Domain> callback)
+        public virtual async Task<Domain> CreateDomain(string domainName)
         {
             DomainOptions options = new DomainOptions() { DomainName = domainName };
-            CreateDomain(options, callback);
+            return await CreateDomain(options);
         }
 
         /// <summary>
         /// Creates a new SIP Domain resource
         /// </summary>
         /// <param name="options">Optional parameters to use when creating a new SIP domain.  DomainName is required and you must pick a unique domain name that ends in ".sip.twilio.com"</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void CreateDomain(DomainOptions options, Action<Domain> callback)
+        public virtual async Task<Domain> CreateDomain(DomainOptions options)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/SIP/Domains.json";
 
             AddDomainOptions(options, request);
 
-            ExecuteAsync<Domain>(request, (response) => callback(response));
+            return await Execute<Domain>(request);
         }
-
+       
         /// <summary>
         /// Updates a specific SIP Domain resource
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain to update</param>
         /// <param name="options">Optional parameters for a SIP domain</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void UpdateDomain(string domainSid, DomainOptions options, Action<Domain> callback)
+        public virtual async Task<Domain> UpdateDomain(string domainSid, DomainOptions options)
         {
             Require.Argument("DomainSid", domainSid);
 
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/SIP/Domains/{DomainSid}.json";
 
-            request.AddParameter("DomainSid", domainSid, ParameterType.UrlSegment);
-
+            request.AddUrlSegment("DomainSid", domainSid);
             AddDomainOptions(options, request);
 
-            ExecuteAsync<Domain>(request, (response) => callback(response));
+            return await Execute<Domain>(request);
         }
 
         /// <summary>
         /// Deletes a specific SIP Domain resource
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain to delete</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void DeleteDomain(string domainSid, Action<DeleteStatus> callback)
+        public virtual async Task<DeleteStatus> DeleteDomain(string domainSid)
         {
             Require.Argument("DomainSid", domainSid);
             var request = new RestRequest(Method.DELETE);
@@ -110,7 +103,8 @@ namespace Twilio
 
             request.AddParameter("DomainSid", domainSid, ParameterType.UrlSegment);
 
-            ExecuteAsync(request, (response) => { callback(response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed); });
+            var response = await Execute(request);
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed;
         }
 
 
@@ -119,27 +113,25 @@ namespace Twilio
         /// </summary>
         /// <param name="domainSid">The Sid of the mapped SIP Domain</param>
         /// <param name="ipAccessControlListMappingSid">The Sid of the mapped IpAccessControlList</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void GetIpAccessControlListMapping(string domainSid, string ipAccessControlListMappingSid, Action<IpAccessControlListMapping> callback)
+        public virtual async Task<IpAccessControlListMapping> GetIpAccessControlListMapping(string domainSid, string ipAccessControlListMappingSid)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings/{IpAccessControlListMappingSid}.json";
             request.AddUrlSegment("DomainSid", domainSid);
             request.AddUrlSegment("IpAccessControlListMappingSid", ipAccessControlListMappingSid);
 
-            ExecuteAsync<IpAccessControlListMapping>(request, (response) => callback(response));
+            return await Execute<IpAccessControlListMapping>(request);
         }
 
         /// <summary>
         /// Lists all IpAccessControlLists mapped to a SIP Domain
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain to list mappings for</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void ListIpAccessControlListMappings(string domainSid, Action<IpAccessControlListMappingResult> callback)
+        public virtual async Task<IpAccessControlListMappingResult> ListIpAccessControlListMappings(string domainSid)
         {
-            ListIpAccessControlListMappings(domainSid, null, null, callback);
+            return await ListIpAccessControlListMappings(domainSid, null, null);
         }
 
         /// <summary>
@@ -148,9 +140,8 @@ namespace Twilio
         /// <param name="domainSid">The Sid of the SIP Domain to list mappings for</param>
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void ListIpAccessControlListMappings(string domainSid, int? pageNumber, int? count, Action<IpAccessControlListMappingResult> callback)
+        public virtual async Task<IpAccessControlListMappingResult> ListIpAccessControlListMappings(string domainSid, int? pageNumber, int? count)
         {
             Require.Argument("DomainSid", domainSid);
 
@@ -161,7 +152,7 @@ namespace Twilio
             if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
             if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
-            ExecuteAsync<IpAccessControlListMappingResult>(request, (response) => callback(response));
+            return await Execute<IpAccessControlListMappingResult>(request);
         }
 
         /// <summary>
@@ -169,9 +160,8 @@ namespace Twilio
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain to map to</param>
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList to map to</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void CreateIpAccessControlListMapping(string domainSid, string ipAccessControlListSid, Action<IpAccessControlListMapping> callback)
+        public virtual async Task<IpAccessControlListMapping> CreateIpAccessControlListMapping(string domainSid, string ipAccessControlListSid)
         {
             Require.Argument("DomainSid", domainSid);
 
@@ -181,7 +171,7 @@ namespace Twilio
 
             request.AddParameter("IpAccessControlListSid", ipAccessControlListSid);
 
-            ExecuteAsync<IpAccessControlListMapping>(request, (response) => callback(response));
+            return await Execute<IpAccessControlListMapping>(request);
         }
 
         /// <summary>
@@ -189,19 +179,19 @@ namespace Twilio
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain</param>
         /// <param name="ipAccessControlListMappingSid">The Sid of the IpAccessControlListMapping to delete</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void DeleteIpAccessControlListMapping(string domainSid, string ipAccessControlListMappingSid, Action<DeleteStatus> callback)
+        public virtual async Task<DeleteStatus> DeleteIpAccessControlListMapping(string domainSid, string ipAccessControlListMappingSid)
         {
             Require.Argument("DomainSid", domainSid);
-
+            
             var request = new RestRequest(Method.DELETE);
             request.Resource = "Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings/{IpAccessControlListMappingSid}.json";
             request.AddUrlSegment("DomainSid", domainSid);
 
             request.AddParameter("IpAccessControlListMappingSid", ipAccessControlListMappingSid, ParameterType.UrlSegment);
 
-            ExecuteAsync(request, (response) => { callback(response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed); });
+            var response = await Execute(request);
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed;
         }
 
         /// <summary>
@@ -209,38 +199,35 @@ namespace Twilio
         /// </summary>
         /// <param name="domainSid">The Sid of the mapped SIP Domain</param>
         /// <param name="credentialListMappingSid">The Sid of the mapped CredentialList</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void GetCredentialListMapping(string domainSid, string credentialListMappingSid, Action<CredentialListMapping> callback)
+        public virtual async Task<CredentialListMapping> GetCredentialListMapping(string domainSid, string credentialListMappingSid)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings/{CredentialListMappingSid}.json";
             request.AddUrlSegment("DomainSid", domainSid);
             request.AddUrlSegment("CredentialListMappingSid", credentialListMappingSid);
 
-            ExecuteAsync<CredentialListMapping>(request, (response) => callback(response));
+            return await Execute<CredentialListMapping>(request);
         }
 
         /// <summary>
         /// Lists all CredentialLists mapped to a SIP Domain
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain to list mappings for</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void ListCredentialListMappings(string domainSid, Action<CredentialListMappingResult> callback)
+        public virtual async Task<CredentialListMappingResult> ListCredentialListMappings(string domainSid)
         {
-            ListCredentialListMappings(domainSid, null, null, callback);
+            return await ListCredentialListMappings(domainSid, null, null);
         }
 
         /// <summary>
         /// Lists all IpAccessControlLists mapped to a SIP Domain
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain to list mappings for</param>
-        /// <param name="pageNumber"></param>
+        /// <param name="pageNumber"></param>        
         /// <param name="count"></param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void ListCredentialListMappings(string domainSid, int? pageNumber, int? count, Action<CredentialListMappingResult> callback)
+        public virtual async Task<CredentialListMappingResult> ListCredentialListMappings(string domainSid, int? pageNumber, int? count)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings.json";
@@ -249,7 +236,7 @@ namespace Twilio
             if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
             if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
-            ExecuteAsync<CredentialListMappingResult>(request, (response) => callback(response));
+            return await Execute<CredentialListMappingResult>(request);
         }
 
         /// <summary>
@@ -257,9 +244,8 @@ namespace Twilio
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain to map to</param>
         /// <param name="credentialListSid">The Sid of the CredentialList to map to</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void CreateCredentialListMapping(string domainSid, string credentialListSid, Action<IpAccessControlListMapping> callback)
+        public virtual async Task<IpAccessControlListMapping> CreateCredentialListMapping(string domainSid, string credentialListSid)
         {
             Require.Argument("DomainSid", domainSid);
 
@@ -269,7 +255,7 @@ namespace Twilio
 
             request.AddParameter("CredentialListSid", credentialListSid);
 
-            ExecuteAsync<IpAccessControlListMapping>(request, (response) => callback(response));
+            return await Execute<IpAccessControlListMapping>(request);
         }
 
         /// <summary>
@@ -277,9 +263,8 @@ namespace Twilio
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain</param>
         /// <param name="credentialListMappingSid">The Sid of the CredentialListMapping to delete</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void DeleteCredentialListMapping(string domainSid, string credentialListMappingSid, Action<DeleteStatus> callback)
+        public virtual async Task<DeleteStatus> DeleteCredentialListMapping(string domainSid, string credentialListMappingSid)
         {
             Require.Argument("DomainSid", domainSid);
 
@@ -289,31 +274,31 @@ namespace Twilio
 
             request.AddParameter("CredentialListMappingSid", credentialListMappingSid, ParameterType.UrlSegment);
 
-            ExecuteAsync(request, (response) => { callback(response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed); });
+            var response = await Execute(request);
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed;
         }
 
         /// <summary>
         /// Gets a specific IpAccessControlList resource
         /// </summary>
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList resource</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void GetIpAccessControlList(string ipAccessControlListSid, Action<IpAccessControlList> callback)
+        public virtual async Task<IpAccessControlList> GetIpAccessControlList(string ipAccessControlListSid)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}.json";
             request.AddUrlSegment("IpAccessControlListSid", ipAccessControlListSid);
 
-            ExecuteAsync<IpAccessControlList>(request, (response) => callback(response));
+            return await Execute<IpAccessControlList>(request);
         }
 
         /// <summary>
         /// Lists all IpAccessControlLists for this account
         /// </summary>
         /// <returns></returns>
-        public virtual void ListIpAccessControlLists(Action<IpAccessControlListResult> callback)
+        public virtual async Task<IpAccessControlListResult> ListIpAccessControlLists() 
         {
-            ListIpAccessControlLists(null, null, callback);
+            return await ListIpAccessControlLists(null, null);
         }
 
         /// <summary>
@@ -321,9 +306,8 @@ namespace Twilio
         /// </summary>
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void ListIpAccessControlLists(int? pageNumber, int? count, Action<IpAccessControlListResult> callback)
+        public virtual async Task<IpAccessControlListResult> ListIpAccessControlLists(int? pageNumber, int? count)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists.json";
@@ -331,23 +315,22 @@ namespace Twilio
             if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
             if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
-            ExecuteAsync<IpAccessControlListResult>(request, (response) => callback(response));
+            return await Execute<IpAccessControlListResult>(request);
         }
 
         /// <summary>
         /// Creates a new IpAccessControlList resource
         /// </summary>
         /// <param name="friendlyName">The name of the IpAccessControlList to create.</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void CreateIpAccessControlList(string friendlyName, Action<IpAccessControlList> callback)
+        public virtual async Task<IpAccessControlList> CreateIpAccessControlList(string friendlyName)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists.json";
 
             request.AddParameter("FriendlyName", friendlyName);
 
-            ExecuteAsync<IpAccessControlList>(request, (response) => callback(response));
+            return await Execute<IpAccessControlList>(request);
         }
 
         /// <summary>
@@ -355,9 +338,8 @@ namespace Twilio
         /// </summary>
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList to update</param>
         /// <param name="friendlyName">The name of the IpAccessControlList</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void UpdateIpAccessControlList(string ipAccessControlListSid, string friendlyName, Action<IpAccessControlList> callback)
+        public virtual async Task<IpAccessControlList> UpdateIpAccessControlList(string ipAccessControlListSid, string friendlyName)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}.json";
@@ -365,23 +347,23 @@ namespace Twilio
 
             request.AddParameter("FriendlyName", friendlyName);
 
-            ExecuteAsync<IpAccessControlList>(request, (response) => callback(response));
+            return await Execute<IpAccessControlList>(request);
         }
 
         /// <summary>
         /// Deletes a specific IpAccessControlList resource
         /// </summary>
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList Domain to delete</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void DeleteIpAccessControlList(string ipAccessControlListSid, Action<DeleteStatus> callback)
+        public virtual async Task<DeleteStatus> DeleteIpAccessControlList(string ipAccessControlListSid)
         {
             var request = new RestRequest(Method.DELETE);
             request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}.json";
 
             request.AddParameter("IpAccessControlListSid", ipAccessControlListSid, ParameterType.UrlSegment);
 
-            ExecuteAsync(request, (response) => { callback(response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed); });
+            var response = await Execute(request);
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed;
         }
 
         /// <summary>
@@ -389,27 +371,25 @@ namespace Twilio
         /// </summary>
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList</param>
         /// <param name="ipAddressSid">The Sid of the IpAddress to locate</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void GetIpAddress(string ipAccessControlListSid, string ipAddressSid, Action<IpAddress> callback)
+        public virtual async Task<IpAddress> GetIpAddress(string ipAccessControlListSid, string ipAddressSid)
         {
             var request = new RestRequest();
-            request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/Addresses/{IpAddressSid}.json";
+            request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses/{IpAddressSid}.json";
             request.AddUrlSegment("IpAccessControlListSid", ipAccessControlListSid);
             request.AddUrlSegment("IpAddressSid", ipAddressSid);
 
-            ExecuteAsync<IpAddress>(request, (response) => callback(response));
+            return await Execute<IpAddress>(request);
         }
 
         /// <summary>
         /// Return a lists all IpAddresses associated with an IpAccessControlList
         /// </summary>
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void ListIpAddresses(string ipAccessControlListSid, Action<IpAddressResult> callback)
+        public virtual async Task<IpAddressResult> ListIpAddresses(string ipAccessControlListSid)
         {
-            ListIpAddresses(ipAccessControlListSid, null, null, callback);
+            return await ListIpAddresses(ipAccessControlListSid, null, null);
         }
 
         /// <summary>
@@ -418,18 +398,17 @@ namespace Twilio
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList</param>
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void ListIpAddresses(string ipAccessControlListSid, int? pageNumber, int? count, Action<IpAddressResult> callback)
+        public virtual async Task<IpAddressResult> ListIpAddresses(string ipAccessControlListSid, int? pageNumber, int? count)
         {
             var request = new RestRequest();
-            request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/Addresses.json";
+            request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses.json";
             request.AddUrlSegment("IpAccessControlListSid", ipAccessControlListSid);
 
             if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
             if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
-            ExecuteAsync<IpAddressResult>(request, (response) => callback(response));
+            return await Execute<IpAddressResult>(request);
         }
 
         /// <summary>
@@ -438,18 +417,17 @@ namespace Twilio
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControList to add the IpAddress to</param>
         /// <param name="friendlyName">The name of the IpAddress to create.</param>
         /// <param name="ipAddress">The address value of the IpAddress</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void CreateIpAddress(string ipAccessControlListSid, string friendlyName, string ipAddress, Action<IpAddress> callback)
+        public virtual async Task<IpAddress> CreateIpAddress(string ipAccessControlListSid, string friendlyName, string ipAddress)
         {
             var request = new RestRequest(Method.POST);
-            request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/Addresses.json";
+            request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses.json";
             request.AddUrlSegment("IpAccessControlListSid", ipAccessControlListSid);
 
             request.AddParameter("FriendlyName", friendlyName);
             request.AddParameter("IpAddress", ipAddress);
 
-            ExecuteAsync<IpAddress>(request, (response) => callback(response));
+            return await Execute<IpAddress>(request);
         }
 
         /// <summary>
@@ -459,61 +437,59 @@ namespace Twilio
         /// <param name="ipAddressSid">The Sid of the IpAddress to update</param>
         /// <param name="friendlyName">The name of the IpAddress</param>
         /// <param name="ipAddress">The address value of the IpAddress</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void UpdateIpAddress(string ipAccessControlListSid, string ipAddressSid, string friendlyName, string ipAddress, Action<IpAddress> callback)
+        public virtual async Task<IpAddress> UpdateIpAddress(string ipAccessControlListSid, string ipAddressSid, string friendlyName, string ipAddress)
         {
             var request = new RestRequest(Method.POST);
-            request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/Addresses/{IpAddressSid}.json";
+            request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses/{IpAddressSid}.json";
             request.AddUrlSegment("IpAccessControlListSid", ipAccessControlListSid);
             request.AddUrlSegment("IpAddressSid", ipAddressSid);
 
-            request.AddParameter("FriendlyName", friendlyName);
-            request.AddParameter("IpAddressSid", ipAddressSid);
+            if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
+            if (ipAddress.HasValue()) request.AddParameter("IpAddress", ipAddress);
 
-            ExecuteAsync<IpAddress>(request, (response) => callback(response));
+            return await Execute<IpAddress>(request);
         }
 
         /// <summary>
         /// Deletes a specific IpAddress resource
         /// </summary>
-        /// <param name="ipAccessControlListSid"></param>
-        /// <param name="ipAddressSid">The Sid of the IpAddress to delete</param>
-        /// <param name="callback"></param>
+        /// <param name="ipAccessControlListSid">The Sid of the IpAddress to delete</param>
+        /// <param name="ipAddressSid"></param>
         /// <returns></returns>
-        public virtual void DeleteIpAddress(string ipAccessControlListSid, string ipAddressSid, Action<DeleteStatus> callback)
+        public virtual async Task<DeleteStatus> DeleteIpAddress(string ipAccessControlListSid, string ipAddressSid)
         {
             var request = new RestRequest(Method.DELETE);
-            request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/Addresses/{IpAddressSid}.json";
+            request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses/{IpAddressSid}.json";
 
             request.AddParameter("IpAccessControlListSid", ipAccessControlListSid, ParameterType.UrlSegment);
             request.AddParameter("IpAddressSid", ipAddressSid, ParameterType.UrlSegment);
 
-            ExecuteAsync(request, (response) => { callback(response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed); });
+            var response = await Execute(request);
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed;
         }
 
         /// <summary>
         /// Locates and returns a specific CredentialList resource
         /// </summary>
         /// <param name="credentialListSid">The Sid of the CredentialList to locate</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void GetCredentialList(string credentialListSid, Action<CredentialList> callback)
+        public virtual async Task<CredentialList> GetCredentialList(string credentialListSid)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}.json";
             request.AddUrlSegment("CredentialListSid", credentialListSid);
 
-            ExecuteAsync<CredentialList>(request, (response) => callback(response));
+            return await Execute<CredentialList>(request);
         }
 
         /// <summary>
         /// Return a list all CredentialsList resources
         /// </summary>
         /// <returns></returns>
-        public virtual void ListCredentialLists(Action<CredentialListResult> callback)
+        public virtual async Task<CredentialListResult> ListCredentialLists()
         {
-            ListCredentialLists(null, null, callback);
+            return await ListCredentialLists(null, null);
         }
 
         /// <summary>
@@ -521,9 +497,8 @@ namespace Twilio
         /// </summary>
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void ListCredentialLists(int? pageNumber, int? count, Action<CredentialListResult> callback)
+        public virtual async Task<CredentialListResult> ListCredentialLists(int? pageNumber, int? count)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists.json";
@@ -531,23 +506,22 @@ namespace Twilio
             if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
             if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
-            ExecuteAsync<CredentialListResult>(request, (response) => callback(response));
+            return await Execute<CredentialListResult>(request);
         }
 
         /// <summary>
         /// Creates a new CredentialList resource
         /// </summary>
         /// <param name="friendlyName">The name of the CredentialList to create.</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void CreateCredentialList(string friendlyName, Action<CredentialList> callback)
+        public virtual async Task<CredentialList> CreateCredentialList(string friendlyName)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists.json";
 
             request.AddParameter("FriendlyName", friendlyName);
 
-            ExecuteAsync<CredentialList>(request, (response) => callback(response));
+            return await Execute<CredentialList>(request);
         }
 
         /// <summary>
@@ -555,9 +529,8 @@ namespace Twilio
         /// </summary>
         /// <param name="credentialListSid">The Sid of the CredentialList</param>
         /// <param name="friendlyName">The name of the CredentialList</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void UpdateCredentialList(string credentialListSid, string friendlyName, Action<CredentialList> callback)
+        public virtual async Task<CredentialList> UpdateCredentialList(string credentialListSid, string friendlyName)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}.json";
@@ -565,23 +538,23 @@ namespace Twilio
 
             request.AddParameter("FriendlyName", friendlyName);
 
-            ExecuteAsync<CredentialList>(request, (response) => callback(response));
+            return await Execute<CredentialList>(request);
         }
 
         /// <summary>
         /// Deletes a specific CredentialList resource
         /// </summary>
         /// <param name="credentialListSid">The Sid of the CredentialList to delete</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void DeleteCredentialList(string credentialListSid, Action<DeleteStatus> callback)
+        public virtual async Task<DeleteStatus> DeleteCredentialList(string credentialListSid)
         {
             var request = new RestRequest(Method.DELETE);
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}.json";
 
             request.AddParameter("CredentialListSid", credentialListSid, ParameterType.UrlSegment);
 
-            ExecuteAsync(request, (response) => { callback(response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed); });
+            var response = await Execute(request);
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed;
         }
 
         /// <summary>
@@ -589,27 +562,25 @@ namespace Twilio
         /// </summary>
         /// <param name="credentialListSid">The Sid of the CredentialList</param>
         /// <param name="credentialSid">The Sid of the Credential to locate</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void GetCredential(string credentialListSid, string credentialSid, Action<Credential> callback)
+        public virtual async Task<Credential> GetCredential(string credentialListSid, string credentialSid)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials/{CredentialSid}.json";
-            request.AddUrlSegment("CredentialListSid", credentialListSid);
+            request.AddUrlSegment("CredentialListSid", credentialListSid); 
             request.AddUrlSegment("CredentialSid", credentialSid);
 
-            ExecuteAsync<Credential>(request, (response) => callback(response));
+            return await Execute<Credential>(request);
         }
 
         /// <summary>
         /// List all Credentials for a CredentialList
         /// </summary>
         /// <param name="credentialListSid"></param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void ListCredentials(string credentialListSid, Action<CredentialResult> callback)
+        public virtual async Task<CredentialResult> ListCredentials(string credentialListSid)
         {
-            ListCredentials(credentialListSid, null, null, callback);
+            return await ListCredentials(credentialListSid, null, null);
         }
 
         /// <summary>
@@ -618,18 +589,17 @@ namespace Twilio
         /// <param name="credentialListSid">The Sid of the CredentialList</param>
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void ListCredentials(string credentialListSid, int? pageNumber, int? count, Action<CredentialResult> callback)
+        public virtual async Task<CredentialResult> ListCredentials(string credentialListSid, int? pageNumber, int? count)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials.json";
-            request.AddUrlSegment("CredentialListSid", credentialListSid);
+            request.AddUrlSegment("CredentialListSid", credentialListSid); 
 
             if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
             if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
-            ExecuteAsync<CredentialResult>(request, (response) => callback(response));
+            return await Execute<CredentialResult>(request);
         }
 
         /// <summary>
@@ -638,18 +608,17 @@ namespace Twilio
         /// <param name="credentialListSid">The Sid of the CredentialList to add the new Credential to</param>
         /// <param name="username">The Credential Username</param>
         /// <param name="password">The Credential Password</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void CreateCredential(string credentialListSid, string username, string password, Action<Credential> callback)
+        public virtual async Task<Credential> CreateCredential(string credentialListSid, string username, string password)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials.json";
-            request.AddUrlSegment("CredentialListSid", credentialListSid);
+            request.AddUrlSegment("CredentialListSid", credentialListSid); 
 
             request.AddParameter("Username", username);
             request.AddParameter("Password", password);
 
-            ExecuteAsync<Credential>(request, (response) => callback(response));
+            return await Execute<Credential>(request);
         }
 
         /// <summary>
@@ -659,19 +628,18 @@ namespace Twilio
         /// <param name="credentialSid">The Sid of the Credential to update</param>
         /// <param name="username"></param>
         /// <param name="password"></param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void UpdateCredential(string credentialListSid, string credentialSid, string username, string password, Action<Credential> callback)
+        public virtual async Task<Credential> UpdateCredential(string credentialListSid, string credentialSid, string username, string password)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials/{CredentialSid}.json";
             request.AddUrlSegment("CredentialListSid", credentialListSid);
             request.AddUrlSegment("CredentialSid", credentialSid);
 
-            request.AddParameter("Username", username);
-            request.AddParameter("Password", password);
+            if (username.HasValue()) request.AddParameter("Username", username);
+            if (password.HasValue()) request.AddParameter("Password", password);
 
-            ExecuteAsync<Credential>(request, (response) => callback(response));
+            return await Execute<Credential>(request);
         }
 
         /// <summary>
@@ -679,9 +647,8 @@ namespace Twilio
         /// </summary>
         /// <param name="credentialListSid">The Sid of the CredentialList to delete from</param>
         /// <param name="credentialSid">The Sid of the Credential to delete</param>
-        /// <param name="callback"></param>
         /// <returns></returns>
-        public virtual void DeleteCredential(string credentialListSid, string credentialSid, Action<DeleteStatus> callback)
+        public virtual async Task<DeleteStatus> DeleteCredential(string credentialListSid, string credentialSid)
         {
             var request = new RestRequest(Method.DELETE);
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials/{CredentialSid}.json";
@@ -689,7 +656,8 @@ namespace Twilio
             request.AddParameter("CredentialListSid", credentialListSid, ParameterType.UrlSegment);
             request.AddParameter("CredentialSid", credentialSid, ParameterType.UrlSegment);
 
-            ExecuteAsync(request, (response) => { callback(response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed); });
+            var response = await Execute(request);
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed;
         }
     }
 }

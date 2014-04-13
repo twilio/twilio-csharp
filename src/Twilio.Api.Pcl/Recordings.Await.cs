@@ -1,28 +1,31 @@
 ﻿using System;
 using Simple;
+using System.Threading.Tasks;
 
 namespace Twilio
 {
     public partial class TwilioRestClient
     {
         /// <summary>
-        /// Returns a list of Recordings, each representing a recording generated during the course of a phone call. The list includes paging information.
+        /// Returns a list of Recordings, each representing a recording generated during the course of a phone call. 
+        /// The list includes paging information.
+        /// Makes a GET request to the Recordings List resource.
         /// </summary>
-        /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListRecordings(Action<RecordingResult> callback)
+        public virtual async Task<RecordingResult> ListRecordings()
         {
-            ListRecordings(null, null, null, null, callback);
+            return await ListRecordings(null, null, null, null);
         }
 
         /// <summary>
-        /// Returns a filtered list of Recordings, each representing a recording generated during the course of a phone call. The list includes paging information.
+        /// Returns a filtered list of Recordings, each representing a recording generated during the course of a phone call. 
+        /// The list includes paging information.
+        /// Makes a GET request to the Recordings List resource.
         /// </summary>
         /// <param name="callSid">(Optional) The CallSid to retrieve recordings for</param>
         /// <param name="dateCreated">(Optional) The date the recording was created (GMT)</param>
         /// <param name="pageNumber">The page to start retrieving results from</param>
         /// <param name="count">How many results to retrieve</param>
-        /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListRecordings(string callSid, DateTime? dateCreated, int? pageNumber, int? count, Action<RecordingResult> callback)
+        public virtual async Task<RecordingResult> ListRecordings(string callSid, DateTime? dateCreated, int? pageNumber, int? count)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Recordings.json";
@@ -32,51 +35,52 @@ namespace Twilio
             if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
             if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
-            ExecuteAsync<RecordingResult>(request, (response) => callback(response));
+            return await Execute<RecordingResult>(request);
         }
 
         /// <summary>
-        /// Retrieve the details for the specified recording instance
+        /// Retrieve the details for the specified recording instance.
+        /// Makes a GET request to a Recording Instance resource.
         /// </summary>
         /// <param name="recordingSid">The Sid of the recording to retrieve</param>
-        /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void GetRecording(string recordingSid, Action<Recording> callback)
+        public virtual async Task<Recording> GetRecording(string recordingSid)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}.json";
             
             request.AddParameter("RecordingSid", recordingSid, ParameterType.UrlSegment);
 
-            ExecuteAsync<Recording>(request, (response) => callback(response));
+            return await Execute<Recording>(request);
         }
 
         /// <summary>
-        /// Delete the specified recording instance
+        /// Delete the specified recording instance. Makes a DELETE request to a Recording Instance resource.
         /// </summary>
         /// <param name="recordingSid">The Sid of the recording to delete</param>
-        /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void DeleteRecording(string recordingSid, Action<DeleteStatus> callback)
+        public virtual async Task<DeleteStatus> DeleteRecording(string recordingSid)
         {
             var request = new RestRequest(Method.DELETE);
             request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}.json";
             
             request.AddParameter("RecordingSid", recordingSid, ParameterType.UrlSegment);
 
-            ExecuteAsync(request, (response) => { callback(response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed); });
+            var response = await Execute(request);
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed;
         }
 
         /// <summary>
-        /// Retrieves the transcription text for the specified recording, if it was transcribed
+        /// Retrieves the transcription text for the specified recording, if it was transcribed. 
+        /// Makes a GET request to a Recording Instance resource.
         /// </summary>
         /// <param name="recordingSid">The Sid of the recording to retreive the transcription for</param>
-        /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void GetRecordingText(string recordingSid, Action<string> callback)
+        public virtual async Task<string> GetRecordingText(string recordingSid)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}.txt";
             request.AddParameter("RecordingSid", recordingSid, ParameterType.UrlSegment);
 
-            ExecuteAsync(request, (response) => callback(response.Content));
+            var response = await Execute(request);
+            return response.Content;
         }
     }
 }

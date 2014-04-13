@@ -7,6 +7,7 @@ using System.Text;
 
 namespace Simple
 {
+#if FX35
     public class HttpWebRequestWrapper
     {
         public RestResponse ParseWebException(WebException exc)
@@ -115,4 +116,5 @@ namespace Simple
             return webrequest;
         }
     }
+#endif
 }

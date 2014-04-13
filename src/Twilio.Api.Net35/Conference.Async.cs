@@ -32,21 +32,6 @@ namespace Twilio
             ExecuteAsync<ConferenceResult>(request, (response) => callback(response));
         }
 
-        private void AddConferenceListOptions(ConferenceListRequest options, RestRequest request)
-        {
-            if (options.Status.HasValue()) request.AddParameter("Status", options.Status);
-            if (options.FriendlyName.HasValue()) request.AddParameter("FriendlyName", options.FriendlyName);
-
-            var dateCreatedParameterName = GetParameterNameWithEquality(options.DateCreatedComparison, "DateCreated");
-            var dateUpdatedParameterName = GetParameterNameWithEquality(options.DateUpdatedComparison, "DateUpdated");
-
-            if (options.DateCreated.HasValue) request.AddParameter(dateCreatedParameterName, options.DateCreated.Value.ToString("yyyy-MM-dd"));
-            if (options.DateUpdated.HasValue) request.AddParameter(dateUpdatedParameterName, options.DateUpdated.Value.ToString("yyyy-MM-dd"));
-
-            if (options.Count.HasValue) request.AddParameter("PageSize", options.Count.Value);
-            if (options.PageNumber.HasValue) request.AddParameter("Page", options.PageNumber.Value);
-        }
-
         /// <summary>
         /// Retrieve details for specific conference
         /// </summary>

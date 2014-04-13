@@ -6,6 +6,7 @@ using Simple;
 
 namespace Simple
 {
+#if FX35
     public partial class RestClient
     {
         /// <summary>
@@ -37,6 +38,6 @@ namespace Simple
 
             return restresponse;
         }
-
     }
+#endif
 }

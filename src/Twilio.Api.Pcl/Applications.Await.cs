@@ -1,5 +1,5 @@
-﻿using System;
-using Simple;
+﻿using Simple;
+using System.Threading.Tasks;
 
 namespace Twilio
 {
@@ -9,24 +9,22 @@ namespace Twilio
         /// Retrieve the details for an application instance. Makes a GET request to an Application Instance resource.
         /// </summary>
         /// <param name="applicationSid">The Sid of the application to retrieve</param>
-        /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void GetApplication(string applicationSid, Action<Application> callback)
+        public virtual async Task<Application> GetApplication(string applicationSid)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Applications/{ApplicationSid}.json";
             
             request.AddUrlSegment("ApplicationSid", applicationSid);
 
-            ExecuteAsync<Application>(request, (response) => { callback(response); });
+            return await Execute<Application>(request);
         }
 
         /// <summary>
         /// List applications on current account
         /// </summary>
-        /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListApplications(Action<ApplicationResult> callback)
+        public virtual async Task<ApplicationResult> ListApplications()
         {
-            ListApplications(null, null, null, callback);
+            return await ListApplications(null, null, null);
         }
 
         /// <summary>
@@ -35,8 +33,7 @@ namespace Twilio
         /// <param name="friendlyName">Optional friendly name to match</param>
         /// <param name="pageNumber">Page number to start retrieving results from</param>
         /// <param name="count">How many results to return</param>
-        /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListApplications(string friendlyName, int? pageNumber, int? count, Action<ApplicationResult> callback)
+        public virtual async Task<ApplicationResult> ListApplications(string friendlyName, int? pageNumber, int? count)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Applications.json";
@@ -45,7 +42,7 @@ namespace Twilio
             if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
             if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
-            ExecuteAsync<ApplicationResult>(request, callback);
+            return await Execute<ApplicationResult>(request);
         }
 
         /// <summary>
@@ -53,8 +50,7 @@ namespace Twilio
         /// </summary>
         /// <param name="friendlyName">The friendly name to name the application</param>
         /// <param name="options">Optional parameters to use when purchasing number</param>
-        /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void AddApplication(string friendlyName, ApplicationOptions options, Action<Application> callback)
+        public virtual async Task<Application> AddApplication(string friendlyName, ApplicationOptions options)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/Applications.json";
@@ -79,7 +75,7 @@ namespace Twilio
                 if (options.SmsFallbackMethod.HasValue()) request.AddParameter("SmsFallbackMethod", options.SmsFallbackMethod.ToString());
             }
 
-            ExecuteAsync<Application>(request, (response) => { callback(response); });
+            return await Execute<Application>(request);
         }
 
         /// <summary>
@@ -88,8 +84,7 @@ namespace Twilio
         /// <param name="applicationSid">The Sid of the application to update</param>
         /// <param name="friendlyName">The friendly name to rename the application to (optional, null to leave as-is)</param>
         /// <param name="options">Which settings to update. Only properties with values set will be updated.</param>
-        /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void UpdateApplication(string applicationSid, string friendlyName, ApplicationOptions options, Action<Application> callback)
+        public virtual async Task<Application> UpdateApplication(string applicationSid, string friendlyName, ApplicationOptions options)
         {
             Require.Argument("ApplicationSid", applicationSid);
 
@@ -113,15 +108,14 @@ namespace Twilio
                 if (options.SmsFallbackMethod.HasValue()) request.AddParameter("SmsFallbackMethod", options.SmsFallbackMethod.ToString());
             }
 
-            ExecuteAsync<Application>(request, (response) => { callback(response); });
+            return await Execute<Application>(request);
         }
 
         /// <summary>
         /// Delete this application. If this application's sid is assigned to any IncomingPhoneNumber resources as a VoiceApplicationSid or SmsApplicationSid it will be removed.
         /// </summary>
         /// <param name="applicationSid">The Sid of the number to remove</param>
-        /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void DeleteApplication(string applicationSid, Action<DeleteStatus> callback)
+        public virtual async Task<DeleteStatus> DeleteApplication(string applicationSid)
         {
             Require.Argument("ApplicationSid", applicationSid);
             var request = new RestRequest(Method.DELETE);
@@ -129,7 +123,8 @@ namespace Twilio
 
             request.AddUrlSegment("ApplicationSid", applicationSid);
 
-            ExecuteAsync(request, (response) => { callback(response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed); });
+            var response = await Execute(request);
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed;
         }
     }
 }

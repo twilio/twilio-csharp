@@ -7,6 +7,7 @@ using System.Threading;
 
 namespace Simple
 {
+#if FX35
     /// <summary>
     /// A simple class for making requests to HTTP API's
     /// </summary>
@@ -126,4 +127,5 @@ namespace Simple
         /// </summary>
         public HttpWebRequest Request { get; set; }
     }
+#endif
 }

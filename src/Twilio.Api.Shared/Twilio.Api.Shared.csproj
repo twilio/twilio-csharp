@@ -118,6 +118,7 @@
     <Compile Include="Model\UsageTriggerOptions.cs" />
     <Compile Include="Model\UsageTriggerResult.cs" />
     <Compile Include="Model\ValidationRequest.cs" />
+    <Compile Include="Options.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

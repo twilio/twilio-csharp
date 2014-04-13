@@ -43,6 +43,7 @@ namespace Simple
         /// </summary>
         public List<Parameter> DefaultParameters { get; set; }
 
+#if FX35
         /// <summary>
         /// create instance by default if none exists
         /// </summary>
@@ -62,6 +63,7 @@ namespace Simple
                 _requestwrapper = value;
             }
         }
+#endif
 
         /// <summary>
         /// Adds an HTTP header to all requests
