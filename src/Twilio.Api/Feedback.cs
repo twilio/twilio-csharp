@@ -28,7 +28,7 @@ namespace Twilio
         /// </summary>
         public Feedback CreateFeedback(string callSid, int qualityScore)
         {
-            return CreateFeedback(callSid, qualityScore, string.Empty);
+            return CreateFeedback(callSid, qualityScore, null);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Twilio
         /// </summary>
         public Feedback UpdateFeedback(string callSid, int qualityScore)
         {
-            return UpdateFeedback(callSid, qualityScore, string.Empty);
+            return UpdateFeedback(callSid, qualityScore, null);
         }
 
         /// <summary>
