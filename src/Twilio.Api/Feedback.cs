@@ -34,6 +34,14 @@ namespace Twilio
         /// <summary>
         /// Creates a new feedback entry for a specific CallSid.
         /// </summary>
+        public Feedback CreateFeedback(string callSid, int qualityScore, string issue)
+        {
+            return CreateFeedback(callSid, qualityScore, new List<string>() { issue });
+        }
+
+        /// <summary>
+        /// Creates a new feedback entry for a specific CallSid.
+        /// </summary>
         public Feedback CreateFeedback(string callSid, int qualityScore, List<string> issues)
         {
             Require.Argument("CallSid", callSid);
@@ -62,6 +70,14 @@ namespace Twilio
         public Feedback UpdateFeedback(string callSid, int qualityScore)
         {
             return UpdateFeedback(callSid, qualityScore, new List<string>(0));
+        }
+
+        /// <summary>
+        /// Updates the current Feedback entry for a specific CallSid.
+        /// </summary>
+        public Feedback UpdateFeedback(string callSid, int qualityScore, string issue)
+        {
+            return UpdateFeedback(callSid, qualityScore, new List<string>() { issue });
         }
 
         /// <summary>

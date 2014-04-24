@@ -28,7 +28,15 @@ namespace Twilio
         /// </summary>
         public void CreateFeedback(string callSid, int qualityScore, Action<Feedback> callback)
         {
-            CreateFeedback(callSid, qualityScore, null, callback);
+            CreateFeedback(callSid, qualityScore, new List<string>(0), callback);
+        }
+
+        /// <summary>
+        /// Creates a new feedback entry for a specific CallSid.
+        /// </summary>
+        public void CreateFeedback(string callSid, int qualityScore, string issue, Action<Feedback> callback)
+        {
+            CreateFeedback(callSid, qualityScore, new List<string>() { issue }, callback);
         }
 
         /// <summary>
@@ -61,7 +69,15 @@ namespace Twilio
         /// </summary>
         public void UpdateFeedback(string callSid, int qualityScore, Action<Feedback> callback)
         {
-            UpdateFeedback(callSid, qualityScore, null, callback);
+            CreateFeedback(callSid, qualityScore, new List<string>(0), callback);
+        }
+
+        /// <summary>
+        /// Updates the current Feedback entry for a specific CallSid.
+        /// </summary>
+        public void UpdateFeedback(string callSid, int qualityScore, string issue, Action<Feedback> callback)
+        {
+            CreateFeedback(callSid, qualityScore, new List<string>() { issue }, callback);
         }
 
         /// <summary>
