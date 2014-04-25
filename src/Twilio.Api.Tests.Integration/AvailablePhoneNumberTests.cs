@@ -1,133 +1,203 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading;
+using Moq;
+using RestSharp;
 
 namespace Twilio.Api.Tests.Integration
 {
     [TestClass]
     public class AvailablePhoneNumberTests
     {
+        private const string ISO_COUNTRY_CODE = "US";
+
         ManualResetEvent manualResetEvent = null;
+
+        private Mock<TwilioRestClient> mockClient;
+
+        [SetUp]
+        public void Setup()
+        {
+            mockClient = new Mock<TwilioRestClient>(Credentials.AccountSid, Credentials.AuthToken);
+            mockClient.CallBase = true;
+        }
         
         [TestMethod]
         public void ShouldListAvailableLocalPhoneNumbers()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<AvailablePhoneNumberResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new AvailablePhoneNumberResult());
+            var client = mockClient.Object;
             AvailablePhoneNumberListRequest options = new AvailablePhoneNumberListRequest();
-            var result = client.ListAvailableLocalPhoneNumbers("US",options);
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.AvailablePhoneNumbers);
+            client.ListAvailableLocalPhoneNumbers(ISO_COUNTRY_CODE, options);
+
+            mockClient.Verify(trc => trc.Execute<AvailablePhoneNumberResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/Local.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var isoCountryCodeParam = savedRequest.Parameters.Find(x => x.Name == "IsoCountryCode");
+            Assert.IsNotNull(isoCountryCodeParam);
+            Assert.AreEqual(ISO_COUNTRY_CODE, isoCountryCodeParam.Value);
         }
 
         [TestMethod]
         public void ShouldListAvailableLocalPhoneNumbersWithOptions()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<AvailablePhoneNumberResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new AvailablePhoneNumberResult());
+            var client = mockClient.Object;
             AvailablePhoneNumberListRequest options = new AvailablePhoneNumberListRequest();
             options.AreaCode = "314";
             options.Contains = "EA"; //contains must be 2 or more characters, unless using * alone
             options.Distance = 50;
             
-            var result = client.ListAvailableLocalPhoneNumbers("US", options);
+            client.ListAvailableLocalPhoneNumbers(ISO_COUNTRY_CODE, options);
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.AvailablePhoneNumbers);
+            mockClient.Verify(trc => trc.Execute<AvailablePhoneNumberResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/Local.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(4, savedRequest.Parameters.Count);
+            var isoCountryCodeParam = savedRequest.Parameters.Find(x => x.Name == "IsoCountryCode");
+            Assert.IsNotNull(isoCountryCodeParam);
+            Assert.AreEqual(ISO_COUNTRY_CODE, isoCountryCodeParam.Value);
+            var areaCodeParam = savedRequest.Parameters.Find(x => x.Name == "AreaCode");
+            Assert.IsNotNull(areaCodeParam);
+            Assert.AreEqual(options.AreaCode, areaCodeParam.Value);
+            var containsParam = savedRequest.Parameters.Find(x => x.Name == "Contains");
+            Assert.IsNotNull(containsParam);
+            Assert.AreEqual(options.Contains, containsParam.Value);
+            var distanceParam = savedRequest.Parameters.Find(x => x.Name == "Distance");
+            Assert.IsNotNull(distanceParam);
+            Assert.AreEqual(options.Distance, distanceParam.Value);
         }
 
         [TestMethod]
         public void ShouldListAvailableLocalPhoneNumbersAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<AvailablePhoneNumberResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<AvailablePhoneNumberResult>>()))
+                .Callback<IRestRequest, Action<AvailablePhoneNumberResult>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
-
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
             AvailablePhoneNumberListRequest options = new AvailablePhoneNumberListRequest();
 
-            AvailablePhoneNumberResult result = null;
-            client.ListAvailableLocalPhoneNumbers("US", options, numbers => {
-                result = numbers;
+            client.ListAvailableLocalPhoneNumbers(ISO_COUNTRY_CODE, options, numbers => {
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.AvailablePhoneNumbers);
+            mockClient.Verify(trc => trc.ExecuteAsync<AvailablePhoneNumberResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<AvailablePhoneNumberResult>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/Local.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var isoCountryCodeParam = savedRequest.Parameters.Find(x => x.Name == "IsoCountryCode");
+            Assert.IsNotNull(isoCountryCodeParam);
+            Assert.AreEqual(ISO_COUNTRY_CODE, isoCountryCodeParam.Value);
         }
 
         [TestMethod]
         public void ShouldListAvailableTollFreePhoneNumbers()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<AvailablePhoneNumberResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new AvailablePhoneNumberResult());
+            var client = mockClient.Object;
 
-            AvailablePhoneNumberListRequest options = new AvailablePhoneNumberListRequest();
-            var result = client.ListAvailableTollFreePhoneNumbers("US");
+            client.ListAvailableTollFreePhoneNumbers(ISO_COUNTRY_CODE);
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.AvailablePhoneNumbers);
+            mockClient.Verify(trc => trc.Execute<AvailablePhoneNumberResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/TollFree.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var isoCountryCodeParam = savedRequest.Parameters.Find(x => x.Name == "IsoCountryCode");
+            Assert.IsNotNull(isoCountryCodeParam);
+            Assert.AreEqual(ISO_COUNTRY_CODE, isoCountryCodeParam.Value);
         }
 
         [TestMethod]
         public void ShouldListAvailableTollFreePhoneNumbersAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<AvailablePhoneNumberResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<AvailablePhoneNumberResult>>()))
+                .Callback<IRestRequest, Action<AvailablePhoneNumberResult>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-            AvailablePhoneNumberListRequest options = new AvailablePhoneNumberListRequest();
-
-            AvailablePhoneNumberResult result = null;
-            client.ListAvailableTollFreePhoneNumbers("US", numbers =>
+            client.ListAvailableTollFreePhoneNumbers(ISO_COUNTRY_CODE, numbers =>
             {
-                result = numbers;
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.AvailablePhoneNumbers);
+            mockClient.Verify(trc => trc.ExecuteAsync<AvailablePhoneNumberResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<AvailablePhoneNumberResult>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/TollFree.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var isoCountryCodeParam = savedRequest.Parameters.Find(x => x.Name == "IsoCountryCode");
+            Assert.IsNotNull(isoCountryCodeParam);
+            Assert.AreEqual(ISO_COUNTRY_CODE, isoCountryCodeParam.Value);
         }
 
         [TestMethod]
         public void ShouldListAvailableTollFreePhoneNumbersThatContain()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<AvailablePhoneNumberResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new AvailablePhoneNumberResult());
+            var client = mockClient.Object;
 
-            AvailablePhoneNumberListRequest options = new AvailablePhoneNumberListRequest();
-            var result = client.ListAvailableTollFreePhoneNumbers("US", "EA");
+            client.ListAvailableTollFreePhoneNumbers(ISO_COUNTRY_CODE, "EA");
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.AvailablePhoneNumbers);
+            mockClient.Verify(trc => trc.Execute<AvailablePhoneNumberResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/TollFree.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(2, savedRequest.Parameters.Count);
+            var isoCountryCodeParam = savedRequest.Parameters.Find(x => x.Name == "IsoCountryCode");
+            Assert.IsNotNull(isoCountryCodeParam);
+            Assert.AreEqual(ISO_COUNTRY_CODE, isoCountryCodeParam.Value);
+            var containsParam = savedRequest.Parameters.Find(x => x.Name == "Contains");
+            Assert.IsNotNull(containsParam);
+            Assert.AreEqual("EA", containsParam.Value);
         }
 
         [TestMethod]
         public void ShouldListAvailableTollFreePhoneNumbersAsynchronouslyThatContain()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<AvailablePhoneNumberResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<AvailablePhoneNumberResult>>()))
+                .Callback<IRestRequest, Action<AvailablePhoneNumberResult>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-            AvailablePhoneNumberListRequest options = new AvailablePhoneNumberListRequest();
-            AvailablePhoneNumberResult result = null;
-            client.ListAvailableTollFreePhoneNumbers("US", "EA", numbers => { 
-                result = numbers;
+            client.ListAvailableTollFreePhoneNumbers(ISO_COUNTRY_CODE, "EA", numbers => { 
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.AvailablePhoneNumbers);
+            mockClient.Verify(trc => trc.ExecuteAsync<AvailablePhoneNumberResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<AvailablePhoneNumberResult>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/TollFree.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(2, savedRequest.Parameters.Count);
+            var isoCountryCodeParam = savedRequest.Parameters.Find(x => x.Name == "IsoCountryCode");
+            Assert.IsNotNull(isoCountryCodeParam);
+            Assert.AreEqual(ISO_COUNTRY_CODE, isoCountryCodeParam.Value);
+            var containsParam = savedRequest.Parameters.Find(x => x.Name == "Contains");
+            Assert.IsNotNull(containsParam);
+            Assert.AreEqual("EA", containsParam.Value);
         }
 
     }

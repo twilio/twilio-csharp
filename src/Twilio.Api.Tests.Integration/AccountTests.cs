@@ -1,226 +1,297 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using NUnit.Framework;
 using System.Threading;
+using Moq;
+using RestSharp;
 
 namespace Twilio.Api.Tests.Integration
 {
-    [TestClass]
+    [TestFixture]
     public class AccountTests
     {
+        private const string ACCOUNT_SID = "AC123";
+
         ManualResetEvent manualResetEvent = null;
 
-        [TestInitialize]
+        private Mock<TwilioRestClient> mockClient;
+
+        [SetUp]
         public void Setup()
         {
+            mockClient = new Mock<TwilioRestClient>(Credentials.AccountSid, Credentials.AuthToken);
+            mockClient.CallBase = true;
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldGetCurrentAccount()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var result = client.GetAccount();
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Account>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Account());
+            var client = mockClient.Object;
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.AreEqual(Credentials.AccountSid, result.Sid);
+            client.GetAccount();
+
+            mockClient.Verify(trc => trc.Execute<Account>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldGetCurrentAccountAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<Account>(It.IsAny<IRestRequest>(), It.IsAny<Action<Account>>()))
+                .Callback<IRestRequest, Action<Account>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            Account result = null;
             client.GetAccount(account => {
-                result = account;
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.AreEqual(Credentials.AccountSid, result.Sid);
+            mockClient.Verify(trc => trc.ExecuteAsync<Account>(It.IsAny<IRestRequest>(), It.IsAny<Action<Account>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldGetSubAccount()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var account = client.CreateSubAccount(Utilities.MakeRandomFriendlyName());
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Account>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Account());
+            var client = mockClient.Object;
 
-            var result = client.GetAccount(account.Sid);
+            client.GetAccount(ACCOUNT_SID);
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.AreEqual(account.Sid, result.Sid);
-
-            client.ChangeSubAccountStatus(account.Sid, AccountStatus.Closed); //cleanup
+            mockClient.Verify(trc => trc.Execute<Account>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var accountSidParam = savedRequest.Parameters.Find(x => x.Name == "AccountSid");
+            Assert.IsNotNull(accountSidParam);
+            Assert.AreEqual(ACCOUNT_SID, accountSidParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldGetSubAccountAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<Account>(It.IsAny<IRestRequest>(), It.IsAny<Action<Account>>()))
+                .Callback<IRestRequest, Action<Account>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var originalAccount = client.CreateSubAccount(Utilities.MakeRandomFriendlyName());
-
-            Account result = null;
-            client.GetAccount(originalAccount.Sid, account =>
+            client.GetAccount(ACCOUNT_SID, account =>
             {
-                result = account;
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.AreEqual(originalAccount.Sid, result.Sid);
-
-            client.ChangeSubAccountStatus(result.Sid, AccountStatus.Closed); //cleanup
+            mockClient.Verify(trc => trc.ExecuteAsync<Account>(It.IsAny<IRestRequest>(), It.IsAny<Action<Account>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var accountSidParam = savedRequest.Parameters.Find(x => x.Name == "AccountSid");
+            Assert.IsNotNull(accountSidParam);
+            Assert.AreEqual(ACCOUNT_SID, accountSidParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListSubAccounts()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var result = client.ListSubAccounts();
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<AccountResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new AccountResult());
+            var client = mockClient.Object;
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Accounts);
+            client.ListSubAccounts();
+
+            mockClient.Verify(trc => trc.Execute<AccountResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListSubAccountsAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<AccountResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<AccountResult>>()))
+                .Callback<IRestRequest, Action<AccountResult>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-            AccountResult result = null;
             client.ListSubAccounts(accounts => {
-                result = accounts;
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Accounts);
+            mockClient.Verify(trc => trc.ExecuteAsync<AccountResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<AccountResult>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
         
-        [TestMethod]
+        [Test]
         public void ShouldCreateSubAccount()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var result = client.CreateSubAccount(Utilities.MakeRandomFriendlyName());
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Account>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Account());
+            var client = mockClient.Object;
+            var friendlyName = Utilities.MakeRandomFriendlyName();
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Sid);
+            client.CreateSubAccount(friendlyName);
 
-            client.ChangeSubAccountStatus(result.Sid, AccountStatus.Closed); //cleanup
+            mockClient.Verify(trc => trc.Execute<Account>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var friendlyNameParam = savedRequest.Parameters.Find(x => x.Name == "FriendlyName");
+            Assert.IsNotNull(friendlyNameParam);
+            Assert.AreEqual(friendlyName, friendlyNameParam.Value);
         }
 
 
-        [TestMethod]
+        [Test]
         public void ShouldCreateSubAccountAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<Account>(It.IsAny<IRestRequest>(), It.IsAny<Action<Account>>()))
+                .Callback<IRestRequest, Action<Account>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
+            var friendlyName = Utilities.MakeRandomFriendlyName ();
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-            Account result = null;
-            client.CreateSubAccount(Utilities.MakeRandomFriendlyName(), account => 
+            client.CreateSubAccount(friendlyName, account => 
             {
-                result = account;
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Sid);
-
-            client.ChangeSubAccountStatus(result.Sid, AccountStatus.Closed); //cleanup
+            mockClient.Verify(trc => trc.ExecuteAsync<Account>(It.IsAny<IRestRequest>(), It.IsAny<Action<Account>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var friendlyNameParam = savedRequest.Parameters.Find(x => x.Name == "FriendlyName");
+            Assert.IsNotNull(friendlyNameParam);
+            Assert.AreEqual(friendlyName, friendlyNameParam.Value);
         }
         
-        [TestMethod]
+        [Test]
         public void ShouldChangeSubAccountStatus()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var account = client.CreateSubAccount(Utilities.MakeRandomFriendlyName());
-            var result = client.ChangeSubAccountStatus(account.Sid, AccountStatus.Suspended);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Account>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Account());
+            var client = mockClient.Object;
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.AreEqual(AccountStatus.Suspended.ToString().ToLower(), result.Status);
+            client.ChangeSubAccountStatus(ACCOUNT_SID, AccountStatus.Suspended);
 
-            client.ChangeSubAccountStatus(account.Sid, AccountStatus.Closed); //cleanup
+            mockClient.Verify(trc => trc.Execute<Account>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(2, savedRequest.Parameters.Count);
+            var accountSid = savedRequest.Parameters.Find(x => x.Name == "AccountSid");
+            Assert.IsNotNull (accountSid);
+            Assert.AreEqual (ACCOUNT_SID, accountSid.Value);
+            var status = savedRequest.Parameters.Find(x => x.Name == "Status");
+            Assert.IsNotNull(status);
+            Assert.AreEqual(AccountStatus.Suspended.ToString().ToLower(), status.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldChangeSubAccountStatusAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<Account>(It.IsAny<IRestRequest>(), It.IsAny<Action<Account>>()))
+                .Callback<IRestRequest, Action<Account>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var originalAccount = client.CreateSubAccount(Utilities.MakeRandomFriendlyName());
-            
-            Account result = null;
-            client.ChangeSubAccountStatus(originalAccount.Sid, AccountStatus.Suspended, account =>
+            client.ChangeSubAccountStatus(ACCOUNT_SID, AccountStatus.Suspended, account =>
             {
-                result = account;
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.AreEqual(AccountStatus.Suspended.ToString().ToLower(), result.Status);
-
-            client.ChangeSubAccountStatus(originalAccount.Sid, AccountStatus.Closed); //cleanup
+            mockClient.Verify(trc => trc.ExecuteAsync<Account>(It.IsAny<IRestRequest>(), It.IsAny<Action<Account>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(2, savedRequest.Parameters.Count);
+            var accountSid = savedRequest.Parameters.Find(x => x.Name == "AccountSid");
+            Assert.IsNotNull (accountSid);
+            Assert.AreEqual (ACCOUNT_SID, accountSid.Value);
+            var status = savedRequest.Parameters.Find(x => x.Name == "Status");
+            Assert.IsNotNull(status);
+            Assert.AreEqual(AccountStatus.Suspended.ToString().ToLower(), status.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldUpdateCurrentAccountName()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Account>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Account());
+            var client = mockClient.Object;
             string name = DateTime.Now.ToLongDateString();
-            var result = client.UpdateAccountName(name);
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.AreEqual(name, result.FriendlyName);
+            client.UpdateAccountName(name);
+
+            mockClient.Verify(trc => trc.Execute<Account>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var friendlyNameParam = savedRequest.Parameters.Find(x => x.Name == "FriendlyName");
+            Assert.IsNotNull(friendlyNameParam);
+            Assert.AreEqual(name, friendlyNameParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldUpdateCurrentAccountNameAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<Account>(It.IsAny<IRestRequest>(), It.IsAny<Action<Account>>()))
+                .Callback<IRestRequest, Action<Account>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
-
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
             string name = DateTime.Now.ToLongDateString();
-            Account result = null;
+
             client.UpdateAccountName(name, account => {
-                result = account;
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.AreEqual(name, result.FriendlyName);
+            mockClient.Verify(trc => trc.ExecuteAsync<Account>(It.IsAny<IRestRequest>(), It.IsAny<Action<Account>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var friendlyNameParam = savedRequest.Parameters.Find(x => x.Name == "FriendlyName");
+            Assert.IsNotNull(friendlyNameParam);
+            Assert.AreEqual(name, friendlyNameParam.Value);
         }
     }
 }

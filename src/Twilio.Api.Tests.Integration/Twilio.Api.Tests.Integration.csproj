@@ -55,7 +55,6 @@
     <Compile Include="ConferenceParticipantTests.cs" />
     <Compile Include="ConferenceTests.cs" />
     <Compile Include="ConnectAppTests.cs" />
-    <Compile Include="CoreTests.cs" />
     <Compile Include="Credentials.cs" />
     <Compile Include="IncomingPhoneNumberTests.cs" />
     <Compile Include="NotificationTests.cs" />

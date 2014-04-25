@@ -1,103 +1,152 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using NUnit.Framework;
 using System.Threading;
+using Moq;
+using RestSharp;
 
 namespace Twilio.Api.Tests.Integration
 {
-    [TestClass]
+    [TestFixture]
     public class ConferenceTests
     {
+        private const string CONFERENCE_SID = "CF123";
+
         ManualResetEvent manualResetEvent = null;
 
-        [TestMethod]
+        private Mock<TwilioRestClient> mockClient;
+
+        [SetUp]
+        public void Setup()
+        {
+            mockClient = new Mock<TwilioRestClient>(Credentials.AccountSid, Credentials.AuthToken);
+            mockClient.CallBase = true;
+        }
+
+        [Test]
         public void ShouldGetConference()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Conference>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Conference());
+            var client = mockClient.Object;
+
             //create a new conference
+            client.GetConference(CONFERENCE_SID);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            client.GetConference("");
-
-            Assert.Fail();
+            mockClient.Verify(trc => trc.Execute<Conference>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Conferences/{ConferenceSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var conferenceSidParam = savedRequest.Parameters.Find(x => x.Name == "ConferenceSid");
+            Assert.IsNotNull(conferenceSidParam);
+            Assert.AreEqual(CONFERENCE_SID, conferenceSidParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldGetConferenceAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<Conference>(It.IsAny<IRestRequest>(), It.IsAny<Action<Conference>>()))
+                .Callback<IRestRequest, Action<Conference>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
-            //create a new conference
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            Conference result = null;
-            client.GetConference("", conference => {
-                result = conference;
+            //create a new conference
+            client.GetConference(CONFERENCE_SID, conference => {
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.Fail();
+            mockClient.Verify(trc => trc.ExecuteAsync<Conference>(It.IsAny<IRestRequest>(), It.IsAny<Action<Conference>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Conferences/{ConferenceSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var conferenceSidParam = savedRequest.Parameters.Find(x => x.Name == "ConferenceSid");
+            Assert.IsNotNull(conferenceSidParam);
+            Assert.AreEqual(CONFERENCE_SID, conferenceSidParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListConferences()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var result = client.ListConferences();
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<ConferenceResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new ConferenceResult());
+            var client = mockClient.Object;
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Conferences);
+            client.ListConferences();
+
+            mockClient.Verify(trc => trc.Execute<ConferenceResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Conferences.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
         
-        [TestMethod]
+        [Test]
         public void ShouldListConferencesAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<ConferenceResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<ConferenceResult>>()))
+                .Callback<IRestRequest, Action<ConferenceResult>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-            ConferenceResult result = null;
             client.ListConferences(conferences => {
-                result = conferences;
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Conferences);
+            mockClient.Verify(trc => trc.ExecuteAsync<ConferenceResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<ConferenceResult>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Conferences.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListConferenceUsingFilters()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<ConferenceResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new ConferenceResult());
+            var client = mockClient.Object;
             ConferenceListRequest options = new ConferenceListRequest();
+
             client.ListConferences(options);
 
-            Assert.Fail();
+            mockClient.Verify(trc => trc.Execute<ConferenceResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Conferences.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListConferenceAsynchronouslyUsingFilters()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<ConferenceResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<ConferenceResult>>()))
+                .Callback<IRestRequest, Action<ConferenceResult>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
-
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
             ConferenceListRequest options = new ConferenceListRequest();
-            ConferenceResult result = null;
 
             client.ListConferences(options, conferences => {
-                result = conferences;
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.Fail();
+            mockClient.Verify(trc => trc.ExecuteAsync<ConferenceResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<ConferenceResult>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Conferences.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
     }

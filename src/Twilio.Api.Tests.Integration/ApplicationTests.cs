@@ -1,243 +1,274 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using NUnit.Framework;
 using System.Threading;
 using System.Linq;
+using Moq;
+using RestSharp;
 
 namespace Twilio.Api.Tests.Integration
 {
-    [TestClass]
+    [TestFixture]
     public class ApplicationTests
     {
+        private const string APPLICATION_SID = "AP123";
+
         ManualResetEvent manualResetEvent = null;
 
-        [TestMethod]
+        private Mock<TwilioRestClient> mockClient;
+
+        [SetUp]
+        public void Setup()
+        {
+            mockClient = new Mock<TwilioRestClient>(Credentials.AccountSid, Credentials.AuthToken);
+            mockClient.CallBase = true;
+        }
+
+        [Test]
         public void ShouldAddNewApplication()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            
-            ApplicationOptions options = new ApplicationOptions();
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Application>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Application());
+            var client = mockClient.Object;
+            var options = new ApplicationOptions();
+            var friendlyName = Utilities.MakeRandomFriendlyName();
 
-            var result = client.AddApplication(Utilities.MakeRandomFriendlyName(), options);
+            client.AddApplication(friendlyName, options);
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Sid);
-
-            client.DeleteApplication(result.Sid); //cleanup
+            mockClient.Verify(trc => trc.Execute<Application>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Applications.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var friendlyNameParam = savedRequest.Parameters.Find(x => x.Name == "FriendlyName");
+            Assert.IsNotNull (friendlyNameParam);
+            Assert.AreEqual (friendlyName, friendlyNameParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldAddNewApplicationAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<Application>(It.IsAny<IRestRequest>(), It.IsAny<Action<Application>>()))
+                .Callback<IRestRequest, Action<Application>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
+            var options = new ApplicationOptions();
+            var friendlyName = Utilities.MakeRandomFriendlyName();
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-            ApplicationOptions options = new ApplicationOptions();
-
-            Application result = null;
-            client.AddApplication(Utilities.MakeRandomFriendlyName(), options, app =>
+            client.AddApplication(friendlyName, options, app =>
             {
-                result = app;
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Sid);
-
-            client.DeleteApplication(result.Sid); //cleanup
+            mockClient.Verify(trc => trc.ExecuteAsync<Application>(It.IsAny<IRestRequest>(), It.IsAny<Action<Application>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Applications.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var friendlyNameParam = savedRequest.Parameters.Find(x => x.Name == "FriendlyName");
+            Assert.IsNotNull (friendlyNameParam);
+            Assert.AreEqual (friendlyName, friendlyNameParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldGetApplication()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Application>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Application());
+            var client = mockClient.Object;
 
-            ApplicationOptions options = new ApplicationOptions();
-            var originalApplication = client.AddApplication(Utilities.MakeRandomFriendlyName(), options);
+            client.GetApplication(APPLICATION_SID);
 
-            Assert.IsNotNull(originalApplication.Sid);
-
-            var result = client.GetApplication(originalApplication.Sid);
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.AreEqual(originalApplication.Sid, result.Sid);
-
-            client.DeleteApplication(result.Sid); //cleanup
+            mockClient.Verify(trc => trc.Execute<Application>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Applications/{ApplicationSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var applicationSidParam = savedRequest.Parameters.Find(x => x.Name == "ApplicationSid");
+            Assert.IsNotNull(applicationSidParam);
+            Assert.AreEqual(APPLICATION_SID, applicationSidParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldGetApplicationAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<Application>(It.IsAny<IRestRequest>(), It.IsAny<Action<Application>>()))
+                .Callback<IRestRequest, Action<Application>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-            ApplicationOptions options = new ApplicationOptions();
-            var originalApplication = client.AddApplication(Utilities.MakeRandomFriendlyName(), options);
-
-            Assert.IsNotNull(originalApplication.Sid);
-
-            Application result = null;
-
-            client.GetApplication(originalApplication.Sid, app => {
-                result = app;
+            client.GetApplication(APPLICATION_SID, app => {
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.AreEqual(originalApplication.Sid, result.Sid);
-
-            client.DeleteApplication(result.Sid); //cleanup
+            mockClient.Verify(trc => trc.ExecuteAsync<Application>(It.IsAny<IRestRequest>(), It.IsAny<Action<Application>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Applications/{ApplicationSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var applicationSidParam = savedRequest.Parameters.Find(x => x.Name == "ApplicationSid");
+            Assert.IsNotNull(applicationSidParam);
+            Assert.AreEqual(APPLICATION_SID, applicationSidParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListApplications()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<ApplicationResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new ApplicationResult());
+            var client = mockClient.Object;
 
-            var result = client.ListApplications();
+            client.ListApplications();
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Applications);
+            mockClient.Verify(trc => trc.Execute<ApplicationResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Applications.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListApplicationsAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<ApplicationResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<ApplicationResult>>()))
+                .Callback<IRestRequest, Action<ApplicationResult>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-            ApplicationResult result = null;
             client.ListApplications(applications => {
-                result = applications;
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Applications);
+            mockClient.Verify(trc => trc.ExecuteAsync<ApplicationResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<ApplicationResult>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Applications.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
         
-        [TestMethod]
+        [Test]
         public void ShouldListApplicationsUsingFilters()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<ApplicationResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new ApplicationResult());
+            var client = mockClient.Object;
+            var friendlyName = Utilities.MakeRandomFriendlyName();
 
-            ApplicationOptions options = new ApplicationOptions();
-            var originalApplicationOne = client.AddApplication(Utilities.MakeRandomFriendlyName(), options);
-            var originalApplicationTwo = client.AddApplication(Utilities.MakeRandomFriendlyName(), options);
-            var originalApplicationThree = client.AddApplication(Utilities.MakeRandomFriendlyName(), options);
+            client.ListApplications(friendlyName, null, null);
 
-            Assert.IsNotNull(originalApplicationOne.Sid);
-            Assert.IsNotNull(originalApplicationTwo.Sid);
-            Assert.IsNotNull(originalApplicationThree.Sid);
-
-            var result = client.ListApplications(originalApplicationTwo.FriendlyName, null, null);
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Applications);
-            Assert.IsNotNull(result.Applications.FirstOrDefault(a=>a.FriendlyName==originalApplicationTwo.FriendlyName));
-
-            client.DeleteApplication(originalApplicationOne.Sid); //cleanup
-            client.DeleteApplication(originalApplicationTwo.Sid); //cleanup
-            client.DeleteApplication(originalApplicationThree.Sid); //cleanup
+            mockClient.Verify(trc => trc.Execute<ApplicationResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Applications.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var friendlyNameParam = savedRequest.Parameters.Find(x => x.Name == "FriendlyName");
+            Assert.IsNotNull (friendlyNameParam);
+            Assert.AreEqual (friendlyName, friendlyNameParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldUpdateApplication()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-            ApplicationOptions originalOptions = new ApplicationOptions();
-            var originalApplication = client.AddApplication(Utilities.MakeRandomFriendlyName(), originalOptions);
-
-            Assert.IsNotNull(originalApplication.Sid);
-
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Application>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Application());
+            var client = mockClient.Object;
             ApplicationOptions options = new ApplicationOptions();
-            var result = client.UpdateApplication(originalApplication.Sid, "", options);
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.AreEqual(originalApplication.Sid, result.Sid);
+            client.UpdateApplication(APPLICATION_SID, "", options);
 
-            client.DeleteApplication(result.Sid); //cleanup
+            mockClient.Verify(trc => trc.Execute<Application>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Applications/{ApplicationSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var applicationSidParam = savedRequest.Parameters.Find(x => x.Name == "ApplicationSid");
+            Assert.IsNotNull(applicationSidParam);
+            Assert.AreEqual(APPLICATION_SID, applicationSidParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldUpdateApplicationAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<Application>(It.IsAny<IRestRequest>(), It.IsAny<Action<Application>>()))
+                .Callback<IRestRequest, Action<Application>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-            ApplicationOptions originalOptions = new ApplicationOptions();
-            var originalApplication = client.AddApplication(Utilities.MakeRandomFriendlyName(), originalOptions);
-
-            Assert.IsNotNull(originalApplication.Sid);
-
-            ApplicationOptions options = new ApplicationOptions();
-            Application result = null;
-            client.UpdateApplication(originalApplication.Sid, "", options, app => {
-                result = app;
+            var options = new ApplicationOptions();
+            client.UpdateApplication(APPLICATION_SID, "", options, app => {
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.AreEqual(originalApplication.Sid, result.Sid);
-
-            client.DeleteApplication(result.Sid); //cleanup
+            mockClient.Verify(trc => trc.ExecuteAsync<Application>(It.IsAny<IRestRequest>(), It.IsAny<Action<Application>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Applications/{ApplicationSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var applicationSidParam = savedRequest.Parameters.Find(x => x.Name == "ApplicationSid");
+            Assert.IsNotNull(applicationSidParam);
+            Assert.AreEqual(APPLICATION_SID, applicationSidParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldDeleteApplication()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new RestResponse());
+            var client = mockClient.Object;
 
-            ApplicationOptions options = new ApplicationOptions();
-            var originalApplication = client.AddApplication(Utilities.MakeRandomFriendlyName(), options);
+            client.DeleteApplication(APPLICATION_SID);
 
-            Assert.IsNotNull(originalApplication.Sid);
-
-            var status = client.DeleteApplication(originalApplication.Sid);
-            Assert.AreEqual(DeleteStatus.Success, status);
+            mockClient.Verify(trc => trc.Execute(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Applications/{ApplicationSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.DELETE, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var applicationSid = savedRequest.Parameters.Find(x => x.Name == "ApplicationSid");
+            Assert.IsNotNull (applicationSid);
+            Assert.AreEqual (APPLICATION_SID, applicationSid.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldDeleteApplicationAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync(It.IsAny<IRestRequest>(), It.IsAny<Action<IRestResponse>>()))
+                .Callback<IRestRequest, Action<IRestResponse>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-            ApplicationOptions options = new ApplicationOptions();
-            var originalApplication = client.AddApplication(Utilities.MakeRandomFriendlyName(), options);
-
-            Assert.IsNotNull(originalApplication.Sid);
-
-            DeleteStatus status = DeleteStatus.Failed;
-            client.DeleteApplication(originalApplication.Sid, app => {
-                status = app;
+            client.DeleteApplication(APPLICATION_SID, app => {
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.AreEqual(DeleteStatus.Success, status);
+            mockClient.Verify(trc => trc.ExecuteAsync(It.IsAny<IRestRequest>(), It.IsAny<Action<IRestResponse>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Applications/{ApplicationSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.DELETE, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var applicationSid = savedRequest.Parameters.Find(x => x.Name == "ApplicationSid");
+            Assert.IsNotNull (applicationSid);
+            Assert.AreEqual (APPLICATION_SID, applicationSid.Value);
         }
     }
 }

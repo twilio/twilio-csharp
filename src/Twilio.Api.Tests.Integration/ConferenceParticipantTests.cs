@@ -1,54 +1,148 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using NUnit.Framework;
+using Moq;
+using RestSharp;
 
 namespace Twilio.Api.Tests.Integration
 {
-    [TestClass]
+    [TestFixture]
     public class ConferenceParticipantTests
     {
-        [TestMethod]
+
+        private const string CALL_SID = "CA123";
+
+        private const string CONFERENCE_SID = "CF123";
+
+        private Mock<TwilioRestClient> mockClient;
+
+        [SetUp]
+        public void Setup()
+        {
+            mockClient = new Mock<TwilioRestClient>(Credentials.AccountSid, Credentials.AuthToken);
+            mockClient.CallBase = true;
+        }
+
+        [Test]
         public void ShouldListConferenceParticipants()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            client.ListConferenceParticipants("", null);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<ParticipantResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new ParticipantResult());
+            var client = mockClient.Object;
 
-            Assert.Fail();
+            client.ListConferenceParticipants(CONFERENCE_SID, null);
+
+            mockClient.Verify(trc => trc.Execute<ParticipantResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var conferenceSidParam = savedRequest.Parameters.Find(x => x.Name == "ConferenceSid");
+            Assert.IsNotNull(conferenceSidParam);
+            Assert.AreEqual(CONFERENCE_SID, conferenceSidParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldGetConferenceParticipant()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            client.GetConferenceParticipant("", "");
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Participant>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Participant());
+            var client = mockClient.Object;
 
-            Assert.Fail();
+            client.GetConferenceParticipant(CONFERENCE_SID, CALL_SID);
+
+            mockClient.Verify(trc => trc.Execute<Participant>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(2, savedRequest.Parameters.Count);
+            var conferenceSidParam = savedRequest.Parameters.Find(x => x.Name == "ConferenceSid");
+            Assert.IsNotNull(conferenceSidParam);
+            Assert.AreEqual(CONFERENCE_SID, conferenceSidParam.Value);
+            var callSidParam = savedRequest.Parameters.Find(x => x.Name == "CallSid");
+            Assert.IsNotNull(callSidParam);
+            Assert.AreEqual(CALL_SID, callSidParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldMuteConferenceParticipant()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            client.MuteConferenceParticipant("", "");
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Participant>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Participant());
+            var client = mockClient.Object;
 
-            Assert.Fail();
+            client.MuteConferenceParticipant(CONFERENCE_SID, CALL_SID);
+
+            mockClient.Verify(trc => trc.Execute<Participant>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(3, savedRequest.Parameters.Count);
+            var conferenceSidParam = savedRequest.Parameters.Find(x => x.Name == "ConferenceSid");
+            Assert.IsNotNull(conferenceSidParam);
+            Assert.AreEqual(CONFERENCE_SID, conferenceSidParam.Value);
+            var callSidParam = savedRequest.Parameters.Find(x => x.Name == "CallSid");
+            Assert.IsNotNull(callSidParam);
+            Assert.AreEqual(CALL_SID, callSidParam.Value);
+            var mutedParam = savedRequest.Parameters.Find(x => x.Name == "Muted");
+            Assert.IsNotNull(mutedParam);
+            Assert.AreEqual(true, mutedParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldUnMuteConferenceParticipant()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            client.UnmuteConferenceParticipant("", "");
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Participant>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Participant());
+            var client = mockClient.Object;
 
-            Assert.Fail();
+            client.UnmuteConferenceParticipant(CONFERENCE_SID, CALL_SID);
+
+            mockClient.Verify(trc => trc.Execute<Participant>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(3, savedRequest.Parameters.Count);
+            var conferenceSidParam = savedRequest.Parameters.Find(x => x.Name == "ConferenceSid");
+            Assert.IsNotNull(conferenceSidParam);
+            Assert.AreEqual(CONFERENCE_SID, conferenceSidParam.Value);
+            var callSidParam = savedRequest.Parameters.Find(x => x.Name == "CallSid");
+            Assert.IsNotNull(callSidParam);
+            Assert.AreEqual(CALL_SID, callSidParam.Value);
+            var mutedParam = savedRequest.Parameters.Find(x => x.Name == "Muted");
+            Assert.IsNotNull(mutedParam);
+            Assert.AreEqual(false, mutedParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldKickConferenceParticipant()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            client.KickConferenceParticipant("", "");
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new RestResponse());
+            var client = mockClient.Object;
 
-            Assert.Fail();
+            client.KickConferenceParticipant(CONFERENCE_SID, CALL_SID);
+
+            mockClient.Verify(trc => trc.Execute(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.DELETE, savedRequest.Method);
+            Assert.AreEqual(2, savedRequest.Parameters.Count);
+            var conferenceSidParam = savedRequest.Parameters.Find(x => x.Name == "ConferenceSid");
+            Assert.IsNotNull(conferenceSidParam);
+            Assert.AreEqual(CONFERENCE_SID, conferenceSidParam.Value);
+            var callSidParam = savedRequest.Parameters.Find(x => x.Name == "CallSid");
+            Assert.IsNotNull(callSidParam);
+            Assert.AreEqual(CALL_SID, callSidParam.Value);
         }
     }
 }

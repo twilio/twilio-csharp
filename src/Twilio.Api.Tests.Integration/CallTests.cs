@@ -1,214 +1,230 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using NUnit.Framework;
 using System.Threading;
 using System.Linq;
+using Moq;
+using RestSharp;
 
 namespace Twilio.Api.Tests.Integration
 {
-    [TestClass]
+    [TestFixture]
     public class CallTests
     {
+        private const string CALL_SID = "CA123";
+
+        private const string FROM = "+15005550006";
+
+        private const string TO = "+13144586142";
+
+        private const string URL = "http://www.example.com/phone/";
+
         ManualResetEvent manualResetEvent = null;
 
-        [TestMethod]
+        private Mock<TwilioRestClient> mockClient;
+
+        [SetUp]
+        public void Setup()
+        {
+            mockClient = new Mock<TwilioRestClient>(Credentials.AccountSid, Credentials.AuthToken);
+            mockClient.CallBase = true;
+        }
+
+        [Test]
         public void ShouldInitiateOutboundCall()
         {
-            var client = new TwilioRestClient(Credentials.TestAccountSid, Credentials.TestAuthToken);
-            var result = client.InitiateOutboundCall("+15005550006", "+13144586142", "http://www.example.com/phone/");
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Call>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Call());
+            var client = mockClient.Object;
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Sid);
+            client.InitiateOutboundCall(FROM, TO, URL);
+
+            mockClient.Verify(trc => trc.Execute<Call>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Calls.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(3, savedRequest.Parameters.Count);
+            var fromParam = savedRequest.Parameters.Find(x => x.Name == "From");
+            Assert.IsNotNull(fromParam);
+            Assert.AreEqual(FROM, fromParam.Value);
+            var toParam = savedRequest.Parameters.Find(x => x.Name == "To");
+            Assert.IsNotNull(toParam);
+            Assert.AreEqual(TO, toParam.Value);
+            var urlParam = savedRequest.Parameters.Find(x => x.Name == "Url");
+            Assert.IsNotNull(urlParam);
+            Assert.AreEqual(URL, urlParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldInitiateOutboundCallAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<Call>(It.IsAny<IRestRequest>(), It.IsAny<Action<Call>>()))
+                .Callback<IRestRequest, Action<Call>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
-            
-            var client = new TwilioRestClient(Credentials.TestAccountSid, Credentials.TestAuthToken);
-            Call result = null;
-            client.InitiateOutboundCall("+15005550006", "+13144586142", "http://www.example.com/phone/", call =>
+
+            client.InitiateOutboundCall(FROM, TO, URL, call =>
             {
-                result = call;
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Sid);
+            mockClient.Verify(trc => trc.ExecuteAsync<Call>(It.IsAny<IRestRequest>(), It.IsAny<Action<Call>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Calls.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(3, savedRequest.Parameters.Count);
+            var fromParam = savedRequest.Parameters.Find(x => x.Name == "From");
+            Assert.IsNotNull(fromParam);
+            Assert.AreEqual(FROM, fromParam.Value);
+            var toParam = savedRequest.Parameters.Find(x => x.Name == "To");
+            Assert.IsNotNull(toParam);
+            Assert.AreEqual(TO, toParam.Value);
+            var urlParam = savedRequest.Parameters.Find(x => x.Name == "Url");
+            Assert.IsNotNull(urlParam);
+            Assert.AreEqual(URL, urlParam.Value);
         }
         
-        [TestMethod]
-        public void ShouldFailToInitiateOutboundCallWithInvalidFromNumber()
-        {
-            var client = new TwilioRestClient(Credentials.TestAccountSid, Credentials.TestAuthToken);
-            var result = client.InitiateOutboundCall("+15005550006", "+15005550001", "http://www.example.com/phone/");
-
-            Assert.IsNotNull(result);
-            Assert.IsNotNull(result.RestException);
-            Assert.IsNull(result.Sid);
-        }
-
-        [TestMethod]
-        public void ShouldFailToInitiateOutboundCallWithInvalidUrl()
-        {
-            var client = new TwilioRestClient(Credentials.TestAccountSid, Credentials.TestAuthToken);
-            var result = client.InitiateOutboundCall("+15005550006", "+13144586142", "/phone");
-
-            Assert.IsNotNull(result);
-            Assert.IsNotNull(result.RestException);
-            Assert.IsNull(result.Sid);
-        }
-
-        [TestMethod]
+        [Test]
         public void ShouldGetCall()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            Call originalCall = client.InitiateOutboundCall("+13144586142", "+13215946383", "http://devin.webscript.io/twilioconf?conf=" + Utilities.MakeRandomFriendlyName());
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Call>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Call());
+            var client = mockClient.Object;
 
-            Assert.IsNotNull(originalCall.Sid);
+            client.GetCall(CALL_SID);
 
-            var callSid = originalCall.Sid;
-
-            Call call = client.GetCall(callSid);
-
-            Assert.AreEqual(callSid, call.Sid);
-
-            client.HangupCall(originalCall.Sid, HangupStyle.Completed);
+            mockClient.Verify(trc => trc.Execute<Call>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Calls/{CallSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var callSidParam = savedRequest.Parameters.Find(x => x.Name == "CallSid");
+            Assert.IsNotNull(callSidParam);
+            Assert.AreEqual(CALL_SID, callSidParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListCalls()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var result = client.ListCalls();
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<CallResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new CallResult());
+            var client = mockClient.Object;
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Calls);
+            client.ListCalls();
+
+            mockClient.Verify(trc => trc.Execute<CallResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Calls.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListCallsAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<CallResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<CallResult>>()))
+                .Callback<IRestRequest, Action<CallResult>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-            CallResult result = null;
             client.ListCalls(calls => {
-                result = calls;
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Calls);
+            mockClient.Verify(trc => trc.ExecuteAsync<CallResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<CallResult>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Calls.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListCallsWithFilters()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            Call originalCall = client.InitiateOutboundCall("+13144586142", "+13215946383", "http://devin.webscript.io/twilioconf?conf=" + Utilities.MakeRandomFriendlyName());
-            
-            Assert.IsNotNull(originalCall.Sid);
-
-            var callSid = originalCall.Sid;
-            var startTime = originalCall.StartTime;
-
-            client.HangupCall(originalCall.Sid, HangupStyle.Completed);
-
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<CallResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new CallResult());
+            var client = mockClient.Object;
             CallListRequest options = new CallListRequest();
-            options.From = "+13144586142";
-            options.StartTime = startTime;
+            options.From = FROM;
+            options.StartTime = new DateTime();
 
-            CallResult calls = client.ListCalls(options);
+            client.ListCalls(options);
 
-            Assert.IsNotNull(calls);
-            Assert.IsNull(calls.RestException);
-            Assert.IsNotNull(calls.Calls);
-            Assert.IsNotNull(calls.Calls.FirstOrDefault(c=>c.Sid == callSid));
+            mockClient.Verify(trc => trc.Execute<CallResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Calls.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(2, savedRequest.Parameters.Count);
+            var fromParam = savedRequest.Parameters.Find(x => x.Name == "From");
+            Assert.IsNotNull(fromParam);
+            Assert.AreEqual(FROM, fromParam.Value);
+            var startTimeParam = savedRequest.Parameters.Find(x => x.Name == "StartTime");
+            Assert.IsNotNull(startTimeParam);
+            Assert.AreEqual(options.StartTime.Value.ToString("yyyy-MM-dd"), startTimeParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldRedirectCall()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var originalFriendlyName = "http://devin.webscript.io/twilioconf?conf=" + Utilities.MakeRandomFriendlyName();
-            Call originalCall = client.InitiateOutboundCall("+13144586142", "+13215946383", originalFriendlyName);
-
-            Assert.IsNotNull(originalCall.Sid);
-
-            var callSid = originalCall.Sid;
-
-            int counter = 0;
-            while (counter < 10)
-            {
-                Thread.Sleep(1000);
-
-                var updatedcall = client.GetCall(callSid);
-                if (updatedcall.Status == "")
-                    break;
-
-                counter++;
-            }
-
-            ConferenceResult conferences = client.ListConferences();
-
-            Assert.IsNotNull(conferences);
-            Assert.IsNull(conferences.RestException);
-            Assert.IsNotNull(conferences.Conferences);
-
-            Conference conference = conferences.Conferences.FirstOrDefault(c => c.FriendlyName == originalFriendlyName);
-
-            Assert.IsNotNull(conference);
-            Assert.IsNotNull(conference.Sid);
-
-            Participant participant = client.GetConferenceParticipant(conference.Sid, callSid);
-
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Call>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Call());
+            var client = mockClient.Object;
             var redirectedFriendlyName = Utilities.MakeRandomFriendlyName();
-            client.RedirectCall(originalCall.Sid, "http://devin.webscript.io/twilioconf?conf=" + redirectedFriendlyName, "GET");
+            var redirectUrl = "http://devin.webscript.io/twilioconf?conf=" + redirectedFriendlyName;
 
-            conferences = client.ListConferences();
+            client.RedirectCall(CALL_SID, redirectUrl, "GET");
 
-            Assert.IsNotNull(conferences);
-            Assert.IsNull(conferences.RestException);
-            Assert.IsNotNull(conferences.Conferences);
-
-            conference = conferences.Conferences.FirstOrDefault(c => c.FriendlyName == redirectedFriendlyName);
-
-            Assert.IsNotNull(conference);
-            Assert.IsNotNull(conference.Sid);
-
-            participant = client.GetConferenceParticipant(conference.Sid, callSid);
-
-            Assert.AreEqual(callSid, participant.CallSid);
-
-            client.HangupCall(originalCall.Sid, HangupStyle.Completed);
+            mockClient.Verify(trc => trc.Execute<Call>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Calls/{CallSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(3, savedRequest.Parameters.Count);
+            var callSidParam = savedRequest.Parameters.Find(x => x.Name == "CallSid");
+            Assert.IsNotNull(callSidParam);
+            Assert.AreEqual(CALL_SID, callSidParam.Value);
+            var urlParam = savedRequest.Parameters.Find(x => x.Name == "Url");
+            Assert.IsNotNull(urlParam);
+            Assert.AreEqual(redirectUrl, urlParam.Value);
+            var methodParam = savedRequest.Parameters.Find(x => x.Name == "Method");
+            Assert.IsNotNull(methodParam);
+            Assert.AreEqual("GET", methodParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldHangupCall()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            Call originalCall = client.InitiateOutboundCall("+13144586142", "+13215946383", "http://devin.webscript.io/twilioconf?conf=" + Utilities.MakeRandomFriendlyName());
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Call>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Call());
+            var client = mockClient.Object;
 
-            Assert.IsNotNull(originalCall.Sid);
+            client.HangupCall(CALL_SID, HangupStyle.Completed);
 
-            var callSid = originalCall.Sid;
-
-            client.HangupCall(originalCall.Sid, HangupStyle.Completed);
-
-            Call updatedcall = client.GetCall(callSid);
-
-            Assert.AreEqual("completed", updatedcall.Status);
-            
+            mockClient.Verify(trc => trc.Execute<Call>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Calls/{CallSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(2, savedRequest.Parameters.Count);
+            var callSidParam = savedRequest.Parameters.Find(x => x.Name == "CallSid");
+            Assert.IsNotNull(callSidParam);
+            Assert.AreEqual(CALL_SID, callSidParam.Value);
+            var statusParam = savedRequest.Parameters.Find(x => x.Name == "Status");
+            Assert.IsNotNull(statusParam);
+            Assert.AreEqual(HangupStyle.Completed.ToString().ToLower(), statusParam.Value);
         }
     }
 }

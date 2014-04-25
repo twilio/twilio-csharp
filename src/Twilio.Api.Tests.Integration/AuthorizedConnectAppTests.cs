@@ -1,85 +1,127 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using NUnit.Framework;
 using System.Threading;
+using Moq;
+using RestSharp;
 
 namespace Twilio.Api.Tests.Integration
 {
-    [TestClass]
+    [TestFixture]
     public class AuthorizedConnectAppTests
     {
+        private const string AUTHORIZED_CONNECT_APP_SID = "CN123";
+
         ManualResetEvent manualResetEvent = null;
 
-        [TestMethod]
+        private Mock<TwilioRestClient> mockClient;
+
+        [SetUp]
+        public void Setup()
+        {
+            mockClient = new Mock<TwilioRestClient>(Credentials.AccountSid, Credentials.AuthToken);
+            mockClient.CallBase = true;
+        }
+
+        [Test]
         public void ShouldGetAuthorizedConnectApp()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var result = client.GetAuthorizedConnectApp("");
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<AuthorizedConnectApp>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new AuthorizedConnectApp());
+            var client = mockClient.Object;
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Sid);
-            Assert.Fail();
+            client.GetAuthorizedConnectApp(AUTHORIZED_CONNECT_APP_SID);
+
+            mockClient.Verify(trc => trc.Execute<AuthorizedConnectApp>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/AuthorizedConnectApps/{AuthorizedConnectAppSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var applicationSidParam = savedRequest.Parameters.Find(x => x.Name == "AuthorizedConnectAppSid");
+            Assert.IsNotNull(applicationSidParam);
+            Assert.AreEqual(AUTHORIZED_CONNECT_APP_SID, applicationSidParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldGetAuthorizedConnectAppAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<AuthorizedConnectApp>(It.IsAny<IRestRequest>(), It.IsAny<Action<AuthorizedConnectApp>>()))
+                .Callback<IRestRequest, Action<AuthorizedConnectApp>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-            AuthorizedConnectApp result = null;
-            client.GetAuthorizedConnectApp("", app=>{
-                result = app;
+            client.GetAuthorizedConnectApp(AUTHORIZED_CONNECT_APP_SID, app=>{
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Sid);
-            Assert.Fail();
+            mockClient.Verify(trc => trc.ExecuteAsync<AuthorizedConnectApp>(It.IsAny<IRestRequest>(), It.IsAny<Action<AuthorizedConnectApp>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/AuthorizedConnectApps/{AuthorizedConnectAppSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var applicationSidParam = savedRequest.Parameters.Find(x => x.Name == "AuthorizedConnectAppSid");
+            Assert.IsNotNull(applicationSidParam);
+            Assert.AreEqual(AUTHORIZED_CONNECT_APP_SID, applicationSidParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListAuthorizedConnectApp()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var result = client.ListAuthorizedConnectApps();
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<AuthorizedConnectAppResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new AuthorizedConnectAppResult());
+            var client = mockClient.Object;
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.AuthorizedConnectApps);
+            client.ListAuthorizedConnectApps();
+
+            mockClient.Verify(trc => trc.Execute<AuthorizedConnectAppResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/AuthorizedConnectApps.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListAuthorizedConnectAppAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<AuthorizedConnectAppResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<AuthorizedConnectAppResult>>()))
+                .Callback<IRestRequest, Action<AuthorizedConnectAppResult>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-            AuthorizedConnectAppResult result = null;
             client.ListAuthorizedConnectApps(apps => {
-                result = apps;
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.AuthorizedConnectApps);
+            mockClient.Verify(trc => trc.ExecuteAsync<AuthorizedConnectAppResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<AuthorizedConnectAppResult>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/AuthorizedConnectApps.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListAuthorizedConnectAppUsingFilters()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            client.ListAuthorizedConnectApps(null,null);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<AuthorizedConnectAppResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new AuthorizedConnectAppResult());
+            var client = mockClient.Object;
 
-            Assert.Fail();
+            client.ListAuthorizedConnectApps(null, null);
+
+            mockClient.Verify(trc => trc.Execute<AuthorizedConnectAppResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/AuthorizedConnectApps.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
     }
