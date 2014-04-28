@@ -1,109 +1,175 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using NUnit.Framework;
 using System.Threading;
+using Moq;
+using RestSharp;
 
 namespace Twilio.Api.Tests.Integration
 {
-    [TestClass]
+    [TestFixture]
     public class NotificationTests
     {
+        private const string NOTIFICATION_SID = "";
+
         ManualResetEvent manualResetEvent = null;
 
-        [TestMethod]
+        private Mock<TwilioRestClient> mockClient;
+
+        [SetUp]
+        public void Setup()
+        {
+            mockClient = new Mock<TwilioRestClient>(Credentials.AccountSid, Credentials.AuthToken);
+            mockClient.CallBase = true;
+        }
+
+        [Test]
         public void ShouldGetNotification()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var result = client.GetNotification("");
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Notification>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Notification());
+            var client = mockClient.Object;
 
-            Assert.Fail();
+            client.GetNotification(NOTIFICATION_SID);
+
+            mockClient.Verify(trc => trc.Execute<Notification>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Notifications/{NotificationSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var notificationSidParam = savedRequest.Parameters.Find(x => x.Name == "NotificationSid");
+            Assert.IsNotNull(notificationSidParam);
+            Assert.AreEqual(NOTIFICATION_SID, notificationSidParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldGetNotificationAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<Notification>(It.IsAny<IRestRequest>(), It.IsAny<Action<Notification>>()))
+                .Callback<IRestRequest, Action<Notification>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            
-            Notification result = null;
-            client.GetNotification("", notification => {
-                result = notification;
+
+            client.GetNotification(NOTIFICATION_SID, notification => {
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.Fail();
+            mockClient.Verify(trc => trc.ExecuteAsync<Notification>(It.IsAny<IRestRequest>(), It.IsAny<Action<Notification>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Notifications/{NotificationSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var notificationSidParam = savedRequest.Parameters.Find(x => x.Name == "NotificationSid");
+            Assert.IsNotNull(notificationSidParam);
+            Assert.AreEqual(NOTIFICATION_SID, notificationSidParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListNotification()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var result = client.ListNotifications();
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<NotificationResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new NotificationResult());
+            var client = mockClient.Object;
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Notifications);
+            client.ListNotifications();
+
+            mockClient.Verify(trc => trc.Execute<NotificationResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Notifications.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListNotificationAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<NotificationResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<NotificationResult>>()))
+                .Callback<IRestRequest, Action<NotificationResult>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-            NotificationResult result = null;
             client.ListNotifications(notifications => { 
-                result = notifications;
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Notifications);
+            mockClient.Verify(trc => trc.ExecuteAsync<NotificationResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<NotificationResult>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Notifications.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListNotificationUsingFilters()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var result = client.ListNotifications();
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<NotificationResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new NotificationResult());
+            var client = mockClient.Object;
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Notifications);
-            Assert.Fail();
+            client.ListNotifications(0, null, null, null);
+
+            mockClient.Verify(trc => trc.Execute<NotificationResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Notifications.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var logParam = savedRequest.Parameters.Find(x => x.Name == "Log");
+            Assert.IsNotNull(logParam);
+            Assert.AreEqual(0, logParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldDeleteNotification()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var status = client.DeleteNotification("");            
-            Assert.AreEqual(DeleteStatus.Success, status);
-            Assert.Fail();
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new RestResponse());
+            var client = mockClient.Object;
+
+            client.DeleteNotification(NOTIFICATION_SID);
+
+            mockClient.Verify(trc => trc.Execute(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Notifications/{NotificationSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.DELETE, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var notificationSidParam = savedRequest.Parameters.Find(x => x.Name == "NotificationSid");
+            Assert.IsNotNull(notificationSidParam);
+            Assert.AreEqual(NOTIFICATION_SID, notificationSidParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldDeleteNotificationAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync(It.IsAny<IRestRequest>(), It.IsAny<Action<IRestResponse>>()))
+                .Callback<IRestRequest, Action<IRestResponse>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-            DeleteStatus status = DeleteStatus.Failed;
-            client.DeleteNotification("", notification => {
-                status = notification;
+            client.DeleteNotification(NOTIFICATION_SID, notification => {
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.AreEqual(DeleteStatus.Success, status);
-            Assert.Fail();
+            mockClient.Verify(trc => trc.ExecuteAsync(It.IsAny<IRestRequest>(), It.IsAny<Action<IRestResponse>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Notifications/{NotificationSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.DELETE, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var notificationSidParam = savedRequest.Parameters.Find(x => x.Name == "NotificationSid");
+            Assert.IsNotNull(notificationSidParam);
+            Assert.AreEqual(NOTIFICATION_SID, notificationSidParam.Value);
         }
 
     }

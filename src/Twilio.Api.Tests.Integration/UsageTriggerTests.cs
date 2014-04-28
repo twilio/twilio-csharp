@@ -1,110 +1,165 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using NUnit.Framework;
 using System.Threading;
+using Moq;
+using RestSharp;
 
 namespace Twilio.Api.Tests.Integration
 {
-    [TestClass]
+    [TestFixture]
     public class UsageTriggerTests
     {
+        private const string USAGE_TRIGGER_SID = "UT123";
+
         //list/get/create/update/delete
         ManualResetEvent manualResetEvent = null;
 
-        [TestMethod]
+        private Mock<TwilioRestClient> mockClient;
+
+        [SetUp]
+        public void Setup()
+        {
+            mockClient = new Mock<TwilioRestClient>(Credentials.AccountSid, Credentials.AuthToken);
+            mockClient.CallBase = true;
+        }
+
+        [Test]
         public void ShouldGetUsageTrigger()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<UsageTrigger>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new UsageTrigger());
+            var client = mockClient.Object;
 
-            UsageTriggerOptions options = new UsageTriggerOptions() { FriendlyName = "ShouldGetUsageTrigger" };
-            var originalUsageTrigger = client.CreateUsageTrigger(options);
+            client.GetUsageTrigger(USAGE_TRIGGER_SID);
 
-            var usageTriggerSid = originalUsageTrigger.Sid;
-
-            var result = client.GetUsageTrigger(usageTriggerSid);
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Sid);
-
-            client.DeleteUsageTrigger(usageTriggerSid); //cleanup
+            mockClient.Verify(trc => trc.Execute<UsageTrigger>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Usage/Triggers/{UsageTriggerSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var usageTriggerSidParam = savedRequest.Parameters.Find(x => x.Name == "UsageTriggerSid");
+            Assert.IsNotNull(usageTriggerSidParam);
+            Assert.AreEqual(USAGE_TRIGGER_SID, usageTriggerSidParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListUsageTriggers()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<UsageTriggerResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new UsageTriggerResult());
+            var client = mockClient.Object;
 
-            var result = client.ListUsageTriggers();
+            client.ListUsageTriggers();
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.UsageTriggers);
+            mockClient.Verify(trc => trc.Execute<UsageTriggerResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Usage/Triggers.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListUsageTriggersAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<UsageTriggerResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<UsageTriggerResult>>()))
+                .Callback<IRestRequest, Action<UsageTriggerResult>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-            UsageTriggerResult result = null;
             client.ListUsageTriggers(usageTriggers =>
             {
-                result = usageTriggers;
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.UsageTriggers);
+            mockClient.Verify(trc => trc.ExecuteAsync<UsageTriggerResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<UsageTriggerResult>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Usage/Triggers.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldCreateNewUsageTrigger()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<UsageTrigger>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new UsageTrigger());
+            var client = mockClient.Object;
+            UsageTriggerOptions options = new UsageTriggerOptions() {
+                CallbackUrl = "CallbackUrl",
+                TriggerValue = "TriggerValue",
+                UsageCategory = "UsageCategory"
+            };
 
-            UsageTriggerOptions options = new UsageTriggerOptions() { FriendlyName = "ShouldCreateNewUsageTrigger" };
-            var result = client.CreateUsageTrigger(options);
+            client.CreateUsageTrigger(options);
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Sid);
-
-            client.DeleteQueue(result.Sid); //cleanup
+            mockClient.Verify(trc => trc.Execute<UsageTrigger>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Usage/Triggers.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(3, savedRequest.Parameters.Count);
+            var callbackUrlParam = savedRequest.Parameters.Find(x => x.Name == "CallbackUrl");
+            Assert.IsNotNull(callbackUrlParam);
+            Assert.AreEqual(options.CallbackUrl, callbackUrlParam.Value);
+            var triggerValueParam = savedRequest.Parameters.Find(x => x.Name == "TriggerValue");
+            Assert.IsNotNull(triggerValueParam);
+            Assert.AreEqual(options.TriggerValue, triggerValueParam.Value);
+            var usageCategoryParam = savedRequest.Parameters.Find(x => x.Name == "UsageCategory");
+            Assert.IsNotNull(usageCategoryParam);
+            Assert.AreEqual(options.UsageCategory, usageCategoryParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldUpdateUsageTrigger()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<UsageTrigger>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new UsageTrigger());
+            var client = mockClient.Object;
+            var friendlyName = Utilities.MakeRandomFriendlyName();
 
-            UsageTriggerOptions options = new UsageTriggerOptions() { FriendlyName = "ShouldUpdateUsageTrigger" };
-            var originalUsageTrigger = client.CreateUsageTrigger(options);
+            client.UpdateUsageTrigger(USAGE_TRIGGER_SID, friendlyName, null, null);
 
-            var usagetriggersid = originalUsageTrigger.Sid;
-
-            var result = client.UpdateUsageTrigger(usagetriggersid, "ShouldUpdateUsageTriggerUpdated", null, null);
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.AreEqual("ShouldUpdateUsageTriggerUpdated", result.FriendlyName);
-
-            client.DeleteQueue(usagetriggersid); //cleanup
+            mockClient.Verify(trc => trc.Execute<UsageTrigger>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Usage/Triggers/{UsageTriggerSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(2, savedRequest.Parameters.Count);
+            var usageTriggerSidParam = savedRequest.Parameters.Find(x => x.Name == "UsageTriggerSid");
+            Assert.IsNotNull(usageTriggerSidParam);
+            Assert.AreEqual(USAGE_TRIGGER_SID, usageTriggerSidParam.Value);
+            var friendlyNameParam = savedRequest.Parameters.Find(x => x.Name == "FriendlyName");
+            Assert.IsNotNull(friendlyNameParam);
+            Assert.AreEqual(friendlyName, friendlyNameParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldDeleteUsageTrigger()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            UsageTriggerOptions options = new UsageTriggerOptions() { FriendlyName = "ShouldDeleteUsageTrigger" };
-            var originalUsageTrigger = client.CreateUsageTrigger(options);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new RestResponse());
+            var client = mockClient.Object;
 
-            var status = client.DeleteQueue(originalUsageTrigger.Sid);
-            Assert.AreEqual(DeleteStatus.Success, status);
+            client.DeleteUsageTrigger(USAGE_TRIGGER_SID);
+
+            mockClient.Verify(trc => trc.Execute(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Usage/Triggers/{UsageTriggerSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.DELETE, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var usageTriggerSidParam = savedRequest.Parameters.Find(x => x.Name == "UsageTriggerSid");
+            Assert.IsNotNull(usageTriggerSidParam);
+            Assert.AreEqual(USAGE_TRIGGER_SID, usageTriggerSidParam.Value);
         }
 
     }

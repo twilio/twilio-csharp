@@ -1,161 +1,178 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using NUnit.Framework;
 using System.Threading;
+using Moq;
+using RestSharp;
 
 namespace Twilio.Api.Tests.Integration
 {
-    [TestClass]
+    [TestFixture]
     public class SmsTests
     {
+        private const string FROM = "+15005550006";
+
+        private const string TO = "+13144586142";
+
         ManualResetEvent manualResetEvent = null;
 
-        [TestMethod]
+        private Mock<TwilioRestClient> mockClient;
+
+        [SetUp]
+        public void Setup()
+        {
+            mockClient = new Mock<TwilioRestClient>(Credentials.AccountSid, Credentials.AuthToken);
+            mockClient.CallBase = true;
+        }
+
+        [Test]
         public void ShouldSendSmsMessage()
         {
-            var client = new TwilioRestClient(Credentials.TestAccountSid, Credentials.TestAuthToken);
-            var result = client.SendSmsMessage("+15005550006", "+13144586142", ".NET Unit Test Message");
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<SMSMessage>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new SMSMessage());
+            var client = mockClient.Object;
+            var body = ".NET Unit Test Message";
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Sid);
+            client.SendSmsMessage(FROM, TO, body);
+
+            mockClient.Verify(trc => trc.Execute<SMSMessage>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/SMS/Messages.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(3, savedRequest.Parameters.Count);
+            var fromParam = savedRequest.Parameters.Find(x => x.Name == "From");
+            Assert.IsNotNull(fromParam);
+            Assert.AreEqual(FROM, fromParam.Value);
+            var toParam = savedRequest.Parameters.Find(x => x.Name == "To");
+            Assert.IsNotNull(toParam);
+            Assert.AreEqual(TO, toParam.Value);
+            var bodyParam = savedRequest.Parameters.Find(x => x.Name == "Body");
+            Assert.IsNotNull(bodyParam);
+            Assert.AreEqual(body, bodyParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldSendSmsMessageAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<SMSMessage>(It.IsAny<IRestRequest>(), It.IsAny<Action<SMSMessage>>()))
+                .Callback<IRestRequest, Action<SMSMessage>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
+            var body = ".NET Unit Test Message";
 
-            var client = new TwilioRestClient(Credentials.TestAccountSid, Credentials.TestAuthToken);
-
-            SMSMessage result = null;
-            client.SendSmsMessage("+15005550006", "+13144586142", ".NET Unit Test Message", message =>
+            client.SendSmsMessage(FROM, TO, body, message =>
             {
-                result = message;
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Sid);
+            mockClient.Verify(trc => trc.ExecuteAsync<SMSMessage>(It.IsAny<IRestRequest>(), It.IsAny<Action<SMSMessage>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/SMS/Messages.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(3, savedRequest.Parameters.Count);
+            var fromParam = savedRequest.Parameters.Find(x => x.Name == "From");
+            Assert.IsNotNull(fromParam);
+            Assert.AreEqual(FROM, fromParam.Value);
+            var toParam = savedRequest.Parameters.Find(x => x.Name == "To");
+            Assert.IsNotNull(toParam);
+            Assert.AreEqual(TO, toParam.Value);
+            var bodyParam = savedRequest.Parameters.Find(x => x.Name == "Body");
+            Assert.IsNotNull(bodyParam);
+            Assert.AreEqual(body, bodyParam.Value);
         }
 
-        [TestMethod]
-        public void ShouldFailToSendSmsMessageWithLongMessage()
-        {
-            var client = new TwilioRestClient(Credentials.TestAccountSid, Credentials.TestAuthToken);
-            var result = client.SendSmsMessage("+15005550006", "+13144586142", "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz");
-
-            Assert.IsNotNull(result);
-            Assert.IsNotNull(result.RestException);
-            Assert.IsTrue( int.Parse(result.RestException.Status) < 401);
-            Assert.IsNull(result.Sid);
-        }
-
-        [TestMethod]
+        [Test]
         public void ShouldSendSmsMessageWithUnicodeCharacters()
         {
-            var client = new TwilioRestClient(Credentials.TestAccountSid, Credentials.TestAuthToken);
-            var result = client.SendSmsMessage("+15005550006", "+13144586142", "رسالة اختبار وحدة.NET");
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<SMSMessage>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new SMSMessage());
+            var client = mockClient.Object;
+            var body = "رسالة اختبار وحدة.NET";
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Sid);
+            client.SendSmsMessage(FROM, TO, body);
+
+            mockClient.Verify(trc => trc.Execute<SMSMessage>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/SMS/Messages.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(3, savedRequest.Parameters.Count);
+            var fromParam = savedRequest.Parameters.Find(x => x.Name == "From");
+            Assert.IsNotNull(fromParam);
+            Assert.AreEqual(FROM, fromParam.Value);
+            var toParam = savedRequest.Parameters.Find(x => x.Name == "To");
+            Assert.IsNotNull(toParam);
+            Assert.AreEqual(TO, toParam.Value);
+            var bodyParam = savedRequest.Parameters.Find(x => x.Name == "Body");
+            Assert.IsNotNull(bodyParam);
+            Assert.AreEqual(body, bodyParam.Value);
         }
 
-        [TestMethod]
-        public void ShouldFailToSendSmsMessageWithInvalidFromNumberFormat()
-        {
-            var client = new TwilioRestClient(Credentials.TestAccountSid, Credentials.TestAuthToken);
-            var result = client.SendSmsMessage("+15005550006", "+15005550001", ".NET Unit Test Message");
-
-            Assert.IsNotNull(result);
-            Assert.IsNotNull(result.RestException);
-            Assert.AreEqual("21211", result.RestException.Code);
-            Assert.IsNull(result.Sid);
-        }
-
-        [TestMethod]
-        public void ShouldFailToSendSmsMessageAsynchronouslyWithInvalidFromNumber()
-        {
-            manualResetEvent = new ManualResetEvent(false);
-
-            SMSMessage result = null;
-            var client = new TwilioRestClient(Credentials.TestAccountSid, Credentials.TestAuthToken);
-
-            client.SendSmsMessage("+15005550006", "+15005550001", ".NET Unit Test Message", message =>
-            {
-                result = message;
-                manualResetEvent.Set();
-            });
-
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNotNull(result.RestException);
-            Assert.AreEqual("21211", result.RestException.Code);
-            Assert.IsNull(result.Sid);
-        }
-
-        [TestMethod]
+        [Test]
         public void ShouldListSmsMessages()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            SMSMessage message = client.SendSmsMessage("", "", ".NET Unit Test Message");
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<SmsMessageResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new SmsMessageResult());
+            var client = mockClient.Object;
 
-            Assert.IsNotNull(message.Sid);
+            client.ListSmsMessages();
 
-            var smsSid = message.Sid;
-
-            SmsMessageResult messages = client.ListSmsMessages();
-
-            Assert.IsNotNull(messages);
-            Assert.IsNull(messages.RestException);
-            Assert.IsNotNull(messages.SMSMessages);
+            mockClient.Verify(trc => trc.Execute<SmsMessageResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/SMS/Messages.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListSmsMessagesAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<SmsMessageResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<SmsMessageResult>>()))
+                .Callback<IRestRequest, Action<SmsMessageResult>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var newmessage = client.SendSmsMessage("", "", ".NET Unit Test Message");
-
-            Assert.IsNotNull(newmessage.Sid);
-
-            var smsSid = newmessage.Sid;
-
-            SmsMessageResult result = null;
             client.ListSmsMessages(messages => {
-                result = messages;
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.SMSMessages);
-            
+            mockClient.Verify(trc => trc.ExecuteAsync<SmsMessageResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<SmsMessageResult>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/SMS/Messages.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListSmsMessagesWithFilters()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            SMSMessage message = client.SendSmsMessage("", "", ".NET Unit Test Message");
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<SmsMessageResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new SmsMessageResult());
+            var client = mockClient.Object;
 
-            Assert.IsNotNull(message.Sid);
+            client.ListSmsMessages(TO, FROM, null, null, null);
 
-            var smsSid = message.Sid;
-
-            SmsMessageResult messages = client.ListSmsMessages("", "", null, null, null);
-
-            Assert.IsNotNull(messages);
-            Assert.IsNull(messages.RestException);
-            Assert.IsNotNull(messages.SMSMessages);
+            mockClient.Verify(trc => trc.Execute<SmsMessageResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/SMS/Messages.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(2, savedRequest.Parameters.Count);
+            var fromParam = savedRequest.Parameters.Find(x => x.Name == "From");
+            Assert.IsNotNull(fromParam);
+            Assert.AreEqual(FROM, fromParam.Value);
+            var toParam = savedRequest.Parameters.Find(x => x.Name == "To");
+            Assert.IsNotNull(toParam);
+            Assert.AreEqual(TO, toParam.Value);
         }
     }
 }

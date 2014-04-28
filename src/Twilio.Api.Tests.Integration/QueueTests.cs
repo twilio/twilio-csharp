@@ -1,101 +1,156 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using NUnit.Framework;
 using System.Threading;
+using Moq;
+using RestSharp;
 
 namespace Twilio.Api.Tests.Integration
 {
-    [TestClass]
+    [TestFixture]
     public class QueueTests
     {
+        private const string QUEUE_SID = "QU123";
+
         ManualResetEvent manualResetEvent = null;
 
-        [TestMethod]
+        private Mock<TwilioRestClient> mockClient;
+
+        [SetUp]
+        public void Setup()
+        {
+            mockClient = new Mock<TwilioRestClient>(Credentials.AccountSid, Credentials.AuthToken);
+            mockClient.CallBase = true;
+        }
+
+        [Test]
         public void ShouldGetQueue()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var originalQueue = client.CreateQueue("ShouldGetQueue");
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Queue>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Queue());
+            var client = mockClient.Object;
 
-            var queuesid = originalQueue.Sid;
+            client.GetQueue(QUEUE_SID);
 
-            var result = client.GetQueue(queuesid);
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Sid);
-
-            client.DeleteQueue(queuesid); //cleanup
+            mockClient.Verify(trc => trc.Execute<Queue>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Queues/{QueueSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var queueSidParam = savedRequest.Parameters.Find(x => x.Name == "QueueSid");
+            Assert.IsNotNull(queueSidParam);
+            Assert.AreEqual(QUEUE_SID, queueSidParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListQueues()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<QueueResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new QueueResult());
+            var client = mockClient.Object;
 
-            var result = client.ListQueues();
+            client.ListQueues();
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Queues);
+            mockClient.Verify(trc => trc.Execute<QueueResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Queues.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListQueuesAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<QueueResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<QueueResult>>()))
+                .Callback<IRestRequest, Action<QueueResult>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-            QueueResult result = null;
             client.ListQueues(queues => {
-                result = queues;
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Queues);
+            mockClient.Verify(trc => trc.ExecuteAsync<QueueResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<QueueResult>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Queues.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldCreateNewQueue()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var result = client.CreateQueue("ShouldCreateNewQueue");
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Queue>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Queue());
+            var client = mockClient.Object;
+            var friendlyName = Utilities.MakeRandomFriendlyName();
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Sid);
+            client.CreateQueue(friendlyName);
 
-            client.DeleteQueue(result.Sid); //cleanup
+            mockClient.Verify(trc => trc.Execute<Queue>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Queues.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var friendlyNameParam = savedRequest.Parameters.Find(x => x.Name == "FriendlyName");
+            Assert.IsNotNull(friendlyNameParam);
+            Assert.AreEqual(friendlyName, friendlyNameParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldUpdateQueue()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var originalQueue = client.CreateQueue("ShouldUpdateQueue");
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Queue>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Queue());
+            var client = mockClient.Object;
+            var friendlyName = Utilities.MakeRandomFriendlyName();
 
-            var queuesid = originalQueue.Sid;
+            client.UpdateQueue(QUEUE_SID, friendlyName, 10);
 
-            var result = client.UpdateQueue(queuesid, "ShouldUpdateQueueUpdated", originalQueue.MaxSize.Value);
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.AreEqual("ShouldUpdateQueueUpdated", result.FriendlyName);
-
-            client.DeleteQueue(queuesid); //cleanup
+            mockClient.Verify(trc => trc.Execute<Queue>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Queues/{QueueSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(3, savedRequest.Parameters.Count);
+            var queueSidParam = savedRequest.Parameters.Find(x => x.Name == "QueueSid");
+            Assert.IsNotNull(queueSidParam);
+            Assert.AreEqual(QUEUE_SID, queueSidParam.Value);
+            var friendlyNameParam = savedRequest.Parameters.Find(x => x.Name == "FriendlyName");
+            Assert.IsNotNull(friendlyNameParam);
+            Assert.AreEqual(friendlyName, friendlyNameParam.Value);
+            var maxSizeParam = savedRequest.Parameters.Find(x => x.Name == "MaxSize");
+            Assert.IsNotNull(maxSizeParam);
+            Assert.AreEqual(10, maxSizeParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldDeleteQueue()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-            var originalQueue = client.CreateQueue("ShouldDeleteQueue");
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new RestResponse());
+            var client = mockClient.Object;
 
-            var status = client.DeleteQueue(originalQueue.Sid);
-            Assert.AreEqual(DeleteStatus.Success, status);
+            client.DeleteQueue(QUEUE_SID);
+
+            mockClient.Verify(trc => trc.Execute(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Queues/{QueueSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.DELETE, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var queueSidParam = savedRequest.Parameters.Find(x => x.Name == "QueueSid");
+            Assert.IsNotNull(queueSidParam);
+            Assert.AreEqual(QUEUE_SID, queueSidParam.Value);
         }
     }
 }

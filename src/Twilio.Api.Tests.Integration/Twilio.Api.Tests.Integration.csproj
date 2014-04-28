@@ -67,6 +67,7 @@
     <Compile Include="UsageTests.cs" />
     <Compile Include="UsageTriggerTests.cs" />
     <Compile Include="Utilities.cs" />
+    <Compile Include="FeedbackTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Twilio.Api\Twilio.Api.csproj">
