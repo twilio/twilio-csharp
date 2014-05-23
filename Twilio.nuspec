@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>3.6.13</version>
+		<version>3.6.14</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -14,6 +14,7 @@
 			<dependency id="RestSharp" />
 		</dependencies>
 		<releaseNotes>
+      * 3.6.14 - Fixes incorrect property name CountUnits
       * 3.6.13 - Fixed incorrect return type in CreateCredentialListMapping
       * 3.6.12 - Fixed bug IncomingPhoneNumbers methods
       * 3.6.11 - Corrected UsageUnit and CountUnit change

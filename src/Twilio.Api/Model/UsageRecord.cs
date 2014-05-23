@@ -40,7 +40,7 @@ namespace Twilio
         /// <summary>
         /// The units in which Count is measured. For example calls for calls, messages for SMS
         /// </summary>
-        public string CountUnits { get; set; }
+        public string CountUnit { get; set; }
         
         /// <summary>
         /// The amount of usage (e.g. the number of call minutes).
