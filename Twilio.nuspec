@@ -14,10 +14,11 @@
 			<dependency id="RestSharp" />
 		</dependencies>
 		<releaseNotes>
-      * 3.6.12 - Fixed bus in IncomingPhoneNumbers methods
+      * 3.6.13 - Fixed incorrect return type in CreateCredentialListMapping
+      * 3.6.12 - Fixed bug IncomingPhoneNumbers methods
       * 3.6.11 - Corrected UsageUnit and CountUnit change
-               - Updated RestSharp reference
-               - Updated user agent string
+      - Updated RestSharp reference
+      - Updated user agent string
       * 3.6.10 - Fixed timeout value
       - Made method virtual to faciliate testing
       - Fix setting ApplicationSid in SendMessage

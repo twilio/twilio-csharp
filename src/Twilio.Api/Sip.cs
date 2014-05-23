@@ -250,7 +250,7 @@ namespace Twilio
         /// <param name="domainSid">The Sid of the SIP Domain to map to</param>
         /// <param name="credentialListSid">The Sid of the CredentialList to map to</param>
         /// <returns></returns>
-        public virtual IpAccessControlListMapping CreateCredentialListMapping(string domainSid, string credentialListSid)
+        public virtual CredentialListMapping CreateCredentialListMapping(string domainSid, string credentialListSid)
         {
             Require.Argument("DomainSid", domainSid);
 
@@ -260,7 +260,7 @@ namespace Twilio
 
             request.AddParameter("CredentialListSid", credentialListSid);
 
-            return Execute<IpAccessControlListMapping>(request);
+            return Execute<CredentialListMapping>(request);
         }
 
         /// <summary>
