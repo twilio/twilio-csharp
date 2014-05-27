@@ -28,7 +28,9 @@ namespace Twilio
         /// </summary>
         public string AccountSid { get; set; }
         /// <summary>
-        /// The phone number that initiated the message in E.164 format. For incoming messages, this will be the remote phone. For outgoing messages, this will be one of your Twilio phone numbers.
+        /// The phone number that initiated the message in E.164 format. For
+        /// incoming messages, this will be the remote phone. For outgoing messages,
+        /// this will be one of your Twilio phone numbers.
         /// </summary>
         public string From { get; set; }
         /// <summary>
@@ -61,7 +63,10 @@ namespace Twilio
         /// </summary>
         public string Status { get; set; }
         /// <summary>
-        /// The direction of this Message. incoming for incoming messages, outbound-api for messages initiated via the REST API, outbound-call for messages initiated during a call or outbound-reply for messages initiated in response to an incoming Message.
+        /// The direction of this Message. incoming for incoming messages,
+        /// outbound-api for messages initiated via the REST API, outbound-call
+        /// for messages initiated during a call or outbound-reply for messages
+        /// initiated in response to an incoming Message.
         /// </summary>
         public string Direction { get; set; }
         /// <summary>
@@ -72,5 +77,18 @@ namespace Twilio
         /// The version of the Twilio API used to process the Message.
         /// </summary>
         public string ApiVersion { get; set; }
+
+        /// <summary>
+        /// The error code of this message. If non-null, it will be an int
+        /// that signaling what the error was. You can look up the error codes
+        /// on the Twilio REST API Messaging docs.
+        /// </summary>
+        public int? ErrorCode { get; set; }
+
+        /// <summary>
+        /// The error message for this message. If non-null, it will be a
+        /// string describing what the error was.
+        /// </summary>
+        public string? ErrorMessage { get; set; }
     }
 }
