@@ -11,6 +11,10 @@ namespace Twilio
 		/// The AccountSid to assign this number to. Only used for moving phone numbers betweeen subaccounts.
 		/// </summary>
 		public string AccountSid { get; set; }
+        /// <summary>
+        /// The Twilio REST API version to use for incoming calls made to this number.
+        /// </summary>
+        public string ApiVersion { get; set; }
 		/// <summary>
 		/// The area code in which you'd like a new incoming phone number. Any three digit, US area code is valid. Twilio will provision a random phone number within this area code for you. You must include either this or a PhoneNumber parameter to have your POST succeed.
 		/// </summary>
