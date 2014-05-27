@@ -80,8 +80,8 @@ namespace Twilio
 
         /// <summary>
         /// The error code of this message. If non-null, it will be an int
-        /// that signaling what the error was. You can look up the error codes
-        /// on the Twilio REST API Messaging docs.
+        /// signaling what the error was. The error codes are listed on
+        /// the Message docs: https://www.twilio.com/docs/api/rest/message.
         /// </summary>
         public int? ErrorCode { get; set; }
 
