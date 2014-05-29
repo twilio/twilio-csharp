@@ -20,7 +20,7 @@ if not "%errorlevel%"=="0" goto failure
 if not "%errorlevel%"=="0" goto failure
 
 REM Run Unit tests
-"%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\ReleaseFX35\SimpleRestClient.Tests.dll
+"%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\FX35\SimpleRestClient.Tests.dll
 REM if not "%errorlevel%"=="0" goto failure
 
 REM Package Folders Setup
