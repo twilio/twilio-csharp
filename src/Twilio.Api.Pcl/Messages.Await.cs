@@ -6,6 +6,12 @@ namespace Twilio
 {
     public partial class TwilioRestClient
     {
+        RestRequest request;
+        internal RestRequest RestRequest
+        {
+            get { return request; }
+        }
+
         /// <summary>
         /// Retrieve the details for a specific Message instance.
         /// Makes a GET request to an Message Instance resource.

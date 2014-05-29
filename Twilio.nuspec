@@ -14,10 +14,13 @@
 			<dependency id="RestSharp" />
 		</dependencies>
 		<releaseNotes>
-      * 4.0.1-experimental - Removed RestSharp dependency               
+      * 4.0.1-alpha - Removed RestSharp dependency
+      - Removed SL and WP projects
+      - Added PCL project
+      - Public API should remain compatible with prior versions
       * 3.6.11 - Corrected UsageUnit and CountUnit change
-               - Updated RestSharp reference
-               - Updated user agent string
+      - Updated RestSharp reference
+      - Updated user agent string
       * 3.6.10 - Fixed timeout value
       - Made method virtual to faciliate testing
       - Fix setting ApplicationSid in SendMessage

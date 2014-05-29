@@ -63,7 +63,7 @@ namespace Twilio
             var version = assemblyName.Version;
 
             _client = new RestClient();
-            _client.UserAgent = "twilio-csharp/" + version + " (.NET " + Environment.Version.ToString() + ")";
+            _client.UserAgent = "twilio-csharp/" + version + " (.NET PCL (" + version + "))";
             _client.AddDefaultHeader("Authorization", Authenticate());
 
             _client.AddDefaultHeader("Accept-charset", "utf-8");

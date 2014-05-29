@@ -81,7 +81,7 @@ namespace Simple
             // Ansi as default
             Encoding encoding = Encoding.UTF8;
 
-            return encoding.GetString(buffer);
+            return encoding.GetString(buffer,0, buffer.Length);
         }
 
         /// <summary>
@@ -101,19 +101,19 @@ namespace Simple
             yield return name.ToCamelCase(culture);
 
             // try lower cased name
-            yield return name.ToLower(culture);
+            yield return name.ToLower();
 
             // try name with underscores
             yield return name.AddUnderscores();
 
             // try name with underscores with lower case
-            yield return name.AddUnderscores().ToLower(culture);
+            yield return name.AddUnderscores().ToLower();
 
             // try name with dashes
             yield return name.AddDashes();
 
             // try name with dashes with lower case
-            yield return name.AddDashes().ToLower(culture);
+            yield return name.AddDashes().ToLower();
 
             // try name with underscore prefix
             yield return name.AddUnderscorePrefix();
@@ -286,7 +286,7 @@ namespace Simple
                         string restOfWord = word.Substring(1);
 
                         if (restOfWord.IsUpperCase())
-                            restOfWord = restOfWord.ToLower(culture);
+                            restOfWord = restOfWord.ToLower();
 
                         char firstChar = char.ToUpper(word[0], culture);
                         words[i] = String.Concat(firstChar, restOfWord);
@@ -294,7 +294,7 @@ namespace Simple
                 }
                 return String.Join(joinString, words);
             }
-            return String.Concat(words[0].Substring(0, 1).ToUpper(culture), words[0].Substring(1));
+            return String.Concat(words[0].Substring(0, 1).ToUpper(), words[0].Substring(1));
         }
 
         /// <summary>

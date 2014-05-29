@@ -14,12 +14,10 @@ REM Build
 if not "%errorlevel%"=="0" goto failure
 
 REM Unit tests
-"%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\Release\SimpleRestClient.Tests.dll
-REM "%GallioEcho%" src\Twilio.Api.Tests.Integration\bin\Release\Twilio.Api.Tests.Integration.dll
+"%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\%config%\SimpleRestClient.Tests.dll
 if not "%errorlevel%"=="0" goto failure
 
 REM Package Folders Setup
-
 rd download /s /q  REM delete the old stuff
 
 if not exist download mkdir download
@@ -28,11 +26,13 @@ if not exist download\package mkdir download\package
 if not exist download\package\twilio mkdir download\package\twilio
 if not exist download\package\twilio\lib mkdir download\package\twilio\lib
 if not exist download\package\twilio\lib\3.5 mkdir download\package\twilio\lib\3.5
+if not exist download\package\twilio\lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1 mkdir download\package\twilio\lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1
 
 REM Copy files into Nuget Package structure
 copy LICENSE.txt download
 
-copy src\Twilio.Api\bin\Release\Twilio.Api.* download\package\twilio\lib\3.5\
+copy src\Twilio.Api.Net35\bin\%config%\Twilio.Api.* download\package\twilio\lib\3.5\
+copy src\Twilio.Api.Pcl\bin\%config%\Twilio.Api.* download\package\twilio\lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1\
 
 REM Create Packages
 mkdir Build

@@ -112,7 +112,6 @@
     <Compile Include="Recordings.cs" />
     <Compile Include="Sandbox.Async.cs" />
     <Compile Include="Sandbox.cs" />
-    <Compile Include="SharedAssemblyInfo.cs" />
     <Compile Include="Sip.Async.cs" />
     <Compile Include="Sip.cs" />
     <Compile Include="Sms.Async.cs" />
