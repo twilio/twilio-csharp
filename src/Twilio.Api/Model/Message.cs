@@ -89,6 +89,6 @@ namespace Twilio
         /// The error message for this message. If the message was unable to be delivered
         /// this property will contain the error message.
         /// </summary>
-        public string? ErrorMessage { get; set; }
+        public string ErrorMessage { get; set; }
     }
 }
