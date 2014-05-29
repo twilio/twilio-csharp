@@ -10,11 +10,12 @@ if not "%PackageVersion%" == "" (
 )
 
 REM Build
-%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.2013.sln /p:Configuration="%config%" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.2013.sln /p:Configuration="ReleaseFX35" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.2013.sln /p:Configuration="ReleasePCL" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
 if not "%errorlevel%"=="0" goto failure
 
 REM Unit tests
-"%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\%config%\SimpleRestClient.Tests.dll
+"%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\ReleaseFX35\SimpleRestClient.Tests.dll
 if not "%errorlevel%"=="0" goto failure
 
 REM Package Folders Setup
@@ -31,8 +32,8 @@ if not exist download\package\twilio\lib\portable-net403+sl5+netcore45+wp8+MonoA
 REM Copy files into Nuget Package structure
 copy LICENSE.txt download
 
-copy src\Twilio.Api.Net35\bin\%config%\Twilio.Api.* download\package\twilio\lib\3.5\
-copy src\Twilio.Api.Pcl\bin\%config%\Twilio.Api.* download\package\twilio\lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1\
+copy src\Twilio.Api.Net35\bin\ReleaseFX35\Twilio.Api.* download\package\twilio\lib\3.5\
+copy src\Twilio.Api.Pcl\bin\ReleasePCL\Twilio.Api.* download\package\twilio\lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1\
 
 REM Create Packages
 mkdir Build
