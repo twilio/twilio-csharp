@@ -36,8 +36,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseFX35|AnyCPU'">
-    <OutputPath>bin\ReleaseFX35\</OutputPath>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'FX35|AnyCPU' ">
+    <OutputPath>bin\FX35\</OutputPath>
     <DefineConstants>TRACE;FX35</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -45,8 +45,8 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleasePCL|AnyCPU'">
-    <OutputPath>bin\ReleasePCL\</OutputPath>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PCL|AnyCPU' ">
+    <OutputPath>bin\PCL\</OutputPath>
     <DefineConstants>TRACE;PCL</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>

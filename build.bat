@@ -1,22 +1,27 @@
 @echo Off
-set config=%1
-if "%config%" == "" (
-   set config=Release
-)
+REM set config=%1
+REM if "%config%" == "" (
+REM    set config=Release
+REM )
 
-set version=
-if not "%PackageVersion%" == "" (
-   set version=-Version %PackageVersion%
-)
+REM set version=
+REM if not "%PackageVersion%" == "" (
+REM    set version=-Version %PackageVersion%
+REM )
 
-REM Build
-%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.2013.sln /p:Configuration="ReleaseFX35" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
-%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.2013.sln /p:Configuration="ReleasePCL" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
+REM Clean Source
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.2013.sln /p:Configuration=FX35 /t:Clean
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.2013.sln /p:Configuration=PCL /t:Clean
+
+REM Build Source
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.2013.sln /p:Configuration=FX35 /p:Platform="Any CPU" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
+if not "%errorlevel%"=="0" goto failure
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.2013.sln /p:Configuration=PCL /p:Platform="Any CPU" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
 if not "%errorlevel%"=="0" goto failure
 
-REM Unit tests
-"%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\ReleaseFX35\SimpleRestClient.Tests.dll
-if not "%errorlevel%"=="0" goto failure
+REM Run Unit tests
+REM "%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\ReleaseFX35\SimpleRestClient.Tests.dll
+REM if not "%errorlevel%"=="0" goto failure
 
 REM Package Folders Setup
 rd download /s /q  REM delete the old stuff
@@ -32,8 +37,8 @@ if not exist download\package\twilio\lib\portable-net403+sl5+netcore45+wp8+MonoA
 REM Copy files into Nuget Package structure
 copy LICENSE.txt download
 
-copy src\Twilio.Api.Net35\bin\ReleaseFX35\Twilio.Api.* download\package\twilio\lib\3.5\
-copy src\Twilio.Api.Pcl\bin\ReleasePCL\Twilio.Api.* download\package\twilio\lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1\
+copy src\Twilio.Api.Net35\bin\FX35\Twilio.Api.* download\package\twilio\lib\3.5\
+copy src\Twilio.Api.Pcl\bin\PCL\Twilio.Api.* "download\package\twilio\lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1\"
 
 REM Create Packages
 mkdir Build
@@ -44,10 +49,10 @@ if not "%errorlevel%"=="0" goto failure
 
 REM use github status API to indicate commit compile success
 
-exit 0
+REM exit 0
 
 :failure
 
 REM use github status API to indicate commit compile success
 
-exit -1
+REM exit -1

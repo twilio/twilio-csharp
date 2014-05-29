@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseFX35|AnyCPU'">
-    <OutputPath>bin\ReleaseFX35\</OutputPath>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'FX35|AnyCPU' ">
+    <OutputPath>bin\FX35\</OutputPath>
     <DefineConstants>TRACE;FX35</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Optimize>true</Optimize>
@@ -43,8 +43,8 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleasePCL|AnyCPU'">
-    <OutputPath>bin\ReleasePCL\</OutputPath>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PCL|AnyCPU' ">
+    <OutputPath>bin\PCL\</OutputPath>
     <DefineConstants>TRACE;PCL</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Optimize>true</Optimize>
@@ -54,39 +54,39 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Threading.Tasks" Condition="'$(Configuration)|$(Platform)' == 'ReleasePCL|AnyCPU'">
+    <Reference Include="Microsoft.Threading.Tasks" Condition="'$(Configuration)|$(Platform)' == 'PCL|AnyCPU'">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Threading.Tasks.Extensions" Condition="'$(Configuration)|$(Platform)' == 'ReleasePCL|AnyCPU'">
+    <Reference Include="Microsoft.Threading.Tasks.Extensions" Condition="'$(Configuration)|$(Platform)' == 'PCL|AnyCPU'">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop" Condition="'$(Configuration)|$(Platform)' == 'ReleasePCL|AnyCPU'">
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop" Condition="'$(Configuration)|$(Platform)' == 'PCL|AnyCPU'">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.IO" Condition="'$(Configuration)|$(Platform)' == 'ReleasePCL|AnyCPU'">
+    <Reference Include="System.IO" Condition="'$(Configuration)|$(Platform)' == 'PCL|AnyCPU'">
       <HintPath>..\packages\Microsoft.Bcl.1.1.9\lib\net40\System.IO.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
-    <Reference Include="System.Net.Http, Version=2.2.22.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" Condition="'$(Configuration)|$(Platform)' == 'ReleasePCL|AnyCPU'">
+    <Reference Include="System.Net.Http, Version=2.2.22.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" Condition="'$(Configuration)|$(Platform)' == 'PCL|AnyCPU'">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\net40\System.Net.Http.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http.Extensions" Condition="'$(Configuration)|$(Platform)' == 'ReleasePCL|AnyCPU'">
+    <Reference Include="System.Net.Http.Extensions" Condition="'$(Configuration)|$(Platform)' == 'PCL|AnyCPU'">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\net40\System.Net.Http.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http.Primitives" Condition="'$(Configuration)|$(Platform)' == 'ReleasePCL|AnyCPU'">
+    <Reference Include="System.Net.Http.Primitives" Condition="'$(Configuration)|$(Platform)' == 'PCL|AnyCPU'">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\net40\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http.WebRequest, Version=2.2.22.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" Condition="'$(Configuration)|$(Platform)' == 'ReleasePCL|AnyCPU'">
+    <Reference Include="System.Net.Http.WebRequest, Version=2.2.22.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" Condition="'$(Configuration)|$(Platform)' == 'PCL|AnyCPU'">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime" Condition="'$(Configuration)|$(Platform)' == 'ReleasePCL|AnyCPU'">
+    <Reference Include="System.Runtime" Condition="'$(Configuration)|$(Platform)' == 'PCL|AnyCPU'">
       <HintPath>..\packages\Microsoft.Bcl.1.1.9\lib\net40\System.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="System.Threading.Tasks" Condition="'$(Configuration)|$(Platform)' == 'ReleasePCL|AnyCPU'">
+    <Reference Include="System.Threading.Tasks" Condition="'$(Configuration)|$(Platform)' == 'PCL|AnyCPU'">
       <HintPath>..\packages\Microsoft.Bcl.1.1.9\lib\net40\System.Threading.Tasks.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />

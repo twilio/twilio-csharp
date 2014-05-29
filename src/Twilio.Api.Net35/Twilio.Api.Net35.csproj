@@ -41,21 +41,8 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>bin\Release\Twilio.Api.xml</DocumentationFile>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseWithPackage|AnyCPU'">
-    <OutputPath>bin\ReleaseWithPackage\</OutputPath>
-    <DefineConstants>TRACE;FRAMEWORK</DefineConstants>
-    <DocumentationFile>bin\Release\Twilio.Api.xml</DocumentationFile>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
-    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
-    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseFX35|AnyCPU'">
-    <OutputPath>bin\ReleaseFX35\</OutputPath>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'FX35|AnyCPU' ">
+    <OutputPath>bin\FX35\</OutputPath>
     <DefineConstants>TRACE;FX35</DefineConstants>
     <DocumentationFile>bin\Release\Twilio.Api.xml</DocumentationFile>
     <Optimize>true</Optimize>
@@ -64,8 +51,8 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleasePCL|AnyCPU'">
-    <OutputPath>bin\ReleasePCL\</OutputPath>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PCL|AnyCPU' ">
+    <OutputPath>bin\PCL\</OutputPath>
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <DocumentationFile>bin\Release\Twilio.Api.xml</DocumentationFile>
     <Optimize>true</Optimize>

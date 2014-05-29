@@ -34,7 +34,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseFX35|AnyCPU'">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'FX35|AnyCPU' ">
     <OutputPath>bin\ReleaseFX35\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
@@ -43,8 +43,8 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleasePCL|AnyCPU'">
-    <OutputPath>bin\ReleasePCL\</OutputPath>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PCL|AnyCPU' ">
+    <OutputPath>bin\PCL\</OutputPath>
     <DefineConstants>TRACE;PCL</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -64,7 +64,7 @@
     </Compile>
     <!-- A reference to the entire .NET Framework is automatically included -->
     <Compile Include="..\Twilio.Api.Shared\Options.cs">
-      <Link>Options.cs</Link>
+      <Link>%(FileName)</Link>
     </Compile>
     <Compile Include="Sip.Await.cs" />
     <Compile Include="Sms.Await.cs" />
