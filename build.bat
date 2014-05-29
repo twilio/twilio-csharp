@@ -20,7 +20,7 @@ if not "%errorlevel%"=="0" goto failure
 if not "%errorlevel%"=="0" goto failure
 
 REM Run Unit tests
-REM "%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\ReleaseFX35\SimpleRestClient.Tests.dll
+"%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\ReleaseFX35\SimpleRestClient.Tests.dll
 REM if not "%errorlevel%"=="0" goto failure
 
 REM Package Folders Setup
@@ -36,7 +36,6 @@ if not exist download\package\twilio\lib\portable-net403+sl5+netcore45+wp8+MonoA
 
 REM Copy files into Nuget Package structure
 copy LICENSE.txt download
-
 copy src\Twilio.Api.Net35\bin\FX35\Twilio.Api.* download\package\twilio\lib\3.5\
 copy src\Twilio.Api.Pcl\bin\PCL\Twilio.Api.* "download\package\twilio\lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1\"
 
@@ -49,10 +48,10 @@ if not "%errorlevel%"=="0" goto failure
 
 REM use github status API to indicate commit compile success
 
-REM exit 0
+exit 0
 
 :failure
 
 REM use github status API to indicate commit compile success
 
-REM exit -1
+exit -1
