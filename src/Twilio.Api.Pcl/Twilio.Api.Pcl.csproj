@@ -139,10 +139,11 @@
   </Target>
   <Target Name="CreateAndApplyVersion">
     <Message Text="Incrementing Assembly Version" Importance="high" />
+    <Copy SourceFiles="..\version.txt" DestinationFolder="Properties" />
     <Time Format="yyyyMMdd">
       <Output TaskParameter="FormattedTime" PropertyName="TBuildDate" />
     </Time>
-    <Version Major="3" Minor="7" BuildType="Automatic" RevisionType="BuildIncrement" VersionFile="Properties\version.txt">
+    <Version BuildType="Automatic" RevisionType="BuildIncrement" VersionFile="Properties\version.txt">
       <Output TaskParameter="Major" PropertyName="VMajor" />
       <Output TaskParameter="Minor" PropertyName="VMinor" />
       <Output TaskParameter="Build" PropertyName="VBuild" />
