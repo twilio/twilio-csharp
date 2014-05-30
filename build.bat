@@ -43,8 +43,10 @@ copy src\Twilio.Api.Net35\bin\FX35\Twilio.Api.* download\package\twilio\lib\3.5\
 copy src\Twilio.Api.Pcl\bin\PCL\Twilio.Api.* "download\package\twilio\lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1\"
 
 REM Create Packages
-mkdir Build
-cmd /c %nuget% pack "Twilio.nuspec" -Version 9.9.%BuildCounter%-alpha -BasePath download\package\twilio -o download
+REM mkdir Build
+
+FOR /F "tokens=* delims=" %%x in (src/version.txt) DO SET ver=%%x
+cmd /c %nuget% pack "Twilio.nuspec" -Version %ver%.%BuildCounter%-alpha -BasePath download\package\twilio -o download
 if not "%errorlevel%"=="0" goto failure
 
 :success
