@@ -8,8 +8,8 @@
     <ProjectGuid>{7D7AE61D-4326-495B-BF94-D54CCC03E127}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Twilio.Api.Pcl</RootNamespace>
-    <AssemblyName>Twilio.Api.Pcl</AssemblyName>
+    <RootNamespace>Twilio</RootNamespace>
+    <AssemblyName>Twilio.Api</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile147</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
