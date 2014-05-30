@@ -44,7 +44,7 @@ copy src\Twilio.Api.Pcl\bin\PCL\Twilio.Api.* "download\package\twilio\lib\portab
 
 REM Create Packages
 mkdir Build
-cmd /c %nuget% pack "Twilio.nuspec" -BasePath download\package\twilio -o download
+cmd /c %nuget% pack "Twilio.nuspec" -Version 9.9.%BuildCounter%-alpha -BasePath download\package\twilio -o download
 if not "%errorlevel%"=="0" goto failure
 
 :success
