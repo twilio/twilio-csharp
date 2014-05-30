@@ -66,6 +66,7 @@
     <Compile Include="..\Twilio.Api.Shared\Options.cs">
       <Link>%(FileName)</Link>
     </Compile>
+    <Compile Include="Properties\VersionInfo.cs" />
     <Compile Include="Sip.Await.cs" />
     <Compile Include="Sms.Await.cs" />
     <Compile Include="Transcriptions.Await.cs" />
@@ -124,11 +125,31 @@
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
     <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
+  <PropertyGroup>
+    <MSBuildCommunityTasksPath>$(SolutionDir)\.build</MSBuildCommunityTasksPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VRevision>0000</VRevision>
+  </PropertyGroup>
+  <Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.Targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
+       Other similar extension points exist, see Microsoft.Common.targets.-->
   <Target Name="BeforeBuild">
+    <CallTarget Condition="'$(Configuration)|$(Platform)' == 'PCL|AnyCPU'" Targets="CreateAndApplyVersion" />
   </Target>
-  <Target Name="AfterBuild">
+  <Target Name="CreateAndApplyVersion">
+    <Message Text="Incrementing Assembly Version" Importance="high" />
+    <Time Format="yyyyMMdd">
+      <Output TaskParameter="FormattedTime" PropertyName="TBuildDate" />
+    </Time>
+    <Version Major="3" Minor="7" BuildType="Automatic" RevisionType="BuildIncrement" VersionFile="Properties\version.txt">
+      <Output TaskParameter="Major" PropertyName="VMajor" />
+      <Output TaskParameter="Minor" PropertyName="VMinor" />
+      <Output TaskParameter="Build" PropertyName="VBuild" />
+    </Version>
+    <AssemblyInfo CodeLanguage="CS" OutputFile="Properties\VersionInfo.cs" AssemblyVersion="$(VMajor).$(VMinor).$(VBuild).$(VRevision)" AssemblyFileVersion="$(VMajor).$(VMinor).$(VBuild).$(VRevision)" AssemblyInformationalVersion="$(VMajor).$(VMinor).$(TBuildDate).$(VRevision)" />
+  </Target>
+  <!--<Target Name="AfterBuild">
   </Target>
   -->
 </Project>

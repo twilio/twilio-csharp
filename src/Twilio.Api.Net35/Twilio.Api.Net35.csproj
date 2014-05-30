@@ -113,6 +113,7 @@
     <Compile Include="OutgoingCallerIds.Async.cs" />
     <Compile Include="OutgoingCallerIds.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\VersionInfo.cs" />
     <Compile Include="Queues.Async.cs" />
     <Compile Include="Queues.cs" />
     <Compile Include="Recordings.Async.cs" />
@@ -128,21 +129,34 @@
     <Compile Include="Usage.Async.cs" />
     <Compile Include="Usage.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>-->
-  <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'ReleaseWithPackage' ">
-    <MakeDir Directories="$(MSBuildProjectDirectory)..\..\..\Download\package\twilio\lib\3.5" />
-    <CreateItem Include="$(TargetDir)\$(ProjectName).*">
-      <Output TaskParameter="Include" ItemName="FilesToCopy" />
-    </CreateItem>
-    <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(MSBuildProjectDirectory)..\..\..\download\package\twilio\lib\3.5\" />
-  </Target>
-  <!--<Exec Command="&quot;c:\Program Files (x86)\Microsoft\ILMerge\ilmerge.exe&quot; /lib:$(OutDir) /internalize /ndebug /v2 /out:$(MSBuildProjectDirectory)\..\..\download\Twilio.Api.dll Twilio.Api.dll RestSharp.dll Newtonsoft.Json.dll" />-->
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <MSBuildCommunityTasksPath>$(SolutionDir)\.build</MSBuildCommunityTasksPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <VRevision>0000</VRevision>
+  </PropertyGroup>
+  <Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.Targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.-->
+  <Target Name="BeforeBuild">
+    <CallTarget Condition="'$(Configuration)|$(Platform)' == 'FX35|AnyCPU'" Targets="CreateAndApplyVersion" />
+  </Target>
+  <Target Name="CreateAndApplyVersion">
+    <Message Text="Incrementing Assembly Version" Importance="high" />
+    <Time Format="yyyyMMdd">
+      <Output TaskParameter="FormattedTime" PropertyName="TBuildDate" />
+    </Time>
+    <Version Major="3" Minor="7" BuildType="Automatic" RevisionType="BuildIncrement" VersionFile="Properties\version.txt">
+      <Output TaskParameter="Major" PropertyName="VMajor" />
+      <Output TaskParameter="Minor" PropertyName="VMinor" />
+      <Output TaskParameter="Build" PropertyName="VBuild" />
+    </Version>
+    <AssemblyInfo CodeLanguage="CS" OutputFile="Properties\VersionInfo.cs" AssemblyVersion="$(VMajor).$(VMinor).$(VBuild).$(VRevision)" AssemblyFileVersion="$(VMajor).$(VMinor).$(VBuild).$(VRevision)" AssemblyInformationalVersion="$(VMajor).$(VMinor).$(TBuildDate).$(VRevision)" />
+  </Target>
+  <!--<Target Name="AfterBuild">
+  </Target>-->
 </Project>
