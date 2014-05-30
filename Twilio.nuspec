@@ -89,4 +89,14 @@
 			* 3.2.3 - Added 'extension' parameter to the AddOutgoingCallerIds method
 		</releaseNotes>
 	</metadata>
+  <dependencies>
+    <group targetFramework="portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1">
+      <dependency id="Microsoft.Bcl.Async" />
+      <dependency id="Microsoft.Net.Http" />
+    </group>
+    <group targetFramework="portable-net403+sl5+netcore45+wp8">
+      <dependency id="Microsoft.Bcl.Async" />
+      <dependency id="Microsoft.Net.Http" />
+    </group>
+  </dependencies>
 </package>

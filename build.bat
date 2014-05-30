@@ -36,12 +36,18 @@ if not exist download\package\twilio mkdir download\package\twilio
 if not exist download\package\twilio\lib mkdir download\package\twilio\lib
 if not exist download\package\twilio\lib\3.5 mkdir download\package\twilio\lib\3.5
 if not exist download\package\twilio\lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1 mkdir "download\package\twilio\lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1"
+if not exist download\package\twilio\lib\portable-net403+sl5+netcore45+wp8 mkdir "download\package\twilio\lib\portable-net403+sl5+netcore45+wp8"
+
+REM portable-net403+netcore45+MonoAndroid1+MonoTouch1
+REM portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1
+REM portable-net45+netcore45+MonoAndroid1+MonoTouch1
+REM portable-net4+sl5+MonoAndroid1+MonoTouch1
 
 REM Copy files into Nuget Package structure
 copy LICENSE.txt download
 copy src\Twilio.Api.Net35\bin\FX35\Twilio.Api.* download\package\twilio\lib\3.5\
 copy src\Twilio.Api.Pcl\bin\PCL\Twilio.Api.* "download\package\twilio\lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1\"
-
+copy src\Twilio.Api.Pcl\bin\PCL\Twilio.Api.* "download\package\twilio\lib\portable-net403+sl5+netcore45+wp8\"
 REM Create Packages
 REM mkdir Build
 
