@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Twilio.Api.Pcl")]
+[assembly: AssemblyTitle("Twilio.Api")]
 [assembly: AssemblyDescription("API wrapper for the Twilio REST API")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Twilio")]
-[assembly: AssemblyProduct("Twilio.Api.Pcl")]
+[assembly: AssemblyProduct("Twilio.Api")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: NeutralResourcesLanguage("en")]
 
