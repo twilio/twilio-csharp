@@ -48,10 +48,11 @@ REM portable-net4+sl5+MonoAndroid1+MonoTouch1
 REM Copy files into Nuget Package structure
 copy LICENSE.txt download
 copy src\Twilio.Api.Net35\bin\FX35\Twilio.Api.* "download\package\twilio\lib\net35\"
-copy src\Twilio.Api.Pcl\bin\PCL\Twilio.Api.* "download\package\twilio\lib\net40vi\"
+copy src\Twilio.Api.Pcl\bin\PCL\Twilio.Api.* "download\package\twilio\lib\net40\"
 REM copy src\Twilio.Api.Pcl\bin\PCL\Twilio.Api.* "download\package\twilio\lib\portable-windows8-net45\"
 copy src\Twilio.Api.Pcl\bin\PCL\Twilio.Api.* "download\package\twilio\lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1\"
 copy src\Twilio.Api.Pcl\bin\PCL\Twilio.Api.* "download\package\twilio\lib\portable-net403+sl5+netcore45+wp8\"
+
 REM Create Packages
 REM mkdir Build
 
