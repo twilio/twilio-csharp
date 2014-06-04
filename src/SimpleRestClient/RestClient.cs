@@ -4,7 +4,10 @@ using System.Text;
 using System.Net;
 using System.Reflection;
 using System.IO;
+
+#if PCL
 using System.Net.Http;
+#endif
 
 namespace Simple
 {
