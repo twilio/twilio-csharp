@@ -92,6 +92,30 @@ namespace SimpleRestClient.Tests.PCL
             Assert.IsNotNull(response.ErrorException);
         }
 
+
+        [TestMethod]
+        public void When_A_Default_Header_Is_Present_Then_WebRequest_Includes_This_Header()
+        {
+            string token = AuthorizationToken;
+
+            client.DefaultParameters.Add(new Parameter() { Name = "Authorization", Value = token, Type = ParameterType.HttpHeader });
+
+            var request = new RestRequest();
+            
+            var requestmessage = client.ConfigureRequestMessage(request);
+
+            Assert.IsTrue(requestmessage.Headers.Any(kvp => kvp.Key=="Authorization"));
+            Assert.AreEqual(token, requestmessage.Headers.Authorization.ToString());
+        }
+
+        private string AuthorizationToken
+        {
+            get
+            {
+                var token = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "test", "user")));
+                return string.Format("Basic {0}", token);
+            }
+        }
     }
 
 #endif

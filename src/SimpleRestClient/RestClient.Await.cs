@@ -48,20 +48,7 @@ namespace Simple
             var handler = new HttpClientHandler();
             if (this.Proxy != null) { handler.Proxy = this.Proxy; }
 
-            var request = new HttpRequestMessage(new HttpMethod(restrequest.Method), Simple.UriBuilder.Build(this.BaseUrl, restrequest));
-
-            foreach (var param in restrequest.Parameters.Where(p => p.Type == ParameterType.HttpHeader))
-            {
-                request.Headers.Add(param.Name, param.Value.ToString());
-            }
-
-//            httpclient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", "");
-
-            var @params = restrequest.Parameters
-                                .Where(p => p.Type == ParameterType.GetOrPost && p.Value != null)
-                                .Select(p => new KeyValuePair<string, string>(p.Name, p.Value.ToString()));
-
-            request.Content = new FormUrlEncodedContent(@params);
+            var request = ConfigureRequestMessage(restrequest);
 
             var restresponse = new RestResponse() { ResponseStatus = ResponseStatus.None };
 
@@ -91,6 +78,35 @@ namespace Simple
             }
 
             return restresponse;
+        }
+
+        public HttpRequestMessage ConfigureRequestMessage(RestRequest restrequest)
+        {
+            var request = new HttpRequestMessage(new HttpMethod(restrequest.Method), Simple.UriBuilder.Build(this.BaseUrl, restrequest));
+
+            foreach (var param in this.DefaultParameters)
+            {
+                if (!restrequest.Parameters.Any(p => p.Name == param.Name))
+                {
+                    restrequest.Parameters.Add(param);
+                }
+            }
+
+            foreach (var param in restrequest.Parameters.Where(p => p.Type == ParameterType.HttpHeader))
+            {
+                request.Headers.Add(param.Name, param.Value.ToString());
+            }
+
+            var @params = restrequest.Parameters
+                                .Where(p => p.Type == ParameterType.GetOrPost && p.Value != null)
+                                .Select(p => new KeyValuePair<string, string>(p.Name, p.Value.ToString()));
+
+            if (restrequest.Method == "POST" || restrequest.Method == "PUT")
+            {
+                request.Content = new FormUrlEncodedContent(@params);
+            }
+
+            return request;
         }
     }
 #endif
