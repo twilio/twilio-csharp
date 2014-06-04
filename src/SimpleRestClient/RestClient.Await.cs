@@ -8,6 +8,7 @@ using Simple;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Diagnostics;
 #endif
 
 namespace Simple
@@ -28,17 +29,26 @@ namespace Simple
 
         public async Task<RestResponse> ExecuteAsync(RestRequest restrequest)
         {
-            var httpclient = new HttpClient();
-            httpclient.Timeout = new TimeSpan(this.Timeout);
-            httpclient.DefaultRequestHeaders.Add("User-Agent", this.UserAgent);
+            HttpClient httpclient;
+            if (this.MessageHandler != null)
+                httpclient = new HttpClient(this.MessageHandler);
+            else
+                httpclient = new HttpClient();
+           
+            httpclient.Timeout = new TimeSpan(0,0,this.Timeout);
+
+            if (!string.IsNullOrWhiteSpace(this.UserAgent))
+            {
+                httpclient.DefaultRequestHeaders.Add("User-Agent", this.UserAgent);
+            }
+
             httpclient.DefaultRequestHeaders.Add("Accept", "application/json");
             httpclient.DefaultRequestHeaders.Add("Accept-Charset", "utf-8");
 
             var handler = new HttpClientHandler();
             if (this.Proxy != null) { handler.Proxy = this.Proxy; }
 
-            var method = (HttpMethod)Enum.Parse(typeof(HttpMethod), restrequest.Method, true);
-            var request = new HttpRequestMessage(method, Simple.UriBuilder.Build(this.BaseUrl, restrequest));
+            var request = new HttpRequestMessage(new HttpMethod(restrequest.Method), Simple.UriBuilder.Build(this.BaseUrl, restrequest));
 
             foreach (var param in restrequest.Parameters.Where(p => p.Type == ParameterType.HttpHeader))
             {
@@ -52,15 +62,33 @@ namespace Simple
                                 .Select(p => new KeyValuePair<string, string>(p.Name, p.Value.ToString()));
 
             request.Content = new FormUrlEncodedContent(@params);
-            
-            var response = await httpclient.SendAsync(request);
 
             var restresponse = new RestResponse() { ResponseStatus = ResponseStatus.None };
-            restresponse.StatusCode = response.StatusCode;
-            restresponse.StatusDescription = response.ReasonPhrase;
 
-            restresponse.RawBytes = await response.Content.ReadAsByteArrayAsync();
-            restresponse.ResponseStatus = ResponseStatus.Completed;
+            try
+            {
+                var response = await httpclient.SendAsync(request);
+
+                restresponse.StatusCode = response.StatusCode;
+                restresponse.StatusDescription = response.ReasonPhrase;
+
+                if (response.Content!=null)
+                    restresponse.RawBytes = await response.Content.ReadAsByteArrayAsync();
+
+                restresponse.ResponseStatus = ResponseStatus.Completed;
+            }
+            catch (TaskCanceledException exc)
+            {
+                restresponse.ErrorException = exc;
+                restresponse.ErrorMessage = exc.Message;
+            }
+            catch (Exception exc)
+            {
+                restresponse.ErrorException = exc;
+                restresponse.ErrorMessage = exc.Message;
+
+                Debug.WriteLine(exc.Message);
+            }
 
             return restresponse;
         }

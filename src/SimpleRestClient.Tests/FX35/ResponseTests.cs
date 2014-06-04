@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace SimpleRestClient.Tests
 {
+
+#if FX35
+
     [TestClass]
     public class ResponseTests
     {
@@ -169,4 +172,5 @@ namespace SimpleRestClient.Tests
             CollectionAssert.AreEquivalent(sourcecontent, restresponse.RawBytes);
         }
     }
+#endif
 }

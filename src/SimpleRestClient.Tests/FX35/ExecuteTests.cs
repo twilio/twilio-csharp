@@ -10,6 +10,9 @@ using System.Threading;
 
 namespace SimpleRestClient.Tests
 {
+
+#if FX35
+
     [TestClass]
     public class ExecuteTests
     {
@@ -230,4 +233,6 @@ namespace SimpleRestClient.Tests
         //    }
         //}        
     }
+
+#endif
 }

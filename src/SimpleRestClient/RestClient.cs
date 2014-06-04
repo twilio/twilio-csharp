@@ -1,9 +1,10 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Net;
 using System.Reflection;
 using System.IO;
+using System.Net.Http;
 
 namespace Simple
 {
@@ -61,6 +62,23 @@ namespace Simple
             set 
             {
                 _requestwrapper = value;
+            }
+        }
+#endif
+#if PCL
+        /// <summary>
+        /// create instance by default if none exists
+        /// </summary>
+        private HttpMessageHandler _messageHandler;
+        public HttpMessageHandler MessageHandler
+        {
+            get
+            {
+                return _messageHandler;
+            }
+            set
+            {
+                _messageHandler = value;
             }
         }
 #endif
