@@ -1,17 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package>
-  <metadata>
-    <id>Twilio</id>
-    <version>4.0.1-alpha</version>
-    <authors>Twilio</authors>
-    <description>Twilio REST API helper library</description>
-    <language>en-US</language>
-    <projectUrl>http://github.com/twilio/twilio-csharp</projectUrl>
-    <iconUrl>http://www.twilio.com/packages/company/img/logos_downloadable_round.png</iconUrl>
-    <licenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.txt</licenseUrl>
-    <tags>REST SMS voice telephony phone twilio twiml ASPNETWEBPAGES</tags>
-    <releaseNotes>
-      * 4.0.1-alpha - Removed RestSharp dependency
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Twilio</id>
+        <version>4.0.1-alpha</version>
+        <authors>Twilio</authors>
+        <licenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.txt</licenseUrl>
+        <projectUrl>http://github.com/twilio/twilio-csharp</projectUrl>
+        <iconUrl>http://www.twilio.com/packages/company/img/logos_downloadable_round.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Twilio REST API helper library</description>
+        <releaseNotes>* 4.0.1-alpha - Removed RestSharp dependency
       - Removed SL and WP projects
       - Added PCL project
       - Public API should remain compatible with prior versions
@@ -86,29 +84,25 @@
       Fixed incorrect StatusCallback parameter name for IncomingPhoneNumber and Application.
       Fixed incorrect paging parameter name.
 
-      * 3.2.3 - Added 'extension' parameter to the AddOutgoingCallerIds method
-    </releaseNotes>
-    <dependencies>
-      <group targetFramework="portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1">
-        <dependency id="Microsoft.Bcl" version="1.1.9" />
-        <dependency id="Microsoft.Bcl.Async" />
-        <dependency id="Microsoft.Net.Http" version="2.2.20" />
-      </group>
-      <group targetFramework="portable-net403+sl5+netcore45+wp8">
-        <dependency id="Microsoft.Bcl" version="1.1.9" />
-        <dependency id="Microsoft.Bcl.Async" />
-        <dependency id="Microsoft.Net.Http" version="2.2.20" />
-      </group>
-      <group targetFramework="net40">
-        <dependency id="Microsoft.Bcl" version="1.1.9" />
-        <dependency id="Microsoft.Bcl.Async" />
-        <dependency id="Microsoft.Net.Http" version="2.2.20" />
-      </group>
-      <group targetFramework="portable-windows8-net45">
-        <dependency id="Microsoft.Bcl" version="1.1.9" />
-        <dependency id="Microsoft.Bcl.Async" />
-        <dependency id="Microsoft.Net.Http" version="2.2.20" />
-      </group>
-    </dependencies>
-  </metadata>
+      * 3.2.3 - Added 'extension' parameter to the AddOutgoingCallerIds method</releaseNotes>
+        <language>en-US</language>
+        <tags>REST SMS voice telephony phone twilio twiml ASPNETWEBPAGES</tags>
+        <dependencies>
+            <group targetFramework=".NETPortable0.0-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1">
+                <dependency id="Microsoft.Bcl" version="1.1.9" />
+                <dependency id="Microsoft.Bcl.Async" />
+                <dependency id="Microsoft.Net.Http" version="2.2.20" />
+            </group>
+            <group targetFramework=".NETPortable0.0-net403+sl5+netcore45+wp8">
+                <dependency id="Microsoft.Bcl" version="1.1.9" />
+                <dependency id="Microsoft.Bcl.Async" />
+                <dependency id="Microsoft.Net.Http" version="2.2.20" />
+            </group>
+            <group targetFramework=".NETFramework4.0">
+                <dependency id="Microsoft.Bcl" version="1.1.9" />
+                <dependency id="Microsoft.Bcl.Async" />
+                <dependency id="Microsoft.Net.Http" version="2.2.20" />
+            </group>
+        </dependencies>
+    </metadata>
 </package>
