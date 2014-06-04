@@ -37,6 +37,7 @@ if not exist download\package\twilio\lib mkdir download\package\twilio\lib
 if not exist download\package\twilio\lib\net35 mkdir download\package\twilio\lib\net35
 if not exist download\package\twilio\lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1 mkdir "download\package\twilio\lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1"
 if not exist download\package\twilio\lib\portable-net403+sl5+netcore45+wp8 mkdir "download\package\twilio\lib\portable-net403+sl5+netcore45+wp8"
+if not exist download\package\twilio\lib\portable-net45 mkdir "download\package\twilio\lib\portable-net45"
 
 REM portable-net403+netcore45+MonoAndroid1+MonoTouch1
 REM portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1
