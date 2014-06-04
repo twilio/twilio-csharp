@@ -82,8 +82,6 @@ namespace Simple
 
         public HttpRequestMessage ConfigureRequestMessage(RestRequest restrequest)
         {
-            var request = new HttpRequestMessage(new HttpMethod(restrequest.Method), Simple.UriBuilder.Build(this.BaseUrl, restrequest));
-
             foreach (var param in this.DefaultParameters)
             {
                 if (!restrequest.Parameters.Any(p => p.Name == param.Name))
@@ -91,6 +89,8 @@ namespace Simple
                     restrequest.Parameters.Add(param);
                 }
             }
+
+            var request = new HttpRequestMessage(new HttpMethod(restrequest.Method), Simple.UriBuilder.Build(this.BaseUrl, restrequest));
 
             foreach (var param in restrequest.Parameters.Where(p => p.Type == ParameterType.HttpHeader))
             {
