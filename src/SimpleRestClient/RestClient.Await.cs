@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Simple;
 
-#if PCL
+#if (PCL)
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -12,7 +12,7 @@ using System.Net.Http.Headers;
 
 namespace Simple
 {
-#if PCL
+#if (PCL)
     /// <summary>
     /// A simple class for making requests to HTTP API's
     /// </summary>
@@ -29,23 +29,40 @@ namespace Simple
         public async Task<RestResponse> ExecuteAsync(RestRequest restrequest)
         {
             var httpclient = new HttpClient();
+            httpclient.Timeout = new TimeSpan(this.Timeout);
+            httpclient.DefaultRequestHeaders.Add("User-Agent", this.UserAgent);
+            httpclient.DefaultRequestHeaders.Add("Accept", "application/json");
+            httpclient.DefaultRequestHeaders.Add("Accept-Charset", "utf-8");
+
+            var handler = new HttpClientHandler();
+            if (this.Proxy != null) { handler.Proxy = this.Proxy; }
 
             var method = (HttpMethod)Enum.Parse(typeof(HttpMethod), restrequest.Method, true);
             var request = new HttpRequestMessage(method, Simple.UriBuilder.Build(this.BaseUrl, restrequest));
 
-            httpclient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", "");
-            //request.Content = new FormUrlEncodedContent(restrequest.Parameters);
+            foreach (var param in restrequest.Parameters.Where(p => p.Type == ParameterType.HttpHeader))
+            {
+                request.Headers.Add(param.Name, param.Value.ToString());
+            }
 
+//            httpclient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", "");
+
+            var @params = restrequest.Parameters
+                                .Where(p => p.Type == ParameterType.GetOrPost && p.Value != null)
+                                .Select(p => new KeyValuePair<string, string>(p.Name, p.Value.ToString()));
+
+            request.Content = new FormUrlEncodedContent(@params);
+            
             var response = await httpclient.SendAsync(request);
 
-            //var restresponse = new RestResponse() { ResponseStatus = ResponseStatus.None };
-            var restresponse = new RestResponse();
-            return restresponse;
-            //    var webresponse = (HttpWebResponse)webrequest.GetResponse();
-            //    restresponse = this.WebRequest.ExtractResponse(webresponse);
-            //    webresponse.Close();
+            var restresponse = new RestResponse() { ResponseStatus = ResponseStatus.None };
+            restresponse.StatusCode = response.StatusCode;
+            restresponse.StatusDescription = response.ReasonPhrase;
 
-            //restresponse = this.WebRequest.ParseWebException(exc);
+            restresponse.RawBytes = await response.Content.ReadAsByteArrayAsync();
+            restresponse.ResponseStatus = ResponseStatus.Completed;
+
+            return restresponse;
         }
     }
 #endif
