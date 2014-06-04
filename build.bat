@@ -34,7 +34,7 @@ if not exist download\package mkdir download\package
 
 if not exist download\package\twilio mkdir download\package\twilio
 if not exist download\package\twilio\lib mkdir download\package\twilio\lib
-if not exist download\package\twilio\lib\3.5 mkdir download\package\twilio\lib\3.5
+if not exist download\package\twilio\lib\net35 mkdir download\package\twilio\lib\net35
 if not exist download\package\twilio\lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1 mkdir "download\package\twilio\lib\portable-net403+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1"
 if not exist download\package\twilio\lib\portable-net403+sl5+netcore45+wp8 mkdir "download\package\twilio\lib\portable-net403+sl5+netcore45+wp8"
 
