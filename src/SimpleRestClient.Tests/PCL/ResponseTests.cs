@@ -13,27 +13,16 @@ namespace SimpleRestClient.Tests.PCL
 #if PCL
 
     [TestClass]
-    public class ExecuteTests
+    public class ResponseTests
     {
         RestClient client;
         string BASE_URL = "http://example.com";
 
-        public ExecuteTests()
+        public ResponseTests()
         {
             client = new RestClient();
             client.BaseUrl = BASE_URL;
         }
-
-        //[TestMethod]
-        //public async Task Foo()
-        //{
-        //    var restrequest = new RestRequest();
-        //    restrequest.Method = "POST";
-
-        //    var response = await client.ExecuteAsync(restrequest);
-
-        //    Assert.Inconclusive();
-        //}
 
         [TestMethod]
         public async Task When_200OK_Response_Is_Returned_Then_Set_Proper_Response_Values()
@@ -53,6 +42,7 @@ namespace SimpleRestClient.Tests.PCL
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
 
+        // Test protocol error handling
         [TestMethod]
         public async Task When_400BadRequest_Response_Is_Returned_Then_Set_Proper_Response_Values()
         {
@@ -75,6 +65,7 @@ namespace SimpleRestClient.Tests.PCL
             CollectionAssert.AreEquivalent(Encoding.ASCII.GetBytes(sourcecontent), response.RawBytes);
         }
 
+        // Test transport error handling
         [TestMethod]
         public async Task When_Request_Timeout_Causes_Transport_Error_Then_Set_Exception_Properties()
         {
@@ -92,30 +83,21 @@ namespace SimpleRestClient.Tests.PCL
             Assert.IsNotNull(response.ErrorException);
         }
 
+        //Test aborting the request
+        //[TestMethod]
+        //public void When_Async_Http_Request_Is_Aborted_Then_Populate_Exception_Properties()
+        //{
+        //    var message = "The request was aborted: The request was canceled.";
 
-        [TestMethod]
-        public void When_A_Default_Header_Is_Present_Then_WebRequest_Includes_This_Header()
-        {
-            string token = AuthorizationToken;
+        //    var webexception = new WebException(message, null, WebExceptionStatus.RequestCanceled, null);
 
-            client.DefaultParameters.Add(new Parameter() { Name = "Authorization", Value = token, Type = ParameterType.HttpHeader });
+        //    var wrapper = new HttpWebRequestWrapper();
+        //    var restresponse = wrapper.ParseWebException(webexception, new TimeOutState() { TimedOut = false });
 
-            var request = new RestRequest();
-            
-            var requestmessage = client.ConfigureRequestMessage(request);
-
-            Assert.IsTrue(requestmessage.Headers.Any(kvp => kvp.Key=="Authorization"));
-            Assert.AreEqual(token, requestmessage.Headers.Authorization.ToString());
-        }
-
-        private string AuthorizationToken
-        {
-            get
-            {
-                var token = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", "test", "user")));
-                return string.Format("Basic {0}", token);
-            }
-        }
+        //    Assert.IsNotNull(restresponse.ErrorException);
+        //    Assert.AreEqual(message, restresponse.ErrorMessage);
+        //    Assert.AreEqual(ResponseStatus.Aborted, restresponse.ResponseStatus);
+        //}
     }
 
 #endif
