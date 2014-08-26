@@ -55,7 +55,7 @@ The examples below show how to have your application initiate and outbound phone
     using Twilio;
     var twilio = new TwilioRestClient("accountSid", "authToken");
     var call = twilio.InitiateOutboundCall("+1555456790", "+15551112222", "http://example.com/handleCall");
-    var msg = twilio.SendSmsMessage("+15551112222", "+15553334444", "Can you believe it's this easy to send an SMS?!");
+    var msg = twilio.SendMessage("+15551112222", "+15553334444", "Can you believe it's this easy to send an SMS?!");
 
 ### Silverlight/Windows Phone 7/Asynchronous Requests Sample
 
@@ -65,7 +65,7 @@ The examples below show how to have your application initiate and outbound phone
         // Console.WriteLog(call.Sid);
     });
 
-    twilio.SendSmsMessage("+15555551212", "+11234567890", "Hello!", (msg) => {
+    twilio.SendMessage("+15555551212", "+11234567890", "Hello!", (msg) => {
         // Console.WriteLine(msg.Sid);
     });
 
