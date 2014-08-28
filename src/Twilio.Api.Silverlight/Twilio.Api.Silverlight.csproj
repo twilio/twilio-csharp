@@ -179,6 +179,9 @@
     <Compile Include="..\Twilio.Api\Model\DomainResult.cs">
       <Link>Model\DomainResult.cs</Link>
     </Compile>
+    <Compile Include="..\Twilio.Api\Model\Feedback.cs">
+      <Link>Model\Feedback.cs</Link>
+    </Compile>
     <Compile Include="..\Twilio.Api\Model\HangupStyle.cs">
       <Link>Model\HangupStyle.cs</Link>
     </Compile>
@@ -205,6 +208,9 @@
     </Compile>
     <Compile Include="..\Twilio.Api\Model\IpAddressResult.cs">
       <Link>Model\IpAddressResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\Issue.cs">
+      <Link>Model\Issue.cs</Link>
     </Compile>
     <Compile Include="..\Twilio.Api\Model\Media.cs">
       <Link>Model\Media.cs</Link>
@@ -324,6 +330,7 @@
     <Compile Include="Conference.Async.cs" />
     <Compile Include="ConnectApps.Async.cs" />
     <Compile Include="AuthorizedConnectApps.Async.cs" />
+    <Compile Include="Feedback.Async.cs" />
     <Compile Include="Media.Async.cs" />
     <Compile Include="Messages.Async.cs" />
     <Compile Include="Queues.Async.cs" />
