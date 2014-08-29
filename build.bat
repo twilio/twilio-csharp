@@ -1,4 +1,4 @@
-@echo Off
+REM @echo Off
 REM set config=%1
 REM if "%config%" == "" (
 REM    set config=Release
