@@ -16,14 +16,21 @@ REM %WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.2013.sln /p:C
 REM Package restore
 cmd /c %nuget% restore src\Twilio.2013.sln -NoCache -NonInteractive
 
-REM Build Source
-REM %WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.2013.sln /p:Configuration="Debug - FX35" /p:Platform="Any CPU" /p:VRevision=%BuildCounter% /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
-REM if not "%errorlevel%"=="0" goto failure
+REM Build Source from Projects
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\SimpleRestClient\SimpleRestClient.csproj /p:Configuration=FX35 /p:VRevision=%BuildCounter% /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\SimpleRestClient.Tests\SimpleRestClient.Tests.csproj /p:Configuration=FX35 /p:VRevision=%BuildCounter% /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
+if not "%errorlevel%"=="0" goto failure
+
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\SimpleRestClient\SimpleRestClient.csproj /p:Configuration=PCL /p:VRevision=%BuildCounter% /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\SimpleRestClient.Tests\SimpleRestClient.Tests.csproj /p:Configuration=PCL /p:VRevision=%BuildCounter% /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
+if not "%errorlevel%"=="0" goto failure
+
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.Api.Net35\Twilio.Api.Net35.csproj /p:Configuration=FX35 /p:VRevision=%BuildCounter% /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.Api.Net35.Tests\Twilio.Api.Net35.Tests.csproj /p:Configuration=FX35 /p:VRevision=%BuildCounter% /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
+if not "%errorlevel%"=="0" goto failure
 
 %WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.Api.Pcl\Twilio.Api.Pcl.csproj /p:Configuration=PCL /p:VRevision=%BuildCounter% /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
 %WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.Api.Pcl.Tests\Twilio.Api.Pcl.Tests.csproj /p:Configuration=PCL /p:VRevision=%BuildCounter% /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
-
-REM %WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.2013.sln /p:Configuration="Debug - PCL" /p:Platform="Any CPU" /p:VRevision=%BuildCounter% /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
 if not "%errorlevel%"=="0" goto failure
 
 REM Run Unit tests
