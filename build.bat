@@ -17,8 +17,8 @@ REM Package restore
 cmd /c %nuget% restore src\Twilio.2013.sln -NoCache -NonInteractive
 
 REM Build Source
-%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.2013.sln /p:Configuration="Debug - FX35" /p:Platform="Any CPU" /p:VRevision=%BuildCounter% /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
-if not "%errorlevel%"=="0" goto failure
+REM %WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.2013.sln /p:Configuration="Debug - FX35" /p:Platform="Any CPU" /p:VRevision=%BuildCounter% /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
+REM if not "%errorlevel%"=="0" goto failure
 %WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild src\Twilio.2013.sln /p:Configuration="Debug - PCL" /p:Platform="Any CPU" /p:VRevision=%BuildCounter% /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=Normal /nr:true /p:BuildInParallel=true /p:RestorePackages=true /t:Rebuild
 if not "%errorlevel%"=="0" goto failure
 
