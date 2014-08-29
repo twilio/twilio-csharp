@@ -25,6 +25,13 @@ if not "%errorlevel%"=="0" goto failure
 REM Run Unit tests
 "%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\FX35\SimpleRestClient.Tests.dll
 if not "%errorlevel%"=="0" goto failure
+"%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\PCL\SimpleRestClient.Tests.dll
+if not "%errorlevel%"=="0" goto failure
+
+"%GallioEcho%" /v:Verbose src\Twilio.Api.Net35.Tests\bin\FX35\Twilio.Api.Net35.Tests.dll
+if not "%errorlevel%"=="0" goto failure
+"%GallioEcho%" /v:Verbose src\Twilio.Api.Pcl.Tests\bin\PCL\Twilio.Api.Pcl.Tests.dll
+if not "%errorlevel%"=="0" goto failure
 
 REM Package Folders Setup
 rd download /s /q  REM delete the old stuff
