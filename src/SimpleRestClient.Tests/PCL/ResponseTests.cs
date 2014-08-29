@@ -73,7 +73,7 @@ namespace SimpleRestClient.Tests.PCL
             client.BaseUrl = BASE_URL;
             client.Timeout = 1;
 
-            client.MessageHandler = new FakeHttpMessageHandler(HttpStatusCode.BadRequest);
+            client.MessageHandler = new FakeHttpMessageHandler(HttpStatusCode.OK);
 
             var request = new RestRequest();
 

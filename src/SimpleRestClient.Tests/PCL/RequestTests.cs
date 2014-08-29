@@ -39,7 +39,7 @@ namespace SimpleRestClient.Tests
             var requestmessage = client.ConfigureRequestMessage(request);
 
             Assert.IsTrue(requestmessage.Headers.Contains("Authorization"));
-            Assert.AreEqual(token, requestmessage.Headers.Authorization);
+            Assert.AreEqual(token, requestmessage.Headers.Authorization.ToString());
         }
 
         [TestMethod]
@@ -84,7 +84,6 @@ namespace SimpleRestClient.Tests
             request.AddParameter("Bar", "abcde");
 
             var requestmessage = client.ConfigureRequestMessage(request);
-            var actualbytes = await requestmessage.Content.ReadAsByteArrayAsync();
 
             Assert.IsNull(requestmessage.Content);
         }
