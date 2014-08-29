@@ -23,15 +23,15 @@ if not "%errorlevel%"=="0" goto failure
 if not "%errorlevel%"=="0" goto failure
 
 REM Run Unit tests
-"%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\FX35\SimpleRestClient.Tests.dll
-if not "%errorlevel%"=="0" goto failure
-"%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\PCL\SimpleRestClient.Tests.dll
-if not "%errorlevel%"=="0" goto failure
+REM "%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\FX35\SimpleRestClient.Tests.dll
+REM if not "%errorlevel%"=="0" goto failure
+REM "%GallioEcho%" /v:Verbose src\Twilio.Api.Net35.Tests\bin\FX35\Twilio.Api.Net35.Tests.dll
+REM if not "%errorlevel%"=="0" goto failure
 
-"%GallioEcho%" /v:Verbose src\Twilio.Api.Net35.Tests\bin\FX35\Twilio.Api.Net35.Tests.dll
-if not "%errorlevel%"=="0" goto failure
-"%GallioEcho%" /v:Verbose src\Twilio.Api.Pcl.Tests\bin\PCL\Twilio.Api.Pcl.Tests.dll
-if not "%errorlevel%"=="0" goto failure
+REM "%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\PCL\SimpleRestClient.Tests.dll
+REM if not "%errorlevel%"=="0" goto failure
+REM "%GallioEcho%" /v:Verbose src\Twilio.Api.Pcl.Tests\bin\PCL\Twilio.Api.Pcl.Tests.dll
+REM if not "%errorlevel%"=="0" goto failure
 
 REM Package Folders Setup
 rd download /s /q  REM delete the old stuff
@@ -63,9 +63,9 @@ copy src\Twilio.Api.Pcl\bin\PCL\Twilio.Api.* "download\package\twilio\lib\portab
 REM Create Packages
 REM mkdir Build
 
-FOR /F "tokens=* delims=" %%x in (src/version.txt) DO SET ver=%%x
-cmd /c %nuget% pack "Twilio.nuspec" -Version %ver%.%BuildCounter%-alpha -BasePath download\package\twilio -o download
-if not "%errorlevel%"=="0" goto failure
+REM FOR /F "tokens=* delims=" %%x in (src/version.txt) DO SET ver=%%x
+REM cmd /c %nuget% pack "Twilio.nuspec" -Version %ver%.%BuildCounter%-alpha -BasePath download\package\twilio -o download
+REM if not "%errorlevel%"=="0" goto failure
 
 :success
 
