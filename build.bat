@@ -9,6 +9,8 @@ REM if not "%PackageVersion%" == "" (
 REM    set version=-Version %PackageVersion%
 REM )
 
+set nunit = "src\packages\NUnit.Runners.2.6.3\tools\nunit-console.exe"
+
 REM Package restore
 cmd /c %nuget% restore src\Twilio.2013.sln -NoCache -NonInteractive
 
@@ -30,15 +32,21 @@ if not "%errorlevel%"=="0" goto failure
 if not "%errorlevel%"=="0" goto failure
 
 REM Run Unit tests
-"%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\FX35\SimpleRestClient.Tests.dll
-if not "%errorlevel%"=="0" goto failure
-"%GallioEcho%" /v:Verbose src\Twilio.Api.Net35.Tests\bin\FX35\Twilio.Api.Net35.Tests.dll
-if not "%errorlevel%"=="0" goto failure
+REM "%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\FX35\SimpleRestClient.Tests.dll
+REM if not "%errorlevel%"=="0" goto failure
+REM "%GallioEcho%" /v:Verbose src\Twilio.Api.Net35.Tests\bin\FX35\Twilio.Api.Net35.Tests.dll
+REM if not "%errorlevel%"=="0" goto failure
 
-"%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\PCL\SimpleRestClient.Tests.dll
-if not "%errorlevel%"=="0" goto failure
-"%GallioEcho%" /v:Verbose src\Twilio.Api.Pcl.Tests\bin\PCL\Twilio.Api.Pcl.Tests.dll
-if not "%errorlevel%"=="0" goto failure
+REM "%GallioEcho%" /v:Verbose src\SimpleRestClient.Tests\bin\PCL\SimpleRestClient.Tests.dll
+REM if not "%errorlevel%"=="0" goto failure
+REM "%GallioEcho%" /v:Verbose src\Twilio.Api.Pcl.Tests\bin\PCL\Twilio.Api.Pcl.Tests.dll
+REM if not "%errorlevel%"=="0" goto failure
+
+%nunit% src\SimpleRestClient.Tests\bin\FX35\SimpleRestClient.Tests.dll /xmlConsole
+%nunit% src\Twilio.Api.Net35.Tests\bin\FX35\Twilio.Api.Net35.Tests.dll /xmlConsole
+
+%nunit% src\SimpleRestClient.Tests\bin\PCL\SimpleRestClient.Tests.dll /xmlConsole
+%nunit% src\Twilio.Api.Pcl.Tests\bin\PCL\Twilio.Api.Pcl.Tests.dll /xmlConsole
 
 REM Package Folders Setup
 rd download /s /q  REM delete the old stuff

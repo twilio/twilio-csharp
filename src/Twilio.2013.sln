@@ -39,6 +39,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Api.Net35.Tests", "T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Api.Pcl.Tests", "Twilio.Api.Pcl.Tests\Twilio.Api.Pcl.Tests.csproj", "{57E93AE9-A6A8-46B5-B559-9388B57566D2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5B732895-5B6B-4218-B660-B93CC196FFF8}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug - FX35|Any CPU = Debug - FX35|Any CPU
