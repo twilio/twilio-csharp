@@ -1,23 +1,20 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug - FX35" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SimpleRestClient/UriBuilder.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug - PCL" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="SimpleRestClient.Tests/SimpleRestClient.Tests.csproj">
     <Files>
-      <File FileName="SimpleRestClient/StringExtensions.cs" Line="27" Column="27" />
-      <File FileName="../../../../../Library/Frameworks/Mono.framework/Versions/3.8.0/lib/mono/4.5/Microsoft.Common.targets" Line="1" Column="1" />
-      <File FileName="SimpleRestClient/UriBuilder.cs" Line="1" Column="1" />
+      <File FileName="SimpleRestClient.Tests/SimpleRestClient.Tests.csproj" Line="1" Column="1" />
+      <File FileName="Twilio.Api.Pcl.Tests/Twilio.Api.Pcl.Tests.csproj" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Twilio.Api.Net35" expanded="True" selected="True">
-            <Node name="References" expanded="True" />
-          </Node>
-        </State>
+        <State expanded="True" selected="True" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/devinrader/Documents/twilio-csharp/src/SimpleRestClient/StringExtensions.cs" line="141" column="33" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

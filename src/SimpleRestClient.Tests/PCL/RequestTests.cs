@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Simple;
 using System.Net;
 using System.IO;
@@ -9,13 +8,14 @@ using System.Text;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.Net.Http;
+using NUnit.Framework;
 
 namespace SimpleRestClient.Tests
 {
 
 #if PCL
 
-    [TestClass]
+	[TestFixture]
     public class RequestTests
     {
         RestClient client;
@@ -27,7 +27,7 @@ namespace SimpleRestClient.Tests
             client.BaseUrl = BASE_URL;
         }
 
-        [TestMethod]
+        [Test]
         public void When_A_Default_Header_Is_Present_Then_RequestMessage_Includes_This_Header()
         {
             string token = AuthorizationToken;
@@ -42,7 +42,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(token, requestmessage.Headers.Authorization.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public async Task When_Request_Method_Is_POST_Then_Request_Body_Contains_Encoded_Parameters()
         {
             string body = "Foo=12345&Bar=abcde";
@@ -56,13 +56,13 @@ namespace SimpleRestClient.Tests
             var requestmessage = client.ConfigureRequestMessage(request);
             var actualbytes = await requestmessage.Content.ReadAsByteArrayAsync();
 
-            Assert.IsInstanceOfType(requestmessage.Content, typeof(FormUrlEncodedContent));
+			Assert.IsInstanceOf<FormUrlEncodedContent>(requestmessage.Content);
             Assert.AreEqual(actualbytes.Length, actualbytes.Length);
             CollectionAssert.AreEquivalent(sourcebytes, actualbytes);            
         }
 
 
-        [TestMethod]
+        [Test]
         public void When_Request_Method_Is_POST_Then_ContentType_Is_FormEncoded()
         {
             var request = new RestRequest();
@@ -75,7 +75,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual("application/x-www-form-urlencoded", requestmessage.Content.Headers.ContentType.MediaType);
         }
 
-        [TestMethod]
+        [Test]
         public async Task When_Request_Method_Is_GET_Then_Request_Body_Does_Not_Contain_Encoded_Parameters()
         {
             var request = new RestRequest();

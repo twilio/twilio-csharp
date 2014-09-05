@@ -14,7 +14,6 @@
 //   limitations under the License. 
 #endregion
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Simple;
 using System;
 using System.Collections.Generic;
@@ -22,21 +21,22 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using NUnit.Framework;
 
 namespace SimpleRestClient.Tests
 {
-    [TestClass]
+	[TestFixture]
     public class JsonDeserializerTests
     {
         private const string AlternativeCulture = "pt-PT";
 
         private const string GuidString = "AC1FC4BC-087A-4242-B8EE-C53EBE9887A5";
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\4sq.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\4sq.txt")]
         public void Can_Deserialize_4sq_Json_With_Root_Element_Specified()
         {
-            var doc = File.ReadAllText("4sq.txt");
+            var doc = File.ReadAllText("Resources/Data/4sq.txt");
 
             var json = new JsonDeserializer();
             json.RootElement = "response";
@@ -46,11 +46,11 @@ namespace SimpleRestClient.Tests
             MyAssert.NotEmpty(output.Groups);
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\jsonlists.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\jsonlists.txt")]
         public void Can_Deserialize_Lists_of_Simple_Types()
         {
-            var doc = File.ReadAllText("jsonlists.txt");
+			var doc = File.ReadAllText("Resources/Data/jsonlists.txt");
             var json = new JsonDeserializer();
 
             var output = json.Deserialize<JsonLists>(new RestResponse { Content = doc });
@@ -59,7 +59,7 @@ namespace SimpleRestClient.Tests
             MyAssert.NotEmpty(output.Numbers);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_Simple_Generic_List_of_Simple_Types()
         {
             const string content = "{\"users\":[\"johnsheehan\",\"jagregory\",\"drusellers\",\"structuremap\"]}";
@@ -70,7 +70,7 @@ namespace SimpleRestClient.Tests
             MyAssert.NotEmpty(output);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_Simple_Generic_List_of_Simple_Types_With_Nulls()
         {
             const string content = "{\"users\":[\"johnsheehan\",\"jagregory\",null,\"drusellers\",\"structuremap\"]}";
@@ -83,7 +83,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(5, output.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_Simple_Generic_List_Given_Item_Without_Array()
         {
             const string content = "{\"users\":\"johnsheehan\"}";
@@ -94,7 +94,7 @@ namespace SimpleRestClient.Tests
             Assert.IsTrue(output.SequenceEqual(new[] { "johnsheehan" }));
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_Simple_Generic_List_Given_Toplevel_Item_Without_Array()
         {
             const string content = "\"johnsheehan\"";
@@ -105,11 +105,11 @@ namespace SimpleRestClient.Tests
             Assert.IsTrue(output.SequenceEqual(new[] { "johnsheehan" }));
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\sojson.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\sojson.txt")]
         public void Can_Deserialize_From_Root_Element()
         {
-            var doc = File.ReadAllText("sojson.txt");
+			var doc = File.ReadAllText("Resources/Data/sojson.txt");
 
             var json = new JsonDeserializer();
             json.RootElement = "User";
@@ -118,18 +118,18 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual("John Sheehan", output.DisplayName);
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\GenericWithList.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\GenericWithList.txt")]
         public void Can_Deserialize_Generic_Members()
         {
-            var doc = File.ReadAllText("GenericWithList.txt");
+			var doc = File.ReadAllText("Resources/Data/GenericWithList.txt");
             var json = new JsonDeserializer();
 
             var output = json.Deserialize<Generic<GenericWithList<Foe>>>(new RestResponse { Content = doc });
             Assert.AreEqual("Foe sho", output.Data.Items[0].Nickname);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_List_of_Guid()
         {
             Guid ID1 = new Guid("b0e5c11f-e944-478c-aadd-753b956d0c8c");
@@ -146,7 +146,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(ID2, p.Ids[1]);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_Generic_List_of_DateTime()
         {
             DateTime Item1 = new DateTime(2010, 2, 8, 11, 11, 11);
@@ -163,7 +163,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(Item2, p.Items[1]);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_Null_Elements_to_Nullable_Values()
         {
             var doc = CreateJsonWithNullValues();
@@ -176,7 +176,7 @@ namespace SimpleRestClient.Tests
             Assert.IsNull(output.UniqueId);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_Empty_Elements_to_Nullable_Values()
         {
             var doc = CreateJsonWithEmptyValues();
@@ -189,7 +189,7 @@ namespace SimpleRestClient.Tests
             Assert.IsNull(output.UniqueId);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_Elements_to_Nullable_Values()
         {
             var doc = CreateJsonWithoutEmptyValues();
@@ -209,7 +209,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(new Guid(GuidString), output.UniqueId);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_Json_Using_DeserializeAs_Attribute()
         {
             const string content = "{\"sid\":\"asdasdasdasdasdasdasda\",\"friendlyName\":\"VeryNiceName\",\"oddballPropertyName\":\"blahblah\"}";
@@ -221,7 +221,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual("blahblah", output.GoodPropertyName);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_Custom_Formatted_Date()
         {
             var culture = CultureInfo.InvariantCulture;
@@ -243,33 +243,33 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(date, output.StartDate);
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\jsonarray.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\jsonarray.txt")]
         public void Can_Deserialize_Root_Json_Array_To_List()
         {
-            var data = File.ReadAllText("jsonarray.txt");
+			var data = File.ReadAllText("Resources/Data/jsonarray.txt");
             var response = new RestResponse { Content = data };
             var json = new JsonDeserializer();
             var output = json.Deserialize<List<status>>(response);
             Assert.AreEqual(4, output.Count);
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\jsonarray.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\jsonarray.txt")]
         public void Can_Deserialize_Root_Json_Array_To_Inherited_List()
         {
-            var data = File.ReadAllText("jsonarray.txt");
+			var data = File.ReadAllText("Resources/Data/jsonarray.txt");
             var response = new RestResponse { Content = data };
             var json = new JsonDeserializer();
             var output = json.Deserialize<StatusList>(response);
             Assert.AreEqual(4, output.Count);
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\jsonenums.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\jsonenums.txt")]
         public void Can_Deserialize_Various_Enum_Values()
         {
-            var data = File.ReadAllText("jsonenums.txt");
+			var data = File.ReadAllText("Resources/Data/jsonenums.txt");
             var response = new RestResponse { Content = data };
             var json = new JsonDeserializer();
             var output = json.Deserialize<JsonEnumsTestStructure>(response);
@@ -284,11 +284,11 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(Disposition.SoSo, output.Integer);
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\jsonenumtypes.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\jsonenumtypes.txt")]
         public void Can_Deserialize_Various_Enum_Types()
         {
-            var data = File.ReadAllText("jsonenumtypes.txt");
+			var data = File.ReadAllText("Resources/Data/jsonenumtypes.txt");
             var response = new RestResponse { Content = data };
             var json = new JsonDeserializer();
             var output = json.Deserialize<JsonEnumTypesTestStructure>(response);
@@ -303,7 +303,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(ULongEnum.EnumMin, output.ULongEnumType);
         }
 
-        [TestMethod]
+        [Test]
         public void Deserialization_Of_Undefined_Int_Value_Returns_Enum_Default()
         {
             const string data = @"{ ""Integer"" : 1024 }";
@@ -313,7 +313,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(Disposition.Friendly, result.Integer);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_Guid_String_Fields()
         {
             var doc = new JsonObject();
@@ -326,7 +326,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(new Guid(GuidString), p.Guid);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_Quoted_Primitive()
         {
             var doc = new JsonObject();
@@ -339,7 +339,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(28, p.Age);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_Int_to_Bool()
         {
             var doc = new JsonObject();
@@ -352,7 +352,7 @@ namespace SimpleRestClient.Tests
             Assert.IsTrue(p.IsCool);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_With_Default_Root()
         {
             var doc = CreateJson();
@@ -387,7 +387,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual("Foe 2", p.Foes["dict2"].Nickname);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_With_Default_Root_Alternative_Culture()
         {
             using (new CultureChange(AlternativeCulture))
@@ -396,11 +396,11 @@ namespace SimpleRestClient.Tests
             }
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\underscore_prefix.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\underscore_prefix.txt")]
         public void Can_Deserialize_Names_With_Underscore_Prefix()
         {
-            var data = File.ReadAllText("underscore_prefix.txt");
+			var data = File.ReadAllText("Resources/Data/underscore_prefix.txt");
             var response = new RestResponse { Content = data };
             var json = new JsonDeserializer();
             json.RootElement = "User";
@@ -411,7 +411,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(1786, output.Id);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_Names_With_Underscores_With_Default_Root()
         {
             var doc = CreateJsonWithUnderscores();
@@ -440,7 +440,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual("Foe 2", p.Foes["dict2"].Nickname);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_Names_With_Underscores_With_Default_Root_Alternative_Culture()
         {
             using (new CultureChange(AlternativeCulture))
@@ -449,7 +449,7 @@ namespace SimpleRestClient.Tests
             }
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_Names_With_Dashes_With_Default_Root()
         {
             var doc = CreateJsonWithDashes();
@@ -478,7 +478,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual("Foe 2", p.Foes["dict2"].Nickname);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_Names_With_Dashes_With_Default_Root_Alternative_Culture()
         {
             using (new CultureChange(AlternativeCulture))
@@ -487,7 +487,7 @@ namespace SimpleRestClient.Tests
             }
         }
 
-        [TestMethod]
+        [Test]
         public void Ignore_Protected_Property_That_Exists_In_Data()
         {
             var doc = CreateJson();
@@ -498,7 +498,7 @@ namespace SimpleRestClient.Tests
             Assert.IsNull(p.IgnoreProxy);
         }
 
-        [TestMethod]
+        [Test]
         public void Ignore_ReadOnly_Property_That_Exists_In_Data()
         {
             var doc = CreateJson();
@@ -509,11 +509,11 @@ namespace SimpleRestClient.Tests
             Assert.IsNull(p.ReadOnlyProxy);
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\timespans.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\timespans.txt")]
         public void Can_Deserialize_TimeSpan()
         {
-            var payload = GetPayLoad<TimeSpanTestStructure>("timespans.txt");
+			var payload = GetPayLoad<TimeSpanTestStructure>("Resources/Data/timespans.txt");
 
             Assert.AreEqual(new TimeSpan(468006), payload.Tick);
             Assert.AreEqual(new TimeSpan(0, 0, 0, 0, 125), payload.Millisecond);
@@ -525,7 +525,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(new TimeSpan(21, 30, 7), payload.NullableWithValue.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_Iso_Json_Dates()
         {
             var doc = CreateIsoDateJson();
@@ -536,7 +536,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(new DateTime(1910, 9, 25, 9, 30, 25, DateTimeKind.Utc), bd.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_Unix_Json_Dates()
         {
             var doc = CreateUnixDateJson();
@@ -547,33 +547,33 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(new DateTime(2011, 6, 30, 8, 15, 46, DateTimeKind.Utc), bd.Value);
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\person.json.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\person.json.txt")]
         public void Can_Deserialize_JsonNet_Dates()
         {
-            var person = GetPayLoad<PersonForJson>("person.json.txt");
+			var person = GetPayLoad<PersonForJson>("Resources/Data/person.json.txt");
 
             Assert.AreEqual(
                 new DateTime(2011, 6, 30, 8, 15, 46, 929, DateTimeKind.Utc),
                 person.StartDate);
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\datetimes.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\datetimes.txt")]
         public void Can_Deserialize_DateTime()
         {
-            var payload = GetPayLoad<DateTimeTestStructure>("datetimes.txt");
+			var payload = GetPayLoad<DateTimeTestStructure>("Resources/Data/datetimes.txt");
 
             Assert.AreEqual(
                 new DateTime(2011, 6, 30, 8, 15, 46, 929, DateTimeKind.Utc),
                 payload.DateTime);
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\datetimes.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\datetimes.txt")]
         public void Can_Deserialize_Nullable_DateTime_With_Value()
         {
-            var payload = GetPayLoad<DateTimeTestStructure>("datetimes.txt");
+			var payload = GetPayLoad<DateTimeTestStructure>("Resources/Data/datetimes.txt");
 
             Assert.IsNotNull(payload.NullableDateTimeWithValue);
             Assert.AreEqual(
@@ -581,64 +581,64 @@ namespace SimpleRestClient.Tests
                 payload.NullableDateTimeWithValue.Value);
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\datetimes.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\datetimes.txt")]
         public void Can_Deserialize_Nullable_DateTime_With_Null()
         {
-            var payload = GetPayLoad<DateTimeTestStructure>("datetimes.txt");
+			var payload = GetPayLoad<DateTimeTestStructure>("Resources/Data/datetimes.txt");
 
             Assert.IsNull(payload.NullableDateTimeWithNull);
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\datetimes.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\datetimes.txt")]
         public void Can_Deserialize_DateTimeOffset()
         {
-            var payload = GetPayLoad<DateTimeTestStructure>("datetimes.txt");
+			var payload = GetPayLoad<DateTimeTestStructure>("Resources/Data/datetimes.txt");
 
             Assert.AreEqual(
                 new DateTime(2011, 6, 30, 8, 15, 46, 929, DateTimeKind.Utc),
                 payload.DateTimeOffset);
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\iso8601datetimes.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\iso8601datetimes.txt")]
         public void Can_Deserialize_Iso8601DateTimeLocal()
         {
-            var payload = GetPayLoad<Iso8601DateTimeTestStructure>("iso8601datetimes.txt");
+			var payload = GetPayLoad<Iso8601DateTimeTestStructure>("Resources/Data/iso8601datetimes.txt");
 
             Assert.AreEqual(
                 new DateTime(2012, 7, 19, 10, 23, 25, DateTimeKind.Utc),
                 payload.DateTimeLocal);
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\iso8601datetimes.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\iso8601datetimes.txt")]
         public void Can_Deserialize_Iso8601DateTimeZulu()
         {
-            var payload = GetPayLoad<Iso8601DateTimeTestStructure>("iso8601datetimes.txt");
+			var payload = GetPayLoad<Iso8601DateTimeTestStructure>("Resources/Data/iso8601datetimes.txt");
 
             Assert.AreEqual(
                 new DateTime(2012, 7, 19, 10, 23, 25, 544, DateTimeKind.Utc),
                 payload.DateTimeUtc.ToUniversalTime());
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\iso8601datetimes.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\iso8601datetimes.txt")]
         public void Can_Deserialize_Iso8601DateTimeWithOffset()
         {
-            var payload = GetPayLoad<Iso8601DateTimeTestStructure>("iso8601datetimes.txt");
+			var payload = GetPayLoad<Iso8601DateTimeTestStructure>("Resources/Data/iso8601datetimes.txt");
 
             Assert.AreEqual(
                 new DateTime(2012, 7, 19, 10, 23, 25, 544, DateTimeKind.Utc),
                 payload.DateTimeWithOffset.ToUniversalTime());
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\datetimes.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\datetimes.txt")]
         public void Can_Deserialize_Nullable_DateTimeOffset_With_Value()
         {
-            var payload = GetPayLoad<DateTimeTestStructure>("datetimes.txt");
+			var payload = GetPayLoad<DateTimeTestStructure>("Resources/Data/datetimes.txt");
 
             Assert.IsNotNull(payload.NullableDateTimeOffsetWithValue);
             Assert.AreEqual(
@@ -646,16 +646,16 @@ namespace SimpleRestClient.Tests
                 payload.NullableDateTimeOffsetWithValue);
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\datetimes.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\datetimes.txt")]
         public void Can_Deserialize_Nullable_DateTimeOffset_With_Null()
         {
-            var payload = GetPayLoad<DateTimeTestStructure>("datetimes.txt");
+			var payload = GetPayLoad<DateTimeTestStructure>("Resources/Data/datetimes.txt");
 
             Assert.IsNull(payload.NullableDateTimeOffsetWithNull);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_To_Dictionary_String_String()
         {
             var doc = CreateJsonStringDictionary();
@@ -669,7 +669,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(bd["ThingBlue"], "ThingBlue");
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_To_Dictionary_String_String_With_Dynamic_Values()
         {
             var doc = CreateDynamicJsonStringDictionary();
@@ -683,7 +683,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual("{\"Name\":\"ThingBlue\",\"Color\":\"Blue\"}", bd["ThingBlue"]);
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Deserialize_Decimal_With_Four_Zeros_After_Floating_Point()
         {
             const string json = "{\"Value\":0.00005557}";
@@ -694,20 +694,20 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(result.Value, .00005557m);
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\objectproperty.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\objectproperty.txt")]
         public void Can_Deserialize_Object_Type_Property_With_Primitive_Vale()
         {
-            var payload = GetPayLoad<ObjectProperties>("objectproperty.txt");
+			var payload = GetPayLoad<ObjectProperties>("Resources/Data/objectproperty.txt");
 
             Assert.AreEqual(42L, payload.ObjectProperty);
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Resources\Data\jsondictionary.txt")]
+        [Test]
+        //[DeploymentItem(@"Resources\Data\jsondictionary.txt")]
         public void Can_Deserialize_Dictionary_of_Lists()
         {
-            var doc = File.ReadAllText("jsondictionary.txt");
+			var doc = File.ReadAllText("Resources/Data/jsondictionary.txt");
 
             var json = new JsonDeserializer();
             json.RootElement = "response";

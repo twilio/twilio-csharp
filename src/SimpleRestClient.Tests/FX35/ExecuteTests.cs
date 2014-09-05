@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Simple;
 using System.Net;
 using System.IO;
@@ -7,13 +6,14 @@ using System.Reflection;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using NUnit.Framework;
 
 namespace SimpleRestClient.Tests
 {
 
 #if FX35
 
-    [TestClass]
+	[TestFixture]
     public class ExecuteTests
     {
         ManualResetEvent manualResetEvent;
@@ -53,7 +53,7 @@ namespace SimpleRestClient.Tests
         //    manualResetEvent.WaitOne();
         //}
 
-        [TestMethod]
+        [Test]
         public void When_200OK_Response_Is_Returned_Then_Set_Proper_Response_Values()
         {
             manualResetEvent = new ManualResetEvent(false);
@@ -87,7 +87,7 @@ namespace SimpleRestClient.Tests
 
         
 
-        [TestMethod]
+        [Test]
         public void When_400BadRequest_Response_Is_Returned_Then_Set_Proper_Response_Values()
         {
             manualResetEvent = new ManualResetEvent(false);
@@ -124,7 +124,7 @@ namespace SimpleRestClient.Tests
             manualResetEvent.WaitOne();
         }
 
-        [TestMethod]
+        [Test]
         public void When_Request_Timeout_Causes_Transport_Error_Then_Set_Exception_Properties()
         {
             manualResetEvent = new ManualResetEvent(false);

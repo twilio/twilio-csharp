@@ -1,18 +1,19 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Simple;
+using NUnit.Framework;
+
 
 namespace SimpleRestClient.Tests
 {
-    [TestClass]
+	[TestFixture]
     public class UriBuilderTests
     {
         private const string BASE_URL = "http://example.com";
 
-        [TestMethod]
+        [Test]
         public void GET_with_leading_slash()
         {
             var expected = new Uri("http://example.com/resource");
@@ -25,7 +26,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(expected, output);
         }
 
-        [TestMethod]
+        [Test]
         public void POST_with_leading_slash()
         {
             var expected = new Uri("http://example.com/resource");
@@ -39,7 +40,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(expected, output);
         }
 
-        [TestMethod]
+        [Test]
         public void GET_with_leading_slash_and_baseurl_trailing_slash()
         {
             var expected = new Uri("http://example.com/resource?foo=bar");
@@ -53,7 +54,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(expected, output);
         }
 
-        [TestMethod]
+        [Test]
         public void GET_wth_trailing_slash_and_query_parameters()
         {
             var expected = new Uri("http://example.com/resource/?foo=bar");
@@ -67,7 +68,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(expected, output);
         }
 
-        [TestMethod]
+        [Test]
         public void POST_with_leading_slash_and_baseurl_trailing_slash()
         {
             var expected = new Uri("http://example.com/resource");
@@ -81,7 +82,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(expected, output);
         }
 
-        [TestMethod]
+        [Test]
         public void GET_with_resource_containing_slashes()
         {
             var expected = new Uri("http://example.com/resource/foo");
@@ -94,7 +95,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(expected, output);
         }
 
-        [TestMethod]
+        [Test]
         public void POST_with_resource_containing_slashes()
         {
             var expected = new Uri("http://example.com/resource/foo");
@@ -108,7 +109,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(expected, output);
         }
 
-        [TestMethod]
+        [Test]
         public void GET_with_resource_containing_tokens()
         {
             var expected = new Uri("http://example.com/resource/bar");
@@ -122,7 +123,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(expected, output);
         }
 
-        [TestMethod]
+        [Test]
         public void POST_with_resource_containing_tokens()
         {
             var expected = new Uri("http://example.com/resource/bar");
@@ -137,7 +138,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(expected, output);
         }
 
-        [TestMethod]
+        [Test]
         public void GET_with_empty_request()
         {
             var expected = new Uri("http://example.com/resource");
@@ -149,7 +150,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(expected, output);
         }
 
-        [TestMethod]
+        [Test]
         public void GET_with_empty_request_and_bare_hostname()
         {
             var expected = new Uri("http://example.com/");
@@ -161,7 +162,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(expected, output);
         }
 
-        [TestMethod]
+        [Test]
         public void POST_with_querystring_containing_tokens()
         {
             var expected = new Uri("http://example.com/resource?foo=bar");
@@ -176,7 +177,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(expected, output);
         }
 
-        [TestMethod]
+        [Test]
         public void GET_with_multiple_instances_of_same_key()
         {
             var expected = new Uri("http://api.linkedin.com/v1/people/~/network/updates?type=STAT&type=PICT&count=50&start=50");

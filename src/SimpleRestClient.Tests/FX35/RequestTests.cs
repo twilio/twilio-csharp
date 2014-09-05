@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Simple;
 using System.Net;
 using System.IO;
@@ -8,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
+using NUnit.Framework;
 
 namespace SimpleRestClient.Tests
 {
 
 #if FX35
 
-    [TestClass]
+	[TestFixture]
     public class RequestTests
     {
         RestClient client;
@@ -26,7 +26,7 @@ namespace SimpleRestClient.Tests
             client.BaseUrl = BASE_URL;
         }
 
-        [TestMethod]
+        [Test]
         public void When_A_Default_Header_Is_Present_Then_WebRequest_Includes_This_Header()
         {
             string token = AuthorizationToken;
@@ -42,7 +42,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(token, webrequest.Headers["Authorization"]);
         }
 
-        [TestMethod]
+        [Test]
         public void When_Request_Method_Is_POST_Then_Request_Body_Contains_Encoded_Parameters()
         {
             string body = "Foo=12345&Bar=abcde";
@@ -66,7 +66,7 @@ namespace SimpleRestClient.Tests
             CollectionAssert.AreEquivalent(sourcebytes, actualbytes);            
         }
 
-        [TestMethod]
+        [Test]
         public void When_Request_Method_Is_POST_Then_ContentType_Is_FormEncoded()
         {
             var request = new RestRequest();
@@ -80,7 +80,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual("application/x-www-form-urlencoded", webrequest.ContentType);
         }
 
-        [TestMethod]
+        [Test]
         public void When_Request_Method_Is_GET_Then_Request_Body_Does_Not_Contain_Encoded_Parameters()
         {
             byte[] sourcebytes = new byte[0];
@@ -102,7 +102,7 @@ namespace SimpleRestClient.Tests
             CollectionAssert.AreEquivalent(sourcebytes, actualbytes);
         }
 
-        [TestMethod]
+        [Test]
         public void When_Request_Method_Is_GET_Then_ContentType_Is_Empty()
         {
             var request = new RestRequest();

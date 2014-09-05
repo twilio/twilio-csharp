@@ -1,18 +1,18 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Simple;
+﻿using Simple;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using NUnit.Framework;
 
 namespace SimpleRestClient.Tests.PCL
 {
 
 #if PCL
 
-    [TestClass]
+	[TestFixture]
     public class ResponseTests
     {
         RestClient client;
@@ -24,7 +24,7 @@ namespace SimpleRestClient.Tests.PCL
             client.BaseUrl = BASE_URL;
         }
 
-        [TestMethod]
+        [Test]
         public async Task When_200OK_Response_Is_Returned_Then_Set_Proper_Response_Values()
         {
             var client = new RestClient();
@@ -43,7 +43,7 @@ namespace SimpleRestClient.Tests.PCL
         }
 
         // Test protocol error handling
-        [TestMethod]
+        [Test]
         public async Task When_400BadRequest_Response_Is_Returned_Then_Set_Proper_Response_Values()
         {
             var sourcecontent = "{\"code\": 90011, \"message\": \"Param From must be specified.\", \"more_info\": \"https://www.twilio.com/docs/errors/90011\", \"status\": 400}";
@@ -66,7 +66,7 @@ namespace SimpleRestClient.Tests.PCL
         }
 
         // Test transport error handling
-        [TestMethod]
+        [Test]
         public async Task When_Request_Timeout_Causes_Transport_Error_Then_Set_Exception_Properties()
         {
             var client = new RestClient();

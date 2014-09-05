@@ -1,17 +1,17 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Simple;
+﻿using Simple;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NUnit.Framework;
 
 namespace SimpleRestClient.Tests
 {
-    [TestClass]
+	[TestFixture]
     public class DeserializationTests
     {
-        [TestMethod]
+        [Test]
         public void When_Response_With_Valid_Json_Needs_Deserialization_Then_Derserialize_To_Type()
         {
             var sourcecontent = "{ \"firstName\":\"Jon\", \"lastName\":\"Doe\"}";
@@ -31,7 +31,7 @@ namespace SimpleRestClient.Tests
             Assert.AreEqual(sourceuser, actualuser.Data);
         }
 
-        [TestMethod]
+        [Test]
         public void When_Response_With_Invalid_Json_Needs_Deserialization_Then_Derserialize_To_Type()
         {
             var sourcecontent = "{ \"firstName\":'', \"lastName\":\"Doe\"}";
