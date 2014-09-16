@@ -123,25 +123,7 @@ namespace Twilio
         /// <param name="applicationSid"></param>
         public virtual Message SendMessage(string from, string to, string body, string[] mediaUrls, string statusCallback, string applicationSid)
         {
-            Require.Argument("from", from);
-            Require.Argument("to", to);
-
-            var request = new RestRequest(Method.POST);
-            request.Resource = "Accounts/{AccountSid}/Messages.json";
-            request.AddParameter("From", from);
-            request.AddParameter("To", to);
-            
-            if (body.HasValue()) request.AddParameter("Body", body);
-
-            for (int i = 0; i < mediaUrls.Length; i++)
-            {
-                request.AddParameter("MediaUrl", mediaUrls[i]);
-            }
-
-            if (statusCallback.HasValue()) request.AddParameter("StatusCallback", statusCallback);
-            if (applicationSid.HasValue()) request.AddParameter("ApplicationSid", applicationSid);
-
-            return Execute<Message>(request);
+            return SendMessage(from, to, body, mediaUrls, statusCallback, applicationSid, false);
         }
 
         /// <summary>
@@ -154,6 +136,7 @@ namespace Twilio
         /// <param name="mediaUrls">An array of URLs where each member of the array points to a media file to be sent with the message.  You can include a maximum of 10 media URLs</param>
         /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the MessageSid as well as MessageStatus=sent or MessageStatus=failed</param>
         /// <param name="applicationSid"></param>
+        /// <param name="mmsOnly">Doesn't fallback to SMS if set to true</param>
         public virtual Message SendMessage(string from, string to, string body, string[] mediaUrls, string statusCallback, string applicationSid, bool? mmsOnly)
         {
             Require.Argument("from", from);
