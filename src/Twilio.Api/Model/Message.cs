@@ -79,6 +79,11 @@ namespace Twilio
         public string ApiVersion { get; set; }
 
         /// <summary>
+        /// The message delivery method used. Either SMS or MMS.
+        /// </summary>
+        public string DeliveryMethod { get; set; }
+
+        /// <summary>
         /// The error code of this message. If non-null, it will be an int
         /// signaling what the error was. The error codes are listed on
         /// the Message docs: https://www.twilio.com/docs/api/rest/message.

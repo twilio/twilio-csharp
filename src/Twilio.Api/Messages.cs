@@ -143,5 +143,39 @@ namespace Twilio
 
             return Execute<Message>(request);
         }
+
+        /// <summary>
+        /// Send a new Message to the specified recipients
+        /// Makes a POST request to the Messages List resource.
+        /// </summary>
+        /// <param name="from">The phone number to send the message from. Must be a Twilio-provided or ported local (not toll-free) number. Validated outgoing caller IDs cannot be used.</param>
+        /// <param name="to">The phone number to send the message to. If using the Sandbox, this number must be a validated outgoing caller ID</param>
+        /// <param name="body">The message to send. Must be 160 characters or less.</param>
+        /// <param name="mediaUrls">An array of URLs where each member of the array points to a media file to be sent with the message.  You can include a maximum of 10 media URLs</param>
+        /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the MessageSid as well as MessageStatus=sent or MessageStatus=failed</param>
+        /// <param name="applicationSid"></param>
+        public virtual Message SendMessage(string from, string to, string body, string[] mediaUrls, string statusCallback, string applicationSid, bool? mmsOnly)
+        {
+            Require.Argument("from", from);
+            Require.Argument("to", to);
+
+            var request = new RestRequest(Method.POST);
+            request.Resource = "Accounts/{AccountSid}/Messages.json";
+            request.AddParameter("From", from);
+            request.AddParameter("To", to);
+
+            if (body.HasValue()) request.AddParameter("Body", body);
+
+            for (int i = 0; i < mediaUrls.Length; i++)
+            {
+                request.AddParameter("MediaUrl", mediaUrls[i]);
+            }
+
+            if (statusCallback.HasValue()) request.AddParameter("StatusCallback", statusCallback);
+            if (applicationSid.HasValue()) request.AddParameter("ApplicationSid", applicationSid);
+            if (mmsOnly.HasValue()) request.AddParameter("MmsOnly", mmsOnly);
+
+            return Execute<Message>(request);
+        }
     }
 }

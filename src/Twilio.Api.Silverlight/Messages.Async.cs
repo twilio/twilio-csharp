@@ -138,6 +138,21 @@ namespace Twilio
         /// <param name="applicationSid"></param>
         public virtual void SendMessage(string from, string to, string body, string[] mediaUrls, string statusCallback, string applicationSid, Action<Message> callback)
         {
+            SendMessage(from, to, body, mediaUrls, statusCallback, applicationSid, false, callback);
+        }
+
+        /// <summary>
+        /// Send a new Message to the specified recipients
+        /// Makes a POST request to the Messages List resource.
+        /// </summary>
+        /// <param name="from">The phone number to send the message from. Must be a Twilio-provided or ported local (not toll-free) number. Validated outgoing caller IDs cannot be used.</param>
+        /// <param name="to">The phone number to send the message to. If using the Sandbox, this number must be a validated outgoing caller ID</param>
+        /// <param name="body">The message to send. Must be 160 characters or less.</param>
+        /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the SmsSid as well as SmsStatus=sent or SmsStatus=failed</param>
+        /// <param name="applicationSid"></param>
+        /// <param name="mmsOnly">Doesn't fallback to SMS if set to true</param>
+        public virtual void SendMessage(string from, string to, string body, string[] mediaUrls, string statusCallback, string applicationSid, bool? mmsOnly, Action<Message> callback)
+        {
             Require.Argument("from", from);
             Require.Argument("to", to);
 
@@ -155,6 +170,7 @@ namespace Twilio
 
             if (statusCallback.HasValue()) request.AddParameter("StatusCallback", statusCallback);
             if (applicationSid.HasValue()) request.AddParameter("ApplicationSid", statusCallback);
+            if (mmsOnly.HasValue()) request.AddParameter("MmsOnly", mmsOnly);
 
             ExecuteAsync<Message>(request, (response) => callback(response));
         }
