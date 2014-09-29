@@ -233,6 +233,11 @@
     <Compile Include="Model\TwilioListBase.cs" />
     <Compile Include="Model\ValidationRequest.cs" />
     <Compile Include="Sip.cs" />
+    <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\AddressResult.cs" />
+    <Compile Include="Model\AddressListRequest.cs" />
+    <Compile Include="Model\DependentPhoneNumber.cs" />
+    <Compile Include="Model\DependentPhoneNumberResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
