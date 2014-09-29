@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using RestSharp.Deserializers;
 
 namespace Twilio
 {
@@ -11,6 +12,7 @@ namespace Twilio
 		/// <summary>
 		/// List of Media resources returned by API
 		/// </summary>  
+        [DeserializeAs(Name="media_list")]
 		public List<Media> Medias { get; set; }
 	}
 }
