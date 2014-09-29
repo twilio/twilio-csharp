@@ -30,8 +30,8 @@ if not exist download\package\twiliowebmatrix\lib\3.5 mkdir download\package\twi
 if not exist download\package\twilioclient\lib mkdir download\package\twilioclient\lib
 if not exist download\package\twilioclient\lib\3.5 mkdir download\package\twilioclient\lib\3.5
 
-tools\ilmerge.exe /lib:src\Twilio.Api\bin\Release /internalize /ndebug /v2 /out:download\Twilio.Api.dll Twilio.Api.dll RestSharp.dll
-tools\ilmerge.exe /lib:src\Twilio.Api.Silverlight\bin\Release /internalize /ndebug /targetplatform:v4,"C:\Program Files (x86)\Microsoft Silverlight\4.1.10111.0" /out:download\Twilio.Api.Silverlight.dll RestSharp.Silverlight.dll
+REM tools\ilmerge.exe /lib:src\Twilio.Api\bin\Release /internalize /ndebug /v2 /out:download\Twilio.Api.dll Twilio.Api.dll RestSharp.dll
+REM tools\ilmerge.exe /lib:src\Twilio.Api.Silverlight\bin\Release /internalize /ndebug /targetplatform:v4,"C:\Program Files (x86)\Microsoft Silverlight\4.1.10111.0" /out:download\Twilio.Api.Silverlight.dll RestSharp.Silverlight.dll
 
 copy src\Twilio.Api\bin\Release\*.* download
 copy src\Twilio.Api.Silverlight\bin\Release\*.* download\Silverlight\
