@@ -238,6 +238,9 @@
     <Compile Include="Model\AddressListRequest.cs" />
     <Compile Include="Model\DependentPhoneNumber.cs" />
     <Compile Include="Model\DependentPhoneNumberResult.cs" />
+    <Compile Include="Addresses.cs" />
+    <Compile Include="Model\AddressOptions.cs" />
+    <Compile Include="Addresses.Async.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
