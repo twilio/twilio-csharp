@@ -231,6 +231,9 @@
     <Compile Include="Model\AddressListRequest.cs" />
     <Compile Include="Model\DependentPhoneNumber.cs" />
     <Compile Include="Model\DependentPhoneNumberResult.cs" />
+    <Compile Include="Addresses.cs" />
+    <Compile Include="Model\AddressOptions.cs" />
+    <Compile Include="Addresses.Async.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
