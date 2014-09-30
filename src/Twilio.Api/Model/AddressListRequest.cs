@@ -18,6 +18,9 @@ namespace Twilio
 		/// Only show Addresses located in this country.
 		/// </summary>
 		public string IsoCountry { get; set; }
+
+		public int? Page { get; set; }
+		public int? PageSize { get; set; }
 	}
 }
 
