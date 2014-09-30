@@ -28,13 +28,21 @@ namespace Twilio
         /// </summary>
         public Feedback CreateFeedback(string callSid, int qualityScore)
         {
-            return CreateFeedback(callSid, qualityScore, string.Empty);
+            return CreateFeedback(callSid, qualityScore, new List<string>(0));
         }
 
         /// <summary>
         /// Creates a new feedback entry for a specific CallSid.
         /// </summary>
         public Feedback CreateFeedback(string callSid, int qualityScore, string issue)
+        {
+            return CreateFeedback(callSid, qualityScore, new List<string>() { issue });
+        }
+
+        /// <summary>
+        /// Creates a new feedback entry for a specific CallSid.
+        /// </summary>
+        public Feedback CreateFeedback(string callSid, int qualityScore, List<string> issues)
         {
             Require.Argument("CallSid", callSid);
             Require.Argument("QualityScore", qualityScore);
@@ -45,7 +53,13 @@ namespace Twilio
             request.AddUrlSegment("CallSid", callSid);
 
             request.AddParameter("QualityScore", qualityScore);
-            if (!string.IsNullOrEmpty(issue)) { request.AddParameter("Issue", issue); }
+            if (issues != null) {
+                foreach (string issue in issues) {
+                    if (!string.IsNullOrEmpty(issue)) {
+                        request.AddParameter("Issue", issue);
+                    }
+                }
+            }
 
             return Execute<Feedback>(request);
         }
@@ -55,7 +69,7 @@ namespace Twilio
         /// </summary>
         public Feedback UpdateFeedback(string callSid, int qualityScore)
         {
-            return UpdateFeedback(callSid, qualityScore, string.Empty);
+            return UpdateFeedback(callSid, qualityScore, new List<string>(0));
         }
 
         /// <summary>
@@ -63,7 +77,15 @@ namespace Twilio
         /// </summary>
         public Feedback UpdateFeedback(string callSid, int qualityScore, string issue)
         {
-            return CreateFeedback(callSid, qualityScore, issue);
+            return UpdateFeedback(callSid, qualityScore, new List<string>() { issue });
+        }
+
+        /// <summary>
+        /// Updates the current Feedback entry for a specific CallSid.
+        /// </summary>
+        public Feedback UpdateFeedback(string callSid, int qualityScore, List<string> issues)
+        {
+            return CreateFeedback(callSid, qualityScore, issues);
         }
 
         /// <summary>

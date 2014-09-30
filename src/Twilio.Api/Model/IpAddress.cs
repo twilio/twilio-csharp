@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using RestSharp.Deserializers;
 
 namespace Twilio
 {
@@ -9,7 +10,8 @@ namespace Twilio
     {
         public string Sid { get; set; }
         public string FriendlyName { get; set; }
-        //[DeserializeAs("IpAddress")]
+        
+        [DeserializeAs(Name="IpAddress")]
         public string Address { get; set; }
     }
 }
