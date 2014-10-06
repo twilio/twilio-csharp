@@ -10,8 +10,8 @@ namespace Twilio
 		/// <summary>
 		/// Retrieve the details for an address instance. Makes a GET request to an Address Instance resource.
 		/// </summary>
-		/// <param name="addressSid">The Sid of the application to retrieve</param>
-		public virtual Address GetApplication(string addressSid)
+		/// <param name="addressSid">The Sid of the address to retrieve</param>
+		public virtual Address GetAddress(string addressSid)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Addresses/{AddressSid}.json";
