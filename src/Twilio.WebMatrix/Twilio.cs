@@ -26,6 +26,7 @@ namespace Twilio.WebMatrix
 		/// <param name="body">The contents of the message, up to 160 characters</param>
 		/// <param name="statusCallbackUrl">The URL to notify of the message status</param>
 		/// <returns>An SMSMessage Instance resource</returns>
+        [Obsolete]
 		public static SMSMessage SendSms(string from, string to, string body, string statusCallbackUrl)
 		{
 			CheckForCredentials();
@@ -33,6 +34,22 @@ namespace Twilio.WebMatrix
 			var twilio = new TwilioRestClient(AccountSid, AuthToken);
 			return twilio.SendSmsMessage(from, to, body, statusCallbackUrl);	
 		}
+
+        /// <summary>
+        /// Send an message
+        /// </summary>
+        /// <param name="from">The number to send the message from</param>
+        /// <param name="to">The number to send the message to</param>
+        /// <param name="body">The contents of the message, up to 160 characters</param>
+        /// <param name="statusCallbackUrl">The URL to notify of the message status</param>
+        /// <returns>An Message Instance resource</returns>
+        public static Message SendMessage(string from, string to, string body, string statusCallbackUrl)
+        {
+            CheckForCredentials();
+
+            var twilio = new TwilioRestClient(AccountSid, AuthToken);
+            return twilio.SendMessage(from, to, body, statusCallbackUrl);
+        }
 
 		/// <summary>
 		/// Initiate a new outgoing call
