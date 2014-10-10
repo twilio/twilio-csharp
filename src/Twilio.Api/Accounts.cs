@@ -1,5 +1,6 @@
 ﻿using System;
 using RestSharp;
+using RestSharp.Extensions;
 
 namespace Twilio
 {
@@ -35,22 +36,39 @@ namespace Twilio
 		/// </summary>
         public virtual AccountResult ListSubAccounts()
 		{
-			var request = new RestRequest();
-			request.Resource = "Accounts.json";
-
-			return Execute<AccountResult>(request);
+            return ListSubAccounts(String.Empty);
 		}
+
+        /// <summary>
+        /// List all subaccounts created for the authenticated account. Makes a GET request to the Account List resource.
+        /// </summary>
+        public virtual AccountResult ListSubAccounts(string friendlyName)
+        {
+            return ListSubAccounts(friendlyName, null, null);
+        }
+
+        /// <summary>
+        /// List all subaccounts created for the authenticated account. Makes a GET request to the Account List resource.
+        /// </summary>
+        public virtual AccountResult ListSubAccounts(int? pageNumber, int? count)
+        {
+            return ListSubAccounts(String.Empty, pageNumber, count);
+        }
 
         /// <summary>
         /// List subaccounts that match the provided FriendlyName for the authenticated account. Makes a GET request to the Account List resource.
         /// </summary>
         /// <param name="friendlyName">Name associated with this account</param>
-        public virtual AccountResult ListSubAccounts(string friendlyName)
+        public virtual AccountResult ListSubAccounts(string friendlyName, int? pageNumber, int? count)
         {
             var request = new RestRequest();
             request.Resource = "Accounts.json";
 
-            request.AddParameter("FriendlyName", friendlyName);
+            if (friendlyName.HasValue()) { request.AddParameter("FriendlyName", friendlyName); }
+
+            // Paging options
+            if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
+            if (count.HasValue) request.AddParameter("PageSize", count.Value);
 
             return Execute<AccountResult>(request);
         }
