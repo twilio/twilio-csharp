@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>3.6.18</version>
+		<version>3.6.19</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -14,6 +14,7 @@
 			<dependency id="RestSharp" />
 		</dependencies>
 		<releaseNotes>
+      * 3.6.19 - Removed paging prperties from AvailablePhoneNumberResult
       * 3.6.18 - Fixed deserialization issues with Media and IPAddress models
       * 3.6.17 - Added properties to support Feedback API
       * 3.6.16 - Added properties to support Message Delivery Information
