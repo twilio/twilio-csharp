@@ -9,7 +9,7 @@ namespace Twilio.TwiML
     /// <summary>
     /// Connects the current caller to Sip call
     /// </summary>
-	public class Sip : ElementBase
+	public class Sip : ElementBase, IDialNoun
 	{
         /// <summary>
         /// Initializes a new instance of the Sip class.
