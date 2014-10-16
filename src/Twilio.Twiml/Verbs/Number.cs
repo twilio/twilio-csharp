@@ -22,6 +22,7 @@ namespace Twilio.TwiML
 		{
 			Element = new XElement("Number", number);
 			AllowedAttributes.Add("url");
+            AllowedAttributes.Add("method");
 			AllowedAttributes.Add("sendDigits");
 		}
 
