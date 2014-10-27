@@ -226,6 +226,32 @@
     <Compile Include="Model\TwilioListBase.cs" />
     <Compile Include="Model\ValidationRequest.cs" />
     <Compile Include="Sip.cs" />
+    <Compile Include="Model\Wds\Activity.cs" />
+    <Compile Include="Model\Wds\Task.cs" />
+    <Compile Include="Model\Wds\Reservation.cs" />
+    <Compile Include="Model\Wds\Worker.cs" />
+    <Compile Include="Model\Wds\Workflow.cs" />
+    <Compile Include="Model\Wds\Workspace.cs" />
+    <Compile Include="Wds\Activities.cs" />
+    <Compile Include="Model\Wds\ActivityResult.cs" />
+    <Compile Include="Wds\Reservations.cs" />
+    <Compile Include="Model\Wds\ReservationResult.cs" />
+    <Compile Include="Wds\Tasks.cs" />
+    <Compile Include="Model\Wds\TaskResult.cs" />
+    <Compile Include="Model\Wds\TaskListRequest.cs" />
+    <Compile Include="Wds\Workers.cs" />
+    <Compile Include="Model\Wds\WorkerListRequest.cs" />
+    <Compile Include="Model\Wds\WorkerResult.cs" />
+    <Compile Include="Wds\Workflows.cs" />
+    <Compile Include="Model\Wds\WorkflowResult.cs" />
+    <Compile Include="Wds\Workspaces.cs" />
+    <Compile Include="Model\Wds\WorkspaceResult.cs" />
+    <Compile Include="Wds\Activities.Async.cs" />
+    <Compile Include="Wds\Reservations.Async.cs" />
+    <Compile Include="Wds\Tasks.Async.cs" />
+    <Compile Include="Wds\Workers.Async.cs" />
+    <Compile Include="Wds\Workflows.Async.cs" />
+    <Compile Include="Wds\Workspaces.Async.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
