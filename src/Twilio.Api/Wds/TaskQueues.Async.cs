@@ -98,7 +98,7 @@ namespace Twilio.Wds
             Require.Argument("WorkspaceSid", workspaceSid);
 
             var request = new RestRequest();
-            request.Resource = "Accounts/{AccountSid}/Workspaces/{WorkspaceSid}/Tasks.json";
+            request.Resource = "Accounts/{AccountSid}/Workspaces/{WorkspaceSid}/TaskQueues.json";
 
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
 
