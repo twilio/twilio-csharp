@@ -156,7 +156,7 @@ namespace Twilio
 
             if (statusCallback.HasValue()) request.AddParameter("StatusCallback", statusCallback);
             if (applicationSid.HasValue()) request.AddParameter("ApplicationSid", applicationSid);
-            if (mmsOnly.HasValue()) request.AddParameter("MmsOnly", mmsOnly);
+            if (mmsOnly.HasValue) request.AddParameter("MmsOnly", mmsOnly.Value);
 
             return Execute<Message>(request);
         }
