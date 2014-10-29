@@ -260,6 +260,10 @@
     <Compile Include="Model\Wds\TaskQueueStatisticsResult.cs" />
     <Compile Include="Wds\TaskQueuesStatistics.cs" />
     <Compile Include="Wds\TaskQueuesStatistics.Async.cs" />
+    <Compile Include="Model\Wds\WorkerStatistics.cs" />
+    <Compile Include="Model\Wds\WorkersStatistics.cs" />
+    <Compile Include="Model\Wds\WorkflowStatistics.cs" />
+    <Compile Include="Model\Wds\WorkspaceStatistics.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
