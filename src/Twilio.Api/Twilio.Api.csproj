@@ -264,6 +264,12 @@
     <Compile Include="Model\Wds\WorkersStatistics.cs" />
     <Compile Include="Model\Wds\WorkflowStatistics.cs" />
     <Compile Include="Model\Wds\WorkspaceStatistics.cs" />
+    <Compile Include="Wds\WorkersStatistics.cs" />
+    <Compile Include="Wds\WorkflowsStatistics.cs" />
+    <Compile Include="Wds\WorkersStatistics.Async.cs" />
+    <Compile Include="Wds\WorkflowsStatistics.Async.cs" />
+    <Compile Include="Wds\WorkspacesStatistics.cs" />
+    <Compile Include="Wds\WorkspacesStatistics.Async.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

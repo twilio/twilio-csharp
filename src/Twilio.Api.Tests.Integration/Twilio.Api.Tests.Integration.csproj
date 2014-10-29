@@ -72,6 +72,13 @@
     <Compile Include="Utilities.cs" />
     <Compile Include="FeedbackTests.cs" />
     <Compile Include="Wds\TaskQueueStatisticsTests.cs" />
+    <Compile Include="Wds\WorkflowStatisticsTests.cs" />
+    <Compile Include="Wds\WorkerStatisticsTests.cs" />
+    <Compile Include="Wds\WorkspaceStatisticsTests.cs" />
+    <Compile Include="Model\Wds\WorkerStatisticsTests.cs" />
+    <Compile Include="Model\Wds\TaskQueueStatisticsTests.cs" />
+    <Compile Include="Model\Wds\WorkspaceStatisticsTests.cs" />
+    <Compile Include="Model\Wds\WorkflowStatisticsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Twilio.Api\Twilio.Api.csproj">
@@ -93,5 +100,29 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Wds\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Wds\" />
+    <Folder Include="Model\" />
+    <Folder Include="Model\Wds\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Wds\workspace_statistics.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Wds\workflow_statistics.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Wds\worker_statistics.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Wds\workers_statistics.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Wds\task_queue_statistics.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Wds\task_queues_statistics.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Twilio.Wds
 {
+    /// <summary>
+    /// Workers statistics.
+    /// </summary>
     public class WorkersStatistics : TwilioBase
     {
         /// <summary>
