@@ -126,12 +126,13 @@ namespace Twilio.Wds
         /// </summary>
         /// <param name="workspaceSid">Workspace sid.</param>
         /// <param name="workflowSid">Workflow sid.</param>
+        /// <param name="friendlyName">Optional firendly name.</param>
         /// <param name="assignmentCallbackUrl">Optional assignment callback URL.</param>
         /// <param name="fallbackAssignmentCallbackUrl">Optional fallback assignment callback URL.</param>
         /// <param name="configuration">Optional configuration.</param>
         /// <param name="taskReservationTimeout">Optional task reservation timeout.</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void UpdateWorkflow(string workspaceSid, string workflowSid, string assignmentCallbackUrl, string fallbackAssignmentCallbackUrl, string configuration, int? taskReservationTimeout, Action<Workflow> callback)
+        public virtual void UpdateWorkflow(string workspaceSid, string workflowSid, string friendlyName, string assignmentCallbackUrl, string fallbackAssignmentCallbackUrl, string configuration, int? taskReservationTimeout, Action<Workflow> callback)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("WorkflowSid", workflowSid);
@@ -141,6 +142,8 @@ namespace Twilio.Wds
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
             request.AddUrlSegment("WorkflowSid", workflowSid);
 
+            if (friendlyName.HasValue())
+                request.AddParameter("FriendlyName", friendlyName);
             if (assignmentCallbackUrl.HasValue())
                 request.AddParameter("AssignmentCallbackUrl", assignmentCallbackUrl);
             if (fallbackAssignmentCallbackUrl.HasValue())

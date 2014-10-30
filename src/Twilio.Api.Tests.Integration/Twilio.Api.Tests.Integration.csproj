@@ -80,6 +80,9 @@
     <Compile Include="Model\Wds\WorkspaceStatisticsTests.cs" />
     <Compile Include="Model\Wds\WorkflowStatisticsTests.cs" />
     <Compile Include="Wds\WorkspaceTests.cs" />
+    <Compile Include="Wds\WorkflowTests.cs" />
+    <Compile Include="Wds\WorkerTests.cs" />
+    <Compile Include="Wds\TaskTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Twilio.Api\Twilio.Api.csproj">

@@ -113,7 +113,7 @@ namespace Twilio.Api.Tests.Integration
             var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            client.DeleteWorkspace(WORKSPACE_SID, app => {
+            client.DeleteWorkspace(WORKSPACE_SID, status => {
                 manualResetEvent.Set();
             });
             manualResetEvent.WaitOne(1);
@@ -158,7 +158,7 @@ namespace Twilio.Api.Tests.Integration
             var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            client.GetWorkspace(WORKSPACE_SID, app => {
+            client.GetWorkspace(WORKSPACE_SID, workspace => {
                 manualResetEvent.Set();
             });
             manualResetEvent.WaitOne(1);
