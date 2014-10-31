@@ -4,9 +4,9 @@ using System.Collections.Generic;
 namespace Twilio
 {
 	/// <summary>
-	/// Twilio API call result with paging information
+	/// Twilio API call result
 	/// </summary>
-	public class AvailablePhoneNumberResult : TwilioListBase
+	public class AvailablePhoneNumberResult : TwilioBase
 	{
 		/// <summary>
 		/// List of AvailablePhoneNumbers search results

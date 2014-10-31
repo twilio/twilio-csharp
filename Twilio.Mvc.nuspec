@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio.Mvc</id>
-		<version>3.1.12</version>
+		<version>3.1.13</version>
 		<authors>Twilio</authors>
 		<description>Twilio helpers for ASP.NET MVC</description>
 		<language>en-US</language>
@@ -15,6 +15,7 @@
 			<dependency id="Twilio.TwiML" />
 		</dependencies>
     <releaseNotes>
+      * 3.1.13 - Changed Specific Version flag on System.Web.Mvc dependency
       * 3.1.12 - Null reference fix
       * 3.1.11 - Added Leave verb
       * 3.1.10 - Fixed bug in ValidationRequestAttribute to stop execution of request

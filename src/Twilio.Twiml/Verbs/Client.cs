@@ -26,6 +26,18 @@ namespace Twilio.TwiML
 		public Client(string clientName)
 		{
 			Element = new XElement("Client", clientName);
+            AllowedAttributes.Add("url");
+            AllowedAttributes.Add("method");
+		}
+
+        /// <summary>
+        /// Initializes a new instance of the Client class using the specified client name and attributes
+		/// </summary>
+		/// <param name="number"></param>
+		/// <param name="attributes"></param>
+        public Client(string clientName, object attributes) : this(clientName)
+		{
+			AddAttributesFromObject(attributes);
 		}
 	}
 }

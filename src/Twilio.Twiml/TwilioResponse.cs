@@ -366,6 +366,18 @@ namespace Twilio.TwiML
 			return this;
 		}
 
+        public TwilioResponse BeginMessage(object attributes)
+        {
+            Current.Push(new Message(attributes));
+            return this;
+        }
+
+        public TwilioResponse EndMessage()
+        {
+            Add(Current.Pop());
+            return this;
+        }
+
         /// <summary>
         /// Add a Call to a Queue
         /// </summary>
@@ -476,6 +488,19 @@ namespace Twilio.TwiML
 
             Add(Current.Pop());
 
+            return this;
+        }
+
+        public TwilioResponse Body(string text)
+        {
+            Add(new Body(text));
+            return this;
+
+        }
+
+        public TwilioResponse Media(string url)
+        {
+            Add(new Media(url));
             return this;
         }
 

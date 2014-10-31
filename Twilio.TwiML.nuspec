@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio.TwiML</id>
-		<version>3.3.3</version>
+		<version>3.3.5</version>
 		<authors>Twilio</authors>
 		<description>Twilio TwiML generator. If using ASP.NET MVC, install Twilio.Mvc instead.</description>
 		<language>en-US</language>
@@ -11,11 +11,13 @@
 		<licenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.txt</licenseUrl>
 		<tags>REST SMS voice telephony phone twilio twiml</tags>
     <releaseNotes>
+      * 3.3.5 - Implement IDialNoun on Sip.  Adds constructor overload for Client.  Allows method attribute on number
+      * 3.3.4 - Added fluent interface for messages so you can control the order of Media/Body nouns
       * 3.3.3 - Add Leave as allowed child of Response
       * 3.3.2 - Fixed issue where Leave verb was not assessible
-              - Fixed REquestValidation encoding issue
+      - Fixed REquestValidation encoding issue
       * 3.3.1 - Added Dial overload to allow you to set Dial attributes when dialing multiple targets
-              - Removed unsupported Dial Sip overloads
+      - Removed unsupported Dial Sip overloads
       * 3.3.0 - Adding Sip
       * 3.2.0 - Adding Queue Verb
       Adding document comments
