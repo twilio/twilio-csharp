@@ -5,6 +5,11 @@ Twilio provides a simple HTTP-based API for sending and receiving phone calls an
 ## [.NET Helper Library Documentation][3]
 #### [Twilio REST API Documentation][1] - [Twilio TwiML Documentation][2]
 
+## Alpha Version
+A new alpha version (v3.7.55) of the Twilio .NET library is available on nuget.  This version removes the RestSharp dependency and includes a new Portable Class Library version which can be used by .NET 4.0 and newer. To install the alpha version from the NuGet Package manager console, add the *-prerelease* flag to the *Install-Package* command:
+
+    Install-Package Twilio -prerelease
+
 ### Adding Twilio libraries to your .NET project
 
 The best and easiest way to add the Twilio libraries to your .NET project is to use the NuGet package manager.  NuGet is a Visual Studio extension that makes it easy to install and update third-party libraries and tools in Visual Studio.  
