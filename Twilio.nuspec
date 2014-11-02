@@ -11,7 +11,7 @@
 		<licenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.txt</licenseUrl>
 		<tags>REST SMS voice telephony phone twilio twiml ASPNETWEBPAGES</tags>
 		<dependencies>
-			<dependency id="RestSharp" />
+			<dependency id="RestSharp" version="105.0.0" />
 		</dependencies>
 		<releaseNotes>
       * 3.6.21 - Updated RestSharp reference to 104.5.0

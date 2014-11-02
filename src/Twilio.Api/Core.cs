@@ -72,7 +72,7 @@ namespace Twilio
             _client.AddDefaultHeader("Accept-charset", "utf-8");
 #endif
 
-            _client.BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion);
+            _client.BaseUrl = new Uri(string.Format("{0}{1}", BaseUrl, ApiVersion));
             _client.Timeout = 30500;
 
             // if acting on a subaccount, use request.AddUrlSegment("AccountSid", "value")
