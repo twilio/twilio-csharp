@@ -1,282 +1,419 @@
 ﻿using System;
 using NUnit.Framework;
 using System.Threading;
+using Moq;
+using RestSharp;
 using System.Linq;
-using Twilio;
 
 namespace Twilio.Api.Tests.Integration
 {
     [TestFixture]
     public class AddressTests
     {
+        private const string ADDRESS_SID = "AD123";
+
         ManualResetEvent manualResetEvent = null;
+
+        private Mock<TwilioRestClient> mockClient;
+
+        [SetUp]
+        public void Setup()
+        {
+            mockClient = new Mock<TwilioRestClient>(Credentials.AccountSid, Credentials.AuthToken);
+            mockClient.CallBase = true;
+        }
 
         [Test]
         public void ShouldAddNewAddress()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Address>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Address());
+            var client = mockClient.Object;
+            var friendlyName = Utilities.MakeRandomFriendlyName();
 
-			var result = client.AddAddress(Utilities.MakeRandomFriendlyName(), "Homer Simpson", "742 Evergreen Terrace", "Springfield", "MO", "65801", "US");
+            client.AddAddress(friendlyName, "Homer Simpson", "742 Evergreen Terrace", "Springfield", "MO", "65801", "US");
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Sid);
+            mockClient.Verify(trc => trc.Execute<Address>(It.IsAny<IRestRequest>()), Times.Once);
 
-            client.DeleteAddress(result.Sid); //cleanup
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Addresses.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(7, savedRequest.Parameters.Count);
+            var friendlyNameParam = savedRequest.Parameters.Find(x => x.Name == "FriendlyName");
+            Assert.IsNotNull(friendlyNameParam);
+            Assert.AreEqual(friendlyName, friendlyNameParam.Value);
+            var customerNameParam = savedRequest.Parameters.Find(x => x.Name == "CustomerName");
+            Assert.IsNotNull(customerNameParam);
+            Assert.AreEqual("Homer Simpson", customerNameParam.Value);
+            var streetParam = savedRequest.Parameters.Find(x => x.Name == "Street");
+            Assert.IsNotNull(streetParam);
+            Assert.AreEqual("742 Evergreen Terrace", streetParam.Value);
+            var cityParam = savedRequest.Parameters.Find(x => x.Name == "City");
+            Assert.IsNotNull(cityParam);
+            Assert.AreEqual("Springfield", cityParam.Value);
+            var regionParam = savedRequest.Parameters.Find(x => x.Name == "Region");
+            Assert.IsNotNull(regionParam);
+            Assert.AreEqual("MO", regionParam.Value);
+            var postalCodeParam = savedRequest.Parameters.Find(x => x.Name == "PostalCode");
+            Assert.IsNotNull(postalCodeParam);
+            Assert.AreEqual("65801", postalCodeParam.Value);
+            var isoCountryParam = savedRequest.Parameters.Find(x => x.Name == "IsoCountry");
+            Assert.IsNotNull(isoCountryParam);
+            Assert.AreEqual("US", isoCountryParam.Value);
         }
 
         [Test]
         public void ShouldAddNewAddressAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<Address>(It.IsAny<IRestRequest>(), It.IsAny<Action<Address>>()))
+                .Callback<IRestRequest, Action<Address>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
+            var friendlyName = Utilities.MakeRandomFriendlyName();
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            client.AddAddress(friendlyName, "Homer Simpson", "742 Evergreen Terrace", "Springfield", "MO", "65801", "US", address =>
+                {
+                    manualResetEvent.Set();
+                });
+            manualResetEvent.WaitOne(1);
 
-            Address result = null;
-            client.AddAddress(Utilities.MakeRandomFriendlyName(), "Homer Simpson", "742 Evergreen Terrace", "Springfield", "MO", "65801", "US", app =>
-            {
-                result = app;
-                manualResetEvent.Set();
-            });
-
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Sid);
-
-            client.DeleteAddress(result.Sid); //cleanup
+            mockClient.Verify(trc => trc.ExecuteAsync<Address>(It.IsAny<IRestRequest>(), It.IsAny<Action<Address>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Addresses.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(7, savedRequest.Parameters.Count);
+            var friendlyNameParam = savedRequest.Parameters.Find(x => x.Name == "FriendlyName");
+            Assert.IsNotNull(friendlyNameParam);
+            Assert.AreEqual(friendlyName, friendlyNameParam.Value);
+            var customerNameParam = savedRequest.Parameters.Find(x => x.Name == "CustomerName");
+            Assert.IsNotNull(customerNameParam);
+            Assert.AreEqual("Homer Simpson", customerNameParam.Value);
+            var streetParam = savedRequest.Parameters.Find(x => x.Name == "Street");
+            Assert.IsNotNull(streetParam);
+            Assert.AreEqual("742 Evergreen Terrace", streetParam.Value);
+            var cityParam = savedRequest.Parameters.Find(x => x.Name == "City");
+            Assert.IsNotNull(cityParam);
+            Assert.AreEqual("Springfield", cityParam.Value);
+            var regionParam = savedRequest.Parameters.Find(x => x.Name == "Region");
+            Assert.IsNotNull(regionParam);
+            Assert.AreEqual("MO", regionParam.Value);
+            var postalCodeParam = savedRequest.Parameters.Find(x => x.Name == "PostalCode");
+            Assert.IsNotNull(postalCodeParam);
+            Assert.AreEqual("65801", postalCodeParam.Value);
+            var isoCountryParam = savedRequest.Parameters.Find(x => x.Name == "IsoCountry");
+            Assert.IsNotNull(isoCountryParam);
+            Assert.AreEqual("US", isoCountryParam.Value);
         }
 
         [Test]
         public void ShouldGetAddress()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Address>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Address());
+            var client = mockClient.Object;
 
+            client.GetAddress(ADDRESS_SID);
 
-            var originalAddress = client.AddAddress(Utilities.MakeRandomFriendlyName(), "Homer Simpson", "742 Evergreen Terrace", "Springfield", "MO", "65801", "US");
-
-            Assert.IsNotNull(originalAddress.Sid);
-
-            var result = client.GetAddress(originalAddress.Sid);
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.AreEqual(originalAddress.Sid, result.Sid);
-
-            client.DeleteAddress(result.Sid); //cleanup
+            mockClient.Verify(trc => trc.Execute<Address>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Addresses/{AddressSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var addressSidParam = savedRequest.Parameters.Find(x => x.Name == "AddressSid");
+            Assert.IsNotNull(addressSidParam);
+            Assert.AreEqual(ADDRESS_SID, addressSidParam.Value);
         }
 
         [Test]
         public void ShouldGetAddressAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<Address>(It.IsAny<IRestRequest>(), It.IsAny<Action<Address>>()))
+                .Callback<IRestRequest, Action<Address>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-			var originalAddress = client.AddAddress(Utilities.MakeRandomFriendlyName(), "Homer Simpson", "742 Evergreen Terrace", "Springfield", "MO", "65801", "US");
-            
-            Assert.IsNotNull(originalAddress.Sid);
-
-            Address result = null;
-
-            client.GetAddress(originalAddress.Sid, app => {
-                result = app;
+            client.GetAddress(ADDRESS_SID, app => {
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.AreEqual(originalAddress.Sid, result.Sid);
-
-            client.DeleteAddress(result.Sid); //cleanup
+            mockClient.Verify(trc => trc.ExecuteAsync<Address>(It.IsAny<IRestRequest>(), It.IsAny<Action<Address>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Addresses/{AddressSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var addressSidParam = savedRequest.Parameters.Find(x => x.Name == "AddressSid");
+            Assert.IsNotNull(addressSidParam);
+            Assert.AreEqual(ADDRESS_SID, addressSidParam.Value);
         }
 
         [Test]
         public void ShouldListAddresses()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<AddressResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new AddressResult());
+            var client = mockClient.Object;
 
-            var result = client.ListAddresses();
+            client.ListAddresses();
 
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Addresses);
+            mockClient.Verify(trc => trc.Execute<AddressResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Addresses.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
 
         [Test]
         public void ShouldListAddressesAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<AddressResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<AddressResult>>()))
+                .Callback<IRestRequest, Action<AddressResult>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-            AddressResult result = null;
             client.ListAddresses(addresses => {
-                result = addresses;
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Addresses);
+            mockClient.Verify(trc => trc.ExecuteAsync<AddressResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<AddressResult>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Addresses.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(0, savedRequest.Parameters.Count);
         }
         
         [Test]
         public void ShouldListAddressesUsingFilters()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<AddressResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new AddressResult());
+            var client = mockClient.Object;
+            var options = new AddressListRequest ();
+            options.CustomerName = "Homer Simpson";
+            options.FriendlyName = Utilities.MakeRandomFriendlyName();
+            options.IsoCountry = "US";
+            options.Page = 1;
+            options.PageSize = 10;
 
-			var originalAddressOne = client.AddAddress(Utilities.MakeRandomFriendlyName(), "Homer Simpson", "742 Evergreen Terrace", "Springfield", "MO", "65801", "US");
-			var originalAddressTwo = client.AddAddress(Utilities.MakeRandomFriendlyName(), "Homer Simpson", "742 Evergreen Terrace", "Springfield", "MO", "65801", "US");
-			var originalAddressThree = client.AddAddress(Utilities.MakeRandomFriendlyName(), "Homer Simpson", "742 Evergreen Terrace", "Springfield", "MO", "65801", "US");
+            client.ListAddresses(options);
 
-            Assert.IsNotNull(originalAddressOne.Sid);
-            Assert.IsNotNull(originalAddressTwo.Sid);
-            Assert.IsNotNull(originalAddressThree.Sid);
-
-			var listRequest = new AddressListRequest();
-			listRequest.FriendlyName = originalAddressTwo.FriendlyName;
-            var result = client.ListAddresses(listRequest);
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.IsNotNull(result.Addresses);
-            Assert.IsNotNull(result.Addresses.FirstOrDefault(a=>a.FriendlyName==originalAddressTwo.FriendlyName));
-
-            client.DeleteAddress(originalAddressOne.Sid); //cleanup
-            client.DeleteAddress(originalAddressTwo.Sid); //cleanup
-            client.DeleteAddress(originalAddressThree.Sid); //cleanup
+            mockClient.Verify(trc => trc.Execute<AddressResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Addresses.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(5, savedRequest.Parameters.Count);
+            var customerNameParam = savedRequest.Parameters.Find(x => x.Name == "CustomerName");
+            Assert.IsNotNull(customerNameParam);
+            Assert.AreEqual(options.CustomerName, customerNameParam.Value);
+            var friendlyNameParam = savedRequest.Parameters.Find(x => x.Name == "FriendlyName");
+            Assert.IsNotNull(friendlyNameParam);
+            Assert.AreEqual(options.FriendlyName, friendlyNameParam.Value);
+            var isoCountryParam = savedRequest.Parameters.Find(x => x.Name == "IsoCountry");
+            Assert.IsNotNull(isoCountryParam);
+            Assert.AreEqual(options.IsoCountry, isoCountryParam.Value);
+            var pageParam = savedRequest.Parameters.Find(x => x.Name == "Page");
+            Assert.IsNotNull(pageParam);
+            Assert.AreEqual(options.Page, pageParam.Value);
+            var pageSizeParam = savedRequest.Parameters.Find(x => x.Name == "PageSize");
+            Assert.IsNotNull(pageSizeParam);
+            Assert.AreEqual(options.PageSize, pageSizeParam.Value);
         }
 
         [Test]
         public void ShouldUpdateAddress()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Address>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Address());
+            var client = mockClient.Object;
+            var options = new AddressOptions();
+            options.City = "Springfield";
+            options.CustomerName = "Homer Simpson";
+            options.FriendlyName = Utilities.MakeRandomFriendlyName ();
+            options.PostalCode = "65801";
+            options.Region = "MO";
+            options.Street = "742 Evergreen Terrace";
 
-			var originalAddress = client.AddAddress(Utilities.MakeRandomFriendlyName(), "Homer Simpson", "742 Evergreen Terrace", "Springfield", "MO", "65801", "US");
+            client.UpdateAddress(ADDRESS_SID, options);
 
-            Assert.IsNotNull(originalAddress.Sid);
-
-            AddressOptions options = new AddressOptions();
-			options.CustomerName = "Marge Simpson";
-            var result = client.UpdateAddress(originalAddress.Sid, options);
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.AreEqual(originalAddress.Sid, result.Sid);
-			Assert.AreEqual(result.CustomerName, "Marge Simpson");
-
-            client.DeleteAddress(result.Sid); //cleanup
+            mockClient.Verify(trc => trc.Execute<Address>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Addresses/{AddressSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(7, savedRequest.Parameters.Count);
+            var addressSidParam = savedRequest.Parameters.Find(x => x.Name == "AddressSid");
+            Assert.IsNotNull(addressSidParam);
+            Assert.AreEqual(ADDRESS_SID, addressSidParam.Value);
+            var cityParam = savedRequest.Parameters.Find(x => x.Name == "City");
+            Assert.IsNotNull(cityParam);
+            Assert.AreEqual(options.City, cityParam.Value);
+            var customerNameParam = savedRequest.Parameters.Find(x => x.Name == "CustomerName");
+            Assert.IsNotNull(customerNameParam);
+            Assert.AreEqual(options.CustomerName, customerNameParam.Value);
+            var friendlyNameParam = savedRequest.Parameters.Find(x => x.Name == "FriendlyName");
+            Assert.IsNotNull(friendlyNameParam);
+            Assert.AreEqual(options.FriendlyName, friendlyNameParam.Value);
+            var postalCodeParam = savedRequest.Parameters.Find(x => x.Name == "PostalCode");
+            Assert.IsNotNull(postalCodeParam);
+            Assert.AreEqual(options.PostalCode, postalCodeParam.Value);
+            var regionParam = savedRequest.Parameters.Find(x => x.Name == "Region");
+            Assert.IsNotNull(regionParam);
+            Assert.AreEqual(options.Region, regionParam.Value);
+            var streetParam = savedRequest.Parameters.Find(x => x.Name == "Street");
+            Assert.IsNotNull(streetParam);
+            Assert.AreEqual(options.Street, streetParam.Value);
         }
 
         [Test]
         public void ShouldUpdateAddressAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<Address>(It.IsAny<IRestRequest>(), It.IsAny<Action<Address>>()))
+                .Callback<IRestRequest, Action<Address>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
+            var options = new AddressOptions();
+            options.City = "Springfield";
+            options.CustomerName = "Homer Simpson";
+            options.FriendlyName = Utilities.MakeRandomFriendlyName ();
+            options.PostalCode = "65801";
+            options.Region = "MO";
+            options.Street = "742 Evergreen Terrace";
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-			var originalAddress = client.AddAddress(Utilities.MakeRandomFriendlyName(), "Homer Simpson", "742 Evergreen Terrace", "Springfield", "MO", "65801", "US");
-
-            Assert.IsNotNull(originalAddress.Sid);
-
-            AddressOptions options = new AddressOptions();
-            Address result = null;
-            client.UpdateAddress(originalAddress.Sid, options, app => {
-                result = app;
+            client.UpdateAddress(ADDRESS_SID, options, address => {
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.IsNotNull(result);
-            Assert.IsNull(result.RestException);
-            Assert.AreEqual(originalAddress.Sid, result.Sid);
-
-            client.DeleteAddress(result.Sid); //cleanup
+            mockClient.Verify(trc => trc.ExecuteAsync<Address>(It.IsAny<IRestRequest>(), It.IsAny<Action<Address>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Addresses/{AddressSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(7, savedRequest.Parameters.Count);
+            var addressSidParam = savedRequest.Parameters.Find(x => x.Name == "AddressSid");
+            Assert.IsNotNull(addressSidParam);
+            Assert.AreEqual(ADDRESS_SID, addressSidParam.Value);
+            var cityParam = savedRequest.Parameters.Find(x => x.Name == "City");
+            Assert.IsNotNull(cityParam);
+            Assert.AreEqual(options.City, cityParam.Value);
+            var customerNameParam = savedRequest.Parameters.Find(x => x.Name == "CustomerName");
+            Assert.IsNotNull(customerNameParam);
+            Assert.AreEqual(options.CustomerName, customerNameParam.Value);
+            var friendlyNameParam = savedRequest.Parameters.Find(x => x.Name == "FriendlyName");
+            Assert.IsNotNull(friendlyNameParam);
+            Assert.AreEqual(options.FriendlyName, friendlyNameParam.Value);
+            var postalCodeParam = savedRequest.Parameters.Find(x => x.Name == "PostalCode");
+            Assert.IsNotNull(postalCodeParam);
+            Assert.AreEqual(options.PostalCode, postalCodeParam.Value);
+            var regionParam = savedRequest.Parameters.Find(x => x.Name == "Region");
+            Assert.IsNotNull(regionParam);
+            Assert.AreEqual(options.Region, regionParam.Value);
+            var streetParam = savedRequest.Parameters.Find(x => x.Name == "Street");
+            Assert.IsNotNull(streetParam);
+            Assert.AreEqual(options.Street, streetParam.Value);
         }
 
         [Test]
         public void ShouldDeleteAddress()
         {
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new RestResponse());
+            var client = mockClient.Object;
 
-			var originalAddress = client.AddAddress(Utilities.MakeRandomFriendlyName(), "Homer Simpson", "742 Evergreen Terrace", "Springfield", "MO", "65801", "US");
+            client.DeleteAddress(ADDRESS_SID);
 
-            Assert.IsNotNull(originalAddress.Sid);
-
-            var status = client.DeleteAddress(originalAddress.Sid);
-            Assert.AreEqual(DeleteStatus.Success, status);
+            mockClient.Verify(trc => trc.Execute(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Addresses/{AddressSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.DELETE, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var addressSidParam = savedRequest.Parameters.Find(x => x.Name == "AddressSid");
+            Assert.IsNotNull (addressSidParam);
+            Assert.AreEqual (ADDRESS_SID, addressSidParam.Value);
         }
 
         [Test]
         public void ShouldDeleteAddressAsynchronously()
         {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync(It.IsAny<IRestRequest>(), It.IsAny<Action<IRestResponse>>()))
+                .Callback<IRestRequest, Action<IRestResponse>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
-
-			var originalAddress = client.AddAddress(Utilities.MakeRandomFriendlyName(), "Homer Simpson", "742 Evergreen Terrace", "Springfield", "MO", "65801", "US");
-
-            Assert.IsNotNull(originalAddress.Sid);
-
-            DeleteStatus status = DeleteStatus.Failed;
-            client.DeleteAddress(originalAddress.Sid, app => {
-                status = app;
+            client.DeleteAddress(ADDRESS_SID, address => {
                 manualResetEvent.Set();
             });
+            manualResetEvent.WaitOne(1);
 
-            manualResetEvent.WaitOne();
-
-            Assert.AreEqual(DeleteStatus.Success, status);
+            mockClient.Verify(trc => trc.ExecuteAsync(It.IsAny<IRestRequest>(), It.IsAny<Action<IRestResponse>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Addresses/{AddressSid}.json", savedRequest.Resource);
+            Assert.AreEqual(Method.DELETE, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var addressSidParam = savedRequest.Parameters.Find(x => x.Name == "AddressSid");
+            Assert.IsNotNull (addressSidParam);
+            Assert.AreEqual (ADDRESS_SID, addressSidParam.Value);
         }
 
 		[Test]
 		public void ShouldListDependentPhoneNumbers()
 		{
-			var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+			IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<DependentPhoneNumberResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new DependentPhoneNumberResult());
+            var client = mockClient.Object;
 
-			var originalAddress = client.AddAddress(Utilities.MakeRandomFriendlyName(), "Homer Simpson", "742 Evergreen Terrace", "Springfield", "MO", "65801", "US");
+            client.ListDependentPhoneNumbers(ADDRESS_SID);
 
-			Assert.IsNotNull(originalAddress.Sid);
-
-			var result = client.ListDependentPhoneNumbers(originalAddress.Sid);
-
-			Assert.IsNotNull(result);
-			Assert.IsNull(result.RestException);
-			Assert.IsNotNull(result.DependentPhoneNumbers);
-
-			client.DeleteAddress(originalAddress.Sid); // cleanup
+            mockClient.Verify(trc => trc.Execute<DependentPhoneNumberResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Addresses/{AddressSid}/DependentPhoneNumbers.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var addressSidParam = savedRequest.Parameters.Find(x => x.Name == "AddressSid");
+            Assert.IsNotNull(addressSidParam);
+            Assert.AreEqual(ADDRESS_SID, addressSidParam.Value);
 		}
 
 		[Test]
 		public void ShouldListDependentPhoneNumbersAsynchronously()
 		{
-			manualResetEvent = new ManualResetEvent(false);
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<DependentPhoneNumberResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<DependentPhoneNumberResult>>()))
+                .Callback<IRestRequest, Action<DependentPhoneNumberResult>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
+            manualResetEvent = new ManualResetEvent(false);
 
-			var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            client.ListDependentPhoneNumbers(ADDRESS_SID, address => {
+                manualResetEvent.Set();
+            });
+            manualResetEvent.WaitOne(1);
 
-			var originalAddress = client.AddAddress(Utilities.MakeRandomFriendlyName(), "Homer Simpson", "742 Evergreen Terrace", "Springfield", "MO", "65801", "US");
-
-			Assert.IsNotNull(originalAddress.Sid);
-
-			DependentPhoneNumberResult result = null;
-			client.ListDependentPhoneNumbers(originalAddress.Sid, phoneNumbers => {
-				result = phoneNumbers;
-				manualResetEvent.Set();
-			});
-
-			manualResetEvent.WaitOne();
-
-			Assert.IsNotNull(result);
-			Assert.IsNull(result.RestException);
-			Assert.IsNotNull(result.DependentPhoneNumbers);
-
-			client.DeleteAddress(originalAddress.Sid); // cleanup
+            mockClient.Verify(trc => trc.ExecuteAsync<DependentPhoneNumberResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<DependentPhoneNumberResult>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Addresses/{AddressSid}/DependentPhoneNumbers.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+            var addressSidParam = savedRequest.Parameters.Find(x => x.Name == "AddressSid");
+            Assert.IsNotNull(addressSidParam);
+            Assert.AreEqual(ADDRESS_SID, addressSidParam.Value);
 		}
 
     }

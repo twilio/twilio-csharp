@@ -137,7 +137,7 @@ namespace Twilio
 		/// <param name="callback">Method to call upon completion; should accept a DeleteStatus object indicating whether the request succeeded.</param>
 		public virtual void DeleteAddress(string addressSid, Action<DeleteStatus> callback)
 		{
-			var request = new RestRequest();
+            var request = new RestRequest(Method.DELETE);
 			request.Resource = "Accounts/{AccountSid}/Addresses/{AddressSid}.json";
 			request.AddUrlSegment("AddressSid", addressSid);
 
