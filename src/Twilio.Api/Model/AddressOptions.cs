@@ -31,5 +31,5 @@ namespace Twilio
 		/// </summary>
 		/// <value>The postal code.</value>
 		public string PostalCode { get; set; }
+    }
 }
-
