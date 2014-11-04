@@ -1,17 +1,17 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System.Threading;
 using System.Linq;
 using Twilio;
 
 namespace Twilio.Api.Tests.Integration
 {
-    [TestClass]
+    [TestFixture]
     public class AddressTests
     {
         ManualResetEvent manualResetEvent = null;
 
-        [TestMethod]
+        [Test]
         public void ShouldAddNewAddress()
         {
             var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
@@ -25,7 +25,7 @@ namespace Twilio.Api.Tests.Integration
             client.DeleteAddress(result.Sid); //cleanup
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldAddNewAddressAsynchronously()
         {
             manualResetEvent = new ManualResetEvent(false);
@@ -48,7 +48,7 @@ namespace Twilio.Api.Tests.Integration
             client.DeleteAddress(result.Sid); //cleanup
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldGetAddress()
         {
             var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
@@ -66,7 +66,7 @@ namespace Twilio.Api.Tests.Integration
             client.DeleteAddress(result.Sid); //cleanup
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldGetAddressAsynchronously()
         {
             manualResetEvent = new ManualResetEvent(false);
@@ -93,7 +93,7 @@ namespace Twilio.Api.Tests.Integration
             client.DeleteAddress(result.Sid); //cleanup
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListAddresses()
         {
             var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
@@ -105,7 +105,7 @@ namespace Twilio.Api.Tests.Integration
             Assert.IsNotNull(result.Addresses);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListAddressesAsynchronously()
         {
             manualResetEvent = new ManualResetEvent(false);
@@ -125,7 +125,7 @@ namespace Twilio.Api.Tests.Integration
             Assert.IsNotNull(result.Addresses);
         }
         
-        [TestMethod]
+        [Test]
         public void ShouldListAddressesUsingFilters()
         {
             var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
@@ -140,7 +140,7 @@ namespace Twilio.Api.Tests.Integration
 
 			var listRequest = new AddressListRequest();
 			listRequest.FriendlyName = originalAddressTwo.FriendlyName;
-			var result = client.ListAddresses(originalAddressTwo.FriendlyName);
+            var result = client.ListAddresses(listRequest);
 
             Assert.IsNotNull(result);
             Assert.IsNull(result.RestException);
@@ -152,7 +152,7 @@ namespace Twilio.Api.Tests.Integration
             client.DeleteAddress(originalAddressThree.Sid); //cleanup
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldUpdateAddress()
         {
             var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
@@ -163,7 +163,7 @@ namespace Twilio.Api.Tests.Integration
 
             AddressOptions options = new AddressOptions();
 			options.CustomerName = "Marge Simpson";
-            var result = client.UpdateAddress(originalAddress.Sid, "", options);
+            var result = client.UpdateAddress(originalAddress.Sid, options);
 
             Assert.IsNotNull(result);
             Assert.IsNull(result.RestException);
@@ -173,7 +173,7 @@ namespace Twilio.Api.Tests.Integration
             client.DeleteAddress(result.Sid); //cleanup
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldUpdateAddressAsynchronously()
         {
             manualResetEvent = new ManualResetEvent(false);
@@ -186,7 +186,7 @@ namespace Twilio.Api.Tests.Integration
 
             AddressOptions options = new AddressOptions();
             Address result = null;
-            client.UpdateAddress(originalAddress.Sid, "", options, app => {
+            client.UpdateAddress(originalAddress.Sid, options, app => {
                 result = app;
                 manualResetEvent.Set();
             });
@@ -200,7 +200,7 @@ namespace Twilio.Api.Tests.Integration
             client.DeleteAddress(result.Sid); //cleanup
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldDeleteAddress()
         {
             var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
@@ -213,7 +213,7 @@ namespace Twilio.Api.Tests.Integration
             Assert.AreEqual(DeleteStatus.Success, status);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldDeleteAddressAsynchronously()
         {
             manualResetEvent = new ManualResetEvent(false);
@@ -235,7 +235,7 @@ namespace Twilio.Api.Tests.Integration
             Assert.AreEqual(DeleteStatus.Success, status);
         }
 
-		[TestMethod]
+		[Test]
 		public void ShouldListDependentPhoneNumbers()
 		{
 			var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
@@ -253,7 +253,7 @@ namespace Twilio.Api.Tests.Integration
 			client.DeleteAddress(originalAddress.Sid); // cleanup
 		}
 
-		[TestMethod]
+		[Test]
 		public void ShouldListDependentPhoneNumbersAsynchronously()
 		{
 			manualResetEvent = new ManualResetEvent(false);
