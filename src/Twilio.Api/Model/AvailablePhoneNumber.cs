@@ -49,7 +49,9 @@ namespace Twilio
 		/// </summary>
 		/// XXX does this want to be an enum of some sort?
 		public string AddressRequirements { get; set; }
-		[
+		/// <summary>
+        /// Gets or sets the capabilities.
+        /// </summary>
 		public Capabilities Capabilities { get; set; }
 	}
 }
