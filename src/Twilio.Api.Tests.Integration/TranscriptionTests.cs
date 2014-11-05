@@ -1,12 +1,12 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Twilio.Api.Tests.Integration
 {
-    [TestClass]
+    [TestFixture]
     public class TranscriptionTests
     {
-        [TestMethod]
+        [Test]
         public void TestMethod1()
         {
         }

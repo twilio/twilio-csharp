@@ -1,12 +1,12 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System.Threading;
 using Moq;
 using RestSharp;
 
 namespace Twilio.Api.Tests.Integration
 {
-    [TestClass]
+    [TestFixture]
     public class AvailablePhoneNumberTests
     {
         private const string ISO_COUNTRY_CODE = "US";
@@ -22,7 +22,7 @@ namespace Twilio.Api.Tests.Integration
             mockClient.CallBase = true;
         }
         
-        [TestMethod]
+        [Test]
         public void ShouldListAvailableLocalPhoneNumbers()
         {
             IRestRequest savedRequest = null;
@@ -44,7 +44,7 @@ namespace Twilio.Api.Tests.Integration
             Assert.AreEqual(ISO_COUNTRY_CODE, isoCountryCodeParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListAvailableLocalPhoneNumbersWithOptions()
         {
             IRestRequest savedRequest = null;
@@ -78,7 +78,7 @@ namespace Twilio.Api.Tests.Integration
             Assert.AreEqual(options.Distance, distanceParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListAvailableLocalPhoneNumbersAsynchronously()
         {
             IRestRequest savedRequest = null;
@@ -103,7 +103,7 @@ namespace Twilio.Api.Tests.Integration
             Assert.AreEqual(ISO_COUNTRY_CODE, isoCountryCodeParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListAvailableTollFreePhoneNumbers()
         {
             IRestRequest savedRequest = null;
@@ -124,7 +124,7 @@ namespace Twilio.Api.Tests.Integration
             Assert.AreEqual(ISO_COUNTRY_CODE, isoCountryCodeParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListAvailableTollFreePhoneNumbersAsynchronously()
         {
             IRestRequest savedRequest = null;
@@ -149,7 +149,7 @@ namespace Twilio.Api.Tests.Integration
             Assert.AreEqual(ISO_COUNTRY_CODE, isoCountryCodeParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListAvailableTollFreePhoneNumbersThatContain()
         {
             IRestRequest savedRequest = null;
@@ -173,7 +173,7 @@ namespace Twilio.Api.Tests.Integration
             Assert.AreEqual("EA", containsParam.Value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldListAvailableTollFreePhoneNumbersAsynchronouslyThatContain()
         {
             IRestRequest savedRequest = null;

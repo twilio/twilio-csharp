@@ -1,12 +1,12 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Twilio.Api.Tests.Integration
 {
-    [TestClass]
+    [TestFixture]
     public class UsageTests
     {
-        [TestMethod]
+        [Test]
         public void ShouldListUsage()
         {
         }
