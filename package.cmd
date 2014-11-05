@@ -14,9 +14,8 @@ if not exist download\package\twilioclient mkdir download\package\twilioclient
 
 if not exist download\package\twilio\lib mkdir download\package\twilio\lib
 if not exist download\package\twilio\lib\3.5 mkdir download\package\twilio\lib\3.5
-REM if not exist download\package\twilio\lib\SL3-WP7 mkdir download\package\twilio\lib\SL3-WP7
-if not exist download\package\twilio\lib\SL4-WINDOWSPHONE71 mkdir download\package\twilio\lib\SL4-WINDOWSPHONE71
-if not exist download\package\twilio\lib\SL4 mkdir download\package\twilio\lib\SL4
+if not exist download\package\twilio\lib\WINDOWSPHONE8 mkdir download\package\twilio\lib\WINDOWSPHONE8
+if not exist download\package\twilio\lib\SL5 mkdir download\package\twilio\lib\SL5
 
 if not exist download\package\twiliomvc\lib mkdir download\package\twiliomvc\lib
 if not exist download\package\twiliomvc\lib\3.5 mkdir download\package\twiliomvc\lib\3.5
@@ -43,9 +42,8 @@ copy src\Twilio.Client.Capability\bin\Release\*.* download
 copy LICENSE.txt download
 
 copy src\Twilio.Api\bin\Release\Twilio.Api.* download\package\twilio\lib\3.5\
-copy src\Twilio.Api.Silverlight\bin\Release\Twilio.Api.Silverlight.* download\package\twilio\lib\SL4\
-REM copy src\Twilio.Api.WindowsPhone\bin\Release\Twilio.Api.WindowsPhone.* download\package\twilio\lib\SL3-WP7\
-copy src\Twilio.Api.WindowsPhone\bin\Release\Twilio.Api.WindowsPhone.* download\package\twilio\lib\SL4-WINDOWSPHONE71\
+copy src\Twilio.Api.Silverlight\bin\Release\Twilio.Api.Silverlight.* download\package\twilio\lib\SL5\
+copy src\Twilio.Api.WindowsPhone\bin\Release\Twilio.Api.WindowsPhone.* download\package\twilio\lib\\WINDOWSPHONE8\
 
 copy src\Twilio.Mvc\bin\Release\Twilio.Mvc.* download\package\twiliomvc\lib\3.5\
 copy src\Twilio.Twiml\bin\Release\Twilio.Twiml.* download\package\twiliotwiml\lib\3.5\
