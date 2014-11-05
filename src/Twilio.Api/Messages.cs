@@ -24,8 +24,32 @@ namespace Twilio
             return Execute<Message>(request);
         }
 
+		/// <summary>
+		/// Deletes the single Message resource specified by messageSid.
+		/// </summary>
+		/// <param name="messageSid">The Sid of the message to delete</param>
+		public virtual void DeleteMessage(string messageSid)
+		{
+			var request = new RestRequest(Method.DELETE);
+			request.Resource = "Accounts/{AccountSid}/Messages/{MessageSid}.json";
+			request.AddUrlSegment("MessageSid", messageSid);
+
+			var response = Execute(request);
+			return response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed;
+		}
+
+		public virtual Message RedactMessage(string messageSid)
+		{
+			var request = new RestRequest(Method.POST);
+			request.Resource = "Accounts/{AccountSid}/Messages/{MessageSid}.json";
+			request.AddUrlSegment("MessageSid", messageSid);
+
+			request.AddParameter("Body", "");
+			return Execute<Message>(request);
+		}
+
         /// <summary>
-        /// Returns a list of Messages. 
+        /// Returns a list of Messages.
         /// The list includes paging information.
         /// Makes a GET request to the Message List resource.
         /// </summary>
@@ -39,7 +63,7 @@ namespace Twilio
         /// Makes a GET request to the Messages List resource.
         /// </summary>
         /// <param name="options">The list filters for the request</param>
-        public virtual MessageResult ListMessages(MessageListRequest options) 
+        public virtual MessageResult ListMessages(MessageListRequest options)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Messages.json";
@@ -83,7 +107,7 @@ namespace Twilio
         {
             return SendMessage(from, to, String.Empty, mediaUrls, string.Empty);
         }
-        
+
         /// <summary>
         /// Send a new Message to the specified recipients.
         /// Makes a POST request to the Messages List resource.
@@ -130,7 +154,7 @@ namespace Twilio
             request.Resource = "Accounts/{AccountSid}/Messages.json";
             request.AddParameter("From", from);
             request.AddParameter("To", to);
-            
+
             if (body.HasValue()) request.AddParameter("Body", body);
 
             for (int i = 0; i < mediaUrls.Length; i++)

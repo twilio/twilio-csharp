@@ -21,6 +21,30 @@ namespace Twilio
             ExecuteAsync<Message>(request, (response) => callback(response));
         }
 
+		/// <summary>
+		/// Deletes a single Message instance
+		/// </summary>
+		/// <param name="messageSid">The Sid of the Message to delete</param>
+		/// <param name="callback">Method to be called on completion</param>
+		public virtual void DeleteMessage(string messageSid, Action<DeleteStatus> callback)
+		{
+			var request = new RestRequest(Method.DELETE);
+			request.Resource = "Accounts/{AccountSid}/Messages/{MessageSid}.json";
+			request.AddUrlSegment("MessageSid", messageSid);
+
+			ExecuteAsync(request, (response) => { callback(response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed); });
+		}
+
+		public virtual void RedactMessage(string messageSid, Action<Message> callback)
+		{
+			var request = new RestRequest(Method.POST);
+			request.Resource = "Accounts/{AccountSid}/Messages/{MessageSid}.json";
+			request.AddUrlSegment("MessageSid", messageSid);
+
+			request.AddParameter("Body", "");
+			ExecuteAsync<Message>(request, (response) => callback(response));
+		}
+
         /// <summary>
         /// Returns a list of Messages. 
         /// The list includes paging information.

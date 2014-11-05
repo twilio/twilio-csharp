@@ -65,10 +65,25 @@ namespace Twilio
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}.json";
-			
+
 			request.AddParameter("CallSid", callSid, ParameterType.UrlSegment);
 
 			ExecuteAsync<Call>(request, (response) => callback(response));
+		}
+
+		/// <summary>
+		///  Deletes a single Call resource identified by {CallSid}.
+		/// </summary>
+		/// <param name="callSid">The Sid of the Call resource to delete.</param>
+		/// <param name="callback">Method to call upon completion.</param>
+		public virtual void DeleteCall(string callSid, Action<DeleteStatus> callback)
+		{
+			var request = new RestRequest(Method.DELETE);
+			request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}.json";
+
+			request.AddParameter("CallSid", callSid, ParameterType.UrlSegment);
+
+			ExecuteAsync(request, (response) => { callback(response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed); });
 		}
 
 		/// <summary>
@@ -116,9 +131,9 @@ namespace Twilio
 
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/Calls.json";
-			
+
 			AddCallOptions(options, request);
-			
+
 			ExecuteAsync<Call>(request, (response) => callback(response));
 		}
 
@@ -134,7 +149,7 @@ namespace Twilio
 			else
 			{
 				request.AddParameter("Url", options.Url);
-			} 
+			}
 
 			if (options.StatusCallback.HasValue()) request.AddParameter("StatusCallback", options.StatusCallback);
 			if (options.StatusCallbackMethod.HasValue()) request.AddParameter("StatusCallbackMethod", options.StatusCallbackMethod);
@@ -161,7 +176,7 @@ namespace Twilio
 
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}.json";
-			
+
 			request.AddUrlSegment("CallSid", callSid);
 			request.AddParameter("Status", style.ToString().ToLower());
 
