@@ -21,7 +21,7 @@ namespace Twilio
         /// </summary>
         public string BaseUrl { get; private set; }
 
-        #if FRAMEWORK
+#if FRAMEWORK
         /// <summary>
         /// 
         /// </summary>
@@ -29,7 +29,7 @@ namespace Twilio
             get { return _client.Proxy; }
             set { _client.Proxy = value; }
         }
-        #endif
+#endif
 
         protected string AccountSid { get; set; }
 
