@@ -16,10 +16,11 @@ namespace Twilio
         /// </summary>
         /// <param name="mediaSid">The Sid of the media resource</param>
         /// <returns></returns>
-        public virtual Media GetMedia(string mediaSid)
+        public virtual Media GetMedia(string messageSid, string mediaSid)
         {
             var request = new RestRequest();
-            request.Resource = "Accounts/{AccountSid}/Media/{MediaSid}.json";
+            request.Resource = "Accounts/{AccountSid}/Messages/{MessageSid}/Media/{MediaSid}.json";
+            request.AddUrlSegment("MessageSid", messageSid);
             request.AddUrlSegment("MediaSid", mediaSid);
             return Execute<Media>(request);
         }
@@ -27,21 +28,18 @@ namespace Twilio
         /// <summary>
         /// Retrieve a list of Media objects with no list filters
         /// </summary>
-        public virtual MediaResult ListMedia()
+        public virtual MediaResult ListMedia(string messageSid)
         {
-            return ListMedia(new MediaListRequest());
+            return ListMedia(messageSid, new MediaListRequest());
         }
 
         /// <summary>
         /// Return a filtered list of Media objects. The list includes paging
         /// information.
         /// </summary>
-        public virtual MediaResult ListMedia(MediaListRequest options)
+        public virtual MediaResult ListMedia(string messageSid, MediaListRequest options)
         {
-            var request = new RestRequest();
-            request.Resource = "Accounts/{AccountSid}/Media.json";
-            AddMediaListOptions(options, request);
-            return Execute<MediaResult>(request);
+            return ListMessageMedia(messageSid, options);
         }
 
         /// <summary>
@@ -62,12 +60,12 @@ namespace Twilio
         /// Media Instance resource.
         /// </summary>
         /// <param name="mediaSid">The Sid of the media to delete</param>
-        public virtual DeleteStatus DeleteMedia(string mediaSid)
+        public virtual DeleteStatus DeleteMedia(string messageSid, string mediaSid)
         {
             var request = new RestRequest(Method.DELETE);
-            request.Resource = "Accounts/{AccountSid}/Media/{MediaSid}.json";
-
-            request.AddParameter("MediaSid", mediaSid, ParameterType.UrlSegment);
+            request.Resource = "Accounts/{AccountSid}/Messages/{MessageSid}/Media/{MediaSid}.json";
+            request.AddUrlSegment("MessageSid", messageSid);
+            request.AddUrlSegment("MediaSid", mediaSid);
 
             var response = Execute(request);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed;
