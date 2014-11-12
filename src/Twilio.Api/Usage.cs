@@ -96,6 +96,20 @@ namespace Twilio
         }
 
         /// <summary>
+        /// List of usage resources
+        /// using a continuation url.
+        /// </summary>
+        /// <param name="pageUri">A continuation url provided by the TwilioListBase</param>
+        /// <returns></returns>
+        public virtual UsageResult ListUsage(Uri pageUri)
+        {
+            var request = new RestRequest();
+            request.Resource = pageUri.ToString();
+
+            return this.Execute<UsageResult>(request);
+        }
+
+        /// <summary>
         /// Returns a list of usage triggers
         /// </summary>
         /// <returns></returns>

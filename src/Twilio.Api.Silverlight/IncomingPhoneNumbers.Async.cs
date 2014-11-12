@@ -54,6 +54,21 @@ namespace Twilio
 		}
 
         /// <summary>
+        /// List incoming phone numbers on current account
+        /// using a continuation url.
+        /// </summary>
+        /// <param name="pageUri">A continuation url provided by the TwilioListBase</param>
+        /// <param name="callback">Method to call upon successful completion</param>
+        /// <returns></returns>
+        public virtual void ListIncomingPhoneNumbers(Uri pageUri, Action<IncomingPhoneNumberResult> callback)
+        {
+            var request = new RestRequest();
+            request.Resource = pageUri.ToString();
+
+            this.ExecuteAsync(request, callback);
+        }
+
+        /// <summary>
         /// List all incoming local phone numbers on current account
         /// </summary>
         public virtual void ListIncomingLocalPhoneNumbers(Action<IncomingPhoneNumberResult> callback)

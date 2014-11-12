@@ -22,6 +22,21 @@ namespace Twilio
         }
 
         /// <summary>
+        /// Returns a list of Messages.
+        /// using a continuation url.
+        /// </summary>
+        /// <param name="pageUri">A continuation url provided by the TwilioListBase</param>
+        /// <param name="callback">Method to call upon successful completion</param>
+        /// <returns></returns>
+        public virtual void ListMessages(Uri pageUri, Action<MessageResult> callback)
+        {
+            var request = new RestRequest();
+            request.Resource = pageUri.ToString();
+
+            ExecuteAsync(request, callback);
+        }
+
+        /// <summary>
         /// Returns a list of Messages. 
         /// The list includes paging information.
         /// Makes a GET request to the Message List resource.

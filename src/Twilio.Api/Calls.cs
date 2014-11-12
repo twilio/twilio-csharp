@@ -4,7 +4,9 @@ using RestSharp.Validation;
 
 namespace Twilio
 {
-	public partial class TwilioRestClient
+    using System;
+
+    public partial class TwilioRestClient
 	{
 		/// <summary>
 		/// Returns a paged list of phone calls made to and from the account.
@@ -17,6 +19,20 @@ namespace Twilio
 
 			return Execute<CallResult>(request);
 		}
+
+        /// <summary>
+        /// List of phone calls made to and from the account
+        /// using a continuation url.
+        /// </summary>
+        /// <param name="pageUri">A continuation url provided by the TwilioListBase</param>
+        /// <returns></returns>
+        public virtual CallResult ListCalls(Uri pageUri)
+        {
+            var request = new RestRequest();
+            request.Resource = pageUri.ToString();
+
+            return this.Execute<CallResult>(request);
+        }
 
 		/// <summary>
 		/// Returns a paged list of phone calls made to and from the account.
