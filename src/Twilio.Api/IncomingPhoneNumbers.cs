@@ -4,7 +4,9 @@ using RestSharp.Validation;
 
 namespace Twilio
 {
-	public partial class TwilioRestClient
+    using System;
+
+    public partial class TwilioRestClient
 	{
 		/// <summary>
 		/// Retrieve the details for an incoming phone number
@@ -19,6 +21,20 @@ namespace Twilio
 
 			return Execute<IncomingPhoneNumber>(request);
 		}
+
+        /// <summary>
+        /// List incoming phone numbers on current account
+        /// using a continuation url.
+        /// </summary>
+        /// <param name="pageUri">A continuation url provided by the TwilioListBase</param>
+        /// <returns></returns>
+        public virtual IncomingPhoneNumberResult ListIncomingPhoneNumbers(Uri pageUri)
+        {
+            var request = new RestRequest();
+            request.Resource = pageUri.ToString();
+
+            return this.Execute<IncomingPhoneNumberResult>(request);
+        }
 
 		/// <summary>
 		/// List all incoming phone numbers on current account

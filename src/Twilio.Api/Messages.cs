@@ -48,6 +48,19 @@ namespace Twilio
         }
 
         /// <summary>
+        /// Returns a list of Messages.
+        /// using a continuation url 
+        /// </summary>
+        /// <param name="pageUri">A continuation url provided by the TwilioListBase</param>
+        /// <returns></returns>
+        public virtual MessageResult ListMessages(Uri pageUri)
+        {
+            var request = new RestRequest(pageUri);           
+
+            return this.Execute<MessageResult>(request);
+        }
+
+        /// <summary>
         /// Send a new Message to the specified recipients.
         /// Makes a POST request to the Messages List resource.
         /// </summary>

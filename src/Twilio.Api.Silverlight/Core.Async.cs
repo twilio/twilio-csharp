@@ -36,6 +36,11 @@ namespace Twilio
                 }
 			};
 
+            if (request.Resource.Contains(ApiVersion) && _client.BaseUrl.ToString().Contains(ApiVersion))
+            {
+                request.Resource = request.Resource.Substring(ApiVersion.Length + 2);
+            }
+
 			request.DateFormat = "ddd, dd MMM yyyy HH:mm:ss '+0000'";
 
 			_client.ExecuteAsync<T>(request, (response) => callback(response.Data));

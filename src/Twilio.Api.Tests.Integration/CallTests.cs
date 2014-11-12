@@ -92,6 +92,19 @@ namespace Twilio.Api.Tests.Integration
         }
 
         [TestMethod]
+        public void ShouldListCallswithUri()
+        {
+            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            var result = client.ListCalls();
+
+            var continuationResult = client.ListCalls(result.NextPageUri);
+
+            Assert.IsNotNull(continuationResult);
+            Assert.IsNull(continuationResult.RestException);
+            Assert.IsNotNull(continuationResult.Calls);
+        }
+
+        [TestMethod]
         public void ShouldListCallsAsynchronously()
         {
             manualResetEvent = new ManualResetEvent(false);
@@ -109,6 +122,39 @@ namespace Twilio.Api.Tests.Integration
             Assert.IsNotNull(result);
             Assert.IsNull(result.RestException);
             Assert.IsNotNull(result.Calls);
+        }
+
+        [TestMethod]
+        public void ShouldListCallsAsynchronouslyWithUri()
+        {
+            manualResetEvent = new ManualResetEvent(false);
+
+            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+
+            CallResult result = null;
+            client.ListCalls(calls =>
+            {
+                result = calls;
+                manualResetEvent.Set();
+            });
+
+            manualResetEvent.WaitOne();
+
+            manualResetEvent = new ManualResetEvent(false);
+
+            CallResult continuationResult = null;
+            client.ListCalls(result.NextPageUri, calls =>
+            {
+                continuationResult = calls;
+                manualResetEvent.Set();
+            });
+
+            manualResetEvent.WaitOne();
+
+
+            Assert.IsNotNull(continuationResult);
+            Assert.IsNull(continuationResult.RestException);
+            Assert.IsNotNull(continuationResult.Calls);
         }
 
         [TestMethod]

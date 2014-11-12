@@ -8,7 +8,9 @@ using System.Net;
 
 namespace Twilio
 {
-	/// <summary>
+    using System.Diagnostics;
+
+    /// <summary>
 	/// REST API wrapper.
 	/// </summary>
 	public partial class TwilioRestClient
@@ -103,6 +105,11 @@ namespace Twilio
 					resp.RawBytes = Encoding.UTF8.GetBytes(newJson.ToString());
 				}
 			};
+
+            if (request.Resource.Contains(ApiVersion) && _client.BaseUrl.ToString().Contains(ApiVersion))
+            {
+                request.Resource = request.Resource.Substring(ApiVersion.Length + 2);
+		    }
 
 			request.DateFormat = "ddd, dd MMM yyyy HH:mm:ss '+0000'";
 

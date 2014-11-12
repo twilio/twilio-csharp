@@ -99,6 +99,21 @@ namespace Twilio.Api.Tests.Integration
         }
 
         [TestMethod]
+        public void ShouldListIncomingPhoneNumbersWithUri()
+        {
+            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+
+            var result = client.ListIncomingPhoneNumbers(string.Empty, string.Empty, 1, 5);            
+
+            var continuationResult = client.ListIncomingPhoneNumbers(result.NextPageUri);
+
+
+            Assert.IsNotNull(continuationResult);
+            Assert.IsNull(continuationResult.RestException);
+            Assert.IsNotNull(continuationResult.IncomingPhoneNumbers);
+        }
+
+        [TestMethod]
         public void ShouldListIncomingPhoneNumbersAsynchronously()
         {
             manualResetEvent = new ManualResetEvent(false);
@@ -165,6 +180,37 @@ namespace Twilio.Api.Tests.Integration
         }
 
         [TestMethod]
+        public void ShouldGetIncomingPhoneNumbersWithUriAsynchronously()
+        {
+            manualResetEvent = new ManualResetEvent(false);
+
+            var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
+            IncomingPhoneNumberResult result = null;
+            client.ListIncomingPhoneNumbers(string.Empty, string.Empty, 1, 5, number =>
+            {
+                result = number;
+                manualResetEvent.Set();
+            });
+
+            manualResetEvent.WaitOne();
+
+            manualResetEvent = new ManualResetEvent(false);
+
+            IncomingPhoneNumberResult continuationResult = null;
+            client.ListIncomingPhoneNumbers(result.NextPageUri, number =>
+            {
+                continuationResult = number;
+                manualResetEvent.Set();
+            });
+
+            manualResetEvent.WaitOne();
+
+            Assert.IsNotNull(continuationResult);
+            Assert.IsNull(continuationResult.RestException);
+            Assert.IsNotNull(continuationResult.IncomingPhoneNumbers);
+        }
+
+        [TestMethod]
         public void ShouldUpdateIncomingPhoneNumber()
         {
             var client = new TwilioRestClient(Credentials.AccountSid, Credentials.AuthToken);
@@ -227,6 +273,5 @@ namespace Twilio.Api.Tests.Integration
             Assert.AreEqual(DeleteStatus.Success, status);
             Assert.Fail();
         }
-
     }
 }
