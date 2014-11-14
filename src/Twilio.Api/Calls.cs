@@ -42,10 +42,24 @@ namespace Twilio
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}.json";
-			
+
 			request.AddParameter("CallSid", callSid, ParameterType.UrlSegment);
 
 			return Execute<Call>(request);
+		}
+
+		/// <summary>
+		/// Deletes the single Call resource identified by {callSid}.
+		/// </summary>
+		/// <param name="callSid">The Sid of the Call resource to delete.</param>
+		public virtual void DeleteCall(string callSid)
+		{
+			var request = new RestRequest(Method.DELETE);
+			request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}.json";
+			request.AddUrlSegment("CallSid", callSid);
+
+			var response = Execute(request);
+			return response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed;
 		}
 
 		/// <summary>
@@ -88,7 +102,7 @@ namespace Twilio
 
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/Calls.json";
-			
+
 			AddCallOptions(options, request);
 
 			return Execute<Call>(request);
@@ -105,7 +119,7 @@ namespace Twilio
 
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}.json";
-			
+
 			request.AddUrlSegment("CallSid", callSid);
 			request.AddParameter("Status", style.ToString().ToLower());
 
