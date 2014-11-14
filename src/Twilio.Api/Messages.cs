@@ -28,7 +28,7 @@ namespace Twilio
 		/// Deletes the single Message resource specified by messageSid.
 		/// </summary>
 		/// <param name="messageSid">The Sid of the message to delete</param>
-		public virtual void DeleteMessage(string messageSid)
+        public virtual DeleteStatus DeleteMessage(string messageSid)
 		{
 			var request = new RestRequest(Method.DELETE);
 			request.Resource = "Accounts/{AccountSid}/Messages/{MessageSid}.json";

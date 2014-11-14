@@ -52,7 +52,7 @@ namespace Twilio
 		/// Deletes the single Call resource identified by {callSid}.
 		/// </summary>
 		/// <param name="callSid">The Sid of the Call resource to delete.</param>
-		public virtual void DeleteCall(string callSid)
+        public virtual DeleteStatus DeleteCall(string callSid)
 		{
 			var request = new RestRequest(Method.DELETE);
 			request.Resource = "Accounts/{AccountSid}/Calls/{CallSid}.json";

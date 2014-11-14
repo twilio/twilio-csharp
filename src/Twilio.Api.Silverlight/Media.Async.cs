@@ -21,9 +21,9 @@ namespace Twilio
         /// <summary>
         /// Retrieve a list of Media objects with no list filters
         /// </summary>
-        public virtual void ListMedia(Action<MediaResult> callback)
+        public virtual void ListMedia(string messageSid, Action<MediaResult> callback)
         {
-            ListMedia(new MediaListRequest(), callback);
+            ListMedia(messageSid, new MediaListRequest(), callback);
         }
 
         /// <summary>
