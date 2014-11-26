@@ -3,9 +3,6 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>
-    </ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{2E1A3B46-C072-48E0-92BF-F2901036979F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -47,7 +44,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+    <CodeAnalysisDependentAssemblyPaths Include="%24%28VS100COMNTOOLS%29..\IDE\PrivateAssemblies" Condition=" '$(VS100COMNTOOLS)' != '' ">
       <Visible>False</Visible>
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
@@ -74,6 +71,7 @@
     <Compile Include="UsageTriggerTests.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="FeedbackTests.cs" />
+    <Compile Include="TokenTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Twilio.Api\Twilio.Api.csproj">
