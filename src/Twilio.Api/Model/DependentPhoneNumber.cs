@@ -1,14 +1,14 @@
-using System;
+﻿using System;
 
 namespace Twilio
 {
 	/// <summary>
-	/// An IncomingPhoneNumber instance resource represents a single Twilio IncomingPhoneNumber.
+	/// Represents a phone number object that depends on a particular Address.
 	/// </summary>
-	public class IncomingPhoneNumber : TwilioBase
+	public class DependentPhoneNumber : TwilioBase
 	{
 		/// <summary>
-		/// A 34 character string that uniquely idetifies this resource.
+		/// A 34 character string that uniquely identifies this resource.
 		/// </summary>
 		public string Sid { get; set; }
 		/// <summary>
@@ -93,6 +93,8 @@ namespace Twilio
 		/// </summary>
 		public string AddressRequirements { get; set; }
 
-        public Capabilities Capabilities { get; set; }
+		public Capabilities Capabilities { get; set; }
+
 	}
 }
+

@@ -93,6 +93,9 @@ namespace Twilio
 			if (options.SmsEnabled.HasValue) request.AddParameter("SmsEnabled", options.SmsEnabled.Value);
 			if (options.VoiceEnabled.HasValue) request.AddParameter("VoiceEnabled", options.VoiceEnabled.Value);
 			if (options.MmsEnabled.HasValue) request.AddParameter("MmsEnabled", options.MmsEnabled.Value);
+			if (options.ExcludeAllAddressRequired.HasValue) request.AddParameter("ExcludeAllAddressRequired", options.ExcludeAllAddressRequired.Value);
+			if (options.ExcludeForeignAddressRequired.HasValue) request.AddParameter("ExcludeForeignAddressRequired", options.ExcludeForeignAddressRequired.Value);
+			if (options.ExcludeLocalAddressRequired.HasValue) request.AddParameter("ExcludeLocalAddressRequired", options.ExcludeLocalAddressRequired.Value);
 		}
 	}
 }
