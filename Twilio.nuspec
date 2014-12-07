@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>3.6.24</version>
+		<version>3.6.25</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -14,6 +14,9 @@
 			<dependency id="RestSharp" version="105.0.1" />
 		</dependencies>
 		<releaseNotes>
+      * 3.6.25 - Adding support for Addresses API
+               - Adding support for Tokens
+               - Recording price is now exposed on the Recording model
       * 3.6.24 - Added Call/Message Delete methods
                - Fixed broken Message Media code
                - updated RestSharp reference
