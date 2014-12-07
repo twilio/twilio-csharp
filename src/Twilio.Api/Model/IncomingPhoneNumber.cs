@@ -87,11 +87,6 @@ namespace Twilio
 		/// The ApplicationSid assigned to this number for voice requests
 		/// </summary>
 		public string VoiceApplicationSid { get; set; }
-		/// <summary>
-		/// Indicates whether this number requires an associated physical address.
-		/// One of "any", "local", "foreign", or "none".
-		/// </summary>
-		public string AddressRequirements { get; set; }
 
         public Capabilities Capabilities { get; set; }
 	}

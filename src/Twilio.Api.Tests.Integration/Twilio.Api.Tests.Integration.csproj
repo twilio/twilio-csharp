@@ -53,7 +53,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountTests.cs" />
-    <Compile Include="AddressTests.cs" />
     <Compile Include="ApplicationTests.cs" />
     <Compile Include="AuthorizedConnectAppTests.cs" />
     <Compile Include="AvailablePhoneNumberTests.cs" />

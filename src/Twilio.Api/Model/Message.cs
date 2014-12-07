@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -79,21 +79,16 @@ namespace Twilio
         public string ApiVersion { get; set; }
 
         /// <summary>
-        /// The message delivery method used. Either SMS or MMS.
-        /// </summary>
-        public string DeliveryMethod { get; set; }
-
-        /// <summary>
-        /// The error code of this message. If non-null, it will be an int
-        /// signaling what the error was. The error codes are listed on
+        /// The error code of this message. If the message was unable to be delivered
+        /// this property will contain the error code.  Error codes are listed in
         /// the Message docs: https://www.twilio.com/docs/api/rest/message.
         /// </summary>
         public int? ErrorCode { get; set; }
 
         /// <summary>
-        /// The error message for this message. If non-null, it will be a
-        /// string describing what the error was.
+        /// The error message for this message. If the message was unable to be delivered
+        /// this property will contain the error message.
         /// </summary>
-        public string? ErrorMessage { get; set; }
+        public string ErrorMessage { get; set; }
     }
 }

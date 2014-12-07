@@ -60,21 +60,5 @@ namespace Twilio
         /// SMS capability.
 		/// </summary>
 		public bool? MmsEnabled { get; set; }
-		/// <summary>
-		/// Indicates whether the response includes phone numbers which require any Address.
-		/// Defaults to 'false', meaning results could include phone numbers with an Address
-		/// required.
-		/// </summary>
-		public bool? ExcludeAllAddressRequired { get; set; }
-		/// <summary>
-		/// Indicates whether the response includes phone numbers which require a local Address.
-		/// Defaults to 'false', meaning results could include phone numbers with a local Address required.
-		/// </summary>
-		public bool? ExcludeForeignAddressRequired { get; set; }
-		/// <summary>
-		/// Indicates whether the response includes phone numbers which require a foreign Address.
-		/// Defaults to 'false', meaning results could include phone numbers with a foreign Address required.
-		/// </summary>
-		public bool? ExcludeLocalAddressRequired { get; set; }
     }
 }
