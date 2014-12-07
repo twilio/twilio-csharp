@@ -35,5 +35,10 @@ namespace Twilio
 		/// The version of the API in use during the recording.
 		/// </summary>
 		public string ApiVersion { get; set; }
+		/// <summary>
+		/// The charge for this recording in USD. Populated after the recording is completed. May not be immediately available. 
+		/// Doesn't include storage charge.
+		/// </summary>
+		public decimal? Price { get; set; }
 	}
 }

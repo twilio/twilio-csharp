@@ -43,7 +43,15 @@ namespace Twilio
 		/// The ISO country code of this phone number.
 		/// </summary>
 		public string IsoCountry { get; set; }
-
+		/// <summary>
+		/// Indicates whether this number requires an associated physical address.
+		/// One of "any", "local", "foreign", or "none".
+		/// </summary>
+		/// XXX does this want to be an enum of some sort?
+		public string AddressRequirements { get; set; }
+		/// <summary>
+        /// Gets or sets the capabilities.
+        /// </summary>
 		public Capabilities Capabilities { get; set; }
 	}
 }
