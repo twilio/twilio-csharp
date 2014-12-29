@@ -15,5 +15,10 @@
         /// The text body of the SMS message. Up to 160 characters long
         /// </summary>
         public string Body { get; set; }
+        
+        /// <summary>
+        /// The status of the message
+        /// </summary>
+        public string MessageStatus { get; set; }
     }
 }
