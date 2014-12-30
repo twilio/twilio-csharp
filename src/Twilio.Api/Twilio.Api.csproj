@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -228,6 +228,19 @@
     <Compile Include="Model\TwilioListBase.cs" />
     <Compile Include="Model\ValidationRequest.cs" />
     <Compile Include="Sip.cs" />
+    <Compile Include="Model\Pricing\VoiceNumber.cs" />
+    <Compile Include="Model\Pricing\NumberCallPrice.cs" />
+    <Compile Include="Model\Pricing\VoiceCountry.cs" />
+    <Compile Include="Model\Pricing\OutboundPrefixPrice.cs" />
+    <Compile Include="Model\Pricing\InboundCallPrice.cs" />
+    <Compile Include="Model\Pricing\PhoneNumberCountry.cs" />
+    <Compile Include="Model\Pricing\PhoneNumberPrice.cs" />
+    <Compile Include="Model\Pricing\VoiceCountryResult.cs" />
+    <Compile Include="Model\Pricing\PhoneNumberCountryResult.cs" />
+    <Compile Include="Pricing\Voice.cs" />
+    <Compile Include="Pricing\PhoneNumbers.cs" />
+    <Compile Include="Pricing\Voice.Async.cs" />
+    <Compile Include="Pricing\PhoneNumbers.Async.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -248,7 +261,10 @@
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <ItemGroup>
+    <Folder Include="Pricing\" />
+    <Folder Include="Model\Pricing\" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
 </Project>
