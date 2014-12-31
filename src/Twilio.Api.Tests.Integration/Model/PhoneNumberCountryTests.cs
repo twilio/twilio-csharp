@@ -40,6 +40,9 @@ namespace Twilio.Api.Tests.Integration.Model
             var output = json.Deserialize<PhoneNumberCountryResult>(new RestResponse { Content = doc });
 
             Assert.NotNull(output);
+            Assert.AreEqual(3, output.Countries.Count);
+            Assert.AreEqual("AC", output.Countries[0].IsoCountry);
+            Assert.AreEqual("Ascension", output.Countries[0].Country);
         }
     }
 }

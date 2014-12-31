@@ -73,6 +73,11 @@
     <Compile Include="Utilities.cs" />
     <Compile Include="FeedbackTests.cs" />
     <Compile Include="Model\PhoneNumberCountryTests.cs" />
+    <Compile Include="Model\VoiceCountryTests.cs" />
+    <Compile Include="Model\VoiceNumberTests.cs" />
+    <Compile Include="Pricing\VoiceCountryTests.cs" />
+    <Compile Include="Pricing\PhoneNumberCountryTests.cs" />
+    <Compile Include="Pricing\VoiceNumberTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Twilio.Api\Twilio.Api.csproj">
@@ -93,15 +98,18 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Pricing\" />
+    <Folder Include="Pricing\" />
+    <Folder Include="TaskRouter\" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\Pricing\phone_number_country.json" />
     <None Include="Resources\Pricing\phone_number_countries.json" />
     <None Include="Resources\Pricing\voice_country.json" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="Resources\" />
-    <Folder Include="Resources\Pricing\" />
-    <Folder Include="TaskRouter\" />
+    <None Include="Resources\Pricing\voice_countries.json" />
+    <None Include="Resources\Pricing\voice_number.json" />
   </ItemGroup>
 </Project>
