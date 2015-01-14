@@ -19,7 +19,7 @@ namespace Twilio.Wds
             Require.Argument("WorkerSid", workerSid);
 
             var request = new RestRequest();
-            request.Resource = "Accounts/{AccountSid}/Workspaces/{WorkspaceSid}/Statistics/Workers/{WorkerSid}.json";
+            request.Resource = "Accounts/{AccountSid}/Workspaces/{WorkspaceSid}/Workers/{WorkerSid}/Statistics.json";
 
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
             request.AddUrlSegment("WorkerSid", workerSid);
@@ -52,7 +52,7 @@ namespace Twilio.Wds
             Require.Argument("WorkspaceSid", workspaceSid);
 
             var request = new RestRequest();
-            request.Resource = "Accounts/{AccountSid}/Workspaces/{WorkspaceSid}/Statistics/Workers.json";
+            request.Resource = "Accounts/{AccountSid}/Workspaces/{WorkspaceSid}/Workers/Statistics.json";
 
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
 

@@ -38,7 +38,7 @@ namespace Twilio.Api.Tests.Integration
 
             mockClient.Verify(trc => trc.Execute<WorkflowStatistics>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
-            Assert.AreEqual("Accounts/{AccountSid}/Workspaces/{WorkspaceSid}/Statistics/Workflows/{WorkflowSid}.json", savedRequest.Resource);
+            Assert.AreEqual("Accounts/{AccountSid}/Workspaces/{WorkspaceSid}/Workflows/{WorkflowSid}/Statistics.json", savedRequest.Resource);
             Assert.AreEqual(Method.GET, savedRequest.Method);
             Assert.AreEqual(3, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
@@ -69,7 +69,7 @@ namespace Twilio.Api.Tests.Integration
 
             mockClient.Verify(trc => trc.ExecuteAsync<WorkflowStatistics>(It.IsAny<IRestRequest>(), It.IsAny<Action<WorkflowStatistics>>()), Times.Once);
             Assert.IsNotNull(savedRequest);
-            Assert.AreEqual("Accounts/{AccountSid}/Workspaces/{WorkspaceSid}/Statistics/Workflows/{WorkflowSid}.json", savedRequest.Resource);
+            Assert.AreEqual("Accounts/{AccountSid}/Workspaces/{WorkspaceSid}/Workflows/{WorkflowSid}/Statistics.json", savedRequest.Resource);
             Assert.AreEqual(Method.GET, savedRequest.Method);
             Assert.AreEqual(3, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");

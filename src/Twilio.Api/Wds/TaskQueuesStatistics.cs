@@ -19,7 +19,7 @@ namespace Twilio.Wds
             Require.Argument("TaskQueueSid", taskQueueSid);
 
             var request = new RestRequest();
-            request.Resource = "Accounts/{AccountSid}/Workspaces/{WorkspaceSid}/Statistics/TaskQueues/{TaskQueueSid}.json";
+            request.Resource = "Accounts/{AccountSid}/Workspaces/{WorkspaceSid}/TaskQueues/{TaskQueueSid}/Statistics.json";
 
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
             request.AddUrlSegment("TaskQueueSid", taskQueueSid);
@@ -31,7 +31,7 @@ namespace Twilio.Wds
         }
 
         /// <summary>
-        /// List task queues statictics on current workspace.
+        /// List task queues statistics on current workspace.
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the task queues belong to</param>
         public virtual TaskQueueStatisticsResult ListTaskQueuesStatistics(string workspaceSid)
@@ -50,7 +50,7 @@ namespace Twilio.Wds
             Require.Argument("WorkspaceSid", workspaceSid);
 
             var request = new RestRequest();
-            request.Resource = "Accounts/{AccountSid}/Workspaces/{WorkspaceSid}/Statistics/TaskQueues.json";
+            request.Resource = "Accounts/{AccountSid}/Workspaces/{WorkspaceSid}/TaskQueues/Statistics.json";
 
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
 
