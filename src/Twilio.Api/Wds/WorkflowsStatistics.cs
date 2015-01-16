@@ -12,8 +12,18 @@ namespace Twilio.Wds
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the activity belongs to</param>
         /// <param name="workflowSid">The Sid of the workflow to retrieve</param>
-        /// <param name="minutes">Definition of the interval in minutes prior to now. Default to 15.</param>
-        public virtual WorkflowStatistics GetWorkflowStatistics(string workspaceSid, string workflowSid, int? minutes)
+        public virtual WorkflowStatistics GetWorkflowStatistics(string workspaceSid, string workflowSid)
+        {
+            return GetWorkflowStatistics(workspaceSid, workflowSid, new StatisticsRequest());
+        }
+
+        /// <summary>
+        /// Retrieve the details for a workflow statistics instance. Makes a GET request to a WorkflowStatistics Instance resource.
+        /// </summary>
+        /// <param name="workspaceSid">The Sid of the workspace the activity belongs to</param>
+        /// <param name="workflowSid">The Sid of the workflow to retrieve</param>
+        /// <param name="options">Time-interval options.</param>
+        public virtual WorkflowStatistics GetWorkflowStatistics(string workspaceSid, string workflowSid, StatisticsRequest options)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("WorkflowSid", workflowSid);
@@ -24,8 +34,7 @@ namespace Twilio.Wds
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
             request.AddUrlSegment("WorkflowSid", workflowSid);
 
-            if (minutes.HasValue)
-                request.AddParameter("Minutes", minutes.Value);
+            AddStatisticsDateOptions(options, request);
 
             return Execute<WorkflowStatistics>(request);
         }

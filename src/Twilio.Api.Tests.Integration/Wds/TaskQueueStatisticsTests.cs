@@ -34,7 +34,10 @@ namespace Twilio.Api.Tests.Integration
                 .Returns(new TaskQueueStatistics());
             var client = mockClient.Object;
 
-            client.GetTaskQueueStatistics(WORKSPACE_SID, TASK_QUEUE_SID, 10);
+            var options = new StatisticsRequest();
+            options.Minutes = 10;
+
+            client.GetTaskQueueStatistics(WORKSPACE_SID, TASK_QUEUE_SID, options);
 
             mockClient.Verify(trc => trc.Execute<TaskQueueStatistics>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
@@ -61,7 +64,9 @@ namespace Twilio.Api.Tests.Integration
             var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            client.GetTaskQueueStatistics(WORKSPACE_SID, TASK_QUEUE_SID, 10, stats =>
+            var options = new StatisticsRequest();
+            options.Minutes = 10;
+            client.GetTaskQueueStatistics(WORKSPACE_SID, TASK_QUEUE_SID, options, stats =>
                 {
                     manualResetEvent.Set();
                 });
@@ -139,7 +144,10 @@ namespace Twilio.Api.Tests.Integration
             var friendlyName = Utilities.MakeRandomFriendlyName();
             var minutes = 10;
 
-            client.ListTaskQueuesStatistics(WORKSPACE_SID, friendlyName, minutes);
+            var options = new TaskQueuesStatisticsRequest();
+            options.FriendlyName = friendlyName;
+            options.Minutes = minutes;
+            client.ListTaskQueuesStatistics(WORKSPACE_SID, options);
 
             mockClient.Verify(trc => trc.Execute<TaskQueueStatisticsResult>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
@@ -167,8 +175,11 @@ namespace Twilio.Api.Tests.Integration
             manualResetEvent = new ManualResetEvent(false);
             var friendlyName = Utilities.MakeRandomFriendlyName();
             var minutes = 10;
+            var options = new TaskQueuesStatisticsRequest();
+            options.FriendlyName = friendlyName;
+            options.Minutes = minutes;
 
-            client.ListTaskQueuesStatistics(WORKSPACE_SID, friendlyName, minutes, stats => {
+            client.ListTaskQueuesStatistics(WORKSPACE_SID, options, stats => {
                 manualResetEvent.Set();
             });
 

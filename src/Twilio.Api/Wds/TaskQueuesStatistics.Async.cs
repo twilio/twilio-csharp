@@ -12,9 +12,19 @@ namespace Twilio.Wds
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the activity belongs to</param>
         /// <param name="taskQueueSid">The Sid of the task queue to retrieve</param>
-        /// <param name="minutes">Definition of the interval in minutes prior to now. Default to 15.</param>
+        public virtual void GetTaskQueueStatistics(string workspaceSid, string taskQueueSid, Action<TaskQueueStatistics> callback)
+        {
+            GetTaskQueueStatistics(workspaceSid, taskQueueSid, new StatisticsRequest(), callback);
+        }
+
+        /// <summary>
+        /// Retrieve the details for a task queue statistics instance. Makes a GET request to a TaskQueueStatistics Instance resource.
+        /// </summary>
+        /// <param name="workspaceSid">The Sid of the workspace the activity belongs to</param>
+        /// <param name="taskQueueSid">The Sid of the task queue to retrieve</param>
+        /// <param name="options">Time interval options</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void GetTaskQueueStatistics(string workspaceSid, string taskQueueSid, int? minutes, Action<TaskQueueStatistics> callback)
+        public virtual void GetTaskQueueStatistics(string workspaceSid, string taskQueueSid, StatisticsRequest options, Action<TaskQueueStatistics> callback)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("TaskQueueSid", taskQueueSid);
@@ -25,8 +35,7 @@ namespace Twilio.Wds
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
             request.AddUrlSegment("TaskQueueSid", taskQueueSid);
 
-            if (minutes.HasValue)
-                request.AddParameter("Minutes", minutes.Value);
+            AddStatisticsDateOptions(options, request);
 
             ExecuteAsync<TaskQueueStatistics>(request, (response) => { callback(response); });
         }
@@ -38,17 +47,16 @@ namespace Twilio.Wds
         /// <param name="callback">Method to call upon successful completion</param>
         public virtual void ListTaskQueuesStatistics(string workspaceSid, Action<TaskQueueStatisticsResult> callback)
         {
-            ListTaskQueuesStatistics(workspaceSid, null, null, callback);
+            ListTaskQueuesStatistics(workspaceSid, new TaskQueuesStatisticsRequest(), callback);
         }
 
         /// <summary>
         /// List task queues statictics on current workspace with filters
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the task queues belong to</param>
-        /// <param name="friendlyName">Optional friendly name to match.</param>
-        /// <param name="minutes">Definition of the interval in minutes prior to now. Default to 15.</param>
+        /// <param name="options">Filtering and time interval options.</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListTaskQueuesStatistics(string workspaceSid, string friendlyName, int? minutes, Action<TaskQueueStatisticsResult> callback)
+        public virtual void ListTaskQueuesStatistics(string workspaceSid, TaskQueuesStatisticsRequest options, Action<TaskQueueStatisticsResult> callback)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
 
@@ -57,10 +65,7 @@ namespace Twilio.Wds
 
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
 
-            if (friendlyName.HasValue())
-                request.AddParameter("FriendlyName", friendlyName);
-            if (minutes.HasValue)
-                request.AddParameter("Minutes", minutes.Value);
+            AddTaskQueuesStatisticsOptions(options, request);
 
             ExecuteAsync<TaskQueueStatisticsResult>(request, callback);
         }

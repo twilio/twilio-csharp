@@ -33,8 +33,10 @@ namespace Twilio.Api.Tests.Integration
                 .Callback<IRestRequest>((request) => savedRequest = request)
                 .Returns(new WorkerStatistics());
             var client = mockClient.Object;
+            var options = new StatisticsRequest();
+            options.Minutes = 10;
 
-            client.GetWorkerStatistics(WORKSPACE_SID, WORKER_SID, 10);
+            client.GetWorkerStatistics(WORKSPACE_SID, WORKER_SID, options);
 
             mockClient.Verify(trc => trc.Execute<WorkerStatistics>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
@@ -60,8 +62,10 @@ namespace Twilio.Api.Tests.Integration
                 .Callback<IRestRequest, Action<WorkerStatistics>>((request, action) => savedRequest = request);
             var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
+            var options = new StatisticsRequest();
+            options.Minutes = 10;
 
-            client.GetWorkerStatistics(WORKSPACE_SID, WORKER_SID, 10, stats =>
+            client.GetWorkerStatistics(WORKSPACE_SID, WORKER_SID, options, stats =>
                 {
                     manualResetEvent.Set();
                 });
@@ -140,8 +144,13 @@ namespace Twilio.Api.Tests.Integration
             var minutes = 10;
             var taskQueueSid = "WQ123";
             var taskQueueName = Utilities.MakeRandomFriendlyName ();
+            var options = new WorkersStatisticsRequest();
+            options.Minutes = minutes;
+            options.FriendlyName = friendlyName;
+            options.TaskQueueSid = taskQueueSid;
+            options.TaskQueueName = taskQueueName;
 
-            client.ListWorkersStatistics(WORKSPACE_SID, friendlyName, taskQueueSid, taskQueueName, minutes);
+            client.ListWorkersStatistics(WORKSPACE_SID, options);
 
             mockClient.Verify(trc => trc.Execute<WorkersStatistics>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
@@ -173,12 +182,13 @@ namespace Twilio.Api.Tests.Integration
                 .Callback<IRestRequest, Action<WorkersStatistics>>((request, action) => savedRequest = request);
             var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
-            var friendlyName = Utilities.MakeRandomFriendlyName();
-            var minutes = 10;
-            var taskQueueSid = "WQ123";
-            var taskQueueName = Utilities.MakeRandomFriendlyName ();
+            var options = new WorkersStatisticsRequest();
+            options.FriendlyName = Utilities.MakeRandomFriendlyName();
+            options.Minutes = 10;
+            options.TaskQueueSid = "WQ123";
+            options.TaskQueueName = Utilities.MakeRandomFriendlyName();;
 
-            client.ListWorkersStatistics(WORKSPACE_SID, friendlyName, taskQueueSid, taskQueueName, minutes, stats => {
+            client.ListWorkersStatistics(WORKSPACE_SID, options, stats => {
                 manualResetEvent.Set();
             });
 
@@ -192,16 +202,16 @@ namespace Twilio.Api.Tests.Integration
             Assert.AreEqual (WORKSPACE_SID, workspaceSidParam.Value);
             var friendlyNameParam = savedRequest.Parameters.Find(x => x.Name == "FriendlyName");
             Assert.IsNotNull (friendlyNameParam);
-            Assert.AreEqual (friendlyName, friendlyNameParam.Value);
+            Assert.AreEqual (options.FriendlyName, friendlyNameParam.Value);
             var taskQueueSidParam = savedRequest.Parameters.Find(x => x.Name == "TaskQueueSid");
             Assert.IsNotNull (taskQueueSidParam);
-            Assert.AreEqual (taskQueueSid, taskQueueSidParam.Value);
+            Assert.AreEqual (options.TaskQueueSid, taskQueueSidParam.Value);
             var taskQueueNameParam = savedRequest.Parameters.Find(x => x.Name == "TaskQueueName");
             Assert.IsNotNull (taskQueueNameParam);
-            Assert.AreEqual (taskQueueName, taskQueueNameParam.Value);
+            Assert.AreEqual (options.TaskQueueName, taskQueueNameParam.Value);
             var minutesParam = savedRequest.Parameters.Find(x => x.Name == "Minutes");
             Assert.IsNotNull(minutesParam);
-            Assert.AreEqual(minutes, minutesParam.Value);
+            Assert.AreEqual(options.Minutes, minutesParam.Value);
         }
     }
 }

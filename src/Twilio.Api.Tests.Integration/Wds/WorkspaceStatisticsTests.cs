@@ -31,8 +31,10 @@ namespace Twilio.Api.Tests.Integration
                 .Callback<IRestRequest>((request) => savedRequest = request)
                 .Returns(new WorkspaceStatistics());
             var client = mockClient.Object;
+            var options = new StatisticsRequest();
+            options.Minutes = 10;
 
-            client.GetWorkspaceStatistics(WORKSPACE_SID, 10);
+            client.GetWorkspaceStatistics(WORKSPACE_SID, options);
 
             mockClient.Verify(trc => trc.Execute<WorkspaceStatistics>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
@@ -55,8 +57,10 @@ namespace Twilio.Api.Tests.Integration
                 .Callback<IRestRequest, Action<WorkspaceStatistics>>((request, action) => savedRequest = request);
             var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
+            var options = new StatisticsRequest();
+            options.Minutes = 10;
 
-            client.GetWorkspaceStatistics(WORKSPACE_SID, 10, stats =>
+            client.GetWorkspaceStatistics(WORKSPACE_SID, options, stats =>
                 {
                     manualResetEvent.Set();
                 });

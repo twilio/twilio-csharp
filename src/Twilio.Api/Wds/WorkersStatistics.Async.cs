@@ -12,9 +12,20 @@ namespace Twilio.Wds
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the activity belongs to</param>
         /// <param name="workerSid">The Sid of the worker to retrieve</param>
-        /// <param name="minutes">Definition of the interval in minutes prior to now. Default to 15.</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void GetWorkerStatistics(string workspaceSid, string workerSid, int? minutes, Action<WorkerStatistics> callback)
+        public virtual void GetWorkerStatistics(string workspaceSid, string workerSid, Action<WorkerStatistics> callback)
+        {
+            GetWorkerStatistics(workspaceSid, workerSid, new StatisticsRequest(), callback);
+        }
+
+        /// <summary>
+        /// Retrieve the details for a worker statistics instance. Makes a GET request to a WorkerStatistics Instance resource.
+        /// </summary>
+        /// <param name="workspaceSid">The Sid of the workspace the activity belongs to</param>
+        /// <param name="workerSid">The Sid of the worker to retrieve</param>
+        /// <param name="options">Time-interval options.</param>
+        /// <param name="callback">Method to call upon successful completion</param>
+        public virtual void GetWorkerStatistics(string workspaceSid, string workerSid, StatisticsRequest options, Action<WorkerStatistics> callback)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("WorkerSid", workerSid);
@@ -25,8 +36,7 @@ namespace Twilio.Wds
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
             request.AddUrlSegment("WorkerSid", workerSid);
 
-            if (minutes.HasValue)
-                request.AddParameter("Minutes", minutes.Value);
+            AddStatisticsDateOptions(options, request);
 
             ExecuteAsync<WorkerStatistics>(request, (response) => { callback(response); });
         }
@@ -38,19 +48,15 @@ namespace Twilio.Wds
         /// <param name="callback">Method to call upon successful completion</param>
         public virtual void ListWorkersStatistics(string workspaceSid, Action<WorkersStatistics> callback)
         {
-            ListWorkersStatistics (workspaceSid, null, null, null, null, callback);
+            ListWorkersStatistics (workspaceSid, new WorkersStatisticsRequest(), callback);
         }
 
         /// <summary>
         /// List workers statictics on current workspace with filters
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the task queues belong to</param>
-        /// <param name="friendlyName">Optional friendly name to match.</param>
-        /// <param name="taskQueueSid">Optional task queue sid to match.</param>
-        /// <param name="taskQueueName">Optional task queue name to match.</param>
-        /// <param name="minutes">Definition of the interval in minutes prior to now. Default to 15.</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListWorkersStatistics(string workspaceSid, string friendlyName, string taskQueueSid, string taskQueueName, int? minutes, Action<WorkersStatistics> callback)
+        public virtual void ListWorkersStatistics(string workspaceSid, WorkersStatisticsRequest options, Action<WorkersStatistics> callback)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
 
@@ -59,14 +65,7 @@ namespace Twilio.Wds
 
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
 
-            if (friendlyName.HasValue())
-                request.AddParameter("FriendlyName", friendlyName);
-            if (taskQueueSid.HasValue())
-                request.AddParameter("TaskQueueSid", taskQueueSid);
-            if (taskQueueName.HasValue())
-                request.AddParameter("TaskQueueName", taskQueueName);
-            if (minutes.HasValue)
-                request.AddParameter("Minutes", minutes.Value);
+            AddWorkersStatisticsOptions(options, request);
 
             ExecuteAsync<WorkersStatistics>(request, callback);
         }

@@ -11,9 +11,19 @@ namespace Twilio.Wds
         /// Retrieve the details for a workspace statistics instance. Makes a GET request to a WorkspaceStatistics Instance resource.
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the activity belongs to</param>
-        /// <param name="minutes">Definition of the interval in minutes prior to now. Default to 15.</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void GetWorkspaceStatistics(string workspaceSid, int? minutes, Action<WorkspaceStatistics> callback)
+        public virtual void GetWorkspaceStatistics(string workspaceSid, Action<WorkspaceStatistics> callback)
+        {
+            GetWorkspaceStatistics(workspaceSid, new StatisticsRequest(), callback);
+        }
+
+        /// <summary>
+        /// Retrieve the details for a workspace statistics instance. Makes a GET request to a WorkspaceStatistics Instance resource.
+        /// </summary>
+        /// <param name="workspaceSid">The Sid of the workspace the activity belongs to</param>
+        /// <param name="options">Time-interval options.</param>
+        /// <param name="callback">Method to call upon successful completion</param>
+        public virtual void GetWorkspaceStatistics(string workspaceSid, StatisticsRequest options, Action<WorkspaceStatistics> callback)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
 
@@ -22,8 +32,7 @@ namespace Twilio.Wds
 
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
 
-            if (minutes.HasValue)
-                request.AddParameter("Minutes", minutes.Value);
+            AddStatisticsDateOptions(options, request);
 
             ExecuteAsync<WorkspaceStatistics>(request, (response) => { callback(response); });
         }

@@ -12,8 +12,8 @@ namespace Twilio.Wds
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the activity belongs to</param>
         /// <param name="taskQueueSid">The Sid of the task queue to retrieve</param>
-        /// <param name="minutes">Definition of the interval in minutes prior to now. Default to 15.</param>
-        public virtual TaskQueueStatistics GetTaskQueueStatistics(string workspaceSid, string taskQueueSid, int? minutes)
+        /// <param name="options">Time-interval options</param>
+        public virtual TaskQueueStatistics GetTaskQueueStatistics(string workspaceSid, string taskQueueSid, StatisticsRequest options)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("TaskQueueSid", taskQueueSid);
@@ -24,9 +24,8 @@ namespace Twilio.Wds
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
             request.AddUrlSegment("TaskQueueSid", taskQueueSid);
 
-            if (minutes.HasValue)
-                request.AddParameter("Minutes", minutes.Value);
-
+            AddStatisticsDateOptions(options, request);
+            
             return Execute<TaskQueueStatistics>(request);
         }
 
@@ -36,16 +35,15 @@ namespace Twilio.Wds
         /// <param name="workspaceSid">The Sid of the workspace the task queues belong to</param>
         public virtual TaskQueueStatisticsResult ListTaskQueuesStatistics(string workspaceSid)
         {
-            return ListTaskQueuesStatistics(workspaceSid, null, null);
+            return ListTaskQueuesStatistics(workspaceSid, new TaskQueuesStatisticsRequest());
         }
 
         /// <summary>
         /// List task queues statictics on current workspace with filters
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the task queues belong to</param>
-        /// <param name="friendlyName">Optional friendly name to match.</param>
-        /// <param name="minutes">Definition of the interval in minutes prior to now. Default to 15.</param>
-        public virtual TaskQueueStatisticsResult ListTaskQueuesStatistics(string workspaceSid, string friendlyName, int? minutes)
+        /// <param name="options">Time-interval and filtering options.</param>
+        public virtual TaskQueueStatisticsResult ListTaskQueuesStatistics(string workspaceSid, TaskQueuesStatisticsRequest options)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
 
@@ -54,12 +52,34 @@ namespace Twilio.Wds
 
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
 
-            if (friendlyName.HasValue())
-                request.AddParameter("FriendlyName", friendlyName);
-            if (minutes.HasValue)
-                request.AddParameter("Minutes", minutes.Value);
-
+            AddTaskQueuesStatisticsOptions(options, request);
+            
             return Execute<TaskQueueStatisticsResult>(request);
+        }
+
+        private void AddTaskQueuesStatisticsOptions(TaskQueuesStatisticsRequest options, RestRequest request)
+        {
+            AddStatisticsDateOptions(options, request);
+
+            if (options.FriendlyName.HasValue()) {
+                request.AddParameter("FriendlyName", options.FriendlyName);
+            }
+
+            if (options.Count.HasValue) {
+                request.AddParameter("PageSize", options.Count.Value);
+            }
+
+            if (options.PageNumber.HasValue) {
+                request.AddParameter("Page", options.PageNumber.Value);
+            }
+
+            if (options.BeforeSid.HasValue()) {
+                request.AddParameter("BeforeSid", options.BeforeSid);
+            }
+
+            if (options.AfterSid.HasValue()) {
+                request.AddParameter("AfterSid", options.AfterSid);
+            }
         }
     }
 }
