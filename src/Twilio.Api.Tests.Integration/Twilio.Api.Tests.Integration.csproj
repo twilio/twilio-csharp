@@ -71,21 +71,21 @@
     <Compile Include="UsageTriggerTests.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="FeedbackTests.cs" />
-    <Compile Include="Wds\TaskQueueStatisticsTests.cs" />
-    <Compile Include="Wds\WorkflowStatisticsTests.cs" />
-    <Compile Include="Wds\WorkerStatisticsTests.cs" />
-    <Compile Include="Wds\WorkspaceStatisticsTests.cs" />
     <Compile Include="Model\Wds\WorkerStatisticsTests.cs" />
     <Compile Include="Model\Wds\TaskQueueStatisticsTests.cs" />
     <Compile Include="Model\Wds\WorkspaceStatisticsTests.cs" />
     <Compile Include="Model\Wds\WorkflowStatisticsTests.cs" />
-    <Compile Include="Wds\WorkspaceTests.cs" />
-    <Compile Include="Wds\WorkflowTests.cs" />
-    <Compile Include="Wds\WorkerTests.cs" />
-    <Compile Include="Wds\TaskTests.cs" />
-    <Compile Include="Wds\TaskQueueTests.cs" />
-    <Compile Include="Wds\ReservationTests.cs" />
-    <Compile Include="Wds\ActivityTests.cs" />
+    <Compile Include="TaskRouter\TaskQueueStatisticsTests.cs" />
+    <Compile Include="TaskRouter\WorkflowStatisticsTests.cs" />
+    <Compile Include="TaskRouter\WorkerStatisticsTests.cs" />
+    <Compile Include="TaskRouter\WorkspaceStatisticsTests.cs" />
+    <Compile Include="TaskRouter\WorkspaceTests.cs" />
+    <Compile Include="TaskRouter\WorkflowTests.cs" />
+    <Compile Include="TaskRouter\WorkerTests.cs" />
+    <Compile Include="TaskRouter\TaskTests.cs" />
+    <Compile Include="TaskRouter\TaskQueueTests.cs" />
+    <Compile Include="TaskRouter\ReservationTests.cs" />
+    <Compile Include="TaskRouter\ActivityTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Twilio.Api\Twilio.Api.csproj">
@@ -103,14 +103,11 @@
   </Target>
   -->
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Wds\" />
     <Folder Include="Resources\" />
     <Folder Include="Resources\Wds\" />
     <Folder Include="Model\" />
     <Folder Include="Model\Wds\" />
+    <Folder Include="TaskRouter\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Wds\workspace_statistics.json">
@@ -131,5 +128,8 @@
     <Content Include="Resources\Wds\task_queues_statistics.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

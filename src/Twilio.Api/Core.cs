@@ -158,13 +158,13 @@ namespace Twilio
         }
     }
 
-    namespace Wds
+    namespace TaskRouter
     {
 
         /// <summary>
         /// REST API wrapper.
         /// </summary>
-        public partial class TwilioWdsClient : TwilioClient
+        public partial class TwilioTaskRouterClient : TwilioClient
         {
             private const string STATISTICS_DATE_FORMAT = "yyyy-MM-ddTHH:mm:ssZ";
 
@@ -173,7 +173,7 @@ namespace Twilio
             /// </summary>
             /// <param name="accountSid">The AccountSid to authenticate with</param>
             /// <param name="authToken">The AuthToken to authenticate with</param>
-            public TwilioWdsClient(string accountSid, string authToken) : this(accountSid, authToken, accountSid) { }
+            public TwilioTaskRouterClient(string accountSid, string authToken) : this(accountSid, authToken, accountSid) { }
 
             /// <summary>
             /// Initializes a new client with the specified credentials.
@@ -181,7 +181,7 @@ namespace Twilio
             /// <param name="accountSid">The AccountSid to authenticate with</param>
             /// <param name="authToken">The AuthToken to authenticate with</param>
             /// <param name="accountResourceSid"></param>
-            public TwilioWdsClient(string accountSid, string authToken, string accountResourceSid) : base(accountSid, authToken, accountResourceSid, "v1", "https://wds.twilio.com/") { }
+            public TwilioTaskRouterClient(string accountSid, string authToken, string accountResourceSid) : base(accountSid, authToken, accountResourceSid, "v1", "https://wds.twilio.com/") { }
 
             private void AddStatisticsDateOptions(StatisticsRequest options, RestRequest request)
             {

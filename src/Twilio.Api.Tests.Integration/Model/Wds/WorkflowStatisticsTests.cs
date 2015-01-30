@@ -3,7 +3,7 @@ using System.IO;
 using NUnit.Framework;
 using RestSharp;
 using RestSharp.Deserializers;
-using Twilio.Wds;
+using Twilio.TaskRouter;
 
 namespace Twilio.Api.Tests.Integration.Model
 {
