@@ -46,6 +46,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Api.Tests.Integratio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.TaskRouter.Capability", "Twilio.TaskRouter.Capability\Twilio.TaskRouter.Capability.csproj", "{7CA0FADC-D5B8-4206-887E-776982E8FF48}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.TaskRouter.Capability.Tests", "Twilio.TaskRouter.Capability.Tests\Twilio.TaskRouter.Capability.Tests.csproj", "{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -296,6 +298,30 @@ Global
 		{7CA0FADC-D5B8-4206-887E-776982E8FF48}.ReleaseWithPackage|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{7CA0FADC-D5B8-4206-887E-776982E8FF48}.ReleaseWithPackage|Mixed Platforms.Build.0 = Release|Any CPU
 		{7CA0FADC-D5B8-4206-887E-776982E8FF48}.ReleaseWithPackage|x86.ActiveCfg = Release|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.Default|Any CPU.ActiveCfg = Debug|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.Default|Any CPU.Build.0 = Debug|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.Default|ARM.ActiveCfg = Debug|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.Default|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.Default|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.Default|x86.ActiveCfg = Debug|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.Release|ARM.ActiveCfg = Release|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.Release|x86.ActiveCfg = Release|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.ReleaseWithPackage|Any CPU.ActiveCfg = Release|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.ReleaseWithPackage|Any CPU.Build.0 = Release|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.ReleaseWithPackage|ARM.ActiveCfg = Release|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.ReleaseWithPackage|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.ReleaseWithPackage|Mixed Platforms.Build.0 = Release|Any CPU
+		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.ReleaseWithPackage|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

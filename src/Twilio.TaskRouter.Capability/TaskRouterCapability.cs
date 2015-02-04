@@ -32,14 +32,15 @@ namespace Twilio.TaskRouter.Capability
             this.authToken = authToken;
             this.workspaceSid = workspaceSid;
             this.workerSid = workerSid;
-            allowWorkerWebsockets();
+            this.policies = new List<Policy>();
+            this.AllowWorkerWebsockets();
         }
 
         public void AllowWorkerActivityUpdates()
         {
             var url = GetWorkerUrl();
             var policy = new Policy(url, "POST", true);
-            policy.postFilter.Add("Activity", Policy.required);
+            policy.postFilter.Add("ActivitySid", Policy.required);
             policies.Add(policy);
         }
 
@@ -59,7 +60,7 @@ namespace Twilio.TaskRouter.Capability
 
         private string GetWorkspaceUrl()
         {
-            return taskRouterUrlBase + "/Accounts/" + accountSid + "/Workspaces/" + workspaceSid;
+            return taskRouterUrlBase + "/" + taskRouterVersion + "/Accounts/" + accountSid + "/Workspaces/" + workspaceSid;
         }
 
         private string GetWorkerUrl()
@@ -67,11 +68,11 @@ namespace Twilio.TaskRouter.Capability
             return GetWorkspaceUrl() + "/Workers/" + workerSid;
         }
 
-        private void allowWorkerWebsockets()
+        private void AllowWorkerWebsockets()
         {
             var wsUrl = taskRouterEventsUrlBase + "/" + accountSid + "/" + workerSid;
-            policies.Add(new Policy(wsUrl, "GET", true));
-            policies.Add(new Policy(wsUrl, "POST", true));
+            this.policies.Add(new Policy(wsUrl, "GET", true));
+            this.policies.Add(new Policy(wsUrl, "POST", true));
         }
 
         public string GenerateToken()

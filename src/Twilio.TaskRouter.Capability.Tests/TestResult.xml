@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="Z:\twilio-csharp\src\Twilio.TaskRouter.Capability.Tests\Twilio.TaskRouter.Capability.Tests.csproj" total="1" errors="1" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2015-02-04" time="14:59:42">
+  <environment nunit-version="2.6.4.14350" clr-version="2.0.50727.7905" os-version="Microsoft Windows NT 6.2.9200.0" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.4\bin" machine-name="SKIMBREL-W8" user="skimbrel" user-domain="TWILIO" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="Project" name="Z:\twilio-csharp\src\Twilio.TaskRouter.Capability.Tests\Twilio.TaskRouter.Capability.Tests.csproj" executed="True" result="Failure" success="False" time="31.338" asserts="0">
+    <results>
+      <test-suite type="Assembly" name="Z:\twilio-csharp\src\Twilio.TaskRouter.Capability.Tests\bin\Debug\Twilio.TaskRouter.Capability.Tests.dll" executed="True" result="Failure" success="False" time="31.313" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="Twilio" executed="True" result="Failure" success="False" time="31.313" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="TaskRouter" executed="True" result="Failure" success="False" time="31.312" asserts="0">
+                <results>
+                  <test-suite type="Namespace" name="Capability" executed="True" result="Failure" success="False" time="31.312" asserts="0">
+                    <results>
+                      <test-suite type="Namespace" name="Tests" executed="True" result="Failure" success="False" time="31.312" asserts="0">
+                        <results>
+                          <test-suite type="TestFixture" name="CapabilityTests" executed="True" result="Failure" success="False" time="31.308" asserts="0">
+                            <results>
+                              <test-case name="Twilio.TaskRouter.Capability.Tests.CapabilityTests.ShouldAllowWorkerActivityUpdates" executed="True" result="Error" success="False" time="31.287" asserts="7">
+                                <failure>
+                                  <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object.]]></message>
+                                  <stack-trace><![CDATA[at Twilio.TaskRouter.Capability.Tests.CapabilityTests.ShouldAllowWorkerActivityUpdates() in z:\twilio-csharp\src\Twilio.TaskRouter.Capability.Tests\CapabilityTests.cs:line 115
+]]></stack-trace>
+                                </failure>
+                              </test-case>
+                            </results>
+                          </test-suite>
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
