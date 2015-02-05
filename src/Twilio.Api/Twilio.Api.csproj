@@ -226,53 +226,6 @@
     <Compile Include="Model\TwilioListBase.cs" />
     <Compile Include="Model\ValidationRequest.cs" />
     <Compile Include="Sip.cs" />
-    <Compile Include="Model\TaskRouter\Activity.cs" />
-    <Compile Include="Model\TaskRouter\Task.cs" />
-    <Compile Include="Model\TaskRouter\Reservation.cs" />
-    <Compile Include="Model\TaskRouter\Worker.cs" />
-    <Compile Include="Model\TaskRouter\Workflow.cs" />
-    <Compile Include="Model\TaskRouter\Workspace.cs" />
-    <Compile Include="Model\TaskRouter\ActivityResult.cs" />
-    <Compile Include="Model\TaskRouter\ReservationResult.cs" />
-    <Compile Include="Model\TaskRouter\TaskResult.cs" />
-    <Compile Include="Model\TaskRouter\TaskListRequest.cs" />
-    <Compile Include="Model\TaskRouter\WorkerListRequest.cs" />
-    <Compile Include="Model\TaskRouter\WorkerResult.cs" />
-    <Compile Include="Model\TaskRouter\WorkflowResult.cs" />
-    <Compile Include="Model\TaskRouter\WorkspaceResult.cs" />
-    <Compile Include="Model\TaskRouter\TaskQueue.cs" />
-    <Compile Include="Model\TaskRouter\TaskQueueResult.cs" />
-    <Compile Include="Model\TaskRouter\TaskQueueStatistics.cs" />
-    <Compile Include="Model\TaskRouter\TaskQueueStatisticsResult.cs" />
-    <Compile Include="Model\TaskRouter\WorkerStatistics.cs" />
-    <Compile Include="Model\TaskRouter\WorkersStatistics.cs" />
-    <Compile Include="Model\TaskRouter\WorkflowStatistics.cs" />
-    <Compile Include="Model\TaskRouter\WorkspaceStatistics.cs" />
-    <Compile Include="Model\TaskRouter\StatisticsRequest.cs" />
-    <Compile Include="Model\TaskRouter\WorkersStatisticsRequest.cs" />
-    <Compile Include="Model\TaskRouter\TaskQueuesStatisticsRequest.cs" />
-    <Compile Include="TaskRouter\Activities.cs" />
-    <Compile Include="TaskRouter\Reservations.cs" />
-    <Compile Include="TaskRouter\Tasks.cs" />
-    <Compile Include="TaskRouter\Workers.cs" />
-    <Compile Include="TaskRouter\Workflows.cs" />
-    <Compile Include="TaskRouter\Workspaces.cs" />
-    <Compile Include="TaskRouter\Activities.Async.cs" />
-    <Compile Include="TaskRouter\Reservations.Async.cs" />
-    <Compile Include="TaskRouter\Tasks.Async.cs" />
-    <Compile Include="TaskRouter\Workers.Async.cs" />
-    <Compile Include="TaskRouter\Workflows.Async.cs" />
-    <Compile Include="TaskRouter\Workspaces.Async.cs" />
-    <Compile Include="TaskRouter\TaskQueues.cs" />
-    <Compile Include="TaskRouter\TaskQueues.Async.cs" />
-    <Compile Include="TaskRouter\TaskQueuesStatistics.cs" />
-    <Compile Include="TaskRouter\TaskQueuesStatistics.Async.cs" />
-    <Compile Include="TaskRouter\WorkersStatistics.cs" />
-    <Compile Include="TaskRouter\WorkflowsStatistics.cs" />
-    <Compile Include="TaskRouter\WorkersStatistics.Async.cs" />
-    <Compile Include="TaskRouter\WorkflowsStatistics.Async.cs" />
-    <Compile Include="TaskRouter\WorkspacesStatistics.cs" />
-    <Compile Include="TaskRouter\WorkspacesStatistics.Async.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -295,4 +248,5 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
 </Project>

@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="Z:\twilio-csharp\src\Twilio.Api.Tests.Integration\Twilio.Api.Tests.Integration.csproj" total="208" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2015-02-04" time="13:44:58">
+  <environment nunit-version="2.6.4.14350" clr-version="2.0.50727.7905" os-version="Microsoft Windows NT 6.2.9200.0" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.4\bin" machine-name="SKIMBREL-W8" user="skimbrel" user-domain="TWILIO" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="Project" name="Z:\twilio-csharp\src\Twilio.Api.Tests.Integration\Twilio.Api.Tests.Integration.csproj" executed="True" result="Success" success="True" time="6.242" asserts="0">
+    <results>
+      <test-suite type="Assembly" name="Z:\twilio-csharp\src\Twilio.Api.Tests.Integration\bin\Debug\Twilio.Api.Tests.Integration.dll" executed="True" result="Success" success="True" time="6.222" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="Twilio" executed="True" result="Success" success="True" time="6.222" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="Api" executed="True" result="Success" success="True" time="6.222" asserts="0">
+                <results>
+                  <test-suite type="Namespace" name="Tests" executed="True" result="Success" success="True" time="6.221" asserts="0">
+                    <results>
+                      <test-suite type="Namespace" name="Integration" executed="True" result="Success" success="True" time="6.221" asserts="0">
+                        <results>
+                          <test-suite type="TestFixture" name="AccountTests" executed="True" result="Success" success="True" time="2.159" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.AccountTests.ShouldChangeSubAccountStatus" executed="True" result="Success" success="True" time="1.942" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.AccountTests.ShouldChangeSubAccountStatusAsynchronously" executed="True" result="Success" success="True" time="0.026" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.AccountTests.ShouldCreateSubAccount" executed="True" result="Success" success="True" time="0.008" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.AccountTests.ShouldCreateSubAccountAsynchronously" executed="True" result="Success" success="True" time="0.011" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.AccountTests.ShouldGetCurrentAccount" executed="True" result="Success" success="True" time="0.006" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.AccountTests.ShouldGetCurrentAccountAsynchronously" executed="True" result="Success" success="True" time="0.009" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.AccountTests.ShouldGetSubAccount" executed="True" result="Success" success="True" time="0.009" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.AccountTests.ShouldGetSubAccountAsynchronously" executed="True" result="Success" success="True" time="0.014" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.AccountTests.ShouldListSubAccounts" executed="True" result="Success" success="True" time="0.013" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.AccountTests.ShouldListSubAccountsAsynchronously" executed="True" result="Success" success="True" time="0.008" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.AccountTests.ShouldUpdateCurrentAccountName" executed="True" result="Success" success="True" time="0.009" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.AccountTests.ShouldUpdateCurrentAccountNameAsynchronously" executed="True" result="Success" success="True" time="0.011" asserts="6" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="ActivityTests" executed="True" result="Success" success="True" time="0.338" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.ActivityTests.ShouldAddNewActivity" executed="True" result="Success" success="True" time="0.144" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.ActivityTests.ShouldAddNewActivityAsynchronously" executed="True" result="Success" success="True" time="0.016" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.ActivityTests.ShouldDeleteActivity" executed="True" result="Success" success="True" time="0.013" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.ActivityTests.ShouldDeleteActivityAsynchronously" executed="True" result="Success" success="True" time="0.015" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.ActivityTests.ShouldGetActivity" executed="True" result="Success" success="True" time="0.011" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.ActivityTests.ShouldGetActivityAsynchronously" executed="True" result="Success" success="True" time="0.014" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.ActivityTests.ShouldListActivities" executed="True" result="Success" success="True" time="0.014" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.ActivityTests.ShouldListActivitiesAsynchronously" executed="True" result="Success" success="True" time="0.019" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.ActivityTests.ShouldListActivitiesUsingFilters" executed="True" result="Success" success="True" time="0.007" asserts="16" />
+                              <test-case name="Twilio.Api.Tests.Integration.ActivityTests.ShouldListActivitiesUsingFiltersAsynchronously" executed="True" result="Success" success="True" time="0.016" asserts="16" />
+                              <test-case name="Twilio.Api.Tests.Integration.ActivityTests.ShouldUpdateActivity" executed="True" result="Success" success="True" time="0.010" asserts="12" />
+                              <test-case name="Twilio.Api.Tests.Integration.ActivityTests.ShouldUpdateActivityAsynchronously" executed="True" result="Success" success="True" time="0.011" asserts="12" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="ApplicationTests" executed="True" result="Success" success="True" time="0.206" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.ApplicationTests.ShouldAddNewApplication" executed="True" result="Success" success="True" time="0.016" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.ApplicationTests.ShouldAddNewApplicationAsynchronously" executed="True" result="Success" success="True" time="0.017" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.ApplicationTests.ShouldDeleteApplication" executed="True" result="Success" success="True" time="0.018" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.ApplicationTests.ShouldDeleteApplicationAsynchronously" executed="True" result="Success" success="True" time="0.012" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.ApplicationTests.ShouldGetApplication" executed="True" result="Success" success="True" time="0.011" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.ApplicationTests.ShouldGetApplicationAsynchronously" executed="True" result="Success" success="True" time="0.014" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.ApplicationTests.ShouldListApplications" executed="True" result="Success" success="True" time="0.013" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.ApplicationTests.ShouldListApplicationsAsynchronously" executed="True" result="Success" success="True" time="0.020" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.ApplicationTests.ShouldListApplicationsUsingFilters" executed="True" result="Success" success="True" time="0.008" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.ApplicationTests.ShouldUpdateApplication" executed="True" result="Success" success="True" time="0.010" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.ApplicationTests.ShouldUpdateApplicationAsynchronously" executed="True" result="Success" success="True" time="0.015" asserts="6" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="AuthorizedConnectAppTests" executed="True" result="Success" success="True" time="0.073" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.AuthorizedConnectAppTests.ShouldGetAuthorizedConnectApp" executed="True" result="Success" success="True" time="0.010" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.AuthorizedConnectAppTests.ShouldGetAuthorizedConnectAppAsynchronously" executed="True" result="Success" success="True" time="0.015" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.AuthorizedConnectAppTests.ShouldListAuthorizedConnectApp" executed="True" result="Success" success="True" time="0.008" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.AuthorizedConnectAppTests.ShouldListAuthorizedConnectAppAsynchronously" executed="True" result="Success" success="True" time="0.016" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.AuthorizedConnectAppTests.ShouldListAuthorizedConnectAppUsingFilters" executed="True" result="Success" success="True" time="0.004" asserts="4" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="AvailablePhoneNumberTests" executed="True" result="Success" success="True" time="0.111" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.AvailablePhoneNumberTests.ShouldListAvailableLocalPhoneNumbers" executed="True" result="Success" success="True" time="0.017" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.AvailablePhoneNumberTests.ShouldListAvailableLocalPhoneNumbersAsynchronously" executed="True" result="Success" success="True" time="0.014" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.AvailablePhoneNumberTests.ShouldListAvailableLocalPhoneNumbersWithOptions" executed="True" result="Success" success="True" time="0.008" asserts="12" />
+                              <test-case name="Twilio.Api.Tests.Integration.AvailablePhoneNumberTests.ShouldListAvailableTollFreePhoneNumbers" executed="True" result="Success" success="True" time="0.006" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.AvailablePhoneNumberTests.ShouldListAvailableTollFreePhoneNumbersAsynchronously" executed="True" result="Success" success="True" time="0.013" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.AvailablePhoneNumberTests.ShouldListAvailableTollFreePhoneNumbersAsynchronouslyThatContain" executed="True" result="Success" success="True" time="0.010" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.AvailablePhoneNumberTests.ShouldListAvailableTollFreePhoneNumbersThatContain" executed="True" result="Success" success="True" time="0.008" asserts="8" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="CallTests" executed="True" result="Success" success="True" time="0.145" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.CallTests.ShouldGetCall" executed="True" result="Success" success="True" time="0.013" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.CallTests.ShouldHangupCall" executed="True" result="Success" success="True" time="0.009" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.CallTests.ShouldInitiateOutboundCall" executed="True" result="Success" success="True" time="0.017" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.CallTests.ShouldInitiateOutboundCallAsynchronously" executed="True" result="Success" success="True" time="0.017" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.CallTests.ShouldListCalls" executed="True" result="Success" success="True" time="0.008" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.CallTests.ShouldListCallsAsynchronously" executed="True" result="Success" success="True" time="0.013" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.CallTests.ShouldListCallsWithFilters" executed="True" result="Success" success="True" time="0.015" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.CallTests.ShouldRedirectCall" executed="True" result="Success" success="True" time="0.015" asserts="10" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="ConferenceParticipantTests" executed="True" result="Success" success="True" time="0.085" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.ConferenceParticipantTests.ShouldGetConferenceParticipant" executed="True" result="Success" success="True" time="0.011" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.ConferenceParticipantTests.ShouldKickConferenceParticipant" executed="True" result="Success" success="True" time="0.012" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.ConferenceParticipantTests.ShouldListConferenceParticipants" executed="True" result="Success" success="True" time="0.012" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.ConferenceParticipantTests.ShouldMuteConferenceParticipant" executed="True" result="Success" success="True" time="0.009" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.ConferenceParticipantTests.ShouldUnMuteConferenceParticipant" executed="True" result="Success" success="True" time="0.009" asserts="10" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="ConferenceTests" executed="True" result="Success" success="True" time="0.108" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.ConferenceTests.ShouldGetConference" executed="True" result="Success" success="True" time="0.014" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.ConferenceTests.ShouldGetConferenceAsynchronously" executed="True" result="Success" success="True" time="0.012" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.ConferenceTests.ShouldListConferenceAsynchronouslyUsingFilters" executed="True" result="Success" success="True" time="0.018" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.ConferenceTests.ShouldListConferences" executed="True" result="Success" success="True" time="0.009" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.ConferenceTests.ShouldListConferencesAsynchronously" executed="True" result="Success" success="True" time="0.013" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.ConferenceTests.ShouldListConferenceUsingFilters" executed="True" result="Success" success="True" time="0.009" asserts="4" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="ConnectAppTests" executed="True" result="Success" success="True" time="0.004" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.ConnectAppTests.TestMethod1" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="FeedbackTests" executed="True" result="Success" success="True" time="0.052" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.FeedbackTests.TestCreateFeedback" executed="True" result="Success" success="True" time="0.012" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.FeedbackTests.TestDeleteFeedback" executed="True" result="Success" success="True" time="0.007" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.FeedbackTests.TestGetFeedback" executed="True" result="Success" success="True" time="0.008" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.FeedbackTests.TestUpdateFeedback" executed="True" result="Success" success="True" time="0.008" asserts="10" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="IncomingPhoneNumberTests" executed="True" result="Success" success="True" time="0.218" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.IncomingPhoneNumberTests.ShouldAddNewIncomingPhoneNumber" executed="True" result="Success" success="True" time="0.026" asserts="22" />
+                              <test-case name="Twilio.Api.Tests.Integration.IncomingPhoneNumberTests.ShouldAddNewIncomingPhoneNumberAsynchronously" executed="True" result="Success" success="True" time="0.018" asserts="22" />
+                              <test-case name="Twilio.Api.Tests.Integration.IncomingPhoneNumberTests.ShouldAddNewIncomingPhoneNumberByAreaCode" executed="True" result="Success" success="True" time="0.013" asserts="22" />
+                              <test-case name="Twilio.Api.Tests.Integration.IncomingPhoneNumberTests.ShouldDeleteIncomingPhoneNumber" executed="True" result="Success" success="True" time="0.009" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.IncomingPhoneNumberTests.ShouldDeleteIncomingPhoneNumberAsynchronously" executed="True" result="Success" success="True" time="0.013" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.IncomingPhoneNumberTests.ShouldGetIncomingPhoneNumber" executed="True" result="Success" success="True" time="0.012" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.IncomingPhoneNumberTests.ShouldGetIncomingPhoneNumberAsynchronously" executed="True" result="Success" success="True" time="0.011" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.IncomingPhoneNumberTests.ShouldListIncomingPhoneNumbers" executed="True" result="Success" success="True" time="0.015" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.IncomingPhoneNumberTests.ShouldListIncomingPhoneNumbersAsynchronously" executed="True" result="Success" success="True" time="0.017" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.IncomingPhoneNumberTests.ShouldListIncomingPhoneNumbersUsingFilters" executed="True" result="Success" success="True" time="0.007" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.IncomingPhoneNumberTests.ShouldUpdateIncomingPhoneNumber" executed="True" result="Success" success="True" time="0.011" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.IncomingPhoneNumberTests.ShouldUpdateIncomingPhoneNumberAsynchronously" executed="True" result="Success" success="True" time="0.013" asserts="6" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="Namespace" name="Model" executed="True" result="Success" success="True" time="0.513" asserts="0">
+                            <results>
+                              <test-suite type="TestFixture" name="TaskQueueStatisticsTests" executed="True" result="Success" success="True" time="0.421" asserts="0">
+                                <results>
+                                  <test-case name="Twilio.Api.Tests.Integration.Model.TaskQueueStatisticsTests.testDeserializeInstanceResponse" executed="True" result="Success" success="True" time="0.401" asserts="1" />
+                                  <test-case name="Twilio.Api.Tests.Integration.Model.TaskQueueStatisticsTests.testDeserializeListResponse" executed="True" result="Success" success="True" time="0.010" asserts="1" />
+                                </results>
+                              </test-suite>
+                              <test-suite type="TestFixture" name="WorkerStatisticsTests" executed="True" result="Success" success="True" time="0.044" asserts="0">
+                                <results>
+                                  <test-case name="Twilio.Api.Tests.Integration.Model.WorkerStatisticsTests.testDeserializeInstanceResponse" executed="True" result="Success" success="True" time="0.012" asserts="1" />
+                                  <test-case name="Twilio.Api.Tests.Integration.Model.WorkerStatisticsTests.testDeserializeListResponse" executed="True" result="Success" success="True" time="0.021" asserts="1" />
+                                </results>
+                              </test-suite>
+                              <test-suite type="TestFixture" name="WorkflowStatisticsTests" executed="True" result="Success" success="True" time="0.016" asserts="0">
+                                <results>
+                                  <test-case name="Twilio.Api.Tests.Integration.Model.WorkflowStatisticsTests.testDeserializeResponse" executed="True" result="Success" success="True" time="0.014" asserts="1" />
+                                </results>
+                              </test-suite>
+                              <test-suite type="TestFixture" name="WorkspaceStatisticsTests" executed="True" result="Success" success="True" time="0.015" asserts="0">
+                                <results>
+                                  <test-case name="Twilio.Api.Tests.Integration.Model.WorkspaceStatisticsTests.testDeserializeResponse" executed="True" result="Success" success="True" time="0.010" asserts="1" />
+                                </results>
+                              </test-suite>
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="NotificationTests" executed="True" result="Success" success="True" time="0.108" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.NotificationTests.ShouldDeleteNotification" executed="True" result="Success" success="True" time="0.009" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.NotificationTests.ShouldDeleteNotificationAsynchronously" executed="True" result="Success" success="True" time="0.012" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.NotificationTests.ShouldGetNotification" executed="True" result="Success" success="True" time="0.010" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.NotificationTests.ShouldGetNotificationAsynchronously" executed="True" result="Success" success="True" time="0.011" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.NotificationTests.ShouldListNotification" executed="True" result="Success" success="True" time="0.014" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.NotificationTests.ShouldListNotificationAsynchronously" executed="True" result="Success" success="True" time="0.015" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.NotificationTests.ShouldListNotificationUsingFilters" executed="True" result="Success" success="True" time="0.008" asserts="6" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="OutgoingCallerIdTests" executed="True" result="Success" success="True" time="0.109" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.OutgoingCallerIdTests.ShouldAddNewOutgoingCallerId" executed="True" result="Success" success="True" time="0.023" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.OutgoingCallerIdTests.ShouldDeleteOutgoingCallerId" executed="True" result="Success" success="True" time="0.008" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.OutgoingCallerIdTests.ShouldGetOutgoingCallerId" executed="True" result="Success" success="True" time="0.010" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.OutgoingCallerIdTests.ShouldListOutgoingCallerIds" executed="True" result="Success" success="True" time="0.009" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.OutgoingCallerIdTests.ShouldListOutgoingCallerIdsAsynchronously" executed="True" result="Success" success="True" time="0.012" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.OutgoingCallerIdTests.ShouldListOutgoingCallerIdsUsingFilters" executed="True" result="Success" success="True" time="0.006" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.OutgoingCallerIdTests.ShouldUpdateOutgoingCallerId" executed="True" result="Success" success="True" time="0.011" asserts="8" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="QueueTests" executed="True" result="Success" success="True" time="0.080" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.QueueTests.ShouldCreateNewQueue" executed="True" result="Success" success="True" time="0.012" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.QueueTests.ShouldDeleteQueue" executed="True" result="Success" success="True" time="0.008" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.QueueTests.ShouldGetQueue" executed="True" result="Success" success="True" time="0.011" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.QueueTests.ShouldListQueues" executed="True" result="Success" success="True" time="0.009" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.QueueTests.ShouldListQueuesAsynchronously" executed="True" result="Success" success="True" time="0.009" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.QueueTests.ShouldUpdateQueue" executed="True" result="Success" success="True" time="0.008" asserts="10" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="RecordingTests" executed="True" result="Success" success="True" time="0.005" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.RecordingTests.TestMethod1" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="ReservationTests" executed="True" result="Success" success="True" time="0.152" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.ReservationTests.ShouldGetReservation" executed="True" result="Success" success="True" time="0.014" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.ReservationTests.ShouldGetReservationAsynchronously" executed="True" result="Success" success="True" time="0.015" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.ReservationTests.ShouldListReservations" executed="True" result="Success" success="True" time="0.018" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.ReservationTests.ShouldListReservationsAsynchronously" executed="True" result="Success" success="True" time="0.018" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.ReservationTests.ShouldListReservationsUsingFilters" executed="True" result="Success" success="True" time="0.011" asserts="18" />
+                              <test-case name="Twilio.Api.Tests.Integration.ReservationTests.ShouldListReservationsUsingFiltersAsynchronously" executed="True" result="Success" success="True" time="0.016" asserts="18" />
+                              <test-case name="Twilio.Api.Tests.Integration.ReservationTests.ShouldUpdateReservation" executed="True" result="Success" success="True" time="0.014" asserts="14" />
+                              <test-case name="Twilio.Api.Tests.Integration.ReservationTests.ShouldUpdateReservationAsynchronously" executed="True" result="Success" success="True" time="0.014" asserts="14" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="SmsTests" executed="True" result="Success" success="True" time="0.110" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.SmsTests.ShouldListSmsMessages" executed="True" result="Success" success="True" time="0.016" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.SmsTests.ShouldListSmsMessagesAsynchronously" executed="True" result="Success" success="True" time="0.014" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.SmsTests.ShouldListSmsMessagesWithFilters" executed="True" result="Success" success="True" time="0.009" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.SmsTests.ShouldSendSmsMessage" executed="True" result="Success" success="True" time="0.018" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.SmsTests.ShouldSendSmsMessageAsynchronously" executed="True" result="Success" success="True" time="0.022" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.SmsTests.ShouldSendSmsMessageWithUnicodeCharacters" executed="True" result="Success" success="True" time="0.007" asserts="10" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="TaskQueueStatisticsTests" executed="True" result="Success" success="True" time="0.104" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.TaskQueueStatisticsTests.ShouldGetTaskQueueStatistics" executed="True" result="Success" success="True" time="0.017" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskQueueStatisticsTests.ShouldGetTaskQueueStatisticsAsynchronously" executed="True" result="Success" success="True" time="0.017" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskQueueStatisticsTests.ShouldListTaskQueueStatistics" executed="True" result="Success" success="True" time="0.014" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskQueueStatisticsTests.ShouldListTaskQueueStatisticsAsynchronously" executed="True" result="Success" success="True" time="0.013" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskQueueStatisticsTests.ShouldListTaskQueueStatisticsUsingFilters" executed="True" result="Success" success="True" time="0.008" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskQueueStatisticsTests.ShouldListTaskQueueStatisticsUsingFiltersAsynchronously" executed="True" result="Success" success="True" time="0.011" asserts="10" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="TaskQueueTests" executed="True" result="Success" success="True" time="0.223" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.TaskQueueTests.ShouldAddNewTaskQueue" executed="True" result="Success" success="True" time="0.013" asserts="12" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskQueueTests.ShouldAddNewTaskQueueAsynchronously" executed="True" result="Success" success="True" time="0.016" asserts="12" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskQueueTests.ShouldDeleteTaskQueue" executed="True" result="Success" success="True" time="0.008" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskQueueTests.ShouldDeleteTaskQueueAsynchronously" executed="True" result="Success" success="True" time="0.015" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskQueueTests.ShouldGetTaskQueue" executed="True" result="Success" success="True" time="0.008" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskQueueTests.ShouldGetTaskQueueAsynchronously" executed="True" result="Success" success="True" time="0.013" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskQueueTests.ShouldListTaskQueues" executed="True" result="Success" success="True" time="0.014" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskQueueTests.ShouldListTaskQueuesAsynchronously" executed="True" result="Success" success="True" time="0.016" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskQueueTests.ShouldListTaskQueuesUsingFilters" executed="True" result="Success" success="True" time="0.008" asserts="16" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskQueueTests.ShouldListTaskQueuesUsingFiltersAsynchronously" executed="True" result="Success" success="True" time="0.012" asserts="16" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskQueueTests.ShouldUpdateTaskQueue" executed="True" result="Success" success="True" time="0.015" asserts="16" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskQueueTests.ShouldUpdateTaskQueueAsynchronously" executed="True" result="Success" success="True" time="0.026" asserts="16" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="TaskTests" executed="True" result="Success" success="True" time="0.241" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.TaskTests.ShouldAddNewTask" executed="True" result="Success" success="True" time="0.013" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskTests.ShouldAddNewTaskAsynchronously" executed="True" result="Success" success="True" time="0.016" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskTests.ShouldDeleteTask" executed="True" result="Success" success="True" time="0.008" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskTests.ShouldDeleteTaskAsynchronously" executed="True" result="Success" success="True" time="0.017" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskTests.ShouldGetTask" executed="True" result="Success" success="True" time="0.013" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskTests.ShouldGetTaskAsynchronously" executed="True" result="Success" success="True" time="0.013" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskTests.ShouldListTasks" executed="True" result="Success" success="True" time="0.017" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskTests.ShouldListTasksAsynchronously" executed="True" result="Success" success="True" time="0.017" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskTests.ShouldListTasksUsingFilters" executed="True" result="Success" success="True" time="0.015" asserts="24" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskTests.ShouldListTasksUsingFiltersAsynchronously" executed="True" result="Success" success="True" time="0.016" asserts="24" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskTests.ShouldUpdateTask" executed="True" result="Success" success="True" time="0.016" asserts="14" />
+                              <test-case name="Twilio.Api.Tests.Integration.TaskTests.ShouldUpdateTaskAsynchronously" executed="True" result="Success" success="True" time="0.017" asserts="14" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="TranscriptionTests" executed="True" result="Success" success="True" time="0.003" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.TranscriptionTests.TestMethod1" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="UsageTests" executed="True" result="Success" success="True" time="0.003" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.UsageTests.ShouldListUsage" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="UsageTriggerTests" executed="True" result="Success" success="True" time="0.087" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.UsageTriggerTests.ShouldCreateNewUsageTrigger" executed="True" result="Success" success="True" time="0.014" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.UsageTriggerTests.ShouldDeleteUsageTrigger" executed="True" result="Success" success="True" time="0.006" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.UsageTriggerTests.ShouldGetUsageTrigger" executed="True" result="Success" success="True" time="0.008" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.UsageTriggerTests.ShouldListUsageTriggers" executed="True" result="Success" success="True" time="0.010" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.UsageTriggerTests.ShouldListUsageTriggersAsynchronously" executed="True" result="Success" success="True" time="0.011" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.UsageTriggerTests.ShouldUpdateUsageTrigger" executed="True" result="Success" success="True" time="0.009" asserts="8" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="WorkerStatisticsTests" executed="True" result="Success" success="True" time="0.099" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.WorkerStatisticsTests.ShouldGetWorkerStatistics" executed="True" result="Success" success="True" time="0.013" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkerStatisticsTests.ShouldGetWorkerStatisticsAsynchronously" executed="True" result="Success" success="True" time="0.014" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkerStatisticsTests.ShouldListWorkersStatistics" executed="True" result="Success" success="True" time="0.012" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkerStatisticsTests.ShouldListWorkersStatisticsAsynchronously" executed="True" result="Success" success="True" time="0.012" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkerStatisticsTests.ShouldListWorkersStatisticsUsingFilters" executed="True" result="Success" success="True" time="0.008" asserts="14" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkerStatisticsTests.ShouldListWorkersStatisticsUsingFiltersAsynchronously" executed="True" result="Success" success="True" time="0.011" asserts="14" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="WorkerTests" executed="True" result="Success" success="True" time="0.207" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.WorkerTests.ShouldAddNewWorker" executed="True" result="Success" success="True" time="0.010" asserts="12" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkerTests.ShouldAddNewWorkerAsynchronously" executed="True" result="Success" success="True" time="0.014" asserts="12" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkerTests.ShouldDeleteWorker" executed="True" result="Success" success="True" time="0.007" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkerTests.ShouldDeleteWorkerAsynchronously" executed="True" result="Success" success="True" time="0.009" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkerTests.ShouldGetWorker" executed="True" result="Success" success="True" time="0.009" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkerTests.ShouldGetWorkerAsynchronously" executed="True" result="Success" success="True" time="0.012" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkerTests.ShouldListWorkers" executed="True" result="Success" success="True" time="0.014" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkerTests.ShouldListWorkersAsynchronously" executed="True" result="Success" success="True" time="0.012" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkerTests.ShouldListWorkersUsingFilters" executed="True" result="Success" success="True" time="0.012" asserts="24" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkerTests.ShouldListWorkersUsingFiltersAsynchronously" executed="True" result="Success" success="True" time="0.013" asserts="24" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkerTests.ShouldUpdateWorker" executed="True" result="Success" success="True" time="0.011" asserts="14" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkerTests.ShouldUpdateWorkerAsynchronously" executed="True" result="Success" success="True" time="0.015" asserts="14" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="WorkflowStatisticsTests" executed="True" result="Success" success="True" time="0.031" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.WorkflowStatisticsTests.ShouldGetWorkflowStatistics" executed="True" result="Success" success="True" time="0.012" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkflowStatisticsTests.ShouldGetWorkflowStatisticsAsynchronously" executed="True" result="Success" success="True" time="0.014" asserts="10" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="WorkflowTests" executed="True" result="Success" success="True" time="0.213" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.WorkflowTests.ShouldAddNewWorkflow" executed="True" result="Success" success="True" time="0.015" asserts="14" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkflowTests.ShouldAddNewWorkflowAsynchronously" executed="True" result="Success" success="True" time="0.014" asserts="14" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkflowTests.ShouldDeleteWorkflow" executed="True" result="Success" success="True" time="0.008" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkflowTests.ShouldDeleteWorkflowAsynchronously" executed="True" result="Success" success="True" time="0.012" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkflowTests.ShouldGetWorkflow" executed="True" result="Success" success="True" time="0.007" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkflowTests.ShouldGetWorkflowAsynchronously" executed="True" result="Success" success="True" time="0.009" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkflowTests.ShouldListWorkflows" executed="True" result="Success" success="True" time="0.012" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkflowTests.ShouldListWorkflowsAsynchronously" executed="True" result="Success" success="True" time="0.015" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkflowTests.ShouldListWorkflowsUsingFilters" executed="True" result="Success" success="True" time="0.009" asserts="12" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkflowTests.ShouldListWorkflowsUsingFiltersAsynchronously" executed="True" result="Success" success="True" time="0.011" asserts="12" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkflowTests.ShouldUpdateWorkflow" executed="True" result="Success" success="True" time="0.013" asserts="16" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkflowTests.ShouldUpdateWorkflowAsynchronously" executed="True" result="Success" success="True" time="0.017" asserts="16" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="WorkspaceStatisticsTests" executed="True" result="Success" success="True" time="0.030" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.WorkspaceStatisticsTests.ShouldGetWorkspaceStatistics" executed="True" result="Success" success="True" time="0.011" asserts="8" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkspaceStatisticsTests.ShouldGetWorkspaceStatisticsAsynchronously" executed="True" result="Success" success="True" time="0.012" asserts="8" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="WorkspaceTests" executed="True" result="Success" success="True" time="0.193" asserts="0">
+                            <results>
+                              <test-case name="Twilio.Api.Tests.Integration.WorkspaceTests.ShouldAddNewWorkspace" executed="True" result="Success" success="True" time="0.012" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkspaceTests.ShouldAddNewWorkspaceAsynchronously" executed="True" result="Success" success="True" time="0.014" asserts="10" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkspaceTests.ShouldDeleteWorkspace" executed="True" result="Success" success="True" time="0.009" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkspaceTests.ShouldDeleteWorkspaceAsynchronously" executed="True" result="Success" success="True" time="0.013" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkspaceTests.ShouldGetWorkspace" executed="True" result="Success" success="True" time="0.008" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkspaceTests.ShouldGetWorkspaceAsynchronously" executed="True" result="Success" success="True" time="0.012" asserts="6" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkspaceTests.ShouldListWorkspaces" executed="True" result="Success" success="True" time="0.011" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkspaceTests.ShouldListWorkspacesAsynchronously" executed="True" result="Success" success="True" time="0.013" asserts="4" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkspaceTests.ShouldListWorkspacesUsingFilters" executed="True" result="Success" success="True" time="0.007" asserts="12" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkspaceTests.ShouldListWorkspacesUsingFiltersAsynchronously" executed="True" result="Success" success="True" time="0.007" asserts="12" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkspaceTests.ShouldUpdateWorkspace" executed="True" result="Success" success="True" time="0.010" asserts="14" />
+                              <test-case name="Twilio.Api.Tests.Integration.WorkspaceTests.ShouldUpdateWorkspaceAsynchronously" executed="True" result="Success" success="True" time="0.016" asserts="14" />
+                            </results>
+                          </test-suite>
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

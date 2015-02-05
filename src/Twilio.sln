@@ -44,9 +44,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Client.Capability", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Api.Tests.Integration", "Twilio.Api.Tests.Integration\Twilio.Api.Tests.Integration.csproj", "{2E1A3B46-C072-48E0-92BF-F2901036979F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.TaskRouter.Capability", "Twilio.TaskRouter.Capability\Twilio.TaskRouter.Capability.csproj", "{7CA0FADC-D5B8-4206-887E-776982E8FF48}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.TaskRouter", "Twilio.TaskRouter\Twilio.TaskRouter.csproj", "{7CA0FADC-D5B8-4206-887E-776982E8FF48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.TaskRouter.Capability.Tests", "Twilio.TaskRouter.Capability.Tests\Twilio.TaskRouter.Capability.Tests.csproj", "{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.TaskRouter.Tests", "Twilio.TaskRouter.Tests\Twilio.TaskRouter.Tests.csproj", "{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
