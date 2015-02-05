@@ -4,7 +4,7 @@ using Moq;
 using NUnit.Framework;
 using RestSharp;
 
-using Twilio.TaskRouter;
+using Twilio.Api.Tests.Integration;
 
 namespace Twilio.TaskRouter.Tests
 {

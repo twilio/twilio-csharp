@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Twilio.Api.Tests.Integration
 {
-    internal static class Utilities
+    public static class Utilities
     {
         private static readonly Random SingleRandom = new Random();
 

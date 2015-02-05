@@ -7,8 +7,8 @@
     <ProjectGuid>{7CA0FADC-D5B8-4206-887E-776982E8FF48}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Twilio.TaskRouter.Capability</RootNamespace>
-    <AssemblyName>Twilio.TaskRouter.Capability</AssemblyName>
+    <RootNamespace>Twilio.TaskRouter</RootNamespace>
+    <AssemblyName>Twilio.TaskRouter</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
