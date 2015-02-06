@@ -35,13 +35,13 @@ namespace Twilio.TaskRouter.Tests
                 .Returns(new Task());
             var client = mockClient.Object;
 
-            client.AddTask(WORKSPACE_SID, "attributes", "WF123");
+            client.AddTask(WORKSPACE_SID, "attributes", "WF123", 60);
 
             mockClient.Verify(trc => trc.Execute<Task>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
             Assert.AreEqual("Accounts/{AccountSid}/Workspaces/{WorkspaceSid}/Tasks.json", savedRequest.Resource);
             Assert.AreEqual(Method.POST, savedRequest.Method);
-            Assert.AreEqual(3, savedRequest.Parameters.Count);
+            Assert.AreEqual(4, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
             Assert.IsNotNull(workspaceSidParam);
             Assert.AreEqual(WORKSPACE_SID, workspaceSidParam.Value);
@@ -51,6 +51,9 @@ namespace Twilio.TaskRouter.Tests
             var attributesParam = savedRequest.Parameters.Find(x => x.Name == "Attributes");
             Assert.IsNotNull(attributesParam);
             Assert.AreEqual("attributes", attributesParam.Value);
+            var timeoutParam = savedRequest.Parameters.Find(x => x.Name == "Timeout");
+            Assert.IsNotNull(timeoutParam);
+            Assert.AreEqual(60, timeoutParam.Value);
         }
 
         [Test]
@@ -62,7 +65,7 @@ namespace Twilio.TaskRouter.Tests
             var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            client.AddTask(WORKSPACE_SID, "attributes", "WF123", task =>
+            client.AddTask(WORKSPACE_SID, "attributes", "WF123", 60, task =>
                 {
                     manualResetEvent.Set();
                 });
@@ -72,7 +75,7 @@ namespace Twilio.TaskRouter.Tests
             Assert.IsNotNull(savedRequest);
             Assert.AreEqual("Accounts/{AccountSid}/Workspaces/{WorkspaceSid}/Tasks.json", savedRequest.Resource);
             Assert.AreEqual(Method.POST, savedRequest.Method);
-            Assert.AreEqual(3, savedRequest.Parameters.Count);
+            Assert.AreEqual(4, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
             Assert.IsNotNull(workspaceSidParam);
             Assert.AreEqual(WORKSPACE_SID, workspaceSidParam.Value);
@@ -82,6 +85,9 @@ namespace Twilio.TaskRouter.Tests
             var attributesParam = savedRequest.Parameters.Find(x => x.Name == "Attributes");
             Assert.IsNotNull(attributesParam);
             Assert.AreEqual("attributes", attributesParam.Value);
+            var timeoutParam = savedRequest.Parameters.Find(x => x.Name == "Timeout");
+            Assert.IsNotNull(timeoutParam);
+            Assert.AreEqual(60, timeoutParam.Value);
         }
 
         [Test]
