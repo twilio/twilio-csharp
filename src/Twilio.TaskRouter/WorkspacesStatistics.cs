@@ -26,7 +26,7 @@ namespace Twilio.TaskRouter
             Require.Argument("WorkspaceSid", workspaceSid);
 
             var request = new RestRequest();
-            request.Resource = "Accounts/{AccountSid}/Workspaces/{WorkspaceSid}/Statistics.json";
+            request.Resource = "Workspaces/{WorkspaceSid}/Statistics.json";
 
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
 
