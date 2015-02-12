@@ -38,6 +38,8 @@ namespace Twilio
 
         protected string AccountResourceSid { get; set; }
 
+        protected string DateFormat { get; set; }
+
         protected RestClient _client;
 
         /// <summary>
@@ -55,6 +57,7 @@ namespace Twilio
             AccountSid = accountSid;
             AuthToken = authToken;
             AccountResourceSid = accountResourceSid;
+            DateFormat = "ddd, dd MMM yyyy HH:mm:ss '+0000'";
 
             // silverlight friendly way to get current version
             var assembly = Assembly.GetExecutingAssembly();
@@ -101,7 +104,7 @@ namespace Twilio
                 }
             };
 
-            request.DateFormat = "ddd, dd MMM yyyy HH:mm:ss '+0000'";
+            request.DateFormat = DateFormat;
 
             var response = _client.Execute<T>(request);
             return response.Data;

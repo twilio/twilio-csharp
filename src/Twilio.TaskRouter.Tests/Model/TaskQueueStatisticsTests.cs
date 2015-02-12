@@ -15,6 +15,7 @@ namespace Twilio.TaskRouter.Tests.Integration.Model
         {
             var doc = File.ReadAllText(Path.Combine("Resources", "task_queue_statistics.json"));
             var json = new JsonDeserializer();
+            json.DateFormat = "";
             var output = json.Deserialize<TaskQueueStatistics>(new RestResponse { Content = doc });
 
             Assert.NotNull(output);
