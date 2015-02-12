@@ -1,11 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>
-    </ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{2E1A3B46-C072-48E0-92BF-F2901036979F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -13,6 +10,9 @@
     <AssemblyName>Twilio.Api.Tests.Integration</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,20 +32,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq, Version=4.2.1409.1722, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="Moq">
-      <HintPath>..\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp">
-      <HintPath>..\packages\RestSharp.105.0.0\lib\net4\RestSharp.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+    <CodeAnalysisDependentAssemblyPaths Include="%24%28VS100COMNTOOLS%29..\IDE\PrivateAssemblies" Condition=" '$(VS100COMNTOOLS)' != '' ">
       <Visible>False</Visible>
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
@@ -71,21 +72,6 @@
     <Compile Include="UsageTriggerTests.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="FeedbackTests.cs" />
-    <Compile Include="Model\Wds\WorkerStatisticsTests.cs" />
-    <Compile Include="Model\Wds\TaskQueueStatisticsTests.cs" />
-    <Compile Include="Model\Wds\WorkspaceStatisticsTests.cs" />
-    <Compile Include="Model\Wds\WorkflowStatisticsTests.cs" />
-    <Compile Include="TaskRouter\TaskQueueStatisticsTests.cs" />
-    <Compile Include="TaskRouter\WorkflowStatisticsTests.cs" />
-    <Compile Include="TaskRouter\WorkerStatisticsTests.cs" />
-    <Compile Include="TaskRouter\WorkspaceStatisticsTests.cs" />
-    <Compile Include="TaskRouter\WorkspaceTests.cs" />
-    <Compile Include="TaskRouter\WorkflowTests.cs" />
-    <Compile Include="TaskRouter\WorkerTests.cs" />
-    <Compile Include="TaskRouter\TaskTests.cs" />
-    <Compile Include="TaskRouter\TaskQueueTests.cs" />
-    <Compile Include="TaskRouter\ReservationTests.cs" />
-    <Compile Include="TaskRouter\ActivityTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Twilio.Api\Twilio.Api.csproj">
@@ -103,33 +89,12 @@
   </Target>
   -->
   <ItemGroup>
-    <Folder Include="Resources\" />
-    <Folder Include="Resources\Wds\" />
-    <Folder Include="Model\" />
-    <Folder Include="Model\Wds\" />
-    <Folder Include="TaskRouter\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\Wds\workspace_statistics.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Wds\workflow_statistics.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Wds\worker_statistics.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Wds\workers_statistics.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Wds\task_queue_statistics.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Wds\task_queues_statistics.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TaskRouter\" />
   </ItemGroup>
 </Project>

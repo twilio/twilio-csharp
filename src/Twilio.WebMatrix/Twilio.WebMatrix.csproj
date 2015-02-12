@@ -3,8 +3,6 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{D4EC9211-7F9B-45A0-B620-909C02841E60}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -44,6 +42,7 @@
     <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
     <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -72,13 +71,11 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>-->
-
   <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'ReleaseWithPackage' ">
     <MakeDir Directories="$(MSBuildProjectDirectory)..\..\..\Download\package\twiliowebmatrix\lib\3.5" />
     <CreateItem Include="$(TargetDir)\$(ProjectName).*">
-      <Output TaskParameter="Include" ItemName="FilesToCopy"/>
+      <Output TaskParameter="Include" ItemName="FilesToCopy" />
     </CreateItem>
     <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(MSBuildProjectDirectory)..\..\..\download\package\twiliowebmatrix\lib\3.5\" />
   </Target>
-  
 </Project>
