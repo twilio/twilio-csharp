@@ -34,6 +34,7 @@ namespace Twilio.TaskRouter
             this.workerSid = workerSid;
             this.policies = new List<Policy>();
             this.AllowWorkerWebsockets();
+            this.AllowWorkerActivitiesFetch();
         }
 
         public void AllowWorkerActivityUpdates()
@@ -60,7 +61,7 @@ namespace Twilio.TaskRouter
 
         private string GetWorkspaceUrl()
         {
-            return taskRouterUrlBase + "/" + taskRouterVersion + "/Accounts/" + accountSid + "/Workspaces/" + workspaceSid;
+            return taskRouterUrlBase + "/" + taskRouterVersion + "/Workspaces/" + workspaceSid;
         }
 
         private string GetWorkerUrl()
@@ -73,6 +74,12 @@ namespace Twilio.TaskRouter
             var wsUrl = taskRouterEventsUrlBase + "/" + accountSid + "/" + workerSid;
             this.policies.Add(new Policy(wsUrl, "GET", true));
             this.policies.Add(new Policy(wsUrl, "POST", true));
+        }
+
+        private void AllowWorkerActivitiesFetch()
+        {
+            var url = GetWorkspaceUrl() + "/Activities";
+            this.policies.Add(new Policy(url, "GET", true));
         }
 
         public string GenerateToken()
