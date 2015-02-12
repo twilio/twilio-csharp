@@ -40,7 +40,7 @@ namespace Twilio.TaskRouter.Tests
 
             mockClient.Verify(trc => trc.Execute<Workflow>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
-            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows.json", savedRequest.Resource);
+            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows", savedRequest.Resource);
             Assert.AreEqual(Method.POST, savedRequest.Method);
             Assert.AreEqual(6, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
@@ -78,7 +78,7 @@ namespace Twilio.TaskRouter.Tests
 
             mockClient.Verify(trc => trc.ExecuteAsync<Workflow>(It.IsAny<IRestRequest>(), It.IsAny<Action<Workflow>>()), Times.Once);
             Assert.IsNotNull(savedRequest);
-            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows.json", savedRequest.Resource);
+            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows", savedRequest.Resource);
             Assert.AreEqual(Method.POST, savedRequest.Method);
             Assert.AreEqual(6, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
@@ -111,7 +111,7 @@ namespace Twilio.TaskRouter.Tests
 
             mockClient.Verify(trc => trc.Execute(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
-            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows/{WorkflowSid}.json", savedRequest.Resource);
+            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows/{WorkflowSid}", savedRequest.Resource);
             Assert.AreEqual(Method.DELETE, savedRequest.Method);
             Assert.AreEqual(2, savedRequest.Parameters.Count);
             var workspaceSid = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
@@ -138,7 +138,7 @@ namespace Twilio.TaskRouter.Tests
 
             mockClient.Verify(trc => trc.ExecuteAsync(It.IsAny<IRestRequest>(), It.IsAny<Action<IRestResponse>>()), Times.Once);
             Assert.IsNotNull(savedRequest);
-            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows/{WorkflowSid}.json", savedRequest.Resource);
+            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows/{WorkflowSid}", savedRequest.Resource);
             Assert.AreEqual(Method.DELETE, savedRequest.Method);
             Assert.AreEqual(2, savedRequest.Parameters.Count);
             var workspaceSid = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
@@ -162,7 +162,7 @@ namespace Twilio.TaskRouter.Tests
 
             mockClient.Verify(trc => trc.Execute<Workflow>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
-            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows/{WorkflowSid}.json", savedRequest.Resource);
+            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows/{WorkflowSid}", savedRequest.Resource);
             Assert.AreEqual(Method.GET, savedRequest.Method);
             Assert.AreEqual(2, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
@@ -189,7 +189,7 @@ namespace Twilio.TaskRouter.Tests
 
             mockClient.Verify(trc => trc.ExecuteAsync<Workflow>(It.IsAny<IRestRequest>(), It.IsAny<Action<Workflow>>()), Times.Once);
             Assert.IsNotNull(savedRequest);
-            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows/{WorkflowSid}.json", savedRequest.Resource);
+            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows/{WorkflowSid}", savedRequest.Resource);
             Assert.AreEqual(Method.GET, savedRequest.Method);
             Assert.AreEqual(2, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
@@ -213,7 +213,7 @@ namespace Twilio.TaskRouter.Tests
 
             mockClient.Verify(trc => trc.Execute<WorkflowResult>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
-            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows.json", savedRequest.Resource);
+            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows", savedRequest.Resource);
             Assert.AreEqual(Method.GET, savedRequest.Method);
             Assert.AreEqual(1, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
@@ -237,7 +237,7 @@ namespace Twilio.TaskRouter.Tests
 
             mockClient.Verify(trc => trc.ExecuteAsync<WorkflowResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<WorkflowResult>>()), Times.Once);
             Assert.IsNotNull(savedRequest);
-            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows.json", savedRequest.Resource);
+            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows", savedRequest.Resource);
             Assert.AreEqual(Method.GET, savedRequest.Method);
             Assert.AreEqual(1, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
@@ -259,7 +259,7 @@ namespace Twilio.TaskRouter.Tests
 
             mockClient.Verify(trc => trc.Execute<WorkflowResult>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
-            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows.json", savedRequest.Resource);
+            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows", savedRequest.Resource);
             Assert.AreEqual(Method.GET, savedRequest.Method);
             Assert.AreEqual(5, savedRequest.Parameters.Count);
             var friendlyNameParam = savedRequest.Parameters.Find(x => x.Name == "FriendlyName");
@@ -294,7 +294,7 @@ namespace Twilio.TaskRouter.Tests
 
             mockClient.Verify(trc => trc.ExecuteAsync<WorkflowResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<WorkflowResult>>()), Times.Once);
             Assert.IsNotNull(savedRequest);
-            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows.json", savedRequest.Resource);
+            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows", savedRequest.Resource);
             Assert.AreEqual(Method.GET, savedRequest.Method);
             Assert.AreEqual(5, savedRequest.Parameters.Count);
             var friendlyNameParam = savedRequest.Parameters.Find(x => x.Name == "FriendlyName");
@@ -325,7 +325,7 @@ namespace Twilio.TaskRouter.Tests
 
             mockClient.Verify(trc => trc.Execute<Workflow>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
-            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows/{WorkflowSid}.json", savedRequest.Resource);
+            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows/{WorkflowSid}", savedRequest.Resource);
             Assert.AreEqual(Method.POST, savedRequest.Method);
             Assert.AreEqual(7, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
@@ -365,7 +365,7 @@ namespace Twilio.TaskRouter.Tests
 
             mockClient.Verify(trc => trc.ExecuteAsync<Workflow>(It.IsAny<IRestRequest>(), It.IsAny<Action<Workflow>>()), Times.Once);
             Assert.IsNotNull(savedRequest);
-            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows/{WorkflowSid}.json", savedRequest.Resource);
+            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workflows/{WorkflowSid}", savedRequest.Resource);
             Assert.AreEqual(Method.POST, savedRequest.Method);
             Assert.AreEqual(7, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
