@@ -14,7 +14,7 @@ namespace Twilio.TaskRouter
         /// <param name="attributes">Attributes.</param>
         /// <param name="workflowSid">Workflow sid.</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void AddTask(string workspaceSid, string attributes, string workflowSid, Action<Task> callback)
+        public virtual void AddTask(string workspaceSid, string attributes, string workflowSid, int? timeout, Action<Task> callback)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("Attributes", attributes);
@@ -26,6 +26,9 @@ namespace Twilio.TaskRouter
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
             request.AddParameter("Attributes", attributes);
             request.AddParameter("WorkflowSid", workflowSid);
+
+            if (timeout.HasValue)
+                request.AddParameter("Timeout", timeout.Value);
 
             ExecuteAsync<Task>(request, (response) => { callback(response); });
         }
