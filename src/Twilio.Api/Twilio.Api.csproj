@@ -138,7 +138,9 @@
     <Compile Include="Model\Capabilities.cs" />
     <Compile Include="Model\Feedback.cs" />
     <Compile Include="Model\Issue.cs" />
+    <Compile Include="Model\ListMeta.cs" />
     <Compile Include="Model\MediaListRequest.cs" />
+    <Compile Include="Model\NextGenListBase.cs" />
     <Compile Include="Notifications.cs" />
     <Compile Include="OutgoingCallerIds.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
