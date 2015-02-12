@@ -19,7 +19,7 @@ namespace Twilio.TaskRouter
             Require.Argument("FriendlyName", friendlyName);
 
             var request = new RestRequest(Method.POST);
-            request.Resource = "Workspaces.json";
+            request.Resource = "Workspaces";
 
             request.AddParameter("FriendlyName", friendlyName);
 
@@ -41,7 +41,7 @@ namespace Twilio.TaskRouter
             Require.Argument("WorkspaceSid", workspaceSid);
 
             var request = new RestRequest(Method.DELETE);
-            request.Resource = "Workspaces/{WorkspaceSid}.json";
+            request.Resource = "Workspaces/{WorkspaceSid}";
 
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
 
@@ -58,7 +58,7 @@ namespace Twilio.TaskRouter
             Require.Argument("WorkspaceSid", workspaceSid);
 
             var request = new RestRequest();
-            request.Resource = "Workspaces/{WorkspaceSid}.json";
+            request.Resource = "Workspaces/{WorkspaceSid}";
 
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
 
@@ -85,7 +85,7 @@ namespace Twilio.TaskRouter
         public virtual void ListWorkspaces(string friendlyName, string afterSid, string beforeSid, int? count, Action<WorkspaceResult> callback)
         {
             var request = new RestRequest();
-            request.Resource = "Workspaces.json";
+            request.Resource = "Workspaces";
 
             if (friendlyName.HasValue())
                 request.AddParameter("FriendlyName", friendlyName);
@@ -114,7 +114,7 @@ namespace Twilio.TaskRouter
             Require.Argument("WorkspaceSid", workspaceSid);
 
             var request = new RestRequest(Method.POST);
-            request.Resource = "Workspaces/{WorkspaceSid}.json";
+            request.Resource = "Workspaces/{WorkspaceSid}";
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
 
             if (friendlyName.HasValue())

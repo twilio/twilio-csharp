@@ -19,7 +19,7 @@ namespace Twilio.TaskRouter
             Require.Argument("FriendlyName", friendlyName);
 
             var request = new RestRequest(Method.POST);
-            request.Resource = "Workspaces/{WorkspaceSid}/Activities.json";
+            request.Resource = "Workspaces/{WorkspaceSid}/Activities";
 
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
             request.AddParameter("FriendlyName", friendlyName);
@@ -39,7 +39,7 @@ namespace Twilio.TaskRouter
             Require.Argument("ActivitySid", activitySid);
 
             var request = new RestRequest(Method.DELETE);
-            request.Resource = "Workspaces/{WorkspaceSid}/Activities/{ActivitySid}.json";
+            request.Resource = "Workspaces/{WorkspaceSid}/Activities/{ActivitySid}";
 
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
             request.AddUrlSegment("ActivitySid", activitySid);
@@ -59,7 +59,7 @@ namespace Twilio.TaskRouter
             Require.Argument("ActivitySid", activitySid);
 
             var request = new RestRequest();
-            request.Resource = "Workspaces/{WorkspaceSid}/Activities/{ActivitySid}.json";
+            request.Resource = "Workspaces/{WorkspaceSid}/Activities/{ActivitySid}";
 
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
             request.AddUrlSegment("ActivitySid", activitySid);
@@ -90,7 +90,7 @@ namespace Twilio.TaskRouter
             Require.Argument("WorkspaceSid", workspaceSid);
 
             var request = new RestRequest();
-            request.Resource = "Workspaces/{WorkspaceSid}/Activities.json";
+            request.Resource = "Workspaces/{WorkspaceSid}/Activities";
 
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
 
@@ -121,7 +121,7 @@ namespace Twilio.TaskRouter
             Require.Argument("ActivitySid", activitySid);
 
             var request = new RestRequest(Method.POST);
-            request.Resource = "Workspaces/{WorkspaceSid}/Activities/{ActivitySid}.json";
+            request.Resource = "Workspaces/{WorkspaceSid}/Activities/{ActivitySid}";
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
             request.AddUrlSegment("ActivitySid", activitySid);
 

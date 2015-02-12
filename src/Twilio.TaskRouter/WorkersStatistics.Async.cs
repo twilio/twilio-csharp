@@ -31,7 +31,7 @@ namespace Twilio.TaskRouter
             Require.Argument("WorkerSid", workerSid);
 
             var request = new RestRequest();
-            request.Resource = "Workspaces/{WorkspaceSid}/Workers/{WorkerSid}/Statistics.json";
+            request.Resource = "Workspaces/{WorkspaceSid}/Workers/{WorkerSid}/Statistics";
 
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
             request.AddUrlSegment("WorkerSid", workerSid);
@@ -61,7 +61,7 @@ namespace Twilio.TaskRouter
             Require.Argument("WorkspaceSid", workspaceSid);
 
             var request = new RestRequest();
-            request.Resource = "Workspaces/{WorkspaceSid}/Workers/Statistics.json";
+            request.Resource = "Workspaces/{WorkspaceSid}/Workers/Statistics";
 
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
 
