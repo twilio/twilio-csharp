@@ -32,6 +32,12 @@ namespace Twilio.TaskRouter
             DateFormat = null;
         }
 
+        public TaskRouterClient(string accountSid, string authToken, string accountResourceSid, string apiVersion, string baseUrl) :
+            base(accountSid, authToken, accountResourceSid, apiVersion, baseUrl)
+        {
+            DateFormat = null;
+        }
+
         private void AddStatisticsDateOptions(StatisticsRequest options, RestRequest request)
         {
             if (options.Minutes.HasValue)

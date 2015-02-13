@@ -13,7 +13,7 @@ namespace Twilio.TaskRouter
         /// <summary>
         /// Gets or sets the workspaces.
         /// </summary>
-        public List<Workspace> workspaces { get; set; }
+        public List<Workspace> Workspaces { get; set; }
     }
 }
 
