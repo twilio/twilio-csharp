@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace Twilio
 {
-	public partial class TwilioRestClient
+	public abstract partial class TwilioClient
 	{
 		/// <summary>
 		/// Execute a manual REST request

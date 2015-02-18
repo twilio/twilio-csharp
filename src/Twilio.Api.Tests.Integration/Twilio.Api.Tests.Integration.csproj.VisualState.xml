@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
+  <TopNode>[0-1000]Z:\twilio-csharp\src\Twilio.Api.Tests.Integration\Twilio.Api.Tests.Integration.csproj</TopNode>
+  <SelectedNode>[0-1000]Z:\twilio-csharp\src\Twilio.Api.Tests.Integration\Twilio.Api.Tests.Integration.csproj</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1000]Z:\twilio-csharp\src\Twilio.Api.Tests.Integration\Twilio.Api.Tests.Integration.csproj" Expanded="true" />
+    <Node UniqueName="[0-1242]Z:\twilio-csharp\src\Twilio.Api.Tests.Integration\bin\Debug\Twilio.Api.Tests.Integration.dll" Expanded="true" />
+    <Node UniqueName="[0-1243]Twilio" Expanded="true" />
+    <Node UniqueName="[0-1244]Twilio.Api" Expanded="true" />
+    <Node UniqueName="[0-1245]Twilio.Api.Tests" Expanded="true" />
+    <Node UniqueName="[0-1246]Twilio.Api.Tests.Integration" Expanded="true" />
+    <Node UniqueName="[0-1247]Twilio.Api.Tests.Integration.Model" Expanded="true" />
+  </Nodes>
+</VisualState>

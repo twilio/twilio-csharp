@@ -1,4 +1,4 @@
-﻿using RestSharp;
+using RestSharp;
 using RestSharp.Extensions;
 using System.Reflection;
 using RestSharp.Deserializers;
@@ -6,20 +6,20 @@ using System.Text;
 using System;
 using System.Net;
 
+
 namespace Twilio
 {
-	/// <summary>
-	/// REST API wrapper.
-	/// </summary>
-	public partial class TwilioRestClient
-	{
-		/// <summary>
-		/// Twilio API version to use when making requests
-		/// </summary>
+
+    public abstract partial class TwilioClient
+    {
+        /// <summary>
+        /// Twilio API version to use when making requests
+        /// </summary>
         public string ApiVersion { get; private set; }
-		/// <summary>
-		/// Base URL of API (defaults to https://api.twilio.com)
-		/// </summary>
+
+        /// <summary>
+        /// Base URL of API
+        /// </summary>
         public string BaseUrl { get; private set; }
 
 #if FRAMEWORK
@@ -32,18 +32,15 @@ namespace Twilio
         }
 #endif
 
-		private string AccountSid { get; set; }
-		private string AuthToken { get; set; }
-        private string AccountResourceSid { get; set; }
+        protected string AccountSid { get; set; }
 
-		private RestClient _client;
+        protected string AuthToken { get; set; }
 
-		/// <summary>
-		/// Initializes a new client with the specified credentials.
-		/// </summary>
-		/// <param name="accountSid">The AccountSid to authenticate with</param>
-		/// <param name="authToken">The AuthToken to authenticate with</param>
-        public TwilioRestClient(string accountSid, string authToken) : this(accountSid, authToken, accountSid) { }
+        protected string AccountResourceSid { get; set; }
+
+        protected string DateFormat { get; set; }
+
+        protected RestClient _client;
 
         /// <summary>
         /// Initializes a new client with the specified credentials.
@@ -51,13 +48,16 @@ namespace Twilio
         /// <param name="accountSid">The AccountSid to authenticate with</param>
         /// <param name="authToken">The AuthToken to authenticate with</param>
         /// <param name="accountResourceSid"></param>
-        public TwilioRestClient(string accountSid, string authToken, string accountResourceSid)
+        /// <param name="apiVersion"></param>
+        /// <param name="baseUrl"></param>
+        public TwilioClient(string accountSid, string authToken, string accountResourceSid, string apiVersion, string baseUrl)
         {
-            ApiVersion = "2010-04-01";
-            BaseUrl = "https://api.twilio.com/";
+            ApiVersion = apiVersion;
+            BaseUrl = baseUrl;
             AccountSid = accountSid;
             AuthToken = authToken;
             AccountResourceSid = accountResourceSid;
+            DateFormat = "ddd, dd MMM yyyy HH:mm:ss '+0000'";
 
             // silverlight friendly way to get current version
             var assembly = Assembly.GetExecutingAssembly();
@@ -96,19 +96,19 @@ namespace Twilio
 				{
 					// have to read the bytes so .Content doesn't get populated
                     string restException = "{{ \"RestException\" : {0} }}";
-					var content = resp.RawBytes.AsString(); //get the response content
+                    var content = resp.RawBytes.AsString(); //get the response content
                     var newJson = string.Format(restException, content);
 
                     resp.Content = null;
-					resp.RawBytes = Encoding.UTF8.GetBytes(newJson.ToString());
-				}
-			};
+                    resp.RawBytes = Encoding.UTF8.GetBytes(newJson.ToString());
+                }
+            };
 
-			request.DateFormat = "ddd, dd MMM yyyy HH:mm:ss '+0000'";
+            request.DateFormat = DateFormat;
 
-			var response = _client.Execute<T>(request);
-			return response.Data;
-		}
+            var response = _client.Execute<T>(request);
+            return response.Data;
+        }
 
 		/// <summary>
 		/// Execute a manual REST request
@@ -120,21 +120,44 @@ namespace Twilio
 		}
 #endif
 
-		private string GetParameterNameWithEquality(ComparisonType? comparisonType, string parameterName)
-		{
-			if (comparisonType.HasValue)
-			{
-				switch (comparisonType)
-				{
-					case ComparisonType.GreaterThanOrEqualTo:
-						parameterName += ">";
-						break;
-					case ComparisonType.LessThanOrEqualTo:
-						parameterName += "<";
-						break;
-				}
-			}
-			return parameterName;
-		}
-	}
+        protected string GetParameterNameWithEquality(ComparisonType? comparisonType, string parameterName)
+        {
+            if (comparisonType.HasValue) {
+                switch (comparisonType) {
+                case ComparisonType.GreaterThanOrEqualTo:
+                    parameterName += ">";
+                    break;
+                case ComparisonType.LessThanOrEqualTo:
+                    parameterName += "<";
+                    break;
+                }
+            }
+            return parameterName;
+        }
+    }
+
+    /// <summary>
+    /// REST API wrapper.
+    /// </summary>
+    public partial class TwilioRestClient : TwilioClient
+    {
+        /// <summary>
+        /// Initializes a new client with the specified credentials.
+        /// </summary>
+        /// <param name="accountSid">The AccountSid to authenticate with</param>
+        /// <param name="authToken">The AuthToken to authenticate with</param>
+        public TwilioRestClient(string accountSid, string authToken) : this(accountSid, authToken, accountSid)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new client with the specified credentials.
+        /// </summary>
+        /// <param name="accountSid">The AccountSid to authenticate with</param>
+        /// <param name="authToken">The AuthToken to authenticate with</param>
+        /// <param name="accountResourceSid"></param>
+        public TwilioRestClient(string accountSid, string authToken, string accountResourceSid) : base(accountSid, authToken, accountResourceSid, "2010-04-01", "https://api.twilio.com/")
+        {
+        }
+    }
 }

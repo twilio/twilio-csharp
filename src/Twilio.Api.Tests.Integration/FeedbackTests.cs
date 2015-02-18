@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using System;
-using System.Threading;
 using Moq;
 using RestSharp;
 
@@ -10,8 +9,6 @@ namespace Twilio.Api.Tests.Integration
     public class FeedbackTests
     {
         private const string CALL_SID = "CA123";
-
-        ManualResetEvent manualResetEvent = null;
 
         private Mock<TwilioRestClient> mockClient;
 
