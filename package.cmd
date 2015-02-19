@@ -11,6 +11,7 @@ if not exist download\package\twiliomvc mkdir download\package\twiliomvc
 if not exist download\package\twiliotwiml mkdir download\package\twiliotwiml
 if not exist download\package\twiliowebmatrix mkdir download\package\twiliowebmatrix
 if not exist download\package\twilioclient mkdir download\package\twilioclient
+if not exist download\package\twiliotaskrouter mkdir download\package\twiliotaskrouter
 
 if not exist download\package\twilio\lib mkdir download\package\twilio\lib
 if not exist download\package\twilio\lib\3.5 mkdir download\package\twilio\lib\3.5
@@ -29,6 +30,9 @@ if not exist download\package\twiliowebmatrix\lib\3.5 mkdir download\package\twi
 if not exist download\package\twilioclient\lib mkdir download\package\twilioclient\lib
 if not exist download\package\twilioclient\lib\3.5 mkdir download\package\twilioclient\lib\3.5
 
+if not exist download\package\twiliotaskrouter\lib mkdir download\package\twiliotaskrouter\lib
+if not exist download\package\twiliotaskrouter\lib\3.5 mkdir download\package\twiliotaskrouter\lib\3.5
+
 REM tools\ilmerge.exe /lib:src\Twilio.Api\bin\Release /internalize /ndebug /v2 /out:download\Twilio.Api.dll Twilio.Api.dll RestSharp.dll
 REM tools\ilmerge.exe /lib:src\Twilio.Api.Silverlight\bin\Release /internalize /ndebug /targetplatform:v4,"C:\Program Files (x86)\Microsoft Silverlight\4.1.10111.0" /out:download\Twilio.Api.Silverlight.dll RestSharp.Silverlight.dll
 
@@ -39,6 +43,7 @@ copy src\Twilio.Mvc\bin\Release\*.* download
 copy src\Twilio.Twiml\bin\Release\*.* download
 copy src\Twilio.WebMatrix\bin\Release\*.* download
 copy src\Twilio.Client.Capability\bin\Release\*.* download
+copy src\Twilio.TaskRouter\bin\Release\*.* download
 copy LICENSE.txt download
 
 copy src\Twilio.Api\bin\Release\Twilio.Api.* download\package\twilio\lib\3.5\
@@ -49,9 +54,11 @@ copy src\Twilio.Mvc\bin\Release\Twilio.Mvc.* download\package\twiliomvc\lib\3.5\
 copy src\Twilio.Twiml\bin\Release\Twilio.Twiml.* download\package\twiliotwiml\lib\3.5\
 copy src\Twilio.WebMatrix\bin\Release\Twilio.WebMatrix.* download\package\twiliowebmatrix\lib\3.5\
 copy src\Twilio.Client.Capability\bin\Release\Twilio.Client.Capability.* download\package\twilioclient\lib\3.5\
+copy src\Twilio.TaskRouter\bin\Release\Twilio.TaskRouter.* download\package\twiliotaskrouter\lib\3.5\
 
 tools\nuget.exe pack Twilio.nuspec -BasePath download\package\twilio -o download
 tools\nuget.exe pack Twilio.Mvc.nuspec -BasePath download\package\twiliomvc -o download
 tools\nuget.exe pack Twilio.TwiML.nuspec -BasePath download\package\twiliotwiml -o download
 tools\nuget.exe pack Twilio.WebMatrix.nuspec -BasePath download\package\twiliowebmatrix -o download
 tools\nuget.exe pack Twilio.Client.nuspec -BasePath download\package\twilioclient -o download
+tools\nuget.exe pack Twilio.TaskRouter.nuspec -BasePath download\package\twiliotaskrouter -o download
