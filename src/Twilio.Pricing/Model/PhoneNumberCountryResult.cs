@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using Twilio.Model;
+
 namespace Twilio.Pricing
 {
     /// <summary>
@@ -11,7 +13,7 @@ namespace Twilio.Pricing
     /// country, request it with the <code>GetPhoneNumberCountry</code>
     /// method.
     /// </summary>
-    public class PhoneNumberCountryResult : TwilioListBase
+    public class PhoneNumberCountryResult : NextGenListBase
     {
         /// <summary>
         /// The list of country data.

@@ -32,10 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Moq, Version=4.2.1409.1722, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
-    </Reference>
     <Reference Include="RestSharp">
       <HintPath>..\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
     </Reference>
@@ -43,6 +39,9 @@
     <Reference Include="System.Core" />
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -72,12 +71,6 @@
     <Compile Include="UsageTriggerTests.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="FeedbackTests.cs" />
-    <Compile Include="Model\PhoneNumberCountryTests.cs" />
-    <Compile Include="Model\VoiceCountryTests.cs" />
-    <Compile Include="Model\VoiceNumberTests.cs" />
-    <Compile Include="Pricing\VoiceCountryTests.cs" />
-    <Compile Include="Pricing\PhoneNumberCountryTests.cs" />
-    <Compile Include="Pricing\VoiceNumberTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Twilio.Api\Twilio.Api.csproj">
@@ -98,18 +91,6 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="Resources\" />
-    <Folder Include="Resources\Pricing\" />
-    <Folder Include="Pricing\" />
-    <Folder Include="TaskRouter\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Pricing\phone_number_country.json" />
-    <None Include="Resources\Pricing\phone_number_countries.json" />
-    <None Include="Resources\Pricing\voice_country.json" />
     <None Include="packages.config" />
-    <None Include="Resources\Pricing\voice_countries.json" />
-    <None Include="Resources\Pricing\voice_number.json" />
   </ItemGroup>
 </Project>

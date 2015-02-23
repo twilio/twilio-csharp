@@ -1,5 +1,5 @@
 ﻿{
-    "uri": "pricing.twilio.com/v1/Voice/Countries/EE",
+    "url": "https://pricing.twilio.com/v1/Voice/Countries/EE",
     "country" : "Estonia",
     "iso_country": "EE",
     "outbound_prefix_prices": [
@@ -34,5 +34,5 @@
             "call_current_price": "0.0070"
         }
     ],
-    "price_unit": "usd"
+    "price_unit": "USD"
 }

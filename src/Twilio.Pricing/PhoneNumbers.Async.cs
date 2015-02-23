@@ -5,7 +5,7 @@ using RestSharp.Validation;
 
 namespace Twilio.Pricing
 {
-    public partial class TwilioPricingClient
+    public partial class PricingClient
     {
         /// <summary>
         /// Retrieve a list of countries where Twilio hosted Phone Numbers

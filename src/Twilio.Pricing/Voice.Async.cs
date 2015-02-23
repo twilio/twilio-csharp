@@ -5,7 +5,7 @@ using RestSharp.Validation;
 
 namespace Twilio.Pricing
 {
-    public partial class TwilioPricingClient
+    public partial class PricingClient
     {
 
         public virtual void ListVoiceCountries(Action<VoiceCountryResult> callback)

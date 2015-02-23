@@ -3,21 +3,22 @@ using System.Threading;
 using Moq;
 using NUnit.Framework;
 using RestSharp;
-using Twilio.Pricing;
 
-namespace Twilio.Api.Tests.Integration
+using Twilio.Api.Tests.Integration;
+
+namespace Twilio.Pricing.Tests
 {
     [TestFixture]
     public class PhoneNumberCountryTests
     {
         ManualResetEvent manualResetEvent = null;
 
-        private Mock<TwilioPricingClient> mockClient;
+        private Mock<PricingClient> mockClient;
 
         [SetUp]
         public void Setup()
         {
-            mockClient = new Mock<TwilioPricingClient>(Credentials.AccountSid, Credentials.AuthToken);
+            mockClient = new Mock<PricingClient>(Credentials.AccountSid, Credentials.AuthToken);
             mockClient.CallBase = true;
         }
 
