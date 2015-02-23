@@ -12,7 +12,7 @@ namespace Twilio
         /// One of "local", "mobile", "national", or "toll_free".
         /// </summary>
         /// <value>Number type.</value>
-        public string Type { get; set; }
+        public string NumberType { get; set; }
         /// <summary>
         /// The base price per month for this type of number, before
         /// any discounts have been applied.

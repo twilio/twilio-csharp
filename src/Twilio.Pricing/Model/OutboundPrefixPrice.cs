@@ -32,13 +32,13 @@ namespace Twilio.Pricing
         /// before any discounts have been applied.
         /// </summary>
         /// <value>Undiscounted price/minute for outbound calls.</value>
-        public decimal CallBasePrice { get; set; }
+        public decimal BasePrice { get; set; }
 
         /// <summary>
         /// Price per minute for outbound calls to this set of prefixes,
         /// after applying available discounts for your account.
         /// </summary>
         /// <value>Discounted outbound price per minute.</value>
-        public decimal CallCurrentPrice { get; set; }
+        public decimal CurrentPrice { get; set; }
     }
 }

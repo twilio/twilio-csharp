@@ -27,7 +27,7 @@ namespace Twilio.Pricing.Tests.Model
 
             var price = prices [0];
             Assert.NotNull(price);
-            Assert.AreEqual("mobile", price.Type);
+            Assert.AreEqual("mobile", price.NumberType);
             Assert.AreEqual(3.00m, price.BasePrice);
             Assert.AreEqual(3.00m, price.CurrentPrice);
         }

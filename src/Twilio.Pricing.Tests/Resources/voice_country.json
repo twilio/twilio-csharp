@@ -6,20 +6,20 @@
         {
             "prefix_list": ["372"],
             "friendly_name": "Programmable Outbound Minute - Estonia",
-            "call_base_price": "0.033",
-            "call_current_price": "0.030"
+            "base_price": "0.033",
+            "current_price": "0.030"
         },
         {
             "prefix_list": ["3725"],
             "friendly_name": "Programmable Outbound Minute - Mobile",
-            "call_base_price": "0.0575",
-            "call_current_price": "0.0575"
+            "base_price": "0.0575",
+            "current_price": "0.0575"
         },
         {
             "prefix_list": ["37240, 37270, 37281, 37282"],
             "friendly_name": "Programmable Outbound Minute - Other",
-            "call_base_price": "0.465",
-            "call_current_price": "0.465"
+            "base_price": "0.465",
+            "current_price": "0.465"
         }
     ],
     "inbound_call_prices": [

@@ -29,8 +29,8 @@ namespace Twilio.Pricing.Tests.Model
             var prefixPrice = prefixPrices [0];
             Assert.NotNull(prefixPrice);
             Assert.AreEqual("Programmable Outbound Minute - Estonia", prefixPrice.FriendlyName);
-            Assert.AreEqual(0.033m, prefixPrice.CallBasePrice);
-            Assert.AreEqual(0.030m, prefixPrice.CallCurrentPrice);
+            Assert.AreEqual(0.033m, prefixPrice.BasePrice);
+            Assert.AreEqual(0.030m, prefixPrice.CurrentPrice);
 
             Assert.AreEqual("372", prefixPrice.PrefixList [0]);
         }

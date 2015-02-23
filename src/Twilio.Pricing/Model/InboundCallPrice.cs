@@ -23,13 +23,13 @@ namespace Twilio.Pricing
         /// number, before any discounts have been applied.
         /// </summary>
         /// <value>Call price/minute without discounts.</value>
-        public decimal CallBasePrice { get; set; }
+        public decimal BasePrice { get; set; }
 
         /// <summary>
         /// The price per minute for inbound calls to this type of Twilio
         /// number after applying any discounts available for your account.
         /// </summary>
         /// <value>Discounted call price/minute.</value>
-        public decimal CallCurrentPrice { get; set; }
+        public decimal CurrentPrice { get; set; }
     }
 }

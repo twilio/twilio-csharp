@@ -21,13 +21,13 @@ namespace Twilio.Pricing
         /// any discounts have been applied.
         /// </summary>
         /// <value>Undiscounted monthly price for this type of phone number.</value>
-        public decimal CallBasePrice { get; set; }
+        public decimal BasePrice { get; set; }
 
         /// <summary>
         /// The price per month for this type of number after applying any
         /// discounts available for your account.
         /// </summary>
         /// <value>Discounted monthly phone number price.</value>
-        public decimal CallCurrentPrice { get; set; }
+        public decimal CurrentPrice { get; set; }
     }
 }

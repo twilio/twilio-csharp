@@ -4,12 +4,12 @@
     "iso_country": "EE",
     "phone_number_prices": [
         {
-            "type": "mobile",
+            "number_type": "mobile",
             "base_price": "3.00",
             "current_price": "3.00"
         },
         {
-            "type": "national",
+            "number_type": "national",
             "base_price": "1.00",
             "current_price": "1.00"
         }

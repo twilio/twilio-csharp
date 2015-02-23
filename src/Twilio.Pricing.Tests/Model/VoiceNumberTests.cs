@@ -21,10 +21,10 @@ namespace Twilio.Pricing.Tests.Model
             Assert.AreEqual("US", output.IsoCountry);
             Assert.AreEqual("United States", output.Country);
             Assert.AreEqual("USD", output.PriceUnit);
-            Assert.AreEqual(0.0075m, output.InboundCallPrice.CallBasePrice);
-            Assert.AreEqual(0.0070m, output.InboundCallPrice.CallCurrentPrice);
-            Assert.AreEqual(0.015m, output.OutboundCallPrice.CallBasePrice);
-            Assert.AreEqual(0.015m, output.OutboundCallPrice.CallCurrentPrice);
+            Assert.AreEqual(0.0075m, output.InboundCallPrice.BasePrice);
+            Assert.AreEqual(0.0070m, output.InboundCallPrice.CurrentPrice);
+            Assert.AreEqual(0.015m, output.OutboundCallPrice.BasePrice);
+            Assert.AreEqual(0.015m, output.OutboundCallPrice.CurrentPrice);
             Assert.AreEqual("+14089673429", output.Number);
         }
     }
