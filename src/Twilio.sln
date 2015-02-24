@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{36CA862C-F8AB-4362-81F0-7B2116AF27FD}"
 	ProjectSection(SolutionItems) = preProject
@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{36CA862C
 		..\Twilio.Client.nuspec = ..\Twilio.Client.nuspec
 		..\Twilio.Mvc.nuspec = ..\Twilio.Mvc.nuspec
 		..\Twilio.nuspec = ..\Twilio.nuspec
+		..\Twilio.TaskRouter.nuspec = ..\Twilio.TaskRouter.nuspec
 		..\Twilio.TwiML.nuspec = ..\Twilio.TwiML.nuspec
 		..\Twilio.WebMatrix.nuspec = ..\Twilio.WebMatrix.nuspec
 	EndProjectSection
