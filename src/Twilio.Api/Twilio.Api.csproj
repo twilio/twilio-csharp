@@ -122,6 +122,8 @@
       <Link>Usage.Async.cs</Link>
     </Compile>
     <Compile Include="Accounts.cs" />
+    <Compile Include="Addresses.Async.cs" />
+    <Compile Include="Addresses.cs" />
     <Compile Include="Applications.cs" />
     <Compile Include="AuthorizedConnectApps.Async.cs" />
     <Compile Include="AuthorizedConnectApps.cs" />
@@ -132,15 +134,27 @@
     <Compile Include="Core.cs" />
     <Compile Include="ConnectApps.cs" />
     <Compile Include="Feedback.cs" />
+    <Compile Include="FeedbackSummary.Async.cs" />
+    <Compile Include="FeedbackSummary.cs" />
     <Compile Include="IncomingPhoneNumbers.cs" />
     <Compile Include="Media.cs" />
     <Compile Include="Messages.cs" />
+    <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\AddressListRequest.cs" />
+    <Compile Include="Model\AddressOptions.cs" />
+    <Compile Include="Model\AddressResult.cs" />
     <Compile Include="Model\Capabilities.cs" />
+    <Compile Include="Model\DependentPhoneNumber.cs" />
+    <Compile Include="Model\DependentPhoneNumberResult.cs" />
     <Compile Include="Model\Feedback.cs" />
+    <Compile Include="Model\FeedbackSummary.cs" />
+    <Compile Include="Model\IceServer.cs" />
     <Compile Include="Model\Issue.cs" />
     <Compile Include="Model\ListMeta.cs" />
     <Compile Include="Model\MediaListRequest.cs" />
     <Compile Include="Model\NextGenListBase.cs" />
+    <Compile Include="Model\Permission.cs" />
+    <Compile Include="Model\Token.cs" />
     <Compile Include="Notifications.cs" />
     <Compile Include="OutgoingCallerIds.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -149,6 +163,8 @@
     <Compile Include="Sandbox.cs" />
     <Compile Include="SharedAssemblyInfo.cs" />
     <Compile Include="Sms.cs" />
+    <Compile Include="Tokens.Async.cs" />
+    <Compile Include="Tokens.cs" />
     <Compile Include="Transcriptions.cs" />
     <Compile Include="Usage.cs" />
     <Compile Include="Model\Account.cs" />
