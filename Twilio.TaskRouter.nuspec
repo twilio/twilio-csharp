@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio.TaskRouter</id>
-		<version>1.0.0</version>
+		<version>1.0.1</version>
 		<authors>Twilio</authors>
 		<description>Twilio TaskRouter REST API helper library</description>
 		<language>en-US</language>
@@ -15,7 +15,8 @@
 				<dependency id="JWT" />
 		</dependencies>
 		<releaseNotes>
-      * 1.0.0 - Initial Release
+      * 1.0.1 - Adding missing TaskRouter Event APIs
+      * 1.0.0 - Initial Release      
     </releaseNotes>
 	</metadata>
 </package>
