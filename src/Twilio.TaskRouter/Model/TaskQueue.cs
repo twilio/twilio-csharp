@@ -8,47 +8,49 @@ namespace Twilio.TaskRouter
     public class TaskQueue : TwilioBase
     {
         /// <summary>
-        /// Gets or sets the sid.
+        /// The unique ID of the TaskQueue.
         /// </summary>
         public string Sid { get; set; }
         /// <summary>
-        /// Gets or sets the account sid.
+        /// The ID of the Account that owns this TaskQueue.
         /// </summary>
         public string AccountSid { get; set; }
         /// <summary>
-        /// Gets or sets the workspace sid.
+        /// The ID of the <see cref="Twilio.TaskRouter.Workspace"/> that owns this TaskQueue.
         /// </summary>
         public string WorkspaceSid { get; set; }
         /// <summary>
-        /// Gets or sets the name of the friendly.
+        /// Human-readable description of this TaskQueue.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// Gets or sets the target workers.
+        /// The worker selection expressions associated with this TaskQueue.
         /// </summary>
         public string TargetWorkers { get; set; }
         /// <summary>
-        /// Gets or sets the reservation activity sid.
+        /// The ID of the <see cref="Twilio.TaskRouter.Activity"/> to assign a <see cref="Twilio.TaskRouter.Worker"/>
+        /// when they are reserved for a <see cref="Twilio.TaskRouter.Task"/> from
+        /// this TaskQueue.
         /// </summary>
         public string ReservationActivitySid { get; set; }
         /// <summary>
-        /// Gets or sets the name of the reservation activity.
+        /// The human-readable description of the ReservationActivity.
         /// </summary>
         public string ReservationActivityName { get; set; }
         /// <summary>
-        /// Gets or sets the assignment activity sid.
+        /// The ID of the Activity to assign a Worker when they accept a Task from this TaskQueue.
         /// </summary>
         public string AssignmentActivitySid { get; set; }
         /// <summary>
-        /// Gets or sets the name of the assignment activity.
+        /// The human-readable description of the Activity to assign a Worker when they accept a Task from this TaskQueue.
         /// </summary>
         public string AssignmentActivityName { get; set; }
         /// <summary>
-        /// Gets or sets the date created.
+        /// The date this TaskQueue was created.
         /// </summary>
         public DateTime DateCreated { get; set; }
         /// <summary>
-        /// Gets or sets the date updated.
+        /// The date this TaskQueue was last updated.
         /// </summary>
         public DateTime DateUpdated { get; set; }
     }

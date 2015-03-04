@@ -8,47 +8,48 @@ namespace Twilio.TaskRouter
     public class Worker : TwilioBase
     {
         /// <summary>
-        /// Gets or sets the sid.
+        /// The unique ID of the Worker.
         /// </summary>
         public string Sid { get; set; }
         /// <summary>
-        /// Gets or sets the name of the friendly.
+        /// A user-friendly name for the Worker.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// Gets or sets the account sid.
+        /// The ID of the account that owns this Worker.
         /// </summary>
         public string AccountSid { get; set; }
         /// <summary>
-        /// Gets or sets the activity sid.
+        /// The ID of the <see cref="Twilio.TaskRouter.Activity" /> this Worker
+        /// is currently performing.
         /// </summary>
         public string ActivitySid { get; set; }
         /// <summary>
-        /// Gets or sets the name of the activity.
+        /// String describing the Worker's current Activity.
         /// </summary>
         public string ActivityName { get; set; }
         /// <summary>
-        /// Gets or sets the workspace sid.
+        /// The ID of the Workspace containing this Worker.
         /// </summary>
         public string WorkspaceSid { get; set; }
         /// <summary>
-        /// Gets or sets the attributes.
+        /// User-defined JSON object describing this Worker.
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// Gets or sets the available.
+        /// Whether the worker can be assigned a new <see cref="Twilio.TaskRouter.Task" />.
         /// </summary>
         public string Available { get; set; }
         /// <summary>
-        /// Gets or sets the date created.
+        /// The date this Worker was created.
         /// </summary>
         public DateTime DateCreated { get; set; }
         /// <summary>
-        /// Gets or sets the date updated.
+        /// The date this Worker was last updated.
         /// </summary>
         public DateTime DateUpdated { get; set; }
         /// <summary>
-        /// Gets or sets the date status changed.
+        /// The date this Worker's Activity last changed.
         /// </summary>
         public DateTime DateStatusChanged { get; set; }
     }
