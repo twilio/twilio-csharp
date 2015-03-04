@@ -8,59 +8,61 @@ namespace Twilio.TaskRouter
     public class Task : TwilioBase
     {
         /// <summary>
-        /// Gets or sets the sid.
+        /// The unique ID of the Task.
         /// </summary>
         public string Sid { get; set; }
         /// <summary>
-        /// Gets or sets the account sid.
+        /// The ID of the account that owns this Task.
         /// </summary>
         public string AccountSid { get; set; }
         /// <summary>
-        /// Gets or sets the assignment status.
+        /// A string representing the assignment state of the task. One of "pending",
+        /// "reserved", "assigned", or "canceled".
         /// </summary>
         public string AssignmentStatus { get; set; }
         /// <summary>
-        /// Gets or sets the attributes.
+        /// The user-defined JSON string describing the custom attributes of this Task.
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// Gets or sets the date created.
+        /// The date this Task was created.
         /// </summary>
         public DateTime DateCreated { get; set; }
         /// <summary>
-        /// Gets or sets the date updated.
+        /// The date this Task was last updated.
         /// </summary>
         public DateTime DateUpdated { get; set; }
         /// <summary>
-        /// Gets or sets the priority.
+        /// The current priority score of the task, as assigned by the workflow.
+        /// Tasks with higher values will be assigned before tasks with lower values.
         /// </summary>
         public int Priority { get; set; }
         /// <summary>
-        /// Gets or sets the age.
+        /// The number of seconds since this task was created.
         /// </summary>
         public int Age { get; set; }
         /// <summary>
-        /// Gets or sets the reason.
+        /// The reason the task was canceled (if applicable).
         /// </summary>
         public string Reason { get; set; }
         /// <summary>
-        /// Gets or sets the workspace sid.
+        /// The unique ID of the <see cref="Twilio.TaskRouter.Workspace"/> containing this task.
         /// </summary>
         public string WorkspaceSid { get; set; }
         /// <summary>
-        /// Gets or sets the workflow sid.
+        /// The ID of the <see cref="Twilio.TaskRouter.Workflow"/> responsible for routing this task.
         /// </summary>
         public string WorkflowSid { get; set; }
         /// <summary>
-        /// Gets or sets the name of the workflow friendly.
+        /// The human-readable name of the Workflow responsible for routing this task.
         /// </summary>
         public string WorkflowFriendlyName { get; set; }
         /// <summary>
-        /// Gets or sets the task queue sid.
+        /// The ID of the current TaskQueue this Task is occupying.
         /// </summary>
         public string TaskQueueSid { get; set; }
         /// <summary>
-        /// Gets or sets the name of the task queue friendly.
+        /// The human-readable name of the current TaskQueue.
         /// </summary>
         public string TaskQueueFriendlyName { get; set; }
     }
