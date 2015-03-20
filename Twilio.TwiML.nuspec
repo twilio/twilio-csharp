@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio.TwiML</id>
-		<version>3.3.5</version>
+		<version>3.3.6</version>
 		<authors>Twilio</authors>
 		<description>Twilio TwiML generator. If using ASP.NET MVC, install Twilio.Mvc instead.</description>
 		<language>en-US</language>
@@ -11,6 +11,7 @@
 		<licenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.txt</licenseUrl>
 		<tags>REST SMS voice telephony phone twilio twiml</tags>
     <releaseNotes>
+      * 3.3.6 - Added support in Enqueue and Queue for TaskRouter
       * 3.3.5 - Implement IDialNoun on Sip.  Adds constructor overload for Client.  Allows method attribute on number
       * 3.3.4 - Added fluent interface for messages so you can control the order of Media/Body nouns
       * 3.3.3 - Add Leave as allowed child of Response
