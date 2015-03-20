@@ -17,11 +17,24 @@ namespace Twilio.TwiML
         /// Initializes a new instance of the Queue class
         /// </summary>
         /// <param name="name">The name of the queue</param>
-        public Queue(string name)
+        public Queue()
         {
-            Element = new XElement("Queue", name);
+            Element = new XElement("Queue");
 
             AllowedAttributes.Add("url");
+            AllowedAttributes.Add("reservationSid");
+            AllowedAttributes.Add("postworkActivitySid");
+        }
+
+        public Queue(string name) : this()
+        {
+            Element.SetValue(name);
+        }
+
+        public Queue(object attributes)
+            : this()
+        {
+            AddAttributesFromObject(attributes);
         }
 
         /// <summary>

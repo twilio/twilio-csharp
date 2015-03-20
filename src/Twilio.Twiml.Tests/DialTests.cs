@@ -120,7 +120,25 @@ namespace Twilio.TwiML.Tests
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+        [TestMethod]
+        public void Can_Generate_Dial_And_Queue()
+        {
+            var response = new TwilioResponse();
+            response.Dial(new Queue("example"));
+
+            Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
+        }
+
+        [TestMethod]
+        public void Can_Generate_Dial_And_Queue_Object_Param()
+        {
+            var response = new TwilioResponse();
+            response.Dial(new Queue(new { reservationSid = "RSXXXXX", postworkActivitySid="PWXXXXXX" }));
+
+            Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
+        }
+        
+        [TestMethod]
 		public void Can_Generate_Dial_And_Client_Noun()
 		{
 			var response = new TwilioResponse();

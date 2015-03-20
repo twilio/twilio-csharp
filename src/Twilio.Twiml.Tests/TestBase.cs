@@ -24,7 +24,10 @@ namespace Twilio.TwiML.Tests
 			Console.Write(doc.ToString());
 
 			var valid = true;
-			doc.Validate(Schemas, (o, e) => { valid = false; });
+			doc.Validate(Schemas, (o, e) => {
+                Console.WriteLine(e);
+                valid = false; 
+            });
 			return valid;
 		}
 	}

@@ -379,6 +379,34 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
+        /// Add a Call to a TaskQueue
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public TwilioResponse Enqueue(object attributes)
+        {
+            Add(new Enqueue(String.Empty, attributes));
+            return this;
+        }
+
+        /// <summary>
+        /// Add a Call to a TaskQueue
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public TwilioResponse Enqueue(object attributes, string taskAttributes)
+        {
+            var enqueue = new Enqueue(String.Empty, attributes);
+            Current.Push(enqueue);
+
+            if (!string.IsNullOrEmpty(taskAttributes)) { Add(new TaskAttributes(taskAttributes)); }
+
+            Add(Current.Pop());
+
+            return this;
+        }
+
+        /// <summary>
         /// Add a Call to a Queue
         /// </summary>
         /// <param name="name"></param>

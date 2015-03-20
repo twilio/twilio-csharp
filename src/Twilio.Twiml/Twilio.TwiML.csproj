@@ -66,6 +66,7 @@
     <Compile Include="Verbs\Enqueue.cs" />
     <Compile Include="Verbs\IDialNoun.cs" />
     <Compile Include="Verbs\IMessageNoun.cs" />
+    <Compile Include="Verbs\IQueueNoun.cs" />
     <Compile Include="Verbs\IVerb.cs" />
     <Compile Include="Verbs\Leave.cs" />
     <Compile Include="Verbs\Media.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Verbs\Gather.cs" />
     <Compile Include="Verbs\Say.cs" />
     <Compile Include="Verbs\ElementBase.cs" />
+    <Compile Include="Verbs\TaskAttributes.cs" />
     <Compile Include="Verbs\Uri.cs" />
   </ItemGroup>
   <ItemGroup />
