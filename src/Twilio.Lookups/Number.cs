@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Twilio.Lookups.Model
+namespace Twilio.Lookups
 {
     /// <summary>
     /// A phone number result from the Twilio Lookups API.

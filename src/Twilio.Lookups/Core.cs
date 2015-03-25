@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using RestSharp;
 using RestSharp.Extensions;
-using Twilio.Lookups.Model;
 
 namespace Twilio.Lookups
 {

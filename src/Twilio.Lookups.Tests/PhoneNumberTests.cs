@@ -7,7 +7,7 @@ using NUnit.Framework;
 using Twilio.Api.Tests.Integration;
 using System.Threading;
 using RestSharp;
-using Twilio.Lookups.Model;
+using Twilio.Lookups;
 using System.IO;
 using RestSharp.Deserializers;
 

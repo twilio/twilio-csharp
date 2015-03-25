@@ -45,8 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core.cs" />
-    <Compile Include="Model\CarrierInfo.cs" />
-    <Compile Include="Model\Number.cs" />
+    <Compile Include="CarrierInfo.cs" />
+    <Compile Include="Number.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
