@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{36CA862C-F8AB-4362-81F0-7B2116AF27FD}"
 	ProjectSection(SolutionItems) = preProject
@@ -48,6 +48,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.TaskRouter", "Twilio.TaskRouter\Twilio.TaskRouter.csproj", "{7CA0FADC-D5B8-4206-887E-776982E8FF48}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.TaskRouter.Tests", "Twilio.TaskRouter.Tests\Twilio.TaskRouter.Tests.csproj", "{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Lookups", "Twilio.Lookups\Twilio.Lookups.csproj", "{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Lookups.Tests", "Twilio.Lookups.Tests\Twilio.Lookups.Tests.csproj", "{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -323,6 +327,54 @@ Global
 		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.ReleaseWithPackage|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.ReleaseWithPackage|Mixed Platforms.Build.0 = Release|Any CPU
 		{3877B8E8-7CD6-47A5-999F-D1DFFE55F8F0}.ReleaseWithPackage|x86.ActiveCfg = Release|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.Default|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.Default|Any CPU.Build.0 = Debug|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.Default|ARM.ActiveCfg = Debug|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.Default|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.Default|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.Default|x86.ActiveCfg = Debug|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.Release|ARM.ActiveCfg = Release|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.Release|x86.ActiveCfg = Release|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.ReleaseWithPackage|Any CPU.ActiveCfg = Release|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.ReleaseWithPackage|Any CPU.Build.0 = Release|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.ReleaseWithPackage|ARM.ActiveCfg = Release|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.ReleaseWithPackage|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.ReleaseWithPackage|Mixed Platforms.Build.0 = Release|Any CPU
+		{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}.ReleaseWithPackage|x86.ActiveCfg = Release|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.Default|Any CPU.ActiveCfg = Debug|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.Default|Any CPU.Build.0 = Debug|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.Default|ARM.ActiveCfg = Debug|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.Default|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.Default|Mixed Platforms.Build.0 = Debug|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.Default|x86.ActiveCfg = Debug|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.Release|ARM.ActiveCfg = Release|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.Release|x86.ActiveCfg = Release|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.ReleaseWithPackage|Any CPU.ActiveCfg = Release|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.ReleaseWithPackage|Any CPU.Build.0 = Release|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.ReleaseWithPackage|ARM.ActiveCfg = Release|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.ReleaseWithPackage|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.ReleaseWithPackage|Mixed Platforms.Build.0 = Release|Any CPU
+		{699A86FE-D2B2-4914-B40A-0FCFB13E1D01}.ReleaseWithPackage|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
