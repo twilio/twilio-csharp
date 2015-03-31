@@ -4,64 +4,65 @@ using System.Collections.Generic;
 namespace Twilio.TaskRouter
 {
     /// <summary>
-    /// Event.
+    /// TaskRouter logs Events for each state change in the Workspace for the purpose of historical reporting and auditing.
     /// </summary>
     public class Event : TwilioBase
     {
         /// <summary>
-        /// Gets or sets the sid.
+        /// The unique ID for this Event.
         /// </summary>
         public string Sid { get; set; }
         /// <summary>
-        /// Gets or sets the description.
+        /// A description of this Event.
         /// </summary>
         public string Description { get; set; }
         /// <summary>
-        /// Gets or sets the account sid.
+        /// The unique ID of the Account that owns this Event.
         /// </summary>
         public string AccountSid { get; set; }
         /// <summary>
-        /// Gets or sets the type of the event.
+        /// An identifier for this type of Event.
         /// </summary>
         public string EventType { get; set; }
         /// <summary>
-        /// Gets or sets the type of the resource.
+        /// The type of object this Event is most relevant to (e.g. <see cref="Twilio.TaskRouter.Task"/> or <see cref="Twilio.TaskRouter.Reservation"/>).
         /// </summary>
         public string ResourceType { get; set; }
         /// <summary>
-        /// Gets or sets the resource sid.
+        /// The unique ID of the object this Event is most relevant to.
         /// </summary>
         public string ResourceSid { get; set; }
         /// <summary>
-        /// Gets or sets the resource URL.
+        /// The URL of the object this Event is most relevant to.
         /// </summary>
         public string ResourceUrl { get; set; }
         /// <summary>
-        /// Gets or sets the event date.
+        /// The time this Event was sent.
         /// </summary>
         public DateTime EventDate { get; set; }
         /// <summary>
-        /// Gets or sets the source.
+        /// The source of the Event.
         /// </summary>
         public string Source { get; set; }
         /// <summary>
-        /// Gets or sets the source ip address.
+        /// The IP Address of the actor that generated this Event.
         /// </summary>
         public string SourceIpAddress { get; set; }
         /// <summary>
-        /// Gets or sets the type of the actor.
+        /// The type of the actor that generated this Event.
         /// </summary>
         public string ActorType { get; set; }
         /// <summary>
-        /// Gets or sets the actor sid.
+        /// The unique ID of the actor object that generated this Event.
         /// </summary>
         public string ActorSid { get; set; }
         /// <summary>
-        /// Gets or sets the actor URL.
+        /// The URL of the actor object that generated this Event.
         /// </summary>
         public string ActorUrl { get; set; }
         /// <summary>
-        /// Gets or sets the event data.
+        /// A dictionary of data pertaining to the specific event type.
+        /// See <a href="https://www.twilio.com/docs/taskrouter/events">the TaskRouter documentation</a> for details.
         /// </summary>
         public Dictionary<string, string> EventData { get; set; }
     }
