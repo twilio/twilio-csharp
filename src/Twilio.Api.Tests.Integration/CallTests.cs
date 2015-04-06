@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using System.Threading;
 using System.Linq;
@@ -54,6 +55,50 @@ namespace Twilio.Api.Tests.Integration
             var urlParam = savedRequest.Parameters.Find(x => x.Name == "Url");
             Assert.IsNotNull(urlParam);
             Assert.AreEqual(URL, urlParam.Value);
+        }
+
+        [Test]
+        public void ShouldInitiateOutboundCallWithCallbackEvents()
+        {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Call>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Call());
+            var client = mockClient.Object;
+
+            var options = new CallOptions();
+            options.To = TO;
+            options.From = FROM;
+            options.Url = URL;
+            options.StatusCallback = "http://example.com";
+            string[] events = { "initiated", "ringing", "completed" };
+            options.StatusCallbackEvents = events;
+            client.InitiateOutboundCall(options);
+
+            mockClient.Verify(trc => trc.Execute<Call>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Calls.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(7, savedRequest.Parameters.Count);
+            var fromParam = savedRequest.Parameters.Find(x => x.Name == "From");
+            Assert.IsNotNull(fromParam);
+            Assert.AreEqual(FROM, fromParam.Value);
+            var toParam = savedRequest.Parameters.Find(x => x.Name == "To");
+            Assert.IsNotNull(toParam);
+            Assert.AreEqual(TO, toParam.Value);
+            var urlParam = savedRequest.Parameters.Find(x => x.Name == "Url");
+            Assert.IsNotNull(urlParam);
+            Assert.AreEqual(URL, urlParam.Value);
+            var callbackParam = savedRequest.Parameters.Find(x => x.Name == "StatusCallback");
+            Assert.IsNotNull(callbackParam);
+            Assert.AreEqual("http://example.com", callbackParam.Value);
+            var eventParams = savedRequest.Parameters.FindAll(x => x.Name == "StatusCallbackEvent");
+            Assert.IsNotNull(eventParams);
+            Assert.AreEqual(3, eventParams.Count);
+            var values = new System.Collections.Generic.List<string>();
+            eventParams.ForEach((p => values.Add(p.Value.ToString())));
+            values.Sort();
+            Assert.AreEqual(new List<string>() { "completed", "initiated", "ringing" }, values);
         }
 
         [Test]
