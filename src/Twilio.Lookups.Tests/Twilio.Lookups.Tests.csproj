@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -35,9 +35,6 @@
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.2.1502.0911\lib\net40\Moq.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="RestSharp">
       <HintPath>..\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
     </Reference>
@@ -48,6 +45,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PhoneNumberTests.cs" />
@@ -60,15 +60,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Twilio.Api.Tests.Integration\Twilio.Api.Tests.Integration.csproj">
-      <Project>{2e1a3b46-c072-48e0-92bf-f2901036979f}</Project>
+      <Project>{2E1A3B46-C072-48E0-92BF-F2901036979F}</Project>
       <Name>Twilio.Api.Tests.Integration</Name>
     </ProjectReference>
     <ProjectReference Include="..\Twilio.Api\Twilio.Api.csproj">
-      <Project>{894ff9e8-4dbf-4472-8ae2-1a6a988e105b}</Project>
+      <Project>{894FF9E8-4DBF-4472-8AE2-1A6A988E105B}</Project>
       <Name>Twilio.Api</Name>
     </ProjectReference>
     <ProjectReference Include="..\Twilio.Lookups\Twilio.Lookups.csproj">
-      <Project>{da2d4df6-c21d-4fd3-95f6-1d3bb4b1da08}</Project>
+      <Project>{DA2D4DF6-C21D-4FD3-95F6-1D3BB4B1DA08}</Project>
       <Name>Twilio.Lookups</Name>
     </ProjectReference>
   </ItemGroup>
