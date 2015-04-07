@@ -33,14 +33,8 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void ListAvailableTollFreePhoneNumbers(string isoCountryCode, Action<AvailablePhoneNumberResult> callback)
 		{
-			Require.Argument("isoCountryCode", isoCountryCode);
-
-			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/TollFree.json";
-			request.AddUrlSegment("IsoCountryCode", isoCountryCode);
-
-			ExecuteAsync<AvailablePhoneNumberResult>(request, (response) => callback(response));
-		}
+            ListAvailableTollFreePhoneNumbers(isoCountryCode, string.Empty, callback);
+        }
 
 		/// <summary>
 		/// Search available toll-free phone numbers
@@ -50,14 +44,28 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void ListAvailableTollFreePhoneNumbers(string isoCountryCode, string contains, Action<AvailablePhoneNumberResult> callback)
 		{
-			Require.Argument("isoCountryCode", isoCountryCode);
-			Require.Argument("contains", contains);
-			var request = new RestRequest();
-			request.Resource = "Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/TollFree.json";
-			request.AddUrlSegment("IsoCountryCode", isoCountryCode);
-			request.AddParameter("Contains", contains);
-			ExecuteAsync<AvailablePhoneNumberResult>(request, (response) => callback(response));
+            var options  new AvailablePhoneNumberListRequest() { Contains = contains };
+            ListAvailableTollFreePhoneNumbers(isoCountryCode, options);
 		}
+
+        /// <summary>
+        /// Search available toll-free phone numbers
+        /// </summary>
+        /// <param name="isoCountryCode">Two-character ISO country code (US or CA)</param>
+        /// <param name="contains">Value to use when filtering search. Accepts numbers or characters.</param>
+        /// <param name="callback">Method to call upon successful completion</param>
+        public virtual void ListAvailableTollFreePhoneNumbers(string isoCountryCode, AvailablePhoneNumberListRequest options, Action<AvailablePhoneNumberResult> callback)
+        {
+            Require.Argument("isoCountryCode", isoCountryCode);
+
+            var request = new RestRequest();
+            request.Resource = "Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/TollFree.json";
+            request.AddUrlSegment("IsoCountryCode", isoCountryCode);
+
+            AddNumberSearchParameters(options, request);
+            
+            ExecuteAsync<AvailablePhoneNumberResult>(request, (response) => callback(response));
+        }
 
         /// <summary>
         /// Search available mobile phone numbers.  Makes a GET request to the AvailablePhoneNumber List resource.
