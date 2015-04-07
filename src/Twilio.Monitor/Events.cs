@@ -57,6 +57,9 @@ namespace Twilio.Monitor
             if (options.ActorSid.HasValue()) {
                 request.AddParameter("ActorSid", options.ActorSid);
             }
+            if (options.SourceIpAddress.HasValue()) {
+                request.AddParameter("SourceIpAddress", options.SourceIpAddress);
+            }
             if (options.ResourceSid.HasValue()) {
                 request.AddParameter("ResourceSid", options.ResourceSid);
             }

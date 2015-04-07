@@ -25,6 +25,10 @@ namespace Twilio.Monitor
         /// </summary>
         public string ActorSid { get; set; }
         /// <summary>
+        /// Gets or sets the source ip address.
+        /// </summary>
+        public string SourceIpAddress { get; set; }
+        /// <summary>
         /// Gets or sets the page token.
         /// </summary>
         public string PageToken { get; set; }
