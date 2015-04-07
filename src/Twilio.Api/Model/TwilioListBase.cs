@@ -13,17 +13,9 @@ namespace Twilio
 		/// </summary>
 		public int Page { get; set; }
 		/// <summary>
-		/// The total number of pages.
-		/// </summary>
-		public int NumPages { get; set; }
-		/// <summary>
 		/// How many items are in each page
 		/// </summary>
 		public int PageSize { get; set; }
-		/// <summary>
-		/// The total number of items in the list.
-		/// </summary>
-		public int Total { get; set; }
 		/// <summary>
 		/// The position in the overall list of the first item in this page.
 		/// </summary>
@@ -44,9 +36,5 @@ namespace Twilio
 		/// The URI for the previous page of this list.
 		/// </summary>
 		public Uri PreviousPageUri { get; set; }
-		/// <summary>
-		/// The URI for the last page of this list.
-		/// </summary>
-		public Uri LastPageUri { get; set; }
 	}
 }
