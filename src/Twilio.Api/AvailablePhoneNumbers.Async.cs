@@ -44,7 +44,7 @@ namespace Twilio
 		/// <param name="callback">Method to call upon successful completion</param>
         public virtual void ListAvailableTollFreePhoneNumbers(string isoCountryCode, string contains, Action<AvailablePhoneNumberResult> callback)
 		{
-            var options  new AvailablePhoneNumberListRequest() { Contains = contains };
+            var options = new AvailablePhoneNumberListRequest() { Contains = contains };
             ListAvailableTollFreePhoneNumbers(isoCountryCode, options);
 		}
 
