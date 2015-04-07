@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio.Mvc</id>
-		<version>3.1.14</version>
+		<version>3.1.15</version>
 		<authors>Twilio</authors>
 		<description>Twilio helpers for ASP.NET MVC</description>
 		<language>en-US</language>
@@ -15,6 +15,7 @@
 			<dependency id="Twilio.TwiML" />
 		</dependencies>
     <releaseNotes>
+      * 3.1.15 - StatusCallback binding model fixes
       * 3.1.14 - Removed support for MVC 2.  Project now builds against .NET 4.0 and takes a dependency on MVC 3.
       * 3.1.13 - Changed Specific Version flag on System.Web.Mvc dependency
       * 3.1.12 - Null reference fix
