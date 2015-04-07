@@ -45,7 +45,7 @@ namespace Twilio
         public virtual void ListAvailableTollFreePhoneNumbers(string isoCountryCode, string contains, Action<AvailablePhoneNumberResult> callback)
 		{
             var options = new AvailablePhoneNumberListRequest() { Contains = contains };
-            ListAvailableTollFreePhoneNumbers(isoCountryCode, options);
+            ListAvailableTollFreePhoneNumbers(isoCountryCode, options, callback);
 		}
 
         /// <summary>
