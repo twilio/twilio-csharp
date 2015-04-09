@@ -17,6 +17,7 @@ namespace Twilio.Monitor.Tests.Model
             var output = json.Deserialize<Event>(new RestResponse { Content = doc });
 
             Assert.NotNull(output);
+            Assert.NotNull(output.EventData);
         }
     }
 }
