@@ -56,5 +56,9 @@ namespace Twilio.Monitor
         /// The data involved in this Event.
         /// </summary>
         public Dictionary<string, Object> EventData { get; set; }
+        /// <summary>
+        /// Gets or sets the links.
+        /// </summary>
+        public Dictionary<string, string> Links { get; set; }
     }
 }

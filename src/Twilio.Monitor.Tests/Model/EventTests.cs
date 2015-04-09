@@ -18,6 +18,9 @@ namespace Twilio.Monitor.Tests.Model
 
             Assert.NotNull(output);
             Assert.NotNull(output.EventData);
+            Assert.NotNull(output.Links);
+            Assert.True(output.Links.ContainsKey("actor"));
+            Assert.True(output.Links.ContainsKey("resource"));
         }
     }
 }
