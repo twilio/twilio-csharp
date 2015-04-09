@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Twilio.Monitor
@@ -55,7 +56,7 @@ namespace Twilio.Monitor
         /// <summary>
         /// The data involved in this Event.
         /// </summary>
-        public Dictionary<string, Object> EventData { get; set; }
+        public Dictionary<string, Dictionary<string, Object>> EventData { get; set; }
         /// <summary>
         /// Gets or sets the links.
         /// </summary>
