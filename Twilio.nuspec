@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>3.6.29</version>
+		<version>4.0.0</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -14,6 +14,7 @@
 			<dependency id="RestSharp" version="105.0.1" />
 		</dependencies>
 		<releaseNotes>
+      * 4.0.0 - Removed obsolete paging properties - major version bump due to breaking change
       * 3.6.29 - Added overload to ListAvailableTollFreePhoneNumbers that allows user to provide an AvalablePhoneNumberListRequest object
       * 3.6.27 - Solved the curious case of missing methods
       * 3.6.26 - Added support for meta lists
