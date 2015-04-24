@@ -93,6 +93,12 @@ The examples below show how to have your application initiate and outbound phone
 	var doc = response.ToXDocument();
     Response.ContentType = "application/xml";
 	doc.Save(Response.Output);
+	
+## Getting help
+
+If you need help installing or using the library, please contact Twilio Support at help@twilio.com first. Twilio's Support staff are well-versed in all of the Twilio Helper Libraries, and usually reply within 24 hours.
+
+If you've instead found a bug in the library or would like new features added, go ahead and open issues or pull requests against this repo!
 
 ## Migrating from earlier versions
 
