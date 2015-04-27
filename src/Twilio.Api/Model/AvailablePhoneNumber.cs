@@ -47,11 +47,14 @@ namespace Twilio
 		/// Indicates whether this number requires an associated physical address.
 		/// One of "any", "local", "foreign", or "none".
 		/// </summary>
-		/// XXX does this want to be an enum of some sort?
 		public string AddressRequirements { get; set; }
-		/// <summary>
-        /// Gets or sets the capabilities.
-        /// </summary>
-		public Capabilities Capabilities { get; set; }
-	}
+                /// <summary>
+                /// Whether this number is new to the Twilio platform.
+                /// </summary>
+                public bool Beta { get; set; }
+                /// <summary>
+                /// Gets or sets the capabilities.
+                /// </summary>
+                public Capabilities Capabilities { get; set; }
+        }
 }
