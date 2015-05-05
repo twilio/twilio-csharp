@@ -42,22 +42,22 @@ namespace Twilio.Monitor
         /// <param name="startDate">Only return alerts that occurred at or after this datetime.</param>
         /// <param name="endDate">Only return alerts that occurred at or before this datetime.</param>
         /// <returns></returns>
-        public virtual AlertResult ListAlerts(string? logLevel, DateTime startDate, DateTime endDate)
+        public virtual AlertResult ListAlerts(string logLevel, DateTime? startDate, DateTime? endDate)
         {
             var request = new RestRequest();
             request.Resource = "Alerts";
 
-            if (logLevel.HasValue)
+            if (logLevel.HasValue())
             {
                 request.AddParameter("LogLevel", logLevel);
             }
-            if (startDate != null)
+            if (startDate.HasValue)
             {
-                request.AddParameter("StartDate", startDate.ToString("yyyy-MM-ddTHH:mm:ssK"));
+                request.AddParameter("StartDate", startDate.Value.ToString("yyyy-MM-ddTHH:mm:ssK"));
             }
-            if (endDate != null)
+            if (endDate.HasValue)
             {
-                request.AddParameter("EndDate", endDate.ToString("yyyy-MM-ddTHH:mm:ssK"));
+                request.AddParameter("EndDate", endDate.Value.ToString("yyyy-MM-ddTHH:mm:ssK"));
             }
             return Execute<AlertResult>(request);
         }

@@ -26,7 +26,7 @@ namespace Twilio.Monitor
 
             request.AddUrlSegment("AlertSid", alertSid);
 
-            ExecuteAsync<Alert>(request, (response) => { callback(response); });)
+            ExecuteAsync<Alert>(request, (response) => { callback(response); });
         }
 
         public virtual void ListAlerts(Action<AlertResult> callback)
@@ -34,22 +34,22 @@ namespace Twilio.Monitor
             ListAlerts(null, null, null, callback);
         }
 
-        public virtual void ListAlerts(string? logLevel, DateTime startDate, DateTime endDate, Action<AlertResult> callback)
+        public virtual void ListAlerts(string logLevel, DateTime? startDate, DateTime? endDate, Action<AlertResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Alerts";
 
-            if (logLevel.HasValue)
+            if (logLevel.HasValue())
             {
                 request.AddParameter("LogLevel", logLevel);
             }
-            if (startDate != null)
+            if (startDate.HasValue)
             {
-                request.AddParameter("StartDate", startDate.ToString("yyyy-MM-ddTHH:mm:ssK"));
+                request.AddParameter("StartDate", startDate.Value.ToString("yyyy-MM-ddTHH:mm:ssK"));
             }
-            if (endDate != null)
+            if (endDate.HasValue)
             {
-                request.AddParameter("EndDate", endDate.ToString("yyyy-MM-ddTHH:mm:ssK"));
+                request.AddParameter("EndDate", endDate.Value.ToString("yyyy-MM-ddTHH:mm:ssK"));
             }
             ExecuteAsync<AlertResult>(request, (response) => { callback(response); });
         }
