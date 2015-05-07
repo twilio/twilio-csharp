@@ -1,0 +1,23 @@
+﻿{
+    "meta": {
+        "key": "countries",
+        "url": "https://pricing.twilio.com/v1/Voice/Countries"
+    },
+    "countries": [
+        {
+            "country": "Ascension",
+            "iso_country": "AC",
+            "url": "https://pricing.twilio.com/v1/Voice/Countries/AC"
+        },
+        {
+            "country": "Andorra",
+            "iso_country": "AD",
+            "url": "https://pricing.twilio.com/v1/Voice/Countries/AD"
+        },
+        {
+            "country": "United States",
+            "iso_country": "US",
+            "url": "https://pricing.twilio.com/v1/Voice/Countries/US"
+        }
+    ]
+}
