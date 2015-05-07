@@ -20,13 +20,19 @@ namespace Twilio.TwiML
 		public Enqueue(string name)
 		{
 			Element = new XElement("Enqueue", name);
+<<<<<<< HEAD
             AllowedChildren.Add("TaskAttributes");
+=======
+>>>>>>> origin/pricing
 
             AllowedAttributes.Add("action");
             AllowedAttributes.Add("method");
             AllowedAttributes.Add("waitUrl");
             AllowedAttributes.Add("waitUrlMethod");
+<<<<<<< HEAD
             AllowedAttributes.Add("workflowSid");
+=======
+>>>>>>> origin/pricing
 		}
 
         public Enqueue(string name, object attributes) : this(name)

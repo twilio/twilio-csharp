@@ -379,6 +379,7 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
+<<<<<<< HEAD
         /// Add a Call to a TaskQueue
         /// </summary>
         /// <param name="name"></param>
@@ -407,6 +408,8 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
+=======
+>>>>>>> origin/pricing
         /// Add a Call to a Queue
         /// </summary>
         /// <param name="name"></param>

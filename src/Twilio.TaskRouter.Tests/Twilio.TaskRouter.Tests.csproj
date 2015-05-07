@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -33,15 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="JWT, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\JWT.1.3.2\lib\3.5\JWT.dll</HintPath>
-    </Reference>
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp">
       <HintPath>..\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
@@ -52,6 +45,12 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="JWT">
+      <HintPath>..\packages\JWT.1.3.2\lib\3.5\JWT.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityTests.cs" />
@@ -95,15 +94,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Twilio.Api.Tests.Integration\Twilio.Api.Tests.Integration.csproj">
-      <Project>{2e1a3b46-c072-48e0-92bf-f2901036979f}</Project>
+      <Project>{2E1A3B46-C072-48E0-92BF-F2901036979F}</Project>
       <Name>Twilio.Api.Tests.Integration</Name>
     </ProjectReference>
     <ProjectReference Include="..\Twilio.Api\Twilio.Api.csproj">
-      <Project>{894ff9e8-4dbf-4472-8ae2-1a6a988e105b}</Project>
+      <Project>{894FF9E8-4DBF-4472-8AE2-1A6A988E105B}</Project>
       <Name>Twilio.Api</Name>
     </ProjectReference>
     <ProjectReference Include="..\Twilio.TaskRouter\Twilio.TaskRouter.csproj">
-      <Project>{7ca0fadc-d5b8-4206-887e-776982e8ff48}</Project>
+      <Project>{7CA0FADC-D5B8-4206-887E-776982E8FF48}</Project>
       <Name>Twilio.TaskRouter</Name>
     </ProjectReference>
   </ItemGroup>
