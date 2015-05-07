@@ -17,7 +17,6 @@ namespace Twilio.TwiML
         /// Initializes a new instance of the Queue class
         /// </summary>
         /// <param name="name">The name of the queue</param>
-<<<<<<< HEAD
         public Queue()
         {
             Element = new XElement("Queue");
@@ -36,13 +35,6 @@ namespace Twilio.TwiML
             : this()
         {
             AddAttributesFromObject(attributes);
-=======
-        public Queue(string name)
-        {
-            Element = new XElement("Queue", name);
-
-            AllowedAttributes.Add("url");
->>>>>>> origin/pricing
         }
 
         /// <summary>
