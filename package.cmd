@@ -14,6 +14,7 @@ if not exist download\package\twilioclient mkdir download\package\twilioclient
 if not exist download\package\twiliotaskrouter mkdir download\package\twiliotaskrouter
 if not exist download\package\twiliolookups mkdir download\package\twiliolookups
 if not exist download\package\twiliopricing mkdir download\package\twiliopricing
+if not exist download\package\twiliomonitor mkdir download\package\twiliomonitor
 
 if not exist download\package\twilio\lib mkdir download\package\twilio\lib
 if not exist download\package\twilio\lib\3.5 mkdir download\package\twilio\lib\3.5
@@ -41,6 +42,9 @@ if not exist download\package\twiliolookups\lib\3.5 mkdir download\package\twili
 if not exist download\package\twiliopricing\lib mkdir download\package\twiliopricing\lib
 if not exist download\package\twiliopricing\lib\3.5 mkdir download\package\twiliopricing\lib\3.5
 
+if not exist download\package\twiliomonitor\lib mkdir download\package\twiliomonitor\lib
+if not exist download\package\twiliomonitor\lib\3.5 mkdir download\package\twiliomonitor\lib\3.5
+
 REM tools\ilmerge.exe /lib:src\Twilio.Api\bin\Release /internalize /ndebug /v2 /out:download\Twilio.Api.dll Twilio.Api.dll RestSharp.dll
 REM tools\ilmerge.exe /lib:src\Twilio.Api.Silverlight\bin\Release /internalize /ndebug /targetplatform:v4,"C:\Program Files (x86)\Microsoft Silverlight\4.1.10111.0" /out:download\Twilio.Api.Silverlight.dll RestSharp.Silverlight.dll
 
@@ -54,6 +58,7 @@ copy src\Twilio.Client.Capability\bin\Release\*.* download
 copy src\Twilio.TaskRouter\bin\Release\*.* download
 copy src\Twilio.Lookups\bin\Release\*.* download
 copy src\Twilio.Pricing\bin\Release\*.* download
+copy src\Twilio.Monitor\bin\Release\*.* download
 copy LICENSE.txt download
 
 copy src\Twilio.Api\bin\Release\Twilio.Api.* download\package\twilio\lib\3.5\
@@ -67,6 +72,7 @@ copy src\Twilio.Client.Capability\bin\Release\Twilio.Client.Capability.* downloa
 copy src\Twilio.TaskRouter\bin\Release\Twilio.TaskRouter.* download\package\twiliotaskrouter\lib\3.5\
 copy src\Twilio.Lookups\bin\Release\Twilio.Lookups.* download\package\twiliolookups\lib\3.5\
 copy src\Twilio.Pricing\bin\Release\Twilio.Pricing.* download\package\twiliopricing\lib\3.5\
+copy src\Twilio.Monitor\bin\Release\Twilio.Monitor.* download\package\twiliomonitor\lib\3.5\
 
 tools\nuget.exe pack Twilio.nuspec -BasePath download\package\twilio -o download
 tools\nuget.exe pack Twilio.Mvc.nuspec -BasePath download\package\twiliomvc -o download
@@ -76,3 +82,4 @@ tools\nuget.exe pack Twilio.Client.nuspec -BasePath download\package\twilioclien
 tools\nuget.exe pack Twilio.TaskRouter.nuspec -BasePath download\package\twiliotaskrouter -o download
 tools\nuget.exe pack Twilio.Lookups.nuspec -BasePath download\package\twiliolookups -o download
 tools\nuget.exe pack Twilio.Pricing.nuspec -BasePath download\package\twiliopricing -o download
+tools\nuget.exe pack Twilio.Monitor.nuspec -BasePath download\package\twiliomonitor -o download
