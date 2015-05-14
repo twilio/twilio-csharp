@@ -153,6 +153,13 @@ namespace Twilio
 
 			if (options.StatusCallback.HasValue()) request.AddParameter("StatusCallback", options.StatusCallback);
 			if (options.StatusCallbackMethod.HasValue()) request.AddParameter("StatusCallbackMethod", options.StatusCallbackMethod);
+			if (options.StatusCallbackEvents != null)
+			{
+				for (int i = 0; i < options.StatusCallbackEvents.Length; i++)
+				{
+						request.AddParameter("StatusCallbackEvent", options.StatusCallbackEvents[i]);
+				}
+			}
 			if (options.FallbackUrl.HasValue()) request.AddParameter("FallbackUrl", options.FallbackUrl);
 			if (options.FallbackMethod.HasValue()) request.AddParameter("FallbackMethod", options.FallbackMethod);
 			if (options.Method.HasValue()) request.AddParameter("Method", options.Method);
