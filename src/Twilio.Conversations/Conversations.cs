@@ -18,7 +18,7 @@ namespace Twilio.Conversations
         /// </summary>
         /// <param name="conversationSid">Conversation sid</param>
         /// <returns></returns>
-        public Conversation GetConversation(string conversationSid)
+        public virtual Conversation GetConversation(string conversationSid)
         {
             Require.Argument("ConversationSid", conversationSid);
 
@@ -34,7 +34,7 @@ namespace Twilio.Conversations
         /// Retrieve a list of current in-progress Conversations.
         /// </summary>
         /// <returns>Conversation list</returns>
-        public ConversationResult ListInProgressConversations()
+        public virtual ConversationResult ListInProgressConversations()
         {
             var request = new RestRequest();
             request.Resource = "Conversations/InProgress";
@@ -46,7 +46,7 @@ namespace Twilio.Conversations
         /// Retrieve a list of your completed Conversations.
         /// </summary>
         /// <returns>Conversation list</returns>
-        public ConversationResult ListCompletedConversations()
+        public virtual ConversationResult ListCompletedConversations()
         {
             var request = new RestRequest();
             request.Resource = "Conversations/Completed";

@@ -2,30 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using RestSharp;
-using RestSharp.Extensions;
-using RestSharp.Validation;
 
+using RestSharp;
+using RestSharp.Validation;
+using RestSharp.Extensions;
 using Twilio.Conversations.Model;
 
 namespace Twilio.Conversations
 {
     public partial class ConversationsClient
     {
-        public virtual Participant GetParticipant(string conversationSid, string participantSid)
+        public virtual void GetParticipant(string conversationSid, string participantSid, Action<Participant> callback)
         {
             Require.Argument("ConversationSid", conversationSid);
             Require.Argument("ParticipantSid", participantSid);
+
             var request = new RestRequest();
             request.Resource = "Conversations/{ConversationSid}/Participants/{ParticipantSid}";
 
             request.AddUrlSegment("ConversationSid", conversationSid);
             request.AddUrlSegment("ParticipantSid", participantSid);
 
-            return Execute<Participant>(request);
+            ExecuteAsync<Participant>(request, response => callback(response));
         }
 
-        public virtual ParticipantResult ListParticipants(string conversationSid)
+        public virtual void ListParticipants(string conversationSid, Action<ParticipantResult> callback)
         {
             Require.Argument("ConversationSid", conversationSid);
 
@@ -34,10 +35,10 @@ namespace Twilio.Conversations
 
             request.AddUrlSegment("ConversationSid", conversationSid);
 
-            return Execute<ParticipantResult>(request);
+            ExecuteAsync<ParticipantResult>(request, response => callback(response));
         }
 
-        public virtual Participant DisconnectParticipant(string conversationSid, string participantSid)
+        public virtual void DisconnectParticipant(string conversationSid, string participantSid, Action<Participant> callback)
         {
             Require.Argument("ConversationSid", conversationSid);
             Require.Argument("ParticipantSid", participantSid);
@@ -49,10 +50,10 @@ namespace Twilio.Conversations
             request.AddUrlSegment("ParticipantSid", participantSid);
 
             request.AddParameter("Status", "disconnected");
-            return Execute<Participant>(request);
+            ExecuteAsync<Participant>(request, response => callback(response));
         }
 
-        public virtual Participant AddParticipant(string conversationSid, string to, string from)
+        public virtual void AddParticipant(string conversationSid, string to, string from, Action<Participant> callback)
         {
             Require.Argument("ConversationSid", conversationSid);
             Require.Argument("To", to);
@@ -62,11 +63,10 @@ namespace Twilio.Conversations
             request.Resource = "Conversations/{ConversationSid}/Participants";
 
             request.AddUrlSegment("ConversationSid", conversationSid);
-
             request.AddParameter("To", to);
             request.AddParameter("From", from);
 
-            return Execute<Participant>(request);
+            ExecuteAsync<Participant>(request, response => callback(response));
         }
     }
 }
