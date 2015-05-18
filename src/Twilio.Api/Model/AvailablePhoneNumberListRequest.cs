@@ -45,20 +45,20 @@ namespace Twilio
 		public string InRateCenter { get; set; }
 		/// <summary>
 		/// Set to 'true' or 'false'. If true, the response will contain SMS
-        /// enabled phone numbers. The voice capability is independent of
-        /// the SMS capability
+		/// enabled phone numbers. The voice capability is independent of
+		/// the SMS capability
 		/// </summary>
 		public bool? SmsEnabled { get; set; }
 		/// <summary>
-		/// Set to 'true' or 'false'. If true, the response will contain Voice 
-		/// enabled phone numbers. The SMS capability is independent of the 
+		/// Set to 'true' or 'false'. If true, the response will contain Voice
+		/// enabled phone numbers. The SMS capability is independent of the
 		/// Voice capability.
 		/// </summary>
 		public bool? VoiceEnabled { get; set; }
-        /// <summary>
-		/// Set to 'true' or 'false'. If true, the response will contain MMS 
+		/// <summary>
+		/// Set to 'true' or 'false'. If true, the response will contain MMS
 		/// enabled phone numbers. The MMS capability is independent of the
-        /// SMS capability.
+		/// SMS capability.
 		/// </summary>
 		public bool? MmsEnabled { get; set; }
 		/// <summary>
@@ -77,5 +77,10 @@ namespace Twilio
 		/// Defaults to 'false', meaning results could include phone numbers with a foreign Address required.
 		/// </summary>
 		public bool? ExcludeLocalAddressRequired { get; set; }
-    }
+		/// <summary>
+		/// Whether to include new (beta) numbers on the Twilio platform.
+		/// Defaults to true.
+		/// </summary>
+		public bool? Beta { get; set; }
+	}
 }
