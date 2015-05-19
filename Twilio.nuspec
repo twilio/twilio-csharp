@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>4.0.1</version>
+		<version>4.0.2</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -14,6 +14,7 @@
 			<dependency id="RestSharp" version="105.0.1" />
 		</dependencies>
 		<releaseNotes>
+      * 4.0.2 - Added beta number support
       * 4.0.1 - Added new StatusCallbackEvents options
       * 4.0.0 - Removed obsolete paging properties - major version bump due to breaking change
       * 3.6.29 - Added overload to ListAvailableTollFreePhoneNumbers that allows user to provide an AvalablePhoneNumberListRequest object
