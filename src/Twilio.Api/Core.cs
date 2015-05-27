@@ -6,6 +6,8 @@ using System.Text;
 using System;
 using System.Net;
 
+using Twilio.Model;
+
 
 namespace Twilio
 {
@@ -150,6 +152,22 @@ namespace Twilio
         {
         }
 
+        public virtual T GetNextPage<T>(TwilioListBase resourceResult) where T : TwilioListBase, new()
+        {
+            var request = new RestRequest();
+            request.Resource = resourceResult.NextPageUri.OriginalString.Replace("/" + ApiVersion, "");
+
+            return Execute<T>(request);
+        }
+
+        public virtual T GetPreviousPage<T>(TwilioListBase resourceResult) where T : TwilioListBase, new()
+        {
+            var request = new RestRequest();
+            request.Resource = resourceResult.PreviousPageUri.OriginalString.Replace("/" + ApiVersion, "");
+
+            return Execute<T>(request);
+        }
+
         /// <summary>
         /// Initializes a new client with the specified credentials.
         /// </summary>
@@ -158,6 +176,29 @@ namespace Twilio
         /// <param name="accountResourceSid"></param>
         public TwilioRestClient(string accountSid, string authToken, string accountResourceSid) : base(accountSid, authToken, accountResourceSid, "2010-04-01", "https://api.twilio.com/")
         {
+        }
+    }
+
+    public class NextGenClient : TwilioClient
+    {
+        public NextGenClient(string accountSid, string authToken, string accountResourceSid, string apiVersion, string baseUrl) : base(accountSid, authToken, accountResourceSid, apiVersion, baseUrl)
+        {
+        }
+
+        public virtual T GetNextPage<T>(NextGenListBase resourceResult) where T : NextGenListBase, new()
+        {
+            var request = new RestRequest();
+            request.Resource = resourceResult.Meta.NextPageUrl.PathAndQuery.Replace("/" + ApiVersion, "");
+
+            return Execute<T>(request);
+        }
+
+        public virtual T GetPreviousPage<T>(NextGenListBase resourceResult) where T : NextGenListBase, new()
+        {
+            var request = new RestRequest();
+            request.Resource = resourceResult.Meta.PreviousPageUrl.PathAndQuery.Replace("/" + ApiVersion, "");
+
+            return Execute<T>(request);
         }
     }
 }

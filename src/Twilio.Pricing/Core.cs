@@ -5,7 +5,7 @@ namespace Twilio.Pricing
     /// <summary>
     /// Twilio Pricing API wrapper.
     /// </summary>
-    public partial class PricingClient : TwilioClient
+    public partial class PricingClient : NextGenClient
     {
 
         /// <summary>
