@@ -103,10 +103,10 @@ If you've instead found a bug in the library or would like new features added, g
 ## Migrating from earlier versions
 
 ### Migrating from original twilio/twilio-csharp (version 2.1 and below)
-Moving from version 2.1 or below to 3.0 will require changes to your existing code. The library now centers around a `TwilioRestClient` class from which all operations you can make against the API are rooted. Refer to the [[Twilio.Api]] REST API wrapper documentation for the list of available methods.
+Moving from version 2.1 or below to 3.0 will require changes to your existing code. The library now centers around a `TwilioRestClient` class from which all operations you can make against the API are rooted. Refer to the [[Twilio.API]] REST API wrapper documentation for the list of available methods.
 
-### Migrating from johnsheehan/TwilioApi
-This library is derived from johnsheehan/TwilioApi. Minimal changes should be required to your code in order to use this version. The most notable change is the renaming of `TwilioClient` to `TwilioRestClient`. In addition to the REST API wrapper, this new version also includes TwiML generation and ASP.NET MVC helpers.
+### Migrating from johnsheehan/TwilioAPI
+This library is derived from johnsheehan/TwilioAPI. Minimal changes should be required to your code in order to use this version. The most notable change is the renaming of `TwilioClient` to `TwilioRestClient`. In addition to the REST API wrapper, this new version also includes TwiML generation and ASP.NET MVC helpers.
 
 
 [0]: http://www.twilio.com
