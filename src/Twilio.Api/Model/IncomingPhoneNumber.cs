@@ -92,7 +92,11 @@ namespace Twilio
 		/// One of "any", "local", "foreign", or "none".
 		/// </summary>
 		public string AddressRequirements { get; set; }
+                /// <summary>
+                /// Whether this number is new to the Twilio platform.
+                /// </summary>
+                public bool Beta { get; set; }
 
-        public Capabilities Capabilities { get; set; }
+                public Capabilities Capabilities { get; set; }
 	}
 }

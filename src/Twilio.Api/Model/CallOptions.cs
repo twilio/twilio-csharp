@@ -32,6 +32,18 @@ namespace Twilio
 		/// </summary>
 		public string StatusCallbackMethod { get; set; }
 		/// <summary>
+		/// The call lifecycle events Twilio should send a StatusCallback request for.
+		/// Available event types:
+		/// - initiated
+		/// - ringing
+		/// - answered
+		/// - completed
+		///
+		/// "completed" events are free; see twilio.com for pricing on the other event types.
+		/// If not set, defaults to ["completed"].
+		/// </summary>
+		public string[] StatusCallbackEvents { get; set; }
+		/// <summary>
 		/// The HTTP method Twilio should use when requesting the required Url parameter's value above. Defaults to POST.
 		/// </summary>
 		public string Method { get; set; }
