@@ -179,7 +179,7 @@ namespace Twilio.TaskRouter
 		/// <param name="workspaceSid">The workspace to create a capability token for.</param>
 		/// <param name="taskQueueSid">The taskqueue to create a capability token for.</param>
 		public TaskRouterTaskQueueCapability(string accountSid, string authToken, string workspaceSid, string taskQueueSid) :
-		base(accountSid, authToken, workspaceSid, workspaceSid, taskQueueSid)
+		base(accountSid, authToken, workspaceSid, taskQueueSid)
 		{
 		}
 	}

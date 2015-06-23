@@ -54,7 +54,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityTests.cs" />
-    <Compile Include="CapabilityTests.cs" />
     <Compile Include="Model\TaskQueueStatisticsTests.cs" />
     <Compile Include="Model\WorkerStatisticsTests.cs" />
     <Compile Include="Model\WorkflowStatisticsTests.cs" />
@@ -71,6 +70,9 @@
     <Compile Include="WorkspaceStatisticsTests.cs" />
     <Compile Include="WorkspaceTests.cs" />
     <Compile Include="EventTests.cs" />
+    <Compile Include="CapabilityWorkerTests.cs" />
+    <Compile Include="CapabilityWorkspaceTests.cs" />
+    <Compile Include="CapabilityTaskQueueTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\task_queue_statistics.json">
