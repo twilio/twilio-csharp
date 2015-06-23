@@ -16,6 +16,14 @@ namespace Twilio.TaskRouter
 		protected string resourceUrl;
 		protected string baseUrl;
 
+		/// <summary>
+		/// Creates a new TaskRouterCapability token generator for Twilio TaskRouter.
+		/// </summary>
+		/// <param name="accountSid">Your Twilio Account SID from your account dashboard</param>
+		/// <param name="authToken">Your Twilio Auth Token from your account dashboard. Used to sign capability
+		/// tokens and will not be included in token contents.</param>
+		/// <param name="workspaceSid">The workspace to create a capability token for.</param>
+		/// <param name="channelId">The websocket channel to listen on.</param>
 		public TaskRouterCapability(string accountSid, string authToken, string workspaceSid, string channelId, string resourceUrl = null) : 
 		base(accountSid, authToken, taskRouterVersion, channelId) {
 			this.workspaceSid = workspaceSid;
@@ -113,7 +121,7 @@ namespace Twilio.TaskRouter
 		private string activityUrl;
 
         /// <summary>
-        /// Creates a new TaskRouterCapability token generator for Twilio TaskRouter.
+        /// Creates a new TaskRouterWorkerCapability token generator for Twilio TaskRouter.
         /// </summary>
         /// <param name="accountSid">Your Twilio Account SID from your account dashboard</param>
         /// <param name="authToken">Your Twilio Auth Token from your account dashboard. Used to sign capability
@@ -121,7 +129,7 @@ namespace Twilio.TaskRouter
         /// <param name="workspaceSid">The workspace to create a capability token for.</param>
         /// <param name="workerSid">The worker to create a capability token for.</param>
 		public TaskRouterWorkerCapability(string accountSid, string authToken, string workspaceSid, string workerSid) :
-			base(accountSid, authToken, workspaceSid, workerSid, null)
+			base(accountSid, authToken, workspaceSid, workerSid)
         {
 			this.reservationsUrl = this.baseUrl + "/Tasks/**";
 			this.activityUrl = this.baseUrl + "/Activities";
@@ -144,4 +152,35 @@ namespace Twilio.TaskRouter
             policies.Add(policy);
         }
     }
+
+	public class TaskRouterWorkspaceCapability : TaskRouterCapability
+	{
+		/// <summary>
+		/// Creates a new TaskRouterWorkspaceCapability token generator for Twilio TaskRouter.
+		/// </summary>
+		/// <param name="accountSid">Your Twilio Account SID from your account dashboard</param>
+		/// <param name="authToken">Your Twilio Auth Token from your account dashboard. Used to sign capability
+		/// tokens and will not be included in token contents.</param>
+		/// <param name="workspaceSid">The workspace to create a capability token for.</param>
+		public TaskRouterWorkspaceCapability(string accountSid, string authToken, string workspaceSid) :
+		base(accountSid, authToken, workspaceSid, workspaceSid)
+		{
+		}
+	}
+
+	public class TaskRouterTaskQueueCapability : TaskRouterCapability
+	{
+		/// <summary>
+		/// Creates a new TaskRouterTaskQueueCapability token generator for Twilio TaskRouter.
+		/// </summary>
+		/// <param name="accountSid">Your Twilio Account SID from your account dashboard</param>
+		/// <param name="authToken">Your Twilio Auth Token from your account dashboard. Used to sign capability
+		/// tokens and will not be included in token contents.</param>
+		/// <param name="workspaceSid">The workspace to create a capability token for.</param>
+		/// <param name="taskQueueSid">The taskqueue to create a capability token for.</param>
+		public TaskRouterTaskQueueCapability(string accountSid, string authToken, string workspaceSid, string taskQueueSid) :
+		base(accountSid, authToken, workspaceSid, workspaceSid, taskQueueSid)
+		{
+		}
+	}
 }
