@@ -102,6 +102,7 @@
     <Compile Include="Model\EventResult.cs" />
     <Compile Include="Model\EventListRequest.cs" />
     <Compile Include="Events.Async.cs" />
+    <Compile Include="Capability\CapabilityAPI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

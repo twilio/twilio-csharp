@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Twilio.TaskRouter
 {
-    class Policy
+    public class Policy
     {
         public static readonly Dictionary<string, bool> required = new Dictionary<string, bool> { { "required", true } };
         public static readonly Dictionary<string, bool> optional = new Dictionary<string, bool> { { "required", false } };

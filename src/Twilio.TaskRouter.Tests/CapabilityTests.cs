@@ -11,12 +11,12 @@ namespace Twilio.TaskRouter.Tests
     [TestFixture]
     public class CapabilityTests
     {
-        private TaskRouterCapability cap;
+		private TaskRouterWorkerCapability cap;
 
         [SetUp]
         public void Setup()
         {
-            cap = new TaskRouterCapability("AC123", "foobar", "WS456", "WK789");
+            cap = new TaskRouterWorkerCapability("AC123", "foobar", "WS456", "WK789");
         }
 
         [Test]
@@ -68,8 +68,9 @@ namespace Twilio.TaskRouter.Tests
             var payload = JsonWebToken.DecodeToObject(token, "foobar") as IDictionary<string, object>;
 
             var policies = payload["policies"] as System.Collections.IList;
-            Assert.AreEqual(3, policies.Count);
+            Assert.AreEqual(5, policies.Count);
             var url = "https://event-bridge.twilio.com/v1/wschannels/AC123/WK789";
+
             var getPolicy = policies[0] as IDictionary<string, object>;
             Assert.AreEqual(url, getPolicy["url"]);
             Assert.AreEqual("GET", getPolicy["method"]);
@@ -88,30 +89,48 @@ namespace Twilio.TaskRouter.Tests
             postFilter = postPolicy["post_filter"] as IDictionary<string, object>;
             Assert.IsEmpty(postFilter);
 
-            var activitiesPolicy = policies[2] as IDictionary<string, object>;
-            Assert.AreEqual("https://taskrouter.twilio.com/v1/Workspaces/WS456/Activities", activitiesPolicy["url"]);
-            Assert.AreEqual("GET", activitiesPolicy["method"]);
-            Assert.IsTrue((bool)activitiesPolicy["allow"]);
-            queryFilter = activitiesPolicy["query_filter"] as IDictionary<string, object>;
+			var workerFetchPolicy = policies[2] as IDictionary<string, object>;
+			Assert.AreEqual("https://taskrouter.twilio.com/v1/Workspaces/WS456/Workers/WK789", workerFetchPolicy["url"]);
+			Assert.AreEqual("GET", workerFetchPolicy["method"]);
+			Assert.IsTrue((bool)workerFetchPolicy["allow"]);
+			queryFilter = workerFetchPolicy["query_filter"] as IDictionary<string, object>;
+			Assert.IsEmpty(queryFilter);
+			postFilter = workerFetchPolicy["post_filter"] as IDictionary<string, object>;
+			Assert.IsEmpty(postFilter);
+
+			var activitiesPolicy = policies[3] as IDictionary<string, object>;
+			Assert.AreEqual("https://taskrouter.twilio.com/v1/Workspaces/WS456/Activities", activitiesPolicy["url"]);
+			Assert.AreEqual("GET", activitiesPolicy["method"]);
+			Assert.IsTrue((bool)activitiesPolicy["allow"]);
+			queryFilter = activitiesPolicy["query_filter"] as IDictionary<string, object>;
+			Assert.IsEmpty(queryFilter);
+			postFilter = activitiesPolicy["post_filter"] as IDictionary<string, object>;
+			Assert.IsEmpty(postFilter);
+
+            var reservationsFetchPolicy = policies[4] as IDictionary<string, object>;
+			Assert.AreEqual("https://taskrouter.twilio.com/v1/Workspaces/WS456/Tasks/**", reservationsFetchPolicy["url"]);
+			Assert.AreEqual("GET", reservationsFetchPolicy["method"]);
+			Assert.IsTrue((bool)reservationsFetchPolicy["allow"]);
+			queryFilter = reservationsFetchPolicy["query_filter"] as IDictionary<string, object>;
             Assert.IsEmpty(queryFilter);
-            postFilter = activitiesPolicy["post_filter"] as IDictionary<string, object>;
+			postFilter = reservationsFetchPolicy["post_filter"] as IDictionary<string, object>;
             Assert.IsEmpty(postFilter);
         }
 
         [Test]
-        public void ShouldAllowWorkerActivityUpdates()
+        public void ShouldAllowActivityUpdates()
         {
-            cap.AllowWorkerActivityUpdates();
+            cap.AllowActivityUpdates();
             var token = cap.GenerateToken();
             Assert.IsNotNullOrEmpty(token);
 
             var payload = JsonWebToken.DecodeToObject(token, "foobar") as IDictionary<string, object>;
 
             var policies = payload["policies"] as System.Collections.IList;
-            Assert.AreEqual(4, policies.Count);
+            Assert.AreEqual(6, policies.Count);
 
             var url = "https://taskrouter.twilio.com/v1/Workspaces/WS456/Workers/WK789";
-            var policy = policies[3] as IDictionary<string, object>;
+            var policy = policies[5] as IDictionary<string, object>;
 
             Assert.AreEqual(url, policy["url"]);
             Assert.AreEqual("POST", policy["method"]);
@@ -125,43 +144,19 @@ namespace Twilio.TaskRouter.Tests
         }
 
         [Test]
-        public void ShouldAllowWorkerFetchAttributes()
+        public void ShouldAllowReservationUpdates()
         {
-            cap.AllowWorkerFetchAttributes();
+            cap.AllowReservationUpdates();
             var token = cap.GenerateToken();
             Assert.IsNotNullOrEmpty(token);
 
             var payload = JsonWebToken.DecodeToObject(token, "foobar") as IDictionary<string, object>;
 
             var policies = payload["policies"] as System.Collections.IList;
-            Assert.AreEqual(4, policies.Count);
-
-            var url = "https://taskrouter.twilio.com/v1/Workspaces/WS456/Workers/WK789";
-            var policy = policies[3] as IDictionary<string, object>;
-
-            Assert.AreEqual(url, policy["url"]);
-            Assert.AreEqual("GET", policy["method"]);
-            Assert.IsTrue((bool)policy["allow"]);
-            var queryFilter = policy["query_filter"] as IDictionary<string, object>;
-            Assert.IsEmpty(queryFilter);
-            var postFilter = policy["post_filter"] as IDictionary<string, object>;
-            Assert.IsEmpty(postFilter);
-        }
-
-        [Test]
-        public void ShouldAllowTaskReservationUpdates()
-        {
-            cap.AllowTaskReservationUpdates();
-            var token = cap.GenerateToken();
-            Assert.IsNotNullOrEmpty(token);
-
-            var payload = JsonWebToken.DecodeToObject(token, "foobar") as IDictionary<string, object>;
-
-            var policies = payload["policies"] as System.Collections.IList;
-            Assert.AreEqual(4, policies.Count);
+            Assert.AreEqual(6, policies.Count);
 
             var url = "https://taskrouter.twilio.com/v1/Workspaces/WS456/Tasks/**";
-            var policy = policies[3] as IDictionary<string, object>;
+            var policy = policies[5] as IDictionary<string, object>;
 
             Assert.AreEqual(url, policy["url"]);
             Assert.AreEqual("POST", policy["method"]);
@@ -169,8 +164,7 @@ namespace Twilio.TaskRouter.Tests
             var queryFilter = policy["query_filter"] as IDictionary<string, object>;
             Assert.IsEmpty(queryFilter);
             var postFilter = policy["post_filter"] as IDictionary<string, object>;
-            var required = postFilter["ReservationStatus"] as IDictionary<string, object>;
-            Assert.IsTrue((bool)required["required"]);
+			Assert.IsEmpty(postFilter);
         }
     }
 }
