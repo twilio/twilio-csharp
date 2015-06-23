@@ -73,6 +73,7 @@
     <Compile Include="CapabilityWorkerTests.cs" />
     <Compile Include="CapabilityWorkspaceTests.cs" />
     <Compile Include="CapabilityTaskQueueTests.cs" />
+    <Compile Include="CapabilityTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\task_queue_statistics.json">
