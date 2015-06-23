@@ -15,7 +15,7 @@
 				<dependency id="JWT" />
 		</dependencies>
 		<releaseNotes>
-	  * 1.1.0 - Adding JWT generation for JS SDK 1.1
+      * 1.1.0 - Adding JWT generation for JS SDK 1.1
       * 1.0.1 - Adding missing TaskRouter Event APIs
       * 1.0.0 - Initial Release      
     </releaseNotes>
