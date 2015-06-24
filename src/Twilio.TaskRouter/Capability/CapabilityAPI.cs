@@ -44,7 +44,7 @@ namespace Twilio.TaskRouter
             this.AddPolicy(url, method, true, queryFilter, postFilter);
         }
 
-        public void Disallow(string url, string method, 
+        public void Deny(string url, string method, 
             Dictionary<string, Dictionary<string, bool>> queryFilter = null,
             Dictionary<string, Dictionary<string, bool>> postFilter = null) {
 

@@ -24,32 +24,28 @@ namespace Twilio.TaskRouter
         /// tokens and will not be included in token contents.</param>
         /// <param name="workspaceSid">The workspace to create a capability token for.</param>
         /// <param name="channelId">The websocket channel to listen on.</param>
-        public TaskRouterCapability(string accountSid, string authToken, string workspaceSid, string channelId, string resourceUrl = null) : 
+        public TaskRouterCapability(string accountSid, string authToken, string workspaceSid, string channelId) : 
         base(accountSid, authToken, taskRouterVersion, channelId) {
             this.workspaceSid = workspaceSid;
             this.channelId = channelId;
 
             this.baseUrl = taskRouterUrlBase + "/" + taskRouterVersion + "/Workspaces/" + workspaceSid;
 
-            if (resourceUrl == null) {
-                if (channelId.Substring (0, 2).Equals("WS")) {
-                    resourceUrl = this.baseUrl;
-                } else if (channelId.Substring (0, 2).Equals("WK")) {
-                    resourceUrl = this.baseUrl + "/Workers/" + channelId;
-                } else if (channelId.Substring (0, 2).Equals("WQ")) {
-                    resourceUrl = this.baseUrl + "/TaskQueues/" + channelId;
-                }
-            }
+            this.ValidateJWT();
 
-            this.resourceUrl = resourceUrl;
+            if (channelId.Substring (0, 2).Equals("WS")) {
+                this.resourceUrl = this.baseUrl;
+            } else if (channelId.Substring (0, 2).Equals("WK")) {
+                this.resourceUrl = this.baseUrl + "/Workers/" + channelId;
+            } else if (channelId.Substring (0, 2).Equals("WQ")) {
+                this.resourceUrl = this.baseUrl + "/TaskQueues/" + channelId;
+            }
 
             // add permissions to GET and POST to the event-bridge channel
             this.AllowWebsockets(channelId);
 
             // add permissions to fetch the instance resource
             this.AddPolicy(resourceUrl, "GET", true);
-
-            this.ValidateJWT();
         }
 
         private void AllowWebsockets(string channelId)
