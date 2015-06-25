@@ -33,19 +33,27 @@ namespace Twilio.TaskRouter
 
             this.ValidateJWT();
 
-            if (channelId.Substring (0, 2).Equals("WS")) {
-                this.resourceUrl = this.baseUrl;
-            } else if (channelId.Substring (0, 2).Equals("WK")) {
-                this.resourceUrl = this.baseUrl + "/Workers/" + channelId;
-            } else if (channelId.Substring (0, 2).Equals("WQ")) {
-                this.resourceUrl = this.baseUrl + "/TaskQueues/" + channelId;
-            }
+            this.setupResource();
 
             // add permissions to GET and POST to the event-bridge channel
             this.AllowWebsockets(channelId);
 
             // add permissions to fetch the instance resource
             this.AddPolicy(resourceUrl, "GET", true);
+        }
+
+        public virtual void setupResource() {
+            if (channelId.Substring (0, 2).Equals("WS")) {
+                this.resourceUrl = this.baseUrl;
+            } else if (channelId.Substring (0, 2).Equals("WK")) {
+                this.resourceUrl = this.baseUrl + "/Workers/" + channelId;
+                string activityUrl = this.baseUrl + "/Activities";
+
+                // add permissions to fetch the list of activities and list of worker reservations
+                this.Allow(activityUrl, "GET");
+            } else if (channelId.Substring (0, 2).Equals("WQ")) {
+                this.resourceUrl = this.baseUrl + "/TaskQueues/" + channelId;
+            }
         }
 
         private void AllowWebsockets(string channelId)
@@ -91,8 +99,38 @@ namespace Twilio.TaskRouter
             this.Allow(this.resourceUrl+"/**", "DELETE");
         }
 
-        public string GetResourceUrl() {
-            return this.resourceUrl;
+        [Obsolete("Please use TaskRouterWorkerCapability.allowActivityUpdates instead.")]
+        public void AllowWorkerActivityUpdates()
+        {
+            if (channelId.Substring (0, 2).Equals ("WK")) {
+                var policy = new Policy (this.resourceUrl, "POST", true);
+                policy.postFilter.Add ("ActivitySid", Policy.required);
+                policies.Add (policy);
+            } else {
+                throw new Exception ("Deprecated function not applicable to non Worker");
+            }
+        }
+
+        [Obsolete("Please use TaskRouterWorkerCapability instead; added automatically in constructor")]
+        public void AllowWorkerFetchAttributes()
+        {
+            if (channelId.Substring (0, 2).Equals ("WK")) {
+                policies.Add(new Policy(this.resourceUrl, "GET", true));
+            } else {
+                throw new Exception ("Deprecated function not applicable to non Worker");
+            }
+        }
+
+        [Obsolete("Please use TaskRouterWorkerCapability.allowReservationUpdates instead.")]
+        public void AllowTaskReservationUpdates()
+        {
+            if (channelId.Substring (0, 2).Equals ("WK")) {
+                var policy = new Policy(this.baseUrl + "/Tasks/**", "POST", true);
+                policy.postFilter.Add("ReservationStatus", Policy.required);
+                policies.Add(policy);
+            } else {
+                throw new Exception ("Deprecated function not applicable to non Worker");
+            }
         }
             
         public string GenerateToken(int ttlSeconds = 3600) {
@@ -135,6 +173,11 @@ namespace Twilio.TaskRouter
             this.Allow(reservationsUrl, "GET");
         }
 
+        override
+        public void setupResource() {
+            this.resourceUrl = this.baseUrl + "/Workers/" + this.channelId;
+        }
+
         public void AllowActivityUpdates()
         {
             var policy = new Policy(this.resourceUrl, "POST", true);
@@ -162,6 +205,11 @@ namespace Twilio.TaskRouter
         base(accountSid, authToken, workspaceSid, workspaceSid)
         {
         }
+
+        override
+        public void setupResource() {
+            this.resourceUrl = this.baseUrl;
+        }
     }
 
     public class TaskRouterTaskQueueCapability : TaskRouterCapability
@@ -177,6 +225,11 @@ namespace Twilio.TaskRouter
         public TaskRouterTaskQueueCapability(string accountSid, string authToken, string workspaceSid, string taskQueueSid) :
         base(accountSid, authToken, workspaceSid, taskQueueSid)
         {
+        }
+
+        override
+        public void setupResource() {
+            this.resourceUrl = this.baseUrl + "/TaskQueues/" + this.channelId;
         }
     }
 }
