@@ -42,7 +42,7 @@ namespace Twilio.TaskRouter
             this.AddPolicy(resourceUrl, "GET", true);
         }
 
-        public virtual void setupResource() {
+        protected virtual void setupResource() {
             if (channelId.Substring (0, 2).Equals("WS")) {
                 this.resourceUrl = this.baseUrl;
             } else if (channelId.Substring (0, 2).Equals("WK")) {
@@ -174,7 +174,7 @@ namespace Twilio.TaskRouter
         }
 
         override
-        public void setupResource() {
+        protected void setupResource() {
             this.resourceUrl = this.baseUrl + "/Workers/" + this.channelId;
         }
 
@@ -207,7 +207,7 @@ namespace Twilio.TaskRouter
         }
 
         override
-        public void setupResource() {
+        protected void setupResource() {
             this.resourceUrl = this.baseUrl;
         }
     }
@@ -228,7 +228,7 @@ namespace Twilio.TaskRouter
         }
 
         override
-        public void setupResource() {
+        protected void setupResource() {
             this.resourceUrl = this.baseUrl + "/TaskQueues/" + this.channelId;
         }
     }
