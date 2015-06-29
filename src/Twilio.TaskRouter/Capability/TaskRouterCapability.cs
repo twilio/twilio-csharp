@@ -48,9 +48,12 @@ namespace Twilio.TaskRouter
             } else if (channelId.Substring (0, 2).Equals("WK")) {
                 this.resourceUrl = this.baseUrl + "/Workers/" + channelId;
                 string activityUrl = this.baseUrl + "/Activities";
+                string reservationsUrl = this.baseUrl + "/Tasks/**";
 
                 // add permissions to fetch the list of activities and list of worker reservations
                 this.Allow(activityUrl, "GET");
+                this.Allow(reservationsUrl, "GET");
+
             } else if (channelId.Substring (0, 2).Equals("WQ")) {
                 this.resourceUrl = this.baseUrl + "/TaskQueues/" + channelId;
             }
