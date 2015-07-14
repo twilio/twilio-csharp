@@ -6,7 +6,7 @@ using JWT;
 
 namespace Twilio.TaskRouter
 {
-    public class TaskRouterCapability : CapabilityAPI {
+    public class TaskRouterCapability {
         const string taskRouterUrlBase = "https://taskrouter.twilio.com";
         const string taskRouterVersion = "v1";
         const string taskRouterEventsUrlBase = "https://event-bridge.twilio.com/v1/wschannels";
@@ -16,6 +16,10 @@ namespace Twilio.TaskRouter
         protected string resourceUrl;
         protected string baseUrl;
 
+        protected string accountSid;
+        protected string authToken;
+        protected List<Policy> policies;
+
         /// <summary>
         /// Creates a new TaskRouterCapability token generator for Twilio TaskRouter.
         /// </summary>
@@ -24,8 +28,11 @@ namespace Twilio.TaskRouter
         /// tokens and will not be included in token contents.</param>
         /// <param name="workspaceSid">The workspace to create a capability token for.</param>
         /// <param name="channelId">The websocket channel to listen on.</param>
-        public TaskRouterCapability(string accountSid, string authToken, string workspaceSid, string channelId) : 
-        base(accountSid, authToken, taskRouterVersion, channelId) {
+        public TaskRouterCapability(string accountSid, string authToken, string workspaceSid, string channelId) {
+            this.accountSid = accountSid;
+            this.authToken = authToken;
+            this.policies = new List<Policy>();
+
             this.workspaceSid = workspaceSid;
             this.channelId = channelId;
 
@@ -82,6 +89,34 @@ namespace Twilio.TaskRouter
             }
         }
 
+        public void AddPolicy(string url, string method, bool allowed,
+            Dictionary<string, Dictionary<string, bool>> queryFilter = null,
+            Dictionary<string, Dictionary<string, bool>> postFilter = null) {
+            if (queryFilter == null) {
+                queryFilter = new Dictionary<string, Dictionary<string, bool>>();
+            }
+            if (postFilter == null) {
+                postFilter = new Dictionary<string, Dictionary<string, bool>> ();
+            }
+
+            var policy = new Policy (url, method, queryFilter, postFilter, allowed);
+            policies.Add(policy);
+        }
+
+        public void Allow(string url, string method, 
+            Dictionary<string, Dictionary<string, bool>> queryFilter = null,
+            Dictionary<string, Dictionary<string, bool>> postFilter = null) {
+
+            this.AddPolicy(url, method, true, queryFilter, postFilter);
+        }
+
+        public void Deny(string url, string method, 
+            Dictionary<string, Dictionary<string, bool>> queryFilter = null,
+            Dictionary<string, Dictionary<string, bool>> postFilter = null) {
+
+            this.AddPolicy(url, method, false, queryFilter, postFilter);
+        }
+
         public void AllowFetchSubresources() {
             this.Allow(this.resourceUrl+"/**", "GET");
         }
@@ -135,6 +170,11 @@ namespace Twilio.TaskRouter
                 throw new Exception ("Deprecated function not applicable to non Worker");
             }
         }
+
+        public string GenerateToken()
+        {
+            return GenerateToken(3600);
+        }
             
         public string GenerateToken(int ttlSeconds = 3600) {
             Dictionary<string, string> taskRouterAttributes = new Dictionary<string, string>();
@@ -148,7 +188,30 @@ namespace Twilio.TaskRouter
                 taskRouterAttributes.Add("taskqueue_sid", this.channelId);
             }
 
-            return base.GenerateToken(ttlSeconds, taskRouterAttributes);
+            return GenerateToken(ttlSeconds, taskRouterAttributes);
+        }
+
+        private string GenerateToken(int ttlSeconds, 
+            Dictionary<string, string> extraAttributes = null) {
+            var ps = policies.Select(p => p.ToDict()).ToArray();
+            var payload = new Dictionary<string, object> ();
+            payload.Add("iss", accountSid);
+            payload.Add("exp", ConvertToUnixTimestamp (DateTime.UtcNow.AddSeconds (ttlSeconds)));
+            payload.Add("version", taskRouterVersion);
+            payload.Add("friendly_name", this.channelId);
+            payload.Add("policies", ps);
+            foreach (KeyValuePair<string, string> entry in extraAttributes) {
+                payload.Add(entry.Key, entry.Value);
+            }
+
+            return JsonWebToken.Encode(payload, authToken, JwtHashAlgorithm.HS256);
+        }
+
+        static int ConvertToUnixTimestamp(DateTime date)
+        {
+            DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            TimeSpan diff = date - origin;
+            return (int)Math.Floor(diff.TotalSeconds);
         }
     }
 
