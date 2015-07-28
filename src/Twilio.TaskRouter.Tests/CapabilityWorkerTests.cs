@@ -120,17 +120,22 @@ namespace Twilio.TaskRouter.Tests
         [Test]
         public void ShouldAllowActivityUpdates()
         {
-            cap.AllowActivityUpdates();
             var token = cap.GenerateToken();
+            var payload = JsonWebToken.DecodeToObject(token, "foobar") as IDictionary<string, object>;
+            var policies = payload["policies"] as System.Collections.IList;
+            var defaultPoliciesCount = policies.Count;
+
+            cap.AllowActivityUpdates();
+            token = cap.GenerateToken();
             Assert.IsNotNullOrEmpty(token);
 
-            var payload = JsonWebToken.DecodeToObject(token, "foobar") as IDictionary<string, object>;
+            payload = JsonWebToken.DecodeToObject(token, "foobar") as IDictionary<string, object>;
 
-            var policies = payload["policies"] as System.Collections.IList;
-            Assert.AreEqual(6, policies.Count);
+            policies = payload["policies"] as System.Collections.IList;
+            Assert.AreEqual(defaultPoliciesCount+1, policies.Count);
 
             var url = "https://taskrouter.twilio.com/v1/Workspaces/WS456/Workers/WK789";
-            var policy = policies[5] as IDictionary<string, object>;
+            var policy = policies[policies.Count-1] as IDictionary<string, object>;
 
             Assert.AreEqual(url, policy["url"]);
             Assert.AreEqual("POST", policy["method"]);
@@ -146,17 +151,22 @@ namespace Twilio.TaskRouter.Tests
         [Test]
         public void ShouldAllowReservationUpdates()
         {
-            cap.AllowReservationUpdates();
             var token = cap.GenerateToken();
+            var payload = JsonWebToken.DecodeToObject(token, "foobar") as IDictionary<string, object>;
+            var policies = payload["policies"] as System.Collections.IList;
+            var defaultPoliciesCount = policies.Count;
+
+            cap.AllowReservationUpdates();
+            token = cap.GenerateToken();
             Assert.IsNotNullOrEmpty(token);
 
-            var payload = JsonWebToken.DecodeToObject(token, "foobar") as IDictionary<string, object>;
+            payload = JsonWebToken.DecodeToObject(token, "foobar") as IDictionary<string, object>;
 
-            var policies = payload["policies"] as System.Collections.IList;
-            Assert.AreEqual(6, policies.Count);
+            policies = payload["policies"] as System.Collections.IList;
+            Assert.AreEqual(defaultPoliciesCount+1, policies.Count);
 
             var url = "https://taskrouter.twilio.com/v1/Workspaces/WS456/Tasks/**";
-            var policy = policies[5] as IDictionary<string, object>;
+            var policy = policies[policies.Count-1] as IDictionary<string, object>;
 
             Assert.AreEqual(url, policy["url"]);
             Assert.AreEqual("POST", policy["method"]);

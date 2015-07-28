@@ -40,7 +40,7 @@ namespace Twilio.TaskRouter
 
             this.ValidateJWT();
 
-            this.setupResource();
+            this.SetupResource();
 
             // add permissions to GET and POST to the event-bridge channel
             this.AllowWebsockets(channelId);
@@ -240,7 +240,7 @@ namespace Twilio.TaskRouter
         }
 
         override
-        protected void setupResource() {
+        protected void SetupResource() {
             this.resourceUrl = this.baseUrl + "/Workers/" + this.channelId;
         }
 
@@ -273,7 +273,7 @@ namespace Twilio.TaskRouter
         }
 
         override
-        protected void setupResource() {
+        protected void SetupResource() {
             this.resourceUrl = this.baseUrl;
         }
     }
@@ -294,7 +294,7 @@ namespace Twilio.TaskRouter
         }
 
         override
-        protected void setupResource() {
+        protected void SetupResource() {
             this.resourceUrl = this.baseUrl + "/TaskQueues/" + this.channelId;
         }
     }

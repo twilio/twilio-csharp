@@ -102,14 +102,19 @@ namespace Twilio.TaskRouter.Tests
         [Test]
         public void ShouldAllowFetchAll()
         {
-            cap.AllowFetchSubresources();
             var token = cap.GenerateToken();
+            var payload = JsonWebToken.DecodeToObject(token, "foobar") as IDictionary<string, object>;
+            var policies = payload["policies"] as System.Collections.IList;
+            var defaultPoliciesCount = policies.Count;
+
+            cap.AllowFetchSubresources();
+            token = cap.GenerateToken();
             Assert.IsNotNullOrEmpty(token);
 
-            var payload = JsonWebToken.DecodeToObject(token, "foobar") as IDictionary<string, object>;
+            payload = JsonWebToken.DecodeToObject(token, "foobar") as IDictionary<string, object>;
 
-            var policies = payload["policies"] as System.Collections.IList;
-            Assert.AreEqual(4, policies.Count);
+            policies = payload["policies"] as System.Collections.IList;
+            Assert.AreEqual(defaultPoliciesCount+1, policies.Count);
 
             var url = "https://taskrouter.twilio.com/v1/Workspaces/WS456/TaskQueues/WQ789/**";
             var policy = policies[3] as IDictionary<string, object>;
@@ -126,17 +131,22 @@ namespace Twilio.TaskRouter.Tests
         [Test]
         public void ShouldAllowUpdateAll()
         {
-            cap.AllowUpdatesSubresources();
             var token = cap.GenerateToken();
+            var payload = JsonWebToken.DecodeToObject(token, "foobar") as IDictionary<string, object>;
+            var policies = payload["policies"] as System.Collections.IList;
+            var defaultPoliciesCount = policies.Count;
+
+            cap.AllowUpdatesSubresources();
+            token = cap.GenerateToken();
             Assert.IsNotNullOrEmpty(token);
 
-            var payload = JsonWebToken.DecodeToObject(token, "foobar") as IDictionary<string, object>;
+            payload = JsonWebToken.DecodeToObject(token, "foobar") as IDictionary<string, object>;
 
-            var policies = payload["policies"] as System.Collections.IList;
-            Assert.AreEqual(4, policies.Count);
+            policies = payload["policies"] as System.Collections.IList;
+            Assert.AreEqual(defaultPoliciesCount+1, policies.Count);
 
             var url = "https://taskrouter.twilio.com/v1/Workspaces/WS456/TaskQueues/WQ789/**";
-            var policy = policies[3] as IDictionary<string, object>;
+            var policy = policies[policies.Count-1] as IDictionary<string, object>;
 
             Assert.AreEqual(url, policy["url"]);
             Assert.AreEqual("POST", policy["method"]);
