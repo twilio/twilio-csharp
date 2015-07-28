@@ -49,7 +49,7 @@ namespace Twilio.TaskRouter
             this.AddPolicy(resourceUrl, "GET", true);
         }
 
-        protected virtual void setupResource() {
+        protected virtual void SetupResource() {
             if (channelId.Substring (0, 2).Equals("WS")) {
                 this.resourceUrl = this.baseUrl;
             } else if (channelId.Substring (0, 2).Equals("WK")) {
