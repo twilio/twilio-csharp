@@ -41,7 +41,7 @@ namespace Twilio.TaskRouter
         /// <param name="attributes">Optional attributes.</param>
         public virtual Worker AddWorker(string workspaceSid, string friendlyName, string activitySid, Dictionary<string,string> attributes)
         {
-            string workerAttributesJSON = FromDictionaryToJson (attributes);
+            string workerAttributesJSON = FromDictionaryToJson(attributes);
             return this.AddWorker(workspaceSid, friendlyName, activitySid, workerAttributesJSON);
         }
 
@@ -138,6 +138,30 @@ namespace Twilio.TaskRouter
                 request.AddParameter("FriendlyName", friendlyName);
 
             return Execute<Worker>(request);
+        }
+
+        /// <summary>
+        /// Update a worker properties
+        /// </summary>
+        /// <param name="workspaceSid">Workspace sid.</param>
+        /// <param name="workerSid">Worker sid.</param>
+        /// <param name="attributes">Optional attributes</param>
+        /// <param name="friendlyName">Optional friendly name</param>
+        public virtual Worker UpdateWorker(string workspaceSid, string workerSid, Dictionary<string,string> attributes, string friendlyName)
+        {
+            string workerAttributesJSON = FromDictionaryToJson(attributes);
+            return this.UpdateWorker(workspaceSid, workerSid, null, workerAttributesJSON, friendlyName);
+        }
+
+        /// <summary>
+        /// Update a worker activity
+        /// </summary>
+        /// <param name="workspaceSid">Workspace sid.</param>
+        /// <param name="workerSid">Worker sid.</param>
+        /// <param name="activitySid">Activity Sid</param>
+        public virtual Worker UpdateWorkerActivity(string workspaceSid, string workerSid, string activitySid)
+        {
+            return this.UpdateWorker(workspaceSid, workerSid, activitySid, null, null);
         }
 
         private void AddWorkerListOptions(WorkerListRequest options, RestRequest request)

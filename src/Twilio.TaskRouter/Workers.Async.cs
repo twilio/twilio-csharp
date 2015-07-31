@@ -2,6 +2,7 @@
 using RestSharp;
 using RestSharp.Extensions;
 using RestSharp.Validation;
+using System.Collections.Generic;
 
 namespace Twilio.TaskRouter
 {
@@ -29,6 +30,20 @@ namespace Twilio.TaskRouter
             request.AddParameter("Attributes", attributes);
 
             ExecuteAsync<Worker>(request, (response) => { callback(response); });
+        }
+
+        /// <summary>
+        /// Create a worker.
+        /// </summary>
+        /// <param name="workspaceSid">Workspace sid.</param>
+        /// <param name="friendlyName">Friendly name.</param>
+        /// <param name="activitySid">Optional activity sid.</param>
+        /// <param name="attributes">Optional attributes.</param>
+        /// <param name="callback">Method to call upon successful completion</param>
+        public virtual void AddWorker(string workspaceSid, string friendlyName, string activitySid, Dictionary<string,string> attributes, Action<Worker> callback)
+        {
+            string workerAttributesJSON = FromDictionaryToJson(attributes);
+            this.AddWorker(workspaceSid, friendlyName, activitySid, workerAttributesJSON, callback);
         }
 
         /// <summary>
@@ -128,6 +143,32 @@ namespace Twilio.TaskRouter
                 request.AddParameter("FriendlyName", friendlyName);
 
             ExecuteAsync<Worker>(request, (response) => { callback(response); });
+        }
+
+        /// <summary>
+        /// Update a worker properties
+        /// </summary>
+        /// <param name="workspaceSid">Workspace sid.</param>
+        /// <param name="workerSid">Worker sid.</param>
+        /// <param name="attributes">Optional attributes</param>
+        /// <param name="friendlyName">Optional friendly name</param>
+        /// <param name="callback">Method to call upon successful completion</param>
+        public virtual void UpdateWorker(string workspaceSid, string workerSid, Dictionary<string,string> attributes, string friendlyName, Action<Worker> callback)
+        {
+            string workerAttributesJSON = FromDictionaryToJson(attributes);
+            this.UpdateWorker(workspaceSid, workerSid, null, workerAttributesJSON, friendlyName, callback);
+        }
+
+        /// <summary>
+        /// Update a worker activity
+        /// </summary>
+        /// <param name="workspaceSid">Workspace sid.</param>
+        /// <param name="workerSid">Worker sid.</param>
+        /// <param name="activitySid">Activity Sid</param>
+        /// <param name="callback">Method to call upon successful completion</param>
+        public virtual void UpdateWorkerActivity(string workspaceSid, string workerSid, string activitySid, Action<Worker> callback)
+        {
+            this.UpdateWorker(workspaceSid, workerSid, activitySid, null, null, callback);
         }
     }
 }
