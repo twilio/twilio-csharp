@@ -2,6 +2,8 @@
 using RestSharp;
 using RestSharp.Extensions;
 using RestSharp.Validation;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Twilio.TaskRouter
 {
@@ -30,6 +32,18 @@ namespace Twilio.TaskRouter
                 request.AddParameter("Timeout", timeout.Value);
 
             return Execute<Task>(request);
+        }
+
+        /// <summary>
+        /// Create a task.
+        /// </summary>
+        /// <param name="workspaceSid">Workspace sid.</param>
+        /// <param name="attributes">Attributes.</param>
+        /// <param name="workflowSid">Workflow sid.</param>
+        public virtual Task AddTask(string workspaceSid, Dictionary<string,string> attributes, string workflowSid, int? timeout)
+        {
+            string taskAttributesJSON = FromDictionaryToJson (attributes);
+            return this.AddTask(workspaceSid, taskAttributesJSON, workflowSid, timeout);
         }
 
         /// <summary>

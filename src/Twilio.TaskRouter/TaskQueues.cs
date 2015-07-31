@@ -16,7 +16,7 @@ namespace Twilio.TaskRouter
         /// <param name="reservationActivitySid">Reservation activity sid.</param>
         /// <param name="targetWorkers">Target workers expression.</param>
         /// <param name="maxReservedWorkers">Optional max reserved workers</param>
-        public virtual TaskQueue AddTaskQueue(string workspaceSid, string friendlyName, string assignmentActivitySid, string reservationActivitySid, string targetWorkers, string maxReservedWorkers)
+        public virtual TaskQueue AddTaskQueue(string workspaceSid, string friendlyName, string assignmentActivitySid, string reservationActivitySid, string targetWorkers, int? maxReservedWorkers)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("FriendlyName", friendlyName);
@@ -30,7 +30,7 @@ namespace Twilio.TaskRouter
             request.AddParameter("FriendlyName", friendlyName);
             request.AddParameter("AssignmentActivitySid", assignmentActivitySid);
             request.AddParameter("ReservationActivitySid", reservationActivitySid);
-            if (maxReservedWorkers.HasValue())
+            if (maxReservedWorkers.HasValue)
                 request.AddParameter("MaxReservedWorkers", maxReservedWorkers);
 
             return Execute<TaskQueue>(request);
@@ -126,7 +126,7 @@ namespace Twilio.TaskRouter
         /// <param name="reservationActivitySid">Optional reservation activity sid.</param>
         /// <param name="targetWorkers">Optional target workers expression.</param>
         /// <param name="maxReservedWorkers">Optional max reserved workers</param>
-        public virtual TaskQueue UpdateTaskQueue(string workspaceSid, string taskQueueSid, string friendlyName, string assignmentActivitySid, string reservationActivitySid, string targetWorkers, string maxReservedWorkers)
+        public virtual TaskQueue UpdateTaskQueue(string workspaceSid, string taskQueueSid, string friendlyName, string assignmentActivitySid, string reservationActivitySid, string targetWorkers, int? maxReservedWorkers)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("TaskQueueSid", taskQueueSid);
@@ -144,7 +144,7 @@ namespace Twilio.TaskRouter
                 request.AddParameter("ReservationActivitySid", reservationActivitySid);
             if (targetWorkers.HasValue())
                 request.AddParameter("TargetWorkers", targetWorkers);
-            if (maxReservedWorkers.HasValue())
+            if (maxReservedWorkers.HasValue)
                 request.AddParameter("MaxReservedWorkers", maxReservedWorkers);
 
             return Execute<TaskQueue>(request);

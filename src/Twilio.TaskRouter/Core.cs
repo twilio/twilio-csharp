@@ -53,5 +53,10 @@ namespace Twilio.TaskRouter
                 request.AddParameter("EndDate", options.EndDate.Value.ToUniversalTime().ToString(STATISTICS_DATE_FORMAT));
             }
         }
+
+        private static string FromDictionaryToJson(Dictionary<string, string> dictionary){
+            var kvs = dictionary.Select(kvp => string.Format("\"{0}\":\"{1}\"", kvp.Key, string.Concat(",",kvp.Value)));
+            return string.Concat("{", string.Concat(",", kvs), "}");
+        }
     }
 }

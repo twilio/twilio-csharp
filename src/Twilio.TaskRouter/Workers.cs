@@ -2,6 +2,8 @@
 using RestSharp;
 using RestSharp.Extensions;
 using RestSharp.Validation;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Twilio.TaskRouter
 {
@@ -28,6 +30,19 @@ namespace Twilio.TaskRouter
             request.AddParameter("Attributes", attributes);
 
             return Execute<Worker>(request);
+        }
+
+        /// <summary>
+        /// Create a worker.
+        /// </summary>
+        /// <param name="workspaceSid">Workspace sid.</param>
+        /// <param name="friendlyName">Friendly name.</param>
+        /// <param name="activitySid">Optional activity sid.</param>
+        /// <param name="attributes">Optional attributes.</param>
+        public virtual Worker AddWorker(string workspaceSid, string friendlyName, string activitySid, Dictionary<string,string> attributes)
+        {
+            string workerAttributesJSON = FromDictionaryToJson (attributes);
+            return this.AddWorker(workspaceSid, friendlyName, activitySid, workerAttributesJSON);
         }
 
         /// <summary>

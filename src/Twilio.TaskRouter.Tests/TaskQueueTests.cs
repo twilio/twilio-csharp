@@ -36,7 +36,7 @@ namespace Twilio.TaskRouter.Tests
             var client = mockClient.Object;
             var friendlyName = Utilities.MakeRandomFriendlyName();
 
-            client.AddTaskQueue(WORKSPACE_SID, friendlyName, "WA123", "WA234", "1==1", "2");
+            client.AddTaskQueue(WORKSPACE_SID, friendlyName, "WA123", "WA234", "1==1", 2);
 
             mockClient.Verify(trc => trc.Execute<TaskQueue>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
@@ -333,7 +333,7 @@ namespace Twilio.TaskRouter.Tests
             var client = mockClient.Object;
             var friendlyName = Utilities.MakeRandomFriendlyName();
 
-            client.UpdateTaskQueue(WORKSPACE_SID, TASK_QUEUE_SID, friendlyName, "WA123", "WA234", "1==1", "5");
+            client.UpdateTaskQueue(WORKSPACE_SID, TASK_QUEUE_SID, friendlyName, "WA123", "WA234", "1==1", 5);
 
             mockClient.Verify(trc => trc.Execute<TaskQueue>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
