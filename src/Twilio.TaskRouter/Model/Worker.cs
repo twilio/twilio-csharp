@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Twilio.TaskRouter
 {
@@ -36,6 +37,12 @@ namespace Twilio.TaskRouter
         /// User-defined JSON object describing this Worker.
         /// </summary>
         public string Attributes { get; set; }
+        /// <summary>
+        /// A dictionary representing the user-defined JSON object describing this Worker.
+        /// </summary>
+        public Dictionary<string, string> ParseAttributes() {
+            return TaskRouterClient.FromJsonToDictionary(Attributes);
+        }
         /// <summary>
         /// Whether the worker can be assigned a new <see cref="Twilio.TaskRouter.Task" />.
         /// </summary>

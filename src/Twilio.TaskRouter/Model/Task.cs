@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Twilio.TaskRouter
 {
@@ -24,6 +25,12 @@ namespace Twilio.TaskRouter
         /// The user-defined JSON string describing the custom attributes of this Task.
         /// </summary>
         public string Attributes { get; set; }
+        /// <summary>
+        /// A dictionary representing the user-defined JSON string describing the custom attributes of this Task.
+        /// </summary>
+        public Dictionary<string, string> ParseAttributes() {
+            return TaskRouterClient.FromJsonToDictionary(Attributes);
+        }
         /// <summary>
         /// The date this Task was created.
         /// </summary>
