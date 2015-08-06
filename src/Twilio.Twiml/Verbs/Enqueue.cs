@@ -30,11 +30,19 @@ namespace Twilio.TwiML
             AllowedAttributes.Add("workflowSid");
         }
 
+        /// <summary>
+        /// Initializes a new instance of the Enqueue class.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="attributes"></param>
         public Enqueue(string name, object attributes) : this(name)
         {
             AddAttributesFromObject(attributes);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the Enqueue class without a name - for use with TaskRouter
+        /// </summary>
         public Enqueue() : this(null) {
         }
 
