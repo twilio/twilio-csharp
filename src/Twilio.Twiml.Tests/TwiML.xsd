@@ -314,19 +314,26 @@
     <xs:sequence maxOccurs="unbounded" minOccurs="0">
       <xs:choice>
         <xs:element name="TaskAttributes" type="TaskAttributesType"></xs:element>
+        <xs:element name="Task" type="TaskType"></xs:element>
       </xs:choice>
     </xs:sequence>
       <xs:attribute name="action" type="xs:string"></xs:attribute>
       <xs:attribute name="method" type="MethodType"></xs:attribute>
       <xs:attribute name="waitUrlMethod" type="xs:string"></xs:attribute>
       <xs:attribute name="waitUrl" type="xs:string"></xs:attribute>
-      <xs:attribute name="workspaceSid" type="xs:string"></xs:attribute>
+      <xs:attribute name="workflowSid" type="xs:string"></xs:attribute>
   </xs:complexType>
 
   <!-- <TaskAttributes> -->
   <xs:simpleType name="TaskAttributesType">
     <xs:restriction base="xs:string"></xs:restriction>
   </xs:simpleType>
+
+  <!-- <Task> -->
+  <xs:complexType name="TaskType" mixed="true">
+    <xs:attribute name="priority" type="xs:string"></xs:attribute>
+    <xs:attribute name="timeout" type="xs:string"></xs:attribute>
+  </xs:complexType>
 
   <xs:simpleType name="MethodType">
     <xs:restriction base="xs:string"></xs:restriction>
