@@ -8,18 +8,18 @@ using System.Xml.Linq;
 namespace Twilio.TwiML
 {
 
-	/// <summary>
-	/// TODO: Update summary.
-	/// </summary>
-	public class Enqueue : ElementBase
-	{
+    /// <summary>
+    /// TODO: Update summary.
+    /// </summary>
+    public class Enqueue : ElementBase
+    {
         /// <summary>
         /// Initializes a new instance of the Enqueue class.
         /// </summary>
         /// <param name="name"></param>
-		public Enqueue(string name)
-		{
-			Element = new XElement("Enqueue", name);
+        public Enqueue(string name)
+        {
+            Element = new XElement("Enqueue", name);
             AllowedChildren.Add("Task");
             AllowedChildren.Add("TaskAttributes");
 
@@ -28,15 +28,15 @@ namespace Twilio.TwiML
             AllowedAttributes.Add("waitUrl");
             AllowedAttributes.Add("waitUrlMethod");
             AllowedAttributes.Add("workflowSid");
-		}
+        }
 
         public Enqueue(string name, object attributes) : this(name)
-		{
-			AddAttributesFromObject(attributes);
-		}
+        {
+            AddAttributesFromObject(attributes);
+        }
 
         public Enqueue() : this(null) {
         }
 
-	}
+    }
 }
