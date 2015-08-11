@@ -59,6 +59,17 @@ namespace Twilio
         }
 
         /// <summary>
+        /// Returns a list of Messages.
+        /// The list includes paging information.
+        /// Makes a GET request to the Message List resource.
+        /// </summary>
+        /// <param name="To"></param>
+        public virtual MessageResult ListMessages(string To)
+        {
+            return ListMessages(new MessageListRequest() { To = To } );
+        }
+
+        /// <summary>
         /// Returns a filtered list of Messages. The list includes paging information.
         /// Makes a GET request to the Messages List resource.
         /// </summary>
