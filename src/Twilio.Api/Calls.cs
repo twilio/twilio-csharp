@@ -33,6 +33,20 @@ namespace Twilio
 			return Execute<CallResult>(request);
 		}
 
+        /// <summary>
+        /// Returns a paged list of phone calls made to and from the account.
+        /// Makes a GET request to the Calls List resource.
+        /// </summary>
+        /// <param name="To"></param>
+        public virtual CallResult ListCalls(string To)
+        {
+            var request = new RestRequest {Resource = "Accounts/{AccountSid}/Calls.json"};
+
+            AddCallListOptions(new CallListRequest() {To = To}, request);
+
+            return Execute<CallResult>(request);
+        }
+
 		/// <summary>
 		/// Returns the single Call resource identified by {CallSid}
 		///  Makes a GET request to a Call Instance resource.
