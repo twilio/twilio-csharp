@@ -172,6 +172,24 @@ namespace Twilio.Api.Tests.Integration
         }
 
         [Test]
+        public void ShouldListCallsByNumber()
+        {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<CallResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new CallResult());
+            var client = mockClient.Object;
+
+            client.ListCalls(FROM);
+
+            mockClient.Verify(trc => trc.Execute<CallResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Calls.json", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(1, savedRequest.Parameters.Count);
+        }
+
+        [Test]
         public void ShouldListCallsAsynchronously()
         {
             IRestRequest savedRequest = null;
