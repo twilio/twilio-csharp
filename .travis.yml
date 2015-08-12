@@ -1,2 +1,2 @@
 language: csharp
-solution: Twilio.sln
+solution: src/Twilio.sln
