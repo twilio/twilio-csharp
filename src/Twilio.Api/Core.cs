@@ -1,4 +1,5 @@
 using RestSharp;
+using RestSharp.Authenticators;
 using RestSharp.Extensions;
 using System.Reflection;
 using RestSharp.Deserializers;
