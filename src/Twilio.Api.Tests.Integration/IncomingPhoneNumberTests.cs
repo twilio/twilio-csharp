@@ -18,8 +18,7 @@ namespace Twilio.Api.Tests.Integration
         [SetUp]
         public void Setup()
         {
-            mockClient = new Mock<TwilioRestClient>(Credentials.AccountSid, Credentials.AuthToken);
-            mockClient.CallBase = true;
+            mockClient = new Mock<TwilioRestClient>(Credentials.AccountSid, Credentials.AuthToken) {CallBase = true};
         }
 
         [Test]
@@ -30,24 +29,27 @@ namespace Twilio.Api.Tests.Integration
                 .Callback<IRestRequest>((request) => savedRequest = request)
                 .Returns(new IncomingPhoneNumber());
             var client = mockClient.Object;
-            PhoneNumberOptions options = new PhoneNumberOptions();
-            options.PhoneNumber = "+15005550006";
-            options.VoiceUrl = "http://example.com/phone";
-            options.VoiceMethod = "GET";
-            options.VoiceFallbackUrl = "http://example.com/phone";
-            options.VoiceFallbackMethod = "GET";
-            options.SmsUrl = "http://example.com/sms";
-            options.SmsMethod = "GET";
-            options.SmsFallbackUrl= "http://example.com/sms";
-            options.SmsFallbackMethod="GET";
-            
+            var options = new PhoneNumberOptions
+            {
+                PhoneNumber = "+15005550006",
+                VoiceUrl = "http://example.com/phone",
+                VoiceMethod = "GET",
+                VoiceFallbackUrl = "http://example.com/phone",
+                VoiceFallbackMethod = "GET",
+                SmsUrl = "http://example.com/sms",
+                SmsMethod = "GET",
+                SmsFallbackUrl = "http://example.com/sms",
+                SmsFallbackMethod = "GET",
+                TrunkSid = "83a4a6d359f04fb693dff4cad19792b28H"
+            };
+
             client.AddIncomingPhoneNumber(options);
 
             mockClient.Verify(trc => trc.Execute<IncomingPhoneNumber>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
             Assert.AreEqual("Accounts/{AccountSid}/IncomingPhoneNumbers.json", savedRequest.Resource);
             Assert.AreEqual(Method.POST, savedRequest.Method);
-            Assert.AreEqual(9, savedRequest.Parameters.Count);
+            Assert.AreEqual(10, savedRequest.Parameters.Count);
             var phoneNumberParam = savedRequest.Parameters.Find(x => x.Name == "PhoneNumber");
             Assert.IsNotNull(phoneNumberParam);
             Assert.AreEqual(options.PhoneNumber, phoneNumberParam.Value);
@@ -75,6 +77,9 @@ namespace Twilio.Api.Tests.Integration
             var smsFallbackMethodParam = savedRequest.Parameters.Find(x => x.Name == "SmsFallbackMethod");
             Assert.IsNotNull(smsFallbackMethodParam);
             Assert.AreEqual(options.SmsFallbackMethod, smsFallbackMethodParam.Value);
+            var trunkSidParam = savedRequest.Parameters.Find(x => x.Name == "TrunkSid");
+            Assert.IsNotNull(trunkSidParam);
+            Assert.AreEqual(options.TrunkSid, trunkSidParam.Value);
         }
 
         [Test]
@@ -85,27 +90,28 @@ namespace Twilio.Api.Tests.Integration
                 .Callback<IRestRequest, Action<IncomingPhoneNumber>>((request, action) => savedRequest = request);
             var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
-            PhoneNumberOptions options = new PhoneNumberOptions();
-            options.PhoneNumber = "+15005550006";
-            options.VoiceUrl = "http://example.com/phone";
-            options.VoiceMethod = "GET";
-            options.VoiceFallbackUrl = "http://example.com/phone";
-            options.VoiceFallbackMethod = "GET";
-            options.SmsUrl = "http://example.com/sms";
-            options.SmsMethod = "GET";
-            options.SmsFallbackUrl = "http://example.com/sms";
-            options.SmsFallbackMethod = "GET";
+            var options = new PhoneNumberOptions
+            {
+                PhoneNumber = "+15005550006",
+                VoiceUrl = "http://example.com/phone",
+                VoiceMethod = "GET",
+                VoiceFallbackUrl = "http://example.com/phone",
+                VoiceFallbackMethod = "GET",
+                SmsUrl = "http://example.com/sms",
+                SmsMethod = "GET",
+                SmsFallbackUrl = "http://example.com/sms",
+                SmsFallbackMethod = "GET",
+                TrunkSid = "83a4a6d359f04fb693dff4cad19792b28H"
+            };
 
-            client.AddIncomingPhoneNumber(options, number => {
-                manualResetEvent.Set();
-            });
+            client.AddIncomingPhoneNumber(options, number => manualResetEvent.Set());
             manualResetEvent.WaitOne(1);
 
             mockClient.Verify(trc => trc.ExecuteAsync<IncomingPhoneNumber>(It.IsAny<IRestRequest>(), It.IsAny<Action<IncomingPhoneNumber>>()), Times.Once);
             Assert.IsNotNull(savedRequest);
             Assert.AreEqual("Accounts/{AccountSid}/IncomingPhoneNumbers.json", savedRequest.Resource);
             Assert.AreEqual(Method.POST, savedRequest.Method);
-            Assert.AreEqual(9, savedRequest.Parameters.Count);
+            Assert.AreEqual(10, savedRequest.Parameters.Count);
             var phoneNumberParam = savedRequest.Parameters.Find(x => x.Name == "PhoneNumber");
             Assert.IsNotNull(phoneNumberParam);
             Assert.AreEqual(options.PhoneNumber, phoneNumberParam.Value);
@@ -133,6 +139,9 @@ namespace Twilio.Api.Tests.Integration
             var smsFallbackMethodParam = savedRequest.Parameters.Find(x => x.Name == "SmsFallbackMethod");
             Assert.IsNotNull(smsFallbackMethodParam);
             Assert.AreEqual(options.SmsFallbackMethod, smsFallbackMethodParam.Value);
+            var trunkSidParam = savedRequest.Parameters.Find(x => x.Name == "TrunkSid");
+            Assert.IsNotNull(trunkSidParam);
+            Assert.AreEqual(options.TrunkSid, trunkSidParam.Value);
         }
 
         [Test]

@@ -79,5 +79,9 @@ namespace Twilio
 		/// The HTTP method Twilio will use to make requests to the StatusCallback URL. Either GET or POST. Defaults to POST.
 		/// </summary>
 		public string StatusCallbackMethod { get; set; }
+        /// <summary>
+        /// The 34 character sid of the Trunk Twilio should use to handle phone calls to this number
+        /// </summary>
+        public string TrunkSid { get; set; }
 	}
 }
