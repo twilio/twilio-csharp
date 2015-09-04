@@ -57,6 +57,7 @@
     <Compile Include="Model\Reservation.cs" />
     <Compile Include="Model\ReservationResult.cs" />
     <Compile Include="Model\StatisticsRequest.cs" />
+    <Compile Include="Model\Target.cs" />
     <Compile Include="Model\Task.cs" />
     <Compile Include="Model\TaskListRequest.cs" />
     <Compile Include="Model\TaskQueue.cs" />

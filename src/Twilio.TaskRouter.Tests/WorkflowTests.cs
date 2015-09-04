@@ -28,32 +28,32 @@ namespace Twilio.TaskRouter.Tests
         }
 
         [Test]
-        public void SerializeWorkflowConfiguration()
+        public void ShouldSerializeWorkflowDefaultFilterConfiguration()
         {
             var workFlowConfiguration = new WorkflowConfiguration();
             workFlowConfiguration.DefaultFilter = new Target() { Queue = "WQccc" };
 
             var result = workFlowConfiguration.ToString();
 
-            Assert.AreEqual("{\"default_filter\":{\"queue\":\"WQccc\"}}", result);
+            Assert.AreEqual("{\"default_filter\":{\"queue\":\"WQccc\"},\"filters\":[]}", result);
         }
 
         [Test]
-        public void SerializeWorkflowConfiguration2()
+        public void ShouldDeserializeWorkflowDefaultFilterConfiguration()
         {
             var workFlow = new Workflow();
-            workFlow.Configuration = "{\"default_filter\":{\"queue\":\"WQccc\"}}";
+            workFlow.Configuration = "{\"default_filter\":{\"queue\":\"WQccc\"},\"filters\":[]}";
 
             var workFlowConfiguration = new WorkflowConfiguration();
             workFlowConfiguration.DefaultFilter = new Target() { Queue = "WQccc" };
 
             var config = workFlow.WorkflowConfiguration;
 
-            Assert.AreSame(workFlowConfiguration, config);
+            Assert.AreEqual(workFlowConfiguration.ToString(), config.ToString());
         }
 
         [Test]
-        public void SerializeWorkflowConfiguration3()
+        public void ShouldDeserializeComplexWorkflowConfiguration3()
         {
             var workFlow = new Workflow();
             workFlow.Configuration = "{\"default_filter\":{\"queue\":\"WQccc\"},\"filters\":[{\"expression\":\"1==1\",\"friendly_name\":\"Prioritizing Filter\",\"targets\":[{\"priority\":\"1\",\"queue\":\"WQccc\",\"timeout\":\"300\"}]}]}";
@@ -77,11 +77,11 @@ namespace Twilio.TaskRouter.Tests
 
             var config = workFlow.WorkflowConfiguration;
 
-            Assert.AreSame(workFlowConfiguration, config);
+            Assert.AreEqual(workFlowConfiguration.ToString(), config.ToString());
         }
 
         [Test]
-        public void SerializeWorkflowConfiguration1()
+        public void ShouldSerializeComplexWorkflowConfiguration1()
         {
             var workFlowConfiguration = new WorkflowConfiguration();
             var filter = new Filter
