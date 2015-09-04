@@ -1,4 +1,7 @@
-﻿using System;
+﻿using RestSharp.Deserializers;
+using System;
+using System.IO;
+using System.Runtime.Serialization.Json;
 
 namespace Twilio.TaskRouter
 {
@@ -39,10 +42,31 @@ namespace Twilio.TaskRouter
         /// The type of the Configuration document.
         /// </summary>
         public string DocumentContentType { get; set; }
+
         /// <summary>
         /// JSON document configuring the rules for this Workflow.
         /// </summary>
         public string Configuration { set; get; }
+
+        public WorkflowConfiguration WorkflowConfiguration {
+            get
+            {
+                var ms = new MemoryStream();
+                var sw = new StreamWriter(ms);
+                sw.Write(this.Configuration);
+                sw.Flush();
+
+                ms.Position = 0;
+                var serializer = new DataContractJsonSerializer(typeof(WorkflowConfiguration));
+                var wc = (WorkflowConfiguration)serializer.ReadObject(ms);
+                return wc;
+            }
+            set
+            {
+                this.Configuration = value.ToString();
+            }
+        }
+
         /// <summary>
         /// Determines how long TaskRouter will wait for a confirmation
         /// response from your application after assigning a Task to a worker.
