@@ -48,23 +48,18 @@ namespace Twilio.TaskRouter
         /// </summary>
         public string Configuration { set; get; }
 
-        public WorkflowConfiguration WorkflowConfiguration {
-            get
-            {
-                var ms = new MemoryStream();
-                var sw = new StreamWriter(ms);
-                sw.Write(this.Configuration);
-                sw.Flush();
-
-                ms.Position = 0;
-                var serializer = new DataContractJsonSerializer(typeof(WorkflowConfiguration));
-                var wc = (WorkflowConfiguration)serializer.ReadObject(ms);
-                return wc;
-            }
-            set
-            {
-                this.Configuration = value.ToString();
-            }
+        /// <summary>
+        /// Returns the current Workflow configuration as a strongly-typed WorkflowConfiguration object
+        /// </summary>
+        public WorkflowConfiguration WorkflowConfiguration { 
+            get 
+            {                
+                if (!String.IsNullOrEmpty(this.Configuration))
+                {
+                    return WorkflowConfiguration.Create(this.Configuration);
+                }
+                return new WorkflowConfiguration();
+            }  
         }
 
         /// <summary>

@@ -12,6 +12,19 @@ namespace Twilio.TaskRouter
     [DataContract]
     public class WorkflowConfiguration
     {
+        public static WorkflowConfiguration Create(string configuration)
+        {
+            var ms = new MemoryStream();
+            var sw = new StreamWriter(ms);
+            sw.Write(configuration);
+            sw.Flush();
+
+            ms.Position = 0;
+            var serializer = new DataContractJsonSerializer(typeof(WorkflowConfiguration));
+            var wc = (WorkflowConfiguration)serializer.ReadObject(ms);
+            return wc;
+        }
+
         public WorkflowConfiguration()
         {
             this.Filters = new List<Filter>();
