@@ -7,6 +7,11 @@ namespace Twilio.Pricing
 {
     public partial class PricingClient
     {
+
+        /// <summary>
+        /// Returns a paged list of sms message supported countries.
+        /// Makes a GET request to the Messaging/Countries List resource.
+        /// </summary>
         public virtual MessagingCountryResult ListMessagingCountries()
         {
             var request = new RestRequest(Method.GET);
@@ -15,6 +20,13 @@ namespace Twilio.Pricing
             return Execute<MessagingCountryResult>(request);
         }
 
+        /// <summary>
+        /// Returns the single sms message supported country by
+        /// ISO country code.
+        /// Makes a GET request to a Messaging/Countries/{IsoCountry}
+        /// Instance resource.
+        /// </summary>
+        /// <param name="isoCountry">ISO Country code</param>
         public virtual MessagingCountry GetMessagingCountry(string isoCountry)
         {
             var request = new RestRequest(Method.GET);
