@@ -13,13 +13,13 @@ namespace Twilio.Pricing
     public class OutboundSmsPrice
     {
         /// <summary>
-        /// Mcc.
+        /// Mobile country code.
         /// </summary>
         /// <value>mcc</value>
         public string Mcc { get; set; }
 
         /// <summary>
-        /// Mnc.
+        /// Mobile network code.
         /// </summary>
         /// <value>mnc</value>
         public string Mnc { get; set; }

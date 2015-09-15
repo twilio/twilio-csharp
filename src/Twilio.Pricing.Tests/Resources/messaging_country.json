@@ -1,0 +1,36 @@
+{
+   "country":"United States",
+   "iso_country":"US",
+   "price_unit":"USD",
+   "outbound_sms_prices":[
+      {
+         "mcc":"311",
+         "mnc":"484",
+         "carrier":"Verizon",
+         "prices":[
+            {
+               "number_type":"mobile",
+               "base_price":"0.0075",
+               "current_price":"0.0070"
+            },
+            {
+               "number_type":"shortcode",
+               "base_price":"0.01",
+               "current_price":"0.01"
+            }
+         ]
+      }
+   ],
+   "inbound_sms_prices":[
+      {
+         "number_type":"mobile",
+         "base_price":"0.0075",
+         "current_price":"0.0075"
+      },
+      {
+         "number_type":"shortcode",
+         "base_price":"0.01",
+         "current_price":"0.01"
+      }
+   ]
+}
