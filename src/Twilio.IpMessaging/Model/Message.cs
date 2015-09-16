@@ -3,12 +3,12 @@ using System;
 namespace Twilio.IpMessaging
 {
     /// <summary>
-    /// Represents a Ip Messaging Credential.
+    /// Represents an Ip Message.
     /// </summary>
-    public class Credential : TwilioBase
+    public class Message : TwilioBase
     {
         /// <summary>
-        /// The 34 character Credential Sid that uniquely identifies a credential.
+        /// The 34 character Message Sid that uniquely identifies a message.
         /// </summary>
         public string Sid { get; set; }
 
@@ -19,20 +19,16 @@ namespace Twilio.IpMessaging
         public string AccountSid { get; set; }
 
         /// <summary>
-        /// A human readable description of this account, up to 64 characters
-        /// long. By default the FriendlyName is your email address.
+        /// A 34 character string that uniquely identifies the service instance
+        /// that owns this resource
         /// </summary>
-        public string FriendlyName { get; set; }
+        public string ServiceSid { get; set; }
 
         /// <summary>
-        /// Public or Private type credential.
+        /// A 34 character that uniquely identifies the channel this message
+        /// belongs to.
         /// </summary>
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Sandbox flag
-        /// </summary>
-        public bool Sandbox { get; set; }
+        public string To { get; set; }
 
         /// <summary>
         /// The date that this account was created, given as GMT
@@ -43,6 +39,21 @@ namespace Twilio.IpMessaging
         /// The date that this account was last updated, given in as GMT
         /// </summary>
         public DateTime DateUpdated { get; set; }
+
+        /// <summary>
+        /// Indicates if a message was edited at some point.
+        /// </summary>
+        public bool WasEdited { get; set; }
+
+        /// <summary>
+        /// Identity of the message author.
+        /// </summary>
+        public string From { get; set; }
+
+        /// <summary>
+        /// Message body
+        /// </summary>
+        public string Body { get; set; }
 
         /// <summary>
         /// Resource api location.
