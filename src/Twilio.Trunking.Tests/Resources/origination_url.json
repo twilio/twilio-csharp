@@ -1,0 +1,13 @@
+{
+  "sid": "OUa83fd602a8bcb24b0a8a10bab87b1085",
+  "account_sid": "ACxxx",
+  "trunk_sid": "TKfa1e5a85f63bfc475c2c753c0f289932",
+  "weight": 10,
+  "enabled": true,
+  "sip_url": "sip:169.10.1.35",
+  "friendly_name": "sip:169.10.1.35",
+  "priority": 20,
+  "date_created": "2015-09-02T23:15:56Z",
+  "date_updated": "2015-09-02T23:15:56Z",
+  "url": "https://trunking.twilio.com/v1/Trunks/TKfa1e5a85f63bfc475c2c753c0f289932/OriginationUrls/OUa83fd602a8bcb24b0a8a10bab87b1085"
+}
