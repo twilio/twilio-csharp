@@ -8,82 +8,93 @@ namespace Twilio.IpMessaging
     public partial class IpMessagingClient
     {
         /// <summary>
-        /// Retrieves all the Channels belonging to a Service Sid.
+        /// Retrieves all the Credentials belonging to a Service Sid.
         /// </summary>
-        public virtual void ListChannels(Action<ChannelResult> callback)
+        public virtual void ListCredentials(Action<CredentialResult> callback)
         {
             var request = new RestRequest(Method.GET);
-            request.Resource = "/Services/{ServiceSid}/Channels";
+            request.Resource = "/Credentials";
 
-            ExecuteAsync<ChannelResult>(request, (response) =>
+            ExecuteAsync<CredentialResult>(request, (response) =>
               callback(response));
         }
 
         /// <summary>
-        /// Retrieves the Channel by Channel Sid.
+        /// Retrieves the Credential by Credential Sid.
         /// </summary>
-        /// <param name="channelSid">The Channel Sid</param>
-        public virtual void GetChannel(string channelSid,
-          Action<Channel> callback)
+        /// <param name="credentialSid">Credential Sid</param>
+        public virtual void GetCredential(string credentialSid,
+          Action<Credential> callback)
         {
             var request = new RestRequest(Method.GET);
-            request.Resource = "/Services/{ServiceSid}/Channels/{ChannelSid}";
-            request.AddUrlSegment("ChannelSid", channelSid);
+            request.Resource = "/Credentials/{CredentialSid}";
+            request.AddUrlSegment("CredentialSid", credentialSid);
 
-            ExecuteAsync<Channel>(request, (response) => callback(response));
+            ExecuteAsync<Credential>(request, (response) => callback(response));
         }
 
         /// <summary>
-        /// Creates a Channel.
+        /// Creates a Credential.
         /// </summary>
-        /// <param name="type">Channel type</param>
-        /// <param name="friendlyName">Friendly Name for the Channel</param>
-        /// <param name="attributes">Developer specific values to be stored as is</param>
-        public virtual void CreateChannel(string type, string friendlyName,
-          string attributes, Action<Channel> callback)
+        /// <param name="type">Credential type</param>
+        /// <param name="friendlyName">Friendly Name for the Credential</param>
+        /// <param name="certificate">Certificate</param>
+        /// <param name="privateKey">Private Key</param>
+        /// <param name="sandbox">Flag denotes if it is Sandbox or not</param>
+        /// <param name="apiKey">API Key</param>
+        public virtual void CreateCredential(string type, string friendlyName,
+          string attributes, Action<Credential> callback)
         {
             var request = new RestRequest(Method.POST);
-            request.Resource = "/Services/{ServiceSid}/Channels";
+            request.Resource = "/Credentials";
 
             request.AddParameter("Type", type);
             request.AddParameter("FriendlyName", friendlyName);
-            request.AddParameter("Attributes", attributes);
+            request.AddParameter("Certificate", certificate);
+            request.AddParameter("PrivateKey", privateKey);
+            request.AddParameter("Sandbox", sandbox);
+            request.AddParameter("ApiKey", apiKey);
 
-            ExecuteAsync<Channel>(request, (response) => callback(response));
+            ExecuteAsync<Credential>(request, (response) => callback(response));
         }
 
         /// <summary>
-        /// Modifies a Channel.
+        /// Updates a Credential.
         /// </summary>
-        /// <param name="channelSid">Channel Sid</param>
-        /// <param name="type">Channel type</param>
-        /// <param name="friendlyName">Friendly Name for the Channel</param>
-        /// <param name="attributes">Developer specific values to be stored as is</param>
-        public virtual void ModifyChannel(string channelSid, string type,
-          string friendlyName, string attributes, Action<Channel> callback)
+        /// <param name="type">Credential type</param>
+        /// <param name="friendlyName">Friendly Name for the Credential</param>
+        /// <param name="certificate">Certificate</param>
+        /// <param name="privateKey">Private Key</param>
+        /// <param name="sandbox">Flag denotes if it is Sandbox or not</param>
+        /// <param name="apiKey">API Key</param>
+        public virtual void UpdateCredential(string credentialSid, string type,
+          string friendlyName, string attributes, Action<Credential> callback)
         {
             var request = new RestRequest(Method.POST);
-            request.Resource = "/Services/{ServiceSid}/Channels/{ChannelSid}";
+            request.Resource = "/Credentials/{CredentialSid}";
 
-            request.AddUrlSegment("ChannelSid", channelSid);
+            request.AddUrlSegment("CredentialSid", credentialSid);
 
             request.AddParameter("Type", type);
             request.AddParameter("FriendlyName", friendlyName);
-            request.AddParameter("Attributes", attributes);
+            request.AddParameter("Certificate", certificate);
+            request.AddParameter("PrivateKey", privateKey);
+            request.AddParameter("Sandbox", sandbox);
+            request.AddParameter("ApiKey", apiKey);
 
-            ExecuteAsync<Channel>(request, (response) => callback(response));
+            ExecuteAsync<Credential>(request, (response) => callback(response));
         }
 
         /// <summary>
-        /// Deletes a Channel identified by Channel Sid.
+        /// Deletes a Credential identified by Credential Sid.
         /// </summary>
-        /// <param name="channelSid">Channel Sid</param>
-        public virtual void DeleteChannel(string channelSid,
+        /// <param name="credentialSid">Credential Sid</param>
+        public virtual void DeleteCredential(string credentialSid,
           Action<DeleteStatus> callback)
         {
             var request = new RestRequest(Method.DELETE);
-            request.Resource = "/Services/{ServiceSid}/Channels/{ChannelSid}";
-            request.AddUrlSegment("ChannelSid", channelSid);
+            request.Resource = "/Credentials/{CredentialSid}";
+            request.AddUrlSegment("CredentialSid", credentialSid);
 
             var response = Execute(request);
             ExecuteAsync(request, (response) => { callback(

@@ -30,7 +30,7 @@ namespace Twilio.IpMessaging
             var request = new RestRequest(Method.GET);
             request.Resource =
               "/Services/{ServiceSid}/Channels/{ChannelSid}/Messages/{MessageSid}";
-            
+
             request.AddUrlSegment("MessageSid", messageSid);
 
             ExecuteAsync<Message>(request, (response) => callback(response));
@@ -55,10 +55,10 @@ namespace Twilio.IpMessaging
         }
 
         /// <summary>
-        /// Edits a message.
+        /// Updates a message.
         /// </summary>
         /// <param name="body">Message body</param>
-        public virtual void ModifyMessage(string body, Action<Message> callback)
+        public virtual void UpdateMessage(string body, Action<Message> callback)
         {
             var request = new RestRequest(Method.POST);
             request.Resource =

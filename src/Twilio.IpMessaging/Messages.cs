@@ -51,10 +51,10 @@ namespace Twilio.IpMessaging
         }
 
         /// <summary>
-        /// Edits a message.
+        /// Updates a message.
         /// </summary>
         /// <param name="body">Message body</param>
-        public virtual Message ModifyMessage(string messageSid,
+        public virtual Message UpdateMessage(string messageSid,
           string from)
         {
             var request = new RestRequest(Method.POST);

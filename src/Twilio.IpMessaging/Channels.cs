@@ -51,13 +51,13 @@ namespace Twilio.IpMessaging
         }
 
         /// <summary>
-        /// Modifies a Channel.
+        /// Updates a Channel.
         /// </summary>
         /// <param name="channelSid">Channel Sid</param>
         /// <param name="type">Channel type</param>
         /// <param name="friendlyName">Friendly Name for the Channel</param>
         /// <param name="attributes">Developer specific values to be stored as is</param>
-        public virtual Channel ModifyChannel(string channelSid, string type,
+        public virtual Channel UpdateChannel(string channelSid, string type,
           string friendlyName, string attributes)
         {
             var request = new RestRequest(Method.POST);

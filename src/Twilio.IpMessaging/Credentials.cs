@@ -58,7 +58,7 @@ namespace Twilio.IpMessaging
         }
 
         /// <summary>
-        /// Modifies a Credential.
+        /// Updates a Credential.
         /// </summary>
         /// <param name="type">Credential type</param>
         /// <param name="friendlyName">Friendly Name for the Credential</param>
@@ -66,7 +66,7 @@ namespace Twilio.IpMessaging
         /// <param name="privateKey">Private Key</param>
         /// <param name="sandbox">Flag denotes if it is Sandbox or not</param>
         /// <param name="apiKey">API Key</param>
-        public virtual Credential ModifyCredential(string credentialSid,
+        public virtual Credential UpdateCredential(string credentialSid,
           string type, string friendlyName, string certificate,
           string privateKey, string sandbox, string apiKey)
         {
@@ -77,7 +77,10 @@ namespace Twilio.IpMessaging
 
             request.AddParameter("Type", type);
             request.AddParameter("FriendlyName", friendlyName);
-            request.AddParameter("Attributes", attributes);
+            request.AddParameter("Certificate", certificate);
+            request.AddParameter("PrivateKey", privateKey);
+            request.AddParameter("Sandbox", sandbox);
+            request.AddParameter("ApiKey", apiKey);
 
             return Execute<Credential>(request);
         }

@@ -48,11 +48,11 @@ namespace Twilio.IpMessaging
         }
 
         /// <summary>
-        /// Modifies Member properties in a channel.
+        /// Updates Member properties in a channel.
         /// </summary>
         /// <param name="identity">Identity of the Member</param>
         /// <param name="roleSid">Role sid of member</param>
-        public virtual Member ModifyMember(string identity,
+        public virtual Member UpdateMember(string identity,
           string roleSid)
         {
             var request = new RestRequest(Method.POST);
