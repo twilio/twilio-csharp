@@ -8,7 +8,7 @@ namespace Twilio.IpMessaging
     /// <summary>
     /// Represents the list of Ip Messaging Users.
     /// </summary>
-    public class CredentialResult : NextGenListBase
+    public class UserResult : NextGenListBase
     {
         /// <summary>
         /// The list of Users.
