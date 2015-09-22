@@ -113,3 +113,23 @@ This library is derived from johnsheehan/TwilioApi. Minimal changes should be re
 [1]: http://www.twilio.com/docs/api/rest
 [2]: http://www.twilio.com/docs/api/twiml
 [3]: https://github.com/twilio/twilio-csharp/wiki
+
+## Developing on the library with Mono
+You can setup a mono/nunit development environment using the Makefile:
+
+```bash
+> make develop
+```
+
+Then, you can build the solution using `xbuild`:
+
+```bash
+> make
+```
+
+and run the tests using `nunit`:
+
+```bash
+> make test
+```
+
