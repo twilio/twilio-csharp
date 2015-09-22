@@ -35,12 +35,12 @@ namespace Twilio.IpMessaging
         public bool Sandbox { get; set; }
 
         /// <summary>
-        /// The date that this account was created, given as GMT
+        /// The date that this Credential was created, given as GMT
         /// </summary>
         public DateTime DateCreated { get; set; }
 
         /// <summary>
-        /// The date that this account was last updated, given in as GMT
+        /// The date that this Credential was last updated, given in as GMT
         /// </summary>
         public DateTime DateUpdated { get; set; }
 
