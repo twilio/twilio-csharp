@@ -1,0 +1,17 @@
+{
+   "meta":{
+      "list_key":"countries",
+      "next_token":"AD",
+      "previous_token":null
+   },
+   "countries":[
+      {
+         "country":"United States",
+         "iso_country":"US"
+      },
+      {
+         "country":"Germany",
+         "iso_country":"DE"
+      }
+   ]
+}
