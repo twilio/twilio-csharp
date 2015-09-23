@@ -393,25 +393,6 @@ namespace Twilio.TwiML
         /// Add a Call to a TaskQueue
         /// </summary>
         /// <param name="attributes"></param>
-        /// <param name="taskAttributesJSON"></param>
-        /// <param name="taskAttributes">json blob for TaskRouter Task Attributes</param>
-        /// <returns></returns>
-        public TwilioResponse Enqueue(object attributes, string taskAttributesJSON, object taskAttributes)
-        {
-            var enqueue = new Enqueue(String.Empty, attributes);
-            Current.Push(enqueue);
-
-            if (!string.IsNullOrEmpty(taskAttributes)) { Add(new Task(taskAttributes)); }
-
-            Add(Current.Pop());
-
-            return this;
-        }
-
-        /// <summary>
-        /// Add a Call to a TaskQueue
-        /// </summary>
-        /// <param name="attributes"></param>
         /// <param name="taskAttributes">json blob for TaskRouter Task Attributes</param>
         /// <param name="taskproperties">additional parameters for a TaskRouter Task (priority, timeout)</param>
         /// <returns></returns>

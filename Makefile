@@ -7,6 +7,9 @@ develop: install-mono
 install-mono:
 	brew install mono
 
-test:
+test: build-tests
 	for i in src/*Tests/bin/Debug/*.Tests*.dll; do nunit "$$i"; done
+
+build-tests:
+	for i in src/*Tests/*.Tests*.csproj; do xbuild "$$i"; done
 
