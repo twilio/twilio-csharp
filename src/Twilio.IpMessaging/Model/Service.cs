@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Twilio.IpMessaging
 {
@@ -47,7 +48,7 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Typing Indicator time out
         /// </summary>
-        public string TypingIndicatorTimeout { get; set; }
+        public int TypingIndicatorTimeout { get; set; }
 
         /// <summary>
         /// Webhooks data.

@@ -32,7 +32,7 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// User’s Identity, must be unique for deployment
         /// </summary>
-        public bool Identity { get; set; }
+        public string Identity { get; set; }
 
         /// <summary>
         /// The date that this User resource was created, given as GMT
