@@ -15,6 +15,8 @@ namespace Twilio.TaskRouter.Tests
 
         private const string TASK_SID = "WT123";
 
+        private const string WORKER_SID = "WK123";
+
         private const string WORKSPACE_SID = "WS123";
 
         ManualResetEvent manualResetEvent = null;
@@ -145,25 +147,22 @@ namespace Twilio.TaskRouter.Tests
                 .Returns(new ReservationResult());
             var client = mockClient.Object;
 
-            client.ListReservations(WORKSPACE_SID, TASK_SID, "status", "assignmentStatus", "afterSid", "beforeSid", 10);
+            client.ListReservations(WORKSPACE_SID, TASK_SID, "reservationStatus", "afterSid", "beforeSid", 10);
 
             mockClient.Verify(trc => trc.Execute<ReservationResult>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
             Assert.AreEqual("Workspaces/{WorkspaceSid}/Tasks/{TaskSid}/Reservations", savedRequest.Resource);
             Assert.AreEqual(Method.GET, savedRequest.Method);
-            Assert.AreEqual(7, savedRequest.Parameters.Count);
+            Assert.AreEqual(6, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
             Assert.IsNotNull(workspaceSidParam);
             Assert.AreEqual(WORKSPACE_SID, workspaceSidParam.Value);
             var taskSidParam = savedRequest.Parameters.Find(x => x.Name == "TaskSid");
             Assert.IsNotNull(taskSidParam);
             Assert.AreEqual(TASK_SID, taskSidParam.Value);
-            var statusParam = savedRequest.Parameters.Find(x => x.Name == "Status");
-            Assert.IsNotNull(statusParam);
-            Assert.AreEqual("status", statusParam.Value);
-            var assignmentStatusParam = savedRequest.Parameters.Find(x => x.Name == "AssignmentStatus");
-            Assert.IsNotNull(assignmentStatusParam);
-            Assert.AreEqual("assignmentStatus", assignmentStatusParam.Value);
+            var reservationStatusParam = savedRequest.Parameters.Find(x => x.Name == "ReservationStatus");
+            Assert.IsNotNull(reservationStatusParam);
+            Assert.AreEqual("reservationStatus", reservationStatusParam.Value);
             var afterSidParam = savedRequest.Parameters.Find(x => x.Name == "AfterSid");
             Assert.IsNotNull(afterSidParam);
             Assert.AreEqual("afterSid", afterSidParam.Value);
@@ -184,7 +183,7 @@ namespace Twilio.TaskRouter.Tests
             var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            client.ListReservations(WORKSPACE_SID, TASK_SID, "status", "assignmentStatus", "afterSid", "beforeSid", 10, reservations => {
+            client.ListReservations(WORKSPACE_SID, TASK_SID, "reservationStatus", "afterSid", "beforeSid", 10, reservations => {
                 manualResetEvent.Set();
             });
 
@@ -194,19 +193,16 @@ namespace Twilio.TaskRouter.Tests
             Assert.IsNotNull(savedRequest);
             Assert.AreEqual("Workspaces/{WorkspaceSid}/Tasks/{TaskSid}/Reservations", savedRequest.Resource);
             Assert.AreEqual(Method.GET, savedRequest.Method);
-            Assert.AreEqual(7, savedRequest.Parameters.Count);
+            Assert.AreEqual(6, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
             Assert.IsNotNull(workspaceSidParam);
             Assert.AreEqual(WORKSPACE_SID, workspaceSidParam.Value);
             var taskSidParam = savedRequest.Parameters.Find(x => x.Name == "TaskSid");
             Assert.IsNotNull(taskSidParam);
             Assert.AreEqual(TASK_SID, taskSidParam.Value);
-            var statusParam = savedRequest.Parameters.Find(x => x.Name == "Status");
-            Assert.IsNotNull(statusParam);
-            Assert.AreEqual("status", statusParam.Value);
-            var assignmentStatusParam = savedRequest.Parameters.Find(x => x.Name == "AssignmentStatus");
-            Assert.IsNotNull(assignmentStatusParam);
-            Assert.AreEqual("assignmentStatus", assignmentStatusParam.Value);
+            var reservationStatusParam = savedRequest.Parameters.Find(x => x.Name == "ReservationStatus");
+            Assert.IsNotNull(reservationStatusParam);
+            Assert.AreEqual("reservationStatus", reservationStatusParam.Value);
             var afterSidParam = savedRequest.Parameters.Find(x => x.Name == "AfterSid");
             Assert.IsNotNull(afterSidParam);
             Assert.AreEqual("afterSid", afterSidParam.Value);
@@ -216,6 +212,30 @@ namespace Twilio.TaskRouter.Tests
             var countSidParam = savedRequest.Parameters.Find(x => x.Name == "PageSize");
             Assert.IsNotNull(countSidParam);
             Assert.AreEqual(10, countSidParam.Value);
+        }
+
+        [Test]
+        public void ShouldListReservationsForWorker()
+        {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<ReservationResult>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new ReservationResult());
+            var client = mockClient.Object;
+
+            client.ListReservationsForWorker(WORKSPACE_SID, WORKER_SID);
+
+            mockClient.Verify(trc => trc.Execute<ReservationResult>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Workspaces/{WorkspaceSid}/Workers/{WorkerSid}/Reservations", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+            Assert.AreEqual(2, savedRequest.Parameters.Count);
+            var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
+            Assert.IsNotNull(workspaceSidParam);
+            Assert.AreEqual(WORKSPACE_SID, workspaceSidParam.Value);
+            var workerSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkerSid");
+            Assert.IsNotNull(workerSidParam);
+            Assert.AreEqual(WORKER_SID, workerSidParam.Value);
         }
 
         [Test]

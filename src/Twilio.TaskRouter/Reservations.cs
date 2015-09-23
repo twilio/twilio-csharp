@@ -30,26 +30,25 @@ namespace Twilio.TaskRouter
         }
 
         /// <summary>
-        /// List reservations on current workspace.
+        /// List reservations for a task
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the reservations belong to</param>
         /// <param name="taskSid">The Sid of the task the reservations belong to</param>
         public virtual ReservationResult ListReservations(string workspaceSid, string taskSid)
         {
-            return ListReservations(workspaceSid, taskSid, null, null, null, null, null);
+            return ListReservations(workspaceSid, taskSid, null, null, null, null);
         }
 
         /// <summary>
-        /// List reservations on current workspace with filters
+        /// List reservations for a task with filters
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the reservations belong to</param>
         /// <param name="taskSid">The Sid of the task the reservations belong to</param>
-        /// <param name="status">Optional status to match</param>
-        /// <param name="assignmentStatus">Optional assignment status to match</param>
+        /// <param name="reservationStatus">Optional reservation status to match</param>
         /// <param name="afterSid">Activity Sid to start retrieving results from</param>
         /// <param name="beforeSid">Activity Sid to stop retrieving results from</param>
         /// <param name="count">How many results to return</param>
-        public virtual ReservationResult ListReservations(string workspaceSid, string taskSid, string status, string assignmentStatus, string afterSid, string beforeSid, int? count)
+        public virtual ReservationResult ListReservations(string workspaceSid, string taskSid, string reservationStatus, string afterSid, string beforeSid, int? count)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("TaskSid", taskSid);
@@ -60,10 +59,50 @@ namespace Twilio.TaskRouter
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
             request.AddUrlSegment("TaskSid", taskSid);
 
-            if (status.HasValue())
-                request.AddParameter("Status", status);
-            if (assignmentStatus.HasValue())
-                request.AddParameter("AssignmentStatus", assignmentStatus);
+            if (reservationStatus.HasValue())
+                request.AddParameter("ReservationStatus", reservationStatus);
+            if (afterSid.HasValue())
+                request.AddParameter("AfterSid", afterSid);
+            if (beforeSid.HasValue())
+                request.AddParameter("BeforeSid", beforeSid);
+            if (count.HasValue)
+                request.AddParameter("PageSize", count.Value);
+
+            return Execute<ReservationResult>(request);
+        }
+
+        /// <summary>
+        /// List reservations for a worker.
+        /// </summary>
+        /// <param name="workspaceSid">The Sid of the workspace the reservations belong to</param>
+        /// <param name="workerSid">The Sid of the worker the reservations belong to</param>
+        public virtual ReservationResult ListReservationsForWorker(string workspaceSid, string workerSid)
+        {
+            return ListReservationsForWorker(workspaceSid, workerSid, null, null, null, null);
+        }
+
+        /// <summary>
+        /// List reservations for a worker with filters
+        /// </summary>
+        /// <param name="workspaceSid">The Sid of the workspace the reservations belong to</param>
+        /// <param name="workerSid">The Sid of the worker the reservations belong to</param>
+        /// <param name="reservationStatus">Optional reservation status to match</param>
+        /// <param name="afterSid">Reservation Sid to start retrieving results from</param>
+        /// <param name="beforeSid">Activity Sid to stop retrieving results from</param>
+        /// <param name="count">How many results to return</param>
+        public virtual ReservationResult ListReservationsForWorker(string workspaceSid, string workerSid, string reservationStatus, string afterSid, string beforeSid, int? count)
+        {
+            Require.Argument("WorkspaceSid", workspaceSid);
+            Require.Argument("WorkerSid", workerSid);
+
+            var request = new RestRequest();
+            request.Resource = "Workspaces/{WorkspaceSid}/Workers/{WorkerSid}/Reservations";
+
+            request.AddUrlSegment("WorkspaceSid", workspaceSid);
+            request.AddUrlSegment("WorkerSid", workerSid);
+
+            if (reservationStatus.HasValue())
+                request.AddParameter("ReservationStatus", reservationStatus);
             if (afterSid.HasValue())
                 request.AddParameter("AfterSid", afterSid);
             if (beforeSid.HasValue())
