@@ -2,6 +2,7 @@
 using RestSharp;
 using RestSharp.Extensions;
 using RestSharp.Validation;
+using System.Collections.Generic;
 
 namespace Twilio.TaskRouter
 {
@@ -13,8 +14,10 @@ namespace Twilio.TaskRouter
         /// <param name="workspaceSid">Workspace sid.</param>
         /// <param name="attributes">Attributes.</param>
         /// <param name="workflowSid">Workflow sid.</param>
+        /// <param name="timeout">Optional timeout</param>
+        /// <param name="priority">Optional priority</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void AddTask(string workspaceSid, string attributes, string workflowSid, int? timeout, Action<Task> callback)
+        public virtual void AddTask(string workspaceSid, string attributes, string workflowSid, int? timeout, int? priority, Action<Task> callback)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("Attributes", attributes);
@@ -29,8 +32,25 @@ namespace Twilio.TaskRouter
 
             if (timeout.HasValue)
                 request.AddParameter("Timeout", timeout.Value);
+            if (priority.HasValue)
+                request.AddParameter("Priority", priority.Value);
 
             ExecuteAsync<Task>(request, (response) => { callback(response); });
+        }
+
+        /// <summary>
+        /// Create a task.
+        /// </summary>
+        /// <param name="workspaceSid">Workspace sid.</param>
+        /// <param name="attributes">Attributes.</param>
+        /// <param name="workflowSid">Workflow sid.</param>
+        /// <param name="timeout">Optional timeout</param>
+        /// <param name="priority">Optional priority</param>
+        /// <param name="callback">Method to call upon successful completion</param>
+        public virtual void AddTask(string workspaceSid, Dictionary<string,string> attributes, string workflowSid, int? timeout, int? priority, Action<Task> callback)
+        {
+            string taskAttributesJSON = FromDictionaryToJson(attributes);
+            this.AddTask(workspaceSid, taskAttributesJSON, workflowSid, timeout, priority, callback);
         }
 
         /// <summary>
@@ -112,7 +132,7 @@ namespace Twilio.TaskRouter
         /// <param name="assignmentStatus">Optional assignment status.</param>
         /// <param name="reason">Optional reason.</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void UpdateTask(string workspaceSid, string taskSid, string attributes, string assignmentStatus, string reason, Action<Task> callback)
+        public virtual void UpdateTask(string workspaceSid, string taskSid, string attributes, int? priority, string assignmentStatus, string reason, Action<Task> callback)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("TaskSid", taskSid);
@@ -124,12 +144,40 @@ namespace Twilio.TaskRouter
 
             if (attributes.HasValue())
                 request.AddParameter("Attributes", attributes);
+            if (priority.HasValue)
+                request.AddParameter("Priority", priority.Value);
             if (assignmentStatus.HasValue())
                 request.AddParameter("AssignmentStatus", assignmentStatus);
             if (reason.HasValue())
                 request.AddParameter("Reason", reason);
 
             ExecuteAsync<Task>(request, (response) => { callback(response); });
+        }
+
+        /// <summary>
+        /// Update a task.
+        /// </summary>
+        /// <param name="workspaceSid">Workspace sid.</param>
+        /// <param name="taskSid">Task sid.</param>
+        /// <param name="attributes">Optional attributes.</param>
+        /// <param name="priority">Optional priority</param>
+        /// <param name="callback">Method to call upon successful completion</param>
+        public virtual void UpdateTask(string workspaceSid, string taskSid, Dictionary<string,string> attributes, int? priority, Action<Task> callback)
+        {
+            string taskAttributesJSON = FromDictionaryToJson(attributes);
+            this.UpdateTask(workspaceSid, taskSid, taskAttributesJSON, priority, null, null, callback);
+        }
+
+        /// <summary>
+        /// Cancel a task
+        /// </summary>
+        /// <param name="workspaceSid">Workspace sid.</param>
+        /// <param name="taskSid">Task sid.</param>
+        /// <param name="reason">Optional reason.</param>
+        /// <param name="callback">Method to call upon successful completion</param>
+        public virtual void CancelTask(string workspaceSid, string taskSid, string reason, Action<Task> callback)
+        {
+            this.UpdateTask(workspaceSid, taskSid, null, null, "canceled", reason, callback);
         }
     }
 }

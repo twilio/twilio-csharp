@@ -20,6 +20,7 @@ namespace Twilio.TwiML
 		public Enqueue(string name)
 		{
 			Element = new XElement("Enqueue", name);
+            AllowedChildren.Add("Task");
             AllowedChildren.Add("TaskAttributes");
 
             AllowedAttributes.Add("action");
@@ -33,6 +34,9 @@ namespace Twilio.TwiML
 		{
 			AddAttributesFromObject(attributes);
 		}
+
+        public Enqueue() : this(null) {
+        }
 
 	}
 }

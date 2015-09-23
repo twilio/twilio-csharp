@@ -36,13 +36,13 @@ namespace Twilio.TaskRouter.Tests
             var client = mockClient.Object;
             var friendlyName = Utilities.MakeRandomFriendlyName();
 
-            client.AddTaskQueue(WORKSPACE_SID, friendlyName, "WA123", "WA234");
+            client.AddTaskQueue(WORKSPACE_SID, friendlyName, "WA123", "WA234", "1==1", 2);
 
             mockClient.Verify(trc => trc.Execute<TaskQueue>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
             Assert.AreEqual("Workspaces/{WorkspaceSid}/TaskQueues", savedRequest.Resource);
             Assert.AreEqual(Method.POST, savedRequest.Method);
-            Assert.AreEqual(4, savedRequest.Parameters.Count);
+            Assert.AreEqual(6, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
             Assert.IsNotNull(workspaceSidParam);
             Assert.AreEqual(WORKSPACE_SID, workspaceSidParam.Value);
@@ -55,6 +55,12 @@ namespace Twilio.TaskRouter.Tests
             var reservationActivitySidParam = savedRequest.Parameters.Find(x => x.Name == "ReservationActivitySid");
             Assert.IsNotNull(reservationActivitySidParam);
             Assert.AreEqual("WA234", reservationActivitySidParam.Value);
+            var targetWorkersParam = savedRequest.Parameters.Find(x => x.Name == "TargetWorkers");
+            Assert.IsNotNull(targetWorkersParam);
+            Assert.AreEqual("1==1", targetWorkersParam.Value);
+            var maxReservedWorkersParam = savedRequest.Parameters.Find(x => x.Name == "MaxReservedWorkers");
+            Assert.IsNotNull(maxReservedWorkersParam);
+            Assert.AreEqual("2", maxReservedWorkersParam.Value);
         }
 
         [Test]
@@ -327,13 +333,13 @@ namespace Twilio.TaskRouter.Tests
             var client = mockClient.Object;
             var friendlyName = Utilities.MakeRandomFriendlyName();
 
-            client.UpdateTaskQueue(WORKSPACE_SID, TASK_QUEUE_SID, friendlyName, "WA123", "WA234", "targetWorkers");
+            client.UpdateTaskQueue(WORKSPACE_SID, TASK_QUEUE_SID, friendlyName, "WA123", "WA234", "1==1", 5);
 
             mockClient.Verify(trc => trc.Execute<TaskQueue>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
             Assert.AreEqual("Workspaces/{WorkspaceSid}/TaskQueues/{TaskQueueSid}", savedRequest.Resource);
             Assert.AreEqual(Method.POST, savedRequest.Method);
-            Assert.AreEqual(6, savedRequest.Parameters.Count);
+            Assert.AreEqual(7, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
             Assert.IsNotNull(workspaceSidParam);
             Assert.AreEqual(WORKSPACE_SID, workspaceSidParam.Value);
@@ -351,7 +357,10 @@ namespace Twilio.TaskRouter.Tests
             Assert.AreEqual("WA234", reservationActivitySidParam.Value);
             var targetWorkersParam = savedRequest.Parameters.Find(x => x.Name == "TargetWorkers");
             Assert.IsNotNull(targetWorkersParam);
-            Assert.AreEqual("targetWorkers", targetWorkersParam.Value);
+            Assert.AreEqual("1==1", targetWorkersParam.Value);
+            var maxReservedWorkersParam = savedRequest.Parameters.Find(x => x.Name == "MaxReservedWorkers");
+            Assert.IsNotNull(maxReservedWorkersParam);
+            Assert.AreEqual("5", maxReservedWorkersParam.Value);
         }
 
         [Test]

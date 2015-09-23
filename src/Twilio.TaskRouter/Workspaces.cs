@@ -101,10 +101,9 @@ namespace Twilio.TaskRouter
         /// <param name="workspaceSid">Workspace sid.</param>
         /// <param name="friendlyName">Optional friendly name.</param>
         /// <param name="eventCallbackUrl">Optional event callback URL.</param>
-        /// <param name="template">Optional template.</param>
         /// <param name="defaultActivitySid">Optional default activity sid.</param>
         /// <param name="timeoutActivitySid">Optional timeout activity sid.</param>
-        public virtual Workspace UpdateWorkspace(string workspaceSid, string friendlyName, string eventCallbackUrl, string template, string defaultActivitySid, string timeoutActivitySid)
+        public virtual Workspace UpdateWorkspace(string workspaceSid, string friendlyName, string eventCallbackUrl, string defaultActivitySid, string timeoutActivitySid)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
 
@@ -116,8 +115,6 @@ namespace Twilio.TaskRouter
                 request.AddParameter("FriendlyName", friendlyName);
             if (eventCallbackUrl.HasValue())
                 request.AddParameter("EventCallbackUrl", eventCallbackUrl);
-            if (template.HasValue())
-                request.AddParameter("Template", template);
             if (defaultActivitySid.HasValue())
                 request.AddParameter("DefaultActivitySid", defaultActivitySid);
             if (timeoutActivitySid.HasValue())

@@ -289,7 +289,7 @@ namespace Twilio.TaskRouter.Tests
             var client = mockClient.Object;
             var friendlyName = Utilities.MakeRandomFriendlyName();
 
-            client.UpdateWorkspace(WORKSPACE_SID, friendlyName, "http://www.example.com", "template", "WA123", "WA234");
+            client.UpdateWorkspace(WORKSPACE_SID, friendlyName, "http://www.example.com", "WA123", "WA234");
 
             mockClient.Verify(trc => trc.Execute<Workspace>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);

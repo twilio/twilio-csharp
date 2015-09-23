@@ -381,7 +381,7 @@ namespace Twilio.TwiML
         /// <summary>
         /// Add a Call to a TaskQueue
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="attributes"></param>
         /// <returns></returns>
         public TwilioResponse Enqueue(object attributes)
         {
@@ -392,15 +392,51 @@ namespace Twilio.TwiML
         /// <summary>
         /// Add a Call to a TaskQueue
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="attributes"></param>
+        /// <param name="taskAttributesJSON"></param>
         /// <returns></returns>
-        public TwilioResponse Enqueue(object attributes, string taskAttributes)
+        public TwilioResponse Enqueue(object attributes, string taskAttributesJSON)
         {
             var enqueue = new Enqueue(String.Empty, attributes);
             Current.Push(enqueue);
 
-            if (!string.IsNullOrEmpty(taskAttributes)) { Add(new TaskAttributes(taskAttributes)); }
+            if (!string.IsNullOrEmpty(taskAttributesJSON)) { Add(new Task(taskAttributesJSON)); }
 
+            Add(Current.Pop());
+
+            return this;
+        }
+
+        /// <summary>
+        /// Add a Call to a TaskQueue
+        /// </summary>
+        /// <param name="attributes"></param>
+        /// <param name="taskAttributesJSON"></param>
+        /// <param name="taskAttributes"></param>
+        /// <returns></returns>
+        public TwilioResponse Enqueue(object attributes, string taskAttributesJSON, object taskAttributes)
+        {
+            var enqueue = new Enqueue(String.Empty, attributes);
+            Current.Push(enqueue);
+
+            if (!string.IsNullOrEmpty(taskAttributesJSON)) { Add(new Task(taskAttributesJSON, taskAttributes)); }
+
+            Add(Current.Pop());
+
+            return this;
+        }
+
+        /// <summary>
+        /// Add a Call to a TaskQueue
+        /// </summary>
+        /// <param name="attributes"></param>
+        /// <param name="task"></param>
+        /// <returns></returns>
+        public TwilioResponse EnqueueTask(object attributes, Task task)
+        {
+            var enqueue = new Enqueue(String.Empty, attributes);
+            Current.Push(enqueue);
+            Add(task);
             Add(Current.Pop());
 
             return this;
