@@ -117,6 +117,8 @@ This library is derived from johnsheehan/TwilioApi. Minimal changes should be re
 ## Developing on the library with Mono
 You can setup a mono/nunit development environment using the Makefile:
 
+**Note:** You will need Homebrew.
+
 ```bash
 > make develop
 ```
