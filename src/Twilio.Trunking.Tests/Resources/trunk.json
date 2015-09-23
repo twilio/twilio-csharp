@@ -1,0 +1,26 @@
+{
+  "sid": "TKfa1e5a85f63bfc475c2c753c0f289932",
+  "account_sid": "ACxxx",
+  "domain_name": "test1.pstn.twilio.com",
+  "disaster_recovery_method": "POST",
+  "disaster_recovery_url": "https://uh-oh.mytrunkingappbroke.io/recovery",
+  "friendly_name": "hello 1",
+  "secure": false,
+  "recording": {
+    "trim": "do-not-trim",
+    "mode": "record-from-ringing"
+  },
+  "auth_type": "CREDENTIAL_LIST",
+  "auth_type_set": [
+    "CREDENTIAL_LIST"
+  ],
+  "date_created": "2015-03-10T04:57:44Z",
+  "date_updated": "2015-09-02T23:32:19Z",
+  "url": "https://trunking.twilio.com/v1/Trunks/TKfa1e5a85f63bfc475c2c753c0f289932",
+  "links": {
+    "origination_urls": "https://trunking.twilio.com/v1/Trunks/TKfa1e5a85f63bfc475c2c753c0f289932/OriginationUrls",
+    "credential_lists": "https://trunking.twilio.com/v1/Trunks/TKfa1e5a85f63bfc475c2c753c0f289932/CredentialLists",
+    "ip_access_control_lists": "https://trunking.twilio.com/v1/Trunks/TKfa1e5a85f63bfc475c2c753c0f289932/IpAccessControlLists",
+    "phone_numbers": "https://trunking.twilio.com/v1/Trunks/TKfa1e5a85f63bfc475c2c753c0f289932/PhoneNumbers"
+  }
+}
