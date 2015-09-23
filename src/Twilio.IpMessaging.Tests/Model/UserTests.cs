@@ -26,5 +26,23 @@ namespace Twilio.IpMessaging.Tests.Model
             Assert.AreEqual("RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.RoleSid);
             Assert.AreEqual("http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.Url);
         }
+
+        [Test]
+        public void testDeserializeListResponse()
+        {
+            var doc = File.ReadAllText(Path.Combine("../../Resources", "users.json"));
+            var json = new JsonDeserializer();
+            var output = json.Deserialize<UserResult>(new RestResponse { Content = doc });
+
+            Assert.NotNull(output);
+            Assert.NotNull(output.Users);
+            Assert.AreEqual(1, output.Users.Count);
+            Assert.AreEqual("USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.Users[0].Sid);
+            Assert.AreEqual("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.Users[0].AccountSid);
+            Assert.AreEqual("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.Users[0].ServiceSid);
+            Assert.AreEqual("test@twilio.com", output.Users[0].Identity);
+            Assert.AreEqual("RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.Users[0].RoleSid);
+            Assert.AreEqual("http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.Users[0].Url);
+        }
     }
 }

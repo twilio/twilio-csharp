@@ -30,5 +30,27 @@ namespace Twilio.IpMessaging.Tests.Model
             Assert.AreEqual("createChannel", permissions[0]);
             Assert.AreEqual("destroyChannel", permissions[1]);
         }
+
+        [Test]
+        public void testDeserializeListResponse()
+        {
+            var doc = File.ReadAllText(Path.Combine("../../Resources", "roles.json"));
+            var json = new JsonDeserializer();
+            var output = json.Deserialize<RoleResult>(new RestResponse { Content = doc });
+
+            Assert.NotNull(output);
+            Assert.NotNull(output.Roles);
+            Assert.AreEqual(1, output.Roles.Count);
+            Assert.AreEqual("RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.Roles[0].Sid);
+            Assert.AreEqual("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.Roles[0].AccountSid);
+            Assert.AreEqual("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.Roles[0].ServiceSid);
+            Assert.AreEqual("admin", output.Roles[0].FriendlyName);
+            Assert.AreEqual("deployment", output.Roles[0].Type);
+            Assert.AreEqual("http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.Roles[0].Url);
+            List<string> permissions = output.Roles[0].Permissions;
+            Assert.NotNull(permissions);
+            Assert.AreEqual("createChannel", permissions[0]);
+            Assert.AreEqual("destroyChannel", permissions[1]);
+        }
     }
 }

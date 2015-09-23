@@ -29,5 +29,26 @@ namespace Twilio.IpMessaging.Tests.Model
             Assert.AreEqual("http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
               output.Url);
         }
+
+        [Test]
+        public void testDeserializeListResponse()
+        {
+            var doc = File.ReadAllText(Path.Combine("../../Resources", "message.json"));
+            var json = new JsonDeserializer();
+            var output = json.Deserialize<MessageResult>(new RestResponse { Content = doc });
+
+            Assert.NotNull(output);
+            Assert.NotNull(output.Messages);
+            Assert.AreEqual(1, output.Messages.Count);
+            Assert.AreEqual("IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.Messages[0].Sid);
+            Assert.AreEqual("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.Messages[0].AccountSid);
+            Assert.AreEqual("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.Messages[0].ServiceSid);
+            Assert.False(output.Messages[0].WasEdited);
+            Assert.AreEqual("alice", output.Messages[0].From);
+            Assert.AreEqual("to", output.Messages[0].To);
+            Assert.AreEqual("hi", output.Messages[0].Body);
+            Assert.AreEqual("http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              output.Messages[0].Url);
+        }
     }
 }
