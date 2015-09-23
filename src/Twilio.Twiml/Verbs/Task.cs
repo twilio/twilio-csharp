@@ -13,12 +13,12 @@ namespace Twilio.TwiML
         /// </summary>
         /// <param name="body"></param>
         public Task(string taskattributes)
-		{
-			Element = new XElement("Task", taskattributes);
+        {
+            Element = new XElement("Task", taskattributes);
 
             AllowedAttributes.Add("priority");
             AllowedAttributes.Add("timeout");
-		}
+        }
 
         /// <summary>
         /// Initializes a new instance of the Conference class.

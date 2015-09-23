@@ -85,8 +85,8 @@
     <Compile Include="Verbs\Gather.cs" />
     <Compile Include="Verbs\Say.cs" />
     <Compile Include="Verbs\ElementBase.cs" />
-    <Compile Include="Verbs\TaskAttributes.cs" />
     <Compile Include="Verbs\Uri.cs" />
+    <Compile Include="Verbs\Task.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
