@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -40,6 +40,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -51,9 +53,11 @@
     <Compile Include="Core.cs" />
     <Compile Include="Model\Activity.cs" />
     <Compile Include="Model\ActivityResult.cs" />
+    <Compile Include="Model\Filter.cs" />
     <Compile Include="Model\Reservation.cs" />
     <Compile Include="Model\ReservationResult.cs" />
     <Compile Include="Model\StatisticsRequest.cs" />
+    <Compile Include="Model\Target.cs" />
     <Compile Include="Model\Task.cs" />
     <Compile Include="Model\TaskListRequest.cs" />
     <Compile Include="Model\TaskQueue.cs" />
@@ -69,6 +73,7 @@
     <Compile Include="Model\WorkersStatisticsRequest.cs" />
     <Compile Include="Model\WorkerStatistics.cs" />
     <Compile Include="Model\Workflow.cs" />
+    <Compile Include="Model\WorkflowConfiguration.cs" />
     <Compile Include="Model\WorkflowResult.cs" />
     <Compile Include="Model\WorkflowStatistics.cs" />
     <Compile Include="Model\Workspace.cs" />
@@ -102,7 +107,6 @@
     <Compile Include="Model\EventResult.cs" />
     <Compile Include="Model\EventListRequest.cs" />
     <Compile Include="Events.Async.cs" />
-    <Compile Include="Capability\CapabilityAPI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

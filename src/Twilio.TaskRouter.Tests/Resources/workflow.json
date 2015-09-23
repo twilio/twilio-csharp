@@ -1,0 +1,29 @@
+﻿{
+    "meta": {
+        "page": 0,
+        "page_size": 50,
+        "first_page_url": "https://taskrouter.twilio.com/v1/Workspaces/WS25a2ca7abee619df6377bc4d0854d49e/Workflows?PageSize=50&Page=0",
+        "previous_page_url": null,
+        "url": "https://taskrouter.twilio.com/v1/Workspaces/WS25a2ca7abee619df6377bc4d0854d49e/Workflows?PageSize=50&Page=0",
+        "next_page_url": null,
+        "key": "workflows"
+
+    },
+    "workflows": [
+        {
+            "sid": "WW4852cfa460ac720ca5ef657574158d9a",
+            "friendly_name": "Incoming Customer Care Requests",
+            "account_sid": "ACecb5a0741d3b8570bcb094ea4dd471d4",
+            "workspace_sid": "WS25a2ca7abee619df6377bc4d0854d49e",
+            "assignment_callback_url": "http://ntaskrouter.ngrok.io/CareCenter/Assignment",
+            "fallback_assignment_callback_url": "",
+            "document_content_type": null,
+            "configuration": "{\"task_routing\":{\"filters\":[{\"targets\":[{\"queue\":\"WQe116091a62e8442d00d80821c95365cb\",\"priority\":\"1\"}],\"friendly_name\":\"Language - Spanish\",\"expression\":\"selected_language == \\\"es\\\"\"},{\"targets\":[{\"queue\":\"WQ1e9145a43099371d9d37cb2fd73a6187\",\"priority\":\"1\"}],\"friendly_name\":\"Language - English\",\"expression\":\"selected_language == \\\"en\\\"\"}]}}",
+            "task_reservation_timeout": 1200,
+            "date_created": "2015-06-26T08:27:23Z",
+            "date_updated": "2015-06-26T08:43:22Z",
+            "url": "https://taskrouter.twilio.com/v1/Workspaces/WS25a2ca7abee619df6377bc4d0854d49e/Workflows/WW4852cfa460ac720ca5ef657574158d9a",
+            "links": { "workspace": "https://taskrouter.twilio.com/v1/Workspaces/WS25a2ca7abee619df6377bc4d0854d49e" }
+        }
+    ]
+}
