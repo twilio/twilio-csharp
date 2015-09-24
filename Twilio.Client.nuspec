@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio.Client</id>
-		<version>3.4.4</version>
+		<version>3.5.0</version>
 		<authors>Twilio</authors>
 		<description>Twilio Client capability token generator for use with the Twilio Client for browsers JavaScript SDK.</description>
 		<language>en-US</language>
@@ -14,6 +14,7 @@
 			<dependency id="JWT" />
 		</dependencies>
 		<releaseNotes>
+      * 3.5.0 - Add TaskRouter reservations/workers
       * 3.4.4 - Fixing bad build
       * 3.4.3 - Updated JWT reference
       * 3.4.2 - Removed dependancy of JSON, updated reference to JWT
