@@ -394,7 +394,7 @@ namespace Twilio.TwiML
         /// </summary>
         /// <param name="attributes"></param>
         /// <param name="taskAttributes">json blob for TaskRouter Task Attributes</param>
-        /// <param name="taskproperties">additional parameters for a TaskRouter Task (priority, timeout)</param>
+        /// <param name="taskProperties">additional parameters for a TaskRouter Task (priority, timeout)</param>
         /// <returns></returns>
         public TwilioResponse Enqueue(object attributes, string taskAttributes, object taskProperties)
         {

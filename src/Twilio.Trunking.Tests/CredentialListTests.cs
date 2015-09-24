@@ -5,7 +5,7 @@ using NUnit.Framework;
 using RestSharp;
 
 using Twilio.Api.Tests.Integration;
-using Twilio.Trunking.Model;
+using Twilio.Trunking;
 
 namespace Twilio.Trunking.Tests
 {

@@ -42,7 +42,7 @@ namespace Twilio.Twiml.Tests
         public void Can_Generate_Enqueue_With_Options_And_TaskAttributes()
         {
             var response = new TwilioResponse();
-            response.Enqueue(new { action = "example.xml", method = "GET", waitUrl = "wait.xml", waitUrlMethod = "GET", workflowSid = "WFXXXXX" }, "{'task':'attributes'}");
+            response.Enqueue(new { action = "example.xml", method = "GET", waitUrl = "wait.xml", waitUrlMethod = "GET", workflowSid = "WFXXXXX" }, "{'task':'attributes'}", new { });
 
             Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
         }

@@ -77,7 +77,6 @@
     <Compile Include="DocExamples\Voice\Sms.cs" />
     <Compile Include="EnqueueTests.cs" />
     <Compile Include="MessageTests.cs" />
-    <Compile Include="QueueTests.cs" />
     <Compile Include="QuickStarts\SmsHelloMonkey.cs" />
     <Compile Include="QuickStarts\HelloMonkey.cs" />
     <Compile Include="SmsTests.cs" />

@@ -77,13 +77,13 @@
       <Project>{2E1A3B46-C072-48E0-92BF-F2901036979F}</Project>
       <Name>Twilio.Api.Tests.Integration</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Twilio.Trunking\Twilio.Trunking.csproj">
-      <Project>{4153C752-377E-49F4-9776-10035B1C22ED}</Project>
-      <Name>Twilio.Trunking</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Twilio.Api\Twilio.Api.csproj">
       <Project>{894FF9E8-4DBF-4472-8AE2-1A6A988E105B}</Project>
       <Name>Twilio.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Twilio.Trunking\Twilio.Trunking.csproj">
+      <Project>{4153c752-377e-49f4-9776-10035b1c22ef}</Project>
+      <Name>Twilio.Trunking</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
