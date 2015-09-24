@@ -284,6 +284,7 @@ namespace Twilio
 			if (options.VoiceCallerIdLookup.HasValue) request.AddParameter("VoiceCallerIdLookup", options.VoiceCallerIdLookup.Value);
 			if (options.StatusCallback.HasValue()) request.AddParameter("StatusCallback", options.StatusCallback);
 			if (options.StatusCallbackMethod.HasValue()) request.AddParameter("StatusCallbackMethod", options.StatusCallbackMethod.ToString());
+            if (options.TrunkSid.HasValue()) request.AddParameter("TrunkSid", options.TrunkSid.ToString());
 		}
 
 		private void AddSmsOptionsToRequest(RestRequest request, PhoneNumberOptions options)
