@@ -10,10 +10,15 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Retrieves all the Channels belonging to a Service Sid.
         /// </summary>
-        public virtual ChannelResult ListChannels()
+        /// <param name="serviceSid">Service Sid</param>
+        public virtual ChannelResult ListChannels(string serviceSid)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            
             var request = new RestRequest(Method.GET);
             request.Resource = "/Services/{ServiceSid}/Channels";
+
+            request.AddUrlSegment("ServiceSid", serviceSid);
 
             return Execute<ChannelResult>(request);
         }
@@ -21,11 +26,17 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Retrieves the Channel by Channel Sid.
         /// </summary>
-        /// <param name="channelSid">The Channel Sid</param>
-        public virtual Channel GetChannel(string channelSid)
+        /// <param name="serviceSid">Service Sid</param>
+        /// <param name="channelSid">Channel Sid</param>
+        public virtual Channel GetChannel(string serviceSid, string channelSid)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            Require.Argument("ChannelSid", channelSid);
+
             var request = new RestRequest(Method.GET);
             request.Resource = "/Services/{ServiceSid}/Channels/{ChannelSid}";
+
+            request.AddUrlSegment("ServiceSid", serviceSid);
             request.AddUrlSegment("ChannelSid", channelSid);
 
             return Execute<Channel>(request);
@@ -34,14 +45,19 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Creates a Channel.
         /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
         /// <param name="type">Channel type</param>
         /// <param name="friendlyName">Friendly Name for the Channel</param>
         /// <param name="attributes">Developer specific values to be stored as is</param>
-        public virtual Channel CreateChannel(string type, string friendlyName,
+        public virtual Channel CreateChannel(string serviceSid, string type, string friendlyName,
           string attributes)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            
             var request = new RestRequest(Method.POST);
             request.Resource = "/Services/{ServiceSid}/Channels";
+
+            request.AddUrlSegment("ServiceSid", serviceSid);
 
             request.AddParameter("Type", type);
             request.AddParameter("FriendlyName", friendlyName);
@@ -53,16 +69,21 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Updates a Channel.
         /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
         /// <param name="channelSid">Channel Sid</param>
         /// <param name="type">Channel type</param>
         /// <param name="friendlyName">Friendly Name for the Channel</param>
         /// <param name="attributes">Developer specific values to be stored as is</param>
-        public virtual Channel UpdateChannel(string channelSid, string type,
+        public virtual Channel UpdateChannel(string serviceSid, string channelSid, string type,
           string friendlyName, string attributes)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            Require.Argument("ChannelSid", channelSid);
+
             var request = new RestRequest(Method.POST);
             request.Resource = "/Services/{ServiceSid}/Channels/{ChannelSid}";
 
+            request.AddUrlSegment("ServiceSid", serviceSid);
             request.AddUrlSegment("ChannelSid", channelSid);
 
             request.AddParameter("Type", type);
@@ -75,11 +96,17 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Deletes a Channel identified by Channel Sid.
         /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
         /// <param name="channelSid">Channel Sid</param>
-        public virtual DeleteStatus DeleteChannel(string channelSid)
+        public virtual DeleteStatus DeleteChannel(string serviceSid, string channelSid)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            Require.Argument("ChannelSid", channelSid);
+
             var request = new RestRequest(Method.DELETE);
             request.Resource = "/Services/{ServiceSid}/Channels/{ChannelSid}";
+
+            request.AddUrlSegment("ServiceSid", serviceSid);
             request.AddUrlSegment("ChannelSid", channelSid);
 
             var response = Execute(request);

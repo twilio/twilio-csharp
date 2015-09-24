@@ -26,8 +26,11 @@ namespace Twilio.IpMessaging
         public virtual void GetCredential(string credentialSid,
           Action<Credential> callback)
         {
+            Require.Argument("CredentialSid", credentialSid);
+            
             var request = new RestRequest(Method.GET);
             request.Resource = "/Credentials/{CredentialSid}";
+
             request.AddUrlSegment("CredentialSid", credentialSid);
 
             ExecuteAsync<Credential>(request, (response) => callback(response));
@@ -42,9 +45,12 @@ namespace Twilio.IpMessaging
         /// <param name="privateKey">Private Key</param>
         /// <param name="sandbox">Flag denotes if it is Sandbox or not</param>
         /// <param name="apiKey">API Key</param>
-        public virtual void CreateCredential(string type, string friendlyName,
-          string attributes, Action<Credential> callback)
+        public virtual void CreateCredential(string type,
+          string friendlyName, string certificate, string privateKey,
+          string sandbox, string apiKey, Action<Credential> callback)
         {
+            Require.Argument("Type", type);
+
             var request = new RestRequest(Method.POST);
             request.Resource = "/Credentials";
 
@@ -67,9 +73,13 @@ namespace Twilio.IpMessaging
         /// <param name="privateKey">Private Key</param>
         /// <param name="sandbox">Flag denotes if it is Sandbox or not</param>
         /// <param name="apiKey">API Key</param>
-        public virtual void UpdateCredential(string credentialSid, string type,
-          string friendlyName, string attributes, Action<Credential> callback)
+        public virtual void UpdateCredential(string credentialSid,
+          string type, string friendlyName, string certificate,
+          string privateKey, string sandbox, string apiKey, Action<Credential> callback)
         {
+            Require.Argument("CredentialSid", credentialSid);
+            Require.Argument("Type", type);
+
             var request = new RestRequest(Method.POST);
             request.Resource = "/Credentials/{CredentialSid}";
 
@@ -92,11 +102,13 @@ namespace Twilio.IpMessaging
         public virtual void DeleteCredential(string credentialSid,
           Action<DeleteStatus> callback)
         {
+            Require.Argument("CredentialSid", credentialSid);
+
             var request = new RestRequest(Method.DELETE);
             request.Resource = "/Credentials/{CredentialSid}";
+
             request.AddUrlSegment("CredentialSid", credentialSid);
 
-            var response = Execute(request);
             ExecuteAsync(request, (response) => { callback(
               response.StatusCode == System.Net.HttpStatusCode.NoContent ?
                 DeleteStatus.Success :

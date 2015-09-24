@@ -24,8 +24,11 @@ namespace Twilio.IpMessaging
         /// <param name="credentialSid">Credential Sid</param>
         public virtual Credential GetCredential(string credentialSid)
         {
+            Require.Argument("CredentialSid", credentialSid);
+
             var request = new RestRequest(Method.GET);
             request.Resource = "/Credentials/{CredentialSid}";
+
             request.AddUrlSegment("CredentialSid", credentialSid);
 
             return Execute<Credential>(request);
@@ -44,6 +47,8 @@ namespace Twilio.IpMessaging
           string friendlyName, string certificate, string privateKey,
           string sandbox, string apiKey)
         {
+            Require.Argument("Type", type);
+
             var request = new RestRequest(Method.POST);
             request.Resource = "/Credentials";
 
@@ -70,6 +75,9 @@ namespace Twilio.IpMessaging
           string type, string friendlyName, string certificate,
           string privateKey, string sandbox, string apiKey)
         {
+            Require.Argument("CredentialSid", credentialSid);
+            Require.Argument("Type", type);
+
             var request = new RestRequest(Method.POST);
             request.Resource = "/Credentials/{CredentialSid}";
 
@@ -91,8 +99,11 @@ namespace Twilio.IpMessaging
         /// <param name="credentialSid">Credential Sid</param>
         public virtual DeleteStatus DeleteCredential(string credentialSid)
         {
+            Require.Argument("CredentialSid", credentialSid);
+
             var request = new RestRequest(Method.DELETE);
             request.Resource = "/Credentials/{CredentialSid}";
+
             request.AddUrlSegment("CredentialSid", credentialSid);
 
             var response = Execute(request);

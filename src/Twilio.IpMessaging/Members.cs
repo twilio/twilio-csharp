@@ -10,10 +10,18 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Retrieves all the Members belonging to a Channel.
         /// </summary>
-        public virtual MemberResult ListMembers()
+        /// <param name="serviceSid">Service Sid</param>
+        /// <param name="channelSid">Channel Sid</param>
+        public virtual MemberResult ListMembers(string serviceSid, string channelSid)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            Require.Argument("ChannelSid", channelSid);
+            
             var request = new RestRequest(Method.GET);
             request.Resource = "/Services/{ServiceSid}/Channels/{ChannelSid}/Members";
+
+            request.AddUrlSegment("ServiceSid", serviceSid);
+            request.AddUrlSegment("ChannelSid", channelSid);
 
             return Execute<MemberResult>(request);
         }
@@ -21,11 +29,20 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Retrieves a Member by Member Sid.
         /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
+        /// <param name="channelSid">Channel Sid</param>
         /// <param name="memberSid">Member Sid</param>
-        public virtual Member GetMember(string memberSid)
+        public virtual Member GetMember(string serviceSid, string channelSid, string memberSid)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            Require.Argument("ChannelSid", channelSid);
+            Require.Argument("MemberSid", memberSid);
+
             var request = new RestRequest(Method.GET);
             request.Resource = "/Services/{ServiceSid}/Channels/{ChannelSid}/Members/{MemberSid}";
+
+            request.AddUrlSegment("ServiceSid", serviceSid);
+            request.AddUrlSegment("ChannelSid", channelSid);
             request.AddUrlSegment("MemberSid", memberSid);
 
             return Execute<Member>(request);
@@ -34,12 +51,21 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Creates a Member.
         /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
+        /// <param name="channelSid">Channel Sid</param>
         /// <param name="identity">Identity of the Member</param>
         /// <param name="roleSid">Role sid of member</param>
-        public virtual Member CreateMember(string identity, string roleSid)
+        public virtual Member CreateMember(string serviceSid, string channelSid, string identity, string roleSid)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            Require.Argument("ChannelSid", channelSid);
+            Require.Argument("Identity", identity);
+            
             var request = new RestRequest(Method.POST);
             request.Resource = "/Services/{ServiceSid}/Channels/{ChannelSid}/Members";
+
+            request.AddUrlSegment("ServiceSid", serviceSid);
+            request.AddUrlSegment("ChannelSid", channelSid);
 
             request.AddParameter("Identity", identity);
             request.AddParameter("RoleSid", roleSid);
@@ -50,14 +76,24 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Updates Member properties in a channel.
         /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
+        /// <param name="channelSid">Channel Sid</param>
+        /// <param name="memberSid">Member Sid</param>
         /// <param name="identity">Identity of the Member</param>
         /// <param name="roleSid">Role sid of member</param>
-        public virtual Member UpdateMember(string identity,
-          string roleSid)
+        public virtual Member UpdateMember(string serviceSid, string channelSid, string memberSid,
+            string identity, string roleSid)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            Require.Argument("ChannelSid", channelSid);
+            Require.Argument("MemberSid", memberSid);
+            Require.Argument("Identity", identity);
+
             var request = new RestRequest(Method.POST);
             request.Resource = "/Services/{ServiceSid}/Channels/{ChannelSid}/Members/{MemberSid}";
 
+            request.AddUrlSegment("ServiceSid", serviceSid);
+            request.AddUrlSegment("ChannelSid", channelSid);
             request.AddUrlSegment("MemberSid", memberSid);
 
             request.AddParameter("Identity", identity);
@@ -69,11 +105,20 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Deletes a Member identified by Member Sid.
         /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
+        /// <param name="channelSid">Channel Sid</param>
         /// <param name="memberSid">Member Sid</param>
-        public virtual DeleteStatus DeleteMember(string memberSid)
+        public virtual DeleteStatus DeleteMember(string serviceSid, string channelSid, string memberSid)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            Require.Argument("ChannelSid", channelSid);
+            Require.Argument("MemberSid", memberSid);
+
             var request = new RestRequest(Method.DELETE);
             request.Resource = "/Services/{ServiceSid}/Channels/{ChannelSid}/Members/{MemberSid}";
+
+            request.AddUrlSegment("ServiceSid", serviceSid);
+            request.AddUrlSegment("ChannelSid", channelSid);
             request.AddUrlSegment("MemberSid", memberSid);
 
             var response = Execute(request);

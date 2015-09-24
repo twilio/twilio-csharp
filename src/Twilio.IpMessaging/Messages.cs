@@ -10,11 +10,19 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Retrieves all the Messages belonging to a Channel.
         /// </summary>
-        public virtual MessageResult ListMessages()
+        /// <param name="serviceSid">Service Sid</param>
+        /// <param name="channelSid">Channel Sid</param>
+        public virtual MessageResult ListMessages(string serviceSid, string channelSid)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            Require.Argument("ChannelSid", channelSid);
+            
             var request = new RestRequest(Method.GET);
             request.Resource =
               "/Services/{ServiceSid}/Channels/{ChannelSid}/Messages";
+
+            request.AddUrlSegment("ServiceSid", serviceSid);
+            request.AddUrlSegment("ChannelSid", channelSid);
 
             return Execute<MessageResult>(request);
         }
@@ -22,12 +30,21 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Retrieves Message by Message Sid.
         /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
+        /// <param name="channelSid">Channel Sid</param>
         /// <param name="messageSid">Message Sid</param>
-        public virtual Message GetMessage(string messageSid)
+        public virtual Message GetMessage(string serviceSid, string channelSid, string messageSid)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            Require.Argument("ChannelSid", channelSid);
+            Require.Argument("MessageSid", messageSid);
+
             var request = new RestRequest(Method.GET);
             request.Resource =
               "/Services/{ServiceSid}/Channels/{ChannelSid}/Messages/{MessageSid}";
+
+            request.AddUrlSegment("ServiceSid", serviceSid);
+            request.AddUrlSegment("ChannelSid", channelSid);
             request.AddUrlSegment("MessageSid", messageSid);
 
             return Execute<Message>(request);
@@ -36,13 +53,23 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Creates a Message.
         /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
+        /// <param name="channelSid">Channel Sid</param>
         /// <param name="from">Identity of the message author</param>
         /// <param name="body">Message body</param>
-        public virtual Message CreateMessage(string from, string body)
+        public virtual Message CreateMessage(string serviceSid, string channelSid, 
+            string from, string body)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            Require.Argument("ChannelSid", channelSid);
+            Require.Argument("Body", body);
+            
             var request = new RestRequest(Method.POST);
             request.Resource =
               "/Services/{ServiceSid}/Channels/{ChannelSid}/Messages";
+
+            request.AddUrlSegment("ServiceSid", serviceSid);
+            request.AddUrlSegment("ChannelSid", channelSid);
 
             request.AddParameter("From", from);
             request.AddParameter("Body", body);
@@ -53,14 +80,24 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Updates a message.
         /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
+        /// <param name="channelSid">Channel Sid</param>
+        /// <param name="messageSid">Message Sid</param>
         /// <param name="body">Message body</param>
-        public virtual Message UpdateMessage(string messageSid,
-          string from)
+        public virtual Message UpdateMessage(string serviceSid, string channelSid, 
+            string messageSid, string body)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            Require.Argument("ChannelSid", channelSid);
+            Require.Argument("MessageSid", messageSid);
+            Require.Argument("Body", body);
+
             var request = new RestRequest(Method.POST);
             request.Resource =
               "/Services/{ServiceSid}/Channels/{ChannelSid}/Messages/{MessageSid}";
 
+            request.AddUrlSegment("ServiceSid", serviceSid);
+            request.AddUrlSegment("ChannelSid", channelSid);
             request.AddUrlSegment("MessageSid", messageSid);
 
             request.AddParameter("Body", body);

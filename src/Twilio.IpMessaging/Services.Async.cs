@@ -26,8 +26,11 @@ namespace Twilio.IpMessaging
         public virtual void GetService(string serviceSid,
           Action<Service> callback)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            
             var request = new RestRequest(Method.GET);
             request.Resource = "/Services/{ServiceSid}";
+
             request.AddUrlSegment("ServiceSid", serviceSid);
 
             ExecuteAsync<Service>(request, (response) => callback(response));
@@ -37,39 +40,42 @@ namespace Twilio.IpMessaging
         /// Creates a Service.
         /// </summary>
         /// <param name="friendlyName">Friendly Name for the Service</param>
-        public virtual void CreateService(string type, string friendlyName,
-          Action<Service> callback)
+        public virtual void CreateService(string friendlyName, 
+            Action<Service> callback)
         {
+            Require.Argument("FriendlyName", friendlyName);
+
             var request = new RestRequest(Method.POST);
             request.Resource = "/Services";
 
-            request.AddParameter("Type", type);
             request.AddParameter("FriendlyName", friendlyName);
-            request.AddParameter("Attributes", attributes);
 
             ExecuteAsync<Service>(request, (response) => callback(response));
         }
 
         /// <summary>
         /// Updates a Service.
-        /// TODO - Figureout how to pass the webhoooks (Dictionary?)
         /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
         /// <param name="friendlyName">Friendly Name</param>
         /// <param name="defaultServiceRoleSid">Default Service Role Sid</param>
         /// <param name="defaultChannelRoleSid">Default channel Role Sid</param>
         /// <param name="typingIndicatorTimeout">Typing indicator timeout</param>
-        public virtual void UpdateService(string friendlyName,
-          string defaultServiceRoleSid, string defaultChannelRoleSid,
-          int typingIndicatorTimeout, Action<Service> callback)
+        public virtual void UpdateService(string serviceSid, string friendlyName,
+            string defaultServiceRoleSid, string defaultChannelRoleSid,
+            int typingIndicatorTimeout, Action<Service> callback)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            
             var request = new RestRequest(Method.POST);
             request.Resource = "/Services/{ServiceSid}";
 
-            request.AddUrlSegment("ChannelSid", channelSid);
+            request.AddUrlSegment("ServiceSid", serviceSid);
 
-            request.AddParameter("Type", type);
             request.AddParameter("FriendlyName", friendlyName);
-            request.AddParameter("Attributes", attributes);
+            request.AddParameter("DefaultServiceRoleSid", defaultServiceRoleSid);
+            request.AddParameter("DefaultChannelRoleSid", defaultChannelRoleSid);
+            request.AddParameter("TypingIndicatorTimeout", typingIndicatorTimeout);
 
             ExecuteAsync<Service>(request, (response) => callback(response));
         }
@@ -79,15 +85,17 @@ namespace Twilio.IpMessaging
         /// </summary>
         /// <param name="serviceSid">Service Sid</param>
         public virtual void DeleteService(string serviceSid,
-          Action<DeleteStatus> callback)
+            Action<DeleteStatus> callback)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            
             var request = new RestRequest(Method.DELETE);
             request.Resource = "/Services/{ServiceSid}";
+
             request.AddUrlSegment("ServiceSid", serviceSid);
 
-            var response = Execute(request);
             ExecuteAsync(request, (response) => { callback(
-              response.StatusCode == System.Net.HttpStatusCode.NoContent ?
+                response.StatusCode == System.Net.HttpStatusCode.NoContent ? 
                 DeleteStatus.Success :
                 DeleteStatus.Failed); });
         }

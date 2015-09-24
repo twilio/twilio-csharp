@@ -10,10 +10,15 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Retrieves all the Users belonging to a Service.
         /// </summary>
-        public virtual void ListUsers(Action<UserResult> callback)
+        /// <param name="serviceSid">Service Sid</param>
+        public virtual void ListUsers(string serviceSid, Action<UserResult> callback)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            
             var request = new RestRequest(Method.GET);
-            request.Resource = "/Services/{ServcieSid}/Users";
+            request.Resource = "/Services/{ServiceSid}/Users";
+
+            request.AddUrlSegment("ServiceSid", serviceSid);
 
             ExecuteAsync<UserResult>(request, (response) =>
               callback(response));
@@ -22,11 +27,18 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Retrieves User by User Sid.
         /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
         /// <param name="userSid">User Sid</param>
-        public virtual void GetUser(string userSid, Action<User> callback)
+        public virtual void GetUser(string serviceSid, string userSid, 
+            Action<User> callback)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            Require.Argument("UserSid", userSid);
+
             var request = new RestRequest(Method.GET);
-            request.Resource = "/Services/{ServcieSid}/Users/{UserSid}";
+            request.Resource = "/Services/{ServiceSid}/Users/{UserSid}";
+
+            request.AddUrlSegment("ServiceSid", serviceSid);
             request.AddUrlSegment("UserSid", userSid);
 
             ExecuteAsync<User>(request, (response) => callback(response));
@@ -35,15 +47,19 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Creates a User.
         /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
         /// <param name="identity">Identity</param>
         /// <param name="roleSid">Role Sid</param>
-        public virtual void CreateUser(string identity, string roleSid,
-          Action<User> callback)
+        public virtual void CreateUser(string serviceSid, string identity, 
+            string roleSid, Action<User> callback)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            Require.Argument("Identity", identity);
+            
             var request = new RestRequest(Method.POST);
-            request.Resource = "/Services/{ServcieSid}/Users";
+            request.Resource = "/Services/{ServiceSid}/Users";
 
-            request.AddUrlSegment("ServcieSid", serviceSid);
+            request.AddUrlSegment("ServiceSid", serviceSid);
 
             request.AddParameter("Identity", identity);
             request.AddParameter("RoleSid", roleSid);
@@ -54,13 +70,19 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Updates a User.
         /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
+        /// <param name="userSid">User Sid</param>
         /// <param name="roleSid">Role Sid</param>
-        public virtual void UpdateUser(string roleSid, Action<User> callback)
+        public virtual void UpdateUser(string serviceSid, string userSid, 
+            string roleSid, Action<User> callback)
         {
-            var request = new RestRequest(Method.POST);
-            request.Resource = "/Services/{ServcieSid}/Users/{UserSid}";
+            Require.Argument("ServiceSid", serviceSid);
+            Require.Argument("UserSid", userSid);
 
-            request.AddUrlSegment("ServcieSid", serviceSid);
+            var request = new RestRequest(Method.POST);
+            request.Resource = "/Services/{ServiceSid}/Users/{UserSid}";
+
+            request.AddUrlSegment("ServiceSid", serviceSid);
             request.AddUrlSegment("UserSid", userSid);
 
             request.AddParameter("RoleSid", roleSid);
@@ -71,15 +93,20 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Deletes a User identified by User Sid.
         /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
         /// <param name="userSid">User Sid</param>
-        public virtual void DeleteUser(string credentialSid,
-          Action<DeleteStatus> callback)
+        public virtual void DeleteUser(string serviceSid, string userSid, 
+            Action<DeleteStatus> callback)
         {
+            Require.Argument("ServiceSid", serviceSid);
+            Require.Argument("UserSid", userSid);
+
             var request = new RestRequest(Method.DELETE);
-            request.Resource = "/Services/{ServcieSid}/Users/{UserSid}";
+            request.Resource = "/Services/{ServiceSid}/Users/{UserSid}";
+
+            request.AddUrlSegment("ServiceSid", serviceSid);
             request.AddUrlSegment("UserSid", userSid);
 
-            var response = Execute(request);
             ExecuteAsync(request, (response) => { callback(
               response.StatusCode == System.Net.HttpStatusCode.NoContent ?
                 DeleteStatus.Success :
