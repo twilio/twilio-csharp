@@ -85,8 +85,9 @@ namespace Twilio.IpMessaging
         /// <param name="memberSid">Member Sid</param>
         /// <param name="identity">Identity of the Member</param>
         /// <param name="roleSid">Role sid of member</param>
-        public virtual void UpdateMember(string serviceSid, string channelSid, string memberSid, 
-            string identity, string roleSid, Action<Member> callback)
+        public virtual void UpdateMember(string serviceSid, string channelSid, 
+            string memberSid, string identity, string roleSid, 
+            Action<Member> callback)
         {
             Require.Argument("ServiceSid", serviceSid);
             Require.Argument("ChannelSid", channelSid);
@@ -112,8 +113,8 @@ namespace Twilio.IpMessaging
         /// <param name="serviceSid">Service Sid</param>
         /// <param name="channelSid">Channel Sid</param>
         /// <param name="memberSid">Member Sid</param>
-        public virtual void DeleteMember(string serviceSid, string channelSid, string memberSid, 
-            Action<DeleteStatus> callback)
+        public virtual void DeleteMember(string serviceSid, string channelSid, 
+            string memberSid, Action<DeleteStatus> callback)
         {
             Require.Argument("ServiceSid", serviceSid);
             Require.Argument("ChannelSid", channelSid);
@@ -127,7 +128,7 @@ namespace Twilio.IpMessaging
             request.AddUrlSegment("MemberSid", memberSid);
 
             ExecuteAsync(request, (response) => { callback(
-              response.StatusCode == System.Net.HttpStatusCode.NoContent ?
+                response.StatusCode == System.Net.HttpStatusCode.NoContent ?
                 DeleteStatus.Success :
                 DeleteStatus.Failed); });
         }

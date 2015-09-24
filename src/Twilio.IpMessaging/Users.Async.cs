@@ -11,7 +11,8 @@ namespace Twilio.IpMessaging
         /// Retrieves all the Users belonging to a Service.
         /// </summary>
         /// <param name="serviceSid">Service Sid</param>
-        public virtual void ListUsers(string serviceSid, Action<UserResult> callback)
+        public virtual void ListUsers(string serviceSid, 
+            Action<UserResult> callback)
         {
             Require.Argument("ServiceSid", serviceSid);
             
@@ -108,7 +109,7 @@ namespace Twilio.IpMessaging
             request.AddUrlSegment("UserSid", userSid);
 
             ExecuteAsync(request, (response) => { callback(
-              response.StatusCode == System.Net.HttpStatusCode.NoContent ?
+                response.StatusCode == System.Net.HttpStatusCode.NoContent ?
                 DeleteStatus.Success :
                 DeleteStatus.Failed); });
         }

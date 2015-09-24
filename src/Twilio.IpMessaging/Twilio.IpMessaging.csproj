@@ -50,10 +50,13 @@
     <Compile Include="Model\UserResult.cs" />
     <Compile Include="Channels.cs" />
     <Compile Include="Channels.Async.cs" />
+    <Compile Include="Core.cs" />
     <Compile Include="Credentials.cs" />
     <Compile Include="Credentials.Async.cs" />
     <Compile Include="Members.cs" />
     <Compile Include="Members.Async.cs" />
+    <Compile Include="Messages.cs" />
+    <Compile Include="Messages.Async.cs" />
     <Compile Include="Roles.cs" />
     <Compile Include="Roles.Async.cs" />
     <Compile Include="Services.cs" />

@@ -10,6 +10,7 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Retrieves all the Services.
         /// </summary>
+        /// <returns>List of Services</returns>
         public virtual ServiceResult ListServices()
         {
             var request = new RestRequest(Method.GET);
@@ -22,6 +23,7 @@ namespace Twilio.IpMessaging
         /// Retrieves a Service by Sid.
         /// </summary>
         /// <param name="serviceSid">Service Sid</param>
+        /// <returns>Service</returns>
         public virtual Service GetService(string serviceSid)
         {
             Require.Argument("ServiceSid", serviceSid);
@@ -38,6 +40,7 @@ namespace Twilio.IpMessaging
         /// Creates a Service.
         /// </summary>
         /// <param name="friendlyName">Friendly Name for the Service</param>
+        /// <returns>A new Service</returns>
         public virtual Service CreateService(string friendlyName)
         {
             Require.Argument("FriendlyName", friendlyName);
@@ -58,9 +61,10 @@ namespace Twilio.IpMessaging
         /// <param name="defaultServiceRoleSid">Default Service Role Sid</param>
         /// <param name="defaultChannelRoleSid">Default channel Role Sid</param>
         /// <param name="typingIndicatorTimeout">Typing indicator timeout</param>
+        /// <returns>Updated Service</returns>
         public virtual Service UpdateService(string serviceSid, string friendlyName,
-          string defaultServiceRoleSid, string defaultChannelRoleSid,
-          int typingIndicatorTimeout)
+            string defaultServiceRoleSid, string defaultChannelRoleSid,
+            int typingIndicatorTimeout)
         {
             Require.Argument("ServiceSid", serviceSid);
             
@@ -81,6 +85,7 @@ namespace Twilio.IpMessaging
         /// Deletes a Service identified by Service Sid.
         /// </summary>
         /// <param name="serviceSid">Service Sid</param>
+        /// <returns>Service deletion status</returns>
         public virtual DeleteStatus DeleteService(string serviceSid)
         {
             Require.Argument("ServiceSid", serviceSid);
@@ -91,9 +96,9 @@ namespace Twilio.IpMessaging
             request.AddUrlSegment("ServiceSid", serviceSid);
 
             var response = Execute(request);
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent ?
-                                            DeleteStatus.Success :
-                                            DeleteStatus.Failed;
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent ? 
+                DeleteStatus.Success : 
+                DeleteStatus.Failed;
         }
     }
 }

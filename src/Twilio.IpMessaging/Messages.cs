@@ -12,7 +12,9 @@ namespace Twilio.IpMessaging
         /// </summary>
         /// <param name="serviceSid">Service Sid</param>
         /// <param name="channelSid">Channel Sid</param>
-        public virtual MessageResult ListMessages(string serviceSid, string channelSid)
+        /// <returns>List of Messages</returns>
+        public virtual MessageResult ListMessages(string serviceSid, 
+            string channelSid)
         {
             Require.Argument("ServiceSid", serviceSid);
             Require.Argument("ChannelSid", channelSid);
@@ -33,7 +35,9 @@ namespace Twilio.IpMessaging
         /// <param name="serviceSid">Service Sid</param>
         /// <param name="channelSid">Channel Sid</param>
         /// <param name="messageSid">Message Sid</param>
-        public virtual Message GetMessage(string serviceSid, string channelSid, string messageSid)
+        /// <returns>Message</returns>
+        public virtual Message GetMessage(string serviceSid, string channelSid, 
+            string messageSid)
         {
             Require.Argument("ServiceSid", serviceSid);
             Require.Argument("ChannelSid", channelSid);
@@ -57,8 +61,9 @@ namespace Twilio.IpMessaging
         /// <param name="channelSid">Channel Sid</param>
         /// <param name="from">Identity of the message author</param>
         /// <param name="body">Message body</param>
-        public virtual Message CreateMessage(string serviceSid, string channelSid, 
-            string from, string body)
+        /// <returns>A new Message</returns>
+        public virtual Message CreateMessage(string serviceSid, 
+            string channelSid, string from, string body)
         {
             Require.Argument("ServiceSid", serviceSid);
             Require.Argument("ChannelSid", channelSid);
@@ -84,8 +89,9 @@ namespace Twilio.IpMessaging
         /// <param name="channelSid">Channel Sid</param>
         /// <param name="messageSid">Message Sid</param>
         /// <param name="body">Message body</param>
-        public virtual Message UpdateMessage(string serviceSid, string channelSid, 
-            string messageSid, string body)
+        /// <returns>Updated Message</returns>
+        public virtual Message UpdateMessage(string serviceSid, 
+            string channelSid, string messageSid, string body)
         {
             Require.Argument("ServiceSid", serviceSid);
             Require.Argument("ChannelSid", channelSid);

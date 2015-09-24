@@ -11,7 +11,8 @@ namespace Twilio.IpMessaging
         /// Retrieves all the Roles belonging to a Service.
         /// </summary>
         /// <param name="serviceSid">Service Sid</param>
-        public virtual void ListRoles(string serviceSid, Action<RoleResult> callback)
+        public virtual void ListRoles(string serviceSid, 
+            Action<RoleResult> callback)
         {
             Require.Argument("ServiceSid", serviceSid);
             

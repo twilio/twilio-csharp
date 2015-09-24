@@ -12,7 +12,9 @@ namespace Twilio.IpMessaging
         /// </summary>
         /// <param name="serviceSid">Service Sid</param>
         /// <param name="channelSid">Channel Sid</param>
-        public virtual MemberResult ListMembers(string serviceSid, string channelSid)
+        /// <returns>List of Members</returns>
+        public virtual MemberResult ListMembers(string serviceSid, 
+            string channelSid)
         {
             Require.Argument("ServiceSid", serviceSid);
             Require.Argument("ChannelSid", channelSid);
@@ -32,7 +34,9 @@ namespace Twilio.IpMessaging
         /// <param name="serviceSid">Service Sid</param>
         /// <param name="channelSid">Channel Sid</param>
         /// <param name="memberSid">Member Sid</param>
-        public virtual Member GetMember(string serviceSid, string channelSid, string memberSid)
+        /// <returns>Member</returns>
+        public virtual Member GetMember(string serviceSid, string channelSid, 
+            string memberSid)
         {
             Require.Argument("ServiceSid", serviceSid);
             Require.Argument("ChannelSid", channelSid);
@@ -55,7 +59,9 @@ namespace Twilio.IpMessaging
         /// <param name="channelSid">Channel Sid</param>
         /// <param name="identity">Identity of the Member</param>
         /// <param name="roleSid">Role sid of member</param>
-        public virtual Member CreateMember(string serviceSid, string channelSid, string identity, string roleSid)
+        /// <returns>A new Member</returns>
+        public virtual Member CreateMember(string serviceSid, string channelSid, 
+            string identity, string roleSid)
         {
             Require.Argument("ServiceSid", serviceSid);
             Require.Argument("ChannelSid", channelSid);
@@ -81,8 +87,9 @@ namespace Twilio.IpMessaging
         /// <param name="memberSid">Member Sid</param>
         /// <param name="identity">Identity of the Member</param>
         /// <param name="roleSid">Role sid of member</param>
-        public virtual Member UpdateMember(string serviceSid, string channelSid, string memberSid,
-            string identity, string roleSid)
+        /// <returns>Updated Member</returns>
+        public virtual Member UpdateMember(string serviceSid, string channelSid, 
+            string memberSid, string identity, string roleSid)
         {
             Require.Argument("ServiceSid", serviceSid);
             Require.Argument("ChannelSid", channelSid);
@@ -108,7 +115,9 @@ namespace Twilio.IpMessaging
         /// <param name="serviceSid">Service Sid</param>
         /// <param name="channelSid">Channel Sid</param>
         /// <param name="memberSid">Member Sid</param>
-        public virtual DeleteStatus DeleteMember(string serviceSid, string channelSid, string memberSid)
+        /// <returns>Member deletion status</returns>
+        public virtual DeleteStatus DeleteMember(string serviceSid, 
+            string channelSid, string memberSid)
         {
             Require.Argument("ServiceSid", serviceSid);
             Require.Argument("ChannelSid", channelSid);
@@ -122,9 +131,9 @@ namespace Twilio.IpMessaging
             request.AddUrlSegment("MemberSid", memberSid);
 
             var response = Execute(request);
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent ?
-                                            DeleteStatus.Success :
-                                            DeleteStatus.Failed;
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent ? 
+                DeleteStatus.Success : 
+                DeleteStatus.Failed;
         }
     }
 }

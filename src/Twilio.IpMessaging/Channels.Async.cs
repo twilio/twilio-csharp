@@ -11,7 +11,8 @@ namespace Twilio.IpMessaging
         /// Retrieves all the Channels belonging to a Service Sid.
         /// </summary>
         /// <param name="serviceSid">Service Sid</param>
-        public virtual void ListChannels(string serviceSid, Action<ChannelResult> callback)
+        public virtual void ListChannels(string serviceSid, 
+            Action<ChannelResult> callback)
         {
             Require.Argument("ServiceSid", serviceSid);
 
@@ -20,8 +21,8 @@ namespace Twilio.IpMessaging
 
             request.AddUrlSegment("ServiceSid", serviceSid);
 
-            ExecuteAsync<ChannelResult>(request, (response) =>
-              callback(response));
+            ExecuteAsync<ChannelResult>(request, (response) => 
+                callback(response));
         }
 
         /// <summary>
@@ -29,8 +30,8 @@ namespace Twilio.IpMessaging
         /// </summary>
         /// <param name="serviceSid">Service Sid</param>
         /// <param name="channelSid">The Channel Sid</param>
-        public virtual void GetChannel(string serviceSid, string channelSid,
-          Action<Channel> callback)
+        public virtual void GetChannel(string serviceSid, string channelSid, 
+            Action<Channel> callback)
         {
             Require.Argument("ServiceSid", serviceSid);
             Require.Argument("ChannelSid", channelSid);
@@ -51,8 +52,8 @@ namespace Twilio.IpMessaging
         /// <param name="type">Channel type</param>
         /// <param name="friendlyName">Friendly Name for the Channel</param>
         /// <param name="attributes">Developer specific values to be stored as is</param>
-        public virtual void CreateChannel(string serviceSid, string type, string friendlyName,
-          string attributes, Action<Channel> callback)
+        public virtual void CreateChannel(string serviceSid, string type, 
+            string friendlyName, string attributes, Action<Channel> callback)
         {
             Require.Argument("ServiceSid", serviceSid);
 
@@ -76,8 +77,9 @@ namespace Twilio.IpMessaging
         /// <param name="type">Channel type</param>
         /// <param name="friendlyName">Friendly Name for the Channel</param>
         /// <param name="attributes">Developer specific values to be stored as is</param>
-        public virtual void UpdateChannel(string serviceSid, string channelSid, string type,
-          string friendlyName, string attributes, Action<Channel> callback)
+        public virtual void UpdateChannel(string serviceSid, string channelSid, 
+            string type, string friendlyName, string attributes, 
+            Action<Channel> callback)
         {
             Require.Argument("ServiceSid", serviceSid);
             Require.Argument("ChannelSid", channelSid);
@@ -100,8 +102,8 @@ namespace Twilio.IpMessaging
         /// </summary>
         /// <param name="serviceSid">Service Sid</param>
         /// <param name="channelSid">Channel Sid</param>
-        public virtual void DeleteChannel(string serviceSid, string channelSid,
-          Action<DeleteStatus> callback)
+        public virtual void DeleteChannel(string serviceSid, string channelSid, 
+            Action<DeleteStatus> callback)
         {
             Require.Argument("ServiceSid", serviceSid);
             Require.Argument("ChannelSid", channelSid);

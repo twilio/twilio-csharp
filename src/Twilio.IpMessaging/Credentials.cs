@@ -10,6 +10,7 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Retrieves all the Credentials belonging to a Service Sid.
         /// </summary>
+        /// <returns>List of Credentials</returns>
         public virtual CredentialResult ListCredentials()
         {
             var request = new RestRequest(Method.GET);
@@ -22,6 +23,7 @@ namespace Twilio.IpMessaging
         /// Retrieves the Credential by Credential Sid.
         /// </summary>
         /// <param name="credentialSid">Credential Sid</param>
+        /// <returns>Credential</returns>
         public virtual Credential GetCredential(string credentialSid)
         {
             Require.Argument("CredentialSid", credentialSid);
@@ -43,9 +45,10 @@ namespace Twilio.IpMessaging
         /// <param name="privateKey">Private Key</param>
         /// <param name="sandbox">Flag denotes if it is Sandbox or not</param>
         /// <param name="apiKey">API Key</param>
+        /// <returns>A new Credential</returns>
         public virtual Credential CreateCredential(string type,
-          string friendlyName, string certificate, string privateKey,
-          string sandbox, string apiKey)
+            string friendlyName, string certificate, string privateKey,
+            string sandbox, string apiKey)
         {
             Require.Argument("Type", type);
 
@@ -71,9 +74,10 @@ namespace Twilio.IpMessaging
         /// <param name="privateKey">Private Key</param>
         /// <param name="sandbox">Flag denotes if it is Sandbox or not</param>
         /// <param name="apiKey">API Key</param>
+        /// <returns>Updated Credential</returns>
         public virtual Credential UpdateCredential(string credentialSid,
-          string type, string friendlyName, string certificate,
-          string privateKey, string sandbox, string apiKey)
+            string type, string friendlyName, string certificate,
+            string privateKey, string sandbox, string apiKey)
         {
             Require.Argument("CredentialSid", credentialSid);
             Require.Argument("Type", type);
@@ -97,6 +101,7 @@ namespace Twilio.IpMessaging
         /// Deletes a Credential identified by Credential Sid.
         /// </summary>
         /// <param name="credentialSid">Credential Sid</param>
+        /// <returns>Credential deletion status</returns>
         public virtual DeleteStatus DeleteCredential(string credentialSid)
         {
             Require.Argument("CredentialSid", credentialSid);
@@ -108,8 +113,8 @@ namespace Twilio.IpMessaging
 
             var response = Execute(request);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent ?
-                                            DeleteStatus.Success :
-                                            DeleteStatus.Failed;
+                DeleteStatus.Success :
+                DeleteStatus.Failed;
         }
     }
 }

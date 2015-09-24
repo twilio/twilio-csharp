@@ -16,15 +16,15 @@ namespace Twilio.IpMessaging
             request.Resource = "/Services";
 
             ExecuteAsync<ServiceResult>(request, (response) =>
-              callback(response));
+                callback(response));
         }
 
         /// <summary>
         /// Retrieves a Service by Sid.
         /// </summary>
         /// <param name="serviceSid">Service Sid</param>
-        public virtual void GetService(string serviceSid,
-          Action<Service> callback)
+        public virtual void GetService(string serviceSid, 
+            Action<Service> callback)
         {
             Require.Argument("ServiceSid", serviceSid);
             
