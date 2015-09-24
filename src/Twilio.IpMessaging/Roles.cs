@@ -2,6 +2,7 @@ using System;
 using RestSharp;
 using RestSharp.Extensions;
 using RestSharp.Validation;
+using Twilio.IpMessaging.Model;
 
 namespace Twilio.IpMessaging
 {

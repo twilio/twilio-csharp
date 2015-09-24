@@ -1,6 +1,6 @@
 using System;
 
-namespace Twilio.IpMessaging
+namespace Twilio.IpMessaging.Model
 {
     /// <summary>
     /// Represents a Ip Messaging Credential.

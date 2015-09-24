@@ -16,7 +16,7 @@ namespace Twilio.IpMessaging.Tests.Model
         {
             var doc = File.ReadAllText(Path.Combine("Resources", "message.json"));
             var json = new JsonDeserializer();
-            var output = json.Deserialize<Message>(new RestResponse { Content = doc });
+            var output = json.Deserialize<Twilio.IpMessaging.Model.Message>(new RestResponse { Content = doc });
 
             Assert.NotNull(output);
             Assert.AreEqual("IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.Sid);
@@ -35,7 +35,7 @@ namespace Twilio.IpMessaging.Tests.Model
         {
             var doc = File.ReadAllText(Path.Combine("Resources", "messages.json"));
             var json = new JsonDeserializer();
-            var output = json.Deserialize<MessageResult>(new RestResponse { Content = doc });
+            var output = json.Deserialize<Twilio.IpMessaging.Model.MessageResult>(new RestResponse { Content = doc });
 
             Assert.NotNull(output);
             Assert.NotNull(output.Messages);

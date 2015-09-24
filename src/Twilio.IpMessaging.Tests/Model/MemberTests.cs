@@ -5,6 +5,7 @@ using NUnit.Framework;
 using RestSharp;
 using RestSharp.Deserializers;
 using Twilio.IpMessaging;
+using Twilio.IpMessaging.Model;
 
 namespace Twilio.IpMessaging.Tests.Model
 {

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Twilio.IpMessaging
+namespace Twilio.IpMessaging.Model
 {
     /// <summary>
     /// Represents a Role.

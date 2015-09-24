@@ -16,7 +16,7 @@ namespace Twilio.IpMessaging.Tests.Model
         {
             var doc = File.ReadAllText(Path.Combine("Resources", "credential.json"));
             var json = new JsonDeserializer();
-            var output = json.Deserialize<Credential>(new RestResponse { Content = doc });
+            var output = json.Deserialize<Twilio.IpMessaging.Model.Credential>(new RestResponse { Content = doc });
 
             Assert.NotNull(output);
             Assert.AreEqual("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.Sid);
@@ -32,7 +32,7 @@ namespace Twilio.IpMessaging.Tests.Model
         {
             var doc = File.ReadAllText(Path.Combine("Resources", "credentials.json"));
             var json = new JsonDeserializer();
-            var output = json.Deserialize<CredentialResult>(new RestResponse { Content = doc });
+            var output = json.Deserialize<Twilio.IpMessaging.Model.CredentialResult>(new RestResponse { Content = doc });
 
             Assert.NotNull(output);
             Assert.NotNull(output.Credentials);
