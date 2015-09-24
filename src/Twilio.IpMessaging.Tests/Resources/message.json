@@ -4,7 +4,7 @@
     "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
     "date_created": "2015-01-02T11:23:45Z",
     "date_updated": "2015-01-02T11:23:45Z",
-    "was_edited": False,
+    "was_edited": "False",
     "from": "alice",
     "to": "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
     "body": "hi",

@@ -12,9 +12,9 @@ namespace Twilio.IpMessaging.Tests.Model
     public class IpMessagingRoleTests
     {
         [Test]
-        public void testDeserializeInstanceResponse()
+        public void RestDeserializeRole()
         {
-            var doc = File.ReadAllText(Path.Combine("../../Resources", "role.json"));
+            var doc = File.ReadAllText(Path.Combine("Resources", "role.json"));
             var json = new JsonDeserializer();
             var output = json.Deserialize<Role>(new RestResponse { Content = doc });
 
@@ -32,9 +32,9 @@ namespace Twilio.IpMessaging.Tests.Model
         }
 
         [Test]
-        public void testDeserializeListResponse()
+        public void TestDeserializeRoleResult()
         {
-            var doc = File.ReadAllText(Path.Combine("../../Resources", "roles.json"));
+            var doc = File.ReadAllText(Path.Combine("Resources", "roles.json"));
             var json = new JsonDeserializer();
             var output = json.Deserialize<RoleResult>(new RestResponse { Content = doc });
 

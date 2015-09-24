@@ -6,9 +6,9 @@
         "next_page_url": "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users?Page=1&PageSize=50",
         "previous_page_url": null,
         "url": "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users?Page=0?PageSize=50",
-        "key": "services"
+        "key": "users"
     },
-    "services": [
+    "users": [
         {
             "sid": "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -17,7 +17,7 @@
             "url": "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "date_created": "2015-01-02T11:23:45Z",
-            "date_updated": "2015-01-02T11:23:45Z",
+            "date_updated": "2015-01-02T11:23:45Z"
         }
     ]
 }

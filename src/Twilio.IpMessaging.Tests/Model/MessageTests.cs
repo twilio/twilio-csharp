@@ -12,9 +12,9 @@ namespace Twilio.IpMessaging.Tests.Model
     public class IpMessagingMessageTests
     {
         [Test]
-        public void testDeserializeInstanceResponse()
+        public void TestDeserializeMessage()
         {
-            var doc = File.ReadAllText(Path.Combine("../../Resources", "message.json"));
+            var doc = File.ReadAllText(Path.Combine("Resources", "message.json"));
             var json = new JsonDeserializer();
             var output = json.Deserialize<Message>(new RestResponse { Content = doc });
 
@@ -24,16 +24,16 @@ namespace Twilio.IpMessaging.Tests.Model
             Assert.AreEqual("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.ServiceSid);
             Assert.False(output.WasEdited);
             Assert.AreEqual("alice", output.From);
-            Assert.AreEqual("to", output.To);
+            Assert.AreEqual("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.To);
             Assert.AreEqual("hi", output.Body);
             Assert.AreEqual("http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
               output.Url);
         }
 
         [Test]
-        public void testDeserializeListResponse()
+        public void TestDeserializeMessageResult()
         {
-            var doc = File.ReadAllText(Path.Combine("../../Resources", "message.json"));
+            var doc = File.ReadAllText(Path.Combine("Resources", "messages.json"));
             var json = new JsonDeserializer();
             var output = json.Deserialize<MessageResult>(new RestResponse { Content = doc });
 
@@ -45,7 +45,7 @@ namespace Twilio.IpMessaging.Tests.Model
             Assert.AreEqual("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.Messages[0].ServiceSid);
             Assert.False(output.Messages[0].WasEdited);
             Assert.AreEqual("alice", output.Messages[0].From);
-            Assert.AreEqual("to", output.Messages[0].To);
+            Assert.AreEqual("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.Messages[0].To);
             Assert.AreEqual("hi", output.Messages[0].Body);
             Assert.AreEqual("http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
               output.Messages[0].Url);

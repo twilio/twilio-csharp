@@ -12,9 +12,9 @@ namespace Twilio.IpMessaging.Tests.Model
     public class IpMessagingServiceTests
     {
         [Test]
-        public void testDeserializeInstanceResponse()
+        public void TestDeserializeService()
         {
-            var doc = File.ReadAllText(Path.Combine("../../Resources", "service.json"));
+            var doc = File.ReadAllText(Path.Combine("Resources", "service.json"));
             var json = new JsonDeserializer();
             var output = json.Deserialize<Service>(new RestResponse { Content = doc });
 
@@ -30,7 +30,7 @@ namespace Twilio.IpMessaging.Tests.Model
             Dictionary<string, Dictionary<string, string>> webHooks = output.Webhooks;
             Assert.NotNull(webHooks);
             Assert.True(webHooks.ContainsKey("on_message_send"));
-            Dictionary<string, string> onMessageDictionary = dictionary["on_message_send"];
+            Dictionary<string, string> onMessageDictionary = webHooks["on_message_send"];
             Assert.NotNull(onMessageDictionary);
             Assert.True(onMessageDictionary.ContainsKey("url"));
             Assert.True(onMessageDictionary.ContainsKey("method"));
@@ -50,9 +50,9 @@ namespace Twilio.IpMessaging.Tests.Model
         }
 
         [Test]
-        public void testDeserializeListResponse()
+        public void TestDeserializeServiceResult()
         {
-            var doc = File.ReadAllText(Path.Combine("../../Resources", "services.json"));
+            var doc = File.ReadAllText(Path.Combine("Resources", "services.json"));
             var json = new JsonDeserializer();
             var output = json.Deserialize<ServiceResult>(new RestResponse { Content = doc });
 
@@ -70,7 +70,7 @@ namespace Twilio.IpMessaging.Tests.Model
             Dictionary<string, Dictionary<string, string>> webHooks = output.Services[0].Webhooks;
             Assert.NotNull(webHooks);
             Assert.True(webHooks.ContainsKey("on_message_send"));
-            Dictionary<string, string> onMessageDictionary = dictionary["on_message_send"];
+            Dictionary<string, string> onMessageDictionary = webHooks["on_message_send"];
             Assert.NotNull(onMessageDictionary);
             Assert.True(onMessageDictionary.ContainsKey("url"));
             Assert.True(onMessageDictionary.ContainsKey("method"));

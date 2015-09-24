@@ -12,9 +12,9 @@ namespace Twilio.IpMessaging.Tests.Model
     public class IpMessagingChannelTests
     {
         [Test]
-        public void testDeserializeInstanceResponse()
+        public void TestDeserializeChannel()
         {
-            var doc = File.ReadAllText(Path.Combine("../../Resources", "channel.json"));
+            var doc = File.ReadAllText(Path.Combine("Resources", "channel.json"));
             var json = new JsonDeserializer();
             var output = json.Deserialize<Channel>(new RestResponse { Content = doc });
 
@@ -36,9 +36,9 @@ namespace Twilio.IpMessaging.Tests.Model
         }
 
         [Test]
-        public void testDeserializeListResponse()
+        public void TestDeserializeChannelResult()
         {
-            var doc = File.ReadAllText(Path.Combine("../../Resources", "channels.json"));
+            var doc = File.ReadAllText(Path.Combine("Resources", "channels.json"));
             var json = new JsonDeserializer();
             var output = json.Deserialize<ChannelResult>(new RestResponse { Content = doc });
 

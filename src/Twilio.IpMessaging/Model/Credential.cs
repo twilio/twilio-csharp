@@ -32,7 +32,7 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Sandbox flag
         /// </summary>
-        public bool Sandbox { get; set; }
+        public string Sandbox { get; set; }
 
         /// <summary>
         /// The date that this Credential was created, given as GMT
