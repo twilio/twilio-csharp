@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
 	<metadata>
-		<id>Twilio.IpMessaging</id>
+		<id>Twilio.Conversations</id>
 		<version>1.0.0-edge</version>
 		<authors>Twilio</authors>
-		<description>Twilio Ip Messaging REST API helper library</description>
+		<description>Twilio Conversations REST API helper library</description>
 		<language>en-US</language>
 		<projectUrl>http://github.com/twilio/twilio-csharp</projectUrl>
 		<iconUrl>http://www.twilio.com/packages/company/img/logos_downloadable_round.png</iconUrl>

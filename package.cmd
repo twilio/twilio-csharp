@@ -49,6 +49,12 @@ if not exist download\package\twiliomonitor\lib\3.5 mkdir download\package\twili
 if not exist download\package\twiliotrunking\lib mkdir download\package\twiliotrunking\lib
 if not exist download\package\twiliotrunking\lib\3.5 mkdir download\package\twiliotrunking\lib\3.5
 
+if not exist download\package\twilioipmessaging\lib mkdir download\package\twilioipmessaging\lib
+if not exist download\package\twilioipmessaging\lib\3.5 mkdir download\package\twilioipmessaging\lib\3.5
+
+if not exist download\package\twilioconversations\lib mkdir download\package\twilioconversations\lib
+if not exist download\package\twilioconversations\lib\3.5 mkdir download\package\twilioconversations\lib\3.5
+
 REM tools\ilmerge.exe /lib:src\Twilio.Api\bin\Release /internalize /ndebug /v2 /out:download\Twilio.Api.dll Twilio.Api.dll RestSharp.dll
 REM tools\ilmerge.exe /lib:src\Twilio.Api.Silverlight\bin\Release /internalize /ndebug /targetplatform:v4,"C:\Program Files (x86)\Microsoft Silverlight\4.1.10111.0" /out:download\Twilio.Api.Silverlight.dll RestSharp.Silverlight.dll
 
@@ -79,6 +85,8 @@ copy src\Twilio.Lookups\bin\Release\Twilio.Lookups.* download\package\twiliolook
 copy src\Twilio.Pricing\bin\Release\Twilio.Pricing.* download\package\twiliopricing\lib\3.5\
 copy src\Twilio.Monitor\bin\Release\Twilio.Monitor.* download\package\twiliomonitor\lib\3.5\
 copy src\Twilio.Trunking\bin\Release\Twilio.Trunking.* download\package\twiliotrunking\lib\3.5\
+copy src\Twilio.IpMessaging\bin\Release\Twilio.IpMessaging.* download\package\twilioipmessaging\lib\3.5\
+copy src\Twilio.Conversations\bin\Release\Twilio.Conversations.* download\package\twilioconversations\lib\3.5\
 
 tools\nuget.exe pack Twilio.nuspec -BasePath download\package\twilio -o download
 tools\nuget.exe pack Twilio.Mvc.nuspec -BasePath download\package\twiliomvc -o download
@@ -90,3 +98,5 @@ tools\nuget.exe pack Twilio.Lookups.nuspec -BasePath download\package\twiliolook
 tools\nuget.exe pack Twilio.Pricing.nuspec -BasePath download\package\twiliopricing -o download
 tools\nuget.exe pack Twilio.Monitor.nuspec -BasePath download\package\twiliomonitor -o download
 tools\nuget.exe pack Twilio.Trunking.nuspec -BasePath download\package\twiliotrunking -o download
+tools\nuget.exe pack Twilio.IpMessaging.nuspec -BasePath download\package\twilioipmessaging -o download
+tools\nuget.exe pack Twilio.Conversations.nuspec -BasePath download\package\twilioconversations -o download
