@@ -1,0 +1,27 @@
+{
+    "meta": {
+        "page": 0,
+        "page_size": 50,
+        "first_page_url": "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles?Page=0&PageSize=50",
+        "next_page_url": "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles?Page=1&PageSize=50",
+        "previous_page_url": null,
+        "url": "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles?Page=0?PageSize=50",
+        "key": "roles"
+    },
+    "roles": [
+        {
+            "sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "friendly_name": "admin",
+            "type": "deployment",
+            "permissions": [
+                "createChannel",
+                "destroyChannel",
+            ],
+            "date_created": "2015-01-02T11:23:45Z",
+            "date_updated": "2015-01-02T11:23:45Z",
+            "url": "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+    ]
+}

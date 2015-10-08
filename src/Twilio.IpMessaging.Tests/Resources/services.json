@@ -1,0 +1,36 @@
+{
+    "meta": {
+        "page": 0,
+        "page_size": 50,
+        "first_page_url": "http://localhost/v1/Services?Page=0&PageSize=50",
+        "next_page_url": "http://localhost/v1/Services?Page=1&PageSize=50",
+        "previous_page_url": null,
+        "url": "http://localhost/v1/Services?Page=0?PageSize=50",
+        "key": "services"
+    },
+    "services": [
+        {
+            "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "friendly_name": "my instance",
+            "date_created": "2015-01-02T11:23:45Z",
+            "date_updated": "2015-01-02T11:23:45Z",
+            "default_service_role_sid": "default role",
+            "default_channel_role_sid": "default channel",
+            "typing_indicator_timeout": 5,
+            "webhooks": {
+                "on_message_send": {
+                    "url": "http://twilio.com/message-send",
+                    "method": "POST",
+                    "format": "XML",
+                },
+            },
+            "url": "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "links": {
+                "channels": "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
+                "roles": "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
+                "users": "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users"
+            }
+        }
+    ]
+}

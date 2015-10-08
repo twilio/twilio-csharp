@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{36CA862C-F8AB-4362-81F0-7B2116AF27FD}"
 	ProjectSection(SolutionItems) = preProject
@@ -65,6 +65,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Trunking", "Twilio.Trunking\Twilio.Trunking.csproj", "{4153C752-377E-49F4-9776-10035B1C22EF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Trunking.Tests", "Twilio.Trunking.Tests\Twilio.Trunking.Tests.csproj", "{BC6454D7-E562-4005-A3FF-F022A065CFB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.IpMessaging", "Twilio.IpMessaging\Twilio.IpMessaging.csproj", "{0A109528-E235-40E9-92A3-579495C2051C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.IpMessaging.Tests", "Twilio.IpMessaging.Tests\Twilio.IpMessaging.Tests.csproj", "{1151E39B-1629-41D6-B3BA-2B6222823BDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -580,6 +583,54 @@ Global
 		{BC6454D7-E562-4005-A3FF-F022A065CFB8}.ReleaseWithPackage|Mixed Platforms.Build.0 = Release|Any CPU
 		{BC6454D7-E562-4005-A3FF-F022A065CFB8}.ReleaseWithPackage|x86.ActiveCfg = Release|Any CPU
 		{BC6454D7-E562-4005-A3FF-F022A065CFB8}.ReleaseWithPackage|x86.Build.0 = Release|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.Default|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.Default|Any CPU.Build.0 = Debug|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.Default|ARM.ActiveCfg = Debug|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.Default|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.Default|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.Default|x86.ActiveCfg = Debug|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.Release|ARM.ActiveCfg = Release|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.Release|x86.ActiveCfg = Release|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.ReleaseWithPackage|Any CPU.ActiveCfg = Release|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.ReleaseWithPackage|Any CPU.Build.0 = Release|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.ReleaseWithPackage|ARM.ActiveCfg = Release|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.ReleaseWithPackage|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.ReleaseWithPackage|Mixed Platforms.Build.0 = Release|Any CPU
+		{0A109528-E235-40E9-92A3-579495C2051C}.ReleaseWithPackage|x86.ActiveCfg = Release|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.Default|Any CPU.ActiveCfg = Debug|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.Default|Any CPU.Build.0 = Debug|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.Default|ARM.ActiveCfg = Debug|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.Default|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.Default|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.Default|x86.ActiveCfg = Debug|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.Release|ARM.ActiveCfg = Release|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.Release|x86.ActiveCfg = Release|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.ReleaseWithPackage|Any CPU.ActiveCfg = Release|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.ReleaseWithPackage|Any CPU.Build.0 = Release|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.ReleaseWithPackage|ARM.ActiveCfg = Release|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.ReleaseWithPackage|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.ReleaseWithPackage|Mixed Platforms.Build.0 = Release|Any CPU
+		{1151E39B-1629-41D6-B3BA-2B6222823BDB}.ReleaseWithPackage|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
