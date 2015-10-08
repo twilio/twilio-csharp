@@ -1,0 +1,39 @@
+﻿{
+  "meta": {
+    "key": "conversations",
+    "next_page_url": "https://conversations.twilio.com/v1/Conversations/Completed?PageSize=2&Page=1&PageToken=ENeyJzdGFydEtleSI6eyJjRGF0ZV9jdlNpZCI6IjIwMTUtMDUtMTRUMjM6MjQ6MjcuNjE3WnxDVjE1YzA0NjUyMWYwY2U4OWU3Yzc5ODJjMDI0YzM4NDA2IiwiYWNTaWQiOiJBQzk5OGMxMGI2OGNiZmRhOWY2NzI3N2Y3ZDhmNDQzOWM5In0sImRpcmVjdGlvbiI6eyJlbnVtQ2xhc3MiOiJjb20udHdpbGlvLnBvc3RmbGlnaHQuY29yZS5kYW8uUGFnZURpcmVjdGlvbiIsInZhbHVlIjoibmV4dCJ9fQ%3D%3D",
+    "url": "https://conversations.twilio.com/v1/Conversations/Completed?PageSize=2&Page=0",
+    "previous_page_url": null,
+    "first_page_url": "https://conversations.twilio.com/v1/Conversations/Completed?PageSize=2&Page=0",
+    "page_size": 2,
+    "page": 0
+  },
+  "conversations": [
+    {
+      "links": {
+        "participants": "https://conversations.twilio.com/v1/Conversations/CV3bda111dff5c126524b4656daa0ab77b/Participants"
+      },
+      "sid": "CV3bda111dff5c126524b4656daa0ab77b",
+      "status": "completed",
+      "account_sid": "AC998c10b68cbfda9f67277f7d8f4439c9",
+      "date_created": "2015-05-14T23:25:56Z",
+      "start_time": "2015-05-14T23:26:10Z",
+      "end_time": "2015-05-14T23:26:20Z",
+      "duration": 9,
+      "url": "https://conversations.twilio.com/v1/Conversations/CV3bda111dff5c126524b4656daa0ab77b"
+    },
+    {
+      "links": {
+        "participants": "https://conversations.twilio.com/v1/Conversations/CV15c046521f0ce89e7c7982c024c38406/Participants"
+      },
+      "sid": "CV15c046521f0ce89e7c7982c024c38406",
+      "status": "failed",
+      "account_sid": "AC998c10b68cbfda9f67277f7d8f4439c9",
+      "date_created": "2015-05-14T23:24:27Z",
+      "start_time": "2015-05-14T23:24:28Z",
+      "end_time": null,
+      "duration": 18,
+      "url": "https://conversations.twilio.com/v1/Conversations/CV15c046521f0ce89e7c7982c024c38406"
+    }
+  ]
+}
