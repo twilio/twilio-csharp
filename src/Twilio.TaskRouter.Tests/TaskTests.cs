@@ -378,7 +378,7 @@ namespace Twilio.TaskRouter.Tests
             Assert.IsNotNull(savedRequest);
             Assert.AreEqual("Workspaces/{WorkspaceSid}/Tasks/{TaskSid}", savedRequest.Resource);
             Assert.AreEqual(Method.POST, savedRequest.Method);
-            Assert.AreEqual(5, savedRequest.Parameters.Count);
+            Assert.AreEqual(6, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
             Assert.IsNotNull(workspaceSidParam);
             Assert.AreEqual(WORKSPACE_SID, workspaceSidParam.Value);
@@ -396,7 +396,7 @@ namespace Twilio.TaskRouter.Tests
             Assert.AreEqual("attributes", attributesParam.Value);
             var priorityParam = savedRequest.Parameters.Find(x => x.Name == "Priority");
             Assert.IsNotNull(priorityParam);
-            Assert.AreEqual("priority", priorityParam.Value);
+            Assert.AreEqual(5, priorityParam.Value);
         }
 
         [Test]
@@ -417,7 +417,7 @@ namespace Twilio.TaskRouter.Tests
             Assert.IsNotNull(savedRequest);
             Assert.AreEqual("Workspaces/{WorkspaceSid}/Tasks/{TaskSid}", savedRequest.Resource);
             Assert.AreEqual(Method.POST, savedRequest.Method);
-            Assert.AreEqual(5, savedRequest.Parameters.Count);
+            Assert.AreEqual(6, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
             Assert.IsNotNull(workspaceSidParam);
             Assert.AreEqual(WORKSPACE_SID, workspaceSidParam.Value);
@@ -435,7 +435,7 @@ namespace Twilio.TaskRouter.Tests
             Assert.AreEqual("attributes", attributesParam.Value);
             var priorityParam = savedRequest.Parameters.Find(x => x.Name == "Priority");
             Assert.IsNotNull(priorityParam);
-            Assert.AreEqual("priority", priorityParam.Value);
+            Assert.AreEqual(5, priorityParam.Value);
         }
     }
 }
