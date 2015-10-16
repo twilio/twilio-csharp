@@ -1,4 +1,4 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/g4h44ja2vgrt8i91?svg=true)](https://ci.appveyor.com/project/mplacona/twilio-csharp)
+[![Build status](https://ci.appveyor.com/api/projects/status/7e21yfla3877kdu6?svg=true)](https://ci.appveyor.com/project/mplacona/twilio-csharp-5t72d)
 
 # Twilio REST API and TwiML Libraries for .NET, ASP.NET, ASP.NET MVC and WebMatrix
 
