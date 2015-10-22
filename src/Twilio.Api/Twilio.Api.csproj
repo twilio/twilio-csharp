@@ -138,6 +138,8 @@
     <Compile Include="FeedbackSummary.Async.cs" />
     <Compile Include="FeedbackSummary.cs" />
     <Compile Include="IncomingPhoneNumbers.cs" />
+    <Compile Include="Keys.Async.cs" />
+    <Compile Include="Keys.cs" />
     <Compile Include="Media.cs" />
     <Compile Include="Messages.cs" />
     <Compile Include="Model\Address.cs" />
@@ -151,6 +153,8 @@
     <Compile Include="Model\FeedbackSummary.cs" />
     <Compile Include="Model\IceServer.cs" />
     <Compile Include="Model\Issue.cs" />
+    <Compile Include="Model\Key.cs" />
+    <Compile Include="Model\KeyResult.cs" />
     <Compile Include="Model\ListMeta.cs" />
     <Compile Include="Model\MediaListRequest.cs" />
     <Compile Include="Model\NextGenListBase.cs" />
