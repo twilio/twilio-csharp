@@ -63,6 +63,8 @@
     <Compile Include="ConnectAppTests.cs" />
     <Compile Include="Credentials.cs" />
     <Compile Include="IncomingPhoneNumberTests.cs" />
+    <Compile Include="KeyTests.cs" />
+    <Compile Include="Model\KeyTests.cs" />
     <Compile Include="NotificationTests.cs" />
     <Compile Include="OutgoingCallerIdTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,5 +98,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Resources\key.json" />
   </ItemGroup>
 </Project>
