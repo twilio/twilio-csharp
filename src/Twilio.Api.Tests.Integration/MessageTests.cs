@@ -52,6 +52,34 @@ namespace Twilio.Api.Tests.Integration
         }
 
         [Test]
+        public void ShouldSendMessageWithServiceSid()
+        {
+            IRestRequest savedRequest = null;
+            _mockClient.Setup(trc => trc.Execute<Message>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>(request => savedRequest = request)
+                .Returns(new Message());
+            var client = _mockClient.Object;
+            const string body = ".NET Unit Test Message";
+
+            client.SendMessageWithServiceSid(From, To, body);
+
+            _mockClient.Verify(trc => trc.Execute<Message>(It.IsAny<IRestRequest>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Messages.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(4, savedRequest.Parameters.Count);
+            var fromParam = savedRequest.Parameters.Find(x => x.Name == "MessagingServiceSid");
+            Assert.IsNotNull(fromParam);
+            Assert.AreEqual(From, fromParam.Value);
+            var toParam = savedRequest.Parameters.Find(x => x.Name == "To");
+            Assert.IsNotNull(toParam);
+            Assert.AreEqual(To, toParam.Value);
+            var bodyParam = savedRequest.Parameters.Find(x => x.Name == "Body");
+            Assert.IsNotNull(bodyParam);
+            Assert.AreEqual(body, bodyParam.Value);
+        }
+
+        [Test]
         public void ShouldSendMessageAsynchronously()
         {
             IRestRequest savedRequest = null;
@@ -70,6 +98,35 @@ namespace Twilio.Api.Tests.Integration
             Assert.AreEqual(Method.POST, savedRequest.Method);
             Assert.AreEqual(4, savedRequest.Parameters.Count);
             var fromParam = savedRequest.Parameters.Find(x => x.Name == "From");
+            Assert.IsNotNull(fromParam);
+            Assert.AreEqual(From, fromParam.Value);
+            var toParam = savedRequest.Parameters.Find(x => x.Name == "To");
+            Assert.IsNotNull(toParam);
+            Assert.AreEqual(To, toParam.Value);
+            var bodyParam = savedRequest.Parameters.Find(x => x.Name == "Body");
+            Assert.IsNotNull(bodyParam);
+            Assert.AreEqual(body, bodyParam.Value);
+        }
+
+        [Test]
+        public void ShouldSendMessageWithServiceSidAsynchronously()
+        {
+            IRestRequest savedRequest = null;
+            _mockClient.Setup(trc => trc.ExecuteAsync(It.IsAny<IRestRequest>(), It.IsAny<Action<Message>>()))
+                .Callback<IRestRequest, Action<Message>>((request, action) => savedRequest = request);
+            var client = _mockClient.Object;
+            _manualResetEvent = new ManualResetEvent(false);
+            const string body = ".NET Unit Test Message";
+
+            client.SendMessageWithServiceSid(From, To, body, message => _manualResetEvent.Set());
+            _manualResetEvent.WaitOne(1);
+
+            _mockClient.Verify(trc => trc.ExecuteAsync(It.IsAny<IRestRequest>(), It.IsAny<Action<Message>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Accounts/{AccountSid}/Messages.json", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(4, savedRequest.Parameters.Count);
+            var fromParam = savedRequest.Parameters.Find(x => x.Name == "MessagingServiceSid");
             Assert.IsNotNull(fromParam);
             Assert.AreEqual(From, fromParam.Value);
             var toParam = savedRequest.Parameters.Find(x => x.Name == "To");
