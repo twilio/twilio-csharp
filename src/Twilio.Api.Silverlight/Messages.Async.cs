@@ -286,7 +286,7 @@ namespace Twilio
         /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the SmsSid as well as SmsStatus=sent or SmsStatus=failed</param>
         /// <param name="applicationSid"></param>
         /// <param name="mmsOnly">Doesn't fallback to SMS if set to true</param>
-        public virtual void SendMessage(string messagingServiceSid, string to, string body, string[] mediaUrls, string statusCallback, string applicationSid, bool? mmsOnly, Action<Message> callback)
+        public virtual void SendMessageWithService(string messagingServiceSid, string to, string body, string[] mediaUrls, string statusCallback, string applicationSid, bool? mmsOnly, Action<Message> callback)
         {
             Require.Argument("messagingServiceSid", messagingServiceSid);
             Require.Argument("to", to);
