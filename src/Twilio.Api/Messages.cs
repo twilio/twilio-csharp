@@ -204,6 +204,19 @@ namespace Twilio
         /// <param name="to">The phone number to send the message to.</param>
         /// <param name="body">The message to send. Must be 160 characters or less.</param>
         /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the MessageSid as well as MessageStatus=sent or MessageStatus=failed</param>
+        public virtual Message SendMessageWithService(string messagingServiceSid, string to, string body)
+        {
+            return SendMessageWithService(messagingServiceSid, to, body, new string[0], string.Empty);
+        }
+
+        /// <summary>
+        /// Send a new Message to the specified recipients.
+        /// Makes a POST request to the Messages List resource.
+        /// </summary>
+        /// <param name="messagingServiceSid">The MessagingServiceSid to send the message from.</param>
+        /// <param name="to">The phone number to send the message to.</param>
+        /// <param name="body">The message to send. Must be 160 characters or less.</param>
+        /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the MessageSid as well as MessageStatus=sent or MessageStatus=failed</param>
         public virtual Message SendMessageWithService(string messagingServiceSid, string to, string body, string statusCallback)
         {
             return SendMessageWithService(messagingServiceSid, to, body, new string[0], statusCallback);
