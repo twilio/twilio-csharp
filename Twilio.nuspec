@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>4.3.0</version>
+		<version>4.2.0</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -14,7 +14,6 @@
 			<dependency id="RestSharp" version="105.2.2" />
 		</dependencies>
 		<releaseNotes>
-      * 4.3.0 - Add MessagingServiceSid to Messages
       * 4.2.0 - Add MessagingServiceSid to Messages
       * 4.1.0 - Add TaskRouter TwiML Enqueue, SIP Trunking, and TaskRouter reservations/workers
       * 4.0.51 - Mark SMS methods as obsolete in favour of Message
