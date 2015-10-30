@@ -221,7 +221,7 @@ namespace Twilio
         /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the MessageSid as well as MessageStatus=sent or MessageStatus=failed</param>
         public virtual void SendMessageWithService(string messagingServiceSid, string to, string body, string statusCallback, Action<Message> callback)
         {
-            SendMessageWithService(from, to, body, new string[0], statusCallback, callback);
+            SendMessageWithService(messagingServiceSid, to, body, new string[0], statusCallback, callback);
         }
 
         /// <summary>
@@ -293,7 +293,7 @@ namespace Twilio
 
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/Messages.json";
-            request.AddParameter("From", from);
+            request.AddParameter("MessagingServiceSid", messagingServiceSid);
             request.AddParameter("To", to);
 
             if (body.HasValue()) request.AddParameter("Body", body);
