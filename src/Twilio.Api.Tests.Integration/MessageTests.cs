@@ -52,7 +52,7 @@ namespace Twilio.Api.Tests.Integration
         }
 
         [Test]
-        public void ShouldSendMessageWithServiceSid()
+        public void ShouldSendMessageWithService()
         {
             IRestRequest savedRequest = null;
             _mockClient.Setup(trc => trc.Execute<Message>(It.IsAny<IRestRequest>()))
@@ -61,7 +61,7 @@ namespace Twilio.Api.Tests.Integration
             var client = _mockClient.Object;
             const string body = ".NET Unit Test Message";
 
-            client.SendMessageWithServiceSid(From, To, body);
+            client.SendMessageWithService(From, To, body);
 
             _mockClient.Verify(trc => trc.Execute<Message>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
@@ -109,7 +109,7 @@ namespace Twilio.Api.Tests.Integration
         }
 
         [Test]
-        public void ShouldSendMessageWithServiceSidAsynchronously()
+        public void ShouldSendMessageWithServiceAsynchronously()
         {
             IRestRequest savedRequest = null;
             _mockClient.Setup(trc => trc.ExecuteAsync(It.IsAny<IRestRequest>(), It.IsAny<Action<Message>>()))
@@ -118,7 +118,7 @@ namespace Twilio.Api.Tests.Integration
             _manualResetEvent = new ManualResetEvent(false);
             const string body = ".NET Unit Test Message";
 
-            client.SendMessageWithServiceSid(From, To, body, message => _manualResetEvent.Set());
+            client.SendMessageWithService(From, To, body, message => _manualResetEvent.Set());
             _manualResetEvent.WaitOne(1);
 
             _mockClient.Verify(trc => trc.ExecuteAsync(It.IsAny<IRestRequest>(), It.IsAny<Action<Message>>()), Times.Once);
