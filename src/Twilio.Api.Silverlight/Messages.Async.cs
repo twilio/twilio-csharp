@@ -203,12 +203,12 @@ namespace Twilio
         /// Send a new Message to the specified recipients.
         /// Makes a POST request to the Messages List resource.
         /// </summary>
-        /// <param name="from">The phone number to send the message from. Must be a Twilio-provided or ported local (not toll-free) number. Validated outgoing caller IDs cannot be used.</param>
+        /// <param name="messagingServiceSid">The messagingServiceSid to send the message from.</param>
         /// <param name="to">The phone number to send the message to.</param>
         /// <param name="body">The message to send. Must be 160 characters or less.</param>
-        public virtual void SendMessageWithService(string from, string to, string body, Action<Message> callback)
+        public virtual void SendMessageWithService(string messagingServiceSid, string to, string body, Action<Message> callback)
         {
-            SendMessage(from, to, body, new string[0], string.Empty, callback);
+            SendMessageWithService(messagingServiceSid, to, body, new string[0], string.Empty, callback);
         }
 
         /// <summary>
@@ -246,7 +246,7 @@ namespace Twilio
         /// <param name="body">The message to send. Must be 160 characters or less.</param>
         public virtual void SendMessageWithService(string messagingServiceSid, string to, string body, string[] mediaUrls, Action<Message> callback)
         {
-            SendMessage(messagingServiceSid, to, body, mediaUrls, string.Empty, callback);
+            SendMessageWithService(messagingServiceSid, to, body, mediaUrls, string.Empty, callback);
         }
 
         /// <summary>
@@ -259,7 +259,7 @@ namespace Twilio
         /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the SmsSid as well as SmsStatus=sent or SmsStatus=failed</param>
         public virtual void SendMessageWithService(string messagingServiceSid, string to, string body, string[] mediaUrls, string statusCallback, Action<Message> callback)
         {
-            SendMessage(messagingServiceSid, to, body, mediaUrls, statusCallback, string.Empty, callback);
+            SendMessageWithService(messagingServiceSid, to, body, mediaUrls, statusCallback, string.Empty, callback);
         }
 
         /// <summary>
