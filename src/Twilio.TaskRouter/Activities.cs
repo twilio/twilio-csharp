@@ -114,8 +114,7 @@ namespace Twilio.TaskRouter
         /// <param name="workspaceSid">Workspace sid.</param>
         /// <param name="activitySid">Activity sid.</param>
         /// <param name="friendlyName">Optional friendly name.</param>
-        /// <param name="available">Optional available.</param>
-        public virtual Activity UpdateActivity(string workspaceSid, string activitySid, string friendlyName, bool? available)
+        public virtual Activity UpdateActivity(string workspaceSid, string activitySid, string friendlyName)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("ActivitySid", activitySid);
@@ -127,8 +126,6 @@ namespace Twilio.TaskRouter
 
             if (friendlyName.HasValue())
                 request.AddParameter("FriendlyName", friendlyName);
-            if (available.HasValue)
-                request.AddParameter("Available", available.Value);
 
             return Execute<Activity>(request);
         }

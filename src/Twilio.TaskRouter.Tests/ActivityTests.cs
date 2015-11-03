@@ -321,7 +321,7 @@ namespace Twilio.TaskRouter.Tests
             var client = mockClient.Object;
             var friendlyName = Utilities.MakeRandomFriendlyName();
 
-            client.UpdateActivity(WORKSPACE_SID, ACTIVITY_SID, friendlyName, true);
+            client.UpdateActivity(WORKSPACE_SID, ACTIVITY_SID, friendlyName);
 
             mockClient.Verify(trc => trc.Execute<Activity>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
@@ -337,9 +337,6 @@ namespace Twilio.TaskRouter.Tests
             var friendlyNameParam = savedRequest.Parameters.Find(x => x.Name == "FriendlyName");
             Assert.IsNotNull(friendlyNameParam);
             Assert.AreEqual(friendlyName, friendlyNameParam.Value);
-            var availableParam = savedRequest.Parameters.Find(x => x.Name == "Available");
-            Assert.IsNotNull(availableParam);
-            Assert.AreEqual(true, availableParam.Value);
         }
 
         [Test]
@@ -352,7 +349,7 @@ namespace Twilio.TaskRouter.Tests
             manualResetEvent = new ManualResetEvent(false);
             var friendlyName = Utilities.MakeRandomFriendlyName();
 
-            client.UpdateActivity(WORKSPACE_SID, ACTIVITY_SID, friendlyName, true, activity => {
+            client.UpdateActivity(WORKSPACE_SID, ACTIVITY_SID, friendlyName, activity => {
                 manualResetEvent.Set();
             });
             manualResetEvent.WaitOne(1);
@@ -371,9 +368,6 @@ namespace Twilio.TaskRouter.Tests
             var friendlyNameParam = savedRequest.Parameters.Find(x => x.Name == "FriendlyName");
             Assert.IsNotNull(friendlyNameParam);
             Assert.AreEqual(friendlyName, friendlyNameParam.Value);
-            var availableParam = savedRequest.Parameters.Find(x => x.Name == "Available");
-            Assert.IsNotNull(availableParam);
-            Assert.AreEqual(true, availableParam.Value);
         }
     }
 }
