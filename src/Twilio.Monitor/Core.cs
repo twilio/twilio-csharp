@@ -5,7 +5,7 @@ namespace Twilio.Monitor
     /// <summary>
     /// The Twilio Monitor API allows you to retrieve information about events.
     /// </summary>
-    public partial class MonitorClient : TwilioClient
+    public partial class MonitorClient : NextGenClient
     {
         /// <summary>
         /// Initializes a new client with the specified credentials.
