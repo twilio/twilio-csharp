@@ -198,6 +198,117 @@ namespace Twilio
 
             ExecuteAsync<Message>(request, (response) => callback(response));
         }
+
+        /// <summary>
+        /// Send a new Message to the specified recipients.
+        /// Makes a POST request to the Messages List resource.
+        /// </summary>
+        /// <param name="messagingServiceSid">The messagingServiceSid to send the message from.</param>
+        /// <param name="to">The phone number to send the message to.</param>
+        /// <param name="body">The message to send. Must be 160 characters or less.</param>
+        public virtual void SendMessageWithService(string messagingServiceSid, string to, string body, Action<Message> callback)
+        {
+            SendMessageWithService(messagingServiceSid, to, body, new string[0], string.Empty, callback);
+        }
+
+        /// <summary>
+        /// Send a new Message to the specified recipients.
+        /// Makes a POST request to the Messages List resource.
+        /// </summary>
+        /// <param name="messagingServiceSid">The messagingServiceSid to send the message from.</param>
+        /// <param name="to">The phone number to send the message to.</param>
+        /// <param name="body">The message to send. Must be 160 characters or less.</param>
+        /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the MessageSid as well as MessageStatus=sent or MessageStatus=failed</param>
+        public virtual void SendMessageWithService(string messagingServiceSid, string to, string body, string statusCallback, Action<Message> callback)
+        {
+            SendMessageWithService(messagingServiceSid, to, body, new string[0], statusCallback, callback);
+        }
+
+        /// <summary>
+        /// Send a new Message to the specified recipients.
+        /// Makes a POST request to the Messages List resource.
+        /// </summary>
+        /// <param name="messagingServiceSid">The messagingServiceSid to send the message from.</param>
+        /// <param name="to">The phone number to send the message to.</param>
+        /// <param name="mediaUrls">An array of URLs where each member of the array points to a media file to be sent with the message.  You can include a maximum of 10 media URLs</param>
+        public virtual void SendMessageWithService(string messagingServiceSid, string to, string[] mediaUrls, Action<Message> callback)
+        {
+            SendMessageWithService(messagingServiceSid, to, String.Empty, mediaUrls, string.Empty, callback);
+        }
+        
+
+        /// <summary>
+        /// Send a new Message to the specified recipients.
+        /// Makes a POST request to the Messages List resource.
+        /// </summary>
+        /// <param name="messagingServiceSid">The messagingServiceSid to send the message from.</param>
+        /// <param name="to">The phone number to send the message to. If using the Sandbox, this number must be a validated outgoing caller ID</param>
+        /// <param name="body">The message to send. Must be 160 characters or less.</param>
+        public virtual void SendMessageWithService(string messagingServiceSid, string to, string body, string[] mediaUrls, Action<Message> callback)
+        {
+            SendMessageWithService(messagingServiceSid, to, body, mediaUrls, string.Empty, callback);
+        }
+
+        /// <summary>
+        /// Send a new Message to the specified recipients
+        /// Makes a POST request to the Messages List resource.
+        /// </summary>
+        /// <param name="messagingServiceSid">The messagingServiceSid to send the message from.</param>
+        /// <param name="to">The phone number to send the message to. If using the Sandbox, this number must be a validated outgoing caller ID</param>
+        /// <param name="body">The message to send. Must be 160 characters or less.</param>
+        /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the SmsSid as well as SmsStatus=sent or SmsStatus=failed</param>
+        public virtual void SendMessageWithService(string messagingServiceSid, string to, string body, string[] mediaUrls, string statusCallback, Action<Message> callback)
+        {
+            SendMessageWithService(messagingServiceSid, to, body, mediaUrls, statusCallback, string.Empty, callback);
+        }
+
+        /// <summary>
+        /// Send a new Message to the specified recipients
+        /// Makes a POST request to the Messages List resource.
+        /// </summary>
+        /// <param name="messagingServiceSid">The messagingServiceSid to send the message from.</param>
+        /// <param name="to">The phone number to send the message to. If using the Sandbox, this number must be a validated outgoing caller ID</param>
+        /// <param name="body">The message to send. Must be 160 characters or less.</param>
+        /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the SmsSid as well as SmsStatus=sent or SmsStatus=failed</param>
+        /// <param name="applicationSid"></param>
+        public virtual void SendMessageWithService(string messagingServiceSid, string to, string body, string[] mediaUrls, string statusCallback, string applicationSid, Action<Message> callback)
+        {
+            SendMessageWithService(messagingServiceSid, to, body, mediaUrls, statusCallback, applicationSid, false, callback);
+        }
+
+        /// <summary>
+        /// Send a new Message to the specified recipients
+        /// Makes a POST request to the Messages List resource.
+        /// </summary>
+        /// <param name="messagingServiceSid">The messagingServiceSid to send the message from.</param>
+        /// <param name="to">The phone number to send the message to. If using the Sandbox, this number must be a validated outgoing caller ID</param>
+        /// <param name="body">The message to send. Must be 160 characters or less.</param>
+        /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the SmsSid as well as SmsStatus=sent or SmsStatus=failed</param>
+        /// <param name="applicationSid"></param>
+        /// <param name="mmsOnly">Doesn't fallback to SMS if set to true</param>
+        public virtual void SendMessageWithService(string messagingServiceSid, string to, string body, string[] mediaUrls, string statusCallback, string applicationSid, bool? mmsOnly, Action<Message> callback)
+        {
+            Require.Argument("messagingServiceSid", messagingServiceSid);
+            Require.Argument("to", to);
+
+            var request = new RestRequest(Method.POST);
+            request.Resource = "Accounts/{AccountSid}/Messages.json";
+            request.AddParameter("MessagingServiceSid", messagingServiceSid);
+            request.AddParameter("To", to);
+
+            if (body.HasValue()) request.AddParameter("Body", body);
+
+            for (int i = 0; i < mediaUrls.Length; i++)
+            {
+                request.AddParameter("MediaUrl", mediaUrls[i]);
+            }
+
+            if (statusCallback.HasValue()) request.AddParameter("StatusCallback", statusCallback);
+            if (applicationSid.HasValue()) request.AddParameter("ApplicationSid", statusCallback);
+            if (mmsOnly.HasValue) request.AddParameter("MmsOnly", mmsOnly.Value);
+
+            ExecuteAsync<Message>(request, (response) => callback(response));
+        }
     }
 }
 

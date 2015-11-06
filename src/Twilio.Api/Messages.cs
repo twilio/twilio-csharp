@@ -195,5 +195,120 @@ namespace Twilio
 
             return Execute<Message>(request);
         }
+
+        /// <summary>
+        /// Send a new Message to the specified recipients.
+        /// Makes a POST request to the Messages List resource.
+        /// </summary>
+        /// <param name="messagingServiceSid">The MessagingServiceSid to send the message from.</param>
+        /// <param name="to">The phone number to send the message to.</param>
+        /// <param name="body">The message to send. Must be 160 characters or less.</param>
+        /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the MessageSid as well as MessageStatus=sent or MessageStatus=failed</param>
+        public virtual Message SendMessageWithService(string messagingServiceSid, string to, string body)
+        {
+            return SendMessageWithService(messagingServiceSid, to, body, new string[0], string.Empty);
+        }
+
+        /// <summary>
+        /// Send a new Message to the specified recipients.
+        /// Makes a POST request to the Messages List resource.
+        /// </summary>
+        /// <param name="messagingServiceSid">The MessagingServiceSid to send the message from.</param>
+        /// <param name="to">The phone number to send the message to.</param>
+        /// <param name="body">The message to send. Must be 160 characters or less.</param>
+        /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the MessageSid as well as MessageStatus=sent or MessageStatus=failed</param>
+        public virtual Message SendMessageWithService(string messagingServiceSid, string to, string body, string statusCallback)
+        {
+            return SendMessageWithService(messagingServiceSid, to, body, new string[0], statusCallback);
+        }
+
+        /// <summary>
+        /// Send a new Message to the specified recipients.
+        /// Makes a POST request to the Messages List resource.
+        /// </summary>
+        /// <param name="messagingServiceSid">The MessagingServiceSid to send the message from.</param>
+        /// <param name="to">The phone number to send the message to.</param>
+        /// <param name="mediaUrls">An array of URLs where each member of the array points to a media file to be sent with the message.  You can include a maximum of 10 media URLs</param>
+        public virtual Message SendMessageWithService(string messagingServiceSid, string to, string[] mediaUrls)
+        {
+            return SendMessageWithService(messagingServiceSid, to, String.Empty, mediaUrls, string.Empty);
+        }
+
+        /// <summary>
+        /// Send a new Message to the specified recipients.
+        /// Makes a POST request to the Messages List resource.
+        /// </summary>
+        /// <param name="messagingServiceSid">The MessagingServiceSid to send the message from.</param>
+        /// <param name="to">The phone number to send the message to.</param>
+        /// <param name="body">The message to send. Must be 160 characters or less.</param>
+        /// <param name="mediaUrls">An array of URLs where each member of the array points to a media file to be sent with the message.  You can include a maximum of 10 media URLs</param>
+        public virtual Message SendMessageWithService(string messagingServiceSid, string to, string body, string[] mediaUrls)
+        {
+            return SendMessageWithService(messagingServiceSid, to, body, mediaUrls, string.Empty);
+        }
+
+        /// <summary>
+        /// Send a new Message to the specified recipients
+        /// Makes a POST request to the Messages List resource.
+        /// </summary>
+        /// <param name="messagingServiceSid">The MessagingServiceSid to send the message from.</param>
+        /// <param name="to">The phone number to send the message to. If using the Sandbox, this number must be a validated outgoing caller ID</param>
+        /// <param name="body">The message to send. Must be 160 characters or less.</param>
+        /// <param name="mediaUrls">An array of URLs where each member of the array points to a media file to be sent with the message.  You can include a maximum of 10 media URLs</param>
+        /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the MessageSid as well as MessageStatus=sent or MessageStatus=failed</param>
+        public virtual Message SendMessageWithService(string messagingServiceSid, string to, string body, string[] mediaUrls, string statusCallback)
+        {
+            return SendMessageWithService(messagingServiceSid, to, body, mediaUrls, statusCallback, string.Empty);
+        }
+
+        /// <summary>
+        /// Send a new Message to the specified recipients
+        /// Makes a POST request to the Messages List resource.
+        /// </summary>
+        /// <param name="messagingServiceSid">The MessagingServiceSid to send the message from.</param>
+        /// <param name="to">The phone number to send the message to. If using the Sandbox, this number must be a validated outgoing caller ID</param>
+        /// <param name="body">The message to send. Must be 160 characters or less.</param>
+        /// <param name="mediaUrls">An array of URLs where each member of the array points to a media file to be sent with the message.  You can include a maximum of 10 media URLs</param>
+        /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the MessageSid as well as MessageStatus=sent or MessageStatus=failed</param>
+        /// <param name="applicationSid"></param>
+        public virtual Message SendMessageWithService(string messagingServiceSid, string to, string body, string[] mediaUrls, string statusCallback, string applicationSid)
+        {
+            return SendMessageWithService(messagingServiceSid, to, body, mediaUrls, statusCallback, applicationSid, false);
+        }
+
+        /// <summary>
+        /// Send a new Message to the specified recipients
+        /// Makes a POST request to the Messages List resource.
+        /// </summary>
+        /// <param name="messagingServiceSid">The MessagingServiceSid to send the message from.</param>
+        /// <param name="to">The phone number to send the message to. If using the Sandbox, this number must be a validated outgoing caller ID</param>
+        /// <param name="body">The message to send. Must be 160 characters or less.</param>
+        /// <param name="mediaUrls">An array of URLs where each member of the array points to a media file to be sent with the message.  You can include a maximum of 10 media URLs</param>
+        /// <param name="statusCallback">A URL that Twilio will POST to when your message is processed. Twilio will POST the MessageSid as well as MessageStatus=sent or MessageStatus=failed</param>
+        /// <param name="applicationSid"></param>
+        /// <param name="mmsOnly">Doesn't fallback to SMS if set to true</param>
+        public virtual Message SendMessageWithService(string messagingServiceSid, string to, string body, string[] mediaUrls, string statusCallback, string applicationSid, bool? mmsOnly)
+        {
+            Require.Argument("messagingServiceSid", messagingServiceSid);
+            Require.Argument("to", to);
+
+            var request = new RestRequest(Method.POST);
+            request.Resource = "Accounts/{AccountSid}/Messages.json";
+            request.AddParameter("MessagingServiceSid", messagingServiceSid);
+            request.AddParameter("To", to);
+
+            if (body.HasValue()) request.AddParameter("Body", body);
+
+            for (int i = 0; i < mediaUrls.Length; i++)
+            {
+                request.AddParameter("MediaUrl", mediaUrls[i]);
+            }
+
+            if (statusCallback.HasValue()) request.AddParameter("StatusCallback", statusCallback);
+            if (applicationSid.HasValue()) request.AddParameter("ApplicationSid", applicationSid);
+            if (mmsOnly.HasValue) request.AddParameter("MmsOnly", mmsOnly.Value);
+
+            return Execute<Message>(request);
+        }
     }
 }

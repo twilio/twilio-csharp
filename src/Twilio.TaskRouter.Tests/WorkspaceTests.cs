@@ -295,7 +295,7 @@ namespace Twilio.TaskRouter.Tests
             Assert.IsNotNull(savedRequest);
             Assert.AreEqual("Workspaces/{WorkspaceSid}", savedRequest.Resource);
             Assert.AreEqual(Method.POST, savedRequest.Method);
-            Assert.AreEqual(6, savedRequest.Parameters.Count);
+            Assert.AreEqual(5, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
             Assert.IsNotNull(workspaceSidParam);
             Assert.AreEqual(WORKSPACE_SID, workspaceSidParam.Value);
