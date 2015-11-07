@@ -47,8 +47,7 @@ namespace Twilio.Auth
         public string ToJWT()
         {
             var headers = new Dictionary<string, object>();
-            headers.Add("cty", "twilio-sat;v=2");
-            //headers.Add("typ", "JWT");
+            headers.Add("cty", "twilio-fpa;v=1");
 
             int now = ConvertToUnixTimestamp(DateTime.UtcNow);
 
