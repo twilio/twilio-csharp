@@ -49,7 +49,7 @@ namespace Twilio.Auth.Tests
             var delta = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             var timestamp = (int)Math.Floor(delta.TotalSeconds);
             
-            token.AddGrant(new ConversationGrant());
+            token.AddGrant(new ConversationsGrant());
 
             var encoded = token.ToJWT();
             Assert.IsNotNull(encoded);
@@ -82,7 +82,7 @@ namespace Twilio.Auth.Tests
             var delta = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             var timestamp = (int)Math.Floor(delta.TotalSeconds);
 
-            token.AddGrant(new ConversationGrant());
+            token.AddGrant(new ConversationsGrant());
             token.AddGrant(new IpMessagingGrant());
 
             var encoded = token.ToJWT();
