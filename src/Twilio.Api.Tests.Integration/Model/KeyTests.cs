@@ -17,12 +17,13 @@ namespace Twilio.Api.Tests.Integration.Model
         {
             var doc = File.ReadAllText(Path.Combine("Resources", "key.json"));
             var json = new JsonDeserializer();
-            json.DateFormat = "ddd, dd MMM yyyy HH:mm:ss '+0000'";
+            //json.DateFormat = "ddd, dd MMM yyyy HH:mm:ss '+0000'";
             var output = json.Deserialize<Key>(new RestResponse { Content = doc });
 
             Assert.NotNull(output);
             Assert.NotNull(output.DateCreated);
-            Assert.AreEqual("Up4rxvMFIvbuV0elEqP9ZZDNRaujrklb", output.Secret);
+            Assert.AreEqual("My Signing Key", output.FriendlyName);
+            Assert.AreEqual("PsPPv0QtxuPFID7tl4wAZdGe0I4OrWNX", output.Secret);
         }
     }
 }
