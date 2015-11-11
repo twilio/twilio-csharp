@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessToken.cs" />
-    <Compile Include="ConversationGrant.cs" />
+    <Compile Include="ConversationsGrant.cs" />
     <Compile Include="Grant.cs" />
     <Compile Include="IpMessagingGrant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
