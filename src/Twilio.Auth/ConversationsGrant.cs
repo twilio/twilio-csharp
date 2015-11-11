@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Twilio.Auth
 {
-    public class ConversationGrant : Grant
+    public class ConversationsGrant : Grant
     {
         string ConfigurationProfileSid { get; set; }
 
