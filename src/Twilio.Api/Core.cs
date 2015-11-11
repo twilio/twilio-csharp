@@ -160,5 +160,17 @@ namespace Twilio
         public TwilioRestClient(string accountSid, string authToken, string accountResourceSid) : base(accountSid, authToken, accountResourceSid, "2010-04-01", "https://api.twilio.com/")
         {
         }
+
+        /// <summary>
+        /// Initializes a new client with the specified credentials.
+        /// </summary>
+        /// <param name="accountSid">The AccountSid to authenticate with</param>
+        /// <param name="authToken">The AuthToken to authenticate with</param>
+        /// <param name="accountResourceSid">The AccountSid for the account you want to use</param>
+        /// <param name="apiVersion">The version of the Twilio API to use</param>
+        /// <param name="baseUrl">The base URL of the Twilio API</param>
+        public TwilioRestClient(string accountSid, string authToken, string accountResourceSid, string apiVersion, string baseUrl) : base(accountSid, authToken, accountResourceSid, apiVersion, baseUrl)
+        {
+        }
     }
 }
