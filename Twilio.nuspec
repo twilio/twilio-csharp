@@ -16,6 +16,8 @@
 		<releaseNotes>
       * 4.4.0 - Add Keys endpoint                  
       * 4.3.0 - Add MessagingServiceSid to Messages
+      * 4.3.0 - Add TwilioRestClient override for API Version and Base URL
+      * 4.2.0 - Add MessagingServiceSid to Messages
       * 4.1.0 - Add TaskRouter TwiML Enqueue, SIP Trunking, and TaskRouter reservations/workers
       * 4.0.51 - Mark SMS methods as obsolete in favour of Message
       * 4.0.5 - Updated RestSharp reference to 105.2.2
