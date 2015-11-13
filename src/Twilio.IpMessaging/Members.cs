@@ -95,7 +95,7 @@ namespace Twilio.IpMessaging
             Require.Argument("ServiceSid", serviceSid);
             Require.Argument("ChannelSid", channelSid);
             Require.Argument("MemberSid", memberSid);
-            Require.Argument("Identity", identity);
+            Require.Argument("RoleSid", roleSid);
 
             var request = new RestRequest(Method.POST);
             request.Resource = "/Services/{ServiceSid}/Channels/{ChannelSid}/Members/{MemberSid}";
