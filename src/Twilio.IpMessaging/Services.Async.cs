@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using RestSharp;
 using RestSharp.Extensions;
 using RestSharp.Validation;
@@ -55,16 +56,42 @@ namespace Twilio.IpMessaging
         }
 
         /// <summary>
-        /// Updates a Service.
+        /// Updates a Service.<br/>
+        /// Use webhooksParams to set desired Webhooks. Pass null otherwise.
+        /// Listed below are the acceptable params<br/>
+        /// <list type="bullet">
+        /// <item><description>Webhooks.OnMessageSend.Url</description></item>
+        /// <item><description>Webhooks.OnMessageSend.Method</description></item>
+        /// <item><description>Webhooks.OnMessageSend.Format</description></item>
+        /// <item><description>Webhooks.OnChannelAdd.Url</description></item>
+        /// <item><description>Webhooks.OnChannelAdd.Method</description></item>
+        /// <item><description>Webhooks.OnChannelAdd.Format</description></item>
+        /// <item><description>Webhooks.OnChannelDestroy.Url</description></item>
+        /// <item><description>Webhooks.OnChannelDestroy.Method</description></item>
+        /// <item><description>Webhooks.OnChannelDestroy.Format</description></item>
+        /// <item><description>Webhooks.OnChannelUpdate.Url</description></item>
+        /// <item><description>Webhooks.OnChannelUpdate.Method</description></item>
+        /// <item><description>Webhooks.OnChannelUpdate.Format</description></item>
+        /// <item><description>Webhooks.OnMemberAdd.Url</description></item>
+        /// <item><description>Webhooks.OnMemberAdd.Method</description></item>
+        /// <item><description>Webhooks.OnMemberAdd.Format</description></item>
+        /// <item><description>Webhooks.OnMemberRemove.Url</description></item>
+        /// <item><description>Webhooks.OnMemberRemove.Method</description></item>
+        /// <item><description>Webhooks.OnMemberRemove.Format</description></item>
+        /// </list>
+        /// <br/>
         /// </summary>
         /// <param name="serviceSid">Service Sid</param>
         /// <param name="friendlyName">Friendly Name</param>
         /// <param name="defaultServiceRoleSid">Default Service Role Sid</param>
         /// <param name="defaultChannelRoleSid">Default channel Role Sid</param>
+        /// <param name="defaultChannelCreatorRoleSid">Default channel creator Role Sid</param>
+        /// <param name="webhooksParams">Dictionary of Webhook params</param>
         /// <param name="typingIndicatorTimeout">Typing indicator timeout</param>
         public virtual void UpdateService(string serviceSid, string friendlyName,
-            string defaultServiceRoleSid, string defaultChannelRoleSid,
-            int typingIndicatorTimeout, Action<Service> callback)
+            string defaultServiceRoleSid, string defaultChannelRoleSid, 
+            string defaultChannelCreatorRoleSid, int typingIndicatorTimeout, 
+            Dictionary<string, string> webhooksParams, Action<Service> callback)
         {
             Require.Argument("ServiceSid", serviceSid);
             
@@ -76,7 +103,16 @@ namespace Twilio.IpMessaging
             request.AddParameter("FriendlyName", friendlyName);
             request.AddParameter("DefaultServiceRoleSid", defaultServiceRoleSid);
             request.AddParameter("DefaultChannelRoleSid", defaultChannelRoleSid);
+            request.AddParameter("DefaultChannelCreatorRoleSid", defaultChannelCreatorRoleSid);
             request.AddParameter("TypingIndicatorTimeout", typingIndicatorTimeout);
+
+            if (webhooksParams != null && webhooksParams.Count > 0)
+            {
+                foreach (KeyValuePair<string, string> pair in webhooksParams)
+                {
+                    request.AddParameter(pair.Key, pair.Value);
+                }
+            }
 
             ExecuteAsync<Service>(request, (response) => callback(response));
         }
