@@ -9,8 +9,8 @@ namespace Twilio.Auth
     {
         string ServiceSid { get; set; }
         string EndpointId { get; set; }
-        string RoleSid { get; set; }
-        string CredentialSid { get; set; }
+        string DeploymentRoleSid { get; set; }
+        string PushCredentialSid { get; set; }
 
         public string GetGrantKey()
         {
@@ -30,11 +30,11 @@ namespace Twilio.Auth
             }
             if (this.ServiceSid != null)
             {
-                payload.Add("deployment_role_sid", this.RoleSid);
+                payload.Add("deployment_role_sid", this.DeploymentRoleSid);
             }
             if (this.ServiceSid != null)
             {
-                payload.Add("push_credential_sid", this.CredentialSid);
+                payload.Add("push_credential_sid", this.PushCredentialSid);
             }
 
             return payload;
