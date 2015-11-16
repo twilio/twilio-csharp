@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/7e21yfla3877kdu6?svg=true)](https://ci.appveyor.com/project/mplacona/twilio-csharp-5t72d)
+
 # Twilio REST API and TwiML Libraries for .NET, ASP.NET, ASP.NET MVC and WebMatrix
 
 Twilio provides a simple HTTP-based API for sending and receiving phone calls and text messages. Learn more at [http://www.twilio.com][0]
