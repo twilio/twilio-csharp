@@ -42,9 +42,9 @@ namespace Twilio.Auth
         /// <summary>
         /// Generate a JWT with the provided information and sign it with the given secret.
         /// </summary>
-        /// <param name="secret">The secret to sign the token with</param>
+        /// <param name="algorithm">The encryption type - default:HS256</param>
         /// <returns>Signed JWT authorizing the grants configured on this object</returns>
-        public string ToJWT()
+        public string ToJWT(JwtHashAlgorithm algorithm=JwtHashAlgorithm.HS256)
         {
             var headers = new Dictionary<string, object>();
             headers.Add("cty", "twilio-fpa;v=1");
@@ -73,7 +73,7 @@ namespace Twilio.Auth
                 grants = grantPayload
             };
 
-            return JsonWebToken.Encode(headers, payload, Secret, JwtHashAlgorithm.HS256);
+            return JsonWebToken.Encode(headers, payload, Secret, algorithm);
         }
 
         public override string ToString()
