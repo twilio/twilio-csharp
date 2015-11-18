@@ -15,7 +15,7 @@ namespace Twilio.Auth
         private string _secret;
         public string Identity { get; set; }
         public int Ttl { get; set; }
-        public List<Grant> Grants { get; set; }
+        public List<IGrant> Grants { get; set; }
 
         public AccessToken(string accountSid, string signingKeySid, string secret) : this(accountSid, signingKeySid, secret, DEFAULT_TTL) { }
 
@@ -25,7 +25,7 @@ namespace Twilio.Auth
             this._signingKeySid = signingKeySid;
             this._secret = secret;
             this.Ttl = ttl;
-            this.Grants = new List<Grant>();
+            this.Grants = new List<IGrant>();
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Twilio.Auth
         /// </summary>
         /// <param name="grant">The grant to add</param>
         /// <returns>AccessToken</returns>
-        public AccessToken AddGrant(Grant grant)
+        public AccessToken AddGrant(IGrant grant)
         {
             this.Grants.Add(grant);
             return this;
@@ -57,7 +57,7 @@ namespace Twilio.Auth
                 grantPayload.Add("identity", this.Identity);
             }
 
-            foreach (Grant grant in this.Grants)
+            foreach (IGrant grant in this.Grants)
             {
                 Console.Write(grant.GetGrantKey());
                 grantPayload.Add(grant.GetGrantKey(), grant.GetPayload());
