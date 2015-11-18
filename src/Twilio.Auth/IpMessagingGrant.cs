@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Twilio.Auth
 {
-    public class IpMessagingGrant : Grant
+    public class IpMessagingGrant : IGrant
     {
         public string ServiceSid { get; set; }
         public string EndpointId { get; set; }
