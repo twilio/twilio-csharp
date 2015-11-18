@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Twilio.Auth
 {
-    public interface Grant
+    public interface IGrant
     {
         /// <summary>
         /// Get the name of the grant.
