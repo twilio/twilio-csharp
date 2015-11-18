@@ -10,9 +10,9 @@ namespace Twilio.Auth
     {
         static readonly int DEFAULT_TTL = 3600;
 
-        private string SigningKeySid;
-        private string AccountSid;
-        private string Secret;
+        private string _signingKeySid;
+        private string _accountSid;
+        private string _secret;
         public string Identity { get; set; }
         public int Ttl { get; set; }
         public List<Grant> Grants { get; set; }
@@ -21,9 +21,9 @@ namespace Twilio.Auth
 
         public AccessToken(string accountSid, string signingKeySid, string secret, int ttl)
         {
-            this.AccountSid = accountSid;
-            this.SigningKeySid = signingKeySid;
-            this.Secret = secret;
+            this._accountSid = accountSid;
+            this._signingKeySid = signingKeySid;
+            this._secret = secret;
             this.Ttl = ttl;
             this.Grants = new List<Grant>();
         }
@@ -65,15 +65,15 @@ namespace Twilio.Auth
 
             var payload = new
             {
-                jti = String.Format("{0}-{1}", SigningKeySid, now),
-                iss = SigningKeySid,
-                sub = AccountSid,
+                jti = String.Format("{0}-{1}", _signingKeySid, now),
+                iss = _signingKeySid,
+                sub = _accountSid,
                 nbf = now,
                 exp = now + Ttl,
                 grants = grantPayload
             };
 
-            return JsonWebToken.Encode(headers, payload, Secret, algorithm);
+            return JsonWebToken.Encode(headers, payload, _secret, algorithm);
         }
 
         public override string ToString()
