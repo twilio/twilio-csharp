@@ -10,9 +10,9 @@ namespace Twilio.Auth
     {
         static readonly int DEFAULT_TTL = 3600;
 
-        string SigningKeySid { get; set; }
-        string AccountSid { get; set; }
-        string Secret { get; set; }
+        private string SigningKeySid;
+        private string AccountSid;
+        private string Secret;
         public string Identity { get; set; }
         public int Ttl { get; set; }
         public List<Grant> Grants { get; set; }
