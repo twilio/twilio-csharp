@@ -7,7 +7,7 @@ namespace Twilio.Auth
 {
     public class ConversationsGrant : Grant
     {
-        string ConfigurationProfileSid { get; set; }
+        public string ConfigurationProfileSid { get; set; }
 
         public string GetGrantKey()
         {

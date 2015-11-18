@@ -7,10 +7,10 @@ namespace Twilio.Auth
 {
     public class IpMessagingGrant : Grant
     {
-        string ServiceSid { get; set; }
-        string EndpointId { get; set; }
-        string DeploymentRoleSid { get; set; }
-        string PushCredentialSid { get; set; }
+        public string ServiceSid { get; set; }
+        public string EndpointId { get; set; }
+        public string DeploymentRoleSid { get; set; }
+        public string PushCredentialSid { get; set; }
 
         public string GetGrantKey()
         {
