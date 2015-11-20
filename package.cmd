@@ -7,6 +7,7 @@ if not exist download\WindowsPhone mkdir download\WindowsPhone
 if not exist download\Silverlight mkdir download\Silverlight
 if not exist download\package mkdir download\package
 if not exist download\package\twilio mkdir download\package\twilio
+if not exist download\package\twilioauth mkdir download\package\twilioauth
 if not exist download\package\twiliomvc mkdir download\package\twiliomvc
 if not exist download\package\twiliotwiml mkdir download\package\twiliotwiml
 if not exist download\package\twiliowebmatrix mkdir download\package\twiliowebmatrix
@@ -21,6 +22,9 @@ if not exist download\package\twilio\lib mkdir download\package\twilio\lib
 if not exist download\package\twilio\lib\3.5 mkdir download\package\twilio\lib\3.5
 if not exist download\package\twilio\lib\WINDOWSPHONE8 mkdir download\package\twilio\lib\WINDOWSPHONE8
 if not exist download\package\twilio\lib\SL5 mkdir download\package\twilio\lib\SL5
+
+if not exist download\package\twilioauth\lib mkdir download\package\twilioauth\lib
+if not exist download\package\twilioauth\lib\3.5 mkdir download\package\twilioauth\lib\3.5
 
 if not exist download\package\twiliomvc\lib mkdir download\package\twiliomvc\lib
 if not exist download\package\twiliomvc\lib\3.5 mkdir download\package\twiliomvc\lib\3.5
@@ -61,6 +65,7 @@ REM tools\ilmerge.exe /lib:src\Twilio.Api.Silverlight\bin\Release /internalize /
 copy src\Twilio.Api\bin\Release\*.* download
 copy src\Twilio.Api.Silverlight\bin\Release\*.* download\Silverlight\
 copy src\Twilio.Api.WindowsPhone\bin\Release\*.* download\WindowsPhone\
+copy src\Twilio.Auth\bin\Release\*.* download
 copy src\Twilio.Mvc\bin\Release\*.* download
 copy src\Twilio.Twiml\bin\Release\*.* download
 copy src\Twilio.WebMatrix\bin\Release\*.* download
@@ -76,6 +81,7 @@ copy src\Twilio.Api\bin\Release\Twilio.Api.* download\package\twilio\lib\3.5\
 copy src\Twilio.Api.Silverlight\bin\Release\Twilio.Api.Silverlight.* download\package\twilio\lib\SL5\
 copy src\Twilio.Api.WindowsPhone\bin\Release\Twilio.Api.WindowsPhone.* download\package\twilio\lib\\WINDOWSPHONE8\
 
+copy src\Twilio.Auth\bin\Release\Twilio.Auth.* download\package\twilioauth\lib\3.5\
 copy src\Twilio.Mvc\bin\Release\Twilio.Mvc.* download\package\twiliomvc\lib\3.5\
 copy src\Twilio.Twiml\bin\Release\Twilio.Twiml.* download\package\twiliotwiml\lib\3.5\
 copy src\Twilio.WebMatrix\bin\Release\Twilio.WebMatrix.* download\package\twiliowebmatrix\lib\3.5\
@@ -89,6 +95,7 @@ copy src\Twilio.IpMessaging\bin\Release\Twilio.IpMessaging.* download\package\tw
 copy src\Twilio.Conversations\bin\Release\Twilio.Conversations.* download\package\twilioconversations\lib\3.5\
 
 tools\nuget.exe pack Twilio.nuspec -BasePath download\package\twilio -o download
+tools\nuget.exe pack Twilio.Auth.nuspec -BasePath download\package\twilioauth -o download
 tools\nuget.exe pack Twilio.Mvc.nuspec -BasePath download\package\twiliomvc -o download
 tools\nuget.exe pack Twilio.TwiML.nuspec -BasePath download\package\twiliotwiml -o download
 tools\nuget.exe pack Twilio.WebMatrix.nuspec -BasePath download\package\twiliowebmatrix -o download
