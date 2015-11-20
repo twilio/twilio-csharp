@@ -101,10 +101,10 @@ namespace Twilio.IpMessaging
 
             request.AddUrlSegment("ServiceSid", serviceSid);
 
-            request.AddParameter("FriendlyName", friendlyName);
-            request.AddParameter("DefaultServiceRoleSid", defaultServiceRoleSid);
-            request.AddParameter("DefaultChannelRoleSid", defaultChannelRoleSid);
-            request.AddParameter("DefaultChannelCreatorRoleSid", defaultChannelCreatorRoleSid);
+            if (friendlyName != null) { request.AddParameter("FriendlyName", friendlyName); }
+            if (defaultServiceRoleSid != null) { request.AddParameter("DefaultServiceRoleSid", defaultServiceRoleSid); }
+            if (defaultChannelRoleSid != null) { request.AddParameter("DefaultChannelRoleSid", defaultChannelRoleSid); }
+            if (defaultChannelCreatorRoleSid != null) { request.AddParameter("DefaultChannelCreatorRoleSid", defaultChannelCreatorRoleSid); }
 
             if (typingIndicatorTimeout.HasValue) { request.AddParameter("TypingIndicatorTimeout", typingIndicatorTimeout); }
 
