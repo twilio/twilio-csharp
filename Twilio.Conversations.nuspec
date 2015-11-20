@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio.Conversations</id>
-		<version>1.0.0-edge</version>
+		<version>1.0.1-edge</version>
 		<authors>Twilio</authors>
 		<description>Twilio Conversations REST API helper library</description>
 		<language>en-US</language>
@@ -14,6 +14,7 @@
 				<dependency id="Twilio" />
 		</dependencies>
 		<releaseNotes>
+	  * 1.0.1 - Bump version for minor bug fixes
       * 1.0.0 - Initial Release
     </releaseNotes>
 	</metadata>
