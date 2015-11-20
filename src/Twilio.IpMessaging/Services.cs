@@ -91,7 +91,7 @@ namespace Twilio.IpMessaging
         /// <returns>Updated Service</returns>
         public virtual Service UpdateService(string serviceSid, string friendlyName,
             string defaultServiceRoleSid, string defaultChannelRoleSid,
-            string defaultChannelCreatorRoleSid, int typingIndicatorTimeout, 
+            string defaultChannelCreatorRoleSid, int? typingIndicatorTimeout, 
             Dictionary<string, string> webhooksParams)
         {
             Require.Argument("ServiceSid", serviceSid);
@@ -105,7 +105,8 @@ namespace Twilio.IpMessaging
             request.AddParameter("DefaultServiceRoleSid", defaultServiceRoleSid);
             request.AddParameter("DefaultChannelRoleSid", defaultChannelRoleSid);
             request.AddParameter("DefaultChannelCreatorRoleSid", defaultChannelCreatorRoleSid);
-            request.AddParameter("TypingIndicatorTimeout", typingIndicatorTimeout);
+
+            if (typingIndicatorTimeout.HasValue) { request.AddParameter("TypingIndicatorTimeout", typingIndicatorTimeout); }
 
             if (webhooksParams != null && webhooksParams.Count > 0)
             {
