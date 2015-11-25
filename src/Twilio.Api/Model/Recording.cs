@@ -40,5 +40,9 @@ namespace Twilio
 		/// Doesn't include storage charge.
 		/// </summary>
 		public decimal? Price { get; set; }
+		/// <summary>
+		/// The Price Unit of the recording.
+		/// </summary>
+		public string PriceUnit { get; set; }
 	}
 }
