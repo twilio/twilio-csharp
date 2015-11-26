@@ -81,7 +81,7 @@ namespace Twilio
 						{
 							if (!string.IsNullOrEmpty(nestedValue))
 							{
-								nestedValue = nestedValue + HttpUtility.UrlEncode("&");
+								nestedValue = nestedValue + "&";
 							}
 							nestedValue = string.Format("{0}{1}={2}", nestedValue, nestedItem.Key, nestedItem.Value);
 						}
