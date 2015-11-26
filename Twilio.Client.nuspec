@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio.Client</id>
-		<version>3.5.0</version>
+		<version>3.5.1</version>
 		<authors>Twilio</authors>
 		<description>Twilio Client capability token generator for use with the Twilio Client for browsers JavaScript SDK.</description>
 		<language>en-US</language>
