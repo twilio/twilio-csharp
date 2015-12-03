@@ -14,7 +14,7 @@
 				<dependency id="Twilio" />
 		</dependencies>
 		<releaseNotes>
-      * 1.0.0 - Initial Release
-    </releaseNotes>
+			* 1.0.0 - Initial Release
+		</releaseNotes>
 	</metadata>
 </package>
