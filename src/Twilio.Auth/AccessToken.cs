@@ -13,9 +13,9 @@ namespace Twilio.Auth
         private string _signingKeySid;
         private string _accountSid;
         private string _secret;
-        public string Identity { get; set; }
+        public string? Identity { get; set; }
         public int Ttl { get; set; }
-        public int Nbf { get; set; }
+        public int? Nbf { get; set; }
         public List<IGrant> Grants { get; set; }
 
         public AccessToken(string accountSid, string signingKeySid, string secret) : this(accountSid, signingKeySid, secret, DEFAULT_TTL) { }
