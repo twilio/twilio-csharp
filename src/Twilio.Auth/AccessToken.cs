@@ -84,7 +84,7 @@ namespace Twilio.Auth
             return ToJWT();
         }
 
-        static int ConvertToUnixTimestamp(DateTime date)
+        public static int ConvertToUnixTimestamp(DateTime date)
         {
             DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
             TimeSpan diff = date - origin;
