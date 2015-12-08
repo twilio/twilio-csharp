@@ -61,7 +61,7 @@ namespace Twilio.Auth.Tests
 
             Assert.AreEqual("SK123", payload["iss"]);
             Assert.AreEqual("AC456", payload["sub"]);
-            Assert.AreEqual(now, payload["nbf"]);
+            Assert.AreEqual(ConvertToUnixTimestamp(now), payload["nbf"]);
             var exp = Convert.ToInt64(payload["exp"]);
             Assert.AreEqual(timestamp + 3600, exp);
             var jti = (string)payload["jti"];
