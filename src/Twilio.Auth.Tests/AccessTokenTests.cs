@@ -31,8 +31,6 @@ namespace Twilio.Auth.Tests
 
             Assert.AreEqual("SK123", payload["iss"]);
             Assert.AreEqual("AC456", payload["sub"]);
-            var nbf = Convert.ToInt64(payload["nbf"]);
-            Assert.AreEqual(timestamp, nbf);
             var exp = Convert.ToInt64(payload["exp"]);
             Assert.AreEqual(timestamp + 3600, exp);
             var jti = (string)payload["jti"];
@@ -40,6 +38,37 @@ namespace Twilio.Auth.Tests
 
             var grants = (Dictionary<string, object>)payload["grants"];
             Assert.AreEqual(0, grants.Count);
+        }
+
+        [Test]
+        public void ShouldHaveNbf()
+        {
+            var token = new AccessToken("AC456", "SK123", "foobar");
+            var now = DateTime.UtcNow;
+            token.Nbf = now;
+
+            var delta = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            var timestamp = (int)Math.Floor(delta.TotalSeconds);
+            var encoded = token.ToJWT();
+            Assert.IsNotNull(encoded);
+            Assert.IsNotEmpty(encoded);
+
+            var decoded = JsonWebToken.Decode(encoded, "foobar");
+            Assert.IsNotEmpty(decoded);
+            var serializer = new JavaScriptSerializer();
+            var payload = (Dictionary<string, object>)serializer.DeserializeObject(decoded);
+            Assert.IsNotNull(payload);
+
+            Assert.AreEqual("SK123", payload["iss"]);
+            Assert.AreEqual("AC456", payload["sub"]);
+            Assert.AreEqual(ConvertToUnixTimestamp(now), payload["nbf"]);
+            var exp = Convert.ToInt64(payload["exp"]);
+            Assert.AreEqual(timestamp + 3600, exp);
+            var jti = (string)payload["jti"];
+            Assert.AreEqual("SK123-" + timestamp.ToString(), jti);
+
+            var grants = (Dictionary<string, object>)payload["grants"];
+            Assert.AreEqual(0, grants.Count);    
         }
 
         [Test]
@@ -63,8 +92,6 @@ namespace Twilio.Auth.Tests
 
             Assert.AreEqual("SK123", payload["iss"]);
             Assert.AreEqual("AC456", payload["sub"]);
-            var nbf = Convert.ToInt64(payload["nbf"]);
-            Assert.AreEqual(timestamp, nbf);
             var exp = Convert.ToInt64(payload["exp"]);
             Assert.AreEqual(timestamp + 3600, exp);
             var jti = (string)payload["jti"];
@@ -97,8 +124,6 @@ namespace Twilio.Auth.Tests
 
             Assert.AreEqual("SK123", payload["iss"]);
             Assert.AreEqual("AC456", payload["sub"]);
-            var nbf = Convert.ToInt64(payload["nbf"]);
-            Assert.AreEqual(timestamp, nbf);
             var exp = Convert.ToInt64(payload["exp"]);
             Assert.AreEqual(timestamp + 3600, exp);
             var jti = (string)payload["jti"];
@@ -110,5 +135,11 @@ namespace Twilio.Auth.Tests
             Assert.IsNotNull(grants["ip_messaging"]);
         }
 
+        static int ConvertToUnixTimestamp(DateTime date)
+        {
+            DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            TimeSpan diff = date - origin;
+            return (int)Math.Floor(diff.TotalSeconds);
+        }
     }
 }
