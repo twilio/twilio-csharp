@@ -45,7 +45,7 @@ namespace Twilio.Auth.Tests
         {
             var token = new AccessToken("AC456", "SK123", "foobar");
             var now = DateTime.UtcNow;
-            token.Nbf = now;
+            token.Nbf = ConvertToUnixTimestamp(now);
 
             var delta = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             var timestamp = (int)Math.Floor(delta.TotalSeconds);
@@ -61,7 +61,7 @@ namespace Twilio.Auth.Tests
 
             Assert.AreEqual("SK123", payload["iss"]);
             Assert.AreEqual("AC456", payload["sub"]);
-            Assert.AreEqual(ConvertToUnixTimestamp(now), payload["nbf"]);
+            Assert.AreEqual(now, payload["nbf"]);
             var exp = Convert.ToInt64(payload["exp"]);
             Assert.AreEqual(timestamp + 3600, exp);
             var jti = (string)payload["jti"];
