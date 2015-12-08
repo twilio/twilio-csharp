@@ -15,6 +15,7 @@ namespace Twilio.Auth
         private string _secret;
         public string Identity { get; set; }
         public int Ttl { get; set; }
+        public DateTime Nbf { get; set; }
         public List<IGrant> Grants { get; set; }
 
         public AccessToken(string accountSid, string signingKeySid, string secret) : this(accountSid, signingKeySid, secret, DEFAULT_TTL) { }
@@ -63,15 +64,17 @@ namespace Twilio.Auth
                 grantPayload.Add(grant.GetGrantKey(), grant.GetPayload());
             }
 
-            var payload = new
+            var payload = new Dictionary<string, object>();
+            payload.Add("jti", String.Format("{0}-{1}", _signingKeySid, now));
+            payload.Add("iss", _signingKeySid);
+            payload.Add("sub", _accountSid);
+            payload.Add("exp", now + Ttl);
+            payload.Add("grants", grantPayload);
+
+            if (this.Nbf != null)
             {
-                jti = String.Format("{0}-{1}", _signingKeySid, now),
-                iss = _signingKeySid,
-                sub = _accountSid,
-                nbf = now,
-                exp = now + Ttl,
-                grants = grantPayload
-            };
+                payload.Add("nbf", ConvertToUnixTimestamp(this.Nbf));
+            }
 
             return JsonWebToken.Encode(headers, payload, _secret, algorithm);
         }
