@@ -306,6 +306,115 @@ namespace Twilio.TaskRouter.Tests
             Assert.IsNotNull(workerActivitySidParam);
             Assert.AreEqual("WA123", workerActivitySidParam.Value);
         }
+
+        [Test]
+        public void ShouldUpdateReservationWithInstructionParameters()
+        {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.Execute<Reservation>(It.IsAny<IRestRequest>()))
+                .Callback<IRestRequest>((request) => savedRequest = request)
+                .Returns(new Reservation());
+            var client = mockClient.Object;
+
+            ReservationRequest reservationRequest = new ReservationRequest(WORKSPACE_SID, TASK_SID, RESERVATION_SID, "reservationStatus")
+                .WithWorkerActivitySid("WA123").WithInstruction("Call").WithCallFrom("+15558675309").WithCallUrl("http://example.org")
+                .WithCallStatusCallbackUrl("http://example.org/callStatusCallback").WithCallAccept("true");
+
+            client.UpdateReservation(reservationRequest);
+
+            mockClient.Verify(trc => trc.Execute<Reservation>(It.IsAny<IRestRequest>()), Times.Once);
+
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Workspaces/{WorkspaceSid}/Tasks/{TaskSid}/Reservations/{ReservationSid}", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(10, savedRequest.Parameters.Count);
+            var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
+            Assert.IsNotNull(workspaceSidParam);
+            Assert.AreEqual(WORKSPACE_SID, workspaceSidParam.Value);
+            var taskSidParam = savedRequest.Parameters.Find(x => x.Name == "TaskSid");
+            Assert.IsNotNull(taskSidParam);
+            Assert.AreEqual(TASK_SID, taskSidParam.Value);
+            var reservationSidParam = savedRequest.Parameters.Find(x => x.Name == "ReservationSid");
+            Assert.IsNotNull(reservationSidParam);
+            Assert.AreEqual(RESERVATION_SID, reservationSidParam.Value);
+            var reservationStatusParam = savedRequest.Parameters.Find(x => x.Name == "ReservationStatus");
+            Assert.IsNotNull(reservationStatusParam);
+            Assert.AreEqual("reservationStatus", reservationStatusParam.Value);
+            var workerActivitySidParam = savedRequest.Parameters.Find(x => x.Name == "WorkerActivitySid");
+            Assert.IsNotNull(workerActivitySidParam);
+            Assert.AreEqual("WA123", workerActivitySidParam.Value);
+            var instructionParam = savedRequest.Parameters.Find(x => x.Name == "Instruction");
+            Assert.IsNotNull(instructionParam);
+            Assert.AreEqual("Call", instructionParam.Value);
+            var callFromParam = savedRequest.Parameters.Find(x => x.Name == "CallFrom");
+            Assert.IsNotNull(callFromParam);
+            Assert.AreEqual("+15558675309", callFromParam.Value);
+            var callUrlParam = savedRequest.Parameters.Find(x => x.Name == "CallUrl");
+            Assert.IsNotNull(callUrlParam);
+            Assert.AreEqual("http://example.org", callUrlParam.Value);
+            var callStatusCallbackUrlParam = savedRequest.Parameters.Find(x => x.Name == "CallStatusCallbackUrl"); 
+            Assert.IsNotNull(callStatusCallbackUrlParam); 
+            Assert.AreEqual("http://example.org/callStatusCallback", callStatusCallbackUrlParam.Value); 
+            var callAcceptParam = savedRequest.Parameters.Find(x => x.Name == "CallAccept"); 
+            Assert.IsNotNull(callAcceptParam); 
+            Assert.AreEqual("true", callAcceptParam.Value);
+        }
+
+        [Test]
+        public void ShouldUpdateReservationAsynchronouslyWithInstructionParameters()
+        {
+            IRestRequest savedRequest = null;
+            mockClient.Setup(trc => trc.ExecuteAsync<Reservation>(It.IsAny<IRestRequest>(), It.IsAny<Action<Reservation>>()))
+                .Callback<IRestRequest, Action<Reservation>>((request, action) => savedRequest = request);
+            var client = mockClient.Object;
+            manualResetEvent = new ManualResetEvent(false);
+
+            ReservationRequest reservationRequest = new ReservationRequest(WORKSPACE_SID, TASK_SID, RESERVATION_SID, "reservationStatus")
+                .WithWorkerActivitySid("WA123").WithInstruction("Call").WithCallFrom("+15558675309").WithCallUrl("http://example.org")
+                .WithCallStatusCallbackUrl("http://example.org/callStatusCallback").WithCallAccept("true");
+
+            client.UpdateReservation(reservationRequest, reservation => {
+                manualResetEvent.Set();
+            });
+            manualResetEvent.WaitOne(1);
+
+            mockClient.Verify(trc => trc.ExecuteAsync<Reservation>(It.IsAny<IRestRequest>(), It.IsAny<Action<Reservation>>()), Times.Once);
+
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("Workspaces/{WorkspaceSid}/Tasks/{TaskSid}/Reservations/{ReservationSid}", savedRequest.Resource);
+            Assert.AreEqual(Method.POST, savedRequest.Method);
+            Assert.AreEqual(10, savedRequest.Parameters.Count);
+            var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
+            Assert.IsNotNull(workspaceSidParam);
+            Assert.AreEqual(WORKSPACE_SID, workspaceSidParam.Value);
+            var taskSidParam = savedRequest.Parameters.Find(x => x.Name == "TaskSid");
+            Assert.IsNotNull(taskSidParam);
+            Assert.AreEqual(TASK_SID, taskSidParam.Value);
+            var reservationSidParam = savedRequest.Parameters.Find(x => x.Name == "ReservationSid");
+            Assert.IsNotNull(reservationSidParam);
+            Assert.AreEqual(RESERVATION_SID, reservationSidParam.Value);
+            var reservationStatusParam = savedRequest.Parameters.Find(x => x.Name == "ReservationStatus");
+            Assert.IsNotNull(reservationStatusParam);
+            Assert.AreEqual("reservationStatus", reservationStatusParam.Value);
+            var workerActivitySidParam = savedRequest.Parameters.Find(x => x.Name == "WorkerActivitySid");
+            Assert.IsNotNull(workerActivitySidParam);
+            Assert.AreEqual("WA123", workerActivitySidParam.Value);
+            var instructionParam = savedRequest.Parameters.Find(x => x.Name == "Instruction");
+            Assert.IsNotNull(instructionParam);
+            Assert.AreEqual("Call", instructionParam.Value);
+            var callFromParam = savedRequest.Parameters.Find(x => x.Name == "CallFrom");
+            Assert.IsNotNull(callFromParam);
+            Assert.AreEqual("+15558675309", callFromParam.Value);
+            var callUrlParam = savedRequest.Parameters.Find(x => x.Name == "CallUrl");
+            Assert.IsNotNull(callUrlParam);
+            Assert.AreEqual("http://example.org", callUrlParam.Value);
+            var callStatusCallbackUrlParam = savedRequest.Parameters.Find(x => x.Name == "CallStatusCallbackUrl"); 
+            Assert.IsNotNull(callStatusCallbackUrlParam); 
+            Assert.AreEqual("http://example.org/callStatusCallback", callStatusCallbackUrlParam.Value); 
+            var callAcceptParam = savedRequest.Parameters.Find(x => x.Name == "CallAccept"); 
+            Assert.IsNotNull(callAcceptParam); 
+            Assert.AreEqual("true", callAcceptParam.Value);
+        }
     }
 }
 

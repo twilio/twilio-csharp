@@ -128,16 +128,49 @@ namespace Twilio.TaskRouter
             Require.Argument("ReservationSid", reservationSid);
             Require.Argument("ReservationStatus", reservationStatus);
 
+            return this.UpdateReservation(new ReservationRequest(workspaceSid, taskSid, reservationSid, reservationStatus)
+                .WithWorkerActivitySid(workerActivitySid));
+        }
+
+        /// <summary>
+        /// Updates the reservation.
+        /// </summary>
+        /// <param name="reservationRequest">Reservation request.</param>
+        public virtual Reservation UpdateReservation(ReservationRequest reservationRequest) 
+        {
+            Require.Argument("ReservationRequest", reservationRequest);
+
             var request = new RestRequest(Method.POST);
             request.Resource = "Workspaces/{WorkspaceSid}/Tasks/{TaskSid}/Reservations/{ReservationSid}";
-            request.AddUrlSegment("WorkspaceSid", workspaceSid);
-            request.AddUrlSegment("TaskSid", taskSid);
-            request.AddUrlSegment("ReservationSid", reservationSid);
+            request.AddUrlSegment("WorkspaceSid", reservationRequest.GetWorkspaceSid());
+            request.AddUrlSegment("TaskSid", reservationRequest.GetTaskSid());
+            request.AddUrlSegment("ReservationSid", reservationRequest.GetReservationSid());
 
-            request.AddParameter("ReservationStatus", reservationStatus);
-            if (workerActivitySid.HasValue())
-                request.AddParameter("WorkerActivitySid", workerActivitySid);
-
+            request.AddParameter("ReservationStatus", reservationRequest.GetReservationStatus());
+            if (reservationRequest.GetWorkerActivitySid().HasValue())
+                request.AddParameter("WorkerActivitySid", reservationRequest.GetWorkerActivitySid());
+            if (reservationRequest.GetInstruction().HasValue())
+            {
+                request.AddParameter("Instruction", reservationRequest.GetInstruction());
+                if (reservationRequest.GetInstruction().Equals("Dequeue"))
+                {
+                    if (reservationRequest.GetDequeueFrom().HasValue())
+                        request.AddParameter("DequeueFrom", reservationRequest.GetDequeueFrom());
+                    if (reservationRequest.GetDequeuePostWorkActivitySid().HasValue())
+                        request.AddParameter("DequeuePostWorkActivitySid", reservationRequest.GetDequeuePostWorkActivitySid());
+                }
+                else
+                {
+                    if (reservationRequest.GetCallFrom().HasValue())
+                        request.AddParameter("CallFrom", reservationRequest.GetCallFrom());
+                    if (reservationRequest.GetCallUrl().HasValue())
+                        request.AddParameter("CallUrl", reservationRequest.GetCallUrl());
+                    if (reservationRequest.GetCallAccept().HasValue())
+                        request.AddParameter("CallAccept", reservationRequest.GetCallAccept());
+                    if (reservationRequest.GetCallStatusCallbackUrl().HasValue())
+                        request.AddParameter("CallStatusCallbackUrl", reservationRequest.GetCallStatusCallbackUrl());
+                }
+            }
             return Execute<Reservation>(request);
         }
     }
