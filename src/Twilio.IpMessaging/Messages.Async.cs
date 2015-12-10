@@ -107,5 +107,31 @@ namespace Twilio.IpMessaging
 
             ExecuteAsync<Message>(request, (response) => callback(response));
         }
+
+        /// <summary>
+        /// Deletes a Message identified by Message Sid.
+        /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
+        /// <param name="channelSid">Channel Sid</param>
+        /// <param name="messageSid">Message Sid</param>
+        public virtual void DeleteMessage(string serviceSid, string channelSid,
+            string messageSid, Action<DeleteStatus> callback)
+        {
+            Require.Argument("ServiceSid", serviceSid);
+            Require.Argument("ChannelSid", channelSid);
+            Require.Argument("MessageSid", messageSid);
+
+            var request = new RestRequest(Method.DELETE);
+            request.Resource = "/Services/{ServiceSid}/Channels/{ChannelSid}/Message/{MessageSid}";
+
+            request.AddUrlSegment("ServiceSid", serviceSid);
+            request.AddUrlSegment("ChannelSid", channelSid);
+            request.AddUrlSegment("MessageSid", messageSid);
+
+            ExecuteAsync(request, (response) => { callback(
+                response.StatusCode == System.Net.HttpStatusCode.NoContent ?
+                DeleteStatus.Success :
+                DeleteStatus.Failed); });
+        }
     }
 }
