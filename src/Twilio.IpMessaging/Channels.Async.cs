@@ -56,18 +56,8 @@ namespace Twilio.IpMessaging
         public virtual void CreateChannel(string serviceSid, string type,
             string friendlyName, string attributes, Action<Channel> callback)
         {
-            Require.Argument("ServiceSid", serviceSid);
-
-            var request = new RestRequest(Method.POST);
-            request.Resource = "/Services/{ServiceSid}/Channels";
-
-            request.AddUrlSegment("ServiceSid", serviceSid);
-
-            request.AddParameter("Type", type);
-            request.AddParameter("FriendlyName", friendlyName);
-            request.AddParameter("Attributes", attributes);
-
-            ExecuteAsync<Channel>(request, (response) => callback(response));
+            CreateChannel(serviceSid, type, friendlyName, null,
+                attributes, callback);
         }
 
         /// <summary>
@@ -79,7 +69,7 @@ namespace Twilio.IpMessaging
         /// <param name="uniqueName">Unique Name for the Channel</param>
         /// <param name="attributes">Developer specific values to be stored as is</param>
         public virtual void CreateChannel(string serviceSid, string type,
-            string friendlyName, string attributes, string uniqueName,
+            string friendlyName, string uniqueName, string attributes,
             Action<Channel> callback)
         {
             Require.Argument("ServiceSid", serviceSid);
@@ -109,20 +99,8 @@ namespace Twilio.IpMessaging
             string type, string friendlyName, string attributes,
             Action<Channel> callback)
         {
-            Require.Argument("ServiceSid", serviceSid);
-            Require.Argument("ChannelSid", channelSid);
-
-            var request = new RestRequest(Method.POST);
-            request.Resource = "/Services/{ServiceSid}/Channels/{ChannelSid}";
-
-            request.AddUrlSegment("ServiceSid", serviceSid);
-            request.AddUrlSegment("ChannelSid", channelSid);
-
-            request.AddParameter("Type", type);
-            request.AddParameter("FriendlyName", friendlyName);
-            request.AddParameter("Attributes", attributes);
-
-            ExecuteAsync<Channel>(request, (response) => callback(response));
+            UpdateChannel(serviceSid, channelSid, type, friendlyName, null,
+                attributes, callback);
         }
 
         /// <summary>

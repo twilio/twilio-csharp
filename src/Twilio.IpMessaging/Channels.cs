@@ -56,18 +56,8 @@ namespace Twilio.IpMessaging
         public virtual Channel CreateChannel(string serviceSid, string type, 
             string friendlyName, string attributes)
         {
-            Require.Argument("ServiceSid", serviceSid);
-            
-            var request = new RestRequest(Method.POST);
-            request.Resource = "/Services/{ServiceSid}/Channels";
-
-            request.AddUrlSegment("ServiceSid", serviceSid);
-
-            request.AddParameter("Type", type);
-            request.AddParameter("FriendlyName", friendlyName);
-            request.AddParameter("Attributes", attributes);
-
-            return Execute<Channel>(request);
+            return return CreateChannel(serviceSid, type, friendlyName,
+                null, attributes);
         }
 
         /// <summary>
@@ -110,20 +100,8 @@ namespace Twilio.IpMessaging
             string channelSid, string type, string friendlyName, 
             string attributes)
         {
-            Require.Argument("ServiceSid", serviceSid);
-            Require.Argument("ChannelSid", channelSid);
-
-            var request = new RestRequest(Method.POST);
-            request.Resource = "/Services/{ServiceSid}/Channels/{ChannelSid}";
-
-            request.AddUrlSegment("ServiceSid", serviceSid);
-            request.AddUrlSegment("ChannelSid", channelSid);
-
-            request.AddParameter("Type", type);
-            request.AddParameter("FriendlyName", friendlyName);
-            request.AddParameter("Attributes", attributes);
-
-            return Execute<Channel>(request);
+            return UpdateChannel(serviceSid, channelSid, type, friendlyName,
+                null, attributes);
         }
 
         /// <summary>
