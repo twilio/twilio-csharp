@@ -29,7 +29,7 @@ namespace Twilio.IpMessaging
         /// Retrieves the Channel by Channel Sid.
         /// </summary>
         /// <param name="serviceSid">Service Sid</param>
-        /// <param name="channelSid">Channel Sid</param>
+        /// <param name="channelSid">Channel Sid or Channel Unique name</param>
         /// <returns>Channel</returns>
         public virtual Channel GetChannel(string serviceSid, string channelSid)
         {
@@ -56,8 +56,24 @@ namespace Twilio.IpMessaging
         public virtual Channel CreateChannel(string serviceSid, string type, 
             string friendlyName, string attributes)
         {
+            return CreateChannel(serviceSid, type, friendlyName,
+                null, attributes);
+        }
+
+        /// <summary>
+        /// Creates a Channel.
+        /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
+        /// <param name="type">Channel type</param>
+        /// <param name="friendlyName">Friendly Name for the Channel</param>
+        /// <param name="uniqueName">Unique Name for the Channel</param>
+        /// <param name="attributes">Developer specific values to be stored as is</param>
+        /// <returns>A new Channel</returns>
+        public virtual Channel CreateChannel(string serviceSid, string type,
+            string friendlyName, string uniqueName, string attributes)
+        {
             Require.Argument("ServiceSid", serviceSid);
-            
+
             var request = new RestRequest(Method.POST);
             request.Resource = "/Services/{ServiceSid}/Channels";
 
@@ -65,6 +81,7 @@ namespace Twilio.IpMessaging
 
             request.AddParameter("Type", type);
             request.AddParameter("FriendlyName", friendlyName);
+            request.AddParameter("UniqueName", uniqueName);
             request.AddParameter("Attributes", attributes);
 
             return Execute<Channel>(request);
@@ -83,6 +100,24 @@ namespace Twilio.IpMessaging
             string channelSid, string type, string friendlyName, 
             string attributes)
         {
+            return UpdateChannel(serviceSid, channelSid, type, friendlyName,
+                null, attributes);
+        }
+
+        /// <summary>
+        /// Updates a Channel.
+        /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
+        /// <param name="channelSid">Channel Sid or Channel Unique name</param>
+        /// <param name="type">Channel type</param>
+        /// <param name="friendlyName">Friendly Name for the Channel</param>
+        /// <param name="uniqueName">Unique Name for the Channel</param>
+        /// <param name="attributes">Developer specific values to be stored as is</param>
+        /// <returns>Updated Channel</returns>
+        public virtual Channel UpdateChannel(string serviceSid,
+            string channelSid, string type, string friendlyName,
+            string uniqueName, string attributes)
+        {
             Require.Argument("ServiceSid", serviceSid);
             Require.Argument("ChannelSid", channelSid);
 
@@ -94,6 +129,7 @@ namespace Twilio.IpMessaging
 
             request.AddParameter("Type", type);
             request.AddParameter("FriendlyName", friendlyName);
+            request.AddParameter("UniqueName", uniqueName);
             request.AddParameter("Attributes", attributes);
 
             return Execute<Channel>(request);
@@ -103,7 +139,7 @@ namespace Twilio.IpMessaging
         /// Deletes a Channel identified by Channel Sid.
         /// </summary>
         /// <param name="serviceSid">Service Sid</param>
-        /// <param name="channelSid">Channel Sid</param>]
+        /// <param name="channelSid">Channel Sid or Channel Unique name</param>]
         /// <returns>Channel deletion status</returns>
         public virtual DeleteStatus DeleteChannel(string serviceSid, 
             string channelSid)

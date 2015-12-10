@@ -86,11 +86,57 @@ namespace Twilio.IpMessaging
         /// <param name="defaultServiceRoleSid">Default Service Role Sid</param>
         /// <param name="defaultChannelRoleSid">Default channel Role Sid</param>
         /// <param name="defaultChannelCreatorRoleSid">Default channel creator Role Sid</param>
-        /// <param name="webhooksParams">Dictionary of Webhook params</param>
         /// <param name="typingIndicatorTimeout">Typing indicator timeout</param>
+        /// <param name="webhooksParams">Dictionary of Webhook params</param>
         public virtual void UpdateService(string serviceSid, string friendlyName,
-            string defaultServiceRoleSid, string defaultChannelRoleSid, 
-            string defaultChannelCreatorRoleSid, int typingIndicatorTimeout, 
+            string defaultServiceRoleSid, string defaultChannelRoleSid,
+            string defaultChannelCreatorRoleSid, int? typingIndicatorTimeout,
+            Dictionary<string, string> webhooksParams, Action<Service> callback)
+        {
+            UpdateService(serviceSid, friendlyName, defaultServiceRoleSid,
+                defaultChannelRoleSid, defaultChannelCreatorRoleSid, null,
+                typingIndicatorTimeout, null, webhooksParams, callback);
+        }
+
+        /// <summary>
+        /// Updates a Service.<br/>
+        /// Use webhooksParams to set desired Webhooks. Pass null otherwise.
+        /// Listed below are the acceptable params<br/>
+        /// <list type="bullet">
+        /// <item><description>Webhooks.OnMessageSend.Url</description></item>
+        /// <item><description>Webhooks.OnMessageSend.Method</description></item>
+        /// <item><description>Webhooks.OnMessageSend.Format</description></item>
+        /// <item><description>Webhooks.OnChannelAdd.Url</description></item>
+        /// <item><description>Webhooks.OnChannelAdd.Method</description></item>
+        /// <item><description>Webhooks.OnChannelAdd.Format</description></item>
+        /// <item><description>Webhooks.OnChannelDestroy.Url</description></item>
+        /// <item><description>Webhooks.OnChannelDestroy.Method</description></item>
+        /// <item><description>Webhooks.OnChannelDestroy.Format</description></item>
+        /// <item><description>Webhooks.OnChannelUpdate.Url</description></item>
+        /// <item><description>Webhooks.OnChannelUpdate.Method</description></item>
+        /// <item><description>Webhooks.OnChannelUpdate.Format</description></item>
+        /// <item><description>Webhooks.OnMemberAdd.Url</description></item>
+        /// <item><description>Webhooks.OnMemberAdd.Method</description></item>
+        /// <item><description>Webhooks.OnMemberAdd.Format</description></item>
+        /// <item><description>Webhooks.OnMemberRemove.Url</description></item>
+        /// <item><description>Webhooks.OnMemberRemove.Method</description></item>
+        /// <item><description>Webhooks.OnMemberRemove.Format</description></item>
+        /// </list>
+        /// <br/>
+        /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
+        /// <param name="friendlyName">Friendly Name</param>
+        /// <param name="defaultServiceRoleSid">Default Service Role Sid</param>
+        /// <param name="defaultChannelRoleSid">Default channel Role Sid</param>
+        /// <param name="defaultChannelCreatorRoleSid">Default channel creator Role Sid</param>
+        /// <param name="readStatusEnabled">Default channel creator Role Sid</param>
+        /// <param name="typingIndicatorTimeout">Typing indicator timeout</param>
+        /// <param name="consumptionReportInterval">Consumption Report Interval</param>
+        /// <param name="webhooksParams">Dictionary of Webhook params</param>
+        public virtual void UpdateService(string serviceSid, string friendlyName,
+            string defaultServiceRoleSid, string defaultChannelRoleSid,
+            string defaultChannelCreatorRoleSid, bool? readStatusEnabled,
+            int? typingIndicatorTimeout, int? consumptionReportInterval,
             Dictionary<string, string> webhooksParams, Action<Service> callback)
         {
             Require.Argument("ServiceSid", serviceSid);
@@ -100,11 +146,13 @@ namespace Twilio.IpMessaging
 
             request.AddUrlSegment("ServiceSid", serviceSid);
 
-            request.AddParameter("FriendlyName", friendlyName);
-            request.AddParameter("DefaultServiceRoleSid", defaultServiceRoleSid);
-            request.AddParameter("DefaultChannelRoleSid", defaultChannelRoleSid);
-            request.AddParameter("DefaultChannelCreatorRoleSid", defaultChannelCreatorRoleSid);
-            request.AddParameter("TypingIndicatorTimeout", typingIndicatorTimeout);
+            if (friendlyName != null) { request.AddParameter("FriendlyName", friendlyName); }
+            if (defaultServiceRoleSid != null) { request.AddParameter("DefaultServiceRoleSid", defaultServiceRoleSid); }
+            if (defaultChannelRoleSid != null) { request.AddParameter("DefaultChannelRoleSid", defaultChannelRoleSid); }
+            if (defaultChannelCreatorRoleSid != null) { request.AddParameter("DefaultChannelCreatorRoleSid", defaultChannelCreatorRoleSid); }
+            if (readStatusEnabled.HasValue) { request.AddParameter("ReadStatusEnabled", readStatusEnabled); }
+            if (typingIndicatorTimeout.HasValue) { request.AddParameter("TypingIndicatorTimeout", typingIndicatorTimeout); }
+            if (consumptionReportInterval.HasValue) { request.AddParameter("ConsumptionReportInterval", consumptionReportInterval); }
 
             if (webhooksParams != null && webhooksParams.Count > 0)
             {
