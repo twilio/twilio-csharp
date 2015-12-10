@@ -56,7 +56,7 @@ namespace Twilio.IpMessaging
         public virtual Channel CreateChannel(string serviceSid, string type, 
             string friendlyName, string attributes)
         {
-            return return CreateChannel(serviceSid, type, friendlyName,
+            return CreateChannel(serviceSid, type, friendlyName,
                 null, attributes);
         }
 
