@@ -86,12 +86,15 @@ namespace Twilio.IpMessaging
         /// <param name="defaultServiceRoleSid">Default Service Role Sid</param>
         /// <param name="defaultChannelRoleSid">Default channel Role Sid</param>
         /// <param name="defaultChannelCreatorRoleSid">Default channel creator Role Sid</param>
-        /// <param name="webhooksParams">Dictionary of Webhook params</param>
+        /// <param name="readStatusEnabled">Default channel creator Role Sid</param>
         /// <param name="typingIndicatorTimeout">Typing indicator timeout</param>
+        /// <param name="consumptionReportInterval">Consumption Report Interval</param>
+        /// <param name="webhooksParams">Dictionary of Webhook params</param>
         /// <returns>Updated Service</returns>
         public virtual Service UpdateService(string serviceSid, string friendlyName,
             string defaultServiceRoleSid, string defaultChannelRoleSid,
-            string defaultChannelCreatorRoleSid, int? typingIndicatorTimeout, 
+            string defaultChannelCreatorRoleSid, bool readStatusEnabled,
+            int? typingIndicatorTimeout, int? consumptionReportInterval,
             Dictionary<string, string> webhooksParams)
         {
             Require.Argument("ServiceSid", serviceSid);
@@ -106,7 +109,11 @@ namespace Twilio.IpMessaging
             if (defaultChannelRoleSid != null) { request.AddParameter("DefaultChannelRoleSid", defaultChannelRoleSid); }
             if (defaultChannelCreatorRoleSid != null) { request.AddParameter("DefaultChannelCreatorRoleSid", defaultChannelCreatorRoleSid); }
 
+            request.AddParameter("ReadStatusEnabled", readStatusEnabled);
+
             if (typingIndicatorTimeout.HasValue) { request.AddParameter("TypingIndicatorTimeout", typingIndicatorTimeout); }
+
+            if (consumptionReportInterval.HasValue) { request.AddParameter("ConsumptionReportInterval", consumptionReportInterval); }
 
             if (webhooksParams != null && webhooksParams.Count > 0)
             {

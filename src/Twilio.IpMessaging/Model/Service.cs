@@ -41,14 +41,30 @@ namespace Twilio.IpMessaging.Model
         public string DefaultServiceRoleSid { get; set; }
 
         /// <summary>
-        /// Default Channel Role Sid
+        /// Default Channel role assigned when joining the channel
         /// </summary>
         public string DefaultChannelRoleSid { get; set; }
+
+        /// <summary>
+        /// Default role assigned to channel creator when joining channel 
+        /// for first time
+        /// </summary>
+        public string DefaultChannelCreatorRoleSid { get; set; }
+
+        /// <summary>
+        /// Flag that denotes if memeber read status feature is enabled
+        /// </summary>
+        public bool ReadStatusEnabled { get; set; }
 
         /// <summary>
         /// Typing Indicator time out
         /// </summary>
         public int TypingIndicatorTimeout { get; set; }
+
+        /// <summary>
+        /// The interval value between the consumption reports
+        /// </summary>
+        public int ConsumptionReportInterval { get; set; }
 
         /// <summary>
         /// Webhooks data.
