@@ -112,7 +112,7 @@ namespace Twilio.TaskRouter
 
             return Execute<ReservationResult>(request);
         }
-
+            
         /// <summary>
         /// Update a reservation.
         /// </summary>
@@ -121,54 +121,51 @@ namespace Twilio.TaskRouter
         /// <param name="reservationSid">Reservation sid.</param>
         /// <param name="reservationStatus">Reservation status.</param>
         /// <param name="workerActivitySid">Optional worker activity sid.</param>
-        public virtual Reservation UpdateReservation(string workspaceSid, string taskSid, string reservationSid, string reservationStatus, string workerActivitySid)
+        /// <param name="instruction">Optional instruction.</param>
+        /// <param name="dequeueFrom">Optional dequeue from</param>
+        /// <param name="dequeuePostWorkActivitySid">Optional dequeue post work activity sid.</param>
+        /// <param name="callFrom">Optional call from.</param>
+        /// <param name="callUrl">Optional call URL.</param>
+        /// <param name="callAccept">Optional call accept.</param>
+        /// <param name="callStatusCallbackUrl">Optional call status callback URL.</param>
+        public virtual Reservation UpdateReservation(string workspaceSid, string taskSid, string reservationSid, string reservationStatus, 
+            string workerActivitySid = null, string instruction = null, string dequeueFrom = null, string dequeuePostWorkActivitySid = null, 
+            string callFrom = null, string callUrl = null, string callAccept = null, string callStatusCallbackUrl = null)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("TaskSid", taskSid);
             Require.Argument("ReservationSid", reservationSid);
             Require.Argument("ReservationStatus", reservationStatus);
 
-            return this.UpdateReservation(new ReservationRequest(workspaceSid, taskSid, reservationSid, reservationStatus)
-                .WithWorkerActivitySid(workerActivitySid));
-        }
-
-        /// <summary>
-        /// Updates the reservation.
-        /// </summary>
-        /// <param name="reservationRequest">Reservation request.</param>
-        public virtual Reservation UpdateReservation(ReservationRequest reservationRequest) 
-        {
-            Require.Argument("ReservationRequest", reservationRequest);
-
             var request = new RestRequest(Method.POST);
             request.Resource = "Workspaces/{WorkspaceSid}/Tasks/{TaskSid}/Reservations/{ReservationSid}";
-            request.AddUrlSegment("WorkspaceSid", reservationRequest.GetWorkspaceSid());
-            request.AddUrlSegment("TaskSid", reservationRequest.GetTaskSid());
-            request.AddUrlSegment("ReservationSid", reservationRequest.GetReservationSid());
+            request.AddUrlSegment("WorkspaceSid", workspaceSid);
+            request.AddUrlSegment("TaskSid", taskSid);
+            request.AddUrlSegment("ReservationSid", reservationSid);
 
-            request.AddParameter("ReservationStatus", reservationRequest.GetReservationStatus());
-            if (reservationRequest.GetWorkerActivitySid().HasValue())
-                request.AddParameter("WorkerActivitySid", reservationRequest.GetWorkerActivitySid());
-            if (reservationRequest.GetInstruction().HasValue())
+            request.AddParameter("ReservationStatus", reservationStatus);
+            if (workerActivitySid.HasValue())
+                request.AddParameter("WorkerActivitySid", workerActivitySid);
+            if (instruction.HasValue())
             {
-                request.AddParameter("Instruction", reservationRequest.GetInstruction());
-                if (reservationRequest.GetInstruction().Equals("Dequeue"))
+                request.AddParameter("Instruction", instruction);
+                if (instruction.Equals("Dequeue"))
                 {
-                    if (reservationRequest.GetDequeueFrom().HasValue())
-                        request.AddParameter("DequeueFrom", reservationRequest.GetDequeueFrom());
-                    if (reservationRequest.GetDequeuePostWorkActivitySid().HasValue())
-                        request.AddParameter("DequeuePostWorkActivitySid", reservationRequest.GetDequeuePostWorkActivitySid());
+                    if (dequeueFrom.HasValue())
+                        request.AddParameter("DequeueFrom", dequeueFrom);
+                    if (dequeuePostWorkActivitySid.HasValue())
+                        request.AddParameter("DequeuePostWorkActivitySid", dequeuePostWorkActivitySid);
                 }
                 else
                 {
-                    if (reservationRequest.GetCallFrom().HasValue())
-                        request.AddParameter("CallFrom", reservationRequest.GetCallFrom());
-                    if (reservationRequest.GetCallUrl().HasValue())
-                        request.AddParameter("CallUrl", reservationRequest.GetCallUrl());
-                    if (reservationRequest.GetCallAccept().HasValue())
-                        request.AddParameter("CallAccept", reservationRequest.GetCallAccept());
-                    if (reservationRequest.GetCallStatusCallbackUrl().HasValue())
-                        request.AddParameter("CallStatusCallbackUrl", reservationRequest.GetCallStatusCallbackUrl());
+                    if (callFrom.HasValue())
+                        request.AddParameter("CallFrom", callFrom);
+                    if (callFrom.HasValue())
+                        request.AddParameter("CallUrl", callUrl);
+                    if (callAccept.HasValue())
+                        request.AddParameter("CallAccept", callAccept);
+                    if (callStatusCallbackUrl.HasValue())
+                        request.AddParameter("CallStatusCallbackUrl", callStatusCallbackUrl);
                 }
             }
             return Execute<Reservation>(request);

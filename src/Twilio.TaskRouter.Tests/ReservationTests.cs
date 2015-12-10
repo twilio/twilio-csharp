@@ -271,6 +271,7 @@ namespace Twilio.TaskRouter.Tests
             Assert.AreEqual("WA123", workerActivitySidParam.Value);
         }
 
+
         [Test]
         public void ShouldUpdateReservationAsynchronously()
         {
@@ -316,11 +317,9 @@ namespace Twilio.TaskRouter.Tests
                 .Returns(new Reservation());
             var client = mockClient.Object;
 
-            ReservationRequest reservationRequest = new ReservationRequest(WORKSPACE_SID, TASK_SID, RESERVATION_SID, "reservationStatus")
-                .WithWorkerActivitySid("WA123").WithInstruction("Call").WithCallFrom("+15558675309").WithCallUrl("http://example.org")
-                .WithCallStatusCallbackUrl("http://example.org/callStatusCallback").WithCallAccept("true");
-
-            client.UpdateReservation(reservationRequest);
+            client.UpdateReservation(WORKSPACE_SID, TASK_SID, RESERVATION_SID, "reservationStatus", "WA123",
+                instruction: "Call", callFrom: "+15558675309", callUrl: "http://example.org", callAccept: "true",
+                callStatusCallbackUrl: "http://example.org/callStatusCallback");
 
             mockClient.Verify(trc => trc.Execute<Reservation>(It.IsAny<IRestRequest>()), Times.Once);
 
@@ -369,13 +368,11 @@ namespace Twilio.TaskRouter.Tests
             var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            ReservationRequest reservationRequest = new ReservationRequest(WORKSPACE_SID, TASK_SID, RESERVATION_SID, "reservationStatus")
-                .WithWorkerActivitySid("WA123").WithInstruction("Call").WithCallFrom("+15558675309").WithCallUrl("http://example.org")
-                .WithCallStatusCallbackUrl("http://example.org/callStatusCallback").WithCallAccept("true");
-
-            client.UpdateReservation(reservationRequest, reservation => {
-                manualResetEvent.Set();
-            });
+            client.UpdateReservation(WORKSPACE_SID, TASK_SID, RESERVATION_SID, "reservationStatus", "WA123", instruction: "Call", 
+                callFrom: "+15558675309", callUrl: "http://example.org", callAccept: "true", callStatusCallbackUrl: "http://example.org/callStatusCallback", 
+                callback: reservation => {
+                    manualResetEvent.Set();
+                });
             manualResetEvent.WaitOne(1);
 
             mockClient.Verify(trc => trc.ExecuteAsync<Reservation>(It.IsAny<IRestRequest>(), It.IsAny<Action<Reservation>>()), Times.Once);
