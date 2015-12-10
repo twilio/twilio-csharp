@@ -56,6 +56,11 @@ namespace Twilio.IpMessaging.Model
         public string Body { get; set; }
 
         /// <summary>
+        /// The index of the message in the channel
+        /// </summary>
+        public int Index { get; set; }
+
+        /// <summary>
         /// Resource api location.
         /// </summary>
         public string Url { get; set; }

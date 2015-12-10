@@ -42,6 +42,16 @@ namespace Twilio.IpMessaging.Model
         public string RoleSid { get; set; }
 
         /// <summary>
+        /// Index of last read message
+        /// </summary>
+        public int LastConsumedMessageIndex { get; set; }
+
+        /// <summary>
+        /// The date at which the last message was read
+        /// </summary>
+        public DateTime LastConsumptionTimestamp { get; set; }
+
+        /// <summary>
         /// The date that this Member was created, given as GMT
         /// </summary>
         public DateTime DateCreated { get; set; }
