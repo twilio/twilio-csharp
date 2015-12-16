@@ -1,0 +1,10 @@
+{
+    "sid": "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "identity": "test@twilio.com",
+    "url": "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "date_created": "2015-01-02T11:23:45Z",
+    "date_updated": "2015-01-02T11:23:45Z",
+}

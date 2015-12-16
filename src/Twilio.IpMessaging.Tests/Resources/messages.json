@@ -1,0 +1,25 @@
+{
+    "meta": {
+        "page": 0,
+        "page_size": 50,
+        "first_page_url": "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages?Page=0&PageSize=50",
+        "next_page_url": "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages?Page=1&PageSize=50",
+        "previous_page_url": null,
+        "url": "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages?Page=0?PageSize=50",
+        "key": "messages"
+    },
+    "messages": [
+        {
+            "sid": "IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "date_created": "2015-01-02T11:23:45Z",
+            "date_updated": "2015-01-02T11:23:45Z",
+            "was_edited": "False",
+            "from": "alice",
+            "to": "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "body": "hi",
+            "url": "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+    ]
+}

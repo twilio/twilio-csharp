@@ -1,0 +1,14 @@
+{
+    "sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "friendly_name": "admin",
+    "type": "deployment",
+    "permissions": [
+        "createChannel",
+        "destroyChannel",
+    ],
+    "date_created": "2015-01-02T11:23:45Z",
+    "date_updated": "2015-01-02T11:23:45Z",
+    "url": "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+}
