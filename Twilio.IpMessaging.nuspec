@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio.IpMessaging</id>
-		<version>1.0.2-edge</version>
+		<version>1.0.0</version>
 		<authors>Twilio</authors>
 		<description>Twilio Ip Messaging REST API helper library</description>
 		<language>en-US</language>
@@ -14,8 +14,6 @@
 				<dependency id="Twilio" />
 		</dependencies>
 		<releaseNotes>
-	  * 1.0.2 - Minor bug fixes
-      * 1.0.1 - Fix updating member, fix webhooks
       * 1.0.0 - Initial Release
     </releaseNotes>
 	</metadata>

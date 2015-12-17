@@ -53,6 +53,9 @@ if not exist download\package\twiliomonitor\lib\3.5 mkdir download\package\twili
 if not exist download\package\twiliotrunking\lib mkdir download\package\twiliotrunking\lib
 if not exist download\package\twiliotrunking\lib\3.5 mkdir download\package\twiliotrunking\lib\3.5
 
+if not exist download\package\twilioipmessaging\lib mkdir download\package\twilioipmessaging\lib
+if not exist download\package\twilioipmessaging\lib\3.5 mkdir download\package\twilioipmessaging\lib\3.5
+
 REM tools\ilmerge.exe /lib:src\Twilio.Api\bin\Release /internalize /ndebug /v2 /out:download\Twilio.Api.dll Twilio.Api.dll RestSharp.dll
 REM tools\ilmerge.exe /lib:src\Twilio.Api.Silverlight\bin\Release /internalize /ndebug /targetplatform:v4,"C:\Program Files (x86)\Microsoft Silverlight\4.1.10111.0" /out:download\Twilio.Api.Silverlight.dll RestSharp.Silverlight.dll
 
