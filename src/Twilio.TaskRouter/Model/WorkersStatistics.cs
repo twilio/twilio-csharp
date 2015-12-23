@@ -81,6 +81,10 @@ namespace Twilio.TaskRouter
             /// Gets or sets the avg.
             /// </summary>
             public decimal? Avg { get; set; }
+            /// <summary>
+            /// Gets or sets the total.
+            /// </summary>
+            public decimal? Total { get; set; }
         }
 
         /// <summary>
