@@ -17,6 +17,12 @@ namespace Twilio.TaskRouter
         [DataMember(EmitDefaultValue = false, Name="friendly_name")]
         public string FriendlyName { get; set; }
 
+        [DataMember(EmitDefaultValue = false, Name = "filter_friendly_name")]
+        public string FilterFriendlyName {
+            get { return null; }
+            set { this.FriendlyName = value; }
+        }
+
         [DataMember(EmitDefaultValue = false, Name = "expression")]
         public string Expression { get; set; }
 
