@@ -101,7 +101,6 @@ namespace Twilio.TaskRouter.Tests
             workFlowConfiguration.DefaultFilter = new Target() { Queue = "WQccc" };
 
             var result = workFlowConfiguration.ToString();
-
             Assert.AreEqual("{\"default_filter\":{\"queue\":\"WQccc\"},\"filters\":[{\"expression\":\"1==1\",\"friendly_name\":\"Prioritizing Filter\",\"targets\":[{\"priority\":\"1\",\"queue\":\"WQccc\",\"timeout\":\"300\"}]}]}", result);
         }
 
