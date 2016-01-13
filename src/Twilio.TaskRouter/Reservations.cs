@@ -117,26 +117,96 @@ namespace Twilio.TaskRouter
         /// Update a reservation.
         /// </summary>
         /// <param name="workspaceSid">Workspace sid.</param>
-        /// <param name="taskSid">Task sid.</param>
+        /// <param name="resource">Tasks or Workers resource</param>
+        /// <param name="resourceSid">Task Sid or Worker Sid</param>
         /// <param name="reservationSid">Reservation sid.</param>
         /// <param name="reservationStatus">Reservation status.</param>
-        /// <param name="workerActivitySid">Optional worker activity sid.</param>
-        public virtual Reservation UpdateReservation(string workspaceSid, string taskSid, string reservationSid, string reservationStatus, string workerActivitySid)
+        /// <param name="workerActivitySid">Optional Worker Activity Sid.</param>
+        /// <param name="instruction">Optional Instruction.</param>
+        /// <param name="dequeuePostWorkActivitySid">Optional Dequeue Post Work Activity Sid.</param>
+        /// <param name="dequeueFrom">Optional Dequeue From.</param>
+        /// <param name="dequeueTo">Optional Dequeue To.</param>
+        /// <param name="callFrom">Optional Call From.</param>
+        /// <param name="callTo">Optional Call To.</param>
+        /// <param name="callUrl">Optional Call Url.</param>
+        /// <param name="callStatusCallbackUrl">Optional Call Status Callback Url.</param>
+        /// <param name="callAccept">Optional Call Accept.</param>
+        /// <param name="redirectCallSid">Optional Redirect Call Sid.</param>
+        /// <param name="redirectAccept">Optional Redirect Accept.</param>
+        /// <param name="redirectUrl">Optional Redirect Url.</param>
+        public virtual Reservation UpdateReservation(
+			string workspaceSid, 
+			string resource, 
+			string resourceSid,
+            string reservationSid, 
+			string reservationStatus, 
+			string workerActivitySid = null,
+			string instruction = null, 
+			string dequeuePostWorkActivitySid = null, 
+			string dequeueFrom = null, 
+			string dequeueTo = null,
+			string callFrom = null, 
+			string callTo = null, 
+			string callUrl = null, 
+			string callStatusCallbackUrl = null,
+			string callAccept = null, 
+			string redirectCallSid = null, 
+			string redirectAccept = null, 
+			string redirectUrl = null
+		)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
-            Require.Argument("TaskSid", taskSid);
+            Require.Argument("Resource", resource);
+            Require.Argument("ResourceSid", resourceSid);
             Require.Argument("ReservationSid", reservationSid);
             Require.Argument("ReservationStatus", reservationStatus);
 
             var request = new RestRequest(Method.POST);
-            request.Resource = "Workspaces/{WorkspaceSid}/Tasks/{TaskSid}/Reservations/{ReservationSid}";
+            request.Resource = "Workspaces/{WorkspaceSid}/{Resource}/{ResourceSid}/Reservations/{ReservationSid}";
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
-            request.AddUrlSegment("TaskSid", taskSid);
+            request.AddUrlSegment("Resource", resource);
+            request.AddUrlSegment("ResourceSid", resourceSid);
             request.AddUrlSegment("ReservationSid", reservationSid);
 
             request.AddParameter("ReservationStatus", reservationStatus);
-            if (workerActivitySid.HasValue())
+            if (!String.IsNullOrEmpty(workerActivitySid))
                 request.AddParameter("WorkerActivitySid", workerActivitySid);
+
+            if (!String.IsNullOrEmpty(instruction))
+                request.AddParameter("Instruction", instruction);
+
+            if (!String.IsNullOrEmpty(dequeuePostWorkActivitySid))
+                request.AddParameter("DequeuePostWorkActivitySid", dequeuePostWorkActivitySid);
+
+            if (!String.IsNullOrEmpty(dequeueFrom))
+                request.AddParameter("DequeueFrom", dequeueFrom);
+
+            if (!String.IsNullOrEmpty(dequeueTo))
+                request.AddParameter("DequeueTo", dequeueTo);
+
+            if (!String.IsNullOrEmpty(callFrom))
+                request.AddParameter("CallFrom", callFrom);
+
+            if (!String.IsNullOrEmpty(callTo))
+                request.AddParameter("CallTo", callTo);
+
+            if (!String.IsNullOrEmpty(callUrl))
+                request.AddParameter("CallUrl", callUrl);
+
+            if (!String.IsNullOrEmpty(callStatusCallbackUrl))
+                request.AddParameter("CallStatusCallbackUrl", callStatusCallbackUrl);
+
+            if (!String.IsNullOrEmpty(callAccept))
+                request.AddParameter("CallAccept", callAccept);
+
+            if (!String.IsNullOrEmpty(redirectCallSid))
+                request.AddParameter("RedirectCallSid", redirectCallSid);
+
+            if (!String.IsNullOrEmpty(redirectAccept))
+                request.AddParameter("RedirectAccept", redirectAccept);
+
+            if (!String.IsNullOrEmpty(redirectUrl))
+                request.AddParameter("RedirectUrl", redirectUrl);
 
             return Execute<Reservation>(request);
         }
