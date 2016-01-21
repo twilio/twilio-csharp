@@ -55,11 +55,13 @@ namespace Twilio.TaskRouter
             } else if (channelId.Substring (0, 2).Equals("WK")) {
                 this.resourceUrl = this.baseUrl + "/Workers/" + channelId;
                 string activityUrl = this.baseUrl + "/Activities";
-                string reservationsUrl = this.baseUrl + "/Tasks/**";
+                string tasksUrl = this.baseUrl + "/Tasks/**";
+                string workerReservationsUrl = this.resourceUrl + "/Reservations/**";
 
-                // add permissions to fetch the list of activities and list of worker reservations
+                // add permissions to fetch the list of activities, tasks, and worker reservations
                 this.Allow(activityUrl, "GET");
-                this.Allow(reservationsUrl, "GET");
+                this.Allow(tasksUrl, "GET");
+                this.Allow(workerReservationsUrl, "GET");
 
             } else if (channelId.Substring (0, 2).Equals("WQ")) {
                 this.resourceUrl = this.baseUrl + "/TaskQueues/" + channelId;
@@ -217,7 +219,8 @@ namespace Twilio.TaskRouter
 
     public class TaskRouterWorkerCapability : TaskRouterCapability
     {
-        private string reservationsUrl;
+        private string tasksUrl;
+        private string workerReservationsUrl;
         private string activityUrl;
 
         /// <summary>
@@ -231,12 +234,14 @@ namespace Twilio.TaskRouter
         public TaskRouterWorkerCapability(string accountSid, string authToken, string workspaceSid, string workerSid) :
             base(accountSid, authToken, workspaceSid, workerSid)
         {
-            this.reservationsUrl = this.baseUrl + "/Tasks/**";
+            this.tasksUrl = this.baseUrl + "/Tasks/**";
             this.activityUrl = this.baseUrl + "/Activities";
+            this.workerReservationsUrl = this.resourceUrl + "/Reservations/**";
 
-            // add permissions to fetch the list of activities and list of worker reservations
+            // add permissions to fetch the list of activities, tasks and worker reservations
             this.Allow(activityUrl, "GET");
-            this.Allow(reservationsUrl, "GET");
+            this.Allow(tasksUrl, "GET");
+            this.Allow(workerReservationsUrl, "GET");
         }
 
         override
@@ -253,8 +258,10 @@ namespace Twilio.TaskRouter
 
         public void AllowReservationUpdates()
         {
-            var policy = new Policy(this.reservationsUrl, "POST", true);
-            policies.Add(policy);
+            var taskPolicy = new Policy(this.tasksUrl, "POST", true);
+            var workerReservationsPolicy = new Policy(this.workerReservationsUrl, "POST", true);
+            policies.Add(taskPolicy);
+            policies.Add(workerReservationsPolicy);
         }
     }
 
