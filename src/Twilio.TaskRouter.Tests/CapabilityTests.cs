@@ -137,7 +137,7 @@ namespace Twilio.TaskRouter.Tests
             Assert.IsEmpty(postFilter);
 
             var tasksFetchPolicy = policies[1] as IDictionary<string, object>;
-            Assert.AreEqual("https://taskrouter.twilio.com/v1/Workspaces/WS456/Tasks/**", reservationsFetchPolicy["url"]);
+            Assert.AreEqual("https://taskrouter.twilio.com/v1/Workspaces/WS456/Tasks/**", tasksFetchPolicy["url"]);
             Assert.AreEqual("GET", tasksFetchPolicy["method"]);
             Assert.IsTrue((bool)tasksFetchPolicy["allow"]);
             queryFilter = tasksFetchPolicy["query_filter"] as IDictionary<string, object>;
@@ -212,7 +212,7 @@ namespace Twilio.TaskRouter.Tests
             Assert.IsEmpty(postFilter);
 
             var tasksFetchPolicy = policies[1] as IDictionary<string, object>;
-            Assert.AreEqual("https://taskrouter.twilio.com/v1/Workspaces/WS456/Tasks/**", reservationsFetchPolicy["url"]);
+            Assert.AreEqual("https://taskrouter.twilio.com/v1/Workspaces/WS456/Tasks/**", tasksFetchPolicy["url"]);
             Assert.AreEqual("GET", tasksFetchPolicy["method"]);
             Assert.IsTrue((bool)tasksFetchPolicy["allow"]);
             queryFilter = tasksFetchPolicy["query_filter"] as IDictionary<string, object>;
