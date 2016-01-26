@@ -32,6 +32,12 @@ namespace Twilio.IpMessaging.Model
         public string FriendlyName { get; set; }
 
         /// <summary>
+        /// A unique, addressable name for the Channel. Up to 64 characters
+        /// long.
+        /// </summary>
+        public string UniqueName { get; set; }
+
+        /// <summary>
         /// An opaque value, available for developer to store any
         /// developer-specific string
         /// </summary>
