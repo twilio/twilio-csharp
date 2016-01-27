@@ -258,10 +258,8 @@ namespace Twilio.TaskRouter
 
         public void AllowReservationUpdates()
         {
-            var taskPolicy = new Policy(this.tasksUrl, "POST", true);
-            var workerReservationsPolicy = new Policy(this.workerReservationsUrl, "POST", true);
-            policies.Add(taskPolicy);
-            policies.Add(workerReservationsPolicy);
+            this.Allow(this.tasksUrl, "POST");
+            this.Allow(this.workerReservationsUrl, "POST");
         }
     }
 
