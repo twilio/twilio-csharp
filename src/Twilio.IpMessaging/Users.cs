@@ -50,6 +50,26 @@ namespace Twilio.IpMessaging
         /// </summary>
         /// <param name="serviceSid">Service Sid</param>
         /// <param name="identity">Identity</param>
+        /// <returns>A new User</returns>
+        public virtual User CreateUser(string serviceSid, string identity)
+        {
+            Require.Argument("ServiceSid", serviceSid);
+            Require.Argument("Identity", identity);
+
+            var request = new RestRequest(Method.POST) {Resource = "/Services/{ServiceSid}/Users"};
+
+            request.AddUrlSegment("ServiceSid", serviceSid);
+
+            request.AddParameter("Identity", identity);
+
+            return Execute<User>(request);
+        }
+
+        /// <summary>
+        /// Creates a User.
+        /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
+        /// <param name="identity">Identity</param>
         /// <param name="roleSid">Role Sid</param>
         /// <returns>A new User</returns>
         public virtual User CreateUser(string serviceSid, string identity, 
