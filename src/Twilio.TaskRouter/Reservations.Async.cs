@@ -108,6 +108,22 @@ namespace Twilio.TaskRouter
             ExecuteAsync<ReservationResult>(request, callback);
         }
 
+		/// <summary>
+		/// Update a reservation.
+		/// </summary>
+		/// <param name="workspaceSid">Workspace sid.</param>
+		/// <param name="taskSid">Task Sid</param>
+		/// <param name="reservationSid">Reservation sid.</param>
+		/// <param name="reservationStatus">Optional Reservation status.</param>
+		/// <param name="workerActivitySid">Optional Worker Activity Sid.</param>
+		/// <param name="callback">Method to call upon successful completion</param>
+		public virtual void UpdateReservation(string workspaceSid, string taskSid, string reservationSid, 
+			string reservationStatus, string workerActivitySid, Action<Reservation> callback)
+		{
+			UpdateReservation(workspaceSid, "Tasks", taskSid, reservationSid, callback,
+				reservationStatus: reservationStatus, workerActivitySid: workerActivitySid);
+		}
+
         /// <summary>
         /// Update a reservation.
         /// </summary>
@@ -115,7 +131,7 @@ namespace Twilio.TaskRouter
         /// <param name="resource">Tasks or Workers resource</param>
         /// <param name="resourceSid">Task Sid or Worker Sid</param>
         /// <param name="reservationSid">Reservation sid.</param>
-        /// <param name="reservationStatus">Reservation status.</param>
+        /// <param name="reservationStatus">Optional Reservation status.</param>
         /// <param name="workerActivitySid">Optional Worker Activity Sid.</param>
         /// <param name="instruction">Optional Instruction.</param>
         /// <param name="dequeuePostWorkActivitySid">Optional Dequeue Post Work Activity Sid.</param>
@@ -135,8 +151,8 @@ namespace Twilio.TaskRouter
 			string resource, 
 			string resourceSid,
 			string reservationSid, 
-			string reservationStatus, 
 			Action<Reservation> callback,
+			string reservationStatus = null, 
 			string workerActivitySid = null,
 			string instruction = null, 
 			string dequeuePostWorkActivitySid = null, 
@@ -166,7 +182,9 @@ namespace Twilio.TaskRouter
             request.AddUrlSegment("ResourceSid", resourceSid);
             request.AddUrlSegment("ReservationSid", reservationSid);
 
-            request.AddParameter("ReservationStatus", reservationStatus);
+			if (!String.IsNullOrEmpty(reservationStatus))
+				request.AddParameter("ReservationStatus", reservationStatus);
+			
             if (!String.IsNullOrEmpty(workerActivitySid))
                 request.AddParameter("WorkerActivitySid", workerActivitySid);
 

@@ -113,6 +113,21 @@ namespace Twilio.TaskRouter
             return Execute<ReservationResult>(request);
         }
 
+		/// <summary>
+		/// Update a reservation.
+		/// </summary>
+		/// <param name="workspaceSid">Workspace sid.</param>
+		/// <param name="taskSid">Task Sid</param>
+		/// <param name="reservationSid">Reservation sid.</param>
+		/// <param name="reservationStatus">Optional Reservation status.</param>
+		/// <param name="workerActivitySid">Optional Worker Activity Sid.</param>
+		public virtual Reservation UpdateReservation(string workspaceSid, string taskSid, 
+			string reservationSid, string reservationStatus, string workerActivitySid)
+		{
+			return UpdateReservation(workspaceSid, "Tasks", taskSid, reservationSid, 
+				reservationStatus: reservationStatus, workerActivitySid: workerActivitySid);
+		}
+
         /// <summary>
         /// Update a reservation.
         /// </summary>
@@ -120,7 +135,7 @@ namespace Twilio.TaskRouter
         /// <param name="resource">Tasks or Workers resource</param>
         /// <param name="resourceSid">Task Sid or Worker Sid</param>
         /// <param name="reservationSid">Reservation sid.</param>
-        /// <param name="reservationStatus">Reservation status.</param>
+        /// <param name="reservationStatus">Optional Reservation status.</param>
         /// <param name="workerActivitySid">Optional Worker Activity Sid.</param>
         /// <param name="instruction">Optional Instruction.</param>
         /// <param name="dequeuePostWorkActivitySid">Optional Dequeue Post Work Activity Sid.</param>
@@ -139,7 +154,7 @@ namespace Twilio.TaskRouter
 			string resource, 
 			string resourceSid,
 			string reservationSid, 
-			string reservationStatus, 
+			string reservationStatus = null, 
 			string workerActivitySid = null,
 			string instruction = null, 
 			string dequeuePostWorkActivitySid = null, 
@@ -159,7 +174,6 @@ namespace Twilio.TaskRouter
             Require.Argument("Resource", resource);
             Require.Argument("ResourceSid", resourceSid);
             Require.Argument("ReservationSid", reservationSid);
-            Require.Argument("ReservationStatus", reservationStatus);
 
             var request = new RestRequest(Method.POST);
             request.Resource = "Workspaces/{WorkspaceSid}/{Resource}/{ResourceSid}/Reservations/{ReservationSid}";
@@ -168,7 +182,9 @@ namespace Twilio.TaskRouter
             request.AddUrlSegment("ResourceSid", resourceSid);
             request.AddUrlSegment("ReservationSid", reservationSid);
 
-            request.AddParameter("ReservationStatus", reservationStatus);
+			if (!String.IsNullOrEmpty(reservationStatus))
+				request.AddParameter("ReservationStatus", reservationStatus);
+			
             if (!String.IsNullOrEmpty(workerActivitySid))
                 request.AddParameter("WorkerActivitySid", workerActivitySid);
 
