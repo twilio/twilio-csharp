@@ -108,21 +108,21 @@ namespace Twilio.TaskRouter
             ExecuteAsync<ReservationResult>(request, callback);
         }
 
-		/// <summary>
-		/// Update a reservation.
-		/// </summary>
-		/// <param name="workspaceSid">Workspace sid.</param>
-		/// <param name="taskSid">Task Sid</param>
-		/// <param name="reservationSid">Reservation sid.</param>
-		/// <param name="reservationStatus">Optional Reservation status.</param>
-		/// <param name="workerActivitySid">Optional Worker Activity Sid.</param>
-		/// <param name="callback">Method to call upon successful completion</param>
-		public virtual void UpdateReservation(string workspaceSid, string taskSid, string reservationSid, 
-			string reservationStatus, string workerActivitySid, Action<Reservation> callback)
-		{
-			UpdateReservation(workspaceSid, "Tasks", taskSid, reservationSid, callback,
-				reservationStatus: reservationStatus, workerActivitySid: workerActivitySid);
-		}
+        /// <summary>
+        /// Update a reservation.
+        /// </summary>
+        /// <param name="workspaceSid">Workspace sid.</param>
+        /// <param name="taskSid">Task Sid</param>
+        /// <param name="reservationSid">Reservation sid.</param>
+        /// <param name="reservationStatus">Optional Reservation status.</param>
+        /// <param name="workerActivitySid">Optional Worker Activity Sid.</param>
+        /// <param name="callback">Method to call upon successful completion</param>
+        public virtual void UpdateReservation(string workspaceSid, string taskSid, string reservationSid, 
+            string reservationStatus, string workerActivitySid, Action<Reservation> callback)
+        {
+            UpdateReservation(workspaceSid, "Tasks", taskSid, reservationSid, callback,
+                reservationStatus: reservationStatus, workerActivitySid: workerActivitySid);
+        }
 
         /// <summary>
         /// Update a reservation.
@@ -145,35 +145,35 @@ namespace Twilio.TaskRouter
         /// <param name="redirectCallSid">Optional Redirect Call Sid.</param>
         /// <param name="redirectAccept">Optional Redirect Accept.</param>
         /// <param name="redirectUrl">Optional Redirect Url.</param>
-		/// <param name="callback">Method to call upon successful completion</param>
+        /// <param name="callback">Method to call upon successful completion</param>
         public virtual void UpdateReservation(
-			string workspaceSid, 
-			string resource, 
-			string resourceSid,
-			string reservationSid, 
-			Action<Reservation> callback,
-			string reservationStatus = null, 
-			string workerActivitySid = null,
-			string instruction = null, 
-			string dequeuePostWorkActivitySid = null, 
-			string dequeueFrom = null, 
-			string dequeueTo = null,
-			string callFrom = null, 
-			string callTo = null, 
-			string callUrl = null, 
-			string callStatusCallbackUrl = null,
-			string callAccept = null, 
-			string redirectCallSid = null, 
-			string redirectAccept = null, 
-			string redirectUrl = null
-		)
+            string workspaceSid, 
+            string resource, 
+            string resourceSid,
+            string reservationSid, 
+            Action<Reservation> callback,
+            string reservationStatus = null, 
+            string workerActivitySid = null,
+            string instruction = null, 
+            string dequeuePostWorkActivitySid = null, 
+            string dequeueFrom = null, 
+            string dequeueTo = null,
+            string callFrom = null, 
+            string callTo = null, 
+            string callUrl = null, 
+            string callStatusCallbackUrl = null,
+            string callAccept = null, 
+            string redirectCallSid = null, 
+            string redirectAccept = null, 
+            string redirectUrl = null
+        )
         {
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("Resource", resource);
             Require.Argument("ResourceSid", resourceSid);
             Require.Argument("ReservationSid", reservationSid);
             Require.Argument("ReservationStatus", reservationStatus);
-			Require.Argument("Callback", callback);
+            Require.Argument("Callback", callback);
 
             var request = new RestRequest(Method.POST);
             request.Resource = "Workspaces/{WorkspaceSid}/{Resource}/{ResourceSid}/Reservations/{ReservationSid}";
@@ -182,9 +182,9 @@ namespace Twilio.TaskRouter
             request.AddUrlSegment("ResourceSid", resourceSid);
             request.AddUrlSegment("ReservationSid", reservationSid);
 
-			if (!String.IsNullOrEmpty(reservationStatus))
-				request.AddParameter("ReservationStatus", reservationStatus);
-			
+            if (!String.IsNullOrEmpty(reservationStatus))
+                request.AddParameter("ReservationStatus", reservationStatus);
+
             if (!String.IsNullOrEmpty(workerActivitySid))
                 request.AddParameter("WorkerActivitySid", workerActivitySid);
 
