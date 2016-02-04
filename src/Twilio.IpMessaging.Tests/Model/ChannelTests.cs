@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using NUnit.Framework;
 using RestSharp;
 using RestSharp.Deserializers;
-using Twilio.IpMessaging;
 using Twilio.IpMessaging.Model;
 
 namespace Twilio.IpMessaging.Tests.Model
@@ -17,7 +15,7 @@ namespace Twilio.IpMessaging.Tests.Model
         {
             var doc = File.ReadAllText(Path.Combine("Resources", "channel.json"));
             var json = new JsonDeserializer();
-            var output = json.Deserialize<Channel>(new RestResponse { Content = doc });
+            var output = json.Deserialize<Channel>(new RestResponse {Content = doc});
 
             Assert.NotNull(output);
             Assert.AreEqual("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.Sid);
@@ -27,13 +25,19 @@ namespace Twilio.IpMessaging.Tests.Model
             Assert.IsEmpty(output.Attributes);
             Assert.AreEqual("system", output.CreatedBy);
             Assert.AreEqual("public", output.Type);
-            Assert.AreEqual("http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.Url);
+            Assert.AreEqual(
+                "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                output.Url);
             Dictionary<string, string> dictionary = output.Links;
             Assert.NotNull(dictionary);
             Assert.True(dictionary.ContainsKey("members"));
             Assert.True(dictionary.ContainsKey("messages"));
-            Assert.AreEqual("http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members", dictionary["members"]);
-            Assert.AreEqual("http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages", dictionary["messages"]);
+            Assert.AreEqual(
+                "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members",
+                dictionary["members"]);
+            Assert.AreEqual(
+                "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages",
+                dictionary["messages"]);
         }
 
         [Test]
@@ -41,7 +45,7 @@ namespace Twilio.IpMessaging.Tests.Model
         {
             var doc = File.ReadAllText(Path.Combine("Resources", "channels.json"));
             var json = new JsonDeserializer();
-            var output = json.Deserialize<ChannelResult>(new RestResponse { Content = doc });
+            var output = json.Deserialize<ChannelResult>(new RestResponse {Content = doc});
 
             Assert.NotNull(output);
             Assert.NotNull(output.Channels);
@@ -53,13 +57,19 @@ namespace Twilio.IpMessaging.Tests.Model
             Assert.IsEmpty(output.Channels[0].Attributes);
             Assert.AreEqual("system", output.Channels[0].CreatedBy);
             Assert.AreEqual("public", output.Channels[0].Type);
-            Assert.AreEqual("http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", output.Channels[0].Url);
+            Assert.AreEqual(
+                "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                output.Channels[0].Url);
             Dictionary<string, string> dictionary = output.Channels[0].Links;
             Assert.NotNull(dictionary);
             Assert.True(dictionary.ContainsKey("members"));
             Assert.True(dictionary.ContainsKey("messages"));
-            Assert.AreEqual("http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members", dictionary["members"]);
-            Assert.AreEqual("http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages", dictionary["messages"]);
+            Assert.AreEqual(
+                "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members",
+                dictionary["members"]);
+            Assert.AreEqual(
+                "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages",
+                dictionary["messages"]);
         }
     }
 }
