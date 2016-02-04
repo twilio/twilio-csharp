@@ -136,8 +136,13 @@ namespace Twilio.TaskRouter
         /// <param name="instruction">Optional Instruction.</param>
         /// <param name="dequeuePostWorkActivitySid">Optional Dequeue Post Work Activity Sid.</param>
         /// <param name="dequeueFrom">Optional Dequeue From.</param>
+        /// <param name="dequeueRecord">Optional Dequeue Record.</param>
+        /// <param name="dequeueTimeout">Optional Dequeue Timeout.</param>
         /// <param name="dequeueTo">Optional Dequeue To.</param>
+        /// <param name="dequeueStatusCallbackUrl">Optional Dequeue Status Callback Url.</param>
         /// <param name="callFrom">Optional Call From.</param>
+        /// <param name="callRecord">Optional Call Record.</param>
+        /// <param name="callTimeout">Optional Call Timeout.</param>
         /// <param name="callTo">Optional Call To.</param>
         /// <param name="callUrl">Optional Call Url.</param>
         /// <param name="callStatusCallbackUrl">Optional Call Status Callback Url.</param>
@@ -157,8 +162,13 @@ namespace Twilio.TaskRouter
             string instruction = null, 
             string dequeuePostWorkActivitySid = null, 
             string dequeueFrom = null, 
+            string dequeueRecord = null,
+            string dequeueTimeout = null,
             string dequeueTo = null,
+            string dequeueStatusCallbackUrl = null,
             string callFrom = null, 
+            string callRecord = null,
+            string callTimeout = null,
             string callTo = null, 
             string callUrl = null, 
             string callStatusCallbackUrl = null,
@@ -197,11 +207,26 @@ namespace Twilio.TaskRouter
             if (!String.IsNullOrEmpty(dequeueFrom))
                 request.AddParameter("DequeueFrom", dequeueFrom);
 
+            if (!String.IsNullOrEmpty(dequeueRecord))
+                request.AddParameter("DequeueRecord", dequeueRecord);
+
+            if (!String.IsNullOrEmpty(dequeueTimeout))
+                request.AddParameter("DequeueTimeout", dequeueTimeout);
+
             if (!String.IsNullOrEmpty(dequeueTo))
                 request.AddParameter("DequeueTo", dequeueTo);
 
+            if (!String.IsNullOrEmpty(dequeueStatusCallbackUrl))
+                request.AddParameter("DequeueStatusCallbackUrl", dequeueStatusCallbackUrl);
+
             if (!String.IsNullOrEmpty(callFrom))
                 request.AddParameter("CallFrom", callFrom);
+
+            if (!String.IsNullOrEmpty(callRecord))
+                request.AddParameter("CallRecord", callRecord);
+
+            if (!String.IsNullOrEmpty(callTimeout))
+                request.AddParameter("CallTimeout", callTimeout);
 
             if (!String.IsNullOrEmpty(callTo))
                 request.AddParameter("CallTo", callTo);
