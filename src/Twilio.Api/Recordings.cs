@@ -36,6 +36,9 @@ namespace Twilio
 		/// Makes a GET request to the Recordings List resource.
 		/// </summary>
 		/// <param name="callSid">(Optional) The CallSid to retrieve recordings for</param>
+		/// <param name="dateCreated">(Optional) Only get recordings created on this date (GMT)</param>
+		/// <param name="dateCreatedLessThanOrEqual">(Optional) Only get recordings created at or before midnight on this date (GMT)</param>
+		/// <param name="dateCreatedGreaterThanOrEqual">(Optional) Only get recordings created at or after midnight on this date (GMT)</param>
 		/// <param name="dateCreated">(Optional) The date the recording was created (GMT)</param>
 		/// <param name="pageNumber">The page to start retrieving results from</param>
 		/// <param name="count">How many results to retrieve</param>
