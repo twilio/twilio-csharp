@@ -28,6 +28,14 @@ namespace Twilio
             return this.method;
         }
         
+        public string getUsername() {
+            return this.username;
+        }
+        
+        public string getPassword() {
+            return this.password;
+        }
+        
         private static System.Net.Http.HttpContent encodeParameters(List<KeyValuePair<string, string>> data) {
             return new System.Net.Http.FormUrlEncodedContent(data);
         }

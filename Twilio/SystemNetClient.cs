@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Twilio
@@ -16,6 +17,8 @@ namespace Twilio
             httpRequest.RequestUri = request.constructURL();
             httpRequest.Properties.Add("Accept", "application/json");
 			httpRequest.Properties.Add("Accept-Encoding", "utf-8");
+			var authBytes = Encoding.UTF8.GetBytes(request.getUsername() + ":" + request.getPassword());
+			httpRequest.Properties.Add("Authorization", "Basic" + Convert.ToBase64String(authBytes));
 			httpRequest.Content = request.encodePostParams();
             var response = await httpClient.SendAsync(httpRequest);
 			var content = response.Content;
