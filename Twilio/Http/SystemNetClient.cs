@@ -2,7 +2,7 @@
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Twilio
+namespace Twilio.Http
 {
 	public class SystemNetClient : HttpClient
 	{

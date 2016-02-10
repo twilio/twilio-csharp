@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Twilio
+namespace Twilio.Http
 {
 	public class Request
 	{

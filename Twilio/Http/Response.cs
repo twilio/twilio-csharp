@@ -1,4 +1,4 @@
-namespace Twilio
+namespace Twilio.Http
 {
 	public class Response
 	{

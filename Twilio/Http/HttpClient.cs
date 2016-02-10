@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Twilio
+namespace Twilio.Http
 {
     public abstract class HttpClient
     {
