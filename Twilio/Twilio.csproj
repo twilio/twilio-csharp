@@ -31,10 +31,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="HttpClient.cs" />
-    <Compile Include="Response.cs" />
-    <Compile Include="Request.cs" />
-    <Compile Include="SystemNetClient.cs" />
+    <Compile Include="Http\HttpClient.cs" />
+    <Compile Include="Http\Request.cs" />
+    <Compile Include="Http\Response.cs" />
+    <Compile Include="Http\SystemNetClient.cs" />
+    <Compile Include="Creators\Creator.cs" />
+    <Compile Include="Deleters\Deleter.cs" />
+    <Compile Include="Fetchers\Fetcher.cs" />
+    <Compile Include="Updaters\Updater.cs" />
+    <Compile Include="Readers\Reader.cs" />
+    <Compile Include="Resources\Page.cs" />
+    <Compile Include="Resources\Resource.cs" />
+    <Compile Include="Resources\ResourceSet.cs" />
+    <Compile Include="Resources\SidResource.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
