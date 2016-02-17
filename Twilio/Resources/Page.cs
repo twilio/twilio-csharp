@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -58,7 +59,21 @@ namespace Twilio.Resources
 				previousPageUri = previousPageNode.Value<string> ();
 			} else {
 				var meta = root["meta"];
-				uri = 
+				uri = new Uri(meta["url"].Value<string>()).PathAndQuery;
+				nextPageNode = meta["next_page_url"];
+				previousPageNode = meta["previous_page_url"];
+
+				firstPageUri = new Uri(meta["first_page_url"].Value<string>()).PathAndQuery;
+				pageSize = meta["page_size"].Value<int>();
+
+				nextPageUri = nextPageNode.Value<string>();
+				if (nextPageUri != null) {
+					nextPageUri = new Uri(nextPageUri).PathAndQuery;
+				}
+				previousPageUri = previousPageNode.Value<string>();
+				if (previousPageUri != null) {
+					previousPageUri = new Uri(previousPageUri).PathAndQuery;
+				}
 			}
 		}
 	}

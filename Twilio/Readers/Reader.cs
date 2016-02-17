@@ -5,6 +5,8 @@ namespace Twilio.Readers
 {
     public abstract class Reader<T> where T : Resource
     {
+		private int pageSize = 50;
+
         public T execute(Twilio.HttpClient client) {
             var task = executeAsync(client);
             task.Wait();
@@ -13,5 +15,16 @@ namespace Twilio.Readers
         }
         
         public abstract Task<T> executeAsync(Twilio.HttpClient client);
+
+		public abstract Page<T> nextPage(string nextPageUri, Twilio.HttpClient client);
+
+		public int getPageSize() {
+			return this.pageSize;
+		}
+
+		public Reader<T> setPageSize(int pageSize) {
+			this.pageSize = pageSize;
+			return this;
+		}
     }
 }
