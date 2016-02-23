@@ -101,8 +101,60 @@ namespace Twilio.TaskRouter.Tests
             workFlowConfiguration.DefaultFilter = new Target() { Queue = "WQccc" };
 
             var result = workFlowConfiguration.ToString();
+            Assert.AreEqual("{\"default_filter\":{\"queue\":\"WQccc\"},\"filters\":[{\"expression\":\"1==1\",\"friendly_name\":\"Prioritizing Filter\",\"targets\":[{\"priority\":\"1\",\"queue\":\"WQccc\",\"timeout\":\"300\"}]}]}", result);
+        }
+
+        [Test]
+        public void ShouldSerializeComplexWorkflowConfigurationWithFilterFriendlyName()
+        {
+            var workFlowConfiguration = new WorkflowConfiguration();
+            var filter = new Filter
+            {
+                FilterFriendlyName = "Prioritizing Filter",
+                Expression = "1==1",
+                Targets = new List<Target>() { 
+                    new Target { 
+                        Queue="WQccc",
+                        Priority="1",
+                        Timeout="300"
+                    }
+                }
+            };
+
+            workFlowConfiguration.Filters.Add(filter);
+            workFlowConfiguration.DefaultFilter = new Target() { Queue = "WQccc" };
+
+            var result = workFlowConfiguration.ToString();
 
             Assert.AreEqual("{\"default_filter\":{\"queue\":\"WQccc\"},\"filters\":[{\"expression\":\"1==1\",\"friendly_name\":\"Prioritizing Filter\",\"targets\":[{\"priority\":\"1\",\"queue\":\"WQccc\",\"timeout\":\"300\"}]}]}", result);
+        }
+
+        [Test]
+        public void ShouldDeserializeComplexWorkflowConfigurationWithFilterFriendlyName()
+        {
+            var workFlow = new Workflow();
+            workFlow.Configuration = "{\"default_filter\":{\"queue\":\"WQccc\"},\"filters\":[{\"expression\":\"1==1\",\"filter_friendly_name\":\"Prioritizing Filter\",\"targets\":[{\"priority\":\"1\",\"queue\":\"WQccc\",\"timeout\":\"300\"}]}]}";
+
+            var workFlowConfiguration = new WorkflowConfiguration();
+            var filter = new Filter
+            {
+                FriendlyName = "Prioritizing Filter",
+                Expression = "1==1",
+                Targets = new List<Target>() { 
+                    new Target { 
+                        Queue="WQccc",
+                        Priority="1",
+                        Timeout="300"
+                    }
+                }
+            };
+
+            workFlowConfiguration.Filters.Add(filter);
+            workFlowConfiguration.DefaultFilter = new Target() { Queue = "WQccc" };
+
+            var config = workFlow.WorkflowConfiguration;
+
+            Assert.AreEqual(workFlowConfiguration.ToString(), config.ToString());
         }
 
         [Test]

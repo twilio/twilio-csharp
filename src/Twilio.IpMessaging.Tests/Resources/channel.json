@@ -1,0 +1,16 @@
+{
+    "sid": "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "friendly_name": "my channel",
+    "attributes": "",
+    "date_created": "2015-01-02T11:23:45Z",
+    "date_updated": "2015-01-02T11:23:45Z",
+    "created_by": "system",
+    "type": "public",
+    "url": "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "links": {
+        "members": "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members",
+        "messages": "http://localhost/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages"
+    }
+}

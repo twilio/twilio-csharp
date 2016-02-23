@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
 	<metadata>
-		<id>Twilio.TaskRouter</id>
-		<version>2.2.0</version>
+		<id>Twilio.IpMessaging</id>
+		<version>1.1.1</version>
 		<authors>Twilio</authors>
-		<description>Twilio TaskRouter REST API helper library</description>
+		<description>Twilio Ip Messaging REST API helper library</description>
 		<language>en-US</language>
 		<projectUrl>http://github.com/twilio/twilio-csharp</projectUrl>
 		<iconUrl>http://www.twilio.com/packages/company/img/logos_downloadable_round.png</iconUrl>
@@ -12,14 +12,11 @@
 		<tags>REST SMS voice telephony phone twilio twiml</tags>
 		<dependencies>
 				<dependency id="Twilio" />
-				<dependency id="JWT" />
 		</dependencies>
 		<releaseNotes>
-	  * 2.2.0 - Add parameters for reservation updates
-	  * 2.1.0 - Add support for filter_friendly_name in WorkflowConfig, Load reservations by default in TaskRouter
-      * 2.0.0 - Adding JWT generation for JS SDK 1.1
-      * 1.0.1 - Adding missing TaskRouter Event APIs
-      * 1.0.0 - Initial Release      
+			* 1.1.1 - Add overload so users can be created with default role
+      * 1.1.0 - Add unique name support to channels
+      * 1.0.0 - Initial Release
     </releaseNotes>
 	</metadata>
 </package>

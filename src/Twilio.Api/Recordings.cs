@@ -27,11 +27,35 @@ namespace Twilio
 		/// <param name="count">How many results to retrieve</param>
         public virtual RecordingResult ListRecordings(string callSid, DateTime? dateCreated, int? pageNumber, int? count)
 		{
+      return ListRecordings(callSid, dateCreated: dateCreated, pageNumber: pageNumber, count: count);
+    }
+
+		/// <summary>
+		/// Returns a filtered list of Recordings, each representing a recording generated during the course of a phone call. 
+		/// The list includes paging information.
+		/// Makes a GET request to the Recordings List resource.
+		/// </summary>
+		/// <param name="callSid">(Optional) The CallSid to retrieve recordings for</param>
+		/// <param name="dateCreated">(Optional) Only get recordings created on this date (GMT)</param>
+		/// <param name="dateCreatedLessThanOrEqual">(Optional) Only get recordings created at or before midnight on this date (GMT)</param>
+		/// <param name="dateCreatedGreaterThanOrEqual">(Optional) Only get recordings created at or after midnight on this date (GMT)</param>
+		/// <param name="dateCreated">(Optional) The date the recording was created (GMT)</param>
+		/// <param name="pageNumber">The page to start retrieving results from</param>
+		/// <param name="count">How many results to retrieve</param>
+          public virtual RecordingResult ListRecordings(string callSid,
+                                                        DateTime? dateCreated = null,
+                                                        DateTime? dateCreatedLessThanOrEqual = null,
+                                                        DateTime? dateCreatedGreaterThanOrEqual = null,
+                                                        int? pageNumber = null,
+                                                        int? count = null)
+    {
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Recordings.json";
 
 			if (callSid.HasValue()) request.AddParameter("CallSid", callSid);
 			if (dateCreated.HasValue) request.AddParameter("DateCreated", dateCreated.Value.ToString("yyyy-MM-dd"));
+			if (dateCreatedLessThanOrEqual.HasValue) request.AddParameter("DateCreated<", dateCreatedLessThanOrEqual.Value.ToString("yyyy-MM-dd"));
+			if (dateCreatedGreaterThanOrEqual.HasValue) request.AddParameter("DateCreated>", dateCreatedGreaterThanOrEqual.Value.ToString("yyyy-MM-dd"));
 			if (pageNumber.HasValue) request.AddParameter("Page", pageNumber.Value);
 			if (count.HasValue) request.AddParameter("PageSize", count.Value);
 

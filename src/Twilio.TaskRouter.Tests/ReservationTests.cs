@@ -251,13 +251,13 @@ namespace Twilio.TaskRouter.Tests
 
             mockClient.Verify(trc => trc.Execute<Reservation>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
-            Assert.AreEqual("Workspaces/{WorkspaceSid}/Tasks/{TaskSid}/Reservations/{ReservationSid}", savedRequest.Resource);
+            Assert.AreEqual("Workspaces/{WorkspaceSid}/{Resource}/{ResourceSid}/Reservations/{ReservationSid}", savedRequest.Resource);
             Assert.AreEqual(Method.POST, savedRequest.Method);
-            Assert.AreEqual(5, savedRequest.Parameters.Count);
+            Assert.AreEqual(6, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
             Assert.IsNotNull(workspaceSidParam);
             Assert.AreEqual(WORKSPACE_SID, workspaceSidParam.Value);
-            var taskSidParam = savedRequest.Parameters.Find(x => x.Name == "TaskSid");
+            var taskSidParam = savedRequest.Parameters.Find(x => x.Name == "ResourceSid");
             Assert.IsNotNull(taskSidParam);
             Assert.AreEqual(TASK_SID, taskSidParam.Value);
             var reservationSidParam = savedRequest.Parameters.Find(x => x.Name == "ReservationSid");
@@ -288,13 +288,13 @@ namespace Twilio.TaskRouter.Tests
 
             mockClient.Verify(trc => trc.ExecuteAsync<Reservation>(It.IsAny<IRestRequest>(), It.IsAny<Action<Reservation>>()), Times.Once);
             Assert.IsNotNull(savedRequest);
-            Assert.AreEqual("Workspaces/{WorkspaceSid}/Tasks/{TaskSid}/Reservations/{ReservationSid}", savedRequest.Resource);
+            Assert.AreEqual("Workspaces/{WorkspaceSid}/{Resource}/{ResourceSid}/Reservations/{ReservationSid}", savedRequest.Resource);
             Assert.AreEqual(Method.POST, savedRequest.Method);
-            Assert.AreEqual(5, savedRequest.Parameters.Count);
+            Assert.AreEqual(6, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
             Assert.IsNotNull(workspaceSidParam);
             Assert.AreEqual(WORKSPACE_SID, workspaceSidParam.Value);
-            var taskSidParam = savedRequest.Parameters.Find(x => x.Name == "TaskSid");
+            var taskSidParam = savedRequest.Parameters.Find(x => x.Name == "ResourceSid");
             Assert.IsNotNull(taskSidParam);
             Assert.AreEqual(TASK_SID, taskSidParam.Value);
             var reservationSidParam = savedRequest.Parameters.Find(x => x.Name == "ReservationSid");
@@ -317,20 +317,18 @@ namespace Twilio.TaskRouter.Tests
                 .Returns(new Reservation());
             var client = mockClient.Object;
 
-            client.UpdateReservation(WORKSPACE_SID, TASK_SID, RESERVATION_SID, "reservationStatus", "WA123",
-                instruction: "Call", callFrom: "+15558675309", callUrl: "http://example.org", callAccept: "true",
-                callStatusCallbackUrl: "http://example.org/callStatusCallback");
+            client.UpdateReservation(WORKSPACE_SID, "Tasks", TASK_SID, RESERVATION_SID, "reservationStatus", "WA123",
+                "Call", callFrom: "+15558675309", callUrl: "http://example.org", callAccept: "true", callStatusCallbackUrl: "http://example.org/callStatusCallback");
 
             mockClient.Verify(trc => trc.Execute<Reservation>(It.IsAny<IRestRequest>()), Times.Once);
-
             Assert.IsNotNull(savedRequest);
-            Assert.AreEqual("Workspaces/{WorkspaceSid}/Tasks/{TaskSid}/Reservations/{ReservationSid}", savedRequest.Resource);
+            Assert.AreEqual("Workspaces/{WorkspaceSid}/{Resource}/{ResourceSid}/Reservations/{ReservationSid}", savedRequest.Resource);
             Assert.AreEqual(Method.POST, savedRequest.Method);
-            Assert.AreEqual(10, savedRequest.Parameters.Count);
+            Assert.AreEqual(11, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
             Assert.IsNotNull(workspaceSidParam);
             Assert.AreEqual(WORKSPACE_SID, workspaceSidParam.Value);
-            var taskSidParam = savedRequest.Parameters.Find(x => x.Name == "TaskSid");
+            var taskSidParam = savedRequest.Parameters.Find(x => x.Name == "ResourceSid");
             Assert.IsNotNull(taskSidParam);
             Assert.AreEqual(TASK_SID, taskSidParam.Value);
             var reservationSidParam = savedRequest.Parameters.Find(x => x.Name == "ReservationSid");
@@ -368,23 +366,21 @@ namespace Twilio.TaskRouter.Tests
             var client = mockClient.Object;
             manualResetEvent = new ManualResetEvent(false);
 
-            client.UpdateReservation(WORKSPACE_SID, TASK_SID, RESERVATION_SID, "reservationStatus", "WA123", instruction: "Call", 
-                callFrom: "+15558675309", callUrl: "http://example.org", callAccept: "true", callStatusCallbackUrl: "http://example.org/callStatusCallback", 
-                callback: reservation => {
-                    manualResetEvent.Set();
-                });
+            client.UpdateReservation(WORKSPACE_SID, "Tasks", TASK_SID, RESERVATION_SID, reservation => {manualResetEvent.Set();}, reservationStatus: "reservationStatus",
+                workerActivitySid: "WA123", instruction: "Call", callFrom: "+15558675309", callUrl: "http://example.org", callAccept: "true",
+                callStatusCallbackUrl: "http://example.org/callStatusCallback");
             manualResetEvent.WaitOne(1);
 
             mockClient.Verify(trc => trc.ExecuteAsync<Reservation>(It.IsAny<IRestRequest>(), It.IsAny<Action<Reservation>>()), Times.Once);
 
             Assert.IsNotNull(savedRequest);
-            Assert.AreEqual("Workspaces/{WorkspaceSid}/Tasks/{TaskSid}/Reservations/{ReservationSid}", savedRequest.Resource);
+            Assert.AreEqual("Workspaces/{WorkspaceSid}/{Resource}/{ResourceSid}/Reservations/{ReservationSid}", savedRequest.Resource);
             Assert.AreEqual(Method.POST, savedRequest.Method);
-            Assert.AreEqual(10, savedRequest.Parameters.Count);
+            Assert.AreEqual(11, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
             Assert.IsNotNull(workspaceSidParam);
             Assert.AreEqual(WORKSPACE_SID, workspaceSidParam.Value);
-            var taskSidParam = savedRequest.Parameters.Find(x => x.Name == "TaskSid");
+            var taskSidParam = savedRequest.Parameters.Find(x => x.Name == "ResourceSid");
             Assert.IsNotNull(taskSidParam);
             Assert.AreEqual(TASK_SID, taskSidParam.Value);
             var reservationSidParam = savedRequest.Parameters.Find(x => x.Name == "ReservationSid");

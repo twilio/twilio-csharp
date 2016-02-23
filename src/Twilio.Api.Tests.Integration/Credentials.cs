@@ -13,5 +13,9 @@ namespace Twilio.Api.Tests.Integration
 
         public static string AccountSid = "[YOUR_ACCOUNT_SID]";
         public static string AuthToken = "[YOUR_AUTH_TOKEN]";
+
+        public static string ApiKey = "[YOUR_API_KEY]";
+        public static string ApiSecret = "[YOUR_API_SECRET]";
+        public static string IpmServiceSid = "[YOUR_SERVICE_SID]";
     }
 }
