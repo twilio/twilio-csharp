@@ -178,10 +178,6 @@ namespace Twilio.TaskRouter
             string redirectUrl = null
         )
         {
-            Console.WriteLine("TASKS = ");
-            Console.WriteLine(resource);
-            Console.WriteLine(resourceSid);
-
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("Resource", resource);
             Require.Argument("ResourceSid", resourceSid);
