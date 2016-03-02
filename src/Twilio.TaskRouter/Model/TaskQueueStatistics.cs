@@ -95,6 +95,10 @@ namespace Twilio.TaskRouter
             /// </summary>
             public TasksByStatus TasksByStatus { get; set; }
             /// <summary>
+            /// Gets or sets the tasks by priority.
+            /// </summary>
+            public Dictionary<string, long> TasksByPriority { get; set; }
+            /// <summary>
             /// Gets or sets the activity statistics.
             /// </summary>
             public List<ActivityStatistics> ActivityStatistics { get; set; }
