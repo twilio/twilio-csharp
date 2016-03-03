@@ -101,7 +101,7 @@ namespace Twilio.TaskRouter
             /// <summary>
             /// Gets or sets the tasks by priority.
             /// </summary>
-            public Dictionary<string, long> TasksByPriority { get; set; }
+            public Dictionary<string, int> TasksByPriority { get; set; }
         }
 
         /// <summary>
