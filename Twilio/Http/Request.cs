@@ -12,12 +12,10 @@ namespace Twilio.Http
         private List<KeyValuePair<string, string>> queryParams;
         private List<KeyValuePair<string, string>> postParams;
 
-		public Request (System.Net.Http.HttpMethod method, Uri uri, string username, string password)
+		public Request (System.Net.Http.HttpMethod method, Uri uri)
 		{
 			this.method = method;
 			this.uri = uri;
-			this.username = username;
-			this.password = password;
 		}
 
 		public Uri constructURL() {
@@ -35,6 +33,11 @@ namespace Twilio.Http
         public string getPassword() {
             return this.password;
         }
+
+		public void setAuth(string username, string password) {
+			this.username = username;
+			this.password = password;
+		}
         
         private static System.Net.Http.HttpContent encodeParameters(List<KeyValuePair<string, string>> data) {
             return new System.Net.Http.FormUrlEncodedContent(data);

@@ -1,0 +1,147 @@
+using Twilio.Clients.TwilioRestClient;
+using Twilio.Exceptions;
+using Twilio.Http;
+using Twilio.Resources.Taskrouter.V1.workspace.Workflow;
+using com.twilio.sdk.updaters.Updater;
+
+namespace Twilio.Updaters.Taskrouter.V1.Workspace {
+
+    public class WorkflowUpdater : Updater<Workflow> {
+        private String workspaceSid;
+        private String sid;
+        private String friendlyName;
+        private String assignmentCallbackUrl;
+        private String fallbackAssignmentCallbackUrl;
+        private String configuration;
+        private Integer taskReservationTimeout;
+    
+        /**
+         * Construct a new WorkflowUpdater
+         * 
+         * @param workspaceSid The workspace_sid
+         * @param sid The sid
+         */
+        public WorkflowUpdater(String workspaceSid, String sid) {
+            this.workspaceSid = workspaceSid;
+            this.sid = sid;
+        }
+    
+        /**
+         * The friendly_name
+         * 
+         * @param friendlyName The friendly_name
+         * @return this
+         */
+        public WorkflowUpdater setFriendlyName(String friendlyName) {
+            this.friendlyName = friendlyName;
+            return this;
+        }
+    
+        /**
+         * The assignment_callback_url
+         * 
+         * @param assignmentCallbackUrl The assignment_callback_url
+         * @return this
+         */
+        public WorkflowUpdater setAssignmentCallbackUrl(String assignmentCallbackUrl) {
+            this.assignmentCallbackUrl = assignmentCallbackUrl;
+            return this;
+        }
+    
+        /**
+         * The fallback_assignment_callback_url
+         * 
+         * @param fallbackAssignmentCallbackUrl The fallback_assignment_callback_url
+         * @return this
+         */
+        public WorkflowUpdater setFallbackAssignmentCallbackUrl(String fallbackAssignmentCallbackUrl) {
+            this.fallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl;
+            return this;
+        }
+    
+        /**
+         * The configuration
+         * 
+         * @param configuration The configuration
+         * @return this
+         */
+        public WorkflowUpdater setConfiguration(String configuration) {
+            this.configuration = configuration;
+            return this;
+        }
+    
+        /**
+         * The task_reservation_timeout
+         * 
+         * @param taskReservationTimeout The task_reservation_timeout
+         * @return this
+         */
+        public WorkflowUpdater setTaskReservationTimeout(Integer taskReservationTimeout) {
+            this.taskReservationTimeout = taskReservationTimeout;
+            return this;
+        }
+    
+        /**
+         * Make the request to the Twilio API to perform the update
+         * 
+         * @param client TwilioRestClient with which to make the request
+         * @return Updated Workflow
+         */
+        [Override]
+        public Workflow execute(TwilioRestClient client) {
+            Request request = new Request(
+                HttpMethod.POST,
+                TwilioRestClient.Domains.TASKROUTER,
+                "/v1/Workspaces/" + this.workspaceSid + "/Workflows/" + this.sid + "",
+                client.getAccountSid()
+            );
+            
+            addPostParams(request);
+            Response response = client.request(request);
+            
+            if (response == null) {
+                throw new ApiConnectionException("Workflow update failed: Unable to connect to server");
+            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                if (restException == null)
+                    throw new ApiException("Server Error, no content");
+                throw new ApiException(
+                    restException.getMessage(),
+                    restException.getCode(),
+                    restException.getMoreInfo(),
+                    restException.getStatus(),
+                    null
+                );
+            }
+            
+            return Workflow.fromJson(response.getStream(), client.getObjectMapper());
+        }
+    
+        /**
+         * Add the requested post parameters to the Request
+         * 
+         * @param request Request to add post params to
+         */
+        private void addPostParams(Request request) {
+            if (friendlyName != null) {
+                request.addPostParam("FriendlyName", friendlyName);
+            }
+            
+            if (assignmentCallbackUrl != null) {
+                request.addPostParam("AssignmentCallbackUrl", assignmentCallbackUrl);
+            }
+            
+            if (fallbackAssignmentCallbackUrl != null) {
+                request.addPostParam("FallbackAssignmentCallbackUrl", fallbackAssignmentCallbackUrl);
+            }
+            
+            if (configuration != null) {
+                request.addPostParam("Configuration", configuration);
+            }
+            
+            if (taskReservationTimeout != null) {
+                request.addPostParam("TaskReservationTimeout", taskReservationTimeout.toString());
+            }
+        }
+    }
+}
