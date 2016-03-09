@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Trunking.V1.Trunk;

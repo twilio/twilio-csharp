@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Deleters.Deleter;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,14 +7,14 @@ using Twilio.Resources.Trunking.V1.Trunk;
 namespace Twilio.Deleters.Trunking.V1 {
 
     public class TrunkDeleter : Deleter<Trunk> {
-        private String sid;
+        private string sid;
     
         /**
          * Construct a new TrunkDeleter
          * 
          * @param sid The sid
          */
-        public TrunkDeleter(String sid) {
+        public TrunkDeleter(string sid) {
             this.sid = sid;
         }
     

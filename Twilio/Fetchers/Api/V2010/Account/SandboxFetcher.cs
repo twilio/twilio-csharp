@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,14 +7,14 @@ using Twilio.Resources.Api.V2010.account.Sandbox;
 namespace Twilio.Fetchers.Api.V2010.Account {
 
     public class SandboxFetcher : Fetcher<Sandbox> {
-        private String accountSid;
+        private string accountSid;
     
         /**
          * Construct a new SandboxFetcher
          * 
          * @param accountSid The account_sid
          */
-        public SandboxFetcher(String accountSid) {
+        public SandboxFetcher(string accountSid) {
             this.accountSid = accountSid;
         }
     

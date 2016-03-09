@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Conversations.V1.conversation.Participant;
 namespace Twilio.Fetchers.Conversations.V1.Conversation {
 
     public class ParticipantFetcher : Fetcher<Participant> {
-        private String conversationSid;
-        private String sid;
+        private string conversationSid;
+        private string sid;
     
         /**
          * Construct a new ParticipantFetcher
@@ -16,7 +16,7 @@ namespace Twilio.Fetchers.Conversations.V1.Conversation {
          * @param conversationSid The conversation_sid
          * @param sid The sid
          */
-        public ParticipantFetcher(String conversationSid, String sid) {
+        public ParticipantFetcher(string conversationSid, string sid) {
             this.conversationSid = conversationSid;
             this.sid = sid;
         }

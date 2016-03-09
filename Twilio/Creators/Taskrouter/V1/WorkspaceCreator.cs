@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,16 +7,16 @@ using Twilio.Resources.Taskrouter.V1.Workspace;
 namespace Twilio.Creators.Taskrouter.V1 {
 
     public class WorkspaceCreator : Creator<Workspace> {
-        private String friendlyName;
-        private String eventCallbackUrl;
-        private String template;
+        private string friendlyName;
+        private string eventCallbackUrl;
+        private string template;
     
         /**
          * Construct a new WorkspaceCreator
          * 
          * @param friendlyName The friendly_name
          */
-        public WorkspaceCreator(String friendlyName) {
+        public WorkspaceCreator(string friendlyName) {
             this.friendlyName = friendlyName;
         }
     
@@ -26,7 +26,7 @@ namespace Twilio.Creators.Taskrouter.V1 {
          * @param eventCallbackUrl The event_callback_url
          * @return this
          */
-        public WorkspaceCreator setEventCallbackUrl(String eventCallbackUrl) {
+        public WorkspaceCreator setEventCallbackUrl(string eventCallbackUrl) {
             this.eventCallbackUrl = eventCallbackUrl;
             return this;
         }
@@ -37,7 +37,7 @@ namespace Twilio.Creators.Taskrouter.V1 {
          * @param template The template
          * @return this
          */
-        public WorkspaceCreator setTemplate(String template) {
+        public WorkspaceCreator setTemplate(string template) {
             this.template = template;
             return this;
         }

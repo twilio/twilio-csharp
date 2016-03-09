@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.message.Media;
@@ -9,9 +9,9 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account.Message {
 
     public class MediaReader : Reader<Media> {
-        private String accountSid;
-        private String messageSid;
-        private String dateCreated;
+        private string accountSid;
+        private string messageSid;
+        private string dateCreated;
     
         /**
          * Construct a new MediaReader
@@ -19,7 +19,7 @@ namespace Twilio.Readers.Api.V2010.Account.Message {
          * @param accountSid The account_sid
          * @param messageSid The message_sid
          */
-        public MediaReader(String accountSid, String messageSid) {
+        public MediaReader(string accountSid, string messageSid) {
             this.accountSid = accountSid;
             this.messageSid = messageSid;
         }
@@ -31,7 +31,7 @@ namespace Twilio.Readers.Api.V2010.Account.Message {
          * @param dateCreated Filter by date created
          * @return this
          */
-        public MediaReader byDateCreated(String dateCreated) {
+        public MediaReader byDateCreated(string dateCreated) {
             this.dateCreated = dateCreated;
             return this;
         }

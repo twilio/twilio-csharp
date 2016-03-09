@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.workspace.Worker;
@@ -7,11 +7,11 @@ using com.twilio.sdk.updaters.Updater;
 namespace Twilio.Updaters.Taskrouter.V1.Workspace {
 
     public class WorkerUpdater : Updater<Worker> {
-        private String workspaceSid;
-        private String sid;
-        private String activitySid;
-        private String attributes;
-        private String friendlyName;
+        private string workspaceSid;
+        private string sid;
+        private string activitySid;
+        private string attributes;
+        private string friendlyName;
     
         /**
          * Construct a new WorkerUpdater
@@ -19,7 +19,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @param sid The sid
          */
-        public WorkerUpdater(String workspaceSid, String sid) {
+        public WorkerUpdater(string workspaceSid, string sid) {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
         }
@@ -30,7 +30,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param activitySid The activity_sid
          * @return this
          */
-        public WorkerUpdater setActivitySid(String activitySid) {
+        public WorkerUpdater setActivitySid(string activitySid) {
             this.activitySid = activitySid;
             return this;
         }
@@ -41,7 +41,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param attributes The attributes
          * @return this
          */
-        public WorkerUpdater setAttributes(String attributes) {
+        public WorkerUpdater setAttributes(string attributes) {
             this.attributes = attributes;
             return this;
         }
@@ -52,7 +52,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public WorkerUpdater setFriendlyName(String friendlyName) {
+        public WorkerUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }

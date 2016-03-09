@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Trunking.V1.trunk.IpAccessControlList;
 namespace Twilio.Creators.Trunking.V1.Trunk {
 
     public class IpAccessControlListCreator : Creator<IpAccessControlList> {
-        private String trunkSid;
-        private String ipAccessControlListSid;
+        private string trunkSid;
+        private string ipAccessControlListSid;
     
         /**
          * Construct a new IpAccessControlListCreator
@@ -16,7 +16,7 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
          * @param trunkSid The trunk_sid
          * @param ipAccessControlListSid The ip_access_control_list_sid
          */
-        public IpAccessControlListCreator(String trunkSid, String ipAccessControlListSid) {
+        public IpAccessControlListCreator(string trunkSid, string ipAccessControlListSid) {
             this.trunkSid = trunkSid;
             this.ipAccessControlListSid = ipAccessControlListSid;
         }

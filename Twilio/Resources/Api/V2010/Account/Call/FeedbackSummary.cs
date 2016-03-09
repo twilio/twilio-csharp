@@ -1,18 +1,15 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account.Call;
 using Twilio.Deleters.Api.V2010.Account.Call;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Api.V2010.Account.Call;
 using Twilio.Http;
 using Twilio.Resources;
-using com.twilio.sdk.converters.MarshalConverter;
-using com.twilio.types.FeedbackIssue;
-using java.math.BigDecimal;
-using java.util.List;
-using org.joda.time.DateTime;
-using org.joda.time.LocalDate;
+using Twilio.Types;
 
 namespace Twilio.Resources.Api.V2010.Account.Call {
 
@@ -32,7 +29,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          * @param endDate The end_date
          * @return FeedbackSummaryCreator capable of executing the create
          */
-        public static FeedbackSummaryCreator create(String accountSid, LocalDate startDate, LocalDate endDate) {
+        public static FeedbackSummaryCreator create(string accountSid, DateTime startDate, DateTime endDate) {
             return new FeedbackSummaryCreator(accountSid, startDate, endDate);
         }
     
@@ -43,7 +40,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          * @param sid The sid
          * @return FeedbackSummaryFetcher capable of executing the fetch
          */
-        public static FeedbackSummaryFetcher fetch(String accountSid, String sid) {
+        public static FeedbackSummaryFetcher fetch(string accountSid, string sid) {
             return new FeedbackSummaryFetcher(accountSid, sid);
         }
     
@@ -54,7 +51,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          * @param sid The sid
          * @return FeedbackSummaryDeleter capable of executing the delete
          */
-        public static FeedbackSummaryDeleter delete(String accountSid, String sid) {
+        public static FeedbackSummaryDeleter delete(string accountSid, string sid) {
             return new FeedbackSummaryDeleter(accountSid, sid);
         }
     
@@ -74,11 +71,11 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("call_count")]
-        private readonly Integer callCount;
+        private readonly int callCount;
         [JsonProperty("call_feedback_count")]
-        private readonly Integer callFeedbackCount;
+        private readonly int callFeedbackCount;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
@@ -86,84 +83,84 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         [JsonProperty("end_date")]
         private readonly DateTime endDate;
         [JsonProperty("include_subaccounts")]
-        private readonly Boolean includeSubaccounts;
+        private readonly bool includeSubaccounts;
         [JsonProperty("issues")]
         private readonly List<FeedbackIssue> issues;
         [JsonProperty("quality_score_average")]
-        private readonly BigDecimal qualityScoreAverage;
+        private readonly decimal qualityScoreAverage;
         [JsonProperty("quality_score_median")]
-        private readonly BigDecimal qualityScoreMedian;
+        private readonly decimal qualityScoreMedian;
         [JsonProperty("quality_score_standard_deviation")]
-        private readonly BigDecimal qualityScoreStandardDeviation;
+        private readonly decimal qualityScoreStandardDeviation;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("start_date")]
         private readonly DateTime startDate;
         [JsonProperty("status")]
         private readonly FeedbackSummary.Status status;
     
         private FeedbackSummary([JsonProperty("account_sid")]
-                                String accountSid, 
+                                string accountSid, 
                                 [JsonProperty("call_count")]
-                                Integer callCount, 
+                                int callCount, 
                                 [JsonProperty("call_feedback_count")]
-                                Integer callFeedbackCount, 
+                                int callFeedbackCount, 
                                 [JsonProperty("date_created")]
-                                String dateCreated, 
+                                string dateCreated, 
                                 [JsonProperty("date_updated")]
-                                String dateUpdated, 
+                                string dateUpdated, 
                                 [JsonProperty("end_date")]
-                                String endDate, 
+                                string endDate, 
                                 [JsonProperty("include_subaccounts")]
-                                Boolean includeSubaccounts, 
+                                bool includeSubaccounts, 
                                 [JsonProperty("issues")]
                                 List<FeedbackIssue> issues, 
                                 [JsonProperty("quality_score_average")]
-                                BigDecimal qualityScoreAverage, 
+                                decimal qualityScoreAverage, 
                                 [JsonProperty("quality_score_median")]
-                                BigDecimal qualityScoreMedian, 
+                                decimal qualityScoreMedian, 
                                 [JsonProperty("quality_score_standard_deviation")]
-                                BigDecimal qualityScoreStandardDeviation, 
+                                decimal qualityScoreStandardDeviation, 
                                 [JsonProperty("sid")]
-                                String sid, 
+                                string sid, 
                                 [JsonProperty("start_date")]
-                                String startDate, 
+                                string startDate, 
                                 [JsonProperty("status")]
                                 FeedbackSummary.Status status) {
             this.accountSid = accountSid;
             this.callCount = callCount;
             this.callFeedbackCount = callFeedbackCount;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
-            this.endDate = MarshalConverter.dateTimeFromString(endDate);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            this.endDate = MarshalConverter.DateTimeFromString(endDate);
             this.includeSubaccounts = includeSubaccounts;
             this.issues = issues;
             this.qualityScoreAverage = qualityScoreAverage;
             this.qualityScoreMedian = qualityScoreMedian;
             this.qualityScoreStandardDeviation = qualityScoreStandardDeviation;
             this.sid = sid;
-            this.startDate = MarshalConverter.dateTimeFromString(startDate);
+            this.startDate = MarshalConverter.DateTimeFromString(startDate);
             this.status = status;
         }
     
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The call_count
          */
-        public Integer GetCallCount() {
+        public int GetCallCount() {
             return this.callCount;
         }
     
         /**
          * @return The call_feedback_count
          */
-        public Integer GetCallFeedbackCount() {
+        public int GetCallFeedbackCount() {
             return this.callFeedbackCount;
         }
     
@@ -191,7 +188,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         /**
          * @return The include_subaccounts
          */
-        public Boolean GetIncludeSubaccounts() {
+        public bool GetIncludeSubaccounts() {
             return this.includeSubaccounts;
         }
     
@@ -205,28 +202,28 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         /**
          * @return The quality_score_average
          */
-        public BigDecimal GetQualityScoreAverage() {
+        public decimal GetQualityScoreAverage() {
             return this.qualityScoreAverage;
         }
     
         /**
          * @return The quality_score_median
          */
-        public BigDecimal GetQualityScoreMedian() {
+        public decimal GetQualityScoreMedian() {
             return this.qualityScoreMedian;
         }
     
         /**
          * @return The quality_score_standard_deviation
          */
-        public BigDecimal GetQualityScoreStandardDeviation() {
+        public decimal GetQualityScoreStandardDeviation() {
             return this.qualityScoreStandardDeviation;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     

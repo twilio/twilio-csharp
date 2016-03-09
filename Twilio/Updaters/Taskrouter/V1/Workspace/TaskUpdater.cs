@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.workspace.Task;
@@ -7,12 +7,12 @@ using com.twilio.sdk.updaters.Updater;
 namespace Twilio.Updaters.Taskrouter.V1.Workspace {
 
     public class TaskUpdater : Updater<Task> {
-        private String workspaceSid;
-        private String sid;
-        private String attributes;
+        private string workspaceSid;
+        private string sid;
+        private string attributes;
         private Task.Status assignmentStatus;
-        private String reason;
-        private Integer priority;
+        private string reason;
+        private int priority;
     
         /**
          * Construct a new TaskUpdater
@@ -20,7 +20,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @param sid The sid
          */
-        public TaskUpdater(String workspaceSid, String sid) {
+        public TaskUpdater(string workspaceSid, string sid) {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
         }
@@ -31,7 +31,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param attributes The attributes
          * @return this
          */
-        public TaskUpdater setAttributes(String attributes) {
+        public TaskUpdater setAttributes(string attributes) {
             this.attributes = attributes;
             return this;
         }
@@ -53,7 +53,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param reason The reason
          * @return this
          */
-        public TaskUpdater setReason(String reason) {
+        public TaskUpdater setReason(string reason) {
             this.reason = reason;
             return this;
         }
@@ -64,7 +64,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param priority The priority
          * @return this
          */
-        public TaskUpdater setPriority(Integer priority) {
+        public TaskUpdater setPriority(int priority) {
             this.priority = priority;
             return this;
         }
@@ -116,7 +116,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
             }
             
             if (assignmentStatus != null) {
-                request.addPostParam("AssignmentStatus", assignmentStatus.toString());
+                request.addPostParam("AssignmentStatus", assignmentStatus.ToString());
             }
             
             if (reason != null) {
@@ -124,7 +124,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
             }
             
             if (priority != null) {
-                request.addPostParam("Priority", priority.toString());
+                request.addPostParam("Priority", priority.ToString());
             }
         }
     }

@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.sip.ip_access_control_list.IpAddress;
@@ -9,8 +9,8 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account.Sip.Ipaccesscontrollist {
 
     public class IpAddressReader : Reader<IpAddress> {
-        private String accountSid;
-        private String ipAccessControlListSid;
+        private string accountSid;
+        private string ipAccessControlListSid;
     
         /**
          * Construct a new IpAddressReader
@@ -18,7 +18,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.Ipaccesscontrollist {
          * @param accountSid The account_sid
          * @param ipAccessControlListSid The ip_access_control_list_sid
          */
-        public IpAddressReader(String accountSid, String ipAccessControlListSid) {
+        public IpAddressReader(string accountSid, string ipAccessControlListSid) {
             this.accountSid = accountSid;
             this.ipAccessControlListSid = ipAccessControlListSid;
         }

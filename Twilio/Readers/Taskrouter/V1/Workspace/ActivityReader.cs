@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.workspace.Activity;
@@ -9,16 +9,16 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Taskrouter.V1.Workspace {
 
     public class ActivityReader : Reader<Activity> {
-        private String workspaceSid;
-        private String friendlyName;
-        private String available;
+        private string workspaceSid;
+        private string friendlyName;
+        private string available;
     
         /**
          * Construct a new ActivityReader
          * 
          * @param workspaceSid The workspace_sid
          */
-        public ActivityReader(String workspaceSid) {
+        public ActivityReader(string workspaceSid) {
             this.workspaceSid = workspaceSid;
         }
     
@@ -28,7 +28,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public ActivityReader byFriendlyName(String friendlyName) {
+        public ActivityReader byFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -39,7 +39,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param available The available
          * @return this
          */
-        public ActivityReader byAvailable(String available) {
+        public ActivityReader byAvailable(string available) {
             this.available = available;
             return this;
         }

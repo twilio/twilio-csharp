@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.sip.domain.CredentialListMapping;
@@ -9,8 +9,8 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account.Sip.Domain {
 
     public class CredentialListMappingReader : Reader<CredentialListMapping> {
-        private String accountSid;
-        private String domainSid;
+        private string accountSid;
+        private string domainSid;
     
         /**
          * Construct a new CredentialListMappingReader
@@ -18,7 +18,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.Domain {
          * @param accountSid The account_sid
          * @param domainSid The domain_sid
          */
-        public CredentialListMappingReader(String accountSid, String domainSid) {
+        public CredentialListMappingReader(string accountSid, string domainSid) {
             this.accountSid = accountSid;
             this.domainSid = domainSid;
         }

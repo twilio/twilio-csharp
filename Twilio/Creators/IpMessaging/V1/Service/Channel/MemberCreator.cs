@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,10 +7,10 @@ using Twilio.Resources.Ipmessaging.V1.service.channel.Member;
 namespace Twilio.Creators.IpMessaging.V1.Service.Channel {
 
     public class MemberCreator : Creator<Member> {
-        private String serviceSid;
-        private String channelSid;
-        private String identity;
-        private String roleSid;
+        private string serviceSid;
+        private string channelSid;
+        private string identity;
+        private string roleSid;
     
         /**
          * Construct a new MemberCreator
@@ -19,7 +19,7 @@ namespace Twilio.Creators.IpMessaging.V1.Service.Channel {
          * @param channelSid The channel_sid
          * @param identity The identity
          */
-        public MemberCreator(String serviceSid, String channelSid, String identity) {
+        public MemberCreator(string serviceSid, string channelSid, string identity) {
             this.serviceSid = serviceSid;
             this.channelSid = channelSid;
             this.identity = identity;
@@ -31,7 +31,7 @@ namespace Twilio.Creators.IpMessaging.V1.Service.Channel {
          * @param roleSid The role_sid
          * @return this
          */
-        public MemberCreator setRoleSid(String roleSid) {
+        public MemberCreator setRoleSid(string roleSid) {
             this.roleSid = roleSid;
             return this;
         }

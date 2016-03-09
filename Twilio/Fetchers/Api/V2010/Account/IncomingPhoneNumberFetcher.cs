@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Api.V2010.account.IncomingPhoneNumber;
 namespace Twilio.Fetchers.Api.V2010.Account {
 
     public class IncomingPhoneNumberFetcher : Fetcher<IncomingPhoneNumber> {
-        private String ownerAccountSid;
-        private String sid;
+        private string ownerAccountSid;
+        private string sid;
     
         /**
          * Construct a new IncomingPhoneNumberFetcher
@@ -16,7 +16,7 @@ namespace Twilio.Fetchers.Api.V2010.Account {
          * @param ownerAccountSid The owner_account_sid
          * @param sid Fetch by unique incoming-phone-number Sid
          */
-        public IncomingPhoneNumberFetcher(String ownerAccountSid, String sid) {
+        public IncomingPhoneNumberFetcher(string ownerAccountSid, string sid) {
             this.ownerAccountSid = ownerAccountSid;
             this.sid = sid;
         }

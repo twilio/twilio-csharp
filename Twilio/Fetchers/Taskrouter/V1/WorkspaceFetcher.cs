@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,14 +7,14 @@ using Twilio.Resources.Taskrouter.V1.Workspace;
 namespace Twilio.Fetchers.Taskrouter.V1 {
 
     public class WorkspaceFetcher : Fetcher<Workspace> {
-        private String sid;
+        private string sid;
     
         /**
          * Construct a new WorkspaceFetcher
          * 
          * @param sid The sid
          */
-        public WorkspaceFetcher(String sid) {
+        public WorkspaceFetcher(string sid) {
             this.sid = sid;
         }
     

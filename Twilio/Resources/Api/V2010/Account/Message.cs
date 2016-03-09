@@ -1,7 +1,8 @@
 using Newtonsoft.Json;
-using Newtonsoft.Json.JsonDeserialize;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account;
 using Twilio.Deleters.Api.V2010.Account;
 using Twilio.Exceptions;
@@ -10,12 +11,6 @@ using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010.Account;
-using com.twilio.sdk.converters.MarshalConverter;
-using java.math.BigDecimal;
-using java.net.URI;
-using java.util.Currency;
-using java.util.List;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account {
 
@@ -47,7 +42,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param body The body
          * @return MessageCreator capable of executing the create
          */
-        public static MessageCreator create(String accountSid, com.twilio.types.PhoneNumber to, com.twilio.types.PhoneNumber from, String body) {
+        public static MessageCreator create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body) {
             return new MessageCreator(accountSid, to, from, body);
         }
     
@@ -60,7 +55,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param mediaUrl The media_url
          * @return MessageCreator capable of executing the create
          */
-        public static MessageCreator create(String accountSid, com.twilio.types.PhoneNumber to, com.twilio.types.PhoneNumber from, List<URI> mediaUrl) {
+        public static MessageCreator create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl) {
             return new MessageCreator(accountSid, to, from, mediaUrl);
         }
     
@@ -71,7 +66,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid The message to delete
          * @return MessageDeleter capable of executing the delete
          */
-        public static MessageDeleter delete(String accountSid, String sid) {
+        public static MessageDeleter delete(string accountSid, string sid) {
             return new MessageDeleter(accountSid, sid);
         }
     
@@ -82,7 +77,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Fetch by unique message Sid
          * @return MessageFetcher capable of executing the fetch
          */
-        public static MessageFetcher fetch(String accountSid, String sid) {
+        public static MessageFetcher fetch(string accountSid, string sid) {
             return new MessageFetcher(accountSid, sid);
         }
     
@@ -92,7 +87,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return MessageReader capable of executing the read
          */
-        public static MessageReader read(String accountSid) {
+        public static MessageReader read(string accountSid) {
             return new MessageReader(accountSid);
         }
     
@@ -104,7 +99,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid The message to redact
          * @return MessageUpdater capable of executing the update
          */
-        public static MessageUpdater update(String accountSid, String sid) {
+        public static MessageUpdater update(string accountSid, string sid) {
             return new MessageUpdater(accountSid, sid);
         }
     
@@ -124,11 +119,11 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("api_version")]
-        private readonly String apiVersion;
+        private readonly string apiVersion;
         [JsonProperty("body")]
-        private readonly String body;
+        private readonly string body;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
@@ -138,75 +133,74 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("direction")]
         private readonly Message.Direction direction;
         [JsonProperty("error_code")]
-        private readonly Integer errorCode;
+        private readonly int errorCode;
         [JsonProperty("error_message")]
-        private readonly String errorMessage;
+        private readonly string errorMessage;
         [JsonProperty("from")]
-        private readonly com.twilio.types.PhoneNumber from;
+        private readonly Twilio.Types.PhoneNumber from;
         [JsonProperty("num_media")]
-        private readonly String numMedia;
+        private readonly string numMedia;
         [JsonProperty("num_segments")]
-        private readonly String numSegments;
+        private readonly string numSegments;
         [JsonProperty("price")]
-        private readonly BigDecimal price;
+        private readonly decimal price;
         [JsonProperty("price_unit")]
-        private readonly Currency priceUnit;
+        private readonly decimal priceUnit;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("status")]
         private readonly Message.Status status;
         [JsonProperty("subresource_uris")]
-        private readonly Map<String, String> subresourceUris;
+        private readonly Dictionary<string, string> subresourceUris;
         [JsonProperty("to")]
-        private readonly String to;
+        private readonly string to;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private Message([JsonProperty("account_sid")]
-                        String accountSid, 
+                        string accountSid, 
                         [JsonProperty("api_version")]
-                        String apiVersion, 
+                        string apiVersion, 
                         [JsonProperty("body")]
-                        String body, 
+                        string body, 
                         [JsonProperty("date_created")]
-                        String dateCreated, 
+                        string dateCreated, 
                         [JsonProperty("date_updated")]
-                        String dateUpdated, 
+                        string dateUpdated, 
                         [JsonProperty("date_sent")]
-                        String dateSent, 
+                        string dateSent, 
                         [JsonProperty("direction")]
                         Message.Direction direction, 
                         [JsonProperty("error_code")]
-                        Integer errorCode, 
+                        int errorCode, 
                         [JsonProperty("error_message")]
-                        String errorMessage, 
+                        string errorMessage, 
                         [JsonProperty("from")]
-                        com.twilio.types.PhoneNumber from, 
+                        Twilio.Types.PhoneNumber from, 
                         [JsonProperty("num_media")]
-                        String numMedia, 
+                        string numMedia, 
                         [JsonProperty("num_segments")]
-                        String numSegments, 
+                        string numSegments, 
                         [JsonProperty("price")]
-                        BigDecimal price, 
+                        decimal price, 
                         [JsonProperty("price_unit")]
-                        [JsonDeserialize(using = com.twilio.sdk.converters.CurrencyDeserializer.class)]
-                        Currency priceUnit, 
+                        decimal priceUnit, 
                         [JsonProperty("sid")]
-                        String sid, 
+                        string sid, 
                         [JsonProperty("status")]
                         Message.Status status, 
                         [JsonProperty("subresource_uris")]
-                        Map<String, String> subresourceUris, 
+                        Dictionary<string, string> subresourceUris, 
                         [JsonProperty("to")]
-                        String to, 
+                        string to, 
                         [JsonProperty("uri")]
-                        String uri) {
+                        string uri) {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
             this.body = body;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
-            this.dateSent = MarshalConverter.dateTimeFromString(dateSent);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            this.dateSent = MarshalConverter.DateTimeFromString(dateSent);
             this.direction = direction;
             this.errorCode = errorCode;
             this.errorMessage = errorMessage;
@@ -225,21 +219,21 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The unique sid that identifies this account
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The version of the Twilio API used to process the message.
          */
-        public String GetApiVersion() {
+        public string GetApiVersion() {
             return this.apiVersion;
         }
     
         /**
          * @return The text body of the message. Up to 1600 characters long.
          */
-        public String GetBody() {
+        public string GetBody() {
             return this.body;
         }
     
@@ -274,56 +268,56 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The error code associated with the message
          */
-        public Integer GetErrorCode() {
+        public int GetErrorCode() {
             return this.errorCode;
         }
     
         /**
          * @return Human readable description of the ErrorCode
          */
-        public String GetErrorMessage() {
+        public string GetErrorMessage() {
             return this.errorMessage;
         }
     
         /**
          * @return The phone number that initiated the message
          */
-        public com.twilio.types.PhoneNumber GetFrom() {
+        public Twilio.Types.PhoneNumber GetFrom() {
             return this.from;
         }
     
         /**
          * @return Number of media files associated with the message
          */
-        public String GetNumMedia() {
+        public string GetNumMedia() {
             return this.numMedia;
         }
     
         /**
          * @return Indicates number of messages used to delivery the body
          */
-        public String GetNumSegments() {
+        public string GetNumSegments() {
             return this.numSegments;
         }
     
         /**
          * @return The amount billed for the message
          */
-        public BigDecimal GetPrice() {
+        public decimal GetPrice() {
             return this.price;
         }
     
         /**
          * @return The currency in which Price is measured
          */
-        public Currency GetPriceUnit() {
+        public decimal GetPriceUnit() {
             return this.priceUnit;
         }
     
         /**
          * @return A string that uniquely identifies this message
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
@@ -337,21 +331,21 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The subresource_uris
          */
-        public Map<String, String> GetSubresourceUris() {
+        public Dictionary<string, string> GetSubresourceUris() {
             return this.subresourceUris;
         }
     
         /**
          * @return The phone number that received the message
          */
-        public String GetTo() {
+        public string GetTo() {
             return this.to;
         }
     
         /**
          * @return The URI for this resource
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

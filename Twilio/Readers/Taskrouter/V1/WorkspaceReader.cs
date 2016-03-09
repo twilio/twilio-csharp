@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.Workspace;
@@ -9,7 +9,7 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Taskrouter.V1 {
 
     public class WorkspaceReader : Reader<Workspace> {
-        private String friendlyName;
+        private string friendlyName;
     
         /**
          * The friendly_name
@@ -17,7 +17,7 @@ namespace Twilio.Readers.Taskrouter.V1 {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public WorkspaceReader byFriendlyName(String friendlyName) {
+        public WorkspaceReader byFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }

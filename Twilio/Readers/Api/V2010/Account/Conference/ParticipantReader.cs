@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.conference.Participant;
@@ -9,9 +9,9 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account.Conference {
 
     public class ParticipantReader : Reader<Participant> {
-        private String accountSid;
-        private String conferenceSid;
-        private Boolean muted;
+        private string accountSid;
+        private string conferenceSid;
+        private bool muted;
     
         /**
          * Construct a new ParticipantReader
@@ -19,7 +19,7 @@ namespace Twilio.Readers.Api.V2010.Account.Conference {
          * @param accountSid The account_sid
          * @param conferenceSid The string that uniquely identifies this conference
          */
-        public ParticipantReader(String accountSid, String conferenceSid) {
+        public ParticipantReader(string accountSid, string conferenceSid) {
             this.accountSid = accountSid;
             this.conferenceSid = conferenceSid;
         }
@@ -30,7 +30,7 @@ namespace Twilio.Readers.Api.V2010.Account.Conference {
          * @param muted Filter by muted participants
          * @return this
          */
-        public ParticipantReader byMuted(Boolean muted) {
+        public ParticipantReader byMuted(bool muted) {
             this.muted = muted;
             return this;
         }
@@ -112,7 +112,7 @@ namespace Twilio.Readers.Api.V2010.Account.Conference {
          */
         private void addQueryParams(final Request request) {
             if (muted != null) {
-                request.addQueryParam("Muted", muted.toString());
+                request.addQueryParam("Muted", muted.ToString());
             }
             
             request.addQueryParam("PageSize", Integer.toString(getPageSize()));

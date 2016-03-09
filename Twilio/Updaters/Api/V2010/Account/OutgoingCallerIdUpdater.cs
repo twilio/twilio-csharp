@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.OutgoingCallerId;
@@ -7,9 +7,9 @@ using com.twilio.sdk.updaters.Updater;
 namespace Twilio.Updaters.Api.V2010.Account {
 
     public class OutgoingCallerIdUpdater : Updater<OutgoingCallerId> {
-        private String accountSid;
-        private String sid;
-        private String friendlyName;
+        private string accountSid;
+        private string sid;
+        private string friendlyName;
     
         /**
          * Construct a new OutgoingCallerIdUpdater
@@ -17,7 +17,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param accountSid The account_sid
          * @param sid Update by unique outgoing-caller-id Sid
          */
-        public OutgoingCallerIdUpdater(String accountSid, String sid) {
+        public OutgoingCallerIdUpdater(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
@@ -28,7 +28,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param friendlyName A human readable description of the caller ID
          * @return this
          */
-        public OutgoingCallerIdUpdater setFriendlyName(String friendlyName) {
+        public OutgoingCallerIdUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }

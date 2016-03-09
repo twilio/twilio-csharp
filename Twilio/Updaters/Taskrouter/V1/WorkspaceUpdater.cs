@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.Workspace;
@@ -7,18 +7,18 @@ using com.twilio.sdk.updaters.Updater;
 namespace Twilio.Updaters.Taskrouter.V1 {
 
     public class WorkspaceUpdater : Updater<Workspace> {
-        private String sid;
-        private String defaultActivitySid;
-        private String eventCallbackUrl;
-        private String friendlyName;
-        private String timeoutActivitySid;
+        private string sid;
+        private string defaultActivitySid;
+        private string eventCallbackUrl;
+        private string friendlyName;
+        private string timeoutActivitySid;
     
         /**
          * Construct a new WorkspaceUpdater
          * 
          * @param sid The sid
          */
-        public WorkspaceUpdater(String sid) {
+        public WorkspaceUpdater(string sid) {
             this.sid = sid;
         }
     
@@ -28,7 +28,7 @@ namespace Twilio.Updaters.Taskrouter.V1 {
          * @param defaultActivitySid The default_activity_sid
          * @return this
          */
-        public WorkspaceUpdater setDefaultActivitySid(String defaultActivitySid) {
+        public WorkspaceUpdater setDefaultActivitySid(string defaultActivitySid) {
             this.defaultActivitySid = defaultActivitySid;
             return this;
         }
@@ -39,7 +39,7 @@ namespace Twilio.Updaters.Taskrouter.V1 {
          * @param eventCallbackUrl The event_callback_url
          * @return this
          */
-        public WorkspaceUpdater setEventCallbackUrl(String eventCallbackUrl) {
+        public WorkspaceUpdater setEventCallbackUrl(string eventCallbackUrl) {
             this.eventCallbackUrl = eventCallbackUrl;
             return this;
         }
@@ -50,7 +50,7 @@ namespace Twilio.Updaters.Taskrouter.V1 {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public WorkspaceUpdater setFriendlyName(String friendlyName) {
+        public WorkspaceUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -61,7 +61,7 @@ namespace Twilio.Updaters.Taskrouter.V1 {
          * @param timeoutActivitySid The timeout_activity_sid
          * @return this
          */
-        public WorkspaceUpdater setTimeoutActivitySid(String timeoutActivitySid) {
+        public WorkspaceUpdater setTimeoutActivitySid(string timeoutActivitySid) {
             this.timeoutActivitySid = timeoutActivitySid;
             return this;
         }

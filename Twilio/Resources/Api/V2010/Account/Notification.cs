@@ -1,16 +1,13 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Deleters.Api.V2010.Account;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Api.V2010.Account;
 using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account;
 using Twilio.Resources;
-using com.twilio.sdk.converters.MarshalConverter;
-using com.twilio.sdk.http.HttpMethod;
-using java.net.URI;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account {
 
@@ -22,7 +19,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Fetch by unique notification Sid
          * @return NotificationFetcher capable of executing the fetch
          */
-        public static NotificationFetcher fetch(String accountSid, String sid) {
+        public static NotificationFetcher fetch(string accountSid, string sid) {
             return new NotificationFetcher(accountSid, sid);
         }
     
@@ -33,7 +30,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Delete by unique notification Sid
          * @return NotificationDeleter capable of executing the delete
          */
-        public static NotificationDeleter delete(String accountSid, String sid) {
+        public static NotificationDeleter delete(string accountSid, string sid) {
             return new NotificationDeleter(accountSid, sid);
         }
     
@@ -44,7 +41,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return NotificationReader capable of executing the read
          */
-        public static NotificationReader read(String accountSid) {
+        public static NotificationReader read(string accountSid) {
             return new NotificationReader(accountSid);
         }
     
@@ -64,82 +61,82 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("api_version")]
-        private readonly String apiVersion;
+        private readonly string apiVersion;
         [JsonProperty("call_sid")]
-        private readonly String callSid;
+        private readonly string callSid;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("error_code")]
-        private readonly String errorCode;
+        private readonly string errorCode;
         [JsonProperty("log")]
-        private readonly String log;
+        private readonly string log;
         [JsonProperty("message_date")]
         private readonly DateTime messageDate;
         [JsonProperty("message_text")]
-        private readonly String messageText;
+        private readonly string messageText;
         [JsonProperty("more_info")]
-        private readonly URI moreInfo;
+        private readonly Uri moreInfo;
         [JsonProperty("request_method")]
         private readonly HttpMethod requestMethod;
         [JsonProperty("request_url")]
-        private readonly URI requestUrl;
+        private readonly Uri requestUrl;
         [JsonProperty("request_variables")]
-        private readonly String requestVariables;
+        private readonly string requestVariables;
         [JsonProperty("response_body")]
-        private readonly String responseBody;
+        private readonly string responseBody;
         [JsonProperty("response_headers")]
-        private readonly String responseHeaders;
+        private readonly string responseHeaders;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private Notification([JsonProperty("account_sid")]
-                             String accountSid, 
+                             string accountSid, 
                              [JsonProperty("api_version")]
-                             String apiVersion, 
+                             string apiVersion, 
                              [JsonProperty("call_sid")]
-                             String callSid, 
+                             string callSid, 
                              [JsonProperty("date_created")]
-                             String dateCreated, 
+                             string dateCreated, 
                              [JsonProperty("date_updated")]
-                             String dateUpdated, 
+                             string dateUpdated, 
                              [JsonProperty("error_code")]
-                             String errorCode, 
+                             string errorCode, 
                              [JsonProperty("log")]
-                             String log, 
+                             string log, 
                              [JsonProperty("message_date")]
-                             String messageDate, 
+                             string messageDate, 
                              [JsonProperty("message_text")]
-                             String messageText, 
+                             string messageText, 
                              [JsonProperty("more_info")]
-                             URI moreInfo, 
+                             Uri moreInfo, 
                              [JsonProperty("request_method")]
                              HttpMethod requestMethod, 
                              [JsonProperty("request_url")]
-                             URI requestUrl, 
+                             Uri requestUrl, 
                              [JsonProperty("request_variables")]
-                             String requestVariables, 
+                             string requestVariables, 
                              [JsonProperty("response_body")]
-                             String responseBody, 
+                             string responseBody, 
                              [JsonProperty("response_headers")]
-                             String responseHeaders, 
+                             string responseHeaders, 
                              [JsonProperty("sid")]
-                             String sid, 
+                             string sid, 
                              [JsonProperty("uri")]
-                             String uri) {
+                             string uri) {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
             this.callSid = callSid;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.errorCode = errorCode;
             this.log = log;
-            this.messageDate = MarshalConverter.dateTimeFromString(messageDate);
+            this.messageDate = MarshalConverter.DateTimeFromString(messageDate);
             this.messageText = messageText;
             this.moreInfo = moreInfo;
             this.requestMethod = requestMethod;
@@ -154,21 +151,21 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The unique sid that identifies this account
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The version of the Twilio API in use
          */
-        public String GetApiVersion() {
+        public string GetApiVersion() {
             return this.apiVersion;
         }
     
         /**
          * @return The string that uniquely identifies the call
          */
-        public String GetCallSid() {
+        public string GetCallSid() {
             return this.callSid;
         }
     
@@ -189,14 +186,14 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return A unique error code corresponding to the notification
          */
-        public String GetErrorCode() {
+        public string GetErrorCode() {
             return this.errorCode;
         }
     
         /**
          * @return An integer log level
          */
-        public String GetLog() {
+        public string GetLog() {
             return this.log;
         }
     
@@ -210,14 +207,14 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The text of the notification.
          */
-        public String GetMessageText() {
+        public string GetMessageText() {
             return this.messageText;
         }
     
         /**
          * @return A URL for more information about the error code
          */
-        public URI GetMoreInfo() {
+        public Uri GetMoreInfo() {
             return this.moreInfo;
         }
     
@@ -231,42 +228,42 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return URL of the resource that generated the notification
          */
-        public URI GetRequestUrl() {
+        public Uri GetRequestUrl() {
             return this.requestUrl;
         }
     
         /**
          * @return Twilio-generated HTTP variables sent to the server
          */
-        public String GetRequestVariables() {
+        public string GetRequestVariables() {
             return this.requestVariables;
         }
     
         /**
          * @return The HTTP body returned by your server.
          */
-        public String GetResponseBody() {
+        public string GetResponseBody() {
             return this.responseBody;
         }
     
         /**
          * @return The HTTP headers returned by your server.
          */
-        public String GetResponseHeaders() {
+        public string GetResponseHeaders() {
             return this.responseHeaders;
         }
     
         /**
          * @return A string that uniquely identifies this notification
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The URI for this resource
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

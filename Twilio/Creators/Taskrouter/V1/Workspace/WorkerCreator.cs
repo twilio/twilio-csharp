@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,10 +7,10 @@ using Twilio.Resources.Taskrouter.V1.workspace.Worker;
 namespace Twilio.Creators.Taskrouter.V1.Workspace {
 
     public class WorkerCreator : Creator<Worker> {
-        private String workspaceSid;
-        private String friendlyName;
-        private String activitySid;
-        private String attributes;
+        private string workspaceSid;
+        private string friendlyName;
+        private string activitySid;
+        private string attributes;
     
         /**
          * Construct a new WorkerCreator
@@ -18,7 +18,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @param friendlyName The friendly_name
          */
-        public WorkerCreator(String workspaceSid, String friendlyName) {
+        public WorkerCreator(string workspaceSid, string friendlyName) {
             this.workspaceSid = workspaceSid;
             this.friendlyName = friendlyName;
         }
@@ -29,7 +29,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param activitySid The activity_sid
          * @return this
          */
-        public WorkerCreator setActivitySid(String activitySid) {
+        public WorkerCreator setActivitySid(string activitySid) {
             this.activitySid = activitySid;
             return this;
         }
@@ -40,7 +40,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param attributes The attributes
          * @return this
          */
-        public WorkerCreator setAttributes(String attributes) {
+        public WorkerCreator setAttributes(string attributes) {
             this.attributes = attributes;
             return this;
         }

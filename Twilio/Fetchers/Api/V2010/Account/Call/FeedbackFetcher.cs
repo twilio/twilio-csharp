@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Api.V2010.account.call.Feedback;
 namespace Twilio.Fetchers.Api.V2010.Account.Call {
 
     public class FeedbackFetcher : Fetcher<Feedback> {
-        private String accountSid;
-        private String callSid;
+        private string accountSid;
+        private string callSid;
     
         /**
          * Construct a new FeedbackFetcher
@@ -16,7 +16,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Call {
          * @param accountSid The account_sid
          * @param callSid The call sid that uniquely identifies the call
          */
-        public FeedbackFetcher(String accountSid, String callSid) {
+        public FeedbackFetcher(string accountSid, string callSid) {
             this.accountSid = accountSid;
             this.callSid = callSid;
         }

@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.Recording;
@@ -9,15 +9,15 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account {
 
     public class RecordingReader : Reader<Recording> {
-        private String accountSid;
-        private String dateCreated;
+        private string accountSid;
+        private string dateCreated;
     
         /**
          * Construct a new RecordingReader
          * 
          * @param accountSid The account_sid
          */
-        public RecordingReader(String accountSid) {
+        public RecordingReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
@@ -28,7 +28,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param dateCreated Filter by date created
          * @return this
          */
-        public RecordingReader byDateCreated(String dateCreated) {
+        public RecordingReader byDateCreated(string dateCreated) {
             this.dateCreated = dateCreated;
             return this;
         }

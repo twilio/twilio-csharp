@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Trunking.V1.trunk.OriginationUrl;
@@ -9,14 +9,14 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Trunking.V1.Trunk {
 
     public class OriginationUrlReader : Reader<OriginationUrl> {
-        private String trunkSid;
+        private string trunkSid;
     
         /**
          * Construct a new OriginationUrlReader
          * 
          * @param trunkSid The trunk_sid
          */
-        public OriginationUrlReader(String trunkSid) {
+        public OriginationUrlReader(string trunkSid) {
             this.trunkSid = trunkSid;
         }
     

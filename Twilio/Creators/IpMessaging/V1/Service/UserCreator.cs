@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,9 +7,9 @@ using Twilio.Resources.Ipmessaging.V1.service.User;
 namespace Twilio.Creators.IpMessaging.V1.Service {
 
     public class UserCreator : Creator<User> {
-        private String serviceSid;
-        private String identity;
-        private String roleSid;
+        private string serviceSid;
+        private string identity;
+        private string roleSid;
     
         /**
          * Construct a new UserCreator
@@ -18,7 +18,7 @@ namespace Twilio.Creators.IpMessaging.V1.Service {
          * @param identity The identity
          * @param roleSid The role_sid
          */
-        public UserCreator(String serviceSid, String identity, String roleSid) {
+        public UserCreator(string serviceSid, string identity, string roleSid) {
             this.serviceSid = serviceSid;
             this.identity = identity;
             this.roleSid = roleSid;

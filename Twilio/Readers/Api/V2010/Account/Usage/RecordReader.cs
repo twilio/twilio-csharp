@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.usage.Record;
@@ -9,17 +9,17 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account.Usage {
 
     public class RecordReader : Reader<Record> {
-        private String accountSid;
+        private string accountSid;
         private Record.Category category;
-        private String startDate;
-        private String endDate;
+        private string startDate;
+        private string endDate;
     
         /**
          * Construct a new RecordReader
          * 
          * @param accountSid The account_sid
          */
-        public RecordReader(String accountSid) {
+        public RecordReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
@@ -43,7 +43,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          * @param startDate Filter by start date
          * @return this
          */
-        public RecordReader byStartDate(String startDate) {
+        public RecordReader byStartDate(string startDate) {
             this.startDate = startDate;
             return this;
         }
@@ -56,7 +56,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          * @param endDate Filter by end date
          * @return this
          */
-        public RecordReader byEndDate(String endDate) {
+        public RecordReader byEndDate(string endDate) {
             this.endDate = endDate;
             return this;
         }
@@ -138,7 +138,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          */
         private void addQueryParams(final Request request) {
             if (category != null) {
-                request.addQueryParam("Category", category.toString());
+                request.addQueryParam("Category", category.ToString());
             }
             
             if (startDate != null) {

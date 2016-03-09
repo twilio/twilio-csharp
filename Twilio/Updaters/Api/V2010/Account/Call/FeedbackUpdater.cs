@@ -1,17 +1,17 @@
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
 using Twilio.Converters.Promoter;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.call.Feedback;
 using com.twilio.sdk.updaters.Updater;
-using java.util.List;
 
 namespace Twilio.Updaters.Api.V2010.Account.Call {
 
     public class FeedbackUpdater : Updater<Feedback> {
-        private String accountSid;
-        private String callSid;
-        private Integer qualityScore;
+        private string accountSid;
+        private string callSid;
+        private int qualityScore;
         private List<Feedback.Issues> issue;
     
         /**
@@ -21,7 +21,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Call {
          * @param callSid The call_sid
          * @param qualityScore An integer from 1 to 5
          */
-        public FeedbackUpdater(String accountSid, String callSid, Integer qualityScore) {
+        public FeedbackUpdater(string accountSid, string callSid, int qualityScore) {
             this.accountSid = accountSid;
             this.callSid = callSid;
             this.qualityScore = qualityScore;
@@ -91,11 +91,11 @@ namespace Twilio.Updaters.Api.V2010.Account.Call {
          */
         private void addPostParams(Request request) {
             if (qualityScore != null) {
-                request.addPostParam("QualityScore", qualityScore.toString());
+                request.addPostParam("QualityScore", qualityScore.ToString());
             }
             
             if (issue != null) {
-                request.addPostParam("Issue", issue.toString());
+                request.addPostParam("Issue", issue.ToString());
             }
         }
     }

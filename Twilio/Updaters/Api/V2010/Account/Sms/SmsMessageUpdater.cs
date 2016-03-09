@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.sms.SmsMessage;
@@ -7,9 +7,9 @@ using com.twilio.sdk.updaters.Updater;
 namespace Twilio.Updaters.Api.V2010.Account.Sms {
 
     public class SmsMessageUpdater : Updater<SmsMessage> {
-        private String accountSid;
-        private String sid;
-        private String body;
+        private string accountSid;
+        private string sid;
+        private string body;
     
         /**
          * Construct a new SmsMessageUpdater
@@ -17,7 +17,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          * @param accountSid The account_sid
          * @param sid The sid
          */
-        public SmsMessageUpdater(String accountSid, String sid) {
+        public SmsMessageUpdater(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
@@ -28,7 +28,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          * @param body The body
          * @return this
          */
-        public SmsMessageUpdater setBody(String body) {
+        public SmsMessageUpdater setBody(string body) {
             this.body = body;
             return this;
         }

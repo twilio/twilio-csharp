@@ -1,22 +1,20 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Converters.Promoter;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.call.FeedbackSummary;
-using com.twilio.sdk.converters.MarshalConverter;
-using com.twilio.sdk.http.HttpMethod;
-using java.net.URI;
-using org.joda.time.LocalDate;
 
 namespace Twilio.Creators.Api.V2010.Account.Call {
 
     public class FeedbackSummaryCreator : Creator<FeedbackSummary> {
-        private String accountSid;
-        private LocalDate startDate;
-        private LocalDate endDate;
-        private Boolean includeSubaccounts;
-        private URI statusCallback;
+        private string accountSid;
+        private DateTime startDate;
+        private DateTime endDate;
+        private bool includeSubaccounts;
+        private Uri statusCallback;
         private HttpMethod statusCallbackMethod;
     
         /**
@@ -26,7 +24,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
          * @param startDate The start_date
          * @param endDate The end_date
          */
-        public FeedbackSummaryCreator(String accountSid, LocalDate startDate, LocalDate endDate) {
+        public FeedbackSummaryCreator(string accountSid, DateTime startDate, DateTime endDate) {
             this.accountSid = accountSid;
             this.startDate = startDate;
             this.endDate = endDate;
@@ -38,7 +36,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
          * @param includeSubaccounts The include_subaccounts
          * @return this
          */
-        public FeedbackSummaryCreator setIncludeSubaccounts(Boolean includeSubaccounts) {
+        public FeedbackSummaryCreator setIncludeSubaccounts(bool includeSubaccounts) {
             this.includeSubaccounts = includeSubaccounts;
             return this;
         }
@@ -49,7 +47,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
          * @param statusCallback The status_callback
          * @return this
          */
-        public FeedbackSummaryCreator setStatusCallback(URI statusCallback) {
+        public FeedbackSummaryCreator setStatusCallback(Uri statusCallback) {
             this.statusCallback = statusCallback;
             return this;
         }
@@ -60,8 +58,8 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
          * @param statusCallback The status_callback
          * @return this
          */
-        public FeedbackSummaryCreator setStatusCallback(String statusCallback) {
-            return setStatusCallback(Promoter.uriFromString(statusCallback));
+        public FeedbackSummaryCreator setStatusCallback(string statusCallback) {
+            return setStatusCallback(Promoter.UriFromString(statusCallback));
         }
     
         /**
@@ -118,23 +116,23 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
          */
         private void addPostParams(Request request) {
             if (startDate != null) {
-                request.addPostParam("StartDate", startDate.toString());
+                request.addPostParam("StartDate", startDate.ToString());
             }
             
             if (endDate != null) {
-                request.addPostParam("EndDate", endDate.toString());
+                request.addPostParam("EndDate", endDate.ToString());
             }
             
             if (includeSubaccounts != null) {
-                request.addPostParam("IncludeSubaccounts", includeSubaccounts.toString());
+                request.addPostParam("IncludeSubaccounts", includeSubaccounts.ToString());
             }
             
             if (statusCallback != null) {
-                request.addPostParam("StatusCallback", statusCallback.toString());
+                request.addPostParam("StatusCallback", statusCallback.ToString());
             }
             
             if (statusCallbackMethod != null) {
-                request.addPostParam("StatusCallbackMethod", statusCallbackMethod.toString());
+                request.addPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
         }
     }

@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Ipmessaging.V1.Service.Channel;
 using Twilio.Deleters.Ipmessaging.V1.Service.Channel;
 using Twilio.Exceptions;
@@ -8,9 +9,6 @@ using Twilio.Fetchers.Ipmessaging.V1.Service.Channel;
 using Twilio.Http;
 using Twilio.Readers.Ipmessaging.V1.Service.Channel;
 using Twilio.Resources;
-using com.twilio.sdk.converters.MarshalConverter;
-using java.net.URI;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
 
@@ -23,7 +21,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
          * @param sid The sid
          * @return MemberFetcher capable of executing the fetch
          */
-        public static MemberFetcher fetch(String serviceSid, String channelSid, String sid) {
+        public static MemberFetcher fetch(string serviceSid, string channelSid, string sid) {
             return new MemberFetcher(serviceSid, channelSid, sid);
         }
     
@@ -35,7 +33,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
          * @param identity The identity
          * @return MemberCreator capable of executing the create
          */
-        public static MemberCreator create(String serviceSid, String channelSid, String identity) {
+        public static MemberCreator create(string serviceSid, string channelSid, string identity) {
             return new MemberCreator(serviceSid, channelSid, identity);
         }
     
@@ -46,7 +44,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
          * @param channelSid The channel_sid
          * @return MemberReader capable of executing the read
          */
-        public static MemberReader read(String serviceSid, String channelSid) {
+        public static MemberReader read(string serviceSid, string channelSid) {
             return new MemberReader(serviceSid, channelSid);
         }
     
@@ -58,7 +56,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
          * @param sid The sid
          * @return MemberDeleter capable of executing the delete
          */
-        public static MemberDeleter delete(String serviceSid, String channelSid, String sid) {
+        public static MemberDeleter delete(string serviceSid, string channelSid, string sid) {
             return new MemberDeleter(serviceSid, channelSid, sid);
         }
     
@@ -78,49 +76,49 @@ namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
         }
     
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("channel_sid")]
-        private readonly String channelSid;
+        private readonly string channelSid;
         [JsonProperty("service_sid")]
-        private readonly String serviceSid;
+        private readonly string serviceSid;
         [JsonProperty("identity")]
-        private readonly String identity;
+        private readonly string identity;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("role_sid")]
-        private readonly String roleSid;
+        private readonly string roleSid;
         [JsonProperty("url")]
-        private readonly URI url;
+        private readonly Uri url;
     
         private Member([JsonProperty("sid")]
-                       String sid, 
+                       string sid, 
                        [JsonProperty("account_sid")]
-                       String accountSid, 
+                       string accountSid, 
                        [JsonProperty("channel_sid")]
-                       String channelSid, 
+                       string channelSid, 
                        [JsonProperty("service_sid")]
-                       String serviceSid, 
+                       string serviceSid, 
                        [JsonProperty("identity")]
-                       String identity, 
+                       string identity, 
                        [JsonProperty("date_created")]
-                       String dateCreated, 
+                       string dateCreated, 
                        [JsonProperty("date_updated")]
-                       String dateUpdated, 
+                       string dateUpdated, 
                        [JsonProperty("role_sid")]
-                       String roleSid, 
+                       string roleSid, 
                        [JsonProperty("url")]
-                       URI url) {
+                       Uri url) {
             this.sid = sid;
             this.accountSid = accountSid;
             this.channelSid = channelSid;
             this.serviceSid = serviceSid;
             this.identity = identity;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.roleSid = roleSid;
             this.url = url;
         }
@@ -128,35 +126,35 @@ namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The channel_sid
          */
-        public String GetChannelSid() {
+        public string GetChannelSid() {
             return this.channelSid;
         }
     
         /**
          * @return The service_sid
          */
-        public String GetServiceSid() {
+        public string GetServiceSid() {
             return this.serviceSid;
         }
     
         /**
          * @return The identity
          */
-        public String GetIdentity() {
+        public string GetIdentity() {
             return this.identity;
         }
     
@@ -177,14 +175,14 @@ namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
         /**
          * @return The role_sid
          */
-        public String GetRoleSid() {
+        public string GetRoleSid() {
             return this.roleSid;
         }
     
         /**
          * @return The url
          */
-        public URI GetUrl() {
+        public Uri GetUrl() {
             return this.url;
         }
     }

@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account;
@@ -7,8 +7,8 @@ using com.twilio.sdk.updaters.Updater;
 namespace Twilio.Updaters.Api.V2010 {
 
     public class AccountUpdater : Updater<Account> {
-        private String sid;
-        private String friendlyName;
+        private string sid;
+        private string friendlyName;
         private Account.Status status;
     
         /**
@@ -16,7 +16,7 @@ namespace Twilio.Updaters.Api.V2010 {
          * 
          * @param sid The sid
          */
-        public AccountUpdater(String sid) {
+        public AccountUpdater(string sid) {
             this.sid = sid;
         }
     
@@ -26,7 +26,7 @@ namespace Twilio.Updaters.Api.V2010 {
          * @param friendlyName FriendlyName to update
          * @return this
          */
-        public AccountUpdater setFriendlyName(String friendlyName) {
+        public AccountUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -89,7 +89,7 @@ namespace Twilio.Updaters.Api.V2010 {
             }
             
             if (status != null) {
-                request.addPostParam("Status", status.toString());
+                request.addPostParam("Status", status.ToString());
             }
         }
     }

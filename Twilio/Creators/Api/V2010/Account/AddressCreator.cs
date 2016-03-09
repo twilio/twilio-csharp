@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,14 +7,14 @@ using Twilio.Resources.Api.V2010.account.Address;
 namespace Twilio.Creators.Api.V2010.Account {
 
     public class AddressCreator : Creator<Address> {
-        private String accountSid;
-        private String customerName;
-        private String street;
-        private String city;
-        private String region;
-        private String postalCode;
-        private String isoCountry;
-        private String friendlyName;
+        private string accountSid;
+        private string customerName;
+        private string street;
+        private string city;
+        private string region;
+        private string postalCode;
+        private string isoCountry;
+        private string friendlyName;
     
         /**
          * Construct a new AddressCreator
@@ -27,7 +27,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param postalCode The postal_code
          * @param isoCountry The iso_country
          */
-        public AddressCreator(String accountSid, String customerName, String street, String city, String region, String postalCode, String isoCountry) {
+        public AddressCreator(string accountSid, string customerName, string street, string city, string region, string postalCode, string isoCountry) {
             this.accountSid = accountSid;
             this.customerName = customerName;
             this.street = street;
@@ -43,7 +43,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public AddressCreator setFriendlyName(String friendlyName) {
+        public AddressCreator setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }

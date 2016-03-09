@@ -1,22 +1,22 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using System.Collections.Generic;
+using Twilio.Clients;
 using Twilio.Converters.Promoter;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.sms.SmsMessage;
-using java.net.URI;
-using java.util.List;
 
 namespace Twilio.Creators.Api.V2010.Account.Sms {
 
     public class SmsMessageCreator : Creator<SmsMessage> {
-        private String accountSid;
-        private com.twilio.types.PhoneNumber to;
-        private com.twilio.types.PhoneNumber from;
-        private String body;
-        private List<URI> mediaUrl;
-        private URI statusCallback;
-        private String applicationSid;
+        private string accountSid;
+        private Twilio.Types.PhoneNumber to;
+        private Twilio.Types.PhoneNumber from;
+        private string body;
+        private List<Uri> mediaUrl;
+        private Uri statusCallback;
+        private string applicationSid;
     
         /**
          * Construct a new SmsMessageCreator
@@ -26,7 +26,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sms {
          * @param from The from
          * @param body The body
          */
-        public SmsMessageCreator(String accountSid, com.twilio.types.PhoneNumber to, com.twilio.types.PhoneNumber from, String body) {
+        public SmsMessageCreator(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body) {
             this.accountSid = accountSid;
             this.to = to;
             this.from = from;
@@ -41,7 +41,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sms {
          * @param from The from
          * @param mediaUrl The media_url
          */
-        public SmsMessageCreator(String accountSid, com.twilio.types.PhoneNumber to, com.twilio.types.PhoneNumber from, List<URI> mediaUrl) {
+        public SmsMessageCreator(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl) {
             this.accountSid = accountSid;
             this.to = to;
             this.from = from;
@@ -54,7 +54,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sms {
          * @param statusCallback The status_callback
          * @return this
          */
-        public SmsMessageCreator setStatusCallback(URI statusCallback) {
+        public SmsMessageCreator setStatusCallback(Uri statusCallback) {
             this.statusCallback = statusCallback;
             return this;
         }
@@ -65,8 +65,8 @@ namespace Twilio.Creators.Api.V2010.Account.Sms {
          * @param statusCallback The status_callback
          * @return this
          */
-        public SmsMessageCreator setStatusCallback(String statusCallback) {
-            return setStatusCallback(Promoter.uriFromString(statusCallback));
+        public SmsMessageCreator setStatusCallback(string statusCallback) {
+            return setStatusCallback(Promoter.UriFromString(statusCallback));
         }
     
         /**
@@ -75,7 +75,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sms {
          * @param applicationSid The application_sid
          * @return this
          */
-        public SmsMessageCreator setApplicationSid(String applicationSid) {
+        public SmsMessageCreator setApplicationSid(string applicationSid) {
             this.applicationSid = applicationSid;
             return this;
         }
@@ -123,11 +123,11 @@ namespace Twilio.Creators.Api.V2010.Account.Sms {
          */
         private void addPostParams(Request request) {
             if (to != null) {
-                request.addPostParam("To", to.toString());
+                request.addPostParam("To", to.ToString());
             }
             
             if (from != null) {
-                request.addPostParam("From", from.toString());
+                request.addPostParam("From", from.ToString());
             }
             
             if (body != null) {
@@ -135,11 +135,11 @@ namespace Twilio.Creators.Api.V2010.Account.Sms {
             }
             
             if (mediaUrl != null) {
-                request.addPostParam("MediaUrl", mediaUrl.toString());
+                request.addPostParam("MediaUrl", mediaUrl.ToString());
             }
             
             if (statusCallback != null) {
-                request.addPostParam("StatusCallback", statusCallback.toString());
+                request.addPostParam("StatusCallback", statusCallback.ToString());
             }
             
             if (applicationSid != null) {

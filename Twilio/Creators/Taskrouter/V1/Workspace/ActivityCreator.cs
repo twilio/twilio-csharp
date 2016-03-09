@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,9 +7,9 @@ using Twilio.Resources.Taskrouter.V1.workspace.Activity;
 namespace Twilio.Creators.Taskrouter.V1.Workspace {
 
     public class ActivityCreator : Creator<Activity> {
-        private String workspaceSid;
-        private String friendlyName;
-        private Boolean available;
+        private string workspaceSid;
+        private string friendlyName;
+        private bool available;
     
         /**
          * Construct a new ActivityCreator
@@ -18,7 +18,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param friendlyName The friendly_name
          * @param available The available
          */
-        public ActivityCreator(String workspaceSid, String friendlyName, Boolean available) {
+        public ActivityCreator(string workspaceSid, string friendlyName, bool available) {
             this.workspaceSid = workspaceSid;
             this.friendlyName = friendlyName;
             this.available = available;
@@ -71,7 +71,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
             }
             
             if (available != null) {
-                request.addPostParam("Available", available.toString());
+                request.addPostParam("Available", available.ToString());
             }
         }
     }

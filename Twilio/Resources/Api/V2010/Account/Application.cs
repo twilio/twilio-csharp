@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account;
 using Twilio.Deleters.Api.V2010.Account;
 using Twilio.Exceptions;
@@ -9,10 +10,6 @@ using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010.Account;
-using com.twilio.sdk.converters.MarshalConverter;
-using com.twilio.sdk.http.HttpMethod;
-using java.net.URI;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account {
 
@@ -24,7 +21,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param friendlyName Human readable description of this resource
          * @return ApplicationCreator capable of executing the create
          */
-        public static ApplicationCreator create(String accountSid, String friendlyName) {
+        public static ApplicationCreator create(string accountSid, string friendlyName) {
             return new ApplicationCreator(accountSid, friendlyName);
         }
     
@@ -35,7 +32,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid The application sid to delete
          * @return ApplicationDeleter capable of executing the delete
          */
-        public static ApplicationDeleter delete(String accountSid, String sid) {
+        public static ApplicationDeleter delete(string accountSid, string sid) {
             return new ApplicationDeleter(accountSid, sid);
         }
     
@@ -46,7 +43,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Fetch by unique Application Sid
          * @return ApplicationFetcher capable of executing the fetch
          */
-        public static ApplicationFetcher fetch(String accountSid, String sid) {
+        public static ApplicationFetcher fetch(string accountSid, string sid) {
             return new ApplicationFetcher(accountSid, sid);
         }
     
@@ -57,7 +54,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return ApplicationReader capable of executing the read
          */
-        public static ApplicationReader read(String accountSid) {
+        public static ApplicationReader read(string accountSid) {
             return new ApplicationReader(accountSid);
         }
     
@@ -68,7 +65,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid The sid
          * @return ApplicationUpdater capable of executing the update
          */
-        public static ApplicationUpdater update(String accountSid, String sid) {
+        public static ApplicationUpdater update(string accountSid, string sid) {
             return new ApplicationUpdater(accountSid, sid);
         }
     
@@ -88,90 +85,90 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("api_version")]
-        private readonly String apiVersion;
+        private readonly string apiVersion;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("message_status_callback")]
-        private readonly URI messageStatusCallback;
+        private readonly Uri messageStatusCallback;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("sms_fallback_method")]
         private readonly HttpMethod smsFallbackMethod;
         [JsonProperty("sms_fallback_url")]
-        private readonly URI smsFallbackUrl;
+        private readonly Uri smsFallbackUrl;
         [JsonProperty("sms_method")]
         private readonly HttpMethod smsMethod;
         [JsonProperty("sms_status_callback")]
-        private readonly URI smsStatusCallback;
+        private readonly Uri smsStatusCallback;
         [JsonProperty("sms_url")]
-        private readonly URI smsUrl;
+        private readonly Uri smsUrl;
         [JsonProperty("status_callback")]
-        private readonly URI statusCallback;
+        private readonly Uri statusCallback;
         [JsonProperty("status_callback_method")]
         private readonly HttpMethod statusCallbackMethod;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
         [JsonProperty("voice_caller_id_lookup")]
-        private readonly Boolean voiceCallerIdLookup;
+        private readonly bool voiceCallerIdLookup;
         [JsonProperty("voice_fallback_method")]
         private readonly HttpMethod voiceFallbackMethod;
         [JsonProperty("voice_fallback_url")]
-        private readonly URI voiceFallbackUrl;
+        private readonly Uri voiceFallbackUrl;
         [JsonProperty("voice_method")]
         private readonly HttpMethod voiceMethod;
         [JsonProperty("voice_url")]
-        private readonly URI voiceUrl;
+        private readonly Uri voiceUrl;
     
         private Application([JsonProperty("account_sid")]
-                            String accountSid, 
+                            string accountSid, 
                             [JsonProperty("api_version")]
-                            String apiVersion, 
+                            string apiVersion, 
                             [JsonProperty("date_created")]
-                            String dateCreated, 
+                            string dateCreated, 
                             [JsonProperty("date_updated")]
-                            String dateUpdated, 
+                            string dateUpdated, 
                             [JsonProperty("friendly_name")]
-                            String friendlyName, 
+                            string friendlyName, 
                             [JsonProperty("message_status_callback")]
-                            URI messageStatusCallback, 
+                            Uri messageStatusCallback, 
                             [JsonProperty("sid")]
-                            String sid, 
+                            string sid, 
                             [JsonProperty("sms_fallback_method")]
                             HttpMethod smsFallbackMethod, 
                             [JsonProperty("sms_fallback_url")]
-                            URI smsFallbackUrl, 
+                            Uri smsFallbackUrl, 
                             [JsonProperty("sms_method")]
                             HttpMethod smsMethod, 
                             [JsonProperty("sms_status_callback")]
-                            URI smsStatusCallback, 
+                            Uri smsStatusCallback, 
                             [JsonProperty("sms_url")]
-                            URI smsUrl, 
+                            Uri smsUrl, 
                             [JsonProperty("status_callback")]
-                            URI statusCallback, 
+                            Uri statusCallback, 
                             [JsonProperty("status_callback_method")]
                             HttpMethod statusCallbackMethod, 
                             [JsonProperty("uri")]
-                            String uri, 
+                            string uri, 
                             [JsonProperty("voice_caller_id_lookup")]
-                            Boolean voiceCallerIdLookup, 
+                            bool voiceCallerIdLookup, 
                             [JsonProperty("voice_fallback_method")]
                             HttpMethod voiceFallbackMethod, 
                             [JsonProperty("voice_fallback_url")]
-                            URI voiceFallbackUrl, 
+                            Uri voiceFallbackUrl, 
                             [JsonProperty("voice_method")]
                             HttpMethod voiceMethod, 
                             [JsonProperty("voice_url")]
-                            URI voiceUrl) {
+                            Uri voiceUrl) {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.friendlyName = friendlyName;
             this.messageStatusCallback = messageStatusCallback;
             this.sid = sid;
@@ -193,14 +190,14 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return A string that uniquely identifies this resource
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The API version to use
          */
-        public String GetApiVersion() {
+        public string GetApiVersion() {
             return this.apiVersion;
         }
     
@@ -221,21 +218,21 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return Human readable description of this resource
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return URL to make requests to with status updates
          */
-        public URI GetMessageStatusCallback() {
+        public Uri GetMessageStatusCallback() {
             return this.messageStatusCallback;
         }
     
         /**
          * @return A string that uniquely identifies this resource
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
@@ -249,7 +246,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return Fallback URL if there's an error parsing TwiML
          */
-        public URI GetSmsFallbackUrl() {
+        public Uri GetSmsFallbackUrl() {
             return this.smsFallbackUrl;
         }
     
@@ -263,21 +260,21 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return URL Twilio with request with status updates
          */
-        public URI GetSmsStatusCallback() {
+        public Uri GetSmsStatusCallback() {
             return this.smsStatusCallback;
         }
     
         /**
          * @return URL Twilio will request when receiving an SMS
          */
-        public URI GetSmsUrl() {
+        public Uri GetSmsUrl() {
             return this.smsUrl;
         }
     
         /**
          * @return URL to hit with status updates
          */
-        public URI GetStatusCallback() {
+        public Uri GetStatusCallback() {
             return this.statusCallback;
         }
     
@@ -291,14 +288,14 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return URI for this resource
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     
         /**
          * @return True or False
          */
-        public Boolean GetVoiceCallerIdLookup() {
+        public bool GetVoiceCallerIdLookup() {
             return this.voiceCallerIdLookup;
         }
     
@@ -312,7 +309,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return Fallback URL
          */
-        public URI GetVoiceFallbackUrl() {
+        public Uri GetVoiceFallbackUrl() {
             return this.voiceFallbackUrl;
         }
     
@@ -326,7 +323,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return URL Twilio will make requests to when relieving a call
          */
-        public URI GetVoiceUrl() {
+        public Uri GetVoiceUrl() {
             return this.voiceUrl;
         }
     }

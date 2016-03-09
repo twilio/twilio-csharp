@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.workspace.Task;
@@ -9,20 +9,20 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Taskrouter.V1.Workspace {
 
     public class TaskReader : Reader<Task> {
-        private String workspaceSid;
-        private Integer priority;
+        private string workspaceSid;
+        private int priority;
         private Task.Status assignmentStatus;
-        private String workflowSid;
-        private String workflowName;
-        private String taskQueueSid;
-        private String taskQueueName;
+        private string workflowSid;
+        private string workflowName;
+        private string taskQueueSid;
+        private string taskQueueName;
     
         /**
          * Construct a new TaskReader
          * 
          * @param workspaceSid The workspace_sid
          */
-        public TaskReader(String workspaceSid) {
+        public TaskReader(string workspaceSid) {
             this.workspaceSid = workspaceSid;
         }
     
@@ -32,7 +32,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param priority The priority
          * @return this
          */
-        public TaskReader byPriority(Integer priority) {
+        public TaskReader byPriority(int priority) {
             this.priority = priority;
             return this;
         }
@@ -54,7 +54,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param workflowSid The workflow_sid
          * @return this
          */
-        public TaskReader byWorkflowSid(String workflowSid) {
+        public TaskReader byWorkflowSid(string workflowSid) {
             this.workflowSid = workflowSid;
             return this;
         }
@@ -65,7 +65,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param workflowName The workflow_name
          * @return this
          */
-        public TaskReader byWorkflowName(String workflowName) {
+        public TaskReader byWorkflowName(string workflowName) {
             this.workflowName = workflowName;
             return this;
         }
@@ -76,7 +76,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param taskQueueSid The task_queue_sid
          * @return this
          */
-        public TaskReader byTaskQueueSid(String taskQueueSid) {
+        public TaskReader byTaskQueueSid(string taskQueueSid) {
             this.taskQueueSid = taskQueueSid;
             return this;
         }
@@ -87,7 +87,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param taskQueueName The task_queue_name
          * @return this
          */
-        public TaskReader byTaskQueueName(String taskQueueName) {
+        public TaskReader byTaskQueueName(string taskQueueName) {
             this.taskQueueName = taskQueueName;
             return this;
         }
@@ -169,11 +169,11 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          */
         private void addQueryParams(final Request request) {
             if (priority != null) {
-                request.addQueryParam("Priority", priority.toString());
+                request.addQueryParam("Priority", priority.ToString());
             }
             
             if (assignmentStatus != null) {
-                request.addQueryParam("AssignmentStatus", assignmentStatus.toString());
+                request.addQueryParam("AssignmentStatus", assignmentStatus.ToString());
             }
             
             if (workflowSid != null) {

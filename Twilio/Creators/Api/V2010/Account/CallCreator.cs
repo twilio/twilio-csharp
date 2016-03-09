@@ -1,29 +1,28 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
 using Twilio.Converters.Promoter;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.Call;
-using com.twilio.sdk.http.HttpMethod;
-using java.net.URI;
 
 namespace Twilio.Creators.Api.V2010.Account {
 
     public class CallCreator : Creator<Call> {
-        private String accountSid;
-        private com.twilio.types.PhoneNumber to;
-        private com.twilio.types.PhoneNumber from;
-        private URI url;
-        private String applicationSid;
+        private string accountSid;
+        private Twilio.Types.PhoneNumber to;
+        private Twilio.Types.PhoneNumber from;
+        private Uri url;
+        private string applicationSid;
         private HttpMethod method;
-        private URI fallbackUrl;
+        private Uri fallbackUrl;
         private HttpMethod fallbackMethod;
-        private URI statusCallback;
+        private Uri statusCallback;
         private HttpMethod statusCallbackMethod;
-        private String sendDigits;
-        private String ifMachine;
-        private Integer timeout;
-        private Boolean record;
+        private string sendDigits;
+        private string ifMachine;
+        private int timeout;
+        private bool record;
     
         /**
          * Construct a new CallCreator
@@ -33,7 +32,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param from Twilio number from which to originate the call
          * @param url Url from which to fetch TwiML
          */
-        public CallCreator(String accountSid, com.twilio.types.PhoneNumber to, com.twilio.types.PhoneNumber from, URI url) {
+        public CallCreator(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, Uri url) {
             this.accountSid = accountSid;
             this.to = to;
             this.from = from;
@@ -49,7 +48,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param applicationSid ApplicationSid that configures from where to fetch
          *                       TwiML
          */
-        public CallCreator(String accountSid, com.twilio.types.PhoneNumber to, com.twilio.types.PhoneNumber from, String applicationSid) {
+        public CallCreator(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string applicationSid) {
             this.accountSid = accountSid;
             this.to = to;
             this.from = from;
@@ -76,7 +75,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param fallbackUrl Fallback URL in case of error
          * @return this
          */
-        public CallCreator setFallbackUrl(URI fallbackUrl) {
+        public CallCreator setFallbackUrl(Uri fallbackUrl) {
             this.fallbackUrl = fallbackUrl;
             return this;
         }
@@ -89,8 +88,8 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param fallbackUrl Fallback URL in case of error
          * @return this
          */
-        public CallCreator setFallbackUrl(String fallbackUrl) {
-            return setFallbackUrl(Promoter.uriFromString(fallbackUrl));
+        public CallCreator setFallbackUrl(string fallbackUrl) {
+            return setFallbackUrl(Promoter.UriFromString(fallbackUrl));
         }
     
         /**
@@ -113,7 +112,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param statusCallback Status Callback URL
          * @return this
          */
-        public CallCreator setStatusCallback(URI statusCallback) {
+        public CallCreator setStatusCallback(Uri statusCallback) {
             this.statusCallback = statusCallback;
             return this;
         }
@@ -125,8 +124,8 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param statusCallback Status Callback URL
          * @return this
          */
-        public CallCreator setStatusCallback(String statusCallback) {
-            return setStatusCallback(Promoter.uriFromString(statusCallback));
+        public CallCreator setStatusCallback(string statusCallback) {
+            return setStatusCallback(Promoter.UriFromString(statusCallback));
         }
     
         /**
@@ -152,7 +151,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param sendDigits Digits to send
          * @return this
          */
-        public CallCreator setSendDigits(String sendDigits) {
+        public CallCreator setSendDigits(string sendDigits) {
             this.sendDigits = sendDigits;
             return this;
         }
@@ -164,7 +163,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param ifMachine Action to take if a machine has answered the call
          * @return this
          */
-        public CallCreator setIfMachine(String ifMachine) {
+        public CallCreator setIfMachine(string ifMachine) {
             this.ifMachine = ifMachine;
             return this;
         }
@@ -178,7 +177,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param timeout Number of seconds to wait for an answer
          * @return this
          */
-        public CallCreator setTimeout(Integer timeout) {
+        public CallCreator setTimeout(int timeout) {
             this.timeout = timeout;
             return this;
         }
@@ -190,7 +189,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param record Whether or not to record the Call
          * @return this
          */
-        public CallCreator setRecord(Boolean record) {
+        public CallCreator setRecord(bool record) {
             this.record = record;
             return this;
         }
@@ -238,15 +237,15 @@ namespace Twilio.Creators.Api.V2010.Account {
          */
         private void addPostParams(Request request) {
             if (to != null) {
-                request.addPostParam("To", to.toString());
+                request.addPostParam("To", to.ToString());
             }
             
             if (from != null) {
-                request.addPostParam("From", from.toString());
+                request.addPostParam("From", from.ToString());
             }
             
             if (url != null) {
-                request.addPostParam("Url", url.toString());
+                request.addPostParam("Url", url.ToString());
             }
             
             if (applicationSid != null) {
@@ -254,23 +253,23 @@ namespace Twilio.Creators.Api.V2010.Account {
             }
             
             if (method != null) {
-                request.addPostParam("Method", method.toString());
+                request.addPostParam("Method", method.ToString());
             }
             
             if (fallbackUrl != null) {
-                request.addPostParam("FallbackUrl", fallbackUrl.toString());
+                request.addPostParam("FallbackUrl", fallbackUrl.ToString());
             }
             
             if (fallbackMethod != null) {
-                request.addPostParam("FallbackMethod", fallbackMethod.toString());
+                request.addPostParam("FallbackMethod", fallbackMethod.ToString());
             }
             
             if (statusCallback != null) {
-                request.addPostParam("StatusCallback", statusCallback.toString());
+                request.addPostParam("StatusCallback", statusCallback.ToString());
             }
             
             if (statusCallbackMethod != null) {
-                request.addPostParam("StatusCallbackMethod", statusCallbackMethod.toString());
+                request.addPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
             
             if (sendDigits != null) {
@@ -282,11 +281,11 @@ namespace Twilio.Creators.Api.V2010.Account {
             }
             
             if (timeout != null) {
-                request.addPostParam("Timeout", timeout.toString());
+                request.addPostParam("Timeout", timeout.ToString());
             }
             
             if (record != null) {
-                request.addPostParam("Record", record.toString());
+                request.addPostParam("Record", record.ToString());
             }
         }
     }

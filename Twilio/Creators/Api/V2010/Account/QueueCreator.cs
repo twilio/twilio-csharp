@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,16 +7,16 @@ using Twilio.Resources.Api.V2010.account.Queue;
 namespace Twilio.Creators.Api.V2010.Account {
 
     public class QueueCreator : Creator<Queue> {
-        private String accountSid;
-        private String friendlyName;
-        private Integer maxSize;
+        private string accountSid;
+        private string friendlyName;
+        private int maxSize;
     
         /**
          * Construct a new QueueCreator
          * 
          * @param accountSid The account_sid
          */
-        public QueueCreator(String accountSid) {
+        public QueueCreator(string accountSid) {
             this.accountSid = accountSid;
         }
     
@@ -26,7 +26,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param friendlyName A user-provided string that identifies this queue.
          * @return this
          */
-        public QueueCreator setFriendlyName(String friendlyName) {
+        public QueueCreator setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -38,7 +38,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param maxSize The max number of calls allowed in the queue
          * @return this
          */
-        public QueueCreator setMaxSize(Integer maxSize) {
+        public QueueCreator setMaxSize(int maxSize) {
             this.maxSize = maxSize;
             return this;
         }
@@ -90,7 +90,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             }
             
             if (maxSize != null) {
-                request.addPostParam("MaxSize", maxSize.toString());
+                request.addPostParam("MaxSize", maxSize.ToString());
             }
         }
     }

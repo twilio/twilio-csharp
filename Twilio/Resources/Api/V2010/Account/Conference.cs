@@ -1,13 +1,12 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Api.V2010.Account;
 using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account;
 using Twilio.Resources;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account {
 
@@ -25,7 +24,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Fetch by unique conference Sid
          * @return ConferenceFetcher capable of executing the fetch
          */
-        public static ConferenceFetcher fetch(String accountSid, String sid) {
+        public static ConferenceFetcher fetch(string accountSid, string sid) {
             return new ConferenceFetcher(accountSid, sid);
         }
     
@@ -36,7 +35,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return ConferenceReader capable of executing the read
          */
-        public static ConferenceReader read(String accountSid) {
+        public static ConferenceReader read(string accountSid) {
             return new ConferenceReader(accountSid);
         }
     
@@ -56,41 +55,41 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("api_version")]
-        private readonly String apiVersion;
+        private readonly string apiVersion;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("status")]
         private readonly Conference.Status status;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private Conference([JsonProperty("account_sid")]
-                           String accountSid, 
+                           string accountSid, 
                            [JsonProperty("date_created")]
-                           String dateCreated, 
+                           string dateCreated, 
                            [JsonProperty("date_updated")]
-                           String dateUpdated, 
+                           string dateUpdated, 
                            [JsonProperty("api_version")]
-                           String apiVersion, 
+                           string apiVersion, 
                            [JsonProperty("friendly_name")]
-                           String friendlyName, 
+                           string friendlyName, 
                            [JsonProperty("sid")]
-                           String sid, 
+                           string sid, 
                            [JsonProperty("status")]
                            Conference.Status status, 
                            [JsonProperty("uri")]
-                           String uri) {
+                           string uri) {
             this.accountSid = accountSid;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.apiVersion = apiVersion;
             this.friendlyName = friendlyName;
             this.sid = sid;
@@ -101,7 +100,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The unique sid that identifies this account
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
@@ -122,21 +121,21 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The api_version
          */
-        public String GetApiVersion() {
+        public string GetApiVersion() {
             return this.apiVersion;
         }
     
         /**
          * @return A human readable description of this resource
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return A string that uniquely identifies this conference
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
@@ -150,7 +149,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The URI for this resource
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

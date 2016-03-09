@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.Application;
@@ -9,15 +9,15 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account {
 
     public class ApplicationReader : Reader<Application> {
-        private String accountSid;
-        private String friendlyName;
+        private string accountSid;
+        private string friendlyName;
     
         /**
          * Construct a new ApplicationReader
          * 
          * @param accountSid The account_sid
          */
-        public ApplicationReader(String accountSid) {
+        public ApplicationReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
@@ -28,7 +28,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param friendlyName Filter by friendly name
          * @return this
          */
-        public ApplicationReader byFriendlyName(String friendlyName) {
+        public ApplicationReader byFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }

@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.usage.record.Daily;
@@ -9,14 +9,14 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
 
     public class DailyReader : Reader<Daily> {
-        private String accountSid;
+        private string accountSid;
     
         /**
          * Construct a new DailyReader
          * 
          * @param accountSid The account_sid
          */
-        public DailyReader(String accountSid) {
+        public DailyReader(string accountSid) {
             this.accountSid = accountSid;
         }
     

@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Deleters.Deleter;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Api.V2010.account.call.FeedbackSummary;
 namespace Twilio.Deleters.Api.V2010.Account.Call {
 
     public class FeedbackSummaryDeleter : Deleter<FeedbackSummary> {
-        private String accountSid;
-        private String sid;
+        private string accountSid;
+        private string sid;
     
         /**
          * Construct a new FeedbackSummaryDeleter
@@ -16,7 +16,7 @@ namespace Twilio.Deleters.Api.V2010.Account.Call {
          * @param accountSid The account_sid
          * @param sid The sid
          */
-        public FeedbackSummaryDeleter(String accountSid, String sid) {
+        public FeedbackSummaryDeleter(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

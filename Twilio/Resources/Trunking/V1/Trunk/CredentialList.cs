@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Trunking.V1.Trunk;
 using Twilio.Deleters.Trunking.V1.Trunk;
 using Twilio.Exceptions;
@@ -8,9 +9,6 @@ using Twilio.Fetchers.Trunking.V1.Trunk;
 using Twilio.Http;
 using Twilio.Readers.Trunking.V1.Trunk;
 using Twilio.Resources;
-using com.twilio.sdk.converters.MarshalConverter;
-using java.net.URI;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Trunking.V1.Trunk {
 
@@ -22,7 +20,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
          * @param sid The sid
          * @return CredentialListFetcher capable of executing the fetch
          */
-        public static CredentialListFetcher fetch(String trunkSid, String sid) {
+        public static CredentialListFetcher fetch(string trunkSid, string sid) {
             return new CredentialListFetcher(trunkSid, sid);
         }
     
@@ -33,7 +31,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
          * @param sid The sid
          * @return CredentialListDeleter capable of executing the delete
          */
-        public static CredentialListDeleter delete(String trunkSid, String sid) {
+        public static CredentialListDeleter delete(string trunkSid, string sid) {
             return new CredentialListDeleter(trunkSid, sid);
         }
     
@@ -44,7 +42,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
          * @param credentialListSid The credential_list_sid
          * @return CredentialListCreator capable of executing the create
          */
-        public static CredentialListCreator create(String trunkSid, String credentialListSid) {
+        public static CredentialListCreator create(string trunkSid, string credentialListSid) {
             return new CredentialListCreator(trunkSid, credentialListSid);
         }
     
@@ -54,7 +52,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
          * @param trunkSid The trunk_sid
          * @return CredentialListReader capable of executing the read
          */
-        public static CredentialListReader read(String trunkSid) {
+        public static CredentialListReader read(string trunkSid) {
             return new CredentialListReader(trunkSid);
         }
     
@@ -74,68 +72,68 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("trunk_sid")]
-        private readonly String trunkSid;
+        private readonly string trunkSid;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("url")]
-        private readonly URI url;
+        private readonly Uri url;
     
         private CredentialList([JsonProperty("account_sid")]
-                               String accountSid, 
+                               string accountSid, 
                                [JsonProperty("sid")]
-                               String sid, 
+                               string sid, 
                                [JsonProperty("trunk_sid")]
-                               String trunkSid, 
+                               string trunkSid, 
                                [JsonProperty("friendly_name")]
-                               String friendlyName, 
+                               string friendlyName, 
                                [JsonProperty("date_created")]
-                               String dateCreated, 
+                               string dateCreated, 
                                [JsonProperty("date_updated")]
-                               String dateUpdated, 
+                               string dateUpdated, 
                                [JsonProperty("url")]
-                               URI url) {
+                               Uri url) {
             this.accountSid = accountSid;
             this.sid = sid;
             this.trunkSid = trunkSid;
             this.friendlyName = friendlyName;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.url = url;
         }
     
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The trunk_sid
          */
-        public String GetTrunkSid() {
+        public string GetTrunkSid() {
             return this.trunkSid;
         }
     
         /**
          * @return The friendly_name
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
@@ -156,7 +154,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         /**
          * @return The url
          */
-        public URI GetUrl() {
+        public Uri GetUrl() {
             return this.url;
         }
     }

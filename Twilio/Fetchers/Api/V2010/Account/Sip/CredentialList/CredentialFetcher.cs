@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,9 +7,9 @@ using Twilio.Resources.Api.V2010.account.sip.credential_list.Credential;
 namespace Twilio.Fetchers.Api.V2010.Account.Sip.Credentiallist {
 
     public class CredentialFetcher : Fetcher<Credential> {
-        private String accountSid;
-        private String credentialListSid;
-        private String sid;
+        private string accountSid;
+        private string credentialListSid;
+        private string sid;
     
         /**
          * Construct a new CredentialFetcher
@@ -18,7 +18,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip.Credentiallist {
          * @param credentialListSid The credential_list_sid
          * @param sid The sid
          */
-        public CredentialFetcher(String accountSid, String credentialListSid, String sid) {
+        public CredentialFetcher(string accountSid, string credentialListSid, string sid) {
             this.accountSid = accountSid;
             this.credentialListSid = credentialListSid;
             this.sid = sid;

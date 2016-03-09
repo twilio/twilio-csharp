@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.Call;
@@ -9,20 +9,20 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account {
 
     public class CallReader : Reader<Call> {
-        private String accountSid;
-        private com.twilio.types.PhoneNumber to;
-        private com.twilio.types.PhoneNumber from;
-        private String parentCallSid;
+        private string accountSid;
+        private Twilio.Types.PhoneNumber to;
+        private Twilio.Types.PhoneNumber from;
+        private string parentCallSid;
         private Call.Status status;
-        private String startTime;
-        private String endTime;
+        private string startTime;
+        private string endTime;
     
         /**
          * Construct a new CallReader
          * 
          * @param accountSid The account_sid
          */
-        public CallReader(String accountSid) {
+        public CallReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
@@ -32,7 +32,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param to Phone number or Client identifier to filter `to` on
          * @return this
          */
-        public CallReader byTo(com.twilio.types.PhoneNumber to) {
+        public CallReader byTo(Twilio.Types.PhoneNumber to) {
             this.to = to;
             return this;
         }
@@ -43,7 +43,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param from Phone number or Client identifier to filter `from` on
          * @return this
          */
-        public CallReader byFrom(com.twilio.types.PhoneNumber from) {
+        public CallReader byFrom(Twilio.Types.PhoneNumber from) {
             this.from = from;
             return this;
         }
@@ -54,7 +54,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param parentCallSid Parent Call Sid to filter on
          * @return this
          */
-        public CallReader byParentCallSid(String parentCallSid) {
+        public CallReader byParentCallSid(string parentCallSid) {
             this.parentCallSid = parentCallSid;
             return this;
         }
@@ -76,7 +76,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param startTime StartTime to filter on
          * @return this
          */
-        public CallReader byStartTime(String startTime) {
+        public CallReader byStartTime(string startTime) {
             this.startTime = startTime;
             return this;
         }
@@ -87,7 +87,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param endTime EndTime to filter on
          * @return this
          */
-        public CallReader byEndTime(String endTime) {
+        public CallReader byEndTime(string endTime) {
             this.endTime = endTime;
             return this;
         }
@@ -169,11 +169,11 @@ namespace Twilio.Readers.Api.V2010.Account {
          */
         private void addQueryParams(final Request request) {
             if (to != null) {
-                request.addQueryParam("To", to.toString());
+                request.addQueryParam("To", to.ToString());
             }
             
             if (from != null) {
-                request.addQueryParam("From", from.toString());
+                request.addQueryParam("From", from.ToString());
             }
             
             if (parentCallSid != null) {
@@ -181,7 +181,7 @@ namespace Twilio.Readers.Api.V2010.Account {
             }
             
             if (status != null) {
-                request.addQueryParam("Status", status.toString());
+                request.addQueryParam("Status", status.ToString());
             }
             
             if (startTime != null) {

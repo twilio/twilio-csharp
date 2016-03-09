@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,9 +7,9 @@ using Twilio.Resources.Conversations.V1.conversation.Participant;
 namespace Twilio.Creators.Conversations.V1.Conversation {
 
     public class ParticipantCreator : Creator<Participant> {
-        private String conversationSid;
-        private com.twilio.types.PhoneNumber to;
-        private com.twilio.types.PhoneNumber from;
+        private string conversationSid;
+        private Twilio.Types.PhoneNumber to;
+        private Twilio.Types.PhoneNumber from;
     
         /**
          * Construct a new ParticipantCreator
@@ -18,7 +18,7 @@ namespace Twilio.Creators.Conversations.V1.Conversation {
          * @param to The to
          * @param from The from
          */
-        public ParticipantCreator(String conversationSid, com.twilio.types.PhoneNumber to, com.twilio.types.PhoneNumber from) {
+        public ParticipantCreator(string conversationSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from) {
             this.conversationSid = conversationSid;
             this.to = to;
             this.from = from;
@@ -67,11 +67,11 @@ namespace Twilio.Creators.Conversations.V1.Conversation {
          */
         private void addPostParams(Request request) {
             if (to != null) {
-                request.addPostParam("To", to.toString());
+                request.addPostParam("To", to.ToString());
             }
             
             if (from != null) {
-                request.addPostParam("From", from.toString());
+                request.addPostParam("From", from.ToString());
             }
         }
     }

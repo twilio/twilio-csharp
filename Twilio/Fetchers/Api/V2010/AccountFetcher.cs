@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,14 +7,14 @@ using Twilio.Resources.Api.V2010.Account;
 namespace Twilio.Fetchers.Api.V2010 {
 
     public class AccountFetcher : Fetcher<Account> {
-        private String sid;
+        private string sid;
     
         /**
          * Construct a new AccountFetcher
          * 
          * @param sid Fetch by unique Account Sid
          */
-        public AccountFetcher(String sid) {
+        public AccountFetcher(string sid) {
             this.sid = sid;
         }
     

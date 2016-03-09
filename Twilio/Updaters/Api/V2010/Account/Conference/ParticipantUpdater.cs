@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.conference.Participant;
@@ -7,10 +7,10 @@ using com.twilio.sdk.updaters.Updater;
 namespace Twilio.Updaters.Api.V2010.Account.Conference {
 
     public class ParticipantUpdater : Updater<Participant> {
-        private String accountSid;
-        private String conferenceSid;
-        private String callSid;
-        private Boolean muted;
+        private string accountSid;
+        private string conferenceSid;
+        private string callSid;
+        private bool muted;
     
         /**
          * Construct a new ParticipantUpdater
@@ -20,7 +20,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Conference {
          * @param callSid The call_sid
          * @param muted Indicates if the participant should be muted
          */
-        public ParticipantUpdater(String accountSid, String conferenceSid, String callSid, Boolean muted) {
+        public ParticipantUpdater(string accountSid, string conferenceSid, string callSid, bool muted) {
             this.accountSid = accountSid;
             this.conferenceSid = conferenceSid;
             this.callSid = callSid;
@@ -70,7 +70,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Conference {
          */
         private void addPostParams(Request request) {
             if (muted != null) {
-                request.addPostParam("Muted", muted.toString());
+                request.addPostParam("Muted", muted.ToString());
             }
         }
     }

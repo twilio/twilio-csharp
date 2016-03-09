@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Ipmessaging.V1.service.User;
@@ -9,14 +9,14 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.IpMessaging.V1.Service {
 
     public class UserReader : Reader<User> {
-        private String serviceSid;
+        private string serviceSid;
     
         /**
          * Construct a new UserReader
          * 
          * @param serviceSid The service_sid
          */
-        public UserReader(String serviceSid) {
+        public UserReader(string serviceSid) {
             this.serviceSid = serviceSid;
         }
     

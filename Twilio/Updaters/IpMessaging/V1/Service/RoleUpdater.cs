@@ -1,17 +1,17 @@
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Ipmessaging.V1.service.Role;
 using com.twilio.sdk.updaters.Updater;
-using java.util.List;
 
 namespace Twilio.Updaters.IpMessaging.V1.Service {
 
     public class RoleUpdater : Updater<Role> {
-        private String serviceSid;
-        private String sid;
-        private String friendlyName;
-        private List<String> permission;
+        private string serviceSid;
+        private string sid;
+        private string friendlyName;
+        private List<string> permission;
     
         /**
          * Construct a new RoleUpdater
@@ -21,7 +21,7 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
          * @param friendlyName The friendly_name
          * @param permission The permission
          */
-        public RoleUpdater(String serviceSid, String sid, String friendlyName, List<String> permission) {
+        public RoleUpdater(string serviceSid, string sid, string friendlyName, List<string> permission) {
             this.serviceSid = serviceSid;
             this.sid = sid;
             this.friendlyName = friendlyName;
@@ -75,7 +75,7 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
             }
             
             if (permission != null) {
-                request.addPostParam("Permission", permission.toString());
+                request.addPostParam("Permission", permission.ToString());
             }
         }
     }

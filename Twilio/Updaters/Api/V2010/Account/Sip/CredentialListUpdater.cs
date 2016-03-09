@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.sip.CredentialList;
@@ -7,9 +7,9 @@ using com.twilio.sdk.updaters.Updater;
 namespace Twilio.Updaters.Api.V2010.Account.Sip {
 
     public class CredentialListUpdater : Updater<CredentialList> {
-        private String accountSid;
-        private String sid;
-        private String friendlyName;
+        private string accountSid;
+        private string sid;
+        private string friendlyName;
     
         /**
          * Construct a new CredentialListUpdater
@@ -18,7 +18,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param sid The sid
          * @param friendlyName The friendly_name
          */
-        public CredentialListUpdater(String accountSid, String sid, String friendlyName) {
+        public CredentialListUpdater(string accountSid, string sid, string friendlyName) {
             this.accountSid = accountSid;
             this.sid = sid;
             this.friendlyName = friendlyName;

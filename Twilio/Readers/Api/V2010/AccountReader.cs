@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account;
@@ -9,7 +9,7 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010 {
 
     public class AccountReader : Reader<Account> {
-        private String friendlyName;
+        private string friendlyName;
         private Account.Status status;
     
         /**
@@ -19,7 +19,7 @@ namespace Twilio.Readers.Api.V2010 {
          * @param friendlyName FriendlyName to filter on
          * @return this
          */
-        public AccountReader byFriendlyName(String friendlyName) {
+        public AccountReader byFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -116,7 +116,7 @@ namespace Twilio.Readers.Api.V2010 {
             }
             
             if (status != null) {
-                request.addQueryParam("Status", status.toString());
+                request.addQueryParam("Status", status.ToString());
             }
             
             request.addQueryParam("PageSize", Integer.toString(getPageSize()));

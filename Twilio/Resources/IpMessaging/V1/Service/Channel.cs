@@ -1,6 +1,8 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Ipmessaging.V1.Service;
 using Twilio.Deleters.Ipmessaging.V1.Service;
 using Twilio.Exceptions;
@@ -9,10 +11,6 @@ using Twilio.Http;
 using Twilio.Readers.Ipmessaging.V1.Service;
 using Twilio.Resources;
 using Twilio.Updaters.Ipmessaging.V1.Service;
-using com.fasterxml.jackson.databind.JsonNode;
-using com.twilio.sdk.converters.MarshalConverter;
-using java.net.URI;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.IpMessaging.V1.Service {
 
@@ -29,7 +27,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param sid The sid
          * @return ChannelFetcher capable of executing the fetch
          */
-        public static ChannelFetcher fetch(String serviceSid, String sid) {
+        public static ChannelFetcher fetch(string serviceSid, string sid) {
             return new ChannelFetcher(serviceSid, sid);
         }
     
@@ -40,7 +38,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param sid The sid
          * @return ChannelDeleter capable of executing the delete
          */
-        public static ChannelDeleter delete(String serviceSid, String sid) {
+        public static ChannelDeleter delete(string serviceSid, string sid) {
             return new ChannelDeleter(serviceSid, sid);
         }
     
@@ -52,7 +50,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param uniqueName The unique_name
          * @return ChannelCreator capable of executing the create
          */
-        public static ChannelCreator create(String serviceSid, String friendlyName, String uniqueName) {
+        public static ChannelCreator create(string serviceSid, string friendlyName, string uniqueName) {
             return new ChannelCreator(serviceSid, friendlyName, uniqueName);
         }
     
@@ -62,7 +60,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param serviceSid The service_sid
          * @return ChannelReader capable of executing the read
          */
-        public static ChannelReader read(String serviceSid) {
+        public static ChannelReader read(string serviceSid) {
             return new ChannelReader(serviceSid);
         }
     
@@ -73,7 +71,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param sid The sid
          * @return ChannelUpdater capable of executing the update
          */
-        public static ChannelUpdater update(String serviceSid, String sid) {
+        public static ChannelUpdater update(string serviceSid, string sid) {
             return new ChannelUpdater(serviceSid, sid);
         }
     
@@ -93,17 +91,17 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
         }
     
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("service_sid")]
-        private readonly String serviceSid;
+        private readonly string serviceSid;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("unique_name")]
-        private readonly String uniqueName;
+        private readonly string uniqueName;
         [JsonProperty("attributes")]
-        private readonly JsonNode attributes;
+        private readonly Object attributes;
         [JsonProperty("type")]
         private readonly Channel.ChannelType type;
         [JsonProperty("date_created")]
@@ -111,36 +109,36 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("created_by")]
-        private readonly String createdBy;
+        private readonly string createdBy;
         [JsonProperty("url")]
-        private readonly URI url;
+        private readonly Uri url;
         [JsonProperty("links")]
-        private readonly Map<String, String> links;
+        private readonly Dictionary<string, string> links;
     
         private Channel([JsonProperty("sid")]
-                        String sid, 
+                        string sid, 
                         [JsonProperty("account_sid")]
-                        String accountSid, 
+                        string accountSid, 
                         [JsonProperty("service_sid")]
-                        String serviceSid, 
+                        string serviceSid, 
                         [JsonProperty("friendly_name")]
-                        String friendlyName, 
+                        string friendlyName, 
                         [JsonProperty("unique_name")]
-                        String uniqueName, 
+                        string uniqueName, 
                         [JsonProperty("attributes")]
-                        JsonNode attributes, 
+                        Object attributes, 
                         [JsonProperty("type")]
                         Channel.ChannelType type, 
                         [JsonProperty("date_created")]
-                        String dateCreated, 
+                        string dateCreated, 
                         [JsonProperty("date_updated")]
-                        String dateUpdated, 
+                        string dateUpdated, 
                         [JsonProperty("created_by")]
-                        String createdBy, 
+                        string createdBy, 
                         [JsonProperty("url")]
-                        URI url, 
+                        Uri url, 
                         [JsonProperty("links")]
-                        Map<String, String> links) {
+                        Dictionary<string, string> links) {
             this.sid = sid;
             this.accountSid = accountSid;
             this.serviceSid = serviceSid;
@@ -148,8 +146,8 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
             this.uniqueName = uniqueName;
             this.attributes = attributes;
             this.type = type;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.createdBy = createdBy;
             this.url = url;
             this.links = links;
@@ -158,49 +156,49 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The service_sid
          */
-        public String GetServiceSid() {
+        public string GetServiceSid() {
             return this.serviceSid;
         }
     
         /**
          * @return The friendly_name
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return The unique_name
          */
-        public String GetUniqueName() {
+        public string GetUniqueName() {
             return this.uniqueName;
         }
     
         /**
          * @return The attributes
          */
-        public JsonNode GetAttributes() {
+        public Object GetAttributes() {
             return this.attributes;
         }
     
         /**
          * @return The type
          */
-        public Channel.ChannelType GetType() {
+        public Channel.ChannelType GetChannelType() {
             return this.type;
         }
     
@@ -221,21 +219,21 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
         /**
          * @return The created_by
          */
-        public String GetCreatedBy() {
+        public string GetCreatedBy() {
             return this.createdBy;
         }
     
         /**
          * @return The url
          */
-        public URI GetUrl() {
+        public Uri GetUrl() {
             return this.url;
         }
     
         /**
          * @return The links
          */
-        public Map<String, String> GetLinks() {
+        public Dictionary<string, string> GetLinks() {
             return this.links;
         }
     }

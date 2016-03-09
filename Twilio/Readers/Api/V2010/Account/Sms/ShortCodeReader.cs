@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.sms.ShortCode;
@@ -9,16 +9,16 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account.Sms {
 
     public class ShortCodeReader : Reader<ShortCode> {
-        private String accountSid;
-        private String friendlyName;
-        private String shortCode;
+        private string accountSid;
+        private string friendlyName;
+        private string shortCode;
     
         /**
          * Construct a new ShortCodeReader
          * 
          * @param accountSid The account_sid
          */
-        public ShortCodeReader(String accountSid) {
+        public ShortCodeReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
@@ -29,7 +29,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sms {
          * @param friendlyName Filter by friendly name
          * @return this
          */
-        public ShortCodeReader byFriendlyName(String friendlyName) {
+        public ShortCodeReader byFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -41,7 +41,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sms {
          * @param shortCode Filter by ShortCode
          * @return this
          */
-        public ShortCodeReader byShortCode(String shortCode) {
+        public ShortCodeReader byShortCode(string shortCode) {
             this.shortCode = shortCode;
             return this;
         }

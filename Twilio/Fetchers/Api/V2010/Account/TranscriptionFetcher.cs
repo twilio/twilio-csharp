@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Api.V2010.account.Transcription;
 namespace Twilio.Fetchers.Api.V2010.Account {
 
     public class TranscriptionFetcher : Fetcher<Transcription> {
-        private String accountSid;
-        private String sid;
+        private string accountSid;
+        private string sid;
     
         /**
          * Construct a new TranscriptionFetcher
@@ -16,7 +16,7 @@ namespace Twilio.Fetchers.Api.V2010.Account {
          * @param accountSid The account_sid
          * @param sid Fetch by unique transcription Sid
          */
-        public TranscriptionFetcher(String accountSid, String sid) {
+        public TranscriptionFetcher(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

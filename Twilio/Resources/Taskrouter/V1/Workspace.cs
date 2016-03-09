@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Taskrouter.V1;
 using Twilio.Deleters.Taskrouter.V1;
 using Twilio.Exceptions;
@@ -9,8 +10,6 @@ using Twilio.Http;
 using Twilio.Readers.Taskrouter.V1;
 using Twilio.Resources;
 using Twilio.Updaters.Taskrouter.V1;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Taskrouter.V1 {
 
@@ -21,7 +20,7 @@ namespace Twilio.Resources.Taskrouter.V1 {
          * @param sid The sid
          * @return WorkspaceFetcher capable of executing the fetch
          */
-        public static WorkspaceFetcher fetch(String sid) {
+        public static WorkspaceFetcher fetch(string sid) {
             return new WorkspaceFetcher(sid);
         }
     
@@ -31,7 +30,7 @@ namespace Twilio.Resources.Taskrouter.V1 {
          * @param sid The sid
          * @return WorkspaceUpdater capable of executing the update
          */
-        public static WorkspaceUpdater update(String sid) {
+        public static WorkspaceUpdater update(string sid) {
             return new WorkspaceUpdater(sid);
         }
     
@@ -50,7 +49,7 @@ namespace Twilio.Resources.Taskrouter.V1 {
          * @param friendlyName The friendly_name
          * @return WorkspaceCreator capable of executing the create
          */
-        public static WorkspaceCreator create(String friendlyName) {
+        public static WorkspaceCreator create(string friendlyName) {
             return new WorkspaceCreator(friendlyName);
         }
     
@@ -60,7 +59,7 @@ namespace Twilio.Resources.Taskrouter.V1 {
          * @param sid The sid
          * @return WorkspaceDeleter capable of executing the delete
          */
-        public static WorkspaceDeleter delete(String sid) {
+        public static WorkspaceDeleter delete(string sid) {
             return new WorkspaceDeleter(sid);
         }
     
@@ -80,49 +79,49 @@ namespace Twilio.Resources.Taskrouter.V1 {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("default_activity_name")]
-        private readonly String defaultActivityName;
+        private readonly string defaultActivityName;
         [JsonProperty("default_activity_sid")]
-        private readonly String defaultActivitySid;
+        private readonly string defaultActivitySid;
         [JsonProperty("event_callback_url")]
-        private readonly String eventCallbackUrl;
+        private readonly string eventCallbackUrl;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("timeout_activity_name")]
-        private readonly String timeoutActivityName;
+        private readonly string timeoutActivityName;
         [JsonProperty("timeout_activity_sid")]
-        private readonly String timeoutActivitySid;
+        private readonly string timeoutActivitySid;
     
         private Workspace([JsonProperty("account_sid")]
-                          String accountSid, 
+                          string accountSid, 
                           [JsonProperty("date_created")]
-                          String dateCreated, 
+                          string dateCreated, 
                           [JsonProperty("date_updated")]
-                          String dateUpdated, 
+                          string dateUpdated, 
                           [JsonProperty("default_activity_name")]
-                          String defaultActivityName, 
+                          string defaultActivityName, 
                           [JsonProperty("default_activity_sid")]
-                          String defaultActivitySid, 
+                          string defaultActivitySid, 
                           [JsonProperty("event_callback_url")]
-                          String eventCallbackUrl, 
+                          string eventCallbackUrl, 
                           [JsonProperty("friendly_name")]
-                          String friendlyName, 
+                          string friendlyName, 
                           [JsonProperty("sid")]
-                          String sid, 
+                          string sid, 
                           [JsonProperty("timeout_activity_name")]
-                          String timeoutActivityName, 
+                          string timeoutActivityName, 
                           [JsonProperty("timeout_activity_sid")]
-                          String timeoutActivitySid) {
+                          string timeoutActivitySid) {
             this.accountSid = accountSid;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.defaultActivityName = defaultActivityName;
             this.defaultActivitySid = defaultActivitySid;
             this.eventCallbackUrl = eventCallbackUrl;
@@ -135,7 +134,7 @@ namespace Twilio.Resources.Taskrouter.V1 {
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
@@ -156,49 +155,49 @@ namespace Twilio.Resources.Taskrouter.V1 {
         /**
          * @return The default_activity_name
          */
-        public String GetDefaultActivityName() {
+        public string GetDefaultActivityName() {
             return this.defaultActivityName;
         }
     
         /**
          * @return The default_activity_sid
          */
-        public String GetDefaultActivitySid() {
+        public string GetDefaultActivitySid() {
             return this.defaultActivitySid;
         }
     
         /**
          * @return The event_callback_url
          */
-        public String GetEventCallbackUrl() {
+        public string GetEventCallbackUrl() {
             return this.eventCallbackUrl;
         }
     
         /**
          * @return The friendly_name
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The timeout_activity_name
          */
-        public String GetTimeoutActivityName() {
+        public string GetTimeoutActivityName() {
             return this.timeoutActivityName;
         }
     
         /**
          * @return The timeout_activity_sid
          */
-        public String GetTimeoutActivitySid() {
+        public string GetTimeoutActivitySid() {
             return this.timeoutActivitySid;
         }
     }

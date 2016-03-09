@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,12 +7,12 @@ using Twilio.Resources.Ipmessaging.V1.Credential;
 namespace Twilio.Creators.IpMessaging.V1 {
 
     public class CredentialCreator : Creator<Credential> {
-        private String friendlyName;
+        private string friendlyName;
         private Credential.PushService type;
-        private String certificate;
-        private String privateKey;
-        private Boolean sandbox;
-        private String apiKey;
+        private string certificate;
+        private string privateKey;
+        private bool sandbox;
+        private string apiKey;
     
         /**
          * Construct a new CredentialCreator
@@ -20,7 +20,7 @@ namespace Twilio.Creators.IpMessaging.V1 {
          * @param friendlyName The friendly_name
          * @param type The type
          */
-        public CredentialCreator(String friendlyName, Credential.PushService type) {
+        public CredentialCreator(string friendlyName, Credential.PushService type) {
             this.friendlyName = friendlyName;
             this.type = type;
         }
@@ -31,7 +31,7 @@ namespace Twilio.Creators.IpMessaging.V1 {
          * @param certificate The certificate
          * @return this
          */
-        public CredentialCreator setCertificate(String certificate) {
+        public CredentialCreator setCertificate(string certificate) {
             this.certificate = certificate;
             return this;
         }
@@ -42,7 +42,7 @@ namespace Twilio.Creators.IpMessaging.V1 {
          * @param privateKey The private_key
          * @return this
          */
-        public CredentialCreator setPrivateKey(String privateKey) {
+        public CredentialCreator setPrivateKey(string privateKey) {
             this.privateKey = privateKey;
             return this;
         }
@@ -53,7 +53,7 @@ namespace Twilio.Creators.IpMessaging.V1 {
          * @param sandbox The sandbox
          * @return this
          */
-        public CredentialCreator setSandbox(Boolean sandbox) {
+        public CredentialCreator setSandbox(bool sandbox) {
             this.sandbox = sandbox;
             return this;
         }
@@ -64,7 +64,7 @@ namespace Twilio.Creators.IpMessaging.V1 {
          * @param apiKey The api_key
          * @return this
          */
-        public CredentialCreator setApiKey(String apiKey) {
+        public CredentialCreator setApiKey(string apiKey) {
             this.apiKey = apiKey;
             return this;
         }
@@ -116,7 +116,7 @@ namespace Twilio.Creators.IpMessaging.V1 {
             }
             
             if (type != null) {
-                request.addPostParam("Type", type.toString());
+                request.addPostParam("Type", type.ToString());
             }
             
             if (certificate != null) {
@@ -128,7 +128,7 @@ namespace Twilio.Creators.IpMessaging.V1 {
             }
             
             if (sandbox != null) {
-                request.addPostParam("Sandbox", sandbox.toString());
+                request.addPostParam("Sandbox", sandbox.ToString());
             }
             
             if (apiKey != null) {

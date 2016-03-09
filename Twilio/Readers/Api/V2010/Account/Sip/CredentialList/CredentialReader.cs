@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.sip.credential_list.Credential;
@@ -9,8 +9,8 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account.Sip.Credentiallist {
 
     public class CredentialReader : Reader<Credential> {
-        private String accountSid;
-        private String credentialListSid;
+        private string accountSid;
+        private string credentialListSid;
     
         /**
          * Construct a new CredentialReader
@@ -18,7 +18,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.Credentiallist {
          * @param accountSid The account_sid
          * @param credentialListSid The credential_list_sid
          */
-        public CredentialReader(String accountSid, String credentialListSid) {
+        public CredentialReader(string accountSid, string credentialListSid) {
             this.accountSid = accountSid;
             this.credentialListSid = credentialListSid;
         }

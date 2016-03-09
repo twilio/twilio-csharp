@@ -1,14 +1,13 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Deleters.Api.V2010.Account.Message;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Api.V2010.Account.Message;
 using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account.Message;
 using Twilio.Resources;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account.Message {
 
@@ -21,7 +20,7 @@ namespace Twilio.Resources.Api.V2010.Account.Message {
          * @param sid Delete by unique media Sid
          * @return MediaDeleter capable of executing the delete
          */
-        public static MediaDeleter delete(String accountSid, String messageSid, String sid) {
+        public static MediaDeleter delete(string accountSid, string messageSid, string sid) {
             return new MediaDeleter(accountSid, messageSid, sid);
         }
     
@@ -34,7 +33,7 @@ namespace Twilio.Resources.Api.V2010.Account.Message {
          * @param sid Fetch by unique media Sid
          * @return MediaFetcher capable of executing the fetch
          */
-        public static MediaFetcher fetch(String accountSid, String messageSid, String sid) {
+        public static MediaFetcher fetch(string accountSid, string messageSid, string sid) {
             return new MediaFetcher(accountSid, messageSid, sid);
         }
     
@@ -45,7 +44,7 @@ namespace Twilio.Resources.Api.V2010.Account.Message {
          * @param messageSid The message_sid
          * @return MediaReader capable of executing the read
          */
-        public static MediaReader read(String accountSid, String messageSid) {
+        public static MediaReader read(string accountSid, string messageSid) {
             return new MediaReader(accountSid, messageSid);
         }
     
@@ -65,38 +64,38 @@ namespace Twilio.Resources.Api.V2010.Account.Message {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("content_type")]
-        private readonly String contentType;
+        private readonly string contentType;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("parent_sid")]
-        private readonly String parentSid;
+        private readonly string parentSid;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private Media([JsonProperty("account_sid")]
-                      String accountSid, 
+                      string accountSid, 
                       [JsonProperty("content_type")]
-                      String contentType, 
+                      string contentType, 
                       [JsonProperty("date_created")]
-                      String dateCreated, 
+                      string dateCreated, 
                       [JsonProperty("date_updated")]
-                      String dateUpdated, 
+                      string dateUpdated, 
                       [JsonProperty("parent_sid")]
-                      String parentSid, 
+                      string parentSid, 
                       [JsonProperty("sid")]
-                      String sid, 
+                      string sid, 
                       [JsonProperty("uri")]
-                      String uri) {
+                      string uri) {
             this.accountSid = accountSid;
             this.contentType = contentType;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.parentSid = parentSid;
             this.sid = sid;
             this.uri = uri;
@@ -105,14 +104,14 @@ namespace Twilio.Resources.Api.V2010.Account.Message {
         /**
          * @return The unique sid that identifies this account
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The default mime-type of the media
          */
-        public String GetContentType() {
+        public string GetContentType() {
             return this.contentType;
         }
     
@@ -133,21 +132,21 @@ namespace Twilio.Resources.Api.V2010.Account.Message {
         /**
          * @return The unique id of the resource that created the media.
          */
-        public String GetParentSid() {
+        public string GetParentSid() {
             return this.parentSid;
         }
     
         /**
          * @return A string that uniquely identifies this media
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The URI for this resource
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

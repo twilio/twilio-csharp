@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.workspace.Workflow;
@@ -9,15 +9,15 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Taskrouter.V1.Workspace {
 
     public class WorkflowReader : Reader<Workflow> {
-        private String workspaceSid;
-        private String friendlyName;
+        private string workspaceSid;
+        private string friendlyName;
     
         /**
          * Construct a new WorkflowReader
          * 
          * @param workspaceSid The workspace_sid
          */
-        public WorkflowReader(String workspaceSid) {
+        public WorkflowReader(string workspaceSid) {
             this.workspaceSid = workspaceSid;
         }
     
@@ -27,7 +27,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public WorkflowReader byFriendlyName(String friendlyName) {
+        public WorkflowReader byFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }

@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Deleters.Deleter;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,9 +7,9 @@ using Twilio.Resources.Api.V2010.account.conference.Participant;
 namespace Twilio.Deleters.Api.V2010.Account.Conference {
 
     public class ParticipantDeleter : Deleter<Participant> {
-        private String accountSid;
-        private String conferenceSid;
-        private String callSid;
+        private string accountSid;
+        private string conferenceSid;
+        private string callSid;
     
         /**
          * Construct a new ParticipantDeleter
@@ -18,7 +18,7 @@ namespace Twilio.Deleters.Api.V2010.Account.Conference {
          * @param conferenceSid The string that uniquely identifies this conference
          * @param callSid The call_sid
          */
-        public ParticipantDeleter(String accountSid, String conferenceSid, String callSid) {
+        public ParticipantDeleter(string accountSid, string conferenceSid, string callSid) {
             this.accountSid = accountSid;
             this.conferenceSid = conferenceSid;
             this.callSid = callSid;

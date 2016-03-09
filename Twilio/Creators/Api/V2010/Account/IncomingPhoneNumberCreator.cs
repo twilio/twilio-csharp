@@ -1,33 +1,32 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
 using Twilio.Converters.Promoter;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.IncomingPhoneNumber;
-using com.twilio.sdk.http.HttpMethod;
-using java.net.URI;
 
 namespace Twilio.Creators.Api.V2010.Account {
 
     public class IncomingPhoneNumberCreator : Creator<IncomingPhoneNumber> {
-        private String ownerAccountSid;
-        private com.twilio.types.PhoneNumber phoneNumber;
-        private String areaCode;
-        private String apiVersion;
-        private String friendlyName;
-        private String smsApplicationSid;
+        private string ownerAccountSid;
+        private Twilio.Types.PhoneNumber phoneNumber;
+        private string areaCode;
+        private string apiVersion;
+        private string friendlyName;
+        private string smsApplicationSid;
         private HttpMethod smsFallbackMethod;
-        private URI smsFallbackUrl;
+        private Uri smsFallbackUrl;
         private HttpMethod smsMethod;
-        private URI smsUrl;
-        private URI statusCallback;
+        private Uri smsUrl;
+        private Uri statusCallback;
         private HttpMethod statusCallbackMethod;
-        private String voiceApplicationSid;
-        private Boolean voiceCallerIdLookup;
+        private string voiceApplicationSid;
+        private bool voiceCallerIdLookup;
         private HttpMethod voiceFallbackMethod;
-        private URI voiceFallbackUrl;
+        private Uri voiceFallbackUrl;
         private HttpMethod voiceMethod;
-        private URI voiceUrl;
+        private Uri voiceUrl;
     
         /**
          * Construct a new IncomingPhoneNumberCreator
@@ -35,7 +34,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param ownerAccountSid The owner_account_sid
          * @param phoneNumber The phone number
          */
-        public IncomingPhoneNumberCreator(String ownerAccountSid, com.twilio.types.PhoneNumber phoneNumber) {
+        public IncomingPhoneNumberCreator(string ownerAccountSid, Twilio.Types.PhoneNumber phoneNumber) {
             this.ownerAccountSid = ownerAccountSid;
             this.phoneNumber = phoneNumber;
         }
@@ -46,7 +45,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param ownerAccountSid The owner_account_sid
          * @param areaCode The desired area code for the new number
          */
-        public IncomingPhoneNumberCreator(String ownerAccountSid, String areaCode) {
+        public IncomingPhoneNumberCreator(string ownerAccountSid, string areaCode) {
             this.ownerAccountSid = ownerAccountSid;
             this.areaCode = areaCode;
         }
@@ -58,7 +57,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param apiVersion The Twilio Rest API version to use
          * @return this
          */
-        public IncomingPhoneNumberCreator setApiVersion(String apiVersion) {
+        public IncomingPhoneNumberCreator setApiVersion(string apiVersion) {
             this.apiVersion = apiVersion;
             return this;
         }
@@ -71,7 +70,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param friendlyName A human readable description of this resource
          * @return this
          */
-        public IncomingPhoneNumberCreator setFriendlyName(String friendlyName) {
+        public IncomingPhoneNumberCreator setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -84,7 +83,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param smsApplicationSid Unique string that identifies the application
          * @return this
          */
-        public IncomingPhoneNumberCreator setSmsApplicationSid(String smsApplicationSid) {
+        public IncomingPhoneNumberCreator setSmsApplicationSid(string smsApplicationSid) {
             this.smsApplicationSid = smsApplicationSid;
             return this;
         }
@@ -109,7 +108,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          *                       executing TwiML
          * @return this
          */
-        public IncomingPhoneNumberCreator setSmsFallbackUrl(URI smsFallbackUrl) {
+        public IncomingPhoneNumberCreator setSmsFallbackUrl(Uri smsFallbackUrl) {
             this.smsFallbackUrl = smsFallbackUrl;
             return this;
         }
@@ -122,8 +121,8 @@ namespace Twilio.Creators.Api.V2010.Account {
          *                       executing TwiML
          * @return this
          */
-        public IncomingPhoneNumberCreator setSmsFallbackUrl(String smsFallbackUrl) {
-            return setSmsFallbackUrl(Promoter.uriFromString(smsFallbackUrl));
+        public IncomingPhoneNumberCreator setSmsFallbackUrl(string smsFallbackUrl) {
+            return setSmsFallbackUrl(Promoter.UriFromString(smsFallbackUrl));
         }
     
         /**
@@ -145,7 +144,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param smsUrl URL Twilio will request when receiving an SMS
          * @return this
          */
-        public IncomingPhoneNumberCreator setSmsUrl(URI smsUrl) {
+        public IncomingPhoneNumberCreator setSmsUrl(Uri smsUrl) {
             this.smsUrl = smsUrl;
             return this;
         }
@@ -157,8 +156,8 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param smsUrl URL Twilio will request when receiving an SMS
          * @return this
          */
-        public IncomingPhoneNumberCreator setSmsUrl(String smsUrl) {
-            return setSmsUrl(Promoter.uriFromString(smsUrl));
+        public IncomingPhoneNumberCreator setSmsUrl(string smsUrl) {
+            return setSmsUrl(Promoter.UriFromString(smsUrl));
         }
     
         /**
@@ -168,7 +167,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param statusCallback URL Twilio will use to pass status parameters
          * @return this
          */
-        public IncomingPhoneNumberCreator setStatusCallback(URI statusCallback) {
+        public IncomingPhoneNumberCreator setStatusCallback(Uri statusCallback) {
             this.statusCallback = statusCallback;
             return this;
         }
@@ -180,8 +179,8 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param statusCallback URL Twilio will use to pass status parameters
          * @return this
          */
-        public IncomingPhoneNumberCreator setStatusCallback(String statusCallback) {
-            return setStatusCallback(Promoter.uriFromString(statusCallback));
+        public IncomingPhoneNumberCreator setStatusCallback(string statusCallback) {
+            return setStatusCallback(Promoter.UriFromString(statusCallback));
         }
     
         /**
@@ -207,7 +206,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          *                            number
          * @return this
          */
-        public IncomingPhoneNumberCreator setVoiceApplicationSid(String voiceApplicationSid) {
+        public IncomingPhoneNumberCreator setVoiceApplicationSid(string voiceApplicationSid) {
             this.voiceApplicationSid = voiceApplicationSid;
             return this;
         }
@@ -219,7 +218,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param voiceCallerIdLookup Look up the caller's caller-ID
          * @return this
          */
-        public IncomingPhoneNumberCreator setVoiceCallerIdLookup(Boolean voiceCallerIdLookup) {
+        public IncomingPhoneNumberCreator setVoiceCallerIdLookup(bool voiceCallerIdLookup) {
             this.voiceCallerIdLookup = voiceCallerIdLookup;
             return this;
         }
@@ -243,7 +242,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param voiceFallbackUrl URL Twilio will request when an error occurs in TwiML
          * @return this
          */
-        public IncomingPhoneNumberCreator setVoiceFallbackUrl(URI voiceFallbackUrl) {
+        public IncomingPhoneNumberCreator setVoiceFallbackUrl(Uri voiceFallbackUrl) {
             this.voiceFallbackUrl = voiceFallbackUrl;
             return this;
         }
@@ -255,8 +254,8 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param voiceFallbackUrl URL Twilio will request when an error occurs in TwiML
          * @return this
          */
-        public IncomingPhoneNumberCreator setVoiceFallbackUrl(String voiceFallbackUrl) {
-            return setVoiceFallbackUrl(Promoter.uriFromString(voiceFallbackUrl));
+        public IncomingPhoneNumberCreator setVoiceFallbackUrl(string voiceFallbackUrl) {
+            return setVoiceFallbackUrl(Promoter.UriFromString(voiceFallbackUrl));
         }
     
         /**
@@ -279,7 +278,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param voiceUrl URL Twilio will request when receiving a call
          * @return this
          */
-        public IncomingPhoneNumberCreator setVoiceUrl(URI voiceUrl) {
+        public IncomingPhoneNumberCreator setVoiceUrl(Uri voiceUrl) {
             this.voiceUrl = voiceUrl;
             return this;
         }
@@ -292,8 +291,8 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param voiceUrl URL Twilio will request when receiving a call
          * @return this
          */
-        public IncomingPhoneNumberCreator setVoiceUrl(String voiceUrl) {
-            return setVoiceUrl(Promoter.uriFromString(voiceUrl));
+        public IncomingPhoneNumberCreator setVoiceUrl(string voiceUrl) {
+            return setVoiceUrl(Promoter.UriFromString(voiceUrl));
         }
     
         /**
@@ -339,7 +338,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          */
         private void addPostParams(Request request) {
             if (phoneNumber != null) {
-                request.addPostParam("PhoneNumber", phoneNumber.toString());
+                request.addPostParam("PhoneNumber", phoneNumber.ToString());
             }
             
             if (areaCode != null) {
@@ -359,27 +358,27 @@ namespace Twilio.Creators.Api.V2010.Account {
             }
             
             if (smsFallbackMethod != null) {
-                request.addPostParam("SmsFallbackMethod", smsFallbackMethod.toString());
+                request.addPostParam("SmsFallbackMethod", smsFallbackMethod.ToString());
             }
             
             if (smsFallbackUrl != null) {
-                request.addPostParam("SmsFallbackUrl", smsFallbackUrl.toString());
+                request.addPostParam("SmsFallbackUrl", smsFallbackUrl.ToString());
             }
             
             if (smsMethod != null) {
-                request.addPostParam("SmsMethod", smsMethod.toString());
+                request.addPostParam("SmsMethod", smsMethod.ToString());
             }
             
             if (smsUrl != null) {
-                request.addPostParam("SmsUrl", smsUrl.toString());
+                request.addPostParam("SmsUrl", smsUrl.ToString());
             }
             
             if (statusCallback != null) {
-                request.addPostParam("StatusCallback", statusCallback.toString());
+                request.addPostParam("StatusCallback", statusCallback.ToString());
             }
             
             if (statusCallbackMethod != null) {
-                request.addPostParam("StatusCallbackMethod", statusCallbackMethod.toString());
+                request.addPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
             
             if (voiceApplicationSid != null) {
@@ -387,23 +386,23 @@ namespace Twilio.Creators.Api.V2010.Account {
             }
             
             if (voiceCallerIdLookup != null) {
-                request.addPostParam("VoiceCallerIdLookup", voiceCallerIdLookup.toString());
+                request.addPostParam("VoiceCallerIdLookup", voiceCallerIdLookup.ToString());
             }
             
             if (voiceFallbackMethod != null) {
-                request.addPostParam("VoiceFallbackMethod", voiceFallbackMethod.toString());
+                request.addPostParam("VoiceFallbackMethod", voiceFallbackMethod.ToString());
             }
             
             if (voiceFallbackUrl != null) {
-                request.addPostParam("VoiceFallbackUrl", voiceFallbackUrl.toString());
+                request.addPostParam("VoiceFallbackUrl", voiceFallbackUrl.ToString());
             }
             
             if (voiceMethod != null) {
-                request.addPostParam("VoiceMethod", voiceMethod.toString());
+                request.addPostParam("VoiceMethod", voiceMethod.ToString());
             }
             
             if (voiceUrl != null) {
-                request.addPostParam("VoiceUrl", voiceUrl.toString());
+                request.addPostParam("VoiceUrl", voiceUrl.ToString());
             }
         }
     }

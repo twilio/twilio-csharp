@@ -1,17 +1,17 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.workspace.workflow.WorkflowStatistics;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Workflow {
 
     public class WorkflowStatisticsFetcher : Fetcher<WorkflowStatistics> {
-        private String workspaceSid;
-        private String workflowSid;
-        private Integer minutes;
+        private string workspaceSid;
+        private string workflowSid;
+        private int minutes;
         private DateTime startDate;
         private DateTime endDate;
     
@@ -21,7 +21,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Workflow {
          * @param workspaceSid The workspace_sid
          * @param workflowSid The workflow_sid
          */
-        public WorkflowStatisticsFetcher(String workspaceSid, String workflowSid) {
+        public WorkflowStatisticsFetcher(string workspaceSid, string workflowSid) {
             this.workspaceSid = workspaceSid;
             this.workflowSid = workflowSid;
         }
@@ -32,7 +32,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Workflow {
          * @param minutes The minutes
          * @return this
          */
-        public WorkflowStatisticsFetcher setMinutes(Integer minutes) {
+        public WorkflowStatisticsFetcher setMinutes(int minutes) {
             this.minutes = minutes;
             return this;
         }

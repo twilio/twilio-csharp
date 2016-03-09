@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Conversations.V1.conversation.Participant;
@@ -9,14 +9,14 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Conversations.V1.Conversation {
 
     public class ParticipantReader : Reader<Participant> {
-        private String conversationSid;
+        private string conversationSid;
     
         /**
          * Construct a new ParticipantReader
          * 
          * @param conversationSid The conversation_sid
          */
-        public ParticipantReader(String conversationSid) {
+        public ParticipantReader(string conversationSid) {
             this.conversationSid = conversationSid;
         }
     

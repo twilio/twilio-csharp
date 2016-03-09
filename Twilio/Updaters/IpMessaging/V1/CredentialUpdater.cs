@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Ipmessaging.V1.Credential;
@@ -7,13 +7,13 @@ using com.twilio.sdk.updaters.Updater;
 namespace Twilio.Updaters.IpMessaging.V1 {
 
     public class CredentialUpdater : Updater<Credential> {
-        private String sid;
-        private String friendlyName;
+        private string sid;
+        private string friendlyName;
         private Credential.PushService type;
-        private String certificate;
-        private String privateKey;
-        private Boolean sandbox;
-        private String apiKey;
+        private string certificate;
+        private string privateKey;
+        private bool sandbox;
+        private string apiKey;
     
         /**
          * Construct a new CredentialUpdater
@@ -22,7 +22,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param friendlyName The friendly_name
          * @param type The type
          */
-        public CredentialUpdater(String sid, String friendlyName, Credential.PushService type) {
+        public CredentialUpdater(string sid, string friendlyName, Credential.PushService type) {
             this.sid = sid;
             this.friendlyName = friendlyName;
             this.type = type;
@@ -34,7 +34,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param certificate The certificate
          * @return this
          */
-        public CredentialUpdater setCertificate(String certificate) {
+        public CredentialUpdater setCertificate(string certificate) {
             this.certificate = certificate;
             return this;
         }
@@ -45,7 +45,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param privateKey The private_key
          * @return this
          */
-        public CredentialUpdater setPrivateKey(String privateKey) {
+        public CredentialUpdater setPrivateKey(string privateKey) {
             this.privateKey = privateKey;
             return this;
         }
@@ -56,7 +56,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param sandbox The sandbox
          * @return this
          */
-        public CredentialUpdater setSandbox(Boolean sandbox) {
+        public CredentialUpdater setSandbox(bool sandbox) {
             this.sandbox = sandbox;
             return this;
         }
@@ -67,7 +67,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param apiKey The api_key
          * @return this
          */
-        public CredentialUpdater setApiKey(String apiKey) {
+        public CredentialUpdater setApiKey(string apiKey) {
             this.apiKey = apiKey;
             return this;
         }
@@ -119,7 +119,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
             }
             
             if (type != null) {
-                request.addPostParam("Type", type.toString());
+                request.addPostParam("Type", type.ToString());
             }
             
             if (certificate != null) {
@@ -131,7 +131,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
             }
             
             if (sandbox != null) {
-                request.addPostParam("Sandbox", sandbox.toString());
+                request.addPostParam("Sandbox", sandbox.ToString());
             }
             
             if (apiKey != null) {

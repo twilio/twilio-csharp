@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.Transcription;
@@ -9,14 +9,14 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account {
 
     public class TranscriptionReader : Reader<Transcription> {
-        private String accountSid;
+        private string accountSid;
     
         /**
          * Construct a new TranscriptionReader
          * 
          * @param accountSid The account_sid
          */
-        public TranscriptionReader(String accountSid) {
+        public TranscriptionReader(string accountSid) {
             this.accountSid = accountSid;
         }
     

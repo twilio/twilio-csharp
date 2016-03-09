@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,9 +7,9 @@ using Twilio.Resources.Api.V2010.account.queue.Member;
 namespace Twilio.Fetchers.Api.V2010.Account.Queue {
 
     public class MemberFetcher : Fetcher<Member> {
-        private String accountSid;
-        private String queueSid;
-        private String callSid;
+        private string accountSid;
+        private string queueSid;
+        private string callSid;
     
         /**
          * Construct a new MemberFetcher
@@ -18,7 +18,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Queue {
          * @param queueSid The Queue in which to find the members
          * @param callSid The call_sid
          */
-        public MemberFetcher(String accountSid, String queueSid, String callSid) {
+        public MemberFetcher(string accountSid, string queueSid, string callSid) {
             this.accountSid = accountSid;
             this.queueSid = queueSid;
             this.callSid = callSid;

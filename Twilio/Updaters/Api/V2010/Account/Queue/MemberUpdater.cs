@@ -1,18 +1,17 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.queue.Member;
-using com.twilio.sdk.http.HttpMethod;
 using com.twilio.sdk.updaters.Updater;
-using java.net.URI;
 
 namespace Twilio.Updaters.Api.V2010.Account.Queue {
 
     public class MemberUpdater : Updater<Member> {
-        private String accountSid;
-        private String queueSid;
-        private String callSid;
-        private URI url;
+        private string accountSid;
+        private string queueSid;
+        private string callSid;
+        private Uri url;
         private HttpMethod method;
     
         /**
@@ -24,7 +23,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Queue {
          * @param url The url
          * @param method The method
          */
-        public MemberUpdater(String accountSid, String queueSid, String callSid, URI url, HttpMethod method) {
+        public MemberUpdater(string accountSid, string queueSid, string callSid, Uri url, HttpMethod method) {
             this.accountSid = accountSid;
             this.queueSid = queueSid;
             this.callSid = callSid;
@@ -75,11 +74,11 @@ namespace Twilio.Updaters.Api.V2010.Account.Queue {
          */
         private void addPostParams(Request request) {
             if (url != null) {
-                request.addPostParam("Url", url.toString());
+                request.addPostParam("Url", url.ToString());
             }
             
             if (method != null) {
-                request.addPostParam("Method", method.toString());
+                request.addPostParam("Method", method.ToString());
             }
         }
     }

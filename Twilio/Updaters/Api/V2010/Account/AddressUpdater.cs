@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.Address;
@@ -7,14 +7,14 @@ using com.twilio.sdk.updaters.Updater;
 namespace Twilio.Updaters.Api.V2010.Account {
 
     public class AddressUpdater : Updater<Address> {
-        private String accountSid;
-        private String sid;
-        private String friendlyName;
-        private String customerName;
-        private String street;
-        private String city;
-        private String region;
-        private String postalCode;
+        private string accountSid;
+        private string sid;
+        private string friendlyName;
+        private string customerName;
+        private string street;
+        private string city;
+        private string region;
+        private string postalCode;
     
         /**
          * Construct a new AddressUpdater
@@ -22,7 +22,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param accountSid The account_sid
          * @param sid The sid
          */
-        public AddressUpdater(String accountSid, String sid) {
+        public AddressUpdater(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
@@ -33,7 +33,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public AddressUpdater setFriendlyName(String friendlyName) {
+        public AddressUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -44,7 +44,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param customerName The customer_name
          * @return this
          */
-        public AddressUpdater setCustomerName(String customerName) {
+        public AddressUpdater setCustomerName(string customerName) {
             this.customerName = customerName;
             return this;
         }
@@ -55,7 +55,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param street The street
          * @return this
          */
-        public AddressUpdater setStreet(String street) {
+        public AddressUpdater setStreet(string street) {
             this.street = street;
             return this;
         }
@@ -66,7 +66,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param city The city
          * @return this
          */
-        public AddressUpdater setCity(String city) {
+        public AddressUpdater setCity(string city) {
             this.city = city;
             return this;
         }
@@ -77,7 +77,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param region The region
          * @return this
          */
-        public AddressUpdater setRegion(String region) {
+        public AddressUpdater setRegion(string region) {
             this.region = region;
             return this;
         }
@@ -88,7 +88,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param postalCode The postal_code
          * @return this
          */
-        public AddressUpdater setPostalCode(String postalCode) {
+        public AddressUpdater setPostalCode(string postalCode) {
             this.postalCode = postalCode;
             return this;
         }

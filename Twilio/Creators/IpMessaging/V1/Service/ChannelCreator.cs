@@ -1,17 +1,17 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Ipmessaging.V1.service.Channel;
-using com.fasterxml.jackson.databind.JsonNode;
 
 namespace Twilio.Creators.IpMessaging.V1.Service {
 
     public class ChannelCreator : Creator<Channel> {
-        private String serviceSid;
-        private String friendlyName;
-        private String uniqueName;
-        private JsonNode attributes;
+        private string serviceSid;
+        private string friendlyName;
+        private string uniqueName;
+        private Object attributes;
         private Channel.ChannelType type;
     
         /**
@@ -21,7 +21,7 @@ namespace Twilio.Creators.IpMessaging.V1.Service {
          * @param friendlyName The friendly_name
          * @param uniqueName The unique_name
          */
-        public ChannelCreator(String serviceSid, String friendlyName, String uniqueName) {
+        public ChannelCreator(string serviceSid, string friendlyName, string uniqueName) {
             this.serviceSid = serviceSid;
             this.friendlyName = friendlyName;
             this.uniqueName = uniqueName;
@@ -33,7 +33,7 @@ namespace Twilio.Creators.IpMessaging.V1.Service {
          * @param attributes The attributes
          * @return this
          */
-        public ChannelCreator setAttributes(JsonNode attributes) {
+        public ChannelCreator setAttributes(Object attributes) {
             this.attributes = attributes;
             return this;
         }
@@ -100,11 +100,11 @@ namespace Twilio.Creators.IpMessaging.V1.Service {
             }
             
             if (attributes != null) {
-                request.addPostParam("Attributes", attributes.toString());
+                request.addPostParam("Attributes", attributes.ToString());
             }
             
             if (type != null) {
-                request.addPostParam("Type", type.toString());
+                request.addPostParam("Type", type.ToString());
             }
         }
     }

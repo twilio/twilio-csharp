@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Trunking.V1.trunk.PhoneNumber;
@@ -9,14 +9,14 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Trunking.V1.Trunk {
 
     public class PhoneNumberReader : Reader<PhoneNumber> {
-        private String trunkSid;
+        private string trunkSid;
     
         /**
          * Construct a new PhoneNumberReader
          * 
          * @param trunkSid The trunk_sid
          */
-        public PhoneNumberReader(String trunkSid) {
+        public PhoneNumberReader(string trunkSid) {
             this.trunkSid = trunkSid;
         }
     

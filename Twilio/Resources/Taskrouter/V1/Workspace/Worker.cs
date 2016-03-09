@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Taskrouter.V1.Workspace;
 using Twilio.Deleters.Taskrouter.V1.Workspace;
 using Twilio.Exceptions;
@@ -9,8 +10,6 @@ using Twilio.Http;
 using Twilio.Readers.Taskrouter.V1.Workspace;
 using Twilio.Resources;
 using Twilio.Updaters.Taskrouter.V1.Workspace;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Taskrouter.V1.Workspace {
 
@@ -21,7 +20,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @return WorkerReader capable of executing the read
          */
-        public static WorkerReader read(String workspaceSid) {
+        public static WorkerReader read(string workspaceSid) {
             return new WorkerReader(workspaceSid);
         }
     
@@ -32,7 +31,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param friendlyName The friendly_name
          * @return WorkerCreator capable of executing the create
          */
-        public static WorkerCreator create(String workspaceSid, String friendlyName) {
+        public static WorkerCreator create(string workspaceSid, string friendlyName) {
             return new WorkerCreator(workspaceSid, friendlyName);
         }
     
@@ -43,7 +42,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return WorkerFetcher capable of executing the fetch
          */
-        public static WorkerFetcher fetch(String workspaceSid, String sid) {
+        public static WorkerFetcher fetch(string workspaceSid, string sid) {
             return new WorkerFetcher(workspaceSid, sid);
         }
     
@@ -54,7 +53,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return WorkerUpdater capable of executing the update
          */
-        public static WorkerUpdater update(String workspaceSid, String sid) {
+        public static WorkerUpdater update(string workspaceSid, string sid) {
             return new WorkerUpdater(workspaceSid, sid);
         }
     
@@ -65,7 +64,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return WorkerDeleter capable of executing the delete
          */
-        public static WorkerDeleter delete(String workspaceSid, String sid) {
+        public static WorkerDeleter delete(string workspaceSid, string sid) {
             return new WorkerDeleter(workspaceSid, sid);
         }
     
@@ -85,15 +84,15 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("activity_name")]
-        private readonly String activityName;
+        private readonly string activityName;
         [JsonProperty("activity_sid")]
-        private readonly String activitySid;
+        private readonly string activitySid;
         [JsonProperty("attributes")]
-        private readonly String attributes;
+        private readonly string attributes;
         [JsonProperty("available")]
-        private readonly Boolean available;
+        private readonly bool available;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_status_changed")]
@@ -101,42 +100,42 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("workspace_sid")]
-        private readonly String workspaceSid;
+        private readonly string workspaceSid;
     
         private Worker([JsonProperty("account_sid")]
-                       String accountSid, 
+                       string accountSid, 
                        [JsonProperty("activity_name")]
-                       String activityName, 
+                       string activityName, 
                        [JsonProperty("activity_sid")]
-                       String activitySid, 
+                       string activitySid, 
                        [JsonProperty("attributes")]
-                       String attributes, 
+                       string attributes, 
                        [JsonProperty("available")]
-                       Boolean available, 
+                       bool available, 
                        [JsonProperty("date_created")]
-                       String dateCreated, 
+                       string dateCreated, 
                        [JsonProperty("date_status_changed")]
-                       String dateStatusChanged, 
+                       string dateStatusChanged, 
                        [JsonProperty("date_updated")]
-                       String dateUpdated, 
+                       string dateUpdated, 
                        [JsonProperty("friendly_name")]
-                       String friendlyName, 
+                       string friendlyName, 
                        [JsonProperty("sid")]
-                       String sid, 
+                       string sid, 
                        [JsonProperty("workspace_sid")]
-                       String workspaceSid) {
+                       string workspaceSid) {
             this.accountSid = accountSid;
             this.activityName = activityName;
             this.activitySid = activitySid;
             this.attributes = attributes;
             this.available = available;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateStatusChanged = MarshalConverter.dateTimeFromString(dateStatusChanged);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateStatusChanged = MarshalConverter.DateTimeFromString(dateStatusChanged);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.friendlyName = friendlyName;
             this.sid = sid;
             this.workspaceSid = workspaceSid;
@@ -145,35 +144,35 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The activity_name
          */
-        public String GetActivityName() {
+        public string GetActivityName() {
             return this.activityName;
         }
     
         /**
          * @return The activity_sid
          */
-        public String GetActivitySid() {
+        public string GetActivitySid() {
             return this.activitySid;
         }
     
         /**
          * @return The attributes
          */
-        public String GetAttributes() {
+        public string GetAttributes() {
             return this.attributes;
         }
     
         /**
          * @return The available
          */
-        public Boolean GetAvailable() {
+        public bool GetAvailable() {
             return this.available;
         }
     
@@ -201,21 +200,21 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The friendly_name
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The workspace_sid
          */
-        public String GetWorkspaceSid() {
+        public string GetWorkspaceSid() {
             return this.workspaceSid;
         }
     }

@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Api.V2010.Account;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -16,7 +16,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param phoneNumber The phone_number
          * @return ValidationRequestCreator capable of executing the create
          */
-        public static ValidationRequestCreator create(String accountSid, com.twilio.types.PhoneNumber phoneNumber) {
+        public static ValidationRequestCreator create(string accountSid, Twilio.Types.PhoneNumber phoneNumber) {
             return new ValidationRequestCreator(accountSid, phoneNumber);
         }
     
@@ -36,26 +36,26 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("phone_number")]
-        private readonly com.twilio.types.PhoneNumber phoneNumber;
+        private readonly Twilio.Types.PhoneNumber phoneNumber;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("validation_code")]
-        private readonly Integer validationCode;
+        private readonly int validationCode;
         [JsonProperty("call_sid")]
-        private readonly String callSid;
+        private readonly string callSid;
     
         private ValidationRequest([JsonProperty("account_sid")]
-                                  String accountSid, 
+                                  string accountSid, 
                                   [JsonProperty("phone_number")]
-                                  com.twilio.types.PhoneNumber phoneNumber, 
+                                  Twilio.Types.PhoneNumber phoneNumber, 
                                   [JsonProperty("friendly_name")]
-                                  String friendlyName, 
+                                  string friendlyName, 
                                   [JsonProperty("validation_code")]
-                                  Integer validationCode, 
+                                  int validationCode, 
                                   [JsonProperty("call_sid")]
-                                  String callSid) {
+                                  string callSid) {
             this.accountSid = accountSid;
             this.phoneNumber = phoneNumber;
             this.friendlyName = friendlyName;
@@ -66,35 +66,35 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The phone_number
          */
-        public com.twilio.types.PhoneNumber GetPhoneNumber() {
+        public Twilio.Types.PhoneNumber GetPhoneNumber() {
             return this.phoneNumber;
         }
     
         /**
          * @return The friendly_name
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return The validation_code
          */
-        public Integer GetValidationCode() {
+        public int GetValidationCode() {
             return this.validationCode;
         }
     
         /**
          * @return The call_sid
          */
-        public String GetCallSid() {
+        public string GetCallSid() {
             return this.callSid;
         }
     }

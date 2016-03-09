@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,12 +7,12 @@ using Twilio.Resources.Taskrouter.V1.workspace.TaskQueue;
 namespace Twilio.Creators.Taskrouter.V1.Workspace {
 
     public class TaskQueueCreator : Creator<TaskQueue> {
-        private String workspaceSid;
-        private String friendlyName;
-        private String reservationActivitySid;
-        private String assignmentActivitySid;
-        private String targetWorkers;
-        private Integer maxReservedWorkers;
+        private string workspaceSid;
+        private string friendlyName;
+        private string reservationActivitySid;
+        private string assignmentActivitySid;
+        private string targetWorkers;
+        private int maxReservedWorkers;
     
         /**
          * Construct a new TaskQueueCreator
@@ -22,7 +22,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param reservationActivitySid The reservation_activity_sid
          * @param assignmentActivitySid The assignment_activity_sid
          */
-        public TaskQueueCreator(String workspaceSid, String friendlyName, String reservationActivitySid, String assignmentActivitySid) {
+        public TaskQueueCreator(string workspaceSid, string friendlyName, string reservationActivitySid, string assignmentActivitySid) {
             this.workspaceSid = workspaceSid;
             this.friendlyName = friendlyName;
             this.reservationActivitySid = reservationActivitySid;
@@ -35,7 +35,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param targetWorkers The target_workers
          * @return this
          */
-        public TaskQueueCreator setTargetWorkers(String targetWorkers) {
+        public TaskQueueCreator setTargetWorkers(string targetWorkers) {
             this.targetWorkers = targetWorkers;
             return this;
         }
@@ -46,7 +46,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param maxReservedWorkers The max_reserved_workers
          * @return this
          */
-        public TaskQueueCreator setMaxReservedWorkers(Integer maxReservedWorkers) {
+        public TaskQueueCreator setMaxReservedWorkers(int maxReservedWorkers) {
             this.maxReservedWorkers = maxReservedWorkers;
             return this;
         }
@@ -110,7 +110,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
             }
             
             if (maxReservedWorkers != null) {
-                request.addPostParam("MaxReservedWorkers", maxReservedWorkers.toString());
+                request.addPostParam("MaxReservedWorkers", maxReservedWorkers.ToString());
             }
         }
     }

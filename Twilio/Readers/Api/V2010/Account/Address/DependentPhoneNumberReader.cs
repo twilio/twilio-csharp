@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.address.DependentPhoneNumber;
@@ -9,8 +9,8 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account.Address {
 
     public class DependentPhoneNumberReader : Reader<DependentPhoneNumber> {
-        private String accountSid;
-        private String addressSid;
+        private string accountSid;
+        private string addressSid;
     
         /**
          * Construct a new DependentPhoneNumberReader
@@ -18,7 +18,7 @@ namespace Twilio.Readers.Api.V2010.Account.Address {
          * @param accountSid The account_sid
          * @param addressSid The address_sid
          */
-        public DependentPhoneNumberReader(String accountSid, String addressSid) {
+        public DependentPhoneNumberReader(string accountSid, string addressSid) {
             this.accountSid = accountSid;
             this.addressSid = addressSid;
         }

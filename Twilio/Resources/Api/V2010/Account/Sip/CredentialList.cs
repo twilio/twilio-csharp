@@ -1,6 +1,8 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account.Sip;
 using Twilio.Deleters.Api.V2010.Account.Sip;
 using Twilio.Exceptions;
@@ -9,8 +11,6 @@ using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account.Sip;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010.Account.Sip;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account.Sip {
 
@@ -22,7 +22,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param accountSid The account_sid
          * @return CredentialListReader capable of executing the read
          */
-        public static CredentialListReader read(String accountSid) {
+        public static CredentialListReader read(string accountSid) {
             return new CredentialListReader(accountSid);
         }
     
@@ -33,7 +33,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param friendlyName The friendly_name
          * @return CredentialListCreator capable of executing the create
          */
-        public static CredentialListCreator create(String accountSid, String friendlyName) {
+        public static CredentialListCreator create(string accountSid, string friendlyName) {
             return new CredentialListCreator(accountSid, friendlyName);
         }
     
@@ -44,7 +44,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param sid Fetch by unique credential Sid
          * @return CredentialListFetcher capable of executing the fetch
          */
-        public static CredentialListFetcher fetch(String accountSid, String sid) {
+        public static CredentialListFetcher fetch(string accountSid, string sid) {
             return new CredentialListFetcher(accountSid, sid);
         }
     
@@ -56,7 +56,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param friendlyName The friendly_name
          * @return CredentialListUpdater capable of executing the update
          */
-        public static CredentialListUpdater update(String accountSid, String sid, String friendlyName) {
+        public static CredentialListUpdater update(string accountSid, string sid, string friendlyName) {
             return new CredentialListUpdater(accountSid, sid, friendlyName);
         }
     
@@ -67,7 +67,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param sid Delete by unique credential Sid
          * @return CredentialListDeleter capable of executing the delete
          */
-        public static CredentialListDeleter delete(String accountSid, String sid) {
+        public static CredentialListDeleter delete(string accountSid, string sid) {
             return new CredentialListDeleter(accountSid, sid);
         }
     
@@ -87,37 +87,37 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("subresource_uris")]
-        private readonly Map<String, String> subresourceUris;
+        private readonly Dictionary<string, string> subresourceUris;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private CredentialList([JsonProperty("account_sid")]
-                               String accountSid, 
+                               string accountSid, 
                                [JsonProperty("date_created")]
-                               String dateCreated, 
+                               string dateCreated, 
                                [JsonProperty("date_updated")]
-                               String dateUpdated, 
+                               string dateUpdated, 
                                [JsonProperty("friendly_name")]
-                               String friendlyName, 
+                               string friendlyName, 
                                [JsonProperty("sid")]
-                               String sid, 
+                               string sid, 
                                [JsonProperty("subresource_uris")]
-                               Map<String, String> subresourceUris, 
+                               Dictionary<string, string> subresourceUris, 
                                [JsonProperty("uri")]
-                               String uri) {
+                               string uri) {
             this.accountSid = accountSid;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.friendlyName = friendlyName;
             this.sid = sid;
             this.subresourceUris = subresourceUris;
@@ -127,7 +127,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
         /**
          * @return The unique sid that identifies this account
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
@@ -148,28 +148,28 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
         /**
          * @return The friendly_name
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return A string that uniquely identifies this credential
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The subresource_uris
          */
-        public Map<String, String> GetSubresourceUris() {
+        public Dictionary<string, string> GetSubresourceUris() {
             return this.subresourceUris;
         }
     
         /**
          * @return The URI for this resource
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

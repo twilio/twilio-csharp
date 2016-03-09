@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,14 +7,14 @@ using Twilio.Resources.Pricing.V1.messaging.Country;
 namespace Twilio.Fetchers.Pricing.V1.Messaging {
 
     public class CountryFetcher : Fetcher<Country> {
-        private String isoCountry;
+        private string isoCountry;
     
         /**
          * Construct a new CountryFetcher
          * 
          * @param isoCountry The iso_country
          */
-        public CountryFetcher(String isoCountry) {
+        public CountryFetcher(string isoCountry) {
             this.isoCountry = isoCountry;
         }
     

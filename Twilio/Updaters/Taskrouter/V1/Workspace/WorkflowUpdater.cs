@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.workspace.Workflow;
@@ -7,13 +7,13 @@ using com.twilio.sdk.updaters.Updater;
 namespace Twilio.Updaters.Taskrouter.V1.Workspace {
 
     public class WorkflowUpdater : Updater<Workflow> {
-        private String workspaceSid;
-        private String sid;
-        private String friendlyName;
-        private String assignmentCallbackUrl;
-        private String fallbackAssignmentCallbackUrl;
-        private String configuration;
-        private Integer taskReservationTimeout;
+        private string workspaceSid;
+        private string sid;
+        private string friendlyName;
+        private string assignmentCallbackUrl;
+        private string fallbackAssignmentCallbackUrl;
+        private string configuration;
+        private int taskReservationTimeout;
     
         /**
          * Construct a new WorkflowUpdater
@@ -21,7 +21,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @param sid The sid
          */
-        public WorkflowUpdater(String workspaceSid, String sid) {
+        public WorkflowUpdater(string workspaceSid, string sid) {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
         }
@@ -32,7 +32,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public WorkflowUpdater setFriendlyName(String friendlyName) {
+        public WorkflowUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -43,7 +43,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param assignmentCallbackUrl The assignment_callback_url
          * @return this
          */
-        public WorkflowUpdater setAssignmentCallbackUrl(String assignmentCallbackUrl) {
+        public WorkflowUpdater setAssignmentCallbackUrl(string assignmentCallbackUrl) {
             this.assignmentCallbackUrl = assignmentCallbackUrl;
             return this;
         }
@@ -54,7 +54,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param fallbackAssignmentCallbackUrl The fallback_assignment_callback_url
          * @return this
          */
-        public WorkflowUpdater setFallbackAssignmentCallbackUrl(String fallbackAssignmentCallbackUrl) {
+        public WorkflowUpdater setFallbackAssignmentCallbackUrl(string fallbackAssignmentCallbackUrl) {
             this.fallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl;
             return this;
         }
@@ -65,7 +65,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param configuration The configuration
          * @return this
          */
-        public WorkflowUpdater setConfiguration(String configuration) {
+        public WorkflowUpdater setConfiguration(string configuration) {
             this.configuration = configuration;
             return this;
         }
@@ -76,7 +76,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param taskReservationTimeout The task_reservation_timeout
          * @return this
          */
-        public WorkflowUpdater setTaskReservationTimeout(Integer taskReservationTimeout) {
+        public WorkflowUpdater setTaskReservationTimeout(int taskReservationTimeout) {
             this.taskReservationTimeout = taskReservationTimeout;
             return this;
         }
@@ -140,7 +140,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
             }
             
             if (taskReservationTimeout != null) {
-                request.addPostParam("TaskReservationTimeout", taskReservationTimeout.toString());
+                request.addPostParam("TaskReservationTimeout", taskReservationTimeout.ToString());
             }
         }
     }

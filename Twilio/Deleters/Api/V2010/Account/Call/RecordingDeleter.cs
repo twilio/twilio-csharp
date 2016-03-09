@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Deleters.Deleter;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,9 +7,9 @@ using Twilio.Resources.Api.V2010.account.call.Recording;
 namespace Twilio.Deleters.Api.V2010.Account.Call {
 
     public class RecordingDeleter : Deleter<Recording> {
-        private String accountSid;
-        private String callSid;
-        private String sid;
+        private string accountSid;
+        private string callSid;
+        private string sid;
     
         /**
          * Construct a new RecordingDeleter
@@ -18,7 +18,7 @@ namespace Twilio.Deleters.Api.V2010.Account.Call {
          * @param callSid The call_sid
          * @param sid The sid
          */
-        public RecordingDeleter(String accountSid, String callSid, String sid) {
+        public RecordingDeleter(string accountSid, string callSid, string sid) {
             this.accountSid = accountSid;
             this.callSid = callSid;
             this.sid = sid;

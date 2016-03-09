@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Deleters.Deleter;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,9 +7,9 @@ using Twilio.Resources.Api.V2010.account.sip.domain.IpAccessControlListMapping;
 namespace Twilio.Deleters.Api.V2010.Account.Sip.Domain {
 
     public class IpAccessControlListMappingDeleter : Deleter<IpAccessControlListMapping> {
-        private String accountSid;
-        private String domainSid;
-        private String sid;
+        private string accountSid;
+        private string domainSid;
+        private string sid;
     
         /**
          * Construct a new IpAccessControlListMappingDeleter
@@ -18,7 +18,7 @@ namespace Twilio.Deleters.Api.V2010.Account.Sip.Domain {
          * @param domainSid The domain_sid
          * @param sid The sid
          */
-        public IpAccessControlListMappingDeleter(String accountSid, String domainSid, String sid) {
+        public IpAccessControlListMappingDeleter(string accountSid, string domainSid, string sid) {
             this.accountSid = accountSid;
             this.domainSid = domainSid;
             this.sid = sid;

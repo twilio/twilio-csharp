@@ -1,29 +1,29 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Ipmessaging.V1.Service;
-using com.fasterxml.jackson.databind.JsonNode;
 using com.twilio.sdk.updaters.Updater;
 
 namespace Twilio.Updaters.IpMessaging.V1 {
 
     public class ServiceUpdater : Updater<Service> {
-        private String sid;
-        private String friendlyName;
-        private String defaultServiceRoleSid;
-        private String defaultChannelRoleSid;
-        private String defaultChannelCreatorRoleSid;
-        private Boolean readStatusEnabled;
-        private Integer typingIndicatorTimeout;
-        private Integer consumptionReportInterval;
-        private JsonNode webhooks;
+        private string sid;
+        private string friendlyName;
+        private string defaultServiceRoleSid;
+        private string defaultChannelRoleSid;
+        private string defaultChannelCreatorRoleSid;
+        private bool readStatusEnabled;
+        private int typingIndicatorTimeout;
+        private int consumptionReportInterval;
+        private Object webhooks;
     
         /**
          * Construct a new ServiceUpdater
          * 
          * @param sid The sid
          */
-        public ServiceUpdater(String sid) {
+        public ServiceUpdater(string sid) {
             this.sid = sid;
         }
     
@@ -33,7 +33,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public ServiceUpdater setFriendlyName(String friendlyName) {
+        public ServiceUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -44,7 +44,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param defaultServiceRoleSid The default_service_role_sid
          * @return this
          */
-        public ServiceUpdater setDefaultServiceRoleSid(String defaultServiceRoleSid) {
+        public ServiceUpdater setDefaultServiceRoleSid(string defaultServiceRoleSid) {
             this.defaultServiceRoleSid = defaultServiceRoleSid;
             return this;
         }
@@ -55,7 +55,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param defaultChannelRoleSid The default_channel_role_sid
          * @return this
          */
-        public ServiceUpdater setDefaultChannelRoleSid(String defaultChannelRoleSid) {
+        public ServiceUpdater setDefaultChannelRoleSid(string defaultChannelRoleSid) {
             this.defaultChannelRoleSid = defaultChannelRoleSid;
             return this;
         }
@@ -66,7 +66,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param defaultChannelCreatorRoleSid The default_channel_creator_role_sid
          * @return this
          */
-        public ServiceUpdater setDefaultChannelCreatorRoleSid(String defaultChannelCreatorRoleSid) {
+        public ServiceUpdater setDefaultChannelCreatorRoleSid(string defaultChannelCreatorRoleSid) {
             this.defaultChannelCreatorRoleSid = defaultChannelCreatorRoleSid;
             return this;
         }
@@ -77,7 +77,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param readStatusEnabled The read_status_enabled
          * @return this
          */
-        public ServiceUpdater setReadStatusEnabled(Boolean readStatusEnabled) {
+        public ServiceUpdater setReadStatusEnabled(bool readStatusEnabled) {
             this.readStatusEnabled = readStatusEnabled;
             return this;
         }
@@ -88,7 +88,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param typingIndicatorTimeout The typing_indicator_timeout
          * @return this
          */
-        public ServiceUpdater setTypingIndicatorTimeout(Integer typingIndicatorTimeout) {
+        public ServiceUpdater setTypingIndicatorTimeout(int typingIndicatorTimeout) {
             this.typingIndicatorTimeout = typingIndicatorTimeout;
             return this;
         }
@@ -99,7 +99,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param consumptionReportInterval The consumption_report_interval
          * @return this
          */
-        public ServiceUpdater setConsumptionReportInterval(Integer consumptionReportInterval) {
+        public ServiceUpdater setConsumptionReportInterval(int consumptionReportInterval) {
             this.consumptionReportInterval = consumptionReportInterval;
             return this;
         }
@@ -110,7 +110,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param webhooks The webhooks
          * @return this
          */
-        public ServiceUpdater setWebhooks(JsonNode webhooks) {
+        public ServiceUpdater setWebhooks(Object webhooks) {
             this.webhooks = webhooks;
             return this;
         }
@@ -174,19 +174,19 @@ namespace Twilio.Updaters.IpMessaging.V1 {
             }
             
             if (readStatusEnabled != null) {
-                request.addPostParam("ReadStatusEnabled", readStatusEnabled.toString());
+                request.addPostParam("ReadStatusEnabled", readStatusEnabled.ToString());
             }
             
             if (typingIndicatorTimeout != null) {
-                request.addPostParam("TypingIndicatorTimeout", typingIndicatorTimeout.toString());
+                request.addPostParam("TypingIndicatorTimeout", typingIndicatorTimeout.ToString());
             }
             
             if (consumptionReportInterval != null) {
-                request.addPostParam("ConsumptionReportInterval", consumptionReportInterval.toString());
+                request.addPostParam("ConsumptionReportInterval", consumptionReportInterval.ToString());
             }
             
             if (webhooks != null) {
-                request.addPostParam("Webhooks", webhooks.toString());
+                request.addPostParam("Webhooks", webhooks.ToString());
             }
         }
     }

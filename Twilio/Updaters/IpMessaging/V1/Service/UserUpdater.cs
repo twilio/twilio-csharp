@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Ipmessaging.V1.service.User;
@@ -7,9 +7,9 @@ using com.twilio.sdk.updaters.Updater;
 namespace Twilio.Updaters.IpMessaging.V1.Service {
 
     public class UserUpdater : Updater<User> {
-        private String serviceSid;
-        private String sid;
-        private String roleSid;
+        private string serviceSid;
+        private string sid;
+        private string roleSid;
     
         /**
          * Construct a new UserUpdater
@@ -18,7 +18,7 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
          * @param sid The sid
          * @param roleSid The role_sid
          */
-        public UserUpdater(String serviceSid, String sid, String roleSid) {
+        public UserUpdater(string serviceSid, string sid, string roleSid) {
             this.serviceSid = serviceSid;
             this.sid = sid;
             this.roleSid = roleSid;

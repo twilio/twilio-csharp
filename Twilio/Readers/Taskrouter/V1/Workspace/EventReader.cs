@@ -1,33 +1,33 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.workspace.Event;
-using com.twilio.sdk.converters.MarshalConverter;
 using com.twilio.sdk.readers.Reader;
 using com.twilio.sdk.resources.Page;
 using com.twilio.sdk.resources.ResourceSet;
-using org.joda.time.DateTime;
 
 namespace Twilio.Readers.Taskrouter.V1.Workspace {
 
     public class EventReader : Reader<Event> {
-        private String workspaceSid;
+        private string workspaceSid;
         private DateTime endDate;
-        private String eventType;
-        private Integer minutes;
-        private String reservationSid;
+        private string eventType;
+        private int minutes;
+        private string reservationSid;
         private DateTime startDate;
-        private String taskQueueSid;
-        private String taskSid;
-        private String workerSid;
-        private String workflowSid;
+        private string taskQueueSid;
+        private string taskSid;
+        private string workerSid;
+        private string workflowSid;
     
         /**
          * Construct a new EventReader
          * 
          * @param workspaceSid The workspace_sid
          */
-        public EventReader(String workspaceSid) {
+        public EventReader(string workspaceSid) {
             this.workspaceSid = workspaceSid;
         }
     
@@ -48,7 +48,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param eventType The event_type
          * @return this
          */
-        public EventReader byEventType(String eventType) {
+        public EventReader byEventType(string eventType) {
             this.eventType = eventType;
             return this;
         }
@@ -59,7 +59,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param minutes The minutes
          * @return this
          */
-        public EventReader byMinutes(Integer minutes) {
+        public EventReader byMinutes(int minutes) {
             this.minutes = minutes;
             return this;
         }
@@ -70,7 +70,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param reservationSid The reservation_sid
          * @return this
          */
-        public EventReader byReservationSid(String reservationSid) {
+        public EventReader byReservationSid(string reservationSid) {
             this.reservationSid = reservationSid;
             return this;
         }
@@ -92,7 +92,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param taskQueueSid The task_queue_sid
          * @return this
          */
-        public EventReader byTaskQueueSid(String taskQueueSid) {
+        public EventReader byTaskQueueSid(string taskQueueSid) {
             this.taskQueueSid = taskQueueSid;
             return this;
         }
@@ -103,7 +103,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param taskSid The task_sid
          * @return this
          */
-        public EventReader byTaskSid(String taskSid) {
+        public EventReader byTaskSid(string taskSid) {
             this.taskSid = taskSid;
             return this;
         }
@@ -114,7 +114,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param workerSid The worker_sid
          * @return this
          */
-        public EventReader byWorkerSid(String workerSid) {
+        public EventReader byWorkerSid(string workerSid) {
             this.workerSid = workerSid;
             return this;
         }
@@ -125,7 +125,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param workflowSid The workflow_sid
          * @return this
          */
-        public EventReader byWorkflowSid(String workflowSid) {
+        public EventReader byWorkflowSid(string workflowSid) {
             this.workflowSid = workflowSid;
             return this;
         }
@@ -207,7 +207,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          */
         private void addQueryParams(final Request request) {
             if (endDate != null) {
-                request.addQueryParam("EndDate", endDate.toString());
+                request.addQueryParam("EndDate", endDate.ToString());
             }
             
             if (eventType != null) {
@@ -215,7 +215,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
             }
             
             if (minutes != null) {
-                request.addQueryParam("Minutes", minutes.toString());
+                request.addQueryParam("Minutes", minutes.ToString());
             }
             
             if (reservationSid != null) {
@@ -223,7 +223,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
             }
             
             if (startDate != null) {
-                request.addQueryParam("StartDate", startDate.toString());
+                request.addQueryParam("StartDate", startDate.ToString());
             }
             
             if (taskQueueSid != null) {

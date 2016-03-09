@@ -1,12 +1,12 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Api.V2010.Account;
 using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account;
 using Twilio.Resources;
-using java.net.URI;
 
 namespace Twilio.Resources.Api.V2010.Account {
 
@@ -17,7 +17,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return AvailablePhoneNumberCountryReader capable of executing the read
          */
-        public static AvailablePhoneNumberCountryReader read(String accountSid) {
+        public static AvailablePhoneNumberCountryReader read(string accountSid) {
             return new AvailablePhoneNumberCountryReader(accountSid);
         }
     
@@ -28,7 +28,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param countryCode The country_code
          * @return AvailablePhoneNumberCountryFetcher capable of executing the fetch
          */
-        public static AvailablePhoneNumberCountryFetcher fetch(String accountSid, String countryCode) {
+        public static AvailablePhoneNumberCountryFetcher fetch(string accountSid, string countryCode) {
             return new AvailablePhoneNumberCountryFetcher(accountSid, countryCode);
         }
     
@@ -48,26 +48,26 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         [JsonProperty("country_code")]
-        private readonly String countryCode;
+        private readonly string countryCode;
         [JsonProperty("country")]
-        private readonly String country;
+        private readonly string country;
         [JsonProperty("uri")]
-        private readonly URI uri;
+        private readonly Uri uri;
         [JsonProperty("beta")]
-        private readonly Boolean beta;
+        private readonly bool beta;
         [JsonProperty("subresource_uris")]
-        private readonly Map<String, String> subresourceUris;
+        private readonly Dictionary<string, string> subresourceUris;
     
         private AvailablePhoneNumberCountry([JsonProperty("country_code")]
-                                            String countryCode, 
+                                            string countryCode, 
                                             [JsonProperty("country")]
-                                            String country, 
+                                            string country, 
                                             [JsonProperty("uri")]
-                                            URI uri, 
+                                            Uri uri, 
                                             [JsonProperty("beta")]
-                                            Boolean beta, 
+                                            bool beta, 
                                             [JsonProperty("subresource_uris")]
-                                            Map<String, String> subresourceUris) {
+                                            Dictionary<string, string> subresourceUris) {
             this.countryCode = countryCode;
             this.country = country;
             this.uri = uri;
@@ -78,42 +78,42 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The country_code
          */
-        public String getSid() {
+        public string getSid() {
             return this.getCountryCode();
         }
     
         /**
          * @return The country_code
          */
-        public String GetCountryCode() {
+        public string GetCountryCode() {
             return this.countryCode;
         }
     
         /**
          * @return The country
          */
-        public String GetCountry() {
+        public string GetCountry() {
             return this.country;
         }
     
         /**
          * @return The uri
          */
-        public URI GetUri() {
+        public Uri GetUri() {
             return this.uri;
         }
     
         /**
          * @return The beta
          */
-        public Boolean GetBeta() {
+        public bool GetBeta() {
             return this.beta;
         }
     
         /**
          * @return The subresource_uris
          */
-        public Map<String, String> GetSubresourceUris() {
+        public Dictionary<string, string> GetSubresourceUris() {
             return this.subresourceUris;
         }
     }

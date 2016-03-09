@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Monitor.V1.Alert;
@@ -9,9 +9,9 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Monitor.V1 {
 
     public class AlertReader : Reader<Alert> {
-        private String logLevel;
-        private String startDate;
-        private String endDate;
+        private string logLevel;
+        private string startDate;
+        private string endDate;
     
         /**
          * The log_level
@@ -19,7 +19,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param logLevel The log_level
          * @return this
          */
-        public AlertReader byLogLevel(String logLevel) {
+        public AlertReader byLogLevel(string logLevel) {
             this.logLevel = logLevel;
             return this;
         }
@@ -30,7 +30,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param startDate The start_date
          * @return this
          */
-        public AlertReader byStartDate(String startDate) {
+        public AlertReader byStartDate(string startDate) {
             this.startDate = startDate;
             return this;
         }
@@ -41,7 +41,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param endDate The end_date
          * @return this
          */
-        public AlertReader byEndDate(String endDate) {
+        public AlertReader byEndDate(string endDate) {
             this.endDate = endDate;
             return this;
         }

@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Api.V2010.account.sip.CredentialList;
 namespace Twilio.Creators.Api.V2010.Account.Sip {
 
     public class CredentialListCreator : Creator<CredentialList> {
-        private String accountSid;
-        private String friendlyName;
+        private string accountSid;
+        private string friendlyName;
     
         /**
          * Construct a new CredentialListCreator
@@ -16,7 +16,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          * @param accountSid The account_sid
          * @param friendlyName The friendly_name
          */
-        public CredentialListCreator(String accountSid, String friendlyName) {
+        public CredentialListCreator(string accountSid, string friendlyName) {
             this.accountSid = accountSid;
             this.friendlyName = friendlyName;
         }

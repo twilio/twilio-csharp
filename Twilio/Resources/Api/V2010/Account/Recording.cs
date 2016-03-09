@@ -1,14 +1,13 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Deleters.Api.V2010.Account;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Api.V2010.Account;
 using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account;
 using Twilio.Resources;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account {
 
@@ -20,7 +19,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Fetch by unique recording Sid
          * @return RecordingFetcher capable of executing the fetch
          */
-        public static RecordingFetcher fetch(String accountSid, String sid) {
+        public static RecordingFetcher fetch(string accountSid, string sid) {
             return new RecordingFetcher(accountSid, sid);
         }
     
@@ -31,7 +30,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Delete by unique recording Sid
          * @return RecordingDeleter capable of executing the delete
          */
-        public static RecordingDeleter delete(String accountSid, String sid) {
+        public static RecordingDeleter delete(string accountSid, string sid) {
             return new RecordingDeleter(accountSid, sid);
         }
     
@@ -42,7 +41,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return RecordingReader capable of executing the read
          */
-        public static RecordingReader read(String accountSid) {
+        public static RecordingReader read(string accountSid) {
             return new RecordingReader(accountSid);
         }
     
@@ -62,43 +61,43 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("api_version")]
-        private readonly String apiVersion;
+        private readonly string apiVersion;
         [JsonProperty("call_sid")]
-        private readonly String callSid;
+        private readonly string callSid;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("duration")]
-        private readonly String duration;
+        private readonly string duration;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private Recording([JsonProperty("account_sid")]
-                          String accountSid, 
+                          string accountSid, 
                           [JsonProperty("api_version")]
-                          String apiVersion, 
+                          string apiVersion, 
                           [JsonProperty("call_sid")]
-                          String callSid, 
+                          string callSid, 
                           [JsonProperty("date_created")]
-                          String dateCreated, 
+                          string dateCreated, 
                           [JsonProperty("date_updated")]
-                          String dateUpdated, 
+                          string dateUpdated, 
                           [JsonProperty("duration")]
-                          String duration, 
+                          string duration, 
                           [JsonProperty("sid")]
-                          String sid, 
+                          string sid, 
                           [JsonProperty("uri")]
-                          String uri) {
+                          string uri) {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
             this.callSid = callSid;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.duration = duration;
             this.sid = sid;
             this.uri = uri;
@@ -107,21 +106,21 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The unique sid that identifies this account
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The version of the API in use during the recording.
          */
-        public String GetApiVersion() {
+        public string GetApiVersion() {
             return this.apiVersion;
         }
     
         /**
          * @return The call during which the recording was made.
          */
-        public String GetCallSid() {
+        public string GetCallSid() {
             return this.callSid;
         }
     
@@ -142,21 +141,21 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The length of the recording, in seconds.
          */
-        public String GetDuration() {
+        public string GetDuration() {
             return this.duration;
         }
     
         /**
          * @return A string that uniquely identifies this recording
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The URI for this resource
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,9 +7,9 @@ using Twilio.Resources.Api.V2010.account.message.Media;
 namespace Twilio.Fetchers.Api.V2010.Account.Message {
 
     public class MediaFetcher : Fetcher<Media> {
-        private String accountSid;
-        private String messageSid;
-        private String sid;
+        private string accountSid;
+        private string messageSid;
+        private string sid;
     
         /**
          * Construct a new MediaFetcher
@@ -18,7 +18,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Message {
          * @param messageSid The message_sid
          * @param sid Fetch by unique media Sid
          */
-        public MediaFetcher(String accountSid, String messageSid, String sid) {
+        public MediaFetcher(string accountSid, string messageSid, string sid) {
             this.accountSid = accountSid;
             this.messageSid = messageSid;
             this.sid = sid;

@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.Conference;
@@ -9,10 +9,10 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account {
 
     public class ConferenceReader : Reader<Conference> {
-        private String accountSid;
-        private String dateCreated;
-        private String dateUpdated;
-        private String friendlyName;
+        private string accountSid;
+        private string dateCreated;
+        private string dateUpdated;
+        private string friendlyName;
         private Conference.Status status;
     
         /**
@@ -20,7 +20,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * 
          * @param accountSid The account_sid
          */
-        public ConferenceReader(String accountSid) {
+        public ConferenceReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
@@ -31,7 +31,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param dateCreated Filter by date created
          * @return this
          */
-        public ConferenceReader byDateCreated(String dateCreated) {
+        public ConferenceReader byDateCreated(string dateCreated) {
             this.dateCreated = dateCreated;
             return this;
         }
@@ -43,7 +43,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param dateUpdated Filter by date updated
          * @return this
          */
-        public ConferenceReader byDateUpdated(String dateUpdated) {
+        public ConferenceReader byDateUpdated(string dateUpdated) {
             this.dateUpdated = dateUpdated;
             return this;
         }
@@ -54,7 +54,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param friendlyName Filter by friendly name
          * @return this
          */
-        public ConferenceReader byFriendlyName(String friendlyName) {
+        public ConferenceReader byFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -160,7 +160,7 @@ namespace Twilio.Readers.Api.V2010.Account {
             }
             
             if (status != null) {
-                request.addQueryParam("Status", status.toString());
+                request.addQueryParam("Status", status.ToString());
             }
             
             request.addQueryParam("PageSize", Integer.toString(getPageSize()));

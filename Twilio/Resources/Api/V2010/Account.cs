@@ -1,6 +1,8 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Api.V2010;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Api.V2010;
@@ -8,8 +10,6 @@ using Twilio.Http;
 using Twilio.Readers.Api.V2010;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010 {
 
@@ -40,7 +40,7 @@ namespace Twilio.Resources.Api.V2010 {
          * @param sid Fetch by unique Account Sid
          * @return AccountFetcher capable of executing the fetch
          */
-        public static AccountFetcher fetch(String sid) {
+        public static AccountFetcher fetch(string sid) {
             return new AccountFetcher(sid);
         }
     
@@ -60,7 +60,7 @@ namespace Twilio.Resources.Api.V2010 {
          * @param sid The sid
          * @return AccountUpdater capable of executing the update
          */
-        public static AccountUpdater update(String sid) {
+        public static AccountUpdater update(string sid) {
             return new AccountUpdater(sid);
         }
     
@@ -80,49 +80,49 @@ namespace Twilio.Resources.Api.V2010 {
         }
     
         [JsonProperty("auth_token")]
-        private readonly String authToken;
+        private readonly string authToken;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("owner_account_sid")]
-        private readonly String ownerAccountSid;
+        private readonly string ownerAccountSid;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("status")]
         private readonly Account.Status status;
         [JsonProperty("subresource_uris")]
-        private readonly Map<String, String> subresourceUris;
+        private readonly Dictionary<string, string> subresourceUris;
         [JsonProperty("type")]
         private readonly Account.Type type;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private Account([JsonProperty("auth_token")]
-                        String authToken, 
+                        string authToken, 
                         [JsonProperty("date_created")]
-                        String dateCreated, 
+                        string dateCreated, 
                         [JsonProperty("date_updated")]
-                        String dateUpdated, 
+                        string dateUpdated, 
                         [JsonProperty("friendly_name")]
-                        String friendlyName, 
+                        string friendlyName, 
                         [JsonProperty("owner_account_sid")]
-                        String ownerAccountSid, 
+                        string ownerAccountSid, 
                         [JsonProperty("sid")]
-                        String sid, 
+                        string sid, 
                         [JsonProperty("status")]
                         Account.Status status, 
                         [JsonProperty("subresource_uris")]
-                        Map<String, String> subresourceUris, 
+                        Dictionary<string, string> subresourceUris, 
                         [JsonProperty("type")]
                         Account.Type type, 
                         [JsonProperty("uri")]
-                        String uri) {
+                        string uri) {
             this.authToken = authToken;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.friendlyName = friendlyName;
             this.ownerAccountSid = ownerAccountSid;
             this.sid = sid;
@@ -135,7 +135,7 @@ namespace Twilio.Resources.Api.V2010 {
         /**
          * @return The authorization token for this account
          */
-        public String GetAuthToken() {
+        public string GetAuthToken() {
             return this.authToken;
         }
     
@@ -156,21 +156,21 @@ namespace Twilio.Resources.Api.V2010 {
         /**
          * @return A human readable description of this account
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return The unique 34 character id representing the parent of this account
          */
-        public String GetOwnerAccountSid() {
+        public string GetOwnerAccountSid() {
             return this.ownerAccountSid;
         }
     
         /**
          * @return A 34 character string that uniquely identifies this resource.
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
@@ -184,21 +184,21 @@ namespace Twilio.Resources.Api.V2010 {
         /**
          * @return Account Instance Subresources
          */
-        public Map<String, String> GetSubresourceUris() {
+        public Dictionary<string, string> GetSubresourceUris() {
             return this.subresourceUris;
         }
     
         /**
          * @return The type of this account
          */
-        public Account.Type GetType() {
+        public Account.Type GetAccountType() {
             return this.type;
         }
     
         /**
          * @return The URI for this resource, relative to `https://api.twilio.com`
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

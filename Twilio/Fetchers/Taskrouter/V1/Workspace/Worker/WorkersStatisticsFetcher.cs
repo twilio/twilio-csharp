@@ -1,28 +1,28 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.workspace.worker.WorkersStatistics;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
 
     public class WorkersStatisticsFetcher : Fetcher<WorkersStatistics> {
-        private String workspaceSid;
-        private Integer minutes;
+        private string workspaceSid;
+        private int minutes;
         private DateTime startDate;
         private DateTime endDate;
-        private String taskQueueSid;
-        private String taskQueueName;
-        private String friendlyName;
+        private string taskQueueSid;
+        private string taskQueueName;
+        private string friendlyName;
     
         /**
          * Construct a new WorkersStatisticsFetcher
          * 
          * @param workspaceSid The workspace_sid
          */
-        public WorkersStatisticsFetcher(String workspaceSid) {
+        public WorkersStatisticsFetcher(string workspaceSid) {
             this.workspaceSid = workspaceSid;
         }
     
@@ -32,7 +32,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
          * @param minutes The minutes
          * @return this
          */
-        public WorkersStatisticsFetcher setMinutes(Integer minutes) {
+        public WorkersStatisticsFetcher setMinutes(int minutes) {
             this.minutes = minutes;
             return this;
         }
@@ -65,7 +65,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
          * @param taskQueueSid The task_queue_sid
          * @return this
          */
-        public WorkersStatisticsFetcher setTaskQueueSid(String taskQueueSid) {
+        public WorkersStatisticsFetcher setTaskQueueSid(string taskQueueSid) {
             this.taskQueueSid = taskQueueSid;
             return this;
         }
@@ -76,7 +76,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
          * @param taskQueueName The task_queue_name
          * @return this
          */
-        public WorkersStatisticsFetcher setTaskQueueName(String taskQueueName) {
+        public WorkersStatisticsFetcher setTaskQueueName(string taskQueueName) {
             this.taskQueueName = taskQueueName;
             return this;
         }
@@ -87,7 +87,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public WorkersStatisticsFetcher setFriendlyName(String friendlyName) {
+        public WorkersStatisticsFetcher setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }

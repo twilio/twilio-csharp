@@ -1,12 +1,11 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry;
 using Twilio.Resources;
-using com.twilio.types.PhoneNumberCapabilities;
-using java.math.BigDecimal;
+using Twilio.Types;
 
 namespace Twilio.Resources.Api.V2010.Account.Availablephonenumbercountry {
 
@@ -18,7 +17,7 @@ namespace Twilio.Resources.Api.V2010.Account.Availablephonenumbercountry {
          * @param countryCode The country_code
          * @return TollFreeReader capable of executing the read
          */
-        public static TollFreeReader read(String accountSid, String countryCode) {
+        public static TollFreeReader read(string accountSid, string countryCode) {
             return new TollFreeReader(accountSid, countryCode);
         }
     
@@ -38,52 +37,52 @@ namespace Twilio.Resources.Api.V2010.Account.Availablephonenumbercountry {
         }
     
         [JsonProperty("friendly_name")]
-        private readonly com.twilio.types.PhoneNumber friendlyName;
+        private readonly Twilio.Types.PhoneNumber friendlyName;
         [JsonProperty("phone_number")]
-        private readonly com.twilio.types.PhoneNumber phoneNumber;
+        private readonly Twilio.Types.PhoneNumber phoneNumber;
         [JsonProperty("lata")]
-        private readonly String lata;
+        private readonly string lata;
         [JsonProperty("rate_center")]
-        private readonly String rateCenter;
+        private readonly string rateCenter;
         [JsonProperty("latitude")]
-        private readonly BigDecimal latitude;
+        private readonly decimal latitude;
         [JsonProperty("longitude")]
-        private readonly BigDecimal longitude;
+        private readonly decimal longitude;
         [JsonProperty("region")]
-        private readonly String region;
+        private readonly string region;
         [JsonProperty("postal_code")]
-        private readonly String postalCode;
+        private readonly string postalCode;
         [JsonProperty("iso_country")]
-        private readonly String isoCountry;
+        private readonly string isoCountry;
         [JsonProperty("address_requirements")]
-        private readonly String addressRequirements;
+        private readonly string addressRequirements;
         [JsonProperty("beta")]
-        private readonly Boolean beta;
+        private readonly bool beta;
         [JsonProperty("capabilities")]
         private readonly PhoneNumberCapabilities capabilities;
     
         private TollFree([JsonProperty("friendly_name")]
-                         com.twilio.types.PhoneNumber friendlyName, 
+                         Twilio.Types.PhoneNumber friendlyName, 
                          [JsonProperty("phone_number")]
-                         com.twilio.types.PhoneNumber phoneNumber, 
+                         Twilio.Types.PhoneNumber phoneNumber, 
                          [JsonProperty("lata")]
-                         String lata, 
+                         string lata, 
                          [JsonProperty("rate_center")]
-                         String rateCenter, 
+                         string rateCenter, 
                          [JsonProperty("latitude")]
-                         BigDecimal latitude, 
+                         decimal latitude, 
                          [JsonProperty("longitude")]
-                         BigDecimal longitude, 
+                         decimal longitude, 
                          [JsonProperty("region")]
-                         String region, 
+                         string region, 
                          [JsonProperty("postal_code")]
-                         String postalCode, 
+                         string postalCode, 
                          [JsonProperty("iso_country")]
-                         String isoCountry, 
+                         string isoCountry, 
                          [JsonProperty("address_requirements")]
-                         String addressRequirements, 
+                         string addressRequirements, 
                          [JsonProperty("beta")]
-                         Boolean beta, 
+                         bool beta, 
                          [JsonProperty("capabilities")]
                          PhoneNumberCapabilities capabilities) {
             this.friendlyName = friendlyName;
@@ -103,77 +102,77 @@ namespace Twilio.Resources.Api.V2010.Account.Availablephonenumbercountry {
         /**
          * @return The friendly_name
          */
-        public com.twilio.types.PhoneNumber GetFriendlyName() {
+        public Twilio.Types.PhoneNumber GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return The phone_number
          */
-        public com.twilio.types.PhoneNumber GetPhoneNumber() {
+        public Twilio.Types.PhoneNumber GetPhoneNumber() {
             return this.phoneNumber;
         }
     
         /**
          * @return The lata
          */
-        public String GetLata() {
+        public string GetLata() {
             return this.lata;
         }
     
         /**
          * @return The rate_center
          */
-        public String GetRateCenter() {
+        public string GetRateCenter() {
             return this.rateCenter;
         }
     
         /**
          * @return The latitude
          */
-        public BigDecimal GetLatitude() {
+        public decimal GetLatitude() {
             return this.latitude;
         }
     
         /**
          * @return The longitude
          */
-        public BigDecimal GetLongitude() {
+        public decimal GetLongitude() {
             return this.longitude;
         }
     
         /**
          * @return The region
          */
-        public String GetRegion() {
+        public string GetRegion() {
             return this.region;
         }
     
         /**
          * @return The postal_code
          */
-        public String GetPostalCode() {
+        public string GetPostalCode() {
             return this.postalCode;
         }
     
         /**
          * @return The iso_country
          */
-        public String GetIsoCountry() {
+        public string GetIsoCountry() {
             return this.isoCountry;
         }
     
         /**
          * @return The address_requirements
          */
-        public String GetAddressRequirements() {
+        public string GetAddressRequirements() {
             return this.addressRequirements;
         }
     
         /**
          * @return The beta
          */
-        public Boolean GetBeta() {
+        public bool GetBeta() {
             return this.beta;
         }
     

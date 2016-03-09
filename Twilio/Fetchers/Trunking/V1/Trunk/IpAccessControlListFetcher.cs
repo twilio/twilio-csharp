@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Trunking.V1.trunk.IpAccessControlList;
 namespace Twilio.Fetchers.Trunking.V1.Trunk {
 
     public class IpAccessControlListFetcher : Fetcher<IpAccessControlList> {
-        private String trunkSid;
-        private String sid;
+        private string trunkSid;
+        private string sid;
     
         /**
          * Construct a new IpAccessControlListFetcher
@@ -16,7 +16,7 @@ namespace Twilio.Fetchers.Trunking.V1.Trunk {
          * @param trunkSid The trunk_sid
          * @param sid The sid
          */
-        public IpAccessControlListFetcher(String trunkSid, String sid) {
+        public IpAccessControlListFetcher(string trunkSid, string sid) {
             this.trunkSid = trunkSid;
             this.sid = sid;
         }

@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.usage.record.LastMonth;
@@ -9,14 +9,14 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
 
     public class LastMonthReader : Reader<LastMonth> {
-        private String accountSid;
+        private string accountSid;
     
         /**
          * Construct a new LastMonthReader
          * 
          * @param accountSid The account_sid
          */
-        public LastMonthReader(String accountSid) {
+        public LastMonthReader(string accountSid) {
             this.accountSid = accountSid;
         }
     

@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Ipmessaging.V1;
 using Twilio.Deleters.Ipmessaging.V1;
 using Twilio.Exceptions;
@@ -9,9 +10,6 @@ using Twilio.Http;
 using Twilio.Readers.Ipmessaging.V1;
 using Twilio.Resources;
 using Twilio.Updaters.Ipmessaging.V1;
-using com.twilio.sdk.converters.MarshalConverter;
-using java.net.URI;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.IpMessaging.V1 {
 
@@ -37,7 +35,7 @@ namespace Twilio.Resources.IpMessaging.V1 {
          * @param type The type
          * @return CredentialCreator capable of executing the create
          */
-        public static CredentialCreator create(String friendlyName, Credential.PushService type) {
+        public static CredentialCreator create(string friendlyName, Credential.PushService type) {
             return new CredentialCreator(friendlyName, type);
         }
     
@@ -47,7 +45,7 @@ namespace Twilio.Resources.IpMessaging.V1 {
          * @param sid The sid
          * @return CredentialFetcher capable of executing the fetch
          */
-        public static CredentialFetcher fetch(String sid) {
+        public static CredentialFetcher fetch(string sid) {
             return new CredentialFetcher(sid);
         }
     
@@ -59,7 +57,7 @@ namespace Twilio.Resources.IpMessaging.V1 {
          * @param type The type
          * @return CredentialUpdater capable of executing the update
          */
-        public static CredentialUpdater update(String sid, String friendlyName, Credential.PushService type) {
+        public static CredentialUpdater update(string sid, string friendlyName, Credential.PushService type) {
             return new CredentialUpdater(sid, friendlyName, type);
         }
     
@@ -69,7 +67,7 @@ namespace Twilio.Resources.IpMessaging.V1 {
          * @param sid The sid
          * @return CredentialDeleter capable of executing the delete
          */
-        public static CredentialDeleter delete(String sid) {
+        public static CredentialDeleter delete(string sid) {
             return new CredentialDeleter(sid);
         }
     
@@ -89,80 +87,80 @@ namespace Twilio.Resources.IpMessaging.V1 {
         }
     
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("type")]
         private readonly Credential.PushService type;
         [JsonProperty("sandbox")]
-        private readonly String sandbox;
+        private readonly string sandbox;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("url")]
-        private readonly URI url;
+        private readonly Uri url;
     
         private Credential([JsonProperty("sid")]
-                           String sid, 
+                           string sid, 
                            [JsonProperty("account_sid")]
-                           String accountSid, 
+                           string accountSid, 
                            [JsonProperty("friendly_name")]
-                           String friendlyName, 
+                           string friendlyName, 
                            [JsonProperty("type")]
                            Credential.PushService type, 
                            [JsonProperty("sandbox")]
-                           String sandbox, 
+                           string sandbox, 
                            [JsonProperty("date_created")]
-                           String dateCreated, 
+                           string dateCreated, 
                            [JsonProperty("date_updated")]
-                           String dateUpdated, 
+                           string dateUpdated, 
                            [JsonProperty("url")]
-                           URI url) {
+                           Uri url) {
             this.sid = sid;
             this.accountSid = accountSid;
             this.friendlyName = friendlyName;
             this.type = type;
             this.sandbox = sandbox;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.url = url;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The friendly_name
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return The type
          */
-        public Credential.PushService GetType() {
+        public Credential.PushService GetCredentialType() {
             return this.type;
         }
     
         /**
          * @return The sandbox
          */
-        public String GetSandbox() {
+        public string GetSandbox() {
             return this.sandbox;
         }
     
@@ -183,7 +181,7 @@ namespace Twilio.Resources.IpMessaging.V1 {
         /**
          * @return The url
          */
-        public URI GetUrl() {
+        public Uri GetUrl() {
             return this.url;
         }
     }

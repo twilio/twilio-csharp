@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,10 +7,10 @@ using Twilio.Resources.Ipmessaging.V1.service.channel.Message;
 namespace Twilio.Creators.IpMessaging.V1.Service.Channel {
 
     public class MessageCreator : Creator<Message> {
-        private String serviceSid;
-        private String channelSid;
-        private String body;
-        private String from;
+        private string serviceSid;
+        private string channelSid;
+        private string body;
+        private string from;
     
         /**
          * Construct a new MessageCreator
@@ -19,7 +19,7 @@ namespace Twilio.Creators.IpMessaging.V1.Service.Channel {
          * @param channelSid The channel_sid
          * @param body The body
          */
-        public MessageCreator(String serviceSid, String channelSid, String body) {
+        public MessageCreator(string serviceSid, string channelSid, string body) {
             this.serviceSid = serviceSid;
             this.channelSid = channelSid;
             this.body = body;
@@ -31,7 +31,7 @@ namespace Twilio.Creators.IpMessaging.V1.Service.Channel {
          * @param from The from
          * @return this
          */
-        public MessageCreator setFrom(String from) {
+        public MessageCreator setFrom(string from) {
             this.from = from;
             return this;
         }

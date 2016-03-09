@@ -1,29 +1,28 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
 using Twilio.Converters.Promoter;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Trunking.V1.Trunk;
-using com.twilio.sdk.http.HttpMethod;
 using com.twilio.sdk.updaters.Updater;
-using java.net.URI;
 
 namespace Twilio.Updaters.Trunking.V1 {
 
     public class TrunkUpdater : Updater<Trunk> {
-        private String sid;
-        private String friendlyName;
-        private String domainName;
-        private URI disasterRecoveryUrl;
+        private string sid;
+        private string friendlyName;
+        private string domainName;
+        private Uri disasterRecoveryUrl;
         private HttpMethod disasterRecoveryMethod;
-        private String recording;
-        private Boolean secure;
+        private string recording;
+        private bool secure;
     
         /**
          * Construct a new TrunkUpdater
          * 
          * @param sid The sid
          */
-        public TrunkUpdater(String sid) {
+        public TrunkUpdater(string sid) {
             this.sid = sid;
         }
     
@@ -33,7 +32,7 @@ namespace Twilio.Updaters.Trunking.V1 {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public TrunkUpdater setFriendlyName(String friendlyName) {
+        public TrunkUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -44,7 +43,7 @@ namespace Twilio.Updaters.Trunking.V1 {
          * @param domainName The domain_name
          * @return this
          */
-        public TrunkUpdater setDomainName(String domainName) {
+        public TrunkUpdater setDomainName(string domainName) {
             this.domainName = domainName;
             return this;
         }
@@ -55,7 +54,7 @@ namespace Twilio.Updaters.Trunking.V1 {
          * @param disasterRecoveryUrl The disaster_recovery_url
          * @return this
          */
-        public TrunkUpdater setDisasterRecoveryUrl(URI disasterRecoveryUrl) {
+        public TrunkUpdater setDisasterRecoveryUrl(Uri disasterRecoveryUrl) {
             this.disasterRecoveryUrl = disasterRecoveryUrl;
             return this;
         }
@@ -66,8 +65,8 @@ namespace Twilio.Updaters.Trunking.V1 {
          * @param disasterRecoveryUrl The disaster_recovery_url
          * @return this
          */
-        public TrunkUpdater setDisasterRecoveryUrl(String disasterRecoveryUrl) {
-            return setDisasterRecoveryUrl(Promoter.uriFromString(disasterRecoveryUrl));
+        public TrunkUpdater setDisasterRecoveryUrl(string disasterRecoveryUrl) {
+            return setDisasterRecoveryUrl(Promoter.UriFromString(disasterRecoveryUrl));
         }
     
         /**
@@ -87,7 +86,7 @@ namespace Twilio.Updaters.Trunking.V1 {
          * @param recording The recording
          * @return this
          */
-        public TrunkUpdater setRecording(String recording) {
+        public TrunkUpdater setRecording(string recording) {
             this.recording = recording;
             return this;
         }
@@ -98,7 +97,7 @@ namespace Twilio.Updaters.Trunking.V1 {
          * @param secure The secure
          * @return this
          */
-        public TrunkUpdater setSecure(Boolean secure) {
+        public TrunkUpdater setSecure(bool secure) {
             this.secure = secure;
             return this;
         }
@@ -154,11 +153,11 @@ namespace Twilio.Updaters.Trunking.V1 {
             }
             
             if (disasterRecoveryUrl != null) {
-                request.addPostParam("DisasterRecoveryUrl", disasterRecoveryUrl.toString());
+                request.addPostParam("DisasterRecoveryUrl", disasterRecoveryUrl.ToString());
             }
             
             if (disasterRecoveryMethod != null) {
-                request.addPostParam("DisasterRecoveryMethod", disasterRecoveryMethod.toString());
+                request.addPostParam("DisasterRecoveryMethod", disasterRecoveryMethod.ToString());
             }
             
             if (recording != null) {
@@ -166,7 +165,7 @@ namespace Twilio.Updaters.Trunking.V1 {
             }
             
             if (secure != null) {
-                request.addPostParam("Secure", secure.toString());
+                request.addPostParam("Secure", secure.ToString());
             }
         }
     }

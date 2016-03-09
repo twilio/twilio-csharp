@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Deleters.Deleter;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,14 +7,14 @@ using Twilio.Resources.Ipmessaging.V1.Credential;
 namespace Twilio.Deleters.IpMessaging.V1 {
 
     public class CredentialDeleter : Deleter<Credential> {
-        private String sid;
+        private string sid;
     
         /**
          * Construct a new CredentialDeleter
          * 
          * @param sid The sid
          */
-        public CredentialDeleter(String sid) {
+        public CredentialDeleter(string sid) {
             this.sid = sid;
         }
     

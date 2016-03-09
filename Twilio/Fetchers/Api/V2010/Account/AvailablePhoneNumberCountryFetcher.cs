@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Api.V2010.account.AvailablePhoneNumberCountry;
 namespace Twilio.Fetchers.Api.V2010.Account {
 
     public class AvailablePhoneNumberCountryFetcher : Fetcher<AvailablePhoneNumberCountry> {
-        private String accountSid;
-        private String countryCode;
+        private string accountSid;
+        private string countryCode;
     
         /**
          * Construct a new AvailablePhoneNumberCountryFetcher
@@ -16,7 +16,7 @@ namespace Twilio.Fetchers.Api.V2010.Account {
          * @param accountSid The account_sid
          * @param countryCode The country_code
          */
-        public AvailablePhoneNumberCountryFetcher(String accountSid, String countryCode) {
+        public AvailablePhoneNumberCountryFetcher(string accountSid, string countryCode) {
             this.accountSid = accountSid;
             this.countryCode = countryCode;
         }

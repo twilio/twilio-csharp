@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Api.V2010.account.sms.SmsMessage;
 namespace Twilio.Fetchers.Api.V2010.Account.Sms {
 
     public class SmsMessageFetcher : Fetcher<SmsMessage> {
-        private String accountSid;
-        private String sid;
+        private string accountSid;
+        private string sid;
     
         /**
          * Construct a new SmsMessageFetcher
@@ -16,7 +16,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sms {
          * @param accountSid The account_sid
          * @param sid The sid
          */
-        public SmsMessageFetcher(String accountSid, String sid) {
+        public SmsMessageFetcher(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

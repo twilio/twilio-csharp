@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.workspace.task.Reservation;
@@ -7,11 +7,11 @@ using com.twilio.sdk.updaters.Updater;
 namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
 
     public class ReservationUpdater : Updater<Reservation> {
-        private String workspaceSid;
-        private String taskSid;
-        private String sid;
-        private String reservationStatus;
-        private String workerActivitySid;
+        private string workspaceSid;
+        private string taskSid;
+        private string sid;
+        private string reservationStatus;
+        private string workerActivitySid;
     
         /**
          * Construct a new ReservationUpdater
@@ -21,7 +21,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
          * @param sid The sid
          * @param reservationStatus The reservation_status
          */
-        public ReservationUpdater(String workspaceSid, String taskSid, String sid, String reservationStatus) {
+        public ReservationUpdater(string workspaceSid, string taskSid, string sid, string reservationStatus) {
             this.workspaceSid = workspaceSid;
             this.taskSid = taskSid;
             this.sid = sid;
@@ -34,7 +34,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
          * @param workerActivitySid The worker_activity_sid
          * @return this
          */
-        public ReservationUpdater setWorkerActivitySid(String workerActivitySid) {
+        public ReservationUpdater setWorkerActivitySid(string workerActivitySid) {
             this.workerActivitySid = workerActivitySid;
             return this;
         }

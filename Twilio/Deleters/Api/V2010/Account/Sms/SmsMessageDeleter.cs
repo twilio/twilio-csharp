@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Deleters.Deleter;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Api.V2010.account.sms.SmsMessage;
 namespace Twilio.Deleters.Api.V2010.Account.Sms {
 
     public class SmsMessageDeleter : Deleter<SmsMessage> {
-        private String accountSid;
-        private String sid;
+        private string accountSid;
+        private string sid;
     
         /**
          * Construct a new SmsMessageDeleter
@@ -16,7 +16,7 @@ namespace Twilio.Deleters.Api.V2010.Account.Sms {
          * @param accountSid The account_sid
          * @param sid The sid
          */
-        public SmsMessageDeleter(String accountSid, String sid) {
+        public SmsMessageDeleter(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

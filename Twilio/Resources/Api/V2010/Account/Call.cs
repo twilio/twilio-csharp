@@ -1,7 +1,8 @@
 using Newtonsoft.Json;
-using Newtonsoft.Json.JsonDeserialize;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account;
 using Twilio.Deleters.Api.V2010.Account;
 using Twilio.Exceptions;
@@ -10,21 +11,15 @@ using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010.Account;
-using com.twilio.sdk.converters.MarshalConverter;
-using java.math.BigDecimal;
-using java.net.URI;
-using java.util.Currency;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account {
-
     public class Call : SidResource {
         public enum Event {
             INITIATED="initiated",
             RINGING="ringing",
             ANSWERED="answered",
             COMPLETED="completed"
-        };
+        }
     
         public enum Status {
             QUEUED="queued",
@@ -35,7 +30,7 @@ namespace Twilio.Resources.Api.V2010.Account {
             FAILED="failed",
             NO_ANSWER="no-answer",
             CANCELED="canceled"
-        };
+        }
     
         /**
          * Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client
@@ -47,7 +42,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param url Url from which to fetch TwiML
          * @return CallCreator capable of executing the create
          */
-        public static CallCreator create(String accountSid, com.twilio.types.PhoneNumber to, com.twilio.types.PhoneNumber from, URI url) {
+        public static CallCreator create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, Uri url) {
             return new CallCreator(accountSid, to, from, url);
         }
     
@@ -62,7 +57,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          *                       TwiML
          * @return CallCreator capable of executing the create
          */
-        public static CallCreator create(String accountSid, com.twilio.types.PhoneNumber to, com.twilio.types.PhoneNumber from, String applicationSid) {
+        public static CallCreator create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string applicationSid) {
             return new CallCreator(accountSid, to, from, applicationSid);
         }
     
@@ -74,7 +69,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Call Sid that uniquely identifies the Call to delete
          * @return CallDeleter capable of executing the delete
          */
-        public static CallDeleter delete(String accountSid, String sid) {
+        public static CallDeleter delete(string accountSid, string sid) {
             return new CallDeleter(accountSid, sid);
         }
     
@@ -85,7 +80,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Call Sid that uniquely identifies the Call to fetch
          * @return CallFetcher capable of executing the fetch
          */
-        public static CallFetcher fetch(String accountSid, String sid) {
+        public static CallFetcher fetch(string accountSid, string sid) {
             return new CallFetcher(accountSid, sid);
         }
     
@@ -95,7 +90,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return CallReader capable of executing the read
          */
-        public static CallReader read(String accountSid) {
+        public static CallReader read(string accountSid) {
             return new CallReader(accountSid);
         }
     
@@ -106,7 +101,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Call Sid that uniquely identifies the Call to update
          * @return CallUpdater capable of executing the update
          */
-        public static CallUpdater update(String accountSid, String sid) {
+        public static CallUpdater update(string accountSid, string sid) {
             return new CallUpdater(accountSid, sid);
         }
     
@@ -126,117 +121,116 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("annotation")]
-        private readonly String annotation;
+        private readonly string annotation;
         [JsonProperty("answered_by")]
-        private readonly String answeredBy;
+        private readonly string answeredBy;
         [JsonProperty("api_version")]
-        private readonly String apiVersion;
+        private readonly string apiVersion;
         [JsonProperty("caller_name")]
-        private readonly String callerName;
+        private readonly string callerName;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("direction")]
-        private readonly String direction;
+        private readonly string direction;
         [JsonProperty("duration")]
-        private readonly String duration;
+        private readonly string duration;
         [JsonProperty("end_time")]
         private readonly DateTime endTime;
         [JsonProperty("forwarded_from")]
-        private readonly String forwardedFrom;
+        private readonly string forwardedFrom;
         [JsonProperty("from")]
-        private readonly String from;
+        private readonly string from;
         [JsonProperty("from_formatted")]
-        private readonly String fromFormatted;
+        private readonly string fromFormatted;
         [JsonProperty("group_sid")]
-        private readonly String groupSid;
+        private readonly string groupSid;
         [JsonProperty("parent_call_sid")]
-        private readonly String parentCallSid;
+        private readonly string parentCallSid;
         [JsonProperty("phone_number_sid")]
-        private readonly String phoneNumberSid;
+        private readonly string phoneNumberSid;
         [JsonProperty("price")]
-        private readonly BigDecimal price;
+        private readonly decimal price;
         [JsonProperty("price_unit")]
-        private readonly Currency priceUnit;
+        private readonly decimal priceUnit;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("start_time")]
         private readonly DateTime startTime;
         [JsonProperty("status")]
         private readonly Call.Status status;
         [JsonProperty("subresource_uris")]
-        private readonly Map<String, String> subresourceUris;
+        private readonly Dictionary<string, string> subresourceUris;
         [JsonProperty("to")]
-        private readonly String to;
+        private readonly string to;
         [JsonProperty("to_formatted")]
-        private readonly String toFormatted;
+        private readonly string toFormatted;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private Call([JsonProperty("account_sid")]
-                     String accountSid, 
+                     string accountSid, 
                      [JsonProperty("annotation")]
-                     String annotation, 
+                     string annotation, 
                      [JsonProperty("answered_by")]
-                     String answeredBy, 
+                     string answeredBy, 
                      [JsonProperty("api_version")]
-                     String apiVersion, 
+                     string apiVersion, 
                      [JsonProperty("caller_name")]
-                     String callerName, 
+                     string callerName, 
                      [JsonProperty("date_created")]
-                     String dateCreated, 
+                     string dateCreated, 
                      [JsonProperty("date_updated")]
-                     String dateUpdated, 
+                     string dateUpdated, 
                      [JsonProperty("direction")]
-                     String direction, 
+                     string direction, 
                      [JsonProperty("duration")]
-                     String duration, 
+                     string duration, 
                      [JsonProperty("end_time")]
-                     String endTime, 
+                     string endTime, 
                      [JsonProperty("forwarded_from")]
-                     String forwardedFrom, 
+                     string forwardedFrom, 
                      [JsonProperty("from")]
-                     String from, 
+                     string from, 
                      [JsonProperty("from_formatted")]
-                     String fromFormatted, 
+                     string fromFormatted, 
                      [JsonProperty("group_sid")]
-                     String groupSid, 
+                     string groupSid, 
                      [JsonProperty("parent_call_sid")]
-                     String parentCallSid, 
+                     string parentCallSid, 
                      [JsonProperty("phone_number_sid")]
-                     String phoneNumberSid, 
+                     string phoneNumberSid, 
                      [JsonProperty("price")]
-                     BigDecimal price, 
+                     decimal price, 
                      [JsonProperty("price_unit")]
-                     [JsonDeserialize(using = com.twilio.sdk.converters.CurrencyDeserializer.class)]
-                     Currency priceUnit, 
+                     decimal priceUnit, 
                      [JsonProperty("sid")]
-                     String sid, 
+                     string sid, 
                      [JsonProperty("start_time")]
-                     String startTime, 
+                     string startTime, 
                      [JsonProperty("status")]
                      Call.Status status, 
                      [JsonProperty("subresource_uris")]
-                     Map<String, String> subresourceUris, 
+                     Dictionary<string, string> subresourceUris, 
                      [JsonProperty("to")]
-                     String to, 
+                     string to, 
                      [JsonProperty("to_formatted")]
-                     String toFormatted, 
+                     string toFormatted, 
                      [JsonProperty("uri")]
-                     String uri) {
+                     string uri) {
             this.accountSid = accountSid;
             this.annotation = annotation;
             this.answeredBy = answeredBy;
             this.apiVersion = apiVersion;
             this.callerName = callerName;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.direction = direction;
             this.duration = duration;
-            this.endTime = MarshalConverter.dateTimeFromString(endTime);
+            this.endTime = MarshalConverter.DateTimeFromString(endTime);
             this.forwardedFrom = forwardedFrom;
             this.from = from;
             this.fromFormatted = fromFormatted;
@@ -246,7 +240,7 @@ namespace Twilio.Resources.Api.V2010.Account {
             this.price = price;
             this.priceUnit = priceUnit;
             this.sid = sid;
-            this.startTime = MarshalConverter.dateTimeFromString(startTime);
+            this.startTime = MarshalConverter.DateTimeFromString(startTime);
             this.status = status;
             this.subresourceUris = subresourceUris;
             this.to = to;
@@ -257,14 +251,14 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The unique id of the Account responsible for creating this Call
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The annotation provided for the Call
          */
-        public String GetAnnotation() {
+        public string GetAnnotation() {
             return this.annotation;
         }
     
@@ -272,14 +266,14 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @return If this call was initiated with answering machine detection, either
          *         `human` or `machine`. Empty otherwise.
          */
-        public String GetAnsweredBy() {
+        public string GetAnsweredBy() {
             return this.answeredBy;
         }
     
         /**
          * @return The API Version the Call was created through
          */
-        public String GetApiVersion() {
+        public string GetApiVersion() {
             return this.apiVersion;
         }
     
@@ -287,7 +281,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @return If this call was an incoming call to a phone number with Caller ID
          *         Lookup enabled, the caller's name. Empty otherwise.
          */
-        public String GetCallerName() {
+        public string GetCallerName() {
             return this.callerName;
         }
     
@@ -310,14 +304,14 @@ namespace Twilio.Resources.Api.V2010.Account {
          *         calls, `outbound-api` for calls initiated via the REST API or
          *         `outbound-dial` for calls initiated by a `<Dial>` verb.
          */
-        public String GetDirection() {
+        public string GetDirection() {
             return this.direction;
         }
     
         /**
          * @return The duration
          */
-        public String GetDuration() {
+        public string GetDuration() {
             return this.duration;
         }
     
@@ -334,7 +328,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          *         forwarding phone number (depends on carrier supporting forwarding).
          *         Empty otherwise.
          */
-        public String GetForwardedFrom() {
+        public string GetForwardedFrom() {
             return this.forwardedFrom;
         }
     
@@ -344,7 +338,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          *         addresses are formatted as `name@company.com`. Client identifiers are
          *         formatted `client:name`.
          */
-        public String GetFrom() {
+        public string GetFrom() {
             return this.from;
         }
     
@@ -352,7 +346,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @return The phone number, SIP address or Client identifier that made this
          *         Call. Formatted for display.
          */
-        public String GetFromFormatted() {
+        public string GetFromFormatted() {
             return this.fromFormatted;
         }
     
@@ -360,7 +354,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @return A 34 character Group Sid associated with this Call. Empty if no
          *         Group is associated with the Call.
          */
-        public String GetGroupSid() {
+        public string GetGroupSid() {
             return this.groupSid;
         }
     
@@ -368,7 +362,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @return A 34 character string that uniquely identifies the Call that created
          *         this leg.
          */
-        public String GetParentCallSid() {
+        public string GetParentCallSid() {
             return this.parentCallSid;
         }
     
@@ -377,7 +371,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          *         that received the call. If the call was outbound, it is the Sid of
          *         the OutgoingCallerId from which the call was placed.
          */
-        public String GetPhoneNumberSid() {
+        public string GetPhoneNumberSid() {
             return this.phoneNumberSid;
         }
     
@@ -386,21 +380,21 @@ namespace Twilio.Resources.Api.V2010.Account {
          *         account. Populated after the call is completed. May not be
          *         immediately available.
          */
-        public BigDecimal GetPrice() {
+        public decimal GetPrice() {
             return this.price;
         }
     
         /**
          * @return The currency in which `Price` is measured.
          */
-        public Currency GetPriceUnit() {
+        public decimal GetPriceUnit() {
             return this.priceUnit;
         }
     
         /**
          * @return A 34 character string that uniquely identifies this resource.
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
@@ -421,7 +415,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return Call Instance Subresources
          */
-        public Map<String, String> GetSubresourceUris() {
+        public Dictionary<string, string> GetSubresourceUris() {
             return this.subresourceUris;
         }
     
@@ -431,7 +425,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          *         addresses are formatted as `name@company.com`. Client identifiers are
          *         formatted `client:name`.
          */
-        public String GetTo() {
+        public string GetTo() {
             return this.to;
         }
     
@@ -439,14 +433,14 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @return The phone number, SIP address or Client identifier that received
          *         this Call. Formatted for display.
          */
-        public String GetToFormatted() {
+        public string GetToFormatted() {
             return this.toFormatted;
         }
     
         /**
          * @return The URI for this resource, relative to `https://api.twilio.com`
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

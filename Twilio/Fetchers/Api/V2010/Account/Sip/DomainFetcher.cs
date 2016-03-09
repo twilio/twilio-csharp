@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Api.V2010.account.sip.Domain;
 namespace Twilio.Fetchers.Api.V2010.Account.Sip {
 
     public class DomainFetcher : Fetcher<Domain> {
-        private String accountSid;
-        private String sid;
+        private string accountSid;
+        private string sid;
     
         /**
          * Construct a new DomainFetcher
@@ -16,7 +16,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip {
          * @param accountSid The account_sid
          * @param sid Fetch by unique Domain Sid
          */
-        public DomainFetcher(String accountSid, String sid) {
+        public DomainFetcher(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

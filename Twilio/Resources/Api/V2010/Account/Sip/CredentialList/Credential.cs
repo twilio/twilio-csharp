@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account.Sip.CredentialList;
 using Twilio.Deleters.Api.V2010.Account.Sip.CredentialList;
 using Twilio.Exceptions;
@@ -9,8 +10,6 @@ using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account.Sip.CredentialList;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010.Account.Sip.CredentialList;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account.Sip.Credentiallist {
 
@@ -22,7 +21,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Credentiallist {
          * @param credentialListSid The credential_list_sid
          * @return CredentialReader capable of executing the read
          */
-        public static CredentialReader read(String accountSid, String credentialListSid) {
+        public static CredentialReader read(string accountSid, string credentialListSid) {
             return new CredentialReader(accountSid, credentialListSid);
         }
     
@@ -35,7 +34,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Credentiallist {
          * @param password The password
          * @return CredentialCreator capable of executing the create
          */
-        public static CredentialCreator create(String accountSid, String credentialListSid, String username, String password) {
+        public static CredentialCreator create(string accountSid, string credentialListSid, string username, string password) {
             return new CredentialCreator(accountSid, credentialListSid, username, password);
         }
     
@@ -47,7 +46,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Credentiallist {
          * @param sid The sid
          * @return CredentialFetcher capable of executing the fetch
          */
-        public static CredentialFetcher fetch(String accountSid, String credentialListSid, String sid) {
+        public static CredentialFetcher fetch(string accountSid, string credentialListSid, string sid) {
             return new CredentialFetcher(accountSid, credentialListSid, sid);
         }
     
@@ -61,7 +60,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Credentiallist {
          * @param password The password
          * @return CredentialUpdater capable of executing the update
          */
-        public static CredentialUpdater update(String accountSid, String credentialListSid, String sid, String username, String password) {
+        public static CredentialUpdater update(string accountSid, string credentialListSid, string sid, string username, string password) {
             return new CredentialUpdater(accountSid, credentialListSid, sid, username, password);
         }
     
@@ -73,7 +72,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Credentiallist {
          * @param sid The sid
          * @return CredentialDeleter capable of executing the delete
          */
-        public static CredentialDeleter delete(String accountSid, String credentialListSid, String sid) {
+        public static CredentialDeleter delete(string accountSid, string credentialListSid, string sid) {
             return new CredentialDeleter(accountSid, credentialListSid, sid);
         }
     
@@ -93,68 +92,68 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Credentiallist {
         }
     
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("credential_list_sid")]
-        private readonly String credentialListSid;
+        private readonly string credentialListSid;
         [JsonProperty("username")]
-        private readonly String username;
+        private readonly string username;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private Credential([JsonProperty("sid")]
-                           String sid, 
+                           string sid, 
                            [JsonProperty("account_sid")]
-                           String accountSid, 
+                           string accountSid, 
                            [JsonProperty("credential_list_sid")]
-                           String credentialListSid, 
+                           string credentialListSid, 
                            [JsonProperty("username")]
-                           String username, 
+                           string username, 
                            [JsonProperty("date_created")]
-                           String dateCreated, 
+                           string dateCreated, 
                            [JsonProperty("date_updated")]
-                           String dateUpdated, 
+                           string dateUpdated, 
                            [JsonProperty("uri")]
-                           String uri) {
+                           string uri) {
             this.sid = sid;
             this.accountSid = accountSid;
             this.credentialListSid = credentialListSid;
             this.username = username;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.uri = uri;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The credential_list_sid
          */
-        public String GetCredentialListSid() {
+        public string GetCredentialListSid() {
             return this.credentialListSid;
         }
     
         /**
          * @return The username
          */
-        public String GetUsername() {
+        public string GetUsername() {
             return this.username;
         }
     
@@ -175,7 +174,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Credentiallist {
         /**
          * @return The uri
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

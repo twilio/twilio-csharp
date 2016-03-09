@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,9 +7,9 @@ using Twilio.Resources.Api.V2010.account.sip.domain.CredentialListMapping;
 namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
 
     public class CredentialListMappingCreator : Creator<CredentialListMapping> {
-        private String accountSid;
-        private String domainSid;
-        private String credentialListSid;
+        private string accountSid;
+        private string domainSid;
+        private string credentialListSid;
     
         /**
          * Construct a new CredentialListMappingCreator
@@ -18,7 +18,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
          * @param domainSid The domain_sid
          * @param credentialListSid The credential_list_sid
          */
-        public CredentialListMappingCreator(String accountSid, String domainSid, String credentialListSid) {
+        public CredentialListMappingCreator(string accountSid, string domainSid, string credentialListSid) {
             this.accountSid = accountSid;
             this.domainSid = domainSid;
             this.credentialListSid = credentialListSid;

@@ -1,6 +1,8 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account.Sip;
 using Twilio.Deleters.Api.V2010.Account.Sip;
 using Twilio.Exceptions;
@@ -9,8 +11,6 @@ using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account.Sip;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010.Account.Sip;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account.Sip {
 
@@ -22,7 +22,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param accountSid The account_sid
          * @return IpAccessControlListReader capable of executing the read
          */
-        public static IpAccessControlListReader read(String accountSid) {
+        public static IpAccessControlListReader read(string accountSid) {
             return new IpAccessControlListReader(accountSid);
         }
     
@@ -33,7 +33,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param friendlyName A human readable description of this resource
          * @return IpAccessControlListCreator capable of executing the create
          */
-        public static IpAccessControlListCreator create(String accountSid, String friendlyName) {
+        public static IpAccessControlListCreator create(string accountSid, string friendlyName) {
             return new IpAccessControlListCreator(accountSid, friendlyName);
         }
     
@@ -44,7 +44,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param sid Fetch by unique ip-access-control-list Sid
          * @return IpAccessControlListFetcher capable of executing the fetch
          */
-        public static IpAccessControlListFetcher fetch(String accountSid, String sid) {
+        public static IpAccessControlListFetcher fetch(string accountSid, string sid) {
             return new IpAccessControlListFetcher(accountSid, sid);
         }
     
@@ -56,7 +56,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param friendlyName A human readable description of this resource
          * @return IpAccessControlListUpdater capable of executing the update
          */
-        public static IpAccessControlListUpdater update(String accountSid, String sid, String friendlyName) {
+        public static IpAccessControlListUpdater update(string accountSid, string sid, string friendlyName) {
             return new IpAccessControlListUpdater(accountSid, sid, friendlyName);
         }
     
@@ -67,7 +67,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param sid Delete by unique ip-access-control-list Sid
          * @return IpAccessControlListDeleter capable of executing the delete
          */
-        public static IpAccessControlListDeleter delete(String accountSid, String sid) {
+        public static IpAccessControlListDeleter delete(string accountSid, string sid) {
             return new IpAccessControlListDeleter(accountSid, sid);
         }
     
@@ -87,39 +87,39 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
         }
     
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("subresource_uris")]
-        private readonly Map<String, String> subresourceUris;
+        private readonly Dictionary<string, string> subresourceUris;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private IpAccessControlList([JsonProperty("sid")]
-                                    String sid, 
+                                    string sid, 
                                     [JsonProperty("account_sid")]
-                                    String accountSid, 
+                                    string accountSid, 
                                     [JsonProperty("friendly_name")]
-                                    String friendlyName, 
+                                    string friendlyName, 
                                     [JsonProperty("date_created")]
-                                    String dateCreated, 
+                                    string dateCreated, 
                                     [JsonProperty("date_updated")]
-                                    String dateUpdated, 
+                                    string dateUpdated, 
                                     [JsonProperty("subresource_uris")]
-                                    Map<String, String> subresourceUris, 
+                                    Dictionary<string, string> subresourceUris, 
                                     [JsonProperty("uri")]
-                                    String uri) {
+                                    string uri) {
             this.sid = sid;
             this.accountSid = accountSid;
             this.friendlyName = friendlyName;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.subresourceUris = subresourceUris;
             this.uri = uri;
         }
@@ -127,21 +127,21 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
         /**
          * @return A string that uniquely identifies this resource
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The unique sid that identifies this account
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return A human readable description of this resource
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
@@ -162,14 +162,14 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
         /**
          * @return The subresource_uris
          */
-        public Map<String, String> GetSubresourceUris() {
+        public Dictionary<string, string> GetSubresourceUris() {
             return this.subresourceUris;
         }
     
         /**
          * @return The URI for this resource
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

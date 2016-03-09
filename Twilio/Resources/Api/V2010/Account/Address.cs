@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account;
 using Twilio.Deleters.Api.V2010.Account;
 using Twilio.Exceptions;
@@ -9,8 +10,6 @@ using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010.Account;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account {
 
@@ -27,7 +26,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param isoCountry The iso_country
          * @return AddressCreator capable of executing the create
          */
-        public static AddressCreator create(String accountSid, String customerName, String street, String city, String region, String postalCode, String isoCountry) {
+        public static AddressCreator create(string accountSid, string customerName, string street, string city, string region, string postalCode, string isoCountry) {
             return new AddressCreator(accountSid, customerName, street, city, region, postalCode, isoCountry);
         }
     
@@ -38,7 +37,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid The sid
          * @return AddressDeleter capable of executing the delete
          */
-        public static AddressDeleter delete(String accountSid, String sid) {
+        public static AddressDeleter delete(string accountSid, string sid) {
             return new AddressDeleter(accountSid, sid);
         }
     
@@ -49,7 +48,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid The sid
          * @return AddressFetcher capable of executing the fetch
          */
-        public static AddressFetcher fetch(String accountSid, String sid) {
+        public static AddressFetcher fetch(string accountSid, string sid) {
             return new AddressFetcher(accountSid, sid);
         }
     
@@ -60,7 +59,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid The sid
          * @return AddressUpdater capable of executing the update
          */
-        public static AddressUpdater update(String accountSid, String sid) {
+        public static AddressUpdater update(string accountSid, string sid) {
             return new AddressUpdater(accountSid, sid);
         }
     
@@ -70,7 +69,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return AddressReader capable of executing the read
          */
-        public static AddressReader read(String accountSid) {
+        public static AddressReader read(string accountSid) {
             return new AddressReader(accountSid);
         }
     
@@ -90,59 +89,59 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("city")]
-        private readonly String city;
+        private readonly string city;
         [JsonProperty("customer_name")]
-        private readonly String customerName;
+        private readonly string customerName;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("iso_country")]
-        private readonly String isoCountry;
+        private readonly string isoCountry;
         [JsonProperty("postal_code")]
-        private readonly String postalCode;
+        private readonly string postalCode;
         [JsonProperty("region")]
-        private readonly String region;
+        private readonly string region;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("street")]
-        private readonly String street;
+        private readonly string street;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private Address([JsonProperty("account_sid")]
-                        String accountSid, 
+                        string accountSid, 
                         [JsonProperty("city")]
-                        String city, 
+                        string city, 
                         [JsonProperty("customer_name")]
-                        String customerName, 
+                        string customerName, 
                         [JsonProperty("date_created")]
-                        String dateCreated, 
+                        string dateCreated, 
                         [JsonProperty("date_updated")]
-                        String dateUpdated, 
+                        string dateUpdated, 
                         [JsonProperty("friendly_name")]
-                        String friendlyName, 
+                        string friendlyName, 
                         [JsonProperty("iso_country")]
-                        String isoCountry, 
+                        string isoCountry, 
                         [JsonProperty("postal_code")]
-                        String postalCode, 
+                        string postalCode, 
                         [JsonProperty("region")]
-                        String region, 
+                        string region, 
                         [JsonProperty("sid")]
-                        String sid, 
+                        string sid, 
                         [JsonProperty("street")]
-                        String street, 
+                        string street, 
                         [JsonProperty("uri")]
-                        String uri) {
+                        string uri) {
             this.accountSid = accountSid;
             this.city = city;
             this.customerName = customerName;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.friendlyName = friendlyName;
             this.isoCountry = isoCountry;
             this.postalCode = postalCode;
@@ -155,21 +154,21 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The city
          */
-        public String GetCity() {
+        public string GetCity() {
             return this.city;
         }
     
         /**
          * @return The customer_name
          */
-        public String GetCustomerName() {
+        public string GetCustomerName() {
             return this.customerName;
         }
     
@@ -190,49 +189,49 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The friendly_name
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return The iso_country
          */
-        public String GetIsoCountry() {
+        public string GetIsoCountry() {
             return this.isoCountry;
         }
     
         /**
          * @return The postal_code
          */
-        public String GetPostalCode() {
+        public string GetPostalCode() {
             return this.postalCode;
         }
     
         /**
          * @return The region
          */
-        public String GetRegion() {
+        public string GetRegion() {
             return this.region;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The street
          */
-        public String GetStreet() {
+        public string GetStreet() {
             return this.street;
         }
     
         /**
          * @return The uri
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Deleters.Deleter;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,9 +7,9 @@ using Twilio.Resources.Api.V2010.account.message.Media;
 namespace Twilio.Deleters.Api.V2010.Account.Message {
 
     public class MediaDeleter : Deleter<Media> {
-        private String accountSid;
-        private String messageSid;
-        private String sid;
+        private string accountSid;
+        private string messageSid;
+        private string sid;
     
         /**
          * Construct a new MediaDeleter
@@ -18,7 +18,7 @@ namespace Twilio.Deleters.Api.V2010.Account.Message {
          * @param messageSid The message_sid
          * @param sid Delete by unique media Sid
          */
-        public MediaDeleter(String accountSid, String messageSid, String sid) {
+        public MediaDeleter(string accountSid, string messageSid, string sid) {
             this.accountSid = accountSid;
             this.messageSid = messageSid;
             this.sid = sid;

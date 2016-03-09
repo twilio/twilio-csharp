@@ -1,19 +1,19 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.workspace.task_queue.TaskQueueStatistics;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Taskqueue {
 
     public class TaskQueueStatisticsFetcher : Fetcher<TaskQueueStatistics> {
-        private String workspaceSid;
-        private String taskQueueSid;
+        private string workspaceSid;
+        private string taskQueueSid;
         private DateTime endDate;
-        private String friendlyName;
-        private Integer minutes;
+        private string friendlyName;
+        private int minutes;
         private DateTime startDate;
     
         /**
@@ -22,7 +22,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Taskqueue {
          * @param workspaceSid The workspace_sid
          * @param taskQueueSid The task_queue_sid
          */
-        public TaskQueueStatisticsFetcher(String workspaceSid, String taskQueueSid) {
+        public TaskQueueStatisticsFetcher(string workspaceSid, string taskQueueSid) {
             this.workspaceSid = workspaceSid;
             this.taskQueueSid = taskQueueSid;
         }
@@ -44,7 +44,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Taskqueue {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public TaskQueueStatisticsFetcher setFriendlyName(String friendlyName) {
+        public TaskQueueStatisticsFetcher setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -55,7 +55,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Taskqueue {
          * @param minutes The minutes
          * @return this
          */
-        public TaskQueueStatisticsFetcher setMinutes(Integer minutes) {
+        public TaskQueueStatisticsFetcher setMinutes(int minutes) {
             this.minutes = minutes;
             return this;
         }

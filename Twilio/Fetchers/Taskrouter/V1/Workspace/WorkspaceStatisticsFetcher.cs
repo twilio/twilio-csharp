@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,17 +7,17 @@ using Twilio.Resources.Taskrouter.V1.workspace.WorkspaceStatistics;
 namespace Twilio.Fetchers.Taskrouter.V1.Workspace {
 
     public class WorkspaceStatisticsFetcher : Fetcher<WorkspaceStatistics> {
-        private String workspaceSid;
-        private Integer minutes;
-        private String startDate;
-        private String endDate;
+        private string workspaceSid;
+        private int minutes;
+        private string startDate;
+        private string endDate;
     
         /**
          * Construct a new WorkspaceStatisticsFetcher
          * 
          * @param workspaceSid The workspace_sid
          */
-        public WorkspaceStatisticsFetcher(String workspaceSid) {
+        public WorkspaceStatisticsFetcher(string workspaceSid) {
             this.workspaceSid = workspaceSid;
         }
     
@@ -27,7 +27,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace {
          * @param minutes The minutes
          * @return this
          */
-        public WorkspaceStatisticsFetcher setMinutes(Integer minutes) {
+        public WorkspaceStatisticsFetcher setMinutes(int minutes) {
             this.minutes = minutes;
             return this;
         }
@@ -38,7 +38,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace {
          * @param startDate The start_date
          * @return this
          */
-        public WorkspaceStatisticsFetcher setStartDate(String startDate) {
+        public WorkspaceStatisticsFetcher setStartDate(string startDate) {
             this.startDate = startDate;
             return this;
         }
@@ -49,7 +49,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace {
          * @param endDate The end_date
          * @return this
          */
-        public WorkspaceStatisticsFetcher setEndDate(String endDate) {
+        public WorkspaceStatisticsFetcher setEndDate(string endDate) {
             this.endDate = endDate;
             return this;
         }

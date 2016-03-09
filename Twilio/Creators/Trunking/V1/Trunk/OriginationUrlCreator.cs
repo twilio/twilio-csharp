@@ -1,19 +1,19 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Trunking.V1.trunk.OriginationUrl;
-using java.net.URI;
 
 namespace Twilio.Creators.Trunking.V1.Trunk {
 
     public class OriginationUrlCreator : Creator<OriginationUrl> {
-        private String trunkSid;
-        private Integer weight;
-        private Integer priority;
-        private Boolean enabled;
-        private String friendlyName;
-        private URI sipUrl;
+        private string trunkSid;
+        private int weight;
+        private int priority;
+        private bool enabled;
+        private string friendlyName;
+        private Uri sipUrl;
     
         /**
          * Construct a new OriginationUrlCreator
@@ -25,7 +25,7 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
          * @param friendlyName The friendly_name
          * @param sipUrl The sip_url
          */
-        public OriginationUrlCreator(String trunkSid, Integer weight, Integer priority, Boolean enabled, String friendlyName, URI sipUrl) {
+        public OriginationUrlCreator(string trunkSid, int weight, int priority, bool enabled, string friendlyName, Uri sipUrl) {
             this.trunkSid = trunkSid;
             this.weight = weight;
             this.priority = priority;
@@ -77,15 +77,15 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
          */
         private void addPostParams(Request request) {
             if (weight != null) {
-                request.addPostParam("Weight", weight.toString());
+                request.addPostParam("Weight", weight.ToString());
             }
             
             if (priority != null) {
-                request.addPostParam("Priority", priority.toString());
+                request.addPostParam("Priority", priority.ToString());
             }
             
             if (enabled != null) {
-                request.addPostParam("Enabled", enabled.toString());
+                request.addPostParam("Enabled", enabled.ToString());
             }
             
             if (friendlyName != null) {
@@ -93,7 +93,7 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
             }
             
             if (sipUrl != null) {
-                request.addPostParam("SipUrl", sipUrl.toString());
+                request.addPostParam("SipUrl", sipUrl.ToString());
             }
         }
     }

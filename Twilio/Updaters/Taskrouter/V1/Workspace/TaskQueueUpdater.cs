@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.workspace.TaskQueue;
@@ -7,13 +7,13 @@ using com.twilio.sdk.updaters.Updater;
 namespace Twilio.Updaters.Taskrouter.V1.Workspace {
 
     public class TaskQueueUpdater : Updater<TaskQueue> {
-        private String workspaceSid;
-        private String sid;
-        private String friendlyName;
-        private String targetWorkers;
-        private String reservationActivitySid;
-        private String assignmentActivitySid;
-        private Integer maxReservedWorkers;
+        private string workspaceSid;
+        private string sid;
+        private string friendlyName;
+        private string targetWorkers;
+        private string reservationActivitySid;
+        private string assignmentActivitySid;
+        private int maxReservedWorkers;
     
         /**
          * Construct a new TaskQueueUpdater
@@ -21,7 +21,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @param sid The sid
          */
-        public TaskQueueUpdater(String workspaceSid, String sid) {
+        public TaskQueueUpdater(string workspaceSid, string sid) {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
         }
@@ -32,7 +32,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public TaskQueueUpdater setFriendlyName(String friendlyName) {
+        public TaskQueueUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -43,7 +43,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param targetWorkers The target_workers
          * @return this
          */
-        public TaskQueueUpdater setTargetWorkers(String targetWorkers) {
+        public TaskQueueUpdater setTargetWorkers(string targetWorkers) {
             this.targetWorkers = targetWorkers;
             return this;
         }
@@ -54,7 +54,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param reservationActivitySid The reservation_activity_sid
          * @return this
          */
-        public TaskQueueUpdater setReservationActivitySid(String reservationActivitySid) {
+        public TaskQueueUpdater setReservationActivitySid(string reservationActivitySid) {
             this.reservationActivitySid = reservationActivitySid;
             return this;
         }
@@ -65,7 +65,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param assignmentActivitySid The assignment_activity_sid
          * @return this
          */
-        public TaskQueueUpdater setAssignmentActivitySid(String assignmentActivitySid) {
+        public TaskQueueUpdater setAssignmentActivitySid(string assignmentActivitySid) {
             this.assignmentActivitySid = assignmentActivitySid;
             return this;
         }
@@ -76,7 +76,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param maxReservedWorkers The max_reserved_workers
          * @return this
          */
-        public TaskQueueUpdater setMaxReservedWorkers(Integer maxReservedWorkers) {
+        public TaskQueueUpdater setMaxReservedWorkers(int maxReservedWorkers) {
             this.maxReservedWorkers = maxReservedWorkers;
             return this;
         }
@@ -140,7 +140,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
             }
             
             if (maxReservedWorkers != null) {
-                request.addPostParam("MaxReservedWorkers", maxReservedWorkers.toString());
+                request.addPostParam("MaxReservedWorkers", maxReservedWorkers.ToString());
             }
         }
     }

@@ -1,17 +1,13 @@
 using Newtonsoft.Json;
-using Newtonsoft.Json.JsonDeserialize;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Deleters.Api.V2010.Account.Recording;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Api.V2010.Account.Recording;
 using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account.Recording;
 using Twilio.Resources;
-using com.twilio.sdk.converters.MarshalConverter;
-using java.math.BigDecimal;
-using java.util.Currency;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account.Recording {
 
@@ -30,7 +26,7 @@ namespace Twilio.Resources.Api.V2010.Account.Recording {
          * @param sid The sid
          * @return TranscriptionFetcher capable of executing the fetch
          */
-        public static TranscriptionFetcher fetch(String accountSid, String recordingSid, String sid) {
+        public static TranscriptionFetcher fetch(string accountSid, string recordingSid, string sid) {
             return new TranscriptionFetcher(accountSid, recordingSid, sid);
         }
     
@@ -42,7 +38,7 @@ namespace Twilio.Resources.Api.V2010.Account.Recording {
          * @param sid The sid
          * @return TranscriptionDeleter capable of executing the delete
          */
-        public static TranscriptionDeleter delete(String accountSid, String recordingSid, String sid) {
+        public static TranscriptionDeleter delete(string accountSid, string recordingSid, string sid) {
             return new TranscriptionDeleter(accountSid, recordingSid, sid);
         }
     
@@ -53,7 +49,7 @@ namespace Twilio.Resources.Api.V2010.Account.Recording {
          * @param recordingSid The recording_sid
          * @return TranscriptionReader capable of executing the read
          */
-        public static TranscriptionReader read(String accountSid, String recordingSid) {
+        public static TranscriptionReader read(string accountSid, string recordingSid) {
             return new TranscriptionReader(accountSid, recordingSid);
         }
     
@@ -73,63 +69,62 @@ namespace Twilio.Resources.Api.V2010.Account.Recording {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("api_version")]
-        private readonly String apiVersion;
+        private readonly string apiVersion;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("duration")]
-        private readonly String duration;
+        private readonly string duration;
         [JsonProperty("price")]
-        private readonly BigDecimal price;
+        private readonly decimal price;
         [JsonProperty("price_unit")]
-        private readonly Currency priceUnit;
+        private readonly decimal priceUnit;
         [JsonProperty("recording_sid")]
-        private readonly String recordingSid;
+        private readonly string recordingSid;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("status")]
         private readonly Transcription.Status status;
         [JsonProperty("transcription_text")]
-        private readonly String transcriptionText;
+        private readonly string transcriptionText;
         [JsonProperty("type")]
-        private readonly String type;
+        private readonly string type;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private Transcription([JsonProperty("account_sid")]
-                              String accountSid, 
+                              string accountSid, 
                               [JsonProperty("api_version")]
-                              String apiVersion, 
+                              string apiVersion, 
                               [JsonProperty("date_created")]
-                              String dateCreated, 
+                              string dateCreated, 
                               [JsonProperty("date_updated")]
-                              String dateUpdated, 
+                              string dateUpdated, 
                               [JsonProperty("duration")]
-                              String duration, 
+                              string duration, 
                               [JsonProperty("price")]
-                              BigDecimal price, 
+                              decimal price, 
                               [JsonProperty("price_unit")]
-                              [JsonDeserialize(using = com.twilio.sdk.converters.CurrencyDeserializer.class)]
-                              Currency priceUnit, 
+                              decimal priceUnit, 
                               [JsonProperty("recording_sid")]
-                              String recordingSid, 
+                              string recordingSid, 
                               [JsonProperty("sid")]
-                              String sid, 
+                              string sid, 
                               [JsonProperty("status")]
                               Transcription.Status status, 
                               [JsonProperty("transcription_text")]
-                              String transcriptionText, 
+                              string transcriptionText, 
                               [JsonProperty("type")]
-                              String type, 
+                              string type, 
                               [JsonProperty("uri")]
-                              String uri) {
+                              string uri) {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.duration = duration;
             this.price = price;
             this.priceUnit = priceUnit;
@@ -144,14 +139,14 @@ namespace Twilio.Resources.Api.V2010.Account.Recording {
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The api_version
          */
-        public String GetApiVersion() {
+        public string GetApiVersion() {
             return this.apiVersion;
         }
     
@@ -172,35 +167,35 @@ namespace Twilio.Resources.Api.V2010.Account.Recording {
         /**
          * @return The duration
          */
-        public String GetDuration() {
+        public string GetDuration() {
             return this.duration;
         }
     
         /**
          * @return The price
          */
-        public BigDecimal GetPrice() {
+        public decimal GetPrice() {
             return this.price;
         }
     
         /**
          * @return The price_unit
          */
-        public Currency GetPriceUnit() {
+        public decimal GetPriceUnit() {
             return this.priceUnit;
         }
     
         /**
          * @return The recording_sid
          */
-        public String GetRecordingSid() {
+        public string GetRecordingSid() {
             return this.recordingSid;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
@@ -214,21 +209,21 @@ namespace Twilio.Resources.Api.V2010.Account.Recording {
         /**
          * @return The transcription_text
          */
-        public String GetTranscriptionText() {
+        public string GetTranscriptionText() {
             return this.transcriptionText;
         }
     
         /**
          * @return The type
          */
-        public String GetType() {
+        public string GetTranscriptionType() {
             return this.type;
         }
     
         /**
          * @return The uri
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account.Usage;
 using Twilio.Deleters.Api.V2010.Account.Usage;
 using Twilio.Exceptions;
@@ -9,10 +10,6 @@ using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account.Usage;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010.Account.Usage;
-using com.twilio.sdk.converters.MarshalConverter;
-using com.twilio.sdk.http.HttpMethod;
-using java.net.URI;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account.Usage {
 
@@ -66,7 +63,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
          * @param sid Fetch by unique usage-trigger Sid
          * @return TriggerFetcher capable of executing the fetch
          */
-        public static TriggerFetcher fetch(String accountSid, String sid) {
+        public static TriggerFetcher fetch(string accountSid, string sid) {
             return new TriggerFetcher(accountSid, sid);
         }
     
@@ -77,7 +74,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
          * @param sid The sid
          * @return TriggerUpdater capable of executing the update
          */
-        public static TriggerUpdater update(String accountSid, String sid) {
+        public static TriggerUpdater update(string accountSid, string sid) {
             return new TriggerUpdater(accountSid, sid);
         }
     
@@ -88,7 +85,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
          * @param sid The sid
          * @return TriggerDeleter capable of executing the delete
          */
-        public static TriggerDeleter delete(String accountSid, String sid) {
+        public static TriggerDeleter delete(string accountSid, string sid) {
             return new TriggerDeleter(accountSid, sid);
         }
     
@@ -101,7 +98,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
          * @param usageCategory The usage category the trigger watches
          * @return TriggerCreator capable of executing the create
          */
-        public static TriggerCreator create(String accountSid, URI callbackUrl, String triggerValue, Trigger.UsageCategory usageCategory) {
+        public static TriggerCreator create(string accountSid, Uri callbackUrl, string triggerValue, Trigger.UsageCategory usageCategory) {
             return new TriggerCreator(accountSid, callbackUrl, triggerValue, usageCategory);
         }
     
@@ -112,7 +109,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
          * @param accountSid The account_sid
          * @return TriggerReader capable of executing the read
          */
-        public static TriggerReader read(String accountSid) {
+        public static TriggerReader read(string accountSid) {
             return new TriggerReader(accountSid);
         }
     
@@ -132,15 +129,15 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("api_version")]
-        private readonly String apiVersion;
+        private readonly string apiVersion;
         [JsonProperty("callback_method")]
         private readonly HttpMethod callbackMethod;
         [JsonProperty("callback_url")]
-        private readonly URI callbackUrl;
+        private readonly Uri callbackUrl;
         [JsonProperty("current_value")]
-        private readonly String currentValue;
+        private readonly string currentValue;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_fired")]
@@ -148,62 +145,62 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("recurring")]
         private readonly Trigger.Recurring recurring;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("trigger_by")]
         private readonly Trigger.TriggerField triggerBy;
         [JsonProperty("trigger_value")]
-        private readonly String triggerValue;
+        private readonly string triggerValue;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
         [JsonProperty("usage_category")]
         private readonly Trigger.UsageCategory usageCategory;
         [JsonProperty("usage_record_uri")]
-        private readonly String usageRecordUri;
+        private readonly string usageRecordUri;
     
         private Trigger([JsonProperty("account_sid")]
-                        String accountSid, 
+                        string accountSid, 
                         [JsonProperty("api_version")]
-                        String apiVersion, 
+                        string apiVersion, 
                         [JsonProperty("callback_method")]
                         HttpMethod callbackMethod, 
                         [JsonProperty("callback_url")]
-                        URI callbackUrl, 
+                        Uri callbackUrl, 
                         [JsonProperty("current_value")]
-                        String currentValue, 
+                        string currentValue, 
                         [JsonProperty("date_created")]
-                        String dateCreated, 
+                        string dateCreated, 
                         [JsonProperty("date_fired")]
-                        String dateFired, 
+                        string dateFired, 
                         [JsonProperty("date_updated")]
-                        String dateUpdated, 
+                        string dateUpdated, 
                         [JsonProperty("friendly_name")]
-                        String friendlyName, 
+                        string friendlyName, 
                         [JsonProperty("recurring")]
                         Trigger.Recurring recurring, 
                         [JsonProperty("sid")]
-                        String sid, 
+                        string sid, 
                         [JsonProperty("trigger_by")]
                         Trigger.TriggerField triggerBy, 
                         [JsonProperty("trigger_value")]
-                        String triggerValue, 
+                        string triggerValue, 
                         [JsonProperty("uri")]
-                        String uri, 
+                        string uri, 
                         [JsonProperty("usage_category")]
                         Trigger.UsageCategory usageCategory, 
                         [JsonProperty("usage_record_uri")]
-                        String usageRecordUri) {
+                        string usageRecordUri) {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
             this.callbackMethod = callbackMethod;
             this.callbackUrl = callbackUrl;
             this.currentValue = currentValue;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateFired = MarshalConverter.dateTimeFromString(dateFired);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateFired = MarshalConverter.DateTimeFromString(dateFired);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.friendlyName = friendlyName;
             this.recurring = recurring;
             this.sid = sid;
@@ -217,14 +214,14 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         /**
          * @return The account this trigger monitors.
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The api_version
          */
-        public String GetApiVersion() {
+        public string GetApiVersion() {
             return this.apiVersion;
         }
     
@@ -238,14 +235,14 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         /**
          * @return URL Twilio will request when the trigger fires
          */
-        public URI GetCallbackUrl() {
+        public Uri GetCallbackUrl() {
             return this.callbackUrl;
         }
     
         /**
          * @return The current value of the field the trigger is watching.
          */
-        public String GetCurrentValue() {
+        public string GetCurrentValue() {
             return this.currentValue;
         }
     
@@ -273,7 +270,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         /**
          * @return A user-specified, human-readable name for the trigger.
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
@@ -287,7 +284,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         /**
          * @return The trigger's unique Sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
@@ -301,14 +298,14 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         /**
          * @return the value at which the trigger will fire
          */
-        public String GetTriggerValue() {
+        public string GetTriggerValue() {
             return this.triggerValue;
         }
     
         /**
          * @return The URI for this resource
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     
@@ -322,7 +319,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         /**
          * @return The URI of the UsageRecord this trigger is watching
          */
-        public String GetUsageRecordUri() {
+        public string GetUsageRecordUri() {
             return this.usageRecordUri;
         }
     }

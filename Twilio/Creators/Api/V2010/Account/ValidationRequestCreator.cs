@@ -1,21 +1,20 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
 using Twilio.Converters.Promoter;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.ValidationRequest;
-using com.twilio.sdk.http.HttpMethod;
-using java.net.URI;
 
 namespace Twilio.Creators.Api.V2010.Account {
 
     public class ValidationRequestCreator : Creator<ValidationRequest> {
-        private String accountSid;
-        private com.twilio.types.PhoneNumber phoneNumber;
-        private String friendlyName;
-        private Integer callDelay;
-        private String extension;
-        private URI statusCallback;
+        private string accountSid;
+        private Twilio.Types.PhoneNumber phoneNumber;
+        private string friendlyName;
+        private int callDelay;
+        private string extension;
+        private Uri statusCallback;
         private HttpMethod statusCallbackMethod;
     
         /**
@@ -24,7 +23,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param accountSid The account_sid
          * @param phoneNumber The phone_number
          */
-        public ValidationRequestCreator(String accountSid, com.twilio.types.PhoneNumber phoneNumber) {
+        public ValidationRequestCreator(string accountSid, Twilio.Types.PhoneNumber phoneNumber) {
             this.accountSid = accountSid;
             this.phoneNumber = phoneNumber;
         }
@@ -35,7 +34,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public ValidationRequestCreator setFriendlyName(String friendlyName) {
+        public ValidationRequestCreator setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -46,7 +45,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param callDelay The call_delay
          * @return this
          */
-        public ValidationRequestCreator setCallDelay(Integer callDelay) {
+        public ValidationRequestCreator setCallDelay(int callDelay) {
             this.callDelay = callDelay;
             return this;
         }
@@ -57,7 +56,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param extension The extension
          * @return this
          */
-        public ValidationRequestCreator setExtension(String extension) {
+        public ValidationRequestCreator setExtension(string extension) {
             this.extension = extension;
             return this;
         }
@@ -68,7 +67,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param statusCallback The status_callback
          * @return this
          */
-        public ValidationRequestCreator setStatusCallback(URI statusCallback) {
+        public ValidationRequestCreator setStatusCallback(Uri statusCallback) {
             this.statusCallback = statusCallback;
             return this;
         }
@@ -79,8 +78,8 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param statusCallback The status_callback
          * @return this
          */
-        public ValidationRequestCreator setStatusCallback(String statusCallback) {
-            return setStatusCallback(Promoter.uriFromString(statusCallback));
+        public ValidationRequestCreator setStatusCallback(string statusCallback) {
+            return setStatusCallback(Promoter.UriFromString(statusCallback));
         }
     
         /**
@@ -137,7 +136,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          */
         private void addPostParams(Request request) {
             if (phoneNumber != null) {
-                request.addPostParam("PhoneNumber", phoneNumber.toString());
+                request.addPostParam("PhoneNumber", phoneNumber.ToString());
             }
             
             if (friendlyName != null) {
@@ -145,7 +144,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             }
             
             if (callDelay != null) {
-                request.addPostParam("CallDelay", callDelay.toString());
+                request.addPostParam("CallDelay", callDelay.ToString());
             }
             
             if (extension != null) {
@@ -153,11 +152,11 @@ namespace Twilio.Creators.Api.V2010.Account {
             }
             
             if (statusCallback != null) {
-                request.addPostParam("StatusCallback", statusCallback.toString());
+                request.addPostParam("StatusCallback", statusCallback.ToString());
             }
             
             if (statusCallbackMethod != null) {
-                request.addPostParam("StatusCallbackMethod", statusCallbackMethod.toString());
+                request.addPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
         }
     }

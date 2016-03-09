@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Trunking.V1.trunk.CredentialList;
 namespace Twilio.Creators.Trunking.V1.Trunk {
 
     public class CredentialListCreator : Creator<CredentialList> {
-        private String trunkSid;
-        private String credentialListSid;
+        private string trunkSid;
+        private string credentialListSid;
     
         /**
          * Construct a new CredentialListCreator
@@ -16,7 +16,7 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
          * @param trunkSid The trunk_sid
          * @param credentialListSid The credential_list_sid
          */
-        public CredentialListCreator(String trunkSid, String credentialListSid) {
+        public CredentialListCreator(string trunkSid, string credentialListSid) {
             this.trunkSid = trunkSid;
             this.credentialListSid = credentialListSid;
         }

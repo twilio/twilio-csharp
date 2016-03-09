@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,9 +7,9 @@ using Twilio.Resources.Taskrouter.V1.workspace.task.Reservation;
 namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Task {
 
     public class ReservationFetcher : Fetcher<Reservation> {
-        private String workspaceSid;
-        private String taskSid;
-        private String sid;
+        private string workspaceSid;
+        private string taskSid;
+        private string sid;
     
         /**
          * Construct a new ReservationFetcher
@@ -18,7 +18,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Task {
          * @param taskSid The task_sid
          * @param sid The sid
          */
-        public ReservationFetcher(String workspaceSid, String taskSid, String sid) {
+        public ReservationFetcher(string workspaceSid, string taskSid, string sid) {
             this.workspaceSid = workspaceSid;
             this.taskSid = taskSid;
             this.sid = sid;

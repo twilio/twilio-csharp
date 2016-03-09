@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,14 +7,14 @@ using Twilio.Resources.Ipmessaging.V1.Credential;
 namespace Twilio.Fetchers.IpMessaging.V1 {
 
     public class CredentialFetcher : Fetcher<Credential> {
-        private String sid;
+        private string sid;
     
         /**
          * Construct a new CredentialFetcher
          * 
          * @param sid The sid
          */
-        public CredentialFetcher(String sid) {
+        public CredentialFetcher(string sid) {
             this.sid = sid;
         }
     

@@ -1,13 +1,11 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers.Conversations.V1.Conversation;
 using Twilio.Resources;
-using com.twilio.sdk.converters.MarshalConverter;
-using java.net.URI;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Conversations.V1.Conversation {
 
@@ -44,11 +42,11 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
         }
     
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("status")]
         private readonly InProgress.Status status;
         [JsonProperty("duration")]
-        private readonly Integer duration;
+        private readonly int duration;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("start_time")]
@@ -56,32 +54,32 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
         [JsonProperty("end_time")]
         private readonly DateTime endTime;
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("url")]
-        private readonly URI url;
+        private readonly Uri url;
     
         private InProgress([JsonProperty("sid")]
-                           String sid, 
+                           string sid, 
                            [JsonProperty("status")]
                            InProgress.Status status, 
                            [JsonProperty("duration")]
-                           Integer duration, 
+                           int duration, 
                            [JsonProperty("date_created")]
-                           String dateCreated, 
+                           string dateCreated, 
                            [JsonProperty("start_time")]
-                           String startTime, 
+                           string startTime, 
                            [JsonProperty("end_time")]
-                           String endTime, 
+                           string endTime, 
                            [JsonProperty("account_sid")]
-                           String accountSid, 
+                           string accountSid, 
                            [JsonProperty("url")]
-                           URI url) {
+                           Uri url) {
             this.sid = sid;
             this.status = status;
             this.duration = duration;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.startTime = MarshalConverter.dateTimeFromString(startTime);
-            this.endTime = MarshalConverter.dateTimeFromString(endTime);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.startTime = MarshalConverter.DateTimeFromString(startTime);
+            this.endTime = MarshalConverter.DateTimeFromString(endTime);
             this.accountSid = accountSid;
             this.url = url;
         }
@@ -89,7 +87,7 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
@@ -103,7 +101,7 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
         /**
          * @return The duration
          */
-        public Integer GetDuration() {
+        public int GetDuration() {
             return this.duration;
         }
     
@@ -131,14 +129,14 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The url
          */
-        public URI GetUrl() {
+        public Uri GetUrl() {
             return this.url;
         }
     }

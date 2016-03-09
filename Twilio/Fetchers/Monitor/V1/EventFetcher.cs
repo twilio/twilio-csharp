@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,14 +7,14 @@ using Twilio.Resources.Monitor.V1.Event;
 namespace Twilio.Fetchers.Monitor.V1 {
 
     public class EventFetcher : Fetcher<Event> {
-        private String sid;
+        private string sid;
     
         /**
          * Construct a new EventFetcher
          * 
          * @param sid The sid
          */
-        public EventFetcher(String sid) {
+        public EventFetcher(string sid) {
             this.sid = sid;
         }
     

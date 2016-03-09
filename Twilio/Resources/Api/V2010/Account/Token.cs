@@ -1,14 +1,13 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources;
-using com.twilio.sdk.converters.MarshalConverter;
-using com.twilio.types.IceServer;
-using java.util.List;
-using org.joda.time.DateTime;
+using Twilio.Types;
 
 namespace Twilio.Resources.Api.V2010.Account {
 
@@ -19,7 +18,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return TokenCreator capable of executing the create
          */
-        public static TokenCreator create(String accountSid) {
+        public static TokenCreator create(string accountSid) {
             return new TokenCreator(accountSid);
         }
     
@@ -39,7 +38,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
@@ -47,29 +46,29 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("ice_servers")]
         private readonly List<IceServer> iceServers;
         [JsonProperty("password")]
-        private readonly String password;
+        private readonly string password;
         [JsonProperty("ttl")]
-        private readonly String ttl;
+        private readonly string ttl;
         [JsonProperty("username")]
-        private readonly String username;
+        private readonly string username;
     
         private Token([JsonProperty("account_sid")]
-                      String accountSid, 
+                      string accountSid, 
                       [JsonProperty("date_created")]
-                      String dateCreated, 
+                      string dateCreated, 
                       [JsonProperty("date_updated")]
-                      String dateUpdated, 
+                      string dateUpdated, 
                       [JsonProperty("ice_servers")]
                       List<IceServer> iceServers, 
                       [JsonProperty("password")]
-                      String password, 
+                      string password, 
                       [JsonProperty("ttl")]
-                      String ttl, 
+                      string ttl, 
                       [JsonProperty("username")]
-                      String username) {
+                      string username) {
             this.accountSid = accountSid;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.iceServers = iceServers;
             this.password = password;
             this.ttl = ttl;
@@ -79,7 +78,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The unique sid that identifies this account
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
@@ -107,21 +106,21 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The temporary password used for authenticating
          */
-        public String GetPassword() {
+        public string GetPassword() {
             return this.password;
         }
     
         /**
          * @return The duration in seconds the credentials are valid
          */
-        public String GetTtl() {
+        public string GetTtl() {
             return this.ttl;
         }
     
         /**
          * @return The temporary username that uniquely identifies a Token.
          */
-        public String GetUsername() {
+        public string GetUsername() {
             return this.username;
         }
     }

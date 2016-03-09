@@ -1,11 +1,11 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers.Taskrouter.V1.Workspace.TaskQueue;
 using Twilio.Resources;
-using com.fasterxml.jackson.databind.JsonNode;
 
 namespace Twilio.Resources.Taskrouter.V1.Workspace.Taskqueue {
 
@@ -16,7 +16,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace.Taskqueue {
          * @param workspaceSid The workspace_sid
          * @return TaskQueuesStatisticsReader capable of executing the read
          */
-        public static TaskQueuesStatisticsReader read(String workspaceSid) {
+        public static TaskQueuesStatisticsReader read(string workspaceSid) {
             return new TaskQueuesStatisticsReader(workspaceSid);
         }
     
@@ -36,26 +36,26 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace.Taskqueue {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("cumulative")]
-        private readonly Map<String, String> cumulative;
+        private readonly Dictionary<string, string> cumulative;
         [JsonProperty("realtime")]
-        private readonly JsonNode realtime;
+        private readonly Object realtime;
         [JsonProperty("task_queue_sid")]
-        private readonly String taskQueueSid;
+        private readonly string taskQueueSid;
         [JsonProperty("workspace_sid")]
-        private readonly String workspaceSid;
+        private readonly string workspaceSid;
     
         private TaskQueuesStatistics([JsonProperty("account_sid")]
-                                     String accountSid, 
+                                     string accountSid, 
                                      [JsonProperty("cumulative")]
-                                     Map<String, String> cumulative, 
+                                     Dictionary<string, string> cumulative, 
                                      [JsonProperty("realtime")]
-                                     JsonNode realtime, 
+                                     Object realtime, 
                                      [JsonProperty("task_queue_sid")]
-                                     String taskQueueSid, 
+                                     string taskQueueSid, 
                                      [JsonProperty("workspace_sid")]
-                                     String workspaceSid) {
+                                     string workspaceSid) {
             this.accountSid = accountSid;
             this.cumulative = cumulative;
             this.realtime = realtime;
@@ -66,35 +66,35 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace.Taskqueue {
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The cumulative
          */
-        public Map<String, String> GetCumulative() {
+        public Dictionary<string, string> GetCumulative() {
             return this.cumulative;
         }
     
         /**
          * @return The realtime
          */
-        public JsonNode GetRealtime() {
+        public Object GetRealtime() {
             return this.realtime;
         }
     
         /**
          * @return The task_queue_sid
          */
-        public String GetTaskQueueSid() {
+        public string GetTaskQueueSid() {
             return this.taskQueueSid;
         }
     
         /**
          * @return The workspace_sid
          */
-        public String GetWorkspaceSid() {
+        public string GetWorkspaceSid() {
             return this.workspaceSid;
         }
     }

@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.Queue;
@@ -9,14 +9,14 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account {
 
     public class QueueReader : Reader<Queue> {
-        private String accountSid;
+        private string accountSid;
     
         /**
          * Construct a new QueueReader
          * 
          * @param accountSid The account_sid
          */
-        public QueueReader(String accountSid) {
+        public QueueReader(string accountSid) {
             this.accountSid = accountSid;
         }
     

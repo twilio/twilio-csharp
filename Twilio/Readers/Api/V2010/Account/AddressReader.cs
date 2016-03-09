@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.Address;
@@ -9,17 +9,17 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account {
 
     public class AddressReader : Reader<Address> {
-        private String accountSid;
-        private String customerName;
-        private String friendlyName;
-        private String isoCountry;
+        private string accountSid;
+        private string customerName;
+        private string friendlyName;
+        private string isoCountry;
     
         /**
          * Construct a new AddressReader
          * 
          * @param accountSid The account_sid
          */
-        public AddressReader(String accountSid) {
+        public AddressReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
@@ -29,7 +29,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param customerName The customer_name
          * @return this
          */
-        public AddressReader byCustomerName(String customerName) {
+        public AddressReader byCustomerName(string customerName) {
             this.customerName = customerName;
             return this;
         }
@@ -40,7 +40,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public AddressReader byFriendlyName(String friendlyName) {
+        public AddressReader byFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -51,7 +51,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param isoCountry The iso_country
          * @return this
          */
-        public AddressReader byIsoCountry(String isoCountry) {
+        public AddressReader byIsoCountry(string isoCountry) {
             this.isoCountry = isoCountry;
             return this;
         }

@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,10 +7,10 @@ using Twilio.Resources.Api.V2010.account.sip.ip_access_control_list.IpAddress;
 namespace Twilio.Creators.Api.V2010.Account.Sip.Ipaccesscontrollist {
 
     public class IpAddressCreator : Creator<IpAddress> {
-        private String accountSid;
-        private String ipAccessControlListSid;
-        private String friendlyName;
-        private String ipAddress;
+        private string accountSid;
+        private string ipAccessControlListSid;
+        private string friendlyName;
+        private string ipAddress;
     
         /**
          * Construct a new IpAddressCreator
@@ -20,7 +20,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.Ipaccesscontrollist {
          * @param friendlyName The friendly_name
          * @param ipAddress The ip_address
          */
-        public IpAddressCreator(String accountSid, String ipAccessControlListSid, String friendlyName, String ipAddress) {
+        public IpAddressCreator(string accountSid, string ipAccessControlListSid, string friendlyName, string ipAddress) {
             this.accountSid = accountSid;
             this.ipAccessControlListSid = ipAccessControlListSid;
             this.friendlyName = friendlyName;

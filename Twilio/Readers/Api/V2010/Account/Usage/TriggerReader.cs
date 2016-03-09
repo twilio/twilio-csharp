@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.usage.Trigger;
@@ -9,7 +9,7 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account.Usage {
 
     public class TriggerReader : Reader<Trigger> {
-        private String accountSid;
+        private string accountSid;
         private Trigger.Recurring recurring;
         private Trigger.TriggerField triggerBy;
         private Trigger.UsageCategory usageCategory;
@@ -19,7 +19,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          * 
          * @param accountSid The account_sid
          */
-        public TriggerReader(String accountSid) {
+        public TriggerReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
@@ -134,15 +134,15 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          */
         private void addQueryParams(final Request request) {
             if (recurring != null) {
-                request.addQueryParam("Recurring", recurring.toString());
+                request.addQueryParam("Recurring", recurring.ToString());
             }
             
             if (triggerBy != null) {
-                request.addQueryParam("TriggerBy", triggerBy.toString());
+                request.addQueryParam("TriggerBy", triggerBy.ToString());
             }
             
             if (usageCategory != null) {
-                request.addQueryParam("UsageCategory", usageCategory.toString());
+                request.addQueryParam("UsageCategory", usageCategory.ToString());
             }
             
             request.addQueryParam("PageSize", Integer.toString(getPageSize()));

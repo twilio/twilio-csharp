@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Trunking.V1.Trunk;
 using Twilio.Deleters.Trunking.V1.Trunk;
 using Twilio.Exceptions;
@@ -9,9 +10,6 @@ using Twilio.Http;
 using Twilio.Readers.Trunking.V1.Trunk;
 using Twilio.Resources;
 using Twilio.Updaters.Trunking.V1.Trunk;
-using com.twilio.sdk.converters.MarshalConverter;
-using java.net.URI;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Trunking.V1.Trunk {
 
@@ -23,7 +21,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
          * @param sid The sid
          * @return OriginationUrlFetcher capable of executing the fetch
          */
-        public static OriginationUrlFetcher fetch(String trunkSid, String sid) {
+        public static OriginationUrlFetcher fetch(string trunkSid, string sid) {
             return new OriginationUrlFetcher(trunkSid, sid);
         }
     
@@ -34,7 +32,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
          * @param sid The sid
          * @return OriginationUrlDeleter capable of executing the delete
          */
-        public static OriginationUrlDeleter delete(String trunkSid, String sid) {
+        public static OriginationUrlDeleter delete(string trunkSid, string sid) {
             return new OriginationUrlDeleter(trunkSid, sid);
         }
     
@@ -49,7 +47,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
          * @param sipUrl The sip_url
          * @return OriginationUrlCreator capable of executing the create
          */
-        public static OriginationUrlCreator create(String trunkSid, Integer weight, Integer priority, Boolean enabled, String friendlyName, URI sipUrl) {
+        public static OriginationUrlCreator create(string trunkSid, int weight, int priority, bool enabled, string friendlyName, Uri sipUrl) {
             return new OriginationUrlCreator(trunkSid, weight, priority, enabled, friendlyName, sipUrl);
         }
     
@@ -59,7 +57,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
          * @param trunkSid The trunk_sid
          * @return OriginationUrlReader capable of executing the read
          */
-        public static OriginationUrlReader read(String trunkSid) {
+        public static OriginationUrlReader read(string trunkSid) {
             return new OriginationUrlReader(trunkSid);
         }
     
@@ -70,7 +68,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
          * @param sid The sid
          * @return OriginationUrlUpdater capable of executing the update
          */
-        public static OriginationUrlUpdater update(String trunkSid, String sid) {
+        public static OriginationUrlUpdater update(string trunkSid, string sid) {
             return new OriginationUrlUpdater(trunkSid, sid);
         }
     
@@ -90,50 +88,50 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("trunk_sid")]
-        private readonly String trunkSid;
+        private readonly string trunkSid;
         [JsonProperty("weight")]
-        private readonly Integer weight;
+        private readonly int weight;
         [JsonProperty("enabled")]
-        private readonly Boolean enabled;
+        private readonly bool enabled;
         [JsonProperty("sip_url")]
-        private readonly URI sipUrl;
+        private readonly Uri sipUrl;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("priority")]
-        private readonly Integer priority;
+        private readonly int priority;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("url")]
-        private readonly URI url;
+        private readonly Uri url;
     
         private OriginationUrl([JsonProperty("account_sid")]
-                               String accountSid, 
+                               string accountSid, 
                                [JsonProperty("sid")]
-                               String sid, 
+                               string sid, 
                                [JsonProperty("trunk_sid")]
-                               String trunkSid, 
+                               string trunkSid, 
                                [JsonProperty("weight")]
-                               Integer weight, 
+                               int weight, 
                                [JsonProperty("enabled")]
-                               Boolean enabled, 
+                               bool enabled, 
                                [JsonProperty("sip_url")]
-                               URI sipUrl, 
+                               Uri sipUrl, 
                                [JsonProperty("friendly_name")]
-                               String friendlyName, 
+                               string friendlyName, 
                                [JsonProperty("priority")]
-                               Integer priority, 
+                               int priority, 
                                [JsonProperty("date_created")]
-                               String dateCreated, 
+                               string dateCreated, 
                                [JsonProperty("date_updated")]
-                               String dateUpdated, 
+                               string dateUpdated, 
                                [JsonProperty("url")]
-                               URI url) {
+                               Uri url) {
             this.accountSid = accountSid;
             this.sid = sid;
             this.trunkSid = trunkSid;
@@ -142,64 +140,64 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
             this.sipUrl = sipUrl;
             this.friendlyName = friendlyName;
             this.priority = priority;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.url = url;
         }
     
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The trunk_sid
          */
-        public String GetTrunkSid() {
+        public string GetTrunkSid() {
             return this.trunkSid;
         }
     
         /**
          * @return The weight
          */
-        public Integer GetWeight() {
+        public int GetWeight() {
             return this.weight;
         }
     
         /**
          * @return The enabled
          */
-        public Boolean GetEnabled() {
+        public bool GetEnabled() {
             return this.enabled;
         }
     
         /**
          * @return The sip_url
          */
-        public URI GetSipUrl() {
+        public Uri GetSipUrl() {
             return this.sipUrl;
         }
     
         /**
          * @return The friendly_name
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return The priority
          */
-        public Integer GetPriority() {
+        public int GetPriority() {
             return this.priority;
         }
     
@@ -220,7 +218,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         /**
          * @return The url
          */
-        public URI GetUrl() {
+        public Uri GetUrl() {
             return this.url;
         }
     }

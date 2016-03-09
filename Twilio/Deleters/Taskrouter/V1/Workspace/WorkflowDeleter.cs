@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Deleters.Deleter;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Taskrouter.V1.workspace.Workflow;
 namespace Twilio.Deleters.Taskrouter.V1.Workspace {
 
     public class WorkflowDeleter : Deleter<Workflow> {
-        private String workspaceSid;
-        private String sid;
+        private string workspaceSid;
+        private string sid;
     
         /**
          * Construct a new WorkflowDeleter
@@ -16,7 +16,7 @@ namespace Twilio.Deleters.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @param sid The sid
          */
-        public WorkflowDeleter(String workspaceSid, String sid) {
+        public WorkflowDeleter(string workspaceSid, string sid) {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
         }

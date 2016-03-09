@@ -1,6 +1,8 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Ipmessaging.V1.Service;
 using Twilio.Deleters.Ipmessaging.V1.Service;
 using Twilio.Exceptions;
@@ -9,10 +11,6 @@ using Twilio.Http;
 using Twilio.Readers.Ipmessaging.V1.Service;
 using Twilio.Resources;
 using Twilio.Updaters.Ipmessaging.V1.Service;
-using com.twilio.sdk.converters.MarshalConverter;
-using java.net.URI;
-using java.util.List;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.IpMessaging.V1.Service {
 
@@ -29,7 +27,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param sid The sid
          * @return RoleFetcher capable of executing the fetch
          */
-        public static RoleFetcher fetch(String serviceSid, String sid) {
+        public static RoleFetcher fetch(string serviceSid, string sid) {
             return new RoleFetcher(serviceSid, sid);
         }
     
@@ -40,7 +38,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param sid The sid
          * @return RoleDeleter capable of executing the delete
          */
-        public static RoleDeleter delete(String serviceSid, String sid) {
+        public static RoleDeleter delete(string serviceSid, string sid) {
             return new RoleDeleter(serviceSid, sid);
         }
     
@@ -53,7 +51,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param permission The permission
          * @return RoleCreator capable of executing the create
          */
-        public static RoleCreator create(String serviceSid, String friendlyName, Role.RoleType type, List<String> permission) {
+        public static RoleCreator create(string serviceSid, string friendlyName, Role.RoleType type, List<string> permission) {
             return new RoleCreator(serviceSid, friendlyName, type, permission);
         }
     
@@ -63,7 +61,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param serviceSid The service_sid
          * @return RoleReader capable of executing the read
          */
-        public static RoleReader read(String serviceSid) {
+        public static RoleReader read(string serviceSid) {
             return new RoleReader(serviceSid);
         }
     
@@ -76,7 +74,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param permission The permission
          * @return RoleUpdater capable of executing the update
          */
-        public static RoleUpdater update(String serviceSid, String sid, String friendlyName, List<String> permission) {
+        public static RoleUpdater update(string serviceSid, string sid, string friendlyName, List<string> permission) {
             return new RoleUpdater(serviceSid, sid, friendlyName, permission);
         }
     
@@ -96,92 +94,92 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
         }
     
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("service_sid")]
-        private readonly String serviceSid;
+        private readonly string serviceSid;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("type")]
         private readonly Role.RoleType type;
         [JsonProperty("permissions")]
-        private readonly List<String> permissions;
+        private readonly List<string> permissions;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("url")]
-        private readonly URI url;
+        private readonly Uri url;
     
         private Role([JsonProperty("sid")]
-                     String sid, 
+                     string sid, 
                      [JsonProperty("account_sid")]
-                     String accountSid, 
+                     string accountSid, 
                      [JsonProperty("service_sid")]
-                     String serviceSid, 
+                     string serviceSid, 
                      [JsonProperty("friendly_name")]
-                     String friendlyName, 
+                     string friendlyName, 
                      [JsonProperty("type")]
                      Role.RoleType type, 
                      [JsonProperty("permissions")]
-                     List<String> permissions, 
+                     List<string> permissions, 
                      [JsonProperty("date_created")]
-                     String dateCreated, 
+                     string dateCreated, 
                      [JsonProperty("date_updated")]
-                     String dateUpdated, 
+                     string dateUpdated, 
                      [JsonProperty("url")]
-                     URI url) {
+                     Uri url) {
             this.sid = sid;
             this.accountSid = accountSid;
             this.serviceSid = serviceSid;
             this.friendlyName = friendlyName;
             this.type = type;
             this.permissions = permissions;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.url = url;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The service_sid
          */
-        public String GetServiceSid() {
+        public string GetServiceSid() {
             return this.serviceSid;
         }
     
         /**
          * @return The friendly_name
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return The type
          */
-        public Role.RoleType GetType() {
+        public Role.RoleType GetRoleType() {
             return this.type;
         }
     
         /**
          * @return The permissions
          */
-        public List<String> GetPermissions() {
+        public List<string> GetPermissions() {
             return this.permissions;
         }
     
@@ -202,7 +200,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
         /**
          * @return The url
          */
-        public URI GetUrl() {
+        public Uri GetUrl() {
             return this.url;
         }
     }

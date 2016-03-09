@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Lookups.V1;
 using Twilio.Http;
@@ -21,7 +22,7 @@ namespace Twilio.Resources.Lookups.V1 {
          * @param phoneNumber The phone_number
          * @return PhoneNumberFetcher capable of executing the fetch
          */
-        public static PhoneNumberFetcher fetch(com.twilio.types.PhoneNumber phoneNumber) {
+        public static PhoneNumberFetcher fetch(Twilio.Types.PhoneNumber phoneNumber) {
             return new PhoneNumberFetcher(phoneNumber);
         }
     
@@ -41,22 +42,22 @@ namespace Twilio.Resources.Lookups.V1 {
         }
     
         [JsonProperty("country_code")]
-        private readonly String countryCode;
+        private readonly string countryCode;
         [JsonProperty("phone_number")]
-        private readonly com.twilio.types.PhoneNumber phoneNumber;
+        private readonly Twilio.Types.PhoneNumber phoneNumber;
         [JsonProperty("national_format")]
-        private readonly String nationalFormat;
+        private readonly string nationalFormat;
         [JsonProperty("carrier")]
-        private readonly Map<String, String> carrier;
+        private readonly Dictionary<string, string> carrier;
     
         private PhoneNumber([JsonProperty("country_code")]
-                            String countryCode, 
+                            string countryCode, 
                             [JsonProperty("phone_number")]
-                            com.twilio.types.PhoneNumber phoneNumber, 
+                            Twilio.Types.PhoneNumber phoneNumber, 
                             [JsonProperty("national_format")]
-                            String nationalFormat, 
+                            string nationalFormat, 
                             [JsonProperty("carrier")]
-                            Map<String, String> carrier) {
+                            Dictionary<string, string> carrier) {
             this.countryCode = countryCode;
             this.phoneNumber = phoneNumber;
             this.nationalFormat = nationalFormat;
@@ -66,35 +67,35 @@ namespace Twilio.Resources.Lookups.V1 {
         /**
          * @return The phone_number
          */
-        public String getSid() {
-            return this.getPhoneNumber().toString();
+        public string getSid() {
+            return this.getPhoneNumber().ToString();
         }
     
         /**
          * @return The country_code
          */
-        public String GetCountryCode() {
+        public string GetCountryCode() {
             return this.countryCode;
         }
     
         /**
          * @return The phone_number
          */
-        public com.twilio.types.PhoneNumber GetPhoneNumber() {
+        public Twilio.Types.PhoneNumber GetPhoneNumber() {
             return this.phoneNumber;
         }
     
         /**
          * @return The national_format
          */
-        public String GetNationalFormat() {
+        public string GetNationalFormat() {
             return this.nationalFormat;
         }
     
         /**
          * @return The carrier
          */
-        public Map<String, String> GetCarrier() {
+        public Dictionary<string, string> GetCarrier() {
             return this.carrier;
         }
     }

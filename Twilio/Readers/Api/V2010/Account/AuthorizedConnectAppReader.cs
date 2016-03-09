@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.AuthorizedConnectApp;
@@ -9,14 +9,14 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account {
 
     public class AuthorizedConnectAppReader : Reader<AuthorizedConnectApp> {
-        private String accountSid;
+        private string accountSid;
     
         /**
          * Construct a new AuthorizedConnectAppReader
          * 
          * @param accountSid The account_sid
          */
-        public AuthorizedConnectAppReader(String accountSid) {
+        public AuthorizedConnectAppReader(string accountSid) {
             this.accountSid = accountSid;
         }
     

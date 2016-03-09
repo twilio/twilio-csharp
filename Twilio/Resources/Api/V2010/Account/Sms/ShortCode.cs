@@ -1,16 +1,13 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Api.V2010.Account.Sms;
 using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account.Sms;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010.Account.Sms;
-using com.twilio.sdk.converters.MarshalConverter;
-using com.twilio.sdk.http.HttpMethod;
-using java.net.URI;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account.Sms {
 
@@ -22,7 +19,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          * @param sid Fetch by unique short-code Sid
          * @return ShortCodeFetcher capable of executing the fetch
          */
-        public static ShortCodeFetcher fetch(String accountSid, String sid) {
+        public static ShortCodeFetcher fetch(string accountSid, string sid) {
             return new ShortCodeFetcher(accountSid, sid);
         }
     
@@ -33,7 +30,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          * @param sid The sid
          * @return ShortCodeUpdater capable of executing the update
          */
-        public static ShortCodeUpdater update(String accountSid, String sid) {
+        public static ShortCodeUpdater update(string accountSid, string sid) {
             return new ShortCodeUpdater(accountSid, sid);
         }
     
@@ -44,7 +41,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          * @param accountSid The account_sid
          * @return ShortCodeReader capable of executing the read
          */
-        public static ShortCodeReader read(String accountSid) {
+        public static ShortCodeReader read(string accountSid) {
             return new ShortCodeReader(accountSid);
         }
     
@@ -64,58 +61,58 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("api_version")]
-        private readonly String apiVersion;
+        private readonly string apiVersion;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("short_code")]
-        private readonly String shortCode;
+        private readonly string shortCode;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("sms_fallback_method")]
         private readonly HttpMethod smsFallbackMethod;
         [JsonProperty("sms_fallback_url")]
-        private readonly URI smsFallbackUrl;
+        private readonly Uri smsFallbackUrl;
         [JsonProperty("sms_method")]
         private readonly HttpMethod smsMethod;
         [JsonProperty("sms_url")]
-        private readonly URI smsUrl;
+        private readonly Uri smsUrl;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private ShortCode([JsonProperty("account_sid")]
-                          String accountSid, 
+                          string accountSid, 
                           [JsonProperty("api_version")]
-                          String apiVersion, 
+                          string apiVersion, 
                           [JsonProperty("date_created")]
-                          String dateCreated, 
+                          string dateCreated, 
                           [JsonProperty("date_updated")]
-                          String dateUpdated, 
+                          string dateUpdated, 
                           [JsonProperty("friendly_name")]
-                          String friendlyName, 
+                          string friendlyName, 
                           [JsonProperty("short_code")]
-                          String shortCode, 
+                          string shortCode, 
                           [JsonProperty("sid")]
-                          String sid, 
+                          string sid, 
                           [JsonProperty("sms_fallback_method")]
                           HttpMethod smsFallbackMethod, 
                           [JsonProperty("sms_fallback_url")]
-                          URI smsFallbackUrl, 
+                          Uri smsFallbackUrl, 
                           [JsonProperty("sms_method")]
                           HttpMethod smsMethod, 
                           [JsonProperty("sms_url")]
-                          URI smsUrl, 
+                          Uri smsUrl, 
                           [JsonProperty("uri")]
-                          String uri) {
+                          string uri) {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.friendlyName = friendlyName;
             this.shortCode = shortCode;
             this.sid = sid;
@@ -129,14 +126,14 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         /**
          * @return The unique sid that identifies this account
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The API version to use
          */
-        public String GetApiVersion() {
+        public string GetApiVersion() {
             return this.apiVersion;
         }
     
@@ -157,21 +154,21 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         /**
          * @return A human readable description of this resource
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return The short code. e.g., 894546.
          */
-        public String GetShortCode() {
+        public string GetShortCode() {
             return this.shortCode;
         }
     
         /**
          * @return A string that uniquely identifies this short-codes
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
@@ -185,7 +182,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         /**
          * @return URL Twilio will request if an error occurs in executing TwiML
          */
-        public URI GetSmsFallbackUrl() {
+        public Uri GetSmsFallbackUrl() {
             return this.smsFallbackUrl;
         }
     
@@ -199,14 +196,14 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         /**
          * @return URL Twilio will request when receiving an SMS
          */
-        public URI GetSmsUrl() {
+        public Uri GetSmsUrl() {
             return this.smsUrl;
         }
     
         /**
          * @return The URI for this resource
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

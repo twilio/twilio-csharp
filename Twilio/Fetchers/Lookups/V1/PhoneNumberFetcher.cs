@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,16 +7,16 @@ using Twilio.Resources.Lookups.V1.PhoneNumber;
 namespace Twilio.Fetchers.Lookups.V1 {
 
     public class PhoneNumberFetcher : Fetcher<PhoneNumber> {
-        private com.twilio.types.PhoneNumber phoneNumber;
-        private String countryCode;
-        private String type;
+        private Twilio.Types.PhoneNumber phoneNumber;
+        private string countryCode;
+        private string type;
     
         /**
          * Construct a new PhoneNumberFetcher
          * 
          * @param phoneNumber The phone_number
          */
-        public PhoneNumberFetcher(com.twilio.types.PhoneNumber phoneNumber) {
+        public PhoneNumberFetcher(Twilio.Types.PhoneNumber phoneNumber) {
             this.phoneNumber = phoneNumber;
         }
     
@@ -26,7 +26,7 @@ namespace Twilio.Fetchers.Lookups.V1 {
          * @param countryCode The country_code
          * @return this
          */
-        public PhoneNumberFetcher setCountryCode(String countryCode) {
+        public PhoneNumberFetcher setCountryCode(string countryCode) {
             this.countryCode = countryCode;
             return this;
         }
@@ -37,7 +37,7 @@ namespace Twilio.Fetchers.Lookups.V1 {
          * @param type The type
          * @return this
          */
-        public PhoneNumberFetcher setType(String type) {
+        public PhoneNumberFetcher setType(string type) {
             this.type = type;
             return this;
         }

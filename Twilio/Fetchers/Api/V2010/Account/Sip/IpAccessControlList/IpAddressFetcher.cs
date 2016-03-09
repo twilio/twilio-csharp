@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,9 +7,9 @@ using Twilio.Resources.Api.V2010.account.sip.ip_access_control_list.IpAddress;
 namespace Twilio.Fetchers.Api.V2010.Account.Sip.Ipaccesscontrollist {
 
     public class IpAddressFetcher : Fetcher<IpAddress> {
-        private String accountSid;
-        private String ipAccessControlListSid;
-        private String sid;
+        private string accountSid;
+        private string ipAccessControlListSid;
+        private string sid;
     
         /**
          * Construct a new IpAddressFetcher
@@ -18,7 +18,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip.Ipaccesscontrollist {
          * @param ipAccessControlListSid The ip_access_control_list_sid
          * @param sid The sid
          */
-        public IpAddressFetcher(String accountSid, String ipAccessControlListSid, String sid) {
+        public IpAddressFetcher(string accountSid, string ipAccessControlListSid, string sid) {
             this.accountSid = accountSid;
             this.ipAccessControlListSid = ipAccessControlListSid;
             this.sid = sid;

@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Deleters.Deleter;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Api.V2010.account.sip.CredentialList;
 namespace Twilio.Deleters.Api.V2010.Account.Sip {
 
     public class CredentialListDeleter : Deleter<CredentialList> {
-        private String accountSid;
-        private String sid;
+        private string accountSid;
+        private string sid;
     
         /**
          * Construct a new CredentialListDeleter
@@ -16,7 +16,7 @@ namespace Twilio.Deleters.Api.V2010.Account.Sip {
          * @param accountSid The account_sid
          * @param sid Delete by unique credential Sid
          */
-        public CredentialListDeleter(String accountSid, String sid) {
+        public CredentialListDeleter(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

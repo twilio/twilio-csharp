@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,14 +7,14 @@ using Twilio.Resources.Ipmessaging.V1.Service;
 namespace Twilio.Creators.IpMessaging.V1 {
 
     public class ServiceCreator : Creator<Service> {
-        private String friendlyName;
+        private string friendlyName;
     
         /**
          * Construct a new ServiceCreator
          * 
          * @param friendlyName The friendly_name
          */
-        public ServiceCreator(String friendlyName) {
+        public ServiceCreator(string friendlyName) {
             this.friendlyName = friendlyName;
         }
     

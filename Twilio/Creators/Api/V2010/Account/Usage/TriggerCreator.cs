@@ -1,20 +1,19 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.usage.Trigger;
-using com.twilio.sdk.http.HttpMethod;
-using java.net.URI;
 
 namespace Twilio.Creators.Api.V2010.Account.Usage {
 
     public class TriggerCreator : Creator<Trigger> {
-        private String accountSid;
-        private URI callbackUrl;
-        private String triggerValue;
+        private string accountSid;
+        private Uri callbackUrl;
+        private string triggerValue;
         private Trigger.UsageCategory usageCategory;
         private HttpMethod callbackMethod;
-        private String friendlyName;
+        private string friendlyName;
         private Trigger.Recurring recurring;
         private Trigger.TriggerField triggerBy;
     
@@ -26,7 +25,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
          * @param triggerValue the value at which the trigger will fire
          * @param usageCategory The usage category the trigger watches
          */
-        public TriggerCreator(String accountSid, URI callbackUrl, String triggerValue, Trigger.UsageCategory usageCategory) {
+        public TriggerCreator(string accountSid, Uri callbackUrl, string triggerValue, Trigger.UsageCategory usageCategory) {
             this.accountSid = accountSid;
             this.callbackUrl = callbackUrl;
             this.triggerValue = triggerValue;
@@ -51,7 +50,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
          * @param friendlyName A user-specified, human-readable name for the trigger.
          * @return this
          */
-        public TriggerCreator setFriendlyName(String friendlyName) {
+        public TriggerCreator setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -124,7 +123,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
          */
         private void addPostParams(Request request) {
             if (callbackUrl != null) {
-                request.addPostParam("CallbackUrl", callbackUrl.toString());
+                request.addPostParam("CallbackUrl", callbackUrl.ToString());
             }
             
             if (triggerValue != null) {
@@ -132,11 +131,11 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
             }
             
             if (usageCategory != null) {
-                request.addPostParam("UsageCategory", usageCategory.toString());
+                request.addPostParam("UsageCategory", usageCategory.ToString());
             }
             
             if (callbackMethod != null) {
-                request.addPostParam("CallbackMethod", callbackMethod.toString());
+                request.addPostParam("CallbackMethod", callbackMethod.ToString());
             }
             
             if (friendlyName != null) {
@@ -144,11 +143,11 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
             }
             
             if (recurring != null) {
-                request.addPostParam("Recurring", recurring.toString());
+                request.addPostParam("Recurring", recurring.ToString());
             }
             
             if (triggerBy != null) {
-                request.addPostParam("TriggerBy", triggerBy.toString());
+                request.addPostParam("TriggerBy", triggerBy.ToString());
             }
         }
     }

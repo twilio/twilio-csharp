@@ -1,21 +1,20 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
 using Twilio.Converters.Promoter;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Trunking.V1.Trunk;
-using com.twilio.sdk.http.HttpMethod;
-using java.net.URI;
 
 namespace Twilio.Creators.Trunking.V1 {
 
     public class TrunkCreator : Creator<Trunk> {
-        private String friendlyName;
-        private String domainName;
-        private URI disasterRecoveryUrl;
+        private string friendlyName;
+        private string domainName;
+        private Uri disasterRecoveryUrl;
         private HttpMethod disasterRecoveryMethod;
-        private String recording;
-        private Boolean secure;
+        private string recording;
+        private bool secure;
     
         /**
          * The friendly_name
@@ -23,7 +22,7 @@ namespace Twilio.Creators.Trunking.V1 {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public TrunkCreator setFriendlyName(String friendlyName) {
+        public TrunkCreator setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -34,7 +33,7 @@ namespace Twilio.Creators.Trunking.V1 {
          * @param domainName The domain_name
          * @return this
          */
-        public TrunkCreator setDomainName(String domainName) {
+        public TrunkCreator setDomainName(string domainName) {
             this.domainName = domainName;
             return this;
         }
@@ -45,7 +44,7 @@ namespace Twilio.Creators.Trunking.V1 {
          * @param disasterRecoveryUrl The disaster_recovery_url
          * @return this
          */
-        public TrunkCreator setDisasterRecoveryUrl(URI disasterRecoveryUrl) {
+        public TrunkCreator setDisasterRecoveryUrl(Uri disasterRecoveryUrl) {
             this.disasterRecoveryUrl = disasterRecoveryUrl;
             return this;
         }
@@ -56,8 +55,8 @@ namespace Twilio.Creators.Trunking.V1 {
          * @param disasterRecoveryUrl The disaster_recovery_url
          * @return this
          */
-        public TrunkCreator setDisasterRecoveryUrl(String disasterRecoveryUrl) {
-            return setDisasterRecoveryUrl(Promoter.uriFromString(disasterRecoveryUrl));
+        public TrunkCreator setDisasterRecoveryUrl(string disasterRecoveryUrl) {
+            return setDisasterRecoveryUrl(Promoter.UriFromString(disasterRecoveryUrl));
         }
     
         /**
@@ -77,7 +76,7 @@ namespace Twilio.Creators.Trunking.V1 {
          * @param recording The recording
          * @return this
          */
-        public TrunkCreator setRecording(String recording) {
+        public TrunkCreator setRecording(string recording) {
             this.recording = recording;
             return this;
         }
@@ -88,7 +87,7 @@ namespace Twilio.Creators.Trunking.V1 {
          * @param secure The secure
          * @return this
          */
-        public TrunkCreator setSecure(Boolean secure) {
+        public TrunkCreator setSecure(bool secure) {
             this.secure = secure;
             return this;
         }
@@ -144,11 +143,11 @@ namespace Twilio.Creators.Trunking.V1 {
             }
             
             if (disasterRecoveryUrl != null) {
-                request.addPostParam("DisasterRecoveryUrl", disasterRecoveryUrl.toString());
+                request.addPostParam("DisasterRecoveryUrl", disasterRecoveryUrl.ToString());
             }
             
             if (disasterRecoveryMethod != null) {
-                request.addPostParam("DisasterRecoveryMethod", disasterRecoveryMethod.toString());
+                request.addPostParam("DisasterRecoveryMethod", disasterRecoveryMethod.ToString());
             }
             
             if (recording != null) {
@@ -156,7 +155,7 @@ namespace Twilio.Creators.Trunking.V1 {
             }
             
             if (secure != null) {
-                request.addPostParam("Secure", secure.toString());
+                request.addPostParam("Secure", secure.ToString());
             }
         }
     }

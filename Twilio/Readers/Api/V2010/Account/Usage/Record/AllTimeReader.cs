@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.usage.record.AllTime;
@@ -9,14 +9,14 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
 
     public class AllTimeReader : Reader<AllTime> {
-        private String accountSid;
+        private string accountSid;
     
         /**
          * Construct a new AllTimeReader
          * 
          * @param accountSid The account_sid
          */
-        public AllTimeReader(String accountSid) {
+        public AllTimeReader(string accountSid) {
             this.accountSid = accountSid;
         }
     

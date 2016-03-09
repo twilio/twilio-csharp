@@ -1,15 +1,12 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Api.V2010.Account;
 using Twilio.Http;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010.Account;
-using com.twilio.sdk.converters.MarshalConverter;
-using com.twilio.sdk.http.HttpMethod;
-using java.net.URI;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account {
 
@@ -20,7 +17,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return SandboxFetcher capable of executing the fetch
          */
-        public static SandboxFetcher fetch(String accountSid) {
+        public static SandboxFetcher fetch(string accountSid) {
             return new SandboxFetcher(accountSid);
         }
     
@@ -30,7 +27,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return SandboxUpdater capable of executing the update
          */
-        public static SandboxUpdater update(String accountSid) {
+        public static SandboxUpdater update(string accountSid) {
             return new SandboxUpdater(accountSid);
         }
     
@@ -54,60 +51,60 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("pin")]
-        private readonly Integer pin;
+        private readonly int pin;
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("phone_number")]
-        private readonly com.twilio.types.PhoneNumber phoneNumber;
+        private readonly Twilio.Types.PhoneNumber phoneNumber;
         [JsonProperty("application_sid")]
-        private readonly String applicationSid;
+        private readonly string applicationSid;
         [JsonProperty("api_version")]
-        private readonly String apiVersion;
+        private readonly string apiVersion;
         [JsonProperty("voice_url")]
-        private readonly URI voiceUrl;
+        private readonly Uri voiceUrl;
         [JsonProperty("voice_method")]
         private readonly HttpMethod voiceMethod;
         [JsonProperty("sms_url")]
-        private readonly URI smsUrl;
+        private readonly Uri smsUrl;
         [JsonProperty("sms_method")]
         private readonly HttpMethod smsMethod;
         [JsonProperty("status_callback")]
-        private readonly URI statusCallback;
+        private readonly Uri statusCallback;
         [JsonProperty("status_callback_method")]
         private readonly HttpMethod statusCallbackMethod;
         [JsonProperty("uri")]
-        private readonly URI uri;
+        private readonly Uri uri;
     
         private Sandbox([JsonProperty("date_created")]
-                        String dateCreated, 
+                        string dateCreated, 
                         [JsonProperty("date_updated")]
-                        String dateUpdated, 
+                        string dateUpdated, 
                         [JsonProperty("pin")]
-                        Integer pin, 
+                        int pin, 
                         [JsonProperty("account_sid")]
-                        String accountSid, 
+                        string accountSid, 
                         [JsonProperty("phone_number")]
-                        com.twilio.types.PhoneNumber phoneNumber, 
+                        Twilio.Types.PhoneNumber phoneNumber, 
                         [JsonProperty("application_sid")]
-                        String applicationSid, 
+                        string applicationSid, 
                         [JsonProperty("api_version")]
-                        String apiVersion, 
+                        string apiVersion, 
                         [JsonProperty("voice_url")]
-                        URI voiceUrl, 
+                        Uri voiceUrl, 
                         [JsonProperty("voice_method")]
                         HttpMethod voiceMethod, 
                         [JsonProperty("sms_url")]
-                        URI smsUrl, 
+                        Uri smsUrl, 
                         [JsonProperty("sms_method")]
                         HttpMethod smsMethod, 
                         [JsonProperty("status_callback")]
-                        URI statusCallback, 
+                        Uri statusCallback, 
                         [JsonProperty("status_callback_method")]
                         HttpMethod statusCallbackMethod, 
                         [JsonProperty("uri")]
-                        URI uri) {
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+                        Uri uri) {
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.pin = pin;
             this.accountSid = accountSid;
             this.phoneNumber = phoneNumber;
@@ -139,42 +136,42 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The pin
          */
-        public Integer GetPin() {
+        public int GetPin() {
             return this.pin;
         }
     
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The phone_number
          */
-        public com.twilio.types.PhoneNumber GetPhoneNumber() {
+        public Twilio.Types.PhoneNumber GetPhoneNumber() {
             return this.phoneNumber;
         }
     
         /**
          * @return The application_sid
          */
-        public String GetApplicationSid() {
+        public string GetApplicationSid() {
             return this.applicationSid;
         }
     
         /**
          * @return The api_version
          */
-        public String GetApiVersion() {
+        public string GetApiVersion() {
             return this.apiVersion;
         }
     
         /**
          * @return The voice_url
          */
-        public URI GetVoiceUrl() {
+        public Uri GetVoiceUrl() {
             return this.voiceUrl;
         }
     
@@ -188,7 +185,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The sms_url
          */
-        public URI GetSmsUrl() {
+        public Uri GetSmsUrl() {
             return this.smsUrl;
         }
     
@@ -202,7 +199,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The status_callback
          */
-        public URI GetStatusCallback() {
+        public Uri GetStatusCallback() {
             return this.statusCallback;
         }
     
@@ -216,7 +213,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The uri
          */
-        public URI GetUri() {
+        public Uri GetUri() {
             return this.uri;
         }
     }

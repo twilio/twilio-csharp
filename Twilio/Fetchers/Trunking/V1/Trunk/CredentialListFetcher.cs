@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Trunking.V1.trunk.CredentialList;
 namespace Twilio.Fetchers.Trunking.V1.Trunk {
 
     public class CredentialListFetcher : Fetcher<CredentialList> {
-        private String trunkSid;
-        private String sid;
+        private string trunkSid;
+        private string sid;
     
         /**
          * Construct a new CredentialListFetcher
@@ -16,7 +16,7 @@ namespace Twilio.Fetchers.Trunking.V1.Trunk {
          * @param trunkSid The trunk_sid
          * @param sid The sid
          */
-        public CredentialListFetcher(String trunkSid, String sid) {
+        public CredentialListFetcher(string trunkSid, string sid) {
             this.trunkSid = trunkSid;
             this.sid = sid;
         }

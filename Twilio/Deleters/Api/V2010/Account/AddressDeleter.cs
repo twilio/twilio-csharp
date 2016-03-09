@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Deleters.Deleter;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Api.V2010.account.Address;
 namespace Twilio.Deleters.Api.V2010.Account {
 
     public class AddressDeleter : Deleter<Address> {
-        private String accountSid;
-        private String sid;
+        private string accountSid;
+        private string sid;
     
         /**
          * Construct a new AddressDeleter
@@ -16,7 +16,7 @@ namespace Twilio.Deleters.Api.V2010.Account {
          * @param accountSid The account_sid
          * @param sid The sid
          */
-        public AddressDeleter(String accountSid, String sid) {
+        public AddressDeleter(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

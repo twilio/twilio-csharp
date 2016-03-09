@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Monitor.V1.Event;
@@ -9,12 +9,12 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Monitor.V1 {
 
     public class EventReader : Reader<Event> {
-        private String actorSid;
-        private String endDate;
-        private String eventType;
-        private String resourceSid;
-        private String sourceIpAddress;
-        private String startDate;
+        private string actorSid;
+        private string endDate;
+        private string eventType;
+        private string resourceSid;
+        private string sourceIpAddress;
+        private string startDate;
     
         /**
          * The actor_sid
@@ -22,7 +22,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param actorSid The actor_sid
          * @return this
          */
-        public EventReader byActorSid(String actorSid) {
+        public EventReader byActorSid(string actorSid) {
             this.actorSid = actorSid;
             return this;
         }
@@ -33,7 +33,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param endDate The end_date
          * @return this
          */
-        public EventReader byEndDate(String endDate) {
+        public EventReader byEndDate(string endDate) {
             this.endDate = endDate;
             return this;
         }
@@ -44,7 +44,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param eventType The event_type
          * @return this
          */
-        public EventReader byEventType(String eventType) {
+        public EventReader byEventType(string eventType) {
             this.eventType = eventType;
             return this;
         }
@@ -55,7 +55,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param resourceSid The resource_sid
          * @return this
          */
-        public EventReader byResourceSid(String resourceSid) {
+        public EventReader byResourceSid(string resourceSid) {
             this.resourceSid = resourceSid;
             return this;
         }
@@ -66,7 +66,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param sourceIpAddress The source_ip_address
          * @return this
          */
-        public EventReader bySourceIpAddress(String sourceIpAddress) {
+        public EventReader bySourceIpAddress(string sourceIpAddress) {
             this.sourceIpAddress = sourceIpAddress;
             return this;
         }
@@ -77,7 +77,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param startDate The start_date
          * @return this
          */
-        public EventReader byStartDate(String startDate) {
+        public EventReader byStartDate(string startDate) {
             this.startDate = startDate;
             return this;
         }

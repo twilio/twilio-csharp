@@ -1,17 +1,17 @@
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Ipmessaging.V1.service.Role;
-using java.util.List;
 
 namespace Twilio.Creators.IpMessaging.V1.Service {
 
     public class RoleCreator : Creator<Role> {
-        private String serviceSid;
-        private String friendlyName;
+        private string serviceSid;
+        private string friendlyName;
         private Role.RoleType type;
-        private List<String> permission;
+        private List<string> permission;
     
         /**
          * Construct a new RoleCreator
@@ -21,7 +21,7 @@ namespace Twilio.Creators.IpMessaging.V1.Service {
          * @param type The type
          * @param permission The permission
          */
-        public RoleCreator(String serviceSid, String friendlyName, Role.RoleType type, List<String> permission) {
+        public RoleCreator(string serviceSid, string friendlyName, Role.RoleType type, List<string> permission) {
             this.serviceSid = serviceSid;
             this.friendlyName = friendlyName;
             this.type = type;
@@ -75,11 +75,11 @@ namespace Twilio.Creators.IpMessaging.V1.Service {
             }
             
             if (type != null) {
-                request.addPostParam("Type", type.toString());
+                request.addPostParam("Type", type.ToString());
             }
             
             if (permission != null) {
-                request.addPostParam("Permission", permission.toString());
+                request.addPostParam("Permission", permission.ToString());
             }
         }
     }

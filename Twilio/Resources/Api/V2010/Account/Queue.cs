@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account;
 using Twilio.Deleters.Api.V2010.Account;
 using Twilio.Exceptions;
@@ -9,8 +10,6 @@ using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010.Account;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account {
 
@@ -22,7 +21,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Fetch by unique queue Sid
          * @return QueueFetcher capable of executing the fetch
          */
-        public static QueueFetcher fetch(String accountSid, String sid) {
+        public static QueueFetcher fetch(string accountSid, string sid) {
             return new QueueFetcher(accountSid, sid);
         }
     
@@ -33,7 +32,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid The sid
          * @return QueueUpdater capable of executing the update
          */
-        public static QueueUpdater update(String accountSid, String sid) {
+        public static QueueUpdater update(string accountSid, string sid) {
             return new QueueUpdater(accountSid, sid);
         }
     
@@ -44,7 +43,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Delete by unique queue Sid
          * @return QueueDeleter capable of executing the delete
          */
-        public static QueueDeleter delete(String accountSid, String sid) {
+        public static QueueDeleter delete(string accountSid, string sid) {
             return new QueueDeleter(accountSid, sid);
         }
     
@@ -54,7 +53,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return QueueReader capable of executing the read
          */
-        public static QueueReader read(String accountSid) {
+        public static QueueReader read(string accountSid) {
             return new QueueReader(accountSid);
         }
     
@@ -64,7 +63,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return QueueCreator capable of executing the create
          */
-        public static QueueCreator create(String accountSid) {
+        public static QueueCreator create(string accountSid) {
             return new QueueCreator(accountSid);
         }
     
@@ -84,47 +83,47 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("average_wait_time")]
-        private readonly Integer averageWaitTime;
+        private readonly int averageWaitTime;
         [JsonProperty("current_size")]
-        private readonly Integer currentSize;
+        private readonly int currentSize;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("max_size")]
-        private readonly Integer maxSize;
+        private readonly int maxSize;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private Queue([JsonProperty("account_sid")]
-                      String accountSid, 
+                      string accountSid, 
                       [JsonProperty("average_wait_time")]
-                      Integer averageWaitTime, 
+                      int averageWaitTime, 
                       [JsonProperty("current_size")]
-                      Integer currentSize, 
+                      int currentSize, 
                       [JsonProperty("date_created")]
-                      String dateCreated, 
+                      string dateCreated, 
                       [JsonProperty("date_updated")]
-                      String dateUpdated, 
+                      string dateUpdated, 
                       [JsonProperty("friendly_name")]
-                      String friendlyName, 
+                      string friendlyName, 
                       [JsonProperty("max_size")]
-                      Integer maxSize, 
+                      int maxSize, 
                       [JsonProperty("sid")]
-                      String sid, 
+                      string sid, 
                       [JsonProperty("uri")]
-                      String uri) {
+                      string uri) {
             this.accountSid = accountSid;
             this.averageWaitTime = averageWaitTime;
             this.currentSize = currentSize;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.friendlyName = friendlyName;
             this.maxSize = maxSize;
             this.sid = sid;
@@ -134,21 +133,21 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return Average wait time of members in the queue
          */
-        public Integer GetAverageWaitTime() {
+        public int GetAverageWaitTime() {
             return this.averageWaitTime;
         }
     
         /**
          * @return The count of calls currently in the queue.
          */
-        public Integer GetCurrentSize() {
+        public int GetCurrentSize() {
             return this.currentSize;
         }
     
@@ -169,28 +168,28 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return A user-provided string that identifies this queue.
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return The max number of calls allowed in the queue
          */
-        public Integer GetMaxSize() {
+        public int GetMaxSize() {
             return this.maxSize;
         }
     
         /**
          * @return A string that uniquely identifies this queue
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The uri
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

@@ -1,18 +1,18 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Ipmessaging.V1.service.Channel;
-using com.fasterxml.jackson.databind.JsonNode;
 using com.twilio.sdk.updaters.Updater;
 
 namespace Twilio.Updaters.IpMessaging.V1.Service {
 
     public class ChannelUpdater : Updater<Channel> {
-        private String serviceSid;
-        private String sid;
-        private String friendlyName;
-        private String uniqueName;
-        private JsonNode attributes;
+        private string serviceSid;
+        private string sid;
+        private string friendlyName;
+        private string uniqueName;
+        private Object attributes;
         private Channel.ChannelType type;
     
         /**
@@ -21,7 +21,7 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
          * @param serviceSid The service_sid
          * @param sid The sid
          */
-        public ChannelUpdater(String serviceSid, String sid) {
+        public ChannelUpdater(string serviceSid, string sid) {
             this.serviceSid = serviceSid;
             this.sid = sid;
         }
@@ -32,7 +32,7 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public ChannelUpdater setFriendlyName(String friendlyName) {
+        public ChannelUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -43,7 +43,7 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
          * @param uniqueName The unique_name
          * @return this
          */
-        public ChannelUpdater setUniqueName(String uniqueName) {
+        public ChannelUpdater setUniqueName(string uniqueName) {
             this.uniqueName = uniqueName;
             return this;
         }
@@ -54,7 +54,7 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
          * @param attributes The attributes
          * @return this
          */
-        public ChannelUpdater setAttributes(JsonNode attributes) {
+        public ChannelUpdater setAttributes(Object attributes) {
             this.attributes = attributes;
             return this;
         }
@@ -121,11 +121,11 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
             }
             
             if (attributes != null) {
-                request.addPostParam("Attributes", attributes.toString());
+                request.addPostParam("Attributes", attributes.ToString());
             }
             
             if (type != null) {
-                request.addPostParam("Type", type.toString());
+                request.addPostParam("Type", type.ToString());
             }
         }
     }

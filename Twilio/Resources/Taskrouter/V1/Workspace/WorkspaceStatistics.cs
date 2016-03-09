@@ -1,11 +1,10 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Taskrouter.V1.Workspace;
 using Twilio.Http;
 using Twilio.Resources;
-using com.fasterxml.jackson.databind.JsonNode;
 
 namespace Twilio.Resources.Taskrouter.V1.Workspace {
 
@@ -16,7 +15,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @return WorkspaceStatisticsFetcher capable of executing the fetch
          */
-        public static WorkspaceStatisticsFetcher fetch(String workspaceSid) {
+        public static WorkspaceStatisticsFetcher fetch(string workspaceSid) {
             return new WorkspaceStatisticsFetcher(workspaceSid);
         }
     
@@ -36,22 +35,22 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         }
     
         [JsonProperty("realtime")]
-        private readonly JsonNode realtime;
+        private readonly Object realtime;
         [JsonProperty("cumulative")]
-        private readonly JsonNode cumulative;
+        private readonly Object cumulative;
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("workspace_sid")]
-        private readonly String workspaceSid;
+        private readonly string workspaceSid;
     
         private WorkspaceStatistics([JsonProperty("realtime")]
-                                    JsonNode realtime, 
+                                    Object realtime, 
                                     [JsonProperty("cumulative")]
-                                    JsonNode cumulative, 
+                                    Object cumulative, 
                                     [JsonProperty("account_sid")]
-                                    String accountSid, 
+                                    string accountSid, 
                                     [JsonProperty("workspace_sid")]
-                                    String workspaceSid) {
+                                    string workspaceSid) {
             this.realtime = realtime;
             this.cumulative = cumulative;
             this.accountSid = accountSid;
@@ -61,28 +60,28 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The realtime
          */
-        public JsonNode GetRealtime() {
+        public Object GetRealtime() {
             return this.realtime;
         }
     
         /**
          * @return The cumulative
          */
-        public JsonNode GetCumulative() {
+        public Object GetCumulative() {
             return this.cumulative;
         }
     
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The workspace_sid
          */
-        public String GetWorkspaceSid() {
+        public string GetWorkspaceSid() {
             return this.workspaceSid;
         }
     }

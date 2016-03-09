@@ -1,20 +1,20 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.workspace.task_queue.TaskQueuesStatistics;
-using com.twilio.sdk.converters.MarshalConverter;
 using com.twilio.sdk.readers.Reader;
 using com.twilio.sdk.resources.Page;
 using com.twilio.sdk.resources.ResourceSet;
-using org.joda.time.DateTime;
 
 namespace Twilio.Readers.Taskrouter.V1.Workspace.Taskqueue {
 
     public class TaskQueuesStatisticsReader : Reader<TaskQueuesStatistics> {
-        private String workspaceSid;
+        private string workspaceSid;
         private DateTime endDate;
-        private String friendlyName;
-        private Integer minutes;
+        private string friendlyName;
+        private int minutes;
         private DateTime startDate;
     
         /**
@@ -22,7 +22,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.Taskqueue {
          * 
          * @param workspaceSid The workspace_sid
          */
-        public TaskQueuesStatisticsReader(String workspaceSid) {
+        public TaskQueuesStatisticsReader(string workspaceSid) {
             this.workspaceSid = workspaceSid;
         }
     
@@ -43,7 +43,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.Taskqueue {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public TaskQueuesStatisticsReader byFriendlyName(String friendlyName) {
+        public TaskQueuesStatisticsReader byFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -54,7 +54,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.Taskqueue {
          * @param minutes The minutes
          * @return this
          */
-        public TaskQueuesStatisticsReader byMinutes(Integer minutes) {
+        public TaskQueuesStatisticsReader byMinutes(int minutes) {
             this.minutes = minutes;
             return this;
         }
@@ -147,7 +147,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.Taskqueue {
          */
         private void addQueryParams(final Request request) {
             if (endDate != null) {
-                request.addQueryParam("EndDate", endDate.toString());
+                request.addQueryParam("EndDate", endDate.ToString());
             }
             
             if (friendlyName != null) {
@@ -155,11 +155,11 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.Taskqueue {
             }
             
             if (minutes != null) {
-                request.addQueryParam("Minutes", minutes.toString());
+                request.addQueryParam("Minutes", minutes.ToString());
             }
             
             if (startDate != null) {
-                request.addQueryParam("StartDate", startDate.toString());
+                request.addQueryParam("StartDate", startDate.ToString());
             }
             
             request.addQueryParam("PageSize", Integer.toString(getPageSize()));

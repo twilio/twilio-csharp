@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.queue.Member;
@@ -9,8 +9,8 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account.Queue {
 
     public class MemberReader : Reader<Member> {
-        private String accountSid;
-        private String queueSid;
+        private string accountSid;
+        private string queueSid;
     
         /**
          * Construct a new MemberReader
@@ -18,7 +18,7 @@ namespace Twilio.Readers.Api.V2010.Account.Queue {
          * @param accountSid The account_sid
          * @param queueSid The Queue in which to find members
          */
-        public MemberReader(String accountSid, String queueSid) {
+        public MemberReader(string accountSid, string queueSid) {
             this.accountSid = accountSid;
             this.queueSid = queueSid;
         }

@@ -1,14 +1,12 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Monitor.V1;
 using Twilio.Http;
 using Twilio.Readers.Monitor.V1;
 using Twilio.Resources;
-using com.fasterxml.jackson.databind.JsonNode;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Monitor.V1 {
 
@@ -19,7 +17,7 @@ namespace Twilio.Resources.Monitor.V1 {
          * @param sid The sid
          * @return EventFetcher capable of executing the fetch
          */
-        public static EventFetcher fetch(String sid) {
+        public static EventFetcher fetch(string sid) {
             return new EventFetcher(sid);
         }
     
@@ -48,60 +46,60 @@ namespace Twilio.Resources.Monitor.V1 {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("actor_sid")]
-        private readonly String actorSid;
+        private readonly string actorSid;
         [JsonProperty("actor_type")]
-        private readonly String actorType;
+        private readonly string actorType;
         [JsonProperty("description")]
-        private readonly String description;
+        private readonly string description;
         [JsonProperty("event_data")]
-        private readonly JsonNode eventData;
+        private readonly Object eventData;
         [JsonProperty("event_date")]
         private readonly DateTime eventDate;
         [JsonProperty("event_type")]
-        private readonly String eventType;
+        private readonly string eventType;
         [JsonProperty("resource_sid")]
-        private readonly String resourceSid;
+        private readonly string resourceSid;
         [JsonProperty("resource_type")]
-        private readonly String resourceType;
+        private readonly string resourceType;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("source")]
-        private readonly String source;
+        private readonly string source;
         [JsonProperty("source_ip_address")]
-        private readonly String sourceIpAddress;
+        private readonly string sourceIpAddress;
     
         private Event([JsonProperty("account_sid")]
-                      String accountSid, 
+                      string accountSid, 
                       [JsonProperty("actor_sid")]
-                      String actorSid, 
+                      string actorSid, 
                       [JsonProperty("actor_type")]
-                      String actorType, 
+                      string actorType, 
                       [JsonProperty("description")]
-                      String description, 
+                      string description, 
                       [JsonProperty("event_data")]
-                      JsonNode eventData, 
+                      Object eventData, 
                       [JsonProperty("event_date")]
-                      String eventDate, 
+                      string eventDate, 
                       [JsonProperty("event_type")]
-                      String eventType, 
+                      string eventType, 
                       [JsonProperty("resource_sid")]
-                      String resourceSid, 
+                      string resourceSid, 
                       [JsonProperty("resource_type")]
-                      String resourceType, 
+                      string resourceType, 
                       [JsonProperty("sid")]
-                      String sid, 
+                      string sid, 
                       [JsonProperty("source")]
-                      String source, 
+                      string source, 
                       [JsonProperty("source_ip_address")]
-                      String sourceIpAddress) {
+                      string sourceIpAddress) {
             this.accountSid = accountSid;
             this.actorSid = actorSid;
             this.actorType = actorType;
             this.description = description;
             this.eventData = eventData;
-            this.eventDate = MarshalConverter.dateTimeFromString(eventDate);
+            this.eventDate = MarshalConverter.DateTimeFromString(eventDate);
             this.eventType = eventType;
             this.resourceSid = resourceSid;
             this.resourceType = resourceType;
@@ -113,35 +111,35 @@ namespace Twilio.Resources.Monitor.V1 {
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The actor_sid
          */
-        public String GetActorSid() {
+        public string GetActorSid() {
             return this.actorSid;
         }
     
         /**
          * @return The actor_type
          */
-        public String GetActorType() {
+        public string GetActorType() {
             return this.actorType;
         }
     
         /**
          * @return The description
          */
-        public String GetDescription() {
+        public string GetDescription() {
             return this.description;
         }
     
         /**
          * @return The event_data
          */
-        public JsonNode GetEventData() {
+        public Object GetEventData() {
             return this.eventData;
         }
     
@@ -155,42 +153,42 @@ namespace Twilio.Resources.Monitor.V1 {
         /**
          * @return The event_type
          */
-        public String GetEventType() {
+        public string GetEventType() {
             return this.eventType;
         }
     
         /**
          * @return The resource_sid
          */
-        public String GetResourceSid() {
+        public string GetResourceSid() {
             return this.resourceSid;
         }
     
         /**
          * @return The resource_type
          */
-        public String GetResourceType() {
+        public string GetResourceType() {
             return this.resourceType;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The source
          */
-        public String GetSource() {
+        public string GetSource() {
             return this.source;
         }
     
         /**
          * @return The source_ip_address
          */
-        public String GetSourceIpAddress() {
+        public string GetSourceIpAddress() {
             return this.sourceIpAddress;
         }
     }

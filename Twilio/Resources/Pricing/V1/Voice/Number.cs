@@ -1,15 +1,11 @@
 using Newtonsoft.Json;
-using Newtonsoft.Json.JsonDeserialize;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Pricing.V1.Voice;
 using Twilio.Http;
 using Twilio.Resources;
-using com.twilio.types.InboundCallPrice;
-using com.twilio.types.OutboundCallPrice;
-using java.net.URI;
-using java.util.Currency;
+using Twilio.Types;
 
 namespace Twilio.Resources.Pricing.V1.Voice {
 
@@ -20,7 +16,7 @@ namespace Twilio.Resources.Pricing.V1.Voice {
          * @param number The number
          * @return NumberFetcher capable of executing the fetch
          */
-        public static NumberFetcher fetch(com.twilio.types.PhoneNumber number) {
+        public static NumberFetcher fetch(Twilio.Types.PhoneNumber number) {
             return new NumberFetcher(number);
         }
     
@@ -40,35 +36,34 @@ namespace Twilio.Resources.Pricing.V1.Voice {
         }
     
         [JsonProperty("number")]
-        private readonly com.twilio.types.PhoneNumber number;
+        private readonly Twilio.Types.PhoneNumber number;
         [JsonProperty("country")]
-        private readonly String country;
+        private readonly string country;
         [JsonProperty("iso_country")]
-        private readonly String isoCountry;
+        private readonly string isoCountry;
         [JsonProperty("outbound_call_price")]
         private readonly OutboundCallPrice outboundCallPrice;
         [JsonProperty("inbound_call_price")]
         private readonly InboundCallPrice inboundCallPrice;
         [JsonProperty("price_unit")]
-        private readonly Currency priceUnit;
+        private readonly decimal priceUnit;
         [JsonProperty("url")]
-        private readonly URI url;
+        private readonly Uri url;
     
         private Number([JsonProperty("number")]
-                       com.twilio.types.PhoneNumber number, 
+                       Twilio.Types.PhoneNumber number, 
                        [JsonProperty("country")]
-                       String country, 
+                       string country, 
                        [JsonProperty("iso_country")]
-                       String isoCountry, 
+                       string isoCountry, 
                        [JsonProperty("outbound_call_price")]
                        OutboundCallPrice outboundCallPrice, 
                        [JsonProperty("inbound_call_price")]
                        InboundCallPrice inboundCallPrice, 
                        [JsonProperty("price_unit")]
-                       [JsonDeserialize(using = com.twilio.sdk.converters.CurrencyDeserializer.class)]
-                       Currency priceUnit, 
+                       decimal priceUnit, 
                        [JsonProperty("url")]
-                       URI url) {
+                       Uri url) {
             this.number = number;
             this.country = country;
             this.isoCountry = isoCountry;
@@ -81,28 +76,28 @@ namespace Twilio.Resources.Pricing.V1.Voice {
         /**
          * @return The number
          */
-        public String getSid() {
-            return this.getNumber().toString();
+        public string getSid() {
+            return this.getNumber().ToString();
         }
     
         /**
          * @return The number
          */
-        public com.twilio.types.PhoneNumber GetNumber() {
+        public Twilio.Types.PhoneNumber GetNumber() {
             return this.number;
         }
     
         /**
          * @return The country
          */
-        public String GetCountry() {
+        public string GetCountry() {
             return this.country;
         }
     
         /**
          * @return The iso_country
          */
-        public String GetIsoCountry() {
+        public string GetIsoCountry() {
             return this.isoCountry;
         }
     
@@ -123,14 +118,14 @@ namespace Twilio.Resources.Pricing.V1.Voice {
         /**
          * @return The price_unit
          */
-        public Currency GetPriceUnit() {
+        public decimal GetPriceUnit() {
             return this.priceUnit;
         }
     
         /**
          * @return The url
          */
-        public URI GetUrl() {
+        public Uri GetUrl() {
             return this.url;
         }
     }

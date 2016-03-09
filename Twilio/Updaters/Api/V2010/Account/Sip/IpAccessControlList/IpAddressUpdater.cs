@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.sip.ip_access_control_list.IpAddress;
@@ -7,11 +7,11 @@ using com.twilio.sdk.updaters.Updater;
 namespace Twilio.Updaters.Api.V2010.Account.Sip.Ipaccesscontrollist {
 
     public class IpAddressUpdater : Updater<IpAddress> {
-        private String accountSid;
-        private String ipAccessControlListSid;
-        private String sid;
-        private String ipAddress;
-        private String friendlyName;
+        private string accountSid;
+        private string ipAccessControlListSid;
+        private string sid;
+        private string ipAddress;
+        private string friendlyName;
     
         /**
          * Construct a new IpAddressUpdater
@@ -22,7 +22,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip.Ipaccesscontrollist {
          * @param ipAddress The ip_address
          * @param friendlyName The friendly_name
          */
-        public IpAddressUpdater(String accountSid, String ipAccessControlListSid, String sid, String ipAddress, String friendlyName) {
+        public IpAddressUpdater(string accountSid, string ipAccessControlListSid, string sid, string ipAddress, string friendlyName) {
             this.accountSid = accountSid;
             this.ipAccessControlListSid = ipAccessControlListSid;
             this.sid = sid;

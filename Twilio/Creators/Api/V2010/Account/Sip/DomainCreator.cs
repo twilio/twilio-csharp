@@ -1,23 +1,22 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
 using Twilio.Converters.Promoter;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.sip.Domain;
-using com.twilio.sdk.http.HttpMethod;
-using java.net.URI;
 
 namespace Twilio.Creators.Api.V2010.Account.Sip {
 
     public class DomainCreator : Creator<Domain> {
-        private String accountSid;
-        private String domainName;
-        private String friendlyName;
-        private URI voiceUrl;
+        private string accountSid;
+        private string domainName;
+        private string friendlyName;
+        private Uri voiceUrl;
         private HttpMethod voiceMethod;
-        private URI voiceFallbackUrl;
+        private Uri voiceFallbackUrl;
         private HttpMethod voiceFallbackMethod;
-        private URI voiceStatusCallbackUrl;
+        private Uri voiceStatusCallbackUrl;
         private HttpMethod voiceStatusCallbackMethod;
     
         /**
@@ -26,7 +25,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          * @param accountSid The account_sid
          * @param domainName The unique address on Twilio to route SIP traffic
          */
-        public DomainCreator(String accountSid, String domainName) {
+        public DomainCreator(string accountSid, string domainName) {
             this.accountSid = accountSid;
             this.domainName = domainName;
         }
@@ -37,7 +36,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          * @param friendlyName A user-specified, human-readable name for the trigger.
          * @return this
          */
-        public DomainCreator setFriendlyName(String friendlyName) {
+        public DomainCreator setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -48,7 +47,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          * @param voiceUrl URL Twilio will request when receiving a call
          * @return this
          */
-        public DomainCreator setVoiceUrl(URI voiceUrl) {
+        public DomainCreator setVoiceUrl(Uri voiceUrl) {
             this.voiceUrl = voiceUrl;
             return this;
         }
@@ -59,8 +58,8 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          * @param voiceUrl URL Twilio will request when receiving a call
          * @return this
          */
-        public DomainCreator setVoiceUrl(String voiceUrl) {
-            return setVoiceUrl(Promoter.uriFromString(voiceUrl));
+        public DomainCreator setVoiceUrl(string voiceUrl) {
+            return setVoiceUrl(Promoter.UriFromString(voiceUrl));
         }
     
         /**
@@ -82,7 +81,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          *                         executing TwiML
          * @return this
          */
-        public DomainCreator setVoiceFallbackUrl(URI voiceFallbackUrl) {
+        public DomainCreator setVoiceFallbackUrl(Uri voiceFallbackUrl) {
             this.voiceFallbackUrl = voiceFallbackUrl;
             return this;
         }
@@ -95,8 +94,8 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          *                         executing TwiML
          * @return this
          */
-        public DomainCreator setVoiceFallbackUrl(String voiceFallbackUrl) {
-            return setVoiceFallbackUrl(Promoter.uriFromString(voiceFallbackUrl));
+        public DomainCreator setVoiceFallbackUrl(string voiceFallbackUrl) {
+            return setVoiceFallbackUrl(Promoter.UriFromString(voiceFallbackUrl));
         }
     
         /**
@@ -117,7 +116,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          *                               updates
          * @return this
          */
-        public DomainCreator setVoiceStatusCallbackUrl(URI voiceStatusCallbackUrl) {
+        public DomainCreator setVoiceStatusCallbackUrl(Uri voiceStatusCallbackUrl) {
             this.voiceStatusCallbackUrl = voiceStatusCallbackUrl;
             return this;
         }
@@ -129,8 +128,8 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          *                               updates
          * @return this
          */
-        public DomainCreator setVoiceStatusCallbackUrl(String voiceStatusCallbackUrl) {
-            return setVoiceStatusCallbackUrl(Promoter.uriFromString(voiceStatusCallbackUrl));
+        public DomainCreator setVoiceStatusCallbackUrl(string voiceStatusCallbackUrl) {
+            return setVoiceStatusCallbackUrl(Promoter.UriFromString(voiceStatusCallbackUrl));
         }
     
         /**
@@ -195,27 +194,27 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
             }
             
             if (voiceUrl != null) {
-                request.addPostParam("VoiceUrl", voiceUrl.toString());
+                request.addPostParam("VoiceUrl", voiceUrl.ToString());
             }
             
             if (voiceMethod != null) {
-                request.addPostParam("VoiceMethod", voiceMethod.toString());
+                request.addPostParam("VoiceMethod", voiceMethod.ToString());
             }
             
             if (voiceFallbackUrl != null) {
-                request.addPostParam("VoiceFallbackUrl", voiceFallbackUrl.toString());
+                request.addPostParam("VoiceFallbackUrl", voiceFallbackUrl.ToString());
             }
             
             if (voiceFallbackMethod != null) {
-                request.addPostParam("VoiceFallbackMethod", voiceFallbackMethod.toString());
+                request.addPostParam("VoiceFallbackMethod", voiceFallbackMethod.ToString());
             }
             
             if (voiceStatusCallbackUrl != null) {
-                request.addPostParam("VoiceStatusCallbackUrl", voiceStatusCallbackUrl.toString());
+                request.addPostParam("VoiceStatusCallbackUrl", voiceStatusCallbackUrl.ToString());
             }
             
             if (voiceStatusCallbackMethod != null) {
-                request.addPostParam("VoiceStatusCallbackMethod", voiceStatusCallbackMethod.toString());
+                request.addPostParam("VoiceStatusCallbackMethod", voiceStatusCallbackMethod.ToString());
             }
         }
     }

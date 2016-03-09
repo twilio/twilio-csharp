@@ -1,16 +1,13 @@
 using Newtonsoft.Json;
-using Newtonsoft.Json.JsonDeserialize;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Pricing.V1.PhoneNumber;
 using Twilio.Http;
 using Twilio.Readers.Pricing.V1.PhoneNumber;
 using Twilio.Resources;
-using com.twilio.types.PhoneNumberPrice;
-using java.net.URI;
-using java.util.Currency;
-using java.util.List;
+using Twilio.Types;
 
 namespace Twilio.Resources.Pricing.V1.Phonenumber {
 
@@ -30,7 +27,7 @@ namespace Twilio.Resources.Pricing.V1.Phonenumber {
          * @param isoCountry The iso_country
          * @return CountryFetcher capable of executing the fetch
          */
-        public static CountryFetcher fetch(String isoCountry) {
+        public static CountryFetcher fetch(string isoCountry) {
             return new CountryFetcher(isoCountry);
         }
     
@@ -50,31 +47,30 @@ namespace Twilio.Resources.Pricing.V1.Phonenumber {
         }
     
         [JsonProperty("country")]
-        private readonly String country;
+        private readonly string country;
         [JsonProperty("iso_country")]
-        private readonly String isoCountry;
+        private readonly string isoCountry;
         [JsonProperty("phone_number_prices")]
         private readonly List<PhoneNumberPrice> phoneNumberPrices;
         [JsonProperty("price_unit")]
-        private readonly Currency priceUnit;
+        private readonly decimal priceUnit;
         [JsonProperty("uri")]
-        private readonly URI uri;
+        private readonly Uri uri;
         [JsonProperty("url")]
-        private readonly URI url;
+        private readonly Uri url;
     
         private Country([JsonProperty("country")]
-                        String country, 
+                        string country, 
                         [JsonProperty("iso_country")]
-                        String isoCountry, 
+                        string isoCountry, 
                         [JsonProperty("phone_number_prices")]
                         List<PhoneNumberPrice> phoneNumberPrices, 
                         [JsonProperty("price_unit")]
-                        [JsonDeserialize(using = com.twilio.sdk.converters.CurrencyDeserializer.class)]
-                        Currency priceUnit, 
+                        decimal priceUnit, 
                         [JsonProperty("uri")]
-                        URI uri, 
+                        Uri uri, 
                         [JsonProperty("url")]
-                        URI url) {
+                        Uri url) {
             this.country = country;
             this.isoCountry = isoCountry;
             this.phoneNumberPrices = phoneNumberPrices;
@@ -86,21 +82,21 @@ namespace Twilio.Resources.Pricing.V1.Phonenumber {
         /**
          * @return The iso_country
          */
-        public String getSid() {
+        public string getSid() {
             return this.getIsoCountry();
         }
     
         /**
          * @return The country
          */
-        public String GetCountry() {
+        public string GetCountry() {
             return this.country;
         }
     
         /**
          * @return The iso_country
          */
-        public String GetIsoCountry() {
+        public string GetIsoCountry() {
             return this.isoCountry;
         }
     
@@ -114,21 +110,21 @@ namespace Twilio.Resources.Pricing.V1.Phonenumber {
         /**
          * @return The price_unit
          */
-        public Currency GetPriceUnit() {
+        public decimal GetPriceUnit() {
             return this.priceUnit;
         }
     
         /**
          * @return The uri
          */
-        public URI GetUri() {
+        public Uri GetUri() {
             return this.uri;
         }
     
         /**
          * @return The url
          */
-        public URI GetUrl() {
+        public Uri GetUrl() {
             return this.url;
         }
     }

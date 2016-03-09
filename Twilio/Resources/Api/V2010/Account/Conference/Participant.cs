@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Deleters.Api.V2010.Account.Conference;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Api.V2010.Account.Conference;
@@ -8,8 +9,6 @@ using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account.Conference;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010.Account.Conference;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account.Conference {
 
@@ -22,7 +21,7 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
          * @param callSid The call_sid
          * @return ParticipantFetcher capable of executing the fetch
          */
-        public static ParticipantFetcher fetch(String accountSid, String conferenceSid, String callSid) {
+        public static ParticipantFetcher fetch(string accountSid, string conferenceSid, string callSid) {
             return new ParticipantFetcher(accountSid, conferenceSid, callSid);
         }
     
@@ -35,7 +34,7 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
          * @param muted Indicates if the participant should be muted
          * @return ParticipantUpdater capable of executing the update
          */
-        public static ParticipantUpdater update(String accountSid, String conferenceSid, String callSid, Boolean muted) {
+        public static ParticipantUpdater update(string accountSid, string conferenceSid, string callSid, bool muted) {
             return new ParticipantUpdater(accountSid, conferenceSid, callSid, muted);
         }
     
@@ -47,7 +46,7 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
          * @param callSid The call_sid
          * @return ParticipantDeleter capable of executing the delete
          */
-        public static ParticipantDeleter delete(String accountSid, String conferenceSid, String callSid) {
+        public static ParticipantDeleter delete(string accountSid, string conferenceSid, string callSid) {
             return new ParticipantDeleter(accountSid, conferenceSid, callSid);
         }
     
@@ -59,7 +58,7 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
          * @param conferenceSid The string that uniquely identifies this conference
          * @return ParticipantReader capable of executing the read
          */
-        public static ParticipantReader read(String accountSid, String conferenceSid) {
+        public static ParticipantReader read(string accountSid, string conferenceSid) {
             return new ParticipantReader(accountSid, conferenceSid);
         }
     
@@ -79,47 +78,47 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("call_sid")]
-        private readonly String callSid;
+        private readonly string callSid;
         [JsonProperty("conference_sid")]
-        private readonly String conferenceSid;
+        private readonly string conferenceSid;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("end_conference_on_exit")]
-        private readonly Boolean endConferenceOnExit;
+        private readonly bool endConferenceOnExit;
         [JsonProperty("muted")]
-        private readonly Boolean muted;
+        private readonly bool muted;
         [JsonProperty("start_conference_on_enter")]
-        private readonly Boolean startConferenceOnEnter;
+        private readonly bool startConferenceOnEnter;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private Participant([JsonProperty("account_sid")]
-                            String accountSid, 
+                            string accountSid, 
                             [JsonProperty("call_sid")]
-                            String callSid, 
+                            string callSid, 
                             [JsonProperty("conference_sid")]
-                            String conferenceSid, 
+                            string conferenceSid, 
                             [JsonProperty("date_created")]
-                            String dateCreated, 
+                            string dateCreated, 
                             [JsonProperty("date_updated")]
-                            String dateUpdated, 
+                            string dateUpdated, 
                             [JsonProperty("end_conference_on_exit")]
-                            Boolean endConferenceOnExit, 
+                            bool endConferenceOnExit, 
                             [JsonProperty("muted")]
-                            Boolean muted, 
+                            bool muted, 
                             [JsonProperty("start_conference_on_enter")]
-                            Boolean startConferenceOnEnter, 
+                            bool startConferenceOnEnter, 
                             [JsonProperty("uri")]
-                            String uri) {
+                            string uri) {
             this.accountSid = accountSid;
             this.callSid = callSid;
             this.conferenceSid = conferenceSid;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.endConferenceOnExit = endConferenceOnExit;
             this.muted = muted;
             this.startConferenceOnEnter = startConferenceOnEnter;
@@ -129,28 +128,28 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
         /**
          * @return A string that uniquely identifies this call
          */
-        public String getSid() {
+        public string getSid() {
             return this.getCallSid();
         }
     
         /**
          * @return The unique sid that identifies this account
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return A string that uniquely identifies this call
          */
-        public String GetCallSid() {
+        public string GetCallSid() {
             return this.callSid;
         }
     
         /**
          * @return A string that uniquely identifies this conference
          */
-        public String GetConferenceSid() {
+        public string GetConferenceSid() {
             return this.conferenceSid;
         }
     
@@ -171,28 +170,28 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
         /**
          * @return Indicates if the endConferenceOnExit was set
          */
-        public Boolean GetEndConferenceOnExit() {
+        public bool GetEndConferenceOnExit() {
             return this.endConferenceOnExit;
         }
     
         /**
          * @return Indicates if the participant is muted
          */
-        public Boolean GetMuted() {
+        public bool GetMuted() {
             return this.muted;
         }
     
         /**
          * @return Indicates if the startConferenceOnEnter attribute was set
          */
-        public Boolean GetStartConferenceOnEnter() {
+        public bool GetStartConferenceOnEnter() {
             return this.startConferenceOnEnter;
         }
     
         /**
          * @return The URI for this resource
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

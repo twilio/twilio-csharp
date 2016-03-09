@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Deleters.Deleter;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Trunking.V1.trunk.PhoneNumber;
 namespace Twilio.Deleters.Trunking.V1.Trunk {
 
     public class PhoneNumberDeleter : Deleter<PhoneNumber> {
-        private String trunkSid;
-        private String sid;
+        private string trunkSid;
+        private string sid;
     
         /**
          * Construct a new PhoneNumberDeleter
@@ -16,7 +16,7 @@ namespace Twilio.Deleters.Trunking.V1.Trunk {
          * @param trunkSid The trunk_sid
          * @param sid The sid
          */
-        public PhoneNumberDeleter(String trunkSid, String sid) {
+        public PhoneNumberDeleter(string trunkSid, string sid) {
             this.trunkSid = trunkSid;
             this.sid = sid;
         }

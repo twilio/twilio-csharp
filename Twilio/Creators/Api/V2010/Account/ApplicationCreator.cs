@@ -1,31 +1,30 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
 using Twilio.Converters.Promoter;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.Application;
-using com.twilio.sdk.http.HttpMethod;
-using java.net.URI;
 
 namespace Twilio.Creators.Api.V2010.Account {
 
     public class ApplicationCreator : Creator<Application> {
-        private String accountSid;
-        private String friendlyName;
-        private String apiVersion;
-        private URI voiceUrl;
+        private string accountSid;
+        private string friendlyName;
+        private string apiVersion;
+        private Uri voiceUrl;
         private HttpMethod voiceMethod;
-        private URI voiceFallbackUrl;
+        private Uri voiceFallbackUrl;
         private HttpMethod voiceFallbackMethod;
-        private URI statusCallback;
+        private Uri statusCallback;
         private HttpMethod statusCallbackMethod;
-        private Boolean voiceCallerIdLookup;
-        private URI smsUrl;
+        private bool voiceCallerIdLookup;
+        private Uri smsUrl;
         private HttpMethod smsMethod;
-        private URI smsFallbackUrl;
+        private Uri smsFallbackUrl;
         private HttpMethod smsFallbackMethod;
-        private URI smsStatusCallback;
-        private URI messageStatusCallback;
+        private Uri smsStatusCallback;
+        private Uri messageStatusCallback;
     
         /**
          * Construct a new ApplicationCreator
@@ -33,7 +32,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param accountSid The account_sid
          * @param friendlyName Human readable description of this resource
          */
-        public ApplicationCreator(String accountSid, String friendlyName) {
+        public ApplicationCreator(string accountSid, string friendlyName) {
             this.accountSid = accountSid;
             this.friendlyName = friendlyName;
         }
@@ -45,7 +44,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param apiVersion The API version to use
          * @return this
          */
-        public ApplicationCreator setApiVersion(String apiVersion) {
+        public ApplicationCreator setApiVersion(string apiVersion) {
             this.apiVersion = apiVersion;
             return this;
         }
@@ -57,7 +56,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param voiceUrl URL Twilio will make requests to when relieving a call
          * @return this
          */
-        public ApplicationCreator setVoiceUrl(URI voiceUrl) {
+        public ApplicationCreator setVoiceUrl(Uri voiceUrl) {
             this.voiceUrl = voiceUrl;
             return this;
         }
@@ -69,8 +68,8 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param voiceUrl URL Twilio will make requests to when relieving a call
          * @return this
          */
-        public ApplicationCreator setVoiceUrl(String voiceUrl) {
-            return setVoiceUrl(Promoter.uriFromString(voiceUrl));
+        public ApplicationCreator setVoiceUrl(string voiceUrl) {
+            return setVoiceUrl(Promoter.UriFromString(voiceUrl));
         }
     
         /**
@@ -92,7 +91,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param voiceFallbackUrl Fallback URL
          * @return this
          */
-        public ApplicationCreator setVoiceFallbackUrl(URI voiceFallbackUrl) {
+        public ApplicationCreator setVoiceFallbackUrl(Uri voiceFallbackUrl) {
             this.voiceFallbackUrl = voiceFallbackUrl;
             return this;
         }
@@ -104,8 +103,8 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param voiceFallbackUrl Fallback URL
          * @return this
          */
-        public ApplicationCreator setVoiceFallbackUrl(String voiceFallbackUrl) {
-            return setVoiceFallbackUrl(Promoter.uriFromString(voiceFallbackUrl));
+        public ApplicationCreator setVoiceFallbackUrl(string voiceFallbackUrl) {
+            return setVoiceFallbackUrl(Promoter.UriFromString(voiceFallbackUrl));
         }
     
         /**
@@ -127,7 +126,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param statusCallback URL to hit with status updates
          * @return this
          */
-        public ApplicationCreator setStatusCallback(URI statusCallback) {
+        public ApplicationCreator setStatusCallback(Uri statusCallback) {
             this.statusCallback = statusCallback;
             return this;
         }
@@ -139,8 +138,8 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param statusCallback URL to hit with status updates
          * @return this
          */
-        public ApplicationCreator setStatusCallback(String statusCallback) {
-            return setStatusCallback(Promoter.uriFromString(statusCallback));
+        public ApplicationCreator setStatusCallback(string statusCallback) {
+            return setStatusCallback(Promoter.UriFromString(statusCallback));
         }
     
         /**
@@ -162,7 +161,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param voiceCallerIdLookup True or False
          * @return this
          */
-        public ApplicationCreator setVoiceCallerIdLookup(Boolean voiceCallerIdLookup) {
+        public ApplicationCreator setVoiceCallerIdLookup(bool voiceCallerIdLookup) {
             this.voiceCallerIdLookup = voiceCallerIdLookup;
             return this;
         }
@@ -174,7 +173,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param smsUrl URL Twilio will request when receiving an SMS
          * @return this
          */
-        public ApplicationCreator setSmsUrl(URI smsUrl) {
+        public ApplicationCreator setSmsUrl(Uri smsUrl) {
             this.smsUrl = smsUrl;
             return this;
         }
@@ -186,8 +185,8 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param smsUrl URL Twilio will request when receiving an SMS
          * @return this
          */
-        public ApplicationCreator setSmsUrl(String smsUrl) {
-            return setSmsUrl(Promoter.uriFromString(smsUrl));
+        public ApplicationCreator setSmsUrl(string smsUrl) {
+            return setSmsUrl(Promoter.UriFromString(smsUrl));
         }
     
         /**
@@ -209,7 +208,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param smsFallbackUrl Fallback URL if there's an error parsing TwiML
          * @return this
          */
-        public ApplicationCreator setSmsFallbackUrl(URI smsFallbackUrl) {
+        public ApplicationCreator setSmsFallbackUrl(Uri smsFallbackUrl) {
             this.smsFallbackUrl = smsFallbackUrl;
             return this;
         }
@@ -221,8 +220,8 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param smsFallbackUrl Fallback URL if there's an error parsing TwiML
          * @return this
          */
-        public ApplicationCreator setSmsFallbackUrl(String smsFallbackUrl) {
-            return setSmsFallbackUrl(Promoter.uriFromString(smsFallbackUrl));
+        public ApplicationCreator setSmsFallbackUrl(string smsFallbackUrl) {
+            return setSmsFallbackUrl(Promoter.UriFromString(smsFallbackUrl));
         }
     
         /**
@@ -245,7 +244,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param smsStatusCallback URL Twilio with request with status updates
          * @return this
          */
-        public ApplicationCreator setSmsStatusCallback(URI smsStatusCallback) {
+        public ApplicationCreator setSmsStatusCallback(Uri smsStatusCallback) {
             this.smsStatusCallback = smsStatusCallback;
             return this;
         }
@@ -258,8 +257,8 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param smsStatusCallback URL Twilio with request with status updates
          * @return this
          */
-        public ApplicationCreator setSmsStatusCallback(String smsStatusCallback) {
-            return setSmsStatusCallback(Promoter.uriFromString(smsStatusCallback));
+        public ApplicationCreator setSmsStatusCallback(string smsStatusCallback) {
+            return setSmsStatusCallback(Promoter.UriFromString(smsStatusCallback));
         }
     
         /**
@@ -271,7 +270,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param messageStatusCallback URL to make requests to with status updates
          * @return this
          */
-        public ApplicationCreator setMessageStatusCallback(URI messageStatusCallback) {
+        public ApplicationCreator setMessageStatusCallback(Uri messageStatusCallback) {
             this.messageStatusCallback = messageStatusCallback;
             return this;
         }
@@ -285,8 +284,8 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param messageStatusCallback URL to make requests to with status updates
          * @return this
          */
-        public ApplicationCreator setMessageStatusCallback(String messageStatusCallback) {
-            return setMessageStatusCallback(Promoter.uriFromString(messageStatusCallback));
+        public ApplicationCreator setMessageStatusCallback(string messageStatusCallback) {
+            return setMessageStatusCallback(Promoter.UriFromString(messageStatusCallback));
         }
     
         /**
@@ -340,55 +339,55 @@ namespace Twilio.Creators.Api.V2010.Account {
             }
             
             if (voiceUrl != null) {
-                request.addPostParam("VoiceUrl", voiceUrl.toString());
+                request.addPostParam("VoiceUrl", voiceUrl.ToString());
             }
             
             if (voiceMethod != null) {
-                request.addPostParam("VoiceMethod", voiceMethod.toString());
+                request.addPostParam("VoiceMethod", voiceMethod.ToString());
             }
             
             if (voiceFallbackUrl != null) {
-                request.addPostParam("VoiceFallbackUrl", voiceFallbackUrl.toString());
+                request.addPostParam("VoiceFallbackUrl", voiceFallbackUrl.ToString());
             }
             
             if (voiceFallbackMethod != null) {
-                request.addPostParam("VoiceFallbackMethod", voiceFallbackMethod.toString());
+                request.addPostParam("VoiceFallbackMethod", voiceFallbackMethod.ToString());
             }
             
             if (statusCallback != null) {
-                request.addPostParam("StatusCallback", statusCallback.toString());
+                request.addPostParam("StatusCallback", statusCallback.ToString());
             }
             
             if (statusCallbackMethod != null) {
-                request.addPostParam("StatusCallbackMethod", statusCallbackMethod.toString());
+                request.addPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
             
             if (voiceCallerIdLookup != null) {
-                request.addPostParam("VoiceCallerIdLookup", voiceCallerIdLookup.toString());
+                request.addPostParam("VoiceCallerIdLookup", voiceCallerIdLookup.ToString());
             }
             
             if (smsUrl != null) {
-                request.addPostParam("SmsUrl", smsUrl.toString());
+                request.addPostParam("SmsUrl", smsUrl.ToString());
             }
             
             if (smsMethod != null) {
-                request.addPostParam("SmsMethod", smsMethod.toString());
+                request.addPostParam("SmsMethod", smsMethod.ToString());
             }
             
             if (smsFallbackUrl != null) {
-                request.addPostParam("SmsFallbackUrl", smsFallbackUrl.toString());
+                request.addPostParam("SmsFallbackUrl", smsFallbackUrl.ToString());
             }
             
             if (smsFallbackMethod != null) {
-                request.addPostParam("SmsFallbackMethod", smsFallbackMethod.toString());
+                request.addPostParam("SmsFallbackMethod", smsFallbackMethod.ToString());
             }
             
             if (smsStatusCallback != null) {
-                request.addPostParam("SmsStatusCallback", smsStatusCallback.toString());
+                request.addPostParam("SmsStatusCallback", smsStatusCallback.ToString());
             }
             
             if (messageStatusCallback != null) {
-                request.addPostParam("MessageStatusCallback", messageStatusCallback.toString());
+                request.addPostParam("MessageStatusCallback", messageStatusCallback.ToString());
             }
         }
     }

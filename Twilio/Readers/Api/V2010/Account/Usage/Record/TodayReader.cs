@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.usage.record.Today;
@@ -9,14 +9,14 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
 
     public class TodayReader : Reader<Today> {
-        private String accountSid;
+        private string accountSid;
     
         /**
          * Construct a new TodayReader
          * 
          * @param accountSid The account_sid
          */
-        public TodayReader(String accountSid) {
+        public TodayReader(string accountSid) {
             this.accountSid = accountSid;
         }
     

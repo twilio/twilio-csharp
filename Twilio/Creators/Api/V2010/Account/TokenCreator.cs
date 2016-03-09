@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,15 +7,15 @@ using Twilio.Resources.Api.V2010.account.Token;
 namespace Twilio.Creators.Api.V2010.Account {
 
     public class TokenCreator : Creator<Token> {
-        private String accountSid;
-        private Integer ttl;
+        private string accountSid;
+        private int ttl;
     
         /**
          * Construct a new TokenCreator
          * 
          * @param accountSid The account_sid
          */
-        public TokenCreator(String accountSid) {
+        public TokenCreator(string accountSid) {
             this.accountSid = accountSid;
         }
     
@@ -25,7 +25,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param ttl The duration in seconds the credentials are valid
          * @return this
          */
-        public TokenCreator setTtl(Integer ttl) {
+        public TokenCreator setTtl(int ttl) {
             this.ttl = ttl;
             return this;
         }
@@ -73,7 +73,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          */
         private void addPostParams(Request request) {
             if (ttl != null) {
-                request.addPostParam("Ttl", ttl.toString());
+                request.addPostParam("Ttl", ttl.ToString());
             }
         }
     }

@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,9 +7,9 @@ using Twilio.Resources.Api.V2010.account.conference.Participant;
 namespace Twilio.Fetchers.Api.V2010.Account.Conference {
 
     public class ParticipantFetcher : Fetcher<Participant> {
-        private String accountSid;
-        private String conferenceSid;
-        private String callSid;
+        private string accountSid;
+        private string conferenceSid;
+        private string callSid;
     
         /**
          * Construct a new ParticipantFetcher
@@ -18,7 +18,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Conference {
          * @param conferenceSid The string that uniquely identifies this conference
          * @param callSid The call_sid
          */
-        public ParticipantFetcher(String accountSid, String conferenceSid, String callSid) {
+        public ParticipantFetcher(string accountSid, string conferenceSid, string callSid) {
             this.accountSid = accountSid;
             this.conferenceSid = conferenceSid;
             this.callSid = callSid;

@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.workspace.TaskQueue;
@@ -9,16 +9,16 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Taskrouter.V1.Workspace {
 
     public class TaskQueueReader : Reader<TaskQueue> {
-        private String workspaceSid;
-        private String friendlyName;
-        private String evaluateWorkerAttributes;
+        private string workspaceSid;
+        private string friendlyName;
+        private string evaluateWorkerAttributes;
     
         /**
          * Construct a new TaskQueueReader
          * 
          * @param workspaceSid The workspace_sid
          */
-        public TaskQueueReader(String workspaceSid) {
+        public TaskQueueReader(string workspaceSid) {
             this.workspaceSid = workspaceSid;
         }
     
@@ -28,7 +28,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public TaskQueueReader byFriendlyName(String friendlyName) {
+        public TaskQueueReader byFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -39,7 +39,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param evaluateWorkerAttributes The evaluate_worker_attributes
          * @return this
          */
-        public TaskQueueReader byEvaluateWorkerAttributes(String evaluateWorkerAttributes) {
+        public TaskQueueReader byEvaluateWorkerAttributes(string evaluateWorkerAttributes) {
             this.evaluateWorkerAttributes = evaluateWorkerAttributes;
             return this;
         }

@@ -1,14 +1,13 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Taskrouter.V1.Workspace.Task;
 using Twilio.Http;
 using Twilio.Readers.Taskrouter.V1.Workspace.Task;
 using Twilio.Resources;
 using Twilio.Updaters.Taskrouter.V1.Workspace.Task;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Taskrouter.V1.Workspace.Task {
 
@@ -20,7 +19,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace.Task {
          * @param taskSid The task_sid
          * @return ReservationReader capable of executing the read
          */
-        public static ReservationReader read(String workspaceSid, String taskSid) {
+        public static ReservationReader read(string workspaceSid, string taskSid) {
             return new ReservationReader(workspaceSid, taskSid);
         }
     
@@ -32,7 +31,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace.Task {
          * @param sid The sid
          * @return ReservationFetcher capable of executing the fetch
          */
-        public static ReservationFetcher fetch(String workspaceSid, String taskSid, String sid) {
+        public static ReservationFetcher fetch(string workspaceSid, string taskSid, string sid) {
             return new ReservationFetcher(workspaceSid, taskSid, sid);
         }
     
@@ -45,7 +44,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace.Task {
          * @param reservationStatus The reservation_status
          * @return ReservationUpdater capable of executing the update
          */
-        public static ReservationUpdater update(String workspaceSid, String taskSid, String sid, String reservationStatus) {
+        public static ReservationUpdater update(string workspaceSid, string taskSid, string sid, string reservationStatus) {
             return new ReservationUpdater(workspaceSid, taskSid, sid, reservationStatus);
         }
     
@@ -65,45 +64,45 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace.Task {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("reservation_status")]
-        private readonly String reservationStatus;
+        private readonly string reservationStatus;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("task_sid")]
-        private readonly String taskSid;
+        private readonly string taskSid;
         [JsonProperty("worker_name")]
-        private readonly String workerName;
+        private readonly string workerName;
         [JsonProperty("worker_sid")]
-        private readonly String workerSid;
+        private readonly string workerSid;
         [JsonProperty("workspace_sid")]
-        private readonly String workspaceSid;
+        private readonly string workspaceSid;
     
         private Reservation([JsonProperty("account_sid")]
-                            String accountSid, 
+                            string accountSid, 
                             [JsonProperty("date_created")]
-                            String dateCreated, 
+                            string dateCreated, 
                             [JsonProperty("date_updated")]
-                            String dateUpdated, 
+                            string dateUpdated, 
                             [JsonProperty("reservation_status")]
-                            String reservationStatus, 
+                            string reservationStatus, 
                             [JsonProperty("sid")]
-                            String sid, 
+                            string sid, 
                             [JsonProperty("task_sid")]
-                            String taskSid, 
+                            string taskSid, 
                             [JsonProperty("worker_name")]
-                            String workerName, 
+                            string workerName, 
                             [JsonProperty("worker_sid")]
-                            String workerSid, 
+                            string workerSid, 
                             [JsonProperty("workspace_sid")]
-                            String workspaceSid) {
+                            string workspaceSid) {
             this.accountSid = accountSid;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.reservationStatus = reservationStatus;
             this.sid = sid;
             this.taskSid = taskSid;
@@ -115,7 +114,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace.Task {
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
@@ -136,42 +135,42 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace.Task {
         /**
          * @return The reservation_status
          */
-        public String GetReservationStatus() {
+        public string GetReservationStatus() {
             return this.reservationStatus;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The task_sid
          */
-        public String GetTaskSid() {
+        public string GetTaskSid() {
             return this.taskSid;
         }
     
         /**
          * @return The worker_name
          */
-        public String GetWorkerName() {
+        public string GetWorkerName() {
             return this.workerName;
         }
     
         /**
          * @return The worker_sid
          */
-        public String GetWorkerSid() {
+        public string GetWorkerSid() {
             return this.workerSid;
         }
     
         /**
          * @return The workspace_sid
          */
-        public String GetWorkspaceSid() {
+        public string GetWorkspaceSid() {
             return this.workspaceSid;
         }
     }

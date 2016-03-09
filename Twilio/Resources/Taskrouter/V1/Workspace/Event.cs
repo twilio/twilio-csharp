@@ -1,14 +1,13 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Taskrouter.V1.Workspace;
 using Twilio.Http;
 using Twilio.Readers.Taskrouter.V1.Workspace;
 using Twilio.Resources;
-using com.twilio.sdk.converters.MarshalConverter;
-using java.net.URI;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Taskrouter.V1.Workspace {
 
@@ -20,7 +19,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return EventFetcher capable of executing the fetch
          */
-        public static EventFetcher fetch(String workspaceSid, String sid) {
+        public static EventFetcher fetch(string workspaceSid, string sid) {
             return new EventFetcher(workspaceSid, sid);
         }
     
@@ -30,7 +29,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @return EventReader capable of executing the read
          */
-        public static EventReader read(String workspaceSid) {
+        public static EventReader read(string workspaceSid) {
             return new EventReader(workspaceSid);
         }
     
@@ -50,73 +49,73 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("actor_sid")]
-        private readonly String actorSid;
+        private readonly string actorSid;
         [JsonProperty("actor_type")]
-        private readonly String actorType;
+        private readonly string actorType;
         [JsonProperty("actor_url")]
-        private readonly URI actorUrl;
+        private readonly Uri actorUrl;
         [JsonProperty("description")]
-        private readonly String description;
+        private readonly string description;
         [JsonProperty("event_data")]
-        private readonly Map<String, String> eventData;
+        private readonly Dictionary<string, string> eventData;
         [JsonProperty("event_date")]
         private readonly DateTime eventDate;
         [JsonProperty("event_type")]
-        private readonly String eventType;
+        private readonly string eventType;
         [JsonProperty("resource_sid")]
-        private readonly String resourceSid;
+        private readonly string resourceSid;
         [JsonProperty("resource_type")]
-        private readonly String resourceType;
+        private readonly string resourceType;
         [JsonProperty("resource_url")]
-        private readonly URI resourceUrl;
+        private readonly Uri resourceUrl;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("source")]
-        private readonly String source;
+        private readonly string source;
         [JsonProperty("source_ip_address")]
-        private readonly String sourceIpAddress;
+        private readonly string sourceIpAddress;
         [JsonProperty("url")]
-        private readonly URI url;
+        private readonly Uri url;
     
         private Event([JsonProperty("account_sid")]
-                      String accountSid, 
+                      string accountSid, 
                       [JsonProperty("actor_sid")]
-                      String actorSid, 
+                      string actorSid, 
                       [JsonProperty("actor_type")]
-                      String actorType, 
+                      string actorType, 
                       [JsonProperty("actor_url")]
-                      URI actorUrl, 
+                      Uri actorUrl, 
                       [JsonProperty("description")]
-                      String description, 
+                      string description, 
                       [JsonProperty("event_data")]
-                      Map<String, String> eventData, 
+                      Dictionary<string, string> eventData, 
                       [JsonProperty("event_date")]
-                      String eventDate, 
+                      string eventDate, 
                       [JsonProperty("event_type")]
-                      String eventType, 
+                      string eventType, 
                       [JsonProperty("resource_sid")]
-                      String resourceSid, 
+                      string resourceSid, 
                       [JsonProperty("resource_type")]
-                      String resourceType, 
+                      string resourceType, 
                       [JsonProperty("resource_url")]
-                      URI resourceUrl, 
+                      Uri resourceUrl, 
                       [JsonProperty("sid")]
-                      String sid, 
+                      string sid, 
                       [JsonProperty("source")]
-                      String source, 
+                      string source, 
                       [JsonProperty("source_ip_address")]
-                      String sourceIpAddress, 
+                      string sourceIpAddress, 
                       [JsonProperty("url")]
-                      URI url) {
+                      Uri url) {
             this.accountSid = accountSid;
             this.actorSid = actorSid;
             this.actorType = actorType;
             this.actorUrl = actorUrl;
             this.description = description;
             this.eventData = eventData;
-            this.eventDate = MarshalConverter.dateTimeFromString(eventDate);
+            this.eventDate = MarshalConverter.DateTimeFromString(eventDate);
             this.eventType = eventType;
             this.resourceSid = resourceSid;
             this.resourceType = resourceType;
@@ -130,42 +129,42 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The actor_sid
          */
-        public String GetActorSid() {
+        public string GetActorSid() {
             return this.actorSid;
         }
     
         /**
          * @return The actor_type
          */
-        public String GetActorType() {
+        public string GetActorType() {
             return this.actorType;
         }
     
         /**
          * @return The actor_url
          */
-        public URI GetActorUrl() {
+        public Uri GetActorUrl() {
             return this.actorUrl;
         }
     
         /**
          * @return The description
          */
-        public String GetDescription() {
+        public string GetDescription() {
             return this.description;
         }
     
         /**
          * @return The event_data
          */
-        public Map<String, String> GetEventData() {
+        public Dictionary<string, string> GetEventData() {
             return this.eventData;
         }
     
@@ -179,56 +178,56 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The event_type
          */
-        public String GetEventType() {
+        public string GetEventType() {
             return this.eventType;
         }
     
         /**
          * @return The resource_sid
          */
-        public String GetResourceSid() {
+        public string GetResourceSid() {
             return this.resourceSid;
         }
     
         /**
          * @return The resource_type
          */
-        public String GetResourceType() {
+        public string GetResourceType() {
             return this.resourceType;
         }
     
         /**
          * @return The resource_url
          */
-        public URI GetResourceUrl() {
+        public Uri GetResourceUrl() {
             return this.resourceUrl;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The source
          */
-        public String GetSource() {
+        public string GetSource() {
             return this.source;
         }
     
         /**
          * @return The source_ip_address
          */
-        public String GetSourceIpAddress() {
+        public string GetSourceIpAddress() {
             return this.sourceIpAddress;
         }
     
         /**
          * @return The url
          */
-        public URI GetUrl() {
+        public Uri GetUrl() {
             return this.url;
         }
     }

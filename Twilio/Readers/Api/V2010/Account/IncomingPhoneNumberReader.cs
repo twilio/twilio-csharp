@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.IncomingPhoneNumber;
@@ -9,17 +9,17 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account {
 
     public class IncomingPhoneNumberReader : Reader<IncomingPhoneNumber> {
-        private String ownerAccountSid;
-        private Boolean beta;
-        private String friendlyName;
-        private com.twilio.types.PhoneNumber phoneNumber;
+        private string ownerAccountSid;
+        private bool beta;
+        private string friendlyName;
+        private Twilio.Types.PhoneNumber phoneNumber;
     
         /**
          * Construct a new IncomingPhoneNumberReader
          * 
          * @param ownerAccountSid The owner_account_sid
          */
-        public IncomingPhoneNumberReader(String ownerAccountSid) {
+        public IncomingPhoneNumberReader(string ownerAccountSid) {
             this.ownerAccountSid = ownerAccountSid;
         }
     
@@ -29,7 +29,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param beta Include new phone numbers
          * @return this
          */
-        public IncomingPhoneNumberReader byBeta(Boolean beta) {
+        public IncomingPhoneNumberReader byBeta(bool beta) {
             this.beta = beta;
             return this;
         }
@@ -41,7 +41,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param friendlyName Filter by friendly name
          * @return this
          */
-        public IncomingPhoneNumberReader byFriendlyName(String friendlyName) {
+        public IncomingPhoneNumberReader byFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -52,7 +52,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param phoneNumber Filter by incoming phone number
          * @return this
          */
-        public IncomingPhoneNumberReader byPhoneNumber(com.twilio.types.PhoneNumber phoneNumber) {
+        public IncomingPhoneNumberReader byPhoneNumber(Twilio.Types.PhoneNumber phoneNumber) {
             this.phoneNumber = phoneNumber;
             return this;
         }
@@ -134,7 +134,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          */
         private void addQueryParams(final Request request) {
             if (beta != null) {
-                request.addQueryParam("Beta", beta.toString());
+                request.addQueryParam("Beta", beta.ToString());
             }
             
             if (friendlyName != null) {
@@ -142,7 +142,7 @@ namespace Twilio.Readers.Api.V2010.Account {
             }
             
             if (phoneNumber != null) {
-                request.addQueryParam("PhoneNumber", phoneNumber.toString());
+                request.addQueryParam("PhoneNumber", phoneNumber.ToString());
             }
             
             request.addQueryParam("PageSize", Integer.toString(getPageSize()));

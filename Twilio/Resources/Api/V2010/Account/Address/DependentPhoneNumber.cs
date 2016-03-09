@@ -1,11 +1,11 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account.Address;
 using Twilio.Resources;
-using java.math.BigDecimal;
 
 namespace Twilio.Resources.Api.V2010.Account.Address {
 
@@ -17,7 +17,7 @@ namespace Twilio.Resources.Api.V2010.Account.Address {
          * @param addressSid The address_sid
          * @return DependentPhoneNumberReader capable of executing the read
          */
-        public static DependentPhoneNumberReader read(String accountSid, String addressSid) {
+        public static DependentPhoneNumberReader read(string accountSid, string addressSid) {
             return new DependentPhoneNumberReader(accountSid, addressSid);
         }
     
@@ -37,50 +37,50 @@ namespace Twilio.Resources.Api.V2010.Account.Address {
         }
     
         [JsonProperty("friendly_name")]
-        private readonly com.twilio.types.PhoneNumber friendlyName;
+        private readonly Twilio.Types.PhoneNumber friendlyName;
         [JsonProperty("phone_number")]
-        private readonly com.twilio.types.PhoneNumber phoneNumber;
+        private readonly Twilio.Types.PhoneNumber phoneNumber;
         [JsonProperty("lata")]
-        private readonly String lata;
+        private readonly string lata;
         [JsonProperty("rate_center")]
-        private readonly String rateCenter;
+        private readonly string rateCenter;
         [JsonProperty("latitude")]
-        private readonly BigDecimal latitude;
+        private readonly decimal latitude;
         [JsonProperty("longitude")]
-        private readonly BigDecimal longitude;
+        private readonly decimal longitude;
         [JsonProperty("region")]
-        private readonly String region;
+        private readonly string region;
         [JsonProperty("postal_code")]
-        private readonly String postalCode;
+        private readonly string postalCode;
         [JsonProperty("iso_country")]
-        private readonly String isoCountry;
+        private readonly string isoCountry;
         [JsonProperty("address_requirements")]
-        private readonly String addressRequirements;
+        private readonly string addressRequirements;
         [JsonProperty("capabilities")]
-        private readonly Map<String, String> capabilities;
+        private readonly Dictionary<string, string> capabilities;
     
         private DependentPhoneNumber([JsonProperty("friendly_name")]
-                                     com.twilio.types.PhoneNumber friendlyName, 
+                                     Twilio.Types.PhoneNumber friendlyName, 
                                      [JsonProperty("phone_number")]
-                                     com.twilio.types.PhoneNumber phoneNumber, 
+                                     Twilio.Types.PhoneNumber phoneNumber, 
                                      [JsonProperty("lata")]
-                                     String lata, 
+                                     string lata, 
                                      [JsonProperty("rate_center")]
-                                     String rateCenter, 
+                                     string rateCenter, 
                                      [JsonProperty("latitude")]
-                                     BigDecimal latitude, 
+                                     decimal latitude, 
                                      [JsonProperty("longitude")]
-                                     BigDecimal longitude, 
+                                     decimal longitude, 
                                      [JsonProperty("region")]
-                                     String region, 
+                                     string region, 
                                      [JsonProperty("postal_code")]
-                                     String postalCode, 
+                                     string postalCode, 
                                      [JsonProperty("iso_country")]
-                                     String isoCountry, 
+                                     string isoCountry, 
                                      [JsonProperty("address_requirements")]
-                                     String addressRequirements, 
+                                     string addressRequirements, 
                                      [JsonProperty("capabilities")]
-                                     Map<String, String> capabilities) {
+                                     Dictionary<string, string> capabilities) {
             this.friendlyName = friendlyName;
             this.phoneNumber = phoneNumber;
             this.lata = lata;
@@ -97,77 +97,77 @@ namespace Twilio.Resources.Api.V2010.Account.Address {
         /**
          * @return The friendly_name
          */
-        public com.twilio.types.PhoneNumber GetFriendlyName() {
+        public Twilio.Types.PhoneNumber GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return The phone_number
          */
-        public com.twilio.types.PhoneNumber GetPhoneNumber() {
+        public Twilio.Types.PhoneNumber GetPhoneNumber() {
             return this.phoneNumber;
         }
     
         /**
          * @return The lata
          */
-        public String GetLata() {
+        public string GetLata() {
             return this.lata;
         }
     
         /**
          * @return The rate_center
          */
-        public String GetRateCenter() {
+        public string GetRateCenter() {
             return this.rateCenter;
         }
     
         /**
          * @return The latitude
          */
-        public BigDecimal GetLatitude() {
+        public decimal GetLatitude() {
             return this.latitude;
         }
     
         /**
          * @return The longitude
          */
-        public BigDecimal GetLongitude() {
+        public decimal GetLongitude() {
             return this.longitude;
         }
     
         /**
          * @return The region
          */
-        public String GetRegion() {
+        public string GetRegion() {
             return this.region;
         }
     
         /**
          * @return The postal_code
          */
-        public String GetPostalCode() {
+        public string GetPostalCode() {
             return this.postalCode;
         }
     
         /**
          * @return The iso_country
          */
-        public String GetIsoCountry() {
+        public string GetIsoCountry() {
             return this.isoCountry;
         }
     
         /**
          * @return The address_requirements
          */
-        public String GetAddressRequirements() {
+        public string GetAddressRequirements() {
             return this.addressRequirements;
         }
     
         /**
          * @return The capabilities
          */
-        public Map<String, String> GetCapabilities() {
+        public Dictionary<string, string> GetCapabilities() {
             return this.capabilities;
         }
     }

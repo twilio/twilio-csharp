@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.sip.IpAccessControlList;
@@ -7,9 +7,9 @@ using com.twilio.sdk.updaters.Updater;
 namespace Twilio.Updaters.Api.V2010.Account.Sip {
 
     public class IpAccessControlListUpdater : Updater<IpAccessControlList> {
-        private String accountSid;
-        private String sid;
-        private String friendlyName;
+        private string accountSid;
+        private string sid;
+        private string friendlyName;
     
         /**
          * Construct a new IpAccessControlListUpdater
@@ -18,7 +18,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param sid The sid
          * @param friendlyName A human readable description of this resource
          */
-        public IpAccessControlListUpdater(String accountSid, String sid, String friendlyName) {
+        public IpAccessControlListUpdater(string accountSid, string sid, string friendlyName) {
             this.accountSid = accountSid;
             this.sid = sid;
             this.friendlyName = friendlyName;

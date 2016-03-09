@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Api.V2010.account.AuthorizedConnectApp;
 namespace Twilio.Fetchers.Api.V2010.Account {
 
     public class AuthorizedConnectAppFetcher : Fetcher<AuthorizedConnectApp> {
-        private String accountSid;
-        private String connectAppSid;
+        private string accountSid;
+        private string connectAppSid;
     
         /**
          * Construct a new AuthorizedConnectAppFetcher
@@ -16,7 +16,7 @@ namespace Twilio.Fetchers.Api.V2010.Account {
          * @param accountSid The account_sid
          * @param connectAppSid The connect_app_sid
          */
-        public AuthorizedConnectAppFetcher(String accountSid, String connectAppSid) {
+        public AuthorizedConnectAppFetcher(string accountSid, string connectAppSid) {
             this.accountSid = accountSid;
             this.connectAppSid = connectAppSid;
         }

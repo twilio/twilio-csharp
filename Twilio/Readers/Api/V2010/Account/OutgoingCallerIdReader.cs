@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.OutgoingCallerId;
@@ -9,16 +9,16 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account {
 
     public class OutgoingCallerIdReader : Reader<OutgoingCallerId> {
-        private String accountSid;
-        private com.twilio.types.PhoneNumber phoneNumber;
-        private String friendlyName;
+        private string accountSid;
+        private Twilio.Types.PhoneNumber phoneNumber;
+        private string friendlyName;
     
         /**
          * Construct a new OutgoingCallerIdReader
          * 
          * @param accountSid The account_sid
          */
-        public OutgoingCallerIdReader(String accountSid) {
+        public OutgoingCallerIdReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
@@ -28,7 +28,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param phoneNumber Filter by phone number
          * @return this
          */
-        public OutgoingCallerIdReader byPhoneNumber(com.twilio.types.PhoneNumber phoneNumber) {
+        public OutgoingCallerIdReader byPhoneNumber(Twilio.Types.PhoneNumber phoneNumber) {
             this.phoneNumber = phoneNumber;
             return this;
         }
@@ -39,7 +39,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param friendlyName Filter by friendly name
          * @return this
          */
-        public OutgoingCallerIdReader byFriendlyName(String friendlyName) {
+        public OutgoingCallerIdReader byFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -121,7 +121,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          */
         private void addQueryParams(final Request request) {
             if (phoneNumber != null) {
-                request.addQueryParam("PhoneNumber", phoneNumber.toString());
+                request.addQueryParam("PhoneNumber", phoneNumber.ToString());
             }
             
             if (friendlyName != null) {

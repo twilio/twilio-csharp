@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Deleters.Api.V2010.Account;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Api.V2010.Account;
@@ -8,8 +9,6 @@ using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010.Account;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account {
 
@@ -21,7 +20,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Fetch by unique outgoing-caller-id Sid
          * @return OutgoingCallerIdFetcher capable of executing the fetch
          */
-        public static OutgoingCallerIdFetcher fetch(String accountSid, String sid) {
+        public static OutgoingCallerIdFetcher fetch(string accountSid, string sid) {
             return new OutgoingCallerIdFetcher(accountSid, sid);
         }
     
@@ -32,7 +31,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Update by unique outgoing-caller-id Sid
          * @return OutgoingCallerIdUpdater capable of executing the update
          */
-        public static OutgoingCallerIdUpdater update(String accountSid, String sid) {
+        public static OutgoingCallerIdUpdater update(string accountSid, string sid) {
             return new OutgoingCallerIdUpdater(accountSid, sid);
         }
     
@@ -43,7 +42,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Delete by unique outgoing-caller-id Sid
          * @return OutgoingCallerIdDeleter capable of executing the delete
          */
-        public static OutgoingCallerIdDeleter delete(String accountSid, String sid) {
+        public static OutgoingCallerIdDeleter delete(string accountSid, string sid) {
             return new OutgoingCallerIdDeleter(accountSid, sid);
         }
     
@@ -54,7 +53,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return OutgoingCallerIdReader capable of executing the read
          */
-        public static OutgoingCallerIdReader read(String accountSid) {
+        public static OutgoingCallerIdReader read(string accountSid) {
             return new OutgoingCallerIdReader(accountSid);
         }
     
@@ -74,37 +73,37 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("phone_number")]
-        private readonly com.twilio.types.PhoneNumber phoneNumber;
+        private readonly Twilio.Types.PhoneNumber phoneNumber;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private OutgoingCallerId([JsonProperty("sid")]
-                                 String sid, 
+                                 string sid, 
                                  [JsonProperty("date_created")]
-                                 String dateCreated, 
+                                 string dateCreated, 
                                  [JsonProperty("date_updated")]
-                                 String dateUpdated, 
+                                 string dateUpdated, 
                                  [JsonProperty("friendly_name")]
-                                 String friendlyName, 
+                                 string friendlyName, 
                                  [JsonProperty("account_sid")]
-                                 String accountSid, 
+                                 string accountSid, 
                                  [JsonProperty("phone_number")]
-                                 com.twilio.types.PhoneNumber phoneNumber, 
+                                 Twilio.Types.PhoneNumber phoneNumber, 
                                  [JsonProperty("uri")]
-                                 String uri) {
+                                 string uri) {
             this.sid = sid;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.friendlyName = friendlyName;
             this.accountSid = accountSid;
             this.phoneNumber = phoneNumber;
@@ -114,7 +113,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return A string that uniquely identifies this outgoing-caller-ids
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
@@ -135,28 +134,28 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return A human readable description for this resource
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return The unique sid that identifies this account
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The incoming phone number
          */
-        public com.twilio.types.PhoneNumber GetPhoneNumber() {
+        public Twilio.Types.PhoneNumber GetPhoneNumber() {
             return this.phoneNumber;
         }
     
         /**
          * @return The URI for this resource
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

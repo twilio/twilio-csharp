@@ -1,22 +1,21 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
 using Twilio.Converters.Promoter;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.sms.ShortCode;
-using com.twilio.sdk.http.HttpMethod;
 using com.twilio.sdk.updaters.Updater;
-using java.net.URI;
 
 namespace Twilio.Updaters.Api.V2010.Account.Sms {
 
     public class ShortCodeUpdater : Updater<ShortCode> {
-        private String accountSid;
-        private String sid;
-        private String friendlyName;
-        private String apiVersion;
-        private URI smsUrl;
+        private string accountSid;
+        private string sid;
+        private string friendlyName;
+        private string apiVersion;
+        private Uri smsUrl;
         private HttpMethod smsMethod;
-        private URI smsFallbackUrl;
+        private Uri smsFallbackUrl;
         private HttpMethod smsFallbackMethod;
     
         /**
@@ -25,7 +24,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          * @param accountSid The account_sid
          * @param sid The sid
          */
-        public ShortCodeUpdater(String accountSid, String sid) {
+        public ShortCodeUpdater(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
@@ -37,7 +36,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          * @param friendlyName A human readable description of this resource
          * @return this
          */
-        public ShortCodeUpdater setFriendlyName(String friendlyName) {
+        public ShortCodeUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -48,7 +47,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          * @param apiVersion The API version to use
          * @return this
          */
-        public ShortCodeUpdater setApiVersion(String apiVersion) {
+        public ShortCodeUpdater setApiVersion(string apiVersion) {
             this.apiVersion = apiVersion;
             return this;
         }
@@ -60,7 +59,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          * @param smsUrl URL Twilio will request when receiving an SMS
          * @return this
          */
-        public ShortCodeUpdater setSmsUrl(URI smsUrl) {
+        public ShortCodeUpdater setSmsUrl(Uri smsUrl) {
             this.smsUrl = smsUrl;
             return this;
         }
@@ -72,8 +71,8 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          * @param smsUrl URL Twilio will request when receiving an SMS
          * @return this
          */
-        public ShortCodeUpdater setSmsUrl(String smsUrl) {
-            return setSmsUrl(Promoter.uriFromString(smsUrl));
+        public ShortCodeUpdater setSmsUrl(string smsUrl) {
+            return setSmsUrl(Promoter.UriFromString(smsUrl));
         }
     
         /**
@@ -96,7 +95,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          *                       executing TwiML
          * @return this
          */
-        public ShortCodeUpdater setSmsFallbackUrl(URI smsFallbackUrl) {
+        public ShortCodeUpdater setSmsFallbackUrl(Uri smsFallbackUrl) {
             this.smsFallbackUrl = smsFallbackUrl;
             return this;
         }
@@ -109,8 +108,8 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          *                       executing TwiML
          * @return this
          */
-        public ShortCodeUpdater setSmsFallbackUrl(String smsFallbackUrl) {
-            return setSmsFallbackUrl(Promoter.uriFromString(smsFallbackUrl));
+        public ShortCodeUpdater setSmsFallbackUrl(string smsFallbackUrl) {
+            return setSmsFallbackUrl(Promoter.UriFromString(smsFallbackUrl));
         }
     
         /**
@@ -176,19 +175,19 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
             }
             
             if (smsUrl != null) {
-                request.addPostParam("SmsUrl", smsUrl.toString());
+                request.addPostParam("SmsUrl", smsUrl.ToString());
             }
             
             if (smsMethod != null) {
-                request.addPostParam("SmsMethod", smsMethod.toString());
+                request.addPostParam("SmsMethod", smsMethod.ToString());
             }
             
             if (smsFallbackUrl != null) {
-                request.addPostParam("SmsFallbackUrl", smsFallbackUrl.toString());
+                request.addPostParam("SmsFallbackUrl", smsFallbackUrl.ToString());
             }
             
             if (smsFallbackMethod != null) {
-                request.addPostParam("SmsFallbackMethod", smsFallbackMethod.toString());
+                request.addPostParam("SmsFallbackMethod", smsFallbackMethod.ToString());
             }
         }
     }

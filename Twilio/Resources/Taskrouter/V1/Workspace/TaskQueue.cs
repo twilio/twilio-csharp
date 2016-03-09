@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Taskrouter.V1.Workspace;
 using Twilio.Deleters.Taskrouter.V1.Workspace;
 using Twilio.Exceptions;
@@ -9,9 +10,6 @@ using Twilio.Http;
 using Twilio.Readers.Taskrouter.V1.Workspace;
 using Twilio.Resources;
 using Twilio.Updaters.Taskrouter.V1.Workspace;
-using com.twilio.sdk.converters.MarshalConverter;
-using java.net.URI;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Taskrouter.V1.Workspace {
 
@@ -23,7 +21,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return TaskQueueFetcher capable of executing the fetch
          */
-        public static TaskQueueFetcher fetch(String workspaceSid, String sid) {
+        public static TaskQueueFetcher fetch(string workspaceSid, string sid) {
             return new TaskQueueFetcher(workspaceSid, sid);
         }
     
@@ -34,7 +32,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return TaskQueueUpdater capable of executing the update
          */
-        public static TaskQueueUpdater update(String workspaceSid, String sid) {
+        public static TaskQueueUpdater update(string workspaceSid, string sid) {
             return new TaskQueueUpdater(workspaceSid, sid);
         }
     
@@ -44,7 +42,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @return TaskQueueReader capable of executing the read
          */
-        public static TaskQueueReader read(String workspaceSid) {
+        public static TaskQueueReader read(string workspaceSid) {
             return new TaskQueueReader(workspaceSid);
         }
     
@@ -57,7 +55,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param assignmentActivitySid The assignment_activity_sid
          * @return TaskQueueCreator capable of executing the create
          */
-        public static TaskQueueCreator create(String workspaceSid, String friendlyName, String reservationActivitySid, String assignmentActivitySid) {
+        public static TaskQueueCreator create(string workspaceSid, string friendlyName, string reservationActivitySid, string assignmentActivitySid) {
             return new TaskQueueCreator(workspaceSid, friendlyName, reservationActivitySid, assignmentActivitySid);
         }
     
@@ -68,7 +66,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return TaskQueueDeleter capable of executing the delete
          */
-        public static TaskQueueDeleter delete(String workspaceSid, String sid) {
+        public static TaskQueueDeleter delete(string workspaceSid, string sid) {
             return new TaskQueueDeleter(workspaceSid, sid);
         }
     
@@ -88,63 +86,63 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("assignment_activity_sid")]
-        private readonly String assignmentActivitySid;
+        private readonly string assignmentActivitySid;
         [JsonProperty("assignment_activity_name")]
-        private readonly String assignmentActivityName;
+        private readonly string assignmentActivityName;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("max_reserved_workers")]
-        private readonly Integer maxReservedWorkers;
+        private readonly int maxReservedWorkers;
         [JsonProperty("reservation_activity_sid")]
-        private readonly String reservationActivitySid;
+        private readonly string reservationActivitySid;
         [JsonProperty("reservation_activity_name")]
-        private readonly String reservationActivityName;
+        private readonly string reservationActivityName;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("target_workers")]
-        private readonly String targetWorkers;
+        private readonly string targetWorkers;
         [JsonProperty("url")]
-        private readonly URI url;
+        private readonly Uri url;
         [JsonProperty("workspace_sid")]
-        private readonly String workspaceSid;
+        private readonly string workspaceSid;
     
         private TaskQueue([JsonProperty("account_sid")]
-                          String accountSid, 
+                          string accountSid, 
                           [JsonProperty("assignment_activity_sid")]
-                          String assignmentActivitySid, 
+                          string assignmentActivitySid, 
                           [JsonProperty("assignment_activity_name")]
-                          String assignmentActivityName, 
+                          string assignmentActivityName, 
                           [JsonProperty("date_created")]
-                          String dateCreated, 
+                          string dateCreated, 
                           [JsonProperty("date_updated")]
-                          String dateUpdated, 
+                          string dateUpdated, 
                           [JsonProperty("friendly_name")]
-                          String friendlyName, 
+                          string friendlyName, 
                           [JsonProperty("max_reserved_workers")]
-                          Integer maxReservedWorkers, 
+                          int maxReservedWorkers, 
                           [JsonProperty("reservation_activity_sid")]
-                          String reservationActivitySid, 
+                          string reservationActivitySid, 
                           [JsonProperty("reservation_activity_name")]
-                          String reservationActivityName, 
+                          string reservationActivityName, 
                           [JsonProperty("sid")]
-                          String sid, 
+                          string sid, 
                           [JsonProperty("target_workers")]
-                          String targetWorkers, 
+                          string targetWorkers, 
                           [JsonProperty("url")]
-                          URI url, 
+                          Uri url, 
                           [JsonProperty("workspace_sid")]
-                          String workspaceSid) {
+                          string workspaceSid) {
             this.accountSid = accountSid;
             this.assignmentActivitySid = assignmentActivitySid;
             this.assignmentActivityName = assignmentActivityName;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.friendlyName = friendlyName;
             this.maxReservedWorkers = maxReservedWorkers;
             this.reservationActivitySid = reservationActivitySid;
@@ -158,21 +156,21 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The assignment_activity_sid
          */
-        public String GetAssignmentActivitySid() {
+        public string GetAssignmentActivitySid() {
             return this.assignmentActivitySid;
         }
     
         /**
          * @return The assignment_activity_name
          */
-        public String GetAssignmentActivityName() {
+        public string GetAssignmentActivityName() {
             return this.assignmentActivityName;
         }
     
@@ -193,56 +191,56 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The friendly_name
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return The max_reserved_workers
          */
-        public Integer GetMaxReservedWorkers() {
+        public int GetMaxReservedWorkers() {
             return this.maxReservedWorkers;
         }
     
         /**
          * @return The reservation_activity_sid
          */
-        public String GetReservationActivitySid() {
+        public string GetReservationActivitySid() {
             return this.reservationActivitySid;
         }
     
         /**
          * @return The reservation_activity_name
          */
-        public String GetReservationActivityName() {
+        public string GetReservationActivityName() {
             return this.reservationActivityName;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The target_workers
          */
-        public String GetTargetWorkers() {
+        public string GetTargetWorkers() {
             return this.targetWorkers;
         }
     
         /**
          * @return The url
          */
-        public URI GetUrl() {
+        public Uri GetUrl() {
             return this.url;
         }
     
         /**
          * @return The workspace_sid
          */
-        public String GetWorkspaceSid() {
+        public string GetWorkspaceSid() {
             return this.workspaceSid;
         }
     }

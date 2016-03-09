@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Api.V2010.account.Notification;
 namespace Twilio.Fetchers.Api.V2010.Account {
 
     public class NotificationFetcher : Fetcher<Notification> {
-        private String accountSid;
-        private String sid;
+        private string accountSid;
+        private string sid;
     
         /**
          * Construct a new NotificationFetcher
@@ -16,7 +16,7 @@ namespace Twilio.Fetchers.Api.V2010.Account {
          * @param accountSid The account_sid
          * @param sid Fetch by unique notification Sid
          */
-        public NotificationFetcher(String accountSid, String sid) {
+        public NotificationFetcher(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

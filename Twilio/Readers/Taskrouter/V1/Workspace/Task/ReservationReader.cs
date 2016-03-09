@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.workspace.task.Reservation;
@@ -9,8 +9,8 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Taskrouter.V1.Workspace.Task {
 
     public class ReservationReader : Reader<Reservation> {
-        private String workspaceSid;
-        private String taskSid;
+        private string workspaceSid;
+        private string taskSid;
     
         /**
          * Construct a new ReservationReader
@@ -18,7 +18,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.Task {
          * @param workspaceSid The workspace_sid
          * @param taskSid The task_sid
          */
-        public ReservationReader(String workspaceSid, String taskSid) {
+        public ReservationReader(string workspaceSid, string taskSid) {
             this.workspaceSid = workspaceSid;
             this.taskSid = taskSid;
         }

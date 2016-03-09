@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account.Sip.IpAccessControlList;
 using Twilio.Deleters.Api.V2010.Account.Sip.IpAccessControlList;
 using Twilio.Exceptions;
@@ -9,8 +10,6 @@ using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account.Sip.IpAccessControlList;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010.Account.Sip.IpAccessControlList;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account.Sip.Ipaccesscontrollist {
 
@@ -22,7 +21,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Ipaccesscontrollist {
          * @param ipAccessControlListSid The ip_access_control_list_sid
          * @return IpAddressReader capable of executing the read
          */
-        public static IpAddressReader read(String accountSid, String ipAccessControlListSid) {
+        public static IpAddressReader read(string accountSid, string ipAccessControlListSid) {
             return new IpAddressReader(accountSid, ipAccessControlListSid);
         }
     
@@ -35,7 +34,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Ipaccesscontrollist {
          * @param ipAddress The ip_address
          * @return IpAddressCreator capable of executing the create
          */
-        public static IpAddressCreator create(String accountSid, String ipAccessControlListSid, String friendlyName, String ipAddress) {
+        public static IpAddressCreator create(string accountSid, string ipAccessControlListSid, string friendlyName, string ipAddress) {
             return new IpAddressCreator(accountSid, ipAccessControlListSid, friendlyName, ipAddress);
         }
     
@@ -47,7 +46,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Ipaccesscontrollist {
          * @param sid The sid
          * @return IpAddressFetcher capable of executing the fetch
          */
-        public static IpAddressFetcher fetch(String accountSid, String ipAccessControlListSid, String sid) {
+        public static IpAddressFetcher fetch(string accountSid, string ipAccessControlListSid, string sid) {
             return new IpAddressFetcher(accountSid, ipAccessControlListSid, sid);
         }
     
@@ -61,7 +60,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Ipaccesscontrollist {
          * @param friendlyName The friendly_name
          * @return IpAddressUpdater capable of executing the update
          */
-        public static IpAddressUpdater update(String accountSid, String ipAccessControlListSid, String sid, String ipAddress, String friendlyName) {
+        public static IpAddressUpdater update(string accountSid, string ipAccessControlListSid, string sid, string ipAddress, string friendlyName) {
             return new IpAddressUpdater(accountSid, ipAccessControlListSid, sid, ipAddress, friendlyName);
         }
     
@@ -73,7 +72,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Ipaccesscontrollist {
          * @param sid The sid
          * @return IpAddressDeleter capable of executing the delete
          */
-        public static IpAddressDeleter delete(String accountSid, String ipAccessControlListSid, String sid) {
+        public static IpAddressDeleter delete(string accountSid, string ipAccessControlListSid, string sid) {
             return new IpAddressDeleter(accountSid, ipAccessControlListSid, sid);
         }
     
@@ -93,80 +92,80 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Ipaccesscontrollist {
         }
     
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("ip_address")]
-        private readonly String ipAddress;
+        private readonly string ipAddress;
         [JsonProperty("ip_access_control_list_sid")]
-        private readonly String ipAccessControlListSid;
+        private readonly string ipAccessControlListSid;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private IpAddress([JsonProperty("sid")]
-                          String sid, 
+                          string sid, 
                           [JsonProperty("account_sid")]
-                          String accountSid, 
+                          string accountSid, 
                           [JsonProperty("friendly_name")]
-                          String friendlyName, 
+                          string friendlyName, 
                           [JsonProperty("ip_address")]
-                          String ipAddress, 
+                          string ipAddress, 
                           [JsonProperty("ip_access_control_list_sid")]
-                          String ipAccessControlListSid, 
+                          string ipAccessControlListSid, 
                           [JsonProperty("date_created")]
-                          String dateCreated, 
+                          string dateCreated, 
                           [JsonProperty("date_updated")]
-                          String dateUpdated, 
+                          string dateUpdated, 
                           [JsonProperty("uri")]
-                          String uri) {
+                          string uri) {
             this.sid = sid;
             this.accountSid = accountSid;
             this.friendlyName = friendlyName;
             this.ipAddress = ipAddress;
             this.ipAccessControlListSid = ipAccessControlListSid;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.uri = uri;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The friendly_name
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return The ip_address
          */
-        public String GetIpAddress() {
+        public string GetIpAddress() {
             return this.ipAddress;
         }
     
         /**
          * @return The ip_access_control_list_sid
          */
-        public String GetIpAccessControlListSid() {
+        public string GetIpAccessControlListSid() {
             return this.ipAccessControlListSid;
         }
     
@@ -187,7 +186,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Ipaccesscontrollist {
         /**
          * @return The uri
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

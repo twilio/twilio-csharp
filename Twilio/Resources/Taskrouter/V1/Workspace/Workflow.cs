@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Taskrouter.V1.Workspace;
 using Twilio.Deleters.Taskrouter.V1.Workspace;
 using Twilio.Exceptions;
@@ -9,8 +10,6 @@ using Twilio.Http;
 using Twilio.Readers.Taskrouter.V1.Workspace;
 using Twilio.Resources;
 using Twilio.Updaters.Taskrouter.V1.Workspace;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Taskrouter.V1.Workspace {
 
@@ -22,7 +21,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return WorkflowFetcher capable of executing the fetch
          */
-        public static WorkflowFetcher fetch(String workspaceSid, String sid) {
+        public static WorkflowFetcher fetch(string workspaceSid, string sid) {
             return new WorkflowFetcher(workspaceSid, sid);
         }
     
@@ -33,7 +32,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return WorkflowUpdater capable of executing the update
          */
-        public static WorkflowUpdater update(String workspaceSid, String sid) {
+        public static WorkflowUpdater update(string workspaceSid, string sid) {
             return new WorkflowUpdater(workspaceSid, sid);
         }
     
@@ -44,7 +43,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return WorkflowDeleter capable of executing the delete
          */
-        public static WorkflowDeleter delete(String workspaceSid, String sid) {
+        public static WorkflowDeleter delete(string workspaceSid, string sid) {
             return new WorkflowDeleter(workspaceSid, sid);
         }
     
@@ -54,7 +53,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @return WorkflowReader capable of executing the read
          */
-        public static WorkflowReader read(String workspaceSid) {
+        public static WorkflowReader read(string workspaceSid) {
             return new WorkflowReader(workspaceSid);
         }
     
@@ -67,7 +66,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param assignmentCallbackUrl The assignment_callback_url
          * @return WorkflowCreator capable of executing the create
          */
-        public static WorkflowCreator create(String workspaceSid, String friendlyName, String configuration, String assignmentCallbackUrl) {
+        public static WorkflowCreator create(string workspaceSid, string friendlyName, string configuration, string assignmentCallbackUrl) {
             return new WorkflowCreator(workspaceSid, friendlyName, configuration, assignmentCallbackUrl);
         }
     
@@ -87,55 +86,55 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("assignment_callback_url")]
-        private readonly String assignmentCallbackUrl;
+        private readonly string assignmentCallbackUrl;
         [JsonProperty("configuration")]
-        private readonly String configuration;
+        private readonly string configuration;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("document_content_type")]
-        private readonly String documentContentType;
+        private readonly string documentContentType;
         [JsonProperty("fallback_assignment_callback_url")]
-        private readonly String fallbackAssignmentCallbackUrl;
+        private readonly string fallbackAssignmentCallbackUrl;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("task_reservation_timeout")]
-        private readonly Integer taskReservationTimeout;
+        private readonly int taskReservationTimeout;
         [JsonProperty("workspace_sid")]
-        private readonly String workspaceSid;
+        private readonly string workspaceSid;
     
         private Workflow([JsonProperty("account_sid")]
-                         String accountSid, 
+                         string accountSid, 
                          [JsonProperty("assignment_callback_url")]
-                         String assignmentCallbackUrl, 
+                         string assignmentCallbackUrl, 
                          [JsonProperty("configuration")]
-                         String configuration, 
+                         string configuration, 
                          [JsonProperty("date_created")]
-                         String dateCreated, 
+                         string dateCreated, 
                          [JsonProperty("date_updated")]
-                         String dateUpdated, 
+                         string dateUpdated, 
                          [JsonProperty("document_content_type")]
-                         String documentContentType, 
+                         string documentContentType, 
                          [JsonProperty("fallback_assignment_callback_url")]
-                         String fallbackAssignmentCallbackUrl, 
+                         string fallbackAssignmentCallbackUrl, 
                          [JsonProperty("friendly_name")]
-                         String friendlyName, 
+                         string friendlyName, 
                          [JsonProperty("sid")]
-                         String sid, 
+                         string sid, 
                          [JsonProperty("task_reservation_timeout")]
-                         Integer taskReservationTimeout, 
+                         int taskReservationTimeout, 
                          [JsonProperty("workspace_sid")]
-                         String workspaceSid) {
+                         string workspaceSid) {
             this.accountSid = accountSid;
             this.assignmentCallbackUrl = assignmentCallbackUrl;
             this.configuration = configuration;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.documentContentType = documentContentType;
             this.fallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl;
             this.friendlyName = friendlyName;
@@ -147,21 +146,21 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The assignment_callback_url
          */
-        public String GetAssignmentCallbackUrl() {
+        public string GetAssignmentCallbackUrl() {
             return this.assignmentCallbackUrl;
         }
     
         /**
          * @return The configuration
          */
-        public String GetConfiguration() {
+        public string GetConfiguration() {
             return this.configuration;
         }
     
@@ -182,42 +181,42 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The document_content_type
          */
-        public String GetDocumentContentType() {
+        public string GetDocumentContentType() {
             return this.documentContentType;
         }
     
         /**
          * @return The fallback_assignment_callback_url
          */
-        public String GetFallbackAssignmentCallbackUrl() {
+        public string GetFallbackAssignmentCallbackUrl() {
             return this.fallbackAssignmentCallbackUrl;
         }
     
         /**
          * @return The friendly_name
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The task_reservation_timeout
          */
-        public Integer GetTaskReservationTimeout() {
+        public int GetTaskReservationTimeout() {
             return this.taskReservationTimeout;
         }
     
         /**
          * @return The workspace_sid
          */
-        public String GetWorkspaceSid() {
+        public string GetWorkspaceSid() {
             return this.workspaceSid;
         }
     }

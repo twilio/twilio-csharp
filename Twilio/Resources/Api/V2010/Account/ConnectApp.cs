@@ -1,15 +1,13 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Api.V2010.Account;
 using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010.Account;
-using com.twilio.sdk.http.HttpMethod;
-using java.net.URI;
-using java.util.List;
 
 namespace Twilio.Resources.Api.V2010.Account {
 
@@ -26,7 +24,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Fetch by unique connect-app Sid
          * @return ConnectAppFetcher capable of executing the fetch
          */
-        public static ConnectAppFetcher fetch(String accountSid, String sid) {
+        public static ConnectAppFetcher fetch(string accountSid, string sid) {
             return new ConnectAppFetcher(accountSid, sid);
         }
     
@@ -37,7 +35,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid The sid
          * @return ConnectAppUpdater capable of executing the update
          */
-        public static ConnectAppUpdater update(String accountSid, String sid) {
+        public static ConnectAppUpdater update(string accountSid, string sid) {
             return new ConnectAppUpdater(accountSid, sid);
         }
     
@@ -48,7 +46,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return ConnectAppReader capable of executing the read
          */
-        public static ConnectAppReader read(String accountSid) {
+        public static ConnectAppReader read(string accountSid) {
             return new ConnectAppReader(accountSid);
         }
     
@@ -68,50 +66,50 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("authorize_redirect_url")]
-        private readonly URI authorizeRedirectUrl;
+        private readonly Uri authorizeRedirectUrl;
         [JsonProperty("company_name")]
-        private readonly String companyName;
+        private readonly string companyName;
         [JsonProperty("deauthorize_callback_method")]
         private readonly HttpMethod deauthorizeCallbackMethod;
         [JsonProperty("deauthorize_callback_url")]
-        private readonly URI deauthorizeCallbackUrl;
+        private readonly Uri deauthorizeCallbackUrl;
         [JsonProperty("description")]
-        private readonly String description;
+        private readonly string description;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("homepage_url")]
-        private readonly URI homepageUrl;
+        private readonly Uri homepageUrl;
         [JsonProperty("permissions")]
         private readonly List<ConnectApp.Permission> permissions;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private ConnectApp([JsonProperty("account_sid")]
-                           String accountSid, 
+                           string accountSid, 
                            [JsonProperty("authorize_redirect_url")]
-                           URI authorizeRedirectUrl, 
+                           Uri authorizeRedirectUrl, 
                            [JsonProperty("company_name")]
-                           String companyName, 
+                           string companyName, 
                            [JsonProperty("deauthorize_callback_method")]
                            HttpMethod deauthorizeCallbackMethod, 
                            [JsonProperty("deauthorize_callback_url")]
-                           URI deauthorizeCallbackUrl, 
+                           Uri deauthorizeCallbackUrl, 
                            [JsonProperty("description")]
-                           String description, 
+                           string description, 
                            [JsonProperty("friendly_name")]
-                           String friendlyName, 
+                           string friendlyName, 
                            [JsonProperty("homepage_url")]
-                           URI homepageUrl, 
+                           Uri homepageUrl, 
                            [JsonProperty("permissions")]
                            List<ConnectApp.Permission> permissions, 
                            [JsonProperty("sid")]
-                           String sid, 
+                           string sid, 
                            [JsonProperty("uri")]
-                           String uri) {
+                           string uri) {
             this.accountSid = accountSid;
             this.authorizeRedirectUrl = authorizeRedirectUrl;
             this.companyName = companyName;
@@ -128,21 +126,21 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The unique sid that identifies this account
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return URIL Twilio sends requests when users authorize
          */
-        public URI GetAuthorizeRedirectUrl() {
+        public Uri GetAuthorizeRedirectUrl() {
             return this.authorizeRedirectUrl;
         }
     
         /**
          * @return The company name set for this Connect App.
          */
-        public String GetCompanyName() {
+        public string GetCompanyName() {
             return this.companyName;
         }
     
@@ -156,28 +154,28 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return URL Twilio will send a request when a user de-authorizes this app
          */
-        public URI GetDeauthorizeCallbackUrl() {
+        public Uri GetDeauthorizeCallbackUrl() {
             return this.deauthorizeCallbackUrl;
         }
     
         /**
          * @return A more detailed human readable description
          */
-        public String GetDescription() {
+        public string GetDescription() {
             return this.description;
         }
     
         /**
          * @return A human readable name for the Connect App.
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return The URL users can obtain more information
          */
-        public URI GetHomepageUrl() {
+        public Uri GetHomepageUrl() {
             return this.homepageUrl;
         }
     
@@ -191,14 +189,14 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return A string that uniquely identifies this connect-apps
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The URI for this resource
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

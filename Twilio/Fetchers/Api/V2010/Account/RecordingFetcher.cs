@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Api.V2010.account.Recording;
 namespace Twilio.Fetchers.Api.V2010.Account {
 
     public class RecordingFetcher : Fetcher<Recording> {
-        private String accountSid;
-        private String sid;
+        private string accountSid;
+        private string sid;
     
         /**
          * Construct a new RecordingFetcher
@@ -16,7 +16,7 @@ namespace Twilio.Fetchers.Api.V2010.Account {
          * @param accountSid The account_sid
          * @param sid Fetch by unique recording Sid
          */
-        public RecordingFetcher(String accountSid, String sid) {
+        public RecordingFetcher(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

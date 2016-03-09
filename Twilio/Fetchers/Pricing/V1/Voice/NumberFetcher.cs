@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,14 +7,14 @@ using Twilio.Resources.Pricing.V1.voice.Number;
 namespace Twilio.Fetchers.Pricing.V1.Voice {
 
     public class NumberFetcher : Fetcher<Number> {
-        private com.twilio.types.PhoneNumber number;
+        private Twilio.Types.PhoneNumber number;
     
         /**
          * Construct a new NumberFetcher
          * 
          * @param number The number
          */
-        public NumberFetcher(com.twilio.types.PhoneNumber number) {
+        public NumberFetcher(Twilio.Types.PhoneNumber number) {
             this.number = number;
         }
     

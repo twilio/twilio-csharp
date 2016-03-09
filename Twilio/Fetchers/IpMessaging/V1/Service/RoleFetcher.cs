@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Ipmessaging.V1.service.Role;
 namespace Twilio.Fetchers.IpMessaging.V1.Service {
 
     public class RoleFetcher : Fetcher<Role> {
-        private String serviceSid;
-        private String sid;
+        private string serviceSid;
+        private string sid;
     
         /**
          * Construct a new RoleFetcher
@@ -16,7 +16,7 @@ namespace Twilio.Fetchers.IpMessaging.V1.Service {
          * @param serviceSid The service_sid
          * @param sid The sid
          */
-        public RoleFetcher(String serviceSid, String sid) {
+        public RoleFetcher(string serviceSid, string sid) {
             this.serviceSid = serviceSid;
             this.sid = sid;
         }

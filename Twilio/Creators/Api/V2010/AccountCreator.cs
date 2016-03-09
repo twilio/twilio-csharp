@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,7 +7,7 @@ using Twilio.Resources.Api.V2010.Account;
 namespace Twilio.Creators.Api.V2010 {
 
     public class AccountCreator : Creator<Account> {
-        private String friendlyName;
+        private string friendlyName;
     
         /**
          * A human readable description of the account to create, defaults to
@@ -16,7 +16,7 @@ namespace Twilio.Creators.Api.V2010 {
          * @param friendlyName A human readable description of the account
          * @return this
          */
-        public AccountCreator setFriendlyName(String friendlyName) {
+        public AccountCreator setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }

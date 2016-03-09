@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Deleters.Deleter;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Api.V2010.account.IncomingPhoneNumber;
 namespace Twilio.Deleters.Api.V2010.Account {
 
     public class IncomingPhoneNumberDeleter : Deleter<IncomingPhoneNumber> {
-        private String ownerAccountSid;
-        private String sid;
+        private string ownerAccountSid;
+        private string sid;
     
         /**
          * Construct a new IncomingPhoneNumberDeleter
@@ -16,7 +16,7 @@ namespace Twilio.Deleters.Api.V2010.Account {
          * @param ownerAccountSid The owner_account_sid
          * @param sid Delete by unique phone-number Sid
          */
-        public IncomingPhoneNumberDeleter(String ownerAccountSid, String sid) {
+        public IncomingPhoneNumberDeleter(string ownerAccountSid, string sid) {
             this.ownerAccountSid = ownerAccountSid;
             this.sid = sid;
         }

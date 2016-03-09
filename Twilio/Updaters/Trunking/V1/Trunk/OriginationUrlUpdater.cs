@@ -1,21 +1,21 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
 using Twilio.Converters.Promoter;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Trunking.V1.trunk.OriginationUrl;
 using com.twilio.sdk.updaters.Updater;
-using java.net.URI;
 
 namespace Twilio.Updaters.Trunking.V1.Trunk {
 
     public class OriginationUrlUpdater : Updater<OriginationUrl> {
-        private String trunkSid;
-        private String sid;
-        private Integer weight;
-        private Integer priority;
-        private Boolean enabled;
-        private String friendlyName;
-        private URI sipUrl;
+        private string trunkSid;
+        private string sid;
+        private int weight;
+        private int priority;
+        private bool enabled;
+        private string friendlyName;
+        private Uri sipUrl;
     
         /**
          * Construct a new OriginationUrlUpdater
@@ -23,7 +23,7 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
          * @param trunkSid The trunk_sid
          * @param sid The sid
          */
-        public OriginationUrlUpdater(String trunkSid, String sid) {
+        public OriginationUrlUpdater(string trunkSid, string sid) {
             this.trunkSid = trunkSid;
             this.sid = sid;
         }
@@ -34,7 +34,7 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
          * @param weight The weight
          * @return this
          */
-        public OriginationUrlUpdater setWeight(Integer weight) {
+        public OriginationUrlUpdater setWeight(int weight) {
             this.weight = weight;
             return this;
         }
@@ -45,7 +45,7 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
          * @param priority The priority
          * @return this
          */
-        public OriginationUrlUpdater setPriority(Integer priority) {
+        public OriginationUrlUpdater setPriority(int priority) {
             this.priority = priority;
             return this;
         }
@@ -56,7 +56,7 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
          * @param enabled The enabled
          * @return this
          */
-        public OriginationUrlUpdater setEnabled(Boolean enabled) {
+        public OriginationUrlUpdater setEnabled(bool enabled) {
             this.enabled = enabled;
             return this;
         }
@@ -67,7 +67,7 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public OriginationUrlUpdater setFriendlyName(String friendlyName) {
+        public OriginationUrlUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -78,7 +78,7 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
          * @param sipUrl The sip_url
          * @return this
          */
-        public OriginationUrlUpdater setSipUrl(URI sipUrl) {
+        public OriginationUrlUpdater setSipUrl(Uri sipUrl) {
             this.sipUrl = sipUrl;
             return this;
         }
@@ -89,8 +89,8 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
          * @param sipUrl The sip_url
          * @return this
          */
-        public OriginationUrlUpdater setSipUrl(String sipUrl) {
-            return setSipUrl(Promoter.uriFromString(sipUrl));
+        public OriginationUrlUpdater setSipUrl(string sipUrl) {
+            return setSipUrl(Promoter.UriFromString(sipUrl));
         }
     
         /**
@@ -136,15 +136,15 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
          */
         private void addPostParams(Request request) {
             if (weight != null) {
-                request.addPostParam("Weight", weight.toString());
+                request.addPostParam("Weight", weight.ToString());
             }
             
             if (priority != null) {
-                request.addPostParam("Priority", priority.toString());
+                request.addPostParam("Priority", priority.ToString());
             }
             
             if (enabled != null) {
-                request.addPostParam("Enabled", enabled.toString());
+                request.addPostParam("Enabled", enabled.ToString());
             }
             
             if (friendlyName != null) {
@@ -152,7 +152,7 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
             }
             
             if (sipUrl != null) {
-                request.addPostParam("SipUrl", sipUrl.toString());
+                request.addPostParam("SipUrl", sipUrl.ToString());
             }
         }
     }

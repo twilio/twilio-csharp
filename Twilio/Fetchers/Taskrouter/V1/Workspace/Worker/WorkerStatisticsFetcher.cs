@@ -1,17 +1,17 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.workspace.worker.WorkerStatistics;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
 
     public class WorkerStatisticsFetcher : Fetcher<WorkerStatistics> {
-        private String workspaceSid;
-        private String workerSid;
-        private Integer minutes;
+        private string workspaceSid;
+        private string workerSid;
+        private int minutes;
         private DateTime startDate;
         private DateTime endDate;
     
@@ -21,7 +21,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
          * @param workspaceSid The workspace_sid
          * @param workerSid The worker_sid
          */
-        public WorkerStatisticsFetcher(String workspaceSid, String workerSid) {
+        public WorkerStatisticsFetcher(string workspaceSid, string workerSid) {
             this.workspaceSid = workspaceSid;
             this.workerSid = workerSid;
         }
@@ -32,7 +32,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
          * @param minutes The minutes
          * @return this
          */
-        public WorkerStatisticsFetcher setMinutes(Integer minutes) {
+        public WorkerStatisticsFetcher setMinutes(int minutes) {
             this.minutes = minutes;
             return this;
         }

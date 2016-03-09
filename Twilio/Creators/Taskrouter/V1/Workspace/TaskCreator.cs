@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,11 +7,11 @@ using Twilio.Resources.Taskrouter.V1.workspace.Task;
 namespace Twilio.Creators.Taskrouter.V1.Workspace {
 
     public class TaskCreator : Creator<Task> {
-        private String workspaceSid;
-        private String attributes;
-        private String workflowSid;
-        private Integer timeout;
-        private Integer priority;
+        private string workspaceSid;
+        private string attributes;
+        private string workflowSid;
+        private int timeout;
+        private int priority;
     
         /**
          * Construct a new TaskCreator
@@ -20,7 +20,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param attributes The attributes
          * @param workflowSid The workflow_sid
          */
-        public TaskCreator(String workspaceSid, String attributes, String workflowSid) {
+        public TaskCreator(string workspaceSid, string attributes, string workflowSid) {
             this.workspaceSid = workspaceSid;
             this.attributes = attributes;
             this.workflowSid = workflowSid;
@@ -32,7 +32,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param timeout The timeout
          * @return this
          */
-        public TaskCreator setTimeout(Integer timeout) {
+        public TaskCreator setTimeout(int timeout) {
             this.timeout = timeout;
             return this;
         }
@@ -43,7 +43,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param priority The priority
          * @return this
          */
-        public TaskCreator setPriority(Integer priority) {
+        public TaskCreator setPriority(int priority) {
             this.priority = priority;
             return this;
         }
@@ -99,11 +99,11 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
             }
             
             if (timeout != null) {
-                request.addPostParam("Timeout", timeout.toString());
+                request.addPostParam("Timeout", timeout.ToString());
             }
             
             if (priority != null) {
-                request.addPostParam("Priority", priority.toString());
+                request.addPostParam("Priority", priority.ToString());
             }
         }
     }

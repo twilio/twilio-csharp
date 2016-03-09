@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.Message;
@@ -7,9 +7,9 @@ using com.twilio.sdk.updaters.Updater;
 namespace Twilio.Updaters.Api.V2010.Account {
 
     public class MessageUpdater : Updater<Message> {
-        private String accountSid;
-        private String sid;
-        private String body;
+        private string accountSid;
+        private string sid;
+        private string body;
     
         /**
          * Construct a new MessageUpdater
@@ -17,7 +17,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param accountSid The account_sid
          * @param sid The message to redact
          */
-        public MessageUpdater(String accountSid, String sid) {
+        public MessageUpdater(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
@@ -28,7 +28,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param body The body
          * @return this
          */
-        public MessageUpdater setBody(String body) {
+        public MessageUpdater setBody(string body) {
             this.body = body;
             return this;
         }

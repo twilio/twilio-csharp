@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Deleters.Deleter;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Ipmessaging.V1.service.Channel;
 namespace Twilio.Deleters.IpMessaging.V1.Service {
 
     public class ChannelDeleter : Deleter<Channel> {
-        private String serviceSid;
-        private String sid;
+        private string serviceSid;
+        private string sid;
     
         /**
          * Construct a new ChannelDeleter
@@ -16,7 +16,7 @@ namespace Twilio.Deleters.IpMessaging.V1.Service {
          * @param serviceSid The service_sid
          * @param sid The sid
          */
-        public ChannelDeleter(String serviceSid, String sid) {
+        public ChannelDeleter(string serviceSid, string sid) {
             this.serviceSid = serviceSid;
             this.sid = sid;
         }

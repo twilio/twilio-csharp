@@ -1,23 +1,22 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
 using Twilio.Converters.Promoter;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.Call;
-using com.twilio.sdk.http.HttpMethod;
 using com.twilio.sdk.updaters.Updater;
-using java.net.URI;
 
 namespace Twilio.Updaters.Api.V2010.Account {
 
     public class CallUpdater : Updater<Call> {
-        private String accountSid;
-        private String sid;
-        private URI url;
+        private string accountSid;
+        private string sid;
+        private Uri url;
         private HttpMethod method;
         private Call.Status status;
-        private URI fallbackUrl;
+        private Uri fallbackUrl;
         private HttpMethod fallbackMethod;
-        private URI statusCallback;
+        private Uri statusCallback;
         private HttpMethod statusCallbackMethod;
     
         /**
@@ -26,7 +25,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param accountSid The account_sid
          * @param sid Call Sid that uniquely identifies the Call to update
          */
-        public CallUpdater(String accountSid, String sid) {
+        public CallUpdater(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
@@ -38,7 +37,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param url URL that returns TwiML
          * @return this
          */
-        public CallUpdater setUrl(URI url) {
+        public CallUpdater setUrl(Uri url) {
             this.url = url;
             return this;
         }
@@ -50,8 +49,8 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param url URL that returns TwiML
          * @return this
          */
-        public CallUpdater setUrl(String url) {
-            return setUrl(Promoter.uriFromString(url));
+        public CallUpdater setUrl(string url) {
+            return setUrl(Promoter.UriFromString(url));
         }
     
         /**
@@ -87,7 +86,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param fallbackUrl Fallback URL in case of error
          * @return this
          */
-        public CallUpdater setFallbackUrl(URI fallbackUrl) {
+        public CallUpdater setFallbackUrl(Uri fallbackUrl) {
             this.fallbackUrl = fallbackUrl;
             return this;
         }
@@ -99,8 +98,8 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param fallbackUrl Fallback URL in case of error
          * @return this
          */
-        public CallUpdater setFallbackUrl(String fallbackUrl) {
-            return setFallbackUrl(Promoter.uriFromString(fallbackUrl));
+        public CallUpdater setFallbackUrl(string fallbackUrl) {
+            return setFallbackUrl(Promoter.UriFromString(fallbackUrl));
         }
     
         /**
@@ -121,7 +120,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param statusCallback Status Callback URL
          * @return this
          */
-        public CallUpdater setStatusCallback(URI statusCallback) {
+        public CallUpdater setStatusCallback(Uri statusCallback) {
             this.statusCallback = statusCallback;
             return this;
         }
@@ -132,8 +131,8 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param statusCallback Status Callback URL
          * @return this
          */
-        public CallUpdater setStatusCallback(String statusCallback) {
-            return setStatusCallback(Promoter.uriFromString(statusCallback));
+        public CallUpdater setStatusCallback(string statusCallback) {
+            return setStatusCallback(Promoter.UriFromString(statusCallback));
         }
     
         /**
@@ -191,31 +190,31 @@ namespace Twilio.Updaters.Api.V2010.Account {
          */
         private void addPostParams(Request request) {
             if (url != null) {
-                request.addPostParam("Url", url.toString());
+                request.addPostParam("Url", url.ToString());
             }
             
             if (method != null) {
-                request.addPostParam("Method", method.toString());
+                request.addPostParam("Method", method.ToString());
             }
             
             if (status != null) {
-                request.addPostParam("Status", status.toString());
+                request.addPostParam("Status", status.ToString());
             }
             
             if (fallbackUrl != null) {
-                request.addPostParam("FallbackUrl", fallbackUrl.toString());
+                request.addPostParam("FallbackUrl", fallbackUrl.ToString());
             }
             
             if (fallbackMethod != null) {
-                request.addPostParam("FallbackMethod", fallbackMethod.toString());
+                request.addPostParam("FallbackMethod", fallbackMethod.ToString());
             }
             
             if (statusCallback != null) {
-                request.addPostParam("StatusCallback", statusCallback.toString());
+                request.addPostParam("StatusCallback", statusCallback.ToString());
             }
             
             if (statusCallbackMethod != null) {
-                request.addPostParam("StatusCallbackMethod", statusCallbackMethod.toString());
+                request.addPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
         }
     }

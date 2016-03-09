@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.Notification;
@@ -9,16 +9,16 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account {
 
     public class NotificationReader : Reader<Notification> {
-        private String accountSid;
-        private Integer log;
-        private String messageDate;
+        private string accountSid;
+        private int log;
+        private string messageDate;
     
         /**
          * Construct a new NotificationReader
          * 
          * @param accountSid The account_sid
          */
-        public NotificationReader(String accountSid) {
+        public NotificationReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
@@ -28,7 +28,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param log Filter by log level
          * @return this
          */
-        public NotificationReader byLog(Integer log) {
+        public NotificationReader byLog(int log) {
             this.log = log;
             return this;
         }
@@ -40,7 +40,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param messageDate Filter by date
          * @return this
          */
-        public NotificationReader byMessageDate(String messageDate) {
+        public NotificationReader byMessageDate(string messageDate) {
             this.messageDate = messageDate;
             return this;
         }
@@ -122,7 +122,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          */
         private void addQueryParams(final Request request) {
             if (log != null) {
-                request.addQueryParam("Log", log.toString());
+                request.addQueryParam("Log", log.ToString());
             }
             
             if (messageDate != null) {

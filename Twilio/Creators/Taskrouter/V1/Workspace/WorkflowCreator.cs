@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,12 +7,12 @@ using Twilio.Resources.Taskrouter.V1.workspace.Workflow;
 namespace Twilio.Creators.Taskrouter.V1.Workspace {
 
     public class WorkflowCreator : Creator<Workflow> {
-        private String workspaceSid;
-        private String friendlyName;
-        private String configuration;
-        private String assignmentCallbackUrl;
-        private String fallbackAssignmentCallbackUrl;
-        private Integer taskReservationTimeout;
+        private string workspaceSid;
+        private string friendlyName;
+        private string configuration;
+        private string assignmentCallbackUrl;
+        private string fallbackAssignmentCallbackUrl;
+        private int taskReservationTimeout;
     
         /**
          * Construct a new WorkflowCreator
@@ -22,7 +22,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param configuration The configuration
          * @param assignmentCallbackUrl The assignment_callback_url
          */
-        public WorkflowCreator(String workspaceSid, String friendlyName, String configuration, String assignmentCallbackUrl) {
+        public WorkflowCreator(string workspaceSid, string friendlyName, string configuration, string assignmentCallbackUrl) {
             this.workspaceSid = workspaceSid;
             this.friendlyName = friendlyName;
             this.configuration = configuration;
@@ -35,7 +35,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param fallbackAssignmentCallbackUrl The fallback_assignment_callback_url
          * @return this
          */
-        public WorkflowCreator setFallbackAssignmentCallbackUrl(String fallbackAssignmentCallbackUrl) {
+        public WorkflowCreator setFallbackAssignmentCallbackUrl(string fallbackAssignmentCallbackUrl) {
             this.fallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl;
             return this;
         }
@@ -46,7 +46,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param taskReservationTimeout The task_reservation_timeout
          * @return this
          */
-        public WorkflowCreator setTaskReservationTimeout(Integer taskReservationTimeout) {
+        public WorkflowCreator setTaskReservationTimeout(int taskReservationTimeout) {
             this.taskReservationTimeout = taskReservationTimeout;
             return this;
         }
@@ -110,7 +110,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
             }
             
             if (taskReservationTimeout != null) {
-                request.addPostParam("TaskReservationTimeout", taskReservationTimeout.toString());
+                request.addPostParam("TaskReservationTimeout", taskReservationTimeout.ToString());
             }
         }
     }

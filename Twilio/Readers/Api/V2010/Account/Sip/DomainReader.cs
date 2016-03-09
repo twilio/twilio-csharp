@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.sip.Domain;
@@ -9,14 +9,14 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account.Sip {
 
     public class DomainReader : Reader<Domain> {
-        private String accountSid;
+        private string accountSid;
     
         /**
          * Construct a new DomainReader
          * 
          * @param accountSid The account_sid
          */
-        public DomainReader(String accountSid) {
+        public DomainReader(string accountSid) {
             this.accountSid = accountSid;
         }
     

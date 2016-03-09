@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Taskrouter.V1.Workspace;
 using Twilio.Deleters.Taskrouter.V1.Workspace;
 using Twilio.Exceptions;
@@ -9,8 +10,6 @@ using Twilio.Http;
 using Twilio.Readers.Taskrouter.V1.Workspace;
 using Twilio.Resources;
 using Twilio.Updaters.Taskrouter.V1.Workspace;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Taskrouter.V1.Workspace {
 
@@ -29,7 +28,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return TaskFetcher capable of executing the fetch
          */
-        public static TaskFetcher fetch(String workspaceSid, String sid) {
+        public static TaskFetcher fetch(string workspaceSid, string sid) {
             return new TaskFetcher(workspaceSid, sid);
         }
     
@@ -40,7 +39,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return TaskUpdater capable of executing the update
          */
-        public static TaskUpdater update(String workspaceSid, String sid) {
+        public static TaskUpdater update(string workspaceSid, string sid) {
             return new TaskUpdater(workspaceSid, sid);
         }
     
@@ -51,7 +50,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return TaskDeleter capable of executing the delete
          */
-        public static TaskDeleter delete(String workspaceSid, String sid) {
+        public static TaskDeleter delete(string workspaceSid, string sid) {
             return new TaskDeleter(workspaceSid, sid);
         }
     
@@ -61,7 +60,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @return TaskReader capable of executing the read
          */
-        public static TaskReader read(String workspaceSid) {
+        public static TaskReader read(string workspaceSid) {
             return new TaskReader(workspaceSid);
         }
     
@@ -73,7 +72,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param workflowSid The workflow_sid
          * @return TaskCreator capable of executing the create
          */
-        public static TaskCreator create(String workspaceSid, String attributes, String workflowSid) {
+        public static TaskCreator create(string workspaceSid, string attributes, string workflowSid) {
             return new TaskCreator(workspaceSid, attributes, workflowSid);
         }
     
@@ -93,64 +92,64 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("age")]
-        private readonly Integer age;
+        private readonly int age;
         [JsonProperty("assignment_status")]
         private readonly Task.Status assignmentStatus;
         [JsonProperty("attributes")]
-        private readonly String attributes;
+        private readonly string attributes;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("priority")]
-        private readonly Integer priority;
+        private readonly int priority;
         [JsonProperty("reason")]
-        private readonly String reason;
+        private readonly string reason;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("task_queue_sid")]
-        private readonly String taskQueueSid;
+        private readonly string taskQueueSid;
         [JsonProperty("timeout")]
-        private readonly Integer timeout;
+        private readonly int timeout;
         [JsonProperty("workflow_sid")]
-        private readonly String workflowSid;
+        private readonly string workflowSid;
         [JsonProperty("workspace_sid")]
-        private readonly String workspaceSid;
+        private readonly string workspaceSid;
     
         private Task([JsonProperty("account_sid")]
-                     String accountSid, 
+                     string accountSid, 
                      [JsonProperty("age")]
-                     Integer age, 
+                     int age, 
                      [JsonProperty("assignment_status")]
                      Task.Status assignmentStatus, 
                      [JsonProperty("attributes")]
-                     String attributes, 
+                     string attributes, 
                      [JsonProperty("date_created")]
-                     String dateCreated, 
+                     string dateCreated, 
                      [JsonProperty("date_updated")]
-                     String dateUpdated, 
+                     string dateUpdated, 
                      [JsonProperty("priority")]
-                     Integer priority, 
+                     int priority, 
                      [JsonProperty("reason")]
-                     String reason, 
+                     string reason, 
                      [JsonProperty("sid")]
-                     String sid, 
+                     string sid, 
                      [JsonProperty("task_queue_sid")]
-                     String taskQueueSid, 
+                     string taskQueueSid, 
                      [JsonProperty("timeout")]
-                     Integer timeout, 
+                     int timeout, 
                      [JsonProperty("workflow_sid")]
-                     String workflowSid, 
+                     string workflowSid, 
                      [JsonProperty("workspace_sid")]
-                     String workspaceSid) {
+                     string workspaceSid) {
             this.accountSid = accountSid;
             this.age = age;
             this.assignmentStatus = assignmentStatus;
             this.attributes = attributes;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.priority = priority;
             this.reason = reason;
             this.sid = sid;
@@ -163,14 +162,14 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The age
          */
-        public Integer GetAge() {
+        public int GetAge() {
             return this.age;
         }
     
@@ -184,7 +183,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The attributes
          */
-        public String GetAttributes() {
+        public string GetAttributes() {
             return this.attributes;
         }
     
@@ -205,49 +204,49 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The priority
          */
-        public Integer GetPriority() {
+        public int GetPriority() {
             return this.priority;
         }
     
         /**
          * @return The reason
          */
-        public String GetReason() {
+        public string GetReason() {
             return this.reason;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The task_queue_sid
          */
-        public String GetTaskQueueSid() {
+        public string GetTaskQueueSid() {
             return this.taskQueueSid;
         }
     
         /**
          * @return The timeout
          */
-        public Integer GetTimeout() {
+        public int GetTimeout() {
             return this.timeout;
         }
     
         /**
          * @return The workflow_sid
          */
-        public String GetWorkflowSid() {
+        public string GetWorkflowSid() {
             return this.workflowSid;
         }
     
         /**
          * @return The workspace_sid
          */
-        public String GetWorkspaceSid() {
+        public string GetWorkspaceSid() {
             return this.workspaceSid;
         }
     }

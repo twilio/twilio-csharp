@@ -1,20 +1,19 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
 using Twilio.Converters.Promoter;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.usage.Trigger;
-using com.twilio.sdk.http.HttpMethod;
 using com.twilio.sdk.updaters.Updater;
-using java.net.URI;
 
 namespace Twilio.Updaters.Api.V2010.Account.Usage {
 
     public class TriggerUpdater : Updater<Trigger> {
-        private String accountSid;
-        private String sid;
+        private string accountSid;
+        private string sid;
         private HttpMethod callbackMethod;
-        private URI callbackUrl;
-        private String friendlyName;
+        private Uri callbackUrl;
+        private string friendlyName;
     
         /**
          * Construct a new TriggerUpdater
@@ -22,7 +21,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Usage {
          * @param accountSid The account_sid
          * @param sid The sid
          */
-        public TriggerUpdater(String accountSid, String sid) {
+        public TriggerUpdater(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
@@ -45,7 +44,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Usage {
          * @param callbackUrl URL Twilio will request when the trigger fires
          * @return this
          */
-        public TriggerUpdater setCallbackUrl(URI callbackUrl) {
+        public TriggerUpdater setCallbackUrl(Uri callbackUrl) {
             this.callbackUrl = callbackUrl;
             return this;
         }
@@ -56,8 +55,8 @@ namespace Twilio.Updaters.Api.V2010.Account.Usage {
          * @param callbackUrl URL Twilio will request when the trigger fires
          * @return this
          */
-        public TriggerUpdater setCallbackUrl(String callbackUrl) {
-            return setCallbackUrl(Promoter.uriFromString(callbackUrl));
+        public TriggerUpdater setCallbackUrl(string callbackUrl) {
+            return setCallbackUrl(Promoter.UriFromString(callbackUrl));
         }
     
         /**
@@ -66,7 +65,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Usage {
          * @param friendlyName A user-specified, human-readable name for the trigger.
          * @return this
          */
-        public TriggerUpdater setFriendlyName(String friendlyName) {
+        public TriggerUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -114,11 +113,11 @@ namespace Twilio.Updaters.Api.V2010.Account.Usage {
          */
         private void addPostParams(Request request) {
             if (callbackMethod != null) {
-                request.addPostParam("CallbackMethod", callbackMethod.toString());
+                request.addPostParam("CallbackMethod", callbackMethod.ToString());
             }
             
             if (callbackUrl != null) {
-                request.addPostParam("CallbackUrl", callbackUrl.toString());
+                request.addPostParam("CallbackUrl", callbackUrl.ToString());
             }
             
             if (friendlyName != null) {

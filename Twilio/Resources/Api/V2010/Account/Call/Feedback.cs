@@ -1,15 +1,14 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account.Call;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Api.V2010.Account.Call;
 using Twilio.Http;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010.Account.Call;
-using com.twilio.sdk.converters.MarshalConverter;
-using java.util.List;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account.Call {
 
@@ -33,7 +32,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          * @param qualityScore The quality_score
          * @return FeedbackCreator capable of executing the create
          */
-        public static FeedbackCreator create(String accountSid, String callSid, Integer qualityScore) {
+        public static FeedbackCreator create(string accountSid, string callSid, int qualityScore) {
             return new FeedbackCreator(accountSid, callSid, qualityScore);
         }
     
@@ -44,7 +43,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          * @param callSid The call sid that uniquely identifies the call
          * @return FeedbackFetcher capable of executing the fetch
          */
-        public static FeedbackFetcher fetch(String accountSid, String callSid) {
+        public static FeedbackFetcher fetch(string accountSid, string callSid) {
             return new FeedbackFetcher(accountSid, callSid);
         }
     
@@ -56,7 +55,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          * @param qualityScore An integer from 1 to 5
          * @return FeedbackUpdater capable of executing the update
          */
-        public static FeedbackUpdater update(String accountSid, String callSid, Integer qualityScore) {
+        public static FeedbackUpdater update(string accountSid, string callSid, int qualityScore) {
             return new FeedbackUpdater(accountSid, callSid, qualityScore);
         }
     
@@ -76,7 +75,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
@@ -84,25 +83,25 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         [JsonProperty("issues")]
         private readonly List<Feedback.Issues> issues;
         [JsonProperty("quality_score")]
-        private readonly Integer qualityScore;
+        private readonly int qualityScore;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
     
         private Feedback([JsonProperty("account_sid")]
-                         String accountSid, 
+                         string accountSid, 
                          [JsonProperty("date_created")]
-                         String dateCreated, 
+                         string dateCreated, 
                          [JsonProperty("date_updated")]
-                         String dateUpdated, 
+                         string dateUpdated, 
                          [JsonProperty("issues")]
                          List<Feedback.Issues> issues, 
                          [JsonProperty("quality_score")]
-                         Integer qualityScore, 
+                         int qualityScore, 
                          [JsonProperty("sid")]
-                         String sid) {
+                         string sid) {
             this.accountSid = accountSid;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.issues = issues;
             this.qualityScore = qualityScore;
             this.sid = sid;
@@ -111,7 +110,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
@@ -139,14 +138,14 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         /**
          * @return 1 to 5 quality score
          */
-        public Integer GetQualityScore() {
+        public int GetQualityScore() {
             return this.qualityScore;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     }

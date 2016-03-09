@@ -1,15 +1,13 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Ipmessaging.V1.Service.Channel;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Ipmessaging.V1.Service.Channel;
 using Twilio.Http;
 using Twilio.Readers.Ipmessaging.V1.Service.Channel;
 using Twilio.Resources;
-using com.twilio.sdk.converters.MarshalConverter;
-using java.net.URI;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
 
@@ -22,7 +20,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
          * @param sid The sid
          * @return MessageFetcher capable of executing the fetch
          */
-        public static MessageFetcher fetch(String serviceSid, String channelSid, String sid) {
+        public static MessageFetcher fetch(string serviceSid, string channelSid, string sid) {
             return new MessageFetcher(serviceSid, channelSid, sid);
         }
     
@@ -34,7 +32,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
          * @param body The body
          * @return MessageCreator capable of executing the create
          */
-        public static MessageCreator create(String serviceSid, String channelSid, String body) {
+        public static MessageCreator create(string serviceSid, string channelSid, string body) {
             return new MessageCreator(serviceSid, channelSid, body);
         }
     
@@ -45,7 +43,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
          * @param channelSid The channel_sid
          * @return MessageReader capable of executing the read
          */
-        public static MessageReader read(String serviceSid, String channelSid) {
+        public static MessageReader read(string serviceSid, string channelSid) {
             return new MessageReader(serviceSid, channelSid);
         }
     
@@ -65,52 +63,52 @@ namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
         }
     
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("service_sid")]
-        private readonly String serviceSid;
+        private readonly string serviceSid;
         [JsonProperty("to")]
-        private readonly String to;
+        private readonly string to;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("was_edited")]
-        private readonly Boolean wasEdited;
+        private readonly bool wasEdited;
         [JsonProperty("from")]
-        private readonly String from;
+        private readonly string from;
         [JsonProperty("body")]
-        private readonly String body;
+        private readonly string body;
         [JsonProperty("url")]
-        private readonly URI url;
+        private readonly Uri url;
     
         private Message([JsonProperty("sid")]
-                        String sid, 
+                        string sid, 
                         [JsonProperty("account_sid")]
-                        String accountSid, 
+                        string accountSid, 
                         [JsonProperty("service_sid")]
-                        String serviceSid, 
+                        string serviceSid, 
                         [JsonProperty("to")]
-                        String to, 
+                        string to, 
                         [JsonProperty("date_created")]
-                        String dateCreated, 
+                        string dateCreated, 
                         [JsonProperty("date_updated")]
-                        String dateUpdated, 
+                        string dateUpdated, 
                         [JsonProperty("was_edited")]
-                        Boolean wasEdited, 
+                        bool wasEdited, 
                         [JsonProperty("from")]
-                        String from, 
+                        string from, 
                         [JsonProperty("body")]
-                        String body, 
+                        string body, 
                         [JsonProperty("url")]
-                        URI url) {
+                        Uri url) {
             this.sid = sid;
             this.accountSid = accountSid;
             this.serviceSid = serviceSid;
             this.to = to;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.wasEdited = wasEdited;
             this.from = from;
             this.body = body;
@@ -120,28 +118,28 @@ namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The service_sid
          */
-        public String GetServiceSid() {
+        public string GetServiceSid() {
             return this.serviceSid;
         }
     
         /**
          * @return The to
          */
-        public String GetTo() {
+        public string GetTo() {
             return this.to;
         }
     
@@ -162,28 +160,28 @@ namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
         /**
          * @return The was_edited
          */
-        public Boolean GetWasEdited() {
+        public bool GetWasEdited() {
             return this.wasEdited;
         }
     
         /**
          * @return The from
          */
-        public String GetFrom() {
+        public string GetFrom() {
             return this.from;
         }
     
         /**
          * @return The body
          */
-        public String GetBody() {
+        public string GetBody() {
             return this.body;
         }
     
         /**
          * @return The url
          */
-        public URI GetUrl() {
+        public Uri GetUrl() {
             return this.url;
         }
     }

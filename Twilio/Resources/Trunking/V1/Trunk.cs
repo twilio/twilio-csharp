@@ -1,6 +1,8 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Trunking.V1;
 using Twilio.Deleters.Trunking.V1;
 using Twilio.Exceptions;
@@ -9,12 +11,6 @@ using Twilio.Http;
 using Twilio.Readers.Trunking.V1;
 using Twilio.Resources;
 using Twilio.Updaters.Trunking.V1;
-using com.fasterxml.jackson.databind.JsonNode;
-using com.twilio.sdk.converters.MarshalConverter;
-using com.twilio.sdk.http.HttpMethod;
-using java.net.URI;
-using java.util.List;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Trunking.V1 {
 
@@ -25,7 +21,7 @@ namespace Twilio.Resources.Trunking.V1 {
          * @param sid The sid
          * @return TrunkFetcher capable of executing the fetch
          */
-        public static TrunkFetcher fetch(String sid) {
+        public static TrunkFetcher fetch(string sid) {
             return new TrunkFetcher(sid);
         }
     
@@ -35,7 +31,7 @@ namespace Twilio.Resources.Trunking.V1 {
          * @param sid The sid
          * @return TrunkDeleter capable of executing the delete
          */
-        public static TrunkDeleter delete(String sid) {
+        public static TrunkDeleter delete(string sid) {
             return new TrunkDeleter(sid);
         }
     
@@ -63,7 +59,7 @@ namespace Twilio.Resources.Trunking.V1 {
          * @param sid The sid
          * @return TrunkUpdater capable of executing the update
          */
-        public static TrunkUpdater update(String sid) {
+        public static TrunkUpdater update(string sid) {
             return new TrunkUpdater(sid);
         }
     
@@ -83,62 +79,62 @@ namespace Twilio.Resources.Trunking.V1 {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("domain_name")]
-        private readonly String domainName;
+        private readonly string domainName;
         [JsonProperty("disaster_recovery_method")]
         private readonly HttpMethod disasterRecoveryMethod;
         [JsonProperty("disaster_recovery_url")]
-        private readonly URI disasterRecoveryUrl;
+        private readonly Uri disasterRecoveryUrl;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("secure")]
-        private readonly Boolean secure;
+        private readonly bool secure;
         [JsonProperty("recording")]
-        private readonly JsonNode recording;
+        private readonly Object recording;
         [JsonProperty("auth_type")]
-        private readonly String authType;
+        private readonly string authType;
         [JsonProperty("auth_type_set")]
-        private readonly List<String> authTypeSet;
+        private readonly List<string> authTypeSet;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("url")]
-        private readonly URI url;
+        private readonly Uri url;
         [JsonProperty("links")]
-        private readonly Map<String, String> links;
+        private readonly Dictionary<string, string> links;
     
         private Trunk([JsonProperty("account_sid")]
-                      String accountSid, 
+                      string accountSid, 
                       [JsonProperty("domain_name")]
-                      String domainName, 
+                      string domainName, 
                       [JsonProperty("disaster_recovery_method")]
                       HttpMethod disasterRecoveryMethod, 
                       [JsonProperty("disaster_recovery_url")]
-                      URI disasterRecoveryUrl, 
+                      Uri disasterRecoveryUrl, 
                       [JsonProperty("friendly_name")]
-                      String friendlyName, 
+                      string friendlyName, 
                       [JsonProperty("secure")]
-                      Boolean secure, 
+                      bool secure, 
                       [JsonProperty("recording")]
-                      JsonNode recording, 
+                      Object recording, 
                       [JsonProperty("auth_type")]
-                      String authType, 
+                      string authType, 
                       [JsonProperty("auth_type_set")]
-                      List<String> authTypeSet, 
+                      List<string> authTypeSet, 
                       [JsonProperty("date_created")]
-                      String dateCreated, 
+                      string dateCreated, 
                       [JsonProperty("date_updated")]
-                      String dateUpdated, 
+                      string dateUpdated, 
                       [JsonProperty("sid")]
-                      String sid, 
+                      string sid, 
                       [JsonProperty("url")]
-                      URI url, 
+                      Uri url, 
                       [JsonProperty("links")]
-                      Map<String, String> links) {
+                      Dictionary<string, string> links) {
             this.accountSid = accountSid;
             this.domainName = domainName;
             this.disasterRecoveryMethod = disasterRecoveryMethod;
@@ -148,8 +144,8 @@ namespace Twilio.Resources.Trunking.V1 {
             this.recording = recording;
             this.authType = authType;
             this.authTypeSet = authTypeSet;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.sid = sid;
             this.url = url;
             this.links = links;
@@ -158,14 +154,14 @@ namespace Twilio.Resources.Trunking.V1 {
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The domain_name
          */
-        public String GetDomainName() {
+        public string GetDomainName() {
             return this.domainName;
         }
     
@@ -179,42 +175,42 @@ namespace Twilio.Resources.Trunking.V1 {
         /**
          * @return The disaster_recovery_url
          */
-        public URI GetDisasterRecoveryUrl() {
+        public Uri GetDisasterRecoveryUrl() {
             return this.disasterRecoveryUrl;
         }
     
         /**
          * @return The friendly_name
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return The secure
          */
-        public Boolean GetSecure() {
+        public bool GetSecure() {
             return this.secure;
         }
     
         /**
          * @return The recording
          */
-        public JsonNode GetRecording() {
+        public Object GetRecording() {
             return this.recording;
         }
     
         /**
          * @return The auth_type
          */
-        public String GetAuthType() {
+        public string GetAuthType() {
             return this.authType;
         }
     
         /**
          * @return The auth_type_set
          */
-        public List<String> GetAuthTypeSet() {
+        public List<string> GetAuthTypeSet() {
             return this.authTypeSet;
         }
     
@@ -235,21 +231,21 @@ namespace Twilio.Resources.Trunking.V1 {
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The url
          */
-        public URI GetUrl() {
+        public Uri GetUrl() {
             return this.url;
         }
     
         /**
          * @return The links
          */
-        public Map<String, String> GetLinks() {
+        public Dictionary<string, string> GetLinks() {
             return this.links;
         }
     }

@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.Message;
@@ -9,17 +9,17 @@ using com.twilio.sdk.resources.ResourceSet;
 namespace Twilio.Readers.Api.V2010.Account {
 
     public class MessageReader : Reader<Message> {
-        private String accountSid;
-        private com.twilio.types.PhoneNumber to;
-        private com.twilio.types.PhoneNumber from;
-        private String dateSent;
+        private string accountSid;
+        private Twilio.Types.PhoneNumber to;
+        private Twilio.Types.PhoneNumber from;
+        private string dateSent;
     
         /**
          * Construct a new MessageReader
          * 
          * @param accountSid The account_sid
          */
-        public MessageReader(String accountSid) {
+        public MessageReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
@@ -29,7 +29,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param to Filter by messages to this number
          * @return this
          */
-        public MessageReader byTo(com.twilio.types.PhoneNumber to) {
+        public MessageReader byTo(Twilio.Types.PhoneNumber to) {
             this.to = to;
             return this;
         }
@@ -40,7 +40,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param from Filter by from number
          * @return this
          */
-        public MessageReader byFrom(com.twilio.types.PhoneNumber from) {
+        public MessageReader byFrom(Twilio.Types.PhoneNumber from) {
             this.from = from;
             return this;
         }
@@ -51,7 +51,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param dateSent Filter by date sent
          * @return this
          */
-        public MessageReader byDateSent(String dateSent) {
+        public MessageReader byDateSent(string dateSent) {
             this.dateSent = dateSent;
             return this;
         }
@@ -133,11 +133,11 @@ namespace Twilio.Readers.Api.V2010.Account {
          */
         private void addQueryParams(final Request request) {
             if (to != null) {
-                request.addQueryParam("To", to.toString());
+                request.addQueryParam("To", to.ToString());
             }
             
             if (from != null) {
-                request.addQueryParam("From", from.toString());
+                request.addQueryParam("From", from.ToString());
             }
             
             if (dateSent != null) {

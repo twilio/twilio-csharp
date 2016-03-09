@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account.Sip.Domain;
 using Twilio.Deleters.Api.V2010.Account.Sip.Domain;
 using Twilio.Exceptions;
@@ -8,8 +9,6 @@ using Twilio.Fetchers.Api.V2010.Account.Sip.Domain;
 using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account.Sip.Domain;
 using Twilio.Resources;
-using com.twilio.sdk.converters.MarshalConverter;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
 
@@ -22,7 +21,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
          * @param credentialListSid The credential_list_sid
          * @return CredentialListMappingCreator capable of executing the create
          */
-        public static CredentialListMappingCreator create(String accountSid, String domainSid, String credentialListSid) {
+        public static CredentialListMappingCreator create(string accountSid, string domainSid, string credentialListSid) {
             return new CredentialListMappingCreator(accountSid, domainSid, credentialListSid);
         }
     
@@ -33,7 +32,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
          * @param domainSid The domain_sid
          * @return CredentialListMappingReader capable of executing the read
          */
-        public static CredentialListMappingReader read(String accountSid, String domainSid) {
+        public static CredentialListMappingReader read(string accountSid, string domainSid) {
             return new CredentialListMappingReader(accountSid, domainSid);
         }
     
@@ -45,7 +44,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
          * @param sid The sid
          * @return CredentialListMappingFetcher capable of executing the fetch
          */
-        public static CredentialListMappingFetcher fetch(String accountSid, String domainSid, String sid) {
+        public static CredentialListMappingFetcher fetch(string accountSid, string domainSid, string sid) {
             return new CredentialListMappingFetcher(accountSid, domainSid, sid);
         }
     
@@ -57,7 +56,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
          * @param sid The sid
          * @return CredentialListMappingDeleter capable of executing the delete
          */
-        public static CredentialListMappingDeleter delete(String accountSid, String domainSid, String sid) {
+        public static CredentialListMappingDeleter delete(string accountSid, string domainSid, string sid) {
             return new CredentialListMappingDeleter(accountSid, domainSid, sid);
         }
     
@@ -77,33 +76,33 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("friendly_name")]
-        private readonly String friendlyName;
+        private readonly string friendlyName;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private CredentialListMapping([JsonProperty("account_sid")]
-                                      String accountSid, 
+                                      string accountSid, 
                                       [JsonProperty("date_created")]
-                                      String dateCreated, 
+                                      string dateCreated, 
                                       [JsonProperty("date_updated")]
-                                      String dateUpdated, 
+                                      string dateUpdated, 
                                       [JsonProperty("friendly_name")]
-                                      String friendlyName, 
+                                      string friendlyName, 
                                       [JsonProperty("sid")]
-                                      String sid, 
+                                      string sid, 
                                       [JsonProperty("uri")]
-                                      String uri) {
+                                      string uri) {
             this.accountSid = accountSid;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.friendlyName = friendlyName;
             this.sid = sid;
             this.uri = uri;
@@ -112,7 +111,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
@@ -133,21 +132,21 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
         /**
          * @return The friendly_name
          */
-        public String GetFriendlyName() {
+        public string GetFriendlyName() {
             return this.friendlyName;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The uri
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

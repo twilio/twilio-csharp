@@ -1,16 +1,13 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Deleters.Monitor.V1;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Monitor.V1;
 using Twilio.Http;
 using Twilio.Readers.Monitor.V1;
 using Twilio.Resources;
-using com.twilio.sdk.converters.MarshalConverter;
-using com.twilio.sdk.http.HttpMethod;
-using java.net.URI;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Monitor.V1 {
 
@@ -21,7 +18,7 @@ namespace Twilio.Resources.Monitor.V1 {
          * @param sid The sid
          * @return AlertFetcher capable of executing the fetch
          */
-        public static AlertFetcher fetch(String sid) {
+        public static AlertFetcher fetch(string sid) {
             return new AlertFetcher(sid);
         }
     
@@ -31,7 +28,7 @@ namespace Twilio.Resources.Monitor.V1 {
          * @param sid The sid
          * @return AlertDeleter capable of executing the delete
          */
-        public static AlertDeleter delete(String sid) {
+        public static AlertDeleter delete(string sid) {
             return new AlertDeleter(sid);
         }
     
@@ -60,11 +57,11 @@ namespace Twilio.Resources.Monitor.V1 {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("alert_text")]
-        private readonly String alertText;
+        private readonly string alertText;
         [JsonProperty("api_version")]
-        private readonly String apiVersion;
+        private readonly string apiVersion;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_generated")]
@@ -72,68 +69,68 @@ namespace Twilio.Resources.Monitor.V1 {
         [JsonProperty("date_updated")]
         private readonly DateTime dateUpdated;
         [JsonProperty("error_code")]
-        private readonly String errorCode;
+        private readonly string errorCode;
         [JsonProperty("log_level")]
-        private readonly String logLevel;
+        private readonly string logLevel;
         [JsonProperty("more_info")]
-        private readonly String moreInfo;
+        private readonly string moreInfo;
         [JsonProperty("request_method")]
         private readonly HttpMethod requestMethod;
         [JsonProperty("request_url")]
-        private readonly String requestUrl;
+        private readonly string requestUrl;
         [JsonProperty("request_variables")]
-        private readonly String requestVariables;
+        private readonly string requestVariables;
         [JsonProperty("resource_sid")]
-        private readonly String resourceSid;
+        private readonly string resourceSid;
         [JsonProperty("response_body")]
-        private readonly String responseBody;
+        private readonly string responseBody;
         [JsonProperty("response_headers")]
-        private readonly String responseHeaders;
+        private readonly string responseHeaders;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("url")]
-        private readonly URI url;
+        private readonly Uri url;
     
         private Alert([JsonProperty("account_sid")]
-                      String accountSid, 
+                      string accountSid, 
                       [JsonProperty("alert_text")]
-                      String alertText, 
+                      string alertText, 
                       [JsonProperty("api_version")]
-                      String apiVersion, 
+                      string apiVersion, 
                       [JsonProperty("date_created")]
-                      String dateCreated, 
+                      string dateCreated, 
                       [JsonProperty("date_generated")]
-                      String dateGenerated, 
+                      string dateGenerated, 
                       [JsonProperty("date_updated")]
-                      String dateUpdated, 
+                      string dateUpdated, 
                       [JsonProperty("error_code")]
-                      String errorCode, 
+                      string errorCode, 
                       [JsonProperty("log_level")]
-                      String logLevel, 
+                      string logLevel, 
                       [JsonProperty("more_info")]
-                      String moreInfo, 
+                      string moreInfo, 
                       [JsonProperty("request_method")]
                       HttpMethod requestMethod, 
                       [JsonProperty("request_url")]
-                      String requestUrl, 
+                      string requestUrl, 
                       [JsonProperty("request_variables")]
-                      String requestVariables, 
+                      string requestVariables, 
                       [JsonProperty("resource_sid")]
-                      String resourceSid, 
+                      string resourceSid, 
                       [JsonProperty("response_body")]
-                      String responseBody, 
+                      string responseBody, 
                       [JsonProperty("response_headers")]
-                      String responseHeaders, 
+                      string responseHeaders, 
                       [JsonProperty("sid")]
-                      String sid, 
+                      string sid, 
                       [JsonProperty("url")]
-                      URI url) {
+                      Uri url) {
             this.accountSid = accountSid;
             this.alertText = alertText;
             this.apiVersion = apiVersion;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateGenerated = MarshalConverter.dateTimeFromString(dateGenerated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateGenerated = MarshalConverter.DateTimeFromString(dateGenerated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.errorCode = errorCode;
             this.logLevel = logLevel;
             this.moreInfo = moreInfo;
@@ -150,21 +147,21 @@ namespace Twilio.Resources.Monitor.V1 {
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The alert_text
          */
-        public String GetAlertText() {
+        public string GetAlertText() {
             return this.alertText;
         }
     
         /**
          * @return The api_version
          */
-        public String GetApiVersion() {
+        public string GetApiVersion() {
             return this.apiVersion;
         }
     
@@ -192,21 +189,21 @@ namespace Twilio.Resources.Monitor.V1 {
         /**
          * @return The error_code
          */
-        public String GetErrorCode() {
+        public string GetErrorCode() {
             return this.errorCode;
         }
     
         /**
          * @return The log_level
          */
-        public String GetLogLevel() {
+        public string GetLogLevel() {
             return this.logLevel;
         }
     
         /**
          * @return The more_info
          */
-        public String GetMoreInfo() {
+        public string GetMoreInfo() {
             return this.moreInfo;
         }
     
@@ -220,49 +217,49 @@ namespace Twilio.Resources.Monitor.V1 {
         /**
          * @return The request_url
          */
-        public String GetRequestUrl() {
+        public string GetRequestUrl() {
             return this.requestUrl;
         }
     
         /**
          * @return The request_variables
          */
-        public String GetRequestVariables() {
+        public string GetRequestVariables() {
             return this.requestVariables;
         }
     
         /**
          * @return The resource_sid
          */
-        public String GetResourceSid() {
+        public string GetResourceSid() {
             return this.resourceSid;
         }
     
         /**
          * @return The response_body
          */
-        public String GetResponseBody() {
+        public string GetResponseBody() {
             return this.responseBody;
         }
     
         /**
          * @return The response_headers
          */
-        public String GetResponseHeaders() {
+        public string GetResponseHeaders() {
             return this.responseHeaders;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The url
          */
-        public URI GetUrl() {
+        public Uri GetUrl() {
             return this.url;
         }
     }

@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.workspace.Activity;
@@ -7,9 +7,9 @@ using com.twilio.sdk.updaters.Updater;
 namespace Twilio.Updaters.Taskrouter.V1.Workspace {
 
     public class ActivityUpdater : Updater<Activity> {
-        private String workspaceSid;
-        private String sid;
-        private String friendlyName;
+        private string workspaceSid;
+        private string sid;
+        private string friendlyName;
     
         /**
          * Construct a new ActivityUpdater
@@ -18,7 +18,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @param friendlyName The friendly_name
          */
-        public ActivityUpdater(String workspaceSid, String sid, String friendlyName) {
+        public ActivityUpdater(string workspaceSid, string sid, string friendlyName) {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
             this.friendlyName = friendlyName;

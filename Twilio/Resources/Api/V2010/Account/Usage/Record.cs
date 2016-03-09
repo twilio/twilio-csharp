@@ -1,15 +1,12 @@
 using Newtonsoft.Json;
-using Newtonsoft.Json.JsonDeserialize;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account.Usage;
 using Twilio.Resources;
-using com.twilio.sdk.converters.MarshalConverter;
-using java.math.BigDecimal;
-using java.util.Currency;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account.Usage {
 
@@ -50,7 +47,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
          * @param accountSid The account_sid
          * @return RecordReader capable of executing the read
          */
-        public static RecordReader read(String accountSid) {
+        public static RecordReader read(string accountSid) {
             return new RecordReader(accountSid);
         }
     
@@ -70,73 +67,72 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("api_version")]
-        private readonly String apiVersion;
+        private readonly string apiVersion;
         [JsonProperty("category")]
         private readonly Record.Category category;
         [JsonProperty("count")]
-        private readonly String count;
+        private readonly string count;
         [JsonProperty("count_unit")]
-        private readonly String countUnit;
+        private readonly string countUnit;
         [JsonProperty("description")]
-        private readonly String description;
+        private readonly string description;
         [JsonProperty("end_date")]
         private readonly DateTime endDate;
         [JsonProperty("price")]
-        private readonly BigDecimal price;
+        private readonly decimal price;
         [JsonProperty("price_unit")]
-        private readonly Currency priceUnit;
+        private readonly decimal priceUnit;
         [JsonProperty("start_date")]
         private readonly DateTime startDate;
         [JsonProperty("subresource_uris")]
-        private readonly Map<String, String> subresourceUris;
+        private readonly Dictionary<string, string> subresourceUris;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
         [JsonProperty("usage")]
-        private readonly String usage;
+        private readonly string usage;
         [JsonProperty("usage_unit")]
-        private readonly String usageUnit;
+        private readonly string usageUnit;
     
         private Record([JsonProperty("account_sid")]
-                       String accountSid, 
+                       string accountSid, 
                        [JsonProperty("api_version")]
-                       String apiVersion, 
+                       string apiVersion, 
                        [JsonProperty("category")]
                        Record.Category category, 
                        [JsonProperty("count")]
-                       String count, 
+                       string count, 
                        [JsonProperty("count_unit")]
-                       String countUnit, 
+                       string countUnit, 
                        [JsonProperty("description")]
-                       String description, 
+                       string description, 
                        [JsonProperty("end_date")]
-                       String endDate, 
+                       string endDate, 
                        [JsonProperty("price")]
-                       BigDecimal price, 
+                       decimal price, 
                        [JsonProperty("price_unit")]
-                       [JsonDeserialize(using = com.twilio.sdk.converters.CurrencyDeserializer.class)]
-                       Currency priceUnit, 
+                       decimal priceUnit, 
                        [JsonProperty("start_date")]
-                       String startDate, 
+                       string startDate, 
                        [JsonProperty("subresource_uris")]
-                       Map<String, String> subresourceUris, 
+                       Dictionary<string, string> subresourceUris, 
                        [JsonProperty("uri")]
-                       String uri, 
+                       string uri, 
                        [JsonProperty("usage")]
-                       String usage, 
+                       string usage, 
                        [JsonProperty("usage_unit")]
-                       String usageUnit) {
+                       string usageUnit) {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
             this.category = category;
             this.count = count;
             this.countUnit = countUnit;
             this.description = description;
-            this.endDate = MarshalConverter.dateTimeFromString(endDate);
+            this.endDate = MarshalConverter.DateTimeFromString(endDate);
             this.price = price;
             this.priceUnit = priceUnit;
-            this.startDate = MarshalConverter.dateTimeFromString(startDate);
+            this.startDate = MarshalConverter.DateTimeFromString(startDate);
             this.subresourceUris = subresourceUris;
             this.uri = uri;
             this.usage = usage;
@@ -146,14 +142,14 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         /**
          * @return The Account that accrued the usage
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The api_version
          */
-        public String GetApiVersion() {
+        public string GetApiVersion() {
             return this.apiVersion;
         }
     
@@ -167,21 +163,21 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         /**
          * @return The number of usage events (e.g. the number of calls).
          */
-        public String GetCount() {
+        public string GetCount() {
             return this.count;
         }
     
         /**
          * @return The unit in which `Count` is measured
          */
-        public String GetCountUnit() {
+        public string GetCountUnit() {
             return this.countUnit;
         }
     
         /**
          * @return A human-readable description of the usage category.
          */
-        public String GetDescription() {
+        public string GetDescription() {
             return this.description;
         }
     
@@ -195,14 +191,14 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         /**
          * @return The total price of the usage
          */
-        public BigDecimal GetPrice() {
+        public decimal GetPrice() {
             return this.price;
         }
     
         /**
          * @return The currency in which `Price` is measured
          */
-        public Currency GetPriceUnit() {
+        public decimal GetPriceUnit() {
             return this.priceUnit;
         }
     
@@ -216,28 +212,28 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         /**
          * @return Subresources Uris for this UsageRecord
          */
-        public Map<String, String> GetSubresourceUris() {
+        public Dictionary<string, string> GetSubresourceUris() {
             return this.subresourceUris;
         }
     
         /**
          * @return The URI for this resource
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     
         /**
          * @return The amount of usage
          */
-        public String GetUsage() {
+        public string GetUsage() {
             return this.usage;
         }
     
         /**
          * @return The units in which `Usage` is measured
          */
-        public String GetUsageUnit() {
+        public string GetUsageUnit() {
             return this.usageUnit;
         }
     }

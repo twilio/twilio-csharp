@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Taskrouter.V1.workspace.Activity;
 namespace Twilio.Fetchers.Taskrouter.V1.Workspace {
 
     public class ActivityFetcher : Fetcher<Activity> {
-        private String workspaceSid;
-        private String sid;
+        private string workspaceSid;
+        private string sid;
     
         /**
          * Construct a new ActivityFetcher
@@ -16,7 +16,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @param sid The sid
          */
-        public ActivityFetcher(String workspaceSid, String sid) {
+        public ActivityFetcher(string workspaceSid, string sid) {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
         }

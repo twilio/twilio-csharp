@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Api.V2010.account.sip.IpAccessControlList;
 namespace Twilio.Creators.Api.V2010.Account.Sip {
 
     public class IpAccessControlListCreator : Creator<IpAccessControlList> {
-        private String accountSid;
-        private String friendlyName;
+        private string accountSid;
+        private string friendlyName;
     
         /**
          * Construct a new IpAccessControlListCreator
@@ -16,7 +16,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          * @param accountSid The account_sid
          * @param friendlyName A human readable description of this resource
          */
-        public IpAccessControlListCreator(String accountSid, String friendlyName) {
+        public IpAccessControlListCreator(string accountSid, string friendlyName) {
             this.accountSid = accountSid;
             this.friendlyName = friendlyName;
         }

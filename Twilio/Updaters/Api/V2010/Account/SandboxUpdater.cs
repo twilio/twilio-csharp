@@ -1,21 +1,20 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
 using Twilio.Converters.Promoter;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.Sandbox;
-using com.twilio.sdk.http.HttpMethod;
 using com.twilio.sdk.updaters.Updater;
-using java.net.URI;
 
 namespace Twilio.Updaters.Api.V2010.Account {
 
     public class SandboxUpdater : Updater<Sandbox> {
-        private String accountSid;
-        private URI voiceUrl;
+        private string accountSid;
+        private Uri voiceUrl;
         private HttpMethod voiceMethod;
-        private URI smsUrl;
+        private Uri smsUrl;
         private HttpMethod smsMethod;
-        private URI statusCallback;
+        private Uri statusCallback;
         private HttpMethod statusCallbackMethod;
     
         /**
@@ -23,7 +22,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * 
          * @param accountSid The account_sid
          */
-        public SandboxUpdater(String accountSid) {
+        public SandboxUpdater(string accountSid) {
             this.accountSid = accountSid;
         }
     
@@ -33,7 +32,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param voiceUrl The voice_url
          * @return this
          */
-        public SandboxUpdater setVoiceUrl(URI voiceUrl) {
+        public SandboxUpdater setVoiceUrl(Uri voiceUrl) {
             this.voiceUrl = voiceUrl;
             return this;
         }
@@ -44,8 +43,8 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param voiceUrl The voice_url
          * @return this
          */
-        public SandboxUpdater setVoiceUrl(String voiceUrl) {
-            return setVoiceUrl(Promoter.uriFromString(voiceUrl));
+        public SandboxUpdater setVoiceUrl(string voiceUrl) {
+            return setVoiceUrl(Promoter.UriFromString(voiceUrl));
         }
     
         /**
@@ -65,7 +64,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param smsUrl The sms_url
          * @return this
          */
-        public SandboxUpdater setSmsUrl(URI smsUrl) {
+        public SandboxUpdater setSmsUrl(Uri smsUrl) {
             this.smsUrl = smsUrl;
             return this;
         }
@@ -76,8 +75,8 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param smsUrl The sms_url
          * @return this
          */
-        public SandboxUpdater setSmsUrl(String smsUrl) {
-            return setSmsUrl(Promoter.uriFromString(smsUrl));
+        public SandboxUpdater setSmsUrl(string smsUrl) {
+            return setSmsUrl(Promoter.UriFromString(smsUrl));
         }
     
         /**
@@ -97,7 +96,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param statusCallback The status_callback
          * @return this
          */
-        public SandboxUpdater setStatusCallback(URI statusCallback) {
+        public SandboxUpdater setStatusCallback(Uri statusCallback) {
             this.statusCallback = statusCallback;
             return this;
         }
@@ -108,8 +107,8 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param statusCallback The status_callback
          * @return this
          */
-        public SandboxUpdater setStatusCallback(String statusCallback) {
-            return setStatusCallback(Promoter.uriFromString(statusCallback));
+        public SandboxUpdater setStatusCallback(string statusCallback) {
+            return setStatusCallback(Promoter.UriFromString(statusCallback));
         }
     
         /**
@@ -166,27 +165,27 @@ namespace Twilio.Updaters.Api.V2010.Account {
          */
         private void addPostParams(Request request) {
             if (voiceUrl != null) {
-                request.addPostParam("VoiceUrl", voiceUrl.toString());
+                request.addPostParam("VoiceUrl", voiceUrl.ToString());
             }
             
             if (voiceMethod != null) {
-                request.addPostParam("VoiceMethod", voiceMethod.toString());
+                request.addPostParam("VoiceMethod", voiceMethod.ToString());
             }
             
             if (smsUrl != null) {
-                request.addPostParam("SmsUrl", smsUrl.toString());
+                request.addPostParam("SmsUrl", smsUrl.ToString());
             }
             
             if (smsMethod != null) {
-                request.addPostParam("SmsMethod", smsMethod.toString());
+                request.addPostParam("SmsMethod", smsMethod.ToString());
             }
             
             if (statusCallback != null) {
-                request.addPostParam("StatusCallback", statusCallback.toString());
+                request.addPostParam("StatusCallback", statusCallback.ToString());
             }
             
             if (statusCallbackMethod != null) {
-                request.addPostParam("StatusCallbackMethod", statusCallbackMethod.toString());
+                request.addPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
         }
     }

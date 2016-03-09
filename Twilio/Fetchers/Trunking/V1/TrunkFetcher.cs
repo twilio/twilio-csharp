@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,14 +7,14 @@ using Twilio.Resources.Trunking.V1.Trunk;
 namespace Twilio.Fetchers.Trunking.V1 {
 
     public class TrunkFetcher : Fetcher<Trunk> {
-        private String sid;
+        private string sid;
     
         /**
          * Construct a new TrunkFetcher
          * 
          * @param sid The sid
          */
-        public TrunkFetcher(String sid) {
+        public TrunkFetcher(string sid) {
             this.sid = sid;
         }
     

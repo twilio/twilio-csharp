@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Trunking.V1.trunk.PhoneNumber;
 namespace Twilio.Creators.Trunking.V1.Trunk {
 
     public class PhoneNumberCreator : Creator<PhoneNumber> {
-        private String trunkSid;
-        private String phoneNumberSid;
+        private string trunkSid;
+        private string phoneNumberSid;
     
         /**
          * Construct a new PhoneNumberCreator
@@ -16,7 +16,7 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
          * @param trunkSid The trunk_sid
          * @param phoneNumberSid The phone_number_sid
          */
-        public PhoneNumberCreator(String trunkSid, String phoneNumberSid) {
+        public PhoneNumberCreator(string trunkSid, string phoneNumberSid) {
             this.trunkSid = trunkSid;
             this.phoneNumberSid = phoneNumberSid;
         }

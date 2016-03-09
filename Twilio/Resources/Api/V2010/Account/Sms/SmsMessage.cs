@@ -1,7 +1,8 @@
 using Newtonsoft.Json;
-using Newtonsoft.Json.JsonDeserialize;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account.Sms;
 using Twilio.Deleters.Api.V2010.Account.Sms;
 using Twilio.Exceptions;
@@ -10,12 +11,6 @@ using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account.Sms;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010.Account.Sms;
-using com.twilio.sdk.converters.MarshalConverter;
-using java.math.BigDecimal;
-using java.net.URI;
-using java.util.Currency;
-using java.util.List;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account.Sms {
 
@@ -44,7 +39,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          * @param body The body
          * @return SmsMessageCreator capable of executing the create
          */
-        public static SmsMessageCreator create(String accountSid, com.twilio.types.PhoneNumber to, com.twilio.types.PhoneNumber from, String body) {
+        public static SmsMessageCreator create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body) {
             return new SmsMessageCreator(accountSid, to, from, body);
         }
     
@@ -57,7 +52,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          * @param mediaUrl The media_url
          * @return SmsMessageCreator capable of executing the create
          */
-        public static SmsMessageCreator create(String accountSid, com.twilio.types.PhoneNumber to, com.twilio.types.PhoneNumber from, List<URI> mediaUrl) {
+        public static SmsMessageCreator create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl) {
             return new SmsMessageCreator(accountSid, to, from, mediaUrl);
         }
     
@@ -68,7 +63,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          * @param sid The sid
          * @return SmsMessageDeleter capable of executing the delete
          */
-        public static SmsMessageDeleter delete(String accountSid, String sid) {
+        public static SmsMessageDeleter delete(string accountSid, string sid) {
             return new SmsMessageDeleter(accountSid, sid);
         }
     
@@ -79,7 +74,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          * @param sid The sid
          * @return SmsMessageFetcher capable of executing the fetch
          */
-        public static SmsMessageFetcher fetch(String accountSid, String sid) {
+        public static SmsMessageFetcher fetch(string accountSid, string sid) {
             return new SmsMessageFetcher(accountSid, sid);
         }
     
@@ -89,7 +84,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          * @param accountSid The account_sid
          * @return SmsMessageReader capable of executing the read
          */
-        public static SmsMessageReader read(String accountSid) {
+        public static SmsMessageReader read(string accountSid) {
             return new SmsMessageReader(accountSid);
         }
     
@@ -100,7 +95,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          * @param sid The sid
          * @return SmsMessageUpdater capable of executing the update
          */
-        public static SmsMessageUpdater update(String accountSid, String sid) {
+        public static SmsMessageUpdater update(string accountSid, string sid) {
             return new SmsMessageUpdater(accountSid, sid);
         }
     
@@ -120,11 +115,11 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("api_version")]
-        private readonly String apiVersion;
+        private readonly string apiVersion;
         [JsonProperty("body")]
-        private readonly String body;
+        private readonly string body;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
@@ -134,55 +129,54 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         [JsonProperty("direction")]
         private readonly SmsMessage.Direction direction;
         [JsonProperty("from")]
-        private readonly com.twilio.types.PhoneNumber from;
+        private readonly Twilio.Types.PhoneNumber from;
         [JsonProperty("price")]
-        private readonly BigDecimal price;
+        private readonly decimal price;
         [JsonProperty("price_unit")]
-        private readonly Currency priceUnit;
+        private readonly decimal priceUnit;
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("status")]
         private readonly SmsMessage.Status status;
         [JsonProperty("to")]
-        private readonly String to;
+        private readonly string to;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private SmsMessage([JsonProperty("account_sid")]
-                           String accountSid, 
+                           string accountSid, 
                            [JsonProperty("api_version")]
-                           String apiVersion, 
+                           string apiVersion, 
                            [JsonProperty("body")]
-                           String body, 
+                           string body, 
                            [JsonProperty("date_created")]
-                           String dateCreated, 
+                           string dateCreated, 
                            [JsonProperty("date_updated")]
-                           String dateUpdated, 
+                           string dateUpdated, 
                            [JsonProperty("date_sent")]
-                           String dateSent, 
+                           string dateSent, 
                            [JsonProperty("direction")]
                            SmsMessage.Direction direction, 
                            [JsonProperty("from")]
-                           com.twilio.types.PhoneNumber from, 
+                           Twilio.Types.PhoneNumber from, 
                            [JsonProperty("price")]
-                           BigDecimal price, 
+                           decimal price, 
                            [JsonProperty("price_unit")]
-                           [JsonDeserialize(using = com.twilio.sdk.converters.CurrencyDeserializer.class)]
-                           Currency priceUnit, 
+                           decimal priceUnit, 
                            [JsonProperty("sid")]
-                           String sid, 
+                           string sid, 
                            [JsonProperty("status")]
                            SmsMessage.Status status, 
                            [JsonProperty("to")]
-                           String to, 
+                           string to, 
                            [JsonProperty("uri")]
-                           String uri) {
+                           string uri) {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
             this.body = body;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
-            this.dateSent = MarshalConverter.dateTimeFromString(dateSent);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            this.dateSent = MarshalConverter.DateTimeFromString(dateSent);
             this.direction = direction;
             this.from = from;
             this.price = price;
@@ -196,21 +190,21 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The api_version
          */
-        public String GetApiVersion() {
+        public string GetApiVersion() {
             return this.apiVersion;
         }
     
         /**
          * @return The body
          */
-        public String GetBody() {
+        public string GetBody() {
             return this.body;
         }
     
@@ -245,28 +239,28 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         /**
          * @return The from
          */
-        public com.twilio.types.PhoneNumber GetFrom() {
+        public Twilio.Types.PhoneNumber GetFrom() {
             return this.from;
         }
     
         /**
          * @return The price
          */
-        public BigDecimal GetPrice() {
+        public decimal GetPrice() {
             return this.price;
         }
     
         /**
          * @return The price_unit
          */
-        public Currency GetPriceUnit() {
+        public decimal GetPriceUnit() {
             return this.priceUnit;
         }
     
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
@@ -280,14 +274,14 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         /**
          * @return The to
          */
-        public String GetTo() {
+        public string GetTo() {
             return this.to;
         }
     
         /**
          * @return The uri
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

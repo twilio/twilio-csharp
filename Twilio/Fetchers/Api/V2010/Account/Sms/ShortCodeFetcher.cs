@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Fetcher;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Api.V2010.account.sms.ShortCode;
 namespace Twilio.Fetchers.Api.V2010.Account.Sms {
 
     public class ShortCodeFetcher : Fetcher<ShortCode> {
-        private String accountSid;
-        private String sid;
+        private string accountSid;
+        private string sid;
     
         /**
          * Construct a new ShortCodeFetcher
@@ -16,7 +16,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sms {
          * @param accountSid The account_sid
          * @param sid Fetch by unique short-code Sid
          */
-        public ShortCodeFetcher(String accountSid, String sid) {
+        public ShortCodeFetcher(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

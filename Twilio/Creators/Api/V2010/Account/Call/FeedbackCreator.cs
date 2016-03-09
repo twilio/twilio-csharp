@@ -1,17 +1,17 @@
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
 using Twilio.Converters.Promoter;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.call.Feedback;
-using java.util.List;
 
 namespace Twilio.Creators.Api.V2010.Account.Call {
 
     public class FeedbackCreator : Creator<Feedback> {
-        private String accountSid;
-        private String callSid;
-        private Integer qualityScore;
+        private string accountSid;
+        private string callSid;
+        private int qualityScore;
         private List<Feedback.Issues> issue;
     
         /**
@@ -21,7 +21,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
          * @param callSid The call_sid
          * @param qualityScore The quality_score
          */
-        public FeedbackCreator(String accountSid, String callSid, Integer qualityScore) {
+        public FeedbackCreator(string accountSid, string callSid, int qualityScore) {
             this.accountSid = accountSid;
             this.callSid = callSid;
             this.qualityScore = qualityScore;
@@ -91,11 +91,11 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
          */
         private void addPostParams(Request request) {
             if (qualityScore != null) {
-                request.addPostParam("QualityScore", qualityScore.toString());
+                request.addPostParam("QualityScore", qualityScore.ToString());
             }
             
             if (issue != null) {
-                request.addPostParam("Issue", issue.toString());
+                request.addPostParam("Issue", issue.ToString());
             }
         }
     }

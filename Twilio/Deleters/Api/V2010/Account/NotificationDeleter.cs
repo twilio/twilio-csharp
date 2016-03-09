@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Deleters.Deleter;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,8 +7,8 @@ using Twilio.Resources.Api.V2010.account.Notification;
 namespace Twilio.Deleters.Api.V2010.Account {
 
     public class NotificationDeleter : Deleter<Notification> {
-        private String accountSid;
-        private String sid;
+        private string accountSid;
+        private string sid;
     
         /**
          * Construct a new NotificationDeleter
@@ -16,7 +16,7 @@ namespace Twilio.Deleters.Api.V2010.Account {
          * @param accountSid The account_sid
          * @param sid Delete by unique notification Sid
          */
-        public NotificationDeleter(String accountSid, String sid) {
+        public NotificationDeleter(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

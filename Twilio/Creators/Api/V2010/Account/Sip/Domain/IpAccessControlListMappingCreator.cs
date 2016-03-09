@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Creators.Creator;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,9 +7,9 @@ using Twilio.Resources.Api.V2010.account.sip.domain.IpAccessControlListMapping;
 namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
 
     public class IpAccessControlListMappingCreator : Creator<IpAccessControlListMapping> {
-        private String accountSid;
-        private String domainSid;
-        private String ipAccessControlListSid;
+        private string accountSid;
+        private string domainSid;
+        private string ipAccessControlListSid;
     
         /**
          * Construct a new IpAccessControlListMappingCreator
@@ -18,7 +18,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
          * @param domainSid The domain_sid
          * @param ipAccessControlListSid The ip_access_control_list_sid
          */
-        public IpAccessControlListMappingCreator(String accountSid, String domainSid, String ipAccessControlListSid) {
+        public IpAccessControlListMappingCreator(string accountSid, string domainSid, string ipAccessControlListSid) {
             this.accountSid = accountSid;
             this.domainSid = domainSid;
             this.ipAccessControlListSid = ipAccessControlListSid;

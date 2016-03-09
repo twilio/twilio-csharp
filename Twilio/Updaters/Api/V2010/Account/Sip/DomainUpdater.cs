@@ -1,25 +1,24 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using Twilio.Clients;
 using Twilio.Converters.Promoter;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.sip.Domain;
-using com.twilio.sdk.http.HttpMethod;
 using com.twilio.sdk.updaters.Updater;
-using java.net.URI;
 
 namespace Twilio.Updaters.Api.V2010.Account.Sip {
 
     public class DomainUpdater : Updater<Domain> {
-        private String accountSid;
-        private String sid;
-        private String apiVersion;
-        private String friendlyName;
+        private string accountSid;
+        private string sid;
+        private string apiVersion;
+        private string friendlyName;
         private HttpMethod voiceFallbackMethod;
-        private URI voiceFallbackUrl;
+        private Uri voiceFallbackUrl;
         private HttpMethod voiceMethod;
         private HttpMethod voiceStatusCallbackMethod;
-        private URI voiceStatusCallbackUrl;
-        private URI voiceUrl;
+        private Uri voiceStatusCallbackUrl;
+        private Uri voiceUrl;
     
         /**
          * Construct a new DomainUpdater
@@ -27,7 +26,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param accountSid The account_sid
          * @param sid The sid
          */
-        public DomainUpdater(String accountSid, String sid) {
+        public DomainUpdater(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
@@ -38,7 +37,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param apiVersion The api_version
          * @return this
          */
-        public DomainUpdater setApiVersion(String apiVersion) {
+        public DomainUpdater setApiVersion(string apiVersion) {
             this.apiVersion = apiVersion;
             return this;
         }
@@ -49,7 +48,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param friendlyName A user-specified, human-readable name for the trigger.
          * @return this
          */
-        public DomainUpdater setFriendlyName(String friendlyName) {
+        public DomainUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -71,7 +70,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param voiceFallbackUrl The voice_fallback_url
          * @return this
          */
-        public DomainUpdater setVoiceFallbackUrl(URI voiceFallbackUrl) {
+        public DomainUpdater setVoiceFallbackUrl(Uri voiceFallbackUrl) {
             this.voiceFallbackUrl = voiceFallbackUrl;
             return this;
         }
@@ -82,8 +81,8 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param voiceFallbackUrl The voice_fallback_url
          * @return this
          */
-        public DomainUpdater setVoiceFallbackUrl(String voiceFallbackUrl) {
-            return setVoiceFallbackUrl(Promoter.uriFromString(voiceFallbackUrl));
+        public DomainUpdater setVoiceFallbackUrl(string voiceFallbackUrl) {
+            return setVoiceFallbackUrl(Promoter.UriFromString(voiceFallbackUrl));
         }
     
         /**
@@ -114,7 +113,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param voiceStatusCallbackUrl The voice_status_callback_url
          * @return this
          */
-        public DomainUpdater setVoiceStatusCallbackUrl(URI voiceStatusCallbackUrl) {
+        public DomainUpdater setVoiceStatusCallbackUrl(Uri voiceStatusCallbackUrl) {
             this.voiceStatusCallbackUrl = voiceStatusCallbackUrl;
             return this;
         }
@@ -125,8 +124,8 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param voiceStatusCallbackUrl The voice_status_callback_url
          * @return this
          */
-        public DomainUpdater setVoiceStatusCallbackUrl(String voiceStatusCallbackUrl) {
-            return setVoiceStatusCallbackUrl(Promoter.uriFromString(voiceStatusCallbackUrl));
+        public DomainUpdater setVoiceStatusCallbackUrl(string voiceStatusCallbackUrl) {
+            return setVoiceStatusCallbackUrl(Promoter.UriFromString(voiceStatusCallbackUrl));
         }
     
         /**
@@ -135,7 +134,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param voiceUrl The voice_url
          * @return this
          */
-        public DomainUpdater setVoiceUrl(URI voiceUrl) {
+        public DomainUpdater setVoiceUrl(Uri voiceUrl) {
             this.voiceUrl = voiceUrl;
             return this;
         }
@@ -146,8 +145,8 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param voiceUrl The voice_url
          * @return this
          */
-        public DomainUpdater setVoiceUrl(String voiceUrl) {
-            return setVoiceUrl(Promoter.uriFromString(voiceUrl));
+        public DomainUpdater setVoiceUrl(string voiceUrl) {
+            return setVoiceUrl(Promoter.UriFromString(voiceUrl));
         }
     
         /**
@@ -201,27 +200,27 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
             }
             
             if (voiceFallbackMethod != null) {
-                request.addPostParam("VoiceFallbackMethod", voiceFallbackMethod.toString());
+                request.addPostParam("VoiceFallbackMethod", voiceFallbackMethod.ToString());
             }
             
             if (voiceFallbackUrl != null) {
-                request.addPostParam("VoiceFallbackUrl", voiceFallbackUrl.toString());
+                request.addPostParam("VoiceFallbackUrl", voiceFallbackUrl.ToString());
             }
             
             if (voiceMethod != null) {
-                request.addPostParam("VoiceMethod", voiceMethod.toString());
+                request.addPostParam("VoiceMethod", voiceMethod.ToString());
             }
             
             if (voiceStatusCallbackMethod != null) {
-                request.addPostParam("VoiceStatusCallbackMethod", voiceStatusCallbackMethod.toString());
+                request.addPostParam("VoiceStatusCallbackMethod", voiceStatusCallbackMethod.ToString());
             }
             
             if (voiceStatusCallbackUrl != null) {
-                request.addPostParam("VoiceStatusCallbackUrl", voiceStatusCallbackUrl.toString());
+                request.addPostParam("VoiceStatusCallbackUrl", voiceStatusCallbackUrl.ToString());
             }
             
             if (voiceUrl != null) {
-                request.addPostParam("VoiceUrl", voiceUrl.toString());
+                request.addPostParam("VoiceUrl", voiceUrl.ToString());
             }
         }
     }

@@ -1,15 +1,13 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Conversations.V1.Conversation;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Conversations.V1.Conversation;
 using Twilio.Http;
 using Twilio.Readers.Conversations.V1.Conversation;
 using Twilio.Resources;
-using com.twilio.sdk.converters.MarshalConverter;
-using java.net.URI;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Conversations.V1.Conversation {
 
@@ -28,7 +26,7 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
          * @param conversationSid The conversation_sid
          * @return ParticipantReader capable of executing the read
          */
-        public static ParticipantReader read(String conversationSid) {
+        public static ParticipantReader read(string conversationSid) {
             return new ParticipantReader(conversationSid);
         }
     
@@ -40,7 +38,7 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
          * @param from The from
          * @return ParticipantCreator capable of executing the create
          */
-        public static ParticipantCreator create(String conversationSid, com.twilio.types.PhoneNumber to, com.twilio.types.PhoneNumber from) {
+        public static ParticipantCreator create(string conversationSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from) {
             return new ParticipantCreator(conversationSid, to, from);
         }
     
@@ -51,7 +49,7 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
          * @param sid The sid
          * @return ParticipantFetcher capable of executing the fetch
          */
-        public static ParticipantFetcher fetch(String conversationSid, String sid) {
+        public static ParticipantFetcher fetch(string conversationSid, string sid) {
             return new ParticipantFetcher(conversationSid, sid);
         }
     
@@ -71,13 +69,13 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
         }
     
         [JsonProperty("sid")]
-        private readonly String sid;
+        private readonly string sid;
         [JsonProperty("address")]
-        private readonly String address;
+        private readonly string address;
         [JsonProperty("status")]
         private readonly Participant.Status status;
         [JsonProperty("conversation_sid")]
-        private readonly String conversationSid;
+        private readonly string conversationSid;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("start_time")]
@@ -85,39 +83,39 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
         [JsonProperty("end_time")]
         private readonly DateTime endTime;
         [JsonProperty("duration")]
-        private readonly Integer duration;
+        private readonly int duration;
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("url")]
-        private readonly URI url;
+        private readonly Uri url;
     
         private Participant([JsonProperty("sid")]
-                            String sid, 
+                            string sid, 
                             [JsonProperty("address")]
-                            String address, 
+                            string address, 
                             [JsonProperty("status")]
                             Participant.Status status, 
                             [JsonProperty("conversation_sid")]
-                            String conversationSid, 
+                            string conversationSid, 
                             [JsonProperty("date_created")]
-                            String dateCreated, 
+                            string dateCreated, 
                             [JsonProperty("start_time")]
-                            String startTime, 
+                            string startTime, 
                             [JsonProperty("end_time")]
-                            String endTime, 
+                            string endTime, 
                             [JsonProperty("duration")]
-                            Integer duration, 
+                            int duration, 
                             [JsonProperty("account_sid")]
-                            String accountSid, 
+                            string accountSid, 
                             [JsonProperty("url")]
-                            URI url) {
+                            Uri url) {
             this.sid = sid;
             this.address = address;
             this.status = status;
             this.conversationSid = conversationSid;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.startTime = MarshalConverter.dateTimeFromString(startTime);
-            this.endTime = MarshalConverter.dateTimeFromString(endTime);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.startTime = MarshalConverter.DateTimeFromString(startTime);
+            this.endTime = MarshalConverter.DateTimeFromString(endTime);
             this.duration = duration;
             this.accountSid = accountSid;
             this.url = url;
@@ -126,14 +124,14 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
         /**
          * @return The sid
          */
-        public String GetSid() {
+        public string GetSid() {
             return this.sid;
         }
     
         /**
          * @return The address
          */
-        public String GetAddress() {
+        public string GetAddress() {
             return this.address;
         }
     
@@ -147,7 +145,7 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
         /**
          * @return The conversation_sid
          */
-        public String GetConversationSid() {
+        public string GetConversationSid() {
             return this.conversationSid;
         }
     
@@ -175,21 +173,21 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
         /**
          * @return The duration
          */
-        public Integer GetDuration() {
+        public int GetDuration() {
             return this.duration;
         }
     
         /**
          * @return The account_sid
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The url
          */
-        public URI GetUrl() {
+        public Uri GetUrl() {
             return this.url;
         }
     }

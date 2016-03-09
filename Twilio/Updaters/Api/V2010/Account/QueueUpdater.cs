@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.Queue;
@@ -7,10 +7,10 @@ using com.twilio.sdk.updaters.Updater;
 namespace Twilio.Updaters.Api.V2010.Account {
 
     public class QueueUpdater : Updater<Queue> {
-        private String accountSid;
-        private String sid;
-        private String friendlyName;
-        private Integer maxSize;
+        private string accountSid;
+        private string sid;
+        private string friendlyName;
+        private int maxSize;
     
         /**
          * Construct a new QueueUpdater
@@ -18,7 +18,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param accountSid The account_sid
          * @param sid The sid
          */
-        public QueueUpdater(String accountSid, String sid) {
+        public QueueUpdater(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
@@ -29,7 +29,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param friendlyName A human readable description of the queue
          * @return this
          */
-        public QueueUpdater setFriendlyName(String friendlyName) {
+        public QueueUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -40,7 +40,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param maxSize The max number of members allowed in the queue
          * @return this
          */
-        public QueueUpdater setMaxSize(Integer maxSize) {
+        public QueueUpdater setMaxSize(int maxSize) {
             this.maxSize = maxSize;
             return this;
         }
@@ -92,7 +92,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             }
             
             if (maxSize != null) {
-                request.addPostParam("MaxSize", maxSize.toString());
+                request.addPostParam("MaxSize", maxSize.ToString());
             }
         }
     }

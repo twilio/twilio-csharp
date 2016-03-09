@@ -1,15 +1,13 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using System.Collections.Generic;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Api.V2010.Account;
 using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account;
 using Twilio.Resources;
-using com.twilio.sdk.converters.MarshalConverter;
-using java.net.URI;
-using java.util.List;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account {
 
@@ -26,7 +24,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param connectAppSid The connect_app_sid
          * @return AuthorizedConnectAppFetcher capable of executing the fetch
          */
-        public static AuthorizedConnectAppFetcher fetch(String accountSid, String connectAppSid) {
+        public static AuthorizedConnectAppFetcher fetch(string accountSid, string connectAppSid) {
             return new AuthorizedConnectAppFetcher(accountSid, connectAppSid);
         }
     
@@ -37,7 +35,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return AuthorizedConnectAppReader capable of executing the read
          */
-        public static AuthorizedConnectAppReader read(String accountSid) {
+        public static AuthorizedConnectAppReader read(string accountSid) {
             return new AuthorizedConnectAppReader(accountSid);
         }
     
@@ -57,17 +55,17 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly String accountSid;
+        private readonly string accountSid;
         [JsonProperty("connect_app_company_name")]
-        private readonly String connectAppCompanyName;
+        private readonly string connectAppCompanyName;
         [JsonProperty("connect_app_description")]
-        private readonly String connectAppDescription;
+        private readonly string connectAppDescription;
         [JsonProperty("connect_app_friendly_name")]
-        private readonly String connectAppFriendlyName;
+        private readonly string connectAppFriendlyName;
         [JsonProperty("connect_app_homepage_url")]
-        private readonly URI connectAppHomepageUrl;
+        private readonly Uri connectAppHomepageUrl;
         [JsonProperty("connect_app_sid")]
-        private readonly String connectAppSid;
+        private readonly string connectAppSid;
         [JsonProperty("date_created")]
         private readonly DateTime dateCreated;
         [JsonProperty("date_updated")]
@@ -75,36 +73,36 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("permissions")]
         private readonly List<AuthorizedConnectApp.Permission> permissions;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
     
         private AuthorizedConnectApp([JsonProperty("account_sid")]
-                                     String accountSid, 
+                                     string accountSid, 
                                      [JsonProperty("connect_app_company_name")]
-                                     String connectAppCompanyName, 
+                                     string connectAppCompanyName, 
                                      [JsonProperty("connect_app_description")]
-                                     String connectAppDescription, 
+                                     string connectAppDescription, 
                                      [JsonProperty("connect_app_friendly_name")]
-                                     String connectAppFriendlyName, 
+                                     string connectAppFriendlyName, 
                                      [JsonProperty("connect_app_homepage_url")]
-                                     URI connectAppHomepageUrl, 
+                                     Uri connectAppHomepageUrl, 
                                      [JsonProperty("connect_app_sid")]
-                                     String connectAppSid, 
+                                     string connectAppSid, 
                                      [JsonProperty("date_created")]
-                                     String dateCreated, 
+                                     string dateCreated, 
                                      [JsonProperty("date_updated")]
-                                     String dateUpdated, 
+                                     string dateUpdated, 
                                      [JsonProperty("permissions")]
                                      List<AuthorizedConnectApp.Permission> permissions, 
                                      [JsonProperty("uri")]
-                                     String uri) {
+                                     string uri) {
             this.accountSid = accountSid;
             this.connectAppCompanyName = connectAppCompanyName;
             this.connectAppDescription = connectAppDescription;
             this.connectAppFriendlyName = connectAppFriendlyName;
             this.connectAppHomepageUrl = connectAppHomepageUrl;
             this.connectAppSid = connectAppSid;
-            this.dateCreated = MarshalConverter.dateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.dateTimeFromString(dateUpdated);
+            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.permissions = permissions;
             this.uri = uri;
         }
@@ -112,49 +110,49 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return A string that uniquely identifies this app
          */
-        public String getSid() {
+        public string getSid() {
             return this.getConnectAppSid();
         }
     
         /**
          * @return The unique sid that identifies this account
          */
-        public String GetAccountSid() {
+        public string GetAccountSid() {
             return this.accountSid;
         }
     
         /**
          * @return The company name set for this Connect App.
          */
-        public String GetConnectAppCompanyName() {
+        public string GetConnectAppCompanyName() {
             return this.connectAppCompanyName;
         }
     
         /**
          * @return Human readable description of the app
          */
-        public String GetConnectAppDescription() {
+        public string GetConnectAppDescription() {
             return this.connectAppDescription;
         }
     
         /**
          * @return A human readable name for the Connect App.
          */
-        public String GetConnectAppFriendlyName() {
+        public string GetConnectAppFriendlyName() {
             return this.connectAppFriendlyName;
         }
     
         /**
          * @return The public URL for this Connect App.
          */
-        public URI GetConnectAppHomepageUrl() {
+        public Uri GetConnectAppHomepageUrl() {
             return this.connectAppHomepageUrl;
         }
     
         /**
          * @return A string that uniquely identifies this app
          */
-        public String GetConnectAppSid() {
+        public string GetConnectAppSid() {
             return this.connectAppSid;
         }
     
@@ -182,7 +180,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The URI for this resource
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     }

@@ -1,16 +1,13 @@
 using Newtonsoft.Json;
 using System;
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Api.V2010.Account.Queue;
 using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account.Queue;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010.Account.Queue;
-using com.twilio.sdk.converters.MarshalConverter;
-using com.twilio.sdk.http.HttpMethod;
-using java.net.URI;
-using org.joda.time.DateTime;
 
 namespace Twilio.Resources.Api.V2010.Account.Queue {
 
@@ -23,7 +20,7 @@ namespace Twilio.Resources.Api.V2010.Account.Queue {
          * @param callSid The call_sid
          * @return MemberFetcher capable of executing the fetch
          */
-        public static MemberFetcher fetch(String accountSid, String queueSid, String callSid) {
+        public static MemberFetcher fetch(string accountSid, string queueSid, string callSid) {
             return new MemberFetcher(accountSid, queueSid, callSid);
         }
     
@@ -38,7 +35,7 @@ namespace Twilio.Resources.Api.V2010.Account.Queue {
          * @param method The method
          * @return MemberUpdater capable of executing the update
          */
-        public static MemberUpdater update(String accountSid, String queueSid, String callSid, URI url, HttpMethod method) {
+        public static MemberUpdater update(string accountSid, string queueSid, string callSid, Uri url, HttpMethod method) {
             return new MemberUpdater(accountSid, queueSid, callSid, url, method);
         }
     
@@ -49,7 +46,7 @@ namespace Twilio.Resources.Api.V2010.Account.Queue {
          * @param queueSid The Queue in which to find members
          * @return MemberReader capable of executing the read
          */
-        public static MemberReader read(String accountSid, String queueSid) {
+        public static MemberReader read(string accountSid, string queueSid) {
             return new MemberReader(accountSid, queueSid);
         }
     
@@ -69,28 +66,28 @@ namespace Twilio.Resources.Api.V2010.Account.Queue {
         }
     
         [JsonProperty("call_sid")]
-        private readonly String callSid;
+        private readonly string callSid;
         [JsonProperty("date_enqueued")]
         private readonly DateTime dateEnqueued;
         [JsonProperty("position")]
-        private readonly Integer position;
+        private readonly int position;
         [JsonProperty("uri")]
-        private readonly String uri;
+        private readonly string uri;
         [JsonProperty("wait_time")]
-        private readonly Integer waitTime;
+        private readonly int waitTime;
     
         private Member([JsonProperty("call_sid")]
-                       String callSid, 
+                       string callSid, 
                        [JsonProperty("date_enqueued")]
-                       String dateEnqueued, 
+                       string dateEnqueued, 
                        [JsonProperty("position")]
-                       Integer position, 
+                       int position, 
                        [JsonProperty("uri")]
-                       String uri, 
+                       string uri, 
                        [JsonProperty("wait_time")]
-                       Integer waitTime) {
+                       int waitTime) {
             this.callSid = callSid;
-            this.dateEnqueued = MarshalConverter.dateTimeFromString(dateEnqueued);
+            this.dateEnqueued = MarshalConverter.DateTimeFromString(dateEnqueued);
             this.position = position;
             this.uri = uri;
             this.waitTime = waitTime;
@@ -99,14 +96,14 @@ namespace Twilio.Resources.Api.V2010.Account.Queue {
         /**
          * @return Unique string that identifies this resource
          */
-        public String getSid() {
+        public string getSid() {
             return this.getCallSid();
         }
     
         /**
          * @return Unique string that identifies this resource
          */
-        public String GetCallSid() {
+        public string GetCallSid() {
             return this.callSid;
         }
     
@@ -120,21 +117,21 @@ namespace Twilio.Resources.Api.V2010.Account.Queue {
         /**
          * @return This member's current position in the queue.
          */
-        public Integer GetPosition() {
+        public int GetPosition() {
             return this.position;
         }
     
         /**
          * @return The uri
          */
-        public String GetUri() {
+        public string GetUri() {
             return this.uri;
         }
     
         /**
          * @return The number of seconds the member has been in the queue.
          */
-        public Integer GetWaitTime() {
+        public int GetWaitTime() {
             return this.waitTime;
         }
     }

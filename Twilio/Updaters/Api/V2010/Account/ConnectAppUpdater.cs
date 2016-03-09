@@ -1,25 +1,24 @@
-using Twilio.Clients.TwilioRestClient;
+using System;
+using System.Collections.Generic;
+using Twilio.Clients;
 using Twilio.Converters.Promoter;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.account.ConnectApp;
-using com.twilio.sdk.http.HttpMethod;
 using com.twilio.sdk.updaters.Updater;
-using java.net.URI;
-using java.util.List;
 
 namespace Twilio.Updaters.Api.V2010.Account {
 
     public class ConnectAppUpdater : Updater<ConnectApp> {
-        private String accountSid;
-        private String sid;
-        private URI authorizeRedirectUrl;
-        private String companyName;
+        private string accountSid;
+        private string sid;
+        private Uri authorizeRedirectUrl;
+        private string companyName;
         private HttpMethod deauthorizeCallbackMethod;
-        private URI deauthorizeCallbackUrl;
-        private String description;
-        private String friendlyName;
-        private URI homepageUrl;
+        private Uri deauthorizeCallbackUrl;
+        private string description;
+        private string friendlyName;
+        private Uri homepageUrl;
         private List<ConnectApp.Permission> permissions;
     
         /**
@@ -28,7 +27,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param accountSid The account_sid
          * @param sid The sid
          */
-        public ConnectAppUpdater(String accountSid, String sid) {
+        public ConnectAppUpdater(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
@@ -40,7 +39,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param authorizeRedirectUrl URIL Twilio sends requests when users authorize
          * @return this
          */
-        public ConnectAppUpdater setAuthorizeRedirectUrl(URI authorizeRedirectUrl) {
+        public ConnectAppUpdater setAuthorizeRedirectUrl(Uri authorizeRedirectUrl) {
             this.authorizeRedirectUrl = authorizeRedirectUrl;
             return this;
         }
@@ -52,8 +51,8 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param authorizeRedirectUrl URIL Twilio sends requests when users authorize
          * @return this
          */
-        public ConnectAppUpdater setAuthorizeRedirectUrl(String authorizeRedirectUrl) {
-            return setAuthorizeRedirectUrl(Promoter.uriFromString(authorizeRedirectUrl));
+        public ConnectAppUpdater setAuthorizeRedirectUrl(string authorizeRedirectUrl) {
+            return setAuthorizeRedirectUrl(Promoter.UriFromString(authorizeRedirectUrl));
         }
     
         /**
@@ -62,7 +61,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param companyName The company name set for this Connect App.
          * @return this
          */
-        public ConnectAppUpdater setCompanyName(String companyName) {
+        public ConnectAppUpdater setCompanyName(string companyName) {
             this.companyName = companyName;
             return this;
         }
@@ -88,7 +87,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          *                               de-authorizes this app
          * @return this
          */
-        public ConnectAppUpdater setDeauthorizeCallbackUrl(URI deauthorizeCallbackUrl) {
+        public ConnectAppUpdater setDeauthorizeCallbackUrl(Uri deauthorizeCallbackUrl) {
             this.deauthorizeCallbackUrl = deauthorizeCallbackUrl;
             return this;
         }
@@ -101,8 +100,8 @@ namespace Twilio.Updaters.Api.V2010.Account {
          *                               de-authorizes this app
          * @return this
          */
-        public ConnectAppUpdater setDeauthorizeCallbackUrl(String deauthorizeCallbackUrl) {
-            return setDeauthorizeCallbackUrl(Promoter.uriFromString(deauthorizeCallbackUrl));
+        public ConnectAppUpdater setDeauthorizeCallbackUrl(string deauthorizeCallbackUrl) {
+            return setDeauthorizeCallbackUrl(Promoter.UriFromString(deauthorizeCallbackUrl));
         }
     
         /**
@@ -111,7 +110,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param description A more detailed human readable description
          * @return this
          */
-        public ConnectAppUpdater setDescription(String description) {
+        public ConnectAppUpdater setDescription(string description) {
             this.description = description;
             return this;
         }
@@ -122,7 +121,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param friendlyName A human readable name for the Connect App.
          * @return this
          */
-        public ConnectAppUpdater setFriendlyName(String friendlyName) {
+        public ConnectAppUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -134,7 +133,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param homepageUrl The URL users can obtain more information
          * @return this
          */
-        public ConnectAppUpdater setHomepageUrl(URI homepageUrl) {
+        public ConnectAppUpdater setHomepageUrl(Uri homepageUrl) {
             this.homepageUrl = homepageUrl;
             return this;
         }
@@ -146,8 +145,8 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param homepageUrl The URL users can obtain more information
          * @return this
          */
-        public ConnectAppUpdater setHomepageUrl(String homepageUrl) {
-            return setHomepageUrl(Promoter.uriFromString(homepageUrl));
+        public ConnectAppUpdater setHomepageUrl(string homepageUrl) {
+            return setHomepageUrl(Promoter.UriFromString(homepageUrl));
         }
     
         /**
@@ -214,7 +213,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          */
         private void addPostParams(Request request) {
             if (authorizeRedirectUrl != null) {
-                request.addPostParam("AuthorizeRedirectUrl", authorizeRedirectUrl.toString());
+                request.addPostParam("AuthorizeRedirectUrl", authorizeRedirectUrl.ToString());
             }
             
             if (companyName != null) {
@@ -222,11 +221,11 @@ namespace Twilio.Updaters.Api.V2010.Account {
             }
             
             if (deauthorizeCallbackMethod != null) {
-                request.addPostParam("DeauthorizeCallbackMethod", deauthorizeCallbackMethod.toString());
+                request.addPostParam("DeauthorizeCallbackMethod", deauthorizeCallbackMethod.ToString());
             }
             
             if (deauthorizeCallbackUrl != null) {
-                request.addPostParam("DeauthorizeCallbackUrl", deauthorizeCallbackUrl.toString());
+                request.addPostParam("DeauthorizeCallbackUrl", deauthorizeCallbackUrl.ToString());
             }
             
             if (description != null) {
@@ -238,11 +237,11 @@ namespace Twilio.Updaters.Api.V2010.Account {
             }
             
             if (homepageUrl != null) {
-                request.addPostParam("HomepageUrl", homepageUrl.toString());
+                request.addPostParam("HomepageUrl", homepageUrl.ToString());
             }
             
             if (permissions != null) {
-                request.addPostParam("Permissions", permissions.toString());
+                request.addPostParam("Permissions", permissions.ToString());
             }
         }
     }

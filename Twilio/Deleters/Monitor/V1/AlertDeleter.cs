@@ -1,4 +1,4 @@
-using Twilio.Clients.TwilioRestClient;
+using Twilio.Clients;
 using Twilio.Deleters.Deleter;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -7,14 +7,14 @@ using Twilio.Resources.Monitor.V1.Alert;
 namespace Twilio.Deleters.Monitor.V1 {
 
     public class AlertDeleter : Deleter<Alert> {
-        private String sid;
+        private string sid;
     
         /**
          * Construct a new AlertDeleter
          * 
          * @param sid The sid
          */
-        public AlertDeleter(String sid) {
+        public AlertDeleter(string sid) {
             this.sid = sid;
         }
     
