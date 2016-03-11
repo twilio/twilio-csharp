@@ -74,6 +74,8 @@ namespace Twilio
 
     public partial class NextGenClient : TwilioClient
     {
+		#if !NOASYNCPAGING
+
 		public virtual void GetNextPage<T>(NextGenListBase resourceResult, Action<T> callback) where T : NextGenListBase, new()
         {
             var request = new RestRequest();
@@ -89,5 +91,7 @@ namespace Twilio
 
 			ExecuteAsync<T>(request, (response) => callback(response));
         }
+
+		#endif
 	}
 }

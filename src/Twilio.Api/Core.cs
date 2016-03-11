@@ -203,6 +203,8 @@ namespace Twilio
         }
 
 		#if FRAMEWORK
+		#if !NOASYNCPAGING
+
         public virtual T GetNextPage<T>(NextGenListBase resourceResult) where T : NextGenListBase, new()
         {
             var request = new RestRequest();
@@ -218,6 +220,8 @@ namespace Twilio
 
             return Execute<T>(request);
         }
+
+		#endif
 		#endif
     }
 }
