@@ -10,7 +10,7 @@ namespace Twilio.TaskRouter
     /// <summary>
     /// REST API wrapper.
     /// </summary>
-    public partial class TaskRouterClient : NextGenClient
+    public partial class TaskRouterClient : TwilioClient
     {
         private const string STATISTICS_DATE_FORMAT = "yyyy-MM-ddTHH:mm:ssZ";
 

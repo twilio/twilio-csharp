@@ -195,7 +195,7 @@ namespace Twilio
         {
         }
     }
-
+/*
     public partial class NextGenClient : TwilioClient
     {
         public NextGenClient(string accountSid, string authToken, string accountResourceSid, string apiVersion, string baseUrl) : base(accountSid, authToken, accountResourceSid, apiVersion, baseUrl)
@@ -224,4 +224,5 @@ namespace Twilio
 		#endif
 		#endif
     }
+*/
 }

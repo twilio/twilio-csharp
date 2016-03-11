@@ -72,26 +72,26 @@ namespace Twilio
         }
 	}
 
-    public partial class NextGenClient : TwilioClient
-    {
-		#if !NOASYNCPAGING
-
-		public virtual void GetNextPage<T>(NextGenListBase resourceResult, Action<T> callback) where T : NextGenListBase, new()
-        {
-            var request = new RestRequest();
-            request.Resource = resourceResult.Meta.NextPageUrl.PathAndQuery.Replace("/" + ApiVersion, "");
-
-			ExecuteAsync<T>(request, (response) => callback(response));
-        }
-
-		public virtual void GetPreviousPage<T>(NextGenListBase resourceResult, Action<T> callback) where T : NextGenListBase, new()
-        {
-            var request = new RestRequest();
-            request.Resource = resourceResult.Meta.PreviousPageUrl.PathAndQuery.Replace("/" + ApiVersion, "");
-
-			ExecuteAsync<T>(request, (response) => callback(response));
-        }
-
-		#endif
-	}
+//    public partial class NextGenClient : TwilioClient
+//    {
+//		#if !NOASYNCPAGING
+//
+//		public virtual void GetNextPage<T>(NextGenListBase resourceResult, Action<T> callback) where T : NextGenListBase, new()
+//        {
+//            var request = new RestRequest();
+//            request.Resource = resourceResult.Meta.NextPageUrl.PathAndQuery.Replace("/" + ApiVersion, "");
+//
+//			ExecuteAsync<T>(request, (response) => callback(response));
+//        }
+//
+//		public virtual void GetPreviousPage<T>(NextGenListBase resourceResult, Action<T> callback) where T : NextGenListBase, new()
+//        {
+//            var request = new RestRequest();
+//            request.Resource = resourceResult.Meta.PreviousPageUrl.PathAndQuery.Replace("/" + ApiVersion, "");
+//
+//			ExecuteAsync<T>(request, (response) => callback(response));
+//        }
+//
+//		#endif
+//	}
 }

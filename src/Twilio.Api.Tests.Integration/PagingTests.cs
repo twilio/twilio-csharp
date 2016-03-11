@@ -138,6 +138,7 @@ namespace Twilio.Api.Tests.Integration
             Assert.IsNotNull(response);
         }
 
+		/*
         [Test]
         public void ShouldGetNextPageAsync()
         {
@@ -239,5 +240,6 @@ namespace Twilio.Api.Tests.Integration
             Assert.AreEqual("/Foos?PageToken=abc123", savedRequest.Resource);
             Assert.AreEqual(Method.GET, savedRequest.Method);
         }
+        */
     }
 }
