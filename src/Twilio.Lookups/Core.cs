@@ -10,7 +10,7 @@ namespace Twilio.Lookups
     /// <summary>
     /// The Twilio Lookups API allows you to retrieve information about phone numbers.
     /// </summary>
-    public partial class LookupsClient : TwilioClient
+    public partial class LookupsClient : NextGenClient
     {
         /// <summary>
         /// Initializes a new client with the specified credentials.
