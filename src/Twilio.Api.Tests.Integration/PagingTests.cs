@@ -8,6 +8,7 @@ using RestSharp;
 
 using Twilio.Api;
 using Twilio.Model;
+using System.Threading;
 
 namespace Twilio.Api.Tests.Integration
 {
@@ -31,6 +32,7 @@ namespace Twilio.Api.Tests.Integration
     {
         private Mock<TwilioRestClient> mockClient;
         private Mock<NextGenClient> mockNextGenClient;
+		private ManualResetEvent manualResetEvent = null;
 
         [SetUp]
         public void Setup()
@@ -134,6 +136,108 @@ namespace Twilio.Api.Tests.Integration
             Assert.AreEqual(Method.GET, savedRequest.Method);
 
             Assert.IsNotNull(response);
+        }
+
+        [Test]
+        public void ShouldGetNextPageAsync()
+        {
+            IRestRequest savedRequest = null;
+
+            FooResult firstPage = new FooResult();
+            firstPage.NextPageUri = new Uri("/Foos?PageToken=abc123", UriKind.Relative);
+
+			mockClient.Setup(trc => trc.ExecuteAsync<FooResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<FooResult>>()))
+				.Callback<IRestRequest, Action<FooResult>> ((request, action) => savedRequest = request);
+            var client = mockClient.Object;
+            manualResetEvent = new ManualResetEvent(false);
+
+			client.GetNextPage<FooResult>(firstPage, page => {
+				manualResetEvent.Set();
+			});
+
+            manualResetEvent.WaitOne(1);
+
+			mockClient.Verify(trc => trc.ExecuteAsync<FooResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<FooResult>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("/Foos?PageToken=abc123", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+        }
+
+        [Test]
+        public void ShouldGetPreviousPageAsync()
+        {
+            IRestRequest savedRequest = null;
+
+            FooResult firstPage = new FooResult();
+            firstPage.PreviousPageUri = new Uri("/Foos?PageToken=abc123", UriKind.Relative);
+
+			mockClient.Setup(trc => trc.ExecuteAsync<FooResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<FooResult>>()))
+				.Callback<IRestRequest, Action<FooResult>> ((request, action) => savedRequest = request);
+            var client = mockClient.Object;
+            manualResetEvent = new ManualResetEvent(false);
+
+			client.GetPreviousPage<FooResult>(firstPage, page => {
+				manualResetEvent.Set();
+			});
+
+            manualResetEvent.WaitOne(1);
+
+			mockClient.Verify(trc => trc.ExecuteAsync<FooResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<FooResult>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("/Foos?PageToken=abc123", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+        }
+
+        [Test]
+        public void ShouldGetNextGenNextPageAsync()
+        {
+            IRestRequest savedRequest = null;
+
+            NextGenFooResult firstPage = new NextGenFooResult();
+            firstPage.Meta = new ListMeta();
+            firstPage.Meta.NextPageUrl = new Uri("https://taskrouter.twilio.com/v1/Foos?PageToken=abc123", UriKind.Absolute);
+
+			mockNextGenClient.Setup(trc => trc.ExecuteAsync<NextGenFooResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<NextGenFooResult>>()))
+				.Callback<IRestRequest, Action<NextGenFooResult>> ((request, action) => savedRequest = request);
+            var client = mockNextGenClient.Object;
+            manualResetEvent = new ManualResetEvent(false);
+
+			client.GetNextPage<NextGenFooResult>(firstPage, page => {
+				manualResetEvent.Set();
+			});
+
+            manualResetEvent.WaitOne(1);
+            
+			mockNextGenClient.Verify(trc => trc.ExecuteAsync<NextGenFooResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<NextGenFooResult>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("/Foos?PageToken=abc123", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
+        }
+
+        [Test]
+        public void ShouldGetNextGenPreviousPageAsync()
+        {
+            IRestRequest savedRequest = null;
+
+            NextGenFooResult firstPage = new NextGenFooResult();
+            firstPage.Meta = new ListMeta();
+            firstPage.Meta.PreviousPageUrl = new Uri("https://taskrouter.twilio.com/v1/Foos?PageToken=abc123", UriKind.Absolute);
+
+			mockNextGenClient.Setup(trc => trc.ExecuteAsync<NextGenFooResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<NextGenFooResult>>()))
+				.Callback<IRestRequest, Action<NextGenFooResult>> ((request, action) => savedRequest = request);
+            var client = mockNextGenClient.Object;
+            manualResetEvent = new ManualResetEvent(false);
+
+			client.GetPreviousPage<NextGenFooResult>(firstPage, page => {
+				manualResetEvent.Set();
+			});
+
+            manualResetEvent.WaitOne(1);
+
+			mockNextGenClient.Verify(trc => trc.ExecuteAsync<NextGenFooResult>(It.IsAny<IRestRequest>(), It.IsAny<Action<NextGenFooResult>>()), Times.Once);
+            Assert.IsNotNull(savedRequest);
+            Assert.AreEqual("/Foos?PageToken=abc123", savedRequest.Resource);
+            Assert.AreEqual(Method.GET, savedRequest.Method);
         }
     }
 }

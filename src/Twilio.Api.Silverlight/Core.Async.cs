@@ -3,6 +3,7 @@ using System.Linq;
 using RestSharp;
 using RestSharp.Extensions;
 using System.Text;
+using Twilio.Model;
 
 #if WINDOWS_PHONE
 using System.Windows;
@@ -50,5 +51,43 @@ namespace Twilio
 		{
 			_client.ExecuteAsync(request, callback);
 		}
+	}
+
+    public partial class TwilioRestClient : TwilioClient
+    {
+		public virtual void GetNextPage<T>(TwilioListBase resourceResult, Action<T> callback) where T : TwilioListBase, new()
+        {
+            var request = new RestRequest();
+            request.Resource = resourceResult.NextPageUri.OriginalString.Replace("/" + ApiVersion, "");
+
+			ExecuteAsync<T>(request, (response) => callback(response));
+        }
+
+		public virtual void GetPreviousPage<T>(TwilioListBase resourceResult, Action<T> callback) where T : TwilioListBase, new()
+        {
+            var request = new RestRequest();
+            request.Resource = resourceResult.PreviousPageUri.OriginalString.Replace("/" + ApiVersion, "");
+
+			ExecuteAsync<T>(request, (response) => callback(response));
+        }
+	}
+
+    public partial class NextGenClient : TwilioClient
+    {
+		public virtual void GetNextPage<T>(NextGenListBase resourceResult, Action<T> callback) where T : NextGenListBase, new()
+        {
+            var request = new RestRequest();
+            request.Resource = resourceResult.Meta.NextPageUrl.PathAndQuery.Replace("/" + ApiVersion, "");
+
+			ExecuteAsync<T>(request, (response) => callback(response));
+        }
+
+		public virtual void GetPreviousPage<T>(NextGenListBase resourceResult, Action<T> callback) where T : NextGenListBase, new()
+        {
+            var request = new RestRequest();
+            request.Resource = resourceResult.Meta.PreviousPageUrl.PathAndQuery.Replace("/" + ApiVersion, "");
+
+			ExecuteAsync<T>(request, (response) => callback(response));
+        }
 	}
 }

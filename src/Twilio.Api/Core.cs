@@ -153,6 +153,8 @@ namespace Twilio
         {
         }
 
+		#if FRAMEWORK
+
         public virtual T GetNextPage<T>(TwilioListBase resourceResult) where T : TwilioListBase, new()
         {
             var request = new RestRequest();
@@ -168,6 +170,8 @@ namespace Twilio
 
             return Execute<T>(request);
         }
+
+		#endif
 
         /// <summary>
         /// Initializes a new client with the specified credentials.
@@ -192,12 +196,13 @@ namespace Twilio
         }
     }
 
-    public class NextGenClient : TwilioClient
+    public partial class NextGenClient : TwilioClient
     {
         public NextGenClient(string accountSid, string authToken, string accountResourceSid, string apiVersion, string baseUrl) : base(accountSid, authToken, accountResourceSid, apiVersion, baseUrl)
         {
         }
 
+		#if FRAMEWORK
         public virtual T GetNextPage<T>(NextGenListBase resourceResult) where T : NextGenListBase, new()
         {
             var request = new RestRequest();
@@ -213,5 +218,6 @@ namespace Twilio
 
             return Execute<T>(request);
         }
+		#endif
     }
 }
