@@ -31,7 +31,7 @@ namespace Twilio.Api.Tests.Integration
     public class PagingTests
     {
         private Mock<TwilioRestClient> mockClient;
-        private Mock<NextGenClient> mockNextGenClient;
+//        private Mock<NextGenClient> mockNextGenClient;
 		private ManualResetEvent manualResetEvent = null;
 
         [SetUp]
@@ -40,8 +40,8 @@ namespace Twilio.Api.Tests.Integration
             mockClient = new Mock<TwilioRestClient>(Credentials.AccountSid, Credentials.AuthToken);
             mockClient.CallBase = true;
 
-            mockNextGenClient = new Mock<NextGenClient>(Credentials.AccountSid, Credentials.AuthToken, Credentials.AccountSid, "v1", "https://taskrouter.twilio.com");
-            mockNextGenClient.CallBase = true;
+//            mockNextGenClient = new Mock<NextGenClient>(Credentials.AccountSid, Credentials.AuthToken, Credentials.AccountSid, "v1", "https://taskrouter.twilio.com");
+//            mockNextGenClient.CallBase = true;
         }
 
         [Test]
@@ -90,6 +90,7 @@ namespace Twilio.Api.Tests.Integration
             Assert.IsNotNull(response);
         }
 
+		/*
         [Test]
         public void ShouldGetNextGenNextPage()
         {
@@ -137,8 +138,8 @@ namespace Twilio.Api.Tests.Integration
 
             Assert.IsNotNull(response);
         }
+		*/
 
-		/*
         [Test]
         public void ShouldGetNextPageAsync()
         {
@@ -189,6 +190,7 @@ namespace Twilio.Api.Tests.Integration
             Assert.AreEqual(Method.GET, savedRequest.Method);
         }
 
+		/*
         [Test]
         public void ShouldGetNextGenNextPageAsync()
         {
