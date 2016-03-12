@@ -78,7 +78,8 @@ namespace Twilio.TaskRouter
         /// <param name="afterSid">Activity Sid to start retrieving results from</param>
         /// <param name="beforeSid">Activity Sid to stop retrieving results from</param>
         /// <param name="count">How many results to return</param>
-        public virtual WorkspaceResult ListWorkspaces(string friendlyName, string afterSid, string beforeSid, int? count)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual WorkspaceResult ListWorkspaces(string friendlyName, string afterSid, string beforeSid, int? count)
         {
             var request = new RestRequest();
             request.Resource = "Workspaces";

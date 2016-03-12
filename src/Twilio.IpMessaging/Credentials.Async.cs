@@ -11,7 +11,8 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Retrieves all the Credentials belonging to a Service Sid.
         /// </summary>
-        public virtual void ListCredentials(Action<CredentialResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListCredentials(Action<CredentialResult> callback)
         {
             var request = new RestRequest(Method.GET);
             request.Resource = "/Credentials";

@@ -43,7 +43,8 @@ namespace Twilio.TaskRouter
         /// List workers statistics on current workspace with filters
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the task queues belong to</param>
-        public virtual WorkersStatistics ListWorkersStatistics(string workspaceSid)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual WorkersStatistics ListWorkersStatistics(string workspaceSid)
         {
             return ListWorkersStatistics(workspaceSid, new WorkersStatisticsRequest());
         }
@@ -53,7 +54,8 @@ namespace Twilio.TaskRouter
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the task queues belong to</param>
         /// <param name="options">Filtering options for the statistics request</param>> 
-        public virtual WorkersStatistics ListWorkersStatistics(string workspaceSid, WorkersStatisticsRequest options)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual WorkersStatistics ListWorkersStatistics(string workspaceSid, WorkersStatisticsRequest options)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
 

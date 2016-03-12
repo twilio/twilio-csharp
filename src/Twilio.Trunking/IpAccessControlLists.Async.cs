@@ -15,7 +15,8 @@ namespace Twilio.Trunking
         /// Lists the ipAccessControlLists.
         /// </summary>
         /// <param name="trunkSid">Trunk sid.</param>
-        public virtual void ListIpAccessControlLists(string trunkSid, Action<IpAccessControlListResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListIpAccessControlLists(string trunkSid, Action<IpAccessControlListResult> callback)
         {
             Require.Argument("TrunkSid", trunkSid);
             var request = new RestRequest();
@@ -31,7 +32,8 @@ namespace Twilio.Trunking
         /// </summary>
         /// <param name="trunkSid">Trunk sid.</param>
         /// <param name="ipAccessControlListSid">IpAccessControlList sid.</param>
-        public virtual void AssociateIpAccessControlList(string trunkSid, string ipAccessControlListSid, Action<IpAccessControlList> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void AssociateIpAccessControlList(string trunkSid, string ipAccessControlListSid, Action<IpAccessControlList> callback)
         {
           Require.Argument("TrunkSid", trunkSid);
           Require.Argument("IpAccessControlListSid", ipAccessControlListSid);
@@ -50,7 +52,8 @@ namespace Twilio.Trunking
         /// </summary>
         /// <param name="trunkSid">Trunk sid.</param>
         /// <param name="ipAccessControlListSid">IpAccessControlList sid.</param>
-        public virtual void DeleteIpAccessControlList(string trunkSid, string ipAccessControlListSid, Action<DeleteStatus> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void DeleteIpAccessControlList(string trunkSid, string ipAccessControlListSid, Action<DeleteStatus> callback)
         {
           Require.Argument("TrunkSid", trunkSid);
           Require.Argument("IpAccessControlListSid", ipAccessControlListSid);

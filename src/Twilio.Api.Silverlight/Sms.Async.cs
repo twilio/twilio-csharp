@@ -27,7 +27,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
         [Obsolete("Use ListMessages instead.")]
-        public virtual void ListSmsMessages(Action<SmsMessageResult> callback)
+		public virtual void ListSmsMessages(Action<SmsMessageResult> callback)
 		{
 			ListSmsMessages(null, null, null, null, null, callback);
 		}
@@ -42,7 +42,7 @@ namespace Twilio
 		/// <param name="count">(Optional) The number of results to retrieve</param>
 		/// <param name="callback">Method to call upon successful completion</param>
         [Obsolete("Use ListMessages instead.")]
-        public virtual void ListSmsMessages(string to, string from, DateTime? dateSent, int? pageNumber, int? count, Action<SmsMessageResult> callback)
+		public virtual void ListSmsMessages(string to, string from, DateTime? dateSent, int? pageNumber, int? count, Action<SmsMessageResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/SMS/Messages.json";
@@ -163,7 +163,8 @@ namespace Twilio
 		/// <param name="shortCode">Only show the ShortCode resources that match this pattern. You can specify partial numbers and use '*' as a wildcard for any digit.</param>
 		/// <param name="friendlyName">Only show the ShortCode resources with friendly names that exactly match this name.</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListShortCodes(string shortCode, string friendlyName, Action<SmsShortCodeResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListShortCodes(string shortCode, string friendlyName, Action<SmsShortCodeResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/SMS/ShortCodes.json";

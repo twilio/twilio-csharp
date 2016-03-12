@@ -25,7 +25,8 @@ namespace Twilio
         /// Return a list of all SIP Domain resources
         /// </summary>
         /// <returns></returns>
-        public virtual void ListDomains(Action<DomainResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListDomains(Action<DomainResult> callback)
         {
             ListDomains(null, null, callback);
         }
@@ -37,7 +38,8 @@ namespace Twilio
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public virtual void ListDomains(int? pageNumber, int? count, Action<DomainResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListDomains(int? pageNumber, int? count, Action<DomainResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/Domains.json";
@@ -131,7 +133,8 @@ namespace Twilio
         /// <param name="domainSid">The Sid of the mapped SIP Domain</param>
         /// <param name="ipAccessControlListMappingSid">The Sid of the mapped IpAccessControlList</param>
         /// <returns></returns>
-        public virtual void GetIpAccessControlListMapping(string domainSid, string ipAccessControlListMappingSid, Action<IpAccessControlListMapping> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void GetIpAccessControlListMapping(string domainSid, string ipAccessControlListMappingSid, Action<IpAccessControlListMapping> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings/{IpAccessControlListMappingSid}.json";
@@ -146,7 +149,8 @@ namespace Twilio
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain to list mappings for</param>
         /// <returns></returns>
-        public virtual void ListIpAccessControlListMappings(string domainSid, Action<IpAccessControlListMappingResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListIpAccessControlListMappings(string domainSid, Action<IpAccessControlListMappingResult> callback)
         {
             ListIpAccessControlListMappings(domainSid, null, null, callback);
         }
@@ -158,7 +162,8 @@ namespace Twilio
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public virtual void ListIpAccessControlListMappings(string domainSid, int? pageNumber, int? count, Action<IpAccessControlListMappingResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListIpAccessControlListMappings(string domainSid, int? pageNumber, int? count, Action<IpAccessControlListMappingResult> callback)
         {
             Require.Argument("DomainSid", domainSid);
 
@@ -178,7 +183,8 @@ namespace Twilio
         /// <param name="domainSid">The Sid of the SIP Domain to map to</param>
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList to map to</param>
         /// <returns></returns>
-        public virtual void CreateIpAccessControlListMapping(string domainSid, string ipAccessControlListSid, Action<IpAccessControlListMapping> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void CreateIpAccessControlListMapping(string domainSid, string ipAccessControlListSid, Action<IpAccessControlListMapping> callback)
         {
             Require.Argument("DomainSid", domainSid);
 
@@ -197,7 +203,8 @@ namespace Twilio
         /// <param name="domainSid">The Sid of the SIP Domain</param>
         /// <param name="ipAccessControlListMappingSid">The Sid of the IpAccessControlListMapping to delete</param>
         /// <returns></returns>
-        public virtual void DeleteIpAccessControlListMapping(string domainSid, string ipAccessControlListMappingSid, Action<DeleteStatus> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void DeleteIpAccessControlListMapping(string domainSid, string ipAccessControlListMappingSid, Action<DeleteStatus> callback)
         {
             Require.Argument("DomainSid", domainSid);
 
@@ -216,7 +223,8 @@ namespace Twilio
         /// <param name="domainSid">The Sid of the mapped SIP Domain</param>
         /// <param name="credentialListMappingSid">The Sid of the mapped CredentialList</param>
         /// <returns></returns>
-        public virtual void GetCredentialListMapping(string domainSid, string credentialListMappingSid, Action<CredentialListMapping> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void GetCredentialListMapping(string domainSid, string credentialListMappingSid, Action<CredentialListMapping> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings/{CredentialListMappingSid}.json";
@@ -231,7 +239,8 @@ namespace Twilio
         /// </summary>
         /// <param name="domainSid">The Sid of the SIP Domain to list mappings for</param>
         /// <returns></returns>
-        public virtual void ListCredentialListMappings(string domainSid, Action<CredentialListMappingResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListCredentialListMappings(string domainSid, Action<CredentialListMappingResult> callback)
         {
             ListCredentialListMappings(domainSid, null, null, callback);
         }
@@ -243,7 +252,8 @@ namespace Twilio
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public virtual void ListCredentialListMappings(string domainSid, int? pageNumber, int? count, Action<CredentialListMappingResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListCredentialListMappings(string domainSid, int? pageNumber, int? count, Action<CredentialListMappingResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings.json";
@@ -261,7 +271,8 @@ namespace Twilio
         /// <param name="domainSid">The Sid of the SIP Domain to map to</param>
         /// <param name="credentialListSid">The Sid of the CredentialList to map to</param>
         /// <returns></returns>
-        public virtual void CreateCredentialListMapping(string domainSid, string credentialListSid, Action<IpAccessControlListMapping> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void CreateCredentialListMapping(string domainSid, string credentialListSid, Action<IpAccessControlListMapping> callback)
         {
             Require.Argument("DomainSid", domainSid);
 
@@ -280,7 +291,8 @@ namespace Twilio
         /// <param name="domainSid">The Sid of the SIP Domain</param>
         /// <param name="credentialListMappingSid">The Sid of the CredentialListMapping to delete</param>
         /// <returns></returns>
-        public virtual void DeleteCredentialListMapping(string domainSid, string credentialListMappingSid, Action<DeleteStatus> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void DeleteCredentialListMapping(string domainSid, string credentialListMappingSid, Action<DeleteStatus> callback)
         {
             Require.Argument("DomainSid", domainSid);
 
@@ -298,7 +310,8 @@ namespace Twilio
         /// </summary>
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList resource</param>
         /// <returns></returns>
-        public virtual void GetIpAccessControlList(string ipAccessControlListSid, Action<IpAccessControlList> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void GetIpAccessControlList(string ipAccessControlListSid, Action<IpAccessControlList> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}.json";
@@ -311,7 +324,8 @@ namespace Twilio
         /// Lists all IpAccessControlLists for this account
         /// </summary>
         /// <returns></returns>
-        public virtual void ListIpAccessControlLists(Action<IpAccessControlListResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListIpAccessControlLists(Action<IpAccessControlListResult> callback)
         {
             ListIpAccessControlLists(null, null, callback);
         }
@@ -323,7 +337,8 @@ namespace Twilio
 
         /// <param name="count"></param>
         /// <returns></returns>
-        public virtual void ListIpAccessControlLists(int? pageNumber, int? count, Action<IpAccessControlListResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListIpAccessControlLists(int? pageNumber, int? count, Action<IpAccessControlListResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists.json";
@@ -339,7 +354,8 @@ namespace Twilio
         /// </summary>
         /// <param name="friendlyName">The name of the IpAccessControlList to create.</param>
         /// <returns></returns>
-        public virtual void CreateIpAccessControlList(string friendlyName, Action<IpAccessControlList> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void CreateIpAccessControlList(string friendlyName, Action<IpAccessControlList> callback)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists.json";
@@ -355,7 +371,8 @@ namespace Twilio
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList to update</param>
         /// <param name="friendlyName">The name of the IpAccessControlList</param>
         /// <returns></returns>
-        public virtual void UpdateIpAccessControlList(string ipAccessControlListSid, string friendlyName, Action<IpAccessControlList> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void UpdateIpAccessControlList(string ipAccessControlListSid, string friendlyName, Action<IpAccessControlList> callback)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}.json";
@@ -371,7 +388,8 @@ namespace Twilio
         /// </summary>
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList Domain to delete</param>
         /// <returns></returns>
-        public virtual void DeleteIpAccessControlList(string ipAccessControlListSid, Action<DeleteStatus> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void DeleteIpAccessControlList(string ipAccessControlListSid, Action<DeleteStatus> callback)
         {
             var request = new RestRequest(Method.DELETE);
             request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}.json";
@@ -402,7 +420,8 @@ namespace Twilio
         /// </summary>
         /// <param name="ipAccessControlListSid">The Sid of the IpAccessControlList</param>
         /// <returns></returns>
-        public virtual void ListIpAddresses(string ipAccessControlListSid, Action<IpAddressResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListIpAddresses(string ipAccessControlListSid, Action<IpAddressResult> callback)
         {
             ListIpAddresses(ipAccessControlListSid, null, null, callback);
         }
@@ -414,7 +433,8 @@ namespace Twilio
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public virtual void ListIpAddresses(string ipAccessControlListSid, int? pageNumber, int? count, Action<IpAddressResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListIpAddresses(string ipAccessControlListSid, int? pageNumber, int? count, Action<IpAddressResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/Addresses.json";
@@ -487,7 +507,8 @@ namespace Twilio
         /// </summary>
         /// <param name="credentialListSid">The Sid of the CredentialList to locate</param>
         /// <returns></returns>
-        public virtual void GetCredentialList(string credentialListSid, Action<CredentialList> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void GetCredentialList(string credentialListSid, Action<CredentialList> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}.json";
@@ -500,7 +521,8 @@ namespace Twilio
         /// Return a list all CredentialsList resources
         /// </summary>
         /// <returns></returns>
-        public virtual void ListCredentialLists(Action<CredentialListResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListCredentialLists(Action<CredentialListResult> callback)
         {
             ListCredentialLists(null, null, callback);
         }
@@ -511,7 +533,8 @@ namespace Twilio
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public virtual void ListCredentialLists(int? pageNumber, int? count, Action<CredentialListResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListCredentialLists(int? pageNumber, int? count, Action<CredentialListResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists.json";
@@ -527,7 +550,8 @@ namespace Twilio
         /// </summary>
         /// <param name="friendlyName">The name of the CredentialList to create.</param>
         /// <returns></returns>
-        public virtual void CreateCredentialList(string friendlyName, Action<CredentialList> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void CreateCredentialList(string friendlyName, Action<CredentialList> callback)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists.json";
@@ -543,7 +567,8 @@ namespace Twilio
         /// <param name="credentialListSid">The Sid of the CredentialList</param>
         /// <param name="friendlyName">The name of the CredentialList</param>
         /// <returns></returns>
-        public virtual void UpdateCredentialList(string credentialListSid, string friendlyName, Action<CredentialList> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void UpdateCredentialList(string credentialListSid, string friendlyName, Action<CredentialList> callback)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}.json";
@@ -559,7 +584,8 @@ namespace Twilio
         /// </summary>
         /// <param name="domainSid">The Sid of the CredentialList to delete</param>
         /// <returns></returns>
-        public virtual void DeleteCredentialList(string credentialListSid, Action<DeleteStatus> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void DeleteCredentialList(string credentialListSid, Action<DeleteStatus> callback)
         {
             var request = new RestRequest(Method.DELETE);
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}.json";
@@ -590,7 +616,8 @@ namespace Twilio
         /// </summary>
         /// <param name="credentialListSid"></param>
         /// <returns></returns>
-        public virtual void ListCredentials(string credentialListSid, Action<CredentialResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListCredentials(string credentialListSid, Action<CredentialResult> callback)
         {
             ListCredentials(credentialListSid, null, null, callback);
         }
@@ -602,7 +629,8 @@ namespace Twilio
         /// <param name="pageNumber"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public virtual void ListCredentials(string credentialListSid, int? pageNumber, int? count, Action<CredentialResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListCredentials(string credentialListSid, int? pageNumber, int? count, Action<CredentialResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials.json";

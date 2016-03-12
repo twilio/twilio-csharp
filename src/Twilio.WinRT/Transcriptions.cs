@@ -24,7 +24,8 @@ namespace Twilio
         /// </summary>
         /// <param name="pageNumber">The page to start retrieving results from</param>
         /// <param name="count">The number of results to retrieve</param>
-        public IAsyncOperation<TranscriptionResult> ListTranscriptionsAsync(int? pageNumber, int? count)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public IAsyncOperation<TranscriptionResult> ListTranscriptionsAsync(int? pageNumber, int? count)
         {
             return (IAsyncOperation<TranscriptionResult>)AsyncInfo.Run((System.Threading.CancellationToken ct) => ListTranscriptionsAsyncInternal(pageNumber, count));
         }
@@ -47,7 +48,8 @@ namespace Twilio
         /// <param name="recordingSid">The Sid of the recording to retrieve transcriptions for</param>
         /// <param name="pageNumber">The page to start retrieving results from</param>
         /// <param name="count">The number of results to retrieve</param>
-        public IAsyncOperation<TranscriptionResult> ListTranscriptionsAsync(string recordingSid, int? pageNumber, int? count)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public IAsyncOperation<TranscriptionResult> ListTranscriptionsAsync(string recordingSid, int? pageNumber, int? count)
         {
             return (IAsyncOperation<TranscriptionResult>)AsyncInfo.Run((System.Threading.CancellationToken ct) => ListTranscriptionsAsyncInternal(recordingSid, pageNumber, count));
         }

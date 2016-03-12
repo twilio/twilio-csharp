@@ -27,7 +27,8 @@ namespace Twilio.Monitor
         /// <summary>
         /// Lists the events.
         /// </summary>
-        public virtual void ListEvents(Action<EventResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListEvents(Action<EventResult> callback)
         {
             ListEvents(new EventListRequest(), callback);
         }
@@ -35,7 +36,8 @@ namespace Twilio.Monitor
         /// <summary>
         /// Lists the events.
         /// </summary>
-        public virtual void ListEvents(EventListRequest options, Action<EventResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListEvents(EventListRequest options, Action<EventResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Events";

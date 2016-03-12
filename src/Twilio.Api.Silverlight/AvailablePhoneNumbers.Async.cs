@@ -13,7 +13,8 @@ namespace Twilio
 		/// <param name="isoCountryCode">Two-character ISO country code (US or CA)</param>
 		/// <param name="options">Search filter options. Only properties with values set will be used.</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListAvailableLocalPhoneNumbers(string isoCountryCode, AvailablePhoneNumberListRequest options, Action<AvailablePhoneNumberResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListAvailableLocalPhoneNumbers(string isoCountryCode, AvailablePhoneNumberListRequest options, Action<AvailablePhoneNumberResult> callback)
 		{
 			Require.Argument("isoCountryCode", isoCountryCode);
 
@@ -31,7 +32,8 @@ namespace Twilio
 		/// </summary>
 		/// <param name="isoCountryCode">Two-character ISO country code (US or CA)</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListAvailableTollFreePhoneNumbers(string isoCountryCode, Action<AvailablePhoneNumberResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListAvailableTollFreePhoneNumbers(string isoCountryCode, Action<AvailablePhoneNumberResult> callback)
 		{
 			Require.Argument("isoCountryCode", isoCountryCode);
 
@@ -48,7 +50,8 @@ namespace Twilio
 		/// <param name="isoCountryCode">Two-character ISO country code (US or CA)</param>
 		/// <param name="contains">Value to use when filtering search. Accepts numbers or characters.</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListAvailableTollFreePhoneNumbers(string isoCountryCode, string contains, Action<AvailablePhoneNumberResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListAvailableTollFreePhoneNumbers(string isoCountryCode, string contains, Action<AvailablePhoneNumberResult> callback)
 		{
 			Require.Argument("isoCountryCode", isoCountryCode);
 			Require.Argument("contains", contains);

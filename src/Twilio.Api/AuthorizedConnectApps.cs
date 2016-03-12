@@ -34,7 +34,8 @@ namespace Twilio
 		/// </summary>
 		/// <param name="pageNumber">Page number to start retrieving results from</param>
 		/// <param name="count">How many results to return</param>
-        public virtual AuthorizedConnectAppResult ListAuthorizedConnectApps(int? pageNumber, int? count)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual AuthorizedConnectAppResult ListAuthorizedConnectApps(int? pageNumber, int? count)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/AuthorizedConnectApps.json";

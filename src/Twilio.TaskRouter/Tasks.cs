@@ -95,7 +95,8 @@ namespace Twilio.TaskRouter
         /// List tasks on current workspace.
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the tasks belong to</param>
-        public virtual TaskResult ListTasks(string workspaceSid)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual TaskResult ListTasks(string workspaceSid)
         {
             return ListTasks(workspaceSid, new TaskListRequest());
         }
@@ -105,7 +106,8 @@ namespace Twilio.TaskRouter
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the tasks belong to</param>
         /// <param name="options">List filter options. If an property is set the list will be filtered by that value.</param>
-        public virtual TaskResult ListTasks(string workspaceSid, TaskListRequest options)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual TaskResult ListTasks(string workspaceSid, TaskListRequest options)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
 

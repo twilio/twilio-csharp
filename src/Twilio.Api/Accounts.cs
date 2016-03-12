@@ -42,7 +42,8 @@ namespace Twilio
         /// <summary>
         /// List all subaccounts created for the authenticated account. Makes a GET request to the Account List resource.
         /// </summary>
-        public virtual AccountResult ListSubAccounts(string friendlyName)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual AccountResult ListSubAccounts(string friendlyName)
         {
             return ListSubAccounts(friendlyName, null, null);
         }
@@ -50,7 +51,8 @@ namespace Twilio
         /// <summary>
         /// List all subaccounts created for the authenticated account. Makes a GET request to the Account List resource.
         /// </summary>
-        public virtual AccountResult ListSubAccounts(int? pageNumber, int? count)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual AccountResult ListSubAccounts(int? pageNumber, int? count)
         {
             return ListSubAccounts(String.Empty, pageNumber, count);
         }
@@ -59,7 +61,8 @@ namespace Twilio
         /// List subaccounts that match the provided FriendlyName for the authenticated account. Makes a GET request to the Account List resource.
         /// </summary>
         /// <param name="friendlyName">Name associated with this account</param>
-        public virtual AccountResult ListSubAccounts(string friendlyName, int? pageNumber, int? count)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual AccountResult ListSubAccounts(string friendlyName, int? pageNumber, int? count)
         {
             var request = new RestRequest();
             request.Resource = "Accounts.json";

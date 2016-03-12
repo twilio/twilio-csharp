@@ -23,7 +23,8 @@ namespace Twilio
         /// </summary>
         /// <param name="category">The category used to filter the usage data</param>
         /// <returns></returns>
-        public IAsyncOperation<UsageResult> ListUsageAsync(string category)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public IAsyncOperation<UsageResult> ListUsageAsync(string category)
         {
             return ListUsageAsync(category, string.Empty);
         }
@@ -34,7 +35,8 @@ namespace Twilio
         /// <param name="category">The category used to filter the usage data</param>
         /// <param name="interval">The time interval used to group the usage data</param>
         /// <returns></returns>
-        public IAsyncOperation<UsageResult> ListUsageAsync(string category, string interval)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public IAsyncOperation<UsageResult> ListUsageAsync(string category, string interval)
         {
             return ListUsageAsync(category, interval, null, null);
         }
@@ -46,7 +48,8 @@ namespace Twilio
         /// <param name="startDate">The start date of the filter range</param>
         /// <param name="endDate">The end date of the filter range</param>
         /// <returns></returns>
-        public IAsyncOperation<UsageResult> ListUsageAsync(string category, DateTimeOffset? startDate, DateTimeOffset? endDate)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public IAsyncOperation<UsageResult> ListUsageAsync(string category, DateTimeOffset? startDate, DateTimeOffset? endDate)
         {
             return ListUsageAsync(category, string.Empty, startDate, endDate);
         }
@@ -59,7 +62,8 @@ namespace Twilio
         /// <param name="startDate">The start date of the filter range</param>
         /// <param name="endDate">The end date of the filter range</param>
         /// <returns></returns>
-        public IAsyncOperation<UsageResult> ListUsageAsync(string category, string interval, DateTimeOffset? startDate, DateTimeOffset? endDate)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public IAsyncOperation<UsageResult> ListUsageAsync(string category, string interval, DateTimeOffset? startDate, DateTimeOffset? endDate)
         {
             return (IAsyncOperation<UsageResult>)AsyncInfo.Run((System.Threading.CancellationToken ct) => ListUsageAsyncInternal(category, interval, startDate, endDate, null, null));
         }
@@ -74,7 +78,8 @@ namespace Twilio
         /// <param name="pageNumber">(Optional) The page to start retrieving results from</param>
         /// <param name="count">(Optional) The number of results to retrieve</param>
         /// <returns></returns>
-        public IAsyncOperation<UsageResult> ListUsageAsync(string category, string interval, DateTimeOffset? startDate, DateTimeOffset? endDate, int? pageNumber, int? count)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public IAsyncOperation<UsageResult> ListUsageAsync(string category, string interval, DateTimeOffset? startDate, DateTimeOffset? endDate, int? pageNumber, int? count)
         {
             return (IAsyncOperation<UsageResult>)AsyncInfo.Run((System.Threading.CancellationToken ct) => ListUsageAsyncInternal(category, interval, startDate, endDate, pageNumber, count));
         }
@@ -128,7 +133,8 @@ namespace Twilio
         /// <param name="usageCategory">The usage category this trigger watches</param>
         /// <param name="triggerBy">The value at which the trigger will fire</param>
         /// <returns></returns>
-        public IAsyncOperation<UsageTriggerResult> ListUsageTriggersAsync(string recurring, string usageCategory, string triggerBy)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public IAsyncOperation<UsageTriggerResult> ListUsageTriggersAsync(string recurring, string usageCategory, string triggerBy)
         {
             return (IAsyncOperation<UsageTriggerResult>)AsyncInfo.Run((System.Threading.CancellationToken ct) => ListUsageTriggersAsyncInternal(recurring, usageCategory, triggerBy));
         }

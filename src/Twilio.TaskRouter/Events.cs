@@ -30,7 +30,8 @@ namespace Twilio.TaskRouter
         /// Lists the events.
         /// </summary>
         /// <param name="workspaceSid">Workspace sid.</param>
-        public virtual EventResult ListEvents(string workspaceSid)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual EventResult ListEvents(string workspaceSid)
         {
             return ListEvents(workspaceSid, new EventListRequest());
         }
@@ -40,7 +41,8 @@ namespace Twilio.TaskRouter
         /// </summary>
         /// <param name="workspaceSid">Workspace sid.</param>
         /// <param name="options">Options.</param>
-        public virtual EventResult ListEvents(string workspaceSid, EventListRequest options)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual EventResult ListEvents(string workspaceSid, EventListRequest options)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
 

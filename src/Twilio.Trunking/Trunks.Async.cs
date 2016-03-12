@@ -30,7 +30,8 @@ namespace Twilio.Trunking
         /// <summary>
         /// Lists the trunks.
         /// </summary>
-        public virtual void ListTrunks(Action<TrunkResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListTrunks(Action<TrunkResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Trunks";

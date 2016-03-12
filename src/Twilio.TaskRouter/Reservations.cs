@@ -34,7 +34,8 @@ namespace Twilio.TaskRouter
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the reservations belong to</param>
         /// <param name="taskSid">The Sid of the task the reservations belong to</param>
-        public virtual ReservationResult ListReservations(string workspaceSid, string taskSid)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual ReservationResult ListReservations(string workspaceSid, string taskSid)
         {
             return ListReservations(workspaceSid, taskSid, null, null, null, null);
         }
@@ -48,7 +49,8 @@ namespace Twilio.TaskRouter
         /// <param name="afterSid">Activity Sid to start retrieving results from</param>
         /// <param name="beforeSid">Activity Sid to stop retrieving results from</param>
         /// <param name="count">How many results to return</param>
-        public virtual ReservationResult ListReservations(string workspaceSid, string taskSid, string reservationStatus, string afterSid, string beforeSid, int? count)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual ReservationResult ListReservations(string workspaceSid, string taskSid, string reservationStatus, string afterSid, string beforeSid, int? count)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("TaskSid", taskSid);
@@ -76,7 +78,8 @@ namespace Twilio.TaskRouter
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the reservations belong to</param>
         /// <param name="workerSid">The Sid of the worker the reservations belong to</param>
-        public virtual ReservationResult ListReservationsForWorker(string workspaceSid, string workerSid)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual ReservationResult ListReservationsForWorker(string workspaceSid, string workerSid)
         {
             return ListReservationsForWorker(workspaceSid, workerSid, null, null, null, null);
         }
@@ -90,7 +93,8 @@ namespace Twilio.TaskRouter
         /// <param name="afterSid">Reservation Sid to start retrieving results from</param>
         /// <param name="beforeSid">Activity Sid to stop retrieving results from</param>
         /// <param name="count">How many results to return</param>
-        public virtual ReservationResult ListReservationsForWorker(string workspaceSid, string workerSid, string reservationStatus, string afterSid, string beforeSid, int? count)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual ReservationResult ListReservationsForWorker(string workspaceSid, string workerSid, string reservationStatus, string afterSid, string beforeSid, int? count)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("WorkerSid", workerSid);

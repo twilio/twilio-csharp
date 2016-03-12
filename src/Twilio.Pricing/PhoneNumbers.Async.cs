@@ -12,7 +12,8 @@ namespace Twilio.Pricing
         /// are available.
         /// </summary>
         /// <param name="callback">Callback to handle response.</param>
-        public virtual void ListPhoneNumberCountries(Action<PhoneNumberCountryResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListPhoneNumberCountries(Action<PhoneNumberCountryResult> callback)
         {
             var request = new RestRequest(Method.GET);
             request.Resource = "PhoneNumbers/Countries";

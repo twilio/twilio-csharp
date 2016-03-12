@@ -29,12 +29,14 @@ namespace Twilio.Monitor
             ExecuteAsync<Alert>(request, (response) => { callback(response); });
         }
 
-        public virtual void ListAlerts(Action<AlertResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListAlerts(Action<AlertResult> callback)
         {
             ListAlerts(null, null, null, callback);
         }
 
-        public virtual void ListAlerts(string logLevel, DateTime? startDate, DateTime? endDate, Action<AlertResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListAlerts(string logLevel, DateTime? startDate, DateTime? endDate, Action<AlertResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Alerts";

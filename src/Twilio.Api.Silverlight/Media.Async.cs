@@ -21,7 +21,8 @@ namespace Twilio
         /// <summary>
         /// Retrieve a list of Media objects with no list filters
         /// </summary>
-        public virtual void ListMedia(string messageSid, Action<MediaResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListMedia(string messageSid, Action<MediaResult> callback)
         {
             ListMedia(messageSid, new MediaListRequest(), callback);
         }
@@ -30,7 +31,8 @@ namespace Twilio
         /// Return a filtered list of Media objects. The list includes paging
         /// information.
         /// </summary>
-        public virtual void ListMedia(string messageSid, MediaListRequest options, Action<MediaResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListMedia(string messageSid, MediaListRequest options, Action<MediaResult> callback)
         {
             ListMessageMedia(messageSid, options, callback);
         }
@@ -39,7 +41,8 @@ namespace Twilio
         /// List all media for a particular message
         /// </summary>
         /// <param name="messageSid">The message sid to filter on</param>
-        public virtual void ListMessageMedia(string messageSid, MediaListRequest options, Action<MediaResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListMessageMedia(string messageSid, MediaListRequest options, Action<MediaResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Messages/{MessageSid}/Media.json";

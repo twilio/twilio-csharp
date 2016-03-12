@@ -21,12 +21,14 @@ namespace Twilio.TaskRouter
             ExecuteAsync<Event>(request, (response) => { callback(response); });
         }
 
-        public virtual void ListEvents(string workspaceSid, Action<EventResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListEvents(string workspaceSid, Action<EventResult> callback)
         {
             ListEvents(workspaceSid, new EventListRequest(), callback);
         }
 
-        public virtual void ListEvents(string workspaceSid, EventListRequest options, Action<EventResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListEvents(string workspaceSid, EventListRequest options, Action<EventResult> callback)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
 

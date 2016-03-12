@@ -44,7 +44,8 @@ namespace Twilio
 		/// <param name="friendlyName">Optional friendly name to match</param>
 		/// <param name="pageNumber">Page number to start retrieving results from</param>
 		/// <param name="count">How many results to return</param>
-        public IAsyncOperation<IncomingPhoneNumberResult> ListIncomingPhoneNumbersAsync(string phoneNumber, string friendlyName, int? pageNumber, int? count)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public IAsyncOperation<IncomingPhoneNumberResult> ListIncomingPhoneNumbersAsync(string phoneNumber, string friendlyName, int? pageNumber, int? count)
         {
             return (IAsyncOperation<IncomingPhoneNumberResult>)AsyncInfo.Run((System.Threading.CancellationToken ct) => ListIncomingPhoneNumbersAsyncInternal(phoneNumber, friendlyName, pageNumber, count));
         }

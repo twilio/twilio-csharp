@@ -36,7 +36,8 @@ namespace Twilio
 		/// List all subaccounts created for the authenticated account
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListSubAccounts(Action<AccountResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListSubAccounts(Action<AccountResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts.json";

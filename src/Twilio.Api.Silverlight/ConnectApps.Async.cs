@@ -26,7 +26,8 @@ namespace Twilio
 		/// List ConnectApps on current account
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListConnectApps(Action<ConnectAppResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListConnectApps(Action<ConnectAppResult> callback)
 		{
 			ListConnectApps(null, null, (response) => { callback(response); });
 		}
@@ -37,7 +38,8 @@ namespace Twilio
 		/// <param name="pageNumber">Page number to start retrieving results from</param>
 		/// <param name="count">How many results to return</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListConnectApps(int? pageNumber, int? count, Action<ConnectAppResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListConnectApps(int? pageNumber, int? count, Action<ConnectAppResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/ConnectApps.json";

@@ -26,6 +26,7 @@ namespace Twilio
 		/// List addresses on the current account.
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
+		[System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual void ListAddresses(Action<AddressResult> callback)
 		{
 			ListAddresses(new AddressListRequest(), callback);
@@ -36,6 +37,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="options">Filters to pass into the list request</param>
 		/// <param name="callback">Method to call upon successful completion</param>
+		[System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual void ListAddresses(AddressListRequest options, Action<AddressResult> callback)
 		{
 			var request = new RestRequest();
@@ -50,6 +52,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="addressSid">Sid of the address to retrieve numbers for</param>
 		/// <param name="callback">Method to call upon successful completion</param>
+		[System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual void ListDependentPhoneNumbers(string addressSid, Action<DependentPhoneNumberResult> callback)
 		{
 			var request = new RestRequest();

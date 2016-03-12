@@ -13,7 +13,8 @@ namespace Twilio.IpMessaging
         /// </summary>
         /// <param name="serviceSid">Service Sid</param>
         /// <returns>List of Roles</returns>
-        public virtual RoleResult ListRoles(string serviceSid)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual RoleResult ListRoles(string serviceSid)
         {
             Require.Argument("ServiceSid", serviceSid);
             

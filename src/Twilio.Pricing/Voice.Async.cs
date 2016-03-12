@@ -8,7 +8,8 @@ namespace Twilio.Pricing
     public partial class PricingClient
     {
 
-        public virtual void ListVoiceCountries(Action<VoiceCountryResult> callback)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListVoiceCountries(Action<VoiceCountryResult> callback)
         {
             var request = new RestRequest(Method.GET);
             request.Resource = "Voice/Countries";

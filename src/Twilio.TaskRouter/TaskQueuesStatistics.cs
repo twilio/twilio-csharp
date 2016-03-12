@@ -33,7 +33,8 @@ namespace Twilio.TaskRouter
         /// List task queues statistics on current workspace.
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the task queues belong to</param>
-        public virtual TaskQueueStatisticsResult ListTaskQueuesStatistics(string workspaceSid)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual TaskQueueStatisticsResult ListTaskQueuesStatistics(string workspaceSid)
         {
             return ListTaskQueuesStatistics(workspaceSid, new TaskQueuesStatisticsRequest());
         }
@@ -43,7 +44,8 @@ namespace Twilio.TaskRouter
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the task queues belong to</param>
         /// <param name="options">Time-interval and filtering options.</param>
-        public virtual TaskQueueStatisticsResult ListTaskQueuesStatistics(string workspaceSid, TaskQueuesStatisticsRequest options)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual TaskQueueStatisticsResult ListTaskQueuesStatistics(string workspaceSid, TaskQueuesStatisticsRequest options)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
 

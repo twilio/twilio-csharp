@@ -50,7 +50,8 @@ namespace Twilio
 		/// <param name="dateSent">(Optional) The date the message was sent (GMT)</param>
 		/// <param name="pageNumber">(Optional) The page to start retrieving results from</param>
 		/// <param name="count">(Optional) The number of results to retrieve</param>
-        public IAsyncOperation<SmsMessageResult> ListSmsMessagesAsync(string to, string from, DateTimeOffset? dateSent, int? pageNumber, int? count)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public IAsyncOperation<SmsMessageResult> ListSmsMessagesAsync(string to, string from, DateTimeOffset? dateSent, int? pageNumber, int? count)
         {
             return (IAsyncOperation<SmsMessageResult>)AsyncInfo.Run((System.Threading.CancellationToken ct) => ListSmsMessagesAsyncInternal(to, from, dateSent, pageNumber, count));
         }
@@ -174,7 +175,8 @@ namespace Twilio
 		/// </summary>
 		/// <param name="shortCode">Only show the ShortCode resources that match this pattern. You can specify partial numbers and use '*' as a wildcard for any digit.</param>
 		/// <param name="friendlyName">Only show the ShortCode resources with friendly names that exactly match this name.</param>
-        public IAsyncOperation<SmsShortCodeResult> ListShortCodesAsync(string shortCode, string friendlyName)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public IAsyncOperation<SmsShortCodeResult> ListShortCodesAsync(string shortCode, string friendlyName)
         {
             return (IAsyncOperation<SmsShortCodeResult>)AsyncInfo.Run((System.Threading.CancellationToken ct) => ListShortCodesAsyncInternal(shortCode, friendlyName));
         }        

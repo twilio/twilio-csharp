@@ -42,7 +42,8 @@ namespace Twilio.Monitor
         /// <param name="startDate">Only return alerts that occurred at or after this datetime.</param>
         /// <param name="endDate">Only return alerts that occurred at or before this datetime.</param>
         /// <returns></returns>
-        public virtual AlertResult ListAlerts(string logLevel, DateTime? startDate, DateTime? endDate)
+        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual AlertResult ListAlerts(string logLevel, DateTime? startDate, DateTime? endDate)
         {
             var request = new RestRequest();
             request.Resource = "Alerts";
