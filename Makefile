@@ -14,5 +14,6 @@ build-tests: update-packages
 	for i in src/*Tests/*.Tests*.csproj; do xbuild "$$i"; done
 
 update-packages:
-	find . -name "*.sln" | xargs -n 1 -I {} nuget restore {}
+	find . -name "*.sln" | xargs -n 1 -I {} nuget restore {};
+	find . -name "*packages.config" | xargs -n 1 -I {} nuget restore {} -PackagesDirectory src/packages
 
