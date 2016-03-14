@@ -169,3 +169,6 @@ pip-log.txt
 
 # Xamarin
 *.userprefs
+
+# Test output
+TestResult.xml

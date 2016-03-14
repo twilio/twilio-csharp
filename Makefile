@@ -8,8 +8,11 @@ install-mono:
 	brew install mono
 
 test: build-tests
-	for i in src/*Tests/bin/Debug/*.Tests*.dll; do nunit "$$i"; done
+	for i in src/*Tests/bin/Debug/*.Tests*.dll; do echo running tests "$$i"; nunit "$$i"; done
 
-build-tests:
+build-tests: update-packages
 	for i in src/*Tests/*.Tests*.csproj; do xbuild "$$i"; done
+
+update-packages:
+	find . -name "*.sln" | xargs -n 1 -I {} nuget restore {}
 

@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Twilio.TwiML.Tests.QuickStarts
 {
-    [TestClass]
+    [TestFixture]
 	public class HelloMonkey : TestBase
 	{
-		[TestMethod]
+		[Test]
 		public void _1_0()
 		{
 			var response = new TwilioResponse();
@@ -18,7 +18,7 @@ namespace Twilio.TwiML.Tests.QuickStarts
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void _1_1()
 		{
 			var name = "Monkey";
@@ -29,7 +29,7 @@ namespace Twilio.TwiML.Tests.QuickStarts
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void _1_2()
 		{
 			var name = "Monkey";
@@ -41,7 +41,7 @@ namespace Twilio.TwiML.Tests.QuickStarts
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void _1_3a()
 		{
 			var name = "Monkey";
@@ -56,7 +56,7 @@ namespace Twilio.TwiML.Tests.QuickStarts
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void _1_3b()
 		{
 			var response = new TwilioResponse();
@@ -66,7 +66,7 @@ namespace Twilio.TwiML.Tests.QuickStarts
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void _1_4a()
 		{
 			var name = "Monkey";
@@ -81,7 +81,7 @@ namespace Twilio.TwiML.Tests.QuickStarts
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void _1_4b()
 		{
 			var digits = 1;
@@ -101,7 +101,7 @@ namespace Twilio.TwiML.Tests.QuickStarts
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void _1_4c()
 		{
 			var recordingUrl = "http://example.com/example.mp3";

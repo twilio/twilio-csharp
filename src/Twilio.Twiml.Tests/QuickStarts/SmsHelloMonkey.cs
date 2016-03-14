@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Twilio.TwiML.Tests.QuickStarts
 {
-    [TestClass]
+    [TestFixture]
 	public class SmsHelloMonkey : TestBase
 	{
-		[TestMethod]
+		[Test]
 		public void _1_0()
 		{
 			var response = new TwilioResponse();
@@ -18,7 +18,7 @@ namespace Twilio.TwiML.Tests.QuickStarts
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void _2_0()
 		{
 			var name = "Monkey";
@@ -29,7 +29,7 @@ namespace Twilio.TwiML.Tests.QuickStarts
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void _4_0()
 		{
 			var name = "Monkey";
@@ -42,7 +42,7 @@ namespace Twilio.TwiML.Tests.QuickStarts
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void _5_0()
 		{
 			var name = "Monkey";

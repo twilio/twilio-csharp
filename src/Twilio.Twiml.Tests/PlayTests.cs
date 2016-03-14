@@ -1,13 +1,13 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 
 namespace Twilio.TwiML.Tests
 {
-    [TestClass]
+    [TestFixture]
 	public class PlayTests : TestBase
 	{
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Single_Play()
 		{
 			var response = new TwilioResponse();
@@ -16,7 +16,7 @@ namespace Twilio.TwiML.Tests
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Single_Play_And_Attributes()
 		{
 			var response = new TwilioResponse();
@@ -25,7 +25,7 @@ namespace Twilio.TwiML.Tests
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Consecutive_Mixed_Plays()
 		{
 			var response = new TwilioResponse();
