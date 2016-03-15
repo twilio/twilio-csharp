@@ -13,10 +13,10 @@ namespace Twilio.IpMessaging
         /// </summary>
         /// <param name="serviceSid">Service Sid</param>
         /// <returns>List of Channels</returns>
-        public virtual ChannelResult ListChannels(string serviceSid)
+		public virtual ChannelResult ListChannels(string serviceSid)
         {
             Require.Argument("ServiceSid", serviceSid);
-            
+
             var request = new RestRequest(Method.GET);
             request.Resource = "/Services/{ServiceSid}/Channels";
 
@@ -57,7 +57,7 @@ namespace Twilio.IpMessaging
             string friendlyName, string attributes)
         {
             Require.Argument("ServiceSid", serviceSid);
-            
+
             var request = new RestRequest(Method.POST) {Resource = "/Services/{ServiceSid}/Channels"};
 
             request.AddUrlSegment("ServiceSid", serviceSid);
@@ -159,7 +159,7 @@ namespace Twilio.IpMessaging
         /// <param name="serviceSid">Service Sid</param>
         /// <param name="channelSid">Channel Sid</param>]
         /// <returns>Channel deletion status</returns>
-        public virtual DeleteStatus DeleteChannel(string serviceSid, 
+        public virtual DeleteStatus DeleteChannel(string serviceSid,
             string channelSid)
         {
             Require.Argument("ServiceSid", serviceSid);

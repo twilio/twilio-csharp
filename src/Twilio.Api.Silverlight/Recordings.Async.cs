@@ -10,7 +10,7 @@ namespace Twilio
 		/// Returns a list of Recordings, each representing a recording generated during the course of a phone call. The list includes paging information.
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListRecordings(Action<RecordingResult> callback)
+		public virtual void ListRecordings(Action<RecordingResult> callback)
 		{
 			ListRecordings(null, null, null, null, callback);
 		}
@@ -23,7 +23,8 @@ namespace Twilio
 		/// <param name="pageNumber">The page to start retrieving results from</param>
 		/// <param name="count">How many results to retrieve</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListRecordings(string callSid, DateTime? dateCreated, int? pageNumber, int? count, Action<RecordingResult> callback)
+        [System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListRecordings(string callSid, DateTime? dateCreated, int? pageNumber, int? count, Action<RecordingResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Recordings.json";
@@ -45,7 +46,7 @@ namespace Twilio
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}.json";
-			
+
 			request.AddParameter("RecordingSid", recordingSid, ParameterType.UrlSegment);
 
 			ExecuteAsync<Recording>(request, (response) => callback(response));
@@ -60,7 +61,7 @@ namespace Twilio
 		{
 			var request = new RestRequest(Method.DELETE);
 			request.Resource = "Accounts/{AccountSid}/Recordings/{RecordingSid}.json";
-			
+
 			request.AddParameter("RecordingSid", recordingSid, ParameterType.UrlSegment);
 
 			ExecuteAsync(request, (response) => { callback(response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed); });

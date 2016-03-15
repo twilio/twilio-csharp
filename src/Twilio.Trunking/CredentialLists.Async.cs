@@ -15,7 +15,7 @@ namespace Twilio.Trunking
         /// Lists the credentialLists.
         /// </summary>
         /// <param name="trunkSid">Trunk sid.</param>
-        public virtual void ListCredentialLists(string trunkSid, Action<CredentialListResult> callback)
+		public virtual void ListCredentialLists(string trunkSid, Action<CredentialListResult> callback)
         {
             Require.Argument("TrunkSid", trunkSid);
             var request = new RestRequest();
@@ -31,7 +31,7 @@ namespace Twilio.Trunking
         /// </summary>
         /// <param name="trunkSid">Trunk sid.</param>
         /// <param name="credentialListSid">CredentialList sid.</param>
-        public virtual void AssociateCredentialList(string trunkSid, string credentialListSid, Action<CredentialList> callback)
+		public virtual void AssociateCredentialList(string trunkSid, string credentialListSid, Action<CredentialList> callback)
         {
           Require.Argument("TrunkSid", trunkSid);
           Require.Argument("CredentialListSid", credentialListSid);
@@ -50,7 +50,7 @@ namespace Twilio.Trunking
         /// </summary>
         /// <param name="trunkSid">Trunk sid.</param>
         /// <param name="credentialListSid">CredentialList sid.</param>
-        public virtual void DeleteCredentialList(string trunkSid, string credentialListSid, Action<DeleteStatus> callback)
+		public virtual void DeleteCredentialList(string trunkSid, string credentialListSid, Action<DeleteStatus> callback)
         {
           Require.Argument("TrunkSid", trunkSid);
           Require.Argument("CredentialListSid", credentialListSid);

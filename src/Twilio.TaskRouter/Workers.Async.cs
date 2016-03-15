@@ -91,7 +91,7 @@ namespace Twilio.TaskRouter
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the workers belong to</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListWorkers(string workspaceSid, Action<WorkerResult> callback)
+		public virtual void ListWorkers(string workspaceSid, Action<WorkerResult> callback)
         {
             ListWorkers(workspaceSid, new WorkerListRequest(), callback);
         }
@@ -102,7 +102,7 @@ namespace Twilio.TaskRouter
         /// <param name="workspaceSid">The Sid of the workspace the workers belong to</param>
         /// <param name="options">List filter options. If an property is set the list will be filtered by that value.</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListWorkers(string workspaceSid, WorkerListRequest options, Action<WorkerResult> callback)
+		public virtual void ListWorkers(string workspaceSid, WorkerListRequest options, Action<WorkerResult> callback)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
 

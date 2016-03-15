@@ -10,7 +10,7 @@ namespace Twilio
 		/// Returns a list of conferences within an account. The list includes paging information and is sorted by DateUpdated, with most recent conferences first.
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListConferences(Action<ConferenceResult> callback)
+		public virtual void ListConferences(Action<ConferenceResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Conferences.json";
@@ -23,7 +23,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="options">List filter options. Only properties with values are included in request.</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListConferences(ConferenceListRequest options, Action<ConferenceResult> callback)
+		public virtual void ListConferences(ConferenceListRequest options, Action<ConferenceResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Conferences.json";
@@ -57,7 +57,7 @@ namespace Twilio
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}.json";
-			
+
 			request.AddUrlSegment("ConferenceSid", conferenceSid);
 
 			ExecuteAsync<Conference>(request, (response) => callback(response));
@@ -69,7 +69,7 @@ namespace Twilio
 		/// <param name="conferenceSid">The Sid of the conference</param>
 		/// <param name="muted">Set to null to retrieve all, true to retrieve muted, false to retrieve unmuted</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListConferenceParticipants(string conferenceSid, bool? muted, Action<ParticipantResult> callback)
+		public virtual void ListConferenceParticipants(string conferenceSid, bool? muted, Action<ParticipantResult> callback)
 		{
 			ListConferenceParticipants(conferenceSid, muted, null, null, callback);
 		}
@@ -82,7 +82,8 @@ namespace Twilio
 		/// <param name="pageNumber">Which page number to start retrieving from</param>
 		/// <param name="count">How many participants to retrieve</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListConferenceParticipants(string conferenceSid, bool? muted, int? pageNumber, int? count, Action<ParticipantResult> callback)
+    [System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListConferenceParticipants(string conferenceSid, bool? muted, int? pageNumber, int? count, Action<ParticipantResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants.json";
@@ -106,7 +107,7 @@ namespace Twilio
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";
-			
+
 			request.AddUrlSegment("ConferenceSid", conferenceSid);
 			request.AddUrlSegment("CallSid", callSid);
 
@@ -123,7 +124,7 @@ namespace Twilio
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";
-			
+
 			request.AddUrlSegment("ConferenceSid", conferenceSid);
 			request.AddUrlSegment("CallSid", callSid);
 			request.AddParameter("Muted", true);
@@ -141,7 +142,7 @@ namespace Twilio
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";
-			
+
 			request.AddUrlSegment("ConferenceSid", conferenceSid);
 			request.AddUrlSegment("CallSid", callSid);
 			request.AddParameter("Muted", false);

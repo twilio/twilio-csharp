@@ -30,7 +30,7 @@ namespace Twilio.Trunking
         /// <summary>
         /// Lists the trunks.
         /// </summary>
-        public virtual void ListTrunks(Action<TrunkResult> callback)
+		public virtual void ListTrunks(Action<TrunkResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Trunks";

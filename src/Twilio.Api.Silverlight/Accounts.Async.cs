@@ -13,7 +13,7 @@ namespace Twilio
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}.json";
-			
+
 			ExecuteAsync<Account>(request, (response) => { callback(response); });
 		}
 
@@ -26,7 +26,7 @@ namespace Twilio
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}.json";
-			
+
 			request.AddUrlSegment("AccountSid", accountSid);
 
 			ExecuteAsync<Account>(request, (response) => { callback(response); });
@@ -36,7 +36,7 @@ namespace Twilio
 		/// List all subaccounts created for the authenticated account
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListSubAccounts(Action<AccountResult> callback)
+		public virtual void ListSubAccounts(Action<AccountResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts.json";
@@ -53,7 +53,7 @@ namespace Twilio
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts.json";
-			
+
 			request.AddParameter("FriendlyName", friendlyName);
 
 			ExecuteAsync<Account>(request, (response) => { callback(response); });
@@ -61,9 +61,9 @@ namespace Twilio
 
 		/// <summary>
 		/// Changes the status of a subaccount. You must be authenticated as the master account to call this method on a subaccount.
-		/// WARNING: When closing an account, Twilio will release all phone numbers assigned to it and shut it down completely. 
-		/// You can't ever use a closed account to make and receive phone calls or send and receive SMS messages. 
-		/// It's closed, gone, kaput. It will still appear in your accounts list, and you will still have access to historical 
+		/// WARNING: When closing an account, Twilio will release all phone numbers assigned to it and shut it down completely.
+		/// You can't ever use a closed account to make and receive phone calls or send and receive SMS messages.
+		/// It's closed, gone, kaput. It will still appear in your accounts list, and you will still have access to historical
 		/// data for that subaccount, but you cannot reopen a closed account.
 		/// /// </summary>
 		/// <param name="subAccountSid">The subaccount to change the status on</param>
@@ -78,7 +78,7 @@ namespace Twilio
 
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}.json";
-			
+
 			request.AddParameter("Status", status.ToString().ToLower());
 			request.AddUrlSegment("AccountSid", subAccountSid);
 

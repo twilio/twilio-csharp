@@ -23,7 +23,7 @@ namespace Twilio
 		/// Makes a GET request to the Calls List resource.
 		/// </summary>
 		/// <param name="options">List filter options. If an property is set the list will be filtered by that value.</param>
-        public virtual CallResult ListCalls(CallListRequest options)
+		public virtual CallResult ListCalls(CallListRequest options)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Calls.json";
@@ -38,7 +38,7 @@ namespace Twilio
         /// Makes a GET request to the Calls List resource.
         /// </summary>
         /// <param name="To"></param>
-        public virtual CallResult ListCalls(string To)
+		public virtual CallResult ListCalls(string To)
         {
             var request = new RestRequest {Resource = "Accounts/{AccountSid}/Calls.json"};
 

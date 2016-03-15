@@ -16,7 +16,7 @@ namespace Twilio
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/AuthorizedConnectApps/{AuthorizedConnectAppSid}.json";
-			
+
 			request.AddUrlSegment("AuthorizedConnectAppSid", authorizedConnectAppSid);
 
 			ExecuteAsync<AuthorizedConnectApp>(request, (response) => { callback(response); });
@@ -37,6 +37,7 @@ namespace Twilio
 		/// <param name="pageNumber">Page number to start retrieving results from</param>
 		/// <param name="count">How many results to return</param>
 		/// <param name="callback">Method to call upon successful completion</param>
+		[System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual void ListAuthorizedConnectApps(int? pageNumber, int? count, Action<AuthorizedConnectAppResult> callback)
 		{
 			var request = new RestRequest();

@@ -34,7 +34,7 @@ namespace Twilio.TaskRouter
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the reservations belong to</param>
         /// <param name="taskSid">The Sid of the task the reservations belong to</param>
-        public virtual ReservationResult ListReservations(string workspaceSid, string taskSid)
+		public virtual ReservationResult ListReservations(string workspaceSid, string taskSid)
         {
             return ListReservations(workspaceSid, taskSid, null, null, null, null);
         }
@@ -48,7 +48,7 @@ namespace Twilio.TaskRouter
         /// <param name="afterSid">Activity Sid to start retrieving results from</param>
         /// <param name="beforeSid">Activity Sid to stop retrieving results from</param>
         /// <param name="count">How many results to return</param>
-        public virtual ReservationResult ListReservations(string workspaceSid, string taskSid, string reservationStatus, string afterSid, string beforeSid, int? count)
+		public virtual ReservationResult ListReservations(string workspaceSid, string taskSid, string reservationStatus, string afterSid, string beforeSid, int? count)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("TaskSid", taskSid);
@@ -76,7 +76,7 @@ namespace Twilio.TaskRouter
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the reservations belong to</param>
         /// <param name="workerSid">The Sid of the worker the reservations belong to</param>
-        public virtual ReservationResult ListReservationsForWorker(string workspaceSid, string workerSid)
+		public virtual ReservationResult ListReservationsForWorker(string workspaceSid, string workerSid)
         {
             return ListReservationsForWorker(workspaceSid, workerSid, null, null, null, null);
         }
@@ -90,7 +90,7 @@ namespace Twilio.TaskRouter
         /// <param name="afterSid">Reservation Sid to start retrieving results from</param>
         /// <param name="beforeSid">Activity Sid to stop retrieving results from</param>
         /// <param name="count">How many results to return</param>
-        public virtual ReservationResult ListReservationsForWorker(string workspaceSid, string workerSid, string reservationStatus, string afterSid, string beforeSid, int? count)
+		public virtual ReservationResult ListReservationsForWorker(string workspaceSid, string workerSid, string reservationStatus, string afterSid, string beforeSid, int? count)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("WorkerSid", workerSid);
@@ -121,9 +121,9 @@ namespace Twilio.TaskRouter
         /// <param name="reservationSid">Reservation sid.</param>
         /// <param name="reservationStatus">Optional Reservation status.</param>
         /// <param name="workerActivitySid">Optional Worker Activity Sid.</param>
-        public virtual Reservation UpdateReservation(string workspaceSid, string taskSid, 
+        public virtual Reservation UpdateReservation(string workspaceSid, string taskSid,
             string reservationSid, string reservationStatus, string workerActivitySid)
-        {   
+        {
             return UpdateReservation(workspaceSid, "Tasks", taskSid, reservationSid,
                 reservationStatus: reservationStatus, workerActivitySid: workerActivitySid);
         }
@@ -155,28 +155,28 @@ namespace Twilio.TaskRouter
         /// <param name="redirectAccept">Optional Redirect Accept.</param>
         /// <param name="redirectUrl">Optional Redirect Url.</param>
         public virtual Reservation UpdateReservation(
-            string workspaceSid, 
-            string resource, 
+            string workspaceSid,
+            string resource,
             string resourceSid,
-            string reservationSid, 
-            string reservationStatus = null, 
+            string reservationSid,
+            string reservationStatus = null,
             string workerActivitySid = null,
-            string instruction = null, 
-            string dequeuePostWorkActivitySid = null, 
-            string dequeueFrom = null, 
+            string instruction = null,
+            string dequeuePostWorkActivitySid = null,
+            string dequeueFrom = null,
             string dequeueRecord = null,
             string dequeueTimeout = null,
             string dequeueTo = null,
             string dequeueStatusCallbackUrl = null,
-            string callFrom = null, 
+            string callFrom = null,
             string callRecord = null,
             string callTimeout = null,
-            string callTo = null, 
-            string callUrl = null, 
+            string callTo = null,
+            string callUrl = null,
             string callStatusCallbackUrl = null,
-            string callAccept = null, 
-            string redirectCallSid = null, 
-            string redirectAccept = null, 
+            string callAccept = null,
+            string redirectCallSid = null,
+            string redirectAccept = null,
             string redirectUrl = null
         )
         {

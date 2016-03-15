@@ -15,7 +15,7 @@ namespace Twilio.Trunking
         /// Lists the ipAccessControlLists.
         /// </summary>
         /// <param name="trunkSid">Trunk sid.</param>
-        public virtual IpAccessControlListResult ListIpAccessControlLists(string trunkSid)
+		public virtual IpAccessControlListResult ListIpAccessControlLists(string trunkSid)
         {
             Require.Argument("TrunkSid", trunkSid);
             var request = new RestRequest();
@@ -29,7 +29,7 @@ namespace Twilio.Trunking
         /// </summary>
         /// <param name="trunkSid">Trunk sid.</param>
         /// <param name="ipAccessControlListSid">IpAccessControlList sid.</param>
-        public virtual IpAccessControlList AssociateIpAccessControlList(string trunkSid, string ipAccessControlListSid)
+		public virtual IpAccessControlList AssociateIpAccessControlList(string trunkSid, string ipAccessControlListSid)
         {
             Require.Argument("TrunkSid", trunkSid);
             Require.Argument("IpAccessControlListSid", ipAccessControlListSid);
@@ -48,7 +48,7 @@ namespace Twilio.Trunking
         /// </summary>
         /// <param name="trunkSid">Trunk sid.</param>
         /// <param name="ipAccessControlListSid">IpAccessControlList sid.</param>
-        public virtual DeleteStatus DeleteIpAccessControlList(string trunkSid, string ipAccessControlListSid)
+		public virtual DeleteStatus DeleteIpAccessControlList(string trunkSid, string ipAccessControlListSid)
         {
             Require.Argument("TrunkSid", trunkSid);
             Require.Argument("IpAccessControlListSid", ipAccessControlListSid);

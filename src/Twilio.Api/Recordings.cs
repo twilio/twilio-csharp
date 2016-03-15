@@ -25,7 +25,8 @@ namespace Twilio
 		/// <param name="dateCreated">(Optional) The date the recording was created (GMT)</param>
 		/// <param name="pageNumber">The page to start retrieving results from</param>
 		/// <param name="count">How many results to retrieve</param>
-        public virtual RecordingResult ListRecordings(string callSid, DateTime? dateCreated, int? pageNumber, int? count)
+        [System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual RecordingResult ListRecordings(string callSid, DateTime? dateCreated, int? pageNumber, int? count)
 		{
       return ListRecordings(callSid, dateCreated: dateCreated, pageNumber: pageNumber, count: count);
     }
