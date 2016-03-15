@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>4.6.0</version>
+		<version>4.7.0</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -14,9 +14,11 @@
 			<dependency id="RestSharp" version="105.2.2" />
 		</dependencies>
 		<releaseNotes>
-      * 4.6.0 - Add GetNextPage/GetPreviousPage
+      * 4.7.0 - Add GetNextPage and GetPreviousPage
+              - Deprecate absolute paging
+              - Remove VisualStudio test in favor of NUnit
       * 4.5.0 - Add DateCreated inequality filters to Recordings
-      * 4.4.0 - Add Keys endpoint                  
+      * 4.4.0 - Add Keys endpoint
       * 4.3.0 - Add MessagingServiceSid to Messages
       * 4.3.0 - Add TwilioRestClient override for API Version and Base URL
       * 4.2.0 - Add MessagingServiceSid to Messages
