@@ -26,9 +26,11 @@ namespace Twilio.TaskRouter
         public string EventType { get; set; }
         /// <summary>
         /// Gets or sets the page token.
+        /// </summary>
         public string PageToken { get; set; }
         /// <summary>
         /// Gets or sets the count.
+        /// </summary>
         public int? Count { get; set; }
     }
 }

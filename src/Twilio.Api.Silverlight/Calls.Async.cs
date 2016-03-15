@@ -41,8 +41,6 @@ namespace Twilio
 			if (options.From.HasValue()) request.AddParameter("From", options.From);
 			if (options.To.HasValue()) request.AddParameter("To", options.To);
 			if (options.Status.HasValue()) request.AddParameter("Status", options.Status);
-//			if (options.StartTime.HasValue) request.AddParameter("StartTime", options.StartTime.Value.ToString("yyyy-MM-dd"));
-//			if (options.EndTime.HasValue) request.AddParameter("EndTime", options.EndTime.Value.ToString("yyyy-MM-dd"));
 
 			var startTimeParameterName = GetParameterNameWithEquality(options.StartTimeComparison, "StartTime");
 			var endTimeParameterName = GetParameterNameWithEquality(options.EndTimeComparison, "EndTime");
