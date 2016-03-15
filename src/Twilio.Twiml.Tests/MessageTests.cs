@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Twilio.TwiML.Tests;
 using Twilio.TwiML;
 
 namespace Twilio.Twiml.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class SmsTests : TestBase
     {
-        [TestMethod]
+        [Test]
         public void Can_Generate_Single_Message()
         {
             var response = new TwilioResponse();
@@ -20,7 +20,7 @@ namespace Twilio.Twiml.Tests
             Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Generate_Single_Message_With_Attributes()
         {
             var response = new TwilioResponse();
@@ -32,7 +32,7 @@ namespace Twilio.Twiml.Tests
             Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Generate_Single_Message_With_Media()
         {
             var response = new TwilioResponse();
@@ -46,7 +46,7 @@ namespace Twilio.Twiml.Tests
             Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Generate_Single_Message_With_Body_And_Media()
         {
             var response = new TwilioResponse();

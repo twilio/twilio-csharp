@@ -1,12 +1,12 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Twilio.TwiML.Tests.DocExamples
 {
-    [TestClass]
+    [TestFixture]
 	public class NumberTests : TestBase
 	{
-		[TestMethod]
+		[Test]
 		public void Example_1()
 		{
 			var response = new TwilioResponse();
@@ -15,7 +15,7 @@ namespace Twilio.TwiML.Tests.DocExamples
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Example_2()
 		{
 			var response = new TwilioResponse();

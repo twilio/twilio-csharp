@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 
 using System.Xml.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Twilio.TwiML.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class ResponseTests : TestBase
 	{
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Empty_Response()
 		{
 			var response = new TwilioResponse();
