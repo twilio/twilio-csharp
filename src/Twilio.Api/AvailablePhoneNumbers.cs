@@ -10,7 +10,6 @@ namespace Twilio
 		/// </summary>
 		/// <param name="isoCountryCode">Two-character ISO country code (US or CA)</param>
 		/// <param name="options">Search filter options. Only properties with values set will be used.</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual AvailablePhoneNumberResult ListAvailableLocalPhoneNumbers(string isoCountryCode, AvailablePhoneNumberListRequest options)
 		{
 			Require.Argument("isoCountryCode", isoCountryCode);
@@ -28,7 +27,6 @@ namespace Twilio
 		/// Search available toll-free phone numbers.  Makes a GET request to the AvailablePhoneNumber List resource.
 		/// </summary>
 		/// <param name="isoCountryCode">Two-character ISO country code (US or CA)</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual AvailablePhoneNumberResult ListAvailableTollFreePhoneNumbers(string isoCountryCode)
 		{
             return ListAvailableTollFreePhoneNumbers(isoCountryCode, string.Empty);
@@ -39,19 +37,17 @@ namespace Twilio
         /// </summary>
         /// <param name="isoCountryCode">Two-character ISO country code (US or CA)</param>
         /// <param name="contains">Value to use when filtering search. Accepts numbers or characters.</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual AvailablePhoneNumberResult ListAvailableTollFreePhoneNumbers(string isoCountryCode, string contains)
         {
             var options = new AvailablePhoneNumberListRequest() { Contains = contains };
             return ListAvailableTollFreePhoneNumbers(isoCountryCode, options);
         }
-        
+
         /// <summary>
 		/// Search available toll-free phone numbers.  Makes a GET request to the AvailablePhoneNumber List resource.
 		/// </summary>
 		/// <param name="isoCountryCode">Two-character ISO country code (US or CA)</param>
 		/// <param name="contains">Value to use when filtering search. Accepts numbers or characters.</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual AvailablePhoneNumberResult ListAvailableTollFreePhoneNumbers(string isoCountryCode, AvailablePhoneNumberListRequest options)
 		{
 			Require.Argument("isoCountryCode", isoCountryCode);
@@ -70,7 +66,6 @@ namespace Twilio
         /// </summary>
         /// <param name="isoCountryCode">Two-character ISO country code (US or CA)</param>
         /// <param name="options">Search filter options. Only properties with values set will be used.</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual AvailablePhoneNumberResult ListAvailableMobilePhoneNumbers(string isoCountryCode, AvailablePhoneNumberListRequest options)
         {
             Require.Argument("isoCountryCode", isoCountryCode);

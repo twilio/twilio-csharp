@@ -28,7 +28,6 @@ namespace Twilio
         /// <summary>
         /// Retrieve a list of Media objects with no list filters
         /// </summary>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual MediaResult ListMedia(string messageSid)
         {
             return ListMedia(messageSid, new MediaListRequest());
@@ -38,7 +37,6 @@ namespace Twilio
         /// Return a filtered list of Media objects. The list includes paging
         /// information.
         /// </summary>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual MediaResult ListMedia(string messageSid, MediaListRequest options)
         {
             return ListMessageMedia(messageSid, options);
@@ -48,7 +46,6 @@ namespace Twilio
         /// List all media for a particular message
         /// </summary>
         /// <param name="messageSid">The message sid to filter on</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual MediaResult ListMessageMedia(string messageSid, MediaListRequest options)
         {
             var request = new RestRequest();
@@ -59,7 +56,7 @@ namespace Twilio
         }
 
         /// <summary>
-        /// Delete the specified media instance. Makes a DELETE request to a 
+        /// Delete the specified media instance. Makes a DELETE request to a
         /// Media Instance resource.
         /// </summary>
         /// <param name="mediaSid">The Sid of the media to delete</param>

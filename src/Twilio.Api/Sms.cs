@@ -161,7 +161,6 @@ namespace Twilio
 		/// </summary>
 		/// <param name="shortCode">Only show the ShortCode resources that match this pattern. You can specify partial numbers and use '*' as a wildcard for any digit.</param>
 		/// <param name="friendlyName">Only show the ShortCode resources with friendly names that exactly match this name.</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual SmsShortCodeResult ListShortCodes(string shortCode, string friendlyName)
 		{
 			var request = new RestRequest();

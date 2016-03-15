@@ -13,11 +13,10 @@ namespace Twilio.IpMessaging
         /// </summary>
         /// <param name="serviceSid">Service Sid</param>
         /// <returns>List of Channels</returns>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual ChannelResult ListChannels(string serviceSid)
         {
             Require.Argument("ServiceSid", serviceSid);
-            
+
             var request = new RestRequest(Method.GET);
             request.Resource = "/Services/{ServiceSid}/Channels";
 
@@ -58,7 +57,7 @@ namespace Twilio.IpMessaging
             string friendlyName, string attributes)
         {
             Require.Argument("ServiceSid", serviceSid);
-            
+
             var request = new RestRequest(Method.POST) {Resource = "/Services/{ServiceSid}/Channels"};
 
             request.AddUrlSegment("ServiceSid", serviceSid);
@@ -160,7 +159,7 @@ namespace Twilio.IpMessaging
         /// <param name="serviceSid">Service Sid</param>
         /// <param name="channelSid">Channel Sid</param>]
         /// <returns>Channel deletion status</returns>
-        public virtual DeleteStatus DeleteChannel(string serviceSid, 
+        public virtual DeleteStatus DeleteChannel(string serviceSid,
             string channelSid)
         {
             Require.Argument("ServiceSid", serviceSid);

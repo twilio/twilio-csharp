@@ -15,7 +15,6 @@ namespace Twilio.Trunking
         /// Lists the phoneNumbers.
         /// </summary>
         /// <param name="trunkSid">Trunk sid.</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual PhoneNumberResult ListPhoneNumbers(string trunkSid)
         {
             Require.Argument("TrunkSid", trunkSid);

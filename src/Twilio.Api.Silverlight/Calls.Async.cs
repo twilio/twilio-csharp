@@ -12,7 +12,6 @@ namespace Twilio
 		/// Sorted by DateUpdated with most-recent calls first.
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual void ListCalls(Action<CallResult> callback)
 		{
 			var request = new RestRequest();
@@ -27,7 +26,6 @@ namespace Twilio
 		/// </summary>
 		/// <param name="options">List filter options. If an property is set the list will be filtered by that value.</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual void ListCalls(CallListRequest options, Action<CallResult> callback)
 		{
 			var request = new RestRequest();

@@ -11,7 +11,6 @@ namespace Twilio.IpMessaging
         /// <summary>
         /// Retrieves all the Credentials belonging to a Service Sid.
         /// </summary>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual void ListCredentials(Action<CredentialResult> callback)
         {
             var request = new RestRequest(Method.GET);
@@ -25,11 +24,11 @@ namespace Twilio.IpMessaging
         /// Retrieves the Credential by Credential Sid.
         /// </summary>
         /// <param name="credentialSid">Credential Sid</param>
-        public virtual void GetCredential(string credentialSid, 
+        public virtual void GetCredential(string credentialSid,
             Action<Credential> callback)
         {
             Require.Argument("CredentialSid", credentialSid);
-            
+
             var request = new RestRequest(Method.GET);
             request.Resource = "/Credentials/{CredentialSid}";
 
@@ -48,7 +47,7 @@ namespace Twilio.IpMessaging
         /// <param name="sandbox">Flag denotes if it is Sandbox or not</param>
         /// <param name="apiKey">API Key</param>
         public virtual void CreateCredential(string type, 
-            string friendlyName, string certificate, string privateKey, 
+            string friendlyName, string certificate, string privateKey,
             string sandbox, string apiKey, Action<Credential> callback)
         {
             Require.Argument("Type", type);
@@ -77,7 +76,7 @@ namespace Twilio.IpMessaging
         /// <param name="apiKey">API Key</param>
         public virtual void UpdateCredential(string credentialSid,
             string type, string friendlyName, string certificate,
-            string privateKey, string sandbox, string apiKey, 
+            string privateKey, string sandbox, string apiKey,
             Action<Credential> callback)
         {
             Require.Argument("CredentialSid", credentialSid);
@@ -102,7 +101,7 @@ namespace Twilio.IpMessaging
         /// Deletes a Credential identified by Credential Sid.
         /// </summary>
         /// <param name="credentialSid">Credential Sid</param>
-        public virtual void DeleteCredential(string credentialSid, 
+        public virtual void DeleteCredential(string credentialSid,
             Action<DeleteStatus> callback)
         {
             Require.Argument("CredentialSid", credentialSid);

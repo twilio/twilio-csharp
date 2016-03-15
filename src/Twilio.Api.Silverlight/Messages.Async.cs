@@ -46,11 +46,10 @@ namespace Twilio
 		}
 
         /// <summary>
-        /// Returns a list of Messages. 
+        /// Returns a list of Messages.
         /// The list includes paging information.
         /// Makes a GET request to the Message List resource.
         /// </summary>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual void ListMessages(Action<MessageResult> callback)
         {
             ListMessages(new MessageListRequest(), callback);
@@ -61,7 +60,6 @@ namespace Twilio
         /// Makes a GET request to the Messages List resource.
         /// </summary>
         /// <param name="options">The list filters for the request</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual void ListMessages(MessageListRequest options, Action<MessageResult> callback)
         {
             var request = new RestRequest();
@@ -126,7 +124,7 @@ namespace Twilio
         {
             SendMessage(from, to, String.Empty, mediaUrls, string.Empty, callback);
         }
-        
+
 
         /// <summary>
         /// Send a new Message to the specified recipients.
@@ -237,7 +235,7 @@ namespace Twilio
         {
             SendMessageWithService(messagingServiceSid, to, String.Empty, mediaUrls, string.Empty, callback);
         }
-        
+
 
         /// <summary>
         /// Send a new Message to the specified recipients.

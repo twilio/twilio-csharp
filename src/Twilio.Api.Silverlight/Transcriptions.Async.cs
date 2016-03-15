@@ -10,7 +10,6 @@ namespace Twilio
 		/// Returns a set of Transcriptions that includes paging information, sorted by 'DateUpdated', with most recent transcripts first.
 		/// </summary>
 		/// <param name="callback">The method to call upon the completion of the request</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual void ListTranscriptions(Action<TranscriptionResult> callback)
 		{
 			ListTranscriptions(null, null, null, callback);
@@ -22,7 +21,7 @@ namespace Twilio
 		/// <param name="pageNumber">The page to start retrieving results from</param>
 		/// <param name="count">The number of results to retrieve</param>
 		/// <param name="callback">The method to call upon the completion of the request</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+        [System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual void ListTranscriptions(int? pageNumber, int? count, Action<TranscriptionResult> callback)
 		{
 			var request = new RestRequest();
@@ -40,7 +39,7 @@ namespace Twilio
 		/// <param name="pageNumber">The page to start retrieving results from</param>
 		/// <param name="count">The number of results to retrieve</param>
 		/// <param name="callback">Method to call upon completion of request</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+        [System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual void ListTranscriptions(string recordingSid, int? pageNumber, int? count, Action<TranscriptionResult> callback)
 		{
 			var request = new RestRequest();

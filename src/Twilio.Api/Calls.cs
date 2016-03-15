@@ -23,7 +23,6 @@ namespace Twilio
 		/// Makes a GET request to the Calls List resource.
 		/// </summary>
 		/// <param name="options">List filter options. If an property is set the list will be filtered by that value.</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual CallResult ListCalls(CallListRequest options)
 		{
 			var request = new RestRequest();
@@ -39,7 +38,6 @@ namespace Twilio
         /// Makes a GET request to the Calls List resource.
         /// </summary>
         /// <param name="To"></param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual CallResult ListCalls(string To)
         {
             var request = new RestRequest {Resource = "Accounts/{AccountSid}/Calls.json"};

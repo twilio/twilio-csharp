@@ -20,7 +20,6 @@ namespace Twilio
         /// </summary>
         /// <param name="category">The category used to filter the usage data</param>
         /// <returns></returns>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual UsageResult ListUsage(string category)
         {
             return ListUsage(category, "");
@@ -32,7 +31,6 @@ namespace Twilio
         /// <param name="category">The category used to filter the usage data</param>
         /// <param name="interval">The time interval used to group the usage data</param>
         /// <returns></returns>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public UsageResult ListUsage(string category, string interval)
         {
             return ListUsage(category, interval, null, null);
@@ -45,7 +43,6 @@ namespace Twilio
         /// <param name="startDate">The start date of the filter range</param>
         /// <param name="endDate">The end date of the filter range</param>
         /// <returns></returns>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual UsageResult ListUsage(string category, DateTime? startDate, DateTime? endDate)
         {
             return ListUsage(category, "", startDate, endDate);
@@ -59,7 +56,6 @@ namespace Twilio
         /// <param name="startDate">The start date of the filter range</param>
         /// <param name="endDate">The end date of the filter range</param>
         /// <returns></returns>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual UsageResult ListUsage(string category, string interval, DateTime? startDate, DateTime? endDate)
         {
             return ListUsage(category, interval, startDate, endDate, null, null);
@@ -75,7 +71,7 @@ namespace Twilio
         /// <param name="pageNumber">(Optional) The page to start retrieving results from</param>
         /// <param name="count">(Optional) The number of results to retrieve</param>
         /// <returns></returns>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+        [System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual UsageResult ListUsage(string category, string interval, DateTime? startDate, DateTime? endDate, int? pageNumber, int? count)
         {
             var request = new RestRequest();
@@ -119,7 +115,6 @@ namespace Twilio
         /// <param name="usageCategory">The usage category this trigger watches</param>
         /// <param name="triggerBy">The value at which the trigger will fire</param>
         /// <returns></returns>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual UsageTriggerResult ListUsageTriggers(string recurring, string usageCategory, string triggerBy)
         {
             var request = new RestRequest();

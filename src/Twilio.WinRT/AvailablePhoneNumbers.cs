@@ -15,7 +15,6 @@ namespace Twilio
         /// </summary>
         /// <param name="isoCountryCode">Two-character ISO country code (US or CA)</param>
         /// <param name="options">Search filter options. Only properties with values set will be used.</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public IAsyncOperation<AvailablePhoneNumberResult> ListAvailableLocalPhoneNumbersAsync(string isoCountryCode, AvailablePhoneNumberListRequest options)
         {
             return (IAsyncOperation<AvailablePhoneNumberResult>)AsyncInfo.Run((System.Threading.CancellationToken ct) => ListAvailableLocalPhoneNumbersAsyncInternal(isoCountryCode, options));
@@ -39,7 +38,6 @@ namespace Twilio
         /// Search available toll-free phone numbers.  Makes a GET request to the AvailablePhoneNumber List resource.
         /// </summary>
         /// <param name="isoCountryCode">Two-character ISO country code (US or CA)</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public IAsyncOperation<AvailablePhoneNumberResult> ListAvailableTollFreePhoneNumbersAsync(string isoCountryCode)
         {
             return (IAsyncOperation<AvailablePhoneNumberResult>)AsyncInfo.Run((System.Threading.CancellationToken ct) => ListAvailableTollFreePhoneNumbersAsyncInternal(isoCountryCode));
@@ -62,7 +60,6 @@ namespace Twilio
         /// </summary>
         /// <param name="isoCountryCode">Two-character ISO country code (US or CA)</param>
         /// <param name="contains">Value to use when filtering search. Accepts numbers or characters.</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public IAsyncOperation<AvailablePhoneNumberResult> ListAvailableTollFreePhoneNumbersAsync(string isoCountryCode, string contains)
         {
             return (IAsyncOperation<AvailablePhoneNumberResult>)AsyncInfo.Run((System.Threading.CancellationToken ct) => ListAvailableTollFreePhoneNumbersAsyncInternal(isoCountryCode, contains));

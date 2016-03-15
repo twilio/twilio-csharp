@@ -15,7 +15,6 @@ namespace Twilio.Trunking
         /// Lists the credentialLists.
         /// </summary>
         /// <param name="trunkSid">Trunk sid.</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual CredentialListResult ListCredentialLists(string trunkSid)
         {
             Require.Argument("TrunkSid", trunkSid);
@@ -30,7 +29,6 @@ namespace Twilio.Trunking
         /// </summary>
         /// <param name="trunkSid">Trunk sid.</param>
         /// <param name="credentialListSid">CredentialList sid.</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual CredentialList AssociateCredentialList(string trunkSid, string credentialListSid)
         {
             Require.Argument("TrunkSid", trunkSid);
@@ -50,7 +48,6 @@ namespace Twilio.Trunking
         /// </summary>
         /// <param name="trunkSid">Trunk sid.</param>
         /// <param name="credentialListSid">CredentialList sid.</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual DeleteStatus DeleteCredentialList(string trunkSid, string credentialListSid)
         {
             Require.Argument("TrunkSid", trunkSid);

@@ -36,7 +36,6 @@ namespace Twilio.TaskRouter
         /// <param name="workspaceSid">The Sid of the workspace the reservations belong to</param>
         /// <param name="taskSid">The Sid of the task the reservations belong to</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual void ListReservations(string workspaceSid, string taskSid, Action<ReservationResult> callback)
         {
             ListReservations(workspaceSid, taskSid, null, null, null, null, callback);
@@ -53,7 +52,6 @@ namespace Twilio.TaskRouter
         /// <param name="beforeSid">Activity Sid to stop retrieving results from</param>
         /// <param name="count">How many results to return</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual void ListReservations(string workspaceSid, string taskSid, string reservationStatus, string afterSid, string beforeSid, int? count, Action<ReservationResult> callback)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
@@ -87,7 +85,6 @@ namespace Twilio.TaskRouter
         /// <param name="beforeSid">Activity Sid to stop retrieving results from</param>
         /// <param name="count">How many results to return</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual void ListReservationsForWorker(string workspaceSid, string workerSid, string reservationStatus, string afterSid, string beforeSid, int? count, Action<ReservationResult> callback)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
@@ -120,7 +117,7 @@ namespace Twilio.TaskRouter
         /// <param name="reservationStatus">Optional Reservation status.</param>
         /// <param name="workerActivitySid">Optional Worker Activity Sid.</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void UpdateReservation(string workspaceSid, string taskSid, string reservationSid, 
+        public virtual void UpdateReservation(string workspaceSid, string taskSid, string reservationSid,
             string reservationStatus, string workerActivitySid, Action<Reservation> callback)
         {
             UpdateReservation(workspaceSid, "Tasks", taskSid, reservationSid, callback,
@@ -155,29 +152,29 @@ namespace Twilio.TaskRouter
         /// <param name="redirectUrl">Optional Redirect Url.</param>
         /// <param name="callback">Method to call upon successful completion</param>
         public virtual void UpdateReservation(
-            string workspaceSid, 
-            string resource, 
+            string workspaceSid,
+            string resource,
             string resourceSid,
-            string reservationSid, 
+            string reservationSid,
             Action<Reservation> callback,
-            string reservationStatus = null, 
+            string reservationStatus = null,
             string workerActivitySid = null,
-            string instruction = null, 
-            string dequeuePostWorkActivitySid = null, 
-            string dequeueFrom = null, 
+            string instruction = null,
+            string dequeuePostWorkActivitySid = null,
+            string dequeueFrom = null,
             string dequeueRecord = null,
             string dequeueTimeout = null,
             string dequeueTo = null,
             string dequeueStatusCallbackUrl = null,
-            string callFrom = null, 
+            string callFrom = null,
             string callRecord = null,
             string callTimeout = null,
-            string callTo = null, 
-            string callUrl = null, 
+            string callTo = null,
+            string callUrl = null,
             string callStatusCallbackUrl = null,
-            string callAccept = null, 
-            string redirectCallSid = null, 
-            string redirectAccept = null, 
+            string callAccept = null,
+            string redirectCallSid = null,
+            string redirectAccept = null,
             string redirectUrl = null
         )
         {

@@ -15,7 +15,6 @@ namespace Twilio.Trunking
         /// Lists the ipAccessControlLists.
         /// </summary>
         /// <param name="trunkSid">Trunk sid.</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual IpAccessControlListResult ListIpAccessControlLists(string trunkSid)
         {
             Require.Argument("TrunkSid", trunkSid);
@@ -30,7 +29,6 @@ namespace Twilio.Trunking
         /// </summary>
         /// <param name="trunkSid">Trunk sid.</param>
         /// <param name="ipAccessControlListSid">IpAccessControlList sid.</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual IpAccessControlList AssociateIpAccessControlList(string trunkSid, string ipAccessControlListSid)
         {
             Require.Argument("TrunkSid", trunkSid);
@@ -50,7 +48,6 @@ namespace Twilio.Trunking
         /// </summary>
         /// <param name="trunkSid">Trunk sid.</param>
         /// <param name="ipAccessControlListSid">IpAccessControlList sid.</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual DeleteStatus DeleteIpAccessControlList(string trunkSid, string ipAccessControlListSid)
         {
             Require.Argument("TrunkSid", trunkSid);

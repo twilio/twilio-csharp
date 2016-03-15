@@ -34,7 +34,6 @@ namespace Twilio
         /// Makes a GET request to the Calls List resource.
         /// </summary>
         /// <param name="options">List filter options. If an property is set the list will be filtered by that value.</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public IAsyncOperation<CallResult> ListCallsAsync(CallListRequest options)
         {
             return (IAsyncOperation<CallResult>)AsyncInfo.Run((System.Threading.CancellationToken ct) => ListCallsAsyncInternal(options));

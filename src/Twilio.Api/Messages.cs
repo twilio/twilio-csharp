@@ -64,7 +64,6 @@ namespace Twilio
         /// Makes a GET request to the Message List resource.
         /// </summary>
         /// <param name="To"></param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual MessageResult ListMessages(string To)
         {
             return ListMessages(new MessageListRequest() { To = To } );
@@ -75,7 +74,6 @@ namespace Twilio
         /// Makes a GET request to the Messages List resource.
         /// </summary>
         /// <param name="options">The list filters for the request</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual MessageResult ListMessages(MessageListRequest options)
         {
             var request = new RestRequest();

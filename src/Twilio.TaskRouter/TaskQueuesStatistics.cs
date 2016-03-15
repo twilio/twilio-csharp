@@ -25,7 +25,7 @@ namespace Twilio.TaskRouter
             request.AddUrlSegment("TaskQueueSid", taskQueueSid);
 
             AddStatisticsDateOptions(options, request);
-            
+
             return Execute<TaskQueueStatistics>(request);
         }
 
@@ -33,7 +33,6 @@ namespace Twilio.TaskRouter
         /// List task queues statistics on current workspace.
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the task queues belong to</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual TaskQueueStatisticsResult ListTaskQueuesStatistics(string workspaceSid)
         {
             return ListTaskQueuesStatistics(workspaceSid, new TaskQueuesStatisticsRequest());
@@ -44,7 +43,6 @@ namespace Twilio.TaskRouter
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the task queues belong to</param>
         /// <param name="options">Time-interval and filtering options.</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual TaskQueueStatisticsResult ListTaskQueuesStatistics(string workspaceSid, TaskQueuesStatisticsRequest options)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
@@ -55,7 +53,7 @@ namespace Twilio.TaskRouter
             request.AddUrlSegment("WorkspaceSid", workspaceSid);
 
             AddTaskQueuesStatisticsOptions(options, request);
-            
+
             return Execute<TaskQueueStatisticsResult>(request);
         }
 

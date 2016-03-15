@@ -33,7 +33,6 @@ namespace Twilio
 		/// List Addresses on the current account, with filters.
 		/// </summary>
 		/// <param name="options">Filters to be applied to the request.</param>
-		[System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual AddressResult ListAddresses(AddressListRequest options)
 		{
 			var request = new RestRequest();
@@ -48,7 +47,6 @@ namespace Twilio
 		/// List the current account's incoming phone numbers that depend on a specific address.
 		/// </summary>
 		/// <param name="addressSid">Sid of the address to retrieve dependent phone numbers for.</param>
-		[System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual DependentPhoneNumberResult ListDependentPhoneNumbers(string addressSid)
 		{
 			var request = new RestRequest();
@@ -140,7 +138,7 @@ namespace Twilio
 			var response = Execute(request);
 			return response.StatusCode == System.Net.HttpStatusCode.NoContent ? DeleteStatus.Success : DeleteStatus.Failed;
 		}
-			
+
 		private void AddAddressListOptions(AddressListRequest options, RestRequest request)
 		{
 			if (options.CustomerName.HasValue()) request.AddParameter("CustomerName", options.CustomerName);

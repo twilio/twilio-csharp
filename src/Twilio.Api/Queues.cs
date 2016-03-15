@@ -107,7 +107,6 @@ namespace Twilio
         /// </summary>
         /// <param name="queueSid">The Sid of the Queue to locate</param>
         /// <returns></returns>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual QueueMemberResult ListQueueMembers(string queueSid)
         {
             var request = new RestRequest();

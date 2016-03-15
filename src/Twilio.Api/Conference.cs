@@ -5,7 +5,7 @@ namespace Twilio
 	public partial class TwilioRestClient
 	{
 		/// <summary>
-		/// Returns a list of conferences within an account. 
+		/// Returns a list of conferences within an account.
 		/// The list includes paging information.
 		/// Makes a GET request to the Conferences List resource.
 		/// </summary>
@@ -18,12 +18,11 @@ namespace Twilio
 		}
 
 		/// <summary>
-		/// Returns a list of conferences within an account. 
+		/// Returns a list of conferences within an account.
 		/// The list includes paging information.
 		/// Makes a POST request to the Conferences List resource.
 		/// </summary>
 		/// <param name="options">List filter options. Only properties with values are included in request.</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual ConferenceResult ListConferences(ConferenceListRequest options)
 		{
 			var request = new RestRequest();
@@ -42,7 +41,7 @@ namespace Twilio
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}.json";
-			
+
 			request.AddUrlSegment("ConferenceSid", conferenceSid);
 
 			return Execute<Conference>(request);
@@ -53,7 +52,6 @@ namespace Twilio
 		/// </summary>
 		/// <param name="conferenceSid">The Sid of the conference</param>
 		/// <param name="muted">Set to null to retrieve all, true to retrieve muted, false to retrieve unmuted</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual ParticipantResult ListConferenceParticipants(string conferenceSid, bool? muted)
 		{
 			return ListConferenceParticipants(conferenceSid, muted, null, null);
@@ -66,7 +64,7 @@ namespace Twilio
 		/// <param name="muted">Set to null to retrieve all, true to retrieve muted, false to retrieve unmuted</param>
 		/// <param name="pageNumber">Which page number to start retrieving from</param>
 		/// <param name="count">How many participants to retrieve</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+        [System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual ParticipantResult ListConferenceParticipants(string conferenceSid, bool? muted, int? pageNumber, int? count)
 		{
 			var request = new RestRequest();
@@ -90,7 +88,7 @@ namespace Twilio
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";
-			
+
 			request.AddUrlSegment("ConferenceSid", conferenceSid);
 			request.AddUrlSegment("CallSid", callSid);
 
@@ -106,7 +104,7 @@ namespace Twilio
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";
-			
+
 			request.AddUrlSegment("ConferenceSid", conferenceSid);
 			request.AddUrlSegment("CallSid", callSid);
 			request.AddParameter("Muted", true);
@@ -123,7 +121,7 @@ namespace Twilio
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json";
-			
+
 			request.AddUrlSegment("ConferenceSid", conferenceSid);
 			request.AddUrlSegment("CallSid", callSid);
 			request.AddParameter("Muted", false);

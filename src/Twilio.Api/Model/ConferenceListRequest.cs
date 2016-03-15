@@ -34,6 +34,7 @@ namespace Twilio
 		/// <summary>
 		/// Which page to view. Zero-indexed, so the first page is 0. The default is 0.
 		/// </summary>
+		[System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public int? PageNumber { get; set; }
 		/// <summary>
 		/// How many resources to return in each list page. The default is 50, and the maximum is 1000.

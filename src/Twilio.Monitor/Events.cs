@@ -36,7 +36,6 @@ namespace Twilio.Monitor
         /// Lists the events.
         /// </summary>
         /// <param name="options">Options.</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual EventResult ListEvents(EventListRequest options)
         {
             var request = new RestRequest();

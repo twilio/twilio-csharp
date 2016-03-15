@@ -17,6 +17,7 @@ namespace Twilio.TaskRouter
         /// What page number to start retrieving results from.
         /// </summary>
         /// <value>The page number.</value>
+		[System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
         public int? PageNumber { get; set; }
 
         /// <summary>

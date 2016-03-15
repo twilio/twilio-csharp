@@ -12,7 +12,6 @@ namespace Twilio.Pricing
         /// Makes a GET request to the Messaging/Countries List resource.
         /// </summary>
         /// <param name="callback">Method to call upon successful completion</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual void ListMessagingCountries(Action<MessagingCountryResult> callback)
         {
             var request = new RestRequest(Method.GET);

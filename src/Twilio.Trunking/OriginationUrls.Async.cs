@@ -35,7 +35,6 @@ namespace Twilio.Trunking
         /// Lists the originationUrls.
         /// </summary>
         /// <param name="trunkSid">Trunk sid.</param>
-        [System.Obsolete("page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual void ListOriginationUrls(string trunkSid, Action<OriginationUrlResult> callback)
         {
             Require.Argument("TrunkSid", trunkSid);
