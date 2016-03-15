@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +8,10 @@ using Twilio.TwiML.Tests;
 
 namespace Twilio.Twiml.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class EnqueueTests : TestBase
     {
-        [TestMethod]
+        [Test]
         public void Can_Generate_Enqueue_With_Name()
         {
             var response = new TwilioResponse();
@@ -20,7 +20,7 @@ namespace Twilio.Twiml.Tests
             Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Generate_Enqueue_With_Only_Options()
         {
             var response = new TwilioResponse();
@@ -29,7 +29,7 @@ namespace Twilio.Twiml.Tests
             Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Generate_Enqueue_With_Name_And_Options()
         {
             var response = new TwilioResponse();
@@ -38,7 +38,7 @@ namespace Twilio.Twiml.Tests
             Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Generate_Enqueue_With_Options_And_TaskAttributes()
         {
             var response = new TwilioResponse();
@@ -47,7 +47,7 @@ namespace Twilio.Twiml.Tests
             Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Generate_Enqueue_With_Options_And_TaskAttributes_And_Priority_And_Timeout()
         {
             var response = new TwilioResponse();
@@ -56,7 +56,7 @@ namespace Twilio.Twiml.Tests
             Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Generate_Enqueue_With_Task()
         {
             var response = new TwilioResponse();

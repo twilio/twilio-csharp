@@ -1,12 +1,12 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Twilio.TwiML.Tests.DocExamples
 {
-    [TestClass]
+    [TestFixture]
 	public class GatherTests : TestBase
 	{
-		[TestMethod]
+		[Test]
 		public void Example_1()
 		{
 			var response = new TwilioResponse();
@@ -16,7 +16,7 @@ namespace Twilio.TwiML.Tests.DocExamples
 		}
 
 		// http://www.twilio.com/docs/api/twiml/gather#examples-2
-		[TestMethod]
+		[Test]
 		public void Example_2()
 		{
 			var response = new TwilioResponse();
@@ -29,7 +29,7 @@ namespace Twilio.TwiML.Tests.DocExamples
 		}
 
 		// http://www.twilio.com/docs/api/twiml/gather#hints
-		[TestMethod]
+		[Test]
 		public void Advanced()
 		{
 			var response = new TwilioResponse();

@@ -8,14 +8,14 @@ using System.Xml.Schema;
 using System.IO;
 using System.Xml;
 using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Twilio.TwiML.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class DialTests : TestBase
 	{
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Dial_Conference_And_Attributes()
 		{
 			var response = new TwilioResponse();
@@ -24,7 +24,7 @@ namespace Twilio.TwiML.Tests
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Dial_Conference_And_Attributes_And_Dial_Attributes()
 		{
 			var response = new TwilioResponse();
@@ -36,7 +36,7 @@ namespace Twilio.TwiML.Tests
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Dial_Conference()
 		{
 			var response = new TwilioResponse();
@@ -45,7 +45,7 @@ namespace Twilio.TwiML.Tests
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-        [TestMethod]
+        [Test]
 		public void Can_Generate_Dial_Multiple_Numbers()
 		{
 			var response = new TwilioResponse();
@@ -54,7 +54,7 @@ namespace Twilio.TwiML.Tests
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Dial_And_Attributes_And_Number_Attributes()
 		{
 			var response = new TwilioResponse();
@@ -66,7 +66,7 @@ namespace Twilio.TwiML.Tests
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Dial_And_Attributes()
 		{
 			var response = new TwilioResponse();
@@ -75,7 +75,7 @@ namespace Twilio.TwiML.Tests
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Dial()
 		{
 			var response = new TwilioResponse();
@@ -84,7 +84,7 @@ namespace Twilio.TwiML.Tests
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Dial_And_Number_Object_Param()
 		{
 			var response = new TwilioResponse();
@@ -93,7 +93,7 @@ namespace Twilio.TwiML.Tests
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Dial_And_Conf_Object_Param()
 		{
 			var response = new TwilioResponse();
@@ -102,7 +102,7 @@ namespace Twilio.TwiML.Tests
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Dial_And_Number_Object_Param_And_Dial_Attributes()
 		{
 			var response = new TwilioResponse();
@@ -111,7 +111,7 @@ namespace Twilio.TwiML.Tests
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Dial_And_Conf_Object_Param_And_Dial_Attributes()
 		{
 			var response = new TwilioResponse();
@@ -120,7 +120,7 @@ namespace Twilio.TwiML.Tests
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-        [TestMethod]
+        [Test]
         public void Can_Generate_Dial_And_Queue()
         {
             var response = new TwilioResponse();
@@ -129,7 +129,7 @@ namespace Twilio.TwiML.Tests
             Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Generate_Dial_And_Queue_Object_Param()
         {
             var response = new TwilioResponse();
@@ -138,7 +138,7 @@ namespace Twilio.TwiML.Tests
             Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
         }
         
-        [TestMethod]
+        [Test]
 		public void Can_Generate_Dial_And_Client_Noun()
 		{
 			var response = new TwilioResponse();
@@ -147,7 +147,7 @@ namespace Twilio.TwiML.Tests
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Dial_Multiple_Clients()
 		{
 			var response = new TwilioResponse();
@@ -156,7 +156,7 @@ namespace Twilio.TwiML.Tests
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Dial_And_Mixed_Number_And_Client_Nouns()
 		{
 			var response = new TwilioResponse();
@@ -172,7 +172,7 @@ namespace Twilio.TwiML.Tests
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-        [TestMethod]
+        [Test]
         public void Can_Generate_Dial_And_Sip_Object()
         {
             var response = new TwilioResponse();
@@ -181,7 +181,7 @@ namespace Twilio.TwiML.Tests
             Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Generate_Dial_And_Sip_Object_And_Sip_Parameters()
         {
             var response = new TwilioResponse();
@@ -190,7 +190,7 @@ namespace Twilio.TwiML.Tests
             Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
         }
 
-        [TestMethod]
+        [Test]
         public void Can_Generate_Dial_And_Sip_Object_And_Dial_Parameters()
         {
             var response = new TwilioResponse();

@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 
 using System.Xml.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Twilio.TwiML.Tests
 {
-    [TestClass]
+    [TestFixture]
 	public class SmsTests : TestBase
 	{
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Single_Sms()
 		{
 			var response = new TwilioResponse();
@@ -20,7 +20,7 @@ namespace Twilio.TwiML.Tests
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Single_Sms_And_Attributes()
 		{
 			var response = new TwilioResponse();

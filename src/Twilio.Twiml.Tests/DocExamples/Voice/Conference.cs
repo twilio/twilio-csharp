@@ -1,12 +1,12 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Twilio.TwiML.Tests.DocExamples
 {
-    [TestClass]
+    [TestFixture]
 	public class ConferenceTests : TestBase
 	{
-		[TestMethod]
+		[Test]
 		public void Example_1()
 		{
 			var response = new TwilioResponse();
@@ -15,7 +15,7 @@ namespace Twilio.TwiML.Tests.DocExamples
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Example_2a()
 		{
 			var response = new TwilioResponse();
@@ -24,7 +24,7 @@ namespace Twilio.TwiML.Tests.DocExamples
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Example_2b()
 		{
 			var response = new TwilioResponse();
@@ -33,7 +33,7 @@ namespace Twilio.TwiML.Tests.DocExamples
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Example_3()
 		{
 			var response = new TwilioResponse();
@@ -42,7 +42,7 @@ namespace Twilio.TwiML.Tests.DocExamples
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Example_4()
 		{
 			var response = new TwilioResponse();
@@ -51,7 +51,7 @@ namespace Twilio.TwiML.Tests.DocExamples
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Example_5a()
 		{
 			var response = new TwilioResponse();
@@ -60,7 +60,7 @@ namespace Twilio.TwiML.Tests.DocExamples
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Example_5b()
 		{
 			var response = new TwilioResponse();
@@ -69,7 +69,7 @@ namespace Twilio.TwiML.Tests.DocExamples
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Example_6()
 		{
 			var response = new TwilioResponse();
