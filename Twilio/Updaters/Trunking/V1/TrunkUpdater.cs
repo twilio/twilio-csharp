@@ -3,12 +3,12 @@ using Twilio.Clients;
 using Twilio.Converters.Promoter;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Trunking.V1.Trunk;
-using com.twilio.sdk.updaters.Updater;
+using Twilio.Resources.Trunking.V1;
+using Twilio.Updaters;
 
 namespace Twilio.Updaters.Trunking.V1 {
 
-    public class TrunkUpdater : Updater<Trunk> {
+    public class TrunkUpdater : Updater<TrunkResource> {
         private string sid;
         private string friendlyName;
         private string domainName;
@@ -106,36 +106,34 @@ namespace Twilio.Updaters.Trunking.V1 {
          * Make the request to the Twilio API to perform the update
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Updated Trunk
+         * @return Updated TrunkResource
          */
-        [Override]
-        public Trunk execute(TwilioRestClient client) {
+        public override TrunkResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.POST,
+                System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TRUNKING,
-                "/v1/Trunks/" + this.sid + "",
-                client.getAccountSid()
+                "/v1/Trunks/" + this.sid + ""
             );
             
             addPostParams(request);
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("Trunk update failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("TrunkResource update failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return Trunk.fromJson(response.getStream(), client.getObjectMapper());
+            return TrunkResource.fromJson(response.GetContent());
         }
     
         /**

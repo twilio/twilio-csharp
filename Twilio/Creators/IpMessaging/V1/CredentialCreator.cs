@@ -1,14 +1,14 @@
 using Twilio.Clients;
-using Twilio.Creators.Creator;
+using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Ipmessaging.V1.Credential;
+using Twilio.Resources.Ipmessaging.V1;
 
 namespace Twilio.Creators.IpMessaging.V1 {
 
-    public class CredentialCreator : Creator<Credential> {
+    public class CredentialCreator : Creator<CredentialResource> {
         private string friendlyName;
-        private Credential.PushService type;
+        private CredentialResource.PushService type;
         private string certificate;
         private string privateKey;
         private bool sandbox;
@@ -20,7 +20,7 @@ namespace Twilio.Creators.IpMessaging.V1 {
          * @param friendlyName The friendly_name
          * @param type The type
          */
-        public CredentialCreator(string friendlyName, Credential.PushService type) {
+        public CredentialCreator(string friendlyName, CredentialResource.PushService type) {
             this.friendlyName = friendlyName;
             this.type = type;
         }
@@ -73,36 +73,34 @@ namespace Twilio.Creators.IpMessaging.V1 {
          * Make the request to the Twilio API to perform the create
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Created Credential
+         * @return Created CredentialResource
          */
-        [Override]
-        public Credential execute(TwilioRestClient client) {
+        public override CredentialResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.POST,
+                System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.IPMESSAGING,
-                "/v1/Credentials",
-                client.getAccountSid()
+                "/v1/Credentials"
             );
             
             addPostParams(request);
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("Credential creation failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("CredentialResource creation failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return Credential.fromJson(response.getStream(), client.getObjectMapper());
+            return CredentialResource.fromJson(response.GetContent());
         }
     
         /**

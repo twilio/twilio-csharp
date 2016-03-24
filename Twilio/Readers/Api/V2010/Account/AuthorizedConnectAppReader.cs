@@ -1,14 +1,14 @@
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Api.V2010.account.AuthorizedConnectApp;
-using com.twilio.sdk.readers.Reader;
+using Twilio.Readers;
+using Twilio.Resources.Api.V2010.Account;
 using com.twilio.sdk.resources.Page;
 using com.twilio.sdk.resources.ResourceSet;
 
 namespace Twilio.Readers.Api.V2010.Account {
 
-    public class AuthorizedConnectAppReader : Reader<AuthorizedConnectApp> {
+    public class AuthorizedConnectAppReader : Reader<AuthorizedConnectAppResource> {
         private string accountSid;
     
         /**
@@ -24,20 +24,18 @@ namespace Twilio.Readers.Api.V2010.Account {
          * Make the request to the Twilio API to perform the read
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return AuthorizedConnectApp ResourceSet
+         * @return AuthorizedConnectAppResource ResourceSet
          */
-        [Override]
-        public ResourceSet<AuthorizedConnectApp> execute(TwilioRestClient client) {
+        public override ResourceSet<AuthorizedConnectAppResource> execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
+                System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/AuthorizedConnectApps.json",
-                client.getAccountSid()
+                "/2010-04-01/Accounts/" + this.accountSid + "/AuthorizedConnectApps.json"
             );
             
             addQueryParams(request);
             
-            Page<AuthorizedConnectApp> page = pageForRequest(client, request);
+            Page<AuthorizedConnectAppResource> page = pageForRequest(client, request);
             
             return new ResourceSet<>(this, client, page);
         }
@@ -49,43 +47,41 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        [Override]
-        public Page<AuthorizedConnectApp> nextPage(final String nextPageUri, final TwilioRestClient client) {
+        public override Page<AuthorizedConnectAppResource> nextPage(final String nextPageUri, final TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
-                nextPageUri,
-                client.getAccountSid()
+                System.Net.Http.HttpMethod.Get,
+                nextPageUri
             );
             return pageForRequest(client, request);
         }
     
         /**
-         * Generate a Page of AuthorizedConnectApp Resources for a given request
+         * Generate a Page of AuthorizedConnectAppResource Resources for a given request
          * 
          * @param client TwilioRestClient with which to make the request
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected Page<AuthorizedConnectApp> pageForRequest(final TwilioRestClient client, final Request request) {
+        protected Page<AuthorizedConnectAppResource> pageForRequest(TwilioRestClient client, Request request) {
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("AuthorizedConnectApp read failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("AuthorizedConnectAppResource read failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            Page<AuthorizedConnectApp> result = new Page<>();
-            result.deserialize("authorized_connect_apps", response.getContent(), AuthorizedConnectApp.class, client.getObjectMapper());
+            Page<AuthorizedConnectAppResource> result = new Page<>();
+            result.deserialize("authorized_connect_apps", response.GetContent(), AuthorizedConnectAppResource.class, client.getObjectMapper());
             
             return result;
         }
@@ -95,7 +91,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * 
          * @param request Request to add query string arguments to
          */
-        private void addQueryParams(final Request request) {
+        private void addQueryParams(Request request) {
             request.addQueryParam("PageSize", Integer.toString(getPageSize()));
         }
     }

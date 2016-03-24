@@ -1,14 +1,14 @@
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Taskrouter.V1.workspace.Worker;
-using com.twilio.sdk.readers.Reader;
+using Twilio.Readers;
+using Twilio.Resources.Taskrouter.V1.Workspace;
 using com.twilio.sdk.resources.Page;
 using com.twilio.sdk.resources.ResourceSet;
 
 namespace Twilio.Readers.Taskrouter.V1.Workspace {
 
-    public class WorkerReader : Reader<Worker> {
+    public class WorkerReader : Reader<WorkerResource> {
         private string workspaceSid;
         private string activityName;
         private string activitySid;
@@ -108,20 +108,18 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * Make the request to the Twilio API to perform the read
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Worker ResourceSet
+         * @return WorkerResource ResourceSet
          */
-        [Override]
-        public ResourceSet<Worker> execute(TwilioRestClient client) {
+        public override ResourceSet<WorkerResource> execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
+                System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workers",
-                client.getAccountSid()
+                "/v1/Workspaces/" + this.workspaceSid + "/Workers"
             );
             
             addQueryParams(request);
             
-            Page<Worker> page = pageForRequest(client, request);
+            Page<WorkerResource> page = pageForRequest(client, request);
             
             return new ResourceSet<>(this, client, page);
         }
@@ -133,43 +131,41 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        [Override]
-        public Page<Worker> nextPage(final String nextPageUri, final TwilioRestClient client) {
+        public override Page<WorkerResource> nextPage(final String nextPageUri, final TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
-                nextPageUri,
-                client.getAccountSid()
+                System.Net.Http.HttpMethod.Get,
+                nextPageUri
             );
             return pageForRequest(client, request);
         }
     
         /**
-         * Generate a Page of Worker Resources for a given request
+         * Generate a Page of WorkerResource Resources for a given request
          * 
          * @param client TwilioRestClient with which to make the request
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected Page<Worker> pageForRequest(final TwilioRestClient client, final Request request) {
+        protected Page<WorkerResource> pageForRequest(TwilioRestClient client, Request request) {
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("Worker read failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("WorkerResource read failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            Page<Worker> result = new Page<>();
-            result.deserialize("workers", response.getContent(), Worker.class, client.getObjectMapper());
+            Page<WorkerResource> result = new Page<>();
+            result.deserialize("workers", response.GetContent(), WorkerResource.class, client.getObjectMapper());
             
             return result;
         }
@@ -179,7 +175,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * 
          * @param request Request to add query string arguments to
          */
-        private void addQueryParams(final Request request) {
+        private void addQueryParams(Request request) {
             if (activityName != null) {
                 request.addQueryParam("ActivityName", activityName);
             }

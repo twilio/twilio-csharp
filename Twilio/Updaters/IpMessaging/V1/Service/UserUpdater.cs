@@ -1,12 +1,12 @@
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Ipmessaging.V1.service.User;
-using com.twilio.sdk.updaters.Updater;
+using Twilio.Resources.Ipmessaging.V1.Service;
+using Twilio.Updaters;
 
 namespace Twilio.Updaters.IpMessaging.V1.Service {
 
-    public class UserUpdater : Updater<User> {
+    public class UserUpdater : Updater<UserResource> {
         private string serviceSid;
         private string sid;
         private string roleSid;
@@ -28,36 +28,34 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
          * Make the request to the Twilio API to perform the update
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Updated User
+         * @return Updated UserResource
          */
-        [Override]
-        public User execute(TwilioRestClient client) {
+        public override UserResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.POST,
+                System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.IPMESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Users/" + this.sid + "",
-                client.getAccountSid()
+                "/v1/Services/" + this.serviceSid + "/Users/" + this.sid + ""
             );
             
             addPostParams(request);
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("User update failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("UserResource update failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return User.fromJson(response.getStream(), client.getObjectMapper());
+            return UserResource.fromJson(response.GetContent());
         }
     
         /**

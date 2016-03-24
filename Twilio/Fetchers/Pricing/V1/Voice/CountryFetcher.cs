@@ -1,12 +1,12 @@
 using Twilio.Clients;
 using Twilio.Exceptions;
-using Twilio.Fetchers.Fetcher;
+using Twilio.Fetchers;
 using Twilio.Http;
-using Twilio.Resources.Pricing.V1.voice.Country;
+using Twilio.Resources.Pricing.V1.Voice;
 
 namespace Twilio.Fetchers.Pricing.V1.Voice {
 
-    public class CountryFetcher : Fetcher<Country> {
+    public class CountryFetcher : Fetcher<CountryResource> {
         private string isoCountry;
     
         /**
@@ -22,35 +22,33 @@ namespace Twilio.Fetchers.Pricing.V1.Voice {
          * Make the request to the Twilio API to perform the fetch
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Fetched Country
+         * @return Fetched CountryResource
          */
-        [Override]
-        public Country execute(TwilioRestClient client) {
+        public override CountryResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
+                System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.PRICING,
-                "/v1/Voice/Countries/" + this.isoCountry + "",
-                client.getAccountSid()
+                "/v1/Voice/Countries/" + this.isoCountry + ""
             );
             
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("Country fetch failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("CountryResource fetch failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return Country.fromJson(response.getStream(), client.getObjectMapper());
+            return CountryResource.fromJson(response.GetContent());
         }
     }
 }

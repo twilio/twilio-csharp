@@ -1,12 +1,12 @@
 using Twilio.Clients;
-using Twilio.Creators.Creator;
+using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Taskrouter.V1.workspace.TaskQueue;
+using Twilio.Resources.Taskrouter.V1.Workspace;
 
 namespace Twilio.Creators.Taskrouter.V1.Workspace {
 
-    public class TaskQueueCreator : Creator<TaskQueue> {
+    public class TaskQueueCreator : Creator<TaskQueueResource> {
         private string workspaceSid;
         private string friendlyName;
         private string reservationActivitySid;
@@ -55,36 +55,34 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * Make the request to the Twilio API to perform the create
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Created TaskQueue
+         * @return Created TaskQueueResource
          */
-        [Override]
-        public TaskQueue execute(TwilioRestClient client) {
+        public override TaskQueueResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.POST,
+                System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/TaskQueues",
-                client.getAccountSid()
+                "/v1/Workspaces/" + this.workspaceSid + "/TaskQueues"
             );
             
             addPostParams(request);
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("TaskQueue creation failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("TaskQueueResource creation failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return TaskQueue.fromJson(response.getStream(), client.getObjectMapper());
+            return TaskQueueResource.fromJson(response.GetContent());
         }
     
         /**

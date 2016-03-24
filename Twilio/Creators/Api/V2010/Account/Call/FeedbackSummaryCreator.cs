@@ -2,14 +2,14 @@ using System;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Converters.Promoter;
-using Twilio.Creators.Creator;
+using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Api.V2010.account.call.FeedbackSummary;
+using Twilio.Resources.Api.V2010.Account.Call;
 
 namespace Twilio.Creators.Api.V2010.Account.Call {
 
-    public class FeedbackSummaryCreator : Creator<FeedbackSummary> {
+    public class FeedbackSummaryCreator : Creator<FeedbackSummaryResource> {
         private string accountSid;
         private DateTime startDate;
         private DateTime endDate;
@@ -77,36 +77,34 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
          * Make the request to the Twilio API to perform the create
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Created FeedbackSummary
+         * @return Created FeedbackSummaryResource
          */
-        [Override]
-        public FeedbackSummary execute(TwilioRestClient client) {
+        public override FeedbackSummaryResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.POST,
+                System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/FeedbackSummary.json",
-                client.getAccountSid()
+                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/FeedbackSummary.json"
             );
             
             addPostParams(request);
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("FeedbackSummary creation failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("FeedbackSummaryResource creation failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return FeedbackSummary.fromJson(response.getStream(), client.getObjectMapper());
+            return FeedbackSummaryResource.fromJson(response.GetContent());
         }
     
         /**

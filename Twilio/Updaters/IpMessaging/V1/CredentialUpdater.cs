@@ -1,15 +1,15 @@
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Ipmessaging.V1.Credential;
-using com.twilio.sdk.updaters.Updater;
+using Twilio.Resources.Ipmessaging.V1;
+using Twilio.Updaters;
 
 namespace Twilio.Updaters.IpMessaging.V1 {
 
-    public class CredentialUpdater : Updater<Credential> {
+    public class CredentialUpdater : Updater<CredentialResource> {
         private string sid;
         private string friendlyName;
-        private Credential.PushService type;
+        private CredentialResource.PushService type;
         private string certificate;
         private string privateKey;
         private bool sandbox;
@@ -22,7 +22,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param friendlyName The friendly_name
          * @param type The type
          */
-        public CredentialUpdater(string sid, string friendlyName, Credential.PushService type) {
+        public CredentialUpdater(string sid, string friendlyName, CredentialResource.PushService type) {
             this.sid = sid;
             this.friendlyName = friendlyName;
             this.type = type;
@@ -76,36 +76,34 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * Make the request to the Twilio API to perform the update
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Updated Credential
+         * @return Updated CredentialResource
          */
-        [Override]
-        public Credential execute(TwilioRestClient client) {
+        public override CredentialResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.POST,
+                System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.IPMESSAGING,
-                "/v1/Credentials/" + this.sid + "",
-                client.getAccountSid()
+                "/v1/Credentials/" + this.sid + ""
             );
             
             addPostParams(request);
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("Credential update failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("CredentialResource update failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return Credential.fromJson(response.getStream(), client.getObjectMapper());
+            return CredentialResource.fromJson(response.GetContent());
         }
     
         /**

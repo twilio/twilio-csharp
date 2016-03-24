@@ -1,14 +1,14 @@
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Api.V2010.account.usage.record.LastMonth;
-using com.twilio.sdk.readers.Reader;
+using Twilio.Readers;
+using Twilio.Resources.Api.V2010.Account.Usage.Record;
 using com.twilio.sdk.resources.Page;
 using com.twilio.sdk.resources.ResourceSet;
 
 namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
 
-    public class LastMonthReader : Reader<LastMonth> {
+    public class LastMonthReader : Reader<LastMonthResource> {
         private string accountSid;
     
         /**
@@ -24,20 +24,18 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
          * Make the request to the Twilio API to perform the read
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return LastMonth ResourceSet
+         * @return LastMonthResource ResourceSet
          */
-        [Override]
-        public ResourceSet<LastMonth> execute(TwilioRestClient client) {
+        public override ResourceSet<LastMonthResource> execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
+                System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Usage/Records/LastMonth.json",
-                client.getAccountSid()
+                "/2010-04-01/Accounts/" + this.accountSid + "/Usage/Records/LastMonth.json"
             );
             
             addQueryParams(request);
             
-            Page<LastMonth> page = pageForRequest(client, request);
+            Page<LastMonthResource> page = pageForRequest(client, request);
             
             return new ResourceSet<>(this, client, page);
         }
@@ -49,43 +47,41 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        [Override]
-        public Page<LastMonth> nextPage(final String nextPageUri, final TwilioRestClient client) {
+        public override Page<LastMonthResource> nextPage(final String nextPageUri, final TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
-                nextPageUri,
-                client.getAccountSid()
+                System.Net.Http.HttpMethod.Get,
+                nextPageUri
             );
             return pageForRequest(client, request);
         }
     
         /**
-         * Generate a Page of LastMonth Resources for a given request
+         * Generate a Page of LastMonthResource Resources for a given request
          * 
          * @param client TwilioRestClient with which to make the request
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected Page<LastMonth> pageForRequest(final TwilioRestClient client, final Request request) {
+        protected Page<LastMonthResource> pageForRequest(TwilioRestClient client, Request request) {
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("LastMonth read failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("LastMonthResource read failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            Page<LastMonth> result = new Page<>();
-            result.deserialize("usage_records", response.getContent(), LastMonth.class, client.getObjectMapper());
+            Page<LastMonthResource> result = new Page<>();
+            result.deserialize("usage_records", response.GetContent(), LastMonthResource.class, client.getObjectMapper());
             
             return result;
         }
@@ -95,7 +91,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
          * 
          * @param request Request to add query string arguments to
          */
-        private void addQueryParams(final Request request) {
+        private void addQueryParams(Request request) {
             request.addQueryParam("PageSize", Integer.toString(getPageSize()));
         }
     }

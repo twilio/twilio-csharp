@@ -10,5 +10,13 @@ namespace Twilio.Http
 			this.statusCode = statusCode;
 			this.content = content;
 		}
+
+		public string GetStatusCode() {
+			return statusCode;
+		}
+
+		public string GetContent() {
+			return content;
+		}
 	}
 }

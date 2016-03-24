@@ -2,13 +2,13 @@ using System;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Fetchers.Fetcher;
+using Twilio.Fetchers;
 using Twilio.Http;
-using Twilio.Resources.Taskrouter.V1.workspace.workflow.WorkflowStatistics;
+using Twilio.Resources.Taskrouter.V1.Workspace.Workflow;
 
 namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Workflow {
 
-    public class WorkflowStatisticsFetcher : Fetcher<WorkflowStatistics> {
+    public class WorkflowStatisticsFetcher : Fetcher<WorkflowStatisticsResource> {
         private string workspaceSid;
         private string workflowSid;
         private int minutes;
@@ -63,35 +63,33 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Workflow {
          * Make the request to the Twilio API to perform the fetch
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Fetched WorkflowStatistics
+         * @return Fetched WorkflowStatisticsResource
          */
-        [Override]
-        public WorkflowStatistics execute(TwilioRestClient client) {
+        public override WorkflowStatisticsResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
+                System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workflows/" + this.workflowSid + "/Statistics",
-                client.getAccountSid()
+                "/v1/Workspaces/" + this.workspaceSid + "/Workflows/" + this.workflowSid + "/Statistics"
             );
             
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("WorkflowStatistics fetch failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("WorkflowStatisticsResource fetch failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return WorkflowStatistics.fromJson(response.getStream(), client.getObjectMapper());
+            return WorkflowStatisticsResource.fromJson(response.GetContent());
         }
     }
 }

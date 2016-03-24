@@ -1,14 +1,14 @@
 using System;
 using Twilio.Clients;
 using Twilio.Converters.Promoter;
-using Twilio.Creators.Creator;
+using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Api.V2010.account.Application;
+using Twilio.Resources.Api.V2010.Account;
 
 namespace Twilio.Creators.Api.V2010.Account {
 
-    public class ApplicationCreator : Creator<Application> {
+    public class ApplicationCreator : Creator<ApplicationResource> {
         private string accountSid;
         private string friendlyName;
         private string apiVersion;
@@ -292,36 +292,34 @@ namespace Twilio.Creators.Api.V2010.Account {
          * Make the request to the Twilio API to perform the create
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Created Application
+         * @return Created ApplicationResource
          */
-        [Override]
-        public Application execute(TwilioRestClient client) {
+        public override ApplicationResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.POST,
+                System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Applications.json",
-                client.getAccountSid()
+                "/2010-04-01/Accounts/" + this.accountSid + "/Applications.json"
             );
             
             addPostParams(request);
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("Application creation failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("ApplicationResource creation failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return Application.fromJson(response.getStream(), client.getObjectMapper());
+            return ApplicationResource.fromJson(response.GetContent());
         }
     
         /**

@@ -1,12 +1,12 @@
 using Twilio.Clients;
-using Twilio.Deleters.Deleter;
+using Twilio.Deleters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Api.V2010.account.call.FeedbackSummary;
+using Twilio.Resources.Api.V2010.Account.Call;
 
 namespace Twilio.Deleters.Api.V2010.Account.Call {
 
-    public class FeedbackSummaryDeleter : Deleter<FeedbackSummary> {
+    public class FeedbackSummaryDeleter : Deleter<FeedbackSummaryResource> {
         private string accountSid;
         private string sid;
     
@@ -26,28 +26,26 @@ namespace Twilio.Deleters.Api.V2010.Account.Call {
          * 
          * @param client TwilioRestClient with which to make the request
          */
-        [Override]
-        public void execute(TwilioRestClient client) {
+        public override void execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.DELETE,
+                System.Net.Http.HttpMethod.Delete,
                 TwilioRestClient.Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/FeedbackSummary/" + this.sid + ".json",
-                client.getAccountSid()
+                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/FeedbackSummary/" + this.sid + ".json"
             );
             
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("FeedbackSummary delete failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_NO_CONTENT) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("FeedbackSummaryResource delete failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_NO_CONTENT) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }

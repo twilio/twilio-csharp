@@ -1,12 +1,12 @@
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Api.V2010.account.OutgoingCallerId;
-using com.twilio.sdk.updaters.Updater;
+using Twilio.Resources.Api.V2010.Account;
+using Twilio.Updaters;
 
 namespace Twilio.Updaters.Api.V2010.Account {
 
-    public class OutgoingCallerIdUpdater : Updater<OutgoingCallerId> {
+    public class OutgoingCallerIdUpdater : Updater<OutgoingCallerIdResource> {
         private string accountSid;
         private string sid;
         private string friendlyName;
@@ -37,36 +37,34 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * Make the request to the Twilio API to perform the update
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Updated OutgoingCallerId
+         * @return Updated OutgoingCallerIdResource
          */
-        [Override]
-        public OutgoingCallerId execute(TwilioRestClient client) {
+        public override OutgoingCallerIdResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.POST,
+                System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/OutgoingCallerIds/" + this.sid + ".json",
-                client.getAccountSid()
+                "/2010-04-01/Accounts/" + this.accountSid + "/OutgoingCallerIds/" + this.sid + ".json"
             );
             
             addPostParams(request);
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("OutgoingCallerId update failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("OutgoingCallerIdResource update failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return OutgoingCallerId.fromJson(response.getStream(), client.getObjectMapper());
+            return OutgoingCallerIdResource.fromJson(response.GetContent());
         }
     
         /**

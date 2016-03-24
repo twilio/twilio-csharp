@@ -1,12 +1,12 @@
 using Twilio.Clients;
-using Twilio.Creators.Creator;
+using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Taskrouter.V1.workspace.Task;
+using Twilio.Resources.Taskrouter.V1.Workspace;
 
 namespace Twilio.Creators.Taskrouter.V1.Workspace {
 
-    public class TaskCreator : Creator<Task> {
+    public class TaskCreator : Creator<TaskResource> {
         private string workspaceSid;
         private string attributes;
         private string workflowSid;
@@ -52,36 +52,34 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * Make the request to the Twilio API to perform the create
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Created Task
+         * @return Created TaskResource
          */
-        [Override]
-        public Task execute(TwilioRestClient client) {
+        public override TaskResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.POST,
+                System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Tasks",
-                client.getAccountSid()
+                "/v1/Workspaces/" + this.workspaceSid + "/Tasks"
             );
             
             addPostParams(request);
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("Task creation failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("TaskResource creation failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return Task.fromJson(response.getStream(), client.getObjectMapper());
+            return TaskResource.fromJson(response.GetContent());
         }
     
         /**

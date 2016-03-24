@@ -1,12 +1,12 @@
 using Twilio.Clients;
 using Twilio.Exceptions;
-using Twilio.Fetchers.Fetcher;
+using Twilio.Fetchers;
 using Twilio.Http;
-using Twilio.Resources.Monitor.V1.Alert;
+using Twilio.Resources.Monitor.V1;
 
 namespace Twilio.Fetchers.Monitor.V1 {
 
-    public class AlertFetcher : Fetcher<Alert> {
+    public class AlertFetcher : Fetcher<AlertResource> {
         private string sid;
     
         /**
@@ -22,35 +22,33 @@ namespace Twilio.Fetchers.Monitor.V1 {
          * Make the request to the Twilio API to perform the fetch
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Fetched Alert
+         * @return Fetched AlertResource
          */
-        [Override]
-        public Alert execute(TwilioRestClient client) {
+        public override AlertResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
+                System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.MONITOR,
-                "/v1/Alerts/" + this.sid + "",
-                client.getAccountSid()
+                "/v1/Alerts/" + this.sid + ""
             );
             
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("Alert fetch failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("AlertResource fetch failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return Alert.fromJson(response.getStream(), client.getObjectMapper());
+            return AlertResource.fromJson(response.GetContent());
         }
     }
 }

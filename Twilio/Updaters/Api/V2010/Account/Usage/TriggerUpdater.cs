@@ -3,12 +3,12 @@ using Twilio.Clients;
 using Twilio.Converters.Promoter;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Api.V2010.account.usage.Trigger;
-using com.twilio.sdk.updaters.Updater;
+using Twilio.Resources.Api.V2010.Account.Usage;
+using Twilio.Updaters;
 
 namespace Twilio.Updaters.Api.V2010.Account.Usage {
 
-    public class TriggerUpdater : Updater<Trigger> {
+    public class TriggerUpdater : Updater<TriggerResource> {
         private string accountSid;
         private string sid;
         private HttpMethod callbackMethod;
@@ -74,36 +74,34 @@ namespace Twilio.Updaters.Api.V2010.Account.Usage {
          * Make the request to the Twilio API to perform the update
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Updated Trigger
+         * @return Updated TriggerResource
          */
-        [Override]
-        public Trigger execute(TwilioRestClient client) {
+        public override TriggerResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.POST,
+                System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Usage/Triggers/" + this.sid + ".json",
-                client.getAccountSid()
+                "/2010-04-01/Accounts/" + this.accountSid + "/Usage/Triggers/" + this.sid + ".json"
             );
             
             addPostParams(request);
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("Trigger update failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("TriggerResource update failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return Trigger.fromJson(response.getStream(), client.getObjectMapper());
+            return TriggerResource.fromJson(response.GetContent());
         }
     
         /**

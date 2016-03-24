@@ -1,32 +1,30 @@
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Pricing.V1.phone_number.Country;
-using com.twilio.sdk.readers.Reader;
+using Twilio.Readers;
+using Twilio.Resources.Pricing.V1.PhoneNumber;
 using com.twilio.sdk.resources.Page;
 using com.twilio.sdk.resources.ResourceSet;
 
 namespace Twilio.Readers.Pricing.V1.Phonenumber {
 
-    public class CountryReader : Reader<Country> {
+    public class CountryReader : Reader<CountryResource> {
         /**
          * Make the request to the Twilio API to perform the read
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Country ResourceSet
+         * @return CountryResource ResourceSet
          */
-        [Override]
-        public ResourceSet<Country> execute(TwilioRestClient client) {
+        public override ResourceSet<CountryResource> execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
+                System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.PRICING,
-                "/v1/PhoneNumbers/Countries",
-                client.getAccountSid()
+                "/v1/PhoneNumbers/Countries"
             );
             
             addQueryParams(request);
             
-            Page<Country> page = pageForRequest(client, request);
+            Page<CountryResource> page = pageForRequest(client, request);
             
             return new ResourceSet<>(this, client, page);
         }
@@ -38,43 +36,41 @@ namespace Twilio.Readers.Pricing.V1.Phonenumber {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        [Override]
-        public Page<Country> nextPage(final String nextPageUri, final TwilioRestClient client) {
+        public override Page<CountryResource> nextPage(final String nextPageUri, final TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
-                nextPageUri,
-                client.getAccountSid()
+                System.Net.Http.HttpMethod.Get,
+                nextPageUri
             );
             return pageForRequest(client, request);
         }
     
         /**
-         * Generate a Page of Country Resources for a given request
+         * Generate a Page of CountryResource Resources for a given request
          * 
          * @param client TwilioRestClient with which to make the request
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected Page<Country> pageForRequest(final TwilioRestClient client, final Request request) {
+        protected Page<CountryResource> pageForRequest(TwilioRestClient client, Request request) {
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("Country read failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("CountryResource read failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            Page<Country> result = new Page<>();
-            result.deserialize("countries", response.getContent(), Country.class, client.getObjectMapper());
+            Page<CountryResource> result = new Page<>();
+            result.deserialize("countries", response.GetContent(), CountryResource.class, client.getObjectMapper());
             
             return result;
         }
@@ -84,7 +80,7 @@ namespace Twilio.Readers.Pricing.V1.Phonenumber {
          * 
          * @param request Request to add query string arguments to
          */
-        private void addQueryParams(final Request request) {
+        private void addQueryParams(Request request) {
             request.addQueryParam("PageSize", Integer.toString(getPageSize()));
         }
     }

@@ -3,16 +3,16 @@ using Twilio.Clients;
 using Twilio.Converters.Promoter;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Api.V2010.account.call.Feedback;
-using com.twilio.sdk.updaters.Updater;
+using Twilio.Resources.Api.V2010.Account.Call;
+using Twilio.Updaters;
 
 namespace Twilio.Updaters.Api.V2010.Account.Call {
 
-    public class FeedbackUpdater : Updater<Feedback> {
+    public class FeedbackUpdater : Updater<FeedbackResource> {
         private string accountSid;
         private string callSid;
         private int qualityScore;
-        private List<Feedback.Issues> issue;
+        private List<FeedbackResource.Issues> issue;
     
         /**
          * Construct a new FeedbackUpdater
@@ -33,7 +33,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Call {
          * @param issue Issues experienced during the call
          * @return this
          */
-        public FeedbackUpdater setIssue(List<Feedback.Issues> issue) {
+        public FeedbackUpdater setIssue(List<FeedbackResource.Issues> issue) {
             this.issue = issue;
             return this;
         }
@@ -44,7 +44,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Call {
          * @param issue Issues experienced during the call
          * @return this
          */
-        public FeedbackUpdater setIssue(Feedback.Issues issue) {
+        public FeedbackUpdater setIssue(FeedbackResource.Issues issue) {
             return setIssue(Promoter.listOfOne(issue));
         }
     
@@ -52,36 +52,34 @@ namespace Twilio.Updaters.Api.V2010.Account.Call {
          * Make the request to the Twilio API to perform the update
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Updated Feedback
+         * @return Updated FeedbackResource
          */
-        [Override]
-        public Feedback execute(TwilioRestClient client) {
+        public override FeedbackResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.POST,
+                System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/" + this.callSid + "/Feedback.json",
-                client.getAccountSid()
+                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/" + this.callSid + "/Feedback.json"
             );
             
             addPostParams(request);
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("Feedback update failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("FeedbackResource update failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return Feedback.fromJson(response.getStream(), client.getObjectMapper());
+            return FeedbackResource.fromJson(response.GetContent());
         }
     
         /**

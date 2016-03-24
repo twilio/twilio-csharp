@@ -1,12 +1,12 @@
 using Twilio.Clients;
 using Twilio.Exceptions;
-using Twilio.Fetchers.Fetcher;
+using Twilio.Fetchers;
 using Twilio.Http;
-using Twilio.Resources.Ipmessaging.V1.service.channel.Message;
+using Twilio.Resources.Ipmessaging.V1.Service.Channel;
 
 namespace Twilio.Fetchers.IpMessaging.V1.Service.Channel {
 
-    public class MessageFetcher : Fetcher<Message> {
+    public class MessageFetcher : Fetcher<MessageResource> {
         private string serviceSid;
         private string channelSid;
         private string sid;
@@ -28,35 +28,33 @@ namespace Twilio.Fetchers.IpMessaging.V1.Service.Channel {
          * Make the request to the Twilio API to perform the fetch
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Fetched Message
+         * @return Fetched MessageResource
          */
-        [Override]
-        public Message execute(TwilioRestClient client) {
+        public override MessageResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
+                System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.IPMESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Messages/" + this.sid + "",
-                client.getAccountSid()
+                "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Messages/" + this.sid + ""
             );
             
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("Message fetch failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("MessageResource fetch failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return Message.fromJson(response.getStream(), client.getObjectMapper());
+            return MessageResource.fromJson(response.GetContent());
         }
     }
 }

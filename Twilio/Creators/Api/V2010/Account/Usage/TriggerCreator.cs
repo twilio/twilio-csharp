@@ -1,21 +1,21 @@
 using System;
 using Twilio.Clients;
-using Twilio.Creators.Creator;
+using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Api.V2010.account.usage.Trigger;
+using Twilio.Resources.Api.V2010.Account.Usage;
 
 namespace Twilio.Creators.Api.V2010.Account.Usage {
 
-    public class TriggerCreator : Creator<Trigger> {
+    public class TriggerCreator : Creator<TriggerResource> {
         private string accountSid;
         private Uri callbackUrl;
         private string triggerValue;
-        private Trigger.UsageCategory usageCategory;
+        private TriggerResource.UsageCategory usageCategory;
         private HttpMethod callbackMethod;
         private string friendlyName;
-        private Trigger.Recurring recurring;
-        private Trigger.TriggerField triggerBy;
+        private TriggerResource.Recurring recurring;
+        private TriggerResource.TriggerField triggerBy;
     
         /**
          * Construct a new TriggerCreator
@@ -25,7 +25,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
          * @param triggerValue the value at which the trigger will fire
          * @param usageCategory The usage category the trigger watches
          */
-        public TriggerCreator(string accountSid, Uri callbackUrl, string triggerValue, Trigger.UsageCategory usageCategory) {
+        public TriggerCreator(string accountSid, Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory) {
             this.accountSid = accountSid;
             this.callbackUrl = callbackUrl;
             this.triggerValue = triggerValue;
@@ -63,7 +63,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
          * @param recurring How this trigger recurs
          * @return this
          */
-        public TriggerCreator setRecurring(Trigger.Recurring recurring) {
+        public TriggerCreator setRecurring(TriggerResource.Recurring recurring) {
             this.recurring = recurring;
             return this;
         }
@@ -75,7 +75,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
          * @param triggerBy The field in the UsageRecord that fires the trigger
          * @return this
          */
-        public TriggerCreator setTriggerBy(Trigger.TriggerField triggerBy) {
+        public TriggerCreator setTriggerBy(TriggerResource.TriggerField triggerBy) {
             this.triggerBy = triggerBy;
             return this;
         }
@@ -84,36 +84,34 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
          * Make the request to the Twilio API to perform the create
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Created Trigger
+         * @return Created TriggerResource
          */
-        [Override]
-        public Trigger execute(TwilioRestClient client) {
+        public override TriggerResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.POST,
+                System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Usage/Triggers.json",
-                client.getAccountSid()
+                "/2010-04-01/Accounts/" + this.accountSid + "/Usage/Triggers.json"
             );
             
             addPostParams(request);
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("Trigger creation failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("TriggerResource creation failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return Trigger.fromJson(response.getStream(), client.getObjectMapper());
+            return TriggerResource.fromJson(response.GetContent());
         }
     
         /**

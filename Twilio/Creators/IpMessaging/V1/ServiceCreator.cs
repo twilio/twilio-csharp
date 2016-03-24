@@ -1,12 +1,12 @@
 using Twilio.Clients;
-using Twilio.Creators.Creator;
+using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Ipmessaging.V1.Service;
+using Twilio.Resources.Ipmessaging.V1;
 
 namespace Twilio.Creators.IpMessaging.V1 {
 
-    public class ServiceCreator : Creator<Service> {
+    public class ServiceCreator : Creator<ServiceResource> {
         private string friendlyName;
     
         /**
@@ -22,36 +22,34 @@ namespace Twilio.Creators.IpMessaging.V1 {
          * Make the request to the Twilio API to perform the create
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Created Service
+         * @return Created ServiceResource
          */
-        [Override]
-        public Service execute(TwilioRestClient client) {
+        public override ServiceResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.POST,
+                System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.IPMESSAGING,
-                "/v1/Services",
-                client.getAccountSid()
+                "/v1/Services"
             );
             
             addPostParams(request);
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("Service creation failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("ServiceResource creation failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return Service.fromJson(response.getStream(), client.getObjectMapper());
+            return ServiceResource.fromJson(response.GetContent());
         }
     
         /**

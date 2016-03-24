@@ -1,12 +1,12 @@
 using Twilio.Clients;
 using Twilio.Exceptions;
-using Twilio.Fetchers.Fetcher;
+using Twilio.Fetchers;
 using Twilio.Http;
-using Twilio.Resources.Api.V2010.account.sip.CredentialList;
+using Twilio.Resources.Api.V2010.Account.Sip;
 
 namespace Twilio.Fetchers.Api.V2010.Account.Sip {
 
-    public class CredentialListFetcher : Fetcher<CredentialList> {
+    public class CredentialListFetcher : Fetcher<CredentialListResource> {
         private string accountSid;
         private string sid;
     
@@ -25,35 +25,33 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip {
          * Make the request to the Twilio API to perform the fetch
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Fetched CredentialList
+         * @return Fetched CredentialListResource
          */
-        [Override]
-        public CredentialList execute(TwilioRestClient client) {
+        public override CredentialListResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
+                System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/CredentialLists/" + this.sid + ".json",
-                client.getAccountSid()
+                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/CredentialLists/" + this.sid + ".json"
             );
             
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("CredentialList fetch failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("CredentialListResource fetch failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return CredentialList.fromJson(response.getStream(), client.getObjectMapper());
+            return CredentialListResource.fromJson(response.GetContent());
         }
     }
 }

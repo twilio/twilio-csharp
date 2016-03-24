@@ -2,13 +2,13 @@ using System;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Fetchers.Fetcher;
+using Twilio.Fetchers;
 using Twilio.Http;
-using Twilio.Resources.Taskrouter.V1.workspace.worker.WorkersStatistics;
+using Twilio.Resources.Taskrouter.V1.Workspace.Worker;
 
 namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
 
-    public class WorkersStatisticsFetcher : Fetcher<WorkersStatistics> {
+    public class WorkersStatisticsFetcher : Fetcher<WorkersStatisticsResource> {
         private string workspaceSid;
         private int minutes;
         private DateTime startDate;
@@ -96,35 +96,33 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
          * Make the request to the Twilio API to perform the fetch
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Fetched WorkersStatistics
+         * @return Fetched WorkersStatisticsResource
          */
-        [Override]
-        public WorkersStatistics execute(TwilioRestClient client) {
+        public override WorkersStatisticsResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
+                System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workers/Statistics",
-                client.getAccountSid()
+                "/v1/Workspaces/" + this.workspaceSid + "/Workers/Statistics"
             );
             
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("WorkersStatistics fetch failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("WorkersStatisticsResource fetch failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return WorkersStatistics.fromJson(response.getStream(), client.getObjectMapper());
+            return WorkersStatisticsResource.fromJson(response.GetContent());
         }
     }
 }

@@ -1,12 +1,12 @@
 using Twilio.Clients;
 using Twilio.Exceptions;
-using Twilio.Fetchers.Fetcher;
+using Twilio.Fetchers;
 using Twilio.Http;
-using Twilio.Resources.Api.V2010.account.sip.ip_access_control_list.IpAddress;
+using Twilio.Resources.Api.V2010.Account.Sip.IpAccessControlList;
 
 namespace Twilio.Fetchers.Api.V2010.Account.Sip.Ipaccesscontrollist {
 
-    public class IpAddressFetcher : Fetcher<IpAddress> {
+    public class IpAddressFetcher : Fetcher<IpAddressResource> {
         private string accountSid;
         private string ipAccessControlListSid;
         private string sid;
@@ -28,35 +28,33 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip.Ipaccesscontrollist {
          * Make the request to the Twilio API to perform the fetch
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Fetched IpAddress
+         * @return Fetched IpAddressResource
          */
-        [Override]
-        public IpAddress execute(TwilioRestClient client) {
+        public override IpAddressResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
+                System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses/" + this.sid + ".json",
-                client.getAccountSid()
+                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses/" + this.sid + ".json"
             );
             
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("IpAddress fetch failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("IpAddressResource fetch failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return IpAddress.fromJson(response.getStream(), client.getObjectMapper());
+            return IpAddressResource.fromJson(response.GetContent());
         }
     }
 }

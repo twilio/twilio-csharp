@@ -1,12 +1,12 @@
 using Twilio.Clients;
-using Twilio.Creators.Creator;
+using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Api.V2010.account.sip.domain.IpAccessControlListMapping;
+using Twilio.Resources.Api.V2010.Account.Sip.Domain;
 
 namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
 
-    public class IpAccessControlListMappingCreator : Creator<IpAccessControlListMapping> {
+    public class IpAccessControlListMappingCreator : Creator<IpAccessControlListMappingResource> {
         private string accountSid;
         private string domainSid;
         private string ipAccessControlListSid;
@@ -28,36 +28,34 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
          * Make the request to the Twilio API to perform the create
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Created IpAccessControlListMapping
+         * @return Created IpAccessControlListMappingResource
          */
-        [Override]
-        public IpAccessControlListMapping execute(TwilioRestClient client) {
+        public override IpAccessControlListMappingResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.POST,
+                System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings.json",
-                client.getAccountSid()
+                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings.json"
             );
             
             addPostParams(request);
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("IpAccessControlListMapping creation failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("IpAccessControlListMappingResource creation failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return IpAccessControlListMapping.fromJson(response.getStream(), client.getObjectMapper());
+            return IpAccessControlListMappingResource.fromJson(response.GetContent());
         }
     
         /**

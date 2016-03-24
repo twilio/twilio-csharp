@@ -1,12 +1,12 @@
 using Twilio.Clients;
-using Twilio.Creators.Creator;
+using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Api.V2010.account.sip.CredentialList;
+using Twilio.Resources.Api.V2010.Account.Sip;
 
 namespace Twilio.Creators.Api.V2010.Account.Sip {
 
-    public class CredentialListCreator : Creator<CredentialList> {
+    public class CredentialListCreator : Creator<CredentialListResource> {
         private string accountSid;
         private string friendlyName;
     
@@ -25,36 +25,34 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          * Make the request to the Twilio API to perform the create
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Created CredentialList
+         * @return Created CredentialListResource
          */
-        [Override]
-        public CredentialList execute(TwilioRestClient client) {
+        public override CredentialListResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.POST,
+                System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/CredentialLists.json",
-                client.getAccountSid()
+                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/CredentialLists.json"
             );
             
             addPostParams(request);
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("CredentialList creation failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("CredentialListResource creation failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return CredentialList.fromJson(response.getStream(), client.getObjectMapper());
+            return CredentialListResource.fromJson(response.GetContent());
         }
     
         /**

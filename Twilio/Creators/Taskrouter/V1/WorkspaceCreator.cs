@@ -1,12 +1,12 @@
 using Twilio.Clients;
-using Twilio.Creators.Creator;
+using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Taskrouter.V1.Workspace;
+using Twilio.Resources.Taskrouter.V1;
 
 namespace Twilio.Creators.Taskrouter.V1 {
 
-    public class WorkspaceCreator : Creator<Workspace> {
+    public class WorkspaceCreator : Creator<WorkspaceResource> {
         private string friendlyName;
         private string eventCallbackUrl;
         private string template;
@@ -46,36 +46,34 @@ namespace Twilio.Creators.Taskrouter.V1 {
          * Make the request to the Twilio API to perform the create
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Created Workspace
+         * @return Created WorkspaceResource
          */
-        [Override]
-        public Workspace execute(TwilioRestClient client) {
+        public override WorkspaceResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.POST,
+                System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TASKROUTER,
-                "/v1/Workspaces",
-                client.getAccountSid()
+                "/v1/Workspaces"
             );
             
             addPostParams(request);
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("Workspace creation failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("WorkspaceResource creation failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return Workspace.fromJson(response.getStream(), client.getObjectMapper());
+            return WorkspaceResource.fromJson(response.GetContent());
         }
     
         /**

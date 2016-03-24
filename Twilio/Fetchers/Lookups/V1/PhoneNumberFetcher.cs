@@ -1,12 +1,12 @@
 using Twilio.Clients;
 using Twilio.Exceptions;
-using Twilio.Fetchers.Fetcher;
+using Twilio.Fetchers;
 using Twilio.Http;
-using Twilio.Resources.Lookups.V1.PhoneNumber;
+using Twilio.Resources.Lookups.V1;
 
 namespace Twilio.Fetchers.Lookups.V1 {
 
-    public class PhoneNumberFetcher : Fetcher<PhoneNumber> {
+    public class PhoneNumberFetcher : Fetcher<PhoneNumberResource> {
         private Twilio.Types.PhoneNumber phoneNumber;
         private string countryCode;
         private string type;
@@ -46,35 +46,33 @@ namespace Twilio.Fetchers.Lookups.V1 {
          * Make the request to the Twilio API to perform the fetch
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Fetched PhoneNumber
+         * @return Fetched PhoneNumberResource
          */
-        [Override]
-        public PhoneNumber execute(TwilioRestClient client) {
+        public override PhoneNumberResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
+                System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.LOOKUPS,
-                "/v1/PhoneNumbers/" + this.phoneNumber + "",
-                client.getAccountSid()
+                "/v1/PhoneNumbers/" + this.phoneNumber + ""
             );
             
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("PhoneNumber fetch failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("PhoneNumberResource fetch failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return PhoneNumber.fromJson(response.getStream(), client.getObjectMapper());
+            return PhoneNumberResource.fromJson(response.GetContent());
         }
     }
 }

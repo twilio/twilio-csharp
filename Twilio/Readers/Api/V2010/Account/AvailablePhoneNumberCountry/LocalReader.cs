@@ -1,14 +1,14 @@
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Api.V2010.account.available_phone_number_country.Local;
-using com.twilio.sdk.readers.Reader;
+using Twilio.Readers;
+using Twilio.Resources.Api.V2010.Account.AvailablePhoneNumberCountry;
 using com.twilio.sdk.resources.Page;
 using com.twilio.sdk.resources.ResourceSet;
 
 namespace Twilio.Readers.Api.V2010.Account.Availablephonenumbercountry {
 
-    public class LocalReader : Reader<Local> {
+    public class LocalReader : Reader<LocalResource> {
         private string accountSid;
         private string countryCode;
         private int areaCode;
@@ -135,20 +135,18 @@ namespace Twilio.Readers.Api.V2010.Account.Availablephonenumbercountry {
          * Make the request to the Twilio API to perform the read
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Local ResourceSet
+         * @return LocalResource ResourceSet
          */
-        [Override]
-        public ResourceSet<Local> execute(TwilioRestClient client) {
+        public override ResourceSet<LocalResource> execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
+                System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/AvailablePhoneNumbers/" + this.countryCode + "/Local.json",
-                client.getAccountSid()
+                "/2010-04-01/Accounts/" + this.accountSid + "/AvailablePhoneNumbers/" + this.countryCode + "/Local.json"
             );
             
             addQueryParams(request);
             
-            Page<Local> page = pageForRequest(client, request);
+            Page<LocalResource> page = pageForRequest(client, request);
             
             return new ResourceSet<>(this, client, page);
         }
@@ -160,43 +158,41 @@ namespace Twilio.Readers.Api.V2010.Account.Availablephonenumbercountry {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        [Override]
-        public Page<Local> nextPage(final String nextPageUri, final TwilioRestClient client) {
+        public override Page<LocalResource> nextPage(final String nextPageUri, final TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
-                nextPageUri,
-                client.getAccountSid()
+                System.Net.Http.HttpMethod.Get,
+                nextPageUri
             );
             return pageForRequest(client, request);
         }
     
         /**
-         * Generate a Page of Local Resources for a given request
+         * Generate a Page of LocalResource Resources for a given request
          * 
          * @param client TwilioRestClient with which to make the request
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected Page<Local> pageForRequest(final TwilioRestClient client, final Request request) {
+        protected Page<LocalResource> pageForRequest(TwilioRestClient client, Request request) {
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("Local read failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("LocalResource read failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            Page<Local> result = new Page<>();
-            result.deserialize("available_phone_numbers", response.getContent(), Local.class, client.getObjectMapper());
+            Page<LocalResource> result = new Page<>();
+            result.deserialize("available_phone_numbers", response.GetContent(), LocalResource.class, client.getObjectMapper());
             
             return result;
         }
@@ -206,7 +202,7 @@ namespace Twilio.Readers.Api.V2010.Account.Availablephonenumbercountry {
          * 
          * @param request Request to add query string arguments to
          */
-        private void addQueryParams(final Request request) {
+        private void addQueryParams(Request request) {
             if (areaCode != null) {
                 request.addQueryParam("AreaCode", areaCode.ToString());
             }

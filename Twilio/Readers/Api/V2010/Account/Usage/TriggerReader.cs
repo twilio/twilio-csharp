@@ -1,18 +1,18 @@
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Api.V2010.account.usage.Trigger;
-using com.twilio.sdk.readers.Reader;
+using Twilio.Readers;
+using Twilio.Resources.Api.V2010.Account.Usage;
 using com.twilio.sdk.resources.Page;
 using com.twilio.sdk.resources.ResourceSet;
 
 namespace Twilio.Readers.Api.V2010.Account.Usage {
 
-    public class TriggerReader : Reader<Trigger> {
+    public class TriggerReader : Reader<TriggerResource> {
         private string accountSid;
-        private Trigger.Recurring recurring;
-        private Trigger.TriggerField triggerBy;
-        private Trigger.UsageCategory usageCategory;
+        private TriggerResource.Recurring recurring;
+        private TriggerResource.TriggerField triggerBy;
+        private TriggerResource.UsageCategory usageCategory;
     
         /**
          * Construct a new TriggerReader
@@ -30,7 +30,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          * @param recurring Filter by recurring
          * @return this
          */
-        public TriggerReader byRecurring(Trigger.Recurring recurring) {
+        public TriggerReader byRecurring(TriggerResource.Recurring recurring) {
             this.recurring = recurring;
             return this;
         }
@@ -41,7 +41,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          * @param triggerBy Filter by trigger by
          * @return this
          */
-        public TriggerReader byTriggerBy(Trigger.TriggerField triggerBy) {
+        public TriggerReader byTriggerBy(TriggerResource.TriggerField triggerBy) {
             this.triggerBy = triggerBy;
             return this;
         }
@@ -52,7 +52,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          * @param usageCategory Filter by Usage Category
          * @return this
          */
-        public TriggerReader byUsageCategory(Trigger.UsageCategory usageCategory) {
+        public TriggerReader byUsageCategory(TriggerResource.UsageCategory usageCategory) {
             this.usageCategory = usageCategory;
             return this;
         }
@@ -61,20 +61,18 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          * Make the request to the Twilio API to perform the read
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Trigger ResourceSet
+         * @return TriggerResource ResourceSet
          */
-        [Override]
-        public ResourceSet<Trigger> execute(TwilioRestClient client) {
+        public override ResourceSet<TriggerResource> execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
+                System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Usage/Triggers.json",
-                client.getAccountSid()
+                "/2010-04-01/Accounts/" + this.accountSid + "/Usage/Triggers.json"
             );
             
             addQueryParams(request);
             
-            Page<Trigger> page = pageForRequest(client, request);
+            Page<TriggerResource> page = pageForRequest(client, request);
             
             return new ResourceSet<>(this, client, page);
         }
@@ -86,43 +84,41 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        [Override]
-        public Page<Trigger> nextPage(final String nextPageUri, final TwilioRestClient client) {
+        public override Page<TriggerResource> nextPage(final String nextPageUri, final TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
-                nextPageUri,
-                client.getAccountSid()
+                System.Net.Http.HttpMethod.Get,
+                nextPageUri
             );
             return pageForRequest(client, request);
         }
     
         /**
-         * Generate a Page of Trigger Resources for a given request
+         * Generate a Page of TriggerResource Resources for a given request
          * 
          * @param client TwilioRestClient with which to make the request
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected Page<Trigger> pageForRequest(final TwilioRestClient client, final Request request) {
+        protected Page<TriggerResource> pageForRequest(TwilioRestClient client, Request request) {
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("Trigger read failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("TriggerResource read failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            Page<Trigger> result = new Page<>();
-            result.deserialize("usage_triggers", response.getContent(), Trigger.class, client.getObjectMapper());
+            Page<TriggerResource> result = new Page<>();
+            result.deserialize("usage_triggers", response.GetContent(), TriggerResource.class, client.getObjectMapper());
             
             return result;
         }
@@ -132,7 +128,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          * 
          * @param request Request to add query string arguments to
          */
-        private void addQueryParams(final Request request) {
+        private void addQueryParams(Request request) {
             if (recurring != null) {
                 request.addQueryParam("Recurring", recurring.ToString());
             }

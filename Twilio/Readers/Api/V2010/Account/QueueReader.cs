@@ -1,14 +1,14 @@
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Api.V2010.account.Queue;
-using com.twilio.sdk.readers.Reader;
+using Twilio.Readers;
+using Twilio.Resources.Api.V2010.Account;
 using com.twilio.sdk.resources.Page;
 using com.twilio.sdk.resources.ResourceSet;
 
 namespace Twilio.Readers.Api.V2010.Account {
 
-    public class QueueReader : Reader<Queue> {
+    public class QueueReader : Reader<QueueResource> {
         private string accountSid;
     
         /**
@@ -24,20 +24,18 @@ namespace Twilio.Readers.Api.V2010.Account {
          * Make the request to the Twilio API to perform the read
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Queue ResourceSet
+         * @return QueueResource ResourceSet
          */
-        [Override]
-        public ResourceSet<Queue> execute(TwilioRestClient client) {
+        public override ResourceSet<QueueResource> execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
+                System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Queues.json",
-                client.getAccountSid()
+                "/2010-04-01/Accounts/" + this.accountSid + "/Queues.json"
             );
             
             addQueryParams(request);
             
-            Page<Queue> page = pageForRequest(client, request);
+            Page<QueueResource> page = pageForRequest(client, request);
             
             return new ResourceSet<>(this, client, page);
         }
@@ -49,43 +47,41 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        [Override]
-        public Page<Queue> nextPage(final String nextPageUri, final TwilioRestClient client) {
+        public override Page<QueueResource> nextPage(final String nextPageUri, final TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
-                nextPageUri,
-                client.getAccountSid()
+                System.Net.Http.HttpMethod.Get,
+                nextPageUri
             );
             return pageForRequest(client, request);
         }
     
         /**
-         * Generate a Page of Queue Resources for a given request
+         * Generate a Page of QueueResource Resources for a given request
          * 
          * @param client TwilioRestClient with which to make the request
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected Page<Queue> pageForRequest(final TwilioRestClient client, final Request request) {
+        protected Page<QueueResource> pageForRequest(TwilioRestClient client, Request request) {
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("Queue read failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("QueueResource read failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            Page<Queue> result = new Page<>();
-            result.deserialize("queues", response.getContent(), Queue.class, client.getObjectMapper());
+            Page<QueueResource> result = new Page<>();
+            result.deserialize("queues", response.GetContent(), QueueResource.class, client.getObjectMapper());
             
             return result;
         }
@@ -95,7 +91,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * 
          * @param request Request to add query string arguments to
          */
-        private void addQueryParams(final Request request) {
+        private void addQueryParams(Request request) {
             request.addQueryParam("PageSize", Integer.toString(getPageSize()));
         }
     }

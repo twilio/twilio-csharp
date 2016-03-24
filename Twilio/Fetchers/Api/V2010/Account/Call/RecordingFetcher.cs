@@ -1,12 +1,12 @@
 using Twilio.Clients;
 using Twilio.Exceptions;
-using Twilio.Fetchers.Fetcher;
+using Twilio.Fetchers;
 using Twilio.Http;
-using Twilio.Resources.Api.V2010.account.call.Recording;
+using Twilio.Resources.Api.V2010.Account.Call;
 
 namespace Twilio.Fetchers.Api.V2010.Account.Call {
 
-    public class RecordingFetcher : Fetcher<Recording> {
+    public class RecordingFetcher : Fetcher<RecordingResource> {
         private string accountSid;
         private string callSid;
         private string sid;
@@ -28,35 +28,33 @@ namespace Twilio.Fetchers.Api.V2010.Account.Call {
          * Make the request to the Twilio API to perform the fetch
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Fetched Recording
+         * @return Fetched RecordingResource
          */
-        [Override]
-        public Recording execute(TwilioRestClient client) {
+        public override RecordingResource execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
+                System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/" + this.callSid + "/Recordings/" + this.sid + ".json",
-                client.getAccountSid()
+                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/" + this.callSid + "/Recordings/" + this.sid + ".json"
             );
             
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("Recording fetch failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("RecordingResource fetch failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            return Recording.fromJson(response.getStream(), client.getObjectMapper());
+            return RecordingResource.fromJson(response.GetContent());
         }
     }
 }

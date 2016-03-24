@@ -1,19 +1,19 @@
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Api.V2010.account.Call;
-using com.twilio.sdk.readers.Reader;
+using Twilio.Readers;
+using Twilio.Resources.Api.V2010.Account;
 using com.twilio.sdk.resources.Page;
 using com.twilio.sdk.resources.ResourceSet;
 
 namespace Twilio.Readers.Api.V2010.Account {
 
-    public class CallReader : Reader<Call> {
+    public class CallReader : Reader<CallResource> {
         private string accountSid;
         private Twilio.Types.PhoneNumber to;
         private Twilio.Types.PhoneNumber from;
         private string parentCallSid;
-        private Call.Status status;
+        private CallResource.Status status;
         private string startTime;
         private string endTime;
     
@@ -65,7 +65,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param status Status to filter on
          * @return this
          */
-        public CallReader byStatus(Call.Status status) {
+        public CallReader byStatus(CallResource.Status status) {
             this.status = status;
             return this;
         }
@@ -96,20 +96,18 @@ namespace Twilio.Readers.Api.V2010.Account {
          * Make the request to the Twilio API to perform the read
          * 
          * @param client TwilioRestClient with which to make the request
-         * @return Call ResourceSet
+         * @return CallResource ResourceSet
          */
-        [Override]
-        public ResourceSet<Call> execute(TwilioRestClient client) {
+        public override ResourceSet<CallResource> execute(TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
+                System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Calls.json",
-                client.getAccountSid()
+                "/2010-04-01/Accounts/" + this.accountSid + "/Calls.json"
             );
             
             addQueryParams(request);
             
-            Page<Call> page = pageForRequest(client, request);
+            Page<CallResource> page = pageForRequest(client, request);
             
             return new ResourceSet<>(this, client, page);
         }
@@ -121,43 +119,41 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        [Override]
-        public Page<Call> nextPage(final String nextPageUri, final TwilioRestClient client) {
+        public override Page<CallResource> nextPage(final String nextPageUri, final TwilioRestClient client) {
             Request request = new Request(
-                HttpMethod.GET,
-                nextPageUri,
-                client.getAccountSid()
+                System.Net.Http.HttpMethod.Get,
+                nextPageUri
             );
             return pageForRequest(client, request);
         }
     
         /**
-         * Generate a Page of Call Resources for a given request
+         * Generate a Page of CallResource Resources for a given request
          * 
          * @param client TwilioRestClient with which to make the request
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected Page<Call> pageForRequest(final TwilioRestClient client, final Request request) {
+        protected Page<CallResource> pageForRequest(TwilioRestClient client, Request request) {
             Response response = client.request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("Call read failed: Unable to connect to server");
-            } else if (response.getStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.getStream(), client.getObjectMapper());
+                throw new ApiConnectionException("CallResource read failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.fromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.getMessage(),
-                    restException.getCode(),
-                    restException.getMoreInfo(),
-                    restException.getStatus(),
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
                     null
                 );
             }
             
-            Page<Call> result = new Page<>();
-            result.deserialize("calls", response.getContent(), Call.class, client.getObjectMapper());
+            Page<CallResource> result = new Page<>();
+            result.deserialize("calls", response.GetContent(), CallResource.class, client.getObjectMapper());
             
             return result;
         }
@@ -167,7 +163,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * 
          * @param request Request to add query string arguments to
          */
-        private void addQueryParams(final Request request) {
+        private void addQueryParams(Request request) {
             if (to != null) {
                 request.addQueryParam("To", to.ToString());
             }
