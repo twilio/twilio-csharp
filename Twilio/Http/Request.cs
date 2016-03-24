@@ -18,33 +18,45 @@ namespace Twilio.Http
 			this.uri = uri;
 		}
 
-		public Uri constructURL() {
+		public Uri ConstructURL() {
 			return uri;
         }
 
-		public System.Net.Http.HttpMethod getMethod() {
+		public System.Net.Http.HttpMethod GetMethod() {
             return this.method;
         }
         
-        public string getUsername() {
+        public string GetUsername() {
             return this.username;
         }
         
-        public string getPassword() {
+        public string GetPassword() {
             return this.password;
         }
 
-		public void setAuth(string username, string password) {
+		public void SetAuth(string username, string password) {
 			this.username = username;
 			this.password = password;
 		}
         
-        private static System.Net.Http.HttpContent encodeParameters(List<KeyValuePair<string, string>> data) {
+        private static System.Net.Http.HttpContent EncodeParameters(List<KeyValuePair<string, string>> data) {
             return new System.Net.Http.FormUrlEncodedContent(data);
         }
         
-        public System.Net.Http.HttpContent encodePostParams() {
-            return encodeParameters(this.postParams);
+        public System.Net.Http.HttpContent EncodePostParams() {
+            return EncodeParameters(this.postParams);
         }
+
+		public void AddQueryParam(string name, string value) {
+			AddParam(queryParams, name, value);
+		}
+
+		public void AddPostParams(string name, string value) {
+			AddParam(postParams, name, value);
+		}
+
+		private void AddParam(List<KeyValuePair<string, string>> list, string name, string value) {
+			list.Add(new KeyValuePair<string, string> (name, value));
+		}
 	}
 }

@@ -2,9 +2,8 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers;
+using Twilio.Resources;
 using Twilio.Resources.Api.V2010.Account.Sip.IpAccessControlList;
-using com.twilio.sdk.resources.Page;
-using com.twilio.sdk.resources.ResourceSet;
 
 namespace Twilio.Readers.Api.V2010.Account.Sip.Ipaccesscontrollist {
 
@@ -36,7 +35,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.Ipaccesscontrollist {
                 "/2010-04-01/Accounts/" + this.accountSid + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses.json"
             );
             
-            addQueryParams(request);
+            AddQueryParams(request);
             
             Page<IpAddressResource> page = pageForRequest(client, request);
             
@@ -50,7 +49,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.Ipaccesscontrollist {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<IpAddressResource> nextPage(final String nextPageUri, final TwilioRestClient client) {
+        public Page<IpAddressResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
@@ -71,7 +70,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.Ipaccesscontrollist {
             if (response == null) {
                 throw new ApiConnectionException("IpAddressResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -84,7 +83,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.Ipaccesscontrollist {
             }
             
             Page<IpAddressResource> result = new Page<>();
-            result.deserialize("ip_addresses", response.GetContent(), IpAddressResource.class, client.getObjectMapper());
+            result.deserialize("ip_addresses", response.GetContent());
             
             return result;
         }
@@ -94,8 +93,8 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.Ipaccesscontrollist {
          * 
          * @param request Request to add query string arguments to
          */
-        private void addQueryParams(Request request) {
-            request.addQueryParam("PageSize", Integer.toString(getPageSize()));
+        private void AddQueryParams(Request request) {
+            request.AddQueryParam("PageSize", getPageSize().ToString());
         }
     }
 }

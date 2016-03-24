@@ -2,9 +2,8 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers;
+using Twilio.Resources;
 using Twilio.Resources.Pricing.V1.Messaging;
-using com.twilio.sdk.resources.Page;
-using com.twilio.sdk.resources.ResourceSet;
 
 namespace Twilio.Readers.Pricing.V1.Messaging {
 
@@ -22,7 +21,7 @@ namespace Twilio.Readers.Pricing.V1.Messaging {
                 "/v1/Messaging/Countries"
             );
             
-            addQueryParams(request);
+            AddQueryParams(request);
             
             Page<CountryResource> page = pageForRequest(client, request);
             
@@ -36,7 +35,7 @@ namespace Twilio.Readers.Pricing.V1.Messaging {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<CountryResource> nextPage(final String nextPageUri, final TwilioRestClient client) {
+        public Page<CountryResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
@@ -57,7 +56,7 @@ namespace Twilio.Readers.Pricing.V1.Messaging {
             if (response == null) {
                 throw new ApiConnectionException("CountryResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -70,7 +69,7 @@ namespace Twilio.Readers.Pricing.V1.Messaging {
             }
             
             Page<CountryResource> result = new Page<>();
-            result.deserialize("countries", response.GetContent(), CountryResource.class, client.getObjectMapper());
+            result.deserialize("countries", response.GetContent());
             
             return result;
         }
@@ -80,8 +79,8 @@ namespace Twilio.Readers.Pricing.V1.Messaging {
          * 
          * @param request Request to add query string arguments to
          */
-        private void addQueryParams(Request request) {
-            request.addQueryParam("PageSize", Integer.toString(getPageSize()));
+        private void AddQueryParams(Request request) {
+            request.AddQueryParam("PageSize", getPageSize().ToString());
         }
     }
 }

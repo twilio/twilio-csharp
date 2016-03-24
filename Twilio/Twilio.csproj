@@ -41,6 +41,7 @@
     <Compile Include="Exceptions\ApiException.cs" />
     <Compile Include="Exceptions\AuthenticationException.cs" />
     <Compile Include="Exceptions\InvalidRequestException.cs" />
+    <Compile Include="Exceptions\RestException.cs" />
     <Compile Include="Converters\MarshalConverter.cs" />
     <Compile Include="Converters\Promoter.cs" />
     <Compile Include="Creators\Creator.cs" />

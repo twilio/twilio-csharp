@@ -2,9 +2,8 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers;
+using Twilio.Resources;
 using Twilio.Resources.Trunking.V1;
-using com.twilio.sdk.resources.Page;
-using com.twilio.sdk.resources.ResourceSet;
 
 namespace Twilio.Readers.Trunking.V1 {
 
@@ -22,7 +21,7 @@ namespace Twilio.Readers.Trunking.V1 {
                 "/v1/Trunks"
             );
             
-            addQueryParams(request);
+            AddQueryParams(request);
             
             Page<TrunkResource> page = pageForRequest(client, request);
             
@@ -36,7 +35,7 @@ namespace Twilio.Readers.Trunking.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<TrunkResource> nextPage(final String nextPageUri, final TwilioRestClient client) {
+        public Page<TrunkResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
@@ -57,7 +56,7 @@ namespace Twilio.Readers.Trunking.V1 {
             if (response == null) {
                 throw new ApiConnectionException("TrunkResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -70,7 +69,7 @@ namespace Twilio.Readers.Trunking.V1 {
             }
             
             Page<TrunkResource> result = new Page<>();
-            result.deserialize("trunks", response.GetContent(), TrunkResource.class, client.getObjectMapper());
+            result.deserialize("trunks", response.GetContent());
             
             return result;
         }
@@ -80,8 +79,8 @@ namespace Twilio.Readers.Trunking.V1 {
          * 
          * @param request Request to add query string arguments to
          */
-        private void addQueryParams(Request request) {
-            request.addQueryParam("PageSize", Integer.toString(getPageSize()));
+        private void AddQueryParams(Request request) {
+            request.AddQueryParam("PageSize", getPageSize().ToString());
         }
     }
 }

@@ -2,9 +2,8 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers;
+using Twilio.Resources;
 using Twilio.Resources.Api.V2010.Account;
-using com.twilio.sdk.resources.Page;
-using com.twilio.sdk.resources.ResourceSet;
 
 namespace Twilio.Readers.Api.V2010.Account {
 
@@ -69,7 +68,7 @@ namespace Twilio.Readers.Api.V2010.Account {
                 "/2010-04-01/Accounts/" + this.accountSid + "/Messages.json"
             );
             
-            addQueryParams(request);
+            AddQueryParams(request);
             
             Page<MessageResource> page = pageForRequest(client, request);
             
@@ -83,7 +82,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<MessageResource> nextPage(final String nextPageUri, final TwilioRestClient client) {
+        public Page<MessageResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
@@ -104,7 +103,7 @@ namespace Twilio.Readers.Api.V2010.Account {
             if (response == null) {
                 throw new ApiConnectionException("MessageResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -117,7 +116,7 @@ namespace Twilio.Readers.Api.V2010.Account {
             }
             
             Page<MessageResource> result = new Page<>();
-            result.deserialize("messages", response.GetContent(), MessageResource.class, client.getObjectMapper());
+            result.deserialize("messages", response.GetContent());
             
             return result;
         }
@@ -127,20 +126,20 @@ namespace Twilio.Readers.Api.V2010.Account {
          * 
          * @param request Request to add query string arguments to
          */
-        private void addQueryParams(Request request) {
+        private void AddQueryParams(Request request) {
             if (to != null) {
-                request.addQueryParam("To", to.ToString());
+                request.AddQueryParam("To", to.ToString());
             }
             
             if (from != null) {
-                request.addQueryParam("From", from.ToString());
+                request.AddQueryParam("From", from.ToString());
             }
             
             if (dateSent != null) {
-                request.addQueryParam("DateSent", dateSent);
+                request.AddQueryParam("DateSent", dateSent);
             }
             
-            request.addQueryParam("PageSize", Integer.toString(getPageSize()));
+            request.AddQueryParam("PageSize", getPageSize().ToString());
         }
     }
 }

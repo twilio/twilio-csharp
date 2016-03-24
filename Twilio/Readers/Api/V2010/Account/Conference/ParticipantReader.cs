@@ -2,9 +2,8 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers;
+using Twilio.Resources;
 using Twilio.Resources.Api.V2010.Account.Conference;
-using com.twilio.sdk.resources.Page;
-using com.twilio.sdk.resources.ResourceSet;
 
 namespace Twilio.Readers.Api.V2010.Account.Conference {
 
@@ -48,7 +47,7 @@ namespace Twilio.Readers.Api.V2010.Account.Conference {
                 "/2010-04-01/Accounts/" + this.accountSid + "/Conferences/" + this.conferenceSid + "/Participants.json"
             );
             
-            addQueryParams(request);
+            AddQueryParams(request);
             
             Page<ParticipantResource> page = pageForRequest(client, request);
             
@@ -62,7 +61,7 @@ namespace Twilio.Readers.Api.V2010.Account.Conference {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<ParticipantResource> nextPage(final String nextPageUri, final TwilioRestClient client) {
+        public Page<ParticipantResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
@@ -83,7 +82,7 @@ namespace Twilio.Readers.Api.V2010.Account.Conference {
             if (response == null) {
                 throw new ApiConnectionException("ParticipantResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -96,7 +95,7 @@ namespace Twilio.Readers.Api.V2010.Account.Conference {
             }
             
             Page<ParticipantResource> result = new Page<>();
-            result.deserialize("participants", response.GetContent(), ParticipantResource.class, client.getObjectMapper());
+            result.deserialize("participants", response.GetContent());
             
             return result;
         }
@@ -106,12 +105,12 @@ namespace Twilio.Readers.Api.V2010.Account.Conference {
          * 
          * @param request Request to add query string arguments to
          */
-        private void addQueryParams(Request request) {
+        private void AddQueryParams(Request request) {
             if (muted != null) {
-                request.addQueryParam("Muted", muted.ToString());
+                request.AddQueryParam("Muted", muted.ToString());
             }
             
-            request.addQueryParam("PageSize", Integer.toString(getPageSize()));
+            request.AddQueryParam("PageSize", getPageSize().ToString());
         }
     }
 }

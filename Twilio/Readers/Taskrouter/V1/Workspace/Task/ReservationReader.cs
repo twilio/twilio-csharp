@@ -2,9 +2,8 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers;
+using Twilio.Resources;
 using Twilio.Resources.Taskrouter.V1.Workspace.Task;
-using com.twilio.sdk.resources.Page;
-using com.twilio.sdk.resources.ResourceSet;
 
 namespace Twilio.Readers.Taskrouter.V1.Workspace.Task {
 
@@ -36,7 +35,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.Task {
                 "/v1/Workspaces/" + this.workspaceSid + "/Tasks/" + this.taskSid + "/Reservations"
             );
             
-            addQueryParams(request);
+            AddQueryParams(request);
             
             Page<ReservationResource> page = pageForRequest(client, request);
             
@@ -50,7 +49,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.Task {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<ReservationResource> nextPage(final String nextPageUri, final TwilioRestClient client) {
+        public Page<ReservationResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
@@ -71,7 +70,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.Task {
             if (response == null) {
                 throw new ApiConnectionException("ReservationResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -84,7 +83,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.Task {
             }
             
             Page<ReservationResource> result = new Page<>();
-            result.deserialize("reservations", response.GetContent(), ReservationResource.class, client.getObjectMapper());
+            result.deserialize("reservations", response.GetContent());
             
             return result;
         }
@@ -94,8 +93,8 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.Task {
          * 
          * @param request Request to add query string arguments to
          */
-        private void addQueryParams(Request request) {
-            request.addQueryParam("PageSize", Integer.toString(getPageSize()));
+        private void AddQueryParams(Request request) {
+            request.AddQueryParam("PageSize", getPageSize().ToString());
         }
     }
 }

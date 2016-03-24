@@ -2,9 +2,8 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers;
+using Twilio.Resources;
 using Twilio.Resources.Api.V2010.Account.Usage.Record;
-using com.twilio.sdk.resources.Page;
-using com.twilio.sdk.resources.ResourceSet;
 
 namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
 
@@ -33,7 +32,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
                 "/2010-04-01/Accounts/" + this.accountSid + "/Usage/Records/Today.json"
             );
             
-            addQueryParams(request);
+            AddQueryParams(request);
             
             Page<TodayResource> page = pageForRequest(client, request);
             
@@ -47,7 +46,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<TodayResource> nextPage(final String nextPageUri, final TwilioRestClient client) {
+        public Page<TodayResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
@@ -68,7 +67,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
             if (response == null) {
                 throw new ApiConnectionException("TodayResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -81,7 +80,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
             }
             
             Page<TodayResource> result = new Page<>();
-            result.deserialize("usage_records", response.GetContent(), TodayResource.class, client.getObjectMapper());
+            result.deserialize("usage_records", response.GetContent());
             
             return result;
         }
@@ -91,8 +90,8 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
          * 
          * @param request Request to add query string arguments to
          */
-        private void addQueryParams(Request request) {
-            request.addQueryParam("PageSize", Integer.toString(getPageSize()));
+        private void AddQueryParams(Request request) {
+            request.AddQueryParam("PageSize", getPageSize().ToString());
         }
     }
 }

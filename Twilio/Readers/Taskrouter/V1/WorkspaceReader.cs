@@ -2,9 +2,8 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers;
+using Twilio.Resources;
 using Twilio.Resources.Taskrouter.V1;
-using com.twilio.sdk.resources.Page;
-using com.twilio.sdk.resources.ResourceSet;
 
 namespace Twilio.Readers.Taskrouter.V1 {
 
@@ -35,7 +34,7 @@ namespace Twilio.Readers.Taskrouter.V1 {
                 "/v1/Workspaces"
             );
             
-            addQueryParams(request);
+            AddQueryParams(request);
             
             Page<WorkspaceResource> page = pageForRequest(client, request);
             
@@ -49,7 +48,7 @@ namespace Twilio.Readers.Taskrouter.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<WorkspaceResource> nextPage(final String nextPageUri, final TwilioRestClient client) {
+        public Page<WorkspaceResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
@@ -70,7 +69,7 @@ namespace Twilio.Readers.Taskrouter.V1 {
             if (response == null) {
                 throw new ApiConnectionException("WorkspaceResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -83,7 +82,7 @@ namespace Twilio.Readers.Taskrouter.V1 {
             }
             
             Page<WorkspaceResource> result = new Page<>();
-            result.deserialize("workspaces", response.GetContent(), WorkspaceResource.class, client.getObjectMapper());
+            result.deserialize("workspaces", response.GetContent());
             
             return result;
         }
@@ -93,12 +92,12 @@ namespace Twilio.Readers.Taskrouter.V1 {
          * 
          * @param request Request to add query string arguments to
          */
-        private void addQueryParams(Request request) {
+        private void AddQueryParams(Request request) {
             if (friendlyName != null) {
-                request.addQueryParam("FriendlyName", friendlyName);
+                request.AddQueryParam("FriendlyName", friendlyName);
             }
             
-            request.addQueryParam("PageSize", Integer.toString(getPageSize()));
+            request.AddQueryParam("PageSize", getPageSize().ToString());
         }
     }
 }

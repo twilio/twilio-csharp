@@ -2,9 +2,8 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers;
+using Twilio.Resources;
 using Twilio.Resources.Api.V2010.Account.IncomingPhoneNumber;
-using com.twilio.sdk.resources.Page;
-using com.twilio.sdk.resources.ResourceSet;
 
 namespace Twilio.Readers.Api.V2010.Account.Incomingphonenumber {
 
@@ -69,7 +68,7 @@ namespace Twilio.Readers.Api.V2010.Account.Incomingphonenumber {
                 "/2010-04-01/Accounts/" + this.ownerAccountSid + "/IncomingPhoneNumbers/TollFree.json"
             );
             
-            addQueryParams(request);
+            AddQueryParams(request);
             
             Page<TollFreeResource> page = pageForRequest(client, request);
             
@@ -83,7 +82,7 @@ namespace Twilio.Readers.Api.V2010.Account.Incomingphonenumber {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<TollFreeResource> nextPage(final String nextPageUri, final TwilioRestClient client) {
+        public Page<TollFreeResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
@@ -104,7 +103,7 @@ namespace Twilio.Readers.Api.V2010.Account.Incomingphonenumber {
             if (response == null) {
                 throw new ApiConnectionException("TollFreeResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -117,7 +116,7 @@ namespace Twilio.Readers.Api.V2010.Account.Incomingphonenumber {
             }
             
             Page<TollFreeResource> result = new Page<>();
-            result.deserialize("incoming_phone_numbers", response.GetContent(), TollFreeResource.class, client.getObjectMapper());
+            result.deserialize("incoming_phone_numbers", response.GetContent());
             
             return result;
         }
@@ -127,20 +126,20 @@ namespace Twilio.Readers.Api.V2010.Account.Incomingphonenumber {
          * 
          * @param request Request to add query string arguments to
          */
-        private void addQueryParams(Request request) {
+        private void AddQueryParams(Request request) {
             if (beta != null) {
-                request.addQueryParam("Beta", beta.ToString());
+                request.AddQueryParam("Beta", beta.ToString());
             }
             
             if (friendlyName != null) {
-                request.addQueryParam("FriendlyName", friendlyName);
+                request.AddQueryParam("FriendlyName", friendlyName);
             }
             
             if (phoneNumber != null) {
-                request.addQueryParam("PhoneNumber", phoneNumber.ToString());
+                request.AddQueryParam("PhoneNumber", phoneNumber.ToString());
             }
             
-            request.addQueryParam("PageSize", Integer.toString(getPageSize()));
+            request.AddQueryParam("PageSize", getPageSize().ToString());
         }
     }
 }

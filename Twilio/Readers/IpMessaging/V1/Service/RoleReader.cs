@@ -2,9 +2,8 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers;
+using Twilio.Resources;
 using Twilio.Resources.Ipmessaging.V1.Service;
-using com.twilio.sdk.resources.Page;
-using com.twilio.sdk.resources.ResourceSet;
 
 namespace Twilio.Readers.IpMessaging.V1.Service {
 
@@ -33,7 +32,7 @@ namespace Twilio.Readers.IpMessaging.V1.Service {
                 "/v1/Services/" + this.serviceSid + "/Roles"
             );
             
-            addQueryParams(request);
+            AddQueryParams(request);
             
             Page<RoleResource> page = pageForRequest(client, request);
             
@@ -47,7 +46,7 @@ namespace Twilio.Readers.IpMessaging.V1.Service {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<RoleResource> nextPage(final String nextPageUri, final TwilioRestClient client) {
+        public Page<RoleResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
@@ -68,7 +67,7 @@ namespace Twilio.Readers.IpMessaging.V1.Service {
             if (response == null) {
                 throw new ApiConnectionException("RoleResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -81,7 +80,7 @@ namespace Twilio.Readers.IpMessaging.V1.Service {
             }
             
             Page<RoleResource> result = new Page<>();
-            result.deserialize("roles", response.GetContent(), RoleResource.class, client.getObjectMapper());
+            result.deserialize("roles", response.GetContent());
             
             return result;
         }
@@ -91,8 +90,8 @@ namespace Twilio.Readers.IpMessaging.V1.Service {
          * 
          * @param request Request to add query string arguments to
          */
-        private void addQueryParams(Request request) {
-            request.addQueryParam("PageSize", Integer.toString(getPageSize()));
+        private void AddQueryParams(Request request) {
+            request.AddQueryParam("PageSize", getPageSize().ToString());
         }
     }
 }

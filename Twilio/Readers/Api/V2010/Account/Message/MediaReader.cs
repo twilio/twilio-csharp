@@ -2,9 +2,8 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers;
+using Twilio.Resources;
 using Twilio.Resources.Api.V2010.Account.Message;
-using com.twilio.sdk.resources.Page;
-using com.twilio.sdk.resources.ResourceSet;
 
 namespace Twilio.Readers.Api.V2010.Account.Message {
 
@@ -49,7 +48,7 @@ namespace Twilio.Readers.Api.V2010.Account.Message {
                 "/2010-04-01/Accounts/" + this.accountSid + "/Messages/" + this.messageSid + "/Media.json"
             );
             
-            addQueryParams(request);
+            AddQueryParams(request);
             
             Page<MediaResource> page = pageForRequest(client, request);
             
@@ -63,7 +62,7 @@ namespace Twilio.Readers.Api.V2010.Account.Message {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<MediaResource> nextPage(final String nextPageUri, final TwilioRestClient client) {
+        public Page<MediaResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
@@ -84,7 +83,7 @@ namespace Twilio.Readers.Api.V2010.Account.Message {
             if (response == null) {
                 throw new ApiConnectionException("MediaResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -97,7 +96,7 @@ namespace Twilio.Readers.Api.V2010.Account.Message {
             }
             
             Page<MediaResource> result = new Page<>();
-            result.deserialize("media_list", response.GetContent(), MediaResource.class, client.getObjectMapper());
+            result.deserialize("media_list", response.GetContent());
             
             return result;
         }
@@ -107,12 +106,12 @@ namespace Twilio.Readers.Api.V2010.Account.Message {
          * 
          * @param request Request to add query string arguments to
          */
-        private void addQueryParams(Request request) {
+        private void AddQueryParams(Request request) {
             if (dateCreated != null) {
-                request.addQueryParam("DateCreated", dateCreated);
+                request.AddQueryParam("DateCreated", dateCreated);
             }
             
-            request.addQueryParam("PageSize", Integer.toString(getPageSize()));
+            request.AddQueryParam("PageSize", getPageSize().ToString());
         }
     }
 }

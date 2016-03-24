@@ -2,9 +2,8 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers;
+using Twilio.Resources;
 using Twilio.Resources.Monitor.V1;
-using com.twilio.sdk.resources.Page;
-using com.twilio.sdk.resources.ResourceSet;
 
 namespace Twilio.Readers.Monitor.V1 {
 
@@ -95,7 +94,7 @@ namespace Twilio.Readers.Monitor.V1 {
                 "/v1/Events"
             );
             
-            addQueryParams(request);
+            AddQueryParams(request);
             
             Page<EventResource> page = pageForRequest(client, request);
             
@@ -109,7 +108,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<EventResource> nextPage(final String nextPageUri, final TwilioRestClient client) {
+        public Page<EventResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
@@ -130,7 +129,7 @@ namespace Twilio.Readers.Monitor.V1 {
             if (response == null) {
                 throw new ApiConnectionException("EventResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -143,7 +142,7 @@ namespace Twilio.Readers.Monitor.V1 {
             }
             
             Page<EventResource> result = new Page<>();
-            result.deserialize("events", response.GetContent(), EventResource.class, client.getObjectMapper());
+            result.deserialize("events", response.GetContent());
             
             return result;
         }
@@ -153,32 +152,32 @@ namespace Twilio.Readers.Monitor.V1 {
          * 
          * @param request Request to add query string arguments to
          */
-        private void addQueryParams(Request request) {
+        private void AddQueryParams(Request request) {
             if (actorSid != null) {
-                request.addQueryParam("ActorSid", actorSid);
+                request.AddQueryParam("ActorSid", actorSid);
             }
             
             if (endDate != null) {
-                request.addQueryParam("EndDate", endDate);
+                request.AddQueryParam("EndDate", endDate);
             }
             
             if (eventType != null) {
-                request.addQueryParam("EventType", eventType);
+                request.AddQueryParam("EventType", eventType);
             }
             
             if (resourceSid != null) {
-                request.addQueryParam("ResourceSid", resourceSid);
+                request.AddQueryParam("ResourceSid", resourceSid);
             }
             
             if (sourceIpAddress != null) {
-                request.addQueryParam("SourceIpAddress", sourceIpAddress);
+                request.AddQueryParam("SourceIpAddress", sourceIpAddress);
             }
             
             if (startDate != null) {
-                request.addQueryParam("StartDate", startDate);
+                request.AddQueryParam("StartDate", startDate);
             }
             
-            request.addQueryParam("PageSize", Integer.toString(getPageSize()));
+            request.AddQueryParam("PageSize", getPageSize().ToString());
         }
     }
 }
