@@ -24,7 +24,7 @@ namespace Twilio.Fetchers.Pricing.V1.Voice {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched CountryResource
          */
-        public override CountryResource execute(TwilioRestClient client) {
+        public CountryResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.PRICING,

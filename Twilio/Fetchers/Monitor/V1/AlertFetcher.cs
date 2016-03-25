@@ -24,7 +24,7 @@ namespace Twilio.Fetchers.Monitor.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched AlertResource
          */
-        public override AlertResource execute(TwilioRestClient client) {
+        public AlertResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.MONITOR,

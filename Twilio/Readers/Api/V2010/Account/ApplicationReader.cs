@@ -38,7 +38,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return ApplicationResource ResourceSet
          */
-        public override ResourceSet<ApplicationResource> execute(TwilioRestClient client) {
+        public ResourceSet<ApplicationResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,

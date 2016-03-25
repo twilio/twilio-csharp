@@ -27,7 +27,7 @@ namespace Twilio.Creators.Api.V2010 {
          * @param client TwilioRestClient with which to make the request
          * @return Created AccountResource
          */
-        public override AccountResource execute(TwilioRestClient client) {
+        public AccountResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,

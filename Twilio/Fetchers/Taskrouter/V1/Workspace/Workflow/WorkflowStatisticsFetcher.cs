@@ -65,7 +65,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Workflow {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched WorkflowStatisticsResource
          */
-        public override WorkflowStatisticsResource execute(TwilioRestClient client) {
+        public WorkflowStatisticsResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TASKROUTER,

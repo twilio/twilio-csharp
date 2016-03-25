@@ -34,7 +34,7 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
          * @param client TwilioRestClient with which to make the request
          * @return Updated RoleResource
          */
-        public override RoleResource execute(TwilioRestClient client) {
+        public RoleResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.IPMESSAGING,

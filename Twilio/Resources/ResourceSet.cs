@@ -20,7 +20,7 @@ namespace Twilio.Resources
 			autoPaging = true;
 		}
 
-		override System.Collections.IEnumerator GetEnumerator() {
+		public System.Collections.IEnumerator GetEnumerator() {
 			return new ResourceSetIterator<>(this);
 		}
 
@@ -51,15 +51,15 @@ namespace Twilio.Resources
 			reader.setPageSize(pageSize);
 		}
 
-		public class ResourceSetIterator<E> : IEnumerator<E> where E : Resource
+		public class ResourceSetIterator<R> : IEnumerator<R> where R : Resource
 		{
-			private ResourceSet<E> resourceSet;
+			private ResourceSet<R> resourceSet;
 
-			public ResourceSetIterator(ResourceSet<E> resourceSet) {
+			public ResourceSetIterator(ResourceSet<R> resourceSet) {
 				this.resourceSet = resourceSet;
 			}
 
-			public E Current {
+			public R Current {
 				get { resourceSet.GetEnumerator().Current; }
 			}
 

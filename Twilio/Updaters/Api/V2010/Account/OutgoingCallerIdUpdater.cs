@@ -39,7 +39,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Updated OutgoingCallerIdResource
          */
-        public override OutgoingCallerIdResource execute(TwilioRestClient client) {
+        public OutgoingCallerIdResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,

@@ -29,7 +29,7 @@ namespace Twilio.Deleters.Api.V2010.Account.Sip.CredentialList {
          * 
          * @param client TwilioRestClient with which to make the request
          */
-        public override void execute(TwilioRestClient client) {
+        public void execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Delete,
                 TwilioRestClient.Domains.API,

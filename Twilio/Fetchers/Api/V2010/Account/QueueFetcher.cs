@@ -27,7 +27,7 @@ namespace Twilio.Fetchers.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched QueueResource
          */
-        public override QueueResource execute(TwilioRestClient client) {
+        public QueueResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,

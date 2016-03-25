@@ -109,7 +109,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param client TwilioRestClient with which to make the request
          * @return WorkerResource ResourceSet
          */
-        public override ResourceSet<WorkerResource> execute(TwilioRestClient client) {
+        public ResourceSet<WorkerResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TASKROUTER,

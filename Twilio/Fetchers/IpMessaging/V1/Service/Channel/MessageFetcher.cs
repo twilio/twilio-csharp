@@ -30,7 +30,7 @@ namespace Twilio.Fetchers.IpMessaging.V1.Service.Channel {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched MessageResource
          */
-        public override MessageResource execute(TwilioRestClient client) {
+        public MessageResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.IPMESSAGING,

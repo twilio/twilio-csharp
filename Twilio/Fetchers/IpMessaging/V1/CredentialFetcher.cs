@@ -24,7 +24,7 @@ namespace Twilio.Fetchers.IpMessaging.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched CredentialResource
          */
-        public override CredentialResource execute(TwilioRestClient client) {
+        public CredentialResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.IPMESSAGING,

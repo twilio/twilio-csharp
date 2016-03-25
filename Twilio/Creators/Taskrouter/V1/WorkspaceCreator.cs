@@ -48,7 +48,7 @@ namespace Twilio.Creators.Taskrouter.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Created WorkspaceResource
          */
-        public override WorkspaceResource execute(TwilioRestClient client) {
+        public WorkspaceResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TASKROUTER,

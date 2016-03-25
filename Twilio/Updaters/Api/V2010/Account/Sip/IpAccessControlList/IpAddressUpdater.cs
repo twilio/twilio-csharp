@@ -36,7 +36,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip.IpAccessControlList {
          * @param client TwilioRestClient with which to make the request
          * @return Updated IpAddressResource
          */
-        public override IpAddressResource execute(TwilioRestClient client) {
+        public IpAddressResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,

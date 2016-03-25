@@ -3,14 +3,14 @@ using System;
 using System.Collections.Generic;
 using Twilio.Clients;
 using Twilio.Converters;
-using Twilio.Creators.Ipmessaging.V1;
-using Twilio.Deleters.Ipmessaging.V1;
+using Twilio.Creators.IpMessaging.V1;
+using Twilio.Deleters.IpMessaging.V1;
 using Twilio.Exceptions;
-using Twilio.Fetchers.Ipmessaging.V1;
+using Twilio.Fetchers.IpMessaging.V1;
 using Twilio.Http;
-using Twilio.Readers.Ipmessaging.V1;
+using Twilio.Readers.IpMessaging.V1;
 using Twilio.Resources;
-using Twilio.Updaters.Ipmessaging.V1;
+using Twilio.Updaters.IpMessaging.V1;
 
 namespace Twilio.Resources.IpMessaging.V1 {
 

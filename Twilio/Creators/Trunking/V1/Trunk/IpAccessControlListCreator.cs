@@ -27,7 +27,7 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
          * @param client TwilioRestClient with which to make the request
          * @return Created IpAccessControlListResource
          */
-        public override IpAccessControlListResource execute(TwilioRestClient client) {
+        public IpAccessControlListResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TRUNKING,

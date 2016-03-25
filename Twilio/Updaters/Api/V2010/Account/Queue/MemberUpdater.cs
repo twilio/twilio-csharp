@@ -37,7 +37,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Queue {
          * @param client TwilioRestClient with which to make the request
          * @return Updated MemberResource
          */
-        public override MemberResource execute(TwilioRestClient client) {
+        public MemberResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,

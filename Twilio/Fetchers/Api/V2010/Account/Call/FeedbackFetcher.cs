@@ -27,7 +27,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Call {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched FeedbackResource
          */
-        public override FeedbackResource execute(TwilioRestClient client) {
+        public FeedbackResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,

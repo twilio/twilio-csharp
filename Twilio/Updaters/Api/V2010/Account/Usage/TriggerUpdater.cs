@@ -76,7 +76,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Usage {
          * @param client TwilioRestClient with which to make the request
          * @return Updated TriggerResource
          */
-        public override TriggerResource execute(TwilioRestClient client) {
+        public TriggerResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,

@@ -155,7 +155,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param client TwilioRestClient with which to make the request
          * @return Updated DomainResource
          */
-        public override DomainResource execute(TwilioRestClient client) {
+        public DomainResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,

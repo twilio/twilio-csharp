@@ -30,7 +30,7 @@ namespace Twilio.Creators.Conversations.V1.Conversation {
          * @param client TwilioRestClient with which to make the request
          * @return Created ParticipantResource
          */
-        public override ParticipantResource execute(TwilioRestClient client) {
+        public ParticipantResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.CONVERSATIONS,

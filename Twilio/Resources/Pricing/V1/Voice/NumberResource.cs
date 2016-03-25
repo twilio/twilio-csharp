@@ -76,8 +76,8 @@ namespace Twilio.Resources.Pricing.V1.Voice {
         /**
          * @return The number
          */
-        public string getSid() {
-            return this.getNumber().ToString();
+        public string GetSid() {
+            return this.GetNumber().ToString();
         }
     
         /**

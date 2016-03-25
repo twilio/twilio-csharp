@@ -48,7 +48,7 @@ namespace Twilio.Fetchers.Lookups.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched PhoneNumberResource
          */
-        public override PhoneNumberResource execute(TwilioRestClient client) {
+        public PhoneNumberResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.LOOKUPS,

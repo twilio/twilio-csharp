@@ -30,7 +30,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Conference {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched ParticipantResource
          */
-        public override ParticipantResource execute(TwilioRestClient client) {
+        public ParticipantResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,

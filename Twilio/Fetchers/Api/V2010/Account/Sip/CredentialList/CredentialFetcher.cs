@@ -30,7 +30,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip.CredentialList {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched CredentialResource
          */
-        public override CredentialResource execute(TwilioRestClient client) {
+        public CredentialResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,

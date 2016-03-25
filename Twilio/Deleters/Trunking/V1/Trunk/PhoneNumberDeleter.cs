@@ -26,7 +26,7 @@ namespace Twilio.Deleters.Trunking.V1.Trunk {
          * 
          * @param client TwilioRestClient with which to make the request
          */
-        public override void execute(TwilioRestClient client) {
+        public void execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Delete,
                 TwilioRestClient.Domains.TRUNKING,

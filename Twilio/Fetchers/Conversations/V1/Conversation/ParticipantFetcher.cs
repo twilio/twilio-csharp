@@ -27,7 +27,7 @@ namespace Twilio.Fetchers.Conversations.V1.Conversation {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched ParticipantResource
          */
-        public override ParticipantResource execute(TwilioRestClient client) {
+        public ParticipantResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.CONVERSATIONS,

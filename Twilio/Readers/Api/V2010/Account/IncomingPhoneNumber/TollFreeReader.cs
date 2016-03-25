@@ -61,7 +61,7 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
          * @param client TwilioRestClient with which to make the request
          * @return TollFreeResource ResourceSet
          */
-        public override ResourceSet<TollFreeResource> execute(TwilioRestClient client) {
+        public ResourceSet<TollFreeResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,

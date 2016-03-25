@@ -51,7 +51,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sms {
          * @param client TwilioRestClient with which to make the request
          * @return ShortCodeResource ResourceSet
          */
-        public override ResourceSet<ShortCodeResource> execute(TwilioRestClient client) {
+        public ResourceSet<ShortCodeResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,

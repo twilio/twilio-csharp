@@ -27,7 +27,7 @@ namespace Twilio.Fetchers.Trunking.V1.Trunk {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched PhoneNumberResource
          */
-        public override PhoneNumberResource execute(TwilioRestClient client) {
+        public PhoneNumberResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TRUNKING,

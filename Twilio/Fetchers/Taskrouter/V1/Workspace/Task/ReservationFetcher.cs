@@ -30,7 +30,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Task {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched ReservationResource
          */
-        public override ReservationResource execute(TwilioRestClient client) {
+        public ReservationResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TASKROUTER,

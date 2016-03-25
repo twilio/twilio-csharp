@@ -49,7 +49,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return OutgoingCallerIdResource ResourceSet
          */
-        public override ResourceSet<OutgoingCallerIdResource> execute(TwilioRestClient client) {
+        public ResourceSet<OutgoingCallerIdResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,

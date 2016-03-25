@@ -108,7 +108,7 @@ namespace Twilio.Updaters.Trunking.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Updated TrunkResource
          */
-        public override TrunkResource execute(TwilioRestClient client) {
+        public TrunkResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TRUNKING,

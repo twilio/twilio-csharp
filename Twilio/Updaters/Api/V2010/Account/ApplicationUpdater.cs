@@ -307,7 +307,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Updated ApplicationResource
          */
-        public override ApplicationResource execute(TwilioRestClient client) {
+        public ApplicationResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,

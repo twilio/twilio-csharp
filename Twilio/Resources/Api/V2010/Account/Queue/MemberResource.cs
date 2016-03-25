@@ -96,8 +96,8 @@ namespace Twilio.Resources.Api.V2010.Account.Queue {
         /**
          * @return Unique string that identifies this resource
          */
-        public string getSid() {
-            return this.getCallSid();
+        public string GetSid() {
+            return this.GetCallSid();
         }
     
         /**

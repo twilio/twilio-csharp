@@ -27,7 +27,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sms {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched SmsMessageResource
          */
-        public override SmsMessageResource execute(TwilioRestClient client) {
+        public SmsMessageResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,

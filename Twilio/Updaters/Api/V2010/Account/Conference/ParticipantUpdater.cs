@@ -33,7 +33,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Conference {
          * @param client TwilioRestClient with which to make the request
          * @return Updated ParticipantResource
          */
-        public override ParticipantResource execute(TwilioRestClient client) {
+        public ParticipantResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,

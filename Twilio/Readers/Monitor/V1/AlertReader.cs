@@ -51,7 +51,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return AlertResource ResourceSet
          */
-        public override ResourceSet<AlertResource> execute(TwilioRestClient client) {
+        public ResourceSet<AlertResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.MONITOR,

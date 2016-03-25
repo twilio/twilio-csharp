@@ -27,7 +27,7 @@ namespace Twilio.Fetchers.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched RecordingResource
          */
-        public override RecordingResource execute(TwilioRestClient client) {
+        public RecordingResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,

@@ -29,7 +29,7 @@ namespace Twilio.Deleters.IpMessaging.V1.Service.Channel {
          * 
          * @param client TwilioRestClient with which to make the request
          */
-        public override void execute(TwilioRestClient client) {
+        public void execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Delete,
                 TwilioRestClient.Domains.IPMESSAGING,

@@ -14,7 +14,7 @@ namespace Twilio.Readers.Pricing.V1.PhoneNumber {
          * @param client TwilioRestClient with which to make the request
          * @return CountryResource ResourceSet
          */
-        public override ResourceSet<CountryResource> execute(TwilioRestClient client) {
+        public ResourceSet<CountryResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.PRICING,

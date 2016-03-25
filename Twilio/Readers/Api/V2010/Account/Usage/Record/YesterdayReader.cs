@@ -25,7 +25,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
          * @param client TwilioRestClient with which to make the request
          * @return YesterdayResource ResourceSet
          */
-        public override ResourceSet<YesterdayResource> execute(TwilioRestClient client) {
+        public ResourceSet<YesterdayResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,

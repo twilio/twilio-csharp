@@ -14,7 +14,7 @@ namespace Twilio.Readers.IpMessaging.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return ServiceResource ResourceSet
          */
-        public override ResourceSet<ServiceResource> execute(TwilioRestClient client) {
+        public ResourceSet<ServiceResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.IPMESSAGING,

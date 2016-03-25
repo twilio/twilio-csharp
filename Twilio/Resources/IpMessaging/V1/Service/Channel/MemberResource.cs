@@ -2,12 +2,12 @@ using Newtonsoft.Json;
 using System;
 using Twilio.Clients;
 using Twilio.Converters;
-using Twilio.Creators.Ipmessaging.V1.Service.Channel;
-using Twilio.Deleters.Ipmessaging.V1.Service.Channel;
+using Twilio.Creators.IpMessaging.V1.Service.Channel;
+using Twilio.Deleters.IpMessaging.V1.Service.Channel;
 using Twilio.Exceptions;
-using Twilio.Fetchers.Ipmessaging.V1.Service.Channel;
+using Twilio.Fetchers.IpMessaging.V1.Service.Channel;
 using Twilio.Http;
-using Twilio.Readers.Ipmessaging.V1.Service.Channel;
+using Twilio.Readers.IpMessaging.V1.Service.Channel;
 using Twilio.Resources;
 
 namespace Twilio.Resources.IpMessaging.V1.Service.Channel {

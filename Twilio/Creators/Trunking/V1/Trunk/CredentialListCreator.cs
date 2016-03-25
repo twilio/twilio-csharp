@@ -27,7 +27,7 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
          * @param client TwilioRestClient with which to make the request
          * @return Created CredentialListResource
          */
-        public override CredentialListResource execute(TwilioRestClient client) {
+        public CredentialListResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TRUNKING,

@@ -55,7 +55,7 @@ namespace Twilio.Creators.IpMessaging.V1.Service {
          * @param client TwilioRestClient with which to make the request
          * @return Created ChannelResource
          */
-        public override ChannelResource execute(TwilioRestClient client) {
+        public ChannelResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.IPMESSAGING,

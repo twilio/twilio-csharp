@@ -14,7 +14,7 @@ namespace Twilio.Readers.Trunking.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return TrunkResource ResourceSet
          */
-        public override ResourceSet<TrunkResource> execute(TwilioRestClient client) {
+        public ResourceSet<TrunkResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TRUNKING,

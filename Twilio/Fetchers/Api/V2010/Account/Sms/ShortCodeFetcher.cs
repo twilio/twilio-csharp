@@ -27,7 +27,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sms {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched ShortCodeResource
          */
-        public override ShortCodeResource execute(TwilioRestClient client) {
+        public ShortCodeResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,

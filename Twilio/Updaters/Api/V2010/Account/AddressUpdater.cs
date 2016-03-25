@@ -99,7 +99,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Updated AddressResource
          */
-        public override AddressResource execute(TwilioRestClient client) {
+        public AddressResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,

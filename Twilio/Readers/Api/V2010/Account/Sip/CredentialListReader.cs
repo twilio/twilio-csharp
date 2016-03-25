@@ -25,7 +25,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip {
          * @param client TwilioRestClient with which to make the request
          * @return CredentialListResource ResourceSet
          */
-        public override ResourceSet<CredentialListResource> execute(TwilioRestClient client) {
+        public ResourceSet<CredentialListResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,

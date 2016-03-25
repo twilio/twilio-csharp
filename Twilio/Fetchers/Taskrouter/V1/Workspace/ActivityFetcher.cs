@@ -27,7 +27,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched ActivityResource
          */
-        public override ActivityResource execute(TwilioRestClient client) {
+        public ActivityResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TASKROUTER,

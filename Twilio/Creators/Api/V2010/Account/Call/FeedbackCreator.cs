@@ -54,7 +54,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
          * @param client TwilioRestClient with which to make the request
          * @return Created FeedbackResource
          */
-        public override FeedbackResource execute(TwilioRestClient client) {
+        public FeedbackResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,

@@ -30,7 +30,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip.Domain {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched IpAccessControlListMappingResource
          */
-        public override IpAccessControlListMappingResource execute(TwilioRestClient client) {
+        public IpAccessControlListMappingResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,

@@ -128,8 +128,8 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
         /**
          * @return A string that uniquely identifies this call
          */
-        public string getSid() {
-            return this.getCallSid();
+        public string GetSid() {
+            return this.GetCallSid();
         }
     
         /**

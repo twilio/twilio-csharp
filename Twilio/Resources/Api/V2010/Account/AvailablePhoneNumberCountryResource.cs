@@ -79,8 +79,8 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The country_code
          */
-        public string getSid() {
-            return this.getCountryCode();
+        public string GetSid() {
+            return this.GetCountryCode();
         }
     
         /**

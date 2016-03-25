@@ -82,8 +82,8 @@ namespace Twilio.Resources.Pricing.V1.PhoneNumber {
         /**
          * @return The iso_country
          */
-        public string getSid() {
-            return this.getIsoCountry();
+        public string GetSid() {
+            return this.GetIsoCountry();
         }
     
         /**

@@ -75,7 +75,7 @@ namespace Twilio.Creators.IpMessaging.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Created CredentialResource
          */
-        public override CredentialResource execute(TwilioRestClient client) {
+        public CredentialResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.IPMESSAGING,

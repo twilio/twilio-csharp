@@ -28,7 +28,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.Domain {
          * @param client TwilioRestClient with which to make the request
          * @return IpAccessControlListMappingResource ResourceSet
          */
-        public override ResourceSet<IpAccessControlListMappingResource> execute(TwilioRestClient client) {
+        public ResourceSet<IpAccessControlListMappingResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,

@@ -30,7 +30,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Recording {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched TranscriptionResource
          */
-        public override TranscriptionResource execute(TwilioRestClient client) {
+        public TranscriptionResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,

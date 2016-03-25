@@ -30,7 +30,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip.IpAccessControlList {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched IpAddressResource
          */
-        public override IpAddressResource execute(TwilioRestClient client) {
+        public IpAddressResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,

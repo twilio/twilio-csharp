@@ -67,8 +67,8 @@ namespace Twilio.Resources.Lookups.V1 {
         /**
          * @return The phone_number
          */
-        public string getSid() {
-            return this.getPhoneNumber().ToString();
+        public string GetSid() {
+            return this.GetPhoneNumber().ToString();
         }
     
         /**

@@ -45,7 +45,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
          * @param client TwilioRestClient with which to make the request
          * @return Updated ReservationResource
          */
-        public override ReservationResource execute(TwilioRestClient client) {
+        public ReservationResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TASKROUTER,

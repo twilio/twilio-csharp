@@ -30,7 +30,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
          * @param client TwilioRestClient with which to make the request
          * @return Created CredentialListMappingResource
          */
-        public override CredentialListMappingResource execute(TwilioRestClient client) {
+        public CredentialListMappingResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,

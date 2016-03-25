@@ -99,7 +99,7 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
          * @param client TwilioRestClient with which to make the request
          * @return Updated OriginationUrlResource
          */
-        public override OriginationUrlResource execute(TwilioRestClient client) {
+        public OriginationUrlResource execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TRUNKING,

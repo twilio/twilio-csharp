@@ -25,7 +25,7 @@ namespace Twilio.Readers.Conversations.V1.Conversation {
          * @param client TwilioRestClient with which to make the request
          * @return ParticipantResource ResourceSet
          */
-        public override ResourceSet<ParticipantResource> execute(TwilioRestClient client) {
+        public ResourceSet<ParticipantResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.CONVERSATIONS,

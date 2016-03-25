@@ -25,7 +25,7 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
          * @param client TwilioRestClient with which to make the request
          * @return OriginationUrlResource ResourceSet
          */
-        public override ResourceSet<OriginationUrlResource> execute(TwilioRestClient client) {
+        public ResourceSet<OriginationUrlResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TRUNKING,

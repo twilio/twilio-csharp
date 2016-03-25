@@ -110,8 +110,8 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return A string that uniquely identifies this app
          */
-        public string getSid() {
-            return this.getConnectAppSid();
+        public string GetSid() {
+            return this.GetConnectAppSid();
         }
     
         /**
