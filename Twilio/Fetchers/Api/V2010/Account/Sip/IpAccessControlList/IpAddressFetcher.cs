@@ -4,7 +4,7 @@ using Twilio.Fetchers;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account.Sip.IpAccessControlList;
 
-namespace Twilio.Fetchers.Api.V2010.Account.Sip.Ipaccesscontrollist {
+namespace Twilio.Fetchers.Api.V2010.Account.Sip.IpAccessControlList {
 
     public class IpAddressFetcher : Fetcher<IpAddressResource> {
         private string accountSid;

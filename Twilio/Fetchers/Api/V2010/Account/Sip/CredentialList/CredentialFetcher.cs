@@ -4,7 +4,7 @@ using Twilio.Fetchers;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account.Sip.CredentialList;
 
-namespace Twilio.Fetchers.Api.V2010.Account.Sip.Credentiallist {
+namespace Twilio.Fetchers.Api.V2010.Account.Sip.CredentialList {
 
     public class CredentialFetcher : Fetcher<CredentialResource> {
         private string accountSid;

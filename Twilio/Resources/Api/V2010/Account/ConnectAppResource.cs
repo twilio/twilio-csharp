@@ -72,7 +72,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("company_name")]
         private readonly string companyName;
         [JsonProperty("deauthorize_callback_method")]
-        private readonly HttpMethod deauthorizeCallbackMethod;
+        private readonly System.Net.Http.HttpMethod deauthorizeCallbackMethod;
         [JsonProperty("deauthorize_callback_url")]
         private readonly Uri deauthorizeCallbackUrl;
         [JsonProperty("description")]
@@ -95,7 +95,7 @@ namespace Twilio.Resources.Api.V2010.Account {
                                    [JsonProperty("company_name")]
                                    string companyName, 
                                    [JsonProperty("deauthorize_callback_method")]
-                                   HttpMethod deauthorizeCallbackMethod, 
+                                   System.Net.Http.HttpMethod deauthorizeCallbackMethod, 
                                    [JsonProperty("deauthorize_callback_url")]
                                    Uri deauthorizeCallbackUrl, 
                                    [JsonProperty("description")]
@@ -147,7 +147,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return HTTP method Twilio WIll use making requests to the url
          */
-        public HttpMethod GetDeauthorizeCallbackMethod() {
+        public System.Net.Http.HttpMethod GetDeauthorizeCallbackMethod() {
             return this.deauthorizeCallbackMethod;
         }
     

@@ -4,7 +4,7 @@ using Twilio.Fetchers;
 using Twilio.Http;
 using Twilio.Resources.Pricing.V1.PhoneNumber;
 
-namespace Twilio.Fetchers.Pricing.V1.Phonenumber {
+namespace Twilio.Fetchers.Pricing.V1.PhoneNumber {
 
     public class CountryFetcher : Fetcher<CountryResource> {
         private string isoCountry;

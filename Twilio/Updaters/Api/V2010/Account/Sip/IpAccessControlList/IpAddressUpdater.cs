@@ -4,7 +4,7 @@ using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account.Sip.IpAccessControlList;
 using Twilio.Updaters;
 
-namespace Twilio.Updaters.Api.V2010.Account.Sip.Ipaccesscontrollist {
+namespace Twilio.Updaters.Api.V2010.Account.Sip.IpAccessControlList {
 
     public class IpAddressUpdater : Updater<IpAddressResource> {
         private string accountSid;

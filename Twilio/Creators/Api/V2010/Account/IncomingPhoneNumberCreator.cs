@@ -1,6 +1,6 @@
 using System;
 using Twilio.Clients;
-using Twilio.Converters.Promoter;
+using Twilio.Converters;
 using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -15,17 +15,17 @@ namespace Twilio.Creators.Api.V2010.Account {
         private string apiVersion;
         private string friendlyName;
         private string smsApplicationSid;
-        private HttpMethod smsFallbackMethod;
+        private System.Net.Http.HttpMethod smsFallbackMethod;
         private Uri smsFallbackUrl;
-        private HttpMethod smsMethod;
+        private System.Net.Http.HttpMethod smsMethod;
         private Uri smsUrl;
         private Uri statusCallback;
-        private HttpMethod statusCallbackMethod;
+        private System.Net.Http.HttpMethod statusCallbackMethod;
         private string voiceApplicationSid;
         private bool voiceCallerIdLookup;
-        private HttpMethod voiceFallbackMethod;
+        private System.Net.Http.HttpMethod voiceFallbackMethod;
         private Uri voiceFallbackUrl;
-        private HttpMethod voiceMethod;
+        private System.Net.Http.HttpMethod voiceMethod;
         private Uri voiceUrl;
     
         /**
@@ -95,7 +95,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param smsFallbackMethod HTTP method used with sms fallback url
          * @return this
          */
-        public IncomingPhoneNumberCreator setSmsFallbackMethod(HttpMethod smsFallbackMethod) {
+        public IncomingPhoneNumberCreator setSmsFallbackMethod(System.Net.Http.HttpMethod smsFallbackMethod) {
             this.smsFallbackMethod = smsFallbackMethod;
             return this;
         }
@@ -132,7 +132,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param smsMethod HTTP method to use with sms url
          * @return this
          */
-        public IncomingPhoneNumberCreator setSmsMethod(HttpMethod smsMethod) {
+        public IncomingPhoneNumberCreator setSmsMethod(System.Net.Http.HttpMethod smsMethod) {
             this.smsMethod = smsMethod;
             return this;
         }
@@ -190,7 +190,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param statusCallbackMethod HTTP method twilio will use with status callback
          * @return this
          */
-        public IncomingPhoneNumberCreator setStatusCallbackMethod(HttpMethod statusCallbackMethod) {
+        public IncomingPhoneNumberCreator setStatusCallbackMethod(System.Net.Http.HttpMethod statusCallbackMethod) {
             this.statusCallbackMethod = statusCallbackMethod;
             return this;
         }
@@ -230,7 +230,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param voiceFallbackMethod HTTP method used with fallback_url
          * @return this
          */
-        public IncomingPhoneNumberCreator setVoiceFallbackMethod(HttpMethod voiceFallbackMethod) {
+        public IncomingPhoneNumberCreator setVoiceFallbackMethod(System.Net.Http.HttpMethod voiceFallbackMethod) {
             this.voiceFallbackMethod = voiceFallbackMethod;
             return this;
         }
@@ -265,7 +265,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param voiceMethod HTTP method used with the voice url
          * @return this
          */
-        public IncomingPhoneNumberCreator setVoiceMethod(HttpMethod voiceMethod) {
+        public IncomingPhoneNumberCreator setVoiceMethod(System.Net.Http.HttpMethod voiceMethod) {
             this.voiceMethod = voiceMethod;
             return this;
         }

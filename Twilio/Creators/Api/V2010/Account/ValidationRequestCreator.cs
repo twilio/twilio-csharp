@@ -1,6 +1,6 @@
 using System;
 using Twilio.Clients;
-using Twilio.Converters.Promoter;
+using Twilio.Converters;
 using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -15,7 +15,7 @@ namespace Twilio.Creators.Api.V2010.Account {
         private int callDelay;
         private string extension;
         private Uri statusCallback;
-        private HttpMethod statusCallbackMethod;
+        private System.Net.Http.HttpMethod statusCallbackMethod;
     
         /**
          * Construct a new ValidationRequestCreator
@@ -88,7 +88,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param statusCallbackMethod The status_callback_method
          * @return this
          */
-        public ValidationRequestCreator setStatusCallbackMethod(HttpMethod statusCallbackMethod) {
+        public ValidationRequestCreator setStatusCallbackMethod(System.Net.Http.HttpMethod statusCallbackMethod) {
             this.statusCallbackMethod = statusCallbackMethod;
             return this;
         }

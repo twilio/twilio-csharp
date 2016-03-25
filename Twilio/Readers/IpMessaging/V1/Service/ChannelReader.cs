@@ -3,7 +3,7 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers;
 using Twilio.Resources;
-using Twilio.Resources.Ipmessaging.V1.Service;
+using Twilio.Resources.IpMessaging.V1.Service;
 
 namespace Twilio.Readers.IpMessaging.V1.Service {
 

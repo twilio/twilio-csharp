@@ -11,7 +11,7 @@ using Twilio.Readers.Api.V2010.Account.Sip.IpAccessControlList;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010.Account.Sip.IpAccessControlList;
 
-namespace Twilio.Resources.Api.V2010.Account.Sip.Ipaccesscontrollist {
+namespace Twilio.Resources.Api.V2010.Account.Sip.IpAccessControlList {
 
     public class IpAddressResource : SidResource {
         /**

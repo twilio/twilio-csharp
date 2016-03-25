@@ -83,7 +83,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         [JsonProperty("more_info")]
         private readonly Uri moreInfo;
         [JsonProperty("request_method")]
-        private readonly HttpMethod requestMethod;
+        private readonly System.Net.Http.HttpMethod requestMethod;
         [JsonProperty("request_url")]
         private readonly Uri requestUrl;
         [JsonProperty("sid")]
@@ -118,7 +118,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
                                      [JsonProperty("more_info")]
                                      Uri moreInfo, 
                                      [JsonProperty("request_method")]
-                                     HttpMethod requestMethod, 
+                                     System.Net.Http.HttpMethod requestMethod, 
                                      [JsonProperty("request_url")]
                                      Uri requestUrl, 
                                      [JsonProperty("sid")]
@@ -223,7 +223,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         /**
          * @return The request_method
          */
-        public HttpMethod GetRequestMethod() {
+        public System.Net.Http.HttpMethod GetRequestMethod() {
             return this.requestMethod;
         }
     

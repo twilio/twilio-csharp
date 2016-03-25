@@ -7,7 +7,7 @@ using Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry;
 using Twilio.Resources;
 using Twilio.Types;
 
-namespace Twilio.Resources.Api.V2010.Account.Availablephonenumbercountry {
+namespace Twilio.Resources.Api.V2010.Account.AvailablePhoneNumberCountry {
 
     public class MobileResource : Resource {
         /**

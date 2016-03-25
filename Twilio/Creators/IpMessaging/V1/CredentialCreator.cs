@@ -2,7 +2,7 @@ using Twilio.Clients;
 using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Ipmessaging.V1;
+using Twilio.Resources.IpMessaging.V1;
 
 namespace Twilio.Creators.IpMessaging.V1 {
 

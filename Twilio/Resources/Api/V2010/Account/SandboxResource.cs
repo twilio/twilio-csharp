@@ -63,15 +63,15 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("voice_url")]
         private readonly Uri voiceUrl;
         [JsonProperty("voice_method")]
-        private readonly HttpMethod voiceMethod;
+        private readonly System.Net.Http.HttpMethod voiceMethod;
         [JsonProperty("sms_url")]
         private readonly Uri smsUrl;
         [JsonProperty("sms_method")]
-        private readonly HttpMethod smsMethod;
+        private readonly System.Net.Http.HttpMethod smsMethod;
         [JsonProperty("status_callback")]
         private readonly Uri statusCallback;
         [JsonProperty("status_callback_method")]
-        private readonly HttpMethod statusCallbackMethod;
+        private readonly System.Net.Http.HttpMethod statusCallbackMethod;
         [JsonProperty("uri")]
         private readonly Uri uri;
     
@@ -92,15 +92,15 @@ namespace Twilio.Resources.Api.V2010.Account {
                                 [JsonProperty("voice_url")]
                                 Uri voiceUrl, 
                                 [JsonProperty("voice_method")]
-                                HttpMethod voiceMethod, 
+                                System.Net.Http.HttpMethod voiceMethod, 
                                 [JsonProperty("sms_url")]
                                 Uri smsUrl, 
                                 [JsonProperty("sms_method")]
-                                HttpMethod smsMethod, 
+                                System.Net.Http.HttpMethod smsMethod, 
                                 [JsonProperty("status_callback")]
                                 Uri statusCallback, 
                                 [JsonProperty("status_callback_method")]
-                                HttpMethod statusCallbackMethod, 
+                                System.Net.Http.HttpMethod statusCallbackMethod, 
                                 [JsonProperty("uri")]
                                 Uri uri) {
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
@@ -178,7 +178,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The voice_method
          */
-        public HttpMethod GetVoiceMethod() {
+        public System.Net.Http.HttpMethod GetVoiceMethod() {
             return this.voiceMethod;
         }
     
@@ -192,7 +192,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The sms_method
          */
-        public HttpMethod GetSmsMethod() {
+        public System.Net.Http.HttpMethod GetSmsMethod() {
             return this.smsMethod;
         }
     
@@ -206,7 +206,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The status_callback_method
          */
-        public HttpMethod GetStatusCallbackMethod() {
+        public System.Net.Http.HttpMethod GetStatusCallbackMethod() {
             return this.statusCallbackMethod;
         }
     

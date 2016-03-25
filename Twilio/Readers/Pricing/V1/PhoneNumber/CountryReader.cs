@@ -5,7 +5,7 @@ using Twilio.Readers;
 using Twilio.Resources;
 using Twilio.Resources.Pricing.V1.PhoneNumber;
 
-namespace Twilio.Readers.Pricing.V1.Phonenumber {
+namespace Twilio.Readers.Pricing.V1.PhoneNumber {
 
     public class CountryReader : Reader<CountryResource> {
         /**

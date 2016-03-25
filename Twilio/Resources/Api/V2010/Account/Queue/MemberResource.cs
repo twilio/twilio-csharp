@@ -35,7 +35,7 @@ namespace Twilio.Resources.Api.V2010.Account.Queue {
          * @param method The method
          * @return MemberUpdater capable of executing the update
          */
-        public static MemberUpdater update(string accountSid, string queueSid, string callSid, Uri url, HttpMethod method) {
+        public static MemberUpdater update(string accountSid, string queueSid, string callSid, Uri url, System.Net.Http.HttpMethod method) {
             return new MemberUpdater(accountSid, queueSid, callSid, url, method);
         }
     

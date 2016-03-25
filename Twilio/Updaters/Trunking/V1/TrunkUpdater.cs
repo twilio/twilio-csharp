@@ -1,6 +1,6 @@
 using System;
 using Twilio.Clients;
-using Twilio.Converters.Promoter;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Trunking.V1;
@@ -13,7 +13,7 @@ namespace Twilio.Updaters.Trunking.V1 {
         private string friendlyName;
         private string domainName;
         private Uri disasterRecoveryUrl;
-        private HttpMethod disasterRecoveryMethod;
+        private System.Net.Http.HttpMethod disasterRecoveryMethod;
         private string recording;
         private bool secure;
     
@@ -75,7 +75,7 @@ namespace Twilio.Updaters.Trunking.V1 {
          * @param disasterRecoveryMethod The disaster_recovery_method
          * @return this
          */
-        public TrunkUpdater setDisasterRecoveryMethod(HttpMethod disasterRecoveryMethod) {
+        public TrunkUpdater setDisasterRecoveryMethod(System.Net.Http.HttpMethod disasterRecoveryMethod) {
             this.disasterRecoveryMethod = disasterRecoveryMethod;
             return this;
         }

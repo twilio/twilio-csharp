@@ -12,7 +12,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
         private Uri callbackUrl;
         private string triggerValue;
         private TriggerResource.UsageCategory usageCategory;
-        private HttpMethod callbackMethod;
+        private System.Net.Http.HttpMethod callbackMethod;
         private string friendlyName;
         private TriggerResource.Recurring recurring;
         private TriggerResource.TriggerField triggerBy;
@@ -39,7 +39,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
          * @param callbackMethod HTTP method to use with callback_url
          * @return this
          */
-        public TriggerCreator setCallbackMethod(HttpMethod callbackMethod) {
+        public TriggerCreator setCallbackMethod(System.Net.Http.HttpMethod callbackMethod) {
             this.callbackMethod = callbackMethod;
             return this;
         }

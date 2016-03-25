@@ -81,7 +81,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("more_info")]
         private readonly Uri moreInfo;
         [JsonProperty("request_method")]
-        private readonly HttpMethod requestMethod;
+        private readonly System.Net.Http.HttpMethod requestMethod;
         [JsonProperty("request_url")]
         private readonly Uri requestUrl;
         [JsonProperty("request_variables")]
@@ -116,7 +116,7 @@ namespace Twilio.Resources.Api.V2010.Account {
                                      [JsonProperty("more_info")]
                                      Uri moreInfo, 
                                      [JsonProperty("request_method")]
-                                     HttpMethod requestMethod, 
+                                     System.Net.Http.HttpMethod requestMethod, 
                                      [JsonProperty("request_url")]
                                      Uri requestUrl, 
                                      [JsonProperty("request_variables")]
@@ -221,7 +221,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return HTTP method used with the request url
          */
-        public HttpMethod GetRequestMethod() {
+        public System.Net.Http.HttpMethod GetRequestMethod() {
             return this.requestMethod;
         }
     

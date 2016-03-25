@@ -1,6 +1,6 @@
 using System;
 using Twilio.Clients;
-using Twilio.Converters.Promoter;
+using Twilio.Converters;
 using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -13,11 +13,11 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
         private string domainName;
         private string friendlyName;
         private Uri voiceUrl;
-        private HttpMethod voiceMethod;
+        private System.Net.Http.HttpMethod voiceMethod;
         private Uri voiceFallbackUrl;
-        private HttpMethod voiceFallbackMethod;
+        private System.Net.Http.HttpMethod voiceFallbackMethod;
         private Uri voiceStatusCallbackUrl;
-        private HttpMethod voiceStatusCallbackMethod;
+        private System.Net.Http.HttpMethod voiceStatusCallbackMethod;
     
         /**
          * Construct a new DomainCreator
@@ -68,7 +68,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          * @param voiceMethod HTTP method to use with voice_url
          * @return this
          */
-        public DomainCreator setVoiceMethod(HttpMethod voiceMethod) {
+        public DomainCreator setVoiceMethod(System.Net.Http.HttpMethod voiceMethod) {
             this.voiceMethod = voiceMethod;
             return this;
         }
@@ -104,7 +104,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          * @param voiceFallbackMethod HTTP method used with voice_fallback_url
          * @return this
          */
-        public DomainCreator setVoiceFallbackMethod(HttpMethod voiceFallbackMethod) {
+        public DomainCreator setVoiceFallbackMethod(System.Net.Http.HttpMethod voiceFallbackMethod) {
             this.voiceFallbackMethod = voiceFallbackMethod;
             return this;
         }
@@ -138,7 +138,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          * @param voiceStatusCallbackMethod The voice_status_callback_method
          * @return this
          */
-        public DomainCreator setVoiceStatusCallbackMethod(HttpMethod voiceStatusCallbackMethod) {
+        public DomainCreator setVoiceStatusCallbackMethod(System.Net.Http.HttpMethod voiceStatusCallbackMethod) {
             this.voiceStatusCallbackMethod = voiceStatusCallbackMethod;
             return this;
         }

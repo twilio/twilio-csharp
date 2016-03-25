@@ -7,7 +7,7 @@ using Twilio.Fetchers.Taskrouter.V1.Workspace.TaskQueue;
 using Twilio.Http;
 using Twilio.Resources;
 
-namespace Twilio.Resources.Taskrouter.V1.Workspace.Taskqueue {
+namespace Twilio.Resources.Taskrouter.V1.Workspace.TaskQueue {
 
     public class TaskQueueStatisticsResource : Resource {
         /**

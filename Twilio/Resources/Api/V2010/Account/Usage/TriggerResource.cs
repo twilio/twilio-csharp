@@ -133,7 +133,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         [JsonProperty("api_version")]
         private readonly string apiVersion;
         [JsonProperty("callback_method")]
-        private readonly HttpMethod callbackMethod;
+        private readonly System.Net.Http.HttpMethod callbackMethod;
         [JsonProperty("callback_url")]
         private readonly Uri callbackUrl;
         [JsonProperty("current_value")]
@@ -166,7 +166,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
                                 [JsonProperty("api_version")]
                                 string apiVersion, 
                                 [JsonProperty("callback_method")]
-                                HttpMethod callbackMethod, 
+                                System.Net.Http.HttpMethod callbackMethod, 
                                 [JsonProperty("callback_url")]
                                 Uri callbackUrl, 
                                 [JsonProperty("current_value")]
@@ -228,7 +228,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         /**
          * @return HTTP method to use with callback_url
          */
-        public HttpMethod GetCallbackMethod() {
+        public System.Net.Http.HttpMethod GetCallbackMethod() {
             return this.callbackMethod;
         }
     

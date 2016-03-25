@@ -1,6 +1,6 @@
 using System;
 using Twilio.Clients;
-using Twilio.Converters.Promoter;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account;
@@ -11,11 +11,11 @@ namespace Twilio.Updaters.Api.V2010.Account {
     public class SandboxUpdater : Updater<SandboxResource> {
         private string accountSid;
         private Uri voiceUrl;
-        private HttpMethod voiceMethod;
+        private System.Net.Http.HttpMethod voiceMethod;
         private Uri smsUrl;
-        private HttpMethod smsMethod;
+        private System.Net.Http.HttpMethod smsMethod;
         private Uri statusCallback;
-        private HttpMethod statusCallbackMethod;
+        private System.Net.Http.HttpMethod statusCallbackMethod;
     
         /**
          * Construct a new SandboxUpdater
@@ -53,7 +53,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param voiceMethod The voice_method
          * @return this
          */
-        public SandboxUpdater setVoiceMethod(HttpMethod voiceMethod) {
+        public SandboxUpdater setVoiceMethod(System.Net.Http.HttpMethod voiceMethod) {
             this.voiceMethod = voiceMethod;
             return this;
         }
@@ -85,7 +85,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param smsMethod The sms_method
          * @return this
          */
-        public SandboxUpdater setSmsMethod(HttpMethod smsMethod) {
+        public SandboxUpdater setSmsMethod(System.Net.Http.HttpMethod smsMethod) {
             this.smsMethod = smsMethod;
             return this;
         }
@@ -117,7 +117,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param statusCallbackMethod The status_callback_method
          * @return this
          */
-        public SandboxUpdater setStatusCallbackMethod(HttpMethod statusCallbackMethod) {
+        public SandboxUpdater setStatusCallbackMethod(System.Net.Http.HttpMethod statusCallbackMethod) {
             this.statusCallbackMethod = statusCallbackMethod;
             return this;
         }

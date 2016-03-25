@@ -5,7 +5,7 @@ using Twilio.Readers;
 using Twilio.Resources;
 using Twilio.Resources.Api.V2010.Account.Sip.IpAccessControlList;
 
-namespace Twilio.Readers.Api.V2010.Account.Sip.Ipaccesscontrollist {
+namespace Twilio.Readers.Api.V2010.Account.Sip.IpAccessControlList {
 
     public class IpAddressReader : Reader<IpAddressResource> {
         private string accountSid;

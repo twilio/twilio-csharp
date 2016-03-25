@@ -6,7 +6,7 @@ using Twilio.Fetchers;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.Workspace.TaskQueue;
 
-namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Taskqueue {
+namespace Twilio.Fetchers.Taskrouter.V1.Workspace.TaskQueue {
 
     public class TaskQueueStatisticsFetcher : Fetcher<TaskQueueStatisticsResource> {
         private string workspaceSid;

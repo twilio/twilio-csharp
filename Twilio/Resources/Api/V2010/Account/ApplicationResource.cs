@@ -99,11 +99,11 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("sid")]
         private readonly string sid;
         [JsonProperty("sms_fallback_method")]
-        private readonly HttpMethod smsFallbackMethod;
+        private readonly System.Net.Http.HttpMethod smsFallbackMethod;
         [JsonProperty("sms_fallback_url")]
         private readonly Uri smsFallbackUrl;
         [JsonProperty("sms_method")]
-        private readonly HttpMethod smsMethod;
+        private readonly System.Net.Http.HttpMethod smsMethod;
         [JsonProperty("sms_status_callback")]
         private readonly Uri smsStatusCallback;
         [JsonProperty("sms_url")]
@@ -111,17 +111,17 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("status_callback")]
         private readonly Uri statusCallback;
         [JsonProperty("status_callback_method")]
-        private readonly HttpMethod statusCallbackMethod;
+        private readonly System.Net.Http.HttpMethod statusCallbackMethod;
         [JsonProperty("uri")]
         private readonly string uri;
         [JsonProperty("voice_caller_id_lookup")]
         private readonly bool voiceCallerIdLookup;
         [JsonProperty("voice_fallback_method")]
-        private readonly HttpMethod voiceFallbackMethod;
+        private readonly System.Net.Http.HttpMethod voiceFallbackMethod;
         [JsonProperty("voice_fallback_url")]
         private readonly Uri voiceFallbackUrl;
         [JsonProperty("voice_method")]
-        private readonly HttpMethod voiceMethod;
+        private readonly System.Net.Http.HttpMethod voiceMethod;
         [JsonProperty("voice_url")]
         private readonly Uri voiceUrl;
     
@@ -140,11 +140,11 @@ namespace Twilio.Resources.Api.V2010.Account {
                                     [JsonProperty("sid")]
                                     string sid, 
                                     [JsonProperty("sms_fallback_method")]
-                                    HttpMethod smsFallbackMethod, 
+                                    System.Net.Http.HttpMethod smsFallbackMethod, 
                                     [JsonProperty("sms_fallback_url")]
                                     Uri smsFallbackUrl, 
                                     [JsonProperty("sms_method")]
-                                    HttpMethod smsMethod, 
+                                    System.Net.Http.HttpMethod smsMethod, 
                                     [JsonProperty("sms_status_callback")]
                                     Uri smsStatusCallback, 
                                     [JsonProperty("sms_url")]
@@ -152,17 +152,17 @@ namespace Twilio.Resources.Api.V2010.Account {
                                     [JsonProperty("status_callback")]
                                     Uri statusCallback, 
                                     [JsonProperty("status_callback_method")]
-                                    HttpMethod statusCallbackMethod, 
+                                    System.Net.Http.HttpMethod statusCallbackMethod, 
                                     [JsonProperty("uri")]
                                     string uri, 
                                     [JsonProperty("voice_caller_id_lookup")]
                                     bool voiceCallerIdLookup, 
                                     [JsonProperty("voice_fallback_method")]
-                                    HttpMethod voiceFallbackMethod, 
+                                    System.Net.Http.HttpMethod voiceFallbackMethod, 
                                     [JsonProperty("voice_fallback_url")]
                                     Uri voiceFallbackUrl, 
                                     [JsonProperty("voice_method")]
-                                    HttpMethod voiceMethod, 
+                                    System.Net.Http.HttpMethod voiceMethod, 
                                     [JsonProperty("voice_url")]
                                     Uri voiceUrl) {
             this.accountSid = accountSid;
@@ -239,7 +239,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return HTTP method to use with sms_fallback_method
          */
-        public HttpMethod GetSmsFallbackMethod() {
+        public System.Net.Http.HttpMethod GetSmsFallbackMethod() {
             return this.smsFallbackMethod;
         }
     
@@ -253,7 +253,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return HTTP method to use with sms_url
          */
-        public HttpMethod GetSmsMethod() {
+        public System.Net.Http.HttpMethod GetSmsMethod() {
             return this.smsMethod;
         }
     
@@ -281,7 +281,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return HTTP method to use with the status callback
          */
-        public HttpMethod GetStatusCallbackMethod() {
+        public System.Net.Http.HttpMethod GetStatusCallbackMethod() {
             return this.statusCallbackMethod;
         }
     
@@ -302,7 +302,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return HTTP method to use with the fallback url
          */
-        public HttpMethod GetVoiceFallbackMethod() {
+        public System.Net.Http.HttpMethod GetVoiceFallbackMethod() {
             return this.voiceFallbackMethod;
         }
     
@@ -316,7 +316,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return HTTP method to use with the URL
          */
-        public HttpMethod GetVoiceMethod() {
+        public System.Net.Http.HttpMethod GetVoiceMethod() {
             return this.voiceMethod;
         }
     

@@ -5,7 +5,7 @@ using Twilio.Readers;
 using Twilio.Resources;
 using Twilio.Resources.Api.V2010.Account.Sip.CredentialList;
 
-namespace Twilio.Readers.Api.V2010.Account.Sip.Credentiallist {
+namespace Twilio.Readers.Api.V2010.Account.Sip.CredentialList {
 
     public class CredentialReader : Reader<CredentialResource> {
         private string accountSid;

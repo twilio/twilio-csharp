@@ -12,7 +12,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Queue {
         private string queueSid;
         private string callSid;
         private Uri url;
-        private HttpMethod method;
+        private System.Net.Http.HttpMethod method;
     
         /**
          * Construct a new MemberUpdater
@@ -23,7 +23,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Queue {
          * @param url The url
          * @param method The method
          */
-        public MemberUpdater(string accountSid, string queueSid, string callSid, Uri url, HttpMethod method) {
+        public MemberUpdater(string accountSid, string queueSid, string callSid, Uri url, System.Net.Http.HttpMethod method) {
             this.accountSid = accountSid;
             this.queueSid = queueSid;
             this.callSid = callSid;

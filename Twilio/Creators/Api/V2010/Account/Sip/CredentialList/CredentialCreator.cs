@@ -4,7 +4,7 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account.Sip.CredentialList;
 
-namespace Twilio.Creators.Api.V2010.Account.Sip.Credentiallist {
+namespace Twilio.Creators.Api.V2010.Account.Sip.CredentialList {
 
     public class CredentialCreator : Creator<CredentialResource> {
         private string accountSid;

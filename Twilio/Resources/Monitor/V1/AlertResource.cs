@@ -75,7 +75,7 @@ namespace Twilio.Resources.Monitor.V1 {
         [JsonProperty("more_info")]
         private readonly string moreInfo;
         [JsonProperty("request_method")]
-        private readonly HttpMethod requestMethod;
+        private readonly System.Net.Http.HttpMethod requestMethod;
         [JsonProperty("request_url")]
         private readonly string requestUrl;
         [JsonProperty("request_variables")]
@@ -110,7 +110,7 @@ namespace Twilio.Resources.Monitor.V1 {
                               [JsonProperty("more_info")]
                               string moreInfo, 
                               [JsonProperty("request_method")]
-                              HttpMethod requestMethod, 
+                              System.Net.Http.HttpMethod requestMethod, 
                               [JsonProperty("request_url")]
                               string requestUrl, 
                               [JsonProperty("request_variables")]
@@ -210,7 +210,7 @@ namespace Twilio.Resources.Monitor.V1 {
         /**
          * @return The request_method
          */
-        public HttpMethod GetRequestMethod() {
+        public System.Net.Http.HttpMethod GetRequestMethod() {
             return this.requestMethod;
         }
     

@@ -1,6 +1,6 @@
 using System;
 using Twilio.Clients;
-using Twilio.Converters.Promoter;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account.Usage;
@@ -11,7 +11,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Usage {
     public class TriggerUpdater : Updater<TriggerResource> {
         private string accountSid;
         private string sid;
-        private HttpMethod callbackMethod;
+        private System.Net.Http.HttpMethod callbackMethod;
         private Uri callbackUrl;
         private string friendlyName;
     
@@ -33,7 +33,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Usage {
          * @param callbackMethod HTTP method to use with callback_url
          * @return this
          */
-        public TriggerUpdater setCallbackMethod(HttpMethod callbackMethod) {
+        public TriggerUpdater setCallbackMethod(System.Net.Http.HttpMethod callbackMethod) {
             this.callbackMethod = callbackMethod;
             return this;
         }

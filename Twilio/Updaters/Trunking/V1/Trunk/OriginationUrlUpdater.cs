@@ -1,6 +1,6 @@
 using System;
 using Twilio.Clients;
-using Twilio.Converters.Promoter;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Trunking.V1.Trunk;

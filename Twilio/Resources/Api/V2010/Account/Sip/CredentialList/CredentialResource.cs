@@ -11,7 +11,7 @@ using Twilio.Readers.Api.V2010.Account.Sip.CredentialList;
 using Twilio.Resources;
 using Twilio.Updaters.Api.V2010.Account.Sip.CredentialList;
 
-namespace Twilio.Resources.Api.V2010.Account.Sip.Credentiallist {
+namespace Twilio.Resources.Api.V2010.Account.Sip.CredentialList {
 
     public class CredentialResource : SidResource {
         /**

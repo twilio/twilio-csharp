@@ -7,7 +7,7 @@ using Twilio.Readers;
 using Twilio.Resources;
 using Twilio.Resources.Taskrouter.V1.Workspace.TaskQueue;
 
-namespace Twilio.Readers.Taskrouter.V1.Workspace.Taskqueue {
+namespace Twilio.Readers.Taskrouter.V1.Workspace.TaskQueue {
 
     public class TaskQueuesStatisticsReader : Reader<TaskQueuesStatisticsResource> {
         private string workspaceSid;

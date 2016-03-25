@@ -5,7 +5,7 @@ using Twilio.Readers;
 using Twilio.Resources;
 using Twilio.Resources.Api.V2010.Account.IncomingPhoneNumber;
 
-namespace Twilio.Readers.Api.V2010.Account.Incomingphonenumber {
+namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
 
     public class LocalReader : Reader<LocalResource> {
         private string ownerAccountSid;

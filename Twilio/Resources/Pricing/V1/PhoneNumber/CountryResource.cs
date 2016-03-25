@@ -9,7 +9,7 @@ using Twilio.Readers.Pricing.V1.PhoneNumber;
 using Twilio.Resources;
 using Twilio.Types;
 
-namespace Twilio.Resources.Pricing.V1.Phonenumber {
+namespace Twilio.Resources.Pricing.V1.PhoneNumber {
 
     public class CountryResource : SidResource {
         /**

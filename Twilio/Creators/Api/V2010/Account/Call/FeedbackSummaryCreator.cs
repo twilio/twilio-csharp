@@ -1,7 +1,6 @@
 using System;
 using Twilio.Clients;
 using Twilio.Converters;
-using Twilio.Converters.Promoter;
 using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -15,7 +14,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
         private DateTime endDate;
         private bool includeSubaccounts;
         private Uri statusCallback;
-        private HttpMethod statusCallbackMethod;
+        private System.Net.Http.HttpMethod statusCallbackMethod;
     
         /**
          * Construct a new FeedbackSummaryCreator
@@ -68,7 +67,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
          * @param statusCallbackMethod The status_callback_method
          * @return this
          */
-        public FeedbackSummaryCreator setStatusCallbackMethod(HttpMethod statusCallbackMethod) {
+        public FeedbackSummaryCreator setStatusCallbackMethod(System.Net.Http.HttpMethod statusCallbackMethod) {
             this.statusCallbackMethod = statusCallbackMethod;
             return this;
         }

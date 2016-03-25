@@ -1,6 +1,6 @@
 using System;
 using Twilio.Clients;
-using Twilio.Converters.Promoter;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account;
@@ -14,16 +14,16 @@ namespace Twilio.Updaters.Api.V2010.Account {
         private string friendlyName;
         private string apiVersion;
         private Uri voiceUrl;
-        private HttpMethod voiceMethod;
+        private System.Net.Http.HttpMethod voiceMethod;
         private Uri voiceFallbackUrl;
-        private HttpMethod voiceFallbackMethod;
+        private System.Net.Http.HttpMethod voiceFallbackMethod;
         private Uri statusCallback;
-        private HttpMethod statusCallbackMethod;
+        private System.Net.Http.HttpMethod statusCallbackMethod;
         private bool voiceCallerIdLookup;
         private Uri smsUrl;
-        private HttpMethod smsMethod;
+        private System.Net.Http.HttpMethod smsMethod;
         private Uri smsFallbackUrl;
-        private HttpMethod smsFallbackMethod;
+        private System.Net.Http.HttpMethod smsFallbackMethod;
         private Uri smsStatusCallback;
         private Uri messageStatusCallback;
     
@@ -92,7 +92,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param voiceMethod HTTP method to use with the URL
          * @return this
          */
-        public ApplicationUpdater setVoiceMethod(HttpMethod voiceMethod) {
+        public ApplicationUpdater setVoiceMethod(System.Net.Http.HttpMethod voiceMethod) {
             this.voiceMethod = voiceMethod;
             return this;
         }
@@ -127,7 +127,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param voiceFallbackMethod HTTP method to use with the fallback url
          * @return this
          */
-        public ApplicationUpdater setVoiceFallbackMethod(HttpMethod voiceFallbackMethod) {
+        public ApplicationUpdater setVoiceFallbackMethod(System.Net.Http.HttpMethod voiceFallbackMethod) {
             this.voiceFallbackMethod = voiceFallbackMethod;
             return this;
         }
@@ -162,7 +162,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param statusCallbackMethod HTTP method to use with the status callback
          * @return this
          */
-        public ApplicationUpdater setStatusCallbackMethod(HttpMethod statusCallbackMethod) {
+        public ApplicationUpdater setStatusCallbackMethod(System.Net.Http.HttpMethod statusCallbackMethod) {
             this.statusCallbackMethod = statusCallbackMethod;
             return this;
         }
@@ -209,7 +209,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param smsMethod HTTP method to use with sms_url
          * @return this
          */
-        public ApplicationUpdater setSmsMethod(HttpMethod smsMethod) {
+        public ApplicationUpdater setSmsMethod(System.Net.Http.HttpMethod smsMethod) {
             this.smsMethod = smsMethod;
             return this;
         }
@@ -244,7 +244,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param smsFallbackMethod HTTP method to use with sms_fallback_method
          * @return this
          */
-        public ApplicationUpdater setSmsFallbackMethod(HttpMethod smsFallbackMethod) {
+        public ApplicationUpdater setSmsFallbackMethod(System.Net.Http.HttpMethod smsFallbackMethod) {
             this.smsFallbackMethod = smsFallbackMethod;
             return this;
         }

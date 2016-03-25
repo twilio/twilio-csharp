@@ -83,7 +83,7 @@ namespace Twilio.Resources.Trunking.V1 {
         [JsonProperty("domain_name")]
         private readonly string domainName;
         [JsonProperty("disaster_recovery_method")]
-        private readonly HttpMethod disasterRecoveryMethod;
+        private readonly System.Net.Http.HttpMethod disasterRecoveryMethod;
         [JsonProperty("disaster_recovery_url")]
         private readonly Uri disasterRecoveryUrl;
         [JsonProperty("friendly_name")]
@@ -112,7 +112,7 @@ namespace Twilio.Resources.Trunking.V1 {
                               [JsonProperty("domain_name")]
                               string domainName, 
                               [JsonProperty("disaster_recovery_method")]
-                              HttpMethod disasterRecoveryMethod, 
+                              System.Net.Http.HttpMethod disasterRecoveryMethod, 
                               [JsonProperty("disaster_recovery_url")]
                               Uri disasterRecoveryUrl, 
                               [JsonProperty("friendly_name")]
@@ -168,7 +168,7 @@ namespace Twilio.Resources.Trunking.V1 {
         /**
          * @return The disaster_recovery_method
          */
-        public HttpMethod GetDisasterRecoveryMethod() {
+        public System.Net.Http.HttpMethod GetDisasterRecoveryMethod() {
             return this.disasterRecoveryMethod;
         }
     

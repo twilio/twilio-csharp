@@ -1,6 +1,6 @@
 using System;
 using Twilio.Clients;
-using Twilio.Converters.Promoter;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account.Sms;
@@ -14,9 +14,9 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
         private string friendlyName;
         private string apiVersion;
         private Uri smsUrl;
-        private HttpMethod smsMethod;
+        private System.Net.Http.HttpMethod smsMethod;
         private Uri smsFallbackUrl;
-        private HttpMethod smsFallbackMethod;
+        private System.Net.Http.HttpMethod smsFallbackMethod;
     
         /**
          * Construct a new ShortCodeUpdater
@@ -82,7 +82,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          * @param smsMethod HTTP method to use when requesting the sms url
          * @return this
          */
-        public ShortCodeUpdater setSmsMethod(HttpMethod smsMethod) {
+        public ShortCodeUpdater setSmsMethod(System.Net.Http.HttpMethod smsMethod) {
             this.smsMethod = smsMethod;
             return this;
         }
@@ -119,7 +119,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          * @param smsFallbackMethod HTTP method Twilio will use with sms fallback url
          * @return this
          */
-        public ShortCodeUpdater setSmsFallbackMethod(HttpMethod smsFallbackMethod) {
+        public ShortCodeUpdater setSmsFallbackMethod(System.Net.Http.HttpMethod smsFallbackMethod) {
             this.smsFallbackMethod = smsFallbackMethod;
             return this;
         }

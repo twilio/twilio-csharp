@@ -1,12 +1,12 @@
 using System;
 using Twilio.Clients;
-using Twilio.Converters.Promoter;
+using Twilio.Converters;
 using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account.IncomingPhoneNumber;
 
-namespace Twilio.Creators.Api.V2010.Account.Incomingphonenumber {
+namespace Twilio.Creators.Api.V2010.Account.IncomingPhoneNumber {
 
     public class TollFreeCreator : Creator<TollFreeResource> {
         private string ownerAccountSid;
@@ -14,17 +14,17 @@ namespace Twilio.Creators.Api.V2010.Account.Incomingphonenumber {
         private string apiVersion;
         private string friendlyName;
         private string smsApplicationSid;
-        private HttpMethod smsFallbackMethod;
+        private System.Net.Http.HttpMethod smsFallbackMethod;
         private Uri smsFallbackUrl;
-        private HttpMethod smsMethod;
+        private System.Net.Http.HttpMethod smsMethod;
         private Uri smsUrl;
         private Uri statusCallback;
-        private HttpMethod statusCallbackMethod;
+        private System.Net.Http.HttpMethod statusCallbackMethod;
         private string voiceApplicationSid;
         private bool voiceCallerIdLookup;
-        private HttpMethod voiceFallbackMethod;
+        private System.Net.Http.HttpMethod voiceFallbackMethod;
         private Uri voiceFallbackUrl;
-        private HttpMethod voiceMethod;
+        private System.Net.Http.HttpMethod voiceMethod;
         private Uri voiceUrl;
     
         /**
@@ -77,7 +77,7 @@ namespace Twilio.Creators.Api.V2010.Account.Incomingphonenumber {
          * @param smsFallbackMethod The sms_fallback_method
          * @return this
          */
-        public TollFreeCreator setSmsFallbackMethod(HttpMethod smsFallbackMethod) {
+        public TollFreeCreator setSmsFallbackMethod(System.Net.Http.HttpMethod smsFallbackMethod) {
             this.smsFallbackMethod = smsFallbackMethod;
             return this;
         }
@@ -109,7 +109,7 @@ namespace Twilio.Creators.Api.V2010.Account.Incomingphonenumber {
          * @param smsMethod The sms_method
          * @return this
          */
-        public TollFreeCreator setSmsMethod(HttpMethod smsMethod) {
+        public TollFreeCreator setSmsMethod(System.Net.Http.HttpMethod smsMethod) {
             this.smsMethod = smsMethod;
             return this;
         }
@@ -162,7 +162,7 @@ namespace Twilio.Creators.Api.V2010.Account.Incomingphonenumber {
          * @param statusCallbackMethod The status_callback_method
          * @return this
          */
-        public TollFreeCreator setStatusCallbackMethod(HttpMethod statusCallbackMethod) {
+        public TollFreeCreator setStatusCallbackMethod(System.Net.Http.HttpMethod statusCallbackMethod) {
             this.statusCallbackMethod = statusCallbackMethod;
             return this;
         }
@@ -195,7 +195,7 @@ namespace Twilio.Creators.Api.V2010.Account.Incomingphonenumber {
          * @param voiceFallbackMethod The voice_fallback_method
          * @return this
          */
-        public TollFreeCreator setVoiceFallbackMethod(HttpMethod voiceFallbackMethod) {
+        public TollFreeCreator setVoiceFallbackMethod(System.Net.Http.HttpMethod voiceFallbackMethod) {
             this.voiceFallbackMethod = voiceFallbackMethod;
             return this;
         }
@@ -227,7 +227,7 @@ namespace Twilio.Creators.Api.V2010.Account.Incomingphonenumber {
          * @param voiceMethod The voice_method
          * @return this
          */
-        public TollFreeCreator setVoiceMethod(HttpMethod voiceMethod) {
+        public TollFreeCreator setVoiceMethod(System.Net.Http.HttpMethod voiceMethod) {
             this.voiceMethod = voiceMethod;
             return this;
         }

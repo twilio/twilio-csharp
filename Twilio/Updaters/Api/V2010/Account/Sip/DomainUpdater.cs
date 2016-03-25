@@ -1,6 +1,6 @@
 using System;
 using Twilio.Clients;
-using Twilio.Converters.Promoter;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account.Sip;
@@ -13,10 +13,10 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
         private string sid;
         private string apiVersion;
         private string friendlyName;
-        private HttpMethod voiceFallbackMethod;
+        private System.Net.Http.HttpMethod voiceFallbackMethod;
         private Uri voiceFallbackUrl;
-        private HttpMethod voiceMethod;
-        private HttpMethod voiceStatusCallbackMethod;
+        private System.Net.Http.HttpMethod voiceMethod;
+        private System.Net.Http.HttpMethod voiceStatusCallbackMethod;
         private Uri voiceStatusCallbackUrl;
         private Uri voiceUrl;
     
@@ -59,7 +59,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param voiceFallbackMethod The voice_fallback_method
          * @return this
          */
-        public DomainUpdater setVoiceFallbackMethod(HttpMethod voiceFallbackMethod) {
+        public DomainUpdater setVoiceFallbackMethod(System.Net.Http.HttpMethod voiceFallbackMethod) {
             this.voiceFallbackMethod = voiceFallbackMethod;
             return this;
         }
@@ -91,7 +91,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param voiceMethod HTTP method to use with voice_url
          * @return this
          */
-        public DomainUpdater setVoiceMethod(HttpMethod voiceMethod) {
+        public DomainUpdater setVoiceMethod(System.Net.Http.HttpMethod voiceMethod) {
             this.voiceMethod = voiceMethod;
             return this;
         }
@@ -102,7 +102,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param voiceStatusCallbackMethod The voice_status_callback_method
          * @return this
          */
-        public DomainUpdater setVoiceStatusCallbackMethod(HttpMethod voiceStatusCallbackMethod) {
+        public DomainUpdater setVoiceStatusCallbackMethod(System.Net.Http.HttpMethod voiceStatusCallbackMethod) {
             this.voiceStatusCallbackMethod = voiceStatusCallbackMethod;
             return this;
         }

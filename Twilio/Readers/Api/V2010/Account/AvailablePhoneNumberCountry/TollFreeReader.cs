@@ -5,7 +5,7 @@ using Twilio.Readers;
 using Twilio.Resources;
 using Twilio.Resources.Api.V2010.Account.AvailablePhoneNumberCountry;
 
-namespace Twilio.Readers.Api.V2010.Account.Availablephonenumbercountry {
+namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
 
     public class TollFreeReader : Reader<TollFreeResource> {
         private string accountSid;

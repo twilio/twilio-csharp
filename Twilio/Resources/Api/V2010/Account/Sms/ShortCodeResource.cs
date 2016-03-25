@@ -75,11 +75,11 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         [JsonProperty("sid")]
         private readonly string sid;
         [JsonProperty("sms_fallback_method")]
-        private readonly HttpMethod smsFallbackMethod;
+        private readonly System.Net.Http.HttpMethod smsFallbackMethod;
         [JsonProperty("sms_fallback_url")]
         private readonly Uri smsFallbackUrl;
         [JsonProperty("sms_method")]
-        private readonly HttpMethod smsMethod;
+        private readonly System.Net.Http.HttpMethod smsMethod;
         [JsonProperty("sms_url")]
         private readonly Uri smsUrl;
         [JsonProperty("uri")]
@@ -100,11 +100,11 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
                                   [JsonProperty("sid")]
                                   string sid, 
                                   [JsonProperty("sms_fallback_method")]
-                                  HttpMethod smsFallbackMethod, 
+                                  System.Net.Http.HttpMethod smsFallbackMethod, 
                                   [JsonProperty("sms_fallback_url")]
                                   Uri smsFallbackUrl, 
                                   [JsonProperty("sms_method")]
-                                  HttpMethod smsMethod, 
+                                  System.Net.Http.HttpMethod smsMethod, 
                                   [JsonProperty("sms_url")]
                                   Uri smsUrl, 
                                   [JsonProperty("uri")]
@@ -175,7 +175,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         /**
          * @return HTTP method Twilio will use with sms fallback url
          */
-        public HttpMethod GetSmsFallbackMethod() {
+        public System.Net.Http.HttpMethod GetSmsFallbackMethod() {
             return this.smsFallbackMethod;
         }
     
@@ -189,7 +189,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         /**
          * @return HTTP method to use when requesting the sms url
          */
-        public HttpMethod GetSmsMethod() {
+        public System.Net.Http.HttpMethod GetSmsMethod() {
             return this.smsMethod;
         }
     

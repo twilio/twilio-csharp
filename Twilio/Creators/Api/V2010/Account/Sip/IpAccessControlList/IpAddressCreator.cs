@@ -4,7 +4,7 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account.Sip.IpAccessControlList;
 
-namespace Twilio.Creators.Api.V2010.Account.Sip.Ipaccesscontrollist {
+namespace Twilio.Creators.Api.V2010.Account.Sip.IpAccessControlList {
 
     public class IpAddressCreator : Creator<IpAddressResource> {
         private string accountSid;

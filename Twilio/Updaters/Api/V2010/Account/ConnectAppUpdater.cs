@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Twilio.Clients;
-using Twilio.Converters.Promoter;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account;
@@ -14,7 +14,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
         private string sid;
         private Uri authorizeRedirectUrl;
         private string companyName;
-        private HttpMethod deauthorizeCallbackMethod;
+        private System.Net.Http.HttpMethod deauthorizeCallbackMethod;
         private Uri deauthorizeCallbackUrl;
         private string description;
         private string friendlyName;
@@ -74,7 +74,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          *                                  to the url
          * @return this
          */
-        public ConnectAppUpdater setDeauthorizeCallbackMethod(HttpMethod deauthorizeCallbackMethod) {
+        public ConnectAppUpdater setDeauthorizeCallbackMethod(System.Net.Http.HttpMethod deauthorizeCallbackMethod) {
             this.deauthorizeCallbackMethod = deauthorizeCallbackMethod;
             return this;
         }

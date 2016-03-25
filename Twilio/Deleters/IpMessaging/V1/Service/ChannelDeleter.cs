@@ -2,7 +2,7 @@ using Twilio.Clients;
 using Twilio.Deleters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Ipmessaging.V1.Service;
+using Twilio.Resources.IpMessaging.V1.Service;
 
 namespace Twilio.Deleters.IpMessaging.V1.Service {
 

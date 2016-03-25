@@ -104,17 +104,17 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         [JsonProperty("sms_application_sid")]
         private readonly string smsApplicationSid;
         [JsonProperty("sms_fallback_method")]
-        private readonly HttpMethod smsFallbackMethod;
+        private readonly System.Net.Http.HttpMethod smsFallbackMethod;
         [JsonProperty("sms_fallback_url")]
         private readonly Uri smsFallbackUrl;
         [JsonProperty("sms_method")]
-        private readonly HttpMethod smsMethod;
+        private readonly System.Net.Http.HttpMethod smsMethod;
         [JsonProperty("sms_url")]
         private readonly Uri smsUrl;
         [JsonProperty("status_callback")]
         private readonly Uri statusCallback;
         [JsonProperty("status_callback_method")]
-        private readonly HttpMethod statusCallbackMethod;
+        private readonly System.Net.Http.HttpMethod statusCallbackMethod;
         [JsonProperty("trunk_sid")]
         private readonly string trunkSid;
         [JsonProperty("url")]
@@ -124,11 +124,11 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         [JsonProperty("voice_caller_id_lookup")]
         private readonly bool voiceCallerIdLookup;
         [JsonProperty("voice_fallback_method")]
-        private readonly HttpMethod voiceFallbackMethod;
+        private readonly System.Net.Http.HttpMethod voiceFallbackMethod;
         [JsonProperty("voice_fallback_url")]
         private readonly Uri voiceFallbackUrl;
         [JsonProperty("voice_method")]
-        private readonly HttpMethod voiceMethod;
+        private readonly System.Net.Http.HttpMethod voiceMethod;
         [JsonProperty("voice_url")]
         private readonly Uri voiceUrl;
     
@@ -157,17 +157,17 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
                                     [JsonProperty("sms_application_sid")]
                                     string smsApplicationSid, 
                                     [JsonProperty("sms_fallback_method")]
-                                    HttpMethod smsFallbackMethod, 
+                                    System.Net.Http.HttpMethod smsFallbackMethod, 
                                     [JsonProperty("sms_fallback_url")]
                                     Uri smsFallbackUrl, 
                                     [JsonProperty("sms_method")]
-                                    HttpMethod smsMethod, 
+                                    System.Net.Http.HttpMethod smsMethod, 
                                     [JsonProperty("sms_url")]
                                     Uri smsUrl, 
                                     [JsonProperty("status_callback")]
                                     Uri statusCallback, 
                                     [JsonProperty("status_callback_method")]
-                                    HttpMethod statusCallbackMethod, 
+                                    System.Net.Http.HttpMethod statusCallbackMethod, 
                                     [JsonProperty("trunk_sid")]
                                     string trunkSid, 
                                     [JsonProperty("url")]
@@ -177,11 +177,11 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
                                     [JsonProperty("voice_caller_id_lookup")]
                                     bool voiceCallerIdLookup, 
                                     [JsonProperty("voice_fallback_method")]
-                                    HttpMethod voiceFallbackMethod, 
+                                    System.Net.Http.HttpMethod voiceFallbackMethod, 
                                     [JsonProperty("voice_fallback_url")]
                                     Uri voiceFallbackUrl, 
                                     [JsonProperty("voice_method")]
-                                    HttpMethod voiceMethod, 
+                                    System.Net.Http.HttpMethod voiceMethod, 
                                     [JsonProperty("voice_url")]
                                     Uri voiceUrl) {
             this.accountSid = accountSid;
@@ -299,7 +299,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         /**
          * @return The sms_fallback_method
          */
-        public HttpMethod GetSmsFallbackMethod() {
+        public System.Net.Http.HttpMethod GetSmsFallbackMethod() {
             return this.smsFallbackMethod;
         }
     
@@ -313,7 +313,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         /**
          * @return The sms_method
          */
-        public HttpMethod GetSmsMethod() {
+        public System.Net.Http.HttpMethod GetSmsMethod() {
             return this.smsMethod;
         }
     
@@ -334,7 +334,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         /**
          * @return The status_callback_method
          */
-        public HttpMethod GetStatusCallbackMethod() {
+        public System.Net.Http.HttpMethod GetStatusCallbackMethod() {
             return this.statusCallbackMethod;
         }
     
@@ -369,7 +369,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         /**
          * @return The voice_fallback_method
          */
-        public HttpMethod GetVoiceFallbackMethod() {
+        public System.Net.Http.HttpMethod GetVoiceFallbackMethod() {
             return this.voiceFallbackMethod;
         }
     
@@ -383,7 +383,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         /**
          * @return The voice_method
          */
-        public HttpMethod GetVoiceMethod() {
+        public System.Net.Http.HttpMethod GetVoiceMethod() {
             return this.voiceMethod;
         }
     

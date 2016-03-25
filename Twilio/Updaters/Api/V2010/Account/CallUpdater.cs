@@ -1,6 +1,6 @@
 using System;
 using Twilio.Clients;
-using Twilio.Converters.Promoter;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account;
@@ -12,12 +12,12 @@ namespace Twilio.Updaters.Api.V2010.Account {
         private string accountSid;
         private string sid;
         private Uri url;
-        private HttpMethod method;
+        private System.Net.Http.HttpMethod method;
         private CallResource.Status status;
         private Uri fallbackUrl;
-        private HttpMethod fallbackMethod;
+        private System.Net.Http.HttpMethod fallbackMethod;
         private Uri statusCallback;
-        private HttpMethod statusCallbackMethod;
+        private System.Net.Http.HttpMethod statusCallbackMethod;
     
         /**
          * Construct a new CallUpdater
@@ -60,7 +60,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param method HTTP method to use to fetch TwiML
          * @return this
          */
-        public CallUpdater setMethod(HttpMethod method) {
+        public CallUpdater setMethod(System.Net.Http.HttpMethod method) {
             this.method = method;
             return this;
         }
@@ -109,7 +109,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param fallbackMethod HTTP Method to use with FallbackUrl
          * @return this
          */
-        public CallUpdater setFallbackMethod(HttpMethod fallbackMethod) {
+        public CallUpdater setFallbackMethod(System.Net.Http.HttpMethod fallbackMethod) {
             this.fallbackMethod = fallbackMethod;
             return this;
         }
@@ -142,7 +142,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param statusCallbackMethod HTTP Method to use with StatusCallback
          * @return this
          */
-        public CallUpdater setStatusCallbackMethod(HttpMethod statusCallbackMethod) {
+        public CallUpdater setStatusCallbackMethod(System.Net.Http.HttpMethod statusCallbackMethod) {
             this.statusCallbackMethod = statusCallbackMethod;
             return this;
         }
