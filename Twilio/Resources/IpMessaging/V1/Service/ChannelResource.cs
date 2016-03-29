@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators.IpMessaging.V1.Service;
@@ -15,10 +16,28 @@ using Twilio.Updaters.IpMessaging.V1.Service;
 namespace Twilio.Resources.IpMessaging.V1.Service {
 
     public class ChannelResource : SidResource {
-        public enum ChannelType {
-            PUBLIC="public",
-            PRIVATE="private"
-        };
+        public sealed class ChannelType {
+            public const string PUBLIC="public";
+            public const string PRIVATE="private";
+        
+            private readonly string value;
+            
+            public ChannelType(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator ChannelType(string value) {
+                return new ChannelType(value);
+            }
+            
+            public static implicit operator string(ChannelType value) {
+                return value.ToString();
+            }
+        }
     
         /**
          * fetch
@@ -81,7 +100,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param json Raw JSON string
          * @return ChannelResource object represented by the provided JSON
          */
-        public static ChannelResource fromJson(string json) {
+        public static ChannelResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<ChannelResource>(json);
@@ -156,7 +175,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
         /**
          * @return The sid
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Twilio.Readers;
+using Twilio.Clients;
 
 namespace Twilio.Resources
 {
@@ -8,11 +9,10 @@ namespace Twilio.Resources
 		protected Page<E> page;
 		protected bool autoPaging;
 		protected Reader<E> reader;
-		// TwilioRestClient object
-		protected object client;
+		protected TwilioRestClient client;
 		protected IEnumerator<E> iterator;
 
-		public ResourceSet(Reader<E> reader, object client, Page<E> page) {
+		public ResourceSet(Reader<E> reader, TwilioRestClient client, Page<E> page) {
 			this.reader = reader;
 			this.client = client;
 			this.page = page;
@@ -20,8 +20,12 @@ namespace Twilio.Resources
 			autoPaging = true;
 		}
 
-		public System.Collections.IEnumerator GetEnumerator() {
-			return new ResourceSetIterator<>(this);
+		public IEnumerator<E> GetEnumerator() {
+			return new ResourceSetIterator<E>(this);
+		}
+
+		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() {
+			return new ResourceSetIterator<E>(this);
 		}
 
 		protected void fetchNextPage() {
@@ -29,7 +33,7 @@ namespace Twilio.Resources
 				return;
 			}
 
-			page = reader.nextPage(page.getNextPageUri (), client);
+			page = reader.nextPage(page.getNextPageUri(), client);
 			if (page != null) {
 				iterator = page.getRecords().GetEnumerator ();
 			}
@@ -60,7 +64,11 @@ namespace Twilio.Resources
 			}
 
 			public R Current {
-				get { resourceSet.GetEnumerator().Current; }
+				get { return resourceSet.GetEnumerator().Current; }
+			}
+
+			object System.Collections.IEnumerator.Current {
+				get { return resourceSet.GetEnumerator().Current; }
 			}
 
 			public bool MoveNext() {
@@ -70,6 +78,8 @@ namespace Twilio.Resources
 			public void Reset() {
 				resourceSet.GetEnumerator().Reset();
 			}
+
+			public void Dispose(){}
 		}
     }
 }

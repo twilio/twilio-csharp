@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers;
@@ -27,19 +28,19 @@ namespace Twilio.Fetchers.Api.V2010.Account.Usage {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched TriggerResource
          */
-        public TriggerResource execute(TwilioRestClient client) {
+        public override async Task<TriggerResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/Usage/Triggers/" + this.sid + ".json"
             );
             
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TriggerResource fetch failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -51,7 +52,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Usage {
                 );
             }
             
-            return TriggerResource.fromJson(response.GetContent());
+            return TriggerResource.FromJson(response.GetContent());
         }
     }
 }

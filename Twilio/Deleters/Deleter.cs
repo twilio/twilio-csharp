@@ -1,17 +1,12 @@
 using System.Threading.Tasks;
 using Twilio.Resources;
+using Twilio.Clients;
 
 namespace Twilio.Deleters
 {
     public abstract class Deleter<T> where T : Resource
     {
-        public T execute(Twilio.Http.HttpClient client) {
-            var task = executeAsync(client);
-            task.Wait();
-            
-            return task.Result;
-        }
+		public abstract void execute(TwilioRestClient client);
         
-        public abstract Task<T> executeAsync(Twilio.Http.HttpClient client);
     }
 }

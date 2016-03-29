@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -78,7 +79,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Updated CredentialResource
          */
-        public CredentialResource execute(TwilioRestClient client) {
+        public override async Task<CredentialResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.IPMESSAGING,
@@ -86,12 +87,12 @@ namespace Twilio.Updaters.IpMessaging.V1 {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("CredentialResource update failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -103,7 +104,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
                 );
             }
             
-            return CredentialResource.fromJson(response.GetContent());
+            return CredentialResource.FromJson(response.GetContent());
         }
     
         /**
@@ -113,27 +114,27 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          */
         private void addPostParams(Request request) {
             if (friendlyName != null) {
-                request.addPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", friendlyName);
             }
             
             if (type != null) {
-                request.addPostParam("Type", type.ToString());
+                request.AddPostParam("Type", type.ToString());
             }
             
             if (certificate != null) {
-                request.addPostParam("Certificate", certificate);
+                request.AddPostParam("Certificate", certificate);
             }
             
             if (privateKey != null) {
-                request.addPostParam("PrivateKey", privateKey);
+                request.AddPostParam("PrivateKey", privateKey);
             }
             
             if (sandbox != null) {
-                request.addPostParam("Sandbox", sandbox.ToString());
+                request.AddPostParam("Sandbox", sandbox.ToString());
             }
             
             if (apiKey != null) {
-                request.addPostParam("ApiKey", apiKey);
+                request.AddPostParam("ApiKey", apiKey);
             }
         }
     }

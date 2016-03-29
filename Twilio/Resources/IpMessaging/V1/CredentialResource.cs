@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators.IpMessaging.V1;
@@ -14,10 +15,28 @@ using Twilio.Updaters.IpMessaging.V1;
 namespace Twilio.Resources.IpMessaging.V1 {
 
     public class CredentialResource : SidResource {
-        public enum PushService {
-            GCM="gcm",
-            APN="apn"
-        };
+        public sealed class PushService {
+            public const string GCM="gcm";
+            public const string APN="apn";
+        
+            private readonly string value;
+            
+            public PushService(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator PushService(string value) {
+                return new PushService(value);
+            }
+            
+            public static implicit operator string(PushService value) {
+                return value.ToString();
+            }
+        }
     
         /**
          * read
@@ -77,7 +96,7 @@ namespace Twilio.Resources.IpMessaging.V1 {
          * @param json Raw JSON string
          * @return CredentialResource object represented by the provided JSON
          */
-        public static CredentialResource fromJson(string json) {
+        public static CredentialResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<CredentialResource>(json);
@@ -132,7 +151,7 @@ namespace Twilio.Resources.IpMessaging.V1 {
         /**
          * @return The sid
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -61,7 +62,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return AddressResource ResourceSet
          */
-        public ResourceSet<AddressResource> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<AddressResource>> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
@@ -70,9 +71,9 @@ namespace Twilio.Readers.Api.V2010.Account {
             
             AddQueryParams(request);
             
-            Page<AddressResource> page = pageForRequest(client, request);
+            Page<AddressResource> page = await pageForRequest(client, request);
             
-            return new ResourceSet<>(this, client, page);
+            return new ResourceSet<AddressResource>(this, client, page);
         }
     
         /**
@@ -82,12 +83,16 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public Page<AddressResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<AddressResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
-            return pageForRequest(client, request);
+            
+            var task = pageForRequest(client, request);
+            task.Wait();
+            
+            return task.Result;
         }
     
         /**
@@ -97,8 +102,8 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected Page<AddressResource> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = client.request(request);
+        protected async Task<Page<AddressResource>> pageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("AddressResource read failed: Unable to connect to server");
@@ -115,7 +120,7 @@ namespace Twilio.Readers.Api.V2010.Account {
                 );
             }
             
-            Page<AddressResource> result = new Page<>();
+            Page<AddressResource> result = new Page<AddressResource>();
             result.deserialize("addresses", response.GetContent());
             
             return result;

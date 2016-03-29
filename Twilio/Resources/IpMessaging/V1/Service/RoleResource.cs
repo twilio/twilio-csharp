@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators.IpMessaging.V1.Service;
@@ -15,10 +16,28 @@ using Twilio.Updaters.IpMessaging.V1.Service;
 namespace Twilio.Resources.IpMessaging.V1.Service {
 
     public class RoleResource : SidResource {
-        public enum RoleType {
-            CHANNEL="channel",
-            DEPLOYMENT="deployment"
-        };
+        public sealed class RoleType {
+            public const string CHANNEL="channel";
+            public const string DEPLOYMENT="deployment";
+        
+            private readonly string value;
+            
+            public RoleType(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator RoleType(string value) {
+                return new RoleType(value);
+            }
+            
+            public static implicit operator string(RoleType value) {
+                return value.ToString();
+            }
+        }
     
         /**
          * fetch
@@ -84,7 +103,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param json Raw JSON string
          * @return RoleResource object represented by the provided JSON
          */
-        public static RoleResource fromJson(string json) {
+        public static RoleResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<RoleResource>(json);
@@ -144,7 +163,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
         /**
          * @return The sid
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

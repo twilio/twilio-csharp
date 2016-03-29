@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -87,7 +88,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return EventResource ResourceSet
          */
-        public ResourceSet<EventResource> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<EventResource>> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.MONITOR,
@@ -96,9 +97,9 @@ namespace Twilio.Readers.Monitor.V1 {
             
             AddQueryParams(request);
             
-            Page<EventResource> page = pageForRequest(client, request);
+            Page<EventResource> page = await pageForRequest(client, request);
             
-            return new ResourceSet<>(this, client, page);
+            return new ResourceSet<EventResource>(this, client, page);
         }
     
         /**
@@ -108,12 +109,16 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public Page<EventResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<EventResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
-            return pageForRequest(client, request);
+            
+            var task = pageForRequest(client, request);
+            task.Wait();
+            
+            return task.Result;
         }
     
         /**
@@ -123,8 +128,8 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected Page<EventResource> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = client.request(request);
+        protected async Task<Page<EventResource>> pageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("EventResource read failed: Unable to connect to server");
@@ -141,7 +146,7 @@ namespace Twilio.Readers.Monitor.V1 {
                 );
             }
             
-            Page<EventResource> result = new Page<>();
+            Page<EventResource> result = new Page<EventResource>();
             result.deserialize("events", response.GetContent());
             
             return result;

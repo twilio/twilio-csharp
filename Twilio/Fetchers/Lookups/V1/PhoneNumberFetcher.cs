@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers;
@@ -48,19 +49,19 @@ namespace Twilio.Fetchers.Lookups.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched PhoneNumberResource
          */
-        public PhoneNumberResource execute(TwilioRestClient client) {
+        public override async Task<PhoneNumberResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.LOOKUPS,
                 "/v1/PhoneNumbers/" + this.phoneNumber + ""
             );
             
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("PhoneNumberResource fetch failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -72,7 +73,7 @@ namespace Twilio.Fetchers.Lookups.V1 {
                 );
             }
             
-            return PhoneNumberResource.fromJson(response.GetContent());
+            return PhoneNumberResource.FromJson(response.GetContent());
         }
     }
 }

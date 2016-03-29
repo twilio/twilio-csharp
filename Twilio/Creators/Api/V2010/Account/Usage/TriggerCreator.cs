@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Creators;
 using Twilio.Exceptions;
@@ -86,7 +87,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
          * @param client TwilioRestClient with which to make the request
          * @return Created TriggerResource
          */
-        public TriggerResource execute(TwilioRestClient client) {
+        public override async Task<TriggerResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -94,12 +95,12 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TriggerResource creation failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -111,7 +112,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
                 );
             }
             
-            return TriggerResource.fromJson(response.GetContent());
+            return TriggerResource.FromJson(response.GetContent());
         }
     
         /**
@@ -121,31 +122,31 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
          */
         private void addPostParams(Request request) {
             if (callbackUrl != null) {
-                request.addPostParam("CallbackUrl", callbackUrl.ToString());
+                request.AddPostParam("CallbackUrl", callbackUrl.ToString());
             }
             
             if (triggerValue != null) {
-                request.addPostParam("TriggerValue", triggerValue);
+                request.AddPostParam("TriggerValue", triggerValue);
             }
             
             if (usageCategory != null) {
-                request.addPostParam("UsageCategory", usageCategory.ToString());
+                request.AddPostParam("UsageCategory", usageCategory.ToString());
             }
             
             if (callbackMethod != null) {
-                request.addPostParam("CallbackMethod", callbackMethod.ToString());
+                request.AddPostParam("CallbackMethod", callbackMethod.ToString());
             }
             
             if (friendlyName != null) {
-                request.addPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", friendlyName);
             }
             
             if (recurring != null) {
-                request.addPostParam("Recurring", recurring.ToString());
+                request.AddPostParam("Recurring", recurring.ToString());
             }
             
             if (triggerBy != null) {
-                request.addPostParam("TriggerBy", triggerBy.ToString());
+                request.AddPostParam("TriggerBy", triggerBy.ToString());
             }
         }
     }

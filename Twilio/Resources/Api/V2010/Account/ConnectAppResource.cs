@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Api.V2010.Account;
@@ -12,10 +13,28 @@ using Twilio.Updaters.Api.V2010.Account;
 namespace Twilio.Resources.Api.V2010.Account {
 
     public class ConnectAppResource : SidResource {
-        public enum Permission {
-            GET_ALL="get-all",
-            POST_ALL="post-all"
-        };
+        public sealed class Permission {
+            public const string GET_ALL="get-all";
+            public const string POST_ALL="post-all";
+        
+            private readonly string value;
+            
+            public Permission(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator Permission(string value) {
+                return new Permission(value);
+            }
+            
+            public static implicit operator string(Permission value) {
+                return value.ToString();
+            }
+        }
     
         /**
          * Fetch an instance of a connect-app
@@ -56,7 +75,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param json Raw JSON string
          * @return ConnectAppResource object represented by the provided JSON
          */
-        public static ConnectAppResource fromJson(string json) {
+        public static ConnectAppResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<ConnectAppResource>(json);
@@ -189,7 +208,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return A string that uniquely identifies this connect-apps
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

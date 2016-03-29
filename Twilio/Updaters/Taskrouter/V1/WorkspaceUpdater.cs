@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -72,7 +73,7 @@ namespace Twilio.Updaters.Taskrouter.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Updated WorkspaceResource
          */
-        public WorkspaceResource execute(TwilioRestClient client) {
+        public override async Task<WorkspaceResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TASKROUTER,
@@ -80,12 +81,12 @@ namespace Twilio.Updaters.Taskrouter.V1 {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("WorkspaceResource update failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -97,7 +98,7 @@ namespace Twilio.Updaters.Taskrouter.V1 {
                 );
             }
             
-            return WorkspaceResource.fromJson(response.GetContent());
+            return WorkspaceResource.FromJson(response.GetContent());
         }
     
         /**
@@ -107,19 +108,19 @@ namespace Twilio.Updaters.Taskrouter.V1 {
          */
         private void addPostParams(Request request) {
             if (defaultActivitySid != null) {
-                request.addPostParam("DefaultActivitySid", defaultActivitySid);
+                request.AddPostParam("DefaultActivitySid", defaultActivitySid);
             }
             
             if (eventCallbackUrl != null) {
-                request.addPostParam("EventCallbackUrl", eventCallbackUrl);
+                request.AddPostParam("EventCallbackUrl", eventCallbackUrl);
             }
             
             if (friendlyName != null) {
-                request.addPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", friendlyName);
             }
             
             if (timeoutActivitySid != null) {
-                request.addPostParam("TimeoutActivitySid", timeoutActivitySid);
+                request.AddPostParam("TimeoutActivitySid", timeoutActivitySid);
             }
         }
     }

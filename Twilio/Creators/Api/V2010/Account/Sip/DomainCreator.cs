@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators;
@@ -149,7 +150,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          * @param client TwilioRestClient with which to make the request
          * @return Created DomainResource
          */
-        public DomainResource execute(TwilioRestClient client) {
+        public override async Task<DomainResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -157,12 +158,12 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("DomainResource creation failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -174,7 +175,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
                 );
             }
             
-            return DomainResource.fromJson(response.GetContent());
+            return DomainResource.FromJson(response.GetContent());
         }
     
         /**
@@ -184,35 +185,35 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          */
         private void addPostParams(Request request) {
             if (domainName != null) {
-                request.addPostParam("DomainName", domainName);
+                request.AddPostParam("DomainName", domainName);
             }
             
             if (friendlyName != null) {
-                request.addPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", friendlyName);
             }
             
             if (voiceUrl != null) {
-                request.addPostParam("VoiceUrl", voiceUrl.ToString());
+                request.AddPostParam("VoiceUrl", voiceUrl.ToString());
             }
             
             if (voiceMethod != null) {
-                request.addPostParam("VoiceMethod", voiceMethod.ToString());
+                request.AddPostParam("VoiceMethod", voiceMethod.ToString());
             }
             
             if (voiceFallbackUrl != null) {
-                request.addPostParam("VoiceFallbackUrl", voiceFallbackUrl.ToString());
+                request.AddPostParam("VoiceFallbackUrl", voiceFallbackUrl.ToString());
             }
             
             if (voiceFallbackMethod != null) {
-                request.addPostParam("VoiceFallbackMethod", voiceFallbackMethod.ToString());
+                request.AddPostParam("VoiceFallbackMethod", voiceFallbackMethod.ToString());
             }
             
             if (voiceStatusCallbackUrl != null) {
-                request.addPostParam("VoiceStatusCallbackUrl", voiceStatusCallbackUrl.ToString());
+                request.AddPostParam("VoiceStatusCallbackUrl", voiceStatusCallbackUrl.ToString());
             }
             
             if (voiceStatusCallbackMethod != null) {
-                request.addPostParam("VoiceStatusCallbackMethod", voiceStatusCallbackMethod.ToString());
+                request.AddPostParam("VoiceStatusCallbackMethod", voiceStatusCallbackMethod.ToString());
             }
         }
     }

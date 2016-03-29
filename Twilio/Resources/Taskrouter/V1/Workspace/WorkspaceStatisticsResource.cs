@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Taskrouter.V1.Workspace;
@@ -25,7 +26,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param json Raw JSON string
          * @return WorkspaceStatisticsResource object represented by the provided JSON
          */
-        public static WorkspaceStatisticsResource fromJson(string json) {
+        public static WorkspaceStatisticsResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<WorkspaceStatisticsResource>(json);

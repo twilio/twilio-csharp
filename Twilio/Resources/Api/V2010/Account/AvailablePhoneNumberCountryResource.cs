@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Api.V2010.Account;
@@ -39,7 +40,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @return AvailablePhoneNumberCountryResource object represented by the
          *         provided JSON
          */
-        public static AvailablePhoneNumberCountryResource fromJson(string json) {
+        public static AvailablePhoneNumberCountryResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<AvailablePhoneNumberCountryResource>(json);
@@ -79,7 +80,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The country_code
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.GetCountryCode();
         }
     

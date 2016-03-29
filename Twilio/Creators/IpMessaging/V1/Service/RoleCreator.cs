@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Creators;
 using Twilio.Exceptions;
@@ -34,7 +35,7 @@ namespace Twilio.Creators.IpMessaging.V1.Service {
          * @param client TwilioRestClient with which to make the request
          * @return Created RoleResource
          */
-        public RoleResource execute(TwilioRestClient client) {
+        public override async Task<RoleResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.IPMESSAGING,
@@ -42,12 +43,12 @@ namespace Twilio.Creators.IpMessaging.V1.Service {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("RoleResource creation failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -59,7 +60,7 @@ namespace Twilio.Creators.IpMessaging.V1.Service {
                 );
             }
             
-            return RoleResource.fromJson(response.GetContent());
+            return RoleResource.FromJson(response.GetContent());
         }
     
         /**
@@ -69,15 +70,15 @@ namespace Twilio.Creators.IpMessaging.V1.Service {
          */
         private void addPostParams(Request request) {
             if (friendlyName != null) {
-                request.addPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", friendlyName);
             }
             
             if (type != null) {
-                request.addPostParam("Type", type.ToString());
+                request.AddPostParam("Type", type.ToString());
             }
             
             if (permission != null) {
-                request.addPostParam("Permission", permission.ToString());
+                request.AddPostParam("Permission", permission.ToString());
             }
         }
     }

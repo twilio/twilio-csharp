@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Deleters.Api.V2010.Account;
@@ -51,7 +52,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param json Raw JSON string
          * @return RecordingResource object represented by the provided JSON
          */
-        public static RecordingResource fromJson(string json) {
+        public static RecordingResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<RecordingResource>(json);
@@ -148,7 +149,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return A string that uniquely identifies this recording
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

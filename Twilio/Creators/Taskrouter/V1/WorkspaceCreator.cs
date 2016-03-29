@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Creators;
 using Twilio.Exceptions;
@@ -48,7 +49,7 @@ namespace Twilio.Creators.Taskrouter.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Created WorkspaceResource
          */
-        public WorkspaceResource execute(TwilioRestClient client) {
+        public override async Task<WorkspaceResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TASKROUTER,
@@ -56,12 +57,12 @@ namespace Twilio.Creators.Taskrouter.V1 {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("WorkspaceResource creation failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -73,7 +74,7 @@ namespace Twilio.Creators.Taskrouter.V1 {
                 );
             }
             
-            return WorkspaceResource.fromJson(response.GetContent());
+            return WorkspaceResource.FromJson(response.GetContent());
         }
     
         /**
@@ -83,15 +84,15 @@ namespace Twilio.Creators.Taskrouter.V1 {
          */
         private void addPostParams(Request request) {
             if (friendlyName != null) {
-                request.addPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", friendlyName);
             }
             
             if (eventCallbackUrl != null) {
-                request.addPostParam("EventCallbackUrl", eventCallbackUrl);
+                request.AddPostParam("EventCallbackUrl", eventCallbackUrl);
             }
             
             if (template != null) {
-                request.addPostParam("Template", template);
+                request.AddPostParam("Template", template);
             }
         }
     }

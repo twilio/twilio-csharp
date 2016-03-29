@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -130,7 +131,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          * @param client TwilioRestClient with which to make the request
          * @return Updated ShortCodeResource
          */
-        public ShortCodeResource execute(TwilioRestClient client) {
+        public override async Task<ShortCodeResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -138,12 +139,12 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ShortCodeResource update failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -155,7 +156,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
                 );
             }
             
-            return ShortCodeResource.fromJson(response.GetContent());
+            return ShortCodeResource.FromJson(response.GetContent());
         }
     
         /**
@@ -165,27 +166,27 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          */
         private void addPostParams(Request request) {
             if (friendlyName != null) {
-                request.addPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", friendlyName);
             }
             
             if (apiVersion != null) {
-                request.addPostParam("ApiVersion", apiVersion);
+                request.AddPostParam("ApiVersion", apiVersion);
             }
             
             if (smsUrl != null) {
-                request.addPostParam("SmsUrl", smsUrl.ToString());
+                request.AddPostParam("SmsUrl", smsUrl.ToString());
             }
             
             if (smsMethod != null) {
-                request.addPostParam("SmsMethod", smsMethod.ToString());
+                request.AddPostParam("SmsMethod", smsMethod.ToString());
             }
             
             if (smsFallbackUrl != null) {
-                request.addPostParam("SmsFallbackUrl", smsFallbackUrl.ToString());
+                request.AddPostParam("SmsFallbackUrl", smsFallbackUrl.ToString());
             }
             
             if (smsFallbackMethod != null) {
-                request.addPostParam("SmsFallbackMethod", smsFallbackMethod.ToString());
+                request.AddPostParam("SmsFallbackMethod", smsFallbackMethod.ToString());
             }
         }
     }

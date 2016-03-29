@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using Twilio.Clients;
 
 namespace Twilio.Tests
 {
@@ -8,7 +9,7 @@ namespace Twilio.Tests
 		[Test]
 		public void TestCase ()
 		{
-			var client = new Twilio.SystemNetClient();
+			var client = new TwilioRestClient("ACAAA", "asdhdhf8A(*H");
 		}
 	}
 }

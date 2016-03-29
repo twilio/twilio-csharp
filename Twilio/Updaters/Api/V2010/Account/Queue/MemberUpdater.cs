@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -37,7 +38,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Queue {
          * @param client TwilioRestClient with which to make the request
          * @return Updated MemberResource
          */
-        public MemberResource execute(TwilioRestClient client) {
+        public override async Task<MemberResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -45,12 +46,12 @@ namespace Twilio.Updaters.Api.V2010.Account.Queue {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("MemberResource update failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -62,7 +63,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Queue {
                 );
             }
             
-            return MemberResource.fromJson(response.GetContent());
+            return MemberResource.FromJson(response.GetContent());
         }
     
         /**
@@ -72,11 +73,11 @@ namespace Twilio.Updaters.Api.V2010.Account.Queue {
          */
         private void addPostParams(Request request) {
             if (url != null) {
-                request.addPostParam("Url", url.ToString());
+                request.AddPostParam("Url", url.ToString());
             }
             
             if (method != null) {
-                request.addPostParam("Method", method.ToString());
+                request.AddPostParam("Method", method.ToString());
             }
         }
     }

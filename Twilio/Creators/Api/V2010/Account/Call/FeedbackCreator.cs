@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators;
@@ -45,7 +46,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
          * @return this
          */
         public FeedbackCreator setIssue(FeedbackResource.Issues issue) {
-            return setIssue(Promoter.listOfOne(issue));
+            return setIssue(Promoter.ListOfOne(issue));
         }
     
         /**
@@ -54,7 +55,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
          * @param client TwilioRestClient with which to make the request
          * @return Created FeedbackResource
          */
-        public FeedbackResource execute(TwilioRestClient client) {
+        public override async Task<FeedbackResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -62,12 +63,12 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("FeedbackResource creation failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -79,7 +80,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
                 );
             }
             
-            return FeedbackResource.fromJson(response.GetContent());
+            return FeedbackResource.FromJson(response.GetContent());
         }
     
         /**
@@ -89,11 +90,11 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
          */
         private void addPostParams(Request request) {
             if (qualityScore != null) {
-                request.addPostParam("QualityScore", qualityScore.ToString());
+                request.AddPostParam("QualityScore", qualityScore.ToString());
             }
             
             if (issue != null) {
-                request.addPostParam("Issue", issue.ToString());
+                request.AddPostParam("Issue", issue.ToString());
             }
         }
     }

@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -45,7 +46,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
          * @param client TwilioRestClient with which to make the request
          * @return Updated ReservationResource
          */
-        public ReservationResource execute(TwilioRestClient client) {
+        public override async Task<ReservationResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TASKROUTER,
@@ -53,12 +54,12 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ReservationResource update failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -70,7 +71,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
                 );
             }
             
-            return ReservationResource.fromJson(response.GetContent());
+            return ReservationResource.FromJson(response.GetContent());
         }
     
         /**
@@ -80,11 +81,11 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
          */
         private void addPostParams(Request request) {
             if (reservationStatus != null) {
-                request.addPostParam("ReservationStatus", reservationStatus);
+                request.AddPostParam("ReservationStatus", reservationStatus);
             }
             
             if (workerActivitySid != null) {
-                request.addPostParam("WorkerActivitySid", workerActivitySid);
+                request.AddPostParam("WorkerActivitySid", workerActivitySid);
             }
         }
     }

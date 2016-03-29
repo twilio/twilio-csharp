@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -61,7 +62,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return MessageResource ResourceSet
          */
-        public ResourceSet<MessageResource> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<MessageResource>> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
@@ -70,9 +71,9 @@ namespace Twilio.Readers.Api.V2010.Account {
             
             AddQueryParams(request);
             
-            Page<MessageResource> page = pageForRequest(client, request);
+            Page<MessageResource> page = await pageForRequest(client, request);
             
-            return new ResourceSet<>(this, client, page);
+            return new ResourceSet<MessageResource>(this, client, page);
         }
     
         /**
@@ -82,12 +83,16 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public Page<MessageResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<MessageResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
-            return pageForRequest(client, request);
+            
+            var task = pageForRequest(client, request);
+            task.Wait();
+            
+            return task.Result;
         }
     
         /**
@@ -97,8 +102,8 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected Page<MessageResource> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = client.request(request);
+        protected async Task<Page<MessageResource>> pageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("MessageResource read failed: Unable to connect to server");
@@ -115,7 +120,7 @@ namespace Twilio.Readers.Api.V2010.Account {
                 );
             }
             
-            Page<MessageResource> result = new Page<>();
+            Page<MessageResource> result = new Page<MessageResource>();
             result.deserialize("messages", response.GetContent());
             
             return result;

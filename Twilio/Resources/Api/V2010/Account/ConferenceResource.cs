@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -11,11 +12,29 @@ using Twilio.Resources;
 namespace Twilio.Resources.Api.V2010.Account {
 
     public class ConferenceResource : SidResource {
-        public enum Status {
-            INIT="init",
-            IN_PROGRESS="in-progress",
-            COMPLETED="completed"
-        };
+        public sealed class Status {
+            public const string INIT="init";
+            public const string IN_PROGRESS="in-progress";
+            public const string COMPLETED="completed";
+        
+            private readonly string value;
+            
+            public Status(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator Status(string value) {
+                return new Status(value);
+            }
+            
+            public static implicit operator string(Status value) {
+                return value.ToString();
+            }
+        }
     
         /**
          * Fetch an instance of a conference
@@ -45,7 +64,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param json Raw JSON string
          * @return ConferenceResource object represented by the provided JSON
          */
-        public static ConferenceResource fromJson(string json) {
+        public static ConferenceResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<ConferenceResource>(json);
@@ -135,7 +154,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return A string that uniquely identifies this conference
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

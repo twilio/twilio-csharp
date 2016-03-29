@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -25,7 +26,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip {
          * @param client TwilioRestClient with which to make the request
          * @return IpAccessControlListResource ResourceSet
          */
-        public ResourceSet<IpAccessControlListResource> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<IpAccessControlListResource>> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
@@ -34,9 +35,9 @@ namespace Twilio.Readers.Api.V2010.Account.Sip {
             
             AddQueryParams(request);
             
-            Page<IpAccessControlListResource> page = pageForRequest(client, request);
+            Page<IpAccessControlListResource> page = await pageForRequest(client, request);
             
-            return new ResourceSet<>(this, client, page);
+            return new ResourceSet<IpAccessControlListResource>(this, client, page);
         }
     
         /**
@@ -46,12 +47,16 @@ namespace Twilio.Readers.Api.V2010.Account.Sip {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public Page<IpAccessControlListResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<IpAccessControlListResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
-            return pageForRequest(client, request);
+            
+            var task = pageForRequest(client, request);
+            task.Wait();
+            
+            return task.Result;
         }
     
         /**
@@ -61,8 +66,8 @@ namespace Twilio.Readers.Api.V2010.Account.Sip {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected Page<IpAccessControlListResource> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = client.request(request);
+        protected async Task<Page<IpAccessControlListResource>> pageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("IpAccessControlListResource read failed: Unable to connect to server");
@@ -79,7 +84,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip {
                 );
             }
             
-            Page<IpAccessControlListResource> result = new Page<>();
+            Page<IpAccessControlListResource> result = new Page<IpAccessControlListResource>();
             result.deserialize("ip_access_control_lists", response.GetContent());
             
             return result;

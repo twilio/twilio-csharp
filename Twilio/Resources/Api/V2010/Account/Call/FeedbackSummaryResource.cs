@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account.Call;
@@ -14,12 +15,30 @@ using Twilio.Types;
 namespace Twilio.Resources.Api.V2010.Account.Call {
 
     public class FeedbackSummaryResource : SidResource {
-        public enum Status {
-            QUEUED="queued",
-            IN_PROGRESS="in-progress",
-            COMPLETED="completed",
-            FAILED="failed"
-        };
+        public sealed class Status {
+            public const string QUEUED="queued";
+            public const string IN_PROGRESS="in-progress";
+            public const string COMPLETED="completed";
+            public const string FAILED="failed";
+        
+            private readonly string value;
+            
+            public Status(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator Status(string value) {
+                return new Status(value);
+            }
+            
+            public static implicit operator string(Status value) {
+                return value.ToString();
+            }
+        }
     
         /**
          * create
@@ -61,7 +80,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          * @param json Raw JSON string
          * @return FeedbackSummaryResource object represented by the provided JSON
          */
-        public static FeedbackSummaryResource fromJson(string json) {
+        public static FeedbackSummaryResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<FeedbackSummaryResource>(json);
@@ -223,7 +242,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         /**
          * @return The sid
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

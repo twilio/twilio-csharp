@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -167,7 +168,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @return this
          */
         public ConnectAppUpdater setPermissions(ConnectAppResource.Permission permissions) {
-            return setPermissions(Promoter.listOfOne(permissions));
+            return setPermissions(Promoter.ListOfOne(permissions));
         }
     
         /**
@@ -176,7 +177,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Updated ConnectAppResource
          */
-        public ConnectAppResource execute(TwilioRestClient client) {
+        public override async Task<ConnectAppResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -184,12 +185,12 @@ namespace Twilio.Updaters.Api.V2010.Account {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ConnectAppResource update failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -201,7 +202,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
                 );
             }
             
-            return ConnectAppResource.fromJson(response.GetContent());
+            return ConnectAppResource.FromJson(response.GetContent());
         }
     
         /**
@@ -211,35 +212,35 @@ namespace Twilio.Updaters.Api.V2010.Account {
          */
         private void addPostParams(Request request) {
             if (authorizeRedirectUrl != null) {
-                request.addPostParam("AuthorizeRedirectUrl", authorizeRedirectUrl.ToString());
+                request.AddPostParam("AuthorizeRedirectUrl", authorizeRedirectUrl.ToString());
             }
             
             if (companyName != null) {
-                request.addPostParam("CompanyName", companyName);
+                request.AddPostParam("CompanyName", companyName);
             }
             
             if (deauthorizeCallbackMethod != null) {
-                request.addPostParam("DeauthorizeCallbackMethod", deauthorizeCallbackMethod.ToString());
+                request.AddPostParam("DeauthorizeCallbackMethod", deauthorizeCallbackMethod.ToString());
             }
             
             if (deauthorizeCallbackUrl != null) {
-                request.addPostParam("DeauthorizeCallbackUrl", deauthorizeCallbackUrl.ToString());
+                request.AddPostParam("DeauthorizeCallbackUrl", deauthorizeCallbackUrl.ToString());
             }
             
             if (description != null) {
-                request.addPostParam("Description", description);
+                request.AddPostParam("Description", description);
             }
             
             if (friendlyName != null) {
-                request.addPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", friendlyName);
             }
             
             if (homepageUrl != null) {
-                request.addPostParam("HomepageUrl", homepageUrl.ToString());
+                request.AddPostParam("HomepageUrl", homepageUrl.ToString());
             }
             
             if (permissions != null) {
-                request.addPostParam("Permissions", permissions.ToString());
+                request.AddPostParam("Permissions", permissions.ToString());
             }
         }
     }

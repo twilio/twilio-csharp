@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Deleters.Api.V2010.Account;
@@ -63,7 +64,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param json Raw JSON string
          * @return OutgoingCallerIdResource object represented by the provided JSON
          */
-        public static OutgoingCallerIdResource fromJson(string json) {
+        public static OutgoingCallerIdResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<OutgoingCallerIdResource>(json);
@@ -113,7 +114,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return A string that uniquely identifies this outgoing-caller-ids
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators.IpMessaging.V1;
@@ -70,7 +71,7 @@ namespace Twilio.Resources.IpMessaging.V1 {
          * @param json Raw JSON string
          * @return ServiceResource object represented by the provided JSON
          */
-        public static ServiceResource fromJson(string json) {
+        public static ServiceResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<ServiceResource>(json);
@@ -155,7 +156,7 @@ namespace Twilio.Resources.IpMessaging.V1 {
         /**
          * @return The sid
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

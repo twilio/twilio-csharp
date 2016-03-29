@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators.Conversations.V1.Conversation;
@@ -12,13 +13,31 @@ using Twilio.Resources;
 namespace Twilio.Resources.Conversations.V1.Conversation {
 
     public class ParticipantResource : SidResource {
-        public enum Status {
-            CREATED="created",
-            CONNECTING="connecting",
-            CONNECTED="connected",
-            DISCONNECTED="disconnected",
-            FAILED="failed"
-        };
+        public sealed class Status {
+            public const string CREATED="created";
+            public const string CONNECTING="connecting";
+            public const string CONNECTED="connected";
+            public const string DISCONNECTED="disconnected";
+            public const string FAILED="failed";
+        
+            private readonly string value;
+            
+            public Status(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator Status(string value) {
+                return new Status(value);
+            }
+            
+            public static implicit operator string(Status value) {
+                return value.ToString();
+            }
+        }
     
         /**
          * read
@@ -59,7 +78,7 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
          * @param json Raw JSON string
          * @return ParticipantResource object represented by the provided JSON
          */
-        public static ParticipantResource fromJson(string json) {
+        public static ParticipantResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<ParticipantResource>(json);
@@ -124,7 +143,7 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
         /**
          * @return The sid
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

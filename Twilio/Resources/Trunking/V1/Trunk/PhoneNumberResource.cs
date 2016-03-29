@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators.Trunking.V1.Trunk;
@@ -14,12 +15,30 @@ using Twilio.Resources;
 namespace Twilio.Resources.Trunking.V1.Trunk {
 
     public class PhoneNumberResource : SidResource {
-        public enum AddressRequirement {
-            NONE="none",
-            ANY="any",
-            LOCAL="local",
-            FOREIGN="foreign"
-        };
+        public sealed class AddressRequirement {
+            public const string NONE="none";
+            public const string ANY="any";
+            public const string LOCAL="local";
+            public const string FOREIGN="foreign";
+        
+            private readonly string value;
+            
+            public AddressRequirement(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator AddressRequirement(string value) {
+                return new AddressRequirement(value);
+            }
+            
+            public static implicit operator string(AddressRequirement value) {
+                return value.ToString();
+            }
+        }
     
         /**
          * fetch
@@ -70,7 +89,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
          * @param json Raw JSON string
          * @return PhoneNumberResource object represented by the provided JSON
          */
-        public static PhoneNumberResource fromJson(string json) {
+        public static PhoneNumberResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<PhoneNumberResource>(json);
@@ -285,7 +304,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         /**
          * @return The sid
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

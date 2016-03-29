@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators;
@@ -98,7 +99,7 @@ namespace Twilio.Creators.Trunking.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Created TrunkResource
          */
-        public TrunkResource execute(TwilioRestClient client) {
+        public override async Task<TrunkResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TRUNKING,
@@ -106,12 +107,12 @@ namespace Twilio.Creators.Trunking.V1 {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TrunkResource creation failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -123,7 +124,7 @@ namespace Twilio.Creators.Trunking.V1 {
                 );
             }
             
-            return TrunkResource.fromJson(response.GetContent());
+            return TrunkResource.FromJson(response.GetContent());
         }
     
         /**
@@ -133,27 +134,27 @@ namespace Twilio.Creators.Trunking.V1 {
          */
         private void addPostParams(Request request) {
             if (friendlyName != null) {
-                request.addPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", friendlyName);
             }
             
             if (domainName != null) {
-                request.addPostParam("DomainName", domainName);
+                request.AddPostParam("DomainName", domainName);
             }
             
             if (disasterRecoveryUrl != null) {
-                request.addPostParam("DisasterRecoveryUrl", disasterRecoveryUrl.ToString());
+                request.AddPostParam("DisasterRecoveryUrl", disasterRecoveryUrl.ToString());
             }
             
             if (disasterRecoveryMethod != null) {
-                request.addPostParam("DisasterRecoveryMethod", disasterRecoveryMethod.ToString());
+                request.AddPostParam("DisasterRecoveryMethod", disasterRecoveryMethod.ToString());
             }
             
             if (recording != null) {
-                request.addPostParam("Recording", recording);
+                request.AddPostParam("Recording", recording);
             }
             
             if (secure != null) {
-                request.addPostParam("Secure", secure.ToString());
+                request.AddPostParam("Secure", secure.ToString());
             }
         }
     }

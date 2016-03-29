@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators.Api.V2010;
@@ -14,16 +15,52 @@ using Twilio.Updaters.Api.V2010;
 namespace Twilio.Resources.Api.V2010 {
 
     public class AccountResource : SidResource {
-        public enum Status {
-            ACTIVE="active",
-            SUSPENDED="suspended",
-            CLOSED="closed"
-        };
+        public sealed class Status {
+            public const string ACTIVE="active";
+            public const string SUSPENDED="suspended";
+            public const string CLOSED="closed";
+        
+            private readonly string value;
+            
+            public Status(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator Status(string value) {
+                return new Status(value);
+            }
+            
+            public static implicit operator string(Status value) {
+                return value.ToString();
+            }
+        }
     
-        public enum Type {
-            TRIAL="Trial",
-            FULL="Full"
-        };
+        public sealed class Type {
+            public const string TRIAL="Trial";
+            public const string FULL="Full";
+        
+            private readonly string value;
+            
+            public Type(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator Type(string value) {
+                return new Type(value);
+            }
+            
+            public static implicit operator string(Type value) {
+                return value.ToString();
+            }
+        }
     
         /**
          * Create a new Twilio Subaccount from the account making the request
@@ -70,7 +107,7 @@ namespace Twilio.Resources.Api.V2010 {
          * @param json Raw JSON string
          * @return AccountResource object represented by the provided JSON
          */
-        public static AccountResource fromJson(string json) {
+        public static AccountResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<AccountResource>(json);
@@ -170,7 +207,7 @@ namespace Twilio.Resources.Api.V2010 {
         /**
          * @return A 34 character string that uniquely identifies this resource.
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

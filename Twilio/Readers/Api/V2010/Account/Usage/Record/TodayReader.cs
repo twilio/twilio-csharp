@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -25,7 +26,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
          * @param client TwilioRestClient with which to make the request
          * @return TodayResource ResourceSet
          */
-        public ResourceSet<TodayResource> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<TodayResource>> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
@@ -34,9 +35,9 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
             
             AddQueryParams(request);
             
-            Page<TodayResource> page = pageForRequest(client, request);
+            Page<TodayResource> page = await pageForRequest(client, request);
             
-            return new ResourceSet<>(this, client, page);
+            return new ResourceSet<TodayResource>(this, client, page);
         }
     
         /**
@@ -46,12 +47,16 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public Page<TodayResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<TodayResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
-            return pageForRequest(client, request);
+            
+            var task = pageForRequest(client, request);
+            task.Wait();
+            
+            return task.Result;
         }
     
         /**
@@ -61,8 +66,8 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected Page<TodayResource> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = client.request(request);
+        protected async Task<Page<TodayResource>> pageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TodayResource read failed: Unable to connect to server");
@@ -79,7 +84,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
                 );
             }
             
-            Page<TodayResource> result = new Page<>();
+            Page<TodayResource> result = new Page<TodayResource>();
             result.deserialize("usage_records", response.GetContent());
             
             return result;

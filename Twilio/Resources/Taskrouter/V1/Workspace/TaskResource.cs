@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators.Taskrouter.V1.Workspace;
@@ -14,12 +15,30 @@ using Twilio.Updaters.Taskrouter.V1.Workspace;
 namespace Twilio.Resources.Taskrouter.V1.Workspace {
 
     public class TaskResource : SidResource {
-        public enum Status {
-            PENDING="pending",
-            RESERVED="reserved",
-            ASSIGNED="assigned",
-            CANCELED="canceled"
-        };
+        public sealed class Status {
+            public const string PENDING="pending";
+            public const string RESERVED="reserved";
+            public const string ASSIGNED="assigned";
+            public const string CANCELED="canceled";
+        
+            private readonly string value;
+            
+            public Status(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator Status(string value) {
+                return new Status(value);
+            }
+            
+            public static implicit operator string(Status value) {
+                return value.ToString();
+            }
+        }
     
         /**
          * fetch
@@ -82,7 +101,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param json Raw JSON string
          * @return TaskResource object represented by the provided JSON
          */
-        public static TaskResource fromJson(string json) {
+        public static TaskResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<TaskResource>(json);
@@ -218,7 +237,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The sid
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

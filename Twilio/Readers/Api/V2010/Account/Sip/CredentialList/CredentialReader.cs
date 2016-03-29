@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,7 +29,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.CredentialList {
          * @param client TwilioRestClient with which to make the request
          * @return CredentialResource ResourceSet
          */
-        public ResourceSet<CredentialResource> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<CredentialResource>> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
@@ -37,9 +38,9 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.CredentialList {
             
             AddQueryParams(request);
             
-            Page<CredentialResource> page = pageForRequest(client, request);
+            Page<CredentialResource> page = await pageForRequest(client, request);
             
-            return new ResourceSet<>(this, client, page);
+            return new ResourceSet<CredentialResource>(this, client, page);
         }
     
         /**
@@ -49,12 +50,16 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.CredentialList {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public Page<CredentialResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<CredentialResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
-            return pageForRequest(client, request);
+            
+            var task = pageForRequest(client, request);
+            task.Wait();
+            
+            return task.Result;
         }
     
         /**
@@ -64,8 +69,8 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.CredentialList {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected Page<CredentialResource> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = client.request(request);
+        protected async Task<Page<CredentialResource>> pageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("CredentialResource read failed: Unable to connect to server");
@@ -82,7 +87,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.CredentialList {
                 );
             }
             
-            Page<CredentialResource> result = new Page<>();
+            Page<CredentialResource> result = new Page<CredentialResource>();
             result.deserialize("credentials", response.GetContent());
             
             return result;

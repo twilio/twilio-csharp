@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -51,7 +52,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          * @param json Raw JSON string
          * @return ShortCodeResource object represented by the provided JSON
          */
-        public static ShortCodeResource fromJson(string json) {
+        public static ShortCodeResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<ShortCodeResource>(json);
@@ -168,7 +169,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         /**
          * @return A string that uniquely identifies this short-codes
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

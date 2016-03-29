@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers;
@@ -24,19 +25,19 @@ namespace Twilio.Fetchers.Pricing.V1.Voice {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched NumberResource
          */
-        public NumberResource execute(TwilioRestClient client) {
+        public override async Task<NumberResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.PRICING,
                 "/v1/Voice/Numbers/" + this.number + ""
             );
             
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("NumberResource fetch failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -48,7 +49,7 @@ namespace Twilio.Fetchers.Pricing.V1.Voice {
                 );
             }
             
-            return NumberResource.fromJson(response.GetContent());
+            return NumberResource.FromJson(response.GetContent());
         }
     }
 }

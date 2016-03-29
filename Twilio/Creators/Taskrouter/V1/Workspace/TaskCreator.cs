@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Creators;
 using Twilio.Exceptions;
@@ -54,7 +55,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param client TwilioRestClient with which to make the request
          * @return Created TaskResource
          */
-        public TaskResource execute(TwilioRestClient client) {
+        public override async Task<TaskResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TASKROUTER,
@@ -62,12 +63,12 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TaskResource creation failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -79,7 +80,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
                 );
             }
             
-            return TaskResource.fromJson(response.GetContent());
+            return TaskResource.FromJson(response.GetContent());
         }
     
         /**
@@ -89,19 +90,19 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          */
         private void addPostParams(Request request) {
             if (attributes != null) {
-                request.addPostParam("Attributes", attributes);
+                request.AddPostParam("Attributes", attributes);
             }
             
             if (workflowSid != null) {
-                request.addPostParam("WorkflowSid", workflowSid);
+                request.AddPostParam("WorkflowSid", workflowSid);
             }
             
             if (timeout != null) {
-                request.addPostParam("Timeout", timeout.ToString());
+                request.AddPostParam("Timeout", timeout.ToString());
             }
             
             if (priority != null) {
-                request.addPostParam("Priority", priority.ToString());
+                request.AddPostParam("Priority", priority.ToString());
             }
         }
     }

@@ -14,13 +14,13 @@ namespace Twilio.Exceptions
 		[JsonProperty("status")]
 		private int status;
 
-		public RestException(string message) : base(Message) {
+		public RestException(string message) : base(message) {
 		}
 
 		public RestException(string message, Exception exception) : base(message, exception) {
 		}
 
-		public RestException(int status, string message, int code, string moreInfo) {
+		public RestException(int status, string message, int code, string moreInfo) : base(message) {
 			this.status = status;
 			this.message = message;
 			this.code = code;

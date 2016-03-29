@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Creators;
 using Twilio.Exceptions;
@@ -42,7 +43,7 @@ namespace Twilio.Creators.IpMessaging.V1.Service.Channel {
          * @param client TwilioRestClient with which to make the request
          * @return Created MemberResource
          */
-        public MemberResource execute(TwilioRestClient client) {
+        public override async Task<MemberResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.IPMESSAGING,
@@ -50,12 +51,12 @@ namespace Twilio.Creators.IpMessaging.V1.Service.Channel {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("MemberResource creation failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -67,7 +68,7 @@ namespace Twilio.Creators.IpMessaging.V1.Service.Channel {
                 );
             }
             
-            return MemberResource.fromJson(response.GetContent());
+            return MemberResource.FromJson(response.GetContent());
         }
     
         /**
@@ -77,11 +78,11 @@ namespace Twilio.Creators.IpMessaging.V1.Service.Channel {
          */
         private void addPostParams(Request request) {
             if (identity != null) {
-                request.addPostParam("Identity", identity);
+                request.AddPostParam("Identity", identity);
             }
             
             if (roleSid != null) {
-                request.addPostParam("RoleSid", roleSid);
+                request.AddPostParam("RoleSid", roleSid);
             }
         }
     }

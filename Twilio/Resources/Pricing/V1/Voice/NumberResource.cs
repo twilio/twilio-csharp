@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Pricing.V1.Voice;
@@ -26,7 +27,7 @@ namespace Twilio.Resources.Pricing.V1.Voice {
          * @param json Raw JSON string
          * @return NumberResource object represented by the provided JSON
          */
-        public static NumberResource fromJson(string json) {
+        public static NumberResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<NumberResource>(json);
@@ -76,7 +77,7 @@ namespace Twilio.Resources.Pricing.V1.Voice {
         /**
          * @return The number
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.GetNumber().ToString();
         }
     

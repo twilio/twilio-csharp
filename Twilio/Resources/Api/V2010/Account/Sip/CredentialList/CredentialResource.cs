@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account.Sip.CredentialList;
@@ -82,7 +83,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.CredentialList {
          * @param json Raw JSON string
          * @return CredentialResource object represented by the provided JSON
          */
-        public static CredentialResource fromJson(string json) {
+        public static CredentialResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<CredentialResource>(json);
@@ -132,7 +133,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.CredentialList {
         /**
          * @return The sid
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

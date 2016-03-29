@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Deleters.Api.V2010.Account.Call;
@@ -53,7 +54,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          * @param json Raw JSON string
          * @return NotificationResource object represented by the provided JSON
          */
-        public static NotificationResource fromJson(string json) {
+        public static NotificationResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<NotificationResource>(json);
@@ -237,7 +238,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         /**
          * @return The sid
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

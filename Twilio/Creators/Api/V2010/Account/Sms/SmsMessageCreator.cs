@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators;
@@ -86,7 +87,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sms {
          * @param client TwilioRestClient with which to make the request
          * @return Created SmsMessageResource
          */
-        public SmsMessageResource execute(TwilioRestClient client) {
+        public override async Task<SmsMessageResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -94,12 +95,12 @@ namespace Twilio.Creators.Api.V2010.Account.Sms {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("SmsMessageResource creation failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -111,7 +112,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sms {
                 );
             }
             
-            return SmsMessageResource.fromJson(response.GetContent());
+            return SmsMessageResource.FromJson(response.GetContent());
         }
     
         /**
@@ -121,27 +122,27 @@ namespace Twilio.Creators.Api.V2010.Account.Sms {
          */
         private void addPostParams(Request request) {
             if (to != null) {
-                request.addPostParam("To", to.ToString());
+                request.AddPostParam("To", to.ToString());
             }
             
             if (from != null) {
-                request.addPostParam("From", from.ToString());
+                request.AddPostParam("From", from.ToString());
             }
             
             if (body != null) {
-                request.addPostParam("Body", body);
+                request.AddPostParam("Body", body);
             }
             
             if (mediaUrl != null) {
-                request.addPostParam("MediaUrl", mediaUrl.ToString());
+                request.AddPostParam("MediaUrl", mediaUrl.ToString());
             }
             
             if (statusCallback != null) {
-                request.addPostParam("StatusCallback", statusCallback.ToString());
+                request.AddPostParam("StatusCallback", statusCallback.ToString());
             }
             
             if (applicationSid != null) {
-                request.addPostParam("ApplicationSid", applicationSid);
+                request.AddPostParam("ApplicationSid", applicationSid);
             }
         }
     }

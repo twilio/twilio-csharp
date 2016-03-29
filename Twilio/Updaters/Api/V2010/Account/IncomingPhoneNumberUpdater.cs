@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -301,7 +302,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Updated IncomingPhoneNumberResource
          */
-        public IncomingPhoneNumberResource execute(TwilioRestClient client) {
+        public override async Task<IncomingPhoneNumberResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -309,12 +310,12 @@ namespace Twilio.Updaters.Api.V2010.Account {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("IncomingPhoneNumberResource update failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -326,7 +327,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
                 );
             }
             
-            return IncomingPhoneNumberResource.fromJson(response.GetContent());
+            return IncomingPhoneNumberResource.FromJson(response.GetContent());
         }
     
         /**
@@ -336,67 +337,67 @@ namespace Twilio.Updaters.Api.V2010.Account {
          */
         private void addPostParams(Request request) {
             if (accountSid != null) {
-                request.addPostParam("AccountSid", accountSid);
+                request.AddPostParam("AccountSid", accountSid);
             }
             
             if (apiVersion != null) {
-                request.addPostParam("ApiVersion", apiVersion);
+                request.AddPostParam("ApiVersion", apiVersion);
             }
             
             if (friendlyName != null) {
-                request.addPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", friendlyName);
             }
             
             if (smsApplicationSid != null) {
-                request.addPostParam("SmsApplicationSid", smsApplicationSid);
+                request.AddPostParam("SmsApplicationSid", smsApplicationSid);
             }
             
             if (smsFallbackMethod != null) {
-                request.addPostParam("SmsFallbackMethod", smsFallbackMethod.ToString());
+                request.AddPostParam("SmsFallbackMethod", smsFallbackMethod.ToString());
             }
             
             if (smsFallbackUrl != null) {
-                request.addPostParam("SmsFallbackUrl", smsFallbackUrl.ToString());
+                request.AddPostParam("SmsFallbackUrl", smsFallbackUrl.ToString());
             }
             
             if (smsMethod != null) {
-                request.addPostParam("SmsMethod", smsMethod.ToString());
+                request.AddPostParam("SmsMethod", smsMethod.ToString());
             }
             
             if (smsUrl != null) {
-                request.addPostParam("SmsUrl", smsUrl.ToString());
+                request.AddPostParam("SmsUrl", smsUrl.ToString());
             }
             
             if (statusCallback != null) {
-                request.addPostParam("StatusCallback", statusCallback.ToString());
+                request.AddPostParam("StatusCallback", statusCallback.ToString());
             }
             
             if (statusCallbackMethod != null) {
-                request.addPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
+                request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
             
             if (voiceApplicationSid != null) {
-                request.addPostParam("VoiceApplicationSid", voiceApplicationSid);
+                request.AddPostParam("VoiceApplicationSid", voiceApplicationSid);
             }
             
             if (voiceCallerIdLookup != null) {
-                request.addPostParam("VoiceCallerIdLookup", voiceCallerIdLookup.ToString());
+                request.AddPostParam("VoiceCallerIdLookup", voiceCallerIdLookup.ToString());
             }
             
             if (voiceFallbackMethod != null) {
-                request.addPostParam("VoiceFallbackMethod", voiceFallbackMethod.ToString());
+                request.AddPostParam("VoiceFallbackMethod", voiceFallbackMethod.ToString());
             }
             
             if (voiceFallbackUrl != null) {
-                request.addPostParam("VoiceFallbackUrl", voiceFallbackUrl.ToString());
+                request.AddPostParam("VoiceFallbackUrl", voiceFallbackUrl.ToString());
             }
             
             if (voiceMethod != null) {
-                request.addPostParam("VoiceMethod", voiceMethod.ToString());
+                request.AddPostParam("VoiceMethod", voiceMethod.ToString());
             }
             
             if (voiceUrl != null) {
-                request.addPostParam("VoiceUrl", voiceUrl.ToString());
+                request.AddPostParam("VoiceUrl", voiceUrl.ToString());
             }
         }
     }

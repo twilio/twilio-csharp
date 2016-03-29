@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Deleters;
 using Twilio.Exceptions;
@@ -23,19 +24,19 @@ namespace Twilio.Deleters.Monitor.V1 {
          * 
          * @param client TwilioRestClient with which to make the request
          */
-        public void execute(TwilioRestClient client) {
+        public override async void execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Delete,
                 TwilioRestClient.Domains.MONITOR,
                 "/v1/Alerts/" + this.sid + ""
             );
             
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("AlertResource delete failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_NO_CONTENT) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(

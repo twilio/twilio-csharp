@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Creators;
 using Twilio.Exceptions;
@@ -57,7 +58,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param client TwilioRestClient with which to make the request
          * @return Created TaskQueueResource
          */
-        public TaskQueueResource execute(TwilioRestClient client) {
+        public override async Task<TaskQueueResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TASKROUTER,
@@ -65,12 +66,12 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TaskQueueResource creation failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -82,7 +83,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
                 );
             }
             
-            return TaskQueueResource.fromJson(response.GetContent());
+            return TaskQueueResource.FromJson(response.GetContent());
         }
     
         /**
@@ -92,23 +93,23 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          */
         private void addPostParams(Request request) {
             if (friendlyName != null) {
-                request.addPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", friendlyName);
             }
             
             if (reservationActivitySid != null) {
-                request.addPostParam("ReservationActivitySid", reservationActivitySid);
+                request.AddPostParam("ReservationActivitySid", reservationActivitySid);
             }
             
             if (assignmentActivitySid != null) {
-                request.addPostParam("AssignmentActivitySid", assignmentActivitySid);
+                request.AddPostParam("AssignmentActivitySid", assignmentActivitySid);
             }
             
             if (targetWorkers != null) {
-                request.addPostParam("TargetWorkers", targetWorkers);
+                request.AddPostParam("TargetWorkers", targetWorkers);
             }
             
             if (maxReservedWorkers != null) {
-                request.addPostParam("MaxReservedWorkers", maxReservedWorkers.ToString());
+                request.AddPostParam("MaxReservedWorkers", maxReservedWorkers.ToString());
             }
         }
     }

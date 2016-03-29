@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -39,7 +40,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param json Raw JSON string
          * @return EventResource object represented by the provided JSON
          */
-        public static EventResource fromJson(string json) {
+        public static EventResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<EventResource>(json);
@@ -206,7 +207,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The sid
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

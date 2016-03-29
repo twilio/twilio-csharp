@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Deleters.Monitor.V1;
@@ -47,7 +48,7 @@ namespace Twilio.Resources.Monitor.V1 {
          * @param json Raw JSON string
          * @return AlertResource object represented by the provided JSON
          */
-        public static AlertResource fromJson(string json) {
+        public static AlertResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<AlertResource>(json);
@@ -252,7 +253,7 @@ namespace Twilio.Resources.Monitor.V1 {
         /**
          * @return The sid
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

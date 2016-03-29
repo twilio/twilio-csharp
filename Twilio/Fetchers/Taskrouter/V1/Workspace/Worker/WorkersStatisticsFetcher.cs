@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -98,19 +99,19 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched WorkersStatisticsResource
          */
-        public WorkersStatisticsResource execute(TwilioRestClient client) {
+        public override async Task<WorkersStatisticsResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Workers/Statistics"
             );
             
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("WorkersStatisticsResource fetch failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -122,7 +123,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
                 );
             }
             
-            return WorkersStatisticsResource.fromJson(response.GetContent());
+            return WorkersStatisticsResource.FromJson(response.GetContent());
         }
     }
 }

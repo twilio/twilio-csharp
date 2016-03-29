@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -99,7 +100,7 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
          * @param client TwilioRestClient with which to make the request
          * @return Updated OriginationUrlResource
          */
-        public OriginationUrlResource execute(TwilioRestClient client) {
+        public override async Task<OriginationUrlResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TRUNKING,
@@ -107,12 +108,12 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("OriginationUrlResource update failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -124,7 +125,7 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
                 );
             }
             
-            return OriginationUrlResource.fromJson(response.GetContent());
+            return OriginationUrlResource.FromJson(response.GetContent());
         }
     
         /**
@@ -134,23 +135,23 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
          */
         private void addPostParams(Request request) {
             if (weight != null) {
-                request.addPostParam("Weight", weight.ToString());
+                request.AddPostParam("Weight", weight.ToString());
             }
             
             if (priority != null) {
-                request.addPostParam("Priority", priority.ToString());
+                request.AddPostParam("Priority", priority.ToString());
             }
             
             if (enabled != null) {
-                request.addPostParam("Enabled", enabled.ToString());
+                request.AddPostParam("Enabled", enabled.ToString());
             }
             
             if (friendlyName != null) {
-                request.addPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", friendlyName);
             }
             
             if (sipUrl != null) {
-                request.addPostParam("SipUrl", sipUrl.ToString());
+                request.AddPostParam("SipUrl", sipUrl.ToString());
             }
         }
     }

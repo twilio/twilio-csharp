@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Pricing.V1.Voice;
@@ -37,7 +38,7 @@ namespace Twilio.Resources.Pricing.V1.Voice {
          * @param json Raw JSON string
          * @return CountryResource object represented by the provided JSON
          */
-        public static CountryResource fromJson(string json) {
+        public static CountryResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<CountryResource>(json);
@@ -82,7 +83,7 @@ namespace Twilio.Resources.Pricing.V1.Voice {
         /**
          * @return The iso_country
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.GetIsoCountry();
         }
     

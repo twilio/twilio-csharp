@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -14,7 +15,7 @@ namespace Twilio.Readers.Conversations.V1.Conversation {
          * @param client TwilioRestClient with which to make the request
          * @return CompletedResource ResourceSet
          */
-        public ResourceSet<CompletedResource> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<CompletedResource>> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.CONVERSATIONS,
@@ -23,9 +24,9 @@ namespace Twilio.Readers.Conversations.V1.Conversation {
             
             AddQueryParams(request);
             
-            Page<CompletedResource> page = pageForRequest(client, request);
+            Page<CompletedResource> page = await pageForRequest(client, request);
             
-            return new ResourceSet<>(this, client, page);
+            return new ResourceSet<CompletedResource>(this, client, page);
         }
     
         /**
@@ -35,12 +36,16 @@ namespace Twilio.Readers.Conversations.V1.Conversation {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public Page<CompletedResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<CompletedResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
-            return pageForRequest(client, request);
+            
+            var task = pageForRequest(client, request);
+            task.Wait();
+            
+            return task.Result;
         }
     
         /**
@@ -50,8 +55,8 @@ namespace Twilio.Readers.Conversations.V1.Conversation {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected Page<CompletedResource> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = client.request(request);
+        protected async Task<Page<CompletedResource>> pageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("CompletedResource read failed: Unable to connect to server");
@@ -68,7 +73,7 @@ namespace Twilio.Readers.Conversations.V1.Conversation {
                 );
             }
             
-            Page<CompletedResource> result = new Page<>();
+            Page<CompletedResource> result = new Page<CompletedResource>();
             result.deserialize("conversations", response.GetContent());
             
             return result;

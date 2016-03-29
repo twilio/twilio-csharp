@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -153,7 +154,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Updated CallResource
          */
-        public CallResource execute(TwilioRestClient client) {
+        public override async Task<CallResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -161,12 +162,12 @@ namespace Twilio.Updaters.Api.V2010.Account {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("CallResource update failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -178,7 +179,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
                 );
             }
             
-            return CallResource.fromJson(response.GetContent());
+            return CallResource.FromJson(response.GetContent());
         }
     
         /**
@@ -188,31 +189,31 @@ namespace Twilio.Updaters.Api.V2010.Account {
          */
         private void addPostParams(Request request) {
             if (url != null) {
-                request.addPostParam("Url", url.ToString());
+                request.AddPostParam("Url", url.ToString());
             }
             
             if (method != null) {
-                request.addPostParam("Method", method.ToString());
+                request.AddPostParam("Method", method.ToString());
             }
             
             if (status != null) {
-                request.addPostParam("Status", status.ToString());
+                request.AddPostParam("Status", status.ToString());
             }
             
             if (fallbackUrl != null) {
-                request.addPostParam("FallbackUrl", fallbackUrl.ToString());
+                request.AddPostParam("FallbackUrl", fallbackUrl.ToString());
             }
             
             if (fallbackMethod != null) {
-                request.addPostParam("FallbackMethod", fallbackMethod.ToString());
+                request.AddPostParam("FallbackMethod", fallbackMethod.ToString());
             }
             
             if (statusCallback != null) {
-                request.addPostParam("StatusCallback", statusCallback.ToString());
+                request.AddPostParam("StatusCallback", statusCallback.ToString());
             }
             
             if (statusCallbackMethod != null) {
-                request.addPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
+                request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
         }
     }

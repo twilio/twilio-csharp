@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Creators.Api.V2010.Account;
 using Twilio.Exceptions;
@@ -26,7 +27,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param json Raw JSON string
          * @return ValidationRequestResource object represented by the provided JSON
          */
-        public static ValidationRequestResource fromJson(string json) {
+        public static ValidationRequestResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<ValidationRequestResource>(json);

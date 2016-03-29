@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -49,7 +50,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param client TwilioRestClient with which to make the request
          * @return ActivityResource ResourceSet
          */
-        public ResourceSet<ActivityResource> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<ActivityResource>> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TASKROUTER,
@@ -58,9 +59,9 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
             
             AddQueryParams(request);
             
-            Page<ActivityResource> page = pageForRequest(client, request);
+            Page<ActivityResource> page = await pageForRequest(client, request);
             
-            return new ResourceSet<>(this, client, page);
+            return new ResourceSet<ActivityResource>(this, client, page);
         }
     
         /**
@@ -70,12 +71,16 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public Page<ActivityResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<ActivityResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
-            return pageForRequest(client, request);
+            
+            var task = pageForRequest(client, request);
+            task.Wait();
+            
+            return task.Result;
         }
     
         /**
@@ -85,8 +90,8 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected Page<ActivityResource> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = client.request(request);
+        protected async Task<Page<ActivityResource>> pageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ActivityResource read failed: Unable to connect to server");
@@ -103,7 +108,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
                 );
             }
             
-            Page<ActivityResource> result = new Page<>();
+            Page<ActivityResource> result = new Page<ActivityResource>();
             result.deserialize("activities", response.GetContent());
             
             return result;

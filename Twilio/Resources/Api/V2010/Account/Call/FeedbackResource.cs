@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account.Call;
@@ -13,16 +14,34 @@ using Twilio.Updaters.Api.V2010.Account.Call;
 namespace Twilio.Resources.Api.V2010.Account.Call {
 
     public class FeedbackResource : Resource {
-        public enum Issues {
-            AUDIO_LATENCY="audio-latency",
-            DIGITS_NOT_CAPTURED="digits-not-captured",
-            DROPPED_CALL="dropped-call",
-            IMPERFECT_AUDIO="imperfect-audio",
-            INCORRECT_CALLER_ID="incorrect-caller-id",
-            ONE_WAY_AUDIO="one-way-audio",
-            POST_DIAL_DELAY="post-dial-delay",
-            UNSOLICITED_CALL="unsolicited-call"
-        };
+        public sealed class Issues {
+            public const string AUDIO_LATENCY="audio-latency";
+            public const string DIGITS_NOT_CAPTURED="digits-not-captured";
+            public const string DROPPED_CALL="dropped-call";
+            public const string IMPERFECT_AUDIO="imperfect-audio";
+            public const string INCORRECT_CALLER_ID="incorrect-caller-id";
+            public const string ONE_WAY_AUDIO="one-way-audio";
+            public const string POST_DIAL_DELAY="post-dial-delay";
+            public const string UNSOLICITED_CALL="unsolicited-call";
+        
+            private readonly string value;
+            
+            public Issues(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator Issues(string value) {
+                return new Issues(value);
+            }
+            
+            public static implicit operator string(Issues value) {
+                return value.ToString();
+            }
+        }
     
         /**
          * create
@@ -65,7 +84,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          * @param json Raw JSON string
          * @return FeedbackResource object represented by the provided JSON
          */
-        public static FeedbackResource fromJson(string json) {
+        public static FeedbackResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<FeedbackResource>(json);

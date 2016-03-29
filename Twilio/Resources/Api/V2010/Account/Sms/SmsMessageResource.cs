@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account.Sms;
@@ -15,20 +16,56 @@ using Twilio.Updaters.Api.V2010.Account.Sms;
 namespace Twilio.Resources.Api.V2010.Account.Sms {
 
     public class SmsMessageResource : SidResource {
-        public enum Status {
-            QUEUED="queued",
-            SENDING="sending",
-            SENT="sent",
-            FAILED="failed",
-            RECEIVED="received"
-        };
+        public sealed class Status {
+            public const string QUEUED="queued";
+            public const string SENDING="sending";
+            public const string SENT="sent";
+            public const string FAILED="failed";
+            public const string RECEIVED="received";
+        
+            private readonly string value;
+            
+            public Status(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator Status(string value) {
+                return new Status(value);
+            }
+            
+            public static implicit operator string(Status value) {
+                return value.ToString();
+            }
+        }
     
-        public enum Direction {
-            INBOUND="inbound",
-            OUTBOUND_API="outbound-api",
-            OUTBOUND_CALL="outbound-call",
-            OUTBOUND_REPLY="outbound-reply"
-        };
+        public sealed class Direction {
+            public const string INBOUND="inbound";
+            public const string OUTBOUND_API="outbound-api";
+            public const string OUTBOUND_CALL="outbound-call";
+            public const string OUTBOUND_REPLY="outbound-reply";
+        
+            private readonly string value;
+            
+            public Direction(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator Direction(string value) {
+                return new Direction(value);
+            }
+            
+            public static implicit operator string(Direction value) {
+                return value.ToString();
+            }
+        }
     
         /**
          * create
@@ -105,7 +142,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          * @param json Raw JSON string
          * @return SmsMessageResource object represented by the provided JSON
          */
-        public static SmsMessageResource fromJson(string json) {
+        public static SmsMessageResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<SmsMessageResource>(json);
@@ -260,7 +297,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         /**
          * @return The sid
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

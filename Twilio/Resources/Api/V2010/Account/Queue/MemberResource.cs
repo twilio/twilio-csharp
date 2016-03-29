@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -56,7 +57,7 @@ namespace Twilio.Resources.Api.V2010.Account.Queue {
          * @param json Raw JSON string
          * @return MemberResource object represented by the provided JSON
          */
-        public static MemberResource fromJson(string json) {
+        public static MemberResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<MemberResource>(json);
@@ -96,7 +97,7 @@ namespace Twilio.Resources.Api.V2010.Account.Queue {
         /**
          * @return Unique string that identifies this resource
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.GetCallSid();
         }
     

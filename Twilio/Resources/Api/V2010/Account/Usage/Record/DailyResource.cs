@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -11,34 +12,52 @@ using Twilio.Resources;
 namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
 
     public class DailyResource : Resource {
-        public enum Category {
-            CALLERIDLOOKUPS="calleridlookups",
-            CALLS="calls",
-            CALLS_CLIENT="calls-client",
-            CALLS_INBOUND="calls-inbound",
-            CALLS_INBOUND_LOCAL="calls-inbound-local",
-            CALLS_INBOUND_TOLLFREE="calls-inbound-tollfree",
-            CALLS_OUTBOUND="calls-outbound",
-            CALLS_SIP="calls-sip",
-            PHONENUMBERS="phonenumbers",
-            PHONENUMBERS_LOCAL="phonenumbers-local",
-            PHONENUMBERS_TOLLFREE="phonenumbers-tollfree",
-            RECORDINGS="recordings",
-            RECORDINGSTORAGE="recordingstorage",
-            SHORTCODES="shortcodes",
-            SHORTCODES_CUSTOMEROWNED="shortcodes-customerowned",
-            SHORTCODES_RANDOM="shortcodes-random",
-            SHORTCODES_VANITY="shortcodes-vanity",
-            SMS="sms",
-            SMS_INBOUND="sms-inbound",
-            SMS_INBOUND_LONGCODE="sms-inbound-longcode",
-            SMS_INBOUND_SHORTCODE="sms-inbound-shortcode",
-            SMS_OUTBOUND="sms-outbound",
-            SMS_OUTBOUND_LONGCODE="sms-outbound-longcode",
-            SMS_OUTBOUND_SHORTCODE="sms-outbound-shortcode",
-            TOTALPRICE="totalprice",
-            TRANSCRIPTIONS="transcriptions"
-        };
+        public sealed class Category {
+            public const string CALLERIDLOOKUPS="calleridlookups";
+            public const string CALLS="calls";
+            public const string CALLS_CLIENT="calls-client";
+            public const string CALLS_INBOUND="calls-inbound";
+            public const string CALLS_INBOUND_LOCAL="calls-inbound-local";
+            public const string CALLS_INBOUND_TOLLFREE="calls-inbound-tollfree";
+            public const string CALLS_OUTBOUND="calls-outbound";
+            public const string CALLS_SIP="calls-sip";
+            public const string PHONENUMBERS="phonenumbers";
+            public const string PHONENUMBERS_LOCAL="phonenumbers-local";
+            public const string PHONENUMBERS_TOLLFREE="phonenumbers-tollfree";
+            public const string RECORDINGS="recordings";
+            public const string RECORDINGSTORAGE="recordingstorage";
+            public const string SHORTCODES="shortcodes";
+            public const string SHORTCODES_CUSTOMEROWNED="shortcodes-customerowned";
+            public const string SHORTCODES_RANDOM="shortcodes-random";
+            public const string SHORTCODES_VANITY="shortcodes-vanity";
+            public const string SMS="sms";
+            public const string SMS_INBOUND="sms-inbound";
+            public const string SMS_INBOUND_LONGCODE="sms-inbound-longcode";
+            public const string SMS_INBOUND_SHORTCODE="sms-inbound-shortcode";
+            public const string SMS_OUTBOUND="sms-outbound";
+            public const string SMS_OUTBOUND_LONGCODE="sms-outbound-longcode";
+            public const string SMS_OUTBOUND_SHORTCODE="sms-outbound-shortcode";
+            public const string TOTALPRICE="totalprice";
+            public const string TRANSCRIPTIONS="transcriptions";
+        
+            private readonly string value;
+            
+            public Category(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator Category(string value) {
+                return new Category(value);
+            }
+            
+            public static implicit operator string(Category value) {
+                return value.ToString();
+            }
+        }
     
         /**
          * read
@@ -56,7 +75,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
          * @param json Raw JSON string
          * @return DailyResource object represented by the provided JSON
          */
-        public static DailyResource fromJson(string json) {
+        public static DailyResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<DailyResource>(json);

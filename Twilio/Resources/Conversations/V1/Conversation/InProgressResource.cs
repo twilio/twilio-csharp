@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -10,12 +11,30 @@ using Twilio.Resources;
 namespace Twilio.Resources.Conversations.V1.Conversation {
 
     public class InProgressResource : Resource {
-        public enum Status {
-            CREATED="created",
-            IN_PROGRESS="in-progress",
-            COMPLETED="completed",
-            FAILED="failed"
-        };
+        public sealed class Status {
+            public const string CREATED="created";
+            public const string IN_PROGRESS="in-progress";
+            public const string COMPLETED="completed";
+            public const string FAILED="failed";
+        
+            private readonly string value;
+            
+            public Status(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator Status(string value) {
+                return new Status(value);
+            }
+            
+            public static implicit operator string(Status value) {
+                return value.ToString();
+            }
+        }
     
         /**
          * read
@@ -32,7 +51,7 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
          * @param json Raw JSON string
          * @return InProgressResource object represented by the provided JSON
          */
-        public static InProgressResource fromJson(string json) {
+        public static InProgressResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<InProgressResource>(json);

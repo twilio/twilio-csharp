@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Deleters.Api.V2010.Account;
@@ -12,11 +13,29 @@ using Twilio.Resources;
 namespace Twilio.Resources.Api.V2010.Account {
 
     public class TranscriptionResource : SidResource {
-        public enum Status {
-            IN_PROGRESS="in-progress",
-            COMPLETED="completed",
-            FAILED="failed"
-        };
+        public sealed class Status {
+            public const string IN_PROGRESS="in-progress";
+            public const string COMPLETED="completed";
+            public const string FAILED="failed";
+        
+            private readonly string value;
+            
+            public Status(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator Status(string value) {
+                return new Status(value);
+            }
+            
+            public static implicit operator string(Status value) {
+                return value.ToString();
+            }
+        }
     
         /**
          * Fetch and instance of a Transcription
@@ -57,7 +76,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param json Raw JSON string
          * @return TranscriptionResource object represented by the provided JSON
          */
-        public static TranscriptionResource fromJson(string json) {
+        public static TranscriptionResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<TranscriptionResource>(json);
@@ -193,7 +212,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return A string that uniquely identifies this transcription
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

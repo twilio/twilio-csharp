@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers;
@@ -24,19 +25,19 @@ namespace Twilio.Fetchers.IpMessaging.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched ServiceResource
          */
-        public ServiceResource execute(TwilioRestClient client) {
+        public override async Task<ServiceResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.IPMESSAGING,
                 "/v1/Services/" + this.sid + ""
             );
             
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ServiceResource fetch failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -48,7 +49,7 @@ namespace Twilio.Fetchers.IpMessaging.V1 {
                 );
             }
             
-            return ServiceResource.fromJson(response.GetContent());
+            return ServiceResource.FromJson(response.GetContent());
         }
     }
 }

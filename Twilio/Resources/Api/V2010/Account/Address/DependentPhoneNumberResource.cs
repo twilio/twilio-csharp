@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -27,7 +28,7 @@ namespace Twilio.Resources.Api.V2010.Account.Address {
          * @param json Raw JSON string
          * @return DependentPhoneNumberResource object represented by the provided JSON
          */
-        public static DependentPhoneNumberResource fromJson(string json) {
+        public static DependentPhoneNumberResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<DependentPhoneNumberResource>(json);

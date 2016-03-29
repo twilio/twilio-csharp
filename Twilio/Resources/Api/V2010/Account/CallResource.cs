@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account;
@@ -15,23 +16,59 @@ using Twilio.Updaters.Api.V2010.Account;
 namespace Twilio.Resources.Api.V2010.Account {
 
     public class CallResource : SidResource {
-        public enum Event {
-            INITIATED="initiated",
-            RINGING="ringing",
-            ANSWERED="answered",
-            COMPLETED="completed"
-        };
+        public sealed class Event {
+            public const string INITIATED="initiated";
+            public const string RINGING="ringing";
+            public const string ANSWERED="answered";
+            public const string COMPLETED="completed";
+        
+            private readonly string value;
+            
+            public Event(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator Event(string value) {
+                return new Event(value);
+            }
+            
+            public static implicit operator string(Event value) {
+                return value.ToString();
+            }
+        }
     
-        public enum Status {
-            QUEUED="queued",
-            RINGING="ringing",
-            IN_PROGRESS="in-progress",
-            COMPLETED="completed",
-            BUSY="busy",
-            FAILED="failed",
-            NO_ANSWER="no-answer",
-            CANCELED="canceled"
-        };
+        public sealed class Status {
+            public const string QUEUED="queued";
+            public const string RINGING="ringing";
+            public const string IN_PROGRESS="in-progress";
+            public const string COMPLETED="completed";
+            public const string BUSY="busy";
+            public const string FAILED="failed";
+            public const string NO_ANSWER="no-answer";
+            public const string CANCELED="canceled";
+        
+            private readonly string value;
+            
+            public Status(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator Status(string value) {
+                return new Status(value);
+            }
+            
+            public static implicit operator string(Status value) {
+                return value.ToString();
+            }
+        }
     
         /**
          * Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client
@@ -112,7 +149,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param json Raw JSON string
          * @return CallResource object represented by the provided JSON
          */
-        public static CallResource fromJson(string json) {
+        public static CallResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<CallResource>(json);
@@ -395,7 +432,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return A 34 character string that uniquely identifies this resource.
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

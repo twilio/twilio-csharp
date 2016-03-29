@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -28,7 +29,7 @@ namespace Twilio.Readers.Api.V2010.Account.Recording {
          * @param client TwilioRestClient with which to make the request
          * @return TranscriptionResource ResourceSet
          */
-        public ResourceSet<TranscriptionResource> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<TranscriptionResource>> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
@@ -37,9 +38,9 @@ namespace Twilio.Readers.Api.V2010.Account.Recording {
             
             AddQueryParams(request);
             
-            Page<TranscriptionResource> page = pageForRequest(client, request);
+            Page<TranscriptionResource> page = await pageForRequest(client, request);
             
-            return new ResourceSet<>(this, client, page);
+            return new ResourceSet<TranscriptionResource>(this, client, page);
         }
     
         /**
@@ -49,12 +50,16 @@ namespace Twilio.Readers.Api.V2010.Account.Recording {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public Page<TranscriptionResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<TranscriptionResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
-            return pageForRequest(client, request);
+            
+            var task = pageForRequest(client, request);
+            task.Wait();
+            
+            return task.Result;
         }
     
         /**
@@ -64,8 +69,8 @@ namespace Twilio.Readers.Api.V2010.Account.Recording {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected Page<TranscriptionResource> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = client.request(request);
+        protected async Task<Page<TranscriptionResource>> pageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TranscriptionResource read failed: Unable to connect to server");
@@ -82,7 +87,7 @@ namespace Twilio.Readers.Api.V2010.Account.Recording {
                 );
             }
             
-            Page<TranscriptionResource> result = new Page<>();
+            Page<TranscriptionResource> result = new Page<TranscriptionResource>();
             result.deserialize("transcriptions", response.GetContent());
             
             return result;

@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Lookups.V1;
@@ -10,11 +11,29 @@ using Twilio.Resources;
 namespace Twilio.Resources.Lookups.V1 {
 
     public class PhoneNumberResource : SidResource {
-        public enum Type {
-            LANDLINE="landline",
-            MOBILE="mobile",
-            VOIP="voip"
-        };
+        public sealed class Type {
+            public const string LANDLINE="landline";
+            public const string MOBILE="mobile";
+            public const string VOIP="voip";
+        
+            private readonly string value;
+            
+            public Type(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator Type(string value) {
+                return new Type(value);
+            }
+            
+            public static implicit operator string(Type value) {
+                return value.ToString();
+            }
+        }
     
         /**
          * fetch
@@ -32,7 +51,7 @@ namespace Twilio.Resources.Lookups.V1 {
          * @param json Raw JSON string
          * @return PhoneNumberResource object represented by the provided JSON
          */
-        public static PhoneNumberResource fromJson(string json) {
+        public static PhoneNumberResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<PhoneNumberResource>(json);
@@ -67,7 +86,7 @@ namespace Twilio.Resources.Lookups.V1 {
         /**
          * @return The phone_number
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.GetPhoneNumber().ToString();
         }
     

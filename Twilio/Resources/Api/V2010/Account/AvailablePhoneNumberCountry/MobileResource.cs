@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -27,7 +28,7 @@ namespace Twilio.Resources.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param json Raw JSON string
          * @return MobileResource object represented by the provided JSON
          */
-        public static MobileResource fromJson(string json) {
+        public static MobileResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<MobileResource>(json);

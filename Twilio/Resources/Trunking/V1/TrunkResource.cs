@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators.Trunking.V1;
@@ -69,7 +70,7 @@ namespace Twilio.Resources.Trunking.V1 {
          * @param json Raw JSON string
          * @return TrunkResource object represented by the provided JSON
          */
-        public static TrunkResource fromJson(string json) {
+        public static TrunkResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<TrunkResource>(json);
@@ -231,7 +232,7 @@ namespace Twilio.Resources.Trunking.V1 {
         /**
          * @return The sid
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

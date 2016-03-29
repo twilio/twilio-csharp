@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account.Usage;
@@ -14,47 +15,101 @@ using Twilio.Updaters.Api.V2010.Account.Usage;
 namespace Twilio.Resources.Api.V2010.Account.Usage {
 
     public class TriggerResource : SidResource {
-        public enum UsageCategory {
-            CALLERIDLOOKUPS="calleridlookups",
-            CALLS="calls",
-            CALLS_CLIENT="calls-client",
-            CALLS_INBOUND="calls-inbound",
-            CALLS_INBOUND_LOCAL="calls-inbound-local",
-            CALLS_INBOUND_TOLLFREE="calls-inbound-tollfree",
-            CALLS_OUTBOUND="calls-outbound",
-            CALLS_SIP="calls-sip",
-            PHONENUMBERS="phonenumbers",
-            PHONENUMBERS_LOCAL="phonenumbers-local",
-            PHONENUMBERS_TOLLFREE="phonenumbers-tollfree",
-            RECORDINGS="recordings",
-            RECORDINGSTORAGE="recordingstorage",
-            SHORTCODES="shortcodes",
-            SHORTCODES_CUSTOMEROWNED="shortcodes-customerowned",
-            SHORTCODES_RANDOM="shortcodes-random",
-            SHORTCODES_VANITY="shortcodes-vanity",
-            SMS="sms",
-            SMS_INBOUND="sms-inbound",
-            SMS_INBOUND_LONGCODE="sms-inbound-longcode",
-            SMS_INBOUND_SHORTCODE="sms-inbound-shortcode",
-            SMS_OUTBOUND="sms-outbound",
-            SMS_OUTBOUND_LONGCODE="sms-outbound-longcode",
-            SMS_OUTBOUND_SHORTCODE="sms-outbound-shortcode",
-            TOTALPRICE="totalprice",
-            TRANSCRIPTIONS="transcriptions"
-        };
+        public sealed class UsageCategory {
+            public const string CALLERIDLOOKUPS="calleridlookups";
+            public const string CALLS="calls";
+            public const string CALLS_CLIENT="calls-client";
+            public const string CALLS_INBOUND="calls-inbound";
+            public const string CALLS_INBOUND_LOCAL="calls-inbound-local";
+            public const string CALLS_INBOUND_TOLLFREE="calls-inbound-tollfree";
+            public const string CALLS_OUTBOUND="calls-outbound";
+            public const string CALLS_SIP="calls-sip";
+            public const string PHONENUMBERS="phonenumbers";
+            public const string PHONENUMBERS_LOCAL="phonenumbers-local";
+            public const string PHONENUMBERS_TOLLFREE="phonenumbers-tollfree";
+            public const string RECORDINGS="recordings";
+            public const string RECORDINGSTORAGE="recordingstorage";
+            public const string SHORTCODES="shortcodes";
+            public const string SHORTCODES_CUSTOMEROWNED="shortcodes-customerowned";
+            public const string SHORTCODES_RANDOM="shortcodes-random";
+            public const string SHORTCODES_VANITY="shortcodes-vanity";
+            public const string SMS="sms";
+            public const string SMS_INBOUND="sms-inbound";
+            public const string SMS_INBOUND_LONGCODE="sms-inbound-longcode";
+            public const string SMS_INBOUND_SHORTCODE="sms-inbound-shortcode";
+            public const string SMS_OUTBOUND="sms-outbound";
+            public const string SMS_OUTBOUND_LONGCODE="sms-outbound-longcode";
+            public const string SMS_OUTBOUND_SHORTCODE="sms-outbound-shortcode";
+            public const string TOTALPRICE="totalprice";
+            public const string TRANSCRIPTIONS="transcriptions";
+        
+            private readonly string value;
+            
+            public UsageCategory(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator UsageCategory(string value) {
+                return new UsageCategory(value);
+            }
+            
+            public static implicit operator string(UsageCategory value) {
+                return value.ToString();
+            }
+        }
     
-        public enum Recurring {
-            DAILY="daily",
-            MONTHLY="monthly",
-            YEARLY="yearly",
-            ALLTIME="alltime"
-        };
+        public sealed class Recurring {
+            public const string DAILY="daily";
+            public const string MONTHLY="monthly";
+            public const string YEARLY="yearly";
+            public const string ALLTIME="alltime";
+        
+            private readonly string value;
+            
+            public Recurring(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator Recurring(string value) {
+                return new Recurring(value);
+            }
+            
+            public static implicit operator string(Recurring value) {
+                return value.ToString();
+            }
+        }
     
-        public enum TriggerField {
-            COUNT="count",
-            USAGE="usage",
-            PRICE="price"
-        };
+        public sealed class TriggerField {
+            public const string COUNT="count";
+            public const string USAGE="usage";
+            public const string PRICE="price";
+        
+            private readonly string value;
+            
+            public TriggerField(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator TriggerField(string value) {
+                return new TriggerField(value);
+            }
+            
+            public static implicit operator string(TriggerField value) {
+                return value.ToString();
+            }
+        }
     
         /**
          * Fetch and instance of a usage-trigger
@@ -119,7 +174,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
          * @param json Raw JSON string
          * @return TriggerResource object represented by the provided JSON
          */
-        public static TriggerResource fromJson(string json) {
+        public static TriggerResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<TriggerResource>(json);
@@ -284,7 +339,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         /**
          * @return The trigger's unique Sid
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

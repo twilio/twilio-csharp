@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators;
@@ -200,7 +201,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Created CallResource
          */
-        public CallResource execute(TwilioRestClient client) {
+        public override async Task<CallResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -208,12 +209,12 @@ namespace Twilio.Creators.Api.V2010.Account {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("CallResource creation failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -225,7 +226,7 @@ namespace Twilio.Creators.Api.V2010.Account {
                 );
             }
             
-            return CallResource.fromJson(response.GetContent());
+            return CallResource.FromJson(response.GetContent());
         }
     
         /**
@@ -235,55 +236,55 @@ namespace Twilio.Creators.Api.V2010.Account {
          */
         private void addPostParams(Request request) {
             if (to != null) {
-                request.addPostParam("To", to.ToString());
+                request.AddPostParam("To", to.ToString());
             }
             
             if (from != null) {
-                request.addPostParam("From", from.ToString());
+                request.AddPostParam("From", from.ToString());
             }
             
             if (url != null) {
-                request.addPostParam("Url", url.ToString());
+                request.AddPostParam("Url", url.ToString());
             }
             
             if (applicationSid != null) {
-                request.addPostParam("ApplicationSid", applicationSid);
+                request.AddPostParam("ApplicationSid", applicationSid);
             }
             
             if (method != null) {
-                request.addPostParam("Method", method.ToString());
+                request.AddPostParam("Method", method.ToString());
             }
             
             if (fallbackUrl != null) {
-                request.addPostParam("FallbackUrl", fallbackUrl.ToString());
+                request.AddPostParam("FallbackUrl", fallbackUrl.ToString());
             }
             
             if (fallbackMethod != null) {
-                request.addPostParam("FallbackMethod", fallbackMethod.ToString());
+                request.AddPostParam("FallbackMethod", fallbackMethod.ToString());
             }
             
             if (statusCallback != null) {
-                request.addPostParam("StatusCallback", statusCallback.ToString());
+                request.AddPostParam("StatusCallback", statusCallback.ToString());
             }
             
             if (statusCallbackMethod != null) {
-                request.addPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
+                request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
             
             if (sendDigits != null) {
-                request.addPostParam("SendDigits", sendDigits);
+                request.AddPostParam("SendDigits", sendDigits);
             }
             
             if (ifMachine != null) {
-                request.addPostParam("IfMachine", ifMachine);
+                request.AddPostParam("IfMachine", ifMachine);
             }
             
             if (timeout != null) {
-                request.addPostParam("Timeout", timeout.ToString());
+                request.AddPostParam("Timeout", timeout.ToString());
             }
             
             if (record != null) {
-                request.addPostParam("Record", record.ToString());
+                request.AddPostParam("Record", record.ToString());
             }
         }
     }

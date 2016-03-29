@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account.Sip.Domain;
@@ -67,7 +68,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
          * @return IpAccessControlListMappingResource object represented by the
          *         provided JSON
          */
-        public static IpAccessControlListMappingResource fromJson(string json) {
+        public static IpAccessControlListMappingResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<IpAccessControlListMappingResource>(json);
@@ -140,7 +141,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
         /**
          * @return The sid
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

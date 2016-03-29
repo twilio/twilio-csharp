@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -25,7 +26,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return AvailablePhoneNumberCountryResource ResourceSet
          */
-        public ResourceSet<AvailablePhoneNumberCountryResource> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<AvailablePhoneNumberCountryResource>> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
@@ -34,9 +35,9 @@ namespace Twilio.Readers.Api.V2010.Account {
             
             AddQueryParams(request);
             
-            Page<AvailablePhoneNumberCountryResource> page = pageForRequest(client, request);
+            Page<AvailablePhoneNumberCountryResource> page = await pageForRequest(client, request);
             
-            return new ResourceSet<>(this, client, page);
+            return new ResourceSet<AvailablePhoneNumberCountryResource>(this, client, page);
         }
     
         /**
@@ -46,12 +47,16 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public Page<AvailablePhoneNumberCountryResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<AvailablePhoneNumberCountryResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
-            return pageForRequest(client, request);
+            
+            var task = pageForRequest(client, request);
+            task.Wait();
+            
+            return task.Result;
         }
     
         /**
@@ -62,8 +67,8 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected Page<AvailablePhoneNumberCountryResource> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = client.request(request);
+        protected async Task<Page<AvailablePhoneNumberCountryResource>> pageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("AvailablePhoneNumberCountryResource read failed: Unable to connect to server");
@@ -80,7 +85,7 @@ namespace Twilio.Readers.Api.V2010.Account {
                 );
             }
             
-            Page<AvailablePhoneNumberCountryResource> result = new Page<>();
+            Page<AvailablePhoneNumberCountryResource> result = new Page<AvailablePhoneNumberCountryResource>();
             result.deserialize("countries", response.GetContent());
             
             return result;

@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account;
@@ -15,12 +16,30 @@ using Twilio.Updaters.Api.V2010.Account;
 namespace Twilio.Resources.Api.V2010.Account {
 
     public class IncomingPhoneNumberResource : SidResource {
-        public enum AddressRequirement {
-            NONE="none",
-            ANY="any",
-            LOCAL="local",
-            FOREIGN="foreign"
-        };
+        public sealed class AddressRequirement {
+            public const string NONE="none";
+            public const string ANY="any";
+            public const string LOCAL="local";
+            public const string FOREIGN="foreign";
+        
+            private readonly string value;
+            
+            public AddressRequirement(string value) {
+                this.value = value;
+            }
+            
+            public override string ToString() {
+                return value;
+            }
+            
+            public static implicit operator AddressRequirement(string value) {
+                return new AddressRequirement(value);
+            }
+            
+            public static implicit operator string(AddressRequirement value) {
+                return value.ToString();
+            }
+        }
     
         /**
          * Update an incoming-phone-number instance
@@ -95,7 +114,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param json Raw JSON string
          * @return IncomingPhoneNumberResource object represented by the provided JSON
          */
-        public static IncomingPhoneNumberResource fromJson(string json) {
+        public static IncomingPhoneNumberResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
                 return JsonConvert.DeserializeObject<IncomingPhoneNumberResource>(json);
@@ -293,7 +312,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return A string that uniquely identifies this resource
          */
-        public string GetSid() {
+        public override string GetSid() {
             return this.sid;
         }
     

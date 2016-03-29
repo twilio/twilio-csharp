@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -121,7 +122,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Updated ServiceResource
          */
-        public ServiceResource execute(TwilioRestClient client) {
+        public override async Task<ServiceResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.IPMESSAGING,
@@ -129,12 +130,12 @@ namespace Twilio.Updaters.IpMessaging.V1 {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ServiceResource update failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -146,7 +147,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
                 );
             }
             
-            return ServiceResource.fromJson(response.GetContent());
+            return ServiceResource.FromJson(response.GetContent());
         }
     
         /**
@@ -156,35 +157,35 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          */
         private void addPostParams(Request request) {
             if (friendlyName != null) {
-                request.addPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", friendlyName);
             }
             
             if (defaultServiceRoleSid != null) {
-                request.addPostParam("DefaultServiceRoleSid", defaultServiceRoleSid);
+                request.AddPostParam("DefaultServiceRoleSid", defaultServiceRoleSid);
             }
             
             if (defaultChannelRoleSid != null) {
-                request.addPostParam("DefaultChannelRoleSid", defaultChannelRoleSid);
+                request.AddPostParam("DefaultChannelRoleSid", defaultChannelRoleSid);
             }
             
             if (defaultChannelCreatorRoleSid != null) {
-                request.addPostParam("DefaultChannelCreatorRoleSid", defaultChannelCreatorRoleSid);
+                request.AddPostParam("DefaultChannelCreatorRoleSid", defaultChannelCreatorRoleSid);
             }
             
             if (readStatusEnabled != null) {
-                request.addPostParam("ReadStatusEnabled", readStatusEnabled.ToString());
+                request.AddPostParam("ReadStatusEnabled", readStatusEnabled.ToString());
             }
             
             if (typingIndicatorTimeout != null) {
-                request.addPostParam("TypingIndicatorTimeout", typingIndicatorTimeout.ToString());
+                request.AddPostParam("TypingIndicatorTimeout", typingIndicatorTimeout.ToString());
             }
             
             if (consumptionReportInterval != null) {
-                request.addPostParam("ConsumptionReportInterval", consumptionReportInterval.ToString());
+                request.AddPostParam("ConsumptionReportInterval", consumptionReportInterval.ToString());
             }
             
             if (webhooks != null) {
-                request.addPostParam("Webhooks", webhooks.ToString());
+                request.AddPostParam("Webhooks", webhooks.ToString());
             }
         }
     }

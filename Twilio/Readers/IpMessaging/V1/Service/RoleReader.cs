@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -25,7 +26,7 @@ namespace Twilio.Readers.IpMessaging.V1.Service {
          * @param client TwilioRestClient with which to make the request
          * @return RoleResource ResourceSet
          */
-        public ResourceSet<RoleResource> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<RoleResource>> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.IPMESSAGING,
@@ -34,9 +35,9 @@ namespace Twilio.Readers.IpMessaging.V1.Service {
             
             AddQueryParams(request);
             
-            Page<RoleResource> page = pageForRequest(client, request);
+            Page<RoleResource> page = await pageForRequest(client, request);
             
-            return new ResourceSet<>(this, client, page);
+            return new ResourceSet<RoleResource>(this, client, page);
         }
     
         /**
@@ -46,12 +47,16 @@ namespace Twilio.Readers.IpMessaging.V1.Service {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public Page<RoleResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<RoleResource> nextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
-            return pageForRequest(client, request);
+            
+            var task = pageForRequest(client, request);
+            task.Wait();
+            
+            return task.Result;
         }
     
         /**
@@ -61,8 +66,8 @@ namespace Twilio.Readers.IpMessaging.V1.Service {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected Page<RoleResource> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = client.request(request);
+        protected async Task<Page<RoleResource>> pageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("RoleResource read failed: Unable to connect to server");
@@ -79,7 +84,7 @@ namespace Twilio.Readers.IpMessaging.V1.Service {
                 );
             }
             
-            Page<RoleResource> result = new Page<>();
+            Page<RoleResource> result = new Page<RoleResource>();
             result.deserialize("roles", response.GetContent());
             
             return result;

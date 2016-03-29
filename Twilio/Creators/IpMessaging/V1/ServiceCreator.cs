@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Creators;
 using Twilio.Exceptions;
@@ -24,7 +25,7 @@ namespace Twilio.Creators.IpMessaging.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Created ServiceResource
          */
-        public ServiceResource execute(TwilioRestClient client) {
+        public override async Task<ServiceResource> execute(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.IPMESSAGING,
@@ -32,12 +33,12 @@ namespace Twilio.Creators.IpMessaging.V1 {
             );
             
             addPostParams(request);
-            Response response = client.request(request);
+            Response response = await client.request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ServiceResource creation failed: Unable to connect to server");
             } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
-                RestException restException = RestException.fromJson(response.GetContent());
+                RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -49,7 +50,7 @@ namespace Twilio.Creators.IpMessaging.V1 {
                 );
             }
             
-            return ServiceResource.fromJson(response.GetContent());
+            return ServiceResource.FromJson(response.GetContent());
         }
     
         /**
@@ -59,7 +60,7 @@ namespace Twilio.Creators.IpMessaging.V1 {
          */
         private void addPostParams(Request request) {
             if (friendlyName != null) {
-                request.addPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", friendlyName);
             }
         }
     }
