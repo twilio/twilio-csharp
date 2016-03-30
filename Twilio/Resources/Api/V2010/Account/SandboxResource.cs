@@ -18,7 +18,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return SandboxFetcher capable of executing the fetch
          */
-        public static SandboxFetcher fetch(string accountSid) {
+        public static SandboxFetcher Fetch(string accountSid) {
             return new SandboxFetcher(accountSid);
         }
     
@@ -28,7 +28,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return SandboxUpdater capable of executing the update
          */
-        public static SandboxUpdater update(string accountSid) {
+        public static SandboxUpdater Update(string accountSid) {
             return new SandboxUpdater(accountSid);
         }
     

@@ -21,7 +21,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
          * @param sid The sid
          * @return MessageFetcher capable of executing the fetch
          */
-        public static MessageFetcher fetch(string serviceSid, string channelSid, string sid) {
+        public static MessageFetcher Fetch(string serviceSid, string channelSid, string sid) {
             return new MessageFetcher(serviceSid, channelSid, sid);
         }
     
@@ -33,7 +33,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
          * @param body The body
          * @return MessageCreator capable of executing the create
          */
-        public static MessageCreator create(string serviceSid, string channelSid, string body) {
+        public static MessageCreator Create(string serviceSid, string channelSid, string body) {
             return new MessageCreator(serviceSid, channelSid, body);
         }
     
@@ -44,7 +44,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
          * @param channelSid The channel_sid
          * @return MessageReader capable of executing the read
          */
-        public static MessageReader read(string serviceSid, string channelSid) {
+        public static MessageReader Read(string serviceSid, string channelSid) {
             return new MessageReader(serviceSid, channelSid);
         }
     

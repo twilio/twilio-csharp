@@ -21,7 +21,7 @@ namespace Twilio.Resources.Api.V2010.Account.Message {
          * @param sid Delete by unique media Sid
          * @return MediaDeleter capable of executing the delete
          */
-        public static MediaDeleter delete(string accountSid, string messageSid, string sid) {
+        public static MediaDeleter Delete(string accountSid, string messageSid, string sid) {
             return new MediaDeleter(accountSid, messageSid, sid);
         }
     
@@ -34,7 +34,7 @@ namespace Twilio.Resources.Api.V2010.Account.Message {
          * @param sid Fetch by unique media Sid
          * @return MediaFetcher capable of executing the fetch
          */
-        public static MediaFetcher fetch(string accountSid, string messageSid, string sid) {
+        public static MediaFetcher Fetch(string accountSid, string messageSid, string sid) {
             return new MediaFetcher(accountSid, messageSid, sid);
         }
     
@@ -45,7 +45,7 @@ namespace Twilio.Resources.Api.V2010.Account.Message {
          * @param messageSid The message_sid
          * @return MediaReader capable of executing the read
          */
-        public static MediaReader read(string accountSid, string messageSid) {
+        public static MediaReader Read(string accountSid, string messageSid) {
             return new MediaReader(accountSid, messageSid);
         }
     

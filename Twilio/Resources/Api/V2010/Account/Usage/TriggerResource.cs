@@ -118,7 +118,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
          * @param sid Fetch by unique usage-trigger Sid
          * @return TriggerFetcher capable of executing the fetch
          */
-        public static TriggerFetcher fetch(string accountSid, string sid) {
+        public static TriggerFetcher Fetch(string accountSid, string sid) {
             return new TriggerFetcher(accountSid, sid);
         }
     
@@ -129,7 +129,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
          * @param sid The sid
          * @return TriggerUpdater capable of executing the update
          */
-        public static TriggerUpdater update(string accountSid, string sid) {
+        public static TriggerUpdater Update(string accountSid, string sid) {
             return new TriggerUpdater(accountSid, sid);
         }
     
@@ -140,7 +140,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
          * @param sid The sid
          * @return TriggerDeleter capable of executing the delete
          */
-        public static TriggerDeleter delete(string accountSid, string sid) {
+        public static TriggerDeleter Delete(string accountSid, string sid) {
             return new TriggerDeleter(accountSid, sid);
         }
     
@@ -153,7 +153,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
          * @param usageCategory The usage category the trigger watches
          * @return TriggerCreator capable of executing the create
          */
-        public static TriggerCreator create(string accountSid, Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory) {
+        public static TriggerCreator Create(string accountSid, Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory) {
             return new TriggerCreator(accountSid, callbackUrl, triggerValue, usageCategory);
         }
     
@@ -164,7 +164,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
          * @param accountSid The account_sid
          * @return TriggerReader capable of executing the read
          */
-        public static TriggerReader read(string accountSid) {
+        public static TriggerReader Read(string accountSid) {
             return new TriggerReader(accountSid);
         }
     

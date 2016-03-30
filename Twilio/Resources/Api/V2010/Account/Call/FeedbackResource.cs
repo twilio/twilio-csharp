@@ -51,7 +51,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          * @param qualityScore The quality_score
          * @return FeedbackCreator capable of executing the create
          */
-        public static FeedbackCreator create(string accountSid, string callSid, int? qualityScore) {
+        public static FeedbackCreator Create(string accountSid, string callSid, int? qualityScore) {
             return new FeedbackCreator(accountSid, callSid, qualityScore);
         }
     
@@ -62,7 +62,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          * @param callSid The call sid that uniquely identifies the call
          * @return FeedbackFetcher capable of executing the fetch
          */
-        public static FeedbackFetcher fetch(string accountSid, string callSid) {
+        public static FeedbackFetcher Fetch(string accountSid, string callSid) {
             return new FeedbackFetcher(accountSid, callSid);
         }
     
@@ -74,7 +74,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          * @param qualityScore An integer from 1 to 5
          * @return FeedbackUpdater capable of executing the update
          */
-        public static FeedbackUpdater update(string accountSid, string callSid, int? qualityScore) {
+        public static FeedbackUpdater Update(string accountSid, string callSid, int? qualityScore) {
             return new FeedbackUpdater(accountSid, callSid, qualityScore);
         }
     

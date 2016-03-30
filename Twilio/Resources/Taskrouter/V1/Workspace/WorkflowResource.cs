@@ -22,7 +22,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return WorkflowFetcher capable of executing the fetch
          */
-        public static WorkflowFetcher fetch(string workspaceSid, string sid) {
+        public static WorkflowFetcher Fetch(string workspaceSid, string sid) {
             return new WorkflowFetcher(workspaceSid, sid);
         }
     
@@ -33,7 +33,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return WorkflowUpdater capable of executing the update
          */
-        public static WorkflowUpdater update(string workspaceSid, string sid) {
+        public static WorkflowUpdater Update(string workspaceSid, string sid) {
             return new WorkflowUpdater(workspaceSid, sid);
         }
     
@@ -44,7 +44,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return WorkflowDeleter capable of executing the delete
          */
-        public static WorkflowDeleter delete(string workspaceSid, string sid) {
+        public static WorkflowDeleter Delete(string workspaceSid, string sid) {
             return new WorkflowDeleter(workspaceSid, sid);
         }
     
@@ -54,7 +54,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @return WorkflowReader capable of executing the read
          */
-        public static WorkflowReader read(string workspaceSid) {
+        public static WorkflowReader Read(string workspaceSid) {
             return new WorkflowReader(workspaceSid);
         }
     
@@ -67,7 +67,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param assignmentCallbackUrl The assignment_callback_url
          * @return WorkflowCreator capable of executing the create
          */
-        public static WorkflowCreator create(string workspaceSid, string friendlyName, string configuration, string assignmentCallbackUrl) {
+        public static WorkflowCreator Create(string workspaceSid, string friendlyName, string configuration, string assignmentCallbackUrl) {
             return new WorkflowCreator(workspaceSid, friendlyName, configuration, assignmentCallbackUrl);
         }
     

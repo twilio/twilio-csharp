@@ -23,7 +23,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param accountSid The account_sid
          * @return IpAccessControlListReader capable of executing the read
          */
-        public static IpAccessControlListReader read(string accountSid) {
+        public static IpAccessControlListReader Read(string accountSid) {
             return new IpAccessControlListReader(accountSid);
         }
     
@@ -34,7 +34,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param friendlyName A human readable description of this resource
          * @return IpAccessControlListCreator capable of executing the create
          */
-        public static IpAccessControlListCreator create(string accountSid, string friendlyName) {
+        public static IpAccessControlListCreator Create(string accountSid, string friendlyName) {
             return new IpAccessControlListCreator(accountSid, friendlyName);
         }
     
@@ -45,7 +45,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param sid Fetch by unique ip-access-control-list Sid
          * @return IpAccessControlListFetcher capable of executing the fetch
          */
-        public static IpAccessControlListFetcher fetch(string accountSid, string sid) {
+        public static IpAccessControlListFetcher Fetch(string accountSid, string sid) {
             return new IpAccessControlListFetcher(accountSid, sid);
         }
     
@@ -57,7 +57,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param friendlyName A human readable description of this resource
          * @return IpAccessControlListUpdater capable of executing the update
          */
-        public static IpAccessControlListUpdater update(string accountSid, string sid, string friendlyName) {
+        public static IpAccessControlListUpdater Update(string accountSid, string sid, string friendlyName) {
             return new IpAccessControlListUpdater(accountSid, sid, friendlyName);
         }
     
@@ -68,7 +68,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param sid Delete by unique ip-access-control-list Sid
          * @return IpAccessControlListDeleter capable of executing the delete
          */
-        public static IpAccessControlListDeleter delete(string accountSid, string sid) {
+        public static IpAccessControlListDeleter Delete(string accountSid, string sid) {
             return new IpAccessControlListDeleter(accountSid, sid);
         }
     

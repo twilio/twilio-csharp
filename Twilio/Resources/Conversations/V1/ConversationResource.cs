@@ -42,7 +42,7 @@ namespace Twilio.Resources.Conversations.V1 {
          * @param sid The sid
          * @return ConversationFetcher capable of executing the fetch
          */
-        public static ConversationFetcher fetch(string sid) {
+        public static ConversationFetcher Fetch(string sid) {
             return new ConversationFetcher(sid);
         }
     

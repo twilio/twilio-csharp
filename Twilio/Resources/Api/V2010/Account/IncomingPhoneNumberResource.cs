@@ -48,7 +48,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid The sid
          * @return IncomingPhoneNumberUpdater capable of executing the update
          */
-        public static IncomingPhoneNumberUpdater update(string ownerAccountSid, string sid) {
+        public static IncomingPhoneNumberUpdater Update(string ownerAccountSid, string sid) {
             return new IncomingPhoneNumberUpdater(ownerAccountSid, sid);
         }
     
@@ -60,7 +60,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Fetch by unique incoming-phone-number Sid
          * @return IncomingPhoneNumberFetcher capable of executing the fetch
          */
-        public static IncomingPhoneNumberFetcher fetch(string ownerAccountSid, string sid) {
+        public static IncomingPhoneNumberFetcher Fetch(string ownerAccountSid, string sid) {
             return new IncomingPhoneNumberFetcher(ownerAccountSid, sid);
         }
     
@@ -71,7 +71,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Delete by unique phone-number Sid
          * @return IncomingPhoneNumberDeleter capable of executing the delete
          */
-        public static IncomingPhoneNumberDeleter delete(string ownerAccountSid, string sid) {
+        public static IncomingPhoneNumberDeleter Delete(string ownerAccountSid, string sid) {
             return new IncomingPhoneNumberDeleter(ownerAccountSid, sid);
         }
     
@@ -82,7 +82,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param ownerAccountSid The owner_account_sid
          * @return IncomingPhoneNumberReader capable of executing the read
          */
-        public static IncomingPhoneNumberReader read(string ownerAccountSid) {
+        public static IncomingPhoneNumberReader Read(string ownerAccountSid) {
             return new IncomingPhoneNumberReader(ownerAccountSid);
         }
     
@@ -93,7 +93,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param phoneNumber The phone number
          * @return IncomingPhoneNumberCreator capable of executing the create
          */
-        public static IncomingPhoneNumberCreator create(string ownerAccountSid, Twilio.Types.PhoneNumber phoneNumber) {
+        public static IncomingPhoneNumberCreator Create(string ownerAccountSid, Twilio.Types.PhoneNumber phoneNumber) {
             return new IncomingPhoneNumberCreator(ownerAccountSid, phoneNumber);
         }
     
@@ -104,7 +104,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param areaCode The desired area code for the new number
          * @return IncomingPhoneNumberCreator capable of executing the create
          */
-        public static IncomingPhoneNumberCreator create(string ownerAccountSid, string areaCode) {
+        public static IncomingPhoneNumberCreator Create(string ownerAccountSid, string areaCode) {
             return new IncomingPhoneNumberCreator(ownerAccountSid, areaCode);
         }
     

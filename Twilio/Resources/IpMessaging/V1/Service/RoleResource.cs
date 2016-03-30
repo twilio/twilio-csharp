@@ -46,7 +46,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param sid The sid
          * @return RoleFetcher capable of executing the fetch
          */
-        public static RoleFetcher fetch(string serviceSid, string sid) {
+        public static RoleFetcher Fetch(string serviceSid, string sid) {
             return new RoleFetcher(serviceSid, sid);
         }
     
@@ -57,7 +57,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param sid The sid
          * @return RoleDeleter capable of executing the delete
          */
-        public static RoleDeleter delete(string serviceSid, string sid) {
+        public static RoleDeleter Delete(string serviceSid, string sid) {
             return new RoleDeleter(serviceSid, sid);
         }
     
@@ -70,7 +70,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param permission The permission
          * @return RoleCreator capable of executing the create
          */
-        public static RoleCreator create(string serviceSid, string friendlyName, RoleResource.RoleType type, List<string> permission) {
+        public static RoleCreator Create(string serviceSid, string friendlyName, RoleResource.RoleType type, List<string> permission) {
             return new RoleCreator(serviceSid, friendlyName, type, permission);
         }
     
@@ -80,7 +80,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param serviceSid The service_sid
          * @return RoleReader capable of executing the read
          */
-        public static RoleReader read(string serviceSid) {
+        public static RoleReader Read(string serviceSid) {
             return new RoleReader(serviceSid);
         }
     
@@ -93,7 +93,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param permission The permission
          * @return RoleUpdater capable of executing the update
          */
-        public static RoleUpdater update(string serviceSid, string sid, string friendlyName, List<string> permission) {
+        public static RoleUpdater Update(string serviceSid, string sid, string friendlyName, List<string> permission) {
             return new RoleUpdater(serviceSid, sid, friendlyName, permission);
         }
     

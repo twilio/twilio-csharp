@@ -27,7 +27,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param isoCountry The iso_country
          * @return AddressCreator capable of executing the create
          */
-        public static AddressCreator create(string accountSid, string customerName, string street, string city, string region, string postalCode, string isoCountry) {
+        public static AddressCreator Create(string accountSid, string customerName, string street, string city, string region, string postalCode, string isoCountry) {
             return new AddressCreator(accountSid, customerName, street, city, region, postalCode, isoCountry);
         }
     
@@ -38,7 +38,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid The sid
          * @return AddressDeleter capable of executing the delete
          */
-        public static AddressDeleter delete(string accountSid, string sid) {
+        public static AddressDeleter Delete(string accountSid, string sid) {
             return new AddressDeleter(accountSid, sid);
         }
     
@@ -49,7 +49,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid The sid
          * @return AddressFetcher capable of executing the fetch
          */
-        public static AddressFetcher fetch(string accountSid, string sid) {
+        public static AddressFetcher Fetch(string accountSid, string sid) {
             return new AddressFetcher(accountSid, sid);
         }
     
@@ -60,7 +60,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid The sid
          * @return AddressUpdater capable of executing the update
          */
-        public static AddressUpdater update(string accountSid, string sid) {
+        public static AddressUpdater Update(string accountSid, string sid) {
             return new AddressUpdater(accountSid, sid);
         }
     
@@ -70,7 +70,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return AddressReader capable of executing the read
          */
-        public static AddressReader read(string accountSid) {
+        public static AddressReader Read(string accountSid) {
             return new AddressReader(accountSid);
         }
     

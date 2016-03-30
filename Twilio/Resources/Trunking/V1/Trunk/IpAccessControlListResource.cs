@@ -21,7 +21,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
          * @param sid The sid
          * @return IpAccessControlListFetcher capable of executing the fetch
          */
-        public static IpAccessControlListFetcher fetch(string trunkSid, string sid) {
+        public static IpAccessControlListFetcher Fetch(string trunkSid, string sid) {
             return new IpAccessControlListFetcher(trunkSid, sid);
         }
     
@@ -32,7 +32,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
          * @param sid The sid
          * @return IpAccessControlListDeleter capable of executing the delete
          */
-        public static IpAccessControlListDeleter delete(string trunkSid, string sid) {
+        public static IpAccessControlListDeleter Delete(string trunkSid, string sid) {
             return new IpAccessControlListDeleter(trunkSid, sid);
         }
     
@@ -43,7 +43,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
          * @param ipAccessControlListSid The ip_access_control_list_sid
          * @return IpAccessControlListCreator capable of executing the create
          */
-        public static IpAccessControlListCreator create(string trunkSid, string ipAccessControlListSid) {
+        public static IpAccessControlListCreator Create(string trunkSid, string ipAccessControlListSid) {
             return new IpAccessControlListCreator(trunkSid, ipAccessControlListSid);
         }
     
@@ -53,7 +53,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
          * @param trunkSid The trunk_sid
          * @return IpAccessControlListReader capable of executing the read
          */
-        public static IpAccessControlListReader read(string trunkSid) {
+        public static IpAccessControlListReader Read(string trunkSid) {
             return new IpAccessControlListReader(trunkSid);
         }
     

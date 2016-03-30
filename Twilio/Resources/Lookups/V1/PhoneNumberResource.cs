@@ -41,7 +41,7 @@ namespace Twilio.Resources.Lookups.V1 {
          * @param phoneNumber The phone_number
          * @return PhoneNumberFetcher capable of executing the fetch
          */
-        public static PhoneNumberFetcher fetch(Twilio.Types.PhoneNumber phoneNumber) {
+        public static PhoneNumberFetcher Fetch(Twilio.Types.PhoneNumber phoneNumber) {
             return new PhoneNumberFetcher(phoneNumber);
         }
     

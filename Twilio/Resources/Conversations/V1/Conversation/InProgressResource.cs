@@ -41,7 +41,7 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
          * 
          * @return InProgressReader capable of executing the read
          */
-        public static InProgressReader read() {
+        public static InProgressReader Read() {
             return new InProgressReader();
         }
     

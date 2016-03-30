@@ -18,7 +18,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace.TaskQueue {
          * @param taskQueueSid The task_queue_sid
          * @return TaskQueueStatisticsFetcher capable of executing the fetch
          */
-        public static TaskQueueStatisticsFetcher fetch(string workspaceSid, string taskQueueSid) {
+        public static TaskQueueStatisticsFetcher Fetch(string workspaceSid, string taskQueueSid) {
             return new TaskQueueStatisticsFetcher(workspaceSid, taskQueueSid);
         }
     

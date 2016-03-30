@@ -18,7 +18,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return AvailablePhoneNumberCountryReader capable of executing the read
          */
-        public static AvailablePhoneNumberCountryReader read(string accountSid) {
+        public static AvailablePhoneNumberCountryReader Read(string accountSid) {
             return new AvailablePhoneNumberCountryReader(accountSid);
         }
     
@@ -29,7 +29,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param countryCode The country_code
          * @return AvailablePhoneNumberCountryFetcher capable of executing the fetch
          */
-        public static AvailablePhoneNumberCountryFetcher fetch(string accountSid, string countryCode) {
+        public static AvailablePhoneNumberCountryFetcher Fetch(string accountSid, string countryCode) {
             return new AvailablePhoneNumberCountryFetcher(accountSid, countryCode);
         }
     

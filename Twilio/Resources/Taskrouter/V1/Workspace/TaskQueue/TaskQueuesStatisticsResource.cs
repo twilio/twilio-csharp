@@ -17,7 +17,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace.TaskQueue {
          * @param workspaceSid The workspace_sid
          * @return TaskQueuesStatisticsReader capable of executing the read
          */
-        public static TaskQueuesStatisticsReader read(string workspaceSid) {
+        public static TaskQueuesStatisticsReader Read(string workspaceSid) {
             return new TaskQueuesStatisticsReader(workspaceSid);
         }
     

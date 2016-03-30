@@ -65,7 +65,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
          * @param accountSid The account_sid
          * @return YesterdayReader capable of executing the read
          */
-        public static YesterdayReader read(string accountSid) {
+        public static YesterdayReader Read(string accountSid) {
             return new YesterdayReader(accountSid);
         }
     

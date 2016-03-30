@@ -22,7 +22,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
          * @param sid The sid
          * @return IpAccessControlListMappingFetcher capable of executing the fetch
          */
-        public static IpAccessControlListMappingFetcher fetch(string accountSid, string domainSid, string sid) {
+        public static IpAccessControlListMappingFetcher Fetch(string accountSid, string domainSid, string sid) {
             return new IpAccessControlListMappingFetcher(accountSid, domainSid, sid);
         }
     
@@ -34,7 +34,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
          * @param ipAccessControlListSid The ip_access_control_list_sid
          * @return IpAccessControlListMappingCreator capable of executing the create
          */
-        public static IpAccessControlListMappingCreator create(string accountSid, string domainSid, string ipAccessControlListSid) {
+        public static IpAccessControlListMappingCreator Create(string accountSid, string domainSid, string ipAccessControlListSid) {
             return new IpAccessControlListMappingCreator(accountSid, domainSid, ipAccessControlListSid);
         }
     
@@ -45,7 +45,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
          * @param domainSid The domain_sid
          * @return IpAccessControlListMappingReader capable of executing the read
          */
-        public static IpAccessControlListMappingReader read(string accountSid, string domainSid) {
+        public static IpAccessControlListMappingReader Read(string accountSid, string domainSid) {
             return new IpAccessControlListMappingReader(accountSid, domainSid);
         }
     
@@ -57,7 +57,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
          * @param sid The sid
          * @return IpAccessControlListMappingDeleter capable of executing the delete
          */
-        public static IpAccessControlListMappingDeleter delete(string accountSid, string domainSid, string sid) {
+        public static IpAccessControlListMappingDeleter Delete(string accountSid, string domainSid, string sid) {
             return new IpAccessControlListMappingDeleter(accountSid, domainSid, sid);
         }
     

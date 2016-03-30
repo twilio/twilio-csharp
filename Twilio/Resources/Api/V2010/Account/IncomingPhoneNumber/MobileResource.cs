@@ -44,7 +44,7 @@ namespace Twilio.Resources.Api.V2010.Account.IncomingPhoneNumber {
          * @param ownerAccountSid The owner_account_sid
          * @return MobileReader capable of executing the read
          */
-        public static MobileReader read(string ownerAccountSid) {
+        public static MobileReader Read(string ownerAccountSid) {
             return new MobileReader(ownerAccountSid);
         }
     
@@ -55,7 +55,7 @@ namespace Twilio.Resources.Api.V2010.Account.IncomingPhoneNumber {
          * @param phoneNumber The phone_number
          * @return MobileCreator capable of executing the create
          */
-        public static MobileCreator create(string ownerAccountSid, Twilio.Types.PhoneNumber phoneNumber) {
+        public static MobileCreator Create(string ownerAccountSid, Twilio.Types.PhoneNumber phoneNumber) {
             return new MobileCreator(ownerAccountSid, phoneNumber);
         }
     

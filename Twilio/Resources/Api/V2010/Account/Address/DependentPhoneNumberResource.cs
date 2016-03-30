@@ -18,7 +18,7 @@ namespace Twilio.Resources.Api.V2010.Account.Address {
          * @param addressSid The address_sid
          * @return DependentPhoneNumberReader capable of executing the read
          */
-        public static DependentPhoneNumberReader read(string accountSid, string addressSid) {
+        public static DependentPhoneNumberReader Read(string accountSid, string addressSid) {
             return new DependentPhoneNumberReader(accountSid, addressSid);
         }
     

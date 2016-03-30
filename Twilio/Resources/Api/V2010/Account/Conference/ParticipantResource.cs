@@ -22,7 +22,7 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
          * @param callSid The call_sid
          * @return ParticipantFetcher capable of executing the fetch
          */
-        public static ParticipantFetcher fetch(string accountSid, string conferenceSid, string callSid) {
+        public static ParticipantFetcher Fetch(string accountSid, string conferenceSid, string callSid) {
             return new ParticipantFetcher(accountSid, conferenceSid, callSid);
         }
     
@@ -35,7 +35,7 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
          * @param muted Indicates if the participant should be muted
          * @return ParticipantUpdater capable of executing the update
          */
-        public static ParticipantUpdater update(string accountSid, string conferenceSid, string callSid, bool? muted) {
+        public static ParticipantUpdater Update(string accountSid, string conferenceSid, string callSid, bool? muted) {
             return new ParticipantUpdater(accountSid, conferenceSid, callSid, muted);
         }
     
@@ -47,7 +47,7 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
          * @param callSid The call_sid
          * @return ParticipantDeleter capable of executing the delete
          */
-        public static ParticipantDeleter delete(string accountSid, string conferenceSid, string callSid) {
+        public static ParticipantDeleter Delete(string accountSid, string conferenceSid, string callSid) {
             return new ParticipantDeleter(accountSid, conferenceSid, callSid);
         }
     
@@ -59,7 +59,7 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
          * @param conferenceSid The string that uniquely identifies this conference
          * @return ParticipantReader capable of executing the read
          */
-        public static ParticipantReader read(string accountSid, string conferenceSid) {
+        public static ParticipantReader Read(string accountSid, string conferenceSid) {
             return new ParticipantReader(accountSid, conferenceSid);
         }
     

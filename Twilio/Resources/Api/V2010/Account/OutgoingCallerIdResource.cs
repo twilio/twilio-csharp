@@ -21,7 +21,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Fetch by unique outgoing-caller-id Sid
          * @return OutgoingCallerIdFetcher capable of executing the fetch
          */
-        public static OutgoingCallerIdFetcher fetch(string accountSid, string sid) {
+        public static OutgoingCallerIdFetcher Fetch(string accountSid, string sid) {
             return new OutgoingCallerIdFetcher(accountSid, sid);
         }
     
@@ -32,7 +32,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Update by unique outgoing-caller-id Sid
          * @return OutgoingCallerIdUpdater capable of executing the update
          */
-        public static OutgoingCallerIdUpdater update(string accountSid, string sid) {
+        public static OutgoingCallerIdUpdater Update(string accountSid, string sid) {
             return new OutgoingCallerIdUpdater(accountSid, sid);
         }
     
@@ -43,7 +43,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Delete by unique outgoing-caller-id Sid
          * @return OutgoingCallerIdDeleter capable of executing the delete
          */
-        public static OutgoingCallerIdDeleter delete(string accountSid, string sid) {
+        public static OutgoingCallerIdDeleter Delete(string accountSid, string sid) {
             return new OutgoingCallerIdDeleter(accountSid, sid);
         }
     
@@ -54,7 +54,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return OutgoingCallerIdReader capable of executing the read
          */
-        public static OutgoingCallerIdReader read(string accountSid) {
+        public static OutgoingCallerIdReader Read(string accountSid) {
             return new OutgoingCallerIdReader(accountSid);
         }
     

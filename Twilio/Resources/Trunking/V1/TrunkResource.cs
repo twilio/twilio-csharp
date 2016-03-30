@@ -22,7 +22,7 @@ namespace Twilio.Resources.Trunking.V1 {
          * @param sid The sid
          * @return TrunkFetcher capable of executing the fetch
          */
-        public static TrunkFetcher fetch(string sid) {
+        public static TrunkFetcher Fetch(string sid) {
             return new TrunkFetcher(sid);
         }
     
@@ -32,7 +32,7 @@ namespace Twilio.Resources.Trunking.V1 {
          * @param sid The sid
          * @return TrunkDeleter capable of executing the delete
          */
-        public static TrunkDeleter delete(string sid) {
+        public static TrunkDeleter Delete(string sid) {
             return new TrunkDeleter(sid);
         }
     
@@ -41,7 +41,7 @@ namespace Twilio.Resources.Trunking.V1 {
          * 
          * @return TrunkCreator capable of executing the create
          */
-        public static TrunkCreator create() {
+        public static TrunkCreator Create() {
             return new TrunkCreator();
         }
     
@@ -50,7 +50,7 @@ namespace Twilio.Resources.Trunking.V1 {
          * 
          * @return TrunkReader capable of executing the read
          */
-        public static TrunkReader read() {
+        public static TrunkReader Read() {
             return new TrunkReader();
         }
     
@@ -60,7 +60,7 @@ namespace Twilio.Resources.Trunking.V1 {
          * @param sid The sid
          * @return TrunkUpdater capable of executing the update
          */
-        public static TrunkUpdater update(string sid) {
+        public static TrunkUpdater Update(string sid) {
             return new TrunkUpdater(sid);
         }
     

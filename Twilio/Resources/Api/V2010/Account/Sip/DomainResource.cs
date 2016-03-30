@@ -21,7 +21,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param accountSid The account_sid
          * @return DomainReader capable of executing the read
          */
-        public static DomainReader read(string accountSid) {
+        public static DomainReader Read(string accountSid) {
             return new DomainReader(accountSid);
         }
     
@@ -32,7 +32,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param domainName The unique address on Twilio to route SIP traffic
          * @return DomainCreator capable of executing the create
          */
-        public static DomainCreator create(string accountSid, string domainName) {
+        public static DomainCreator Create(string accountSid, string domainName) {
             return new DomainCreator(accountSid, domainName);
         }
     
@@ -43,7 +43,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param sid Fetch by unique Domain Sid
          * @return DomainFetcher capable of executing the fetch
          */
-        public static DomainFetcher fetch(string accountSid, string sid) {
+        public static DomainFetcher Fetch(string accountSid, string sid) {
             return new DomainFetcher(accountSid, sid);
         }
     
@@ -54,7 +54,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param sid The sid
          * @return DomainUpdater capable of executing the update
          */
-        public static DomainUpdater update(string accountSid, string sid) {
+        public static DomainUpdater Update(string accountSid, string sid) {
             return new DomainUpdater(accountSid, sid);
         }
     
@@ -65,7 +65,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param sid The sid
          * @return DomainDeleter capable of executing the delete
          */
-        public static DomainDeleter delete(string accountSid, string sid) {
+        public static DomainDeleter Delete(string accountSid, string sid) {
             return new DomainDeleter(accountSid, sid);
         }
     

@@ -47,7 +47,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return TaskFetcher capable of executing the fetch
          */
-        public static TaskFetcher fetch(string workspaceSid, string sid) {
+        public static TaskFetcher Fetch(string workspaceSid, string sid) {
             return new TaskFetcher(workspaceSid, sid);
         }
     
@@ -58,7 +58,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return TaskUpdater capable of executing the update
          */
-        public static TaskUpdater update(string workspaceSid, string sid) {
+        public static TaskUpdater Update(string workspaceSid, string sid) {
             return new TaskUpdater(workspaceSid, sid);
         }
     
@@ -69,7 +69,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return TaskDeleter capable of executing the delete
          */
-        public static TaskDeleter delete(string workspaceSid, string sid) {
+        public static TaskDeleter Delete(string workspaceSid, string sid) {
             return new TaskDeleter(workspaceSid, sid);
         }
     
@@ -79,7 +79,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @return TaskReader capable of executing the read
          */
-        public static TaskReader read(string workspaceSid) {
+        public static TaskReader Read(string workspaceSid) {
             return new TaskReader(workspaceSid);
         }
     
@@ -91,7 +91,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param workflowSid The workflow_sid
          * @return TaskCreator capable of executing the create
          */
-        public static TaskCreator create(string workspaceSid, string attributes, string workflowSid) {
+        public static TaskCreator Create(string workspaceSid, string attributes, string workflowSid) {
             return new TaskCreator(workspaceSid, attributes, workflowSid);
         }
     

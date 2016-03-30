@@ -22,7 +22,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
          * @param credentialListSid The credential_list_sid
          * @return CredentialListMappingCreator capable of executing the create
          */
-        public static CredentialListMappingCreator create(string accountSid, string domainSid, string credentialListSid) {
+        public static CredentialListMappingCreator Create(string accountSid, string domainSid, string credentialListSid) {
             return new CredentialListMappingCreator(accountSid, domainSid, credentialListSid);
         }
     
@@ -33,7 +33,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
          * @param domainSid The domain_sid
          * @return CredentialListMappingReader capable of executing the read
          */
-        public static CredentialListMappingReader read(string accountSid, string domainSid) {
+        public static CredentialListMappingReader Read(string accountSid, string domainSid) {
             return new CredentialListMappingReader(accountSid, domainSid);
         }
     
@@ -45,7 +45,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
          * @param sid The sid
          * @return CredentialListMappingFetcher capable of executing the fetch
          */
-        public static CredentialListMappingFetcher fetch(string accountSid, string domainSid, string sid) {
+        public static CredentialListMappingFetcher Fetch(string accountSid, string domainSid, string sid) {
             return new CredentialListMappingFetcher(accountSid, domainSid, sid);
         }
     
@@ -57,7 +57,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
          * @param sid The sid
          * @return CredentialListMappingDeleter capable of executing the delete
          */
-        public static CredentialListMappingDeleter delete(string accountSid, string domainSid, string sid) {
+        public static CredentialListMappingDeleter Delete(string accountSid, string domainSid, string sid) {
             return new CredentialListMappingDeleter(accountSid, domainSid, sid);
         }
     

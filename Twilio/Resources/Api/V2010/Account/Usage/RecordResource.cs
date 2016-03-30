@@ -66,7 +66,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
          * @param accountSid The account_sid
          * @return RecordReader capable of executing the read
          */
-        public static RecordReader read(string accountSid) {
+        public static RecordReader Read(string accountSid) {
             return new RecordReader(accountSid);
         }
     

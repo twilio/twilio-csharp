@@ -65,7 +65,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
          * @param accountSid The account_sid
          * @return MonthlyReader capable of executing the read
          */
-        public static MonthlyReader read(string accountSid) {
+        public static MonthlyReader Read(string accountSid) {
             return new MonthlyReader(accountSid);
         }
     

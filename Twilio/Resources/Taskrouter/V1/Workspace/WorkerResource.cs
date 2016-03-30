@@ -21,7 +21,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @return WorkerReader capable of executing the read
          */
-        public static WorkerReader read(string workspaceSid) {
+        public static WorkerReader Read(string workspaceSid) {
             return new WorkerReader(workspaceSid);
         }
     
@@ -32,7 +32,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param friendlyName The friendly_name
          * @return WorkerCreator capable of executing the create
          */
-        public static WorkerCreator create(string workspaceSid, string friendlyName) {
+        public static WorkerCreator Create(string workspaceSid, string friendlyName) {
             return new WorkerCreator(workspaceSid, friendlyName);
         }
     
@@ -43,7 +43,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return WorkerFetcher capable of executing the fetch
          */
-        public static WorkerFetcher fetch(string workspaceSid, string sid) {
+        public static WorkerFetcher Fetch(string workspaceSid, string sid) {
             return new WorkerFetcher(workspaceSid, sid);
         }
     
@@ -54,7 +54,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return WorkerUpdater capable of executing the update
          */
-        public static WorkerUpdater update(string workspaceSid, string sid) {
+        public static WorkerUpdater Update(string workspaceSid, string sid) {
             return new WorkerUpdater(workspaceSid, sid);
         }
     
@@ -65,7 +65,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return WorkerDeleter capable of executing the delete
          */
-        public static WorkerDeleter delete(string workspaceSid, string sid) {
+        public static WorkerDeleter Delete(string workspaceSid, string sid) {
             return new WorkerDeleter(workspaceSid, sid);
         }
     

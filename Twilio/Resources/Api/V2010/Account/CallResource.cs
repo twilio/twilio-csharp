@@ -80,7 +80,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param url Url from which to fetch TwiML
          * @return CallCreator capable of executing the create
          */
-        public static CallCreator create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, Uri url) {
+        public static CallCreator Create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, Uri url) {
             return new CallCreator(accountSid, to, from, url);
         }
     
@@ -95,7 +95,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          *                       TwiML
          * @return CallCreator capable of executing the create
          */
-        public static CallCreator create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string applicationSid) {
+        public static CallCreator Create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string applicationSid) {
             return new CallCreator(accountSid, to, from, applicationSid);
         }
     
@@ -107,7 +107,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Call Sid that uniquely identifies the Call to delete
          * @return CallDeleter capable of executing the delete
          */
-        public static CallDeleter delete(string accountSid, string sid) {
+        public static CallDeleter Delete(string accountSid, string sid) {
             return new CallDeleter(accountSid, sid);
         }
     
@@ -118,7 +118,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Call Sid that uniquely identifies the Call to fetch
          * @return CallFetcher capable of executing the fetch
          */
-        public static CallFetcher fetch(string accountSid, string sid) {
+        public static CallFetcher Fetch(string accountSid, string sid) {
             return new CallFetcher(accountSid, sid);
         }
     
@@ -128,7 +128,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return CallReader capable of executing the read
          */
-        public static CallReader read(string accountSid) {
+        public static CallReader Read(string accountSid) {
             return new CallReader(accountSid);
         }
     
@@ -139,7 +139,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Call Sid that uniquely identifies the Call to update
          * @return CallUpdater capable of executing the update
          */
-        public static CallUpdater update(string accountSid, string sid) {
+        public static CallUpdater Update(string accountSid, string sid) {
             return new CallUpdater(accountSid, sid);
         }
     

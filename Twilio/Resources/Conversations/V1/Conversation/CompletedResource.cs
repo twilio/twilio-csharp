@@ -41,7 +41,7 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
          * 
          * @return CompletedReader capable of executing the read
          */
-        public static CompletedReader read() {
+        public static CompletedReader Read() {
             return new CompletedReader();
         }
     

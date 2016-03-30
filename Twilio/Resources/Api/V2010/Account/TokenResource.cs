@@ -19,7 +19,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return TokenCreator capable of executing the create
          */
-        public static TokenCreator create(string accountSid) {
+        public static TokenCreator Create(string accountSid) {
             return new TokenCreator(accountSid);
         }
     

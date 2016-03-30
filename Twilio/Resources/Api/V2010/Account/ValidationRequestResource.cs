@@ -17,7 +17,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param phoneNumber The phone_number
          * @return ValidationRequestCreator capable of executing the create
          */
-        public static ValidationRequestCreator create(string accountSid, Twilio.Types.PhoneNumber phoneNumber) {
+        public static ValidationRequestCreator Create(string accountSid, Twilio.Types.PhoneNumber phoneNumber) {
             return new ValidationRequestCreator(accountSid, phoneNumber);
         }
     

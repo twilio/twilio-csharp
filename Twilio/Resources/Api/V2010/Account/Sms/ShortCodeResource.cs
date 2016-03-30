@@ -20,7 +20,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          * @param sid Fetch by unique short-code Sid
          * @return ShortCodeFetcher capable of executing the fetch
          */
-        public static ShortCodeFetcher fetch(string accountSid, string sid) {
+        public static ShortCodeFetcher Fetch(string accountSid, string sid) {
             return new ShortCodeFetcher(accountSid, sid);
         }
     
@@ -31,7 +31,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          * @param sid The sid
          * @return ShortCodeUpdater capable of executing the update
          */
-        public static ShortCodeUpdater update(string accountSid, string sid) {
+        public static ShortCodeUpdater Update(string accountSid, string sid) {
             return new ShortCodeUpdater(accountSid, sid);
         }
     
@@ -42,7 +42,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          * @param accountSid The account_sid
          * @return ShortCodeReader capable of executing the read
          */
-        public static ShortCodeReader read(string accountSid) {
+        public static ShortCodeReader Read(string accountSid) {
             return new ShortCodeReader(accountSid);
         }
     

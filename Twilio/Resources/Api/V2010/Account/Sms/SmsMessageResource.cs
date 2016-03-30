@@ -76,7 +76,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          * @param body The body
          * @return SmsMessageCreator capable of executing the create
          */
-        public static SmsMessageCreator create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body) {
+        public static SmsMessageCreator Create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body) {
             return new SmsMessageCreator(accountSid, to, from, body);
         }
     
@@ -89,7 +89,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          * @param mediaUrl The media_url
          * @return SmsMessageCreator capable of executing the create
          */
-        public static SmsMessageCreator create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl) {
+        public static SmsMessageCreator Create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl) {
             return new SmsMessageCreator(accountSid, to, from, mediaUrl);
         }
     
@@ -100,7 +100,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          * @param sid The sid
          * @return SmsMessageDeleter capable of executing the delete
          */
-        public static SmsMessageDeleter delete(string accountSid, string sid) {
+        public static SmsMessageDeleter Delete(string accountSid, string sid) {
             return new SmsMessageDeleter(accountSid, sid);
         }
     
@@ -111,7 +111,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          * @param sid The sid
          * @return SmsMessageFetcher capable of executing the fetch
          */
-        public static SmsMessageFetcher fetch(string accountSid, string sid) {
+        public static SmsMessageFetcher Fetch(string accountSid, string sid) {
             return new SmsMessageFetcher(accountSid, sid);
         }
     
@@ -121,7 +121,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          * @param accountSid The account_sid
          * @return SmsMessageReader capable of executing the read
          */
-        public static SmsMessageReader read(string accountSid) {
+        public static SmsMessageReader Read(string accountSid) {
             return new SmsMessageReader(accountSid);
         }
     
@@ -132,7 +132,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          * @param sid The sid
          * @return SmsMessageUpdater capable of executing the update
          */
-        public static SmsMessageUpdater update(string accountSid, string sid) {
+        public static SmsMessageUpdater Update(string accountSid, string sid) {
             return new SmsMessageUpdater(accountSid, sid);
         }
     

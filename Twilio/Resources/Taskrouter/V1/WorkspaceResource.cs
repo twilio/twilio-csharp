@@ -21,7 +21,7 @@ namespace Twilio.Resources.Taskrouter.V1 {
          * @param sid The sid
          * @return WorkspaceFetcher capable of executing the fetch
          */
-        public static WorkspaceFetcher fetch(string sid) {
+        public static WorkspaceFetcher Fetch(string sid) {
             return new WorkspaceFetcher(sid);
         }
     
@@ -31,7 +31,7 @@ namespace Twilio.Resources.Taskrouter.V1 {
          * @param sid The sid
          * @return WorkspaceUpdater capable of executing the update
          */
-        public static WorkspaceUpdater update(string sid) {
+        public static WorkspaceUpdater Update(string sid) {
             return new WorkspaceUpdater(sid);
         }
     
@@ -40,7 +40,7 @@ namespace Twilio.Resources.Taskrouter.V1 {
          * 
          * @return WorkspaceReader capable of executing the read
          */
-        public static WorkspaceReader read() {
+        public static WorkspaceReader Read() {
             return new WorkspaceReader();
         }
     
@@ -50,7 +50,7 @@ namespace Twilio.Resources.Taskrouter.V1 {
          * @param friendlyName The friendly_name
          * @return WorkspaceCreator capable of executing the create
          */
-        public static WorkspaceCreator create(string friendlyName) {
+        public static WorkspaceCreator Create(string friendlyName) {
             return new WorkspaceCreator(friendlyName);
         }
     
@@ -60,7 +60,7 @@ namespace Twilio.Resources.Taskrouter.V1 {
          * @param sid The sid
          * @return WorkspaceDeleter capable of executing the delete
          */
-        public static WorkspaceDeleter delete(string sid) {
+        public static WorkspaceDeleter Delete(string sid) {
             return new WorkspaceDeleter(sid);
         }
     

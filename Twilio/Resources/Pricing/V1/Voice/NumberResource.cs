@@ -17,7 +17,7 @@ namespace Twilio.Resources.Pricing.V1.Voice {
          * @param number The number
          * @return NumberFetcher capable of executing the fetch
          */
-        public static NumberFetcher fetch(Twilio.Types.PhoneNumber number) {
+        public static NumberFetcher Fetch(Twilio.Types.PhoneNumber number) {
             return new NumberFetcher(number);
         }
     

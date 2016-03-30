@@ -45,7 +45,7 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
          * @param conversationSid The conversation_sid
          * @return ParticipantReader capable of executing the read
          */
-        public static ParticipantReader read(string conversationSid) {
+        public static ParticipantReader Read(string conversationSid) {
             return new ParticipantReader(conversationSid);
         }
     
@@ -57,7 +57,7 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
          * @param from The from
          * @return ParticipantCreator capable of executing the create
          */
-        public static ParticipantCreator create(string conversationSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from) {
+        public static ParticipantCreator Create(string conversationSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from) {
             return new ParticipantCreator(conversationSid, to, from);
         }
     
@@ -68,7 +68,7 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
          * @param sid The sid
          * @return ParticipantFetcher capable of executing the fetch
          */
-        public static ParticipantFetcher fetch(string conversationSid, string sid) {
+        public static ParticipantFetcher Fetch(string conversationSid, string sid) {
             return new ParticipantFetcher(conversationSid, sid);
         }
     

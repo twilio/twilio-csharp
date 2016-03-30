@@ -23,7 +23,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param sid The sid
          * @return UserFetcher capable of executing the fetch
          */
-        public static UserFetcher fetch(string serviceSid, string sid) {
+        public static UserFetcher Fetch(string serviceSid, string sid) {
             return new UserFetcher(serviceSid, sid);
         }
     
@@ -34,7 +34,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param sid The sid
          * @return UserDeleter capable of executing the delete
          */
-        public static UserDeleter delete(string serviceSid, string sid) {
+        public static UserDeleter Delete(string serviceSid, string sid) {
             return new UserDeleter(serviceSid, sid);
         }
     
@@ -46,7 +46,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param roleSid The role_sid
          * @return UserCreator capable of executing the create
          */
-        public static UserCreator create(string serviceSid, string identity, string roleSid) {
+        public static UserCreator Create(string serviceSid, string identity, string roleSid) {
             return new UserCreator(serviceSid, identity, roleSid);
         }
     
@@ -56,7 +56,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param serviceSid The service_sid
          * @return UserReader capable of executing the read
          */
-        public static UserReader read(string serviceSid) {
+        public static UserReader Read(string serviceSid) {
             return new UserReader(serviceSid);
         }
     
@@ -68,7 +68,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * @param roleSid The role_sid
          * @return UserUpdater capable of executing the update
          */
-        public static UserUpdater update(string serviceSid, string sid, string roleSid) {
+        public static UserUpdater Update(string serviceSid, string sid, string roleSid) {
             return new UserUpdater(serviceSid, sid, roleSid);
         }
     

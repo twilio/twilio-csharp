@@ -43,7 +43,7 @@ namespace Twilio.Resources.IpMessaging.V1 {
          * 
          * @return CredentialReader capable of executing the read
          */
-        public static CredentialReader read() {
+        public static CredentialReader Read() {
             return new CredentialReader();
         }
     
@@ -54,7 +54,7 @@ namespace Twilio.Resources.IpMessaging.V1 {
          * @param type The type
          * @return CredentialCreator capable of executing the create
          */
-        public static CredentialCreator create(string friendlyName, CredentialResource.PushService type) {
+        public static CredentialCreator Create(string friendlyName, CredentialResource.PushService type) {
             return new CredentialCreator(friendlyName, type);
         }
     
@@ -64,7 +64,7 @@ namespace Twilio.Resources.IpMessaging.V1 {
          * @param sid The sid
          * @return CredentialFetcher capable of executing the fetch
          */
-        public static CredentialFetcher fetch(string sid) {
+        public static CredentialFetcher Fetch(string sid) {
             return new CredentialFetcher(sid);
         }
     
@@ -76,7 +76,7 @@ namespace Twilio.Resources.IpMessaging.V1 {
          * @param type The type
          * @return CredentialUpdater capable of executing the update
          */
-        public static CredentialUpdater update(string sid, string friendlyName, CredentialResource.PushService type) {
+        public static CredentialUpdater Update(string sid, string friendlyName, CredentialResource.PushService type) {
             return new CredentialUpdater(sid, friendlyName, type);
         }
     
@@ -86,7 +86,7 @@ namespace Twilio.Resources.IpMessaging.V1 {
          * @param sid The sid
          * @return CredentialDeleter capable of executing the delete
          */
-        public static CredentialDeleter delete(string sid) {
+        public static CredentialDeleter Delete(string sid) {
             return new CredentialDeleter(sid);
         }
     

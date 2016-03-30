@@ -22,7 +22,7 @@ namespace Twilio.Resources.IpMessaging.V1 {
          * @param sid The sid
          * @return ServiceFetcher capable of executing the fetch
          */
-        public static ServiceFetcher fetch(string sid) {
+        public static ServiceFetcher Fetch(string sid) {
             return new ServiceFetcher(sid);
         }
     
@@ -32,7 +32,7 @@ namespace Twilio.Resources.IpMessaging.V1 {
          * @param sid The sid
          * @return ServiceDeleter capable of executing the delete
          */
-        public static ServiceDeleter delete(string sid) {
+        public static ServiceDeleter Delete(string sid) {
             return new ServiceDeleter(sid);
         }
     
@@ -42,7 +42,7 @@ namespace Twilio.Resources.IpMessaging.V1 {
          * @param friendlyName The friendly_name
          * @return ServiceCreator capable of executing the create
          */
-        public static ServiceCreator create(string friendlyName) {
+        public static ServiceCreator Create(string friendlyName) {
             return new ServiceCreator(friendlyName);
         }
     
@@ -51,7 +51,7 @@ namespace Twilio.Resources.IpMessaging.V1 {
          * 
          * @return ServiceReader capable of executing the read
          */
-        public static ServiceReader read() {
+        public static ServiceReader Read() {
             return new ServiceReader();
         }
     
@@ -61,7 +61,7 @@ namespace Twilio.Resources.IpMessaging.V1 {
          * @param sid The sid
          * @return ServiceUpdater capable of executing the update
          */
-        public static ServiceUpdater update(string sid) {
+        public static ServiceUpdater Update(string sid) {
             return new ServiceUpdater(sid);
         }
     

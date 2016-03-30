@@ -20,7 +20,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Fetch by unique recording Sid
          * @return RecordingFetcher capable of executing the fetch
          */
-        public static RecordingFetcher fetch(string accountSid, string sid) {
+        public static RecordingFetcher Fetch(string accountSid, string sid) {
             return new RecordingFetcher(accountSid, sid);
         }
     
@@ -31,7 +31,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Delete by unique recording Sid
          * @return RecordingDeleter capable of executing the delete
          */
-        public static RecordingDeleter delete(string accountSid, string sid) {
+        public static RecordingDeleter Delete(string accountSid, string sid) {
             return new RecordingDeleter(accountSid, sid);
         }
     
@@ -42,7 +42,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return RecordingReader capable of executing the read
          */
-        public static RecordingReader read(string accountSid) {
+        public static RecordingReader Read(string accountSid) {
             return new RecordingReader(accountSid);
         }
     

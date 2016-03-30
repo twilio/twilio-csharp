@@ -22,7 +22,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Fetch by unique queue Sid
          * @return QueueFetcher capable of executing the fetch
          */
-        public static QueueFetcher fetch(string accountSid, string sid) {
+        public static QueueFetcher Fetch(string accountSid, string sid) {
             return new QueueFetcher(accountSid, sid);
         }
     
@@ -33,7 +33,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid The sid
          * @return QueueUpdater capable of executing the update
          */
-        public static QueueUpdater update(string accountSid, string sid) {
+        public static QueueUpdater Update(string accountSid, string sid) {
             return new QueueUpdater(accountSid, sid);
         }
     
@@ -44,7 +44,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param sid Delete by unique queue Sid
          * @return QueueDeleter capable of executing the delete
          */
-        public static QueueDeleter delete(string accountSid, string sid) {
+        public static QueueDeleter Delete(string accountSid, string sid) {
             return new QueueDeleter(accountSid, sid);
         }
     
@@ -54,7 +54,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return QueueReader capable of executing the read
          */
-        public static QueueReader read(string accountSid) {
+        public static QueueReader Read(string accountSid) {
             return new QueueReader(accountSid);
         }
     
@@ -64,7 +64,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return QueueCreator capable of executing the create
          */
-        public static QueueCreator create(string accountSid) {
+        public static QueueCreator Create(string accountSid) {
             return new QueueCreator(accountSid);
         }
     

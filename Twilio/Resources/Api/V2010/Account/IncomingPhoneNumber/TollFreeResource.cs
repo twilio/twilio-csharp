@@ -44,7 +44,7 @@ namespace Twilio.Resources.Api.V2010.Account.IncomingPhoneNumber {
          * @param ownerAccountSid The owner_account_sid
          * @return TollFreeReader capable of executing the read
          */
-        public static TollFreeReader read(string ownerAccountSid) {
+        public static TollFreeReader Read(string ownerAccountSid) {
             return new TollFreeReader(ownerAccountSid);
         }
     
@@ -55,7 +55,7 @@ namespace Twilio.Resources.Api.V2010.Account.IncomingPhoneNumber {
          * @param phoneNumber The phone_number
          * @return TollFreeCreator capable of executing the create
          */
-        public static TollFreeCreator create(string ownerAccountSid, Twilio.Types.PhoneNumber phoneNumber) {
+        public static TollFreeCreator Create(string ownerAccountSid, Twilio.Types.PhoneNumber phoneNumber) {
             return new TollFreeCreator(ownerAccountSid, phoneNumber);
         }
     

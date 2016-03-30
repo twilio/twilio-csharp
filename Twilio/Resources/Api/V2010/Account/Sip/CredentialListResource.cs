@@ -23,7 +23,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param accountSid The account_sid
          * @return CredentialListReader capable of executing the read
          */
-        public static CredentialListReader read(string accountSid) {
+        public static CredentialListReader Read(string accountSid) {
             return new CredentialListReader(accountSid);
         }
     
@@ -34,7 +34,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param friendlyName The friendly_name
          * @return CredentialListCreator capable of executing the create
          */
-        public static CredentialListCreator create(string accountSid, string friendlyName) {
+        public static CredentialListCreator Create(string accountSid, string friendlyName) {
             return new CredentialListCreator(accountSid, friendlyName);
         }
     
@@ -45,7 +45,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param sid Fetch by unique credential Sid
          * @return CredentialListFetcher capable of executing the fetch
          */
-        public static CredentialListFetcher fetch(string accountSid, string sid) {
+        public static CredentialListFetcher Fetch(string accountSid, string sid) {
             return new CredentialListFetcher(accountSid, sid);
         }
     
@@ -57,7 +57,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param friendlyName The friendly_name
          * @return CredentialListUpdater capable of executing the update
          */
-        public static CredentialListUpdater update(string accountSid, string sid, string friendlyName) {
+        public static CredentialListUpdater Update(string accountSid, string sid, string friendlyName) {
             return new CredentialListUpdater(accountSid, sid, friendlyName);
         }
     
@@ -68,7 +68,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          * @param sid Delete by unique credential Sid
          * @return CredentialListDeleter capable of executing the delete
          */
-        public static CredentialListDeleter delete(string accountSid, string sid) {
+        public static CredentialListDeleter Delete(string accountSid, string sid) {
             return new CredentialListDeleter(accountSid, sid);
         }
     

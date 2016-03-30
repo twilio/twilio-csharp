@@ -48,7 +48,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          * @param endDate The end_date
          * @return FeedbackSummaryCreator capable of executing the create
          */
-        public static FeedbackSummaryCreator create(string accountSid, DateTime? startDate, DateTime? endDate) {
+        public static FeedbackSummaryCreator Create(string accountSid, DateTime? startDate, DateTime? endDate) {
             return new FeedbackSummaryCreator(accountSid, startDate, endDate);
         }
     
@@ -59,7 +59,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          * @param sid The sid
          * @return FeedbackSummaryFetcher capable of executing the fetch
          */
-        public static FeedbackSummaryFetcher fetch(string accountSid, string sid) {
+        public static FeedbackSummaryFetcher Fetch(string accountSid, string sid) {
             return new FeedbackSummaryFetcher(accountSid, sid);
         }
     
@@ -70,7 +70,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          * @param sid The sid
          * @return FeedbackSummaryDeleter capable of executing the delete
          */
-        public static FeedbackSummaryDeleter delete(string accountSid, string sid) {
+        public static FeedbackSummaryDeleter Delete(string accountSid, string sid) {
             return new FeedbackSummaryDeleter(accountSid, sid);
         }
     
