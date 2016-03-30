@@ -12,7 +12,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Call {
     public class FeedbackUpdater : Updater<FeedbackResource> {
         private string accountSid;
         private string callSid;
-        private int qualityScore;
+        private int? qualityScore;
         private List<FeedbackResource.Issues> issue;
     
         /**
@@ -22,7 +22,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Call {
          * @param callSid The call_sid
          * @param qualityScore An integer from 1 to 5
          */
-        public FeedbackUpdater(string accountSid, string callSid, int qualityScore) {
+        public FeedbackUpdater(string accountSid, string callSid, int? qualityScore) {
             this.accountSid = accountSid;
             this.callSid = callSid;
             this.qualityScore = qualityScore;
@@ -55,7 +55,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Call {
          * @param client TwilioRestClient with which to make the request
          * @return Updated FeedbackResource
          */
-        public override async Task<FeedbackResource> execute(TwilioRestClient client) {
+        public override async Task<FeedbackResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -63,7 +63,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Call {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("FeedbackResource update failed: Unable to connect to server");

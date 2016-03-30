@@ -67,7 +67,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param available The available
          * @return ActivityCreator capable of executing the create
          */
-        public static ActivityCreator create(string workspaceSid, string friendlyName, bool available) {
+        public static ActivityCreator create(string workspaceSid, string friendlyName, bool? available) {
             return new ActivityCreator(workspaceSid, friendlyName, available);
         }
     
@@ -89,11 +89,11 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         [JsonProperty("account_sid")]
         private readonly string accountSid;
         [JsonProperty("available")]
-        private readonly bool available;
+        private readonly bool? available;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("friendly_name")]
         private readonly string friendlyName;
         [JsonProperty("sid")]
@@ -104,7 +104,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         private ActivityResource([JsonProperty("account_sid")]
                                  string accountSid, 
                                  [JsonProperty("available")]
-                                 bool available, 
+                                 bool? available, 
                                  [JsonProperty("date_created")]
                                  string dateCreated, 
                                  [JsonProperty("date_updated")]
@@ -134,21 +134,21 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The available
          */
-        public bool GetAvailable() {
+        public bool? GetAvailable() {
             return this.available;
         }
     
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date_updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     

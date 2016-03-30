@@ -28,14 +28,14 @@ namespace Twilio.Fetchers.Api.V2010.Account.Call {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched FeedbackSummaryResource
          */
-        public override async Task<FeedbackSummaryResource> execute(TwilioRestClient client) {
+        public override async Task<FeedbackSummaryResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/Calls/FeedbackSummary/" + this.sid + ".json"
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("FeedbackSummaryResource fetch failed: Unable to connect to server");

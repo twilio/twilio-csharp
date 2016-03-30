@@ -103,9 +103,9 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.IpAccessControlList {
         [JsonProperty("ip_access_control_list_sid")]
         private readonly string ipAccessControlListSid;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("uri")]
         private readonly string uri;
     
@@ -173,14 +173,14 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.IpAccessControlList {
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date_updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     

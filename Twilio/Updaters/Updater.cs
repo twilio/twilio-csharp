@@ -6,6 +6,6 @@ namespace Twilio.Updaters
 {
     public abstract class Updater<T> where T : Resource
     {
-        public abstract Task<T> execute(TwilioRestClient client);
+        public abstract Task<T> ExecuteAsync(TwilioRestClient client);
     }
 }

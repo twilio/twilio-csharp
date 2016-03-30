@@ -169,15 +169,15 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("caller_name")]
         private readonly string callerName;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("direction")]
         private readonly string direction;
         [JsonProperty("duration")]
         private readonly string duration;
         [JsonProperty("end_time")]
-        private readonly DateTime endTime;
+        private readonly DateTime? endTime;
         [JsonProperty("forwarded_from")]
         private readonly string forwardedFrom;
         [JsonProperty("from")]
@@ -193,11 +193,11 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("price")]
         private readonly decimal price;
         [JsonProperty("price_unit")]
-        private readonly decimal priceUnit;
+        private readonly decimal? priceUnit;
         [JsonProperty("sid")]
         private readonly string sid;
         [JsonProperty("start_time")]
-        private readonly DateTime startTime;
+        private readonly DateTime? startTime;
         [JsonProperty("status")]
         private readonly CallResource.Status status;
         [JsonProperty("subresource_uris")]
@@ -244,7 +244,7 @@ namespace Twilio.Resources.Api.V2010.Account {
                              [JsonProperty("price")]
                              decimal price, 
                              [JsonProperty("price_unit")]
-                             decimal priceUnit, 
+                             decimal? priceUnit, 
                              [JsonProperty("sid")]
                              string sid, 
                              [JsonProperty("start_time")]
@@ -326,14 +326,14 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The date that this resource was created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date that this resource was last updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
@@ -357,7 +357,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @return The end time of the Call. Null if the call did not complete
          *         successfully.
          */
-        public DateTime GetEndTime() {
+        public DateTime? GetEndTime() {
             return this.endTime;
         }
     
@@ -425,7 +425,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The currency in which `Price` is measured.
          */
-        public decimal GetPriceUnit() {
+        public decimal? GetPriceUnit() {
             return this.priceUnit;
         }
     
@@ -439,7 +439,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The start time of the Call. Null if the call has not yet been dialed.
          */
-        public DateTime GetStartTime() {
+        public DateTime? GetStartTime() {
             return this.startTime;
         }
     

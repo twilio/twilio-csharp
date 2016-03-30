@@ -1,19 +1,16 @@
-using static com.twilio.sdk.TwilioTest.serialize;
-using static org.junit.Assert.*;
 
-namespace None {
-
+namespace Twilio.Tests.api.v2010.Account {
     public class RecordingTest {
         [Mocked]
         private TwilioRestClient twilioRestClient;
     
         [Before]
-        public void setUp() throws Exception {
+        public void SetUp() throws Exception {
             Twilio.init("AC123", "AUTH TOKEN");
         }
     
         [Test]
-        public void testFetchRequest() {
+        public void TestFetchRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,
                                               TwilioRestClient.Domains.API,
@@ -35,7 +32,7 @@ namespace None {
         }
     
         [Test]
-        public void testFetchResponse() {
+        public void TestFetchResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"api_version\": \"2010-04-01\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Wed, 01 Sep 2010 15:15:41 +0000\",\"date_updated\": \"Wed, 01 Sep 2010 15:15:41 +0000\",\"duration\": \"6\",\"sid\": \"REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}", TwilioRestClient.HTTP_STATUS_CODE_OK);
@@ -47,7 +44,7 @@ namespace None {
         }
     
         [Test]
-        public void testDeleteRequest() {
+        public void TestDeleteRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.DELETE,
                                               TwilioRestClient.Domains.API,
@@ -69,7 +66,7 @@ namespace None {
         }
     
         [Test]
-        public void testDeleteResponse() {
+        public void TestDeleteResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("null", TwilioRestClient.HTTP_STATUS_CODE_NO_CONTENT);
@@ -81,7 +78,7 @@ namespace None {
         }
     
         [Test]
-        public void testReadRequest() {
+        public void TestReadRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,
                                               TwilioRestClient.Domains.API,
@@ -103,7 +100,7 @@ namespace None {
         }
     
         [Test]
-        public void testReadFullResponse() {
+        public void TestReadFullResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("{\"end\": 0,\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json?PageSize=1&Page=0\",\"last_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json?PageSize=1&Page=4\",\"next_page_uri\": null,\"num_pages\": 5,\"page\": 0,\"page_size\": 1,\"previous_page_uri\": null,\"recordings\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"api_version\": \"2008-08-01\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Wed, 22 Aug 2012 20:58:45 +0000\",\"date_updated\": \"Wed, 22 Aug 2012 20:58:45 +0000\",\"duration\": null,\"price\": null,\"sid\": \"REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}],\"start\": 0,\"total\": 5,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json?PageSize=1&Page=0\"}", TwilioRestClient.HTTP_STATUS_CODE_OK);
@@ -115,7 +112,7 @@ namespace None {
         }
     
         [Test]
-        public void testReadEmptyResponse() {
+        public void TestReadEmptyResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("{\"end\": 0,\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json?PageSize=1&Page=0\",\"last_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json?PageSize=1&Page=4\",\"next_page_uri\": null,\"num_pages\": 5,\"page\": 0,\"page_size\": 1,\"previous_page_uri\": null,\"recordings\": [],\"start\": 0,\"total\": 5,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json?PageSize=1&Page=0\"}", TwilioRestClient.HTTP_STATUS_CODE_OK);

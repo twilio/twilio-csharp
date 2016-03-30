@@ -91,9 +91,9 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
         [JsonProperty("auth_type")]
         private readonly string authType;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("domain_name")]
         private readonly string domainName;
         [JsonProperty("friendly_name")]
@@ -186,14 +186,14 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
         /**
          * @return The date this resource was created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date this resource was last updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     

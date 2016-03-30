@@ -33,7 +33,7 @@ namespace Twilio.Resources
 				return;
 			}
 
-			page = reader.nextPage(page.getNextPageUri(), client);
+			page = reader.NextPage(page.getNextPageUri(), client);
 			if (page != null) {
 				iterator = page.getRecords().GetEnumerator ();
 			}
@@ -52,7 +52,7 @@ namespace Twilio.Resources
 		}
 
 		public void setPageSize(int pageSize) {
-			reader.setPageSize(pageSize);
+			reader.SetPageSize(pageSize);
 		}
 
 		public class ResourceSetIterator<R> : IEnumerator<R> where R : Resource

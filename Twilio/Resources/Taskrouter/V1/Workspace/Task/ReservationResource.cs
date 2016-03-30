@@ -67,9 +67,9 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace.Task {
         [JsonProperty("account_sid")]
         private readonly string accountSid;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("reservation_status")]
         private readonly string reservationStatus;
         [JsonProperty("sid")]
@@ -122,14 +122,14 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace.Task {
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date_updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     

@@ -25,14 +25,14 @@ namespace Twilio.Fetchers.Pricing.V1.Voice {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched NumberResource
          */
-        public override async Task<NumberResource> execute(TwilioRestClient client) {
+        public override async Task<NumberResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.PRICING,
                 "/v1/Voice/Numbers/" + this.number + ""
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("NumberResource fetch failed: Unable to connect to server");

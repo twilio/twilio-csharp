@@ -26,7 +26,7 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
          * @param client TwilioRestClient with which to make the request
          * @return OriginationUrlResource ResourceSet
          */
-        public override async Task<ResourceSet<OriginationUrlResource>> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<OriginationUrlResource>> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TRUNKING,
@@ -35,7 +35,7 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
             
             AddQueryParams(request);
             
-            Page<OriginationUrlResource> page = await pageForRequest(client, request);
+            Page<OriginationUrlResource> page = await PageForRequest(client, request);
             
             return new ResourceSet<OriginationUrlResource>(this, client, page);
         }
@@ -47,13 +47,13 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<OriginationUrlResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<OriginationUrlResource> NextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
             
-            var task = pageForRequest(client, request);
+            var task = PageForRequest(client, request);
             task.Wait();
             
             return task.Result;
@@ -66,8 +66,8 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<OriginationUrlResource>> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = await client.request(request);
+        protected async Task<Page<OriginationUrlResource>> PageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("OriginationUrlResource read failed: Unable to connect to server");
@@ -96,7 +96,7 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
          * @param request Request to add query string arguments to
          */
         private void AddQueryParams(Request request) {
-            request.AddQueryParam("PageSize", getPageSize().ToString());
+            request.AddQueryParam("PageSize", GetPageSize().ToString());
         }
     }
 }

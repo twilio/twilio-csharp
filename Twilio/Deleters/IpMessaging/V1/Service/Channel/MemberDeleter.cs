@@ -30,14 +30,14 @@ namespace Twilio.Deleters.IpMessaging.V1.Service.Channel {
          * 
          * @param client TwilioRestClient with which to make the request
          */
-        public override async void execute(TwilioRestClient client) {
+        public override async void ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Delete,
                 TwilioRestClient.Domains.IPMESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Members/" + this.sid + ""
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("MemberResource delete failed: Unable to connect to server");

@@ -13,7 +13,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
         private CredentialResource.PushService type;
         private string certificate;
         private string privateKey;
-        private bool sandbox;
+        private bool? sandbox;
         private string apiKey;
     
         /**
@@ -57,7 +57,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param sandbox The sandbox
          * @return this
          */
-        public CredentialUpdater setSandbox(bool sandbox) {
+        public CredentialUpdater setSandbox(bool? sandbox) {
             this.sandbox = sandbox;
             return this;
         }
@@ -79,7 +79,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Updated CredentialResource
          */
-        public override async Task<CredentialResource> execute(TwilioRestClient client) {
+        public override async Task<CredentialResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.IPMESSAGING,
@@ -87,7 +87,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("CredentialResource update failed: Unable to connect to server");

@@ -56,7 +56,7 @@ namespace Twilio.Resources.Pricing.V1.Voice {
         [JsonProperty("inbound_call_prices")]
         private readonly List<InboundCallPrice> inboundCallPrices;
         [JsonProperty("price_unit")]
-        private readonly decimal priceUnit;
+        private readonly decimal? priceUnit;
         [JsonProperty("url")]
         private readonly Uri url;
     
@@ -69,7 +69,7 @@ namespace Twilio.Resources.Pricing.V1.Voice {
                                 [JsonProperty("inbound_call_prices")]
                                 List<InboundCallPrice> inboundCallPrices, 
                                 [JsonProperty("price_unit")]
-                                decimal priceUnit, 
+                                decimal? priceUnit, 
                                 [JsonProperty("url")]
                                 Uri url) {
             this.country = country;
@@ -118,7 +118,7 @@ namespace Twilio.Resources.Pricing.V1.Voice {
         /**
          * @return The price_unit
          */
-        public decimal GetPriceUnit() {
+        public decimal? GetPriceUnit() {
             return this.priceUnit;
         }
     

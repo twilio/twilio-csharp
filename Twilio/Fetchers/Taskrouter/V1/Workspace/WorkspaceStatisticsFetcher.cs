@@ -9,7 +9,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace {
 
     public class WorkspaceStatisticsFetcher : Fetcher<WorkspaceStatisticsResource> {
         private string workspaceSid;
-        private int minutes;
+        private int? minutes;
         private string startDate;
         private string endDate;
     
@@ -28,7 +28,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace {
          * @param minutes The minutes
          * @return this
          */
-        public WorkspaceStatisticsFetcher setMinutes(int minutes) {
+        public WorkspaceStatisticsFetcher setMinutes(int? minutes) {
             this.minutes = minutes;
             return this;
         }
@@ -61,14 +61,14 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched WorkspaceStatisticsResource
          */
-        public override async Task<WorkspaceStatisticsResource> execute(TwilioRestClient client) {
+        public override async Task<WorkspaceStatisticsResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Statistics"
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("WorkspaceStatisticsResource fetch failed: Unable to connect to server");

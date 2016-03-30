@@ -81,9 +81,9 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         [JsonProperty("friendly_name")]
         private readonly string friendlyName;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("url")]
         private readonly Uri url;
     
@@ -141,14 +141,14 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date_updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     

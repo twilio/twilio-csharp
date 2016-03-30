@@ -113,17 +113,17 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         [JsonProperty("account_sid")]
         private readonly string accountSid;
         [JsonProperty("age")]
-        private readonly int age;
+        private readonly int? age;
         [JsonProperty("assignment_status")]
         private readonly TaskResource.Status assignmentStatus;
         [JsonProperty("attributes")]
         private readonly string attributes;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("priority")]
-        private readonly int priority;
+        private readonly int? priority;
         [JsonProperty("reason")]
         private readonly string reason;
         [JsonProperty("sid")]
@@ -131,7 +131,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         [JsonProperty("task_queue_sid")]
         private readonly string taskQueueSid;
         [JsonProperty("timeout")]
-        private readonly int timeout;
+        private readonly int? timeout;
         [JsonProperty("workflow_sid")]
         private readonly string workflowSid;
         [JsonProperty("workspace_sid")]
@@ -140,7 +140,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         private TaskResource([JsonProperty("account_sid")]
                              string accountSid, 
                              [JsonProperty("age")]
-                             int age, 
+                             int? age, 
                              [JsonProperty("assignment_status")]
                              TaskResource.Status assignmentStatus, 
                              [JsonProperty("attributes")]
@@ -150,7 +150,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
                              [JsonProperty("date_updated")]
                              string dateUpdated, 
                              [JsonProperty("priority")]
-                             int priority, 
+                             int? priority, 
                              [JsonProperty("reason")]
                              string reason, 
                              [JsonProperty("sid")]
@@ -158,7 +158,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
                              [JsonProperty("task_queue_sid")]
                              string taskQueueSid, 
                              [JsonProperty("timeout")]
-                             int timeout, 
+                             int? timeout, 
                              [JsonProperty("workflow_sid")]
                              string workflowSid, 
                              [JsonProperty("workspace_sid")]
@@ -188,7 +188,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The age
          */
-        public int GetAge() {
+        public int? GetAge() {
             return this.age;
         }
     
@@ -209,21 +209,21 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date_updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
         /**
          * @return The priority
          */
-        public int GetPriority() {
+        public int? GetPriority() {
             return this.priority;
         }
     
@@ -251,7 +251,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The timeout
          */
-        public int GetTimeout() {
+        public int? GetTimeout() {
             return this.timeout;
         }
     

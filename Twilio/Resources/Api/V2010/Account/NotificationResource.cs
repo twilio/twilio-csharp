@@ -68,15 +68,15 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("call_sid")]
         private readonly string callSid;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("error_code")]
         private readonly string errorCode;
         [JsonProperty("log")]
         private readonly string log;
         [JsonProperty("message_date")]
-        private readonly DateTime messageDate;
+        private readonly DateTime? messageDate;
         [JsonProperty("message_text")]
         private readonly string messageText;
         [JsonProperty("more_info")]
@@ -173,14 +173,14 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The date this resource was created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date this resource was last updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
@@ -201,7 +201,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The date the notification was generated
          */
-        public DateTime GetMessageDate() {
+        public DateTime? GetMessageDate() {
             return this.messageDate;
         }
     

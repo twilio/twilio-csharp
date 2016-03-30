@@ -5,9 +5,9 @@ namespace Twilio.Http
 {
     public abstract class HttpClient
     {
-        public abstract Task<Response> makeRequest(Request request);
+        public abstract Task<Response> MakeRequest(Request request);
 
-        protected string authentication(string username, string password)
+        protected string Authentication(string username, string password)
         {
             string credentials = username + ":" + password;
             var encoded = System.Text.Encoding.UTF8.GetBytes(credentials);

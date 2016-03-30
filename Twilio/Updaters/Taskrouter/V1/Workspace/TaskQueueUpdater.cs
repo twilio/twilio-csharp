@@ -14,7 +14,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
         private string targetWorkers;
         private string reservationActivitySid;
         private string assignmentActivitySid;
-        private int maxReservedWorkers;
+        private int? maxReservedWorkers;
     
         /**
          * Construct a new TaskQueueUpdater
@@ -77,7 +77,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param maxReservedWorkers The max_reserved_workers
          * @return this
          */
-        public TaskQueueUpdater setMaxReservedWorkers(int maxReservedWorkers) {
+        public TaskQueueUpdater setMaxReservedWorkers(int? maxReservedWorkers) {
             this.maxReservedWorkers = maxReservedWorkers;
             return this;
         }
@@ -88,7 +88,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param client TwilioRestClient with which to make the request
          * @return Updated TaskQueueResource
          */
-        public override async Task<TaskQueueResource> execute(TwilioRestClient client) {
+        public override async Task<TaskQueueResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TASKROUTER,
@@ -96,7 +96,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TaskQueueResource update failed: Unable to connect to server");

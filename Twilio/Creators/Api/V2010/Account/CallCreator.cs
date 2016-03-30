@@ -22,8 +22,8 @@ namespace Twilio.Creators.Api.V2010.Account {
         private System.Net.Http.HttpMethod statusCallbackMethod;
         private string sendDigits;
         private string ifMachine;
-        private int timeout;
-        private bool record;
+        private int? timeout;
+        private bool? record;
     
         /**
          * Construct a new CallCreator
@@ -178,7 +178,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param timeout Number of seconds to wait for an answer
          * @return this
          */
-        public CallCreator setTimeout(int timeout) {
+        public CallCreator setTimeout(int? timeout) {
             this.timeout = timeout;
             return this;
         }
@@ -190,7 +190,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param record Whether or not to record the Call
          * @return this
          */
-        public CallCreator setRecord(bool record) {
+        public CallCreator setRecord(bool? record) {
             this.record = record;
             return this;
         }
@@ -201,7 +201,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Created CallResource
          */
-        public override async Task<CallResource> execute(TwilioRestClient client) {
+        public override async Task<CallResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -209,7 +209,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("CallResource creation failed: Unable to connect to server");

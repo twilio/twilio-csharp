@@ -28,14 +28,14 @@ namespace Twilio.Fetchers.Trunking.V1.Trunk {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched IpAccessControlListResource
          */
-        public override async Task<IpAccessControlListResource> execute(TwilioRestClient client) {
+        public override async Task<IpAccessControlListResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TRUNKING,
                 "/v1/Trunks/" + this.trunkSid + "/IpAccessControlLists/" + this.sid + ""
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("IpAccessControlListResource fetch failed: Unable to connect to server");

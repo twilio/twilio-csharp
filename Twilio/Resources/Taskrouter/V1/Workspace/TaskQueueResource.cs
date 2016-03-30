@@ -93,13 +93,13 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         [JsonProperty("assignment_activity_name")]
         private readonly string assignmentActivityName;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("friendly_name")]
         private readonly string friendlyName;
         [JsonProperty("max_reserved_workers")]
-        private readonly int maxReservedWorkers;
+        private readonly int? maxReservedWorkers;
         [JsonProperty("reservation_activity_sid")]
         private readonly string reservationActivitySid;
         [JsonProperty("reservation_activity_name")]
@@ -126,7 +126,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
                                   [JsonProperty("friendly_name")]
                                   string friendlyName, 
                                   [JsonProperty("max_reserved_workers")]
-                                  int maxReservedWorkers, 
+                                  int? maxReservedWorkers, 
                                   [JsonProperty("reservation_activity_sid")]
                                   string reservationActivitySid, 
                                   [JsonProperty("reservation_activity_name")]
@@ -178,14 +178,14 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date_updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
@@ -199,7 +199,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The max_reserved_workers
          */
-        public int GetMaxReservedWorkers() {
+        public int? GetMaxReservedWorkers() {
             return this.maxReservedWorkers;
         }
     

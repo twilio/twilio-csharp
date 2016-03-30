@@ -1,19 +1,16 @@
-using static com.twilio.sdk.TwilioTest.serialize;
-using static org.junit.Assert.*;
 
-namespace None {
-
+namespace Twilio.Tests.trunking.v1.Trunk {
     public class CredentialListTest {
         [Mocked]
         private TwilioRestClient twilioRestClient;
     
         [Before]
-        public void setUp() throws Exception {
+        public void SetUp() throws Exception {
             Twilio.init("AC123", "AUTH TOKEN");
         }
     
         [Test]
-        public void testFetchRequest() {
+        public void TestFetchRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,
                                               TwilioRestClient.Domains.TRUNKING,
@@ -35,7 +32,7 @@ namespace None {
         }
     
         [Test]
-        public void testFetchResponse() {
+        public void TestFetchResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"trunk_sid\": \"TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Wed, 11 Sep 2013 17:51:38 -0000\",\"date_updated\": \"Wed, 11 Sep 2013 17:51:38 -0000\",\"friendly_name\": \"Low Rises\",\"sid\": \"CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}", TwilioRestClient.HTTP_STATUS_CODE_OK);
@@ -47,7 +44,7 @@ namespace None {
         }
     
         [Test]
-        public void testDeleteRequest() {
+        public void TestDeleteRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.DELETE,
                                               TwilioRestClient.Domains.TRUNKING,
@@ -69,7 +66,7 @@ namespace None {
         }
     
         [Test]
-        public void testDeleteResponse() {
+        public void TestDeleteResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("null", TwilioRestClient.HTTP_STATUS_CODE_NO_CONTENT);
@@ -81,7 +78,7 @@ namespace None {
         }
     
         [Test]
-        public void testCreateRequest() {
+        public void TestCreateRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.POST,
                                               TwilioRestClient.Domains.TRUNKING,
@@ -103,7 +100,7 @@ namespace None {
         }
     
         [Test]
-        public void testCreateResponse() {
+        public void TestCreateResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"trunk_sid\": \"TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Wed, 11 Sep 2013 17:51:38 -0000\",\"date_updated\": \"Wed, 11 Sep 2013 17:51:38 -0000\",\"friendly_name\": \"Low Rises\",\"sid\": \"CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}", TwilioRestClient.HTTP_STATUS_CODE_CREATED);
@@ -115,7 +112,7 @@ namespace None {
         }
     
         [Test]
-        public void testReadRequest() {
+        public void TestReadRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,
                                               TwilioRestClient.Domains.TRUNKING,
@@ -137,7 +134,7 @@ namespace None {
         }
     
         [Test]
-        public void testReadFullResponse() {
+        public void TestReadFullResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("{\"credential_lists\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"trunk_sid\": \"TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Wed, 11 Sep 2013 17:51:38 -0000\",\"date_updated\": \"Wed, 11 Sep 2013 17:51:38 -0000\",\"friendly_name\": \"Low Rises\",\"sid\": \"CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"credential_lists\"}}", TwilioRestClient.HTTP_STATUS_CODE_OK);
@@ -149,7 +146,7 @@ namespace None {
         }
     
         [Test]
-        public void testReadEmptyResponse() {
+        public void TestReadEmptyResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("{\"credential_lists\": [],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"credential_lists\"}}", TwilioRestClient.HTTP_STATUS_CODE_OK);

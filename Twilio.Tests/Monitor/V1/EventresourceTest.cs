@@ -1,19 +1,16 @@
-using static com.twilio.sdk.TwilioTest.serialize;
-using static org.junit.Assert.*;
 
-namespace None {
-
+namespace Twilio.Tests.monitor.v1 {
     public class EventTest {
         [Mocked]
         private TwilioRestClient twilioRestClient;
     
         [Before]
-        public void setUp() throws Exception {
+        public void SetUp() throws Exception {
             Twilio.init("AC123", "AUTH TOKEN");
         }
     
         [Test]
-        public void testFetchRequest() {
+        public void TestFetchRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,
                                               TwilioRestClient.Domains.MONITOR,
@@ -35,7 +32,7 @@ namespace None {
         }
     
         [Test]
-        public void testFetchResponse() {
+        public void TestFetchResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"actor_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"actor_type\": \"account\",\"description\": null,\"event_data\": {\"friendly_name\": {\"previous\": \"SubAccount Created at 2014-10-03 09:48 am\",\"updated\": \"Mr. Friendly\"}},\"event_date\": \"2014-10-03T16:48:25Z\",\"event_type\": \"account.updated\",\"links\": {\"actor\": \"https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"resource\": \"https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},\"resource_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"resource_type\": \"account\",\"sid\": \"AEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"source\": \"api\",\"source_ip_address\": \"10.86.6.250\",\"url\": \"https://monitor.twilio.com/v1/Events/AEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}", TwilioRestClient.HTTP_STATUS_CODE_OK);
@@ -47,7 +44,7 @@ namespace None {
         }
     
         [Test]
-        public void testReadRequest() {
+        public void TestReadRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,
                                               TwilioRestClient.Domains.MONITOR,
@@ -69,7 +66,7 @@ namespace None {
         }
     
         [Test]
-        public void testReadFullResponse() {
+        public void TestReadFullResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("{\"events\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"actor_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"actor_type\": \"account\",\"description\": null,\"event_data\": {\"friendly_name\": {\"previous\": \"SubAccount Created at 2014-10-03 09:48 am\",\"updated\": \"Mr. Friendly\"}},\"event_date\": \"2014-10-03T16:48:25Z\",\"event_type\": \"account.updated\",\"links\": {\"actor\": \"https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"resource\": \"https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},\"resource_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"resource_type\": \"account\",\"sid\": \"AEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"source\": \"api\",\"source_ip_address\": \"10.86.6.250\",\"url\": \"https://monitor.twilio.com/v1/Events/AEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}],\"meta\": {\"first_page_url\": \"https://monitor.twilio.com/v1/Events?PageSize=50&Page=0\",\"key\": \"events\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://monitor.twilio.com/v1/Events?PageSize=50&Page=0\"}}", TwilioRestClient.HTTP_STATUS_CODE_OK);
@@ -81,7 +78,7 @@ namespace None {
         }
     
         [Test]
-        public void testReadEmptyResponse() {
+        public void TestReadEmptyResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("{\"events\": [],\"meta\": {\"first_page_url\": \"https://monitor.twilio.com/v1/Events?PageSize=50&Page=0\",\"key\": \"events\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://monitor.twilio.com/v1/Events?PageSize=50&Page=0\"}}", TwilioRestClient.HTTP_STATUS_CODE_OK);

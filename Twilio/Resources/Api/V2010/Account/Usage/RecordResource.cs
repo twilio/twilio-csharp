@@ -98,13 +98,13 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         [JsonProperty("description")]
         private readonly string description;
         [JsonProperty("end_date")]
-        private readonly DateTime endDate;
+        private readonly DateTime? endDate;
         [JsonProperty("price")]
         private readonly decimal price;
         [JsonProperty("price_unit")]
-        private readonly decimal priceUnit;
+        private readonly decimal? priceUnit;
         [JsonProperty("start_date")]
-        private readonly DateTime startDate;
+        private readonly DateTime? startDate;
         [JsonProperty("subresource_uris")]
         private readonly Dictionary<string, string> subresourceUris;
         [JsonProperty("uri")]
@@ -131,7 +131,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
                                [JsonProperty("price")]
                                decimal price, 
                                [JsonProperty("price_unit")]
-                               decimal priceUnit, 
+                               decimal? priceUnit, 
                                [JsonProperty("start_date")]
                                string startDate, 
                                [JsonProperty("subresource_uris")]
@@ -203,7 +203,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         /**
          * @return The last date usage is included in this record
          */
-        public DateTime GetEndDate() {
+        public DateTime? GetEndDate() {
             return this.endDate;
         }
     
@@ -217,14 +217,14 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         /**
          * @return The currency in which `Price` is measured
          */
-        public decimal GetPriceUnit() {
+        public decimal? GetPriceUnit() {
             return this.priceUnit;
         }
     
         /**
          * @return The first date usage is included in this record
          */
-        public DateTime GetStartDate() {
+        public DateTime? GetStartDate() {
             return this.startDate;
         }
     

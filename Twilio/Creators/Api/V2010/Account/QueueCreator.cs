@@ -10,7 +10,7 @@ namespace Twilio.Creators.Api.V2010.Account {
     public class QueueCreator : Creator<QueueResource> {
         private string accountSid;
         private string friendlyName;
-        private int maxSize;
+        private int? maxSize;
     
         /**
          * Construct a new QueueCreator
@@ -39,7 +39,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param maxSize The max number of calls allowed in the queue
          * @return this
          */
-        public QueueCreator setMaxSize(int maxSize) {
+        public QueueCreator setMaxSize(int? maxSize) {
             this.maxSize = maxSize;
             return this;
         }
@@ -50,7 +50,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Created QueueResource
          */
-        public override async Task<QueueResource> execute(TwilioRestClient client) {
+        public override async Task<QueueResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -58,7 +58,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("QueueResource creation failed: Unable to connect to server");

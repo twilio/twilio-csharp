@@ -24,14 +24,14 @@ namespace Twilio.Deleters.Taskrouter.V1 {
          * 
          * @param client TwilioRestClient with which to make the request
          */
-        public override async void execute(TwilioRestClient client) {
+        public override async void ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Delete,
                 TwilioRestClient.Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.sid + ""
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("WorkspaceResource delete failed: Unable to connect to server");

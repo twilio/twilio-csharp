@@ -1,19 +1,16 @@
-using static com.twilio.sdk.TwilioTest.serialize;
-using static org.junit.Assert.*;
 
-namespace None {
-
+namespace Twilio.Tests.api.v2010.Account {
     public class AddressTest {
         [Mocked]
         private TwilioRestClient twilioRestClient;
     
         [Before]
-        public void setUp() throws Exception {
+        public void SetUp() throws Exception {
             Twilio.init("AC123", "AUTH TOKEN");
         }
     
         [Test]
-        public void testCreateRequest() {
+        public void TestCreateRequest() {
                         new NonStrictExpectations() {{
                             Request request = new Request(HttpMethod.POST,
                                                           TwilioRestClient.Domains.API,
@@ -40,7 +37,7 @@ namespace None {
         }
     
         [Test]
-        public void testCreateResponse() {
+        public void TestCreateResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"city\": \"SF\",\"customer_name\": \"name\",\"date_created\": \"Tue, 18 Aug 2015 17:07:30 +0000\",\"date_updated\": \"Tue, 18 Aug 2015 17:07:30 +0000\",\"friendly_name\": null,\"iso_country\": \"US\",\"postal_code\": \"94019\",\"region\": \"CA\",\"sid\": \"ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"street\": \"4th\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses/ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}", TwilioRestClient.HTTP_STATUS_CODE_CREATED);
@@ -52,7 +49,7 @@ namespace None {
         }
     
         [Test]
-        public void testDeleteRequest() {
+        public void TestDeleteRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.DELETE,
                                               TwilioRestClient.Domains.API,
@@ -74,7 +71,7 @@ namespace None {
         }
     
         [Test]
-        public void testDeleteResponse() {
+        public void TestDeleteResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("null", TwilioRestClient.HTTP_STATUS_CODE_NO_CONTENT);
@@ -86,7 +83,7 @@ namespace None {
         }
     
         [Test]
-        public void testFetchRequest() {
+        public void TestFetchRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,
                                               TwilioRestClient.Domains.API,
@@ -108,7 +105,7 @@ namespace None {
         }
     
         [Test]
-        public void testFetchResponse() {
+        public void TestFetchResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"city\": \"SF\",\"customer_name\": \"name\",\"date_created\": \"Tue, 18 Aug 2015 17:07:30 +0000\",\"date_updated\": \"Tue, 18 Aug 2015 17:07:30 +0000\",\"friendly_name\": null,\"iso_country\": \"US\",\"postal_code\": \"94019\",\"region\": \"CA\",\"sid\": \"ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"street\": \"4th\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses/ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}", TwilioRestClient.HTTP_STATUS_CODE_OK);
@@ -120,7 +117,7 @@ namespace None {
         }
     
         [Test]
-        public void testUpdateRequest() {
+        public void TestUpdateRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.POST,
                                               TwilioRestClient.Domains.API,
@@ -142,7 +139,7 @@ namespace None {
         }
     
         [Test]
-        public void testUpdateResponse() {
+        public void TestUpdateResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"city\": \"SF\",\"customer_name\": \"name\",\"date_created\": \"Tue, 18 Aug 2015 17:07:30 +0000\",\"date_updated\": \"Tue, 18 Aug 2015 17:07:30 +0000\",\"friendly_name\": null,\"iso_country\": \"US\",\"postal_code\": \"94019\",\"region\": \"CA\",\"sid\": \"ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"street\": \"4th\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses/ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}", TwilioRestClient.HTTP_STATUS_CODE_OK);
@@ -154,7 +151,7 @@ namespace None {
         }
     
         [Test]
-        public void testReadRequest() {
+        public void TestReadRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,
                                               TwilioRestClient.Domains.API,
@@ -176,7 +173,7 @@ namespace None {
         }
     
         [Test]
-        public void testReadFullResponse() {
+        public void TestReadFullResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("{\"addresses\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"city\": \"SF\",\"customer_name\": \"name\",\"date_created\": \"Tue, 18 Aug 2015 17:07:30 +0000\",\"date_updated\": \"Tue, 18 Aug 2015 17:07:30 +0000\",\"friendly_name\": null,\"iso_country\": \"US\",\"postal_code\": \"94019\",\"region\": \"CA\",\"sid\": \"ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"street\": \"4th\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses/ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}],\"end\": 0,\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses.json?PageSize=50&Page=0\",\"last_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses.json?PageSize=50&Page=0\",\"next_page_uri\": null,\"num_pages\": 1,\"page\": 0,\"page_size\": 50,\"previous_page_uri\": null,\"start\": 0,\"total\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses.json?PageSize=50&Page=0\"}", TwilioRestClient.HTTP_STATUS_CODE_OK);
@@ -188,7 +185,7 @@ namespace None {
         }
     
         [Test]
-        public void testReadEmptyResponse() {
+        public void TestReadEmptyResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("{\"addresses\": [],\"end\": 0,\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses.json?PageSize=50&Page=0\",\"last_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses.json?PageSize=50&Page=0\",\"next_page_uri\": null,\"num_pages\": 1,\"page\": 0,\"page_size\": 50,\"previous_page_uri\": null,\"start\": 0,\"total\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses.json?PageSize=50&Page=0\"}", TwilioRestClient.HTTP_STATUS_CODE_OK);

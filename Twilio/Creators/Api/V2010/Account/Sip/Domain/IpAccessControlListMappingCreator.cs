@@ -31,7 +31,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
          * @param client TwilioRestClient with which to make the request
          * @return Created IpAccessControlListMappingResource
          */
-        public override async Task<IpAccessControlListMappingResource> execute(TwilioRestClient client) {
+        public override async Task<IpAccessControlListMappingResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -39,7 +39,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("IpAccessControlListMappingResource creation failed: Unable to connect to server");

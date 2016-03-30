@@ -90,7 +90,7 @@ namespace Twilio.Resources.Trunking.V1 {
         [JsonProperty("friendly_name")]
         private readonly string friendlyName;
         [JsonProperty("secure")]
-        private readonly bool secure;
+        private readonly bool? secure;
         [JsonProperty("recording")]
         private readonly Object recording;
         [JsonProperty("auth_type")]
@@ -98,9 +98,9 @@ namespace Twilio.Resources.Trunking.V1 {
         [JsonProperty("auth_type_set")]
         private readonly List<string> authTypeSet;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("sid")]
         private readonly string sid;
         [JsonProperty("url")]
@@ -119,7 +119,7 @@ namespace Twilio.Resources.Trunking.V1 {
                               [JsonProperty("friendly_name")]
                               string friendlyName, 
                               [JsonProperty("secure")]
-                              bool secure, 
+                              bool? secure, 
                               [JsonProperty("recording")]
                               Object recording, 
                               [JsonProperty("auth_type")]
@@ -190,7 +190,7 @@ namespace Twilio.Resources.Trunking.V1 {
         /**
          * @return The secure
          */
-        public bool GetSecure() {
+        public bool? GetSecure() {
             return this.secure;
         }
     
@@ -218,14 +218,14 @@ namespace Twilio.Resources.Trunking.V1 {
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date_updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     

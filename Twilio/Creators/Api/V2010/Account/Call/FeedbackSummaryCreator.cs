@@ -11,9 +11,9 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
 
     public class FeedbackSummaryCreator : Creator<FeedbackSummaryResource> {
         private string accountSid;
-        private DateTime startDate;
-        private DateTime endDate;
-        private bool includeSubaccounts;
+        private DateTime? startDate;
+        private DateTime? endDate;
+        private bool? includeSubaccounts;
         private Uri statusCallback;
         private System.Net.Http.HttpMethod statusCallbackMethod;
     
@@ -24,7 +24,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
          * @param startDate The start_date
          * @param endDate The end_date
          */
-        public FeedbackSummaryCreator(string accountSid, DateTime startDate, DateTime endDate) {
+        public FeedbackSummaryCreator(string accountSid, DateTime? startDate, DateTime? endDate) {
             this.accountSid = accountSid;
             this.startDate = startDate;
             this.endDate = endDate;
@@ -36,7 +36,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
          * @param includeSubaccounts The include_subaccounts
          * @return this
          */
-        public FeedbackSummaryCreator setIncludeSubaccounts(bool includeSubaccounts) {
+        public FeedbackSummaryCreator setIncludeSubaccounts(bool? includeSubaccounts) {
             this.includeSubaccounts = includeSubaccounts;
             return this;
         }
@@ -79,7 +79,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
          * @param client TwilioRestClient with which to make the request
          * @return Created FeedbackSummaryResource
          */
-        public override async Task<FeedbackSummaryResource> execute(TwilioRestClient client) {
+        public override async Task<FeedbackSummaryResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -87,7 +87,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("FeedbackSummaryResource creation failed: Unable to connect to server");

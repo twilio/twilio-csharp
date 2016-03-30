@@ -30,14 +30,14 @@ namespace Twilio.Deleters.Api.V2010.Account.Sip.CredentialList {
          * 
          * @param client TwilioRestClient with which to make the request
          */
-        public override async void execute(TwilioRestClient client) {
+        public override async void ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Delete,
                 TwilioRestClient.Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/SIP/CredentialLists/" + this.credentialListSid + "/Credentials/" + this.sid + ".json"
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("CredentialResource delete failed: Unable to connect to server");

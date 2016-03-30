@@ -90,15 +90,15 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("api_version")]
         private readonly string apiVersion;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("duration")]
         private readonly string duration;
         [JsonProperty("price")]
         private readonly decimal price;
         [JsonProperty("price_unit")]
-        private readonly decimal priceUnit;
+        private readonly decimal? priceUnit;
         [JsonProperty("recording_sid")]
         private readonly string recordingSid;
         [JsonProperty("sid")]
@@ -125,7 +125,7 @@ namespace Twilio.Resources.Api.V2010.Account {
                                       [JsonProperty("price")]
                                       decimal price, 
                                       [JsonProperty("price_unit")]
-                                      decimal priceUnit, 
+                                      decimal? priceUnit, 
                                       [JsonProperty("recording_sid")]
                                       string recordingSid, 
                                       [JsonProperty("sid")]
@@ -170,14 +170,14 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The date this resource was created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date this resource was last updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
@@ -198,7 +198,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The currency in which Price is measured
          */
-        public decimal GetPriceUnit() {
+        public decimal? GetPriceUnit() {
             return this.priceUnit;
         }
     

@@ -1,19 +1,16 @@
-using static com.twilio.sdk.TwilioTest.serialize;
-using static org.junit.Assert.*;
 
-namespace None {
-
+namespace Twilio.Tests.api.v2010.Account {
     public class ValidationRequestTest {
         [Mocked]
         private TwilioRestClient twilioRestClient;
     
         [Before]
-        public void setUp() throws Exception {
+        public void SetUp() throws Exception {
             Twilio.init("AC123", "AUTH TOKEN");
         }
     
         [Test]
-        public void testCreateRequest() {
+        public void TestCreateRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.POST,
                                               TwilioRestClient.Domains.API,

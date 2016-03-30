@@ -62,7 +62,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         [JsonProperty("event_data")]
         private readonly Dictionary<string, string> eventData;
         [JsonProperty("event_date")]
-        private readonly DateTime eventDate;
+        private readonly DateTime? eventDate;
         [JsonProperty("event_type")]
         private readonly string eventType;
         [JsonProperty("resource_sid")]
@@ -172,7 +172,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The event_date
          */
-        public DateTime GetEventDate() {
+        public DateTime? GetEventDate() {
             return this.eventDate;
         }
     

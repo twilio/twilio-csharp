@@ -48,7 +48,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          * @param endDate The end_date
          * @return FeedbackSummaryCreator capable of executing the create
          */
-        public static FeedbackSummaryCreator create(string accountSid, DateTime startDate, DateTime endDate) {
+        public static FeedbackSummaryCreator create(string accountSid, DateTime? startDate, DateTime? endDate) {
             return new FeedbackSummaryCreator(accountSid, startDate, endDate);
         }
     
@@ -92,17 +92,17 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         [JsonProperty("account_sid")]
         private readonly string accountSid;
         [JsonProperty("call_count")]
-        private readonly int callCount;
+        private readonly int? callCount;
         [JsonProperty("call_feedback_count")]
-        private readonly int callFeedbackCount;
+        private readonly int? callFeedbackCount;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("end_date")]
-        private readonly DateTime endDate;
+        private readonly DateTime? endDate;
         [JsonProperty("include_subaccounts")]
-        private readonly bool includeSubaccounts;
+        private readonly bool? includeSubaccounts;
         [JsonProperty("issues")]
         private readonly List<FeedbackIssue> issues;
         [JsonProperty("quality_score_average")]
@@ -114,16 +114,16 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         [JsonProperty("sid")]
         private readonly string sid;
         [JsonProperty("start_date")]
-        private readonly DateTime startDate;
+        private readonly DateTime? startDate;
         [JsonProperty("status")]
         private readonly FeedbackSummaryResource.Status status;
     
         private FeedbackSummaryResource([JsonProperty("account_sid")]
                                         string accountSid, 
                                         [JsonProperty("call_count")]
-                                        int callCount, 
+                                        int? callCount, 
                                         [JsonProperty("call_feedback_count")]
-                                        int callFeedbackCount, 
+                                        int? callFeedbackCount, 
                                         [JsonProperty("date_created")]
                                         string dateCreated, 
                                         [JsonProperty("date_updated")]
@@ -131,7 +131,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
                                         [JsonProperty("end_date")]
                                         string endDate, 
                                         [JsonProperty("include_subaccounts")]
-                                        bool includeSubaccounts, 
+                                        bool? includeSubaccounts, 
                                         [JsonProperty("issues")]
                                         List<FeedbackIssue> issues, 
                                         [JsonProperty("quality_score_average")]
@@ -172,42 +172,42 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         /**
          * @return The call_count
          */
-        public int GetCallCount() {
+        public int? GetCallCount() {
             return this.callCount;
         }
     
         /**
          * @return The call_feedback_count
          */
-        public int GetCallFeedbackCount() {
+        public int? GetCallFeedbackCount() {
             return this.callFeedbackCount;
         }
     
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date_updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
         /**
          * @return The end_date
          */
-        public DateTime GetEndDate() {
+        public DateTime? GetEndDate() {
             return this.endDate;
         }
     
         /**
          * @return The include_subaccounts
          */
-        public bool GetIncludeSubaccounts() {
+        public bool? GetIncludeSubaccounts() {
             return this.includeSubaccounts;
         }
     
@@ -249,7 +249,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         /**
          * @return The start_date
          */
-        public DateTime GetStartDate() {
+        public DateTime? GetStartDate() {
             return this.startDate;
         }
     

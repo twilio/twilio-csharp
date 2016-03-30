@@ -1,19 +1,16 @@
-using static com.twilio.sdk.TwilioTest.serialize;
-using static org.junit.Assert.*;
 
-namespace None {
-
+namespace Twilio.Tests.api.v2010.Account {
     public class OutgoingCallerIdTest {
         [Mocked]
         private TwilioRestClient twilioRestClient;
     
         [Before]
-        public void setUp() throws Exception {
+        public void SetUp() throws Exception {
             Twilio.init("AC123", "AUTH TOKEN");
         }
     
         [Test]
-        public void testFetchRequest() {
+        public void TestFetchRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,
                                               TwilioRestClient.Domains.API,
@@ -35,7 +32,7 @@ namespace None {
         }
     
         [Test]
-        public void testFetchResponse() {
+        public void TestFetchResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Fri, 21 Aug 2009 00:11:24 +0000\",\"date_updated\": \"Fri, 21 Aug 2009 00:11:24 +0000\",\"friendly_name\": \"(415) 867-5309\",\"phone_number\": \"+141586753096\",\"sid\": \"PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OutgoingCallerIds/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}", TwilioRestClient.HTTP_STATUS_CODE_OK);
@@ -47,7 +44,7 @@ namespace None {
         }
     
         [Test]
-        public void testUpdateRequest() {
+        public void TestUpdateRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.POST,
                                               TwilioRestClient.Domains.API,
@@ -69,7 +66,7 @@ namespace None {
         }
     
         [Test]
-        public void testUpdateResponse() {
+        public void TestUpdateResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Fri, 21 Aug 2009 00:11:24 +0000\",\"date_updated\": \"Fri, 21 Aug 2009 00:11:24 +0000\",\"friendly_name\": \"(415) 867-5309\",\"phone_number\": \"+141586753096\",\"sid\": \"PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OutgoingCallerIds/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}", TwilioRestClient.HTTP_STATUS_CODE_OK);
@@ -81,7 +78,7 @@ namespace None {
         }
     
         [Test]
-        public void testDeleteRequest() {
+        public void TestDeleteRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.DELETE,
                                               TwilioRestClient.Domains.API,
@@ -103,7 +100,7 @@ namespace None {
         }
     
         [Test]
-        public void testDeleteResponse() {
+        public void TestDeleteResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("null", TwilioRestClient.HTTP_STATUS_CODE_NO_CONTENT);
@@ -115,7 +112,7 @@ namespace None {
         }
     
         [Test]
-        public void testReadRequest() {
+        public void TestReadRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,
                                               TwilioRestClient.Domains.API,
@@ -137,7 +134,7 @@ namespace None {
         }
     
         [Test]
-        public void testReadFullResponse() {
+        public void TestReadFullResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("{\"end\": 0,\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OutgoingCallerIds.json?Page=0&PageSize=50\",\"last_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OutgoingCallerIds.json?Page=0&PageSize=50\",\"next_page_uri\": null,\"num_pages\": 1,\"outgoing_caller_ids\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Fri, 21 Aug 2009 00:11:24 +0000\",\"date_updated\": \"Fri, 21 Aug 2009 00:11:24 +0000\",\"friendly_name\": \"(415) 867-5309\",\"phone_number\": \"+141586753096\",\"sid\": \"PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OutgoingCallerIds/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}],\"page\": 0,\"page_size\": 50,\"previous_page_uri\": null,\"start\": 0,\"total\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OutgoingCallerIds.json\"}", TwilioRestClient.HTTP_STATUS_CODE_OK);
@@ -149,7 +146,7 @@ namespace None {
         }
     
         [Test]
-        public void testReadEmptyResponse() {
+        public void TestReadEmptyResponse() {
             new NonStrictExpectations() {{
                 twilioRestClient.request((Request) any);
                 result = new Response("{\"end\": 0,\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OutgoingCallerIds.json?Page=0&PageSize=50\",\"last_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OutgoingCallerIds.json?Page=0&PageSize=50\",\"next_page_uri\": null,\"num_pages\": 1,\"outgoing_caller_ids\": [],\"page\": 0,\"page_size\": 50,\"previous_page_uri\": null,\"start\": 0,\"total\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OutgoingCallerIds.json\"}", TwilioRestClient.HTTP_STATUS_CODE_OK);

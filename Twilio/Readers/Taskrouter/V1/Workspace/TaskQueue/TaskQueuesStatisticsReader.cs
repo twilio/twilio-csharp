@@ -12,10 +12,10 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.TaskQueue {
 
     public class TaskQueuesStatisticsReader : Reader<TaskQueuesStatisticsResource> {
         private string workspaceSid;
-        private DateTime endDate;
+        private DateTime? endDate;
         private string friendlyName;
-        private int minutes;
-        private DateTime startDate;
+        private int? minutes;
+        private DateTime? startDate;
     
         /**
          * Construct a new TaskQueuesStatisticsReader
@@ -32,7 +32,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.TaskQueue {
          * @param endDate The end_date
          * @return this
          */
-        public TaskQueuesStatisticsReader byEndDate(DateTime endDate) {
+        public TaskQueuesStatisticsReader byEndDate(DateTime? endDate) {
             this.endDate = endDate;
             return this;
         }
@@ -54,7 +54,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.TaskQueue {
          * @param minutes The minutes
          * @return this
          */
-        public TaskQueuesStatisticsReader byMinutes(int minutes) {
+        public TaskQueuesStatisticsReader byMinutes(int? minutes) {
             this.minutes = minutes;
             return this;
         }
@@ -65,7 +65,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.TaskQueue {
          * @param startDate The start_date
          * @return this
          */
-        public TaskQueuesStatisticsReader byStartDate(DateTime startDate) {
+        public TaskQueuesStatisticsReader byStartDate(DateTime? startDate) {
             this.startDate = startDate;
             return this;
         }
@@ -76,7 +76,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.TaskQueue {
          * @param client TwilioRestClient with which to make the request
          * @return TaskQueuesStatisticsResource ResourceSet
          */
-        public override async Task<ResourceSet<TaskQueuesStatisticsResource>> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<TaskQueuesStatisticsResource>> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TASKROUTER,
@@ -85,7 +85,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.TaskQueue {
             
             AddQueryParams(request);
             
-            Page<TaskQueuesStatisticsResource> page = await pageForRequest(client, request);
+            Page<TaskQueuesStatisticsResource> page = await PageForRequest(client, request);
             
             return new ResourceSet<TaskQueuesStatisticsResource>(this, client, page);
         }
@@ -97,13 +97,13 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.TaskQueue {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<TaskQueuesStatisticsResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<TaskQueuesStatisticsResource> NextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
             
-            var task = pageForRequest(client, request);
+            var task = PageForRequest(client, request);
             task.Wait();
             
             return task.Result;
@@ -116,8 +116,8 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.TaskQueue {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<TaskQueuesStatisticsResource>> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = await client.request(request);
+        protected async Task<Page<TaskQueuesStatisticsResource>> PageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TaskQueuesStatisticsResource read failed: Unable to connect to server");
@@ -162,7 +162,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.TaskQueue {
                 request.AddQueryParam("StartDate", startDate.ToString());
             }
             
-            request.AddQueryParam("PageSize", getPageSize().ToString());
+            request.AddQueryParam("PageSize", GetPageSize().ToString());
         }
     }
 }

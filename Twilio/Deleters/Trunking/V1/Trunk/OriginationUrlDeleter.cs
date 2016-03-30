@@ -27,14 +27,14 @@ namespace Twilio.Deleters.Trunking.V1.Trunk {
          * 
          * @param client TwilioRestClient with which to make the request
          */
-        public override async void execute(TwilioRestClient client) {
+        public override async void ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Delete,
                 TwilioRestClient.Domains.TRUNKING,
                 "/v1/Trunks/" + this.trunkSid + "/OriginationUrls/" + this.sid + ""
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("OriginationUrlResource delete failed: Unable to connect to server");

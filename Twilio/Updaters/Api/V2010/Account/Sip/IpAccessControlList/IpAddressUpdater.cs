@@ -37,7 +37,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip.IpAccessControlList {
          * @param client TwilioRestClient with which to make the request
          * @return Updated IpAddressResource
          */
-        public override async Task<IpAddressResource> execute(TwilioRestClient client) {
+        public override async Task<IpAddressResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -45,7 +45,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip.IpAccessControlList {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("IpAddressResource update failed: Unable to connect to server");

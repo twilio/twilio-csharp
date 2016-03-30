@@ -81,13 +81,13 @@ namespace Twilio.Resources.Api.V2010.Account.IncomingPhoneNumber {
         [JsonProperty("api_version")]
         private readonly string apiVersion;
         [JsonProperty("beta")]
-        private readonly bool beta;
+        private readonly bool? beta;
         [JsonProperty("capabilities")]
         private readonly PhoneNumberCapabilities capabilities;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("friendly_name")]
         private readonly string friendlyName;
         [JsonProperty("phone_number")]
@@ -113,7 +113,7 @@ namespace Twilio.Resources.Api.V2010.Account.IncomingPhoneNumber {
         [JsonProperty("voice_application_sid")]
         private readonly string voiceApplicationSid;
         [JsonProperty("voice_caller_id_lookup")]
-        private readonly bool voiceCallerIdLookup;
+        private readonly bool? voiceCallerIdLookup;
         [JsonProperty("voice_fallback_method")]
         private readonly System.Net.Http.HttpMethod voiceFallbackMethod;
         [JsonProperty("voice_fallback_url")]
@@ -130,7 +130,7 @@ namespace Twilio.Resources.Api.V2010.Account.IncomingPhoneNumber {
                               [JsonProperty("api_version")]
                               string apiVersion, 
                               [JsonProperty("beta")]
-                              bool beta, 
+                              bool? beta, 
                               [JsonProperty("capabilities")]
                               PhoneNumberCapabilities capabilities, 
                               [JsonProperty("date_created")]
@@ -162,7 +162,7 @@ namespace Twilio.Resources.Api.V2010.Account.IncomingPhoneNumber {
                               [JsonProperty("voice_application_sid")]
                               string voiceApplicationSid, 
                               [JsonProperty("voice_caller_id_lookup")]
-                              bool voiceCallerIdLookup, 
+                              bool? voiceCallerIdLookup, 
                               [JsonProperty("voice_fallback_method")]
                               System.Net.Http.HttpMethod voiceFallbackMethod, 
                               [JsonProperty("voice_fallback_url")]
@@ -221,7 +221,7 @@ namespace Twilio.Resources.Api.V2010.Account.IncomingPhoneNumber {
         /**
          * @return The beta
          */
-        public bool GetBeta() {
+        public bool? GetBeta() {
             return this.beta;
         }
     
@@ -235,14 +235,14 @@ namespace Twilio.Resources.Api.V2010.Account.IncomingPhoneNumber {
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date_updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
@@ -333,7 +333,7 @@ namespace Twilio.Resources.Api.V2010.Account.IncomingPhoneNumber {
         /**
          * @return The voice_caller_id_lookup
          */
-        public bool GetVoiceCallerIdLookup() {
+        public bool? GetVoiceCallerIdLookup() {
             return this.voiceCallerIdLookup;
         }
     

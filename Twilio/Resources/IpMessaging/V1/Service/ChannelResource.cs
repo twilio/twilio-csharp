@@ -124,9 +124,9 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
         [JsonProperty("type")]
         private readonly ChannelResource.ChannelType type;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("created_by")]
         private readonly string createdBy;
         [JsonProperty("url")]
@@ -224,14 +224,14 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date_updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     

@@ -6,6 +6,6 @@ namespace Twilio.Fetchers
 {
     public abstract class Fetcher<T> where T : Resource
     {
-        public abstract Task<T> execute(TwilioRestClient client);
+        public abstract Task<T> ExecuteAsync(TwilioRestClient client);
     }
 }

@@ -25,14 +25,14 @@ namespace Twilio.Fetchers.Monitor.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched AlertResource
          */
-        public override async Task<AlertResource> execute(TwilioRestClient client) {
+        public override async Task<AlertResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.MONITOR,
                 "/v1/Alerts/" + this.sid + ""
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("AlertResource fetch failed: Unable to connect to server");

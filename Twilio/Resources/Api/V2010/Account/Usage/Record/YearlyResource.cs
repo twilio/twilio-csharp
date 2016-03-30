@@ -97,13 +97,13 @@ namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
         [JsonProperty("description")]
         private readonly string description;
         [JsonProperty("end_date")]
-        private readonly DateTime endDate;
+        private readonly DateTime? endDate;
         [JsonProperty("price")]
         private readonly decimal price;
         [JsonProperty("price_unit")]
-        private readonly decimal priceUnit;
+        private readonly decimal? priceUnit;
         [JsonProperty("start_date")]
-        private readonly DateTime startDate;
+        private readonly DateTime? startDate;
         [JsonProperty("subresource_uris")]
         private readonly Dictionary<string, string> subresourceUris;
         [JsonProperty("uri")]
@@ -130,7 +130,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
                                [JsonProperty("price")]
                                decimal price, 
                                [JsonProperty("price_unit")]
-                               decimal priceUnit, 
+                               decimal? priceUnit, 
                                [JsonProperty("start_date")]
                                string startDate, 
                                [JsonProperty("subresource_uris")]
@@ -202,7 +202,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
         /**
          * @return The end_date
          */
-        public DateTime GetEndDate() {
+        public DateTime? GetEndDate() {
             return this.endDate;
         }
     
@@ -216,14 +216,14 @@ namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
         /**
          * @return The price_unit
          */
-        public decimal GetPriceUnit() {
+        public decimal? GetPriceUnit() {
             return this.priceUnit;
         }
     
         /**
          * @return The start_date
          */
-        public DateTime GetStartDate() {
+        public DateTime? GetStartDate() {
             return this.startDate;
         }
     

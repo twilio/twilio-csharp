@@ -26,7 +26,7 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
          * @param client TwilioRestClient with which to make the request
          * @return PhoneNumberResource ResourceSet
          */
-        public override async Task<ResourceSet<PhoneNumberResource>> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<PhoneNumberResource>> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TRUNKING,
@@ -35,7 +35,7 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
             
             AddQueryParams(request);
             
-            Page<PhoneNumberResource> page = await pageForRequest(client, request);
+            Page<PhoneNumberResource> page = await PageForRequest(client, request);
             
             return new ResourceSet<PhoneNumberResource>(this, client, page);
         }
@@ -47,13 +47,13 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<PhoneNumberResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<PhoneNumberResource> NextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
             
-            var task = pageForRequest(client, request);
+            var task = PageForRequest(client, request);
             task.Wait();
             
             return task.Result;
@@ -66,8 +66,8 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<PhoneNumberResource>> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = await client.request(request);
+        protected async Task<Page<PhoneNumberResource>> PageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("PhoneNumberResource read failed: Unable to connect to server");
@@ -96,7 +96,7 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
          * @param request Request to add query string arguments to
          */
         private void AddQueryParams(Request request) {
-            request.AddQueryParam("PageSize", getPageSize().ToString());
+            request.AddQueryParam("PageSize", GetPageSize().ToString());
         }
     }
 }

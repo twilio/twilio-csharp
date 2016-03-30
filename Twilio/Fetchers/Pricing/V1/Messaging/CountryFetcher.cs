@@ -25,14 +25,14 @@ namespace Twilio.Fetchers.Pricing.V1.Messaging {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched CountryResource
          */
-        public override async Task<CountryResource> execute(TwilioRestClient client) {
+        public override async Task<CountryResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.PRICING,
                 "/v1/Messaging/Countries/" + this.isoCountry + ""
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("CountryResource fetch failed: Unable to connect to server");

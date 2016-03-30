@@ -57,7 +57,7 @@ namespace Twilio.Resources.Monitor.V1 {
         [JsonProperty("event_data")]
         private readonly Object eventData;
         [JsonProperty("event_date")]
-        private readonly DateTime eventDate;
+        private readonly DateTime? eventDate;
         [JsonProperty("event_type")]
         private readonly string eventType;
         [JsonProperty("resource_sid")]
@@ -147,7 +147,7 @@ namespace Twilio.Resources.Monitor.V1 {
         /**
          * @return The event_date
          */
-        public DateTime GetEventDate() {
+        public DateTime? GetEventDate() {
             return this.eventDate;
         }
     

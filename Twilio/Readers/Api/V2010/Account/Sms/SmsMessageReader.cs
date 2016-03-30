@@ -62,7 +62,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sms {
          * @param client TwilioRestClient with which to make the request
          * @return SmsMessageResource ResourceSet
          */
-        public override async Task<ResourceSet<SmsMessageResource>> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<SmsMessageResource>> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
@@ -71,7 +71,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sms {
             
             AddQueryParams(request);
             
-            Page<SmsMessageResource> page = await pageForRequest(client, request);
+            Page<SmsMessageResource> page = await PageForRequest(client, request);
             
             return new ResourceSet<SmsMessageResource>(this, client, page);
         }
@@ -83,13 +83,13 @@ namespace Twilio.Readers.Api.V2010.Account.Sms {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<SmsMessageResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<SmsMessageResource> NextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
             
-            var task = pageForRequest(client, request);
+            var task = PageForRequest(client, request);
             task.Wait();
             
             return task.Result;
@@ -102,8 +102,8 @@ namespace Twilio.Readers.Api.V2010.Account.Sms {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<SmsMessageResource>> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = await client.request(request);
+        protected async Task<Page<SmsMessageResource>> PageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("SmsMessageResource read failed: Unable to connect to server");
@@ -144,7 +144,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sms {
                 request.AddQueryParam("DateSent", dateSent);
             }
             
-            request.AddQueryParam("PageSize", getPageSize().ToString());
+            request.AddQueryParam("PageSize", GetPageSize().ToString());
         }
     }
 }

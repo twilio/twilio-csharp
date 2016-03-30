@@ -10,7 +10,7 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
 
     public class MobileReader : Reader<MobileResource> {
         private string ownerAccountSid;
-        private bool beta;
+        private bool? beta;
         private string friendlyName;
         private Twilio.Types.PhoneNumber phoneNumber;
     
@@ -29,7 +29,7 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
          * @param beta The beta
          * @return this
          */
-        public MobileReader byBeta(bool beta) {
+        public MobileReader byBeta(bool? beta) {
             this.beta = beta;
             return this;
         }
@@ -62,7 +62,7 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
          * @param client TwilioRestClient with which to make the request
          * @return MobileResource ResourceSet
          */
-        public override async Task<ResourceSet<MobileResource>> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<MobileResource>> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
@@ -71,7 +71,7 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
             
             AddQueryParams(request);
             
-            Page<MobileResource> page = await pageForRequest(client, request);
+            Page<MobileResource> page = await PageForRequest(client, request);
             
             return new ResourceSet<MobileResource>(this, client, page);
         }
@@ -83,13 +83,13 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<MobileResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<MobileResource> NextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
             
-            var task = pageForRequest(client, request);
+            var task = PageForRequest(client, request);
             task.Wait();
             
             return task.Result;
@@ -102,8 +102,8 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<MobileResource>> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = await client.request(request);
+        protected async Task<Page<MobileResource>> PageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("MobileResource read failed: Unable to connect to server");
@@ -144,7 +144,7 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
                 request.AddQueryParam("PhoneNumber", phoneNumber.ToString());
             }
             
-            request.AddQueryParam("PageSize", getPageSize().ToString());
+            request.AddQueryParam("PageSize", GetPageSize().ToString());
         }
     }
 }

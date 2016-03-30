@@ -11,15 +11,15 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
     public class LocalReader : Reader<LocalResource> {
         private string accountSid;
         private string countryCode;
-        private int areaCode;
+        private int? areaCode;
         private string contains;
-        private bool smsEnabled;
-        private bool mmsEnabled;
-        private bool voiceEnabled;
-        private bool excludeAllAddressRequired;
-        private bool excludeLocalAddressRequired;
-        private bool excludeForeignAddressRequired;
-        private bool beta;
+        private bool? smsEnabled;
+        private bool? mmsEnabled;
+        private bool? voiceEnabled;
+        private bool? excludeAllAddressRequired;
+        private bool? excludeLocalAddressRequired;
+        private bool? excludeForeignAddressRequired;
+        private bool? beta;
     
         /**
          * Construct a new LocalReader
@@ -38,7 +38,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param areaCode The area_code
          * @return this
          */
-        public LocalReader byAreaCode(int areaCode) {
+        public LocalReader byAreaCode(int? areaCode) {
             this.areaCode = areaCode;
             return this;
         }
@@ -60,7 +60,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param smsEnabled The sms_enabled
          * @return this
          */
-        public LocalReader bySmsEnabled(bool smsEnabled) {
+        public LocalReader bySmsEnabled(bool? smsEnabled) {
             this.smsEnabled = smsEnabled;
             return this;
         }
@@ -71,7 +71,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param mmsEnabled The mms_enabled
          * @return this
          */
-        public LocalReader byMmsEnabled(bool mmsEnabled) {
+        public LocalReader byMmsEnabled(bool? mmsEnabled) {
             this.mmsEnabled = mmsEnabled;
             return this;
         }
@@ -82,7 +82,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param voiceEnabled The voice_enabled
          * @return this
          */
-        public LocalReader byVoiceEnabled(bool voiceEnabled) {
+        public LocalReader byVoiceEnabled(bool? voiceEnabled) {
             this.voiceEnabled = voiceEnabled;
             return this;
         }
@@ -93,7 +93,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param excludeAllAddressRequired The exclude_all_address_required
          * @return this
          */
-        public LocalReader byExcludeAllAddressRequired(bool excludeAllAddressRequired) {
+        public LocalReader byExcludeAllAddressRequired(bool? excludeAllAddressRequired) {
             this.excludeAllAddressRequired = excludeAllAddressRequired;
             return this;
         }
@@ -104,7 +104,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param excludeLocalAddressRequired The exclude_local_address_required
          * @return this
          */
-        public LocalReader byExcludeLocalAddressRequired(bool excludeLocalAddressRequired) {
+        public LocalReader byExcludeLocalAddressRequired(bool? excludeLocalAddressRequired) {
             this.excludeLocalAddressRequired = excludeLocalAddressRequired;
             return this;
         }
@@ -115,7 +115,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param excludeForeignAddressRequired The exclude_foreign_address_required
          * @return this
          */
-        public LocalReader byExcludeForeignAddressRequired(bool excludeForeignAddressRequired) {
+        public LocalReader byExcludeForeignAddressRequired(bool? excludeForeignAddressRequired) {
             this.excludeForeignAddressRequired = excludeForeignAddressRequired;
             return this;
         }
@@ -126,7 +126,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param beta The beta
          * @return this
          */
-        public LocalReader byBeta(bool beta) {
+        public LocalReader byBeta(bool? beta) {
             this.beta = beta;
             return this;
         }
@@ -137,7 +137,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param client TwilioRestClient with which to make the request
          * @return LocalResource ResourceSet
          */
-        public override async Task<ResourceSet<LocalResource>> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<LocalResource>> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
@@ -146,7 +146,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
             
             AddQueryParams(request);
             
-            Page<LocalResource> page = await pageForRequest(client, request);
+            Page<LocalResource> page = await PageForRequest(client, request);
             
             return new ResourceSet<LocalResource>(this, client, page);
         }
@@ -158,13 +158,13 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<LocalResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<LocalResource> NextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
             
-            var task = pageForRequest(client, request);
+            var task = PageForRequest(client, request);
             task.Wait();
             
             return task.Result;
@@ -177,8 +177,8 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<LocalResource>> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = await client.request(request);
+        protected async Task<Page<LocalResource>> PageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("LocalResource read failed: Unable to connect to server");
@@ -243,7 +243,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
                 request.AddQueryParam("Beta", beta.ToString());
             }
             
-            request.AddQueryParam("PageSize", getPageSize().ToString());
+            request.AddQueryParam("PageSize", GetPageSize().ToString());
         }
     }
 }

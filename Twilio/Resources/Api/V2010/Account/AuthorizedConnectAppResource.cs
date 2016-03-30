@@ -86,9 +86,9 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("connect_app_sid")]
         private readonly string connectAppSid;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("permissions")]
         private readonly List<AuthorizedConnectAppResource.Permission> permissions;
         [JsonProperty("uri")]
@@ -178,14 +178,14 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The date this resource was created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date this resource was last updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     

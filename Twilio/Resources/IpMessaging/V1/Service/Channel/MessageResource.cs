@@ -72,11 +72,11 @@ namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
         [JsonProperty("to")]
         private readonly string to;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("was_edited")]
-        private readonly bool wasEdited;
+        private readonly bool? wasEdited;
         [JsonProperty("from")]
         private readonly string from;
         [JsonProperty("body")]
@@ -97,7 +97,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
                                 [JsonProperty("date_updated")]
                                 string dateUpdated, 
                                 [JsonProperty("was_edited")]
-                                bool wasEdited, 
+                                bool? wasEdited, 
                                 [JsonProperty("from")]
                                 string from, 
                                 [JsonProperty("body")]
@@ -147,21 +147,21 @@ namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date_updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
         /**
          * @return The was_edited
          */
-        public bool GetWasEdited() {
+        public bool? GetWasEdited() {
             return this.wasEdited;
         }
     

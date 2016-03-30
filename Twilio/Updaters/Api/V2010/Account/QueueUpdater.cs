@@ -11,7 +11,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
         private string accountSid;
         private string sid;
         private string friendlyName;
-        private int maxSize;
+        private int? maxSize;
     
         /**
          * Construct a new QueueUpdater
@@ -41,7 +41,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param maxSize The max number of members allowed in the queue
          * @return this
          */
-        public QueueUpdater setMaxSize(int maxSize) {
+        public QueueUpdater setMaxSize(int? maxSize) {
             this.maxSize = maxSize;
             return this;
         }
@@ -52,7 +52,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Updated QueueResource
          */
-        public override async Task<QueueResource> execute(TwilioRestClient client) {
+        public override async Task<QueueResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -60,7 +60,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("QueueResource update failed: Unable to connect to server");

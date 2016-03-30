@@ -10,9 +10,9 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
 
     public class OriginationUrlCreator : Creator<OriginationUrlResource> {
         private string trunkSid;
-        private int weight;
-        private int priority;
-        private bool enabled;
+        private int? weight;
+        private int? priority;
+        private bool? enabled;
         private string friendlyName;
         private Uri sipUrl;
     
@@ -26,7 +26,7 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
          * @param friendlyName The friendly_name
          * @param sipUrl The sip_url
          */
-        public OriginationUrlCreator(string trunkSid, int weight, int priority, bool enabled, string friendlyName, Uri sipUrl) {
+        public OriginationUrlCreator(string trunkSid, int? weight, int? priority, bool? enabled, string friendlyName, Uri sipUrl) {
             this.trunkSid = trunkSid;
             this.weight = weight;
             this.priority = priority;
@@ -41,7 +41,7 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
          * @param client TwilioRestClient with which to make the request
          * @return Created OriginationUrlResource
          */
-        public override async Task<OriginationUrlResource> execute(TwilioRestClient client) {
+        public override async Task<OriginationUrlResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TRUNKING,
@@ -49,7 +49,7 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("OriginationUrlResource creation failed: Unable to connect to server");

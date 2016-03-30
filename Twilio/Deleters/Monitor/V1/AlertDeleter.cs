@@ -24,14 +24,14 @@ namespace Twilio.Deleters.Monitor.V1 {
          * 
          * @param client TwilioRestClient with which to make the request
          */
-        public override async void execute(TwilioRestClient client) {
+        public override async void ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Delete,
                 TwilioRestClient.Domains.MONITOR,
                 "/v1/Alerts/" + this.sid + ""
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("AlertResource delete failed: Unable to connect to server");

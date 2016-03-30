@@ -66,13 +66,13 @@ namespace Twilio.Resources.Conversations.V1 {
         [JsonProperty("status")]
         private readonly ConversationResource.Status status;
         [JsonProperty("duration")]
-        private readonly int duration;
+        private readonly int? duration;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("start_time")]
-        private readonly DateTime startTime;
+        private readonly DateTime? startTime;
         [JsonProperty("end_time")]
-        private readonly DateTime endTime;
+        private readonly DateTime? endTime;
         [JsonProperty("account_sid")]
         private readonly string accountSid;
         [JsonProperty("url")]
@@ -83,7 +83,7 @@ namespace Twilio.Resources.Conversations.V1 {
                                      [JsonProperty("status")]
                                      ConversationResource.Status status, 
                                      [JsonProperty("duration")]
-                                     int duration, 
+                                     int? duration, 
                                      [JsonProperty("date_created")]
                                      string dateCreated, 
                                      [JsonProperty("start_time")]
@@ -121,28 +121,28 @@ namespace Twilio.Resources.Conversations.V1 {
         /**
          * @return The duration
          */
-        public int GetDuration() {
+        public int? GetDuration() {
             return this.duration;
         }
     
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The start_time
          */
-        public DateTime GetStartTime() {
+        public DateTime? GetStartTime() {
             return this.startTime;
         }
     
         /**
          * @return The end_time
          */
-        public DateTime GetEndTime() {
+        public DateTime? GetEndTime() {
             return this.endTime;
         }
     

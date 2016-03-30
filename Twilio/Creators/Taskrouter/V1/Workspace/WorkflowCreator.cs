@@ -13,7 +13,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
         private string configuration;
         private string assignmentCallbackUrl;
         private string fallbackAssignmentCallbackUrl;
-        private int taskReservationTimeout;
+        private int? taskReservationTimeout;
     
         /**
          * Construct a new WorkflowCreator
@@ -47,7 +47,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param taskReservationTimeout The task_reservation_timeout
          * @return this
          */
-        public WorkflowCreator setTaskReservationTimeout(int taskReservationTimeout) {
+        public WorkflowCreator setTaskReservationTimeout(int? taskReservationTimeout) {
             this.taskReservationTimeout = taskReservationTimeout;
             return this;
         }
@@ -58,7 +58,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param client TwilioRestClient with which to make the request
          * @return Created WorkflowResource
          */
-        public override async Task<WorkflowResource> execute(TwilioRestClient client) {
+        public override async Task<WorkflowResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TASKROUTER,
@@ -66,7 +66,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("WorkflowResource creation failed: Unable to connect to server");

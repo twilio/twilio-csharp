@@ -43,7 +43,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("friendly_name")]
         private readonly string friendlyName;
         [JsonProperty("validation_code")]
-        private readonly int validationCode;
+        private readonly int? validationCode;
         [JsonProperty("call_sid")]
         private readonly string callSid;
     
@@ -54,7 +54,7 @@ namespace Twilio.Resources.Api.V2010.Account {
                                           [JsonProperty("friendly_name")]
                                           string friendlyName, 
                                           [JsonProperty("validation_code")]
-                                          int validationCode, 
+                                          int? validationCode, 
                                           [JsonProperty("call_sid")]
                                           string callSid) {
             this.accountSid = accountSid;
@@ -88,7 +88,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The validation_code
          */
-        public int GetValidationCode() {
+        public int? GetValidationCode() {
             return this.validationCode;
         }
     

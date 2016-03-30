@@ -58,7 +58,7 @@ namespace Twilio.Resources.Api.V2010.Account.AvailablePhoneNumberCountry {
         [JsonProperty("address_requirements")]
         private readonly string addressRequirements;
         [JsonProperty("beta")]
-        private readonly bool beta;
+        private readonly bool? beta;
         [JsonProperty("capabilities")]
         private readonly PhoneNumberCapabilities capabilities;
     
@@ -83,7 +83,7 @@ namespace Twilio.Resources.Api.V2010.Account.AvailablePhoneNumberCountry {
                                  [JsonProperty("address_requirements")]
                                  string addressRequirements, 
                                  [JsonProperty("beta")]
-                                 bool beta, 
+                                 bool? beta, 
                                  [JsonProperty("capabilities")]
                                  PhoneNumberCapabilities capabilities) {
             this.friendlyName = friendlyName;
@@ -173,7 +173,7 @@ namespace Twilio.Resources.Api.V2010.Account.AvailablePhoneNumberCountry {
         /**
          * @return The beta
          */
-        public bool GetBeta() {
+        public bool? GetBeta() {
             return this.beta;
         }
     

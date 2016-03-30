@@ -28,14 +28,14 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched ActivityResource
          */
-        public override async Task<ActivityResource> execute(TwilioRestClient client) {
+        public override async Task<ActivityResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Activities/" + this.sid + ""
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ActivityResource fetch failed: Unable to connect to server");

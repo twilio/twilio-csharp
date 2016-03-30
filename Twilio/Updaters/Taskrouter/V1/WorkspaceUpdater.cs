@@ -73,7 +73,7 @@ namespace Twilio.Updaters.Taskrouter.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Updated WorkspaceResource
          */
-        public override async Task<WorkspaceResource> execute(TwilioRestClient client) {
+        public override async Task<WorkspaceResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TASKROUTER,
@@ -81,7 +81,7 @@ namespace Twilio.Updaters.Taskrouter.V1 {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("WorkspaceResource update failed: Unable to connect to server");

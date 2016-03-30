@@ -34,7 +34,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.CredentialList {
          * @param client TwilioRestClient with which to make the request
          * @return Created CredentialResource
          */
-        public override async Task<CredentialResource> execute(TwilioRestClient client) {
+        public override async Task<CredentialResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -42,7 +42,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.CredentialList {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("CredentialResource creation failed: Unable to connect to server");

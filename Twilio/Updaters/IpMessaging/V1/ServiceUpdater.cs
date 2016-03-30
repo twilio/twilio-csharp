@@ -14,9 +14,9 @@ namespace Twilio.Updaters.IpMessaging.V1 {
         private string defaultServiceRoleSid;
         private string defaultChannelRoleSid;
         private string defaultChannelCreatorRoleSid;
-        private bool readStatusEnabled;
-        private int typingIndicatorTimeout;
-        private int consumptionReportInterval;
+        private bool? readStatusEnabled;
+        private int? typingIndicatorTimeout;
+        private int? consumptionReportInterval;
         private Object webhooks;
     
         /**
@@ -78,7 +78,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param readStatusEnabled The read_status_enabled
          * @return this
          */
-        public ServiceUpdater setReadStatusEnabled(bool readStatusEnabled) {
+        public ServiceUpdater setReadStatusEnabled(bool? readStatusEnabled) {
             this.readStatusEnabled = readStatusEnabled;
             return this;
         }
@@ -89,7 +89,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param typingIndicatorTimeout The typing_indicator_timeout
          * @return this
          */
-        public ServiceUpdater setTypingIndicatorTimeout(int typingIndicatorTimeout) {
+        public ServiceUpdater setTypingIndicatorTimeout(int? typingIndicatorTimeout) {
             this.typingIndicatorTimeout = typingIndicatorTimeout;
             return this;
         }
@@ -100,7 +100,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param consumptionReportInterval The consumption_report_interval
          * @return this
          */
-        public ServiceUpdater setConsumptionReportInterval(int consumptionReportInterval) {
+        public ServiceUpdater setConsumptionReportInterval(int? consumptionReportInterval) {
             this.consumptionReportInterval = consumptionReportInterval;
             return this;
         }
@@ -122,7 +122,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Updated ServiceResource
          */
-        public override async Task<ServiceResource> execute(TwilioRestClient client) {
+        public override async Task<ServiceResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.IPMESSAGING,
@@ -130,7 +130,7 @@ namespace Twilio.Updaters.IpMessaging.V1 {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ServiceResource update failed: Unable to connect to server");

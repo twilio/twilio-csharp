@@ -35,7 +35,7 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
          * @param muted Indicates if the participant should be muted
          * @return ParticipantUpdater capable of executing the update
          */
-        public static ParticipantUpdater update(string accountSid, string conferenceSid, string callSid, bool muted) {
+        public static ParticipantUpdater update(string accountSid, string conferenceSid, string callSid, bool? muted) {
             return new ParticipantUpdater(accountSid, conferenceSid, callSid, muted);
         }
     
@@ -85,15 +85,15 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
         [JsonProperty("conference_sid")]
         private readonly string conferenceSid;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("end_conference_on_exit")]
-        private readonly bool endConferenceOnExit;
+        private readonly bool? endConferenceOnExit;
         [JsonProperty("muted")]
-        private readonly bool muted;
+        private readonly bool? muted;
         [JsonProperty("start_conference_on_enter")]
-        private readonly bool startConferenceOnEnter;
+        private readonly bool? startConferenceOnEnter;
         [JsonProperty("uri")]
         private readonly string uri;
     
@@ -108,11 +108,11 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
                                     [JsonProperty("date_updated")]
                                     string dateUpdated, 
                                     [JsonProperty("end_conference_on_exit")]
-                                    bool endConferenceOnExit, 
+                                    bool? endConferenceOnExit, 
                                     [JsonProperty("muted")]
-                                    bool muted, 
+                                    bool? muted, 
                                     [JsonProperty("start_conference_on_enter")]
-                                    bool startConferenceOnEnter, 
+                                    bool? startConferenceOnEnter, 
                                     [JsonProperty("uri")]
                                     string uri) {
             this.accountSid = accountSid;
@@ -157,35 +157,35 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
         /**
          * @return The date this resource was created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date this resource was last updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
         /**
          * @return Indicates if the endConferenceOnExit was set
          */
-        public bool GetEndConferenceOnExit() {
+        public bool? GetEndConferenceOnExit() {
             return this.endConferenceOnExit;
         }
     
         /**
          * @return Indicates if the participant is muted
          */
-        public bool GetMuted() {
+        public bool? GetMuted() {
             return this.muted;
         }
     
         /**
          * @return Indicates if the startConferenceOnEnter attribute was set
          */
-        public bool GetStartConferenceOnEnter() {
+        public bool? GetStartConferenceOnEnter() {
             return this.startConferenceOnEnter;
         }
     

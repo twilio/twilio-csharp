@@ -11,7 +11,7 @@ namespace Twilio.Readers.Api.V2010.Account.Conference {
     public class ParticipantReader : Reader<ParticipantResource> {
         private string accountSid;
         private string conferenceSid;
-        private bool muted;
+        private bool? muted;
     
         /**
          * Construct a new ParticipantReader
@@ -30,7 +30,7 @@ namespace Twilio.Readers.Api.V2010.Account.Conference {
          * @param muted Filter by muted participants
          * @return this
          */
-        public ParticipantReader byMuted(bool muted) {
+        public ParticipantReader byMuted(bool? muted) {
             this.muted = muted;
             return this;
         }
@@ -41,7 +41,7 @@ namespace Twilio.Readers.Api.V2010.Account.Conference {
          * @param client TwilioRestClient with which to make the request
          * @return ParticipantResource ResourceSet
          */
-        public override async Task<ResourceSet<ParticipantResource>> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<ParticipantResource>> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
@@ -50,7 +50,7 @@ namespace Twilio.Readers.Api.V2010.Account.Conference {
             
             AddQueryParams(request);
             
-            Page<ParticipantResource> page = await pageForRequest(client, request);
+            Page<ParticipantResource> page = await PageForRequest(client, request);
             
             return new ResourceSet<ParticipantResource>(this, client, page);
         }
@@ -62,13 +62,13 @@ namespace Twilio.Readers.Api.V2010.Account.Conference {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<ParticipantResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<ParticipantResource> NextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
             
-            var task = pageForRequest(client, request);
+            var task = PageForRequest(client, request);
             task.Wait();
             
             return task.Result;
@@ -81,8 +81,8 @@ namespace Twilio.Readers.Api.V2010.Account.Conference {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<ParticipantResource>> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = await client.request(request);
+        protected async Task<Page<ParticipantResource>> PageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ParticipantResource read failed: Unable to connect to server");
@@ -115,7 +115,7 @@ namespace Twilio.Readers.Api.V2010.Account.Conference {
                 request.AddQueryParam("Muted", muted.ToString());
             }
             
-            request.AddQueryParam("PageSize", getPageSize().ToString());
+            request.AddQueryParam("PageSize", GetPageSize().ToString());
         }
     }
 }

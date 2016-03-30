@@ -22,7 +22,7 @@ namespace Twilio.Creators.Api.V2010.Account.IncomingPhoneNumber {
         private Uri statusCallback;
         private System.Net.Http.HttpMethod statusCallbackMethod;
         private string voiceApplicationSid;
-        private bool voiceCallerIdLookup;
+        private bool? voiceCallerIdLookup;
         private System.Net.Http.HttpMethod voiceFallbackMethod;
         private Uri voiceFallbackUrl;
         private System.Net.Http.HttpMethod voiceMethod;
@@ -185,7 +185,7 @@ namespace Twilio.Creators.Api.V2010.Account.IncomingPhoneNumber {
          * @param voiceCallerIdLookup The voice_caller_id_lookup
          * @return this
          */
-        public LocalCreator setVoiceCallerIdLookup(bool voiceCallerIdLookup) {
+        public LocalCreator setVoiceCallerIdLookup(bool? voiceCallerIdLookup) {
             this.voiceCallerIdLookup = voiceCallerIdLookup;
             return this;
         }
@@ -260,7 +260,7 @@ namespace Twilio.Creators.Api.V2010.Account.IncomingPhoneNumber {
          * @param client TwilioRestClient with which to make the request
          * @return Created LocalResource
          */
-        public override async Task<LocalResource> execute(TwilioRestClient client) {
+        public override async Task<LocalResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -268,7 +268,7 @@ namespace Twilio.Creators.Api.V2010.Account.IncomingPhoneNumber {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("LocalResource creation failed: Unable to connect to server");

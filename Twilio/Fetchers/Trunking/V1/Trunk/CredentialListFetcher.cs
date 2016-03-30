@@ -28,14 +28,14 @@ namespace Twilio.Fetchers.Trunking.V1.Trunk {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched CredentialListResource
          */
-        public override async Task<CredentialListResource> execute(TwilioRestClient client) {
+        public override async Task<CredentialListResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TRUNKING,
                 "/v1/Trunks/" + this.trunkSid + "/CredentialLists/" + this.sid + ""
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("CredentialListResource fetch failed: Unable to connect to server");

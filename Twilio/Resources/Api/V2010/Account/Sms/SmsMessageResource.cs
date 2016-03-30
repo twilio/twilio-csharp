@@ -158,11 +158,11 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         [JsonProperty("body")]
         private readonly string body;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("date_sent")]
-        private readonly DateTime dateSent;
+        private readonly DateTime? dateSent;
         [JsonProperty("direction")]
         private readonly SmsMessageResource.Direction direction;
         [JsonProperty("from")]
@@ -170,7 +170,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         [JsonProperty("price")]
         private readonly decimal price;
         [JsonProperty("price_unit")]
-        private readonly decimal priceUnit;
+        private readonly decimal? priceUnit;
         [JsonProperty("sid")]
         private readonly string sid;
         [JsonProperty("status")]
@@ -199,7 +199,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
                                    [JsonProperty("price")]
                                    decimal price, 
                                    [JsonProperty("price_unit")]
-                                   decimal priceUnit, 
+                                   decimal? priceUnit, 
                                    [JsonProperty("sid")]
                                    string sid, 
                                    [JsonProperty("status")]
@@ -248,21 +248,21 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date_updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
         /**
          * @return The date_sent
          */
-        public DateTime GetDateSent() {
+        public DateTime? GetDateSent() {
             return this.dateSent;
         }
     
@@ -290,7 +290,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         /**
          * @return The price_unit
          */
-        public decimal GetPriceUnit() {
+        public decimal? GetPriceUnit() {
             return this.priceUnit;
         }
     

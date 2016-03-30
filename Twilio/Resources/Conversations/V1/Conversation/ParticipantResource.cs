@@ -96,13 +96,13 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
         [JsonProperty("conversation_sid")]
         private readonly string conversationSid;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("start_time")]
-        private readonly DateTime startTime;
+        private readonly DateTime? startTime;
         [JsonProperty("end_time")]
-        private readonly DateTime endTime;
+        private readonly DateTime? endTime;
         [JsonProperty("duration")]
-        private readonly int duration;
+        private readonly int? duration;
         [JsonProperty("account_sid")]
         private readonly string accountSid;
         [JsonProperty("url")]
@@ -123,7 +123,7 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
                                     [JsonProperty("end_time")]
                                     string endTime, 
                                     [JsonProperty("duration")]
-                                    int duration, 
+                                    int? duration, 
                                     [JsonProperty("account_sid")]
                                     string accountSid, 
                                     [JsonProperty("url")]
@@ -171,28 +171,28 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The start_time
          */
-        public DateTime GetStartTime() {
+        public DateTime? GetStartTime() {
             return this.startTime;
         }
     
         /**
          * @return The end_time
          */
-        public DateTime GetEndTime() {
+        public DateTime? GetEndTime() {
             return this.endTime;
         }
     
         /**
          * @return The duration
          */
-        public int GetDuration() {
+        public int? GetDuration() {
             return this.duration;
         }
     

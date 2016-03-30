@@ -64,11 +64,11 @@ namespace Twilio.Resources.Monitor.V1 {
         [JsonProperty("api_version")]
         private readonly string apiVersion;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_generated")]
-        private readonly DateTime dateGenerated;
+        private readonly DateTime? dateGenerated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("error_code")]
         private readonly string errorCode;
         [JsonProperty("log_level")]
@@ -169,21 +169,21 @@ namespace Twilio.Resources.Monitor.V1 {
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date_generated
          */
-        public DateTime GetDateGenerated() {
+        public DateTime? GetDateGenerated() {
             return this.dateGenerated;
         }
     
         /**
          * @return The date_updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     

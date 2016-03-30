@@ -9,7 +9,7 @@ namespace Twilio.Creators.Api.V2010.Account {
 
     public class TokenCreator : Creator<TokenResource> {
         private string accountSid;
-        private int ttl;
+        private int? ttl;
     
         /**
          * Construct a new TokenCreator
@@ -26,7 +26,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param ttl The duration in seconds the credentials are valid
          * @return this
          */
-        public TokenCreator setTtl(int ttl) {
+        public TokenCreator setTtl(int? ttl) {
             this.ttl = ttl;
             return this;
         }
@@ -37,7 +37,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Created TokenResource
          */
-        public override async Task<TokenResource> execute(TwilioRestClient client) {
+        public override async Task<TokenResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -45,7 +45,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TokenResource creation failed: Unable to connect to server");

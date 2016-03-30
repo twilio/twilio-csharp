@@ -162,15 +162,15 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("body")]
         private readonly string body;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("date_sent")]
-        private readonly DateTime dateSent;
+        private readonly DateTime? dateSent;
         [JsonProperty("direction")]
         private readonly MessageResource.Direction direction;
         [JsonProperty("error_code")]
-        private readonly int errorCode;
+        private readonly int? errorCode;
         [JsonProperty("error_message")]
         private readonly string errorMessage;
         [JsonProperty("from")]
@@ -182,7 +182,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("price")]
         private readonly decimal price;
         [JsonProperty("price_unit")]
-        private readonly decimal priceUnit;
+        private readonly decimal? priceUnit;
         [JsonProperty("sid")]
         private readonly string sid;
         [JsonProperty("status")]
@@ -209,7 +209,7 @@ namespace Twilio.Resources.Api.V2010.Account {
                                 [JsonProperty("direction")]
                                 MessageResource.Direction direction, 
                                 [JsonProperty("error_code")]
-                                int errorCode, 
+                                int? errorCode, 
                                 [JsonProperty("error_message")]
                                 string errorMessage, 
                                 [JsonProperty("from")]
@@ -221,7 +221,7 @@ namespace Twilio.Resources.Api.V2010.Account {
                                 [JsonProperty("price")]
                                 decimal price, 
                                 [JsonProperty("price_unit")]
-                                decimal priceUnit, 
+                                decimal? priceUnit, 
                                 [JsonProperty("sid")]
                                 string sid, 
                                 [JsonProperty("status")]
@@ -277,21 +277,21 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The date this resource was created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date this resource was last updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
         /**
          * @return The date the message was sent
          */
-        public DateTime GetDateSent() {
+        public DateTime? GetDateSent() {
             return this.dateSent;
         }
     
@@ -305,7 +305,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The error code associated with the message
          */
-        public int GetErrorCode() {
+        public int? GetErrorCode() {
             return this.errorCode;
         }
     
@@ -347,7 +347,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The currency in which Price is measured
          */
-        public decimal GetPriceUnit() {
+        public decimal? GetPriceUnit() {
             return this.priceUnit;
         }
     

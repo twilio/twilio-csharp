@@ -31,14 +31,14 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Task {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched ReservationResource
          */
-        public override async Task<ReservationResource> execute(TwilioRestClient client) {
+        public override async Task<ReservationResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Tasks/" + this.taskSid + "/Reservations/" + this.sid + ""
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ReservationResource fetch failed: Unable to connect to server");

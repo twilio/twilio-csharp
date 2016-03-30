@@ -52,7 +52,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param client TwilioRestClient with which to make the request
          * @return Created WorkerResource
          */
-        public override async Task<WorkerResource> execute(TwilioRestClient client) {
+        public override async Task<WorkerResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TASKROUTER,
@@ -60,7 +60,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("WorkerResource creation failed: Unable to connect to server");

@@ -56,7 +56,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("uri")]
         private readonly Uri uri;
         [JsonProperty("beta")]
-        private readonly bool beta;
+        private readonly bool? beta;
         [JsonProperty("subresource_uris")]
         private readonly Dictionary<string, string> subresourceUris;
     
@@ -67,7 +67,7 @@ namespace Twilio.Resources.Api.V2010.Account {
                                                     [JsonProperty("uri")]
                                                     Uri uri, 
                                                     [JsonProperty("beta")]
-                                                    bool beta, 
+                                                    bool? beta, 
                                                     [JsonProperty("subresource_uris")]
                                                     Dictionary<string, string> subresourceUris) {
             this.countryCode = countryCode;
@@ -108,7 +108,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The beta
          */
-        public bool GetBeta() {
+        public bool? GetBeta() {
             return this.beta;
         }
     

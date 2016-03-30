@@ -93,9 +93,9 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         [JsonProperty("configuration")]
         private readonly string configuration;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("document_content_type")]
         private readonly string documentContentType;
         [JsonProperty("fallback_assignment_callback_url")]
@@ -105,7 +105,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         [JsonProperty("sid")]
         private readonly string sid;
         [JsonProperty("task_reservation_timeout")]
-        private readonly int taskReservationTimeout;
+        private readonly int? taskReservationTimeout;
         [JsonProperty("workspace_sid")]
         private readonly string workspaceSid;
     
@@ -128,7 +128,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
                                  [JsonProperty("sid")]
                                  string sid, 
                                  [JsonProperty("task_reservation_timeout")]
-                                 int taskReservationTimeout, 
+                                 int? taskReservationTimeout, 
                                  [JsonProperty("workspace_sid")]
                                  string workspaceSid) {
             this.accountSid = accountSid;
@@ -168,14 +168,14 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date_updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
@@ -210,7 +210,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The task_reservation_timeout
          */
-        public int GetTaskReservationTimeout() {
+        public int? GetTaskReservationTimeout() {
             return this.taskReservationTimeout;
         }
     

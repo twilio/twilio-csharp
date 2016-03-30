@@ -61,9 +61,9 @@ namespace Twilio.Clients
 			}
 		}
 
-		public async Task<Response> request(Request request) {
+		public async Task<Response> Request(Request request) {
 			request.SetAuth(this.username, this.password);
-			var response = await httpClient.makeRequest(request);
+			var response = await httpClient.MakeRequest(request);
 
 			return response;
 		}

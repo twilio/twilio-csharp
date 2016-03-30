@@ -42,7 +42,7 @@ namespace Twilio.Readers.Api.V2010.Account.Message {
          * @param client TwilioRestClient with which to make the request
          * @return MediaResource ResourceSet
          */
-        public override async Task<ResourceSet<MediaResource>> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<MediaResource>> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
@@ -51,7 +51,7 @@ namespace Twilio.Readers.Api.V2010.Account.Message {
             
             AddQueryParams(request);
             
-            Page<MediaResource> page = await pageForRequest(client, request);
+            Page<MediaResource> page = await PageForRequest(client, request);
             
             return new ResourceSet<MediaResource>(this, client, page);
         }
@@ -63,13 +63,13 @@ namespace Twilio.Readers.Api.V2010.Account.Message {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<MediaResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<MediaResource> NextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
             
-            var task = pageForRequest(client, request);
+            var task = PageForRequest(client, request);
             task.Wait();
             
             return task.Result;
@@ -82,8 +82,8 @@ namespace Twilio.Readers.Api.V2010.Account.Message {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<MediaResource>> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = await client.request(request);
+        protected async Task<Page<MediaResource>> PageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("MediaResource read failed: Unable to connect to server");
@@ -116,7 +116,7 @@ namespace Twilio.Readers.Api.V2010.Account.Message {
                 request.AddQueryParam("DateCreated", dateCreated);
             }
             
-            request.AddQueryParam("PageSize", getPageSize().ToString());
+            request.AddQueryParam("PageSize", GetPageSize().ToString());
         }
     }
 }

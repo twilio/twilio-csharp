@@ -10,7 +10,7 @@ namespace Twilio.Types
 			this.number = number;
 		}
 
-		public string ToString() {
+		public override string ToString() {
 			return this.number;
 		}
 	}

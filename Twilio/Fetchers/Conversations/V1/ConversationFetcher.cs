@@ -25,14 +25,14 @@ namespace Twilio.Fetchers.Conversations.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched ConversationResource
          */
-        public override async Task<ConversationResource> execute(TwilioRestClient client) {
+        public override async Task<ConversationResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.CONVERSATIONS,
                 "/v1/Conversations/" + this.sid + ""
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ConversationResource fetch failed: Unable to connect to server");

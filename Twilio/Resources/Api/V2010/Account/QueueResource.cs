@@ -86,17 +86,17 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("account_sid")]
         private readonly string accountSid;
         [JsonProperty("average_wait_time")]
-        private readonly int averageWaitTime;
+        private readonly int? averageWaitTime;
         [JsonProperty("current_size")]
-        private readonly int currentSize;
+        private readonly int? currentSize;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("friendly_name")]
         private readonly string friendlyName;
         [JsonProperty("max_size")]
-        private readonly int maxSize;
+        private readonly int? maxSize;
         [JsonProperty("sid")]
         private readonly string sid;
         [JsonProperty("uri")]
@@ -105,9 +105,9 @@ namespace Twilio.Resources.Api.V2010.Account {
         private QueueResource([JsonProperty("account_sid")]
                               string accountSid, 
                               [JsonProperty("average_wait_time")]
-                              int averageWaitTime, 
+                              int? averageWaitTime, 
                               [JsonProperty("current_size")]
-                              int currentSize, 
+                              int? currentSize, 
                               [JsonProperty("date_created")]
                               string dateCreated, 
                               [JsonProperty("date_updated")]
@@ -115,7 +115,7 @@ namespace Twilio.Resources.Api.V2010.Account {
                               [JsonProperty("friendly_name")]
                               string friendlyName, 
                               [JsonProperty("max_size")]
-                              int maxSize, 
+                              int? maxSize, 
                               [JsonProperty("sid")]
                               string sid, 
                               [JsonProperty("uri")]
@@ -141,28 +141,28 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return Average wait time of members in the queue
          */
-        public int GetAverageWaitTime() {
+        public int? GetAverageWaitTime() {
             return this.averageWaitTime;
         }
     
         /**
          * @return The count of calls currently in the queue.
          */
-        public int GetCurrentSize() {
+        public int? GetCurrentSize() {
             return this.currentSize;
         }
     
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date_updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
@@ -176,7 +176,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The max number of calls allowed in the queue
          */
-        public int GetMaxSize() {
+        public int? GetMaxSize() {
             return this.maxSize;
         }
     

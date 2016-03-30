@@ -194,11 +194,11 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         [JsonProperty("current_value")]
         private readonly string currentValue;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_fired")]
-        private readonly DateTime dateFired;
+        private readonly DateTime? dateFired;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("friendly_name")]
         private readonly string friendlyName;
         [JsonProperty("recurring")]
@@ -304,21 +304,21 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         /**
          * @return The date this resource was created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date the trigger was last fired
          */
-        public DateTime GetDateFired() {
+        public DateTime? GetDateFired() {
             return this.dateFired;
         }
     
         /**
          * @return The date this resource was last updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     

@@ -6,7 +6,7 @@ namespace Twilio.Deleters
 {
     public abstract class Deleter<T> where T : Resource
     {
-		public abstract void execute(TwilioRestClient client);
+		public abstract void ExecuteAsync(TwilioRestClient client);
         
     }
 }

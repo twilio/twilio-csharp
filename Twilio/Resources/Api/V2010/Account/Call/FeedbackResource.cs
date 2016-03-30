@@ -51,7 +51,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          * @param qualityScore The quality_score
          * @return FeedbackCreator capable of executing the create
          */
-        public static FeedbackCreator create(string accountSid, string callSid, int qualityScore) {
+        public static FeedbackCreator create(string accountSid, string callSid, int? qualityScore) {
             return new FeedbackCreator(accountSid, callSid, qualityScore);
         }
     
@@ -74,7 +74,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          * @param qualityScore An integer from 1 to 5
          * @return FeedbackUpdater capable of executing the update
          */
-        public static FeedbackUpdater update(string accountSid, string callSid, int qualityScore) {
+        public static FeedbackUpdater update(string accountSid, string callSid, int? qualityScore) {
             return new FeedbackUpdater(accountSid, callSid, qualityScore);
         }
     
@@ -96,13 +96,13 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         [JsonProperty("account_sid")]
         private readonly string accountSid;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("issues")]
         private readonly List<FeedbackResource.Issues> issues;
         [JsonProperty("quality_score")]
-        private readonly int qualityScore;
+        private readonly int? qualityScore;
         [JsonProperty("sid")]
         private readonly string sid;
     
@@ -115,7 +115,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
                                  [JsonProperty("issues")]
                                  List<FeedbackResource.Issues> issues, 
                                  [JsonProperty("quality_score")]
-                                 int qualityScore, 
+                                 int? qualityScore, 
                                  [JsonProperty("sid")]
                                  string sid) {
             this.accountSid = accountSid;
@@ -136,14 +136,14 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date_updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
@@ -157,7 +157,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         /**
          * @return 1 to 5 quality score
          */
-        public int GetQualityScore() {
+        public int? GetQualityScore() {
             return this.qualityScore;
         }
     

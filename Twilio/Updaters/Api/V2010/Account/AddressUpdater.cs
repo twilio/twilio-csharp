@@ -100,7 +100,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Updated AddressResource
          */
-        public override async Task<AddressResource> execute(TwilioRestClient client) {
+        public override async Task<AddressResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -108,7 +108,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("AddressResource update failed: Unable to connect to server");

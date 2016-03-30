@@ -69,9 +69,9 @@ namespace Twilio.Resources.Api.V2010.Account.Message {
         [JsonProperty("content_type")]
         private readonly string contentType;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("parent_sid")]
         private readonly string parentSid;
         [JsonProperty("sid")]
@@ -119,14 +119,14 @@ namespace Twilio.Resources.Api.V2010.Account.Message {
         /**
          * @return The date this resource was created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date this resource was last updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     

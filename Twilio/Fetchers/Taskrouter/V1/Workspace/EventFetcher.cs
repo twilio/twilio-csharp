@@ -28,14 +28,14 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched EventResource
          */
-        public override async Task<EventResource> execute(TwilioRestClient client) {
+        public override async Task<EventResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Events/" + this.sid + ""
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("EventResource fetch failed: Unable to connect to server");

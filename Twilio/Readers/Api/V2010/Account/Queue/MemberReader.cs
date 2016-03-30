@@ -29,7 +29,7 @@ namespace Twilio.Readers.Api.V2010.Account.Queue {
          * @param client TwilioRestClient with which to make the request
          * @return MemberResource ResourceSet
          */
-        public override async Task<ResourceSet<MemberResource>> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<MemberResource>> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
@@ -38,7 +38,7 @@ namespace Twilio.Readers.Api.V2010.Account.Queue {
             
             AddQueryParams(request);
             
-            Page<MemberResource> page = await pageForRequest(client, request);
+            Page<MemberResource> page = await PageForRequest(client, request);
             
             return new ResourceSet<MemberResource>(this, client, page);
         }
@@ -50,13 +50,13 @@ namespace Twilio.Readers.Api.V2010.Account.Queue {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<MemberResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<MemberResource> NextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
             
-            var task = pageForRequest(client, request);
+            var task = PageForRequest(client, request);
             task.Wait();
             
             return task.Result;
@@ -69,8 +69,8 @@ namespace Twilio.Readers.Api.V2010.Account.Queue {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<MemberResource>> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = await client.request(request);
+        protected async Task<Page<MemberResource>> PageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("MemberResource read failed: Unable to connect to server");
@@ -99,7 +99,7 @@ namespace Twilio.Readers.Api.V2010.Account.Queue {
          * @param request Request to add query string arguments to
          */
         private void AddQueryParams(Request request) {
-            request.AddQueryParam("PageSize", getPageSize().ToString());
+            request.AddQueryParam("PageSize", GetPageSize().ToString());
         }
     }
 }

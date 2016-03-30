@@ -29,7 +29,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.Domain {
          * @param client TwilioRestClient with which to make the request
          * @return IpAccessControlListMappingResource ResourceSet
          */
-        public override async Task<ResourceSet<IpAccessControlListMappingResource>> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<IpAccessControlListMappingResource>> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
@@ -38,7 +38,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.Domain {
             
             AddQueryParams(request);
             
-            Page<IpAccessControlListMappingResource> page = await pageForRequest(client, request);
+            Page<IpAccessControlListMappingResource> page = await PageForRequest(client, request);
             
             return new ResourceSet<IpAccessControlListMappingResource>(this, client, page);
         }
@@ -50,13 +50,13 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.Domain {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<IpAccessControlListMappingResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<IpAccessControlListMappingResource> NextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
             
-            var task = pageForRequest(client, request);
+            var task = PageForRequest(client, request);
             task.Wait();
             
             return task.Result;
@@ -70,8 +70,8 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.Domain {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<IpAccessControlListMappingResource>> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = await client.request(request);
+        protected async Task<Page<IpAccessControlListMappingResource>> PageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("IpAccessControlListMappingResource read failed: Unable to connect to server");
@@ -100,7 +100,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.Domain {
          * @param request Request to add query string arguments to
          */
         private void AddQueryParams(Request request) {
-            request.AddQueryParam("PageSize", getPageSize().ToString());
+            request.AddQueryParam("PageSize", GetPageSize().ToString());
         }
     }
 }

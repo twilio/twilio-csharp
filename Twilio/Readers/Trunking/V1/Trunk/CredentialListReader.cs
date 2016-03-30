@@ -26,7 +26,7 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
          * @param client TwilioRestClient with which to make the request
          * @return CredentialListResource ResourceSet
          */
-        public override async Task<ResourceSet<CredentialListResource>> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<CredentialListResource>> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TRUNKING,
@@ -35,7 +35,7 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
             
             AddQueryParams(request);
             
-            Page<CredentialListResource> page = await pageForRequest(client, request);
+            Page<CredentialListResource> page = await PageForRequest(client, request);
             
             return new ResourceSet<CredentialListResource>(this, client, page);
         }
@@ -47,13 +47,13 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<CredentialListResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<CredentialListResource> NextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
             
-            var task = pageForRequest(client, request);
+            var task = PageForRequest(client, request);
             task.Wait();
             
             return task.Result;
@@ -66,8 +66,8 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<CredentialListResource>> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = await client.request(request);
+        protected async Task<Page<CredentialListResource>> PageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("CredentialListResource read failed: Unable to connect to server");
@@ -96,7 +96,7 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
          * @param request Request to add query string arguments to
          */
         private void AddQueryParams(Request request) {
-            request.AddQueryParam("PageSize", getPageSize().ToString());
+            request.AddQueryParam("PageSize", GetPageSize().ToString());
         }
     }
 }

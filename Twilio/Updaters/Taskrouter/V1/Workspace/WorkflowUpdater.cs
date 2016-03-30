@@ -14,7 +14,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
         private string assignmentCallbackUrl;
         private string fallbackAssignmentCallbackUrl;
         private string configuration;
-        private int taskReservationTimeout;
+        private int? taskReservationTimeout;
     
         /**
          * Construct a new WorkflowUpdater
@@ -77,7 +77,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param taskReservationTimeout The task_reservation_timeout
          * @return this
          */
-        public WorkflowUpdater setTaskReservationTimeout(int taskReservationTimeout) {
+        public WorkflowUpdater setTaskReservationTimeout(int? taskReservationTimeout) {
             this.taskReservationTimeout = taskReservationTimeout;
             return this;
         }
@@ -88,7 +88,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param client TwilioRestClient with which to make the request
          * @return Updated WorkflowResource
          */
-        public override async Task<WorkflowResource> execute(TwilioRestClient client) {
+        public override async Task<WorkflowResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TASKROUTER,
@@ -96,7 +96,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("WorkflowResource update failed: Unable to connect to server");

@@ -48,7 +48,7 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
          * @param sipUrl The sip_url
          * @return OriginationUrlCreator capable of executing the create
          */
-        public static OriginationUrlCreator create(string trunkSid, int weight, int priority, bool enabled, string friendlyName, Uri sipUrl) {
+        public static OriginationUrlCreator create(string trunkSid, int? weight, int? priority, bool? enabled, string friendlyName, Uri sipUrl) {
             return new OriginationUrlCreator(trunkSid, weight, priority, enabled, friendlyName, sipUrl);
         }
     
@@ -95,19 +95,19 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         [JsonProperty("trunk_sid")]
         private readonly string trunkSid;
         [JsonProperty("weight")]
-        private readonly int weight;
+        private readonly int? weight;
         [JsonProperty("enabled")]
-        private readonly bool enabled;
+        private readonly bool? enabled;
         [JsonProperty("sip_url")]
         private readonly Uri sipUrl;
         [JsonProperty("friendly_name")]
         private readonly string friendlyName;
         [JsonProperty("priority")]
-        private readonly int priority;
+        private readonly int? priority;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("url")]
         private readonly Uri url;
     
@@ -118,15 +118,15 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
                                        [JsonProperty("trunk_sid")]
                                        string trunkSid, 
                                        [JsonProperty("weight")]
-                                       int weight, 
+                                       int? weight, 
                                        [JsonProperty("enabled")]
-                                       bool enabled, 
+                                       bool? enabled, 
                                        [JsonProperty("sip_url")]
                                        Uri sipUrl, 
                                        [JsonProperty("friendly_name")]
                                        string friendlyName, 
                                        [JsonProperty("priority")]
-                                       int priority, 
+                                       int? priority, 
                                        [JsonProperty("date_created")]
                                        string dateCreated, 
                                        [JsonProperty("date_updated")]
@@ -170,14 +170,14 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         /**
          * @return The weight
          */
-        public int GetWeight() {
+        public int? GetWeight() {
             return this.weight;
         }
     
         /**
          * @return The enabled
          */
-        public bool GetEnabled() {
+        public bool? GetEnabled() {
             return this.enabled;
         }
     
@@ -198,21 +198,21 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         /**
          * @return The priority
          */
-        public int GetPriority() {
+        public int? GetPriority() {
             return this.priority;
         }
     
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date_updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     

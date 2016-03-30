@@ -38,7 +38,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Queue {
          * @param client TwilioRestClient with which to make the request
          * @return Updated MemberResource
          */
-        public override async Task<MemberResource> execute(TwilioRestClient client) {
+        public override async Task<MemberResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -46,7 +46,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Queue {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("MemberResource update failed: Unable to connect to server");

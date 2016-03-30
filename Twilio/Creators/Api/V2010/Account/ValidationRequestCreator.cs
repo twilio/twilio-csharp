@@ -13,7 +13,7 @@ namespace Twilio.Creators.Api.V2010.Account {
         private string accountSid;
         private Twilio.Types.PhoneNumber phoneNumber;
         private string friendlyName;
-        private int callDelay;
+        private int? callDelay;
         private string extension;
         private Uri statusCallback;
         private System.Net.Http.HttpMethod statusCallbackMethod;
@@ -46,7 +46,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param callDelay The call_delay
          * @return this
          */
-        public ValidationRequestCreator setCallDelay(int callDelay) {
+        public ValidationRequestCreator setCallDelay(int? callDelay) {
             this.callDelay = callDelay;
             return this;
         }
@@ -100,7 +100,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Created ValidationRequestResource
          */
-        public override async Task<ValidationRequestResource> execute(TwilioRestClient client) {
+        public override async Task<ValidationRequestResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -108,7 +108,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ValidationRequestResource creation failed: Unable to connect to server");

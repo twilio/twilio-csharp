@@ -87,9 +87,9 @@ namespace Twilio.Resources.IpMessaging.V1 {
         [JsonProperty("friendly_name")]
         private readonly string friendlyName;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("default_service_role_sid")]
         private readonly string defaultServiceRoleSid;
         [JsonProperty("default_channel_role_sid")]
@@ -97,11 +97,11 @@ namespace Twilio.Resources.IpMessaging.V1 {
         [JsonProperty("default_channel_creator_role_sid")]
         private readonly string defaultChannelCreatorRoleSid;
         [JsonProperty("read_status_enabled")]
-        private readonly bool readStatusEnabled;
+        private readonly bool? readStatusEnabled;
         [JsonProperty("typing_indicator_timeout")]
-        private readonly int typingIndicatorTimeout;
+        private readonly int? typingIndicatorTimeout;
         [JsonProperty("consumption_report_interval")]
-        private readonly int consumptionReportInterval;
+        private readonly int? consumptionReportInterval;
         [JsonProperty("webhooks")]
         private readonly Object webhooks;
         [JsonProperty("url")]
@@ -126,11 +126,11 @@ namespace Twilio.Resources.IpMessaging.V1 {
                                 [JsonProperty("default_channel_creator_role_sid")]
                                 string defaultChannelCreatorRoleSid, 
                                 [JsonProperty("read_status_enabled")]
-                                bool readStatusEnabled, 
+                                bool? readStatusEnabled, 
                                 [JsonProperty("typing_indicator_timeout")]
-                                int typingIndicatorTimeout, 
+                                int? typingIndicatorTimeout, 
                                 [JsonProperty("consumption_report_interval")]
-                                int consumptionReportInterval, 
+                                int? consumptionReportInterval, 
                                 [JsonProperty("webhooks")]
                                 Object webhooks, 
                                 [JsonProperty("url")]
@@ -177,14 +177,14 @@ namespace Twilio.Resources.IpMessaging.V1 {
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date_updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
@@ -212,21 +212,21 @@ namespace Twilio.Resources.IpMessaging.V1 {
         /**
          * @return The read_status_enabled
          */
-        public bool GetReadStatusEnabled() {
+        public bool? GetReadStatusEnabled() {
             return this.readStatusEnabled;
         }
     
         /**
          * @return The typing_indicator_timeout
          */
-        public int GetTypingIndicatorTimeout() {
+        public int? GetTypingIndicatorTimeout() {
             return this.typingIndicatorTimeout;
         }
     
         /**
          * @return The consumption_report_interval
          */
-        public int GetConsumptionReportInterval() {
+        public int? GetConsumptionReportInterval() {
             return this.consumptionReportInterval;
         }
     

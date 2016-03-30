@@ -26,7 +26,7 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
          * @param client TwilioRestClient with which to make the request
          * @return IpAccessControlListResource ResourceSet
          */
-        public override async Task<ResourceSet<IpAccessControlListResource>> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<IpAccessControlListResource>> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TRUNKING,
@@ -35,7 +35,7 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
             
             AddQueryParams(request);
             
-            Page<IpAccessControlListResource> page = await pageForRequest(client, request);
+            Page<IpAccessControlListResource> page = await PageForRequest(client, request);
             
             return new ResourceSet<IpAccessControlListResource>(this, client, page);
         }
@@ -47,13 +47,13 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<IpAccessControlListResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<IpAccessControlListResource> NextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
             
-            var task = pageForRequest(client, request);
+            var task = PageForRequest(client, request);
             task.Wait();
             
             return task.Result;
@@ -66,8 +66,8 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<IpAccessControlListResource>> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = await client.request(request);
+        protected async Task<Page<IpAccessControlListResource>> PageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("IpAccessControlListResource read failed: Unable to connect to server");
@@ -96,7 +96,7 @@ namespace Twilio.Readers.Trunking.V1.Trunk {
          * @param request Request to add query string arguments to
          */
         private void AddQueryParams(Request request) {
-            request.AddQueryParam("PageSize", getPageSize().ToString());
+            request.AddQueryParam("PageSize", GetPageSize().ToString());
         }
     }
 }

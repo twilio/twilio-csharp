@@ -31,7 +31,7 @@ namespace Twilio.Creators.IpMessaging.V1.Service {
          * @param client TwilioRestClient with which to make the request
          * @return Created UserResource
          */
-        public override async Task<UserResource> execute(TwilioRestClient client) {
+        public override async Task<UserResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.IPMESSAGING,
@@ -39,7 +39,7 @@ namespace Twilio.Creators.IpMessaging.V1.Service {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("UserResource creation failed: Unable to connect to server");

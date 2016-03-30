@@ -40,7 +40,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          * @param client TwilioRestClient with which to make the request
          * @return Updated SmsMessageResource
          */
-        public override async Task<SmsMessageResource> execute(TwilioRestClient client) {
+        public override async Task<SmsMessageResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -48,7 +48,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("SmsMessageResource update failed: Unable to connect to server");

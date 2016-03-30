@@ -15,7 +15,7 @@ namespace Twilio.Readers.Pricing.V1.PhoneNumber {
          * @param client TwilioRestClient with which to make the request
          * @return CountryResource ResourceSet
          */
-        public override async Task<ResourceSet<CountryResource>> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<CountryResource>> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.PRICING,
@@ -24,7 +24,7 @@ namespace Twilio.Readers.Pricing.V1.PhoneNumber {
             
             AddQueryParams(request);
             
-            Page<CountryResource> page = await pageForRequest(client, request);
+            Page<CountryResource> page = await PageForRequest(client, request);
             
             return new ResourceSet<CountryResource>(this, client, page);
         }
@@ -36,13 +36,13 @@ namespace Twilio.Readers.Pricing.V1.PhoneNumber {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<CountryResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<CountryResource> NextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
             
-            var task = pageForRequest(client, request);
+            var task = PageForRequest(client, request);
             task.Wait();
             
             return task.Result;
@@ -55,8 +55,8 @@ namespace Twilio.Readers.Pricing.V1.PhoneNumber {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<CountryResource>> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = await client.request(request);
+        protected async Task<Page<CountryResource>> PageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("CountryResource read failed: Unable to connect to server");
@@ -85,7 +85,7 @@ namespace Twilio.Readers.Pricing.V1.PhoneNumber {
          * @param request Request to add query string arguments to
          */
         private void AddQueryParams(Request request) {
-            request.AddQueryParam("PageSize", getPageSize().ToString());
+            request.AddQueryParam("PageSize", GetPageSize().ToString());
         }
     }
 }

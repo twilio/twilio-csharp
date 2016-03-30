@@ -15,7 +15,7 @@ namespace Twilio.Readers.IpMessaging.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return ServiceResource ResourceSet
          */
-        public override async Task<ResourceSet<ServiceResource>> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<ServiceResource>> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.IPMESSAGING,
@@ -24,7 +24,7 @@ namespace Twilio.Readers.IpMessaging.V1 {
             
             AddQueryParams(request);
             
-            Page<ServiceResource> page = await pageForRequest(client, request);
+            Page<ServiceResource> page = await PageForRequest(client, request);
             
             return new ResourceSet<ServiceResource>(this, client, page);
         }
@@ -36,13 +36,13 @@ namespace Twilio.Readers.IpMessaging.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<ServiceResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<ServiceResource> NextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
             
-            var task = pageForRequest(client, request);
+            var task = PageForRequest(client, request);
             task.Wait();
             
             return task.Result;
@@ -55,8 +55,8 @@ namespace Twilio.Readers.IpMessaging.V1 {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<ServiceResource>> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = await client.request(request);
+        protected async Task<Page<ServiceResource>> PageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ServiceResource read failed: Unable to connect to server");
@@ -85,7 +85,7 @@ namespace Twilio.Readers.IpMessaging.V1 {
          * @param request Request to add query string arguments to
          */
         private void AddQueryParams(Request request) {
-            request.AddQueryParam("PageSize", getPageSize().ToString());
+            request.AddQueryParam("PageSize", GetPageSize().ToString());
         }
     }
 }

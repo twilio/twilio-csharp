@@ -12,7 +12,7 @@ namespace Twilio.Creators.IpMessaging.V1 {
         private CredentialResource.PushService type;
         private string certificate;
         private string privateKey;
-        private bool sandbox;
+        private bool? sandbox;
         private string apiKey;
     
         /**
@@ -54,7 +54,7 @@ namespace Twilio.Creators.IpMessaging.V1 {
          * @param sandbox The sandbox
          * @return this
          */
-        public CredentialCreator setSandbox(bool sandbox) {
+        public CredentialCreator setSandbox(bool? sandbox) {
             this.sandbox = sandbox;
             return this;
         }
@@ -76,7 +76,7 @@ namespace Twilio.Creators.IpMessaging.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Created CredentialResource
          */
-        public override async Task<CredentialResource> execute(TwilioRestClient client) {
+        public override async Task<CredentialResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.IPMESSAGING,
@@ -84,7 +84,7 @@ namespace Twilio.Creators.IpMessaging.V1 {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("CredentialResource creation failed: Unable to connect to server");

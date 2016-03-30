@@ -8,15 +8,15 @@ namespace Twilio.Readers
     {
 		private int pageSize = 50;
 
-        public abstract Task<ResourceSet<T>> execute(TwilioRestClient client);
+        public abstract Task<ResourceSet<T>> ExecuteAsync(TwilioRestClient client);
 
-		public abstract Page<T> nextPage(string nextPageUri, TwilioRestClient client);
+		public abstract Page<T> NextPage(string nextPageUri, TwilioRestClient client);
 
-		public int getPageSize() {
+		public int GetPageSize() {
 			return this.pageSize;
 		}
 
-		public Reader<T> setPageSize(int pageSize) {
+		public Reader<T> SetPageSize(int pageSize) {
 			this.pageSize = pageSize;
 			return this;
 		}

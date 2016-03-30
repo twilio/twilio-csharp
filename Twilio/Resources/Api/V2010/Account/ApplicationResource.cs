@@ -90,9 +90,9 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("api_version")]
         private readonly string apiVersion;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("friendly_name")]
         private readonly string friendlyName;
         [JsonProperty("message_status_callback")]
@@ -116,7 +116,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("uri")]
         private readonly string uri;
         [JsonProperty("voice_caller_id_lookup")]
-        private readonly bool voiceCallerIdLookup;
+        private readonly bool? voiceCallerIdLookup;
         [JsonProperty("voice_fallback_method")]
         private readonly System.Net.Http.HttpMethod voiceFallbackMethod;
         [JsonProperty("voice_fallback_url")]
@@ -157,7 +157,7 @@ namespace Twilio.Resources.Api.V2010.Account {
                                     [JsonProperty("uri")]
                                     string uri, 
                                     [JsonProperty("voice_caller_id_lookup")]
-                                    bool voiceCallerIdLookup, 
+                                    bool? voiceCallerIdLookup, 
                                     [JsonProperty("voice_fallback_method")]
                                     System.Net.Http.HttpMethod voiceFallbackMethod, 
                                     [JsonProperty("voice_fallback_url")]
@@ -205,14 +205,14 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return Date this resource was created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return Date this resource was last updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
@@ -296,7 +296,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return True or False
          */
-        public bool GetVoiceCallerIdLookup() {
+        public bool? GetVoiceCallerIdLookup() {
             return this.voiceCallerIdLookup;
         }
     

@@ -28,14 +28,14 @@ namespace Twilio.Fetchers.Api.V2010.Account {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched AuthorizedConnectAppResource
          */
-        public override async Task<AuthorizedConnectAppResource> execute(TwilioRestClient client) {
+        public override async Task<AuthorizedConnectAppResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/AuthorizedConnectApps/" + this.connectAppSid + ".json"
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("AuthorizedConnectAppResource fetch failed: Unable to connect to server");

@@ -12,10 +12,10 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.TaskQueue {
     public class TaskQueueStatisticsFetcher : Fetcher<TaskQueueStatisticsResource> {
         private string workspaceSid;
         private string taskQueueSid;
-        private DateTime endDate;
+        private DateTime? endDate;
         private string friendlyName;
-        private int minutes;
-        private DateTime startDate;
+        private int? minutes;
+        private DateTime? startDate;
     
         /**
          * Construct a new TaskQueueStatisticsFetcher
@@ -34,7 +34,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.TaskQueue {
          * @param endDate The end_date
          * @return this
          */
-        public TaskQueueStatisticsFetcher setEndDate(DateTime endDate) {
+        public TaskQueueStatisticsFetcher setEndDate(DateTime? endDate) {
             this.endDate = endDate;
             return this;
         }
@@ -56,7 +56,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.TaskQueue {
          * @param minutes The minutes
          * @return this
          */
-        public TaskQueueStatisticsFetcher setMinutes(int minutes) {
+        public TaskQueueStatisticsFetcher setMinutes(int? minutes) {
             this.minutes = minutes;
             return this;
         }
@@ -67,7 +67,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.TaskQueue {
          * @param startDate The start_date
          * @return this
          */
-        public TaskQueueStatisticsFetcher setStartDate(DateTime startDate) {
+        public TaskQueueStatisticsFetcher setStartDate(DateTime? startDate) {
             this.startDate = startDate;
             return this;
         }
@@ -78,14 +78,14 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.TaskQueue {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched TaskQueueStatisticsResource
          */
-        public override async Task<TaskQueueStatisticsResource> execute(TwilioRestClient client) {
+        public override async Task<TaskQueueStatisticsResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/TaskQueues/" + this.taskQueueSid + "/Statistics"
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TaskQueueStatisticsResource fetch failed: Unable to connect to server");

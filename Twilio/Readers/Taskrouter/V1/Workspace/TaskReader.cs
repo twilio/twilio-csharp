@@ -10,7 +10,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
 
     public class TaskReader : Reader<TaskResource> {
         private string workspaceSid;
-        private int priority;
+        private int? priority;
         private TaskResource.Status assignmentStatus;
         private string workflowSid;
         private string workflowName;
@@ -32,7 +32,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param priority The priority
          * @return this
          */
-        public TaskReader byPriority(int priority) {
+        public TaskReader byPriority(int? priority) {
             this.priority = priority;
             return this;
         }
@@ -98,7 +98,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param client TwilioRestClient with which to make the request
          * @return TaskResource ResourceSet
          */
-        public override async Task<ResourceSet<TaskResource>> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<TaskResource>> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TASKROUTER,
@@ -107,7 +107,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
             
             AddQueryParams(request);
             
-            Page<TaskResource> page = await pageForRequest(client, request);
+            Page<TaskResource> page = await PageForRequest(client, request);
             
             return new ResourceSet<TaskResource>(this, client, page);
         }
@@ -119,13 +119,13 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<TaskResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<TaskResource> NextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
             
-            var task = pageForRequest(client, request);
+            var task = PageForRequest(client, request);
             task.Wait();
             
             return task.Result;
@@ -138,8 +138,8 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<TaskResource>> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = await client.request(request);
+        protected async Task<Page<TaskResource>> PageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TaskResource read failed: Unable to connect to server");
@@ -192,7 +192,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
                 request.AddQueryParam("TaskQueueName", taskQueueName);
             }
             
-            request.AddQueryParam("PageSize", getPageSize().ToString());
+            request.AddQueryParam("PageSize", GetPageSize().ToString());
         }
     }
 }

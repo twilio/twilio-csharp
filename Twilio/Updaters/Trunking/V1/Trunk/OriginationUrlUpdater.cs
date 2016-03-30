@@ -12,9 +12,9 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
     public class OriginationUrlUpdater : Updater<OriginationUrlResource> {
         private string trunkSid;
         private string sid;
-        private int weight;
-        private int priority;
-        private bool enabled;
+        private int? weight;
+        private int? priority;
+        private bool? enabled;
         private string friendlyName;
         private Uri sipUrl;
     
@@ -35,7 +35,7 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
          * @param weight The weight
          * @return this
          */
-        public OriginationUrlUpdater setWeight(int weight) {
+        public OriginationUrlUpdater setWeight(int? weight) {
             this.weight = weight;
             return this;
         }
@@ -46,7 +46,7 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
          * @param priority The priority
          * @return this
          */
-        public OriginationUrlUpdater setPriority(int priority) {
+        public OriginationUrlUpdater setPriority(int? priority) {
             this.priority = priority;
             return this;
         }
@@ -57,7 +57,7 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
          * @param enabled The enabled
          * @return this
          */
-        public OriginationUrlUpdater setEnabled(bool enabled) {
+        public OriginationUrlUpdater setEnabled(bool? enabled) {
             this.enabled = enabled;
             return this;
         }
@@ -100,7 +100,7 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
          * @param client TwilioRestClient with which to make the request
          * @return Updated OriginationUrlResource
          */
-        public override async Task<OriginationUrlResource> execute(TwilioRestClient client) {
+        public override async Task<OriginationUrlResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TRUNKING,
@@ -108,7 +108,7 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("OriginationUrlResource update failed: Unable to connect to server");

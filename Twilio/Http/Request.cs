@@ -18,6 +18,9 @@ namespace Twilio.Http
 		public Request(System.Net.Http.HttpMethod method, Twilio.Clients.TwilioRestClient.Domains domain, string uri) {
 			this.method = method;
 			this.uri = new Uri("https://" + domain.ToString() + ".twilio.com" + uri);
+
+			this.queryParams = new List<KeyValuePair<string, string>>();
+			this.postParams = new List<KeyValuePair<string, string>>();
 		}
 
 		public Uri ConstructURL() {

@@ -63,7 +63,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          * @param client TwilioRestClient with which to make the request
          * @return TriggerResource ResourceSet
          */
-        public override async Task<ResourceSet<TriggerResource>> execute(TwilioRestClient client) {
+        public override async Task<ResourceSet<TriggerResource>> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
@@ -72,7 +72,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
             
             AddQueryParams(request);
             
-            Page<TriggerResource> page = await pageForRequest(client, request);
+            Page<TriggerResource> page = await PageForRequest(client, request);
             
             return new ResourceSet<TriggerResource>(this, client, page);
         }
@@ -84,13 +84,13 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          * @param client TwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<TriggerResource> nextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<TriggerResource> NextPage(string nextPageUri, TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
             );
             
-            var task = pageForRequest(client, request);
+            var task = PageForRequest(client, request);
             task.Wait();
             
             return task.Result;
@@ -103,8 +103,8 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<TriggerResource>> pageForRequest(TwilioRestClient client, Request request) {
-            Response response = await client.request(request);
+        protected async Task<Page<TriggerResource>> PageForRequest(TwilioRestClient client, Request request) {
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TriggerResource read failed: Unable to connect to server");
@@ -145,7 +145,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
                 request.AddQueryParam("UsageCategory", usageCategory.ToString());
             }
             
-            request.AddQueryParam("PageSize", getPageSize().ToString());
+            request.AddQueryParam("PageSize", GetPageSize().ToString());
         }
     }
 }

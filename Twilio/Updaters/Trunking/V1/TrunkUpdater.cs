@@ -16,7 +16,7 @@ namespace Twilio.Updaters.Trunking.V1 {
         private Uri disasterRecoveryUrl;
         private System.Net.Http.HttpMethod disasterRecoveryMethod;
         private string recording;
-        private bool secure;
+        private bool? secure;
     
         /**
          * Construct a new TrunkUpdater
@@ -98,7 +98,7 @@ namespace Twilio.Updaters.Trunking.V1 {
          * @param secure The secure
          * @return this
          */
-        public TrunkUpdater setSecure(bool secure) {
+        public TrunkUpdater setSecure(bool? secure) {
             this.secure = secure;
             return this;
         }
@@ -109,7 +109,7 @@ namespace Twilio.Updaters.Trunking.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Updated TrunkResource
          */
-        public override async Task<TrunkResource> execute(TwilioRestClient client) {
+        public override async Task<TrunkResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TRUNKING,
@@ -117,7 +117,7 @@ namespace Twilio.Updaters.Trunking.V1 {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TrunkResource update failed: Unable to connect to server");

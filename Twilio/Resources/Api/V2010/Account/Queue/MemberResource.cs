@@ -69,24 +69,24 @@ namespace Twilio.Resources.Api.V2010.Account.Queue {
         [JsonProperty("call_sid")]
         private readonly string callSid;
         [JsonProperty("date_enqueued")]
-        private readonly DateTime dateEnqueued;
+        private readonly DateTime? dateEnqueued;
         [JsonProperty("position")]
-        private readonly int position;
+        private readonly int? position;
         [JsonProperty("uri")]
         private readonly string uri;
         [JsonProperty("wait_time")]
-        private readonly int waitTime;
+        private readonly int? waitTime;
     
         private MemberResource([JsonProperty("call_sid")]
                                string callSid, 
                                [JsonProperty("date_enqueued")]
                                string dateEnqueued, 
                                [JsonProperty("position")]
-                               int position, 
+                               int? position, 
                                [JsonProperty("uri")]
                                string uri, 
                                [JsonProperty("wait_time")]
-                               int waitTime) {
+                               int? waitTime) {
             this.callSid = callSid;
             this.dateEnqueued = MarshalConverter.DateTimeFromString(dateEnqueued);
             this.position = position;
@@ -111,14 +111,14 @@ namespace Twilio.Resources.Api.V2010.Account.Queue {
         /**
          * @return The date the member was enqueued
          */
-        public DateTime GetDateEnqueued() {
+        public DateTime? GetDateEnqueued() {
             return this.dateEnqueued;
         }
     
         /**
          * @return This member's current position in the queue.
          */
-        public int GetPosition() {
+        public int? GetPosition() {
             return this.position;
         }
     
@@ -132,7 +132,7 @@ namespace Twilio.Resources.Api.V2010.Account.Queue {
         /**
          * @return The number of seconds the member has been in the queue.
          */
-        public int GetWaitTime() {
+        public int? GetWaitTime() {
             return this.waitTime;
         }
     }

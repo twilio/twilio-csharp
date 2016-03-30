@@ -116,9 +116,9 @@ namespace Twilio.Resources.IpMessaging.V1 {
         [JsonProperty("sandbox")]
         private readonly string sandbox;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("url")]
         private readonly Uri url;
     
@@ -186,14 +186,14 @@ namespace Twilio.Resources.IpMessaging.V1 {
         /**
          * @return The date_created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date_updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     

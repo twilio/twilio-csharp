@@ -13,7 +13,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
         private string attributes;
         private TaskResource.Status assignmentStatus;
         private string reason;
-        private int priority;
+        private int? priority;
     
         /**
          * Construct a new TaskUpdater
@@ -65,7 +65,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param priority The priority
          * @return this
          */
-        public TaskUpdater setPriority(int priority) {
+        public TaskUpdater setPriority(int? priority) {
             this.priority = priority;
             return this;
         }
@@ -76,7 +76,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param client TwilioRestClient with which to make the request
          * @return Updated TaskResource
          */
-        public override async Task<TaskResource> execute(TwilioRestClient client) {
+        public override async Task<TaskResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TASKROUTER,
@@ -84,7 +84,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TaskResource update failed: Unable to connect to server");

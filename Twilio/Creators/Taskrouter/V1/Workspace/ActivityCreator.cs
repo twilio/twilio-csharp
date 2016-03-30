@@ -10,7 +10,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
     public class ActivityCreator : Creator<ActivityResource> {
         private string workspaceSid;
         private string friendlyName;
-        private bool available;
+        private bool? available;
     
         /**
          * Construct a new ActivityCreator
@@ -19,7 +19,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param friendlyName The friendly_name
          * @param available The available
          */
-        public ActivityCreator(string workspaceSid, string friendlyName, bool available) {
+        public ActivityCreator(string workspaceSid, string friendlyName, bool? available) {
             this.workspaceSid = workspaceSid;
             this.friendlyName = friendlyName;
             this.available = available;
@@ -31,7 +31,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param client TwilioRestClient with which to make the request
          * @return Created ActivityResource
          */
-        public override async Task<ActivityResource> execute(TwilioRestClient client) {
+        public override async Task<ActivityResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TASKROUTER,
@@ -39,7 +39,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ActivityResource creation failed: Unable to connect to server");

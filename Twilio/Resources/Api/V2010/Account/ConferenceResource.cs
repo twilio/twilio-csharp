@@ -76,9 +76,9 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("account_sid")]
         private readonly string accountSid;
         [JsonProperty("date_created")]
-        private readonly DateTime dateCreated;
+        private readonly DateTime? dateCreated;
         [JsonProperty("date_updated")]
-        private readonly DateTime dateUpdated;
+        private readonly DateTime? dateUpdated;
         [JsonProperty("api_version")]
         private readonly string apiVersion;
         [JsonProperty("friendly_name")]
@@ -126,14 +126,14 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The date this resource was created
          */
-        public DateTime GetDateCreated() {
+        public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
         /**
          * @return The date this resource was last updated
          */
-        public DateTime GetDateUpdated() {
+        public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     

@@ -11,9 +11,9 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
 
     public class WorkersStatisticsFetcher : Fetcher<WorkersStatisticsResource> {
         private string workspaceSid;
-        private int minutes;
-        private DateTime startDate;
-        private DateTime endDate;
+        private int? minutes;
+        private DateTime? startDate;
+        private DateTime? endDate;
         private string taskQueueSid;
         private string taskQueueName;
         private string friendlyName;
@@ -33,7 +33,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
          * @param minutes The minutes
          * @return this
          */
-        public WorkersStatisticsFetcher setMinutes(int minutes) {
+        public WorkersStatisticsFetcher setMinutes(int? minutes) {
             this.minutes = minutes;
             return this;
         }
@@ -44,7 +44,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
          * @param startDate The start_date
          * @return this
          */
-        public WorkersStatisticsFetcher setStartDate(DateTime startDate) {
+        public WorkersStatisticsFetcher setStartDate(DateTime? startDate) {
             this.startDate = startDate;
             return this;
         }
@@ -55,7 +55,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
          * @param endDate The end_date
          * @return this
          */
-        public WorkersStatisticsFetcher setEndDate(DateTime endDate) {
+        public WorkersStatisticsFetcher setEndDate(DateTime? endDate) {
             this.endDate = endDate;
             return this;
         }
@@ -99,14 +99,14 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched WorkersStatisticsResource
          */
-        public override async Task<WorkersStatisticsResource> execute(TwilioRestClient client) {
+        public override async Task<WorkersStatisticsResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Workers/Statistics"
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("WorkersStatisticsResource fetch failed: Unable to connect to server");

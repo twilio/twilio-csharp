@@ -49,14 +49,14 @@ namespace Twilio.Fetchers.Lookups.V1 {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched PhoneNumberResource
          */
-        public override async Task<PhoneNumberResource> execute(TwilioRestClient client) {
+        public override async Task<PhoneNumberResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.LOOKUPS,
                 "/v1/PhoneNumbers/" + this.phoneNumber + ""
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("PhoneNumberResource fetch failed: Unable to connect to server");

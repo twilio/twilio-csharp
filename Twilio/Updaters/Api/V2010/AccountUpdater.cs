@@ -49,7 +49,7 @@ namespace Twilio.Updaters.Api.V2010 {
          * @param client TwilioRestClient with which to make the request
          * @return Updated AccountResource
          */
-        public override async Task<AccountResource> execute(TwilioRestClient client) {
+        public override async Task<AccountResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -57,7 +57,7 @@ namespace Twilio.Updaters.Api.V2010 {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("AccountResource update failed: Unable to connect to server");

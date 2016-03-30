@@ -31,7 +31,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param client TwilioRestClient with which to make the request
          * @return Updated ActivityResource
          */
-        public override async Task<ActivityResource> execute(TwilioRestClient client) {
+        public override async Task<ActivityResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TASKROUTER,
@@ -39,7 +39,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ActivityResource update failed: Unable to connect to server");

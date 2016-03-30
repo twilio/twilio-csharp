@@ -31,14 +31,14 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip.Domain {
          * @param client TwilioRestClient with which to make the request
          * @return Fetched IpAccessControlListMappingResource
          */
-        public override async Task<IpAccessControlListMappingResource> execute(TwilioRestClient client) {
+        public override async Task<IpAccessControlListMappingResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 TwilioRestClient.Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings/" + this.sid + ".json"
             );
             
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("IpAccessControlListMappingResource fetch failed: Unable to connect to server");

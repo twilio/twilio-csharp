@@ -11,8 +11,8 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
         private string workspaceSid;
         private string attributes;
         private string workflowSid;
-        private int timeout;
-        private int priority;
+        private int? timeout;
+        private int? priority;
     
         /**
          * Construct a new TaskCreator
@@ -33,7 +33,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param timeout The timeout
          * @return this
          */
-        public TaskCreator setTimeout(int timeout) {
+        public TaskCreator setTimeout(int? timeout) {
             this.timeout = timeout;
             return this;
         }
@@ -44,7 +44,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param priority The priority
          * @return this
          */
-        public TaskCreator setPriority(int priority) {
+        public TaskCreator setPriority(int? priority) {
             this.priority = priority;
             return this;
         }
@@ -55,7 +55,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param client TwilioRestClient with which to make the request
          * @return Created TaskResource
          */
-        public override async Task<TaskResource> execute(TwilioRestClient client) {
+        public override async Task<TaskResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.TASKROUTER,
@@ -63,7 +63,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TaskResource creation failed: Unable to connect to server");

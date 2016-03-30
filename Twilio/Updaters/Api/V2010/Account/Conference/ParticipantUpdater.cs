@@ -11,7 +11,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Conference {
         private string accountSid;
         private string conferenceSid;
         private string callSid;
-        private bool muted;
+        private bool? muted;
     
         /**
          * Construct a new ParticipantUpdater
@@ -21,7 +21,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Conference {
          * @param callSid The call_sid
          * @param muted Indicates if the participant should be muted
          */
-        public ParticipantUpdater(string accountSid, string conferenceSid, string callSid, bool muted) {
+        public ParticipantUpdater(string accountSid, string conferenceSid, string callSid, bool? muted) {
             this.accountSid = accountSid;
             this.conferenceSid = conferenceSid;
             this.callSid = callSid;
@@ -34,7 +34,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Conference {
          * @param client TwilioRestClient with which to make the request
          * @return Updated ParticipantResource
          */
-        public override async Task<ParticipantResource> execute(TwilioRestClient client) {
+        public override async Task<ParticipantResource> ExecuteAsync(TwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
                 TwilioRestClient.Domains.API,
@@ -42,7 +42,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Conference {
             );
             
             addPostParams(request);
-            Response response = await client.request(request);
+            Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ParticipantResource update failed: Unable to connect to server");
