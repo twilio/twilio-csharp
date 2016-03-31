@@ -106,6 +106,10 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
                 "/v1/Workspaces/" + this.workspaceSid + "/Workers/Statistics"
             );
             
+            
+                AddQueryParams(request);
+                
+            
             Response response = await client.Request(request);
             
             if (response == null) {
@@ -124,6 +128,37 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
             }
             
             return WorkersStatisticsResource.FromJson(response.GetContent());
+        }
+    
+        /**
+         * Add the requested query string arguments to the Request
+         * 
+         * @param request Request to add query string arguments to
+         */
+        private void AddQueryParams(Request request) {
+            if (minutes != null) {
+                request.AddQueryParam("Minutes", minutes.ToString());
+            }
+            
+            if (startDate != null) {
+                request.AddQueryParam("StartDate", startDate.ToString());
+            }
+            
+            if (endDate != null) {
+                request.AddQueryParam("EndDate", endDate.ToString());
+            }
+            
+            if (taskQueueSid != null) {
+                request.AddQueryParam("TaskQueueSid", taskQueueSid);
+            }
+            
+            if (taskQueueName != null) {
+                request.AddQueryParam("TaskQueueName", taskQueueName);
+            }
+            
+            if (friendlyName != null) {
+                request.AddQueryParam("FriendlyName", friendlyName);
+            }
         }
     }
 }

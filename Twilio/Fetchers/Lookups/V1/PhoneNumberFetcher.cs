@@ -56,6 +56,10 @@ namespace Twilio.Fetchers.Lookups.V1 {
                 "/v1/PhoneNumbers/" + this.phoneNumber + ""
             );
             
+            
+                AddQueryParams(request);
+                
+            
             Response response = await client.Request(request);
             
             if (response == null) {
@@ -74,6 +78,21 @@ namespace Twilio.Fetchers.Lookups.V1 {
             }
             
             return PhoneNumberResource.FromJson(response.GetContent());
+        }
+    
+        /**
+         * Add the requested query string arguments to the Request
+         * 
+         * @param request Request to add query string arguments to
+         */
+        private void AddQueryParams(Request request) {
+            if (countryCode != null) {
+                request.AddQueryParam("CountryCode", countryCode);
+            }
+            
+            if (type != null) {
+                request.AddQueryParam("Type", type);
+            }
         }
     }
 }
