@@ -1,15 +1,23 @@
+using NUnit.Framework;
+using Nunit.Mock;
+using System;
+using Twilio.Clients;
+using Twilio.Converters;
+using Twilio.Exceptions;
+using Twilio.Http;
 
-namespace Twilio.Tests.taskrouter.v1.Workspace {
+namespace Twilio.Tests.Taskrouter.V1.Workspace {
+
     public class TaskTest {
         [Mocked]
         private TwilioRestClient twilioRestClient;
     
-        [Before]
-        public void SetUp() throws Exception {
+        [SetUp]
+        public void SetUp() {
             Twilio.init("AC123", "AUTH TOKEN");
         }
     
-        [Test]
+        [TestCase]
         public void TestFetchRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,
@@ -43,7 +51,7 @@ namespace Twilio.Tests.taskrouter.v1.Workspace {
             assertNotNull(TaskResource.fetch("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").execute());
         }
     
-        [Test]
+        [TestCase]
         public void TestUpdateRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.POST,
@@ -77,7 +85,7 @@ namespace Twilio.Tests.taskrouter.v1.Workspace {
             TaskResource.update("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").execute();
         }
     
-        [Test]
+        [TestCase]
         public void TestDeleteRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.DELETE,
@@ -111,7 +119,7 @@ namespace Twilio.Tests.taskrouter.v1.Workspace {
             TaskResource.delete("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").execute();
         }
     
-        [Test]
+        [TestCase]
         public void TestReadRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,
@@ -157,7 +165,7 @@ namespace Twilio.Tests.taskrouter.v1.Workspace {
             assertNotNull(TaskResource.read("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").execute());
         }
     
-        [Test]
+        [TestCase]
         public void TestCreateRequest() {
                         new NonStrictExpectations() {{
                             Request request = new Request(HttpMethod.POST,

@@ -1,15 +1,23 @@
+using NUnit.Framework;
+using Nunit.Mock;
+using System;
+using Twilio.Clients;
+using Twilio.Converters;
+using Twilio.Exceptions;
+using Twilio.Http;
 
-namespace Twilio.Tests.pricing.v1.Messaging {
+namespace Twilio.Tests.Pricing.V1.Messaging {
+
     public class CountryTest {
         [Mocked]
         private TwilioRestClient twilioRestClient;
     
-        [Before]
-        public void SetUp() throws Exception {
+        [SetUp]
+        public void SetUp() {
             Twilio.init("AC123", "AUTH TOKEN");
         }
     
-        [Test]
+        [TestCase]
         public void TestReadRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,
@@ -31,7 +39,7 @@ namespace Twilio.Tests.pricing.v1.Messaging {
             } catch (TwilioException e) {}
         }
     
-        [Test]
+        [TestCase]
         public void TestFetchRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,

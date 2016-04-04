@@ -75,7 +75,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
             
             
                 AddQueryParams(request);
-                
+            
             
             Response response = await client.Request(request);
             

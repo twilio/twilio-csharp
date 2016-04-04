@@ -1,15 +1,23 @@
+using NUnit.Framework;
+using Nunit.Mock;
+using System;
+using Twilio.Clients;
+using Twilio.Converters;
+using Twilio.Exceptions;
+using Twilio.Http;
 
-namespace Twilio.Tests.api.v2010.Account {
+namespace Twilio.Tests.Api.V2010.Account {
+
     public class OutgoingCallerIdTest {
         [Mocked]
         private TwilioRestClient twilioRestClient;
     
-        [Before]
-        public void SetUp() throws Exception {
+        [SetUp]
+        public void SetUp() {
             Twilio.init("AC123", "AUTH TOKEN");
         }
     
-        [Test]
+        [TestCase]
         public void TestFetchRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,
@@ -43,7 +51,7 @@ namespace Twilio.Tests.api.v2010.Account {
             assertNotNull(OutgoingCallerIdResource.fetch("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").execute());
         }
     
-        [Test]
+        [TestCase]
         public void TestUpdateRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.POST,
@@ -77,7 +85,7 @@ namespace Twilio.Tests.api.v2010.Account {
             OutgoingCallerIdResource.update("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").execute();
         }
     
-        [Test]
+        [TestCase]
         public void TestDeleteRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.DELETE,
@@ -111,7 +119,7 @@ namespace Twilio.Tests.api.v2010.Account {
             OutgoingCallerIdResource.delete("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").execute();
         }
     
-        [Test]
+        [TestCase]
         public void TestReadRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,

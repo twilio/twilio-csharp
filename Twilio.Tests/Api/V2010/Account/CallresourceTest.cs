@@ -1,15 +1,23 @@
+using NUnit.Framework;
+using Nunit.Mock;
+using System;
+using Twilio.Clients;
+using Twilio.Converters;
+using Twilio.Exceptions;
+using Twilio.Http;
 
-namespace Twilio.Tests.api.v2010.Account {
+namespace Twilio.Tests.Api.V2010.Account {
+
     public class CallTest {
         [Mocked]
         private TwilioRestClient twilioRestClient;
     
-        [Before]
-        public void SetUp() throws Exception {
+        [SetUp]
+        public void SetUp() {
             Twilio.init("AC123", "AUTH TOKEN");
         }
     
-        [Test]
+        [TestCase]
         public void TestCreateRequest() {
                         new NonStrictExpectations() {{
                             Request request = new Request(HttpMethod.POST,
@@ -45,7 +53,7 @@ namespace Twilio.Tests.api.v2010.Account {
             CallResource.create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new com.twilio.types.PhoneNumber("+123456789"), new com.twilio.types.PhoneNumber("+987654321"), URI.create("https://example.com")).execute();
         }
     
-        [Test]
+        [TestCase]
         public void TestDeleteRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.DELETE,
@@ -79,7 +87,7 @@ namespace Twilio.Tests.api.v2010.Account {
             CallResource.delete("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").execute();
         }
     
-        [Test]
+        [TestCase]
         public void TestFetchRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,
@@ -113,7 +121,7 @@ namespace Twilio.Tests.api.v2010.Account {
             assertNotNull(CallResource.fetch("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").execute());
         }
     
-        [Test]
+        [TestCase]
         public void TestReadRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,
@@ -159,7 +167,7 @@ namespace Twilio.Tests.api.v2010.Account {
             assertNotNull(CallResource.read("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").execute());
         }
     
-        [Test]
+        [TestCase]
         public void TestUpdateRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.POST,

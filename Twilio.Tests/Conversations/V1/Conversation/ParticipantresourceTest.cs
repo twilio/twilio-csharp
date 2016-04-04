@@ -1,15 +1,23 @@
+using NUnit.Framework;
+using Nunit.Mock;
+using System;
+using Twilio.Clients;
+using Twilio.Converters;
+using Twilio.Exceptions;
+using Twilio.Http;
 
-namespace Twilio.Tests.conversations.v1.Conversation {
+namespace Twilio.Tests.Conversations.V1.Conversation {
+
     public class ParticipantTest {
         [Mocked]
         private TwilioRestClient twilioRestClient;
     
-        [Before]
-        public void SetUp() throws Exception {
+        [SetUp]
+        public void SetUp() {
             Twilio.init("AC123", "AUTH TOKEN");
         }
     
-        [Test]
+        [TestCase]
         public void TestReadRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,
@@ -55,7 +63,7 @@ namespace Twilio.Tests.conversations.v1.Conversation {
             assertNotNull(ParticipantResource.read("CVaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").execute());
         }
     
-        [Test]
+        [TestCase]
         public void TestCreateRequest() {
                         new NonStrictExpectations() {{
                             Request request = new Request(HttpMethod.POST,
@@ -90,7 +98,7 @@ namespace Twilio.Tests.conversations.v1.Conversation {
             ParticipantResource.create("CVaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new com.twilio.types.PhoneNumber("+123456789"), new com.twilio.types.PhoneNumber("+987654321")).execute();
         }
     
-        [Test]
+        [TestCase]
         public void TestFetchRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,

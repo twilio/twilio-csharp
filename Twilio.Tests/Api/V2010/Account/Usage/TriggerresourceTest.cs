@@ -1,15 +1,23 @@
+using NUnit.Framework;
+using Nunit.Mock;
+using System;
+using Twilio.Clients;
+using Twilio.Converters;
+using Twilio.Exceptions;
+using Twilio.Http;
 
-namespace Twilio.Tests.api.v2010.Account.Usage {
+namespace Twilio.Tests.Api.V2010.Account.Usage {
+
     public class TriggerTest {
         [Mocked]
         private TwilioRestClient twilioRestClient;
     
-        [Before]
-        public void SetUp() throws Exception {
+        [SetUp]
+        public void SetUp() {
             Twilio.init("AC123", "AUTH TOKEN");
         }
     
-        [Test]
+        [TestCase]
         public void TestFetchRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,
@@ -43,7 +51,7 @@ namespace Twilio.Tests.api.v2010.Account.Usage {
             assertNotNull(TriggerResource.fetch("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "UTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").execute());
         }
     
-        [Test]
+        [TestCase]
         public void TestUpdateRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.POST,
@@ -77,7 +85,7 @@ namespace Twilio.Tests.api.v2010.Account.Usage {
             TriggerResource.update("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "UTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").execute();
         }
     
-        [Test]
+        [TestCase]
         public void TestDeleteRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.DELETE,
@@ -111,7 +119,7 @@ namespace Twilio.Tests.api.v2010.Account.Usage {
             TriggerResource.delete("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "UTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").execute();
         }
     
-        [Test]
+        [TestCase]
         public void TestCreateRequest() {
                         new NonStrictExpectations() {{
                             Request request = new Request(HttpMethod.POST,
@@ -147,7 +155,7 @@ namespace Twilio.Tests.api.v2010.Account.Usage {
             TriggerResource.create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", URI.create("https://example.com"), "triggerValue", TriggerResource.UsageCategory.CALLERIDLOOKUPS).execute();
         }
     
-        [Test]
+        [TestCase]
         public void TestReadRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,

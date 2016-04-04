@@ -1,20 +1,28 @@
+using NUnit.Framework;
+using Nunit.Mock;
+using System;
+using Twilio.Clients;
+using Twilio.Converters;
+using Twilio.Exceptions;
+using Twilio.Http;
 
-namespace Twilio.Tests.lookups.v1 {
+namespace Twilio.Tests.Lookups.V1 {
+
     public class PhoneNumberTest {
         [Mocked]
         private TwilioRestClient twilioRestClient;
     
-        [Before]
-        public void SetUp() throws Exception {
+        [SetUp]
+        public void SetUp() {
             Twilio.init("AC123", "AUTH TOKEN");
         }
     
-        [Test]
+        [TestCase]
         public void TestFetchRequest() {
             new NonStrictExpectations() {{
                 Request request = new Request(HttpMethod.GET,
                                               TwilioRestClient.Domains.LOOKUPS,
-                                              "/v1/PhoneNumbers/+987654321",
+                                              "/v1/PhoneNumbers/new com.twilio.types.PhoneNumber("+987654321",
                                               "AC123");
                 
                 
