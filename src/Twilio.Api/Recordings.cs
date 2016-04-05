@@ -13,7 +13,7 @@ namespace Twilio
 		/// </summary>
         public virtual RecordingResult ListRecordings()
 		{
-			return ListRecordings(null, null, null, null);
+            return ListRecordings(null, null, null, null);
 		}
 
 		/// <summary>
@@ -28,7 +28,7 @@ namespace Twilio
         [System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
 		public virtual RecordingResult ListRecordings(string callSid, DateTime? dateCreated, int? pageNumber, int? count)
 		{
-      return ListRecordings(callSid, dateCreated: dateCreated, pageNumber: pageNumber, count: count);
+      return ListRecordings(callSid, dateCreated: dateCreated, dateCreatedGreaterThanOrEqual: null, pageNumber: pageNumber, count: count);
     }
 
 		/// <summary>
