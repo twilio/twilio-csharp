@@ -1,6 +1,7 @@
 using NUnit.Framework;
-using Nunit.Mock;
+using NUnit.Mocks;
 using System;
+using Twilio;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -8,47 +9,26 @@ using Twilio.Http;
 
 namespace Twilio.Tests.Pricing.V1.Voice {
 
-    public class NumberTest {
-        [Mocked]
-        private TwilioRestClient twilioRestClient;
+    [TestFixture]
+    public class NumberTest : TwilioTest {
+        private DynamicMock twilioRestClient;
     
         [SetUp]
         public void SetUp() {
-            Twilio.init("AC123", "AUTH TOKEN");
+            TwilioClient.init("AC123", "AUTH TOKEN");
+            twilioRestClient = new DynamicMock(typeof(ITwilioRestClient));
         }
     
         [TestCase]
         public void TestFetchRequest() {
-            new NonStrictExpectations() {{
-                Request request = new Request(HttpMethod.GET,
-                                              TwilioRestClient.Domains.PRICING,
-                                              "/v1/Voice/Numbers/new com.twilio.types.PhoneNumber("+987654321",
-                                              "AC123");
-                
-                
-                twilioRestClient.request(request);
-                times = 1;
-                result = new Response("", 500);
-                twilioRestClient.getAccountSid();
-                result = "AC123";
-            }};
+            ITwilioRestClient client = (ITwilioRestClient) twilioRestClient;
+            Request request = new Request(System.Net.Http.HttpMethod.Get,
+                                          Domains.PRICING,
+                                          "/v1/Voice/Numbers/+987654321");
             
-            try {
-                NumberResource.fetch(new com.twilio.types.PhoneNumber("+987654321")).execute();
-                fail("Expected TwilioException to be thrown for 500");
-            } catch (TwilioException e) {}
-        }
-    
-        [Test]
-        public void TestFetchResponse() {
-            new NonStrictExpectations() {{
-                twilioRestClient.request((Request) any);
-                result = new Response("{\"country\": \"United States\",\"inbound_call_price\": {\"base_price\": null,\"current_price\": null,\"number_type\": null},\"iso_country\": \"US\",\"number\": \"+987654321\",\"outbound_call_price\": {\"base_price\": \"0.015\",\"current_price\": \"0.015\"},\"price_unit\": \"USD\",\"url\": \"https://pricing.twilio.com/v1/Voice/Numbers/+987654321\"}", TwilioRestClient.HTTP_STATUS_CODE_OK);
-                twilioRestClient.getObjectMapper();
-                result = new ObjectMapper();
-            }};
             
-            assertNotNull(NumberResource.fetch(new com.twilio.types.PhoneNumber("+987654321")).execute());
+            twilioRestClient.ExpectAndReturn("Request", new Response(System.Net.HttpStatusCode.OK, null), request);
+            client.Request(request);
         }
     }
 }

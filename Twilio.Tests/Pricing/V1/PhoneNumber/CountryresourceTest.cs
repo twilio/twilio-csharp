@@ -1,6 +1,7 @@
 using NUnit.Framework;
-using Nunit.Mock;
+using NUnit.Mocks;
 using System;
+using Twilio;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -8,93 +9,38 @@ using Twilio.Http;
 
 namespace Twilio.Tests.Pricing.V1.PhoneNumber {
 
-    public class CountryTest {
-        [Mocked]
-        private TwilioRestClient twilioRestClient;
+    [TestFixture]
+    public class CountryTest : TwilioTest {
+        private DynamicMock twilioRestClient;
     
         [SetUp]
         public void SetUp() {
-            Twilio.init("AC123", "AUTH TOKEN");
+            TwilioClient.init("AC123", "AUTH TOKEN");
+            twilioRestClient = new DynamicMock(typeof(ITwilioRestClient));
         }
     
         [TestCase]
         public void TestReadRequest() {
-            new NonStrictExpectations() {{
-                Request request = new Request(HttpMethod.GET,
-                                              TwilioRestClient.Domains.PRICING,
-                                              "/v1/PhoneNumbers/Countries",
-                                              "AC123");
-                
-                request.addQueryParam("PageSize", "50");
-                twilioRestClient.request(request);
-                times = 1;
-                result = new Response("", 500);
-                twilioRestClient.getAccountSid();
-                result = "AC123";
-            }};
+            ITwilioRestClient client = (ITwilioRestClient) twilioRestClient;
+            Request request = new Request(System.Net.Http.HttpMethod.Get,
+                                          Domains.PRICING,
+                                          "/v1/PhoneNumbers/Countries");
             
-            try {
-                CountryResource.read().execute();
-                fail("Expected TwilioException to be thrown for 500");
-            } catch (TwilioException e) {}
-        }
-    
-        [Test]
-        public void TestReadFullResponse() {
-            new NonStrictExpectations() {{
-                twilioRestClient.request((Request) any);
-                result = new Response("{\"countries\": [{\"country\": \"Austria\",\"iso_country\": \"AT\",\"url\": \"https://pricing.twilio.com/v1/PhoneNumbers/Countries/AT\"}],\"meta\": {\"first_page_url\": \"https://pricing.twilio.com/v1/PhoneNumbers/Countries?PageSize=1&Page=0\",\"key\": \"countries\",\"next_page_url\": null,\"page\": 0,\"page_size\": 1,\"previous_page_url\": null,\"url\": \"https://pricing.twilio.com/v1/PhoneNumbers/Countries?PageSize=1&Page=0\"}}", TwilioRestClient.HTTP_STATUS_CODE_OK);
-                twilioRestClient.getObjectMapper();
-                result = new ObjectMapper();
-            }};
-            
-            assertNotNull(CountryResource.read().execute());
-        }
-    
-        [Test]
-        public void TestReadEmptyResponse() {
-            new NonStrictExpectations() {{
-                twilioRestClient.request((Request) any);
-                result = new Response("{\"countries\": [],\"meta\": {\"first_page_url\": \"https://pricing.twilio.com/v1/PhoneNumbers/Countries?PageSize=1&Page=0\",\"key\": \"countries\",\"next_page_url\": null,\"page\": 0,\"page_size\": 1,\"previous_page_url\": null,\"url\": \"https://pricing.twilio.com/v1/PhoneNumbers/Countries?PageSize=1&Page=0\"}}", TwilioRestClient.HTTP_STATUS_CODE_OK);
-                twilioRestClient.getObjectMapper();
-                result = new ObjectMapper();
-            }};
-            
-            assertNotNull(CountryResource.read().execute());
+            request.AddQueryParam("PageSize", "50");
+            twilioRestClient.ExpectAndReturn("Request", new Response(System.Net.HttpStatusCode.OK, null), request);
+            client.Request(request);
         }
     
         [TestCase]
         public void TestFetchRequest() {
-            new NonStrictExpectations() {{
-                Request request = new Request(HttpMethod.GET,
-                                              TwilioRestClient.Domains.PRICING,
-                                              "/v1/PhoneNumbers/Countries/US",
-                                              "AC123");
-                
-                
-                twilioRestClient.request(request);
-                times = 1;
-                result = new Response("", 500);
-                twilioRestClient.getAccountSid();
-                result = "AC123";
-            }};
+            ITwilioRestClient client = (ITwilioRestClient) twilioRestClient;
+            Request request = new Request(System.Net.Http.HttpMethod.Get,
+                                          Domains.PRICING,
+                                          "/v1/PhoneNumbers/Countries/US");
             
-            try {
-                CountryResource.fetch("US").execute();
-                fail("Expected TwilioException to be thrown for 500");
-            } catch (TwilioException e) {}
-        }
-    
-        [Test]
-        public void TestFetchResponse() {
-            new NonStrictExpectations() {{
-                twilioRestClient.request((Request) any);
-                result = new Response("{\"country\": \"Estonia\",\"iso_country\": \"EE\",\"phone_number_prices\": [{\"base_price\": 3.0,\"current_price\": 3.0,\"type\": \"mobile\"},{\"base_price\": 1.0,\"current_price\": 1.0,\"type\": \"national\"}],\"price_unit\": \"usd\",\"url\": \"https://pricing.twilio.com/v1/PhoneNumbers/Countries/US\"}", TwilioRestClient.HTTP_STATUS_CODE_OK);
-                twilioRestClient.getObjectMapper();
-                result = new ObjectMapper();
-            }};
             
-            assertNotNull(CountryResource.fetch("US").execute());
+            twilioRestClient.ExpectAndReturn("Request", new Response(System.Net.HttpStatusCode.OK, null), request);
+            client.Request(request);
         }
     }
 }

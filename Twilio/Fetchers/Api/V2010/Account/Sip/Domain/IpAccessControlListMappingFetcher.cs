@@ -28,13 +28,13 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip.Domain {
         /**
          * Make the request to the Twilio API to perform the fetch
          * 
-         * @param client TwilioRestClient with which to make the request
+         * @param client ITwilioRestClient with which to make the request
          * @return Fetched IpAccessControlListMappingResource
          */
-        public override async Task<IpAccessControlListMappingResource> ExecuteAsync(TwilioRestClient client) {
+        public override async Task<IpAccessControlListMappingResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
-                TwilioRestClient.Domains.API,
+                Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings/" + this.sid + ".json"
             );
             
@@ -42,7 +42,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip.Domain {
             
             if (response == null) {
                 throw new ApiConnectionException("IpAccessControlListMappingResource fetch failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");

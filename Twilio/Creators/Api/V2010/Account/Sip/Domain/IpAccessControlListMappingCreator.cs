@@ -28,13 +28,13 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
         /**
          * Make the request to the Twilio API to perform the create
          * 
-         * @param client TwilioRestClient with which to make the request
+         * @param client ITwilioRestClient with which to make the request
          * @return Created IpAccessControlListMappingResource
          */
-        public override async Task<IpAccessControlListMappingResource> ExecuteAsync(TwilioRestClient client) {
+        public override async Task<IpAccessControlListMappingResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
-                TwilioRestClient.Domains.API,
+                Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings.json"
             );
             
@@ -43,7 +43,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
             
             if (response == null) {
                 throw new ApiConnectionException("IpAccessControlListMappingResource creation failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
+            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_CREATED) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");

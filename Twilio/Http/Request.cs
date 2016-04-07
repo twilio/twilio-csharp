@@ -12,10 +12,10 @@ namespace Twilio.Http
         private List<KeyValuePair<string, string>> queryParams;
         private List<KeyValuePair<string, string>> postParams;
 
-		public Request(System.Net.Http.HttpMethod method, string uri) : this(method, Twilio.Clients.TwilioRestClient.Domains.API, uri) {
+		public Request(System.Net.Http.HttpMethod method, string uri) : this(method, Twilio.Clients.Domains.API, uri) {
 		}
 
-		public Request(System.Net.Http.HttpMethod method, Twilio.Clients.TwilioRestClient.Domains domain, string uri) {
+		public Request(System.Net.Http.HttpMethod method, Twilio.Clients.Domains domain, string uri) {
 			this.method = method;
 			this.uri = new Uri("https://" + domain.ToString() + ".twilio.com" + uri);
 

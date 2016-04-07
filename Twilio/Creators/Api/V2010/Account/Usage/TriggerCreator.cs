@@ -84,13 +84,13 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
         /**
          * Make the request to the Twilio API to perform the create
          * 
-         * @param client TwilioRestClient with which to make the request
+         * @param client ITwilioRestClient with which to make the request
          * @return Created TriggerResource
          */
-        public override async Task<TriggerResource> ExecuteAsync(TwilioRestClient client) {
+        public override async Task<TriggerResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
-                TwilioRestClient.Domains.API,
+                Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/Usage/Triggers.json"
             );
             
@@ -99,7 +99,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
             
             if (response == null) {
                 throw new ApiConnectionException("TriggerResource creation failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
+            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_CREATED) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");

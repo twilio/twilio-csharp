@@ -23,13 +23,13 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
         /**
          * Make the request to the Twilio API to perform the read
          * 
-         * @param client TwilioRestClient with which to make the request
+         * @param client ITwilioRestClient with which to make the request
          * @return YearlyResource ResourceSet
          */
-        public override async Task<ResourceSet<YearlyResource>> ExecuteAsync(TwilioRestClient client) {
+        public override async Task<ResourceSet<YearlyResource>> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
-                TwilioRestClient.Domains.API,
+                Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/Usage/Records/Yearly.json"
             );
             
@@ -44,10 +44,10 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
          * Retrieve the next page from the Twilio API
          * 
          * @param nextPageUri URI from which to retrieve the next page
-         * @param client TwilioRestClient with which to make the request
+         * @param client ITwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<YearlyResource> NextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<YearlyResource> NextPage(string nextPageUri, ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
@@ -62,16 +62,16 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
         /**
          * Generate a Page of YearlyResource Resources for a given request
          * 
-         * @param client TwilioRestClient with which to make the request
+         * @param client ITwilioRestClient with which to make the request
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<YearlyResource>> PageForRequest(TwilioRestClient client, Request request) {
+        protected async Task<Page<YearlyResource>> PageForRequest(ITwilioRestClient client, Request request) {
             Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("YearlyResource read failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");

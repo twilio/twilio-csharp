@@ -9,10 +9,10 @@ namespace Twilio.Resources
 		protected Page<E> page;
 		protected bool autoPaging;
 		protected Reader<E> reader;
-		protected TwilioRestClient client;
+		protected ITwilioRestClient client;
 		protected IEnumerator<E> iterator;
 
-		public ResourceSet(Reader<E> reader, TwilioRestClient client, Page<E> page) {
+		public ResourceSet(Reader<E> reader, ITwilioRestClient client, Page<E> page) {
 			this.reader = reader;
 			this.client = client;
 			this.page = page;

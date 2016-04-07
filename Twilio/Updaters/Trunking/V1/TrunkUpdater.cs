@@ -106,13 +106,13 @@ namespace Twilio.Updaters.Trunking.V1 {
         /**
          * Make the request to the Twilio API to perform the update
          * 
-         * @param client TwilioRestClient with which to make the request
+         * @param client ITwilioRestClient with which to make the request
          * @return Updated TrunkResource
          */
-        public override async Task<TrunkResource> ExecuteAsync(TwilioRestClient client) {
+        public override async Task<TrunkResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
-                TwilioRestClient.Domains.TRUNKING,
+                Domains.TRUNKING,
                 "/v1/Trunks/" + this.sid + ""
             );
             
@@ -121,7 +121,7 @@ namespace Twilio.Updaters.Trunking.V1 {
             
             if (response == null) {
                 throw new ApiConnectionException("TrunkResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");

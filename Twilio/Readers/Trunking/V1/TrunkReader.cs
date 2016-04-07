@@ -12,13 +12,13 @@ namespace Twilio.Readers.Trunking.V1 {
         /**
          * Make the request to the Twilio API to perform the read
          * 
-         * @param client TwilioRestClient with which to make the request
+         * @param client ITwilioRestClient with which to make the request
          * @return TrunkResource ResourceSet
          */
-        public override async Task<ResourceSet<TrunkResource>> ExecuteAsync(TwilioRestClient client) {
+        public override async Task<ResourceSet<TrunkResource>> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
-                TwilioRestClient.Domains.TRUNKING,
+                Domains.TRUNKING,
                 "/v1/Trunks"
             );
             
@@ -33,10 +33,10 @@ namespace Twilio.Readers.Trunking.V1 {
          * Retrieve the next page from the Twilio API
          * 
          * @param nextPageUri URI from which to retrieve the next page
-         * @param client TwilioRestClient with which to make the request
+         * @param client ITwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<TrunkResource> NextPage(string nextPageUri, TwilioRestClient client) {
+        public override Page<TrunkResource> NextPage(string nextPageUri, ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 nextPageUri
@@ -51,16 +51,16 @@ namespace Twilio.Readers.Trunking.V1 {
         /**
          * Generate a Page of TrunkResource Resources for a given request
          * 
-         * @param client TwilioRestClient with which to make the request
+         * @param client ITwilioRestClient with which to make the request
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<TrunkResource>> PageForRequest(TwilioRestClient client, Request request) {
+        protected async Task<Page<TrunkResource>> PageForRequest(ITwilioRestClient client, Request request) {
             Response response = await client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TrunkResource read failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");

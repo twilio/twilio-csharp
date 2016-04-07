@@ -1,6 +1,7 @@
 using NUnit.Framework;
-using Nunit.Mock;
+using NUnit.Mocks;
 using System;
+using Twilio;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -8,35 +9,26 @@ using Twilio.Http;
 
 namespace Twilio.Tests.Api.V2010.Account {
 
-    public class ValidationRequestTest {
-        [Mocked]
-        private TwilioRestClient twilioRestClient;
+    [TestFixture]
+    public class ValidationRequestTest : TwilioTest {
+        private DynamicMock twilioRestClient;
     
         [SetUp]
         public void SetUp() {
-            Twilio.init("AC123", "AUTH TOKEN");
+            TwilioClient.init("AC123", "AUTH TOKEN");
+            twilioRestClient = new DynamicMock(typeof(ITwilioRestClient));
         }
     
         [TestCase]
         public void TestCreateRequest() {
-            new NonStrictExpectations() {{
-                Request request = new Request(HttpMethod.POST,
-                                              TwilioRestClient.Domains.API,
-                                              "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OutgoingCallerIds.json",
-                                              "AC123");
-                request.addPostParam("PhoneNumber", serialize(new com.twilio.types.PhoneNumber("+987654321")));
-                
-                twilioRestClient.request(request);
-                times = 1;
-                result = new Response("", 500);
-                twilioRestClient.getAccountSid();
-                result = "AC123";
-            }};
+            ITwilioRestClient client = (ITwilioRestClient) twilioRestClient;
+            Request request = new Request(System.Net.Http.HttpMethod.Post,
+                                          Domains.API,
+                                          "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OutgoingCallerIds.json");
+            request.AddPostParam("PhoneNumber", Serialize(new Twilio.Types.PhoneNumber("+987654321")));
             
-            try {
-                ValidationRequestResource.create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new com.twilio.types.PhoneNumber("+987654321")).execute();
-                fail("Expected TwilioException to be thrown for 500");
-            } catch (TwilioException e) {}
+            twilioRestClient.ExpectAndReturn("Request", new Response(System.Net.HttpStatusCode.OK, null), request);
+            client.Request(request);
         }
     }
 }

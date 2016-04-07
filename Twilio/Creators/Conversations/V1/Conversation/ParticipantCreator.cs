@@ -28,13 +28,13 @@ namespace Twilio.Creators.Conversations.V1.Conversation {
         /**
          * Make the request to the Twilio API to perform the create
          * 
-         * @param client TwilioRestClient with which to make the request
+         * @param client ITwilioRestClient with which to make the request
          * @return Created ParticipantResource
          */
-        public override async Task<ParticipantResource> ExecuteAsync(TwilioRestClient client) {
+        public override async Task<ParticipantResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
-                TwilioRestClient.Domains.CONVERSATIONS,
+                Domains.CONVERSATIONS,
                 "/v1/Conversations/" + this.conversationSid + "/Participants"
             );
             
@@ -43,7 +43,7 @@ namespace Twilio.Creators.Conversations.V1.Conversation {
             
             if (response == null) {
                 throw new ApiConnectionException("ParticipantResource creation failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_CREATED) {
+            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_CREATED) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");

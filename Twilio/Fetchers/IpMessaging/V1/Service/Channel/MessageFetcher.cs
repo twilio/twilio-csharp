@@ -28,13 +28,13 @@ namespace Twilio.Fetchers.IpMessaging.V1.Service.Channel {
         /**
          * Make the request to the Twilio API to perform the fetch
          * 
-         * @param client TwilioRestClient with which to make the request
+         * @param client ITwilioRestClient with which to make the request
          * @return Fetched MessageResource
          */
-        public override async Task<MessageResource> ExecuteAsync(TwilioRestClient client) {
+        public override async Task<MessageResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
-                TwilioRestClient.Domains.IPMESSAGING,
+                Domains.IPMESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Messages/" + this.sid + ""
             );
             
@@ -42,7 +42,7 @@ namespace Twilio.Fetchers.IpMessaging.V1.Service.Channel {
             
             if (response == null) {
                 throw new ApiConnectionException("MessageResource fetch failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");

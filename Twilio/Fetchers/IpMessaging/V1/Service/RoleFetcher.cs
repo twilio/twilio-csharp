@@ -25,13 +25,13 @@ namespace Twilio.Fetchers.IpMessaging.V1.Service {
         /**
          * Make the request to the Twilio API to perform the fetch
          * 
-         * @param client TwilioRestClient with which to make the request
+         * @param client ITwilioRestClient with which to make the request
          * @return Fetched RoleResource
          */
-        public override async Task<RoleResource> ExecuteAsync(TwilioRestClient client) {
+        public override async Task<RoleResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
-                TwilioRestClient.Domains.IPMESSAGING,
+                Domains.IPMESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Roles/" + this.sid + ""
             );
             
@@ -39,7 +39,7 @@ namespace Twilio.Fetchers.IpMessaging.V1.Service {
             
             if (response == null) {
                 throw new ApiConnectionException("RoleResource fetch failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");

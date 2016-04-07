@@ -28,13 +28,13 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip.CredentialList {
         /**
          * Make the request to the Twilio API to perform the fetch
          * 
-         * @param client TwilioRestClient with which to make the request
+         * @param client ITwilioRestClient with which to make the request
          * @return Fetched CredentialResource
          */
-        public override async Task<CredentialResource> ExecuteAsync(TwilioRestClient client) {
+        public override async Task<CredentialResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
-                TwilioRestClient.Domains.API,
+                Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/SIP/CredentialLists/" + this.credentialListSid + "/Credentials/" + this.sid + ".json"
             );
             
@@ -42,7 +42,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip.CredentialList {
             
             if (response == null) {
                 throw new ApiConnectionException("CredentialResource fetch failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");

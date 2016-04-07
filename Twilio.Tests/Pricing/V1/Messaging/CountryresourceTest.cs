@@ -1,6 +1,7 @@
 using NUnit.Framework;
-using Nunit.Mock;
+using NUnit.Mocks;
 using System;
+using Twilio;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -8,57 +9,38 @@ using Twilio.Http;
 
 namespace Twilio.Tests.Pricing.V1.Messaging {
 
-    public class CountryTest {
-        [Mocked]
-        private TwilioRestClient twilioRestClient;
+    [TestFixture]
+    public class CountryTest : TwilioTest {
+        private DynamicMock twilioRestClient;
     
         [SetUp]
         public void SetUp() {
-            Twilio.init("AC123", "AUTH TOKEN");
+            TwilioClient.init("AC123", "AUTH TOKEN");
+            twilioRestClient = new DynamicMock(typeof(ITwilioRestClient));
         }
     
         [TestCase]
         public void TestReadRequest() {
-            new NonStrictExpectations() {{
-                Request request = new Request(HttpMethod.GET,
-                                              TwilioRestClient.Domains.PRICING,
-                                              "/v1/Messaging/Countries",
-                                              "AC123");
-                
-                request.addQueryParam("PageSize", "50");
-                twilioRestClient.request(request);
-                times = 1;
-                result = new Response("", 500);
-                twilioRestClient.getAccountSid();
-                result = "AC123";
-            }};
+            ITwilioRestClient client = (ITwilioRestClient) twilioRestClient;
+            Request request = new Request(System.Net.Http.HttpMethod.Get,
+                                          Domains.PRICING,
+                                          "/v1/Messaging/Countries");
             
-            try {
-                CountryResource.read().execute();
-                fail("Expected TwilioException to be thrown for 500");
-            } catch (TwilioException e) {}
+            request.AddQueryParam("PageSize", "50");
+            twilioRestClient.ExpectAndReturn("Request", new Response(System.Net.HttpStatusCode.OK, null), request);
+            client.Request(request);
         }
     
         [TestCase]
         public void TestFetchRequest() {
-            new NonStrictExpectations() {{
-                Request request = new Request(HttpMethod.GET,
-                                              TwilioRestClient.Domains.PRICING,
-                                              "/v1/Messaging/Countries/US",
-                                              "AC123");
-                
-                
-                twilioRestClient.request(request);
-                times = 1;
-                result = new Response("", 500);
-                twilioRestClient.getAccountSid();
-                result = "AC123";
-            }};
+            ITwilioRestClient client = (ITwilioRestClient) twilioRestClient;
+            Request request = new Request(System.Net.Http.HttpMethod.Get,
+                                          Domains.PRICING,
+                                          "/v1/Messaging/Countries/US");
             
-            try {
-                CountryResource.fetch("US").execute();
-                fail("Expected TwilioException to be thrown for 500");
-            } catch (TwilioException e) {}
+            
+            twilioRestClient.ExpectAndReturn("Request", new Response(System.Net.HttpStatusCode.OK, null), request);
+            client.Request(request);
         }
     }
 }

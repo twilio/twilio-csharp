@@ -97,13 +97,13 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
         /**
          * Make the request to the Twilio API to perform the update
          * 
-         * @param client TwilioRestClient with which to make the request
+         * @param client ITwilioRestClient with which to make the request
          * @return Updated OriginationUrlResource
          */
-        public override async Task<OriginationUrlResource> ExecuteAsync(TwilioRestClient client) {
+        public override async Task<OriginationUrlResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
-                TwilioRestClient.Domains.TRUNKING,
+                Domains.TRUNKING,
                 "/v1/Trunks/" + this.trunkSid + "/OriginationUrls/" + this.sid + ""
             );
             
@@ -112,7 +112,7 @@ namespace Twilio.Updaters.Trunking.V1.Trunk {
             
             if (response == null) {
                 throw new ApiConnectionException("OriginationUrlResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");

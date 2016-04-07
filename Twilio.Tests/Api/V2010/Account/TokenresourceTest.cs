@@ -1,6 +1,7 @@
 using NUnit.Framework;
-using Nunit.Mock;
+using NUnit.Mocks;
 using System;
+using Twilio;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -8,47 +9,26 @@ using Twilio.Http;
 
 namespace Twilio.Tests.Api.V2010.Account {
 
-    public class TokenTest {
-        [Mocked]
-        private TwilioRestClient twilioRestClient;
+    [TestFixture]
+    public class TokenTest : TwilioTest {
+        private DynamicMock twilioRestClient;
     
         [SetUp]
         public void SetUp() {
-            Twilio.init("AC123", "AUTH TOKEN");
+            TwilioClient.init("AC123", "AUTH TOKEN");
+            twilioRestClient = new DynamicMock(typeof(ITwilioRestClient));
         }
     
         [TestCase]
         public void TestCreateRequest() {
-            new NonStrictExpectations() {{
-                Request request = new Request(HttpMethod.POST,
-                                              TwilioRestClient.Domains.API,
-                                              "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tokens.json",
-                                              "AC123");
-                
-                
-                twilioRestClient.request(request);
-                times = 1;
-                result = new Response("", 500);
-                twilioRestClient.getAccountSid();
-                result = "AC123";
-            }};
+            ITwilioRestClient client = (ITwilioRestClient) twilioRestClient;
+            Request request = new Request(System.Net.Http.HttpMethod.Post,
+                                          Domains.API,
+                                          "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tokens.json");
             
-            try {
-                TokenResource.create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").execute();
-                fail("Expected TwilioException to be thrown for 500");
-            } catch (TwilioException e) {}
-        }
-    
-        [Test]
-        public void TestCreateResponse() {
-            new NonStrictExpectations() {{
-                twilioRestClient.request((Request) any);
-                result = new Response("{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Fri, 24 Jul 2015 18:43:58 +0000\",\"date_updated\": \"Fri, 24 Jul 2015 18:43:58 +0000\",\"ice_servers\": [{\"url\": \"stun:global.stun:3478?transport=udp\"},{\"credential\": \"5SR2x8mZK1lTFJW3NVgLGw6UM9C0dja4jI/Hdw3xr+w=\",\"url\": \"turn:global.turn:3478?transport=udp\",\"username\": \"cda92e5006c7810494639fc466ecc80182cef8183fdf400f84c4126f3b59d0bb\"}],\"password\": \"5SR2x8mZK1lTFJW3NVgLGw6UM9C0dja4jI/Hdw3xr+w=\",\"ttl\": \"86400\",\"username\": \"cda92e5006c7810494639fc466ecc80182cef8183fdf400f84c4126f3b59d0bb\"}", TwilioRestClient.HTTP_STATUS_CODE_CREATED);
-                twilioRestClient.getObjectMapper();
-                result = new ObjectMapper();
-            }};
             
-            TokenResource.create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").execute();
+            twilioRestClient.ExpectAndReturn("Request", new Response(System.Net.HttpStatusCode.OK, null), request);
+            client.Request(request);
         }
     }
 }

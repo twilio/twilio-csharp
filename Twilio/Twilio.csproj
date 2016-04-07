@@ -36,6 +36,7 @@
     <Compile Include="Http\Response.cs" />
     <Compile Include="Http\SystemNetClient.cs" />
     <Compile Include="Clients\TwilioRestClient.cs" />
+    <Compile Include="Clients\ITwilioRestClient.cs" />
     <Compile Include="Exceptions\TwilioException.cs" />
     <Compile Include="Exceptions\ApiConnectionException.cs" />
     <Compile Include="Exceptions\ApiException.cs" />

@@ -299,13 +299,13 @@ namespace Twilio.Updaters.Api.V2010.Account {
         /**
          * Make the request to the Twilio API to perform the update
          * 
-         * @param client TwilioRestClient with which to make the request
+         * @param client ITwilioRestClient with which to make the request
          * @return Updated IncomingPhoneNumberResource
          */
-        public override async Task<IncomingPhoneNumberResource> ExecuteAsync(TwilioRestClient client) {
+        public override async Task<IncomingPhoneNumberResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Post,
-                TwilioRestClient.Domains.API,
+                Domains.API,
                 "/2010-04-01/Accounts/" + this.ownerAccountSid + "/IncomingPhoneNumbers/" + this.sid + ".json"
             );
             
@@ -314,7 +314,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             
             if (response == null) {
                 throw new ApiConnectionException("IncomingPhoneNumberResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != TwilioRestClient.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");

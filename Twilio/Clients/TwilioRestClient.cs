@@ -5,40 +5,43 @@ using System.Net;
 
 namespace Twilio.Clients
 {
-	public class TwilioRestClient
-	{
+	public sealed class Domains {
+		public const string API = "api";
+		public const string CONVERSATIONS="conversations";
+		public const string LOOKUPS = "lookups";
+		public const string MONITOR = "monitor";
+		public const string PRICING = "pricing";
+		public const string TASKROUTER = "taskrouter";
+		public const string TRUNKING = "trunking";
+		public const string IPMESSAGING = "ipmessaging";
+
+		private readonly string value;
+
+		public Domains(string value) {
+			this.value = value;
+		}
+
+		public override string ToString() {
+			return value;
+		}
+
+		public static implicit operator Domains(string value) {
+			return new Domains(value);
+		}
+
+		public static implicit operator string(Domains value) {
+			return value.ToString();
+		}
+	}
+
+	public sealed class HttpStatus {
 		public const HttpStatusCode HTTP_STATUS_CODE_CREATED = HttpStatusCode.Created;
 		public const HttpStatusCode HTTP_STATUS_CODE_NO_CONTENT = HttpStatusCode.NoContent;
 		public const HttpStatusCode HTTP_STATUS_CODE_OK = HttpStatusCode.OK;
+	}
 
-		public sealed class Domains {
-			public const string API = "api";
-			public const string CONVERSATIONS="conversations";
-			public const string LOOKUPS = "lookups";
-			public const string MONITOR = "monitor";
-			public const string PRICING = "pricing";
-			public const string TASKROUTER = "taskrouter";
-			public const string TRUNKING = "trunking";
-			public const string IPMESSAGING = "ipmessaging";
-
-			private readonly string value;
-
-			public Domains(string value) {
-				this.value = value;
-			}
-
-			public override string ToString() {
-				return value;
-			}
-
-			public static implicit operator Domains(string value) {
-				return new Domains(value);
-			}
-
-			public static implicit operator string(Domains value) {
-				return value.ToString();
-			}
-		}
+	public class TwilioRestClient : ITwilioRestClient
+	{
 
 		private HttpClient httpClient;
 		private string username;
@@ -68,15 +71,15 @@ namespace Twilio.Clients
 			return response;
 		}
 
-		public string getAccountSid() {
+		public string GetAccountSid() {
 			return accountSid;
 		}
 
-		public HttpClient getHttpClient() {
+		public HttpClient GetHttpClient() {
 			return httpClient;
 		}
 
-		public void setHttpClient(HttpClient httpClient) {
+		public void SetHttpClient(HttpClient httpClient) {
 			this.httpClient = httpClient;
 		}
 	}
