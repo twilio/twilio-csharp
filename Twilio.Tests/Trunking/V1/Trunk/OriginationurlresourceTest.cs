@@ -41,7 +41,7 @@ namespace Twilio.Tests.Trunking.V1.Trunk {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                      "{\"weight\": 1,\"date_updated\": \"2015-01-02T11:23:45Z\",\"enabled\": true,\"friendly_name\": \"friendly_name\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"priority\": 1,\"sip_url\": \"sip://sip-box.com:1234\",\"sid\": \"OUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-01-02T11:23:45Z\",\"trunk_sid\": \"TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OriginationUrls/OUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            Assert.NotNull(OriginationUrlResource.Fetch("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "OUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")"
+            Assert.NotNull(OriginationUrlResource.Fetch("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "OUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                   .ExecuteAsync(twilioRestClient));
         }
     
@@ -130,7 +130,7 @@ namespace Twilio.Tests.Trunking.V1.Trunk {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                      "{\"meta\": {\"first_page_url\": \"https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OriginationUrls?PageSize=1&Page=0\",\"key\": \"origination_urls\",\"next_page_url\": null,\"page\": 0,\"page_size\": 1,\"previous_page_url\": null,\"url\": \"https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OriginationUrls?PageSize=1&Page=0\"},\"origination_urls\": [{\"weight\": 1,\"date_updated\": \"2015-01-02T11:23:45Z\",\"enabled\": true,\"friendly_name\": \"friendly_name\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"priority\": 1,\"sip_url\": \"sip://sip-box.com:1234\",\"sid\": \"OUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-01-02T11:23:45Z\",\"trunk_sid\": \"TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OriginationUrls/OUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}]}"));
             
-            Assert.NotNull(OriginationUrlResource.Read("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")"
+            Assert.NotNull(OriginationUrlResource.Read("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                   .ExecuteAsync(twilioRestClient));
         }
     
@@ -141,7 +141,7 @@ namespace Twilio.Tests.Trunking.V1.Trunk {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                      "{\"meta\": {\"first_page_url\": \"https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OriginationUrls?PageSize=1&Page=0\",\"key\": \"origination_urls\",\"next_page_url\": null,\"page\": 0,\"page_size\": 1,\"previous_page_url\": null,\"url\": \"https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OriginationUrls?PageSize=1&Page=0\"},\"origination_urls\": []}"));
             
-            Assert.NotNull(OriginationUrlResource.Read("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")"
+            Assert.NotNull(OriginationUrlResource.Read("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                   .ExecuteAsync(twilioRestClient));
         }
     

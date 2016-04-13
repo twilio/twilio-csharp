@@ -41,7 +41,7 @@ namespace Twilio.Tests.Lookups.V1 {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                      "{\"carrier\": {\"error_code\": null,\"mobile_country_code\": \"310\",\"mobile_network_code\": \"456\",\"name\": \"verizon\",\"type\": \"mobile\"},\"country_code\": \"US\",\"national_format\": \"(510) 867-5309\",\"phone_number\": \"+15108675309\",\"url\": \"https://lookups.twilio.com/v1/PhoneNumbers/phone_number\"}"));
             
-            Assert.NotNull(PhoneNumberResource.Fetch(new Twilio.Types.PhoneNumber("+987654321"))"
+            Assert.NotNull(PhoneNumberResource.Fetch(new Twilio.Types.PhoneNumber("+987654321"))
                   .ExecuteAsync(twilioRestClient));
         }
     }

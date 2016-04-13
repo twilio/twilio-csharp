@@ -41,7 +41,7 @@ namespace Twilio.Tests.Pricing.V1.Voice {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                      "{\"country\": \"United States\",\"inbound_call_price\": {\"base_price\": null,\"current_price\": null,\"number_type\": null},\"iso_country\": \"US\",\"number\": \"+987654321\",\"outbound_call_price\": {\"base_price\": \"0.015\",\"current_price\": \"0.015\"},\"price_unit\": \"USD\",\"url\": \"https://pricing.twilio.com/v1/Voice/Numbers/+987654321\"}"));
             
-            Assert.NotNull(NumberResource.Fetch(new Twilio.Types.PhoneNumber("+987654321"))"
+            Assert.NotNull(NumberResource.Fetch(new Twilio.Types.PhoneNumber("+987654321"))
                   .ExecuteAsync(twilioRestClient));
         }
     }
