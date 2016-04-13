@@ -3,9 +3,9 @@ namespace Twilio.Http
 	public class Response
 	{
 		private System.Net.HttpStatusCode statusCode;
-		private System.Net.Http.HttpContent content;
+		private string content;
 
-		public Response (System.Net.HttpStatusCode statusCode, System.Net.Http.HttpContent content)
+		public Response (System.Net.HttpStatusCode statusCode, string content)
 		{
 			this.statusCode = statusCode;
 			this.content = content;
@@ -16,7 +16,7 @@ namespace Twilio.Http
 		}
 
 		public string GetContent() {
-			return content.ToString();
+			return content;
 		}
 	}
 }

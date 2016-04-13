@@ -23,7 +23,7 @@ namespace Twilio.Http
 			var content = response.Content;
 			var statusCode = response.StatusCode;
 
-			return new Response(statusCode, content);
+			return new Response(statusCode, content.ToString());
 		}
 	}
 }

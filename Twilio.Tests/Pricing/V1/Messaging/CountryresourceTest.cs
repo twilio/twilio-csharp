@@ -1,46 +1,55 @@
+using NSubstitute;
 using NUnit.Framework;
-using NUnit.Mocks;
 using System;
 using Twilio;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Resources.Pricing.V1.Messaging;
 
 namespace Twilio.Tests.Pricing.V1.Messaging {
 
     [TestFixture]
     public class CountryTest : TwilioTest {
-        private DynamicMock twilioRestClient;
-    
         [SetUp]
         public void SetUp() {
-            TwilioClient.init("AC123", "AUTH TOKEN");
-            twilioRestClient = new DynamicMock(typeof(ITwilioRestClient));
         }
     
         [TestCase]
         public void TestReadRequest() {
-            ITwilioRestClient client = (ITwilioRestClient) twilioRestClient;
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(System.Net.Http.HttpMethod.Get,
                                           Domains.PRICING,
                                           "/v1/Messaging/Countries");
             
             request.AddQueryParam("PageSize", "50");
-            twilioRestClient.ExpectAndReturn("Request", new Response(System.Net.HttpStatusCode.OK, null), request);
-            client.Request(request);
+            twilioRestClient.Request(request)
+                            .Returns(new Response(System.Net.HttpStatusCode.OK, null));
+            
+            try {
+                CountryResource.Read().ExecuteAsync(twilioRestClient);
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (TwilioException e) {}
+            twilioRestClient.Received().Request(request);
         }
     
         [TestCase]
         public void TestFetchRequest() {
-            ITwilioRestClient client = (ITwilioRestClient) twilioRestClient;
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(System.Net.Http.HttpMethod.Get,
                                           Domains.PRICING,
                                           "/v1/Messaging/Countries/US");
             
             
-            twilioRestClient.ExpectAndReturn("Request", new Response(System.Net.HttpStatusCode.OK, null), request);
-            client.Request(request);
+            twilioRestClient.Request(request)
+                            .Returns(new Response(System.Net.HttpStatusCode.OK, null));
+            
+            try {
+                CountryResource.Fetch("US").ExecuteAsync(twilioRestClient);
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (TwilioException e) {}
+            twilioRestClient.Received().Request(request);
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Twilio.Http;
 
-namespace Twilio
+namespace Twilio.Clients
 {
 	public interface ITwilioRestClient
 	{

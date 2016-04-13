@@ -1,34 +1,37 @@
+using NSubstitute;
 using NUnit.Framework;
-using NUnit.Mocks;
 using System;
 using Twilio;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Resources.Api.V2010.Account;
 
 namespace Twilio.Tests.Api.V2010.Account {
 
     [TestFixture]
     public class ValidationRequestTest : TwilioTest {
-        private DynamicMock twilioRestClient;
-    
         [SetUp]
         public void SetUp() {
-            TwilioClient.init("AC123", "AUTH TOKEN");
-            twilioRestClient = new DynamicMock(typeof(ITwilioRestClient));
         }
     
         [TestCase]
         public void TestCreateRequest() {
-            ITwilioRestClient client = (ITwilioRestClient) twilioRestClient;
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(System.Net.Http.HttpMethod.Post,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OutgoingCallerIds.json");
             request.AddPostParam("PhoneNumber", Serialize(new Twilio.Types.PhoneNumber("+987654321")));
             
-            twilioRestClient.ExpectAndReturn("Request", new Response(System.Net.HttpStatusCode.OK, null), request);
-            client.Request(request);
+            twilioRestClient.Request(request)
+                            .Returns(new Response(System.Net.HttpStatusCode.OK, null));
+            
+            try {
+                ValidationRequestResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new Twilio.Types.PhoneNumber("+987654321")).ExecuteAsync(twilioRestClient);
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (TwilioException e) {}
+            twilioRestClient.Received().Request(request);
         }
     }
 }
