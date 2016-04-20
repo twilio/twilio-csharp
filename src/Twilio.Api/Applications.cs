@@ -76,7 +76,8 @@ namespace Twilio
 				if (options.SmsMethod.HasValue()) request.AddParameter("SmsMethod", options.SmsMethod.ToString());
 				if (options.SmsFallbackUrl != null) request.AddParameter("SmsFallbackUrl", options.SmsFallbackUrl);
 				if (options.SmsFallbackMethod.HasValue()) request.AddParameter("SmsFallbackMethod", options.SmsFallbackMethod.ToString());
-			}
+                if (options.SmsStatusCallback.HasValue()) request.AddParameter("SmsStatusCallback", options.SmsStatusCallback.ToString());
+            }
 
 			return Execute<Application>(request);
 		}
@@ -109,7 +110,8 @@ namespace Twilio
 				if (options.SmsMethod.HasValue()) request.AddParameter("SmsMethod", options.SmsMethod.ToString());
 				if (options.SmsFallbackUrl != null) request.AddParameter("SmsFallbackUrl", options.SmsFallbackUrl);
 				if (options.SmsFallbackMethod.HasValue()) request.AddParameter("SmsFallbackMethod", options.SmsFallbackMethod.ToString());
-			}
+                if (options.SmsStatusCallback.HasValue()) request.AddParameter("SmsStatusCallback", options.SmsStatusCallback.ToString());
+            }
 
 			return Execute<Application>(request);
 		}
