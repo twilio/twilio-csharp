@@ -45,6 +45,10 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace.Worker {
         [JsonProperty("workspace_sid")]
         private readonly string workspaceSid;
     
+        public WorkerStatisticsResource() {
+        
+        }
+    
         private WorkerStatisticsResource([JsonProperty("account_sid")]
                                          string accountSid, 
                                          [JsonProperty("cumulative")]

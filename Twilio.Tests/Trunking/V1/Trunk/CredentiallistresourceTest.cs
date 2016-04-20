@@ -36,6 +36,18 @@ namespace Twilio.Tests.Trunking.V1.Trunk {
         }
     
         [Test]
+        public void TestFetchResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.OK,
+                                     "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"trunk_sid\": \"TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Wed, 11 Sep 2013 17:51:38 -0000\",\"date_updated\": \"Wed, 11 Sep 2013 17:51:38 -0000\",\"friendly_name\": \"Low Rises\",\"sid\": \"CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
+            
+            var task = CredentialListResource.Fetch("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+            Assert.NotNull(task.Result);
+        }
+    
+        [Test]
         public async void TestDeleteRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(System.Net.Http.HttpMethod.Delete,
@@ -52,6 +64,17 @@ namespace Twilio.Tests.Trunking.V1.Trunk {
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (TwilioException e) {}
             twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
+        public void TestDeleteResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.NoContent,
+                                     "null"));
+            
+            var task = CredentialListResource.Delete("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
         }
     
         [Test]
@@ -74,6 +97,17 @@ namespace Twilio.Tests.Trunking.V1.Trunk {
         }
     
         [Test]
+        public void TestCreateResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.Created,
+                                     "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"trunk_sid\": \"TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Wed, 11 Sep 2013 17:51:38 -0000\",\"date_updated\": \"Wed, 11 Sep 2013 17:51:38 -0000\",\"friendly_name\": \"Low Rises\",\"sid\": \"CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
+            
+            var task = CredentialListResource.Create("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+        }
+    
+        [Test]
         public async void TestReadRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(System.Net.Http.HttpMethod.Get,
@@ -90,6 +124,30 @@ namespace Twilio.Tests.Trunking.V1.Trunk {
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (TwilioException e) {}
             twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
+        public void TestReadFullResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.OK,
+                                     "{\"credential_lists\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"trunk_sid\": \"TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Wed, 11 Sep 2013 17:51:38 -0000\",\"date_updated\": \"Wed, 11 Sep 2013 17:51:38 -0000\",\"friendly_name\": \"Low Rises\",\"sid\": \"CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"credential_lists\"}}"));
+            
+            var task = CredentialListResource.Read("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+            Assert.NotNull(task.Result);
+        }
+    
+        [Test]
+        public void TestReadEmptyResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.OK,
+                                     "{\"credential_lists\": [],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"credential_lists\"}}"));
+            
+            var task = CredentialListResource.Read("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+            Assert.NotNull(task.Result);
         }
     }
 }

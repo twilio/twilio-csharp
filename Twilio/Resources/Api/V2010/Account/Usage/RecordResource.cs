@@ -114,6 +114,10 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         [JsonProperty("usage_unit")]
         private readonly string usageUnit;
     
+        public RecordResource() {
+        
+        }
+    
         private RecordResource([JsonProperty("account_sid")]
                                string accountSid, 
                                [JsonProperty("api_version")]

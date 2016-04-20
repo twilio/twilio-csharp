@@ -94,6 +94,10 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("uri")]
         private readonly string uri;
     
+        public AuthorizedConnectAppResource() {
+        
+        }
+    
         private AuthorizedConnectAppResource([JsonProperty("account_sid")]
                                              string accountSid, 
                                              [JsonProperty("connect_app_company_name")]

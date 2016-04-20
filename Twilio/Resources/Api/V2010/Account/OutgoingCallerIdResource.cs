@@ -88,6 +88,10 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("uri")]
         private readonly string uri;
     
+        public OutgoingCallerIdResource() {
+        
+        }
+    
         private OutgoingCallerIdResource([JsonProperty("sid")]
                                          string sid, 
                                          [JsonProperty("date_created")]

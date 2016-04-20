@@ -71,6 +71,10 @@ namespace Twilio.Resources.Monitor.V1 {
         [JsonProperty("source_ip_address")]
         private readonly string sourceIpAddress;
     
+        public EventResource() {
+        
+        }
+    
         private EventResource([JsonProperty("account_sid")]
                               string accountSid, 
                               [JsonProperty("actor_sid")]

@@ -151,6 +151,10 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         [JsonProperty("voice_url")]
         private readonly Uri voiceUrl;
     
+        public PhoneNumberResource() {
+        
+        }
+    
         private PhoneNumberResource([JsonProperty("account_sid")]
                                     string accountSid, 
                                     [JsonProperty("address_requirements")]

@@ -126,6 +126,10 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("voice_url")]
         private readonly Uri voiceUrl;
     
+        public ApplicationResource() {
+        
+        }
+    
         private ApplicationResource([JsonProperty("account_sid")]
                                     string accountSid, 
                                     [JsonProperty("api_version")]

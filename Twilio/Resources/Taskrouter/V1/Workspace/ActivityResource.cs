@@ -101,6 +101,10 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         [JsonProperty("workspace_sid")]
         private readonly string workspaceSid;
     
+        public ActivityResource() {
+        
+        }
+    
         private ActivityResource([JsonProperty("account_sid")]
                                  string accountSid, 
                                  [JsonProperty("available")]

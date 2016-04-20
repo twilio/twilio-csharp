@@ -109,6 +109,10 @@ namespace Twilio.Resources.IpMessaging.V1 {
         [JsonProperty("links")]
         private readonly Dictionary<string, string> links;
     
+        public ServiceResource() {
+        
+        }
+    
         private ServiceResource([JsonProperty("sid")]
                                 string sid, 
                                 [JsonProperty("account_sid")]

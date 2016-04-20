@@ -102,6 +102,10 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
         [JsonProperty("uri")]
         private readonly string uri;
     
+        public CredentialListResource() {
+        
+        }
+    
         private CredentialListResource([JsonProperty("account_sid")]
                                        string accountSid, 
                                        [JsonProperty("date_created")]

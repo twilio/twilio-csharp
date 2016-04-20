@@ -69,6 +69,10 @@ namespace Twilio.Resources.Lookups.V1 {
         [JsonProperty("carrier")]
         private readonly Dictionary<string, string> carrier;
     
+        public PhoneNumberResource() {
+        
+        }
+    
         private PhoneNumberResource([JsonProperty("country_code")]
                                     string countryCode, 
                                     [JsonProperty("phone_number")]

@@ -79,6 +79,10 @@ namespace Twilio.Resources.Api.V2010.Account.Message {
         [JsonProperty("uri")]
         private readonly string uri;
     
+        public MediaResource() {
+        
+        }
+    
         private MediaResource([JsonProperty("account_sid")]
                               string accountSid, 
                               [JsonProperty("content_type")]

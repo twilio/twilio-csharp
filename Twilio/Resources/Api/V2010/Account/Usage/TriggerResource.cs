@@ -216,6 +216,10 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         [JsonProperty("usage_record_uri")]
         private readonly string usageRecordUri;
     
+        public TriggerResource() {
+        
+        }
+    
         private TriggerResource([JsonProperty("account_sid")]
                                 string accountSid, 
                                 [JsonProperty("api_version")]

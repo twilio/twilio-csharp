@@ -77,6 +77,10 @@ namespace Twilio.Resources.Api.V2010.Account.Queue {
         [JsonProperty("wait_time")]
         private readonly int? waitTime;
     
+        public MemberResource() {
+        
+        }
+    
         private MemberResource([JsonProperty("call_sid")]
                                string callSid, 
                                [JsonProperty("date_enqueued")]

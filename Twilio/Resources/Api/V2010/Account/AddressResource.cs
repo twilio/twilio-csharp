@@ -114,6 +114,10 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("uri")]
         private readonly string uri;
     
+        public AddressResource() {
+        
+        }
+    
         private AddressResource([JsonProperty("account_sid")]
                                 string accountSid, 
                                 [JsonProperty("city")]

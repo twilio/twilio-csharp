@@ -102,6 +102,10 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
         [JsonProperty("uri")]
         private readonly string uri;
     
+        public IpAccessControlListResource() {
+        
+        }
+    
         private IpAccessControlListResource([JsonProperty("sid")]
                                             string sid, 
                                             [JsonProperty("account_sid")]

@@ -108,6 +108,10 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
         [JsonProperty("url")]
         private readonly Uri url;
     
+        public ParticipantResource() {
+        
+        }
+    
         private ParticipantResource([JsonProperty("sid")]
                                     string sid, 
                                     [JsonProperty("address")]

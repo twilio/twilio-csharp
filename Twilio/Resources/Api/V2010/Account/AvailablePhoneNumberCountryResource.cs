@@ -60,6 +60,10 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("subresource_uris")]
         private readonly Dictionary<string, string> subresourceUris;
     
+        public AvailablePhoneNumberCountryResource() {
+        
+        }
+    
         private AvailablePhoneNumberCountryResource([JsonProperty("country_code")]
                                                     string countryCode, 
                                                     [JsonProperty("country")]

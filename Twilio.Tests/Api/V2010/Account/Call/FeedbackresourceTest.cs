@@ -36,6 +36,17 @@ namespace Twilio.Tests.Api.V2010.Account.Call {
         }
     
         [Test]
+        public void TestCreateResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.Created,
+                                     "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Thu, 20 Aug 2015 21:45:46 +0000\",\"date_updated\": \"Thu, 20 Aug 2015 21:45:46 +0000\",\"issues\": [\"imperfect-audio\",\"post-dial-delay\"],\"quality_score\": 5,\"sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
+            
+            var task = FeedbackResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1).ExecuteAsync(twilioRestClient);
+            task.Wait();
+        }
+    
+        [Test]
         public async void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(System.Net.Http.HttpMethod.Get,
@@ -55,6 +66,18 @@ namespace Twilio.Tests.Api.V2010.Account.Call {
         }
     
         [Test]
+        public void TestFetchResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.OK,
+                                     "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Thu, 20 Aug 2015 21:45:46 +0000\",\"date_updated\": \"Thu, 20 Aug 2015 21:45:46 +0000\",\"issues\": [\"imperfect-audio\",\"post-dial-delay\"],\"quality_score\": 5,\"sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
+            
+            var task = FeedbackResource.Fetch("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+            Assert.NotNull(task.Result);
+        }
+    
+        [Test]
         public async void TestUpdateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(System.Net.Http.HttpMethod.Post,
@@ -71,6 +94,17 @@ namespace Twilio.Tests.Api.V2010.Account.Call {
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (TwilioException e) {}
             twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
+        public void TestUpdateResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.OK,
+                                     "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Thu, 20 Aug 2015 21:45:46 +0000\",\"date_updated\": \"Thu, 20 Aug 2015 21:45:46 +0000\",\"issues\": [\"imperfect-audio\",\"post-dial-delay\"],\"quality_score\": 5,\"sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
+            
+            var task = FeedbackResource.Update("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1).ExecuteAsync(twilioRestClient);
+            task.Wait();
         }
     }
 }

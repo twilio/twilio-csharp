@@ -36,6 +36,18 @@ namespace Twilio.Tests.Api.V2010.Account {
         }
     
         [Test]
+        public void TestFetchResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.OK,
+                                     "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"authorize_redirect_url\": \"http://example.com/redirect\",\"company_name\": \"Twilio\",\"deauthorize_callback_method\": \"GET\",\"deauthorize_callback_url\": \"http://example.com/deauth\",\"description\": null,\"friendly_name\": \"Connect app for deletion\",\"homepage_url\": \"http://example.com/home\",\"permissions\": [],\"sid\": \"CNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ConnectApps/CNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"));
+            
+            var task = ConnectAppResource.Fetch("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+            Assert.NotNull(task.Result);
+        }
+    
+        [Test]
         public async void TestUpdateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(System.Net.Http.HttpMethod.Post,
@@ -55,6 +67,17 @@ namespace Twilio.Tests.Api.V2010.Account {
         }
     
         [Test]
+        public void TestUpdateResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.OK,
+                                     "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"authorize_redirect_url\": \"http://example.com/redirect\",\"company_name\": \"Twilio\",\"deauthorize_callback_method\": \"GET\",\"deauthorize_callback_url\": \"http://example.com/deauth\",\"description\": null,\"friendly_name\": \"Connect app for deletion\",\"homepage_url\": \"http://example.com/home\",\"permissions\": [],\"sid\": \"CNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ConnectApps/CNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"));
+            
+            var task = ConnectAppResource.Update("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+        }
+    
+        [Test]
         public async void TestReadRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(System.Net.Http.HttpMethod.Get,
@@ -71,6 +94,30 @@ namespace Twilio.Tests.Api.V2010.Account {
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (TwilioException e) {}
             twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
+        public void TestReadFullResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.OK,
+                                     "{\"connect_apps\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"authorize_redirect_url\": \"http://example.com/redirect\",\"company_name\": \"Twilio\",\"deauthorize_callback_method\": \"GET\",\"deauthorize_callback_url\": \"http://example.com/deauth\",\"description\": null,\"friendly_name\": \"Connect app for deletion\",\"homepage_url\": \"http://example.com/home\",\"permissions\": [],\"sid\": \"CNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ConnectApps/CNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}],\"end\": 0,\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ConnectApps.json?Page=0&PageSize=50\",\"last_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ConnectApps.json?Page=0&PageSize=50\",\"next_page_uri\": null,\"num_pages\": 1,\"page\": 0,\"page_size\": 50,\"previous_page_uri\": null,\"start\": 0,\"total\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ConnectApps.json\"}"));
+            
+            var task = ConnectAppResource.Read("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+            Assert.NotNull(task.Result);
+        }
+    
+        [Test]
+        public void TestReadEmptyResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.OK,
+                                     "{\"connect_apps\": [],\"end\": 0,\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ConnectApps.json?Page=0&PageSize=50\",\"last_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ConnectApps.json?Page=0&PageSize=50\",\"next_page_uri\": null,\"num_pages\": 1,\"page\": 0,\"page_size\": 50,\"previous_page_uri\": null,\"start\": 0,\"total\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ConnectApps.json\"}"));
+            
+            var task = ConnectAppResource.Read("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+            Assert.NotNull(task.Result);
         }
     }
 }

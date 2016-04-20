@@ -80,6 +80,10 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         [JsonProperty("uri")]
         private readonly string uri;
     
+        public RecordingResource() {
+        
+        }
+    
         private RecordingResource([JsonProperty("account_sid")]
                                   string accountSid, 
                                   [JsonProperty("api_version")]

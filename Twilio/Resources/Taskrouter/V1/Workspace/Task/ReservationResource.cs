@@ -83,6 +83,10 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace.Task {
         [JsonProperty("workspace_sid")]
         private readonly string workspaceSid;
     
+        public ReservationResource() {
+        
+        }
+    
         private ReservationResource([JsonProperty("account_sid")]
                                     string accountSid, 
                                     [JsonProperty("date_created")]

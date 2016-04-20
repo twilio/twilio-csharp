@@ -100,6 +100,10 @@ namespace Twilio.Resources.Taskrouter.V1 {
         [JsonProperty("timeout_activity_sid")]
         private readonly string timeoutActivitySid;
     
+        public WorkspaceResource() {
+        
+        }
+    
         private WorkspaceResource([JsonProperty("account_sid")]
                                   string accountSid, 
                                   [JsonProperty("date_created")]

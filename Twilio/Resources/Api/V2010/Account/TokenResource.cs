@@ -53,6 +53,10 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("username")]
         private readonly string username;
     
+        public TokenResource() {
+        
+        }
+    
         private TokenResource([JsonProperty("account_sid")]
                               string accountSid, 
                               [JsonProperty("date_created")]

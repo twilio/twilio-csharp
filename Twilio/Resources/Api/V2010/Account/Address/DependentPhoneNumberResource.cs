@@ -60,6 +60,10 @@ namespace Twilio.Resources.Api.V2010.Account.Address {
         [JsonProperty("capabilities")]
         private readonly Dictionary<string, string> capabilities;
     
+        public DependentPhoneNumberResource() {
+        
+        }
+    
         private DependentPhoneNumberResource([JsonProperty("friendly_name")]
                                              Twilio.Types.PhoneNumber friendlyName, 
                                              [JsonProperty("phone_number")]

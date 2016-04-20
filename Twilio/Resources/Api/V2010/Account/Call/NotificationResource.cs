@@ -98,6 +98,10 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         [JsonProperty("response_headers")]
         private readonly string responseHeaders;
     
+        public NotificationResource() {
+        
+        }
+    
         private NotificationResource([JsonProperty("account_sid")]
                                      string accountSid, 
                                      [JsonProperty("api_version")]

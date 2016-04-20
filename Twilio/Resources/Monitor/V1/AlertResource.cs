@@ -92,6 +92,10 @@ namespace Twilio.Resources.Monitor.V1 {
         [JsonProperty("url")]
         private readonly Uri url;
     
+        public AlertResource() {
+        
+        }
+    
         private AlertResource([JsonProperty("account_sid")]
                               string accountSid, 
                               [JsonProperty("alert_text")]

@@ -90,6 +90,10 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("uri")]
         private readonly string uri;
     
+        public ConferenceResource() {
+        
+        }
+    
         private ConferenceResource([JsonProperty("account_sid")]
                                    string accountSid, 
                                    [JsonProperty("date_created")]

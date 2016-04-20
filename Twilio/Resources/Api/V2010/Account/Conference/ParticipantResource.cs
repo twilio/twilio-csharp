@@ -97,6 +97,10 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
         [JsonProperty("uri")]
         private readonly string uri;
     
+        public ParticipantResource() {
+        
+        }
+    
         private ParticipantResource([JsonProperty("account_sid")]
                                     string accountSid, 
                                     [JsonProperty("call_sid")]

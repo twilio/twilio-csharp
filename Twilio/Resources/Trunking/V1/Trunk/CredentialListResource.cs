@@ -87,6 +87,10 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         [JsonProperty("url")]
         private readonly Uri url;
     
+        public CredentialListResource() {
+        
+        }
+    
         private CredentialListResource([JsonProperty("account_sid")]
                                        string accountSid, 
                                        [JsonProperty("sid")]

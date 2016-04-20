@@ -118,6 +118,10 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         [JsonProperty("status")]
         private readonly FeedbackSummaryResource.Status status;
     
+        public FeedbackSummaryResource() {
+        
+        }
+    
         private FeedbackSummaryResource([JsonProperty("account_sid")]
                                         string accountSid, 
                                         [JsonProperty("call_count")]

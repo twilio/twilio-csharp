@@ -180,6 +180,10 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         [JsonProperty("uri")]
         private readonly string uri;
     
+        public SmsMessageResource() {
+        
+        }
+    
         private SmsMessageResource([JsonProperty("account_sid")]
                                    string accountSid, 
                                    [JsonProperty("api_version")]

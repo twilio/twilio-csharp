@@ -209,6 +209,10 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("uri")]
         private readonly string uri;
     
+        public CallResource() {
+        
+        }
+    
         private CallResource([JsonProperty("account_sid")]
                              string accountSid, 
                              [JsonProperty("annotation")]

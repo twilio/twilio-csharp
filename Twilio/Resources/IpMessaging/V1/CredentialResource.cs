@@ -122,6 +122,10 @@ namespace Twilio.Resources.IpMessaging.V1 {
         [JsonProperty("url")]
         private readonly Uri url;
     
+        public CredentialResource() {
+        
+        }
+    
         private CredentialResource([JsonProperty("sid")]
                                    string sid, 
                                    [JsonProperty("account_sid")]

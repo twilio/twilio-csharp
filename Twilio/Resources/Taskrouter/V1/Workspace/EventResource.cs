@@ -80,6 +80,10 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         [JsonProperty("url")]
         private readonly Uri url;
     
+        public EventResource() {
+        
+        }
+    
         private EventResource([JsonProperty("account_sid")]
                               string accountSid, 
                               [JsonProperty("actor_sid")]

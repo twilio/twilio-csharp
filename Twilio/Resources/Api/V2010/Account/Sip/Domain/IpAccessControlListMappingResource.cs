@@ -90,6 +90,10 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
         [JsonProperty("uri")]
         private readonly string uri;
     
+        public IpAccessControlListMappingResource() {
+        
+        }
+    
         private IpAccessControlListMappingResource([JsonProperty("account_sid")]
                                                    string accountSid, 
                                                    [JsonProperty("date_created")]

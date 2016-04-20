@@ -102,6 +102,10 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("uri")]
         private readonly string uri;
     
+        public QueueResource() {
+        
+        }
+    
         private QueueResource([JsonProperty("account_sid")]
                               string accountSid, 
                               [JsonProperty("average_wait_time")]

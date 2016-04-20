@@ -76,6 +76,10 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("uri")]
         private readonly Uri uri;
     
+        public SandboxResource() {
+        
+        }
+    
         private SandboxResource([JsonProperty("date_created")]
                                 string dateCreated, 
                                 [JsonProperty("date_updated")]

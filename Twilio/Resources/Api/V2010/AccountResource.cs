@@ -137,6 +137,10 @@ namespace Twilio.Resources.Api.V2010 {
         [JsonProperty("uri")]
         private readonly string uri;
     
+        public AccountResource() {
+        
+        }
+    
         private AccountResource([JsonProperty("auth_token")]
                                 string authToken, 
                                 [JsonProperty("date_created")]

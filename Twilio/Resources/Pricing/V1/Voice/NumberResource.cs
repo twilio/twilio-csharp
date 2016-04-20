@@ -51,6 +51,10 @@ namespace Twilio.Resources.Pricing.V1.Voice {
         [JsonProperty("url")]
         private readonly Uri url;
     
+        public NumberResource() {
+        
+        }
+    
         private NumberResource([JsonProperty("number")]
                                Twilio.Types.PhoneNumber number, 
                                [JsonProperty("country")]

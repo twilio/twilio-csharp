@@ -111,6 +111,10 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         [JsonProperty("url")]
         private readonly Uri url;
     
+        public OriginationUrlResource() {
+        
+        }
+    
         private OriginationUrlResource([JsonProperty("account_sid")]
                                        string accountSid, 
                                        [JsonProperty("sid")]

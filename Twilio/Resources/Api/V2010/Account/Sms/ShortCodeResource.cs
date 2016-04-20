@@ -86,6 +86,10 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         [JsonProperty("uri")]
         private readonly string uri;
     
+        public ShortCodeResource() {
+        
+        }
+    
         private ShortCodeResource([JsonProperty("account_sid")]
                                   string accountSid, 
                                   [JsonProperty("api_version")]

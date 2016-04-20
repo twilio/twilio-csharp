@@ -60,6 +60,10 @@ namespace Twilio.Resources.Pricing.V1.Voice {
         [JsonProperty("url")]
         private readonly Uri url;
     
+        public CountryResource() {
+        
+        }
+    
         private CountryResource([JsonProperty("country")]
                                 string country, 
                                 [JsonProperty("iso_country")]

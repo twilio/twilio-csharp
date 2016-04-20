@@ -36,6 +36,30 @@ namespace Twilio.Tests.Api.V2010.Account {
         }
     
         [Test]
+        public void TestReadFullResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.OK,
+                                     "{\"countries\": [{\"beta\": false,\"country\": \"Denmark\",\"country_code\": \"DK\",\"subresource_uris\": {\"local\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/DK/Local.json\"},\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/DK.json\"}],\"end\": 1,\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/DK.json?PageSize=50&Page=0\",\"last_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/DK.json?PageSize=50&Page=0\",\"next_page_uri\": null,\"num_pages\": 1,\"page\": 0,\"page_size\": 50,\"previous_page_uri\": null,\"start\": 0,\"total\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers.json\"}"));
+            
+            var task = AvailablePhoneNumberCountryResource.Read("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+            Assert.NotNull(task.Result);
+        }
+    
+        [Test]
+        public void TestReadEmptyResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.OK,
+                                     "{\"countries\": [],\"end\": 1,\"first_page_uri\": null,\"last_page_uri\": null,\"next_page_uri\": null,\"num_pages\": 1,\"page\": 0,\"page_size\": 50,\"previous_page_uri\": null,\"start\": 0,\"total\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers.json\"}"));
+            
+            var task = AvailablePhoneNumberCountryResource.Read("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+            Assert.NotNull(task.Result);
+        }
+    
+        [Test]
         public async void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(System.Net.Http.HttpMethod.Get,
@@ -52,6 +76,18 @@ namespace Twilio.Tests.Api.V2010.Account {
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (TwilioException e) {}
             twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
+        public void TestFetchResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.OK,
+                                     "{\"beta\": null,\"country\": \"United States\",\"country_code\": \"US\",\"subresource_uris\": {\"local\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/US/Local.json\",\"toll_free\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/US/TollFree.json\"},\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/US.json\"}"));
+            
+            var task = AvailablePhoneNumberCountryResource.Fetch("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "US").ExecuteAsync(twilioRestClient);
+            task.Wait();
+            Assert.NotNull(task.Result);
         }
     }
 }

@@ -108,6 +108,10 @@ namespace Twilio.Resources.Trunking.V1 {
         [JsonProperty("links")]
         private readonly Dictionary<string, string> links;
     
+        public TrunkResource() {
+        
+        }
+    
         private TrunkResource([JsonProperty("account_sid")]
                               string accountSid, 
                               [JsonProperty("domain_name")]

@@ -62,6 +62,10 @@ namespace Twilio.Resources.Api.V2010.Account.AvailablePhoneNumberCountry {
         [JsonProperty("capabilities")]
         private readonly PhoneNumberCapabilities capabilities;
     
+        public MobileResource() {
+        
+        }
+    
         private MobileResource([JsonProperty("friendly_name")]
                                Twilio.Types.PhoneNumber friendlyName, 
                                [JsonProperty("phone_number")]

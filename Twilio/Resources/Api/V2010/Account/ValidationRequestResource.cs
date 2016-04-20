@@ -47,6 +47,10 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("call_sid")]
         private readonly string callSid;
     
+        public ValidationRequestResource() {
+        
+        }
+    
         private ValidationRequestResource([JsonProperty("account_sid")]
                                           string accountSid, 
                                           [JsonProperty("phone_number")]
