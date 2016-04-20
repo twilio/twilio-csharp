@@ -27,7 +27,7 @@ namespace Twilio.Deleters.IpMessaging.V1.Service {
          * 
          * @param client ITwilioRestClient with which to make the request
          */
-        public override async void ExecuteAsync(ITwilioRestClient client) {
+        public override async Task ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 Domains.IPMESSAGING,
@@ -50,6 +50,8 @@ namespace Twilio.Deleters.IpMessaging.V1.Service {
                     null
                 );
             }
+            
+            return;
         }
     }
 }

@@ -16,8 +16,8 @@ namespace Twilio.Tests.Pricing.V1.Messaging {
         public void SetUp() {
         }
     
-        [TestCase]
-        public void TestReadRequest() {
+        [Test]
+        public async void TestReadRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(System.Net.Http.HttpMethod.Get,
                                           Domains.PRICING,
@@ -28,14 +28,15 @@ namespace Twilio.Tests.Pricing.V1.Messaging {
                             .Returns(new Response(System.Net.HttpStatusCode.OK, null));
             
             try {
-                CountryResource.Read().ExecuteAsync(twilioRestClient);
+                var task = CountryResource.Read().ExecuteAsync(twilioRestClient);
+            task.Wait();
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (TwilioException e) {}
             twilioRestClient.Received().Request(request);
         }
     
-        [TestCase]
-        public void TestFetchRequest() {
+        [Test]
+        public async void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(System.Net.Http.HttpMethod.Get,
                                           Domains.PRICING,
@@ -46,7 +47,8 @@ namespace Twilio.Tests.Pricing.V1.Messaging {
                             .Returns(new Response(System.Net.HttpStatusCode.OK, null));
             
             try {
-                CountryResource.Fetch("US").ExecuteAsync(twilioRestClient);
+                var task = CountryResource.Fetch("US").ExecuteAsync(twilioRestClient);
+            task.Wait();
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (TwilioException e) {}
             twilioRestClient.Received().Request(request);

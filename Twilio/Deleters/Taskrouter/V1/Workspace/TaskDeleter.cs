@@ -27,7 +27,7 @@ namespace Twilio.Deleters.Taskrouter.V1.Workspace {
          * 
          * @param client ITwilioRestClient with which to make the request
          */
-        public override async void ExecuteAsync(ITwilioRestClient client) {
+        public override async Task ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Delete,
                 Domains.TASKROUTER,
@@ -50,6 +50,8 @@ namespace Twilio.Deleters.Taskrouter.V1.Workspace {
                     null
                 );
             }
+            
+            return;
         }
     }
 }

@@ -30,7 +30,7 @@ namespace Twilio.Deleters.Api.V2010.Account.Conference {
          * 
          * @param client ITwilioRestClient with which to make the request
          */
-        public override async void ExecuteAsync(ITwilioRestClient client) {
+        public override async Task ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Delete,
                 Domains.API,
@@ -53,6 +53,8 @@ namespace Twilio.Deleters.Api.V2010.Account.Conference {
                     null
                 );
             }
+            
+            return;
         }
     }
 }

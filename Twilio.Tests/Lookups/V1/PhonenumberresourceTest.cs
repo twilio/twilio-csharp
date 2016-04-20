@@ -16,8 +16,8 @@ namespace Twilio.Tests.Lookups.V1 {
         public void SetUp() {
         }
     
-        [TestCase]
-        public void TestFetchRequest() {
+        [Test]
+        public async void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(System.Net.Http.HttpMethod.Get,
                                           Domains.LOOKUPS,
@@ -28,21 +28,11 @@ namespace Twilio.Tests.Lookups.V1 {
                             .Returns(new Response(System.Net.HttpStatusCode.OK, null));
             
             try {
-                PhoneNumberResource.Fetch(new Twilio.Types.PhoneNumber("+987654321")).ExecuteAsync(twilioRestClient);
+                var task = PhoneNumberResource.Fetch(new Twilio.Types.PhoneNumber("+987654321")).ExecuteAsync(twilioRestClient);
+            task.Wait();
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (TwilioException e) {}
             twilioRestClient.Received().Request(request);
-        }
-    
-        [Test]
-        public void TestFetchResponse() {
-            var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.Request(Arg.Any<Request>())
-                            .Returns(new Response(System.Net.HttpStatusCode.OK,
-                                     "{\"carrier\": {\"error_code\": null,\"mobile_country_code\": \"310\",\"mobile_network_code\": \"456\",\"name\": \"verizon\",\"type\": \"mobile\"},\"country_code\": \"US\",\"national_format\": \"(510) 867-5309\",\"phone_number\": \"+15108675309\",\"url\": \"https://lookups.twilio.com/v1/PhoneNumbers/phone_number\"}"));
-            
-            Assert.NotNull(PhoneNumberResource.Fetch(new Twilio.Types.PhoneNumber("+987654321"))
-                  .ExecuteAsync(twilioRestClient));
         }
     }
 }

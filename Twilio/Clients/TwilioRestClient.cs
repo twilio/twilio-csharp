@@ -48,7 +48,7 @@ namespace Twilio.Clients
 		private string password;
 		private string accountSid;
 
-		public TwilioRestClient (string username, string password, String accountSid = null, HttpClient httpClient = null) {
+		public TwilioRestClient(string username, string password, String accountSid = null, HttpClient httpClient = null) {
 			this.username = username;
 			this.password = password;
 			if (accountSid != null) {
