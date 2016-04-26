@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
 using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Pricing.V1.Voice;
 using Twilio.Http;
@@ -37,6 +38,7 @@ namespace Twilio.Resources.Pricing.V1.Voice {
         }
     
         [JsonProperty("number")]
+        [JsonConverter(typeof(PhoneNumberConverter))]
         private readonly Twilio.Types.PhoneNumber number;
         [JsonProperty("country")]
         private readonly string country;

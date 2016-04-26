@@ -56,6 +56,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("account_sid")]
         private readonly string accountSid;
         [JsonProperty("phone_number")]
+        [JsonConverter(typeof(PhoneNumberConverter))]
         private readonly Twilio.Types.PhoneNumber phoneNumber;
         [JsonProperty("application_sid")]
         private readonly string applicationSid;
@@ -64,14 +65,17 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("voice_url")]
         private readonly Uri voiceUrl;
         [JsonProperty("voice_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
         private readonly System.Net.Http.HttpMethod voiceMethod;
         [JsonProperty("sms_url")]
         private readonly Uri smsUrl;
         [JsonProperty("sms_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
         private readonly System.Net.Http.HttpMethod smsMethod;
         [JsonProperty("status_callback")]
         private readonly Uri statusCallback;
         [JsonProperty("status_callback_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
         private readonly System.Net.Http.HttpMethod statusCallbackMethod;
         [JsonProperty("uri")]
         private readonly Uri uri;

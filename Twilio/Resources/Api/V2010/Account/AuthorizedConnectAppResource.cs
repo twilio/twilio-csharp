@@ -13,11 +13,11 @@ using Twilio.Resources;
 namespace Twilio.Resources.Api.V2010.Account {
 
     public class AuthorizedConnectAppResource : SidResource {
-        public sealed class Permission {
+        public sealed class Permission : IStringEnum {
             public const string GET_ALL="get-all";
             public const string POST_ALL="post-all";
         
-            private readonly string value;
+            private string value;
             
             public Permission(string value) {
                 this.value = value;
@@ -33,6 +33,10 @@ namespace Twilio.Resources.Api.V2010.Account {
             
             public static implicit operator string(Permission value) {
                 return value.ToString();
+            }
+            
+            public void FromString(string value) {
+                this.value = value;
             }
         }
     
@@ -90,6 +94,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("date_updated")]
         private readonly DateTime? dateUpdated;
         [JsonProperty("permissions")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly List<AuthorizedConnectAppResource.Permission> permissions;
         [JsonProperty("uri")]
         private readonly string uri;

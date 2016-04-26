@@ -15,13 +15,13 @@ using Twilio.Updaters.Taskrouter.V1.Workspace;
 namespace Twilio.Resources.Taskrouter.V1.Workspace {
 
     public class TaskResource : SidResource {
-        public sealed class Status {
+        public sealed class Status : IStringEnum {
             public const string PENDING="pending";
             public const string RESERVED="reserved";
             public const string ASSIGNED="assigned";
             public const string CANCELED="canceled";
         
-            private readonly string value;
+            private string value;
             
             public Status(string value) {
                 this.value = value;
@@ -37,6 +37,10 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
             
             public static implicit operator string(Status value) {
                 return value.ToString();
+            }
+            
+            public void FromString(string value) {
+                this.value = value;
             }
         }
     
@@ -115,6 +119,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         [JsonProperty("age")]
         private readonly int? age;
         [JsonProperty("assignment_status")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly TaskResource.Status assignmentStatus;
         [JsonProperty("attributes")]
         private readonly string attributes;

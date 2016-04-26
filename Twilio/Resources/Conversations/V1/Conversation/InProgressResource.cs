@@ -11,13 +11,13 @@ using Twilio.Resources;
 namespace Twilio.Resources.Conversations.V1.Conversation {
 
     public class InProgressResource : Resource {
-        public sealed class Status {
+        public sealed class Status : IStringEnum {
             public const string CREATED="created";
             public const string IN_PROGRESS="in-progress";
             public const string COMPLETED="completed";
             public const string FAILED="failed";
         
-            private readonly string value;
+            private string value;
             
             public Status(string value) {
                 this.value = value;
@@ -33,6 +33,10 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
             
             public static implicit operator string(Status value) {
                 return value.ToString();
+            }
+            
+            public void FromString(string value) {
+                this.value = value;
             }
         }
     
@@ -63,6 +67,7 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
         [JsonProperty("sid")]
         private readonly string sid;
         [JsonProperty("status")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly InProgressResource.Status status;
         [JsonProperty("duration")]
         private readonly int? duration;

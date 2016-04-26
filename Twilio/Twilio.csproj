@@ -45,6 +45,9 @@
     <Compile Include="Exceptions\RestException.cs" />
     <Compile Include="Converters\MarshalConverter.cs" />
     <Compile Include="Converters\Promoter.cs" />
+    <Compile Include="Converters\StringEnumConverter.cs" />
+    <Compile Include="Converters\HttpMethodConverter.cs" />
+    <Compile Include="Converters\PhoneNumberConverter.cs" />
     <Compile Include="Types\PhoneNumber.cs" />
     <Compile Include="Types\FeedbackIssue.cs" />
     <Compile Include="Types\IceServer.cs" />
@@ -55,6 +58,7 @@
     <Compile Include="Types\OutboundSmsPrice.cs" />
     <Compile Include="Types\PhoneNumberCapabilities.cs" />
     <Compile Include="Types\PhoneNumberPrice.cs" />
+    <Compile Include="Types\IStringEnum.cs" />
     <Compile Include="Creators\Creator.cs" />
     <Compile Include="Deleters\Deleter.cs" />
     <Compile Include="Fetchers\Fetcher.cs" />

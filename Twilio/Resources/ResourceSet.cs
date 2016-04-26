@@ -16,6 +16,9 @@ namespace Twilio.Resources
 			this.reader = reader;
 			this.client = client;
 			this.page = page;
+			if (page == null) {
+				throw new System.Exception("page is null");
+			}
 			iterator = page.getRecords().GetEnumerator();
 			autoPaging = true;
 		}

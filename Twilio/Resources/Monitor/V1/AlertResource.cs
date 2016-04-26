@@ -76,6 +76,7 @@ namespace Twilio.Resources.Monitor.V1 {
         [JsonProperty("more_info")]
         private readonly string moreInfo;
         [JsonProperty("request_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
         private readonly System.Net.Http.HttpMethod requestMethod;
         [JsonProperty("request_url")]
         private readonly string requestUrl;

@@ -16,11 +16,11 @@ using Twilio.Updaters.IpMessaging.V1.Service;
 namespace Twilio.Resources.IpMessaging.V1.Service {
 
     public class ChannelResource : SidResource {
-        public sealed class ChannelType {
+        public sealed class ChannelType : IStringEnum {
             public const string PUBLIC="public";
             public const string PRIVATE="private";
         
-            private readonly string value;
+            private string value;
             
             public ChannelType(string value) {
                 this.value = value;
@@ -36,6 +36,10 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
             
             public static implicit operator string(ChannelType value) {
                 return value.ToString();
+            }
+            
+            public void FromString(string value) {
+                this.value = value;
             }
         }
     
@@ -122,6 +126,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
         [JsonProperty("attributes")]
         private readonly Object attributes;
         [JsonProperty("type")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly ChannelResource.ChannelType type;
         [JsonProperty("date_created")]
         private readonly DateTime? dateCreated;

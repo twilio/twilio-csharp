@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
 using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Taskrouter.V1.Workspace;
 using Twilio.Http;

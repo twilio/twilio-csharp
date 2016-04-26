@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
 using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -39,6 +40,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("account_sid")]
         private readonly string accountSid;
         [JsonProperty("phone_number")]
+        [JsonConverter(typeof(PhoneNumberConverter))]
         private readonly Twilio.Types.PhoneNumber phoneNumber;
         [JsonProperty("friendly_name")]
         private readonly string friendlyName;

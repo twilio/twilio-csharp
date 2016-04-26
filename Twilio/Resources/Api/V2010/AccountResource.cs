@@ -15,12 +15,12 @@ using Twilio.Updaters.Api.V2010;
 namespace Twilio.Resources.Api.V2010 {
 
     public class AccountResource : SidResource {
-        public sealed class Status {
+        public sealed class Status : IStringEnum {
             public const string ACTIVE="active";
             public const string SUSPENDED="suspended";
             public const string CLOSED="closed";
         
-            private readonly string value;
+            private string value;
             
             public Status(string value) {
                 this.value = value;
@@ -37,13 +37,17 @@ namespace Twilio.Resources.Api.V2010 {
             public static implicit operator string(Status value) {
                 return value.ToString();
             }
+            
+            public void FromString(string value) {
+                this.value = value;
+            }
         }
     
-        public sealed class Type {
+        public sealed class Type : IStringEnum {
             public const string TRIAL="Trial";
             public const string FULL="Full";
         
-            private readonly string value;
+            private string value;
             
             public Type(string value) {
                 this.value = value;
@@ -59,6 +63,10 @@ namespace Twilio.Resources.Api.V2010 {
             
             public static implicit operator string(Type value) {
                 return value.ToString();
+            }
+            
+            public void FromString(string value) {
+                this.value = value;
             }
         }
     
@@ -129,10 +137,12 @@ namespace Twilio.Resources.Api.V2010 {
         [JsonProperty("sid")]
         private readonly string sid;
         [JsonProperty("status")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly AccountResource.Status status;
         [JsonProperty("subresource_uris")]
         private readonly Dictionary<string, string> subresourceUris;
         [JsonProperty("type")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly AccountResource.Type type;
         [JsonProperty("uri")]
         private readonly string uri;

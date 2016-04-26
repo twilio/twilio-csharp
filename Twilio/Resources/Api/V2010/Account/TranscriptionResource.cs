@@ -13,12 +13,12 @@ using Twilio.Resources;
 namespace Twilio.Resources.Api.V2010.Account {
 
     public class TranscriptionResource : SidResource {
-        public sealed class Status {
+        public sealed class Status : IStringEnum {
             public const string IN_PROGRESS="in-progress";
             public const string COMPLETED="completed";
             public const string FAILED="failed";
         
-            private readonly string value;
+            private string value;
             
             public Status(string value) {
                 this.value = value;
@@ -34,6 +34,10 @@ namespace Twilio.Resources.Api.V2010.Account {
             
             public static implicit operator string(Status value) {
                 return value.ToString();
+            }
+            
+            public void FromString(string value) {
+                this.value = value;
             }
         }
     
@@ -104,6 +108,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("sid")]
         private readonly string sid;
         [JsonProperty("status")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly TranscriptionResource.Status status;
         [JsonProperty("transcription_text")]
         private readonly string transcriptionText;

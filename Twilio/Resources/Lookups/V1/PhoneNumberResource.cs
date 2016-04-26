@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Lookups.V1;
 using Twilio.Http;
@@ -11,12 +12,12 @@ using Twilio.Resources;
 namespace Twilio.Resources.Lookups.V1 {
 
     public class PhoneNumberResource : SidResource {
-        public sealed class Type {
+        public sealed class Type : IStringEnum {
             public const string LANDLINE="landline";
             public const string MOBILE="mobile";
             public const string VOIP="voip";
         
-            private readonly string value;
+            private string value;
             
             public Type(string value) {
                 this.value = value;
@@ -32,6 +33,10 @@ namespace Twilio.Resources.Lookups.V1 {
             
             public static implicit operator string(Type value) {
                 return value.ToString();
+            }
+            
+            public void FromString(string value) {
+                this.value = value;
             }
         }
     
@@ -63,6 +68,7 @@ namespace Twilio.Resources.Lookups.V1 {
         [JsonProperty("country_code")]
         private readonly string countryCode;
         [JsonProperty("phone_number")]
+        [JsonConverter(typeof(PhoneNumberConverter))]
         private readonly Twilio.Types.PhoneNumber phoneNumber;
         [JsonProperty("national_format")]
         private readonly string nationalFormat;

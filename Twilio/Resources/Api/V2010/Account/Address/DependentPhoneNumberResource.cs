@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account.Address;
@@ -38,8 +39,10 @@ namespace Twilio.Resources.Api.V2010.Account.Address {
         }
     
         [JsonProperty("friendly_name")]
+        [JsonConverter(typeof(PhoneNumberConverter))]
         private readonly Twilio.Types.PhoneNumber friendlyName;
         [JsonProperty("phone_number")]
+        [JsonConverter(typeof(PhoneNumberConverter))]
         private readonly Twilio.Types.PhoneNumber phoneNumber;
         [JsonProperty("lata")]
         private readonly string lata;

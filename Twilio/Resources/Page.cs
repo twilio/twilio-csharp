@@ -14,6 +14,10 @@ namespace Twilio.Resources
 		protected string uri;
 		protected int pageSize;
 
+		public Page() {
+			this.records = new List<T>();
+		}
+
 		public List<T> getRecords() {
 			return records;
 		}

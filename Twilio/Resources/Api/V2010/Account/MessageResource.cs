@@ -16,7 +16,7 @@ using Twilio.Updaters.Api.V2010.Account;
 namespace Twilio.Resources.Api.V2010.Account {
 
     public class MessageResource : SidResource {
-        public sealed class Status {
+        public sealed class Status : IStringEnum {
             public const string QUEUED="queued";
             public const string SENDING="sending";
             public const string SENT="sent";
@@ -26,7 +26,7 @@ namespace Twilio.Resources.Api.V2010.Account {
             public const string RECEIVING="receiving";
             public const string RECEIVED="received";
         
-            private readonly string value;
+            private string value;
             
             public Status(string value) {
                 this.value = value;
@@ -43,15 +43,19 @@ namespace Twilio.Resources.Api.V2010.Account {
             public static implicit operator string(Status value) {
                 return value.ToString();
             }
+            
+            public void FromString(string value) {
+                this.value = value;
+            }
         }
     
-        public sealed class Direction {
+        public sealed class Direction : IStringEnum {
             public const string INBOUND="inbound";
             public const string OUTBOUND_API="outbound-api";
             public const string OUTBOUND_CALL="outbound-call";
             public const string OUTBOUND_REPLY="outbound-reply";
         
-            private readonly string value;
+            private string value;
             
             public Direction(string value) {
                 this.value = value;
@@ -67,6 +71,10 @@ namespace Twilio.Resources.Api.V2010.Account {
             
             public static implicit operator string(Direction value) {
                 return value.ToString();
+            }
+            
+            public void FromString(string value) {
+                this.value = value;
             }
         }
     
@@ -168,12 +176,14 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("date_sent")]
         private readonly DateTime? dateSent;
         [JsonProperty("direction")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly MessageResource.Direction direction;
         [JsonProperty("error_code")]
         private readonly int? errorCode;
         [JsonProperty("error_message")]
         private readonly string errorMessage;
         [JsonProperty("from")]
+        [JsonConverter(typeof(PhoneNumberConverter))]
         private readonly Twilio.Types.PhoneNumber from;
         [JsonProperty("num_media")]
         private readonly string numMedia;
@@ -186,6 +196,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("sid")]
         private readonly string sid;
         [JsonProperty("status")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly MessageResource.Status status;
         [JsonProperty("subresource_uris")]
         private readonly Dictionary<string, string> subresourceUris;

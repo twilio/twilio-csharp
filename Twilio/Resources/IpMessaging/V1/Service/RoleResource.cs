@@ -16,11 +16,11 @@ using Twilio.Updaters.IpMessaging.V1.Service;
 namespace Twilio.Resources.IpMessaging.V1.Service {
 
     public class RoleResource : SidResource {
-        public sealed class RoleType {
+        public sealed class RoleType : IStringEnum {
             public const string CHANNEL="channel";
             public const string DEPLOYMENT="deployment";
         
-            private readonly string value;
+            private string value;
             
             public RoleType(string value) {
                 this.value = value;
@@ -36,6 +36,10 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
             
             public static implicit operator string(RoleType value) {
                 return value.ToString();
+            }
+            
+            public void FromString(string value) {
+                this.value = value;
             }
         }
     
@@ -121,6 +125,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
         [JsonProperty("friendly_name")]
         private readonly string friendlyName;
         [JsonProperty("type")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly RoleResource.RoleType type;
         [JsonProperty("permissions")]
         private readonly List<string> permissions;

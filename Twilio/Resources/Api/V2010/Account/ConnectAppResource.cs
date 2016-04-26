@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Fetchers.Api.V2010.Account;
 using Twilio.Http;
@@ -13,11 +14,11 @@ using Twilio.Updaters.Api.V2010.Account;
 namespace Twilio.Resources.Api.V2010.Account {
 
     public class ConnectAppResource : SidResource {
-        public sealed class Permission {
+        public sealed class Permission : IStringEnum {
             public const string GET_ALL="get-all";
             public const string POST_ALL="post-all";
         
-            private readonly string value;
+            private string value;
             
             public Permission(string value) {
                 this.value = value;
@@ -33,6 +34,10 @@ namespace Twilio.Resources.Api.V2010.Account {
             
             public static implicit operator string(Permission value) {
                 return value.ToString();
+            }
+            
+            public void FromString(string value) {
+                this.value = value;
             }
         }
     
@@ -91,6 +96,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("company_name")]
         private readonly string companyName;
         [JsonProperty("deauthorize_callback_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
         private readonly System.Net.Http.HttpMethod deauthorizeCallbackMethod;
         [JsonProperty("deauthorize_callback_url")]
         private readonly Uri deauthorizeCallbackUrl;
@@ -101,6 +107,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("homepage_url")]
         private readonly Uri homepageUrl;
         [JsonProperty("permissions")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly List<ConnectAppResource.Permission> permissions;
         [JsonProperty("sid")]
         private readonly string sid;

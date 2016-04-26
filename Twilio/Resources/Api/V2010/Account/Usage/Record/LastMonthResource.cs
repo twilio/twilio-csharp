@@ -12,7 +12,7 @@ using Twilio.Resources;
 namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
 
     public class LastMonthResource : Resource {
-        public sealed class Category {
+        public sealed class Category : IStringEnum {
             public const string CALLERIDLOOKUPS="calleridlookups";
             public const string CALLS="calls";
             public const string CALLS_CLIENT="calls-client";
@@ -40,7 +40,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
             public const string TOTALPRICE="totalprice";
             public const string TRANSCRIPTIONS="transcriptions";
         
-            private readonly string value;
+            private string value;
             
             public Category(string value) {
                 this.value = value;
@@ -56,6 +56,10 @@ namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
             
             public static implicit operator string(Category value) {
                 return value.ToString();
+            }
+            
+            public void FromString(string value) {
+                this.value = value;
             }
         }
     
@@ -89,6 +93,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
         [JsonProperty("api_version")]
         private readonly string apiVersion;
         [JsonProperty("category")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly LastMonthResource.Category category;
         [JsonProperty("count")]
         private readonly string count;

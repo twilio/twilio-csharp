@@ -49,7 +49,7 @@ namespace Twilio.Types
 			return currentPrice;
 		}
 
-		private Type GetType() {
+		private new Type GetType() {
 			return type;
 		}
 	}

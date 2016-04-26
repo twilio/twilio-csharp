@@ -15,11 +15,11 @@ using Twilio.Updaters.IpMessaging.V1;
 namespace Twilio.Resources.IpMessaging.V1 {
 
     public class CredentialResource : SidResource {
-        public sealed class PushService {
+        public sealed class PushService : IStringEnum {
             public const string GCM="gcm";
             public const string APN="apn";
         
-            private readonly string value;
+            private string value;
             
             public PushService(string value) {
                 this.value = value;
@@ -35,6 +35,10 @@ namespace Twilio.Resources.IpMessaging.V1 {
             
             public static implicit operator string(PushService value) {
                 return value.ToString();
+            }
+            
+            public void FromString(string value) {
+                this.value = value;
             }
         }
     
@@ -112,6 +116,7 @@ namespace Twilio.Resources.IpMessaging.V1 {
         [JsonProperty("friendly_name")]
         private readonly string friendlyName;
         [JsonProperty("type")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly CredentialResource.PushService type;
         [JsonProperty("sandbox")]
         private readonly string sandbox;

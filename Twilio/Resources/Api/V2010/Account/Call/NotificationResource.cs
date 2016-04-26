@@ -84,6 +84,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         [JsonProperty("more_info")]
         private readonly Uri moreInfo;
         [JsonProperty("request_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
         private readonly System.Net.Http.HttpMethod requestMethod;
         [JsonProperty("request_url")]
         private readonly Uri requestUrl;

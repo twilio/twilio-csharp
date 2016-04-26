@@ -15,13 +15,13 @@ using Twilio.Types;
 namespace Twilio.Resources.Api.V2010.Account.Call {
 
     public class FeedbackSummaryResource : SidResource {
-        public sealed class Status {
+        public sealed class Status : IStringEnum {
             public const string QUEUED="queued";
             public const string IN_PROGRESS="in-progress";
             public const string COMPLETED="completed";
             public const string FAILED="failed";
         
-            private readonly string value;
+            private string value;
             
             public Status(string value) {
                 this.value = value;
@@ -37,6 +37,10 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
             
             public static implicit operator string(Status value) {
                 return value.ToString();
+            }
+            
+            public void FromString(string value) {
+                this.value = value;
             }
         }
     
@@ -116,6 +120,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         [JsonProperty("start_date")]
         private readonly DateTime? startDate;
         [JsonProperty("status")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly FeedbackSummaryResource.Status status;
     
         public FeedbackSummaryResource() {

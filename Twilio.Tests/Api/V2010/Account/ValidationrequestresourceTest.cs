@@ -15,24 +15,5 @@ namespace Twilio.Tests.Api.V2010.Account {
         [SetUp]
         public void SetUp() {
         }
-    
-        [Test]
-        public async void TestCreateRequest() {
-            var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(System.Net.Http.HttpMethod.Post,
-                                          Domains.API,
-                                          "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OutgoingCallerIds.json");
-            request.AddPostParam("PhoneNumber", Serialize(new Twilio.Types.PhoneNumber("+987654321")));
-            
-            twilioRestClient.Request(request)
-                            .Returns(new Response(System.Net.HttpStatusCode.OK, null));
-            
-            try {
-                var task = ValidationRequestResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new Twilio.Types.PhoneNumber("+987654321")).ExecuteAsync(twilioRestClient);
-            task.Wait();
-                Assert.Fail("Expected TwilioException to be thrown for 500");
-            } catch (TwilioException e) {}
-            twilioRestClient.Received().Request(request);
-        }
     }
 }

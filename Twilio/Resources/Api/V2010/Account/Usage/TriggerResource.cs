@@ -15,7 +15,7 @@ using Twilio.Updaters.Api.V2010.Account.Usage;
 namespace Twilio.Resources.Api.V2010.Account.Usage {
 
     public class TriggerResource : SidResource {
-        public sealed class UsageCategory {
+        public sealed class UsageCategory : IStringEnum {
             public const string CALLERIDLOOKUPS="calleridlookups";
             public const string CALLS="calls";
             public const string CALLS_CLIENT="calls-client";
@@ -43,7 +43,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
             public const string TOTALPRICE="totalprice";
             public const string TRANSCRIPTIONS="transcriptions";
         
-            private readonly string value;
+            private string value;
             
             public UsageCategory(string value) {
                 this.value = value;
@@ -60,15 +60,19 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
             public static implicit operator string(UsageCategory value) {
                 return value.ToString();
             }
+            
+            public void FromString(string value) {
+                this.value = value;
+            }
         }
     
-        public sealed class Recurring {
+        public sealed class Recurring : IStringEnum {
             public const string DAILY="daily";
             public const string MONTHLY="monthly";
             public const string YEARLY="yearly";
             public const string ALLTIME="alltime";
         
-            private readonly string value;
+            private string value;
             
             public Recurring(string value) {
                 this.value = value;
@@ -85,14 +89,18 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
             public static implicit operator string(Recurring value) {
                 return value.ToString();
             }
+            
+            public void FromString(string value) {
+                this.value = value;
+            }
         }
     
-        public sealed class TriggerField {
+        public sealed class TriggerField : IStringEnum {
             public const string COUNT="count";
             public const string USAGE="usage";
             public const string PRICE="price";
         
-            private readonly string value;
+            private string value;
             
             public TriggerField(string value) {
                 this.value = value;
@@ -108,6 +116,10 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
             
             public static implicit operator string(TriggerField value) {
                 return value.ToString();
+            }
+            
+            public void FromString(string value) {
+                this.value = value;
             }
         }
     
@@ -188,6 +200,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         [JsonProperty("api_version")]
         private readonly string apiVersion;
         [JsonProperty("callback_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
         private readonly System.Net.Http.HttpMethod callbackMethod;
         [JsonProperty("callback_url")]
         private readonly Uri callbackUrl;
@@ -202,16 +215,19 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         [JsonProperty("friendly_name")]
         private readonly string friendlyName;
         [JsonProperty("recurring")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly TriggerResource.Recurring recurring;
         [JsonProperty("sid")]
         private readonly string sid;
         [JsonProperty("trigger_by")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly TriggerResource.TriggerField triggerBy;
         [JsonProperty("trigger_value")]
         private readonly string triggerValue;
         [JsonProperty("uri")]
         private readonly string uri;
         [JsonProperty("usage_category")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly TriggerResource.UsageCategory usageCategory;
         [JsonProperty("usage_record_uri")]
         private readonly string usageRecordUri;

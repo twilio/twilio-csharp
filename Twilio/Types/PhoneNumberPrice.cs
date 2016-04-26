@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace Twilio.Types
 {
@@ -48,7 +49,7 @@ namespace Twilio.Types
 			return currentPrice;
 		}
 
-		public Type GetType() {
+		public new Type GetType() {
 			return type;
 		}
 	}

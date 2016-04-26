@@ -14,7 +14,7 @@ using Twilio.Updaters.Api.V2010.Account.Call;
 namespace Twilio.Resources.Api.V2010.Account.Call {
 
     public class FeedbackResource : Resource {
-        public sealed class Issues {
+        public sealed class Issues : IStringEnum {
             public const string AUDIO_LATENCY="audio-latency";
             public const string DIGITS_NOT_CAPTURED="digits-not-captured";
             public const string DROPPED_CALL="dropped-call";
@@ -24,7 +24,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
             public const string POST_DIAL_DELAY="post-dial-delay";
             public const string UNSOLICITED_CALL="unsolicited-call";
         
-            private readonly string value;
+            private string value;
             
             public Issues(string value) {
                 this.value = value;
@@ -40,6 +40,10 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
             
             public static implicit operator string(Issues value) {
                 return value.ToString();
+            }
+            
+            public void FromString(string value) {
+                this.value = value;
             }
         }
     
@@ -100,6 +104,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         [JsonProperty("date_updated")]
         private readonly DateTime? dateUpdated;
         [JsonProperty("issues")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly List<FeedbackResource.Issues> issues;
         [JsonProperty("quality_score")]
         private readonly int? qualityScore;

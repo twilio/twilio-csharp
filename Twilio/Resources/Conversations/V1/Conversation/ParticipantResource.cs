@@ -13,14 +13,14 @@ using Twilio.Resources;
 namespace Twilio.Resources.Conversations.V1.Conversation {
 
     public class ParticipantResource : SidResource {
-        public sealed class Status {
+        public sealed class Status : IStringEnum {
             public const string CREATED="created";
             public const string CONNECTING="connecting";
             public const string CONNECTED="connected";
             public const string DISCONNECTED="disconnected";
             public const string FAILED="failed";
         
-            private readonly string value;
+            private string value;
             
             public Status(string value) {
                 this.value = value;
@@ -36,6 +36,10 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
             
             public static implicit operator string(Status value) {
                 return value.ToString();
+            }
+            
+            public void FromString(string value) {
+                this.value = value;
             }
         }
     
@@ -92,6 +96,7 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
         [JsonProperty("address")]
         private readonly string address;
         [JsonProperty("status")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly ParticipantResource.Status status;
         [JsonProperty("conversation_sid")]
         private readonly string conversationSid;

@@ -16,14 +16,14 @@ using Twilio.Updaters.Api.V2010.Account.Sms;
 namespace Twilio.Resources.Api.V2010.Account.Sms {
 
     public class SmsMessageResource : SidResource {
-        public sealed class Status {
+        public sealed class Status : IStringEnum {
             public const string QUEUED="queued";
             public const string SENDING="sending";
             public const string SENT="sent";
             public const string FAILED="failed";
             public const string RECEIVED="received";
         
-            private readonly string value;
+            private string value;
             
             public Status(string value) {
                 this.value = value;
@@ -40,15 +40,19 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
             public static implicit operator string(Status value) {
                 return value.ToString();
             }
+            
+            public void FromString(string value) {
+                this.value = value;
+            }
         }
     
-        public sealed class Direction {
+        public sealed class Direction : IStringEnum {
             public const string INBOUND="inbound";
             public const string OUTBOUND_API="outbound-api";
             public const string OUTBOUND_CALL="outbound-call";
             public const string OUTBOUND_REPLY="outbound-reply";
         
-            private readonly string value;
+            private string value;
             
             public Direction(string value) {
                 this.value = value;
@@ -64,6 +68,10 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
             
             public static implicit operator string(Direction value) {
                 return value.ToString();
+            }
+            
+            public void FromString(string value) {
+                this.value = value;
             }
         }
     
@@ -164,8 +172,10 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         [JsonProperty("date_sent")]
         private readonly DateTime? dateSent;
         [JsonProperty("direction")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly SmsMessageResource.Direction direction;
         [JsonProperty("from")]
+        [JsonConverter(typeof(PhoneNumberConverter))]
         private readonly Twilio.Types.PhoneNumber from;
         [JsonProperty("price")]
         private readonly decimal price;
@@ -174,6 +184,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         [JsonProperty("sid")]
         private readonly string sid;
         [JsonProperty("status")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly SmsMessageResource.Status status;
         [JsonProperty("to")]
         private readonly string to;

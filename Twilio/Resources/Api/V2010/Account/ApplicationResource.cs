@@ -100,10 +100,12 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("sid")]
         private readonly string sid;
         [JsonProperty("sms_fallback_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
         private readonly System.Net.Http.HttpMethod smsFallbackMethod;
         [JsonProperty("sms_fallback_url")]
         private readonly Uri smsFallbackUrl;
         [JsonProperty("sms_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
         private readonly System.Net.Http.HttpMethod smsMethod;
         [JsonProperty("sms_status_callback")]
         private readonly Uri smsStatusCallback;
@@ -112,16 +114,19 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("status_callback")]
         private readonly Uri statusCallback;
         [JsonProperty("status_callback_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
         private readonly System.Net.Http.HttpMethod statusCallbackMethod;
         [JsonProperty("uri")]
         private readonly string uri;
         [JsonProperty("voice_caller_id_lookup")]
         private readonly bool? voiceCallerIdLookup;
         [JsonProperty("voice_fallback_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
         private readonly System.Net.Http.HttpMethod voiceFallbackMethod;
         [JsonProperty("voice_fallback_url")]
         private readonly Uri voiceFallbackUrl;
         [JsonProperty("voice_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
         private readonly System.Net.Http.HttpMethod voiceMethod;
         [JsonProperty("voice_url")]
         private readonly Uri voiceUrl;

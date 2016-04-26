@@ -84,6 +84,7 @@ namespace Twilio.Resources.Trunking.V1 {
         [JsonProperty("domain_name")]
         private readonly string domainName;
         [JsonProperty("disaster_recovery_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
         private readonly System.Net.Http.HttpMethod disasterRecoveryMethod;
         [JsonProperty("disaster_recovery_url")]
         private readonly Uri disasterRecoveryUrl;

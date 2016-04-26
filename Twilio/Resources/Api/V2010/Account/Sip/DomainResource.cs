@@ -103,12 +103,15 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
         [JsonProperty("uri")]
         private readonly string uri;
         [JsonProperty("voice_fallback_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
         private readonly System.Net.Http.HttpMethod voiceFallbackMethod;
         [JsonProperty("voice_fallback_url")]
         private readonly Uri voiceFallbackUrl;
         [JsonProperty("voice_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
         private readonly System.Net.Http.HttpMethod voiceMethod;
         [JsonProperty("voice_status_callback_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
         private readonly System.Net.Http.HttpMethod voiceStatusCallbackMethod;
         [JsonProperty("voice_status_callback_url")]
         private readonly Uri voiceStatusCallbackUrl;

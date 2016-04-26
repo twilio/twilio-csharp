@@ -16,13 +16,13 @@ using Twilio.Updaters.Api.V2010.Account;
 namespace Twilio.Resources.Api.V2010.Account {
 
     public class CallResource : SidResource {
-        public sealed class Event {
+        public sealed class Event : IStringEnum {
             public const string INITIATED="initiated";
             public const string RINGING="ringing";
             public const string ANSWERED="answered";
             public const string COMPLETED="completed";
         
-            private readonly string value;
+            private string value;
             
             public Event(string value) {
                 this.value = value;
@@ -39,9 +39,13 @@ namespace Twilio.Resources.Api.V2010.Account {
             public static implicit operator string(Event value) {
                 return value.ToString();
             }
+            
+            public void FromString(string value) {
+                this.value = value;
+            }
         }
     
-        public sealed class Status {
+        public sealed class Status : IStringEnum {
             public const string QUEUED="queued";
             public const string RINGING="ringing";
             public const string IN_PROGRESS="in-progress";
@@ -51,7 +55,7 @@ namespace Twilio.Resources.Api.V2010.Account {
             public const string NO_ANSWER="no-answer";
             public const string CANCELED="canceled";
         
-            private readonly string value;
+            private string value;
             
             public Status(string value) {
                 this.value = value;
@@ -67,6 +71,10 @@ namespace Twilio.Resources.Api.V2010.Account {
             
             public static implicit operator string(Status value) {
                 return value.ToString();
+            }
+            
+            public void FromString(string value) {
+                this.value = value;
             }
         }
     
@@ -199,6 +207,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("start_time")]
         private readonly DateTime? startTime;
         [JsonProperty("status")]
+        [JsonConverter(typeof(StringEnumConverter))]
         private readonly CallResource.Status status;
         [JsonProperty("subresource_uris")]
         private readonly Dictionary<string, string> subresourceUris;
