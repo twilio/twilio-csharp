@@ -29,7 +29,7 @@ namespace Twilio.Deleters.IpMessaging.V1.Service {
          */
         public override async Task ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Get,
+                System.Net.Http.HttpMethod.Delete,
                 Domains.IPMESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Roles/" + this.sid + ""
             );

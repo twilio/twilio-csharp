@@ -143,11 +143,11 @@ namespace Twilio.Updaters.Trunking.V1 {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != null) {
+            if (friendlyName != "") {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (domainName != null) {
+            if (domainName != "") {
                 request.AddPostParam("DomainName", domainName);
             }
             
@@ -159,7 +159,7 @@ namespace Twilio.Updaters.Trunking.V1 {
                 request.AddPostParam("DisasterRecoveryMethod", disasterRecoveryMethod.ToString());
             }
             
-            if (recording != null) {
+            if (recording != "") {
                 request.AddPostParam("Recording", recording);
             }
             

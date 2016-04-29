@@ -17,6 +17,36 @@ namespace Twilio.Tests.Api.V2010.Account {
         }
     
         [Test]
+        public void TestUpdateRequest() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            Request request = new Request(System.Net.Http.HttpMethod.Post,
+                                          Domains.API,
+                                          "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
+            
+            
+            twilioRestClient.Request(request)
+                            .Returns(System.Threading.Tasks.Task.FromResult(
+                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+            
+            try {
+                var task = IncomingPhoneNumberResource.Update("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (AggregateException ae) {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException)) {
+                        throw e;
+                        return false;
+                    }
+            
+                    return true;
+                });
+            }
+            twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
         public void TestUpdateResponse() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
@@ -26,6 +56,36 @@ namespace Twilio.Tests.Api.V2010.Account {
             
             var task = IncomingPhoneNumberResource.Update("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
             task.Wait();
+        }
+    
+        [Test]
+        public void TestFetchRequest() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            Request request = new Request(System.Net.Http.HttpMethod.Get,
+                                          Domains.API,
+                                          "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
+            
+            
+            twilioRestClient.Request(request)
+                            .Returns(System.Threading.Tasks.Task.FromResult(
+                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+            
+            try {
+                var task = IncomingPhoneNumberResource.Fetch("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (AggregateException ae) {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException)) {
+                        throw e;
+                        return false;
+                    }
+            
+                    return true;
+                });
+            }
+            twilioRestClient.Received().Request(request);
         }
     
         [Test]
@@ -42,6 +102,36 @@ namespace Twilio.Tests.Api.V2010.Account {
         }
     
         [Test]
+        public void TestDeleteRequest() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            Request request = new Request(System.Net.Http.HttpMethod.Delete,
+                                          Domains.API,
+                                          "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
+            
+            
+            twilioRestClient.Request(request)
+                            .Returns(System.Threading.Tasks.Task.FromResult(
+                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+            
+            try {
+                var task = IncomingPhoneNumberResource.Delete("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (AggregateException ae) {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException)) {
+                        throw e;
+                        return false;
+                    }
+            
+                    return true;
+                });
+            }
+            twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
         public void TestDeleteResponse() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
@@ -51,6 +141,36 @@ namespace Twilio.Tests.Api.V2010.Account {
             
             var task = IncomingPhoneNumberResource.Delete("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
             task.Wait();
+        }
+    
+        [Test]
+        public void TestReadRequest() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            Request request = new Request(System.Net.Http.HttpMethod.Get,
+                                          Domains.API,
+                                          "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers.json");
+            
+            request.AddQueryParam("PageSize", "50");
+            twilioRestClient.Request(request)
+                            .Returns(System.Threading.Tasks.Task.FromResult(
+                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+            
+            try {
+                var task = IncomingPhoneNumberResource.Read("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (AggregateException ae) {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException)) {
+                        throw e;
+                        return false;
+                    }
+            
+                    return true;
+                });
+            }
+            twilioRestClient.Received().Request(request);
         }
     
         [Test]
@@ -77,6 +197,36 @@ namespace Twilio.Tests.Api.V2010.Account {
             var task = IncomingPhoneNumberResource.Read("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
             task.Wait();
             Assert.NotNull(task.Result);
+        }
+    
+        [Test]
+        public void TestCreateRequest() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            Request request = new Request(System.Net.Http.HttpMethod.Post,
+                                          Domains.API,
+                                          "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers.json");
+            request.AddPostParam("PhoneNumber", Serialize(new Twilio.Types.PhoneNumber("+987654321")));
+            
+            twilioRestClient.Request(request)
+                            .Returns(System.Threading.Tasks.Task.FromResult(
+                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+            
+            try {
+                var task = IncomingPhoneNumberResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new Twilio.Types.PhoneNumber("+987654321")).ExecuteAsync(twilioRestClient);
+            task.Wait();
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (AggregateException ae) {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException)) {
+                        throw e;
+                        return false;
+                    }
+            
+                    return true;
+                });
+            }
+            twilioRestClient.Received().Request(request);
         }
     
         [Test]

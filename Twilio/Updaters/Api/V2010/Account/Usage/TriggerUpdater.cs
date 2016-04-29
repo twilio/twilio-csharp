@@ -119,7 +119,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Usage {
                 request.AddPostParam("CallbackUrl", callbackUrl.ToString());
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != "") {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

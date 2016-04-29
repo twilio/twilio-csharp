@@ -17,6 +17,36 @@ namespace Twilio.Tests.Api.V2010.Account {
         }
     
         [Test]
+        public void TestCreateRequest() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            Request request = new Request(System.Net.Http.HttpMethod.Post,
+                                          Domains.API,
+                                          "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tokens.json");
+            
+            
+            twilioRestClient.Request(request)
+                            .Returns(System.Threading.Tasks.Task.FromResult(
+                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+            
+            try {
+                var task = TokenResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (AggregateException ae) {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException)) {
+                        throw e;
+                        return false;
+                    }
+            
+                    return true;
+                });
+            }
+            twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
         public void TestCreateResponse() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())

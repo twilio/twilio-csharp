@@ -89,11 +89,11 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (attributes != null) {
+            if (attributes != "") {
                 request.AddPostParam("Attributes", attributes);
             }
             
-            if (workflowSid != null) {
+            if (workflowSid != "") {
                 request.AddPostParam("WorkflowSid", workflowSid);
             }
             

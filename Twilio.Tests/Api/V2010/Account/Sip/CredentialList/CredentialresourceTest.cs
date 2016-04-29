@@ -17,6 +17,36 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.CredentialList {
         }
     
         [Test]
+        public void TestReadRequest() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            Request request = new Request(System.Net.Http.HttpMethod.Get,
+                                          Domains.API,
+                                          "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Credentials.json");
+            
+            request.AddQueryParam("PageSize", "50");
+            twilioRestClient.Request(request)
+                            .Returns(System.Threading.Tasks.Task.FromResult(
+                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+            
+            try {
+                var task = CredentialResource.Read("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (AggregateException ae) {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException)) {
+                        throw e;
+                        return false;
+                    }
+            
+                    return true;
+                });
+            }
+            twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
         public void TestReadFullResponse() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
@@ -43,6 +73,37 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.CredentialList {
         }
     
         [Test]
+        public void TestCreateRequest() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+                        Request request = new Request(System.Net.Http.HttpMethod.Post,
+                                                      Domains.API,
+                                                      "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Credentials.json");
+                        request.AddPostParam("Username", Serialize("username"));
+            request.AddPostParam("Password", Serialize("password"));
+                        
+                        twilioRestClient.Request(request)
+                                        .Returns(System.Threading.Tasks.Task.FromResult(
+                                            new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+            
+            try {
+                var task = CredentialResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "username", "password").ExecuteAsync(twilioRestClient);
+            task.Wait();
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (AggregateException ae) {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException)) {
+                        throw e;
+                        return false;
+                    }
+            
+                    return true;
+                });
+            }
+            twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
         public void TestCreateResponse() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
@@ -52,6 +113,36 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.CredentialList {
             
             var task = CredentialResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "username", "password").ExecuteAsync(twilioRestClient);
             task.Wait();
+        }
+    
+        [Test]
+        public void TestFetchRequest() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            Request request = new Request(System.Net.Http.HttpMethod.Get,
+                                          Domains.API,
+                                          "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
+            
+            
+            twilioRestClient.Request(request)
+                            .Returns(System.Threading.Tasks.Task.FromResult(
+                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+            
+            try {
+                var task = CredentialResource.Fetch("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (AggregateException ae) {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException)) {
+                        throw e;
+                        return false;
+                    }
+            
+                    return true;
+                });
+            }
+            twilioRestClient.Received().Request(request);
         }
     
         [Test]
@@ -68,6 +159,37 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.CredentialList {
         }
     
         [Test]
+        public void TestUpdateRequest() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+                        Request request = new Request(System.Net.Http.HttpMethod.Post,
+                                                      Domains.API,
+                                                      "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
+                        request.AddPostParam("Username", Serialize("username"));
+            request.AddPostParam("Password", Serialize("password"));
+                        
+                        twilioRestClient.Request(request)
+                                        .Returns(System.Threading.Tasks.Task.FromResult(
+                                            new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+            
+            try {
+                var task = CredentialResource.Update("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "username", "password").ExecuteAsync(twilioRestClient);
+            task.Wait();
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (AggregateException ae) {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException)) {
+                        throw e;
+                        return false;
+                    }
+            
+                    return true;
+                });
+            }
+            twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
         public void TestUpdateResponse() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
@@ -77,6 +199,36 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.CredentialList {
             
             var task = CredentialResource.Update("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "username", "password").ExecuteAsync(twilioRestClient);
             task.Wait();
+        }
+    
+        [Test]
+        public void TestDeleteRequest() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            Request request = new Request(System.Net.Http.HttpMethod.Delete,
+                                          Domains.API,
+                                          "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
+            
+            
+            twilioRestClient.Request(request)
+                            .Returns(System.Threading.Tasks.Task.FromResult(
+                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+            
+            try {
+                var task = CredentialResource.Delete("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (AggregateException ae) {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException)) {
+                        throw e;
+                        return false;
+                    }
+            
+                    return true;
+                });
+            }
+            twilioRestClient.Received().Request(request);
         }
     
         [Test]

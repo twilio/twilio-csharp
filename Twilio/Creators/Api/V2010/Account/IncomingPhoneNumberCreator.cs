@@ -340,19 +340,19 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("PhoneNumber", phoneNumber.ToString());
             }
             
-            if (areaCode != null) {
+            if (areaCode != "") {
                 request.AddPostParam("AreaCode", areaCode);
             }
             
-            if (apiVersion != null) {
+            if (apiVersion != "") {
                 request.AddPostParam("ApiVersion", apiVersion);
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != "") {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (smsApplicationSid != null) {
+            if (smsApplicationSid != "") {
                 request.AddPostParam("SmsApplicationSid", smsApplicationSid);
             }
             
@@ -380,7 +380,7 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
             
-            if (voiceApplicationSid != null) {
+            if (voiceApplicationSid != "") {
                 request.AddPostParam("VoiceApplicationSid", voiceApplicationSid);
             }
             

@@ -1,6 +1,5 @@
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
@@ -103,8 +102,6 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
         private readonly DateTime? dateUpdated;
         [JsonProperty("url")]
         private readonly Uri url;
-        [JsonProperty("links")]
-        private readonly Dictionary<string, string> links;
     
         public UserResource() {
         
@@ -125,9 +122,7 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
                              [JsonProperty("date_updated")]
                              string dateUpdated, 
                              [JsonProperty("url")]
-                             Uri url, 
-                             [JsonProperty("links")]
-                             Dictionary<string, string> links) {
+                             Uri url) {
             this.sid = sid;
             this.accountSid = accountSid;
             this.serviceSid = serviceSid;
@@ -136,7 +131,6 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.url = url;
-            this.links = links;
         }
     
         /**
@@ -193,13 +187,6 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          */
         public Uri GetUrl() {
             return this.url;
-        }
-    
-        /**
-         * @return The links
-         */
-        public Dictionary<string, string> GetLinks() {
-            return this.links;
         }
     }
 }

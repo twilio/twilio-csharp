@@ -17,6 +17,36 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.Domain {
         }
     
         [Test]
+        public void TestFetchRequest() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            Request request = new Request(System.Net.Http.HttpMethod.Get,
+                                          Domains.API,
+                                          "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlListMappings/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
+            
+            
+            twilioRestClient.Request(request)
+                            .Returns(System.Threading.Tasks.Task.FromResult(
+                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+            
+            try {
+                var task = IpAccessControlListMappingResource.Fetch("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (AggregateException ae) {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException)) {
+                        throw e;
+                        return false;
+                    }
+            
+                    return true;
+                });
+            }
+            twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
         public void TestFetchResponse() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
@@ -30,6 +60,36 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.Domain {
         }
     
         [Test]
+        public void TestCreateRequest() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            Request request = new Request(System.Net.Http.HttpMethod.Post,
+                                          Domains.API,
+                                          "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlListMappings.json");
+            request.AddPostParam("IpAccessControlListSid", Serialize("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
+            
+            twilioRestClient.Request(request)
+                            .Returns(System.Threading.Tasks.Task.FromResult(
+                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+            
+            try {
+                var task = IpAccessControlListMappingResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (AggregateException ae) {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException)) {
+                        throw e;
+                        return false;
+                    }
+            
+                    return true;
+                });
+            }
+            twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
         public void TestCreateResponse() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
@@ -39,6 +99,36 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.Domain {
             
             var task = IpAccessControlListMappingResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
             task.Wait();
+        }
+    
+        [Test]
+        public void TestReadRequest() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            Request request = new Request(System.Net.Http.HttpMethod.Get,
+                                          Domains.API,
+                                          "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlListMappings.json");
+            
+            request.AddQueryParam("PageSize", "50");
+            twilioRestClient.Request(request)
+                            .Returns(System.Threading.Tasks.Task.FromResult(
+                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+            
+            try {
+                var task = IpAccessControlListMappingResource.Read("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (AggregateException ae) {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException)) {
+                        throw e;
+                        return false;
+                    }
+            
+                    return true;
+                });
+            }
+            twilioRestClient.Received().Request(request);
         }
     
         [Test]
@@ -65,6 +155,36 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.Domain {
             var task = IpAccessControlListMappingResource.Read("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
             task.Wait();
             Assert.NotNull(task.Result);
+        }
+    
+        [Test]
+        public void TestDeleteRequest() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            Request request = new Request(System.Net.Http.HttpMethod.Delete,
+                                          Domains.API,
+                                          "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlListMappings/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
+            
+            
+            twilioRestClient.Request(request)
+                            .Returns(System.Threading.Tasks.Task.FromResult(
+                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+            
+            try {
+                var task = IpAccessControlListMappingResource.Delete("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (AggregateException ae) {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException)) {
+                        throw e;
+                        return false;
+                    }
+            
+                    return true;
+                });
+            }
+            twilioRestClient.Received().Request(request);
         }
     
         [Test]

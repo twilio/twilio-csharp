@@ -77,11 +77,11 @@ namespace Twilio.Creators.IpMessaging.V1.Service.Channel {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (body != null) {
+            if (body != "") {
                 request.AddPostParam("Body", body);
             }
             
-            if (from != null) {
+            if (from != "") {
                 request.AddPostParam("From", from);
             }
         }

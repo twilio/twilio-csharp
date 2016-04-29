@@ -298,15 +298,15 @@ namespace Twilio.Creators.Api.V2010.Account.IncomingPhoneNumber {
                 request.AddPostParam("PhoneNumber", phoneNumber.ToString());
             }
             
-            if (apiVersion != null) {
+            if (apiVersion != "") {
                 request.AddPostParam("ApiVersion", apiVersion);
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != "") {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (smsApplicationSid != null) {
+            if (smsApplicationSid != "") {
                 request.AddPostParam("SmsApplicationSid", smsApplicationSid);
             }
             
@@ -334,7 +334,7 @@ namespace Twilio.Creators.Api.V2010.Account.IncomingPhoneNumber {
                 request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
             
-            if (voiceApplicationSid != null) {
+            if (voiceApplicationSid != "") {
                 request.AddPostParam("VoiceApplicationSid", voiceApplicationSid);
             }
             

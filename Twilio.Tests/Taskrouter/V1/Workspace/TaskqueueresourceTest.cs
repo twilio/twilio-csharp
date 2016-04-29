@@ -17,6 +17,36 @@ namespace Twilio.Tests.Taskrouter.V1.Workspace {
         }
     
         [Test]
+        public void TestFetchRequest() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            Request request = new Request(System.Net.Http.HttpMethod.Get,
+                                          Domains.TASKROUTER,
+                                          "/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskQueues/WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            
+            
+            twilioRestClient.Request(request)
+                            .Returns(System.Threading.Tasks.Task.FromResult(
+                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+            
+            try {
+                var task = TaskQueueResource.Fetch("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (AggregateException ae) {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException)) {
+                        throw e;
+                        return false;
+                    }
+            
+                    return true;
+                });
+            }
+            twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
         public void TestFetchResponse() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
@@ -30,6 +60,36 @@ namespace Twilio.Tests.Taskrouter.V1.Workspace {
         }
     
         [Test]
+        public void TestUpdateRequest() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            Request request = new Request(System.Net.Http.HttpMethod.Post,
+                                          Domains.TASKROUTER,
+                                          "/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskQueues/WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            
+            
+            twilioRestClient.Request(request)
+                            .Returns(System.Threading.Tasks.Task.FromResult(
+                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+            
+            try {
+                var task = TaskQueueResource.Update("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (AggregateException ae) {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException)) {
+                        throw e;
+                        return false;
+                    }
+            
+                    return true;
+                });
+            }
+            twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
         public void TestUpdateResponse() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
@@ -39,6 +99,36 @@ namespace Twilio.Tests.Taskrouter.V1.Workspace {
             
             var task = TaskQueueResource.Update("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
             task.Wait();
+        }
+    
+        [Test]
+        public void TestReadRequest() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            Request request = new Request(System.Net.Http.HttpMethod.Get,
+                                          Domains.TASKROUTER,
+                                          "/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskQueues");
+            
+            request.AddQueryParam("PageSize", "50");
+            twilioRestClient.Request(request)
+                            .Returns(System.Threading.Tasks.Task.FromResult(
+                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+            
+            try {
+                var task = TaskQueueResource.Read("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (AggregateException ae) {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException)) {
+                        throw e;
+                        return false;
+                    }
+            
+                    return true;
+                });
+            }
+            twilioRestClient.Received().Request(request);
         }
     
         [Test]
@@ -68,6 +158,38 @@ namespace Twilio.Tests.Taskrouter.V1.Workspace {
         }
     
         [Test]
+        public void TestCreateRequest() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+                        Request request = new Request(System.Net.Http.HttpMethod.Post,
+                                                      Domains.TASKROUTER,
+                                                      "/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskQueues");
+                        request.AddPostParam("FriendlyName", Serialize("friendlyName"));
+            request.AddPostParam("ReservationActivitySid", Serialize("WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
+            request.AddPostParam("AssignmentActivitySid", Serialize("WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
+                        
+                        twilioRestClient.Request(request)
+                                        .Returns(System.Threading.Tasks.Task.FromResult(
+                                            new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+            
+            try {
+                var task = TaskQueueResource.Create("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName", "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (AggregateException ae) {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException)) {
+                        throw e;
+                        return false;
+                    }
+            
+                    return true;
+                });
+            }
+            twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
         public void TestCreateResponse() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
@@ -77,6 +199,36 @@ namespace Twilio.Tests.Taskrouter.V1.Workspace {
             
             var task = TaskQueueResource.Create("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName", "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
             task.Wait();
+        }
+    
+        [Test]
+        public void TestDeleteRequest() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            Request request = new Request(System.Net.Http.HttpMethod.Delete,
+                                          Domains.TASKROUTER,
+                                          "/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskQueues/WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            
+            
+            twilioRestClient.Request(request)
+                            .Returns(System.Threading.Tasks.Task.FromResult(
+                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+            
+            try {
+                var task = TaskQueueResource.Delete("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
+            task.Wait();
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            } catch (AggregateException ae) {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException)) {
+                        throw e;
+                        return false;
+                    }
+            
+                    return true;
+                });
+            }
+            twilioRestClient.Received().Request(request);
         }
     
         [Test]

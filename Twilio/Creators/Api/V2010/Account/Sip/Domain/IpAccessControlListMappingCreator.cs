@@ -65,7 +65,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (ipAccessControlListSid != null) {
+            if (ipAccessControlListSid != "") {
                 request.AddPostParam("IpAccessControlListSid", ipAccessControlListSid);
             }
         }

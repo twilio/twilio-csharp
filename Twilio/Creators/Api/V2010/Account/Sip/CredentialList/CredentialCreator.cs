@@ -68,11 +68,11 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.CredentialList {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (username != null) {
+            if (username != "") {
                 request.AddPostParam("Username", username);
             }
             
-            if (password != null) {
+            if (password != "") {
                 request.AddPostParam("Password", password);
             }
         }

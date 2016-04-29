@@ -125,7 +125,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
                 request.AddPostParam("CallbackUrl", callbackUrl.ToString());
             }
             
-            if (triggerValue != null) {
+            if (triggerValue != "") {
                 request.AddPostParam("TriggerValue", triggerValue);
             }
             
@@ -137,7 +137,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
                 request.AddPostParam("CallbackMethod", callbackMethod.ToString());
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != "") {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             

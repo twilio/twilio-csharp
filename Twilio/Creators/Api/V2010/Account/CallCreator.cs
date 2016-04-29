@@ -247,7 +247,7 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("Url", url.ToString());
             }
             
-            if (applicationSid != null) {
+            if (applicationSid != "") {
                 request.AddPostParam("ApplicationSid", applicationSid);
             }
             
@@ -271,11 +271,11 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
             
-            if (sendDigits != null) {
+            if (sendDigits != "") {
                 request.AddPostParam("SendDigits", sendDigits);
             }
             
-            if (ifMachine != null) {
+            if (ifMachine != "") {
                 request.AddPostParam("IfMachine", ifMachine);
             }
             

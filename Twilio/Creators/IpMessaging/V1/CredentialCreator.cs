@@ -110,7 +110,7 @@ namespace Twilio.Creators.IpMessaging.V1 {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != null) {
+            if (friendlyName != "") {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
@@ -118,11 +118,11 @@ namespace Twilio.Creators.IpMessaging.V1 {
                 request.AddPostParam("Type", type.ToString());
             }
             
-            if (certificate != null) {
+            if (certificate != "") {
                 request.AddPostParam("Certificate", certificate);
             }
             
-            if (privateKey != null) {
+            if (privateKey != "") {
                 request.AddPostParam("PrivateKey", privateKey);
             }
             
@@ -130,7 +130,7 @@ namespace Twilio.Creators.IpMessaging.V1 {
                 request.AddPostParam("Sandbox", sandbox.ToString());
             }
             
-            if (apiKey != null) {
+            if (apiKey != "") {
                 request.AddPostParam("ApiKey", apiKey);
             }
         }

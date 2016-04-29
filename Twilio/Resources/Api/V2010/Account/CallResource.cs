@@ -357,7 +357,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return A string describing the direction of the call. `inbound` for inbound
          *         calls, `outbound-api` for calls initiated via the REST API or
-         *         `outbound-dial` for calls initiated by a `<Dial>` verb.
+         *         `outbound-dial` for calls initiated by a `Dial` verb.
          */
         public string GetDirection() {
             return this.direction;

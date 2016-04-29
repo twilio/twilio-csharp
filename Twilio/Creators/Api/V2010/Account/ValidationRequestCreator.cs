@@ -138,7 +138,7 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("PhoneNumber", phoneNumber.ToString());
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != "") {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
@@ -146,7 +146,7 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("CallDelay", callDelay.ToString());
             }
             
-            if (extension != null) {
+            if (extension != "") {
                 request.AddPostParam("Extension", extension);
             }
             

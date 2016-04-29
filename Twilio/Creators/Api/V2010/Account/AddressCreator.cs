@@ -89,31 +89,31 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (customerName != null) {
+            if (customerName != "") {
                 request.AddPostParam("CustomerName", customerName);
             }
             
-            if (street != null) {
+            if (street != "") {
                 request.AddPostParam("Street", street);
             }
             
-            if (city != null) {
+            if (city != "") {
                 request.AddPostParam("City", city);
             }
             
-            if (region != null) {
+            if (region != "") {
                 request.AddPostParam("Region", region);
             }
             
-            if (postalCode != null) {
+            if (postalCode != "") {
                 request.AddPostParam("PostalCode", postalCode);
             }
             
-            if (isoCountry != null) {
+            if (isoCountry != "") {
                 request.AddPostParam("IsoCountry", isoCountry);
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != "") {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

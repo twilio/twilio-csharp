@@ -342,11 +342,11 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != null) {
+            if (friendlyName != "") {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (apiVersion != null) {
+            if (apiVersion != "") {
                 request.AddPostParam("ApiVersion", apiVersion);
             }
             

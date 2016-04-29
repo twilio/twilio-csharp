@@ -11,6 +11,9 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.Task {
     public class ReservationReader : Reader<ReservationResource> {
         private string workspaceSid;
         private string taskSid;
+        private string status;
+        private string assignmentStatus;
+        private string reservationStatus;
     
         /**
          * Construct a new ReservationReader
@@ -21,6 +24,39 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.Task {
         public ReservationReader(string workspaceSid, string taskSid) {
             this.workspaceSid = workspaceSid;
             this.taskSid = taskSid;
+        }
+    
+        /**
+         * The status
+         * 
+         * @param status The status
+         * @return this
+         */
+        public ReservationReader byStatus(string status) {
+            this.status = status;
+            return this;
+        }
+    
+        /**
+         * The assignment_status
+         * 
+         * @param assignmentStatus The assignment_status
+         * @return this
+         */
+        public ReservationReader byAssignmentStatus(string assignmentStatus) {
+            this.assignmentStatus = assignmentStatus;
+            return this;
+        }
+    
+        /**
+         * The reservation_status
+         * 
+         * @param reservationStatus The reservation_status
+         * @return this
+         */
+        public ReservationReader byReservationStatus(string reservationStatus) {
+            this.reservationStatus = reservationStatus;
+            return this;
         }
     
         /**
@@ -99,6 +135,18 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.Task {
          * @param request Request to add query string arguments to
          */
         private void AddQueryParams(Request request) {
+            if (status != null) {
+                request.AddQueryParam("Status", status);
+            }
+            
+            if (assignmentStatus != null) {
+                request.AddQueryParam("AssignmentStatus", assignmentStatus);
+            }
+            
+            if (reservationStatus != null) {
+                request.AddQueryParam("ReservationStatus", reservationStatus);
+            }
+            
             request.AddQueryParam("PageSize", GetPageSize().ToString());
         }
     }

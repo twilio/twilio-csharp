@@ -83,15 +83,15 @@ namespace Twilio.Creators.Taskrouter.V1 {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != null) {
+            if (friendlyName != "") {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (eventCallbackUrl != null) {
+            if (eventCallbackUrl != "") {
                 request.AddPostParam("EventCallbackUrl", eventCallbackUrl);
             }
             
-            if (template != null) {
+            if (template != "") {
                 request.AddPostParam("Template", template);
             }
         }

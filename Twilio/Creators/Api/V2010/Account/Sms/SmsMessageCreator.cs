@@ -129,7 +129,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sms {
                 request.AddPostParam("From", from.ToString());
             }
             
-            if (body != null) {
+            if (body != "") {
                 request.AddPostParam("Body", body);
             }
             
@@ -141,7 +141,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sms {
                 request.AddPostParam("StatusCallback", statusCallback.ToString());
             }
             
-            if (applicationSid != null) {
+            if (applicationSid != "") {
                 request.AddPostParam("ApplicationSid", applicationSid);
             }
         }

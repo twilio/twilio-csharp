@@ -65,7 +65,7 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (roleSid != null) {
+            if (roleSid != "") {
                 request.AddPostParam("RoleSid", roleSid);
             }
         }

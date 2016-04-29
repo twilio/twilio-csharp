@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Twilio.Http
 {
@@ -72,7 +73,8 @@ namespace Twilio.Http
 			if (obj.GetType () != typeof(Request))
 				return false;
 			Request other = (Request)obj;
-			return method == other.method && uri == other.uri && queryParams == other.queryParams && postParams == other.postParams;
+
+			return method.Equals(other.method) && uri.Equals(other.uri) && queryParams.All(other.queryParams.Contains) && postParams.All(other.postParams.Contains);
 		}
 			
 

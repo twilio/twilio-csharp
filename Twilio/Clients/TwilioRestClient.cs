@@ -14,6 +14,7 @@ namespace Twilio.Clients
 		public const string TASKROUTER = "taskrouter";
 		public const string TRUNKING = "trunking";
 		public const string IPMESSAGING = "ipmessaging";
+		public const string NOTIFICATIONS = "notifications";
 
 		private readonly string value;
 
