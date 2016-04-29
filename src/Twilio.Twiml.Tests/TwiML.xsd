@@ -153,27 +153,26 @@
 	</xs:complexType>
 
   <!-- <Conference> -->
-  <xs:complexType name="ConferenceType">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="beep" type="xs:boolean"></xs:attribute>
-        <xs:attribute name="endConferenceOnExit" type="xs:boolean"></xs:attribute>
-        <xs:attribute name="maxParticipants">
-          <xs:simpleType>
-            <xs:restriction base="xs:int">
-              <xs:minInclusive value="1" />
-              <xs:maxInclusive value="40" />
-            </xs:restriction>
-          </xs:simpleType>
-        </xs:attribute>
-        <!--<xs:attribute name="method" type="MethodType"></xs:attribute>-->
-        <xs:attribute name="muted" type="xs:boolean"></xs:attribute>
-        <xs:attribute name="startConferenceOnEnter" type="xs:boolean"></xs:attribute>
-        <!--<xs:attribute name="url" type="xs:string"></xs:attribute>-->
-        <xs:attribute name="waitMethod" type="xs:string"></xs:attribute>
-        <xs:attribute name="waitUrl" type="xs:string"></xs:attribute>
-      </xs:extension>
-    </xs:simpleContent>
+  <xs:complexType name="ConferenceType" mixed="true">
+    <xs:choice>
+      <xs:element name="Task" type="TaskType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+    </xs:choice>
+    <xs:attribute name="beep" type="xs:boolean"></xs:attribute>
+    <xs:attribute name="endConferenceOnExit" type="xs:boolean"></xs:attribute>
+    <xs:attribute name="maxParticipants">
+      <xs:simpleType>
+        <xs:restriction base="xs:int">
+          <xs:minInclusive value="1" />
+          <xs:maxInclusive value="40" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <!--<xs:attribute name="method" type="MethodType"></xs:attribute>-->
+    <xs:attribute name="muted" type="xs:boolean"></xs:attribute>
+    <xs:attribute name="startConferenceOnEnter" type="xs:boolean"></xs:attribute>
+    <!--<xs:attribute name="url" type="xs:string"></xs:attribute>-->
+    <xs:attribute name="waitMethod" type="xs:string"></xs:attribute>
+    <xs:attribute name="waitUrl" type="xs:string"></xs:attribute>
   </xs:complexType>
 
   <!-- <Sip> -->
@@ -331,6 +330,7 @@
 
   <!-- <Task> -->
   <xs:complexType name="TaskType" mixed="true">
+    <xs:attribute name="workflowSid" type="xs:string"></xs:attribute>
     <xs:attribute name="priority" type="xs:string"></xs:attribute>
     <xs:attribute name="timeout" type="xs:string"></xs:attribute>
   </xs:complexType>

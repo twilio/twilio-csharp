@@ -201,5 +201,30 @@ namespace Twilio.TwiML.Tests
 
             Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
         }       
+
+        [Test]
+        public void Can_Generate_Dial_And_Conf_And_Task()
+        {
+            var task = new Task("{'task':'attributes'}", new {priority = "10", timeout = "30"});
+
+            var response = new TwilioResponse();
+            response.DialConference("room1", task);
+
+            Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
+        }
+
+        [Test]
+        public void Can_Generate_Dial_And_Conf_And_Task_Params()
+        {
+            var response = new TwilioResponse();
+            response.DialConference("room1",
+                new { muted = true, beep = false, waitUrl = "wait.xml", waitMethod = "GET" },
+                new { action = "dial.xml", method = "GET", timeout = "30", hangupOnStar = "true", timeLimit = "1000", callerId = "555-111-2222" },
+                "{'task':'attributes'}",
+                new { priority = "10", timeout = "15"}
+            );
+
+            Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
+        }
 	}
 }

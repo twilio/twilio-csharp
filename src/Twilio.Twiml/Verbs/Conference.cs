@@ -35,7 +35,6 @@ namespace Twilio.TwiML
 			Element = new XElement("Conference");
 
             AllowedChildren.Add("Task");
-            AllowedChildren.Add("TaskAttributes");
 
 			AllowedAttributes.Add("muted");
 			AllowedAttributes.Add("beep");
