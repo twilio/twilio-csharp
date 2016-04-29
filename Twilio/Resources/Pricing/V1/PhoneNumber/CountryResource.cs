@@ -55,7 +55,7 @@ namespace Twilio.Resources.Pricing.V1.PhoneNumber {
         [JsonProperty("phone_number_prices")]
         private readonly List<PhoneNumberPrice> phoneNumberPrices;
         [JsonProperty("price_unit")]
-        private readonly decimal? priceUnit;
+        private readonly string priceUnit;
         [JsonProperty("uri")]
         private readonly Uri uri;
         [JsonProperty("url")]
@@ -72,7 +72,7 @@ namespace Twilio.Resources.Pricing.V1.PhoneNumber {
                                 [JsonProperty("phone_number_prices")]
                                 List<PhoneNumberPrice> phoneNumberPrices, 
                                 [JsonProperty("price_unit")]
-                                decimal? priceUnit, 
+                                string priceUnit, 
                                 [JsonProperty("uri")]
                                 Uri uri, 
                                 [JsonProperty("url")]
@@ -116,7 +116,7 @@ namespace Twilio.Resources.Pricing.V1.PhoneNumber {
         /**
          * @return The price_unit
          */
-        public decimal? GetPriceUnit() {
+        public string GetPriceUnit() {
             return this.priceUnit;
         }
     

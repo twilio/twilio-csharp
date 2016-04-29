@@ -17,15 +17,17 @@ namespace Twilio.Converters
 		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
 			string token = reader.Value as string;
 
-			switch (token.ToLower()) {
-			case "get":
-				return System.Net.Http.HttpMethod.Get;
-			case "post":
-				return System.Net.Http.HttpMethod.Post;
-			case "put":
-				return System.Net.Http.HttpMethod.Put;
-			case "delete":
-				return System.Net.Http.HttpMethod.Delete;
+			if (token != null) {
+				switch (token.ToLower ()) {
+				case "get":
+					return System.Net.Http.HttpMethod.Get;
+				case "post":
+					return System.Net.Http.HttpMethod.Post;
+				case "put":
+					return System.Net.Http.HttpMethod.Put;
+				case "delete":
+					return System.Net.Http.HttpMethod.Delete;
+				}
 			}
 
 			return null;

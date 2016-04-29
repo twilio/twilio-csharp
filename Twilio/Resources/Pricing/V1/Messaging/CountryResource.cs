@@ -57,7 +57,7 @@ namespace Twilio.Resources.Pricing.V1.Messaging {
         [JsonProperty("inbound_sms_prices")]
         private readonly List<InboundSmsPrice> inboundSmsPrices;
         [JsonProperty("price_unit")]
-        private readonly decimal? priceUnit;
+        private readonly string priceUnit;
         [JsonProperty("url")]
         private readonly Uri url;
     
@@ -74,7 +74,7 @@ namespace Twilio.Resources.Pricing.V1.Messaging {
                                 [JsonProperty("inbound_sms_prices")]
                                 List<InboundSmsPrice> inboundSmsPrices, 
                                 [JsonProperty("price_unit")]
-                                decimal? priceUnit, 
+                                string priceUnit, 
                                 [JsonProperty("url")]
                                 Uri url) {
             this.country = country;
@@ -123,7 +123,7 @@ namespace Twilio.Resources.Pricing.V1.Messaging {
         /**
          * @return The price_unit
          */
-        public decimal? GetPriceUnit() {
+        public string GetPriceUnit() {
             return this.priceUnit;
         }
     

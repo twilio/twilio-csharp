@@ -42,6 +42,8 @@ namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
         
             private string value;
             
+            public Category() { }
+            
             public Category(string value) {
                 this.value = value;
             }
@@ -104,9 +106,9 @@ namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
         [JsonProperty("end_date")]
         private readonly DateTime? endDate;
         [JsonProperty("price")]
-        private readonly decimal price;
+        private readonly decimal? price;
         [JsonProperty("price_unit")]
-        private readonly decimal? priceUnit;
+        private readonly string priceUnit;
         [JsonProperty("start_date")]
         private readonly DateTime? startDate;
         [JsonProperty("subresource_uris")]
@@ -137,9 +139,9 @@ namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
                                [JsonProperty("end_date")]
                                string endDate, 
                                [JsonProperty("price")]
-                               decimal price, 
+                               decimal? price, 
                                [JsonProperty("price_unit")]
-                               decimal? priceUnit, 
+                               string priceUnit, 
                                [JsonProperty("start_date")]
                                string startDate, 
                                [JsonProperty("subresource_uris")]
@@ -218,14 +220,14 @@ namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
         /**
          * @return The price
          */
-        public decimal GetPrice() {
+        public decimal? GetPrice() {
             return this.price;
         }
     
         /**
          * @return The price_unit
          */
-        public decimal? GetPriceUnit() {
+        public string GetPriceUnit() {
             return this.priceUnit;
         }
     

@@ -26,6 +26,8 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         
             private string value;
             
+            public Issues() { }
+            
             public Issues(string value) {
                 this.value = value;
             }

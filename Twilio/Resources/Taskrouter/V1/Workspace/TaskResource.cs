@@ -23,6 +23,8 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         
             private string value;
             
+            public Status() { }
+            
             public Status(string value) {
                 this.value = value;
             }

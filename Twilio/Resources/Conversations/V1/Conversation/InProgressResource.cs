@@ -19,6 +19,8 @@ namespace Twilio.Resources.Conversations.V1.Conversation {
         
             private string value;
             
+            public Status() { }
+            
             public Status(string value) {
                 this.value = value;
             }

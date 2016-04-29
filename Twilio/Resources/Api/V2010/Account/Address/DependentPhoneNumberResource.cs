@@ -49,9 +49,9 @@ namespace Twilio.Resources.Api.V2010.Account.Address {
         [JsonProperty("rate_center")]
         private readonly string rateCenter;
         [JsonProperty("latitude")]
-        private readonly decimal latitude;
+        private readonly decimal? latitude;
         [JsonProperty("longitude")]
-        private readonly decimal longitude;
+        private readonly decimal? longitude;
         [JsonProperty("region")]
         private readonly string region;
         [JsonProperty("postal_code")]
@@ -76,9 +76,9 @@ namespace Twilio.Resources.Api.V2010.Account.Address {
                                              [JsonProperty("rate_center")]
                                              string rateCenter, 
                                              [JsonProperty("latitude")]
-                                             decimal latitude, 
+                                             decimal? latitude, 
                                              [JsonProperty("longitude")]
-                                             decimal longitude, 
+                                             decimal? longitude, 
                                              [JsonProperty("region")]
                                              string region, 
                                              [JsonProperty("postal_code")]
@@ -133,14 +133,14 @@ namespace Twilio.Resources.Api.V2010.Account.Address {
         /**
          * @return The latitude
          */
-        public decimal GetLatitude() {
+        public decimal? GetLatitude() {
             return this.latitude;
         }
     
         /**
          * @return The longitude
          */
-        public decimal GetLongitude() {
+        public decimal? GetLongitude() {
             return this.longitude;
         }
     

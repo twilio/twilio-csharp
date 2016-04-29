@@ -28,6 +28,8 @@ namespace Twilio.Resources.Api.V2010.Account {
         
             private string value;
             
+            public Status() { }
+            
             public Status(string value) {
                 this.value = value;
             }
@@ -56,6 +58,8 @@ namespace Twilio.Resources.Api.V2010.Account {
             public const string OUTBOUND_REPLY="outbound-reply";
         
             private string value;
+            
+            public Direction() { }
             
             public Direction(string value) {
                 this.value = value;
@@ -190,9 +194,9 @@ namespace Twilio.Resources.Api.V2010.Account {
         [JsonProperty("num_segments")]
         private readonly string numSegments;
         [JsonProperty("price")]
-        private readonly decimal price;
+        private readonly decimal? price;
         [JsonProperty("price_unit")]
-        private readonly decimal? priceUnit;
+        private readonly string priceUnit;
         [JsonProperty("sid")]
         private readonly string sid;
         [JsonProperty("status")]
@@ -234,9 +238,9 @@ namespace Twilio.Resources.Api.V2010.Account {
                                 [JsonProperty("num_segments")]
                                 string numSegments, 
                                 [JsonProperty("price")]
-                                decimal price, 
+                                decimal? price, 
                                 [JsonProperty("price_unit")]
-                                decimal? priceUnit, 
+                                string priceUnit, 
                                 [JsonProperty("sid")]
                                 string sid, 
                                 [JsonProperty("status")]
@@ -355,14 +359,14 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The amount billed for the message
          */
-        public decimal GetPrice() {
+        public decimal? GetPrice() {
             return this.price;
         }
     
         /**
          * @return The currency in which Price is measured
          */
-        public decimal? GetPriceUnit() {
+        public string GetPriceUnit() {
             return this.priceUnit;
         }
     

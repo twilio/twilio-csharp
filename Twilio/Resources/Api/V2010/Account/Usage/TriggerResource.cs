@@ -45,6 +45,8 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         
             private string value;
             
+            public UsageCategory() { }
+            
             public UsageCategory(string value) {
                 this.value = value;
             }
@@ -74,6 +76,8 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         
             private string value;
             
+            public Recurring() { }
+            
             public Recurring(string value) {
                 this.value = value;
             }
@@ -101,6 +105,8 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
             public const string PRICE="price";
         
             private string value;
+            
+            public TriggerField() { }
             
             public TriggerField(string value) {
                 this.value = value;

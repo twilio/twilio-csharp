@@ -11,9 +11,9 @@ namespace Twilio.Types
 		[JsonProperty("friendly_name")]
 		private readonly string friendlyName;
 		[JsonProperty("base_price")]
-		private readonly double basePrice;
+		private readonly double? basePrice;
 		[JsonProperty("current_price")]
-		private readonly double currentPrice;
+		private readonly double? currentPrice;
 
 		public OutboundPrefixPrice ()
 		{
@@ -27,11 +27,11 @@ namespace Twilio.Types
 			return friendlyName;
 		}
 
-		public double GetBasePrice() {
+		public double? GetBasePrice() {
 			return basePrice;
 		}
 
-		public double GetCurrentPrice() {
+		public double? GetCurrentPrice() {
 			return currentPrice;
 		}
 	}

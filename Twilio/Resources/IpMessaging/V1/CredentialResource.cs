@@ -21,6 +21,8 @@ namespace Twilio.Resources.IpMessaging.V1 {
         
             private string value;
             
+            public PushService() { }
+            
             public PushService(string value) {
                 this.value = value;
             }

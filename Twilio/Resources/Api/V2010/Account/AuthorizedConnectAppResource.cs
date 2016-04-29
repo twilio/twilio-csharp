@@ -19,6 +19,8 @@ namespace Twilio.Resources.Api.V2010.Account {
         
             private string value;
             
+            public Permission() { }
+            
             public Permission(string value) {
                 this.value = value;
             }

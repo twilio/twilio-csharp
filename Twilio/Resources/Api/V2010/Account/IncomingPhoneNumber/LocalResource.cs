@@ -21,6 +21,8 @@ namespace Twilio.Resources.Api.V2010.Account.IncomingPhoneNumber {
         
             private string value;
             
+            public AddressRequirement() { }
+            
             public AddressRequirement(string value) {
                 this.value = value;
             }

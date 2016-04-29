@@ -23,6 +23,8 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         
             private string value;
             
+            public Status() { }
+            
             public Status(string value) {
                 this.value = value;
             }
@@ -110,11 +112,11 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         [JsonProperty("issues")]
         private readonly List<FeedbackIssue> issues;
         [JsonProperty("quality_score_average")]
-        private readonly decimal qualityScoreAverage;
+        private readonly decimal? qualityScoreAverage;
         [JsonProperty("quality_score_median")]
-        private readonly decimal qualityScoreMedian;
+        private readonly decimal? qualityScoreMedian;
         [JsonProperty("quality_score_standard_deviation")]
-        private readonly decimal qualityScoreStandardDeviation;
+        private readonly decimal? qualityScoreStandardDeviation;
         [JsonProperty("sid")]
         private readonly string sid;
         [JsonProperty("start_date")]
@@ -144,11 +146,11 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
                                         [JsonProperty("issues")]
                                         List<FeedbackIssue> issues, 
                                         [JsonProperty("quality_score_average")]
-                                        decimal qualityScoreAverage, 
+                                        decimal? qualityScoreAverage, 
                                         [JsonProperty("quality_score_median")]
-                                        decimal qualityScoreMedian, 
+                                        decimal? qualityScoreMedian, 
                                         [JsonProperty("quality_score_standard_deviation")]
-                                        decimal qualityScoreStandardDeviation, 
+                                        decimal? qualityScoreStandardDeviation, 
                                         [JsonProperty("sid")]
                                         string sid, 
                                         [JsonProperty("start_date")]
@@ -230,21 +232,21 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         /**
          * @return The quality_score_average
          */
-        public decimal GetQualityScoreAverage() {
+        public decimal? GetQualityScoreAverage() {
             return this.qualityScoreAverage;
         }
     
         /**
          * @return The quality_score_median
          */
-        public decimal GetQualityScoreMedian() {
+        public decimal? GetQualityScoreMedian() {
             return this.qualityScoreMedian;
         }
     
         /**
          * @return The quality_score_standard_deviation
          */
-        public decimal GetQualityScoreStandardDeviation() {
+        public decimal? GetQualityScoreStandardDeviation() {
             return this.qualityScoreStandardDeviation;
         }
     

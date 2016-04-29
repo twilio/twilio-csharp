@@ -25,6 +25,8 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         
             private string value;
             
+            public Status() { }
+            
             public Status(string value) {
                 this.value = value;
             }
@@ -53,6 +55,8 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
             public const string OUTBOUND_REPLY="outbound-reply";
         
             private string value;
+            
+            public Direction() { }
             
             public Direction(string value) {
                 this.value = value;
@@ -178,9 +182,9 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         [JsonConverter(typeof(PhoneNumberConverter))]
         private readonly Twilio.Types.PhoneNumber from;
         [JsonProperty("price")]
-        private readonly decimal price;
+        private readonly decimal? price;
         [JsonProperty("price_unit")]
-        private readonly decimal? priceUnit;
+        private readonly string priceUnit;
         [JsonProperty("sid")]
         private readonly string sid;
         [JsonProperty("status")]
@@ -212,9 +216,9 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
                                    [JsonProperty("from")]
                                    Twilio.Types.PhoneNumber from, 
                                    [JsonProperty("price")]
-                                   decimal price, 
+                                   decimal? price, 
                                    [JsonProperty("price_unit")]
-                                   decimal? priceUnit, 
+                                   string priceUnit, 
                                    [JsonProperty("sid")]
                                    string sid, 
                                    [JsonProperty("status")]
@@ -298,14 +302,14 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         /**
          * @return The price
          */
-        public decimal GetPrice() {
+        public decimal? GetPrice() {
             return this.price;
         }
     
         /**
          * @return The price_unit
          */
-        public decimal? GetPriceUnit() {
+        public string GetPriceUnit() {
             return this.priceUnit;
         }
     

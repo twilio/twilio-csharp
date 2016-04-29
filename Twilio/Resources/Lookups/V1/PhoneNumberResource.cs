@@ -19,6 +19,8 @@ namespace Twilio.Resources.Lookups.V1 {
         
             private string value;
             
+            public Type() { }
+            
             public Type(string value) {
                 this.value = value;
             }

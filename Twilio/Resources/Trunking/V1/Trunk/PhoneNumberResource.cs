@@ -23,6 +23,8 @@ namespace Twilio.Resources.Trunking.V1.Trunk {
         
             private string value;
             
+            public AddressRequirement() { }
+            
             public AddressRequirement(string value) {
                 this.value = value;
             }

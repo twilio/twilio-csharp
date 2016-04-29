@@ -31,9 +31,9 @@ namespace Twilio.Types
 		}
 
 		[JsonProperty("base_price")]
-		private readonly double basePrice;
+		private readonly double? basePrice;
 		[JsonProperty("current_price")]
-		private readonly double currentPrice;
+		private readonly double? currentPrice;
 		[JsonProperty("type")]
 		private readonly Type type;
 
@@ -41,11 +41,11 @@ namespace Twilio.Types
 		{
 		}
 
-		private double GetBasePrice() {
+		private double? GetBasePrice() {
 			return basePrice;
 		}
 
-		private double GetCurrentPrice() {
+		private double? GetCurrentPrice() {
 			return currentPrice;
 		}
 

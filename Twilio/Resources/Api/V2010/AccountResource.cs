@@ -22,6 +22,8 @@ namespace Twilio.Resources.Api.V2010 {
         
             private string value;
             
+            public Status() { }
+            
             public Status(string value) {
                 this.value = value;
             }
@@ -48,6 +50,8 @@ namespace Twilio.Resources.Api.V2010 {
             public const string FULL="Full";
         
             private string value;
+            
+            public Type() { }
             
             public Type(string value) {
                 this.value = value;

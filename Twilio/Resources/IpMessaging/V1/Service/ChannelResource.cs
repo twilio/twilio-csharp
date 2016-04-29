@@ -22,6 +22,8 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
         
             private string value;
             
+            public ChannelType() { }
+            
             public ChannelType(string value) {
                 this.value = value;
             }
