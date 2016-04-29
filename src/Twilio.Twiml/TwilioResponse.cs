@@ -187,6 +187,40 @@ namespace Twilio.TwiML
 		}
 
         /// <summary>
+        /// Dials the conference.
+        /// </summary>
+        /// <returns>The conference.</returns>
+        /// <param name="room">The conference room name.</param>
+        /// <param name="task">Task.</param>
+        public TwilioResponse DialConference(string room, Task task)
+        {
+            BeginDial();
+            var conference = new Conference(room);
+            Current.Push(conference);
+            Add(task);
+            Add(Current.Pop());
+            return EndDial();
+        }
+
+        /// <summary>
+        /// Dials the conference.
+        /// </summary>
+        /// <returns>The conference.</returns>
+        /// <param name="room">Room.</param>
+        /// <param name="conferenceAttributes">Conference attributes.</param>
+        /// <param name="dialAttributes">Dial attributes.</param>
+        /// <param name="taskAttributes">Task attributes.</param>
+        /// <param name="taskProperties">Task properties.</param>
+        public TwilioResponse DialConference(string room, object conferenceAttributes, object dialAttributes, string taskAttributes, object taskProperties)
+        {
+            BeginDial(dialAttributes);
+            Current.Push(new Conference(room, conferenceAttributes));
+            if (!string.IsNullOrEmpty(taskAttributes)) { Add(new Task(taskAttributes, taskProperties)); }
+            Add(Current.Pop());
+            return EndDial();
+        }
+
+        /// <summary>
         /// Adds the current caller to a Queue
         /// </summary>
         /// <param name="queue">The Queue to add the user to</param>
