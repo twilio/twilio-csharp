@@ -45,7 +45,7 @@ namespace Twilio.TaskRouter
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the task queues belong to</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListTaskQueuesStatistics(string workspaceSid, Action<TaskQueueStatisticsResult> callback)
+		public virtual void ListTaskQueuesStatistics(string workspaceSid, Action<TaskQueueStatisticsResult> callback)
         {
             ListTaskQueuesStatistics(workspaceSid, new TaskQueuesStatisticsRequest(), callback);
         }
@@ -56,7 +56,7 @@ namespace Twilio.TaskRouter
         /// <param name="workspaceSid">The Sid of the workspace the task queues belong to</param>
         /// <param name="options">Filtering and time interval options.</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListTaskQueuesStatistics(string workspaceSid, TaskQueuesStatisticsRequest options, Action<TaskQueueStatisticsResult> callback)
+		public virtual void ListTaskQueuesStatistics(string workspaceSid, TaskQueuesStatisticsRequest options, Action<TaskQueueStatisticsResult> callback)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
 

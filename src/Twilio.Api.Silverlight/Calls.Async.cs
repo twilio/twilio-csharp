@@ -12,7 +12,7 @@ namespace Twilio
 		/// Sorted by DateUpdated with most-recent calls first.
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListCalls(Action<CallResult> callback)
+		public virtual void ListCalls(Action<CallResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Calls.json";
@@ -26,7 +26,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="options">List filter options. If an property is set the list will be filtered by that value.</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListCalls(CallListRequest options, Action<CallResult> callback)
+		public virtual void ListCalls(CallListRequest options, Action<CallResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Calls.json";
@@ -41,8 +41,6 @@ namespace Twilio
 			if (options.From.HasValue()) request.AddParameter("From", options.From);
 			if (options.To.HasValue()) request.AddParameter("To", options.To);
 			if (options.Status.HasValue()) request.AddParameter("Status", options.Status);
-//			if (options.StartTime.HasValue) request.AddParameter("StartTime", options.StartTime.Value.ToString("yyyy-MM-dd"));
-//			if (options.EndTime.HasValue) request.AddParameter("EndTime", options.EndTime.Value.ToString("yyyy-MM-dd"));
 
 			var startTimeParameterName = GetParameterNameWithEquality(options.StartTimeComparison, "StartTime");
 			var endTimeParameterName = GetParameterNameWithEquality(options.EndTimeComparison, "EndTime");

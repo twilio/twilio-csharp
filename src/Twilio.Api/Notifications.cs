@@ -39,7 +39,8 @@ namespace Twilio
 		/// <param name="messageDate">Only show notifications for this date (in GMT)</param>
 		/// <param name="pageNumber">The page number to start retrieving results from</param>
 		/// <param name="count">How many notifications to return</param>
-        public virtual NotificationResult ListNotifications(int? log, DateTime? messageDate, int? pageNumber, int? count)
+        [System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual NotificationResult ListNotifications(int? log, DateTime? messageDate, int? pageNumber, int? count)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Notifications.json";

@@ -16,7 +16,7 @@ namespace Twilio
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Applications/{ApplicationSid}.json";
-			
+
 			request.AddUrlSegment("ApplicationSid", applicationSid);
 
 			ExecuteAsync<Application>(request, (response) => { callback(response); });
@@ -26,7 +26,7 @@ namespace Twilio
 		/// List applications on current account
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListApplications(Action<ApplicationResult> callback)
+		public virtual void ListApplications(Action<ApplicationResult> callback)
 		{
 			ListApplications(null, null, null, callback);
 		}
@@ -38,7 +38,8 @@ namespace Twilio
 		/// <param name="pageNumber">Page number to start retrieving results from</param>
 		/// <param name="count">How many results to return</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListApplications(string friendlyName, int? pageNumber, int? count, Action<ApplicationResult> callback)
+        [System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListApplications(string friendlyName, int? pageNumber, int? count, Action<ApplicationResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Applications.json";
@@ -60,7 +61,7 @@ namespace Twilio
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/Applications.json";
-			
+
 			Require.Argument("FriendlyName", friendlyName);
 			Validate.IsValidLength(friendlyName, 64);
 			request.AddParameter("FriendlyName", friendlyName);
@@ -98,7 +99,7 @@ namespace Twilio
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/Applications/{ApplicationSid}.json";
 			request.AddUrlSegment("ApplicationSid", applicationSid);
-			
+
 			if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
 			if (options != null)
 			{

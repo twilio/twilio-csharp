@@ -1,12 +1,12 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Twilio.TwiML.Tests
 {
-    [TestClass]
+    [TestFixture]
 	public class GatherTests : TestBase
 	{
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Gather_With_No_Options()
 		{
 			var response = new TwilioResponse();
@@ -15,7 +15,7 @@ namespace Twilio.TwiML.Tests
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Gather_With_All_Options()
 		{
 			var response = new TwilioResponse();
@@ -24,7 +24,7 @@ namespace Twilio.TwiML.Tests
 			Assert.IsTrue(IsValidTwiML(response.ToXDocument()));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Can_Generate_Gather_With_All_Options_and_Nested_Verbs_With_Begin_End()
 		{
 			var response = new TwilioResponse();

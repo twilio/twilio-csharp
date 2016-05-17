@@ -13,10 +13,10 @@ namespace Twilio.IpMessaging
         /// </summary>
         /// <param name="serviceSid">Service Sid</param>
         /// <returns>List of Users</returns>
-        public virtual UserResult ListUsers(string serviceSid)
+		public virtual UserResult ListUsers(string serviceSid)
         {
             Require.Argument("ServiceSid", serviceSid);
-            
+
             var request = new RestRequest(Method.GET);
             request.Resource = "/Services/{ServiceSid}/Users";
 
@@ -50,14 +50,34 @@ namespace Twilio.IpMessaging
         /// </summary>
         /// <param name="serviceSid">Service Sid</param>
         /// <param name="identity">Identity</param>
+        /// <returns>A new User</returns>
+        public virtual User CreateUser(string serviceSid, string identity)
+        {
+            Require.Argument("ServiceSid", serviceSid);
+            Require.Argument("Identity", identity);
+
+            var request = new RestRequest(Method.POST) {Resource = "/Services/{ServiceSid}/Users"};
+
+            request.AddUrlSegment("ServiceSid", serviceSid);
+
+            request.AddParameter("Identity", identity);
+
+            return Execute<User>(request);
+        }
+
+        /// <summary>
+        /// Creates a User.
+        /// </summary>
+        /// <param name="serviceSid">Service Sid</param>
+        /// <param name="identity">Identity</param>
         /// <param name="roleSid">Role Sid</param>
         /// <returns>A new User</returns>
-        public virtual User CreateUser(string serviceSid, string identity, 
+        public virtual User CreateUser(string serviceSid, string identity,
             string roleSid)
         {
             Require.Argument("ServiceSid", serviceSid);
             Require.Argument("Identity", identity);
-            
+
             var request = new RestRequest(Method.POST);
             request.Resource = "/Services/{ServiceSid}/Users";
 
@@ -76,7 +96,7 @@ namespace Twilio.IpMessaging
         /// <param name="userSid">User Sid</param>
         /// <param name="roleSid">Role Sid</param>
         /// <returns>Updated User</returns>
-        public virtual User UpdateUser(string serviceSid, string userSid, 
+        public virtual User UpdateUser(string serviceSid, string userSid,
             string roleSid)
         {
             Require.Argument("ServiceSid", serviceSid);
@@ -99,7 +119,7 @@ namespace Twilio.IpMessaging
         /// <param name="serviceSid">Service Sid</param>
         /// <param name="userSid">User Sid</param>
         /// <returns>User deletion status</returns>
-        public virtual DeleteStatus DeleteUser(string serviceSid, 
+        public virtual DeleteStatus DeleteUser(string serviceSid,
             string userSid)
         {
             Require.Argument("ServiceSid", serviceSid);

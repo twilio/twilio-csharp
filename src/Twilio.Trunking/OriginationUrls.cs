@@ -34,7 +34,7 @@ namespace Twilio.Trunking
         /// Lists the originationUrls.
         /// </summary>
         /// <param name="trunkSid">Trunk sid.</param>
-        public virtual OriginationUrlResult ListOriginationUrls(string trunkSid)
+		public virtual OriginationUrlResult ListOriginationUrls(string trunkSid)
         {
             Require.Argument("TrunkSid", trunkSid);
             var request = new RestRequest();

@@ -13,7 +13,7 @@ namespace Twilio
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}.json";
-			
+
 			return Execute<Account>(request);
 		}
 
@@ -25,7 +25,7 @@ namespace Twilio
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}.json";
-			
+
 			request.AddUrlSegment("AccountSid", accountSid);
 
 			return Execute<Account>(request);
@@ -42,7 +42,7 @@ namespace Twilio
         /// <summary>
         /// List all subaccounts created for the authenticated account. Makes a GET request to the Account List resource.
         /// </summary>
-        public virtual AccountResult ListSubAccounts(string friendlyName)
+		public virtual AccountResult ListSubAccounts(string friendlyName)
         {
             return ListSubAccounts(friendlyName, null, null);
         }
@@ -50,7 +50,8 @@ namespace Twilio
         /// <summary>
         /// List all subaccounts created for the authenticated account. Makes a GET request to the Account List resource.
         /// </summary>
-        public virtual AccountResult ListSubAccounts(int? pageNumber, int? count)
+        [System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual AccountResult ListSubAccounts(int? pageNumber, int? count)
         {
             return ListSubAccounts(String.Empty, pageNumber, count);
         }
@@ -59,7 +60,8 @@ namespace Twilio
         /// List subaccounts that match the provided FriendlyName for the authenticated account. Makes a GET request to the Account List resource.
         /// </summary>
         /// <param name="friendlyName">Name associated with this account</param>
-        public virtual AccountResult ListSubAccounts(string friendlyName, int? pageNumber, int? count)
+        [System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual AccountResult ListSubAccounts(string friendlyName, int? pageNumber, int? count)
         {
             var request = new RestRequest();
             request.Resource = "Accounts.json";
@@ -81,7 +83,7 @@ namespace Twilio
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts.json";
-			
+
 			request.AddParameter("FriendlyName", friendlyName);
 
 			return Execute<Account>(request);
@@ -89,9 +91,9 @@ namespace Twilio
 
 		/// <summary>
 		/// Changes the status of a subaccount. You must be authenticated as the master account to call this method on a subaccount.
-		/// WARNING: When closing an account, Twilio will release all phone numbers assigned to it and shut it down completely. 
-		/// You can't ever use a closed account to make and receive phone calls or send and receive SMS messages. 
-		/// It's closed, gone, kaput. It will still appear in your accounts list, and you will still have access to historical 
+		/// WARNING: When closing an account, Twilio will release all phone numbers assigned to it and shut it down completely.
+		/// You can't ever use a closed account to make and receive phone calls or send and receive SMS messages.
+		/// It's closed, gone, kaput. It will still appear in your accounts list, and you will still have access to historical
 		/// data for that subaccount, but you cannot reopen a closed account.
 		/// </summary>
 		/// <param name="subAccountSid">The subaccount to change the status on</param>
@@ -105,7 +107,7 @@ namespace Twilio
 
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}.json";
-			
+
 			request.AddParameter("Status", status.ToString().ToLower());
 			request.AddUrlSegment("AccountSid", subAccountSid);
 

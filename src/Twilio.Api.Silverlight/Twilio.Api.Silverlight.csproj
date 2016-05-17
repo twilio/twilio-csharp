@@ -23,8 +23,8 @@
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
   </PropertyGroup>
-  <!-- This property group is only here to support building this project using the 
-       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+  <!-- This property group is only here to support building this project using the
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs
        to set the TargetFrameworkVersion to v3.5 -->
   <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
@@ -68,9 +68,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
-    <Reference Include="RestSharp.Silverlight, Version=105.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="RestSharp.Silverlight, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RestSharp.105.0.1\lib\sl4\RestSharp.Silverlight.dll</HintPath>
+      <HintPath>..\packages\RestSharp.105.2.3\lib\sl5\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="system" />
@@ -82,6 +82,12 @@
   <ItemGroup>
     <Compile Include="..\Twilio.Api\Core.cs">
       <Link>Core.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\NextGenListBase.cs">
+      <Link>Model\NextGenListBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio.Api\Model\ListMeta.cs">
+      <Link>Model\ListMeta.cs</Link>
     </Compile>
     <Compile Include="..\Twilio.Api\Model\Account.cs">
       <Link>Model\Account.cs</Link>
@@ -361,7 +367,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>-->

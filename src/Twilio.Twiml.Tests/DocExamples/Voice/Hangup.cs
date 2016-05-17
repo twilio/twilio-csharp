@@ -1,12 +1,12 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Twilio.TwiML.Tests.DocExamples
 {
-    [TestClass]
+    [TestFixture]
 	public class HangupTests : TestBase
 	{
-		[TestMethod]
+		[Test]
 		public void Example_1()
 		{
 			var response = new TwilioResponse();

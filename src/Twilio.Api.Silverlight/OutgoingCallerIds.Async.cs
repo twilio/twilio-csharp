@@ -25,7 +25,7 @@ namespace Twilio
 		/// Returns a list of validated outgoing caller IDs. The list includes paging information.
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListOutgoingCallerIds(Action<OutgoingCallerIdResult> callback)
+		public virtual void ListOutgoingCallerIds(Action<OutgoingCallerIdResult> callback)
 		{
 			ListOutgoingCallerIds(null, null, null, null, callback);
 		}
@@ -38,7 +38,8 @@ namespace Twilio
 		/// <param name="pageNumber">If present, start the results from the specified page</param>
 		/// <param name="count">If present, return the specified number of results, up to 1000</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListOutgoingCallerIds(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<OutgoingCallerIdResult> callback)
+        [System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListOutgoingCallerIds(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<OutgoingCallerIdResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/OutgoingCallerIds.json";

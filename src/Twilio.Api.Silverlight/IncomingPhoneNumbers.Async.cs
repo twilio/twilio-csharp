@@ -16,7 +16,7 @@ namespace Twilio
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}.json";
-			
+
 			request.AddParameter("IncomingPhoneNumberSid", incomingPhoneNumberSid, ParameterType.UrlSegment);
 
 			ExecuteAsync<IncomingPhoneNumber>(request, (response) => callback(response));
@@ -26,7 +26,7 @@ namespace Twilio
 		/// List all incoming phone numbers on current account. Makes a GET request to the IncomingPhoneNumber List resource.
 		/// </summary>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListIncomingPhoneNumbers(Action<IncomingPhoneNumberResult> callback)
+		public virtual void ListIncomingPhoneNumbers(Action<IncomingPhoneNumberResult> callback)
 		{
 			ListIncomingPhoneNumbers(null, null, null, null, callback);
 		}
@@ -39,7 +39,8 @@ namespace Twilio
 		/// <param name="pageNumber">Page number to start retrieving results from</param>
 		/// <param name="count">How many results to return</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListIncomingPhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
+    [System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListIncomingPhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers.json";
@@ -56,7 +57,7 @@ namespace Twilio
         /// <summary>
         /// List all incoming local phone numbers on current account
         /// </summary>
-        public virtual void ListIncomingLocalPhoneNumbers(Action<IncomingPhoneNumberResult> callback)
+		public virtual void ListIncomingLocalPhoneNumbers(Action<IncomingPhoneNumberResult> callback)
         {
             ListIncomingLocalPhoneNumbers(null, null, null, null, callback);
         }
@@ -68,7 +69,8 @@ namespace Twilio
         /// <param name="friendlyName">Optional friendly name to match</param>
         /// <param name="pageNumber">Page number to start retrieving results from</param>
         /// <param name="count">How many results to return</param>
-        public virtual void ListIncomingLocalPhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
+        [System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListIncomingLocalPhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/Local.json";
@@ -85,7 +87,7 @@ namespace Twilio
         /// <summary>
         /// List all incoming toll free phone numbers on current account
         /// </summary>
-        public virtual void ListIncomingTollFreePhoneNumbers(Action<IncomingPhoneNumberResult> callback)
+		public virtual void ListIncomingTollFreePhoneNumbers(Action<IncomingPhoneNumberResult> callback)
         {
             ListIncomingTollFreePhoneNumbers(null, null, null, null, callback);
         }
@@ -97,7 +99,8 @@ namespace Twilio
         /// <param name="friendlyName">Optional friendly name to match</param>
         /// <param name="pageNumber">Page number to start retrieving results from</param>
         /// <param name="count">How many results to return</param>
-        public virtual void ListIncomingTollFreePhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
+        [System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListIncomingTollFreePhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/TollFree.json";
@@ -114,7 +117,7 @@ namespace Twilio
         /// <summary>
         /// List all incoming mobile phone numbers on current account
         /// </summary>
-        public virtual void ListIncomingMobilePhoneNumbers(Action<IncomingPhoneNumberResult> callback)
+		public virtual void ListIncomingMobilePhoneNumbers(Action<IncomingPhoneNumberResult> callback)
         {
             ListIncomingMobilePhoneNumbers(null, null, null, null, callback);
         }
@@ -126,7 +129,8 @@ namespace Twilio
         /// <param name="friendlyName">Optional friendly name to match</param>
         /// <param name="pageNumber">Page number to start retrieving results from</param>
         /// <param name="count">How many results to return</param>
-        public virtual void ListIncomingMobilePhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
+        [System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual void ListIncomingMobilePhoneNumbers(string phoneNumber, string friendlyName, int? pageNumber, int? count, Action<IncomingPhoneNumberResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/Mobile.json";
@@ -149,7 +153,7 @@ namespace Twilio
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers.json";
-			
+
 			if (options.PhoneNumber.HasValue())
 			{
 				request.AddParameter("PhoneNumber", options.PhoneNumber);
@@ -219,7 +223,7 @@ namespace Twilio
 
 			var request = new RestRequest(Method.POST);
 			request.Resource = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}.json";
-			
+
 			request.AddParameter("IncomingPhoneNumberSid", incomingPhoneNumberSid, ParameterType.UrlSegment);
 			AddPhoneNumberOptionsToRequest(request, options);
 			AddSmsOptionsToRequest(request, options);

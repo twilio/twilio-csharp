@@ -46,11 +46,11 @@ namespace Twilio
 		}
 
         /// <summary>
-        /// Returns a list of Messages. 
+        /// Returns a list of Messages.
         /// The list includes paging information.
         /// Makes a GET request to the Message List resource.
         /// </summary>
-        public virtual void ListMessages(Action<MessageResult> callback)
+		public virtual void ListMessages(Action<MessageResult> callback)
         {
             ListMessages(new MessageListRequest(), callback);
         }
@@ -60,7 +60,7 @@ namespace Twilio
         /// Makes a GET request to the Messages List resource.
         /// </summary>
         /// <param name="options">The list filters for the request</param>
-        public virtual void ListMessages(MessageListRequest options, Action<MessageResult> callback)
+		public virtual void ListMessages(MessageListRequest options, Action<MessageResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Messages.json";
@@ -124,7 +124,7 @@ namespace Twilio
         {
             SendMessage(from, to, String.Empty, mediaUrls, string.Empty, callback);
         }
-        
+
 
         /// <summary>
         /// Send a new Message to the specified recipients.
@@ -235,7 +235,7 @@ namespace Twilio
         {
             SendMessageWithService(messagingServiceSid, to, String.Empty, mediaUrls, string.Empty, callback);
         }
-        
+
 
         /// <summary>
         /// Send a new Message to the specified recipients.

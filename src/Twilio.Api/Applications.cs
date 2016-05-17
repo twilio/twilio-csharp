@@ -35,7 +35,8 @@ namespace Twilio
 		/// <param name="friendlyName">Optional friendly name to match</param>
 		/// <param name="pageNumber">Page number to start retrieving results from</param>
 		/// <param name="count">How many results to return</param>
-        public virtual ApplicationResult ListApplications(string friendlyName, int? pageNumber, int? count)
+        [System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public virtual ApplicationResult ListApplications(string friendlyName, int? pageNumber, int? count)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/Applications.json";

@@ -74,7 +74,7 @@ namespace Twilio.TaskRouter
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the activities belong to</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListActivities(string workspaceSid, Action<ActivityResult> callback)
+		public virtual void ListActivities(string workspaceSid, Action<ActivityResult> callback)
         {
             ListActivities(workspaceSid, null, null, null, null, null, callback);
         }
@@ -89,7 +89,7 @@ namespace Twilio.TaskRouter
         /// <param name="beforeSid">Activity Sid to stop retrieving results from</param>
         /// <param name="count">How many results to return</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListActivities(string workspaceSid, bool? available, string friendlyName, string afterSid, string beforeSid, int? count, Action<ActivityResult> callback)
+		public virtual void ListActivities(string workspaceSid, bool? available, string friendlyName, string afterSid, string beforeSid, int? count, Action<ActivityResult> callback)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
 

@@ -8,7 +8,7 @@ namespace Twilio.Pricing
     public partial class PricingClient
     {
 
-        public virtual void ListVoiceCountries(Action<VoiceCountryResult> callback)
+		public virtual void ListVoiceCountries(Action<VoiceCountryResult> callback)
         {
             var request = new RestRequest(Method.GET);
             request.Resource = "Voice/Countries";

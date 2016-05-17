@@ -43,7 +43,7 @@ namespace Twilio.TaskRouter
         /// List workers statistics on current workspace with filters
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the task queues belong to</param>
-        public virtual WorkersStatistics ListWorkersStatistics(string workspaceSid)
+		public virtual WorkersStatistics ListWorkersStatistics(string workspaceSid)
         {
             return ListWorkersStatistics(workspaceSid, new WorkersStatisticsRequest());
         }
@@ -52,8 +52,8 @@ namespace Twilio.TaskRouter
         /// List workers statistics on current workspace with filters
         /// </summary>
         /// <param name="workspaceSid">The Sid of the workspace the task queues belong to</param>
-        /// <param name="options">Filtering options for the statistics request</param>> 
-        public virtual WorkersStatistics ListWorkersStatistics(string workspaceSid, WorkersStatisticsRequest options)
+        /// <param name="options">Filtering options for the statistics request</param>>
+		public virtual WorkersStatistics ListWorkersStatistics(string workspaceSid, WorkersStatisticsRequest options)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
 

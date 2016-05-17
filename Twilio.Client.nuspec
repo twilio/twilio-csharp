@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio.Client</id>
-		<version>3.5.1</version>
+		<version>3.6.0</version>
 		<authors>Twilio</authors>
 		<description>Twilio Client capability token generator for use with the Twilio Client for browsers JavaScript SDK.</description>
 		<language>en-US</language>
@@ -14,6 +14,9 @@
 			<dependency id="JWT" />
 		</dependencies>
 		<releaseNotes>
+      * 3.6.0 - Add GetNextPage and GetPreviousPage
+              - Deprecate absolute paging
+              - Remove VisualStudio test in favor of NUnit
       * 3.5.1 - Fix double endoding on JWT
       * 3.5.0 - Add TaskRouter reservations/workers
       * 3.4.4 - Fixing bad build

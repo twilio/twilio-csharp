@@ -36,7 +36,7 @@ namespace Twilio.Monitor
         /// Lists the events.
         /// </summary>
         /// <param name="options">Options.</param>
-        public virtual EventResult ListEvents(EventListRequest options)
+		public virtual EventResult ListEvents(EventListRequest options)
         {
             var request = new RestRequest();
             request.Resource = "Events";

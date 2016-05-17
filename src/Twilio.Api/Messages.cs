@@ -64,7 +64,7 @@ namespace Twilio
         /// Makes a GET request to the Message List resource.
         /// </summary>
         /// <param name="To"></param>
-        public virtual MessageResult ListMessages(string To)
+		public virtual MessageResult ListMessages(string To)
         {
             return ListMessages(new MessageListRequest() { To = To } );
         }
@@ -74,7 +74,7 @@ namespace Twilio
         /// Makes a GET request to the Messages List resource.
         /// </summary>
         /// <param name="options">The list filters for the request</param>
-        public virtual MessageResult ListMessages(MessageListRequest options)
+		public virtual MessageResult ListMessages(MessageListRequest options)
         {
             var request = new RestRequest();
             request.Resource = "Accounts/{AccountSid}/Messages.json";

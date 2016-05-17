@@ -10,7 +10,7 @@ namespace Twilio
     public partial class TwilioRestClient
     {
         /// <summary>
-        /// Returns a list of Recordings, each representing a recording generated during the course of a phone call. 
+        /// Returns a list of Recordings, each representing a recording generated during the course of a phone call.
         /// The list includes paging information.
         /// Makes a GET request to the Recordings List resource.
         /// </summary>
@@ -20,7 +20,7 @@ namespace Twilio
         }
 
         /// <summary>
-        /// Returns a filtered list of Recordings, each representing a recording generated during the course of a phone call. 
+        /// Returns a filtered list of Recordings, each representing a recording generated during the course of a phone call.
         /// The list includes paging information.
         /// Makes a GET request to the Recordings List resource.
         /// </summary>
@@ -28,7 +28,8 @@ namespace Twilio
         /// <param name="dateCreated">(Optional) The date the recording was created (GMT)</param>
         /// <param name="pageNumber">The page to start retrieving results from</param>
         /// <param name="count">How many results to retrieve</param>
-        public IAsyncOperation<RecordingResult> ListRecordingsAsync(string callSid, DateTimeOffset? dateCreated, int? pageNumber, int? count)
+        [System.Obsolete("Use GetNextPage and GetPreviousPage for paging. Page parameter is scheduled for end of life https://www.twilio.com/engineering/2015/04/16/replacing-absolute-paging-with-relative-paging")]
+		public IAsyncOperation<RecordingResult> ListRecordingsAsync(string callSid, DateTimeOffset? dateCreated, int? pageNumber, int? count)
         {
             return (IAsyncOperation<RecordingResult>)AsyncInfo.Run((System.Threading.CancellationToken ct) => ListRecordingsAsyncInternal(callSid, dateCreated, pageNumber, count));
         }
@@ -88,7 +89,7 @@ namespace Twilio
         }
 
         /// <summary>
-        /// Retrieves the transcription text for the specified recording, if it was transcribed. 
+        /// Retrieves the transcription text for the specified recording, if it was transcribed.
         /// Makes a GET request to a Recording Instance resource.
         /// </summary>
         /// <param name="recordingSid">The Sid of the recording to retreive the transcription for</param>

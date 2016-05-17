@@ -27,7 +27,7 @@ namespace Twilio.Monitor
         /// <summary>
         /// Lists the events.
         /// </summary>
-        public virtual void ListEvents(Action<EventResult> callback)
+		public virtual void ListEvents(Action<EventResult> callback)
         {
             ListEvents(new EventListRequest(), callback);
         }
@@ -35,7 +35,7 @@ namespace Twilio.Monitor
         /// <summary>
         /// Lists the events.
         /// </summary>
-        public virtual void ListEvents(EventListRequest options, Action<EventResult> callback)
+		public virtual void ListEvents(EventListRequest options, Action<EventResult> callback)
         {
             var request = new RestRequest();
             request.Resource = "Events";

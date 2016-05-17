@@ -43,7 +43,7 @@ namespace Twilio
 		/// <param name="pageNumber">(Optional) The page to start retrieving results from</param>
 		/// <param name="count">(Optional) The number of results to retrieve</param>
         [Obsolete("Use ListMessages instead.")]
-        public virtual SmsMessageResult ListSmsMessages(string to, string from, DateTime? dateSent, int? pageNumber, int? count)
+		public virtual SmsMessageResult ListSmsMessages(string to, string from, DateTime? dateSent, int? pageNumber, int? count)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/SMS/Messages.json";
@@ -161,7 +161,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="shortCode">Only show the ShortCode resources that match this pattern. You can specify partial numbers and use '*' as a wildcard for any digit.</param>
 		/// <param name="friendlyName">Only show the ShortCode resources with friendly names that exactly match this name.</param>
-        public virtual SmsShortCodeResult ListShortCodes(string shortCode, string friendlyName)
+		public virtual SmsShortCodeResult ListShortCodes(string shortCode, string friendlyName)
 		{
 			var request = new RestRequest();
 			request.Resource = "Accounts/{AccountSid}/SMS/ShortCodes.json";

@@ -13,7 +13,7 @@ namespace Twilio
 		/// <param name="isoCountryCode">Two-character ISO country code (US or CA)</param>
 		/// <param name="options">Search filter options. Only properties with values set will be used.</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListAvailableLocalPhoneNumbers(string isoCountryCode, AvailablePhoneNumberListRequest options, Action<AvailablePhoneNumberResult> callback)
+		public virtual void ListAvailableLocalPhoneNumbers(string isoCountryCode, AvailablePhoneNumberListRequest options, Action<AvailablePhoneNumberResult> callback)
 		{
 			Require.Argument("isoCountryCode", isoCountryCode);
 
@@ -31,7 +31,7 @@ namespace Twilio
 		/// </summary>
 		/// <param name="isoCountryCode">Two-character ISO country code (US or CA)</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListAvailableTollFreePhoneNumbers(string isoCountryCode, Action<AvailablePhoneNumberResult> callback)
+		public virtual void ListAvailableTollFreePhoneNumbers(string isoCountryCode, Action<AvailablePhoneNumberResult> callback)
 		{
             ListAvailableTollFreePhoneNumbers(isoCountryCode, string.Empty, callback);
         }
@@ -42,7 +42,7 @@ namespace Twilio
 		/// <param name="isoCountryCode">Two-character ISO country code (US or CA)</param>
 		/// <param name="contains">Value to use when filtering search. Accepts numbers or characters.</param>
 		/// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListAvailableTollFreePhoneNumbers(string isoCountryCode, string contains, Action<AvailablePhoneNumberResult> callback)
+		public virtual void ListAvailableTollFreePhoneNumbers(string isoCountryCode, string contains, Action<AvailablePhoneNumberResult> callback)
 		{
             var options = new AvailablePhoneNumberListRequest() { Contains = contains };
             ListAvailableTollFreePhoneNumbers(isoCountryCode, options, callback);
@@ -54,7 +54,7 @@ namespace Twilio
         /// <param name="isoCountryCode">Two-character ISO country code (US or CA)</param>
         /// <param name="contains">Value to use when filtering search. Accepts numbers or characters.</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListAvailableTollFreePhoneNumbers(string isoCountryCode, AvailablePhoneNumberListRequest options, Action<AvailablePhoneNumberResult> callback)
+		public virtual void ListAvailableTollFreePhoneNumbers(string isoCountryCode, AvailablePhoneNumberListRequest options, Action<AvailablePhoneNumberResult> callback)
         {
             Require.Argument("isoCountryCode", isoCountryCode);
 
@@ -63,7 +63,7 @@ namespace Twilio
             request.AddUrlSegment("IsoCountryCode", isoCountryCode);
 
             AddNumberSearchParameters(options, request);
-            
+
             ExecuteAsync<AvailablePhoneNumberResult>(request, (response) => callback(response));
         }
 
@@ -73,7 +73,7 @@ namespace Twilio
         /// <param name="isoCountryCode">Two-character ISO country code (US or CA)</param>
         /// <param name="options">Search filter options. Only properties with values set will be used.</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void ListAvailableMobilePhoneNumbers(string isoCountryCode, AvailablePhoneNumberListRequest options, Action<AvailablePhoneNumberResult> callback)
+		public virtual void ListAvailableMobilePhoneNumbers(string isoCountryCode, AvailablePhoneNumberListRequest options, Action<AvailablePhoneNumberResult> callback)
         {
             Require.Argument("isoCountryCode", isoCountryCode);
 
