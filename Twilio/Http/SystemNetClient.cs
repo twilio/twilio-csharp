@@ -20,10 +20,10 @@ namespace Twilio.Http
 			httpRequest.Properties.Add("Authorization", "Basic" + authBytes);
 			httpRequest.Content = request.EncodePostParams();
             var response = await httpClient.SendAsync(httpRequest);
-			var content = response.Content;
+			var content = await response.Content.ReadAsStringAsync();
 			var statusCode = response.StatusCode;
 
-			return new Response(statusCode, content.ToString());
+			return new Response(statusCode, content);
 		}
 	}
 }
