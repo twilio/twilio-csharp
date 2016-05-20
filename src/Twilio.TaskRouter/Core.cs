@@ -57,14 +57,12 @@ namespace Twilio.TaskRouter
         }
 
         public static string FromDictionaryToJson(Dictionary<string, string> dictionary){
-            string json = JsonConvert.SerializeObject(dictionary);
-            return json;
+            return JsonConvert.SerializeObject(dictionary);
         }
 
         public static Dictionary<string, string> FromJsonToDictionary(string json){
             var jss = new JavaScriptSerializer();
-            var dict = jss.Deserialize<Dictionary<string, string>> (json);
-            return dict;
+            return jss.Deserialize<Dictionary<string, string>> (json);
         }
     }
 }
