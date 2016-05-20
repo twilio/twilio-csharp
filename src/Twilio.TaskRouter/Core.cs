@@ -57,7 +57,7 @@ namespace Twilio.TaskRouter
         }
 
         public static string FromDictionaryToJson(Dictionary<string, string> dictionary){
-            string json = JsonConvert.SerializeObject(dictionary, Formatting.Indented);
+            string json = JsonConvert.SerializeObject(dictionary);
             return json;
         }
 

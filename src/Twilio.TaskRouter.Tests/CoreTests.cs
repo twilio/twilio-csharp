@@ -15,8 +15,9 @@ namespace Twilio.TaskRouter.Tests
         {
             Dictionary<string, string> dictionary = new Dictionary<string, string> ();
             dictionary.Add ("foo", "bar");
+            dictionary.Add ("fuzz", "bazz");
             var json = TaskRouterClient.FromDictionaryToJson (dictionary);
-            Assert.AreEqual ("{\"foo\":\"bar\"}", json);
+            Assert.AreEqual ("{\"foo\":\"bar\",\"fuzz\":\"bazz\"}", json);
         }
 
         [Test]
@@ -24,7 +25,8 @@ namespace Twilio.TaskRouter.Tests
         {
             Dictionary<string, string> expected = new Dictionary<string, string> ();
             expected.Add ("foo", "bar");
-            Dictionary<string, string> dictionary = TaskRouterClient.FromJsonToDictionary ("{\"foo\":\"bar\"}");
+            expected.Add ("fuzz", "bazz");
+            Dictionary<string, string> dictionary = TaskRouterClient.FromJsonToDictionary ("{\"foo\":\"bar\",\"fuzz\":\"bazz\"}");
             Assert.AreEqual (expected, dictionary);
         }
     }
