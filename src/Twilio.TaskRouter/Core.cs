@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Extensions;
 
@@ -55,13 +57,14 @@ namespace Twilio.TaskRouter
         }
 
         public static string FromDictionaryToJson(Dictionary<string, string> dictionary){
-            var kvs = dictionary.Select(kvp => string.Format("\"{0}\":\"{1}\"", kvp.Key, string.Concat(",",kvp.Value)));
-            return string.Concat("{", string.Concat(",", kvs), "}");
+            string json = JsonConvert.SerializeObject(dictionary, Formatting.Indented);
+            return json;
         }
 
         public static Dictionary<string, string> FromJsonToDictionary(string json){
-            string[] keyValueArray = json.Replace("{", string.Empty).Replace("}", string.Empty).Replace("\"", string.Empty).Split(',');
-            return keyValueArray.ToDictionary(item => item.Split(':')[0], item => item.Split(':')[1]);
+            var jss = new JavaScriptSerializer();
+            var dict = jss.Deserialize<Dictionary<string, string>> (json);
+            return dict;
         }
     }
 }
