@@ -44,5 +44,17 @@ namespace Twilio
 		/// The Price Unit of the recording.
 		/// </summary>
 		public string PriceUnit { get; set; }
+		/// <summary>
+		/// The Status of the recording.
+		/// </summary>
+		public string Status { get; set; }
+		/// <summary>
+		/// The Source of the recording.
+		/// </summary>
+		public string Source { get; set; }
+		/// <summary>
+		/// The amount of Channels in the recording.
+		/// </summary>
+		public string Channels { get; set; }
 	}
 }

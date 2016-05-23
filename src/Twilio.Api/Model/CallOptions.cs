@@ -81,5 +81,17 @@ namespace Twilio
 		/// endpoint
 		/// </summary>
 		public string SipAuthPassword { get; set; }
+		/// <summary>
+		/// Set this parameter to specify the number of channels in the final .wav recording. Defaults to 'mono'.
+		/// </summary>
+		public string RecordingChannels { get; set; }
+		/// <summary>
+		/// A URL that Twilio will request when the recording is ready to notify your app.
+		/// </summary>
+		public string RecordingStatusCallback { get; set; }
+		/// <summary>
+		/// The HTTP method Twilio should use when requesting the above URL. Defaults to POST.
+		/// </summary>
+		public string RecordingStatusCallbackMethod { get; set; }
 	}
 }
