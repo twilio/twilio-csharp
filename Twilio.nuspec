@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio</id>
-		<version>4.7.1</version>
+		<version>4.7.2</version>
 		<authors>Twilio</authors>
 		<description>Twilio REST API helper library</description>
 		<language>en-US</language>
@@ -14,6 +14,7 @@
 			<dependency id="RestSharp" version="105.2.2" />
 		</dependencies>
 		<releaseNotes>
+      * 4.7.2 - Add Multi-Track Recording support
       * 4.7.1 - Fix ListRecordings infinite loop
       * 4.7.0 - Add GetNextPage and GetPreviousPage
               - Deprecate absolute paging
