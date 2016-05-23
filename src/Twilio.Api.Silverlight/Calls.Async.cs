@@ -167,6 +167,15 @@ namespace Twilio
 			if (options.Record) request.AddParameter("Record", "true");
 			if (options.SipAuthUsername.HasValue()) request.AddParameter("SipAuthUsername", options.SipAuthUsername);
 			if (options.SipAuthPassword.HasValue()) request.AddParameter("SipAuthPassword", options.SipAuthPassword);
+			if (options.RecordingStatusCallback.HasValue())
+			{
+			    request.AddParameter("RecordingStatusCallback", options.RecordingStatusCallback);
+			}
+			if (options.RecordingStatusCallbackMethod.HasValue())
+			{
+			  request.AddParameter("RecordingStatusCallbackMethod", options.RecordingStatusCallbackMethod); 
+			}
+			if (options.RecordingChannels.HasValue()) request.AddParameter("RecordingChannels", options.RecordingChannels);
 		}
 
 		/// <summary>
@@ -234,6 +243,16 @@ namespace Twilio
                 request.AddParameter("StatusCallbackUrl", options.StatusCallback); //workaround for issue DEVX-401
             }
             if (options.StatusCallbackMethod.HasValue()) request.AddParameter("StatusCallbackMethod", options.StatusCallbackMethod);
+
+            if (options.RecordingStatusCallback.HasValue())
+            {
+                request.AddParameter("RecordingStatusCallback", options.RecordingStatusCallback);
+            }
+            if (options.RecordingStatusCallbackMethod.HasValue())
+            {
+              request.AddParameter("RecordingStatusCallbackMethod", options.RecordingStatusCallbackMethod); 
+            }
+            if (options.RecordingChannels.HasValue()) request.AddParameter("RecordingChannels", options.RecordingChannels);
 
             ExecuteAsync<Call>(request, (response) => callback(response));
         }

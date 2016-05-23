@@ -183,6 +183,17 @@ namespace Twilio
                 request.AddParameter("StatusCallback", options.StatusCallback);
                 request.AddParameter("StatusCallbackUrl", options.StatusCallback); //workaround for issue DEVX-401
             }
+
+            if (options.RecordingStatusCallback.HasValue())
+            {
+                request.AddParameter("RecordingStatusCallback", options.RecordingStatusCallback);
+            }
+            if (options.RecordingStatusCallbackMethod.HasValue())
+            {
+              request.AddParameter("RecordingStatusCallbackMethod", options.RecordingStatusCallbackMethod); 
+            }
+            if (options.RecordingChannels.HasValue()) request.AddParameter("RecordingChannels", options.RecordingChannels);
+
             if (options.StatusCallbackMethod.HasValue()) request.AddParameter("StatusCallbackMethod", options.StatusCallbackMethod);
 
             return Execute<Call>(request);

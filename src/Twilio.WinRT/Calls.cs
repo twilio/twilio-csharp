@@ -198,6 +198,15 @@ namespace Twilio
             if (options.IfMachine.HasValue()) request.AddParameter("IfMachine", options.IfMachine);
             if (options.Timeout.HasValue) request.AddParameter("Timeout", options.Timeout.Value);
             if (options.Record) request.AddParameter("Record", "true");
+            if (options.RecordingStatusCallback.HasValue())
+            {
+                request.AddParameter("RecordingStatusCallback", options.RecordingStatusCallback);
+            }
+            if (options.RecordingStatusCallbackMethod.HasValue())
+            {
+              request.AddParameter("RecordingStatusCallbackMethod", options.RecordingStatusCallbackMethod); 
+            }
+            if (options.RecordingChannels.HasValue()) request.AddParameter("RecordingChannels", options.RecordingChannels);
         }
 
         private void AddCallListOptions(CallListRequest options, RestRequest request)
