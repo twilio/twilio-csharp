@@ -187,7 +187,10 @@ namespace Twilio
             if (options.RecordingStatusCallback.HasValue())
             {
                 request.AddParameter("RecordingStatusCallback", options.RecordingStatusCallback);
-                request.AddParameter("RecordingStatusCallbackMethod", options.RecordingStatusCallbackMethod); 
+            }
+            if (options.RecordingStatusCallbackMethod.HasValue())
+            {
+              request.AddParameter("RecordingStatusCallbackMethod", options.RecordingStatusCallbackMethod); 
             }
             if (options.RecordingChannels.HasValue()) request.AddParameter("RecordingChannels", options.RecordingChannels);
 
