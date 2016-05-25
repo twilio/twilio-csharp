@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
 using System.Xml.Linq;
 
 namespace Twilio.TwiML.Mvc
@@ -44,6 +38,16 @@ namespace Twilio.TwiML.Mvc
 			}
 
 			data.Save(context.Response.Output);
+		}
+
+		public override string ToString()
+		{
+			return data.ToString();
+		}
+		
+		public XDocument GetTwiMLDocument()
+		{
+			return data;
 		}
 	}
 }
