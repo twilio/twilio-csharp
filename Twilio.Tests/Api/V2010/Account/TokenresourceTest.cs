@@ -26,7 +26,8 @@ namespace Twilio.Tests.Api.V2010.Account {
             
             twilioRestClient.Request(request)
                             .Returns(System.Threading.Tasks.Task.FromResult(
-                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+                                new Response(System.Net.HttpStatusCode.InternalServerError,
+                                             "null")));
             
             try {
                 var task = TokenResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);

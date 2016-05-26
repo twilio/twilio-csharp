@@ -26,7 +26,8 @@ namespace Twilio.Tests.Taskrouter.V1.Workspace {
             
             twilioRestClient.Request(request)
                             .Returns(System.Threading.Tasks.Task.FromResult(
-                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+                                new Response(System.Net.HttpStatusCode.InternalServerError,
+                                             "null")));
             
             try {
                 var task = ActivityResource.Fetch("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
@@ -69,7 +70,8 @@ namespace Twilio.Tests.Taskrouter.V1.Workspace {
             
             twilioRestClient.Request(request)
                             .Returns(System.Threading.Tasks.Task.FromResult(
-                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+                                new Response(System.Net.HttpStatusCode.InternalServerError,
+                                             "null")));
             
             try {
                 var task = ActivityResource.Update("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName").ExecuteAsync(twilioRestClient);
@@ -111,7 +113,8 @@ namespace Twilio.Tests.Taskrouter.V1.Workspace {
             
             twilioRestClient.Request(request)
                             .Returns(System.Threading.Tasks.Task.FromResult(
-                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+                                new Response(System.Net.HttpStatusCode.InternalServerError,
+                                             "null")));
             
             try {
                 var task = ActivityResource.Delete("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
@@ -153,7 +156,8 @@ namespace Twilio.Tests.Taskrouter.V1.Workspace {
             request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
                             .Returns(System.Threading.Tasks.Task.FromResult(
-                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+                                new Response(System.Net.HttpStatusCode.InternalServerError,
+                                             "null")));
             
             try {
                 var task = ActivityResource.Read("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
@@ -210,7 +214,8 @@ namespace Twilio.Tests.Taskrouter.V1.Workspace {
                         
                         twilioRestClient.Request(request)
                                         .Returns(System.Threading.Tasks.Task.FromResult(
-                                            new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+                                            new Response(System.Net.HttpStatusCode.InternalServerError,
+                                                         "null")));
             
             try {
                 var task = ActivityResource.Create("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName", true).ExecuteAsync(twilioRestClient);

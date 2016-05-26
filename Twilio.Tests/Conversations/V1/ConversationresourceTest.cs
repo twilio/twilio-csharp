@@ -26,7 +26,8 @@ namespace Twilio.Tests.Conversations.V1 {
             
             twilioRestClient.Request(request)
                             .Returns(System.Threading.Tasks.Task.FromResult(
-                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+                                new Response(System.Net.HttpStatusCode.InternalServerError,
+                                             "null")));
             
             try {
                 var task = ConversationResource.Fetch("CVaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);

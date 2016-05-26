@@ -26,7 +26,8 @@ namespace Twilio.Tests.Api.V2010.Account.Queue {
             
             twilioRestClient.Request(request)
                             .Returns(System.Threading.Tasks.Task.FromResult(
-                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+                                new Response(System.Net.HttpStatusCode.InternalServerError,
+                                             "null")));
             
             try {
                 var task = MemberResource.Fetch("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
@@ -70,7 +71,8 @@ namespace Twilio.Tests.Api.V2010.Account.Queue {
                         
                         twilioRestClient.Request(request)
                                         .Returns(System.Threading.Tasks.Task.FromResult(
-                                            new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+                                            new Response(System.Net.HttpStatusCode.InternalServerError,
+                                                         "null")));
             
             try {
                 var task = MemberResource.Update("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new Uri("https://example.com"), System.Net.Http.HttpMethod.Get).ExecuteAsync(twilioRestClient);
@@ -112,7 +114,8 @@ namespace Twilio.Tests.Api.V2010.Account.Queue {
             request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
                             .Returns(System.Threading.Tasks.Task.FromResult(
-                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+                                new Response(System.Net.HttpStatusCode.InternalServerError,
+                                             "null")));
             
             try {
                 var task = MemberResource.Read("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);

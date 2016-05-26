@@ -26,7 +26,8 @@ namespace Twilio.Tests.Conversations.V1.Conversation {
             request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
                             .Returns(System.Threading.Tasks.Task.FromResult(
-                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+                                new Response(System.Net.HttpStatusCode.InternalServerError,
+                                             "null")));
             
             try {
                 var task = ParticipantResource.Read("CVaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);
@@ -83,7 +84,8 @@ namespace Twilio.Tests.Conversations.V1.Conversation {
                         
                         twilioRestClient.Request(request)
                                         .Returns(System.Threading.Tasks.Task.FromResult(
-                                            new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+                                            new Response(System.Net.HttpStatusCode.InternalServerError,
+                                                         "null")));
             
             try {
                 var task = ParticipantResource.Create("CVaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new Twilio.Types.PhoneNumber("+123456789"), new Twilio.Types.PhoneNumber("+987654321")).ExecuteAsync(twilioRestClient);
@@ -125,7 +127,8 @@ namespace Twilio.Tests.Conversations.V1.Conversation {
             
             twilioRestClient.Request(request)
                             .Returns(System.Threading.Tasks.Task.FromResult(
-                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+                                new Response(System.Net.HttpStatusCode.InternalServerError,
+                                             "null")));
             
             try {
                 var task = ParticipantResource.Fetch("CVaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "PAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").ExecuteAsync(twilioRestClient);

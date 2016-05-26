@@ -26,7 +26,8 @@ namespace Twilio.Tests.Pricing.V1.Voice {
             
             twilioRestClient.Request(request)
                             .Returns(System.Threading.Tasks.Task.FromResult(
-                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+                                new Response(System.Net.HttpStatusCode.InternalServerError,
+                                             "null")));
             
             try {
                 var task = NumberResource.Fetch(new Twilio.Types.PhoneNumber("+987654321")).ExecuteAsync(twilioRestClient);

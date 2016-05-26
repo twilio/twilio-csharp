@@ -26,7 +26,8 @@ namespace Twilio.Tests.Pricing.V1.PhoneNumber {
             request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
                             .Returns(System.Threading.Tasks.Task.FromResult(
-                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+                                new Response(System.Net.HttpStatusCode.InternalServerError,
+                                             "null")));
             
             try {
                 var task = CountryResource.Read().ExecuteAsync(twilioRestClient);
@@ -82,7 +83,8 @@ namespace Twilio.Tests.Pricing.V1.PhoneNumber {
             
             twilioRestClient.Request(request)
                             .Returns(System.Threading.Tasks.Task.FromResult(
-                                new Response(System.Net.HttpStatusCode.InternalServerError, "null")));
+                                new Response(System.Net.HttpStatusCode.InternalServerError,
+                                             "null")));
             
             try {
                 var task = CountryResource.Fetch("US").ExecuteAsync(twilioRestClient);
