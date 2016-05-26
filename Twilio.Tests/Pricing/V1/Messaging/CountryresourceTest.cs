@@ -25,24 +25,22 @@ namespace Twilio.Tests.Pricing.V1.Messaging {
             
             request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
-                            .Returns(System.Threading.Tasks.Task.FromResult(
-                                new Response(System.Net.HttpStatusCode.InternalServerError,
-                                             "null")));
+                            .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
+                                                  "null"));
             
             try {
-                var task = CountryResource.Read().ExecuteAsync(twilioRestClient);
-            task.Wait();
+                CountryResource.Read().Execute(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
                 {
                     if (e.GetType() != typeof(ApiException)) {
                         throw e;
-                        return false;
                     }
             
                     return true;
                 });
+            } catch (ApiException e) {
             }
             twilioRestClient.Received().Request(request);
         }
@@ -56,24 +54,22 @@ namespace Twilio.Tests.Pricing.V1.Messaging {
             
             
             twilioRestClient.Request(request)
-                            .Returns(System.Threading.Tasks.Task.FromResult(
-                                new Response(System.Net.HttpStatusCode.InternalServerError,
-                                             "null")));
+                            .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
+                                                  "null"));
             
             try {
-                var task = CountryResource.Fetch("US").ExecuteAsync(twilioRestClient);
-            task.Wait();
+                CountryResource.Fetch("US").Execute(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
                 {
                     if (e.GetType() != typeof(ApiException)) {
                         throw e;
-                        return false;
                     }
             
                     return true;
                 });
+            } catch (ApiException e) {
             }
             twilioRestClient.Received().Request(request);
         }

@@ -71,6 +71,7 @@ namespace Twilio.Creators.Notifications.V1 {
             return this;
         }
     
+        #if NET40
         /**
          * Make the request to the Twilio API to perform the create
          * 
@@ -85,7 +86,7 @@ namespace Twilio.Creators.Notifications.V1 {
             );
             
             addPostParams(request);
-            Response response = await client.Request(request);
+            Response response = await client.RequestAsync(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ServiceResource creation failed: Unable to connect to server");
@@ -104,6 +105,43 @@ namespace Twilio.Creators.Notifications.V1 {
             
             return ServiceResource.FromJson(response.GetContent());
         }
+        #endif
+    
+        #if NET40
+        /**
+         * Make the request to the Twilio API to perform the create
+         * 
+         * @param client ITwilioRestClient with which to make the request
+         * @return Created ServiceResource
+         */
+        public override ServiceResource Execute(ITwilioRestClient client) {
+            Request request = new Request(
+                System.Net.Http.HttpMethod.Post,
+                Domains.NOTIFICATIONS,
+                "/v1/Services"
+            );
+            
+            addPostParams(request);
+            Response response = client.Request(request);
+            
+            if (response == null) {
+                throw new ApiConnectionException("ServiceResource creation failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_CREATED) {
+                RestException restException = RestException.FromJson(response.GetContent());
+                if (restException == null)
+                    throw new ApiException("Server Error, no content");
+                throw new ApiException(
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
+                    null
+                );
+            }
+            
+            return ServiceResource.FromJson(response.GetContent());
+        }
+        #endif
     
         /**
          * Add the requested post parameters to the Request

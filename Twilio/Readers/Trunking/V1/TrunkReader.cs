@@ -9,13 +9,14 @@ using Twilio.Resources.Trunking.V1;
 namespace Twilio.Readers.Trunking.V1 {
 
     public class TrunkReader : Reader<TrunkResource> {
+        #if NET40
         /**
          * Make the request to the Twilio API to perform the read
          * 
          * @param client ITwilioRestClient with which to make the request
          * @return TrunkResource ResourceSet
          */
-        public override async Task<ResourceSet<TrunkResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<TrunkResource>> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 Domains.TRUNKING,
@@ -24,10 +25,34 @@ namespace Twilio.Readers.Trunking.V1 {
             
             AddQueryParams(request);
             
-            Page<TrunkResource> page = await PageForRequest(client, request);
+            Page<TrunkResource> page = PageForRequest(client, request);
+            
+            return System.Threading.Tasks.Task.FromResult(
+                    new ResourceSet<TrunkResource>(this, client, page));
+        }
+        #endif
+    
+        #if NET40
+        /**
+         * Make the request to the Twilio API to perform the read
+         * 
+         * @param client ITwilioRestClient with which to make the request
+         * @return TrunkResource ResourceSet
+         */
+        public override ResourceSet<TrunkResource> Execute(ITwilioRestClient client) {
+            Request request = new Request(
+                System.Net.Http.HttpMethod.Get,
+                Domains.TRUNKING,
+                "/v1/Trunks"
+            );
+            
+            AddQueryParams(request);
+            
+            Page<TrunkResource> page = PageForRequest(client, request);
             
             return new ResourceSet<TrunkResource>(this, client, page);
         }
+        #endif
     
         /**
          * Retrieve the next page from the Twilio API
@@ -42,10 +67,9 @@ namespace Twilio.Readers.Trunking.V1 {
                 nextPageUri
             );
             
-            var task = PageForRequest(client, request);
-            task.Wait();
+            var result = PageForRequest(client, request);
             
-            return task.Result;
+            return result;
         }
     
         /**
@@ -55,8 +79,8 @@ namespace Twilio.Readers.Trunking.V1 {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<TrunkResource>> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = await client.Request(request);
+        protected Page<TrunkResource> PageForRequest(ITwilioRestClient client, Request request) {
+            Response response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TrunkResource read failed: Unable to connect to server");

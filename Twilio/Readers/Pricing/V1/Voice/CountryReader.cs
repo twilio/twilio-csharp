@@ -9,13 +9,14 @@ using Twilio.Resources.Pricing.V1.Voice;
 namespace Twilio.Readers.Pricing.V1.Voice {
 
     public class CountryReader : Reader<CountryResource> {
+        #if NET40
         /**
          * Make the request to the Twilio API to perform the read
          * 
          * @param client ITwilioRestClient with which to make the request
          * @return CountryResource ResourceSet
          */
-        public override async Task<ResourceSet<CountryResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<CountryResource>> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 Domains.PRICING,
@@ -24,10 +25,34 @@ namespace Twilio.Readers.Pricing.V1.Voice {
             
             AddQueryParams(request);
             
-            Page<CountryResource> page = await PageForRequest(client, request);
+            Page<CountryResource> page = PageForRequest(client, request);
+            
+            return System.Threading.Tasks.Task.FromResult(
+                    new ResourceSet<CountryResource>(this, client, page));
+        }
+        #endif
+    
+        #if NET40
+        /**
+         * Make the request to the Twilio API to perform the read
+         * 
+         * @param client ITwilioRestClient with which to make the request
+         * @return CountryResource ResourceSet
+         */
+        public override ResourceSet<CountryResource> Execute(ITwilioRestClient client) {
+            Request request = new Request(
+                System.Net.Http.HttpMethod.Get,
+                Domains.PRICING,
+                "/v1/Voice/Countries"
+            );
+            
+            AddQueryParams(request);
+            
+            Page<CountryResource> page = PageForRequest(client, request);
             
             return new ResourceSet<CountryResource>(this, client, page);
         }
+        #endif
     
         /**
          * Retrieve the next page from the Twilio API
@@ -42,10 +67,9 @@ namespace Twilio.Readers.Pricing.V1.Voice {
                 nextPageUri
             );
             
-            var task = PageForRequest(client, request);
-            task.Wait();
+            var result = PageForRequest(client, request);
             
-            return task.Result;
+            return result;
         }
     
         /**
@@ -55,8 +79,8 @@ namespace Twilio.Readers.Pricing.V1.Voice {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<CountryResource>> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = await client.Request(request);
+        protected Page<CountryResource> PageForRequest(ITwilioRestClient client, Request request) {
+            Response response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("CountryResource read failed: Unable to connect to server");

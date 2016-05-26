@@ -19,6 +19,7 @@ namespace Twilio.Fetchers.Pricing.V1.PhoneNumber {
             this.isoCountry = isoCountry;
         }
     
+        #if NET40
         /**
          * Make the request to the Twilio API to perform the fetch
          * 
@@ -32,7 +33,7 @@ namespace Twilio.Fetchers.Pricing.V1.PhoneNumber {
                 "/v1/PhoneNumbers/Countries/" + this.isoCountry + ""
             );
             
-            Response response = await client.Request(request);
+            Response response = await client.RequestAsync(request);
             
             if (response == null) {
                 throw new ApiConnectionException("CountryResource fetch failed: Unable to connect to server");
@@ -51,5 +52,41 @@ namespace Twilio.Fetchers.Pricing.V1.PhoneNumber {
             
             return CountryResource.FromJson(response.GetContent());
         }
+        #endif
+    
+        #if NET40
+        /**
+         * Make the request to the Twilio API to perform the fetch
+         * 
+         * @param client ITwilioRestClient with which to make the request
+         * @return Fetched CountryResource
+         */
+        public override CountryResource Execute(ITwilioRestClient client) {
+            Request request = new Request(
+                System.Net.Http.HttpMethod.Get,
+                Domains.PRICING,
+                "/v1/PhoneNumbers/Countries/" + this.isoCountry + ""
+            );
+            
+            Response response = client.Request(request);
+            
+            if (response == null) {
+                throw new ApiConnectionException("CountryResource fetch failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.FromJson(response.GetContent());
+                if (restException == null)
+                    throw new ApiException("Server Error, no content");
+                throw new ApiException(
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
+                    null
+                );
+            }
+            
+            return CountryResource.FromJson(response.GetContent());
+        }
+        #endif
     }
 }

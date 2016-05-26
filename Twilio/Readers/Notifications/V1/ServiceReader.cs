@@ -22,13 +22,14 @@ namespace Twilio.Readers.Notifications.V1 {
             return this;
         }
     
+        #if NET40
         /**
          * Make the request to the Twilio API to perform the read
          * 
          * @param client ITwilioRestClient with which to make the request
          * @return ServiceResource ResourceSet
          */
-        public override async Task<ResourceSet<ServiceResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<ServiceResource>> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 Domains.NOTIFICATIONS,
@@ -37,10 +38,34 @@ namespace Twilio.Readers.Notifications.V1 {
             
             AddQueryParams(request);
             
-            Page<ServiceResource> page = await PageForRequest(client, request);
+            Page<ServiceResource> page = PageForRequest(client, request);
+            
+            return System.Threading.Tasks.Task.FromResult(
+                    new ResourceSet<ServiceResource>(this, client, page));
+        }
+        #endif
+    
+        #if NET40
+        /**
+         * Make the request to the Twilio API to perform the read
+         * 
+         * @param client ITwilioRestClient with which to make the request
+         * @return ServiceResource ResourceSet
+         */
+        public override ResourceSet<ServiceResource> Execute(ITwilioRestClient client) {
+            Request request = new Request(
+                System.Net.Http.HttpMethod.Get,
+                Domains.NOTIFICATIONS,
+                "/v1/Services"
+            );
+            
+            AddQueryParams(request);
+            
+            Page<ServiceResource> page = PageForRequest(client, request);
             
             return new ResourceSet<ServiceResource>(this, client, page);
         }
+        #endif
     
         /**
          * Retrieve the next page from the Twilio API
@@ -55,10 +80,9 @@ namespace Twilio.Readers.Notifications.V1 {
                 nextPageUri
             );
             
-            var task = PageForRequest(client, request);
-            task.Wait();
+            var result = PageForRequest(client, request);
             
-            return task.Result;
+            return result;
         }
     
         /**
@@ -68,8 +92,8 @@ namespace Twilio.Readers.Notifications.V1 {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<ServiceResource>> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = await client.Request(request);
+        protected Page<ServiceResource> PageForRequest(ITwilioRestClient client, Request request) {
+            Response response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ServiceResource read failed: Unable to connect to server");

@@ -45,12 +45,19 @@ namespace Twilio.Http
 			this.password = password;
 		}
         
-        private static System.Net.Http.HttpContent EncodeParameters(List<KeyValuePair<string, string>> data) {
-            return new System.Net.Http.FormUrlEncodedContent(data);
+        private static string EncodeParameters(List<KeyValuePair<string, string>> data) {
+			var result = "";
+
+			foreach (var pair in data) {
+				result += pair.Key + "=" + pair.Value;
+			}
+
+			return result;
         }
         
-        public System.Net.Http.HttpContent EncodePostParams() {
-            return EncodeParameters(this.postParams);
+		public byte[] EncodePostParams() {
+			var content = EncodeParameters(postParams);
+			return System.Text.Encoding.UTF8.GetBytes(content);
         }
 
 		public void AddQueryParam(string name, string value) {

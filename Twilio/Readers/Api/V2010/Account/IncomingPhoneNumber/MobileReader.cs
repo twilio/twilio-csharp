@@ -56,13 +56,14 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
             return this;
         }
     
+        #if NET40
         /**
          * Make the request to the Twilio API to perform the read
          * 
          * @param client ITwilioRestClient with which to make the request
          * @return MobileResource ResourceSet
          */
-        public override async Task<ResourceSet<MobileResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<MobileResource>> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 Domains.API,
@@ -71,10 +72,34 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
             
             AddQueryParams(request);
             
-            Page<MobileResource> page = await PageForRequest(client, request);
+            Page<MobileResource> page = PageForRequest(client, request);
+            
+            return System.Threading.Tasks.Task.FromResult(
+                    new ResourceSet<MobileResource>(this, client, page));
+        }
+        #endif
+    
+        #if NET40
+        /**
+         * Make the request to the Twilio API to perform the read
+         * 
+         * @param client ITwilioRestClient with which to make the request
+         * @return MobileResource ResourceSet
+         */
+        public override ResourceSet<MobileResource> Execute(ITwilioRestClient client) {
+            Request request = new Request(
+                System.Net.Http.HttpMethod.Get,
+                Domains.API,
+                "/2010-04-01/Accounts/" + this.ownerAccountSid + "/IncomingPhoneNumbers/Mobile.json"
+            );
+            
+            AddQueryParams(request);
+            
+            Page<MobileResource> page = PageForRequest(client, request);
             
             return new ResourceSet<MobileResource>(this, client, page);
         }
+        #endif
     
         /**
          * Retrieve the next page from the Twilio API
@@ -89,10 +114,9 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
                 nextPageUri
             );
             
-            var task = PageForRequest(client, request);
-            task.Wait();
+            var result = PageForRequest(client, request);
             
-            return task.Result;
+            return result;
         }
     
         /**
@@ -102,8 +126,8 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<MobileResource>> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = await client.Request(request);
+        protected Page<MobileResource> PageForRequest(ITwilioRestClient client, Request request) {
+            Response response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("MobileResource read failed: Unable to connect to server");

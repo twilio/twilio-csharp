@@ -6,7 +6,10 @@ namespace Twilio.Clients
 {
 	public interface ITwilioRestClient
 	{
-		Task<Response> Request(Request request);
+		#if NET40
+		Task<Response> RequestAsync(Request request);
+		#endif
+		Response Request(Request request);
 		string GetAccountSid();
 		HttpClient GetHttpClient();
 		void SetHttpClient(HttpClient httpClient);

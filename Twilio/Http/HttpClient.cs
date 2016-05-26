@@ -5,7 +5,7 @@ namespace Twilio.Http
 {
     public abstract class HttpClient
     {
-        public abstract Task<Response> MakeRequest(Request request);
+        public abstract Response MakeRequest(Request request);
 
         protected string Authentication(string username, string password)
         {

@@ -9,13 +9,14 @@ using Twilio.Resources.IpMessaging.V1;
 namespace Twilio.Readers.IpMessaging.V1 {
 
     public class CredentialReader : Reader<CredentialResource> {
+        #if NET40
         /**
          * Make the request to the Twilio API to perform the read
          * 
          * @param client ITwilioRestClient with which to make the request
          * @return CredentialResource ResourceSet
          */
-        public override async Task<ResourceSet<CredentialResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<CredentialResource>> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 Domains.IPMESSAGING,
@@ -24,10 +25,34 @@ namespace Twilio.Readers.IpMessaging.V1 {
             
             AddQueryParams(request);
             
-            Page<CredentialResource> page = await PageForRequest(client, request);
+            Page<CredentialResource> page = PageForRequest(client, request);
+            
+            return System.Threading.Tasks.Task.FromResult(
+                    new ResourceSet<CredentialResource>(this, client, page));
+        }
+        #endif
+    
+        #if NET40
+        /**
+         * Make the request to the Twilio API to perform the read
+         * 
+         * @param client ITwilioRestClient with which to make the request
+         * @return CredentialResource ResourceSet
+         */
+        public override ResourceSet<CredentialResource> Execute(ITwilioRestClient client) {
+            Request request = new Request(
+                System.Net.Http.HttpMethod.Get,
+                Domains.IPMESSAGING,
+                "/v1/Credentials"
+            );
+            
+            AddQueryParams(request);
+            
+            Page<CredentialResource> page = PageForRequest(client, request);
             
             return new ResourceSet<CredentialResource>(this, client, page);
         }
+        #endif
     
         /**
          * Retrieve the next page from the Twilio API
@@ -42,10 +67,9 @@ namespace Twilio.Readers.IpMessaging.V1 {
                 nextPageUri
             );
             
-            var task = PageForRequest(client, request);
-            task.Wait();
+            var result = PageForRequest(client, request);
             
-            return task.Result;
+            return result;
         }
     
         /**
@@ -55,8 +79,8 @@ namespace Twilio.Readers.IpMessaging.V1 {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<CredentialResource>> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = await client.Request(request);
+        protected Page<CredentialResource> PageForRequest(ITwilioRestClient client, Request request) {
+            Response response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("CredentialResource read failed: Unable to connect to server");

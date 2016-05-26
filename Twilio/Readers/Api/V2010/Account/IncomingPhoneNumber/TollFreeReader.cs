@@ -56,13 +56,14 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
             return this;
         }
     
+        #if NET40
         /**
          * Make the request to the Twilio API to perform the read
          * 
          * @param client ITwilioRestClient with which to make the request
          * @return TollFreeResource ResourceSet
          */
-        public override async Task<ResourceSet<TollFreeResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<TollFreeResource>> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 Domains.API,
@@ -71,10 +72,34 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
             
             AddQueryParams(request);
             
-            Page<TollFreeResource> page = await PageForRequest(client, request);
+            Page<TollFreeResource> page = PageForRequest(client, request);
+            
+            return System.Threading.Tasks.Task.FromResult(
+                    new ResourceSet<TollFreeResource>(this, client, page));
+        }
+        #endif
+    
+        #if NET40
+        /**
+         * Make the request to the Twilio API to perform the read
+         * 
+         * @param client ITwilioRestClient with which to make the request
+         * @return TollFreeResource ResourceSet
+         */
+        public override ResourceSet<TollFreeResource> Execute(ITwilioRestClient client) {
+            Request request = new Request(
+                System.Net.Http.HttpMethod.Get,
+                Domains.API,
+                "/2010-04-01/Accounts/" + this.ownerAccountSid + "/IncomingPhoneNumbers/TollFree.json"
+            );
+            
+            AddQueryParams(request);
+            
+            Page<TollFreeResource> page = PageForRequest(client, request);
             
             return new ResourceSet<TollFreeResource>(this, client, page);
         }
+        #endif
     
         /**
          * Retrieve the next page from the Twilio API
@@ -89,10 +114,9 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
                 nextPageUri
             );
             
-            var task = PageForRequest(client, request);
-            task.Wait();
+            var result = PageForRequest(client, request);
             
-            return task.Result;
+            return result;
         }
     
         /**
@@ -102,8 +126,8 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<TollFreeResource>> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = await client.Request(request);
+        protected Page<TollFreeResource> PageForRequest(ITwilioRestClient client, Request request) {
+            Response response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TollFreeResource read failed: Unable to connect to server");

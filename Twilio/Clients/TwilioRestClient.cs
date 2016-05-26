@@ -61,13 +61,22 @@ namespace Twilio.Clients
 			if (httpClient != null) {
 				this.httpClient = httpClient;
 			} else {
-				this.httpClient = new SystemNetClient();
+				this.httpClient = new WebRequestClient();
 			}
 		}
 
-		public async Task<Response> Request(Request request) {
+		#if NET40
+		public Task<Response> RequestAsync(Request request) {
 			request.SetAuth(this.username, this.password);
-			var response = await httpClient.MakeRequest(request);
+			var response = httpClient.MakeRequest(request);
+
+			return Task.FromResult(response);
+		}
+		#endif
+
+		public Response Request(Request request) {
+			request.SetAuth(this.username, this.password);
+			var response = httpClient.MakeRequest (request);
 
 			return response;
 		}

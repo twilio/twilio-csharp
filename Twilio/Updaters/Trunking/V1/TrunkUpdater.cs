@@ -103,6 +103,7 @@ namespace Twilio.Updaters.Trunking.V1 {
             return this;
         }
     
+        #if NET40
         /**
          * Make the request to the Twilio API to perform the update
          * 
@@ -117,7 +118,7 @@ namespace Twilio.Updaters.Trunking.V1 {
             );
             
             addPostParams(request);
-            Response response = await client.Request(request);
+            Response response = await client.RequestAsync(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TrunkResource update failed: Unable to connect to server");
@@ -136,6 +137,43 @@ namespace Twilio.Updaters.Trunking.V1 {
             
             return TrunkResource.FromJson(response.GetContent());
         }
+        #endif
+    
+        #if NET40
+        /**
+         * Make the request to the Twilio API to perform the update
+         * 
+         * @param client ITwilioRestClient with which to make the request
+         * @return Updated TrunkResource
+         */
+        public override TrunkResource Execute(ITwilioRestClient client) {
+            Request request = new Request(
+                System.Net.Http.HttpMethod.Post,
+                Domains.TRUNKING,
+                "/v1/Trunks/" + this.sid + ""
+            );
+            
+            addPostParams(request);
+            Response response = client.Request(request);
+            
+            if (response == null) {
+                throw new ApiConnectionException("TrunkResource update failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.FromJson(response.GetContent());
+                if (restException == null)
+                    throw new ApiException("Server Error, no content");
+                throw new ApiException(
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
+                    null
+                );
+            }
+            
+            return TrunkResource.FromJson(response.GetContent());
+        }
+        #endif
     
         /**
          * Add the requested post parameters to the Request

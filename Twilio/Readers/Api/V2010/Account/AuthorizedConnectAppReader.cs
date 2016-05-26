@@ -20,13 +20,14 @@ namespace Twilio.Readers.Api.V2010.Account {
             this.accountSid = accountSid;
         }
     
+        #if NET40
         /**
          * Make the request to the Twilio API to perform the read
          * 
          * @param client ITwilioRestClient with which to make the request
          * @return AuthorizedConnectAppResource ResourceSet
          */
-        public override async Task<ResourceSet<AuthorizedConnectAppResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<AuthorizedConnectAppResource>> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 Domains.API,
@@ -35,10 +36,34 @@ namespace Twilio.Readers.Api.V2010.Account {
             
             AddQueryParams(request);
             
-            Page<AuthorizedConnectAppResource> page = await PageForRequest(client, request);
+            Page<AuthorizedConnectAppResource> page = PageForRequest(client, request);
+            
+            return System.Threading.Tasks.Task.FromResult(
+                    new ResourceSet<AuthorizedConnectAppResource>(this, client, page));
+        }
+        #endif
+    
+        #if NET40
+        /**
+         * Make the request to the Twilio API to perform the read
+         * 
+         * @param client ITwilioRestClient with which to make the request
+         * @return AuthorizedConnectAppResource ResourceSet
+         */
+        public override ResourceSet<AuthorizedConnectAppResource> Execute(ITwilioRestClient client) {
+            Request request = new Request(
+                System.Net.Http.HttpMethod.Get,
+                Domains.API,
+                "/2010-04-01/Accounts/" + this.accountSid + "/AuthorizedConnectApps.json"
+            );
+            
+            AddQueryParams(request);
+            
+            Page<AuthorizedConnectAppResource> page = PageForRequest(client, request);
             
             return new ResourceSet<AuthorizedConnectAppResource>(this, client, page);
         }
+        #endif
     
         /**
          * Retrieve the next page from the Twilio API
@@ -53,10 +78,9 @@ namespace Twilio.Readers.Api.V2010.Account {
                 nextPageUri
             );
             
-            var task = PageForRequest(client, request);
-            task.Wait();
+            var result = PageForRequest(client, request);
             
-            return task.Result;
+            return result;
         }
     
         /**
@@ -66,8 +90,8 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<AuthorizedConnectAppResource>> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = await client.Request(request);
+        protected Page<AuthorizedConnectAppResource> PageForRequest(ITwilioRestClient client, Request request) {
+            Response response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("AuthorizedConnectAppResource read failed: Unable to connect to server");

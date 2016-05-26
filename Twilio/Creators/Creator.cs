@@ -7,5 +7,6 @@ namespace Twilio.Creators
     public abstract class Creator<T> where T : Resource
     {
 		public abstract Task<T> ExecuteAsync(ITwilioRestClient client);
+		public abstract T Execute(ITwilioRestClient client);
     }
 }

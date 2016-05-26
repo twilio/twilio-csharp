@@ -47,13 +47,14 @@ namespace Twilio.Readers.Api.V2010.Account.Call {
             return this;
         }
     
+        #if NET40
         /**
          * Make the request to the Twilio API to perform the read
          * 
          * @param client ITwilioRestClient with which to make the request
          * @return NotificationResource ResourceSet
          */
-        public override async Task<ResourceSet<NotificationResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<NotificationResource>> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 Domains.API,
@@ -62,10 +63,34 @@ namespace Twilio.Readers.Api.V2010.Account.Call {
             
             AddQueryParams(request);
             
-            Page<NotificationResource> page = await PageForRequest(client, request);
+            Page<NotificationResource> page = PageForRequest(client, request);
+            
+            return System.Threading.Tasks.Task.FromResult(
+                    new ResourceSet<NotificationResource>(this, client, page));
+        }
+        #endif
+    
+        #if NET40
+        /**
+         * Make the request to the Twilio API to perform the read
+         * 
+         * @param client ITwilioRestClient with which to make the request
+         * @return NotificationResource ResourceSet
+         */
+        public override ResourceSet<NotificationResource> Execute(ITwilioRestClient client) {
+            Request request = new Request(
+                System.Net.Http.HttpMethod.Get,
+                Domains.API,
+                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/" + this.callSid + "/Notifications.json"
+            );
+            
+            AddQueryParams(request);
+            
+            Page<NotificationResource> page = PageForRequest(client, request);
             
             return new ResourceSet<NotificationResource>(this, client, page);
         }
+        #endif
     
         /**
          * Retrieve the next page from the Twilio API
@@ -80,10 +105,9 @@ namespace Twilio.Readers.Api.V2010.Account.Call {
                 nextPageUri
             );
             
-            var task = PageForRequest(client, request);
-            task.Wait();
+            var result = PageForRequest(client, request);
             
-            return task.Result;
+            return result;
         }
     
         /**
@@ -93,8 +117,8 @@ namespace Twilio.Readers.Api.V2010.Account.Call {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<NotificationResource>> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = await client.Request(request);
+        protected Page<NotificationResource> PageForRequest(ITwilioRestClient client, Request request) {
+            Response response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("NotificationResource read failed: Unable to connect to server");

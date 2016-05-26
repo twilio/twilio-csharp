@@ -23,13 +23,14 @@ namespace Twilio.Readers.IpMessaging.V1.Service.Channel {
             this.channelSid = channelSid;
         }
     
+        #if NET40
         /**
          * Make the request to the Twilio API to perform the read
          * 
          * @param client ITwilioRestClient with which to make the request
          * @return MessageResource ResourceSet
          */
-        public override async Task<ResourceSet<MessageResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<MessageResource>> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 Domains.IPMESSAGING,
@@ -38,10 +39,34 @@ namespace Twilio.Readers.IpMessaging.V1.Service.Channel {
             
             AddQueryParams(request);
             
-            Page<MessageResource> page = await PageForRequest(client, request);
+            Page<MessageResource> page = PageForRequest(client, request);
+            
+            return System.Threading.Tasks.Task.FromResult(
+                    new ResourceSet<MessageResource>(this, client, page));
+        }
+        #endif
+    
+        #if NET40
+        /**
+         * Make the request to the Twilio API to perform the read
+         * 
+         * @param client ITwilioRestClient with which to make the request
+         * @return MessageResource ResourceSet
+         */
+        public override ResourceSet<MessageResource> Execute(ITwilioRestClient client) {
+            Request request = new Request(
+                System.Net.Http.HttpMethod.Get,
+                Domains.IPMESSAGING,
+                "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Messages"
+            );
+            
+            AddQueryParams(request);
+            
+            Page<MessageResource> page = PageForRequest(client, request);
             
             return new ResourceSet<MessageResource>(this, client, page);
         }
+        #endif
     
         /**
          * Retrieve the next page from the Twilio API
@@ -56,10 +81,9 @@ namespace Twilio.Readers.IpMessaging.V1.Service.Channel {
                 nextPageUri
             );
             
-            var task = PageForRequest(client, request);
-            task.Wait();
+            var result = PageForRequest(client, request);
             
-            return task.Result;
+            return result;
         }
     
         /**
@@ -69,8 +93,8 @@ namespace Twilio.Readers.IpMessaging.V1.Service.Channel {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<MessageResource>> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = await client.Request(request);
+        protected Page<MessageResource> PageForRequest(ITwilioRestClient client, Request request) {
+            Response response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("MessageResource read failed: Unable to connect to server");

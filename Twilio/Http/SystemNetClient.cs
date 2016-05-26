@@ -9,7 +9,7 @@ namespace Twilio.Http
 		public SystemNetClient () {
 		}
 
-		public async override Task<Response> MakeRequest(Request request) {
+		public override Response MakeRequest(Request request) {
 			var httpClient = new System.Net.Http.HttpClient();
             var httpRequest = new System.Net.Http.HttpRequestMessage();
             httpRequest.Method = request.GetMethod();
@@ -19,8 +19,13 @@ namespace Twilio.Http
 			var authBytes = Authentication(request.GetUsername(), request.GetPassword());
 			httpRequest.Properties.Add("Authorization", "Basic" + authBytes);
 			httpRequest.Content = request.EncodePostParams();
-            var response = await httpClient.SendAsync(httpRequest);
-			var content = await response.Content.ReadAsStringAsync();
+			var responseTask = httpClient.SendAsync(httpRequest);
+			responseTask.Wait();
+			var response = responseTask.Result;
+			var contentTask = response.Content.ReadAsStringAsync();
+			contentTask.Wait();
+			var content = contentTask.Result;
+
 			var statusCode = response.StatusCode;
 
 			return new Response(statusCode, content);

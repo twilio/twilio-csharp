@@ -25,6 +25,7 @@ namespace Twilio.Deleters.IpMessaging.V1.Service.Channel {
             this.sid = sid;
         }
     
+        #if NET40
         /**
          * Make the request to the Twilio API to perform the delete
          * 
@@ -37,7 +38,7 @@ namespace Twilio.Deleters.IpMessaging.V1.Service.Channel {
                 "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Members/" + this.sid + ""
             );
             
-            Response response = await client.Request(request);
+            Response response = await client.RequestAsync(request);
             
             if (response == null) {
                 throw new ApiConnectionException("MemberResource delete failed: Unable to connect to server");
@@ -56,5 +57,40 @@ namespace Twilio.Deleters.IpMessaging.V1.Service.Channel {
             
             return;
         }
+        #endif
+    
+        #if NET40
+        /**
+         * Make the request to the Twilio API to perform the delete
+         * 
+         * @param client ITwilioRestClient with which to make the request
+         */
+        public override void Execute(ITwilioRestClient client) {
+            Request request = new Request(
+                System.Net.Http.HttpMethod.Delete,
+                Domains.IPMESSAGING,
+                "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Members/" + this.sid + ""
+            );
+            
+            Response response = client.Request(request);
+            
+            if (response == null) {
+                throw new ApiConnectionException("MemberResource delete failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_NO_CONTENT) {
+                RestException restException = RestException.FromJson(response.GetContent());
+                if (restException == null)
+                    throw new ApiException("Server Error, no content");
+                throw new ApiException(
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
+                    null
+                );
+            }
+            
+            return;
+        }
+        #endif
     }
 }

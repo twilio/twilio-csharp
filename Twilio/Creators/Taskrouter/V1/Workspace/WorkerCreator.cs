@@ -46,6 +46,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
             return this;
         }
     
+        #if NET40
         /**
          * Make the request to the Twilio API to perform the create
          * 
@@ -60,7 +61,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
             );
             
             addPostParams(request);
-            Response response = await client.Request(request);
+            Response response = await client.RequestAsync(request);
             
             if (response == null) {
                 throw new ApiConnectionException("WorkerResource creation failed: Unable to connect to server");
@@ -79,6 +80,43 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
             
             return WorkerResource.FromJson(response.GetContent());
         }
+        #endif
+    
+        #if NET40
+        /**
+         * Make the request to the Twilio API to perform the create
+         * 
+         * @param client ITwilioRestClient with which to make the request
+         * @return Created WorkerResource
+         */
+        public override WorkerResource Execute(ITwilioRestClient client) {
+            Request request = new Request(
+                System.Net.Http.HttpMethod.Post,
+                Domains.TASKROUTER,
+                "/v1/Workspaces/" + this.workspaceSid + "/Workers"
+            );
+            
+            addPostParams(request);
+            Response response = client.Request(request);
+            
+            if (response == null) {
+                throw new ApiConnectionException("WorkerResource creation failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_CREATED) {
+                RestException restException = RestException.FromJson(response.GetContent());
+                if (restException == null)
+                    throw new ApiException("Server Error, no content");
+                throw new ApiException(
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
+                    null
+                );
+            }
+            
+            return WorkerResource.FromJson(response.GetContent());
+        }
+        #endif
     
         /**
          * Add the requested post parameters to the Request

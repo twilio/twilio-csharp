@@ -33,13 +33,14 @@ namespace Twilio.Readers.Api.V2010.Account {
             return this;
         }
     
+        #if NET40
         /**
          * Make the request to the Twilio API to perform the read
          * 
          * @param client ITwilioRestClient with which to make the request
          * @return ApplicationResource ResourceSet
          */
-        public override async Task<ResourceSet<ApplicationResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<ApplicationResource>> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 Domains.API,
@@ -48,10 +49,34 @@ namespace Twilio.Readers.Api.V2010.Account {
             
             AddQueryParams(request);
             
-            Page<ApplicationResource> page = await PageForRequest(client, request);
+            Page<ApplicationResource> page = PageForRequest(client, request);
+            
+            return System.Threading.Tasks.Task.FromResult(
+                    new ResourceSet<ApplicationResource>(this, client, page));
+        }
+        #endif
+    
+        #if NET40
+        /**
+         * Make the request to the Twilio API to perform the read
+         * 
+         * @param client ITwilioRestClient with which to make the request
+         * @return ApplicationResource ResourceSet
+         */
+        public override ResourceSet<ApplicationResource> Execute(ITwilioRestClient client) {
+            Request request = new Request(
+                System.Net.Http.HttpMethod.Get,
+                Domains.API,
+                "/2010-04-01/Accounts/" + this.accountSid + "/Applications.json"
+            );
+            
+            AddQueryParams(request);
+            
+            Page<ApplicationResource> page = PageForRequest(client, request);
             
             return new ResourceSet<ApplicationResource>(this, client, page);
         }
+        #endif
     
         /**
          * Retrieve the next page from the Twilio API
@@ -66,10 +91,9 @@ namespace Twilio.Readers.Api.V2010.Account {
                 nextPageUri
             );
             
-            var task = PageForRequest(client, request);
-            task.Wait();
+            var result = PageForRequest(client, request);
             
-            return task.Result;
+            return result;
         }
     
         /**
@@ -79,8 +103,8 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<ApplicationResource>> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = await client.Request(request);
+        protected Page<ApplicationResource> PageForRequest(ITwilioRestClient client, Request request) {
+            Response response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ApplicationResource read failed: Unable to connect to server");

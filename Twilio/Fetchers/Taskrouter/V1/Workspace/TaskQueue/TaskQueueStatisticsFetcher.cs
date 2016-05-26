@@ -72,6 +72,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.TaskQueue {
             return this;
         }
     
+        #if NET40
         /**
          * Make the request to the Twilio API to perform the fetch
          * 
@@ -89,7 +90,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.TaskQueue {
                 AddQueryParams(request);
             
             
-            Response response = await client.Request(request);
+            Response response = await client.RequestAsync(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TaskQueueStatisticsResource fetch failed: Unable to connect to server");
@@ -108,6 +109,46 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.TaskQueue {
             
             return TaskQueueStatisticsResource.FromJson(response.GetContent());
         }
+        #endif
+    
+        #if NET40
+        /**
+         * Make the request to the Twilio API to perform the fetch
+         * 
+         * @param client ITwilioRestClient with which to make the request
+         * @return Fetched TaskQueueStatisticsResource
+         */
+        public override TaskQueueStatisticsResource Execute(ITwilioRestClient client) {
+            Request request = new Request(
+                System.Net.Http.HttpMethod.Get,
+                Domains.TASKROUTER,
+                "/v1/Workspaces/" + this.workspaceSid + "/TaskQueues/" + this.taskQueueSid + "/Statistics"
+            );
+            
+            
+                AddQueryParams(request);
+            
+            
+            Response response = client.Request(request);
+            
+            if (response == null) {
+                throw new ApiConnectionException("TaskQueueStatisticsResource fetch failed: Unable to connect to server");
+            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+                RestException restException = RestException.FromJson(response.GetContent());
+                if (restException == null)
+                    throw new ApiException("Server Error, no content");
+                throw new ApiException(
+                    restException.GetMessage(),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    restException.GetStatus(),
+                    null
+                );
+            }
+            
+            return TaskQueueStatisticsResource.FromJson(response.GetContent());
+        }
+        #endif
     
         /**
          * Add the requested query string arguments to the Request

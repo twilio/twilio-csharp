@@ -9,13 +9,14 @@ using Twilio.Resources.Conversations.V1.Conversation;
 namespace Twilio.Readers.Conversations.V1.Conversation {
 
     public class CompletedReader : Reader<CompletedResource> {
+        #if NET40
         /**
          * Make the request to the Twilio API to perform the read
          * 
          * @param client ITwilioRestClient with which to make the request
          * @return CompletedResource ResourceSet
          */
-        public override async Task<ResourceSet<CompletedResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<CompletedResource>> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 System.Net.Http.HttpMethod.Get,
                 Domains.CONVERSATIONS,
@@ -24,10 +25,34 @@ namespace Twilio.Readers.Conversations.V1.Conversation {
             
             AddQueryParams(request);
             
-            Page<CompletedResource> page = await PageForRequest(client, request);
+            Page<CompletedResource> page = PageForRequest(client, request);
+            
+            return System.Threading.Tasks.Task.FromResult(
+                    new ResourceSet<CompletedResource>(this, client, page));
+        }
+        #endif
+    
+        #if NET40
+        /**
+         * Make the request to the Twilio API to perform the read
+         * 
+         * @param client ITwilioRestClient with which to make the request
+         * @return CompletedResource ResourceSet
+         */
+        public override ResourceSet<CompletedResource> Execute(ITwilioRestClient client) {
+            Request request = new Request(
+                System.Net.Http.HttpMethod.Get,
+                Domains.CONVERSATIONS,
+                "/v1/Conversations/Completed"
+            );
+            
+            AddQueryParams(request);
+            
+            Page<CompletedResource> page = PageForRequest(client, request);
             
             return new ResourceSet<CompletedResource>(this, client, page);
         }
+        #endif
     
         /**
          * Retrieve the next page from the Twilio API
@@ -42,10 +67,9 @@ namespace Twilio.Readers.Conversations.V1.Conversation {
                 nextPageUri
             );
             
-            var task = PageForRequest(client, request);
-            task.Wait();
+            var result = PageForRequest(client, request);
             
-            return task.Result;
+            return result;
         }
     
         /**
@@ -55,8 +79,8 @@ namespace Twilio.Readers.Conversations.V1.Conversation {
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected async Task<Page<CompletedResource>> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = await client.Request(request);
+        protected Page<CompletedResource> PageForRequest(ITwilioRestClient client, Request request) {
+            Response response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("CompletedResource read failed: Unable to connect to server");
