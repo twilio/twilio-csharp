@@ -1,4 +1,6 @@
+#if NET40
 using System.Threading.Tasks;
+#endif
 using Twilio.Resources;
 using Twilio.Clients;
 
@@ -8,7 +10,9 @@ namespace Twilio.Readers
     {
 		private int pageSize = 50;
 
+		#if NET40
         public abstract Task<ResourceSet<T>> ExecuteAsync(ITwilioRestClient client);
+		#endif
         public abstract ResourceSet<T> Execute(ITwilioRestClient client);
 
 		public abstract Page<T> NextPage(string nextPageUri, ITwilioRestClient client);

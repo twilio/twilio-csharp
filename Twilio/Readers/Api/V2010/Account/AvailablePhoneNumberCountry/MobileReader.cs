@@ -1,10 +1,13 @@
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers;
 using Twilio.Resources;
 using Twilio.Resources.Api.V2010.Account.AvailablePhoneNumberCountry;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
 
@@ -140,7 +143,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          */
         public override Task<ResourceSet<MobileResource>> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Get,
+                Twilio.Http.HttpMethod.GET,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/AvailablePhoneNumbers/" + this.countryCode + "/Mobile.json"
             );
@@ -154,7 +157,6 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the read
          * 
@@ -163,7 +165,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          */
         public override ResourceSet<MobileResource> Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Get,
+                Twilio.Http.HttpMethod.GET,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/AvailablePhoneNumbers/" + this.countryCode + "/Mobile.json"
             );
@@ -174,7 +176,6 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
             
             return new ResourceSet<MobileResource>(this, client, page);
         }
-        #endif
     
         /**
          * Retrieve the next page from the Twilio API
@@ -185,7 +186,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          */
         public override Page<MobileResource> NextPage(string nextPageUri, ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Get,
+                Twilio.Http.HttpMethod.GET,
                 nextPageUri
             );
             
@@ -206,7 +207,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
             
             if (response == null) {
                 throw new ApiConnectionException("MobileResource read failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");

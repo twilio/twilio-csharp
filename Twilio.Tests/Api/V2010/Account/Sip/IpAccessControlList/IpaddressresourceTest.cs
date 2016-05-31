@@ -19,7 +19,7 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.IpAccessControlList {
         [Test]
         public void TestReadRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(System.Net.Http.HttpMethod.Get,
+            Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAddresses.json");
             
@@ -70,7 +70,7 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.IpAccessControlList {
         [Test]
         public void TestCreateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-                        Request request = new Request(System.Net.Http.HttpMethod.Post,
+                        Request request = new Request(Twilio.Http.HttpMethod.POST,
                                                       Domains.API,
                                                       "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAddresses.json");
                         request.AddPostParam("FriendlyName", Serialize("friendlyName"));
@@ -110,7 +110,7 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.IpAccessControlList {
         [Test]
         public void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(System.Net.Http.HttpMethod.Get,
+            Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAddresses/IPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
             
@@ -150,7 +150,7 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.IpAccessControlList {
         [Test]
         public void TestUpdateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-                        Request request = new Request(System.Net.Http.HttpMethod.Post,
+                        Request request = new Request(Twilio.Http.HttpMethod.POST,
                                                       Domains.API,
                                                       "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAddresses/IPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
                         request.AddPostParam("IpAddress", Serialize("ipAddress"));
@@ -190,7 +190,7 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.IpAccessControlList {
         [Test]
         public void TestDeleteRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(System.Net.Http.HttpMethod.Delete,
+            Request request = new Request(Twilio.Http.HttpMethod.DELETE,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAddresses/IPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
             

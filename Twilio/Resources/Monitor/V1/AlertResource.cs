@@ -1,6 +1,5 @@
 using Newtonsoft.Json;
 using System;
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Deleters.Monitor.V1;
@@ -77,7 +76,7 @@ namespace Twilio.Resources.Monitor.V1 {
         private readonly string moreInfo;
         [JsonProperty("request_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly System.Net.Http.HttpMethod requestMethod;
+        private readonly Twilio.Http.HttpMethod requestMethod;
         [JsonProperty("request_url")]
         private readonly string requestUrl;
         [JsonProperty("request_variables")]
@@ -116,7 +115,7 @@ namespace Twilio.Resources.Monitor.V1 {
                               [JsonProperty("more_info")]
                               string moreInfo, 
                               [JsonProperty("request_method")]
-                              System.Net.Http.HttpMethod requestMethod, 
+                              Twilio.Http.HttpMethod requestMethod, 
                               [JsonProperty("request_url")]
                               string requestUrl, 
                               [JsonProperty("request_variables")]
@@ -216,7 +215,7 @@ namespace Twilio.Resources.Monitor.V1 {
         /**
          * @return The request_method
          */
-        public System.Net.Http.HttpMethod GetRequestMethod() {
+        public Twilio.Http.HttpMethod GetRequestMethod() {
             return this.requestMethod;
         }
     

@@ -19,7 +19,7 @@ namespace Twilio.Tests.Conversations.V1.Conversation {
         [Test]
         public void TestReadRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(System.Net.Http.HttpMethod.Get,
+            Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.CONVERSATIONS,
                                           "/v1/Conversations/CVaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants");
             
@@ -70,7 +70,7 @@ namespace Twilio.Tests.Conversations.V1.Conversation {
         [Test]
         public void TestCreateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-                        Request request = new Request(System.Net.Http.HttpMethod.Post,
+                        Request request = new Request(Twilio.Http.HttpMethod.POST,
                                                       Domains.CONVERSATIONS,
                                                       "/v1/Conversations/CVaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants");
                         request.AddPostParam("To", Serialize(new Twilio.Types.PhoneNumber("+123456789")));
@@ -110,7 +110,7 @@ namespace Twilio.Tests.Conversations.V1.Conversation {
         [Test]
         public void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(System.Net.Http.HttpMethod.Get,
+            Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.CONVERSATIONS,
                                           "/v1/Conversations/CVaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/PAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             

@@ -19,7 +19,7 @@ namespace Twilio.Tests.Taskrouter.V1.Workspace.Task {
         [Test]
         public void TestReadRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(System.Net.Http.HttpMethod.Get,
+            Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.TASKROUTER,
                                           "/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks/WTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Reservations");
             
@@ -70,7 +70,7 @@ namespace Twilio.Tests.Taskrouter.V1.Workspace.Task {
         [Test]
         public void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(System.Net.Http.HttpMethod.Get,
+            Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.TASKROUTER,
                                           "/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks/WTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Reservations/WRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             
@@ -110,7 +110,7 @@ namespace Twilio.Tests.Taskrouter.V1.Workspace.Task {
         [Test]
         public void TestUpdateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(System.Net.Http.HttpMethod.Post,
+            Request request = new Request(Twilio.Http.HttpMethod.POST,
                                           Domains.TASKROUTER,
                                           "/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks/WTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Reservations/WRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             request.AddPostParam("ReservationStatus", Serialize("reservationStatus"));

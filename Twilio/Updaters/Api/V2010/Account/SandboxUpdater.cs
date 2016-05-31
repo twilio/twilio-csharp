@@ -1,5 +1,4 @@
 using System;
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -7,16 +6,20 @@ using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account;
 using Twilio.Updaters;
 
+#if NET40
+using System.Threading.Tasks;
+#endif
+
 namespace Twilio.Updaters.Api.V2010.Account {
 
     public class SandboxUpdater : Updater<SandboxResource> {
         private string accountSid;
         private Uri voiceUrl;
-        private System.Net.Http.HttpMethod voiceMethod;
+        private Twilio.Http.HttpMethod voiceMethod;
         private Uri smsUrl;
-        private System.Net.Http.HttpMethod smsMethod;
+        private Twilio.Http.HttpMethod smsMethod;
         private Uri statusCallback;
-        private System.Net.Http.HttpMethod statusCallbackMethod;
+        private Twilio.Http.HttpMethod statusCallbackMethod;
     
         /**
          * Construct a new SandboxUpdater
@@ -54,7 +57,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param voiceMethod The voice_method
          * @return this
          */
-        public SandboxUpdater setVoiceMethod(System.Net.Http.HttpMethod voiceMethod) {
+        public SandboxUpdater setVoiceMethod(Twilio.Http.HttpMethod voiceMethod) {
             this.voiceMethod = voiceMethod;
             return this;
         }
@@ -86,7 +89,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param smsMethod The sms_method
          * @return this
          */
-        public SandboxUpdater setSmsMethod(System.Net.Http.HttpMethod smsMethod) {
+        public SandboxUpdater setSmsMethod(Twilio.Http.HttpMethod smsMethod) {
             this.smsMethod = smsMethod;
             return this;
         }
@@ -118,7 +121,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param statusCallbackMethod The status_callback_method
          * @return this
          */
-        public SandboxUpdater setStatusCallbackMethod(System.Net.Http.HttpMethod statusCallbackMethod) {
+        public SandboxUpdater setStatusCallbackMethod(Twilio.Http.HttpMethod statusCallbackMethod) {
             this.statusCallbackMethod = statusCallbackMethod;
             return this;
         }
@@ -132,7 +135,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          */
         public override async Task<SandboxResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/Sandbox.json"
             );
@@ -142,7 +145,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             
             if (response == null) {
                 throw new ApiConnectionException("SandboxResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -159,7 +162,6 @@ namespace Twilio.Updaters.Api.V2010.Account {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the update
          * 
@@ -168,7 +170,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          */
         public override SandboxResource Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/Sandbox.json"
             );
@@ -178,7 +180,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             
             if (response == null) {
                 throw new ApiConnectionException("SandboxResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -193,7 +195,6 @@ namespace Twilio.Updaters.Api.V2010.Account {
             
             return SandboxResource.FromJson(response.GetContent());
         }
-        #endif
     
         /**
          * Add the requested post parameters to the Request

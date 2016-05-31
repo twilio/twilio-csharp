@@ -19,7 +19,7 @@ namespace Twilio.Tests.Lookups.V1 {
         [Test]
         public void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(System.Net.Http.HttpMethod.Get,
+            Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.LOOKUPS,
                                           "/v1/PhoneNumbers/+987654321");
             

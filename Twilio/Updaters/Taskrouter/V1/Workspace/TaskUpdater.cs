@@ -1,9 +1,12 @@
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.Workspace;
 using Twilio.Updaters;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Updaters.Taskrouter.V1.Workspace {
 
@@ -79,7 +82,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          */
         public override async Task<TaskResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Tasks/" + this.sid + ""
             );
@@ -89,7 +92,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
             
             if (response == null) {
                 throw new ApiConnectionException("TaskResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -106,7 +109,6 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the update
          * 
@@ -115,7 +117,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          */
         public override TaskResource Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Tasks/" + this.sid + ""
             );
@@ -125,7 +127,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
             
             if (response == null) {
                 throw new ApiConnectionException("TaskResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -140,7 +142,6 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
             
             return TaskResource.FromJson(response.GetContent());
         }
-        #endif
     
         /**
          * Add the requested post parameters to the Request

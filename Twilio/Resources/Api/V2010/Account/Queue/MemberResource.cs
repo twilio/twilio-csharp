@@ -1,6 +1,5 @@
 using Newtonsoft.Json;
 using System;
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -36,7 +35,7 @@ namespace Twilio.Resources.Api.V2010.Account.Queue {
          * @param method The method
          * @return MemberUpdater capable of executing the update
          */
-        public static MemberUpdater Update(string accountSid, string queueSid, string callSid, Uri url, System.Net.Http.HttpMethod method) {
+        public static MemberUpdater Update(string accountSid, string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method) {
             return new MemberUpdater(accountSid, queueSid, callSid, url, method);
         }
     

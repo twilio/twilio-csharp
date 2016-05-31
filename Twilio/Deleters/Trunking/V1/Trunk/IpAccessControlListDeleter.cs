@@ -1,9 +1,12 @@
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Deleters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Trunking.V1.Trunk;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Deleters.Trunking.V1.Trunk {
 
@@ -30,7 +33,7 @@ namespace Twilio.Deleters.Trunking.V1.Trunk {
          */
         public override async Task ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Delete,
+                Twilio.Http.HttpMethod.DELETE,
                 Domains.TRUNKING,
                 "/v1/Trunks/" + this.trunkSid + "/IpAccessControlLists/" + this.sid + ""
             );
@@ -39,7 +42,7 @@ namespace Twilio.Deleters.Trunking.V1.Trunk {
             
             if (response == null) {
                 throw new ApiConnectionException("IpAccessControlListResource delete failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_NO_CONTENT) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.NoContent) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -56,7 +59,6 @@ namespace Twilio.Deleters.Trunking.V1.Trunk {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the delete
          * 
@@ -64,7 +66,7 @@ namespace Twilio.Deleters.Trunking.V1.Trunk {
          */
         public override void Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Delete,
+                Twilio.Http.HttpMethod.DELETE,
                 Domains.TRUNKING,
                 "/v1/Trunks/" + this.trunkSid + "/IpAccessControlLists/" + this.sid + ""
             );
@@ -73,7 +75,7 @@ namespace Twilio.Deleters.Trunking.V1.Trunk {
             
             if (response == null) {
                 throw new ApiConnectionException("IpAccessControlListResource delete failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_NO_CONTENT) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.NoContent) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -88,6 +90,5 @@ namespace Twilio.Deleters.Trunking.V1.Trunk {
             
             return;
         }
-        #endif
     }
 }

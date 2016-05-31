@@ -1,7 +1,8 @@
 ﻿using System;
 using Twilio.Http;
+#if NET40
 using System.Threading.Tasks;
-using System.Net;
+#endif
 
 namespace Twilio.Clients
 {
@@ -33,12 +34,6 @@ namespace Twilio.Clients
 		public static implicit operator string(Domains value) {
 			return value.ToString();
 		}
-	}
-
-	public sealed class HttpStatus {
-		public const HttpStatusCode HTTP_STATUS_CODE_CREATED = HttpStatusCode.Created;
-		public const HttpStatusCode HTTP_STATUS_CODE_NO_CONTENT = HttpStatusCode.NoContent;
-		public const HttpStatusCode HTTP_STATUS_CODE_OK = HttpStatusCode.OK;
 	}
 
 	public class TwilioRestClient : ITwilioRestClient

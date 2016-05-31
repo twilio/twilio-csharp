@@ -1,9 +1,12 @@
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account.Conference;
 using Twilio.Updaters;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Updaters.Api.V2010.Account.Conference {
 
@@ -37,7 +40,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Conference {
          */
         public override async Task<ParticipantResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
             );
@@ -47,7 +50,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Conference {
             
             if (response == null) {
                 throw new ApiConnectionException("ParticipantResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -64,7 +67,6 @@ namespace Twilio.Updaters.Api.V2010.Account.Conference {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the update
          * 
@@ -73,7 +75,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Conference {
          */
         public override ParticipantResource Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
             );
@@ -83,7 +85,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Conference {
             
             if (response == null) {
                 throw new ApiConnectionException("ParticipantResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -98,7 +100,6 @@ namespace Twilio.Updaters.Api.V2010.Account.Conference {
             
             return ParticipantResource.FromJson(response.GetContent());
         }
-        #endif
     
         /**
          * Add the requested post parameters to the Request

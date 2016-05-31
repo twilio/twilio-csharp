@@ -1,6 +1,5 @@
 using Newtonsoft.Json;
 using System;
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Deleters.Api.V2010.Account.Call;
@@ -85,7 +84,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         private readonly Uri moreInfo;
         [JsonProperty("request_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly System.Net.Http.HttpMethod requestMethod;
+        private readonly Twilio.Http.HttpMethod requestMethod;
         [JsonProperty("request_url")]
         private readonly Uri requestUrl;
         [JsonProperty("sid")]
@@ -124,7 +123,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
                                      [JsonProperty("more_info")]
                                      Uri moreInfo, 
                                      [JsonProperty("request_method")]
-                                     System.Net.Http.HttpMethod requestMethod, 
+                                     Twilio.Http.HttpMethod requestMethod, 
                                      [JsonProperty("request_url")]
                                      Uri requestUrl, 
                                      [JsonProperty("sid")]
@@ -229,7 +228,7 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         /**
          * @return The request_method
          */
-        public System.Net.Http.HttpMethod GetRequestMethod() {
+        public Twilio.Http.HttpMethod GetRequestMethod() {
             return this.requestMethod;
         }
     

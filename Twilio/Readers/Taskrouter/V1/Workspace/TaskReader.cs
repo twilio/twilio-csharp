@@ -1,10 +1,13 @@
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers;
 using Twilio.Resources;
 using Twilio.Resources.Taskrouter.V1.Workspace;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Readers.Taskrouter.V1.Workspace {
 
@@ -101,7 +104,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          */
         public override Task<ResourceSet<TaskResource>> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Get,
+                Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Tasks"
             );
@@ -115,7 +118,6 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the read
          * 
@@ -124,7 +126,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          */
         public override ResourceSet<TaskResource> Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Get,
+                Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Tasks"
             );
@@ -135,7 +137,6 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
             
             return new ResourceSet<TaskResource>(this, client, page);
         }
-        #endif
     
         /**
          * Retrieve the next page from the Twilio API
@@ -146,7 +147,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          */
         public override Page<TaskResource> NextPage(string nextPageUri, ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Get,
+                Twilio.Http.HttpMethod.GET,
                 nextPageUri
             );
             
@@ -167,7 +168,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
             
             if (response == null) {
                 throw new ApiConnectionException("TaskResource read failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");

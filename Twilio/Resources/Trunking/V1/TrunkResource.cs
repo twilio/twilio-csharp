@@ -1,7 +1,6 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators.Trunking.V1;
@@ -85,7 +84,7 @@ namespace Twilio.Resources.Trunking.V1 {
         private readonly string domainName;
         [JsonProperty("disaster_recovery_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly System.Net.Http.HttpMethod disasterRecoveryMethod;
+        private readonly Twilio.Http.HttpMethod disasterRecoveryMethod;
         [JsonProperty("disaster_recovery_url")]
         private readonly Uri disasterRecoveryUrl;
         [JsonProperty("friendly_name")]
@@ -118,7 +117,7 @@ namespace Twilio.Resources.Trunking.V1 {
                               [JsonProperty("domain_name")]
                               string domainName, 
                               [JsonProperty("disaster_recovery_method")]
-                              System.Net.Http.HttpMethod disasterRecoveryMethod, 
+                              Twilio.Http.HttpMethod disasterRecoveryMethod, 
                               [JsonProperty("disaster_recovery_url")]
                               Uri disasterRecoveryUrl, 
                               [JsonProperty("friendly_name")]
@@ -174,7 +173,7 @@ namespace Twilio.Resources.Trunking.V1 {
         /**
          * @return The disaster_recovery_method
          */
-        public System.Net.Http.HttpMethod GetDisasterRecoveryMethod() {
+        public Twilio.Http.HttpMethod GetDisasterRecoveryMethod() {
             return this.disasterRecoveryMethod;
         }
     

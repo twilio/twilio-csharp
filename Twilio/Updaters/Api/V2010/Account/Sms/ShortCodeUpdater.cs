@@ -1,11 +1,14 @@
 using System;
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account.Sms;
 using Twilio.Updaters;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Updaters.Api.V2010.Account.Sms {
 
@@ -15,9 +18,9 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
         private string friendlyName;
         private string apiVersion;
         private Uri smsUrl;
-        private System.Net.Http.HttpMethod smsMethod;
+        private Twilio.Http.HttpMethod smsMethod;
         private Uri smsFallbackUrl;
-        private System.Net.Http.HttpMethod smsFallbackMethod;
+        private Twilio.Http.HttpMethod smsFallbackMethod;
     
         /**
          * Construct a new ShortCodeUpdater
@@ -83,7 +86,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          * @param smsMethod HTTP method to use when requesting the sms url
          * @return this
          */
-        public ShortCodeUpdater setSmsMethod(System.Net.Http.HttpMethod smsMethod) {
+        public ShortCodeUpdater setSmsMethod(Twilio.Http.HttpMethod smsMethod) {
             this.smsMethod = smsMethod;
             return this;
         }
@@ -120,7 +123,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          * @param smsFallbackMethod HTTP method Twilio will use with sms fallback url
          * @return this
          */
-        public ShortCodeUpdater setSmsFallbackMethod(System.Net.Http.HttpMethod smsFallbackMethod) {
+        public ShortCodeUpdater setSmsFallbackMethod(Twilio.Http.HttpMethod smsFallbackMethod) {
             this.smsFallbackMethod = smsFallbackMethod;
             return this;
         }
@@ -134,7 +137,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          */
         public override async Task<ShortCodeResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/SMS/ShortCodes/" + this.sid + ".json"
             );
@@ -144,7 +147,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
             
             if (response == null) {
                 throw new ApiConnectionException("ShortCodeResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -161,7 +164,6 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the update
          * 
@@ -170,7 +172,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          */
         public override ShortCodeResource Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/SMS/ShortCodes/" + this.sid + ".json"
             );
@@ -180,7 +182,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
             
             if (response == null) {
                 throw new ApiConnectionException("ShortCodeResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -195,7 +197,6 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
             
             return ShortCodeResource.FromJson(response.GetContent());
         }
-        #endif
     
         /**
          * Add the requested post parameters to the Request

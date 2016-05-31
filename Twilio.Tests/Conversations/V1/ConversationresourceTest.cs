@@ -19,7 +19,7 @@ namespace Twilio.Tests.Conversations.V1 {
         [Test]
         public void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(System.Net.Http.HttpMethod.Get,
+            Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.CONVERSATIONS,
                                           "/v1/Conversations/CVaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             

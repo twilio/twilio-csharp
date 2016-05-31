@@ -1,6 +1,5 @@
 using Newtonsoft.Json;
 using System;
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators.Api.V2010.Account.Usage;
@@ -271,7 +270,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         private readonly string apiVersion;
         [JsonProperty("callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly System.Net.Http.HttpMethod callbackMethod;
+        private readonly Twilio.Http.HttpMethod callbackMethod;
         [JsonProperty("callback_url")]
         private readonly Uri callbackUrl;
         [JsonProperty("current_value")]
@@ -311,7 +310,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
                                 [JsonProperty("api_version")]
                                 string apiVersion, 
                                 [JsonProperty("callback_method")]
-                                System.Net.Http.HttpMethod callbackMethod, 
+                                Twilio.Http.HttpMethod callbackMethod, 
                                 [JsonProperty("callback_url")]
                                 Uri callbackUrl, 
                                 [JsonProperty("current_value")]
@@ -373,7 +372,7 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         /**
          * @return HTTP method to use with callback_url
          */
-        public System.Net.Http.HttpMethod GetCallbackMethod() {
+        public Twilio.Http.HttpMethod GetCallbackMethod() {
             return this.callbackMethod;
         }
     

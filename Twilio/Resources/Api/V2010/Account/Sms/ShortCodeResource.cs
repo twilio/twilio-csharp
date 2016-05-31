@@ -1,6 +1,5 @@
 using Newtonsoft.Json;
 using System;
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -77,12 +76,12 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         private readonly string sid;
         [JsonProperty("sms_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly System.Net.Http.HttpMethod smsFallbackMethod;
+        private readonly Twilio.Http.HttpMethod smsFallbackMethod;
         [JsonProperty("sms_fallback_url")]
         private readonly Uri smsFallbackUrl;
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly System.Net.Http.HttpMethod smsMethod;
+        private readonly Twilio.Http.HttpMethod smsMethod;
         [JsonProperty("sms_url")]
         private readonly Uri smsUrl;
         [JsonProperty("uri")]
@@ -107,11 +106,11 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
                                   [JsonProperty("sid")]
                                   string sid, 
                                   [JsonProperty("sms_fallback_method")]
-                                  System.Net.Http.HttpMethod smsFallbackMethod, 
+                                  Twilio.Http.HttpMethod smsFallbackMethod, 
                                   [JsonProperty("sms_fallback_url")]
                                   Uri smsFallbackUrl, 
                                   [JsonProperty("sms_method")]
-                                  System.Net.Http.HttpMethod smsMethod, 
+                                  Twilio.Http.HttpMethod smsMethod, 
                                   [JsonProperty("sms_url")]
                                   Uri smsUrl, 
                                   [JsonProperty("uri")]
@@ -182,7 +181,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         /**
          * @return HTTP method Twilio will use with sms fallback url
          */
-        public System.Net.Http.HttpMethod GetSmsFallbackMethod() {
+        public Twilio.Http.HttpMethod GetSmsFallbackMethod() {
             return this.smsFallbackMethod;
         }
     
@@ -196,7 +195,7 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         /**
          * @return HTTP method to use when requesting the sms url
          */
-        public System.Net.Http.HttpMethod GetSmsMethod() {
+        public Twilio.Http.HttpMethod GetSmsMethod() {
             return this.smsMethod;
         }
     

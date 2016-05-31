@@ -6,17 +6,17 @@ namespace Twilio.Http
 {
 	public class Request
 	{
-		private System.Net.Http.HttpMethod method;
+		private Twilio.Http.HttpMethod method;
 		private Uri uri;
 		private string username;
 		private string password;
         private List<KeyValuePair<string, string>> queryParams;
         private List<KeyValuePair<string, string>> postParams;
 
-		public Request(System.Net.Http.HttpMethod method, string uri) : this(method, Twilio.Clients.Domains.API, uri) {
+		public Request(Twilio.Http.HttpMethod method, string uri) : this(method, Twilio.Clients.Domains.API, uri) {
 		}
 
-		public Request(System.Net.Http.HttpMethod method, Twilio.Clients.Domains domain, string uri) {
+		public Request(Twilio.Http.HttpMethod method, Twilio.Clients.Domains domain, string uri) {
 			this.method = method;
 			this.uri = new Uri("https://" + domain.ToString() + ".twilio.com" + uri);
 
@@ -28,7 +28,7 @@ namespace Twilio.Http
 			return uri;
         }
 
-		public System.Net.Http.HttpMethod GetMethod() {
+		public Twilio.Http.HttpMethod GetMethod() {
             return this.method;
         }
         

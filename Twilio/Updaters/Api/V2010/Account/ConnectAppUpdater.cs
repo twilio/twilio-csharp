@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account;
 using Twilio.Updaters;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Updaters.Api.V2010.Account {
 
@@ -15,7 +18,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
         private string sid;
         private Uri authorizeRedirectUrl;
         private string companyName;
-        private System.Net.Http.HttpMethod deauthorizeCallbackMethod;
+        private Twilio.Http.HttpMethod deauthorizeCallbackMethod;
         private Uri deauthorizeCallbackUrl;
         private string description;
         private string friendlyName;
@@ -75,7 +78,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          *                                  to the url
          * @return this
          */
-        public ConnectAppUpdater setDeauthorizeCallbackMethod(System.Net.Http.HttpMethod deauthorizeCallbackMethod) {
+        public ConnectAppUpdater setDeauthorizeCallbackMethod(Twilio.Http.HttpMethod deauthorizeCallbackMethod) {
             this.deauthorizeCallbackMethod = deauthorizeCallbackMethod;
             return this;
         }
@@ -180,7 +183,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          */
         public override async Task<ConnectAppResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/ConnectApps/" + this.sid + ".json"
             );
@@ -190,7 +193,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             
             if (response == null) {
                 throw new ApiConnectionException("ConnectAppResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -207,7 +210,6 @@ namespace Twilio.Updaters.Api.V2010.Account {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the update
          * 
@@ -216,7 +218,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          */
         public override ConnectAppResource Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/ConnectApps/" + this.sid + ".json"
             );
@@ -226,7 +228,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             
             if (response == null) {
                 throw new ApiConnectionException("ConnectAppResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -241,7 +243,6 @@ namespace Twilio.Updaters.Api.V2010.Account {
             
             return ConnectAppResource.FromJson(response.GetContent());
         }
-        #endif
     
         /**
          * Add the requested post parameters to the Request

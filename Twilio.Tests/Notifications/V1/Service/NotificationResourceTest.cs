@@ -19,7 +19,7 @@ namespace Twilio.Tests.Notifications.V1.Service {
         [Test]
         public void TestCreateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(System.Net.Http.HttpMethod.Post,
+            Request request = new Request(Twilio.Http.HttpMethod.POST,
                                           Domains.NOTIFICATIONS,
                                           "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications");
             

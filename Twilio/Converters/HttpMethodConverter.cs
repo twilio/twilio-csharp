@@ -20,13 +20,13 @@ namespace Twilio.Converters
 			if (token != null) {
 				switch (token.ToLower ()) {
 				case "get":
-					return System.Net.Http.HttpMethod.Get;
+					return Twilio.Http.HttpMethod.GET;
 				case "post":
-					return System.Net.Http.HttpMethod.Post;
+					return Twilio.Http.HttpMethod.POST;
 				case "put":
-					return System.Net.Http.HttpMethod.Put;
+					return Twilio.Http.HttpMethod.PUT;
 				case "delete":
-					return System.Net.Http.HttpMethod.Delete;
+					return Twilio.Http.HttpMethod.DELETE;
 				}
 			}
 
@@ -34,7 +34,7 @@ namespace Twilio.Converters
 		}
 
 		public override bool CanConvert(Type objectType) {
-			return objectType == typeof(System.Net.Http.HttpMethod);
+			return objectType == typeof(Twilio.Http.HttpMethod);
 		}
 	}
 }

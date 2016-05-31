@@ -1,9 +1,12 @@
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.Workspace;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Fetchers.Taskrouter.V1.Workspace {
 
@@ -64,7 +67,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace {
          */
         public override async Task<WorkspaceStatisticsResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Get,
+                Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Statistics"
             );
@@ -77,7 +80,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace {
             
             if (response == null) {
                 throw new ApiConnectionException("WorkspaceStatisticsResource fetch failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -94,7 +97,6 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the fetch
          * 
@@ -103,7 +105,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace {
          */
         public override WorkspaceStatisticsResource Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Get,
+                Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Statistics"
             );
@@ -116,7 +118,7 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace {
             
             if (response == null) {
                 throw new ApiConnectionException("WorkspaceStatisticsResource fetch failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -131,7 +133,6 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace {
             
             return WorkspaceStatisticsResource.FromJson(response.GetContent());
         }
-        #endif
     
         /**
          * Add the requested query string arguments to the Request

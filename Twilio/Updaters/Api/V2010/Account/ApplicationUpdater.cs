@@ -1,11 +1,14 @@
 using System;
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account;
 using Twilio.Updaters;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Updaters.Api.V2010.Account {
 
@@ -15,16 +18,16 @@ namespace Twilio.Updaters.Api.V2010.Account {
         private string friendlyName;
         private string apiVersion;
         private Uri voiceUrl;
-        private System.Net.Http.HttpMethod voiceMethod;
+        private Twilio.Http.HttpMethod voiceMethod;
         private Uri voiceFallbackUrl;
-        private System.Net.Http.HttpMethod voiceFallbackMethod;
+        private Twilio.Http.HttpMethod voiceFallbackMethod;
         private Uri statusCallback;
-        private System.Net.Http.HttpMethod statusCallbackMethod;
+        private Twilio.Http.HttpMethod statusCallbackMethod;
         private bool? voiceCallerIdLookup;
         private Uri smsUrl;
-        private System.Net.Http.HttpMethod smsMethod;
+        private Twilio.Http.HttpMethod smsMethod;
         private Uri smsFallbackUrl;
-        private System.Net.Http.HttpMethod smsFallbackMethod;
+        private Twilio.Http.HttpMethod smsFallbackMethod;
         private Uri smsStatusCallback;
         private Uri messageStatusCallback;
     
@@ -93,7 +96,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param voiceMethod HTTP method to use with the URL
          * @return this
          */
-        public ApplicationUpdater setVoiceMethod(System.Net.Http.HttpMethod voiceMethod) {
+        public ApplicationUpdater setVoiceMethod(Twilio.Http.HttpMethod voiceMethod) {
             this.voiceMethod = voiceMethod;
             return this;
         }
@@ -128,7 +131,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param voiceFallbackMethod HTTP method to use with the fallback url
          * @return this
          */
-        public ApplicationUpdater setVoiceFallbackMethod(System.Net.Http.HttpMethod voiceFallbackMethod) {
+        public ApplicationUpdater setVoiceFallbackMethod(Twilio.Http.HttpMethod voiceFallbackMethod) {
             this.voiceFallbackMethod = voiceFallbackMethod;
             return this;
         }
@@ -163,7 +166,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param statusCallbackMethod HTTP method to use with the status callback
          * @return this
          */
-        public ApplicationUpdater setStatusCallbackMethod(System.Net.Http.HttpMethod statusCallbackMethod) {
+        public ApplicationUpdater setStatusCallbackMethod(Twilio.Http.HttpMethod statusCallbackMethod) {
             this.statusCallbackMethod = statusCallbackMethod;
             return this;
         }
@@ -210,7 +213,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param smsMethod HTTP method to use with sms_url
          * @return this
          */
-        public ApplicationUpdater setSmsMethod(System.Net.Http.HttpMethod smsMethod) {
+        public ApplicationUpdater setSmsMethod(Twilio.Http.HttpMethod smsMethod) {
             this.smsMethod = smsMethod;
             return this;
         }
@@ -245,7 +248,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param smsFallbackMethod HTTP method to use with sms_fallback_method
          * @return this
          */
-        public ApplicationUpdater setSmsFallbackMethod(System.Net.Http.HttpMethod smsFallbackMethod) {
+        public ApplicationUpdater setSmsFallbackMethod(Twilio.Http.HttpMethod smsFallbackMethod) {
             this.smsFallbackMethod = smsFallbackMethod;
             return this;
         }
@@ -311,7 +314,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          */
         public override async Task<ApplicationResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/Applications/" + this.sid + ".json"
             );
@@ -321,7 +324,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             
             if (response == null) {
                 throw new ApiConnectionException("ApplicationResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -338,7 +341,6 @@ namespace Twilio.Updaters.Api.V2010.Account {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the update
          * 
@@ -347,7 +349,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          */
         public override ApplicationResource Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/Applications/" + this.sid + ".json"
             );
@@ -357,7 +359,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             
             if (response == null) {
                 throw new ApiConnectionException("ApplicationResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -372,7 +374,6 @@ namespace Twilio.Updaters.Api.V2010.Account {
             
             return ApplicationResource.FromJson(response.GetContent());
         }
-        #endif
     
         /**
          * Add the requested post parameters to the Request

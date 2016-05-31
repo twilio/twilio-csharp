@@ -1,6 +1,5 @@
 using Newtonsoft.Json;
 using System;
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -66,17 +65,17 @@ namespace Twilio.Resources.Api.V2010.Account {
         private readonly Uri voiceUrl;
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly System.Net.Http.HttpMethod voiceMethod;
+        private readonly Twilio.Http.HttpMethod voiceMethod;
         [JsonProperty("sms_url")]
         private readonly Uri smsUrl;
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly System.Net.Http.HttpMethod smsMethod;
+        private readonly Twilio.Http.HttpMethod smsMethod;
         [JsonProperty("status_callback")]
         private readonly Uri statusCallback;
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly System.Net.Http.HttpMethod statusCallbackMethod;
+        private readonly Twilio.Http.HttpMethod statusCallbackMethod;
         [JsonProperty("uri")]
         private readonly Uri uri;
     
@@ -101,15 +100,15 @@ namespace Twilio.Resources.Api.V2010.Account {
                                 [JsonProperty("voice_url")]
                                 Uri voiceUrl, 
                                 [JsonProperty("voice_method")]
-                                System.Net.Http.HttpMethod voiceMethod, 
+                                Twilio.Http.HttpMethod voiceMethod, 
                                 [JsonProperty("sms_url")]
                                 Uri smsUrl, 
                                 [JsonProperty("sms_method")]
-                                System.Net.Http.HttpMethod smsMethod, 
+                                Twilio.Http.HttpMethod smsMethod, 
                                 [JsonProperty("status_callback")]
                                 Uri statusCallback, 
                                 [JsonProperty("status_callback_method")]
-                                System.Net.Http.HttpMethod statusCallbackMethod, 
+                                Twilio.Http.HttpMethod statusCallbackMethod, 
                                 [JsonProperty("uri")]
                                 Uri uri) {
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
@@ -187,7 +186,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The voice_method
          */
-        public System.Net.Http.HttpMethod GetVoiceMethod() {
+        public Twilio.Http.HttpMethod GetVoiceMethod() {
             return this.voiceMethod;
         }
     
@@ -201,7 +200,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The sms_method
          */
-        public System.Net.Http.HttpMethod GetSmsMethod() {
+        public Twilio.Http.HttpMethod GetSmsMethod() {
             return this.smsMethod;
         }
     
@@ -215,7 +214,7 @@ namespace Twilio.Resources.Api.V2010.Account {
         /**
          * @return The status_callback_method
          */
-        public System.Net.Http.HttpMethod GetStatusCallbackMethod() {
+        public Twilio.Http.HttpMethod GetStatusCallbackMethod() {
             return this.statusCallbackMethod;
         }
     

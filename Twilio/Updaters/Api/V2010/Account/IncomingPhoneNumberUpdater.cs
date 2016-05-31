@@ -1,11 +1,14 @@
 using System;
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account;
 using Twilio.Updaters;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Updaters.Api.V2010.Account {
 
@@ -16,17 +19,17 @@ namespace Twilio.Updaters.Api.V2010.Account {
         private string apiVersion;
         private string friendlyName;
         private string smsApplicationSid;
-        private System.Net.Http.HttpMethod smsFallbackMethod;
+        private Twilio.Http.HttpMethod smsFallbackMethod;
         private Uri smsFallbackUrl;
-        private System.Net.Http.HttpMethod smsMethod;
+        private Twilio.Http.HttpMethod smsMethod;
         private Uri smsUrl;
         private Uri statusCallback;
-        private System.Net.Http.HttpMethod statusCallbackMethod;
+        private Twilio.Http.HttpMethod statusCallbackMethod;
         private string voiceApplicationSid;
         private bool? voiceCallerIdLookup;
-        private System.Net.Http.HttpMethod voiceFallbackMethod;
+        private Twilio.Http.HttpMethod voiceFallbackMethod;
         private Uri voiceFallbackUrl;
-        private System.Net.Http.HttpMethod voiceMethod;
+        private Twilio.Http.HttpMethod voiceMethod;
         private Uri voiceUrl;
     
         /**
@@ -96,7 +99,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param smsFallbackMethod HTTP method used with sms fallback url
          * @return this
          */
-        public IncomingPhoneNumberUpdater setSmsFallbackMethod(System.Net.Http.HttpMethod smsFallbackMethod) {
+        public IncomingPhoneNumberUpdater setSmsFallbackMethod(Twilio.Http.HttpMethod smsFallbackMethod) {
             this.smsFallbackMethod = smsFallbackMethod;
             return this;
         }
@@ -133,7 +136,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param smsMethod HTTP method to use with sms url
          * @return this
          */
-        public IncomingPhoneNumberUpdater setSmsMethod(System.Net.Http.HttpMethod smsMethod) {
+        public IncomingPhoneNumberUpdater setSmsMethod(Twilio.Http.HttpMethod smsMethod) {
             this.smsMethod = smsMethod;
             return this;
         }
@@ -191,7 +194,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param statusCallbackMethod HTTP method twilio will use with status callback
          * @return this
          */
-        public IncomingPhoneNumberUpdater setStatusCallbackMethod(System.Net.Http.HttpMethod statusCallbackMethod) {
+        public IncomingPhoneNumberUpdater setStatusCallbackMethod(Twilio.Http.HttpMethod statusCallbackMethod) {
             this.statusCallbackMethod = statusCallbackMethod;
             return this;
         }
@@ -231,7 +234,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param voiceFallbackMethod HTTP method used with fallback_url
          * @return this
          */
-        public IncomingPhoneNumberUpdater setVoiceFallbackMethod(System.Net.Http.HttpMethod voiceFallbackMethod) {
+        public IncomingPhoneNumberUpdater setVoiceFallbackMethod(Twilio.Http.HttpMethod voiceFallbackMethod) {
             this.voiceFallbackMethod = voiceFallbackMethod;
             return this;
         }
@@ -266,7 +269,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param voiceMethod HTTP method used with the voice url
          * @return this
          */
-        public IncomingPhoneNumberUpdater setVoiceMethod(System.Net.Http.HttpMethod voiceMethod) {
+        public IncomingPhoneNumberUpdater setVoiceMethod(Twilio.Http.HttpMethod voiceMethod) {
             this.voiceMethod = voiceMethod;
             return this;
         }
@@ -305,7 +308,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          */
         public override async Task<IncomingPhoneNumberResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.ownerAccountSid + "/IncomingPhoneNumbers/" + this.sid + ".json"
             );
@@ -315,7 +318,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             
             if (response == null) {
                 throw new ApiConnectionException("IncomingPhoneNumberResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -332,7 +335,6 @@ namespace Twilio.Updaters.Api.V2010.Account {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the update
          * 
@@ -341,7 +343,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          */
         public override IncomingPhoneNumberResource Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.ownerAccountSid + "/IncomingPhoneNumbers/" + this.sid + ".json"
             );
@@ -351,7 +353,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             
             if (response == null) {
                 throw new ApiConnectionException("IncomingPhoneNumberResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -366,7 +368,6 @@ namespace Twilio.Updaters.Api.V2010.Account {
             
             return IncomingPhoneNumberResource.FromJson(response.GetContent());
         }
-        #endif
     
         /**
          * Add the requested post parameters to the Request

@@ -1,10 +1,13 @@
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers;
 using Twilio.Resources;
 using Twilio.Resources.Api.V2010.Account.Usage;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Readers.Api.V2010.Account.Usage {
 
@@ -70,7 +73,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          */
         public override Task<ResourceSet<RecordResource>> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Get,
+                Twilio.Http.HttpMethod.GET,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/Usage/Records.json"
             );
@@ -84,7 +87,6 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the read
          * 
@@ -93,7 +95,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          */
         public override ResourceSet<RecordResource> Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Get,
+                Twilio.Http.HttpMethod.GET,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/Usage/Records.json"
             );
@@ -104,7 +106,6 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
             
             return new ResourceSet<RecordResource>(this, client, page);
         }
-        #endif
     
         /**
          * Retrieve the next page from the Twilio API
@@ -115,7 +116,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          */
         public override Page<RecordResource> NextPage(string nextPageUri, ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Get,
+                Twilio.Http.HttpMethod.GET,
                 nextPageUri
             );
             
@@ -136,7 +137,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
             
             if (response == null) {
                 throw new ApiConnectionException("RecordResource read failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");

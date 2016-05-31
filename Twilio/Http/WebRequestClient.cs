@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace Twilio.Http
@@ -12,7 +11,7 @@ namespace Twilio.Http
 
 		public override Response MakeRequest(Request request) {
 			System.Net.HttpWebRequest httpRequest = (System.Net.HttpWebRequest) System.Net.WebRequest.Create(request.ConstructURL());
-			httpRequest.Method = request.GetMethod().Method;
+			httpRequest.Method = request.GetMethod().ToString();
 			httpRequest.Headers["Accept"] = "application/json";
 			httpRequest.Headers["Accept-Encoding"] = "utf-8";
 			var authBytes = Authentication(request.GetUsername(), request.GetPassword());

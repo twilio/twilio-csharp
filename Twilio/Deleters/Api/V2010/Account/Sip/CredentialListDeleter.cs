@@ -1,9 +1,12 @@
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Deleters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account.Sip;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Deleters.Api.V2010.Account.Sip {
 
@@ -30,7 +33,7 @@ namespace Twilio.Deleters.Api.V2010.Account.Sip {
          */
         public override async Task ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Delete,
+                Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/SIP/CredentialLists/" + this.sid + ".json"
             );
@@ -39,7 +42,7 @@ namespace Twilio.Deleters.Api.V2010.Account.Sip {
             
             if (response == null) {
                 throw new ApiConnectionException("CredentialListResource delete failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_NO_CONTENT) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.NoContent) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -56,7 +59,6 @@ namespace Twilio.Deleters.Api.V2010.Account.Sip {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the delete
          * 
@@ -64,7 +66,7 @@ namespace Twilio.Deleters.Api.V2010.Account.Sip {
          */
         public override void Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Delete,
+                Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/SIP/CredentialLists/" + this.sid + ".json"
             );
@@ -73,7 +75,7 @@ namespace Twilio.Deleters.Api.V2010.Account.Sip {
             
             if (response == null) {
                 throw new ApiConnectionException("CredentialListResource delete failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_NO_CONTENT) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.NoContent) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -88,6 +90,5 @@ namespace Twilio.Deleters.Api.V2010.Account.Sip {
             
             return;
         }
-        #endif
     }
 }

@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio", "Twilio\Twilio.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Tests", "Twilio.Tests\Twilio.Tests.csproj", "{65458612-8B1E-492A-999F-53C04DE31F91}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio35", "Twilio35\Twilio35.csproj", "{DA8DF112-3C64-430C-AD07-3FC6D6EEDB88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +21,9 @@ Global
 		{65458612-8B1E-492A-999F-53C04DE31F91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65458612-8B1E-492A-999F-53C04DE31F91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65458612-8B1E-492A-999F-53C04DE31F91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA8DF112-3C64-430C-AD07-3FC6D6EEDB88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA8DF112-3C64-430C-AD07-3FC6D6EEDB88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA8DF112-3C64-430C-AD07-3FC6D6EEDB88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA8DF112-3C64-430C-AD07-3FC6D6EEDB88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

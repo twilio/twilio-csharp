@@ -1,10 +1,13 @@
 using System;
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account.Usage;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Creators.Api.V2010.Account.Usage {
 
@@ -13,7 +16,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
         private Uri callbackUrl;
         private string triggerValue;
         private TriggerResource.UsageCategory usageCategory;
-        private System.Net.Http.HttpMethod callbackMethod;
+        private Twilio.Http.HttpMethod callbackMethod;
         private string friendlyName;
         private TriggerResource.Recurring recurring;
         private TriggerResource.TriggerField triggerBy;
@@ -40,7 +43,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
          * @param callbackMethod HTTP method to use with callback_url
          * @return this
          */
-        public TriggerCreator setCallbackMethod(System.Net.Http.HttpMethod callbackMethod) {
+        public TriggerCreator setCallbackMethod(Twilio.Http.HttpMethod callbackMethod) {
             this.callbackMethod = callbackMethod;
             return this;
         }
@@ -90,7 +93,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
          */
         public override async Task<TriggerResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/Usage/Triggers.json"
             );
@@ -100,7 +103,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
             
             if (response == null) {
                 throw new ApiConnectionException("TriggerResource creation failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_CREATED) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.Created) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -117,7 +120,6 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the create
          * 
@@ -126,7 +128,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
          */
         public override TriggerResource Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/Usage/Triggers.json"
             );
@@ -136,7 +138,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
             
             if (response == null) {
                 throw new ApiConnectionException("TriggerResource creation failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_CREATED) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.Created) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -151,7 +153,6 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
             
             return TriggerResource.FromJson(response.GetContent());
         }
-        #endif
     
         /**
          * Add the requested post parameters to the Request

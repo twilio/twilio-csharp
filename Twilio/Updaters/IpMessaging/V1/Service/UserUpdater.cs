@@ -1,9 +1,12 @@
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.IpMessaging.V1.Service;
 using Twilio.Updaters;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Updaters.IpMessaging.V1.Service {
 
@@ -34,7 +37,7 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
          */
         public override async Task<UserResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.IPMESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Users/" + this.sid + ""
             );
@@ -44,7 +47,7 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
             
             if (response == null) {
                 throw new ApiConnectionException("UserResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -61,7 +64,6 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the update
          * 
@@ -70,7 +72,7 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
          */
         public override UserResource Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.IPMESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Users/" + this.sid + ""
             );
@@ -80,7 +82,7 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
             
             if (response == null) {
                 throw new ApiConnectionException("UserResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -95,7 +97,6 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
             
             return UserResource.FromJson(response.GetContent());
         }
-        #endif
     
         /**
          * Add the requested post parameters to the Request

@@ -1,9 +1,12 @@
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account;
 using Twilio.Updaters;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Updaters.Api.V2010.Account {
 
@@ -55,7 +58,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          */
         public override async Task<QueueResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/Queues/" + this.sid + ".json"
             );
@@ -65,7 +68,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             
             if (response == null) {
                 throw new ApiConnectionException("QueueResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -82,7 +85,6 @@ namespace Twilio.Updaters.Api.V2010.Account {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the update
          * 
@@ -91,7 +93,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          */
         public override QueueResource Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/Queues/" + this.sid + ".json"
             );
@@ -101,7 +103,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             
             if (response == null) {
                 throw new ApiConnectionException("QueueResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -116,7 +118,6 @@ namespace Twilio.Updaters.Api.V2010.Account {
             
             return QueueResource.FromJson(response.GetContent());
         }
-        #endif
     
         /**
          * Add the requested post parameters to the Request

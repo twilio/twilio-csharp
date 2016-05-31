@@ -1,9 +1,12 @@
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1.Workspace;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Creators.Taskrouter.V1.Workspace {
 
@@ -55,7 +58,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          */
         public override async Task<WorkerResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Workers"
             );
@@ -65,7 +68,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
             
             if (response == null) {
                 throw new ApiConnectionException("WorkerResource creation failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_CREATED) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.Created) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -82,7 +85,6 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the create
          * 
@@ -91,7 +93,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          */
         public override WorkerResource Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Workers"
             );
@@ -101,7 +103,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
             
             if (response == null) {
                 throw new ApiConnectionException("WorkerResource creation failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_CREATED) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.Created) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -116,7 +118,6 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
             
             return WorkerResource.FromJson(response.GetContent());
         }
-        #endif
     
         /**
          * Add the requested post parameters to the Request

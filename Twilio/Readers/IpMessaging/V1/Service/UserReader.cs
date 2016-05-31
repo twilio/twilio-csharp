@@ -1,10 +1,13 @@
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers;
 using Twilio.Resources;
 using Twilio.Resources.IpMessaging.V1.Service;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Readers.IpMessaging.V1.Service {
 
@@ -29,7 +32,7 @@ namespace Twilio.Readers.IpMessaging.V1.Service {
          */
         public override Task<ResourceSet<UserResource>> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Get,
+                Twilio.Http.HttpMethod.GET,
                 Domains.IPMESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Users"
             );
@@ -43,7 +46,6 @@ namespace Twilio.Readers.IpMessaging.V1.Service {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the read
          * 
@@ -52,7 +54,7 @@ namespace Twilio.Readers.IpMessaging.V1.Service {
          */
         public override ResourceSet<UserResource> Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Get,
+                Twilio.Http.HttpMethod.GET,
                 Domains.IPMESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Users"
             );
@@ -63,7 +65,6 @@ namespace Twilio.Readers.IpMessaging.V1.Service {
             
             return new ResourceSet<UserResource>(this, client, page);
         }
-        #endif
     
         /**
          * Retrieve the next page from the Twilio API
@@ -74,7 +75,7 @@ namespace Twilio.Readers.IpMessaging.V1.Service {
          */
         public override Page<UserResource> NextPage(string nextPageUri, ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Get,
+                Twilio.Http.HttpMethod.GET,
                 nextPageUri
             );
             
@@ -95,7 +96,7 @@ namespace Twilio.Readers.IpMessaging.V1.Service {
             
             if (response == null) {
                 throw new ApiConnectionException("UserResource read failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");

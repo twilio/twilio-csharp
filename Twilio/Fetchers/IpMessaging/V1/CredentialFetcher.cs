@@ -1,9 +1,12 @@
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers;
 using Twilio.Http;
 using Twilio.Resources.IpMessaging.V1;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Fetchers.IpMessaging.V1 {
 
@@ -28,7 +31,7 @@ namespace Twilio.Fetchers.IpMessaging.V1 {
          */
         public override async Task<CredentialResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Get,
+                Twilio.Http.HttpMethod.GET,
                 Domains.IPMESSAGING,
                 "/v1/Credentials/" + this.sid + ""
             );
@@ -37,7 +40,7 @@ namespace Twilio.Fetchers.IpMessaging.V1 {
             
             if (response == null) {
                 throw new ApiConnectionException("CredentialResource fetch failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -54,7 +57,6 @@ namespace Twilio.Fetchers.IpMessaging.V1 {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the fetch
          * 
@@ -63,7 +65,7 @@ namespace Twilio.Fetchers.IpMessaging.V1 {
          */
         public override CredentialResource Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Get,
+                Twilio.Http.HttpMethod.GET,
                 Domains.IPMESSAGING,
                 "/v1/Credentials/" + this.sid + ""
             );
@@ -72,7 +74,7 @@ namespace Twilio.Fetchers.IpMessaging.V1 {
             
             if (response == null) {
                 throw new ApiConnectionException("CredentialResource fetch failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -87,6 +89,5 @@ namespace Twilio.Fetchers.IpMessaging.V1 {
             
             return CredentialResource.FromJson(response.GetContent());
         }
-        #endif
     }
 }

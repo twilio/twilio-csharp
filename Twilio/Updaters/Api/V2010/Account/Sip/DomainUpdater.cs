@@ -1,11 +1,14 @@
 using System;
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account.Sip;
 using Twilio.Updaters;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Updaters.Api.V2010.Account.Sip {
 
@@ -14,10 +17,10 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
         private string sid;
         private string apiVersion;
         private string friendlyName;
-        private System.Net.Http.HttpMethod voiceFallbackMethod;
+        private Twilio.Http.HttpMethod voiceFallbackMethod;
         private Uri voiceFallbackUrl;
-        private System.Net.Http.HttpMethod voiceMethod;
-        private System.Net.Http.HttpMethod voiceStatusCallbackMethod;
+        private Twilio.Http.HttpMethod voiceMethod;
+        private Twilio.Http.HttpMethod voiceStatusCallbackMethod;
         private Uri voiceStatusCallbackUrl;
         private Uri voiceUrl;
     
@@ -60,7 +63,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param voiceFallbackMethod The voice_fallback_method
          * @return this
          */
-        public DomainUpdater setVoiceFallbackMethod(System.Net.Http.HttpMethod voiceFallbackMethod) {
+        public DomainUpdater setVoiceFallbackMethod(Twilio.Http.HttpMethod voiceFallbackMethod) {
             this.voiceFallbackMethod = voiceFallbackMethod;
             return this;
         }
@@ -92,7 +95,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param voiceMethod HTTP method to use with voice_url
          * @return this
          */
-        public DomainUpdater setVoiceMethod(System.Net.Http.HttpMethod voiceMethod) {
+        public DomainUpdater setVoiceMethod(Twilio.Http.HttpMethod voiceMethod) {
             this.voiceMethod = voiceMethod;
             return this;
         }
@@ -103,7 +106,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param voiceStatusCallbackMethod The voice_status_callback_method
          * @return this
          */
-        public DomainUpdater setVoiceStatusCallbackMethod(System.Net.Http.HttpMethod voiceStatusCallbackMethod) {
+        public DomainUpdater setVoiceStatusCallbackMethod(Twilio.Http.HttpMethod voiceStatusCallbackMethod) {
             this.voiceStatusCallbackMethod = voiceStatusCallbackMethod;
             return this;
         }
@@ -159,7 +162,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          */
         public override async Task<DomainResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains/" + this.sid + ".json"
             );
@@ -169,7 +172,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
             
             if (response == null) {
                 throw new ApiConnectionException("DomainResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -186,7 +189,6 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the update
          * 
@@ -195,7 +197,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          */
         public override DomainResource Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains/" + this.sid + ".json"
             );
@@ -205,7 +207,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
             
             if (response == null) {
                 throw new ApiConnectionException("DomainResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -220,7 +222,6 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
             
             return DomainResource.FromJson(response.GetContent());
         }
-        #endif
     
         /**
          * Add the requested post parameters to the Request

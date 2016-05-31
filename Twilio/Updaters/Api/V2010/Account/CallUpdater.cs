@@ -1,5 +1,4 @@
 using System;
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -7,18 +6,22 @@ using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account;
 using Twilio.Updaters;
 
+#if NET40
+using System.Threading.Tasks;
+#endif
+
 namespace Twilio.Updaters.Api.V2010.Account {
 
     public class CallUpdater : Updater<CallResource> {
         private string accountSid;
         private string sid;
         private Uri url;
-        private System.Net.Http.HttpMethod method;
+        private Twilio.Http.HttpMethod method;
         private CallResource.Status status;
         private Uri fallbackUrl;
-        private System.Net.Http.HttpMethod fallbackMethod;
+        private Twilio.Http.HttpMethod fallbackMethod;
         private Uri statusCallback;
-        private System.Net.Http.HttpMethod statusCallbackMethod;
+        private Twilio.Http.HttpMethod statusCallbackMethod;
     
         /**
          * Construct a new CallUpdater
@@ -61,7 +64,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param method HTTP method to use to fetch TwiML
          * @return this
          */
-        public CallUpdater setMethod(System.Net.Http.HttpMethod method) {
+        public CallUpdater setMethod(Twilio.Http.HttpMethod method) {
             this.method = method;
             return this;
         }
@@ -110,7 +113,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param fallbackMethod HTTP Method to use with FallbackUrl
          * @return this
          */
-        public CallUpdater setFallbackMethod(System.Net.Http.HttpMethod fallbackMethod) {
+        public CallUpdater setFallbackMethod(Twilio.Http.HttpMethod fallbackMethod) {
             this.fallbackMethod = fallbackMethod;
             return this;
         }
@@ -143,7 +146,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param statusCallbackMethod HTTP Method to use with StatusCallback
          * @return this
          */
-        public CallUpdater setStatusCallbackMethod(System.Net.Http.HttpMethod statusCallbackMethod) {
+        public CallUpdater setStatusCallbackMethod(Twilio.Http.HttpMethod statusCallbackMethod) {
             this.statusCallbackMethod = statusCallbackMethod;
             return this;
         }
@@ -157,7 +160,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          */
         public override async Task<CallResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/Calls/" + this.sid + ".json"
             );
@@ -167,7 +170,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             
             if (response == null) {
                 throw new ApiConnectionException("CallResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -184,7 +187,6 @@ namespace Twilio.Updaters.Api.V2010.Account {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the update
          * 
@@ -193,7 +195,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          */
         public override CallResource Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/Calls/" + this.sid + ".json"
             );
@@ -203,7 +205,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             
             if (response == null) {
                 throw new ApiConnectionException("CallResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_OK) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -218,7 +220,6 @@ namespace Twilio.Updaters.Api.V2010.Account {
             
             return CallResource.FromJson(response.GetContent());
         }
-        #endif
     
         /**
          * Add the requested post parameters to the Request

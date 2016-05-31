@@ -19,7 +19,7 @@ namespace Twilio.Tests.Notifications.V1.Service {
         [Test]
         public void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(System.Net.Http.HttpMethod.Get,
+            Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.NOTIFICATIONS,
                                           "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings/BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             
@@ -59,7 +59,7 @@ namespace Twilio.Tests.Notifications.V1.Service {
         [Test]
         public void TestDeleteRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(System.Net.Http.HttpMethod.Delete,
+            Request request = new Request(Twilio.Http.HttpMethod.DELETE,
                                           Domains.NOTIFICATIONS,
                                           "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings/BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             
@@ -98,7 +98,7 @@ namespace Twilio.Tests.Notifications.V1.Service {
         [Test]
         public void TestCreateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-                        Request request = new Request(System.Net.Http.HttpMethod.Post,
+                        Request request = new Request(Twilio.Http.HttpMethod.POST,
                                                       Domains.NOTIFICATIONS,
                                                       "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings");
                         request.AddPostParam("Endpoint", Serialize("endpoint"));
@@ -140,7 +140,7 @@ namespace Twilio.Tests.Notifications.V1.Service {
         [Test]
         public void TestReadRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(System.Net.Http.HttpMethod.Get,
+            Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.NOTIFICATIONS,
                                           "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings");
             

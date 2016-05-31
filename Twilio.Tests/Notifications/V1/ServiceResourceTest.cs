@@ -19,7 +19,7 @@ namespace Twilio.Tests.Notifications.V1 {
         [Test]
         public void TestCreateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(System.Net.Http.HttpMethod.Post,
+            Request request = new Request(Twilio.Http.HttpMethod.POST,
                                           Domains.NOTIFICATIONS,
                                           "/v1/Services");
             
@@ -58,7 +58,7 @@ namespace Twilio.Tests.Notifications.V1 {
         [Test]
         public void TestDeleteRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(System.Net.Http.HttpMethod.Delete,
+            Request request = new Request(Twilio.Http.HttpMethod.DELETE,
                                           Domains.NOTIFICATIONS,
                                           "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             
@@ -97,7 +97,7 @@ namespace Twilio.Tests.Notifications.V1 {
         [Test]
         public void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(System.Net.Http.HttpMethod.Get,
+            Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.NOTIFICATIONS,
                                           "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             
@@ -137,7 +137,7 @@ namespace Twilio.Tests.Notifications.V1 {
         [Test]
         public void TestReadRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(System.Net.Http.HttpMethod.Get,
+            Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.NOTIFICATIONS,
                                           "/v1/Services");
             
@@ -188,7 +188,7 @@ namespace Twilio.Tests.Notifications.V1 {
         [Test]
         public void TestUpdateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(System.Net.Http.HttpMethod.Post,
+            Request request = new Request(Twilio.Http.HttpMethod.POST,
                                           Domains.NOTIFICATIONS,
                                           "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             

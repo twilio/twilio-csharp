@@ -1,11 +1,14 @@
 using System;
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account.Call;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Creators.Api.V2010.Account.Call {
 
@@ -15,7 +18,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
         private DateTime? endDate;
         private bool? includeSubaccounts;
         private Uri statusCallback;
-        private System.Net.Http.HttpMethod statusCallbackMethod;
+        private Twilio.Http.HttpMethod statusCallbackMethod;
     
         /**
          * Construct a new FeedbackSummaryCreator
@@ -68,7 +71,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
          * @param statusCallbackMethod The status_callback_method
          * @return this
          */
-        public FeedbackSummaryCreator setStatusCallbackMethod(System.Net.Http.HttpMethod statusCallbackMethod) {
+        public FeedbackSummaryCreator setStatusCallbackMethod(Twilio.Http.HttpMethod statusCallbackMethod) {
             this.statusCallbackMethod = statusCallbackMethod;
             return this;
         }
@@ -82,7 +85,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
          */
         public override async Task<FeedbackSummaryResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/Calls/FeedbackSummary.json"
             );
@@ -92,7 +95,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
             
             if (response == null) {
                 throw new ApiConnectionException("FeedbackSummaryResource creation failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_CREATED) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.Created) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -109,7 +112,6 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the create
          * 
@@ -118,7 +120,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
          */
         public override FeedbackSummaryResource Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + this.accountSid + "/Calls/FeedbackSummary.json"
             );
@@ -128,7 +130,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
             
             if (response == null) {
                 throw new ApiConnectionException("FeedbackSummaryResource creation failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_CREATED) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.Created) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -143,7 +145,6 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
             
             return FeedbackSummaryResource.FromJson(response.GetContent());
         }
-        #endif
     
         /**
          * Add the requested post parameters to the Request

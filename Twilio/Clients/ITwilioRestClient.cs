@@ -1,5 +1,7 @@
 ﻿using System;
+#if NET40
 using System.Threading.Tasks;
+#endif
 using Twilio.Http;
 
 namespace Twilio.Clients

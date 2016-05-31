@@ -1,9 +1,12 @@
-using System.Threading.Tasks;
 using Twilio.Clients;
 using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Trunking.V1.Trunk;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Twilio.Creators.Trunking.V1.Trunk {
 
@@ -31,7 +34,7 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
          */
         public override async Task<PhoneNumberResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.TRUNKING,
                 "/v1/Trunks/" + this.trunkSid + "/PhoneNumbers"
             );
@@ -41,7 +44,7 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
             
             if (response == null) {
                 throw new ApiConnectionException("PhoneNumberResource creation failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_CREATED) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.Created) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -58,7 +61,6 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
         }
         #endif
     
-        #if NET40
         /**
          * Make the request to the Twilio API to perform the create
          * 
@@ -67,7 +69,7 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
          */
         public override PhoneNumberResource Execute(ITwilioRestClient client) {
             Request request = new Request(
-                System.Net.Http.HttpMethod.Post,
+                Twilio.Http.HttpMethod.POST,
                 Domains.TRUNKING,
                 "/v1/Trunks/" + this.trunkSid + "/PhoneNumbers"
             );
@@ -77,7 +79,7 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
             
             if (response == null) {
                 throw new ApiConnectionException("PhoneNumberResource creation failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != HttpStatus.HTTP_STATUS_CODE_CREATED) {
+            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.Created) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -92,7 +94,6 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
             
             return PhoneNumberResource.FromJson(response.GetContent());
         }
-        #endif
     
         /**
          * Add the requested post parameters to the Request
