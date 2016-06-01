@@ -34,7 +34,7 @@ namespace Twilio.Readers.Api.V2010.Account.Message {
          * @param dateCreated Filter by date created
          * @return this
          */
-        public MediaReader byDateCreated(string dateCreated) {
+        public MediaReader ByDateCreated(string dateCreated) {
             this.dateCreated = dateCreated;
             return this;
         }

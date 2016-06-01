@@ -31,7 +31,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param dateCreated Filter by date created
          * @return this
          */
-        public RecordingReader byDateCreated(string dateCreated) {
+        public RecordingReader ByDateCreated(string dateCreated) {
             this.dateCreated = dateCreated;
             return this;
         }

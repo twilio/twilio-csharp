@@ -40,7 +40,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param endDate The end_date
          * @return this
          */
-        public EventReader byEndDate(DateTime? endDate) {
+        public EventReader ByEndDate(DateTime? endDate) {
             this.endDate = endDate;
             return this;
         }
@@ -51,7 +51,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param eventType The event_type
          * @return this
          */
-        public EventReader byEventType(string eventType) {
+        public EventReader ByEventType(string eventType) {
             this.eventType = eventType;
             return this;
         }
@@ -62,7 +62,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param minutes The minutes
          * @return this
          */
-        public EventReader byMinutes(int? minutes) {
+        public EventReader ByMinutes(int? minutes) {
             this.minutes = minutes;
             return this;
         }
@@ -73,7 +73,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param reservationSid The reservation_sid
          * @return this
          */
-        public EventReader byReservationSid(string reservationSid) {
+        public EventReader ByReservationSid(string reservationSid) {
             this.reservationSid = reservationSid;
             return this;
         }
@@ -84,7 +84,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param startDate The start_date
          * @return this
          */
-        public EventReader byStartDate(DateTime? startDate) {
+        public EventReader ByStartDate(DateTime? startDate) {
             this.startDate = startDate;
             return this;
         }
@@ -95,7 +95,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param taskQueueSid The task_queue_sid
          * @return this
          */
-        public EventReader byTaskQueueSid(string taskQueueSid) {
+        public EventReader ByTaskQueueSid(string taskQueueSid) {
             this.taskQueueSid = taskQueueSid;
             return this;
         }
@@ -106,7 +106,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param taskSid The task_sid
          * @return this
          */
-        public EventReader byTaskSid(string taskSid) {
+        public EventReader ByTaskSid(string taskSid) {
             this.taskSid = taskSid;
             return this;
         }
@@ -117,7 +117,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param workerSid The worker_sid
          * @return this
          */
-        public EventReader byWorkerSid(string workerSid) {
+        public EventReader ByWorkerSid(string workerSid) {
             this.workerSid = workerSid;
             return this;
         }
@@ -128,7 +128,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param workflowSid The workflow_sid
          * @return this
          */
-        public EventReader byWorkflowSid(string workflowSid) {
+        public EventReader ByWorkflowSid(string workflowSid) {
             this.workflowSid = workflowSid;
             return this;
         }

@@ -33,7 +33,7 @@ namespace Twilio.Readers.Api.V2010.Account.Conference {
          * @param muted Filter by muted participants
          * @return this
          */
-        public ParticipantReader byMuted(bool? muted) {
+        public ParticipantReader ByMuted(bool? muted) {
             this.muted = muted;
             return this;
         }

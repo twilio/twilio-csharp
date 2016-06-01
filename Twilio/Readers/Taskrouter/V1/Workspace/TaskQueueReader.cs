@@ -31,7 +31,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public TaskQueueReader byFriendlyName(string friendlyName) {
+        public TaskQueueReader ByFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -42,7 +42,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param evaluateWorkerAttributes The evaluate_worker_attributes
          * @return this
          */
-        public TaskQueueReader byEvaluateWorkerAttributes(string evaluateWorkerAttributes) {
+        public TaskQueueReader ByEvaluateWorkerAttributes(string evaluateWorkerAttributes) {
             this.evaluateWorkerAttributes = evaluateWorkerAttributes;
             return this;
         }

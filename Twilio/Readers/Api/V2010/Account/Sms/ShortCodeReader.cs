@@ -32,7 +32,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sms {
          * @param friendlyName Filter by friendly name
          * @return this
          */
-        public ShortCodeReader byFriendlyName(string friendlyName) {
+        public ShortCodeReader ByFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -44,7 +44,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sms {
          * @param shortCode Filter by ShortCode
          * @return this
          */
-        public ShortCodeReader byShortCode(string shortCode) {
+        public ShortCodeReader ByShortCode(string shortCode) {
             this.shortCode = shortCode;
             return this;
         }

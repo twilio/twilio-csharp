@@ -32,7 +32,7 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
          * @param beta The beta
          * @return this
          */
-        public TollFreeReader byBeta(bool? beta) {
+        public TollFreeReader ByBeta(bool? beta) {
             this.beta = beta;
             return this;
         }
@@ -43,7 +43,7 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public TollFreeReader byFriendlyName(string friendlyName) {
+        public TollFreeReader ByFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -54,7 +54,7 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
          * @param phoneNumber The phone_number
          * @return this
          */
-        public TollFreeReader byPhoneNumber(Twilio.Types.PhoneNumber phoneNumber) {
+        public TollFreeReader ByPhoneNumber(Twilio.Types.PhoneNumber phoneNumber) {
             this.phoneNumber = phoneNumber;
             return this;
         }

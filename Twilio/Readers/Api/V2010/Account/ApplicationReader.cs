@@ -31,7 +31,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param friendlyName Filter by friendly name
          * @return this
          */
-        public ApplicationReader byFriendlyName(string friendlyName) {
+        public ApplicationReader ByFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }

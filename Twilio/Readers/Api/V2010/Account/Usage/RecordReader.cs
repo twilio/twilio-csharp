@@ -32,7 +32,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          * @param category Only include usage of a given category
          * @return this
          */
-        public RecordReader byCategory(RecordResource.Category category) {
+        public RecordReader ByCategory(RecordResource.Category category) {
             this.category = category;
             return this;
         }
@@ -46,7 +46,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          * @param startDate Filter by start date
          * @return this
          */
-        public RecordReader byStartDate(string startDate) {
+        public RecordReader ByStartDate(string startDate) {
             this.startDate = startDate;
             return this;
         }
@@ -59,7 +59,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          * @param endDate Filter by end date
          * @return this
          */
-        public RecordReader byEndDate(string endDate) {
+        public RecordReader ByEndDate(string endDate) {
             this.endDate = endDate;
             return this;
         }

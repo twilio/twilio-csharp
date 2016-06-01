@@ -25,7 +25,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param actorSid The actor_sid
          * @return this
          */
-        public EventReader byActorSid(string actorSid) {
+        public EventReader ByActorSid(string actorSid) {
             this.actorSid = actorSid;
             return this;
         }
@@ -36,7 +36,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param endDate The end_date
          * @return this
          */
-        public EventReader byEndDate(string endDate) {
+        public EventReader ByEndDate(string endDate) {
             this.endDate = endDate;
             return this;
         }
@@ -47,7 +47,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param eventType The event_type
          * @return this
          */
-        public EventReader byEventType(string eventType) {
+        public EventReader ByEventType(string eventType) {
             this.eventType = eventType;
             return this;
         }
@@ -58,7 +58,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param resourceSid The resource_sid
          * @return this
          */
-        public EventReader byResourceSid(string resourceSid) {
+        public EventReader ByResourceSid(string resourceSid) {
             this.resourceSid = resourceSid;
             return this;
         }
@@ -69,7 +69,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param sourceIpAddress The source_ip_address
          * @return this
          */
-        public EventReader bySourceIpAddress(string sourceIpAddress) {
+        public EventReader BySourceIpAddress(string sourceIpAddress) {
             this.sourceIpAddress = sourceIpAddress;
             return this;
         }
@@ -80,7 +80,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param startDate The start_date
          * @return this
          */
-        public EventReader byStartDate(string startDate) {
+        public EventReader ByStartDate(string startDate) {
             this.startDate = startDate;
             return this;
         }

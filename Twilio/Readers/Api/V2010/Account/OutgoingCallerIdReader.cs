@@ -31,7 +31,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param phoneNumber Filter by phone number
          * @return this
          */
-        public OutgoingCallerIdReader byPhoneNumber(Twilio.Types.PhoneNumber phoneNumber) {
+        public OutgoingCallerIdReader ByPhoneNumber(Twilio.Types.PhoneNumber phoneNumber) {
             this.phoneNumber = phoneNumber;
             return this;
         }
@@ -42,7 +42,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param friendlyName Filter by friendly name
          * @return this
          */
-        public OutgoingCallerIdReader byFriendlyName(string friendlyName) {
+        public OutgoingCallerIdReader ByFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }

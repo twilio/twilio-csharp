@@ -32,7 +32,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param customerName The customer_name
          * @return this
          */
-        public AddressReader byCustomerName(string customerName) {
+        public AddressReader ByCustomerName(string customerName) {
             this.customerName = customerName;
             return this;
         }
@@ -43,7 +43,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public AddressReader byFriendlyName(string friendlyName) {
+        public AddressReader ByFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -54,7 +54,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param isoCountry The iso_country
          * @return this
          */
-        public AddressReader byIsoCountry(string isoCountry) {
+        public AddressReader ByIsoCountry(string isoCountry) {
             this.isoCountry = isoCountry;
             return this;
         }

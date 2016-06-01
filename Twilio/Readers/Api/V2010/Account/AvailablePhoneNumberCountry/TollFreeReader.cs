@@ -41,7 +41,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param areaCode The area_code
          * @return this
          */
-        public TollFreeReader byAreaCode(int? areaCode) {
+        public TollFreeReader ByAreaCode(int? areaCode) {
             this.areaCode = areaCode;
             return this;
         }
@@ -52,7 +52,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param contains The contains
          * @return this
          */
-        public TollFreeReader byContains(string contains) {
+        public TollFreeReader ByContains(string contains) {
             this.contains = contains;
             return this;
         }
@@ -63,7 +63,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param smsEnabled The sms_enabled
          * @return this
          */
-        public TollFreeReader bySmsEnabled(bool? smsEnabled) {
+        public TollFreeReader BySmsEnabled(bool? smsEnabled) {
             this.smsEnabled = smsEnabled;
             return this;
         }
@@ -74,7 +74,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param mmsEnabled The mms_enabled
          * @return this
          */
-        public TollFreeReader byMmsEnabled(bool? mmsEnabled) {
+        public TollFreeReader ByMmsEnabled(bool? mmsEnabled) {
             this.mmsEnabled = mmsEnabled;
             return this;
         }
@@ -85,7 +85,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param voiceEnabled The voice_enabled
          * @return this
          */
-        public TollFreeReader byVoiceEnabled(bool? voiceEnabled) {
+        public TollFreeReader ByVoiceEnabled(bool? voiceEnabled) {
             this.voiceEnabled = voiceEnabled;
             return this;
         }
@@ -96,7 +96,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param excludeAllAddressRequired The exclude_all_address_required
          * @return this
          */
-        public TollFreeReader byExcludeAllAddressRequired(bool? excludeAllAddressRequired) {
+        public TollFreeReader ByExcludeAllAddressRequired(bool? excludeAllAddressRequired) {
             this.excludeAllAddressRequired = excludeAllAddressRequired;
             return this;
         }
@@ -107,7 +107,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param excludeLocalAddressRequired The exclude_local_address_required
          * @return this
          */
-        public TollFreeReader byExcludeLocalAddressRequired(bool? excludeLocalAddressRequired) {
+        public TollFreeReader ByExcludeLocalAddressRequired(bool? excludeLocalAddressRequired) {
             this.excludeLocalAddressRequired = excludeLocalAddressRequired;
             return this;
         }
@@ -118,7 +118,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param excludeForeignAddressRequired The exclude_foreign_address_required
          * @return this
          */
-        public TollFreeReader byExcludeForeignAddressRequired(bool? excludeForeignAddressRequired) {
+        public TollFreeReader ByExcludeForeignAddressRequired(bool? excludeForeignAddressRequired) {
             this.excludeForeignAddressRequired = excludeForeignAddressRequired;
             return this;
         }
@@ -129,7 +129,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param beta The beta
          * @return this
          */
-        public TollFreeReader byBeta(bool? beta) {
+        public TollFreeReader ByBeta(bool? beta) {
             this.beta = beta;
             return this;
         }

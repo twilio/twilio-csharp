@@ -36,7 +36,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param activityName The activity_name
          * @return this
          */
-        public WorkerReader byActivityName(string activityName) {
+        public WorkerReader ByActivityName(string activityName) {
             this.activityName = activityName;
             return this;
         }
@@ -47,7 +47,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param activitySid The activity_sid
          * @return this
          */
-        public WorkerReader byActivitySid(string activitySid) {
+        public WorkerReader ByActivitySid(string activitySid) {
             this.activitySid = activitySid;
             return this;
         }
@@ -58,7 +58,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param available The available
          * @return this
          */
-        public WorkerReader byAvailable(string available) {
+        public WorkerReader ByAvailable(string available) {
             this.available = available;
             return this;
         }
@@ -69,7 +69,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public WorkerReader byFriendlyName(string friendlyName) {
+        public WorkerReader ByFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -80,7 +80,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param targetWorkersExpression The target_workers_expression
          * @return this
          */
-        public WorkerReader byTargetWorkersExpression(string targetWorkersExpression) {
+        public WorkerReader ByTargetWorkersExpression(string targetWorkersExpression) {
             this.targetWorkersExpression = targetWorkersExpression;
             return this;
         }
@@ -91,7 +91,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param taskQueueName The task_queue_name
          * @return this
          */
-        public WorkerReader byTaskQueueName(string taskQueueName) {
+        public WorkerReader ByTaskQueueName(string taskQueueName) {
             this.taskQueueName = taskQueueName;
             return this;
         }
@@ -102,7 +102,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param taskQueueSid The task_queue_sid
          * @return this
          */
-        public WorkerReader byTaskQueueSid(string taskQueueSid) {
+        public WorkerReader ByTaskQueueSid(string taskQueueSid) {
             this.taskQueueSid = taskQueueSid;
             return this;
         }

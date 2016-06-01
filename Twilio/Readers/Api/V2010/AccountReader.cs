@@ -22,7 +22,7 @@ namespace Twilio.Readers.Api.V2010 {
          * @param friendlyName FriendlyName to filter on
          * @return this
          */
-        public AccountReader byFriendlyName(string friendlyName) {
+        public AccountReader ByFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -33,7 +33,7 @@ namespace Twilio.Readers.Api.V2010 {
          * @param status Status to filter on
          * @return this
          */
-        public AccountReader byStatus(AccountResource.Status status) {
+        public AccountReader ByStatus(AccountResource.Status status) {
             this.status = status;
             return this;
         }

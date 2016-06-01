@@ -35,7 +35,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param priority The priority
          * @return this
          */
-        public TaskReader byPriority(int? priority) {
+        public TaskReader ByPriority(int? priority) {
             this.priority = priority;
             return this;
         }
@@ -46,7 +46,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param assignmentStatus The assignment_status
          * @return this
          */
-        public TaskReader byAssignmentStatus(TaskResource.Status assignmentStatus) {
+        public TaskReader ByAssignmentStatus(TaskResource.Status assignmentStatus) {
             this.assignmentStatus = assignmentStatus;
             return this;
         }
@@ -57,7 +57,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param workflowSid The workflow_sid
          * @return this
          */
-        public TaskReader byWorkflowSid(string workflowSid) {
+        public TaskReader ByWorkflowSid(string workflowSid) {
             this.workflowSid = workflowSid;
             return this;
         }
@@ -68,7 +68,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param workflowName The workflow_name
          * @return this
          */
-        public TaskReader byWorkflowName(string workflowName) {
+        public TaskReader ByWorkflowName(string workflowName) {
             this.workflowName = workflowName;
             return this;
         }
@@ -79,7 +79,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param taskQueueSid The task_queue_sid
          * @return this
          */
-        public TaskReader byTaskQueueSid(string taskQueueSid) {
+        public TaskReader ByTaskQueueSid(string taskQueueSid) {
             this.taskQueueSid = taskQueueSid;
             return this;
         }
@@ -90,7 +90,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param taskQueueName The task_queue_name
          * @return this
          */
-        public TaskReader byTaskQueueName(string taskQueueName) {
+        public TaskReader ByTaskQueueName(string taskQueueName) {
             this.taskQueueName = taskQueueName;
             return this;
         }

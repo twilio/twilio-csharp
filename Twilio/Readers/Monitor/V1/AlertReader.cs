@@ -22,7 +22,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param logLevel The log_level
          * @return this
          */
-        public AlertReader byLogLevel(string logLevel) {
+        public AlertReader ByLogLevel(string logLevel) {
             this.logLevel = logLevel;
             return this;
         }
@@ -33,7 +33,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param startDate The start_date
          * @return this
          */
-        public AlertReader byStartDate(string startDate) {
+        public AlertReader ByStartDate(string startDate) {
             this.startDate = startDate;
             return this;
         }
@@ -44,7 +44,7 @@ namespace Twilio.Readers.Monitor.V1 {
          * @param endDate The end_date
          * @return this
          */
-        public AlertReader byEndDate(string endDate) {
+        public AlertReader ByEndDate(string endDate) {
             this.endDate = endDate;
             return this;
         }

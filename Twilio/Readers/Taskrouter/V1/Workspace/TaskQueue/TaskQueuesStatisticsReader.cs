@@ -35,7 +35,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.TaskQueue {
          * @param endDate The end_date
          * @return this
          */
-        public TaskQueuesStatisticsReader byEndDate(DateTime? endDate) {
+        public TaskQueuesStatisticsReader ByEndDate(DateTime? endDate) {
             this.endDate = endDate;
             return this;
         }
@@ -46,7 +46,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.TaskQueue {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public TaskQueuesStatisticsReader byFriendlyName(string friendlyName) {
+        public TaskQueuesStatisticsReader ByFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -57,7 +57,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.TaskQueue {
          * @param minutes The minutes
          * @return this
          */
-        public TaskQueuesStatisticsReader byMinutes(int? minutes) {
+        public TaskQueuesStatisticsReader ByMinutes(int? minutes) {
             this.minutes = minutes;
             return this;
         }
@@ -68,7 +68,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.TaskQueue {
          * @param startDate The start_date
          * @return this
          */
-        public TaskQueuesStatisticsReader byStartDate(DateTime? startDate) {
+        public TaskQueuesStatisticsReader ByStartDate(DateTime? startDate) {
             this.startDate = startDate;
             return this;
         }

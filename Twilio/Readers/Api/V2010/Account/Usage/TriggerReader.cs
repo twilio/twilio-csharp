@@ -33,7 +33,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          * @param recurring Filter by recurring
          * @return this
          */
-        public TriggerReader byRecurring(TriggerResource.Recurring recurring) {
+        public TriggerReader ByRecurring(TriggerResource.Recurring recurring) {
             this.recurring = recurring;
             return this;
         }
@@ -44,7 +44,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          * @param triggerBy Filter by trigger by
          * @return this
          */
-        public TriggerReader byTriggerBy(TriggerResource.TriggerField triggerBy) {
+        public TriggerReader ByTriggerBy(TriggerResource.TriggerField triggerBy) {
             this.triggerBy = triggerBy;
             return this;
         }
@@ -55,7 +55,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
          * @param usageCategory Filter by Usage Category
          * @return this
          */
-        public TriggerReader byUsageCategory(TriggerResource.UsageCategory usageCategory) {
+        public TriggerReader ByUsageCategory(TriggerResource.UsageCategory usageCategory) {
             this.usageCategory = usageCategory;
             return this;
         }

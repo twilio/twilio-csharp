@@ -33,7 +33,7 @@ namespace Twilio.Readers.Api.V2010.Account.Call {
          * @param dateCreated The date_created
          * @return this
          */
-        public RecordingReader byDateCreated(string dateCreated) {
+        public RecordingReader ByDateCreated(string dateCreated) {
             this.dateCreated = dateCreated;
             return this;
         }

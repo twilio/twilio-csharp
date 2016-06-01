@@ -34,7 +34,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param dateCreated Filter by date created
          * @return this
          */
-        public ConferenceReader byDateCreated(string dateCreated) {
+        public ConferenceReader ByDateCreated(string dateCreated) {
             this.dateCreated = dateCreated;
             return this;
         }
@@ -47,7 +47,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param dateUpdated Filter by date updated
          * @return this
          */
-        public ConferenceReader byDateUpdated(string dateUpdated) {
+        public ConferenceReader ByDateUpdated(string dateUpdated) {
             this.dateUpdated = dateUpdated;
             return this;
         }
@@ -58,7 +58,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param friendlyName Filter by friendly name
          * @return this
          */
-        public ConferenceReader byFriendlyName(string friendlyName) {
+        public ConferenceReader ByFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -70,7 +70,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param status The status of the conference
          * @return this
          */
-        public ConferenceReader byStatus(ConferenceResource.Status status) {
+        public ConferenceReader ByStatus(ConferenceResource.Status status) {
             this.status = status;
             return this;
         }

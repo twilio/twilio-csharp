@@ -32,7 +32,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sms {
          * @param to The to
          * @return this
          */
-        public SmsMessageReader byTo(Twilio.Types.PhoneNumber to) {
+        public SmsMessageReader ByTo(Twilio.Types.PhoneNumber to) {
             this.to = to;
             return this;
         }
@@ -43,7 +43,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sms {
          * @param from The from
          * @return this
          */
-        public SmsMessageReader byFrom(Twilio.Types.PhoneNumber from) {
+        public SmsMessageReader ByFrom(Twilio.Types.PhoneNumber from) {
             this.from = from;
             return this;
         }
@@ -54,7 +54,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sms {
          * @param dateSent The date_sent
          * @return this
          */
-        public SmsMessageReader byDateSent(string dateSent) {
+        public SmsMessageReader ByDateSent(string dateSent) {
             this.dateSent = dateSent;
             return this;
         }

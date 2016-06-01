@@ -35,7 +35,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param to Phone number or Client identifier to filter `to` on
          * @return this
          */
-        public CallReader byTo(Twilio.Types.PhoneNumber to) {
+        public CallReader ByTo(Twilio.Types.PhoneNumber to) {
             this.to = to;
             return this;
         }
@@ -46,7 +46,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param from Phone number or Client identifier to filter `from` on
          * @return this
          */
-        public CallReader byFrom(Twilio.Types.PhoneNumber from) {
+        public CallReader ByFrom(Twilio.Types.PhoneNumber from) {
             this.from = from;
             return this;
         }
@@ -57,7 +57,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param parentCallSid Parent Call Sid to filter on
          * @return this
          */
-        public CallReader byParentCallSid(string parentCallSid) {
+        public CallReader ByParentCallSid(string parentCallSid) {
             this.parentCallSid = parentCallSid;
             return this;
         }
@@ -68,7 +68,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param status Status to filter on
          * @return this
          */
-        public CallReader byStatus(CallResource.Status status) {
+        public CallReader ByStatus(CallResource.Status status) {
             this.status = status;
             return this;
         }
@@ -79,7 +79,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param startTime StartTime to filter on
          * @return this
          */
-        public CallReader byStartTime(string startTime) {
+        public CallReader ByStartTime(string startTime) {
             this.startTime = startTime;
             return this;
         }
@@ -90,7 +90,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param endTime EndTime to filter on
          * @return this
          */
-        public CallReader byEndTime(string endTime) {
+        public CallReader ByEndTime(string endTime) {
             this.endTime = endTime;
             return this;
         }

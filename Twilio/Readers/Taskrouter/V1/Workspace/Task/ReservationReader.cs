@@ -35,7 +35,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.Task {
          * @param status The status
          * @return this
          */
-        public ReservationReader byStatus(string status) {
+        public ReservationReader ByStatus(string status) {
             this.status = status;
             return this;
         }
@@ -46,7 +46,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.Task {
          * @param assignmentStatus The assignment_status
          * @return this
          */
-        public ReservationReader byAssignmentStatus(string assignmentStatus) {
+        public ReservationReader ByAssignmentStatus(string assignmentStatus) {
             this.assignmentStatus = assignmentStatus;
             return this;
         }
@@ -57,7 +57,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.Task {
          * @param reservationStatus The reservation_status
          * @return this
          */
-        public ReservationReader byReservationStatus(string reservationStatus) {
+        public ReservationReader ByReservationStatus(string reservationStatus) {
             this.reservationStatus = reservationStatus;
             return this;
         }

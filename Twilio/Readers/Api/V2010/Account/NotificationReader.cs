@@ -31,7 +31,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param log Filter by log level
          * @return this
          */
-        public NotificationReader byLog(int? log) {
+        public NotificationReader ByLog(int? log) {
             this.log = log;
             return this;
         }
@@ -43,7 +43,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param messageDate Filter by date
          * @return this
          */
-        public NotificationReader byMessageDate(string messageDate) {
+        public NotificationReader ByMessageDate(string messageDate) {
             this.messageDate = messageDate;
             return this;
         }

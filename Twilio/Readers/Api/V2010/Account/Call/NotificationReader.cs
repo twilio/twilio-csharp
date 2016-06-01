@@ -34,7 +34,7 @@ namespace Twilio.Readers.Api.V2010.Account.Call {
          * @param log The log
          * @return this
          */
-        public NotificationReader byLog(int? log) {
+        public NotificationReader ByLog(int? log) {
             this.log = log;
             return this;
         }
@@ -45,7 +45,7 @@ namespace Twilio.Readers.Api.V2010.Account.Call {
          * @param messageDate The message_date
          * @return this
          */
-        public NotificationReader byMessageDate(string messageDate) {
+        public NotificationReader ByMessageDate(string messageDate) {
             this.messageDate = messageDate;
             return this;
         }

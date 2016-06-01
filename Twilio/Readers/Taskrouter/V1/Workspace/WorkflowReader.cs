@@ -30,7 +30,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public WorkflowReader byFriendlyName(string friendlyName) {
+        public WorkflowReader ByFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }

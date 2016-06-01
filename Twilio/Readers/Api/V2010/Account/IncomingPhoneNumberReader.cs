@@ -32,7 +32,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param beta Include new phone numbers
          * @return this
          */
-        public IncomingPhoneNumberReader byBeta(bool? beta) {
+        public IncomingPhoneNumberReader ByBeta(bool? beta) {
             this.beta = beta;
             return this;
         }
@@ -44,7 +44,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param friendlyName Filter by friendly name
          * @return this
          */
-        public IncomingPhoneNumberReader byFriendlyName(string friendlyName) {
+        public IncomingPhoneNumberReader ByFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -55,7 +55,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param phoneNumber Filter by incoming phone number
          * @return this
          */
-        public IncomingPhoneNumberReader byPhoneNumber(Twilio.Types.PhoneNumber phoneNumber) {
+        public IncomingPhoneNumberReader ByPhoneNumber(Twilio.Types.PhoneNumber phoneNumber) {
             this.phoneNumber = phoneNumber;
             return this;
         }

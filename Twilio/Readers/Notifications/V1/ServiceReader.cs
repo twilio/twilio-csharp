@@ -20,7 +20,7 @@ namespace Twilio.Readers.Notifications.V1 {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public ServiceReader byFriendlyName(string friendlyName) {
+        public ServiceReader ByFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }

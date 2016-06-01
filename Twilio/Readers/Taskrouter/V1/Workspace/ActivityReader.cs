@@ -31,7 +31,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param friendlyName The friendly_name
          * @return this
          */
-        public ActivityReader byFriendlyName(string friendlyName) {
+        public ActivityReader ByFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
@@ -42,7 +42,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
          * @param available The available
          * @return this
          */
-        public ActivityReader byAvailable(string available) {
+        public ActivityReader ByAvailable(string available) {
             this.available = available;
             return this;
         }

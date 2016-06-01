@@ -52,6 +52,7 @@ namespace Twilio.Http
 				var statusCode = response.StatusCode;
 
 				return new Response(statusCode, content);
+			#if NET40
 			} catch (AggregateException ae) {
 				ae.Handle ((x) => {
 					if (x is System.Net.WebException) {
@@ -81,6 +82,30 @@ namespace Twilio.Http
 					return false;
 				});
 			}
+			#else
+			} catch (WebException e) {
+				var errorResponse = (HttpWebResponse) e.Response;
+
+				if (errorResponse.StatusCode >= HttpStatusCode.InternalServerError && errorResponse.StatusCode < HttpStatusCode.HttpVersionNotSupported) {
+					throw new TwilioException("Internal Server error: " + errorResponse.StatusDescription);
+				}
+
+				var responseStream = errorResponse.GetResponseStream();
+				StreamReader errorReader = new StreamReader(responseStream);
+				string errorContent = errorReader.ReadToEnd();
+
+				try {
+					var restEx = RestException.FromJson(errorContent);
+					if (restEx == null) {
+						throw new TwilioException("Error: " + errorResponse.StatusDescription + " - " + errorContent);
+					}
+
+					throw restEx;
+				} catch (JsonReaderException je) {
+					throw new TwilioException("Error: " + errorResponse.StatusDescription + " - " + errorContent);
+				}
+			}
+			#endif
 
 			return null;
 		}

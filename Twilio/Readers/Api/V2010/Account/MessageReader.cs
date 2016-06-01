@@ -32,7 +32,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param to Filter by messages to this number
          * @return this
          */
-        public MessageReader byTo(Twilio.Types.PhoneNumber to) {
+        public MessageReader ByTo(Twilio.Types.PhoneNumber to) {
             this.to = to;
             return this;
         }
@@ -43,7 +43,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param from Filter by from number
          * @return this
          */
-        public MessageReader byFrom(Twilio.Types.PhoneNumber from) {
+        public MessageReader ByFrom(Twilio.Types.PhoneNumber from) {
             this.from = from;
             return this;
         }
@@ -54,7 +54,7 @@ namespace Twilio.Readers.Api.V2010.Account {
          * @param dateSent Filter by date sent
          * @return this
          */
-        public MessageReader byDateSent(string dateSent) {
+        public MessageReader ByDateSent(string dateSent) {
             this.dateSent = dateSent;
             return this;
         }

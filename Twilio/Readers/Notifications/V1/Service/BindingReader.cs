@@ -35,7 +35,7 @@ namespace Twilio.Readers.Notifications.V1.Service {
          * @param startDate The start_date
          * @return this
          */
-        public BindingReader byStartDate(string startDate) {
+        public BindingReader ByStartDate(string startDate) {
             this.startDate = startDate;
             return this;
         }
@@ -46,7 +46,7 @@ namespace Twilio.Readers.Notifications.V1.Service {
          * @param endDate The end_date
          * @return this
          */
-        public BindingReader byEndDate(string endDate) {
+        public BindingReader ByEndDate(string endDate) {
             this.endDate = endDate;
             return this;
         }
@@ -57,7 +57,7 @@ namespace Twilio.Readers.Notifications.V1.Service {
          * @param identity The identity
          * @return this
          */
-        public BindingReader byIdentity(List<string> identity) {
+        public BindingReader ByIdentity(List<string> identity) {
             this.identity = identity;
             return this;
         }
@@ -68,8 +68,8 @@ namespace Twilio.Readers.Notifications.V1.Service {
          * @param identity The identity
          * @return this
          */
-        public BindingReader byIdentity(string identity) {
-            return byIdentity(Promoter.ListOfOne(identity));
+        public BindingReader ByIdentity(string identity) {
+            return ByIdentity(Promoter.ListOfOne(identity));
         }
     
         /**
@@ -78,7 +78,7 @@ namespace Twilio.Readers.Notifications.V1.Service {
          * @param tag The tag
          * @return this
          */
-        public BindingReader byTag(List<string> tag) {
+        public BindingReader ByTag(List<string> tag) {
             this.tag = tag;
             return this;
         }
@@ -89,8 +89,8 @@ namespace Twilio.Readers.Notifications.V1.Service {
          * @param tag The tag
          * @return this
          */
-        public BindingReader byTag(string tag) {
-            return byTag(Promoter.ListOfOne(tag));
+        public BindingReader ByTag(string tag) {
+            return ByTag(Promoter.ListOfOne(tag));
         }
     
         #if NET40
