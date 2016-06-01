@@ -68,7 +68,7 @@ namespace Twilio.Fetchers.Preview.Wireless.Device {
             
             if (response == null) {
                 throw new ApiConnectionException("UsageResource fetch failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
+            } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -106,7 +106,7 @@ namespace Twilio.Fetchers.Preview.Wireless.Device {
             
             if (response == null) {
                 throw new ApiConnectionException("UsageResource fetch failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
+            } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");

@@ -103,7 +103,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
             
             if (response == null) {
                 throw new ApiConnectionException("TriggerResource creation failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.Created) {
+            } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
@@ -138,7 +138,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
             
             if (response == null) {
                 throw new ApiConnectionException("TriggerResource creation failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.Created) {
+            } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");

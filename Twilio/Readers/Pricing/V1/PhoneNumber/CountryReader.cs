@@ -85,7 +85,7 @@ namespace Twilio.Readers.Pricing.V1.PhoneNumber {
             
             if (response == null) {
                 throw new ApiConnectionException("CountryResource read failed: Unable to connect to server");
-            } else if (response.GetStatusCode() != System.Net.HttpStatusCode.OK) {
+            } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
