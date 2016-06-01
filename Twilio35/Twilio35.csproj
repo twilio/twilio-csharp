@@ -103,6 +103,8 @@
     <Compile Include="..\Twilio\Creators\Notifications\V1\ServiceCreator.cs"><Link>Creators\Notifications\V1\ServiceCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Notifications\V1\Service\BindingCreator.cs"><Link>Creators\Notifications\V1\Service\BindingCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Notifications\V1\Service\NotificationCreator.cs"><Link>Creators\Notifications\V1\Service\NotificationCreator.cs</Link></Compile>
+    <Compile Include="..\Twilio\Creators\Preview\Wireless\CommandCreator.cs"><Link>Creators\Preview\Wireless\CommandCreator.cs</Link></Compile>
+    <Compile Include="..\Twilio\Creators\Preview\Wireless\DeviceCreator.cs"><Link>Creators\Preview\Wireless\DeviceCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Taskrouter\V1\WorkspaceCreator.cs"><Link>Creators\Taskrouter\V1\WorkspaceCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Taskrouter\V1\Workspace\ActivityCreator.cs"><Link>Creators\Taskrouter\V1\Workspace\ActivityCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Taskrouter\V1\Workspace\TaskCreator.cs"><Link>Creators\Taskrouter\V1\Workspace\TaskCreator.cs</Link></Compile>
@@ -207,6 +209,10 @@
     <Compile Include="..\Twilio\Fetchers\Monitor\V1\EventFetcher.cs"><Link>Fetchers\Monitor\V1\EventFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Notifications\V1\ServiceFetcher.cs"><Link>Fetchers\Notifications\V1\ServiceFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Notifications\V1\Service\BindingFetcher.cs"><Link>Fetchers\Notifications\V1\Service\BindingFetcher.cs</Link></Compile>
+    <Compile Include="..\Twilio\Fetchers\Preview\Wireless\CommandFetcher.cs"><Link>Fetchers\Preview\Wireless\CommandFetcher.cs</Link></Compile>
+    <Compile Include="..\Twilio\Fetchers\Preview\Wireless\DeviceFetcher.cs"><Link>Fetchers\Preview\Wireless\DeviceFetcher.cs</Link></Compile>
+    <Compile Include="..\Twilio\Fetchers\Preview\Wireless\Device\UsageFetcher.cs"><Link>Fetchers\Preview\Wireless\Device\UsageFetcher.cs</Link></Compile>
+    <Compile Include="..\Twilio\Fetchers\Preview\Wireless\RatePlanFetcher.cs"><Link>Fetchers\Preview\Wireless\RatePlanFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Pricing\V1\Messaging\CountryFetcher.cs"><Link>Fetchers\Pricing\V1\Messaging\CountryFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Pricing\V1\PhoneNumber\CountryFetcher.cs"><Link>Fetchers\Pricing\V1\PhoneNumber\CountryFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Pricing\V1\Voice\CountryFetcher.cs"><Link>Fetchers\Pricing\V1\Voice\CountryFetcher.cs</Link></Compile>
@@ -290,6 +296,9 @@
     <Compile Include="..\Twilio\Readers\Monitor\V1\EventReader.cs"><Link>Readers\Monitor\V1\EventReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Notifications\V1\ServiceReader.cs"><Link>Readers\Notifications\V1\ServiceReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Notifications\V1\Service\BindingReader.cs"><Link>Readers\Notifications\V1\Service\BindingReader.cs</Link></Compile>
+    <Compile Include="..\Twilio\Readers\Preview\Wireless\CommandReader.cs"><Link>Readers\Preview\Wireless\CommandReader.cs</Link></Compile>
+    <Compile Include="..\Twilio\Readers\Preview\Wireless\DeviceReader.cs"><Link>Readers\Preview\Wireless\DeviceReader.cs</Link></Compile>
+    <Compile Include="..\Twilio\Readers\Preview\Wireless\RatePlanReader.cs"><Link>Readers\Preview\Wireless\RatePlanReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Pricing\V1\Messaging\CountryReader.cs"><Link>Readers\Pricing\V1\Messaging\CountryReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Pricing\V1\PhoneNumber\CountryReader.cs"><Link>Readers\Pricing\V1\PhoneNumber\CountryReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Pricing\V1\Voice\CountryReader.cs"><Link>Readers\Pricing\V1\Voice\CountryReader.cs</Link></Compile>
@@ -376,6 +385,10 @@
     <Compile Include="..\Twilio\Resources\Notifications\V1\ServiceResource.cs"><Link>Resources\Notifications\V1\ServiceResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Notifications\V1\Service\BindingResource.cs"><Link>Resources\Notifications\V1\Service\BindingResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Notifications\V1\Service\NotificationResource.cs"><Link>Resources\Notifications\V1\Service\NotificationResource.cs</Link></Compile>
+    <Compile Include="..\Twilio\Resources\Preview\Wireless\CommandResource.cs"><Link>Resources\Preview\Wireless\CommandResource.cs</Link></Compile>
+    <Compile Include="..\Twilio\Resources\Preview\Wireless\DeviceResource.cs"><Link>Resources\Preview\Wireless\DeviceResource.cs</Link></Compile>
+    <Compile Include="..\Twilio\Resources\Preview\Wireless\Device\UsageResource.cs"><Link>Resources\Preview\Wireless\Device\UsageResource.cs</Link></Compile>
+    <Compile Include="..\Twilio\Resources\Preview\Wireless\RatePlanResource.cs"><Link>Resources\Preview\Wireless\RatePlanResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Pricing\V1\Messaging\CountryResource.cs"><Link>Resources\Pricing\V1\Messaging\CountryResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Pricing\V1\PhoneNumber\CountryResource.cs"><Link>Resources\Pricing\V1\PhoneNumber\CountryResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Pricing\V1\Voice\CountryResource.cs"><Link>Resources\Pricing\V1\Voice\CountryResource.cs</Link></Compile>
@@ -426,6 +439,7 @@
     <Compile Include="..\Twilio\Updaters\IpMessaging\V1\Service\RoleUpdater.cs"><Link>Updaters\IpMessaging\V1\Service\RoleUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\IpMessaging\V1\Service\UserUpdater.cs"><Link>Updaters\IpMessaging\V1\Service\UserUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Notifications\V1\ServiceUpdater.cs"><Link>Updaters\Notifications\V1\ServiceUpdater.cs</Link></Compile>
+    <Compile Include="..\Twilio\Updaters\Preview\Wireless\DeviceUpdater.cs"><Link>Updaters\Preview\Wireless\DeviceUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Taskrouter\V1\WorkspaceUpdater.cs"><Link>Updaters\Taskrouter\V1\WorkspaceUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Taskrouter\V1\Workspace\ActivityUpdater.cs"><Link>Updaters\Taskrouter\V1\Workspace\ActivityUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Taskrouter\V1\Workspace\TaskQueueUpdater.cs"><Link>Updaters\Taskrouter\V1\Workspace\TaskQueueUpdater.cs</Link></Compile>

@@ -16,6 +16,7 @@ namespace Twilio.Clients
 		public const string TRUNKING = "trunking";
 		public const string IPMESSAGING = "ipmessaging";
 		public const string NOTIFICATIONS = "notifications";
+    public const string PREVIEW = "preview";
 
 		private readonly string value;
 
