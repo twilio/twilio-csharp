@@ -24,15 +24,30 @@ namespace Twilio.Resources
 		}
 
 		public IEnumerator<E> GetEnumerator() {
-			return new ResourceSetIterator<E>(this);
+			return NewEnumerator();
+		}
+
+		public IEnumerator<E> NewEnumerator() {
+			while (page != null) {
+				iterator.Reset();
+				while (iterator.MoveNext()) {
+					yield return iterator.Current;
+				}
+
+				if (IsAutoPaging() && page.GetNextPageUri () != "") {
+					FetchNextPage();
+				}
+			}
 		}
 
 		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() {
-			return new ResourceSetIterator<E>(this);
+			return NewEnumerator();
 		}
 
 		protected void FetchNextPage() {
-			if (page.GetNextPageUri() == null) {
+			if (page.GetNextPageUri() == null || page.GetNextPageUri() == "") {
+				page = null;
+				iterator = null;
 				return;
 			}
 
@@ -56,33 +71,6 @@ namespace Twilio.Resources
 
 		public void SetPageSize(int pageSize) {
 			reader.SetPageSize(pageSize);
-		}
-
-		public class ResourceSetIterator<R> : IEnumerator<R> where R : Resource
-		{
-			private ResourceSet<R> resourceSet;
-
-			public ResourceSetIterator(ResourceSet<R> resourceSet) {
-				this.resourceSet = resourceSet;
-			}
-
-			public R Current {
-				get { return resourceSet.GetEnumerator().Current; }
-			}
-
-			object System.Collections.IEnumerator.Current {
-				get { return resourceSet.GetEnumerator().Current; }
-			}
-
-			public bool MoveNext() {
-				return resourceSet.GetEnumerator().MoveNext();
-			}
-
-			public void Reset() {
-				resourceSet.GetEnumerator().Reset();
-			}
-
-			public void Dispose(){}
 		}
     }
 }

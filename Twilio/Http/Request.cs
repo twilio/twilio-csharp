@@ -25,7 +25,7 @@ namespace Twilio.Http
 		}
 
 		public Uri ConstructURL() {
-			return uri;
+			return new Uri(uri.AbsoluteUri + "?" + EncodeParameters(queryParams));
         }
 
 		public Twilio.Http.HttpMethod GetMethod() {
