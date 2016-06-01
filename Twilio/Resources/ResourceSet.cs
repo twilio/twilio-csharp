@@ -19,7 +19,7 @@ namespace Twilio.Resources
 			if (page == null) {
 				throw new System.Exception("page is null");
 			}
-			iterator = page.getRecords().GetEnumerator();
+			iterator = page.GetRecords().GetEnumerator();
 			autoPaging = true;
 		}
 
@@ -31,30 +31,30 @@ namespace Twilio.Resources
 			return new ResourceSetIterator<E>(this);
 		}
 
-		protected void fetchNextPage() {
-			if (page.getNextPageUri() == null) {
+		protected void FetchNextPage() {
+			if (page.GetNextPageUri() == null) {
 				return;
 			}
 
-			page = reader.NextPage(page.getNextPageUri(), client);
+			page = reader.NextPage(page.GetNextPageUri(), client);
 			if (page != null) {
-				iterator = page.getRecords().GetEnumerator ();
+				iterator = page.GetRecords().GetEnumerator ();
 			}
 		}
 
-		public bool isAutoPaging() {
+		public bool IsAutoPaging() {
 			return autoPaging;
 		}
 
-		public void setAutoPaging(bool autoPaging) {
+		public void SetAutoPaging(bool autoPaging) {
 			this.autoPaging = autoPaging;
 		}
 
-		public int getPageSize() {
-			return this.page.getPageSize();
+		public int GetPageSize() {
+			return this.page.GetPageSize();
 		}
 
-		public void setPageSize(int pageSize) {
+		public void SetPageSize(int pageSize) {
 			reader.SetPageSize(pageSize);
 		}
 

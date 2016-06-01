@@ -9,8 +9,14 @@ namespace Twilio.Creators
     public abstract class Creator<T> where T : Resource
     {
 		#if NET40
+		public async Task<T> ExecuteAsync() {
+			return await ExecuteAsync(TwilioClient.GetRestClient());
+		}
 		public abstract Task<T> ExecuteAsync(ITwilioRestClient client);
 		#endif
+		public T Execute() {
+			return Execute(TwilioClient.GetRestClient());
+		}
 		public abstract T Execute(ITwilioRestClient client);
     }
 }

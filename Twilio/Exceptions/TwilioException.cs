@@ -2,8 +2,11 @@
 
 namespace Twilio.Exceptions
 {
-	public abstract class TwilioException : Exception
+	public class TwilioException : Exception
 	{
+
+		public TwilioException() {}
+
 		public TwilioException (string message) : base(message) {
 		}
 

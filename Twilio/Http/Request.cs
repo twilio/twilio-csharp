@@ -48,7 +48,15 @@ namespace Twilio.Http
         private static string EncodeParameters(List<KeyValuePair<string, string>> data) {
 			var result = "";
 
+			var first = true;
+
 			foreach (var pair in data) {
+				if (first) {
+					first = false;
+				} else {
+					result += "&";
+				}
+
 				result += pair.Key + "=" + pair.Value;
 			}
 

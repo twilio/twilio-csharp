@@ -11,8 +11,14 @@ namespace Twilio.Readers
 		private int pageSize = 50;
 
 		#if NET40
+		public async Task<ResourceSet<T>> ExecuteAsync() {
+			return await ExecuteAsync(TwilioClient.GetRestClient());
+		}
         public abstract Task<ResourceSet<T>> ExecuteAsync(ITwilioRestClient client);
 		#endif
+		public ResourceSet<T> Execute() {
+			return Execute(TwilioClient.GetRestClient());
+		}
         public abstract ResourceSet<T> Execute(ITwilioRestClient client);
 
 		public abstract Page<T> NextPage(string nextPageUri, ITwilioRestClient client);

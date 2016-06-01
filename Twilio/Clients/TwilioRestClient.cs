@@ -71,7 +71,7 @@ namespace Twilio.Clients
 
 		public Response Request(Request request) {
 			request.SetAuth(this.username, this.password);
-			var response = httpClient.MakeRequest (request);
+			var response = httpClient.MakeRequest(request);
 
 			return response;
 		}

@@ -18,27 +18,27 @@ namespace Twilio.Resources
 			this.records = new List<T>();
 		}
 
-		public List<T> getRecords() {
+		public List<T> GetRecords() {
 			return records;
 		}
 
-		public string getFirstPageUri() {
+		public string GetFirstPageUri() {
 			return firstPageUri;
 		}
 
-		public string getNextPageUri() {
+		public string GetNextPageUri() {
 			return nextPageUri;
 		}
 
-		public string getPreviousPageUri() {
+		public string GetPreviousPageUri() {
 			return previousPageUri;
 		}
 
-		public string getUri() {
+		public string GetUri() {
 			return uri;
 		}
 
-		public int getPageSize() {
+		public int GetPageSize() {
 			return pageSize;
 		}
 
