@@ -13,12 +13,12 @@ namespace Twilio
 
 		public TwilioClient () {}
 
-		public static void init(string username, string password) {
+		public static void Init(string username, string password) {
 			TwilioClient.SetUsername(username);
 			TwilioClient.SetPassword(password);
 		}
 
-		public static void init(string username, string password, string accountSid) {
+		public static void Init(string username, string password, string accountSid) {
 			TwilioClient.SetUsername(username);
 			TwilioClient.SetPassword(password);
 			TwilioClient.SetAccountSid(accountSid);
