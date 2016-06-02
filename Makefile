@@ -6,4 +6,4 @@ test:
 release: test
 	rm -rf Twilio.Tests/obj
 	xbuild /p:Configuration=Release Twilio.sln
-	nuget pack Twilio.nuspec
+	./nuget.sh pack Twilio.nuspec
