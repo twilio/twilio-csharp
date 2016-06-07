@@ -453,6 +453,8 @@
     <Compile Include="Updaters\Trunking\V1\TrunkUpdater.cs" />
     <Compile Include="Updaters\Trunking\V1\Trunk\OriginationUrlUpdater.cs" />
     <!-- End Yoyodyne Generated Artifacts -->
+    <Compile Include="Converters\PrefixedCollapsibleMap.cs" />
+    <Compile Include="Converters\HelloWorld.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

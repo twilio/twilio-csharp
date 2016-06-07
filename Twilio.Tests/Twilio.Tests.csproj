@@ -51,6 +51,9 @@
   <ItemGroup>
     <Compile Include="**\*.cs" />
     <Compile Include="TwilioTest.cs" />
+    <Compile Include="Converters\PrefixedCollapsibleMapTest.cs" />
+    <Compile Include="Converters\DeleteMe.cs" />
+    <Compile Include="Converters\MarshalConverterTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -61,5 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Converters\" />
   </ItemGroup>
 </Project>
