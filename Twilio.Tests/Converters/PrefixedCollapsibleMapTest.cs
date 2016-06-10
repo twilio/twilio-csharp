@@ -1,9 +1,7 @@
 ﻿using NSubstitute;
 using NUnit.Framework;
-using System;
 using Twilio.Converters;
 using System.Collections.Generic;
-using ExtensionMethods;
 using System.Linq;
 
 namespace Twilio.Tests
@@ -14,17 +12,17 @@ namespace Twilio.Tests
 		[Test]
 		public void TestEmptyMap() {
 
-			Dictionary<String, Object> inputDict = new Dictionary<String, Object>();
-			Dictionary<String, String> resultsDict = new Dictionary<String, String>();
-			List<String> prevList = new List<String>();
+			Dictionary<string, object> inputDict = new Dictionary<string, object>();
+			Dictionary<string, string> resultsDict = new Dictionary<string, string>();
+			List<string> prevList = new List<string>();
 
-			Dictionary<String, String> result = PrefixedCollapsibleMap.Flatten(
+			Dictionary<string, string> result = PrefixedCollapsibleMap.Flatten(
 				inputDict, 
 				resultsDict, 
 				prevList
 			);
 
-			Dictionary<String, String> expected = new Dictionary<String, String>();
+			Dictionary<string, string> expected = new Dictionary<string, string>();
 		
 			Assert.IsTrue(expected.SequenceEqual(result));
 		}
@@ -32,21 +30,21 @@ namespace Twilio.Tests
 		[Test]
 		public void TestBasicMap() {
 
-			Dictionary<String, Object> inputDict = new Dictionary<String, Object>();
+			Dictionary<string, object> inputDict = new Dictionary<string, object>();
 
 			inputDict.Add("foo", "bar");
 			inputDict.Add("cool", "beans"); 
 
-			Dictionary<String, String> resultsDict = new Dictionary<String, String>();
-			List<String> prevList = new List<String>();
+			Dictionary<string, string> resultsDict = new Dictionary<string, string>();
+			List<string> prevList = new List<string>();
 
-			Dictionary<String, String> result = PrefixedCollapsibleMap.Flatten(
+			Dictionary<string, string> result = PrefixedCollapsibleMap.Flatten(
 				inputDict, 
 				resultsDict, 
 				prevList
 			);
 
-			Dictionary<String, String> expected = new Dictionary<String, String>();
+			Dictionary<string, string> expected = new Dictionary<string, string>();
 			expected.Add("foo","bar");
 			expected.Add("cool","beans");
 
@@ -56,8 +54,8 @@ namespace Twilio.Tests
 		[Test]
 		public void TestComplexMap() {
 
-			Dictionary<String, Object> inputDict = new Dictionary<String, Object>();
-			Dictionary<String, Object> subDict = new Dictionary<String, Object>();
+			Dictionary<string, object> inputDict = new Dictionary<string, object>();
+			Dictionary<string, object> subDict = new Dictionary<string, object>();
 
 			subDict.Add("cool", "people");
 			subDict.Add("fun", "times");
@@ -65,16 +63,16 @@ namespace Twilio.Tests
 			inputDict.Add("foo", "bar");
 			inputDict.Add("really", subDict); 
 
-			Dictionary<String, String> resultsDict = new Dictionary<String, String>();
-			List<String> prevList = new List<String>();
+			Dictionary<string, string> resultsDict = new Dictionary<string, string>();
+			List<string> prevList = new List<string>();
 
-			Dictionary<String, String> result = PrefixedCollapsibleMap.Flatten(
+			Dictionary<string, string> result = PrefixedCollapsibleMap.Flatten(
 				inputDict, 
 				resultsDict, 
 				prevList
 			);
 
-			Dictionary<String, String> expected = new Dictionary<String, String>();
+			Dictionary<string, string> expected = new Dictionary<string, string>();
 			expected.Add("foo","bar");
 			expected.Add("really.cool","people");
 			expected.Add("really.fun","times");
@@ -85,17 +83,17 @@ namespace Twilio.Tests
 		[Test]
 		public void TestEmptyNullSerialize() {
 
-			Dictionary<String, String> result = PrefixedCollapsibleMap.Serialize(
+			Dictionary<string, string> result = PrefixedCollapsibleMap.Serialize(
 				null, 
 				"really"
 			);
 
-			Dictionary<String, String> expected = new Dictionary<String, String>();
+			Dictionary<string, string> expected = new Dictionary<string, string>();
 
 			Assert.IsTrue(expected.SequenceEqual(result));
 
 			result = PrefixedCollapsibleMap.Serialize(
-				new Dictionary<String, Object>(), 
+				new Dictionary<string, object>(), 
 				"really"
 			);
 
@@ -105,8 +103,8 @@ namespace Twilio.Tests
 		[Test]
 		public void TestNormalSerialize() {
 
-			Dictionary<String, Object> inputDict = new Dictionary<String, Object>();
-			Dictionary<String, Object> subDict = new Dictionary<String, Object>();
+			Dictionary<string, object> inputDict = new Dictionary<string, object>();
+			Dictionary<string, object> subDict = new Dictionary<string, object>();
 
 			subDict.Add("cool", "people");
 			subDict.Add("fun", "times");
@@ -114,12 +112,12 @@ namespace Twilio.Tests
 			inputDict.Add("foo", "bar");
 			inputDict.Add("super", subDict); 
 
-			Dictionary<String, String> result = PrefixedCollapsibleMap.Serialize(
+			Dictionary<string, string> result = PrefixedCollapsibleMap.Serialize(
 				inputDict, 
 				"really"
 			);
 
-			Dictionary<String, String> expected = new Dictionary<String, String>();
+			Dictionary<string, string> expected = new Dictionary<string, string>();
 			expected.Add("really.foo","bar");
 			expected.Add("really.super.cool","people");
 			expected.Add("really.super.fun","times");

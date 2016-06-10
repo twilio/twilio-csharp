@@ -7,6 +7,7 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Lookups.V1;
+using Twilio.Fetchers.Lookups.V1;
 
 namespace Twilio.Tests.Lookups.V1 {
 

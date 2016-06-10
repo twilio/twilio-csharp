@@ -52,7 +52,6 @@
     <Compile Include="**\*.cs" />
     <Compile Include="TwilioTest.cs" />
     <Compile Include="Converters\PrefixedCollapsibleMapTest.cs" />
-    <Compile Include="Converters\DeleteMe.cs" />
     <Compile Include="Converters\MarshalConverterTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

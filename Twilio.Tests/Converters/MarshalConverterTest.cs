@@ -3,7 +3,6 @@ using NUnit.Framework;
 using System;
 using Twilio.Converters;
 using System.Collections.Generic;
-using ExtensionMethods;
 using System.Linq;
 
 namespace Twilio.Tests

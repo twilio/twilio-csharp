@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Fetchers;
 using Twilio.Http;
@@ -14,6 +16,8 @@ namespace Twilio.Fetchers.Lookups.V1 {
         private Twilio.Types.PhoneNumber phoneNumber;
         private string countryCode;
         private string type;
+        private List<string> addOns;
+        private Dictionary<string, object> addOnsData;
     
         /**
          * Construct a new PhoneNumberFetcher
@@ -46,6 +50,38 @@ namespace Twilio.Fetchers.Lookups.V1 {
             return this;
         }
     
+        /**
+         * The add_ons
+         * 
+         * @param addOns The add_ons
+         * @return this
+         */
+        public PhoneNumberFetcher setAddOns(List<string> addOns) {
+            this.addOns = addOns;
+            return this;
+        }
+    
+        /**
+         * The add_ons
+         * 
+         * @param addOns The add_ons
+         * @return this
+         */
+        public PhoneNumberFetcher setAddOns(string addOns) {
+            return setAddOns(Promoter.ListOfOne(addOns));
+        }
+    
+        /**
+         * The add_ons_data
+         * 
+         * @param addOnsData The add_ons_data
+         * @return this
+         */
+        public PhoneNumberFetcher setAddOnsData(Dictionary<string, object> addOnsData) {
+            this.addOnsData = addOnsData;
+            return this;
+        }
+    
         #if NET40
         /**
          * Make the request to the Twilio API to perform the fetch
@@ -59,7 +95,6 @@ namespace Twilio.Fetchers.Lookups.V1 {
                 Domains.LOOKUPS,
                 "/v1/PhoneNumbers/" + this.phoneNumber + ""
             );
-            
             
                 AddQueryParams(request);
             
@@ -98,7 +133,6 @@ namespace Twilio.Fetchers.Lookups.V1 {
                 "/v1/PhoneNumbers/" + this.phoneNumber + ""
             );
             
-            
                 AddQueryParams(request);
             
             
@@ -134,6 +168,19 @@ namespace Twilio.Fetchers.Lookups.V1 {
             
             if (type != null) {
                 request.AddQueryParam("Type", type);
+            }
+            
+            if (addOns != null) {
+                foreach (object prop in addOns) {
+                    request.AddQueryParam("AddOns", prop.ToString());
+                }
+            }
+            
+            if (addOnsData != null) {
+                Dictionary<string, string> dictParams = PrefixedCollapsibleMap.Serialize(addOnsData, "AddOns");
+                foreach (KeyValuePair<string, string> entry in dictParams) {
+                    request.AddQueryParam(entry.Key, entry.Value);
+                }
             }
         }
     }

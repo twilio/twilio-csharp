@@ -6,10 +6,6 @@ namespace Twilio.Converters
 		public static DateTime DateTimeFromString(string dateTimeString) {
 			return DateTime.Parse(dateTimeString);
 		}
-
-		public static DateTime LocalDateFromString(string localDate) {
-			return DateTime.Parse(localDate);
-		}
 	}
 }
 
