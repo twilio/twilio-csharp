@@ -56,15 +56,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Twilio\Twilio.csproj">
-      <Project>{12BED4CC-0E34-4B83-ACF0-F834EAFBE416}</Project>
-      <Name>Twilio</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Converters\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Twilio\Twilio.csproj">
+      <Project>{12BED4CC-0E34-4B83-ACF0-F834EAFBE416}</Project>
+      <Name>Twilio</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
