@@ -6,123 +6,52 @@ using System.Linq;
 
 namespace Twilio.Tests
 {
-	[TestFixture]
-	public class PrefixedCollapsibleMapTest : TwilioTest {
+    [TestFixture]
+    public class PrefixedCollapsibleMapTest : TwilioTest {
 
-		[Test]
-		public void TestEmptyMap() {
+        [Test]
+        public void TestEmptyNullSerialize() {
 
-			Dictionary<string, object> inputDict = new Dictionary<string, object>();
-			Dictionary<string, string> resultsDict = new Dictionary<string, string>();
-			List<string> prevList = new List<string>();
+            Dictionary<string, string> result = PrefixedCollapsibleMap.Serialize(
+                null, 
+                "really"
+            );
 
-			Dictionary<string, string> result = PrefixedCollapsibleMap.Flatten(
-				inputDict, 
-				resultsDict, 
-				prevList
-			);
+            Dictionary<string, string> expected = new Dictionary<string, string>();
 
-			Dictionary<string, string> expected = new Dictionary<string, string>();
-		
-			Assert.IsTrue(expected.SequenceEqual(result));
-		}
+            Assert.IsTrue(expected.SequenceEqual(result));
 
-		[Test]
-		public void TestBasicMap() {
+            result = PrefixedCollapsibleMap.Serialize(
+                new Dictionary<string, object>(), 
+                "really"
+            );
 
-			Dictionary<string, object> inputDict = new Dictionary<string, object>();
+            Assert.IsTrue(expected.SequenceEqual(result));
+        }
 
-			inputDict.Add("foo", "bar");
-			inputDict.Add("cool", "beans"); 
+        [Test]
+        public void TestNormalSerialize() {
 
-			Dictionary<string, string> resultsDict = new Dictionary<string, string>();
-			List<string> prevList = new List<string>();
+            Dictionary<string, object> inputDict = new Dictionary<string, object>();
+            Dictionary<string, object> subDict = new Dictionary<string, object>();
 
-			Dictionary<string, string> result = PrefixedCollapsibleMap.Flatten(
-				inputDict, 
-				resultsDict, 
-				prevList
-			);
+            subDict.Add("cool", "people");
+            subDict.Add("fun", "times");
 
-			Dictionary<string, string> expected = new Dictionary<string, string>();
-			expected.Add("foo","bar");
-			expected.Add("cool","beans");
+            inputDict.Add("foo", "bar");
+            inputDict.Add("super", subDict); 
 
-			Assert.IsTrue(expected.SequenceEqual(result));
-		}
+            Dictionary<string, string> result = PrefixedCollapsibleMap.Serialize(
+                inputDict, 
+                "really"
+            );
 
-		[Test]
-		public void TestComplexMap() {
+            Dictionary<string, string> expected = new Dictionary<string, string>();
+            expected.Add("really.foo","bar");
+            expected.Add("really.super.cool","people");
+            expected.Add("really.super.fun","times");
 
-			Dictionary<string, object> inputDict = new Dictionary<string, object>();
-			Dictionary<string, object> subDict = new Dictionary<string, object>();
-
-			subDict.Add("cool", "people");
-			subDict.Add("fun", "times");
-
-			inputDict.Add("foo", "bar");
-			inputDict.Add("really", subDict); 
-
-			Dictionary<string, string> resultsDict = new Dictionary<string, string>();
-			List<string> prevList = new List<string>();
-
-			Dictionary<string, string> result = PrefixedCollapsibleMap.Flatten(
-				inputDict, 
-				resultsDict, 
-				prevList
-			);
-
-			Dictionary<string, string> expected = new Dictionary<string, string>();
-			expected.Add("foo","bar");
-			expected.Add("really.cool","people");
-			expected.Add("really.fun","times");
-
-			Assert.IsTrue(expected.SequenceEqual(result));
-		}
-
-		[Test]
-		public void TestEmptyNullSerialize() {
-
-			Dictionary<string, string> result = PrefixedCollapsibleMap.Serialize(
-				null, 
-				"really"
-			);
-
-			Dictionary<string, string> expected = new Dictionary<string, string>();
-
-			Assert.IsTrue(expected.SequenceEqual(result));
-
-			result = PrefixedCollapsibleMap.Serialize(
-				new Dictionary<string, object>(), 
-				"really"
-			);
-
-			Assert.IsTrue(expected.SequenceEqual(result));
-		}
-
-		[Test]
-		public void TestNormalSerialize() {
-
-			Dictionary<string, object> inputDict = new Dictionary<string, object>();
-			Dictionary<string, object> subDict = new Dictionary<string, object>();
-
-			subDict.Add("cool", "people");
-			subDict.Add("fun", "times");
-
-			inputDict.Add("foo", "bar");
-			inputDict.Add("super", subDict); 
-
-			Dictionary<string, string> result = PrefixedCollapsibleMap.Serialize(
-				inputDict, 
-				"really"
-			);
-
-			Dictionary<string, string> expected = new Dictionary<string, string>();
-			expected.Add("really.foo","bar");
-			expected.Add("really.super.cool","people");
-			expected.Add("really.super.fun","times");
-
-			Assert.IsTrue(expected.SequenceEqual(result));
-		}
-	}
+            Assert.IsTrue(expected.SequenceEqual(result));
+        }
+    }
 }
