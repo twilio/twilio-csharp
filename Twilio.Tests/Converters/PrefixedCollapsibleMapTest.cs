@@ -26,7 +26,20 @@ namespace Twilio.Tests
                 "really"
             );
 
-            Assert.IsTrue(expected.SequenceEqual(result));
+            CollectionAssert.AreEquivalent(expected, result);
+        }
+
+        [Test]
+        public void TestEmptySerialize() {
+
+            Dictionary<string, string> expected = new Dictionary<string, string>();
+
+            Dictionary<string, string> result = PrefixedCollapsibleMap.Serialize(
+                new Dictionary<string, object>(), 
+                "really"
+            );
+
+            CollectionAssert.AreEquivalent(expected, result);
         }
 
         [Test]
@@ -51,7 +64,7 @@ namespace Twilio.Tests
             expected.Add("really.super.cool","people");
             expected.Add("really.super.fun","times");
 
-            Assert.IsTrue(expected.SequenceEqual(result));
+            CollectionAssert.AreEquivalent(expected, result);
         }
     }
 }

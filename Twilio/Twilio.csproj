@@ -50,6 +50,7 @@
     <Compile Include="Converters\StringEnumConverter.cs" />
     <Compile Include="Converters\HttpMethodConverter.cs" />
     <Compile Include="Converters\PhoneNumberConverter.cs" />
+    <Compile Include="Converters\PrefixedCollapsibleMap.cs" />
     <Compile Include="Types\PhoneNumber.cs" />
     <Compile Include="Types\FeedbackIssue.cs" />
     <Compile Include="Types\IceServer.cs" />
@@ -71,7 +72,7 @@
     <Compile Include="Resources\ResourceSet.cs" />
     <Compile Include="Resources\SidResource.cs" />
     <Compile Include="Twilio.cs" />
-    <!-- Yoyodyne Generated Artifacts -->
+<!-- Yoyodyne Generated Artifacts -->
     <Compile Include="Creators\Api\V2010\AccountCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\AddressCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\ApplicationCreator.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Creators\IpMessaging\V1\Service\Channel\MessageCreator.cs" />
     <Compile Include="Creators\IpMessaging\V1\Service\RoleCreator.cs" />
     <Compile Include="Creators\IpMessaging\V1\Service\UserCreator.cs" />
+    <Compile Include="Creators\Notifications\V1\CredentialCreator.cs" />
     <Compile Include="Creators\Notifications\V1\ServiceCreator.cs" />
     <Compile Include="Creators\Notifications\V1\Service\BindingCreator.cs" />
     <Compile Include="Creators\Notifications\V1\Service\NotificationCreator.cs" />
@@ -151,6 +153,7 @@
     <Compile Include="Deleters\IpMessaging\V1\Service\RoleDeleter.cs" />
     <Compile Include="Deleters\IpMessaging\V1\Service\UserDeleter.cs" />
     <Compile Include="Deleters\Monitor\V1\AlertDeleter.cs" />
+    <Compile Include="Deleters\Notifications\V1\CredentialDeleter.cs" />
     <Compile Include="Deleters\Notifications\V1\ServiceDeleter.cs" />
     <Compile Include="Deleters\Notifications\V1\Service\BindingDeleter.cs" />
     <Compile Include="Deleters\Taskrouter\V1\WorkspaceDeleter.cs" />
@@ -210,12 +213,12 @@
     <Compile Include="Fetchers\Lookups\V1\PhoneNumberFetcher.cs" />
     <Compile Include="Fetchers\Monitor\V1\AlertFetcher.cs" />
     <Compile Include="Fetchers\Monitor\V1\EventFetcher.cs" />
+    <Compile Include="Fetchers\Notifications\V1\CredentialFetcher.cs" />
     <Compile Include="Fetchers\Notifications\V1\ServiceFetcher.cs" />
     <Compile Include="Fetchers\Notifications\V1\Service\BindingFetcher.cs" />
     <Compile Include="Fetchers\Preview\Wireless\CommandFetcher.cs" />
     <Compile Include="Fetchers\Preview\Wireless\DeviceFetcher.cs" />
     <Compile Include="Fetchers\Preview\Wireless\Device\UsageFetcher.cs" />
-    <Compile Include="Fetchers\Preview\Wireless\RatePlanFetcher.cs" />
     <Compile Include="Fetchers\Pricing\V1\Messaging\CountryFetcher.cs" />
     <Compile Include="Fetchers\Pricing\V1\PhoneNumber\CountryFetcher.cs" />
     <Compile Include="Fetchers\Pricing\V1\Voice\CountryFetcher.cs" />
@@ -297,11 +300,11 @@
     <Compile Include="Readers\IpMessaging\V1\Service\UserReader.cs" />
     <Compile Include="Readers\Monitor\V1\AlertReader.cs" />
     <Compile Include="Readers\Monitor\V1\EventReader.cs" />
+    <Compile Include="Readers\Notifications\V1\CredentialReader.cs" />
     <Compile Include="Readers\Notifications\V1\ServiceReader.cs" />
     <Compile Include="Readers\Notifications\V1\Service\BindingReader.cs" />
     <Compile Include="Readers\Preview\Wireless\CommandReader.cs" />
     <Compile Include="Readers\Preview\Wireless\DeviceReader.cs" />
-    <Compile Include="Readers\Preview\Wireless\RatePlanReader.cs" />
     <Compile Include="Readers\Pricing\V1\Messaging\CountryReader.cs" />
     <Compile Include="Readers\Pricing\V1\PhoneNumber\CountryReader.cs" />
     <Compile Include="Readers\Pricing\V1\Voice\CountryReader.cs" />
@@ -385,13 +388,13 @@
     <Compile Include="Resources\Lookups\V1\PhoneNumberResource.cs" />
     <Compile Include="Resources\Monitor\V1\AlertResource.cs" />
     <Compile Include="Resources\Monitor\V1\EventResource.cs" />
+    <Compile Include="Resources\Notifications\V1\CredentialResource.cs" />
     <Compile Include="Resources\Notifications\V1\ServiceResource.cs" />
     <Compile Include="Resources\Notifications\V1\Service\BindingResource.cs" />
     <Compile Include="Resources\Notifications\V1\Service\NotificationResource.cs" />
     <Compile Include="Resources\Preview\Wireless\CommandResource.cs" />
     <Compile Include="Resources\Preview\Wireless\DeviceResource.cs" />
     <Compile Include="Resources\Preview\Wireless\Device\UsageResource.cs" />
-    <Compile Include="Resources\Preview\Wireless\RatePlanResource.cs" />
     <Compile Include="Resources\Pricing\V1\Messaging\CountryResource.cs" />
     <Compile Include="Resources\Pricing\V1\PhoneNumber\CountryResource.cs" />
     <Compile Include="Resources\Pricing\V1\Voice\CountryResource.cs" />
@@ -441,6 +444,7 @@
     <Compile Include="Updaters\IpMessaging\V1\Service\ChannelUpdater.cs" />
     <Compile Include="Updaters\IpMessaging\V1\Service\RoleUpdater.cs" />
     <Compile Include="Updaters\IpMessaging\V1\Service\UserUpdater.cs" />
+    <Compile Include="Updaters\Notifications\V1\CredentialUpdater.cs" />
     <Compile Include="Updaters\Notifications\V1\ServiceUpdater.cs" />
     <Compile Include="Updaters\Preview\Wireless\DeviceUpdater.cs" />
     <Compile Include="Updaters\Taskrouter\V1\WorkspaceUpdater.cs" />
@@ -453,7 +457,6 @@
     <Compile Include="Updaters\Trunking\V1\TrunkUpdater.cs" />
     <Compile Include="Updaters\Trunking\V1\Trunk\OriginationUrlUpdater.cs" />
     <!-- End Yoyodyne Generated Artifacts -->
-    <Compile Include="Converters\PrefixedCollapsibleMap.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -470,7 +473,7 @@
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

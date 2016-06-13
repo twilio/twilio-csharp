@@ -47,6 +47,7 @@
     <Compile Include="..\Twilio\Converters\StringEnumConverter.cs"><Link>Converters\StringEnumConverter.cs</Link></Compile>
     <Compile Include="..\Twilio\Converters\HttpMethodConverter.cs"><Link>Converters\HttpMethodConverter.cs</Link></Compile>
     <Compile Include="..\Twilio\Converters\PhoneNumberConverter.cs"><Link>Converters\PhoneNumberConverter.cs</Link></Compile>
+    <Compile Include="..\Twilio\Converters\PrefixedCollapsibleMap.cs"><Link>Converters\PrefixedCollapsibleMap.cs</Link></Compile>
     <Compile Include="..\Twilio\Types\PhoneNumber.cs"><Link>Types\PhoneNumber.cs</Link></Compile>
     <Compile Include="..\Twilio\Types\FeedbackIssue.cs"><Link>Types\FeedbackIssue.cs</Link></Compile>
     <Compile Include="..\Twilio\Types\IceServer.cs"><Link>Types\IceServer.cs</Link></Compile>
@@ -68,7 +69,7 @@
     <Compile Include="..\Twilio\Resources\ResourceSet.cs"><Link>Resources\ResourceSet.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\SidResource.cs"><Link>Resources\SidResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Twilio.cs"><Link>Twilio.cs</Link></Compile>
-  <!-- Yoyodyne Generated Artifacts -->
+<!-- Yoyodyne Generated Artifacts -->
     <Compile Include="..\Twilio\Creators\Api\V2010\AccountCreator.cs"><Link>Creators\Api\V2010\AccountCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Api\V2010\Account\AddressCreator.cs"><Link>Creators\Api\V2010\Account\AddressCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Api\V2010\Account\ApplicationCreator.cs"><Link>Creators\Api\V2010\Account\ApplicationCreator.cs</Link></Compile>
