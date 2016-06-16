@@ -30,6 +30,11 @@ namespace Twilio.Lookups
         /// </summary>
         public CarrierInfo Carrier { get; set; }
 
+        /// <summary>
+        /// Information about the number's caller, if requested.
+        /// </summary>
+        public CallerInfo CallerName { get; set; }
+
 
     }
 }

@@ -44,42 +44,43 @@ namespace Twilio.Lookups
         /// <param name="phoneNumber">The phone number to look up, in either E.164 format or localized formatting.</param>
         /// <param name="countryCode">If the number is in a local format, specifies the country to parse it in.</param>
         /// <param name="includeCarrierInfo">Whether to retrieve carrier information (see twilio.com for pricing).</param>
+        /// <param name="includeCallerInfo">Whether to retrieve caller information (see twilio.com for pricing).</param>
         /// <returns></returns>
-        public Number GetPhoneNumber(string phoneNumber, string countryCode, bool includeCarrierInfo)
+        public Number GetPhoneNumber(string phoneNumber, string countryCode, bool includeCarrierInfo, bool includeCallerInfo)
         {
-            var request = BuildPhoneNumberRequest(phoneNumber, countryCode, includeCarrierInfo);
+            var request = BuildPhoneNumberRequest(phoneNumber, countryCode, includeCarrierInfo, includeCallerInfo);
 
             return Execute<Number>(request);
         }
 
-        public Number GetPhoneNumber(string phoneNumber, bool includeCarrierInfo)
+        public Number GetPhoneNumber(string phoneNumber, bool includeCarrierInfo, bool includeCallerInfo)
         {
-            return GetPhoneNumber(phoneNumber, null, includeCarrierInfo);
+            return GetPhoneNumber(phoneNumber, null, includeCarrierInfo, includeCallerInfo);
         }
 
         public Number GetPhoneNumber(string phoneNumber)
         {
-            return GetPhoneNumber(phoneNumber, null, false);
+            return GetPhoneNumber(phoneNumber, null, false, false);
         }
 
-        public void GetPhoneNumber(string phoneNumber, string countryCode, bool includeCarrierInfo, Action<Number> callback)
+        public void GetPhoneNumber(string phoneNumber, string countryCode, bool includeCarrierInfo, bool includeCallerInfo, Action<Number> callback)
         {
-            var request = BuildPhoneNumberRequest(phoneNumber, countryCode, includeCarrierInfo);
+            var request = BuildPhoneNumberRequest(phoneNumber, countryCode, includeCarrierInfo, includeCallerInfo);
 
             ExecuteAsync<Number>(request, (response) => { callback(response); });
         }
 
-        public void GetPhoneNumber(string phoneNumber, bool includeCarrierInfo, Action<Number> callback)
+        public void GetPhoneNumber(string phoneNumber, bool includeCarrierInfo, bool includeCallerInfo, Action<Number> callback)
         {
-            GetPhoneNumber(phoneNumber, null, includeCarrierInfo, callback);
+            GetPhoneNumber(phoneNumber, null, includeCarrierInfo, includeCallerInfo, callback);
         }
 
         public void GetPhoneNumber(string phoneNumber, Action<Number> callback)
         {
-            GetPhoneNumber(phoneNumber, null, false, callback);
+            GetPhoneNumber(phoneNumber, null, false, false, callback);
         }
 
-        private static RestRequest BuildPhoneNumberRequest(string phoneNumber, string countryCode, bool includeCarrierInfo)
+        private static RestRequest BuildPhoneNumberRequest(string phoneNumber, string countryCode, bool includeCarrierInfo, bool includeCallerInfo)
         {
             var request = new RestRequest();
             request.Resource = "PhoneNumbers/{PhoneNumber}";
@@ -92,6 +93,10 @@ namespace Twilio.Lookups
             if (includeCarrierInfo)
             {
                 request.AddQueryParameter("Type", "carrier");
+            }
+            if (includeCallerInfo)
+            {
+                request.AddQueryParameter("Type", "caller-name");
             }
             return request;
         }
