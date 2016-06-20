@@ -263,7 +263,6 @@ namespace Twilio.TaskRouter.Tests
             options.TaskQueueSid = "WQ123";
             options.EvaluateTaskAttributes = "attributes";
 
-
             client.ListTasks(WORKSPACE_SID, options);
 
             mockClient.Verify(trc => trc.Execute<TaskResult>(It.IsAny<IRestRequest>()), Times.Once);
