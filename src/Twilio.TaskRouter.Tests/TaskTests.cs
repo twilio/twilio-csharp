@@ -261,6 +261,8 @@ namespace Twilio.TaskRouter.Tests
             options.Count = 10;
             options.TaskQueueName = "taskQueueName";
             options.TaskQueueSid = "WQ123";
+            options.EvaluateTaskAttributes = "attributes";
+
 
             client.ListTasks(WORKSPACE_SID, options);
 
@@ -268,7 +270,7 @@ namespace Twilio.TaskRouter.Tests
             Assert.IsNotNull(savedRequest);
             Assert.AreEqual("Workspaces/{WorkspaceSid}/Tasks", savedRequest.Resource);
             Assert.AreEqual(Method.GET, savedRequest.Method);
-            Assert.AreEqual(10, savedRequest.Parameters.Count);
+            Assert.AreEqual(11, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
             Assert.IsNotNull(workspaceSidParam);
             Assert.AreEqual(WORKSPACE_SID, workspaceSidParam.Value);
@@ -299,6 +301,9 @@ namespace Twilio.TaskRouter.Tests
             var countSidParam = savedRequest.Parameters.Find(x => x.Name == "PageSize");
             Assert.IsNotNull(countSidParam);
             Assert.AreEqual(10, countSidParam.Value);
+            var evaluateAttributesParam = savedRequest.Parameters.Find(x => x.Name == "EvaluateTaskAttributes");
+            Assert.IsNotNull(evaluateAttributesParam);
+            Assert.AreEqual(options.EvaluateTaskAttributes, evaluateAttributesParam.Value);
         }
 
         [Test]
@@ -319,6 +324,7 @@ namespace Twilio.TaskRouter.Tests
             options.Count = 10;
             options.TaskQueueName = "taskQueueName";
             options.TaskQueueSid = "WQ123";
+            options.EvaluateTaskAttributes = "attributes";
 
             client.ListTasks(WORKSPACE_SID, options, tasks => {
                 manualResetEvent.Set();
@@ -330,7 +336,7 @@ namespace Twilio.TaskRouter.Tests
             Assert.IsNotNull(savedRequest);
             Assert.AreEqual("Workspaces/{WorkspaceSid}/Tasks", savedRequest.Resource);
             Assert.AreEqual(Method.GET, savedRequest.Method);
-            Assert.AreEqual(10, savedRequest.Parameters.Count);
+            Assert.AreEqual(11, savedRequest.Parameters.Count);
             var workspaceSidParam = savedRequest.Parameters.Find(x => x.Name == "WorkspaceSid");
             Assert.IsNotNull(workspaceSidParam);
             Assert.AreEqual(WORKSPACE_SID, workspaceSidParam.Value);
@@ -361,6 +367,9 @@ namespace Twilio.TaskRouter.Tests
             var countSidParam = savedRequest.Parameters.Find(x => x.Name == "PageSize");
             Assert.IsNotNull(countSidParam);
             Assert.AreEqual(10, countSidParam.Value);
+            var evaluateAttributesParam = savedRequest.Parameters.Find(x => x.Name == "EvaluateTaskAttributes");
+            Assert.IsNotNull(evaluateAttributesParam);
+            Assert.AreEqual(options.EvaluateTaskAttributes, evaluateAttributesParam.Value);
         }
 
         [Test]

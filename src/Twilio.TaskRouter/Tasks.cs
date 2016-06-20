@@ -186,6 +186,7 @@ namespace Twilio.TaskRouter
             if (options.AfterSid.HasValue()) request.AddParameter("AfterSid", options.AfterSid);
             if (options.BeforeSid.HasValue()) request.AddParameter("BeforeSid", options.BeforeSid);
             if (options.Count.HasValue) request.AddParameter("PageSize", options.Count.Value);
+            if (options.EvaluateTaskAttributes.HasValue()) request.AddParameter("EvaluateTaskAttributes", options.EvaluateTaskAttributes);
         }
     }
 }
