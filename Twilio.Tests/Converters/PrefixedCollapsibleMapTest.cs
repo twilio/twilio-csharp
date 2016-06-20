@@ -10,21 +10,14 @@ namespace Twilio.Tests
     public class PrefixedCollapsibleMapTest : TwilioTest {
 
         [Test]
-        public void TestEmptyNullSerialize() {
+        public void TestNullSerialize() {
+
+			Dictionary<string, string> expected = new Dictionary<string, string>();
 
             Dictionary<string, string> result = PrefixedCollapsibleMap.Serialize(
                 null, 
                 "really"
-            );
-
-            Dictionary<string, string> expected = new Dictionary<string, string>();
-
-            Assert.IsTrue(expected.SequenceEqual(result));
-
-            result = PrefixedCollapsibleMap.Serialize(
-                new Dictionary<string, object>(), 
-                "really"
-            );
+            );         
 
             CollectionAssert.AreEquivalent(expected, result);
         }
