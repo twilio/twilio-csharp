@@ -11,7 +11,7 @@
     <licenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.txt</licenseUrl>
     <tags>REST SMS voice telephony phone twilio twiml video wireless api</tags>
     <dependencies>
-      <dependency id="Newtonsoft.Json" version="[8.0.3]" />
+      <dependency id="Newtonsoft.Json" version="[9.0.1]" />
       <dependency id="Microsoft.Net.Http" version="2.2.29" />
     </dependencies>
     <releaseNotes>
@@ -20,6 +20,7 @@
     </releaseNotes>
   </metadata>
   <files>
+    <file src="Twilio/bin/Release/Twilio.dll" target="lib/netstandard1.4" />
     <file src="Twilio/bin/Release/Twilio.dll" target="lib/net45" />
     <file src="Twilio35/bin/Release/Twilio35.dll" target="lib/net35" />
   </files>
