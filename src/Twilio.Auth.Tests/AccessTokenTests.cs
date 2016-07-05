@@ -111,6 +111,7 @@ namespace Twilio.Auth.Tests
 
             token.AddGrant(new ConversationsGrant());
             token.AddGrant(new IpMessagingGrant());
+            token.AddGrant(new SyncGrant());
 
             var encoded = token.ToJWT();
             Assert.IsNotNull(encoded);
@@ -130,9 +131,10 @@ namespace Twilio.Auth.Tests
             Assert.AreEqual("SK123-" + timestamp.ToString(), jti);
 
             var grants = (Dictionary<string, object>)payload["grants"];
-            Assert.AreEqual(2, grants.Count);
+            Assert.AreEqual(3, grants.Count);
             Assert.IsNotNull(grants["rtc"]);
             Assert.IsNotNull(grants["ip_messaging"]);
+            Assert.IsNotNull(grants["data_sync"]);
         }
     }
 }
