@@ -56,6 +56,7 @@
     <Compile Include="ConversationsGrant.cs" />
     <Compile Include="IGrant.cs" />
     <Compile Include="IpMessagingGrant.cs" />
+    <Compile Include="SyncGrant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
