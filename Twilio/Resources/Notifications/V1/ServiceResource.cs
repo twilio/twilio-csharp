@@ -92,6 +92,10 @@ namespace Twilio.Resources.Notifications.V1 {
         private readonly string apnCredentialSid;
         [JsonProperty("gcm_credential_sid")]
         private readonly string gcmCredentialSid;
+        [JsonProperty("messaging_service_sid")]
+        private readonly string messagingServiceSid;
+        [JsonProperty("facebook_messenger_page_id")]
+        private readonly string facebookMessengerPageId;
         [JsonProperty("default_apn_notification_protocol_version")]
         private readonly string defaultApnNotificationProtocolVersion;
         [JsonProperty("default_gcm_notification_protocol_version")]
@@ -119,6 +123,10 @@ namespace Twilio.Resources.Notifications.V1 {
                                 string apnCredentialSid, 
                                 [JsonProperty("gcm_credential_sid")]
                                 string gcmCredentialSid, 
+                                [JsonProperty("messaging_service_sid")]
+                                string messagingServiceSid, 
+                                [JsonProperty("facebook_messenger_page_id")]
+                                string facebookMessengerPageId, 
                                 [JsonProperty("default_apn_notification_protocol_version")]
                                 string defaultApnNotificationProtocolVersion, 
                                 [JsonProperty("default_gcm_notification_protocol_version")]
@@ -134,6 +142,8 @@ namespace Twilio.Resources.Notifications.V1 {
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.apnCredentialSid = apnCredentialSid;
             this.gcmCredentialSid = gcmCredentialSid;
+            this.messagingServiceSid = messagingServiceSid;
+            this.facebookMessengerPageId = facebookMessengerPageId;
             this.defaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion;
             this.defaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion;
             this.url = url;
@@ -187,6 +197,20 @@ namespace Twilio.Resources.Notifications.V1 {
          */
         public string GetGcmCredentialSid() {
             return this.gcmCredentialSid;
+        }
+    
+        /**
+         * @return The messaging_service_sid
+         */
+        public string GetMessagingServiceSid() {
+            return this.messagingServiceSid;
+        }
+    
+        /**
+         * @return The facebook_messenger_page_id
+         */
+        public string GetFacebookMessengerPageId() {
+            return this.facebookMessengerPageId;
         }
     
         /**

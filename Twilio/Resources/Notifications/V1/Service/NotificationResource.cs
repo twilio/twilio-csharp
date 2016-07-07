@@ -78,7 +78,8 @@ namespace Twilio.Resources.Notifications.V1.Service {
         [JsonProperty("tags")]
         private readonly List<string> tags;
         [JsonProperty("priority")]
-        private readonly string priority;
+        [JsonConverter(typeof(StringEnumConverter))]
+        private readonly NotificationResource.Priority priority;
         [JsonProperty("ttl")]
         private readonly int? ttl;
         [JsonProperty("title")]
@@ -95,6 +96,8 @@ namespace Twilio.Resources.Notifications.V1.Service {
         private readonly Object apn;
         [JsonProperty("gcm")]
         private readonly Object gcm;
+        [JsonProperty("facebook_messenger")]
+        private readonly Object facebookMessenger;
     
         public NotificationResource() {
         
@@ -113,7 +116,7 @@ namespace Twilio.Resources.Notifications.V1.Service {
                                      [JsonProperty("tags")]
                                      List<string> tags, 
                                      [JsonProperty("priority")]
-                                     string priority, 
+                                     NotificationResource.Priority priority, 
                                      [JsonProperty("ttl")]
                                      int? ttl, 
                                      [JsonProperty("title")]
@@ -129,7 +132,9 @@ namespace Twilio.Resources.Notifications.V1.Service {
                                      [JsonProperty("apn")]
                                      Object apn, 
                                      [JsonProperty("gcm")]
-                                     Object gcm) {
+                                     Object gcm, 
+                                     [JsonProperty("facebook_messenger")]
+                                     Object facebookMessenger) {
             this.sid = sid;
             this.accountSid = accountSid;
             this.serviceSid = serviceSid;
@@ -145,6 +150,7 @@ namespace Twilio.Resources.Notifications.V1.Service {
             this.data = data;
             this.apn = apn;
             this.gcm = gcm;
+            this.facebookMessenger = facebookMessenger;
         }
     
         /**
@@ -192,7 +198,7 @@ namespace Twilio.Resources.Notifications.V1.Service {
         /**
          * @return The priority
          */
-        public string GetPriority() {
+        public NotificationResource.Priority GetPriority() {
             return this.priority;
         }
     
@@ -250,6 +256,13 @@ namespace Twilio.Resources.Notifications.V1.Service {
          */
         public Object GetGcm() {
             return this.gcm;
+        }
+    
+        /**
+         * @return The facebook_messenger
+         */
+        public Object GetFacebookMessenger() {
+            return this.facebookMessenger;
         }
     }
 }

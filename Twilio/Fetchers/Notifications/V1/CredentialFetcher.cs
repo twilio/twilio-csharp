@@ -2,26 +2,23 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Fetchers;
 using Twilio.Http;
-using Twilio.Resources.Conversations.V1.Conversation;
+using Twilio.Resources.Notifications.V1;
 
 #if NET40
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Fetchers.Conversations.V1.Conversation {
+namespace Twilio.Fetchers.Notifications.V1 {
 
-    public class ParticipantFetcher : Fetcher<ParticipantResource> {
-        private string conversationSid;
+    public class CredentialFetcher : Fetcher<CredentialResource> {
         private string sid;
     
         /**
-         * Construct a new ParticipantFetcher
+         * Construct a new CredentialFetcher
          * 
-         * @param conversationSid The conversation_sid
          * @param sid The sid
          */
-        public ParticipantFetcher(string conversationSid, string sid) {
-            this.conversationSid = conversationSid;
+        public CredentialFetcher(string sid) {
             this.sid = sid;
         }
     
@@ -30,19 +27,19 @@ namespace Twilio.Fetchers.Conversations.V1.Conversation {
          * Make the request to the Twilio API to perform the fetch
          * 
          * @param client ITwilioRestClient with which to make the request
-         * @return Fetched ParticipantResource
+         * @return Fetched CredentialResource
          */
-        public override async Task<ParticipantResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<CredentialResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
-                Domains.CONVERSATIONS,
-                "/v1/Conversations/" + this.conversationSid + "/Participants/" + this.sid + ""
+                Domains.NOTIFICATIONS,
+                "/v1/Credentials/" + this.sid + ""
             );
             
             Response response = await client.RequestAsync(request);
             
             if (response == null) {
-                throw new ApiConnectionException("ParticipantResource fetch failed: Unable to connect to server");
+                throw new ApiConnectionException("CredentialResource fetch failed: Unable to connect to server");
             } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
@@ -56,7 +53,7 @@ namespace Twilio.Fetchers.Conversations.V1.Conversation {
                 );
             }
             
-            return ParticipantResource.FromJson(response.GetContent());
+            return CredentialResource.FromJson(response.GetContent());
         }
         #endif
     
@@ -64,19 +61,19 @@ namespace Twilio.Fetchers.Conversations.V1.Conversation {
          * Make the request to the Twilio API to perform the fetch
          * 
          * @param client ITwilioRestClient with which to make the request
-         * @return Fetched ParticipantResource
+         * @return Fetched CredentialResource
          */
-        public override ParticipantResource Execute(ITwilioRestClient client) {
+        public override CredentialResource Execute(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
-                Domains.CONVERSATIONS,
-                "/v1/Conversations/" + this.conversationSid + "/Participants/" + this.sid + ""
+                Domains.NOTIFICATIONS,
+                "/v1/Credentials/" + this.sid + ""
             );
             
             Response response = client.Request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("ParticipantResource fetch failed: Unable to connect to server");
+                throw new ApiConnectionException("CredentialResource fetch failed: Unable to connect to server");
             } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
@@ -90,7 +87,7 @@ namespace Twilio.Fetchers.Conversations.V1.Conversation {
                 );
             }
             
-            return ParticipantResource.FromJson(response.GetContent());
+            return CredentialResource.FromJson(response.GetContent());
         }
     }
 }

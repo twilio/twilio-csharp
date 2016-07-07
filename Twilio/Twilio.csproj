@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -71,7 +71,7 @@
     <Compile Include="Resources\ResourceSet.cs" />
     <Compile Include="Resources\SidResource.cs" />
     <Compile Include="Twilio.cs" />
-    <!-- Yoyodyne Generated Artifacts -->
+<!-- Yoyodyne Generated Artifacts -->
     <Compile Include="Creators\Api\V2010\AccountCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\AddressCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\ApplicationCreator.cs" />
@@ -83,6 +83,7 @@
     <Compile Include="Creators\Api\V2010\Account\IncomingPhoneNumber\MobileCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\IncomingPhoneNumber\TollFreeCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\MessageCreator.cs" />
+    <Compile Include="Creators\Api\V2010\Account\Message\FeedbackCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\QueueCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\Sip\CredentialListCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\Sip\CredentialList\CredentialCreator.cs" />
@@ -95,7 +96,6 @@
     <Compile Include="Creators\Api\V2010\Account\TokenCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\Usage\TriggerCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\ValidationRequestCreator.cs" />
-    <Compile Include="Creators\Conversations\V1\Conversation\ParticipantCreator.cs" />
     <Compile Include="Creators\IpMessaging\V1\CredentialCreator.cs" />
     <Compile Include="Creators\IpMessaging\V1\ServiceCreator.cs" />
     <Compile Include="Creators\IpMessaging\V1\Service\ChannelCreator.cs" />
@@ -103,6 +103,7 @@
     <Compile Include="Creators\IpMessaging\V1\Service\Channel\MessageCreator.cs" />
     <Compile Include="Creators\IpMessaging\V1\Service\RoleCreator.cs" />
     <Compile Include="Creators\IpMessaging\V1\Service\UserCreator.cs" />
+    <Compile Include="Creators\Notifications\V1\CredentialCreator.cs" />
     <Compile Include="Creators\Notifications\V1\ServiceCreator.cs" />
     <Compile Include="Creators\Notifications\V1\Service\BindingCreator.cs" />
     <Compile Include="Creators\Notifications\V1\Service\NotificationCreator.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="Deleters\IpMessaging\V1\Service\RoleDeleter.cs" />
     <Compile Include="Deleters\IpMessaging\V1\Service\UserDeleter.cs" />
     <Compile Include="Deleters\Monitor\V1\AlertDeleter.cs" />
+    <Compile Include="Deleters\Notifications\V1\CredentialDeleter.cs" />
     <Compile Include="Deleters\Notifications\V1\ServiceDeleter.cs" />
     <Compile Include="Deleters\Notifications\V1\Service\BindingDeleter.cs" />
     <Compile Include="Deleters\Taskrouter\V1\WorkspaceDeleter.cs" />
@@ -198,8 +200,6 @@
     <Compile Include="Fetchers\Api\V2010\Account\Sms\SmsMessageFetcher.cs" />
     <Compile Include="Fetchers\Api\V2010\Account\TranscriptionFetcher.cs" />
     <Compile Include="Fetchers\Api\V2010\Account\Usage\TriggerFetcher.cs" />
-    <Compile Include="Fetchers\Conversations\V1\ConversationFetcher.cs" />
-    <Compile Include="Fetchers\Conversations\V1\Conversation\ParticipantFetcher.cs" />
     <Compile Include="Fetchers\IpMessaging\V1\CredentialFetcher.cs" />
     <Compile Include="Fetchers\IpMessaging\V1\ServiceFetcher.cs" />
     <Compile Include="Fetchers\IpMessaging\V1\Service\ChannelFetcher.cs" />
@@ -210,6 +210,7 @@
     <Compile Include="Fetchers\Lookups\V1\PhoneNumberFetcher.cs" />
     <Compile Include="Fetchers\Monitor\V1\AlertFetcher.cs" />
     <Compile Include="Fetchers\Monitor\V1\EventFetcher.cs" />
+    <Compile Include="Fetchers\Notifications\V1\CredentialFetcher.cs" />
     <Compile Include="Fetchers\Notifications\V1\ServiceFetcher.cs" />
     <Compile Include="Fetchers\Notifications\V1\Service\BindingFetcher.cs" />
     <Compile Include="Fetchers\Preview\Wireless\CommandFetcher.cs" />
@@ -285,9 +286,6 @@
     <Compile Include="Readers\Api\V2010\Account\Usage\Record\YearlyReader.cs" />
     <Compile Include="Readers\Api\V2010\Account\Usage\Record\YesterdayReader.cs" />
     <Compile Include="Readers\Api\V2010\Account\Usage\TriggerReader.cs" />
-    <Compile Include="Readers\Conversations\V1\Conversation\CompletedReader.cs" />
-    <Compile Include="Readers\Conversations\V1\Conversation\InProgressReader.cs" />
-    <Compile Include="Readers\Conversations\V1\Conversation\ParticipantReader.cs" />
     <Compile Include="Readers\IpMessaging\V1\CredentialReader.cs" />
     <Compile Include="Readers\IpMessaging\V1\ServiceReader.cs" />
     <Compile Include="Readers\IpMessaging\V1\Service\ChannelReader.cs" />
@@ -297,6 +295,7 @@
     <Compile Include="Readers\IpMessaging\V1\Service\UserReader.cs" />
     <Compile Include="Readers\Monitor\V1\AlertReader.cs" />
     <Compile Include="Readers\Monitor\V1\EventReader.cs" />
+    <Compile Include="Readers\Notifications\V1\CredentialReader.cs" />
     <Compile Include="Readers\Notifications\V1\ServiceReader.cs" />
     <Compile Include="Readers\Notifications\V1\Service\BindingReader.cs" />
     <Compile Include="Readers\Preview\Wireless\CommandReader.cs" />
@@ -341,6 +340,7 @@
     <Compile Include="Resources\Api\V2010\Account\IncomingPhoneNumber\MobileResource.cs" />
     <Compile Include="Resources\Api\V2010\Account\IncomingPhoneNumber\TollFreeResource.cs" />
     <Compile Include="Resources\Api\V2010\Account\MessageResource.cs" />
+    <Compile Include="Resources\Api\V2010\Account\Message\FeedbackResource.cs" />
     <Compile Include="Resources\Api\V2010\Account\Message\MediaResource.cs" />
     <Compile Include="Resources\Api\V2010\Account\NotificationResource.cs" />
     <Compile Include="Resources\Api\V2010\Account\OutgoingCallerIdResource.cs" />
@@ -371,10 +371,6 @@
     <Compile Include="Resources\Api\V2010\Account\Usage\Record\YesterdayResource.cs" />
     <Compile Include="Resources\Api\V2010\Account\Usage\TriggerResource.cs" />
     <Compile Include="Resources\Api\V2010\Account\ValidationRequestResource.cs" />
-    <Compile Include="Resources\Conversations\V1\ConversationResource.cs" />
-    <Compile Include="Resources\Conversations\V1\Conversation\CompletedResource.cs" />
-    <Compile Include="Resources\Conversations\V1\Conversation\InProgressResource.cs" />
-    <Compile Include="Resources\Conversations\V1\Conversation\ParticipantResource.cs" />
     <Compile Include="Resources\IpMessaging\V1\CredentialResource.cs" />
     <Compile Include="Resources\IpMessaging\V1\ServiceResource.cs" />
     <Compile Include="Resources\IpMessaging\V1\Service\ChannelResource.cs" />
@@ -385,6 +381,7 @@
     <Compile Include="Resources\Lookups\V1\PhoneNumberResource.cs" />
     <Compile Include="Resources\Monitor\V1\AlertResource.cs" />
     <Compile Include="Resources\Monitor\V1\EventResource.cs" />
+    <Compile Include="Resources\Notifications\V1\CredentialResource.cs" />
     <Compile Include="Resources\Notifications\V1\ServiceResource.cs" />
     <Compile Include="Resources\Notifications\V1\Service\BindingResource.cs" />
     <Compile Include="Resources\Notifications\V1\Service\NotificationResource.cs" />
@@ -441,6 +438,7 @@
     <Compile Include="Updaters\IpMessaging\V1\Service\ChannelUpdater.cs" />
     <Compile Include="Updaters\IpMessaging\V1\Service\RoleUpdater.cs" />
     <Compile Include="Updaters\IpMessaging\V1\Service\UserUpdater.cs" />
+    <Compile Include="Updaters\Notifications\V1\CredentialUpdater.cs" />
     <Compile Include="Updaters\Notifications\V1\ServiceUpdater.cs" />
     <Compile Include="Updaters\Preview\Wireless\DeviceUpdater.cs" />
     <Compile Include="Updaters\Taskrouter\V1\WorkspaceUpdater.cs" />
@@ -459,10 +457,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Net.Http">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
     </Reference>
@@ -471,6 +465,9 @@
     </Reference>
     <Reference Include="System.Net.Http.Extensions">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

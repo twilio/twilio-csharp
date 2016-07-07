@@ -2,30 +2,39 @@ using Twilio.Clients;
 using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Conversations.V1.Conversation;
+using Twilio.Resources.Api.V2010.Account.Message;
 
 #if NET40
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Creators.Conversations.V1.Conversation {
+namespace Twilio.Creators.Api.V2010.Account.Message {
 
-    public class ParticipantCreator : Creator<ParticipantResource> {
-        private string conversationSid;
-        private Twilio.Types.PhoneNumber to;
-        private Twilio.Types.PhoneNumber from;
+    public class FeedbackCreator : Creator<FeedbackResource> {
+        private string accountSid;
+        private string messageSid;
+        private FeedbackResource.Outcome outcome;
     
         /**
-         * Construct a new ParticipantCreator
+         * Construct a new FeedbackCreator
          * 
-         * @param conversationSid The conversation_sid
-         * @param to The to
-         * @param from The from
+         * @param accountSid The account_sid
+         * @param messageSid The message_sid
          */
-        public ParticipantCreator(string conversationSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from) {
-            this.conversationSid = conversationSid;
-            this.to = to;
-            this.from = from;
+        public FeedbackCreator(string accountSid, string messageSid) {
+            this.accountSid = accountSid;
+            this.messageSid = messageSid;
+        }
+    
+        /**
+         * The outcome
+         * 
+         * @param outcome The outcome
+         * @return this
+         */
+        public FeedbackCreator setOutcome(FeedbackResource.Outcome outcome) {
+            this.outcome = outcome;
+            return this;
         }
     
         #if NET40
@@ -33,20 +42,20 @@ namespace Twilio.Creators.Conversations.V1.Conversation {
          * Make the request to the Twilio API to perform the create
          * 
          * @param client ITwilioRestClient with which to make the request
-         * @return Created ParticipantResource
+         * @return Created FeedbackResource
          */
-        public override async Task<ParticipantResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<FeedbackResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
-                Domains.CONVERSATIONS,
-                "/v1/Conversations/" + this.conversationSid + "/Participants"
+                Domains.API,
+                "/2010-04-01/Accounts/" + this.accountSid + "/Messages/" + this.messageSid + "/Feedback.json"
             );
             
             addPostParams(request);
             Response response = await client.RequestAsync(request);
             
             if (response == null) {
-                throw new ApiConnectionException("ParticipantResource creation failed: Unable to connect to server");
+                throw new ApiConnectionException("FeedbackResource creation failed: Unable to connect to server");
             } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
@@ -60,7 +69,7 @@ namespace Twilio.Creators.Conversations.V1.Conversation {
                 );
             }
             
-            return ParticipantResource.FromJson(response.GetContent());
+            return FeedbackResource.FromJson(response.GetContent());
         }
         #endif
     
@@ -68,20 +77,20 @@ namespace Twilio.Creators.Conversations.V1.Conversation {
          * Make the request to the Twilio API to perform the create
          * 
          * @param client ITwilioRestClient with which to make the request
-         * @return Created ParticipantResource
+         * @return Created FeedbackResource
          */
-        public override ParticipantResource Execute(ITwilioRestClient client) {
+        public override FeedbackResource Execute(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
-                Domains.CONVERSATIONS,
-                "/v1/Conversations/" + this.conversationSid + "/Participants"
+                Domains.API,
+                "/2010-04-01/Accounts/" + this.accountSid + "/Messages/" + this.messageSid + "/Feedback.json"
             );
             
             addPostParams(request);
             Response response = client.Request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("ParticipantResource creation failed: Unable to connect to server");
+                throw new ApiConnectionException("FeedbackResource creation failed: Unable to connect to server");
             } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
@@ -95,7 +104,7 @@ namespace Twilio.Creators.Conversations.V1.Conversation {
                 );
             }
             
-            return ParticipantResource.FromJson(response.GetContent());
+            return FeedbackResource.FromJson(response.GetContent());
         }
     
         /**
@@ -104,12 +113,8 @@ namespace Twilio.Creators.Conversations.V1.Conversation {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (to != null) {
-                request.AddPostParam("To", to.ToString());
-            }
-            
-            if (from != null) {
-                request.AddPostParam("From", from.ToString());
+            if (outcome != null) {
+                request.AddPostParam("Outcome", outcome.ToString());
             }
         }
     }

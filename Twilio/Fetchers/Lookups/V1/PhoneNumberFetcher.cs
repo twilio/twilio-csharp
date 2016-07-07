@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Fetchers;
 using Twilio.Http;
@@ -14,6 +16,8 @@ namespace Twilio.Fetchers.Lookups.V1 {
         private Twilio.Types.PhoneNumber phoneNumber;
         private string countryCode;
         private string type;
+        private List<string> addOns;
+        private Dictionary<string, object> addOnsData;
     
         /**
          * Construct a new PhoneNumberFetcher
@@ -43,6 +47,38 @@ namespace Twilio.Fetchers.Lookups.V1 {
          */
         public PhoneNumberFetcher setType(string type) {
             this.type = type;
+            return this;
+        }
+    
+        /**
+         * The add_ons
+         * 
+         * @param addOns The add_ons
+         * @return this
+         */
+        public PhoneNumberFetcher setAddOns(List<string> addOns) {
+            this.addOns = addOns;
+            return this;
+        }
+    
+        /**
+         * The add_ons
+         * 
+         * @param addOns The add_ons
+         * @return this
+         */
+        public PhoneNumberFetcher setAddOns(string addOns) {
+            return setAddOns(Promoter.ListOfOne(addOns));
+        }
+    
+        /**
+         * The add_ons_data
+         * 
+         * @param addOnsData The add_ons_data
+         * @return this
+         */
+        public PhoneNumberFetcher setAddOnsData(Dictionary<string, object> addOnsData) {
+            this.addOnsData = addOnsData;
             return this;
         }
     
@@ -134,6 +170,14 @@ namespace Twilio.Fetchers.Lookups.V1 {
             
             if (type != null) {
                 request.AddQueryParam("Type", type);
+            }
+            
+            if (addOns != null) {
+                request.AddQueryParam("AddOns", addOns.ToString());
+            }
+            
+            if (addOnsData != null) {
+                request.AddQueryParam("AddOnsData", addOnsData.ToString());
             }
         }
     }

@@ -3,35 +3,35 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers;
 using Twilio.Resources;
-using Twilio.Resources.Conversations.V1.Conversation;
+using Twilio.Resources.Notifications.V1;
 
 #if NET40
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Readers.Conversations.V1.Conversation {
+namespace Twilio.Readers.Notifications.V1 {
 
-    public class InProgressReader : Reader<InProgressResource> {
+    public class CredentialReader : Reader<CredentialResource> {
         #if NET40
         /**
          * Make the request to the Twilio API to perform the read
          * 
          * @param client ITwilioRestClient with which to make the request
-         * @return InProgressResource ResourceSet
+         * @return CredentialResource ResourceSet
          */
-        public override Task<ResourceSet<InProgressResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<CredentialResource>> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
-                Domains.CONVERSATIONS,
-                "/v1/Conversations/InProgress"
+                Domains.NOTIFICATIONS,
+                "/v1/Credentials"
             );
             
             AddQueryParams(request);
             
-            Page<InProgressResource> page = PageForRequest(client, request);
+            Page<CredentialResource> page = PageForRequest(client, request);
             
             return System.Threading.Tasks.Task.FromResult(
-                    new ResourceSet<InProgressResource>(this, client, page));
+                    new ResourceSet<CredentialResource>(this, client, page));
         }
         #endif
     
@@ -39,20 +39,20 @@ namespace Twilio.Readers.Conversations.V1.Conversation {
          * Make the request to the Twilio API to perform the read
          * 
          * @param client ITwilioRestClient with which to make the request
-         * @return InProgressResource ResourceSet
+         * @return CredentialResource ResourceSet
          */
-        public override ResourceSet<InProgressResource> Execute(ITwilioRestClient client) {
+        public override ResourceSet<CredentialResource> Execute(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
-                Domains.CONVERSATIONS,
-                "/v1/Conversations/InProgress"
+                Domains.NOTIFICATIONS,
+                "/v1/Credentials"
             );
             
             AddQueryParams(request);
             
-            Page<InProgressResource> page = PageForRequest(client, request);
+            Page<CredentialResource> page = PageForRequest(client, request);
             
-            return new ResourceSet<InProgressResource>(this, client, page);
+            return new ResourceSet<CredentialResource>(this, client, page);
         }
     
         /**
@@ -62,7 +62,7 @@ namespace Twilio.Readers.Conversations.V1.Conversation {
          * @param client ITwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<InProgressResource> NextPage(string nextPageUri, ITwilioRestClient client) {
+        public override Page<CredentialResource> NextPage(string nextPageUri, ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 nextPageUri
@@ -74,17 +74,17 @@ namespace Twilio.Readers.Conversations.V1.Conversation {
         }
     
         /**
-         * Generate a Page of InProgressResource Resources for a given request
+         * Generate a Page of CredentialResource Resources for a given request
          * 
          * @param client ITwilioRestClient with which to make the request
          * @param request Request to generate a page for
          * @return Page for the Request
          */
-        protected Page<InProgressResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<CredentialResource> PageForRequest(ITwilioRestClient client, Request request) {
             Response response = client.Request(request);
             
             if (response == null) {
-                throw new ApiConnectionException("InProgressResource read failed: Unable to connect to server");
+                throw new ApiConnectionException("CredentialResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
                 RestException restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
@@ -98,8 +98,8 @@ namespace Twilio.Readers.Conversations.V1.Conversation {
                 );
             }
             
-            Page<InProgressResource> result = new Page<InProgressResource>();
-            result.deserialize("conversations", response.GetContent());
+            Page<CredentialResource> result = new Page<CredentialResource>();
+            result.deserialize("credentials", response.GetContent());
             
             return result;
         }

@@ -75,6 +75,8 @@ namespace Twilio.Resources.Lookups.V1 {
         private readonly string nationalFormat;
         [JsonProperty("carrier")]
         private readonly Dictionary<string, string> carrier;
+        [JsonProperty("add_ons")]
+        private readonly Object addOns;
     
         public PhoneNumberResource() {
         
@@ -87,11 +89,14 @@ namespace Twilio.Resources.Lookups.V1 {
                                     [JsonProperty("national_format")]
                                     string nationalFormat, 
                                     [JsonProperty("carrier")]
-                                    Dictionary<string, string> carrier) {
+                                    Dictionary<string, string> carrier, 
+                                    [JsonProperty("add_ons")]
+                                    Object addOns) {
             this.countryCode = countryCode;
             this.phoneNumber = phoneNumber;
             this.nationalFormat = nationalFormat;
             this.carrier = carrier;
+            this.addOns = addOns;
         }
     
         /**
@@ -127,6 +132,13 @@ namespace Twilio.Resources.Lookups.V1 {
          */
         public Dictionary<string, string> GetCarrier() {
             return this.carrier;
+        }
+    
+        /**
+         * @return The add_ons
+         */
+        public Object GetAddOns() {
+            return this.addOns;
         }
     }
 }
