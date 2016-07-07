@@ -77,7 +77,6 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
                 "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.workerSid + "/Statistics"
             );
             
-            
                 AddQueryParams(request);
             
             
@@ -114,7 +113,6 @@ namespace Twilio.Fetchers.Taskrouter.V1.Workspace.Worker {
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.workerSid + "/Statistics"
             );
-            
             
                 AddQueryParams(request);
             

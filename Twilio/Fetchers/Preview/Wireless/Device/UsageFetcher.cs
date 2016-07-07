@@ -60,7 +60,6 @@ namespace Twilio.Fetchers.Preview.Wireless.Device {
                 "/wireless/Devices/" + this.deviceSid + "/Usage"
             );
             
-            
                 AddQueryParams(request);
             
             
@@ -97,7 +96,6 @@ namespace Twilio.Fetchers.Preview.Wireless.Device {
                 Domains.PREVIEW,
                 "/wireless/Devices/" + this.deviceSid + "/Usage"
             );
-            
             
                 AddQueryParams(request);
             

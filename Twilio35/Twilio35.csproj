@@ -81,6 +81,7 @@
     <Compile Include="..\Twilio\Creators\Api\V2010\Account\IncomingPhoneNumber\MobileCreator.cs"><Link>Creators\Api\V2010\Account\IncomingPhoneNumber\MobileCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Api\V2010\Account\IncomingPhoneNumber\TollFreeCreator.cs"><Link>Creators\Api\V2010\Account\IncomingPhoneNumber\TollFreeCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Api\V2010\Account\MessageCreator.cs"><Link>Creators\Api\V2010\Account\MessageCreator.cs</Link></Compile>
+    <Compile Include="..\Twilio\Creators\Api\V2010\Account\Message\FeedbackCreator.cs"><Link>Creators\Api\V2010\Account\Message\FeedbackCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Api\V2010\Account\QueueCreator.cs"><Link>Creators\Api\V2010\Account\QueueCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Api\V2010\Account\Sip\CredentialListCreator.cs"><Link>Creators\Api\V2010\Account\Sip\CredentialListCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Api\V2010\Account\Sip\CredentialList\CredentialCreator.cs"><Link>Creators\Api\V2010\Account\Sip\CredentialList\CredentialCreator.cs</Link></Compile>
@@ -93,7 +94,6 @@
     <Compile Include="..\Twilio\Creators\Api\V2010\Account\TokenCreator.cs"><Link>Creators\Api\V2010\Account\TokenCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Api\V2010\Account\Usage\TriggerCreator.cs"><Link>Creators\Api\V2010\Account\Usage\TriggerCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Api\V2010\Account\ValidationRequestCreator.cs"><Link>Creators\Api\V2010\Account\ValidationRequestCreator.cs</Link></Compile>
-    <Compile Include="..\Twilio\Creators\Conversations\V1\Conversation\ParticipantCreator.cs"><Link>Creators\Conversations\V1\Conversation\ParticipantCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\IpMessaging\V1\CredentialCreator.cs"><Link>Creators\IpMessaging\V1\CredentialCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\IpMessaging\V1\ServiceCreator.cs"><Link>Creators\IpMessaging\V1\ServiceCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\IpMessaging\V1\Service\ChannelCreator.cs"><Link>Creators\IpMessaging\V1\Service\ChannelCreator.cs</Link></Compile>
@@ -101,6 +101,7 @@
     <Compile Include="..\Twilio\Creators\IpMessaging\V1\Service\Channel\MessageCreator.cs"><Link>Creators\IpMessaging\V1\Service\Channel\MessageCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\IpMessaging\V1\Service\RoleCreator.cs"><Link>Creators\IpMessaging\V1\Service\RoleCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\IpMessaging\V1\Service\UserCreator.cs"><Link>Creators\IpMessaging\V1\Service\UserCreator.cs</Link></Compile>
+    <Compile Include="..\Twilio\Creators\Notifications\V1\CredentialCreator.cs"><Link>Creators\Notifications\V1\CredentialCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Notifications\V1\ServiceCreator.cs"><Link>Creators\Notifications\V1\ServiceCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Notifications\V1\Service\BindingCreator.cs"><Link>Creators\Notifications\V1\Service\BindingCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Notifications\V1\Service\NotificationCreator.cs"><Link>Creators\Notifications\V1\Service\NotificationCreator.cs</Link></Compile>
@@ -149,6 +150,7 @@
     <Compile Include="..\Twilio\Deleters\IpMessaging\V1\Service\RoleDeleter.cs"><Link>Deleters\IpMessaging\V1\Service\RoleDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Deleters\IpMessaging\V1\Service\UserDeleter.cs"><Link>Deleters\IpMessaging\V1\Service\UserDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Deleters\Monitor\V1\AlertDeleter.cs"><Link>Deleters\Monitor\V1\AlertDeleter.cs</Link></Compile>
+    <Compile Include="..\Twilio\Deleters\Notifications\V1\CredentialDeleter.cs"><Link>Deleters\Notifications\V1\CredentialDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Deleters\Notifications\V1\ServiceDeleter.cs"><Link>Deleters\Notifications\V1\ServiceDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Deleters\Notifications\V1\Service\BindingDeleter.cs"><Link>Deleters\Notifications\V1\Service\BindingDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Deleters\Taskrouter\V1\WorkspaceDeleter.cs"><Link>Deleters\Taskrouter\V1\WorkspaceDeleter.cs</Link></Compile>
@@ -196,8 +198,6 @@
     <Compile Include="..\Twilio\Fetchers\Api\V2010\Account\Sms\SmsMessageFetcher.cs"><Link>Fetchers\Api\V2010\Account\Sms\SmsMessageFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Api\V2010\Account\TranscriptionFetcher.cs"><Link>Fetchers\Api\V2010\Account\TranscriptionFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Api\V2010\Account\Usage\TriggerFetcher.cs"><Link>Fetchers\Api\V2010\Account\Usage\TriggerFetcher.cs</Link></Compile>
-    <Compile Include="..\Twilio\Fetchers\Conversations\V1\ConversationFetcher.cs"><Link>Fetchers\Conversations\V1\ConversationFetcher.cs</Link></Compile>
-    <Compile Include="..\Twilio\Fetchers\Conversations\V1\Conversation\ParticipantFetcher.cs"><Link>Fetchers\Conversations\V1\Conversation\ParticipantFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\IpMessaging\V1\CredentialFetcher.cs"><Link>Fetchers\IpMessaging\V1\CredentialFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\IpMessaging\V1\ServiceFetcher.cs"><Link>Fetchers\IpMessaging\V1\ServiceFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\IpMessaging\V1\Service\ChannelFetcher.cs"><Link>Fetchers\IpMessaging\V1\Service\ChannelFetcher.cs</Link></Compile>
@@ -208,6 +208,7 @@
     <Compile Include="..\Twilio\Fetchers\Lookups\V1\PhoneNumberFetcher.cs"><Link>Fetchers\Lookups\V1\PhoneNumberFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Monitor\V1\AlertFetcher.cs"><Link>Fetchers\Monitor\V1\AlertFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Monitor\V1\EventFetcher.cs"><Link>Fetchers\Monitor\V1\EventFetcher.cs</Link></Compile>
+    <Compile Include="..\Twilio\Fetchers\Notifications\V1\CredentialFetcher.cs"><Link>Fetchers\Notifications\V1\CredentialFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Notifications\V1\ServiceFetcher.cs"><Link>Fetchers\Notifications\V1\ServiceFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Notifications\V1\Service\BindingFetcher.cs"><Link>Fetchers\Notifications\V1\Service\BindingFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Preview\Wireless\CommandFetcher.cs"><Link>Fetchers\Preview\Wireless\CommandFetcher.cs</Link></Compile>
@@ -283,9 +284,6 @@
     <Compile Include="..\Twilio\Readers\Api\V2010\Account\Usage\Record\YearlyReader.cs"><Link>Readers\Api\V2010\Account\Usage\Record\YearlyReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Api\V2010\Account\Usage\Record\YesterdayReader.cs"><Link>Readers\Api\V2010\Account\Usage\Record\YesterdayReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Api\V2010\Account\Usage\TriggerReader.cs"><Link>Readers\Api\V2010\Account\Usage\TriggerReader.cs</Link></Compile>
-    <Compile Include="..\Twilio\Readers\Conversations\V1\Conversation\CompletedReader.cs"><Link>Readers\Conversations\V1\Conversation\CompletedReader.cs</Link></Compile>
-    <Compile Include="..\Twilio\Readers\Conversations\V1\Conversation\InProgressReader.cs"><Link>Readers\Conversations\V1\Conversation\InProgressReader.cs</Link></Compile>
-    <Compile Include="..\Twilio\Readers\Conversations\V1\Conversation\ParticipantReader.cs"><Link>Readers\Conversations\V1\Conversation\ParticipantReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\IpMessaging\V1\CredentialReader.cs"><Link>Readers\IpMessaging\V1\CredentialReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\IpMessaging\V1\ServiceReader.cs"><Link>Readers\IpMessaging\V1\ServiceReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\IpMessaging\V1\Service\ChannelReader.cs"><Link>Readers\IpMessaging\V1\Service\ChannelReader.cs</Link></Compile>
@@ -295,6 +293,7 @@
     <Compile Include="..\Twilio\Readers\IpMessaging\V1\Service\UserReader.cs"><Link>Readers\IpMessaging\V1\Service\UserReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Monitor\V1\AlertReader.cs"><Link>Readers\Monitor\V1\AlertReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Monitor\V1\EventReader.cs"><Link>Readers\Monitor\V1\EventReader.cs</Link></Compile>
+    <Compile Include="..\Twilio\Readers\Notifications\V1\CredentialReader.cs"><Link>Readers\Notifications\V1\CredentialReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Notifications\V1\ServiceReader.cs"><Link>Readers\Notifications\V1\ServiceReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Notifications\V1\Service\BindingReader.cs"><Link>Readers\Notifications\V1\Service\BindingReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Preview\Wireless\CommandReader.cs"><Link>Readers\Preview\Wireless\CommandReader.cs</Link></Compile>
@@ -339,6 +338,7 @@
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\IncomingPhoneNumber\MobileResource.cs"><Link>Resources\Api\V2010\Account\IncomingPhoneNumber\MobileResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\IncomingPhoneNumber\TollFreeResource.cs"><Link>Resources\Api\V2010\Account\IncomingPhoneNumber\TollFreeResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\MessageResource.cs"><Link>Resources\Api\V2010\Account\MessageResource.cs</Link></Compile>
+    <Compile Include="..\Twilio\Resources\Api\V2010\Account\Message\FeedbackResource.cs"><Link>Resources\Api\V2010\Account\Message\FeedbackResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\Message\MediaResource.cs"><Link>Resources\Api\V2010\Account\Message\MediaResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\NotificationResource.cs"><Link>Resources\Api\V2010\Account\NotificationResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\OutgoingCallerIdResource.cs"><Link>Resources\Api\V2010\Account\OutgoingCallerIdResource.cs</Link></Compile>
@@ -369,10 +369,6 @@
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\Usage\Record\YesterdayResource.cs"><Link>Resources\Api\V2010\Account\Usage\Record\YesterdayResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\Usage\TriggerResource.cs"><Link>Resources\Api\V2010\Account\Usage\TriggerResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\ValidationRequestResource.cs"><Link>Resources\Api\V2010\Account\ValidationRequestResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Resources\Conversations\V1\ConversationResource.cs"><Link>Resources\Conversations\V1\ConversationResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Resources\Conversations\V1\Conversation\CompletedResource.cs"><Link>Resources\Conversations\V1\Conversation\CompletedResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Resources\Conversations\V1\Conversation\InProgressResource.cs"><Link>Resources\Conversations\V1\Conversation\InProgressResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Resources\Conversations\V1\Conversation\ParticipantResource.cs"><Link>Resources\Conversations\V1\Conversation\ParticipantResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\IpMessaging\V1\CredentialResource.cs"><Link>Resources\IpMessaging\V1\CredentialResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\IpMessaging\V1\ServiceResource.cs"><Link>Resources\IpMessaging\V1\ServiceResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\IpMessaging\V1\Service\ChannelResource.cs"><Link>Resources\IpMessaging\V1\Service\ChannelResource.cs</Link></Compile>
@@ -383,6 +379,7 @@
     <Compile Include="..\Twilio\Resources\Lookups\V1\PhoneNumberResource.cs"><Link>Resources\Lookups\V1\PhoneNumberResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Monitor\V1\AlertResource.cs"><Link>Resources\Monitor\V1\AlertResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Monitor\V1\EventResource.cs"><Link>Resources\Monitor\V1\EventResource.cs</Link></Compile>
+    <Compile Include="..\Twilio\Resources\Notifications\V1\CredentialResource.cs"><Link>Resources\Notifications\V1\CredentialResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Notifications\V1\ServiceResource.cs"><Link>Resources\Notifications\V1\ServiceResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Notifications\V1\Service\BindingResource.cs"><Link>Resources\Notifications\V1\Service\BindingResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Notifications\V1\Service\NotificationResource.cs"><Link>Resources\Notifications\V1\Service\NotificationResource.cs</Link></Compile>
@@ -439,6 +436,7 @@
     <Compile Include="..\Twilio\Updaters\IpMessaging\V1\Service\ChannelUpdater.cs"><Link>Updaters\IpMessaging\V1\Service\ChannelUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\IpMessaging\V1\Service\RoleUpdater.cs"><Link>Updaters\IpMessaging\V1\Service\RoleUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\IpMessaging\V1\Service\UserUpdater.cs"><Link>Updaters\IpMessaging\V1\Service\UserUpdater.cs</Link></Compile>
+    <Compile Include="..\Twilio\Updaters\Notifications\V1\CredentialUpdater.cs"><Link>Updaters\Notifications\V1\CredentialUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Notifications\V1\ServiceUpdater.cs"><Link>Updaters\Notifications\V1\ServiceUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Preview\Wireless\DeviceUpdater.cs"><Link>Updaters\Preview\Wireless\DeviceUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Taskrouter\V1\WorkspaceUpdater.cs"><Link>Updaters\Taskrouter\V1\WorkspaceUpdater.cs</Link></Compile>
@@ -451,7 +449,6 @@
     <Compile Include="..\Twilio\Updaters\Trunking\V1\TrunkUpdater.cs"><Link>Updaters\Trunking\V1\TrunkUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Trunking\V1\Trunk\OriginationUrlUpdater.cs"><Link>Updaters\Trunking\V1\Trunk\OriginationUrlUpdater.cs</Link></Compile>
     <!-- End Yoyodyne Generated Artifacts -->
-    <Compile Include="Converters\PrefixedCollapsibleMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

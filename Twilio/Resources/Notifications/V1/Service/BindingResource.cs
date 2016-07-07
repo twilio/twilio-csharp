@@ -17,6 +17,8 @@ namespace Twilio.Resources.Notifications.V1.Service {
         public sealed class BindingType : IStringEnum {
             public const string APN="apn";
             public const string GCM="gcm";
+            public const string SMS="sms";
+            public const string FACEBOOK_MESSENGER="facebook-messenger";
         
             private string value;
             

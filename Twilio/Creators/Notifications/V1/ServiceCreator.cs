@@ -14,6 +14,8 @@ namespace Twilio.Creators.Notifications.V1 {
         private string friendlyName;
         private string apnCredentialSid;
         private string gcmCredentialSid;
+        private string messagingServiceSid;
+        private string facebookMessengerPageId;
         private string defaultApnNotificationProtocolVersion;
         private string defaultGcmNotificationProtocolVersion;
     
@@ -47,6 +49,28 @@ namespace Twilio.Creators.Notifications.V1 {
          */
         public ServiceCreator setGcmCredentialSid(string gcmCredentialSid) {
             this.gcmCredentialSid = gcmCredentialSid;
+            return this;
+        }
+    
+        /**
+         * The messaging_service_sid
+         * 
+         * @param messagingServiceSid The messaging_service_sid
+         * @return this
+         */
+        public ServiceCreator setMessagingServiceSid(string messagingServiceSid) {
+            this.messagingServiceSid = messagingServiceSid;
+            return this;
+        }
+    
+        /**
+         * The facebook_messenger_page_id
+         * 
+         * @param facebookMessengerPageId The facebook_messenger_page_id
+         * @return this
+         */
+        public ServiceCreator setFacebookMessengerPageId(string facebookMessengerPageId) {
+            this.facebookMessengerPageId = facebookMessengerPageId;
             return this;
         }
     
@@ -160,6 +184,14 @@ namespace Twilio.Creators.Notifications.V1 {
             
             if (gcmCredentialSid != "") {
                 request.AddPostParam("GcmCredentialSid", gcmCredentialSid);
+            }
+            
+            if (messagingServiceSid != "") {
+                request.AddPostParam("MessagingServiceSid", messagingServiceSid);
+            }
+            
+            if (facebookMessengerPageId != "") {
+                request.AddPostParam("FacebookMessengerPageId", facebookMessengerPageId);
             }
             
             if (defaultApnNotificationProtocolVersion != "") {

@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio", "Twilio\Twilio.csproj", "{12BED4CC-0E34-4B83-ACF0-F834EAFBE416}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Tests", "Twilio.Tests\Twilio.Tests.csproj", "{65458612-8B1E-492A-999F-53C04DE31F91}"
@@ -25,5 +27,8 @@ Global
 		{65458612-8B1E-492A-999F-53C04DE31F91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65458612-8B1E-492A-999F-53C04DE31F91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65458612-8B1E-492A-999F-53C04DE31F91}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

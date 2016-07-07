@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Twilio.Clients;
 using Twilio.Converters;
@@ -17,7 +18,7 @@ namespace Twilio.Creators.Notifications.V1.Service {
         private List<string> identity;
         private List<string> tag;
         private string body;
-        private string priority;
+        private NotificationResource.Priority priority;
         private int? ttl;
         private string title;
         private string sound;
@@ -25,6 +26,7 @@ namespace Twilio.Creators.Notifications.V1.Service {
         private string data;
         private string apn;
         private string gcm;
+        private Object facebookMessenger;
     
         /**
          * Construct a new NotificationCreator
@@ -94,7 +96,7 @@ namespace Twilio.Creators.Notifications.V1.Service {
          * @param priority The priority
          * @return this
          */
-        public NotificationCreator setPriority(string priority) {
+        public NotificationCreator setPriority(NotificationResource.Priority priority) {
             this.priority = priority;
             return this;
         }
@@ -173,6 +175,17 @@ namespace Twilio.Creators.Notifications.V1.Service {
          */
         public NotificationCreator setGcm(string gcm) {
             this.gcm = gcm;
+            return this;
+        }
+    
+        /**
+         * The facebook_messenger
+         * 
+         * @param facebookMessenger The facebook_messenger
+         * @return this
+         */
+        public NotificationCreator setFacebookMessenger(Object facebookMessenger) {
+            this.facebookMessenger = facebookMessenger;
             return this;
         }
     
@@ -264,8 +277,8 @@ namespace Twilio.Creators.Notifications.V1.Service {
                 request.AddPostParam("Body", body);
             }
             
-            if (priority != "") {
-                request.AddPostParam("Priority", priority);
+            if (priority != null) {
+                request.AddPostParam("Priority", priority.ToString());
             }
             
             if (ttl != null) {
@@ -294,6 +307,10 @@ namespace Twilio.Creators.Notifications.V1.Service {
             
             if (gcm != "") {
                 request.AddPostParam("Gcm", gcm);
+            }
+            
+            if (facebookMessenger != null) {
+                request.AddPostParam("FacebookMessenger", facebookMessenger.ToString());
             }
         }
     }
