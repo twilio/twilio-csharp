@@ -47,6 +47,7 @@
     <Compile Include="..\Twilio\Converters\StringEnumConverter.cs"><Link>Converters\StringEnumConverter.cs</Link></Compile>
     <Compile Include="..\Twilio\Converters\HttpMethodConverter.cs"><Link>Converters\HttpMethodConverter.cs</Link></Compile>
     <Compile Include="..\Twilio\Converters\PhoneNumberConverter.cs"><Link>Converters\PhoneNumberConverter.cs</Link></Compile>
+    <Compile Include="..\Twilio\Converters\PrefixedCollapsibleMap.cs"><Link>Converters\PrefixedCollapsibleMap.cs</Link></Compile>
     <Compile Include="..\Twilio\Types\PhoneNumber.cs"><Link>Types\PhoneNumber.cs</Link></Compile>
     <Compile Include="..\Twilio\Types\FeedbackIssue.cs"><Link>Types\FeedbackIssue.cs</Link></Compile>
     <Compile Include="..\Twilio\Types\IceServer.cs"><Link>Types\IceServer.cs</Link></Compile>

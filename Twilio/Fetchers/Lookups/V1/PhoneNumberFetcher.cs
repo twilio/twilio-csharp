@@ -96,7 +96,6 @@ namespace Twilio.Fetchers.Lookups.V1 {
                 "/v1/PhoneNumbers/" + this.phoneNumber + ""
             );
             
-            
                 AddQueryParams(request);
             
             
@@ -133,7 +132,6 @@ namespace Twilio.Fetchers.Lookups.V1 {
                 Domains.LOOKUPS,
                 "/v1/PhoneNumbers/" + this.phoneNumber + ""
             );
-            
             
                 AddQueryParams(request);
             
@@ -173,11 +171,16 @@ namespace Twilio.Fetchers.Lookups.V1 {
             }
             
             if (addOns != null) {
-                request.AddQueryParam("AddOns", addOns.ToString());
+                foreach (object prop in addOns) {
+                    request.AddQueryParam("AddOns", prop.ToString());
+                }
             }
             
             if (addOnsData != null) {
-                request.AddQueryParam("AddOnsData", addOnsData.ToString());
+                Dictionary<string, string> dictParams = PrefixedCollapsibleMap.Serialize(addOnsData, "AddOns");
+                foreach (KeyValuePair<string, string> entry in dictParams) {
+                    request.AddQueryParam(entry.Key, entry.Value);
+                }
             }
         }
     }

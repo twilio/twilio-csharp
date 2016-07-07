@@ -50,6 +50,7 @@
     <Compile Include="Converters\StringEnumConverter.cs" />
     <Compile Include="Converters\HttpMethodConverter.cs" />
     <Compile Include="Converters\PhoneNumberConverter.cs" />
+    <Compile Include="Converters\PrefixedCollapsibleMap.cs" />
     <Compile Include="Types\PhoneNumber.cs" />
     <Compile Include="Types\FeedbackIssue.cs" />
     <Compile Include="Types\IceServer.cs" />
