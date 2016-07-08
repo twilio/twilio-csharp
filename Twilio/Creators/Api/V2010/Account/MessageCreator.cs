@@ -21,7 +21,7 @@ namespace Twilio.Creators.Api.V2010.Account {
         private List<Uri> mediaUrl;
         private Uri statusCallback;
         private string applicationSid;
-        private bool? provideFeeback;
+        private bool? provideFeedback;
     
         /**
          * Construct a new MessageCreator
@@ -87,13 +87,13 @@ namespace Twilio.Creators.Api.V2010.Account {
         }
     
         /**
-         * The provide_feeback
+         * The provide_feedback
          * 
-         * @param provideFeeback The provide_feeback
+         * @param provideFeedback The provide_feedback
          * @return this
          */
-        public MessageCreator setProvideFeeback(bool? provideFeeback) {
-            this.provideFeeback = provideFeeback;
+        public MessageCreator setProvideFeedback(bool? provideFeedback) {
+            this.provideFeedback = provideFeedback;
             return this;
         }
     
@@ -197,8 +197,8 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("ApplicationSid", applicationSid);
             }
             
-            if (provideFeeback != null) {
-                request.AddPostParam("ProvideFeeback", provideFeeback.ToString());
+            if (provideFeedback != null) {
+                request.AddPostParam("ProvideFeedback", provideFeedback.ToString());
             }
         }
     }
