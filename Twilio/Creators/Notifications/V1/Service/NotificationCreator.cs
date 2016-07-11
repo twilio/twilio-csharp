@@ -26,6 +26,7 @@ namespace Twilio.Creators.Notifications.V1.Service {
         private string data;
         private string apn;
         private string gcm;
+        private string sms;
         private Object facebookMessenger;
     
         /**
@@ -179,6 +180,17 @@ namespace Twilio.Creators.Notifications.V1.Service {
         }
     
         /**
+         * The sms
+         * 
+         * @param sms The sms
+         * @return this
+         */
+        public NotificationCreator setSms(string sms) {
+            this.sms = sms;
+            return this;
+        }
+    
+        /**
          * The facebook_messenger
          * 
          * @param facebookMessenger The facebook_messenger
@@ -307,6 +319,10 @@ namespace Twilio.Creators.Notifications.V1.Service {
             
             if (gcm != "") {
                 request.AddPostParam("Gcm", gcm);
+            }
+            
+            if (sms != "") {
+                request.AddPostParam("Sms", sms);
             }
             
             if (facebookMessenger != null) {
