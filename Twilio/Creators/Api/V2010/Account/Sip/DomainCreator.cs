@@ -16,6 +16,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
         private string accountSid;
         private string domainName;
         private string friendlyName;
+        private string authType;
         private Uri voiceUrl;
         private Twilio.Http.HttpMethod voiceMethod;
         private Uri voiceFallbackUrl;
@@ -42,6 +43,17 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          */
         public DomainCreator setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
+            return this;
+        }
+    
+        /**
+         * The types of authentication you have mapped to your domain
+         * 
+         * @param authType The types of authentication mapped to the domain
+         * @return this
+         */
+        public DomainCreator setAuthType(string authType) {
+            this.authType = authType;
             return this;
         }
     
@@ -229,6 +241,10 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
             
             if (friendlyName != "") {
                 request.AddPostParam("FriendlyName", friendlyName);
+            }
+            
+            if (authType != "") {
+                request.AddPostParam("AuthType", authType);
             }
             
             if (voiceUrl != null) {

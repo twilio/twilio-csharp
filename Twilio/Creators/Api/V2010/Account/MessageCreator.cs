@@ -16,11 +16,13 @@ namespace Twilio.Creators.Api.V2010.Account {
     public class MessageCreator : Creator<MessageResource> {
         private string accountSid;
         private Twilio.Types.PhoneNumber to;
-        private Twilio.Types.PhoneNumber from;
         private string body;
         private List<Uri> mediaUrl;
+        private Twilio.Types.PhoneNumber from;
+        private string messagingServiceSid;
         private Uri statusCallback;
         private string applicationSid;
+        private decimal? maxPrice;
         private bool? provideFeedback;
     
         /**
@@ -28,14 +30,14 @@ namespace Twilio.Creators.Api.V2010.Account {
          * 
          * @param accountSid The account_sid
          * @param to The phone number to receive the message
-         * @param from The phone number that initiated the message
          * @param body The body
+         * @param from The phone number that initiated the message
          */
-        public MessageCreator(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body) {
+        public MessageCreator(string accountSid, Twilio.Types.PhoneNumber to, string body, Twilio.Types.PhoneNumber from) {
             this.accountSid = accountSid;
             this.to = to;
-            this.from = from;
             this.body = body;
+            this.from = from;
         }
     
         /**
@@ -43,14 +45,44 @@ namespace Twilio.Creators.Api.V2010.Account {
          * 
          * @param accountSid The account_sid
          * @param to The phone number to receive the message
-         * @param from The phone number that initiated the message
-         * @param mediaUrl The media_url
+         * @param body The body
+         * @param messagingServiceSid The messaging_service_sid
          */
-        public MessageCreator(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl) {
+        public MessageCreator(string accountSid, Twilio.Types.PhoneNumber to, string body, string messagingServiceSid) {
             this.accountSid = accountSid;
             this.to = to;
-            this.from = from;
+            this.body = body;
+            this.messagingServiceSid = messagingServiceSid;
+        }
+    
+        /**
+         * Construct a new MessageCreator
+         * 
+         * @param accountSid The account_sid
+         * @param to The phone number to receive the message
+         * @param mediaUrl The media_url
+         * @param from The phone number that initiated the message
+         */
+        public MessageCreator(string accountSid, Twilio.Types.PhoneNumber to, List<Uri> mediaUrl, Twilio.Types.PhoneNumber from) {
+            this.accountSid = accountSid;
+            this.to = to;
             this.mediaUrl = mediaUrl;
+            this.from = from;
+        }
+    
+        /**
+         * Construct a new MessageCreator
+         * 
+         * @param accountSid The account_sid
+         * @param to The phone number to receive the message
+         * @param mediaUrl The media_url
+         * @param messagingServiceSid The messaging_service_sid
+         */
+        public MessageCreator(string accountSid, Twilio.Types.PhoneNumber to, List<Uri> mediaUrl, string messagingServiceSid) {
+            this.accountSid = accountSid;
+            this.to = to;
+            this.mediaUrl = mediaUrl;
+            this.messagingServiceSid = messagingServiceSid;
         }
     
         /**
@@ -83,6 +115,17 @@ namespace Twilio.Creators.Api.V2010.Account {
          */
         public MessageCreator setApplicationSid(string applicationSid) {
             this.applicationSid = applicationSid;
+            return this;
+        }
+    
+        /**
+         * The max_price
+         * 
+         * @param maxPrice The max_price
+         * @return this
+         */
+        public MessageCreator setMaxPrice(decimal? maxPrice) {
+            this.maxPrice = maxPrice;
             return this;
         }
     
@@ -177,10 +220,6 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("To", to.ToString());
             }
             
-            if (from != null) {
-                request.AddPostParam("From", from.ToString());
-            }
-            
             if (body != "") {
                 request.AddPostParam("Body", body);
             }
@@ -189,12 +228,24 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("MediaUrl", mediaUrl.ToString());
             }
             
+            if (from != null) {
+                request.AddPostParam("From", from.ToString());
+            }
+            
+            if (messagingServiceSid != "") {
+                request.AddPostParam("MessagingServiceSid", messagingServiceSid);
+            }
+            
             if (statusCallback != null) {
                 request.AddPostParam("StatusCallback", statusCallback.ToString());
             }
             
             if (applicationSid != "") {
                 request.AddPostParam("ApplicationSid", applicationSid);
+            }
+            
+            if (maxPrice != null) {
+                request.AddPostParam("MaxPrice", maxPrice.ToString());
             }
             
             if (provideFeedback != null) {

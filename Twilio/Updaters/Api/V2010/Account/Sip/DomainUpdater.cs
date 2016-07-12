@@ -15,7 +15,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
     public class DomainUpdater : Updater<DomainResource> {
         private string accountSid;
         private string sid;
-        private string apiVersion;
+        private string authType;
         private string friendlyName;
         private Twilio.Http.HttpMethod voiceFallbackMethod;
         private Uri voiceFallbackUrl;
@@ -36,13 +36,13 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
         }
     
         /**
-         * The api_version
+         * The auth_type
          * 
-         * @param apiVersion The api_version
+         * @param authType The auth_type
          * @return this
          */
-        public DomainUpdater setApiVersion(string apiVersion) {
-            this.apiVersion = apiVersion;
+        public DomainUpdater setAuthType(string authType) {
+            this.authType = authType;
             return this;
         }
     
@@ -229,8 +229,8 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (apiVersion != "") {
-                request.AddPostParam("ApiVersion", apiVersion);
+            if (authType != "") {
+                request.AddPostParam("AuthType", authType);
             }
             
             if (friendlyName != "") {

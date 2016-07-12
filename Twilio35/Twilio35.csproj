@@ -82,6 +82,8 @@
     <Compile Include="..\Twilio\Creators\Api\V2010\Account\IncomingPhoneNumber\TollFreeCreator.cs"><Link>Creators\Api\V2010\Account\IncomingPhoneNumber\TollFreeCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Api\V2010\Account\MessageCreator.cs"><Link>Creators\Api\V2010\Account\MessageCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Api\V2010\Account\Message\FeedbackCreator.cs"><Link>Creators\Api\V2010\Account\Message\FeedbackCreator.cs</Link></Compile>
+    <Compile Include="..\Twilio\Creators\Api\V2010\Account\NewKeyCreator.cs"><Link>Creators\Api\V2010\Account\NewKeyCreator.cs</Link></Compile>
+    <Compile Include="..\Twilio\Creators\Api\V2010\Account\NewSigningKeyCreator.cs"><Link>Creators\Api\V2010\Account\NewSigningKeyCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Api\V2010\Account\QueueCreator.cs"><Link>Creators\Api\V2010\Account\QueueCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Api\V2010\Account\Sip\CredentialListCreator.cs"><Link>Creators\Api\V2010\Account\Sip\CredentialListCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Creators\Api\V2010\Account\Sip\CredentialList\CredentialCreator.cs"><Link>Creators\Api\V2010\Account\Sip\CredentialList\CredentialCreator.cs</Link></Compile>
@@ -126,6 +128,7 @@
     <Compile Include="..\Twilio\Deleters\Api\V2010\Account\Call\RecordingDeleter.cs"><Link>Deleters\Api\V2010\Account\Call\RecordingDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Deleters\Api\V2010\Account\Conference\ParticipantDeleter.cs"><Link>Deleters\Api\V2010\Account\Conference\ParticipantDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Deleters\Api\V2010\Account\IncomingPhoneNumberDeleter.cs"><Link>Deleters\Api\V2010\Account\IncomingPhoneNumberDeleter.cs</Link></Compile>
+    <Compile Include="..\Twilio\Deleters\Api\V2010\Account\KeyDeleter.cs"><Link>Deleters\Api\V2010\Account\KeyDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Deleters\Api\V2010\Account\MessageDeleter.cs"><Link>Deleters\Api\V2010\Account\MessageDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Deleters\Api\V2010\Account\Message\MediaDeleter.cs"><Link>Deleters\Api\V2010\Account\Message\MediaDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Deleters\Api\V2010\Account\NotificationDeleter.cs"><Link>Deleters\Api\V2010\Account\NotificationDeleter.cs</Link></Compile>
@@ -133,6 +136,7 @@
     <Compile Include="..\Twilio\Deleters\Api\V2010\Account\QueueDeleter.cs"><Link>Deleters\Api\V2010\Account\QueueDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Deleters\Api\V2010\Account\RecordingDeleter.cs"><Link>Deleters\Api\V2010\Account\RecordingDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Deleters\Api\V2010\Account\Recording\TranscriptionDeleter.cs"><Link>Deleters\Api\V2010\Account\Recording\TranscriptionDeleter.cs</Link></Compile>
+    <Compile Include="..\Twilio\Deleters\Api\V2010\Account\SigningKeyDeleter.cs"><Link>Deleters\Api\V2010\Account\SigningKeyDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Deleters\Api\V2010\Account\Sip\CredentialListDeleter.cs"><Link>Deleters\Api\V2010\Account\Sip\CredentialListDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Deleters\Api\V2010\Account\Sip\CredentialList\CredentialDeleter.cs"><Link>Deleters\Api\V2010\Account\Sip\CredentialList\CredentialDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Deleters\Api\V2010\Account\Sip\DomainDeleter.cs"><Link>Deleters\Api\V2010\Account\Sip\DomainDeleter.cs</Link></Compile>
@@ -178,6 +182,7 @@
     <Compile Include="..\Twilio\Fetchers\Api\V2010\Account\Conference\ParticipantFetcher.cs"><Link>Fetchers\Api\V2010\Account\Conference\ParticipantFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Api\V2010\Account\ConnectAppFetcher.cs"><Link>Fetchers\Api\V2010\Account\ConnectAppFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Api\V2010\Account\IncomingPhoneNumberFetcher.cs"><Link>Fetchers\Api\V2010\Account\IncomingPhoneNumberFetcher.cs</Link></Compile>
+    <Compile Include="..\Twilio\Fetchers\Api\V2010\Account\KeyFetcher.cs"><Link>Fetchers\Api\V2010\Account\KeyFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Api\V2010\Account\MessageFetcher.cs"><Link>Fetchers\Api\V2010\Account\MessageFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Api\V2010\Account\Message\MediaFetcher.cs"><Link>Fetchers\Api\V2010\Account\Message\MediaFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Api\V2010\Account\NotificationFetcher.cs"><Link>Fetchers\Api\V2010\Account\NotificationFetcher.cs</Link></Compile>
@@ -187,6 +192,7 @@
     <Compile Include="..\Twilio\Fetchers\Api\V2010\Account\RecordingFetcher.cs"><Link>Fetchers\Api\V2010\Account\RecordingFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Api\V2010\Account\Recording\TranscriptionFetcher.cs"><Link>Fetchers\Api\V2010\Account\Recording\TranscriptionFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Api\V2010\Account\SandboxFetcher.cs"><Link>Fetchers\Api\V2010\Account\SandboxFetcher.cs</Link></Compile>
+    <Compile Include="..\Twilio\Fetchers\Api\V2010\Account\SigningKeyFetcher.cs"><Link>Fetchers\Api\V2010\Account\SigningKeyFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Api\V2010\Account\Sip\CredentialListFetcher.cs"><Link>Fetchers\Api\V2010\Account\Sip\CredentialListFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Api\V2010\Account\Sip\CredentialList\CredentialFetcher.cs"><Link>Fetchers\Api\V2010\Account\Sip\CredentialList\CredentialFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Api\V2010\Account\Sip\DomainFetcher.cs"><Link>Fetchers\Api\V2010\Account\Sip\DomainFetcher.cs</Link></Compile>
@@ -256,6 +262,7 @@
     <Compile Include="..\Twilio\Readers\Api\V2010\Account\IncomingPhoneNumber\LocalReader.cs"><Link>Readers\Api\V2010\Account\IncomingPhoneNumber\LocalReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Api\V2010\Account\IncomingPhoneNumber\MobileReader.cs"><Link>Readers\Api\V2010\Account\IncomingPhoneNumber\MobileReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Api\V2010\Account\IncomingPhoneNumber\TollFreeReader.cs"><Link>Readers\Api\V2010\Account\IncomingPhoneNumber\TollFreeReader.cs</Link></Compile>
+    <Compile Include="..\Twilio\Readers\Api\V2010\Account\KeyReader.cs"><Link>Readers\Api\V2010\Account\KeyReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Api\V2010\Account\MessageReader.cs"><Link>Readers\Api\V2010\Account\MessageReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Api\V2010\Account\Message\MediaReader.cs"><Link>Readers\Api\V2010\Account\Message\MediaReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Api\V2010\Account\NotificationReader.cs"><Link>Readers\Api\V2010\Account\NotificationReader.cs</Link></Compile>
@@ -264,6 +271,7 @@
     <Compile Include="..\Twilio\Readers\Api\V2010\Account\Queue\MemberReader.cs"><Link>Readers\Api\V2010\Account\Queue\MemberReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Api\V2010\Account\RecordingReader.cs"><Link>Readers\Api\V2010\Account\RecordingReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Api\V2010\Account\Recording\TranscriptionReader.cs"><Link>Readers\Api\V2010\Account\Recording\TranscriptionReader.cs</Link></Compile>
+    <Compile Include="..\Twilio\Readers\Api\V2010\Account\SigningKeyReader.cs"><Link>Readers\Api\V2010\Account\SigningKeyReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Api\V2010\Account\Sip\CredentialListReader.cs"><Link>Readers\Api\V2010\Account\Sip\CredentialListReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Api\V2010\Account\Sip\CredentialList\CredentialReader.cs"><Link>Readers\Api\V2010\Account\Sip\CredentialList\CredentialReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Api\V2010\Account\Sip\DomainReader.cs"><Link>Readers\Api\V2010\Account\Sip\DomainReader.cs</Link></Compile>
@@ -337,9 +345,12 @@
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\IncomingPhoneNumber\LocalResource.cs"><Link>Resources\Api\V2010\Account\IncomingPhoneNumber\LocalResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\IncomingPhoneNumber\MobileResource.cs"><Link>Resources\Api\V2010\Account\IncomingPhoneNumber\MobileResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\IncomingPhoneNumber\TollFreeResource.cs"><Link>Resources\Api\V2010\Account\IncomingPhoneNumber\TollFreeResource.cs</Link></Compile>
+    <Compile Include="..\Twilio\Resources\Api\V2010\Account\KeyResource.cs"><Link>Resources\Api\V2010\Account\KeyResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\MessageResource.cs"><Link>Resources\Api\V2010\Account\MessageResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\Message\FeedbackResource.cs"><Link>Resources\Api\V2010\Account\Message\FeedbackResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\Message\MediaResource.cs"><Link>Resources\Api\V2010\Account\Message\MediaResource.cs</Link></Compile>
+    <Compile Include="..\Twilio\Resources\Api\V2010\Account\NewKeyResource.cs"><Link>Resources\Api\V2010\Account\NewKeyResource.cs</Link></Compile>
+    <Compile Include="..\Twilio\Resources\Api\V2010\Account\NewSigningKeyResource.cs"><Link>Resources\Api\V2010\Account\NewSigningKeyResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\NotificationResource.cs"><Link>Resources\Api\V2010\Account\NotificationResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\OutgoingCallerIdResource.cs"><Link>Resources\Api\V2010\Account\OutgoingCallerIdResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\QueueResource.cs"><Link>Resources\Api\V2010\Account\QueueResource.cs</Link></Compile>
@@ -347,6 +358,7 @@
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\RecordingResource.cs"><Link>Resources\Api\V2010\Account\RecordingResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\Recording\TranscriptionResource.cs"><Link>Resources\Api\V2010\Account\Recording\TranscriptionResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\SandboxResource.cs"><Link>Resources\Api\V2010\Account\SandboxResource.cs</Link></Compile>
+    <Compile Include="..\Twilio\Resources\Api\V2010\Account\SigningKeyResource.cs"><Link>Resources\Api\V2010\Account\SigningKeyResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\Sip\CredentialListResource.cs"><Link>Resources\Api\V2010\Account\Sip\CredentialListResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\Sip\CredentialList\CredentialResource.cs"><Link>Resources\Api\V2010\Account\Sip\CredentialList\CredentialResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Api\V2010\Account\Sip\DomainResource.cs"><Link>Resources\Api\V2010\Account\Sip\DomainResource.cs</Link></Compile>
@@ -418,11 +430,13 @@
     <Compile Include="..\Twilio\Updaters\Api\V2010\Account\Conference\ParticipantUpdater.cs"><Link>Updaters\Api\V2010\Account\Conference\ParticipantUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Api\V2010\Account\ConnectAppUpdater.cs"><Link>Updaters\Api\V2010\Account\ConnectAppUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Api\V2010\Account\IncomingPhoneNumberUpdater.cs"><Link>Updaters\Api\V2010\Account\IncomingPhoneNumberUpdater.cs</Link></Compile>
+    <Compile Include="..\Twilio\Updaters\Api\V2010\Account\KeyUpdater.cs"><Link>Updaters\Api\V2010\Account\KeyUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Api\V2010\Account\MessageUpdater.cs"><Link>Updaters\Api\V2010\Account\MessageUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Api\V2010\Account\OutgoingCallerIdUpdater.cs"><Link>Updaters\Api\V2010\Account\OutgoingCallerIdUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Api\V2010\Account\QueueUpdater.cs"><Link>Updaters\Api\V2010\Account\QueueUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Api\V2010\Account\Queue\MemberUpdater.cs"><Link>Updaters\Api\V2010\Account\Queue\MemberUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Api\V2010\Account\SandboxUpdater.cs"><Link>Updaters\Api\V2010\Account\SandboxUpdater.cs</Link></Compile>
+    <Compile Include="..\Twilio\Updaters\Api\V2010\Account\SigningKeyUpdater.cs"><Link>Updaters\Api\V2010\Account\SigningKeyUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Api\V2010\Account\Sip\CredentialListUpdater.cs"><Link>Updaters\Api\V2010\Account\Sip\CredentialListUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Api\V2010\Account\Sip\CredentialList\CredentialUpdater.cs"><Link>Updaters\Api\V2010\Account\Sip\CredentialList\CredentialUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Api\V2010\Account\Sip\DomainUpdater.cs"><Link>Updaters\Api\V2010\Account\Sip\DomainUpdater.cs</Link></Compile>

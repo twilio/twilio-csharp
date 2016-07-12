@@ -86,12 +86,12 @@ namespace Twilio.Resources.Api.V2010.Account {
          * 
          * @param accountSid The account_sid
          * @param to The phone number to receive the message
-         * @param from The phone number that initiated the message
          * @param body The body
+         * @param from The phone number that initiated the message
          * @return MessageCreator capable of executing the create
          */
-        public static MessageCreator Create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body) {
-            return new MessageCreator(accountSid, to, from, body);
+        public static MessageCreator Create(string accountSid, Twilio.Types.PhoneNumber to, string body, Twilio.Types.PhoneNumber from) {
+            return new MessageCreator(accountSid, to, body, from);
         }
     
         /**
@@ -99,12 +99,38 @@ namespace Twilio.Resources.Api.V2010.Account {
          * 
          * @param accountSid The account_sid
          * @param to The phone number to receive the message
-         * @param from The phone number that initiated the message
-         * @param mediaUrl The media_url
+         * @param body The body
+         * @param messagingServiceSid The messaging_service_sid
          * @return MessageCreator capable of executing the create
          */
-        public static MessageCreator Create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl) {
-            return new MessageCreator(accountSid, to, from, mediaUrl);
+        public static MessageCreator Create(string accountSid, Twilio.Types.PhoneNumber to, string body, string messagingServiceSid) {
+            return new MessageCreator(accountSid, to, body, messagingServiceSid);
+        }
+    
+        /**
+         * Send a message from the account used to make the request
+         * 
+         * @param accountSid The account_sid
+         * @param to The phone number to receive the message
+         * @param mediaUrl The media_url
+         * @param from The phone number that initiated the message
+         * @return MessageCreator capable of executing the create
+         */
+        public static MessageCreator Create(string accountSid, Twilio.Types.PhoneNumber to, List<Uri> mediaUrl, Twilio.Types.PhoneNumber from) {
+            return new MessageCreator(accountSid, to, mediaUrl, from);
+        }
+    
+        /**
+         * Send a message from the account used to make the request
+         * 
+         * @param accountSid The account_sid
+         * @param to The phone number to receive the message
+         * @param mediaUrl The media_url
+         * @param messagingServiceSid The messaging_service_sid
+         * @return MessageCreator capable of executing the create
+         */
+        public static MessageCreator Create(string accountSid, Twilio.Types.PhoneNumber to, List<Uri> mediaUrl, string messagingServiceSid) {
+            return new MessageCreator(accountSid, to, mediaUrl, messagingServiceSid);
         }
     
         /**

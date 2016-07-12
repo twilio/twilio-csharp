@@ -6,12 +6,12 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Notifications.V1.Service;
+using Twilio.Resources.Api.V2010.Account;
 
-namespace Twilio.Tests.Notifications.V1.Service {
+namespace Twilio.Tests.Api.V2010.Account {
 
     [TestFixture]
-    public class NotificationTest : TwilioTest {
+    public class NewSigningKeyTest : TwilioTest {
         [SetUp]
         public void SetUp() {
         }
@@ -20,8 +20,8 @@ namespace Twilio.Tests.Notifications.V1.Service {
         public void TestCreateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(Twilio.Http.HttpMethod.POST,
-                                          Domains.NOTIFICATIONS,
-                                          "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications");
+                                          Domains.API,
+                                          "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SigningKeys.json");
             
             
             twilioRestClient.Request(request)
@@ -29,7 +29,7 @@ namespace Twilio.Tests.Notifications.V1.Service {
                                                   "null"));
             
             try {
-                NotificationResource.Create("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                NewSigningKeyResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -50,9 +50,9 @@ namespace Twilio.Tests.Notifications.V1.Service {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
-                                                  "{\"sid\": \"NOb8021351170b4e1286adaac3fdd6d082\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"IS699b53e02da45a1ba9d13b7d7d2766af\",\"date_created\": \"2016-03-24T23:42:28Z\",\"identities\": [\"jing\"],\"tags\": [],\"priority\": \"high\",\"ttl\": 2419200,\"title\": \"test\",\"body\": \"body\",\"sound\": null,\"action\": null,\"data\": null,\"apn\": null,\"gcm\": null,\"sms\": null,\"facebook_messenger\": null}"));
+                                                  "{\"sid\": \"SKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"foo\",\"date_created\": \"Mon, 13 Jun 2016 22:50:08 +0000\",\"date_updated\": \"Mon, 13 Jun 2016 22:50:08 +0000\",\"secret\": \"foobar\"}"));
             
-            var response = NotificationResource.Create("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            var response = NewSigningKeyResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
         }
     }
 }
