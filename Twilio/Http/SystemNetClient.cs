@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,24 +11,29 @@ namespace Twilio.Http
 		public SystemNetClient () {
 		}
 
-		public override Response MakeRequest(Request request) {
-			var httpClient = new System.Net.Http.HttpClient();
-            var httpRequest = new System.Net.Http.HttpRequestMessage();
-            httpRequest.Method = (System.Net.Http.HttpMethod) Enum.Parse(typeof(Twilio.Http.HttpMethod), request.GetMethod().ToString());
-            httpRequest.RequestUri = request.ConstructURL();
-            httpRequest.Properties.Add("Accept", "application/json");
-			httpRequest.Properties.Add("Accept-Encoding", "utf-8");
-			var authBytes = Authentication(request.GetUsername(), request.GetPassword());
-			httpRequest.Properties.Add("Authorization", "Basic" + authBytes);
-			httpRequest.Content = new ByteArrayContent(request.EncodePostParams());
-			var responseTask = httpClient.SendAsync(httpRequest);
-			responseTask.Wait();
-			var response = responseTask.Result;
-			var contentTask = response.Content.ReadAsStringAsync();
-			contentTask.Wait();
-			var content = contentTask.Result;
+        public override Response MakeRequest(Request request)
+        {
+            var task = this.MakeRequestAsync(request);
+            task.RunSynchronously();
+            return task.Result;
+        }
 
-			var statusCode = response.StatusCode;
+        public override async Task<Response> MakeRequestAsync(Request request)
+        {
+            var httpRequest = new System.Net.Http.HttpRequestMessage();
+            httpRequest.RequestUri = request.ConstructURL();
+            httpRequest.Method = (System.Net.Http.HttpMethod) Enum.Parse(typeof(Twilio.Http.HttpMethod), request.GetMethod().ToString());
+            httpRequest.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            httpRequest.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("utf-8"));
+            httpRequest.Headers.Authorization = new AuthenticationHeaderValue("Basic", Authentication(request.GetUsername(), request.GetPassword()));
+			httpRequest.Content = new ByteArrayContent(request.EncodePostParams());
+
+            var httpClient = new System.Net.Http.HttpClient();
+            var response = await httpClient.SendAsync(httpRequest);
+
+            var content = await response.Content.ReadAsStringAsync();
+
+            var statusCode = response.StatusCode;
 
 			return new Response(statusCode, content);
 		}

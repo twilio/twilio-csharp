@@ -12,7 +12,7 @@
   "buildOptions": {
     "define": [ "NET40" ],
     "compile": {
-      "exclude": "Http/WebRequestClient.*"
+      "exclude": "Http/WebRequestClient.cs"
     }
   }
 
