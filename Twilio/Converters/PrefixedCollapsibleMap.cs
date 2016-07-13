@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+//using System.Linq;
 
 namespace Twilio.Converters
 {
@@ -29,7 +29,7 @@ namespace Twilio.Converters
             Dictionary<string, object> inputDict,
             String prefix
         ) {
-            if (inputDict == null || inputDict.Count() == 0) {
+            if (inputDict == null || inputDict.Count == 0) {
                 return new Dictionary<string, string>();
             }
                 
