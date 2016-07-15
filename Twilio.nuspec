@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Twilio</id>
-    <version>5.0.0-rc5</version>
+    <version>5.0.0-rc6</version>
     <authors>Twilio</authors>
     <description>Twilio REST API helper library</description>
     <language>en-US</language>
@@ -12,9 +12,9 @@
     <tags>REST SMS voice telephony phone twilio twiml video wireless api</tags>
     <dependencies>
       <dependency id="Newtonsoft.Json" version="[9.0.1]" />
-      <dependency id="Microsoft.Net.Http" version="2.2.29" />
     </dependencies>
     <releaseNotes>
+      * 5.0.0-rc6 - Switched to proper NetStandard target
       * 5.0.0-rc5 - Add SMS parameter to Notification creation
       * 5.0.0-rc4 - Marketplace, Notify, Message Feedback updates
       * 5.0.0-rc3 - Support for .NET Core projects
@@ -23,8 +23,7 @@
     </releaseNotes>
   </metadata>
   <files>
-    <file src="Twilio/bin/Release/Twilio.dll" target="lib/netstandard1.4" />
-    <file src="Twilio/bin/Release/Twilio.dll" target="lib/net45" />
+    <file src="Twilio/bin/Release/netstandard1.1/Twilio.dll" target="lib/netstandard1.1" />
     <file src="Twilio35/bin/Release/Twilio35.dll" target="lib/net35" />
   </files>
 </package>

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+//using System.Linq;
 
 namespace Twilio.Http
 {
@@ -89,7 +89,8 @@ namespace Twilio.Http
 				return false;
 			Request other = (Request)obj;
 
-			return method.Equals(other.method) && uri.Equals(other.uri) && queryParams.All(other.queryParams.Contains) && postParams.All(other.postParams.Contains);
+            //TODO: Remove Linq dependency to get .NET 2.0 support
+            return method.Equals(other.method) && uri.Equals(other.uri);// && queryParams.All(other.queryParams.Contains) && postParams.All(other.postParams.Contains);
 		}
 			
 

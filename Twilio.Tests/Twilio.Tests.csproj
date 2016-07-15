@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -7,7 +7,8 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Twilio.Tests</RootNamespace>
     <AssemblyName>Twilio.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,12 +29,55 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Primitives.4.0.1\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.3.2.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
+    <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.AppContext.4.1.0\lib\net46\System.AppContext.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Console, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Console.4.0.0\lib\net46\System.Console.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Globalization.Calendars, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Globalization.Calendars.4.0.1\lib\net46\System.Globalization.Calendars.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.1.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.0.1\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.4.0.1\lib\net46\System.IO.FileSystem.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.0.1\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.1.0\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
       <Private>True</Private>
@@ -41,28 +85,142 @@
     <Reference Include="NSubstitute">
       <HintPath>..\packages\NSubstitute.1.10.0.0\lib\net45\NSubstitute.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http.Primitives">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    <Reference Include="System.Net.Sockets, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Sockets.4.1.0\lib\net46\System.Net.Sockets.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Net.Http.Extensions">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.2.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.0.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.0.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.1.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Twilio, Version=1.0.6038.671, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Twilio.1.0.0\lib\netstandard1.1\Twilio.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="**\*.cs" />
+    <Compile Include="Api\V2010\AccountresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\AddressresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Address\DependentphonenumberresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\ApplicationresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\AuthorizedconnectappresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\AvailablephonenumbercountryresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\AvailablePhoneNumberCountry\LocalresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\AvailablePhoneNumberCountry\MobileresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\AvailablePhoneNumberCountry\TollfreeresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\CallresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Call\FeedbackresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Call\FeedbacksummaryresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Call\NotificationresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Call\RecordingresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\ConferenceresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Conference\ParticipantresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\ConnectappresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\IncomingphonenumberresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\IncomingPhoneNumber\LocalresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\IncomingPhoneNumber\MobileresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\IncomingPhoneNumber\TollfreeresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\MessageresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Message\FeedbackResourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Message\MediaresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\NotificationresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\OutgoingcalleridresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\QueueresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Queue\MemberresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\RecordingresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Recording\TranscriptionresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\SandboxresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Sip\CredentiallistresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Sip\CredentialList\CredentialresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Sip\DomainresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Sip\Domain\CredentiallistmappingresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Sip\Domain\IpaccesscontrollistmappingresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Sip\IpaccesscontrollistresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Sip\IpAccessControlList\IpaddressresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Sms\ShortcoderesourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Sms\SmsmessageresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\TokenresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\TranscriptionresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Usage\RecordresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Usage\Record\AlltimeresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Usage\Record\DailyresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Usage\Record\LastmonthresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Usage\Record\MonthlyresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Usage\Record\ThismonthresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Usage\Record\TodayresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Usage\Record\YearlyresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Usage\Record\YesterdayresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\Usage\TriggerresourceTest.cs" />
+    <Compile Include="Api\V2010\Account\ValidationrequestresourceTest.cs" />
+    <Compile Include="Converters\MarshalConverterTest.cs" />
+    <Compile Include="Converters\PrefixedCollapsibleMapTest.cs" />
+    <Compile Include="Lookups\V1\PhonenumberresourceTest.cs" />
+    <Compile Include="Monitor\V1\AlertresourceTest.cs" />
+    <Compile Include="Monitor\V1\EventresourceTest.cs" />
+    <Compile Include="Notifications\V1\CredentialResourceTest.cs" />
+    <Compile Include="Notifications\V1\ServiceResourceTest.cs" />
+    <Compile Include="Notifications\V1\Service\BindingResourceTest.cs" />
+    <Compile Include="Notifications\V1\Service\NotificationResourceTest.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Preview\Wireless\CommandResourceTest.cs" />
+    <Compile Include="Preview\Wireless\DeviceResourceTest.cs" />
+    <Compile Include="Preview\Wireless\Device\UsageResourceTest.cs" />
+    <Compile Include="Preview\Wireless\RatePlanResourceTest.cs" />
+    <Compile Include="Pricing\V1\Messaging\CountryresourceTest.cs" />
+    <Compile Include="Pricing\V1\PhoneNumber\CountryresourceTest.cs" />
+    <Compile Include="Pricing\V1\Voice\CountryresourceTest.cs" />
+    <Compile Include="Pricing\V1\Voice\NumberresourceTest.cs" />
+    <Compile Include="Taskrouter\V1\WorkspaceresourceTest.cs" />
+    <Compile Include="Taskrouter\V1\Workspace\ActivityresourceTest.cs" />
+    <Compile Include="Taskrouter\V1\Workspace\EventresourceTest.cs" />
+    <Compile Include="Taskrouter\V1\Workspace\TaskqueueresourceTest.cs" />
+    <Compile Include="Taskrouter\V1\Workspace\TaskQueue\TaskqueuesstatisticsresourceTest.cs" />
+    <Compile Include="Taskrouter\V1\Workspace\TaskQueue\TaskqueuestatisticsresourceTest.cs" />
+    <Compile Include="Taskrouter\V1\Workspace\TaskresourceTest.cs" />
+    <Compile Include="Taskrouter\V1\Workspace\Task\ReservationresourceTest.cs" />
+    <Compile Include="Taskrouter\V1\Workspace\WorkerresourceTest.cs" />
+    <Compile Include="Taskrouter\V1\Workspace\Worker\WorkersstatisticsresourceTest.cs" />
+    <Compile Include="Taskrouter\V1\Workspace\Worker\WorkerstatisticsresourceTest.cs" />
+    <Compile Include="Taskrouter\V1\Workspace\WorkflowresourceTest.cs" />
+    <Compile Include="Taskrouter\V1\Workspace\Workflow\WorkflowstatisticsresourceTest.cs" />
+    <Compile Include="Taskrouter\V1\Workspace\WorkspacestatisticsresourceTest.cs" />
+    <Compile Include="Trunking\V1\TrunkresourceTest.cs" />
+    <Compile Include="Trunking\V1\Trunk\CredentiallistresourceTest.cs" />
+    <Compile Include="Trunking\V1\Trunk\IpaccesscontrollistresourceTest.cs" />
+    <Compile Include="Trunking\V1\Trunk\OriginationurlresourceTest.cs" />
+    <Compile Include="Trunking\V1\Trunk\PhonenumberresourceTest.cs" />
     <Compile Include="TwilioTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Converters\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Twilio\Twilio.csproj">
-      <Project>{12BED4CC-0E34-4B83-ACF0-F834EAFBE416}</Project>
-      <Name>Twilio</Name>
-    </ProjectReference>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
 </Project>
