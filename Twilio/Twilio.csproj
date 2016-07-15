@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -72,7 +72,7 @@
     <Compile Include="Resources\ResourceSet.cs" />
     <Compile Include="Resources\SidResource.cs" />
     <Compile Include="Twilio.cs" />
-    <!-- Yoyodyne Generated Artifacts -->
+<!-- Yoyodyne Generated Artifacts -->
     <Compile Include="Creators\Api\V2010\AccountCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\AddressCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\ApplicationCreator.cs" />
@@ -85,6 +85,8 @@
     <Compile Include="Creators\Api\V2010\Account\IncomingPhoneNumber\TollFreeCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\MessageCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\Message\FeedbackCreator.cs" />
+    <Compile Include="Creators\Api\V2010\Account\NewKeyCreator.cs" />
+    <Compile Include="Creators\Api\V2010\Account\NewSigningKeyCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\QueueCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\Sip\CredentialListCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\Sip\CredentialList\CredentialCreator.cs" />
@@ -129,6 +131,7 @@
     <Compile Include="Deleters\Api\V2010\Account\Call\RecordingDeleter.cs" />
     <Compile Include="Deleters\Api\V2010\Account\Conference\ParticipantDeleter.cs" />
     <Compile Include="Deleters\Api\V2010\Account\IncomingPhoneNumberDeleter.cs" />
+    <Compile Include="Deleters\Api\V2010\Account\KeyDeleter.cs" />
     <Compile Include="Deleters\Api\V2010\Account\MessageDeleter.cs" />
     <Compile Include="Deleters\Api\V2010\Account\Message\MediaDeleter.cs" />
     <Compile Include="Deleters\Api\V2010\Account\NotificationDeleter.cs" />
@@ -136,6 +139,7 @@
     <Compile Include="Deleters\Api\V2010\Account\QueueDeleter.cs" />
     <Compile Include="Deleters\Api\V2010\Account\RecordingDeleter.cs" />
     <Compile Include="Deleters\Api\V2010\Account\Recording\TranscriptionDeleter.cs" />
+    <Compile Include="Deleters\Api\V2010\Account\SigningKeyDeleter.cs" />
     <Compile Include="Deleters\Api\V2010\Account\Sip\CredentialListDeleter.cs" />
     <Compile Include="Deleters\Api\V2010\Account\Sip\CredentialList\CredentialDeleter.cs" />
     <Compile Include="Deleters\Api\V2010\Account\Sip\DomainDeleter.cs" />
@@ -181,6 +185,7 @@
     <Compile Include="Fetchers\Api\V2010\Account\Conference\ParticipantFetcher.cs" />
     <Compile Include="Fetchers\Api\V2010\Account\ConnectAppFetcher.cs" />
     <Compile Include="Fetchers\Api\V2010\Account\IncomingPhoneNumberFetcher.cs" />
+    <Compile Include="Fetchers\Api\V2010\Account\KeyFetcher.cs" />
     <Compile Include="Fetchers\Api\V2010\Account\MessageFetcher.cs" />
     <Compile Include="Fetchers\Api\V2010\Account\Message\MediaFetcher.cs" />
     <Compile Include="Fetchers\Api\V2010\Account\NotificationFetcher.cs" />
@@ -190,6 +195,7 @@
     <Compile Include="Fetchers\Api\V2010\Account\RecordingFetcher.cs" />
     <Compile Include="Fetchers\Api\V2010\Account\Recording\TranscriptionFetcher.cs" />
     <Compile Include="Fetchers\Api\V2010\Account\SandboxFetcher.cs" />
+    <Compile Include="Fetchers\Api\V2010\Account\SigningKeyFetcher.cs" />
     <Compile Include="Fetchers\Api\V2010\Account\Sip\CredentialListFetcher.cs" />
     <Compile Include="Fetchers\Api\V2010\Account\Sip\CredentialList\CredentialFetcher.cs" />
     <Compile Include="Fetchers\Api\V2010\Account\Sip\DomainFetcher.cs" />
@@ -259,6 +265,7 @@
     <Compile Include="Readers\Api\V2010\Account\IncomingPhoneNumber\LocalReader.cs" />
     <Compile Include="Readers\Api\V2010\Account\IncomingPhoneNumber\MobileReader.cs" />
     <Compile Include="Readers\Api\V2010\Account\IncomingPhoneNumber\TollFreeReader.cs" />
+    <Compile Include="Readers\Api\V2010\Account\KeyReader.cs" />
     <Compile Include="Readers\Api\V2010\Account\MessageReader.cs" />
     <Compile Include="Readers\Api\V2010\Account\Message\MediaReader.cs" />
     <Compile Include="Readers\Api\V2010\Account\NotificationReader.cs" />
@@ -267,6 +274,7 @@
     <Compile Include="Readers\Api\V2010\Account\Queue\MemberReader.cs" />
     <Compile Include="Readers\Api\V2010\Account\RecordingReader.cs" />
     <Compile Include="Readers\Api\V2010\Account\Recording\TranscriptionReader.cs" />
+    <Compile Include="Readers\Api\V2010\Account\SigningKeyReader.cs" />
     <Compile Include="Readers\Api\V2010\Account\Sip\CredentialListReader.cs" />
     <Compile Include="Readers\Api\V2010\Account\Sip\CredentialList\CredentialReader.cs" />
     <Compile Include="Readers\Api\V2010\Account\Sip\DomainReader.cs" />
@@ -340,9 +348,12 @@
     <Compile Include="Resources\Api\V2010\Account\IncomingPhoneNumber\LocalResource.cs" />
     <Compile Include="Resources\Api\V2010\Account\IncomingPhoneNumber\MobileResource.cs" />
     <Compile Include="Resources\Api\V2010\Account\IncomingPhoneNumber\TollFreeResource.cs" />
+    <Compile Include="Resources\Api\V2010\Account\KeyResource.cs" />
     <Compile Include="Resources\Api\V2010\Account\MessageResource.cs" />
     <Compile Include="Resources\Api\V2010\Account\Message\FeedbackResource.cs" />
     <Compile Include="Resources\Api\V2010\Account\Message\MediaResource.cs" />
+    <Compile Include="Resources\Api\V2010\Account\NewKeyResource.cs" />
+    <Compile Include="Resources\Api\V2010\Account\NewSigningKeyResource.cs" />
     <Compile Include="Resources\Api\V2010\Account\NotificationResource.cs" />
     <Compile Include="Resources\Api\V2010\Account\OutgoingCallerIdResource.cs" />
     <Compile Include="Resources\Api\V2010\Account\QueueResource.cs" />
@@ -350,6 +361,7 @@
     <Compile Include="Resources\Api\V2010\Account\RecordingResource.cs" />
     <Compile Include="Resources\Api\V2010\Account\Recording\TranscriptionResource.cs" />
     <Compile Include="Resources\Api\V2010\Account\SandboxResource.cs" />
+    <Compile Include="Resources\Api\V2010\Account\SigningKeyResource.cs" />
     <Compile Include="Resources\Api\V2010\Account\Sip\CredentialListResource.cs" />
     <Compile Include="Resources\Api\V2010\Account\Sip\CredentialList\CredentialResource.cs" />
     <Compile Include="Resources\Api\V2010\Account\Sip\DomainResource.cs" />
@@ -421,11 +433,13 @@
     <Compile Include="Updaters\Api\V2010\Account\Conference\ParticipantUpdater.cs" />
     <Compile Include="Updaters\Api\V2010\Account\ConnectAppUpdater.cs" />
     <Compile Include="Updaters\Api\V2010\Account\IncomingPhoneNumberUpdater.cs" />
+    <Compile Include="Updaters\Api\V2010\Account\KeyUpdater.cs" />
     <Compile Include="Updaters\Api\V2010\Account\MessageUpdater.cs" />
     <Compile Include="Updaters\Api\V2010\Account\OutgoingCallerIdUpdater.cs" />
     <Compile Include="Updaters\Api\V2010\Account\QueueUpdater.cs" />
     <Compile Include="Updaters\Api\V2010\Account\Queue\MemberUpdater.cs" />
     <Compile Include="Updaters\Api\V2010\Account\SandboxUpdater.cs" />
+    <Compile Include="Updaters\Api\V2010\Account\SigningKeyUpdater.cs" />
     <Compile Include="Updaters\Api\V2010\Account\Sip\CredentialListUpdater.cs" />
     <Compile Include="Updaters\Api\V2010\Account\Sip\CredentialList\CredentialUpdater.cs" />
     <Compile Include="Updaters\Api\V2010\Account\Sip\DomainUpdater.cs" />
@@ -458,6 +472,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>

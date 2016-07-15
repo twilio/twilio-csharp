@@ -27,6 +27,8 @@ namespace Twilio.Creators.Api.V2010.Account {
         private string ifMachine;
         private int? timeout;
         private bool? record;
+        private string sipAuthUsername;
+        private string sipAuthPassword;
     
         /**
          * Construct a new CallCreator
@@ -198,6 +200,28 @@ namespace Twilio.Creators.Api.V2010.Account {
             return this;
         }
     
+        /**
+         * The sip_auth_username
+         * 
+         * @param sipAuthUsername The sip_auth_username
+         * @return this
+         */
+        public CallCreator setSipAuthUsername(string sipAuthUsername) {
+            this.sipAuthUsername = sipAuthUsername;
+            return this;
+        }
+    
+        /**
+         * The sip_auth_password
+         * 
+         * @param sipAuthPassword The sip_auth_password
+         * @return this
+         */
+        public CallCreator setSipAuthPassword(string sipAuthPassword) {
+            this.sipAuthPassword = sipAuthPassword;
+            return this;
+        }
+    
         #if NET40
         /**
          * Make the request to the Twilio API to perform the create
@@ -324,6 +348,14 @@ namespace Twilio.Creators.Api.V2010.Account {
             
             if (record != null) {
                 request.AddPostParam("Record", record.ToString());
+            }
+            
+            if (sipAuthUsername != "") {
+                request.AddPostParam("SipAuthUsername", sipAuthUsername);
+            }
+            
+            if (sipAuthPassword != "") {
+                request.AddPostParam("SipAuthPassword", sipAuthPassword);
             }
         }
     }

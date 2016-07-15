@@ -96,6 +96,8 @@ namespace Twilio.Resources.Notifications.V1.Service {
         private readonly Object apn;
         [JsonProperty("gcm")]
         private readonly Object gcm;
+        [JsonProperty("sms")]
+        private readonly Object sms;
         [JsonProperty("facebook_messenger")]
         private readonly Object facebookMessenger;
     
@@ -133,6 +135,8 @@ namespace Twilio.Resources.Notifications.V1.Service {
                                      Object apn, 
                                      [JsonProperty("gcm")]
                                      Object gcm, 
+                                     [JsonProperty("sms")]
+                                     Object sms, 
                                      [JsonProperty("facebook_messenger")]
                                      Object facebookMessenger) {
             this.sid = sid;
@@ -150,6 +154,7 @@ namespace Twilio.Resources.Notifications.V1.Service {
             this.data = data;
             this.apn = apn;
             this.gcm = gcm;
+            this.sms = sms;
             this.facebookMessenger = facebookMessenger;
         }
     
@@ -256,6 +261,13 @@ namespace Twilio.Resources.Notifications.V1.Service {
          */
         public Object GetGcm() {
             return this.gcm;
+        }
+    
+        /**
+         * @return The sms
+         */
+        public Object GetSms() {
+            return this.sms;
         }
     
         /**
