@@ -160,6 +160,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace {
         public override Page<WorkerResource> NextPage(string nextPageUri, ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
+                Domains.TASKROUTER,
                 nextPageUri
             );
             
