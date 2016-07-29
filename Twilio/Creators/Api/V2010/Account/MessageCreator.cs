@@ -220,7 +220,7 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("To", to.ToString());
             }
             
-            if (body != "") {
+            if (string.IsNullOrEmpty(body)) {
                 request.AddPostParam("Body", body);
             }
             
@@ -232,7 +232,7 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("From", from.ToString());
             }
             
-            if (messagingServiceSid != "") {
+            if (string.IsNullOrEmpty(messagingServiceSid)) {
                 request.AddPostParam("MessagingServiceSid", messagingServiceSid);
             }
             
@@ -240,7 +240,7 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("StatusCallback", statusCallback.ToString());
             }
             
-            if (applicationSid != "") {
+            if (string.IsNullOrEmpty(applicationSid)) {
                 request.AddPostParam("ApplicationSid", applicationSid);
             }
             

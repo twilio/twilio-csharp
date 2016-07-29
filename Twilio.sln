@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
+# Visual Studio 2012
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio", "Twilio\Twilio.csproj", "{12BED4CC-0E34-4B83-ACF0-F834EAFBE416}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Tests", "Twilio.Tests\Twilio.Tests.csproj", "{65458612-8B1E-492A-999F-53C04DE31F91}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio35", "Twilio35\Twilio35.csproj", "{6014F9D7-52AC-44A7-8C60-466735525F63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Tests", "Twilio.Tests\Twilio.Tests.csproj", "{65458612-8B1E-492A-999F-53C04DE31F91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

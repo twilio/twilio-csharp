@@ -204,11 +204,11 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != "") {
+            if (string.IsNullOrEmpty(friendlyName)) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (apiVersion != "") {
+            if (string.IsNullOrEmpty(apiVersion)) {
                 request.AddPostParam("ApiVersion", apiVersion);
             }
             

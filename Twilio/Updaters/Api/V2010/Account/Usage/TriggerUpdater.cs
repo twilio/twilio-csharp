@@ -158,7 +158,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Usage {
                 request.AddPostParam("CallbackUrl", callbackUrl.ToString());
             }
             
-            if (friendlyName != "") {
+            if (string.IsNullOrEmpty(friendlyName)) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

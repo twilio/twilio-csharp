@@ -22,13 +22,31 @@ namespace Twilio.Creators.IpMessaging.V1.Service {
          * Construct a new ChannelCreator
          * 
          * @param serviceSid The service_sid
-         * @param friendlyName The friendly_name
-         * @param uniqueName The unique_name
          */
-        public ChannelCreator(string serviceSid, string friendlyName, string uniqueName) {
+        public ChannelCreator(string serviceSid) {
             this.serviceSid = serviceSid;
+        }
+    
+        /**
+         * The friendly_name
+         * 
+         * @param friendlyName The friendly_name
+         * @return this
+         */
+        public ChannelCreator setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
+            return this;
+        }
+    
+        /**
+         * The unique_name
+         * 
+         * @param uniqueName The unique_name
+         * @return this
+         */
+        public ChannelCreator setUniqueName(string uniqueName) {
             this.uniqueName = uniqueName;
+            return this;
         }
     
         /**
@@ -129,11 +147,11 @@ namespace Twilio.Creators.IpMessaging.V1.Service {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != "") {
+            if (string.IsNullOrEmpty(friendlyName)) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (uniqueName != "") {
+            if (string.IsNullOrEmpty(uniqueName)) {
                 request.AddPostParam("UniqueName", uniqueName);
             }
             

@@ -149,7 +149,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (attributes != "") {
+            if (string.IsNullOrEmpty(attributes)) {
                 request.AddPostParam("Attributes", attributes);
             }
             
@@ -157,7 +157,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
                 request.AddPostParam("AssignmentStatus", assignmentStatus.ToString());
             }
             
-            if (reason != "") {
+            if (string.IsNullOrEmpty(reason)) {
                 request.AddPostParam("Reason", reason);
             }
             

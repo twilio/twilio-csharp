@@ -1,6 +1,7 @@
 using NSubstitute;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using Twilio;
 using Twilio.Clients;
 using Twilio.Converters;
@@ -21,15 +22,13 @@ namespace Twilio.Tests.Preview.Wireless {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.PREVIEW,
-                                          "/wireless/Devices/sid");
-            
-            
+                                          "/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
             
             try {
-                DeviceResource.Fetch("sid").Execute(twilioRestClient);
+                DeviceResource.Fetch("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -40,7 +39,7 @@ namespace Twilio.Tests.Preview.Wireless {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }
@@ -51,7 +50,6 @@ namespace Twilio.Tests.Preview.Wireless {
             Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.PREVIEW,
                                           "/wireless/Devices");
-            
             request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -69,7 +67,7 @@ namespace Twilio.Tests.Preview.Wireless {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }
@@ -81,7 +79,6 @@ namespace Twilio.Tests.Preview.Wireless {
                                           Domains.PREVIEW,
                                           "/wireless/Devices");
             request.AddPostParam("RatePlan", Serialize("ratePlan"));
-            
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -98,7 +95,7 @@ namespace Twilio.Tests.Preview.Wireless {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }
@@ -108,15 +105,13 @@ namespace Twilio.Tests.Preview.Wireless {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(Twilio.Http.HttpMethod.POST,
                                           Domains.PREVIEW,
-                                          "/wireless/Devices/sid");
-            
-            
+                                          "/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
             
             try {
-                DeviceResource.Update("sid").Execute(twilioRestClient);
+                DeviceResource.Update("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -127,7 +122,7 @@ namespace Twilio.Tests.Preview.Wireless {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }

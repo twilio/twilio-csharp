@@ -42,13 +42,22 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
          * @param workspaceSid The workspace_sid
          * @param taskSid The task_sid
          * @param sid The sid
-         * @param reservationStatus The reservation_status
          */
-        public ReservationUpdater(string workspaceSid, string taskSid, string sid, string reservationStatus) {
+        public ReservationUpdater(string workspaceSid, string taskSid, string sid) {
             this.workspaceSid = workspaceSid;
             this.taskSid = taskSid;
             this.sid = sid;
+        }
+    
+        /**
+         * The reservation_status
+         * 
+         * @param reservationStatus The reservation_status
+         * @return this
+         */
+        public ReservationUpdater setReservationStatus(string reservationStatus) {
             this.reservationStatus = reservationStatus;
+            return this;
         }
     
         /**
@@ -365,27 +374,27 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (reservationStatus != "") {
+            if (string.IsNullOrEmpty(reservationStatus)) {
                 request.AddPostParam("ReservationStatus", reservationStatus);
             }
             
-            if (workerActivitySid != "") {
+            if (string.IsNullOrEmpty(workerActivitySid)) {
                 request.AddPostParam("WorkerActivitySid", workerActivitySid);
             }
             
-            if (instruction != "") {
+            if (string.IsNullOrEmpty(instruction)) {
                 request.AddPostParam("Instruction", instruction);
             }
             
-            if (dequeuePostWorkActivitySid != "") {
+            if (string.IsNullOrEmpty(dequeuePostWorkActivitySid)) {
                 request.AddPostParam("DequeuePostWorkActivitySid", dequeuePostWorkActivitySid);
             }
             
-            if (dequeueFrom != "") {
+            if (string.IsNullOrEmpty(dequeueFrom)) {
                 request.AddPostParam("DequeueFrom", dequeueFrom);
             }
             
-            if (dequeueRecord != "") {
+            if (string.IsNullOrEmpty(dequeueRecord)) {
                 request.AddPostParam("DequeueRecord", dequeueRecord);
             }
             
@@ -393,7 +402,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
                 request.AddPostParam("DequeueTimeout", dequeueTimeout.ToString());
             }
             
-            if (dequeueTo != "") {
+            if (string.IsNullOrEmpty(dequeueTo)) {
                 request.AddPostParam("DequeueTo", dequeueTo);
             }
             
@@ -401,11 +410,11 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
                 request.AddPostParam("DequeueStatusCallbackUrl", dequeueStatusCallbackUrl.ToString());
             }
             
-            if (callFrom != "") {
+            if (string.IsNullOrEmpty(callFrom)) {
                 request.AddPostParam("CallFrom", callFrom);
             }
             
-            if (callRecord != "") {
+            if (string.IsNullOrEmpty(callRecord)) {
                 request.AddPostParam("CallRecord", callRecord);
             }
             
@@ -413,7 +422,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
                 request.AddPostParam("CallTimeout", callTimeout.ToString());
             }
             
-            if (callTo != "") {
+            if (string.IsNullOrEmpty(callTo)) {
                 request.AddPostParam("CallTo", callTo);
             }
             
@@ -429,7 +438,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
                 request.AddPostParam("CallAccept", callAccept.ToString());
             }
             
-            if (redirectCallSid != "") {
+            if (string.IsNullOrEmpty(redirectCallSid)) {
                 request.AddPostParam("RedirectCallSid", redirectCallSid);
             }
             

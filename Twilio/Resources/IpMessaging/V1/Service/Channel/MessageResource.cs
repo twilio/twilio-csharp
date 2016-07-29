@@ -3,11 +3,13 @@ using System;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators.IpMessaging.V1.Service.Channel;
+using Twilio.Deleters.IpMessaging.V1.Service.Channel;
 using Twilio.Exceptions;
 using Twilio.Fetchers.IpMessaging.V1.Service.Channel;
 using Twilio.Http;
 using Twilio.Readers.IpMessaging.V1.Service.Channel;
 using Twilio.Resources;
+using Twilio.Updaters.IpMessaging.V1.Service.Channel;
 
 namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
 
@@ -45,6 +47,31 @@ namespace Twilio.Resources.IpMessaging.V1.Service.Channel {
          */
         public static MessageReader Read(string serviceSid, string channelSid) {
             return new MessageReader(serviceSid, channelSid);
+        }
+    
+        /**
+         * delete
+         * 
+         * @param serviceSid The service_sid
+         * @param channelSid The channel_sid
+         * @param sid The sid
+         * @return MessageDeleter capable of executing the delete
+         */
+        public static MessageDeleter Delete(string serviceSid, string channelSid, string sid) {
+            return new MessageDeleter(serviceSid, channelSid, sid);
+        }
+    
+        /**
+         * update
+         * 
+         * @param serviceSid The service_sid
+         * @param channelSid The channel_sid
+         * @param sid The sid
+         * @param body The body
+         * @return MessageUpdater capable of executing the update
+         */
+        public static MessageUpdater Update(string serviceSid, string channelSid, string sid, string body) {
+            return new MessageUpdater(serviceSid, channelSid, sid, body);
         }
     
         /**

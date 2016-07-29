@@ -195,19 +195,19 @@ namespace Twilio.Updaters.IpMessaging.V1 {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != "") {
+            if (string.IsNullOrEmpty(friendlyName)) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (defaultServiceRoleSid != "") {
+            if (string.IsNullOrEmpty(defaultServiceRoleSid)) {
                 request.AddPostParam("DefaultServiceRoleSid", defaultServiceRoleSid);
             }
             
-            if (defaultChannelRoleSid != "") {
+            if (string.IsNullOrEmpty(defaultChannelRoleSid)) {
                 request.AddPostParam("DefaultChannelRoleSid", defaultChannelRoleSid);
             }
             
-            if (defaultChannelCreatorRoleSid != "") {
+            if (string.IsNullOrEmpty(defaultChannelCreatorRoleSid)) {
                 request.AddPostParam("DefaultChannelCreatorRoleSid", defaultChannelCreatorRoleSid);
             }
             

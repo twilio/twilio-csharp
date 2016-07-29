@@ -254,7 +254,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
                 request.AddPostParam("AuthorizeRedirectUrl", authorizeRedirectUrl.ToString());
             }
             
-            if (companyName != "") {
+            if (string.IsNullOrEmpty(companyName)) {
                 request.AddPostParam("CompanyName", companyName);
             }
             
@@ -266,11 +266,11 @@ namespace Twilio.Updaters.Api.V2010.Account {
                 request.AddPostParam("DeauthorizeCallbackUrl", deauthorizeCallbackUrl.ToString());
             }
             
-            if (description != "") {
+            if (string.IsNullOrEmpty(description)) {
                 request.AddPostParam("Description", description);
             }
             
-            if (friendlyName != "") {
+            if (string.IsNullOrEmpty(friendlyName)) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             

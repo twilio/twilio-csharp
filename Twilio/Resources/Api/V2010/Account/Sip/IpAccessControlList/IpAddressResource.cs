@@ -56,12 +56,10 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.IpAccessControlList {
          * @param accountSid The account_sid
          * @param ipAccessControlListSid The ip_access_control_list_sid
          * @param sid The sid
-         * @param ipAddress The ip_address
-         * @param friendlyName The friendly_name
          * @return IpAddressUpdater capable of executing the update
          */
-        public static IpAddressUpdater Update(string accountSid, string ipAccessControlListSid, string sid, string ipAddress, string friendlyName) {
-            return new IpAddressUpdater(accountSid, ipAccessControlListSid, sid, ipAddress, friendlyName);
+        public static IpAddressUpdater Update(string accountSid, string ipAccessControlListSid, string sid) {
+            return new IpAddressUpdater(accountSid, ipAccessControlListSid, sid);
         }
     
         /**

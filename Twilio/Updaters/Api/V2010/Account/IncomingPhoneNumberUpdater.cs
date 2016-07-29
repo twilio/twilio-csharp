@@ -375,19 +375,19 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (accountSid != "") {
+            if (string.IsNullOrEmpty(accountSid)) {
                 request.AddPostParam("AccountSid", accountSid);
             }
             
-            if (apiVersion != "") {
+            if (string.IsNullOrEmpty(apiVersion)) {
                 request.AddPostParam("ApiVersion", apiVersion);
             }
             
-            if (friendlyName != "") {
+            if (string.IsNullOrEmpty(friendlyName)) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (smsApplicationSid != "") {
+            if (string.IsNullOrEmpty(smsApplicationSid)) {
                 request.AddPostParam("SmsApplicationSid", smsApplicationSid);
             }
             
@@ -415,7 +415,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
                 request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
             
-            if (voiceApplicationSid != "") {
+            if (string.IsNullOrEmpty(voiceApplicationSid)) {
                 request.AddPostParam("VoiceApplicationSid", voiceApplicationSid);
             }
             

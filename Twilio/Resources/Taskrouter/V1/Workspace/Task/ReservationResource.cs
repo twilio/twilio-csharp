@@ -41,11 +41,10 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace.Task {
          * @param workspaceSid The workspace_sid
          * @param taskSid The task_sid
          * @param sid The sid
-         * @param reservationStatus The reservation_status
          * @return ReservationUpdater capable of executing the update
          */
-        public static ReservationUpdater Update(string workspaceSid, string taskSid, string sid, string reservationStatus) {
-            return new ReservationUpdater(workspaceSid, taskSid, sid, reservationStatus);
+        public static ReservationUpdater Update(string workspaceSid, string taskSid, string sid) {
+            return new ReservationUpdater(workspaceSid, taskSid, sid);
         }
     
         /**

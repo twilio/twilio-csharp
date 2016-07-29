@@ -146,11 +146,11 @@ namespace Twilio.Creators.Notifications.V1.Service {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (endpoint != "") {
+            if (string.IsNullOrEmpty(endpoint)) {
                 request.AddPostParam("Endpoint", endpoint);
             }
             
-            if (identity != "") {
+            if (string.IsNullOrEmpty(identity)) {
                 request.AddPostParam("Identity", identity);
             }
             
@@ -158,7 +158,7 @@ namespace Twilio.Creators.Notifications.V1.Service {
                 request.AddPostParam("BindingType", bindingType.ToString());
             }
             
-            if (address != "") {
+            if (string.IsNullOrEmpty(address)) {
                 request.AddPostParam("Address", address);
             }
             
@@ -166,7 +166,7 @@ namespace Twilio.Creators.Notifications.V1.Service {
                 request.AddPostParam("Tag", tag.ToString());
             }
             
-            if (notificationProtocolVersion != "") {
+            if (string.IsNullOrEmpty(notificationProtocolVersion)) {
                 request.AddPostParam("NotificationProtocolVersion", notificationProtocolVersion);
             }
         }

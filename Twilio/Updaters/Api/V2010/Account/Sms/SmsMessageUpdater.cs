@@ -113,7 +113,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (body != "") {
+            if (string.IsNullOrEmpty(body)) {
                 request.AddPostParam("Body", body);
             }
         }

@@ -1,3 +1,4 @@
+using System;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -14,18 +15,51 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
         private string serviceSid;
         private string sid;
         private string roleSid;
+        private Object attributes;
+        private string friendlyName;
     
         /**
          * Construct a new UserUpdater
          * 
          * @param serviceSid The service_sid
          * @param sid The sid
-         * @param roleSid The role_sid
          */
-        public UserUpdater(string serviceSid, string sid, string roleSid) {
+        public UserUpdater(string serviceSid, string sid) {
             this.serviceSid = serviceSid;
             this.sid = sid;
+        }
+    
+        /**
+         * The role_sid
+         * 
+         * @param roleSid The role_sid
+         * @return this
+         */
+        public UserUpdater setRoleSid(string roleSid) {
             this.roleSid = roleSid;
+            return this;
+        }
+    
+        /**
+         * The attributes
+         * 
+         * @param attributes The attributes
+         * @return this
+         */
+        public UserUpdater setAttributes(Object attributes) {
+            this.attributes = attributes;
+            return this;
+        }
+    
+        /**
+         * The friendly_name
+         * 
+         * @param friendlyName The friendly_name
+         * @return this
+         */
+        public UserUpdater setFriendlyName(string friendlyName) {
+            this.friendlyName = friendlyName;
+            return this;
         }
     
         #if NET40
@@ -104,8 +138,16 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (roleSid != "") {
+            if (string.IsNullOrEmpty(roleSid)) {
                 request.AddPostParam("RoleSid", roleSid);
+            }
+            
+            if (attributes != null) {
+                request.AddPostParam("Attributes", attributes.ToString());
+            }
+            
+            if (string.IsNullOrEmpty(friendlyName)) {
+                request.AddPostParam("FriendlyName", friendlyName);
             }
         }
     }

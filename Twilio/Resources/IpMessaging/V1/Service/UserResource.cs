@@ -63,11 +63,10 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * 
          * @param serviceSid The service_sid
          * @param sid The sid
-         * @param roleSid The role_sid
          * @return UserUpdater capable of executing the update
          */
-        public static UserUpdater Update(string serviceSid, string sid, string roleSid) {
-            return new UserUpdater(serviceSid, sid, roleSid);
+        public static UserUpdater Update(string serviceSid, string sid) {
+            return new UserUpdater(serviceSid, sid);
         }
     
         /**

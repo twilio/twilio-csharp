@@ -235,15 +235,15 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (domainName != "") {
+            if (string.IsNullOrEmpty(domainName)) {
                 request.AddPostParam("DomainName", domainName);
             }
             
-            if (friendlyName != "") {
+            if (string.IsNullOrEmpty(friendlyName)) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (authType != "") {
+            if (string.IsNullOrEmpty(authType)) {
                 request.AddPostParam("AuthType", authType);
             }
             

@@ -126,7 +126,7 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
                 request.AddPostParam("Enabled", enabled.ToString());
             }
             
-            if (friendlyName != "") {
+            if (string.IsNullOrEmpty(friendlyName)) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             

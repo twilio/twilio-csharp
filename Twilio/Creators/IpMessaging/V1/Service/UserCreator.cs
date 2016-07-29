@@ -104,11 +104,11 @@ namespace Twilio.Creators.IpMessaging.V1.Service {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (identity != "") {
+            if (string.IsNullOrEmpty(identity)) {
                 request.AddPostParam("Identity", identity);
             }
             
-            if (roleSid != "") {
+            if (string.IsNullOrEmpty(roleSid)) {
                 request.AddPostParam("RoleSid", roleSid);
             }
         }

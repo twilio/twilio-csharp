@@ -310,7 +310,7 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("Url", url.ToString());
             }
             
-            if (applicationSid != "") {
+            if (string.IsNullOrEmpty(applicationSid)) {
                 request.AddPostParam("ApplicationSid", applicationSid);
             }
             
@@ -334,11 +334,11 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
             
-            if (sendDigits != "") {
+            if (string.IsNullOrEmpty(sendDigits)) {
                 request.AddPostParam("SendDigits", sendDigits);
             }
             
-            if (ifMachine != "") {
+            if (string.IsNullOrEmpty(ifMachine)) {
                 request.AddPostParam("IfMachine", ifMachine);
             }
             
@@ -350,11 +350,11 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("Record", record.ToString());
             }
             
-            if (sipAuthUsername != "") {
+            if (string.IsNullOrEmpty(sipAuthUsername)) {
                 request.AddPostParam("SipAuthUsername", sipAuthUsername);
             }
             
-            if (sipAuthPassword != "") {
+            if (string.IsNullOrEmpty(sipAuthPassword)) {
                 request.AddPostParam("SipAuthPassword", sipAuthPassword);
             }
         }

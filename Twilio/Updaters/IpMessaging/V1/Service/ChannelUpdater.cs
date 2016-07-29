@@ -150,11 +150,11 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != "") {
+            if (string.IsNullOrEmpty(friendlyName)) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (uniqueName != "") {
+            if (string.IsNullOrEmpty(uniqueName)) {
                 request.AddPostParam("UniqueName", uniqueName);
             }
             

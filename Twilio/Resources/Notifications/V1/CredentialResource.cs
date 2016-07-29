@@ -55,12 +55,11 @@ namespace Twilio.Resources.Notifications.V1 {
         /**
          * create
          * 
-         * @param friendlyName The friendly_name
          * @param type The type
          * @return CredentialCreator capable of executing the create
          */
-        public static CredentialCreator Create(string friendlyName, CredentialResource.PushService type) {
-            return new CredentialCreator(friendlyName, type);
+        public static CredentialCreator Create(CredentialResource.PushService type) {
+            return new CredentialCreator(type);
         }
     
         /**
@@ -77,12 +76,10 @@ namespace Twilio.Resources.Notifications.V1 {
          * update
          * 
          * @param sid The sid
-         * @param friendlyName The friendly_name
-         * @param type The type
          * @return CredentialUpdater capable of executing the update
          */
-        public static CredentialUpdater Update(string sid, string friendlyName, CredentialResource.PushService type) {
-            return new CredentialUpdater(sid, friendlyName, type);
+        public static CredentialUpdater Update(string sid) {
+            return new CredentialUpdater(sid);
         }
     
         /**

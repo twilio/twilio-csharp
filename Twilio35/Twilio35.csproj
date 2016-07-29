@@ -151,6 +151,7 @@
     <Compile Include="..\Twilio\Deleters\IpMessaging\V1\ServiceDeleter.cs"><Link>Deleters\IpMessaging\V1\ServiceDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Deleters\IpMessaging\V1\Service\ChannelDeleter.cs"><Link>Deleters\IpMessaging\V1\Service\ChannelDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Deleters\IpMessaging\V1\Service\Channel\MemberDeleter.cs"><Link>Deleters\IpMessaging\V1\Service\Channel\MemberDeleter.cs</Link></Compile>
+    <Compile Include="..\Twilio\Deleters\IpMessaging\V1\Service\Channel\MessageDeleter.cs"><Link>Deleters\IpMessaging\V1\Service\Channel\MessageDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Deleters\IpMessaging\V1\Service\RoleDeleter.cs"><Link>Deleters\IpMessaging\V1\Service\RoleDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Deleters\IpMessaging\V1\Service\UserDeleter.cs"><Link>Deleters\IpMessaging\V1\Service\UserDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Deleters\Monitor\V1\AlertDeleter.cs"><Link>Deleters\Monitor\V1\AlertDeleter.cs</Link></Compile>
@@ -448,6 +449,7 @@
     <Compile Include="..\Twilio\Updaters\IpMessaging\V1\CredentialUpdater.cs"><Link>Updaters\IpMessaging\V1\CredentialUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\IpMessaging\V1\ServiceUpdater.cs"><Link>Updaters\IpMessaging\V1\ServiceUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\IpMessaging\V1\Service\ChannelUpdater.cs"><Link>Updaters\IpMessaging\V1\Service\ChannelUpdater.cs</Link></Compile>
+    <Compile Include="..\Twilio\Updaters\IpMessaging\V1\Service\Channel\MessageUpdater.cs"><Link>Updaters\IpMessaging\V1\Service\Channel\MessageUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\IpMessaging\V1\Service\RoleUpdater.cs"><Link>Updaters\IpMessaging\V1\Service\RoleUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\IpMessaging\V1\Service\UserUpdater.cs"><Link>Updaters\IpMessaging\V1\Service\UserUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Notifications\V1\CredentialUpdater.cs"><Link>Updaters\Notifications\V1\CredentialUpdater.cs</Link></Compile>

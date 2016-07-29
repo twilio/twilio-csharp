@@ -161,19 +161,19 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != "") {
+            if (string.IsNullOrEmpty(friendlyName)) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (targetWorkers != "") {
+            if (string.IsNullOrEmpty(targetWorkers)) {
                 request.AddPostParam("TargetWorkers", targetWorkers);
             }
             
-            if (reservationActivitySid != "") {
+            if (string.IsNullOrEmpty(reservationActivitySid)) {
                 request.AddPostParam("ReservationActivitySid", reservationActivitySid);
             }
             
-            if (assignmentActivitySid != "") {
+            if (string.IsNullOrEmpty(assignmentActivitySid)) {
                 request.AddPostParam("AssignmentActivitySid", assignmentActivitySid);
             }
             

@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 namespace Twilio.Creators.Notifications.V1 {
 
     public class CredentialCreator : Creator<CredentialResource> {
-        private string friendlyName;
         private CredentialResource.PushService type;
+        private string friendlyName;
         private string certificate;
         private string privateKey;
         private bool? sandbox;
@@ -21,12 +21,21 @@ namespace Twilio.Creators.Notifications.V1 {
         /**
          * Construct a new CredentialCreator
          * 
-         * @param friendlyName The friendly_name
          * @param type The type
          */
-        public CredentialCreator(string friendlyName, CredentialResource.PushService type) {
-            this.friendlyName = friendlyName;
+        public CredentialCreator(CredentialResource.PushService type) {
             this.type = type;
+        }
+    
+        /**
+         * The friendly_name
+         * 
+         * @param friendlyName The friendly_name
+         * @return this
+         */
+        public CredentialCreator setFriendlyName(string friendlyName) {
+            this.friendlyName = friendlyName;
+            return this;
         }
     
         /**
@@ -149,19 +158,19 @@ namespace Twilio.Creators.Notifications.V1 {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != "") {
-                request.AddPostParam("FriendlyName", friendlyName);
-            }
-            
             if (type != null) {
                 request.AddPostParam("Type", type.ToString());
             }
             
-            if (certificate != "") {
+            if (string.IsNullOrEmpty(friendlyName)) {
+                request.AddPostParam("FriendlyName", friendlyName);
+            }
+            
+            if (string.IsNullOrEmpty(certificate)) {
                 request.AddPostParam("Certificate", certificate);
             }
             
-            if (privateKey != "") {
+            if (string.IsNullOrEmpty(privateKey)) {
                 request.AddPostParam("PrivateKey", privateKey);
             }
             
@@ -169,7 +178,7 @@ namespace Twilio.Creators.Notifications.V1 {
                 request.AddPostParam("Sandbox", sandbox.ToString());
             }
             
-            if (apiKey != "") {
+            if (string.IsNullOrEmpty(apiKey)) {
                 request.AddPostParam("ApiKey", apiKey);
             }
         }

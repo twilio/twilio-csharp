@@ -137,15 +137,15 @@ namespace Twilio.Creators.Preview.Wireless {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (device != "") {
+            if (string.IsNullOrEmpty(device)) {
                 request.AddPostParam("Device", device);
             }
             
-            if (command != "") {
+            if (string.IsNullOrEmpty(command)) {
                 request.AddPostParam("Command", command);
             }
             
-            if (callbackMethod != "") {
+            if (string.IsNullOrEmpty(callbackMethod)) {
                 request.AddPostParam("CallbackMethod", callbackMethod);
             }
             
