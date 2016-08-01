@@ -31,6 +31,26 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a AddressCreator to execute create.
+         * 
+         * @param customerName The customer_name
+         * @param street The street
+         * @param city The city
+         * @param region The region
+         * @param postalCode The postal_code
+         * @param isoCountry The iso_country
+         * @return AddressCreator capable of executing the create
+         */
+        public static AddressCreator Create(string customerName, 
+                                            string street, 
+                                            string city, 
+                                            string region, 
+                                            string postalCode, 
+                                            string isoCountry) {
+            return new AddressCreator(customerName, street, city, region, postalCode, isoCountry);
+        }
+    
+        /**
          * delete
          * 
          * @param accountSid The account_sid
@@ -39,6 +59,16 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static AddressDeleter Delete(string accountSid, string sid) {
             return new AddressDeleter(accountSid, sid);
+        }
+    
+        /**
+         * Create a AddressDeleter to execute delete.
+         * 
+         * @param sid The sid
+         * @return AddressDeleter capable of executing the delete
+         */
+        public static AddressDeleter Delete(string sid) {
+            return new AddressDeleter(sid);
         }
     
         /**
@@ -53,6 +83,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a AddressFetcher to execute fetch.
+         * 
+         * @param sid The sid
+         * @return AddressFetcher capable of executing the fetch
+         */
+        public static AddressFetcher Fetch(string sid) {
+            return new AddressFetcher(sid);
+        }
+    
+        /**
          * update
          * 
          * @param accountSid The account_sid
@@ -64,6 +104,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a AddressUpdater to execute update.
+         * 
+         * @param sid The sid
+         * @return AddressUpdater capable of executing the update
+         */
+        public static AddressUpdater Update(string sid) {
+            return new AddressUpdater(sid);
+        }
+    
+        /**
          * read
          * 
          * @param accountSid The account_sid
@@ -71,6 +121,15 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static AddressReader Read(string accountSid) {
             return new AddressReader(accountSid);
+        }
+    
+        /**
+         * Create a AddressReader to execute read.
+         * 
+         * @return AddressReader capable of executing the read
+         */
+        public static AddressReader Read() {
+            return new AddressReader();
         }
     
         /**

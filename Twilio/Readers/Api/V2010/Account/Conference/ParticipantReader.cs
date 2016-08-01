@@ -58,7 +58,7 @@ namespace Twilio.Readers.Api.V2010.Account.Conference {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Conferences/" + this.conferenceSid + "/Participants.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants.json"
             );
             
             AddQueryParams(request);
@@ -80,7 +80,7 @@ namespace Twilio.Readers.Api.V2010.Account.Conference {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Conferences/" + this.conferenceSid + "/Participants.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants.json"
             );
             
             AddQueryParams(request);

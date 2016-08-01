@@ -40,7 +40,7 @@ namespace Twilio.Readers.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Transcriptions.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Transcriptions.json"
             );
             
             AddQueryParams(request);
@@ -62,7 +62,7 @@ namespace Twilio.Readers.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Transcriptions.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Transcriptions.json"
             );
             
             AddQueryParams(request);

@@ -25,6 +25,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a SigningKeyFetcher to execute fetch.
+         * 
+         * @param sid The sid
+         * @return SigningKeyFetcher capable of executing the fetch
+         */
+        public static SigningKeyFetcher Fetch(string sid) {
+            return new SigningKeyFetcher(sid);
+        }
+    
+        /**
          * update
          * 
          * @param accountSid The account_sid
@@ -33,6 +43,16 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static SigningKeyUpdater Update(string accountSid, string sid) {
             return new SigningKeyUpdater(accountSid, sid);
+        }
+    
+        /**
+         * Create a SigningKeyUpdater to execute update.
+         * 
+         * @param sid The sid
+         * @return SigningKeyUpdater capable of executing the update
+         */
+        public static SigningKeyUpdater Update(string sid) {
+            return new SigningKeyUpdater(sid);
         }
     
         /**
@@ -47,6 +67,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a SigningKeyDeleter to execute delete.
+         * 
+         * @param sid The sid
+         * @return SigningKeyDeleter capable of executing the delete
+         */
+        public static SigningKeyDeleter Delete(string sid) {
+            return new SigningKeyDeleter(sid);
+        }
+    
+        /**
          * read
          * 
          * @param accountSid The account_sid
@@ -54,6 +84,15 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static SigningKeyReader Read(string accountSid) {
             return new SigningKeyReader(accountSid);
+        }
+    
+        /**
+         * Create a SigningKeyReader to execute read.
+         * 
+         * @return SigningKeyReader capable of executing the read
+         */
+        public static SigningKeyReader Read() {
+            return new SigningKeyReader();
         }
     
         /**

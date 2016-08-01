@@ -26,6 +26,18 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
         }
     
         /**
+         * Create a ParticipantFetcher to execute fetch.
+         * 
+         * @param conferenceSid The string that uniquely identifies this conference
+         * @param callSid The call_sid
+         * @return ParticipantFetcher capable of executing the fetch
+         */
+        public static ParticipantFetcher Fetch(string conferenceSid, 
+                                               string callSid) {
+            return new ParticipantFetcher(conferenceSid, callSid);
+        }
+    
+        /**
          * Update the properties of this participant
          * 
          * @param accountSid The account_sid
@@ -36,6 +48,20 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
          */
         public static ParticipantUpdater Update(string accountSid, string conferenceSid, string callSid, bool? muted) {
             return new ParticipantUpdater(accountSid, conferenceSid, callSid, muted);
+        }
+    
+        /**
+         * Create a ParticipantUpdater to execute update.
+         * 
+         * @param conferenceSid The string that uniquely identifies this conference
+         * @param callSid The call_sid
+         * @param muted Indicates if the participant should be muted
+         * @return ParticipantUpdater capable of executing the update
+         */
+        public static ParticipantUpdater Update(string conferenceSid, 
+                                                string callSid, 
+                                                bool? muted) {
+            return new ParticipantUpdater(conferenceSid, callSid, muted);
         }
     
         /**
@@ -51,6 +77,18 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
         }
     
         /**
+         * Create a ParticipantDeleter to execute delete.
+         * 
+         * @param conferenceSid The string that uniquely identifies this conference
+         * @param callSid The call_sid
+         * @return ParticipantDeleter capable of executing the delete
+         */
+        public static ParticipantDeleter Delete(string conferenceSid, 
+                                                string callSid) {
+            return new ParticipantDeleter(conferenceSid, callSid);
+        }
+    
+        /**
          * Retrieve a list of participants belonging to the account used to make the
          * request
          * 
@@ -60,6 +98,16 @@ namespace Twilio.Resources.Api.V2010.Account.Conference {
          */
         public static ParticipantReader Read(string accountSid, string conferenceSid) {
             return new ParticipantReader(accountSid, conferenceSid);
+        }
+    
+        /**
+         * Create a ParticipantReader to execute read.
+         * 
+         * @param conferenceSid The string that uniquely identifies this conference
+         * @return ParticipantReader capable of executing the read
+         */
+        public static ParticipantReader Read(string conferenceSid) {
+            return new ParticipantReader(conferenceSid);
         }
     
         /**

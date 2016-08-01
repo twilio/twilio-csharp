@@ -63,7 +63,7 @@ namespace Twilio.Updaters.Api.V2010 {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.sid != null ? this.sid : client.GetAccountSid()) + ".json"
             );
             
             addPostParams(request);
@@ -98,7 +98,7 @@ namespace Twilio.Updaters.Api.V2010 {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.sid != null ? this.sid : client.GetAccountSid()) + ".json"
             );
             
             addPostParams(request);

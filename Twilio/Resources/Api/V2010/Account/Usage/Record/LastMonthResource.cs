@@ -139,6 +139,15 @@ namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
         }
     
         /**
+         * Create a LastMonthReader to execute read.
+         * 
+         * @return LastMonthReader capable of executing the read
+         */
+        public static LastMonthReader Read() {
+            return new LastMonthReader();
+        }
+    
+        /**
          * Converts a JSON string into a LastMonthResource object
          * 
          * @param json Raw JSON string

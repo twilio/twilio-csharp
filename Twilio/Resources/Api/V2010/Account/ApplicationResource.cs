@@ -26,6 +26,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a ApplicationCreator to execute create.
+         * 
+         * @param friendlyName Human readable description of this resource
+         * @return ApplicationCreator capable of executing the create
+         */
+        public static ApplicationCreator Create(string friendlyName) {
+            return new ApplicationCreator(friendlyName);
+        }
+    
+        /**
          * Delete the application by the specified application sid
          * 
          * @param accountSid The account_sid
@@ -34,6 +44,16 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static ApplicationDeleter Delete(string accountSid, string sid) {
             return new ApplicationDeleter(accountSid, sid);
+        }
+    
+        /**
+         * Create a ApplicationDeleter to execute delete.
+         * 
+         * @param sid The application sid to delete
+         * @return ApplicationDeleter capable of executing the delete
+         */
+        public static ApplicationDeleter Delete(string sid) {
+            return new ApplicationDeleter(sid);
         }
     
         /**
@@ -48,6 +68,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a ApplicationFetcher to execute fetch.
+         * 
+         * @param sid Fetch by unique Application Sid
+         * @return ApplicationFetcher capable of executing the fetch
+         */
+        public static ApplicationFetcher Fetch(string sid) {
+            return new ApplicationFetcher(sid);
+        }
+    
+        /**
          * Retrieve a list of applications representing an application within the
          * requesting account
          * 
@@ -59,6 +89,15 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a ApplicationReader to execute read.
+         * 
+         * @return ApplicationReader capable of executing the read
+         */
+        public static ApplicationReader Read() {
+            return new ApplicationReader();
+        }
+    
+        /**
          * Updates the application's properties
          * 
          * @param accountSid The account_sid
@@ -67,6 +106,16 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static ApplicationUpdater Update(string accountSid, string sid) {
             return new ApplicationUpdater(accountSid, sid);
+        }
+    
+        /**
+         * Create a ApplicationUpdater to execute update.
+         * 
+         * @param sid The sid
+         * @return ApplicationUpdater capable of executing the update
+         */
+        public static ApplicationUpdater Update(string sid) {
+            return new ApplicationUpdater(sid);
         }
     
         /**

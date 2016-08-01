@@ -58,6 +58,18 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         }
     
         /**
+         * Create a FeedbackSummaryCreator to execute create.
+         * 
+         * @param startDate The start_date
+         * @param endDate The end_date
+         * @return FeedbackSummaryCreator capable of executing the create
+         */
+        public static FeedbackSummaryCreator Create(DateTime? startDate, 
+                                                    DateTime? endDate) {
+            return new FeedbackSummaryCreator(startDate, endDate);
+        }
+    
+        /**
          * fetch
          * 
          * @param accountSid The account_sid
@@ -69,6 +81,16 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         }
     
         /**
+         * Create a FeedbackSummaryFetcher to execute fetch.
+         * 
+         * @param sid The sid
+         * @return FeedbackSummaryFetcher capable of executing the fetch
+         */
+        public static FeedbackSummaryFetcher Fetch(string sid) {
+            return new FeedbackSummaryFetcher(sid);
+        }
+    
+        /**
          * delete
          * 
          * @param accountSid The account_sid
@@ -77,6 +99,16 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          */
         public static FeedbackSummaryDeleter Delete(string accountSid, string sid) {
             return new FeedbackSummaryDeleter(accountSid, sid);
+        }
+    
+        /**
+         * Create a FeedbackSummaryDeleter to execute delete.
+         * 
+         * @param sid The sid
+         * @return FeedbackSummaryDeleter capable of executing the delete
+         */
+        public static FeedbackSummaryDeleter Delete(string sid) {
+            return new FeedbackSummaryDeleter(sid);
         }
     
         /**

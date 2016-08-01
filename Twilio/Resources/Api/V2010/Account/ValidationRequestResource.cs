@@ -22,6 +22,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a ValidationRequestCreator to execute create.
+         * 
+         * @param phoneNumber The phone_number
+         * @return ValidationRequestCreator capable of executing the create
+         */
+        public static ValidationRequestCreator Create(Twilio.Types.PhoneNumber phoneNumber) {
+            return new ValidationRequestCreator(phoneNumber);
+        }
+    
+        /**
          * Converts a JSON string into a ValidationRequestResource object
          * 
          * @param json Raw JSON string

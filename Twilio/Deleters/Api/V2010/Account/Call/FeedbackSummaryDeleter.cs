@@ -44,7 +44,7 @@ namespace Twilio.Deleters.Api.V2010.Account.Call {
             Request request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/FeedbackSummary/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Calls/FeedbackSummary/" + this.sid + ".json"
             );
             
             Response response = await client.RequestAsync(request);
@@ -77,7 +77,7 @@ namespace Twilio.Deleters.Api.V2010.Account.Call {
             Request request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/FeedbackSummary/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Calls/FeedbackSummary/" + this.sid + ".json"
             );
             
             Response response = client.Request(request);

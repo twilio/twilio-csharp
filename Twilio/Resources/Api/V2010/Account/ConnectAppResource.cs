@@ -54,6 +54,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a ConnectAppFetcher to execute fetch.
+         * 
+         * @param sid Fetch by unique connect-app Sid
+         * @return ConnectAppFetcher capable of executing the fetch
+         */
+        public static ConnectAppFetcher Fetch(string sid) {
+            return new ConnectAppFetcher(sid);
+        }
+    
+        /**
          * Update a connect-app with the specified parameters
          * 
          * @param accountSid The account_sid
@@ -65,6 +75,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a ConnectAppUpdater to execute update.
+         * 
+         * @param sid The sid
+         * @return ConnectAppUpdater capable of executing the update
+         */
+        public static ConnectAppUpdater Update(string sid) {
+            return new ConnectAppUpdater(sid);
+        }
+    
+        /**
          * Retrieve a list of connect-apps belonging to the account used to make the
          * request
          * 
@@ -73,6 +93,15 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static ConnectAppReader Read(string accountSid) {
             return new ConnectAppReader(accountSid);
+        }
+    
+        /**
+         * Create a ConnectAppReader to execute read.
+         * 
+         * @return ConnectAppReader capable of executing the read
+         */
+        public static ConnectAppReader Read() {
+            return new ConnectAppReader();
         }
     
         /**

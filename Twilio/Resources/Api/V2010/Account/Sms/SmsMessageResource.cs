@@ -92,6 +92,20 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         }
     
         /**
+         * Create a SmsMessageCreator to execute create.
+         * 
+         * @param to The to
+         * @param from The from
+         * @param body The body
+         * @return SmsMessageCreator capable of executing the create
+         */
+        public static SmsMessageCreator Create(Twilio.Types.PhoneNumber to, 
+                                               Twilio.Types.PhoneNumber from, 
+                                               string body) {
+            return new SmsMessageCreator(to, from, body);
+        }
+    
+        /**
          * create
          * 
          * @param accountSid The account_sid
@@ -102,6 +116,20 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          */
         public static SmsMessageCreator Create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl) {
             return new SmsMessageCreator(accountSid, to, from, mediaUrl);
+        }
+    
+        /**
+         * Create a SmsMessageCreator to execute create.
+         * 
+         * @param to The to
+         * @param from The from
+         * @param mediaUrl The media_url
+         * @return SmsMessageCreator capable of executing the create
+         */
+        public static SmsMessageCreator Create(Twilio.Types.PhoneNumber to, 
+                                               Twilio.Types.PhoneNumber from, 
+                                               List<Uri> mediaUrl) {
+            return new SmsMessageCreator(to, from, mediaUrl);
         }
     
         /**
@@ -116,6 +144,16 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         }
     
         /**
+         * Create a SmsMessageDeleter to execute delete.
+         * 
+         * @param sid The sid
+         * @return SmsMessageDeleter capable of executing the delete
+         */
+        public static SmsMessageDeleter Delete(string sid) {
+            return new SmsMessageDeleter(sid);
+        }
+    
+        /**
          * fetch
          * 
          * @param accountSid The account_sid
@@ -124,6 +162,16 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          */
         public static SmsMessageFetcher Fetch(string accountSid, string sid) {
             return new SmsMessageFetcher(accountSid, sid);
+        }
+    
+        /**
+         * Create a SmsMessageFetcher to execute fetch.
+         * 
+         * @param sid The sid
+         * @return SmsMessageFetcher capable of executing the fetch
+         */
+        public static SmsMessageFetcher Fetch(string sid) {
+            return new SmsMessageFetcher(sid);
         }
     
         /**
@@ -137,6 +185,15 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
         }
     
         /**
+         * Create a SmsMessageReader to execute read.
+         * 
+         * @return SmsMessageReader capable of executing the read
+         */
+        public static SmsMessageReader Read() {
+            return new SmsMessageReader();
+        }
+    
+        /**
          * update
          * 
          * @param accountSid The account_sid
@@ -145,6 +202,16 @@ namespace Twilio.Resources.Api.V2010.Account.Sms {
          */
         public static SmsMessageUpdater Update(string accountSid, string sid) {
             return new SmsMessageUpdater(accountSid, sid);
+        }
+    
+        /**
+         * Create a SmsMessageUpdater to execute update.
+         * 
+         * @param sid The sid
+         * @return SmsMessageUpdater capable of executing the update
+         */
+        public static SmsMessageUpdater Update(string sid) {
+            return new SmsMessageUpdater(sid);
         }
     
         /**

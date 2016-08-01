@@ -46,7 +46,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.Domain {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings.json"
             );
             
             AddQueryParams(request);
@@ -68,7 +68,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.Domain {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings.json"
             );
             
             AddQueryParams(request);

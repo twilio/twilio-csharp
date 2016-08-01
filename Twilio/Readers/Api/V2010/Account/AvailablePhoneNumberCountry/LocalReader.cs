@@ -154,7 +154,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/AvailablePhoneNumbers/" + this.countryCode + "/Local.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/AvailablePhoneNumbers/" + this.countryCode + "/Local.json"
             );
             
             AddQueryParams(request);
@@ -176,7 +176,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/AvailablePhoneNumbers/" + this.countryCode + "/Local.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/AvailablePhoneNumbers/" + this.countryCode + "/Local.json"
             );
             
             AddQueryParams(request);

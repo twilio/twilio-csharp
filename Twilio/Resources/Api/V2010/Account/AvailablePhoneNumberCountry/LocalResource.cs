@@ -23,6 +23,16 @@ namespace Twilio.Resources.Api.V2010.Account.AvailablePhoneNumberCountry {
         }
     
         /**
+         * Create a LocalReader to execute read.
+         * 
+         * @param countryCode The country_code
+         * @return LocalReader capable of executing the read
+         */
+        public static LocalReader Read(string countryCode) {
+            return new LocalReader(countryCode);
+        }
+    
+        /**
          * Converts a JSON string into a LocalResource object
          * 
          * @param json Raw JSON string

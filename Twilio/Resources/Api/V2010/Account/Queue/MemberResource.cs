@@ -25,6 +25,18 @@ namespace Twilio.Resources.Api.V2010.Account.Queue {
         }
     
         /**
+         * Create a MemberFetcher to execute fetch.
+         * 
+         * @param queueSid The Queue in which to find the members
+         * @param callSid The call_sid
+         * @return MemberFetcher capable of executing the fetch
+         */
+        public static MemberFetcher Fetch(string queueSid, 
+                                          string callSid) {
+            return new MemberFetcher(queueSid, callSid);
+        }
+    
+        /**
          * Dequeue a member from a queue and have the member's call begin executing the
          * TwiML document at that URL
          * 
@@ -40,6 +52,22 @@ namespace Twilio.Resources.Api.V2010.Account.Queue {
         }
     
         /**
+         * Create a MemberUpdater to execute update.
+         * 
+         * @param queueSid The Queue in which to find the members
+         * @param callSid The call_sid
+         * @param url The url
+         * @param method The method
+         * @return MemberUpdater capable of executing the update
+         */
+        public static MemberUpdater Update(string queueSid, 
+                                           string callSid, 
+                                           Uri url, 
+                                           Twilio.Http.HttpMethod method) {
+            return new MemberUpdater(queueSid, callSid, url, method);
+        }
+    
+        /**
          * Retrieve a list of members in the queue
          * 
          * @param accountSid The account_sid
@@ -48,6 +76,16 @@ namespace Twilio.Resources.Api.V2010.Account.Queue {
          */
         public static MemberReader Read(string accountSid, string queueSid) {
             return new MemberReader(accountSid, queueSid);
+        }
+    
+        /**
+         * Create a MemberReader to execute read.
+         * 
+         * @param queueSid The Queue in which to find members
+         * @return MemberReader capable of executing the read
+         */
+        public static MemberReader Read(string queueSid) {
+            return new MemberReader(queueSid);
         }
     
         /**

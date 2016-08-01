@@ -328,7 +328,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.ownerAccountSid + "/IncomingPhoneNumbers.json"
+                "/2010-04-01/Accounts/" + (this.ownerAccountSid != null ? this.ownerAccountSid : client.GetAccountSid()) + "/IncomingPhoneNumbers.json"
             );
             
             addPostParams(request);
@@ -363,7 +363,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.ownerAccountSid + "/IncomingPhoneNumbers.json"
+                "/2010-04-01/Accounts/" + (this.ownerAccountSid != null ? this.ownerAccountSid : client.GetAccountSid()) + "/IncomingPhoneNumbers.json"
             );
             
             addPostParams(request);

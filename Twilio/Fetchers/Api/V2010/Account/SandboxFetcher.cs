@@ -39,7 +39,7 @@ namespace Twilio.Fetchers.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Sandbox.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Sandbox.json"
             );
             
             Response response = await client.RequestAsync(request);
@@ -73,7 +73,7 @@ namespace Twilio.Fetchers.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Sandbox.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Sandbox.json"
             );
             
             Response response = client.Request(request);

@@ -26,6 +26,18 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
         }
     
         /**
+         * Create a CredentialListMappingCreator to execute create.
+         * 
+         * @param domainSid The domain_sid
+         * @param credentialListSid The credential_list_sid
+         * @return CredentialListMappingCreator capable of executing the create
+         */
+        public static CredentialListMappingCreator Create(string domainSid, 
+                                                          string credentialListSid) {
+            return new CredentialListMappingCreator(domainSid, credentialListSid);
+        }
+    
+        /**
          * read
          * 
          * @param accountSid The account_sid
@@ -34,6 +46,16 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
          */
         public static CredentialListMappingReader Read(string accountSid, string domainSid) {
             return new CredentialListMappingReader(accountSid, domainSid);
+        }
+    
+        /**
+         * Create a CredentialListMappingReader to execute read.
+         * 
+         * @param domainSid The domain_sid
+         * @return CredentialListMappingReader capable of executing the read
+         */
+        public static CredentialListMappingReader Read(string domainSid) {
+            return new CredentialListMappingReader(domainSid);
         }
     
         /**
@@ -49,6 +71,18 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
         }
     
         /**
+         * Create a CredentialListMappingFetcher to execute fetch.
+         * 
+         * @param domainSid The domain_sid
+         * @param sid The sid
+         * @return CredentialListMappingFetcher capable of executing the fetch
+         */
+        public static CredentialListMappingFetcher Fetch(string domainSid, 
+                                                         string sid) {
+            return new CredentialListMappingFetcher(domainSid, sid);
+        }
+    
+        /**
          * delete
          * 
          * @param accountSid The account_sid
@@ -58,6 +92,18 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
          */
         public static CredentialListMappingDeleter Delete(string accountSid, string domainSid, string sid) {
             return new CredentialListMappingDeleter(accountSid, domainSid, sid);
+        }
+    
+        /**
+         * Create a CredentialListMappingDeleter to execute delete.
+         * 
+         * @param domainSid The domain_sid
+         * @param sid The sid
+         * @return CredentialListMappingDeleter capable of executing the delete
+         */
+        public static CredentialListMappingDeleter Delete(string domainSid, 
+                                                          string sid) {
+            return new CredentialListMappingDeleter(domainSid, sid);
         }
     
         /**

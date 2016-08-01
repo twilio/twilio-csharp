@@ -25,6 +25,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a OutgoingCallerIdFetcher to execute fetch.
+         * 
+         * @param sid Fetch by unique outgoing-caller-id Sid
+         * @return OutgoingCallerIdFetcher capable of executing the fetch
+         */
+        public static OutgoingCallerIdFetcher Fetch(string sid) {
+            return new OutgoingCallerIdFetcher(sid);
+        }
+    
+        /**
          * Updates the caller-id
          * 
          * @param accountSid The account_sid
@@ -33,6 +43,16 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static OutgoingCallerIdUpdater Update(string accountSid, string sid) {
             return new OutgoingCallerIdUpdater(accountSid, sid);
+        }
+    
+        /**
+         * Create a OutgoingCallerIdUpdater to execute update.
+         * 
+         * @param sid Update by unique outgoing-caller-id Sid
+         * @return OutgoingCallerIdUpdater capable of executing the update
+         */
+        public static OutgoingCallerIdUpdater Update(string sid) {
+            return new OutgoingCallerIdUpdater(sid);
         }
     
         /**
@@ -47,6 +67,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a OutgoingCallerIdDeleter to execute delete.
+         * 
+         * @param sid Delete by unique outgoing-caller-id Sid
+         * @return OutgoingCallerIdDeleter capable of executing the delete
+         */
+        public static OutgoingCallerIdDeleter Delete(string sid) {
+            return new OutgoingCallerIdDeleter(sid);
+        }
+    
+        /**
          * Retrieve a list of outgoing-caller-ids belonging to the account used to make
          * the request
          * 
@@ -55,6 +85,15 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static OutgoingCallerIdReader Read(string accountSid) {
             return new OutgoingCallerIdReader(accountSid);
+        }
+    
+        /**
+         * Create a OutgoingCallerIdReader to execute read.
+         * 
+         * @return OutgoingCallerIdReader capable of executing the read
+         */
+        public static OutgoingCallerIdReader Read() {
+            return new OutgoingCallerIdReader();
         }
     
         /**

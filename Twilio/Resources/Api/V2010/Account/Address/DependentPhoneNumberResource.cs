@@ -23,6 +23,16 @@ namespace Twilio.Resources.Api.V2010.Account.Address {
         }
     
         /**
+         * Create a DependentPhoneNumberReader to execute read.
+         * 
+         * @param addressSid The address_sid
+         * @return DependentPhoneNumberReader capable of executing the read
+         */
+        public static DependentPhoneNumberReader Read(string addressSid) {
+            return new DependentPhoneNumberReader(addressSid);
+        }
+    
+        /**
          * Converts a JSON string into a DependentPhoneNumberResource object
          * 
          * @param json Raw JSON string

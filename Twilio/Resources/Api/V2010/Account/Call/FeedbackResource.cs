@@ -61,6 +61,18 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         }
     
         /**
+         * Create a FeedbackCreator to execute create.
+         * 
+         * @param callSid The call_sid
+         * @param qualityScore The quality_score
+         * @return FeedbackCreator capable of executing the create
+         */
+        public static FeedbackCreator Create(string callSid, 
+                                             int? qualityScore) {
+            return new FeedbackCreator(callSid, qualityScore);
+        }
+    
+        /**
          * Fetch an instance of a feedback entry for a call
          * 
          * @param accountSid The account_sid
@@ -69,6 +81,16 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          */
         public static FeedbackFetcher Fetch(string accountSid, string callSid) {
             return new FeedbackFetcher(accountSid, callSid);
+        }
+    
+        /**
+         * Create a FeedbackFetcher to execute fetch.
+         * 
+         * @param callSid The call sid that uniquely identifies the call
+         * @return FeedbackFetcher capable of executing the fetch
+         */
+        public static FeedbackFetcher Fetch(string callSid) {
+            return new FeedbackFetcher(callSid);
         }
     
         /**
@@ -81,6 +103,18 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          */
         public static FeedbackUpdater Update(string accountSid, string callSid, int? qualityScore) {
             return new FeedbackUpdater(accountSid, callSid, qualityScore);
+        }
+    
+        /**
+         * Create a FeedbackUpdater to execute update.
+         * 
+         * @param callSid The call_sid
+         * @param qualityScore An integer from 1 to 5
+         * @return FeedbackUpdater capable of executing the update
+         */
+        public static FeedbackUpdater Update(string callSid, 
+                                             int? qualityScore) {
+            return new FeedbackUpdater(callSid, qualityScore);
         }
     
         /**

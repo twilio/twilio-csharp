@@ -25,6 +25,18 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         }
     
         /**
+         * Create a NotificationFetcher to execute fetch.
+         * 
+         * @param callSid The call_sid
+         * @param sid The sid
+         * @return NotificationFetcher capable of executing the fetch
+         */
+        public static NotificationFetcher Fetch(string callSid, 
+                                                string sid) {
+            return new NotificationFetcher(callSid, sid);
+        }
+    
+        /**
          * delete
          * 
          * @param accountSid The account_sid
@@ -37,6 +49,18 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         }
     
         /**
+         * Create a NotificationDeleter to execute delete.
+         * 
+         * @param callSid The call_sid
+         * @param sid The sid
+         * @return NotificationDeleter capable of executing the delete
+         */
+        public static NotificationDeleter Delete(string callSid, 
+                                                 string sid) {
+            return new NotificationDeleter(callSid, sid);
+        }
+    
+        /**
          * read
          * 
          * @param accountSid The account_sid
@@ -45,6 +69,16 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          */
         public static NotificationReader Read(string accountSid, string callSid) {
             return new NotificationReader(accountSid, callSid);
+        }
+    
+        /**
+         * Create a NotificationReader to execute read.
+         * 
+         * @param callSid The call_sid
+         * @return NotificationReader capable of executing the read
+         */
+        public static NotificationReader Read(string callSid) {
+            return new NotificationReader(callSid);
         }
     
         /**

@@ -23,6 +23,16 @@ namespace Twilio.Resources.Api.V2010.Account.AvailablePhoneNumberCountry {
         }
     
         /**
+         * Create a TollFreeReader to execute read.
+         * 
+         * @param countryCode The country_code
+         * @return TollFreeReader capable of executing the read
+         */
+        public static TollFreeReader Read(string countryCode) {
+            return new TollFreeReader(countryCode);
+        }
+    
+        /**
          * Converts a JSON string into a TollFreeResource object
          * 
          * @param json Raw JSON string

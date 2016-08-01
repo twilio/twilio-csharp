@@ -139,6 +139,15 @@ namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
         }
     
         /**
+         * Create a TodayReader to execute read.
+         * 
+         * @return TodayReader capable of executing the read
+         */
+        public static TodayReader Read() {
+            return new TodayReader();
+        }
+    
+        /**
          * Converts a JSON string into a TodayResource object
          * 
          * @param json Raw JSON string

@@ -26,6 +26,18 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
         }
     
         /**
+         * Create a IpAccessControlListMappingFetcher to execute fetch.
+         * 
+         * @param domainSid The domain_sid
+         * @param sid The sid
+         * @return IpAccessControlListMappingFetcher capable of executing the fetch
+         */
+        public static IpAccessControlListMappingFetcher Fetch(string domainSid, 
+                                                              string sid) {
+            return new IpAccessControlListMappingFetcher(domainSid, sid);
+        }
+    
+        /**
          * create
          * 
          * @param accountSid The account_sid
@@ -35,6 +47,18 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
          */
         public static IpAccessControlListMappingCreator Create(string accountSid, string domainSid, string ipAccessControlListSid) {
             return new IpAccessControlListMappingCreator(accountSid, domainSid, ipAccessControlListSid);
+        }
+    
+        /**
+         * Create a IpAccessControlListMappingCreator to execute create.
+         * 
+         * @param domainSid The domain_sid
+         * @param ipAccessControlListSid The ip_access_control_list_sid
+         * @return IpAccessControlListMappingCreator capable of executing the create
+         */
+        public static IpAccessControlListMappingCreator Create(string domainSid, 
+                                                               string ipAccessControlListSid) {
+            return new IpAccessControlListMappingCreator(domainSid, ipAccessControlListSid);
         }
     
         /**
@@ -49,6 +73,16 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
         }
     
         /**
+         * Create a IpAccessControlListMappingReader to execute read.
+         * 
+         * @param domainSid The domain_sid
+         * @return IpAccessControlListMappingReader capable of executing the read
+         */
+        public static IpAccessControlListMappingReader Read(string domainSid) {
+            return new IpAccessControlListMappingReader(domainSid);
+        }
+    
+        /**
          * delete
          * 
          * @param accountSid The account_sid
@@ -58,6 +92,18 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.Domain {
          */
         public static IpAccessControlListMappingDeleter Delete(string accountSid, string domainSid, string sid) {
             return new IpAccessControlListMappingDeleter(accountSid, domainSid, sid);
+        }
+    
+        /**
+         * Create a IpAccessControlListMappingDeleter to execute delete.
+         * 
+         * @param domainSid The domain_sid
+         * @param sid The sid
+         * @return IpAccessControlListMappingDeleter capable of executing the delete
+         */
+        public static IpAccessControlListMappingDeleter Delete(string domainSid, 
+                                                               string sid) {
+            return new IpAccessControlListMappingDeleter(domainSid, sid);
         }
     
         /**

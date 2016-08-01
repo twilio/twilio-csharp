@@ -45,7 +45,7 @@ namespace Twilio.Fetchers.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Transcriptions/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Transcriptions/" + this.sid + ".json"
             );
             
             Response response = await client.RequestAsync(request);
@@ -79,7 +79,7 @@ namespace Twilio.Fetchers.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Transcriptions/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Transcriptions/" + this.sid + ".json"
             );
             
             Response response = client.Request(request);

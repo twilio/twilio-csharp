@@ -139,6 +139,15 @@ namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
         }
     
         /**
+         * Create a DailyReader to execute read.
+         * 
+         * @return DailyReader capable of executing the read
+         */
+        public static DailyReader Read() {
+            return new DailyReader();
+        }
+    
+        /**
          * Converts a JSON string into a DailyResource object
          * 
          * @param json Raw JSON string
