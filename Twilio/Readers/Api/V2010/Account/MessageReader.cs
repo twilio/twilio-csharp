@@ -18,6 +18,12 @@ namespace Twilio.Readers.Api.V2010.Account {
         private string dateSent;
     
         /**
+         * Construct a new MessageReader.
+         */
+        public MessageReader() {
+        }
+    
+        /**
          * Construct a new MessageReader
          * 
          * @param accountSid The account_sid

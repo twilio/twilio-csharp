@@ -32,6 +32,15 @@ namespace Twilio.Creators.Api.V2010.Account.IncomingPhoneNumber {
         private Uri voiceUrl;
     
         /**
+         * Construct a new TollFreeCreator.
+         * 
+         * @param phoneNumber The phone_number
+         */
+        public TollFreeCreator(Twilio.Types.PhoneNumber phoneNumber) {
+            this.phoneNumber = phoneNumber;
+        }
+    
+        /**
          * Construct a new TollFreeCreator
          * 
          * @param ownerAccountSid The owner_account_sid
@@ -337,15 +346,15 @@ namespace Twilio.Creators.Api.V2010.Account.IncomingPhoneNumber {
                 request.AddPostParam("PhoneNumber", phoneNumber.ToString());
             }
             
-            if (string.IsNullOrEmpty(apiVersion)) {
+            if (apiVersion != null) {
                 request.AddPostParam("ApiVersion", apiVersion);
             }
             
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (string.IsNullOrEmpty(smsApplicationSid)) {
+            if (smsApplicationSid != null) {
                 request.AddPostParam("SmsApplicationSid", smsApplicationSid);
             }
             
@@ -373,7 +382,7 @@ namespace Twilio.Creators.Api.V2010.Account.IncomingPhoneNumber {
                 request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
             
-            if (string.IsNullOrEmpty(voiceApplicationSid)) {
+            if (voiceApplicationSid != null) {
                 request.AddPostParam("VoiceApplicationSid", voiceApplicationSid);
             }
             

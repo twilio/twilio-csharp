@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account {
         private string sid;
     
         /**
+         * Construct a new ConnectAppFetcher.
+         * 
+         * @param sid Fetch by unique connect-app Sid
+         */
+        public ConnectAppFetcher(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new ConnectAppFetcher
          * 
          * @param accountSid The account_sid

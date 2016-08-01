@@ -15,6 +15,12 @@ namespace Twilio.Readers.Api.V2010.Account.Sip {
         private string accountSid;
     
         /**
+         * Construct a new DomainReader.
+         */
+        public DomainReader() {
+        }
+    
+        /**
          * Construct a new DomainReader
          * 
          * @param accountSid The account_sid

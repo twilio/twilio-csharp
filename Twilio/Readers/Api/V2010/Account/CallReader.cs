@@ -21,6 +21,12 @@ namespace Twilio.Readers.Api.V2010.Account {
         private string endTime;
     
         /**
+         * Construct a new CallReader.
+         */
+        public CallReader() {
+        }
+    
+        /**
          * Construct a new CallReader
          * 
          * @param accountSid The account_sid

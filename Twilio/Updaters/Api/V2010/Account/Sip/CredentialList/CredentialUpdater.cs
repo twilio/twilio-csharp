@@ -18,6 +18,21 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip.CredentialList {
         private string password;
     
         /**
+         * Construct a new CredentialUpdater.
+         * 
+         * @param credentialListSid The credential_list_sid
+         * @param sid The sid
+         * @param username The username
+         * @param password The password
+         */
+        public CredentialUpdater(string credentialListSid, string sid, string username, string password) {
+            this.credentialListSid = credentialListSid;
+            this.sid = sid;
+            this.username = username;
+            this.password = password;
+        }
+    
+        /**
          * Construct a new CredentialUpdater
          * 
          * @param accountSid The account_sid
@@ -110,11 +125,11 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip.CredentialList {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(username)) {
+            if (username != null) {
                 request.AddPostParam("Username", username);
             }
             
-            if (string.IsNullOrEmpty(password)) {
+            if (password != null) {
                 request.AddPostParam("Password", password);
             }
         }

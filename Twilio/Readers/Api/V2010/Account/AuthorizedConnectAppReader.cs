@@ -15,6 +15,12 @@ namespace Twilio.Readers.Api.V2010.Account {
         private string accountSid;
     
         /**
+         * Construct a new AuthorizedConnectAppReader.
+         */
+        public AuthorizedConnectAppReader() {
+        }
+    
+        /**
          * Construct a new AuthorizedConnectAppReader
          * 
          * @param accountSid The account_sid

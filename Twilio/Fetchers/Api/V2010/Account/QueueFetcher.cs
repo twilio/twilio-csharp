@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account {
         private string sid;
     
         /**
+         * Construct a new QueueFetcher.
+         * 
+         * @param sid Fetch by unique queue Sid
+         */
+        public QueueFetcher(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new QueueFetcher
          * 
          * @param accountSid The account_sid

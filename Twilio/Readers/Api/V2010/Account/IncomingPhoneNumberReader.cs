@@ -18,6 +18,12 @@ namespace Twilio.Readers.Api.V2010.Account {
         private Twilio.Types.PhoneNumber phoneNumber;
     
         /**
+         * Construct a new IncomingPhoneNumberReader.
+         */
+        public IncomingPhoneNumberReader() {
+        }
+    
+        /**
          * Construct a new IncomingPhoneNumberReader
          * 
          * @param ownerAccountSid The owner_account_sid

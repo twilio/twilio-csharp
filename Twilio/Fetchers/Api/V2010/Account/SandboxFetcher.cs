@@ -14,6 +14,12 @@ namespace Twilio.Fetchers.Api.V2010.Account {
         private string accountSid;
     
         /**
+         * Construct a new SandboxFetcher.
+         */
+        public SandboxFetcher() {
+        }
+    
+        /**
          * Construct a new SandboxFetcher
          * 
          * @param accountSid The account_sid

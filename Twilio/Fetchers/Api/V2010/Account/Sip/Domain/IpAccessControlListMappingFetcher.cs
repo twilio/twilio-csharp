@@ -16,6 +16,17 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip.Domain {
         private string sid;
     
         /**
+         * Construct a new IpAccessControlListMappingFetcher.
+         * 
+         * @param domainSid The domain_sid
+         * @param sid The sid
+         */
+        public IpAccessControlListMappingFetcher(string domainSid, string sid) {
+            this.domainSid = domainSid;
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new IpAccessControlListMappingFetcher
          * 
          * @param accountSid The account_sid

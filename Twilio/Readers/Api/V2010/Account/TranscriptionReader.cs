@@ -15,6 +15,12 @@ namespace Twilio.Readers.Api.V2010.Account {
         private string accountSid;
     
         /**
+         * Construct a new TranscriptionReader.
+         */
+        public TranscriptionReader() {
+        }
+    
+        /**
          * Construct a new TranscriptionReader
          * 
          * @param accountSid The account_sid

@@ -15,6 +15,15 @@ namespace Twilio.Deleters.Api.V2010.Account.Call {
         private string sid;
     
         /**
+         * Construct a new FeedbackSummaryDeleter.
+         * 
+         * @param sid The sid
+         */
+        public FeedbackSummaryDeleter(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new FeedbackSummaryDeleter
          * 
          * @param accountSid The account_sid

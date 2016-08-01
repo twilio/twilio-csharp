@@ -19,6 +19,17 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
         private List<FeedbackResource.Issues> issue;
     
         /**
+         * Construct a new FeedbackCreator.
+         * 
+         * @param callSid The call_sid
+         * @param qualityScore The quality_score
+         */
+        public FeedbackCreator(string callSid, int? qualityScore) {
+            this.callSid = callSid;
+            this.qualityScore = qualityScore;
+        }
+    
+        /**
          * Construct a new FeedbackCreator
          * 
          * @param accountSid The account_sid

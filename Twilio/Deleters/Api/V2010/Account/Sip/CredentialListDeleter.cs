@@ -15,6 +15,15 @@ namespace Twilio.Deleters.Api.V2010.Account.Sip {
         private string sid;
     
         /**
+         * Construct a new CredentialListDeleter.
+         * 
+         * @param sid Delete by unique credential Sid
+         */
+        public CredentialListDeleter(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new CredentialListDeleter
          * 
          * @param accountSid The account_sid

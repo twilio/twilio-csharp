@@ -15,6 +15,15 @@ namespace Twilio.Deleters.Api.V2010.Account {
         private string sid;
     
         /**
+         * Construct a new MessageDeleter.
+         * 
+         * @param sid The message to delete
+         */
+        public MessageDeleter(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new MessageDeleter
          * 
          * @param accountSid The account_sid

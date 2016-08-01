@@ -18,6 +18,17 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip.IpAccessControlList {
         private string friendlyName;
     
         /**
+         * Construct a new IpAddressUpdater.
+         * 
+         * @param ipAccessControlListSid The ip_access_control_list_sid
+         * @param sid The sid
+         */
+        public IpAddressUpdater(string ipAccessControlListSid, string sid) {
+            this.ipAccessControlListSid = ipAccessControlListSid;
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new IpAddressUpdater
          * 
          * @param accountSid The account_sid
@@ -128,11 +139,11 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip.IpAccessControlList {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(ipAddress)) {
+            if (ipAddress != null) {
                 request.AddPostParam("IpAddress", ipAddress);
             }
             
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

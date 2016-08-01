@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip {
         private string sid;
     
         /**
+         * Construct a new IpAccessControlListFetcher.
+         * 
+         * @param sid Fetch by unique ip-access-control-list Sid
+         */
+        public IpAccessControlListFetcher(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new IpAccessControlListFetcher
          * 
          * @param accountSid The account_sid

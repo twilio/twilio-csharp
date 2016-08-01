@@ -21,6 +21,15 @@ namespace Twilio.Updaters.Api.V2010.Account {
         private string postalCode;
     
         /**
+         * Construct a new AddressUpdater.
+         * 
+         * @param sid The sid
+         */
+        public AddressUpdater(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new AddressUpdater
          * 
          * @param accountSid The account_sid
@@ -173,27 +182,27 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (string.IsNullOrEmpty(customerName)) {
+            if (customerName != null) {
                 request.AddPostParam("CustomerName", customerName);
             }
             
-            if (string.IsNullOrEmpty(street)) {
+            if (street != null) {
                 request.AddPostParam("Street", street);
             }
             
-            if (string.IsNullOrEmpty(city)) {
+            if (city != null) {
                 request.AddPostParam("City", city);
             }
             
-            if (string.IsNullOrEmpty(region)) {
+            if (region != null) {
                 request.AddPostParam("Region", region);
             }
             
-            if (string.IsNullOrEmpty(postalCode)) {
+            if (postalCode != null) {
                 request.AddPostParam("PostalCode", postalCode);
             }
         }

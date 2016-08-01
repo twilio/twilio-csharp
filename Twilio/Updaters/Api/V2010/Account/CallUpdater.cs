@@ -24,6 +24,15 @@ namespace Twilio.Updaters.Api.V2010.Account {
         private Twilio.Http.HttpMethod statusCallbackMethod;
     
         /**
+         * Construct a new CallUpdater.
+         * 
+         * @param sid Call Sid that uniquely identifies the Call to update
+         */
+        public CallUpdater(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new CallUpdater
          * 
          * @param accountSid The account_sid

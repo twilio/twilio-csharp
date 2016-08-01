@@ -16,6 +16,17 @@ namespace Twilio.Deleters.Api.V2010.Account.Message {
         private string sid;
     
         /**
+         * Construct a new MediaDeleter.
+         * 
+         * @param messageSid The message_sid
+         * @param sid Delete by unique media Sid
+         */
+        public MediaDeleter(string messageSid, string sid) {
+            this.messageSid = messageSid;
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new MediaDeleter
          * 
          * @param accountSid The account_sid

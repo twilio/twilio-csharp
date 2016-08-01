@@ -16,6 +16,17 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
         private string friendlyName;
     
         /**
+         * Construct a new CredentialListUpdater.
+         * 
+         * @param sid The sid
+         * @param friendlyName The friendly_name
+         */
+        public CredentialListUpdater(string sid, string friendlyName) {
+            this.sid = sid;
+            this.friendlyName = friendlyName;
+        }
+    
+        /**
          * Construct a new CredentialListUpdater
          * 
          * @param accountSid The account_sid
@@ -104,7 +115,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

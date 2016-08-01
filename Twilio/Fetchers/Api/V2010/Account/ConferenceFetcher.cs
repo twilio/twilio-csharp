@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account {
         private string sid;
     
         /**
+         * Construct a new ConferenceFetcher.
+         * 
+         * @param sid Fetch by unique conference Sid
+         */
+        public ConferenceFetcher(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new ConferenceFetcher
          * 
          * @param accountSid The account_sid

@@ -15,6 +15,12 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
         private string accountSid;
     
         /**
+         * Construct a new DailyReader.
+         */
+        public DailyReader() {
+        }
+    
+        /**
          * Construct a new DailyReader
          * 
          * @param accountSid The account_sid

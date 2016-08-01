@@ -172,11 +172,11 @@ namespace Twilio.Creators.Trunking.V1 {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (string.IsNullOrEmpty(domainName)) {
+            if (domainName != null) {
                 request.AddPostParam("DomainName", domainName);
             }
             
@@ -188,7 +188,7 @@ namespace Twilio.Creators.Trunking.V1 {
                 request.AddPostParam("DisasterRecoveryMethod", disasterRecoveryMethod.ToString());
             }
             
-            if (string.IsNullOrEmpty(recording)) {
+            if (recording != null) {
                 request.AddPostParam("Recording", recording);
             }
             

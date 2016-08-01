@@ -15,6 +15,15 @@ namespace Twilio.Deleters.Api.V2010.Account {
         private string sid;
     
         /**
+         * Construct a new RecordingDeleter.
+         * 
+         * @param sid Delete by unique recording Sid
+         */
+        public RecordingDeleter(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new RecordingDeleter
          * 
          * @param accountSid The account_sid

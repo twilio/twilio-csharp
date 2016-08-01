@@ -21,6 +21,17 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
         private Twilio.Http.HttpMethod statusCallbackMethod;
     
         /**
+         * Construct a new FeedbackSummaryCreator.
+         * 
+         * @param startDate The start_date
+         * @param endDate The end_date
+         */
+        public FeedbackSummaryCreator(DateTime? startDate, DateTime? endDate) {
+            this.startDate = startDate;
+            this.endDate = endDate;
+        }
+    
+        /**
          * Construct a new FeedbackSummaryCreator
          * 
          * @param accountSid The account_sid

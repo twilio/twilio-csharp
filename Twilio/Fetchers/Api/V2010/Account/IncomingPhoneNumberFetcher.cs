@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account {
         private string sid;
     
         /**
+         * Construct a new IncomingPhoneNumberFetcher.
+         * 
+         * @param sid Fetch by unique incoming-phone-number Sid
+         */
+        public IncomingPhoneNumberFetcher(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new IncomingPhoneNumberFetcher
          * 
          * @param ownerAccountSid The owner_account_sid

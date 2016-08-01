@@ -15,6 +15,15 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
         private string friendlyName;
     
         /**
+         * Construct a new IpAccessControlListCreator.
+         * 
+         * @param friendlyName A human readable description of this resource
+         */
+        public IpAccessControlListCreator(string friendlyName) {
+            this.friendlyName = friendlyName;
+        }
+    
+        /**
          * Construct a new IpAccessControlListCreator
          * 
          * @param accountSid The account_sid
@@ -101,7 +110,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

@@ -15,6 +15,15 @@ namespace Twilio.Deleters.Api.V2010.Account {
         private string sid;
     
         /**
+         * Construct a new QueueDeleter.
+         * 
+         * @param sid Delete by unique queue Sid
+         */
+        public QueueDeleter(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new QueueDeleter
          * 
          * @param accountSid The account_sid

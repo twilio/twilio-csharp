@@ -16,6 +16,17 @@ namespace Twilio.Fetchers.Api.V2010.Account.Call {
         private string sid;
     
         /**
+         * Construct a new RecordingFetcher.
+         * 
+         * @param callSid The call_sid
+         * @param sid The sid
+         */
+        public RecordingFetcher(string callSid, string sid) {
+            this.callSid = callSid;
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new RecordingFetcher
          * 
          * @param accountSid The account_sid

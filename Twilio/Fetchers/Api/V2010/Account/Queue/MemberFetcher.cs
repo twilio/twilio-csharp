@@ -16,6 +16,17 @@ namespace Twilio.Fetchers.Api.V2010.Account.Queue {
         private string callSid;
     
         /**
+         * Construct a new MemberFetcher.
+         * 
+         * @param queueSid The Queue in which to find the members
+         * @param callSid The call_sid
+         */
+        public MemberFetcher(string queueSid, string callSid) {
+            this.queueSid = queueSid;
+            this.callSid = callSid;
+        }
+    
+        /**
          * Construct a new MemberFetcher
          * 
          * @param accountSid The account_sid

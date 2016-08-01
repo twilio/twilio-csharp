@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account {
         private string countryCode;
     
         /**
+         * Construct a new AvailablePhoneNumberCountryFetcher.
+         * 
+         * @param countryCode The country_code
+         */
+        public AvailablePhoneNumberCountryFetcher(string countryCode) {
+            this.countryCode = countryCode;
+        }
+    
+        /**
          * Construct a new AvailablePhoneNumberCountryFetcher
          * 
          * @param accountSid The account_sid

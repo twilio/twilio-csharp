@@ -16,6 +16,12 @@ namespace Twilio.Readers.Api.V2010.Account {
         private string friendlyName;
     
         /**
+         * Construct a new ApplicationReader.
+         */
+        public ApplicationReader() {
+        }
+    
+        /**
          * Construct a new ApplicationReader
          * 
          * @param accountSid The account_sid

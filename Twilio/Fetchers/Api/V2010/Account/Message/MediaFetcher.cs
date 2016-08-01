@@ -16,6 +16,17 @@ namespace Twilio.Fetchers.Api.V2010.Account.Message {
         private string sid;
     
         /**
+         * Construct a new MediaFetcher.
+         * 
+         * @param messageSid The message_sid
+         * @param sid Fetch by unique media Sid
+         */
+        public MediaFetcher(string messageSid, string sid) {
+            this.messageSid = messageSid;
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new MediaFetcher
          * 
          * @param accountSid The account_sid

@@ -15,6 +15,15 @@ namespace Twilio.Deleters.Api.V2010.Account {
         private string sid;
     
         /**
+         * Construct a new CallDeleter.
+         * 
+         * @param sid Call Sid that uniquely identifies the Call to delete
+         */
+        public CallDeleter(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new CallDeleter
          * 
          * @param accountSid The account_sid

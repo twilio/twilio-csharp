@@ -15,6 +15,15 @@ namespace Twilio.Deleters.Api.V2010.Account {
         private string sid;
     
         /**
+         * Construct a new SigningKeyDeleter.
+         * 
+         * @param sid The sid
+         */
+        public SigningKeyDeleter(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new SigningKeyDeleter
          * 
          * @param accountSid The account_sid

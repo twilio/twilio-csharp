@@ -22,6 +22,19 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
         private TriggerResource.TriggerField triggerBy;
     
         /**
+         * Construct a new TriggerCreator.
+         * 
+         * @param callbackUrl URL Twilio will request when the trigger fires
+         * @param triggerValue the value at which the trigger will fire
+         * @param usageCategory The usage category the trigger watches
+         */
+        public TriggerCreator(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory) {
+            this.callbackUrl = callbackUrl;
+            this.triggerValue = triggerValue;
+            this.usageCategory = usageCategory;
+        }
+    
+        /**
          * Construct a new TriggerCreator
          * 
          * @param accountSid The account_sid
@@ -164,7 +177,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
                 request.AddPostParam("CallbackUrl", callbackUrl.ToString());
             }
             
-            if (string.IsNullOrEmpty(triggerValue)) {
+            if (triggerValue != null) {
                 request.AddPostParam("TriggerValue", triggerValue);
             }
             
@@ -176,7 +189,7 @@ namespace Twilio.Creators.Api.V2010.Account.Usage {
                 request.AddPostParam("CallbackMethod", callbackMethod.ToString());
             }
             
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             

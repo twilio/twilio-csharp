@@ -16,6 +16,12 @@ namespace Twilio.Creators.Api.V2010.Account {
         private int? maxSize;
     
         /**
+         * Construct a new QueueCreator.
+         */
+        public QueueCreator() {
+        }
+    
+        /**
          * Construct a new QueueCreator
          * 
          * @param accountSid The account_sid
@@ -123,7 +129,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             

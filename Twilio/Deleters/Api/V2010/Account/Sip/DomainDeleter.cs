@@ -15,6 +15,15 @@ namespace Twilio.Deleters.Api.V2010.Account.Sip {
         private string sid;
     
         /**
+         * Construct a new DomainDeleter.
+         * 
+         * @param sid The sid
+         */
+        public DomainDeleter(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new DomainDeleter
          * 
          * @param accountSid The account_sid

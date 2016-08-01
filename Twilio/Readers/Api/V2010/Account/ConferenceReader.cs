@@ -19,6 +19,12 @@ namespace Twilio.Readers.Api.V2010.Account {
         private ConferenceResource.Status status;
     
         /**
+         * Construct a new ConferenceReader.
+         */
+        public ConferenceReader() {
+        }
+    
+        /**
          * Construct a new ConferenceReader
          * 
          * @param accountSid The account_sid

@@ -25,6 +25,15 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
         private bool? beta;
     
         /**
+         * Construct a new LocalReader.
+         * 
+         * @param countryCode The country_code
+         */
+        public LocalReader(string countryCode) {
+            this.countryCode = countryCode;
+        }
+    
+        /**
          * Construct a new LocalReader
          * 
          * @param accountSid The account_sid

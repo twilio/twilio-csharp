@@ -374,27 +374,27 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(reservationStatus)) {
+            if (reservationStatus != null) {
                 request.AddPostParam("ReservationStatus", reservationStatus);
             }
             
-            if (string.IsNullOrEmpty(workerActivitySid)) {
+            if (workerActivitySid != null) {
                 request.AddPostParam("WorkerActivitySid", workerActivitySid);
             }
             
-            if (string.IsNullOrEmpty(instruction)) {
+            if (instruction != null) {
                 request.AddPostParam("Instruction", instruction);
             }
             
-            if (string.IsNullOrEmpty(dequeuePostWorkActivitySid)) {
+            if (dequeuePostWorkActivitySid != null) {
                 request.AddPostParam("DequeuePostWorkActivitySid", dequeuePostWorkActivitySid);
             }
             
-            if (string.IsNullOrEmpty(dequeueFrom)) {
+            if (dequeueFrom != null) {
                 request.AddPostParam("DequeueFrom", dequeueFrom);
             }
             
-            if (string.IsNullOrEmpty(dequeueRecord)) {
+            if (dequeueRecord != null) {
                 request.AddPostParam("DequeueRecord", dequeueRecord);
             }
             
@@ -402,7 +402,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
                 request.AddPostParam("DequeueTimeout", dequeueTimeout.ToString());
             }
             
-            if (string.IsNullOrEmpty(dequeueTo)) {
+            if (dequeueTo != null) {
                 request.AddPostParam("DequeueTo", dequeueTo);
             }
             
@@ -410,11 +410,11 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
                 request.AddPostParam("DequeueStatusCallbackUrl", dequeueStatusCallbackUrl.ToString());
             }
             
-            if (string.IsNullOrEmpty(callFrom)) {
+            if (callFrom != null) {
                 request.AddPostParam("CallFrom", callFrom);
             }
             
-            if (string.IsNullOrEmpty(callRecord)) {
+            if (callRecord != null) {
                 request.AddPostParam("CallRecord", callRecord);
             }
             
@@ -422,7 +422,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
                 request.AddPostParam("CallTimeout", callTimeout.ToString());
             }
             
-            if (string.IsNullOrEmpty(callTo)) {
+            if (callTo != null) {
                 request.AddPostParam("CallTo", callTo);
             }
             
@@ -438,7 +438,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
                 request.AddPostParam("CallAccept", callAccept.ToString());
             }
             
-            if (string.IsNullOrEmpty(redirectCallSid)) {
+            if (redirectCallSid != null) {
                 request.AddPostParam("RedirectCallSid", redirectCallSid);
             }
             

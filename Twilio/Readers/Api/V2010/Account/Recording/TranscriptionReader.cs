@@ -16,6 +16,15 @@ namespace Twilio.Readers.Api.V2010.Account.Recording {
         private string recordingSid;
     
         /**
+         * Construct a new TranscriptionReader.
+         * 
+         * @param recordingSid The recording_sid
+         */
+        public TranscriptionReader(string recordingSid) {
+            this.recordingSid = recordingSid;
+        }
+    
+        /**
          * Construct a new TranscriptionReader
          * 
          * @param accountSid The account_sid

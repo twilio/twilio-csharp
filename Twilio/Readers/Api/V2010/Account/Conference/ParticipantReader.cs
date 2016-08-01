@@ -17,6 +17,15 @@ namespace Twilio.Readers.Api.V2010.Account.Conference {
         private bool? muted;
     
         /**
+         * Construct a new ParticipantReader.
+         * 
+         * @param conferenceSid The string that uniquely identifies this conference
+         */
+        public ParticipantReader(string conferenceSid) {
+            this.conferenceSid = conferenceSid;
+        }
+    
+        /**
          * Construct a new ParticipantReader
          * 
          * @param accountSid The account_sid

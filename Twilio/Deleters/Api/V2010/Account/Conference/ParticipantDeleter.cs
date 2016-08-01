@@ -16,6 +16,17 @@ namespace Twilio.Deleters.Api.V2010.Account.Conference {
         private string callSid;
     
         /**
+         * Construct a new ParticipantDeleter.
+         * 
+         * @param conferenceSid The string that uniquely identifies this conference
+         * @param callSid The call_sid
+         */
+        public ParticipantDeleter(string conferenceSid, string callSid) {
+            this.conferenceSid = conferenceSid;
+            this.callSid = callSid;
+        }
+    
+        /**
          * Construct a new ParticipantDeleter
          * 
          * @param accountSid The account_sid

@@ -23,6 +23,15 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
         private Twilio.Http.HttpMethod smsFallbackMethod;
     
         /**
+         * Construct a new ShortCodeUpdater.
+         * 
+         * @param sid The sid
+         */
+        public ShortCodeUpdater(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new ShortCodeUpdater
          * 
          * @param accountSid The account_sid
@@ -204,11 +213,11 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (string.IsNullOrEmpty(apiVersion)) {
+            if (apiVersion != null) {
                 request.AddPostParam("ApiVersion", apiVersion);
             }
             

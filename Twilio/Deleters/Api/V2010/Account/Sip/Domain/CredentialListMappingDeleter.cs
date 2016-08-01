@@ -16,6 +16,17 @@ namespace Twilio.Deleters.Api.V2010.Account.Sip.Domain {
         private string sid;
     
         /**
+         * Construct a new CredentialListMappingDeleter.
+         * 
+         * @param domainSid The domain_sid
+         * @param sid The sid
+         */
+        public CredentialListMappingDeleter(string domainSid, string sid) {
+            this.domainSid = domainSid;
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new CredentialListMappingDeleter
          * 
          * @param accountSid The account_sid

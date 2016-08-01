@@ -32,6 +32,15 @@ namespace Twilio.Updaters.Api.V2010.Account {
         private Uri messageStatusCallback;
     
         /**
+         * Construct a new ApplicationUpdater.
+         * 
+         * @param sid The sid
+         */
+        public ApplicationUpdater(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new ApplicationUpdater
          * 
          * @param accountSid The account_sid
@@ -381,11 +390,11 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (string.IsNullOrEmpty(apiVersion)) {
+            if (apiVersion != null) {
                 request.AddPostParam("ApiVersion", apiVersion);
             }
             

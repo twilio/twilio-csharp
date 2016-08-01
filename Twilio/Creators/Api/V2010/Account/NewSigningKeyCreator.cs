@@ -15,6 +15,12 @@ namespace Twilio.Creators.Api.V2010.Account {
         private string friendlyName;
     
         /**
+         * Construct a new NewSigningKeyCreator.
+         */
+        public NewSigningKeyCreator() {
+        }
+    
+        /**
          * Construct a new NewSigningKeyCreator
          * 
          * @param accountSid The account_sid
@@ -110,7 +116,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

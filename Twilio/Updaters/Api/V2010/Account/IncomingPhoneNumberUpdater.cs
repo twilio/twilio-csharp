@@ -33,6 +33,15 @@ namespace Twilio.Updaters.Api.V2010.Account {
         private Uri voiceUrl;
     
         /**
+         * Construct a new IncomingPhoneNumberUpdater.
+         * 
+         * @param sid The sid
+         */
+        public IncomingPhoneNumberUpdater(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new IncomingPhoneNumberUpdater
          * 
          * @param ownerAccountSid The owner_account_sid
@@ -375,19 +384,19 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(accountSid)) {
+            if (accountSid != null) {
                 request.AddPostParam("AccountSid", accountSid);
             }
             
-            if (string.IsNullOrEmpty(apiVersion)) {
+            if (apiVersion != null) {
                 request.AddPostParam("ApiVersion", apiVersion);
             }
             
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (string.IsNullOrEmpty(smsApplicationSid)) {
+            if (smsApplicationSid != null) {
                 request.AddPostParam("SmsApplicationSid", smsApplicationSid);
             }
             
@@ -415,7 +424,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
                 request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
             
-            if (string.IsNullOrEmpty(voiceApplicationSid)) {
+            if (voiceApplicationSid != null) {
                 request.AddPostParam("VoiceApplicationSid", voiceApplicationSid);
             }
             

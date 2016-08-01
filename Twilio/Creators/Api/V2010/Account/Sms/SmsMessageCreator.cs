@@ -23,6 +23,19 @@ namespace Twilio.Creators.Api.V2010.Account.Sms {
         private string applicationSid;
     
         /**
+         * Construct a new SmsMessageCreator.
+         * 
+         * @param to The to
+         * @param from The from
+         * @param body The body
+         */
+        public SmsMessageCreator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body) {
+            this.to = to;
+            this.from = from;
+            this.body = body;
+        }
+    
+        /**
          * Construct a new SmsMessageCreator
          * 
          * @param accountSid The account_sid
@@ -35,6 +48,19 @@ namespace Twilio.Creators.Api.V2010.Account.Sms {
             this.to = to;
             this.from = from;
             this.body = body;
+        }
+    
+        /**
+         * Construct a new SmsMessageCreator.
+         * 
+         * @param to The to
+         * @param from The from
+         * @param mediaUrl The media_url
+         */
+        public SmsMessageCreator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl) {
+            this.to = to;
+            this.from = from;
+            this.mediaUrl = mediaUrl;
         }
     
         /**
@@ -168,7 +194,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sms {
                 request.AddPostParam("From", from.ToString());
             }
             
-            if (string.IsNullOrEmpty(body)) {
+            if (body != null) {
                 request.AddPostParam("Body", body);
             }
             
@@ -180,7 +206,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sms {
                 request.AddPostParam("StatusCallback", statusCallback.ToString());
             }
             
-            if (string.IsNullOrEmpty(applicationSid)) {
+            if (applicationSid != null) {
                 request.AddPostParam("ApplicationSid", applicationSid);
             }
         }

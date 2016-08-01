@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account.Usage {
         private string sid;
     
         /**
+         * Construct a new TriggerFetcher.
+         * 
+         * @param sid Fetch by unique usage-trigger Sid
+         */
+        public TriggerFetcher(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new TriggerFetcher
          * 
          * @param accountSid The account_sid

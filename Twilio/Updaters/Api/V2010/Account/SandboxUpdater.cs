@@ -22,6 +22,12 @@ namespace Twilio.Updaters.Api.V2010.Account {
         private Twilio.Http.HttpMethod statusCallbackMethod;
     
         /**
+         * Construct a new SandboxUpdater.
+         */
+        public SandboxUpdater() {
+        }
+    
+        /**
          * Construct a new SandboxUpdater
          * 
          * @param accountSid The account_sid

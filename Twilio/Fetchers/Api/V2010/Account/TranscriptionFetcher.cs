@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account {
         private string sid;
     
         /**
+         * Construct a new TranscriptionFetcher.
+         * 
+         * @param sid Fetch by unique transcription Sid
+         */
+        public TranscriptionFetcher(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new TranscriptionFetcher
          * 
          * @param accountSid The account_sid

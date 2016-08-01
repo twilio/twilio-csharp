@@ -15,6 +15,15 @@ namespace Twilio.Deleters.Api.V2010.Account {
         private string sid;
     
         /**
+         * Construct a new IncomingPhoneNumberDeleter.
+         * 
+         * @param sid Delete by unique phone-number Sid
+         */
+        public IncomingPhoneNumberDeleter(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new IncomingPhoneNumberDeleter
          * 
          * @param ownerAccountSid The owner_account_sid

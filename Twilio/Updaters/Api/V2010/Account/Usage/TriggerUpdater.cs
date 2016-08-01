@@ -20,6 +20,15 @@ namespace Twilio.Updaters.Api.V2010.Account.Usage {
         private string friendlyName;
     
         /**
+         * Construct a new TriggerUpdater.
+         * 
+         * @param sid The sid
+         */
+        public TriggerUpdater(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new TriggerUpdater
          * 
          * @param accountSid The account_sid
@@ -158,7 +167,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Usage {
                 request.AddPostParam("CallbackUrl", callbackUrl.ToString());
             }
             
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

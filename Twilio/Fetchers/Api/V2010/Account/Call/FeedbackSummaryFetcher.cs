@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account.Call {
         private string sid;
     
         /**
+         * Construct a new FeedbackSummaryFetcher.
+         * 
+         * @param sid The sid
+         */
+        public FeedbackSummaryFetcher(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new FeedbackSummaryFetcher
          * 
          * @param accountSid The account_sid

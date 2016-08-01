@@ -26,6 +26,15 @@ namespace Twilio.Updaters.Api.V2010.Account {
         private List<ConnectAppResource.Permission> permissions;
     
         /**
+         * Construct a new ConnectAppUpdater.
+         * 
+         * @param sid The sid
+         */
+        public ConnectAppUpdater(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new ConnectAppUpdater
          * 
          * @param accountSid The account_sid
@@ -254,7 +263,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
                 request.AddPostParam("AuthorizeRedirectUrl", authorizeRedirectUrl.ToString());
             }
             
-            if (string.IsNullOrEmpty(companyName)) {
+            if (companyName != null) {
                 request.AddPostParam("CompanyName", companyName);
             }
             
@@ -266,11 +275,11 @@ namespace Twilio.Updaters.Api.V2010.Account {
                 request.AddPostParam("DeauthorizeCallbackUrl", deauthorizeCallbackUrl.ToString());
             }
             
-            if (string.IsNullOrEmpty(description)) {
+            if (description != null) {
                 request.AddPostParam("Description", description);
             }
             
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             

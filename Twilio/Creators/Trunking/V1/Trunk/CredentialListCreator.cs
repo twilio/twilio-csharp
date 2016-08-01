@@ -101,7 +101,7 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(credentialListSid)) {
+            if (credentialListSid != null) {
                 request.AddPostParam("CredentialListSid", credentialListSid);
             }
         }

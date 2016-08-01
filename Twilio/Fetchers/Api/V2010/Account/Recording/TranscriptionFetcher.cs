@@ -16,6 +16,17 @@ namespace Twilio.Fetchers.Api.V2010.Account.Recording {
         private string sid;
     
         /**
+         * Construct a new TranscriptionFetcher.
+         * 
+         * @param recordingSid The recording_sid
+         * @param sid The sid
+         */
+        public TranscriptionFetcher(string recordingSid, string sid) {
+            this.recordingSid = recordingSid;
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new TranscriptionFetcher
          * 
          * @param accountSid The account_sid

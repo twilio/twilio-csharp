@@ -14,6 +14,12 @@ namespace Twilio.Fetchers.Api.V2010 {
         private string sid;
     
         /**
+         * Construct a new AccountFetcher.
+         */
+        public AccountFetcher() {
+        }
+    
+        /**
          * Construct a new AccountFetcher
          * 
          * @param sid Fetch by unique Account Sid

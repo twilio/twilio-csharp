@@ -17,6 +17,15 @@ namespace Twilio.Readers.Api.V2010.Account.Message {
         private string dateCreated;
     
         /**
+         * Construct a new MediaReader.
+         * 
+         * @param messageSid The message_sid
+         */
+        public MediaReader(string messageSid) {
+            this.messageSid = messageSid;
+        }
+    
+        /**
          * Construct a new MediaReader
          * 
          * @param accountSid The account_sid

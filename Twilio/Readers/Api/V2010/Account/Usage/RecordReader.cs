@@ -18,6 +18,12 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
         private string endDate;
     
         /**
+         * Construct a new RecordReader.
+         */
+        public RecordReader() {
+        }
+    
+        /**
          * Construct a new RecordReader
          * 
          * @param accountSid The account_sid

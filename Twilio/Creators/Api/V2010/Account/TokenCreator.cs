@@ -15,6 +15,12 @@ namespace Twilio.Creators.Api.V2010.Account {
         private int? ttl;
     
         /**
+         * Construct a new TokenCreator.
+         */
+        public TokenCreator() {
+        }
+    
+        /**
          * Construct a new TokenCreator
          * 
          * @param accountSid The account_sid

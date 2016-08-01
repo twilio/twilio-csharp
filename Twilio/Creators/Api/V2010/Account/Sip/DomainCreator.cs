@@ -25,6 +25,15 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
         private Twilio.Http.HttpMethod voiceStatusCallbackMethod;
     
         /**
+         * Construct a new DomainCreator.
+         * 
+         * @param domainName The unique address on Twilio to route SIP traffic
+         */
+        public DomainCreator(string domainName) {
+            this.domainName = domainName;
+        }
+    
+        /**
          * Construct a new DomainCreator
          * 
          * @param accountSid The account_sid
@@ -235,15 +244,15 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(domainName)) {
+            if (domainName != null) {
                 request.AddPostParam("DomainName", domainName);
             }
             
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (string.IsNullOrEmpty(authType)) {
+            if (authType != null) {
                 request.AddPostParam("AuthType", authType);
             }
             

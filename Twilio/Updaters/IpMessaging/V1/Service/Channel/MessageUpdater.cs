@@ -120,7 +120,7 @@ namespace Twilio.Updaters.IpMessaging.V1.Service.Channel {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(body)) {
+            if (body != null) {
                 request.AddPostParam("Body", body);
             }
             

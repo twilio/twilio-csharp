@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account {
         private string sid;
     
         /**
+         * Construct a new MessageFetcher.
+         * 
+         * @param sid Fetch by unique message Sid
+         */
+        public MessageFetcher(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new MessageFetcher
          * 
          * @param accountSid The account_sid

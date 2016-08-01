@@ -15,6 +15,15 @@ namespace Twilio.Deleters.Api.V2010.Account {
         private string sid;
     
         /**
+         * Construct a new NotificationDeleter.
+         * 
+         * @param sid Delete by unique notification Sid
+         */
+        public NotificationDeleter(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new NotificationDeleter
          * 
          * @param accountSid The account_sid

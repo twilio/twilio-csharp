@@ -15,6 +15,15 @@ namespace Twilio.Deleters.Api.V2010.Account {
         private string sid;
     
         /**
+         * Construct a new ApplicationDeleter.
+         * 
+         * @param sid The application sid to delete
+         */
+        public ApplicationDeleter(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new ApplicationDeleter
          * 
          * @param accountSid The account_sid

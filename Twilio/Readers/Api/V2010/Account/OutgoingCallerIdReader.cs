@@ -17,6 +17,12 @@ namespace Twilio.Readers.Api.V2010.Account {
         private string friendlyName;
     
         /**
+         * Construct a new OutgoingCallerIdReader.
+         */
+        public OutgoingCallerIdReader() {
+        }
+    
+        /**
          * Construct a new OutgoingCallerIdReader
          * 
          * @param accountSid The account_sid

@@ -16,6 +16,12 @@ namespace Twilio.Updaters.Api.V2010 {
         private AccountResource.Status status;
     
         /**
+         * Construct a new AccountUpdater.
+         */
+        public AccountUpdater() {
+        }
+    
+        /**
          * Construct a new AccountUpdater
          * 
          * @param sid The sid
@@ -122,7 +128,7 @@ namespace Twilio.Updaters.Api.V2010 {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             

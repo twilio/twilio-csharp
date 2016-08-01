@@ -22,6 +22,15 @@ namespace Twilio.Creators.Api.V2010.Account {
         private Twilio.Http.HttpMethod statusCallbackMethod;
     
         /**
+         * Construct a new ValidationRequestCreator.
+         * 
+         * @param phoneNumber The phone_number
+         */
+        public ValidationRequestCreator(Twilio.Types.PhoneNumber phoneNumber) {
+            this.phoneNumber = phoneNumber;
+        }
+    
+        /**
          * Construct a new ValidationRequestCreator
          * 
          * @param accountSid The account_sid
@@ -177,7 +186,7 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("PhoneNumber", phoneNumber.ToString());
             }
             
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
@@ -185,7 +194,7 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("CallDelay", callDelay.ToString());
             }
             
-            if (string.IsNullOrEmpty(extension)) {
+            if (extension != null) {
                 request.AddPostParam("Extension", extension);
             }
             

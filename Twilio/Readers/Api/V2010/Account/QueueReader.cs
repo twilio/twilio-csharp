@@ -15,6 +15,12 @@ namespace Twilio.Readers.Api.V2010.Account {
         private string accountSid;
     
         /**
+         * Construct a new QueueReader.
+         */
+        public QueueReader() {
+        }
+    
+        /**
          * Construct a new QueueReader
          * 
          * @param accountSid The account_sid

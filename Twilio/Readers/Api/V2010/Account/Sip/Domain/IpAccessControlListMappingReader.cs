@@ -16,6 +16,15 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.Domain {
         private string domainSid;
     
         /**
+         * Construct a new IpAccessControlListMappingReader.
+         * 
+         * @param domainSid The domain_sid
+         */
+        public IpAccessControlListMappingReader(string domainSid) {
+            this.domainSid = domainSid;
+        }
+    
+        /**
          * Construct a new IpAccessControlListMappingReader
          * 
          * @param accountSid The account_sid

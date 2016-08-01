@@ -16,6 +16,15 @@ namespace Twilio.Updaters.Api.V2010.Account {
         private string friendlyName;
     
         /**
+         * Construct a new OutgoingCallerIdUpdater.
+         * 
+         * @param sid Update by unique outgoing-caller-id Sid
+         */
+        public OutgoingCallerIdUpdater(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new OutgoingCallerIdUpdater
          * 
          * @param accountSid The account_sid
@@ -113,7 +122,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

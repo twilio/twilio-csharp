@@ -18,6 +18,15 @@ namespace Twilio.Readers.Api.V2010.Account.Call {
         private string messageDate;
     
         /**
+         * Construct a new NotificationReader.
+         * 
+         * @param callSid The call_sid
+         */
+        public NotificationReader(string callSid) {
+            this.callSid = callSid;
+        }
+    
+        /**
          * Construct a new NotificationReader
          * 
          * @param accountSid The account_sid

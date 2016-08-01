@@ -15,6 +15,15 @@ namespace Twilio.Deleters.Api.V2010.Account {
         private string sid;
     
         /**
+         * Construct a new TranscriptionDeleter.
+         * 
+         * @param sid Delete by unique transcription Sid
+         */
+        public TranscriptionDeleter(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new TranscriptionDeleter
          * 
          * @param accountSid The account_sid

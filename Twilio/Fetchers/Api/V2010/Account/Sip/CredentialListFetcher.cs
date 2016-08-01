@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip {
         private string sid;
     
         /**
+         * Construct a new CredentialListFetcher.
+         * 
+         * @param sid Fetch by unique credential Sid
+         */
+        public CredentialListFetcher(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new CredentialListFetcher
          * 
          * @param accountSid The account_sid

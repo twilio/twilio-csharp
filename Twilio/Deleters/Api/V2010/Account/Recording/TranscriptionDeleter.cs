@@ -16,6 +16,17 @@ namespace Twilio.Deleters.Api.V2010.Account.Recording {
         private string sid;
     
         /**
+         * Construct a new TranscriptionDeleter.
+         * 
+         * @param recordingSid The recording_sid
+         * @param sid The sid
+         */
+        public TranscriptionDeleter(string recordingSid, string sid) {
+            this.recordingSid = recordingSid;
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new TranscriptionDeleter
          * 
          * @param accountSid The account_sid

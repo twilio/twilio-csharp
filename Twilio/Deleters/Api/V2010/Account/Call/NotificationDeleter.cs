@@ -16,6 +16,17 @@ namespace Twilio.Deleters.Api.V2010.Account.Call {
         private string sid;
     
         /**
+         * Construct a new NotificationDeleter.
+         * 
+         * @param callSid The call_sid
+         * @param sid The sid
+         */
+        public NotificationDeleter(string callSid, string sid) {
+            this.callSid = callSid;
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new NotificationDeleter
          * 
          * @param accountSid The account_sid

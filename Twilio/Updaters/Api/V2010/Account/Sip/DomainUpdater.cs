@@ -25,6 +25,15 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
         private Uri voiceUrl;
     
         /**
+         * Construct a new DomainUpdater.
+         * 
+         * @param sid The sid
+         */
+        public DomainUpdater(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new DomainUpdater
          * 
          * @param accountSid The account_sid
@@ -229,11 +238,11 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(authType)) {
+            if (authType != null) {
                 request.AddPostParam("AuthType", authType);
             }
             
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             

@@ -26,6 +26,19 @@ namespace Twilio.Creators.Api.V2010.Account {
         private bool? provideFeedback;
     
         /**
+         * Construct a new MessageCreator.
+         * 
+         * @param to The phone number to receive the message
+         * @param body The body
+         * @param from The phone number that initiated the message
+         */
+        public MessageCreator(Twilio.Types.PhoneNumber to, string body, Twilio.Types.PhoneNumber from) {
+            this.to = to;
+            this.body = body;
+            this.from = from;
+        }
+    
+        /**
          * Construct a new MessageCreator
          * 
          * @param accountSid The account_sid
@@ -38,6 +51,19 @@ namespace Twilio.Creators.Api.V2010.Account {
             this.to = to;
             this.body = body;
             this.from = from;
+        }
+    
+        /**
+         * Construct a new MessageCreator.
+         * 
+         * @param to The phone number to receive the message
+         * @param body The body
+         * @param messagingServiceSid The messaging_service_sid
+         */
+        public MessageCreator(Twilio.Types.PhoneNumber to, string body, string messagingServiceSid) {
+            this.to = to;
+            this.body = body;
+            this.messagingServiceSid = messagingServiceSid;
         }
     
         /**
@@ -56,6 +82,19 @@ namespace Twilio.Creators.Api.V2010.Account {
         }
     
         /**
+         * Construct a new MessageCreator.
+         * 
+         * @param to The phone number to receive the message
+         * @param mediaUrl The media_url
+         * @param from The phone number that initiated the message
+         */
+        public MessageCreator(Twilio.Types.PhoneNumber to, List<Uri> mediaUrl, Twilio.Types.PhoneNumber from) {
+            this.to = to;
+            this.mediaUrl = mediaUrl;
+            this.from = from;
+        }
+    
+        /**
          * Construct a new MessageCreator
          * 
          * @param accountSid The account_sid
@@ -68,6 +107,19 @@ namespace Twilio.Creators.Api.V2010.Account {
             this.to = to;
             this.mediaUrl = mediaUrl;
             this.from = from;
+        }
+    
+        /**
+         * Construct a new MessageCreator.
+         * 
+         * @param to The phone number to receive the message
+         * @param mediaUrl The media_url
+         * @param messagingServiceSid The messaging_service_sid
+         */
+        public MessageCreator(Twilio.Types.PhoneNumber to, List<Uri> mediaUrl, string messagingServiceSid) {
+            this.to = to;
+            this.mediaUrl = mediaUrl;
+            this.messagingServiceSid = messagingServiceSid;
         }
     
         /**
@@ -220,7 +272,7 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("To", to.ToString());
             }
             
-            if (string.IsNullOrEmpty(body)) {
+            if (body != null) {
                 request.AddPostParam("Body", body);
             }
             
@@ -232,7 +284,7 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("From", from.ToString());
             }
             
-            if (string.IsNullOrEmpty(messagingServiceSid)) {
+            if (messagingServiceSid != null) {
                 request.AddPostParam("MessagingServiceSid", messagingServiceSid);
             }
             
@@ -240,7 +292,7 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("StatusCallback", statusCallback.ToString());
             }
             
-            if (string.IsNullOrEmpty(applicationSid)) {
+            if (applicationSid != null) {
                 request.AddPostParam("ApplicationSid", applicationSid);
             }
             

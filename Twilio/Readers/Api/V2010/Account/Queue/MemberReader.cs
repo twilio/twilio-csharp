@@ -16,6 +16,15 @@ namespace Twilio.Readers.Api.V2010.Account.Queue {
         private string queueSid;
     
         /**
+         * Construct a new MemberReader.
+         * 
+         * @param queueSid The Queue in which to find members
+         */
+        public MemberReader(string queueSid) {
+            this.queueSid = queueSid;
+        }
+    
+        /**
          * Construct a new MemberReader
          * 
          * @param accountSid The account_sid

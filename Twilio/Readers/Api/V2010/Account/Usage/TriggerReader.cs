@@ -18,6 +18,12 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
         private TriggerResource.UsageCategory usageCategory;
     
         /**
+         * Construct a new TriggerReader.
+         */
+        public TriggerReader() {
+        }
+    
+        /**
          * Construct a new TriggerReader
          * 
          * @param accountSid The account_sid

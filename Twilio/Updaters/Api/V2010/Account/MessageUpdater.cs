@@ -16,6 +16,15 @@ namespace Twilio.Updaters.Api.V2010.Account {
         private string body;
     
         /**
+         * Construct a new MessageUpdater.
+         * 
+         * @param sid The message to redact
+         */
+        public MessageUpdater(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new MessageUpdater
          * 
          * @param accountSid The account_sid
@@ -113,7 +122,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(body)) {
+            if (body != null) {
                 request.AddPostParam("Body", body);
             }
         }

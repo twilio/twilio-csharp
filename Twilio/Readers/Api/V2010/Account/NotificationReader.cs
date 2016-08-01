@@ -17,6 +17,12 @@ namespace Twilio.Readers.Api.V2010.Account {
         private string messageDate;
     
         /**
+         * Construct a new NotificationReader.
+         */
+        public NotificationReader() {
+        }
+    
+        /**
          * Construct a new NotificationReader
          * 
          * @param accountSid The account_sid

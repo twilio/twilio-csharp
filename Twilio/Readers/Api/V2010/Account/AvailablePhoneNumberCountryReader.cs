@@ -15,6 +15,12 @@ namespace Twilio.Readers.Api.V2010.Account {
         private string accountSid;
     
         /**
+         * Construct a new AvailablePhoneNumberCountryReader.
+         */
+        public AvailablePhoneNumberCountryReader() {
+        }
+    
+        /**
          * Construct a new AvailablePhoneNumberCountryReader
          * 
          * @param accountSid The account_sid

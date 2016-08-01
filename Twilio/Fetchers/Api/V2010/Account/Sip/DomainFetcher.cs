@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip {
         private string sid;
     
         /**
+         * Construct a new DomainFetcher.
+         * 
+         * @param sid Fetch by unique Domain Sid
+         */
+        public DomainFetcher(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new DomainFetcher
          * 
          * @param accountSid The account_sid

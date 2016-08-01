@@ -15,6 +15,15 @@ namespace Twilio.Deleters.Api.V2010.Account.Sip {
         private string sid;
     
         /**
+         * Construct a new IpAccessControlListDeleter.
+         * 
+         * @param sid Delete by unique ip-access-control-list Sid
+         */
+        public IpAccessControlListDeleter(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new IpAccessControlListDeleter
          * 
          * @param accountSid The account_sid

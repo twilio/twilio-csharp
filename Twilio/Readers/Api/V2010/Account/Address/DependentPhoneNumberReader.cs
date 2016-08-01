@@ -16,6 +16,15 @@ namespace Twilio.Readers.Api.V2010.Account.Address {
         private string addressSid;
     
         /**
+         * Construct a new DependentPhoneNumberReader.
+         * 
+         * @param addressSid The address_sid
+         */
+        public DependentPhoneNumberReader(string addressSid) {
+            this.addressSid = addressSid;
+        }
+    
+        /**
          * Construct a new DependentPhoneNumberReader
          * 
          * @param accountSid The account_sid

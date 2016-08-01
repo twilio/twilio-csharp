@@ -162,15 +162,15 @@ namespace Twilio.Creators.IpMessaging.V1 {
                 request.AddPostParam("Type", type.ToString());
             }
             
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (string.IsNullOrEmpty(certificate)) {
+            if (certificate != null) {
                 request.AddPostParam("Certificate", certificate);
             }
             
-            if (string.IsNullOrEmpty(privateKey)) {
+            if (privateKey != null) {
                 request.AddPostParam("PrivateKey", privateKey);
             }
             
@@ -178,7 +178,7 @@ namespace Twilio.Creators.IpMessaging.V1 {
                 request.AddPostParam("Sandbox", sandbox.ToString());
             }
             
-            if (string.IsNullOrEmpty(apiKey)) {
+            if (apiKey != null) {
                 request.AddPostParam("ApiKey", apiKey);
             }
         }

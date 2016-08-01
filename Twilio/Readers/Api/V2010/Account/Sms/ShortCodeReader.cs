@@ -17,6 +17,12 @@ namespace Twilio.Readers.Api.V2010.Account.Sms {
         private string shortCode;
     
         /**
+         * Construct a new ShortCodeReader.
+         */
+        public ShortCodeReader() {
+        }
+    
+        /**
          * Construct a new ShortCodeReader
          * 
          * @param accountSid The account_sid

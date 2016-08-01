@@ -15,6 +15,12 @@ namespace Twilio.Readers.Api.V2010.Account {
         private string accountSid;
     
         /**
+         * Construct a new SigningKeyReader.
+         */
+        public SigningKeyReader() {
+        }
+    
+        /**
          * Construct a new SigningKeyReader
          * 
          * @param accountSid The account_sid

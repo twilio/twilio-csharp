@@ -17,6 +17,15 @@ namespace Twilio.Readers.Api.V2010.Account.Call {
         private string dateCreated;
     
         /**
+         * Construct a new RecordingReader.
+         * 
+         * @param callSid The call_sid
+         */
+        public RecordingReader(string callSid) {
+            this.callSid = callSid;
+        }
+    
+        /**
          * Construct a new RecordingReader
          * 
          * @param accountSid The account_sid

@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account {
         private string sid;
     
         /**
+         * Construct a new SigningKeyFetcher.
+         * 
+         * @param sid The sid
+         */
+        public SigningKeyFetcher(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new SigningKeyFetcher
          * 
          * @param accountSid The account_sid

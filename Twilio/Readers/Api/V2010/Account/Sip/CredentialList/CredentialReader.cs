@@ -16,6 +16,15 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.CredentialList {
         private string credentialListSid;
     
         /**
+         * Construct a new CredentialReader.
+         * 
+         * @param credentialListSid The credential_list_sid
+         */
+        public CredentialReader(string credentialListSid) {
+            this.credentialListSid = credentialListSid;
+        }
+    
+        /**
          * Construct a new CredentialReader
          * 
          * @param accountSid The account_sid

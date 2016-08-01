@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sms {
         private string sid;
     
         /**
+         * Construct a new ShortCodeFetcher.
+         * 
+         * @param sid Fetch by unique short-code Sid
+         */
+        public ShortCodeFetcher(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new ShortCodeFetcher
          * 
          * @param accountSid The account_sid

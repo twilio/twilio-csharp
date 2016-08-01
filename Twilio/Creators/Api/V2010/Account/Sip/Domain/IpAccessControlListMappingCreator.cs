@@ -16,6 +16,17 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
         private string ipAccessControlListSid;
     
         /**
+         * Construct a new IpAccessControlListMappingCreator.
+         * 
+         * @param domainSid The domain_sid
+         * @param ipAccessControlListSid The ip_access_control_list_sid
+         */
+        public IpAccessControlListMappingCreator(string domainSid, string ipAccessControlListSid) {
+            this.domainSid = domainSid;
+            this.ipAccessControlListSid = ipAccessControlListSid;
+        }
+    
+        /**
          * Construct a new IpAccessControlListMappingCreator
          * 
          * @param accountSid The account_sid
@@ -104,7 +115,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(ipAccessControlListSid)) {
+            if (ipAccessControlListSid != null) {
                 request.AddPostParam("IpAccessControlListSid", ipAccessControlListSid);
             }
         }

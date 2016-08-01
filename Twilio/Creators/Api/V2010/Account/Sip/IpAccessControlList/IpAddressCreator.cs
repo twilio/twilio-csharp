@@ -17,6 +17,19 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.IpAccessControlList {
         private string ipAddress;
     
         /**
+         * Construct a new IpAddressCreator.
+         * 
+         * @param ipAccessControlListSid The ip_access_control_list_sid
+         * @param friendlyName The friendly_name
+         * @param ipAddress The ip_address
+         */
+        public IpAddressCreator(string ipAccessControlListSid, string friendlyName, string ipAddress) {
+            this.ipAccessControlListSid = ipAccessControlListSid;
+            this.friendlyName = friendlyName;
+            this.ipAddress = ipAddress;
+        }
+    
+        /**
          * Construct a new IpAddressCreator
          * 
          * @param accountSid The account_sid
@@ -107,11 +120,11 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.IpAccessControlList {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (string.IsNullOrEmpty(friendlyName)) {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (string.IsNullOrEmpty(ipAddress)) {
+            if (ipAddress != null) {
                 request.AddPostParam("IpAddress", ipAddress);
             }
         }

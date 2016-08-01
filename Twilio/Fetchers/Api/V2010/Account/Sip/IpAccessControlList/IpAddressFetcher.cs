@@ -16,6 +16,17 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip.IpAccessControlList {
         private string sid;
     
         /**
+         * Construct a new IpAddressFetcher.
+         * 
+         * @param ipAccessControlListSid The ip_access_control_list_sid
+         * @param sid The sid
+         */
+        public IpAddressFetcher(string ipAccessControlListSid, string sid) {
+            this.ipAccessControlListSid = ipAccessControlListSid;
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new IpAddressFetcher
          * 
          * @param accountSid The account_sid

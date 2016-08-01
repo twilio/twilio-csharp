@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sms {
         private string sid;
     
         /**
+         * Construct a new SmsMessageFetcher.
+         * 
+         * @param sid The sid
+         */
+        public SmsMessageFetcher(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new SmsMessageFetcher
          * 
          * @param accountSid The account_sid

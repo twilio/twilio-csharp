@@ -25,6 +25,15 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
         private bool? beta;
     
         /**
+         * Construct a new TollFreeReader.
+         * 
+         * @param countryCode The country_code
+         */
+        public TollFreeReader(string countryCode) {
+            this.countryCode = countryCode;
+        }
+    
+        /**
          * Construct a new TollFreeReader
          * 
          * @param accountSid The account_sid
