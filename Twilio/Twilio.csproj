@@ -72,7 +72,7 @@
     <Compile Include="Resources\ResourceSet.cs" />
     <Compile Include="Resources\SidResource.cs" />
     <Compile Include="Twilio.cs" />
-<!-- Yoyodyne Generated Artifacts -->
+    <!-- Yoyodyne Generated Artifacts -->
     <Compile Include="Creators\Api\V2010\AccountCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\AddressCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\ApplicationCreator.cs" />
@@ -468,6 +468,9 @@
     <Compile Include="Updaters\Trunking\V1\TrunkUpdater.cs" />
     <Compile Include="Updaters\Trunking\V1\Trunk\OriginationUrlUpdater.cs" />
     <!-- End Yoyodyne Generated Artifacts -->
+    <Compile Include="TwiML\VoiceResponse.cs" />
+    <Compile Include="TwiML\MessagingResponse.cs" />
+    <Compile Include="TwiML\Message.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -486,5 +489,8 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TwiML\" />
   </ItemGroup>
 </Project>

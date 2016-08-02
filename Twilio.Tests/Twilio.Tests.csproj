@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="**\*.cs" />
     <Compile Include="TwilioTest.cs" />
+    <Compile Include="TwiML\MessagingResponseTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -58,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Converters\" />
+    <Folder Include="TwiML\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Twilio\Twilio.csproj">
