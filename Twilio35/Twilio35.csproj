@@ -68,15 +68,15 @@
     <Compile Include="..\Twilio\Resources\Resource.cs"><Link>Resources\Resource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\ResourceSet.cs"><Link>Resources\ResourceSet.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\SidResource.cs"><Link>Resources\SidResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Twilio\JWT\AccessToken.cs"><Link>Twilio\JWT\AccessToken.cs</Link></Compile>
-    <Compile Include="..\Twilio\Twilio\JWT\ConversationsGrant.cs"><Link>Twilio\JWT\ConversationsGrant.cs</Link></Compile>
-    <Compile Include="..\Twilio\Twilio\JWT\HttpUtility.cs"><Link>Twilio\JWT\HttpUtility.cs</Link></Compile>
-    <Compile Include="..\Twilio\Twilio\JWT\IGrant.cs"><Link>Twilio\JWT\IGrant.cs</Link></Compile>
-    <Compile Include="..\Twilio\Twilio\JWT\IpMessagingGrant.cs"><Link>Twilio\JWT\IpMessagingGrant.cs</Link></Compile>
-    <Compile Include="..\Twilio\Twilio\JWT\Policy.cs"><Link>Twilio\JWT\Policy.cs</Link></Compile>
-    <Compile Include="..\Twilio\Twilio\JWT\ScopeURI.cs"><Link>Twilio\JWT\ScopeURI.cs</Link></Compile>
-    <Compile Include="..\Twilio\Twilio\JWT\TaskRouterCapability.cs"><Link>Twilio\JWT\TaskRouterCapability.cs</Link></Compile>
-    <Compile Include="..\Twilio\Twilio\JWT\TwilioCapability.cs"><Link>Twilio\JWT\TwilioCapability.cs</Link></Compile>
+    <Compile Include="..\Twilio\JWT\AccessToken.cs"><Link>JWT\AccessToken.cs</Link></Compile>
+    <Compile Include="..\Twilio\JWT\ConversationsGrant.cs"><Link>JWT\ConversationsGrant.cs</Link></Compile>
+    <Compile Include="..\Twilio\JWT\HttpUtility.cs"><Link>JWT\HttpUtility.cs</Link></Compile>
+    <Compile Include="..\Twilio\JWT\IGrant.cs"><Link>JWT\IGrant.cs</Link></Compile>
+    <Compile Include="..\Twilio\JWT\IpMessagingGrant.cs"><Link>JWT\IpMessagingGrant.cs</Link></Compile>
+    <Compile Include="..\Twilio\JWT\Policy.cs"><Link>JWT\Policy.cs</Link></Compile>
+    <Compile Include="..\Twilio\JWT\ScopeURI.cs"><Link>JWT\ScopeURI.cs</Link></Compile>
+    <Compile Include="..\Twilio\JWT\TaskRouterCapability.cs"><Link>JWT\TaskRouterCapability.cs</Link></Compile>
+    <Compile Include="..\Twilio\JWT\TwilioCapability.cs"><Link>JWT\TwilioCapability.cs</Link></Compile>
     <Compile Include="..\Twilio\Twilio.cs"><Link>Twilio.cs</Link></Compile>
 <!-- Yoyodyne Generated Artifacts -->
     <Compile Include="..\Twilio\Creators\Api\V2010\AccountCreator.cs"><Link>Creators\Api\V2010\AccountCreator.cs</Link></Compile>
@@ -483,6 +483,7 @@
     <Reference Include="JWT">
       <HintPath>..\packages\JWT.1.3.4\lib\3.5\JWT.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

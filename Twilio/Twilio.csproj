@@ -71,15 +71,15 @@
     <Compile Include="Resources\Resource.cs" />
     <Compile Include="Resources\ResourceSet.cs" />
     <Compile Include="Resources\SidResource.cs" />
-    <Compile Include="Twilio\JWT\AccessToken.cs" />
-    <Compile Include="Twilio\JWT\ConversationsGrant.cs" />
-    <Compile Include="Twilio\JWT\HttpUtility.cs" />
-    <Compile Include="Twilio\JWT\IGrant.cs" />
-    <Compile Include="Twilio\JWT\IpMessagingGrant.cs" />
-    <Compile Include="Twilio\JWT\Policy.cs" />
-    <Compile Include="Twilio\JWT\ScopeURI.cs" />
-    <Compile Include="Twilio\JWT\TaskRouterCapability.cs" />
-    <Compile Include="Twilio\JWT\TwilioCapability.cs" />
+    <Compile Include="JWT\AccessToken.cs" />
+    <Compile Include="JWT\ConversationsGrant.cs" />
+    <Compile Include="JWT\HttpUtility.cs" />
+    <Compile Include="JWT\IGrant.cs" />
+    <Compile Include="JWT\IpMessagingGrant.cs" />
+    <Compile Include="JWT\Policy.cs" />
+    <Compile Include="JWT\ScopeURI.cs" />
+    <Compile Include="JWT\TaskRouterCapability.cs" />
+    <Compile Include="JWT\TwilioCapability.cs" />
     <Compile Include="Twilio.cs" />
 <!-- Yoyodyne Generated Artifacts -->
     <Compile Include="Creators\Api\V2010\AccountCreator.cs" />

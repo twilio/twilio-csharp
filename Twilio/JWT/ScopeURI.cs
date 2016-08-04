@@ -36,7 +36,11 @@ namespace Twilio.JWT
 			if (obj == null) return new Dictionary<string, object>();
 
 			var type = obj.GetType();
+			#if NET40
 			var props = type.GetTypeInfo().DeclaredProperties;
+			#else
+			var props = type.GetProperties();
+			#endif
 
 			var coll = new Dictionary<string, object>();
 
@@ -48,7 +52,11 @@ namespace Twilio.JWT
 
 				if (value != null)
 				{
+					#if NET40
 					if (!propType.IsByRef || propType == typeof(string))
+					#else
+					if (propType.IsPrimitive || propType == typeof(string))
+					#endif
 					{
 						coll.Add(name, value);
 					}

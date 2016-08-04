@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if NET40
+using System;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -214,4 +215,4 @@ namespace Twilio
 		#endregion
 	}
 }
-
+#endif
