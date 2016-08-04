@@ -3,18 +3,18 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Resources.Taskrouter.V1.Workspace.Task;
+using Twilio.Resources.Taskrouter.V1.Workspace.Worker;
 using Twilio.Updaters;
 
 #if NET40
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
+namespace Twilio.Updaters.Taskrouter.V1.Workspace.Worker {
 
     public class ReservationUpdater : Updater<ReservationResource> {
         private string workspaceSid;
-        private string taskSid;
+        private string workerSid;
         private string sid;
         private ReservationResource.Status reservationStatus;
         private string workerActivitySid;
@@ -40,12 +40,12 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
          * Construct a new ReservationUpdater
          * 
          * @param workspaceSid The workspace_sid
-         * @param taskSid The task_sid
+         * @param workerSid The worker_sid
          * @param sid The sid
          */
-        public ReservationUpdater(string workspaceSid, string taskSid, string sid) {
+        public ReservationUpdater(string workspaceSid, string workerSid, string sid) {
             this.workspaceSid = workspaceSid;
-            this.taskSid = taskSid;
+            this.workerSid = workerSid;
             this.sid = sid;
         }
     
@@ -309,7 +309,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Tasks/" + this.taskSid + "/Reservations/" + this.sid + ""
+                "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.workerSid + "/Reservations/" + this.sid + ""
             );
             
             addPostParams(request);
@@ -344,7 +344,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Tasks/" + this.taskSid + "/Reservations/" + this.sid + ""
+                "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.workerSid + "/Reservations/" + this.sid + ""
             );
             
             addPostParams(request);

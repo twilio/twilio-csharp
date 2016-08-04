@@ -1,4 +1,6 @@
+using System;
 using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -14,8 +16,8 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
         private string workspaceSid;
         private string friendlyName;
         private string configuration;
-        private string assignmentCallbackUrl;
-        private string fallbackAssignmentCallbackUrl;
+        private Uri assignmentCallbackUrl;
+        private Uri fallbackAssignmentCallbackUrl;
         private int? taskReservationTimeout;
     
         /**
@@ -26,7 +28,7 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param configuration The configuration
          * @param assignmentCallbackUrl The assignment_callback_url
          */
-        public WorkflowCreator(string workspaceSid, string friendlyName, string configuration, string assignmentCallbackUrl) {
+        public WorkflowCreator(string workspaceSid, string friendlyName, string configuration, Uri assignmentCallbackUrl) {
             this.workspaceSid = workspaceSid;
             this.friendlyName = friendlyName;
             this.configuration = configuration;
@@ -39,9 +41,19 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
          * @param fallbackAssignmentCallbackUrl The fallback_assignment_callback_url
          * @return this
          */
-        public WorkflowCreator setFallbackAssignmentCallbackUrl(string fallbackAssignmentCallbackUrl) {
+        public WorkflowCreator setFallbackAssignmentCallbackUrl(Uri fallbackAssignmentCallbackUrl) {
             this.fallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl;
             return this;
+        }
+    
+        /**
+         * The fallback_assignment_callback_url
+         * 
+         * @param fallbackAssignmentCallbackUrl The fallback_assignment_callback_url
+         * @return this
+         */
+        public WorkflowCreator setFallbackAssignmentCallbackUrl(string fallbackAssignmentCallbackUrl) {
+            return setFallbackAssignmentCallbackUrl(Promoter.UriFromString(fallbackAssignmentCallbackUrl));
         }
     
         /**
@@ -140,11 +152,11 @@ namespace Twilio.Creators.Taskrouter.V1.Workspace {
             }
             
             if (assignmentCallbackUrl != null) {
-                request.AddPostParam("AssignmentCallbackUrl", assignmentCallbackUrl);
+                request.AddPostParam("AssignmentCallbackUrl", assignmentCallbackUrl.ToString());
             }
             
             if (fallbackAssignmentCallbackUrl != null) {
-                request.AddPostParam("FallbackAssignmentCallbackUrl", fallbackAssignmentCallbackUrl);
+                request.AddPostParam("FallbackAssignmentCallbackUrl", fallbackAssignmentCallbackUrl.ToString());
             }
             
             if (taskReservationTimeout != null) {

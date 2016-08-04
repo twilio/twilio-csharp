@@ -68,6 +68,11 @@
     <Compile Include="..\Twilio\Resources\Resource.cs"><Link>Resources\Resource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\ResourceSet.cs"><Link>Resources\ResourceSet.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\SidResource.cs"><Link>Resources\SidResource.cs</Link></Compile>
+    <Compile Include="..\Twilio\TwiML\VoiceResponse.cs"><Link>TwiML\VoiceResponse.cs</Link></Compile>
+    <Compile Include="..\Twilio\TwiML\MessagingResponse.cs"><Link>TwiML\MessagingResponse.cs</Link></Compile>
+    <Compile Include="..\Twilio\TwiML\Message.cs"><Link>TwiML\Message.cs</Link></Compile>
+    <Compile Include="..\Twilio\TwiML\Dial.cs"><Link>TwiML\Dial.cs</Link></Compile>
+    <Compile Include="..\Twilio\TwiML\Gather.cs"><Link>TwiML\Gather.cs</Link></Compile>
     <Compile Include="..\Twilio\Twilio.cs"><Link>Twilio.cs</Link></Compile>
 <!-- Yoyodyne Generated Artifacts -->
     <Compile Include="..\Twilio\Creators\Api\V2010\AccountCreator.cs"><Link>Creators\Api\V2010\AccountCreator.cs</Link></Compile>
@@ -234,6 +239,7 @@
     <Compile Include="..\Twilio\Fetchers\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsFetcher.cs"><Link>Fetchers\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Taskrouter\V1\Workspace\Task\ReservationFetcher.cs"><Link>Fetchers\Taskrouter\V1\Workspace\Task\ReservationFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Taskrouter\V1\Workspace\WorkerFetcher.cs"><Link>Fetchers\Taskrouter\V1\Workspace\WorkerFetcher.cs</Link></Compile>
+    <Compile Include="..\Twilio\Fetchers\Taskrouter\V1\Workspace\Worker\ReservationFetcher.cs"><Link>Fetchers\Taskrouter\V1\Workspace\Worker\ReservationFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Taskrouter\V1\Workspace\Worker\WorkerStatisticsFetcher.cs"><Link>Fetchers\Taskrouter\V1\Workspace\Worker\WorkerStatisticsFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Taskrouter\V1\Workspace\Worker\WorkersStatisticsFetcher.cs"><Link>Fetchers\Taskrouter\V1\Workspace\Worker\WorkersStatisticsFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Fetchers\Taskrouter\V1\Workspace\WorkflowFetcher.cs"><Link>Fetchers\Taskrouter\V1\Workspace\WorkflowFetcher.cs</Link></Compile>
@@ -319,6 +325,7 @@
     <Compile Include="..\Twilio\Readers\Taskrouter\V1\Workspace\TaskReader.cs"><Link>Readers\Taskrouter\V1\Workspace\TaskReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Taskrouter\V1\Workspace\Task\ReservationReader.cs"><Link>Readers\Taskrouter\V1\Workspace\Task\ReservationReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Taskrouter\V1\Workspace\WorkerReader.cs"><Link>Readers\Taskrouter\V1\Workspace\WorkerReader.cs</Link></Compile>
+    <Compile Include="..\Twilio\Readers\Taskrouter\V1\Workspace\Worker\ReservationReader.cs"><Link>Readers\Taskrouter\V1\Workspace\Worker\ReservationReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Taskrouter\V1\Workspace\WorkflowReader.cs"><Link>Readers\Taskrouter\V1\Workspace\WorkflowReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Trunking\V1\TrunkReader.cs"><Link>Readers\Trunking\V1\TrunkReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Readers\Trunking\V1\Trunk\CredentialListReader.cs"><Link>Readers\Trunking\V1\Trunk\CredentialListReader.cs</Link></Compile>
@@ -413,6 +420,7 @@
     <Compile Include="..\Twilio\Resources\Taskrouter\V1\Workspace\TaskResource.cs"><Link>Resources\Taskrouter\V1\Workspace\TaskResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Taskrouter\V1\Workspace\Task\ReservationResource.cs"><Link>Resources\Taskrouter\V1\Workspace\Task\ReservationResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Taskrouter\V1\Workspace\WorkerResource.cs"><Link>Resources\Taskrouter\V1\Workspace\WorkerResource.cs</Link></Compile>
+    <Compile Include="..\Twilio\Resources\Taskrouter\V1\Workspace\Worker\ReservationResource.cs"><Link>Resources\Taskrouter\V1\Workspace\Worker\ReservationResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Taskrouter\V1\Workspace\Worker\WorkerStatisticsResource.cs"><Link>Resources\Taskrouter\V1\Workspace\Worker\WorkerStatisticsResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Taskrouter\V1\Workspace\Worker\WorkersStatisticsResource.cs"><Link>Resources\Taskrouter\V1\Workspace\Worker\WorkersStatisticsResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Resources\Taskrouter\V1\Workspace\WorkflowResource.cs"><Link>Resources\Taskrouter\V1\Workspace\WorkflowResource.cs</Link></Compile>
@@ -461,6 +469,7 @@
     <Compile Include="..\Twilio\Updaters\Taskrouter\V1\Workspace\TaskUpdater.cs"><Link>Updaters\Taskrouter\V1\Workspace\TaskUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Taskrouter\V1\Workspace\Task\ReservationUpdater.cs"><Link>Updaters\Taskrouter\V1\Workspace\Task\ReservationUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Taskrouter\V1\Workspace\WorkerUpdater.cs"><Link>Updaters\Taskrouter\V1\Workspace\WorkerUpdater.cs</Link></Compile>
+    <Compile Include="..\Twilio\Updaters\Taskrouter\V1\Workspace\Worker\ReservationUpdater.cs"><Link>Updaters\Taskrouter\V1\Workspace\Worker\ReservationUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Taskrouter\V1\Workspace\WorkflowUpdater.cs"><Link>Updaters\Taskrouter\V1\Workspace\WorkflowUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Trunking\V1\TrunkUpdater.cs"><Link>Updaters\Trunking\V1\TrunkUpdater.cs</Link></Compile>
     <Compile Include="..\Twilio\Updaters\Trunking\V1\Trunk\OriginationUrlUpdater.cs"><Link>Updaters\Trunking\V1\Trunk\OriginationUrlUpdater.cs</Link></Compile>
@@ -468,6 +477,8 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net35\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -475,5 +486,8 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TwiML\" />
   </ItemGroup>
 </Project>

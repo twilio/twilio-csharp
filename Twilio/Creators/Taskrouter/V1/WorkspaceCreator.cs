@@ -1,4 +1,6 @@
+using System;
 using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -12,7 +14,7 @@ namespace Twilio.Creators.Taskrouter.V1 {
 
     public class WorkspaceCreator : Creator<WorkspaceResource> {
         private string friendlyName;
-        private string eventCallbackUrl;
+        private Uri eventCallbackUrl;
         private string template;
     
         /**
@@ -30,9 +32,19 @@ namespace Twilio.Creators.Taskrouter.V1 {
          * @param eventCallbackUrl The event_callback_url
          * @return this
          */
-        public WorkspaceCreator setEventCallbackUrl(string eventCallbackUrl) {
+        public WorkspaceCreator setEventCallbackUrl(Uri eventCallbackUrl) {
             this.eventCallbackUrl = eventCallbackUrl;
             return this;
+        }
+    
+        /**
+         * The event_callback_url
+         * 
+         * @param eventCallbackUrl The event_callback_url
+         * @return this
+         */
+        public WorkspaceCreator setEventCallbackUrl(string eventCallbackUrl) {
+            return setEventCallbackUrl(Promoter.UriFromString(eventCallbackUrl));
         }
     
         /**
@@ -127,7 +139,7 @@ namespace Twilio.Creators.Taskrouter.V1 {
             }
             
             if (eventCallbackUrl != null) {
-                request.AddPostParam("EventCallbackUrl", eventCallbackUrl);
+                request.AddPostParam("EventCallbackUrl", eventCallbackUrl.ToString());
             }
             
             if (template != null) {

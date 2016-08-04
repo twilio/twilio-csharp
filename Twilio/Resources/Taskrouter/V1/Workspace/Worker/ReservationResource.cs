@@ -3,13 +3,13 @@ using System;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Fetchers.Taskrouter.V1.Workspace.Task;
+using Twilio.Fetchers.Taskrouter.V1.Workspace.Worker;
 using Twilio.Http;
-using Twilio.Readers.Taskrouter.V1.Workspace.Task;
+using Twilio.Readers.Taskrouter.V1.Workspace.Worker;
 using Twilio.Resources;
-using Twilio.Updaters.Taskrouter.V1.Workspace.Task;
+using Twilio.Updaters.Taskrouter.V1.Workspace.Worker;
 
-namespace Twilio.Resources.Taskrouter.V1.Workspace.Task {
+namespace Twilio.Resources.Taskrouter.V1.Workspace.Worker {
 
     public class ReservationResource : SidResource {
         public sealed class Status : IStringEnum {
@@ -49,35 +49,35 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace.Task {
          * read
          * 
          * @param workspaceSid The workspace_sid
-         * @param taskSid The task_sid
+         * @param workerSid The worker_sid
          * @return ReservationReader capable of executing the read
          */
-        public static ReservationReader Read(string workspaceSid, string taskSid) {
-            return new ReservationReader(workspaceSid, taskSid);
+        public static ReservationReader Read(string workspaceSid, string workerSid) {
+            return new ReservationReader(workspaceSid, workerSid);
         }
     
         /**
          * fetch
          * 
          * @param workspaceSid The workspace_sid
-         * @param taskSid The task_sid
+         * @param workerSid The worker_sid
          * @param sid The sid
          * @return ReservationFetcher capable of executing the fetch
          */
-        public static ReservationFetcher Fetch(string workspaceSid, string taskSid, string sid) {
-            return new ReservationFetcher(workspaceSid, taskSid, sid);
+        public static ReservationFetcher Fetch(string workspaceSid, string workerSid, string sid) {
+            return new ReservationFetcher(workspaceSid, workerSid, sid);
         }
     
         /**
          * update
          * 
          * @param workspaceSid The workspace_sid
-         * @param taskSid The task_sid
+         * @param workerSid The worker_sid
          * @param sid The sid
          * @return ReservationUpdater capable of executing the update
          */
-        public static ReservationUpdater Update(string workspaceSid, string taskSid, string sid) {
-            return new ReservationUpdater(workspaceSid, taskSid, sid);
+        public static ReservationUpdater Update(string workspaceSid, string workerSid, string sid) {
+            return new ReservationUpdater(workspaceSid, workerSid, sid);
         }
     
         /**

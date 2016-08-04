@@ -23,6 +23,13 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
         private bool? excludeLocalAddressRequired;
         private bool? excludeForeignAddressRequired;
         private bool? beta;
+        private Twilio.Types.PhoneNumber nearNumber;
+        private string nearLatLong;
+        private int? distance;
+        private string inPostalCode;
+        private string inRegion;
+        private string inRateCenter;
+        private string inLata;
     
         /**
          * Construct a new LocalReader.
@@ -140,6 +147,83 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
          */
         public LocalReader ByBeta(bool? beta) {
             this.beta = beta;
+            return this;
+        }
+    
+        /**
+         * The near_number
+         * 
+         * @param nearNumber The near_number
+         * @return this
+         */
+        public LocalReader ByNearNumber(Twilio.Types.PhoneNumber nearNumber) {
+            this.nearNumber = nearNumber;
+            return this;
+        }
+    
+        /**
+         * The near_lat_long
+         * 
+         * @param nearLatLong The near_lat_long
+         * @return this
+         */
+        public LocalReader ByNearLatLong(string nearLatLong) {
+            this.nearLatLong = nearLatLong;
+            return this;
+        }
+    
+        /**
+         * The distance
+         * 
+         * @param distance The distance
+         * @return this
+         */
+        public LocalReader ByDistance(int? distance) {
+            this.distance = distance;
+            return this;
+        }
+    
+        /**
+         * The in_postal_code
+         * 
+         * @param inPostalCode The in_postal_code
+         * @return this
+         */
+        public LocalReader ByInPostalCode(string inPostalCode) {
+            this.inPostalCode = inPostalCode;
+            return this;
+        }
+    
+        /**
+         * The in_region
+         * 
+         * @param inRegion The in_region
+         * @return this
+         */
+        public LocalReader ByInRegion(string inRegion) {
+            this.inRegion = inRegion;
+            return this;
+        }
+    
+        /**
+         * The in_rate_center
+         * 
+         * @param inRateCenter The in_rate_center
+         * @return this
+         */
+        public LocalReader ByInRateCenter(string inRateCenter) {
+            this.inRateCenter = inRateCenter;
+            return this;
+        }
+    
+        /**
+         * The in_lata
+         * 
+         * @param inLata The in_lata
+         * @return this
+         */
+        public LocalReader ByInLata(string inLata) {
+            this.inLata = inLata;
             return this;
         }
     
@@ -275,6 +359,34 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
             
             if (beta != null) {
                 request.AddQueryParam("Beta", beta.ToString());
+            }
+            
+            if (nearNumber != null) {
+                request.AddQueryParam("NearNumber", nearNumber.ToString());
+            }
+            
+            if (nearLatLong != null) {
+                request.AddQueryParam("NearLatLong", nearLatLong);
+            }
+            
+            if (distance != null) {
+                request.AddQueryParam("Distance", distance.ToString());
+            }
+            
+            if (inPostalCode != null) {
+                request.AddQueryParam("InPostalCode", inPostalCode);
+            }
+            
+            if (inRegion != null) {
+                request.AddQueryParam("InRegion", inRegion);
+            }
+            
+            if (inRateCenter != null) {
+                request.AddQueryParam("InRateCenter", inRateCenter);
+            }
+            
+            if (inLata != null) {
+                request.AddQueryParam("InLata", inLata);
             }
             
             request.AddQueryParam("PageSize", GetPageSize().ToString());

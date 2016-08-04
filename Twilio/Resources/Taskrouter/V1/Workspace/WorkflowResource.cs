@@ -66,7 +66,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
          * @param assignmentCallbackUrl The assignment_callback_url
          * @return WorkflowCreator capable of executing the create
          */
-        public static WorkflowCreator Create(string workspaceSid, string friendlyName, string configuration, string assignmentCallbackUrl) {
+        public static WorkflowCreator Create(string workspaceSid, string friendlyName, string configuration, Uri assignmentCallbackUrl) {
             return new WorkflowCreator(workspaceSid, friendlyName, configuration, assignmentCallbackUrl);
         }
     
@@ -88,7 +88,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         [JsonProperty("account_sid")]
         private readonly string accountSid;
         [JsonProperty("assignment_callback_url")]
-        private readonly string assignmentCallbackUrl;
+        private readonly Uri assignmentCallbackUrl;
         [JsonProperty("configuration")]
         private readonly string configuration;
         [JsonProperty("date_created")]
@@ -98,7 +98,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         [JsonProperty("document_content_type")]
         private readonly string documentContentType;
         [JsonProperty("fallback_assignment_callback_url")]
-        private readonly string fallbackAssignmentCallbackUrl;
+        private readonly Uri fallbackAssignmentCallbackUrl;
         [JsonProperty("friendly_name")]
         private readonly string friendlyName;
         [JsonProperty("sid")]
@@ -115,7 +115,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         private WorkflowResource([JsonProperty("account_sid")]
                                  string accountSid, 
                                  [JsonProperty("assignment_callback_url")]
-                                 string assignmentCallbackUrl, 
+                                 Uri assignmentCallbackUrl, 
                                  [JsonProperty("configuration")]
                                  string configuration, 
                                  [JsonProperty("date_created")]
@@ -125,7 +125,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
                                  [JsonProperty("document_content_type")]
                                  string documentContentType, 
                                  [JsonProperty("fallback_assignment_callback_url")]
-                                 string fallbackAssignmentCallbackUrl, 
+                                 Uri fallbackAssignmentCallbackUrl, 
                                  [JsonProperty("friendly_name")]
                                  string friendlyName, 
                                  [JsonProperty("sid")]
@@ -157,7 +157,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The assignment_callback_url
          */
-        public string GetAssignmentCallbackUrl() {
+        public Uri GetAssignmentCallbackUrl() {
             return this.assignmentCallbackUrl;
         }
     
@@ -192,7 +192,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
         /**
          * @return The fallback_assignment_callback_url
          */
-        public string GetFallbackAssignmentCallbackUrl() {
+        public Uri GetFallbackAssignmentCallbackUrl() {
             return this.fallbackAssignmentCallbackUrl;
         }
     

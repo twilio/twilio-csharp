@@ -3,28 +3,28 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Readers;
 using Twilio.Resources;
-using Twilio.Resources.Taskrouter.V1.Workspace.Task;
+using Twilio.Resources.Taskrouter.V1.Workspace.Worker;
 
 #if NET40
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Readers.Taskrouter.V1.Workspace.Task {
+namespace Twilio.Readers.Taskrouter.V1.Workspace.Worker {
 
     public class ReservationReader : Reader<ReservationResource> {
         private string workspaceSid;
-        private string taskSid;
+        private string workerSid;
         private ReservationResource.Status reservationStatus;
     
         /**
          * Construct a new ReservationReader
          * 
          * @param workspaceSid The workspace_sid
-         * @param taskSid The task_sid
+         * @param workerSid The worker_sid
          */
-        public ReservationReader(string workspaceSid, string taskSid) {
+        public ReservationReader(string workspaceSid, string workerSid) {
             this.workspaceSid = workspaceSid;
-            this.taskSid = taskSid;
+            this.workerSid = workerSid;
         }
     
         /**
@@ -49,7 +49,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.Task {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Tasks/" + this.taskSid + "/Reservations"
+                "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.workerSid + "/Reservations"
             );
             
             AddQueryParams(request);
@@ -71,7 +71,7 @@ namespace Twilio.Readers.Taskrouter.V1.Workspace.Task {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Tasks/" + this.taskSid + "/Reservations"
+                "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.workerSid + "/Reservations"
             );
             
             AddQueryParams(request);

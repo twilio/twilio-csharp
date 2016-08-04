@@ -71,8 +71,13 @@
     <Compile Include="Resources\Resource.cs" />
     <Compile Include="Resources\ResourceSet.cs" />
     <Compile Include="Resources\SidResource.cs" />
+    <Compile Include="TwiML\VoiceResponse.cs" />
+    <Compile Include="TwiML\MessagingResponse.cs" />
+    <Compile Include="TwiML\Message.cs" />
+    <Compile Include="TwiML\Dial.cs" />
+    <Compile Include="TwiML\Gather.cs" />
     <Compile Include="Twilio.cs" />
-    <!-- Yoyodyne Generated Artifacts -->
+<!-- Yoyodyne Generated Artifacts -->
     <Compile Include="Creators\Api\V2010\AccountCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\AddressCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\ApplicationCreator.cs" />
@@ -237,6 +242,7 @@
     <Compile Include="Fetchers\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsFetcher.cs" />
     <Compile Include="Fetchers\Taskrouter\V1\Workspace\Task\ReservationFetcher.cs" />
     <Compile Include="Fetchers\Taskrouter\V1\Workspace\WorkerFetcher.cs" />
+    <Compile Include="Fetchers\Taskrouter\V1\Workspace\Worker\ReservationFetcher.cs" />
     <Compile Include="Fetchers\Taskrouter\V1\Workspace\Worker\WorkerStatisticsFetcher.cs" />
     <Compile Include="Fetchers\Taskrouter\V1\Workspace\Worker\WorkersStatisticsFetcher.cs" />
     <Compile Include="Fetchers\Taskrouter\V1\Workspace\WorkflowFetcher.cs" />
@@ -322,6 +328,7 @@
     <Compile Include="Readers\Taskrouter\V1\Workspace\TaskReader.cs" />
     <Compile Include="Readers\Taskrouter\V1\Workspace\Task\ReservationReader.cs" />
     <Compile Include="Readers\Taskrouter\V1\Workspace\WorkerReader.cs" />
+    <Compile Include="Readers\Taskrouter\V1\Workspace\Worker\ReservationReader.cs" />
     <Compile Include="Readers\Taskrouter\V1\Workspace\WorkflowReader.cs" />
     <Compile Include="Readers\Trunking\V1\TrunkReader.cs" />
     <Compile Include="Readers\Trunking\V1\Trunk\CredentialListReader.cs" />
@@ -416,6 +423,7 @@
     <Compile Include="Resources\Taskrouter\V1\Workspace\TaskResource.cs" />
     <Compile Include="Resources\Taskrouter\V1\Workspace\Task\ReservationResource.cs" />
     <Compile Include="Resources\Taskrouter\V1\Workspace\WorkerResource.cs" />
+    <Compile Include="Resources\Taskrouter\V1\Workspace\Worker\ReservationResource.cs" />
     <Compile Include="Resources\Taskrouter\V1\Workspace\Worker\WorkerStatisticsResource.cs" />
     <Compile Include="Resources\Taskrouter\V1\Workspace\Worker\WorkersStatisticsResource.cs" />
     <Compile Include="Resources\Taskrouter\V1\Workspace\WorkflowResource.cs" />
@@ -464,15 +472,11 @@
     <Compile Include="Updaters\Taskrouter\V1\Workspace\TaskUpdater.cs" />
     <Compile Include="Updaters\Taskrouter\V1\Workspace\Task\ReservationUpdater.cs" />
     <Compile Include="Updaters\Taskrouter\V1\Workspace\WorkerUpdater.cs" />
+    <Compile Include="Updaters\Taskrouter\V1\Workspace\Worker\ReservationUpdater.cs" />
     <Compile Include="Updaters\Taskrouter\V1\Workspace\WorkflowUpdater.cs" />
     <Compile Include="Updaters\Trunking\V1\TrunkUpdater.cs" />
     <Compile Include="Updaters\Trunking\V1\Trunk\OriginationUrlUpdater.cs" />
     <!-- End Yoyodyne Generated Artifacts -->
-    <Compile Include="TwiML\VoiceResponse.cs" />
-    <Compile Include="TwiML\MessagingResponse.cs" />
-    <Compile Include="TwiML\Message.cs" />
-    <Compile Include="TwiML\Dial.cs" />
-    <Compile Include="TwiML\Gather.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
