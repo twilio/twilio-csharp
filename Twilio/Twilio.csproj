@@ -72,7 +72,7 @@
     <Compile Include="Resources\ResourceSet.cs" />
     <Compile Include="Resources\SidResource.cs" />
     <Compile Include="Twilio.cs" />
-<!-- Yoyodyne Generated Artifacts -->
+    <!-- Yoyodyne Generated Artifacts -->
     <Compile Include="Creators\Api\V2010\AccountCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\AddressCreator.cs" />
     <Compile Include="Creators\Api\V2010\Account\ApplicationCreator.cs" />
@@ -468,6 +468,15 @@
     <Compile Include="Updaters\Trunking\V1\TrunkUpdater.cs" />
     <Compile Include="Updaters\Trunking\V1\Trunk\OriginationUrlUpdater.cs" />
     <!-- End Yoyodyne Generated Artifacts -->
+    <Compile Include="JWT\AccessToken.cs" />
+    <Compile Include="JWT\ConversationsGrant.cs" />
+    <Compile Include="JWT\IGrant.cs" />
+    <Compile Include="JWT\IpMessagingGrant.cs" />
+    <Compile Include="JWT\Policy.cs" />
+    <Compile Include="JWT\ScopeURI.cs" />
+    <Compile Include="JWT\TaskRouterCapability.cs" />
+    <Compile Include="JWT\TwilioCapability.cs" />
+    <Compile Include="JWT\HttpUtility.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -485,6 +494,9 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="JWT">
+      <HintPath>..\packages\Portable.JWT.1.0.5\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\JWT.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
