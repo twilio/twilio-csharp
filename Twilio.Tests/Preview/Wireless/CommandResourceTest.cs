@@ -1,6 +1,7 @@
 using NSubstitute;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using Twilio;
 using Twilio.Clients;
 using Twilio.Converters;
@@ -22,8 +23,6 @@ namespace Twilio.Tests.Preview.Wireless {
             Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.PREVIEW,
                                           "/wireless/Commands/DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            
-            
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -40,7 +39,7 @@ namespace Twilio.Tests.Preview.Wireless {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }
@@ -51,7 +50,6 @@ namespace Twilio.Tests.Preview.Wireless {
             Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.PREVIEW,
                                           "/wireless/Commands");
-            
             request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -69,7 +67,7 @@ namespace Twilio.Tests.Preview.Wireless {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }
@@ -77,15 +75,14 @@ namespace Twilio.Tests.Preview.Wireless {
         [Test]
         public void TestCreateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-                        Request request = new Request(Twilio.Http.HttpMethod.POST,
-                                                      Domains.PREVIEW,
-                                                      "/wireless/Commands");
-                        request.AddPostParam("Device", Serialize("device"));
+            Request request = new Request(Twilio.Http.HttpMethod.POST,
+                                          Domains.PREVIEW,
+                                          "/wireless/Commands");
+            request.AddPostParam("Device", Serialize("device"));
             request.AddPostParam("Command", Serialize("command"));
-                        
-                        twilioRestClient.Request(request)
-                                        .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
-                                                              "null"));
+            twilioRestClient.Request(request)
+                            .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
+                                                  "null"));
             
             try {
                 CommandResource.Create("device", "command").Execute(twilioRestClient);
@@ -99,7 +96,7 @@ namespace Twilio.Tests.Preview.Wireless {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }

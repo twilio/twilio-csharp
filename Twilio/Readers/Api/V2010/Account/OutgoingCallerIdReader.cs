@@ -17,6 +17,12 @@ namespace Twilio.Readers.Api.V2010.Account {
         private string friendlyName;
     
         /**
+         * Construct a new OutgoingCallerIdReader.
+         */
+        public OutgoingCallerIdReader() {
+        }
+    
+        /**
          * Construct a new OutgoingCallerIdReader
          * 
          * @param accountSid The account_sid
@@ -58,7 +64,7 @@ namespace Twilio.Readers.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/OutgoingCallerIds.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/OutgoingCallerIds.json"
             );
             
             AddQueryParams(request);
@@ -80,7 +86,7 @@ namespace Twilio.Readers.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/OutgoingCallerIds.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/OutgoingCallerIds.json"
             );
             
             AddQueryParams(request);

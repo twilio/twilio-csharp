@@ -16,6 +16,15 @@ namespace Twilio.Readers.Api.V2010.Account.Queue {
         private string queueSid;
     
         /**
+         * Construct a new MemberReader.
+         * 
+         * @param queueSid The Queue in which to find members
+         */
+        public MemberReader(string queueSid) {
+            this.queueSid = queueSid;
+        }
+    
+        /**
          * Construct a new MemberReader
          * 
          * @param accountSid The account_sid
@@ -37,7 +46,7 @@ namespace Twilio.Readers.Api.V2010.Account.Queue {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Queues/" + this.queueSid + "/Members.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Queues/" + this.queueSid + "/Members.json"
             );
             
             AddQueryParams(request);
@@ -59,7 +68,7 @@ namespace Twilio.Readers.Api.V2010.Account.Queue {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Queues/" + this.queueSid + "/Members.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Queues/" + this.queueSid + "/Members.json"
             );
             
             AddQueryParams(request);

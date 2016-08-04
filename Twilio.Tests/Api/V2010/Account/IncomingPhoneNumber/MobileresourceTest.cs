@@ -1,6 +1,7 @@
 using NSubstitute;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using Twilio;
 using Twilio.Clients;
 using Twilio.Converters;
@@ -22,7 +23,6 @@ namespace Twilio.Tests.Api.V2010.Account.IncomingPhoneNumber {
             Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/Mobile.json");
-            
             request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -40,7 +40,7 @@ namespace Twilio.Tests.Api.V2010.Account.IncomingPhoneNumber {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }
@@ -74,7 +74,6 @@ namespace Twilio.Tests.Api.V2010.Account.IncomingPhoneNumber {
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/Mobile.json");
             request.AddPostParam("PhoneNumber", Serialize(new Twilio.Types.PhoneNumber("+987654321")));
-            
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -91,7 +90,7 @@ namespace Twilio.Tests.Api.V2010.Account.IncomingPhoneNumber {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }
@@ -104,6 +103,7 @@ namespace Twilio.Tests.Api.V2010.Account.IncomingPhoneNumber {
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address_requirements\": \"none\",\"api_version\": \"2010-04-01\",\"beta\": false,\"capabilities\": {\"mms\": true,\"sms\": false,\"voice\": true},\"date_created\": \"Thu, 30 Jul 2015 23:19:04 +0000\",\"date_updated\": \"Thu, 30 Jul 2015 23:19:04 +0000\",\"friendly_name\": \"(808) 925-5327\",\"phone_number\": \"+18089255327\",\"sid\": \"PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sms_application_sid\": \"\",\"sms_fallback_method\": \"POST\",\"sms_fallback_url\": \"\",\"sms_method\": \"POST\",\"sms_url\": \"\",\"status_callback\": \"\",\"status_callback_method\": \"POST\",\"trunk_sid\": null,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\",\"voice_application_sid\": \"\",\"voice_caller_id_lookup\": false,\"voice_fallback_method\": \"POST\",\"voice_fallback_url\": null,\"voice_method\": \"POST\",\"voice_url\": null}"));
             
             var response = MobileResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new Twilio.Types.PhoneNumber("+987654321")).Execute(twilioRestClient);
+            Assert.NotNull(response);
         }
     }
 }

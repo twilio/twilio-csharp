@@ -33,6 +33,15 @@ namespace Twilio.Updaters.Api.V2010.Account {
         private Uri voiceUrl;
     
         /**
+         * Construct a new IncomingPhoneNumberUpdater.
+         * 
+         * @param sid The sid
+         */
+        public IncomingPhoneNumberUpdater(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new IncomingPhoneNumberUpdater
          * 
          * @param ownerAccountSid The owner_account_sid
@@ -310,7 +319,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.ownerAccountSid + "/IncomingPhoneNumbers/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.ownerAccountSid != null ? this.ownerAccountSid : client.GetAccountSid()) + "/IncomingPhoneNumbers/" + this.sid + ".json"
             );
             
             addPostParams(request);
@@ -345,7 +354,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.ownerAccountSid + "/IncomingPhoneNumbers/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.ownerAccountSid != null ? this.ownerAccountSid : client.GetAccountSid()) + "/IncomingPhoneNumbers/" + this.sid + ".json"
             );
             
             addPostParams(request);
@@ -375,19 +384,19 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (accountSid != "") {
+            if (accountSid != null) {
                 request.AddPostParam("AccountSid", accountSid);
             }
             
-            if (apiVersion != "") {
+            if (apiVersion != null) {
                 request.AddPostParam("ApiVersion", apiVersion);
             }
             
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (smsApplicationSid != "") {
+            if (smsApplicationSid != null) {
                 request.AddPostParam("SmsApplicationSid", smsApplicationSid);
             }
             
@@ -415,7 +424,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
                 request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
             
-            if (voiceApplicationSid != "") {
+            if (voiceApplicationSid != null) {
                 request.AddPostParam("VoiceApplicationSid", voiceApplicationSid);
             }
             

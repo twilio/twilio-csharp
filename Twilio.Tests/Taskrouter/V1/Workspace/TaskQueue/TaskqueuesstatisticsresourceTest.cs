@@ -1,6 +1,7 @@
 using NSubstitute;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using Twilio;
 using Twilio.Clients;
 using Twilio.Converters;
@@ -22,7 +23,6 @@ namespace Twilio.Tests.Taskrouter.V1.Workspace.TaskQueue {
             Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.TASKROUTER,
                                           "/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskQueues/Statistics");
-            
             request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -40,7 +40,7 @@ namespace Twilio.Tests.Taskrouter.V1.Workspace.TaskQueue {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }

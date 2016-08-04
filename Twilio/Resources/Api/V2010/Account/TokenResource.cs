@@ -23,6 +23,15 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a TokenCreator to execute create.
+         * 
+         * @return TokenCreator capable of executing the create
+         */
+        public static TokenCreator Create() {
+            return new TokenCreator();
+        }
+    
+        /**
          * Converts a JSON string into a TokenResource object
          * 
          * @param json Raw JSON string

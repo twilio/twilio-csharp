@@ -25,6 +25,18 @@ namespace Twilio.Resources.Api.V2010.Account.Message {
         }
     
         /**
+         * Create a MediaDeleter to execute delete.
+         * 
+         * @param messageSid The message_sid
+         * @param sid Delete by unique media Sid
+         * @return MediaDeleter capable of executing the delete
+         */
+        public static MediaDeleter Delete(string messageSid, 
+                                          string sid) {
+            return new MediaDeleter(messageSid, sid);
+        }
+    
+        /**
          * Fetch a single media instance belonging to the account used to make the
          * request
          * 
@@ -38,6 +50,18 @@ namespace Twilio.Resources.Api.V2010.Account.Message {
         }
     
         /**
+         * Create a MediaFetcher to execute fetch.
+         * 
+         * @param messageSid The message_sid
+         * @param sid Fetch by unique media Sid
+         * @return MediaFetcher capable of executing the fetch
+         */
+        public static MediaFetcher Fetch(string messageSid, 
+                                         string sid) {
+            return new MediaFetcher(messageSid, sid);
+        }
+    
+        /**
          * Retrieve a list of medias belonging to the account used to make the request
          * 
          * @param accountSid The account_sid
@@ -46,6 +70,16 @@ namespace Twilio.Resources.Api.V2010.Account.Message {
          */
         public static MediaReader Read(string accountSid, string messageSid) {
             return new MediaReader(accountSid, messageSid);
+        }
+    
+        /**
+         * Create a MediaReader to execute read.
+         * 
+         * @param messageSid The message_sid
+         * @return MediaReader capable of executing the read
+         */
+        public static MediaReader Read(string messageSid) {
+            return new MediaReader(messageSid);
         }
     
         /**

@@ -1,6 +1,7 @@
 using NSubstitute;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using Twilio;
 using Twilio.Clients;
 using Twilio.Converters;
@@ -22,8 +23,6 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.Domain {
             Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlListMappings/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
-            
-            
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -40,7 +39,7 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.Domain {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }
@@ -63,7 +62,6 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.Domain {
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlListMappings.json");
             request.AddPostParam("IpAccessControlListSid", Serialize("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
-            
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -80,7 +78,7 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.Domain {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }
@@ -93,6 +91,7 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.Domain {
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Fri, 17 Jul 2015 21:25:15 +0000\",\"date_updated\": \"Fri, 17 Jul 2015 21:25:15 +0000\",\"friendly_name\": \"aaaa\",\"sid\": \"ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"subresource_uris\": {\"ip_addresses\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAddresses.json\"},\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlListMappings/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"));
             
             var response = IpAccessControlListMappingResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            Assert.NotNull(response);
         }
     
         [Test]
@@ -101,7 +100,6 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.Domain {
             Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlListMappings.json");
-            
             request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -119,7 +117,7 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.Domain {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }
@@ -152,8 +150,6 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.Domain {
             Request request = new Request(Twilio.Http.HttpMethod.DELETE,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlListMappings/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
-            
-            
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -170,7 +166,7 @@ namespace Twilio.Tests.Api.V2010.Account.Sip.Domain {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }

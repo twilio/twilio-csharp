@@ -24,6 +24,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a NotificationFetcher to execute fetch.
+         * 
+         * @param sid Fetch by unique notification Sid
+         * @return NotificationFetcher capable of executing the fetch
+         */
+        public static NotificationFetcher Fetch(string sid) {
+            return new NotificationFetcher(sid);
+        }
+    
+        /**
          * Delete a notification identified by the NotificationSid from an accounts log
          * 
          * @param accountSid The account_sid
@@ -35,6 +45,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a NotificationDeleter to execute delete.
+         * 
+         * @param sid Delete by unique notification Sid
+         * @return NotificationDeleter capable of executing the delete
+         */
+        public static NotificationDeleter Delete(string sid) {
+            return new NotificationDeleter(sid);
+        }
+    
+        /**
          * Retrieve a list of notifications belonging to the account used to make the
          * request
          * 
@@ -43,6 +63,15 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static NotificationReader Read(string accountSid) {
             return new NotificationReader(accountSid);
+        }
+    
+        /**
+         * Create a NotificationReader to execute read.
+         * 
+         * @return NotificationReader capable of executing the read
+         */
+        public static NotificationReader Read() {
+            return new NotificationReader();
         }
     
         /**

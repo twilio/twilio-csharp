@@ -204,6 +204,16 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         }
     
         /**
+         * Create a TriggerFetcher to execute fetch.
+         * 
+         * @param sid Fetch by unique usage-trigger Sid
+         * @return TriggerFetcher capable of executing the fetch
+         */
+        public static TriggerFetcher Fetch(string sid) {
+            return new TriggerFetcher(sid);
+        }
+    
+        /**
          * Update an instance of a usage trigger
          * 
          * @param accountSid The account_sid
@@ -215,6 +225,16 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         }
     
         /**
+         * Create a TriggerUpdater to execute update.
+         * 
+         * @param sid The sid
+         * @return TriggerUpdater capable of executing the update
+         */
+        public static TriggerUpdater Update(string sid) {
+            return new TriggerUpdater(sid);
+        }
+    
+        /**
          * delete
          * 
          * @param accountSid The account_sid
@@ -223,6 +243,16 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
          */
         public static TriggerDeleter Delete(string accountSid, string sid) {
             return new TriggerDeleter(accountSid, sid);
+        }
+    
+        /**
+         * Create a TriggerDeleter to execute delete.
+         * 
+         * @param sid The sid
+         * @return TriggerDeleter capable of executing the delete
+         */
+        public static TriggerDeleter Delete(string sid) {
+            return new TriggerDeleter(sid);
         }
     
         /**
@@ -239,6 +269,20 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         }
     
         /**
+         * Create a TriggerCreator to execute create.
+         * 
+         * @param callbackUrl URL Twilio will request when the trigger fires
+         * @param triggerValue the value at which the trigger will fire
+         * @param usageCategory The usage category the trigger watches
+         * @return TriggerCreator capable of executing the create
+         */
+        public static TriggerCreator Create(Uri callbackUrl, 
+                                            string triggerValue, 
+                                            TriggerResource.UsageCategory usageCategory) {
+            return new TriggerCreator(callbackUrl, triggerValue, usageCategory);
+        }
+    
+        /**
          * Retrieve a list of usage-triggers belonging to the account used to make the
          * request
          * 
@@ -247,6 +291,15 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
          */
         public static TriggerReader Read(string accountSid) {
             return new TriggerReader(accountSid);
+        }
+    
+        /**
+         * Create a TriggerReader to execute read.
+         * 
+         * @return TriggerReader capable of executing the read
+         */
+        public static TriggerReader Read() {
+            return new TriggerReader();
         }
     
         /**

@@ -95,6 +95,20 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a MessageCreator to execute create.
+         * 
+         * @param to The phone number to receive the message
+         * @param body The body
+         * @param from The phone number that initiated the message
+         * @return MessageCreator capable of executing the create
+         */
+        public static MessageCreator Create(Twilio.Types.PhoneNumber to, 
+                                            string body, 
+                                            Twilio.Types.PhoneNumber from) {
+            return new MessageCreator(to, body, from);
+        }
+    
+        /**
          * Send a message from the account used to make the request
          * 
          * @param accountSid The account_sid
@@ -105,6 +119,20 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static MessageCreator Create(string accountSid, Twilio.Types.PhoneNumber to, string body, string messagingServiceSid) {
             return new MessageCreator(accountSid, to, body, messagingServiceSid);
+        }
+    
+        /**
+         * Create a MessageCreator to execute create.
+         * 
+         * @param to The phone number to receive the message
+         * @param body The body
+         * @param messagingServiceSid The messaging_service_sid
+         * @return MessageCreator capable of executing the create
+         */
+        public static MessageCreator Create(Twilio.Types.PhoneNumber to, 
+                                            string body, 
+                                            string messagingServiceSid) {
+            return new MessageCreator(to, body, messagingServiceSid);
         }
     
         /**
@@ -121,6 +149,20 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a MessageCreator to execute create.
+         * 
+         * @param to The phone number to receive the message
+         * @param mediaUrl The media_url
+         * @param from The phone number that initiated the message
+         * @return MessageCreator capable of executing the create
+         */
+        public static MessageCreator Create(Twilio.Types.PhoneNumber to, 
+                                            List<Uri> mediaUrl, 
+                                            Twilio.Types.PhoneNumber from) {
+            return new MessageCreator(to, mediaUrl, from);
+        }
+    
+        /**
          * Send a message from the account used to make the request
          * 
          * @param accountSid The account_sid
@@ -131,6 +173,20 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static MessageCreator Create(string accountSid, Twilio.Types.PhoneNumber to, List<Uri> mediaUrl, string messagingServiceSid) {
             return new MessageCreator(accountSid, to, mediaUrl, messagingServiceSid);
+        }
+    
+        /**
+         * Create a MessageCreator to execute create.
+         * 
+         * @param to The phone number to receive the message
+         * @param mediaUrl The media_url
+         * @param messagingServiceSid The messaging_service_sid
+         * @return MessageCreator capable of executing the create
+         */
+        public static MessageCreator Create(Twilio.Types.PhoneNumber to, 
+                                            List<Uri> mediaUrl, 
+                                            string messagingServiceSid) {
+            return new MessageCreator(to, mediaUrl, messagingServiceSid);
         }
     
         /**
@@ -145,6 +201,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a MessageDeleter to execute delete.
+         * 
+         * @param sid The message to delete
+         * @return MessageDeleter capable of executing the delete
+         */
+        public static MessageDeleter Delete(string sid) {
+            return new MessageDeleter(sid);
+        }
+    
+        /**
          * Fetch a message belonging to the account used to make the request
          * 
          * @param accountSid The account_sid
@@ -153,6 +219,16 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static MessageFetcher Fetch(string accountSid, string sid) {
             return new MessageFetcher(accountSid, sid);
+        }
+    
+        /**
+         * Create a MessageFetcher to execute fetch.
+         * 
+         * @param sid Fetch by unique message Sid
+         * @return MessageFetcher capable of executing the fetch
+         */
+        public static MessageFetcher Fetch(string sid) {
+            return new MessageFetcher(sid);
         }
     
         /**
@@ -166,6 +242,15 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a MessageReader to execute read.
+         * 
+         * @return MessageReader capable of executing the read
+         */
+        public static MessageReader Read() {
+            return new MessageReader();
+        }
+    
+        /**
          * To redact a message-body from a post-flight message record, post to the
          * message instance resource with an empty body
          * 
@@ -175,6 +260,16 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static MessageUpdater Update(string accountSid, string sid) {
             return new MessageUpdater(accountSid, sid);
+        }
+    
+        /**
+         * Create a MessageUpdater to execute update.
+         * 
+         * @param sid The message to redact
+         * @return MessageUpdater capable of executing the update
+         */
+        public static MessageUpdater Update(string sid) {
+            return new MessageUpdater(sid);
         }
     
         /**

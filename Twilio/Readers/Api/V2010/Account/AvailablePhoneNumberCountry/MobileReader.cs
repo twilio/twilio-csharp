@@ -25,6 +25,15 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
         private bool? beta;
     
         /**
+         * Construct a new MobileReader.
+         * 
+         * @param countryCode The country_code
+         */
+        public MobileReader(string countryCode) {
+            this.countryCode = countryCode;
+        }
+    
+        /**
          * Construct a new MobileReader
          * 
          * @param accountSid The account_sid
@@ -145,7 +154,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/AvailablePhoneNumbers/" + this.countryCode + "/Mobile.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/AvailablePhoneNumbers/" + this.countryCode + "/Mobile.json"
             );
             
             AddQueryParams(request);
@@ -167,7 +176,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/AvailablePhoneNumbers/" + this.countryCode + "/Mobile.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/AvailablePhoneNumbers/" + this.countryCode + "/Mobile.json"
             );
             
             AddQueryParams(request);

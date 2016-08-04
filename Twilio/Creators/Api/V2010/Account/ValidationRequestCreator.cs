@@ -22,6 +22,15 @@ namespace Twilio.Creators.Api.V2010.Account {
         private Twilio.Http.HttpMethod statusCallbackMethod;
     
         /**
+         * Construct a new ValidationRequestCreator.
+         * 
+         * @param phoneNumber The phone_number
+         */
+        public ValidationRequestCreator(Twilio.Types.PhoneNumber phoneNumber) {
+            this.phoneNumber = phoneNumber;
+        }
+    
+        /**
          * Construct a new ValidationRequestCreator
          * 
          * @param accountSid The account_sid
@@ -108,7 +117,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/OutgoingCallerIds.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/OutgoingCallerIds.json"
             );
             
             addPostParams(request);
@@ -143,7 +152,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/OutgoingCallerIds.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/OutgoingCallerIds.json"
             );
             
             addPostParams(request);
@@ -177,7 +186,7 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("PhoneNumber", phoneNumber.ToString());
             }
             
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
@@ -185,7 +194,7 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("CallDelay", callDelay.ToString());
             }
             
-            if (extension != "") {
+            if (extension != null) {
                 request.AddPostParam("Extension", extension);
             }
             

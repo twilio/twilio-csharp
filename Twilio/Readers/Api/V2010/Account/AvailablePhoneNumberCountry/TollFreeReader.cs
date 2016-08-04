@@ -25,6 +25,15 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
         private bool? beta;
     
         /**
+         * Construct a new TollFreeReader.
+         * 
+         * @param countryCode The country_code
+         */
+        public TollFreeReader(string countryCode) {
+            this.countryCode = countryCode;
+        }
+    
+        /**
          * Construct a new TollFreeReader
          * 
          * @param accountSid The account_sid
@@ -145,7 +154,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/AvailablePhoneNumbers/" + this.countryCode + "/TollFree.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/AvailablePhoneNumbers/" + this.countryCode + "/TollFree.json"
             );
             
             AddQueryParams(request);
@@ -167,7 +176,7 @@ namespace Twilio.Readers.Api.V2010.Account.AvailablePhoneNumberCountry {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/AvailablePhoneNumbers/" + this.countryCode + "/TollFree.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/AvailablePhoneNumbers/" + this.countryCode + "/TollFree.json"
             );
             
             AddQueryParams(request);

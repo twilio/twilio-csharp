@@ -16,6 +16,15 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.Domain {
         private string domainSid;
     
         /**
+         * Construct a new CredentialListMappingReader.
+         * 
+         * @param domainSid The domain_sid
+         */
+        public CredentialListMappingReader(string domainSid) {
+            this.domainSid = domainSid;
+        }
+    
+        /**
          * Construct a new CredentialListMappingReader
          * 
          * @param accountSid The account_sid
@@ -37,7 +46,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.Domain {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains/" + this.domainSid + "/CredentialListMappings.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/CredentialListMappings.json"
             );
             
             AddQueryParams(request);
@@ -59,7 +68,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip.Domain {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains/" + this.domainSid + "/CredentialListMappings.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/CredentialListMappings.json"
             );
             
             AddQueryParams(request);

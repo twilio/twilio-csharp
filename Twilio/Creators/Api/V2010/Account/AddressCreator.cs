@@ -21,6 +21,25 @@ namespace Twilio.Creators.Api.V2010.Account {
         private string friendlyName;
     
         /**
+         * Construct a new AddressCreator.
+         * 
+         * @param customerName The customer_name
+         * @param street The street
+         * @param city The city
+         * @param region The region
+         * @param postalCode The postal_code
+         * @param isoCountry The iso_country
+         */
+        public AddressCreator(string customerName, string street, string city, string region, string postalCode, string isoCountry) {
+            this.customerName = customerName;
+            this.street = street;
+            this.city = city;
+            this.region = region;
+            this.postalCode = postalCode;
+            this.isoCountry = isoCountry;
+        }
+    
+        /**
          * Construct a new AddressCreator
          * 
          * @param accountSid The account_sid
@@ -63,7 +82,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Addresses.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Addresses.json"
             );
             
             addPostParams(request);
@@ -98,7 +117,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Addresses.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Addresses.json"
             );
             
             addPostParams(request);
@@ -128,31 +147,31 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (customerName != "") {
+            if (customerName != null) {
                 request.AddPostParam("CustomerName", customerName);
             }
             
-            if (street != "") {
+            if (street != null) {
                 request.AddPostParam("Street", street);
             }
             
-            if (city != "") {
+            if (city != null) {
                 request.AddPostParam("City", city);
             }
             
-            if (region != "") {
+            if (region != null) {
                 request.AddPostParam("Region", region);
             }
             
-            if (postalCode != "") {
+            if (postalCode != null) {
                 request.AddPostParam("PostalCode", postalCode);
             }
             
-            if (isoCountry != "") {
+            if (isoCountry != null) {
                 request.AddPostParam("IsoCountry", isoCountry);
             }
             
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

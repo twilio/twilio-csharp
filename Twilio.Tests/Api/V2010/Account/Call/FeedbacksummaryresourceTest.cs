@@ -1,6 +1,7 @@
 using NSubstitute;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using Twilio;
 using Twilio.Clients;
 using Twilio.Converters;
@@ -19,15 +20,14 @@ namespace Twilio.Tests.Api.V2010.Account.Call {
         [Test]
         public void TestCreateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-                        Request request = new Request(Twilio.Http.HttpMethod.POST,
-                                                      Domains.API,
-                                                      "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/FeedbackSummary.json");
-                        request.AddPostParam("StartDate", Serialize(MarshalConverter.DateTimeFromString("2008-01-02")));
+            Request request = new Request(Twilio.Http.HttpMethod.POST,
+                                          Domains.API,
+                                          "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/FeedbackSummary.json");
+            request.AddPostParam("StartDate", Serialize(MarshalConverter.DateTimeFromString("2008-01-02")));
             request.AddPostParam("EndDate", Serialize(MarshalConverter.DateTimeFromString("2008-01-02")));
-                        
-                        twilioRestClient.Request(request)
-                                        .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
-                                                              "null"));
+            twilioRestClient.Request(request)
+                            .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
+                                                  "null"));
             
             try {
                 FeedbackSummaryResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", MarshalConverter.DateTimeFromString("2008-01-02"), MarshalConverter.DateTimeFromString("2008-01-02")).Execute(twilioRestClient);
@@ -41,7 +41,7 @@ namespace Twilio.Tests.Api.V2010.Account.Call {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }
@@ -54,6 +54,7 @@ namespace Twilio.Tests.Api.V2010.Account.Call {
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_count\": 10200,\"call_feedback_count\": 729,\"end_date\": \"2011-01-01\",\"include_subaccounts\": false,\"issues\": [{\"count\": 45,\"description\": \"imperfect-audio\",\"percentage_of_total_calls\": \"0.04%\"}],\"quality_score_average\": 4.5,\"quality_score_median\": 4,\"quality_score_standard_deviation\": 1,\"sid\": \"FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"start_date\": \"2011-01-01\",\"status\": \"completed\",\"date_created\": \"Tue, 31 Aug 2010 20:36:28 +0000\",\"date_updated\": \"Tue, 31 Aug 2010 20:36:44 +0000\"}"));
             
             var response = FeedbackSummaryResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", MarshalConverter.DateTimeFromString("2008-01-02"), MarshalConverter.DateTimeFromString("2008-01-02")).Execute(twilioRestClient);
+            Assert.NotNull(response);
         }
     
         [Test]
@@ -62,8 +63,6 @@ namespace Twilio.Tests.Api.V2010.Account.Call {
             Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/FeedbackSummary/FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
-            
-            
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -80,7 +79,7 @@ namespace Twilio.Tests.Api.V2010.Account.Call {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }
@@ -102,8 +101,6 @@ namespace Twilio.Tests.Api.V2010.Account.Call {
             Request request = new Request(Twilio.Http.HttpMethod.DELETE,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/FeedbackSummary/FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
-            
-            
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -120,7 +117,7 @@ namespace Twilio.Tests.Api.V2010.Account.Call {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }

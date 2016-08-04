@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account {
         private string countryCode;
     
         /**
+         * Construct a new AvailablePhoneNumberCountryFetcher.
+         * 
+         * @param countryCode The country_code
+         */
+        public AvailablePhoneNumberCountryFetcher(string countryCode) {
+            this.countryCode = countryCode;
+        }
+    
+        /**
          * Construct a new AvailablePhoneNumberCountryFetcher
          * 
          * @param accountSid The account_sid
@@ -36,7 +45,7 @@ namespace Twilio.Fetchers.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/AvailablePhoneNumbers/" + this.countryCode + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/AvailablePhoneNumbers/" + this.countryCode + ".json"
             );
             
             Response response = await client.RequestAsync(request);
@@ -70,7 +79,7 @@ namespace Twilio.Fetchers.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/AvailablePhoneNumbers/" + this.countryCode + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/AvailablePhoneNumbers/" + this.countryCode + ".json"
             );
             
             Response response = client.Request(request);

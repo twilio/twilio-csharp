@@ -25,6 +25,18 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         }
     
         /**
+         * Create a RecordingFetcher to execute fetch.
+         * 
+         * @param callSid The call_sid
+         * @param sid The sid
+         * @return RecordingFetcher capable of executing the fetch
+         */
+        public static RecordingFetcher Fetch(string callSid, 
+                                             string sid) {
+            return new RecordingFetcher(callSid, sid);
+        }
+    
+        /**
          * delete
          * 
          * @param accountSid The account_sid
@@ -37,6 +49,18 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
         }
     
         /**
+         * Create a RecordingDeleter to execute delete.
+         * 
+         * @param callSid The call_sid
+         * @param sid The sid
+         * @return RecordingDeleter capable of executing the delete
+         */
+        public static RecordingDeleter Delete(string callSid, 
+                                              string sid) {
+            return new RecordingDeleter(callSid, sid);
+        }
+    
+        /**
          * read
          * 
          * @param accountSid The account_sid
@@ -45,6 +69,16 @@ namespace Twilio.Resources.Api.V2010.Account.Call {
          */
         public static RecordingReader Read(string accountSid, string callSid) {
             return new RecordingReader(accountSid, callSid);
+        }
+    
+        /**
+         * Create a RecordingReader to execute read.
+         * 
+         * @param callSid The call_sid
+         * @return RecordingReader capable of executing the read
+         */
+        public static RecordingReader Read(string callSid) {
+            return new RecordingReader(callSid);
         }
     
         /**

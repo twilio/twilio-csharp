@@ -54,6 +54,15 @@ namespace Twilio.Resources.Api.V2010.Account.IncomingPhoneNumber {
         }
     
         /**
+         * Create a TollFreeReader to execute read.
+         * 
+         * @return TollFreeReader capable of executing the read
+         */
+        public static TollFreeReader Read() {
+            return new TollFreeReader();
+        }
+    
+        /**
          * create
          * 
          * @param ownerAccountSid The owner_account_sid
@@ -62,6 +71,16 @@ namespace Twilio.Resources.Api.V2010.Account.IncomingPhoneNumber {
          */
         public static TollFreeCreator Create(string ownerAccountSid, Twilio.Types.PhoneNumber phoneNumber) {
             return new TollFreeCreator(ownerAccountSid, phoneNumber);
+        }
+    
+        /**
+         * Create a TollFreeCreator to execute create.
+         * 
+         * @param phoneNumber The phone_number
+         * @return TollFreeCreator capable of executing the create
+         */
+        public static TollFreeCreator Create(Twilio.Types.PhoneNumber phoneNumber) {
+            return new TollFreeCreator(phoneNumber);
         }
     
         /**

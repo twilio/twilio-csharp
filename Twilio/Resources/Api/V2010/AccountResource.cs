@@ -93,6 +93,15 @@ namespace Twilio.Resources.Api.V2010 {
         }
     
         /**
+         * Create a AccountFetcher to execute fetch.
+         * 
+         * @return AccountFetcher capable of executing the fetch
+         */
+        public static AccountFetcher Fetch() {
+            return new AccountFetcher();
+        }
+    
+        /**
          * Retrieves a collection of Accounts belonging to the account used to make the
          * request
          * 
@@ -110,6 +119,15 @@ namespace Twilio.Resources.Api.V2010 {
          */
         public static AccountUpdater Update(string sid) {
             return new AccountUpdater(sid);
+        }
+    
+        /**
+         * Create a AccountUpdater to execute update.
+         * 
+         * @return AccountUpdater capable of executing the update
+         */
+        public static AccountUpdater Update() {
+            return new AccountUpdater();
         }
     
         /**

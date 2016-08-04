@@ -26,6 +26,16 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.IpAccessControlList {
         }
     
         /**
+         * Create a IpAddressReader to execute read.
+         * 
+         * @param ipAccessControlListSid The ip_access_control_list_sid
+         * @return IpAddressReader capable of executing the read
+         */
+        public static IpAddressReader Read(string ipAccessControlListSid) {
+            return new IpAddressReader(ipAccessControlListSid);
+        }
+    
+        /**
          * create
          * 
          * @param accountSid The account_sid
@@ -36,6 +46,20 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.IpAccessControlList {
          */
         public static IpAddressCreator Create(string accountSid, string ipAccessControlListSid, string friendlyName, string ipAddress) {
             return new IpAddressCreator(accountSid, ipAccessControlListSid, friendlyName, ipAddress);
+        }
+    
+        /**
+         * Create a IpAddressCreator to execute create.
+         * 
+         * @param ipAccessControlListSid The ip_access_control_list_sid
+         * @param friendlyName The friendly_name
+         * @param ipAddress The ip_address
+         * @return IpAddressCreator capable of executing the create
+         */
+        public static IpAddressCreator Create(string ipAccessControlListSid, 
+                                              string friendlyName, 
+                                              string ipAddress) {
+            return new IpAddressCreator(ipAccessControlListSid, friendlyName, ipAddress);
         }
     
         /**
@@ -51,17 +75,39 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.IpAccessControlList {
         }
     
         /**
+         * Create a IpAddressFetcher to execute fetch.
+         * 
+         * @param ipAccessControlListSid The ip_access_control_list_sid
+         * @param sid The sid
+         * @return IpAddressFetcher capable of executing the fetch
+         */
+        public static IpAddressFetcher Fetch(string ipAccessControlListSid, 
+                                             string sid) {
+            return new IpAddressFetcher(ipAccessControlListSid, sid);
+        }
+    
+        /**
          * update
          * 
          * @param accountSid The account_sid
          * @param ipAccessControlListSid The ip_access_control_list_sid
          * @param sid The sid
-         * @param ipAddress The ip_address
-         * @param friendlyName The friendly_name
          * @return IpAddressUpdater capable of executing the update
          */
-        public static IpAddressUpdater Update(string accountSid, string ipAccessControlListSid, string sid, string ipAddress, string friendlyName) {
-            return new IpAddressUpdater(accountSid, ipAccessControlListSid, sid, ipAddress, friendlyName);
+        public static IpAddressUpdater Update(string accountSid, string ipAccessControlListSid, string sid) {
+            return new IpAddressUpdater(accountSid, ipAccessControlListSid, sid);
+        }
+    
+        /**
+         * Create a IpAddressUpdater to execute update.
+         * 
+         * @param ipAccessControlListSid The ip_access_control_list_sid
+         * @param sid The sid
+         * @return IpAddressUpdater capable of executing the update
+         */
+        public static IpAddressUpdater Update(string ipAccessControlListSid, 
+                                              string sid) {
+            return new IpAddressUpdater(ipAccessControlListSid, sid);
         }
     
         /**
@@ -74,6 +120,18 @@ namespace Twilio.Resources.Api.V2010.Account.Sip.IpAccessControlList {
          */
         public static IpAddressDeleter Delete(string accountSid, string ipAccessControlListSid, string sid) {
             return new IpAddressDeleter(accountSid, ipAccessControlListSid, sid);
+        }
+    
+        /**
+         * Create a IpAddressDeleter to execute delete.
+         * 
+         * @param ipAccessControlListSid The ip_access_control_list_sid
+         * @param sid The sid
+         * @return IpAddressDeleter capable of executing the delete
+         */
+        public static IpAddressDeleter Delete(string ipAccessControlListSid, 
+                                              string sid) {
+            return new IpAddressDeleter(ipAccessControlListSid, sid);
         }
     
         /**

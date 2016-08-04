@@ -25,6 +25,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a KeyFetcher to execute fetch.
+         * 
+         * @param sid The sid
+         * @return KeyFetcher capable of executing the fetch
+         */
+        public static KeyFetcher Fetch(string sid) {
+            return new KeyFetcher(sid);
+        }
+    
+        /**
          * update
          * 
          * @param accountSid The account_sid
@@ -33,6 +43,16 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static KeyUpdater Update(string accountSid, string sid) {
             return new KeyUpdater(accountSid, sid);
+        }
+    
+        /**
+         * Create a KeyUpdater to execute update.
+         * 
+         * @param sid The sid
+         * @return KeyUpdater capable of executing the update
+         */
+        public static KeyUpdater Update(string sid) {
+            return new KeyUpdater(sid);
         }
     
         /**
@@ -47,6 +67,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a KeyDeleter to execute delete.
+         * 
+         * @param sid The sid
+         * @return KeyDeleter capable of executing the delete
+         */
+        public static KeyDeleter Delete(string sid) {
+            return new KeyDeleter(sid);
+        }
+    
+        /**
          * read
          * 
          * @param accountSid The account_sid
@@ -54,6 +84,15 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static KeyReader Read(string accountSid) {
             return new KeyReader(accountSid);
+        }
+    
+        /**
+         * Create a KeyReader to execute read.
+         * 
+         * @return KeyReader capable of executing the read
+         */
+        public static KeyReader Read() {
+            return new KeyReader();
         }
     
         /**

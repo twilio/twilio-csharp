@@ -18,6 +18,15 @@ namespace Twilio.Readers.Api.V2010.Account.Call {
         private string messageDate;
     
         /**
+         * Construct a new NotificationReader.
+         * 
+         * @param callSid The call_sid
+         */
+        public NotificationReader(string callSid) {
+            this.callSid = callSid;
+        }
+    
+        /**
          * Construct a new NotificationReader
          * 
          * @param accountSid The account_sid
@@ -61,7 +70,7 @@ namespace Twilio.Readers.Api.V2010.Account.Call {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/" + this.callSid + "/Notifications.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Calls/" + this.callSid + "/Notifications.json"
             );
             
             AddQueryParams(request);
@@ -83,7 +92,7 @@ namespace Twilio.Readers.Api.V2010.Account.Call {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/" + this.callSid + "/Notifications.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Calls/" + this.callSid + "/Notifications.json"
             );
             
             AddQueryParams(request);

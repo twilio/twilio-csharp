@@ -16,6 +16,17 @@ namespace Twilio.Fetchers.Api.V2010.Account.Conference {
         private string callSid;
     
         /**
+         * Construct a new ParticipantFetcher.
+         * 
+         * @param conferenceSid The string that uniquely identifies this conference
+         * @param callSid The call_sid
+         */
+        public ParticipantFetcher(string conferenceSid, string callSid) {
+            this.conferenceSid = conferenceSid;
+            this.callSid = callSid;
+        }
+    
+        /**
          * Construct a new ParticipantFetcher
          * 
          * @param accountSid The account_sid
@@ -39,7 +50,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Conference {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
             );
             
             Response response = await client.RequestAsync(request);
@@ -73,7 +84,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Conference {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
             );
             
             Response response = client.Request(request);

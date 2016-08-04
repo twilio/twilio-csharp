@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account {
         private string sid;
     
         /**
+         * Construct a new RecordingFetcher.
+         * 
+         * @param sid Fetch by unique recording Sid
+         */
+        public RecordingFetcher(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new RecordingFetcher
          * 
          * @param accountSid The account_sid
@@ -36,7 +45,7 @@ namespace Twilio.Fetchers.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Recordings/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Recordings/" + this.sid + ".json"
             );
             
             Response response = await client.RequestAsync(request);
@@ -70,7 +79,7 @@ namespace Twilio.Fetchers.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Recordings/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Recordings/" + this.sid + ".json"
             );
             
             Response response = client.Request(request);

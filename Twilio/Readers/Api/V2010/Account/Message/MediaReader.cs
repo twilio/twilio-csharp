@@ -17,6 +17,15 @@ namespace Twilio.Readers.Api.V2010.Account.Message {
         private string dateCreated;
     
         /**
+         * Construct a new MediaReader.
+         * 
+         * @param messageSid The message_sid
+         */
+        public MediaReader(string messageSid) {
+            this.messageSid = messageSid;
+        }
+    
+        /**
          * Construct a new MediaReader
          * 
          * @param accountSid The account_sid
@@ -50,7 +59,7 @@ namespace Twilio.Readers.Api.V2010.Account.Message {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Messages/" + this.messageSid + "/Media.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Messages/" + this.messageSid + "/Media.json"
             );
             
             AddQueryParams(request);
@@ -72,7 +81,7 @@ namespace Twilio.Readers.Api.V2010.Account.Message {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Messages/" + this.messageSid + "/Media.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Messages/" + this.messageSid + "/Media.json"
             );
             
             AddQueryParams(request);

@@ -25,6 +25,15 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
         }
     
         /**
+         * Create a DomainReader to execute read.
+         * 
+         * @return DomainReader capable of executing the read
+         */
+        public static DomainReader Read() {
+            return new DomainReader();
+        }
+    
+        /**
          * Create a new Domain
          * 
          * @param accountSid The account_sid
@@ -33,6 +42,16 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          */
         public static DomainCreator Create(string accountSid, string domainName) {
             return new DomainCreator(accountSid, domainName);
+        }
+    
+        /**
+         * Create a DomainCreator to execute create.
+         * 
+         * @param domainName The unique address on Twilio to route SIP traffic
+         * @return DomainCreator capable of executing the create
+         */
+        public static DomainCreator Create(string domainName) {
+            return new DomainCreator(domainName);
         }
     
         /**
@@ -47,6 +66,16 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
         }
     
         /**
+         * Create a DomainFetcher to execute fetch.
+         * 
+         * @param sid Fetch by unique Domain Sid
+         * @return DomainFetcher capable of executing the fetch
+         */
+        public static DomainFetcher Fetch(string sid) {
+            return new DomainFetcher(sid);
+        }
+    
+        /**
          * Update the attributes of a domain
          * 
          * @param accountSid The account_sid
@@ -58,6 +87,16 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
         }
     
         /**
+         * Create a DomainUpdater to execute update.
+         * 
+         * @param sid The sid
+         * @return DomainUpdater capable of executing the update
+         */
+        public static DomainUpdater Update(string sid) {
+            return new DomainUpdater(sid);
+        }
+    
+        /**
          * delete
          * 
          * @param accountSid The account_sid
@@ -66,6 +105,16 @@ namespace Twilio.Resources.Api.V2010.Account.Sip {
          */
         public static DomainDeleter Delete(string accountSid, string sid) {
             return new DomainDeleter(accountSid, sid);
+        }
+    
+        /**
+         * Create a DomainDeleter to execute delete.
+         * 
+         * @param sid The sid
+         * @return DomainDeleter capable of executing the delete
+         */
+        public static DomainDeleter Delete(string sid) {
+            return new DomainDeleter(sid);
         }
     
         /**

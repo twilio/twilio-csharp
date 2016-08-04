@@ -53,6 +53,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a AuthorizedConnectAppFetcher to execute fetch.
+         * 
+         * @param connectAppSid The connect_app_sid
+         * @return AuthorizedConnectAppFetcher capable of executing the fetch
+         */
+        public static AuthorizedConnectAppFetcher Fetch(string connectAppSid) {
+            return new AuthorizedConnectAppFetcher(connectAppSid);
+        }
+    
+        /**
          * Retrieve a list of authorized-connect-apps belonging to the account used to
          * make the request
          * 
@@ -61,6 +71,15 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static AuthorizedConnectAppReader Read(string accountSid) {
             return new AuthorizedConnectAppReader(accountSid);
+        }
+    
+        /**
+         * Create a AuthorizedConnectAppReader to execute read.
+         * 
+         * @return AuthorizedConnectAppReader capable of executing the read
+         */
+        public static AuthorizedConnectAppReader Read() {
+            return new AuthorizedConnectAppReader();
         }
     
         /**

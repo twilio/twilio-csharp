@@ -174,31 +174,31 @@ namespace Twilio.Creators.Notifications.V1 {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (apnCredentialSid != "") {
+            if (apnCredentialSid != null) {
                 request.AddPostParam("ApnCredentialSid", apnCredentialSid);
             }
             
-            if (gcmCredentialSid != "") {
+            if (gcmCredentialSid != null) {
                 request.AddPostParam("GcmCredentialSid", gcmCredentialSid);
             }
             
-            if (messagingServiceSid != "") {
+            if (messagingServiceSid != null) {
                 request.AddPostParam("MessagingServiceSid", messagingServiceSid);
             }
             
-            if (facebookMessengerPageId != "") {
+            if (facebookMessengerPageId != null) {
                 request.AddPostParam("FacebookMessengerPageId", facebookMessengerPageId);
             }
             
-            if (defaultApnNotificationProtocolVersion != "") {
+            if (defaultApnNotificationProtocolVersion != null) {
                 request.AddPostParam("DefaultApnNotificationProtocolVersion", defaultApnNotificationProtocolVersion);
             }
             
-            if (defaultGcmNotificationProtocolVersion != "") {
+            if (defaultGcmNotificationProtocolVersion != null) {
                 request.AddPostParam("DefaultGcmNotificationProtocolVersion", defaultGcmNotificationProtocolVersion);
             }
         }

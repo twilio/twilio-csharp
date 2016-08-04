@@ -139,6 +139,15 @@ namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
         }
     
         /**
+         * Create a YearlyReader to execute read.
+         * 
+         * @return YearlyReader capable of executing the read
+         */
+        public static YearlyReader Read() {
+            return new YearlyReader();
+        }
+    
+        /**
          * Converts a JSON string into a YearlyResource object
          * 
          * @param json Raw JSON string

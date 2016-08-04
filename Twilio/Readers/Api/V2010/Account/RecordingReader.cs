@@ -16,6 +16,12 @@ namespace Twilio.Readers.Api.V2010.Account {
         private string dateCreated;
     
         /**
+         * Construct a new RecordingReader.
+         */
+        public RecordingReader() {
+        }
+    
+        /**
          * Construct a new RecordingReader
          * 
          * @param accountSid The account_sid
@@ -47,7 +53,7 @@ namespace Twilio.Readers.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Recordings.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Recordings.json"
             );
             
             AddQueryParams(request);
@@ -69,7 +75,7 @@ namespace Twilio.Readers.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Recordings.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Recordings.json"
             );
             
             AddQueryParams(request);

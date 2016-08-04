@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account.Call {
         private string callSid;
     
         /**
+         * Construct a new FeedbackFetcher.
+         * 
+         * @param callSid The call sid that uniquely identifies the call
+         */
+        public FeedbackFetcher(string callSid) {
+            this.callSid = callSid;
+        }
+    
+        /**
          * Construct a new FeedbackFetcher
          * 
          * @param accountSid The account_sid
@@ -36,7 +45,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Call {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/" + this.callSid + "/Feedback.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Calls/" + this.callSid + "/Feedback.json"
             );
             
             Response response = await client.RequestAsync(request);
@@ -70,7 +79,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Call {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/" + this.callSid + "/Feedback.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Calls/" + this.callSid + "/Feedback.json"
             );
             
             Response response = client.Request(request);

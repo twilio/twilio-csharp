@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account.Call {
         private string sid;
     
         /**
+         * Construct a new FeedbackSummaryFetcher.
+         * 
+         * @param sid The sid
+         */
+        public FeedbackSummaryFetcher(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new FeedbackSummaryFetcher
          * 
          * @param accountSid The account_sid
@@ -36,7 +45,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Call {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/FeedbackSummary/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Calls/FeedbackSummary/" + this.sid + ".json"
             );
             
             Response response = await client.RequestAsync(request);
@@ -70,7 +79,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Call {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/FeedbackSummary/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Calls/FeedbackSummary/" + this.sid + ".json"
             );
             
             Response response = client.Request(request);

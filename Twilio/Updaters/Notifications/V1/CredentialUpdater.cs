@@ -13,7 +13,6 @@ namespace Twilio.Updaters.Notifications.V1 {
     public class CredentialUpdater : Updater<CredentialResource> {
         private string sid;
         private string friendlyName;
-        private CredentialResource.PushService type;
         private string certificate;
         private string privateKey;
         private bool? sandbox;
@@ -23,13 +22,20 @@ namespace Twilio.Updaters.Notifications.V1 {
          * Construct a new CredentialUpdater
          * 
          * @param sid The sid
-         * @param friendlyName The friendly_name
-         * @param type The type
          */
-        public CredentialUpdater(string sid, string friendlyName, CredentialResource.PushService type) {
+        public CredentialUpdater(string sid) {
             this.sid = sid;
+        }
+    
+        /**
+         * The friendly_name
+         * 
+         * @param friendlyName The friendly_name
+         * @return this
+         */
+        public CredentialUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
-            this.type = type;
+            return this;
         }
     
         /**
@@ -152,19 +158,15 @@ namespace Twilio.Updaters.Notifications.V1 {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (type != null) {
-                request.AddPostParam("Type", type.ToString());
-            }
-            
-            if (certificate != "") {
+            if (certificate != null) {
                 request.AddPostParam("Certificate", certificate);
             }
             
-            if (privateKey != "") {
+            if (privateKey != null) {
                 request.AddPostParam("PrivateKey", privateKey);
             }
             
@@ -172,7 +174,7 @@ namespace Twilio.Updaters.Notifications.V1 {
                 request.AddPostParam("Sandbox", sandbox.ToString());
             }
             
-            if (apiKey != "") {
+            if (apiKey != null) {
                 request.AddPostParam("ApiKey", apiKey);
             }
         }

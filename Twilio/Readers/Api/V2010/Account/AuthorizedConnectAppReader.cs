@@ -15,6 +15,12 @@ namespace Twilio.Readers.Api.V2010.Account {
         private string accountSid;
     
         /**
+         * Construct a new AuthorizedConnectAppReader.
+         */
+        public AuthorizedConnectAppReader() {
+        }
+    
+        /**
          * Construct a new AuthorizedConnectAppReader
          * 
          * @param accountSid The account_sid
@@ -34,7 +40,7 @@ namespace Twilio.Readers.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/AuthorizedConnectApps.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/AuthorizedConnectApps.json"
             );
             
             AddQueryParams(request);
@@ -56,7 +62,7 @@ namespace Twilio.Readers.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/AuthorizedConnectApps.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/AuthorizedConnectApps.json"
             );
             
             AddQueryParams(request);

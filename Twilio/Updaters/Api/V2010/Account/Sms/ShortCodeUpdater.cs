@@ -23,6 +23,15 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
         private Twilio.Http.HttpMethod smsFallbackMethod;
     
         /**
+         * Construct a new ShortCodeUpdater.
+         * 
+         * @param sid The sid
+         */
+        public ShortCodeUpdater(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new ShortCodeUpdater
          * 
          * @param accountSid The account_sid
@@ -139,7 +148,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SMS/ShortCodes/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SMS/ShortCodes/" + this.sid + ".json"
             );
             
             addPostParams(request);
@@ -174,7 +183,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SMS/ShortCodes/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SMS/ShortCodes/" + this.sid + ".json"
             );
             
             addPostParams(request);
@@ -204,11 +213,11 @@ namespace Twilio.Updaters.Api.V2010.Account.Sms {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (apiVersion != "") {
+            if (apiVersion != null) {
                 request.AddPostParam("ApiVersion", apiVersion);
             }
             

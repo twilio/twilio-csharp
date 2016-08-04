@@ -70,12 +70,10 @@ namespace Twilio.Resources.IpMessaging.V1.Service {
          * create
          * 
          * @param serviceSid The service_sid
-         * @param friendlyName The friendly_name
-         * @param uniqueName The unique_name
          * @return ChannelCreator capable of executing the create
          */
-        public static ChannelCreator Create(string serviceSid, string friendlyName, string uniqueName) {
-            return new ChannelCreator(serviceSid, friendlyName, uniqueName);
+        public static ChannelCreator Create(string serviceSid) {
+            return new ChannelCreator(serviceSid);
         }
     
         /**

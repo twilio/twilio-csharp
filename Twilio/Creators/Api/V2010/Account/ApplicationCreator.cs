@@ -31,6 +31,15 @@ namespace Twilio.Creators.Api.V2010.Account {
         private Uri messageStatusCallback;
     
         /**
+         * Construct a new ApplicationCreator.
+         * 
+         * @param friendlyName Human readable description of this resource
+         */
+        public ApplicationCreator(string friendlyName) {
+            this.friendlyName = friendlyName;
+        }
+    
+        /**
          * Construct a new ApplicationCreator
          * 
          * @param accountSid The account_sid
@@ -303,7 +312,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Applications.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Applications.json"
             );
             
             addPostParams(request);
@@ -338,7 +347,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Applications.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Applications.json"
             );
             
             addPostParams(request);
@@ -368,11 +377,11 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (apiVersion != "") {
+            if (apiVersion != null) {
                 request.AddPostParam("ApiVersion", apiVersion);
             }
             

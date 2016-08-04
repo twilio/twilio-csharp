@@ -54,6 +54,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a TranscriptionFetcher to execute fetch.
+         * 
+         * @param sid Fetch by unique transcription Sid
+         * @return TranscriptionFetcher capable of executing the fetch
+         */
+        public static TranscriptionFetcher Fetch(string sid) {
+            return new TranscriptionFetcher(sid);
+        }
+    
+        /**
          * Delete a transcription from the account used to make the request
          * 
          * @param accountSid The account_sid
@@ -65,6 +75,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a TranscriptionDeleter to execute delete.
+         * 
+         * @param sid Delete by unique transcription Sid
+         * @return TranscriptionDeleter capable of executing the delete
+         */
+        public static TranscriptionDeleter Delete(string sid) {
+            return new TranscriptionDeleter(sid);
+        }
+    
+        /**
          * Retrieve a list of transcriptions belonging to the account used to make the
          * request
          * 
@@ -73,6 +93,15 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static TranscriptionReader Read(string accountSid) {
             return new TranscriptionReader(accountSid);
+        }
+    
+        /**
+         * Create a TranscriptionReader to execute read.
+         * 
+         * @return TranscriptionReader capable of executing the read
+         */
+        public static TranscriptionReader Read() {
+            return new TranscriptionReader();
         }
     
         /**

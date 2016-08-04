@@ -101,7 +101,7 @@ namespace Twilio.Creators.Trunking.V1.Trunk {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (ipAccessControlListSid != "") {
+            if (ipAccessControlListSid != null) {
                 request.AddPostParam("IpAccessControlListSid", ipAccessControlListSid);
             }
         }

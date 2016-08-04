@@ -154,6 +154,7 @@
     <Compile Include="Deleters\IpMessaging\V1\ServiceDeleter.cs" />
     <Compile Include="Deleters\IpMessaging\V1\Service\ChannelDeleter.cs" />
     <Compile Include="Deleters\IpMessaging\V1\Service\Channel\MemberDeleter.cs" />
+    <Compile Include="Deleters\IpMessaging\V1\Service\Channel\MessageDeleter.cs" />
     <Compile Include="Deleters\IpMessaging\V1\Service\RoleDeleter.cs" />
     <Compile Include="Deleters\IpMessaging\V1\Service\UserDeleter.cs" />
     <Compile Include="Deleters\Monitor\V1\AlertDeleter.cs" />
@@ -451,6 +452,7 @@
     <Compile Include="Updaters\IpMessaging\V1\CredentialUpdater.cs" />
     <Compile Include="Updaters\IpMessaging\V1\ServiceUpdater.cs" />
     <Compile Include="Updaters\IpMessaging\V1\Service\ChannelUpdater.cs" />
+    <Compile Include="Updaters\IpMessaging\V1\Service\Channel\MessageUpdater.cs" />
     <Compile Include="Updaters\IpMessaging\V1\Service\RoleUpdater.cs" />
     <Compile Include="Updaters\IpMessaging\V1\Service\UserUpdater.cs" />
     <Compile Include="Updaters\Notifications\V1\CredentialUpdater.cs" />

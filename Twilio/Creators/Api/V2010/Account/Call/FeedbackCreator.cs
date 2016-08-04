@@ -19,6 +19,17 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
         private List<FeedbackResource.Issues> issue;
     
         /**
+         * Construct a new FeedbackCreator.
+         * 
+         * @param callSid The call_sid
+         * @param qualityScore The quality_score
+         */
+        public FeedbackCreator(string callSid, int? qualityScore) {
+            this.callSid = callSid;
+            this.qualityScore = qualityScore;
+        }
+    
+        /**
          * Construct a new FeedbackCreator
          * 
          * @param accountSid The account_sid
@@ -63,7 +74,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/" + this.callSid + "/Feedback.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Calls/" + this.callSid + "/Feedback.json"
             );
             
             addPostParams(request);
@@ -98,7 +109,7 @@ namespace Twilio.Creators.Api.V2010.Account.Call {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/" + this.callSid + "/Feedback.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Calls/" + this.callSid + "/Feedback.json"
             );
             
             addPostParams(request);

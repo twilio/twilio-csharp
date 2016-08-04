@@ -101,7 +101,7 @@ namespace Twilio.Creators.Api.V2010 {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

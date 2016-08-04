@@ -18,6 +18,12 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
         private TriggerResource.UsageCategory usageCategory;
     
         /**
+         * Construct a new TriggerReader.
+         */
+        public TriggerReader() {
+        }
+    
+        /**
          * Construct a new TriggerReader
          * 
          * @param accountSid The account_sid
@@ -71,7 +77,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Usage/Triggers.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Usage/Triggers.json"
             );
             
             AddQueryParams(request);
@@ -93,7 +99,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Usage/Triggers.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Usage/Triggers.json"
             );
             
             AddQueryParams(request);

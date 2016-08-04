@@ -146,19 +146,19 @@ namespace Twilio.Updaters.Taskrouter.V1 {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (defaultActivitySid != "") {
+            if (defaultActivitySid != null) {
                 request.AddPostParam("DefaultActivitySid", defaultActivitySid);
             }
             
-            if (eventCallbackUrl != "") {
+            if (eventCallbackUrl != null) {
                 request.AddPostParam("EventCallbackUrl", eventCallbackUrl);
             }
             
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (timeoutActivitySid != "") {
+            if (timeoutActivitySid != null) {
                 request.AddPostParam("TimeoutActivitySid", timeoutActivitySid);
             }
         }

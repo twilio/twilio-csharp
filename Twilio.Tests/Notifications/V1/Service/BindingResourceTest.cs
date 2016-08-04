@@ -1,6 +1,7 @@
 using NSubstitute;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using Twilio;
 using Twilio.Clients;
 using Twilio.Converters;
@@ -22,8 +23,6 @@ namespace Twilio.Tests.Notifications.V1.Service {
             Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.NOTIFICATIONS,
                                           "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings/BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            
-            
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -40,7 +39,7 @@ namespace Twilio.Tests.Notifications.V1.Service {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }
@@ -62,8 +61,6 @@ namespace Twilio.Tests.Notifications.V1.Service {
             Request request = new Request(Twilio.Http.HttpMethod.DELETE,
                                           Domains.NOTIFICATIONS,
                                           "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings/BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            
-            
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -80,7 +77,7 @@ namespace Twilio.Tests.Notifications.V1.Service {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }
@@ -98,17 +95,16 @@ namespace Twilio.Tests.Notifications.V1.Service {
         [Test]
         public void TestCreateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-                        Request request = new Request(Twilio.Http.HttpMethod.POST,
-                                                      Domains.NOTIFICATIONS,
-                                                      "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings");
-                        request.AddPostParam("Endpoint", Serialize("endpoint"));
+            Request request = new Request(Twilio.Http.HttpMethod.POST,
+                                          Domains.NOTIFICATIONS,
+                                          "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings");
+            request.AddPostParam("Endpoint", Serialize("endpoint"));
             request.AddPostParam("Identity", Serialize("identity"));
             request.AddPostParam("BindingType", Serialize(BindingResource.BindingType.APN));
             request.AddPostParam("Address", Serialize("address"));
-                        
-                        twilioRestClient.Request(request)
-                                        .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
-                                                              "null"));
+            twilioRestClient.Request(request)
+                            .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
+                                                  "null"));
             
             try {
                 BindingResource.Create("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "endpoint", "identity", BindingResource.BindingType.APN, "address").Execute(twilioRestClient);
@@ -122,7 +118,7 @@ namespace Twilio.Tests.Notifications.V1.Service {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }
@@ -135,6 +131,7 @@ namespace Twilio.Tests.Notifications.V1.Service {
                                                   "{\"sid\": \"BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2016-03-24T23:24:45Z\",\"date_updated\": \"2016-03-24T23:24:45Z\",\"notification_protocol_version\": \"3\",\"endpoint\": \"abcd\",\"identity\": \"jing\",\"binding_type\": \"apn\",\"address\": \"1234\",\"tags\": [],\"url\": \"https://notifications.stage.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings/BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
             var response = BindingResource.Create("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "endpoint", "identity", BindingResource.BindingType.APN, "address").Execute(twilioRestClient);
+            Assert.NotNull(response);
         }
     
         [Test]
@@ -143,7 +140,6 @@ namespace Twilio.Tests.Notifications.V1.Service {
             Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.NOTIFICATIONS,
                                           "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings");
-            
             request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -161,7 +157,7 @@ namespace Twilio.Tests.Notifications.V1.Service {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }

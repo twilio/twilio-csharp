@@ -16,6 +16,15 @@ namespace Twilio.Updaters.Api.V2010.Account {
         private string friendlyName;
     
         /**
+         * Construct a new SigningKeyUpdater.
+         * 
+         * @param sid The sid
+         */
+        public SigningKeyUpdater(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new SigningKeyUpdater
          * 
          * @param accountSid The account_sid
@@ -48,7 +57,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SigningKeys/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SigningKeys/" + this.sid + ".json"
             );
             
             addPostParams(request);
@@ -83,7 +92,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SigningKeys/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SigningKeys/" + this.sid + ".json"
             );
             
             addPostParams(request);
@@ -113,7 +122,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

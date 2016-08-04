@@ -17,6 +17,19 @@ namespace Twilio.Updaters.Api.V2010.Account.Conference {
         private bool? muted;
     
         /**
+         * Construct a new ParticipantUpdater.
+         * 
+         * @param conferenceSid The string that uniquely identifies this conference
+         * @param callSid The call_sid
+         * @param muted Indicates if the participant should be muted
+         */
+        public ParticipantUpdater(string conferenceSid, string callSid, bool? muted) {
+            this.conferenceSid = conferenceSid;
+            this.callSid = callSid;
+            this.muted = muted;
+        }
+    
+        /**
          * Construct a new ParticipantUpdater
          * 
          * @param accountSid The account_sid
@@ -42,7 +55,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Conference {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
             );
             
             addPostParams(request);
@@ -77,7 +90,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Conference {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
             );
             
             addPostParams(request);

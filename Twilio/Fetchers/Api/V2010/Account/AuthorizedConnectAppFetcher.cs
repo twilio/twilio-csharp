@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account {
         private string connectAppSid;
     
         /**
+         * Construct a new AuthorizedConnectAppFetcher.
+         * 
+         * @param connectAppSid The connect_app_sid
+         */
+        public AuthorizedConnectAppFetcher(string connectAppSid) {
+            this.connectAppSid = connectAppSid;
+        }
+    
+        /**
          * Construct a new AuthorizedConnectAppFetcher
          * 
          * @param accountSid The account_sid
@@ -36,7 +45,7 @@ namespace Twilio.Fetchers.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/AuthorizedConnectApps/" + this.connectAppSid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/AuthorizedConnectApps/" + this.connectAppSid + ".json"
             );
             
             Response response = await client.RequestAsync(request);
@@ -70,7 +79,7 @@ namespace Twilio.Fetchers.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/AuthorizedConnectApps/" + this.connectAppSid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/AuthorizedConnectApps/" + this.connectAppSid + ".json"
             );
             
             Response response = client.Request(request);

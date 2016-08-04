@@ -16,6 +16,17 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
         private string friendlyName;
     
         /**
+         * Construct a new IpAccessControlListUpdater.
+         * 
+         * @param sid The sid
+         * @param friendlyName A human readable description of this resource
+         */
+        public IpAccessControlListUpdater(string sid, string friendlyName) {
+            this.sid = sid;
+            this.friendlyName = friendlyName;
+        }
+    
+        /**
          * Construct a new IpAccessControlListUpdater
          * 
          * @param accountSid The account_sid
@@ -39,7 +50,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/IpAccessControlLists/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.sid + ".json"
             );
             
             addPostParams(request);
@@ -74,7 +85,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/IpAccessControlLists/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.sid + ".json"
             );
             
             addPostParams(request);
@@ -104,7 +115,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

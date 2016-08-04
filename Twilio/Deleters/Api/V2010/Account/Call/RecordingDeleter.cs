@@ -16,6 +16,17 @@ namespace Twilio.Deleters.Api.V2010.Account.Call {
         private string sid;
     
         /**
+         * Construct a new RecordingDeleter.
+         * 
+         * @param callSid The call_sid
+         * @param sid The sid
+         */
+        public RecordingDeleter(string callSid, string sid) {
+            this.callSid = callSid;
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new RecordingDeleter
          * 
          * @param accountSid The account_sid
@@ -38,7 +49,7 @@ namespace Twilio.Deleters.Api.V2010.Account.Call {
             Request request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/" + this.callSid + "/Recordings/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Calls/" + this.callSid + "/Recordings/" + this.sid + ".json"
             );
             
             Response response = await client.RequestAsync(request);
@@ -71,7 +82,7 @@ namespace Twilio.Deleters.Api.V2010.Account.Call {
             Request request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Calls/" + this.callSid + "/Recordings/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Calls/" + this.callSid + "/Recordings/" + this.sid + ".json"
             );
             
             Response response = client.Request(request);

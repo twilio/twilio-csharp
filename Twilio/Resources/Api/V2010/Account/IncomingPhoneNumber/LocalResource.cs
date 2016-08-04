@@ -54,6 +54,15 @@ namespace Twilio.Resources.Api.V2010.Account.IncomingPhoneNumber {
         }
     
         /**
+         * Create a LocalReader to execute read.
+         * 
+         * @return LocalReader capable of executing the read
+         */
+        public static LocalReader Read() {
+            return new LocalReader();
+        }
+    
+        /**
          * create
          * 
          * @param ownerAccountSid The owner_account_sid
@@ -62,6 +71,16 @@ namespace Twilio.Resources.Api.V2010.Account.IncomingPhoneNumber {
          */
         public static LocalCreator Create(string ownerAccountSid, Twilio.Types.PhoneNumber phoneNumber) {
             return new LocalCreator(ownerAccountSid, phoneNumber);
+        }
+    
+        /**
+         * Create a LocalCreator to execute create.
+         * 
+         * @param phoneNumber The phone_number
+         * @return LocalCreator capable of executing the create
+         */
+        public static LocalCreator Create(Twilio.Types.PhoneNumber phoneNumber) {
+            return new LocalCreator(phoneNumber);
         }
     
         /**

@@ -1,6 +1,7 @@
 using NSubstitute;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using Twilio;
 using Twilio.Clients;
 using Twilio.Converters;
@@ -22,7 +23,6 @@ namespace Twilio.Tests.Notifications.V1 {
             Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.NOTIFICATIONS,
                                           "/v1/Credentials");
-            
             request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -40,7 +40,7 @@ namespace Twilio.Tests.Notifications.V1 {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }
@@ -70,18 +70,16 @@ namespace Twilio.Tests.Notifications.V1 {
         [Test]
         public void TestCreateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-                        Request request = new Request(Twilio.Http.HttpMethod.POST,
-                                                      Domains.NOTIFICATIONS,
-                                                      "/v1/Credentials");
-                        request.AddPostParam("FriendlyName", Serialize("friendlyName"));
+            Request request = new Request(Twilio.Http.HttpMethod.POST,
+                                          Domains.NOTIFICATIONS,
+                                          "/v1/Credentials");
             request.AddPostParam("Type", Serialize(CredentialResource.PushService.GCM));
-                        
-                        twilioRestClient.Request(request)
-                                        .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
-                                                              "null"));
+            twilioRestClient.Request(request)
+                            .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
+                                                  "null"));
             
             try {
-                CredentialResource.Create("friendlyName", CredentialResource.PushService.GCM).Execute(twilioRestClient);
+                CredentialResource.Create(CredentialResource.PushService.GCM).Execute(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -92,7 +90,7 @@ namespace Twilio.Tests.Notifications.V1 {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }
@@ -104,7 +102,8 @@ namespace Twilio.Tests.Notifications.V1 {
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"Test slow create\",\"type\": \"apn\",\"sandbox\": \"False\",\"date_created\": \"2015-10-07T17:50:01Z\",\"date_updated\": \"2015-10-07T17:50:01Z\",\"url\": \"https://notifications.twilio.com/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = CredentialResource.Create("friendlyName", CredentialResource.PushService.GCM).Execute(twilioRestClient);
+            var response = CredentialResource.Create(CredentialResource.PushService.GCM).Execute(twilioRestClient);
+            Assert.NotNull(response);
         }
     
         [Test]
@@ -113,8 +112,6 @@ namespace Twilio.Tests.Notifications.V1 {
             Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.NOTIFICATIONS,
                                           "/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            
-            
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -131,7 +128,7 @@ namespace Twilio.Tests.Notifications.V1 {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }
@@ -150,18 +147,15 @@ namespace Twilio.Tests.Notifications.V1 {
         [Test]
         public void TestUpdateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-                        Request request = new Request(Twilio.Http.HttpMethod.POST,
-                                                      Domains.NOTIFICATIONS,
-                                                      "/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-                        request.AddPostParam("FriendlyName", Serialize("friendlyName"));
-            request.AddPostParam("Type", Serialize(CredentialResource.PushService.GCM));
-                        
-                        twilioRestClient.Request(request)
-                                        .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
-                                                              "null"));
+            Request request = new Request(Twilio.Http.HttpMethod.POST,
+                                          Domains.NOTIFICATIONS,
+                                          "/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.Request(request)
+                            .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
+                                                  "null"));
             
             try {
-                CredentialResource.Update("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName", CredentialResource.PushService.GCM).Execute(twilioRestClient);
+                CredentialResource.Update("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -172,7 +166,7 @@ namespace Twilio.Tests.Notifications.V1 {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }
@@ -184,7 +178,8 @@ namespace Twilio.Tests.Notifications.V1 {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"Test slow create\",\"type\": \"apn\",\"sandbox\": \"False\",\"date_created\": \"2015-10-07T17:50:01Z\",\"date_updated\": \"2015-10-07T17:50:01Z\",\"url\": \"https://notifications.twilio.com/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = CredentialResource.Update("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName", CredentialResource.PushService.GCM).Execute(twilioRestClient);
+            var response = CredentialResource.Update("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            Assert.NotNull(response);
         }
     
         [Test]
@@ -193,8 +188,6 @@ namespace Twilio.Tests.Notifications.V1 {
             Request request = new Request(Twilio.Http.HttpMethod.DELETE,
                                           Domains.NOTIFICATIONS,
                                           "/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            
-            
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -211,7 +204,7 @@ namespace Twilio.Tests.Notifications.V1 {
             
                     return true;
                 });
-            } catch (ApiException e) {
+            } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
         }

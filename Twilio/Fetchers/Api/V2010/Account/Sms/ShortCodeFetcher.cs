@@ -15,6 +15,15 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sms {
         private string sid;
     
         /**
+         * Construct a new ShortCodeFetcher.
+         * 
+         * @param sid Fetch by unique short-code Sid
+         */
+        public ShortCodeFetcher(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new ShortCodeFetcher
          * 
          * @param accountSid The account_sid
@@ -36,7 +45,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sms {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SMS/ShortCodes/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SMS/ShortCodes/" + this.sid + ".json"
             );
             
             Response response = await client.RequestAsync(request);
@@ -70,7 +79,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sms {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SMS/ShortCodes/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SMS/ShortCodes/" + this.sid + ".json"
             );
             
             Response response = client.Request(request);

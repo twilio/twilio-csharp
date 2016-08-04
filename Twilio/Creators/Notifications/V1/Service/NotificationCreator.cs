@@ -285,7 +285,7 @@ namespace Twilio.Creators.Notifications.V1.Service {
                 request.AddPostParam("Tag", tag.ToString());
             }
             
-            if (body != "") {
+            if (body != null) {
                 request.AddPostParam("Body", body);
             }
             
@@ -297,31 +297,31 @@ namespace Twilio.Creators.Notifications.V1.Service {
                 request.AddPostParam("Ttl", ttl.ToString());
             }
             
-            if (title != "") {
+            if (title != null) {
                 request.AddPostParam("Title", title);
             }
             
-            if (sound != "") {
+            if (sound != null) {
                 request.AddPostParam("Sound", sound);
             }
             
-            if (action != "") {
+            if (action != null) {
                 request.AddPostParam("Action", action);
             }
             
-            if (data != "") {
+            if (data != null) {
                 request.AddPostParam("Data", data);
             }
             
-            if (apn != "") {
+            if (apn != null) {
                 request.AddPostParam("Apn", apn);
             }
             
-            if (gcm != "") {
+            if (gcm != null) {
                 request.AddPostParam("Gcm", gcm);
             }
             
-            if (sms != "") {
+            if (sms != null) {
                 request.AddPostParam("Sms", sms);
             }
             

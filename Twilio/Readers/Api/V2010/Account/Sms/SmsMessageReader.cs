@@ -18,6 +18,12 @@ namespace Twilio.Readers.Api.V2010.Account.Sms {
         private string dateSent;
     
         /**
+         * Construct a new SmsMessageReader.
+         */
+        public SmsMessageReader() {
+        }
+    
+        /**
          * Construct a new SmsMessageReader
          * 
          * @param accountSid The account_sid
@@ -70,7 +76,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sms {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SMS/Messages.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SMS/Messages.json"
             );
             
             AddQueryParams(request);
@@ -92,7 +98,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sms {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SMS/Messages.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SMS/Messages.json"
             );
             
             AddQueryParams(request);

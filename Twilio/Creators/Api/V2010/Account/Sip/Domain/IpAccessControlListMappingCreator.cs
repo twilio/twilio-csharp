@@ -16,6 +16,17 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
         private string ipAccessControlListSid;
     
         /**
+         * Construct a new IpAccessControlListMappingCreator.
+         * 
+         * @param domainSid The domain_sid
+         * @param ipAccessControlListSid The ip_access_control_list_sid
+         */
+        public IpAccessControlListMappingCreator(string domainSid, string ipAccessControlListSid) {
+            this.domainSid = domainSid;
+            this.ipAccessControlListSid = ipAccessControlListSid;
+        }
+    
+        /**
          * Construct a new IpAccessControlListMappingCreator
          * 
          * @param accountSid The account_sid
@@ -39,7 +50,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings.json"
             );
             
             addPostParams(request);
@@ -74,7 +85,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings.json"
             );
             
             addPostParams(request);
@@ -104,7 +115,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (ipAccessControlListSid != "") {
+            if (ipAccessControlListSid != null) {
                 request.AddPostParam("IpAccessControlListSid", ipAccessControlListSid);
             }
         }

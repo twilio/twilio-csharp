@@ -25,6 +25,15 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
         private Uri voiceUrl;
     
         /**
+         * Construct a new DomainUpdater.
+         * 
+         * @param sid The sid
+         */
+        public DomainUpdater(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new DomainUpdater
          * 
          * @param accountSid The account_sid
@@ -164,7 +173,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/Domains/" + this.sid + ".json"
             );
             
             addPostParams(request);
@@ -199,7 +208,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/Domains/" + this.sid + ".json"
             );
             
             addPostParams(request);
@@ -229,11 +238,11 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (authType != "") {
+            if (authType != null) {
                 request.AddPostParam("AuthType", authType);
             }
             
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             

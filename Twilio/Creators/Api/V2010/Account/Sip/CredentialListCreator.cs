@@ -15,6 +15,15 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
         private string friendlyName;
     
         /**
+         * Construct a new CredentialListCreator.
+         * 
+         * @param friendlyName The friendly_name
+         */
+        public CredentialListCreator(string friendlyName) {
+            this.friendlyName = friendlyName;
+        }
+    
+        /**
          * Construct a new CredentialListCreator
          * 
          * @param accountSid The account_sid
@@ -36,7 +45,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/CredentialLists.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/CredentialLists.json"
             );
             
             addPostParams(request);
@@ -71,7 +80,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/CredentialLists.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/CredentialLists.json"
             );
             
             addPostParams(request);
@@ -101,7 +110,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

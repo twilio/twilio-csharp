@@ -15,6 +15,12 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
         private string accountSid;
     
         /**
+         * Construct a new LastMonthReader.
+         */
+        public LastMonthReader() {
+        }
+    
+        /**
          * Construct a new LastMonthReader
          * 
          * @param accountSid The account_sid
@@ -34,7 +40,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Usage/Records/LastMonth.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Usage/Records/LastMonth.json"
             );
             
             AddQueryParams(request);
@@ -56,7 +62,7 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Usage/Records/LastMonth.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Usage/Records/LastMonth.json"
             );
             
             AddQueryParams(request);

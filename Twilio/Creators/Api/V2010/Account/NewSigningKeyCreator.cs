@@ -15,6 +15,12 @@ namespace Twilio.Creators.Api.V2010.Account {
         private string friendlyName;
     
         /**
+         * Construct a new NewSigningKeyCreator.
+         */
+        public NewSigningKeyCreator() {
+        }
+    
+        /**
          * Construct a new NewSigningKeyCreator
          * 
          * @param accountSid The account_sid
@@ -45,7 +51,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SigningKeys.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SigningKeys.json"
             );
             
             addPostParams(request);
@@ -80,7 +86,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SigningKeys.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SigningKeys.json"
             );
             
             addPostParams(request);
@@ -110,7 +116,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

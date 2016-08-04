@@ -18,6 +18,12 @@ namespace Twilio.Readers.Api.V2010.Account {
         private string isoCountry;
     
         /**
+         * Construct a new AddressReader.
+         */
+        public AddressReader() {
+        }
+    
+        /**
          * Construct a new AddressReader
          * 
          * @param accountSid The account_sid
@@ -70,7 +76,7 @@ namespace Twilio.Readers.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Addresses.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Addresses.json"
             );
             
             AddQueryParams(request);
@@ -92,7 +98,7 @@ namespace Twilio.Readers.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Addresses.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Addresses.json"
             );
             
             AddQueryParams(request);

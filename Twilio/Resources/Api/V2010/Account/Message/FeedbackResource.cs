@@ -51,6 +51,16 @@ namespace Twilio.Resources.Api.V2010.Account.Message {
         }
     
         /**
+         * Create a FeedbackCreator to execute create.
+         * 
+         * @param messageSid The message_sid
+         * @return FeedbackCreator capable of executing the create
+         */
+        public static FeedbackCreator Create(string messageSid) {
+            return new FeedbackCreator(messageSid);
+        }
+    
+        /**
          * Converts a JSON string into a FeedbackResource object
          * 
          * @param json Raw JSON string

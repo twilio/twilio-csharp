@@ -16,6 +16,15 @@ namespace Twilio.Creators.Api.V2010.Account.Message {
         private FeedbackResource.Outcome outcome;
     
         /**
+         * Construct a new FeedbackCreator.
+         * 
+         * @param messageSid The message_sid
+         */
+        public FeedbackCreator(string messageSid) {
+            this.messageSid = messageSid;
+        }
+    
+        /**
          * Construct a new FeedbackCreator
          * 
          * @param accountSid The account_sid
@@ -48,7 +57,7 @@ namespace Twilio.Creators.Api.V2010.Account.Message {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Messages/" + this.messageSid + "/Feedback.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Messages/" + this.messageSid + "/Feedback.json"
             );
             
             addPostParams(request);
@@ -83,7 +92,7 @@ namespace Twilio.Creators.Api.V2010.Account.Message {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Messages/" + this.messageSid + "/Feedback.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Messages/" + this.messageSid + "/Feedback.json"
             );
             
             addPostParams(request);

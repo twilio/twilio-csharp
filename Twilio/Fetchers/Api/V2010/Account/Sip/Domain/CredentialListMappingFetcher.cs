@@ -16,6 +16,17 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip.Domain {
         private string sid;
     
         /**
+         * Construct a new CredentialListMappingFetcher.
+         * 
+         * @param domainSid The domain_sid
+         * @param sid The sid
+         */
+        public CredentialListMappingFetcher(string domainSid, string sid) {
+            this.domainSid = domainSid;
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new CredentialListMappingFetcher
          * 
          * @param accountSid The account_sid
@@ -39,7 +50,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip.Domain {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains/" + this.domainSid + "/CredentialListMappings/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/CredentialListMappings/" + this.sid + ".json"
             );
             
             Response response = await client.RequestAsync(request);
@@ -73,7 +84,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Sip.Domain {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains/" + this.domainSid + "/CredentialListMappings/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/CredentialListMappings/" + this.sid + ".json"
             );
             
             Response response = client.Request(request);

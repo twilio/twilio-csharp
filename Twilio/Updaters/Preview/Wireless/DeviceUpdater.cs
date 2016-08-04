@@ -216,11 +216,11 @@ namespace Twilio.Updaters.Preview.Wireless {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (alias != "") {
+            if (alias != null) {
                 request.AddPostParam("Alias", alias);
             }
             
-            if (callbackMethod != "") {
+            if (callbackMethod != null) {
                 request.AddPostParam("CallbackMethod", callbackMethod);
             }
             
@@ -228,19 +228,19 @@ namespace Twilio.Updaters.Preview.Wireless {
                 request.AddPostParam("CallbackUrl", callbackUrl.ToString());
             }
             
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (simIdentifier != "") {
+            if (simIdentifier != null) {
                 request.AddPostParam("SimIdentifier", simIdentifier);
             }
             
-            if (status != "") {
+            if (status != null) {
                 request.AddPostParam("Status", status);
             }
             
-            if (commandsCallbackMethod != "") {
+            if (commandsCallbackMethod != null) {
                 request.AddPostParam("CommandsCallbackMethod", commandsCallbackMethod);
             }
             

@@ -16,6 +16,17 @@ namespace Twilio.Fetchers.Api.V2010.Account.Message {
         private string sid;
     
         /**
+         * Construct a new MediaFetcher.
+         * 
+         * @param messageSid The message_sid
+         * @param sid Fetch by unique media Sid
+         */
+        public MediaFetcher(string messageSid, string sid) {
+            this.messageSid = messageSid;
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new MediaFetcher
          * 
          * @param accountSid The account_sid
@@ -39,7 +50,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Message {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Messages/" + this.messageSid + "/Media/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Messages/" + this.messageSid + "/Media/" + this.sid + ".json"
             );
             
             Response response = await client.RequestAsync(request);
@@ -73,7 +84,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Message {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Messages/" + this.messageSid + "/Media/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Messages/" + this.messageSid + "/Media/" + this.sid + ".json"
             );
             
             Response response = client.Request(request);

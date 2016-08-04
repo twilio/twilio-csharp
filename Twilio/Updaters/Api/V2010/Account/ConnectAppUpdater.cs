@@ -26,6 +26,15 @@ namespace Twilio.Updaters.Api.V2010.Account {
         private List<ConnectAppResource.Permission> permissions;
     
         /**
+         * Construct a new ConnectAppUpdater.
+         * 
+         * @param sid The sid
+         */
+        public ConnectAppUpdater(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new ConnectAppUpdater
          * 
          * @param accountSid The account_sid
@@ -185,7 +194,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/ConnectApps/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/ConnectApps/" + this.sid + ".json"
             );
             
             addPostParams(request);
@@ -220,7 +229,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/ConnectApps/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/ConnectApps/" + this.sid + ".json"
             );
             
             addPostParams(request);
@@ -254,7 +263,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
                 request.AddPostParam("AuthorizeRedirectUrl", authorizeRedirectUrl.ToString());
             }
             
-            if (companyName != "") {
+            if (companyName != null) {
                 request.AddPostParam("CompanyName", companyName);
             }
             
@@ -266,11 +275,11 @@ namespace Twilio.Updaters.Api.V2010.Account {
                 request.AddPostParam("DeauthorizeCallbackUrl", deauthorizeCallbackUrl.ToString());
             }
             
-            if (description != "") {
+            if (description != null) {
                 request.AddPostParam("Description", description);
             }
             
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             

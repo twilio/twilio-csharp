@@ -31,6 +31,19 @@ namespace Twilio.Creators.Api.V2010.Account {
         private string sipAuthPassword;
     
         /**
+         * Construct a new CallCreator.
+         * 
+         * @param to Phone number, SIP address or client identifier to call
+         * @param from Twilio number from which to originate the call
+         * @param url Url from which to fetch TwiML
+         */
+        public CallCreator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, Uri url) {
+            this.to = to;
+            this.from = from;
+            this.url = url;
+        }
+    
+        /**
          * Construct a new CallCreator
          * 
          * @param accountSid The account_sid
@@ -43,6 +56,20 @@ namespace Twilio.Creators.Api.V2010.Account {
             this.to = to;
             this.from = from;
             this.url = url;
+        }
+    
+        /**
+         * Construct a new CallCreator.
+         * 
+         * @param to Phone number, SIP address or client identifier to call
+         * @param from Twilio number from which to originate the call
+         * @param applicationSid ApplicationSid that configures from where to fetch
+         *                       TwiML
+         */
+        public CallCreator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string applicationSid) {
+            this.to = to;
+            this.from = from;
+            this.applicationSid = applicationSid;
         }
     
         /**
@@ -233,7 +260,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Calls.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Calls.json"
             );
             
             addPostParams(request);
@@ -268,7 +295,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Calls.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Calls.json"
             );
             
             addPostParams(request);
@@ -310,7 +337,7 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("Url", url.ToString());
             }
             
-            if (applicationSid != "") {
+            if (applicationSid != null) {
                 request.AddPostParam("ApplicationSid", applicationSid);
             }
             
@@ -334,11 +361,11 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
             
-            if (sendDigits != "") {
+            if (sendDigits != null) {
                 request.AddPostParam("SendDigits", sendDigits);
             }
             
-            if (ifMachine != "") {
+            if (ifMachine != null) {
                 request.AddPostParam("IfMachine", ifMachine);
             }
             
@@ -350,11 +377,11 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("Record", record.ToString());
             }
             
-            if (sipAuthUsername != "") {
+            if (sipAuthUsername != null) {
                 request.AddPostParam("SipAuthUsername", sipAuthUsername);
             }
             
-            if (sipAuthPassword != "") {
+            if (sipAuthPassword != null) {
                 request.AddPostParam("SipAuthPassword", sipAuthPassword);
             }
         }

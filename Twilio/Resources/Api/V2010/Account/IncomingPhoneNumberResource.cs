@@ -58,6 +58,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a IncomingPhoneNumberUpdater to execute update.
+         * 
+         * @param sid The sid
+         * @return IncomingPhoneNumberUpdater capable of executing the update
+         */
+        public static IncomingPhoneNumberUpdater Update(string sid) {
+            return new IncomingPhoneNumberUpdater(sid);
+        }
+    
+        /**
          * Fetch an incoming-phone-number belonging to the account used to make the
          * request
          * 
@@ -67,6 +77,16 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static IncomingPhoneNumberFetcher Fetch(string ownerAccountSid, string sid) {
             return new IncomingPhoneNumberFetcher(ownerAccountSid, sid);
+        }
+    
+        /**
+         * Create a IncomingPhoneNumberFetcher to execute fetch.
+         * 
+         * @param sid Fetch by unique incoming-phone-number Sid
+         * @return IncomingPhoneNumberFetcher capable of executing the fetch
+         */
+        public static IncomingPhoneNumberFetcher Fetch(string sid) {
+            return new IncomingPhoneNumberFetcher(sid);
         }
     
         /**
@@ -81,6 +101,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a IncomingPhoneNumberDeleter to execute delete.
+         * 
+         * @param sid Delete by unique phone-number Sid
+         * @return IncomingPhoneNumberDeleter capable of executing the delete
+         */
+        public static IncomingPhoneNumberDeleter Delete(string sid) {
+            return new IncomingPhoneNumberDeleter(sid);
+        }
+    
+        /**
          * Retrieve a list of incoming-phone-numbers belonging to the account used to
          * make the request
          * 
@@ -89,6 +119,15 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static IncomingPhoneNumberReader Read(string ownerAccountSid) {
             return new IncomingPhoneNumberReader(ownerAccountSid);
+        }
+    
+        /**
+         * Create a IncomingPhoneNumberReader to execute read.
+         * 
+         * @return IncomingPhoneNumberReader capable of executing the read
+         */
+        public static IncomingPhoneNumberReader Read() {
+            return new IncomingPhoneNumberReader();
         }
     
         /**
@@ -103,6 +142,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a IncomingPhoneNumberCreator to execute create.
+         * 
+         * @param phoneNumber The phone number
+         * @return IncomingPhoneNumberCreator capable of executing the create
+         */
+        public static IncomingPhoneNumberCreator Create(Twilio.Types.PhoneNumber phoneNumber) {
+            return new IncomingPhoneNumberCreator(phoneNumber);
+        }
+    
+        /**
          * Purchase a phone-number for the account
          * 
          * @param ownerAccountSid The owner_account_sid
@@ -111,6 +160,16 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static IncomingPhoneNumberCreator Create(string ownerAccountSid, string areaCode) {
             return new IncomingPhoneNumberCreator(ownerAccountSid, areaCode);
+        }
+    
+        /**
+         * Create a IncomingPhoneNumberCreator to execute create.
+         * 
+         * @param areaCode The desired area code for the new number
+         * @return IncomingPhoneNumberCreator capable of executing the create
+         */
+        public static IncomingPhoneNumberCreator Create(string areaCode) {
+            return new IncomingPhoneNumberCreator(areaCode);
         }
     
         /**

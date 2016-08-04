@@ -16,6 +16,12 @@ namespace Twilio.Creators.Api.V2010.Account {
         private int? maxSize;
     
         /**
+         * Construct a new QueueCreator.
+         */
+        public QueueCreator() {
+        }
+    
+        /**
          * Construct a new QueueCreator
          * 
          * @param accountSid The account_sid
@@ -58,7 +64,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Queues.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Queues.json"
             );
             
             addPostParams(request);
@@ -93,7 +99,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Queues.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Queues.json"
             );
             
             addPostParams(request);
@@ -123,7 +129,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             

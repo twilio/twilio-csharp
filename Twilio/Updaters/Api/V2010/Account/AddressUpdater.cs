@@ -21,6 +21,15 @@ namespace Twilio.Updaters.Api.V2010.Account {
         private string postalCode;
     
         /**
+         * Construct a new AddressUpdater.
+         * 
+         * @param sid The sid
+         */
+        public AddressUpdater(string sid) {
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new AddressUpdater
          * 
          * @param accountSid The account_sid
@@ -108,7 +117,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Addresses/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Addresses/" + this.sid + ".json"
             );
             
             addPostParams(request);
@@ -143,7 +152,7 @@ namespace Twilio.Updaters.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Addresses/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Addresses/" + this.sid + ".json"
             );
             
             addPostParams(request);
@@ -173,27 +182,27 @@ namespace Twilio.Updaters.Api.V2010.Account {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (customerName != "") {
+            if (customerName != null) {
                 request.AddPostParam("CustomerName", customerName);
             }
             
-            if (street != "") {
+            if (street != null) {
                 request.AddPostParam("Street", street);
             }
             
-            if (city != "") {
+            if (city != null) {
                 request.AddPostParam("City", city);
             }
             
-            if (region != "") {
+            if (region != null) {
                 request.AddPostParam("Region", region);
             }
             
-            if (postalCode != "") {
+            if (postalCode != null) {
                 request.AddPostParam("PostalCode", postalCode);
             }
         }

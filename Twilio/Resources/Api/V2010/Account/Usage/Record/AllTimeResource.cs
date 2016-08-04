@@ -139,6 +139,15 @@ namespace Twilio.Resources.Api.V2010.Account.Usage.Record {
         }
     
         /**
+         * Create a AllTimeReader to execute read.
+         * 
+         * @return AllTimeReader capable of executing the read
+         */
+        public static AllTimeReader Read() {
+            return new AllTimeReader();
+        }
+    
+        /**
          * Converts a JSON string into a AllTimeResource object
          * 
          * @param json Raw JSON string

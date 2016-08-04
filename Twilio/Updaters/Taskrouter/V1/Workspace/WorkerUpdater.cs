@@ -137,15 +137,15 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (activitySid != "") {
+            if (activitySid != null) {
                 request.AddPostParam("ActivitySid", activitySid);
             }
             
-            if (attributes != "") {
+            if (attributes != null) {
                 request.AddPostParam("Attributes", attributes);
             }
             
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

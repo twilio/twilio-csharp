@@ -16,6 +16,17 @@ namespace Twilio.Fetchers.Api.V2010.Account.Queue {
         private string callSid;
     
         /**
+         * Construct a new MemberFetcher.
+         * 
+         * @param queueSid The Queue in which to find the members
+         * @param callSid The call_sid
+         */
+        public MemberFetcher(string queueSid, string callSid) {
+            this.queueSid = queueSid;
+            this.callSid = callSid;
+        }
+    
+        /**
          * Construct a new MemberFetcher
          * 
          * @param accountSid The account_sid
@@ -39,7 +50,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Queue {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Queues/" + this.queueSid + "/Members/" + this.callSid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Queues/" + this.queueSid + "/Members/" + this.callSid + ".json"
             );
             
             Response response = await client.RequestAsync(request);
@@ -73,7 +84,7 @@ namespace Twilio.Fetchers.Api.V2010.Account.Queue {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Queues/" + this.queueSid + "/Members/" + this.callSid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Queues/" + this.queueSid + "/Members/" + this.callSid + ".json"
             );
             
             Response response = client.Request(request);

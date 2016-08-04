@@ -26,6 +26,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a QueueFetcher to execute fetch.
+         * 
+         * @param sid Fetch by unique queue Sid
+         * @return QueueFetcher capable of executing the fetch
+         */
+        public static QueueFetcher Fetch(string sid) {
+            return new QueueFetcher(sid);
+        }
+    
+        /**
          * Update the queue with the new parameters
          * 
          * @param accountSid The account_sid
@@ -34,6 +44,16 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static QueueUpdater Update(string accountSid, string sid) {
             return new QueueUpdater(accountSid, sid);
+        }
+    
+        /**
+         * Create a QueueUpdater to execute update.
+         * 
+         * @param sid The sid
+         * @return QueueUpdater capable of executing the update
+         */
+        public static QueueUpdater Update(string sid) {
+            return new QueueUpdater(sid);
         }
     
         /**
@@ -48,6 +68,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a QueueDeleter to execute delete.
+         * 
+         * @param sid Delete by unique queue Sid
+         * @return QueueDeleter capable of executing the delete
+         */
+        public static QueueDeleter Delete(string sid) {
+            return new QueueDeleter(sid);
+        }
+    
+        /**
          * Retrieve a list of queues belonging to the account used to make the request
          * 
          * @param accountSid The account_sid
@@ -58,6 +88,15 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a QueueReader to execute read.
+         * 
+         * @return QueueReader capable of executing the read
+         */
+        public static QueueReader Read() {
+            return new QueueReader();
+        }
+    
+        /**
          * Create a queue
          * 
          * @param accountSid The account_sid
@@ -65,6 +104,15 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static QueueCreator Create(string accountSid) {
             return new QueueCreator(accountSid);
+        }
+    
+        /**
+         * Create a QueueCreator to execute create.
+         * 
+         * @return QueueCreator capable of executing the create
+         */
+        public static QueueCreator Create() {
+            return new QueueCreator();
         }
     
         /**

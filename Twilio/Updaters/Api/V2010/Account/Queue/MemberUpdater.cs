@@ -19,6 +19,21 @@ namespace Twilio.Updaters.Api.V2010.Account.Queue {
         private Twilio.Http.HttpMethod method;
     
         /**
+         * Construct a new MemberUpdater.
+         * 
+         * @param queueSid The Queue in which to find the members
+         * @param callSid The call_sid
+         * @param url The url
+         * @param method The method
+         */
+        public MemberUpdater(string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method) {
+            this.queueSid = queueSid;
+            this.callSid = callSid;
+            this.url = url;
+            this.method = method;
+        }
+    
+        /**
          * Construct a new MemberUpdater
          * 
          * @param accountSid The account_sid
@@ -46,7 +61,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Queue {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Queues/" + this.queueSid + "/Members/" + this.callSid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Queues/" + this.queueSid + "/Members/" + this.callSid + ".json"
             );
             
             addPostParams(request);
@@ -81,7 +96,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Queue {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Queues/" + this.queueSid + "/Members/" + this.callSid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Queues/" + this.queueSid + "/Members/" + this.callSid + ".json"
             );
             
             addPostParams(request);

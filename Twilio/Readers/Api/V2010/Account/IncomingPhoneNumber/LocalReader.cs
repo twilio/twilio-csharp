@@ -18,6 +18,12 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
         private Twilio.Types.PhoneNumber phoneNumber;
     
         /**
+         * Construct a new LocalReader.
+         */
+        public LocalReader() {
+        }
+    
+        /**
          * Construct a new LocalReader
          * 
          * @param ownerAccountSid The owner_account_sid
@@ -70,7 +76,7 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.ownerAccountSid + "/IncomingPhoneNumbers/Local.json"
+                "/2010-04-01/Accounts/" + (this.ownerAccountSid != null ? this.ownerAccountSid : client.GetAccountSid()) + "/IncomingPhoneNumbers/Local.json"
             );
             
             AddQueryParams(request);
@@ -92,7 +98,7 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.ownerAccountSid + "/IncomingPhoneNumbers/Local.json"
+                "/2010-04-01/Accounts/" + (this.ownerAccountSid != null ? this.ownerAccountSid : client.GetAccountSid()) + "/IncomingPhoneNumbers/Local.json"
             );
             
             AddQueryParams(request);

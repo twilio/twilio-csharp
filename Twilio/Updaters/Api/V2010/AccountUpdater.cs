@@ -16,6 +16,12 @@ namespace Twilio.Updaters.Api.V2010 {
         private AccountResource.Status status;
     
         /**
+         * Construct a new AccountUpdater.
+         */
+        public AccountUpdater() {
+        }
+    
+        /**
          * Construct a new AccountUpdater
          * 
          * @param sid The sid
@@ -57,7 +63,7 @@ namespace Twilio.Updaters.Api.V2010 {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.sid != null ? this.sid : client.GetAccountSid()) + ".json"
             );
             
             addPostParams(request);
@@ -92,7 +98,7 @@ namespace Twilio.Updaters.Api.V2010 {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.sid != null ? this.sid : client.GetAccountSid()) + ".json"
             );
             
             addPostParams(request);
@@ -122,7 +128,7 @@ namespace Twilio.Updaters.Api.V2010 {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             

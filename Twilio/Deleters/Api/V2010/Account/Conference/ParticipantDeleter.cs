@@ -16,6 +16,17 @@ namespace Twilio.Deleters.Api.V2010.Account.Conference {
         private string callSid;
     
         /**
+         * Construct a new ParticipantDeleter.
+         * 
+         * @param conferenceSid The string that uniquely identifies this conference
+         * @param callSid The call_sid
+         */
+        public ParticipantDeleter(string conferenceSid, string callSid) {
+            this.conferenceSid = conferenceSid;
+            this.callSid = callSid;
+        }
+    
+        /**
          * Construct a new ParticipantDeleter
          * 
          * @param accountSid The account_sid
@@ -38,7 +49,7 @@ namespace Twilio.Deleters.Api.V2010.Account.Conference {
             Request request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
             );
             
             Response response = await client.RequestAsync(request);
@@ -71,7 +82,7 @@ namespace Twilio.Deleters.Api.V2010.Account.Conference {
             Request request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
             );
             
             Response response = client.Request(request);

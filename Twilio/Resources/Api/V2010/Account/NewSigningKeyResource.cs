@@ -21,6 +21,15 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a NewSigningKeyCreator to execute create.
+         * 
+         * @return NewSigningKeyCreator capable of executing the create
+         */
+        public static NewSigningKeyCreator Create() {
+            return new NewSigningKeyCreator();
+        }
+    
+        /**
          * Converts a JSON string into a NewSigningKeyResource object
          * 
          * @param json Raw JSON string

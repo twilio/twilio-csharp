@@ -21,6 +21,15 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a NewKeyCreator to execute create.
+         * 
+         * @return NewKeyCreator capable of executing the create
+         */
+        public static NewKeyCreator Create() {
+            return new NewKeyCreator();
+        }
+    
+        /**
          * Converts a JSON string into a NewKeyResource object
          * 
          * @param json Raw JSON string

@@ -15,6 +15,12 @@ namespace Twilio.Readers.Api.V2010.Account.Sip {
         private string accountSid;
     
         /**
+         * Construct a new DomainReader.
+         */
+        public DomainReader() {
+        }
+    
+        /**
          * Construct a new DomainReader
          * 
          * @param accountSid The account_sid
@@ -34,7 +40,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/Domains.json"
             );
             
             AddQueryParams(request);
@@ -56,7 +62,7 @@ namespace Twilio.Readers.Api.V2010.Account.Sip {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/Domains.json"
             );
             
             AddQueryParams(request);

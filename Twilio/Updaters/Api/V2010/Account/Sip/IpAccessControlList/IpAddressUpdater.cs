@@ -18,20 +18,49 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip.IpAccessControlList {
         private string friendlyName;
     
         /**
+         * Construct a new IpAddressUpdater.
+         * 
+         * @param ipAccessControlListSid The ip_access_control_list_sid
+         * @param sid The sid
+         */
+        public IpAddressUpdater(string ipAccessControlListSid, string sid) {
+            this.ipAccessControlListSid = ipAccessControlListSid;
+            this.sid = sid;
+        }
+    
+        /**
          * Construct a new IpAddressUpdater
          * 
          * @param accountSid The account_sid
          * @param ipAccessControlListSid The ip_access_control_list_sid
          * @param sid The sid
-         * @param ipAddress The ip_address
-         * @param friendlyName The friendly_name
          */
-        public IpAddressUpdater(string accountSid, string ipAccessControlListSid, string sid, string ipAddress, string friendlyName) {
+        public IpAddressUpdater(string accountSid, string ipAccessControlListSid, string sid) {
             this.accountSid = accountSid;
             this.ipAccessControlListSid = ipAccessControlListSid;
             this.sid = sid;
+        }
+    
+        /**
+         * The ip_address
+         * 
+         * @param ipAddress The ip_address
+         * @return this
+         */
+        public IpAddressUpdater setIpAddress(string ipAddress) {
             this.ipAddress = ipAddress;
+            return this;
+        }
+    
+        /**
+         * The friendly_name
+         * 
+         * @param friendlyName The friendly_name
+         * @return this
+         */
+        public IpAddressUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
+            return this;
         }
     
         #if NET40
@@ -45,7 +74,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip.IpAccessControlList {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses/" + this.sid + ".json"
             );
             
             addPostParams(request);
@@ -80,7 +109,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip.IpAccessControlList {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses/" + this.sid + ".json"
             );
             
             addPostParams(request);
@@ -110,11 +139,11 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip.IpAccessControlList {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (ipAddress != "") {
+            if (ipAddress != null) {
                 request.AddPostParam("IpAddress", ipAddress);
             }
             
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

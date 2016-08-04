@@ -16,6 +16,17 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
         private string credentialListSid;
     
         /**
+         * Construct a new CredentialListMappingCreator.
+         * 
+         * @param domainSid The domain_sid
+         * @param credentialListSid The credential_list_sid
+         */
+        public CredentialListMappingCreator(string domainSid, string credentialListSid) {
+            this.domainSid = domainSid;
+            this.credentialListSid = credentialListSid;
+        }
+    
+        /**
          * Construct a new CredentialListMappingCreator
          * 
          * @param accountSid The account_sid
@@ -39,7 +50,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains/" + this.domainSid + "/CredentialListMappings.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/CredentialListMappings.json"
             );
             
             addPostParams(request);
@@ -74,7 +85,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains/" + this.domainSid + "/CredentialListMappings.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/CredentialListMappings.json"
             );
             
             addPostParams(request);
@@ -104,7 +115,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip.Domain {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (credentialListSid != "") {
+            if (credentialListSid != null) {
                 request.AddPostParam("CredentialListSid", credentialListSid);
             }
         }

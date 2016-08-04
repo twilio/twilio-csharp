@@ -140,6 +140,15 @@ namespace Twilio.Resources.Api.V2010.Account.Usage {
         }
     
         /**
+         * Create a RecordReader to execute read.
+         * 
+         * @return RecordReader capable of executing the read
+         */
+        public static RecordReader Read() {
+            return new RecordReader();
+        }
+    
+        /**
          * Converts a JSON string into a RecordResource object
          * 
          * @param json Raw JSON string

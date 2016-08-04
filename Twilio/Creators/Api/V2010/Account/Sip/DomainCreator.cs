@@ -25,6 +25,15 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
         private Twilio.Http.HttpMethod voiceStatusCallbackMethod;
     
         /**
+         * Construct a new DomainCreator.
+         * 
+         * @param domainName The unique address on Twilio to route SIP traffic
+         */
+        public DomainCreator(string domainName) {
+            this.domainName = domainName;
+        }
+    
+        /**
          * Construct a new DomainCreator
          * 
          * @param accountSid The account_sid
@@ -170,7 +179,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/Domains.json"
             );
             
             addPostParams(request);
@@ -205,7 +214,7 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/Domains.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/Domains.json"
             );
             
             addPostParams(request);
@@ -235,15 +244,15 @@ namespace Twilio.Creators.Api.V2010.Account.Sip {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (domainName != "") {
+            if (domainName != null) {
                 request.AddPostParam("DomainName", domainName);
             }
             
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (authType != "") {
+            if (authType != null) {
                 request.AddPostParam("AuthType", authType);
             }
             

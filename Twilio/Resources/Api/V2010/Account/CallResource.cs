@@ -96,6 +96,20 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a CallCreator to execute create.
+         * 
+         * @param to Phone number, SIP address or client identifier to call
+         * @param from Twilio number from which to originate the call
+         * @param url Url from which to fetch TwiML
+         * @return CallCreator capable of executing the create
+         */
+        public static CallCreator Create(Twilio.Types.PhoneNumber to, 
+                                         Twilio.Types.PhoneNumber from, 
+                                         Uri url) {
+            return new CallCreator(to, from, url);
+        }
+    
+        /**
          * Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client
          * connections
          * 
@@ -111,6 +125,21 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a CallCreator to execute create.
+         * 
+         * @param to Phone number, SIP address or client identifier to call
+         * @param from Twilio number from which to originate the call
+         * @param applicationSid ApplicationSid that configures from where to fetch
+         *                       TwiML
+         * @return CallCreator capable of executing the create
+         */
+        public static CallCreator Create(Twilio.Types.PhoneNumber to, 
+                                         Twilio.Types.PhoneNumber from, 
+                                         string applicationSid) {
+            return new CallCreator(to, from, applicationSid);
+        }
+    
+        /**
          * Once the record is deleted, it will no longer appear in the API and Account
          * Portal logs.
          * 
@@ -120,6 +149,16 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static CallDeleter Delete(string accountSid, string sid) {
             return new CallDeleter(accountSid, sid);
+        }
+    
+        /**
+         * Create a CallDeleter to execute delete.
+         * 
+         * @param sid Call Sid that uniquely identifies the Call to delete
+         * @return CallDeleter capable of executing the delete
+         */
+        public static CallDeleter Delete(string sid) {
+            return new CallDeleter(sid);
         }
     
         /**
@@ -134,6 +173,16 @@ namespace Twilio.Resources.Api.V2010.Account {
         }
     
         /**
+         * Create a CallFetcher to execute fetch.
+         * 
+         * @param sid Call Sid that uniquely identifies the Call to fetch
+         * @return CallFetcher capable of executing the fetch
+         */
+        public static CallFetcher Fetch(string sid) {
+            return new CallFetcher(sid);
+        }
+    
+        /**
          * Retrieves a collection of Calls made to and from your account
          * 
          * @param accountSid The account_sid
@@ -141,6 +190,15 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static CallReader Read(string accountSid) {
             return new CallReader(accountSid);
+        }
+    
+        /**
+         * Create a CallReader to execute read.
+         * 
+         * @return CallReader capable of executing the read
+         */
+        public static CallReader Read() {
+            return new CallReader();
         }
     
         /**
@@ -152,6 +210,16 @@ namespace Twilio.Resources.Api.V2010.Account {
          */
         public static CallUpdater Update(string accountSid, string sid) {
             return new CallUpdater(accountSid, sid);
+        }
+    
+        /**
+         * Create a CallUpdater to execute update.
+         * 
+         * @param sid Call Sid that uniquely identifies the Call to update
+         * @return CallUpdater capable of executing the update
+         */
+        public static CallUpdater Update(string sid) {
+            return new CallUpdater(sid);
         }
     
         /**

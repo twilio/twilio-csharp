@@ -15,6 +15,12 @@ namespace Twilio.Creators.Api.V2010.Account {
         private int? ttl;
     
         /**
+         * Construct a new TokenCreator.
+         */
+        public TokenCreator() {
+        }
+    
+        /**
          * Construct a new TokenCreator
          * 
          * @param accountSid The account_sid
@@ -45,7 +51,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Tokens.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Tokens.json"
             );
             
             addPostParams(request);
@@ -80,7 +86,7 @@ namespace Twilio.Creators.Api.V2010.Account {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/Tokens.json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Tokens.json"
             );
             
             addPostParams(request);

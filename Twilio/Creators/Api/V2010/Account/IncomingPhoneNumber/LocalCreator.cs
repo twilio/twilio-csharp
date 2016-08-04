@@ -32,6 +32,15 @@ namespace Twilio.Creators.Api.V2010.Account.IncomingPhoneNumber {
         private Uri voiceUrl;
     
         /**
+         * Construct a new LocalCreator.
+         * 
+         * @param phoneNumber The phone_number
+         */
+        public LocalCreator(Twilio.Types.PhoneNumber phoneNumber) {
+            this.phoneNumber = phoneNumber;
+        }
+    
+        /**
          * Construct a new LocalCreator
          * 
          * @param ownerAccountSid The owner_account_sid
@@ -268,7 +277,7 @@ namespace Twilio.Creators.Api.V2010.Account.IncomingPhoneNumber {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.ownerAccountSid + "/IncomingPhoneNumbers/Local.json"
+                "/2010-04-01/Accounts/" + (this.ownerAccountSid != null ? this.ownerAccountSid : client.GetAccountSid()) + "/IncomingPhoneNumbers/Local.json"
             );
             
             addPostParams(request);
@@ -303,7 +312,7 @@ namespace Twilio.Creators.Api.V2010.Account.IncomingPhoneNumber {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.ownerAccountSid + "/IncomingPhoneNumbers/Local.json"
+                "/2010-04-01/Accounts/" + (this.ownerAccountSid != null ? this.ownerAccountSid : client.GetAccountSid()) + "/IncomingPhoneNumbers/Local.json"
             );
             
             addPostParams(request);
@@ -337,15 +346,15 @@ namespace Twilio.Creators.Api.V2010.Account.IncomingPhoneNumber {
                 request.AddPostParam("PhoneNumber", phoneNumber.ToString());
             }
             
-            if (apiVersion != "") {
+            if (apiVersion != null) {
                 request.AddPostParam("ApiVersion", apiVersion);
             }
             
-            if (friendlyName != "") {
+            if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (smsApplicationSid != "") {
+            if (smsApplicationSid != null) {
                 request.AddPostParam("SmsApplicationSid", smsApplicationSid);
             }
             
@@ -373,7 +382,7 @@ namespace Twilio.Creators.Api.V2010.Account.IncomingPhoneNumber {
                 request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
             
-            if (voiceApplicationSid != "") {
+            if (voiceApplicationSid != null) {
                 request.AddPostParam("VoiceApplicationSid", voiceApplicationSid);
             }
             

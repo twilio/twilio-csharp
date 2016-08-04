@@ -18,6 +18,21 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip.CredentialList {
         private string password;
     
         /**
+         * Construct a new CredentialUpdater.
+         * 
+         * @param credentialListSid The credential_list_sid
+         * @param sid The sid
+         * @param username The username
+         * @param password The password
+         */
+        public CredentialUpdater(string credentialListSid, string sid, string username, string password) {
+            this.credentialListSid = credentialListSid;
+            this.sid = sid;
+            this.username = username;
+            this.password = password;
+        }
+    
+        /**
          * Construct a new CredentialUpdater
          * 
          * @param accountSid The account_sid
@@ -45,7 +60,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip.CredentialList {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/CredentialLists/" + this.credentialListSid + "/Credentials/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/CredentialLists/" + this.credentialListSid + "/Credentials/" + this.sid + ".json"
             );
             
             addPostParams(request);
@@ -80,7 +95,7 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip.CredentialList {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + this.accountSid + "/SIP/CredentialLists/" + this.credentialListSid + "/Credentials/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/CredentialLists/" + this.credentialListSid + "/Credentials/" + this.sid + ".json"
             );
             
             addPostParams(request);
@@ -110,11 +125,11 @@ namespace Twilio.Updaters.Api.V2010.Account.Sip.CredentialList {
          * @param request Request to add post params to
          */
         private void addPostParams(Request request) {
-            if (username != "") {
+            if (username != null) {
                 request.AddPostParam("Username", username);
             }
             
-            if (password != "") {
+            if (password != null) {
                 request.AddPostParam("Password", password);
             }
         }
