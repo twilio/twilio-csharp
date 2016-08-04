@@ -77,6 +77,11 @@
     <Compile Include="..\Twilio\JWT\ScopeURI.cs"><Link>JWT\ScopeURI.cs</Link></Compile>
     <Compile Include="..\Twilio\JWT\TaskRouterCapability.cs"><Link>JWT\TaskRouterCapability.cs</Link></Compile>
     <Compile Include="..\Twilio\JWT\TwilioCapability.cs"><Link>JWT\TwilioCapability.cs</Link></Compile>
+    <Compile Include="..\Twilio\TwiML\VoiceResponse.cs"><Link>TwiML\VoiceResponse.cs</Link></Compile>
+    <Compile Include="..\Twilio\TwiML\MessagingResponse.cs"><Link>TwiML\MessagingResponse.cs</Link></Compile>
+    <Compile Include="..\Twilio\TwiML\Message.cs"><Link>TwiML\Message.cs</Link></Compile>
+    <Compile Include="..\Twilio\TwiML\Dial.cs"><Link>TwiML\Dial.cs</Link></Compile>
+    <Compile Include="..\Twilio\TwiML\Gather.cs"><Link>TwiML\Gather.cs</Link></Compile>
     <Compile Include="..\Twilio\Twilio.cs"><Link>Twilio.cs</Link></Compile>
 <!-- Yoyodyne Generated Artifacts -->
     <Compile Include="..\Twilio\Creators\Api\V2010\AccountCreator.cs"><Link>Creators\Api\V2010\AccountCreator.cs</Link></Compile>
@@ -477,6 +482,8 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net35\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -488,5 +495,8 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TwiML\" />
   </ItemGroup>
 </Project>

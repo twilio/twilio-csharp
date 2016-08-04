@@ -80,6 +80,11 @@
     <Compile Include="JWT\ScopeURI.cs" />
     <Compile Include="JWT\TaskRouterCapability.cs" />
     <Compile Include="JWT\TwilioCapability.cs" />
+    <Compile Include="TwiML\VoiceResponse.cs" />
+    <Compile Include="TwiML\MessagingResponse.cs" />
+    <Compile Include="TwiML\Message.cs" />
+    <Compile Include="TwiML\Dial.cs" />
+    <Compile Include="TwiML\Gather.cs" />
     <Compile Include="Twilio.cs" />
 <!-- Yoyodyne Generated Artifacts -->
     <Compile Include="Creators\Api\V2010\AccountCreator.cs" />
@@ -498,5 +503,8 @@
     <Reference Include="JWT">
       <HintPath>..\packages\Portable.JWT.1.0.5\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\JWT.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TwiML\" />
   </ItemGroup>
 </Project>
