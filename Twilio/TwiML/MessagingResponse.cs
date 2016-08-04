@@ -18,10 +18,18 @@ namespace Twilio.TwiML
             );
         }
 
-        public MessagingResponse Redirect(string method=null, string redirect=null)
+        public MessagingResponse Redirect(string method=null, string url=null)
         {
-            response.Add(new XAttribute("method", method));
-            response.Add(new XAttribute("redirect", redirect));
+            XElement redirect = new XElement("Redirect");
+            if (!String.IsNullOrEmpty(method)) {
+                redirect.Add(new XAttribute("method", method));
+            }
+
+            if (!String.IsNullOrEmpty(url)) {
+                redirect.Add(new XAttribute("url", url));
+            }
+            
+            response.Add(redirect);
             return this;
         }
 

@@ -471,6 +471,8 @@
     <Compile Include="TwiML\VoiceResponse.cs" />
     <Compile Include="TwiML\MessagingResponse.cs" />
     <Compile Include="TwiML\Message.cs" />
+    <Compile Include="TwiML\Dial.cs" />
+    <Compile Include="TwiML\Gather.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

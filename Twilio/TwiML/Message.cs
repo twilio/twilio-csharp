@@ -10,11 +10,25 @@ namespace Twilio.TwiML
         public Message(string to=null, string from=null, string method=null, string action=null, string statusCallback=null)
         {
             message = new XElement("Message");
-            message.Add(new XAttribute("to", to));
-            message.Add(new XAttribute("from", from));
-            message.Add(new XAttribute("method", method));
-            message.Add(new XAttribute("action", action));
-            message.Add(new XAttribute("statusCallback", statusCallback));
+            if (!String.IsNullOrEmpty(to)) {
+                message.Add(new XAttribute("to", to));    
+            }
+            
+            if (!String.IsNullOrEmpty(from)) {
+                message.Add(new XAttribute("from", from));    
+            }
+            
+            if (!String.IsNullOrEmpty(method)) {
+                message.Add(new XAttribute("method", method));    
+            }
+            
+            if (!String.IsNullOrEmpty(action)) {
+                message.Add(new XAttribute("action", action));    
+            }
+            
+            if (!String.IsNullOrEmpty(statusCallback)) {
+                message.Add(new XAttribute("statusCallback", statusCallback));    
+            }
         }
 
         public Message Body(string body)
