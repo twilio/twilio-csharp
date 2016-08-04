@@ -64,7 +64,7 @@ namespace Twilio.TwiML
             string action=null,
             string method=null,
             string waitUrl=null,
-            String watiUrlMethod=null,
+            String waitUrlMethod=null,
             string workflowSid=null)
         {
             XElement enqueue = new XElement("Enqueue", name);
@@ -77,8 +77,8 @@ namespace Twilio.TwiML
             if (!String.IsNullOrEmpty(waitUrl)) {
                 enqueue.Add(new XAttribute("waitUrl", waitUrl));
             }
-            if (!String.IsNullOrEmpty(watiUrlMethod)) {
-                enqueue.Add(new XAttribute("watiUrlMethod", watiUrlMethod));
+            if (!String.IsNullOrEmpty(waitUrlMethod)) {
+                enqueue.Add(new XAttribute("waitUrlMethod", waitUrlMethod));
             }
             if (!String.IsNullOrEmpty(workflowSid)) {
                 enqueue.Add(new XAttribute("workflowSid", workflowSid));
@@ -95,17 +95,20 @@ namespace Twilio.TwiML
             string finishOnKey=null)
         {
             XElement gather = new XElement("Gather");
+            if (timeout != null) {
+                gather.Add(new XAttribute("timeout", timeout));
+            }
             if (numDigits != null) {
-                gather.Add("numDigits", numDigits);
+                gather.Add(new XAttribute("numDigits", numDigits));
             }
             if (!String.IsNullOrEmpty(action)) {
-                gather.Add("action", action);
+                gather.Add(new XAttribute("action", action));
             }
             if (!String.IsNullOrEmpty(method)) {
-                gather.Add("method", method);
+                gather.Add(new XAttribute("method", method));
             }
             if (!String.IsNullOrEmpty(finishOnKey)) {
-                gather.Add("finishOnKey", finishOnKey);
+                gather.Add(new XAttribute("finishOnKey", finishOnKey));
             }
 
             response.Add(gather);
@@ -147,10 +150,10 @@ namespace Twilio.TwiML
         {
             XElement play = new XElement("Play", url);
             if (loop != null) {
-                play.Add("loop", loop);
+                play.Add(new XAttribute("loop", loop));
             } 
             if (digits != null) {
-                play.Add("digits", digits);
+                play.Add(new XAttribute("digits", digits));
             }
 
             response.Add(play);
@@ -169,31 +172,31 @@ namespace Twilio.TwiML
         {
             XElement record = new XElement("Record");
             if (transcribe != null) {
-                record.Add("transcribe", transcribe);
+                record.Add(new XAttribute("transcribe", transcribe));
             }
             if (playBeep != null) {
-                record.Add("playBeep", playBeep);
+                record.Add(new XAttribute("playBeep", playBeep));
             }
             if (tiemout != null) {
-                record.Add("tiemout", tiemout);
+                record.Add(new XAttribute("tiemout", tiemout));
             }
             if (maxLength != null) {
-                record.Add("maxLength", maxLength);
+                record.Add(new XAttribute("maxLength", maxLength));
             }
             if (!String.IsNullOrEmpty(action)) {
-                record.Add("action", action);
+                record.Add(new XAttribute("action", action));
             }
             if (!String.IsNullOrEmpty(method)) {
-                record.Add("method", method);
+                record.Add(new XAttribute("method", method));
             }
             if (!String.IsNullOrEmpty(finishOnKey)) {
-                record.Add("finishOnKey", finishOnKey);
+                record.Add(new XAttribute("finishOnKey", finishOnKey));
             }
             if (!String.IsNullOrEmpty(transcribeCallback)) {
-                record.Add("transcribeCallback", transcribeCallback);
+                record.Add(new XAttribute("transcribeCallback", transcribeCallback));
             }
             if (!String.IsNullOrEmpty(trim)) {
-                record.Add("trim", trim);
+                record.Add(new XAttribute("trim", trim));
             }
 
             response.Add(record);
