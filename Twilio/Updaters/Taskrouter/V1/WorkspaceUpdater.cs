@@ -1,6 +1,4 @@
-using System;
 using Twilio.Clients;
-using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Taskrouter.V1;
@@ -15,7 +13,7 @@ namespace Twilio.Updaters.Taskrouter.V1 {
     public class WorkspaceUpdater : Updater<WorkspaceResource> {
         private string sid;
         private string defaultActivitySid;
-        private Uri eventCallbackUrl;
+        private string eventCallbackUrl;
         private string friendlyName;
         private string timeoutActivitySid;
     
@@ -45,19 +43,9 @@ namespace Twilio.Updaters.Taskrouter.V1 {
          * @param eventCallbackUrl The event_callback_url
          * @return this
          */
-        public WorkspaceUpdater setEventCallbackUrl(Uri eventCallbackUrl) {
+        public WorkspaceUpdater setEventCallbackUrl(string eventCallbackUrl) {
             this.eventCallbackUrl = eventCallbackUrl;
             return this;
-        }
-    
-        /**
-         * The event_callback_url
-         * 
-         * @param eventCallbackUrl The event_callback_url
-         * @return this
-         */
-        public WorkspaceUpdater setEventCallbackUrl(string eventCallbackUrl) {
-            return setEventCallbackUrl(Promoter.UriFromString(eventCallbackUrl));
         }
     
         /**
@@ -163,7 +151,7 @@ namespace Twilio.Updaters.Taskrouter.V1 {
             }
             
             if (eventCallbackUrl != null) {
-                request.AddPostParam("EventCallbackUrl", eventCallbackUrl.ToString());
+                request.AddPostParam("EventCallbackUrl", eventCallbackUrl);
             }
             
             if (friendlyName != null) {

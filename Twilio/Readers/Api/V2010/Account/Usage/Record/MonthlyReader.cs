@@ -13,9 +13,6 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
 
     public class MonthlyReader : Reader<MonthlyResource> {
         private string accountSid;
-        private MonthlyResource.Category category;
-        private string startDate;
-        private string endDate;
     
         /**
          * Construct a new MonthlyReader.
@@ -30,39 +27,6 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
          */
         public MonthlyReader(string accountSid) {
             this.accountSid = accountSid;
-        }
-    
-        /**
-         * The category
-         * 
-         * @param category The category
-         * @return this
-         */
-        public MonthlyReader ByCategory(MonthlyResource.Category category) {
-            this.category = category;
-            return this;
-        }
-    
-        /**
-         * The start_date
-         * 
-         * @param startDate The start_date
-         * @return this
-         */
-        public MonthlyReader ByStartDate(string startDate) {
-            this.startDate = startDate;
-            return this;
-        }
-    
-        /**
-         * The end_date
-         * 
-         * @param endDate The end_date
-         * @return this
-         */
-        public MonthlyReader ByEndDate(string endDate) {
-            this.endDate = endDate;
-            return this;
         }
     
         #if NET40
@@ -163,18 +127,6 @@ namespace Twilio.Readers.Api.V2010.Account.Usage.Record {
          * @param request Request to add query string arguments to
          */
         private void AddQueryParams(Request request) {
-            if (category != null) {
-                request.AddQueryParam("Category", category.ToString());
-            }
-            
-            if (startDate != null) {
-                request.AddQueryParam("StartDate", startDate);
-            }
-            
-            if (endDate != null) {
-                request.AddQueryParam("EndDate", endDate);
-            }
-            
             request.AddQueryParam("PageSize", GetPageSize().ToString());
         }
     }

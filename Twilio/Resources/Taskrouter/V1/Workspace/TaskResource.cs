@@ -19,7 +19,6 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace {
             public const string RESERVED="reserved";
             public const string ASSIGNED="assigned";
             public const string CANCELED="canceled";
-            public const string COMPLETED="completed";
         
             private string value;
             

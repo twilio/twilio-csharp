@@ -89,7 +89,7 @@ namespace Twilio.Resources.Taskrouter.V1 {
         [JsonProperty("default_activity_sid")]
         private readonly string defaultActivitySid;
         [JsonProperty("event_callback_url")]
-        private readonly Uri eventCallbackUrl;
+        private readonly string eventCallbackUrl;
         [JsonProperty("friendly_name")]
         private readonly string friendlyName;
         [JsonProperty("sid")]
@@ -114,7 +114,7 @@ namespace Twilio.Resources.Taskrouter.V1 {
                                   [JsonProperty("default_activity_sid")]
                                   string defaultActivitySid, 
                                   [JsonProperty("event_callback_url")]
-                                  Uri eventCallbackUrl, 
+                                  string eventCallbackUrl, 
                                   [JsonProperty("friendly_name")]
                                   string friendlyName, 
                                   [JsonProperty("sid")]
@@ -173,7 +173,7 @@ namespace Twilio.Resources.Taskrouter.V1 {
         /**
          * @return The event_callback_url
          */
-        public Uri GetEventCallbackUrl() {
+        public string GetEventCallbackUrl() {
             return this.eventCallbackUrl;
         }
     

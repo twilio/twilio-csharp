@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Creators;
@@ -23,15 +22,11 @@ namespace Twilio.Creators.Api.V2010.Account {
         private Uri fallbackUrl;
         private Twilio.Http.HttpMethod fallbackMethod;
         private Uri statusCallback;
-        private List<string> statusCallbackEvent;
         private Twilio.Http.HttpMethod statusCallbackMethod;
         private string sendDigits;
         private string ifMachine;
         private int? timeout;
         private bool? record;
-        private string recordingChannels;
-        private string recordingStatusCallback;
-        private Twilio.Http.HttpMethod recordingStatusCallbackMethod;
         private string sipAuthUsername;
         private string sipAuthPassword;
     
@@ -167,27 +162,6 @@ namespace Twilio.Creators.Api.V2010.Account {
         }
     
         /**
-         * The status_callback_event
-         * 
-         * @param statusCallbackEvent The status_callback_event
-         * @return this
-         */
-        public CallCreator setStatusCallbackEvent(List<string> statusCallbackEvent) {
-            this.statusCallbackEvent = statusCallbackEvent;
-            return this;
-        }
-    
-        /**
-         * The status_callback_event
-         * 
-         * @param statusCallbackEvent The status_callback_event
-         * @return this
-         */
-        public CallCreator setStatusCallbackEvent(string statusCallbackEvent) {
-            return setStatusCallbackEvent(Promoter.ListOfOne(statusCallbackEvent));
-        }
-    
-        /**
          * The HTTP method that Twilio should use to request the `StatusCallback`.
          * Defaults to `POST`. If an `ApplicationSid` was provided, this parameter is
          * ignored.
@@ -250,39 +224,6 @@ namespace Twilio.Creators.Api.V2010.Account {
          */
         public CallCreator setRecord(bool? record) {
             this.record = record;
-            return this;
-        }
-    
-        /**
-         * The recording_channels
-         * 
-         * @param recordingChannels The recording_channels
-         * @return this
-         */
-        public CallCreator setRecordingChannels(string recordingChannels) {
-            this.recordingChannels = recordingChannels;
-            return this;
-        }
-    
-        /**
-         * The recording_status_callback
-         * 
-         * @param recordingStatusCallback The recording_status_callback
-         * @return this
-         */
-        public CallCreator setRecordingStatusCallback(string recordingStatusCallback) {
-            this.recordingStatusCallback = recordingStatusCallback;
-            return this;
-        }
-    
-        /**
-         * The recording_status_callback_method
-         * 
-         * @param recordingStatusCallbackMethod The recording_status_callback_method
-         * @return this
-         */
-        public CallCreator setRecordingStatusCallbackMethod(Twilio.Http.HttpMethod recordingStatusCallbackMethod) {
-            this.recordingStatusCallbackMethod = recordingStatusCallbackMethod;
             return this;
         }
     
@@ -416,10 +357,6 @@ namespace Twilio.Creators.Api.V2010.Account {
                 request.AddPostParam("StatusCallback", statusCallback.ToString());
             }
             
-            if (statusCallbackEvent != null) {
-                request.AddPostParam("StatusCallbackEvent", statusCallbackEvent.ToString());
-            }
-            
             if (statusCallbackMethod != null) {
                 request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
@@ -438,18 +375,6 @@ namespace Twilio.Creators.Api.V2010.Account {
             
             if (record != null) {
                 request.AddPostParam("Record", record.ToString());
-            }
-            
-            if (recordingChannels != null) {
-                request.AddPostParam("RecordingChannels", recordingChannels);
-            }
-            
-            if (recordingStatusCallback != null) {
-                request.AddPostParam("RecordingStatusCallback", recordingStatusCallback);
-            }
-            
-            if (recordingStatusCallbackMethod != null) {
-                request.AddPostParam("RecordingStatusCallbackMethod", recordingStatusCallbackMethod.ToString());
             }
             
             if (sipAuthUsername != null) {

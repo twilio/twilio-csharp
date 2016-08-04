@@ -12,39 +12,6 @@ using Twilio.Updaters.Taskrouter.V1.Workspace.Task;
 namespace Twilio.Resources.Taskrouter.V1.Workspace.Task {
 
     public class ReservationResource : SidResource {
-        public sealed class Status : IStringEnum {
-            public const string PENDING="pending";
-            public const string ACCEPTED="accepted";
-            public const string REJECTED="rejected";
-            public const string TIMEOUT="timeout";
-            public const string CANCELED="canceled";
-            public const string RESCINDED="rescinded";
-        
-            private string value;
-            
-            public Status() { }
-            
-            public Status(string value) {
-                this.value = value;
-            }
-            
-            public override string ToString() {
-                return value;
-            }
-            
-            public static implicit operator Status(string value) {
-                return new Status(value);
-            }
-            
-            public static implicit operator string(Status value) {
-                return value.ToString();
-            }
-            
-            public void FromString(string value) {
-                this.value = value;
-            }
-        }
-    
         /**
          * read
          * 
@@ -102,8 +69,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace.Task {
         [JsonProperty("date_updated")]
         private readonly DateTime? dateUpdated;
         [JsonProperty("reservation_status")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        private readonly ReservationResource.Status reservationStatus;
+        private readonly string reservationStatus;
         [JsonProperty("sid")]
         private readonly string sid;
         [JsonProperty("task_sid")]
@@ -126,7 +92,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace.Task {
                                     [JsonProperty("date_updated")]
                                     string dateUpdated, 
                                     [JsonProperty("reservation_status")]
-                                    ReservationResource.Status reservationStatus, 
+                                    string reservationStatus, 
                                     [JsonProperty("sid")]
                                     string sid, 
                                     [JsonProperty("task_sid")]
@@ -172,7 +138,7 @@ namespace Twilio.Resources.Taskrouter.V1.Workspace.Task {
         /**
          * @return The reservation_status
          */
-        public ReservationResource.Status GetReservationStatus() {
+        public string GetReservationStatus() {
             return this.reservationStatus;
         }
     

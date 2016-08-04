@@ -16,7 +16,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
         private string workspaceSid;
         private string taskSid;
         private string sid;
-        private ReservationResource.Status reservationStatus;
+        private string reservationStatus;
         private string workerActivitySid;
         private string instruction;
         private string dequeuePostWorkActivitySid;
@@ -55,7 +55,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
          * @param reservationStatus The reservation_status
          * @return this
          */
-        public ReservationUpdater setReservationStatus(ReservationResource.Status reservationStatus) {
+        public ReservationUpdater setReservationStatus(string reservationStatus) {
             this.reservationStatus = reservationStatus;
             return this;
         }
@@ -375,7 +375,7 @@ namespace Twilio.Updaters.Taskrouter.V1.Workspace.Task {
          */
         private void addPostParams(Request request) {
             if (reservationStatus != null) {
-                request.AddPostParam("ReservationStatus", reservationStatus.ToString());
+                request.AddPostParam("ReservationStatus", reservationStatus);
             }
             
             if (workerActivitySid != null) {
