@@ -62,10 +62,10 @@ namespace Twilio.Fetchers.Api.V2010.Account.Queue {
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.GetMessage(),
+                    (restException.GetMessage() != null ? restException.GetMessage() : "Unable to fetch record, " + response.GetStatusCode()),
                     restException.GetCode(),
                     restException.GetMoreInfo(),
-                    restException.GetStatus(),
+                    (int)response.GetStatusCode(),
                     null
                 );
             }
@@ -96,10 +96,10 @@ namespace Twilio.Fetchers.Api.V2010.Account.Queue {
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.GetMessage(),
+                    (restException.GetMessage() != null ? restException.GetMessage() : "Unable to fetch record, " + response.GetStatusCode()),
                     restException.GetCode(),
                     restException.GetMoreInfo(),
-                    restException.GetStatus(),
+                    (int)response.GetStatusCode(),
                     null
                 );
             }

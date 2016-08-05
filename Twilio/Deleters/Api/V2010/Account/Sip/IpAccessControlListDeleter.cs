@@ -56,10 +56,10 @@ namespace Twilio.Deleters.Api.V2010.Account.Sip {
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.GetMessage(),
+                    (restException.GetMessage() != null ? restException.GetMessage() : "Unable to delete record, " + response.GetStatusCode()),
                     restException.GetCode(),
                     restException.GetMoreInfo(),
-                    restException.GetStatus(),
+                    (int)response.GetStatusCode(),
                     null
                 );
             }
@@ -89,10 +89,10 @@ namespace Twilio.Deleters.Api.V2010.Account.Sip {
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.GetMessage(),
+                    (restException.GetMessage() != null ? restException.GetMessage() : "Unable to delete record, " + response.GetStatusCode()),
                     restException.GetCode(),
                     restException.GetMoreInfo(),
-                    restException.GetStatus(),
+                    (int)response.GetStatusCode(),
                     null
                 );
             }

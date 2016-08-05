@@ -143,10 +143,10 @@ namespace Twilio.Readers.Api.V2010.Account.IncomingPhoneNumber {
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.GetMessage(),
+                    (restException.GetMessage() != null ? restException.GetMessage() : "Unable to read records, " + response.GetStatusCode()),
                     restException.GetCode(),
                     restException.GetMoreInfo(),
-                    restException.GetStatus(),
+                    (int)response.GetStatusCode(),
                     null
                 );
             }

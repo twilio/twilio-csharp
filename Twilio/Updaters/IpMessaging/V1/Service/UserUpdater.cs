@@ -86,10 +86,10 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.GetMessage(),
+                    (restException.GetMessage() != null ? restException.GetMessage() : "Unable to update record, " + response.GetStatusCode()),
                     restException.GetCode(),
                     restException.GetMoreInfo(),
-                    restException.GetStatus(),
+                    (int)response.GetStatusCode(),
                     null
                 );
             }
@@ -121,10 +121,10 @@ namespace Twilio.Updaters.IpMessaging.V1.Service {
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
-                    restException.GetMessage(),
+                    (restException.GetMessage() != null ? restException.GetMessage() : "Unable to update record, " + response.GetStatusCode()),
                     restException.GetCode(),
                     restException.GetMoreInfo(),
-                    restException.GetStatus(),
+                    (int)response.GetStatusCode(),
                     null
                 );
             }

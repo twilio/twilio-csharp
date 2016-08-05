@@ -21,15 +21,15 @@ namespace Twilio.Exceptions
 			this.status = status;
 		}
 
-		public int getCode() {
+		public int GetCode() {
 			return code;
 		}
 
-		public string getMoreInfo() {
+		public string GetMoreInfo() {
 			return moreInfo;
 		}
 
-		public int getStatusCode() {
+		public int GetStatusCode() {
 			return status;
 		}
 	}
