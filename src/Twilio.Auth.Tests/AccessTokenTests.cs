@@ -134,5 +134,49 @@ namespace Twilio.Auth.Tests
             Assert.IsNotNull(grants["rtc"]);
             Assert.IsNotNull(grants["ip_messaging"]);
         }
+
+        [Test]
+        public void ShouldCreateVoiceGrant()
+        {
+            var token = new AccessToken("AC456", "SK123", "foobar");
+            var delta = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            var timestamp = (int)Math.Floor(delta.TotalSeconds);
+
+            var pvg = new ProgrammableVoiceGrant();
+            pvg.OutgoingApplicationSid = "AP123";
+
+            var param = new Dictionary<string, string>();
+            param.Add("foo", "bar");
+            pvg.OutgoingApplicationParams = param;
+
+            token.AddGrant(pvg);
+
+            var encoded = token.ToJWT();
+            Assert.IsNotNull(encoded);
+            Assert.IsNotEmpty(encoded);
+
+            var decoded = JsonWebToken.Decode(encoded, "foobar");
+            Assert.IsNotEmpty(decoded);
+            var serializer = new JavaScriptSerializer();
+            var payload = (Dictionary<string, object>)serializer.DeserializeObject(decoded);
+            Assert.IsNotNull(payload);
+
+            Assert.AreEqual("SK123", payload["iss"]);
+            Assert.AreEqual("AC456", payload["sub"]);
+            var exp = Convert.ToInt64(payload["exp"]);
+            Assert.AreEqual(timestamp + 3600, exp);
+            var jti = (string)payload["jti"];
+            Assert.AreEqual("SK123-" + timestamp.ToString(), jti);
+
+            var grants = (Dictionary<string, object>)payload["grants"];
+            Assert.AreEqual(1, grants.Count);
+         
+            var decodedPvg = (Dictionary<string, object>)grants["programmable_voice"];
+            var outgoing = (Dictionary<string, object>)decodedPvg["outgoing"];
+            Assert.AreEqual("AP123", outgoing["application_sid"]);
+
+            var decodedParams = (Dictionary<string, object>)outgoing["params"];
+            Assert.AreEqual("bar", decodedParams["foo"]);
+        }
     }
 }

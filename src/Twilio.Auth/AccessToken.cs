@@ -60,7 +60,6 @@ namespace Twilio.Auth
 
             foreach (IGrant grant in this.Grants)
             {
-                Console.Write(grant.GetGrantKey());
                 grantPayload.Add(grant.GetGrantKey(), grant.GetPayload());
             }
 
