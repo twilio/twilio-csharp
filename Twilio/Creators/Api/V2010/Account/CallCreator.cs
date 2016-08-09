@@ -6,6 +6,7 @@ using Twilio.Creators;
 using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Resources.Api.V2010.Account;
+using Twilio.Types;
 
 #if NET40
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace Twilio.Creators.Api.V2010.Account {
     public class CallCreator : Creator<CallResource> {
         private string accountSid;
         private Twilio.Types.PhoneNumber to;
-        private Twilio.Types.PhoneNumber from;
+        private Twilio.Types.Endpoint from;
         private Uri url;
         private string applicationSid;
         private Twilio.Http.HttpMethod method;
@@ -42,7 +43,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param from Twilio number from which to originate the call
          * @param url Url from which to fetch TwiML
          */
-        public CallCreator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, Uri url) {
+        public CallCreator(Twilio.Types.PhoneNumber to, Twilio.Types.Endpoint from, Uri url) {
             this.to = to;
             this.from = from;
             this.url = url;
@@ -56,7 +57,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param from Twilio number from which to originate the call
          * @param url Url from which to fetch TwiML
          */
-        public CallCreator(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, Uri url) {
+        public CallCreator(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.Endpoint from, Uri url) {
             this.accountSid = accountSid;
             this.to = to;
             this.from = from;
@@ -71,7 +72,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param applicationSid ApplicationSid that configures from where to fetch
          *                       TwiML
          */
-        public CallCreator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string applicationSid) {
+        public CallCreator(Twilio.Types.PhoneNumber to, Twilio.Types.Endpoint from, string applicationSid) {
             this.to = to;
             this.from = from;
             this.applicationSid = applicationSid;
@@ -86,7 +87,7 @@ namespace Twilio.Creators.Api.V2010.Account {
          * @param applicationSid ApplicationSid that configures from where to fetch
          *                       TwiML
          */
-        public CallCreator(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string applicationSid) {
+        public CallCreator(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.Endpoint from, string applicationSid) {
             this.accountSid = accountSid;
             this.to = to;
             this.from = from;

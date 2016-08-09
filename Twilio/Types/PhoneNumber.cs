@@ -2,7 +2,7 @@
 
 namespace Twilio.Types
 {
-	public class PhoneNumber
+	public class PhoneNumber : Endpoint
 	{
 		private string number;
 

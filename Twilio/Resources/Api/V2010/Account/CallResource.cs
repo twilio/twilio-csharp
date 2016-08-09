@@ -10,6 +10,7 @@ using Twilio.Fetchers.Api.V2010.Account;
 using Twilio.Http;
 using Twilio.Readers.Api.V2010.Account;
 using Twilio.Resources;
+using Twilio.Types;
 using Twilio.Updaters.Api.V2010.Account;
 
 namespace Twilio.Resources.Api.V2010.Account {
@@ -91,7 +92,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @param url Url from which to fetch TwiML
          * @return CallCreator capable of executing the create
          */
-        public static CallCreator Create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, Uri url) {
+        public static CallCreator Create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.Endpoint from, Uri url) {
             return new CallCreator(accountSid, to, from, url);
         }
     
@@ -104,7 +105,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @return CallCreator capable of executing the create
          */
         public static CallCreator Create(Twilio.Types.PhoneNumber to, 
-                                         Twilio.Types.PhoneNumber from, 
+                                         Twilio.Types.Endpoint from, 
                                          Uri url) {
             return new CallCreator(to, from, url);
         }
@@ -120,7 +121,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          *                       TwiML
          * @return CallCreator capable of executing the create
          */
-        public static CallCreator Create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string applicationSid) {
+        public static CallCreator Create(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.Endpoint from, string applicationSid) {
             return new CallCreator(accountSid, to, from, applicationSid);
         }
     
@@ -134,7 +135,7 @@ namespace Twilio.Resources.Api.V2010.Account {
          * @return CallCreator capable of executing the create
          */
         public static CallCreator Create(Twilio.Types.PhoneNumber to, 
-                                         Twilio.Types.PhoneNumber from, 
+                                         Twilio.Types.Endpoint from, 
                                          string applicationSid) {
             return new CallCreator(to, from, applicationSid);
         }
