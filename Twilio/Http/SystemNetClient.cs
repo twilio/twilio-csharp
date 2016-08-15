@@ -14,10 +14,8 @@ namespace Twilio.Http
 			var httpRequest = new System.Net.Http.HttpRequestMessage();
 			httpRequest.Method = new System.Net.Http.HttpMethod(request.GetMethod().ToString());
             httpRequest.RequestUri = request.ConstructURL();
-            httpRequest.Properties.Add("Accept", "application/json");
-			httpRequest.Properties.Add("Accept-Encoding", "utf-8");
 			var authBytes = Authentication(request.GetUsername(), request.GetPassword());
-			httpRequest.Properties.Add("Authorization", "Basic" + authBytes);
+            httpRequest.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", authBytes);
 			httpRequest.Content = new System.Net.Http.ByteArrayContent(request.EncodePostParams());
 			httpRequest.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/x-www-form-urlencoded");
 			var responseTask = httpClient.SendAsync(httpRequest);
