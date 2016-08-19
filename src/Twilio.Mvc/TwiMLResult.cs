@@ -1,49 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace Twilio.TwiML.Mvc
 {
-	public class TwiMLResult : ActionResult
-	{
-		XDocument data;
+    public class TwiMLResult : ActionResult
+    {
+        public XDocument Data { get; protected set; }
 
-		public TwiMLResult()
-		{
-		}
+        public TwiMLResult()
+        {
+        }
 
-		public TwiMLResult(string twiml)
-		{
-			data = XDocument.Parse(twiml);
-		}
+        public TwiMLResult(string twiml)
+        {
+            var stream = new MemoryStream(Encoding.Default.GetBytes(twiml));
 
-		public TwiMLResult(XDocument twiml)
-		{
-			data = twiml;
-		}
+            var settings = new XmlReaderSettings();
+            settings.DtdProcessing = DtdProcessing.Prohibit;
 
-		public TwiMLResult(TwilioResponse response)
-		{
-			if (response != null)
-				data = response.ToXDocument();
-		}
+            var reader = XmlReader.Create(stream, settings);
 
-		public override void ExecuteResult(ControllerContext controllerContext)
-		{
-			var context = controllerContext.RequestContext.HttpContext;
-			context.Response.ContentType = "application/xml";
+            Data = XDocument.Load(reader);
+        }
 
-			if (data == null)
-			{
-				data = new XDocument(new XElement("Response"));
-			}
+        public TwiMLResult(XDocument twiml)
+        {
+            Data = twiml;
+        }
 
-			data.Save(context.Response.Output);
-		}
-	}
+        public TwiMLResult(TwilioResponse response)
+        {
+            if (response != null)
+                Data = response.ToXDocument();
+        }
+
+        public override void ExecuteResult(ControllerContext controllerContext)
+        {
+            var context = controllerContext.RequestContext.HttpContext;
+            context.Response.ContentType = "application/xml";
+
+            if (Data == null)
+            {
+                Data = new XDocument(new XElement("Response"));
+            }
+
+            Data.Save(context.Response.Output);
+        }
+    }
 }
