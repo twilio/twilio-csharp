@@ -142,7 +142,7 @@ namespace Twilio.Auth.Tests
             var delta = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             var timestamp = (int)Math.Floor(delta.TotalSeconds);
 
-            var pvg = new ProgrammableVoiceGrant();
+            var pvg = new VoiceGrant();
             pvg.OutgoingApplicationSid = "AP123";
 
             var param = new Dictionary<string, string>();
@@ -171,7 +171,7 @@ namespace Twilio.Auth.Tests
             var grants = (Dictionary<string, object>)payload["grants"];
             Assert.AreEqual(1, grants.Count);
          
-            var decodedPvg = (Dictionary<string, object>)grants["programmable_voice"];
+            var decodedPvg = (Dictionary<string, object>)grants["voice"];
             var outgoing = (Dictionary<string, object>)decodedPvg["outgoing"];
             Assert.AreEqual("AP123", outgoing["application_sid"]);
 

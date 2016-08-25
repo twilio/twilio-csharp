@@ -54,7 +54,7 @@
     <Compile Include="IGrant.cs" />
     <Compile Include="IpMessagingGrant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProgrammableVoiceGrant.cs" />
+    <Compile Include="VoiceGrant.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

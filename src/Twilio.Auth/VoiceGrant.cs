@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Twilio.Auth
 {
-    public class ProgrammableVoiceGrant : IGrant
+    public class VoiceGrant : IGrant
     {
         public string OutgoingApplicationSid { get; set; }
         public Dictionary<string, string> OutgoingApplicationParams { get; set; }
@@ -15,7 +15,7 @@ namespace Twilio.Auth
 
         public string GetGrantKey()
         {
-            return "programmable_voice";
+            return "voice";
         }
 
         public object GetPayload()
