@@ -1,5 +1,8 @@
 language: csharp
 solution: Twilio.sln
+install:
+  - nuget restore Twilio.sln
+  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 script:
   - xbuild Twilio.sln
-  - nunit Twilio.Tests/bin/Debug/Twilio.Tests.dll
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./Twilio.Tests/bin/Debug/Twilio.Tests.dll
