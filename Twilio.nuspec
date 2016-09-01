@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Twilio</id>
-    <version>5.0.0-rc5</version>
+    <version>5.0.0-rc6</version>
     <authors>Twilio</authors>
     <description>Twilio REST API helper library</description>
     <language>en-US</language>
@@ -23,6 +23,7 @@
       </group>
     </dependencies>
     <releaseNotes>
+      * 5.0.0-rc6 - Add Voice Grant
       * 5.0.0-rc5 - Add SMS parameter to Notification creation
       * 5.0.0-rc4 - Marketplace, Notify, Message Feedback updates
       * 5.0.0-rc3 - Support for .NET Core projects
