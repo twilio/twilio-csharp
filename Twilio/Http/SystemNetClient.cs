@@ -11,14 +11,13 @@ namespace Twilio.Http
 
 		public override Response MakeRequest(Request request) {
 			var httpClient = new System.Net.Http.HttpClient();
-            var httpRequest = new System.Net.Http.HttpRequestMessage();
-            httpRequest.Method = request.GetMethod();
+			var httpRequest = new System.Net.Http.HttpRequestMessage();
+			httpRequest.Method = new System.Net.Http.HttpMethod(request.GetMethod().ToString());
             httpRequest.RequestUri = request.ConstructURL();
-            httpRequest.Properties.Add("Accept", "application/json");
-			httpRequest.Properties.Add("Accept-Encoding", "utf-8");
 			var authBytes = Authentication(request.GetUsername(), request.GetPassword());
-			httpRequest.Properties.Add("Authorization", "Basic" + authBytes);
-			httpRequest.Content = request.EncodePostParams();
+            httpRequest.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", authBytes);
+			httpRequest.Content = new System.Net.Http.ByteArrayContent(request.EncodePostParams());
+			httpRequest.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/x-www-form-urlencoded");
 			var responseTask = httpClient.SendAsync(httpRequest);
 			responseTask.Wait();
 			var response = responseTask.Result;

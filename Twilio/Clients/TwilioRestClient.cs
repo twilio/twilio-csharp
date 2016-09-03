@@ -57,7 +57,7 @@ namespace Twilio.Clients
 			if (httpClient != null) {
 				this.httpClient = httpClient;
 			} else {
-				this.httpClient = new WebRequestClient();
+				this.httpClient = new SystemNetClient();
 			}
 		}
 
