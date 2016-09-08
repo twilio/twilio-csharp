@@ -1,0 +1,237 @@
+using Twilio.Base;
+using Twilio.Clients;
+using Twilio.Exceptions;
+using Twilio.Http;
+
+#if NET40
+using System.Threading.Tasks;
+#endif
+
+namespace Twilio.Rest.Taskrouter.V1.Workspace {
+
+    public class WorkerReader : Reader<WorkerResource> {
+        private string workspaceSid;
+        private string activityName;
+        private string activitySid;
+        private string available;
+        private string friendlyName;
+        private string targetWorkersExpression;
+        private string taskQueueName;
+        private string taskQueueSid;
+    
+        /**
+         * Construct a new WorkerReader
+         * 
+         * @param workspaceSid The workspace_sid
+         */
+        public WorkerReader(string workspaceSid) {
+            this.workspaceSid = workspaceSid;
+        }
+    
+        /**
+         * The activity_name
+         * 
+         * @param activityName The activity_name
+         * @return this
+         */
+        public WorkerReader ByActivityName(string activityName) {
+            this.activityName = activityName;
+            return this;
+        }
+    
+        /**
+         * The activity_sid
+         * 
+         * @param activitySid The activity_sid
+         * @return this
+         */
+        public WorkerReader ByActivitySid(string activitySid) {
+            this.activitySid = activitySid;
+            return this;
+        }
+    
+        /**
+         * The available
+         * 
+         * @param available The available
+         * @return this
+         */
+        public WorkerReader ByAvailable(string available) {
+            this.available = available;
+            return this;
+        }
+    
+        /**
+         * The friendly_name
+         * 
+         * @param friendlyName The friendly_name
+         * @return this
+         */
+        public WorkerReader ByFriendlyName(string friendlyName) {
+            this.friendlyName = friendlyName;
+            return this;
+        }
+    
+        /**
+         * The target_workers_expression
+         * 
+         * @param targetWorkersExpression The target_workers_expression
+         * @return this
+         */
+        public WorkerReader ByTargetWorkersExpression(string targetWorkersExpression) {
+            this.targetWorkersExpression = targetWorkersExpression;
+            return this;
+        }
+    
+        /**
+         * The task_queue_name
+         * 
+         * @param taskQueueName The task_queue_name
+         * @return this
+         */
+        public WorkerReader ByTaskQueueName(string taskQueueName) {
+            this.taskQueueName = taskQueueName;
+            return this;
+        }
+    
+        /**
+         * The task_queue_sid
+         * 
+         * @param taskQueueSid The task_queue_sid
+         * @return this
+         */
+        public WorkerReader ByTaskQueueSid(string taskQueueSid) {
+            this.taskQueueSid = taskQueueSid;
+            return this;
+        }
+    
+        #if NET40
+        /**
+         * Make the request to the Twilio API to perform the read
+         * 
+         * @param client ITwilioRestClient with which to make the request
+         * @return WorkerResource ResourceSet
+         */
+        public override Task<ResourceSet<WorkerResource>> ExecuteAsync(ITwilioRestClient client) {
+            Request request = new Request(
+                Twilio.Http.HttpMethod.GET,
+                Domains.TASKROUTER,
+                "/v1/Workspaces/" + this.workspaceSid + "/Workers"
+            );
+            
+            AddQueryParams(request);
+            
+            Page<WorkerResource> page = PageForRequest(client, request);
+            
+            return System.Threading.Tasks.Task.FromResult(
+                    new ResourceSet<WorkerResource>(this, client, page));
+        }
+        #endif
+    
+        /**
+         * Make the request to the Twilio API to perform the read
+         * 
+         * @param client ITwilioRestClient with which to make the request
+         * @return WorkerResource ResourceSet
+         */
+        public override ResourceSet<WorkerResource> Execute(ITwilioRestClient client) {
+            Request request = new Request(
+                Twilio.Http.HttpMethod.GET,
+                Domains.TASKROUTER,
+                "/v1/Workspaces/" + this.workspaceSid + "/Workers"
+            );
+            
+            AddQueryParams(request);
+            
+            Page<WorkerResource> page = PageForRequest(client, request);
+            
+            return new ResourceSet<WorkerResource>(this, client, page);
+        }
+    
+        /**
+         * Retrieve the next page from the Twilio API
+         * 
+         * @param nextPageUri URI from which to retrieve the next page
+         * @param client ITwilioRestClient with which to make the request
+         * @return Next Page
+         */
+        public override Page<WorkerResource> NextPage(string nextPageUri, ITwilioRestClient client) {
+            Request request = new Request(
+                Twilio.Http.HttpMethod.GET,
+                nextPageUri
+            );
+            
+            var result = PageForRequest(client, request);
+            
+            return result;
+        }
+    
+        /**
+         * Generate a Page of WorkerResource Resources for a given request
+         * 
+         * @param client ITwilioRestClient with which to make the request
+         * @param request Request to generate a page for
+         * @return Page for the Request
+         */
+        protected Page<WorkerResource> PageForRequest(ITwilioRestClient client, Request request) {
+            Response response = client.Request(request);
+            
+            if (response == null) {
+                throw new ApiConnectionException("WorkerResource read failed: Unable to connect to server");
+            } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
+                RestException restException = RestException.FromJson(response.GetContent());
+                if (restException == null)
+                    throw new ApiException("Server Error, no content");
+                throw new ApiException(
+                    (restException.GetMessage() != null ? restException.GetMessage() : "Unable to read records, " + response.GetStatusCode()),
+                    restException.GetCode(),
+                    restException.GetMoreInfo(),
+                    (int)response.GetStatusCode(),
+                    null
+                );
+            }
+            
+            Page<WorkerResource> result = new Page<WorkerResource>();
+            result.deserialize("workers", response.GetContent());
+            
+            return result;
+        }
+    
+        /**
+         * Add the requested query string arguments to the Request
+         * 
+         * @param request Request to add query string arguments to
+         */
+        private void AddQueryParams(Request request) {
+            if (activityName != null) {
+                request.AddQueryParam("ActivityName", activityName);
+            }
+            
+            if (activitySid != null) {
+                request.AddQueryParam("ActivitySid", activitySid);
+            }
+            
+            if (available != null) {
+                request.AddQueryParam("Available", available);
+            }
+            
+            if (friendlyName != null) {
+                request.AddQueryParam("FriendlyName", friendlyName);
+            }
+            
+            if (targetWorkersExpression != null) {
+                request.AddQueryParam("TargetWorkersExpression", targetWorkersExpression);
+            }
+            
+            if (taskQueueName != null) {
+                request.AddQueryParam("TaskQueueName", taskQueueName);
+            }
+            
+            if (taskQueueSid != null) {
+                request.AddQueryParam("TaskQueueSid", taskQueueSid);
+            }
+            
+            request.AddQueryParam("PageSize", GetPageSize().ToString());
+        }
+    }
+}

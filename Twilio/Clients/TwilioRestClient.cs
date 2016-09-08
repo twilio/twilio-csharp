@@ -8,15 +8,15 @@ namespace Twilio.Clients
 {
 	public sealed class Domains {
 		public const string API = "api";
-		public const string CONVERSATIONS="conversations";
 		public const string LOOKUPS = "lookups";
 		public const string MONITOR = "monitor";
 		public const string PRICING = "pricing";
 		public const string TASKROUTER = "taskrouter";
 		public const string TRUNKING = "trunking";
 		public const string IPMESSAGING = "ipmessaging";
-		public const string NOTIFICATIONS = "notifications";
-    public const string PREVIEW = "preview";
+	    public const string CHAT = "chat";
+	    public const string NOTIFY = "notify";
+        public const string PREVIEW = "preview";
 
 		private readonly string value;
 
