@@ -20,7 +20,7 @@ namespace Twilio.Rest.IpMessaging.V1 {
         public override Task<ResourceSet<ServiceResource>> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
-                Domains.IPMESSAGING,
+                Domains.IP_MESSAGING,
                 "/v1/Services"
             );
             
@@ -42,7 +42,7 @@ namespace Twilio.Rest.IpMessaging.V1 {
         public override ResourceSet<ServiceResource> Execute(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
-                Domains.IPMESSAGING,
+                Domains.IP_MESSAGING,
                 "/v1/Services"
             );
             

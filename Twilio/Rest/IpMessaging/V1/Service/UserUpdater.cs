@@ -71,7 +71,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         public override async Task<UserResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
-                Domains.IPMESSAGING,
+                Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Users/" + this.sid + ""
             );
             
@@ -106,7 +106,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         public override UserResource Execute(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
-                Domains.IPMESSAGING,
+                Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Users/" + this.sid + ""
             );
             

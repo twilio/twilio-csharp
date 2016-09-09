@@ -7,6 +7,7 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Rest;
 using Twilio.Rest.Pricing.V1.PhoneNumber;
 
 namespace Twilio.Tests.Rest.Pricing.V1.PhoneNumber {

@@ -7,6 +7,7 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Rest;
 using Twilio.Rest.Trunking.V1.Trunk;
 
 namespace Twilio.Tests.Rest.Trunking.V1.Trunk {

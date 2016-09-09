@@ -7,6 +7,7 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Rest;
 using Twilio.Rest.IpMessaging.V1.Service;
 
 namespace Twilio.Tests.Rest.IpMessaging.V1.Service {
@@ -21,7 +22,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service {
         public void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(Twilio.Http.HttpMethod.GET,
-                                          Domains.IPMESSAGING,
+                                          Domains.IP_MESSAGING,
                                           "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -59,7 +60,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service {
         public void TestDeleteRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(Twilio.Http.HttpMethod.DELETE,
-                                          Domains.IPMESSAGING,
+                                          Domains.IP_MESSAGING,
                                           "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -96,7 +97,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service {
         public void TestCreateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(Twilio.Http.HttpMethod.POST,
-                                          Domains.IPMESSAGING,
+                                          Domains.IP_MESSAGING,
                                           "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles");
             request.AddPostParam("FriendlyName", Serialize("friendlyName"));
             request.AddPostParam("Type", Serialize(RoleResource.RoleType.CHANNEL));
@@ -137,7 +138,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service {
         public void TestReadRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(Twilio.Http.HttpMethod.GET,
-                                          Domains.IPMESSAGING,
+                                          Domains.IP_MESSAGING,
                                           "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles");
             request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
@@ -187,7 +188,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service {
         public void TestUpdateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(Twilio.Http.HttpMethod.POST,
-                                          Domains.IPMESSAGING,
+                                          Domains.IP_MESSAGING,
                                           "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             request.AddPostParam("Permission", Serialize(new List<string> { "permission" }));
             twilioRestClient.Request(request)

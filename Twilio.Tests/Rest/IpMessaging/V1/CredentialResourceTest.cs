@@ -7,6 +7,7 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Rest;
 using Twilio.Rest.IpMessaging.V1;
 
 namespace Twilio.Tests.Rest.IpMessaging.V1 {
@@ -21,7 +22,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1 {
         public void TestReadRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(Twilio.Http.HttpMethod.GET,
-                                          Domains.IPMESSAGING,
+                                          Domains.IP_MESSAGING,
                                           "/v1/Credentials");
             request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
@@ -71,7 +72,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1 {
         public void TestCreateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(Twilio.Http.HttpMethod.POST,
-                                          Domains.IPMESSAGING,
+                                          Domains.IP_MESSAGING,
                                           "/v1/Credentials");
             request.AddPostParam("Type", Serialize(CredentialResource.PushService.GCM));
             twilioRestClient.Request(request)
@@ -110,7 +111,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1 {
         public void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(Twilio.Http.HttpMethod.GET,
-                                          Domains.IPMESSAGING,
+                                          Domains.IP_MESSAGING,
                                           "/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -148,7 +149,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1 {
         public void TestUpdateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(Twilio.Http.HttpMethod.POST,
-                                          Domains.IPMESSAGING,
+                                          Domains.IP_MESSAGING,
                                           "/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -186,7 +187,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1 {
         public void TestDeleteRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(Twilio.Http.HttpMethod.DELETE,
-                                          Domains.IPMESSAGING,
+                                          Domains.IP_MESSAGING,
                                           "/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,

@@ -7,6 +7,7 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Rest;
 using Twilio.Rest.Api.V2010.Account;
 
 namespace Twilio.Tests.Rest.Api.V2010.Account {

@@ -7,6 +7,7 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Rest;
 using Twilio.Rest.Preview.Wireless.Device;
 
 namespace Twilio.Tests.Rest.Preview.Wireless.Device {

@@ -7,6 +7,7 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Rest;
 using Twilio.Rest.Preview.Sync.Service.SyncMap;
 
 namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap {

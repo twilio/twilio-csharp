@@ -31,7 +31,7 @@ namespace Twilio.Rest.IpMessaging.V1 {
         public override async System.Threading.Tasks.Task ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
-                Domains.IPMESSAGING,
+                Domains.IP_MESSAGING,
                 "/v1/Credentials/" + this.sid + ""
             );
             
@@ -64,7 +64,7 @@ namespace Twilio.Rest.IpMessaging.V1 {
         public override void Execute(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
-                Domains.IPMESSAGING,
+                Domains.IP_MESSAGING,
                 "/v1/Credentials/" + this.sid + ""
             );
             

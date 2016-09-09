@@ -34,7 +34,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         public override Task<ResourceSet<MemberResource>> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
-                Domains.IPMESSAGING,
+                Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Members"
             );
             
@@ -56,7 +56,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         public override ResourceSet<MemberResource> Execute(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
-                Domains.IPMESSAGING,
+                Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Members"
             );
             

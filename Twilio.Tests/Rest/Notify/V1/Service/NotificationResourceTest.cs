@@ -7,6 +7,7 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Rest;
 using Twilio.Rest.Notify.V1.Service;
 
 namespace Twilio.Tests.Rest.Notify.V1.Service {

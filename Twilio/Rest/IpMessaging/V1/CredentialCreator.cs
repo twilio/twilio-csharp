@@ -91,7 +91,7 @@ namespace Twilio.Rest.IpMessaging.V1 {
         public override async Task<CredentialResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
-                Domains.IPMESSAGING,
+                Domains.IP_MESSAGING,
                 "/v1/Credentials"
             );
             
@@ -126,7 +126,7 @@ namespace Twilio.Rest.IpMessaging.V1 {
         public override CredentialResource Execute(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
-                Domains.IPMESSAGING,
+                Domains.IP_MESSAGING,
                 "/v1/Credentials"
             );
             

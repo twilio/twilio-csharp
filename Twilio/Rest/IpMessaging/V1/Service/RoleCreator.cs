@@ -41,7 +41,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         public override async Task<RoleResource> ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
-                Domains.IPMESSAGING,
+                Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Roles"
             );
             
@@ -76,7 +76,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         public override RoleResource Execute(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
-                Domains.IPMESSAGING,
+                Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Roles"
             );
             

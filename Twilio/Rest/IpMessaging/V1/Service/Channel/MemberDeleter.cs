@@ -37,7 +37,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         public override async System.Threading.Tasks.Task ExecuteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
-                Domains.IPMESSAGING,
+                Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Members/" + this.sid + ""
             );
             
@@ -70,7 +70,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         public override void Execute(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
-                Domains.IPMESSAGING,
+                Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Members/" + this.sid + ""
             );
             
