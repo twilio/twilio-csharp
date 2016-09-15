@@ -15,6 +15,7 @@ namespace Twilio.Rest.Preview.Sync {
         private string sid;
         private Uri webhookUrl;
         private string friendlyName;
+        private bool? reachabilityWebhooksEnabled;
     
         /**
          * Construct a new ServiceUpdater
@@ -54,6 +55,17 @@ namespace Twilio.Rest.Preview.Sync {
          */
         public ServiceUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
+            return this;
+        }
+    
+        /**
+         * The reachability_webhooks_enabled
+         * 
+         * @param reachabilityWebhooksEnabled The reachability_webhooks_enabled
+         * @return this
+         */
+        public ServiceUpdater setReachabilityWebhooksEnabled(bool? reachabilityWebhooksEnabled) {
+            this.reachabilityWebhooksEnabled = reachabilityWebhooksEnabled;
             return this;
         }
     
@@ -139,6 +151,10 @@ namespace Twilio.Rest.Preview.Sync {
             
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
+            }
+            
+            if (reachabilityWebhooksEnabled != null) {
+                request.AddPostParam("ReachabilityWebhooksEnabled", reachabilityWebhooksEnabled.ToString());
             }
         }
     }

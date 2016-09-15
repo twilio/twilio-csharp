@@ -87,6 +87,8 @@ namespace Twilio.Rest.Preview.Sync {
         private readonly Uri url;
         [JsonProperty("webhook_url")]
         private readonly Uri webhookUrl;
+        [JsonProperty("reachability_webhooks_enabled")]
+        private readonly bool? reachabilityWebhooksEnabled;
         [JsonProperty("links")]
         private readonly Dictionary<string, string> links;
     
@@ -108,6 +110,8 @@ namespace Twilio.Rest.Preview.Sync {
                                 Uri url, 
                                 [JsonProperty("webhook_url")]
                                 Uri webhookUrl, 
+                                [JsonProperty("reachability_webhooks_enabled")]
+                                bool? reachabilityWebhooksEnabled, 
                                 [JsonProperty("links")]
                                 Dictionary<string, string> links) {
             this.sid = sid;
@@ -117,6 +121,7 @@ namespace Twilio.Rest.Preview.Sync {
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.url = url;
             this.webhookUrl = webhookUrl;
+            this.reachabilityWebhooksEnabled = reachabilityWebhooksEnabled;
             this.links = links;
         }
     
@@ -167,6 +172,13 @@ namespace Twilio.Rest.Preview.Sync {
          */
         public Uri GetWebhookUrl() {
             return this.webhookUrl;
+        }
+    
+        /**
+         * @return The reachability_webhooks_enabled
+         */
+        public bool? GetReachabilityWebhooksEnabled() {
+            return this.reachabilityWebhooksEnabled;
         }
     
         /**

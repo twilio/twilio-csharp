@@ -17,6 +17,7 @@ namespace Twilio.Rest.Preview.Wireless {
         private string callbackMethod;
         private Uri callbackUrl;
         private string friendlyName;
+        private string ratePlan;
         private string simIdentifier;
         private string status;
         private string commandsCallbackMethod;
@@ -82,6 +83,17 @@ namespace Twilio.Rest.Preview.Wireless {
          */
         public DeviceUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
+            return this;
+        }
+    
+        /**
+         * The rate_plan
+         * 
+         * @param ratePlan The rate_plan
+         * @return this
+         */
+        public DeviceUpdater setRatePlan(string ratePlan) {
+            this.ratePlan = ratePlan;
             return this;
         }
     
@@ -229,6 +241,10 @@ namespace Twilio.Rest.Preview.Wireless {
             
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
+            }
+            
+            if (ratePlan != null) {
+                request.AddPostParam("RatePlan", ratePlan);
             }
             
             if (simIdentifier != null) {

@@ -16,11 +16,13 @@ namespace Twilio.JWT
         {
             var payload = new Dictionary<string, string>();
 
-            if (this.ServiceSid != null)
+            if (this.ServiceSid != null) {
                 payload.Add("service_sid", this.ServiceSid);
+            }
 
-            if (this.ServiceSid != null)
+            if (this.ServiceSid != null) {
                 payload.Add("endpoint_id", this.EndpointId);
+            }
 
             return payload;
         }

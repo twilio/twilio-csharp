@@ -14,6 +14,7 @@ namespace Twilio.Rest.Preview.Sync {
     public class ServiceCreator : Creator<ServiceResource> {
         private string friendlyName;
         private Uri webhookUrl;
+        private bool? reachabilityWebhooksEnabled;
     
         /**
          * The friendly_name
@@ -45,6 +46,17 @@ namespace Twilio.Rest.Preview.Sync {
          */
         public ServiceCreator setWebhookUrl(string webhookUrl) {
             return setWebhookUrl(Promoter.UriFromString(webhookUrl));
+        }
+    
+        /**
+         * The reachability_webhooks_enabled
+         * 
+         * @param reachabilityWebhooksEnabled The reachability_webhooks_enabled
+         * @return this
+         */
+        public ServiceCreator setReachabilityWebhooksEnabled(bool? reachabilityWebhooksEnabled) {
+            this.reachabilityWebhooksEnabled = reachabilityWebhooksEnabled;
+            return this;
         }
     
         #if NET40
@@ -129,6 +141,10 @@ namespace Twilio.Rest.Preview.Sync {
             
             if (webhookUrl != null) {
                 request.AddPostParam("WebhookUrl", webhookUrl.ToString());
+            }
+            
+            if (reachabilityWebhooksEnabled != null) {
+                request.AddPostParam("ReachabilityWebhooksEnabled", reachabilityWebhooksEnabled.ToString());
             }
         }
     }
