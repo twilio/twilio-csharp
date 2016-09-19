@@ -4,6 +4,8 @@ install:
   - nuget restore src/Twilio.sln
   - nuget install NUnit.Runners -Version 3.2.0 -OutputDirectory testrunner
 script:
-  - xbuild src/Twilio.sln
+  - pushd src
+  - xbuild Twilio.sln
+  - popd
   - mono ./testrunner/NUnit.ConsoleRunner.3.2.0/tools/nunit3-console.exe ./Twilio.Tests/bin/Debug/Twilio.Tests.dll
 
