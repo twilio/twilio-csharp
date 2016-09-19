@@ -66,6 +66,7 @@
     <Compile Include="JWT\IpMessagingGrant.cs" />
     <Compile Include="JWT\Policy.cs" />
     <Compile Include="JWT\VoiceGrant.cs" />
+    <Compile Include="JWT\SyncGrant.cs" />
     <Compile Include="JWT\ScopeURI.cs" />
     <Compile Include="JWT\TaskRouterCapability.cs" />
     <Compile Include="JWT\TwilioCapability.cs" />

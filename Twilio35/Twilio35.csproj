@@ -63,6 +63,7 @@
     <Compile Include="..\Twilio\JWT\IpMessagingGrant.cs"><Link>JWT\IpMessagingGrant.cs</Link></Compile>
     <Compile Include="..\Twilio\JWT\Policy.cs"><Link>JWT\Policy.cs</Link></Compile>
     <Compile Include="..\Twilio\JWT\VoiceGrant.cs"><Link>JWT\VoiceGrant.cs</Link></Compile>
+    <Compile Include="..\Twilio\JWT\SyncGrant.cs"><Link>JWT\SyncGrant.cs</Link></Compile>
     <Compile Include="..\Twilio\JWT\ScopeURI.cs"><Link>JWT\ScopeURI.cs</Link></Compile>
     <Compile Include="..\Twilio\JWT\TaskRouterCapability.cs"><Link>JWT\TaskRouterCapability.cs</Link></Compile>
     <Compile Include="..\Twilio\JWT\TwilioCapability.cs"><Link>JWT\TwilioCapability.cs</Link></Compile>
