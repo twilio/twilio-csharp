@@ -154,7 +154,7 @@ namespace Twilio.JWT
             Assert.IsNotEmpty(encoded);
 
             var decoded = JsonWebToken.Decode(encoded, "foobar");
-            Assert.IsNotEmpty(decoded);
+                Assert.IsNotEmpty(decoded);
             var serializer = new JavaScriptSerializer();
             var payload = (Dictionary<string, object>)serializer.DeserializeObject(decoded);
             Assert.IsNotNull(payload);
@@ -175,6 +175,45 @@ namespace Twilio.JWT
 
             var decodedParams = (Dictionary<string, object>)outgoing["params"];
             Assert.AreEqual("bar", decodedParams["foo"]);
+        }
+
+        [Test]
+        public void ShouldCreateSyncGrant()
+        {
+            var token = new AccessToken("AC456", "SK123", "foobar");
+            var delta = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            var timestamp = (int) Math.Floor(delta.TotalSeconds);
+
+            var sg = new SyncGrant();
+            sg.ServiceSid = "IS123";
+            sg.EndpointId = "foobar";
+
+            token.AddGrant(sg);
+
+            var encoded = token.ToJWT();
+            Assert.IsNotNull(encoded);
+            Assert.IsNotEmpty(encoded);
+
+            var decoded = JsonWebToken.Decode(encoded, "foobar");
+            Assert.IsNotEmpty(decoded);
+            var serializer = new JavaScriptSerializer();
+            var payload = (Dictionary<string, object>) serializer.DeserializeObject(decoded);
+            Assert.IsNotNull(payload);
+
+            Assert.AreEqual("SK123", payload["iss"]);
+            Assert.AreEqual("AC456", payload["sub"]);
+            var exp = Convert.ToInt64(payload["exp"]);
+            Assert.AreEqual(timestamp + 3600, exp);
+            var jti = (string) payload["jti"];
+            Assert.AreEqual("SK123-" + timestamp.ToString(), jti);
+
+            var grants = (Dictionary<string, object>) payload["grants"];
+            Assert.AreEqual(1, grants.Count);
+
+            var decodedSg = (Dictionary<string, object>) grants["data_sync"];
+            Assert.AreEqual("IS123", decodedSg["service_sid"]);
+            Assert.AreEqual("foobar", decodedSg["endpoint_id"]);
+
         }
     }
 }
