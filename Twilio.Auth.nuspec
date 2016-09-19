@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio.Auth</id>
-		<version>1.3.0</version>
+		<version>1.4.0</version>
 		<authors>Twilio</authors>
 		<description>Twilio Access Token helper library</description>
 		<language>en-US</language>
@@ -14,10 +14,11 @@
 				<dependency id="Twilio" />
 		</dependencies>
 		<releaseNotes>
+			* 1.4.0 - Add Video grant
 			* 1.3.0 - Add Voice grant
-      		* 1.2.0 - Add GetNextPage and GetPreviousPage
-              - Deprecate absolute paging
-              - Remove VisualStudio test in favor of NUnit
+			* 1.2.0 - Add GetNextPage and GetPreviousPage
+				- Deprecate absolute paging
+				- Remove VisualStudio test in favor of NUnit
 			* 1.1.0 - Make NBF optional parameter
 			* 1.0.0 - Initial Release
 		</releaseNotes>
