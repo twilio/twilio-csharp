@@ -58,11 +58,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * 
          * @param workspaceSid The workspace_sid
          * @param friendlyName The friendly_name
-         * @param available The available
          * @return ActivityCreator capable of executing the create
          */
-        public static ActivityCreator Create(string workspaceSid, string friendlyName, bool? available) {
-            return new ActivityCreator(workspaceSid, friendlyName, available);
+        public static ActivityCreator Create(string workspaceSid, string friendlyName) {
+            return new ActivityCreator(workspaceSid, friendlyName);
         }
     
         /**

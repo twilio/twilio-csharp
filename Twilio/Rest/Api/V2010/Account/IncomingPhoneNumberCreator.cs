@@ -24,6 +24,7 @@ namespace Twilio.Rest.Api.V2010.Account {
         private Uri smsUrl;
         private Uri statusCallback;
         private Twilio.Http.HttpMethod statusCallbackMethod;
+        private string trunkSid;
         private string voiceApplicationSid;
         private bool? voiceCallerIdLookup;
         private Twilio.Http.HttpMethod voiceFallbackMethod;
@@ -213,6 +214,21 @@ namespace Twilio.Rest.Api.V2010.Account {
          */
         public IncomingPhoneNumberCreator setStatusCallbackMethod(Twilio.Http.HttpMethod statusCallbackMethod) {
             this.statusCallbackMethod = statusCallbackMethod;
+            return this;
+        }
+    
+        /**
+         * The 34 character sid of the Trunk Twilio should use to handle phone calls to
+         * this number. If a `TrunkSid` is present, Twilio will ignore all of the voice
+         * urls  and voice applications above and use those set on the Trunk. Setting a
+         * `TrunkSid` will automatically delete your `VoiceApplicationSid` and vice
+         * versa.
+         * 
+         * @param trunkSid Unique string to identify the trunk
+         * @return this
+         */
+        public IncomingPhoneNumberCreator setTrunkSid(string trunkSid) {
+            this.trunkSid = trunkSid;
             return this;
         }
     
@@ -434,6 +450,10 @@ namespace Twilio.Rest.Api.V2010.Account {
             
             if (statusCallbackMethod != null) {
                 request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
+            }
+            
+            if (trunkSid != null) {
+                request.AddPostParam("TrunkSid", trunkSid);
             }
             
             if (voiceApplicationSid != null) {

@@ -1,4 +1,3 @@
-using System;
 using Twilio.Base;
 using Twilio.Clients;
 using Twilio.Exceptions;
@@ -14,7 +13,7 @@ namespace Twilio.Rest.Chat.V1.Service {
         private string serviceSid;
         private string friendlyName;
         private string uniqueName;
-        private Object attributes;
+        private string attributes;
         private ChannelResource.ChannelType type;
     
         /**
@@ -54,7 +53,7 @@ namespace Twilio.Rest.Chat.V1.Service {
          * @param attributes The attributes
          * @return this
          */
-        public ChannelCreator setAttributes(Object attributes) {
+        public ChannelCreator setAttributes(string attributes) {
             this.attributes = attributes;
             return this;
         }
@@ -155,7 +154,7 @@ namespace Twilio.Rest.Chat.V1.Service {
             }
             
             if (attributes != null) {
-                request.AddPostParam("Attributes", attributes.ToString());
+                request.AddPostParam("Attributes", attributes);
             }
             
             if (type != null) {

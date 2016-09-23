@@ -65,6 +65,7 @@
     <Compile Include="JWT\IGrant.cs" />
     <Compile Include="JWT\IpMessagingGrant.cs" />
     <Compile Include="JWT\Policy.cs" />
+    <Compile Include="JWT\VideoGrant.cs" />
     <Compile Include="JWT\VoiceGrant.cs" />
     <Compile Include="JWT\SyncGrant.cs" />
     <Compile Include="JWT\ScopeURI.cs" />

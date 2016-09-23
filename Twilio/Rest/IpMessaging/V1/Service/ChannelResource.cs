@@ -118,7 +118,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         [JsonProperty("unique_name")]
         private readonly string uniqueName;
         [JsonProperty("attributes")]
-        private readonly Object attributes;
+        private readonly string attributes;
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
         private readonly ChannelResource.ChannelType type;
@@ -148,7 +148,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
                                 [JsonProperty("unique_name")]
                                 string uniqueName, 
                                 [JsonProperty("attributes")]
-                                Object attributes, 
+                                string attributes, 
                                 [JsonProperty("type")]
                                 ChannelResource.ChannelType type, 
                                 [JsonProperty("date_created")]
@@ -213,7 +213,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /**
          * @return The attributes
          */
-        public Object GetAttributes() {
+        public string GetAttributes() {
             return this.attributes;
         }
     

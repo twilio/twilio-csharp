@@ -221,6 +221,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         private readonly Twilio.Http.HttpMethod statusCallbackMethod;
+        [JsonProperty("trunk_sid")]
+        private readonly string trunkSid;
         [JsonProperty("uri")]
         private readonly string uri;
         [JsonProperty("voice_application_sid")]
@@ -276,6 +278,8 @@ namespace Twilio.Rest.Api.V2010.Account {
                                             Uri statusCallback, 
                                             [JsonProperty("status_callback_method")]
                                             Twilio.Http.HttpMethod statusCallbackMethod, 
+                                            [JsonProperty("trunk_sid")]
+                                            string trunkSid, 
                                             [JsonProperty("uri")]
                                             string uri, 
                                             [JsonProperty("voice_application_sid")]
@@ -307,6 +311,7 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.smsUrl = smsUrl;
             this.statusCallback = statusCallback;
             this.statusCallbackMethod = statusCallbackMethod;
+            this.trunkSid = trunkSid;
             this.uri = uri;
             this.voiceApplicationSid = voiceApplicationSid;
             this.voiceCallerIdLookup = voiceCallerIdLookup;
@@ -433,6 +438,13 @@ namespace Twilio.Rest.Api.V2010.Account {
          */
         public Twilio.Http.HttpMethod GetStatusCallbackMethod() {
             return this.statusCallbackMethod;
+        }
+    
+        /**
+         * @return Unique string to identify the trunk
+         */
+        public string GetTrunkSid() {
+            return this.trunkSid;
         }
     
         /**
