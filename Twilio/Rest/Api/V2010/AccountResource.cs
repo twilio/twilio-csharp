@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010 {
          * 
          * @return AccountCreator capable of executing the create
          */
-        public static AccountCreator Create() {
+        public static AccountCreator Creator() {
             return new AccountCreator();
         }
     
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Api.V2010 {
          * @param sid Fetch by unique Account Sid
          * @return AccountFetcher capable of executing the fetch
          */
-        public static AccountFetcher Fetch(string sid) {
+        public static AccountFetcher Fetcher(string sid) {
             return new AccountFetcher(sid);
         }
     
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Api.V2010 {
          * 
          * @return AccountFetcher capable of executing the fetch
          */
-        public static AccountFetcher Fetch() {
+        public static AccountFetcher Fetcher() {
             return new AccountFetcher();
         }
     
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Api.V2010 {
          * 
          * @return AccountReader capable of executing the read
          */
-        public static AccountReader Read() {
+        public static AccountReader Reader() {
             return new AccountReader();
         }
     
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Api.V2010 {
          * @param sid The sid
          * @return AccountUpdater capable of executing the update
          */
-        public static AccountUpdater Update(string sid) {
+        public static AccountUpdater Updater(string sid) {
             return new AccountUpdater(sid);
         }
     
@@ -122,7 +122,7 @@ namespace Twilio.Rest.Api.V2010 {
          * 
          * @return AccountUpdater capable of executing the update
          */
-        public static AccountUpdater Update() {
+        public static AccountUpdater Updater() {
             return new AccountUpdater();
         }
     

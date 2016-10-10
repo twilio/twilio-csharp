@@ -258,6 +258,8 @@
     <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingFetcher.cs"><Link>Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingReader.cs"><Link>Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingResource.cs"><Link>Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingResource.cs</Link></Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\Domain\RegistrationEndpointReader.cs"><Link>Rest\Api\V2010\Account\Sip\Domain\RegistrationEndpointReader.cs</Link></Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\Domain\RegistrationEndpointResource.cs"><Link>Rest\Api\V2010\Account\Sip\Domain\RegistrationEndpointResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListCreator.cs"><Link>Rest\Api\V2010\Account\Sip\IpAccessControlListCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListDeleter.cs"><Link>Rest\Api\V2010\Account\Sip\IpAccessControlListDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListFetcher.cs"><Link>Rest\Api\V2010\Account\Sip\IpAccessControlListFetcher.cs</Link></Compile>

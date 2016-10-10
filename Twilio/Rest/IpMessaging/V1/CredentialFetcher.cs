@@ -28,7 +28,7 @@ namespace Twilio.Rest.IpMessaging.V1 {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched CredentialResource
          */
-        public override async Task<CredentialResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<CredentialResource> FetchAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.IP_MESSAGING,
@@ -62,7 +62,7 @@ namespace Twilio.Rest.IpMessaging.V1 {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched CredentialResource
          */
-        public override CredentialResource Execute(ITwilioRestClient client) {
+        public override CredentialResource Fetch(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.IP_MESSAGING,

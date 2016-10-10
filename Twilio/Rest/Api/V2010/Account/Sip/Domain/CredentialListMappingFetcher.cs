@@ -45,7 +45,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched CredentialListMappingResource
          */
-        public override async Task<CredentialListMappingResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<CredentialListMappingResource> FetchAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched CredentialListMappingResource
          */
-        public override CredentialListMappingResource Execute(ITwilioRestClient client) {
+        public override CredentialListMappingResource Fetch(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

@@ -49,7 +49,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
          * @param taskSid The task_sid
          * @return ReservationReader capable of executing the read
          */
-        public static ReservationReader Read(string workspaceSid, string taskSid) {
+        public static ReservationReader Reader(string workspaceSid, string taskSid) {
             return new ReservationReader(workspaceSid, taskSid);
         }
     
@@ -61,7 +61,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
          * @param sid The sid
          * @return ReservationFetcher capable of executing the fetch
          */
-        public static ReservationFetcher Fetch(string workspaceSid, string taskSid, string sid) {
+        public static ReservationFetcher Fetcher(string workspaceSid, string taskSid, string sid) {
             return new ReservationFetcher(workspaceSid, taskSid, sid);
         }
     
@@ -73,7 +73,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
          * @param sid The sid
          * @return ReservationUpdater capable of executing the update
          */
-        public static ReservationUpdater Update(string workspaceSid, string taskSid, string sid) {
+        public static ReservationUpdater Updater(string workspaceSid, string taskSid, string sid) {
             return new ReservationUpdater(workspaceSid, taskSid, sid);
         }
     

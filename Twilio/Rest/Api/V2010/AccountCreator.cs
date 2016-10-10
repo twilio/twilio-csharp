@@ -31,7 +31,7 @@ namespace Twilio.Rest.Api.V2010 {
          * @param client ITwilioRestClient with which to make the request
          * @return Created AccountResource
          */
-        public override async Task<AccountResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<AccountResource> CreateAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Api.V2010 {
          * @param client ITwilioRestClient with which to make the request
          * @return Created AccountResource
          */
-        public override AccountResource Execute(ITwilioRestClient client) {
+        public override AccountResource Create(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,

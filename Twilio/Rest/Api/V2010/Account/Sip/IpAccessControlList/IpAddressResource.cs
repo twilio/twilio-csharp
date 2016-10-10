@@ -16,7 +16,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
          * @param ipAccessControlListSid The ip_access_control_list_sid
          * @return IpAddressReader capable of executing the read
          */
-        public static IpAddressReader Read(string accountSid, string ipAccessControlListSid) {
+        public static IpAddressReader Reader(string accountSid, string ipAccessControlListSid) {
             return new IpAddressReader(accountSid, ipAccessControlListSid);
         }
     
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
          * @param ipAccessControlListSid The ip_access_control_list_sid
          * @return IpAddressReader capable of executing the read
          */
-        public static IpAddressReader Read(string ipAccessControlListSid) {
+        public static IpAddressReader Reader(string ipAccessControlListSid) {
             return new IpAddressReader(ipAccessControlListSid);
         }
     
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
          * @param ipAddress The ip_address
          * @return IpAddressCreator capable of executing the create
          */
-        public static IpAddressCreator Create(string accountSid, string ipAccessControlListSid, string friendlyName, string ipAddress) {
+        public static IpAddressCreator Creator(string accountSid, string ipAccessControlListSid, string friendlyName, string ipAddress) {
             return new IpAddressCreator(accountSid, ipAccessControlListSid, friendlyName, ipAddress);
         }
     
@@ -51,9 +51,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
          * @param ipAddress The ip_address
          * @return IpAddressCreator capable of executing the create
          */
-        public static IpAddressCreator Create(string ipAccessControlListSid, 
-                                              string friendlyName, 
-                                              string ipAddress) {
+        public static IpAddressCreator Creator(string ipAccessControlListSid, 
+                                               string friendlyName, 
+                                               string ipAddress) {
             return new IpAddressCreator(ipAccessControlListSid, friendlyName, ipAddress);
         }
     
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
          * @param sid The sid
          * @return IpAddressFetcher capable of executing the fetch
          */
-        public static IpAddressFetcher Fetch(string accountSid, string ipAccessControlListSid, string sid) {
+        public static IpAddressFetcher Fetcher(string accountSid, string ipAccessControlListSid, string sid) {
             return new IpAddressFetcher(accountSid, ipAccessControlListSid, sid);
         }
     
@@ -76,8 +76,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
          * @param sid The sid
          * @return IpAddressFetcher capable of executing the fetch
          */
-        public static IpAddressFetcher Fetch(string ipAccessControlListSid, 
-                                             string sid) {
+        public static IpAddressFetcher Fetcher(string ipAccessControlListSid, 
+                                               string sid) {
             return new IpAddressFetcher(ipAccessControlListSid, sid);
         }
     
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
          * @param sid The sid
          * @return IpAddressUpdater capable of executing the update
          */
-        public static IpAddressUpdater Update(string accountSid, string ipAccessControlListSid, string sid) {
+        public static IpAddressUpdater Updater(string accountSid, string ipAccessControlListSid, string sid) {
             return new IpAddressUpdater(accountSid, ipAccessControlListSid, sid);
         }
     
@@ -100,8 +100,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
          * @param sid The sid
          * @return IpAddressUpdater capable of executing the update
          */
-        public static IpAddressUpdater Update(string ipAccessControlListSid, 
-                                              string sid) {
+        public static IpAddressUpdater Updater(string ipAccessControlListSid, 
+                                               string sid) {
             return new IpAddressUpdater(ipAccessControlListSid, sid);
         }
     
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
          * @param sid The sid
          * @return IpAddressDeleter capable of executing the delete
          */
-        public static IpAddressDeleter Delete(string accountSid, string ipAccessControlListSid, string sid) {
+        public static IpAddressDeleter Deleter(string accountSid, string ipAccessControlListSid, string sid) {
             return new IpAddressDeleter(accountSid, ipAccessControlListSid, sid);
         }
     
@@ -124,8 +124,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
          * @param sid The sid
          * @return IpAddressDeleter capable of executing the delete
          */
-        public static IpAddressDeleter Delete(string ipAccessControlListSid, 
-                                              string sid) {
+        public static IpAddressDeleter Deleter(string ipAccessControlListSid, 
+                                               string sid) {
             return new IpAddressDeleter(ipAccessControlListSid, sid);
         }
     

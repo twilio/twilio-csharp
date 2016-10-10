@@ -28,7 +28,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param client ITwilioRestClient with which to make the request
          * @return CredentialListResource ResourceSet
          */
-        public override Task<ResourceSet<CredentialListResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<CredentialListResource>> ReadAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TRUNKING,
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param client ITwilioRestClient with which to make the request
          * @return CredentialListResource ResourceSet
          */
-        public override ResourceSet<CredentialListResource> Execute(ITwilioRestClient client) {
+        public override ResourceSet<CredentialListResource> Read(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TRUNKING,

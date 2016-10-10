@@ -16,7 +16,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return TaskChannelFetcher capable of executing the fetch
          */
-        public static TaskChannelFetcher Fetch(string workspaceSid, string sid) {
+        public static TaskChannelFetcher Fetcher(string workspaceSid, string sid) {
             return new TaskChannelFetcher(workspaceSid, sid);
         }
     
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @return TaskChannelReader capable of executing the read
          */
-        public static TaskChannelReader Read(string workspaceSid) {
+        public static TaskChannelReader Reader(string workspaceSid) {
             return new TaskChannelReader(workspaceSid);
         }
     

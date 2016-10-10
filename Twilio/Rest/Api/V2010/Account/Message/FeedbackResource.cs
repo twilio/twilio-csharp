@@ -45,7 +45,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
          * @param messageSid The message_sid
          * @return FeedbackCreator capable of executing the create
          */
-        public static FeedbackCreator Create(string accountSid, string messageSid) {
+        public static FeedbackCreator Creator(string accountSid, string messageSid) {
             return new FeedbackCreator(accountSid, messageSid);
         }
     
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
          * @param messageSid The message_sid
          * @return FeedbackCreator capable of executing the create
          */
-        public static FeedbackCreator Create(string messageSid) {
+        public static FeedbackCreator Creator(string messageSid) {
             return new FeedbackCreator(messageSid);
         }
     

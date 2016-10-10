@@ -45,7 +45,7 @@ namespace Twilio.Rest.Notify.V1.Service {
          * @param serviceSid The service_sid
          * @return NotificationCreator capable of executing the create
          */
-        public static NotificationCreator Create(string serviceSid) {
+        public static NotificationCreator Creator(string serviceSid) {
             return new NotificationCreator(serviceSid);
         }
     

@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
          * @param ownerAccountSid The owner_account_sid
          * @return LocalReader capable of executing the read
          */
-        public static LocalReader Read(string ownerAccountSid) {
+        public static LocalReader Reader(string ownerAccountSid) {
             return new LocalReader(ownerAccountSid);
         }
     
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
          * 
          * @return LocalReader capable of executing the read
          */
-        public static LocalReader Read() {
+        public static LocalReader Reader() {
             return new LocalReader();
         }
     
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
          * @param phoneNumber The phone_number
          * @return LocalCreator capable of executing the create
          */
-        public static LocalCreator Create(string ownerAccountSid, Twilio.Types.PhoneNumber phoneNumber) {
+        public static LocalCreator Creator(string ownerAccountSid, Twilio.Types.PhoneNumber phoneNumber) {
             return new LocalCreator(ownerAccountSid, phoneNumber);
         }
     
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
          * @param phoneNumber The phone_number
          * @return LocalCreator capable of executing the create
          */
-        public static LocalCreator Create(Twilio.Types.PhoneNumber phoneNumber) {
+        public static LocalCreator Creator(Twilio.Types.PhoneNumber phoneNumber) {
             return new LocalCreator(phoneNumber);
         }
     

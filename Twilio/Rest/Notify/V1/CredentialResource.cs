@@ -43,7 +43,7 @@ namespace Twilio.Rest.Notify.V1 {
          * 
          * @return CredentialReader capable of executing the read
          */
-        public static CredentialReader Read() {
+        public static CredentialReader Reader() {
             return new CredentialReader();
         }
     
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Notify.V1 {
          * @param type The type
          * @return CredentialCreator capable of executing the create
          */
-        public static CredentialCreator Create(CredentialResource.PushService type) {
+        public static CredentialCreator Creator(CredentialResource.PushService type) {
             return new CredentialCreator(type);
         }
     
@@ -63,7 +63,7 @@ namespace Twilio.Rest.Notify.V1 {
          * @param sid The sid
          * @return CredentialFetcher capable of executing the fetch
          */
-        public static CredentialFetcher Fetch(string sid) {
+        public static CredentialFetcher Fetcher(string sid) {
             return new CredentialFetcher(sid);
         }
     
@@ -73,7 +73,7 @@ namespace Twilio.Rest.Notify.V1 {
          * @param sid The sid
          * @return CredentialUpdater capable of executing the update
          */
-        public static CredentialUpdater Update(string sid) {
+        public static CredentialUpdater Updater(string sid) {
             return new CredentialUpdater(sid);
         }
     
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Notify.V1 {
          * @param sid The sid
          * @return CredentialDeleter capable of executing the delete
          */
-        public static CredentialDeleter Delete(string sid) {
+        public static CredentialDeleter Deleter(string sid) {
             return new CredentialDeleter(sid);
         }
     

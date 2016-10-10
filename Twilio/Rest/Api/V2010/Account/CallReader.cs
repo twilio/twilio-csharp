@@ -106,7 +106,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return CallResource ResourceSet
          */
-        public override Task<ResourceSet<CallResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<CallResource>> ReadAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return CallResource ResourceSet
          */
-        public override ResourceSet<CallResource> Execute(ITwilioRestClient client) {
+        public override ResourceSet<CallResource> Read(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -213,13 +213,7 @@ namespace Twilio.Rest.Api.V2010.Account {
                 request.AddQueryParam("Status", status.ToString());
             }
             
-            if (startTime != null) {
-                request.AddQueryParam("StartTime", startTime);
-            }
             
-            if (endTime != null) {
-                request.AddQueryParam("EndTime", endTime);
-            }
             
             request.AddQueryParam("PageSize", GetPageSize().ToString());
         }

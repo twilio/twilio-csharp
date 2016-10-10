@@ -17,7 +17,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
          * @param callSid The call_sid
          * @return ParticipantFetcher capable of executing the fetch
          */
-        public static ParticipantFetcher Fetch(string accountSid, string conferenceSid, string callSid) {
+        public static ParticipantFetcher Fetcher(string accountSid, string conferenceSid, string callSid) {
             return new ParticipantFetcher(accountSid, conferenceSid, callSid);
         }
     
@@ -28,8 +28,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
          * @param callSid The call_sid
          * @return ParticipantFetcher capable of executing the fetch
          */
-        public static ParticipantFetcher Fetch(string conferenceSid, 
-                                               string callSid) {
+        public static ParticipantFetcher Fetcher(string conferenceSid, 
+                                                 string callSid) {
             return new ParticipantFetcher(conferenceSid, callSid);
         }
     
@@ -41,7 +41,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
          * @param callSid The call_sid
          * @return ParticipantUpdater capable of executing the update
          */
-        public static ParticipantUpdater Update(string accountSid, string conferenceSid, string callSid) {
+        public static ParticipantUpdater Updater(string accountSid, string conferenceSid, string callSid) {
             return new ParticipantUpdater(accountSid, conferenceSid, callSid);
         }
     
@@ -52,8 +52,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
          * @param callSid The call_sid
          * @return ParticipantUpdater capable of executing the update
          */
-        public static ParticipantUpdater Update(string conferenceSid, 
-                                                string callSid) {
+        public static ParticipantUpdater Updater(string conferenceSid, 
+                                                 string callSid) {
             return new ParticipantUpdater(conferenceSid, callSid);
         }
     
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
          * @param callSid The call_sid
          * @return ParticipantDeleter capable of executing the delete
          */
-        public static ParticipantDeleter Delete(string accountSid, string conferenceSid, string callSid) {
+        public static ParticipantDeleter Deleter(string accountSid, string conferenceSid, string callSid) {
             return new ParticipantDeleter(accountSid, conferenceSid, callSid);
         }
     
@@ -76,8 +76,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
          * @param callSid The call_sid
          * @return ParticipantDeleter capable of executing the delete
          */
-        public static ParticipantDeleter Delete(string conferenceSid, 
-                                                string callSid) {
+        public static ParticipantDeleter Deleter(string conferenceSid, 
+                                                 string callSid) {
             return new ParticipantDeleter(conferenceSid, callSid);
         }
     
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
          * @param conferenceSid The string that uniquely identifies this conference
          * @return ParticipantReader capable of executing the read
          */
-        public static ParticipantReader Read(string accountSid, string conferenceSid) {
+        public static ParticipantReader Reader(string accountSid, string conferenceSid) {
             return new ParticipantReader(accountSid, conferenceSid);
         }
     
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
          * @param conferenceSid The string that uniquely identifies this conference
          * @return ParticipantReader capable of executing the read
          */
-        public static ParticipantReader Read(string conferenceSid) {
+        public static ParticipantReader Reader(string conferenceSid) {
             return new ParticipantReader(conferenceSid);
         }
     

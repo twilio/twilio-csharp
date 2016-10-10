@@ -28,7 +28,7 @@ namespace Twilio.Rest.IpMessaging.V1 {
          * @param client ITwilioRestClient with which to make the request
          * @return Created ServiceResource
          */
-        public override async Task<ServiceResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<ServiceResource> CreateAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.IP_MESSAGING,
@@ -63,7 +63,7 @@ namespace Twilio.Rest.IpMessaging.V1 {
          * @param client ITwilioRestClient with which to make the request
          * @return Created ServiceResource
          */
-        public override ServiceResource Execute(ITwilioRestClient client) {
+        public override ServiceResource Create(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.IP_MESSAGING,

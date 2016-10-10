@@ -31,7 +31,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call {
                                                   "null"));
             
             try {
-                FeedbackSummaryResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", MarshalConverter.DateTimeFromString("2008-01-02"), MarshalConverter.DateTimeFromString("2008-01-02")).Execute(twilioRestClient);
+                FeedbackSummaryResource.Creator("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", MarshalConverter.DateTimeFromString("2008-01-02"), MarshalConverter.DateTimeFromString("2008-01-02")).Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -54,7 +54,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call {
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_count\": 10200,\"call_feedback_count\": 729,\"end_date\": \"2011-01-01\",\"include_subaccounts\": false,\"issues\": [{\"count\": 45,\"description\": \"imperfect-audio\",\"percentage_of_total_calls\": \"0.04%\"}],\"quality_score_average\": 4.5,\"quality_score_median\": 4,\"quality_score_standard_deviation\": 1,\"sid\": \"FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"start_date\": \"2011-01-01\",\"status\": \"completed\",\"date_created\": \"Tue, 31 Aug 2010 20:36:28 +0000\",\"date_updated\": \"Tue, 31 Aug 2010 20:36:44 +0000\"}"));
             
-            var response = FeedbackSummaryResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", MarshalConverter.DateTimeFromString("2008-01-02"), MarshalConverter.DateTimeFromString("2008-01-02")).Execute(twilioRestClient);
+            var response = FeedbackSummaryResource.Creator("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", MarshalConverter.DateTimeFromString("2008-01-02"), MarshalConverter.DateTimeFromString("2008-01-02")).Create(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -69,7 +69,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call {
                                                   "null"));
             
             try {
-                FeedbackSummaryResource.Fetch("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                FeedbackSummaryResource.Fetcher("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -92,7 +92,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_count\": 10200,\"call_feedback_count\": 729,\"end_date\": \"2011-01-01\",\"include_subaccounts\": false,\"issues\": [{\"count\": 45,\"description\": \"imperfect-audio\",\"percentage_of_total_calls\": \"0.04%\"}],\"quality_score_average\": 4.5,\"quality_score_median\": 4,\"quality_score_standard_deviation\": 1,\"sid\": \"FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"start_date\": \"2011-01-01\",\"status\": \"completed\",\"date_created\": \"Tue, 31 Aug 2010 20:36:28 +0000\",\"date_updated\": \"Tue, 31 Aug 2010 20:36:44 +0000\"}"));
             
-            var response = FeedbackSummaryResource.Fetch("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            var response = FeedbackSummaryResource.Fetcher("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -107,7 +107,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call {
                                                   "null"));
             
             try {
-                FeedbackSummaryResource.Delete("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                FeedbackSummaryResource.Deleter("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Delete(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -130,7 +130,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call {
                             .Returns(new Response(System.Net.HttpStatusCode.NoContent,
                                                   "null"));
             
-            FeedbackSummaryResource.Delete("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            FeedbackSummaryResource.Deleter("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Delete(twilioRestClient);
         }
     }
 }

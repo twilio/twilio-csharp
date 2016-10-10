@@ -29,7 +29,7 @@ namespace Twilio.Tests.Rest.Chat.V1.Service {
                                                   "null"));
             
             try {
-                UserResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                UserResource.Fetcher("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -52,7 +52,7 @@ namespace Twilio.Tests.Rest.Chat.V1.Service {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"sid\": \"USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"jing\",\"attributes\": null,\"friendly_name\": null,\"date_created\": \"2016-03-24T21:05:19Z\",\"date_updated\": \"2016-03-24T21:05:19Z\",\"url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = UserResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            var response = UserResource.Fetcher("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -67,7 +67,7 @@ namespace Twilio.Tests.Rest.Chat.V1.Service {
                                                   "null"));
             
             try {
-                UserResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                UserResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Delete(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -90,7 +90,7 @@ namespace Twilio.Tests.Rest.Chat.V1.Service {
                             .Returns(new Response(System.Net.HttpStatusCode.NoContent,
                                                   "null"));
             
-            UserResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            UserResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Delete(twilioRestClient);
         }
     
         [Test]
@@ -105,7 +105,7 @@ namespace Twilio.Tests.Rest.Chat.V1.Service {
                                                   "null"));
             
             try {
-                UserResource.Create("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "identity").Execute(twilioRestClient);
+                UserResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "identity").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -128,7 +128,7 @@ namespace Twilio.Tests.Rest.Chat.V1.Service {
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"sid\": \"USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"jing\",\"attributes\": null,\"friendly_name\": null,\"date_created\": \"2016-03-24T21:05:19Z\",\"date_updated\": \"2016-03-24T21:05:19Z\",\"url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = UserResource.Create("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "identity").Execute(twilioRestClient);
+            var response = UserResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "identity").Create(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -144,7 +144,7 @@ namespace Twilio.Tests.Rest.Chat.V1.Service {
                                                   "null"));
             
             try {
-                UserResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                UserResource.Reader("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Read(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -167,7 +167,7 @@ namespace Twilio.Tests.Rest.Chat.V1.Service {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"meta\": {\"page\": 0,\"page_size\": 1,\"first_page_url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users?PageSize=1&Page=0\",\"previous_page_url\": null,\"url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users?PageSize=1&Page=0\",\"next_page_url\": null,\"key\": \"users\"},\"users\": [{\"sid\": \"USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"jing\",\"attributes\": null,\"friendly_name\": null,\"date_created\": \"2016-03-24T21:05:19Z\",\"date_updated\": \"2016-03-24T21:05:19Z\",\"url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}]}"));
             
-            var response = UserResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            var response = UserResource.Reader("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Read(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -178,7 +178,7 @@ namespace Twilio.Tests.Rest.Chat.V1.Service {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"meta\": {\"page\": 0,\"page_size\": 1,\"first_page_url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users?PageSize=1&Page=0\",\"previous_page_url\": null,\"url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users?PageSize=1&Page=0\",\"next_page_url\": null,\"key\": \"users\"},\"users\": []}"));
             
-            var response = UserResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            var response = UserResource.Reader("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Read(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -193,7 +193,7 @@ namespace Twilio.Tests.Rest.Chat.V1.Service {
                                                   "null"));
             
             try {
-                UserResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                UserResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Update(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -216,7 +216,7 @@ namespace Twilio.Tests.Rest.Chat.V1.Service {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"sid\": \"USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"jing\",\"attributes\": null,\"friendly_name\": null,\"date_created\": \"2016-03-24T21:05:19Z\",\"date_updated\": \"2016-03-24T21:05:19Z\",\"url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = UserResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            var response = UserResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Update(twilioRestClient);
             Assert.NotNull(response);
         }
     }

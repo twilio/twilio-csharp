@@ -29,7 +29,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service {
                                                   "null"));
             
             try {
-                BindingResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                BindingResource.Fetcher("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -52,7 +52,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"sid\": \"BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2016-03-24T23:24:45Z\",\"date_updated\": \"2016-03-24T23:24:45Z\",\"notification_protocol_version\": \"3\",\"endpoint\": \"abcd\",\"identity\": \"jing\",\"binding_type\": \"apn\",\"address\": \"1234\",\"tags\": [],\"url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings/BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = BindingResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            var response = BindingResource.Fetcher("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -67,7 +67,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service {
                                                   "null"));
             
             try {
-                BindingResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                BindingResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Delete(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -90,7 +90,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service {
                             .Returns(new Response(System.Net.HttpStatusCode.NoContent,
                                                   "null"));
             
-            BindingResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            BindingResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Delete(twilioRestClient);
         }
     
         [Test]
@@ -108,7 +108,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service {
                                                   "null"));
             
             try {
-                BindingResource.Create("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "endpoint", "identity", BindingResource.BindingType.APN, "address").Execute(twilioRestClient);
+                BindingResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "endpoint", "identity", BindingResource.BindingType.APN, "address").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -131,7 +131,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service {
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"sid\": \"BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2016-03-24T23:24:45Z\",\"date_updated\": \"2016-03-24T23:24:45Z\",\"notification_protocol_version\": \"3\",\"endpoint\": \"abcd\",\"identity\": \"jing\",\"binding_type\": \"apn\",\"address\": \"1234\",\"tags\": [],\"url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings/BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = BindingResource.Create("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "endpoint", "identity", BindingResource.BindingType.APN, "address").Execute(twilioRestClient);
+            var response = BindingResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "endpoint", "identity", BindingResource.BindingType.APN, "address").Create(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -147,7 +147,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service {
                                                   "null"));
             
             try {
-                BindingResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                BindingResource.Reader("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Read(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -170,7 +170,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"meta\": {\"page\": 0,\"page_size\": 1,\"first_page_url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings?PageSize=1&Page=0\",\"previous_page_url\": null,\"url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings?PageSize=1&Page=0\",\"next_page_url\": null,\"key\": \"bindings\"},\"bindings\": [{\"sid\": \"BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2016-03-24T23:24:45Z\",\"date_updated\": \"2016-03-24T23:24:45Z\",\"notification_protocol_version\": \"3\",\"endpoint\": \"abcd\",\"identity\": \"jing\",\"binding_type\": \"apn\",\"address\": \"1234\",\"tags\": [],\"url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings/BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}]}"));
             
-            var response = BindingResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            var response = BindingResource.Reader("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Read(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -181,7 +181,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"meta\": {\"page\": 0,\"page_size\": 1,\"first_page_url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings?PageSize=1&Page=0\",\"previous_page_url\": null,\"url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings?PageSize=1&Page=0\",\"next_page_url\": null,\"key\": \"bindings\"},\"bindings\": []}"));
             
-            var response = BindingResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            var response = BindingResource.Reader("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Read(twilioRestClient);
             Assert.NotNull(response);
         }
     }

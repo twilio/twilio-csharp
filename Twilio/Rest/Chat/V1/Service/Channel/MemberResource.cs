@@ -17,7 +17,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
          * @param sid The sid
          * @return MemberFetcher capable of executing the fetch
          */
-        public static MemberFetcher Fetch(string serviceSid, string channelSid, string sid) {
+        public static MemberFetcher Fetcher(string serviceSid, string channelSid, string sid) {
             return new MemberFetcher(serviceSid, channelSid, sid);
         }
     
@@ -29,7 +29,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
          * @param identity The identity
          * @return MemberCreator capable of executing the create
          */
-        public static MemberCreator Create(string serviceSid, string channelSid, string identity) {
+        public static MemberCreator Creator(string serviceSid, string channelSid, string identity) {
             return new MemberCreator(serviceSid, channelSid, identity);
         }
     
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
          * @param channelSid The channel_sid
          * @return MemberReader capable of executing the read
          */
-        public static MemberReader Read(string serviceSid, string channelSid) {
+        public static MemberReader Reader(string serviceSid, string channelSid) {
             return new MemberReader(serviceSid, channelSid);
         }
     
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
          * @param sid The sid
          * @return MemberDeleter capable of executing the delete
          */
-        public static MemberDeleter Delete(string serviceSid, string channelSid, string sid) {
+        public static MemberDeleter Deleter(string serviceSid, string channelSid, string sid) {
             return new MemberDeleter(serviceSid, channelSid, sid);
         }
     

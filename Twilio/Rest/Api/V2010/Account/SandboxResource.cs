@@ -15,7 +15,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return SandboxFetcher capable of executing the fetch
          */
-        public static SandboxFetcher Fetch(string accountSid) {
+        public static SandboxFetcher Fetcher(string accountSid) {
             return new SandboxFetcher(accountSid);
         }
     
@@ -24,7 +24,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * 
          * @return SandboxFetcher capable of executing the fetch
          */
-        public static SandboxFetcher Fetch() {
+        public static SandboxFetcher Fetcher() {
             return new SandboxFetcher();
         }
     
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return SandboxUpdater capable of executing the update
          */
-        public static SandboxUpdater Update(string accountSid) {
+        public static SandboxUpdater Updater(string accountSid) {
             return new SandboxUpdater(accountSid);
         }
     
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * 
          * @return SandboxUpdater capable of executing the update
          */
-        public static SandboxUpdater Update() {
+        public static SandboxUpdater Updater() {
             return new SandboxUpdater();
         }
     

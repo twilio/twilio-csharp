@@ -35,7 +35,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account {
                                                   "null"));
             
             try {
-                AddressResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "customerName", "street", "city", "region", "postalCode", "US").Execute(twilioRestClient);
+                AddressResource.Creator("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "customerName", "street", "city", "region", "postalCode", "US").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -58,7 +58,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account {
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"city\": \"SF\",\"customer_name\": \"name\",\"date_created\": \"Tue, 18 Aug 2015 17:07:30 +0000\",\"date_updated\": \"Tue, 18 Aug 2015 17:07:30 +0000\",\"friendly_name\": null,\"iso_country\": \"US\",\"postal_code\": \"94019\",\"region\": \"CA\",\"sid\": \"ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"street\": \"4th\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses/ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"));
             
-            var response = AddressResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "customerName", "street", "city", "region", "postalCode", "US").Execute(twilioRestClient);
+            var response = AddressResource.Creator("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "customerName", "street", "city", "region", "postalCode", "US").Create(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -73,7 +73,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account {
                                                   "null"));
             
             try {
-                AddressResource.Delete("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                AddressResource.Deleter("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Delete(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -96,7 +96,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account {
                             .Returns(new Response(System.Net.HttpStatusCode.NoContent,
                                                   "null"));
             
-            AddressResource.Delete("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            AddressResource.Deleter("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Delete(twilioRestClient);
         }
     
         [Test]
@@ -110,7 +110,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account {
                                                   "null"));
             
             try {
-                AddressResource.Fetch("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                AddressResource.Fetcher("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -133,7 +133,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"city\": \"SF\",\"customer_name\": \"name\",\"date_created\": \"Tue, 18 Aug 2015 17:07:30 +0000\",\"date_updated\": \"Tue, 18 Aug 2015 17:07:30 +0000\",\"friendly_name\": null,\"iso_country\": \"US\",\"postal_code\": \"94019\",\"region\": \"CA\",\"sid\": \"ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"street\": \"4th\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses/ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"));
             
-            var response = AddressResource.Fetch("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            var response = AddressResource.Fetcher("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -148,7 +148,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account {
                                                   "null"));
             
             try {
-                AddressResource.Update("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                AddressResource.Updater("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Update(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -171,7 +171,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"city\": \"SF\",\"customer_name\": \"name\",\"date_created\": \"Tue, 18 Aug 2015 17:07:30 +0000\",\"date_updated\": \"Tue, 18 Aug 2015 17:07:30 +0000\",\"friendly_name\": null,\"iso_country\": \"US\",\"postal_code\": \"94019\",\"region\": \"CA\",\"sid\": \"ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"street\": \"4th\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses/ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"));
             
-            var response = AddressResource.Update("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            var response = AddressResource.Updater("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Update(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -187,7 +187,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account {
                                                   "null"));
             
             try {
-                AddressResource.Read("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                AddressResource.Reader("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Read(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -210,7 +210,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"addresses\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"city\": \"SF\",\"customer_name\": \"name\",\"date_created\": \"Tue, 18 Aug 2015 17:07:30 +0000\",\"date_updated\": \"Tue, 18 Aug 2015 17:07:30 +0000\",\"friendly_name\": null,\"iso_country\": \"US\",\"postal_code\": \"94019\",\"region\": \"CA\",\"sid\": \"ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"street\": \"4th\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses/ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}],\"end\": 0,\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses.json?PageSize=50&Page=0\",\"last_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses.json?PageSize=50&Page=0\",\"next_page_uri\": null,\"num_pages\": 1,\"page\": 0,\"page_size\": 50,\"previous_page_uri\": null,\"start\": 0,\"total\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses.json?PageSize=50&Page=0\"}"));
             
-            var response = AddressResource.Read("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            var response = AddressResource.Reader("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Read(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -221,7 +221,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"addresses\": [],\"end\": 0,\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses.json?PageSize=50&Page=0\",\"last_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses.json?PageSize=50&Page=0\",\"next_page_uri\": null,\"num_pages\": 1,\"page\": 0,\"page_size\": 50,\"previous_page_uri\": null,\"start\": 0,\"total\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses.json?PageSize=50&Page=0\"}"));
             
-            var response = AddressResource.Read("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            var response = AddressResource.Reader("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Read(twilioRestClient);
             Assert.NotNull(response);
         }
     }

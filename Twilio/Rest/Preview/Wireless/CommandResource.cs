@@ -15,7 +15,7 @@ namespace Twilio.Rest.Preview.Wireless {
          * @param sid The sid
          * @return CommandFetcher capable of executing the fetch
          */
-        public static CommandFetcher Fetch(string sid) {
+        public static CommandFetcher Fetcher(string sid) {
             return new CommandFetcher(sid);
         }
     
@@ -24,7 +24,7 @@ namespace Twilio.Rest.Preview.Wireless {
          * 
          * @return CommandReader capable of executing the read
          */
-        public static CommandReader Read() {
+        public static CommandReader Reader() {
             return new CommandReader();
         }
     
@@ -35,7 +35,7 @@ namespace Twilio.Rest.Preview.Wireless {
          * @param command The command
          * @return CommandCreator capable of executing the create
          */
-        public static CommandCreator Create(string device, string command) {
+        public static CommandCreator Creator(string device, string command) {
             return new CommandCreator(device, command);
         }
     

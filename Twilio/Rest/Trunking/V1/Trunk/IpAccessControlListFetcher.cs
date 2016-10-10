@@ -31,7 +31,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched IpAccessControlListResource
          */
-        public override async Task<IpAccessControlListResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<IpAccessControlListResource> FetchAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TRUNKING,
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched IpAccessControlListResource
          */
-        public override IpAccessControlListResource Execute(ITwilioRestClient client) {
+        public override IpAccessControlListResource Fetch(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TRUNKING,

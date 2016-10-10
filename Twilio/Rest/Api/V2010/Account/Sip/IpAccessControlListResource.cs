@@ -17,7 +17,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param accountSid The account_sid
          * @return IpAccessControlListReader capable of executing the read
          */
-        public static IpAccessControlListReader Read(string accountSid) {
+        public static IpAccessControlListReader Reader(string accountSid) {
             return new IpAccessControlListReader(accountSid);
         }
     
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * 
          * @return IpAccessControlListReader capable of executing the read
          */
-        public static IpAccessControlListReader Read() {
+        public static IpAccessControlListReader Reader() {
             return new IpAccessControlListReader();
         }
     
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param friendlyName A human readable description of this resource
          * @return IpAccessControlListCreator capable of executing the create
          */
-        public static IpAccessControlListCreator Create(string accountSid, string friendlyName) {
+        public static IpAccessControlListCreator Creator(string accountSid, string friendlyName) {
             return new IpAccessControlListCreator(accountSid, friendlyName);
         }
     
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param friendlyName A human readable description of this resource
          * @return IpAccessControlListCreator capable of executing the create
          */
-        public static IpAccessControlListCreator Create(string friendlyName) {
+        public static IpAccessControlListCreator Creator(string friendlyName) {
             return new IpAccessControlListCreator(friendlyName);
         }
     
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param sid Fetch by unique ip-access-control-list Sid
          * @return IpAccessControlListFetcher capable of executing the fetch
          */
-        public static IpAccessControlListFetcher Fetch(string accountSid, string sid) {
+        public static IpAccessControlListFetcher Fetcher(string accountSid, string sid) {
             return new IpAccessControlListFetcher(accountSid, sid);
         }
     
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param sid Fetch by unique ip-access-control-list Sid
          * @return IpAccessControlListFetcher capable of executing the fetch
          */
-        public static IpAccessControlListFetcher Fetch(string sid) {
+        public static IpAccessControlListFetcher Fetcher(string sid) {
             return new IpAccessControlListFetcher(sid);
         }
     
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param friendlyName A human readable description of this resource
          * @return IpAccessControlListUpdater capable of executing the update
          */
-        public static IpAccessControlListUpdater Update(string accountSid, string sid, string friendlyName) {
+        public static IpAccessControlListUpdater Updater(string accountSid, string sid, string friendlyName) {
             return new IpAccessControlListUpdater(accountSid, sid, friendlyName);
         }
     
@@ -91,8 +91,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param friendlyName A human readable description of this resource
          * @return IpAccessControlListUpdater capable of executing the update
          */
-        public static IpAccessControlListUpdater Update(string sid, 
-                                                        string friendlyName) {
+        public static IpAccessControlListUpdater Updater(string sid, 
+                                                         string friendlyName) {
             return new IpAccessControlListUpdater(sid, friendlyName);
         }
     
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param sid Delete by unique ip-access-control-list Sid
          * @return IpAccessControlListDeleter capable of executing the delete
          */
-        public static IpAccessControlListDeleter Delete(string accountSid, string sid) {
+        public static IpAccessControlListDeleter Deleter(string accountSid, string sid) {
             return new IpAccessControlListDeleter(accountSid, sid);
         }
     
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param sid Delete by unique ip-access-control-list Sid
          * @return IpAccessControlListDeleter capable of executing the delete
          */
-        public static IpAccessControlListDeleter Delete(string sid) {
+        public static IpAccessControlListDeleter Deleter(string sid) {
             return new IpAccessControlListDeleter(sid);
         }
     

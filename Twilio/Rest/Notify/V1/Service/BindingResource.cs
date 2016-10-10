@@ -48,7 +48,7 @@ namespace Twilio.Rest.Notify.V1.Service {
          * @param sid The sid
          * @return BindingFetcher capable of executing the fetch
          */
-        public static BindingFetcher Fetch(string serviceSid, string sid) {
+        public static BindingFetcher Fetcher(string serviceSid, string sid) {
             return new BindingFetcher(serviceSid, sid);
         }
     
@@ -59,7 +59,7 @@ namespace Twilio.Rest.Notify.V1.Service {
          * @param sid The sid
          * @return BindingDeleter capable of executing the delete
          */
-        public static BindingDeleter Delete(string serviceSid, string sid) {
+        public static BindingDeleter Deleter(string serviceSid, string sid) {
             return new BindingDeleter(serviceSid, sid);
         }
     
@@ -73,7 +73,7 @@ namespace Twilio.Rest.Notify.V1.Service {
          * @param address The address
          * @return BindingCreator capable of executing the create
          */
-        public static BindingCreator Create(string serviceSid, string endpoint, string identity, BindingResource.BindingType bindingType, string address) {
+        public static BindingCreator Creator(string serviceSid, string endpoint, string identity, BindingResource.BindingType bindingType, string address) {
             return new BindingCreator(serviceSid, endpoint, identity, bindingType, address);
         }
     
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Notify.V1.Service {
          * @param serviceSid The service_sid
          * @return BindingReader capable of executing the read
          */
-        public static BindingReader Read(string serviceSid) {
+        public static BindingReader Reader(string serviceSid) {
             return new BindingReader(serviceSid);
         }
     

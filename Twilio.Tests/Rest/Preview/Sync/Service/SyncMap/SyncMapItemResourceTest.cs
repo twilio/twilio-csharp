@@ -29,7 +29,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap {
                                                   "null"));
             
             try {
-                SyncMapItemResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "key").Execute(twilioRestClient);
+                SyncMapItemResource.Fetcher("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "key").Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -56,7 +56,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap {
                                                   "null"));
             
             try {
-                SyncMapItemResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "key").Execute(twilioRestClient);
+                SyncMapItemResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "key").Delete(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -85,7 +85,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap {
                                                   "null"));
             
             try {
-                SyncMapItemResource.Create("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "key", "{}").Execute(twilioRestClient);
+                SyncMapItemResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "key", "{}").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -113,7 +113,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap {
                                                   "null"));
             
             try {
-                SyncMapItemResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                SyncMapItemResource.Reader("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Read(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -141,7 +141,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap {
                                                   "null"));
             
             try {
-                SyncMapItemResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "key", "{}").Execute(twilioRestClient);
+                SyncMapItemResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "key", "{}").Update(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>

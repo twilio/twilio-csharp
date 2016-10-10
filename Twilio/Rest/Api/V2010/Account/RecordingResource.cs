@@ -77,7 +77,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Fetch by unique recording Sid
          * @return RecordingFetcher capable of executing the fetch
          */
-        public static RecordingFetcher Fetch(string accountSid, string sid) {
+        public static RecordingFetcher Fetcher(string accountSid, string sid) {
             return new RecordingFetcher(accountSid, sid);
         }
     
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Fetch by unique recording Sid
          * @return RecordingFetcher capable of executing the fetch
          */
-        public static RecordingFetcher Fetch(string sid) {
+        public static RecordingFetcher Fetcher(string sid) {
             return new RecordingFetcher(sid);
         }
     
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Delete by unique recording Sid
          * @return RecordingDeleter capable of executing the delete
          */
-        public static RecordingDeleter Delete(string accountSid, string sid) {
+        public static RecordingDeleter Deleter(string accountSid, string sid) {
             return new RecordingDeleter(accountSid, sid);
         }
     
@@ -108,7 +108,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Delete by unique recording Sid
          * @return RecordingDeleter capable of executing the delete
          */
-        public static RecordingDeleter Delete(string sid) {
+        public static RecordingDeleter Deleter(string sid) {
             return new RecordingDeleter(sid);
         }
     
@@ -119,7 +119,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return RecordingReader capable of executing the read
          */
-        public static RecordingReader Read(string accountSid) {
+        public static RecordingReader Reader(string accountSid) {
             return new RecordingReader(accountSid);
         }
     
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * 
          * @return RecordingReader capable of executing the read
          */
-        public static RecordingReader Read() {
+        public static RecordingReader Reader() {
             return new RecordingReader();
         }
     

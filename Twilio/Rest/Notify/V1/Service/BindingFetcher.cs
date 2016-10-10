@@ -31,7 +31,7 @@ namespace Twilio.Rest.Notify.V1.Service {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched BindingResource
          */
-        public override async Task<BindingResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<BindingResource> FetchAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.NOTIFY,
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Notify.V1.Service {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched BindingResource
          */
-        public override BindingResource Execute(ITwilioRestClient client) {
+        public override BindingResource Fetch(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.NOTIFY,

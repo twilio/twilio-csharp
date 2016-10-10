@@ -17,7 +17,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging {
          * @param client ITwilioRestClient with which to make the request
          * @return CountryResource ResourceSet
          */
-        public override Task<ResourceSet<CountryResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<CountryResource>> ReadAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PRICING,
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging {
          * @param client ITwilioRestClient with which to make the request
          * @return CountryResource ResourceSet
          */
-        public override ResourceSet<CountryResource> Execute(ITwilioRestClient client) {
+        public override ResourceSet<CountryResource> Read(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PRICING,

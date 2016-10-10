@@ -31,7 +31,7 @@ namespace Twilio.Rest.Chat.V1.Service {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched RoleResource
          */
-        public override async Task<RoleResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<RoleResource> FetchAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.CHAT,
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Chat.V1.Service {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched RoleResource
          */
-        public override RoleResource Execute(ITwilioRestClient client) {
+        public override RoleResource Fetch(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.CHAT,

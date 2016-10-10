@@ -103,7 +103,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated OriginationUrlResource
          */
-        public override async Task<OriginationUrlResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<OriginationUrlResource> UpdateAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TRUNKING,
@@ -138,7 +138,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated OriginationUrlResource
          */
-        public override OriginationUrlResource Execute(ITwilioRestClient client) {
+        public override OriginationUrlResource Update(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TRUNKING,

@@ -17,7 +17,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param accountSid The account_sid
          * @return CredentialListReader capable of executing the read
          */
-        public static CredentialListReader Read(string accountSid) {
+        public static CredentialListReader Reader(string accountSid) {
             return new CredentialListReader(accountSid);
         }
     
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * 
          * @return CredentialListReader capable of executing the read
          */
-        public static CredentialListReader Read() {
+        public static CredentialListReader Reader() {
             return new CredentialListReader();
         }
     
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param friendlyName The friendly_name
          * @return CredentialListCreator capable of executing the create
          */
-        public static CredentialListCreator Create(string accountSid, string friendlyName) {
+        public static CredentialListCreator Creator(string accountSid, string friendlyName) {
             return new CredentialListCreator(accountSid, friendlyName);
         }
     
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param friendlyName The friendly_name
          * @return CredentialListCreator capable of executing the create
          */
-        public static CredentialListCreator Create(string friendlyName) {
+        public static CredentialListCreator Creator(string friendlyName) {
             return new CredentialListCreator(friendlyName);
         }
     
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param sid Fetch by unique credential Sid
          * @return CredentialListFetcher capable of executing the fetch
          */
-        public static CredentialListFetcher Fetch(string accountSid, string sid) {
+        public static CredentialListFetcher Fetcher(string accountSid, string sid) {
             return new CredentialListFetcher(accountSid, sid);
         }
     
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param sid Fetch by unique credential Sid
          * @return CredentialListFetcher capable of executing the fetch
          */
-        public static CredentialListFetcher Fetch(string sid) {
+        public static CredentialListFetcher Fetcher(string sid) {
             return new CredentialListFetcher(sid);
         }
     
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param friendlyName The friendly_name
          * @return CredentialListUpdater capable of executing the update
          */
-        public static CredentialListUpdater Update(string accountSid, string sid, string friendlyName) {
+        public static CredentialListUpdater Updater(string accountSid, string sid, string friendlyName) {
             return new CredentialListUpdater(accountSid, sid, friendlyName);
         }
     
@@ -91,8 +91,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param friendlyName The friendly_name
          * @return CredentialListUpdater capable of executing the update
          */
-        public static CredentialListUpdater Update(string sid, 
-                                                   string friendlyName) {
+        public static CredentialListUpdater Updater(string sid, 
+                                                    string friendlyName) {
             return new CredentialListUpdater(sid, friendlyName);
         }
     
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param sid Delete by unique credential Sid
          * @return CredentialListDeleter capable of executing the delete
          */
-        public static CredentialListDeleter Delete(string accountSid, string sid) {
+        public static CredentialListDeleter Deleter(string accountSid, string sid) {
             return new CredentialListDeleter(accountSid, sid);
         }
     
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param sid Delete by unique credential Sid
          * @return CredentialListDeleter capable of executing the delete
          */
-        public static CredentialListDeleter Delete(string sid) {
+        public static CredentialListDeleter Deleter(string sid) {
             return new CredentialListDeleter(sid);
         }
     

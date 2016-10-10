@@ -17,7 +17,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return EventFetcher capable of executing the fetch
          */
-        public static EventFetcher Fetch(string workspaceSid, string sid) {
+        public static EventFetcher Fetcher(string workspaceSid, string sid) {
             return new EventFetcher(workspaceSid, sid);
         }
     
@@ -27,7 +27,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @return EventReader capable of executing the read
          */
-        public static EventReader Read(string workspaceSid) {
+        public static EventReader Reader(string workspaceSid) {
             return new EventReader(workspaceSid);
         }
     

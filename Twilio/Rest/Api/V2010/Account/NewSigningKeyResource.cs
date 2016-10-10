@@ -15,7 +15,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return NewSigningKeyCreator capable of executing the create
          */
-        public static NewSigningKeyCreator Create(string accountSid) {
+        public static NewSigningKeyCreator Creator(string accountSid) {
             return new NewSigningKeyCreator(accountSid);
         }
     
@@ -24,7 +24,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * 
          * @return NewSigningKeyCreator capable of executing the create
          */
-        public static NewSigningKeyCreator Create() {
+        public static NewSigningKeyCreator Creator() {
             return new NewSigningKeyCreator();
         }
     

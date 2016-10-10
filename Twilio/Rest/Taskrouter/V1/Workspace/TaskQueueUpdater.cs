@@ -91,7 +91,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated TaskQueueResource
          */
-        public override async Task<TaskQueueResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<TaskQueueResource> UpdateAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated TaskQueueResource
          */
-        public override TaskQueueResource Execute(ITwilioRestClient client) {
+        public override TaskQueueResource Update(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,

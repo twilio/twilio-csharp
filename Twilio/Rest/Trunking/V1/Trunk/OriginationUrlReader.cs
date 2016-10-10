@@ -28,7 +28,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param client ITwilioRestClient with which to make the request
          * @return OriginationUrlResource ResourceSet
          */
-        public override Task<ResourceSet<OriginationUrlResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<OriginationUrlResource>> ReadAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TRUNKING,
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param client ITwilioRestClient with which to make the request
          * @return OriginationUrlResource ResourceSet
          */
-        public override ResourceSet<OriginationUrlResource> Execute(ITwilioRestClient client) {
+        public override ResourceSet<OriginationUrlResource> Read(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TRUNKING,

@@ -29,7 +29,7 @@ namespace Twilio.Tests.Rest.Lookups.V1 {
                                                   "null"));
             
             try {
-                PhoneNumberResource.Fetch(new Twilio.Types.PhoneNumber("+987654321")).Execute(twilioRestClient);
+                PhoneNumberResource.Fetcher(new Twilio.Types.PhoneNumber("+987654321")).Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -52,7 +52,7 @@ namespace Twilio.Tests.Rest.Lookups.V1 {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"caller_name\": {\"caller_name\": \"Delicious Cheese Cake\",\"caller_type\": \"CONSUMER\",\"error_code\": null},\"carrier\": {\"error_code\": null,\"mobile_country_code\": \"310\",\"mobile_network_code\": \"456\",\"name\": \"verizon\",\"type\": \"mobile\"},\"country_code\": \"US\",\"national_format\": \"(510) 867-5309\",\"phone_number\": \"+15108675309\",\"add_ons\": {\"status\": \"successful\",\"message\": null,\"code\": null,\"results\": {}},\"url\": \"https://lookups.twilio.com/v1/PhoneNumbers/phone_number\"}"));
             
-            var response = PhoneNumberResource.Fetch(new Twilio.Types.PhoneNumber("+987654321")).Execute(twilioRestClient);
+            var response = PhoneNumberResource.Fetcher(new Twilio.Types.PhoneNumber("+987654321")).Fetch(twilioRestClient);
             Assert.NotNull(response);
         }
     }

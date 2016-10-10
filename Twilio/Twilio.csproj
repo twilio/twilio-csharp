@@ -261,6 +261,8 @@
     <Compile Include="Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingFetcher.cs" />
     <Compile Include="Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingReader.cs" />
     <Compile Include="Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingResource.cs" />
+    <Compile Include="Rest\Api\V2010\Account\Sip\Domain\RegistrationEndpointReader.cs" />
+    <Compile Include="Rest\Api\V2010\Account\Sip\Domain\RegistrationEndpointResource.cs" />
     <Compile Include="Rest\Api\V2010\Account\Sip\IpAccessControlListCreator.cs" />
     <Compile Include="Rest\Api\V2010\Account\Sip\IpAccessControlListDeleter.cs" />
     <Compile Include="Rest\Api\V2010\Account\Sip\IpAccessControlListFetcher.cs" />

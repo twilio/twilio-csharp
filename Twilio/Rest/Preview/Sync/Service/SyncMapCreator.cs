@@ -40,7 +40,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
          * @param client ITwilioRestClient with which to make the request
          * @return Created SyncMapResource
          */
-        public override async Task<SyncMapResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<SyncMapResource> CreateAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.PREVIEW,
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
          * @param client ITwilioRestClient with which to make the request
          * @return Created SyncMapResource
          */
-        public override SyncMapResource Execute(ITwilioRestClient client) {
+        public override SyncMapResource Create(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.PREVIEW,

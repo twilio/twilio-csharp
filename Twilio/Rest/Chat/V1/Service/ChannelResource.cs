@@ -46,7 +46,7 @@ namespace Twilio.Rest.Chat.V1.Service {
          * @param sid The sid
          * @return ChannelFetcher capable of executing the fetch
          */
-        public static ChannelFetcher Fetch(string serviceSid, string sid) {
+        public static ChannelFetcher Fetcher(string serviceSid, string sid) {
             return new ChannelFetcher(serviceSid, sid);
         }
     
@@ -57,7 +57,7 @@ namespace Twilio.Rest.Chat.V1.Service {
          * @param sid The sid
          * @return ChannelDeleter capable of executing the delete
          */
-        public static ChannelDeleter Delete(string serviceSid, string sid) {
+        public static ChannelDeleter Deleter(string serviceSid, string sid) {
             return new ChannelDeleter(serviceSid, sid);
         }
     
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Chat.V1.Service {
          * @param serviceSid The service_sid
          * @return ChannelCreator capable of executing the create
          */
-        public static ChannelCreator Create(string serviceSid) {
+        public static ChannelCreator Creator(string serviceSid) {
             return new ChannelCreator(serviceSid);
         }
     
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Chat.V1.Service {
          * @param serviceSid The service_sid
          * @return ChannelReader capable of executing the read
          */
-        public static ChannelReader Read(string serviceSid) {
+        public static ChannelReader Reader(string serviceSid) {
             return new ChannelReader(serviceSid);
         }
     
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Chat.V1.Service {
          * @param sid The sid
          * @return ChannelUpdater capable of executing the update
          */
-        public static ChannelUpdater Update(string serviceSid, string sid) {
+        public static ChannelUpdater Updater(string serviceSid, string sid) {
             return new ChannelUpdater(serviceSid, sid);
         }
     

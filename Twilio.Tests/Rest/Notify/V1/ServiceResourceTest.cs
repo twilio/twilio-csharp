@@ -29,7 +29,7 @@ namespace Twilio.Tests.Rest.Notify.V1 {
                                                   "null"));
             
             try {
-                ServiceResource.Create().Execute(twilioRestClient);
+                ServiceResource.Creator().Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -52,7 +52,7 @@ namespace Twilio.Tests.Rest.Notify.V1 {
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"733c7f0f-6541-42ec-84ce-e2ae1cac588c\",\"date_created\": \"2016-03-09T20:22:31Z\",\"date_updated\": \"2016-03-09T20:22:31Z\",\"apn_credential_sid\": null,\"gcm_credential_sid\": null,\"messaging_service_sid\": null,\"facebook_messenger_page_id\": \"4\",\"default_apn_notification_protocol_version\": \"3\",\"default_gcm_notification_protocol_version\": \"3\",\"url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"bindings\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings\",\"notifications\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications\"}}"));
             
-            var response = ServiceResource.Create().Execute(twilioRestClient);
+            var response = ServiceResource.Creator().Create(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -67,7 +67,7 @@ namespace Twilio.Tests.Rest.Notify.V1 {
                                                   "null"));
             
             try {
-                ServiceResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                ServiceResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Delete(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -90,7 +90,7 @@ namespace Twilio.Tests.Rest.Notify.V1 {
                             .Returns(new Response(System.Net.HttpStatusCode.NoContent,
                                                   "null"));
             
-            ServiceResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            ServiceResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Delete(twilioRestClient);
         }
     
         [Test]
@@ -104,7 +104,7 @@ namespace Twilio.Tests.Rest.Notify.V1 {
                                                   "null"));
             
             try {
-                ServiceResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                ServiceResource.Fetcher("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -127,7 +127,7 @@ namespace Twilio.Tests.Rest.Notify.V1 {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"733c7f0f-6541-42ec-84ce-e2ae1cac588c\",\"date_created\": \"2016-03-09T20:22:31Z\",\"date_updated\": \"2016-03-09T20:22:31Z\",\"apn_credential_sid\": null,\"gcm_credential_sid\": null,\"messaging_service_sid\": null,\"facebook_messenger_page_id\": \"4\",\"default_apn_notification_protocol_version\": \"3\",\"default_gcm_notification_protocol_version\": \"3\",\"url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"bindings\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings\",\"notifications\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications\"}}"));
             
-            var response = ServiceResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            var response = ServiceResource.Fetcher("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -143,7 +143,7 @@ namespace Twilio.Tests.Rest.Notify.V1 {
                                                   "null"));
             
             try {
-                ServiceResource.Read().Execute(twilioRestClient);
+                ServiceResource.Reader().Read(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -166,7 +166,7 @@ namespace Twilio.Tests.Rest.Notify.V1 {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"meta\": {\"page\": 0,\"page_size\": 1,\"first_page_url\": \"https://notify.twilio.com/v1/Services?PageSize=1&Page=0\",\"previous_page_url\": null,\"url\": \"https://notify.twilio.com/v1/Services?PageSize=1&Page=0\",\"next_page_url\": null,\"key\": \"services\"},\"services\": [{\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"733c7f0f-6541-42ec-84ce-e2ae1cac588c\",\"date_created\": \"2016-03-09T20:22:31Z\",\"date_updated\": \"2016-03-09T20:22:31Z\",\"apn_credential_sid\": null,\"gcm_credential_sid\": null,\"messaging_service_sid\": null,\"facebook_messenger_page_id\": \"4\",\"default_apn_notification_protocol_version\": \"3\",\"default_gcm_notification_protocol_version\": \"3\",\"url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"bindings\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings\",\"notifications\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications\"}}]}"));
             
-            var response = ServiceResource.Read().Execute(twilioRestClient);
+            var response = ServiceResource.Reader().Read(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -177,7 +177,7 @@ namespace Twilio.Tests.Rest.Notify.V1 {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://notify.twilio.com/v1/Services?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://notify.twilio.com/v1/Services?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"services\"},\"services\": []}"));
             
-            var response = ServiceResource.Read().Execute(twilioRestClient);
+            var response = ServiceResource.Reader().Read(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -192,7 +192,7 @@ namespace Twilio.Tests.Rest.Notify.V1 {
                                                   "null"));
             
             try {
-                ServiceResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                ServiceResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Update(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -215,7 +215,7 @@ namespace Twilio.Tests.Rest.Notify.V1 {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"733c7f0f-6541-42ec-84ce-e2ae1cac588c\",\"date_created\": \"2016-03-09T20:22:31Z\",\"date_updated\": \"2016-03-09T20:22:31Z\",\"apn_credential_sid\": null,\"gcm_credential_sid\": null,\"default_apn_notification_protocol_version\": \"3\",\"default_gcm_notification_protocol_version\": \"3\",\"messaging_service_sid\": null,\"facebook_messenger_page_id\": \"4\",\"url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"bindings\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings\",\"notifications\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications\"}}"));
             
-            var response = ServiceResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            var response = ServiceResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Update(twilioRestClient);
             Assert.NotNull(response);
         }
     }

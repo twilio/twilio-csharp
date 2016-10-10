@@ -16,7 +16,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Fetch by unique short-code Sid
          * @return ShortCodeFetcher capable of executing the fetch
          */
-        public static ShortCodeFetcher Fetch(string accountSid, string sid) {
+        public static ShortCodeFetcher Fetcher(string accountSid, string sid) {
             return new ShortCodeFetcher(accountSid, sid);
         }
     
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Fetch by unique short-code Sid
          * @return ShortCodeFetcher capable of executing the fetch
          */
-        public static ShortCodeFetcher Fetch(string sid) {
+        public static ShortCodeFetcher Fetcher(string sid) {
             return new ShortCodeFetcher(sid);
         }
     
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return ShortCodeUpdater capable of executing the update
          */
-        public static ShortCodeUpdater Update(string accountSid, string sid) {
+        public static ShortCodeUpdater Updater(string accountSid, string sid) {
             return new ShortCodeUpdater(accountSid, sid);
         }
     
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return ShortCodeUpdater capable of executing the update
          */
-        public static ShortCodeUpdater Update(string sid) {
+        public static ShortCodeUpdater Updater(string sid) {
             return new ShortCodeUpdater(sid);
         }
     
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return ShortCodeReader capable of executing the read
          */
-        public static ShortCodeReader Read(string accountSid) {
+        public static ShortCodeReader Reader(string accountSid) {
             return new ShortCodeReader(accountSid);
         }
     
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * 
          * @return ShortCodeReader capable of executing the read
          */
-        public static ShortCodeReader Read() {
+        public static ShortCodeReader Reader() {
             return new ShortCodeReader();
         }
     

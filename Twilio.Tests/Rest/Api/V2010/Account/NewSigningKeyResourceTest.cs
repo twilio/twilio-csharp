@@ -29,7 +29,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account {
                                                   "null"));
             
             try {
-                NewSigningKeyResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                NewSigningKeyResource.Creator("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -52,7 +52,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account {
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"sid\": \"SKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"foo\",\"date_created\": \"Mon, 13 Jun 2016 22:50:08 +0000\",\"date_updated\": \"Mon, 13 Jun 2016 22:50:08 +0000\",\"secret\": \"foobar\"}"));
             
-            var response = NewSigningKeyResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            var response = NewSigningKeyResource.Creator("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Create(twilioRestClient);
             Assert.NotNull(response);
         }
     }

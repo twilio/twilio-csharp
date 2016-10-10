@@ -16,7 +16,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return SigningKeyFetcher capable of executing the fetch
          */
-        public static SigningKeyFetcher Fetch(string accountSid, string sid) {
+        public static SigningKeyFetcher Fetcher(string accountSid, string sid) {
             return new SigningKeyFetcher(accountSid, sid);
         }
     
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return SigningKeyFetcher capable of executing the fetch
          */
-        public static SigningKeyFetcher Fetch(string sid) {
+        public static SigningKeyFetcher Fetcher(string sid) {
             return new SigningKeyFetcher(sid);
         }
     
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return SigningKeyUpdater capable of executing the update
          */
-        public static SigningKeyUpdater Update(string accountSid, string sid) {
+        public static SigningKeyUpdater Updater(string accountSid, string sid) {
             return new SigningKeyUpdater(accountSid, sid);
         }
     
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return SigningKeyUpdater capable of executing the update
          */
-        public static SigningKeyUpdater Update(string sid) {
+        public static SigningKeyUpdater Updater(string sid) {
             return new SigningKeyUpdater(sid);
         }
     
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return SigningKeyDeleter capable of executing the delete
          */
-        public static SigningKeyDeleter Delete(string accountSid, string sid) {
+        public static SigningKeyDeleter Deleter(string accountSid, string sid) {
             return new SigningKeyDeleter(accountSid, sid);
         }
     
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return SigningKeyDeleter capable of executing the delete
          */
-        public static SigningKeyDeleter Delete(string sid) {
+        public static SigningKeyDeleter Deleter(string sid) {
             return new SigningKeyDeleter(sid);
         }
     
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return SigningKeyReader capable of executing the read
          */
-        public static SigningKeyReader Read(string accountSid) {
+        public static SigningKeyReader Reader(string accountSid) {
             return new SigningKeyReader(accountSid);
         }
     
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * 
          * @return SigningKeyReader capable of executing the read
          */
-        public static SigningKeyReader Read() {
+        public static SigningKeyReader Reader() {
             return new SigningKeyReader();
         }
     

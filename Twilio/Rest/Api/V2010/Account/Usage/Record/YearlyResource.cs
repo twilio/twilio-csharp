@@ -133,7 +133,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
          * @param accountSid The account_sid
          * @return YearlyReader capable of executing the read
          */
-        public static YearlyReader Read(string accountSid) {
+        public static YearlyReader Reader(string accountSid) {
             return new YearlyReader(accountSid);
         }
     
@@ -142,7 +142,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
          * 
          * @return YearlyReader capable of executing the read
          */
-        public static YearlyReader Read() {
+        public static YearlyReader Reader() {
             return new YearlyReader();
         }
     

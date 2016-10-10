@@ -17,7 +17,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param countryCode The country_code
          * @return MobileReader capable of executing the read
          */
-        public static MobileReader Read(string accountSid, string countryCode) {
+        public static MobileReader Reader(string accountSid, string countryCode) {
             return new MobileReader(accountSid, countryCode);
         }
     
@@ -27,7 +27,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param countryCode The country_code
          * @return MobileReader capable of executing the read
          */
-        public static MobileReader Read(string countryCode) {
+        public static MobileReader Reader(string countryCode) {
             return new MobileReader(countryCode);
         }
     

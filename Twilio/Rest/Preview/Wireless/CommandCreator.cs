@@ -67,7 +67,7 @@ namespace Twilio.Rest.Preview.Wireless {
          * @param client ITwilioRestClient with which to make the request
          * @return Created CommandResource
          */
-        public override async Task<CommandResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<CommandResource> CreateAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.PREVIEW,
@@ -102,7 +102,7 @@ namespace Twilio.Rest.Preview.Wireless {
          * @param client ITwilioRestClient with which to make the request
          * @return Created CommandResource
          */
-        public override CommandResource Execute(ITwilioRestClient client) {
+        public override CommandResource Create(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.PREVIEW,

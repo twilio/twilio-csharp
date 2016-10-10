@@ -133,7 +133,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
          * @param accountSid The account_sid
          * @return AllTimeReader capable of executing the read
          */
-        public static AllTimeReader Read(string accountSid) {
+        public static AllTimeReader Reader(string accountSid) {
             return new AllTimeReader(accountSid);
         }
     
@@ -142,7 +142,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
          * 
          * @return AllTimeReader capable of executing the read
          */
-        public static AllTimeReader Read() {
+        public static AllTimeReader Reader() {
             return new AllTimeReader();
         }
     

@@ -46,7 +46,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Fetch by unique connect-app Sid
          * @return ConnectAppFetcher capable of executing the fetch
          */
-        public static ConnectAppFetcher Fetch(string accountSid, string sid) {
+        public static ConnectAppFetcher Fetcher(string accountSid, string sid) {
             return new ConnectAppFetcher(accountSid, sid);
         }
     
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Fetch by unique connect-app Sid
          * @return ConnectAppFetcher capable of executing the fetch
          */
-        public static ConnectAppFetcher Fetch(string sid) {
+        public static ConnectAppFetcher Fetcher(string sid) {
             return new ConnectAppFetcher(sid);
         }
     
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return ConnectAppUpdater capable of executing the update
          */
-        public static ConnectAppUpdater Update(string accountSid, string sid) {
+        public static ConnectAppUpdater Updater(string accountSid, string sid) {
             return new ConnectAppUpdater(accountSid, sid);
         }
     
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return ConnectAppUpdater capable of executing the update
          */
-        public static ConnectAppUpdater Update(string sid) {
+        public static ConnectAppUpdater Updater(string sid) {
             return new ConnectAppUpdater(sid);
         }
     
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return ConnectAppReader capable of executing the read
          */
-        public static ConnectAppReader Read(string accountSid) {
+        public static ConnectAppReader Reader(string accountSid) {
             return new ConnectAppReader(accountSid);
         }
     
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * 
          * @return ConnectAppReader capable of executing the read
          */
-        public static ConnectAppReader Read() {
+        public static ConnectAppReader Reader() {
             return new ConnectAppReader();
         }
     

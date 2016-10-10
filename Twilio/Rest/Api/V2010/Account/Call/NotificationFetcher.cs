@@ -45,7 +45,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched NotificationResource
          */
-        public override async Task<NotificationResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<NotificationResource> FetchAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched NotificationResource
          */
-        public override NotificationResource Execute(ITwilioRestClient client) {
+        public override NotificationResource Fetch(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

@@ -14,7 +14,7 @@ namespace Twilio.Rest.Preview.Wireless {
          * 
          * @return RatePlanReader capable of executing the read
          */
-        public static RatePlanReader Read() {
+        public static RatePlanReader Reader() {
             return new RatePlanReader();
         }
     
@@ -24,7 +24,7 @@ namespace Twilio.Rest.Preview.Wireless {
          * @param sid The sid
          * @return RatePlanFetcher capable of executing the fetch
          */
-        public static RatePlanFetcher Fetch(string sid) {
+        public static RatePlanFetcher Fetcher(string sid) {
             return new RatePlanFetcher(sid);
         }
     

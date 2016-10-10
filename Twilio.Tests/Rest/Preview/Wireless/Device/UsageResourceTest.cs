@@ -29,7 +29,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless.Device {
                                                   "null"));
             
             try {
-                UsageResource.Fetch("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                UsageResource.Fetcher("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>

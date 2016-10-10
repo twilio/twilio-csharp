@@ -16,7 +16,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
          * @param sid The sid
          * @return DocumentFetcher capable of executing the fetch
          */
-        public static DocumentFetcher Fetch(string serviceSid, string sid) {
+        public static DocumentFetcher Fetcher(string serviceSid, string sid) {
             return new DocumentFetcher(serviceSid, sid);
         }
     
@@ -27,7 +27,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
          * @param sid The sid
          * @return DocumentDeleter capable of executing the delete
          */
-        public static DocumentDeleter Delete(string serviceSid, string sid) {
+        public static DocumentDeleter Deleter(string serviceSid, string sid) {
             return new DocumentDeleter(serviceSid, sid);
         }
     
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
          * @param serviceSid The service_sid
          * @return DocumentCreator capable of executing the create
          */
-        public static DocumentCreator Create(string serviceSid) {
+        public static DocumentCreator Creator(string serviceSid) {
             return new DocumentCreator(serviceSid);
         }
     
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
          * @param serviceSid The service_sid
          * @return DocumentReader capable of executing the read
          */
-        public static DocumentReader Read(string serviceSid) {
+        public static DocumentReader Reader(string serviceSid) {
             return new DocumentReader(serviceSid);
         }
     
@@ -59,7 +59,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
          * @param data The data
          * @return DocumentUpdater capable of executing the update
          */
-        public static DocumentUpdater Update(string serviceSid, string sid, Object data) {
+        public static DocumentUpdater Updater(string serviceSid, string sid, Object data) {
             return new DocumentUpdater(serviceSid, sid, data);
         }
     

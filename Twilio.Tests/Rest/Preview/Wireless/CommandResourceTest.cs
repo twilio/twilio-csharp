@@ -29,7 +29,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless {
                                                   "null"));
             
             try {
-                CommandResource.Fetch("DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                CommandResource.Fetcher("DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -57,7 +57,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless {
                                                   "null"));
             
             try {
-                CommandResource.Read().Execute(twilioRestClient);
+                CommandResource.Reader().Read(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -86,7 +86,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless {
                                                   "null"));
             
             try {
-                CommandResource.Create("device", "command").Execute(twilioRestClient);
+                CommandResource.Creator("device", "command").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>

@@ -88,7 +88,7 @@ namespace Twilio.Rest.Notify.V1 {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated CredentialResource
          */
-        public override async Task<CredentialResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<CredentialResource> UpdateAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.NOTIFY,
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Notify.V1 {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated CredentialResource
          */
-        public override CredentialResource Execute(ITwilioRestClient client) {
+        public override CredentialResource Update(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.NOTIFY,

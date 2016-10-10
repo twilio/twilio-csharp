@@ -48,7 +48,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param sid The sid
          * @return PhoneNumberFetcher capable of executing the fetch
          */
-        public static PhoneNumberFetcher Fetch(string trunkSid, string sid) {
+        public static PhoneNumberFetcher Fetcher(string trunkSid, string sid) {
             return new PhoneNumberFetcher(trunkSid, sid);
         }
     
@@ -59,7 +59,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param sid The sid
          * @return PhoneNumberDeleter capable of executing the delete
          */
-        public static PhoneNumberDeleter Delete(string trunkSid, string sid) {
+        public static PhoneNumberDeleter Deleter(string trunkSid, string sid) {
             return new PhoneNumberDeleter(trunkSid, sid);
         }
     
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param phoneNumberSid The phone_number_sid
          * @return PhoneNumberCreator capable of executing the create
          */
-        public static PhoneNumberCreator Create(string trunkSid, string phoneNumberSid) {
+        public static PhoneNumberCreator Creator(string trunkSid, string phoneNumberSid) {
             return new PhoneNumberCreator(trunkSid, phoneNumberSid);
         }
     
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param trunkSid The trunk_sid
          * @return PhoneNumberReader capable of executing the read
          */
-        public static PhoneNumberReader Read(string trunkSid) {
+        public static PhoneNumberReader Reader(string trunkSid) {
             return new PhoneNumberReader(trunkSid);
         }
     

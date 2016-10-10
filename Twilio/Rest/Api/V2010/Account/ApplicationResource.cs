@@ -16,7 +16,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param friendlyName Human readable description of this resource
          * @return ApplicationCreator capable of executing the create
          */
-        public static ApplicationCreator Create(string accountSid, string friendlyName) {
+        public static ApplicationCreator Creator(string accountSid, string friendlyName) {
             return new ApplicationCreator(accountSid, friendlyName);
         }
     
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param friendlyName Human readable description of this resource
          * @return ApplicationCreator capable of executing the create
          */
-        public static ApplicationCreator Create(string friendlyName) {
+        public static ApplicationCreator Creator(string friendlyName) {
             return new ApplicationCreator(friendlyName);
         }
     
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The application sid to delete
          * @return ApplicationDeleter capable of executing the delete
          */
-        public static ApplicationDeleter Delete(string accountSid, string sid) {
+        public static ApplicationDeleter Deleter(string accountSid, string sid) {
             return new ApplicationDeleter(accountSid, sid);
         }
     
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The application sid to delete
          * @return ApplicationDeleter capable of executing the delete
          */
-        public static ApplicationDeleter Delete(string sid) {
+        public static ApplicationDeleter Deleter(string sid) {
             return new ApplicationDeleter(sid);
         }
     
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Fetch by unique Application Sid
          * @return ApplicationFetcher capable of executing the fetch
          */
-        public static ApplicationFetcher Fetch(string accountSid, string sid) {
+        public static ApplicationFetcher Fetcher(string accountSid, string sid) {
             return new ApplicationFetcher(accountSid, sid);
         }
     
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Fetch by unique Application Sid
          * @return ApplicationFetcher capable of executing the fetch
          */
-        public static ApplicationFetcher Fetch(string sid) {
+        public static ApplicationFetcher Fetcher(string sid) {
             return new ApplicationFetcher(sid);
         }
     
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return ApplicationReader capable of executing the read
          */
-        public static ApplicationReader Read(string accountSid) {
+        public static ApplicationReader Reader(string accountSid) {
             return new ApplicationReader(accountSid);
         }
     
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * 
          * @return ApplicationReader capable of executing the read
          */
-        public static ApplicationReader Read() {
+        public static ApplicationReader Reader() {
             return new ApplicationReader();
         }
     
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return ApplicationUpdater capable of executing the update
          */
-        public static ApplicationUpdater Update(string accountSid, string sid) {
+        public static ApplicationUpdater Updater(string accountSid, string sid) {
             return new ApplicationUpdater(accountSid, sid);
         }
     
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return ApplicationUpdater capable of executing the update
          */
-        public static ApplicationUpdater Update(string sid) {
+        public static ApplicationUpdater Updater(string sid) {
             return new ApplicationUpdater(sid);
         }
     

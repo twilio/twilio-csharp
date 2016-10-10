@@ -29,7 +29,7 @@ namespace Twilio.Tests.Rest.Preview.Sync {
                                                   "null"));
             
             try {
-                ServiceResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                ServiceResource.Fetcher("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -56,7 +56,7 @@ namespace Twilio.Tests.Rest.Preview.Sync {
                                                   "null"));
             
             try {
-                ServiceResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                ServiceResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Delete(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -83,7 +83,7 @@ namespace Twilio.Tests.Rest.Preview.Sync {
                                                   "null"));
             
             try {
-                ServiceResource.Create().Execute(twilioRestClient);
+                ServiceResource.Creator().Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -111,7 +111,7 @@ namespace Twilio.Tests.Rest.Preview.Sync {
                                                   "null"));
             
             try {
-                ServiceResource.Read().Execute(twilioRestClient);
+                ServiceResource.Reader().Read(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -138,7 +138,7 @@ namespace Twilio.Tests.Rest.Preview.Sync {
                                                   "null"));
             
             try {
-                ServiceResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                ServiceResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Update(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>

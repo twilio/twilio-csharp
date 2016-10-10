@@ -138,7 +138,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated SandboxResource
          */
-        public override async Task<SandboxResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<SandboxResource> UpdateAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated SandboxResource
          */
-        public override SandboxResource Execute(ITwilioRestClient client) {
+        public override SandboxResource Update(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,

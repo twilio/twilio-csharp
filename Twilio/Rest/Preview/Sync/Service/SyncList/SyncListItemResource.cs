@@ -75,7 +75,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
          * @param index The index
          * @return SyncListItemFetcher capable of executing the fetch
          */
-        public static SyncListItemFetcher Fetch(string serviceSid, string listSid, int? index) {
+        public static SyncListItemFetcher Fetcher(string serviceSid, string listSid, int? index) {
             return new SyncListItemFetcher(serviceSid, listSid, index);
         }
     
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
          * @param index The index
          * @return SyncListItemDeleter capable of executing the delete
          */
-        public static SyncListItemDeleter Delete(string serviceSid, string listSid, int? index) {
+        public static SyncListItemDeleter Deleter(string serviceSid, string listSid, int? index) {
             return new SyncListItemDeleter(serviceSid, listSid, index);
         }
     
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
          * @param data The data
          * @return SyncListItemCreator capable of executing the create
          */
-        public static SyncListItemCreator Create(string serviceSid, string listSid, Object data) {
+        public static SyncListItemCreator Creator(string serviceSid, string listSid, Object data) {
             return new SyncListItemCreator(serviceSid, listSid, data);
         }
     
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
          * @param listSid The list_sid
          * @return SyncListItemReader capable of executing the read
          */
-        public static SyncListItemReader Read(string serviceSid, string listSid) {
+        public static SyncListItemReader Reader(string serviceSid, string listSid) {
             return new SyncListItemReader(serviceSid, listSid);
         }
     
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
          * @param data The data
          * @return SyncListItemUpdater capable of executing the update
          */
-        public static SyncListItemUpdater Update(string serviceSid, string listSid, int? index, Object data) {
+        public static SyncListItemUpdater Updater(string serviceSid, string listSid, int? index, Object data) {
             return new SyncListItemUpdater(serviceSid, listSid, index, data);
         }
     

@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched SigningKeyResource
          */
-        public override async Task<SigningKeyResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<SigningKeyResource> FetchAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched SigningKeyResource
          */
-        public override SigningKeyResource Execute(ITwilioRestClient client) {
+        public override SigningKeyResource Fetch(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

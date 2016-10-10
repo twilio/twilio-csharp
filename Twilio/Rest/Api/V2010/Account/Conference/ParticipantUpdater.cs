@@ -105,7 +105,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated ParticipantResource
          */
-        public override async Task<ParticipantResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<ParticipantResource> UpdateAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated ParticipantResource
          */
-        public override ParticipantResource Execute(ITwilioRestClient client) {
+        public override ParticipantResource Update(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,

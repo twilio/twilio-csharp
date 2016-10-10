@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
          * @param sid The sid
          * @return TranscriptionFetcher capable of executing the fetch
          */
-        public static TranscriptionFetcher Fetch(string accountSid, string recordingSid, string sid) {
+        public static TranscriptionFetcher Fetcher(string accountSid, string recordingSid, string sid) {
             return new TranscriptionFetcher(accountSid, recordingSid, sid);
         }
     
@@ -58,8 +58,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
          * @param sid The sid
          * @return TranscriptionFetcher capable of executing the fetch
          */
-        public static TranscriptionFetcher Fetch(string recordingSid, 
-                                                 string sid) {
+        public static TranscriptionFetcher Fetcher(string recordingSid, 
+                                                   string sid) {
             return new TranscriptionFetcher(recordingSid, sid);
         }
     
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
          * @param sid The sid
          * @return TranscriptionDeleter capable of executing the delete
          */
-        public static TranscriptionDeleter Delete(string accountSid, string recordingSid, string sid) {
+        public static TranscriptionDeleter Deleter(string accountSid, string recordingSid, string sid) {
             return new TranscriptionDeleter(accountSid, recordingSid, sid);
         }
     
@@ -82,8 +82,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
          * @param sid The sid
          * @return TranscriptionDeleter capable of executing the delete
          */
-        public static TranscriptionDeleter Delete(string recordingSid, 
-                                                  string sid) {
+        public static TranscriptionDeleter Deleter(string recordingSid, 
+                                                   string sid) {
             return new TranscriptionDeleter(recordingSid, sid);
         }
     
@@ -94,7 +94,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
          * @param recordingSid The recording_sid
          * @return TranscriptionReader capable of executing the read
          */
-        public static TranscriptionReader Read(string accountSid, string recordingSid) {
+        public static TranscriptionReader Reader(string accountSid, string recordingSid) {
             return new TranscriptionReader(accountSid, recordingSid);
         }
     
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
          * @param recordingSid The recording_sid
          * @return TranscriptionReader capable of executing the read
          */
-        public static TranscriptionReader Read(string recordingSid) {
+        public static TranscriptionReader Reader(string recordingSid) {
             return new TranscriptionReader(recordingSid);
         }
     

@@ -1,5 +1,7 @@
+using System;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -12,8 +14,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
     public class MonthlyReader : Reader<MonthlyResource> {
         private string accountSid;
         private MonthlyResource.Category category;
-        private string startDate;
-        private string endDate;
+        private DateTime? startDate;
+        private DateTime? endDate;
     
         /**
          * Construct a new MonthlyReader.
@@ -47,7 +49,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
          * @param startDate The start_date
          * @return this
          */
-        public MonthlyReader ByStartDate(string startDate) {
+        public MonthlyReader ByStartDate(DateTime? startDate) {
             this.startDate = startDate;
             return this;
         }
@@ -58,7 +60,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
          * @param endDate The end_date
          * @return this
          */
-        public MonthlyReader ByEndDate(string endDate) {
+        public MonthlyReader ByEndDate(DateTime? endDate) {
             this.endDate = endDate;
             return this;
         }
@@ -70,7 +72,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
          * @param client ITwilioRestClient with which to make the request
          * @return MonthlyResource ResourceSet
          */
-        public override Task<ResourceSet<MonthlyResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<MonthlyResource>> ReadAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -92,7 +94,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
          * @param client ITwilioRestClient with which to make the request
          * @return MonthlyResource ResourceSet
          */
-        public override ResourceSet<MonthlyResource> Execute(ITwilioRestClient client) {
+        public override ResourceSet<MonthlyResource> Read(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -166,11 +168,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
             }
             
             if (startDate != null) {
-                request.AddQueryParam("StartDate", startDate);
+                request.AddQueryParam("StartDate", startDate.ToString());
             }
             
             if (endDate != null) {
-                request.AddQueryParam("EndDate", endDate);
+                request.AddQueryParam("EndDate", endDate.ToString());
             }
             
             request.AddQueryParam("PageSize", GetPageSize().ToString());

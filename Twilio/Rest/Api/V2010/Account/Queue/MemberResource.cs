@@ -17,7 +17,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
          * @param callSid The call_sid
          * @return MemberFetcher capable of executing the fetch
          */
-        public static MemberFetcher Fetch(string accountSid, string queueSid, string callSid) {
+        public static MemberFetcher Fetcher(string accountSid, string queueSid, string callSid) {
             return new MemberFetcher(accountSid, queueSid, callSid);
         }
     
@@ -28,8 +28,8 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
          * @param callSid The call_sid
          * @return MemberFetcher capable of executing the fetch
          */
-        public static MemberFetcher Fetch(string queueSid, 
-                                          string callSid) {
+        public static MemberFetcher Fetcher(string queueSid, 
+                                            string callSid) {
             return new MemberFetcher(queueSid, callSid);
         }
     
@@ -44,7 +44,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
          * @param method The method
          * @return MemberUpdater capable of executing the update
          */
-        public static MemberUpdater Update(string accountSid, string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method) {
+        public static MemberUpdater Updater(string accountSid, string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method) {
             return new MemberUpdater(accountSid, queueSid, callSid, url, method);
         }
     
@@ -57,10 +57,10 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
          * @param method The method
          * @return MemberUpdater capable of executing the update
          */
-        public static MemberUpdater Update(string queueSid, 
-                                           string callSid, 
-                                           Uri url, 
-                                           Twilio.Http.HttpMethod method) {
+        public static MemberUpdater Updater(string queueSid, 
+                                            string callSid, 
+                                            Uri url, 
+                                            Twilio.Http.HttpMethod method) {
             return new MemberUpdater(queueSid, callSid, url, method);
         }
     
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
          * @param queueSid The Queue in which to find members
          * @return MemberReader capable of executing the read
          */
-        public static MemberReader Read(string accountSid, string queueSid) {
+        public static MemberReader Reader(string accountSid, string queueSid) {
             return new MemberReader(accountSid, queueSid);
         }
     
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
          * @param queueSid The Queue in which to find members
          * @return MemberReader capable of executing the read
          */
-        public static MemberReader Read(string queueSid) {
+        public static MemberReader Reader(string queueSid) {
             return new MemberReader(queueSid);
         }
     

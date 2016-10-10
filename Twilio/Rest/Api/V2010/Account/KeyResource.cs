@@ -16,7 +16,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return KeyFetcher capable of executing the fetch
          */
-        public static KeyFetcher Fetch(string accountSid, string sid) {
+        public static KeyFetcher Fetcher(string accountSid, string sid) {
             return new KeyFetcher(accountSid, sid);
         }
     
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return KeyFetcher capable of executing the fetch
          */
-        public static KeyFetcher Fetch(string sid) {
+        public static KeyFetcher Fetcher(string sid) {
             return new KeyFetcher(sid);
         }
     
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return KeyUpdater capable of executing the update
          */
-        public static KeyUpdater Update(string accountSid, string sid) {
+        public static KeyUpdater Updater(string accountSid, string sid) {
             return new KeyUpdater(accountSid, sid);
         }
     
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return KeyUpdater capable of executing the update
          */
-        public static KeyUpdater Update(string sid) {
+        public static KeyUpdater Updater(string sid) {
             return new KeyUpdater(sid);
         }
     
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return KeyDeleter capable of executing the delete
          */
-        public static KeyDeleter Delete(string accountSid, string sid) {
+        public static KeyDeleter Deleter(string accountSid, string sid) {
             return new KeyDeleter(accountSid, sid);
         }
     
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return KeyDeleter capable of executing the delete
          */
-        public static KeyDeleter Delete(string sid) {
+        public static KeyDeleter Deleter(string sid) {
             return new KeyDeleter(sid);
         }
     
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return KeyReader capable of executing the read
          */
-        public static KeyReader Read(string accountSid) {
+        public static KeyReader Reader(string accountSid) {
             return new KeyReader(accountSid);
         }
     
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * 
          * @return KeyReader capable of executing the read
          */
-        public static KeyReader Read() {
+        public static KeyReader Reader() {
             return new KeyReader();
         }
     

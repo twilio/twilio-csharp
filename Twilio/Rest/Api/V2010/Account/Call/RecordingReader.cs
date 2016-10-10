@@ -52,7 +52,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
          * @param client ITwilioRestClient with which to make the request
          * @return RecordingResource ResourceSet
          */
-        public override Task<ResourceSet<RecordingResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<RecordingResource>> ReadAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
          * @param client ITwilioRestClient with which to make the request
          * @return RecordingResource ResourceSet
          */
-        public override ResourceSet<RecordingResource> Execute(ITwilioRestClient client) {
+        public override ResourceSet<RecordingResource> Read(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

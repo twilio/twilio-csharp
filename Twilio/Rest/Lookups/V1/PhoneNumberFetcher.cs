@@ -98,7 +98,7 @@ namespace Twilio.Rest.Lookups.V1 {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched PhoneNumberResource
          */
-        public override async Task<PhoneNumberResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<PhoneNumberResource> FetchAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.LOOKUPS,
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Lookups.V1 {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched PhoneNumberResource
          */
-        public override PhoneNumberResource Execute(ITwilioRestClient client) {
+        public override PhoneNumberResource Fetch(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.LOOKUPS,

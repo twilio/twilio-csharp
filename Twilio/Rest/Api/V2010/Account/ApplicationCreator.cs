@@ -307,7 +307,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return Created ApplicationResource
          */
-        public override async Task<ApplicationResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<ApplicationResource> CreateAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -342,7 +342,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return Created ApplicationResource
          */
-        public override ApplicationResource Execute(ITwilioRestClient client) {
+        public override ApplicationResource Create(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,

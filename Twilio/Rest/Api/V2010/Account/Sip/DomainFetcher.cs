@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched DomainResource
          */
-        public override async Task<DomainResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<DomainResource> FetchAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched DomainResource
          */
-        public override DomainResource Execute(ITwilioRestClient client) {
+        public override DomainResource Fetch(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

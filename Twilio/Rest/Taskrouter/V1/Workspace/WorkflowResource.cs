@@ -16,7 +16,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return WorkflowFetcher capable of executing the fetch
          */
-        public static WorkflowFetcher Fetch(string workspaceSid, string sid) {
+        public static WorkflowFetcher Fetcher(string workspaceSid, string sid) {
             return new WorkflowFetcher(workspaceSid, sid);
         }
     
@@ -27,7 +27,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return WorkflowUpdater capable of executing the update
          */
-        public static WorkflowUpdater Update(string workspaceSid, string sid) {
+        public static WorkflowUpdater Updater(string workspaceSid, string sid) {
             return new WorkflowUpdater(workspaceSid, sid);
         }
     
@@ -38,7 +38,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return WorkflowDeleter capable of executing the delete
          */
-        public static WorkflowDeleter Delete(string workspaceSid, string sid) {
+        public static WorkflowDeleter Deleter(string workspaceSid, string sid) {
             return new WorkflowDeleter(workspaceSid, sid);
         }
     
@@ -48,7 +48,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @return WorkflowReader capable of executing the read
          */
-        public static WorkflowReader Read(string workspaceSid) {
+        public static WorkflowReader Reader(string workspaceSid) {
             return new WorkflowReader(workspaceSid);
         }
     
@@ -60,7 +60,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param configuration The configuration
          * @return WorkflowCreator capable of executing the create
          */
-        public static WorkflowCreator Create(string workspaceSid, string friendlyName, string configuration) {
+        public static WorkflowCreator Creator(string workspaceSid, string friendlyName, string configuration) {
             return new WorkflowCreator(workspaceSid, friendlyName, configuration);
         }
     

@@ -28,7 +28,7 @@ namespace Twilio.Rest.Pricing.V1.Voice {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched NumberResource
          */
-        public override async Task<NumberResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<NumberResource> FetchAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PRICING,
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Pricing.V1.Voice {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched NumberResource
          */
-        public override NumberResource Execute(ITwilioRestClient client) {
+        public override NumberResource Fetch(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PRICING,

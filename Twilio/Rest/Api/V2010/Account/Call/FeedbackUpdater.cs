@@ -69,7 +69,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated FeedbackResource
          */
-        public override async Task<FeedbackResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<FeedbackResource> UpdateAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated FeedbackResource
          */
-        public override FeedbackResource Execute(ITwilioRestClient client) {
+        public override FeedbackResource Update(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,

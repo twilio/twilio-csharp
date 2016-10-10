@@ -15,7 +15,7 @@ namespace Twilio.Rest.Monitor.V1 {
          * @param sid The sid
          * @return AlertFetcher capable of executing the fetch
          */
-        public static AlertFetcher Fetch(string sid) {
+        public static AlertFetcher Fetcher(string sid) {
             return new AlertFetcher(sid);
         }
     
@@ -25,7 +25,7 @@ namespace Twilio.Rest.Monitor.V1 {
          * @param sid The sid
          * @return AlertDeleter capable of executing the delete
          */
-        public static AlertDeleter Delete(string sid) {
+        public static AlertDeleter Deleter(string sid) {
             return new AlertDeleter(sid);
         }
     
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Monitor.V1 {
          * 
          * @return AlertReader capable of executing the read
          */
-        public static AlertReader Read() {
+        public static AlertReader Reader() {
             return new AlertReader();
         }
     

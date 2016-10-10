@@ -168,7 +168,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated DomainResource
          */
-        public override async Task<DomainResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<DomainResource> UpdateAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -203,7 +203,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated DomainResource
          */
-        public override DomainResource Execute(ITwilioRestClient client) {
+        public override DomainResource Update(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,

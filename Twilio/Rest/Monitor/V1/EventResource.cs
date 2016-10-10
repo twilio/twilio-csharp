@@ -15,7 +15,7 @@ namespace Twilio.Rest.Monitor.V1 {
          * @param sid The sid
          * @return EventFetcher capable of executing the fetch
          */
-        public static EventFetcher Fetch(string sid) {
+        public static EventFetcher Fetcher(string sid) {
             return new EventFetcher(sid);
         }
     
@@ -24,7 +24,7 @@ namespace Twilio.Rest.Monitor.V1 {
          * 
          * @return EventReader capable of executing the read
          */
-        public static EventReader Read() {
+        public static EventReader Reader() {
             return new EventReader();
         }
     

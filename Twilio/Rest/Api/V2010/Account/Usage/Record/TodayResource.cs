@@ -133,7 +133,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
          * @param accountSid The account_sid
          * @return TodayReader capable of executing the read
          */
-        public static TodayReader Read(string accountSid) {
+        public static TodayReader Reader(string accountSid) {
             return new TodayReader(accountSid);
         }
     
@@ -142,7 +142,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
          * 
          * @return TodayReader capable of executing the read
          */
-        public static TodayReader Read() {
+        public static TodayReader Reader() {
             return new TodayReader();
         }
     

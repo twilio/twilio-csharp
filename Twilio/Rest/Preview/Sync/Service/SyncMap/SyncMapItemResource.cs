@@ -75,7 +75,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
          * @param key The key
          * @return SyncMapItemFetcher capable of executing the fetch
          */
-        public static SyncMapItemFetcher Fetch(string serviceSid, string mapSid, string key) {
+        public static SyncMapItemFetcher Fetcher(string serviceSid, string mapSid, string key) {
             return new SyncMapItemFetcher(serviceSid, mapSid, key);
         }
     
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
          * @param key The key
          * @return SyncMapItemDeleter capable of executing the delete
          */
-        public static SyncMapItemDeleter Delete(string serviceSid, string mapSid, string key) {
+        public static SyncMapItemDeleter Deleter(string serviceSid, string mapSid, string key) {
             return new SyncMapItemDeleter(serviceSid, mapSid, key);
         }
     
@@ -100,7 +100,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
          * @param data The data
          * @return SyncMapItemCreator capable of executing the create
          */
-        public static SyncMapItemCreator Create(string serviceSid, string mapSid, string key, Object data) {
+        public static SyncMapItemCreator Creator(string serviceSid, string mapSid, string key, Object data) {
             return new SyncMapItemCreator(serviceSid, mapSid, key, data);
         }
     
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
          * @param mapSid The map_sid
          * @return SyncMapItemReader capable of executing the read
          */
-        public static SyncMapItemReader Read(string serviceSid, string mapSid) {
+        public static SyncMapItemReader Reader(string serviceSid, string mapSid) {
             return new SyncMapItemReader(serviceSid, mapSid);
         }
     
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
          * @param data The data
          * @return SyncMapItemUpdater capable of executing the update
          */
-        public static SyncMapItemUpdater Update(string serviceSid, string mapSid, string key, Object data) {
+        public static SyncMapItemUpdater Updater(string serviceSid, string mapSid, string key, Object data) {
             return new SyncMapItemUpdater(serviceSid, mapSid, key, data);
         }
     

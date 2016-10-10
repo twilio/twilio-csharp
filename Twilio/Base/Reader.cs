@@ -21,8 +21,8 @@ namespace Twilio.Base
         /// Execute an async request using the default client.
         /// </summary>
         /// <returns>Task that resolves to requested object</returns>
-        public async Task<ResourceSet<T>> ExecuteAsync() {
-			return await ExecuteAsync(TwilioClient.GetRestClient());
+        public async Task<ResourceSet<T>> ReadAsync() {
+			return await ReadAsync(TwilioClient.GetRestClient());
 		}
 
         /// <summary>
@@ -30,15 +30,15 @@ namespace Twilio.Base
         /// </summary>
         /// <param name="client">Custom client to use</param>
         /// <returns>Task that resolves to requested object</returns>
-        public abstract Task<ResourceSet<T>> ExecuteAsync(ITwilioRestClient client);
+        public abstract Task<ResourceSet<T>> ReadAsync(ITwilioRestClient client);
 		#endif
 
         /// <summary>
         /// Execute a request using the default client.
         /// </summary>
         /// <returns>Requested object</returns>
-        public ResourceSet<T> Execute() {
-			return Execute(TwilioClient.GetRestClient());
+        public ResourceSet<T> Read() {
+			return Read(TwilioClient.GetRestClient());
 		}
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Twilio.Base
         /// </summary>
         /// <param name="client">Custom client to use</param>
         /// <returns>Requested object</returns>
-        public abstract ResourceSet<T> Execute(ITwilioRestClient client);
+        public abstract ResourceSet<T> Read(ITwilioRestClient client);
 
 		public abstract Page<T> NextPage(string nextPageUri, ITwilioRestClient client);
 

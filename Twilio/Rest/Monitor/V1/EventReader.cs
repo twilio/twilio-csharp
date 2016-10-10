@@ -1,5 +1,7 @@
+using System;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -11,11 +13,11 @@ namespace Twilio.Rest.Monitor.V1 {
 
     public class EventReader : Reader<EventResource> {
         private string actorSid;
-        private string endDate;
         private string eventType;
         private string resourceSid;
         private string sourceIpAddress;
-        private string startDate;
+        private DateTime? startDate;
+        private DateTime? endDate;
     
         /**
          * The actor_sid
@@ -25,17 +27,6 @@ namespace Twilio.Rest.Monitor.V1 {
          */
         public EventReader ByActorSid(string actorSid) {
             this.actorSid = actorSid;
-            return this;
-        }
-    
-        /**
-         * The end_date
-         * 
-         * @param endDate The end_date
-         * @return this
-         */
-        public EventReader ByEndDate(string endDate) {
-            this.endDate = endDate;
             return this;
         }
     
@@ -78,8 +69,19 @@ namespace Twilio.Rest.Monitor.V1 {
          * @param startDate The start_date
          * @return this
          */
-        public EventReader ByStartDate(string startDate) {
+        public EventReader ByStartDate(DateTime? startDate) {
             this.startDate = startDate;
+            return this;
+        }
+    
+        /**
+         * The end_date
+         * 
+         * @param endDate The end_date
+         * @return this
+         */
+        public EventReader ByEndDate(DateTime? endDate) {
+            this.endDate = endDate;
             return this;
         }
     
@@ -90,7 +92,7 @@ namespace Twilio.Rest.Monitor.V1 {
          * @param client ITwilioRestClient with which to make the request
          * @return EventResource ResourceSet
          */
-        public override Task<ResourceSet<EventResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<EventResource>> ReadAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.MONITOR,
@@ -112,7 +114,7 @@ namespace Twilio.Rest.Monitor.V1 {
          * @param client ITwilioRestClient with which to make the request
          * @return EventResource ResourceSet
          */
-        public override ResourceSet<EventResource> Execute(ITwilioRestClient client) {
+        public override ResourceSet<EventResource> Read(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.MONITOR,
@@ -185,10 +187,6 @@ namespace Twilio.Rest.Monitor.V1 {
                 request.AddQueryParam("ActorSid", actorSid);
             }
             
-            if (endDate != null) {
-                request.AddQueryParam("EndDate", endDate);
-            }
-            
             if (eventType != null) {
                 request.AddQueryParam("EventType", eventType);
             }
@@ -202,7 +200,11 @@ namespace Twilio.Rest.Monitor.V1 {
             }
             
             if (startDate != null) {
-                request.AddQueryParam("StartDate", startDate);
+                request.AddQueryParam("StartDate", startDate.ToString());
+            }
+            
+            if (endDate != null) {
+                request.AddQueryParam("EndDate", endDate.ToString());
             }
             
             request.AddQueryParam("PageSize", GetPageSize().ToString());

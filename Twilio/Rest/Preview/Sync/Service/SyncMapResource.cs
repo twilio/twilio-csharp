@@ -17,7 +17,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
          * @param sid The sid
          * @return SyncMapFetcher capable of executing the fetch
          */
-        public static SyncMapFetcher Fetch(string serviceSid, string sid) {
+        public static SyncMapFetcher Fetcher(string serviceSid, string sid) {
             return new SyncMapFetcher(serviceSid, sid);
         }
     
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
          * @param sid The sid
          * @return SyncMapDeleter capable of executing the delete
          */
-        public static SyncMapDeleter Delete(string serviceSid, string sid) {
+        public static SyncMapDeleter Deleter(string serviceSid, string sid) {
             return new SyncMapDeleter(serviceSid, sid);
         }
     
@@ -38,7 +38,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
          * @param serviceSid The service_sid
          * @return SyncMapCreator capable of executing the create
          */
-        public static SyncMapCreator Create(string serviceSid) {
+        public static SyncMapCreator Creator(string serviceSid) {
             return new SyncMapCreator(serviceSid);
         }
     
@@ -48,7 +48,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
          * @param serviceSid The service_sid
          * @return SyncMapReader capable of executing the read
          */
-        public static SyncMapReader Read(string serviceSid) {
+        public static SyncMapReader Reader(string serviceSid) {
             return new SyncMapReader(serviceSid);
         }
     

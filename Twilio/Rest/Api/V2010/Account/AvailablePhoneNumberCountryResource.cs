@@ -16,7 +16,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return AvailablePhoneNumberCountryReader capable of executing the read
          */
-        public static AvailablePhoneNumberCountryReader Read(string accountSid) {
+        public static AvailablePhoneNumberCountryReader Reader(string accountSid) {
             return new AvailablePhoneNumberCountryReader(accountSid);
         }
     
@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * 
          * @return AvailablePhoneNumberCountryReader capable of executing the read
          */
-        public static AvailablePhoneNumberCountryReader Read() {
+        public static AvailablePhoneNumberCountryReader Reader() {
             return new AvailablePhoneNumberCountryReader();
         }
     
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param countryCode The country_code
          * @return AvailablePhoneNumberCountryFetcher capable of executing the fetch
          */
-        public static AvailablePhoneNumberCountryFetcher Fetch(string accountSid, string countryCode) {
+        public static AvailablePhoneNumberCountryFetcher Fetcher(string accountSid, string countryCode) {
             return new AvailablePhoneNumberCountryFetcher(accountSid, countryCode);
         }
     
@@ -46,7 +46,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param countryCode The country_code
          * @return AvailablePhoneNumberCountryFetcher capable of executing the fetch
          */
-        public static AvailablePhoneNumberCountryFetcher Fetch(string countryCode) {
+        public static AvailablePhoneNumberCountryFetcher Fetcher(string countryCode) {
             return new AvailablePhoneNumberCountryFetcher(countryCode);
         }
     

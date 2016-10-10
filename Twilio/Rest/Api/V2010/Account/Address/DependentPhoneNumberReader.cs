@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address {
          * @param client ITwilioRestClient with which to make the request
          * @return DependentPhoneNumberResource ResourceSet
          */
-        public override Task<ResourceSet<DependentPhoneNumberResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<DependentPhoneNumberResource>> ReadAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address {
          * @param client ITwilioRestClient with which to make the request
          * @return DependentPhoneNumberResource ResourceSet
          */
-        public override ResourceSet<DependentPhoneNumberResource> Execute(ITwilioRestClient client) {
+        public override ResourceSet<DependentPhoneNumberResource> Read(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

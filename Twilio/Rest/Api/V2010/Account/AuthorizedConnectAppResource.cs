@@ -46,7 +46,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param connectAppSid The connect_app_sid
          * @return AuthorizedConnectAppFetcher capable of executing the fetch
          */
-        public static AuthorizedConnectAppFetcher Fetch(string accountSid, string connectAppSid) {
+        public static AuthorizedConnectAppFetcher Fetcher(string accountSid, string connectAppSid) {
             return new AuthorizedConnectAppFetcher(accountSid, connectAppSid);
         }
     
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param connectAppSid The connect_app_sid
          * @return AuthorizedConnectAppFetcher capable of executing the fetch
          */
-        public static AuthorizedConnectAppFetcher Fetch(string connectAppSid) {
+        public static AuthorizedConnectAppFetcher Fetcher(string connectAppSid) {
             return new AuthorizedConnectAppFetcher(connectAppSid);
         }
     
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return AuthorizedConnectAppReader capable of executing the read
          */
-        public static AuthorizedConnectAppReader Read(string accountSid) {
+        public static AuthorizedConnectAppReader Reader(string accountSid) {
             return new AuthorizedConnectAppReader(accountSid);
         }
     
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * 
          * @return AuthorizedConnectAppReader capable of executing the read
          */
-        public static AuthorizedConnectAppReader Read() {
+        public static AuthorizedConnectAppReader Reader() {
             return new AuthorizedConnectAppReader();
         }
     

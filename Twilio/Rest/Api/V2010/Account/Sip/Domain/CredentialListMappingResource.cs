@@ -17,7 +17,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
          * @param credentialListSid The credential_list_sid
          * @return CredentialListMappingCreator capable of executing the create
          */
-        public static CredentialListMappingCreator Create(string accountSid, string domainSid, string credentialListSid) {
+        public static CredentialListMappingCreator Creator(string accountSid, string domainSid, string credentialListSid) {
             return new CredentialListMappingCreator(accountSid, domainSid, credentialListSid);
         }
     
@@ -28,8 +28,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
          * @param credentialListSid The credential_list_sid
          * @return CredentialListMappingCreator capable of executing the create
          */
-        public static CredentialListMappingCreator Create(string domainSid, 
-                                                          string credentialListSid) {
+        public static CredentialListMappingCreator Creator(string domainSid, 
+                                                           string credentialListSid) {
             return new CredentialListMappingCreator(domainSid, credentialListSid);
         }
     
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
          * @param domainSid The domain_sid
          * @return CredentialListMappingReader capable of executing the read
          */
-        public static CredentialListMappingReader Read(string accountSid, string domainSid) {
+        public static CredentialListMappingReader Reader(string accountSid, string domainSid) {
             return new CredentialListMappingReader(accountSid, domainSid);
         }
     
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
          * @param domainSid The domain_sid
          * @return CredentialListMappingReader capable of executing the read
          */
-        public static CredentialListMappingReader Read(string domainSid) {
+        public static CredentialListMappingReader Reader(string domainSid) {
             return new CredentialListMappingReader(domainSid);
         }
     
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
          * @param sid The sid
          * @return CredentialListMappingFetcher capable of executing the fetch
          */
-        public static CredentialListMappingFetcher Fetch(string accountSid, string domainSid, string sid) {
+        public static CredentialListMappingFetcher Fetcher(string accountSid, string domainSid, string sid) {
             return new CredentialListMappingFetcher(accountSid, domainSid, sid);
         }
     
@@ -73,8 +73,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
          * @param sid The sid
          * @return CredentialListMappingFetcher capable of executing the fetch
          */
-        public static CredentialListMappingFetcher Fetch(string domainSid, 
-                                                         string sid) {
+        public static CredentialListMappingFetcher Fetcher(string domainSid, 
+                                                           string sid) {
             return new CredentialListMappingFetcher(domainSid, sid);
         }
     
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
          * @param sid The sid
          * @return CredentialListMappingDeleter capable of executing the delete
          */
-        public static CredentialListMappingDeleter Delete(string accountSid, string domainSid, string sid) {
+        public static CredentialListMappingDeleter Deleter(string accountSid, string domainSid, string sid) {
             return new CredentialListMappingDeleter(accountSid, domainSid, sid);
         }
     
@@ -97,8 +97,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
          * @param sid The sid
          * @return CredentialListMappingDeleter capable of executing the delete
          */
-        public static CredentialListMappingDeleter Delete(string domainSid, 
-                                                          string sid) {
+        public static CredentialListMappingDeleter Deleter(string domainSid, 
+                                                           string sid) {
             return new CredentialListMappingDeleter(domainSid, sid);
         }
     

@@ -158,7 +158,7 @@ namespace Twilio.Rest.Preview.Wireless {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated DeviceResource
          */
-        public override async Task<DeviceResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<DeviceResource> UpdateAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.PREVIEW,
@@ -193,7 +193,7 @@ namespace Twilio.Rest.Preview.Wireless {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated DeviceResource
          */
-        public override DeviceResource Execute(ITwilioRestClient client) {
+        public override DeviceResource Update(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.PREVIEW,

@@ -16,7 +16,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Fetch by unique queue Sid
          * @return QueueFetcher capable of executing the fetch
          */
-        public static QueueFetcher Fetch(string accountSid, string sid) {
+        public static QueueFetcher Fetcher(string accountSid, string sid) {
             return new QueueFetcher(accountSid, sid);
         }
     
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Fetch by unique queue Sid
          * @return QueueFetcher capable of executing the fetch
          */
-        public static QueueFetcher Fetch(string sid) {
+        public static QueueFetcher Fetcher(string sid) {
             return new QueueFetcher(sid);
         }
     
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return QueueUpdater capable of executing the update
          */
-        public static QueueUpdater Update(string accountSid, string sid) {
+        public static QueueUpdater Updater(string accountSid, string sid) {
             return new QueueUpdater(accountSid, sid);
         }
     
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return QueueUpdater capable of executing the update
          */
-        public static QueueUpdater Update(string sid) {
+        public static QueueUpdater Updater(string sid) {
             return new QueueUpdater(sid);
         }
     
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Delete by unique queue Sid
          * @return QueueDeleter capable of executing the delete
          */
-        public static QueueDeleter Delete(string accountSid, string sid) {
+        public static QueueDeleter Deleter(string accountSid, string sid) {
             return new QueueDeleter(accountSid, sid);
         }
     
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Delete by unique queue Sid
          * @return QueueDeleter capable of executing the delete
          */
-        public static QueueDeleter Delete(string sid) {
+        public static QueueDeleter Deleter(string sid) {
             return new QueueDeleter(sid);
         }
     
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return QueueReader capable of executing the read
          */
-        public static QueueReader Read(string accountSid) {
+        public static QueueReader Reader(string accountSid) {
             return new QueueReader(accountSid);
         }
     
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * 
          * @return QueueReader capable of executing the read
          */
-        public static QueueReader Read() {
+        public static QueueReader Reader() {
             return new QueueReader();
         }
     
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return QueueCreator capable of executing the create
          */
-        public static QueueCreator Create(string accountSid) {
+        public static QueueCreator Creator(string accountSid) {
             return new QueueCreator(accountSid);
         }
     
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * 
          * @return QueueCreator capable of executing the create
          */
-        public static QueueCreator Create() {
+        public static QueueCreator Creator() {
             return new QueueCreator();
         }
     

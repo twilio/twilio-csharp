@@ -133,7 +133,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
          * @param accountSid The account_sid
          * @return LastMonthReader capable of executing the read
          */
-        public static LastMonthReader Read(string accountSid) {
+        public static LastMonthReader Reader(string accountSid) {
             return new LastMonthReader(accountSid);
         }
     
@@ -142,7 +142,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
          * 
          * @return LastMonthReader capable of executing the read
          */
-        public static LastMonthReader Read() {
+        public static LastMonthReader Reader() {
             return new LastMonthReader();
         }
     

@@ -46,7 +46,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Fetch by unique conference Sid
          * @return ConferenceFetcher capable of executing the fetch
          */
-        public static ConferenceFetcher Fetch(string accountSid, string sid) {
+        public static ConferenceFetcher Fetcher(string accountSid, string sid) {
             return new ConferenceFetcher(accountSid, sid);
         }
     
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Fetch by unique conference Sid
          * @return ConferenceFetcher capable of executing the fetch
          */
-        public static ConferenceFetcher Fetch(string sid) {
+        public static ConferenceFetcher Fetcher(string sid) {
             return new ConferenceFetcher(sid);
         }
     
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return ConferenceReader capable of executing the read
          */
-        public static ConferenceReader Read(string accountSid) {
+        public static ConferenceReader Reader(string accountSid) {
             return new ConferenceReader(accountSid);
         }
     
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * 
          * @return ConferenceReader capable of executing the read
          */
-        public static ConferenceReader Read() {
+        public static ConferenceReader Reader() {
             return new ConferenceReader();
         }
     

@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched KeyResource
          */
-        public override async Task<KeyResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<KeyResource> FetchAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched KeyResource
          */
-        public override KeyResource Execute(ITwilioRestClient client) {
+        public override KeyResource Fetch(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

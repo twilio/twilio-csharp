@@ -16,7 +16,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
          * @param credentialListSid The credential_list_sid
          * @return CredentialReader capable of executing the read
          */
-        public static CredentialReader Read(string accountSid, string credentialListSid) {
+        public static CredentialReader Reader(string accountSid, string credentialListSid) {
             return new CredentialReader(accountSid, credentialListSid);
         }
     
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
          * @param credentialListSid The credential_list_sid
          * @return CredentialReader capable of executing the read
          */
-        public static CredentialReader Read(string credentialListSid) {
+        public static CredentialReader Reader(string credentialListSid) {
             return new CredentialReader(credentialListSid);
         }
     
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
          * @param password The password
          * @return CredentialCreator capable of executing the create
          */
-        public static CredentialCreator Create(string accountSid, string credentialListSid, string username, string password) {
+        public static CredentialCreator Creator(string accountSid, string credentialListSid, string username, string password) {
             return new CredentialCreator(accountSid, credentialListSid, username, password);
         }
     
@@ -51,9 +51,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
          * @param password The password
          * @return CredentialCreator capable of executing the create
          */
-        public static CredentialCreator Create(string credentialListSid, 
-                                               string username, 
-                                               string password) {
+        public static CredentialCreator Creator(string credentialListSid, 
+                                                string username, 
+                                                string password) {
             return new CredentialCreator(credentialListSid, username, password);
         }
     
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
          * @param sid The sid
          * @return CredentialFetcher capable of executing the fetch
          */
-        public static CredentialFetcher Fetch(string accountSid, string credentialListSid, string sid) {
+        public static CredentialFetcher Fetcher(string accountSid, string credentialListSid, string sid) {
             return new CredentialFetcher(accountSid, credentialListSid, sid);
         }
     
@@ -76,8 +76,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
          * @param sid The sid
          * @return CredentialFetcher capable of executing the fetch
          */
-        public static CredentialFetcher Fetch(string credentialListSid, 
-                                              string sid) {
+        public static CredentialFetcher Fetcher(string credentialListSid, 
+                                                string sid) {
             return new CredentialFetcher(credentialListSid, sid);
         }
     
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
          * @param sid The sid
          * @return CredentialUpdater capable of executing the update
          */
-        public static CredentialUpdater Update(string accountSid, string credentialListSid, string sid) {
+        public static CredentialUpdater Updater(string accountSid, string credentialListSid, string sid) {
             return new CredentialUpdater(accountSid, credentialListSid, sid);
         }
     
@@ -100,8 +100,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
          * @param sid The sid
          * @return CredentialUpdater capable of executing the update
          */
-        public static CredentialUpdater Update(string credentialListSid, 
-                                               string sid) {
+        public static CredentialUpdater Updater(string credentialListSid, 
+                                                string sid) {
             return new CredentialUpdater(credentialListSid, sid);
         }
     
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
          * @param sid The sid
          * @return CredentialDeleter capable of executing the delete
          */
-        public static CredentialDeleter Delete(string accountSid, string credentialListSid, string sid) {
+        public static CredentialDeleter Deleter(string accountSid, string credentialListSid, string sid) {
             return new CredentialDeleter(accountSid, credentialListSid, sid);
         }
     
@@ -124,8 +124,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
          * @param sid The sid
          * @return CredentialDeleter capable of executing the delete
          */
-        public static CredentialDeleter Delete(string credentialListSid, 
-                                               string sid) {
+        public static CredentialDeleter Deleter(string credentialListSid, 
+                                                string sid) {
             return new CredentialDeleter(credentialListSid, sid);
         }
     

@@ -17,7 +17,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
          * @param sid The sid
          * @return MessageFetcher capable of executing the fetch
          */
-        public static MessageFetcher Fetch(string serviceSid, string channelSid, string sid) {
+        public static MessageFetcher Fetcher(string serviceSid, string channelSid, string sid) {
             return new MessageFetcher(serviceSid, channelSid, sid);
         }
     
@@ -29,7 +29,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
          * @param body The body
          * @return MessageCreator capable of executing the create
          */
-        public static MessageCreator Create(string serviceSid, string channelSid, string body) {
+        public static MessageCreator Creator(string serviceSid, string channelSid, string body) {
             return new MessageCreator(serviceSid, channelSid, body);
         }
     
@@ -40,7 +40,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
          * @param channelSid The channel_sid
          * @return MessageReader capable of executing the read
          */
-        public static MessageReader Read(string serviceSid, string channelSid) {
+        public static MessageReader Reader(string serviceSid, string channelSid) {
             return new MessageReader(serviceSid, channelSid);
         }
     
@@ -52,7 +52,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
          * @param sid The sid
          * @return MessageDeleter capable of executing the delete
          */
-        public static MessageDeleter Delete(string serviceSid, string channelSid, string sid) {
+        public static MessageDeleter Deleter(string serviceSid, string channelSid, string sid) {
             return new MessageDeleter(serviceSid, channelSid, sid);
         }
     
@@ -65,7 +65,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
          * @param body The body
          * @return MessageUpdater capable of executing the update
          */
-        public static MessageUpdater Update(string serviceSid, string channelSid, string sid, string body) {
+        public static MessageUpdater Updater(string serviceSid, string channelSid, string sid, string body) {
             return new MessageUpdater(serviceSid, channelSid, sid, body);
         }
     

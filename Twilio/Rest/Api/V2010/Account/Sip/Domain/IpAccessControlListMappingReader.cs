@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
          * @param client ITwilioRestClient with which to make the request
          * @return IpAccessControlListMappingResource ResourceSet
          */
-        public override Task<ResourceSet<IpAccessControlListMappingResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<IpAccessControlListMappingResource>> ReadAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
          * @param client ITwilioRestClient with which to make the request
          * @return IpAccessControlListMappingResource ResourceSet
          */
-        public override ResourceSet<IpAccessControlListMappingResource> Execute(ITwilioRestClient client) {
+        public override ResourceSet<IpAccessControlListMappingResource> Read(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

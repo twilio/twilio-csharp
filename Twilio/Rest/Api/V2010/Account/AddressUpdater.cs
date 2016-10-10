@@ -112,7 +112,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated AddressResource
          */
-        public override async Task<AddressResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<AddressResource> UpdateAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -147,7 +147,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated AddressResource
          */
-        public override AddressResource Execute(ITwilioRestClient client) {
+        public override AddressResource Update(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,

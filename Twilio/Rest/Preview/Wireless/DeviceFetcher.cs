@@ -28,7 +28,7 @@ namespace Twilio.Rest.Preview.Wireless {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched DeviceResource
          */
-        public override async Task<DeviceResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<DeviceResource> FetchAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Preview.Wireless {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched DeviceResource
          */
-        public override DeviceResource Execute(ITwilioRestClient client) {
+        public override DeviceResource Fetch(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,

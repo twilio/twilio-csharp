@@ -17,7 +17,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
          * @param sid The sid
          * @return IpAccessControlListMappingFetcher capable of executing the fetch
          */
-        public static IpAccessControlListMappingFetcher Fetch(string accountSid, string domainSid, string sid) {
+        public static IpAccessControlListMappingFetcher Fetcher(string accountSid, string domainSid, string sid) {
             return new IpAccessControlListMappingFetcher(accountSid, domainSid, sid);
         }
     
@@ -28,8 +28,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
          * @param sid The sid
          * @return IpAccessControlListMappingFetcher capable of executing the fetch
          */
-        public static IpAccessControlListMappingFetcher Fetch(string domainSid, 
-                                                              string sid) {
+        public static IpAccessControlListMappingFetcher Fetcher(string domainSid, 
+                                                                string sid) {
             return new IpAccessControlListMappingFetcher(domainSid, sid);
         }
     
@@ -41,7 +41,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
          * @param ipAccessControlListSid The ip_access_control_list_sid
          * @return IpAccessControlListMappingCreator capable of executing the create
          */
-        public static IpAccessControlListMappingCreator Create(string accountSid, string domainSid, string ipAccessControlListSid) {
+        public static IpAccessControlListMappingCreator Creator(string accountSid, string domainSid, string ipAccessControlListSid) {
             return new IpAccessControlListMappingCreator(accountSid, domainSid, ipAccessControlListSid);
         }
     
@@ -52,8 +52,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
          * @param ipAccessControlListSid The ip_access_control_list_sid
          * @return IpAccessControlListMappingCreator capable of executing the create
          */
-        public static IpAccessControlListMappingCreator Create(string domainSid, 
-                                                               string ipAccessControlListSid) {
+        public static IpAccessControlListMappingCreator Creator(string domainSid, 
+                                                                string ipAccessControlListSid) {
             return new IpAccessControlListMappingCreator(domainSid, ipAccessControlListSid);
         }
     
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
          * @param domainSid The domain_sid
          * @return IpAccessControlListMappingReader capable of executing the read
          */
-        public static IpAccessControlListMappingReader Read(string accountSid, string domainSid) {
+        public static IpAccessControlListMappingReader Reader(string accountSid, string domainSid) {
             return new IpAccessControlListMappingReader(accountSid, domainSid);
         }
     
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
          * @param domainSid The domain_sid
          * @return IpAccessControlListMappingReader capable of executing the read
          */
-        public static IpAccessControlListMappingReader Read(string domainSid) {
+        public static IpAccessControlListMappingReader Reader(string domainSid) {
             return new IpAccessControlListMappingReader(domainSid);
         }
     
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
          * @param sid The sid
          * @return IpAccessControlListMappingDeleter capable of executing the delete
          */
-        public static IpAccessControlListMappingDeleter Delete(string accountSid, string domainSid, string sid) {
+        public static IpAccessControlListMappingDeleter Deleter(string accountSid, string domainSid, string sid) {
             return new IpAccessControlListMappingDeleter(accountSid, domainSid, sid);
         }
     
@@ -97,8 +97,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
          * @param sid The sid
          * @return IpAccessControlListMappingDeleter capable of executing the delete
          */
-        public static IpAccessControlListMappingDeleter Delete(string domainSid, 
-                                                               string sid) {
+        public static IpAccessControlListMappingDeleter Deleter(string domainSid, 
+                                                                string sid) {
             return new IpAccessControlListMappingDeleter(domainSid, sid);
         }
     

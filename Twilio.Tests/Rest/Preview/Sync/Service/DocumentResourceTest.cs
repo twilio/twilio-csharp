@@ -29,7 +29,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service {
                                                   "null"));
             
             try {
-                DocumentResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "sid").Execute(twilioRestClient);
+                DocumentResource.Fetcher("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "sid").Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -56,7 +56,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service {
                                                   "null"));
             
             try {
-                DocumentResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "sid").Execute(twilioRestClient);
+                DocumentResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "sid").Delete(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -83,7 +83,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service {
                                                   "null"));
             
             try {
-                DocumentResource.Create("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                DocumentResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -111,7 +111,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service {
                                                   "null"));
             
             try {
-                DocumentResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                DocumentResource.Reader("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Read(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -139,7 +139,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service {
                                                   "null"));
             
             try {
-                DocumentResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "sid", "{}").Execute(twilioRestClient);
+                DocumentResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "sid", "{}").Update(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>

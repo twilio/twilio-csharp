@@ -31,7 +31,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched DocumentResource
          */
-        public override async Task<DocumentResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<DocumentResource> FetchAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched DocumentResource
          */
-        public override DocumentResource Execute(ITwilioRestClient client) {
+        public override DocumentResource Fetch(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,

@@ -16,8 +16,8 @@ namespace Twilio.Base
         /// Execute an async request using the default client.
         /// </summary>
         /// <returns>Task that resolves to requested object</returns>
-        public Task ExecuteAsync() {
-            return ExecuteAsync(TwilioClient.GetRestClient());
+        public Task DeleteAsync() {
+            return DeleteAsync(TwilioClient.GetRestClient());
         }
 
         /// <summary>
@@ -25,15 +25,15 @@ namespace Twilio.Base
         /// </summary>
         /// <param name="client">Custom client to use</param>
         /// <returns>Task that resolves to requested object</returns>
-        public abstract Task ExecuteAsync(ITwilioRestClient client);
+        public abstract Task DeleteAsync(ITwilioRestClient client);
         #endif
 
         /// <summary>
         /// Execute a request using the default client.
         /// </summary>
         /// <returns>Requested object</returns>
-        public void Execute() {
-            Execute(TwilioClient.GetRestClient());
+        public void Delete() {
+            Delete(TwilioClient.GetRestClient());
         }
 
         /// <summary>
@@ -41,6 +41,6 @@ namespace Twilio.Base
         /// </summary>
         /// <param name="client">Custom client to use</param>
         /// <returns>Requested object</returns>
-        public abstract void Execute(ITwilioRestClient client);
+        public abstract void Delete(ITwilioRestClient client);
     }
 }

@@ -31,7 +31,7 @@ namespace Twilio.Rest.Chat.V1.Service {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched ChannelResource
          */
-        public override async Task<ChannelResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<ChannelResource> FetchAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.CHAT,
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Chat.V1.Service {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched ChannelResource
          */
-        public override ChannelResource Execute(ITwilioRestClient client) {
+        public override ChannelResource Fetch(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.CHAT,

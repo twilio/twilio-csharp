@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
          * @param ownerAccountSid The owner_account_sid
          * @return MobileReader capable of executing the read
          */
-        public static MobileReader Read(string ownerAccountSid) {
+        public static MobileReader Reader(string ownerAccountSid) {
             return new MobileReader(ownerAccountSid);
         }
     
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
          * 
          * @return MobileReader capable of executing the read
          */
-        public static MobileReader Read() {
+        public static MobileReader Reader() {
             return new MobileReader();
         }
     
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
          * @param phoneNumber The phone_number
          * @return MobileCreator capable of executing the create
          */
-        public static MobileCreator Create(string ownerAccountSid, Twilio.Types.PhoneNumber phoneNumber) {
+        public static MobileCreator Creator(string ownerAccountSid, Twilio.Types.PhoneNumber phoneNumber) {
             return new MobileCreator(ownerAccountSid, phoneNumber);
         }
     
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
          * @param phoneNumber The phone_number
          * @return MobileCreator capable of executing the create
          */
-        public static MobileCreator Create(Twilio.Types.PhoneNumber phoneNumber) {
+        public static MobileCreator Creator(Twilio.Types.PhoneNumber phoneNumber) {
             return new MobileCreator(phoneNumber);
         }
     

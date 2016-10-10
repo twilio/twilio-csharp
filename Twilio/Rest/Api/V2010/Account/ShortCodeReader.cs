@@ -60,7 +60,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return ShortCodeResource ResourceSet
          */
-        public override Task<ResourceSet<ShortCodeResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<ShortCodeResource>> ReadAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return ShortCodeResource ResourceSet
          */
-        public override ResourceSet<ShortCodeResource> Execute(ITwilioRestClient client) {
+        public override ResourceSet<ShortCodeResource> Read(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

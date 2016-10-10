@@ -272,7 +272,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
          * @param client ITwilioRestClient with which to make the request
          * @return Created MobileResource
          */
-        public override async Task<MobileResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<MobileResource> CreateAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -307,7 +307,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
          * @param client ITwilioRestClient with which to make the request
          * @return Created MobileResource
          */
-        public override MobileResource Execute(ITwilioRestClient client) {
+        public override MobileResource Create(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,

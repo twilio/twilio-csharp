@@ -79,7 +79,7 @@ namespace Twilio.Rest.Chat.V1.Service {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated ChannelResource
          */
-        public override async Task<ChannelResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<ChannelResource> UpdateAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.CHAT,
@@ -114,7 +114,7 @@ namespace Twilio.Rest.Chat.V1.Service {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated ChannelResource
          */
-        public override ChannelResource Execute(ITwilioRestClient client) {
+        public override ChannelResource Update(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.CHAT,

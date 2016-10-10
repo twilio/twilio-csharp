@@ -28,7 +28,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
          * @param client ITwilioRestClient with which to make the request
          * @return SyncListResource ResourceSet
          */
-        public override Task<ResourceSet<SyncListResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<SyncListResource>> ReadAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
          * @param client ITwilioRestClient with which to make the request
          * @return SyncListResource ResourceSet
          */
-        public override ResourceSet<SyncListResource> Execute(ITwilioRestClient client) {
+        public override ResourceSet<SyncListResource> Read(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,

@@ -70,7 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
          * @param client ITwilioRestClient with which to make the request
          * @return TollFreeResource ResourceSet
          */
-        public override Task<ResourceSet<TollFreeResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<TollFreeResource>> ReadAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
          * @param client ITwilioRestClient with which to make the request
          * @return TollFreeResource ResourceSet
          */
-        public override ResourceSet<TollFreeResource> Execute(ITwilioRestClient client) {
+        public override ResourceSet<TollFreeResource> Read(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

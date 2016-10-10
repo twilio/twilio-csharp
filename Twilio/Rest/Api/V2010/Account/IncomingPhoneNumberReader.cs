@@ -71,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return IncomingPhoneNumberResource ResourceSet
          */
-        public override Task<ResourceSet<IncomingPhoneNumberResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<IncomingPhoneNumberResource>> ReadAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return IncomingPhoneNumberResource ResourceSet
          */
-        public override ResourceSet<IncomingPhoneNumberResource> Execute(ITwilioRestClient client) {
+        public override ResourceSet<IncomingPhoneNumberResource> Read(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

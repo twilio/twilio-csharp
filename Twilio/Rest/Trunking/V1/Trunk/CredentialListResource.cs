@@ -16,7 +16,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param sid The sid
          * @return CredentialListFetcher capable of executing the fetch
          */
-        public static CredentialListFetcher Fetch(string trunkSid, string sid) {
+        public static CredentialListFetcher Fetcher(string trunkSid, string sid) {
             return new CredentialListFetcher(trunkSid, sid);
         }
     
@@ -27,7 +27,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param sid The sid
          * @return CredentialListDeleter capable of executing the delete
          */
-        public static CredentialListDeleter Delete(string trunkSid, string sid) {
+        public static CredentialListDeleter Deleter(string trunkSid, string sid) {
             return new CredentialListDeleter(trunkSid, sid);
         }
     
@@ -38,7 +38,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param credentialListSid The credential_list_sid
          * @return CredentialListCreator capable of executing the create
          */
-        public static CredentialListCreator Create(string trunkSid, string credentialListSid) {
+        public static CredentialListCreator Creator(string trunkSid, string credentialListSid) {
             return new CredentialListCreator(trunkSid, credentialListSid);
         }
     
@@ -48,7 +48,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param trunkSid The trunk_sid
          * @return CredentialListReader capable of executing the read
          */
-        public static CredentialListReader Read(string trunkSid) {
+        public static CredentialListReader Reader(string trunkSid) {
             return new CredentialListReader(trunkSid);
         }
     

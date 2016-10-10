@@ -16,7 +16,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return TaskQueueFetcher capable of executing the fetch
          */
-        public static TaskQueueFetcher Fetch(string workspaceSid, string sid) {
+        public static TaskQueueFetcher Fetcher(string workspaceSid, string sid) {
             return new TaskQueueFetcher(workspaceSid, sid);
         }
     
@@ -27,7 +27,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return TaskQueueUpdater capable of executing the update
          */
-        public static TaskQueueUpdater Update(string workspaceSid, string sid) {
+        public static TaskQueueUpdater Updater(string workspaceSid, string sid) {
             return new TaskQueueUpdater(workspaceSid, sid);
         }
     
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @return TaskQueueReader capable of executing the read
          */
-        public static TaskQueueReader Read(string workspaceSid) {
+        public static TaskQueueReader Reader(string workspaceSid) {
             return new TaskQueueReader(workspaceSid);
         }
     
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param assignmentActivitySid The assignment_activity_sid
          * @return TaskQueueCreator capable of executing the create
          */
-        public static TaskQueueCreator Create(string workspaceSid, string friendlyName, string reservationActivitySid, string assignmentActivitySid) {
+        public static TaskQueueCreator Creator(string workspaceSid, string friendlyName, string reservationActivitySid, string assignmentActivitySid) {
             return new TaskQueueCreator(workspaceSid, friendlyName, reservationActivitySid, assignmentActivitySid);
         }
     
@@ -61,7 +61,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return TaskQueueDeleter capable of executing the delete
          */
-        public static TaskQueueDeleter Delete(string workspaceSid, string sid) {
+        public static TaskQueueDeleter Deleter(string workspaceSid, string sid) {
             return new TaskQueueDeleter(workspaceSid, sid);
         }
     

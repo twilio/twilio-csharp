@@ -21,7 +21,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param isoCountry The iso_country
          * @return AddressCreator capable of executing the create
          */
-        public static AddressCreator Create(string accountSid, string customerName, string street, string city, string region, string postalCode, string isoCountry) {
+        public static AddressCreator Creator(string accountSid, string customerName, string street, string city, string region, string postalCode, string isoCountry) {
             return new AddressCreator(accountSid, customerName, street, city, region, postalCode, isoCountry);
         }
     
@@ -36,12 +36,12 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param isoCountry The iso_country
          * @return AddressCreator capable of executing the create
          */
-        public static AddressCreator Create(string customerName, 
-                                            string street, 
-                                            string city, 
-                                            string region, 
-                                            string postalCode, 
-                                            string isoCountry) {
+        public static AddressCreator Creator(string customerName, 
+                                             string street, 
+                                             string city, 
+                                             string region, 
+                                             string postalCode, 
+                                             string isoCountry) {
             return new AddressCreator(customerName, street, city, region, postalCode, isoCountry);
         }
     
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return AddressDeleter capable of executing the delete
          */
-        public static AddressDeleter Delete(string accountSid, string sid) {
+        public static AddressDeleter Deleter(string accountSid, string sid) {
             return new AddressDeleter(accountSid, sid);
         }
     
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return AddressDeleter capable of executing the delete
          */
-        public static AddressDeleter Delete(string sid) {
+        public static AddressDeleter Deleter(string sid) {
             return new AddressDeleter(sid);
         }
     
@@ -73,7 +73,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return AddressFetcher capable of executing the fetch
          */
-        public static AddressFetcher Fetch(string accountSid, string sid) {
+        public static AddressFetcher Fetcher(string accountSid, string sid) {
             return new AddressFetcher(accountSid, sid);
         }
     
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return AddressFetcher capable of executing the fetch
          */
-        public static AddressFetcher Fetch(string sid) {
+        public static AddressFetcher Fetcher(string sid) {
             return new AddressFetcher(sid);
         }
     
@@ -94,7 +94,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return AddressUpdater capable of executing the update
          */
-        public static AddressUpdater Update(string accountSid, string sid) {
+        public static AddressUpdater Updater(string accountSid, string sid) {
             return new AddressUpdater(accountSid, sid);
         }
     
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid The sid
          * @return AddressUpdater capable of executing the update
          */
-        public static AddressUpdater Update(string sid) {
+        public static AddressUpdater Updater(string sid) {
             return new AddressUpdater(sid);
         }
     
@@ -114,7 +114,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return AddressReader capable of executing the read
          */
-        public static AddressReader Read(string accountSid) {
+        public static AddressReader Reader(string accountSid) {
             return new AddressReader(accountSid);
         }
     
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * 
          * @return AddressReader capable of executing the read
          */
-        public static AddressReader Read() {
+        public static AddressReader Reader() {
             return new AddressReader();
         }
     

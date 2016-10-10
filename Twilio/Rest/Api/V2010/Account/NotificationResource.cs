@@ -16,7 +16,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Fetch by unique notification Sid
          * @return NotificationFetcher capable of executing the fetch
          */
-        public static NotificationFetcher Fetch(string accountSid, string sid) {
+        public static NotificationFetcher Fetcher(string accountSid, string sid) {
             return new NotificationFetcher(accountSid, sid);
         }
     
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Fetch by unique notification Sid
          * @return NotificationFetcher capable of executing the fetch
          */
-        public static NotificationFetcher Fetch(string sid) {
+        public static NotificationFetcher Fetcher(string sid) {
             return new NotificationFetcher(sid);
         }
     
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Delete by unique notification Sid
          * @return NotificationDeleter capable of executing the delete
          */
-        public static NotificationDeleter Delete(string accountSid, string sid) {
+        public static NotificationDeleter Deleter(string accountSid, string sid) {
             return new NotificationDeleter(accountSid, sid);
         }
     
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Delete by unique notification Sid
          * @return NotificationDeleter capable of executing the delete
          */
-        public static NotificationDeleter Delete(string sid) {
+        public static NotificationDeleter Deleter(string sid) {
             return new NotificationDeleter(sid);
         }
     
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return NotificationReader capable of executing the read
          */
-        public static NotificationReader Read(string accountSid) {
+        public static NotificationReader Reader(string accountSid) {
             return new NotificationReader(accountSid);
         }
     
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * 
          * @return NotificationReader capable of executing the read
          */
-        public static NotificationReader Read() {
+        public static NotificationReader Reader() {
             return new NotificationReader();
         }
     

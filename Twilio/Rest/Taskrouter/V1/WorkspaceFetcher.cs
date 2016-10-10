@@ -28,7 +28,7 @@ namespace Twilio.Rest.Taskrouter.V1 {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched WorkspaceResource
          */
-        public override async Task<WorkspaceResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<WorkspaceResource> FetchAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Taskrouter.V1 {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched WorkspaceResource
          */
-        public override WorkspaceResource Execute(ITwilioRestClient client) {
+        public override WorkspaceResource Fetch(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,

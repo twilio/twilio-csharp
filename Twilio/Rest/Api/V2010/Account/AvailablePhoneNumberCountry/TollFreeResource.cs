@@ -17,7 +17,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param countryCode The country_code
          * @return TollFreeReader capable of executing the read
          */
-        public static TollFreeReader Read(string accountSid, string countryCode) {
+        public static TollFreeReader Reader(string accountSid, string countryCode) {
             return new TollFreeReader(accountSid, countryCode);
         }
     
@@ -27,7 +27,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param countryCode The country_code
          * @return TollFreeReader capable of executing the read
          */
-        public static TollFreeReader Read(string countryCode) {
+        public static TollFreeReader Reader(string countryCode) {
             return new TollFreeReader(countryCode);
         }
     

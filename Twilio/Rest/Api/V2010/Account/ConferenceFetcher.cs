@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched ConferenceResource
          */
-        public override async Task<ConferenceResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<ConferenceResource> FetchAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched ConferenceResource
          */
-        public override ConferenceResource Execute(ITwilioRestClient client) {
+        public override ConferenceResource Fetch(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

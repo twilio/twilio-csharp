@@ -87,7 +87,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param url Url from which to fetch TwiML
          * @return CallCreator capable of executing the create
          */
-        public static CallCreator Create(string accountSid, Twilio.Types.Endpoint to, Twilio.Types.PhoneNumber from, Uri url) {
+        public static CallCreator Creator(string accountSid, Twilio.Types.Endpoint to, Twilio.Types.PhoneNumber from, Uri url) {
             return new CallCreator(accountSid, to, from, url);
         }
     
@@ -99,9 +99,9 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param url Url from which to fetch TwiML
          * @return CallCreator capable of executing the create
          */
-        public static CallCreator Create(Twilio.Types.Endpoint to, 
-                                         Twilio.Types.PhoneNumber from, 
-                                         Uri url) {
+        public static CallCreator Creator(Twilio.Types.Endpoint to, 
+                                          Twilio.Types.PhoneNumber from, 
+                                          Uri url) {
             return new CallCreator(to, from, url);
         }
     
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          *                       TwiML
          * @return CallCreator capable of executing the create
          */
-        public static CallCreator Create(string accountSid, Twilio.Types.Endpoint to, Twilio.Types.PhoneNumber from, string applicationSid) {
+        public static CallCreator Creator(string accountSid, Twilio.Types.Endpoint to, Twilio.Types.PhoneNumber from, string applicationSid) {
             return new CallCreator(accountSid, to, from, applicationSid);
         }
     
@@ -129,9 +129,9 @@ namespace Twilio.Rest.Api.V2010.Account {
          *                       TwiML
          * @return CallCreator capable of executing the create
          */
-        public static CallCreator Create(Twilio.Types.Endpoint to, 
-                                         Twilio.Types.PhoneNumber from, 
-                                         string applicationSid) {
+        public static CallCreator Creator(Twilio.Types.Endpoint to, 
+                                          Twilio.Types.PhoneNumber from, 
+                                          string applicationSid) {
             return new CallCreator(to, from, applicationSid);
         }
     
@@ -143,7 +143,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Call Sid that uniquely identifies the Call to delete
          * @return CallDeleter capable of executing the delete
          */
-        public static CallDeleter Delete(string accountSid, string sid) {
+        public static CallDeleter Deleter(string accountSid, string sid) {
             return new CallDeleter(accountSid, sid);
         }
     
@@ -153,7 +153,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Call Sid that uniquely identifies the Call to delete
          * @return CallDeleter capable of executing the delete
          */
-        public static CallDeleter Delete(string sid) {
+        public static CallDeleter Deleter(string sid) {
             return new CallDeleter(sid);
         }
     
@@ -164,7 +164,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Call Sid that uniquely identifies the Call to fetch
          * @return CallFetcher capable of executing the fetch
          */
-        public static CallFetcher Fetch(string accountSid, string sid) {
+        public static CallFetcher Fetcher(string accountSid, string sid) {
             return new CallFetcher(accountSid, sid);
         }
     
@@ -174,7 +174,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Call Sid that uniquely identifies the Call to fetch
          * @return CallFetcher capable of executing the fetch
          */
-        public static CallFetcher Fetch(string sid) {
+        public static CallFetcher Fetcher(string sid) {
             return new CallFetcher(sid);
         }
     
@@ -184,7 +184,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param accountSid The account_sid
          * @return CallReader capable of executing the read
          */
-        public static CallReader Read(string accountSid) {
+        public static CallReader Reader(string accountSid) {
             return new CallReader(accountSid);
         }
     
@@ -193,7 +193,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * 
          * @return CallReader capable of executing the read
          */
-        public static CallReader Read() {
+        public static CallReader Reader() {
             return new CallReader();
         }
     
@@ -204,7 +204,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Call Sid that uniquely identifies the Call to update
          * @return CallUpdater capable of executing the update
          */
-        public static CallUpdater Update(string accountSid, string sid) {
+        public static CallUpdater Updater(string accountSid, string sid) {
             return new CallUpdater(accountSid, sid);
         }
     
@@ -214,7 +214,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param sid Call Sid that uniquely identifies the Call to update
          * @return CallUpdater capable of executing the update
          */
-        public static CallUpdater Update(string sid) {
+        public static CallUpdater Updater(string sid) {
             return new CallUpdater(sid);
         }
     

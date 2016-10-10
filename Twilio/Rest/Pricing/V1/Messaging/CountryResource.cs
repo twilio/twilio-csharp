@@ -16,7 +16,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging {
          * 
          * @return CountryReader capable of executing the read
          */
-        public static CountryReader Read() {
+        public static CountryReader Reader() {
             return new CountryReader();
         }
     
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging {
          * @param isoCountry The iso_country
          * @return CountryFetcher capable of executing the fetch
          */
-        public static CountryFetcher Fetch(string isoCountry) {
+        public static CountryFetcher Fetcher(string isoCountry) {
             return new CountryFetcher(isoCountry);
         }
     

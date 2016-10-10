@@ -30,7 +30,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call {
                                                   "null"));
             
             try {
-                FeedbackResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1).Execute(twilioRestClient);
+                FeedbackResource.Creator("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1).Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -53,7 +53,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call {
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Thu, 20 Aug 2015 21:45:46 +0000\",\"date_updated\": \"Thu, 20 Aug 2015 21:45:46 +0000\",\"issues\": [\"imperfect-audio\",\"post-dial-delay\"],\"quality_score\": 5,\"sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = FeedbackResource.Create("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1).Execute(twilioRestClient);
+            var response = FeedbackResource.Creator("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1).Create(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -68,7 +68,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call {
                                                   "null"));
             
             try {
-                FeedbackResource.Fetch("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+                FeedbackResource.Fetcher("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -91,7 +91,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Thu, 20 Aug 2015 21:45:46 +0000\",\"date_updated\": \"Thu, 20 Aug 2015 21:45:46 +0000\",\"issues\": [\"imperfect-audio\",\"post-dial-delay\"],\"quality_score\": 5,\"sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = FeedbackResource.Fetch("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Execute(twilioRestClient);
+            var response = FeedbackResource.Fetcher("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -107,7 +107,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call {
                                                   "null"));
             
             try {
-                FeedbackResource.Update("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1).Execute(twilioRestClient);
+                FeedbackResource.Updater("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1).Update(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -130,7 +130,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Thu, 20 Aug 2015 21:45:46 +0000\",\"date_updated\": \"Thu, 20 Aug 2015 21:45:46 +0000\",\"issues\": [\"imperfect-audio\",\"post-dial-delay\"],\"quality_score\": 5,\"sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = FeedbackResource.Update("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1).Execute(twilioRestClient);
+            var response = FeedbackResource.Updater("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1).Update(twilioRestClient);
             Assert.NotNull(response);
         }
     }

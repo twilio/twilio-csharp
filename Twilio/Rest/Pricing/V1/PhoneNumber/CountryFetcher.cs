@@ -28,7 +28,7 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched CountryResource
          */
-        public override async Task<CountryResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<CountryResource> FetchAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PRICING,
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched CountryResource
          */
-        public override CountryResource Execute(ITwilioRestClient client) {
+        public override CountryResource Fetch(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PRICING,

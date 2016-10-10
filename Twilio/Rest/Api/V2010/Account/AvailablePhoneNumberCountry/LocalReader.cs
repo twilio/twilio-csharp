@@ -232,7 +232,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param client ITwilioRestClient with which to make the request
          * @return LocalResource ResourceSet
          */
-        public override Task<ResourceSet<LocalResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<LocalResource>> ReadAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -254,7 +254,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
          * @param client ITwilioRestClient with which to make the request
          * @return LocalResource ResourceSet
          */
-        public override ResourceSet<LocalResource> Execute(ITwilioRestClient client) {
+        public override ResourceSet<LocalResource> Read(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

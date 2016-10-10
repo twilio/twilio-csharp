@@ -28,7 +28,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
          * @param client ITwilioRestClient with which to make the request
          * @return RoleResource ResourceSet
          */
-        public override Task<ResourceSet<RoleResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<RoleResource>> ReadAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.IP_MESSAGING,
@@ -50,7 +50,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
          * @param client ITwilioRestClient with which to make the request
          * @return RoleResource ResourceSet
          */
-        public override ResourceSet<RoleResource> Execute(ITwilioRestClient client) {
+        public override ResourceSet<RoleResource> Read(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.IP_MESSAGING,

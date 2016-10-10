@@ -16,7 +16,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return ActivityFetcher capable of executing the fetch
          */
-        public static ActivityFetcher Fetch(string workspaceSid, string sid) {
+        public static ActivityFetcher Fetcher(string workspaceSid, string sid) {
             return new ActivityFetcher(workspaceSid, sid);
         }
     
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param friendlyName The friendly_name
          * @return ActivityUpdater capable of executing the update
          */
-        public static ActivityUpdater Update(string workspaceSid, string sid, string friendlyName) {
+        public static ActivityUpdater Updater(string workspaceSid, string sid, string friendlyName) {
             return new ActivityUpdater(workspaceSid, sid, friendlyName);
         }
     
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param sid The sid
          * @return ActivityDeleter capable of executing the delete
          */
-        public static ActivityDeleter Delete(string workspaceSid, string sid) {
+        public static ActivityDeleter Deleter(string workspaceSid, string sid) {
             return new ActivityDeleter(workspaceSid, sid);
         }
     
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param workspaceSid The workspace_sid
          * @return ActivityReader capable of executing the read
          */
-        public static ActivityReader Read(string workspaceSid) {
+        public static ActivityReader Reader(string workspaceSid) {
             return new ActivityReader(workspaceSid);
         }
     
@@ -60,7 +60,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
          * @param friendlyName The friendly_name
          * @return ActivityCreator capable of executing the create
          */
-        public static ActivityCreator Create(string workspaceSid, string friendlyName) {
+        public static ActivityCreator Creator(string workspaceSid, string friendlyName) {
             return new ActivityCreator(workspaceSid, friendlyName);
         }
     

@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param client ITwilioRestClient with which to make the request
          * @return Created CredentialListResource
          */
-        public override async Task<CredentialListResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<CredentialListResource> CreateAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param client ITwilioRestClient with which to make the request
          * @return Created CredentialListResource
          */
-        public override CredentialListResource Execute(ITwilioRestClient client) {
+        public override CredentialListResource Create(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,

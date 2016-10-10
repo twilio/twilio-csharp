@@ -1,5 +1,7 @@
+using System;
 using Twilio.Base;
 using Twilio.Clients;
+using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -11,8 +13,8 @@ namespace Twilio.Rest.Monitor.V1 {
 
     public class AlertReader : Reader<AlertResource> {
         private string logLevel;
-        private string startDate;
-        private string endDate;
+        private DateTime? startDate;
+        private DateTime? endDate;
     
         /**
          * The log_level
@@ -31,7 +33,7 @@ namespace Twilio.Rest.Monitor.V1 {
          * @param startDate The start_date
          * @return this
          */
-        public AlertReader ByStartDate(string startDate) {
+        public AlertReader ByStartDate(DateTime? startDate) {
             this.startDate = startDate;
             return this;
         }
@@ -42,7 +44,7 @@ namespace Twilio.Rest.Monitor.V1 {
          * @param endDate The end_date
          * @return this
          */
-        public AlertReader ByEndDate(string endDate) {
+        public AlertReader ByEndDate(DateTime? endDate) {
             this.endDate = endDate;
             return this;
         }
@@ -54,7 +56,7 @@ namespace Twilio.Rest.Monitor.V1 {
          * @param client ITwilioRestClient with which to make the request
          * @return AlertResource ResourceSet
          */
-        public override Task<ResourceSet<AlertResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<AlertResource>> ReadAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.MONITOR,
@@ -76,7 +78,7 @@ namespace Twilio.Rest.Monitor.V1 {
          * @param client ITwilioRestClient with which to make the request
          * @return AlertResource ResourceSet
          */
-        public override ResourceSet<AlertResource> Execute(ITwilioRestClient client) {
+        public override ResourceSet<AlertResource> Read(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.MONITOR,
@@ -150,11 +152,11 @@ namespace Twilio.Rest.Monitor.V1 {
             }
             
             if (startDate != null) {
-                request.AddQueryParam("StartDate", startDate);
+                request.AddQueryParam("StartDate", startDate.ToString());
             }
             
             if (endDate != null) {
-                request.AddQueryParam("EndDate", endDate);
+                request.AddQueryParam("EndDate", endDate.ToString());
             }
             
             request.AddQueryParam("PageSize", GetPageSize().ToString());

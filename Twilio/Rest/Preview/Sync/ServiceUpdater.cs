@@ -76,7 +76,7 @@ namespace Twilio.Rest.Preview.Sync {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated ServiceResource
          */
-        public override async Task<ServiceResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<ServiceResource> UpdateAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.PREVIEW,
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Preview.Sync {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated ServiceResource
          */
-        public override ServiceResource Execute(ITwilioRestClient client) {
+        public override ServiceResource Update(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.PREVIEW,

@@ -304,7 +304,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated ReservationResource
          */
-        public override async Task<ReservationResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<ReservationResource> UpdateAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
@@ -339,7 +339,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated ReservationResource
          */
-        public override ReservationResource Execute(ITwilioRestClient client) {
+        public override ReservationResource Update(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,

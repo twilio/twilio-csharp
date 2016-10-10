@@ -194,7 +194,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
          * @param sid Fetch by unique usage-trigger Sid
          * @return TriggerFetcher capable of executing the fetch
          */
-        public static TriggerFetcher Fetch(string accountSid, string sid) {
+        public static TriggerFetcher Fetcher(string accountSid, string sid) {
             return new TriggerFetcher(accountSid, sid);
         }
     
@@ -204,7 +204,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
          * @param sid Fetch by unique usage-trigger Sid
          * @return TriggerFetcher capable of executing the fetch
          */
-        public static TriggerFetcher Fetch(string sid) {
+        public static TriggerFetcher Fetcher(string sid) {
             return new TriggerFetcher(sid);
         }
     
@@ -215,7 +215,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
          * @param sid The sid
          * @return TriggerUpdater capable of executing the update
          */
-        public static TriggerUpdater Update(string accountSid, string sid) {
+        public static TriggerUpdater Updater(string accountSid, string sid) {
             return new TriggerUpdater(accountSid, sid);
         }
     
@@ -225,7 +225,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
          * @param sid The sid
          * @return TriggerUpdater capable of executing the update
          */
-        public static TriggerUpdater Update(string sid) {
+        public static TriggerUpdater Updater(string sid) {
             return new TriggerUpdater(sid);
         }
     
@@ -236,7 +236,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
          * @param sid The sid
          * @return TriggerDeleter capable of executing the delete
          */
-        public static TriggerDeleter Delete(string accountSid, string sid) {
+        public static TriggerDeleter Deleter(string accountSid, string sid) {
             return new TriggerDeleter(accountSid, sid);
         }
     
@@ -246,7 +246,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
          * @param sid The sid
          * @return TriggerDeleter capable of executing the delete
          */
-        public static TriggerDeleter Delete(string sid) {
+        public static TriggerDeleter Deleter(string sid) {
             return new TriggerDeleter(sid);
         }
     
@@ -259,7 +259,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
          * @param usageCategory The usage category the trigger watches
          * @return TriggerCreator capable of executing the create
          */
-        public static TriggerCreator Create(string accountSid, Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory) {
+        public static TriggerCreator Creator(string accountSid, Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory) {
             return new TriggerCreator(accountSid, callbackUrl, triggerValue, usageCategory);
         }
     
@@ -271,9 +271,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
          * @param usageCategory The usage category the trigger watches
          * @return TriggerCreator capable of executing the create
          */
-        public static TriggerCreator Create(Uri callbackUrl, 
-                                            string triggerValue, 
-                                            TriggerResource.UsageCategory usageCategory) {
+        public static TriggerCreator Creator(Uri callbackUrl, 
+                                             string triggerValue, 
+                                             TriggerResource.UsageCategory usageCategory) {
             return new TriggerCreator(callbackUrl, triggerValue, usageCategory);
         }
     
@@ -284,7 +284,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
          * @param accountSid The account_sid
          * @return TriggerReader capable of executing the read
          */
-        public static TriggerReader Read(string accountSid) {
+        public static TriggerReader Reader(string accountSid) {
             return new TriggerReader(accountSid);
         }
     
@@ -293,7 +293,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
          * 
          * @return TriggerReader capable of executing the read
          */
-        public static TriggerReader Read() {
+        public static TriggerReader Reader() {
             return new TriggerReader();
         }
     

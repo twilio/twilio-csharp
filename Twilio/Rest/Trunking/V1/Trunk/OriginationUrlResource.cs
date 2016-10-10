@@ -16,7 +16,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param sid The sid
          * @return OriginationUrlFetcher capable of executing the fetch
          */
-        public static OriginationUrlFetcher Fetch(string trunkSid, string sid) {
+        public static OriginationUrlFetcher Fetcher(string trunkSid, string sid) {
             return new OriginationUrlFetcher(trunkSid, sid);
         }
     
@@ -27,7 +27,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param sid The sid
          * @return OriginationUrlDeleter capable of executing the delete
          */
-        public static OriginationUrlDeleter Delete(string trunkSid, string sid) {
+        public static OriginationUrlDeleter Deleter(string trunkSid, string sid) {
             return new OriginationUrlDeleter(trunkSid, sid);
         }
     
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param sipUrl The sip_url
          * @return OriginationUrlCreator capable of executing the create
          */
-        public static OriginationUrlCreator Create(string trunkSid, int? weight, int? priority, bool? enabled, string friendlyName, Uri sipUrl) {
+        public static OriginationUrlCreator Creator(string trunkSid, int? weight, int? priority, bool? enabled, string friendlyName, Uri sipUrl) {
             return new OriginationUrlCreator(trunkSid, weight, priority, enabled, friendlyName, sipUrl);
         }
     
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param trunkSid The trunk_sid
          * @return OriginationUrlReader capable of executing the read
          */
-        public static OriginationUrlReader Read(string trunkSid) {
+        public static OriginationUrlReader Reader(string trunkSid) {
             return new OriginationUrlReader(trunkSid);
         }
     
@@ -63,7 +63,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param sid The sid
          * @return OriginationUrlUpdater capable of executing the update
          */
-        public static OriginationUrlUpdater Update(string trunkSid, string sid) {
+        public static OriginationUrlUpdater Updater(string trunkSid, string sid) {
             return new OriginationUrlUpdater(trunkSid, sid);
         }
     

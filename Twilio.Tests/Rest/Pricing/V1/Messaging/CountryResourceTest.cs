@@ -30,7 +30,7 @@ namespace Twilio.Tests.Rest.Pricing.V1.Messaging {
                                                   "null"));
             
             try {
-                CountryResource.Read().Execute(twilioRestClient);
+                CountryResource.Reader().Read(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -57,7 +57,7 @@ namespace Twilio.Tests.Rest.Pricing.V1.Messaging {
                                                   "null"));
             
             try {
-                CountryResource.Fetch("US").Execute(twilioRestClient);
+                CountryResource.Fetcher("US").Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>

@@ -133,7 +133,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
          * @param accountSid The account_sid
          * @return DailyReader capable of executing the read
          */
-        public static DailyReader Read(string accountSid) {
+        public static DailyReader Reader(string accountSid) {
             return new DailyReader(accountSid);
         }
     
@@ -142,7 +142,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
          * 
          * @return DailyReader capable of executing the read
          */
-        public static DailyReader Read() {
+        public static DailyReader Reader() {
             return new DailyReader();
         }
     

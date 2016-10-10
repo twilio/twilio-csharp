@@ -29,7 +29,7 @@ namespace Twilio.Tests.Rest.Pricing.V1.Voice {
                                                   "null"));
             
             try {
-                NumberResource.Fetch(new Twilio.Types.PhoneNumber("+987654321")).Execute(twilioRestClient);
+                NumberResource.Fetcher(new Twilio.Types.PhoneNumber("+987654321")).Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -52,7 +52,7 @@ namespace Twilio.Tests.Rest.Pricing.V1.Voice {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"country\": \"United States\",\"inbound_call_price\": {\"base_price\": null,\"current_price\": null,\"number_type\": null},\"iso_country\": \"US\",\"number\": \"+987654321\",\"outbound_call_price\": {\"base_price\": \"0.015\",\"current_price\": \"0.015\"},\"price_unit\": \"USD\",\"url\": \"https://pricing.twilio.com/v1/Voice/Numbers/+987654321\"}"));
             
-            var response = NumberResource.Fetch(new Twilio.Types.PhoneNumber("+987654321")).Execute(twilioRestClient);
+            var response = NumberResource.Fetcher(new Twilio.Types.PhoneNumber("+987654321")).Fetch(twilioRestClient);
             Assert.NotNull(response);
         }
     }

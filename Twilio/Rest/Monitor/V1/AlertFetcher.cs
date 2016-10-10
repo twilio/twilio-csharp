@@ -28,7 +28,7 @@ namespace Twilio.Rest.Monitor.V1 {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched AlertResource
          */
-        public override async Task<AlertResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<AlertResource> FetchAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.MONITOR,
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Monitor.V1 {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched AlertResource
          */
-        public override AlertResource Execute(ITwilioRestClient client) {
+        public override AlertResource Fetch(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.MONITOR,

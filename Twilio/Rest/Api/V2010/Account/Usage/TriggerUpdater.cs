@@ -89,7 +89,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated TriggerResource
          */
-        public override async Task<TriggerResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<TriggerResource> UpdateAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
          * @param client ITwilioRestClient with which to make the request
          * @return Updated TriggerResource
          */
-        public override TriggerResource Execute(ITwilioRestClient client) {
+        public override TriggerResource Update(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,

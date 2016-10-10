@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
@@ -13,8 +14,8 @@ namespace Twilio.Rest.Notify.V1.Service {
 
     public class BindingReader : Reader<BindingResource> {
         private string serviceSid;
-        private string startDate;
-        private string endDate;
+        private DateTime? startDate;
+        private DateTime? endDate;
         private List<string> identity;
         private List<string> tag;
     
@@ -33,7 +34,7 @@ namespace Twilio.Rest.Notify.V1.Service {
          * @param startDate The start_date
          * @return this
          */
-        public BindingReader ByStartDate(string startDate) {
+        public BindingReader ByStartDate(DateTime? startDate) {
             this.startDate = startDate;
             return this;
         }
@@ -44,7 +45,7 @@ namespace Twilio.Rest.Notify.V1.Service {
          * @param endDate The end_date
          * @return this
          */
-        public BindingReader ByEndDate(string endDate) {
+        public BindingReader ByEndDate(DateTime? endDate) {
             this.endDate = endDate;
             return this;
         }
@@ -98,7 +99,7 @@ namespace Twilio.Rest.Notify.V1.Service {
          * @param client ITwilioRestClient with which to make the request
          * @return BindingResource ResourceSet
          */
-        public override Task<ResourceSet<BindingResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<BindingResource>> ReadAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.NOTIFY,
@@ -120,7 +121,7 @@ namespace Twilio.Rest.Notify.V1.Service {
          * @param client ITwilioRestClient with which to make the request
          * @return BindingResource ResourceSet
          */
-        public override ResourceSet<BindingResource> Execute(ITwilioRestClient client) {
+        public override ResourceSet<BindingResource> Read(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.NOTIFY,
@@ -190,11 +191,11 @@ namespace Twilio.Rest.Notify.V1.Service {
          */
         private void AddQueryParams(Request request) {
             if (startDate != null) {
-                request.AddQueryParam("StartDate", startDate);
+                request.AddQueryParam("StartDate", startDate.ToString());
             }
             
             if (endDate != null) {
-                request.AddQueryParam("EndDate", endDate);
+                request.AddQueryParam("EndDate", endDate.ToString());
             }
             
             if (identity != null) {

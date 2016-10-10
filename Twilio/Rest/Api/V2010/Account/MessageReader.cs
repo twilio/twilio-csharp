@@ -70,7 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return MessageResource ResourceSet
          */
-        public override Task<ResourceSet<MessageResource>> ExecuteAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<MessageResource>> ReadAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return MessageResource ResourceSet
          */
-        public override ResourceSet<MessageResource> Execute(ITwilioRestClient client) {
+        public override ResourceSet<MessageResource> Read(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -169,9 +169,6 @@ namespace Twilio.Rest.Api.V2010.Account {
                 request.AddQueryParam("From", from.ToString());
             }
             
-            if (dateSent != null) {
-                request.AddQueryParam("DateSent", dateSent);
-            }
             
             request.AddQueryParam("PageSize", GetPageSize().ToString());
         }

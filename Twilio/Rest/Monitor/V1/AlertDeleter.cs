@@ -28,7 +28,7 @@ namespace Twilio.Rest.Monitor.V1 {
          * 
          * @param client ITwilioRestClient with which to make the request
          */
-        public override async System.Threading.Tasks.Task ExecuteAsync(ITwilioRestClient client) {
+        public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.MONITOR,
@@ -61,7 +61,7 @@ namespace Twilio.Rest.Monitor.V1 {
          * 
          * @param client ITwilioRestClient with which to make the request
          */
-        public override void Execute(ITwilioRestClient client) {
+        public override void Delete(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.MONITOR,

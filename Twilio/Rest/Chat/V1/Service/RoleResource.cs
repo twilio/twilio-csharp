@@ -46,7 +46,7 @@ namespace Twilio.Rest.Chat.V1.Service {
          * @param sid The sid
          * @return RoleFetcher capable of executing the fetch
          */
-        public static RoleFetcher Fetch(string serviceSid, string sid) {
+        public static RoleFetcher Fetcher(string serviceSid, string sid) {
             return new RoleFetcher(serviceSid, sid);
         }
     
@@ -57,7 +57,7 @@ namespace Twilio.Rest.Chat.V1.Service {
          * @param sid The sid
          * @return RoleDeleter capable of executing the delete
          */
-        public static RoleDeleter Delete(string serviceSid, string sid) {
+        public static RoleDeleter Deleter(string serviceSid, string sid) {
             return new RoleDeleter(serviceSid, sid);
         }
     
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Chat.V1.Service {
          * @param permission The permission
          * @return RoleCreator capable of executing the create
          */
-        public static RoleCreator Create(string serviceSid, string friendlyName, RoleResource.RoleType type, List<string> permission) {
+        public static RoleCreator Creator(string serviceSid, string friendlyName, RoleResource.RoleType type, List<string> permission) {
             return new RoleCreator(serviceSid, friendlyName, type, permission);
         }
     
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Chat.V1.Service {
          * @param serviceSid The service_sid
          * @return RoleReader capable of executing the read
          */
-        public static RoleReader Read(string serviceSid) {
+        public static RoleReader Reader(string serviceSid) {
             return new RoleReader(serviceSid);
         }
     
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Chat.V1.Service {
          * @param permission The permission
          * @return RoleUpdater capable of executing the update
          */
-        public static RoleUpdater Update(string serviceSid, string sid, List<string> permission) {
+        public static RoleUpdater Updater(string serviceSid, string sid, List<string> permission) {
             return new RoleUpdater(serviceSid, sid, permission);
         }
     

@@ -30,7 +30,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless {
                                                   "null"));
             
             try {
-                RatePlanResource.Read().Execute(twilioRestClient);
+                RatePlanResource.Reader().Read(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -57,7 +57,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless {
                                                   "null"));
             
             try {
-                RatePlanResource.Fetch("sid").Execute(twilioRestClient);
+                RatePlanResource.Fetcher("sid").Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>

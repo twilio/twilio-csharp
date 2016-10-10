@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched AuthorizedConnectAppResource
          */
-        public override async Task<AuthorizedConnectAppResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<AuthorizedConnectAppResource> FetchAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched AuthorizedConnectAppResource
          */
-        public override AuthorizedConnectAppResource Execute(ITwilioRestClient client) {
+        public override AuthorizedConnectAppResource Fetch(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

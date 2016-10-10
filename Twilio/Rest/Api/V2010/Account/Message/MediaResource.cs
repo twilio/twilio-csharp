@@ -17,7 +17,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
          * @param sid Delete by unique media Sid
          * @return MediaDeleter capable of executing the delete
          */
-        public static MediaDeleter Delete(string accountSid, string messageSid, string sid) {
+        public static MediaDeleter Deleter(string accountSid, string messageSid, string sid) {
             return new MediaDeleter(accountSid, messageSid, sid);
         }
     
@@ -28,8 +28,8 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
          * @param sid Delete by unique media Sid
          * @return MediaDeleter capable of executing the delete
          */
-        public static MediaDeleter Delete(string messageSid, 
-                                          string sid) {
+        public static MediaDeleter Deleter(string messageSid, 
+                                           string sid) {
             return new MediaDeleter(messageSid, sid);
         }
     
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
          * @param sid Fetch by unique media Sid
          * @return MediaFetcher capable of executing the fetch
          */
-        public static MediaFetcher Fetch(string accountSid, string messageSid, string sid) {
+        public static MediaFetcher Fetcher(string accountSid, string messageSid, string sid) {
             return new MediaFetcher(accountSid, messageSid, sid);
         }
     
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
          * @param sid Fetch by unique media Sid
          * @return MediaFetcher capable of executing the fetch
          */
-        public static MediaFetcher Fetch(string messageSid, 
-                                         string sid) {
+        public static MediaFetcher Fetcher(string messageSid, 
+                                           string sid) {
             return new MediaFetcher(messageSid, sid);
         }
     
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
          * @param messageSid The message_sid
          * @return MediaReader capable of executing the read
          */
-        public static MediaReader Read(string accountSid, string messageSid) {
+        public static MediaReader Reader(string accountSid, string messageSid) {
             return new MediaReader(accountSid, messageSid);
         }
     
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
          * @param messageSid The message_sid
          * @return MediaReader capable of executing the read
          */
-        public static MediaReader Read(string messageSid) {
+        public static MediaReader Reader(string messageSid) {
             return new MediaReader(messageSid);
         }
     

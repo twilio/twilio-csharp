@@ -45,7 +45,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched MediaResource
          */
-        public override async Task<MediaResource> ExecuteAsync(ITwilioRestClient client) {
+        public override async Task<MediaResource> FetchAsync(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
          * @param client ITwilioRestClient with which to make the request
          * @return Fetched MediaResource
          */
-        public override MediaResource Execute(ITwilioRestClient client) {
+        public override MediaResource Fetch(ITwilioRestClient client) {
             Request request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

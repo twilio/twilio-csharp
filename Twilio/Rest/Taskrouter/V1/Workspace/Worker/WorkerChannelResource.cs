@@ -17,7 +17,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
          * @param workerSid The worker_sid
          * @return WorkerChannelReader capable of executing the read
          */
-        public static WorkerChannelReader Read(string workspaceSid, string workerSid) {
+        public static WorkerChannelReader Reader(string workspaceSid, string workerSid) {
             return new WorkerChannelReader(workspaceSid, workerSid);
         }
     
@@ -29,7 +29,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
          * @param sid The sid
          * @return WorkerChannelFetcher capable of executing the fetch
          */
-        public static WorkerChannelFetcher Fetch(string workspaceSid, string workerSid, string sid) {
+        public static WorkerChannelFetcher Fetcher(string workspaceSid, string workerSid, string sid) {
             return new WorkerChannelFetcher(workspaceSid, workerSid, sid);
         }
     
@@ -41,7 +41,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
          * @param sid The sid
          * @return WorkerChannelUpdater capable of executing the update
          */
-        public static WorkerChannelUpdater Update(string workspaceSid, string workerSid, string sid) {
+        public static WorkerChannelUpdater Updater(string workspaceSid, string workerSid, string sid) {
             return new WorkerChannelUpdater(workspaceSid, workerSid, sid);
         }
     

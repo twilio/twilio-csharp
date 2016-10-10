@@ -16,7 +16,7 @@ namespace Twilio.Rest.Preview.Wireless {
          * @param sid The sid
          * @return DeviceFetcher capable of executing the fetch
          */
-        public static DeviceFetcher Fetch(string sid) {
+        public static DeviceFetcher Fetcher(string sid) {
             return new DeviceFetcher(sid);
         }
     
@@ -25,7 +25,7 @@ namespace Twilio.Rest.Preview.Wireless {
          * 
          * @return DeviceReader capable of executing the read
          */
-        public static DeviceReader Read() {
+        public static DeviceReader Reader() {
             return new DeviceReader();
         }
     
@@ -35,7 +35,7 @@ namespace Twilio.Rest.Preview.Wireless {
          * @param ratePlan The rate_plan
          * @return DeviceCreator capable of executing the create
          */
-        public static DeviceCreator Create(string ratePlan) {
+        public static DeviceCreator Creator(string ratePlan) {
             return new DeviceCreator(ratePlan);
         }
     
@@ -45,7 +45,7 @@ namespace Twilio.Rest.Preview.Wireless {
          * @param sid The sid
          * @return DeviceUpdater capable of executing the update
          */
-        public static DeviceUpdater Update(string sid) {
+        public static DeviceUpdater Updater(string sid) {
             return new DeviceUpdater(sid);
         }
     

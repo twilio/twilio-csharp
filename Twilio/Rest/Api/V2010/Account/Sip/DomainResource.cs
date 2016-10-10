@@ -15,7 +15,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param accountSid The account_sid
          * @return DomainReader capable of executing the read
          */
-        public static DomainReader Read(string accountSid) {
+        public static DomainReader Reader(string accountSid) {
             return new DomainReader(accountSid);
         }
     
@@ -24,7 +24,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * 
          * @return DomainReader capable of executing the read
          */
-        public static DomainReader Read() {
+        public static DomainReader Reader() {
             return new DomainReader();
         }
     
@@ -35,7 +35,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param domainName The unique address on Twilio to route SIP traffic
          * @return DomainCreator capable of executing the create
          */
-        public static DomainCreator Create(string accountSid, string domainName) {
+        public static DomainCreator Creator(string accountSid, string domainName) {
             return new DomainCreator(accountSid, domainName);
         }
     
@@ -45,7 +45,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param domainName The unique address on Twilio to route SIP traffic
          * @return DomainCreator capable of executing the create
          */
-        public static DomainCreator Create(string domainName) {
+        public static DomainCreator Creator(string domainName) {
             return new DomainCreator(domainName);
         }
     
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param sid Fetch by unique Domain Sid
          * @return DomainFetcher capable of executing the fetch
          */
-        public static DomainFetcher Fetch(string accountSid, string sid) {
+        public static DomainFetcher Fetcher(string accountSid, string sid) {
             return new DomainFetcher(accountSid, sid);
         }
     
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param sid Fetch by unique Domain Sid
          * @return DomainFetcher capable of executing the fetch
          */
-        public static DomainFetcher Fetch(string sid) {
+        public static DomainFetcher Fetcher(string sid) {
             return new DomainFetcher(sid);
         }
     
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param sid The sid
          * @return DomainUpdater capable of executing the update
          */
-        public static DomainUpdater Update(string accountSid, string sid) {
+        public static DomainUpdater Updater(string accountSid, string sid) {
             return new DomainUpdater(accountSid, sid);
         }
     
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param sid The sid
          * @return DomainUpdater capable of executing the update
          */
-        public static DomainUpdater Update(string sid) {
+        public static DomainUpdater Updater(string sid) {
             return new DomainUpdater(sid);
         }
     
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param sid The sid
          * @return DomainDeleter capable of executing the delete
          */
-        public static DomainDeleter Delete(string accountSid, string sid) {
+        public static DomainDeleter Deleter(string accountSid, string sid) {
             return new DomainDeleter(accountSid, sid);
         }
     
@@ -108,7 +108,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
          * @param sid The sid
          * @return DomainDeleter capable of executing the delete
          */
-        public static DomainDeleter Delete(string sid) {
+        public static DomainDeleter Deleter(string sid) {
             return new DomainDeleter(sid);
         }
     

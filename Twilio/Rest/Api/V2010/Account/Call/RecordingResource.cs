@@ -17,7 +17,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
          * @param sid The sid
          * @return RecordingFetcher capable of executing the fetch
          */
-        public static RecordingFetcher Fetch(string accountSid, string callSid, string sid) {
+        public static RecordingFetcher Fetcher(string accountSid, string callSid, string sid) {
             return new RecordingFetcher(accountSid, callSid, sid);
         }
     
@@ -28,8 +28,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
          * @param sid The sid
          * @return RecordingFetcher capable of executing the fetch
          */
-        public static RecordingFetcher Fetch(string callSid, 
-                                             string sid) {
+        public static RecordingFetcher Fetcher(string callSid, 
+                                               string sid) {
             return new RecordingFetcher(callSid, sid);
         }
     
@@ -41,7 +41,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
          * @param sid The sid
          * @return RecordingDeleter capable of executing the delete
          */
-        public static RecordingDeleter Delete(string accountSid, string callSid, string sid) {
+        public static RecordingDeleter Deleter(string accountSid, string callSid, string sid) {
             return new RecordingDeleter(accountSid, callSid, sid);
         }
     
@@ -52,8 +52,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
          * @param sid The sid
          * @return RecordingDeleter capable of executing the delete
          */
-        public static RecordingDeleter Delete(string callSid, 
-                                              string sid) {
+        public static RecordingDeleter Deleter(string callSid, 
+                                               string sid) {
             return new RecordingDeleter(callSid, sid);
         }
     
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
          * @param callSid The call_sid
          * @return RecordingReader capable of executing the read
          */
-        public static RecordingReader Read(string accountSid, string callSid) {
+        public static RecordingReader Reader(string accountSid, string callSid) {
             return new RecordingReader(accountSid, callSid);
         }
     
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
          * @param callSid The call_sid
          * @return RecordingReader capable of executing the read
          */
-        public static RecordingReader Read(string callSid) {
+        public static RecordingReader Reader(string callSid) {
             return new RecordingReader(callSid);
         }
     
