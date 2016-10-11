@@ -29,18 +29,16 @@ namespace Twilio.Rest.Preview.Sync.Service {
          * @return SyncListResource ResourceSet
          */
         public override Task<ResourceSet<SyncListResource>> ReadAsync(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.PREVIEW,
                 "/Sync/Services/" + this.serviceSid + "/Lists"
             );
-            
             AddQueryParams(request);
             
-            Page<SyncListResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
-            return System.Threading.Tasks.Task.FromResult(
-                    new ResourceSet<SyncListResource>(this, client, page));
+            return System.Threading.Tasks.Task.FromResult(new ResourceSet<SyncListResource>(this, client, page));
         }
         #endif
     
@@ -51,15 +49,14 @@ namespace Twilio.Rest.Preview.Sync.Service {
          * @return SyncListResource ResourceSet
          */
         public override ResourceSet<SyncListResource> Read(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.PREVIEW,
                 "/Sync/Services/" + this.serviceSid + "/Lists"
             );
             
             AddQueryParams(request);
-            
-            Page<SyncListResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
             return new ResourceSet<SyncListResource>(this, client, page);
         }
@@ -71,15 +68,15 @@ namespace Twilio.Rest.Preview.Sync.Service {
          * @param client ITwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<SyncListResource> NextPage(string nextPageUri, ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                nextPageUri
+        public override Page<SyncListResource> NextPage(Page<SyncListResource> page, ITwilioRestClient client) {
+            var request = new Request(
+                HttpMethod.GET,
+                page.GetNextPageUrl(
+                    Domains.PREVIEW
+                )
             );
             
-            var result = PageForRequest(client, request);
-            
-            return result;
+            return PageForRequest(client, request);
         }
     
         /**
@@ -90,12 +87,12 @@ namespace Twilio.Rest.Preview.Sync.Service {
          * @return Page for the Request
          */
         protected Page<SyncListResource> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = client.Request(request);
+            var response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("SyncListResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -107,10 +104,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
                 );
             }
             
-            Page<SyncListResource> result = new Page<SyncListResource>();
-            result.deserialize("lists", response.GetContent());
-            
-            return result;
+            return Page<SyncListResource>.FromJson("lists", response.GetContent());
         }
     
         /**
@@ -119,7 +113,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
          * @param request Request to add query string arguments to
          */
         private void AddQueryParams(Request request) {
-            request.AddQueryParam("PageSize", GetPageSize().ToString());
+            request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }
 }

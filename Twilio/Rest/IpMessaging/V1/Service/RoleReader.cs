@@ -29,18 +29,16 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
          * @return RoleResource ResourceSet
          */
         public override Task<ResourceSet<RoleResource>> ReadAsync(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Roles"
             );
-            
             AddQueryParams(request);
             
-            Page<RoleResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
-            return System.Threading.Tasks.Task.FromResult(
-                    new ResourceSet<RoleResource>(this, client, page));
+            return System.Threading.Tasks.Task.FromResult(new ResourceSet<RoleResource>(this, client, page));
         }
         #endif
     
@@ -51,15 +49,14 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
          * @return RoleResource ResourceSet
          */
         public override ResourceSet<RoleResource> Read(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Roles"
             );
             
             AddQueryParams(request);
-            
-            Page<RoleResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
             return new ResourceSet<RoleResource>(this, client, page);
         }
@@ -71,15 +68,15 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
          * @param client ITwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<RoleResource> NextPage(string nextPageUri, ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                nextPageUri
+        public override Page<RoleResource> NextPage(Page<RoleResource> page, ITwilioRestClient client) {
+            var request = new Request(
+                HttpMethod.GET,
+                page.GetNextPageUrl(
+                    Domains.IP_MESSAGING
+                )
             );
             
-            var result = PageForRequest(client, request);
-            
-            return result;
+            return PageForRequest(client, request);
         }
     
         /**
@@ -90,12 +87,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
          * @return Page for the Request
          */
         protected Page<RoleResource> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = client.Request(request);
+            var response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("RoleResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -107,10 +104,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
                 );
             }
             
-            Page<RoleResource> result = new Page<RoleResource>();
-            result.deserialize("roles", response.GetContent());
-            
-            return result;
+            return Page<RoleResource>.FromJson("roles", response.GetContent());
         }
     
         /**
@@ -119,7 +113,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
          * @param request Request to add query string arguments to
          */
         private void AddQueryParams(Request request) {
-            request.AddQueryParam("PageSize", GetPageSize().ToString());
+            request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }
 }

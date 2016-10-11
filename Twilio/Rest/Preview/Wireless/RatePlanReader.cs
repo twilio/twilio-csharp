@@ -18,18 +18,16 @@ namespace Twilio.Rest.Preview.Wireless {
          * @return RatePlanResource ResourceSet
          */
         public override Task<ResourceSet<RatePlanResource>> ReadAsync(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.PREVIEW,
                 "/wireless/RatePlans"
             );
-            
             AddQueryParams(request);
             
-            Page<RatePlanResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
-            return System.Threading.Tasks.Task.FromResult(
-                    new ResourceSet<RatePlanResource>(this, client, page));
+            return System.Threading.Tasks.Task.FromResult(new ResourceSet<RatePlanResource>(this, client, page));
         }
         #endif
     
@@ -40,15 +38,14 @@ namespace Twilio.Rest.Preview.Wireless {
          * @return RatePlanResource ResourceSet
          */
         public override ResourceSet<RatePlanResource> Read(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.PREVIEW,
                 "/wireless/RatePlans"
             );
             
             AddQueryParams(request);
-            
-            Page<RatePlanResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
             return new ResourceSet<RatePlanResource>(this, client, page);
         }
@@ -60,15 +57,15 @@ namespace Twilio.Rest.Preview.Wireless {
          * @param client ITwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<RatePlanResource> NextPage(string nextPageUri, ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                nextPageUri
+        public override Page<RatePlanResource> NextPage(Page<RatePlanResource> page, ITwilioRestClient client) {
+            var request = new Request(
+                HttpMethod.GET,
+                page.GetNextPageUrl(
+                    Domains.PREVIEW
+                )
             );
             
-            var result = PageForRequest(client, request);
-            
-            return result;
+            return PageForRequest(client, request);
         }
     
         /**
@@ -79,12 +76,12 @@ namespace Twilio.Rest.Preview.Wireless {
          * @return Page for the Request
          */
         protected Page<RatePlanResource> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = client.Request(request);
+            var response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("RatePlanResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -96,10 +93,7 @@ namespace Twilio.Rest.Preview.Wireless {
                 );
             }
             
-            Page<RatePlanResource> result = new Page<RatePlanResource>();
-            result.deserialize("rate_plans", response.GetContent());
-            
-            return result;
+            return Page<RatePlanResource>.FromJson("rate_plans", response.GetContent());
         }
     
         /**
@@ -108,7 +102,7 @@ namespace Twilio.Rest.Preview.Wireless {
          * @param request Request to add query string arguments to
          */
         private void AddQueryParams(Request request) {
-            request.AddQueryParam("PageSize", GetPageSize().ToString());
+            request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }
 }

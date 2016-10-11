@@ -41,18 +41,16 @@ namespace Twilio.Rest.Api.V2010.Account.Address {
          * @return DependentPhoneNumberResource ResourceSet
          */
         public override Task<ResourceSet<DependentPhoneNumberResource>> ReadAsync(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Addresses/" + this.addressSid + "/DependentPhoneNumbers.json"
             );
-            
             AddQueryParams(request);
             
-            Page<DependentPhoneNumberResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
-            return System.Threading.Tasks.Task.FromResult(
-                    new ResourceSet<DependentPhoneNumberResource>(this, client, page));
+            return System.Threading.Tasks.Task.FromResult(new ResourceSet<DependentPhoneNumberResource>(this, client, page));
         }
         #endif
     
@@ -63,15 +61,14 @@ namespace Twilio.Rest.Api.V2010.Account.Address {
          * @return DependentPhoneNumberResource ResourceSet
          */
         public override ResourceSet<DependentPhoneNumberResource> Read(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Addresses/" + this.addressSid + "/DependentPhoneNumbers.json"
             );
             
             AddQueryParams(request);
-            
-            Page<DependentPhoneNumberResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
             return new ResourceSet<DependentPhoneNumberResource>(this, client, page);
         }
@@ -83,15 +80,15 @@ namespace Twilio.Rest.Api.V2010.Account.Address {
          * @param client ITwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<DependentPhoneNumberResource> NextPage(string nextPageUri, ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                nextPageUri
+        public override Page<DependentPhoneNumberResource> NextPage(Page<DependentPhoneNumberResource> page, ITwilioRestClient client) {
+            var request = new Request(
+                HttpMethod.GET,
+                page.GetNextPageUrl(
+                    Domains.API
+                )
             );
             
-            var result = PageForRequest(client, request);
-            
-            return result;
+            return PageForRequest(client, request);
         }
     
         /**
@@ -102,12 +99,12 @@ namespace Twilio.Rest.Api.V2010.Account.Address {
          * @return Page for the Request
          */
         protected Page<DependentPhoneNumberResource> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = client.Request(request);
+            var response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("DependentPhoneNumberResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -119,10 +116,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address {
                 );
             }
             
-            Page<DependentPhoneNumberResource> result = new Page<DependentPhoneNumberResource>();
-            result.deserialize("dependent_phone_numbers", response.GetContent());
-            
-            return result;
+            return Page<DependentPhoneNumberResource>.FromJson("dependent_phone_numbers", response.GetContent());
         }
     
         /**
@@ -131,7 +125,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address {
          * @param request Request to add query string arguments to
          */
         private void AddQueryParams(Request request) {
-            request.AddQueryParam("PageSize", GetPageSize().ToString());
+            request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }
 }

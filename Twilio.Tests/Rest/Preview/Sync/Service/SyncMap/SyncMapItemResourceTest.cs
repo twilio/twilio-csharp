@@ -107,7 +107,6 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap {
             Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.PREVIEW,
                                           "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items");
-            request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));

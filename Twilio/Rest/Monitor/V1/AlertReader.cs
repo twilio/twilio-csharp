@@ -57,18 +57,16 @@ namespace Twilio.Rest.Monitor.V1 {
          * @return AlertResource ResourceSet
          */
         public override Task<ResourceSet<AlertResource>> ReadAsync(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.MONITOR,
                 "/v1/Alerts"
             );
-            
             AddQueryParams(request);
             
-            Page<AlertResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
-            return System.Threading.Tasks.Task.FromResult(
-                    new ResourceSet<AlertResource>(this, client, page));
+            return System.Threading.Tasks.Task.FromResult(new ResourceSet<AlertResource>(this, client, page));
         }
         #endif
     
@@ -79,15 +77,14 @@ namespace Twilio.Rest.Monitor.V1 {
          * @return AlertResource ResourceSet
          */
         public override ResourceSet<AlertResource> Read(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.MONITOR,
                 "/v1/Alerts"
             );
             
             AddQueryParams(request);
-            
-            Page<AlertResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
             return new ResourceSet<AlertResource>(this, client, page);
         }
@@ -99,15 +96,15 @@ namespace Twilio.Rest.Monitor.V1 {
          * @param client ITwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<AlertResource> NextPage(string nextPageUri, ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                nextPageUri
+        public override Page<AlertResource> NextPage(Page<AlertResource> page, ITwilioRestClient client) {
+            var request = new Request(
+                HttpMethod.GET,
+                page.GetNextPageUrl(
+                    Domains.MONITOR
+                )
             );
             
-            var result = PageForRequest(client, request);
-            
-            return result;
+            return PageForRequest(client, request);
         }
     
         /**
@@ -118,12 +115,12 @@ namespace Twilio.Rest.Monitor.V1 {
          * @return Page for the Request
          */
         protected Page<AlertResource> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = client.Request(request);
+            var response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("AlertResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -135,10 +132,7 @@ namespace Twilio.Rest.Monitor.V1 {
                 );
             }
             
-            Page<AlertResource> result = new Page<AlertResource>();
-            result.deserialize("alerts", response.GetContent());
-            
-            return result;
+            return Page<AlertResource>.FromJson("alerts", response.GetContent());
         }
     
         /**
@@ -159,7 +153,7 @@ namespace Twilio.Rest.Monitor.V1 {
                 request.AddQueryParam("EndDate", endDate.ToString());
             }
             
-            request.AddQueryParam("PageSize", GetPageSize().ToString());
+            request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }
 }

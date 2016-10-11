@@ -35,18 +35,16 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @return TranscriptionResource ResourceSet
          */
         public override Task<ResourceSet<TranscriptionResource>> ReadAsync(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Transcriptions.json"
             );
-            
             AddQueryParams(request);
             
-            Page<TranscriptionResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
-            return System.Threading.Tasks.Task.FromResult(
-                    new ResourceSet<TranscriptionResource>(this, client, page));
+            return System.Threading.Tasks.Task.FromResult(new ResourceSet<TranscriptionResource>(this, client, page));
         }
         #endif
     
@@ -57,15 +55,14 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @return TranscriptionResource ResourceSet
          */
         public override ResourceSet<TranscriptionResource> Read(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Transcriptions.json"
             );
             
             AddQueryParams(request);
-            
-            Page<TranscriptionResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
             return new ResourceSet<TranscriptionResource>(this, client, page);
         }
@@ -77,15 +74,15 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<TranscriptionResource> NextPage(string nextPageUri, ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                nextPageUri
+        public override Page<TranscriptionResource> NextPage(Page<TranscriptionResource> page, ITwilioRestClient client) {
+            var request = new Request(
+                HttpMethod.GET,
+                page.GetNextPageUrl(
+                    Domains.API
+                )
             );
             
-            var result = PageForRequest(client, request);
-            
-            return result;
+            return PageForRequest(client, request);
         }
     
         /**
@@ -96,12 +93,12 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @return Page for the Request
          */
         protected Page<TranscriptionResource> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = client.Request(request);
+            var response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TranscriptionResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -113,10 +110,7 @@ namespace Twilio.Rest.Api.V2010.Account {
                 );
             }
             
-            Page<TranscriptionResource> result = new Page<TranscriptionResource>();
-            result.deserialize("transcriptions", response.GetContent());
-            
-            return result;
+            return Page<TranscriptionResource>.FromJson("transcriptions", response.GetContent());
         }
     
         /**
@@ -125,7 +119,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param request Request to add query string arguments to
          */
         private void AddQueryParams(Request request) {
-            request.AddQueryParam("PageSize", GetPageSize().ToString());
+            request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }
 }

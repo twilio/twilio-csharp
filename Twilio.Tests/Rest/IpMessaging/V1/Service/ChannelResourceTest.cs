@@ -137,7 +137,6 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service {
             Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.IP_MESSAGING,
                                           "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels");
-            request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));

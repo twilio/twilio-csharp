@@ -62,7 +62,6 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace {
             Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.TASKROUTER,
                                           "/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Events");
-            request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));

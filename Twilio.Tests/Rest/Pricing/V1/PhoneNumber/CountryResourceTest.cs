@@ -24,7 +24,6 @@ namespace Twilio.Tests.Rest.Pricing.V1.PhoneNumber {
             Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.PRICING,
                                           "/v1/PhoneNumbers/Countries");
-            request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));

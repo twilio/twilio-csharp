@@ -32,18 +32,16 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
          * @return MemberResource ResourceSet
          */
         public override Task<ResourceSet<MemberResource>> ReadAsync(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Members"
             );
-            
             AddQueryParams(request);
             
-            Page<MemberResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
-            return System.Threading.Tasks.Task.FromResult(
-                    new ResourceSet<MemberResource>(this, client, page));
+            return System.Threading.Tasks.Task.FromResult(new ResourceSet<MemberResource>(this, client, page));
         }
         #endif
     
@@ -54,15 +52,14 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
          * @return MemberResource ResourceSet
          */
         public override ResourceSet<MemberResource> Read(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Members"
             );
             
             AddQueryParams(request);
-            
-            Page<MemberResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
             return new ResourceSet<MemberResource>(this, client, page);
         }
@@ -74,15 +71,15 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
          * @param client ITwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<MemberResource> NextPage(string nextPageUri, ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                nextPageUri
+        public override Page<MemberResource> NextPage(Page<MemberResource> page, ITwilioRestClient client) {
+            var request = new Request(
+                HttpMethod.GET,
+                page.GetNextPageUrl(
+                    Domains.IP_MESSAGING
+                )
             );
             
-            var result = PageForRequest(client, request);
-            
-            return result;
+            return PageForRequest(client, request);
         }
     
         /**
@@ -93,12 +90,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
          * @return Page for the Request
          */
         protected Page<MemberResource> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = client.Request(request);
+            var response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("MemberResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -110,10 +107,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
                 );
             }
             
-            Page<MemberResource> result = new Page<MemberResource>();
-            result.deserialize("members", response.GetContent());
-            
-            return result;
+            return Page<MemberResource>.FromJson("members", response.GetContent());
         }
     
         /**
@@ -122,7 +116,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
          * @param request Request to add query string arguments to
          */
         private void AddQueryParams(Request request) {
-            request.AddQueryParam("PageSize", GetPageSize().ToString());
+            request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }
 }

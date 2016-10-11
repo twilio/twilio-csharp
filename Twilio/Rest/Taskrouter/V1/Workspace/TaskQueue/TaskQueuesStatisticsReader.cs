@@ -79,18 +79,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
          * @return TaskQueuesStatisticsResource ResourceSet
          */
         public override Task<ResourceSet<TaskQueuesStatisticsResource>> ReadAsync(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/TaskQueues/Statistics"
             );
-            
             AddQueryParams(request);
             
-            Page<TaskQueuesStatisticsResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
-            return System.Threading.Tasks.Task.FromResult(
-                    new ResourceSet<TaskQueuesStatisticsResource>(this, client, page));
+            return System.Threading.Tasks.Task.FromResult(new ResourceSet<TaskQueuesStatisticsResource>(this, client, page));
         }
         #endif
     
@@ -101,15 +99,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
          * @return TaskQueuesStatisticsResource ResourceSet
          */
         public override ResourceSet<TaskQueuesStatisticsResource> Read(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/TaskQueues/Statistics"
             );
             
             AddQueryParams(request);
-            
-            Page<TaskQueuesStatisticsResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
             return new ResourceSet<TaskQueuesStatisticsResource>(this, client, page);
         }
@@ -121,15 +118,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
          * @param client ITwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<TaskQueuesStatisticsResource> NextPage(string nextPageUri, ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                nextPageUri
+        public override Page<TaskQueuesStatisticsResource> NextPage(Page<TaskQueuesStatisticsResource> page, ITwilioRestClient client) {
+            var request = new Request(
+                HttpMethod.GET,
+                page.GetNextPageUrl(
+                    Domains.TASKROUTER
+                )
             );
             
-            var result = PageForRequest(client, request);
-            
-            return result;
+            return PageForRequest(client, request);
         }
     
         /**
@@ -140,12 +137,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
          * @return Page for the Request
          */
         protected Page<TaskQueuesStatisticsResource> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = client.Request(request);
+            var response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TaskQueuesStatisticsResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -157,10 +154,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
                 );
             }
             
-            Page<TaskQueuesStatisticsResource> result = new Page<TaskQueuesStatisticsResource>();
-            result.deserialize("task_queues_statistics", response.GetContent());
-            
-            return result;
+            return Page<TaskQueuesStatisticsResource>.FromJson("task_queues_statistics", response.GetContent());
         }
     
         /**
@@ -185,7 +179,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
                 request.AddQueryParam("StartDate", startDate.ToString());
             }
             
-            request.AddQueryParam("PageSize", GetPageSize().ToString());
+            request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }
 }

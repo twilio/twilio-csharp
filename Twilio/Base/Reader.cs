@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 #endif
 
+using System;
 using Twilio.Clients;
 
 namespace Twilio.Base
@@ -14,14 +15,22 @@ namespace Twilio.Base
     {
         private const int MaxPageSize = 1000;
 
-		private int pageSize = 50;
+        private int _pageSize;
+        public int PageSize
+        {
+            get { return _pageSize; }
+            set { _pageSize = Math.Min(value, MaxPageSize); }
+        }
 
-		#if NET40
+        private long Limit { get; set; }
+
+        #if NET40
         /// <summary>
         /// Execute an async request using the default client.
         /// </summary>
         /// <returns>Task that resolves to requested object</returns>
-        public async Task<ResourceSet<T>> ReadAsync() {
+        public async Task<ResourceSet<T>> ReadAsync()
+        {
 			return await ReadAsync(TwilioClient.GetRestClient());
 		}
 
@@ -37,7 +46,8 @@ namespace Twilio.Base
         /// Execute a request using the default client.
         /// </summary>
         /// <returns>Requested object</returns>
-        public ResourceSet<T> Read() {
+        public ResourceSet<T> Read()
+        {
 			return Read(TwilioClient.GetRestClient());
 		}
 
@@ -48,15 +58,11 @@ namespace Twilio.Base
         /// <returns>Requested object</returns>
         public abstract ResourceSet<T> Read(ITwilioRestClient client);
 
-		public abstract Page<T> NextPage(string nextPageUri, ITwilioRestClient client);
+        public Page<T> NextPage(Page<T> page)
+        {
+            return NextPage(page, TwilioClient.GetRestClient());
+        }
 
-		public int GetPageSize() {
-			return this.pageSize;
-		}
-
-		public Reader<T> SetPageSize(int pageSize) {
-			this.pageSize = System.Math.Min(pageSize, MaxPageSize);
-			return this;
-		}
+		public abstract Page<T> NextPage(Page<T> page, ITwilioRestClient client);
     }
 }

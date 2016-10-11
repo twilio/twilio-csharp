@@ -54,18 +54,16 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
          * @return MediaResource ResourceSet
          */
         public override Task<ResourceSet<MediaResource>> ReadAsync(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Messages/" + this.messageSid + "/Media.json"
             );
-            
             AddQueryParams(request);
             
-            Page<MediaResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
-            return System.Threading.Tasks.Task.FromResult(
-                    new ResourceSet<MediaResource>(this, client, page));
+            return System.Threading.Tasks.Task.FromResult(new ResourceSet<MediaResource>(this, client, page));
         }
         #endif
     
@@ -76,15 +74,14 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
          * @return MediaResource ResourceSet
          */
         public override ResourceSet<MediaResource> Read(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Messages/" + this.messageSid + "/Media.json"
             );
             
             AddQueryParams(request);
-            
-            Page<MediaResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
             return new ResourceSet<MediaResource>(this, client, page);
         }
@@ -96,15 +93,15 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
          * @param client ITwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<MediaResource> NextPage(string nextPageUri, ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                nextPageUri
+        public override Page<MediaResource> NextPage(Page<MediaResource> page, ITwilioRestClient client) {
+            var request = new Request(
+                HttpMethod.GET,
+                page.GetNextPageUrl(
+                    Domains.API
+                )
             );
             
-            var result = PageForRequest(client, request);
-            
-            return result;
+            return PageForRequest(client, request);
         }
     
         /**
@@ -115,12 +112,12 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
          * @return Page for the Request
          */
         protected Page<MediaResource> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = client.Request(request);
+            var response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("MediaResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -132,10 +129,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
                 );
             }
             
-            Page<MediaResource> result = new Page<MediaResource>();
-            result.deserialize("media_list", response.GetContent());
-            
-            return result;
+            return Page<MediaResource>.FromJson("media_list", response.GetContent());
         }
     
         /**
@@ -144,7 +138,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
          * @param request Request to add query string arguments to
          */
         private void AddQueryParams(Request request) {
-            request.AddQueryParam("PageSize", GetPageSize().ToString());
+            request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }
 }

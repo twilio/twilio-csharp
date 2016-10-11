@@ -3,73 +3,65 @@ using Twilio.Clients;
 
 namespace Twilio.Base
 {
-	public class ResourceSet<E> : IEnumerable<E> where E : Resource
-    {
-		protected Page<E> page;
-		protected bool autoPaging;
-		protected Reader<E> reader;
-		protected ITwilioRestClient client;
-		protected IEnumerator<E> iterator;
+	public class ResourceSet<T> : IEnumerable<T> where T : Resource
+	{
+	    private readonly Reader<T> _reader;
+	    private readonly ITwilioRestClient _client;
 
-		public ResourceSet(Reader<E> reader, ITwilioRestClient client, Page<E> page) {
-			this.reader = reader;
-			this.client = client;
-			this.page = page;
-			if (page == null) {
-				throw new System.Exception("page is null");
-			}
-			iterator = page.GetRecords().GetEnumerator();
-			autoPaging = true;
-		}
+	    private bool AutoPaging { get; set; }
+	    private long _pages;
+	    private long _pageLimit;
+	    private long _processed;
+	    private Page<T> _page;
+		private IEnumerator<T> _iterator;
 
-		public IEnumerator<E> GetEnumerator() {
-			return NewEnumerator();
-		}
+	    public ResourceSet(Reader<T> reader, ITwilioRestClient client, Page<T> page)
+	    {
+	        this._reader = reader;
+	        this._client = client;
+	        this._page = page;
 
-		public IEnumerator<E> NewEnumerator() {
-			while (page != null) {
-				iterator.Reset();
-				while (iterator.MoveNext()) {
-					yield return iterator.Current;
+	        this._iterator = page.Records.GetEnumerator();
+	        this._processed = 0;
+	        this._pages = 1;
+	        this._pageLimit = long.MaxValue;
+	    }
+
+	    protected void FetchNextPage() {
+	        if (!_page.HasNextPage() || _pages >= _pageLimit) {
+	            _page = null;
+	            _iterator = null;
+	            return;
+	        }
+
+            _pages++;
+	        _page = _reader.NextPage(_page, _client);
+	        _iterator = _page.Records.GetEnumerator();
+	    }
+
+	    public int GetPageSize() {
+	        return _page.PageSize;
+	    }
+
+	    public void SetPageSize(int pageSize) {
+	        _reader.PageSize = pageSize;
+	    }
+
+	    public IEnumerator<T> GetEnumerator() {
+			while (_page != null) {
+				_iterator.Reset();
+				while (_iterator.MoveNext()) {
+					yield return _iterator.Current;
 				}
 
-				if (IsAutoPaging() && page.GetNextPageUri () != "") {
+				if (AutoPaging && _page.HasNextPage()) {
 					FetchNextPage();
 				}
 			}
 		}
 
 		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() {
-			return NewEnumerator();
-		}
-
-		protected void FetchNextPage() {
-			if (page.GetNextPageUri() == null || page.GetNextPageUri() == "") {
-				page = null;
-				iterator = null;
-				return;
-			}
-
-			page = reader.NextPage(page.GetNextPageUri(), client);
-			if (page != null) {
-				iterator = page.GetRecords().GetEnumerator ();
-			}
-		}
-
-		public bool IsAutoPaging() {
-			return autoPaging;
-		}
-
-		public void SetAutoPaging(bool autoPaging) {
-			this.autoPaging = autoPaging;
-		}
-
-		public int GetPageSize() {
-			return this.page.GetPageSize();
-		}
-
-		public void SetPageSize(int pageSize) {
-			reader.SetPageSize(pageSize);
+			return GetEnumerator();
 		}
     }
 }

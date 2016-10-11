@@ -29,18 +29,16 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @return PhoneNumberResource ResourceSet
          */
         public override Task<ResourceSet<PhoneNumberResource>> ReadAsync(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.TRUNKING,
                 "/v1/Trunks/" + this.trunkSid + "/PhoneNumbers"
             );
-            
             AddQueryParams(request);
             
-            Page<PhoneNumberResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
-            return System.Threading.Tasks.Task.FromResult(
-                    new ResourceSet<PhoneNumberResource>(this, client, page));
+            return System.Threading.Tasks.Task.FromResult(new ResourceSet<PhoneNumberResource>(this, client, page));
         }
         #endif
     
@@ -51,15 +49,14 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @return PhoneNumberResource ResourceSet
          */
         public override ResourceSet<PhoneNumberResource> Read(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.TRUNKING,
                 "/v1/Trunks/" + this.trunkSid + "/PhoneNumbers"
             );
             
             AddQueryParams(request);
-            
-            Page<PhoneNumberResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
             return new ResourceSet<PhoneNumberResource>(this, client, page);
         }
@@ -71,15 +68,15 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param client ITwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<PhoneNumberResource> NextPage(string nextPageUri, ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                nextPageUri
+        public override Page<PhoneNumberResource> NextPage(Page<PhoneNumberResource> page, ITwilioRestClient client) {
+            var request = new Request(
+                HttpMethod.GET,
+                page.GetNextPageUrl(
+                    Domains.TRUNKING
+                )
             );
             
-            var result = PageForRequest(client, request);
-            
-            return result;
+            return PageForRequest(client, request);
         }
     
         /**
@@ -90,12 +87,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @return Page for the Request
          */
         protected Page<PhoneNumberResource> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = client.Request(request);
+            var response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("PhoneNumberResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -107,10 +104,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
                 );
             }
             
-            Page<PhoneNumberResource> result = new Page<PhoneNumberResource>();
-            result.deserialize("phone_numbers", response.GetContent());
-            
-            return result;
+            return Page<PhoneNumberResource>.FromJson("phone_numbers", response.GetContent());
         }
     
         /**
@@ -119,7 +113,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
          * @param request Request to add query string arguments to
          */
         private void AddQueryParams(Request request) {
-            request.AddQueryParam("PageSize", GetPageSize().ToString());
+            request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }
 }

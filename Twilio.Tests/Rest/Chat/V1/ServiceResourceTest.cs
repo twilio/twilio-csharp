@@ -138,7 +138,6 @@ namespace Twilio.Tests.Rest.Chat.V1 {
             Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.CHAT,
                                           "/v1/Services");
-            request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));

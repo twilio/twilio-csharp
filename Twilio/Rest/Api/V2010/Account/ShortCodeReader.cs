@@ -61,18 +61,16 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @return ShortCodeResource ResourceSet
          */
         public override Task<ResourceSet<ShortCodeResource>> ReadAsync(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SMS/ShortCodes.json"
             );
-            
             AddQueryParams(request);
             
-            Page<ShortCodeResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
-            return System.Threading.Tasks.Task.FromResult(
-                    new ResourceSet<ShortCodeResource>(this, client, page));
+            return System.Threading.Tasks.Task.FromResult(new ResourceSet<ShortCodeResource>(this, client, page));
         }
         #endif
     
@@ -83,15 +81,14 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @return ShortCodeResource ResourceSet
          */
         public override ResourceSet<ShortCodeResource> Read(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SMS/ShortCodes.json"
             );
             
             AddQueryParams(request);
-            
-            Page<ShortCodeResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
             return new ResourceSet<ShortCodeResource>(this, client, page);
         }
@@ -103,15 +100,15 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<ShortCodeResource> NextPage(string nextPageUri, ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                nextPageUri
+        public override Page<ShortCodeResource> NextPage(Page<ShortCodeResource> page, ITwilioRestClient client) {
+            var request = new Request(
+                HttpMethod.GET,
+                page.GetNextPageUrl(
+                    Domains.API
+                )
             );
             
-            var result = PageForRequest(client, request);
-            
-            return result;
+            return PageForRequest(client, request);
         }
     
         /**
@@ -122,12 +119,12 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @return Page for the Request
          */
         protected Page<ShortCodeResource> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = client.Request(request);
+            var response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ShortCodeResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -139,10 +136,7 @@ namespace Twilio.Rest.Api.V2010.Account {
                 );
             }
             
-            Page<ShortCodeResource> result = new Page<ShortCodeResource>();
-            result.deserialize("short_codes", response.GetContent());
-            
-            return result;
+            return Page<ShortCodeResource>.FromJson("short_codes", response.GetContent());
         }
     
         /**
@@ -159,7 +153,7 @@ namespace Twilio.Rest.Api.V2010.Account {
                 request.AddQueryParam("ShortCode", shortCode);
             }
             
-            request.AddQueryParam("PageSize", GetPageSize().ToString());
+            request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }
 }

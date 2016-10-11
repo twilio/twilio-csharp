@@ -18,18 +18,16 @@ namespace Twilio.Rest.IpMessaging.V1 {
          * @return ServiceResource ResourceSet
          */
         public override Task<ResourceSet<ServiceResource>> ReadAsync(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.IP_MESSAGING,
                 "/v1/Services"
             );
-            
             AddQueryParams(request);
             
-            Page<ServiceResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
-            return System.Threading.Tasks.Task.FromResult(
-                    new ResourceSet<ServiceResource>(this, client, page));
+            return System.Threading.Tasks.Task.FromResult(new ResourceSet<ServiceResource>(this, client, page));
         }
         #endif
     
@@ -40,15 +38,14 @@ namespace Twilio.Rest.IpMessaging.V1 {
          * @return ServiceResource ResourceSet
          */
         public override ResourceSet<ServiceResource> Read(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.IP_MESSAGING,
                 "/v1/Services"
             );
             
             AddQueryParams(request);
-            
-            Page<ServiceResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
             return new ResourceSet<ServiceResource>(this, client, page);
         }
@@ -60,15 +57,15 @@ namespace Twilio.Rest.IpMessaging.V1 {
          * @param client ITwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<ServiceResource> NextPage(string nextPageUri, ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                nextPageUri
+        public override Page<ServiceResource> NextPage(Page<ServiceResource> page, ITwilioRestClient client) {
+            var request = new Request(
+                HttpMethod.GET,
+                page.GetNextPageUrl(
+                    Domains.IP_MESSAGING
+                )
             );
             
-            var result = PageForRequest(client, request);
-            
-            return result;
+            return PageForRequest(client, request);
         }
     
         /**
@@ -79,12 +76,12 @@ namespace Twilio.Rest.IpMessaging.V1 {
          * @return Page for the Request
          */
         protected Page<ServiceResource> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = client.Request(request);
+            var response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("ServiceResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -96,10 +93,7 @@ namespace Twilio.Rest.IpMessaging.V1 {
                 );
             }
             
-            Page<ServiceResource> result = new Page<ServiceResource>();
-            result.deserialize("services", response.GetContent());
-            
-            return result;
+            return Page<ServiceResource>.FromJson("services", response.GetContent());
         }
     
         /**
@@ -108,7 +102,7 @@ namespace Twilio.Rest.IpMessaging.V1 {
          * @param request Request to add query string arguments to
          */
         private void AddQueryParams(Request request) {
-            request.AddQueryParam("PageSize", GetPageSize().ToString());
+            request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }
 }

@@ -18,18 +18,16 @@ namespace Twilio.Rest.Trunking.V1 {
          * @return TrunkResource ResourceSet
          */
         public override Task<ResourceSet<TrunkResource>> ReadAsync(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.TRUNKING,
                 "/v1/Trunks"
             );
-            
             AddQueryParams(request);
             
-            Page<TrunkResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
-            return System.Threading.Tasks.Task.FromResult(
-                    new ResourceSet<TrunkResource>(this, client, page));
+            return System.Threading.Tasks.Task.FromResult(new ResourceSet<TrunkResource>(this, client, page));
         }
         #endif
     
@@ -40,15 +38,14 @@ namespace Twilio.Rest.Trunking.V1 {
          * @return TrunkResource ResourceSet
          */
         public override ResourceSet<TrunkResource> Read(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.TRUNKING,
                 "/v1/Trunks"
             );
             
             AddQueryParams(request);
-            
-            Page<TrunkResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
             return new ResourceSet<TrunkResource>(this, client, page);
         }
@@ -60,15 +57,15 @@ namespace Twilio.Rest.Trunking.V1 {
          * @param client ITwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<TrunkResource> NextPage(string nextPageUri, ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                nextPageUri
+        public override Page<TrunkResource> NextPage(Page<TrunkResource> page, ITwilioRestClient client) {
+            var request = new Request(
+                HttpMethod.GET,
+                page.GetNextPageUrl(
+                    Domains.TRUNKING
+                )
             );
             
-            var result = PageForRequest(client, request);
-            
-            return result;
+            return PageForRequest(client, request);
         }
     
         /**
@@ -79,12 +76,12 @@ namespace Twilio.Rest.Trunking.V1 {
          * @return Page for the Request
          */
         protected Page<TrunkResource> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = client.Request(request);
+            var response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("TrunkResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -96,10 +93,7 @@ namespace Twilio.Rest.Trunking.V1 {
                 );
             }
             
-            Page<TrunkResource> result = new Page<TrunkResource>();
-            result.deserialize("trunks", response.GetContent());
-            
-            return result;
+            return Page<TrunkResource>.FromJson("trunks", response.GetContent());
         }
     
         /**
@@ -108,7 +102,7 @@ namespace Twilio.Rest.Trunking.V1 {
          * @param request Request to add query string arguments to
          */
         private void AddQueryParams(Request request) {
-            request.AddQueryParam("PageSize", GetPageSize().ToString());
+            request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }
 }

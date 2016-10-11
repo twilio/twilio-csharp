@@ -24,7 +24,6 @@ namespace Twilio.Tests.Rest.Notify.V1 {
             Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.NOTIFY,
                                           "/v1/Credentials");
-            request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));

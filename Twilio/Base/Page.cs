@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -7,78 +8,104 @@ namespace Twilio.Base
 {
 	public class Page<T> where T : Resource
 	{
-		protected List<T> records;
-		protected string firstPageUri;
-		protected string nextPageUri;
-		protected string previousPageUri;
-		protected string uri;
-		protected int pageSize;
+	    public List<T> Records { get; }
+	    public int PageSize { get; }
+	    private readonly string _uri;
+	    private readonly string _url;
+	    private readonly string _firstPageUri;
+	    private readonly string _firstPageUrl;
+	    private readonly string _nextPageUri;
+	    private readonly string _nextPageUrl;
+	    private readonly string _previousPageUri;
+	    private readonly string _previousPageUrl;
 
-		public Page() {
-			this.records = new List<T>();
-		}
+	    private Page(
+            List<T> records,
+            int pageSize,
+	        string uri=null,
+            string url=null,
+            string firstPageUri=null,
+            string firstPageUrl=null,
+            string previousPageUri=null,
+            string previousPageUrl=null,
+            string nextPageUri=null,
+            string nextPageUrl=null
+	    )
+	    {
+	        this.Records = records;
+	        this.PageSize = pageSize;
+	        this._uri = uri;
+	        this._url = url;
+	        this._firstPageUri = firstPageUri;
+	        this._firstPageUrl = firstPageUrl;
+	        this._nextPageUri = nextPageUri;
+	        this._nextPageUrl = nextPageUrl;
+	        this._previousPageUri = previousPageUri;
+	        this._previousPageUrl = previousPageUrl;
+	    }
 
-		public List<T> GetRecords() {
-			return records;
-		}
+	    private static string UrlFromUri(string domain, string uri)
+	    {
+	        return "https://" + domain + ".twilio.com" + uri;
+	    }
 
-		public string GetFirstPageUri() {
-			return firstPageUri;
-		}
+	    public string GetFirstPageUrl(string domain)
+	    {
+	        return _firstPageUrl ?? UrlFromUri(domain, _firstPageUri);
+	    }
 
-		public string GetNextPageUri() {
-			return nextPageUri;
-		}
+	    public string GetNextPageUrl(string domain)
+	    {
+	        return _nextPageUrl ?? UrlFromUri(domain, _nextPageUri);
+	    }
 
-		public string GetPreviousPageUri() {
-			return previousPageUri;
-		}
+	    public string GetPreviousPageUrl(string domain)
+	    {
+	        return _previousPageUrl ?? UrlFromUri(domain, _previousPageUri);
+	    }
 
-		public string GetUri() {
-			return uri;
-		}
+	    public string GetUrl(string domain)
+	    {
+	        return _url ?? UrlFromUri(domain, _uri);
+	    }
 
-		public int GetPageSize() {
-			return pageSize;
-		}
+	    public bool HasNextPage()
+	    {
+	        return !String.IsNullOrEmpty(_nextPageUrl) || !String.IsNullOrEmpty(_nextPageUri);
+	    }
 
-		public void deserialize(string recordKey, string json) {
-			JObject root = JObject.Parse(json);
-			var records = root[recordKey];
-			foreach (JToken record in records.Children()) {
-				T result = JsonConvert.DeserializeObject<T>(record.ToString());
-				this.records.Add(result);
-			}
+	    public static Page<T> FromJson(string recordKey, string json)
+	    {
+	        var root = JObject.Parse(json);
+	        var records = root[recordKey];
+	        var parsedRecords = records.Children().Select(
+	            record => JsonConvert.DeserializeObject<T>(record.ToString())
+	        ).ToList();
 
-			var nextPageNode = root["next_page_uri"];
-			var previousPageNode = root["previous_page_uri"];
-			var uriNode = root["uri"];
+	        var uriNode = root["uri"];
+	        if (uriNode != null)
+	        {
+	            // v2010 API
+	            return new Page<T>(
+	                parsedRecords,
+	                root["page_size"].Value<int>(),
+	                uri: uriNode.Value<string>(),
+	                firstPageUri: root["first_page_uri"].Value<string>(),
+	                nextPageUri: root["next_page_uri"].Value<string>(),
+	                previousPageUri: root["previous_page_uri"].Value<string>()
+	            );
+	        }
 
-			if (uriNode != null) {
-				uri = uriNode.Value<string> ();
-				firstPageUri = root ["first_page_uri"].Value<string> ();
-				pageSize = root ["page_size"].Value<int> ();
-
-				nextPageUri = nextPageNode.Value<string> ();
-				previousPageUri = previousPageNode.Value<string> ();
-			} else {
-				var meta = root["meta"];
-				uri = new Uri(meta["url"].Value<string>()).PathAndQuery;
-				nextPageNode = meta["next_page_url"];
-				previousPageNode = meta["previous_page_url"];
-
-				firstPageUri = new Uri(meta["first_page_url"].Value<string>()).PathAndQuery;
-				pageSize = meta["page_size"].Value<int>();
-
-				nextPageUri = nextPageNode.Value<string>();
-				if (nextPageUri != null) {
-					nextPageUri = new Uri(nextPageUri).PathAndQuery;
-				}
-				previousPageUri = previousPageNode.Value<string>();
-				if (previousPageUri != null) {
-					previousPageUri = new Uri(previousPageUri).PathAndQuery;
-				}
-			}
-		}
+            // next-gen API
+	        var meta = root["meta"];
+	        return new Page<T>(
+	            parsedRecords,
+	            meta["page_size"].Value<int>(),
+	            url: meta["url"].Value<string>(),
+	            firstPageUrl: meta["first_page_url"].Value<string>(),
+	            nextPageUrl: meta["next_page_url"].Value<string>(),
+	            previousPageUrl: meta["previous_page_url"].Value<string>()
+	        );
+	    }
 	}
 }

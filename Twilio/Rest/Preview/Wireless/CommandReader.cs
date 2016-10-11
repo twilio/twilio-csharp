@@ -55,18 +55,16 @@ namespace Twilio.Rest.Preview.Wireless {
          * @return CommandResource ResourceSet
          */
         public override Task<ResourceSet<CommandResource>> ReadAsync(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.PREVIEW,
                 "/wireless/Commands"
             );
-            
             AddQueryParams(request);
             
-            Page<CommandResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
-            return System.Threading.Tasks.Task.FromResult(
-                    new ResourceSet<CommandResource>(this, client, page));
+            return System.Threading.Tasks.Task.FromResult(new ResourceSet<CommandResource>(this, client, page));
         }
         #endif
     
@@ -77,15 +75,14 @@ namespace Twilio.Rest.Preview.Wireless {
          * @return CommandResource ResourceSet
          */
         public override ResourceSet<CommandResource> Read(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.PREVIEW,
                 "/wireless/Commands"
             );
             
             AddQueryParams(request);
-            
-            Page<CommandResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
             return new ResourceSet<CommandResource>(this, client, page);
         }
@@ -97,15 +94,15 @@ namespace Twilio.Rest.Preview.Wireless {
          * @param client ITwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<CommandResource> NextPage(string nextPageUri, ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                nextPageUri
+        public override Page<CommandResource> NextPage(Page<CommandResource> page, ITwilioRestClient client) {
+            var request = new Request(
+                HttpMethod.GET,
+                page.GetNextPageUrl(
+                    Domains.PREVIEW
+                )
             );
             
-            var result = PageForRequest(client, request);
-            
-            return result;
+            return PageForRequest(client, request);
         }
     
         /**
@@ -116,12 +113,12 @@ namespace Twilio.Rest.Preview.Wireless {
          * @return Page for the Request
          */
         protected Page<CommandResource> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = client.Request(request);
+            var response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("CommandResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -133,10 +130,7 @@ namespace Twilio.Rest.Preview.Wireless {
                 );
             }
             
-            Page<CommandResource> result = new Page<CommandResource>();
-            result.deserialize("commands", response.GetContent());
-            
-            return result;
+            return Page<CommandResource>.FromJson("commands", response.GetContent());
         }
     
         /**
@@ -157,7 +151,7 @@ namespace Twilio.Rest.Preview.Wireless {
                 request.AddQueryParam("Direction", direction);
             }
             
-            request.AddQueryParam("PageSize", GetPageSize().ToString());
+            request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }
 }

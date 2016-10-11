@@ -138,7 +138,6 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk {
             Request request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.TRUNKING,
                                           "/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers");
-            request.AddQueryParam("PageSize", "50");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));

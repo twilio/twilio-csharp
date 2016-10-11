@@ -107,18 +107,16 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @return CallResource ResourceSet
          */
         public override Task<ResourceSet<CallResource>> ReadAsync(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Calls.json"
             );
-            
             AddQueryParams(request);
             
-            Page<CallResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
-            return System.Threading.Tasks.Task.FromResult(
-                    new ResourceSet<CallResource>(this, client, page));
+            return System.Threading.Tasks.Task.FromResult(new ResourceSet<CallResource>(this, client, page));
         }
         #endif
     
@@ -129,15 +127,14 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @return CallResource ResourceSet
          */
         public override ResourceSet<CallResource> Read(ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
+            var request = new Request(
+                HttpMethod.GET,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Calls.json"
             );
             
             AddQueryParams(request);
-            
-            Page<CallResource> page = PageForRequest(client, request);
+            var page = PageForRequest(client, request);
             
             return new ResourceSet<CallResource>(this, client, page);
         }
@@ -149,15 +146,15 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param client ITwilioRestClient with which to make the request
          * @return Next Page
          */
-        public override Page<CallResource> NextPage(string nextPageUri, ITwilioRestClient client) {
-            Request request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                nextPageUri
+        public override Page<CallResource> NextPage(Page<CallResource> page, ITwilioRestClient client) {
+            var request = new Request(
+                HttpMethod.GET,
+                page.GetNextPageUrl(
+                    Domains.API
+                )
             );
             
-            var result = PageForRequest(client, request);
-            
-            return result;
+            return PageForRequest(client, request);
         }
     
         /**
@@ -168,12 +165,12 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @return Page for the Request
          */
         protected Page<CallResource> PageForRequest(ITwilioRestClient client, Request request) {
-            Response response = client.Request(request);
+            var response = client.Request(request);
             
             if (response == null) {
                 throw new ApiConnectionException("CallResource read failed: Unable to connect to server");
             } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
                     throw new ApiException("Server Error, no content");
                 throw new ApiException(
@@ -185,10 +182,7 @@ namespace Twilio.Rest.Api.V2010.Account {
                 );
             }
             
-            Page<CallResource> result = new Page<CallResource>();
-            result.deserialize("calls", response.GetContent());
-            
-            return result;
+            return Page<CallResource>.FromJson("calls", response.GetContent());
         }
     
         /**
@@ -215,7 +209,7 @@ namespace Twilio.Rest.Api.V2010.Account {
             
             
             
-            request.AddQueryParam("PageSize", GetPageSize().ToString());
+            request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }
 }
