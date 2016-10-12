@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Web.Script.Serialization;
 using NUnit.Framework;
 using JWT;
+using Twilio.JWT;
 
-namespace Twilio.JWT
+namespace Twilio.Tests.JWT
 {
     [TestFixture]
     public class AccessTokenTests
@@ -140,11 +139,9 @@ namespace Twilio.JWT
             var delta = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             var timestamp = (int)Math.Floor(delta.TotalSeconds);
 
-            var pvg = new VoiceGrant();
-            pvg.OutgoingApplicationSid = "AP123";
+            var pvg = new VoiceGrant {OutgoingApplicationSid = "AP123"};
 
-            var param = new Dictionary<string, string>();
-            param.Add("foo", "bar");
+            var param = new Dictionary<string, string> {{"foo", "bar"}};
             pvg.OutgoingApplicationParams = param;
 
             token.AddGrant(pvg);
@@ -184,9 +181,11 @@ namespace Twilio.JWT
             var delta = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             var timestamp = (int) Math.Floor(delta.TotalSeconds);
 
-            var sg = new SyncGrant();
-            sg.ServiceSid = "IS123";
-            sg.EndpointId = "foobar";
+            var sg = new SyncGrant
+            {
+                ServiceSid = "IS123",
+                EndpointId = "foobar"
+            };
 
             token.AddGrant(sg);
 
@@ -223,8 +222,7 @@ namespace Twilio.JWT
             var delta = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             var timestamp = (int) Math.Floor(delta.TotalSeconds);
 
-            var vg = new VideoGrant();
-            vg.ConfigurationProfileSid = "CP123";
+            var vg = new VideoGrant {ConfigurationProfileSid = "CP123"};
 
             token.AddGrant(vg);
 

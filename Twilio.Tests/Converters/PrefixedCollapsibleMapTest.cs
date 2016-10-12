@@ -1,61 +1,46 @@
-﻿using NSubstitute;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 using Twilio.Converters;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Twilio.Tests
+namespace Twilio.Tests.Converters
 {
     [TestFixture]
     public class PrefixedCollapsibleMapTest : TwilioTest {
 
         [Test]
-        public void TestNullSerialize() {
-
-            Dictionary<string, string> expected = new Dictionary<string, string>();
-
-            Dictionary<string, string> result = PrefixedCollapsibleMap.Serialize(
-                null, 
-                "really"
-            );         
-
-            CollectionAssert.AreEquivalent(expected, result);
+        public void TestNullSerialize()
+        {
+            var result = PrefixedCollapsibleMap.Serialize(null, "really");
+            CollectionAssert.AreEquivalent(new Dictionary<string, string>(), result);
         }
 
         [Test]
-        public void TestEmptySerialize() {
-
-            Dictionary<string, string> expected = new Dictionary<string, string>();
-
-            Dictionary<string, string> result = PrefixedCollapsibleMap.Serialize(
-                new Dictionary<string, object>(), 
-                "really"
-            );
-
-            CollectionAssert.AreEquivalent(expected, result);
+        public void TestEmptySerialize()
+        {
+            var result = PrefixedCollapsibleMap.Serialize(new Dictionary<string, object>(), "really");
+            CollectionAssert.AreEquivalent(new Dictionary<string, string>(), result);
         }
 
         [Test]
         public void TestNormalSerialize() {
 
-            Dictionary<string, object> inputDict = new Dictionary<string, object>();
-            Dictionary<string, object> subDict = new Dictionary<string, object>();
+            var inputDict = new Dictionary<string, object>
+            {
+                {"foo", "bar"},
+                {"super", new Dictionary<string, object> {{"cool", "people"}, {"fun", "times"}}}
+            };
 
-            subDict.Add("cool", "people");
-            subDict.Add("fun", "times");
-
-            inputDict.Add("foo", "bar");
-            inputDict.Add("super", subDict); 
-
-            Dictionary<string, string> result = PrefixedCollapsibleMap.Serialize(
+            var result = PrefixedCollapsibleMap.Serialize(
                 inputDict, 
                 "really"
             );
 
-            Dictionary<string, string> expected = new Dictionary<string, string>();
-            expected.Add("really.foo","bar");
-            expected.Add("really.super.cool","people");
-            expected.Add("really.super.fun","times");
+            var expected = new Dictionary<string, string>
+            {
+                {"really.foo", "bar"},
+                {"really.super.cool", "people"},
+                {"really.super.fun", "times"}
+            };
 
             CollectionAssert.AreEquivalent(expected, result);
         }
