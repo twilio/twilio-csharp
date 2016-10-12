@@ -49,10 +49,7 @@
     <Compile Include="Converters\PhoneNumberConverter.cs" />
     <Compile Include="Converters\PrefixedCollapsibleMap.cs" />
     <Compile Include="Exceptions\TwilioException.cs" />
-    <Compile Include="Exceptions\ApiConnectionException.cs" />
     <Compile Include="Exceptions\ApiException.cs" />
-    <Compile Include="Exceptions\AuthenticationException.cs" />
-    <Compile Include="Exceptions\InvalidRequestException.cs" />
     <Compile Include="Exceptions\RestException.cs" />
     <Compile Include="Http\HttpClient.cs" />
     <Compile Include="Http\HttpMethod.cs" />

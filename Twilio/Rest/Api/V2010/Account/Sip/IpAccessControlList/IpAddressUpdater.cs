@@ -70,27 +70,32 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
          * @return Updated IpAddressResource
          */
         public override async Task<IpAddressResource> UpdateAsync(ITwilioRestClient client) {
-            Request request = new Request(
+            var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses/" + this.sid + ".json"
             );
-            
             addPostParams(request);
-            Response response = await client.RequestAsync(request);
             
-            if (response == null) {
+            var response = await client.RequestAsync(request);
+            if (response == null)
+            {
                 throw new ApiConnectionException("IpAddressResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+            }
+            
+            if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent)
+            {
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
+                {
                     throw new ApiException("Server Error, no content");
+                }
+            
                 throw new ApiException(
-                    (restException.GetMessage() != null ? restException.GetMessage() : "Unable to update record, " + response.GetStatusCode()),
-                    restException.GetCode(),
-                    restException.GetMoreInfo(),
+                    restException.Code,
                     (int)response.GetStatusCode(),
-                    null
+                    restException.Message ?? "Unable to update record, " + response.GetStatusCode(),
+                    restException.MoreInfo
                 );
             }
             
@@ -105,27 +110,32 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
          * @return Updated IpAddressResource
          */
         public override IpAddressResource Update(ITwilioRestClient client) {
-            Request request = new Request(
+            var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses/" + this.sid + ".json"
             );
-            
             addPostParams(request);
-            Response response = client.Request(request);
             
-            if (response == null) {
+            var response = client.Request(request);
+            if (response == null)
+            {
                 throw new ApiConnectionException("IpAddressResource update failed: Unable to connect to server");
-            } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+            }
+            
+            if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent)
+            {
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
+                {
                     throw new ApiException("Server Error, no content");
+                }
+            
                 throw new ApiException(
-                    (restException.GetMessage() != null ? restException.GetMessage() : "Unable to update record, " + response.GetStatusCode()),
-                    restException.GetCode(),
-                    restException.GetMoreInfo(),
+                    restException.Code,
                     (int)response.GetStatusCode(),
-                    null
+                    restException.Message ?? "Unable to update record, " + response.GetStatusCode(),
+                    restException.MoreInfo
                 );
             }
             

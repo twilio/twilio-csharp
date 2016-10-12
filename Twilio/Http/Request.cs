@@ -7,54 +7,42 @@ namespace Twilio.Http
 {
 	public class Request
 	{
-		private Twilio.Http.HttpMethod method;
-		private Uri uri;
-		private string username;
-		private string password;
-        private List<KeyValuePair<string, string>> queryParams;
-        private List<KeyValuePair<string, string>> postParams;
+		public HttpMethod Method { get; }
+	    public string Username { get; set; }
+	    public string Password { get; set; }
 
-		public Request(Twilio.Http.HttpMethod method, string uri) : this(method, Domains.API, uri) {
+	    private readonly Uri _uri;
+        private readonly List<KeyValuePair<string, string>> _queryParams;
+        private readonly List<KeyValuePair<string, string>> _postParams;
+
+		public Request(HttpMethod method, string uri) : this(method, Domains.API, uri) {}
+
+		public Request(HttpMethod method, Domains domain, string uri)
+		{
+			Method = method;
+
+			_uri = new Uri("https://" + domain + ".twilio.com" + uri);
+			_queryParams = new List<KeyValuePair<string, string>>();
+			_postParams = new List<KeyValuePair<string, string>>();
 		}
 
-		public Request(Twilio.Http.HttpMethod method, Domains domain, string uri) {
-			this.method = method;
-			this.uri = new Uri("https://" + domain.ToString() + ".twilio.com" + uri);
-
-			this.queryParams = new List<KeyValuePair<string, string>>();
-			this.postParams = new List<KeyValuePair<string, string>>();
+		public Uri ConstructUrl()
+		{
+		    return _queryParams.Count > 0 ?
+		        new Uri(_uri.AbsoluteUri + "?" + EncodeParameters(_queryParams)) :
+		        new Uri(_uri.AbsoluteUri);
 		}
 
-		public Uri ConstructURL() {
-			if (queryParams.Count > 0) {
-				return new Uri (uri.AbsoluteUri + "?" + EncodeParameters (queryParams));
-			} else {
-				return new Uri(uri.AbsoluteUri);
-			}
-        }
-
-		public Twilio.Http.HttpMethod GetMethod() {
-            return this.method;
-        }
-        
-        public string GetUsername() {
-            return this.username;
-        }
-        
-        public string GetPassword() {
-            return this.password;
-        }
-
-		public void SetAuth(string username, string password) {
-			this.username = username;
-			this.password = password;
+		public void SetAuth(string username, string password)
+		{
+			Username = username;
+			Password = password;
 		}
         
-        private static string EncodeParameters(List<KeyValuePair<string, string>> data) {
+        private static string EncodeParameters(IEnumerable<KeyValuePair<string, string>> data)
+        {
 			var result = "";
-
 			var first = true;
-
 			foreach (var pair in data) {
 				if (first) {
 					first = false;
@@ -68,39 +56,58 @@ namespace Twilio.Http
 			return result;
         }
         
-		public byte[] EncodePostParams() {
-			var content = EncodeParameters(postParams);
-			return System.Text.Encoding.UTF8.GetBytes(content);
+		public byte[] EncodePostParams()
+		{
+			return System.Text.Encoding.UTF8.GetBytes(EncodeParameters(_postParams));
         }
 
-		public void AddQueryParam(string name, string value) {
-			AddParam(queryParams, name, value);
+		public void AddQueryParam(string name, string value)
+		{
+			AddParam(_queryParams, name, value);
 		}
 
-		public void AddPostParam(string name, string value) {
-			AddParam(postParams, name, value);
+		public void AddPostParam(string name, string value)
+		{
+			AddParam(_postParams, name, value);
 		}
 
-		private void AddParam(List<KeyValuePair<string, string>> list, string name, string value) {
+		private static void AddParam(ICollection<KeyValuePair<string, string>> list, string name, string value)
+		{
 			list.Add(new KeyValuePair<string, string> (name, value));
 		}
 
-		public override bool Equals(object obj) {
-			if (obj == null)
-				return false;
-			if (ReferenceEquals (this, obj))
-				return true;
-			if (obj.GetType () != typeof(Request))
-				return false;
-			Request other = (Request)obj;
+		public override bool Equals(object obj)
+		{
+		    if (obj == null)
+		    {
+		        return false;
+		    }
 
-			return method.Equals(other.method) && uri.Equals(other.uri) && queryParams.All(other.queryParams.Contains) && postParams.All(other.postParams.Contains);
+		    if (ReferenceEquals(this, obj))
+		    {
+		        return true;
+		    }
+		    if (obj.GetType() != typeof(Request))
+		    {
+		        return false;
+		    }
+
+			var other = (Request)obj;
+			return Method.Equals(other.Method) &&
+			       _uri.Equals(other._uri) &&
+			       _queryParams.All(other._queryParams.Contains) &&
+			       _postParams.All(other._postParams.Contains);
 		}
 			
 
-		public override int GetHashCode() {
-			unchecked {
-				return (method != null ? method.GetHashCode () : 0) ^ (uri != null ? uri.GetHashCode () : 0) ^ (queryParams != null ? queryParams.GetHashCode () : 0) ^ (postParams != null ? postParams.GetHashCode () : 0);
+		public override int GetHashCode()
+		{
+			unchecked
+			{
+				return (Method?.GetHashCode() ?? 0) ^
+				       (_uri?.GetHashCode() ?? 0) ^
+				       (_queryParams?.GetHashCode() ?? 0) ^
+				       (_postParams?.GetHashCode() ?? 0);
 			}
 		}
 	}

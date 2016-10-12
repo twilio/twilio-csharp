@@ -46,10 +46,7 @@
     <Compile Include="..\Twilio\Converters\PhoneNumberConverter.cs"><Link>Converters\PhoneNumberConverter.cs</Link></Compile>
     <Compile Include="..\Twilio\Converters\PrefixedCollapsibleMap.cs"><Link>Converters\PrefixedCollapsibleMap.cs</Link></Compile>
     <Compile Include="..\Twilio\Exceptions\TwilioException.cs"><Link>Exceptions\TwilioException.cs</Link></Compile>
-    <Compile Include="..\Twilio\Exceptions\ApiConnectionException.cs"><Link>Exceptions\ApiConnectionException.cs</Link></Compile>
     <Compile Include="..\Twilio\Exceptions\ApiException.cs"><Link>Exceptions\ApiException.cs</Link></Compile>
-    <Compile Include="..\Twilio\Exceptions\AuthenticationException.cs"><Link>Exceptions\AuthenticationException.cs</Link></Compile>
-    <Compile Include="..\Twilio\Exceptions\InvalidRequestException.cs"><Link>Exceptions\InvalidRequestException.cs</Link></Compile>
     <Compile Include="..\Twilio\Exceptions\RestException.cs"><Link>Exceptions\RestException.cs</Link></Compile>
     <Compile Include="..\Twilio\Http\HttpClient.cs"><Link>Http\HttpClient.cs</Link></Compile>
     <Compile Include="..\Twilio\Http\HttpMethod.cs"><Link>Http\HttpMethod.cs</Link></Compile>

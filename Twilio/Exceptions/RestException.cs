@@ -6,49 +6,29 @@ namespace Twilio.Exceptions
 	public class RestException : TwilioException
 	{
 		[JsonProperty("code")]
-		private int code;
-		[JsonProperty("message")]
-		private string message;
-		[JsonProperty("moreInfo")]
-		private string moreInfo;
-		[JsonProperty("status")]
-		private int status;
+		public int Code { get; }
 
-		public RestException() {}
+	    [JsonProperty("status")]
+	    public int Status { get; }
 
-		public RestException(string message) : base(message) {
-		}
+	    [JsonProperty("message")]
+	    public override string Message { get; }
 
-		public RestException(string message, Exception exception) : base(message, exception) {
-		}
+	    [JsonProperty("moreInfo")]
+		public string MoreInfo { get; }
 
+	    public RestException() {}
+		public RestException(string message) : base(message) {}
+		public RestException(string message, Exception exception) : base(message, exception) {}
 		public RestException(int status, string message, int code, string moreInfo) : base(message) {
-			this.status = status;
-			this.message = message;
-			this.code = code;
-			this.moreInfo = moreInfo;
+			Status = status;
+			Message = message;
+			Code = code;
+			MoreInfo = moreInfo;
 		}
 
 		public static RestException FromJson(string json) {
-			RestException result = JsonConvert.DeserializeObject<RestException>(json);
-
-			return result;
-		}
-
-		public int GetStatus() {
-			return this.status;
-		}
-
-		public string GetMessage() {
-			return this.message;
-		}
-
-		public int GetCode() {
-			return this.code;
-		}
-
-		public string GetMoreInfo() {
-			return this.moreInfo;
+			return JsonConvert.DeserializeObject<RestException>(json);
 		}
 	}
 }

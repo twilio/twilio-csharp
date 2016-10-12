@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Twilio.Converters
@@ -11,14 +10,16 @@ namespace Twilio.Converters
             Dictionary<string, string> result,
             List<string> previous
         ) {
-            foreach (KeyValuePair<string, object> entry in dict) {
-                List<string> next = new List<string>(previous);
-                next.Add (entry.Key);
+            foreach (var entry in dict) {
+                var next = new List<string>(previous) {entry.Key};
 
-                if (entry.Value.GetType() == typeof(Dictionary<string, object>)) {
-                    Flatten ((Dictionary<string, object>)entry.Value, result, next);
-                } else {
-                    result.Add(String.Join(".", next.ToArray()), entry.Value.ToString());
+                if (entry.Value.GetType() == typeof(Dictionary<string, object>))
+                {
+                    Flatten((Dictionary<string, object>)entry.Value, result, next);
+                }
+                else
+                {
+                    result.Add(string.Join(".", next.ToArray()), entry.Value.ToString());
                 }
             }
 
@@ -27,25 +28,16 @@ namespace Twilio.Converters
 
         public static Dictionary<string, string> Serialize(
             Dictionary<string, object> inputDict,
-            String prefix
-        ) {
-            if (inputDict == null || inputDict.Count() == 0) {
+            string prefix
+        )
+        {
+            if (inputDict == null || !inputDict.Any())
+            {
                 return new Dictionary<string, string>();
             }
                 
-            Dictionary<string, string> flattened = Flatten(
-                inputDict, 
-                new Dictionary<string, string>(), 
-                new List<string>()
-            );
-
-            Dictionary<string, string> results = new Dictionary<string, string>();
-
-            foreach (KeyValuePair<string, string> entry in flattened) {
-                results.Add(prefix + "." + entry.Key, entry.Value);
-            }
-
-            return results;
+            var flattened = Flatten(inputDict, new Dictionary<string, string>(), new List<string>());
+            return flattened.ToDictionary(entry => prefix + "." + entry.Key, entry => entry.Value);
         }
     }
 }

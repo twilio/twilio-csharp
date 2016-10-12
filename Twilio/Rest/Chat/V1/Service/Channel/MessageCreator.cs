@@ -59,27 +59,32 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
          * @return Created MessageResource
          */
         public override async Task<MessageResource> CreateAsync(ITwilioRestClient client) {
-            Request request = new Request(
+            var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.CHAT,
                 "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Messages"
             );
             
             addPostParams(request);
-            Response response = await client.RequestAsync(request);
-            
-            if (response == null) {
+            var response = await client.RequestAsync(request);
+            if (response == null)
+            {
                 throw new ApiConnectionException("MessageResource creation failed: Unable to connect to server");
-            } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+            }
+            
+            if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent)
+            {
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
+                {
                     throw new ApiException("Server Error, no content");
+                }
+            
                 throw new ApiException(
-                    (restException.GetMessage() != null ? restException.GetMessage() : "Unable to create record, " + response.GetStatusCode()),
-                    restException.GetCode(),
-                    restException.GetMoreInfo(),
+                    restException.Code,
                     (int)response.GetStatusCode(),
-                    null
+                    restException.Message ?? "Unable to create record, " + response.GetStatusCode(),
+                    restException.MoreInfo
                 );
             }
             
@@ -94,27 +99,32 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
          * @return Created MessageResource
          */
         public override MessageResource Create(ITwilioRestClient client) {
-            Request request = new Request(
+            var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.CHAT,
                 "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Messages"
             );
             
             addPostParams(request);
-            Response response = client.Request(request);
-            
-            if (response == null) {
+            var response = client.Request(request);
+            if (response == null)
+            {
                 throw new ApiConnectionException("MessageResource creation failed: Unable to connect to server");
-            } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+            }
+            
+            if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent)
+            {
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
+                {
                     throw new ApiException("Server Error, no content");
+                }
+            
                 throw new ApiException(
-                    (restException.GetMessage() != null ? restException.GetMessage() : "Unable to create record, " + response.GetStatusCode()),
-                    restException.GetCode(),
-                    restException.GetMoreInfo(),
+                    restException.Code,
                     (int)response.GetStatusCode(),
-                    null
+                    restException.Message ?? "Unable to create record, " + response.GetStatusCode(),
+                    restException.MoreInfo
                 );
             }
             

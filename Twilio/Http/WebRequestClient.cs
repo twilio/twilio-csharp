@@ -36,19 +36,19 @@ namespace Twilio.Http
 	    }
 
 	    public override Response MakeRequest(Request request) {
-			var httpRequest = (HttpWebRequest) WebRequest.Create(request.ConstructURL());
-			httpRequest.Method = request.GetMethod().ToString();
+			var httpRequest = (HttpWebRequest) WebRequest.Create(request.ConstructUrl());
+			httpRequest.Method = request.Method.ToString();
 			httpRequest.Accept = "application/json";
 			httpRequest.Headers["Accept-Encoding"] = "utf-8";
 
-			var authBytes = Authentication(request.GetUsername(), request.GetPassword());
+			var authBytes = Authentication(request.Username, request.Password);
 			httpRequest.Headers["Authorization"] = "Basic " + authBytes;
 			httpRequest.ContentType = "application/x-www-form-urlencoded";
 
 //		    var version = Assembly.GetExecutingAssembly().GetName().Version;
 //		    httpRequest.UserAgent = "twilio-csharp/" + version + " (.NET " + Environment.Version.ToString() + ")";
 
-			if (!Equals(request.GetMethod(), HttpMethod.GET)) {
+			if (!Equals(request.Method, HttpMethod.GET)) {
 
 			    #if NET40
 			    var streamTask = Task.Factory.FromAsync<Stream>(

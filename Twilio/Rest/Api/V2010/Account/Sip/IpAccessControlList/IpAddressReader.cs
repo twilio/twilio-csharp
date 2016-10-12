@@ -100,19 +100,24 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
          */
         protected Page<IpAddressResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
-            
-            if (response == null) {
+            if (response == null)
+            {
                 throw new ApiConnectionException("IpAddressResource read failed: Unable to connect to server");
-            } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
+            }
+            
+            if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent)
+            {
                 var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
+                {
                     throw new ApiException("Server Error, no content");
+                }
+            
                 throw new ApiException(
-                    (restException.GetMessage() != null ? restException.GetMessage() : "Unable to read records, " + response.GetStatusCode()),
-                    restException.GetCode(),
-                    restException.GetMoreInfo(),
+                    restException.Code,
                     (int)response.GetStatusCode(),
-                    null
+                    restException.Message ?? "Unable to read records, " + response.GetStatusCode(),
+                    restException.MoreInfo
                 );
             }
             

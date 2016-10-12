@@ -6,36 +6,45 @@ namespace Twilio.Converters
 {
 	public class HttpMethodConverter : JsonConverter
 	{
-		public HttpMethodConverter () {
-		}
 
-		public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
-			JToken t = JToken.FromObject(value.ToString());
+		public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+		{
+			var t = JToken.FromObject(value.ToString());
 			t.WriteTo(writer);
 		}
 
-		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
-			string token = reader.Value as string;
+		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+		{
+			var token = reader.Value as string;
+		    if (token == null)
+		    {
+		        return null;
+		    }
 
-			if (token != null) {
-				switch (token.ToLower ()) {
-				case "get":
-					return Twilio.Http.HttpMethod.GET;
-				case "post":
-					return Twilio.Http.HttpMethod.POST;
-				case "put":
-					return Twilio.Http.HttpMethod.PUT;
-				case "delete":
-					return Twilio.Http.HttpMethod.DELETE;
-				}
-			}
+		    switch (token.ToLower())
+		    {
+		        case "get":
+		            return Http.HttpMethod.GET;
 
-			return null;
+		        case "post":
+		            return Http.HttpMethod.POST;
+
+		        case "put":
+		            return Http.HttpMethod.PUT;
+
+		        case "delete":
+		            return Http.HttpMethod.DELETE;
+
+                default:
+		            return null;
+		    }
 		}
 
-		public override bool CanConvert(Type objectType) {
-			return objectType == typeof(Twilio.Http.HttpMethod);
+		public override bool CanConvert(Type objectType)
+		{
+			return objectType == typeof(Http.HttpMethod);
 		}
+
 	}
 }
 

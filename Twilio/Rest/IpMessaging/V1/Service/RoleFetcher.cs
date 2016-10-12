@@ -32,26 +32,31 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
          * @return Fetched RoleResource
          */
         public override async Task<RoleResource> FetchAsync(ITwilioRestClient client) {
-            Request request = new Request(
+            var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Roles/" + this.sid + ""
             );
             
-            Response response = await client.RequestAsync(request);
-            
-            if (response == null) {
+            var response = await client.RequestAsync(request);
+            if (response == null)
+            {
                 throw new ApiConnectionException("RoleResource fetch failed: Unable to connect to server");
-            } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+            }
+            
+            if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent)
+            {
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
+                {
                     throw new ApiException("Server Error, no content");
+                }
+            
                 throw new ApiException(
-                    (restException.GetMessage() != null ? restException.GetMessage() : "Unable to fetch record, " + response.GetStatusCode()),
-                    restException.GetCode(),
-                    restException.GetMoreInfo(),
+                    restException.Code,
                     (int)response.GetStatusCode(),
-                    null
+                    restException.Message ?? "Unable to fetch record, " + response.GetStatusCode(),
+                    restException.MoreInfo
                 );
             }
             
@@ -66,26 +71,31 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
          * @return Fetched RoleResource
          */
         public override RoleResource Fetch(ITwilioRestClient client) {
-            Request request = new Request(
+            var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Roles/" + this.sid + ""
             );
             
-            Response response = client.Request(request);
-            
-            if (response == null) {
+            var response = client.Request(request);
+            if (response == null)
+            {
                 throw new ApiConnectionException("RoleResource fetch failed: Unable to connect to server");
-            } else if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent) {
-                RestException restException = RestException.FromJson(response.GetContent());
+            }
+            
+            if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent)
+            {
+                var restException = RestException.FromJson(response.GetContent());
                 if (restException == null)
+                {
                     throw new ApiException("Server Error, no content");
+                }
+            
                 throw new ApiException(
-                    (restException.GetMessage() != null ? restException.GetMessage() : "Unable to fetch record, " + response.GetStatusCode()),
-                    restException.GetCode(),
-                    restException.GetMoreInfo(),
+                    restException.Code,
                     (int)response.GetStatusCode(),
-                    null
+                    restException.Message ?? "Unable to fetch record, " + response.GetStatusCode(),
+                    restException.MoreInfo
                 );
             }
             
