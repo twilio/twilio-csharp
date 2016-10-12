@@ -1,21 +1,15 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Xml.Linq;
 
 namespace Twilio.TwiML
 {
     public class VoiceResponse
     {
-        private XDocument document;
-        private XElement response;
+        private readonly XElement _response;
 
         public VoiceResponse()
         {
-            response = new XElement("Response");
-            document = new XDocument(
-                new XDeclaration ("1.0", "utf-16", "yes"),
-                response
-            );
+            _response = new XElement("Response");
         }
 
         public VoiceResponse Dial(string number,
@@ -27,64 +21,76 @@ namespace Twilio.TwiML
             string callerId=null,
             string record=null) 
         {
-            XElement dial = new XElement("Dial", number);
-            if (hangupOnStar != null) {
+            var dial = new XElement("Dial", number);
+            if (hangupOnStar != null)
+            {
                 dial.Add(new XAttribute("hangupOnStar", hangupOnStar));
             }            
-            if (timeout != null) {
+            if (timeout != null)
+            {
                 dial.Add(new XAttribute("timeout", timeout));
             }
-            if (timeLimit != null) {
+            if (timeLimit != null)
+            {
                 dial.Add(new XAttribute("timeLimit", timeLimit));
             }
-            if (!String.IsNullOrEmpty(action)) {
+            if (!string.IsNullOrEmpty(action))
+            {
                 dial.Add(new XAttribute("action", action));
             }
-            if (!String.IsNullOrEmpty(method)) {
+            if (!string.IsNullOrEmpty(method))
+            {
                 dial.Add(new XAttribute("method", method));
             }
-            if (!String.IsNullOrEmpty(callerId)) {
+            if (!string.IsNullOrEmpty(callerId))
+            {
                 dial.Add(new XAttribute("callerId", callerId));
             }
-            if (!String.IsNullOrEmpty(record)) {
+            if (!string.IsNullOrEmpty(record))
+            {
                 dial.Add(new XAttribute("record", record));
             }
 
-            response.Add(dial);
+            _response.Add(dial);
             return this;
         }
 
         public VoiceResponse Dial(Dial dial)
         {
-            response.Add(dial.dial);
+            _response.Add(dial.Element);
             return this;
         }
 
-        public VoiceResponse Enqueue(String name,
+        public VoiceResponse Enqueue(string name,
             string action=null,
             string method=null,
             string waitUrl=null,
-            String waitUrlMethod=null,
+            string waitUrlMethod=null,
             string workflowSid=null)
         {
-            XElement enqueue = new XElement("Enqueue", name);
-            if (!String.IsNullOrEmpty(action)) {
+            var enqueue = new XElement("Enqueue", name);
+            if (!string.IsNullOrEmpty(action))
+            {
                 enqueue.Add(new XAttribute("action", action));
             }
-            if (!String.IsNullOrEmpty(method)) {
+            if (!string.IsNullOrEmpty(method))
+            {
                 enqueue.Add(new XAttribute("method", method));
             }
-            if (!String.IsNullOrEmpty(waitUrl)) {
+            if (!string.IsNullOrEmpty(waitUrl))
+            {
                 enqueue.Add(new XAttribute("waitUrl", waitUrl));
             }
-            if (!String.IsNullOrEmpty(waitUrlMethod)) {
+            if (!string.IsNullOrEmpty(waitUrlMethod))
+            {
                 enqueue.Add(new XAttribute("waitUrlMethod", waitUrlMethod));
             }
-            if (!String.IsNullOrEmpty(workflowSid)) {
+            if (!string.IsNullOrEmpty(workflowSid))
+            {
                 enqueue.Add(new XAttribute("workflowSid", workflowSid));
             }
 
-            response.Add(enqueue);
+            _response.Add(enqueue);
             return this;
         }
 
@@ -94,53 +100,59 @@ namespace Twilio.TwiML
             string method=null,
             string finishOnKey=null)
         {
-            XElement gather = new XElement("Gather");
-            if (timeout != null) {
+            var gather = new XElement("Gather");
+            if (timeout != null)
+            {
                 gather.Add(new XAttribute("timeout", timeout));
             }
-            if (numDigits != null) {
+            if (numDigits != null)
+            {
                 gather.Add(new XAttribute("numDigits", numDigits));
             }
-            if (!String.IsNullOrEmpty(action)) {
+            if (!string.IsNullOrEmpty(action))
+            {
                 gather.Add(new XAttribute("action", action));
             }
-            if (!String.IsNullOrEmpty(method)) {
+            if (!string.IsNullOrEmpty(method))
+            {
                 gather.Add(new XAttribute("method", method));
             }
-            if (!String.IsNullOrEmpty(finishOnKey)) {
+            if (!string.IsNullOrEmpty(finishOnKey))
+            {
                 gather.Add(new XAttribute("finishOnKey", finishOnKey));
             }
 
-            response.Add(gather);
+            _response.Add(gather);
             return this;
         }
 
         public VoiceResponse Gather(Gather gather)
         {
-            response.Add(gather.gather);
+            _response.Add(gather.Element);
             return this;
         }
 
         public VoiceResponse Hangup()
         {
-            response.Add(new XElement("Hangup"));
+            _response.Add(new XElement("Hangup"));
             return this;
         }
 
         public VoiceResponse Leave()
         {
-            response.Add(new XElement("Leave"));
+            _response.Add(new XElement("Leave"));
             return this;
         }
 
         public VoiceResponse Pause(int? length=null)
         {
-            XElement pause = new XElement("Pause");
-            if (length == null) {
+            var pause = new XElement("Pause");
+            if (length != null)
+            {
                 pause.Add(new XAttribute("length", length));
             }
 
-            response.Add(pause);
+            _response.Add(pause);
             return this;
         }
 
@@ -148,15 +160,17 @@ namespace Twilio.TwiML
             int? loop=null,
             int? digits=null)
         {
-            XElement play = new XElement("Play", url);
-            if (loop != null) {
+            var play = new XElement("Play", url);
+            if (loop != null)
+            {
                 play.Add(new XAttribute("loop", loop));
             } 
-            if (digits != null) {
+            if (digits != null)
+            {
                 play.Add(new XAttribute("digits", digits));
             }
 
-            response.Add(play);
+            _response.Add(play);
             return this;
         }
 
@@ -170,59 +184,70 @@ namespace Twilio.TwiML
             string transcribeCallback=null,
             string trim=null)
         {
-            XElement record = new XElement("Record");
-            if (transcribe != null) {
+            var record = new XElement("Record");
+            if (transcribe != null)
+            {
                 record.Add(new XAttribute("transcribe", transcribe));
             }
-            if (playBeep != null) {
+            if (playBeep != null)
+            {
                 record.Add(new XAttribute("playBeep", playBeep));
             }
-            if (tiemout != null) {
+            if (tiemout != null)
+            {
                 record.Add(new XAttribute("tiemout", tiemout));
             }
-            if (maxLength != null) {
+            if (maxLength != null)
+            {
                 record.Add(new XAttribute("maxLength", maxLength));
             }
-            if (!String.IsNullOrEmpty(action)) {
+            if (!string.IsNullOrEmpty(action))
+            {
                 record.Add(new XAttribute("action", action));
             }
-            if (!String.IsNullOrEmpty(method)) {
+            if (!string.IsNullOrEmpty(method))
+            {
                 record.Add(new XAttribute("method", method));
             }
-            if (!String.IsNullOrEmpty(finishOnKey)) {
+            if (!string.IsNullOrEmpty(finishOnKey))
+            {
                 record.Add(new XAttribute("finishOnKey", finishOnKey));
             }
-            if (!String.IsNullOrEmpty(transcribeCallback)) {
+            if (!string.IsNullOrEmpty(transcribeCallback))
+            {
                 record.Add(new XAttribute("transcribeCallback", transcribeCallback));
             }
-            if (!String.IsNullOrEmpty(trim)) {
+            if (!string.IsNullOrEmpty(trim))
+            {
                 record.Add(new XAttribute("trim", trim));
             }
 
-            response.Add(record);
+            _response.Add(record);
             return this;
         }
 
         public VoiceResponse Redirect(string url,
             string method=null)
         {
-            XElement redirect = new XElement("Redirect", url);
-            if (!String.IsNullOrEmpty(method)) {
+            var redirect = new XElement("Redirect", url);
+            if (!string.IsNullOrEmpty(method))
+            {
                 redirect.Add(new XAttribute("method", method));
             }
 
-            response.Add(redirect);
+            _response.Add(redirect);
             return this;
         }
 
         public VoiceResponse Reject(string reason=null)
         {
-            XElement reject = new XElement("Reject");
-            if (!String.IsNullOrEmpty(reason)) {
+            var reject = new XElement("Reject");
+            if (!string.IsNullOrEmpty(reason))
+            {
                 reject.Add(new XAttribute("reason", reason));
             }
 
-            response.Add(reject);
+            _response.Add(reject);
             return this;
         }
 
@@ -231,18 +256,21 @@ namespace Twilio.TwiML
             string language=null,
             string voice=null)
         {
-            XElement say = new XElement("Say", body);
-            if (loop != null) {
+            var say = new XElement("Say", body);
+            if (loop != null)
+            {
                 say.Add(new XAttribute("loop", loop));
             }
-            if (!String.IsNullOrEmpty(language)) {
+            if (!string.IsNullOrEmpty(language))
+            {
                 say.Add(new XAttribute("language", language));
             }
-            if (!String.IsNullOrEmpty(voice)) {
+            if (!string.IsNullOrEmpty(voice))
+            {
                 say.Add(new XAttribute("voice", voice));
             }
 
-            response.Add(say);
+            _response.Add(say);
             return this;
         }
 
@@ -253,31 +281,36 @@ namespace Twilio.TwiML
             string action=null,
             string statusCallback=null)
         {
-            XElement sms = new XElement("Sms", body);
-            if (!String.IsNullOrEmpty(to)) {
+            var sms = new XElement("Sms", body);
+            if (!string.IsNullOrEmpty(to))
+            {
                 sms.Add(new XAttribute("to", to));
             }
-            if (!String.IsNullOrEmpty(from)) {
+            if (!string.IsNullOrEmpty(from))
+            {
                 sms.Add(new XAttribute("from", from));
             }
-            if (!String.IsNullOrEmpty(method)) {
+            if (!string.IsNullOrEmpty(method))
+            {
                 sms.Add(new XAttribute("method", method));
             }
-            if (!String.IsNullOrEmpty(action)) {
+            if (!string.IsNullOrEmpty(action))
+            {
                 sms.Add(new XAttribute("action", action));
             }
-            if (!String.IsNullOrEmpty(statusCallback)) {
+            if (!string.IsNullOrEmpty(statusCallback))
+            {
                 sms.Add(new XAttribute("statusCallback", statusCallback));
             }
 
-            response.Add(sms);
+            _response.Add(sms);
             return this;
         }
 
         public override string ToString()
         {
-            StringWriter wr = new StringWriter();
-            response.Save(wr);
+            var wr = new StringWriter();
+            _response.Save(wr);
             return wr.GetStringBuilder().ToString();
         }
     }

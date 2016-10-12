@@ -44,9 +44,9 @@ namespace Twilio.Rest.Preview.Sync.Service {
                 throw new ApiConnectionException("SyncMapResource fetch failed: Unable to connect to server");
             }
             
-            if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent)
+            if (response.StatusCode < System.Net.HttpStatusCode.OK || response.StatusCode > System.Net.HttpStatusCode.NoContent)
             {
-                var restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.Content);
                 if (restException == null)
                 {
                     throw new ApiException("Server Error, no content");
@@ -54,13 +54,13 @@ namespace Twilio.Rest.Preview.Sync.Service {
             
                 throw new ApiException(
                     restException.Code,
-                    (int)response.GetStatusCode(),
-                    restException.Message ?? "Unable to fetch record, " + response.GetStatusCode(),
+                    (int)response.StatusCode,
+                    restException.Message ?? "Unable to fetch record, " + response.StatusCode,
                     restException.MoreInfo
                 );
             }
             
-            return SyncMapResource.FromJson(response.GetContent());
+            return SyncMapResource.FromJson(response.Content);
         }
         #endif
     
@@ -83,9 +83,9 @@ namespace Twilio.Rest.Preview.Sync.Service {
                 throw new ApiConnectionException("SyncMapResource fetch failed: Unable to connect to server");
             }
             
-            if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent)
+            if (response.StatusCode < System.Net.HttpStatusCode.OK || response.StatusCode > System.Net.HttpStatusCode.NoContent)
             {
-                var restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.Content);
                 if (restException == null)
                 {
                     throw new ApiException("Server Error, no content");
@@ -93,13 +93,13 @@ namespace Twilio.Rest.Preview.Sync.Service {
             
                 throw new ApiException(
                     restException.Code,
-                    (int)response.GetStatusCode(),
-                    restException.Message ?? "Unable to fetch record, " + response.GetStatusCode(),
+                    (int)response.StatusCode,
+                    restException.Message ?? "Unable to fetch record, " + response.StatusCode,
                     restException.MoreInfo
                 );
             }
             
-            return SyncMapResource.FromJson(response.GetContent());
+            return SyncMapResource.FromJson(response.Content);
         }
     }
 }

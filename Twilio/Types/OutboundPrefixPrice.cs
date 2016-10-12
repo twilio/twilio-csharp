@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Twilio.Types
@@ -7,32 +6,25 @@ namespace Twilio.Types
 	public class OutboundPrefixPrice
 	{
 		[JsonProperty("prefixes")]
-		private readonly List<string> prefixes;
+		public List<string> Prefixes { get; }
 		[JsonProperty("friendly_name")]
-		private readonly string friendlyName;
+		public string FriendlyName { get; }
 		[JsonProperty("base_price")]
-		private readonly double? basePrice;
+		public double? BasePrice { get; }
 		[JsonProperty("current_price")]
-		private readonly double? currentPrice;
+		public double? CurrentPrice { get; }
 
-		public OutboundPrefixPrice ()
+		public OutboundPrefixPrice (
+		    List<string> prefixes,
+		    string friendlyName,
+		    double basePrice,
+		    double currentPrice
+		)
 		{
-		}
-
-		public List<string> GetPrefixes() {
-			return prefixes;
-		}
-
-		public string GetFriendlyName() {
-			return friendlyName;
-		}
-
-		public double? GetBasePrice() {
-			return basePrice;
-		}
-
-		public double? GetCurrentPrice() {
-			return currentPrice;
+		    Prefixes = prefixes;
+		    FriendlyName = friendlyName;
+		    BasePrice = basePrice;
+		    CurrentPrice = currentPrice;
 		}
 	}
 }

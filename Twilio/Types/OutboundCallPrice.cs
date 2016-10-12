@@ -1,26 +1,18 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Twilio.Types
 {
 	public class OutboundCallPrice
 	{
 		[JsonProperty("base_price")]
-		private double? basePrice;
+		public double? BasePrice { get; }
 		[JsonProperty("current_price")]
-		private double? currentPrice;
+		public double? CurrentPrice { get; }
 
-		public OutboundCallPrice (double basePrice, double currentPrice) {
-			this.basePrice = basePrice;
-			this.currentPrice = currentPrice;
-		}
-
-		public double? GetBasePrice() {
-			return basePrice;
-		}
-
-		public double? GetCurrentPrice() {
-			return currentPrice;
+		public OutboundCallPrice (double basePrice, double currentPrice)
+		{
+			BasePrice = basePrice;
+			CurrentPrice = currentPrice;
 		}
 	}
 }

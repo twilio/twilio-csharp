@@ -105,9 +105,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
                 throw new ApiConnectionException("IpAddressResource read failed: Unable to connect to server");
             }
             
-            if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent)
+            if (response.StatusCode < System.Net.HttpStatusCode.OK || response.StatusCode > System.Net.HttpStatusCode.NoContent)
             {
-                var restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.Content);
                 if (restException == null)
                 {
                     throw new ApiException("Server Error, no content");
@@ -115,13 +115,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
             
                 throw new ApiException(
                     restException.Code,
-                    (int)response.GetStatusCode(),
-                    restException.Message ?? "Unable to read records, " + response.GetStatusCode(),
+                    (int)response.StatusCode,
+                    restException.Message ?? "Unable to read records, " + response.StatusCode,
                     restException.MoreInfo
                 );
             }
             
-            return Page<IpAddressResource>.FromJson("ip_addresses", response.GetContent());
+            return Page<IpAddressResource>.FromJson("ip_addresses", response.Content);
         }
     
         /**

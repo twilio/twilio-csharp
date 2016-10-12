@@ -87,7 +87,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param url Url from which to fetch TwiML
          * @return CallCreator capable of executing the create
          */
-        public static CallCreator Creator(string accountSid, Twilio.Types.Endpoint to, Twilio.Types.PhoneNumber from, Uri url) {
+        public static CallCreator Creator(string accountSid, IEndpoint to, Twilio.Types.PhoneNumber from, Uri url) {
             return new CallCreator(accountSid, to, from, url);
         }
     
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param url Url from which to fetch TwiML
          * @return CallCreator capable of executing the create
          */
-        public static CallCreator Creator(Twilio.Types.Endpoint to, 
+        public static CallCreator Creator(IEndpoint to, 
                                           Twilio.Types.PhoneNumber from, 
                                           Uri url) {
             return new CallCreator(to, from, url);
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          *                       TwiML
          * @return CallCreator capable of executing the create
          */
-        public static CallCreator Creator(string accountSid, Twilio.Types.Endpoint to, Twilio.Types.PhoneNumber from, string applicationSid) {
+        public static CallCreator Creator(string accountSid, IEndpoint to, Twilio.Types.PhoneNumber from, string applicationSid) {
             return new CallCreator(accountSid, to, from, applicationSid);
         }
     
@@ -129,7 +129,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          *                       TwiML
          * @return CallCreator capable of executing the create
          */
-        public static CallCreator Creator(Twilio.Types.Endpoint to, 
+        public static CallCreator Creator(IEndpoint to, 
                                           Twilio.Types.PhoneNumber from, 
                                           string applicationSid) {
             return new CallCreator(to, from, applicationSid);

@@ -1,15 +1,14 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Twilio.Types
 {
 	public class InboundCallPrice
 	{
         public sealed class Type {
-            public const string LOCAL="local";
-            public const string MOBILE="mobile";
-            public const string NATIONAL="national";
-            public const string TOLL_FREE="toll free";
+            public const string LOCAL = "local";
+            public const string MOBILE = "mobile";
+            public const string NATIONAL = "national";
+            public const string TOLL_FREE = "toll free";
         
             private readonly string value;
             

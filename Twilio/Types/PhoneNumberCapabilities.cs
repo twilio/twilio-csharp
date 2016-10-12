@@ -1,33 +1,21 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Twilio.Types
 {
 	public class PhoneNumberCapabilities
 	{
 		[JsonProperty("mms")]
-		private bool mms;
+		public bool Mms { get; }
 		[JsonProperty("sms")]
-		private bool sms;
+		public bool Sms { get; }
 		[JsonProperty("voice")]
-		private bool voice;
+		public bool Voice { get; }
 
-		public PhoneNumberCapabilities (bool mms, bool sms, bool voice) {
-			this.mms = mms;
-			this.sms = sms;
-			this.voice = voice;
-		}
-
-		public bool GetMms() {
-			return mms;
-		}
-
-		public bool GetSms() {
-			return sms;
-		}
-
-		public bool GetVoice() {
-			return voice;
+		public PhoneNumberCapabilities (bool mms, bool sms, bool voice)
+		{
+			Mms = mms;
+			Sms = sms;
+			Voice = voice;
 		}
 	}
 }

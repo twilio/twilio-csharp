@@ -70,7 +70,7 @@
     <Compile Include="JWT\TwilioCapability.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rest\Domains.cs" />
-    <Compile Include="Types\Endpoint.cs" />
+    <Compile Include="Types\IEndpoint.cs" />
     <Compile Include="Types\Client.cs" />
     <Compile Include="Types\PhoneNumber.cs" />
     <Compile Include="Types\FeedbackIssue.cs" />

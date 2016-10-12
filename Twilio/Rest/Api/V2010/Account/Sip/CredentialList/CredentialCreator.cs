@@ -64,9 +64,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
                 throw new ApiConnectionException("CredentialResource creation failed: Unable to connect to server");
             }
             
-            if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent)
+            if (response.StatusCode < System.Net.HttpStatusCode.OK || response.StatusCode > System.Net.HttpStatusCode.NoContent)
             {
-                var restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.Content);
                 if (restException == null)
                 {
                     throw new ApiException("Server Error, no content");
@@ -74,13 +74,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
             
                 throw new ApiException(
                     restException.Code,
-                    (int)response.GetStatusCode(),
-                    restException.Message ?? "Unable to create record, " + response.GetStatusCode(),
+                    (int)response.StatusCode,
+                    restException.Message ?? "Unable to create record, " + response.StatusCode,
                     restException.MoreInfo
                 );
             }
             
-            return CredentialResource.FromJson(response.GetContent());
+            return CredentialResource.FromJson(response.Content);
         }
         #endif
     
@@ -104,9 +104,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
                 throw new ApiConnectionException("CredentialResource creation failed: Unable to connect to server");
             }
             
-            if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent)
+            if (response.StatusCode < System.Net.HttpStatusCode.OK || response.StatusCode > System.Net.HttpStatusCode.NoContent)
             {
-                var restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.Content);
                 if (restException == null)
                 {
                     throw new ApiException("Server Error, no content");
@@ -114,13 +114,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
             
                 throw new ApiException(
                     restException.Code,
-                    (int)response.GetStatusCode(),
-                    restException.Message ?? "Unable to create record, " + response.GetStatusCode(),
+                    (int)response.StatusCode,
+                    restException.Message ?? "Unable to create record, " + response.StatusCode,
                     restException.MoreInfo
                 );
             }
             
-            return CredentialResource.FromJson(response.GetContent());
+            return CredentialResource.FromJson(response.Content);
         }
     
         /**

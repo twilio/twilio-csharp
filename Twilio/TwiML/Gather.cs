@@ -1,11 +1,10 @@
-﻿using System;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 
-namespace Twilio
+namespace Twilio.TwiML
 {
     public class Gather
     {
-        public XElement gather {get;}
+        public XElement Element { get; }
 
         public Gather(int? timeout=null,
             int? numDigits=null,
@@ -13,69 +12,75 @@ namespace Twilio
             string method=null,
             string finishOnKey=null)
         {
-            gather = new XElement("Gather");
-            if (timeout != null) {
-                gather.Add(new XAttribute("timeout", timeout));
+            Element = new XElement("Gather");
+            if (timeout != null)
+            {
+                Element.Add(new XAttribute("timeout", timeout));
             }
-            if (numDigits != null) {
-                gather.Add(new XAttribute("numDigits", numDigits));
+            if (numDigits != null)
+            {
+                Element.Add(new XAttribute("numDigits", numDigits));
             }
-            if (action != null) {
-                gather.Add(new XAttribute("action", action));
+            if (action != null)
+            {
+                Element.Add(new XAttribute("action", action));
             }
-            if (!String.IsNullOrEmpty(method)) {
-                gather.Add(new XAttribute("method", method));
+            if (!string.IsNullOrEmpty(method))
+            {
+                Element.Add(new XAttribute("method", method));
             }
-            if (!String.IsNullOrEmpty(finishOnKey)) {
-                gather.Add(new XAttribute("finishOnKey", finishOnKey));
+            if (!string.IsNullOrEmpty(finishOnKey))
+            {
+                Element.Add(new XAttribute("finishOnKey", finishOnKey));
             }
         }
 
-        public Gather Say(string body,
-            int? loop=null,
-            string language=null,
-            string voice=null)
+        public Gather Say(string body, int? loop=null, string language=null, string voice=null)
         {
-            XElement say = new XElement("Say", body);
-            if (loop != null) {
+            var say = new XElement("Say", body);
+            if (loop != null)
+            {
                 say.Add(new XAttribute("loop", loop));
             }
-            if (!String.IsNullOrEmpty(language)) {
+            if (!string.IsNullOrEmpty(language))
+            {
                 say.Add(new XAttribute("language", language));
             }
-            if (!String.IsNullOrEmpty(voice)) {
+            if (!string.IsNullOrEmpty(voice))
+            {
                 say.Add(new XAttribute("voice", voice));
             }          
 
-            gather.Add(say);
+            Element.Add(say);
             return this;
         }
 
-        public Gather Play(string url,
-            int? loop=null,
-            int? digits=null)
+        public Gather Play(string url, int? loop=null, int? digits=null)
         {
-            XElement play = new XElement("Play", url);
+            var play = new XElement("Play", url);
 
-            if (loop != null) {
+            if (loop != null)
+            {
                 play.Add(new XAttribute("loop", loop));
             }
-            if (digits != null) {
+            if (digits != null)
+            {
                 play.Add(new XAttribute("digits", digits));
             }
 
-            gather.Add(play);
+            Element.Add(play);
             return this;
         }
 
         public Gather Pause(int? length=null)
         {
-            XElement pause = new XElement("Pause");
-            if (length != null) {
+            var pause = new XElement("Pause");
+            if (length != null)
+            {
                 pause.Add(new XAttribute("length", length));
             }
 
-            gather.Add(pause);
+            Element.Add(pause);
             return this;
         }
 

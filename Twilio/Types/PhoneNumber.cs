@@ -1,17 +1,17 @@
-﻿using System;
-
-namespace Twilio.Types
+﻿namespace Twilio.Types
 {
-	public class PhoneNumber : Endpoint
+	public class PhoneNumber : IEndpoint
 	{
-		private string number;
+		private readonly string _number;
 
-		public PhoneNumber(string number) {
-			this.number = number;
+		public PhoneNumber(string number)
+		{
+			_number = number;
 		}
 
-		public override string ToString() {
-			return this.number;
+		public override string ToString()
+		{
+			return _number;
 		}
 	}
 }

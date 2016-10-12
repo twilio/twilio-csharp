@@ -6,28 +6,16 @@ namespace Twilio.Types
 	public class IceServer
 	{
 		[JsonProperty("credential")]
-		private string credential;
+		public string Credential { get; }
 		[JsonProperty("username")]
-		private string username;
-		[JsonProperty("url")]
-		private Uri url;
+		public string Username { get; }
+	    [JsonProperty("url")]
+		public Uri Url { get; }
 
-		public IceServer(string credential, string username, Uri url) {
-			this.credential = credential;
-			this.username = username;
-			this.url = url;
-		}
-
-		public string GetCredential() {
-			return credential;
-		}
-
-		public string GetUsername() {
-			return username;
-		}
-
-		public Uri GetUrl() {
-			return url;
+	    public IceServer(string credential, string username, Uri url) {
+			Credential = credential;
+			Username = username;
+			Url = url;
 		}
 	}
 }

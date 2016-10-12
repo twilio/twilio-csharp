@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Twilio.Types
@@ -7,32 +6,25 @@ namespace Twilio.Types
 	public class OutboundSmsPrice
 	{
 		[JsonProperty("mcc")]
-		private readonly string mcc;
+		public string Mcc { get; }
 		[JsonProperty("mnc")]
-		private readonly string mnc;
+		public string Mnc { get; }
 		[JsonProperty("carrier")]
-		private readonly string carrier;
+		public string Carrier { get; }
 		[JsonProperty("prices")]
-		private readonly List<InboundSmsPrice> prices;
+		public List<InboundSmsPrice> Prices { get; }
 
-		public OutboundSmsPrice ()
+		public OutboundSmsPrice (
+		    string mcc,
+		    string mnc,
+		    string carrier,
+		    List<InboundSmsPrice> prices
+		)
 		{
-		}
-
-		public string GetMCC() {
-			return mcc;
-		}
-
-		public string GetMNC() {
-			return mnc;
-		}
-
-		public string GetCarrier() {
-			return carrier;
-		}
-
-		public List<InboundSmsPrice> GetPrices() {
-			return prices;
+		    Mcc = mcc;
+		    Mnc = mnc;
+		    Carrier = carrier;
+		    Prices = Prices;
 		}
 	}
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Twilio
+﻿namespace Twilio
 {
 	public interface IStringEnum
 	{

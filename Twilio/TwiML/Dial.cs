@@ -1,11 +1,10 @@
-﻿using System;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 
-namespace Twilio
+namespace Twilio.TwiML
 {
     public class Dial
     {
-        public XElement dial {get;}
+        public XElement Element { get; }
 
         public Dial(bool? hangupOnStar=null,
             int? timeout=null,
@@ -15,27 +14,34 @@ namespace Twilio
             string callerId=null,
             string record=null)
         {
-            dial = new XElement("Dial");
-            if (hangupOnStar != null) {
-                dial.Add(new XAttribute("hangupOnStar", hangupOnStar));
+            Element = new XElement("Dial");
+            if (hangupOnStar != null)
+            {
+                Element.Add(new XAttribute("hangupOnStar", hangupOnStar));
             }            
-            if (timeout != null) {
-                dial.Add(new XAttribute("timeout", timeout));
+            if (timeout != null)
+            {
+                Element.Add(new XAttribute("timeout", timeout));
             }
-            if (timeLimit != null) {
-                dial.Add(new XAttribute("timeLimit", timeLimit));
+            if (timeLimit != null)
+            {
+                Element.Add(new XAttribute("timeLimit", timeLimit));
             }
-            if (!String.IsNullOrEmpty(action)) {
-                dial.Add(new XAttribute("action", action));
+            if (!string.IsNullOrEmpty(action))
+            {
+                Element.Add(new XAttribute("action", action));
             }
-            if (!String.IsNullOrEmpty(method)) {
-                dial.Add(new XAttribute("method", method));
+            if (!string.IsNullOrEmpty(method))
+            {
+                Element.Add(new XAttribute("method", method));
             }
-            if (!String.IsNullOrEmpty(callerId)) {
-                dial.Add(new XAttribute("callerId", callerId));
+            if (!string.IsNullOrEmpty(callerId))
+            {
+                Element.Add(new XAttribute("callerId", callerId));
             }
-            if (!String.IsNullOrEmpty(record)) {
-                dial.Add(new XAttribute("record", record));
+            if (!string.IsNullOrEmpty(record))
+            {
+                Element.Add(new XAttribute("record", record));
             }
         }
 
@@ -47,27 +53,33 @@ namespace Twilio
             string statusCallback=null,
             string statusCallbackMethod=null)
         {
-            XElement number = new XElement("Number", phoneNumber);
-            if (!String.IsNullOrEmpty(sendDigits)) {
+            var number = new XElement("Number", phoneNumber);
+            if (!string.IsNullOrEmpty(sendDigits))
+            {
                 number.Add(new XAttribute("sendDigits", sendDigits));
             }
-            if (!String.IsNullOrEmpty(url)) {
+            if (!string.IsNullOrEmpty(url))
+            {
                 number.Add(new XAttribute("url", url));
             }
-            if (!String.IsNullOrEmpty(method)) {
+            if (!string.IsNullOrEmpty(method))
+            {
                 number.Add(new XAttribute("method", method));
             }
-            if (!String.IsNullOrEmpty(statusCallbackEvent)) {
+            if (!string.IsNullOrEmpty(statusCallbackEvent))
+            {
                 number.Add(new XAttribute("statusCallbackEvent", statusCallbackEvent));
             }
-            if (!String.IsNullOrEmpty(statusCallback)) {
+            if (!string.IsNullOrEmpty(statusCallback))
+            {
                 number.Add(new XAttribute("statusCallback", statusCallback));
             }
-            if (!String.IsNullOrEmpty(statusCallbackMethod)) {
+            if (!string.IsNullOrEmpty(statusCallbackMethod))
+            {
                 number.Add(new XAttribute("statusCallbackMethod", statusCallbackMethod));
             }
 
-            dial.Add(number);
+            Element.Add(number);
             return this;
         }
 
@@ -78,24 +90,29 @@ namespace Twilio
             string statusCallbackMethod=null,
             string statusCallback=null)
         {
-            XElement client = new XElement("Client", name);
-            if (!String.IsNullOrEmpty(method)) {
+            var client = new XElement("Client", name);
+            if (!string.IsNullOrEmpty(method))
+            {
                 client.Add(new XAttribute("method", method));
             }
-            if (!String.IsNullOrEmpty(url)) {
+            if (!string.IsNullOrEmpty(url))
+            {
                 client.Add(new XAttribute("url", url));
             }
-            if (!String.IsNullOrEmpty(statusCallbackEvent)) {
+            if (!string.IsNullOrEmpty(statusCallbackEvent))
+            {
                 client.Add(new XAttribute("statusCallbackEvent", statusCallbackEvent));
             }
-            if (!String.IsNullOrEmpty(statusCallbackMethod)) {
+            if (!string.IsNullOrEmpty(statusCallbackMethod))
+            {
                 client.Add(new XAttribute("statusCallbackMethod", statusCallbackMethod));
             }
-            if (!String.IsNullOrEmpty(statusCallback)) {
+            if (!string.IsNullOrEmpty(statusCallback))
+            {
                 client.Add(new XAttribute("statusCallback", statusCallback));
             }
 
-            dial.Add(client);
+            Element.Add(client);
             return this;
         }
 
@@ -108,30 +125,37 @@ namespace Twilio
             string statusCallback=null,
             string statusCallbackMethod=null)
         {
-            XElement sip = new XElement("Sip", address);
-            if (!String.IsNullOrEmpty(username)) {
+            var sip = new XElement("Sip", address);
+            if (!string.IsNullOrEmpty(username))
+            {
                 sip.Add(new XAttribute("username", username));
             }
-            if (!String.IsNullOrEmpty(password)) {
+            if (!string.IsNullOrEmpty(password))
+            {
                 sip.Add(new XAttribute("password", password));
             }
-            if (!String.IsNullOrEmpty(url)) {
+            if (!string.IsNullOrEmpty(url))
+            {
                 sip.Add(new XAttribute("url", url));
             }
-            if (!String.IsNullOrEmpty(method)) {
+            if (!string.IsNullOrEmpty(method))
+            {
                 sip.Add(new XAttribute("method", method));
             }
-            if (!String.IsNullOrEmpty(statusCallbackEvent)) {
+            if (!string.IsNullOrEmpty(statusCallbackEvent))
+            {
                 sip.Add(new XAttribute("statusCallbackEvent", statusCallbackEvent));
             }
-            if (!String.IsNullOrEmpty(statusCallback)) {
+            if (!string.IsNullOrEmpty(statusCallback))
+            {
                 sip.Add(new XAttribute("statusCallback", statusCallback));
             }
-            if (!String.IsNullOrEmpty(statusCallbackMethod)) {
+            if (!string.IsNullOrEmpty(statusCallbackMethod))
+            {
                 sip.Add(new XAttribute("statusCallbackMethod", statusCallbackMethod));
             }
 
-            dial.Add(sip);
+            Element.Add(sip);
             return this;
         }
 
@@ -147,39 +171,49 @@ namespace Twilio
             string waitUrl=null,
             string eventCallbackUrl=null)
         {
-            XElement conference = new XElement("Conference", name);
-            if (muted != null) {
+            var conference = new XElement("Conference", name);
+            if (muted != null)
+            {
                 conference.Add(new XAttribute("muted", muted));
             }
-            if (startConferenceOnEnter != null) {
+            if (startConferenceOnEnter != null)
+            {
                 conference.Add(new XAttribute("startConferenceOnEnter", startConferenceOnEnter));
             }
-            if (endConferenceOnExit != null) {
+            if (endConferenceOnExit != null)
+            {
                 conference.Add(new XAttribute("endConferenceOnExit", endConferenceOnExit));
             }
-            if (maxParticipants != null) {
+            if (maxParticipants != null)
+            {
                 conference.Add(new XAttribute("maxParticipants", maxParticipants));
             }
-            if (!String.IsNullOrEmpty(beep)) {
+            if (!string.IsNullOrEmpty(beep))
+            {
                 conference.Add(new XAttribute("beep", beep));
             }
-            if (!String.IsNullOrEmpty(record)) {
+            if (!string.IsNullOrEmpty(record))
+            {
                 conference.Add(new XAttribute("record", record));
             }
-            if (!String.IsNullOrEmpty(trim)) {
+            if (!string.IsNullOrEmpty(trim))
+            {
                 conference.Add(new XAttribute("trim", trim));
             }
-            if (!String.IsNullOrEmpty(waitMethod)) {
+            if (!string.IsNullOrEmpty(waitMethod))
+            {
                 conference.Add(new XAttribute("waitMethod", waitMethod));
             }
-            if (!String.IsNullOrEmpty(waitUrl)) {
+            if (!string.IsNullOrEmpty(waitUrl))
+            {
                 conference.Add(new XAttribute("waitUrl", waitUrl));
             }
-            if (!String.IsNullOrEmpty(eventCallbackUrl)){
+            if (!string.IsNullOrEmpty(eventCallbackUrl))
+            {
                 conference.Add(new XAttribute("eventCallbackUrl", eventCallbackUrl));
             }
 
-            dial.Add(conference);
+            Element.Add(conference);
             return this;
         }
 
@@ -189,21 +223,25 @@ namespace Twilio
             string reservationSid=null,
             string postWorkActivitySid=null)
         {
-            XElement queue = new XElement("Queue", name);
-            if (!String.IsNullOrEmpty(url)) {
+            var queue = new XElement("Queue", name);
+            if (!string.IsNullOrEmpty(url))
+            {
                 queue.Add(new XAttribute("url", url));
             }
-            if (!String.IsNullOrEmpty(method)) {
+            if (!string.IsNullOrEmpty(method))
+            {
                 queue.Add(new XAttribute("method", method));
             }
-            if (!String.IsNullOrEmpty(reservationSid)) {
+            if (!string.IsNullOrEmpty(reservationSid))
+            {
                 queue.Add(new XAttribute("reservationSid", reservationSid));
             }
-            if (!String.IsNullOrEmpty(postWorkActivitySid)) {
+            if (!string.IsNullOrEmpty(postWorkActivitySid))
+            {
                 queue.Add(new XAttribute("postWorkActivitySid", postWorkActivitySid));
             }
 
-            dial.Add(queue);
+            Element.Add(queue);
             return this;
         }
     }

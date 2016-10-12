@@ -1,83 +1,100 @@
-﻿using System;
-using Twilio.Clients;
+﻿using Twilio.Clients;
 using Twilio.Exceptions;
 
 namespace Twilio
 {
 	public class TwilioClient
 	{
-		private static string username;
-		private static string password;
-		private static string accountSid;
-		private static TwilioRestClient restClient;
+		private static string _username;
+		private static string _password;
+		private static string _accountSid;
+		private static TwilioRestClient _restClient;
 
-		public TwilioClient () {}
+		private TwilioClient() {}
 
-		public static void Init(string username, string password) {
-			TwilioClient.SetUsername(username);
-			TwilioClient.SetPassword(password);
+		public static void Init(string username, string password)
+		{
+			SetUsername(username);
+			SetPassword(password);
 		}
 
-		public static void Init(string username, string password, string accountSid) {
-			TwilioClient.SetUsername(username);
-			TwilioClient.SetPassword(password);
-			TwilioClient.SetAccountSid(accountSid);
+		public static void Init(string username, string password, string accountSid)
+		{
+			SetUsername(username);
+			SetPassword(password);
+			SetAccountSid(accountSid);
 		}
 
-		public static void SetUsername(string username) {
-			if (username == null)
-				throw new AuthenticationException("Username can not be null");
+		public static void SetUsername(string username)
+		{
+		    if (username == null)
+		    {
+		        throw new AuthenticationException("Username can not be null");
+		    }
 
-			if (username != TwilioClient.username)
-				TwilioClient.Invalidate();
+		    if (username != _username)
+		    {
+		        Invalidate();
+		    }
 
-			TwilioClient.username = username;
+			_username = username;
 		}
 
 		public static void SetPassword(string password) {
-			if (password == null)
-				throw new AuthenticationException("Password can not be null");
+		    if (password == null)
+		    {
+		        throw new AuthenticationException("Password can not be null");
+		    }
 
-			if (password != TwilioClient.password)
-				TwilioClient.Invalidate();
+		    if (password != _password)
+		    {
+		        Invalidate();
+		    }
 
-			TwilioClient.password = password;
+			_password = password;
 		}
 
-		public static void SetAccountSid(string accountSid) {
-			if (accountSid == null)
-				throw new AuthenticationException("AccountSid can not be null");
+		public static void SetAccountSid(string accountSid)
+		{
+		    if (accountSid == null)
+		    {
+		        throw new AuthenticationException("AccountSid can not be null");
+		    }
 
-			if (accountSid != TwilioClient.accountSid)
-				TwilioClient.Invalidate();
+		    if (accountSid != _accountSid)
+		    {
+		        Invalidate();
+		    }
 
-			TwilioClient.accountSid = accountSid;
+			_accountSid = accountSid;
 		}
 
-		public static TwilioRestClient GetRestClient() {
-			if (TwilioClient.restClient == null) {
-				if (TwilioClient.username == null || TwilioClient.password == null) {
-					throw new AuthenticationException (
-						"TwilioRestClient was used before AccountSid and AuthToken were set, please call Twilio.init()"
-					);
-				}
+		public static TwilioRestClient GetRestClient()
+		{
+		    if (_restClient != null)
+		    {
+		        return _restClient;
+		    }
 
-				if (TwilioClient.accountSid != null) {
-					TwilioClient.restClient = new TwilioRestClient(TwilioClient.username, TwilioClient.password, TwilioClient.accountSid);
-				} else {
-					TwilioClient.restClient = new TwilioRestClient(TwilioClient.username, TwilioClient.password);
-				}
-			}
+		    if (_username == null || _password == null)
+		    {
+		        throw new AuthenticationException (
+		            "TwilioRestClient was used before AccountSid and AuthToken were set, please call Twilio.init()"
+		        );
+		    }
 
-			return TwilioClient.restClient;
+		    _restClient = new TwilioRestClient(_username, _password, accountSid: _accountSid);
+		    return _restClient;
 		}
 
-		public static void SetRestClient(TwilioRestClient restClient) {
-			TwilioClient.restClient = restClient;
+		public static void SetRestClient(TwilioRestClient restClient)
+		{
+			_restClient = restClient;
 		}
 
-		public static void Invalidate() {
-			TwilioClient.restClient = null;
+		public static void Invalidate()
+		{
+			_restClient = null;
 		}
 	}
 }

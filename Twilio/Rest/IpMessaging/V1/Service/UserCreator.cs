@@ -81,9 +81,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
                 throw new ApiConnectionException("UserResource creation failed: Unable to connect to server");
             }
             
-            if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent)
+            if (response.StatusCode < System.Net.HttpStatusCode.OK || response.StatusCode > System.Net.HttpStatusCode.NoContent)
             {
-                var restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.Content);
                 if (restException == null)
                 {
                     throw new ApiException("Server Error, no content");
@@ -91,13 +91,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
             
                 throw new ApiException(
                     restException.Code,
-                    (int)response.GetStatusCode(),
-                    restException.Message ?? "Unable to create record, " + response.GetStatusCode(),
+                    (int)response.StatusCode,
+                    restException.Message ?? "Unable to create record, " + response.StatusCode,
                     restException.MoreInfo
                 );
             }
             
-            return UserResource.FromJson(response.GetContent());
+            return UserResource.FromJson(response.Content);
         }
         #endif
     
@@ -121,9 +121,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
                 throw new ApiConnectionException("UserResource creation failed: Unable to connect to server");
             }
             
-            if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent)
+            if (response.StatusCode < System.Net.HttpStatusCode.OK || response.StatusCode > System.Net.HttpStatusCode.NoContent)
             {
-                var restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.Content);
                 if (restException == null)
                 {
                     throw new ApiException("Server Error, no content");
@@ -131,13 +131,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
             
                 throw new ApiException(
                     restException.Code,
-                    (int)response.GetStatusCode(),
-                    restException.Message ?? "Unable to create record, " + response.GetStatusCode(),
+                    (int)response.StatusCode,
+                    restException.Message ?? "Unable to create record, " + response.StatusCode,
                     restException.MoreInfo
                 );
             }
             
-            return UserResource.FromJson(response.GetContent());
+            return UserResource.FromJson(response.Content);
         }
     
         /**

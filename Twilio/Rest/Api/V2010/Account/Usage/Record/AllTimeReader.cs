@@ -137,9 +137,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
                 throw new ApiConnectionException("AllTimeResource read failed: Unable to connect to server");
             }
             
-            if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent)
+            if (response.StatusCode < System.Net.HttpStatusCode.OK || response.StatusCode > System.Net.HttpStatusCode.NoContent)
             {
-                var restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.Content);
                 if (restException == null)
                 {
                     throw new ApiException("Server Error, no content");
@@ -147,13 +147,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
             
                 throw new ApiException(
                     restException.Code,
-                    (int)response.GetStatusCode(),
-                    restException.Message ?? "Unable to read records, " + response.GetStatusCode(),
+                    (int)response.StatusCode,
+                    restException.Message ?? "Unable to read records, " + response.StatusCode,
                     restException.MoreInfo
                 );
             }
             
-            return Page<AllTimeResource>.FromJson("usage_records", response.GetContent());
+            return Page<AllTimeResource>.FromJson("usage_records", response.Content);
         }
     
         /**

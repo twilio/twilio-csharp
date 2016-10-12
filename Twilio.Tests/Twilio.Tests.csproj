@@ -56,23 +56,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="**/*.cs" />
-    <Compile Include="Converters/MarshalConverterTest.cs" />
-    <Compile Include="Converters/PrefixedCollapsibleMapTest.cs" />
-    <Compile Include="JWT/AccessTokenTests.cs" />
-    <Compile Include="TwilioTest.cs" />
-    <Compile Include="TwiML/MessagingResponseTest.cs" />
-    <Compile Include="TwiML/VoiceResponseTest.cs" />
+    <Compile Include="Converters/*.cs" />
+    <Compile Include="JWT/*.cs" />
+    <Compile Include="Rest/**/*.cs" />
+    <Compile Include="TwiML/*.cs" />
     <Compile Include="TwilioTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Converters\" />
-    <Folder Include="TwiML\" />
-    <Folder Include="JWT\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Twilio\Twilio.csproj">

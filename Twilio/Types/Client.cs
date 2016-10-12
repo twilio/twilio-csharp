@@ -1,17 +1,17 @@
-﻿using System;
-
-namespace Twilio.Types
+﻿namespace Twilio.Types
 {
-    public class Client : Endpoint
+    public class Client : IEndpoint
     {
-        private string client;
+        private readonly string _client;
 
-        public Client(string client) {
-            this.client = client;
+        public Client(string client)
+        {
+            _client = client;
         }
 
-        public override string ToString() {
-            return this.client;
+        public override string ToString()
+        {
+            return _client;
         }
     }
 }

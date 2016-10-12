@@ -15,7 +15,7 @@ namespace Twilio.Rest.Api.V2010.Account {
 
     public class CallCreator : Creator<CallResource> {
         private string accountSid;
-        private Twilio.Types.Endpoint to;
+        private IEndpoint to;
         private Twilio.Types.PhoneNumber from;
         private Uri url;
         private string applicationSid;
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param from Twilio number from which to originate the call
          * @param url Url from which to fetch TwiML
          */
-        public CallCreator(Twilio.Types.Endpoint to, Twilio.Types.PhoneNumber from, Uri url) {
+        public CallCreator(IEndpoint to, Twilio.Types.PhoneNumber from, Uri url) {
             this.to = to;
             this.from = from;
             this.url = url;
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param from Twilio number from which to originate the call
          * @param url Url from which to fetch TwiML
          */
-        public CallCreator(string accountSid, Twilio.Types.Endpoint to, Twilio.Types.PhoneNumber from, Uri url) {
+        public CallCreator(string accountSid, IEndpoint to, Twilio.Types.PhoneNumber from, Uri url) {
             this.accountSid = accountSid;
             this.to = to;
             this.from = from;
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param applicationSid ApplicationSid that configures from where to fetch
          *                       TwiML
          */
-        public CallCreator(Twilio.Types.Endpoint to, Twilio.Types.PhoneNumber from, string applicationSid) {
+        public CallCreator(IEndpoint to, Twilio.Types.PhoneNumber from, string applicationSid) {
             this.to = to;
             this.from = from;
             this.applicationSid = applicationSid;
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Api.V2010.Account {
          * @param applicationSid ApplicationSid that configures from where to fetch
          *                       TwiML
          */
-        public CallCreator(string accountSid, Twilio.Types.Endpoint to, Twilio.Types.PhoneNumber from, string applicationSid) {
+        public CallCreator(string accountSid, IEndpoint to, Twilio.Types.PhoneNumber from, string applicationSid) {
             this.accountSid = accountSid;
             this.to = to;
             this.from = from;
@@ -329,9 +329,9 @@ namespace Twilio.Rest.Api.V2010.Account {
                 throw new ApiConnectionException("CallResource creation failed: Unable to connect to server");
             }
             
-            if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent)
+            if (response.StatusCode < System.Net.HttpStatusCode.OK || response.StatusCode > System.Net.HttpStatusCode.NoContent)
             {
-                var restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.Content);
                 if (restException == null)
                 {
                     throw new ApiException("Server Error, no content");
@@ -339,13 +339,13 @@ namespace Twilio.Rest.Api.V2010.Account {
             
                 throw new ApiException(
                     restException.Code,
-                    (int)response.GetStatusCode(),
-                    restException.Message ?? "Unable to create record, " + response.GetStatusCode(),
+                    (int)response.StatusCode,
+                    restException.Message ?? "Unable to create record, " + response.StatusCode,
                     restException.MoreInfo
                 );
             }
             
-            return CallResource.FromJson(response.GetContent());
+            return CallResource.FromJson(response.Content);
         }
         #endif
     
@@ -369,9 +369,9 @@ namespace Twilio.Rest.Api.V2010.Account {
                 throw new ApiConnectionException("CallResource creation failed: Unable to connect to server");
             }
             
-            if (response.GetStatusCode() < System.Net.HttpStatusCode.OK || response.GetStatusCode() > System.Net.HttpStatusCode.NoContent)
+            if (response.StatusCode < System.Net.HttpStatusCode.OK || response.StatusCode > System.Net.HttpStatusCode.NoContent)
             {
-                var restException = RestException.FromJson(response.GetContent());
+                var restException = RestException.FromJson(response.Content);
                 if (restException == null)
                 {
                     throw new ApiException("Server Error, no content");
@@ -379,13 +379,13 @@ namespace Twilio.Rest.Api.V2010.Account {
             
                 throw new ApiException(
                     restException.Code,
-                    (int)response.GetStatusCode(),
-                    restException.Message ?? "Unable to create record, " + response.GetStatusCode(),
+                    (int)response.StatusCode,
+                    restException.Message ?? "Unable to create record, " + response.StatusCode,
                     restException.MoreInfo
                 );
             }
             
-            return CallResource.FromJson(response.GetContent());
+            return CallResource.FromJson(response.Content);
         }
     
         /**
