@@ -38,7 +38,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/CredentialLists.json"
+                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists.json"
             );
             AddQueryParams(request);
             
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/SIP/CredentialLists.json"
+                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists.json"
             );
             
             AddQueryParams(request);

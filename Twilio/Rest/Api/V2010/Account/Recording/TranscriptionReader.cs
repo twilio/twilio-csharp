@@ -44,7 +44,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Recordings/" + this.recordingSid + "/Transcriptions.json"
+                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Recordings/" + this.recordingSid + "/Transcriptions.json"
             );
             AddQueryParams(request);
             
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Recordings/" + this.recordingSid + "/Transcriptions.json"
+                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Recordings/" + this.recordingSid + "/Transcriptions.json"
             );
             
             AddQueryParams(request);

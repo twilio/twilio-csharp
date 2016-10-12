@@ -44,7 +44,7 @@ namespace Twilio.Rest.Api.V2010.Account {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (this.ownerAccountSid != null ? this.ownerAccountSid : client.GetAccountSid()) + "/IncomingPhoneNumbers/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (ownerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/" + this.sid + ".json"
             );
             
             var response = await client.RequestAsync(request);
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Api.V2010.Account {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (this.ownerAccountSid != null ? this.ownerAccountSid : client.GetAccountSid()) + "/IncomingPhoneNumbers/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (ownerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/" + this.sid + ".json"
             );
             
             var response = client.Request(request);

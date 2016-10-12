@@ -76,7 +76,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Usage/Records/Yearly.json"
+                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Usage/Records/Yearly.json"
             );
             AddQueryParams(request);
             
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Usage/Records/Yearly.json"
+                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Usage/Records/Yearly.json"
             );
             
             AddQueryParams(request);

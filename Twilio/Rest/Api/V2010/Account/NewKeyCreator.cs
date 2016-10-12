@@ -50,7 +50,7 @@ namespace Twilio.Rest.Api.V2010.Account {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Keys.json"
+                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Keys.json"
             );
             
             addPostParams(request);
@@ -90,7 +90,7 @@ namespace Twilio.Rest.Api.V2010.Account {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Keys.json"
+                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Keys.json"
             );
             
             addPostParams(request);

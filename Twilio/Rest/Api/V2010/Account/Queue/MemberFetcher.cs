@@ -49,7 +49,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Queues/" + this.queueSid + "/Members/" + this.callSid + ".json"
+                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Queues/" + this.queueSid + "/Members/" + this.callSid + ".json"
             );
             
             var response = await client.RequestAsync(request);
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (this.accountSid != null ? this.accountSid : client.GetAccountSid()) + "/Queues/" + this.queueSid + "/Members/" + this.callSid + ".json"
+                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Queues/" + this.queueSid + "/Members/" + this.callSid + ".json"
             );
             
             var response = client.Request(request);
