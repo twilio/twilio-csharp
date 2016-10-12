@@ -9,113 +9,113 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class QueueResource : SidResource {
-        /**
-         * Fetch an instance of a queue identified by the QueueSid
-         * 
-         * @param accountSid The account_sid
-         * @param sid Fetch by unique queue Sid
-         * @return QueueFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Fetch an instance of a queue identified by the QueueSid
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Fetch by unique queue Sid </param>
+        /// <returns> QueueFetcher capable of executing the fetch </returns> 
         public static QueueFetcher Fetcher(string accountSid, string sid) {
             return new QueueFetcher(accountSid, sid);
         }
     
-        /**
-         * Create a QueueFetcher to execute fetch.
-         * 
-         * @param sid Fetch by unique queue Sid
-         * @return QueueFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a QueueFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique queue Sid </param>
+        /// <returns> QueueFetcher capable of executing the fetch </returns> 
         public static QueueFetcher Fetcher(string sid) {
             return new QueueFetcher(sid);
         }
     
-        /**
-         * Update the queue with the new parameters
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         * @return QueueUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Update the queue with the new parameters
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> QueueUpdater capable of executing the update </returns> 
         public static QueueUpdater Updater(string accountSid, string sid) {
             return new QueueUpdater(accountSid, sid);
         }
     
-        /**
-         * Create a QueueUpdater to execute update.
-         * 
-         * @param sid The sid
-         * @return QueueUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Create a QueueUpdater to execute update.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> QueueUpdater capable of executing the update </returns> 
         public static QueueUpdater Updater(string sid) {
             return new QueueUpdater(sid);
         }
     
-        /**
-         * Remove an empty queue
-         * 
-         * @param accountSid The account_sid
-         * @param sid Delete by unique queue Sid
-         * @return QueueDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Remove an empty queue
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Delete by unique queue Sid </param>
+        /// <returns> QueueDeleter capable of executing the delete </returns> 
         public static QueueDeleter Deleter(string accountSid, string sid) {
             return new QueueDeleter(accountSid, sid);
         }
     
-        /**
-         * Create a QueueDeleter to execute delete.
-         * 
-         * @param sid Delete by unique queue Sid
-         * @return QueueDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a QueueDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="sid"> Delete by unique queue Sid </param>
+        /// <returns> QueueDeleter capable of executing the delete </returns> 
         public static QueueDeleter Deleter(string sid) {
             return new QueueDeleter(sid);
         }
     
-        /**
-         * Retrieve a list of queues belonging to the account used to make the request
-         * 
-         * @param accountSid The account_sid
-         * @return QueueReader capable of executing the read
-         */
+        /// <summary>
+        /// Retrieve a list of queues belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> QueueReader capable of executing the read </returns> 
         public static QueueReader Reader(string accountSid) {
             return new QueueReader(accountSid);
         }
     
-        /**
-         * Create a QueueReader to execute read.
-         * 
-         * @return QueueReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a QueueReader to execute read.
+        /// </summary>
+        ///
+        /// <returns> QueueReader capable of executing the read </returns> 
         public static QueueReader Reader() {
             return new QueueReader();
         }
     
-        /**
-         * Create a queue
-         * 
-         * @param accountSid The account_sid
-         * @return QueueCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a queue
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> QueueCreator capable of executing the create </returns> 
         public static QueueCreator Creator(string accountSid) {
             return new QueueCreator(accountSid);
         }
     
-        /**
-         * Create a QueueCreator to execute create.
-         * 
-         * @return QueueCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a QueueCreator to execute create.
+        /// </summary>
+        ///
+        /// <returns> QueueCreator capable of executing the create </returns> 
         public static QueueCreator Creator() {
             return new QueueCreator();
         }
     
-        /**
-         * Converts a JSON string into a QueueResource object
-         * 
-         * @param json Raw JSON string
-         * @return QueueResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a QueueResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> QueueResource object represented by the provided JSON </returns> 
         public static QueueResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -177,65 +177,47 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.uri = uri;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return Average wait time of members in the queue
-         */
+        /// <returns> Average wait time of members in the queue </returns> 
         public int? GetAverageWaitTime() {
             return this.averageWaitTime;
         }
     
-        /**
-         * @return The count of calls currently in the queue.
-         */
+        /// <returns> The count of calls currently in the queue. </returns> 
         public int? GetCurrentSize() {
             return this.currentSize;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return A user-provided string that identifies this queue.
-         */
+        /// <returns> A user-provided string that identifies this queue. </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The max number of calls allowed in the queue
-         */
+        /// <returns> The max number of calls allowed in the queue </returns> 
         public int? GetMaxSize() {
             return this.maxSize;
         }
     
-        /**
-         * @return A string that uniquely identifies this queue
-         */
+        /// <returns> A string that uniquely identifies this queue </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The uri
-         */
+        /// <returns> The uri </returns> 
         public string GetUri() {
             return this.uri;
         }

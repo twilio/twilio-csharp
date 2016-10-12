@@ -32,313 +32,287 @@ namespace Twilio.Rest.Api.V2010.Account {
         private Twilio.Http.HttpMethod voiceMethod;
         private Uri voiceUrl;
     
-        /**
-         * Construct a new IncomingPhoneNumberCreator.
-         * 
-         * @param phoneNumber The phone number
-         */
+        /// <summary>
+        /// Construct a new IncomingPhoneNumberCreator.
+        /// </summary>
+        ///
+        /// <param name="phoneNumber"> The phone number </param>
         public IncomingPhoneNumberCreator(Twilio.Types.PhoneNumber phoneNumber) {
             this.phoneNumber = phoneNumber;
         }
     
-        /**
-         * Construct a new IncomingPhoneNumberCreator
-         * 
-         * @param ownerAccountSid The owner_account_sid
-         * @param phoneNumber The phone number
-         */
+        /// <summary>
+        /// Construct a new IncomingPhoneNumberCreator
+        /// </summary>
+        ///
+        /// <param name="ownerAccountSid"> The owner_account_sid </param>
+        /// <param name="phoneNumber"> The phone number </param>
         public IncomingPhoneNumberCreator(string ownerAccountSid, Twilio.Types.PhoneNumber phoneNumber) {
             this.ownerAccountSid = ownerAccountSid;
             this.phoneNumber = phoneNumber;
         }
     
-        /**
-         * Construct a new IncomingPhoneNumberCreator.
-         * 
-         * @param areaCode The desired area code for the new number
-         */
+        /// <summary>
+        /// Construct a new IncomingPhoneNumberCreator.
+        /// </summary>
+        ///
+        /// <param name="areaCode"> The desired area code for the new number </param>
         public IncomingPhoneNumberCreator(string areaCode) {
             this.areaCode = areaCode;
         }
     
-        /**
-         * Construct a new IncomingPhoneNumberCreator
-         * 
-         * @param ownerAccountSid The owner_account_sid
-         * @param areaCode The desired area code for the new number
-         */
+        /// <summary>
+        /// Construct a new IncomingPhoneNumberCreator
+        /// </summary>
+        ///
+        /// <param name="ownerAccountSid"> The owner_account_sid </param>
+        /// <param name="areaCode"> The desired area code for the new number </param>
         public IncomingPhoneNumberCreator(string ownerAccountSid, string areaCode) {
             this.ownerAccountSid = ownerAccountSid;
             this.areaCode = areaCode;
         }
     
-        /**
-         * Calls to this phone number will start a new TwiML session with this API
-         * version.
-         * 
-         * @param apiVersion The Twilio Rest API version to use
-         * @return this
-         */
+        /// <summary>
+        /// Calls to this phone number will start a new TwiML session with this API version.
+        /// </summary>
+        ///
+        /// <param name="apiVersion"> The Twilio Rest API version to use </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setApiVersion(string apiVersion) {
             this.apiVersion = apiVersion;
             return this;
         }
     
-        /**
-         * A human readable descriptive text for this resource, up to 64 characters
-         * long. By default, the `FriendlyName` is a nicely formatted version of the
-         * phone number.
-         * 
-         * @param friendlyName A human readable description of this resource
-         * @return this
-         */
+        /// <summary>
+        /// A human readable descriptive text for this resource, up to 64 characters long. By default, the `FriendlyName` is a
+        /// nicely formatted version of the phone number.
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> A human readable description of this resource </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * The 34 character sid of the application Twilio should use to handle SMSs sent
-         * to this number. If a `SmsApplicationSid` is present, Twilio will ignore all
-         * of the SMS urls above and use those set on the application.
-         * 
-         * @param smsApplicationSid Unique string that identifies the application
-         * @return this
-         */
+        /// <summary>
+        /// The 34 character sid of the application Twilio should use to handle SMSs sent to this number. If a
+        /// `SmsApplicationSid` is present, Twilio will ignore all of the SMS urls above and use those set on the application.
+        /// </summary>
+        ///
+        /// <param name="smsApplicationSid"> Unique string that identifies the application </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setSmsApplicationSid(string smsApplicationSid) {
             this.smsApplicationSid = smsApplicationSid;
             return this;
         }
     
-        /**
-         * The HTTP method Twilio will use when requesting the above URL. Either `GET`
-         * or `POST`.
-         * 
-         * @param smsFallbackMethod HTTP method used with sms fallback url
-         * @return this
-         */
+        /// <summary>
+        /// The HTTP method Twilio will use when requesting the above URL. Either `GET` or `POST`.
+        /// </summary>
+        ///
+        /// <param name="smsFallbackMethod"> HTTP method used with sms fallback url </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setSmsFallbackMethod(Twilio.Http.HttpMethod smsFallbackMethod) {
             this.smsFallbackMethod = smsFallbackMethod;
             return this;
         }
     
-        /**
-         * The URL that Twilio will request if an error occurs retrieving or executing
-         * the TwiML from `SmsUrl`.
-         * 
-         * @param smsFallbackUrl URL Twilio will request if an error occurs in
-         *                       executing TwiML
-         * @return this
-         */
+        /// <summary>
+        /// The URL that Twilio will request if an error occurs retrieving or executing the TwiML from `SmsUrl`.
+        /// </summary>
+        ///
+        /// <param name="smsFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setSmsFallbackUrl(Uri smsFallbackUrl) {
             this.smsFallbackUrl = smsFallbackUrl;
             return this;
         }
     
-        /**
-         * The URL that Twilio will request if an error occurs retrieving or executing
-         * the TwiML from `SmsUrl`.
-         * 
-         * @param smsFallbackUrl URL Twilio will request if an error occurs in
-         *                       executing TwiML
-         * @return this
-         */
+        /// <summary>
+        /// The URL that Twilio will request if an error occurs retrieving or executing the TwiML from `SmsUrl`.
+        /// </summary>
+        ///
+        /// <param name="smsFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setSmsFallbackUrl(string smsFallbackUrl) {
             return setSmsFallbackUrl(Promoter.UriFromString(smsFallbackUrl));
         }
     
-        /**
-         * The HTTP method Twilio will use when making requests to the `SmsUrl`. Either
-         * `GET` or `POST`.
-         * 
-         * @param smsMethod HTTP method to use with sms url
-         * @return this
-         */
+        /// <summary>
+        /// The HTTP method Twilio will use when making requests to the `SmsUrl`. Either `GET` or `POST`.
+        /// </summary>
+        ///
+        /// <param name="smsMethod"> HTTP method to use with sms url </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setSmsMethod(Twilio.Http.HttpMethod smsMethod) {
             this.smsMethod = smsMethod;
             return this;
         }
     
-        /**
-         * The URL Twilio will request when receiving an incoming SMS message to this
-         * number.
-         * 
-         * @param smsUrl URL Twilio will request when receiving an SMS
-         * @return this
-         */
+        /// <summary>
+        /// The URL Twilio will request when receiving an incoming SMS message to this number.
+        /// </summary>
+        ///
+        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setSmsUrl(Uri smsUrl) {
             this.smsUrl = smsUrl;
             return this;
         }
     
-        /**
-         * The URL Twilio will request when receiving an incoming SMS message to this
-         * number.
-         * 
-         * @param smsUrl URL Twilio will request when receiving an SMS
-         * @return this
-         */
+        /// <summary>
+        /// The URL Twilio will request when receiving an incoming SMS message to this number.
+        /// </summary>
+        ///
+        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setSmsUrl(string smsUrl) {
             return setSmsUrl(Promoter.UriFromString(smsUrl));
         }
     
-        /**
-         * The URL that Twilio will request to pass status parameters (such as call
-         * ended) to your application.
-         * 
-         * @param statusCallback URL Twilio will use to pass status parameters
-         * @return this
-         */
+        /// <summary>
+        /// The URL that Twilio will request to pass status parameters (such as call ended) to your application.
+        /// </summary>
+        ///
+        /// <param name="statusCallback"> URL Twilio will use to pass status parameters </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setStatusCallback(Uri statusCallback) {
             this.statusCallback = statusCallback;
             return this;
         }
     
-        /**
-         * The URL that Twilio will request to pass status parameters (such as call
-         * ended) to your application.
-         * 
-         * @param statusCallback URL Twilio will use to pass status parameters
-         * @return this
-         */
+        /// <summary>
+        /// The URL that Twilio will request to pass status parameters (such as call ended) to your application.
+        /// </summary>
+        ///
+        /// <param name="statusCallback"> URL Twilio will use to pass status parameters </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setStatusCallback(string statusCallback) {
             return setStatusCallback(Promoter.UriFromString(statusCallback));
         }
     
-        /**
-         * The HTTP method Twilio will use to make requests to the `StatusCallback` URL.
-         * Either `GET` or `POST`.
-         * 
-         * @param statusCallbackMethod HTTP method twilio will use with status callback
-         * @return this
-         */
+        /// <summary>
+        /// The HTTP method Twilio will use to make requests to the `StatusCallback` URL. Either `GET` or `POST`.
+        /// </summary>
+        ///
+        /// <param name="statusCallbackMethod"> HTTP method twilio will use with status callback </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setStatusCallbackMethod(Twilio.Http.HttpMethod statusCallbackMethod) {
             this.statusCallbackMethod = statusCallbackMethod;
             return this;
         }
     
-        /**
-         * The 34 character sid of the Trunk Twilio should use to handle phone calls to
-         * this number. If a `TrunkSid` is present, Twilio will ignore all of the voice
-         * urls  and voice applications above and use those set on the Trunk. Setting a
-         * `TrunkSid` will automatically delete your `VoiceApplicationSid` and vice
-         * versa.
-         * 
-         * @param trunkSid Unique string to identify the trunk
-         * @return this
-         */
+        /// <summary>
+        /// The 34 character sid of the Trunk Twilio should use to handle phone calls to this number. If a `TrunkSid` is
+        /// present, Twilio will ignore all of the voice urls  and voice applications above and use those set on the Trunk.
+        /// Setting a `TrunkSid` will automatically delete your `VoiceApplicationSid` and vice versa.
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> Unique string to identify the trunk </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setTrunkSid(string trunkSid) {
             this.trunkSid = trunkSid;
             return this;
         }
     
-        /**
-         * The 34 character sid of the application Twilio should use to handle phone
-         * calls to this number. If a `VoiceApplicationSid` is present, Twilio will
-         * ignore all of the voice urls above and use those set on the application.
-         * Setting a `VoiceApplicationSid` will automatically delete your `TrunkSid` and
-         * vice versa.
-         * 
-         * @param voiceApplicationSid The unique sid of the application to handle this
-         *                            number
-         * @return this
-         */
+        /// <summary>
+        /// The 34 character sid of the application Twilio should use to handle phone calls to this number. If a
+        /// `VoiceApplicationSid` is present, Twilio will ignore all of the voice urls above and use those set on the
+        /// application. Setting a `VoiceApplicationSid` will automatically delete your `TrunkSid` and vice versa.
+        /// </summary>
+        ///
+        /// <param name="voiceApplicationSid"> The unique sid of the application to handle this number </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setVoiceApplicationSid(string voiceApplicationSid) {
             this.voiceApplicationSid = voiceApplicationSid;
             return this;
         }
     
-        /**
-         * Look up the caller's caller-ID name from the CNAM database ($0.01 per look
-         * up). Either `true` or `false`.
-         * 
-         * @param voiceCallerIdLookup Look up the caller's caller-ID
-         * @return this
-         */
+        /// <summary>
+        /// Look up the caller's caller-ID name from the CNAM database ($0.01 per look up). Either `true` or `false`.
+        /// </summary>
+        ///
+        /// <param name="voiceCallerIdLookup"> Look up the caller's caller-ID </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setVoiceCallerIdLookup(bool? voiceCallerIdLookup) {
             this.voiceCallerIdLookup = voiceCallerIdLookup;
             return this;
         }
     
-        /**
-         * The HTTP method Twilio will use when requesting the `VoiceFallbackUrl`.
-         * Either `GET` or `POST`.
-         * 
-         * @param voiceFallbackMethod HTTP method used with fallback_url
-         * @return this
-         */
+        /// <summary>
+        /// The HTTP method Twilio will use when requesting the `VoiceFallbackUrl`. Either `GET` or `POST`.
+        /// </summary>
+        ///
+        /// <param name="voiceFallbackMethod"> HTTP method used with fallback_url </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setVoiceFallbackMethod(Twilio.Http.HttpMethod voiceFallbackMethod) {
             this.voiceFallbackMethod = voiceFallbackMethod;
             return this;
         }
     
-        /**
-         * The URL that Twilio will request if an error occurs retrieving or executing
-         * the TwiML requested by `Url`.
-         * 
-         * @param voiceFallbackUrl URL Twilio will request when an error occurs in TwiML
-         * @return this
-         */
+        /// <summary>
+        /// The URL that Twilio will request if an error occurs retrieving or executing the TwiML requested by `Url`.
+        /// </summary>
+        ///
+        /// <param name="voiceFallbackUrl"> URL Twilio will request when an error occurs in TwiML </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setVoiceFallbackUrl(Uri voiceFallbackUrl) {
             this.voiceFallbackUrl = voiceFallbackUrl;
             return this;
         }
     
-        /**
-         * The URL that Twilio will request if an error occurs retrieving or executing
-         * the TwiML requested by `Url`.
-         * 
-         * @param voiceFallbackUrl URL Twilio will request when an error occurs in TwiML
-         * @return this
-         */
+        /// <summary>
+        /// The URL that Twilio will request if an error occurs retrieving or executing the TwiML requested by `Url`.
+        /// </summary>
+        ///
+        /// <param name="voiceFallbackUrl"> URL Twilio will request when an error occurs in TwiML </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setVoiceFallbackUrl(string voiceFallbackUrl) {
             return setVoiceFallbackUrl(Promoter.UriFromString(voiceFallbackUrl));
         }
     
-        /**
-         * The HTTP method Twilio will use when requesting the above `Url`. Either `GET`
-         * or `POST`.
-         * 
-         * @param voiceMethod HTTP method used with the voice url
-         * @return this
-         */
+        /// <summary>
+        /// The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`.
+        /// </summary>
+        ///
+        /// <param name="voiceMethod"> HTTP method used with the voice url </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setVoiceMethod(Twilio.Http.HttpMethod voiceMethod) {
             this.voiceMethod = voiceMethod;
             return this;
         }
     
-        /**
-         * The URL Twilio will request when this phone number receives a call. The
-         * VoiceURL will  no longer be used if a `VoiceApplicationSid` or a `TrunkSid`
-         * is set.
-         * 
-         * @param voiceUrl URL Twilio will request when receiving a call
-         * @return this
-         */
+        /// <summary>
+        /// The URL Twilio will request when this phone number receives a call. The VoiceURL will  no longer be used if a
+        /// `VoiceApplicationSid` or a `TrunkSid` is set.
+        /// </summary>
+        ///
+        /// <param name="voiceUrl"> URL Twilio will request when receiving a call </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setVoiceUrl(Uri voiceUrl) {
             this.voiceUrl = voiceUrl;
             return this;
         }
     
-        /**
-         * The URL Twilio will request when this phone number receives a call. The
-         * VoiceURL will  no longer be used if a `VoiceApplicationSid` or a `TrunkSid`
-         * is set.
-         * 
-         * @param voiceUrl URL Twilio will request when receiving a call
-         * @return this
-         */
+        /// <summary>
+        /// The URL Twilio will request when this phone number receives a call. The VoiceURL will  no longer be used if a
+        /// `VoiceApplicationSid` or a `TrunkSid` is set.
+        /// </summary>
+        ///
+        /// <param name="voiceUrl"> URL Twilio will request when receiving a call </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberCreator setVoiceUrl(string voiceUrl) {
             return setVoiceUrl(Promoter.UriFromString(voiceUrl));
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created IncomingPhoneNumberResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created IncomingPhoneNumberResource </returns> 
         public override async Task<IncomingPhoneNumberResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -373,12 +347,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created IncomingPhoneNumberResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created IncomingPhoneNumberResource </returns> 
         public override IncomingPhoneNumberResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -412,11 +386,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return IncomingPhoneNumberResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (phoneNumber != null) {
                 request.AddPostParam("PhoneNumber", phoneNumber.ToString());

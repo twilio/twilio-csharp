@@ -14,24 +14,24 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         private string domainSid;
         private string sid;
     
-        /**
-         * Construct a new IpAccessControlListMappingFetcher.
-         * 
-         * @param domainSid The domain_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new IpAccessControlListMappingFetcher.
+        /// </summary>
+        ///
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="sid"> The sid </param>
         public IpAccessControlListMappingFetcher(string domainSid, string sid) {
             this.domainSid = domainSid;
             this.sid = sid;
         }
     
-        /**
-         * Construct a new IpAccessControlListMappingFetcher
-         * 
-         * @param accountSid The account_sid
-         * @param domainSid The domain_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new IpAccessControlListMappingFetcher
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="sid"> The sid </param>
         public IpAccessControlListMappingFetcher(string accountSid, string domainSid, string sid) {
             this.accountSid = accountSid;
             this.domainSid = domainSid;
@@ -39,12 +39,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched IpAccessControlListMappingResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched IpAccessControlListMappingResource </returns> 
         public override async Task<IpAccessControlListMappingResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -78,12 +78,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched IpAccessControlListMappingResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched IpAccessControlListMappingResource </returns> 
         public override IpAccessControlListMappingResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

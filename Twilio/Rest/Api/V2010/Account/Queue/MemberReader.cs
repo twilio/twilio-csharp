@@ -13,33 +13,33 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         private string accountSid;
         private string queueSid;
     
-        /**
-         * Construct a new MemberReader.
-         * 
-         * @param queueSid The Queue in which to find members
-         */
+        /// <summary>
+        /// Construct a new MemberReader.
+        /// </summary>
+        ///
+        /// <param name="queueSid"> The Queue in which to find members </param>
         public MemberReader(string queueSid) {
             this.queueSid = queueSid;
         }
     
-        /**
-         * Construct a new MemberReader
-         * 
-         * @param accountSid The account_sid
-         * @param queueSid The Queue in which to find members
-         */
+        /// <summary>
+        /// Construct a new MemberReader
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="queueSid"> The Queue in which to find members </param>
         public MemberReader(string accountSid, string queueSid) {
             this.accountSid = accountSid;
             this.queueSid = queueSid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return MemberResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> MemberResource ResourceSet </returns> 
         public override Task<ResourceSet<MemberResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -54,12 +54,12 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return MemberResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> MemberResource ResourceSet </returns> 
         public override ResourceSet<MemberResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -73,13 +73,13 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
             return new ResourceSet<MemberResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<MemberResource> NextPage(Page<MemberResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -91,13 +91,13 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of MemberResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of MemberResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<MemberResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -124,11 +124,11 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
             return Page<MemberResource>.FromJson("queue_members", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             request.AddQueryParam("PageSize", PageSize.ToString());
         }

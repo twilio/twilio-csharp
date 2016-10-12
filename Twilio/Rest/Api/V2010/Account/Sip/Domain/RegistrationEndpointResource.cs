@@ -9,39 +9,39 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
 
     public class RegistrationEndpointResource : Resource {
-        /**
-         * read
-         * 
-         * @param accountSid The account_sid
-         * @param domainSid The domain_sid
-         * @param region The region
-         * @param registrant The registrant
-         * @return RegistrationEndpointReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="region"> The region </param>
+        /// <param name="registrant"> The registrant </param>
+        /// <returns> RegistrationEndpointReader capable of executing the read </returns> 
         public static RegistrationEndpointReader Reader(string accountSid, string domainSid, string region, string registrant) {
             return new RegistrationEndpointReader(accountSid, domainSid, region, registrant);
         }
     
-        /**
-         * Create a RegistrationEndpointReader to execute read.
-         * 
-         * @param domainSid The domain_sid
-         * @param region The region
-         * @param registrant The registrant
-         * @return RegistrationEndpointReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a RegistrationEndpointReader to execute read.
+        /// </summary>
+        ///
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="region"> The region </param>
+        /// <param name="registrant"> The registrant </param>
+        /// <returns> RegistrationEndpointReader capable of executing the read </returns> 
         public static RegistrationEndpointReader Reader(string domainSid, 
                                                         string region, 
                                                         string registrant) {
             return new RegistrationEndpointReader(domainSid, region, registrant);
         }
     
-        /**
-         * Converts a JSON string into a RegistrationEndpointResource object
-         * 
-         * @param json Raw JSON string
-         * @return RegistrationEndpointResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a RegistrationEndpointResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> RegistrationEndpointResource object represented by the provided JSON </returns> 
         public static RegistrationEndpointResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -118,86 +118,62 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
             this.displayName = displayName;
         }
     
-        /**
-         * @return The address_of_record
-         */
+        /// <returns> The address_of_record </returns> 
         public string GetAddressOfRecord() {
             return this.addressOfRecord;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The date_expires
-         */
+        /// <returns> The date_expires </returns> 
         public DateTime? GetDateExpires() {
             return this.dateExpires;
         }
     
-        /**
-         * @return The sip_call_id
-         */
+        /// <returns> The sip_call_id </returns> 
         public string GetSipCallId() {
             return this.sipCallId;
         }
     
-        /**
-         * @return The sip_contact
-         */
+        /// <returns> The sip_contact </returns> 
         public string GetSipContact() {
             return this.sipContact;
         }
     
-        /**
-         * @return The sip_cseq
-         */
+        /// <returns> The sip_cseq </returns> 
         public int? GetSipCseq() {
             return this.sipCseq;
         }
     
-        /**
-         * @return The sip_path
-         */
+        /// <returns> The sip_path </returns> 
         public string GetSipPath() {
             return this.sipPath;
         }
     
-        /**
-         * @return The sip_via
-         */
+        /// <returns> The sip_via </returns> 
         public string GetSipVia() {
             return this.sipVia;
         }
     
-        /**
-         * @return The user_agent
-         */
+        /// <returns> The user_agent </returns> 
         public string GetUserAgent() {
             return this.userAgent;
         }
     
-        /**
-         * @return The channel_type
-         */
+        /// <returns> The channel_type </returns> 
         public string GetChannelType() {
             return this.channelType;
         }
     
-        /**
-         * @return The display_name
-         */
+        /// <returns> The display_name </returns> 
         public string GetDisplayName() {
             return this.displayName;
         }

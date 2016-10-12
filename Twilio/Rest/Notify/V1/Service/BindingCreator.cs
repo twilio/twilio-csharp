@@ -20,15 +20,15 @@ namespace Twilio.Rest.Notify.V1.Service {
         private List<string> tag;
         private string notificationProtocolVersion;
     
-        /**
-         * Construct a new BindingCreator
-         * 
-         * @param serviceSid The service_sid
-         * @param endpoint The endpoint
-         * @param identity The identity
-         * @param bindingType The binding_type
-         * @param address The address
-         */
+        /// <summary>
+        /// Construct a new BindingCreator
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="endpoint"> The endpoint </param>
+        /// <param name="identity"> The identity </param>
+        /// <param name="bindingType"> The binding_type </param>
+        /// <param name="address"> The address </param>
         public BindingCreator(string serviceSid, string endpoint, string identity, BindingResource.BindingType bindingType, string address) {
             this.serviceSid = serviceSid;
             this.endpoint = endpoint;
@@ -37,45 +37,45 @@ namespace Twilio.Rest.Notify.V1.Service {
             this.address = address;
         }
     
-        /**
-         * The tag
-         * 
-         * @param tag The tag
-         * @return this
-         */
+        /// <summary>
+        /// The tag
+        /// </summary>
+        ///
+        /// <param name="tag"> The tag </param>
+        /// <returns> this </returns> 
         public BindingCreator setTag(List<string> tag) {
             this.tag = tag;
             return this;
         }
     
-        /**
-         * The tag
-         * 
-         * @param tag The tag
-         * @return this
-         */
+        /// <summary>
+        /// The tag
+        /// </summary>
+        ///
+        /// <param name="tag"> The tag </param>
+        /// <returns> this </returns> 
         public BindingCreator setTag(string tag) {
             return setTag(Promoter.ListOfOne(tag));
         }
     
-        /**
-         * The notification_protocol_version
-         * 
-         * @param notificationProtocolVersion The notification_protocol_version
-         * @return this
-         */
+        /// <summary>
+        /// The notification_protocol_version
+        /// </summary>
+        ///
+        /// <param name="notificationProtocolVersion"> The notification_protocol_version </param>
+        /// <returns> this </returns> 
         public BindingCreator setNotificationProtocolVersion(string notificationProtocolVersion) {
             this.notificationProtocolVersion = notificationProtocolVersion;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created BindingResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created BindingResource </returns> 
         public override async Task<BindingResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -110,12 +110,12 @@ namespace Twilio.Rest.Notify.V1.Service {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created BindingResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created BindingResource </returns> 
         public override BindingResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -149,11 +149,11 @@ namespace Twilio.Rest.Notify.V1.Service {
             return BindingResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (endpoint != null) {
                 request.AddPostParam("Endpoint", endpoint);

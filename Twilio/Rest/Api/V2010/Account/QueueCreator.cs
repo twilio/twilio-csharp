@@ -14,51 +14,50 @@ namespace Twilio.Rest.Api.V2010.Account {
         private string friendlyName;
         private int? maxSize;
     
-        /**
-         * Construct a new QueueCreator.
-         */
+        /// <summary>
+        /// Construct a new QueueCreator.
+        /// </summary>
         public QueueCreator() {
         }
     
-        /**
-         * Construct a new QueueCreator
-         * 
-         * @param accountSid The account_sid
-         */
+        /// <summary>
+        /// Construct a new QueueCreator
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
         public QueueCreator(string accountSid) {
             this.accountSid = accountSid;
         }
     
-        /**
-         * A user-provided string that identifies this queue.
-         * 
-         * @param friendlyName A user-provided string that identifies this queue.
-         * @return this
-         */
+        /// <summary>
+        /// A user-provided string that identifies this queue.
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> A user-provided string that identifies this queue. </param>
+        /// <returns> this </returns> 
         public QueueCreator setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * The upper limit of calls allowed to be in the queue. The default is 100. The
-         * maximum is 1000.
-         * 
-         * @param maxSize The max number of calls allowed in the queue
-         * @return this
-         */
+        /// <summary>
+        /// The upper limit of calls allowed to be in the queue. The default is 100. The maximum is 1000.
+        /// </summary>
+        ///
+        /// <param name="maxSize"> The max number of calls allowed in the queue </param>
+        /// <returns> this </returns> 
         public QueueCreator setMaxSize(int? maxSize) {
             this.maxSize = maxSize;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created QueueResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created QueueResource </returns> 
         public override async Task<QueueResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -93,12 +92,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created QueueResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created QueueResource </returns> 
         public override QueueResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -132,11 +131,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return QueueResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

@@ -9,59 +9,59 @@ using Twilio.Http;
 namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
 
     public class MemberResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param serviceSid The service_sid
-         * @param channelSid The channel_sid
-         * @param sid The sid
-         * @return MemberFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> MemberFetcher capable of executing the fetch </returns> 
         public static MemberFetcher Fetcher(string serviceSid, string channelSid, string sid) {
             return new MemberFetcher(serviceSid, channelSid, sid);
         }
     
-        /**
-         * create
-         * 
-         * @param serviceSid The service_sid
-         * @param channelSid The channel_sid
-         * @param identity The identity
-         * @return MemberCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="identity"> The identity </param>
+        /// <returns> MemberCreator capable of executing the create </returns> 
         public static MemberCreator Creator(string serviceSid, string channelSid, string identity) {
             return new MemberCreator(serviceSid, channelSid, identity);
         }
     
-        /**
-         * read
-         * 
-         * @param serviceSid The service_sid
-         * @param channelSid The channel_sid
-         * @return MemberReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="channelSid"> The channel_sid </param>
+        /// <returns> MemberReader capable of executing the read </returns> 
         public static MemberReader Reader(string serviceSid, string channelSid) {
             return new MemberReader(serviceSid, channelSid);
         }
     
-        /**
-         * delete
-         * 
-         * @param serviceSid The service_sid
-         * @param channelSid The channel_sid
-         * @param sid The sid
-         * @return MemberDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> MemberDeleter capable of executing the delete </returns> 
         public static MemberDeleter Deleter(string serviceSid, string channelSid, string sid) {
             return new MemberDeleter(serviceSid, channelSid, sid);
         }
     
-        /**
-         * Converts a JSON string into a MemberResource object
-         * 
-         * @param json Raw JSON string
-         * @return MemberResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a MemberResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> MemberResource object represented by the provided JSON </returns> 
         public static MemberResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -123,65 +123,47 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
             this.url = url;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The channel_sid
-         */
+        /// <returns> The channel_sid </returns> 
         public string GetChannelSid() {
             return this.channelSid;
         }
     
-        /**
-         * @return The service_sid
-         */
+        /// <returns> The service_sid </returns> 
         public string GetServiceSid() {
             return this.serviceSid;
         }
     
-        /**
-         * @return The identity
-         */
+        /// <returns> The identity </returns> 
         public string GetIdentity() {
             return this.identity;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The role_sid
-         */
+        /// <returns> The role_sid </returns> 
         public string GetRoleSid() {
             return this.roleSid;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }

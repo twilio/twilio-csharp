@@ -19,79 +19,79 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         private Uri fallbackAssignmentCallbackUrl;
         private int? taskReservationTimeout;
     
-        /**
-         * Construct a new WorkflowCreator
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param friendlyName The friendly_name
-         * @param configuration The configuration
-         */
+        /// <summary>
+        /// Construct a new WorkflowCreator
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="configuration"> The configuration </param>
         public WorkflowCreator(string workspaceSid, string friendlyName, string configuration) {
             this.workspaceSid = workspaceSid;
             this.friendlyName = friendlyName;
             this.configuration = configuration;
         }
     
-        /**
-         * The assignment_callback_url
-         * 
-         * @param assignmentCallbackUrl The assignment_callback_url
-         * @return this
-         */
+        /// <summary>
+        /// The assignment_callback_url
+        /// </summary>
+        ///
+        /// <param name="assignmentCallbackUrl"> The assignment_callback_url </param>
+        /// <returns> this </returns> 
         public WorkflowCreator setAssignmentCallbackUrl(Uri assignmentCallbackUrl) {
             this.assignmentCallbackUrl = assignmentCallbackUrl;
             return this;
         }
     
-        /**
-         * The assignment_callback_url
-         * 
-         * @param assignmentCallbackUrl The assignment_callback_url
-         * @return this
-         */
+        /// <summary>
+        /// The assignment_callback_url
+        /// </summary>
+        ///
+        /// <param name="assignmentCallbackUrl"> The assignment_callback_url </param>
+        /// <returns> this </returns> 
         public WorkflowCreator setAssignmentCallbackUrl(string assignmentCallbackUrl) {
             return setAssignmentCallbackUrl(Promoter.UriFromString(assignmentCallbackUrl));
         }
     
-        /**
-         * The fallback_assignment_callback_url
-         * 
-         * @param fallbackAssignmentCallbackUrl The fallback_assignment_callback_url
-         * @return this
-         */
+        /// <summary>
+        /// The fallback_assignment_callback_url
+        /// </summary>
+        ///
+        /// <param name="fallbackAssignmentCallbackUrl"> The fallback_assignment_callback_url </param>
+        /// <returns> this </returns> 
         public WorkflowCreator setFallbackAssignmentCallbackUrl(Uri fallbackAssignmentCallbackUrl) {
             this.fallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl;
             return this;
         }
     
-        /**
-         * The fallback_assignment_callback_url
-         * 
-         * @param fallbackAssignmentCallbackUrl The fallback_assignment_callback_url
-         * @return this
-         */
+        /// <summary>
+        /// The fallback_assignment_callback_url
+        /// </summary>
+        ///
+        /// <param name="fallbackAssignmentCallbackUrl"> The fallback_assignment_callback_url </param>
+        /// <returns> this </returns> 
         public WorkflowCreator setFallbackAssignmentCallbackUrl(string fallbackAssignmentCallbackUrl) {
             return setFallbackAssignmentCallbackUrl(Promoter.UriFromString(fallbackAssignmentCallbackUrl));
         }
     
-        /**
-         * The task_reservation_timeout
-         * 
-         * @param taskReservationTimeout The task_reservation_timeout
-         * @return this
-         */
+        /// <summary>
+        /// The task_reservation_timeout
+        /// </summary>
+        ///
+        /// <param name="taskReservationTimeout"> The task_reservation_timeout </param>
+        /// <returns> this </returns> 
         public WorkflowCreator setTaskReservationTimeout(int? taskReservationTimeout) {
             this.taskReservationTimeout = taskReservationTimeout;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created WorkflowResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created WorkflowResource </returns> 
         public override async Task<WorkflowResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -126,12 +126,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created WorkflowResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created WorkflowResource </returns> 
         public override WorkflowResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -165,11 +165,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             return WorkflowResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

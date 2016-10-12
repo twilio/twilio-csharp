@@ -9,66 +9,66 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.Sync.Service {
 
     public class DocumentResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         * @return DocumentFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> DocumentFetcher capable of executing the fetch </returns> 
         public static DocumentFetcher Fetcher(string serviceSid, string sid) {
             return new DocumentFetcher(serviceSid, sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         * @return DocumentDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> DocumentDeleter capable of executing the delete </returns> 
         public static DocumentDeleter Deleter(string serviceSid, string sid) {
             return new DocumentDeleter(serviceSid, sid);
         }
     
-        /**
-         * create
-         * 
-         * @param serviceSid The service_sid
-         * @return DocumentCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <returns> DocumentCreator capable of executing the create </returns> 
         public static DocumentCreator Creator(string serviceSid) {
             return new DocumentCreator(serviceSid);
         }
     
-        /**
-         * read
-         * 
-         * @param serviceSid The service_sid
-         * @return DocumentReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <returns> DocumentReader capable of executing the read </returns> 
         public static DocumentReader Reader(string serviceSid) {
             return new DocumentReader(serviceSid);
         }
     
-        /**
-         * update
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         * @param data The data
-         * @return DocumentUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="data"> The data </param>
+        /// <returns> DocumentUpdater capable of executing the update </returns> 
         public static DocumentUpdater Updater(string serviceSid, string sid, Object data) {
             return new DocumentUpdater(serviceSid, sid, data);
         }
     
-        /**
-         * Converts a JSON string into a DocumentResource object
-         * 
-         * @param json Raw JSON string
-         * @return DocumentResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a DocumentResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> DocumentResource object represented by the provided JSON </returns> 
         public static DocumentResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -135,72 +135,52 @@ namespace Twilio.Rest.Preview.Sync.Service {
             this.createdBy = createdBy;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The unique_name
-         */
+        /// <returns> The unique_name </returns> 
         public string GetUniqueName() {
             return this.uniqueName;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The service_sid
-         */
+        /// <returns> The service_sid </returns> 
         public string GetServiceSid() {
             return this.serviceSid;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }
     
-        /**
-         * @return The revision
-         */
+        /// <returns> The revision </returns> 
         public string GetRevision() {
             return this.revision;
         }
     
-        /**
-         * @return The data
-         */
+        /// <returns> The data </returns> 
         public Object GetData() {
             return this.data;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The created_by
-         */
+        /// <returns> The created_by </returns> 
         public string GetCreatedBy() {
             return this.createdBy;
         }

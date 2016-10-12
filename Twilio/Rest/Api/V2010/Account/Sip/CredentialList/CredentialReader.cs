@@ -13,33 +13,33 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         private string accountSid;
         private string credentialListSid;
     
-        /**
-         * Construct a new CredentialReader.
-         * 
-         * @param credentialListSid The credential_list_sid
-         */
+        /// <summary>
+        /// Construct a new CredentialReader.
+        /// </summary>
+        ///
+        /// <param name="credentialListSid"> The credential_list_sid </param>
         public CredentialReader(string credentialListSid) {
             this.credentialListSid = credentialListSid;
         }
     
-        /**
-         * Construct a new CredentialReader
-         * 
-         * @param accountSid The account_sid
-         * @param credentialListSid The credential_list_sid
-         */
+        /// <summary>
+        /// Construct a new CredentialReader
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="credentialListSid"> The credential_list_sid </param>
         public CredentialReader(string accountSid, string credentialListSid) {
             this.accountSid = accountSid;
             this.credentialListSid = credentialListSid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return CredentialResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> CredentialResource ResourceSet </returns> 
         public override Task<ResourceSet<CredentialResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -54,12 +54,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return CredentialResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> CredentialResource ResourceSet </returns> 
         public override ResourceSet<CredentialResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -73,13 +73,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
             return new ResourceSet<CredentialResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<CredentialResource> NextPage(Page<CredentialResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -91,13 +91,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of CredentialResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of CredentialResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<CredentialResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -124,11 +124,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
             return Page<CredentialResource>.FromJson("credentials", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             request.AddQueryParam("PageSize", PageSize.ToString());
         }

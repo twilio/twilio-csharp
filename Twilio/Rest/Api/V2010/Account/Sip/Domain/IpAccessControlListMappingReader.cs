@@ -13,33 +13,33 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         private string accountSid;
         private string domainSid;
     
-        /**
-         * Construct a new IpAccessControlListMappingReader.
-         * 
-         * @param domainSid The domain_sid
-         */
+        /// <summary>
+        /// Construct a new IpAccessControlListMappingReader.
+        /// </summary>
+        ///
+        /// <param name="domainSid"> The domain_sid </param>
         public IpAccessControlListMappingReader(string domainSid) {
             this.domainSid = domainSid;
         }
     
-        /**
-         * Construct a new IpAccessControlListMappingReader
-         * 
-         * @param accountSid The account_sid
-         * @param domainSid The domain_sid
-         */
+        /// <summary>
+        /// Construct a new IpAccessControlListMappingReader
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="domainSid"> The domain_sid </param>
         public IpAccessControlListMappingReader(string accountSid, string domainSid) {
             this.accountSid = accountSid;
             this.domainSid = domainSid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return IpAccessControlListMappingResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> IpAccessControlListMappingResource ResourceSet </returns> 
         public override Task<ResourceSet<IpAccessControlListMappingResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -54,12 +54,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return IpAccessControlListMappingResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> IpAccessControlListMappingResource ResourceSet </returns> 
         public override ResourceSet<IpAccessControlListMappingResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -73,13 +73,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
             return new ResourceSet<IpAccessControlListMappingResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<IpAccessControlListMappingResource> NextPage(Page<IpAccessControlListMappingResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -91,14 +91,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of IpAccessControlListMappingResource Resources for a given
-         * request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of IpAccessControlListMappingResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<IpAccessControlListMappingResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -125,11 +124,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
             return Page<IpAccessControlListMappingResource>.FromJson("ip_access_control_list_mappings", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             request.AddQueryParam("PageSize", PageSize.ToString());
         }

@@ -9,22 +9,22 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.Wireless.Device {
 
     public class UsageResource : Resource {
-        /**
-         * fetch
-         * 
-         * @param deviceSid The device_sid
-         * @return UsageFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="deviceSid"> The device_sid </param>
+        /// <returns> UsageFetcher capable of executing the fetch </returns> 
         public static UsageFetcher Fetcher(string deviceSid) {
             return new UsageFetcher(deviceSid);
         }
     
-        /**
-         * Converts a JSON string into a UsageResource object
-         * 
-         * @param json Raw JSON string
-         * @return UsageResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a UsageResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> UsageResource object represented by the provided JSON </returns> 
         public static UsageResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -86,65 +86,47 @@ namespace Twilio.Rest.Preview.Wireless.Device {
             this.url = url;
         }
     
-        /**
-         * @return The device_sid
-         */
+        /// <returns> The device_sid </returns> 
         public string GetDeviceSid() {
             return this.deviceSid;
         }
     
-        /**
-         * @return The device_alias
-         */
+        /// <returns> The device_alias </returns> 
         public string GetDeviceAlias() {
             return this.deviceAlias;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The period
-         */
+        /// <returns> The period </returns> 
         public Object GetPeriod() {
             return this.period;
         }
     
-        /**
-         * @return The commands_usage
-         */
+        /// <returns> The commands_usage </returns> 
         public Object GetCommandsUsage() {
             return this.commandsUsage;
         }
     
-        /**
-         * @return The commands_costs
-         */
+        /// <returns> The commands_costs </returns> 
         public Object GetCommandsCosts() {
             return this.commandsCosts;
         }
     
-        /**
-         * @return The data_usage
-         */
+        /// <returns> The data_usage </returns> 
         public Object GetDataUsage() {
             return this.dataUsage;
         }
     
-        /**
-         * @return The data_costs
-         */
+        /// <returns> The data_costs </returns> 
         public Object GetDataCosts() {
             return this.dataCosts;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }

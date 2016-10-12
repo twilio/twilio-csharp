@@ -17,58 +17,58 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         private int? qualityScore;
         private List<FeedbackResource.Issues> issue;
     
-        /**
-         * Construct a new FeedbackCreator.
-         * 
-         * @param callSid The call_sid
-         * @param qualityScore The quality_score
-         */
+        /// <summary>
+        /// Construct a new FeedbackCreator.
+        /// </summary>
+        ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="qualityScore"> The quality_score </param>
         public FeedbackCreator(string callSid, int? qualityScore) {
             this.callSid = callSid;
             this.qualityScore = qualityScore;
         }
     
-        /**
-         * Construct a new FeedbackCreator
-         * 
-         * @param accountSid The account_sid
-         * @param callSid The call_sid
-         * @param qualityScore The quality_score
-         */
+        /// <summary>
+        /// Construct a new FeedbackCreator
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="qualityScore"> The quality_score </param>
         public FeedbackCreator(string accountSid, string callSid, int? qualityScore) {
             this.accountSid = accountSid;
             this.callSid = callSid;
             this.qualityScore = qualityScore;
         }
     
-        /**
-         * The issue
-         * 
-         * @param issue The issue
-         * @return this
-         */
+        /// <summary>
+        /// The issue
+        /// </summary>
+        ///
+        /// <param name="issue"> The issue </param>
+        /// <returns> this </returns> 
         public FeedbackCreator setIssue(List<FeedbackResource.Issues> issue) {
             this.issue = issue;
             return this;
         }
     
-        /**
-         * The issue
-         * 
-         * @param issue The issue
-         * @return this
-         */
+        /// <summary>
+        /// The issue
+        /// </summary>
+        ///
+        /// <param name="issue"> The issue </param>
+        /// <returns> this </returns> 
         public FeedbackCreator setIssue(FeedbackResource.Issues issue) {
             return setIssue(Promoter.ListOfOne(issue));
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created FeedbackResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created FeedbackResource </returns> 
         public override async Task<FeedbackResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -103,12 +103,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created FeedbackResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created FeedbackResource </returns> 
         public override FeedbackResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -142,11 +142,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
             return FeedbackResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (qualityScore != null) {
                 request.AddPostParam("QualityScore", qualityScore.ToString());

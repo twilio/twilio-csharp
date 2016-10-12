@@ -13,33 +13,33 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         private string accountSid;
         private string sid;
     
-        /**
-         * Construct a new FeedbackSummaryFetcher.
-         * 
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new FeedbackSummaryFetcher.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
         public FeedbackSummaryFetcher(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * Construct a new FeedbackSummaryFetcher
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new FeedbackSummaryFetcher
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
         public FeedbackSummaryFetcher(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched FeedbackSummaryResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched FeedbackSummaryResource </returns> 
         public override async Task<FeedbackSummaryResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -73,12 +73,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched FeedbackSummaryResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched FeedbackSummaryResource </returns> 
         public override FeedbackSummaryResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

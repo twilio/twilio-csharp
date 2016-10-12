@@ -20,124 +20,124 @@ namespace Twilio.Rest.Api.V2010.Account {
         private Uri statusCallback;
         private Twilio.Http.HttpMethod statusCallbackMethod;
     
-        /**
-         * Construct a new SandboxUpdater.
-         */
+        /// <summary>
+        /// Construct a new SandboxUpdater.
+        /// </summary>
         public SandboxUpdater() {
         }
     
-        /**
-         * Construct a new SandboxUpdater
-         * 
-         * @param accountSid The account_sid
-         */
+        /// <summary>
+        /// Construct a new SandboxUpdater
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
         public SandboxUpdater(string accountSid) {
             this.accountSid = accountSid;
         }
     
-        /**
-         * The voice_url
-         * 
-         * @param voiceUrl The voice_url
-         * @return this
-         */
+        /// <summary>
+        /// The voice_url
+        /// </summary>
+        ///
+        /// <param name="voiceUrl"> The voice_url </param>
+        /// <returns> this </returns> 
         public SandboxUpdater setVoiceUrl(Uri voiceUrl) {
             this.voiceUrl = voiceUrl;
             return this;
         }
     
-        /**
-         * The voice_url
-         * 
-         * @param voiceUrl The voice_url
-         * @return this
-         */
+        /// <summary>
+        /// The voice_url
+        /// </summary>
+        ///
+        /// <param name="voiceUrl"> The voice_url </param>
+        /// <returns> this </returns> 
         public SandboxUpdater setVoiceUrl(string voiceUrl) {
             return setVoiceUrl(Promoter.UriFromString(voiceUrl));
         }
     
-        /**
-         * The voice_method
-         * 
-         * @param voiceMethod The voice_method
-         * @return this
-         */
+        /// <summary>
+        /// The voice_method
+        /// </summary>
+        ///
+        /// <param name="voiceMethod"> The voice_method </param>
+        /// <returns> this </returns> 
         public SandboxUpdater setVoiceMethod(Twilio.Http.HttpMethod voiceMethod) {
             this.voiceMethod = voiceMethod;
             return this;
         }
     
-        /**
-         * The sms_url
-         * 
-         * @param smsUrl The sms_url
-         * @return this
-         */
+        /// <summary>
+        /// The sms_url
+        /// </summary>
+        ///
+        /// <param name="smsUrl"> The sms_url </param>
+        /// <returns> this </returns> 
         public SandboxUpdater setSmsUrl(Uri smsUrl) {
             this.smsUrl = smsUrl;
             return this;
         }
     
-        /**
-         * The sms_url
-         * 
-         * @param smsUrl The sms_url
-         * @return this
-         */
+        /// <summary>
+        /// The sms_url
+        /// </summary>
+        ///
+        /// <param name="smsUrl"> The sms_url </param>
+        /// <returns> this </returns> 
         public SandboxUpdater setSmsUrl(string smsUrl) {
             return setSmsUrl(Promoter.UriFromString(smsUrl));
         }
     
-        /**
-         * The sms_method
-         * 
-         * @param smsMethod The sms_method
-         * @return this
-         */
+        /// <summary>
+        /// The sms_method
+        /// </summary>
+        ///
+        /// <param name="smsMethod"> The sms_method </param>
+        /// <returns> this </returns> 
         public SandboxUpdater setSmsMethod(Twilio.Http.HttpMethod smsMethod) {
             this.smsMethod = smsMethod;
             return this;
         }
     
-        /**
-         * The status_callback
-         * 
-         * @param statusCallback The status_callback
-         * @return this
-         */
+        /// <summary>
+        /// The status_callback
+        /// </summary>
+        ///
+        /// <param name="statusCallback"> The status_callback </param>
+        /// <returns> this </returns> 
         public SandboxUpdater setStatusCallback(Uri statusCallback) {
             this.statusCallback = statusCallback;
             return this;
         }
     
-        /**
-         * The status_callback
-         * 
-         * @param statusCallback The status_callback
-         * @return this
-         */
+        /// <summary>
+        /// The status_callback
+        /// </summary>
+        ///
+        /// <param name="statusCallback"> The status_callback </param>
+        /// <returns> this </returns> 
         public SandboxUpdater setStatusCallback(string statusCallback) {
             return setStatusCallback(Promoter.UriFromString(statusCallback));
         }
     
-        /**
-         * The status_callback_method
-         * 
-         * @param statusCallbackMethod The status_callback_method
-         * @return this
-         */
+        /// <summary>
+        /// The status_callback_method
+        /// </summary>
+        ///
+        /// <param name="statusCallbackMethod"> The status_callback_method </param>
+        /// <returns> this </returns> 
         public SandboxUpdater setStatusCallbackMethod(Twilio.Http.HttpMethod statusCallbackMethod) {
             this.statusCallbackMethod = statusCallbackMethod;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated SandboxResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated SandboxResource </returns> 
         public override async Task<SandboxResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -172,12 +172,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated SandboxResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated SandboxResource </returns> 
         public override SandboxResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -211,11 +211,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return SandboxResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (voiceUrl != null) {
                 request.AddPostParam("VoiceUrl", voiceUrl.ToString());

@@ -12,22 +12,22 @@ namespace Twilio.Rest.Pricing.V1.Voice {
     public class NumberFetcher : Fetcher<NumberResource> {
         private Twilio.Types.PhoneNumber number;
     
-        /**
-         * Construct a new NumberFetcher
-         * 
-         * @param number The number
-         */
+        /// <summary>
+        /// Construct a new NumberFetcher
+        /// </summary>
+        ///
+        /// <param name="number"> The number </param>
         public NumberFetcher(Twilio.Types.PhoneNumber number) {
             this.number = number;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched NumberResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched NumberResource </returns> 
         public override async Task<NumberResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -61,12 +61,12 @@ namespace Twilio.Rest.Pricing.V1.Voice {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched NumberResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched NumberResource </returns> 
         public override NumberResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

@@ -24,171 +24,163 @@ namespace Twilio.Rest.Api.V2010.Account {
         private Uri homepageUrl;
         private List<ConnectAppResource.Permission> permissions;
     
-        /**
-         * Construct a new ConnectAppUpdater.
-         * 
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new ConnectAppUpdater.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
         public ConnectAppUpdater(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * Construct a new ConnectAppUpdater
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new ConnectAppUpdater
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
         public ConnectAppUpdater(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
     
-        /**
-         * The URL the user's browser will redirect to after Twilio authenticates the
-         * user and obtains authorization for this Connect App.
-         * 
-         * @param authorizeRedirectUrl URIL Twilio sends requests when users authorize
-         * @return this
-         */
+        /// <summary>
+        /// The URL the user's browser will redirect to after Twilio authenticates the user and obtains authorization for this
+        /// Connect App.
+        /// </summary>
+        ///
+        /// <param name="authorizeRedirectUrl"> URIL Twilio sends requests when users authorize </param>
+        /// <returns> this </returns> 
         public ConnectAppUpdater setAuthorizeRedirectUrl(Uri authorizeRedirectUrl) {
             this.authorizeRedirectUrl = authorizeRedirectUrl;
             return this;
         }
     
-        /**
-         * The URL the user's browser will redirect to after Twilio authenticates the
-         * user and obtains authorization for this Connect App.
-         * 
-         * @param authorizeRedirectUrl URIL Twilio sends requests when users authorize
-         * @return this
-         */
+        /// <summary>
+        /// The URL the user's browser will redirect to after Twilio authenticates the user and obtains authorization for this
+        /// Connect App.
+        /// </summary>
+        ///
+        /// <param name="authorizeRedirectUrl"> URIL Twilio sends requests when users authorize </param>
+        /// <returns> this </returns> 
         public ConnectAppUpdater setAuthorizeRedirectUrl(string authorizeRedirectUrl) {
             return setAuthorizeRedirectUrl(Promoter.UriFromString(authorizeRedirectUrl));
         }
     
-        /**
-         * The company name set for this Connect App.
-         * 
-         * @param companyName The company name set for this Connect App.
-         * @return this
-         */
+        /// <summary>
+        /// The company name set for this Connect App.
+        /// </summary>
+        ///
+        /// <param name="companyName"> The company name set for this Connect App. </param>
+        /// <returns> this </returns> 
         public ConnectAppUpdater setCompanyName(string companyName) {
             this.companyName = companyName;
             return this;
         }
     
-        /**
-         * The HTTP method to be used when making a request to the
-         * `DeauthorizeCallbackUrl`.
-         * 
-         * @param deauthorizeCallbackMethod HTTP method Twilio WIll use making requests
-         *                                  to the url
-         * @return this
-         */
+        /// <summary>
+        /// The HTTP method to be used when making a request to the `DeauthorizeCallbackUrl`.
+        /// </summary>
+        ///
+        /// <param name="deauthorizeCallbackMethod"> HTTP method Twilio WIll use making requests to the url </param>
+        /// <returns> this </returns> 
         public ConnectAppUpdater setDeauthorizeCallbackMethod(Twilio.Http.HttpMethod deauthorizeCallbackMethod) {
             this.deauthorizeCallbackMethod = deauthorizeCallbackMethod;
             return this;
         }
     
-        /**
-         * The URL to which Twilio will send a request when a user de-authorizes this
-         * Connect App.
-         * 
-         * @param deauthorizeCallbackUrl URL Twilio will send a request when a user
-         *                               de-authorizes this app
-         * @return this
-         */
+        /// <summary>
+        /// The URL to which Twilio will send a request when a user de-authorizes this Connect App.
+        /// </summary>
+        ///
+        /// <param name="deauthorizeCallbackUrl"> URL Twilio will send a request when a user de-authorizes this app </param>
+        /// <returns> this </returns> 
         public ConnectAppUpdater setDeauthorizeCallbackUrl(Uri deauthorizeCallbackUrl) {
             this.deauthorizeCallbackUrl = deauthorizeCallbackUrl;
             return this;
         }
     
-        /**
-         * The URL to which Twilio will send a request when a user de-authorizes this
-         * Connect App.
-         * 
-         * @param deauthorizeCallbackUrl URL Twilio will send a request when a user
-         *                               de-authorizes this app
-         * @return this
-         */
+        /// <summary>
+        /// The URL to which Twilio will send a request when a user de-authorizes this Connect App.
+        /// </summary>
+        ///
+        /// <param name="deauthorizeCallbackUrl"> URL Twilio will send a request when a user de-authorizes this app </param>
+        /// <returns> this </returns> 
         public ConnectAppUpdater setDeauthorizeCallbackUrl(string deauthorizeCallbackUrl) {
             return setDeauthorizeCallbackUrl(Promoter.UriFromString(deauthorizeCallbackUrl));
         }
     
-        /**
-         * A more detailed human readable description of the Connect App.
-         * 
-         * @param description A more detailed human readable description
-         * @return this
-         */
+        /// <summary>
+        /// A more detailed human readable description of the Connect App.
+        /// </summary>
+        ///
+        /// <param name="description"> A more detailed human readable description </param>
+        /// <returns> this </returns> 
         public ConnectAppUpdater setDescription(string description) {
             this.description = description;
             return this;
         }
     
-        /**
-         * A human readable name for the Connect App.
-         * 
-         * @param friendlyName A human readable name for the Connect App.
-         * @return this
-         */
+        /// <summary>
+        /// A human readable name for the Connect App.
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> A human readable name for the Connect App. </param>
+        /// <returns> this </returns> 
         public ConnectAppUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * The public URL where users can obtain more information about this Connect
-         * App.
-         * 
-         * @param homepageUrl The URL users can obtain more information
-         * @return this
-         */
+        /// <summary>
+        /// The public URL where users can obtain more information about this Connect App.
+        /// </summary>
+        ///
+        /// <param name="homepageUrl"> The URL users can obtain more information </param>
+        /// <returns> this </returns> 
         public ConnectAppUpdater setHomepageUrl(Uri homepageUrl) {
             this.homepageUrl = homepageUrl;
             return this;
         }
     
-        /**
-         * The public URL where users can obtain more information about this Connect
-         * App.
-         * 
-         * @param homepageUrl The URL users can obtain more information
-         * @return this
-         */
+        /// <summary>
+        /// The public URL where users can obtain more information about this Connect App.
+        /// </summary>
+        ///
+        /// <param name="homepageUrl"> The URL users can obtain more information </param>
+        /// <returns> this </returns> 
         public ConnectAppUpdater setHomepageUrl(string homepageUrl) {
             return setHomepageUrl(Promoter.UriFromString(homepageUrl));
         }
     
-        /**
-         * The set of permissions that your ConnectApp requests.
-         * 
-         * @param permissions The set of permissions that your ConnectApp requests.
-         * @return this
-         */
+        /// <summary>
+        /// The set of permissions that your ConnectApp requests.
+        /// </summary>
+        ///
+        /// <param name="permissions"> The set of permissions that your ConnectApp requests. </param>
+        /// <returns> this </returns> 
         public ConnectAppUpdater setPermissions(List<ConnectAppResource.Permission> permissions) {
             this.permissions = permissions;
             return this;
         }
     
-        /**
-         * The set of permissions that your ConnectApp requests.
-         * 
-         * @param permissions The set of permissions that your ConnectApp requests.
-         * @return this
-         */
+        /// <summary>
+        /// The set of permissions that your ConnectApp requests.
+        /// </summary>
+        ///
+        /// <param name="permissions"> The set of permissions that your ConnectApp requests. </param>
+        /// <returns> this </returns> 
         public ConnectAppUpdater setPermissions(ConnectAppResource.Permission permissions) {
             return setPermissions(Promoter.ListOfOne(permissions));
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated ConnectAppResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated ConnectAppResource </returns> 
         public override async Task<ConnectAppResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -223,12 +215,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated ConnectAppResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated ConnectAppResource </returns> 
         public override ConnectAppResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -262,11 +254,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return ConnectAppResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (authorizeRedirectUrl != null) {
                 request.AddPostParam("AuthorizeRedirectUrl", authorizeRedirectUrl.ToString());

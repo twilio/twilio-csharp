@@ -14,13 +14,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
         private string taskSid;
         private string sid;
     
-        /**
-         * Construct a new ReservationFetcher
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param taskSid The task_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new ReservationFetcher
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="taskSid"> The task_sid </param>
+        /// <param name="sid"> The sid </param>
         public ReservationFetcher(string workspaceSid, string taskSid, string sid) {
             this.workspaceSid = workspaceSid;
             this.taskSid = taskSid;
@@ -28,12 +28,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched ReservationResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched ReservationResource </returns> 
         public override async Task<ReservationResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -67,12 +67,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched ReservationResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched ReservationResource </returns> 
         public override ReservationResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

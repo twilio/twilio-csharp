@@ -9,31 +9,31 @@ using Twilio.Http;
 namespace Twilio.Rest.Monitor.V1 {
 
     public class EventResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param sid The sid
-         * @return EventFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> EventFetcher capable of executing the fetch </returns> 
         public static EventFetcher Fetcher(string sid) {
             return new EventFetcher(sid);
         }
     
-        /**
-         * read
-         * 
-         * @return EventReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <returns> EventReader capable of executing the read </returns> 
         public static EventReader Reader() {
             return new EventReader();
         }
     
-        /**
-         * Converts a JSON string into a EventResource object
-         * 
-         * @param json Raw JSON string
-         * @return EventResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a EventResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> EventResource object represented by the provided JSON </returns> 
         public static EventResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -110,86 +110,62 @@ namespace Twilio.Rest.Monitor.V1 {
             this.sourceIpAddress = sourceIpAddress;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The actor_sid
-         */
+        /// <returns> The actor_sid </returns> 
         public string GetActorSid() {
             return this.actorSid;
         }
     
-        /**
-         * @return The actor_type
-         */
+        /// <returns> The actor_type </returns> 
         public string GetActorType() {
             return this.actorType;
         }
     
-        /**
-         * @return The description
-         */
+        /// <returns> The description </returns> 
         public string GetDescription() {
             return this.description;
         }
     
-        /**
-         * @return The event_data
-         */
+        /// <returns> The event_data </returns> 
         public Object GetEventData() {
             return this.eventData;
         }
     
-        /**
-         * @return The event_date
-         */
+        /// <returns> The event_date </returns> 
         public DateTime? GetEventDate() {
             return this.eventDate;
         }
     
-        /**
-         * @return The event_type
-         */
+        /// <returns> The event_type </returns> 
         public string GetEventType() {
             return this.eventType;
         }
     
-        /**
-         * @return The resource_sid
-         */
+        /// <returns> The resource_sid </returns> 
         public string GetResourceSid() {
             return this.resourceSid;
         }
     
-        /**
-         * @return The resource_type
-         */
+        /// <returns> The resource_type </returns> 
         public string GetResourceType() {
             return this.resourceType;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The source
-         */
+        /// <returns> The source </returns> 
         public string GetSource() {
             return this.source;
         }
     
-        /**
-         * @return The source_ip_address
-         */
+        /// <returns> The source_ip_address </returns> 
         public string GetSourceIpAddress() {
             return this.sourceIpAddress;
         }

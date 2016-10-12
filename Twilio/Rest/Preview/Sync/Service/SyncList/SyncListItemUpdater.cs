@@ -16,14 +16,14 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         private int? index;
         private Object data;
     
-        /**
-         * Construct a new SyncListItemUpdater
-         * 
-         * @param serviceSid The service_sid
-         * @param listSid The list_sid
-         * @param index The index
-         * @param data The data
-         */
+        /// <summary>
+        /// Construct a new SyncListItemUpdater
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="listSid"> The list_sid </param>
+        /// <param name="index"> The index </param>
+        /// <param name="data"> The data </param>
         public SyncListItemUpdater(string serviceSid, string listSid, int? index, Object data) {
             this.serviceSid = serviceSid;
             this.listSid = listSid;
@@ -32,12 +32,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated SyncListItemResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated SyncListItemResource </returns> 
         public override async Task<SyncListItemResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -72,12 +72,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated SyncListItemResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated SyncListItemResource </returns> 
         public override SyncListItemResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -111,11 +111,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
             return SyncListItemResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (data != null) {
                 request.AddPostParam("Data", data.ToString());

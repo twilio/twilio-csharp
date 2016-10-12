@@ -15,37 +15,37 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         private string identity;
         private string roleSid;
     
-        /**
-         * Construct a new MemberCreator
-         * 
-         * @param serviceSid The service_sid
-         * @param channelSid The channel_sid
-         * @param identity The identity
-         */
+        /// <summary>
+        /// Construct a new MemberCreator
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="identity"> The identity </param>
         public MemberCreator(string serviceSid, string channelSid, string identity) {
             this.serviceSid = serviceSid;
             this.channelSid = channelSid;
             this.identity = identity;
         }
     
-        /**
-         * The role_sid
-         * 
-         * @param roleSid The role_sid
-         * @return this
-         */
+        /// <summary>
+        /// The role_sid
+        /// </summary>
+        ///
+        /// <param name="roleSid"> The role_sid </param>
+        /// <returns> this </returns> 
         public MemberCreator setRoleSid(string roleSid) {
             this.roleSid = roleSid;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created MemberResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created MemberResource </returns> 
         public override async Task<MemberResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -80,12 +80,12 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created MemberResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created MemberResource </returns> 
         public override MemberResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -119,11 +119,11 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
             return MemberResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (identity != null) {
                 request.AddPostParam("Identity", identity);

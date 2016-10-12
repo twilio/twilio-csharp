@@ -14,24 +14,24 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         private string sid;
         private string friendlyName;
     
-        /**
-         * Construct a new IpAccessControlListUpdater.
-         * 
-         * @param sid The sid
-         * @param friendlyName A human readable description of this resource
-         */
+        /// <summary>
+        /// Construct a new IpAccessControlListUpdater.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> A human readable description of this resource </param>
         public IpAccessControlListUpdater(string sid, string friendlyName) {
             this.sid = sid;
             this.friendlyName = friendlyName;
         }
     
-        /**
-         * Construct a new IpAccessControlListUpdater
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         * @param friendlyName A human readable description of this resource
-         */
+        /// <summary>
+        /// Construct a new IpAccessControlListUpdater
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> A human readable description of this resource </param>
         public IpAccessControlListUpdater(string accountSid, string sid, string friendlyName) {
             this.accountSid = accountSid;
             this.sid = sid;
@@ -39,12 +39,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated IpAccessControlListResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated IpAccessControlListResource </returns> 
         public override async Task<IpAccessControlListResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -79,12 +79,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated IpAccessControlListResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated IpAccessControlListResource </returns> 
         public override IpAccessControlListResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -118,11 +118,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
             return IpAccessControlListResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

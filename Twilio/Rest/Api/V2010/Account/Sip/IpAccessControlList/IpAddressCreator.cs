@@ -15,27 +15,27 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         private string friendlyName;
         private string ipAddress;
     
-        /**
-         * Construct a new IpAddressCreator.
-         * 
-         * @param ipAccessControlListSid The ip_access_control_list_sid
-         * @param friendlyName The friendly_name
-         * @param ipAddress The ip_address
-         */
+        /// <summary>
+        /// Construct a new IpAddressCreator.
+        /// </summary>
+        ///
+        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="ipAddress"> The ip_address </param>
         public IpAddressCreator(string ipAccessControlListSid, string friendlyName, string ipAddress) {
             this.ipAccessControlListSid = ipAccessControlListSid;
             this.friendlyName = friendlyName;
             this.ipAddress = ipAddress;
         }
     
-        /**
-         * Construct a new IpAddressCreator
-         * 
-         * @param accountSid The account_sid
-         * @param ipAccessControlListSid The ip_access_control_list_sid
-         * @param friendlyName The friendly_name
-         * @param ipAddress The ip_address
-         */
+        /// <summary>
+        /// Construct a new IpAddressCreator
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="ipAddress"> The ip_address </param>
         public IpAddressCreator(string accountSid, string ipAccessControlListSid, string friendlyName, string ipAddress) {
             this.accountSid = accountSid;
             this.ipAccessControlListSid = ipAccessControlListSid;
@@ -44,12 +44,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created IpAddressResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created IpAddressResource </returns> 
         public override async Task<IpAddressResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -84,12 +84,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created IpAddressResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created IpAddressResource </returns> 
         public override IpAddressResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -123,11 +123,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
             return IpAddressResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

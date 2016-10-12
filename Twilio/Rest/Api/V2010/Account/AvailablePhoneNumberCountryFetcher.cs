@@ -13,33 +13,33 @@ namespace Twilio.Rest.Api.V2010.Account {
         private string accountSid;
         private string countryCode;
     
-        /**
-         * Construct a new AvailablePhoneNumberCountryFetcher.
-         * 
-         * @param countryCode The country_code
-         */
+        /// <summary>
+        /// Construct a new AvailablePhoneNumberCountryFetcher.
+        /// </summary>
+        ///
+        /// <param name="countryCode"> The country_code </param>
         public AvailablePhoneNumberCountryFetcher(string countryCode) {
             this.countryCode = countryCode;
         }
     
-        /**
-         * Construct a new AvailablePhoneNumberCountryFetcher
-         * 
-         * @param accountSid The account_sid
-         * @param countryCode The country_code
-         */
+        /// <summary>
+        /// Construct a new AvailablePhoneNumberCountryFetcher
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="countryCode"> The country_code </param>
         public AvailablePhoneNumberCountryFetcher(string accountSid, string countryCode) {
             this.accountSid = accountSid;
             this.countryCode = countryCode;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched AvailablePhoneNumberCountryResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched AvailablePhoneNumberCountryResource </returns> 
         public override async Task<AvailablePhoneNumberCountryResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -73,12 +73,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched AvailablePhoneNumberCountryResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched AvailablePhoneNumberCountryResource </returns> 
         public override AvailablePhoneNumberCountryResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

@@ -10,33 +10,33 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Address {
 
     public class DependentPhoneNumberResource : Resource {
-        /**
-         * read
-         * 
-         * @param accountSid The account_sid
-         * @param addressSid The address_sid
-         * @return DependentPhoneNumberReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="addressSid"> The address_sid </param>
+        /// <returns> DependentPhoneNumberReader capable of executing the read </returns> 
         public static DependentPhoneNumberReader Reader(string accountSid, string addressSid) {
             return new DependentPhoneNumberReader(accountSid, addressSid);
         }
     
-        /**
-         * Create a DependentPhoneNumberReader to execute read.
-         * 
-         * @param addressSid The address_sid
-         * @return DependentPhoneNumberReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a DependentPhoneNumberReader to execute read.
+        /// </summary>
+        ///
+        /// <param name="addressSid"> The address_sid </param>
+        /// <returns> DependentPhoneNumberReader capable of executing the read </returns> 
         public static DependentPhoneNumberReader Reader(string addressSid) {
             return new DependentPhoneNumberReader(addressSid);
         }
     
-        /**
-         * Converts a JSON string into a DependentPhoneNumberResource object
-         * 
-         * @param json Raw JSON string
-         * @return DependentPhoneNumberResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a DependentPhoneNumberResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> DependentPhoneNumberResource object represented by the provided JSON </returns> 
         public static DependentPhoneNumberResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -110,79 +110,57 @@ namespace Twilio.Rest.Api.V2010.Account.Address {
             this.capabilities = capabilities;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public Twilio.Types.PhoneNumber GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The phone_number
-         */
+        /// <returns> The phone_number </returns> 
         public Twilio.Types.PhoneNumber GetPhoneNumber() {
             return this.phoneNumber;
         }
     
-        /**
-         * @return The lata
-         */
+        /// <returns> The lata </returns> 
         public string GetLata() {
             return this.lata;
         }
     
-        /**
-         * @return The rate_center
-         */
+        /// <returns> The rate_center </returns> 
         public string GetRateCenter() {
             return this.rateCenter;
         }
     
-        /**
-         * @return The latitude
-         */
+        /// <returns> The latitude </returns> 
         public decimal? GetLatitude() {
             return this.latitude;
         }
     
-        /**
-         * @return The longitude
-         */
+        /// <returns> The longitude </returns> 
         public decimal? GetLongitude() {
             return this.longitude;
         }
     
-        /**
-         * @return The region
-         */
+        /// <returns> The region </returns> 
         public string GetRegion() {
             return this.region;
         }
     
-        /**
-         * @return The postal_code
-         */
+        /// <returns> The postal_code </returns> 
         public string GetPostalCode() {
             return this.postalCode;
         }
     
-        /**
-         * @return The iso_country
-         */
+        /// <returns> The iso_country </returns> 
         public string GetIsoCountry() {
             return this.isoCountry;
         }
     
-        /**
-         * @return The address_requirements
-         */
+        /// <returns> The address_requirements </returns> 
         public string GetAddressRequirements() {
             return this.addressRequirements;
         }
     
-        /**
-         * @return The capabilities
-         */
+        /// <returns> The capabilities </returns> 
         public Dictionary<string, string> GetCapabilities() {
             return this.capabilities;
         }

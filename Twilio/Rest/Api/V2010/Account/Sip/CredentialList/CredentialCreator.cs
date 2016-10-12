@@ -15,27 +15,27 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         private string username;
         private string password;
     
-        /**
-         * Construct a new CredentialCreator.
-         * 
-         * @param credentialListSid The credential_list_sid
-         * @param username The username
-         * @param password The password
-         */
+        /// <summary>
+        /// Construct a new CredentialCreator.
+        /// </summary>
+        ///
+        /// <param name="credentialListSid"> The credential_list_sid </param>
+        /// <param name="username"> The username </param>
+        /// <param name="password"> The password </param>
         public CredentialCreator(string credentialListSid, string username, string password) {
             this.credentialListSid = credentialListSid;
             this.username = username;
             this.password = password;
         }
     
-        /**
-         * Construct a new CredentialCreator
-         * 
-         * @param accountSid The account_sid
-         * @param credentialListSid The credential_list_sid
-         * @param username The username
-         * @param password The password
-         */
+        /// <summary>
+        /// Construct a new CredentialCreator
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="credentialListSid"> The credential_list_sid </param>
+        /// <param name="username"> The username </param>
+        /// <param name="password"> The password </param>
         public CredentialCreator(string accountSid, string credentialListSid, string username, string password) {
             this.accountSid = accountSid;
             this.credentialListSid = credentialListSid;
@@ -44,12 +44,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created CredentialResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created CredentialResource </returns> 
         public override async Task<CredentialResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -84,12 +84,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created CredentialResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created CredentialResource </returns> 
         public override CredentialResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -123,11 +123,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
             return CredentialResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (username != null) {
                 request.AddPostParam("Username", username);

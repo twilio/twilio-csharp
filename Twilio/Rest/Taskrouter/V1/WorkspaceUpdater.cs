@@ -20,98 +20,98 @@ namespace Twilio.Rest.Taskrouter.V1 {
         private bool? multiTaskEnabled;
         private string timeoutActivitySid;
     
-        /**
-         * Construct a new WorkspaceUpdater
-         * 
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new WorkspaceUpdater
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
         public WorkspaceUpdater(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * The default_activity_sid
-         * 
-         * @param defaultActivitySid The default_activity_sid
-         * @return this
-         */
+        /// <summary>
+        /// The default_activity_sid
+        /// </summary>
+        ///
+        /// <param name="defaultActivitySid"> The default_activity_sid </param>
+        /// <returns> this </returns> 
         public WorkspaceUpdater setDefaultActivitySid(string defaultActivitySid) {
             this.defaultActivitySid = defaultActivitySid;
             return this;
         }
     
-        /**
-         * The event_callback_url
-         * 
-         * @param eventCallbackUrl The event_callback_url
-         * @return this
-         */
+        /// <summary>
+        /// The event_callback_url
+        /// </summary>
+        ///
+        /// <param name="eventCallbackUrl"> The event_callback_url </param>
+        /// <returns> this </returns> 
         public WorkspaceUpdater setEventCallbackUrl(Uri eventCallbackUrl) {
             this.eventCallbackUrl = eventCallbackUrl;
             return this;
         }
     
-        /**
-         * The event_callback_url
-         * 
-         * @param eventCallbackUrl The event_callback_url
-         * @return this
-         */
+        /// <summary>
+        /// The event_callback_url
+        /// </summary>
+        ///
+        /// <param name="eventCallbackUrl"> The event_callback_url </param>
+        /// <returns> this </returns> 
         public WorkspaceUpdater setEventCallbackUrl(string eventCallbackUrl) {
             return setEventCallbackUrl(Promoter.UriFromString(eventCallbackUrl));
         }
     
-        /**
-         * The events_filter
-         * 
-         * @param eventsFilter The events_filter
-         * @return this
-         */
+        /// <summary>
+        /// The events_filter
+        /// </summary>
+        ///
+        /// <param name="eventsFilter"> The events_filter </param>
+        /// <returns> this </returns> 
         public WorkspaceUpdater setEventsFilter(string eventsFilter) {
             this.eventsFilter = eventsFilter;
             return this;
         }
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public WorkspaceUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * The multi_task_enabled
-         * 
-         * @param multiTaskEnabled The multi_task_enabled
-         * @return this
-         */
+        /// <summary>
+        /// The multi_task_enabled
+        /// </summary>
+        ///
+        /// <param name="multiTaskEnabled"> The multi_task_enabled </param>
+        /// <returns> this </returns> 
         public WorkspaceUpdater setMultiTaskEnabled(bool? multiTaskEnabled) {
             this.multiTaskEnabled = multiTaskEnabled;
             return this;
         }
     
-        /**
-         * The timeout_activity_sid
-         * 
-         * @param timeoutActivitySid The timeout_activity_sid
-         * @return this
-         */
+        /// <summary>
+        /// The timeout_activity_sid
+        /// </summary>
+        ///
+        /// <param name="timeoutActivitySid"> The timeout_activity_sid </param>
+        /// <returns> this </returns> 
         public WorkspaceUpdater setTimeoutActivitySid(string timeoutActivitySid) {
             this.timeoutActivitySid = timeoutActivitySid;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated WorkspaceResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated WorkspaceResource </returns> 
         public override async Task<WorkspaceResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -146,12 +146,12 @@ namespace Twilio.Rest.Taskrouter.V1 {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated WorkspaceResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated WorkspaceResource </returns> 
         public override WorkspaceResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -185,11 +185,11 @@ namespace Twilio.Rest.Taskrouter.V1 {
             return WorkspaceResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (defaultActivitySid != null) {
                 request.AddPostParam("DefaultActivitySid", defaultActivitySid);

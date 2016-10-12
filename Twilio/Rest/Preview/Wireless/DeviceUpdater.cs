@@ -23,141 +23,141 @@ namespace Twilio.Rest.Preview.Wireless {
         private string commandsCallbackMethod;
         private Uri commandsCallbackUrl;
     
-        /**
-         * Construct a new DeviceUpdater
-         * 
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new DeviceUpdater
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
         public DeviceUpdater(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * The alias
-         * 
-         * @param alias The alias
-         * @return this
-         */
+        /// <summary>
+        /// The alias
+        /// </summary>
+        ///
+        /// <param name="alias"> The alias </param>
+        /// <returns> this </returns> 
         public DeviceUpdater setAlias(string alias) {
             this.alias = alias;
             return this;
         }
     
-        /**
-         * The callback_method
-         * 
-         * @param callbackMethod The callback_method
-         * @return this
-         */
+        /// <summary>
+        /// The callback_method
+        /// </summary>
+        ///
+        /// <param name="callbackMethod"> The callback_method </param>
+        /// <returns> this </returns> 
         public DeviceUpdater setCallbackMethod(string callbackMethod) {
             this.callbackMethod = callbackMethod;
             return this;
         }
     
-        /**
-         * The callback_url
-         * 
-         * @param callbackUrl The callback_url
-         * @return this
-         */
+        /// <summary>
+        /// The callback_url
+        /// </summary>
+        ///
+        /// <param name="callbackUrl"> The callback_url </param>
+        /// <returns> this </returns> 
         public DeviceUpdater setCallbackUrl(Uri callbackUrl) {
             this.callbackUrl = callbackUrl;
             return this;
         }
     
-        /**
-         * The callback_url
-         * 
-         * @param callbackUrl The callback_url
-         * @return this
-         */
+        /// <summary>
+        /// The callback_url
+        /// </summary>
+        ///
+        /// <param name="callbackUrl"> The callback_url </param>
+        /// <returns> this </returns> 
         public DeviceUpdater setCallbackUrl(string callbackUrl) {
             return setCallbackUrl(Promoter.UriFromString(callbackUrl));
         }
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public DeviceUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * The rate_plan
-         * 
-         * @param ratePlan The rate_plan
-         * @return this
-         */
+        /// <summary>
+        /// The rate_plan
+        /// </summary>
+        ///
+        /// <param name="ratePlan"> The rate_plan </param>
+        /// <returns> this </returns> 
         public DeviceUpdater setRatePlan(string ratePlan) {
             this.ratePlan = ratePlan;
             return this;
         }
     
-        /**
-         * The sim_identifier
-         * 
-         * @param simIdentifier The sim_identifier
-         * @return this
-         */
+        /// <summary>
+        /// The sim_identifier
+        /// </summary>
+        ///
+        /// <param name="simIdentifier"> The sim_identifier </param>
+        /// <returns> this </returns> 
         public DeviceUpdater setSimIdentifier(string simIdentifier) {
             this.simIdentifier = simIdentifier;
             return this;
         }
     
-        /**
-         * The status
-         * 
-         * @param status The status
-         * @return this
-         */
+        /// <summary>
+        /// The status
+        /// </summary>
+        ///
+        /// <param name="status"> The status </param>
+        /// <returns> this </returns> 
         public DeviceUpdater setStatus(string status) {
             this.status = status;
             return this;
         }
     
-        /**
-         * The commands_callback_method
-         * 
-         * @param commandsCallbackMethod The commands_callback_method
-         * @return this
-         */
+        /// <summary>
+        /// The commands_callback_method
+        /// </summary>
+        ///
+        /// <param name="commandsCallbackMethod"> The commands_callback_method </param>
+        /// <returns> this </returns> 
         public DeviceUpdater setCommandsCallbackMethod(string commandsCallbackMethod) {
             this.commandsCallbackMethod = commandsCallbackMethod;
             return this;
         }
     
-        /**
-         * The commands_callback_url
-         * 
-         * @param commandsCallbackUrl The commands_callback_url
-         * @return this
-         */
+        /// <summary>
+        /// The commands_callback_url
+        /// </summary>
+        ///
+        /// <param name="commandsCallbackUrl"> The commands_callback_url </param>
+        /// <returns> this </returns> 
         public DeviceUpdater setCommandsCallbackUrl(Uri commandsCallbackUrl) {
             this.commandsCallbackUrl = commandsCallbackUrl;
             return this;
         }
     
-        /**
-         * The commands_callback_url
-         * 
-         * @param commandsCallbackUrl The commands_callback_url
-         * @return this
-         */
+        /// <summary>
+        /// The commands_callback_url
+        /// </summary>
+        ///
+        /// <param name="commandsCallbackUrl"> The commands_callback_url </param>
+        /// <returns> this </returns> 
         public DeviceUpdater setCommandsCallbackUrl(string commandsCallbackUrl) {
             return setCommandsCallbackUrl(Promoter.UriFromString(commandsCallbackUrl));
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated DeviceResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated DeviceResource </returns> 
         public override async Task<DeviceResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -192,12 +192,12 @@ namespace Twilio.Rest.Preview.Wireless {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated DeviceResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated DeviceResource </returns> 
         public override DeviceResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -231,11 +231,11 @@ namespace Twilio.Rest.Preview.Wireless {
             return DeviceResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (alias != null) {
                 request.AddPostParam("Alias", alias);

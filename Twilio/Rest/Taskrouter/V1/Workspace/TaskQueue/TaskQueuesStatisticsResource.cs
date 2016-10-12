@@ -10,22 +10,22 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
 
     public class TaskQueuesStatisticsResource : Resource {
-        /**
-         * read
-         * 
-         * @param workspaceSid The workspace_sid
-         * @return TaskQueuesStatisticsReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <returns> TaskQueuesStatisticsReader capable of executing the read </returns> 
         public static TaskQueuesStatisticsReader Reader(string workspaceSid) {
             return new TaskQueuesStatisticsReader(workspaceSid);
         }
     
-        /**
-         * Converts a JSON string into a TaskQueuesStatisticsResource object
-         * 
-         * @param json Raw JSON string
-         * @return TaskQueuesStatisticsResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a TaskQueuesStatisticsResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> TaskQueuesStatisticsResource object represented by the provided JSON </returns> 
         public static TaskQueuesStatisticsResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -67,37 +67,27 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
             this.workspaceSid = workspaceSid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The cumulative
-         */
+        /// <returns> The cumulative </returns> 
         public Dictionary<string, string> GetCumulative() {
             return this.cumulative;
         }
     
-        /**
-         * @return The realtime
-         */
+        /// <returns> The realtime </returns> 
         public Object GetRealtime() {
             return this.realtime;
         }
     
-        /**
-         * @return The task_queue_sid
-         */
+        /// <returns> The task_queue_sid </returns> 
         public string GetTaskQueueSid() {
             return this.taskQueueSid;
         }
     
-        /**
-         * @return The workspace_sid
-         */
+        /// <returns> The workspace_sid </returns> 
         public string GetWorkspaceSid() {
             return this.workspaceSid;
         }

@@ -14,52 +14,51 @@ namespace Twilio.Rest.Api.V2010.Account {
         private string friendlyName;
         private string shortCode;
     
-        /**
-         * Construct a new ShortCodeReader.
-         */
+        /// <summary>
+        /// Construct a new ShortCodeReader.
+        /// </summary>
         public ShortCodeReader() {
         }
     
-        /**
-         * Construct a new ShortCodeReader
-         * 
-         * @param accountSid The account_sid
-         */
+        /// <summary>
+        /// Construct a new ShortCodeReader
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
         public ShortCodeReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
-        /**
-         * Only show the ShortCode resources with friendly names that exactly match this
-         * name
-         * 
-         * @param friendlyName Filter by friendly name
-         * @return this
-         */
+        /// <summary>
+        /// Only show the ShortCode resources with friendly names that exactly match this name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> Filter by friendly name </param>
+        /// <returns> this </returns> 
         public ShortCodeReader ByFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * Only show the ShortCode resources that match this pattern. You can specify
-         * partial numbers and use '*' as a wildcard for any digit
-         * 
-         * @param shortCode Filter by ShortCode
-         * @return this
-         */
+        /// <summary>
+        /// Only show the ShortCode resources that match this pattern. You can specify partial numbers and use '*' as a wildcard
+        /// for any digit
+        /// </summary>
+        ///
+        /// <param name="shortCode"> Filter by ShortCode </param>
+        /// <returns> this </returns> 
         public ShortCodeReader ByShortCode(string shortCode) {
             this.shortCode = shortCode;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return ShortCodeResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> ShortCodeResource ResourceSet </returns> 
         public override Task<ResourceSet<ShortCodeResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -74,12 +73,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return ShortCodeResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> ShortCodeResource ResourceSet </returns> 
         public override ResourceSet<ShortCodeResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -93,13 +92,13 @@ namespace Twilio.Rest.Api.V2010.Account {
             return new ResourceSet<ShortCodeResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<ShortCodeResource> NextPage(Page<ShortCodeResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -111,13 +110,13 @@ namespace Twilio.Rest.Api.V2010.Account {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of ShortCodeResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of ShortCodeResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<ShortCodeResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -144,11 +143,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return Page<ShortCodeResource>.FromJson("short_codes", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (friendlyName != null) {
                 request.AddQueryParam("FriendlyName", friendlyName);

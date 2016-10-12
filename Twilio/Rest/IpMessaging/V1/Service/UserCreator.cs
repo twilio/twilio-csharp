@@ -16,57 +16,57 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         private string attributes;
         private string friendlyName;
     
-        /**
-         * Construct a new UserCreator
-         * 
-         * @param serviceSid The service_sid
-         * @param identity The identity
-         */
+        /// <summary>
+        /// Construct a new UserCreator
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="identity"> The identity </param>
         public UserCreator(string serviceSid, string identity) {
             this.serviceSid = serviceSid;
             this.identity = identity;
         }
     
-        /**
-         * The role_sid
-         * 
-         * @param roleSid The role_sid
-         * @return this
-         */
+        /// <summary>
+        /// The role_sid
+        /// </summary>
+        ///
+        /// <param name="roleSid"> The role_sid </param>
+        /// <returns> this </returns> 
         public UserCreator setRoleSid(string roleSid) {
             this.roleSid = roleSid;
             return this;
         }
     
-        /**
-         * The attributes
-         * 
-         * @param attributes The attributes
-         * @return this
-         */
+        /// <summary>
+        /// The attributes
+        /// </summary>
+        ///
+        /// <param name="attributes"> The attributes </param>
+        /// <returns> this </returns> 
         public UserCreator setAttributes(string attributes) {
             this.attributes = attributes;
             return this;
         }
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public UserCreator setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created UserResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created UserResource </returns> 
         public override async Task<UserResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -101,12 +101,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created UserResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created UserResource </returns> 
         public override UserResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -140,11 +140,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
             return UserResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (identity != null) {
                 request.AddPostParam("Identity", identity);

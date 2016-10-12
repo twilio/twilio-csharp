@@ -13,33 +13,33 @@ namespace Twilio.Rest.Api.V2010.Account {
         private string accountSid;
         private string sid;
     
-        /**
-         * Construct a new SigningKeyFetcher.
-         * 
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new SigningKeyFetcher.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
         public SigningKeyFetcher(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * Construct a new SigningKeyFetcher
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new SigningKeyFetcher
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
         public SigningKeyFetcher(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched SigningKeyResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched SigningKeyResource </returns> 
         public override async Task<SigningKeyResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -73,12 +73,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched SigningKeyResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched SigningKeyResource </returns> 
         public override SigningKeyResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

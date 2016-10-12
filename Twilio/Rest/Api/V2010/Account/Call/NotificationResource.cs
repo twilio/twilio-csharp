@@ -9,81 +9,81 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Call {
 
     public class NotificationResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param accountSid The account_sid
-         * @param callSid The call_sid
-         * @param sid The sid
-         * @return NotificationFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> NotificationFetcher capable of executing the fetch </returns> 
         public static NotificationFetcher Fetcher(string accountSid, string callSid, string sid) {
             return new NotificationFetcher(accountSid, callSid, sid);
         }
     
-        /**
-         * Create a NotificationFetcher to execute fetch.
-         * 
-         * @param callSid The call_sid
-         * @param sid The sid
-         * @return NotificationFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a NotificationFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> NotificationFetcher capable of executing the fetch </returns> 
         public static NotificationFetcher Fetcher(string callSid, 
                                                   string sid) {
             return new NotificationFetcher(callSid, sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param accountSid The account_sid
-         * @param callSid The call_sid
-         * @param sid The sid
-         * @return NotificationDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> NotificationDeleter capable of executing the delete </returns> 
         public static NotificationDeleter Deleter(string accountSid, string callSid, string sid) {
             return new NotificationDeleter(accountSid, callSid, sid);
         }
     
-        /**
-         * Create a NotificationDeleter to execute delete.
-         * 
-         * @param callSid The call_sid
-         * @param sid The sid
-         * @return NotificationDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a NotificationDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> NotificationDeleter capable of executing the delete </returns> 
         public static NotificationDeleter Deleter(string callSid, 
                                                   string sid) {
             return new NotificationDeleter(callSid, sid);
         }
     
-        /**
-         * read
-         * 
-         * @param accountSid The account_sid
-         * @param callSid The call_sid
-         * @return NotificationReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="callSid"> The call_sid </param>
+        /// <returns> NotificationReader capable of executing the read </returns> 
         public static NotificationReader Reader(string accountSid, string callSid) {
             return new NotificationReader(accountSid, callSid);
         }
     
-        /**
-         * Create a NotificationReader to execute read.
-         * 
-         * @param callSid The call_sid
-         * @return NotificationReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a NotificationReader to execute read.
+        /// </summary>
+        ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <returns> NotificationReader capable of executing the read </returns> 
         public static NotificationReader Reader(string callSid) {
             return new NotificationReader(callSid);
         }
     
-        /**
-         * Converts a JSON string into a NotificationResource object
-         * 
-         * @param json Raw JSON string
-         * @return NotificationResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a NotificationResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> NotificationResource object represented by the provided JSON </returns> 
         public static NotificationResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -186,121 +186,87 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
             this.responseHeaders = responseHeaders;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The api_version
-         */
+        /// <returns> The api_version </returns> 
         public string GetApiVersion() {
             return this.apiVersion;
         }
     
-        /**
-         * @return The call_sid
-         */
+        /// <returns> The call_sid </returns> 
         public string GetCallSid() {
             return this.callSid;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The error_code
-         */
+        /// <returns> The error_code </returns> 
         public string GetErrorCode() {
             return this.errorCode;
         }
     
-        /**
-         * @return The log
-         */
+        /// <returns> The log </returns> 
         public string GetLog() {
             return this.log;
         }
     
-        /**
-         * @return The message_date
-         */
+        /// <returns> The message_date </returns> 
         public DateTime? GetMessageDate() {
             return this.messageDate;
         }
     
-        /**
-         * @return The message_text
-         */
+        /// <returns> The message_text </returns> 
         public string GetMessageText() {
             return this.messageText;
         }
     
-        /**
-         * @return The more_info
-         */
+        /// <returns> The more_info </returns> 
         public Uri GetMoreInfo() {
             return this.moreInfo;
         }
     
-        /**
-         * @return The request_method
-         */
+        /// <returns> The request_method </returns> 
         public Twilio.Http.HttpMethod GetRequestMethod() {
             return this.requestMethod;
         }
     
-        /**
-         * @return The request_url
-         */
+        /// <returns> The request_url </returns> 
         public Uri GetRequestUrl() {
             return this.requestUrl;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The uri
-         */
+        /// <returns> The uri </returns> 
         public string GetUri() {
             return this.uri;
         }
     
-        /**
-         * @return The request_variables
-         */
+        /// <returns> The request_variables </returns> 
         public string GetRequestVariables() {
             return this.requestVariables;
         }
     
-        /**
-         * @return The response_body
-         */
+        /// <returns> The response_body </returns> 
         public string GetResponseBody() {
             return this.responseBody;
         }
     
-        /**
-         * @return The response_headers
-         */
+        /// <returns> The response_headers </returns> 
         public string GetResponseHeaders() {
             return this.responseHeaders;
         }

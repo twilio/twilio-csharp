@@ -9,33 +9,33 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class ValidationRequestResource : Resource {
-        /**
-         * create
-         * 
-         * @param accountSid The account_sid
-         * @param phoneNumber The phone_number
-         * @return ValidationRequestCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="phoneNumber"> The phone_number </param>
+        /// <returns> ValidationRequestCreator capable of executing the create </returns> 
         public static ValidationRequestCreator Creator(string accountSid, Twilio.Types.PhoneNumber phoneNumber) {
             return new ValidationRequestCreator(accountSid, phoneNumber);
         }
     
-        /**
-         * Create a ValidationRequestCreator to execute create.
-         * 
-         * @param phoneNumber The phone_number
-         * @return ValidationRequestCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a ValidationRequestCreator to execute create.
+        /// </summary>
+        ///
+        /// <param name="phoneNumber"> The phone_number </param>
+        /// <returns> ValidationRequestCreator capable of executing the create </returns> 
         public static ValidationRequestCreator Creator(Twilio.Types.PhoneNumber phoneNumber) {
             return new ValidationRequestCreator(phoneNumber);
         }
     
-        /**
-         * Converts a JSON string into a ValidationRequestResource object
-         * 
-         * @param json Raw JSON string
-         * @return ValidationRequestResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a ValidationRequestResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> ValidationRequestResource object represented by the provided JSON </returns> 
         public static ValidationRequestResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -78,37 +78,27 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.callSid = callSid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The phone_number
-         */
+        /// <returns> The phone_number </returns> 
         public Twilio.Types.PhoneNumber GetPhoneNumber() {
             return this.phoneNumber;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The validation_code
-         */
+        /// <returns> The validation_code </returns> 
         public int? GetValidationCode() {
             return this.validationCode;
         }
     
-        /**
-         * @return The call_sid
-         */
+        /// <returns> The call_sid </returns> 
         public string GetCallSid() {
             return this.callSid;
         }

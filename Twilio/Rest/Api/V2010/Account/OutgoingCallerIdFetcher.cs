@@ -13,33 +13,33 @@ namespace Twilio.Rest.Api.V2010.Account {
         private string accountSid;
         private string sid;
     
-        /**
-         * Construct a new OutgoingCallerIdFetcher.
-         * 
-         * @param sid Fetch by unique outgoing-caller-id Sid
-         */
+        /// <summary>
+        /// Construct a new OutgoingCallerIdFetcher.
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique outgoing-caller-id Sid </param>
         public OutgoingCallerIdFetcher(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * Construct a new OutgoingCallerIdFetcher
-         * 
-         * @param accountSid The account_sid
-         * @param sid Fetch by unique outgoing-caller-id Sid
-         */
+        /// <summary>
+        /// Construct a new OutgoingCallerIdFetcher
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Fetch by unique outgoing-caller-id Sid </param>
         public OutgoingCallerIdFetcher(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched OutgoingCallerIdResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched OutgoingCallerIdResource </returns> 
         public override async Task<OutgoingCallerIdResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -73,12 +73,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched OutgoingCallerIdResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched OutgoingCallerIdResource </returns> 
         public override OutgoingCallerIdResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

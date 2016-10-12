@@ -19,16 +19,16 @@ namespace Twilio.Rest.Api.V2010.Account {
         private string isoCountry;
         private string friendlyName;
     
-        /**
-         * Construct a new AddressCreator.
-         * 
-         * @param customerName The customer_name
-         * @param street The street
-         * @param city The city
-         * @param region The region
-         * @param postalCode The postal_code
-         * @param isoCountry The iso_country
-         */
+        /// <summary>
+        /// Construct a new AddressCreator.
+        /// </summary>
+        ///
+        /// <param name="customerName"> The customer_name </param>
+        /// <param name="street"> The street </param>
+        /// <param name="city"> The city </param>
+        /// <param name="region"> The region </param>
+        /// <param name="postalCode"> The postal_code </param>
+        /// <param name="isoCountry"> The iso_country </param>
         public AddressCreator(string customerName, string street, string city, string region, string postalCode, string isoCountry) {
             this.customerName = customerName;
             this.street = street;
@@ -38,17 +38,17 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.isoCountry = isoCountry;
         }
     
-        /**
-         * Construct a new AddressCreator
-         * 
-         * @param accountSid The account_sid
-         * @param customerName The customer_name
-         * @param street The street
-         * @param city The city
-         * @param region The region
-         * @param postalCode The postal_code
-         * @param isoCountry The iso_country
-         */
+        /// <summary>
+        /// Construct a new AddressCreator
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="customerName"> The customer_name </param>
+        /// <param name="street"> The street </param>
+        /// <param name="city"> The city </param>
+        /// <param name="region"> The region </param>
+        /// <param name="postalCode"> The postal_code </param>
+        /// <param name="isoCountry"> The iso_country </param>
         public AddressCreator(string accountSid, string customerName, string street, string city, string region, string postalCode, string isoCountry) {
             this.accountSid = accountSid;
             this.customerName = customerName;
@@ -59,24 +59,24 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.isoCountry = isoCountry;
         }
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public AddressCreator setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created AddressResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created AddressResource </returns> 
         public override async Task<AddressResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -111,12 +111,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created AddressResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created AddressResource </returns> 
         public override AddressResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -150,11 +150,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return AddressResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (customerName != null) {
                 request.AddPostParam("CustomerName", customerName);

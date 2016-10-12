@@ -14,13 +14,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         private string sid;
         private string friendlyName;
     
-        /**
-         * Construct a new ActivityUpdater
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param sid The sid
-         * @param friendlyName The friendly_name
-         */
+        /// <summary>
+        /// Construct a new ActivityUpdater
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         public ActivityUpdater(string workspaceSid, string sid, string friendlyName) {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
@@ -28,12 +28,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated ActivityResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated ActivityResource </returns> 
         public override async Task<ActivityResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -68,12 +68,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated ActivityResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated ActivityResource </returns> 
         public override ActivityResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -107,11 +107,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             return ActivityResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

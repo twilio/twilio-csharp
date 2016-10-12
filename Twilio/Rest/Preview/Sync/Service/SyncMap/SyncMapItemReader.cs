@@ -16,57 +16,57 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         private string from;
         private SyncMapItemResource.QueryFromBoundType bounds;
     
-        /**
-         * Construct a new SyncMapItemReader
-         * 
-         * @param serviceSid The service_sid
-         * @param mapSid The map_sid
-         */
+        /// <summary>
+        /// Construct a new SyncMapItemReader
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="mapSid"> The map_sid </param>
         public SyncMapItemReader(string serviceSid, string mapSid) {
             this.serviceSid = serviceSid;
             this.mapSid = mapSid;
         }
     
-        /**
-         * The order
-         * 
-         * @param order The order
-         * @return this
-         */
+        /// <summary>
+        /// The order
+        /// </summary>
+        ///
+        /// <param name="order"> The order </param>
+        /// <returns> this </returns> 
         public SyncMapItemReader ByOrder(SyncMapItemResource.QueryResultOrder order) {
             this.order = order;
             return this;
         }
     
-        /**
-         * The from
-         * 
-         * @param from The from
-         * @return this
-         */
+        /// <summary>
+        /// The from
+        /// </summary>
+        ///
+        /// <param name="from"> The from </param>
+        /// <returns> this </returns> 
         public SyncMapItemReader ByFrom(string from) {
             this.from = from;
             return this;
         }
     
-        /**
-         * The bounds
-         * 
-         * @param bounds The bounds
-         * @return this
-         */
+        /// <summary>
+        /// The bounds
+        /// </summary>
+        ///
+        /// <param name="bounds"> The bounds </param>
+        /// <returns> this </returns> 
         public SyncMapItemReader ByBounds(SyncMapItemResource.QueryFromBoundType bounds) {
             this.bounds = bounds;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return SyncMapItemResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> SyncMapItemResource ResourceSet </returns> 
         public override Task<ResourceSet<SyncMapItemResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -81,12 +81,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return SyncMapItemResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> SyncMapItemResource ResourceSet </returns> 
         public override ResourceSet<SyncMapItemResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -100,13 +100,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
             return new ResourceSet<SyncMapItemResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<SyncMapItemResource> NextPage(Page<SyncMapItemResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -118,13 +118,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of SyncMapItemResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of SyncMapItemResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<SyncMapItemResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -151,11 +151,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
             return Page<SyncMapItemResource>.FromJson("items", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (order != null) {
                 request.AddQueryParam("Order", order.ToString());

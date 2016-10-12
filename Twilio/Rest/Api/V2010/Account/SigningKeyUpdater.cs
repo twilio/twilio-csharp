@@ -14,44 +14,44 @@ namespace Twilio.Rest.Api.V2010.Account {
         private string sid;
         private string friendlyName;
     
-        /**
-         * Construct a new SigningKeyUpdater.
-         * 
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new SigningKeyUpdater.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
         public SigningKeyUpdater(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * Construct a new SigningKeyUpdater
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new SigningKeyUpdater
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
         public SigningKeyUpdater(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public SigningKeyUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated SigningKeyResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated SigningKeyResource </returns> 
         public override async Task<SigningKeyResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -86,12 +86,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated SigningKeyResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated SigningKeyResource </returns> 
         public override SigningKeyResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -125,11 +125,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return SigningKeyResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

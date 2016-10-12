@@ -14,24 +14,24 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         private string credentialListSid;
         private string sid;
     
-        /**
-         * Construct a new CredentialFetcher.
-         * 
-         * @param credentialListSid The credential_list_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new CredentialFetcher.
+        /// </summary>
+        ///
+        /// <param name="credentialListSid"> The credential_list_sid </param>
+        /// <param name="sid"> The sid </param>
         public CredentialFetcher(string credentialListSid, string sid) {
             this.credentialListSid = credentialListSid;
             this.sid = sid;
         }
     
-        /**
-         * Construct a new CredentialFetcher
-         * 
-         * @param accountSid The account_sid
-         * @param credentialListSid The credential_list_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new CredentialFetcher
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="credentialListSid"> The credential_list_sid </param>
+        /// <param name="sid"> The sid </param>
         public CredentialFetcher(string accountSid, string credentialListSid, string sid) {
             this.accountSid = accountSid;
             this.credentialListSid = credentialListSid;
@@ -39,12 +39,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched CredentialResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched CredentialResource </returns> 
         public override async Task<CredentialResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -78,12 +78,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched CredentialResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched CredentialResource </returns> 
         public override CredentialResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

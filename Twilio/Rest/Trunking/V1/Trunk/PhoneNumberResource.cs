@@ -41,55 +41,55 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
             }
         }
     
-        /**
-         * fetch
-         * 
-         * @param trunkSid The trunk_sid
-         * @param sid The sid
-         * @return PhoneNumberFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> PhoneNumberFetcher capable of executing the fetch </returns> 
         public static PhoneNumberFetcher Fetcher(string trunkSid, string sid) {
             return new PhoneNumberFetcher(trunkSid, sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param trunkSid The trunk_sid
-         * @param sid The sid
-         * @return PhoneNumberDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> PhoneNumberDeleter capable of executing the delete </returns> 
         public static PhoneNumberDeleter Deleter(string trunkSid, string sid) {
             return new PhoneNumberDeleter(trunkSid, sid);
         }
     
-        /**
-         * create
-         * 
-         * @param trunkSid The trunk_sid
-         * @param phoneNumberSid The phone_number_sid
-         * @return PhoneNumberCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="phoneNumberSid"> The phone_number_sid </param>
+        /// <returns> PhoneNumberCreator capable of executing the create </returns> 
         public static PhoneNumberCreator Creator(string trunkSid, string phoneNumberSid) {
             return new PhoneNumberCreator(trunkSid, phoneNumberSid);
         }
     
-        /**
-         * read
-         * 
-         * @param trunkSid The trunk_sid
-         * @return PhoneNumberReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <returns> PhoneNumberReader capable of executing the read </returns> 
         public static PhoneNumberReader Reader(string trunkSid) {
             return new PhoneNumberReader(trunkSid);
         }
     
-        /**
-         * Converts a JSON string into a PhoneNumberResource object
-         * 
-         * @param json Raw JSON string
-         * @return PhoneNumberResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a PhoneNumberResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> PhoneNumberResource object represented by the provided JSON </returns> 
         public static PhoneNumberResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -243,184 +243,132 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
             this.voiceUrl = voiceUrl;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The address_requirements
-         */
+        /// <returns> The address_requirements </returns> 
         public PhoneNumberResource.AddressRequirement GetAddressRequirements() {
             return this.addressRequirements;
         }
     
-        /**
-         * @return The api_version
-         */
+        /// <returns> The api_version </returns> 
         public string GetApiVersion() {
             return this.apiVersion;
         }
     
-        /**
-         * @return The beta
-         */
+        /// <returns> The beta </returns> 
         public bool? GetBeta() {
             return this.beta;
         }
     
-        /**
-         * @return The capabilities
-         */
+        /// <returns> The capabilities </returns> 
         public Dictionary<string, string> GetCapabilities() {
             return this.capabilities;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The links
-         */
+        /// <returns> The links </returns> 
         public Dictionary<string, string> GetLinks() {
             return this.links;
         }
     
-        /**
-         * @return The phone_number
-         */
+        /// <returns> The phone_number </returns> 
         public Twilio.Types.PhoneNumber GetPhoneNumber() {
             return this.phoneNumber;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The sms_application_sid
-         */
+        /// <returns> The sms_application_sid </returns> 
         public string GetSmsApplicationSid() {
             return this.smsApplicationSid;
         }
     
-        /**
-         * @return The sms_fallback_method
-         */
+        /// <returns> The sms_fallback_method </returns> 
         public Twilio.Http.HttpMethod GetSmsFallbackMethod() {
             return this.smsFallbackMethod;
         }
     
-        /**
-         * @return The sms_fallback_url
-         */
+        /// <returns> The sms_fallback_url </returns> 
         public Uri GetSmsFallbackUrl() {
             return this.smsFallbackUrl;
         }
     
-        /**
-         * @return The sms_method
-         */
+        /// <returns> The sms_method </returns> 
         public Twilio.Http.HttpMethod GetSmsMethod() {
             return this.smsMethod;
         }
     
-        /**
-         * @return The sms_url
-         */
+        /// <returns> The sms_url </returns> 
         public Uri GetSmsUrl() {
             return this.smsUrl;
         }
     
-        /**
-         * @return The status_callback
-         */
+        /// <returns> The status_callback </returns> 
         public Uri GetStatusCallback() {
             return this.statusCallback;
         }
     
-        /**
-         * @return The status_callback_method
-         */
+        /// <returns> The status_callback_method </returns> 
         public Twilio.Http.HttpMethod GetStatusCallbackMethod() {
             return this.statusCallbackMethod;
         }
     
-        /**
-         * @return The trunk_sid
-         */
+        /// <returns> The trunk_sid </returns> 
         public string GetTrunkSid() {
             return this.trunkSid;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }
     
-        /**
-         * @return The voice_application_sid
-         */
+        /// <returns> The voice_application_sid </returns> 
         public string GetVoiceApplicationSid() {
             return this.voiceApplicationSid;
         }
     
-        /**
-         * @return The voice_caller_id_lookup
-         */
+        /// <returns> The voice_caller_id_lookup </returns> 
         public bool? GetVoiceCallerIdLookup() {
             return this.voiceCallerIdLookup;
         }
     
-        /**
-         * @return The voice_fallback_method
-         */
+        /// <returns> The voice_fallback_method </returns> 
         public Twilio.Http.HttpMethod GetVoiceFallbackMethod() {
             return this.voiceFallbackMethod;
         }
     
-        /**
-         * @return The voice_fallback_url
-         */
+        /// <returns> The voice_fallback_url </returns> 
         public Uri GetVoiceFallbackUrl() {
             return this.voiceFallbackUrl;
         }
     
-        /**
-         * @return The voice_method
-         */
+        /// <returns> The voice_method </returns> 
         public Twilio.Http.HttpMethod GetVoiceMethod() {
             return this.voiceMethod;
         }
     
-        /**
-         * @return The voice_url
-         */
+        /// <returns> The voice_url </returns> 
         public Uri GetVoiceUrl() {
             return this.voiceUrl;
         }

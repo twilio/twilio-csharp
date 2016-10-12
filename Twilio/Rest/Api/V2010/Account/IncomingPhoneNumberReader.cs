@@ -15,62 +15,61 @@ namespace Twilio.Rest.Api.V2010.Account {
         private string friendlyName;
         private Twilio.Types.PhoneNumber phoneNumber;
     
-        /**
-         * Construct a new IncomingPhoneNumberReader.
-         */
+        /// <summary>
+        /// Construct a new IncomingPhoneNumberReader.
+        /// </summary>
         public IncomingPhoneNumberReader() {
         }
     
-        /**
-         * Construct a new IncomingPhoneNumberReader
-         * 
-         * @param ownerAccountSid The owner_account_sid
-         */
+        /// <summary>
+        /// Construct a new IncomingPhoneNumberReader
+        /// </summary>
+        ///
+        /// <param name="ownerAccountSid"> The owner_account_sid </param>
         public IncomingPhoneNumberReader(string ownerAccountSid) {
             this.ownerAccountSid = ownerAccountSid;
         }
     
-        /**
-         * Include phone numbers new to the Twilio platform
-         * 
-         * @param beta Include new phone numbers
-         * @return this
-         */
+        /// <summary>
+        /// Include phone numbers new to the Twilio platform
+        /// </summary>
+        ///
+        /// <param name="beta"> Include new phone numbers </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberReader ByBeta(bool? beta) {
             this.beta = beta;
             return this;
         }
     
-        /**
-         * Only show the incoming phone number resources with friendly names that
-         * exactly match this name
-         * 
-         * @param friendlyName Filter by friendly name
-         * @return this
-         */
+        /// <summary>
+        /// Only show the incoming phone number resources with friendly names that exactly match this name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> Filter by friendly name </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberReader ByFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * Only show the incoming phone number resources that match this pattern
-         * 
-         * @param phoneNumber Filter by incoming phone number
-         * @return this
-         */
+        /// <summary>
+        /// Only show the incoming phone number resources that match this pattern
+        /// </summary>
+        ///
+        /// <param name="phoneNumber"> Filter by incoming phone number </param>
+        /// <returns> this </returns> 
         public IncomingPhoneNumberReader ByPhoneNumber(Twilio.Types.PhoneNumber phoneNumber) {
             this.phoneNumber = phoneNumber;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return IncomingPhoneNumberResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> IncomingPhoneNumberResource ResourceSet </returns> 
         public override Task<ResourceSet<IncomingPhoneNumberResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -85,12 +84,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return IncomingPhoneNumberResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> IncomingPhoneNumberResource ResourceSet </returns> 
         public override ResourceSet<IncomingPhoneNumberResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -104,13 +103,13 @@ namespace Twilio.Rest.Api.V2010.Account {
             return new ResourceSet<IncomingPhoneNumberResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<IncomingPhoneNumberResource> NextPage(Page<IncomingPhoneNumberResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -122,13 +121,13 @@ namespace Twilio.Rest.Api.V2010.Account {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of IncomingPhoneNumberResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of IncomingPhoneNumberResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<IncomingPhoneNumberResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -155,11 +154,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return Page<IncomingPhoneNumberResource>.FromJson("incoming_phone_numbers", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (beta != null) {
                 request.AddQueryParam("Beta", beta.ToString());

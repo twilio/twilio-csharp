@@ -21,128 +21,120 @@ namespace Twilio.Rest.Api.V2010.Account {
         private Uri smsFallbackUrl;
         private Twilio.Http.HttpMethod smsFallbackMethod;
     
-        /**
-         * Construct a new ShortCodeUpdater.
-         * 
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new ShortCodeUpdater.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
         public ShortCodeUpdater(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * Construct a new ShortCodeUpdater
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new ShortCodeUpdater
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
         public ShortCodeUpdater(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
     
-        /**
-         * A human readable descriptive text for this resource, up to 64 characters
-         * long. By default, the `FriendlyName` is just the short code.
-         * 
-         * @param friendlyName A human readable description of this resource
-         * @return this
-         */
+        /// <summary>
+        /// A human readable descriptive text for this resource, up to 64 characters long. By default, the `FriendlyName` is
+        /// just the short code.
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> A human readable description of this resource </param>
+        /// <returns> this </returns> 
         public ShortCodeUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * SMSs to this short code will start a new TwiML session with this API version.
-         * 
-         * @param apiVersion The API version to use
-         * @return this
-         */
+        /// <summary>
+        /// SMSs to this short code will start a new TwiML session with this API version.
+        /// </summary>
+        ///
+        /// <param name="apiVersion"> The API version to use </param>
+        /// <returns> this </returns> 
         public ShortCodeUpdater setApiVersion(string apiVersion) {
             this.apiVersion = apiVersion;
             return this;
         }
     
-        /**
-         * The URL Twilio will request when receiving an incoming SMS message to this
-         * short code.
-         * 
-         * @param smsUrl URL Twilio will request when receiving an SMS
-         * @return this
-         */
+        /// <summary>
+        /// The URL Twilio will request when receiving an incoming SMS message to this short code.
+        /// </summary>
+        ///
+        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
+        /// <returns> this </returns> 
         public ShortCodeUpdater setSmsUrl(Uri smsUrl) {
             this.smsUrl = smsUrl;
             return this;
         }
     
-        /**
-         * The URL Twilio will request when receiving an incoming SMS message to this
-         * short code.
-         * 
-         * @param smsUrl URL Twilio will request when receiving an SMS
-         * @return this
-         */
+        /// <summary>
+        /// The URL Twilio will request when receiving an incoming SMS message to this short code.
+        /// </summary>
+        ///
+        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
+        /// <returns> this </returns> 
         public ShortCodeUpdater setSmsUrl(string smsUrl) {
             return setSmsUrl(Promoter.UriFromString(smsUrl));
         }
     
-        /**
-         * The HTTP method Twilio will use when making requests to the `SmsUrl`. Either
-         * `GET` or `POST`.
-         * 
-         * @param smsMethod HTTP method to use when requesting the sms url
-         * @return this
-         */
+        /// <summary>
+        /// The HTTP method Twilio will use when making requests to the `SmsUrl`. Either `GET` or `POST`.
+        /// </summary>
+        ///
+        /// <param name="smsMethod"> HTTP method to use when requesting the sms url </param>
+        /// <returns> this </returns> 
         public ShortCodeUpdater setSmsMethod(Twilio.Http.HttpMethod smsMethod) {
             this.smsMethod = smsMethod;
             return this;
         }
     
-        /**
-         * The URL that Twilio will request if an error occurs retrieving or executing
-         * the TwiML from `SmsUrl`.
-         * 
-         * @param smsFallbackUrl URL Twilio will request if an error occurs in
-         *                       executing TwiML
-         * @return this
-         */
+        /// <summary>
+        /// The URL that Twilio will request if an error occurs retrieving or executing the TwiML from `SmsUrl`.
+        /// </summary>
+        ///
+        /// <param name="smsFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
+        /// <returns> this </returns> 
         public ShortCodeUpdater setSmsFallbackUrl(Uri smsFallbackUrl) {
             this.smsFallbackUrl = smsFallbackUrl;
             return this;
         }
     
-        /**
-         * The URL that Twilio will request if an error occurs retrieving or executing
-         * the TwiML from `SmsUrl`.
-         * 
-         * @param smsFallbackUrl URL Twilio will request if an error occurs in
-         *                       executing TwiML
-         * @return this
-         */
+        /// <summary>
+        /// The URL that Twilio will request if an error occurs retrieving or executing the TwiML from `SmsUrl`.
+        /// </summary>
+        ///
+        /// <param name="smsFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
+        /// <returns> this </returns> 
         public ShortCodeUpdater setSmsFallbackUrl(string smsFallbackUrl) {
             return setSmsFallbackUrl(Promoter.UriFromString(smsFallbackUrl));
         }
     
-        /**
-         * The HTTP method Twilio will use when requesting the above URL. Either `GET`
-         * or `POST`.
-         * 
-         * @param smsFallbackMethod HTTP method Twilio will use with sms fallback url
-         * @return this
-         */
+        /// <summary>
+        /// The HTTP method Twilio will use when requesting the above URL. Either `GET` or `POST`.
+        /// </summary>
+        ///
+        /// <param name="smsFallbackMethod"> HTTP method Twilio will use with sms fallback url </param>
+        /// <returns> this </returns> 
         public ShortCodeUpdater setSmsFallbackMethod(Twilio.Http.HttpMethod smsFallbackMethod) {
             this.smsFallbackMethod = smsFallbackMethod;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated ShortCodeResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated ShortCodeResource </returns> 
         public override async Task<ShortCodeResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -177,12 +169,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated ShortCodeResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated ShortCodeResource </returns> 
         public override ShortCodeResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -216,11 +208,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return ShortCodeResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

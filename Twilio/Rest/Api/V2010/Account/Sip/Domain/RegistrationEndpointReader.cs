@@ -15,27 +15,27 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         private string region;
         private string registrant;
     
-        /**
-         * Construct a new RegistrationEndpointReader.
-         * 
-         * @param domainSid The domain_sid
-         * @param region The region
-         * @param registrant The registrant
-         */
+        /// <summary>
+        /// Construct a new RegistrationEndpointReader.
+        /// </summary>
+        ///
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="region"> The region </param>
+        /// <param name="registrant"> The registrant </param>
         public RegistrationEndpointReader(string domainSid, string region, string registrant) {
             this.domainSid = domainSid;
             this.region = region;
             this.registrant = registrant;
         }
     
-        /**
-         * Construct a new RegistrationEndpointReader
-         * 
-         * @param accountSid The account_sid
-         * @param domainSid The domain_sid
-         * @param region The region
-         * @param registrant The registrant
-         */
+        /// <summary>
+        /// Construct a new RegistrationEndpointReader
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="region"> The region </param>
+        /// <param name="registrant"> The registrant </param>
         public RegistrationEndpointReader(string accountSid, string domainSid, string region, string registrant) {
             this.accountSid = accountSid;
             this.domainSid = domainSid;
@@ -44,12 +44,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return RegistrationEndpointResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> RegistrationEndpointResource ResourceSet </returns> 
         public override Task<ResourceSet<RegistrationEndpointResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -64,12 +64,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return RegistrationEndpointResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> RegistrationEndpointResource ResourceSet </returns> 
         public override ResourceSet<RegistrationEndpointResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -83,13 +83,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
             return new ResourceSet<RegistrationEndpointResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<RegistrationEndpointResource> NextPage(Page<RegistrationEndpointResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -101,13 +101,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of RegistrationEndpointResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of RegistrationEndpointResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<RegistrationEndpointResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -134,11 +134,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
             return Page<RegistrationEndpointResource>.FromJson("registrations", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             request.AddQueryParam("PageSize", PageSize.ToString());
         }

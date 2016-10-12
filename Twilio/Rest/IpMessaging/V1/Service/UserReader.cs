@@ -12,22 +12,22 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
     public class UserReader : Reader<UserResource> {
         private string serviceSid;
     
-        /**
-         * Construct a new UserReader
-         * 
-         * @param serviceSid The service_sid
-         */
+        /// <summary>
+        /// Construct a new UserReader
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
         public UserReader(string serviceSid) {
             this.serviceSid = serviceSid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return UserResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> UserResource ResourceSet </returns> 
         public override Task<ResourceSet<UserResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -42,12 +42,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return UserResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> UserResource ResourceSet </returns> 
         public override ResourceSet<UserResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -61,13 +61,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
             return new ResourceSet<UserResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<UserResource> NextPage(Page<UserResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -79,13 +79,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of UserResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of UserResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<UserResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -112,11 +112,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
             return Page<UserResource>.FromJson("users", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             request.AddQueryParam("PageSize", PageSize.ToString());
         }

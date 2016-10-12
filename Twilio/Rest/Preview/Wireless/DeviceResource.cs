@@ -10,51 +10,51 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.Wireless {
 
     public class DeviceResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param sid The sid
-         * @return DeviceFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> DeviceFetcher capable of executing the fetch </returns> 
         public static DeviceFetcher Fetcher(string sid) {
             return new DeviceFetcher(sid);
         }
     
-        /**
-         * read
-         * 
-         * @return DeviceReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <returns> DeviceReader capable of executing the read </returns> 
         public static DeviceReader Reader() {
             return new DeviceReader();
         }
     
-        /**
-         * create
-         * 
-         * @param ratePlan The rate_plan
-         * @return DeviceCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="ratePlan"> The rate_plan </param>
+        /// <returns> DeviceCreator capable of executing the create </returns> 
         public static DeviceCreator Creator(string ratePlan) {
             return new DeviceCreator(ratePlan);
         }
     
-        /**
-         * update
-         * 
-         * @param sid The sid
-         * @return DeviceUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> DeviceUpdater capable of executing the update </returns> 
         public static DeviceUpdater Updater(string sid) {
             return new DeviceUpdater(sid);
         }
     
-        /**
-         * Converts a JSON string into a DeviceResource object
-         * 
-         * @param json Raw JSON string
-         * @return DeviceResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a DeviceResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> DeviceResource object represented by the provided JSON </returns> 
         public static DeviceResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -136,93 +136,67 @@ namespace Twilio.Rest.Preview.Wireless {
             this.links = links;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The alias
-         */
+        /// <returns> The alias </returns> 
         public string GetAlias() {
             return this.alias;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The rate_plan_sid
-         */
+        /// <returns> The rate_plan_sid </returns> 
         public string GetRatePlanSid() {
             return this.ratePlanSid;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The sim_identifier
-         */
+        /// <returns> The sim_identifier </returns> 
         public string GetSimIdentifier() {
             return this.simIdentifier;
         }
     
-        /**
-         * @return The status
-         */
+        /// <returns> The status </returns> 
         public string GetStatus() {
             return this.status;
         }
     
-        /**
-         * @return The commands_callback_url
-         */
+        /// <returns> The commands_callback_url </returns> 
         public Uri GetCommandsCallbackUrl() {
             return this.commandsCallbackUrl;
         }
     
-        /**
-         * @return The commands_callback_method
-         */
+        /// <returns> The commands_callback_method </returns> 
         public string GetCommandsCallbackMethod() {
             return this.commandsCallbackMethod;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }
     
-        /**
-         * @return The links
-         */
+        /// <returns> The links </returns> 
         public Dictionary<string, string> GetLinks() {
             return this.links;
         }

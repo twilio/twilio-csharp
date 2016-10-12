@@ -18,94 +18,94 @@ namespace Twilio.Rest.Api.V2010.Account {
         private string startTime;
         private string endTime;
     
-        /**
-         * Construct a new CallReader.
-         */
+        /// <summary>
+        /// Construct a new CallReader.
+        /// </summary>
         public CallReader() {
         }
     
-        /**
-         * Construct a new CallReader
-         * 
-         * @param accountSid The account_sid
-         */
+        /// <summary>
+        /// Construct a new CallReader
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
         public CallReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
-        /**
-         * Only show calls to this phone number or Client identifier
-         * 
-         * @param to Phone number or Client identifier to filter `to` on
-         * @return this
-         */
+        /// <summary>
+        /// Only show calls to this phone number or Client identifier
+        /// </summary>
+        ///
+        /// <param name="to"> Phone number or Client identifier to filter `to` on </param>
+        /// <returns> this </returns> 
         public CallReader ByTo(Twilio.Types.PhoneNumber to) {
             this.to = to;
             return this;
         }
     
-        /**
-         * Only show calls from this phone number or Client identifier
-         * 
-         * @param from Phone number or Client identifier to filter `from` on
-         * @return this
-         */
+        /// <summary>
+        /// Only show calls from this phone number or Client identifier
+        /// </summary>
+        ///
+        /// <param name="from"> Phone number or Client identifier to filter `from` on </param>
+        /// <returns> this </returns> 
         public CallReader ByFrom(Twilio.Types.PhoneNumber from) {
             this.from = from;
             return this;
         }
     
-        /**
-         * Only show calls spawned by the call with this Sid
-         * 
-         * @param parentCallSid Parent Call Sid to filter on
-         * @return this
-         */
+        /// <summary>
+        /// Only show calls spawned by the call with this Sid
+        /// </summary>
+        ///
+        /// <param name="parentCallSid"> Parent Call Sid to filter on </param>
+        /// <returns> this </returns> 
         public CallReader ByParentCallSid(string parentCallSid) {
             this.parentCallSid = parentCallSid;
             return this;
         }
     
-        /**
-         * Only show calls currently in this status
-         * 
-         * @param status Status to filter on
-         * @return this
-         */
+        /// <summary>
+        /// Only show calls currently in this status
+        /// </summary>
+        ///
+        /// <param name="status"> Status to filter on </param>
+        /// <returns> this </returns> 
         public CallReader ByStatus(CallResource.Status status) {
             this.status = status;
             return this;
         }
     
-        /**
-         * Only show calls that started on this date
-         * 
-         * @param startTime StartTime to filter on
-         * @return this
-         */
+        /// <summary>
+        /// Only show calls that started on this date
+        /// </summary>
+        ///
+        /// <param name="startTime"> StartTime to filter on </param>
+        /// <returns> this </returns> 
         public CallReader ByStartTime(string startTime) {
             this.startTime = startTime;
             return this;
         }
     
-        /**
-         * Only show call that ended on this date
-         * 
-         * @param endTime EndTime to filter on
-         * @return this
-         */
+        /// <summary>
+        /// Only show call that ended on this date
+        /// </summary>
+        ///
+        /// <param name="endTime"> EndTime to filter on </param>
+        /// <returns> this </returns> 
         public CallReader ByEndTime(string endTime) {
             this.endTime = endTime;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return CallResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> CallResource ResourceSet </returns> 
         public override Task<ResourceSet<CallResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -120,12 +120,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return CallResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> CallResource ResourceSet </returns> 
         public override ResourceSet<CallResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -139,13 +139,13 @@ namespace Twilio.Rest.Api.V2010.Account {
             return new ResourceSet<CallResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<CallResource> NextPage(Page<CallResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -157,13 +157,13 @@ namespace Twilio.Rest.Api.V2010.Account {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of CallResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of CallResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<CallResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -190,11 +190,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return Page<CallResource>.FromJson("calls", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (to != null) {
                 request.AddQueryParam("To", to.ToString());

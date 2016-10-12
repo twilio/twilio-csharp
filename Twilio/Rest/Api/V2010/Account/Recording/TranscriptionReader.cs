@@ -13,33 +13,33 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
         private string accountSid;
         private string recordingSid;
     
-        /**
-         * Construct a new TranscriptionReader.
-         * 
-         * @param recordingSid The recording_sid
-         */
+        /// <summary>
+        /// Construct a new TranscriptionReader.
+        /// </summary>
+        ///
+        /// <param name="recordingSid"> The recording_sid </param>
         public TranscriptionReader(string recordingSid) {
             this.recordingSid = recordingSid;
         }
     
-        /**
-         * Construct a new TranscriptionReader
-         * 
-         * @param accountSid The account_sid
-         * @param recordingSid The recording_sid
-         */
+        /// <summary>
+        /// Construct a new TranscriptionReader
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="recordingSid"> The recording_sid </param>
         public TranscriptionReader(string accountSid, string recordingSid) {
             this.accountSid = accountSid;
             this.recordingSid = recordingSid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return TranscriptionResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> TranscriptionResource ResourceSet </returns> 
         public override Task<ResourceSet<TranscriptionResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -54,12 +54,12 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return TranscriptionResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> TranscriptionResource ResourceSet </returns> 
         public override ResourceSet<TranscriptionResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -73,13 +73,13 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
             return new ResourceSet<TranscriptionResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<TranscriptionResource> NextPage(Page<TranscriptionResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -91,13 +91,13 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of TranscriptionResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of TranscriptionResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<TranscriptionResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -124,11 +124,11 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
             return Page<TranscriptionResource>.FromJson("transcriptions", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             request.AddQueryParam("PageSize", PageSize.ToString());
         }

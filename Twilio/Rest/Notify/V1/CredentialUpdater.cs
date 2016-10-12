@@ -17,77 +17,77 @@ namespace Twilio.Rest.Notify.V1 {
         private bool? sandbox;
         private string apiKey;
     
-        /**
-         * Construct a new CredentialUpdater
-         * 
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new CredentialUpdater
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
         public CredentialUpdater(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public CredentialUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * The certificate
-         * 
-         * @param certificate The certificate
-         * @return this
-         */
+        /// <summary>
+        /// The certificate
+        /// </summary>
+        ///
+        /// <param name="certificate"> The certificate </param>
+        /// <returns> this </returns> 
         public CredentialUpdater setCertificate(string certificate) {
             this.certificate = certificate;
             return this;
         }
     
-        /**
-         * The private_key
-         * 
-         * @param privateKey The private_key
-         * @return this
-         */
+        /// <summary>
+        /// The private_key
+        /// </summary>
+        ///
+        /// <param name="privateKey"> The private_key </param>
+        /// <returns> this </returns> 
         public CredentialUpdater setPrivateKey(string privateKey) {
             this.privateKey = privateKey;
             return this;
         }
     
-        /**
-         * The sandbox
-         * 
-         * @param sandbox The sandbox
-         * @return this
-         */
+        /// <summary>
+        /// The sandbox
+        /// </summary>
+        ///
+        /// <param name="sandbox"> The sandbox </param>
+        /// <returns> this </returns> 
         public CredentialUpdater setSandbox(bool? sandbox) {
             this.sandbox = sandbox;
             return this;
         }
     
-        /**
-         * The api_key
-         * 
-         * @param apiKey The api_key
-         * @return this
-         */
+        /// <summary>
+        /// The api_key
+        /// </summary>
+        ///
+        /// <param name="apiKey"> The api_key </param>
+        /// <returns> this </returns> 
         public CredentialUpdater setApiKey(string apiKey) {
             this.apiKey = apiKey;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated CredentialResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated CredentialResource </returns> 
         public override async Task<CredentialResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -122,12 +122,12 @@ namespace Twilio.Rest.Notify.V1 {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated CredentialResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated CredentialResource </returns> 
         public override CredentialResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -161,11 +161,11 @@ namespace Twilio.Rest.Notify.V1 {
             return CredentialResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

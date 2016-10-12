@@ -18,79 +18,79 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         private int? priority;
         private string taskChannel;
     
-        /**
-         * Construct a new TaskUpdater
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new TaskUpdater
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
         public TaskUpdater(string workspaceSid, string sid) {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
         }
     
-        /**
-         * The attributes
-         * 
-         * @param attributes The attributes
-         * @return this
-         */
+        /// <summary>
+        /// The attributes
+        /// </summary>
+        ///
+        /// <param name="attributes"> The attributes </param>
+        /// <returns> this </returns> 
         public TaskUpdater setAttributes(string attributes) {
             this.attributes = attributes;
             return this;
         }
     
-        /**
-         * The assignment_status
-         * 
-         * @param assignmentStatus The assignment_status
-         * @return this
-         */
+        /// <summary>
+        /// The assignment_status
+        /// </summary>
+        ///
+        /// <param name="assignmentStatus"> The assignment_status </param>
+        /// <returns> this </returns> 
         public TaskUpdater setAssignmentStatus(TaskResource.Status assignmentStatus) {
             this.assignmentStatus = assignmentStatus;
             return this;
         }
     
-        /**
-         * The reason
-         * 
-         * @param reason The reason
-         * @return this
-         */
+        /// <summary>
+        /// The reason
+        /// </summary>
+        ///
+        /// <param name="reason"> The reason </param>
+        /// <returns> this </returns> 
         public TaskUpdater setReason(string reason) {
             this.reason = reason;
             return this;
         }
     
-        /**
-         * The priority
-         * 
-         * @param priority The priority
-         * @return this
-         */
+        /// <summary>
+        /// The priority
+        /// </summary>
+        ///
+        /// <param name="priority"> The priority </param>
+        /// <returns> this </returns> 
         public TaskUpdater setPriority(int? priority) {
             this.priority = priority;
             return this;
         }
     
-        /**
-         * The task_channel
-         * 
-         * @param taskChannel The task_channel
-         * @return this
-         */
+        /// <summary>
+        /// The task_channel
+        /// </summary>
+        ///
+        /// <param name="taskChannel"> The task_channel </param>
+        /// <returns> this </returns> 
         public TaskUpdater setTaskChannel(string taskChannel) {
             this.taskChannel = taskChannel;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated TaskResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated TaskResource </returns> 
         public override async Task<TaskResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -125,12 +125,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated TaskResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated TaskResource </returns> 
         public override TaskResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -164,11 +164,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             return TaskResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (attributes != null) {
                 request.AddPostParam("Attributes", attributes);

@@ -23,151 +23,151 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         private Uri voiceStatusCallbackUrl;
         private Uri voiceUrl;
     
-        /**
-         * Construct a new DomainUpdater.
-         * 
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new DomainUpdater.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
         public DomainUpdater(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * Construct a new DomainUpdater
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new DomainUpdater
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
         public DomainUpdater(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
     
-        /**
-         * The auth_type
-         * 
-         * @param authType The auth_type
-         * @return this
-         */
+        /// <summary>
+        /// The auth_type
+        /// </summary>
+        ///
+        /// <param name="authType"> The auth_type </param>
+        /// <returns> this </returns> 
         public DomainUpdater setAuthType(string authType) {
             this.authType = authType;
             return this;
         }
     
-        /**
-         * A user-specified, human-readable name for the trigger.
-         * 
-         * @param friendlyName A user-specified, human-readable name for the trigger.
-         * @return this
-         */
+        /// <summary>
+        /// A user-specified, human-readable name for the trigger.
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
+        /// <returns> this </returns> 
         public DomainUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * The voice_fallback_method
-         * 
-         * @param voiceFallbackMethod The voice_fallback_method
-         * @return this
-         */
+        /// <summary>
+        /// The voice_fallback_method
+        /// </summary>
+        ///
+        /// <param name="voiceFallbackMethod"> The voice_fallback_method </param>
+        /// <returns> this </returns> 
         public DomainUpdater setVoiceFallbackMethod(Twilio.Http.HttpMethod voiceFallbackMethod) {
             this.voiceFallbackMethod = voiceFallbackMethod;
             return this;
         }
     
-        /**
-         * The voice_fallback_url
-         * 
-         * @param voiceFallbackUrl The voice_fallback_url
-         * @return this
-         */
+        /// <summary>
+        /// The voice_fallback_url
+        /// </summary>
+        ///
+        /// <param name="voiceFallbackUrl"> The voice_fallback_url </param>
+        /// <returns> this </returns> 
         public DomainUpdater setVoiceFallbackUrl(Uri voiceFallbackUrl) {
             this.voiceFallbackUrl = voiceFallbackUrl;
             return this;
         }
     
-        /**
-         * The voice_fallback_url
-         * 
-         * @param voiceFallbackUrl The voice_fallback_url
-         * @return this
-         */
+        /// <summary>
+        /// The voice_fallback_url
+        /// </summary>
+        ///
+        /// <param name="voiceFallbackUrl"> The voice_fallback_url </param>
+        /// <returns> this </returns> 
         public DomainUpdater setVoiceFallbackUrl(string voiceFallbackUrl) {
             return setVoiceFallbackUrl(Promoter.UriFromString(voiceFallbackUrl));
         }
     
-        /**
-         * The HTTP method to use with the voice_url
-         * 
-         * @param voiceMethod HTTP method to use with voice_url
-         * @return this
-         */
+        /// <summary>
+        /// The HTTP method to use with the voice_url
+        /// </summary>
+        ///
+        /// <param name="voiceMethod"> HTTP method to use with voice_url </param>
+        /// <returns> this </returns> 
         public DomainUpdater setVoiceMethod(Twilio.Http.HttpMethod voiceMethod) {
             this.voiceMethod = voiceMethod;
             return this;
         }
     
-        /**
-         * The voice_status_callback_method
-         * 
-         * @param voiceStatusCallbackMethod The voice_status_callback_method
-         * @return this
-         */
+        /// <summary>
+        /// The voice_status_callback_method
+        /// </summary>
+        ///
+        /// <param name="voiceStatusCallbackMethod"> The voice_status_callback_method </param>
+        /// <returns> this </returns> 
         public DomainUpdater setVoiceStatusCallbackMethod(Twilio.Http.HttpMethod voiceStatusCallbackMethod) {
             this.voiceStatusCallbackMethod = voiceStatusCallbackMethod;
             return this;
         }
     
-        /**
-         * The voice_status_callback_url
-         * 
-         * @param voiceStatusCallbackUrl The voice_status_callback_url
-         * @return this
-         */
+        /// <summary>
+        /// The voice_status_callback_url
+        /// </summary>
+        ///
+        /// <param name="voiceStatusCallbackUrl"> The voice_status_callback_url </param>
+        /// <returns> this </returns> 
         public DomainUpdater setVoiceStatusCallbackUrl(Uri voiceStatusCallbackUrl) {
             this.voiceStatusCallbackUrl = voiceStatusCallbackUrl;
             return this;
         }
     
-        /**
-         * The voice_status_callback_url
-         * 
-         * @param voiceStatusCallbackUrl The voice_status_callback_url
-         * @return this
-         */
+        /// <summary>
+        /// The voice_status_callback_url
+        /// </summary>
+        ///
+        /// <param name="voiceStatusCallbackUrl"> The voice_status_callback_url </param>
+        /// <returns> this </returns> 
         public DomainUpdater setVoiceStatusCallbackUrl(string voiceStatusCallbackUrl) {
             return setVoiceStatusCallbackUrl(Promoter.UriFromString(voiceStatusCallbackUrl));
         }
     
-        /**
-         * The voice_url
-         * 
-         * @param voiceUrl The voice_url
-         * @return this
-         */
+        /// <summary>
+        /// The voice_url
+        /// </summary>
+        ///
+        /// <param name="voiceUrl"> The voice_url </param>
+        /// <returns> this </returns> 
         public DomainUpdater setVoiceUrl(Uri voiceUrl) {
             this.voiceUrl = voiceUrl;
             return this;
         }
     
-        /**
-         * The voice_url
-         * 
-         * @param voiceUrl The voice_url
-         * @return this
-         */
+        /// <summary>
+        /// The voice_url
+        /// </summary>
+        ///
+        /// <param name="voiceUrl"> The voice_url </param>
+        /// <returns> this </returns> 
         public DomainUpdater setVoiceUrl(string voiceUrl) {
             return setVoiceUrl(Promoter.UriFromString(voiceUrl));
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated DomainResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated DomainResource </returns> 
         public override async Task<DomainResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -202,12 +202,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated DomainResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated DomainResource </returns> 
         public override DomainResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -241,11 +241,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
             return DomainResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (authType != null) {
                 request.AddPostParam("AuthType", authType);

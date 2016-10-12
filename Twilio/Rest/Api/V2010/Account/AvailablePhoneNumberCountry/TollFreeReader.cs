@@ -29,209 +29,209 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
         private string inRateCenter;
         private string inLata;
     
-        /**
-         * Construct a new TollFreeReader.
-         * 
-         * @param countryCode The country_code
-         */
+        /// <summary>
+        /// Construct a new TollFreeReader.
+        /// </summary>
+        ///
+        /// <param name="countryCode"> The country_code </param>
         public TollFreeReader(string countryCode) {
             this.countryCode = countryCode;
         }
     
-        /**
-         * Construct a new TollFreeReader
-         * 
-         * @param accountSid The account_sid
-         * @param countryCode The country_code
-         */
+        /// <summary>
+        /// Construct a new TollFreeReader
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="countryCode"> The country_code </param>
         public TollFreeReader(string accountSid, string countryCode) {
             this.accountSid = accountSid;
             this.countryCode = countryCode;
         }
     
-        /**
-         * The area_code
-         * 
-         * @param areaCode The area_code
-         * @return this
-         */
+        /// <summary>
+        /// The area_code
+        /// </summary>
+        ///
+        /// <param name="areaCode"> The area_code </param>
+        /// <returns> this </returns> 
         public TollFreeReader ByAreaCode(int? areaCode) {
             this.areaCode = areaCode;
             return this;
         }
     
-        /**
-         * The contains
-         * 
-         * @param contains The contains
-         * @return this
-         */
+        /// <summary>
+        /// The contains
+        /// </summary>
+        ///
+        /// <param name="contains"> The contains </param>
+        /// <returns> this </returns> 
         public TollFreeReader ByContains(string contains) {
             this.contains = contains;
             return this;
         }
     
-        /**
-         * The sms_enabled
-         * 
-         * @param smsEnabled The sms_enabled
-         * @return this
-         */
+        /// <summary>
+        /// The sms_enabled
+        /// </summary>
+        ///
+        /// <param name="smsEnabled"> The sms_enabled </param>
+        /// <returns> this </returns> 
         public TollFreeReader BySmsEnabled(bool? smsEnabled) {
             this.smsEnabled = smsEnabled;
             return this;
         }
     
-        /**
-         * The mms_enabled
-         * 
-         * @param mmsEnabled The mms_enabled
-         * @return this
-         */
+        /// <summary>
+        /// The mms_enabled
+        /// </summary>
+        ///
+        /// <param name="mmsEnabled"> The mms_enabled </param>
+        /// <returns> this </returns> 
         public TollFreeReader ByMmsEnabled(bool? mmsEnabled) {
             this.mmsEnabled = mmsEnabled;
             return this;
         }
     
-        /**
-         * The voice_enabled
-         * 
-         * @param voiceEnabled The voice_enabled
-         * @return this
-         */
+        /// <summary>
+        /// The voice_enabled
+        /// </summary>
+        ///
+        /// <param name="voiceEnabled"> The voice_enabled </param>
+        /// <returns> this </returns> 
         public TollFreeReader ByVoiceEnabled(bool? voiceEnabled) {
             this.voiceEnabled = voiceEnabled;
             return this;
         }
     
-        /**
-         * The exclude_all_address_required
-         * 
-         * @param excludeAllAddressRequired The exclude_all_address_required
-         * @return this
-         */
+        /// <summary>
+        /// The exclude_all_address_required
+        /// </summary>
+        ///
+        /// <param name="excludeAllAddressRequired"> The exclude_all_address_required </param>
+        /// <returns> this </returns> 
         public TollFreeReader ByExcludeAllAddressRequired(bool? excludeAllAddressRequired) {
             this.excludeAllAddressRequired = excludeAllAddressRequired;
             return this;
         }
     
-        /**
-         * The exclude_local_address_required
-         * 
-         * @param excludeLocalAddressRequired The exclude_local_address_required
-         * @return this
-         */
+        /// <summary>
+        /// The exclude_local_address_required
+        /// </summary>
+        ///
+        /// <param name="excludeLocalAddressRequired"> The exclude_local_address_required </param>
+        /// <returns> this </returns> 
         public TollFreeReader ByExcludeLocalAddressRequired(bool? excludeLocalAddressRequired) {
             this.excludeLocalAddressRequired = excludeLocalAddressRequired;
             return this;
         }
     
-        /**
-         * The exclude_foreign_address_required
-         * 
-         * @param excludeForeignAddressRequired The exclude_foreign_address_required
-         * @return this
-         */
+        /// <summary>
+        /// The exclude_foreign_address_required
+        /// </summary>
+        ///
+        /// <param name="excludeForeignAddressRequired"> The exclude_foreign_address_required </param>
+        /// <returns> this </returns> 
         public TollFreeReader ByExcludeForeignAddressRequired(bool? excludeForeignAddressRequired) {
             this.excludeForeignAddressRequired = excludeForeignAddressRequired;
             return this;
         }
     
-        /**
-         * The beta
-         * 
-         * @param beta The beta
-         * @return this
-         */
+        /// <summary>
+        /// The beta
+        /// </summary>
+        ///
+        /// <param name="beta"> The beta </param>
+        /// <returns> this </returns> 
         public TollFreeReader ByBeta(bool? beta) {
             this.beta = beta;
             return this;
         }
     
-        /**
-         * The near_number
-         * 
-         * @param nearNumber The near_number
-         * @return this
-         */
+        /// <summary>
+        /// The near_number
+        /// </summary>
+        ///
+        /// <param name="nearNumber"> The near_number </param>
+        /// <returns> this </returns> 
         public TollFreeReader ByNearNumber(Twilio.Types.PhoneNumber nearNumber) {
             this.nearNumber = nearNumber;
             return this;
         }
     
-        /**
-         * The near_lat_long
-         * 
-         * @param nearLatLong The near_lat_long
-         * @return this
-         */
+        /// <summary>
+        /// The near_lat_long
+        /// </summary>
+        ///
+        /// <param name="nearLatLong"> The near_lat_long </param>
+        /// <returns> this </returns> 
         public TollFreeReader ByNearLatLong(string nearLatLong) {
             this.nearLatLong = nearLatLong;
             return this;
         }
     
-        /**
-         * The distance
-         * 
-         * @param distance The distance
-         * @return this
-         */
+        /// <summary>
+        /// The distance
+        /// </summary>
+        ///
+        /// <param name="distance"> The distance </param>
+        /// <returns> this </returns> 
         public TollFreeReader ByDistance(int? distance) {
             this.distance = distance;
             return this;
         }
     
-        /**
-         * The in_postal_code
-         * 
-         * @param inPostalCode The in_postal_code
-         * @return this
-         */
+        /// <summary>
+        /// The in_postal_code
+        /// </summary>
+        ///
+        /// <param name="inPostalCode"> The in_postal_code </param>
+        /// <returns> this </returns> 
         public TollFreeReader ByInPostalCode(string inPostalCode) {
             this.inPostalCode = inPostalCode;
             return this;
         }
     
-        /**
-         * The in_region
-         * 
-         * @param inRegion The in_region
-         * @return this
-         */
+        /// <summary>
+        /// The in_region
+        /// </summary>
+        ///
+        /// <param name="inRegion"> The in_region </param>
+        /// <returns> this </returns> 
         public TollFreeReader ByInRegion(string inRegion) {
             this.inRegion = inRegion;
             return this;
         }
     
-        /**
-         * The in_rate_center
-         * 
-         * @param inRateCenter The in_rate_center
-         * @return this
-         */
+        /// <summary>
+        /// The in_rate_center
+        /// </summary>
+        ///
+        /// <param name="inRateCenter"> The in_rate_center </param>
+        /// <returns> this </returns> 
         public TollFreeReader ByInRateCenter(string inRateCenter) {
             this.inRateCenter = inRateCenter;
             return this;
         }
     
-        /**
-         * The in_lata
-         * 
-         * @param inLata The in_lata
-         * @return this
-         */
+        /// <summary>
+        /// The in_lata
+        /// </summary>
+        ///
+        /// <param name="inLata"> The in_lata </param>
+        /// <returns> this </returns> 
         public TollFreeReader ByInLata(string inLata) {
             this.inLata = inLata;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return TollFreeResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> TollFreeResource ResourceSet </returns> 
         public override Task<ResourceSet<TollFreeResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -246,12 +246,12 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return TollFreeResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> TollFreeResource ResourceSet </returns> 
         public override ResourceSet<TollFreeResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -265,13 +265,13 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
             return new ResourceSet<TollFreeResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<TollFreeResource> NextPage(Page<TollFreeResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -283,13 +283,13 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of TollFreeResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of TollFreeResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<TollFreeResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -316,11 +316,11 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
             return Page<TollFreeResource>.FromJson("available_phone_numbers", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (areaCode != null) {
                 request.AddQueryParam("AreaCode", areaCode.ToString());

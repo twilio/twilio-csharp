@@ -19,80 +19,80 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         private Uri statusCallback;
         private Twilio.Http.HttpMethod statusCallbackMethod;
     
-        /**
-         * Construct a new FeedbackSummaryCreator.
-         * 
-         * @param startDate The start_date
-         * @param endDate The end_date
-         */
+        /// <summary>
+        /// Construct a new FeedbackSummaryCreator.
+        /// </summary>
+        ///
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="endDate"> The end_date </param>
         public FeedbackSummaryCreator(DateTime? startDate, DateTime? endDate) {
             this.startDate = startDate;
             this.endDate = endDate;
         }
     
-        /**
-         * Construct a new FeedbackSummaryCreator
-         * 
-         * @param accountSid The account_sid
-         * @param startDate The start_date
-         * @param endDate The end_date
-         */
+        /// <summary>
+        /// Construct a new FeedbackSummaryCreator
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="endDate"> The end_date </param>
         public FeedbackSummaryCreator(string accountSid, DateTime? startDate, DateTime? endDate) {
             this.accountSid = accountSid;
             this.startDate = startDate;
             this.endDate = endDate;
         }
     
-        /**
-         * The include_subaccounts
-         * 
-         * @param includeSubaccounts The include_subaccounts
-         * @return this
-         */
+        /// <summary>
+        /// The include_subaccounts
+        /// </summary>
+        ///
+        /// <param name="includeSubaccounts"> The include_subaccounts </param>
+        /// <returns> this </returns> 
         public FeedbackSummaryCreator setIncludeSubaccounts(bool? includeSubaccounts) {
             this.includeSubaccounts = includeSubaccounts;
             return this;
         }
     
-        /**
-         * The status_callback
-         * 
-         * @param statusCallback The status_callback
-         * @return this
-         */
+        /// <summary>
+        /// The status_callback
+        /// </summary>
+        ///
+        /// <param name="statusCallback"> The status_callback </param>
+        /// <returns> this </returns> 
         public FeedbackSummaryCreator setStatusCallback(Uri statusCallback) {
             this.statusCallback = statusCallback;
             return this;
         }
     
-        /**
-         * The status_callback
-         * 
-         * @param statusCallback The status_callback
-         * @return this
-         */
+        /// <summary>
+        /// The status_callback
+        /// </summary>
+        ///
+        /// <param name="statusCallback"> The status_callback </param>
+        /// <returns> this </returns> 
         public FeedbackSummaryCreator setStatusCallback(string statusCallback) {
             return setStatusCallback(Promoter.UriFromString(statusCallback));
         }
     
-        /**
-         * The status_callback_method
-         * 
-         * @param statusCallbackMethod The status_callback_method
-         * @return this
-         */
+        /// <summary>
+        /// The status_callback_method
+        /// </summary>
+        ///
+        /// <param name="statusCallbackMethod"> The status_callback_method </param>
+        /// <returns> this </returns> 
         public FeedbackSummaryCreator setStatusCallbackMethod(Twilio.Http.HttpMethod statusCallbackMethod) {
             this.statusCallbackMethod = statusCallbackMethod;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created FeedbackSummaryResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created FeedbackSummaryResource </returns> 
         public override async Task<FeedbackSummaryResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -127,12 +127,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created FeedbackSummaryResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created FeedbackSummaryResource </returns> 
         public override FeedbackSummaryResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -166,11 +166,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
             return FeedbackSummaryResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (startDate != null) {
                 request.AddPostParam("StartDate", startDate.ToString());

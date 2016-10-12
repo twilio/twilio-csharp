@@ -9,94 +9,94 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class KeyResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         * @return KeyFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> KeyFetcher capable of executing the fetch </returns> 
         public static KeyFetcher Fetcher(string accountSid, string sid) {
             return new KeyFetcher(accountSid, sid);
         }
     
-        /**
-         * Create a KeyFetcher to execute fetch.
-         * 
-         * @param sid The sid
-         * @return KeyFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a KeyFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> KeyFetcher capable of executing the fetch </returns> 
         public static KeyFetcher Fetcher(string sid) {
             return new KeyFetcher(sid);
         }
     
-        /**
-         * update
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         * @return KeyUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> KeyUpdater capable of executing the update </returns> 
         public static KeyUpdater Updater(string accountSid, string sid) {
             return new KeyUpdater(accountSid, sid);
         }
     
-        /**
-         * Create a KeyUpdater to execute update.
-         * 
-         * @param sid The sid
-         * @return KeyUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Create a KeyUpdater to execute update.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> KeyUpdater capable of executing the update </returns> 
         public static KeyUpdater Updater(string sid) {
             return new KeyUpdater(sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         * @return KeyDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> KeyDeleter capable of executing the delete </returns> 
         public static KeyDeleter Deleter(string accountSid, string sid) {
             return new KeyDeleter(accountSid, sid);
         }
     
-        /**
-         * Create a KeyDeleter to execute delete.
-         * 
-         * @param sid The sid
-         * @return KeyDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a KeyDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> KeyDeleter capable of executing the delete </returns> 
         public static KeyDeleter Deleter(string sid) {
             return new KeyDeleter(sid);
         }
     
-        /**
-         * read
-         * 
-         * @param accountSid The account_sid
-         * @return KeyReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> KeyReader capable of executing the read </returns> 
         public static KeyReader Reader(string accountSid) {
             return new KeyReader(accountSid);
         }
     
-        /**
-         * Create a KeyReader to execute read.
-         * 
-         * @return KeyReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a KeyReader to execute read.
+        /// </summary>
+        ///
+        /// <returns> KeyReader capable of executing the read </returns> 
         public static KeyReader Reader() {
             return new KeyReader();
         }
     
-        /**
-         * Converts a JSON string into a KeyResource object
-         * 
-         * @param json Raw JSON string
-         * @return KeyResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a KeyResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> KeyResource object represented by the provided JSON </returns> 
         public static KeyResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -133,30 +133,22 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }

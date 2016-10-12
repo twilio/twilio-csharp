@@ -9,116 +9,115 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class ApplicationResource : SidResource {
-        /**
-         * Create a new application within your account
-         * 
-         * @param accountSid The account_sid
-         * @param friendlyName Human readable description of this resource
-         * @return ApplicationCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a new application within your account
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="friendlyName"> Human readable description of this resource </param>
+        /// <returns> ApplicationCreator capable of executing the create </returns> 
         public static ApplicationCreator Creator(string accountSid, string friendlyName) {
             return new ApplicationCreator(accountSid, friendlyName);
         }
     
-        /**
-         * Create a ApplicationCreator to execute create.
-         * 
-         * @param friendlyName Human readable description of this resource
-         * @return ApplicationCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a ApplicationCreator to execute create.
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> Human readable description of this resource </param>
+        /// <returns> ApplicationCreator capable of executing the create </returns> 
         public static ApplicationCreator Creator(string friendlyName) {
             return new ApplicationCreator(friendlyName);
         }
     
-        /**
-         * Delete the application by the specified application sid
-         * 
-         * @param accountSid The account_sid
-         * @param sid The application sid to delete
-         * @return ApplicationDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Delete the application by the specified application sid
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The application sid to delete </param>
+        /// <returns> ApplicationDeleter capable of executing the delete </returns> 
         public static ApplicationDeleter Deleter(string accountSid, string sid) {
             return new ApplicationDeleter(accountSid, sid);
         }
     
-        /**
-         * Create a ApplicationDeleter to execute delete.
-         * 
-         * @param sid The application sid to delete
-         * @return ApplicationDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a ApplicationDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="sid"> The application sid to delete </param>
+        /// <returns> ApplicationDeleter capable of executing the delete </returns> 
         public static ApplicationDeleter Deleter(string sid) {
             return new ApplicationDeleter(sid);
         }
     
-        /**
-         * Fetch the application specified by the provided sid
-         * 
-         * @param accountSid The account_sid
-         * @param sid Fetch by unique Application Sid
-         * @return ApplicationFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Fetch the application specified by the provided sid
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Fetch by unique Application Sid </param>
+        /// <returns> ApplicationFetcher capable of executing the fetch </returns> 
         public static ApplicationFetcher Fetcher(string accountSid, string sid) {
             return new ApplicationFetcher(accountSid, sid);
         }
     
-        /**
-         * Create a ApplicationFetcher to execute fetch.
-         * 
-         * @param sid Fetch by unique Application Sid
-         * @return ApplicationFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a ApplicationFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique Application Sid </param>
+        /// <returns> ApplicationFetcher capable of executing the fetch </returns> 
         public static ApplicationFetcher Fetcher(string sid) {
             return new ApplicationFetcher(sid);
         }
     
-        /**
-         * Retrieve a list of applications representing an application within the
-         * requesting account
-         * 
-         * @param accountSid The account_sid
-         * @return ApplicationReader capable of executing the read
-         */
+        /// <summary>
+        /// Retrieve a list of applications representing an application within the requesting account
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> ApplicationReader capable of executing the read </returns> 
         public static ApplicationReader Reader(string accountSid) {
             return new ApplicationReader(accountSid);
         }
     
-        /**
-         * Create a ApplicationReader to execute read.
-         * 
-         * @return ApplicationReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a ApplicationReader to execute read.
+        /// </summary>
+        ///
+        /// <returns> ApplicationReader capable of executing the read </returns> 
         public static ApplicationReader Reader() {
             return new ApplicationReader();
         }
     
-        /**
-         * Updates the application's properties
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         * @return ApplicationUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Updates the application's properties
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> ApplicationUpdater capable of executing the update </returns> 
         public static ApplicationUpdater Updater(string accountSid, string sid) {
             return new ApplicationUpdater(accountSid, sid);
         }
     
-        /**
-         * Create a ApplicationUpdater to execute update.
-         * 
-         * @param sid The sid
-         * @return ApplicationUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Create a ApplicationUpdater to execute update.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> ApplicationUpdater capable of executing the update </returns> 
         public static ApplicationUpdater Updater(string sid) {
             return new ApplicationUpdater(sid);
         }
     
-        /**
-         * Converts a JSON string into a ApplicationResource object
-         * 
-         * @param json Raw JSON string
-         * @return ApplicationResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a ApplicationResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> ApplicationResource object represented by the provided JSON </returns> 
         public static ApplicationResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -240,142 +239,102 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.voiceUrl = voiceUrl;
         }
     
-        /**
-         * @return A string that uniquely identifies this resource
-         */
+        /// <returns> A string that uniquely identifies this resource </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The API version to use
-         */
+        /// <returns> The API version to use </returns> 
         public string GetApiVersion() {
             return this.apiVersion;
         }
     
-        /**
-         * @return Date this resource was created
-         */
+        /// <returns> Date this resource was created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return Date this resource was last updated
-         */
+        /// <returns> Date this resource was last updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return Human readable description of this resource
-         */
+        /// <returns> Human readable description of this resource </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return URL to make requests to with status updates
-         */
+        /// <returns> URL to make requests to with status updates </returns> 
         public Uri GetMessageStatusCallback() {
             return this.messageStatusCallback;
         }
     
-        /**
-         * @return A string that uniquely identifies this resource
-         */
+        /// <returns> A string that uniquely identifies this resource </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return HTTP method to use with sms_fallback_method
-         */
+        /// <returns> HTTP method to use with sms_fallback_method </returns> 
         public Twilio.Http.HttpMethod GetSmsFallbackMethod() {
             return this.smsFallbackMethod;
         }
     
-        /**
-         * @return Fallback URL if there's an error parsing TwiML
-         */
+        /// <returns> Fallback URL if there's an error parsing TwiML </returns> 
         public Uri GetSmsFallbackUrl() {
             return this.smsFallbackUrl;
         }
     
-        /**
-         * @return HTTP method to use with sms_url
-         */
+        /// <returns> HTTP method to use with sms_url </returns> 
         public Twilio.Http.HttpMethod GetSmsMethod() {
             return this.smsMethod;
         }
     
-        /**
-         * @return URL Twilio with request with status updates
-         */
+        /// <returns> URL Twilio with request with status updates </returns> 
         public Uri GetSmsStatusCallback() {
             return this.smsStatusCallback;
         }
     
-        /**
-         * @return URL Twilio will request when receiving an SMS
-         */
+        /// <returns> URL Twilio will request when receiving an SMS </returns> 
         public Uri GetSmsUrl() {
             return this.smsUrl;
         }
     
-        /**
-         * @return URL to hit with status updates
-         */
+        /// <returns> URL to hit with status updates </returns> 
         public Uri GetStatusCallback() {
             return this.statusCallback;
         }
     
-        /**
-         * @return HTTP method to use with the status callback
-         */
+        /// <returns> HTTP method to use with the status callback </returns> 
         public Twilio.Http.HttpMethod GetStatusCallbackMethod() {
             return this.statusCallbackMethod;
         }
     
-        /**
-         * @return URI for this resource
-         */
+        /// <returns> URI for this resource </returns> 
         public string GetUri() {
             return this.uri;
         }
     
-        /**
-         * @return True or False
-         */
+        /// <returns> True or False </returns> 
         public bool? GetVoiceCallerIdLookup() {
             return this.voiceCallerIdLookup;
         }
     
-        /**
-         * @return HTTP method to use with the fallback url
-         */
+        /// <returns> HTTP method to use with the fallback url </returns> 
         public Twilio.Http.HttpMethod GetVoiceFallbackMethod() {
             return this.voiceFallbackMethod;
         }
     
-        /**
-         * @return Fallback URL
-         */
+        /// <returns> Fallback URL </returns> 
         public Uri GetVoiceFallbackUrl() {
             return this.voiceFallbackUrl;
         }
     
-        /**
-         * @return HTTP method to use with the URL
-         */
+        /// <returns> HTTP method to use with the URL </returns> 
         public Twilio.Http.HttpMethod GetVoiceMethod() {
             return this.voiceMethod;
         }
     
-        /**
-         * @return URL Twilio will make requests to when relieving a call
-         */
+        /// <returns> URL Twilio will make requests to when relieving a call </returns> 
         public Uri GetVoiceUrl() {
             return this.voiceUrl;
         }

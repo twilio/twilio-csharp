@@ -9,55 +9,55 @@ using Twilio.Http;
 namespace Twilio.Rest.Trunking.V1.Trunk {
 
     public class IpAccessControlListResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param trunkSid The trunk_sid
-         * @param sid The sid
-         * @return IpAccessControlListFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> IpAccessControlListFetcher capable of executing the fetch </returns> 
         public static IpAccessControlListFetcher Fetcher(string trunkSid, string sid) {
             return new IpAccessControlListFetcher(trunkSid, sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param trunkSid The trunk_sid
-         * @param sid The sid
-         * @return IpAccessControlListDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> IpAccessControlListDeleter capable of executing the delete </returns> 
         public static IpAccessControlListDeleter Deleter(string trunkSid, string sid) {
             return new IpAccessControlListDeleter(trunkSid, sid);
         }
     
-        /**
-         * create
-         * 
-         * @param trunkSid The trunk_sid
-         * @param ipAccessControlListSid The ip_access_control_list_sid
-         * @return IpAccessControlListCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <returns> IpAccessControlListCreator capable of executing the create </returns> 
         public static IpAccessControlListCreator Creator(string trunkSid, string ipAccessControlListSid) {
             return new IpAccessControlListCreator(trunkSid, ipAccessControlListSid);
         }
     
-        /**
-         * read
-         * 
-         * @param trunkSid The trunk_sid
-         * @return IpAccessControlListReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <returns> IpAccessControlListReader capable of executing the read </returns> 
         public static IpAccessControlListReader Reader(string trunkSid) {
             return new IpAccessControlListReader(trunkSid);
         }
     
-        /**
-         * Converts a JSON string into a IpAccessControlListResource object
-         * 
-         * @param json Raw JSON string
-         * @return IpAccessControlListResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a IpAccessControlListResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> IpAccessControlListResource object represented by the provided JSON </returns> 
         public static IpAccessControlListResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -109,51 +109,37 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
             this.url = url;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The trunk_sid
-         */
+        /// <returns> The trunk_sid </returns> 
         public string GetTrunkSid() {
             return this.trunkSid;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }

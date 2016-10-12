@@ -13,33 +13,33 @@ namespace Twilio.Rest.Api.V2010.Account {
         private string accountSid;
         private string connectAppSid;
     
-        /**
-         * Construct a new AuthorizedConnectAppFetcher.
-         * 
-         * @param connectAppSid The connect_app_sid
-         */
+        /// <summary>
+        /// Construct a new AuthorizedConnectAppFetcher.
+        /// </summary>
+        ///
+        /// <param name="connectAppSid"> The connect_app_sid </param>
         public AuthorizedConnectAppFetcher(string connectAppSid) {
             this.connectAppSid = connectAppSid;
         }
     
-        /**
-         * Construct a new AuthorizedConnectAppFetcher
-         * 
-         * @param accountSid The account_sid
-         * @param connectAppSid The connect_app_sid
-         */
+        /// <summary>
+        /// Construct a new AuthorizedConnectAppFetcher
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="connectAppSid"> The connect_app_sid </param>
         public AuthorizedConnectAppFetcher(string accountSid, string connectAppSid) {
             this.accountSid = accountSid;
             this.connectAppSid = connectAppSid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched AuthorizedConnectAppResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched AuthorizedConnectAppResource </returns> 
         public override async Task<AuthorizedConnectAppResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -73,12 +73,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched AuthorizedConnectAppResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched AuthorizedConnectAppResource </returns> 
         public override AuthorizedConnectAppResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

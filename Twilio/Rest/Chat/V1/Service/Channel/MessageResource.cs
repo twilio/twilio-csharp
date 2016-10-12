@@ -9,72 +9,72 @@ using Twilio.Http;
 namespace Twilio.Rest.Chat.V1.Service.Channel {
 
     public class MessageResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param serviceSid The service_sid
-         * @param channelSid The channel_sid
-         * @param sid The sid
-         * @return MessageFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> MessageFetcher capable of executing the fetch </returns> 
         public static MessageFetcher Fetcher(string serviceSid, string channelSid, string sid) {
             return new MessageFetcher(serviceSid, channelSid, sid);
         }
     
-        /**
-         * create
-         * 
-         * @param serviceSid The service_sid
-         * @param channelSid The channel_sid
-         * @param body The body
-         * @return MessageCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="body"> The body </param>
+        /// <returns> MessageCreator capable of executing the create </returns> 
         public static MessageCreator Creator(string serviceSid, string channelSid, string body) {
             return new MessageCreator(serviceSid, channelSid, body);
         }
     
-        /**
-         * read
-         * 
-         * @param serviceSid The service_sid
-         * @param channelSid The channel_sid
-         * @return MessageReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="channelSid"> The channel_sid </param>
+        /// <returns> MessageReader capable of executing the read </returns> 
         public static MessageReader Reader(string serviceSid, string channelSid) {
             return new MessageReader(serviceSid, channelSid);
         }
     
-        /**
-         * delete
-         * 
-         * @param serviceSid The service_sid
-         * @param channelSid The channel_sid
-         * @param sid The sid
-         * @return MessageDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> MessageDeleter capable of executing the delete </returns> 
         public static MessageDeleter Deleter(string serviceSid, string channelSid, string sid) {
             return new MessageDeleter(serviceSid, channelSid, sid);
         }
     
-        /**
-         * update
-         * 
-         * @param serviceSid The service_sid
-         * @param channelSid The channel_sid
-         * @param sid The sid
-         * @param body The body
-         * @return MessageUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="body"> The body </param>
+        /// <returns> MessageUpdater capable of executing the update </returns> 
         public static MessageUpdater Updater(string serviceSid, string channelSid, string sid, string body) {
             return new MessageUpdater(serviceSid, channelSid, sid, body);
         }
     
-        /**
-         * Converts a JSON string into a MessageResource object
-         * 
-         * @param json Raw JSON string
-         * @return MessageResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a MessageResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> MessageResource object represented by the provided JSON </returns> 
         public static MessageResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -141,72 +141,52 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
             this.url = url;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The service_sid
-         */
+        /// <returns> The service_sid </returns> 
         public string GetServiceSid() {
             return this.serviceSid;
         }
     
-        /**
-         * @return The to
-         */
+        /// <returns> The to </returns> 
         public string GetTo() {
             return this.to;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The was_edited
-         */
+        /// <returns> The was_edited </returns> 
         public bool? GetWasEdited() {
             return this.wasEdited;
         }
     
-        /**
-         * @return The from
-         */
+        /// <returns> The from </returns> 
         public string GetFrom() {
             return this.from;
         }
     
-        /**
-         * @return The body
-         */
+        /// <returns> The body </returns> 
         public string GetBody() {
             return this.body;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }

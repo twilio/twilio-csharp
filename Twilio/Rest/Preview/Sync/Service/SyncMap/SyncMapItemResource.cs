@@ -67,73 +67,73 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
             }
         }
     
-        /**
-         * fetch
-         * 
-         * @param serviceSid The service_sid
-         * @param mapSid The map_sid
-         * @param key The key
-         * @return SyncMapItemFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="mapSid"> The map_sid </param>
+        /// <param name="key"> The key </param>
+        /// <returns> SyncMapItemFetcher capable of executing the fetch </returns> 
         public static SyncMapItemFetcher Fetcher(string serviceSid, string mapSid, string key) {
             return new SyncMapItemFetcher(serviceSid, mapSid, key);
         }
     
-        /**
-         * delete
-         * 
-         * @param serviceSid The service_sid
-         * @param mapSid The map_sid
-         * @param key The key
-         * @return SyncMapItemDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="mapSid"> The map_sid </param>
+        /// <param name="key"> The key </param>
+        /// <returns> SyncMapItemDeleter capable of executing the delete </returns> 
         public static SyncMapItemDeleter Deleter(string serviceSid, string mapSid, string key) {
             return new SyncMapItemDeleter(serviceSid, mapSid, key);
         }
     
-        /**
-         * create
-         * 
-         * @param serviceSid The service_sid
-         * @param mapSid The map_sid
-         * @param key The key
-         * @param data The data
-         * @return SyncMapItemCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="mapSid"> The map_sid </param>
+        /// <param name="key"> The key </param>
+        /// <param name="data"> The data </param>
+        /// <returns> SyncMapItemCreator capable of executing the create </returns> 
         public static SyncMapItemCreator Creator(string serviceSid, string mapSid, string key, Object data) {
             return new SyncMapItemCreator(serviceSid, mapSid, key, data);
         }
     
-        /**
-         * read
-         * 
-         * @param serviceSid The service_sid
-         * @param mapSid The map_sid
-         * @return SyncMapItemReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="mapSid"> The map_sid </param>
+        /// <returns> SyncMapItemReader capable of executing the read </returns> 
         public static SyncMapItemReader Reader(string serviceSid, string mapSid) {
             return new SyncMapItemReader(serviceSid, mapSid);
         }
     
-        /**
-         * update
-         * 
-         * @param serviceSid The service_sid
-         * @param mapSid The map_sid
-         * @param key The key
-         * @param data The data
-         * @return SyncMapItemUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="mapSid"> The map_sid </param>
+        /// <param name="key"> The key </param>
+        /// <param name="data"> The data </param>
+        /// <returns> SyncMapItemUpdater capable of executing the update </returns> 
         public static SyncMapItemUpdater Updater(string serviceSid, string mapSid, string key, Object data) {
             return new SyncMapItemUpdater(serviceSid, mapSid, key, data);
         }
     
-        /**
-         * Converts a JSON string into a SyncMapItemResource object
-         * 
-         * @param json Raw JSON string
-         * @return SyncMapItemResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a SyncMapItemResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> SyncMapItemResource object represented by the provided JSON </returns> 
         public static SyncMapItemResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -200,79 +200,57 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
             this.createdBy = createdBy;
         }
     
-        /**
-         * @return The key
-         */
+        /// <returns> The key </returns> 
         public override string GetSid() {
             return this.GetKey();
         }
     
-        /**
-         * @return The key
-         */
+        /// <returns> The key </returns> 
         public string GetKey() {
             return this.key;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The service_sid
-         */
+        /// <returns> The service_sid </returns> 
         public string GetServiceSid() {
             return this.serviceSid;
         }
     
-        /**
-         * @return The map_sid
-         */
+        /// <returns> The map_sid </returns> 
         public string GetMapSid() {
             return this.mapSid;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }
     
-        /**
-         * @return The revision
-         */
+        /// <returns> The revision </returns> 
         public string GetRevision() {
             return this.revision;
         }
     
-        /**
-         * @return The data
-         */
+        /// <returns> The data </returns> 
         public Object GetData() {
             return this.data;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The created_by
-         */
+        /// <returns> The created_by </returns> 
         public string GetCreatedBy() {
             return this.createdBy;
         }

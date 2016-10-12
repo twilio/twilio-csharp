@@ -13,24 +13,24 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         private string trunkSid;
         private string phoneNumberSid;
     
-        /**
-         * Construct a new PhoneNumberCreator
-         * 
-         * @param trunkSid The trunk_sid
-         * @param phoneNumberSid The phone_number_sid
-         */
+        /// <summary>
+        /// Construct a new PhoneNumberCreator
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="phoneNumberSid"> The phone_number_sid </param>
         public PhoneNumberCreator(string trunkSid, string phoneNumberSid) {
             this.trunkSid = trunkSid;
             this.phoneNumberSid = phoneNumberSid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created PhoneNumberResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created PhoneNumberResource </returns> 
         public override async Task<PhoneNumberResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -65,12 +65,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created PhoneNumberResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created PhoneNumberResource </returns> 
         public override PhoneNumberResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -104,11 +104,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
             return PhoneNumberResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (phoneNumberSid != null) {
                 request.AddPostParam("PhoneNumberSid", phoneNumberSid);

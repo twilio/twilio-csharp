@@ -20,98 +20,98 @@ namespace Twilio.Rest.Api.V2010.Account {
         private Uri statusCallback;
         private Twilio.Http.HttpMethod statusCallbackMethod;
     
-        /**
-         * Construct a new ValidationRequestCreator.
-         * 
-         * @param phoneNumber The phone_number
-         */
+        /// <summary>
+        /// Construct a new ValidationRequestCreator.
+        /// </summary>
+        ///
+        /// <param name="phoneNumber"> The phone_number </param>
         public ValidationRequestCreator(Twilio.Types.PhoneNumber phoneNumber) {
             this.phoneNumber = phoneNumber;
         }
     
-        /**
-         * Construct a new ValidationRequestCreator
-         * 
-         * @param accountSid The account_sid
-         * @param phoneNumber The phone_number
-         */
+        /// <summary>
+        /// Construct a new ValidationRequestCreator
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="phoneNumber"> The phone_number </param>
         public ValidationRequestCreator(string accountSid, Twilio.Types.PhoneNumber phoneNumber) {
             this.accountSid = accountSid;
             this.phoneNumber = phoneNumber;
         }
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public ValidationRequestCreator setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * The call_delay
-         * 
-         * @param callDelay The call_delay
-         * @return this
-         */
+        /// <summary>
+        /// The call_delay
+        /// </summary>
+        ///
+        /// <param name="callDelay"> The call_delay </param>
+        /// <returns> this </returns> 
         public ValidationRequestCreator setCallDelay(int? callDelay) {
             this.callDelay = callDelay;
             return this;
         }
     
-        /**
-         * The extension
-         * 
-         * @param extension The extension
-         * @return this
-         */
+        /// <summary>
+        /// The extension
+        /// </summary>
+        ///
+        /// <param name="extension"> The extension </param>
+        /// <returns> this </returns> 
         public ValidationRequestCreator setExtension(string extension) {
             this.extension = extension;
             return this;
         }
     
-        /**
-         * The status_callback
-         * 
-         * @param statusCallback The status_callback
-         * @return this
-         */
+        /// <summary>
+        /// The status_callback
+        /// </summary>
+        ///
+        /// <param name="statusCallback"> The status_callback </param>
+        /// <returns> this </returns> 
         public ValidationRequestCreator setStatusCallback(Uri statusCallback) {
             this.statusCallback = statusCallback;
             return this;
         }
     
-        /**
-         * The status_callback
-         * 
-         * @param statusCallback The status_callback
-         * @return this
-         */
+        /// <summary>
+        /// The status_callback
+        /// </summary>
+        ///
+        /// <param name="statusCallback"> The status_callback </param>
+        /// <returns> this </returns> 
         public ValidationRequestCreator setStatusCallback(string statusCallback) {
             return setStatusCallback(Promoter.UriFromString(statusCallback));
         }
     
-        /**
-         * The status_callback_method
-         * 
-         * @param statusCallbackMethod The status_callback_method
-         * @return this
-         */
+        /// <summary>
+        /// The status_callback_method
+        /// </summary>
+        ///
+        /// <param name="statusCallbackMethod"> The status_callback_method </param>
+        /// <returns> this </returns> 
         public ValidationRequestCreator setStatusCallbackMethod(Twilio.Http.HttpMethod statusCallbackMethod) {
             this.statusCallbackMethod = statusCallbackMethod;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created ValidationRequestResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created ValidationRequestResource </returns> 
         public override async Task<ValidationRequestResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -146,12 +146,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created ValidationRequestResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created ValidationRequestResource </returns> 
         public override ValidationRequestResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -185,11 +185,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return ValidationRequestResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (phoneNumber != null) {
                 request.AddPostParam("PhoneNumber", phoneNumber.ToString());

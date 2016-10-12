@@ -15,13 +15,13 @@ namespace Twilio.Rest.Preview.Sync.Service {
         private string sid;
         private Object data;
     
-        /**
-         * Construct a new DocumentUpdater
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         * @param data The data
-         */
+        /// <summary>
+        /// Construct a new DocumentUpdater
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="data"> The data </param>
         public DocumentUpdater(string serviceSid, string sid, Object data) {
             this.serviceSid = serviceSid;
             this.sid = sid;
@@ -29,12 +29,12 @@ namespace Twilio.Rest.Preview.Sync.Service {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated DocumentResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated DocumentResource </returns> 
         public override async Task<DocumentResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -69,12 +69,12 @@ namespace Twilio.Rest.Preview.Sync.Service {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated DocumentResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated DocumentResource </returns> 
         public override DocumentResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -108,11 +108,11 @@ namespace Twilio.Rest.Preview.Sync.Service {
             return DocumentResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (data != null) {
                 request.AddPostParam("Data", data.ToString());

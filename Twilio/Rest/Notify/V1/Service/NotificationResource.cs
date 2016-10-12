@@ -39,22 +39,22 @@ namespace Twilio.Rest.Notify.V1.Service {
             }
         }
     
-        /**
-         * create
-         * 
-         * @param serviceSid The service_sid
-         * @return NotificationCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <returns> NotificationCreator capable of executing the create </returns> 
         public static NotificationCreator Creator(string serviceSid) {
             return new NotificationCreator(serviceSid);
         }
     
-        /**
-         * Converts a JSON string into a NotificationResource object
-         * 
-         * @param json Raw JSON string
-         * @return NotificationResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a NotificationResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> NotificationResource object represented by the provided JSON </returns> 
         public static NotificationResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -157,121 +157,87 @@ namespace Twilio.Rest.Notify.V1.Service {
             this.facebookMessenger = facebookMessenger;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The service_sid
-         */
+        /// <returns> The service_sid </returns> 
         public string GetServiceSid() {
             return this.serviceSid;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The identities
-         */
+        /// <returns> The identities </returns> 
         public List<string> GetIdentities() {
             return this.identities;
         }
     
-        /**
-         * @return The tags
-         */
+        /// <returns> The tags </returns> 
         public List<string> GetTags() {
             return this.tags;
         }
     
-        /**
-         * @return The priority
-         */
+        /// <returns> The priority </returns> 
         public NotificationResource.Priority GetPriority() {
             return this.priority;
         }
     
-        /**
-         * @return The ttl
-         */
+        /// <returns> The ttl </returns> 
         public int? GetTtl() {
             return this.ttl;
         }
     
-        /**
-         * @return The title
-         */
+        /// <returns> The title </returns> 
         public string GetTitle() {
             return this.title;
         }
     
-        /**
-         * @return The body
-         */
+        /// <returns> The body </returns> 
         public string GetBody() {
             return this.body;
         }
     
-        /**
-         * @return The sound
-         */
+        /// <returns> The sound </returns> 
         public string GetSound() {
             return this.sound;
         }
     
-        /**
-         * @return The action
-         */
+        /// <returns> The action </returns> 
         public string GetAction() {
             return this.action;
         }
     
-        /**
-         * @return The data
-         */
+        /// <returns> The data </returns> 
         public Object GetData() {
             return this.data;
         }
     
-        /**
-         * @return The apn
-         */
+        /// <returns> The apn </returns> 
         public Object GetApn() {
             return this.apn;
         }
     
-        /**
-         * @return The gcm
-         */
+        /// <returns> The gcm </returns> 
         public Object GetGcm() {
             return this.gcm;
         }
     
-        /**
-         * @return The sms
-         */
+        /// <returns> The sms </returns> 
         public Object GetSms() {
             return this.sms;
         }
     
-        /**
-         * @return The facebook_messenger
-         */
+        /// <returns> The facebook_messenger </returns> 
         public Object GetFacebookMessenger() {
             return this.facebookMessenger;
         }

@@ -14,50 +14,50 @@ namespace Twilio.Rest.Api.V2010 {
         private string friendlyName;
         private AccountResource.Status status;
     
-        /**
-         * Construct a new AccountUpdater.
-         */
+        /// <summary>
+        /// Construct a new AccountUpdater.
+        /// </summary>
         public AccountUpdater() {
         }
     
-        /**
-         * Construct a new AccountUpdater
-         * 
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new AccountUpdater
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
         public AccountUpdater(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * Update the human-readable description of this Account
-         * 
-         * @param friendlyName FriendlyName to update
-         * @return this
-         */
+        /// <summary>
+        /// Update the human-readable description of this Account
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> FriendlyName to update </param>
+        /// <returns> this </returns> 
         public AccountUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * Alter the status of this account with a given Status
-         * 
-         * @param status Status to update the Account with
-         * @return this
-         */
+        /// <summary>
+        /// Alter the status of this account with a given Status
+        /// </summary>
+        ///
+        /// <param name="status"> Status to update the Account with </param>
+        /// <returns> this </returns> 
         public AccountUpdater setStatus(AccountResource.Status status) {
             this.status = status;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated AccountResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated AccountResource </returns> 
         public override async Task<AccountResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -92,12 +92,12 @@ namespace Twilio.Rest.Api.V2010 {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated AccountResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated AccountResource </returns> 
         public override AccountResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -131,11 +131,11 @@ namespace Twilio.Rest.Api.V2010 {
             return AccountResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

@@ -127,31 +127,31 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
             }
         }
     
-        /**
-         * read
-         * 
-         * @param accountSid The account_sid
-         * @return MonthlyReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> MonthlyReader capable of executing the read </returns> 
         public static MonthlyReader Reader(string accountSid) {
             return new MonthlyReader(accountSid);
         }
     
-        /**
-         * Create a MonthlyReader to execute read.
-         * 
-         * @return MonthlyReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a MonthlyReader to execute read.
+        /// </summary>
+        ///
+        /// <returns> MonthlyReader capable of executing the read </returns> 
         public static MonthlyReader Reader() {
             return new MonthlyReader();
         }
     
-        /**
-         * Converts a JSON string into a MonthlyResource object
-         * 
-         * @param json Raw JSON string
-         * @return MonthlyResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a MonthlyResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> MonthlyResource object represented by the provided JSON </returns> 
         public static MonthlyResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -239,100 +239,72 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
             this.usageUnit = usageUnit;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The api_version
-         */
+        /// <returns> The api_version </returns> 
         public string GetApiVersion() {
             return this.apiVersion;
         }
     
-        /**
-         * @return The category
-         */
+        /// <returns> The category </returns> 
         public MonthlyResource.Category GetCategory() {
             return this.category;
         }
     
-        /**
-         * @return The count
-         */
+        /// <returns> The count </returns> 
         public string GetCount() {
             return this.count;
         }
     
-        /**
-         * @return The count_unit
-         */
+        /// <returns> The count_unit </returns> 
         public string GetCountUnit() {
             return this.countUnit;
         }
     
-        /**
-         * @return The description
-         */
+        /// <returns> The description </returns> 
         public string GetDescription() {
             return this.description;
         }
     
-        /**
-         * @return The end_date
-         */
+        /// <returns> The end_date </returns> 
         public DateTime? GetEndDate() {
             return this.endDate;
         }
     
-        /**
-         * @return The price
-         */
+        /// <returns> The price </returns> 
         public decimal? GetPrice() {
             return this.price;
         }
     
-        /**
-         * @return The price_unit
-         */
+        /// <returns> The price_unit </returns> 
         public string GetPriceUnit() {
             return this.priceUnit;
         }
     
-        /**
-         * @return The start_date
-         */
+        /// <returns> The start_date </returns> 
         public DateTime? GetStartDate() {
             return this.startDate;
         }
     
-        /**
-         * @return The subresource_uris
-         */
+        /// <returns> The subresource_uris </returns> 
         public Dictionary<string, string> GetSubresourceUris() {
             return this.subresourceUris;
         }
     
-        /**
-         * @return The uri
-         */
+        /// <returns> The uri </returns> 
         public string GetUri() {
             return this.uri;
         }
     
-        /**
-         * @return The usage
-         */
+        /// <returns> The usage </returns> 
         public string GetUsage() {
             return this.usage;
         }
     
-        /**
-         * @return The usage_unit
-         */
+        /// <returns> The usage_unit </returns> 
         public string GetUsageUnit() {
             return this.usageUnit;
         }

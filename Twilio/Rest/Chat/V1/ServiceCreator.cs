@@ -12,22 +12,22 @@ namespace Twilio.Rest.Chat.V1 {
     public class ServiceCreator : Creator<ServiceResource> {
         private string friendlyName;
     
-        /**
-         * Construct a new ServiceCreator
-         * 
-         * @param friendlyName The friendly_name
-         */
+        /// <summary>
+        /// Construct a new ServiceCreator
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
         public ServiceCreator(string friendlyName) {
             this.friendlyName = friendlyName;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created ServiceResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created ServiceResource </returns> 
         public override async Task<ServiceResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -62,12 +62,12 @@ namespace Twilio.Rest.Chat.V1 {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created ServiceResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created ServiceResource </returns> 
         public override ServiceResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -101,11 +101,11 @@ namespace Twilio.Rest.Chat.V1 {
             return ServiceResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

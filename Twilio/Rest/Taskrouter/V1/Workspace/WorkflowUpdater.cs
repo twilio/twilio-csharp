@@ -20,99 +20,99 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         private string configuration;
         private int? taskReservationTimeout;
     
-        /**
-         * Construct a new WorkflowUpdater
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new WorkflowUpdater
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
         public WorkflowUpdater(string workspaceSid, string sid) {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
         }
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public WorkflowUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * The assignment_callback_url
-         * 
-         * @param assignmentCallbackUrl The assignment_callback_url
-         * @return this
-         */
+        /// <summary>
+        /// The assignment_callback_url
+        /// </summary>
+        ///
+        /// <param name="assignmentCallbackUrl"> The assignment_callback_url </param>
+        /// <returns> this </returns> 
         public WorkflowUpdater setAssignmentCallbackUrl(Uri assignmentCallbackUrl) {
             this.assignmentCallbackUrl = assignmentCallbackUrl;
             return this;
         }
     
-        /**
-         * The assignment_callback_url
-         * 
-         * @param assignmentCallbackUrl The assignment_callback_url
-         * @return this
-         */
+        /// <summary>
+        /// The assignment_callback_url
+        /// </summary>
+        ///
+        /// <param name="assignmentCallbackUrl"> The assignment_callback_url </param>
+        /// <returns> this </returns> 
         public WorkflowUpdater setAssignmentCallbackUrl(string assignmentCallbackUrl) {
             return setAssignmentCallbackUrl(Promoter.UriFromString(assignmentCallbackUrl));
         }
     
-        /**
-         * The fallback_assignment_callback_url
-         * 
-         * @param fallbackAssignmentCallbackUrl The fallback_assignment_callback_url
-         * @return this
-         */
+        /// <summary>
+        /// The fallback_assignment_callback_url
+        /// </summary>
+        ///
+        /// <param name="fallbackAssignmentCallbackUrl"> The fallback_assignment_callback_url </param>
+        /// <returns> this </returns> 
         public WorkflowUpdater setFallbackAssignmentCallbackUrl(Uri fallbackAssignmentCallbackUrl) {
             this.fallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl;
             return this;
         }
     
-        /**
-         * The fallback_assignment_callback_url
-         * 
-         * @param fallbackAssignmentCallbackUrl The fallback_assignment_callback_url
-         * @return this
-         */
+        /// <summary>
+        /// The fallback_assignment_callback_url
+        /// </summary>
+        ///
+        /// <param name="fallbackAssignmentCallbackUrl"> The fallback_assignment_callback_url </param>
+        /// <returns> this </returns> 
         public WorkflowUpdater setFallbackAssignmentCallbackUrl(string fallbackAssignmentCallbackUrl) {
             return setFallbackAssignmentCallbackUrl(Promoter.UriFromString(fallbackAssignmentCallbackUrl));
         }
     
-        /**
-         * The configuration
-         * 
-         * @param configuration The configuration
-         * @return this
-         */
+        /// <summary>
+        /// The configuration
+        /// </summary>
+        ///
+        /// <param name="configuration"> The configuration </param>
+        /// <returns> this </returns> 
         public WorkflowUpdater setConfiguration(string configuration) {
             this.configuration = configuration;
             return this;
         }
     
-        /**
-         * The task_reservation_timeout
-         * 
-         * @param taskReservationTimeout The task_reservation_timeout
-         * @return this
-         */
+        /// <summary>
+        /// The task_reservation_timeout
+        /// </summary>
+        ///
+        /// <param name="taskReservationTimeout"> The task_reservation_timeout </param>
+        /// <returns> this </returns> 
         public WorkflowUpdater setTaskReservationTimeout(int? taskReservationTimeout) {
             this.taskReservationTimeout = taskReservationTimeout;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated WorkflowResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated WorkflowResource </returns> 
         public override async Task<WorkflowResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -147,12 +147,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated WorkflowResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated WorkflowResource </returns> 
         public override WorkflowResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -186,11 +186,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             return WorkflowResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

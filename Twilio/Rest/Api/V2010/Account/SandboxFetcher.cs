@@ -12,28 +12,28 @@ namespace Twilio.Rest.Api.V2010.Account {
     public class SandboxFetcher : Fetcher<SandboxResource> {
         private string accountSid;
     
-        /**
-         * Construct a new SandboxFetcher.
-         */
+        /// <summary>
+        /// Construct a new SandboxFetcher.
+        /// </summary>
         public SandboxFetcher() {
         }
     
-        /**
-         * Construct a new SandboxFetcher
-         * 
-         * @param accountSid The account_sid
-         */
+        /// <summary>
+        /// Construct a new SandboxFetcher
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
         public SandboxFetcher(string accountSid) {
             this.accountSid = accountSid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched SandboxResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched SandboxResource </returns> 
         public override async Task<SandboxResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -67,12 +67,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched SandboxResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched SandboxResource </returns> 
         public override SandboxResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

@@ -13,33 +13,33 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         private string accountSid;
         private string friendlyName;
     
-        /**
-         * Construct a new IpAccessControlListCreator.
-         * 
-         * @param friendlyName A human readable description of this resource
-         */
+        /// <summary>
+        /// Construct a new IpAccessControlListCreator.
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> A human readable description of this resource </param>
         public IpAccessControlListCreator(string friendlyName) {
             this.friendlyName = friendlyName;
         }
     
-        /**
-         * Construct a new IpAccessControlListCreator
-         * 
-         * @param accountSid The account_sid
-         * @param friendlyName A human readable description of this resource
-         */
+        /// <summary>
+        /// Construct a new IpAccessControlListCreator
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="friendlyName"> A human readable description of this resource </param>
         public IpAccessControlListCreator(string accountSid, string friendlyName) {
             this.accountSid = accountSid;
             this.friendlyName = friendlyName;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created IpAccessControlListResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created IpAccessControlListResource </returns> 
         public override async Task<IpAccessControlListResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -74,12 +74,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created IpAccessControlListResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created IpAccessControlListResource </returns> 
         public override IpAccessControlListResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -113,11 +113,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
             return IpAccessControlListResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

@@ -9,22 +9,22 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
 
     public class WorkersStatisticsResource : Resource {
-        /**
-         * fetch
-         * 
-         * @param workspaceSid The workspace_sid
-         * @return WorkersStatisticsFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <returns> WorkersStatisticsFetcher capable of executing the fetch </returns> 
         public static WorkersStatisticsFetcher Fetcher(string workspaceSid) {
             return new WorkersStatisticsFetcher(workspaceSid);
         }
     
-        /**
-         * Converts a JSON string into a WorkersStatisticsResource object
-         * 
-         * @param json Raw JSON string
-         * @return WorkersStatisticsResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a WorkersStatisticsResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> WorkersStatisticsResource object represented by the provided JSON </returns> 
         public static WorkersStatisticsResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -61,30 +61,22 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
             this.workspaceSid = workspaceSid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The cumulative
-         */
+        /// <returns> The cumulative </returns> 
         public Object GetCumulative() {
             return this.cumulative;
         }
     
-        /**
-         * @return The realtime
-         */
+        /// <returns> The realtime </returns> 
         public Object GetRealtime() {
             return this.realtime;
         }
     
-        /**
-         * @return The workspace_sid
-         */
+        /// <returns> The workspace_sid </returns> 
         public string GetWorkspaceSid() {
             return this.workspaceSid;
         }

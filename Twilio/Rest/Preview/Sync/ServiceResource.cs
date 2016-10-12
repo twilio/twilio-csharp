@@ -10,60 +10,60 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.Sync {
 
     public class ServiceResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param sid The sid
-         * @return ServiceFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> ServiceFetcher capable of executing the fetch </returns> 
         public static ServiceFetcher Fetcher(string sid) {
             return new ServiceFetcher(sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param sid The sid
-         * @return ServiceDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> ServiceDeleter capable of executing the delete </returns> 
         public static ServiceDeleter Deleter(string sid) {
             return new ServiceDeleter(sid);
         }
     
-        /**
-         * create
-         * 
-         * @return ServiceCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <returns> ServiceCreator capable of executing the create </returns> 
         public static ServiceCreator Creator() {
             return new ServiceCreator();
         }
     
-        /**
-         * read
-         * 
-         * @return ServiceReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <returns> ServiceReader capable of executing the read </returns> 
         public static ServiceReader Reader() {
             return new ServiceReader();
         }
     
-        /**
-         * update
-         * 
-         * @param sid The sid
-         * @return ServiceUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> ServiceUpdater capable of executing the update </returns> 
         public static ServiceUpdater Updater(string sid) {
             return new ServiceUpdater(sid);
         }
     
-        /**
-         * Converts a JSON string into a ServiceResource object
-         * 
-         * @param json Raw JSON string
-         * @return ServiceResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a ServiceResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> ServiceResource object represented by the provided JSON </returns> 
         public static ServiceResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -125,65 +125,47 @@ namespace Twilio.Rest.Preview.Sync {
             this.links = links;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }
     
-        /**
-         * @return The webhook_url
-         */
+        /// <returns> The webhook_url </returns> 
         public Uri GetWebhookUrl() {
             return this.webhookUrl;
         }
     
-        /**
-         * @return The reachability_webhooks_enabled
-         */
+        /// <returns> The reachability_webhooks_enabled </returns> 
         public bool? GetReachabilityWebhooksEnabled() {
             return this.reachabilityWebhooksEnabled;
         }
     
-        /**
-         * @return The links
-         */
+        /// <returns> The links </returns> 
         public Dictionary<string, string> GetLinks() {
             return this.links;
         }

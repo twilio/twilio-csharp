@@ -13,40 +13,39 @@ namespace Twilio.Rest.Api.V2010.Account {
         private string accountSid;
         private string dateCreated;
     
-        /**
-         * Construct a new RecordingReader.
-         */
+        /// <summary>
+        /// Construct a new RecordingReader.
+        /// </summary>
         public RecordingReader() {
         }
     
-        /**
-         * Construct a new RecordingReader
-         * 
-         * @param accountSid The account_sid
-         */
+        /// <summary>
+        /// Construct a new RecordingReader
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
         public RecordingReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
-        /**
-         * Only show recordings on the given date. Should be formatted as YYYY-MM-DD.
-         * You can also specify inequalities
-         * 
-         * @param dateCreated Filter by date created
-         * @return this
-         */
+        /// <summary>
+        /// Only show recordings on the given date. Should be formatted as YYYY-MM-DD. You can also specify inequalities
+        /// </summary>
+        ///
+        /// <param name="dateCreated"> Filter by date created </param>
+        /// <returns> this </returns> 
         public RecordingReader ByDateCreated(string dateCreated) {
             this.dateCreated = dateCreated;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return RecordingResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> RecordingResource ResourceSet </returns> 
         public override Task<ResourceSet<RecordingResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -61,12 +60,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return RecordingResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> RecordingResource ResourceSet </returns> 
         public override ResourceSet<RecordingResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -80,13 +79,13 @@ namespace Twilio.Rest.Api.V2010.Account {
             return new ResourceSet<RecordingResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<RecordingResource> NextPage(Page<RecordingResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -98,13 +97,13 @@ namespace Twilio.Rest.Api.V2010.Account {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of RecordingResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of RecordingResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<RecordingResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -131,11 +130,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return Page<RecordingResource>.FromJson("recordings", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             request.AddQueryParam("PageSize", PageSize.ToString());
         }

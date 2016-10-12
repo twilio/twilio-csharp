@@ -13,33 +13,33 @@ namespace Twilio.Rest.Api.V2010.Account {
         private string accountSid;
         private string sid;
     
-        /**
-         * Construct a new ConferenceFetcher.
-         * 
-         * @param sid Fetch by unique conference Sid
-         */
+        /// <summary>
+        /// Construct a new ConferenceFetcher.
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique conference Sid </param>
         public ConferenceFetcher(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * Construct a new ConferenceFetcher
-         * 
-         * @param accountSid The account_sid
-         * @param sid Fetch by unique conference Sid
-         */
+        /// <summary>
+        /// Construct a new ConferenceFetcher
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Fetch by unique conference Sid </param>
         public ConferenceFetcher(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched ConferenceResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched ConferenceResource </returns> 
         public override async Task<ConferenceResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -73,12 +73,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched ConferenceResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched ConferenceResource </returns> 
         public override ConferenceResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

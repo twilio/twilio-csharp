@@ -14,13 +14,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         private string listSid;
         private int? index;
     
-        /**
-         * Construct a new SyncListItemFetcher
-         * 
-         * @param serviceSid The service_sid
-         * @param listSid The list_sid
-         * @param index The index
-         */
+        /// <summary>
+        /// Construct a new SyncListItemFetcher
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="listSid"> The list_sid </param>
+        /// <param name="index"> The index </param>
         public SyncListItemFetcher(string serviceSid, string listSid, int? index) {
             this.serviceSid = serviceSid;
             this.listSid = listSid;
@@ -28,12 +28,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched SyncListItemResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched SyncListItemResource </returns> 
         public override async Task<SyncListItemResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -67,12 +67,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched SyncListItemResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched SyncListItemResource </returns> 
         public override SyncListItemResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

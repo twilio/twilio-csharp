@@ -17,56 +17,56 @@ namespace Twilio.Rest.Preview.Wireless {
         private string callbackMethod;
         private Uri callbackUrl;
     
-        /**
-         * Construct a new CommandCreator
-         * 
-         * @param device The device
-         * @param command The command
-         */
+        /// <summary>
+        /// Construct a new CommandCreator
+        /// </summary>
+        ///
+        /// <param name="device"> The device </param>
+        /// <param name="command"> The command </param>
         public CommandCreator(string device, string command) {
             this.device = device;
             this.command = command;
         }
     
-        /**
-         * The callback_method
-         * 
-         * @param callbackMethod The callback_method
-         * @return this
-         */
+        /// <summary>
+        /// The callback_method
+        /// </summary>
+        ///
+        /// <param name="callbackMethod"> The callback_method </param>
+        /// <returns> this </returns> 
         public CommandCreator setCallbackMethod(string callbackMethod) {
             this.callbackMethod = callbackMethod;
             return this;
         }
     
-        /**
-         * The callback_url
-         * 
-         * @param callbackUrl The callback_url
-         * @return this
-         */
+        /// <summary>
+        /// The callback_url
+        /// </summary>
+        ///
+        /// <param name="callbackUrl"> The callback_url </param>
+        /// <returns> this </returns> 
         public CommandCreator setCallbackUrl(Uri callbackUrl) {
             this.callbackUrl = callbackUrl;
             return this;
         }
     
-        /**
-         * The callback_url
-         * 
-         * @param callbackUrl The callback_url
-         * @return this
-         */
+        /// <summary>
+        /// The callback_url
+        /// </summary>
+        ///
+        /// <param name="callbackUrl"> The callback_url </param>
+        /// <returns> this </returns> 
         public CommandCreator setCallbackUrl(string callbackUrl) {
             return setCallbackUrl(Promoter.UriFromString(callbackUrl));
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created CommandResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created CommandResource </returns> 
         public override async Task<CommandResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -101,12 +101,12 @@ namespace Twilio.Rest.Preview.Wireless {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created CommandResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created CommandResource </returns> 
         public override CommandResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -140,11 +140,11 @@ namespace Twilio.Rest.Preview.Wireless {
             return CommandResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (device != null) {
                 request.AddPostParam("Device", device);

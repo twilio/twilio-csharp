@@ -41,58 +41,58 @@ namespace Twilio.Rest.Notify.V1.Service {
             }
         }
     
-        /**
-         * fetch
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         * @return BindingFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> BindingFetcher capable of executing the fetch </returns> 
         public static BindingFetcher Fetcher(string serviceSid, string sid) {
             return new BindingFetcher(serviceSid, sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         * @return BindingDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> BindingDeleter capable of executing the delete </returns> 
         public static BindingDeleter Deleter(string serviceSid, string sid) {
             return new BindingDeleter(serviceSid, sid);
         }
     
-        /**
-         * create
-         * 
-         * @param serviceSid The service_sid
-         * @param endpoint The endpoint
-         * @param identity The identity
-         * @param bindingType The binding_type
-         * @param address The address
-         * @return BindingCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="endpoint"> The endpoint </param>
+        /// <param name="identity"> The identity </param>
+        /// <param name="bindingType"> The binding_type </param>
+        /// <param name="address"> The address </param>
+        /// <returns> BindingCreator capable of executing the create </returns> 
         public static BindingCreator Creator(string serviceSid, string endpoint, string identity, BindingResource.BindingType bindingType, string address) {
             return new BindingCreator(serviceSid, endpoint, identity, bindingType, address);
         }
     
-        /**
-         * read
-         * 
-         * @param serviceSid The service_sid
-         * @return BindingReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <returns> BindingReader capable of executing the read </returns> 
         public static BindingReader Reader(string serviceSid) {
             return new BindingReader(serviceSid);
         }
     
-        /**
-         * Converts a JSON string into a BindingResource object
-         * 
-         * @param json Raw JSON string
-         * @return BindingResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a BindingResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> BindingResource object represented by the provided JSON </returns> 
         public static BindingResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -169,86 +169,62 @@ namespace Twilio.Rest.Notify.V1.Service {
             this.url = url;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The service_sid
-         */
+        /// <returns> The service_sid </returns> 
         public string GetServiceSid() {
             return this.serviceSid;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The notification_protocol_version
-         */
+        /// <returns> The notification_protocol_version </returns> 
         public string GetNotificationProtocolVersion() {
             return this.notificationProtocolVersion;
         }
     
-        /**
-         * @return The endpoint
-         */
+        /// <returns> The endpoint </returns> 
         public string GetEndpoint() {
             return this.endpoint;
         }
     
-        /**
-         * @return The identity
-         */
+        /// <returns> The identity </returns> 
         public string GetIdentity() {
             return this.identity;
         }
     
-        /**
-         * @return The binding_type
-         */
+        /// <returns> The binding_type </returns> 
         public string GetBindingType() {
             return this.bindingType;
         }
     
-        /**
-         * @return The address
-         */
+        /// <returns> The address </returns> 
         public string GetAddress() {
             return this.address;
         }
     
-        /**
-         * @return The tags
-         */
+        /// <returns> The tags </returns> 
         public List<string> GetTags() {
             return this.tags;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }

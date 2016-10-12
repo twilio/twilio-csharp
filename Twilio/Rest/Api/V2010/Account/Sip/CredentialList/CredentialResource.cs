@@ -9,132 +9,132 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
 
     public class CredentialResource : SidResource {
-        /**
-         * read
-         * 
-         * @param accountSid The account_sid
-         * @param credentialListSid The credential_list_sid
-         * @return CredentialReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="credentialListSid"> The credential_list_sid </param>
+        /// <returns> CredentialReader capable of executing the read </returns> 
         public static CredentialReader Reader(string accountSid, string credentialListSid) {
             return new CredentialReader(accountSid, credentialListSid);
         }
     
-        /**
-         * Create a CredentialReader to execute read.
-         * 
-         * @param credentialListSid The credential_list_sid
-         * @return CredentialReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a CredentialReader to execute read.
+        /// </summary>
+        ///
+        /// <param name="credentialListSid"> The credential_list_sid </param>
+        /// <returns> CredentialReader capable of executing the read </returns> 
         public static CredentialReader Reader(string credentialListSid) {
             return new CredentialReader(credentialListSid);
         }
     
-        /**
-         * create
-         * 
-         * @param accountSid The account_sid
-         * @param credentialListSid The credential_list_sid
-         * @param username The username
-         * @param password The password
-         * @return CredentialCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="credentialListSid"> The credential_list_sid </param>
+        /// <param name="username"> The username </param>
+        /// <param name="password"> The password </param>
+        /// <returns> CredentialCreator capable of executing the create </returns> 
         public static CredentialCreator Creator(string accountSid, string credentialListSid, string username, string password) {
             return new CredentialCreator(accountSid, credentialListSid, username, password);
         }
     
-        /**
-         * Create a CredentialCreator to execute create.
-         * 
-         * @param credentialListSid The credential_list_sid
-         * @param username The username
-         * @param password The password
-         * @return CredentialCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a CredentialCreator to execute create.
+        /// </summary>
+        ///
+        /// <param name="credentialListSid"> The credential_list_sid </param>
+        /// <param name="username"> The username </param>
+        /// <param name="password"> The password </param>
+        /// <returns> CredentialCreator capable of executing the create </returns> 
         public static CredentialCreator Creator(string credentialListSid, 
                                                 string username, 
                                                 string password) {
             return new CredentialCreator(credentialListSid, username, password);
         }
     
-        /**
-         * fetch
-         * 
-         * @param accountSid The account_sid
-         * @param credentialListSid The credential_list_sid
-         * @param sid The sid
-         * @return CredentialFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="credentialListSid"> The credential_list_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> CredentialFetcher capable of executing the fetch </returns> 
         public static CredentialFetcher Fetcher(string accountSid, string credentialListSid, string sid) {
             return new CredentialFetcher(accountSid, credentialListSid, sid);
         }
     
-        /**
-         * Create a CredentialFetcher to execute fetch.
-         * 
-         * @param credentialListSid The credential_list_sid
-         * @param sid The sid
-         * @return CredentialFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a CredentialFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="credentialListSid"> The credential_list_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> CredentialFetcher capable of executing the fetch </returns> 
         public static CredentialFetcher Fetcher(string credentialListSid, 
                                                 string sid) {
             return new CredentialFetcher(credentialListSid, sid);
         }
     
-        /**
-         * update
-         * 
-         * @param accountSid The account_sid
-         * @param credentialListSid The credential_list_sid
-         * @param sid The sid
-         * @return CredentialUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="credentialListSid"> The credential_list_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> CredentialUpdater capable of executing the update </returns> 
         public static CredentialUpdater Updater(string accountSid, string credentialListSid, string sid) {
             return new CredentialUpdater(accountSid, credentialListSid, sid);
         }
     
-        /**
-         * Create a CredentialUpdater to execute update.
-         * 
-         * @param credentialListSid The credential_list_sid
-         * @param sid The sid
-         * @return CredentialUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Create a CredentialUpdater to execute update.
+        /// </summary>
+        ///
+        /// <param name="credentialListSid"> The credential_list_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> CredentialUpdater capable of executing the update </returns> 
         public static CredentialUpdater Updater(string credentialListSid, 
                                                 string sid) {
             return new CredentialUpdater(credentialListSid, sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param accountSid The account_sid
-         * @param credentialListSid The credential_list_sid
-         * @param sid The sid
-         * @return CredentialDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="credentialListSid"> The credential_list_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> CredentialDeleter capable of executing the delete </returns> 
         public static CredentialDeleter Deleter(string accountSid, string credentialListSid, string sid) {
             return new CredentialDeleter(accountSid, credentialListSid, sid);
         }
     
-        /**
-         * Create a CredentialDeleter to execute delete.
-         * 
-         * @param credentialListSid The credential_list_sid
-         * @param sid The sid
-         * @return CredentialDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a CredentialDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="credentialListSid"> The credential_list_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> CredentialDeleter capable of executing the delete </returns> 
         public static CredentialDeleter Deleter(string credentialListSid, 
                                                 string sid) {
             return new CredentialDeleter(credentialListSid, sid);
         }
     
-        /**
-         * Converts a JSON string into a CredentialResource object
-         * 
-         * @param json Raw JSON string
-         * @return CredentialResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a CredentialResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> CredentialResource object represented by the provided JSON </returns> 
         public static CredentialResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -186,51 +186,37 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
             this.uri = uri;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The credential_list_sid
-         */
+        /// <returns> The credential_list_sid </returns> 
         public string GetCredentialListSid() {
             return this.credentialListSid;
         }
     
-        /**
-         * @return The username
-         */
+        /// <returns> The username </returns> 
         public string GetUsername() {
             return this.username;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The uri
-         */
+        /// <returns> The uri </returns> 
         public string GetUri() {
             return this.uri;
         }

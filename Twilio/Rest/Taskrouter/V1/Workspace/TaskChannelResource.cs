@@ -9,33 +9,33 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
     public class TaskChannelResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param sid The sid
-         * @return TaskChannelFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> TaskChannelFetcher capable of executing the fetch </returns> 
         public static TaskChannelFetcher Fetcher(string workspaceSid, string sid) {
             return new TaskChannelFetcher(workspaceSid, sid);
         }
     
-        /**
-         * read
-         * 
-         * @param workspaceSid The workspace_sid
-         * @return TaskChannelReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <returns> TaskChannelReader capable of executing the read </returns> 
         public static TaskChannelReader Reader(string workspaceSid) {
             return new TaskChannelReader(workspaceSid);
         }
     
-        /**
-         * Converts a JSON string into a TaskChannelResource object
-         * 
-         * @param json Raw JSON string
-         * @return TaskChannelResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a TaskChannelResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> TaskChannelResource object represented by the provided JSON </returns> 
         public static TaskChannelResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -92,58 +92,42 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             this.url = url;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The unique_name
-         */
+        /// <returns> The unique_name </returns> 
         public string GetUniqueName() {
             return this.uniqueName;
         }
     
-        /**
-         * @return The workspace_sid
-         */
+        /// <returns> The workspace_sid </returns> 
         public string GetWorkspaceSid() {
             return this.workspaceSid;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }

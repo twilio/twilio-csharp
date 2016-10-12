@@ -13,24 +13,24 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         private string workspaceSid;
         private string sid;
     
-        /**
-         * Construct a new TaskFetcher
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new TaskFetcher
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
         public TaskFetcher(string workspaceSid, string sid) {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched TaskResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched TaskResource </returns> 
         public override async Task<TaskResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -64,12 +64,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched TaskResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched TaskResource </returns> 
         public override TaskResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

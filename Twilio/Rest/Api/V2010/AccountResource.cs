@@ -69,69 +69,68 @@ namespace Twilio.Rest.Api.V2010 {
             }
         }
     
-        /**
-         * Create a new Twilio Subaccount from the account making the request
-         * 
-         * @return AccountCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a new Twilio Subaccount from the account making the request
+        /// </summary>
+        ///
+        /// <returns> AccountCreator capable of executing the create </returns> 
         public static AccountCreator Creator() {
             return new AccountCreator();
         }
     
-        /**
-         * Fetch the account specified by the provided Account Sid
-         * 
-         * @param sid Fetch by unique Account Sid
-         * @return AccountFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Fetch the account specified by the provided Account Sid
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique Account Sid </param>
+        /// <returns> AccountFetcher capable of executing the fetch </returns> 
         public static AccountFetcher Fetcher(string sid) {
             return new AccountFetcher(sid);
         }
     
-        /**
-         * Create a AccountFetcher to execute fetch.
-         * 
-         * @return AccountFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a AccountFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <returns> AccountFetcher capable of executing the fetch </returns> 
         public static AccountFetcher Fetcher() {
             return new AccountFetcher();
         }
     
-        /**
-         * Retrieves a collection of Accounts belonging to the account used to make the
-         * request
-         * 
-         * @return AccountReader capable of executing the read
-         */
+        /// <summary>
+        /// Retrieves a collection of Accounts belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <returns> AccountReader capable of executing the read </returns> 
         public static AccountReader Reader() {
             return new AccountReader();
         }
     
-        /**
-         * Modify the properties of a given Account
-         * 
-         * @param sid The sid
-         * @return AccountUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Modify the properties of a given Account
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> AccountUpdater capable of executing the update </returns> 
         public static AccountUpdater Updater(string sid) {
             return new AccountUpdater(sid);
         }
     
-        /**
-         * Create a AccountUpdater to execute update.
-         * 
-         * @return AccountUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Create a AccountUpdater to execute update.
+        /// </summary>
+        ///
+        /// <returns> AccountUpdater capable of executing the update </returns> 
         public static AccountUpdater Updater() {
             return new AccountUpdater();
         }
     
-        /**
-         * Converts a JSON string into a AccountResource object
-         * 
-         * @param json Raw JSON string
-         * @return AccountResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a AccountResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> AccountResource object represented by the provided JSON </returns> 
         public static AccountResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -200,72 +199,52 @@ namespace Twilio.Rest.Api.V2010 {
             this.uri = uri;
         }
     
-        /**
-         * @return The authorization token for this account
-         */
+        /// <returns> The authorization token for this account </returns> 
         public string GetAuthToken() {
             return this.authToken;
         }
     
-        /**
-         * @return The date this account was created
-         */
+        /// <returns> The date this account was created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date this account was last updated
-         */
+        /// <returns> The date this account was last updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return A human readable description of this account
-         */
+        /// <returns> A human readable description of this account </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The unique 34 character id representing the parent of this account
-         */
+        /// <returns> The unique 34 character id representing the parent of this account </returns> 
         public string GetOwnerAccountSid() {
             return this.ownerAccountSid;
         }
     
-        /**
-         * @return A 34 character string that uniquely identifies this resource.
-         */
+        /// <returns> A 34 character string that uniquely identifies this resource. </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The status of this account
-         */
+        /// <returns> The status of this account </returns> 
         public AccountResource.Status GetStatus() {
             return this.status;
         }
     
-        /**
-         * @return Account Instance Subresources
-         */
+        /// <returns> Account Instance Subresources </returns> 
         public Dictionary<string, string> GetSubresourceUris() {
             return this.subresourceUris;
         }
     
-        /**
-         * @return The type of this account
-         */
+        /// <returns> The type of this account </returns> 
         public AccountResource.Type GetAccountType() {
             return this.type;
         }
     
-        /**
-         * @return The URI for this resource, relative to `https://api.twilio.com`
-         */
+        /// <returns> The URI for this resource, relative to `https://api.twilio.com` </returns> 
         public string GetUri() {
             return this.uri;
         }

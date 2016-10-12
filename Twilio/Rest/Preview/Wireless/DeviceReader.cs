@@ -14,46 +14,46 @@ namespace Twilio.Rest.Preview.Wireless {
         private string simIdentifier;
         private string ratePlan;
     
-        /**
-         * The status
-         * 
-         * @param status The status
-         * @return this
-         */
+        /// <summary>
+        /// The status
+        /// </summary>
+        ///
+        /// <param name="status"> The status </param>
+        /// <returns> this </returns> 
         public DeviceReader ByStatus(string status) {
             this.status = status;
             return this;
         }
     
-        /**
-         * The sim_identifier
-         * 
-         * @param simIdentifier The sim_identifier
-         * @return this
-         */
+        /// <summary>
+        /// The sim_identifier
+        /// </summary>
+        ///
+        /// <param name="simIdentifier"> The sim_identifier </param>
+        /// <returns> this </returns> 
         public DeviceReader BySimIdentifier(string simIdentifier) {
             this.simIdentifier = simIdentifier;
             return this;
         }
     
-        /**
-         * The rate_plan
-         * 
-         * @param ratePlan The rate_plan
-         * @return this
-         */
+        /// <summary>
+        /// The rate_plan
+        /// </summary>
+        ///
+        /// <param name="ratePlan"> The rate_plan </param>
+        /// <returns> this </returns> 
         public DeviceReader ByRatePlan(string ratePlan) {
             this.ratePlan = ratePlan;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return DeviceResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> DeviceResource ResourceSet </returns> 
         public override Task<ResourceSet<DeviceResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -68,12 +68,12 @@ namespace Twilio.Rest.Preview.Wireless {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return DeviceResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> DeviceResource ResourceSet </returns> 
         public override ResourceSet<DeviceResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -87,13 +87,13 @@ namespace Twilio.Rest.Preview.Wireless {
             return new ResourceSet<DeviceResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<DeviceResource> NextPage(Page<DeviceResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -105,13 +105,13 @@ namespace Twilio.Rest.Preview.Wireless {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of DeviceResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of DeviceResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<DeviceResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -138,11 +138,11 @@ namespace Twilio.Rest.Preview.Wireless {
             return Page<DeviceResource>.FromJson("devices", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (status != null) {
                 request.AddQueryParam("Status", status);

@@ -16,14 +16,14 @@ namespace Twilio.Rest.Chat.V1.Service {
         private RoleResource.RoleType type;
         private List<string> permission;
     
-        /**
-         * Construct a new RoleCreator
-         * 
-         * @param serviceSid The service_sid
-         * @param friendlyName The friendly_name
-         * @param type The type
-         * @param permission The permission
-         */
+        /// <summary>
+        /// Construct a new RoleCreator
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="type"> The type </param>
+        /// <param name="permission"> The permission </param>
         public RoleCreator(string serviceSid, string friendlyName, RoleResource.RoleType type, List<string> permission) {
             this.serviceSid = serviceSid;
             this.friendlyName = friendlyName;
@@ -32,12 +32,12 @@ namespace Twilio.Rest.Chat.V1.Service {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created RoleResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created RoleResource </returns> 
         public override async Task<RoleResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -72,12 +72,12 @@ namespace Twilio.Rest.Chat.V1.Service {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created RoleResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created RoleResource </returns> 
         public override RoleResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -111,11 +111,11 @@ namespace Twilio.Rest.Chat.V1.Service {
             return RoleResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

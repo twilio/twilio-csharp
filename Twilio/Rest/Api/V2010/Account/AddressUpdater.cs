@@ -19,99 +19,99 @@ namespace Twilio.Rest.Api.V2010.Account {
         private string region;
         private string postalCode;
     
-        /**
-         * Construct a new AddressUpdater.
-         * 
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new AddressUpdater.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
         public AddressUpdater(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * Construct a new AddressUpdater
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new AddressUpdater
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
         public AddressUpdater(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public AddressUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * The customer_name
-         * 
-         * @param customerName The customer_name
-         * @return this
-         */
+        /// <summary>
+        /// The customer_name
+        /// </summary>
+        ///
+        /// <param name="customerName"> The customer_name </param>
+        /// <returns> this </returns> 
         public AddressUpdater setCustomerName(string customerName) {
             this.customerName = customerName;
             return this;
         }
     
-        /**
-         * The street
-         * 
-         * @param street The street
-         * @return this
-         */
+        /// <summary>
+        /// The street
+        /// </summary>
+        ///
+        /// <param name="street"> The street </param>
+        /// <returns> this </returns> 
         public AddressUpdater setStreet(string street) {
             this.street = street;
             return this;
         }
     
-        /**
-         * The city
-         * 
-         * @param city The city
-         * @return this
-         */
+        /// <summary>
+        /// The city
+        /// </summary>
+        ///
+        /// <param name="city"> The city </param>
+        /// <returns> this </returns> 
         public AddressUpdater setCity(string city) {
             this.city = city;
             return this;
         }
     
-        /**
-         * The region
-         * 
-         * @param region The region
-         * @return this
-         */
+        /// <summary>
+        /// The region
+        /// </summary>
+        ///
+        /// <param name="region"> The region </param>
+        /// <returns> this </returns> 
         public AddressUpdater setRegion(string region) {
             this.region = region;
             return this;
         }
     
-        /**
-         * The postal_code
-         * 
-         * @param postalCode The postal_code
-         * @return this
-         */
+        /// <summary>
+        /// The postal_code
+        /// </summary>
+        ///
+        /// <param name="postalCode"> The postal_code </param>
+        /// <returns> this </returns> 
         public AddressUpdater setPostalCode(string postalCode) {
             this.postalCode = postalCode;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated AddressResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated AddressResource </returns> 
         public override async Task<AddressResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -146,12 +146,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated AddressResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated AddressResource </returns> 
         public override AddressResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -185,11 +185,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return AddressResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

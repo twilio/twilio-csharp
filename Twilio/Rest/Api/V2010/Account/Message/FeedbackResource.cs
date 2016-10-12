@@ -38,33 +38,33 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
             }
         }
     
-        /**
-         * create
-         * 
-         * @param accountSid The account_sid
-         * @param messageSid The message_sid
-         * @return FeedbackCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="messageSid"> The message_sid </param>
+        /// <returns> FeedbackCreator capable of executing the create </returns> 
         public static FeedbackCreator Creator(string accountSid, string messageSid) {
             return new FeedbackCreator(accountSid, messageSid);
         }
     
-        /**
-         * Create a FeedbackCreator to execute create.
-         * 
-         * @param messageSid The message_sid
-         * @return FeedbackCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a FeedbackCreator to execute create.
+        /// </summary>
+        ///
+        /// <param name="messageSid"> The message_sid </param>
+        /// <returns> FeedbackCreator capable of executing the create </returns> 
         public static FeedbackCreator Creator(string messageSid) {
             return new FeedbackCreator(messageSid);
         }
     
-        /**
-         * Converts a JSON string into a FeedbackResource object
-         * 
-         * @param json Raw JSON string
-         * @return FeedbackResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a FeedbackResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> FeedbackResource object represented by the provided JSON </returns> 
         public static FeedbackResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -112,44 +112,32 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
             this.uri = uri;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The message_sid
-         */
+        /// <returns> The message_sid </returns> 
         public string GetMessageSid() {
             return this.messageSid;
         }
     
-        /**
-         * @return The outcome
-         */
+        /// <returns> The outcome </returns> 
         public FeedbackResource.Outcome GetOutcome() {
             return this.outcome;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The uri
-         */
+        /// <returns> The uri </returns> 
         public string GetUri() {
             return this.uri;
         }

@@ -19,86 +19,86 @@ namespace Twilio.Rest.Notify.V1.Service {
         private List<string> identity;
         private List<string> tag;
     
-        /**
-         * Construct a new BindingReader
-         * 
-         * @param serviceSid The service_sid
-         */
+        /// <summary>
+        /// Construct a new BindingReader
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
         public BindingReader(string serviceSid) {
             this.serviceSid = serviceSid;
         }
     
-        /**
-         * The start_date
-         * 
-         * @param startDate The start_date
-         * @return this
-         */
+        /// <summary>
+        /// The start_date
+        /// </summary>
+        ///
+        /// <param name="startDate"> The start_date </param>
+        /// <returns> this </returns> 
         public BindingReader ByStartDate(DateTime? startDate) {
             this.startDate = startDate;
             return this;
         }
     
-        /**
-         * The end_date
-         * 
-         * @param endDate The end_date
-         * @return this
-         */
+        /// <summary>
+        /// The end_date
+        /// </summary>
+        ///
+        /// <param name="endDate"> The end_date </param>
+        /// <returns> this </returns> 
         public BindingReader ByEndDate(DateTime? endDate) {
             this.endDate = endDate;
             return this;
         }
     
-        /**
-         * The identity
-         * 
-         * @param identity The identity
-         * @return this
-         */
+        /// <summary>
+        /// The identity
+        /// </summary>
+        ///
+        /// <param name="identity"> The identity </param>
+        /// <returns> this </returns> 
         public BindingReader ByIdentity(List<string> identity) {
             this.identity = identity;
             return this;
         }
     
-        /**
-         * The identity
-         * 
-         * @param identity The identity
-         * @return this
-         */
+        /// <summary>
+        /// The identity
+        /// </summary>
+        ///
+        /// <param name="identity"> The identity </param>
+        /// <returns> this </returns> 
         public BindingReader ByIdentity(string identity) {
             return ByIdentity(Promoter.ListOfOne(identity));
         }
     
-        /**
-         * The tag
-         * 
-         * @param tag The tag
-         * @return this
-         */
+        /// <summary>
+        /// The tag
+        /// </summary>
+        ///
+        /// <param name="tag"> The tag </param>
+        /// <returns> this </returns> 
         public BindingReader ByTag(List<string> tag) {
             this.tag = tag;
             return this;
         }
     
-        /**
-         * The tag
-         * 
-         * @param tag The tag
-         * @return this
-         */
+        /// <summary>
+        /// The tag
+        /// </summary>
+        ///
+        /// <param name="tag"> The tag </param>
+        /// <returns> this </returns> 
         public BindingReader ByTag(string tag) {
             return ByTag(Promoter.ListOfOne(tag));
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return BindingResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> BindingResource ResourceSet </returns> 
         public override Task<ResourceSet<BindingResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -113,12 +113,12 @@ namespace Twilio.Rest.Notify.V1.Service {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return BindingResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> BindingResource ResourceSet </returns> 
         public override ResourceSet<BindingResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -132,13 +132,13 @@ namespace Twilio.Rest.Notify.V1.Service {
             return new ResourceSet<BindingResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<BindingResource> NextPage(Page<BindingResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -150,13 +150,13 @@ namespace Twilio.Rest.Notify.V1.Service {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of BindingResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of BindingResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<BindingResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -183,11 +183,11 @@ namespace Twilio.Rest.Notify.V1.Service {
             return Page<BindingResource>.FromJson("bindings", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (startDate != null) {
                 request.AddQueryParam("StartDate", startDate.ToString());

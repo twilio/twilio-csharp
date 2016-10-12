@@ -9,95 +9,94 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class OutgoingCallerIdResource : SidResource {
-        /**
-         * Fetch an outgoing-caller-id belonging to the account used to make the request
-         * 
-         * @param accountSid The account_sid
-         * @param sid Fetch by unique outgoing-caller-id Sid
-         * @return OutgoingCallerIdFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Fetch an outgoing-caller-id belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Fetch by unique outgoing-caller-id Sid </param>
+        /// <returns> OutgoingCallerIdFetcher capable of executing the fetch </returns> 
         public static OutgoingCallerIdFetcher Fetcher(string accountSid, string sid) {
             return new OutgoingCallerIdFetcher(accountSid, sid);
         }
     
-        /**
-         * Create a OutgoingCallerIdFetcher to execute fetch.
-         * 
-         * @param sid Fetch by unique outgoing-caller-id Sid
-         * @return OutgoingCallerIdFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a OutgoingCallerIdFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique outgoing-caller-id Sid </param>
+        /// <returns> OutgoingCallerIdFetcher capable of executing the fetch </returns> 
         public static OutgoingCallerIdFetcher Fetcher(string sid) {
             return new OutgoingCallerIdFetcher(sid);
         }
     
-        /**
-         * Updates the caller-id
-         * 
-         * @param accountSid The account_sid
-         * @param sid Update by unique outgoing-caller-id Sid
-         * @return OutgoingCallerIdUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Updates the caller-id
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Update by unique outgoing-caller-id Sid </param>
+        /// <returns> OutgoingCallerIdUpdater capable of executing the update </returns> 
         public static OutgoingCallerIdUpdater Updater(string accountSid, string sid) {
             return new OutgoingCallerIdUpdater(accountSid, sid);
         }
     
-        /**
-         * Create a OutgoingCallerIdUpdater to execute update.
-         * 
-         * @param sid Update by unique outgoing-caller-id Sid
-         * @return OutgoingCallerIdUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Create a OutgoingCallerIdUpdater to execute update.
+        /// </summary>
+        ///
+        /// <param name="sid"> Update by unique outgoing-caller-id Sid </param>
+        /// <returns> OutgoingCallerIdUpdater capable of executing the update </returns> 
         public static OutgoingCallerIdUpdater Updater(string sid) {
             return new OutgoingCallerIdUpdater(sid);
         }
     
-        /**
-         * Delete the caller-id specified from the account
-         * 
-         * @param accountSid The account_sid
-         * @param sid Delete by unique outgoing-caller-id Sid
-         * @return OutgoingCallerIdDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Delete the caller-id specified from the account
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Delete by unique outgoing-caller-id Sid </param>
+        /// <returns> OutgoingCallerIdDeleter capable of executing the delete </returns> 
         public static OutgoingCallerIdDeleter Deleter(string accountSid, string sid) {
             return new OutgoingCallerIdDeleter(accountSid, sid);
         }
     
-        /**
-         * Create a OutgoingCallerIdDeleter to execute delete.
-         * 
-         * @param sid Delete by unique outgoing-caller-id Sid
-         * @return OutgoingCallerIdDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a OutgoingCallerIdDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="sid"> Delete by unique outgoing-caller-id Sid </param>
+        /// <returns> OutgoingCallerIdDeleter capable of executing the delete </returns> 
         public static OutgoingCallerIdDeleter Deleter(string sid) {
             return new OutgoingCallerIdDeleter(sid);
         }
     
-        /**
-         * Retrieve a list of outgoing-caller-ids belonging to the account used to make
-         * the request
-         * 
-         * @param accountSid The account_sid
-         * @return OutgoingCallerIdReader capable of executing the read
-         */
+        /// <summary>
+        /// Retrieve a list of outgoing-caller-ids belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> OutgoingCallerIdReader capable of executing the read </returns> 
         public static OutgoingCallerIdReader Reader(string accountSid) {
             return new OutgoingCallerIdReader(accountSid);
         }
     
-        /**
-         * Create a OutgoingCallerIdReader to execute read.
-         * 
-         * @return OutgoingCallerIdReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a OutgoingCallerIdReader to execute read.
+        /// </summary>
+        ///
+        /// <returns> OutgoingCallerIdReader capable of executing the read </returns> 
         public static OutgoingCallerIdReader Reader() {
             return new OutgoingCallerIdReader();
         }
     
-        /**
-         * Converts a JSON string into a OutgoingCallerIdResource object
-         * 
-         * @param json Raw JSON string
-         * @return OutgoingCallerIdResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a OutgoingCallerIdResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> OutgoingCallerIdResource object represented by the provided JSON </returns> 
         public static OutgoingCallerIdResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -150,51 +149,37 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.uri = uri;
         }
     
-        /**
-         * @return A string that uniquely identifies this outgoing-caller-ids
-         */
+        /// <returns> A string that uniquely identifies this outgoing-caller-ids </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The date this resource was created
-         */
+        /// <returns> The date this resource was created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date this resource was last updated
-         */
+        /// <returns> The date this resource was last updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return A human readable description for this resource
-         */
+        /// <returns> A human readable description for this resource </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The unique sid that identifies this account
-         */
+        /// <returns> The unique sid that identifies this account </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The incoming phone number
-         */
+        /// <returns> The incoming phone number </returns> 
         public Twilio.Types.PhoneNumber GetPhoneNumber() {
             return this.phoneNumber;
         }
     
-        /**
-         * @return The URI for this resource
-         */
+        /// <returns> The URI for this resource </returns> 
         public string GetUri() {
             return this.uri;
         }

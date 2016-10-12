@@ -10,61 +10,61 @@ using Twilio.Http;
 namespace Twilio.Rest.IpMessaging.V1 {
 
     public class ServiceResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param sid The sid
-         * @return ServiceFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> ServiceFetcher capable of executing the fetch </returns> 
         public static ServiceFetcher Fetcher(string sid) {
             return new ServiceFetcher(sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param sid The sid
-         * @return ServiceDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> ServiceDeleter capable of executing the delete </returns> 
         public static ServiceDeleter Deleter(string sid) {
             return new ServiceDeleter(sid);
         }
     
-        /**
-         * create
-         * 
-         * @param friendlyName The friendly_name
-         * @return ServiceCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> ServiceCreator capable of executing the create </returns> 
         public static ServiceCreator Creator(string friendlyName) {
             return new ServiceCreator(friendlyName);
         }
     
-        /**
-         * read
-         * 
-         * @return ServiceReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <returns> ServiceReader capable of executing the read </returns> 
         public static ServiceReader Reader() {
             return new ServiceReader();
         }
     
-        /**
-         * update
-         * 
-         * @param sid The sid
-         * @return ServiceUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> ServiceUpdater capable of executing the update </returns> 
         public static ServiceUpdater Updater(string sid) {
             return new ServiceUpdater(sid);
         }
     
-        /**
-         * Converts a JSON string into a ServiceResource object
-         * 
-         * @param json Raw JSON string
-         * @return ServiceResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a ServiceResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> ServiceResource object represented by the provided JSON </returns> 
         public static ServiceResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -151,100 +151,72 @@ namespace Twilio.Rest.IpMessaging.V1 {
             this.links = links;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The default_service_role_sid
-         */
+        /// <returns> The default_service_role_sid </returns> 
         public string GetDefaultServiceRoleSid() {
             return this.defaultServiceRoleSid;
         }
     
-        /**
-         * @return The default_channel_role_sid
-         */
+        /// <returns> The default_channel_role_sid </returns> 
         public string GetDefaultChannelRoleSid() {
             return this.defaultChannelRoleSid;
         }
     
-        /**
-         * @return The default_channel_creator_role_sid
-         */
+        /// <returns> The default_channel_creator_role_sid </returns> 
         public string GetDefaultChannelCreatorRoleSid() {
             return this.defaultChannelCreatorRoleSid;
         }
     
-        /**
-         * @return The read_status_enabled
-         */
+        /// <returns> The read_status_enabled </returns> 
         public bool? GetReadStatusEnabled() {
             return this.readStatusEnabled;
         }
     
-        /**
-         * @return The typing_indicator_timeout
-         */
+        /// <returns> The typing_indicator_timeout </returns> 
         public int? GetTypingIndicatorTimeout() {
             return this.typingIndicatorTimeout;
         }
     
-        /**
-         * @return The consumption_report_interval
-         */
+        /// <returns> The consumption_report_interval </returns> 
         public int? GetConsumptionReportInterval() {
             return this.consumptionReportInterval;
         }
     
-        /**
-         * @return The webhooks
-         */
+        /// <returns> The webhooks </returns> 
         public Object GetWebhooks() {
             return this.webhooks;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }
     
-        /**
-         * @return The links
-         */
+        /// <returns> The links </returns> 
         public Dictionary<string, string> GetLinks() {
             return this.links;
         }

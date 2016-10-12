@@ -16,48 +16,48 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         private int? capacity;
         private bool? available;
     
-        /**
-         * Construct a new WorkerChannelUpdater
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param workerSid The worker_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new WorkerChannelUpdater
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="workerSid"> The worker_sid </param>
+        /// <param name="sid"> The sid </param>
         public WorkerChannelUpdater(string workspaceSid, string workerSid, string sid) {
             this.workspaceSid = workspaceSid;
             this.workerSid = workerSid;
             this.sid = sid;
         }
     
-        /**
-         * The capacity
-         * 
-         * @param capacity The capacity
-         * @return this
-         */
+        /// <summary>
+        /// The capacity
+        /// </summary>
+        ///
+        /// <param name="capacity"> The capacity </param>
+        /// <returns> this </returns> 
         public WorkerChannelUpdater setCapacity(int? capacity) {
             this.capacity = capacity;
             return this;
         }
     
-        /**
-         * The available
-         * 
-         * @param available The available
-         * @return this
-         */
+        /// <summary>
+        /// The available
+        /// </summary>
+        ///
+        /// <param name="available"> The available </param>
+        /// <returns> this </returns> 
         public WorkerChannelUpdater setAvailable(bool? available) {
             this.available = available;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated WorkerChannelResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated WorkerChannelResource </returns> 
         public override async Task<WorkerChannelResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -92,12 +92,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated WorkerChannelResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated WorkerChannelResource </returns> 
         public override WorkerChannelResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -131,11 +131,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
             return WorkerChannelResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (capacity != null) {
                 request.AddPostParam("Capacity", capacity.ToString());

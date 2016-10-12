@@ -12,28 +12,28 @@ namespace Twilio.Rest.Api.V2010.Account {
     public class AuthorizedConnectAppReader : Reader<AuthorizedConnectAppResource> {
         private string accountSid;
     
-        /**
-         * Construct a new AuthorizedConnectAppReader.
-         */
+        /// <summary>
+        /// Construct a new AuthorizedConnectAppReader.
+        /// </summary>
         public AuthorizedConnectAppReader() {
         }
     
-        /**
-         * Construct a new AuthorizedConnectAppReader
-         * 
-         * @param accountSid The account_sid
-         */
+        /// <summary>
+        /// Construct a new AuthorizedConnectAppReader
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
         public AuthorizedConnectAppReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return AuthorizedConnectAppResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> AuthorizedConnectAppResource ResourceSet </returns> 
         public override Task<ResourceSet<AuthorizedConnectAppResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -48,12 +48,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return AuthorizedConnectAppResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> AuthorizedConnectAppResource ResourceSet </returns> 
         public override ResourceSet<AuthorizedConnectAppResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -67,13 +67,13 @@ namespace Twilio.Rest.Api.V2010.Account {
             return new ResourceSet<AuthorizedConnectAppResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<AuthorizedConnectAppResource> NextPage(Page<AuthorizedConnectAppResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -85,13 +85,13 @@ namespace Twilio.Rest.Api.V2010.Account {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of AuthorizedConnectAppResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of AuthorizedConnectAppResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<AuthorizedConnectAppResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -118,11 +118,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return Page<AuthorizedConnectAppResource>.FromJson("authorized_connect_apps", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             request.AddQueryParam("PageSize", PageSize.ToString());
         }

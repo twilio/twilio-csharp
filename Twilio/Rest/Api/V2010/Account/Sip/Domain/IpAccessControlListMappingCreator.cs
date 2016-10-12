@@ -14,24 +14,24 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         private string domainSid;
         private string ipAccessControlListSid;
     
-        /**
-         * Construct a new IpAccessControlListMappingCreator.
-         * 
-         * @param domainSid The domain_sid
-         * @param ipAccessControlListSid The ip_access_control_list_sid
-         */
+        /// <summary>
+        /// Construct a new IpAccessControlListMappingCreator.
+        /// </summary>
+        ///
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         public IpAccessControlListMappingCreator(string domainSid, string ipAccessControlListSid) {
             this.domainSid = domainSid;
             this.ipAccessControlListSid = ipAccessControlListSid;
         }
     
-        /**
-         * Construct a new IpAccessControlListMappingCreator
-         * 
-         * @param accountSid The account_sid
-         * @param domainSid The domain_sid
-         * @param ipAccessControlListSid The ip_access_control_list_sid
-         */
+        /// <summary>
+        /// Construct a new IpAccessControlListMappingCreator
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         public IpAccessControlListMappingCreator(string accountSid, string domainSid, string ipAccessControlListSid) {
             this.accountSid = accountSid;
             this.domainSid = domainSid;
@@ -39,12 +39,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created IpAccessControlListMappingResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created IpAccessControlListMappingResource </returns> 
         public override async Task<IpAccessControlListMappingResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -79,12 +79,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created IpAccessControlListMappingResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created IpAccessControlListMappingResource </returns> 
         public override IpAccessControlListMappingResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -118,11 +118,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
             return IpAccessControlListMappingResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (ipAccessControlListSid != null) {
                 request.AddPostParam("IpAccessControlListSid", ipAccessControlListSid);

@@ -9,81 +9,81 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Call {
 
     public class RecordingResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param accountSid The account_sid
-         * @param callSid The call_sid
-         * @param sid The sid
-         * @return RecordingFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> RecordingFetcher capable of executing the fetch </returns> 
         public static RecordingFetcher Fetcher(string accountSid, string callSid, string sid) {
             return new RecordingFetcher(accountSid, callSid, sid);
         }
     
-        /**
-         * Create a RecordingFetcher to execute fetch.
-         * 
-         * @param callSid The call_sid
-         * @param sid The sid
-         * @return RecordingFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a RecordingFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> RecordingFetcher capable of executing the fetch </returns> 
         public static RecordingFetcher Fetcher(string callSid, 
                                                string sid) {
             return new RecordingFetcher(callSid, sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param accountSid The account_sid
-         * @param callSid The call_sid
-         * @param sid The sid
-         * @return RecordingDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> RecordingDeleter capable of executing the delete </returns> 
         public static RecordingDeleter Deleter(string accountSid, string callSid, string sid) {
             return new RecordingDeleter(accountSid, callSid, sid);
         }
     
-        /**
-         * Create a RecordingDeleter to execute delete.
-         * 
-         * @param callSid The call_sid
-         * @param sid The sid
-         * @return RecordingDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a RecordingDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> RecordingDeleter capable of executing the delete </returns> 
         public static RecordingDeleter Deleter(string callSid, 
                                                string sid) {
             return new RecordingDeleter(callSid, sid);
         }
     
-        /**
-         * read
-         * 
-         * @param accountSid The account_sid
-         * @param callSid The call_sid
-         * @return RecordingReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="callSid"> The call_sid </param>
+        /// <returns> RecordingReader capable of executing the read </returns> 
         public static RecordingReader Reader(string accountSid, string callSid) {
             return new RecordingReader(accountSid, callSid);
         }
     
-        /**
-         * Create a RecordingReader to execute read.
-         * 
-         * @param callSid The call_sid
-         * @return RecordingReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a RecordingReader to execute read.
+        /// </summary>
+        ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <returns> RecordingReader capable of executing the read </returns> 
         public static RecordingReader Reader(string callSid) {
             return new RecordingReader(callSid);
         }
     
-        /**
-         * Converts a JSON string into a RecordingResource object
-         * 
-         * @param json Raw JSON string
-         * @return RecordingResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a RecordingResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> RecordingResource object represented by the provided JSON </returns> 
         public static RecordingResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -140,58 +140,42 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
             this.uri = uri;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The api_version
-         */
+        /// <returns> The api_version </returns> 
         public string GetApiVersion() {
             return this.apiVersion;
         }
     
-        /**
-         * @return The call_sid
-         */
+        /// <returns> The call_sid </returns> 
         public string GetCallSid() {
             return this.callSid;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The duration
-         */
+        /// <returns> The duration </returns> 
         public string GetDuration() {
             return this.duration;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The uri
-         */
+        /// <returns> The uri </returns> 
         public string GetUri() {
             return this.uri;
         }

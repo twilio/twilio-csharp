@@ -17,14 +17,14 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         private Uri url;
         private Twilio.Http.HttpMethod method;
     
-        /**
-         * Construct a new MemberUpdater.
-         * 
-         * @param queueSid The Queue in which to find the members
-         * @param callSid The call_sid
-         * @param url The url
-         * @param method The method
-         */
+        /// <summary>
+        /// Construct a new MemberUpdater.
+        /// </summary>
+        ///
+        /// <param name="queueSid"> The Queue in which to find the members </param>
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="url"> The url </param>
+        /// <param name="method"> The method </param>
         public MemberUpdater(string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method) {
             this.queueSid = queueSid;
             this.callSid = callSid;
@@ -32,15 +32,15 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
             this.method = method;
         }
     
-        /**
-         * Construct a new MemberUpdater
-         * 
-         * @param accountSid The account_sid
-         * @param queueSid The Queue in which to find the members
-         * @param callSid The call_sid
-         * @param url The url
-         * @param method The method
-         */
+        /// <summary>
+        /// Construct a new MemberUpdater
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="queueSid"> The Queue in which to find the members </param>
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="url"> The url </param>
+        /// <param name="method"> The method </param>
         public MemberUpdater(string accountSid, string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method) {
             this.accountSid = accountSid;
             this.queueSid = queueSid;
@@ -50,12 +50,12 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated MemberResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated MemberResource </returns> 
         public override async Task<MemberResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -90,12 +90,12 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated MemberResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated MemberResource </returns> 
         public override MemberResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -129,11 +129,11 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
             return MemberResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (url != null) {
                 request.AddPostParam("Url", url.ToString());

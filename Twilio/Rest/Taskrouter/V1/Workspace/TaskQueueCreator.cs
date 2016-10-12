@@ -17,14 +17,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         private string targetWorkers;
         private int? maxReservedWorkers;
     
-        /**
-         * Construct a new TaskQueueCreator
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param friendlyName The friendly_name
-         * @param reservationActivitySid The reservation_activity_sid
-         * @param assignmentActivitySid The assignment_activity_sid
-         */
+        /// <summary>
+        /// Construct a new TaskQueueCreator
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="reservationActivitySid"> The reservation_activity_sid </param>
+        /// <param name="assignmentActivitySid"> The assignment_activity_sid </param>
         public TaskQueueCreator(string workspaceSid, string friendlyName, string reservationActivitySid, string assignmentActivitySid) {
             this.workspaceSid = workspaceSid;
             this.friendlyName = friendlyName;
@@ -32,35 +32,35 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             this.assignmentActivitySid = assignmentActivitySid;
         }
     
-        /**
-         * The target_workers
-         * 
-         * @param targetWorkers The target_workers
-         * @return this
-         */
+        /// <summary>
+        /// The target_workers
+        /// </summary>
+        ///
+        /// <param name="targetWorkers"> The target_workers </param>
+        /// <returns> this </returns> 
         public TaskQueueCreator setTargetWorkers(string targetWorkers) {
             this.targetWorkers = targetWorkers;
             return this;
         }
     
-        /**
-         * The max_reserved_workers
-         * 
-         * @param maxReservedWorkers The max_reserved_workers
-         * @return this
-         */
+        /// <summary>
+        /// The max_reserved_workers
+        /// </summary>
+        ///
+        /// <param name="maxReservedWorkers"> The max_reserved_workers </param>
+        /// <returns> this </returns> 
         public TaskQueueCreator setMaxReservedWorkers(int? maxReservedWorkers) {
             this.maxReservedWorkers = maxReservedWorkers;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created TaskQueueResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created TaskQueueResource </returns> 
         public override async Task<TaskQueueResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -95,12 +95,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created TaskQueueResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created TaskQueueResource </returns> 
         public override TaskQueueResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -134,11 +134,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             return TaskQueueResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

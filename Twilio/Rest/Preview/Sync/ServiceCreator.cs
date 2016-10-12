@@ -16,56 +16,56 @@ namespace Twilio.Rest.Preview.Sync {
         private Uri webhookUrl;
         private bool? reachabilityWebhooksEnabled;
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public ServiceCreator setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * The webhook_url
-         * 
-         * @param webhookUrl The webhook_url
-         * @return this
-         */
+        /// <summary>
+        /// The webhook_url
+        /// </summary>
+        ///
+        /// <param name="webhookUrl"> The webhook_url </param>
+        /// <returns> this </returns> 
         public ServiceCreator setWebhookUrl(Uri webhookUrl) {
             this.webhookUrl = webhookUrl;
             return this;
         }
     
-        /**
-         * The webhook_url
-         * 
-         * @param webhookUrl The webhook_url
-         * @return this
-         */
+        /// <summary>
+        /// The webhook_url
+        /// </summary>
+        ///
+        /// <param name="webhookUrl"> The webhook_url </param>
+        /// <returns> this </returns> 
         public ServiceCreator setWebhookUrl(string webhookUrl) {
             return setWebhookUrl(Promoter.UriFromString(webhookUrl));
         }
     
-        /**
-         * The reachability_webhooks_enabled
-         * 
-         * @param reachabilityWebhooksEnabled The reachability_webhooks_enabled
-         * @return this
-         */
+        /// <summary>
+        /// The reachability_webhooks_enabled
+        /// </summary>
+        ///
+        /// <param name="reachabilityWebhooksEnabled"> The reachability_webhooks_enabled </param>
+        /// <returns> this </returns> 
         public ServiceCreator setReachabilityWebhooksEnabled(bool? reachabilityWebhooksEnabled) {
             this.reachabilityWebhooksEnabled = reachabilityWebhooksEnabled;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created ServiceResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created ServiceResource </returns> 
         public override async Task<ServiceResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -100,12 +100,12 @@ namespace Twilio.Rest.Preview.Sync {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created ServiceResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created ServiceResource </returns> 
         public override ServiceResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -139,11 +139,11 @@ namespace Twilio.Rest.Preview.Sync {
             return ServiceResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

@@ -14,32 +14,32 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         private string accountSid;
         private string sid;
     
-        /**
-         * Construct a new IpAccessControlListDeleter.
-         * 
-         * @param sid Delete by unique ip-access-control-list Sid
-         */
+        /// <summary>
+        /// Construct a new IpAccessControlListDeleter.
+        /// </summary>
+        ///
+        /// <param name="sid"> Delete by unique ip-access-control-list Sid </param>
         public IpAccessControlListDeleter(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * Construct a new IpAccessControlListDeleter
-         * 
-         * @param accountSid The account_sid
-         * @param sid Delete by unique ip-access-control-list Sid
-         */
+        /// <summary>
+        /// Construct a new IpAccessControlListDeleter
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Delete by unique ip-access-control-list Sid </param>
         public IpAccessControlListDeleter(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the delete
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the delete
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
@@ -73,11 +73,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the delete
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the delete
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
         public override void Delete(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,

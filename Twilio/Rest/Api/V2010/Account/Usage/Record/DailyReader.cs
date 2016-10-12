@@ -17,61 +17,61 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
         private DateTime? startDate;
         private DateTime? endDate;
     
-        /**
-         * Construct a new DailyReader.
-         */
+        /// <summary>
+        /// Construct a new DailyReader.
+        /// </summary>
         public DailyReader() {
         }
     
-        /**
-         * Construct a new DailyReader
-         * 
-         * @param accountSid The account_sid
-         */
+        /// <summary>
+        /// Construct a new DailyReader
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
         public DailyReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
-        /**
-         * The category
-         * 
-         * @param category The category
-         * @return this
-         */
+        /// <summary>
+        /// The category
+        /// </summary>
+        ///
+        /// <param name="category"> The category </param>
+        /// <returns> this </returns> 
         public DailyReader ByCategory(DailyResource.Category category) {
             this.category = category;
             return this;
         }
     
-        /**
-         * The start_date
-         * 
-         * @param startDate The start_date
-         * @return this
-         */
+        /// <summary>
+        /// The start_date
+        /// </summary>
+        ///
+        /// <param name="startDate"> The start_date </param>
+        /// <returns> this </returns> 
         public DailyReader ByStartDate(DateTime? startDate) {
             this.startDate = startDate;
             return this;
         }
     
-        /**
-         * The end_date
-         * 
-         * @param endDate The end_date
-         * @return this
-         */
+        /// <summary>
+        /// The end_date
+        /// </summary>
+        ///
+        /// <param name="endDate"> The end_date </param>
+        /// <returns> this </returns> 
         public DailyReader ByEndDate(DateTime? endDate) {
             this.endDate = endDate;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return DailyResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> DailyResource ResourceSet </returns> 
         public override Task<ResourceSet<DailyResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -86,12 +86,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return DailyResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> DailyResource ResourceSet </returns> 
         public override ResourceSet<DailyResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -105,13 +105,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
             return new ResourceSet<DailyResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<DailyResource> NextPage(Page<DailyResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -123,13 +123,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of DailyResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of DailyResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<DailyResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -156,11 +156,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
             return Page<DailyResource>.FromJson("usage_records", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (category != null) {
                 request.AddQueryParam("Category", category.ToString());

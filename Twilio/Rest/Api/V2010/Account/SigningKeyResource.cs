@@ -9,94 +9,94 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class SigningKeyResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         * @return SigningKeyFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> SigningKeyFetcher capable of executing the fetch </returns> 
         public static SigningKeyFetcher Fetcher(string accountSid, string sid) {
             return new SigningKeyFetcher(accountSid, sid);
         }
     
-        /**
-         * Create a SigningKeyFetcher to execute fetch.
-         * 
-         * @param sid The sid
-         * @return SigningKeyFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a SigningKeyFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> SigningKeyFetcher capable of executing the fetch </returns> 
         public static SigningKeyFetcher Fetcher(string sid) {
             return new SigningKeyFetcher(sid);
         }
     
-        /**
-         * update
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         * @return SigningKeyUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> SigningKeyUpdater capable of executing the update </returns> 
         public static SigningKeyUpdater Updater(string accountSid, string sid) {
             return new SigningKeyUpdater(accountSid, sid);
         }
     
-        /**
-         * Create a SigningKeyUpdater to execute update.
-         * 
-         * @param sid The sid
-         * @return SigningKeyUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Create a SigningKeyUpdater to execute update.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> SigningKeyUpdater capable of executing the update </returns> 
         public static SigningKeyUpdater Updater(string sid) {
             return new SigningKeyUpdater(sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         * @return SigningKeyDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> SigningKeyDeleter capable of executing the delete </returns> 
         public static SigningKeyDeleter Deleter(string accountSid, string sid) {
             return new SigningKeyDeleter(accountSid, sid);
         }
     
-        /**
-         * Create a SigningKeyDeleter to execute delete.
-         * 
-         * @param sid The sid
-         * @return SigningKeyDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a SigningKeyDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> SigningKeyDeleter capable of executing the delete </returns> 
         public static SigningKeyDeleter Deleter(string sid) {
             return new SigningKeyDeleter(sid);
         }
     
-        /**
-         * read
-         * 
-         * @param accountSid The account_sid
-         * @return SigningKeyReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> SigningKeyReader capable of executing the read </returns> 
         public static SigningKeyReader Reader(string accountSid) {
             return new SigningKeyReader(accountSid);
         }
     
-        /**
-         * Create a SigningKeyReader to execute read.
-         * 
-         * @return SigningKeyReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a SigningKeyReader to execute read.
+        /// </summary>
+        ///
+        /// <returns> SigningKeyReader capable of executing the read </returns> 
         public static SigningKeyReader Reader() {
             return new SigningKeyReader();
         }
     
-        /**
-         * Converts a JSON string into a SigningKeyResource object
-         * 
-         * @param json Raw JSON string
-         * @return SigningKeyResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a SigningKeyResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> SigningKeyResource object represented by the provided JSON </returns> 
         public static SigningKeyResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -133,30 +133,22 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }

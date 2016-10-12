@@ -9,106 +9,105 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Conference {
 
     public class ParticipantResource : SidResource {
-        /**
-         * Fetch an instance of a participant
-         * 
-         * @param accountSid The account_sid
-         * @param conferenceSid The string that uniquely identifies this conference
-         * @param callSid The call_sid
-         * @return ParticipantFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Fetch an instance of a participant
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
+        /// <param name="callSid"> The call_sid </param>
+        /// <returns> ParticipantFetcher capable of executing the fetch </returns> 
         public static ParticipantFetcher Fetcher(string accountSid, string conferenceSid, string callSid) {
             return new ParticipantFetcher(accountSid, conferenceSid, callSid);
         }
     
-        /**
-         * Create a ParticipantFetcher to execute fetch.
-         * 
-         * @param conferenceSid The string that uniquely identifies this conference
-         * @param callSid The call_sid
-         * @return ParticipantFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a ParticipantFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
+        /// <param name="callSid"> The call_sid </param>
+        /// <returns> ParticipantFetcher capable of executing the fetch </returns> 
         public static ParticipantFetcher Fetcher(string conferenceSid, 
                                                  string callSid) {
             return new ParticipantFetcher(conferenceSid, callSid);
         }
     
-        /**
-         * Update the properties of this participant
-         * 
-         * @param accountSid The account_sid
-         * @param conferenceSid The string that uniquely identifies this conference
-         * @param callSid The call_sid
-         * @return ParticipantUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Update the properties of this participant
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
+        /// <param name="callSid"> The call_sid </param>
+        /// <returns> ParticipantUpdater capable of executing the update </returns> 
         public static ParticipantUpdater Updater(string accountSid, string conferenceSid, string callSid) {
             return new ParticipantUpdater(accountSid, conferenceSid, callSid);
         }
     
-        /**
-         * Create a ParticipantUpdater to execute update.
-         * 
-         * @param conferenceSid The string that uniquely identifies this conference
-         * @param callSid The call_sid
-         * @return ParticipantUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Create a ParticipantUpdater to execute update.
+        /// </summary>
+        ///
+        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
+        /// <param name="callSid"> The call_sid </param>
+        /// <returns> ParticipantUpdater capable of executing the update </returns> 
         public static ParticipantUpdater Updater(string conferenceSid, 
                                                  string callSid) {
             return new ParticipantUpdater(conferenceSid, callSid);
         }
     
-        /**
-         * Kick a participant from a given conference
-         * 
-         * @param accountSid The account_sid
-         * @param conferenceSid The string that uniquely identifies this conference
-         * @param callSid The call_sid
-         * @return ParticipantDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Kick a participant from a given conference
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
+        /// <param name="callSid"> The call_sid </param>
+        /// <returns> ParticipantDeleter capable of executing the delete </returns> 
         public static ParticipantDeleter Deleter(string accountSid, string conferenceSid, string callSid) {
             return new ParticipantDeleter(accountSid, conferenceSid, callSid);
         }
     
-        /**
-         * Create a ParticipantDeleter to execute delete.
-         * 
-         * @param conferenceSid The string that uniquely identifies this conference
-         * @param callSid The call_sid
-         * @return ParticipantDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a ParticipantDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
+        /// <param name="callSid"> The call_sid </param>
+        /// <returns> ParticipantDeleter capable of executing the delete </returns> 
         public static ParticipantDeleter Deleter(string conferenceSid, 
                                                  string callSid) {
             return new ParticipantDeleter(conferenceSid, callSid);
         }
     
-        /**
-         * Retrieve a list of participants belonging to the account used to make the
-         * request
-         * 
-         * @param accountSid The account_sid
-         * @param conferenceSid The string that uniquely identifies this conference
-         * @return ParticipantReader capable of executing the read
-         */
+        /// <summary>
+        /// Retrieve a list of participants belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
+        /// <returns> ParticipantReader capable of executing the read </returns> 
         public static ParticipantReader Reader(string accountSid, string conferenceSid) {
             return new ParticipantReader(accountSid, conferenceSid);
         }
     
-        /**
-         * Create a ParticipantReader to execute read.
-         * 
-         * @param conferenceSid The string that uniquely identifies this conference
-         * @return ParticipantReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a ParticipantReader to execute read.
+        /// </summary>
+        ///
+        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
+        /// <returns> ParticipantReader capable of executing the read </returns> 
         public static ParticipantReader Reader(string conferenceSid) {
             return new ParticipantReader(conferenceSid);
         }
     
-        /**
-         * Converts a JSON string into a ParticipantResource object
-         * 
-         * @param json Raw JSON string
-         * @return ParticipantResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a ParticipantResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> ParticipantResource object represented by the provided JSON </returns> 
         public static ParticipantResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -175,79 +174,57 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
             this.uri = uri;
         }
     
-        /**
-         * @return A string that uniquely identifies this call
-         */
+        /// <returns> A string that uniquely identifies this call </returns> 
         public override string GetSid() {
             return this.GetCallSid();
         }
     
-        /**
-         * @return The unique sid that identifies this account
-         */
+        /// <returns> The unique sid that identifies this account </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return A string that uniquely identifies this call
-         */
+        /// <returns> A string that uniquely identifies this call </returns> 
         public string GetCallSid() {
             return this.callSid;
         }
     
-        /**
-         * @return A string that uniquely identifies this conference
-         */
+        /// <returns> A string that uniquely identifies this conference </returns> 
         public string GetConferenceSid() {
             return this.conferenceSid;
         }
     
-        /**
-         * @return The date this resource was created
-         */
+        /// <returns> The date this resource was created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date this resource was last updated
-         */
+        /// <returns> The date this resource was last updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return Indicates if the endConferenceOnExit was set
-         */
+        /// <returns> Indicates if the endConferenceOnExit was set </returns> 
         public bool? GetEndConferenceOnExit() {
             return this.endConferenceOnExit;
         }
     
-        /**
-         * @return Indicates if the participant is muted
-         */
+        /// <returns> Indicates if the participant is muted </returns> 
         public bool? GetMuted() {
             return this.muted;
         }
     
-        /**
-         * @return The hold
-         */
+        /// <returns> The hold </returns> 
         public bool? GetHold() {
             return this.hold;
         }
     
-        /**
-         * @return Indicates if the startConferenceOnEnter attribute was set
-         */
+        /// <returns> Indicates if the startConferenceOnEnter attribute was set </returns> 
         public bool? GetStartConferenceOnEnter() {
             return this.startConferenceOnEnter;
         }
     
-        /**
-         * @return The URI for this resource
-         */
+        /// <returns> The URI for this resource </returns> 
         public string GetUri() {
             return this.uri;
         }

@@ -16,46 +16,46 @@ namespace Twilio.Rest.Monitor.V1 {
         private DateTime? startDate;
         private DateTime? endDate;
     
-        /**
-         * The log_level
-         * 
-         * @param logLevel The log_level
-         * @return this
-         */
+        /// <summary>
+        /// The log_level
+        /// </summary>
+        ///
+        /// <param name="logLevel"> The log_level </param>
+        /// <returns> this </returns> 
         public AlertReader ByLogLevel(string logLevel) {
             this.logLevel = logLevel;
             return this;
         }
     
-        /**
-         * The start_date
-         * 
-         * @param startDate The start_date
-         * @return this
-         */
+        /// <summary>
+        /// The start_date
+        /// </summary>
+        ///
+        /// <param name="startDate"> The start_date </param>
+        /// <returns> this </returns> 
         public AlertReader ByStartDate(DateTime? startDate) {
             this.startDate = startDate;
             return this;
         }
     
-        /**
-         * The end_date
-         * 
-         * @param endDate The end_date
-         * @return this
-         */
+        /// <summary>
+        /// The end_date
+        /// </summary>
+        ///
+        /// <param name="endDate"> The end_date </param>
+        /// <returns> this </returns> 
         public AlertReader ByEndDate(DateTime? endDate) {
             this.endDate = endDate;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return AlertResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> AlertResource ResourceSet </returns> 
         public override Task<ResourceSet<AlertResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -70,12 +70,12 @@ namespace Twilio.Rest.Monitor.V1 {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return AlertResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> AlertResource ResourceSet </returns> 
         public override ResourceSet<AlertResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -89,13 +89,13 @@ namespace Twilio.Rest.Monitor.V1 {
             return new ResourceSet<AlertResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<AlertResource> NextPage(Page<AlertResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -107,13 +107,13 @@ namespace Twilio.Rest.Monitor.V1 {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of AlertResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of AlertResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<AlertResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -140,11 +140,11 @@ namespace Twilio.Rest.Monitor.V1 {
             return Page<AlertResource>.FromJson("alerts", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (logLevel != null) {
                 request.AddQueryParam("LogLevel", logLevel);

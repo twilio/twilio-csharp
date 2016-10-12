@@ -19,79 +19,79 @@ namespace Twilio.Rest.Monitor.V1 {
         private DateTime? startDate;
         private DateTime? endDate;
     
-        /**
-         * The actor_sid
-         * 
-         * @param actorSid The actor_sid
-         * @return this
-         */
+        /// <summary>
+        /// The actor_sid
+        /// </summary>
+        ///
+        /// <param name="actorSid"> The actor_sid </param>
+        /// <returns> this </returns> 
         public EventReader ByActorSid(string actorSid) {
             this.actorSid = actorSid;
             return this;
         }
     
-        /**
-         * The event_type
-         * 
-         * @param eventType The event_type
-         * @return this
-         */
+        /// <summary>
+        /// The event_type
+        /// </summary>
+        ///
+        /// <param name="eventType"> The event_type </param>
+        /// <returns> this </returns> 
         public EventReader ByEventType(string eventType) {
             this.eventType = eventType;
             return this;
         }
     
-        /**
-         * The resource_sid
-         * 
-         * @param resourceSid The resource_sid
-         * @return this
-         */
+        /// <summary>
+        /// The resource_sid
+        /// </summary>
+        ///
+        /// <param name="resourceSid"> The resource_sid </param>
+        /// <returns> this </returns> 
         public EventReader ByResourceSid(string resourceSid) {
             this.resourceSid = resourceSid;
             return this;
         }
     
-        /**
-         * The source_ip_address
-         * 
-         * @param sourceIpAddress The source_ip_address
-         * @return this
-         */
+        /// <summary>
+        /// The source_ip_address
+        /// </summary>
+        ///
+        /// <param name="sourceIpAddress"> The source_ip_address </param>
+        /// <returns> this </returns> 
         public EventReader BySourceIpAddress(string sourceIpAddress) {
             this.sourceIpAddress = sourceIpAddress;
             return this;
         }
     
-        /**
-         * The start_date
-         * 
-         * @param startDate The start_date
-         * @return this
-         */
+        /// <summary>
+        /// The start_date
+        /// </summary>
+        ///
+        /// <param name="startDate"> The start_date </param>
+        /// <returns> this </returns> 
         public EventReader ByStartDate(DateTime? startDate) {
             this.startDate = startDate;
             return this;
         }
     
-        /**
-         * The end_date
-         * 
-         * @param endDate The end_date
-         * @return this
-         */
+        /// <summary>
+        /// The end_date
+        /// </summary>
+        ///
+        /// <param name="endDate"> The end_date </param>
+        /// <returns> this </returns> 
         public EventReader ByEndDate(DateTime? endDate) {
             this.endDate = endDate;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return EventResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> EventResource ResourceSet </returns> 
         public override Task<ResourceSet<EventResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -106,12 +106,12 @@ namespace Twilio.Rest.Monitor.V1 {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return EventResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> EventResource ResourceSet </returns> 
         public override ResourceSet<EventResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -125,13 +125,13 @@ namespace Twilio.Rest.Monitor.V1 {
             return new ResourceSet<EventResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<EventResource> NextPage(Page<EventResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -143,13 +143,13 @@ namespace Twilio.Rest.Monitor.V1 {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of EventResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of EventResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<EventResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -176,11 +176,11 @@ namespace Twilio.Rest.Monitor.V1 {
             return Page<EventResource>.FromJson("events", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (actorSid != null) {
                 request.AddQueryParam("ActorSid", actorSid);

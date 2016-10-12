@@ -9,31 +9,31 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class NewKeyResource : Resource {
-        /**
-         * create
-         * 
-         * @param accountSid The account_sid
-         * @return NewKeyCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> NewKeyCreator capable of executing the create </returns> 
         public static NewKeyCreator Creator(string accountSid) {
             return new NewKeyCreator(accountSid);
         }
     
-        /**
-         * Create a NewKeyCreator to execute create.
-         * 
-         * @return NewKeyCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a NewKeyCreator to execute create.
+        /// </summary>
+        ///
+        /// <returns> NewKeyCreator capable of executing the create </returns> 
         public static NewKeyCreator Creator() {
             return new NewKeyCreator();
         }
     
-        /**
-         * Converts a JSON string into a NewKeyResource object
-         * 
-         * @param json Raw JSON string
-         * @return NewKeyResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a NewKeyResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> NewKeyResource object represented by the provided JSON </returns> 
         public static NewKeyResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -75,37 +75,27 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.secret = secret;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The secret
-         */
+        /// <returns> The secret </returns> 
         public string GetSecret() {
             return this.secret;
         }

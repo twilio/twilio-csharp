@@ -15,55 +15,55 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         private bool? muted;
         private bool? hold;
     
-        /**
-         * Construct a new ParticipantReader.
-         * 
-         * @param conferenceSid The string that uniquely identifies this conference
-         */
+        /// <summary>
+        /// Construct a new ParticipantReader.
+        /// </summary>
+        ///
+        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
         public ParticipantReader(string conferenceSid) {
             this.conferenceSid = conferenceSid;
         }
     
-        /**
-         * Construct a new ParticipantReader
-         * 
-         * @param accountSid The account_sid
-         * @param conferenceSid The string that uniquely identifies this conference
-         */
+        /// <summary>
+        /// Construct a new ParticipantReader
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
         public ParticipantReader(string accountSid, string conferenceSid) {
             this.accountSid = accountSid;
             this.conferenceSid = conferenceSid;
         }
     
-        /**
-         * Only show participants that are muted or unmuted
-         * 
-         * @param muted Filter by muted participants
-         * @return this
-         */
+        /// <summary>
+        /// Only show participants that are muted or unmuted
+        /// </summary>
+        ///
+        /// <param name="muted"> Filter by muted participants </param>
+        /// <returns> this </returns> 
         public ParticipantReader ByMuted(bool? muted) {
             this.muted = muted;
             return this;
         }
     
-        /**
-         * The hold
-         * 
-         * @param hold The hold
-         * @return this
-         */
+        /// <summary>
+        /// The hold
+        /// </summary>
+        ///
+        /// <param name="hold"> The hold </param>
+        /// <returns> this </returns> 
         public ParticipantReader ByHold(bool? hold) {
             this.hold = hold;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return ParticipantResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> ParticipantResource ResourceSet </returns> 
         public override Task<ResourceSet<ParticipantResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -78,12 +78,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return ParticipantResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> ParticipantResource ResourceSet </returns> 
         public override ResourceSet<ParticipantResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -97,13 +97,13 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
             return new ResourceSet<ParticipantResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<ParticipantResource> NextPage(Page<ParticipantResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -115,13 +115,13 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of ParticipantResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of ParticipantResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<ParticipantResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -148,11 +148,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
             return Page<ParticipantResource>.FromJson("participants", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (muted != null) {
                 request.AddQueryParam("Muted", muted.ToString());

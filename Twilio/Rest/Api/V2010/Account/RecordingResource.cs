@@ -70,74 +70,73 @@ namespace Twilio.Rest.Api.V2010.Account {
             }
         }
     
-        /**
-         * Fetch an instance of a recording
-         * 
-         * @param accountSid The account_sid
-         * @param sid Fetch by unique recording Sid
-         * @return RecordingFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Fetch an instance of a recording
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Fetch by unique recording Sid </param>
+        /// <returns> RecordingFetcher capable of executing the fetch </returns> 
         public static RecordingFetcher Fetcher(string accountSid, string sid) {
             return new RecordingFetcher(accountSid, sid);
         }
     
-        /**
-         * Create a RecordingFetcher to execute fetch.
-         * 
-         * @param sid Fetch by unique recording Sid
-         * @return RecordingFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a RecordingFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique recording Sid </param>
+        /// <returns> RecordingFetcher capable of executing the fetch </returns> 
         public static RecordingFetcher Fetcher(string sid) {
             return new RecordingFetcher(sid);
         }
     
-        /**
-         * Delete a recording from your account
-         * 
-         * @param accountSid The account_sid
-         * @param sid Delete by unique recording Sid
-         * @return RecordingDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Delete a recording from your account
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Delete by unique recording Sid </param>
+        /// <returns> RecordingDeleter capable of executing the delete </returns> 
         public static RecordingDeleter Deleter(string accountSid, string sid) {
             return new RecordingDeleter(accountSid, sid);
         }
     
-        /**
-         * Create a RecordingDeleter to execute delete.
-         * 
-         * @param sid Delete by unique recording Sid
-         * @return RecordingDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a RecordingDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="sid"> Delete by unique recording Sid </param>
+        /// <returns> RecordingDeleter capable of executing the delete </returns> 
         public static RecordingDeleter Deleter(string sid) {
             return new RecordingDeleter(sid);
         }
     
-        /**
-         * Retrieve a list of recordings belonging to the account used to make the
-         * request
-         * 
-         * @param accountSid The account_sid
-         * @return RecordingReader capable of executing the read
-         */
+        /// <summary>
+        /// Retrieve a list of recordings belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> RecordingReader capable of executing the read </returns> 
         public static RecordingReader Reader(string accountSid) {
             return new RecordingReader(accountSid);
         }
     
-        /**
-         * Create a RecordingReader to execute read.
-         * 
-         * @return RecordingReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a RecordingReader to execute read.
+        /// </summary>
+        ///
+        /// <returns> RecordingReader capable of executing the read </returns> 
         public static RecordingReader Reader() {
             return new RecordingReader();
         }
     
-        /**
-         * Converts a JSON string into a RecordingResource object
-         * 
-         * @param json Raw JSON string
-         * @return RecordingResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a RecordingResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> RecordingResource object represented by the provided JSON </returns> 
         public static RecordingResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -221,93 +220,67 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.uri = uri;
         }
     
-        /**
-         * @return The unique sid that identifies this account
-         */
+        /// <returns> The unique sid that identifies this account </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The version of the API in use during the recording.
-         */
+        /// <returns> The version of the API in use during the recording. </returns> 
         public string GetApiVersion() {
             return this.apiVersion;
         }
     
-        /**
-         * @return The call during which the recording was made.
-         */
+        /// <returns> The call during which the recording was made. </returns> 
         public string GetCallSid() {
             return this.callSid;
         }
     
-        /**
-         * @return The date this resource was created
-         */
+        /// <returns> The date this resource was created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date this resource was last updated
-         */
+        /// <returns> The date this resource was last updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The length of the recording, in seconds.
-         */
+        /// <returns> The length of the recording, in seconds. </returns> 
         public string GetDuration() {
             return this.duration;
         }
     
-        /**
-         * @return A string that uniquely identifies this recording
-         */
+        /// <returns> A string that uniquely identifies this recording </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The price
-         */
+        /// <returns> The price </returns> 
         public string GetPrice() {
             return this.price;
         }
     
-        /**
-         * @return The price_unit
-         */
+        /// <returns> The price_unit </returns> 
         public string GetPriceUnit() {
             return this.priceUnit;
         }
     
-        /**
-         * @return The status
-         */
+        /// <returns> The status </returns> 
         public RecordingResource.Status GetStatus() {
             return this.status;
         }
     
-        /**
-         * @return The channels
-         */
+        /// <returns> The channels </returns> 
         public int? GetChannels() {
             return this.channels;
         }
     
-        /**
-         * @return The source
-         */
+        /// <returns> The source </returns> 
         public RecordingResource.Source GetSource() {
             return this.source;
         }
     
-        /**
-         * @return The URI for this resource
-         */
+        /// <returns> The URI for this resource </returns> 
         public string GetUri() {
             return this.uri;
         }

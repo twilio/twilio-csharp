@@ -40,22 +40,22 @@ namespace Twilio.Rest.Lookups.V1 {
             }
         }
     
-        /**
-         * fetch
-         * 
-         * @param phoneNumber The phone_number
-         * @return PhoneNumberFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="phoneNumber"> The phone_number </param>
+        /// <returns> PhoneNumberFetcher capable of executing the fetch </returns> 
         public static PhoneNumberFetcher Fetcher(Twilio.Types.PhoneNumber phoneNumber) {
             return new PhoneNumberFetcher(phoneNumber);
         }
     
-        /**
-         * Converts a JSON string into a PhoneNumberResource object
-         * 
-         * @param json Raw JSON string
-         * @return PhoneNumberResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a PhoneNumberResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> PhoneNumberResource object represented by the provided JSON </returns> 
         public static PhoneNumberResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -103,51 +103,37 @@ namespace Twilio.Rest.Lookups.V1 {
             this.addOns = addOns;
         }
     
-        /**
-         * @return The phone_number
-         */
+        /// <returns> The phone_number </returns> 
         public override string GetSid() {
             return this.GetPhoneNumber().ToString();
         }
     
-        /**
-         * @return The caller_name
-         */
+        /// <returns> The caller_name </returns> 
         public Dictionary<string, string> GetCallerName() {
             return this.callerName;
         }
     
-        /**
-         * @return The country_code
-         */
+        /// <returns> The country_code </returns> 
         public string GetCountryCode() {
             return this.countryCode;
         }
     
-        /**
-         * @return The phone_number
-         */
+        /// <returns> The phone_number </returns> 
         public Twilio.Types.PhoneNumber GetPhoneNumber() {
             return this.phoneNumber;
         }
     
-        /**
-         * @return The national_format
-         */
+        /// <returns> The national_format </returns> 
         public string GetNationalFormat() {
             return this.nationalFormat;
         }
     
-        /**
-         * @return The carrier
-         */
+        /// <returns> The carrier </returns> 
         public Dictionary<string, string> GetCarrier() {
             return this.carrier;
         }
     
-        /**
-         * @return The add_ons
-         */
+        /// <returns> The add_ons </returns> 
         public Object GetAddOns() {
             return this.addOns;
         }

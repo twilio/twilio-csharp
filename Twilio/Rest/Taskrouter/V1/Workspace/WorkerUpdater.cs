@@ -16,57 +16,57 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         private string attributes;
         private string friendlyName;
     
-        /**
-         * Construct a new WorkerUpdater
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new WorkerUpdater
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
         public WorkerUpdater(string workspaceSid, string sid) {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
         }
     
-        /**
-         * The activity_sid
-         * 
-         * @param activitySid The activity_sid
-         * @return this
-         */
+        /// <summary>
+        /// The activity_sid
+        /// </summary>
+        ///
+        /// <param name="activitySid"> The activity_sid </param>
+        /// <returns> this </returns> 
         public WorkerUpdater setActivitySid(string activitySid) {
             this.activitySid = activitySid;
             return this;
         }
     
-        /**
-         * The attributes
-         * 
-         * @param attributes The attributes
-         * @return this
-         */
+        /// <summary>
+        /// The attributes
+        /// </summary>
+        ///
+        /// <param name="attributes"> The attributes </param>
+        /// <returns> this </returns> 
         public WorkerUpdater setAttributes(string attributes) {
             this.attributes = attributes;
             return this;
         }
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public WorkerUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated WorkerResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated WorkerResource </returns> 
         public override async Task<WorkerResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -101,12 +101,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated WorkerResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated WorkerResource </returns> 
         public override WorkerResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -140,11 +140,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             return WorkerResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (activitySid != null) {
                 request.AddPostParam("ActivitySid", activitySid);

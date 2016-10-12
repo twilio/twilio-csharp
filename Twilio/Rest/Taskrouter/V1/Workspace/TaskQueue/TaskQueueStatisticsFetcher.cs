@@ -19,68 +19,68 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
         private int? minutes;
         private DateTime? startDate;
     
-        /**
-         * Construct a new TaskQueueStatisticsFetcher
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param taskQueueSid The task_queue_sid
-         */
+        /// <summary>
+        /// Construct a new TaskQueueStatisticsFetcher
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="taskQueueSid"> The task_queue_sid </param>
         public TaskQueueStatisticsFetcher(string workspaceSid, string taskQueueSid) {
             this.workspaceSid = workspaceSid;
             this.taskQueueSid = taskQueueSid;
         }
     
-        /**
-         * The end_date
-         * 
-         * @param endDate The end_date
-         * @return this
-         */
+        /// <summary>
+        /// The end_date
+        /// </summary>
+        ///
+        /// <param name="endDate"> The end_date </param>
+        /// <returns> this </returns> 
         public TaskQueueStatisticsFetcher setEndDate(DateTime? endDate) {
             this.endDate = endDate;
             return this;
         }
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public TaskQueueStatisticsFetcher setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * The minutes
-         * 
-         * @param minutes The minutes
-         * @return this
-         */
+        /// <summary>
+        /// The minutes
+        /// </summary>
+        ///
+        /// <param name="minutes"> The minutes </param>
+        /// <returns> this </returns> 
         public TaskQueueStatisticsFetcher setMinutes(int? minutes) {
             this.minutes = minutes;
             return this;
         }
     
-        /**
-         * The start_date
-         * 
-         * @param startDate The start_date
-         * @return this
-         */
+        /// <summary>
+        /// The start_date
+        /// </summary>
+        ///
+        /// <param name="startDate"> The start_date </param>
+        /// <returns> this </returns> 
         public TaskQueueStatisticsFetcher setStartDate(DateTime? startDate) {
             this.startDate = startDate;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched TaskQueueStatisticsResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched TaskQueueStatisticsResource </returns> 
         public override async Task<TaskQueueStatisticsResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -117,12 +117,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched TaskQueueStatisticsResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched TaskQueueStatisticsResource </returns> 
         public override TaskQueueStatisticsResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -158,11 +158,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
             return TaskQueueStatisticsResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (endDate != null) {
                 request.AddQueryParam("EndDate", endDate.ToString());

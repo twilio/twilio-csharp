@@ -15,62 +15,61 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         private TriggerResource.TriggerField triggerBy;
         private TriggerResource.UsageCategory usageCategory;
     
-        /**
-         * Construct a new TriggerReader.
-         */
+        /// <summary>
+        /// Construct a new TriggerReader.
+        /// </summary>
         public TriggerReader() {
         }
     
-        /**
-         * Construct a new TriggerReader
-         * 
-         * @param accountSid The account_sid
-         */
+        /// <summary>
+        /// Construct a new TriggerReader
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
         public TriggerReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
-        /**
-         * Only show UsageTriggers that count over this interval. One of daily, monthly,
-         * or yearly
-         * 
-         * @param recurring Filter by recurring
-         * @return this
-         */
+        /// <summary>
+        /// Only show UsageTriggers that count over this interval. One of daily, monthly, or yearly
+        /// </summary>
+        ///
+        /// <param name="recurring"> Filter by recurring </param>
+        /// <returns> this </returns> 
         public TriggerReader ByRecurring(TriggerResource.Recurring recurring) {
             this.recurring = recurring;
             return this;
         }
     
-        /**
-         * Only show UsageTriggers that trigger by this field in the UsagRecord
-         * 
-         * @param triggerBy Filter by trigger by
-         * @return this
-         */
+        /// <summary>
+        /// Only show UsageTriggers that trigger by this field in the UsagRecord
+        /// </summary>
+        ///
+        /// <param name="triggerBy"> Filter by trigger by </param>
+        /// <returns> this </returns> 
         public TriggerReader ByTriggerBy(TriggerResource.TriggerField triggerBy) {
             this.triggerBy = triggerBy;
             return this;
         }
     
-        /**
-         * Only show UsageTriggers that watch this usage category
-         * 
-         * @param usageCategory Filter by Usage Category
-         * @return this
-         */
+        /// <summary>
+        /// Only show UsageTriggers that watch this usage category
+        /// </summary>
+        ///
+        /// <param name="usageCategory"> Filter by Usage Category </param>
+        /// <returns> this </returns> 
         public TriggerReader ByUsageCategory(TriggerResource.UsageCategory usageCategory) {
             this.usageCategory = usageCategory;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return TriggerResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> TriggerResource ResourceSet </returns> 
         public override Task<ResourceSet<TriggerResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -85,12 +84,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return TriggerResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> TriggerResource ResourceSet </returns> 
         public override ResourceSet<TriggerResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -104,13 +103,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
             return new ResourceSet<TriggerResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<TriggerResource> NextPage(Page<TriggerResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -122,13 +121,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of TriggerResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of TriggerResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<TriggerResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -155,11 +154,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
             return Page<TriggerResource>.FromJson("usage_triggers", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (recurring != null) {
                 request.AddQueryParam("Recurring", recurring.ToString());

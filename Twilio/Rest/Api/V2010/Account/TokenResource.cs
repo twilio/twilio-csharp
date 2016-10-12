@@ -11,31 +11,31 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class TokenResource : Resource {
-        /**
-         * Create a new token
-         * 
-         * @param accountSid The account_sid
-         * @return TokenCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a new token
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> TokenCreator capable of executing the create </returns> 
         public static TokenCreator Creator(string accountSid) {
             return new TokenCreator(accountSid);
         }
     
-        /**
-         * Create a TokenCreator to execute create.
-         * 
-         * @return TokenCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a TokenCreator to execute create.
+        /// </summary>
+        ///
+        /// <returns> TokenCreator capable of executing the create </returns> 
         public static TokenCreator Creator() {
             return new TokenCreator();
         }
     
-        /**
-         * Converts a JSON string into a TokenResource object
-         * 
-         * @param json Raw JSON string
-         * @return TokenResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a TokenResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> TokenResource object represented by the provided JSON </returns> 
         public static TokenResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -87,51 +87,37 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.username = username;
         }
     
-        /**
-         * @return The unique sid that identifies this account
-         */
+        /// <returns> The unique sid that identifies this account </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The date this resource was created
-         */
+        /// <returns> The date this resource was created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date this resource was last updated
-         */
+        /// <returns> The date this resource was last updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return An array representing the ephemeral credentials
-         */
+        /// <returns> An array representing the ephemeral credentials </returns> 
         public List<IceServer> GetIceServers() {
             return this.iceServers;
         }
     
-        /**
-         * @return The temporary password used for authenticating
-         */
+        /// <returns> The temporary password used for authenticating </returns> 
         public string GetPassword() {
             return this.password;
         }
     
-        /**
-         * @return The duration in seconds the credentials are valid
-         */
+        /// <returns> The duration in seconds the credentials are valid </returns> 
         public string GetTtl() {
             return this.ttl;
         }
     
-        /**
-         * @return The temporary username that uniquely identifies a Token.
-         */
+        /// <returns> The temporary username that uniquely identifies a Token. </returns> 
         public string GetUsername() {
             return this.username;
         }

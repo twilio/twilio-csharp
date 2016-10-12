@@ -10,54 +10,54 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.Sync.Service {
 
     public class SyncListResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         * @return SyncListFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> SyncListFetcher capable of executing the fetch </returns> 
         public static SyncListFetcher Fetcher(string serviceSid, string sid) {
             return new SyncListFetcher(serviceSid, sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         * @return SyncListDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> SyncListDeleter capable of executing the delete </returns> 
         public static SyncListDeleter Deleter(string serviceSid, string sid) {
             return new SyncListDeleter(serviceSid, sid);
         }
     
-        /**
-         * create
-         * 
-         * @param serviceSid The service_sid
-         * @return SyncListCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <returns> SyncListCreator capable of executing the create </returns> 
         public static SyncListCreator Creator(string serviceSid) {
             return new SyncListCreator(serviceSid);
         }
     
-        /**
-         * read
-         * 
-         * @param serviceSid The service_sid
-         * @return SyncListReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <returns> SyncListReader capable of executing the read </returns> 
         public static SyncListReader Reader(string serviceSid) {
             return new SyncListReader(serviceSid);
         }
     
-        /**
-         * Converts a JSON string into a SyncListResource object
-         * 
-         * @param json Raw JSON string
-         * @return SyncListResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a SyncListResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> SyncListResource object represented by the provided JSON </returns> 
         public static SyncListResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -124,72 +124,52 @@ namespace Twilio.Rest.Preview.Sync.Service {
             this.createdBy = createdBy;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The unique_name
-         */
+        /// <returns> The unique_name </returns> 
         public string GetUniqueName() {
             return this.uniqueName;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The service_sid
-         */
+        /// <returns> The service_sid </returns> 
         public string GetServiceSid() {
             return this.serviceSid;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }
     
-        /**
-         * @return The links
-         */
+        /// <returns> The links </returns> 
         public Dictionary<string, string> GetLinks() {
             return this.links;
         }
     
-        /**
-         * @return The revision
-         */
+        /// <returns> The revision </returns> 
         public string GetRevision() {
             return this.revision;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The created_by
-         */
+        /// <returns> The created_by </returns> 
         public string GetCreatedBy() {
             return this.createdBy;
         }

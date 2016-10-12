@@ -13,33 +13,33 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         private string accountSid;
         private string sid;
     
-        /**
-         * Construct a new TriggerFetcher.
-         * 
-         * @param sid Fetch by unique usage-trigger Sid
-         */
+        /// <summary>
+        /// Construct a new TriggerFetcher.
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique usage-trigger Sid </param>
         public TriggerFetcher(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * Construct a new TriggerFetcher
-         * 
-         * @param accountSid The account_sid
-         * @param sid Fetch by unique usage-trigger Sid
-         */
+        /// <summary>
+        /// Construct a new TriggerFetcher
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Fetch by unique usage-trigger Sid </param>
         public TriggerFetcher(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched TriggerResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched TriggerResource </returns> 
         public override async Task<TriggerResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -73,12 +73,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched TriggerResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched TriggerResource </returns> 
         public override TriggerResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

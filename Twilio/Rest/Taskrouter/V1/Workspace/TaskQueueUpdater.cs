@@ -18,79 +18,79 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         private string assignmentActivitySid;
         private int? maxReservedWorkers;
     
-        /**
-         * Construct a new TaskQueueUpdater
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new TaskQueueUpdater
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
         public TaskQueueUpdater(string workspaceSid, string sid) {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
         }
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public TaskQueueUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * The target_workers
-         * 
-         * @param targetWorkers The target_workers
-         * @return this
-         */
+        /// <summary>
+        /// The target_workers
+        /// </summary>
+        ///
+        /// <param name="targetWorkers"> The target_workers </param>
+        /// <returns> this </returns> 
         public TaskQueueUpdater setTargetWorkers(string targetWorkers) {
             this.targetWorkers = targetWorkers;
             return this;
         }
     
-        /**
-         * The reservation_activity_sid
-         * 
-         * @param reservationActivitySid The reservation_activity_sid
-         * @return this
-         */
+        /// <summary>
+        /// The reservation_activity_sid
+        /// </summary>
+        ///
+        /// <param name="reservationActivitySid"> The reservation_activity_sid </param>
+        /// <returns> this </returns> 
         public TaskQueueUpdater setReservationActivitySid(string reservationActivitySid) {
             this.reservationActivitySid = reservationActivitySid;
             return this;
         }
     
-        /**
-         * The assignment_activity_sid
-         * 
-         * @param assignmentActivitySid The assignment_activity_sid
-         * @return this
-         */
+        /// <summary>
+        /// The assignment_activity_sid
+        /// </summary>
+        ///
+        /// <param name="assignmentActivitySid"> The assignment_activity_sid </param>
+        /// <returns> this </returns> 
         public TaskQueueUpdater setAssignmentActivitySid(string assignmentActivitySid) {
             this.assignmentActivitySid = assignmentActivitySid;
             return this;
         }
     
-        /**
-         * The max_reserved_workers
-         * 
-         * @param maxReservedWorkers The max_reserved_workers
-         * @return this
-         */
+        /// <summary>
+        /// The max_reserved_workers
+        /// </summary>
+        ///
+        /// <param name="maxReservedWorkers"> The max_reserved_workers </param>
+        /// <returns> this </returns> 
         public TaskQueueUpdater setMaxReservedWorkers(int? maxReservedWorkers) {
             this.maxReservedWorkers = maxReservedWorkers;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated TaskQueueResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated TaskQueueResource </returns> 
         public override async Task<TaskQueueResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -125,12 +125,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated TaskQueueResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated TaskQueueResource </returns> 
         public override TaskQueueResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -164,11 +164,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             return TaskQueueResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

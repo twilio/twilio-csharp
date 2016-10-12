@@ -13,33 +13,33 @@ namespace Twilio.Rest.Api.V2010.Account {
         private string accountSid;
         private string sid;
     
-        /**
-         * Construct a new TranscriptionFetcher.
-         * 
-         * @param sid Fetch by unique transcription Sid
-         */
+        /// <summary>
+        /// Construct a new TranscriptionFetcher.
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique transcription Sid </param>
         public TranscriptionFetcher(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * Construct a new TranscriptionFetcher
-         * 
-         * @param accountSid The account_sid
-         * @param sid Fetch by unique transcription Sid
-         */
+        /// <summary>
+        /// Construct a new TranscriptionFetcher
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Fetch by unique transcription Sid </param>
         public TranscriptionFetcher(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched TranscriptionResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched TranscriptionResource </returns> 
         public override async Task<TranscriptionResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -73,12 +73,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched TranscriptionResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched TranscriptionResource </returns> 
         public override TranscriptionResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

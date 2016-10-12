@@ -16,48 +16,48 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         private string from;
         private string attributes;
     
-        /**
-         * Construct a new MessageCreator
-         * 
-         * @param serviceSid The service_sid
-         * @param channelSid The channel_sid
-         * @param body The body
-         */
+        /// <summary>
+        /// Construct a new MessageCreator
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="body"> The body </param>
         public MessageCreator(string serviceSid, string channelSid, string body) {
             this.serviceSid = serviceSid;
             this.channelSid = channelSid;
             this.body = body;
         }
     
-        /**
-         * The from
-         * 
-         * @param from The from
-         * @return this
-         */
+        /// <summary>
+        /// The from
+        /// </summary>
+        ///
+        /// <param name="from"> The from </param>
+        /// <returns> this </returns> 
         public MessageCreator setFrom(string from) {
             this.from = from;
             return this;
         }
     
-        /**
-         * The attributes
-         * 
-         * @param attributes The attributes
-         * @return this
-         */
+        /// <summary>
+        /// The attributes
+        /// </summary>
+        ///
+        /// <param name="attributes"> The attributes </param>
+        /// <returns> this </returns> 
         public MessageCreator setAttributes(string attributes) {
             this.attributes = attributes;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created MessageResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created MessageResource </returns> 
         public override async Task<MessageResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -92,12 +92,12 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created MessageResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created MessageResource </returns> 
         public override MessageResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -131,11 +131,11 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
             return MessageResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (body != null) {
                 request.AddPostParam("Body", body);

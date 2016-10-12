@@ -15,24 +15,24 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         private string conferenceSid;
         private string callSid;
     
-        /**
-         * Construct a new ParticipantDeleter.
-         * 
-         * @param conferenceSid The string that uniquely identifies this conference
-         * @param callSid The call_sid
-         */
+        /// <summary>
+        /// Construct a new ParticipantDeleter.
+        /// </summary>
+        ///
+        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
+        /// <param name="callSid"> The call_sid </param>
         public ParticipantDeleter(string conferenceSid, string callSid) {
             this.conferenceSid = conferenceSid;
             this.callSid = callSid;
         }
     
-        /**
-         * Construct a new ParticipantDeleter
-         * 
-         * @param accountSid The account_sid
-         * @param conferenceSid The string that uniquely identifies this conference
-         * @param callSid The call_sid
-         */
+        /// <summary>
+        /// Construct a new ParticipantDeleter
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
+        /// <param name="callSid"> The call_sid </param>
         public ParticipantDeleter(string accountSid, string conferenceSid, string callSid) {
             this.accountSid = accountSid;
             this.conferenceSid = conferenceSid;
@@ -40,11 +40,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the delete
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the delete
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
@@ -78,11 +78,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the delete
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the delete
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
         public override void Delete(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,

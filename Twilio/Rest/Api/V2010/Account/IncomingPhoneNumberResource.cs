@@ -41,138 +41,136 @@ namespace Twilio.Rest.Api.V2010.Account {
             }
         }
     
-        /**
-         * Update an incoming-phone-number instance
-         * 
-         * @param ownerAccountSid The owner_account_sid
-         * @param sid The sid
-         * @return IncomingPhoneNumberUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Update an incoming-phone-number instance
+        /// </summary>
+        ///
+        /// <param name="ownerAccountSid"> The owner_account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> IncomingPhoneNumberUpdater capable of executing the update </returns> 
         public static IncomingPhoneNumberUpdater Updater(string ownerAccountSid, string sid) {
             return new IncomingPhoneNumberUpdater(ownerAccountSid, sid);
         }
     
-        /**
-         * Create a IncomingPhoneNumberUpdater to execute update.
-         * 
-         * @param sid The sid
-         * @return IncomingPhoneNumberUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Create a IncomingPhoneNumberUpdater to execute update.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> IncomingPhoneNumberUpdater capable of executing the update </returns> 
         public static IncomingPhoneNumberUpdater Updater(string sid) {
             return new IncomingPhoneNumberUpdater(sid);
         }
     
-        /**
-         * Fetch an incoming-phone-number belonging to the account used to make the
-         * request
-         * 
-         * @param ownerAccountSid The owner_account_sid
-         * @param sid Fetch by unique incoming-phone-number Sid
-         * @return IncomingPhoneNumberFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Fetch an incoming-phone-number belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="ownerAccountSid"> The owner_account_sid </param>
+        /// <param name="sid"> Fetch by unique incoming-phone-number Sid </param>
+        /// <returns> IncomingPhoneNumberFetcher capable of executing the fetch </returns> 
         public static IncomingPhoneNumberFetcher Fetcher(string ownerAccountSid, string sid) {
             return new IncomingPhoneNumberFetcher(ownerAccountSid, sid);
         }
     
-        /**
-         * Create a IncomingPhoneNumberFetcher to execute fetch.
-         * 
-         * @param sid Fetch by unique incoming-phone-number Sid
-         * @return IncomingPhoneNumberFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a IncomingPhoneNumberFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique incoming-phone-number Sid </param>
+        /// <returns> IncomingPhoneNumberFetcher capable of executing the fetch </returns> 
         public static IncomingPhoneNumberFetcher Fetcher(string sid) {
             return new IncomingPhoneNumberFetcher(sid);
         }
     
-        /**
-         * Delete a phone-numbers belonging to the account used to make the request
-         * 
-         * @param ownerAccountSid The owner_account_sid
-         * @param sid Delete by unique phone-number Sid
-         * @return IncomingPhoneNumberDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Delete a phone-numbers belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="ownerAccountSid"> The owner_account_sid </param>
+        /// <param name="sid"> Delete by unique phone-number Sid </param>
+        /// <returns> IncomingPhoneNumberDeleter capable of executing the delete </returns> 
         public static IncomingPhoneNumberDeleter Deleter(string ownerAccountSid, string sid) {
             return new IncomingPhoneNumberDeleter(ownerAccountSid, sid);
         }
     
-        /**
-         * Create a IncomingPhoneNumberDeleter to execute delete.
-         * 
-         * @param sid Delete by unique phone-number Sid
-         * @return IncomingPhoneNumberDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a IncomingPhoneNumberDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="sid"> Delete by unique phone-number Sid </param>
+        /// <returns> IncomingPhoneNumberDeleter capable of executing the delete </returns> 
         public static IncomingPhoneNumberDeleter Deleter(string sid) {
             return new IncomingPhoneNumberDeleter(sid);
         }
     
-        /**
-         * Retrieve a list of incoming-phone-numbers belonging to the account used to
-         * make the request
-         * 
-         * @param ownerAccountSid The owner_account_sid
-         * @return IncomingPhoneNumberReader capable of executing the read
-         */
+        /// <summary>
+        /// Retrieve a list of incoming-phone-numbers belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="ownerAccountSid"> The owner_account_sid </param>
+        /// <returns> IncomingPhoneNumberReader capable of executing the read </returns> 
         public static IncomingPhoneNumberReader Reader(string ownerAccountSid) {
             return new IncomingPhoneNumberReader(ownerAccountSid);
         }
     
-        /**
-         * Create a IncomingPhoneNumberReader to execute read.
-         * 
-         * @return IncomingPhoneNumberReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a IncomingPhoneNumberReader to execute read.
+        /// </summary>
+        ///
+        /// <returns> IncomingPhoneNumberReader capable of executing the read </returns> 
         public static IncomingPhoneNumberReader Reader() {
             return new IncomingPhoneNumberReader();
         }
     
-        /**
-         * Purchase a phone-number for the account
-         * 
-         * @param ownerAccountSid The owner_account_sid
-         * @param phoneNumber The phone number
-         * @return IncomingPhoneNumberCreator capable of executing the create
-         */
+        /// <summary>
+        /// Purchase a phone-number for the account
+        /// </summary>
+        ///
+        /// <param name="ownerAccountSid"> The owner_account_sid </param>
+        /// <param name="phoneNumber"> The phone number </param>
+        /// <returns> IncomingPhoneNumberCreator capable of executing the create </returns> 
         public static IncomingPhoneNumberCreator Creator(string ownerAccountSid, Twilio.Types.PhoneNumber phoneNumber) {
             return new IncomingPhoneNumberCreator(ownerAccountSid, phoneNumber);
         }
     
-        /**
-         * Create a IncomingPhoneNumberCreator to execute create.
-         * 
-         * @param phoneNumber The phone number
-         * @return IncomingPhoneNumberCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a IncomingPhoneNumberCreator to execute create.
+        /// </summary>
+        ///
+        /// <param name="phoneNumber"> The phone number </param>
+        /// <returns> IncomingPhoneNumberCreator capable of executing the create </returns> 
         public static IncomingPhoneNumberCreator Creator(Twilio.Types.PhoneNumber phoneNumber) {
             return new IncomingPhoneNumberCreator(phoneNumber);
         }
     
-        /**
-         * Purchase a phone-number for the account
-         * 
-         * @param ownerAccountSid The owner_account_sid
-         * @param areaCode The desired area code for the new number
-         * @return IncomingPhoneNumberCreator capable of executing the create
-         */
+        /// <summary>
+        /// Purchase a phone-number for the account
+        /// </summary>
+        ///
+        /// <param name="ownerAccountSid"> The owner_account_sid </param>
+        /// <param name="areaCode"> The desired area code for the new number </param>
+        /// <returns> IncomingPhoneNumberCreator capable of executing the create </returns> 
         public static IncomingPhoneNumberCreator Creator(string ownerAccountSid, string areaCode) {
             return new IncomingPhoneNumberCreator(ownerAccountSid, areaCode);
         }
     
-        /**
-         * Create a IncomingPhoneNumberCreator to execute create.
-         * 
-         * @param areaCode The desired area code for the new number
-         * @return IncomingPhoneNumberCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a IncomingPhoneNumberCreator to execute create.
+        /// </summary>
+        ///
+        /// <param name="areaCode"> The desired area code for the new number </param>
+        /// <returns> IncomingPhoneNumberCreator capable of executing the create </returns> 
         public static IncomingPhoneNumberCreator Creator(string areaCode) {
             return new IncomingPhoneNumberCreator(areaCode);
         }
     
-        /**
-         * Converts a JSON string into a IncomingPhoneNumberResource object
-         * 
-         * @param json Raw JSON string
-         * @return IncomingPhoneNumberResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a IncomingPhoneNumberResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> IncomingPhoneNumberResource object represented by the provided JSON </returns> 
         public static IncomingPhoneNumberResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -321,177 +319,127 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.voiceUrl = voiceUrl;
         }
     
-        /**
-         * @return The unique sid that identifies this account
-         */
+        /// <returns> The unique sid that identifies this account </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return Indicates if the customer requires an address
-         */
+        /// <returns> Indicates if the customer requires an address </returns> 
         public IncomingPhoneNumberResource.AddressRequirement GetAddressRequirements() {
             return this.addressRequirements;
         }
     
-        /**
-         * @return The Twilio REST API version to use
-         */
+        /// <returns> The Twilio REST API version to use </returns> 
         public string GetApiVersion() {
             return this.apiVersion;
         }
     
-        /**
-         * @return Indicates if the phone number is a beta number
-         */
+        /// <returns> Indicates if the phone number is a beta number </returns> 
         public bool? GetBeta() {
             return this.beta;
         }
     
-        /**
-         * @return Indicate if a phone can receive calls or messages
-         */
+        /// <returns> Indicate if a phone can receive calls or messages </returns> 
         public PhoneNumberCapabilities GetCapabilities() {
             return this.capabilities;
         }
     
-        /**
-         * @return The date this resource was created
-         */
+        /// <returns> The date this resource was created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date this resource was last updated
-         */
+        /// <returns> The date this resource was last updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return A human readable description of this resouce
-         */
+        /// <returns> A human readable description of this resouce </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The incoming phone number
-         */
+        /// <returns> The incoming phone number </returns> 
         public Twilio.Types.PhoneNumber GetPhoneNumber() {
             return this.phoneNumber;
         }
     
-        /**
-         * @return A string that uniquely identifies this resource
-         */
+        /// <returns> A string that uniquely identifies this resource </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return Unique string that identifies the application
-         */
+        /// <returns> Unique string that identifies the application </returns> 
         public string GetSmsApplicationSid() {
             return this.smsApplicationSid;
         }
     
-        /**
-         * @return HTTP method used with sms fallback url
-         */
+        /// <returns> HTTP method used with sms fallback url </returns> 
         public Twilio.Http.HttpMethod GetSmsFallbackMethod() {
             return this.smsFallbackMethod;
         }
     
-        /**
-         * @return URL Twilio will request if an error occurs in executing TwiML
-         */
+        /// <returns> URL Twilio will request if an error occurs in executing TwiML </returns> 
         public Uri GetSmsFallbackUrl() {
             return this.smsFallbackUrl;
         }
     
-        /**
-         * @return HTTP method to use with sms url
-         */
+        /// <returns> HTTP method to use with sms url </returns> 
         public Twilio.Http.HttpMethod GetSmsMethod() {
             return this.smsMethod;
         }
     
-        /**
-         * @return URL Twilio will request when receiving an SMS
-         */
+        /// <returns> URL Twilio will request when receiving an SMS </returns> 
         public Uri GetSmsUrl() {
             return this.smsUrl;
         }
     
-        /**
-         * @return URL Twilio will use to pass status parameters
-         */
+        /// <returns> URL Twilio will use to pass status parameters </returns> 
         public Uri GetStatusCallback() {
             return this.statusCallback;
         }
     
-        /**
-         * @return HTTP method twilio will use with status callback
-         */
+        /// <returns> HTTP method twilio will use with status callback </returns> 
         public Twilio.Http.HttpMethod GetStatusCallbackMethod() {
             return this.statusCallbackMethod;
         }
     
-        /**
-         * @return Unique string to identify the trunk
-         */
+        /// <returns> Unique string to identify the trunk </returns> 
         public string GetTrunkSid() {
             return this.trunkSid;
         }
     
-        /**
-         * @return The URI for this resource
-         */
+        /// <returns> The URI for this resource </returns> 
         public string GetUri() {
             return this.uri;
         }
     
-        /**
-         * @return The unique sid of the application to handle this number
-         */
+        /// <returns> The unique sid of the application to handle this number </returns> 
         public string GetVoiceApplicationSid() {
             return this.voiceApplicationSid;
         }
     
-        /**
-         * @return Look up the caller's caller-ID
-         */
+        /// <returns> Look up the caller's caller-ID </returns> 
         public bool? GetVoiceCallerIdLookup() {
             return this.voiceCallerIdLookup;
         }
     
-        /**
-         * @return HTTP method used with fallback_url
-         */
+        /// <returns> HTTP method used with fallback_url </returns> 
         public Twilio.Http.HttpMethod GetVoiceFallbackMethod() {
             return this.voiceFallbackMethod;
         }
     
-        /**
-         * @return URL Twilio will request when an error occurs in TwiML
-         */
+        /// <returns> URL Twilio will request when an error occurs in TwiML </returns> 
         public Uri GetVoiceFallbackUrl() {
             return this.voiceFallbackUrl;
         }
     
-        /**
-         * @return HTTP method used with the voice url
-         */
+        /// <returns> HTTP method used with the voice url </returns> 
         public Twilio.Http.HttpMethod GetVoiceMethod() {
             return this.voiceMethod;
         }
     
-        /**
-         * @return URL Twilio will request when receiving a call
-         */
+        /// <returns> URL Twilio will request when receiving a call </returns> 
         public Uri GetVoiceUrl() {
             return this.voiceUrl;
         }

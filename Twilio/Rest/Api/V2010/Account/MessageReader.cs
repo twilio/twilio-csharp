@@ -15,61 +15,61 @@ namespace Twilio.Rest.Api.V2010.Account {
         private Twilio.Types.PhoneNumber from;
         private string dateSent;
     
-        /**
-         * Construct a new MessageReader.
-         */
+        /// <summary>
+        /// Construct a new MessageReader.
+        /// </summary>
         public MessageReader() {
         }
     
-        /**
-         * Construct a new MessageReader
-         * 
-         * @param accountSid The account_sid
-         */
+        /// <summary>
+        /// Construct a new MessageReader
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
         public MessageReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
-        /**
-         * Filter by messages to this number
-         * 
-         * @param to Filter by messages to this number
-         * @return this
-         */
+        /// <summary>
+        /// Filter by messages to this number
+        /// </summary>
+        ///
+        /// <param name="to"> Filter by messages to this number </param>
+        /// <returns> this </returns> 
         public MessageReader ByTo(Twilio.Types.PhoneNumber to) {
             this.to = to;
             return this;
         }
     
-        /**
-         * Only show messages from this phone number
-         * 
-         * @param from Filter by from number
-         * @return this
-         */
+        /// <summary>
+        /// Only show messages from this phone number
+        /// </summary>
+        ///
+        /// <param name="from"> Filter by from number </param>
+        /// <returns> this </returns> 
         public MessageReader ByFrom(Twilio.Types.PhoneNumber from) {
             this.from = from;
             return this;
         }
     
-        /**
-         * Filter messages sent by this date
-         * 
-         * @param dateSent Filter by date sent
-         * @return this
-         */
+        /// <summary>
+        /// Filter messages sent by this date
+        /// </summary>
+        ///
+        /// <param name="dateSent"> Filter by date sent </param>
+        /// <returns> this </returns> 
         public MessageReader ByDateSent(string dateSent) {
             this.dateSent = dateSent;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return MessageResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> MessageResource ResourceSet </returns> 
         public override Task<ResourceSet<MessageResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -84,12 +84,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return MessageResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> MessageResource ResourceSet </returns> 
         public override ResourceSet<MessageResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -103,13 +103,13 @@ namespace Twilio.Rest.Api.V2010.Account {
             return new ResourceSet<MessageResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<MessageResource> NextPage(Page<MessageResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -121,13 +121,13 @@ namespace Twilio.Rest.Api.V2010.Account {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of MessageResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of MessageResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<MessageResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -154,11 +154,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return Page<MessageResource>.FromJson("messages", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (to != null) {
                 request.AddQueryParam("To", to.ToString());

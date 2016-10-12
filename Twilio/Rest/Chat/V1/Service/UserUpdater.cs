@@ -17,57 +17,57 @@ namespace Twilio.Rest.Chat.V1.Service {
         private Object attributes;
         private string friendlyName;
     
-        /**
-         * Construct a new UserUpdater
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new UserUpdater
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
         public UserUpdater(string serviceSid, string sid) {
             this.serviceSid = serviceSid;
             this.sid = sid;
         }
     
-        /**
-         * The role_sid
-         * 
-         * @param roleSid The role_sid
-         * @return this
-         */
+        /// <summary>
+        /// The role_sid
+        /// </summary>
+        ///
+        /// <param name="roleSid"> The role_sid </param>
+        /// <returns> this </returns> 
         public UserUpdater setRoleSid(string roleSid) {
             this.roleSid = roleSid;
             return this;
         }
     
-        /**
-         * The attributes
-         * 
-         * @param attributes The attributes
-         * @return this
-         */
+        /// <summary>
+        /// The attributes
+        /// </summary>
+        ///
+        /// <param name="attributes"> The attributes </param>
+        /// <returns> this </returns> 
         public UserUpdater setAttributes(Object attributes) {
             this.attributes = attributes;
             return this;
         }
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public UserUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated UserResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated UserResource </returns> 
         public override async Task<UserResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -102,12 +102,12 @@ namespace Twilio.Rest.Chat.V1.Service {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated UserResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated UserResource </returns> 
         public override UserResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -141,11 +141,11 @@ namespace Twilio.Rest.Chat.V1.Service {
             return UserResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (roleSid != null) {
                 request.AddPostParam("RoleSid", roleSid);

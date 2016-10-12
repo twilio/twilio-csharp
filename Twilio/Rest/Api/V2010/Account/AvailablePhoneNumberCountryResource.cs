@@ -10,53 +10,52 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class AvailablePhoneNumberCountryResource : SidResource {
-        /**
-         * read
-         * 
-         * @param accountSid The account_sid
-         * @return AvailablePhoneNumberCountryReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> AvailablePhoneNumberCountryReader capable of executing the read </returns> 
         public static AvailablePhoneNumberCountryReader Reader(string accountSid) {
             return new AvailablePhoneNumberCountryReader(accountSid);
         }
     
-        /**
-         * Create a AvailablePhoneNumberCountryReader to execute read.
-         * 
-         * @return AvailablePhoneNumberCountryReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a AvailablePhoneNumberCountryReader to execute read.
+        /// </summary>
+        ///
+        /// <returns> AvailablePhoneNumberCountryReader capable of executing the read </returns> 
         public static AvailablePhoneNumberCountryReader Reader() {
             return new AvailablePhoneNumberCountryReader();
         }
     
-        /**
-         * fetch
-         * 
-         * @param accountSid The account_sid
-         * @param countryCode The country_code
-         * @return AvailablePhoneNumberCountryFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="countryCode"> The country_code </param>
+        /// <returns> AvailablePhoneNumberCountryFetcher capable of executing the fetch </returns> 
         public static AvailablePhoneNumberCountryFetcher Fetcher(string accountSid, string countryCode) {
             return new AvailablePhoneNumberCountryFetcher(accountSid, countryCode);
         }
     
-        /**
-         * Create a AvailablePhoneNumberCountryFetcher to execute fetch.
-         * 
-         * @param countryCode The country_code
-         * @return AvailablePhoneNumberCountryFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a AvailablePhoneNumberCountryFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="countryCode"> The country_code </param>
+        /// <returns> AvailablePhoneNumberCountryFetcher capable of executing the fetch </returns> 
         public static AvailablePhoneNumberCountryFetcher Fetcher(string countryCode) {
             return new AvailablePhoneNumberCountryFetcher(countryCode);
         }
     
-        /**
-         * Converts a JSON string into a AvailablePhoneNumberCountryResource object
-         * 
-         * @param json Raw JSON string
-         * @return AvailablePhoneNumberCountryResource object represented by the
-         *         provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a AvailablePhoneNumberCountryResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> AvailablePhoneNumberCountryResource object represented by the provided JSON </returns> 
         public static AvailablePhoneNumberCountryResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -98,44 +97,32 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.subresourceUris = subresourceUris;
         }
     
-        /**
-         * @return The country_code
-         */
+        /// <returns> The country_code </returns> 
         public override string GetSid() {
             return this.GetCountryCode();
         }
     
-        /**
-         * @return The country_code
-         */
+        /// <returns> The country_code </returns> 
         public string GetCountryCode() {
             return this.countryCode;
         }
     
-        /**
-         * @return The country
-         */
+        /// <returns> The country </returns> 
         public string GetCountry() {
             return this.country;
         }
     
-        /**
-         * @return The uri
-         */
+        /// <returns> The uri </returns> 
         public Uri GetUri() {
             return this.uri;
         }
     
-        /**
-         * @return The beta
-         */
+        /// <returns> The beta </returns> 
         public bool? GetBeta() {
             return this.beta;
         }
     
-        /**
-         * @return The subresource_uris
-         */
+        /// <returns> The subresource_uris </returns> 
         public Dictionary<string, string> GetSubresourceUris() {
             return this.subresourceUris;
         }

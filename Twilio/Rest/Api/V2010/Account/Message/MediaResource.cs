@@ -9,82 +9,81 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Message {
 
     public class MediaResource : SidResource {
-        /**
-         * Delete media from your account. Once delete, you will no longer be billed
-         * 
-         * @param accountSid The account_sid
-         * @param messageSid The message_sid
-         * @param sid Delete by unique media Sid
-         * @return MediaDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Delete media from your account. Once delete, you will no longer be billed
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="messageSid"> The message_sid </param>
+        /// <param name="sid"> Delete by unique media Sid </param>
+        /// <returns> MediaDeleter capable of executing the delete </returns> 
         public static MediaDeleter Deleter(string accountSid, string messageSid, string sid) {
             return new MediaDeleter(accountSid, messageSid, sid);
         }
     
-        /**
-         * Create a MediaDeleter to execute delete.
-         * 
-         * @param messageSid The message_sid
-         * @param sid Delete by unique media Sid
-         * @return MediaDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a MediaDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="messageSid"> The message_sid </param>
+        /// <param name="sid"> Delete by unique media Sid </param>
+        /// <returns> MediaDeleter capable of executing the delete </returns> 
         public static MediaDeleter Deleter(string messageSid, 
                                            string sid) {
             return new MediaDeleter(messageSid, sid);
         }
     
-        /**
-         * Fetch a single media instance belonging to the account used to make the
-         * request
-         * 
-         * @param accountSid The account_sid
-         * @param messageSid The message_sid
-         * @param sid Fetch by unique media Sid
-         * @return MediaFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Fetch a single media instance belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="messageSid"> The message_sid </param>
+        /// <param name="sid"> Fetch by unique media Sid </param>
+        /// <returns> MediaFetcher capable of executing the fetch </returns> 
         public static MediaFetcher Fetcher(string accountSid, string messageSid, string sid) {
             return new MediaFetcher(accountSid, messageSid, sid);
         }
     
-        /**
-         * Create a MediaFetcher to execute fetch.
-         * 
-         * @param messageSid The message_sid
-         * @param sid Fetch by unique media Sid
-         * @return MediaFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a MediaFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="messageSid"> The message_sid </param>
+        /// <param name="sid"> Fetch by unique media Sid </param>
+        /// <returns> MediaFetcher capable of executing the fetch </returns> 
         public static MediaFetcher Fetcher(string messageSid, 
                                            string sid) {
             return new MediaFetcher(messageSid, sid);
         }
     
-        /**
-         * Retrieve a list of medias belonging to the account used to make the request
-         * 
-         * @param accountSid The account_sid
-         * @param messageSid The message_sid
-         * @return MediaReader capable of executing the read
-         */
+        /// <summary>
+        /// Retrieve a list of medias belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="messageSid"> The message_sid </param>
+        /// <returns> MediaReader capable of executing the read </returns> 
         public static MediaReader Reader(string accountSid, string messageSid) {
             return new MediaReader(accountSid, messageSid);
         }
     
-        /**
-         * Create a MediaReader to execute read.
-         * 
-         * @param messageSid The message_sid
-         * @return MediaReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a MediaReader to execute read.
+        /// </summary>
+        ///
+        /// <param name="messageSid"> The message_sid </param>
+        /// <returns> MediaReader capable of executing the read </returns> 
         public static MediaReader Reader(string messageSid) {
             return new MediaReader(messageSid);
         }
     
-        /**
-         * Converts a JSON string into a MediaResource object
-         * 
-         * @param json Raw JSON string
-         * @return MediaResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a MediaResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> MediaResource object represented by the provided JSON </returns> 
         public static MediaResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -136,51 +135,37 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
             this.uri = uri;
         }
     
-        /**
-         * @return The unique sid that identifies this account
-         */
+        /// <returns> The unique sid that identifies this account </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The default mime-type of the media
-         */
+        /// <returns> The default mime-type of the media </returns> 
         public string GetContentType() {
             return this.contentType;
         }
     
-        /**
-         * @return The date this resource was created
-         */
+        /// <returns> The date this resource was created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date this resource was last updated
-         */
+        /// <returns> The date this resource was last updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The unique id of the resource that created the media.
-         */
+        /// <returns> The unique id of the resource that created the media. </returns> 
         public string GetParentSid() {
             return this.parentSid;
         }
     
-        /**
-         * @return A string that uniquely identifies this media
-         */
+        /// <returns> A string that uniquely identifies this media </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The URI for this resource
-         */
+        /// <returns> The URI for this resource </returns> 
         public string GetUri() {
             return this.uri;
         }

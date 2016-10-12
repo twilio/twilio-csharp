@@ -39,69 +39,69 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
             }
         }
     
-        /**
-         * fetch
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         * @return RoleFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> RoleFetcher capable of executing the fetch </returns> 
         public static RoleFetcher Fetcher(string serviceSid, string sid) {
             return new RoleFetcher(serviceSid, sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         * @return RoleDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> RoleDeleter capable of executing the delete </returns> 
         public static RoleDeleter Deleter(string serviceSid, string sid) {
             return new RoleDeleter(serviceSid, sid);
         }
     
-        /**
-         * create
-         * 
-         * @param serviceSid The service_sid
-         * @param friendlyName The friendly_name
-         * @param type The type
-         * @param permission The permission
-         * @return RoleCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="type"> The type </param>
+        /// <param name="permission"> The permission </param>
+        /// <returns> RoleCreator capable of executing the create </returns> 
         public static RoleCreator Creator(string serviceSid, string friendlyName, RoleResource.RoleType type, List<string> permission) {
             return new RoleCreator(serviceSid, friendlyName, type, permission);
         }
     
-        /**
-         * read
-         * 
-         * @param serviceSid The service_sid
-         * @return RoleReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <returns> RoleReader capable of executing the read </returns> 
         public static RoleReader Reader(string serviceSid) {
             return new RoleReader(serviceSid);
         }
     
-        /**
-         * update
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         * @param permission The permission
-         * @return RoleUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="permission"> The permission </param>
+        /// <returns> RoleUpdater capable of executing the update </returns> 
         public static RoleUpdater Updater(string serviceSid, string sid, List<string> permission) {
             return new RoleUpdater(serviceSid, sid, permission);
         }
     
-        /**
-         * Converts a JSON string into a RoleResource object
-         * 
-         * @param json Raw JSON string
-         * @return RoleResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a RoleResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> RoleResource object represented by the provided JSON </returns> 
         public static RoleResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -164,65 +164,47 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
             this.url = url;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The service_sid
-         */
+        /// <returns> The service_sid </returns> 
         public string GetServiceSid() {
             return this.serviceSid;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The type
-         */
+        /// <returns> The type </returns> 
         public RoleResource.RoleType GetRoleType() {
             return this.type;
         }
     
-        /**
-         * @return The permissions
-         */
+        /// <returns> The permissions </returns> 
         public List<string> GetPermissions() {
             return this.permissions;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }

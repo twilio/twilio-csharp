@@ -20,27 +20,27 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         private TriggerResource.Recurring recurring;
         private TriggerResource.TriggerField triggerBy;
     
-        /**
-         * Construct a new TriggerCreator.
-         * 
-         * @param callbackUrl URL Twilio will request when the trigger fires
-         * @param triggerValue the value at which the trigger will fire
-         * @param usageCategory The usage category the trigger watches
-         */
+        /// <summary>
+        /// Construct a new TriggerCreator.
+        /// </summary>
+        ///
+        /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
+        /// <param name="triggerValue"> the value at which the trigger will fire </param>
+        /// <param name="usageCategory"> The usage category the trigger watches </param>
         public TriggerCreator(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory) {
             this.callbackUrl = callbackUrl;
             this.triggerValue = triggerValue;
             this.usageCategory = usageCategory;
         }
     
-        /**
-         * Construct a new TriggerCreator
-         * 
-         * @param accountSid The account_sid
-         * @param callbackUrl URL Twilio will request when the trigger fires
-         * @param triggerValue the value at which the trigger will fire
-         * @param usageCategory The usage category the trigger watches
-         */
+        /// <summary>
+        /// Construct a new TriggerCreator
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
+        /// <param name="triggerValue"> the value at which the trigger will fire </param>
+        /// <param name="usageCategory"> The usage category the trigger watches </param>
         public TriggerCreator(string accountSid, Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory) {
             this.accountSid = accountSid;
             this.callbackUrl = callbackUrl;
@@ -48,61 +48,58 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
             this.usageCategory = usageCategory;
         }
     
-        /**
-         * The HTTP method Twilio will use when making a request to the CallbackUrl. 
-         * GET or POST.
-         * 
-         * @param callbackMethod HTTP method to use with callback_url
-         * @return this
-         */
+        /// <summary>
+        /// The HTTP method Twilio will use when making a request to the CallbackUrl.  GET or POST.
+        /// </summary>
+        ///
+        /// <param name="callbackMethod"> HTTP method to use with callback_url </param>
+        /// <returns> this </returns> 
         public TriggerCreator setCallbackMethod(Twilio.Http.HttpMethod callbackMethod) {
             this.callbackMethod = callbackMethod;
             return this;
         }
     
-        /**
-         * A user-specified, human-readable name for the trigger.
-         * 
-         * @param friendlyName A user-specified, human-readable name for the trigger.
-         * @return this
-         */
+        /// <summary>
+        /// A user-specified, human-readable name for the trigger.
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
+        /// <returns> this </returns> 
         public TriggerCreator setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * How this trigger recurs. Empty for non-recurring triggers. One of `daily`,
-         * `monthly`, or `yearly` for recurring triggers.  A trigger will only fire once
-         * during each recurring period.  Recurring periods are in GMT.
-         * 
-         * @param recurring How this trigger recurs
-         * @return this
-         */
+        /// <summary>
+        /// How this trigger recurs. Empty for non-recurring triggers. One of `daily`, `monthly`, or `yearly` for recurring
+        /// triggers.  A trigger will only fire once during each recurring period.  Recurring periods are in GMT.
+        /// </summary>
+        ///
+        /// <param name="recurring"> How this trigger recurs </param>
+        /// <returns> this </returns> 
         public TriggerCreator setRecurring(TriggerResource.Recurring recurring) {
             this.recurring = recurring;
             return this;
         }
     
-        /**
-         * The field in the UsageRecord that fires the trigger. One of `count`, `usage`,
-         * or `price`
-         * 
-         * @param triggerBy The field in the UsageRecord that fires the trigger
-         * @return this
-         */
+        /// <summary>
+        /// The field in the UsageRecord that fires the trigger. One of `count`, `usage`, or `price`
+        /// </summary>
+        ///
+        /// <param name="triggerBy"> The field in the UsageRecord that fires the trigger </param>
+        /// <returns> this </returns> 
         public TriggerCreator setTriggerBy(TriggerResource.TriggerField triggerBy) {
             this.triggerBy = triggerBy;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created TriggerResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created TriggerResource </returns> 
         public override async Task<TriggerResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -137,12 +134,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created TriggerResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created TriggerResource </returns> 
         public override TriggerResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -176,11 +173,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
             return TriggerResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (callbackUrl != null) {
                 request.AddPostParam("CallbackUrl", callbackUrl.ToString());

@@ -9,68 +9,68 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
     public class TaskQueueResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param sid The sid
-         * @return TaskQueueFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> TaskQueueFetcher capable of executing the fetch </returns> 
         public static TaskQueueFetcher Fetcher(string workspaceSid, string sid) {
             return new TaskQueueFetcher(workspaceSid, sid);
         }
     
-        /**
-         * update
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param sid The sid
-         * @return TaskQueueUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> TaskQueueUpdater capable of executing the update </returns> 
         public static TaskQueueUpdater Updater(string workspaceSid, string sid) {
             return new TaskQueueUpdater(workspaceSid, sid);
         }
     
-        /**
-         * read
-         * 
-         * @param workspaceSid The workspace_sid
-         * @return TaskQueueReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <returns> TaskQueueReader capable of executing the read </returns> 
         public static TaskQueueReader Reader(string workspaceSid) {
             return new TaskQueueReader(workspaceSid);
         }
     
-        /**
-         * create
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param friendlyName The friendly_name
-         * @param reservationActivitySid The reservation_activity_sid
-         * @param assignmentActivitySid The assignment_activity_sid
-         * @return TaskQueueCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="reservationActivitySid"> The reservation_activity_sid </param>
+        /// <param name="assignmentActivitySid"> The assignment_activity_sid </param>
+        /// <returns> TaskQueueCreator capable of executing the create </returns> 
         public static TaskQueueCreator Creator(string workspaceSid, string friendlyName, string reservationActivitySid, string assignmentActivitySid) {
             return new TaskQueueCreator(workspaceSid, friendlyName, reservationActivitySid, assignmentActivitySid);
         }
     
-        /**
-         * delete
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param sid The sid
-         * @return TaskQueueDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> TaskQueueDeleter capable of executing the delete </returns> 
         public static TaskQueueDeleter Deleter(string workspaceSid, string sid) {
             return new TaskQueueDeleter(workspaceSid, sid);
         }
     
-        /**
-         * Converts a JSON string into a TaskQueueResource object
-         * 
-         * @param json Raw JSON string
-         * @return TaskQueueResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a TaskQueueResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> TaskQueueResource object represented by the provided JSON </returns> 
         public static TaskQueueResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -152,93 +152,67 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             this.workspaceSid = workspaceSid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The assignment_activity_sid
-         */
+        /// <returns> The assignment_activity_sid </returns> 
         public string GetAssignmentActivitySid() {
             return this.assignmentActivitySid;
         }
     
-        /**
-         * @return The assignment_activity_name
-         */
+        /// <returns> The assignment_activity_name </returns> 
         public string GetAssignmentActivityName() {
             return this.assignmentActivityName;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The max_reserved_workers
-         */
+        /// <returns> The max_reserved_workers </returns> 
         public int? GetMaxReservedWorkers() {
             return this.maxReservedWorkers;
         }
     
-        /**
-         * @return The reservation_activity_sid
-         */
+        /// <returns> The reservation_activity_sid </returns> 
         public string GetReservationActivitySid() {
             return this.reservationActivitySid;
         }
     
-        /**
-         * @return The reservation_activity_name
-         */
+        /// <returns> The reservation_activity_name </returns> 
         public string GetReservationActivityName() {
             return this.reservationActivityName;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The target_workers
-         */
+        /// <returns> The target_workers </returns> 
         public string GetTargetWorkers() {
             return this.targetWorkers;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }
     
-        /**
-         * @return The workspace_sid
-         */
+        /// <returns> The workspace_sid </returns> 
         public string GetWorkspaceSid() {
             return this.workspaceSid;
         }

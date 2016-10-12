@@ -14,50 +14,50 @@ namespace Twilio.Rest.Api.V2010.Account {
         private Twilio.Types.PhoneNumber phoneNumber;
         private string friendlyName;
     
-        /**
-         * Construct a new OutgoingCallerIdReader.
-         */
+        /// <summary>
+        /// Construct a new OutgoingCallerIdReader.
+        /// </summary>
         public OutgoingCallerIdReader() {
         }
     
-        /**
-         * Construct a new OutgoingCallerIdReader
-         * 
-         * @param accountSid The account_sid
-         */
+        /// <summary>
+        /// Construct a new OutgoingCallerIdReader
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
         public OutgoingCallerIdReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
-        /**
-         * Only show the caller id resource that exactly matches this phone number
-         * 
-         * @param phoneNumber Filter by phone number
-         * @return this
-         */
+        /// <summary>
+        /// Only show the caller id resource that exactly matches this phone number
+        /// </summary>
+        ///
+        /// <param name="phoneNumber"> Filter by phone number </param>
+        /// <returns> this </returns> 
         public OutgoingCallerIdReader ByPhoneNumber(Twilio.Types.PhoneNumber phoneNumber) {
             this.phoneNumber = phoneNumber;
             return this;
         }
     
-        /**
-         * Only show the caller id resource that exactly matches this name
-         * 
-         * @param friendlyName Filter by friendly name
-         * @return this
-         */
+        /// <summary>
+        /// Only show the caller id resource that exactly matches this name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> Filter by friendly name </param>
+        /// <returns> this </returns> 
         public OutgoingCallerIdReader ByFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return OutgoingCallerIdResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> OutgoingCallerIdResource ResourceSet </returns> 
         public override Task<ResourceSet<OutgoingCallerIdResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -72,12 +72,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return OutgoingCallerIdResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> OutgoingCallerIdResource ResourceSet </returns> 
         public override ResourceSet<OutgoingCallerIdResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -91,13 +91,13 @@ namespace Twilio.Rest.Api.V2010.Account {
             return new ResourceSet<OutgoingCallerIdResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<OutgoingCallerIdResource> NextPage(Page<OutgoingCallerIdResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -109,13 +109,13 @@ namespace Twilio.Rest.Api.V2010.Account {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of OutgoingCallerIdResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of OutgoingCallerIdResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<OutgoingCallerIdResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -142,11 +142,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return Page<OutgoingCallerIdResource>.FromJson("outgoing_caller_ids", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (phoneNumber != null) {
                 request.AddQueryParam("PhoneNumber", phoneNumber.ToString());

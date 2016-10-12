@@ -14,24 +14,24 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         private string callSid;
         private string sid;
     
-        /**
-         * Construct a new NotificationFetcher.
-         * 
-         * @param callSid The call_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new NotificationFetcher.
+        /// </summary>
+        ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="sid"> The sid </param>
         public NotificationFetcher(string callSid, string sid) {
             this.callSid = callSid;
             this.sid = sid;
         }
     
-        /**
-         * Construct a new NotificationFetcher
-         * 
-         * @param accountSid The account_sid
-         * @param callSid The call_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new NotificationFetcher
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="sid"> The sid </param>
         public NotificationFetcher(string accountSid, string callSid, string sid) {
             this.accountSid = accountSid;
             this.callSid = callSid;
@@ -39,12 +39,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched NotificationResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched NotificationResource </returns> 
         public override async Task<NotificationResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -78,12 +78,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched NotificationResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched NotificationResource </returns> 
         public override NotificationResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

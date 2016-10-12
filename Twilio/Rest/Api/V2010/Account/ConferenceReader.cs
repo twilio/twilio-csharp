@@ -16,76 +16,74 @@ namespace Twilio.Rest.Api.V2010.Account {
         private string friendlyName;
         private ConferenceResource.Status status;
     
-        /**
-         * Construct a new ConferenceReader.
-         */
+        /// <summary>
+        /// Construct a new ConferenceReader.
+        /// </summary>
         public ConferenceReader() {
         }
     
-        /**
-         * Construct a new ConferenceReader
-         * 
-         * @param accountSid The account_sid
-         */
+        /// <summary>
+        /// Construct a new ConferenceReader
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
         public ConferenceReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
-        /**
-         * Only show conferences that started on this date, given as YYYY-MM-DD. You can
-         * also specify inequality such as DateCreated&lt;=YYYY-MM-DD
-         * 
-         * @param dateCreated Filter by date created
-         * @return this
-         */
+        /// <summary>
+        /// Only show conferences that started on this date, given as YYYY-MM-DD. You can also specify inequality such as
+        /// DateCreated&lt;=YYYY-MM-DD
+        /// </summary>
+        ///
+        /// <param name="dateCreated"> Filter by date created </param>
+        /// <returns> this </returns> 
         public ConferenceReader ByDateCreated(string dateCreated) {
             this.dateCreated = dateCreated;
             return this;
         }
     
-        /**
-         * Only show conferences that were last updated on this date, given as
-         * YYYY-MM-DD. You can also specify inequality such as
-         * DateUpdated&gt;=YYYY-MM-DD
-         * 
-         * @param dateUpdated Filter by date updated
-         * @return this
-         */
+        /// <summary>
+        /// Only show conferences that were last updated on this date, given as YYYY-MM-DD. You can also specify inequality such
+        /// as DateUpdated&gt;=YYYY-MM-DD
+        /// </summary>
+        ///
+        /// <param name="dateUpdated"> Filter by date updated </param>
+        /// <returns> this </returns> 
         public ConferenceReader ByDateUpdated(string dateUpdated) {
             this.dateUpdated = dateUpdated;
             return this;
         }
     
-        /**
-         * Only show results who's friendly name exactly matches the string
-         * 
-         * @param friendlyName Filter by friendly name
-         * @return this
-         */
+        /// <summary>
+        /// Only show results who's friendly name exactly matches the string
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> Filter by friendly name </param>
+        /// <returns> this </returns> 
         public ConferenceReader ByFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * A string representing the status of the conference. May be `init`,
-         * `in-progress`, or `completed`.
-         * 
-         * @param status The status of the conference
-         * @return this
-         */
+        /// <summary>
+        /// A string representing the status of the conference. May be `init`, `in-progress`, or `completed`.
+        /// </summary>
+        ///
+        /// <param name="status"> The status of the conference </param>
+        /// <returns> this </returns> 
         public ConferenceReader ByStatus(ConferenceResource.Status status) {
             this.status = status;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return ConferenceResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> ConferenceResource ResourceSet </returns> 
         public override Task<ResourceSet<ConferenceResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -100,12 +98,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return ConferenceResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> ConferenceResource ResourceSet </returns> 
         public override ResourceSet<ConferenceResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -119,13 +117,13 @@ namespace Twilio.Rest.Api.V2010.Account {
             return new ResourceSet<ConferenceResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<ConferenceResource> NextPage(Page<ConferenceResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -137,13 +135,13 @@ namespace Twilio.Rest.Api.V2010.Account {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of ConferenceResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of ConferenceResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<ConferenceResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -170,11 +168,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return Page<ConferenceResource>.FromJson("conferences", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (dateCreated != null) {
                 request.AddQueryParam("DateCreated", dateCreated);

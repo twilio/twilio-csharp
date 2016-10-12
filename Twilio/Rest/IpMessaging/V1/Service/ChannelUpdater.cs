@@ -17,68 +17,68 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         private string attributes;
         private ChannelResource.ChannelType type;
     
-        /**
-         * Construct a new ChannelUpdater
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new ChannelUpdater
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
         public ChannelUpdater(string serviceSid, string sid) {
             this.serviceSid = serviceSid;
             this.sid = sid;
         }
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public ChannelUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * The unique_name
-         * 
-         * @param uniqueName The unique_name
-         * @return this
-         */
+        /// <summary>
+        /// The unique_name
+        /// </summary>
+        ///
+        /// <param name="uniqueName"> The unique_name </param>
+        /// <returns> this </returns> 
         public ChannelUpdater setUniqueName(string uniqueName) {
             this.uniqueName = uniqueName;
             return this;
         }
     
-        /**
-         * The attributes
-         * 
-         * @param attributes The attributes
-         * @return this
-         */
+        /// <summary>
+        /// The attributes
+        /// </summary>
+        ///
+        /// <param name="attributes"> The attributes </param>
+        /// <returns> this </returns> 
         public ChannelUpdater setAttributes(string attributes) {
             this.attributes = attributes;
             return this;
         }
     
-        /**
-         * The type
-         * 
-         * @param type The type
-         * @return this
-         */
+        /// <summary>
+        /// The type
+        /// </summary>
+        ///
+        /// <param name="type"> The type </param>
+        /// <returns> this </returns> 
         public ChannelUpdater setType(ChannelResource.ChannelType type) {
             this.type = type;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated ChannelResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated ChannelResource </returns> 
         public override async Task<ChannelResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -113,12 +113,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated ChannelResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated ChannelResource </returns> 
         public override ChannelResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -152,11 +152,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
             return ChannelResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

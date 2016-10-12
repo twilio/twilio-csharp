@@ -13,33 +13,33 @@ namespace Twilio.Rest.Preview.Sync.Service {
         private string serviceSid;
         private string uniqueName;
     
-        /**
-         * Construct a new SyncListCreator
-         * 
-         * @param serviceSid The service_sid
-         */
+        /// <summary>
+        /// Construct a new SyncListCreator
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
         public SyncListCreator(string serviceSid) {
             this.serviceSid = serviceSid;
         }
     
-        /**
-         * The unique_name
-         * 
-         * @param uniqueName The unique_name
-         * @return this
-         */
+        /// <summary>
+        /// The unique_name
+        /// </summary>
+        ///
+        /// <param name="uniqueName"> The unique_name </param>
+        /// <returns> this </returns> 
         public SyncListCreator setUniqueName(string uniqueName) {
             this.uniqueName = uniqueName;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created SyncListResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created SyncListResource </returns> 
         public override async Task<SyncListResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -74,12 +74,12 @@ namespace Twilio.Rest.Preview.Sync.Service {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created SyncListResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created SyncListResource </returns> 
         public override SyncListResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -113,11 +113,11 @@ namespace Twilio.Rest.Preview.Sync.Service {
             return SyncListResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (uniqueName != null) {
                 request.AddPostParam("UniqueName", uniqueName);

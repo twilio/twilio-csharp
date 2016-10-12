@@ -14,24 +14,24 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
         private string recordingSid;
         private string sid;
     
-        /**
-         * Construct a new TranscriptionFetcher.
-         * 
-         * @param recordingSid The recording_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new TranscriptionFetcher.
+        /// </summary>
+        ///
+        /// <param name="recordingSid"> The recording_sid </param>
+        /// <param name="sid"> The sid </param>
         public TranscriptionFetcher(string recordingSid, string sid) {
             this.recordingSid = recordingSid;
             this.sid = sid;
         }
     
-        /**
-         * Construct a new TranscriptionFetcher
-         * 
-         * @param accountSid The account_sid
-         * @param recordingSid The recording_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new TranscriptionFetcher
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="recordingSid"> The recording_sid </param>
+        /// <param name="sid"> The sid </param>
         public TranscriptionFetcher(string accountSid, string recordingSid, string sid) {
             this.accountSid = accountSid;
             this.recordingSid = recordingSid;
@@ -39,12 +39,12 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched TranscriptionResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched TranscriptionResource </returns> 
         public override async Task<TranscriptionResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -78,12 +78,12 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched TranscriptionResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched TranscriptionResource </returns> 
         public override TranscriptionResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

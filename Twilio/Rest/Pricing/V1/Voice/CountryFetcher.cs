@@ -12,22 +12,22 @@ namespace Twilio.Rest.Pricing.V1.Voice {
     public class CountryFetcher : Fetcher<CountryResource> {
         private string isoCountry;
     
-        /**
-         * Construct a new CountryFetcher
-         * 
-         * @param isoCountry The iso_country
-         */
+        /// <summary>
+        /// Construct a new CountryFetcher
+        /// </summary>
+        ///
+        /// <param name="isoCountry"> The iso_country </param>
         public CountryFetcher(string isoCountry) {
             this.isoCountry = isoCountry;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched CountryResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched CountryResource </returns> 
         public override async Task<CountryResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -61,12 +61,12 @@ namespace Twilio.Rest.Pricing.V1.Voice {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched CountryResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched CountryResource </returns> 
         public override CountryResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

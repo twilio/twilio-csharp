@@ -20,91 +20,91 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         private Uri holdUrl;
         private Twilio.Http.HttpMethod holdMethod;
     
-        /**
-         * Construct a new ParticipantUpdater.
-         * 
-         * @param conferenceSid The string that uniquely identifies this conference
-         * @param callSid The call_sid
-         */
+        /// <summary>
+        /// Construct a new ParticipantUpdater.
+        /// </summary>
+        ///
+        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
+        /// <param name="callSid"> The call_sid </param>
         public ParticipantUpdater(string conferenceSid, string callSid) {
             this.conferenceSid = conferenceSid;
             this.callSid = callSid;
         }
     
-        /**
-         * Construct a new ParticipantUpdater
-         * 
-         * @param accountSid The account_sid
-         * @param conferenceSid The string that uniquely identifies this conference
-         * @param callSid The call_sid
-         */
+        /// <summary>
+        /// Construct a new ParticipantUpdater
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
+        /// <param name="callSid"> The call_sid </param>
         public ParticipantUpdater(string accountSid, string conferenceSid, string callSid) {
             this.accountSid = accountSid;
             this.conferenceSid = conferenceSid;
             this.callSid = callSid;
         }
     
-        /**
-         * Indicates if the participant should be muted
-         * 
-         * @param muted Indicates if the participant should be muted
-         * @return this
-         */
+        /// <summary>
+        /// Indicates if the participant should be muted
+        /// </summary>
+        ///
+        /// <param name="muted"> Indicates if the participant should be muted </param>
+        /// <returns> this </returns> 
         public ParticipantUpdater setMuted(bool? muted) {
             this.muted = muted;
             return this;
         }
     
-        /**
-         * The hold
-         * 
-         * @param hold The hold
-         * @return this
-         */
+        /// <summary>
+        /// The hold
+        /// </summary>
+        ///
+        /// <param name="hold"> The hold </param>
+        /// <returns> this </returns> 
         public ParticipantUpdater setHold(bool? hold) {
             this.hold = hold;
             return this;
         }
     
-        /**
-         * The hold_url
-         * 
-         * @param holdUrl The hold_url
-         * @return this
-         */
+        /// <summary>
+        /// The hold_url
+        /// </summary>
+        ///
+        /// <param name="holdUrl"> The hold_url </param>
+        /// <returns> this </returns> 
         public ParticipantUpdater setHoldUrl(Uri holdUrl) {
             this.holdUrl = holdUrl;
             return this;
         }
     
-        /**
-         * The hold_url
-         * 
-         * @param holdUrl The hold_url
-         * @return this
-         */
+        /// <summary>
+        /// The hold_url
+        /// </summary>
+        ///
+        /// <param name="holdUrl"> The hold_url </param>
+        /// <returns> this </returns> 
         public ParticipantUpdater setHoldUrl(string holdUrl) {
             return setHoldUrl(Promoter.UriFromString(holdUrl));
         }
     
-        /**
-         * The hold_method
-         * 
-         * @param holdMethod The hold_method
-         * @return this
-         */
+        /// <summary>
+        /// The hold_method
+        /// </summary>
+        ///
+        /// <param name="holdMethod"> The hold_method </param>
+        /// <returns> this </returns> 
         public ParticipantUpdater setHoldMethod(Twilio.Http.HttpMethod holdMethod) {
             this.holdMethod = holdMethod;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated ParticipantResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated ParticipantResource </returns> 
         public override async Task<ParticipantResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -139,12 +139,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated ParticipantResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated ParticipantResource </returns> 
         public override ParticipantResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -178,11 +178,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
             return ParticipantResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (muted != null) {
                 request.AddPostParam("Muted", muted.ToString());

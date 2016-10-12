@@ -38,61 +38,61 @@ namespace Twilio.Rest.Notify.V1 {
             }
         }
     
-        /**
-         * read
-         * 
-         * @return CredentialReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <returns> CredentialReader capable of executing the read </returns> 
         public static CredentialReader Reader() {
             return new CredentialReader();
         }
     
-        /**
-         * create
-         * 
-         * @param type The type
-         * @return CredentialCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="type"> The type </param>
+        /// <returns> CredentialCreator capable of executing the create </returns> 
         public static CredentialCreator Creator(CredentialResource.PushService type) {
             return new CredentialCreator(type);
         }
     
-        /**
-         * fetch
-         * 
-         * @param sid The sid
-         * @return CredentialFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> CredentialFetcher capable of executing the fetch </returns> 
         public static CredentialFetcher Fetcher(string sid) {
             return new CredentialFetcher(sid);
         }
     
-        /**
-         * update
-         * 
-         * @param sid The sid
-         * @return CredentialUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> CredentialUpdater capable of executing the update </returns> 
         public static CredentialUpdater Updater(string sid) {
             return new CredentialUpdater(sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param sid The sid
-         * @return CredentialDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> CredentialDeleter capable of executing the delete </returns> 
         public static CredentialDeleter Deleter(string sid) {
             return new CredentialDeleter(sid);
         }
     
-        /**
-         * Converts a JSON string into a CredentialResource object
-         * 
-         * @param json Raw JSON string
-         * @return CredentialResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a CredentialResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> CredentialResource object represented by the provided JSON </returns> 
         public static CredentialResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -150,58 +150,42 @@ namespace Twilio.Rest.Notify.V1 {
             this.url = url;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The type
-         */
+        /// <returns> The type </returns> 
         public CredentialResource.PushService GetCredentialType() {
             return this.type;
         }
     
-        /**
-         * @return The sandbox
-         */
+        /// <returns> The sandbox </returns> 
         public string GetSandbox() {
             return this.sandbox;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }

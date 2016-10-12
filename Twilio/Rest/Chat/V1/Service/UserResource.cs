@@ -9,66 +9,66 @@ using Twilio.Http;
 namespace Twilio.Rest.Chat.V1.Service {
 
     public class UserResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         * @return UserFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> UserFetcher capable of executing the fetch </returns> 
         public static UserFetcher Fetcher(string serviceSid, string sid) {
             return new UserFetcher(serviceSid, sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         * @return UserDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> UserDeleter capable of executing the delete </returns> 
         public static UserDeleter Deleter(string serviceSid, string sid) {
             return new UserDeleter(serviceSid, sid);
         }
     
-        /**
-         * create
-         * 
-         * @param serviceSid The service_sid
-         * @param identity The identity
-         * @return UserCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="identity"> The identity </param>
+        /// <returns> UserCreator capable of executing the create </returns> 
         public static UserCreator Creator(string serviceSid, string identity) {
             return new UserCreator(serviceSid, identity);
         }
     
-        /**
-         * read
-         * 
-         * @param serviceSid The service_sid
-         * @return UserReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <returns> UserReader capable of executing the read </returns> 
         public static UserReader Reader(string serviceSid) {
             return new UserReader(serviceSid);
         }
     
-        /**
-         * update
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         * @return UserUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> UserUpdater capable of executing the update </returns> 
         public static UserUpdater Updater(string serviceSid, string sid) {
             return new UserUpdater(serviceSid, sid);
         }
     
-        /**
-         * Converts a JSON string into a UserResource object
-         * 
-         * @param json Raw JSON string
-         * @return UserResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a UserResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> UserResource object represented by the provided JSON </returns> 
         public static UserResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -125,58 +125,42 @@ namespace Twilio.Rest.Chat.V1.Service {
             this.url = url;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The service_sid
-         */
+        /// <returns> The service_sid </returns> 
         public string GetServiceSid() {
             return this.serviceSid;
         }
     
-        /**
-         * @return The role_sid
-         */
+        /// <returns> The role_sid </returns> 
         public string GetRoleSid() {
             return this.roleSid;
         }
     
-        /**
-         * @return The identity
-         */
+        /// <returns> The identity </returns> 
         public string GetIdentity() {
             return this.identity;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }

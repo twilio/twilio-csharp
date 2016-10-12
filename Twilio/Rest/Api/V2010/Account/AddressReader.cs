@@ -15,61 +15,61 @@ namespace Twilio.Rest.Api.V2010.Account {
         private string friendlyName;
         private string isoCountry;
     
-        /**
-         * Construct a new AddressReader.
-         */
+        /// <summary>
+        /// Construct a new AddressReader.
+        /// </summary>
         public AddressReader() {
         }
     
-        /**
-         * Construct a new AddressReader
-         * 
-         * @param accountSid The account_sid
-         */
+        /// <summary>
+        /// Construct a new AddressReader
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
         public AddressReader(string accountSid) {
             this.accountSid = accountSid;
         }
     
-        /**
-         * The customer_name
-         * 
-         * @param customerName The customer_name
-         * @return this
-         */
+        /// <summary>
+        /// The customer_name
+        /// </summary>
+        ///
+        /// <param name="customerName"> The customer_name </param>
+        /// <returns> this </returns> 
         public AddressReader ByCustomerName(string customerName) {
             this.customerName = customerName;
             return this;
         }
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public AddressReader ByFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * The iso_country
-         * 
-         * @param isoCountry The iso_country
-         * @return this
-         */
+        /// <summary>
+        /// The iso_country
+        /// </summary>
+        ///
+        /// <param name="isoCountry"> The iso_country </param>
+        /// <returns> this </returns> 
         public AddressReader ByIsoCountry(string isoCountry) {
             this.isoCountry = isoCountry;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return AddressResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> AddressResource ResourceSet </returns> 
         public override Task<ResourceSet<AddressResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -84,12 +84,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return AddressResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> AddressResource ResourceSet </returns> 
         public override ResourceSet<AddressResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -103,13 +103,13 @@ namespace Twilio.Rest.Api.V2010.Account {
             return new ResourceSet<AddressResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<AddressResource> NextPage(Page<AddressResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -121,13 +121,13 @@ namespace Twilio.Rest.Api.V2010.Account {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of AddressResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of AddressResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<AddressResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -154,11 +154,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return Page<AddressResource>.FromJson("addresses", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (customerName != null) {
                 request.AddQueryParam("CustomerName", customerName);

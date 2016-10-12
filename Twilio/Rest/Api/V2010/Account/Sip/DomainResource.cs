@@ -9,115 +9,115 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Sip {
 
     public class DomainResource : SidResource {
-        /**
-         * Retrieve a list of domains belonging to the account used to make the request
-         * 
-         * @param accountSid The account_sid
-         * @return DomainReader capable of executing the read
-         */
+        /// <summary>
+        /// Retrieve a list of domains belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> DomainReader capable of executing the read </returns> 
         public static DomainReader Reader(string accountSid) {
             return new DomainReader(accountSid);
         }
     
-        /**
-         * Create a DomainReader to execute read.
-         * 
-         * @return DomainReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a DomainReader to execute read.
+        /// </summary>
+        ///
+        /// <returns> DomainReader capable of executing the read </returns> 
         public static DomainReader Reader() {
             return new DomainReader();
         }
     
-        /**
-         * Create a new Domain
-         * 
-         * @param accountSid The account_sid
-         * @param domainName The unique address on Twilio to route SIP traffic
-         * @return DomainCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a new Domain
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="domainName"> The unique address on Twilio to route SIP traffic </param>
+        /// <returns> DomainCreator capable of executing the create </returns> 
         public static DomainCreator Creator(string accountSid, string domainName) {
             return new DomainCreator(accountSid, domainName);
         }
     
-        /**
-         * Create a DomainCreator to execute create.
-         * 
-         * @param domainName The unique address on Twilio to route SIP traffic
-         * @return DomainCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a DomainCreator to execute create.
+        /// </summary>
+        ///
+        /// <param name="domainName"> The unique address on Twilio to route SIP traffic </param>
+        /// <returns> DomainCreator capable of executing the create </returns> 
         public static DomainCreator Creator(string domainName) {
             return new DomainCreator(domainName);
         }
     
-        /**
-         * Fetch an instance of a Domain
-         * 
-         * @param accountSid The account_sid
-         * @param sid Fetch by unique Domain Sid
-         * @return DomainFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Fetch an instance of a Domain
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Fetch by unique Domain Sid </param>
+        /// <returns> DomainFetcher capable of executing the fetch </returns> 
         public static DomainFetcher Fetcher(string accountSid, string sid) {
             return new DomainFetcher(accountSid, sid);
         }
     
-        /**
-         * Create a DomainFetcher to execute fetch.
-         * 
-         * @param sid Fetch by unique Domain Sid
-         * @return DomainFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a DomainFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique Domain Sid </param>
+        /// <returns> DomainFetcher capable of executing the fetch </returns> 
         public static DomainFetcher Fetcher(string sid) {
             return new DomainFetcher(sid);
         }
     
-        /**
-         * Update the attributes of a domain
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         * @return DomainUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Update the attributes of a domain
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> DomainUpdater capable of executing the update </returns> 
         public static DomainUpdater Updater(string accountSid, string sid) {
             return new DomainUpdater(accountSid, sid);
         }
     
-        /**
-         * Create a DomainUpdater to execute update.
-         * 
-         * @param sid The sid
-         * @return DomainUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Create a DomainUpdater to execute update.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> DomainUpdater capable of executing the update </returns> 
         public static DomainUpdater Updater(string sid) {
             return new DomainUpdater(sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         * @return DomainDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> DomainDeleter capable of executing the delete </returns> 
         public static DomainDeleter Deleter(string accountSid, string sid) {
             return new DomainDeleter(accountSid, sid);
         }
     
-        /**
-         * Create a DomainDeleter to execute delete.
-         * 
-         * @param sid The sid
-         * @return DomainDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a DomainDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> DomainDeleter capable of executing the delete </returns> 
         public static DomainDeleter Deleter(string sid) {
             return new DomainDeleter(sid);
         }
     
-        /**
-         * Converts a JSON string into a DomainResource object
-         * 
-         * @param json Raw JSON string
-         * @return DomainResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a DomainResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> DomainResource object represented by the provided JSON </returns> 
         public static DomainResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -212,107 +212,77 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
             this.voiceUrl = voiceUrl;
         }
     
-        /**
-         * @return The unique id of the account that sent the message
-         */
+        /// <returns> The unique id of the account that sent the message </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The Twilio API version used to process the message
-         */
+        /// <returns> The Twilio API version used to process the message </returns> 
         public string GetApiVersion() {
             return this.apiVersion;
         }
     
-        /**
-         * @return The types of authentication mapped to the domain
-         */
+        /// <returns> The types of authentication mapped to the domain </returns> 
         public string GetAuthType() {
             return this.authType;
         }
     
-        /**
-         * @return The date this resource was created
-         */
+        /// <returns> The date this resource was created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date this resource was last updated
-         */
+        /// <returns> The date this resource was last updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The unique address on Twilio to route SIP traffic
-         */
+        /// <returns> The unique address on Twilio to route SIP traffic </returns> 
         public string GetDomainName() {
             return this.domainName;
         }
     
-        /**
-         * @return A user-specified, human-readable name for the trigger.
-         */
+        /// <returns> A user-specified, human-readable name for the trigger. </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return A string that uniquely identifies the SIP Domain
-         */
+        /// <returns> A string that uniquely identifies the SIP Domain </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The URI for this resource
-         */
+        /// <returns> The URI for this resource </returns> 
         public string GetUri() {
             return this.uri;
         }
     
-        /**
-         * @return HTTP method used with voice_fallback_url
-         */
+        /// <returns> HTTP method used with voice_fallback_url </returns> 
         public Twilio.Http.HttpMethod GetVoiceFallbackMethod() {
             return this.voiceFallbackMethod;
         }
     
-        /**
-         * @return URL Twilio will request if an error occurs in executing TwiML
-         */
+        /// <returns> URL Twilio will request if an error occurs in executing TwiML </returns> 
         public Uri GetVoiceFallbackUrl() {
             return this.voiceFallbackUrl;
         }
     
-        /**
-         * @return HTTP method to use with voice_url
-         */
+        /// <returns> HTTP method to use with voice_url </returns> 
         public Twilio.Http.HttpMethod GetVoiceMethod() {
             return this.voiceMethod;
         }
     
-        /**
-         * @return The voice_status_callback_method
-         */
+        /// <returns> The voice_status_callback_method </returns> 
         public Twilio.Http.HttpMethod GetVoiceStatusCallbackMethod() {
             return this.voiceStatusCallbackMethod;
         }
     
-        /**
-         * @return URL that Twilio will request with status updates
-         */
+        /// <returns> URL that Twilio will request with status updates </returns> 
         public Uri GetVoiceStatusCallbackUrl() {
             return this.voiceStatusCallbackUrl;
         }
     
-        /**
-         * @return URL Twilio will request when receiving a call
-         */
+        /// <returns> URL Twilio will request when receiving a call </returns> 
         public Uri GetVoiceUrl() {
             return this.voiceUrl;
         }

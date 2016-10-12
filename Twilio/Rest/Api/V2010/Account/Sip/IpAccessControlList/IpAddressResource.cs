@@ -9,132 +9,132 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
 
     public class IpAddressResource : SidResource {
-        /**
-         * read
-         * 
-         * @param accountSid The account_sid
-         * @param ipAccessControlListSid The ip_access_control_list_sid
-         * @return IpAddressReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <returns> IpAddressReader capable of executing the read </returns> 
         public static IpAddressReader Reader(string accountSid, string ipAccessControlListSid) {
             return new IpAddressReader(accountSid, ipAccessControlListSid);
         }
     
-        /**
-         * Create a IpAddressReader to execute read.
-         * 
-         * @param ipAccessControlListSid The ip_access_control_list_sid
-         * @return IpAddressReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a IpAddressReader to execute read.
+        /// </summary>
+        ///
+        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <returns> IpAddressReader capable of executing the read </returns> 
         public static IpAddressReader Reader(string ipAccessControlListSid) {
             return new IpAddressReader(ipAccessControlListSid);
         }
     
-        /**
-         * create
-         * 
-         * @param accountSid The account_sid
-         * @param ipAccessControlListSid The ip_access_control_list_sid
-         * @param friendlyName The friendly_name
-         * @param ipAddress The ip_address
-         * @return IpAddressCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="ipAddress"> The ip_address </param>
+        /// <returns> IpAddressCreator capable of executing the create </returns> 
         public static IpAddressCreator Creator(string accountSid, string ipAccessControlListSid, string friendlyName, string ipAddress) {
             return new IpAddressCreator(accountSid, ipAccessControlListSid, friendlyName, ipAddress);
         }
     
-        /**
-         * Create a IpAddressCreator to execute create.
-         * 
-         * @param ipAccessControlListSid The ip_access_control_list_sid
-         * @param friendlyName The friendly_name
-         * @param ipAddress The ip_address
-         * @return IpAddressCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a IpAddressCreator to execute create.
+        /// </summary>
+        ///
+        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="ipAddress"> The ip_address </param>
+        /// <returns> IpAddressCreator capable of executing the create </returns> 
         public static IpAddressCreator Creator(string ipAccessControlListSid, 
                                                string friendlyName, 
                                                string ipAddress) {
             return new IpAddressCreator(ipAccessControlListSid, friendlyName, ipAddress);
         }
     
-        /**
-         * fetch
-         * 
-         * @param accountSid The account_sid
-         * @param ipAccessControlListSid The ip_access_control_list_sid
-         * @param sid The sid
-         * @return IpAddressFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> IpAddressFetcher capable of executing the fetch </returns> 
         public static IpAddressFetcher Fetcher(string accountSid, string ipAccessControlListSid, string sid) {
             return new IpAddressFetcher(accountSid, ipAccessControlListSid, sid);
         }
     
-        /**
-         * Create a IpAddressFetcher to execute fetch.
-         * 
-         * @param ipAccessControlListSid The ip_access_control_list_sid
-         * @param sid The sid
-         * @return IpAddressFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a IpAddressFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> IpAddressFetcher capable of executing the fetch </returns> 
         public static IpAddressFetcher Fetcher(string ipAccessControlListSid, 
                                                string sid) {
             return new IpAddressFetcher(ipAccessControlListSid, sid);
         }
     
-        /**
-         * update
-         * 
-         * @param accountSid The account_sid
-         * @param ipAccessControlListSid The ip_access_control_list_sid
-         * @param sid The sid
-         * @return IpAddressUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> IpAddressUpdater capable of executing the update </returns> 
         public static IpAddressUpdater Updater(string accountSid, string ipAccessControlListSid, string sid) {
             return new IpAddressUpdater(accountSid, ipAccessControlListSid, sid);
         }
     
-        /**
-         * Create a IpAddressUpdater to execute update.
-         * 
-         * @param ipAccessControlListSid The ip_access_control_list_sid
-         * @param sid The sid
-         * @return IpAddressUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Create a IpAddressUpdater to execute update.
+        /// </summary>
+        ///
+        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> IpAddressUpdater capable of executing the update </returns> 
         public static IpAddressUpdater Updater(string ipAccessControlListSid, 
                                                string sid) {
             return new IpAddressUpdater(ipAccessControlListSid, sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param accountSid The account_sid
-         * @param ipAccessControlListSid The ip_access_control_list_sid
-         * @param sid The sid
-         * @return IpAddressDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> IpAddressDeleter capable of executing the delete </returns> 
         public static IpAddressDeleter Deleter(string accountSid, string ipAccessControlListSid, string sid) {
             return new IpAddressDeleter(accountSid, ipAccessControlListSid, sid);
         }
     
-        /**
-         * Create a IpAddressDeleter to execute delete.
-         * 
-         * @param ipAccessControlListSid The ip_access_control_list_sid
-         * @param sid The sid
-         * @return IpAddressDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a IpAddressDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> IpAddressDeleter capable of executing the delete </returns> 
         public static IpAddressDeleter Deleter(string ipAccessControlListSid, 
                                                string sid) {
             return new IpAddressDeleter(ipAccessControlListSid, sid);
         }
     
-        /**
-         * Converts a JSON string into a IpAddressResource object
-         * 
-         * @param json Raw JSON string
-         * @return IpAddressResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a IpAddressResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> IpAddressResource object represented by the provided JSON </returns> 
         public static IpAddressResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -191,58 +191,42 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
             this.uri = uri;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The ip_address
-         */
+        /// <returns> The ip_address </returns> 
         public string GetIpAddress() {
             return this.ipAddress;
         }
     
-        /**
-         * @return The ip_access_control_list_sid
-         */
+        /// <returns> The ip_access_control_list_sid </returns> 
         public string GetIpAccessControlListSid() {
             return this.ipAccessControlListSid;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The uri
-         */
+        /// <returns> The uri </returns> 
         public string GetUri() {
             return this.uri;
         }

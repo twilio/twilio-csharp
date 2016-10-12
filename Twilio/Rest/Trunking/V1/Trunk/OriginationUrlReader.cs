@@ -12,22 +12,22 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
     public class OriginationUrlReader : Reader<OriginationUrlResource> {
         private string trunkSid;
     
-        /**
-         * Construct a new OriginationUrlReader
-         * 
-         * @param trunkSid The trunk_sid
-         */
+        /// <summary>
+        /// Construct a new OriginationUrlReader
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> The trunk_sid </param>
         public OriginationUrlReader(string trunkSid) {
             this.trunkSid = trunkSid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return OriginationUrlResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> OriginationUrlResource ResourceSet </returns> 
         public override Task<ResourceSet<OriginationUrlResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -42,12 +42,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return OriginationUrlResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> OriginationUrlResource ResourceSet </returns> 
         public override ResourceSet<OriginationUrlResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -61,13 +61,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
             return new ResourceSet<OriginationUrlResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<OriginationUrlResource> NextPage(Page<OriginationUrlResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -79,13 +79,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of OriginationUrlResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of OriginationUrlResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<OriginationUrlResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -112,11 +112,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
             return Page<OriginationUrlResource>.FromJson("origination_urls", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             request.AddQueryParam("PageSize", PageSize.ToString());
         }

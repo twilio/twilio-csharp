@@ -41,67 +41,67 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             }
         }
     
-        /**
-         * fetch
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param sid The sid
-         * @return TaskFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> TaskFetcher capable of executing the fetch </returns> 
         public static TaskFetcher Fetcher(string workspaceSid, string sid) {
             return new TaskFetcher(workspaceSid, sid);
         }
     
-        /**
-         * update
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param sid The sid
-         * @return TaskUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> TaskUpdater capable of executing the update </returns> 
         public static TaskUpdater Updater(string workspaceSid, string sid) {
             return new TaskUpdater(workspaceSid, sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param sid The sid
-         * @return TaskDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> TaskDeleter capable of executing the delete </returns> 
         public static TaskDeleter Deleter(string workspaceSid, string sid) {
             return new TaskDeleter(workspaceSid, sid);
         }
     
-        /**
-         * read
-         * 
-         * @param workspaceSid The workspace_sid
-         * @return TaskReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <returns> TaskReader capable of executing the read </returns> 
         public static TaskReader Reader(string workspaceSid) {
             return new TaskReader(workspaceSid);
         }
     
-        /**
-         * create
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param attributes The attributes
-         * @param workflowSid The workflow_sid
-         * @return TaskCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="attributes"> The attributes </param>
+        /// <param name="workflowSid"> The workflow_sid </param>
+        /// <returns> TaskCreator capable of executing the create </returns> 
         public static TaskCreator Creator(string workspaceSid, string attributes, string workflowSid) {
             return new TaskCreator(workspaceSid, attributes, workflowSid);
         }
     
-        /**
-         * Converts a JSON string into a TaskResource object
-         * 
-         * @param json Raw JSON string
-         * @return TaskResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a TaskResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> TaskResource object represented by the provided JSON </returns> 
         public static TaskResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -194,107 +194,77 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             this.workspaceSid = workspaceSid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The age
-         */
+        /// <returns> The age </returns> 
         public int? GetAge() {
             return this.age;
         }
     
-        /**
-         * @return The assignment_status
-         */
+        /// <returns> The assignment_status </returns> 
         public TaskResource.Status GetAssignmentStatus() {
             return this.assignmentStatus;
         }
     
-        /**
-         * @return The attributes
-         */
+        /// <returns> The attributes </returns> 
         public string GetAttributes() {
             return this.attributes;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The priority
-         */
+        /// <returns> The priority </returns> 
         public int? GetPriority() {
             return this.priority;
         }
     
-        /**
-         * @return The reason
-         */
+        /// <returns> The reason </returns> 
         public string GetReason() {
             return this.reason;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The task_queue_sid
-         */
+        /// <returns> The task_queue_sid </returns> 
         public string GetTaskQueueSid() {
             return this.taskQueueSid;
         }
     
-        /**
-         * @return The task_channel_sid
-         */
+        /// <returns> The task_channel_sid </returns> 
         public string GetTaskChannelSid() {
             return this.taskChannelSid;
         }
     
-        /**
-         * @return The task_channel_unique_name
-         */
+        /// <returns> The task_channel_unique_name </returns> 
         public string GetTaskChannelUniqueName() {
             return this.taskChannelUniqueName;
         }
     
-        /**
-         * @return The timeout
-         */
+        /// <returns> The timeout </returns> 
         public int? GetTimeout() {
             return this.timeout;
         }
     
-        /**
-         * @return The workflow_sid
-         */
+        /// <returns> The workflow_sid </returns> 
         public string GetWorkflowSid() {
             return this.workflowSid;
         }
     
-        /**
-         * @return The workspace_sid
-         */
+        /// <returns> The workspace_sid </returns> 
         public string GetWorkspaceSid() {
             return this.workspaceSid;
         }

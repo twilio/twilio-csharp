@@ -9,31 +9,31 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.Wireless {
 
     public class RatePlanResource : SidResource {
-        /**
-         * read
-         * 
-         * @return RatePlanReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <returns> RatePlanReader capable of executing the read </returns> 
         public static RatePlanReader Reader() {
             return new RatePlanReader();
         }
     
-        /**
-         * fetch
-         * 
-         * @param sid The sid
-         * @return RatePlanFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> RatePlanFetcher capable of executing the fetch </returns> 
         public static RatePlanFetcher Fetcher(string sid) {
             return new RatePlanFetcher(sid);
         }
     
-        /**
-         * Converts a JSON string into a RatePlanResource object
-         * 
-         * @param json Raw JSON string
-         * @return RatePlanResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a RatePlanResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> RatePlanResource object represented by the provided JSON </returns> 
         public static RatePlanResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -125,107 +125,77 @@ namespace Twilio.Rest.Preview.Wireless {
             this.url = url;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The alias
-         */
+        /// <returns> The alias </returns> 
         public string GetAlias() {
             return this.alias;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The data_metering
-         */
+        /// <returns> The data_metering </returns> 
         public string GetDataMetering() {
             return this.dataMetering;
         }
     
-        /**
-         * @return The capabilities
-         */
+        /// <returns> The capabilities </returns> 
         public Object GetCapabilities() {
             return this.capabilities;
         }
     
-        /**
-         * @return The voice_cap
-         */
+        /// <returns> The voice_cap </returns> 
         public int? GetVoiceCap() {
             return this.voiceCap;
         }
     
-        /**
-         * @return The messaging_cap
-         */
+        /// <returns> The messaging_cap </returns> 
         public int? GetMessagingCap() {
             return this.messagingCap;
         }
     
-        /**
-         * @return The commands_cap
-         */
+        /// <returns> The commands_cap </returns> 
         public int? GetCommandsCap() {
             return this.commandsCap;
         }
     
-        /**
-         * @return The data_cap
-         */
+        /// <returns> The data_cap </returns> 
         public int? GetDataCap() {
             return this.dataCap;
         }
     
-        /**
-         * @return The cap_period
-         */
+        /// <returns> The cap_period </returns> 
         public int? GetCapPeriod() {
             return this.capPeriod;
         }
     
-        /**
-         * @return The cap_unit
-         */
+        /// <returns> The cap_unit </returns> 
         public string GetCapUnit() {
             return this.capUnit;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }

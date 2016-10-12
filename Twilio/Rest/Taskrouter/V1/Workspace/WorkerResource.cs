@@ -9,66 +9,66 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
     public class WorkerResource : SidResource {
-        /**
-         * read
-         * 
-         * @param workspaceSid The workspace_sid
-         * @return WorkerReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <returns> WorkerReader capable of executing the read </returns> 
         public static WorkerReader Reader(string workspaceSid) {
             return new WorkerReader(workspaceSid);
         }
     
-        /**
-         * create
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param friendlyName The friendly_name
-         * @return WorkerCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> WorkerCreator capable of executing the create </returns> 
         public static WorkerCreator Creator(string workspaceSid, string friendlyName) {
             return new WorkerCreator(workspaceSid, friendlyName);
         }
     
-        /**
-         * fetch
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param sid The sid
-         * @return WorkerFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> WorkerFetcher capable of executing the fetch </returns> 
         public static WorkerFetcher Fetcher(string workspaceSid, string sid) {
             return new WorkerFetcher(workspaceSid, sid);
         }
     
-        /**
-         * update
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param sid The sid
-         * @return WorkerUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> WorkerUpdater capable of executing the update </returns> 
         public static WorkerUpdater Updater(string workspaceSid, string sid) {
             return new WorkerUpdater(workspaceSid, sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param sid The sid
-         * @return WorkerDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> WorkerDeleter capable of executing the delete </returns> 
         public static WorkerDeleter Deleter(string workspaceSid, string sid) {
             return new WorkerDeleter(workspaceSid, sid);
         }
     
-        /**
-         * Converts a JSON string into a WorkerResource object
-         * 
-         * @param json Raw JSON string
-         * @return WorkerResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a WorkerResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> WorkerResource object represented by the provided JSON </returns> 
         public static WorkerResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -140,79 +140,57 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             this.workspaceSid = workspaceSid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The activity_name
-         */
+        /// <returns> The activity_name </returns> 
         public string GetActivityName() {
             return this.activityName;
         }
     
-        /**
-         * @return The activity_sid
-         */
+        /// <returns> The activity_sid </returns> 
         public string GetActivitySid() {
             return this.activitySid;
         }
     
-        /**
-         * @return The attributes
-         */
+        /// <returns> The attributes </returns> 
         public string GetAttributes() {
             return this.attributes;
         }
     
-        /**
-         * @return The available
-         */
+        /// <returns> The available </returns> 
         public bool? GetAvailable() {
             return this.available;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_status_changed
-         */
+        /// <returns> The date_status_changed </returns> 
         public DateTime? GetDateStatusChanged() {
             return this.dateStatusChanged;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The workspace_sid
-         */
+        /// <returns> The workspace_sid </returns> 
         public string GetWorkspaceSid() {
             return this.workspaceSid;
         }

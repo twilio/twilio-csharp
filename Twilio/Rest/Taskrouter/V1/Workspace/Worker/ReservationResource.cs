@@ -42,47 +42,47 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
             }
         }
     
-        /**
-         * read
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param workerSid The worker_sid
-         * @return ReservationReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="workerSid"> The worker_sid </param>
+        /// <returns> ReservationReader capable of executing the read </returns> 
         public static ReservationReader Reader(string workspaceSid, string workerSid) {
             return new ReservationReader(workspaceSid, workerSid);
         }
     
-        /**
-         * fetch
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param workerSid The worker_sid
-         * @param sid The sid
-         * @return ReservationFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="workerSid"> The worker_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> ReservationFetcher capable of executing the fetch </returns> 
         public static ReservationFetcher Fetcher(string workspaceSid, string workerSid, string sid) {
             return new ReservationFetcher(workspaceSid, workerSid, sid);
         }
     
-        /**
-         * update
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param workerSid The worker_sid
-         * @param sid The sid
-         * @return ReservationUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="workerSid"> The worker_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> ReservationUpdater capable of executing the update </returns> 
         public static ReservationUpdater Updater(string workspaceSid, string workerSid, string sid) {
             return new ReservationUpdater(workspaceSid, workerSid, sid);
         }
     
-        /**
-         * Converts a JSON string into a ReservationResource object
-         * 
-         * @param json Raw JSON string
-         * @return ReservationResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a ReservationResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> ReservationResource object represented by the provided JSON </returns> 
         public static ReservationResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -145,65 +145,47 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
             this.workspaceSid = workspaceSid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The reservation_status
-         */
+        /// <returns> The reservation_status </returns> 
         public ReservationResource.Status GetReservationStatus() {
             return this.reservationStatus;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The task_sid
-         */
+        /// <returns> The task_sid </returns> 
         public string GetTaskSid() {
             return this.taskSid;
         }
     
-        /**
-         * @return The worker_name
-         */
+        /// <returns> The worker_name </returns> 
         public string GetWorkerName() {
             return this.workerName;
         }
     
-        /**
-         * @return The worker_sid
-         */
+        /// <returns> The worker_sid </returns> 
         public string GetWorkerSid() {
             return this.workerSid;
         }
     
-        /**
-         * @return The workspace_sid
-         */
+        /// <returns> The workspace_sid </returns> 
         public string GetWorkspaceSid() {
             return this.workspaceSid;
         }

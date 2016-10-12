@@ -12,22 +12,22 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
     public class PhoneNumberReader : Reader<PhoneNumberResource> {
         private string trunkSid;
     
-        /**
-         * Construct a new PhoneNumberReader
-         * 
-         * @param trunkSid The trunk_sid
-         */
+        /// <summary>
+        /// Construct a new PhoneNumberReader
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> The trunk_sid </param>
         public PhoneNumberReader(string trunkSid) {
             this.trunkSid = trunkSid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return PhoneNumberResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> PhoneNumberResource ResourceSet </returns> 
         public override Task<ResourceSet<PhoneNumberResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -42,12 +42,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return PhoneNumberResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> PhoneNumberResource ResourceSet </returns> 
         public override ResourceSet<PhoneNumberResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -61,13 +61,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
             return new ResourceSet<PhoneNumberResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<PhoneNumberResource> NextPage(Page<PhoneNumberResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -79,13 +79,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of PhoneNumberResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of PhoneNumberResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<PhoneNumberResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -112,11 +112,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
             return Page<PhoneNumberResource>.FromJson("phone_numbers", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             request.AddQueryParam("PageSize", PageSize.ToString());
         }

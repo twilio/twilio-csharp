@@ -9,41 +9,41 @@ using Twilio.Http;
 namespace Twilio.Rest.Monitor.V1 {
 
     public class AlertResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param sid The sid
-         * @return AlertFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> AlertFetcher capable of executing the fetch </returns> 
         public static AlertFetcher Fetcher(string sid) {
             return new AlertFetcher(sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param sid The sid
-         * @return AlertDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> AlertDeleter capable of executing the delete </returns> 
         public static AlertDeleter Deleter(string sid) {
             return new AlertDeleter(sid);
         }
     
-        /**
-         * read
-         * 
-         * @return AlertReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <returns> AlertReader capable of executing the read </returns> 
         public static AlertReader Reader() {
             return new AlertReader();
         }
     
-        /**
-         * Converts a JSON string into a AlertResource object
-         * 
-         * @param json Raw JSON string
-         * @return AlertResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a AlertResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> AlertResource object represented by the provided JSON </returns> 
         public static AlertResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -146,121 +146,87 @@ namespace Twilio.Rest.Monitor.V1 {
             this.url = url;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The alert_text
-         */
+        /// <returns> The alert_text </returns> 
         public string GetAlertText() {
             return this.alertText;
         }
     
-        /**
-         * @return The api_version
-         */
+        /// <returns> The api_version </returns> 
         public string GetApiVersion() {
             return this.apiVersion;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_generated
-         */
+        /// <returns> The date_generated </returns> 
         public DateTime? GetDateGenerated() {
             return this.dateGenerated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The error_code
-         */
+        /// <returns> The error_code </returns> 
         public string GetErrorCode() {
             return this.errorCode;
         }
     
-        /**
-         * @return The log_level
-         */
+        /// <returns> The log_level </returns> 
         public string GetLogLevel() {
             return this.logLevel;
         }
     
-        /**
-         * @return The more_info
-         */
+        /// <returns> The more_info </returns> 
         public string GetMoreInfo() {
             return this.moreInfo;
         }
     
-        /**
-         * @return The request_method
-         */
+        /// <returns> The request_method </returns> 
         public Twilio.Http.HttpMethod GetRequestMethod() {
             return this.requestMethod;
         }
     
-        /**
-         * @return The request_url
-         */
+        /// <returns> The request_url </returns> 
         public string GetRequestUrl() {
             return this.requestUrl;
         }
     
-        /**
-         * @return The request_variables
-         */
+        /// <returns> The request_variables </returns> 
         public string GetRequestVariables() {
             return this.requestVariables;
         }
     
-        /**
-         * @return The resource_sid
-         */
+        /// <returns> The resource_sid </returns> 
         public string GetResourceSid() {
             return this.resourceSid;
         }
     
-        /**
-         * @return The response_body
-         */
+        /// <returns> The response_body </returns> 
         public string GetResponseBody() {
             return this.responseBody;
         }
     
-        /**
-         * @return The response_headers
-         */
+        /// <returns> The response_headers </returns> 
         public string GetResponseHeaders() {
             return this.responseHeaders;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }

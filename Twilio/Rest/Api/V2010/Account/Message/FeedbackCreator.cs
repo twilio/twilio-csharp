@@ -14,44 +14,44 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
         private string messageSid;
         private FeedbackResource.Outcome outcome;
     
-        /**
-         * Construct a new FeedbackCreator.
-         * 
-         * @param messageSid The message_sid
-         */
+        /// <summary>
+        /// Construct a new FeedbackCreator.
+        /// </summary>
+        ///
+        /// <param name="messageSid"> The message_sid </param>
         public FeedbackCreator(string messageSid) {
             this.messageSid = messageSid;
         }
     
-        /**
-         * Construct a new FeedbackCreator
-         * 
-         * @param accountSid The account_sid
-         * @param messageSid The message_sid
-         */
+        /// <summary>
+        /// Construct a new FeedbackCreator
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="messageSid"> The message_sid </param>
         public FeedbackCreator(string accountSid, string messageSid) {
             this.accountSid = accountSid;
             this.messageSid = messageSid;
         }
     
-        /**
-         * The outcome
-         * 
-         * @param outcome The outcome
-         * @return this
-         */
+        /// <summary>
+        /// The outcome
+        /// </summary>
+        ///
+        /// <param name="outcome"> The outcome </param>
+        /// <returns> this </returns> 
         public FeedbackCreator setOutcome(FeedbackResource.Outcome outcome) {
             this.outcome = outcome;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created FeedbackResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created FeedbackResource </returns> 
         public override async Task<FeedbackResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -86,12 +86,12 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created FeedbackResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created FeedbackResource </returns> 
         public override FeedbackResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -125,11 +125,11 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
             return FeedbackResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (outcome != null) {
                 request.AddPostParam("Outcome", outcome.ToString());

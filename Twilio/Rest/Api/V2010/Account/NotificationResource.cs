@@ -9,74 +9,73 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class NotificationResource : SidResource {
-        /**
-         * Fetch a notification belonging to the account used to make the request
-         * 
-         * @param accountSid The account_sid
-         * @param sid Fetch by unique notification Sid
-         * @return NotificationFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Fetch a notification belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Fetch by unique notification Sid </param>
+        /// <returns> NotificationFetcher capable of executing the fetch </returns> 
         public static NotificationFetcher Fetcher(string accountSid, string sid) {
             return new NotificationFetcher(accountSid, sid);
         }
     
-        /**
-         * Create a NotificationFetcher to execute fetch.
-         * 
-         * @param sid Fetch by unique notification Sid
-         * @return NotificationFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a NotificationFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique notification Sid </param>
+        /// <returns> NotificationFetcher capable of executing the fetch </returns> 
         public static NotificationFetcher Fetcher(string sid) {
             return new NotificationFetcher(sid);
         }
     
-        /**
-         * Delete a notification identified by the NotificationSid from an accounts log
-         * 
-         * @param accountSid The account_sid
-         * @param sid Delete by unique notification Sid
-         * @return NotificationDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Delete a notification identified by the NotificationSid from an accounts log
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Delete by unique notification Sid </param>
+        /// <returns> NotificationDeleter capable of executing the delete </returns> 
         public static NotificationDeleter Deleter(string accountSid, string sid) {
             return new NotificationDeleter(accountSid, sid);
         }
     
-        /**
-         * Create a NotificationDeleter to execute delete.
-         * 
-         * @param sid Delete by unique notification Sid
-         * @return NotificationDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a NotificationDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="sid"> Delete by unique notification Sid </param>
+        /// <returns> NotificationDeleter capable of executing the delete </returns> 
         public static NotificationDeleter Deleter(string sid) {
             return new NotificationDeleter(sid);
         }
     
-        /**
-         * Retrieve a list of notifications belonging to the account used to make the
-         * request
-         * 
-         * @param accountSid The account_sid
-         * @return NotificationReader capable of executing the read
-         */
+        /// <summary>
+        /// Retrieve a list of notifications belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> NotificationReader capable of executing the read </returns> 
         public static NotificationReader Reader(string accountSid) {
             return new NotificationReader(accountSid);
         }
     
-        /**
-         * Create a NotificationReader to execute read.
-         * 
-         * @return NotificationReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a NotificationReader to execute read.
+        /// </summary>
+        ///
+        /// <returns> NotificationReader capable of executing the read </returns> 
         public static NotificationReader Reader() {
             return new NotificationReader();
         }
     
-        /**
-         * Converts a JSON string into a NotificationResource object
-         * 
-         * @param json Raw JSON string
-         * @return NotificationResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a NotificationResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> NotificationResource object represented by the provided JSON </returns> 
         public static NotificationResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -179,121 +178,87 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.uri = uri;
         }
     
-        /**
-         * @return The unique sid that identifies this account
-         */
+        /// <returns> The unique sid that identifies this account </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The version of the Twilio API in use
-         */
+        /// <returns> The version of the Twilio API in use </returns> 
         public string GetApiVersion() {
             return this.apiVersion;
         }
     
-        /**
-         * @return The string that uniquely identifies the call
-         */
+        /// <returns> The string that uniquely identifies the call </returns> 
         public string GetCallSid() {
             return this.callSid;
         }
     
-        /**
-         * @return The date this resource was created
-         */
+        /// <returns> The date this resource was created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date this resource was last updated
-         */
+        /// <returns> The date this resource was last updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return A unique error code corresponding to the notification
-         */
+        /// <returns> A unique error code corresponding to the notification </returns> 
         public string GetErrorCode() {
             return this.errorCode;
         }
     
-        /**
-         * @return An integer log level
-         */
+        /// <returns> An integer log level </returns> 
         public string GetLog() {
             return this.log;
         }
     
-        /**
-         * @return The date the notification was generated
-         */
+        /// <returns> The date the notification was generated </returns> 
         public DateTime? GetMessageDate() {
             return this.messageDate;
         }
     
-        /**
-         * @return The text of the notification.
-         */
+        /// <returns> The text of the notification. </returns> 
         public string GetMessageText() {
             return this.messageText;
         }
     
-        /**
-         * @return A URL for more information about the error code
-         */
+        /// <returns> A URL for more information about the error code </returns> 
         public Uri GetMoreInfo() {
             return this.moreInfo;
         }
     
-        /**
-         * @return HTTP method used with the request url
-         */
+        /// <returns> HTTP method used with the request url </returns> 
         public Twilio.Http.HttpMethod GetRequestMethod() {
             return this.requestMethod;
         }
     
-        /**
-         * @return URL of the resource that generated the notification
-         */
+        /// <returns> URL of the resource that generated the notification </returns> 
         public Uri GetRequestUrl() {
             return this.requestUrl;
         }
     
-        /**
-         * @return Twilio-generated HTTP variables sent to the server
-         */
+        /// <returns> Twilio-generated HTTP variables sent to the server </returns> 
         public string GetRequestVariables() {
             return this.requestVariables;
         }
     
-        /**
-         * @return The HTTP body returned by your server.
-         */
+        /// <returns> The HTTP body returned by your server. </returns> 
         public string GetResponseBody() {
             return this.responseBody;
         }
     
-        /**
-         * @return The HTTP headers returned by your server.
-         */
+        /// <returns> The HTTP headers returned by your server. </returns> 
         public string GetResponseHeaders() {
             return this.responseHeaders;
         }
     
-        /**
-         * @return A string that uniquely identifies this notification
-         */
+        /// <returns> A string that uniquely identifies this notification </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The URI for this resource
-         */
+        /// <returns> The URI for this resource </returns> 
         public string GetUri() {
             return this.uri;
         }

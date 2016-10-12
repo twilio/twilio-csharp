@@ -13,24 +13,24 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         private string trunkSid;
         private string ipAccessControlListSid;
     
-        /**
-         * Construct a new IpAccessControlListCreator
-         * 
-         * @param trunkSid The trunk_sid
-         * @param ipAccessControlListSid The ip_access_control_list_sid
-         */
+        /// <summary>
+        /// Construct a new IpAccessControlListCreator
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         public IpAccessControlListCreator(string trunkSid, string ipAccessControlListSid) {
             this.trunkSid = trunkSid;
             this.ipAccessControlListSid = ipAccessControlListSid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created IpAccessControlListResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created IpAccessControlListResource </returns> 
         public override async Task<IpAccessControlListResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -65,12 +65,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created IpAccessControlListResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created IpAccessControlListResource </returns> 
         public override IpAccessControlListResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -104,11 +104,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
             return IpAccessControlListResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (ipAccessControlListSid != null) {
                 request.AddPostParam("IpAccessControlListSid", ipAccessControlListSid);

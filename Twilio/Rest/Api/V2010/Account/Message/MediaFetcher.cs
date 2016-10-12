@@ -14,24 +14,24 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
         private string messageSid;
         private string sid;
     
-        /**
-         * Construct a new MediaFetcher.
-         * 
-         * @param messageSid The message_sid
-         * @param sid Fetch by unique media Sid
-         */
+        /// <summary>
+        /// Construct a new MediaFetcher.
+        /// </summary>
+        ///
+        /// <param name="messageSid"> The message_sid </param>
+        /// <param name="sid"> Fetch by unique media Sid </param>
         public MediaFetcher(string messageSid, string sid) {
             this.messageSid = messageSid;
             this.sid = sid;
         }
     
-        /**
-         * Construct a new MediaFetcher
-         * 
-         * @param accountSid The account_sid
-         * @param messageSid The message_sid
-         * @param sid Fetch by unique media Sid
-         */
+        /// <summary>
+        /// Construct a new MediaFetcher
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="messageSid"> The message_sid </param>
+        /// <param name="sid"> Fetch by unique media Sid </param>
         public MediaFetcher(string accountSid, string messageSid, string sid) {
             this.accountSid = accountSid;
             this.messageSid = messageSid;
@@ -39,12 +39,12 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched MediaResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched MediaResource </returns> 
         public override async Task<MediaResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -78,12 +78,12 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched MediaResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched MediaResource </returns> 
         public override MediaResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

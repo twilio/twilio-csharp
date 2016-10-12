@@ -16,57 +16,57 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         private string from;
         private SyncListItemResource.QueryFromBoundType bounds;
     
-        /**
-         * Construct a new SyncListItemReader
-         * 
-         * @param serviceSid The service_sid
-         * @param listSid The list_sid
-         */
+        /// <summary>
+        /// Construct a new SyncListItemReader
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="listSid"> The list_sid </param>
         public SyncListItemReader(string serviceSid, string listSid) {
             this.serviceSid = serviceSid;
             this.listSid = listSid;
         }
     
-        /**
-         * The order
-         * 
-         * @param order The order
-         * @return this
-         */
+        /// <summary>
+        /// The order
+        /// </summary>
+        ///
+        /// <param name="order"> The order </param>
+        /// <returns> this </returns> 
         public SyncListItemReader ByOrder(SyncListItemResource.QueryResultOrder order) {
             this.order = order;
             return this;
         }
     
-        /**
-         * The from
-         * 
-         * @param from The from
-         * @return this
-         */
+        /// <summary>
+        /// The from
+        /// </summary>
+        ///
+        /// <param name="from"> The from </param>
+        /// <returns> this </returns> 
         public SyncListItemReader ByFrom(string from) {
             this.from = from;
             return this;
         }
     
-        /**
-         * The bounds
-         * 
-         * @param bounds The bounds
-         * @return this
-         */
+        /// <summary>
+        /// The bounds
+        /// </summary>
+        ///
+        /// <param name="bounds"> The bounds </param>
+        /// <returns> this </returns> 
         public SyncListItemReader ByBounds(SyncListItemResource.QueryFromBoundType bounds) {
             this.bounds = bounds;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return SyncListItemResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> SyncListItemResource ResourceSet </returns> 
         public override Task<ResourceSet<SyncListItemResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -81,12 +81,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return SyncListItemResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> SyncListItemResource ResourceSet </returns> 
         public override ResourceSet<SyncListItemResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -100,13 +100,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
             return new ResourceSet<SyncListItemResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<SyncListItemResource> NextPage(Page<SyncListItemResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -118,13 +118,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of SyncListItemResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of SyncListItemResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<SyncListItemResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -151,11 +151,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
             return Page<SyncListItemResource>.FromJson("items", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (order != null) {
                 request.AddQueryParam("Order", order.ToString());

@@ -15,13 +15,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         private string sid;
         private List<string> permission;
     
-        /**
-         * Construct a new RoleUpdater
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         * @param permission The permission
-         */
+        /// <summary>
+        /// Construct a new RoleUpdater
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="permission"> The permission </param>
         public RoleUpdater(string serviceSid, string sid, List<string> permission) {
             this.serviceSid = serviceSid;
             this.sid = sid;
@@ -29,12 +29,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated RoleResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated RoleResource </returns> 
         public override async Task<RoleResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -69,12 +69,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated RoleResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated RoleResource </returns> 
         public override RoleResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -108,11 +108,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
             return RoleResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (permission != null) {
                 request.AddPostParam("Permission", permission.ToString());

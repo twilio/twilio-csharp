@@ -20,89 +20,89 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         private string friendlyName;
         private Uri sipUrl;
     
-        /**
-         * Construct a new OriginationUrlUpdater
-         * 
-         * @param trunkSid The trunk_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new OriginationUrlUpdater
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="sid"> The sid </param>
         public OriginationUrlUpdater(string trunkSid, string sid) {
             this.trunkSid = trunkSid;
             this.sid = sid;
         }
     
-        /**
-         * The weight
-         * 
-         * @param weight The weight
-         * @return this
-         */
+        /// <summary>
+        /// The weight
+        /// </summary>
+        ///
+        /// <param name="weight"> The weight </param>
+        /// <returns> this </returns> 
         public OriginationUrlUpdater setWeight(int? weight) {
             this.weight = weight;
             return this;
         }
     
-        /**
-         * The priority
-         * 
-         * @param priority The priority
-         * @return this
-         */
+        /// <summary>
+        /// The priority
+        /// </summary>
+        ///
+        /// <param name="priority"> The priority </param>
+        /// <returns> this </returns> 
         public OriginationUrlUpdater setPriority(int? priority) {
             this.priority = priority;
             return this;
         }
     
-        /**
-         * The enabled
-         * 
-         * @param enabled The enabled
-         * @return this
-         */
+        /// <summary>
+        /// The enabled
+        /// </summary>
+        ///
+        /// <param name="enabled"> The enabled </param>
+        /// <returns> this </returns> 
         public OriginationUrlUpdater setEnabled(bool? enabled) {
             this.enabled = enabled;
             return this;
         }
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public OriginationUrlUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * The sip_url
-         * 
-         * @param sipUrl The sip_url
-         * @return this
-         */
+        /// <summary>
+        /// The sip_url
+        /// </summary>
+        ///
+        /// <param name="sipUrl"> The sip_url </param>
+        /// <returns> this </returns> 
         public OriginationUrlUpdater setSipUrl(Uri sipUrl) {
             this.sipUrl = sipUrl;
             return this;
         }
     
-        /**
-         * The sip_url
-         * 
-         * @param sipUrl The sip_url
-         * @return this
-         */
+        /// <summary>
+        /// The sip_url
+        /// </summary>
+        ///
+        /// <param name="sipUrl"> The sip_url </param>
+        /// <returns> this </returns> 
         public OriginationUrlUpdater setSipUrl(string sipUrl) {
             return setSipUrl(Promoter.UriFromString(sipUrl));
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated OriginationUrlResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated OriginationUrlResource </returns> 
         public override async Task<OriginationUrlResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -137,12 +137,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated OriginationUrlResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated OriginationUrlResource </returns> 
         public override OriginationUrlResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -176,11 +176,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
             return OriginationUrlResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (weight != null) {
                 request.AddPostParam("Weight", weight.ToString());

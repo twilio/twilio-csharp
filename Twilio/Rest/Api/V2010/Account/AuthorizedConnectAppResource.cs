@@ -39,53 +39,52 @@ namespace Twilio.Rest.Api.V2010.Account {
             }
         }
     
-        /**
-         * Fetch an instance of an authorized-connect-app
-         * 
-         * @param accountSid The account_sid
-         * @param connectAppSid The connect_app_sid
-         * @return AuthorizedConnectAppFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Fetch an instance of an authorized-connect-app
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="connectAppSid"> The connect_app_sid </param>
+        /// <returns> AuthorizedConnectAppFetcher capable of executing the fetch </returns> 
         public static AuthorizedConnectAppFetcher Fetcher(string accountSid, string connectAppSid) {
             return new AuthorizedConnectAppFetcher(accountSid, connectAppSid);
         }
     
-        /**
-         * Create a AuthorizedConnectAppFetcher to execute fetch.
-         * 
-         * @param connectAppSid The connect_app_sid
-         * @return AuthorizedConnectAppFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a AuthorizedConnectAppFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="connectAppSid"> The connect_app_sid </param>
+        /// <returns> AuthorizedConnectAppFetcher capable of executing the fetch </returns> 
         public static AuthorizedConnectAppFetcher Fetcher(string connectAppSid) {
             return new AuthorizedConnectAppFetcher(connectAppSid);
         }
     
-        /**
-         * Retrieve a list of authorized-connect-apps belonging to the account used to
-         * make the request
-         * 
-         * @param accountSid The account_sid
-         * @return AuthorizedConnectAppReader capable of executing the read
-         */
+        /// <summary>
+        /// Retrieve a list of authorized-connect-apps belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> AuthorizedConnectAppReader capable of executing the read </returns> 
         public static AuthorizedConnectAppReader Reader(string accountSid) {
             return new AuthorizedConnectAppReader(accountSid);
         }
     
-        /**
-         * Create a AuthorizedConnectAppReader to execute read.
-         * 
-         * @return AuthorizedConnectAppReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a AuthorizedConnectAppReader to execute read.
+        /// </summary>
+        ///
+        /// <returns> AuthorizedConnectAppReader capable of executing the read </returns> 
         public static AuthorizedConnectAppReader Reader() {
             return new AuthorizedConnectAppReader();
         }
     
-        /**
-         * Converts a JSON string into a AuthorizedConnectAppResource object
-         * 
-         * @param json Raw JSON string
-         * @return AuthorizedConnectAppResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a AuthorizedConnectAppResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> AuthorizedConnectAppResource object represented by the provided JSON </returns> 
         public static AuthorizedConnectAppResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -153,79 +152,57 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.uri = uri;
         }
     
-        /**
-         * @return A string that uniquely identifies this app
-         */
+        /// <returns> A string that uniquely identifies this app </returns> 
         public override string GetSid() {
             return this.GetConnectAppSid();
         }
     
-        /**
-         * @return The unique sid that identifies this account
-         */
+        /// <returns> The unique sid that identifies this account </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The company name set for this Connect App.
-         */
+        /// <returns> The company name set for this Connect App. </returns> 
         public string GetConnectAppCompanyName() {
             return this.connectAppCompanyName;
         }
     
-        /**
-         * @return Human readable description of the app
-         */
+        /// <returns> Human readable description of the app </returns> 
         public string GetConnectAppDescription() {
             return this.connectAppDescription;
         }
     
-        /**
-         * @return A human readable name for the Connect App.
-         */
+        /// <returns> A human readable name for the Connect App. </returns> 
         public string GetConnectAppFriendlyName() {
             return this.connectAppFriendlyName;
         }
     
-        /**
-         * @return The public URL for this Connect App.
-         */
+        /// <returns> The public URL for this Connect App. </returns> 
         public Uri GetConnectAppHomepageUrl() {
             return this.connectAppHomepageUrl;
         }
     
-        /**
-         * @return A string that uniquely identifies this app
-         */
+        /// <returns> A string that uniquely identifies this app </returns> 
         public string GetConnectAppSid() {
             return this.connectAppSid;
         }
     
-        /**
-         * @return The date this resource was created
-         */
+        /// <returns> The date this resource was created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date this resource was last updated
-         */
+        /// <returns> The date this resource was last updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return Permissions authorized to this app
-         */
+        /// <returns> Permissions authorized to this app </returns> 
         public List<AuthorizedConnectAppResource.Permission> GetPermissions() {
             return this.permissions;
         }
     
-        /**
-         * @return The URI for this resource
-         */
+        /// <returns> The URI for this resource </returns> 
         public string GetUri() {
             return this.uri;
         }

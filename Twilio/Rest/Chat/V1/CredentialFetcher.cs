@@ -12,22 +12,22 @@ namespace Twilio.Rest.Chat.V1 {
     public class CredentialFetcher : Fetcher<CredentialResource> {
         private string sid;
     
-        /**
-         * Construct a new CredentialFetcher
-         * 
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new CredentialFetcher
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
         public CredentialFetcher(string sid) {
             this.sid = sid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched CredentialResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched CredentialResource </returns> 
         public override async Task<CredentialResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -61,12 +61,12 @@ namespace Twilio.Rest.Chat.V1 {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched CredentialResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched CredentialResource </returns> 
         public override CredentialResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

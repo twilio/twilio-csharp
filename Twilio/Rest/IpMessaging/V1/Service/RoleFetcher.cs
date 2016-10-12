@@ -13,24 +13,24 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         private string serviceSid;
         private string sid;
     
-        /**
-         * Construct a new RoleFetcher
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new RoleFetcher
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
         public RoleFetcher(string serviceSid, string sid) {
             this.serviceSid = serviceSid;
             this.sid = sid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched RoleResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched RoleResource </returns> 
         public override async Task<RoleResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -64,12 +64,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched RoleResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched RoleResource </returns> 
         public override RoleResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

@@ -17,14 +17,14 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         private string body;
         private Object attributes;
     
-        /**
-         * Construct a new MessageUpdater
-         * 
-         * @param serviceSid The service_sid
-         * @param channelSid The channel_sid
-         * @param sid The sid
-         * @param body The body
-         */
+        /// <summary>
+        /// Construct a new MessageUpdater
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="body"> The body </param>
         public MessageUpdater(string serviceSid, string channelSid, string sid, string body) {
             this.serviceSid = serviceSid;
             this.channelSid = channelSid;
@@ -32,24 +32,24 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
             this.body = body;
         }
     
-        /**
-         * The attributes
-         * 
-         * @param attributes The attributes
-         * @return this
-         */
+        /// <summary>
+        /// The attributes
+        /// </summary>
+        ///
+        /// <param name="attributes"> The attributes </param>
+        /// <returns> this </returns> 
         public MessageUpdater setAttributes(Object attributes) {
             this.attributes = attributes;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated MessageResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated MessageResource </returns> 
         public override async Task<MessageResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -84,12 +84,12 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated MessageResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated MessageResource </returns> 
         public override MessageResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -123,11 +123,11 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
             return MessageResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (body != null) {
                 request.AddPostParam("Body", body);

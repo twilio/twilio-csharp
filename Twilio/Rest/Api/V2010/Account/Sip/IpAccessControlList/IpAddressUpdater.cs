@@ -16,59 +16,59 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         private string ipAddress;
         private string friendlyName;
     
-        /**
-         * Construct a new IpAddressUpdater.
-         * 
-         * @param ipAccessControlListSid The ip_access_control_list_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new IpAddressUpdater.
+        /// </summary>
+        ///
+        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="sid"> The sid </param>
         public IpAddressUpdater(string ipAccessControlListSid, string sid) {
             this.ipAccessControlListSid = ipAccessControlListSid;
             this.sid = sid;
         }
     
-        /**
-         * Construct a new IpAddressUpdater
-         * 
-         * @param accountSid The account_sid
-         * @param ipAccessControlListSid The ip_access_control_list_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new IpAddressUpdater
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="sid"> The sid </param>
         public IpAddressUpdater(string accountSid, string ipAccessControlListSid, string sid) {
             this.accountSid = accountSid;
             this.ipAccessControlListSid = ipAccessControlListSid;
             this.sid = sid;
         }
     
-        /**
-         * The ip_address
-         * 
-         * @param ipAddress The ip_address
-         * @return this
-         */
+        /// <summary>
+        /// The ip_address
+        /// </summary>
+        ///
+        /// <param name="ipAddress"> The ip_address </param>
+        /// <returns> this </returns> 
         public IpAddressUpdater setIpAddress(string ipAddress) {
             this.ipAddress = ipAddress;
             return this;
         }
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public IpAddressUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated IpAddressResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated IpAddressResource </returns> 
         public override async Task<IpAddressResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -103,12 +103,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated IpAddressResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated IpAddressResource </returns> 
         public override IpAddressResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -142,11 +142,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
             return IpAddressResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (ipAddress != null) {
                 request.AddPostParam("IpAddress", ipAddress);

@@ -14,24 +14,24 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         private string sid;
         private string friendlyName;
     
-        /**
-         * Construct a new CredentialListUpdater.
-         * 
-         * @param sid The sid
-         * @param friendlyName The friendly_name
-         */
+        /// <summary>
+        /// Construct a new CredentialListUpdater.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         public CredentialListUpdater(string sid, string friendlyName) {
             this.sid = sid;
             this.friendlyName = friendlyName;
         }
     
-        /**
-         * Construct a new CredentialListUpdater
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         * @param friendlyName The friendly_name
-         */
+        /// <summary>
+        /// Construct a new CredentialListUpdater
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         public CredentialListUpdater(string accountSid, string sid, string friendlyName) {
             this.accountSid = accountSid;
             this.sid = sid;
@@ -39,12 +39,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated CredentialListResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated CredentialListResource </returns> 
         public override async Task<CredentialListResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -79,12 +79,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated CredentialListResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated CredentialListResource </returns> 
         public override CredentialListResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -118,11 +118,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
             return CredentialListResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

@@ -12,28 +12,28 @@ namespace Twilio.Rest.Api.V2010 {
     public class AccountFetcher : Fetcher<AccountResource> {
         private string sid;
     
-        /**
-         * Construct a new AccountFetcher.
-         */
+        /// <summary>
+        /// Construct a new AccountFetcher.
+        /// </summary>
         public AccountFetcher() {
         }
     
-        /**
-         * Construct a new AccountFetcher
-         * 
-         * @param sid Fetch by unique Account Sid
-         */
+        /// <summary>
+        /// Construct a new AccountFetcher
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique Account Sid </param>
         public AccountFetcher(string sid) {
             this.sid = sid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched AccountResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched AccountResource </returns> 
         public override async Task<AccountResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -67,12 +67,12 @@ namespace Twilio.Rest.Api.V2010 {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched AccountResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched AccountResource </returns> 
         public override AccountResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

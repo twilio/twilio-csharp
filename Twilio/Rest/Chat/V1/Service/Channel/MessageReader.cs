@@ -13,24 +13,24 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         private string serviceSid;
         private string channelSid;
     
-        /**
-         * Construct a new MessageReader
-         * 
-         * @param serviceSid The service_sid
-         * @param channelSid The channel_sid
-         */
+        /// <summary>
+        /// Construct a new MessageReader
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="channelSid"> The channel_sid </param>
         public MessageReader(string serviceSid, string channelSid) {
             this.serviceSid = serviceSid;
             this.channelSid = channelSid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return MessageResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> MessageResource ResourceSet </returns> 
         public override Task<ResourceSet<MessageResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -45,12 +45,12 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return MessageResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> MessageResource ResourceSet </returns> 
         public override ResourceSet<MessageResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -64,13 +64,13 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
             return new ResourceSet<MessageResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<MessageResource> NextPage(Page<MessageResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -82,13 +82,13 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of MessageResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of MessageResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<MessageResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -115,11 +115,11 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
             return Page<MessageResource>.FromJson("messages", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             request.AddQueryParam("PageSize", PageSize.ToString());
         }

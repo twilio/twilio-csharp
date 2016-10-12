@@ -13,33 +13,33 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         private string accountSid;
         private string sid;
     
-        /**
-         * Construct a new IpAccessControlListFetcher.
-         * 
-         * @param sid Fetch by unique ip-access-control-list Sid
-         */
+        /// <summary>
+        /// Construct a new IpAccessControlListFetcher.
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique ip-access-control-list Sid </param>
         public IpAccessControlListFetcher(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * Construct a new IpAccessControlListFetcher
-         * 
-         * @param accountSid The account_sid
-         * @param sid Fetch by unique ip-access-control-list Sid
-         */
+        /// <summary>
+        /// Construct a new IpAccessControlListFetcher
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Fetch by unique ip-access-control-list Sid </param>
         public IpAccessControlListFetcher(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched IpAccessControlListResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched IpAccessControlListResource </returns> 
         public override async Task<IpAccessControlListResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -73,12 +73,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched IpAccessControlListResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched IpAccessControlListResource </returns> 
         public override IpAccessControlListResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

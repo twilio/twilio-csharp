@@ -15,13 +15,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         private string channelSid;
         private string sid;
     
-        /**
-         * Construct a new MemberDeleter
-         * 
-         * @param serviceSid The service_sid
-         * @param channelSid The channel_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new MemberDeleter
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="sid"> The sid </param>
         public MemberDeleter(string serviceSid, string channelSid, string sid) {
             this.serviceSid = serviceSid;
             this.channelSid = channelSid;
@@ -29,11 +29,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the delete
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the delete
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
@@ -67,11 +67,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the delete
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the delete
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
         public override void Delete(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,

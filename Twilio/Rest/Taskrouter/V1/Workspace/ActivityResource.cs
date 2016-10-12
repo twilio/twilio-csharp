@@ -9,67 +9,67 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
     public class ActivityResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param sid The sid
-         * @return ActivityFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> ActivityFetcher capable of executing the fetch </returns> 
         public static ActivityFetcher Fetcher(string workspaceSid, string sid) {
             return new ActivityFetcher(workspaceSid, sid);
         }
     
-        /**
-         * update
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param sid The sid
-         * @param friendlyName The friendly_name
-         * @return ActivityUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> ActivityUpdater capable of executing the update </returns> 
         public static ActivityUpdater Updater(string workspaceSid, string sid, string friendlyName) {
             return new ActivityUpdater(workspaceSid, sid, friendlyName);
         }
     
-        /**
-         * delete
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param sid The sid
-         * @return ActivityDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> ActivityDeleter capable of executing the delete </returns> 
         public static ActivityDeleter Deleter(string workspaceSid, string sid) {
             return new ActivityDeleter(workspaceSid, sid);
         }
     
-        /**
-         * read
-         * 
-         * @param workspaceSid The workspace_sid
-         * @return ActivityReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <returns> ActivityReader capable of executing the read </returns> 
         public static ActivityReader Reader(string workspaceSid) {
             return new ActivityReader(workspaceSid);
         }
     
-        /**
-         * create
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param friendlyName The friendly_name
-         * @return ActivityCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> ActivityCreator capable of executing the create </returns> 
         public static ActivityCreator Creator(string workspaceSid, string friendlyName) {
             return new ActivityCreator(workspaceSid, friendlyName);
         }
     
-        /**
-         * Converts a JSON string into a ActivityResource object
-         * 
-         * @param json Raw JSON string
-         * @return ActivityResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a ActivityResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> ActivityResource object represented by the provided JSON </returns> 
         public static ActivityResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -121,51 +121,37 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             this.workspaceSid = workspaceSid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The available
-         */
+        /// <returns> The available </returns> 
         public bool? GetAvailable() {
             return this.available;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The workspace_sid
-         */
+        /// <returns> The workspace_sid </returns> 
         public string GetWorkspaceSid() {
             return this.workspaceSid;
         }

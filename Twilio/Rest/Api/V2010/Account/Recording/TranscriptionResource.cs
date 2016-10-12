@@ -39,81 +39,81 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
             }
         }
     
-        /**
-         * fetch
-         * 
-         * @param accountSid The account_sid
-         * @param recordingSid The recording_sid
-         * @param sid The sid
-         * @return TranscriptionFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="recordingSid"> The recording_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> TranscriptionFetcher capable of executing the fetch </returns> 
         public static TranscriptionFetcher Fetcher(string accountSid, string recordingSid, string sid) {
             return new TranscriptionFetcher(accountSid, recordingSid, sid);
         }
     
-        /**
-         * Create a TranscriptionFetcher to execute fetch.
-         * 
-         * @param recordingSid The recording_sid
-         * @param sid The sid
-         * @return TranscriptionFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a TranscriptionFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="recordingSid"> The recording_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> TranscriptionFetcher capable of executing the fetch </returns> 
         public static TranscriptionFetcher Fetcher(string recordingSid, 
                                                    string sid) {
             return new TranscriptionFetcher(recordingSid, sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param accountSid The account_sid
-         * @param recordingSid The recording_sid
-         * @param sid The sid
-         * @return TranscriptionDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="recordingSid"> The recording_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> TranscriptionDeleter capable of executing the delete </returns> 
         public static TranscriptionDeleter Deleter(string accountSid, string recordingSid, string sid) {
             return new TranscriptionDeleter(accountSid, recordingSid, sid);
         }
     
-        /**
-         * Create a TranscriptionDeleter to execute delete.
-         * 
-         * @param recordingSid The recording_sid
-         * @param sid The sid
-         * @return TranscriptionDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a TranscriptionDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="recordingSid"> The recording_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> TranscriptionDeleter capable of executing the delete </returns> 
         public static TranscriptionDeleter Deleter(string recordingSid, 
                                                    string sid) {
             return new TranscriptionDeleter(recordingSid, sid);
         }
     
-        /**
-         * read
-         * 
-         * @param accountSid The account_sid
-         * @param recordingSid The recording_sid
-         * @return TranscriptionReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="recordingSid"> The recording_sid </param>
+        /// <returns> TranscriptionReader capable of executing the read </returns> 
         public static TranscriptionReader Reader(string accountSid, string recordingSid) {
             return new TranscriptionReader(accountSid, recordingSid);
         }
     
-        /**
-         * Create a TranscriptionReader to execute read.
-         * 
-         * @param recordingSid The recording_sid
-         * @return TranscriptionReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a TranscriptionReader to execute read.
+        /// </summary>
+        ///
+        /// <param name="recordingSid"> The recording_sid </param>
+        /// <returns> TranscriptionReader capable of executing the read </returns> 
         public static TranscriptionReader Reader(string recordingSid) {
             return new TranscriptionReader(recordingSid);
         }
     
-        /**
-         * Converts a JSON string into a TranscriptionResource object
-         * 
-         * @param json Raw JSON string
-         * @return TranscriptionResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a TranscriptionResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> TranscriptionResource object represented by the provided JSON </returns> 
         public static TranscriptionResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -196,93 +196,67 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
             this.uri = uri;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The api_version
-         */
+        /// <returns> The api_version </returns> 
         public string GetApiVersion() {
             return this.apiVersion;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The duration
-         */
+        /// <returns> The duration </returns> 
         public string GetDuration() {
             return this.duration;
         }
     
-        /**
-         * @return The price
-         */
+        /// <returns> The price </returns> 
         public decimal? GetPrice() {
             return this.price;
         }
     
-        /**
-         * @return The price_unit
-         */
+        /// <returns> The price_unit </returns> 
         public string GetPriceUnit() {
             return this.priceUnit;
         }
     
-        /**
-         * @return The recording_sid
-         */
+        /// <returns> The recording_sid </returns> 
         public string GetRecordingSid() {
             return this.recordingSid;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The status
-         */
+        /// <returns> The status </returns> 
         public TranscriptionResource.Status GetStatus() {
             return this.status;
         }
     
-        /**
-         * @return The transcription_text
-         */
+        /// <returns> The transcription_text </returns> 
         public string GetTranscriptionText() {
             return this.transcriptionText;
         }
     
-        /**
-         * @return The type
-         */
+        /// <returns> The type </returns> 
         public string GetTranscriptionType() {
             return this.type;
         }
     
-        /**
-         * @return The uri
-         */
+        /// <returns> The uri </returns> 
         public string GetUri() {
             return this.uri;
         }

@@ -10,47 +10,47 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
 
     public class WorkerChannelResource : SidResource {
-        /**
-         * read
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param workerSid The worker_sid
-         * @return WorkerChannelReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="workerSid"> The worker_sid </param>
+        /// <returns> WorkerChannelReader capable of executing the read </returns> 
         public static WorkerChannelReader Reader(string workspaceSid, string workerSid) {
             return new WorkerChannelReader(workspaceSid, workerSid);
         }
     
-        /**
-         * fetch
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param workerSid The worker_sid
-         * @param sid The sid
-         * @return WorkerChannelFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="workerSid"> The worker_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> WorkerChannelFetcher capable of executing the fetch </returns> 
         public static WorkerChannelFetcher Fetcher(string workspaceSid, string workerSid, string sid) {
             return new WorkerChannelFetcher(workspaceSid, workerSid, sid);
         }
     
-        /**
-         * update
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param workerSid The worker_sid
-         * @param sid The sid
-         * @return WorkerChannelUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="workerSid"> The worker_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> WorkerChannelUpdater capable of executing the update </returns> 
         public static WorkerChannelUpdater Updater(string workspaceSid, string workerSid, string sid) {
             return new WorkerChannelUpdater(workspaceSid, workerSid, sid);
         }
     
-        /**
-         * Converts a JSON string into a WorkerChannelResource object
-         * 
-         * @param json Raw JSON string
-         * @return WorkerChannelResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a WorkerChannelResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> WorkerChannelResource object represented by the provided JSON </returns> 
         public static WorkerChannelResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -137,100 +137,72 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
             this.url = url;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The assigned_tasks
-         */
+        /// <returns> The assigned_tasks </returns> 
         public int? GetAssignedTasks() {
             return this.assignedTasks;
         }
     
-        /**
-         * @return The available
-         */
+        /// <returns> The available </returns> 
         public bool? GetAvailable() {
             return this.available;
         }
     
-        /**
-         * @return The available_capacity_percentage
-         */
+        /// <returns> The available_capacity_percentage </returns> 
         public int? GetAvailableCapacityPercentage() {
             return this.availableCapacityPercentage;
         }
     
-        /**
-         * @return The configured_capacity
-         */
+        /// <returns> The configured_capacity </returns> 
         public int? GetConfiguredCapacity() {
             return this.configuredCapacity;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The task_channel_sid
-         */
+        /// <returns> The task_channel_sid </returns> 
         public string GetTaskChannelSid() {
             return this.taskChannelSid;
         }
     
-        /**
-         * @return The task_channel_unique_name
-         */
+        /// <returns> The task_channel_unique_name </returns> 
         public string GetTaskChannelUniqueName() {
             return this.taskChannelUniqueName;
         }
     
-        /**
-         * @return The worker_sid
-         */
+        /// <returns> The worker_sid </returns> 
         public string GetWorkerSid() {
             return this.workerSid;
         }
     
-        /**
-         * @return The workspace_sid
-         */
+        /// <returns> The workspace_sid </returns> 
         public string GetWorkspaceSid() {
             return this.workspaceSid;
         }
     
-        /**
-         * @return The links
-         */
+        /// <returns> The links </returns> 
         public Dictionary<string, string> GetLinks() {
             return this.links;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }

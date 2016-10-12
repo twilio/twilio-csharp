@@ -9,42 +9,42 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.Wireless {
 
     public class CommandResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param sid The sid
-         * @return CommandFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> CommandFetcher capable of executing the fetch </returns> 
         public static CommandFetcher Fetcher(string sid) {
             return new CommandFetcher(sid);
         }
     
-        /**
-         * read
-         * 
-         * @return CommandReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <returns> CommandReader capable of executing the read </returns> 
         public static CommandReader Reader() {
             return new CommandReader();
         }
     
-        /**
-         * create
-         * 
-         * @param device The device
-         * @param command The command
-         * @return CommandCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="device"> The device </param>
+        /// <param name="command"> The command </param>
+        /// <returns> CommandCreator capable of executing the create </returns> 
         public static CommandCreator Creator(string device, string command) {
             return new CommandCreator(device, command);
         }
     
-        /**
-         * Converts a JSON string into a CommandResource object
-         * 
-         * @param json Raw JSON string
-         * @return CommandResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a CommandResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> CommandResource object represented by the provided JSON </returns> 
         public static CommandResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -106,65 +106,47 @@ namespace Twilio.Rest.Preview.Wireless {
             this.url = url;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The device_sid
-         */
+        /// <returns> The device_sid </returns> 
         public string GetDeviceSid() {
             return this.deviceSid;
         }
     
-        /**
-         * @return The command
-         */
+        /// <returns> The command </returns> 
         public string GetCommand() {
             return this.command;
         }
     
-        /**
-         * @return The status
-         */
+        /// <returns> The status </returns> 
         public string GetStatus() {
             return this.status;
         }
     
-        /**
-         * @return The direction
-         */
+        /// <returns> The direction </returns> 
         public string GetDirection() {
             return this.direction;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }

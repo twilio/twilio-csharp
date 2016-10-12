@@ -15,55 +15,55 @@ namespace Twilio.Rest.Api.V2010.Account {
         private string friendlyName;
         private int? maxSize;
     
-        /**
-         * Construct a new QueueUpdater.
-         * 
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new QueueUpdater.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
         public QueueUpdater(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * Construct a new QueueUpdater
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new QueueUpdater
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
         public QueueUpdater(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
     
-        /**
-         * A human readable description of the queue
-         * 
-         * @param friendlyName A human readable description of the queue
-         * @return this
-         */
+        /// <summary>
+        /// A human readable description of the queue
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> A human readable description of the queue </param>
+        /// <returns> this </returns> 
         public QueueUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * The maximum number of members that can be in the queue at a time
-         * 
-         * @param maxSize The max number of members allowed in the queue
-         * @return this
-         */
+        /// <summary>
+        /// The maximum number of members that can be in the queue at a time
+        /// </summary>
+        ///
+        /// <param name="maxSize"> The max number of members allowed in the queue </param>
+        /// <returns> this </returns> 
         public QueueUpdater setMaxSize(int? maxSize) {
             this.maxSize = maxSize;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated QueueResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated QueueResource </returns> 
         public override async Task<QueueResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -98,12 +98,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated QueueResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated QueueResource </returns> 
         public override QueueResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -137,11 +137,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return QueueResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

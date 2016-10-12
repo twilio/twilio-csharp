@@ -30,248 +30,248 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
         private Twilio.Http.HttpMethod voiceMethod;
         private Uri voiceUrl;
     
-        /**
-         * Construct a new MobileCreator.
-         * 
-         * @param phoneNumber The phone_number
-         */
+        /// <summary>
+        /// Construct a new MobileCreator.
+        /// </summary>
+        ///
+        /// <param name="phoneNumber"> The phone_number </param>
         public MobileCreator(Twilio.Types.PhoneNumber phoneNumber) {
             this.phoneNumber = phoneNumber;
         }
     
-        /**
-         * Construct a new MobileCreator
-         * 
-         * @param ownerAccountSid The owner_account_sid
-         * @param phoneNumber The phone_number
-         */
+        /// <summary>
+        /// Construct a new MobileCreator
+        /// </summary>
+        ///
+        /// <param name="ownerAccountSid"> The owner_account_sid </param>
+        /// <param name="phoneNumber"> The phone_number </param>
         public MobileCreator(string ownerAccountSid, Twilio.Types.PhoneNumber phoneNumber) {
             this.ownerAccountSid = ownerAccountSid;
             this.phoneNumber = phoneNumber;
         }
     
-        /**
-         * The api_version
-         * 
-         * @param apiVersion The api_version
-         * @return this
-         */
+        /// <summary>
+        /// The api_version
+        /// </summary>
+        ///
+        /// <param name="apiVersion"> The api_version </param>
+        /// <returns> this </returns> 
         public MobileCreator setApiVersion(string apiVersion) {
             this.apiVersion = apiVersion;
             return this;
         }
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public MobileCreator setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * The sms_application_sid
-         * 
-         * @param smsApplicationSid The sms_application_sid
-         * @return this
-         */
+        /// <summary>
+        /// The sms_application_sid
+        /// </summary>
+        ///
+        /// <param name="smsApplicationSid"> The sms_application_sid </param>
+        /// <returns> this </returns> 
         public MobileCreator setSmsApplicationSid(string smsApplicationSid) {
             this.smsApplicationSid = smsApplicationSid;
             return this;
         }
     
-        /**
-         * The sms_fallback_method
-         * 
-         * @param smsFallbackMethod The sms_fallback_method
-         * @return this
-         */
+        /// <summary>
+        /// The sms_fallback_method
+        /// </summary>
+        ///
+        /// <param name="smsFallbackMethod"> The sms_fallback_method </param>
+        /// <returns> this </returns> 
         public MobileCreator setSmsFallbackMethod(Twilio.Http.HttpMethod smsFallbackMethod) {
             this.smsFallbackMethod = smsFallbackMethod;
             return this;
         }
     
-        /**
-         * The sms_fallback_url
-         * 
-         * @param smsFallbackUrl The sms_fallback_url
-         * @return this
-         */
+        /// <summary>
+        /// The sms_fallback_url
+        /// </summary>
+        ///
+        /// <param name="smsFallbackUrl"> The sms_fallback_url </param>
+        /// <returns> this </returns> 
         public MobileCreator setSmsFallbackUrl(Uri smsFallbackUrl) {
             this.smsFallbackUrl = smsFallbackUrl;
             return this;
         }
     
-        /**
-         * The sms_fallback_url
-         * 
-         * @param smsFallbackUrl The sms_fallback_url
-         * @return this
-         */
+        /// <summary>
+        /// The sms_fallback_url
+        /// </summary>
+        ///
+        /// <param name="smsFallbackUrl"> The sms_fallback_url </param>
+        /// <returns> this </returns> 
         public MobileCreator setSmsFallbackUrl(string smsFallbackUrl) {
             return setSmsFallbackUrl(Promoter.UriFromString(smsFallbackUrl));
         }
     
-        /**
-         * The sms_method
-         * 
-         * @param smsMethod The sms_method
-         * @return this
-         */
+        /// <summary>
+        /// The sms_method
+        /// </summary>
+        ///
+        /// <param name="smsMethod"> The sms_method </param>
+        /// <returns> this </returns> 
         public MobileCreator setSmsMethod(Twilio.Http.HttpMethod smsMethod) {
             this.smsMethod = smsMethod;
             return this;
         }
     
-        /**
-         * The sms_url
-         * 
-         * @param smsUrl The sms_url
-         * @return this
-         */
+        /// <summary>
+        /// The sms_url
+        /// </summary>
+        ///
+        /// <param name="smsUrl"> The sms_url </param>
+        /// <returns> this </returns> 
         public MobileCreator setSmsUrl(Uri smsUrl) {
             this.smsUrl = smsUrl;
             return this;
         }
     
-        /**
-         * The sms_url
-         * 
-         * @param smsUrl The sms_url
-         * @return this
-         */
+        /// <summary>
+        /// The sms_url
+        /// </summary>
+        ///
+        /// <param name="smsUrl"> The sms_url </param>
+        /// <returns> this </returns> 
         public MobileCreator setSmsUrl(string smsUrl) {
             return setSmsUrl(Promoter.UriFromString(smsUrl));
         }
     
-        /**
-         * The status_callback
-         * 
-         * @param statusCallback The status_callback
-         * @return this
-         */
+        /// <summary>
+        /// The status_callback
+        /// </summary>
+        ///
+        /// <param name="statusCallback"> The status_callback </param>
+        /// <returns> this </returns> 
         public MobileCreator setStatusCallback(Uri statusCallback) {
             this.statusCallback = statusCallback;
             return this;
         }
     
-        /**
-         * The status_callback
-         * 
-         * @param statusCallback The status_callback
-         * @return this
-         */
+        /// <summary>
+        /// The status_callback
+        /// </summary>
+        ///
+        /// <param name="statusCallback"> The status_callback </param>
+        /// <returns> this </returns> 
         public MobileCreator setStatusCallback(string statusCallback) {
             return setStatusCallback(Promoter.UriFromString(statusCallback));
         }
     
-        /**
-         * The status_callback_method
-         * 
-         * @param statusCallbackMethod The status_callback_method
-         * @return this
-         */
+        /// <summary>
+        /// The status_callback_method
+        /// </summary>
+        ///
+        /// <param name="statusCallbackMethod"> The status_callback_method </param>
+        /// <returns> this </returns> 
         public MobileCreator setStatusCallbackMethod(Twilio.Http.HttpMethod statusCallbackMethod) {
             this.statusCallbackMethod = statusCallbackMethod;
             return this;
         }
     
-        /**
-         * The voice_application_sid
-         * 
-         * @param voiceApplicationSid The voice_application_sid
-         * @return this
-         */
+        /// <summary>
+        /// The voice_application_sid
+        /// </summary>
+        ///
+        /// <param name="voiceApplicationSid"> The voice_application_sid </param>
+        /// <returns> this </returns> 
         public MobileCreator setVoiceApplicationSid(string voiceApplicationSid) {
             this.voiceApplicationSid = voiceApplicationSid;
             return this;
         }
     
-        /**
-         * The voice_caller_id_lookup
-         * 
-         * @param voiceCallerIdLookup The voice_caller_id_lookup
-         * @return this
-         */
+        /// <summary>
+        /// The voice_caller_id_lookup
+        /// </summary>
+        ///
+        /// <param name="voiceCallerIdLookup"> The voice_caller_id_lookup </param>
+        /// <returns> this </returns> 
         public MobileCreator setVoiceCallerIdLookup(bool? voiceCallerIdLookup) {
             this.voiceCallerIdLookup = voiceCallerIdLookup;
             return this;
         }
     
-        /**
-         * The voice_fallback_method
-         * 
-         * @param voiceFallbackMethod The voice_fallback_method
-         * @return this
-         */
+        /// <summary>
+        /// The voice_fallback_method
+        /// </summary>
+        ///
+        /// <param name="voiceFallbackMethod"> The voice_fallback_method </param>
+        /// <returns> this </returns> 
         public MobileCreator setVoiceFallbackMethod(Twilio.Http.HttpMethod voiceFallbackMethod) {
             this.voiceFallbackMethod = voiceFallbackMethod;
             return this;
         }
     
-        /**
-         * The voice_fallback_url
-         * 
-         * @param voiceFallbackUrl The voice_fallback_url
-         * @return this
-         */
+        /// <summary>
+        /// The voice_fallback_url
+        /// </summary>
+        ///
+        /// <param name="voiceFallbackUrl"> The voice_fallback_url </param>
+        /// <returns> this </returns> 
         public MobileCreator setVoiceFallbackUrl(Uri voiceFallbackUrl) {
             this.voiceFallbackUrl = voiceFallbackUrl;
             return this;
         }
     
-        /**
-         * The voice_fallback_url
-         * 
-         * @param voiceFallbackUrl The voice_fallback_url
-         * @return this
-         */
+        /// <summary>
+        /// The voice_fallback_url
+        /// </summary>
+        ///
+        /// <param name="voiceFallbackUrl"> The voice_fallback_url </param>
+        /// <returns> this </returns> 
         public MobileCreator setVoiceFallbackUrl(string voiceFallbackUrl) {
             return setVoiceFallbackUrl(Promoter.UriFromString(voiceFallbackUrl));
         }
     
-        /**
-         * The voice_method
-         * 
-         * @param voiceMethod The voice_method
-         * @return this
-         */
+        /// <summary>
+        /// The voice_method
+        /// </summary>
+        ///
+        /// <param name="voiceMethod"> The voice_method </param>
+        /// <returns> this </returns> 
         public MobileCreator setVoiceMethod(Twilio.Http.HttpMethod voiceMethod) {
             this.voiceMethod = voiceMethod;
             return this;
         }
     
-        /**
-         * The voice_url
-         * 
-         * @param voiceUrl The voice_url
-         * @return this
-         */
+        /// <summary>
+        /// The voice_url
+        /// </summary>
+        ///
+        /// <param name="voiceUrl"> The voice_url </param>
+        /// <returns> this </returns> 
         public MobileCreator setVoiceUrl(Uri voiceUrl) {
             this.voiceUrl = voiceUrl;
             return this;
         }
     
-        /**
-         * The voice_url
-         * 
-         * @param voiceUrl The voice_url
-         * @return this
-         */
+        /// <summary>
+        /// The voice_url
+        /// </summary>
+        ///
+        /// <param name="voiceUrl"> The voice_url </param>
+        /// <returns> this </returns> 
         public MobileCreator setVoiceUrl(string voiceUrl) {
             return setVoiceUrl(Promoter.UriFromString(voiceUrl));
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created MobileResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created MobileResource </returns> 
         public override async Task<MobileResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -306,12 +306,12 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created MobileResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created MobileResource </returns> 
         public override MobileResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -345,11 +345,11 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
             return MobileResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (phoneNumber != null) {
                 request.AddPostParam("PhoneNumber", phoneNumber.ToString());

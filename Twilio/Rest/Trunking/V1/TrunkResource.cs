@@ -10,60 +10,60 @@ using Twilio.Http;
 namespace Twilio.Rest.Trunking.V1 {
 
     public class TrunkResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param sid The sid
-         * @return TrunkFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> TrunkFetcher capable of executing the fetch </returns> 
         public static TrunkFetcher Fetcher(string sid) {
             return new TrunkFetcher(sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param sid The sid
-         * @return TrunkDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> TrunkDeleter capable of executing the delete </returns> 
         public static TrunkDeleter Deleter(string sid) {
             return new TrunkDeleter(sid);
         }
     
-        /**
-         * create
-         * 
-         * @return TrunkCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <returns> TrunkCreator capable of executing the create </returns> 
         public static TrunkCreator Creator() {
             return new TrunkCreator();
         }
     
-        /**
-         * read
-         * 
-         * @return TrunkReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <returns> TrunkReader capable of executing the read </returns> 
         public static TrunkReader Reader() {
             return new TrunkReader();
         }
     
-        /**
-         * update
-         * 
-         * @param sid The sid
-         * @return TrunkUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> TrunkUpdater capable of executing the update </returns> 
         public static TrunkUpdater Updater(string sid) {
             return new TrunkUpdater(sid);
         }
     
-        /**
-         * Converts a JSON string into a TrunkResource object
-         * 
-         * @param json Raw JSON string
-         * @return TrunkResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a TrunkResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> TrunkResource object represented by the provided JSON </returns> 
         public static TrunkResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -151,100 +151,72 @@ namespace Twilio.Rest.Trunking.V1 {
             this.links = links;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The domain_name
-         */
+        /// <returns> The domain_name </returns> 
         public string GetDomainName() {
             return this.domainName;
         }
     
-        /**
-         * @return The disaster_recovery_method
-         */
+        /// <returns> The disaster_recovery_method </returns> 
         public Twilio.Http.HttpMethod GetDisasterRecoveryMethod() {
             return this.disasterRecoveryMethod;
         }
     
-        /**
-         * @return The disaster_recovery_url
-         */
+        /// <returns> The disaster_recovery_url </returns> 
         public Uri GetDisasterRecoveryUrl() {
             return this.disasterRecoveryUrl;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The secure
-         */
+        /// <returns> The secure </returns> 
         public bool? GetSecure() {
             return this.secure;
         }
     
-        /**
-         * @return The recording
-         */
+        /// <returns> The recording </returns> 
         public Object GetRecording() {
             return this.recording;
         }
     
-        /**
-         * @return The auth_type
-         */
+        /// <returns> The auth_type </returns> 
         public string GetAuthType() {
             return this.authType;
         }
     
-        /**
-         * @return The auth_type_set
-         */
+        /// <returns> The auth_type_set </returns> 
         public List<string> GetAuthTypeSet() {
             return this.authTypeSet;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }
     
-        /**
-         * @return The links
-         */
+        /// <returns> The links </returns> 
         public Dictionary<string, string> GetLinks() {
             return this.links;
         }

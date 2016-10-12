@@ -13,33 +13,33 @@ namespace Twilio.Rest.Api.V2010.Account {
         private string ownerAccountSid;
         private string sid;
     
-        /**
-         * Construct a new IncomingPhoneNumberFetcher.
-         * 
-         * @param sid Fetch by unique incoming-phone-number Sid
-         */
+        /// <summary>
+        /// Construct a new IncomingPhoneNumberFetcher.
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique incoming-phone-number Sid </param>
         public IncomingPhoneNumberFetcher(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * Construct a new IncomingPhoneNumberFetcher
-         * 
-         * @param ownerAccountSid The owner_account_sid
-         * @param sid Fetch by unique incoming-phone-number Sid
-         */
+        /// <summary>
+        /// Construct a new IncomingPhoneNumberFetcher
+        /// </summary>
+        ///
+        /// <param name="ownerAccountSid"> The owner_account_sid </param>
+        /// <param name="sid"> Fetch by unique incoming-phone-number Sid </param>
         public IncomingPhoneNumberFetcher(string ownerAccountSid, string sid) {
             this.ownerAccountSid = ownerAccountSid;
             this.sid = sid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched IncomingPhoneNumberResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched IncomingPhoneNumberResource </returns> 
         public override async Task<IncomingPhoneNumberResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -73,12 +73,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched IncomingPhoneNumberResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched IncomingPhoneNumberResource </returns> 
         public override IncomingPhoneNumberResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

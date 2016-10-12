@@ -15,46 +15,46 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         private string activitySid;
         private string attributes;
     
-        /**
-         * Construct a new WorkerCreator
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param friendlyName The friendly_name
-         */
+        /// <summary>
+        /// Construct a new WorkerCreator
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         public WorkerCreator(string workspaceSid, string friendlyName) {
             this.workspaceSid = workspaceSid;
             this.friendlyName = friendlyName;
         }
     
-        /**
-         * The activity_sid
-         * 
-         * @param activitySid The activity_sid
-         * @return this
-         */
+        /// <summary>
+        /// The activity_sid
+        /// </summary>
+        ///
+        /// <param name="activitySid"> The activity_sid </param>
+        /// <returns> this </returns> 
         public WorkerCreator setActivitySid(string activitySid) {
             this.activitySid = activitySid;
             return this;
         }
     
-        /**
-         * The attributes
-         * 
-         * @param attributes The attributes
-         * @return this
-         */
+        /// <summary>
+        /// The attributes
+        /// </summary>
+        ///
+        /// <param name="attributes"> The attributes </param>
+        /// <returns> this </returns> 
         public WorkerCreator setAttributes(string attributes) {
             this.attributes = attributes;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created WorkerResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created WorkerResource </returns> 
         public override async Task<WorkerResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -89,12 +89,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created WorkerResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created WorkerResource </returns> 
         public override WorkerResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -128,11 +128,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             return WorkerResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

@@ -9,50 +9,50 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class SandboxResource : Resource {
-        /**
-         * fetch
-         * 
-         * @param accountSid The account_sid
-         * @return SandboxFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> SandboxFetcher capable of executing the fetch </returns> 
         public static SandboxFetcher Fetcher(string accountSid) {
             return new SandboxFetcher(accountSid);
         }
     
-        /**
-         * Create a SandboxFetcher to execute fetch.
-         * 
-         * @return SandboxFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a SandboxFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <returns> SandboxFetcher capable of executing the fetch </returns> 
         public static SandboxFetcher Fetcher() {
             return new SandboxFetcher();
         }
     
-        /**
-         * update
-         * 
-         * @param accountSid The account_sid
-         * @return SandboxUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> SandboxUpdater capable of executing the update </returns> 
         public static SandboxUpdater Updater(string accountSid) {
             return new SandboxUpdater(accountSid);
         }
     
-        /**
-         * Create a SandboxUpdater to execute update.
-         * 
-         * @return SandboxUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Create a SandboxUpdater to execute update.
+        /// </summary>
+        ///
+        /// <returns> SandboxUpdater capable of executing the update </returns> 
         public static SandboxUpdater Updater() {
             return new SandboxUpdater();
         }
     
-        /**
-         * Converts a JSON string into a SandboxResource object
-         * 
-         * @param json Raw JSON string
-         * @return SandboxResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a SandboxResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> SandboxResource object represented by the provided JSON </returns> 
         public static SandboxResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -143,100 +143,72 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.uri = uri;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The pin
-         */
+        /// <returns> The pin </returns> 
         public int? GetPin() {
             return this.pin;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The phone_number
-         */
+        /// <returns> The phone_number </returns> 
         public Twilio.Types.PhoneNumber GetPhoneNumber() {
             return this.phoneNumber;
         }
     
-        /**
-         * @return The application_sid
-         */
+        /// <returns> The application_sid </returns> 
         public string GetApplicationSid() {
             return this.applicationSid;
         }
     
-        /**
-         * @return The api_version
-         */
+        /// <returns> The api_version </returns> 
         public string GetApiVersion() {
             return this.apiVersion;
         }
     
-        /**
-         * @return The voice_url
-         */
+        /// <returns> The voice_url </returns> 
         public Uri GetVoiceUrl() {
             return this.voiceUrl;
         }
     
-        /**
-         * @return The voice_method
-         */
+        /// <returns> The voice_method </returns> 
         public Twilio.Http.HttpMethod GetVoiceMethod() {
             return this.voiceMethod;
         }
     
-        /**
-         * @return The sms_url
-         */
+        /// <returns> The sms_url </returns> 
         public Uri GetSmsUrl() {
             return this.smsUrl;
         }
     
-        /**
-         * @return The sms_method
-         */
+        /// <returns> The sms_method </returns> 
         public Twilio.Http.HttpMethod GetSmsMethod() {
             return this.smsMethod;
         }
     
-        /**
-         * @return The status_callback
-         */
+        /// <returns> The status_callback </returns> 
         public Uri GetStatusCallback() {
             return this.statusCallback;
         }
     
-        /**
-         * @return The status_callback_method
-         */
+        /// <returns> The status_callback_method </returns> 
         public Twilio.Http.HttpMethod GetStatusCallbackMethod() {
             return this.statusCallbackMethod;
         }
     
-        /**
-         * @return The uri
-         */
+        /// <returns> The uri </returns> 
         public Uri GetUri() {
             return this.uri;
         }

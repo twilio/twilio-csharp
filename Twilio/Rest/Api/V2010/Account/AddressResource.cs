@@ -9,33 +9,33 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class AddressResource : SidResource {
-        /**
-         * create
-         * 
-         * @param accountSid The account_sid
-         * @param customerName The customer_name
-         * @param street The street
-         * @param city The city
-         * @param region The region
-         * @param postalCode The postal_code
-         * @param isoCountry The iso_country
-         * @return AddressCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="customerName"> The customer_name </param>
+        /// <param name="street"> The street </param>
+        /// <param name="city"> The city </param>
+        /// <param name="region"> The region </param>
+        /// <param name="postalCode"> The postal_code </param>
+        /// <param name="isoCountry"> The iso_country </param>
+        /// <returns> AddressCreator capable of executing the create </returns> 
         public static AddressCreator Creator(string accountSid, string customerName, string street, string city, string region, string postalCode, string isoCountry) {
             return new AddressCreator(accountSid, customerName, street, city, region, postalCode, isoCountry);
         }
     
-        /**
-         * Create a AddressCreator to execute create.
-         * 
-         * @param customerName The customer_name
-         * @param street The street
-         * @param city The city
-         * @param region The region
-         * @param postalCode The postal_code
-         * @param isoCountry The iso_country
-         * @return AddressCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a AddressCreator to execute create.
+        /// </summary>
+        ///
+        /// <param name="customerName"> The customer_name </param>
+        /// <param name="street"> The street </param>
+        /// <param name="city"> The city </param>
+        /// <param name="region"> The region </param>
+        /// <param name="postalCode"> The postal_code </param>
+        /// <param name="isoCountry"> The iso_country </param>
+        /// <returns> AddressCreator capable of executing the create </returns> 
         public static AddressCreator Creator(string customerName, 
                                              string street, 
                                              string city, 
@@ -45,94 +45,94 @@ namespace Twilio.Rest.Api.V2010.Account {
             return new AddressCreator(customerName, street, city, region, postalCode, isoCountry);
         }
     
-        /**
-         * delete
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         * @return AddressDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> AddressDeleter capable of executing the delete </returns> 
         public static AddressDeleter Deleter(string accountSid, string sid) {
             return new AddressDeleter(accountSid, sid);
         }
     
-        /**
-         * Create a AddressDeleter to execute delete.
-         * 
-         * @param sid The sid
-         * @return AddressDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a AddressDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> AddressDeleter capable of executing the delete </returns> 
         public static AddressDeleter Deleter(string sid) {
             return new AddressDeleter(sid);
         }
     
-        /**
-         * fetch
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         * @return AddressFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> AddressFetcher capable of executing the fetch </returns> 
         public static AddressFetcher Fetcher(string accountSid, string sid) {
             return new AddressFetcher(accountSid, sid);
         }
     
-        /**
-         * Create a AddressFetcher to execute fetch.
-         * 
-         * @param sid The sid
-         * @return AddressFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a AddressFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> AddressFetcher capable of executing the fetch </returns> 
         public static AddressFetcher Fetcher(string sid) {
             return new AddressFetcher(sid);
         }
     
-        /**
-         * update
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         * @return AddressUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> AddressUpdater capable of executing the update </returns> 
         public static AddressUpdater Updater(string accountSid, string sid) {
             return new AddressUpdater(accountSid, sid);
         }
     
-        /**
-         * Create a AddressUpdater to execute update.
-         * 
-         * @param sid The sid
-         * @return AddressUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Create a AddressUpdater to execute update.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> AddressUpdater capable of executing the update </returns> 
         public static AddressUpdater Updater(string sid) {
             return new AddressUpdater(sid);
         }
     
-        /**
-         * read
-         * 
-         * @param accountSid The account_sid
-         * @return AddressReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> AddressReader capable of executing the read </returns> 
         public static AddressReader Reader(string accountSid) {
             return new AddressReader(accountSid);
         }
     
-        /**
-         * Create a AddressReader to execute read.
-         * 
-         * @return AddressReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a AddressReader to execute read.
+        /// </summary>
+        ///
+        /// <returns> AddressReader capable of executing the read </returns> 
         public static AddressReader Reader() {
             return new AddressReader();
         }
     
-        /**
-         * Converts a JSON string into a AddressResource object
-         * 
-         * @param json Raw JSON string
-         * @return AddressResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a AddressResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> AddressResource object represented by the provided JSON </returns> 
         public static AddressResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -209,86 +209,62 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.uri = uri;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The city
-         */
+        /// <returns> The city </returns> 
         public string GetCity() {
             return this.city;
         }
     
-        /**
-         * @return The customer_name
-         */
+        /// <returns> The customer_name </returns> 
         public string GetCustomerName() {
             return this.customerName;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The iso_country
-         */
+        /// <returns> The iso_country </returns> 
         public string GetIsoCountry() {
             return this.isoCountry;
         }
     
-        /**
-         * @return The postal_code
-         */
+        /// <returns> The postal_code </returns> 
         public string GetPostalCode() {
             return this.postalCode;
         }
     
-        /**
-         * @return The region
-         */
+        /// <returns> The region </returns> 
         public string GetRegion() {
             return this.region;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The street
-         */
+        /// <returns> The street </returns> 
         public string GetStreet() {
             return this.street;
         }
     
-        /**
-         * @return The uri
-         */
+        /// <returns> The uri </returns> 
         public string GetUri() {
             return this.uri;
         }

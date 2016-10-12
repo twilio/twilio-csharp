@@ -13,39 +13,39 @@ namespace Twilio.Rest.Api.V2010.Account {
         private string accountSid;
         private int? ttl;
     
-        /**
-         * Construct a new TokenCreator.
-         */
+        /// <summary>
+        /// Construct a new TokenCreator.
+        /// </summary>
         public TokenCreator() {
         }
     
-        /**
-         * Construct a new TokenCreator
-         * 
-         * @param accountSid The account_sid
-         */
+        /// <summary>
+        /// Construct a new TokenCreator
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
         public TokenCreator(string accountSid) {
             this.accountSid = accountSid;
         }
     
-        /**
-         * The duration in seconds for which the generated credentials are valid
-         * 
-         * @param ttl The duration in seconds the credentials are valid
-         * @return this
-         */
+        /// <summary>
+        /// The duration in seconds for which the generated credentials are valid
+        /// </summary>
+        ///
+        /// <param name="ttl"> The duration in seconds the credentials are valid </param>
+        /// <returns> this </returns> 
         public TokenCreator setTtl(int? ttl) {
             this.ttl = ttl;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created TokenResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created TokenResource </returns> 
         public override async Task<TokenResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -80,12 +80,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created TokenResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created TokenResource </returns> 
         public override TokenResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -119,11 +119,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return TokenResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (ttl != null) {
                 request.AddPostParam("Ttl", ttl.ToString());

@@ -76,203 +76,202 @@ namespace Twilio.Rest.Api.V2010.Account {
             }
         }
     
-        /**
-         * Send a message from the account used to make the request
-         * 
-         * @param accountSid The account_sid
-         * @param to The phone number to receive the message
-         * @param from The phone number that initiated the message
-         * @param body The body
-         * @return MessageCreator capable of executing the create
-         */
+        /// <summary>
+        /// Send a message from the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="to"> The phone number to receive the message </param>
+        /// <param name="from"> The phone number that initiated the message </param>
+        /// <param name="body"> The body </param>
+        /// <returns> MessageCreator capable of executing the create </returns> 
         public static MessageCreator Creator(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body) {
             return new MessageCreator(accountSid, to, from, body);
         }
     
-        /**
-         * Create a MessageCreator to execute create.
-         * 
-         * @param to The phone number to receive the message
-         * @param from The phone number that initiated the message
-         * @param body The body
-         * @return MessageCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a MessageCreator to execute create.
+        /// </summary>
+        ///
+        /// <param name="to"> The phone number to receive the message </param>
+        /// <param name="from"> The phone number that initiated the message </param>
+        /// <param name="body"> The body </param>
+        /// <returns> MessageCreator capable of executing the create </returns> 
         public static MessageCreator Creator(Twilio.Types.PhoneNumber to, 
                                              Twilio.Types.PhoneNumber from, 
                                              string body) {
             return new MessageCreator(to, from, body);
         }
     
-        /**
-         * Send a message from the account used to make the request
-         * 
-         * @param accountSid The account_sid
-         * @param to The phone number to receive the message
-         * @param from The phone number that initiated the message
-         * @param mediaUrl The media_url
-         * @return MessageCreator capable of executing the create
-         */
+        /// <summary>
+        /// Send a message from the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="to"> The phone number to receive the message </param>
+        /// <param name="from"> The phone number that initiated the message </param>
+        /// <param name="mediaUrl"> The media_url </param>
+        /// <returns> MessageCreator capable of executing the create </returns> 
         public static MessageCreator Creator(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl) {
             return new MessageCreator(accountSid, to, from, mediaUrl);
         }
     
-        /**
-         * Create a MessageCreator to execute create.
-         * 
-         * @param to The phone number to receive the message
-         * @param from The phone number that initiated the message
-         * @param mediaUrl The media_url
-         * @return MessageCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a MessageCreator to execute create.
+        /// </summary>
+        ///
+        /// <param name="to"> The phone number to receive the message </param>
+        /// <param name="from"> The phone number that initiated the message </param>
+        /// <param name="mediaUrl"> The media_url </param>
+        /// <returns> MessageCreator capable of executing the create </returns> 
         public static MessageCreator Creator(Twilio.Types.PhoneNumber to, 
                                              Twilio.Types.PhoneNumber from, 
                                              List<Uri> mediaUrl) {
             return new MessageCreator(to, from, mediaUrl);
         }
     
-        /**
-         * Send a message from the account used to make the request
-         * 
-         * @param accountSid The account_sid
-         * @param to The phone number to receive the message
-         * @param messagingServiceSid The messaging_service_sid
-         * @param body The body
-         * @return MessageCreator capable of executing the create
-         */
+        /// <summary>
+        /// Send a message from the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="to"> The phone number to receive the message </param>
+        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
+        /// <param name="body"> The body </param>
+        /// <returns> MessageCreator capable of executing the create </returns> 
         public static MessageCreator Creator(string accountSid, Twilio.Types.PhoneNumber to, string messagingServiceSid, string body) {
             return new MessageCreator(accountSid, to, messagingServiceSid, body);
         }
     
-        /**
-         * Create a MessageCreator to execute create.
-         * 
-         * @param to The phone number to receive the message
-         * @param messagingServiceSid The messaging_service_sid
-         * @param body The body
-         * @return MessageCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a MessageCreator to execute create.
+        /// </summary>
+        ///
+        /// <param name="to"> The phone number to receive the message </param>
+        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
+        /// <param name="body"> The body </param>
+        /// <returns> MessageCreator capable of executing the create </returns> 
         public static MessageCreator Creator(Twilio.Types.PhoneNumber to, 
                                              string messagingServiceSid, 
                                              string body) {
             return new MessageCreator(to, messagingServiceSid, body);
         }
     
-        /**
-         * Send a message from the account used to make the request
-         * 
-         * @param accountSid The account_sid
-         * @param to The phone number to receive the message
-         * @param messagingServiceSid The messaging_service_sid
-         * @param mediaUrl The media_url
-         * @return MessageCreator capable of executing the create
-         */
+        /// <summary>
+        /// Send a message from the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="to"> The phone number to receive the message </param>
+        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
+        /// <param name="mediaUrl"> The media_url </param>
+        /// <returns> MessageCreator capable of executing the create </returns> 
         public static MessageCreator Creator(string accountSid, Twilio.Types.PhoneNumber to, string messagingServiceSid, List<Uri> mediaUrl) {
             return new MessageCreator(accountSid, to, messagingServiceSid, mediaUrl);
         }
     
-        /**
-         * Create a MessageCreator to execute create.
-         * 
-         * @param to The phone number to receive the message
-         * @param messagingServiceSid The messaging_service_sid
-         * @param mediaUrl The media_url
-         * @return MessageCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a MessageCreator to execute create.
+        /// </summary>
+        ///
+        /// <param name="to"> The phone number to receive the message </param>
+        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
+        /// <param name="mediaUrl"> The media_url </param>
+        /// <returns> MessageCreator capable of executing the create </returns> 
         public static MessageCreator Creator(Twilio.Types.PhoneNumber to, 
                                              string messagingServiceSid, 
                                              List<Uri> mediaUrl) {
             return new MessageCreator(to, messagingServiceSid, mediaUrl);
         }
     
-        /**
-         * Deletes a message record from your account
-         * 
-         * @param accountSid The account_sid
-         * @param sid The message to delete
-         * @return MessageDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Deletes a message record from your account
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The message to delete </param>
+        /// <returns> MessageDeleter capable of executing the delete </returns> 
         public static MessageDeleter Deleter(string accountSid, string sid) {
             return new MessageDeleter(accountSid, sid);
         }
     
-        /**
-         * Create a MessageDeleter to execute delete.
-         * 
-         * @param sid The message to delete
-         * @return MessageDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a MessageDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="sid"> The message to delete </param>
+        /// <returns> MessageDeleter capable of executing the delete </returns> 
         public static MessageDeleter Deleter(string sid) {
             return new MessageDeleter(sid);
         }
     
-        /**
-         * Fetch a message belonging to the account used to make the request
-         * 
-         * @param accountSid The account_sid
-         * @param sid Fetch by unique message Sid
-         * @return MessageFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Fetch a message belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Fetch by unique message Sid </param>
+        /// <returns> MessageFetcher capable of executing the fetch </returns> 
         public static MessageFetcher Fetcher(string accountSid, string sid) {
             return new MessageFetcher(accountSid, sid);
         }
     
-        /**
-         * Create a MessageFetcher to execute fetch.
-         * 
-         * @param sid Fetch by unique message Sid
-         * @return MessageFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a MessageFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique message Sid </param>
+        /// <returns> MessageFetcher capable of executing the fetch </returns> 
         public static MessageFetcher Fetcher(string sid) {
             return new MessageFetcher(sid);
         }
     
-        /**
-         * Retrieve a list of messages belonging to the account used to make the request
-         * 
-         * @param accountSid The account_sid
-         * @return MessageReader capable of executing the read
-         */
+        /// <summary>
+        /// Retrieve a list of messages belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> MessageReader capable of executing the read </returns> 
         public static MessageReader Reader(string accountSid) {
             return new MessageReader(accountSid);
         }
     
-        /**
-         * Create a MessageReader to execute read.
-         * 
-         * @return MessageReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a MessageReader to execute read.
+        /// </summary>
+        ///
+        /// <returns> MessageReader capable of executing the read </returns> 
         public static MessageReader Reader() {
             return new MessageReader();
         }
     
-        /**
-         * To redact a message-body from a post-flight message record, post to the
-         * message instance resource with an empty body
-         * 
-         * @param accountSid The account_sid
-         * @param sid The message to redact
-         * @return MessageUpdater capable of executing the update
-         */
+        /// <summary>
+        /// To redact a message-body from a post-flight message record, post to the message instance resource with an empty body
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The message to redact </param>
+        /// <returns> MessageUpdater capable of executing the update </returns> 
         public static MessageUpdater Updater(string accountSid, string sid) {
             return new MessageUpdater(accountSid, sid);
         }
     
-        /**
-         * Create a MessageUpdater to execute update.
-         * 
-         * @param sid The message to redact
-         * @return MessageUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Create a MessageUpdater to execute update.
+        /// </summary>
+        ///
+        /// <param name="sid"> The message to redact </param>
+        /// <returns> MessageUpdater capable of executing the update </returns> 
         public static MessageUpdater Updater(string sid) {
             return new MessageUpdater(sid);
         }
     
-        /**
-         * Converts a JSON string into a MessageResource object
-         * 
-         * @param json Raw JSON string
-         * @return MessageResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a MessageResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> MessageResource object represented by the provided JSON </returns> 
         public static MessageResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -387,135 +386,97 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.uri = uri;
         }
     
-        /**
-         * @return The unique sid that identifies this account
-         */
+        /// <returns> The unique sid that identifies this account </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The version of the Twilio API used to process the message.
-         */
+        /// <returns> The version of the Twilio API used to process the message. </returns> 
         public string GetApiVersion() {
             return this.apiVersion;
         }
     
-        /**
-         * @return The text body of the message. Up to 1600 characters long.
-         */
+        /// <returns> The text body of the message. Up to 1600 characters long. </returns> 
         public string GetBody() {
             return this.body;
         }
     
-        /**
-         * @return The date this resource was created
-         */
+        /// <returns> The date this resource was created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date this resource was last updated
-         */
+        /// <returns> The date this resource was last updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The date the message was sent
-         */
+        /// <returns> The date the message was sent </returns> 
         public DateTime? GetDateSent() {
             return this.dateSent;
         }
     
-        /**
-         * @return The direction of the message
-         */
+        /// <returns> The direction of the message </returns> 
         public MessageResource.Direction GetDirection() {
             return this.direction;
         }
     
-        /**
-         * @return The error code associated with the message
-         */
+        /// <returns> The error code associated with the message </returns> 
         public int? GetErrorCode() {
             return this.errorCode;
         }
     
-        /**
-         * @return Human readable description of the ErrorCode
-         */
+        /// <returns> Human readable description of the ErrorCode </returns> 
         public string GetErrorMessage() {
             return this.errorMessage;
         }
     
-        /**
-         * @return The phone number that initiated the message
-         */
+        /// <returns> The phone number that initiated the message </returns> 
         public Twilio.Types.PhoneNumber GetFrom() {
             return this.from;
         }
     
-        /**
-         * @return Number of media files associated with the message
-         */
+        /// <returns> Number of media files associated with the message </returns> 
         public string GetNumMedia() {
             return this.numMedia;
         }
     
-        /**
-         * @return Indicates number of messages used to delivery the body
-         */
+        /// <returns> Indicates number of messages used to delivery the body </returns> 
         public string GetNumSegments() {
             return this.numSegments;
         }
     
-        /**
-         * @return The amount billed for the message
-         */
+        /// <returns> The amount billed for the message </returns> 
         public decimal? GetPrice() {
             return this.price;
         }
     
-        /**
-         * @return The currency in which Price is measured
-         */
+        /// <returns> The currency in which Price is measured </returns> 
         public string GetPriceUnit() {
             return this.priceUnit;
         }
     
-        /**
-         * @return A string that uniquely identifies this message
-         */
+        /// <returns> A string that uniquely identifies this message </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The status of this message
-         */
+        /// <returns> The status of this message </returns> 
         public MessageResource.Status GetStatus() {
             return this.status;
         }
     
-        /**
-         * @return The subresource_uris
-         */
+        /// <returns> The subresource_uris </returns> 
         public Dictionary<string, string> GetSubresourceUris() {
             return this.subresourceUris;
         }
     
-        /**
-         * @return The phone number that received the message
-         */
+        /// <returns> The phone number that received the message </returns> 
         public string GetTo() {
             return this.to;
         }
     
-        /**
-         * @return The URI for this resource
-         */
+        /// <returns> The URI for this resource </returns> 
         public string GetUri() {
             return this.uri;
         }

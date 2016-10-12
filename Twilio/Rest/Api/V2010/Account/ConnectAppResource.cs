@@ -39,74 +39,73 @@ namespace Twilio.Rest.Api.V2010.Account {
             }
         }
     
-        /**
-         * Fetch an instance of a connect-app
-         * 
-         * @param accountSid The account_sid
-         * @param sid Fetch by unique connect-app Sid
-         * @return ConnectAppFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Fetch an instance of a connect-app
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Fetch by unique connect-app Sid </param>
+        /// <returns> ConnectAppFetcher capable of executing the fetch </returns> 
         public static ConnectAppFetcher Fetcher(string accountSid, string sid) {
             return new ConnectAppFetcher(accountSid, sid);
         }
     
-        /**
-         * Create a ConnectAppFetcher to execute fetch.
-         * 
-         * @param sid Fetch by unique connect-app Sid
-         * @return ConnectAppFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a ConnectAppFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique connect-app Sid </param>
+        /// <returns> ConnectAppFetcher capable of executing the fetch </returns> 
         public static ConnectAppFetcher Fetcher(string sid) {
             return new ConnectAppFetcher(sid);
         }
     
-        /**
-         * Update a connect-app with the specified parameters
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         * @return ConnectAppUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Update a connect-app with the specified parameters
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> ConnectAppUpdater capable of executing the update </returns> 
         public static ConnectAppUpdater Updater(string accountSid, string sid) {
             return new ConnectAppUpdater(accountSid, sid);
         }
     
-        /**
-         * Create a ConnectAppUpdater to execute update.
-         * 
-         * @param sid The sid
-         * @return ConnectAppUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Create a ConnectAppUpdater to execute update.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> ConnectAppUpdater capable of executing the update </returns> 
         public static ConnectAppUpdater Updater(string sid) {
             return new ConnectAppUpdater(sid);
         }
     
-        /**
-         * Retrieve a list of connect-apps belonging to the account used to make the
-         * request
-         * 
-         * @param accountSid The account_sid
-         * @return ConnectAppReader capable of executing the read
-         */
+        /// <summary>
+        /// Retrieve a list of connect-apps belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> ConnectAppReader capable of executing the read </returns> 
         public static ConnectAppReader Reader(string accountSid) {
             return new ConnectAppReader(accountSid);
         }
     
-        /**
-         * Create a ConnectAppReader to execute read.
-         * 
-         * @return ConnectAppReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a ConnectAppReader to execute read.
+        /// </summary>
+        ///
+        /// <returns> ConnectAppReader capable of executing the read </returns> 
         public static ConnectAppReader Reader() {
             return new ConnectAppReader();
         }
     
-        /**
-         * Converts a JSON string into a ConnectAppResource object
-         * 
-         * @param json Raw JSON string
-         * @return ConnectAppResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a ConnectAppResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> ConnectAppResource object represented by the provided JSON </returns> 
         public static ConnectAppResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -180,79 +179,57 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.uri = uri;
         }
     
-        /**
-         * @return The unique sid that identifies this account
-         */
+        /// <returns> The unique sid that identifies this account </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return URIL Twilio sends requests when users authorize
-         */
+        /// <returns> URIL Twilio sends requests when users authorize </returns> 
         public Uri GetAuthorizeRedirectUrl() {
             return this.authorizeRedirectUrl;
         }
     
-        /**
-         * @return The company name set for this Connect App.
-         */
+        /// <returns> The company name set for this Connect App. </returns> 
         public string GetCompanyName() {
             return this.companyName;
         }
     
-        /**
-         * @return HTTP method Twilio WIll use making requests to the url
-         */
+        /// <returns> HTTP method Twilio WIll use making requests to the url </returns> 
         public Twilio.Http.HttpMethod GetDeauthorizeCallbackMethod() {
             return this.deauthorizeCallbackMethod;
         }
     
-        /**
-         * @return URL Twilio will send a request when a user de-authorizes this app
-         */
+        /// <returns> URL Twilio will send a request when a user de-authorizes this app </returns> 
         public Uri GetDeauthorizeCallbackUrl() {
             return this.deauthorizeCallbackUrl;
         }
     
-        /**
-         * @return A more detailed human readable description
-         */
+        /// <returns> A more detailed human readable description </returns> 
         public string GetDescription() {
             return this.description;
         }
     
-        /**
-         * @return A human readable name for the Connect App.
-         */
+        /// <returns> A human readable name for the Connect App. </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The URL users can obtain more information
-         */
+        /// <returns> The URL users can obtain more information </returns> 
         public Uri GetHomepageUrl() {
             return this.homepageUrl;
         }
     
-        /**
-         * @return The set of permissions that your ConnectApp requests.
-         */
+        /// <returns> The set of permissions that your ConnectApp requests. </returns> 
         public List<ConnectAppResource.Permission> GetPermissions() {
             return this.permissions;
         }
     
-        /**
-         * @return A string that uniquely identifies this connect-apps
-         */
+        /// <returns> A string that uniquely identifies this connect-apps </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The URI for this resource
-         */
+        /// <returns> The URI for this resource </returns> 
         public string GetUri() {
             return this.uri;
         }

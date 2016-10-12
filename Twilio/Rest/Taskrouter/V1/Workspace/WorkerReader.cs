@@ -19,99 +19,99 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         private string taskQueueName;
         private string taskQueueSid;
     
-        /**
-         * Construct a new WorkerReader
-         * 
-         * @param workspaceSid The workspace_sid
-         */
+        /// <summary>
+        /// Construct a new WorkerReader
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
         public WorkerReader(string workspaceSid) {
             this.workspaceSid = workspaceSid;
         }
     
-        /**
-         * The activity_name
-         * 
-         * @param activityName The activity_name
-         * @return this
-         */
+        /// <summary>
+        /// The activity_name
+        /// </summary>
+        ///
+        /// <param name="activityName"> The activity_name </param>
+        /// <returns> this </returns> 
         public WorkerReader ByActivityName(string activityName) {
             this.activityName = activityName;
             return this;
         }
     
-        /**
-         * The activity_sid
-         * 
-         * @param activitySid The activity_sid
-         * @return this
-         */
+        /// <summary>
+        /// The activity_sid
+        /// </summary>
+        ///
+        /// <param name="activitySid"> The activity_sid </param>
+        /// <returns> this </returns> 
         public WorkerReader ByActivitySid(string activitySid) {
             this.activitySid = activitySid;
             return this;
         }
     
-        /**
-         * The available
-         * 
-         * @param available The available
-         * @return this
-         */
+        /// <summary>
+        /// The available
+        /// </summary>
+        ///
+        /// <param name="available"> The available </param>
+        /// <returns> this </returns> 
         public WorkerReader ByAvailable(string available) {
             this.available = available;
             return this;
         }
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public WorkerReader ByFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * The target_workers_expression
-         * 
-         * @param targetWorkersExpression The target_workers_expression
-         * @return this
-         */
+        /// <summary>
+        /// The target_workers_expression
+        /// </summary>
+        ///
+        /// <param name="targetWorkersExpression"> The target_workers_expression </param>
+        /// <returns> this </returns> 
         public WorkerReader ByTargetWorkersExpression(string targetWorkersExpression) {
             this.targetWorkersExpression = targetWorkersExpression;
             return this;
         }
     
-        /**
-         * The task_queue_name
-         * 
-         * @param taskQueueName The task_queue_name
-         * @return this
-         */
+        /// <summary>
+        /// The task_queue_name
+        /// </summary>
+        ///
+        /// <param name="taskQueueName"> The task_queue_name </param>
+        /// <returns> this </returns> 
         public WorkerReader ByTaskQueueName(string taskQueueName) {
             this.taskQueueName = taskQueueName;
             return this;
         }
     
-        /**
-         * The task_queue_sid
-         * 
-         * @param taskQueueSid The task_queue_sid
-         * @return this
-         */
+        /// <summary>
+        /// The task_queue_sid
+        /// </summary>
+        ///
+        /// <param name="taskQueueSid"> The task_queue_sid </param>
+        /// <returns> this </returns> 
         public WorkerReader ByTaskQueueSid(string taskQueueSid) {
             this.taskQueueSid = taskQueueSid;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return WorkerResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> WorkerResource ResourceSet </returns> 
         public override Task<ResourceSet<WorkerResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -126,12 +126,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return WorkerResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> WorkerResource ResourceSet </returns> 
         public override ResourceSet<WorkerResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -145,13 +145,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             return new ResourceSet<WorkerResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<WorkerResource> NextPage(Page<WorkerResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -163,13 +163,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of WorkerResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of WorkerResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<WorkerResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -196,11 +196,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             return Page<WorkerResource>.FromJson("workers", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (activityName != null) {
                 request.AddQueryParam("ActivityName", activityName);

@@ -14,44 +14,44 @@ namespace Twilio.Rest.Preview.Wireless.Device {
         private string end;
         private string start;
     
-        /**
-         * Construct a new UsageFetcher
-         * 
-         * @param deviceSid The device_sid
-         */
+        /// <summary>
+        /// Construct a new UsageFetcher
+        /// </summary>
+        ///
+        /// <param name="deviceSid"> The device_sid </param>
         public UsageFetcher(string deviceSid) {
             this.deviceSid = deviceSid;
         }
     
-        /**
-         * The end
-         * 
-         * @param end The end
-         * @return this
-         */
+        /// <summary>
+        /// The end
+        /// </summary>
+        ///
+        /// <param name="end"> The end </param>
+        /// <returns> this </returns> 
         public UsageFetcher setEnd(string end) {
             this.end = end;
             return this;
         }
     
-        /**
-         * The start
-         * 
-         * @param start The start
-         * @return this
-         */
+        /// <summary>
+        /// The start
+        /// </summary>
+        ///
+        /// <param name="start"> The start </param>
+        /// <returns> this </returns> 
         public UsageFetcher setStart(string start) {
             this.start = start;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched UsageResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched UsageResource </returns> 
         public override async Task<UsageResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -88,12 +88,12 @@ namespace Twilio.Rest.Preview.Wireless.Device {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched UsageResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched UsageResource </returns> 
         public override UsageResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -129,11 +129,11 @@ namespace Twilio.Rest.Preview.Wireless.Device {
             return UsageResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (end != null) {
                 request.AddQueryParam("End", end);

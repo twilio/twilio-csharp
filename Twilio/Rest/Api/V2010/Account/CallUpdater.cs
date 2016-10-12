@@ -22,150 +22,143 @@ namespace Twilio.Rest.Api.V2010.Account {
         private Uri statusCallback;
         private Twilio.Http.HttpMethod statusCallbackMethod;
     
-        /**
-         * Construct a new CallUpdater.
-         * 
-         * @param sid Call Sid that uniquely identifies the Call to update
-         */
+        /// <summary>
+        /// Construct a new CallUpdater.
+        /// </summary>
+        ///
+        /// <param name="sid"> Call Sid that uniquely identifies the Call to update </param>
         public CallUpdater(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * Construct a new CallUpdater
-         * 
-         * @param accountSid The account_sid
-         * @param sid Call Sid that uniquely identifies the Call to update
-         */
+        /// <summary>
+        /// Construct a new CallUpdater
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Call Sid that uniquely identifies the Call to update </param>
         public CallUpdater(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
     
-        /**
-         * A valid URL that returns TwiML. Twilio will immediately redirect the call to
-         * the new TwiML upon execution.
-         * 
-         * @param url URL that returns TwiML
-         * @return this
-         */
+        /// <summary>
+        /// A valid URL that returns TwiML. Twilio will immediately redirect the call to the new TwiML upon execution.
+        /// </summary>
+        ///
+        /// <param name="url"> URL that returns TwiML </param>
+        /// <returns> this </returns> 
         public CallUpdater setUrl(Uri url) {
             this.url = url;
             return this;
         }
     
-        /**
-         * A valid URL that returns TwiML. Twilio will immediately redirect the call to
-         * the new TwiML upon execution.
-         * 
-         * @param url URL that returns TwiML
-         * @return this
-         */
+        /// <summary>
+        /// A valid URL that returns TwiML. Twilio will immediately redirect the call to the new TwiML upon execution.
+        /// </summary>
+        ///
+        /// <param name="url"> URL that returns TwiML </param>
+        /// <returns> this </returns> 
         public CallUpdater setUrl(string url) {
             return setUrl(Promoter.UriFromString(url));
         }
     
-        /**
-         * The HTTP method Twilio should use when requesting the URL. Defaults to
-         * `POST`.
-         * 
-         * @param method HTTP method to use to fetch TwiML
-         * @return this
-         */
+        /// <summary>
+        /// The HTTP method Twilio should use when requesting the URL. Defaults to `POST`.
+        /// </summary>
+        ///
+        /// <param name="method"> HTTP method to use to fetch TwiML </param>
+        /// <returns> this </returns> 
         public CallUpdater setMethod(Twilio.Http.HttpMethod method) {
             this.method = method;
             return this;
         }
     
-        /**
-         * Either `canceled` or `completed`. Specifying `canceled` will attempt to
-         * hangup calls that are queued or ringing but not affect calls already in
-         * progress. Specifying `completed` will attempt to hang up a call even if it's
-         * already in progress.
-         * 
-         * @param status Status to update the Call with
-         * @return this
-         */
+        /// <summary>
+        /// Either `canceled` or `completed`. Specifying `canceled` will attempt to hangup calls that are queued or ringing but
+        /// not affect calls already in progress. Specifying `completed` will attempt to hang up a call even if it's already in
+        /// progress.
+        /// </summary>
+        ///
+        /// <param name="status"> Status to update the Call with </param>
+        /// <returns> this </returns> 
         public CallUpdater setStatus(CallResource.Status status) {
             this.status = status;
             return this;
         }
     
-        /**
-         * A URL that Twilio will request if an error occurs requesting or executing the
-         * TwiML at `Url`.
-         * 
-         * @param fallbackUrl Fallback URL in case of error
-         * @return this
-         */
+        /// <summary>
+        /// A URL that Twilio will request if an error occurs requesting or executing the TwiML at `Url`.
+        /// </summary>
+        ///
+        /// <param name="fallbackUrl"> Fallback URL in case of error </param>
+        /// <returns> this </returns> 
         public CallUpdater setFallbackUrl(Uri fallbackUrl) {
             this.fallbackUrl = fallbackUrl;
             return this;
         }
     
-        /**
-         * A URL that Twilio will request if an error occurs requesting or executing the
-         * TwiML at `Url`.
-         * 
-         * @param fallbackUrl Fallback URL in case of error
-         * @return this
-         */
+        /// <summary>
+        /// A URL that Twilio will request if an error occurs requesting or executing the TwiML at `Url`.
+        /// </summary>
+        ///
+        /// <param name="fallbackUrl"> Fallback URL in case of error </param>
+        /// <returns> this </returns> 
         public CallUpdater setFallbackUrl(string fallbackUrl) {
             return setFallbackUrl(Promoter.UriFromString(fallbackUrl));
         }
     
-        /**
-         * The HTTP method that Twilio should use to request the `FallbackUrl`. Must be
-         * either `GET` or `POST`. Defaults to `POST`.
-         * 
-         * @param fallbackMethod HTTP Method to use with FallbackUrl
-         * @return this
-         */
+        /// <summary>
+        /// The HTTP method that Twilio should use to request the `FallbackUrl`. Must be either `GET` or `POST`. Defaults to
+        /// `POST`.
+        /// </summary>
+        ///
+        /// <param name="fallbackMethod"> HTTP Method to use with FallbackUrl </param>
+        /// <returns> this </returns> 
         public CallUpdater setFallbackMethod(Twilio.Http.HttpMethod fallbackMethod) {
             this.fallbackMethod = fallbackMethod;
             return this;
         }
     
-        /**
-         * A URL that Twilio will request when the call ends to notify your app.
-         * 
-         * @param statusCallback Status Callback URL
-         * @return this
-         */
+        /// <summary>
+        /// A URL that Twilio will request when the call ends to notify your app.
+        /// </summary>
+        ///
+        /// <param name="statusCallback"> Status Callback URL </param>
+        /// <returns> this </returns> 
         public CallUpdater setStatusCallback(Uri statusCallback) {
             this.statusCallback = statusCallback;
             return this;
         }
     
-        /**
-         * A URL that Twilio will request when the call ends to notify your app.
-         * 
-         * @param statusCallback Status Callback URL
-         * @return this
-         */
+        /// <summary>
+        /// A URL that Twilio will request when the call ends to notify your app.
+        /// </summary>
+        ///
+        /// <param name="statusCallback"> Status Callback URL </param>
+        /// <returns> this </returns> 
         public CallUpdater setStatusCallback(string statusCallback) {
             return setStatusCallback(Promoter.UriFromString(statusCallback));
         }
     
-        /**
-         * The HTTP method that Twilio should use to request the `StatusCallback`.
-         * Defaults to `POST`.
-         * 
-         * @param statusCallbackMethod HTTP Method to use with StatusCallback
-         * @return this
-         */
+        /// <summary>
+        /// The HTTP method that Twilio should use to request the `StatusCallback`. Defaults to `POST`.
+        /// </summary>
+        ///
+        /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
+        /// <returns> this </returns> 
         public CallUpdater setStatusCallbackMethod(Twilio.Http.HttpMethod statusCallbackMethod) {
             this.statusCallbackMethod = statusCallbackMethod;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated CallResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated CallResource </returns> 
         public override async Task<CallResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -200,12 +193,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated CallResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated CallResource </returns> 
         public override CallResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -239,11 +232,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return CallResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (url != null) {
                 request.AddPostParam("Url", url.ToString());

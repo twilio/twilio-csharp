@@ -20,98 +20,98 @@ namespace Twilio.Rest.Trunking.V1 {
         private string recording;
         private bool? secure;
     
-        /**
-         * Construct a new TrunkUpdater
-         * 
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new TrunkUpdater
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
         public TrunkUpdater(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * The friendly_name
-         * 
-         * @param friendlyName The friendly_name
-         * @return this
-         */
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> this </returns> 
         public TrunkUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
-        /**
-         * The domain_name
-         * 
-         * @param domainName The domain_name
-         * @return this
-         */
+        /// <summary>
+        /// The domain_name
+        /// </summary>
+        ///
+        /// <param name="domainName"> The domain_name </param>
+        /// <returns> this </returns> 
         public TrunkUpdater setDomainName(string domainName) {
             this.domainName = domainName;
             return this;
         }
     
-        /**
-         * The disaster_recovery_url
-         * 
-         * @param disasterRecoveryUrl The disaster_recovery_url
-         * @return this
-         */
+        /// <summary>
+        /// The disaster_recovery_url
+        /// </summary>
+        ///
+        /// <param name="disasterRecoveryUrl"> The disaster_recovery_url </param>
+        /// <returns> this </returns> 
         public TrunkUpdater setDisasterRecoveryUrl(Uri disasterRecoveryUrl) {
             this.disasterRecoveryUrl = disasterRecoveryUrl;
             return this;
         }
     
-        /**
-         * The disaster_recovery_url
-         * 
-         * @param disasterRecoveryUrl The disaster_recovery_url
-         * @return this
-         */
+        /// <summary>
+        /// The disaster_recovery_url
+        /// </summary>
+        ///
+        /// <param name="disasterRecoveryUrl"> The disaster_recovery_url </param>
+        /// <returns> this </returns> 
         public TrunkUpdater setDisasterRecoveryUrl(string disasterRecoveryUrl) {
             return setDisasterRecoveryUrl(Promoter.UriFromString(disasterRecoveryUrl));
         }
     
-        /**
-         * The disaster_recovery_method
-         * 
-         * @param disasterRecoveryMethod The disaster_recovery_method
-         * @return this
-         */
+        /// <summary>
+        /// The disaster_recovery_method
+        /// </summary>
+        ///
+        /// <param name="disasterRecoveryMethod"> The disaster_recovery_method </param>
+        /// <returns> this </returns> 
         public TrunkUpdater setDisasterRecoveryMethod(Twilio.Http.HttpMethod disasterRecoveryMethod) {
             this.disasterRecoveryMethod = disasterRecoveryMethod;
             return this;
         }
     
-        /**
-         * The recording
-         * 
-         * @param recording The recording
-         * @return this
-         */
+        /// <summary>
+        /// The recording
+        /// </summary>
+        ///
+        /// <param name="recording"> The recording </param>
+        /// <returns> this </returns> 
         public TrunkUpdater setRecording(string recording) {
             this.recording = recording;
             return this;
         }
     
-        /**
-         * The secure
-         * 
-         * @param secure The secure
-         * @return this
-         */
+        /// <summary>
+        /// The secure
+        /// </summary>
+        ///
+        /// <param name="secure"> The secure </param>
+        /// <returns> this </returns> 
         public TrunkUpdater setSecure(bool? secure) {
             this.secure = secure;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated TrunkResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated TrunkResource </returns> 
         public override async Task<TrunkResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -146,12 +146,12 @@ namespace Twilio.Rest.Trunking.V1 {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated TrunkResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated TrunkResource </returns> 
         public override TrunkResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -185,11 +185,11 @@ namespace Twilio.Rest.Trunking.V1 {
             return TrunkResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

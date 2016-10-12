@@ -15,55 +15,55 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         private string startDate;
         private string endDate;
     
-        /**
-         * Construct a new WorkspaceStatisticsFetcher
-         * 
-         * @param workspaceSid The workspace_sid
-         */
+        /// <summary>
+        /// Construct a new WorkspaceStatisticsFetcher
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
         public WorkspaceStatisticsFetcher(string workspaceSid) {
             this.workspaceSid = workspaceSid;
         }
     
-        /**
-         * The minutes
-         * 
-         * @param minutes The minutes
-         * @return this
-         */
+        /// <summary>
+        /// The minutes
+        /// </summary>
+        ///
+        /// <param name="minutes"> The minutes </param>
+        /// <returns> this </returns> 
         public WorkspaceStatisticsFetcher setMinutes(int? minutes) {
             this.minutes = minutes;
             return this;
         }
     
-        /**
-         * The start_date
-         * 
-         * @param startDate The start_date
-         * @return this
-         */
+        /// <summary>
+        /// The start_date
+        /// </summary>
+        ///
+        /// <param name="startDate"> The start_date </param>
+        /// <returns> this </returns> 
         public WorkspaceStatisticsFetcher setStartDate(string startDate) {
             this.startDate = startDate;
             return this;
         }
     
-        /**
-         * The end_date
-         * 
-         * @param endDate The end_date
-         * @return this
-         */
+        /// <summary>
+        /// The end_date
+        /// </summary>
+        ///
+        /// <param name="endDate"> The end_date </param>
+        /// <returns> this </returns> 
         public WorkspaceStatisticsFetcher setEndDate(string endDate) {
             this.endDate = endDate;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched WorkspaceStatisticsResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched WorkspaceStatisticsResource </returns> 
         public override async Task<WorkspaceStatisticsResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -100,12 +100,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched WorkspaceStatisticsResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched WorkspaceStatisticsResource </returns> 
         public override WorkspaceStatisticsResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -141,11 +141,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             return WorkspaceStatisticsResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (minutes != null) {
                 request.AddQueryParam("Minutes", minutes.ToString());

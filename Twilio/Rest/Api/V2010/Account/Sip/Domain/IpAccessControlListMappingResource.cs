@@ -9,106 +9,105 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
 
     public class IpAccessControlListMappingResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param accountSid The account_sid
-         * @param domainSid The domain_sid
-         * @param sid The sid
-         * @return IpAccessControlListMappingFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> IpAccessControlListMappingFetcher capable of executing the fetch </returns> 
         public static IpAccessControlListMappingFetcher Fetcher(string accountSid, string domainSid, string sid) {
             return new IpAccessControlListMappingFetcher(accountSid, domainSid, sid);
         }
     
-        /**
-         * Create a IpAccessControlListMappingFetcher to execute fetch.
-         * 
-         * @param domainSid The domain_sid
-         * @param sid The sid
-         * @return IpAccessControlListMappingFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a IpAccessControlListMappingFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> IpAccessControlListMappingFetcher capable of executing the fetch </returns> 
         public static IpAccessControlListMappingFetcher Fetcher(string domainSid, 
                                                                 string sid) {
             return new IpAccessControlListMappingFetcher(domainSid, sid);
         }
     
-        /**
-         * create
-         * 
-         * @param accountSid The account_sid
-         * @param domainSid The domain_sid
-         * @param ipAccessControlListSid The ip_access_control_list_sid
-         * @return IpAccessControlListMappingCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <returns> IpAccessControlListMappingCreator capable of executing the create </returns> 
         public static IpAccessControlListMappingCreator Creator(string accountSid, string domainSid, string ipAccessControlListSid) {
             return new IpAccessControlListMappingCreator(accountSid, domainSid, ipAccessControlListSid);
         }
     
-        /**
-         * Create a IpAccessControlListMappingCreator to execute create.
-         * 
-         * @param domainSid The domain_sid
-         * @param ipAccessControlListSid The ip_access_control_list_sid
-         * @return IpAccessControlListMappingCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a IpAccessControlListMappingCreator to execute create.
+        /// </summary>
+        ///
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <returns> IpAccessControlListMappingCreator capable of executing the create </returns> 
         public static IpAccessControlListMappingCreator Creator(string domainSid, 
                                                                 string ipAccessControlListSid) {
             return new IpAccessControlListMappingCreator(domainSid, ipAccessControlListSid);
         }
     
-        /**
-         * read
-         * 
-         * @param accountSid The account_sid
-         * @param domainSid The domain_sid
-         * @return IpAccessControlListMappingReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <returns> IpAccessControlListMappingReader capable of executing the read </returns> 
         public static IpAccessControlListMappingReader Reader(string accountSid, string domainSid) {
             return new IpAccessControlListMappingReader(accountSid, domainSid);
         }
     
-        /**
-         * Create a IpAccessControlListMappingReader to execute read.
-         * 
-         * @param domainSid The domain_sid
-         * @return IpAccessControlListMappingReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a IpAccessControlListMappingReader to execute read.
+        /// </summary>
+        ///
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <returns> IpAccessControlListMappingReader capable of executing the read </returns> 
         public static IpAccessControlListMappingReader Reader(string domainSid) {
             return new IpAccessControlListMappingReader(domainSid);
         }
     
-        /**
-         * delete
-         * 
-         * @param accountSid The account_sid
-         * @param domainSid The domain_sid
-         * @param sid The sid
-         * @return IpAccessControlListMappingDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> IpAccessControlListMappingDeleter capable of executing the delete </returns> 
         public static IpAccessControlListMappingDeleter Deleter(string accountSid, string domainSid, string sid) {
             return new IpAccessControlListMappingDeleter(accountSid, domainSid, sid);
         }
     
-        /**
-         * Create a IpAccessControlListMappingDeleter to execute delete.
-         * 
-         * @param domainSid The domain_sid
-         * @param sid The sid
-         * @return IpAccessControlListMappingDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a IpAccessControlListMappingDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> IpAccessControlListMappingDeleter capable of executing the delete </returns> 
         public static IpAccessControlListMappingDeleter Deleter(string domainSid, 
                                                                 string sid) {
             return new IpAccessControlListMappingDeleter(domainSid, sid);
         }
     
-        /**
-         * Converts a JSON string into a IpAccessControlListMappingResource object
-         * 
-         * @param json Raw JSON string
-         * @return IpAccessControlListMappingResource object represented by the
-         *         provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a IpAccessControlListMappingResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> IpAccessControlListMappingResource object represented by the provided JSON </returns> 
         public static IpAccessControlListMappingResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -155,44 +154,32 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
             this.uri = uri;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The uri
-         */
+        /// <returns> The uri </returns> 
         public string GetUri() {
             return this.uri;
         }

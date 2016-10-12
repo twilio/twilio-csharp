@@ -13,24 +13,24 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         private string trunkSid;
         private string credentialListSid;
     
-        /**
-         * Construct a new CredentialListCreator
-         * 
-         * @param trunkSid The trunk_sid
-         * @param credentialListSid The credential_list_sid
-         */
+        /// <summary>
+        /// Construct a new CredentialListCreator
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="credentialListSid"> The credential_list_sid </param>
         public CredentialListCreator(string trunkSid, string credentialListSid) {
             this.trunkSid = trunkSid;
             this.credentialListSid = credentialListSid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created CredentialListResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created CredentialListResource </returns> 
         public override async Task<CredentialListResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -65,12 +65,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created CredentialListResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created CredentialListResource </returns> 
         public override CredentialListResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -104,11 +104,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
             return CredentialListResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (credentialListSid != null) {
                 request.AddPostParam("CredentialListSid", credentialListSid);

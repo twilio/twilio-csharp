@@ -9,70 +9,70 @@ using Twilio.Http;
 namespace Twilio.Rest.Trunking.V1.Trunk {
 
     public class OriginationUrlResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param trunkSid The trunk_sid
-         * @param sid The sid
-         * @return OriginationUrlFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> OriginationUrlFetcher capable of executing the fetch </returns> 
         public static OriginationUrlFetcher Fetcher(string trunkSid, string sid) {
             return new OriginationUrlFetcher(trunkSid, sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param trunkSid The trunk_sid
-         * @param sid The sid
-         * @return OriginationUrlDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> OriginationUrlDeleter capable of executing the delete </returns> 
         public static OriginationUrlDeleter Deleter(string trunkSid, string sid) {
             return new OriginationUrlDeleter(trunkSid, sid);
         }
     
-        /**
-         * create
-         * 
-         * @param trunkSid The trunk_sid
-         * @param weight The weight
-         * @param priority The priority
-         * @param enabled The enabled
-         * @param friendlyName The friendly_name
-         * @param sipUrl The sip_url
-         * @return OriginationUrlCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="weight"> The weight </param>
+        /// <param name="priority"> The priority </param>
+        /// <param name="enabled"> The enabled </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="sipUrl"> The sip_url </param>
+        /// <returns> OriginationUrlCreator capable of executing the create </returns> 
         public static OriginationUrlCreator Creator(string trunkSid, int? weight, int? priority, bool? enabled, string friendlyName, Uri sipUrl) {
             return new OriginationUrlCreator(trunkSid, weight, priority, enabled, friendlyName, sipUrl);
         }
     
-        /**
-         * read
-         * 
-         * @param trunkSid The trunk_sid
-         * @return OriginationUrlReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <returns> OriginationUrlReader capable of executing the read </returns> 
         public static OriginationUrlReader Reader(string trunkSid) {
             return new OriginationUrlReader(trunkSid);
         }
     
-        /**
-         * update
-         * 
-         * @param trunkSid The trunk_sid
-         * @param sid The sid
-         * @return OriginationUrlUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> OriginationUrlUpdater capable of executing the update </returns> 
         public static OriginationUrlUpdater Updater(string trunkSid, string sid) {
             return new OriginationUrlUpdater(trunkSid, sid);
         }
     
-        /**
-         * Converts a JSON string into a OriginationUrlResource object
-         * 
-         * @param json Raw JSON string
-         * @return OriginationUrlResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a OriginationUrlResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> OriginationUrlResource object represented by the provided JSON </returns> 
         public static OriginationUrlResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -144,79 +144,57 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
             this.url = url;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The trunk_sid
-         */
+        /// <returns> The trunk_sid </returns> 
         public string GetTrunkSid() {
             return this.trunkSid;
         }
     
-        /**
-         * @return The weight
-         */
+        /// <returns> The weight </returns> 
         public int? GetWeight() {
             return this.weight;
         }
     
-        /**
-         * @return The enabled
-         */
+        /// <returns> The enabled </returns> 
         public bool? GetEnabled() {
             return this.enabled;
         }
     
-        /**
-         * @return The sip_url
-         */
+        /// <returns> The sip_url </returns> 
         public Uri GetSipUrl() {
             return this.sipUrl;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The priority
-         */
+        /// <returns> The priority </returns> 
         public int? GetPriority() {
             return this.priority;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }

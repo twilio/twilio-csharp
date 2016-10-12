@@ -9,61 +9,61 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1 {
 
     public class WorkspaceResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param sid The sid
-         * @return WorkspaceFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> WorkspaceFetcher capable of executing the fetch </returns> 
         public static WorkspaceFetcher Fetcher(string sid) {
             return new WorkspaceFetcher(sid);
         }
     
-        /**
-         * update
-         * 
-         * @param sid The sid
-         * @return WorkspaceUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> WorkspaceUpdater capable of executing the update </returns> 
         public static WorkspaceUpdater Updater(string sid) {
             return new WorkspaceUpdater(sid);
         }
     
-        /**
-         * read
-         * 
-         * @return WorkspaceReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <returns> WorkspaceReader capable of executing the read </returns> 
         public static WorkspaceReader Reader() {
             return new WorkspaceReader();
         }
     
-        /**
-         * create
-         * 
-         * @param friendlyName The friendly_name
-         * @return WorkspaceCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <returns> WorkspaceCreator capable of executing the create </returns> 
         public static WorkspaceCreator Creator(string friendlyName) {
             return new WorkspaceCreator(friendlyName);
         }
     
-        /**
-         * delete
-         * 
-         * @param sid The sid
-         * @return WorkspaceDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> WorkspaceDeleter capable of executing the delete </returns> 
         public static WorkspaceDeleter Deleter(string sid) {
             return new WorkspaceDeleter(sid);
         }
     
-        /**
-         * Converts a JSON string into a WorkspaceResource object
-         * 
-         * @param json Raw JSON string
-         * @return WorkspaceResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a WorkspaceResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> WorkspaceResource object represented by the provided JSON </returns> 
         public static WorkspaceResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -140,86 +140,62 @@ namespace Twilio.Rest.Taskrouter.V1 {
             this.timeoutActivitySid = timeoutActivitySid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The default_activity_name
-         */
+        /// <returns> The default_activity_name </returns> 
         public string GetDefaultActivityName() {
             return this.defaultActivityName;
         }
     
-        /**
-         * @return The default_activity_sid
-         */
+        /// <returns> The default_activity_sid </returns> 
         public string GetDefaultActivitySid() {
             return this.defaultActivitySid;
         }
     
-        /**
-         * @return The event_callback_url
-         */
+        /// <returns> The event_callback_url </returns> 
         public Uri GetEventCallbackUrl() {
             return this.eventCallbackUrl;
         }
     
-        /**
-         * @return The events_filter
-         */
+        /// <returns> The events_filter </returns> 
         public string GetEventsFilter() {
             return this.eventsFilter;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The multi_task_enabled
-         */
+        /// <returns> The multi_task_enabled </returns> 
         public bool? GetMultiTaskEnabled() {
             return this.multiTaskEnabled;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The timeout_activity_name
-         */
+        /// <returns> The timeout_activity_name </returns> 
         public string GetTimeoutActivityName() {
             return this.timeoutActivityName;
         }
     
-        /**
-         * @return The timeout_activity_sid
-         */
+        /// <returns> The timeout_activity_sid </returns> 
         public string GetTimeoutActivitySid() {
             return this.timeoutActivitySid;
         }

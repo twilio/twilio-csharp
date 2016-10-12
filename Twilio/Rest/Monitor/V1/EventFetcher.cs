@@ -12,22 +12,22 @@ namespace Twilio.Rest.Monitor.V1 {
     public class EventFetcher : Fetcher<EventResource> {
         private string sid;
     
-        /**
-         * Construct a new EventFetcher
-         * 
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new EventFetcher
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
         public EventFetcher(string sid) {
             this.sid = sid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched EventResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched EventResource </returns> 
         public override async Task<EventResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -61,12 +61,12 @@ namespace Twilio.Rest.Monitor.V1 {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched EventResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched EventResource </returns> 
         public override EventResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

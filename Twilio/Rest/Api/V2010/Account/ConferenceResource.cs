@@ -39,53 +39,52 @@ namespace Twilio.Rest.Api.V2010.Account {
             }
         }
     
-        /**
-         * Fetch an instance of a conference
-         * 
-         * @param accountSid The account_sid
-         * @param sid Fetch by unique conference Sid
-         * @return ConferenceFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Fetch an instance of a conference
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Fetch by unique conference Sid </param>
+        /// <returns> ConferenceFetcher capable of executing the fetch </returns> 
         public static ConferenceFetcher Fetcher(string accountSid, string sid) {
             return new ConferenceFetcher(accountSid, sid);
         }
     
-        /**
-         * Create a ConferenceFetcher to execute fetch.
-         * 
-         * @param sid Fetch by unique conference Sid
-         * @return ConferenceFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a ConferenceFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique conference Sid </param>
+        /// <returns> ConferenceFetcher capable of executing the fetch </returns> 
         public static ConferenceFetcher Fetcher(string sid) {
             return new ConferenceFetcher(sid);
         }
     
-        /**
-         * Retrieve a list of conferences belonging to the account used to make the
-         * request
-         * 
-         * @param accountSid The account_sid
-         * @return ConferenceReader capable of executing the read
-         */
+        /// <summary>
+        /// Retrieve a list of conferences belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> ConferenceReader capable of executing the read </returns> 
         public static ConferenceReader Reader(string accountSid) {
             return new ConferenceReader(accountSid);
         }
     
-        /**
-         * Create a ConferenceReader to execute read.
-         * 
-         * @return ConferenceReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a ConferenceReader to execute read.
+        /// </summary>
+        ///
+        /// <returns> ConferenceReader capable of executing the read </returns> 
         public static ConferenceReader Reader() {
             return new ConferenceReader();
         }
     
-        /**
-         * Converts a JSON string into a ConferenceResource object
-         * 
-         * @param json Raw JSON string
-         * @return ConferenceResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a ConferenceResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> ConferenceResource object represented by the provided JSON </returns> 
         public static ConferenceResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -143,58 +142,42 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.uri = uri;
         }
     
-        /**
-         * @return The unique sid that identifies this account
-         */
+        /// <returns> The unique sid that identifies this account </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The date this resource was created
-         */
+        /// <returns> The date this resource was created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date this resource was last updated
-         */
+        /// <returns> The date this resource was last updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The api_version
-         */
+        /// <returns> The api_version </returns> 
         public string GetApiVersion() {
             return this.apiVersion;
         }
     
-        /**
-         * @return A human readable description of this resource
-         */
+        /// <returns> A human readable description of this resource </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return A string that uniquely identifies this conference
-         */
+        /// <returns> A string that uniquely identifies this conference </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The status of the conference
-         */
+        /// <returns> The status of the conference </returns> 
         public ConferenceResource.Status GetStatus() {
             return this.status;
         }
     
-        /**
-         * @return The URI for this resource
-         */
+        /// <returns> The URI for this resource </returns> 
         public string GetUri() {
             return this.uri;
         }

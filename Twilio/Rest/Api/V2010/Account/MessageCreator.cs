@@ -24,27 +24,27 @@ namespace Twilio.Rest.Api.V2010.Account {
         private decimal? maxPrice;
         private bool? provideFeedback;
     
-        /**
-         * Construct a new MessageCreator.
-         * 
-         * @param to The phone number to receive the message
-         * @param from The phone number that initiated the message
-         * @param body The body
-         */
+        /// <summary>
+        /// Construct a new MessageCreator.
+        /// </summary>
+        ///
+        /// <param name="to"> The phone number to receive the message </param>
+        /// <param name="from"> The phone number that initiated the message </param>
+        /// <param name="body"> The body </param>
         public MessageCreator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body) {
             this.to = to;
             this.from = from;
             this.body = body;
         }
     
-        /**
-         * Construct a new MessageCreator
-         * 
-         * @param accountSid The account_sid
-         * @param to The phone number to receive the message
-         * @param from The phone number that initiated the message
-         * @param body The body
-         */
+        /// <summary>
+        /// Construct a new MessageCreator
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="to"> The phone number to receive the message </param>
+        /// <param name="from"> The phone number that initiated the message </param>
+        /// <param name="body"> The body </param>
         public MessageCreator(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body) {
             this.accountSid = accountSid;
             this.to = to;
@@ -52,27 +52,27 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.body = body;
         }
     
-        /**
-         * Construct a new MessageCreator.
-         * 
-         * @param to The phone number to receive the message
-         * @param from The phone number that initiated the message
-         * @param mediaUrl The media_url
-         */
+        /// <summary>
+        /// Construct a new MessageCreator.
+        /// </summary>
+        ///
+        /// <param name="to"> The phone number to receive the message </param>
+        /// <param name="from"> The phone number that initiated the message </param>
+        /// <param name="mediaUrl"> The media_url </param>
         public MessageCreator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl) {
             this.to = to;
             this.from = from;
             this.mediaUrl = mediaUrl;
         }
     
-        /**
-         * Construct a new MessageCreator
-         * 
-         * @param accountSid The account_sid
-         * @param to The phone number to receive the message
-         * @param from The phone number that initiated the message
-         * @param mediaUrl The media_url
-         */
+        /// <summary>
+        /// Construct a new MessageCreator
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="to"> The phone number to receive the message </param>
+        /// <param name="from"> The phone number that initiated the message </param>
+        /// <param name="mediaUrl"> The media_url </param>
         public MessageCreator(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl) {
             this.accountSid = accountSid;
             this.to = to;
@@ -80,27 +80,27 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.mediaUrl = mediaUrl;
         }
     
-        /**
-         * Construct a new MessageCreator.
-         * 
-         * @param to The phone number to receive the message
-         * @param messagingServiceSid The messaging_service_sid
-         * @param body The body
-         */
+        /// <summary>
+        /// Construct a new MessageCreator.
+        /// </summary>
+        ///
+        /// <param name="to"> The phone number to receive the message </param>
+        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
+        /// <param name="body"> The body </param>
         public MessageCreator(Twilio.Types.PhoneNumber to, string messagingServiceSid, string body) {
             this.to = to;
             this.messagingServiceSid = messagingServiceSid;
             this.body = body;
         }
     
-        /**
-         * Construct a new MessageCreator
-         * 
-         * @param accountSid The account_sid
-         * @param to The phone number to receive the message
-         * @param messagingServiceSid The messaging_service_sid
-         * @param body The body
-         */
+        /// <summary>
+        /// Construct a new MessageCreator
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="to"> The phone number to receive the message </param>
+        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
+        /// <param name="body"> The body </param>
         public MessageCreator(string accountSid, Twilio.Types.PhoneNumber to, string messagingServiceSid, string body) {
             this.accountSid = accountSid;
             this.to = to;
@@ -108,27 +108,27 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.body = body;
         }
     
-        /**
-         * Construct a new MessageCreator.
-         * 
-         * @param to The phone number to receive the message
-         * @param messagingServiceSid The messaging_service_sid
-         * @param mediaUrl The media_url
-         */
+        /// <summary>
+        /// Construct a new MessageCreator.
+        /// </summary>
+        ///
+        /// <param name="to"> The phone number to receive the message </param>
+        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
+        /// <param name="mediaUrl"> The media_url </param>
         public MessageCreator(Twilio.Types.PhoneNumber to, string messagingServiceSid, List<Uri> mediaUrl) {
             this.to = to;
             this.messagingServiceSid = messagingServiceSid;
             this.mediaUrl = mediaUrl;
         }
     
-        /**
-         * Construct a new MessageCreator
-         * 
-         * @param accountSid The account_sid
-         * @param to The phone number to receive the message
-         * @param messagingServiceSid The messaging_service_sid
-         * @param mediaUrl The media_url
-         */
+        /// <summary>
+        /// Construct a new MessageCreator
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="to"> The phone number to receive the message </param>
+        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
+        /// <param name="mediaUrl"> The media_url </param>
         public MessageCreator(string accountSid, Twilio.Types.PhoneNumber to, string messagingServiceSid, List<Uri> mediaUrl) {
             this.accountSid = accountSid;
             this.to = to;
@@ -136,68 +136,68 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.mediaUrl = mediaUrl;
         }
     
-        /**
-         * The URL that Twilio will POST to each time your message status changes
-         * 
-         * @param statusCallback URL Twilio will request when the status changes
-         * @return this
-         */
+        /// <summary>
+        /// The URL that Twilio will POST to each time your message status changes
+        /// </summary>
+        ///
+        /// <param name="statusCallback"> URL Twilio will request when the status changes </param>
+        /// <returns> this </returns> 
         public MessageCreator setStatusCallback(Uri statusCallback) {
             this.statusCallback = statusCallback;
             return this;
         }
     
-        /**
-         * The URL that Twilio will POST to each time your message status changes
-         * 
-         * @param statusCallback URL Twilio will request when the status changes
-         * @return this
-         */
+        /// <summary>
+        /// The URL that Twilio will POST to each time your message status changes
+        /// </summary>
+        ///
+        /// <param name="statusCallback"> URL Twilio will request when the status changes </param>
+        /// <returns> this </returns> 
         public MessageCreator setStatusCallback(string statusCallback) {
             return setStatusCallback(Promoter.UriFromString(statusCallback));
         }
     
-        /**
-         * Twilio the POST MessageSid as well as MessageStatus to the URL in the
-         * MessageStatusCallback property of this Application
-         * 
-         * @param applicationSid The application to use for callbacks
-         * @return this
-         */
+        /// <summary>
+        /// Twilio the POST MessageSid as well as MessageStatus to the URL in the MessageStatusCallback property of this
+        /// Application
+        /// </summary>
+        ///
+        /// <param name="applicationSid"> The application to use for callbacks </param>
+        /// <returns> this </returns> 
         public MessageCreator setApplicationSid(string applicationSid) {
             this.applicationSid = applicationSid;
             return this;
         }
     
-        /**
-         * The max_price
-         * 
-         * @param maxPrice The max_price
-         * @return this
-         */
+        /// <summary>
+        /// The max_price
+        /// </summary>
+        ///
+        /// <param name="maxPrice"> The max_price </param>
+        /// <returns> this </returns> 
         public MessageCreator setMaxPrice(decimal? maxPrice) {
             this.maxPrice = maxPrice;
             return this;
         }
     
-        /**
-         * The provide_feedback
-         * 
-         * @param provideFeedback The provide_feedback
-         * @return this
-         */
+        /// <summary>
+        /// The provide_feedback
+        /// </summary>
+        ///
+        /// <param name="provideFeedback"> The provide_feedback </param>
+        /// <returns> this </returns> 
         public MessageCreator setProvideFeedback(bool? provideFeedback) {
             this.provideFeedback = provideFeedback;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created MessageResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created MessageResource </returns> 
         public override async Task<MessageResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -232,12 +232,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created MessageResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created MessageResource </returns> 
         public override MessageResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -271,11 +271,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return MessageResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (to != null) {
                 request.AddPostParam("To", to.ToString());

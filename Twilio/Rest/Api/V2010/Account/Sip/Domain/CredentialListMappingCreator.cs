@@ -14,24 +14,24 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         private string domainSid;
         private string credentialListSid;
     
-        /**
-         * Construct a new CredentialListMappingCreator.
-         * 
-         * @param domainSid The domain_sid
-         * @param credentialListSid The credential_list_sid
-         */
+        /// <summary>
+        /// Construct a new CredentialListMappingCreator.
+        /// </summary>
+        ///
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="credentialListSid"> The credential_list_sid </param>
         public CredentialListMappingCreator(string domainSid, string credentialListSid) {
             this.domainSid = domainSid;
             this.credentialListSid = credentialListSid;
         }
     
-        /**
-         * Construct a new CredentialListMappingCreator
-         * 
-         * @param accountSid The account_sid
-         * @param domainSid The domain_sid
-         * @param credentialListSid The credential_list_sid
-         */
+        /// <summary>
+        /// Construct a new CredentialListMappingCreator
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="credentialListSid"> The credential_list_sid </param>
         public CredentialListMappingCreator(string accountSid, string domainSid, string credentialListSid) {
             this.accountSid = accountSid;
             this.domainSid = domainSid;
@@ -39,12 +39,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created CredentialListMappingResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created CredentialListMappingResource </returns> 
         public override async Task<CredentialListMappingResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -79,12 +79,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created CredentialListMappingResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created CredentialListMappingResource </returns> 
         public override CredentialListMappingResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -118,11 +118,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
             return CredentialListMappingResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (credentialListSid != null) {
                 request.AddPostParam("CredentialListSid", credentialListSid);

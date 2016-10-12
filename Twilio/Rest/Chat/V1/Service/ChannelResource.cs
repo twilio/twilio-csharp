@@ -39,65 +39,65 @@ namespace Twilio.Rest.Chat.V1.Service {
             }
         }
     
-        /**
-         * fetch
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         * @return ChannelFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> ChannelFetcher capable of executing the fetch </returns> 
         public static ChannelFetcher Fetcher(string serviceSid, string sid) {
             return new ChannelFetcher(serviceSid, sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         * @return ChannelDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> ChannelDeleter capable of executing the delete </returns> 
         public static ChannelDeleter Deleter(string serviceSid, string sid) {
             return new ChannelDeleter(serviceSid, sid);
         }
     
-        /**
-         * create
-         * 
-         * @param serviceSid The service_sid
-         * @return ChannelCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <returns> ChannelCreator capable of executing the create </returns> 
         public static ChannelCreator Creator(string serviceSid) {
             return new ChannelCreator(serviceSid);
         }
     
-        /**
-         * read
-         * 
-         * @param serviceSid The service_sid
-         * @return ChannelReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <returns> ChannelReader capable of executing the read </returns> 
         public static ChannelReader Reader(string serviceSid) {
             return new ChannelReader(serviceSid);
         }
     
-        /**
-         * update
-         * 
-         * @param serviceSid The service_sid
-         * @param sid The sid
-         * @return ChannelUpdater capable of executing the update
-         */
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> ChannelUpdater capable of executing the update </returns> 
         public static ChannelUpdater Updater(string serviceSid, string sid) {
             return new ChannelUpdater(serviceSid, sid);
         }
     
-        /**
-         * Converts a JSON string into a ChannelResource object
-         * 
-         * @param json Raw JSON string
-         * @return ChannelResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a ChannelResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> ChannelResource object represented by the provided JSON </returns> 
         public static ChannelResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -175,86 +175,62 @@ namespace Twilio.Rest.Chat.V1.Service {
             this.links = links;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The service_sid
-         */
+        /// <returns> The service_sid </returns> 
         public string GetServiceSid() {
             return this.serviceSid;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The unique_name
-         */
+        /// <returns> The unique_name </returns> 
         public string GetUniqueName() {
             return this.uniqueName;
         }
     
-        /**
-         * @return The attributes
-         */
+        /// <returns> The attributes </returns> 
         public string GetAttributes() {
             return this.attributes;
         }
     
-        /**
-         * @return The type
-         */
+        /// <returns> The type </returns> 
         public ChannelResource.ChannelType GetChannelType() {
             return this.type;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The created_by
-         */
+        /// <returns> The created_by </returns> 
         public string GetCreatedBy() {
             return this.createdBy;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }
     
-        /**
-         * @return The links
-         */
+        /// <returns> The links </returns> 
         public Dictionary<string, string> GetLinks() {
             return this.links;
         }

@@ -23,121 +23,121 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         private string workerSid;
         private string workflowSid;
     
-        /**
-         * Construct a new EventReader
-         * 
-         * @param workspaceSid The workspace_sid
-         */
+        /// <summary>
+        /// Construct a new EventReader
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
         public EventReader(string workspaceSid) {
             this.workspaceSid = workspaceSid;
         }
     
-        /**
-         * The end_date
-         * 
-         * @param endDate The end_date
-         * @return this
-         */
+        /// <summary>
+        /// The end_date
+        /// </summary>
+        ///
+        /// <param name="endDate"> The end_date </param>
+        /// <returns> this </returns> 
         public EventReader ByEndDate(DateTime? endDate) {
             this.endDate = endDate;
             return this;
         }
     
-        /**
-         * The event_type
-         * 
-         * @param eventType The event_type
-         * @return this
-         */
+        /// <summary>
+        /// The event_type
+        /// </summary>
+        ///
+        /// <param name="eventType"> The event_type </param>
+        /// <returns> this </returns> 
         public EventReader ByEventType(string eventType) {
             this.eventType = eventType;
             return this;
         }
     
-        /**
-         * The minutes
-         * 
-         * @param minutes The minutes
-         * @return this
-         */
+        /// <summary>
+        /// The minutes
+        /// </summary>
+        ///
+        /// <param name="minutes"> The minutes </param>
+        /// <returns> this </returns> 
         public EventReader ByMinutes(int? minutes) {
             this.minutes = minutes;
             return this;
         }
     
-        /**
-         * The reservation_sid
-         * 
-         * @param reservationSid The reservation_sid
-         * @return this
-         */
+        /// <summary>
+        /// The reservation_sid
+        /// </summary>
+        ///
+        /// <param name="reservationSid"> The reservation_sid </param>
+        /// <returns> this </returns> 
         public EventReader ByReservationSid(string reservationSid) {
             this.reservationSid = reservationSid;
             return this;
         }
     
-        /**
-         * The start_date
-         * 
-         * @param startDate The start_date
-         * @return this
-         */
+        /// <summary>
+        /// The start_date
+        /// </summary>
+        ///
+        /// <param name="startDate"> The start_date </param>
+        /// <returns> this </returns> 
         public EventReader ByStartDate(DateTime? startDate) {
             this.startDate = startDate;
             return this;
         }
     
-        /**
-         * The task_queue_sid
-         * 
-         * @param taskQueueSid The task_queue_sid
-         * @return this
-         */
+        /// <summary>
+        /// The task_queue_sid
+        /// </summary>
+        ///
+        /// <param name="taskQueueSid"> The task_queue_sid </param>
+        /// <returns> this </returns> 
         public EventReader ByTaskQueueSid(string taskQueueSid) {
             this.taskQueueSid = taskQueueSid;
             return this;
         }
     
-        /**
-         * The task_sid
-         * 
-         * @param taskSid The task_sid
-         * @return this
-         */
+        /// <summary>
+        /// The task_sid
+        /// </summary>
+        ///
+        /// <param name="taskSid"> The task_sid </param>
+        /// <returns> this </returns> 
         public EventReader ByTaskSid(string taskSid) {
             this.taskSid = taskSid;
             return this;
         }
     
-        /**
-         * The worker_sid
-         * 
-         * @param workerSid The worker_sid
-         * @return this
-         */
+        /// <summary>
+        /// The worker_sid
+        /// </summary>
+        ///
+        /// <param name="workerSid"> The worker_sid </param>
+        /// <returns> this </returns> 
         public EventReader ByWorkerSid(string workerSid) {
             this.workerSid = workerSid;
             return this;
         }
     
-        /**
-         * The workflow_sid
-         * 
-         * @param workflowSid The workflow_sid
-         * @return this
-         */
+        /// <summary>
+        /// The workflow_sid
+        /// </summary>
+        ///
+        /// <param name="workflowSid"> The workflow_sid </param>
+        /// <returns> this </returns> 
         public EventReader ByWorkflowSid(string workflowSid) {
             this.workflowSid = workflowSid;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return EventResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> EventResource ResourceSet </returns> 
         public override Task<ResourceSet<EventResource>> ReadAsync(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -152,12 +152,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the read
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return EventResource ResourceSet
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the read
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> EventResource ResourceSet </returns> 
         public override ResourceSet<EventResource> Read(ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -171,13 +171,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             return new ResourceSet<EventResource>(this, client, page);
         }
     
-        /**
-         * Retrieve the next page from the Twilio API
-         * 
-         * @param nextPageUri URI from which to retrieve the next page
-         * @param client ITwilioRestClient with which to make the request
-         * @return Next Page
-         */
+        /// <summary>
+        /// Retrieve the next page from the Twilio API
+        /// </summary>
+        ///
+        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Next Page </returns> 
         public override Page<EventResource> NextPage(Page<EventResource> page, ITwilioRestClient client) {
             var request = new Request(
                 HttpMethod.GET,
@@ -189,13 +189,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             return PageForRequest(client, request);
         }
     
-        /**
-         * Generate a Page of EventResource Resources for a given request
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @param request Request to generate a page for
-         * @return Page for the Request
-         */
+        /// <summary>
+        /// Generate a Page of EventResource Resources for a given request
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <param name="request"> Request to generate a page for </param>
+        /// <returns> Page for the Request </returns> 
         protected Page<EventResource> PageForRequest(ITwilioRestClient client, Request request) {
             var response = client.Request(request);
             if (response == null)
@@ -222,11 +222,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             return Page<EventResource>.FromJson("events", response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (endDate != null) {
                 request.AddQueryParam("EndDate", endDate.ToString());

@@ -14,13 +14,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         private string channelSid;
         private string sid;
     
-        /**
-         * Construct a new MemberFetcher
-         * 
-         * @param serviceSid The service_sid
-         * @param channelSid The channel_sid
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new MemberFetcher
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="sid"> The sid </param>
         public MemberFetcher(string serviceSid, string channelSid, string sid) {
             this.serviceSid = serviceSid;
             this.channelSid = channelSid;
@@ -28,12 +28,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched MemberResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched MemberResource </returns> 
         public override async Task<MemberResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -67,12 +67,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched MemberResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched MemberResource </returns> 
         public override MemberResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

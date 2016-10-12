@@ -18,86 +18,86 @@ namespace Twilio.Rest.Lookups.V1 {
         private List<string> addOns;
         private Dictionary<string, object> addOnsData;
     
-        /**
-         * Construct a new PhoneNumberFetcher
-         * 
-         * @param phoneNumber The phone_number
-         */
+        /// <summary>
+        /// Construct a new PhoneNumberFetcher
+        /// </summary>
+        ///
+        /// <param name="phoneNumber"> The phone_number </param>
         public PhoneNumberFetcher(Twilio.Types.PhoneNumber phoneNumber) {
             this.phoneNumber = phoneNumber;
         }
     
-        /**
-         * The country_code
-         * 
-         * @param countryCode The country_code
-         * @return this
-         */
+        /// <summary>
+        /// The country_code
+        /// </summary>
+        ///
+        /// <param name="countryCode"> The country_code </param>
+        /// <returns> this </returns> 
         public PhoneNumberFetcher setCountryCode(string countryCode) {
             this.countryCode = countryCode;
             return this;
         }
     
-        /**
-         * The type
-         * 
-         * @param type The type
-         * @return this
-         */
+        /// <summary>
+        /// The type
+        /// </summary>
+        ///
+        /// <param name="type"> The type </param>
+        /// <returns> this </returns> 
         public PhoneNumberFetcher setType(List<string> type) {
             this.type = type;
             return this;
         }
     
-        /**
-         * The type
-         * 
-         * @param type The type
-         * @return this
-         */
+        /// <summary>
+        /// The type
+        /// </summary>
+        ///
+        /// <param name="type"> The type </param>
+        /// <returns> this </returns> 
         public PhoneNumberFetcher setType(string type) {
             return setType(Promoter.ListOfOne(type));
         }
     
-        /**
-         * The add_ons
-         * 
-         * @param addOns The add_ons
-         * @return this
-         */
+        /// <summary>
+        /// The add_ons
+        /// </summary>
+        ///
+        /// <param name="addOns"> The add_ons </param>
+        /// <returns> this </returns> 
         public PhoneNumberFetcher setAddOns(List<string> addOns) {
             this.addOns = addOns;
             return this;
         }
     
-        /**
-         * The add_ons
-         * 
-         * @param addOns The add_ons
-         * @return this
-         */
+        /// <summary>
+        /// The add_ons
+        /// </summary>
+        ///
+        /// <param name="addOns"> The add_ons </param>
+        /// <returns> this </returns> 
         public PhoneNumberFetcher setAddOns(string addOns) {
             return setAddOns(Promoter.ListOfOne(addOns));
         }
     
-        /**
-         * The add_ons_data
-         * 
-         * @param addOnsData The add_ons_data
-         * @return this
-         */
+        /// <summary>
+        /// The add_ons_data
+        /// </summary>
+        ///
+        /// <param name="addOnsData"> The add_ons_data </param>
+        /// <returns> this </returns> 
         public PhoneNumberFetcher setAddOnsData(Dictionary<string, object> addOnsData) {
             this.addOnsData = addOnsData;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched PhoneNumberResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched PhoneNumberResource </returns> 
         public override async Task<PhoneNumberResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -134,12 +134,12 @@ namespace Twilio.Rest.Lookups.V1 {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched PhoneNumberResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched PhoneNumberResource </returns> 
         public override PhoneNumberResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -175,11 +175,11 @@ namespace Twilio.Rest.Lookups.V1 {
             return PhoneNumberResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested query string arguments to the Request
-         * 
-         * @param request Request to add query string arguments to
-         */
+        /// <summary>
+        /// Add the requested query string arguments to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request) {
             if (countryCode != null) {
                 request.AddQueryParam("CountryCode", countryCode);

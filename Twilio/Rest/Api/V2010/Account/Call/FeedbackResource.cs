@@ -45,81 +45,81 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
             }
         }
     
-        /**
-         * create
-         * 
-         * @param accountSid The account_sid
-         * @param callSid The call_sid
-         * @param qualityScore The quality_score
-         * @return FeedbackCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="qualityScore"> The quality_score </param>
+        /// <returns> FeedbackCreator capable of executing the create </returns> 
         public static FeedbackCreator Creator(string accountSid, string callSid, int? qualityScore) {
             return new FeedbackCreator(accountSid, callSid, qualityScore);
         }
     
-        /**
-         * Create a FeedbackCreator to execute create.
-         * 
-         * @param callSid The call_sid
-         * @param qualityScore The quality_score
-         * @return FeedbackCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a FeedbackCreator to execute create.
+        /// </summary>
+        ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="qualityScore"> The quality_score </param>
+        /// <returns> FeedbackCreator capable of executing the create </returns> 
         public static FeedbackCreator Creator(string callSid, 
                                               int? qualityScore) {
             return new FeedbackCreator(callSid, qualityScore);
         }
     
-        /**
-         * Fetch an instance of a feedback entry for a call
-         * 
-         * @param accountSid The account_sid
-         * @param callSid The call sid that uniquely identifies the call
-         * @return FeedbackFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Fetch an instance of a feedback entry for a call
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="callSid"> The call sid that uniquely identifies the call </param>
+        /// <returns> FeedbackFetcher capable of executing the fetch </returns> 
         public static FeedbackFetcher Fetcher(string accountSid, string callSid) {
             return new FeedbackFetcher(accountSid, callSid);
         }
     
-        /**
-         * Create a FeedbackFetcher to execute fetch.
-         * 
-         * @param callSid The call sid that uniquely identifies the call
-         * @return FeedbackFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a FeedbackFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="callSid"> The call sid that uniquely identifies the call </param>
+        /// <returns> FeedbackFetcher capable of executing the fetch </returns> 
         public static FeedbackFetcher Fetcher(string callSid) {
             return new FeedbackFetcher(callSid);
         }
     
-        /**
-         * Create or update a feedback entry for a call
-         * 
-         * @param accountSid The account_sid
-         * @param callSid The call_sid
-         * @param qualityScore An integer from 1 to 5
-         * @return FeedbackUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Create or update a feedback entry for a call
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="qualityScore"> An integer from 1 to 5 </param>
+        /// <returns> FeedbackUpdater capable of executing the update </returns> 
         public static FeedbackUpdater Updater(string accountSid, string callSid, int? qualityScore) {
             return new FeedbackUpdater(accountSid, callSid, qualityScore);
         }
     
-        /**
-         * Create a FeedbackUpdater to execute update.
-         * 
-         * @param callSid The call_sid
-         * @param qualityScore An integer from 1 to 5
-         * @return FeedbackUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Create a FeedbackUpdater to execute update.
+        /// </summary>
+        ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="qualityScore"> An integer from 1 to 5 </param>
+        /// <returns> FeedbackUpdater capable of executing the update </returns> 
         public static FeedbackUpdater Updater(string callSid, 
                                               int? qualityScore) {
             return new FeedbackUpdater(callSid, qualityScore);
         }
     
-        /**
-         * Converts a JSON string into a FeedbackResource object
-         * 
-         * @param json Raw JSON string
-         * @return FeedbackResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a FeedbackResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> FeedbackResource object represented by the provided JSON </returns> 
         public static FeedbackResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -167,44 +167,32 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
             this.sid = sid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The issues
-         */
+        /// <returns> The issues </returns> 
         public List<FeedbackResource.Issues> GetIssues() {
             return this.issues;
         }
     
-        /**
-         * @return 1 to 5 quality score
-         */
+        /// <returns> 1 to 5 quality score </returns> 
         public int? GetQualityScore() {
             return this.qualityScore;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public string GetSid() {
             return this.sid;
         }

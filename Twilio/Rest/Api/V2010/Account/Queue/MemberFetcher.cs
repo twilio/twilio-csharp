@@ -14,24 +14,24 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         private string queueSid;
         private string callSid;
     
-        /**
-         * Construct a new MemberFetcher.
-         * 
-         * @param queueSid The Queue in which to find the members
-         * @param callSid The call_sid
-         */
+        /// <summary>
+        /// Construct a new MemberFetcher.
+        /// </summary>
+        ///
+        /// <param name="queueSid"> The Queue in which to find the members </param>
+        /// <param name="callSid"> The call_sid </param>
         public MemberFetcher(string queueSid, string callSid) {
             this.queueSid = queueSid;
             this.callSid = callSid;
         }
     
-        /**
-         * Construct a new MemberFetcher
-         * 
-         * @param accountSid The account_sid
-         * @param queueSid The Queue in which to find the members
-         * @param callSid The call_sid
-         */
+        /// <summary>
+        /// Construct a new MemberFetcher
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="queueSid"> The Queue in which to find the members </param>
+        /// <param name="callSid"> The call_sid </param>
         public MemberFetcher(string accountSid, string queueSid, string callSid) {
             this.accountSid = accountSid;
             this.queueSid = queueSid;
@@ -39,12 +39,12 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched MemberResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched MemberResource </returns> 
         public override async Task<MemberResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -78,12 +78,12 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched MemberResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched MemberResource </returns> 
         public override MemberResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

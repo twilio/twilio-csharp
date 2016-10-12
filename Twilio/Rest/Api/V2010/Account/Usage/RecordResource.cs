@@ -127,32 +127,31 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
             }
         }
     
-        /**
-         * Retrieve a list of usage-records belonging to the account used to make the
-         * request
-         * 
-         * @param accountSid The account_sid
-         * @return RecordReader capable of executing the read
-         */
+        /// <summary>
+        /// Retrieve a list of usage-records belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> RecordReader capable of executing the read </returns> 
         public static RecordReader Reader(string accountSid) {
             return new RecordReader(accountSid);
         }
     
-        /**
-         * Create a RecordReader to execute read.
-         * 
-         * @return RecordReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a RecordReader to execute read.
+        /// </summary>
+        ///
+        /// <returns> RecordReader capable of executing the read </returns> 
         public static RecordReader Reader() {
             return new RecordReader();
         }
     
-        /**
-         * Converts a JSON string into a RecordResource object
-         * 
-         * @param json Raw JSON string
-         * @return RecordResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a RecordResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> RecordResource object represented by the provided JSON </returns> 
         public static RecordResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -240,100 +239,72 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
             this.usageUnit = usageUnit;
         }
     
-        /**
-         * @return The Account that accrued the usage
-         */
+        /// <returns> The Account that accrued the usage </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The api_version
-         */
+        /// <returns> The api_version </returns> 
         public string GetApiVersion() {
             return this.apiVersion;
         }
     
-        /**
-         * @return The category of usage
-         */
+        /// <returns> The category of usage </returns> 
         public RecordResource.Category GetCategory() {
             return this.category;
         }
     
-        /**
-         * @return The number of usage events (e.g. the number of calls).
-         */
+        /// <returns> The number of usage events (e.g. the number of calls). </returns> 
         public string GetCount() {
             return this.count;
         }
     
-        /**
-         * @return The unit in which `Count` is measured
-         */
+        /// <returns> The unit in which `Count` is measured </returns> 
         public string GetCountUnit() {
             return this.countUnit;
         }
     
-        /**
-         * @return A human-readable description of the usage category.
-         */
+        /// <returns> A human-readable description of the usage category. </returns> 
         public string GetDescription() {
             return this.description;
         }
     
-        /**
-         * @return The last date usage is included in this record
-         */
+        /// <returns> The last date usage is included in this record </returns> 
         public DateTime? GetEndDate() {
             return this.endDate;
         }
     
-        /**
-         * @return The total price of the usage
-         */
+        /// <returns> The total price of the usage </returns> 
         public decimal? GetPrice() {
             return this.price;
         }
     
-        /**
-         * @return The currency in which `Price` is measured
-         */
+        /// <returns> The currency in which `Price` is measured </returns> 
         public string GetPriceUnit() {
             return this.priceUnit;
         }
     
-        /**
-         * @return The first date usage is included in this record
-         */
+        /// <returns> The first date usage is included in this record </returns> 
         public DateTime? GetStartDate() {
             return this.startDate;
         }
     
-        /**
-         * @return Subresources Uris for this UsageRecord
-         */
+        /// <returns> Subresources Uris for this UsageRecord </returns> 
         public Dictionary<string, string> GetSubresourceUris() {
             return this.subresourceUris;
         }
     
-        /**
-         * @return The URI for this resource
-         */
+        /// <returns> The URI for this resource </returns> 
         public string GetUri() {
             return this.uri;
         }
     
-        /**
-         * @return The amount of usage
-         */
+        /// <returns> The amount of usage </returns> 
         public string GetUsage() {
             return this.usage;
         }
     
-        /**
-         * @return The units in which `Usage` is measured
-         */
+        /// <returns> The units in which `Usage` is measured </returns> 
         public string GetUsageUnit() {
             return this.usageUnit;
         }

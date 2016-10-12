@@ -12,22 +12,22 @@ namespace Twilio.Rest.Trunking.V1 {
     public class TrunkFetcher : Fetcher<TrunkResource> {
         private string sid;
     
-        /**
-         * Construct a new TrunkFetcher
-         * 
-         * @param sid The sid
-         */
+        /// <summary>
+        /// Construct a new TrunkFetcher
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
         public TrunkFetcher(string sid) {
             this.sid = sid;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched TrunkResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched TrunkResource </returns> 
         public override async Task<TrunkResource> FetchAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
@@ -61,12 +61,12 @@ namespace Twilio.Rest.Trunking.V1 {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the fetch
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Fetched TrunkResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the fetch
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Fetched TrunkResource </returns> 
         public override TrunkResource Fetch(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,

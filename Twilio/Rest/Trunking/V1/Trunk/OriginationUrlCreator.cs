@@ -18,16 +18,16 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         private string friendlyName;
         private Uri sipUrl;
     
-        /**
-         * Construct a new OriginationUrlCreator
-         * 
-         * @param trunkSid The trunk_sid
-         * @param weight The weight
-         * @param priority The priority
-         * @param enabled The enabled
-         * @param friendlyName The friendly_name
-         * @param sipUrl The sip_url
-         */
+        /// <summary>
+        /// Construct a new OriginationUrlCreator
+        /// </summary>
+        ///
+        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="weight"> The weight </param>
+        /// <param name="priority"> The priority </param>
+        /// <param name="enabled"> The enabled </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="sipUrl"> The sip_url </param>
         public OriginationUrlCreator(string trunkSid, int? weight, int? priority, bool? enabled, string friendlyName, Uri sipUrl) {
             this.trunkSid = trunkSid;
             this.weight = weight;
@@ -38,12 +38,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created OriginationUrlResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created OriginationUrlResource </returns> 
         public override async Task<OriginationUrlResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -78,12 +78,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the create
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Created OriginationUrlResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the create
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Created OriginationUrlResource </returns> 
         public override OriginationUrlResource Create(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -117,11 +117,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
             return OriginationUrlResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (weight != null) {
                 request.AddPostParam("Weight", weight.ToString());

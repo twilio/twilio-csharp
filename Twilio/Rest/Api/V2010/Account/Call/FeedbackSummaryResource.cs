@@ -42,78 +42,78 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
             }
         }
     
-        /**
-         * create
-         * 
-         * @param accountSid The account_sid
-         * @param startDate The start_date
-         * @param endDate The end_date
-         * @return FeedbackSummaryCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="endDate"> The end_date </param>
+        /// <returns> FeedbackSummaryCreator capable of executing the create </returns> 
         public static FeedbackSummaryCreator Creator(string accountSid, DateTime? startDate, DateTime? endDate) {
             return new FeedbackSummaryCreator(accountSid, startDate, endDate);
         }
     
-        /**
-         * Create a FeedbackSummaryCreator to execute create.
-         * 
-         * @param startDate The start_date
-         * @param endDate The end_date
-         * @return FeedbackSummaryCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a FeedbackSummaryCreator to execute create.
+        /// </summary>
+        ///
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="endDate"> The end_date </param>
+        /// <returns> FeedbackSummaryCreator capable of executing the create </returns> 
         public static FeedbackSummaryCreator Creator(DateTime? startDate, 
                                                      DateTime? endDate) {
             return new FeedbackSummaryCreator(startDate, endDate);
         }
     
-        /**
-         * fetch
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         * @return FeedbackSummaryFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> FeedbackSummaryFetcher capable of executing the fetch </returns> 
         public static FeedbackSummaryFetcher Fetcher(string accountSid, string sid) {
             return new FeedbackSummaryFetcher(accountSid, sid);
         }
     
-        /**
-         * Create a FeedbackSummaryFetcher to execute fetch.
-         * 
-         * @param sid The sid
-         * @return FeedbackSummaryFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a FeedbackSummaryFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> FeedbackSummaryFetcher capable of executing the fetch </returns> 
         public static FeedbackSummaryFetcher Fetcher(string sid) {
             return new FeedbackSummaryFetcher(sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         * @return FeedbackSummaryDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> FeedbackSummaryDeleter capable of executing the delete </returns> 
         public static FeedbackSummaryDeleter Deleter(string accountSid, string sid) {
             return new FeedbackSummaryDeleter(accountSid, sid);
         }
     
-        /**
-         * Create a FeedbackSummaryDeleter to execute delete.
-         * 
-         * @param sid The sid
-         * @return FeedbackSummaryDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a FeedbackSummaryDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> FeedbackSummaryDeleter capable of executing the delete </returns> 
         public static FeedbackSummaryDeleter Deleter(string sid) {
             return new FeedbackSummaryDeleter(sid);
         }
     
-        /**
-         * Converts a JSON string into a FeedbackSummaryResource object
-         * 
-         * @param json Raw JSON string
-         * @return FeedbackSummaryResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a FeedbackSummaryResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> FeedbackSummaryResource object represented by the provided JSON </returns> 
         public static FeedbackSummaryResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -201,100 +201,72 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
             this.status = status;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The call_count
-         */
+        /// <returns> The call_count </returns> 
         public int? GetCallCount() {
             return this.callCount;
         }
     
-        /**
-         * @return The call_feedback_count
-         */
+        /// <returns> The call_feedback_count </returns> 
         public int? GetCallFeedbackCount() {
             return this.callFeedbackCount;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The end_date
-         */
+        /// <returns> The end_date </returns> 
         public DateTime? GetEndDate() {
             return this.endDate;
         }
     
-        /**
-         * @return The include_subaccounts
-         */
+        /// <returns> The include_subaccounts </returns> 
         public bool? GetIncludeSubaccounts() {
             return this.includeSubaccounts;
         }
     
-        /**
-         * @return The issues
-         */
+        /// <returns> The issues </returns> 
         public List<FeedbackIssue> GetIssues() {
             return this.issues;
         }
     
-        /**
-         * @return The quality_score_average
-         */
+        /// <returns> The quality_score_average </returns> 
         public decimal? GetQualityScoreAverage() {
             return this.qualityScoreAverage;
         }
     
-        /**
-         * @return The quality_score_median
-         */
+        /// <returns> The quality_score_median </returns> 
         public decimal? GetQualityScoreMedian() {
             return this.qualityScoreMedian;
         }
     
-        /**
-         * @return The quality_score_standard_deviation
-         */
+        /// <returns> The quality_score_standard_deviation </returns> 
         public decimal? GetQualityScoreStandardDeviation() {
             return this.qualityScoreStandardDeviation;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The start_date
-         */
+        /// <returns> The start_date </returns> 
         public DateTime? GetStartDate() {
             return this.startDate;
         }
     
-        /**
-         * @return The status
-         */
+        /// <returns> The status </returns> 
         public FeedbackSummaryResource.Status GetStatus() {
             return this.status;
         }

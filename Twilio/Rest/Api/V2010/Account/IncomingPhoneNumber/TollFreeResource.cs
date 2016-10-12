@@ -41,52 +41,52 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
             }
         }
     
-        /**
-         * read
-         * 
-         * @param ownerAccountSid The owner_account_sid
-         * @return TollFreeReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="ownerAccountSid"> The owner_account_sid </param>
+        /// <returns> TollFreeReader capable of executing the read </returns> 
         public static TollFreeReader Reader(string ownerAccountSid) {
             return new TollFreeReader(ownerAccountSid);
         }
     
-        /**
-         * Create a TollFreeReader to execute read.
-         * 
-         * @return TollFreeReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a TollFreeReader to execute read.
+        /// </summary>
+        ///
+        /// <returns> TollFreeReader capable of executing the read </returns> 
         public static TollFreeReader Reader() {
             return new TollFreeReader();
         }
     
-        /**
-         * create
-         * 
-         * @param ownerAccountSid The owner_account_sid
-         * @param phoneNumber The phone_number
-         * @return TollFreeCreator capable of executing the create
-         */
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="ownerAccountSid"> The owner_account_sid </param>
+        /// <param name="phoneNumber"> The phone_number </param>
+        /// <returns> TollFreeCreator capable of executing the create </returns> 
         public static TollFreeCreator Creator(string ownerAccountSid, Twilio.Types.PhoneNumber phoneNumber) {
             return new TollFreeCreator(ownerAccountSid, phoneNumber);
         }
     
-        /**
-         * Create a TollFreeCreator to execute create.
-         * 
-         * @param phoneNumber The phone_number
-         * @return TollFreeCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a TollFreeCreator to execute create.
+        /// </summary>
+        ///
+        /// <param name="phoneNumber"> The phone_number </param>
+        /// <returns> TollFreeCreator capable of executing the create </returns> 
         public static TollFreeCreator Creator(Twilio.Types.PhoneNumber phoneNumber) {
             return new TollFreeCreator(phoneNumber);
         }
     
-        /**
-         * Converts a JSON string into a TollFreeResource object
-         * 
-         * @param json Raw JSON string
-         * @return TollFreeResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a TollFreeResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> TollFreeResource object represented by the provided JSON </returns> 
         public static TollFreeResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -230,170 +230,122 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
             this.voiceUrl = voiceUrl;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The address_requirements
-         */
+        /// <returns> The address_requirements </returns> 
         public TollFreeResource.AddressRequirement GetAddressRequirements() {
             return this.addressRequirements;
         }
     
-        /**
-         * @return The api_version
-         */
+        /// <returns> The api_version </returns> 
         public string GetApiVersion() {
             return this.apiVersion;
         }
     
-        /**
-         * @return The beta
-         */
+        /// <returns> The beta </returns> 
         public bool? GetBeta() {
             return this.beta;
         }
     
-        /**
-         * @return The capabilities
-         */
+        /// <returns> The capabilities </returns> 
         public PhoneNumberCapabilities GetCapabilities() {
             return this.capabilities;
         }
     
-        /**
-         * @return The date_created
-         */
+        /// <returns> The date_created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date_updated
-         */
+        /// <returns> The date_updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The phone_number
-         */
+        /// <returns> The phone_number </returns> 
         public Twilio.Types.PhoneNumber GetPhoneNumber() {
             return this.phoneNumber;
         }
     
-        /**
-         * @return The sid
-         */
+        /// <returns> The sid </returns> 
         public string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The sms_application_sid
-         */
+        /// <returns> The sms_application_sid </returns> 
         public string GetSmsApplicationSid() {
             return this.smsApplicationSid;
         }
     
-        /**
-         * @return The sms_fallback_method
-         */
+        /// <returns> The sms_fallback_method </returns> 
         public Twilio.Http.HttpMethod GetSmsFallbackMethod() {
             return this.smsFallbackMethod;
         }
     
-        /**
-         * @return The sms_fallback_url
-         */
+        /// <returns> The sms_fallback_url </returns> 
         public Uri GetSmsFallbackUrl() {
             return this.smsFallbackUrl;
         }
     
-        /**
-         * @return The sms_method
-         */
+        /// <returns> The sms_method </returns> 
         public Twilio.Http.HttpMethod GetSmsMethod() {
             return this.smsMethod;
         }
     
-        /**
-         * @return The sms_url
-         */
+        /// <returns> The sms_url </returns> 
         public Uri GetSmsUrl() {
             return this.smsUrl;
         }
     
-        /**
-         * @return The status_callback
-         */
+        /// <returns> The status_callback </returns> 
         public Uri GetStatusCallback() {
             return this.statusCallback;
         }
     
-        /**
-         * @return The status_callback_method
-         */
+        /// <returns> The status_callback_method </returns> 
         public Twilio.Http.HttpMethod GetStatusCallbackMethod() {
             return this.statusCallbackMethod;
         }
     
-        /**
-         * @return The uri
-         */
+        /// <returns> The uri </returns> 
         public string GetUri() {
             return this.uri;
         }
     
-        /**
-         * @return The voice_application_sid
-         */
+        /// <returns> The voice_application_sid </returns> 
         public string GetVoiceApplicationSid() {
             return this.voiceApplicationSid;
         }
     
-        /**
-         * @return The voice_caller_id_lookup
-         */
+        /// <returns> The voice_caller_id_lookup </returns> 
         public bool? GetVoiceCallerIdLookup() {
             return this.voiceCallerIdLookup;
         }
     
-        /**
-         * @return The voice_fallback_method
-         */
+        /// <returns> The voice_fallback_method </returns> 
         public Twilio.Http.HttpMethod GetVoiceFallbackMethod() {
             return this.voiceFallbackMethod;
         }
     
-        /**
-         * @return The voice_fallback_url
-         */
+        /// <returns> The voice_fallback_url </returns> 
         public Uri GetVoiceFallbackUrl() {
             return this.voiceFallbackUrl;
         }
     
-        /**
-         * @return The voice_method
-         */
+        /// <returns> The voice_method </returns> 
         public Twilio.Http.HttpMethod GetVoiceMethod() {
             return this.voiceMethod;
         }
     
-        /**
-         * @return The voice_url
-         */
+        /// <returns> The voice_url </returns> 
         public Uri GetVoiceUrl() {
             return this.voiceUrl;
         }

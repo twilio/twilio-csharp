@@ -14,44 +14,44 @@ namespace Twilio.Rest.Api.V2010.Account {
         private string sid;
         private string friendlyName;
     
-        /**
-         * Construct a new OutgoingCallerIdUpdater.
-         * 
-         * @param sid Update by unique outgoing-caller-id Sid
-         */
+        /// <summary>
+        /// Construct a new OutgoingCallerIdUpdater.
+        /// </summary>
+        ///
+        /// <param name="sid"> Update by unique outgoing-caller-id Sid </param>
         public OutgoingCallerIdUpdater(string sid) {
             this.sid = sid;
         }
     
-        /**
-         * Construct a new OutgoingCallerIdUpdater
-         * 
-         * @param accountSid The account_sid
-         * @param sid Update by unique outgoing-caller-id Sid
-         */
+        /// <summary>
+        /// Construct a new OutgoingCallerIdUpdater
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Update by unique outgoing-caller-id Sid </param>
         public OutgoingCallerIdUpdater(string accountSid, string sid) {
             this.accountSid = accountSid;
             this.sid = sid;
         }
     
-        /**
-         * A human readable description of the caller ID
-         * 
-         * @param friendlyName A human readable description of the caller ID
-         * @return this
-         */
+        /// <summary>
+        /// A human readable description of the caller ID
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> A human readable description of the caller ID </param>
+        /// <returns> this </returns> 
         public OutgoingCallerIdUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
             return this;
         }
     
         #if NET40
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated OutgoingCallerIdResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated OutgoingCallerIdResource </returns> 
         public override async Task<OutgoingCallerIdResource> UpdateAsync(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -86,12 +86,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
         #endif
     
-        /**
-         * Make the request to the Twilio API to perform the update
-         * 
-         * @param client ITwilioRestClient with which to make the request
-         * @return Updated OutgoingCallerIdResource
-         */
+        /// <summary>
+        /// Make the request to the Twilio API to perform the update
+        /// </summary>
+        ///
+        /// <param name="client"> ITwilioRestClient with which to make the request </param>
+        /// <returns> Updated OutgoingCallerIdResource </returns> 
         public override OutgoingCallerIdResource Update(ITwilioRestClient client) {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
@@ -125,11 +125,11 @@ namespace Twilio.Rest.Api.V2010.Account {
             return OutgoingCallerIdResource.FromJson(response.Content);
         }
     
-        /**
-         * Add the requested post parameters to the Request
-         * 
-         * @param request Request to add post params to
-         */
+        /// <summary>
+        /// Add the requested post parameters to the Request
+        /// </summary>
+        ///
+        /// <param name="request"> Request to add post params to </param>
         private void addPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);

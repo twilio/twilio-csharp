@@ -9,23 +9,23 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow {
 
     public class WorkflowStatisticsResource : Resource {
-        /**
-         * fetch
-         * 
-         * @param workspaceSid The workspace_sid
-         * @param workflowSid The workflow_sid
-         * @return WorkflowStatisticsFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="workflowSid"> The workflow_sid </param>
+        /// <returns> WorkflowStatisticsFetcher capable of executing the fetch </returns> 
         public static WorkflowStatisticsFetcher Fetcher(string workspaceSid, string workflowSid) {
             return new WorkflowStatisticsFetcher(workspaceSid, workflowSid);
         }
     
-        /**
-         * Converts a JSON string into a WorkflowStatisticsResource object
-         * 
-         * @param json Raw JSON string
-         * @return WorkflowStatisticsResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a WorkflowStatisticsResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> WorkflowStatisticsResource object represented by the provided JSON </returns> 
         public static WorkflowStatisticsResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -67,37 +67,27 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow {
             this.workspaceSid = workspaceSid;
         }
     
-        /**
-         * @return The account_sid
-         */
+        /// <returns> The account_sid </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The cumulative
-         */
+        /// <returns> The cumulative </returns> 
         public Object GetCumulative() {
             return this.cumulative;
         }
     
-        /**
-         * @return The realtime
-         */
+        /// <returns> The realtime </returns> 
         public Object GetRealtime() {
             return this.realtime;
         }
     
-        /**
-         * @return The workflow_sid
-         */
+        /// <returns> The workflow_sid </returns> 
         public string GetWorkflowSid() {
             return this.workflowSid;
         }
     
-        /**
-         * @return The workspace_sid
-         */
+        /// <returns> The workspace_sid </returns> 
         public string GetWorkspaceSid() {
             return this.workspaceSid;
         }

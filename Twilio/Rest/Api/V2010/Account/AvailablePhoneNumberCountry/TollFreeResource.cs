@@ -10,33 +10,33 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
 
     public class TollFreeResource : Resource {
-        /**
-         * read
-         * 
-         * @param accountSid The account_sid
-         * @param countryCode The country_code
-         * @return TollFreeReader capable of executing the read
-         */
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="countryCode"> The country_code </param>
+        /// <returns> TollFreeReader capable of executing the read </returns> 
         public static TollFreeReader Reader(string accountSid, string countryCode) {
             return new TollFreeReader(accountSid, countryCode);
         }
     
-        /**
-         * Create a TollFreeReader to execute read.
-         * 
-         * @param countryCode The country_code
-         * @return TollFreeReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a TollFreeReader to execute read.
+        /// </summary>
+        ///
+        /// <param name="countryCode"> The country_code </param>
+        /// <returns> TollFreeReader capable of executing the read </returns> 
         public static TollFreeReader Reader(string countryCode) {
             return new TollFreeReader(countryCode);
         }
     
-        /**
-         * Converts a JSON string into a TollFreeResource object
-         * 
-         * @param json Raw JSON string
-         * @return TollFreeResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a TollFreeResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> TollFreeResource object represented by the provided JSON </returns> 
         public static TollFreeResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -115,86 +115,62 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
             this.capabilities = capabilities;
         }
     
-        /**
-         * @return The friendly_name
-         */
+        /// <returns> The friendly_name </returns> 
         public Twilio.Types.PhoneNumber GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return The phone_number
-         */
+        /// <returns> The phone_number </returns> 
         public Twilio.Types.PhoneNumber GetPhoneNumber() {
             return this.phoneNumber;
         }
     
-        /**
-         * @return The lata
-         */
+        /// <returns> The lata </returns> 
         public string GetLata() {
             return this.lata;
         }
     
-        /**
-         * @return The rate_center
-         */
+        /// <returns> The rate_center </returns> 
         public string GetRateCenter() {
             return this.rateCenter;
         }
     
-        /**
-         * @return The latitude
-         */
+        /// <returns> The latitude </returns> 
         public decimal? GetLatitude() {
             return this.latitude;
         }
     
-        /**
-         * @return The longitude
-         */
+        /// <returns> The longitude </returns> 
         public decimal? GetLongitude() {
             return this.longitude;
         }
     
-        /**
-         * @return The region
-         */
+        /// <returns> The region </returns> 
         public string GetRegion() {
             return this.region;
         }
     
-        /**
-         * @return The postal_code
-         */
+        /// <returns> The postal_code </returns> 
         public string GetPostalCode() {
             return this.postalCode;
         }
     
-        /**
-         * @return The iso_country
-         */
+        /// <returns> The iso_country </returns> 
         public string GetIsoCountry() {
             return this.isoCountry;
         }
     
-        /**
-         * @return The address_requirements
-         */
+        /// <returns> The address_requirements </returns> 
         public string GetAddressRequirements() {
             return this.addressRequirements;
         }
     
-        /**
-         * @return The beta
-         */
+        /// <returns> The beta </returns> 
         public bool? GetBeta() {
             return this.beta;
         }
     
-        /**
-         * @return The capabilities
-         */
+        /// <returns> The capabilities </returns> 
         public PhoneNumberCapabilities GetCapabilities() {
             return this.capabilities;
         }

@@ -10,22 +10,22 @@ using Twilio.Types;
 namespace Twilio.Rest.Pricing.V1.Voice {
 
     public class NumberResource : SidResource {
-        /**
-         * fetch
-         * 
-         * @param number The number
-         * @return NumberFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="number"> The number </param>
+        /// <returns> NumberFetcher capable of executing the fetch </returns> 
         public static NumberFetcher Fetcher(Twilio.Types.PhoneNumber number) {
             return new NumberFetcher(number);
         }
     
-        /**
-         * Converts a JSON string into a NumberResource object
-         * 
-         * @param json Raw JSON string
-         * @return NumberResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a NumberResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> NumberResource object represented by the provided JSON </returns> 
         public static NumberResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -78,58 +78,42 @@ namespace Twilio.Rest.Pricing.V1.Voice {
             this.url = url;
         }
     
-        /**
-         * @return The number
-         */
+        /// <returns> The number </returns> 
         public override string GetSid() {
             return this.GetNumber().ToString();
         }
     
-        /**
-         * @return The number
-         */
+        /// <returns> The number </returns> 
         public Twilio.Types.PhoneNumber GetNumber() {
             return this.number;
         }
     
-        /**
-         * @return The country
-         */
+        /// <returns> The country </returns> 
         public string GetCountry() {
             return this.country;
         }
     
-        /**
-         * @return The iso_country
-         */
+        /// <returns> The iso_country </returns> 
         public string GetIsoCountry() {
             return this.isoCountry;
         }
     
-        /**
-         * @return The outbound_call_price
-         */
+        /// <returns> The outbound_call_price </returns> 
         public OutboundCallPrice GetOutboundCallPrice() {
             return this.outboundCallPrice;
         }
     
-        /**
-         * @return The inbound_call_price
-         */
+        /// <returns> The inbound_call_price </returns> 
         public InboundCallPrice GetInboundCallPrice() {
             return this.inboundCallPrice;
         }
     
-        /**
-         * @return The price_unit
-         */
+        /// <returns> The price_unit </returns> 
         public string GetPriceUnit() {
             return this.priceUnit;
         }
     
-        /**
-         * @return The url
-         */
+        /// <returns> The url </returns> 
         public Uri GetUrl() {
             return this.url;
         }

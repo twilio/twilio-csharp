@@ -187,122 +187,121 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
             }
         }
     
-        /**
-         * Fetch and instance of a usage-trigger
-         * 
-         * @param accountSid The account_sid
-         * @param sid Fetch by unique usage-trigger Sid
-         * @return TriggerFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Fetch and instance of a usage-trigger
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> Fetch by unique usage-trigger Sid </param>
+        /// <returns> TriggerFetcher capable of executing the fetch </returns> 
         public static TriggerFetcher Fetcher(string accountSid, string sid) {
             return new TriggerFetcher(accountSid, sid);
         }
     
-        /**
-         * Create a TriggerFetcher to execute fetch.
-         * 
-         * @param sid Fetch by unique usage-trigger Sid
-         * @return TriggerFetcher capable of executing the fetch
-         */
+        /// <summary>
+        /// Create a TriggerFetcher to execute fetch.
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique usage-trigger Sid </param>
+        /// <returns> TriggerFetcher capable of executing the fetch </returns> 
         public static TriggerFetcher Fetcher(string sid) {
             return new TriggerFetcher(sid);
         }
     
-        /**
-         * Update an instance of a usage trigger
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         * @return TriggerUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Update an instance of a usage trigger
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> TriggerUpdater capable of executing the update </returns> 
         public static TriggerUpdater Updater(string accountSid, string sid) {
             return new TriggerUpdater(accountSid, sid);
         }
     
-        /**
-         * Create a TriggerUpdater to execute update.
-         * 
-         * @param sid The sid
-         * @return TriggerUpdater capable of executing the update
-         */
+        /// <summary>
+        /// Create a TriggerUpdater to execute update.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> TriggerUpdater capable of executing the update </returns> 
         public static TriggerUpdater Updater(string sid) {
             return new TriggerUpdater(sid);
         }
     
-        /**
-         * delete
-         * 
-         * @param accountSid The account_sid
-         * @param sid The sid
-         * @return TriggerDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> TriggerDeleter capable of executing the delete </returns> 
         public static TriggerDeleter Deleter(string accountSid, string sid) {
             return new TriggerDeleter(accountSid, sid);
         }
     
-        /**
-         * Create a TriggerDeleter to execute delete.
-         * 
-         * @param sid The sid
-         * @return TriggerDeleter capable of executing the delete
-         */
+        /// <summary>
+        /// Create a TriggerDeleter to execute delete.
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> TriggerDeleter capable of executing the delete </returns> 
         public static TriggerDeleter Deleter(string sid) {
             return new TriggerDeleter(sid);
         }
     
-        /**
-         * Create a new UsageTrigger
-         * 
-         * @param accountSid The account_sid
-         * @param callbackUrl URL Twilio will request when the trigger fires
-         * @param triggerValue the value at which the trigger will fire
-         * @param usageCategory The usage category the trigger watches
-         * @return TriggerCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a new UsageTrigger
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
+        /// <param name="triggerValue"> the value at which the trigger will fire </param>
+        /// <param name="usageCategory"> The usage category the trigger watches </param>
+        /// <returns> TriggerCreator capable of executing the create </returns> 
         public static TriggerCreator Creator(string accountSid, Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory) {
             return new TriggerCreator(accountSid, callbackUrl, triggerValue, usageCategory);
         }
     
-        /**
-         * Create a TriggerCreator to execute create.
-         * 
-         * @param callbackUrl URL Twilio will request when the trigger fires
-         * @param triggerValue the value at which the trigger will fire
-         * @param usageCategory The usage category the trigger watches
-         * @return TriggerCreator capable of executing the create
-         */
+        /// <summary>
+        /// Create a TriggerCreator to execute create.
+        /// </summary>
+        ///
+        /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
+        /// <param name="triggerValue"> the value at which the trigger will fire </param>
+        /// <param name="usageCategory"> The usage category the trigger watches </param>
+        /// <returns> TriggerCreator capable of executing the create </returns> 
         public static TriggerCreator Creator(Uri callbackUrl, 
                                              string triggerValue, 
                                              TriggerResource.UsageCategory usageCategory) {
             return new TriggerCreator(callbackUrl, triggerValue, usageCategory);
         }
     
-        /**
-         * Retrieve a list of usage-triggers belonging to the account used to make the
-         * request
-         * 
-         * @param accountSid The account_sid
-         * @return TriggerReader capable of executing the read
-         */
+        /// <summary>
+        /// Retrieve a list of usage-triggers belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <returns> TriggerReader capable of executing the read </returns> 
         public static TriggerReader Reader(string accountSid) {
             return new TriggerReader(accountSid);
         }
     
-        /**
-         * Create a TriggerReader to execute read.
-         * 
-         * @return TriggerReader capable of executing the read
-         */
+        /// <summary>
+        /// Create a TriggerReader to execute read.
+        /// </summary>
+        ///
+        /// <returns> TriggerReader capable of executing the read </returns> 
         public static TriggerReader Reader() {
             return new TriggerReader();
         }
     
-        /**
-         * Converts a JSON string into a TriggerResource object
-         * 
-         * @param json Raw JSON string
-         * @return TriggerResource object represented by the provided JSON
-         */
+        /// <summary>
+        /// Converts a JSON string into a TriggerResource object
+        /// </summary>
+        ///
+        /// <param name="json"> Raw JSON string </param>
+        /// <returns> TriggerResource object represented by the provided JSON </returns> 
         public static TriggerResource FromJson(string json) {
             // Convert all checked exceptions to Runtime
             try {
@@ -403,114 +402,82 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
             this.usageRecordUri = usageRecordUri;
         }
     
-        /**
-         * @return The account this trigger monitors.
-         */
+        /// <returns> The account this trigger monitors. </returns> 
         public string GetAccountSid() {
             return this.accountSid;
         }
     
-        /**
-         * @return The api_version
-         */
+        /// <returns> The api_version </returns> 
         public string GetApiVersion() {
             return this.apiVersion;
         }
     
-        /**
-         * @return HTTP method to use with callback_url
-         */
+        /// <returns> HTTP method to use with callback_url </returns> 
         public Twilio.Http.HttpMethod GetCallbackMethod() {
             return this.callbackMethod;
         }
     
-        /**
-         * @return URL Twilio will request when the trigger fires
-         */
+        /// <returns> URL Twilio will request when the trigger fires </returns> 
         public Uri GetCallbackUrl() {
             return this.callbackUrl;
         }
     
-        /**
-         * @return The current value of the field the trigger is watching.
-         */
+        /// <returns> The current value of the field the trigger is watching. </returns> 
         public string GetCurrentValue() {
             return this.currentValue;
         }
     
-        /**
-         * @return The date this resource was created
-         */
+        /// <returns> The date this resource was created </returns> 
         public DateTime? GetDateCreated() {
             return this.dateCreated;
         }
     
-        /**
-         * @return The date the trigger was last fired
-         */
+        /// <returns> The date the trigger was last fired </returns> 
         public DateTime? GetDateFired() {
             return this.dateFired;
         }
     
-        /**
-         * @return The date this resource was last updated
-         */
+        /// <returns> The date this resource was last updated </returns> 
         public DateTime? GetDateUpdated() {
             return this.dateUpdated;
         }
     
-        /**
-         * @return A user-specified, human-readable name for the trigger.
-         */
+        /// <returns> A user-specified, human-readable name for the trigger. </returns> 
         public string GetFriendlyName() {
             return this.friendlyName;
         }
     
-        /**
-         * @return How this trigger recurs
-         */
+        /// <returns> How this trigger recurs </returns> 
         public TriggerResource.Recurring GetRecurring() {
             return this.recurring;
         }
     
-        /**
-         * @return The trigger's unique Sid
-         */
+        /// <returns> The trigger's unique Sid </returns> 
         public override string GetSid() {
             return this.sid;
         }
     
-        /**
-         * @return The field in the UsageRecord that fires the trigger
-         */
+        /// <returns> The field in the UsageRecord that fires the trigger </returns> 
         public TriggerResource.TriggerField GetTriggerBy() {
             return this.triggerBy;
         }
     
-        /**
-         * @return the value at which the trigger will fire
-         */
+        /// <returns> the value at which the trigger will fire </returns> 
         public string GetTriggerValue() {
             return this.triggerValue;
         }
     
-        /**
-         * @return The URI for this resource
-         */
+        /// <returns> The URI for this resource </returns> 
         public string GetUri() {
             return this.uri;
         }
     
-        /**
-         * @return The usage category the trigger watches
-         */
+        /// <returns> The usage category the trigger watches </returns> 
         public TriggerResource.UsageCategory GetUsageCategory() {
             return this.usageCategory;
         }
     
-        /**
-         * @return The URI of the UsageRecord this trigger is watching
-         */
+        /// <returns> The URI of the UsageRecord this trigger is watching </returns> 
         public string GetUsageRecordUri() {
             return this.usageRecordUri;
         }
