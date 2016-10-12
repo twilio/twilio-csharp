@@ -1,50 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Twilio.JWT
 {
     public class Policy
     {
-        public static readonly Dictionary<string, bool> required = new Dictionary<string, bool> { { "required", true } };
-        public static readonly Dictionary<string, bool> optional = new Dictionary<string, bool> { { "required", false } };
+        public static readonly Dictionary<string, bool> Required = new Dictionary<string, bool> { { "required", true } };
+        public static readonly Dictionary<string, bool> Optional = new Dictionary<string, bool> { { "required", false } };
 
-        private string url;
-        private string method;
-        public Dictionary<string, Dictionary<string, bool>> queryFilter { get; set; }
-        public Dictionary<string, Dictionary<string, bool>> postFilter { get; set; }
-        private bool allowed;
+        private readonly string _url;
+        private readonly string _method;
+        private readonly bool _allowed;
+        private readonly Dictionary<string, Dictionary<string, bool>> _queryFilter;
+        private readonly Dictionary<string, Dictionary<string, bool>> _postFilter;
 
-        public Policy(string url, string method, Dictionary<string, Dictionary<string, bool>> queryFilter,
-            Dictionary<string, Dictionary<string, bool>> postFilter, bool allowed)
+        public Policy(
+            string url,
+            string method,
+            Dictionary<string, Dictionary<string, bool>> queryFilter=null,
+            Dictionary<string, Dictionary<string, bool>> postFilter=null,
+            bool allowed=true
+        )
         {
-            this.url = url;
-            this.method = method;
-            this.allowed = allowed;
-            this.queryFilter = queryFilter;
-            this.postFilter = postFilter;
+            _url = url;
+            _method = method;
+            _allowed = allowed;
+            _queryFilter = queryFilter ?? new Dictionary<string, Dictionary<string, bool>>();
+            _postFilter = postFilter ?? new Dictionary<string, Dictionary<string, bool>>();
         }
 
-        public Policy(string url, string method, bool allowed)
-        {
-            this.url = url;
-            this.method = method;
-            this.allowed = allowed;
-            this.queryFilter = new Dictionary<string, Dictionary<string, bool>>();
-            this.postFilter = new Dictionary<string, Dictionary<string, bool>>();
-        }
-
-        public Policy(string url, string method) : this(url, method, true) { }
-
-        public Dictionary<string, Object> ToDict()
+        public Dictionary<string, object> ToDict()
         {
             return new Dictionary<string, object> {
-                { "url", url },
-                { "method", method },
-                { "query_filter", queryFilter },
-                { "post_filter", postFilter },
-                { "allow", allowed }
+                { "url", _url },
+                { "method", _method },
+                { "query_filter", _queryFilter },
+                { "post_filter", _postFilter },
+                { "allow", _allowed }
             };
         }
     }

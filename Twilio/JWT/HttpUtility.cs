@@ -14,7 +14,7 @@ namespace Twilio
 		{
 			if (query == null)
 			{
-				throw new ArgumentNullException("query");
+				throw new ArgumentNullException(nameof(query));
 			}
 
 			if ((query.Length > 0) && (query[0] == '?'))

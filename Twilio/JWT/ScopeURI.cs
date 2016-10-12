@@ -1,69 +1,80 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-#if NET40
 using System.Reflection;
+
+#if NET40
 using System.Net;
-using System.Net.Http;
 #else
+using System.Collections.Specialized;
 using System.Web;
 #endif
 
 namespace Twilio.JWT
 {
-	public class ScopeURI
+	public class ScopeUri
 	{
-		public string _service;
-		public string _privilege;
-		public Dictionary<string, object> _prms;
+		private readonly string _service;
+		private readonly string _privilege;
+		private readonly Dictionary<string, object> _prms;
 
-		public ScopeURI(string service, string privilege, object prms)
-		{
-			_service = service;
-			_privilege = privilege;
-			_prms = ObjectToUrlQuery(prms);
-		}
+	    public ScopeUri(string service, string privilege, object prms) : this(service, privilege, ObjectToUrlQuery(prms)) {}
 
-		public ScopeURI(string service, string privilege, Dictionary<string, object> prms)
+		public ScopeUri(string service, string privilege, Dictionary<string, object> prms)
 		{
 			_service = service;
 			_privilege = privilege;
 			_prms = prms;
 		}
 
-		Dictionary<string, object> ObjectToUrlQuery(object obj)
-		{
-			if (obj == null) return new Dictionary<string, object>();
-
-			var type = obj.GetType();
-			#if NET40
-			var props = type.GetTypeInfo().DeclaredProperties;
-			#else
-			var props = type.GetProperties();
+	    private static IEnumerable<PropertyInfo> GetProps(Type type)
+	    {
+            #if NET40
+	        return type.GetTypeInfo().DeclaredProperties;
+            #else
+			return type.GetProperties();
 			#endif
+	    }
+
+	    private static object GetPropValue(PropertyInfo prop, object obj)
+	    {
+	        var propType = prop.PropertyType;
+	        var value = prop.GetValue(obj, null);
+
+            #if NET40
+	        if (!propType.IsByRef || propType == typeof(string))
+            #else
+            if (propType.IsPrimitive || propType == typeof(string))
+            #endif
+	        {
+	            return value;
+	        }
+
+	        return ObjectToUrlQuery(value);
+	    }
+
+	    private static string UrlEncode(string value)
+	    {
+            #if NET40
+	        return WebUtility.UrlEncode(value);
+            #else
+            return HttpUtility.UrlEncode(value);
+            #endif
+	    }
+
+	    private static Dictionary<string, object> ObjectToUrlQuery(object obj)
+		{
+		    if (obj == null)
+		    {
+		        return new Dictionary<string, object>();
+		    }
 
 			var coll = new Dictionary<string, object>();
-
-			foreach (var prop in props)
+			foreach (var prop in GetProps(obj.GetType()))
 			{
-				var propType = prop.PropertyType;
-				var value = prop.GetValue(obj, null);
-				var name = prop.Name;
-
+			    var value = prop.GetValue(obj, null);
 				if (value != null)
 				{
-					#if NET40
-					if (!propType.IsByRef || propType == typeof(string))
-					#else
-					if (propType.IsPrimitive || propType == typeof(string))
-					#endif
-					{
-						coll.Add(name, value);
-					}
-					else
-					{
-						coll.Add(name, ObjectToUrlQuery(value));
-					}
+				    coll.Add(prop.Name, GetPropValue(prop, obj));
 				}
 			}
 			return coll;
@@ -76,66 +87,59 @@ namespace Twilio.JWT
 				_prms.Add("clientName", clientName);
 			}
 
-			var uri = string.Format("scope:{0}:{1}", _service, _privilege);
-			if (_prms.Count > 0)
-			{
-				var query = "";
-				foreach (var item in _prms)
-				{
-					if (!string.IsNullOrEmpty(query))
-					{
-						query = query + "&";
-					}
+			var uri = $"scope:{_service}:{_privilege}";
+		    if (_prms.Count <= 0)
+		    {
+		        return uri;
+		    }
 
-					var value = item.Value;
-					if (item.Value is Dictionary<string, object>)
-					{
-						var nestedValue = "";
-						foreach (var nestedItem in (Dictionary<string, object>)item.Value)
-						{
-							if (!string.IsNullOrEmpty(nestedValue))
-							{
-								nestedValue = nestedValue + "&";
-							}
-							nestedValue = string.Format("{0}{1}={2}", nestedValue, nestedItem.Key, nestedItem.Value);
-						}
+		    var query = "";
+		    foreach (var item in _prms)
+		    {
+		        if (!string.IsNullOrEmpty(query))
+		        {
+		            query = query + "&";
+		        }
 
-						#if NET40
-						value = WebUtility.UrlEncode(nestedValue);
-						#else
-						value = HttpUtility.UrlEncode(nestedValue);
-						#endif
-					}
+		        var value = item.Value;
+		        var items = item.Value as Dictionary<string, object>;
+		        if (items != null)
+		        {
+		            var nestedValue = "";
+		            foreach (var nestedItem in items)
+		            {
+		                if (!string.IsNullOrEmpty(nestedValue))
+		                {
+		                    nestedValue = nestedValue + "&";
+		                }
+		                nestedValue = $"{nestedValue}{nestedItem.Key}={nestedItem.Value}";
+		            }
+		            value = UrlEncode(nestedValue);
+		        }
 
-					query = string.Format("{0}{1}={2}", query, item.Key, value);
-				}
+		        query = $"{query}{item.Key}={value}";
+		    }
 
-				uri = uri + "?" + query;
-			}
-			return uri;
+		    return uri + "?" + query;
 		}
 
-		public static ScopeURI Parse(string uri)
+		public static ScopeUri Parse(string uri)
 		{
 			if (!uri.StartsWith("scope:"))
 			{
 				throw new FormatException("Not a scope URI according to scheme");
 			}
 
-			var uriParts = uri.Split(new[] { '?' }, 2);
-
-			#if NET40
-			var parms = new HttpValueCollection();
-			#else
+            #if NET40
+		    var parms = new HttpValueCollection();
+            #else
 			var parms = new NameValueCollection();
 			#endif
+
+            var uriParts = uri.Split(new[] { '?' }, 2);
 			if (uriParts.Length > 1)
 			{
-				#if NET40
 				parms = HttpUtility.ParseQueryString(uriParts[1]);
-				#else
-				parms = HttpUtility.ParseQueryString(uriParts[1]);
-				#endif
 			}
 
 			var scopeParts = uriParts[0].Split(new[] { ':' }, 3);
@@ -147,7 +151,7 @@ namespace Twilio.JWT
 			var service = scopeParts[1];
 			var privilege = scopeParts[2];
 
-			return new ScopeURI(service, privilege, parms);
+			return new ScopeUri(service, privilege, parms);
 		}
 
 	}

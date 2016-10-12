@@ -17,7 +17,7 @@ namespace Twilio.JWT
             var token = new AccessToken("AC456", "SK123", "foobar");
             var delta = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             var timestamp = (int)Math.Floor(delta.TotalSeconds);
-            var encoded = token.ToJWT();
+            var encoded = token.ToJwt();
             Assert.IsNotNull(encoded);
             Assert.IsNotEmpty(encoded);
 
@@ -47,7 +47,7 @@ namespace Twilio.JWT
 
             var delta = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             var timestamp = (int)Math.Floor(delta.TotalSeconds);
-            var encoded = token.ToJWT();
+            var encoded = token.ToJwt();
             Assert.IsNotNull(encoded);
             Assert.IsNotEmpty(encoded);
 
@@ -78,7 +78,7 @@ namespace Twilio.JWT
             
             token.AddGrant(new ConversationsGrant());
 
-            var encoded = token.ToJWT();
+            var encoded = token.ToJwt();
             Assert.IsNotNull(encoded);
             Assert.IsNotEmpty(encoded);
 
@@ -110,7 +110,7 @@ namespace Twilio.JWT
             token.AddGrant(new ConversationsGrant());
             token.AddGrant(new IpMessagingGrant());
 
-            var encoded = token.ToJWT();
+            var encoded = token.ToJwt();
             Assert.IsNotNull(encoded);
             Assert.IsNotEmpty(encoded);
 
@@ -149,7 +149,7 @@ namespace Twilio.JWT
 
             token.AddGrant(pvg);
 
-            var encoded = token.ToJWT();
+            var encoded = token.ToJwt();
             Assert.IsNotNull(encoded);
             Assert.IsNotEmpty(encoded);
 
@@ -190,7 +190,7 @@ namespace Twilio.JWT
 
             token.AddGrant(sg);
 
-            var encoded = token.ToJWT();
+            var encoded = token.ToJwt();
             Assert.IsNotNull(encoded);
             Assert.IsNotEmpty(encoded);
 
@@ -228,7 +228,7 @@ namespace Twilio.JWT
 
             token.AddGrant(vg);
 
-            var encoded = token.ToJWT();
+            var encoded = token.ToJwt();
             Assert.IsNotNull(encoded);
             Assert.IsNotEmpty(encoded);
 

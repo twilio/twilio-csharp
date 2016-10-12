@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Text;
 using System.IO;
 using System.Net;
 using Twilio.Exceptions;
 using Newtonsoft.Json;
+
 #if NET40
 using System.Threading.Tasks;
 #endif
@@ -12,102 +12,105 @@ namespace Twilio.Http
 {
 	public class WebRequestClient : HttpClient
 	{
-		public WebRequestClient() {
-		}
+	    private static Exception HandleErrorResponse(HttpWebResponse errorResponse)
+	    {
+	        if (errorResponse.StatusCode >= HttpStatusCode.InternalServerError &&
+	            errorResponse.StatusCode < HttpStatusCode.HttpVersionNotSupported)
+	        {
+	            return new TwilioException("Internal Server error: " + errorResponse.StatusDescription);
+	        }
 
-		public override Response MakeRequest(Request request) {
-			System.Net.HttpWebRequest httpRequest = (System.Net.HttpWebRequest) System.Net.WebRequest.Create(request.ConstructURL());
+	        var responseStream = errorResponse.GetResponseStream();
+	        var errorReader = new StreamReader(responseStream);
+	        var errorContent = errorReader.ReadToEnd();
+
+	        try
+	        {
+	            var restEx = RestException.FromJson(errorContent);
+	            return restEx ?? new TwilioException("Error: " + errorResponse.StatusDescription + " - " + errorContent);
+	        }
+	        catch (JsonReaderException)
+	        {
+	            return new TwilioException("Error: " + errorResponse.StatusDescription + " - " + errorContent);
+	        }
+	    }
+
+	    public override Response MakeRequest(Request request) {
+			var httpRequest = (HttpWebRequest) WebRequest.Create(request.ConstructURL());
 			httpRequest.Method = request.GetMethod().ToString();
 			httpRequest.Accept = "application/json";
 			httpRequest.Headers["Accept-Encoding"] = "utf-8";
+
 			var authBytes = Authentication(request.GetUsername(), request.GetPassword());
 			httpRequest.Headers["Authorization"] = "Basic " + authBytes;
 			httpRequest.ContentType = "application/x-www-form-urlencoded";
 
-			if (request.GetMethod() != Twilio.Http.HttpMethod.GET) {
-				#if NET40
-				var streamTask = Task.Factory.FromAsync<Stream>(httpRequest.BeginGetRequestStream, httpRequest.EndGetRequestStream, null);
-				streamTask.Wait();
+//		    var version = Assembly.GetExecutingAssembly().GetName().Version;
+//		    httpRequest.UserAgent = "twilio-csharp/" + version + " (.NET " + Environment.Version.ToString() + ")";
+
+			if (!Equals(request.GetMethod(), HttpMethod.GET)) {
+
+			    #if NET40
+			    var streamTask = Task.Factory.FromAsync<Stream>(
+			        httpRequest.BeginGetRequestStream,
+			        httpRequest.EndGetRequestStream,
+			        null
+			    );
+			    streamTask.Wait();
+			    #endif
+
+                #if NET40
 				var stream = streamTask.Result;
-				stream.Write(request.EncodePostParams(), 0, request.EncodePostParams().Length);
 				#else
 				var stream = httpRequest.GetRequestStream();
-				stream.Write(request.EncodePostParams(), 0, request.EncodePostParams().Length);
 				#endif
+
+			    stream.Write(request.EncodePostParams(), 0, request.EncodePostParams().Length);
 			}
 
-			try {
+			try
+			{
+
 				#if NET40
-				var responseTask = Task.Factory.FromAsync<System.Net.WebResponse>(httpRequest.BeginGetResponse, httpRequest.EndGetResponse, null);
+				var responseTask = Task.Factory.FromAsync<System.Net.WebResponse>(
+				    httpRequest.BeginGetResponse,
+				    httpRequest.EndGetResponse,
+				    null
+				);
 				responseTask.Wait();
-				var response = (System.Net.HttpWebResponse) responseTask.Result;
-				var responseStream = response.GetResponseStream();
+			    #endif
+
+			    #if NET40
+				var response = (HttpWebResponse) responseTask.Result;
 				#else
 				var response = (System.Net.HttpWebResponse) httpRequest.GetResponse();
-				var responseStream = response.GetResponseStream();
 				#endif
 
-				StreamReader reader = new StreamReader(responseStream);
-				string content = reader.ReadToEnd();
-				var statusCode = response.StatusCode;
-
-				return new Response(statusCode, content);
-			#if NET40
-			} catch (AggregateException ae) {
+			    var responseStream = response.GetResponseStream();
+			    var reader = new StreamReader(responseStream);
+				return new Response(response.StatusCode, reader.ReadToEnd());
+			}
+            #if NET40
+			catch (AggregateException ae)
+			{
 				ae.Handle ((x) => {
-					if (x is System.Net.WebException) {
-						var e = (System.Net.WebException) x;
-						var errorResponse = (HttpWebResponse) e.Response;
+				    if (!(x is WebException))
+				    {
+				        return false;
+				    }
 
-						if (errorResponse.StatusCode >= HttpStatusCode.InternalServerError && errorResponse.StatusCode < HttpStatusCode.HttpVersionNotSupported) {
-							throw new TwilioException("Internal Server error: " + errorResponse.StatusDescription);
-						}
-
-						var responseStream = errorResponse.GetResponseStream();
-						StreamReader errorReader = new StreamReader(responseStream);
-						string errorContent = errorReader.ReadToEnd();
-
-						try {
-							var restEx = RestException.FromJson(errorContent);
-							if (restEx == null) {
-								throw new TwilioException("Error: " + errorResponse.StatusDescription + " - " + errorContent);
-							}
-
-							throw restEx;
-						} catch (JsonReaderException je) {
-							throw new TwilioException("Error: " + errorResponse.StatusDescription + " - " + errorContent);
-						}
-					}
-
-					return false;
+				    var e = (WebException) x;
+				    throw HandleErrorResponse((HttpWebResponse) e.Response);
 				});
+
+                return null;
 			}
 			#else
-			} catch (WebException e) {
-				var errorResponse = (HttpWebResponse) e.Response;
-
-				if (errorResponse.StatusCode >= HttpStatusCode.InternalServerError && errorResponse.StatusCode < HttpStatusCode.HttpVersionNotSupported) {
-					throw new TwilioException("Internal Server error: " + errorResponse.StatusDescription);
-				}
-
-				var responseStream = errorResponse.GetResponseStream();
-				StreamReader errorReader = new StreamReader(responseStream);
-				string errorContent = errorReader.ReadToEnd();
-
-				try {
-					var restEx = RestException.FromJson(errorContent);
-					if (restEx == null) {
-						throw new TwilioException("Error: " + errorResponse.StatusDescription + " - " + errorContent);
-					}
-
-					throw restEx;
-				} catch (JsonReaderException je) {
-					throw new TwilioException("Error: " + errorResponse.StatusDescription + " - " + errorContent);
-				}
+            catch (WebException e)
+            {
+                throw HandleErrorResponse((HttpWebResponse) e.Response);
 			}
 			#endif
-
-			return null;
-		}
+	    }
 	}
 }

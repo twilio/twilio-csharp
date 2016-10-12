@@ -1,8 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using static System.String;
 
 namespace Twilio.Base
 {
@@ -32,16 +32,16 @@ namespace Twilio.Base
             string nextPageUrl=null
 	    )
 	    {
-	        this.Records = records;
-	        this.PageSize = pageSize;
-	        this._uri = uri;
-	        this._url = url;
-	        this._firstPageUri = firstPageUri;
-	        this._firstPageUrl = firstPageUrl;
-	        this._nextPageUri = nextPageUri;
-	        this._nextPageUrl = nextPageUrl;
-	        this._previousPageUri = previousPageUri;
-	        this._previousPageUrl = previousPageUrl;
+	        Records = records;
+	        PageSize = pageSize;
+	        _uri = uri;
+	        _url = url;
+	        _firstPageUri = firstPageUri;
+	        _firstPageUrl = firstPageUrl;
+	        _nextPageUri = nextPageUri;
+	        _nextPageUrl = nextPageUrl;
+	        _previousPageUri = previousPageUri;
+	        _previousPageUrl = previousPageUrl;
 	    }
 
 	    private static string UrlFromUri(string domain, string uri)
@@ -71,7 +71,7 @@ namespace Twilio.Base
 
 	    public bool HasNextPage()
 	    {
-	        return !String.IsNullOrEmpty(_nextPageUrl) || !String.IsNullOrEmpty(_nextPageUri);
+	        return !IsNullOrEmpty(_nextPageUrl) || !IsNullOrEmpty(_nextPageUri);
 	    }
 
 	    public static Page<T> FromJson(string recordKey, string json)

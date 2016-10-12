@@ -1,32 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using JWT;
 
 namespace Twilio.JWT
 {
+    /// <summary>
+    /// Access Token for Twilio resources
+    /// </summary>
     public class AccessToken
     {
-        static readonly int DEFAULT_TTL = 3600;
+        private const int DefaultTtl = 3600;
 
-        private string _signingKeySid;
-        private string _accountSid;
-        private string _secret;
+        private readonly string _signingKeySid;
+        private readonly string _accountSid;
+        private readonly string _secret;
         public string Identity { get; set; }
         public int Ttl { get; set; }
         public int? Nbf { get; set; }
         public List<IGrant> Grants { get; set; }
 
-        public AccessToken(string accountSid, string signingKeySid, string secret) : this(accountSid, signingKeySid, secret, DEFAULT_TTL) { }
-
-        public AccessToken(string accountSid, string signingKeySid, string secret, int ttl)
+        /// <summary>
+        /// Create a new access token
+        /// </summary>
+        ///
+        /// <param name="accountSid">account sid for the token</param>
+        /// <param name="signingKeySid">signing key sid to use</param>
+        /// <param name="secret">signing key secret</param>
+        /// <param name="ttl">ttl for the token</param>
+        public AccessToken(string accountSid, string signingKeySid, string secret, int ttl=DefaultTtl)
         {
-            this._accountSid = accountSid;
-            this._signingKeySid = signingKeySid;
-            this._secret = secret;
-            this.Ttl = ttl;
-            this.Grants = new List<IGrant>();
+            _accountSid = accountSid;
+            _signingKeySid = signingKeySid;
+            _secret = secret;
+            Ttl = ttl;
+            Grants = new List<IGrant>();
         }
 
         /// <summary>
@@ -36,7 +43,7 @@ namespace Twilio.JWT
         /// <returns>AccessToken</returns>
         public AccessToken AddGrant(IGrant grant)
         {
-            this.Grants.Add(grant);
+            Grants.Add(grant);
             return this;
         }
 
@@ -45,34 +52,34 @@ namespace Twilio.JWT
         /// </summary>
         /// <param name="algorithm">The encryption type - default:HS256</param>
         /// <returns>Signed JWT authorizing the grants configured on this object</returns>
-        public string ToJWT(JwtHashAlgorithm algorithm=JwtHashAlgorithm.HS256)
+        public string ToJwt(JwtHashAlgorithm algorithm=JwtHashAlgorithm.HS256)
         {
-            var headers = new Dictionary<string, object>();
-            headers.Add("cty", "twilio-fpa;v=1");
-
-            int now = ConvertToUnixTimestamp(DateTime.UtcNow);
+            var headers = new Dictionary<string, object> {{"cty", "twilio-fpa;v=1"}};
+            var now = ConvertToUnixTimestamp(DateTime.UtcNow);
 
             var grantPayload = new Dictionary<string, object>();
-            if (this.Identity != null)
+            if (Identity != null)
             {
-                grantPayload.Add("identity", this.Identity);
+                grantPayload.Add("identity", Identity);
             }
 
-            foreach (IGrant grant in this.Grants)
+            foreach (var grant in Grants)
             {
                 grantPayload.Add(grant.GetGrantKey(), grant.GetPayload());
             }
 
-            var payload = new Dictionary<string, object>();
-            payload.Add("jti", String.Format("{0}-{1}", _signingKeySid, now));
-            payload.Add("iss", _signingKeySid);
-            payload.Add("sub", _accountSid);
-            payload.Add("exp", now + Ttl);
-            payload.Add("grants", grantPayload);
-
-            if (this.Nbf != null)
+            var payload = new Dictionary<string, object>
             {
-                payload.Add("nbf", this.Nbf);
+                {"jti", $"{_signingKeySid}-{now}"},
+                {"iss", _signingKeySid},
+                {"sub", _accountSid},
+                {"exp", now + Ttl},
+                {"grants", grantPayload}
+            };
+
+            if (Nbf != null)
+            {
+                payload.Add("nbf", Nbf);
             }
 
             return JsonWebToken.Encode(headers, payload, _secret, algorithm);
@@ -80,13 +87,13 @@ namespace Twilio.JWT
 
         public override string ToString()
         {
-            return ToJWT();
+            return ToJwt();
         }
 
         public static int ConvertToUnixTimestamp(DateTime date)
         {
-            DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-            TimeSpan diff = date - origin;
+            var origin = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            var diff = date - origin;
             return (int)Math.Floor(diff.TotalSeconds);
         }
     }

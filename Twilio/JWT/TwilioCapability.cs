@@ -8,33 +8,42 @@ namespace Twilio.JWT
 {
 	public class TwilioCapability
 	{
-		string _accountSid;
-		string _authToken;
-		string _clientName;
+		private readonly string _accountSid;
+		private readonly string _authToken;
+	    private readonly List<ScopeUri> _scopes;
 
-		List<ScopeURI> _scopes;
+	    private string _clientName;
 
 		/// <summary>
 		/// Creates a new TwilioCapability token generator for Twilio Client
 		/// </summary>
+		///
 		/// <param name="accountSid">Your Twilio Account SID from your account dashboard</param>
 		/// <param name="authToken">Your Twilio Auth Token from your account dashboard</param>
 		public TwilioCapability(string accountSid, string authToken)
 		{
 			_accountSid = accountSid;
 			_authToken = authToken;
-			_scopes = new List<ScopeURI>();
+			_scopes = new List<ScopeUri>();
 		}
 
-		void Allow(string service, string capability, object prms)
+	    /// <summary>
+	    /// Allow a capability
+	    /// </summary>
+	    ///
+	    /// <param name="service">service to allow</param>
+	    /// <param name="capability">capability to allow</param>
+	    /// <param name="prms">params to allow</param>
+		public void Allow(string service, string capability, object prms)
 		{
 			// add to scope
-			_scopes.Add(new ScopeURI(service, capability, prms));
+			_scopes.Add(new ScopeUri(service, capability, prms));
 		}
 
 		/// <summary>
 		/// Allow the Twilio Client device to receive incoming calls with the specified client name
 		/// </summary>
+		///
 		/// <param name="clientName">The client name to register</param>
 		public void AllowClientIncoming(string clientName)
 		{
@@ -56,6 +65,7 @@ namespace Twilio.JWT
 		/// <summary>
 		/// Allow the Twilio Client device to place outgoing calls to the specified Application.
 		/// </summary>
+		///
 		/// <param name="applicationSid">The Twilio Application SID to connect to.</param>
 		public void AllowClientOutgoing(string applicationSid)
 		{
@@ -65,6 +75,7 @@ namespace Twilio.JWT
 		/// <summary>
 		/// Allow the Twilio Client device to place outgoing calls to the specified Application.
 		/// </summary>
+		///
 		/// <param name="applicationSid">The Twilio Application SID to connect to.</param>
 		/// <param name="appParams">Optional data to send with the request to your application</param>
 		public void AllowClientOutgoing(string applicationSid, object appParams)
@@ -73,21 +84,13 @@ namespace Twilio.JWT
 		}
 
 		/// <summary>
-		/// Generate the token as a string with the default TTL of 3600 seconds.
-		/// </summary>
-		public string GenerateToken()
-		{
-			return GenerateToken(3600);
-		}
-
-		/// <summary>
 		/// Generate the token as a string with a custom TTL value (max 24 hours)
 		/// </summary>
+		///
 		/// <param name="ttlSeconds">The lifespan of the token, in seconds</param>
-		public string GenerateToken(int ttlSeconds)
+		public string GenerateToken(int ttlSeconds = 3600)
 		{
 			var scope = string.Join(" ", _scopes.Select(s => s.ToString(_clientName)).ToArray());
-
 			var payload = new
 			{
 				iss = _accountSid,
@@ -98,10 +101,10 @@ namespace Twilio.JWT
 			return JsonWebToken.Encode(payload, _authToken, JwtHashAlgorithm.HS256);
 		}
 
-		static int ConvertToUnixTimestamp(DateTime date)
+		private static int ConvertToUnixTimestamp(DateTime date)
 		{
-			DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-			TimeSpan diff = date - origin;
+			var origin = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+			var diff = date - origin;
 			return (int)Math.Floor(diff.TotalSeconds);
 		}
 	}

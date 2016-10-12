@@ -1,43 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Twilio.JWT
 {
+    /// <summary>
+    /// Grant to expose Twilio Voice
+    /// </summary>
     public class VoiceGrant : IGrant
     {
         public string OutgoingApplicationSid { get; set; }
         public Dictionary<string, string> OutgoingApplicationParams { get; set; }
         public string PushCredentialSid { get; set; }
-        public string EndpointId { get; set; }        
+        public string EndpointId { get; set; }
 
-
+        /// <summary>
+        /// Get the grant key
+        /// </summary>
+        ///
+        /// <returns>the grant key</returns>
         public string GetGrantKey()
         {
             return "voice";
         }
 
+        /// <summary>
+        /// Get the grant payload
+        /// </summary>
+        ///
+        /// <returns>the grant payload</returns>
         public object GetPayload()
         {
             var payload = new Dictionary<string, object>();
-            if (this.OutgoingApplicationSid != null) {
-                var outgoing = new Dictionary<string, object>();
-                outgoing.Add("application_sid", this.OutgoingApplicationSid);
+            if (OutgoingApplicationSid != null) {
+                var outgoing = new Dictionary<string, object> {{"application_sid", OutgoingApplicationSid}};
 
-                if (this.OutgoingApplicationParams != null) {
-                    outgoing.Add("params", this.OutgoingApplicationParams) ;                   
+                if (OutgoingApplicationParams != null) {
+                    outgoing.Add("params", OutgoingApplicationParams) ;
                 }
 
                 payload.Add("outgoing", outgoing);
             }
 
-            if (this.PushCredentialSid != null) {
-                payload.Add("push_credential_sid", this.PushCredentialSid);
+            if (PushCredentialSid != null) {
+                payload.Add("push_credential_sid", PushCredentialSid);
             }
 
-            if (this.EndpointId != null) {
-                payload.Add("endpoint_id", this.EndpointId);
+            if (EndpointId != null) {
+                payload.Add("endpoint_id", EndpointId);
             }
 
             return payload;
