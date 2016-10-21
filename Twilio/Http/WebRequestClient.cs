@@ -48,46 +48,16 @@ namespace Twilio.Http
 //		    var version = Assembly.GetExecutingAssembly().GetName().Version;
 //		    httpRequest.UserAgent = "twilio-csharp/" + version + " (.NET " + Environment.Version.ToString() + ")";
 
-			if (!Equals(request.Method, HttpMethod.GET)) {
-
-			    #if NET40
-			    var streamTask = Task.Factory.FromAsync<Stream>(
-			        httpRequest.BeginGetRequestStream,
-			        httpRequest.EndGetRequestStream,
-			        null
-			    );
-			    streamTask.Wait();
-			    #endif
-
-                #if NET40
-				var stream = streamTask.Result;
-				#else
-				var stream = httpRequest.GetRequestStream();
-				#endif
-
+			if (!Equals(request.Method, HttpMethod.GET))
+			{
+			    var stream = GetStream(httpRequest);
 			    stream.Write(request.EncodePostParams(), 0, request.EncodePostParams().Length);
 			}
 
 			try
 			{
-
-				#if NET40
-				var responseTask = Task.Factory.FromAsync<System.Net.WebResponse>(
-				    httpRequest.BeginGetResponse,
-				    httpRequest.EndGetResponse,
-				    null
-				);
-				responseTask.Wait();
-			    #endif
-
-			    #if NET40
-				var response = (HttpWebResponse) responseTask.Result;
-				#else
-				var response = (System.Net.HttpWebResponse) httpRequest.GetResponse();
-				#endif
-
-			    var responseStream = response.GetResponseStream();
-			    var reader = new StreamReader(responseStream);
+			    var response = GetResponse(httpRequest);
+			    var reader = new StreamReader(response.GetResponseStream());
 				return new Response(response.StatusCode, reader.ReadToEnd());
 			}
             #if NET40
@@ -102,8 +72,6 @@ namespace Twilio.Http
 				    var e = (WebException) x;
 				    throw HandleErrorResponse((HttpWebResponse) e.Response);
 				});
-
-                return null;
 			}
 			#else
             catch (WebException e)
@@ -111,6 +79,41 @@ namespace Twilio.Http
                 throw HandleErrorResponse((HttpWebResponse) e.Response);
 			}
 			#endif
+
+	        return null;
+	    }
+
+	    private static Stream GetStream(WebRequest request)
+	    {
+            #if NET40
+	        var streamTask = Task.Factory.FromAsync<Stream>(
+	            request.BeginGetRequestStream,
+	            request.EndGetRequestStream,
+	            null
+	        );
+	        streamTask.Wait();
+            #endif
+
+            #if NET40
+	        return streamTask.Result;
+            #else
+            return request.GetRequestStream();
+            #endif
+	    }
+
+	    private static HttpWebResponse GetResponse(WebRequest request)
+	    {
+            #if NET40
+	        var responseTask = Task.Factory.FromAsync<System.Net.WebResponse>(
+	            request.BeginGetResponse,
+	            request.EndGetResponse,
+	            null
+	        );
+	        responseTask.Wait();
+	        return (HttpWebResponse) responseTask.Result;
+            #else
+            return (HttpWebResponse) request.GetResponse();
+            #endif
 	    }
 	}
 }

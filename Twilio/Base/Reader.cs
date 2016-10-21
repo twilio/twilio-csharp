@@ -22,12 +22,25 @@ namespace Twilio.Base
             set { _pageSize = Math.Min(value, MaxPageSize); }
         }
 
-        private long Limit { get; set; }
+        private long _limit;
+        public long Limit
+        {
+            get { return _limit;  }
+            set
+            {
+                _limit = value;
+                if (_pageSize == null)
+                {
+                    _pageSize = (int) Math.Min(value, MaxPageSize);
+                }
+            }
+        }
 
         #if NET40
         /// <summary>
         /// Execute an async request using the default client.
         /// </summary>
+        ///
         /// <returns>Task that resolves to requested object</returns>
         public async Task<ResourceSet<T>> ReadAsync()
         {
@@ -37,6 +50,7 @@ namespace Twilio.Base
         /// <summary>
         /// Execute an async request using a custom client.
         /// </summary>
+        ///
         /// <param name="client">Custom client to use</param>
         /// <returns>Task that resolves to requested object</returns>
         public abstract Task<ResourceSet<T>> ReadAsync(ITwilioRestClient client);
@@ -45,6 +59,7 @@ namespace Twilio.Base
         /// <summary>
         /// Execute a request using the default client.
         /// </summary>
+        ///
         /// <returns>Requested object</returns>
         public ResourceSet<T> Read()
         {
@@ -54,15 +69,28 @@ namespace Twilio.Base
         /// <summary>
         /// Execute a request using a custom client.
         /// </summary>
+        ///
         /// <param name="client">Custom client to use</param>
         /// <returns>Requested object</returns>
         public abstract ResourceSet<T> Read(ITwilioRestClient client);
 
+        /// <summary>
+        /// Fetch the next page of results using the default client
+        /// </summary>
+        ///
+        /// <param name="page">Page of results</param>
+        /// <returns>The next page of results</returns>
         public Page<T> NextPage(Page<T> page)
         {
             return NextPage(page, TwilioClient.GetRestClient());
         }
 
-		public abstract Page<T> NextPage(Page<T> page, ITwilioRestClient client);
+        /// <summary>
+        /// Fetch the next page of results
+        /// </summary>
+        ///
+        /// <param name="page">Page of results</param>
+        /// <returns>The next page of results</returns>
+        public abstract Page<T> NextPage(Page<T> page, ITwilioRestClient client);
     }
 }

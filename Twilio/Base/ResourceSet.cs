@@ -17,18 +17,20 @@ namespace Twilio.Base
 
 	    public ResourceSet(Reader<T> reader, ITwilioRestClient client, Page<T> page)
 	    {
-	        this._reader = reader;
-	        this._client = client;
-	        this._page = page;
+	        _reader = reader;
+	        _client = client;
+	        _page = page;
 
-	        this._iterator = page.Records.GetEnumerator();
-	        this._processed = 0;
-	        this._pages = 1;
-	        this._pageLimit = long.MaxValue;
+	        _iterator = page.Records.GetEnumerator();
+	        _processed = 0;
+	        _pages = 1;
+	        _pageLimit = long.MaxValue;
 	    }
 
-	    protected void FetchNextPage() {
-	        if (!_page.HasNextPage() || _pages >= _pageLimit) {
+	    protected void FetchNextPage()
+	    {
+	        if (!_page.HasNextPage() || _pages >= _pageLimit)
+	        {
 	            _page = null;
 	            _iterator = null;
 	            return;
@@ -39,28 +41,35 @@ namespace Twilio.Base
 	        _iterator = _page.Records.GetEnumerator();
 	    }
 
-	    public int GetPageSize() {
+	    public int GetPageSize()
+	    {
 	        return _page.PageSize;
 	    }
 
-	    public void SetPageSize(int pageSize) {
+	    public void SetPageSize(int pageSize)
+	    {
 	        _reader.PageSize = pageSize;
 	    }
 
 	    public IEnumerator<T> GetEnumerator() {
-			while (_page != null) {
+			while (_page != null)
+			{
 				_iterator.Reset();
-				while (_iterator.MoveNext()) {
+				while (_iterator.MoveNext())
+				{
+				    _processed++;
 					yield return _iterator.Current;
 				}
 
-				if (AutoPaging && _page.HasNextPage()) {
+				if (AutoPaging && _page.HasNextPage())
+				{
 					FetchNextPage();
 				}
 			}
 		}
 
-		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() {
+		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+		{
 			return GetEnumerator();
 		}
     }

@@ -10,7 +10,8 @@ namespace Twilio.Converters
             Dictionary<string, string> result,
             List<string> previous
         ) {
-            foreach (var entry in dict) {
+            foreach (var entry in dict)
+            {
                 var next = new List<string>(previous) {entry.Key};
 
                 if (entry.Value.GetType() == typeof(Dictionary<string, object>))
