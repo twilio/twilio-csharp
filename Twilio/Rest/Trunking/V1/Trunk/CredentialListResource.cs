@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Trunking.V1.Trunk {
 
-    public class CredentialListResource : SidResource {
+    public class CredentialListResource : Resource {
         /// <summary>
         /// fetch
         /// </summary>
@@ -68,19 +68,19 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("trunk_sid")]
-        private readonly string trunkSid;
+        public string trunkSid { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
     
         public CredentialListResource() {
         
@@ -107,41 +107,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.url = url;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The trunk_sid </returns> 
-        public string GetTrunkSid() {
-            return this.trunkSid;
-        }
-    
-        /// <returns> The friendly_name </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
         }
     }
 }

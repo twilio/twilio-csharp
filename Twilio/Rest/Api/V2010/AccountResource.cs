@@ -9,7 +9,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010 {
 
-    public class AccountResource : SidResource {
+    public class AccountResource : Resource {
         public sealed class Status : IStringEnum {
             public const string ACTIVE="active";
             public const string SUSPENDED="suspended";
@@ -141,27 +141,27 @@ namespace Twilio.Rest.Api.V2010 {
         }
     
         [JsonProperty("auth_token")]
-        private readonly string authToken;
+        public string authToken { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("owner_account_sid")]
-        private readonly string ownerAccountSid;
+        public string ownerAccountSid { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly AccountResource.Status status;
+        public AccountResource.Status status { get; }
         [JsonProperty("subresource_uris")]
-        private readonly Dictionary<string, string> subresourceUris;
+        public Dictionary<string, string> subresourceUris { get; }
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly AccountResource.Type type;
+        public AccountResource.Type type { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
     
         public AccountResource() {
         
@@ -197,56 +197,6 @@ namespace Twilio.Rest.Api.V2010 {
             this.subresourceUris = subresourceUris;
             this.type = type;
             this.uri = uri;
-        }
-    
-        /// <returns> The authorization token for this account </returns> 
-        public string GetAuthToken() {
-            return this.authToken;
-        }
-    
-        /// <returns> The date this account was created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date this account was last updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> A human readable description of this account </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The unique 34 character id representing the parent of this account </returns> 
-        public string GetOwnerAccountSid() {
-            return this.ownerAccountSid;
-        }
-    
-        /// <returns> A 34 character string that uniquely identifies this resource. </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The status of this account </returns> 
-        public AccountResource.Status GetStatus() {
-            return this.status;
-        }
-    
-        /// <returns> Account Instance Subresources </returns> 
-        public Dictionary<string, string> GetSubresourceUris() {
-            return this.subresourceUris;
-        }
-    
-        /// <returns> The type of this account </returns> 
-        public AccountResource.Type GetAccountType() {
-            return this.type;
-        }
-    
-        /// <returns> The URI for this resource, relative to `https://api.twilio.com` </returns> 
-        public string GetUri() {
-            return this.uri;
         }
     }
 }

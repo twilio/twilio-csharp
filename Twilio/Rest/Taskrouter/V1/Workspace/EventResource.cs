@@ -9,7 +9,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
-    public class EventResource : SidResource {
+    public class EventResource : Resource {
         /// <summary>
         /// fetch
         /// </summary>
@@ -47,35 +47,35 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("actor_sid")]
-        private readonly string actorSid;
+        public string actorSid { get; }
         [JsonProperty("actor_type")]
-        private readonly string actorType;
+        public string actorType { get; }
         [JsonProperty("actor_url")]
-        private readonly Uri actorUrl;
+        public Uri actorUrl { get; }
         [JsonProperty("description")]
-        private readonly string description;
+        public string description { get; }
         [JsonProperty("event_data")]
-        private readonly Dictionary<string, string> eventData;
+        public Dictionary<string, string> eventData { get; }
         [JsonProperty("event_date")]
-        private readonly DateTime? eventDate;
+        public DateTime? eventDate { get; }
         [JsonProperty("event_type")]
-        private readonly string eventType;
+        public string eventType { get; }
         [JsonProperty("resource_sid")]
-        private readonly string resourceSid;
+        public string resourceSid { get; }
         [JsonProperty("resource_type")]
-        private readonly string resourceType;
+        public string resourceType { get; }
         [JsonProperty("resource_url")]
-        private readonly Uri resourceUrl;
+        public Uri resourceUrl { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("source")]
-        private readonly string source;
+        public string source { get; }
         [JsonProperty("source_ip_address")]
-        private readonly string sourceIpAddress;
+        public string sourceIpAddress { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
     
         public EventResource() {
         
@@ -126,81 +126,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             this.source = source;
             this.sourceIpAddress = sourceIpAddress;
             this.url = url;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The actor_sid </returns> 
-        public string GetActorSid() {
-            return this.actorSid;
-        }
-    
-        /// <returns> The actor_type </returns> 
-        public string GetActorType() {
-            return this.actorType;
-        }
-    
-        /// <returns> The actor_url </returns> 
-        public Uri GetActorUrl() {
-            return this.actorUrl;
-        }
-    
-        /// <returns> The description </returns> 
-        public string GetDescription() {
-            return this.description;
-        }
-    
-        /// <returns> The event_data </returns> 
-        public Dictionary<string, string> GetEventData() {
-            return this.eventData;
-        }
-    
-        /// <returns> The event_date </returns> 
-        public DateTime? GetEventDate() {
-            return this.eventDate;
-        }
-    
-        /// <returns> The event_type </returns> 
-        public string GetEventType() {
-            return this.eventType;
-        }
-    
-        /// <returns> The resource_sid </returns> 
-        public string GetResourceSid() {
-            return this.resourceSid;
-        }
-    
-        /// <returns> The resource_type </returns> 
-        public string GetResourceType() {
-            return this.resourceType;
-        }
-    
-        /// <returns> The resource_url </returns> 
-        public Uri GetResourceUrl() {
-            return this.resourceUrl;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The source </returns> 
-        public string GetSource() {
-            return this.source;
-        }
-    
-        /// <returns> The source_ip_address </returns> 
-        public string GetSourceIpAddress() {
-            return this.sourceIpAddress;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
         }
     }
 }

@@ -48,30 +48,30 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
     
         [JsonProperty("friendly_name")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        private readonly Twilio.Types.PhoneNumber friendlyName;
+        public Twilio.Types.PhoneNumber friendlyName { get; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        private readonly Twilio.Types.PhoneNumber phoneNumber;
+        public Twilio.Types.PhoneNumber phoneNumber { get; }
         [JsonProperty("lata")]
-        private readonly string lata;
+        public string lata { get; }
         [JsonProperty("rate_center")]
-        private readonly string rateCenter;
+        public string rateCenter { get; }
         [JsonProperty("latitude")]
-        private readonly decimal? latitude;
+        public decimal? latitude { get; }
         [JsonProperty("longitude")]
-        private readonly decimal? longitude;
+        public decimal? longitude { get; }
         [JsonProperty("region")]
-        private readonly string region;
+        public string region { get; }
         [JsonProperty("postal_code")]
-        private readonly string postalCode;
+        public string postalCode { get; }
         [JsonProperty("iso_country")]
-        private readonly string isoCountry;
+        public string isoCountry { get; }
         [JsonProperty("address_requirements")]
-        private readonly string addressRequirements;
+        public string addressRequirements { get; }
         [JsonProperty("beta")]
-        private readonly bool? beta;
+        public bool? beta { get; }
         [JsonProperty("capabilities")]
-        private readonly PhoneNumberCapabilities capabilities;
+        public PhoneNumberCapabilities capabilities { get; }
     
         public TollFreeResource() {
         
@@ -113,66 +113,6 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
             this.addressRequirements = addressRequirements;
             this.beta = beta;
             this.capabilities = capabilities;
-        }
-    
-        /// <returns> The friendly_name </returns> 
-        public Twilio.Types.PhoneNumber GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The phone_number </returns> 
-        public Twilio.Types.PhoneNumber GetPhoneNumber() {
-            return this.phoneNumber;
-        }
-    
-        /// <returns> The lata </returns> 
-        public string GetLata() {
-            return this.lata;
-        }
-    
-        /// <returns> The rate_center </returns> 
-        public string GetRateCenter() {
-            return this.rateCenter;
-        }
-    
-        /// <returns> The latitude </returns> 
-        public decimal? GetLatitude() {
-            return this.latitude;
-        }
-    
-        /// <returns> The longitude </returns> 
-        public decimal? GetLongitude() {
-            return this.longitude;
-        }
-    
-        /// <returns> The region </returns> 
-        public string GetRegion() {
-            return this.region;
-        }
-    
-        /// <returns> The postal_code </returns> 
-        public string GetPostalCode() {
-            return this.postalCode;
-        }
-    
-        /// <returns> The iso_country </returns> 
-        public string GetIsoCountry() {
-            return this.isoCountry;
-        }
-    
-        /// <returns> The address_requirements </returns> 
-        public string GetAddressRequirements() {
-            return this.addressRequirements;
-        }
-    
-        /// <returns> The beta </returns> 
-        public bool? GetBeta() {
-            return this.beta;
-        }
-    
-        /// <returns> The capabilities </returns> 
-        public PhoneNumberCapabilities GetCapabilities() {
-            return this.capabilities;
         }
     }
 }

@@ -52,29 +52,29 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         }
     
         [JsonProperty("address_of_record")]
-        private readonly string addressOfRecord;
+        public string addressOfRecord { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("date_expires")]
-        private readonly DateTime? dateExpires;
+        public DateTime? dateExpires { get; }
         [JsonProperty("sip_call_id")]
-        private readonly string sipCallId;
+        public string sipCallId { get; }
         [JsonProperty("sip_contact")]
-        private readonly string sipContact;
+        public string sipContact { get; }
         [JsonProperty("sip_cseq")]
-        private readonly int? sipCseq;
+        public int? sipCseq { get; }
         [JsonProperty("sip_path")]
-        private readonly string sipPath;
+        public string sipPath { get; }
         [JsonProperty("sip_via")]
-        private readonly string sipVia;
+        public string sipVia { get; }
         [JsonProperty("user_agent")]
-        private readonly string userAgent;
+        public string userAgent { get; }
         [JsonProperty("channel_type")]
-        private readonly string channelType;
+        public string channelType { get; }
         [JsonProperty("display_name")]
-        private readonly string displayName;
+        public string displayName { get; }
     
         public RegistrationEndpointResource() {
         
@@ -116,66 +116,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
             this.userAgent = userAgent;
             this.channelType = channelType;
             this.displayName = displayName;
-        }
-    
-        /// <returns> The address_of_record </returns> 
-        public string GetAddressOfRecord() {
-            return this.addressOfRecord;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The date_expires </returns> 
-        public DateTime? GetDateExpires() {
-            return this.dateExpires;
-        }
-    
-        /// <returns> The sip_call_id </returns> 
-        public string GetSipCallId() {
-            return this.sipCallId;
-        }
-    
-        /// <returns> The sip_contact </returns> 
-        public string GetSipContact() {
-            return this.sipContact;
-        }
-    
-        /// <returns> The sip_cseq </returns> 
-        public int? GetSipCseq() {
-            return this.sipCseq;
-        }
-    
-        /// <returns> The sip_path </returns> 
-        public string GetSipPath() {
-            return this.sipPath;
-        }
-    
-        /// <returns> The sip_via </returns> 
-        public string GetSipVia() {
-            return this.sipVia;
-        }
-    
-        /// <returns> The user_agent </returns> 
-        public string GetUserAgent() {
-            return this.userAgent;
-        }
-    
-        /// <returns> The channel_type </returns> 
-        public string GetChannelType() {
-            return this.channelType;
-        }
-    
-        /// <returns> The display_name </returns> 
-        public string GetDisplayName() {
-            return this.displayName;
         }
     }
 }

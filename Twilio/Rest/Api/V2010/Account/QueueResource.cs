@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account {
 
-    public class QueueResource : SidResource {
+    public class QueueResource : Resource {
         /// <summary>
         /// Fetch an instance of a queue identified by the QueueSid
         /// </summary>
@@ -126,23 +126,23 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("average_wait_time")]
-        private readonly int? averageWaitTime;
+        public int? averageWaitTime { get; }
         [JsonProperty("current_size")]
-        private readonly int? currentSize;
+        public int? currentSize { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("max_size")]
-        private readonly int? maxSize;
+        public int? maxSize { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
     
         public QueueResource() {
         
@@ -175,51 +175,6 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.maxSize = maxSize;
             this.sid = sid;
             this.uri = uri;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> Average wait time of members in the queue </returns> 
-        public int? GetAverageWaitTime() {
-            return this.averageWaitTime;
-        }
-    
-        /// <returns> The count of calls currently in the queue. </returns> 
-        public int? GetCurrentSize() {
-            return this.currentSize;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> A user-provided string that identifies this queue. </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The max number of calls allowed in the queue </returns> 
-        public int? GetMaxSize() {
-            return this.maxSize;
-        }
-    
-        /// <returns> A string that uniquely identifies this queue </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The uri </returns> 
-        public string GetUri() {
-            return this.uri;
         }
     }
 }

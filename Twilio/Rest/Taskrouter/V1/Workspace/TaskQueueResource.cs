@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
-    public class TaskQueueResource : SidResource {
+    public class TaskQueueResource : Resource {
         /// <summary>
         /// fetch
         /// </summary>
@@ -81,31 +81,31 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("assignment_activity_sid")]
-        private readonly string assignmentActivitySid;
+        public string assignmentActivitySid { get; }
         [JsonProperty("assignment_activity_name")]
-        private readonly string assignmentActivityName;
+        public string assignmentActivityName { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("max_reserved_workers")]
-        private readonly int? maxReservedWorkers;
+        public int? maxReservedWorkers { get; }
         [JsonProperty("reservation_activity_sid")]
-        private readonly string reservationActivitySid;
+        public string reservationActivitySid { get; }
         [JsonProperty("reservation_activity_name")]
-        private readonly string reservationActivityName;
+        public string reservationActivityName { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("target_workers")]
-        private readonly string targetWorkers;
+        public string targetWorkers { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
         [JsonProperty("workspace_sid")]
-        private readonly string workspaceSid;
+        public string workspaceSid { get; }
     
         public TaskQueueResource() {
         
@@ -150,71 +150,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             this.targetWorkers = targetWorkers;
             this.url = url;
             this.workspaceSid = workspaceSid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The assignment_activity_sid </returns> 
-        public string GetAssignmentActivitySid() {
-            return this.assignmentActivitySid;
-        }
-    
-        /// <returns> The assignment_activity_name </returns> 
-        public string GetAssignmentActivityName() {
-            return this.assignmentActivityName;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The friendly_name </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The max_reserved_workers </returns> 
-        public int? GetMaxReservedWorkers() {
-            return this.maxReservedWorkers;
-        }
-    
-        /// <returns> The reservation_activity_sid </returns> 
-        public string GetReservationActivitySid() {
-            return this.reservationActivitySid;
-        }
-    
-        /// <returns> The reservation_activity_name </returns> 
-        public string GetReservationActivityName() {
-            return this.reservationActivityName;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The target_workers </returns> 
-        public string GetTargetWorkers() {
-            return this.targetWorkers;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
-        }
-    
-        /// <returns> The workspace_sid </returns> 
-        public string GetWorkspaceSid() {
-            return this.workspaceSid;
         }
     }
 }

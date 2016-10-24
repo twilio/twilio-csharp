@@ -36,13 +36,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("cumulative")]
-        private readonly Object cumulative;
+        public Object cumulative { get; }
         [JsonProperty("worker_sid")]
-        private readonly string workerSid;
+        public string workerSid { get; }
         [JsonProperty("workspace_sid")]
-        private readonly string workspaceSid;
+        public string workspaceSid { get; }
     
         public WorkerStatisticsResource() {
         
@@ -60,26 +60,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
             this.cumulative = cumulative;
             this.workerSid = workerSid;
             this.workspaceSid = workspaceSid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The cumulative </returns> 
-        public Object GetCumulative() {
-            return this.cumulative;
-        }
-    
-        /// <returns> The worker_sid </returns> 
-        public string GetWorkerSid() {
-            return this.workerSid;
-        }
-    
-        /// <returns> The workspace_sid </returns> 
-        public string GetWorkspaceSid() {
-            return this.workspaceSid;
         }
     }
 }

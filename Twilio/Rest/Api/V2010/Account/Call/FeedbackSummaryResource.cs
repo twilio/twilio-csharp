@@ -10,7 +10,7 @@ using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.Call {
 
-    public class FeedbackSummaryResource : SidResource {
+    public class FeedbackSummaryResource : Resource {
         public sealed class Status : IStringEnum {
             public const string QUEUED="queued";
             public const string IN_PROGRESS="in-progress";
@@ -124,34 +124,34 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("call_count")]
-        private readonly int? callCount;
+        public int? callCount { get; }
         [JsonProperty("call_feedback_count")]
-        private readonly int? callFeedbackCount;
+        public int? callFeedbackCount { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("end_date")]
-        private readonly DateTime? endDate;
+        public DateTime? endDate { get; }
         [JsonProperty("include_subaccounts")]
-        private readonly bool? includeSubaccounts;
+        public bool? includeSubaccounts { get; }
         [JsonProperty("issues")]
-        private readonly List<FeedbackIssue> issues;
+        public List<FeedbackIssue> issues { get; }
         [JsonProperty("quality_score_average")]
-        private readonly decimal? qualityScoreAverage;
+        public decimal? qualityScoreAverage { get; }
         [JsonProperty("quality_score_median")]
-        private readonly decimal? qualityScoreMedian;
+        public decimal? qualityScoreMedian { get; }
         [JsonProperty("quality_score_standard_deviation")]
-        private readonly decimal? qualityScoreStandardDeviation;
+        public decimal? qualityScoreStandardDeviation { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("start_date")]
-        private readonly DateTime? startDate;
+        public DateTime? startDate { get; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly FeedbackSummaryResource.Status status;
+        public FeedbackSummaryResource.Status status { get; }
     
         public FeedbackSummaryResource() {
         
@@ -199,76 +199,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
             this.sid = sid;
             this.startDate = MarshalConverter.DateTimeFromString(startDate);
             this.status = status;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The call_count </returns> 
-        public int? GetCallCount() {
-            return this.callCount;
-        }
-    
-        /// <returns> The call_feedback_count </returns> 
-        public int? GetCallFeedbackCount() {
-            return this.callFeedbackCount;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The end_date </returns> 
-        public DateTime? GetEndDate() {
-            return this.endDate;
-        }
-    
-        /// <returns> The include_subaccounts </returns> 
-        public bool? GetIncludeSubaccounts() {
-            return this.includeSubaccounts;
-        }
-    
-        /// <returns> The issues </returns> 
-        public List<FeedbackIssue> GetIssues() {
-            return this.issues;
-        }
-    
-        /// <returns> The quality_score_average </returns> 
-        public decimal? GetQualityScoreAverage() {
-            return this.qualityScoreAverage;
-        }
-    
-        /// <returns> The quality_score_median </returns> 
-        public decimal? GetQualityScoreMedian() {
-            return this.qualityScoreMedian;
-        }
-    
-        /// <returns> The quality_score_standard_deviation </returns> 
-        public decimal? GetQualityScoreStandardDeviation() {
-            return this.qualityScoreStandardDeviation;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The start_date </returns> 
-        public DateTime? GetStartDate() {
-            return this.startDate;
-        }
-    
-        /// <returns> The status </returns> 
-        public FeedbackSummaryResource.Status GetStatus() {
-            return this.status;
         }
     }
 }

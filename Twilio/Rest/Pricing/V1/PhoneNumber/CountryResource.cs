@@ -10,7 +10,7 @@ using Twilio.Types;
 
 namespace Twilio.Rest.Pricing.V1.PhoneNumber {
 
-    public class CountryResource : SidResource {
+    public class CountryResource : Resource {
         /// <summary>
         /// read
         /// </summary>
@@ -46,17 +46,17 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber {
         }
     
         [JsonProperty("country")]
-        private readonly string country;
+        public string country { get; }
         [JsonProperty("iso_country")]
-        private readonly string isoCountry;
+        public string isoCountry { get; }
         [JsonProperty("phone_number_prices")]
-        private readonly List<PhoneNumberPrice> phoneNumberPrices;
+        public List<PhoneNumberPrice> phoneNumberPrices { get; }
         [JsonProperty("price_unit")]
-        private readonly string priceUnit;
+        public string priceUnit { get; }
         [JsonProperty("uri")]
-        private readonly Uri uri;
+        public Uri uri { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
     
         public CountryResource() {
         
@@ -80,41 +80,6 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber {
             this.priceUnit = priceUnit;
             this.uri = uri;
             this.url = url;
-        }
-    
-        /// <returns> The iso_country </returns> 
-        public override string GetSid() {
-            return this.GetIsoCountry();
-        }
-    
-        /// <returns> The country </returns> 
-        public string GetCountry() {
-            return this.country;
-        }
-    
-        /// <returns> The iso_country </returns> 
-        public string GetIsoCountry() {
-            return this.isoCountry;
-        }
-    
-        /// <returns> The phone_number_prices </returns> 
-        public List<PhoneNumberPrice> GetPhoneNumberPrices() {
-            return this.phoneNumberPrices;
-        }
-    
-        /// <returns> The price_unit </returns> 
-        public string GetPriceUnit() {
-            return this.priceUnit;
-        }
-    
-        /// <returns> The uri </returns> 
-        public Uri GetUri() {
-            return this.uri;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
         }
     }
 }

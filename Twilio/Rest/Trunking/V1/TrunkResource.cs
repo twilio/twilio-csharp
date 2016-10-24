@@ -9,7 +9,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Trunking.V1 {
 
-    public class TrunkResource : SidResource {
+    public class TrunkResource : Resource {
         /// <summary>
         /// fetch
         /// </summary>
@@ -74,34 +74,34 @@ namespace Twilio.Rest.Trunking.V1 {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("domain_name")]
-        private readonly string domainName;
+        public string domainName { get; }
         [JsonProperty("disaster_recovery_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly Twilio.Http.HttpMethod disasterRecoveryMethod;
+        public Twilio.Http.HttpMethod disasterRecoveryMethod { get; }
         [JsonProperty("disaster_recovery_url")]
-        private readonly Uri disasterRecoveryUrl;
+        public Uri disasterRecoveryUrl { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("secure")]
-        private readonly bool? secure;
+        public bool? secure { get; }
         [JsonProperty("recording")]
-        private readonly Object recording;
+        public Object recording { get; }
         [JsonProperty("auth_type")]
-        private readonly string authType;
+        public string authType { get; }
         [JsonProperty("auth_type_set")]
-        private readonly List<string> authTypeSet;
+        public List<string> authTypeSet { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
         [JsonProperty("links")]
-        private readonly Dictionary<string, string> links;
+        public Dictionary<string, string> links { get; }
     
         public TrunkResource() {
         
@@ -149,76 +149,6 @@ namespace Twilio.Rest.Trunking.V1 {
             this.sid = sid;
             this.url = url;
             this.links = links;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The domain_name </returns> 
-        public string GetDomainName() {
-            return this.domainName;
-        }
-    
-        /// <returns> The disaster_recovery_method </returns> 
-        public Twilio.Http.HttpMethod GetDisasterRecoveryMethod() {
-            return this.disasterRecoveryMethod;
-        }
-    
-        /// <returns> The disaster_recovery_url </returns> 
-        public Uri GetDisasterRecoveryUrl() {
-            return this.disasterRecoveryUrl;
-        }
-    
-        /// <returns> The friendly_name </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The secure </returns> 
-        public bool? GetSecure() {
-            return this.secure;
-        }
-    
-        /// <returns> The recording </returns> 
-        public Object GetRecording() {
-            return this.recording;
-        }
-    
-        /// <returns> The auth_type </returns> 
-        public string GetAuthType() {
-            return this.authType;
-        }
-    
-        /// <returns> The auth_type_set </returns> 
-        public List<string> GetAuthTypeSet() {
-            return this.authTypeSet;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
-        }
-    
-        /// <returns> The links </returns> 
-        public Dictionary<string, string> GetLinks() {
-            return this.links;
         }
     }
 }

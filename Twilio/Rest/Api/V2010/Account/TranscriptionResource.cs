@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account {
 
-    public class TranscriptionResource : SidResource {
+    public class TranscriptionResource : Resource {
         public sealed class Status : IStringEnum {
             public const string IN_PROGRESS="in-progress";
             public const string COMPLETED="completed";
@@ -116,32 +116,32 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("api_version")]
-        private readonly string apiVersion;
+        public string apiVersion { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("duration")]
-        private readonly string duration;
+        public string duration { get; }
         [JsonProperty("price")]
-        private readonly decimal? price;
+        public decimal? price { get; }
         [JsonProperty("price_unit")]
-        private readonly string priceUnit;
+        public string priceUnit { get; }
         [JsonProperty("recording_sid")]
-        private readonly string recordingSid;
+        public string recordingSid { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly TranscriptionResource.Status status;
+        public TranscriptionResource.Status status { get; }
         [JsonProperty("transcription_text")]
-        private readonly string transcriptionText;
+        public string transcriptionText { get; }
         [JsonProperty("type")]
-        private readonly string type;
+        public string type { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
     
         public TranscriptionResource() {
         
@@ -186,71 +186,6 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.transcriptionText = transcriptionText;
             this.type = type;
             this.uri = uri;
-        }
-    
-        /// <returns> The unique sid that identifies this account </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The api_version </returns> 
-        public string GetApiVersion() {
-            return this.apiVersion;
-        }
-    
-        /// <returns> The date this resource was created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date this resource was last updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The duration of the transcribed audio, in seconds. </returns> 
-        public string GetDuration() {
-            return this.duration;
-        }
-    
-        /// <returns> The charge for this transcription </returns> 
-        public decimal? GetPrice() {
-            return this.price;
-        }
-    
-        /// <returns> The currency in which Price is measured </returns> 
-        public string GetPriceUnit() {
-            return this.priceUnit;
-        }
-    
-        /// <returns> The string that uniquely identifies the recording </returns> 
-        public string GetRecordingSid() {
-            return this.recordingSid;
-        }
-    
-        /// <returns> A string that uniquely identifies this transcription </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The status of the transcription </returns> 
-        public TranscriptionResource.Status GetStatus() {
-            return this.status;
-        }
-    
-        /// <returns> The text content of the transcription. </returns> 
-        public string GetTranscriptionText() {
-            return this.transcriptionText;
-        }
-    
-        /// <returns> The type </returns> 
-        public string GetTranscriptionType() {
-            return this.type;
-        }
-    
-        /// <returns> The URI for this resource </returns> 
-        public string GetUri() {
-            return this.uri;
         }
     }
 }

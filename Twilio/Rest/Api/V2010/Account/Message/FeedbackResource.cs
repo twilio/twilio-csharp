@@ -75,18 +75,18 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("message_sid")]
-        private readonly string messageSid;
+        public string messageSid { get; }
         [JsonProperty("outcome")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly FeedbackResource.Outcome outcome;
+        public FeedbackResource.Outcome outcome { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
     
         public FeedbackResource() {
         
@@ -110,36 +110,6 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.uri = uri;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The message_sid </returns> 
-        public string GetMessageSid() {
-            return this.messageSid;
-        }
-    
-        /// <returns> The outcome </returns> 
-        public FeedbackResource.Outcome GetOutcome() {
-            return this.outcome;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The uri </returns> 
-        public string GetUri() {
-            return this.uri;
         }
     }
 }

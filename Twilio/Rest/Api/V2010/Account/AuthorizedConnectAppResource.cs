@@ -9,7 +9,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account {
 
-    public class AuthorizedConnectAppResource : SidResource {
+    public class AuthorizedConnectAppResource : Resource {
         public sealed class Permission : IStringEnum {
             public const string GET_ALL="get-all";
             public const string POST_ALL="post-all";
@@ -95,26 +95,26 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("connect_app_company_name")]
-        private readonly string connectAppCompanyName;
+        public string connectAppCompanyName { get; }
         [JsonProperty("connect_app_description")]
-        private readonly string connectAppDescription;
+        public string connectAppDescription { get; }
         [JsonProperty("connect_app_friendly_name")]
-        private readonly string connectAppFriendlyName;
+        public string connectAppFriendlyName { get; }
         [JsonProperty("connect_app_homepage_url")]
-        private readonly Uri connectAppHomepageUrl;
+        public Uri connectAppHomepageUrl { get; }
         [JsonProperty("connect_app_sid")]
-        private readonly string connectAppSid;
+        public string connectAppSid { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("permissions")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly List<AuthorizedConnectAppResource.Permission> permissions;
+        public List<AuthorizedConnectAppResource.Permission> permissions { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
     
         public AuthorizedConnectAppResource() {
         
@@ -150,61 +150,6 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.permissions = permissions;
             this.uri = uri;
-        }
-    
-        /// <returns> A string that uniquely identifies this app </returns> 
-        public override string GetSid() {
-            return this.GetConnectAppSid();
-        }
-    
-        /// <returns> The unique sid that identifies this account </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The company name set for this Connect App. </returns> 
-        public string GetConnectAppCompanyName() {
-            return this.connectAppCompanyName;
-        }
-    
-        /// <returns> Human readable description of the app </returns> 
-        public string GetConnectAppDescription() {
-            return this.connectAppDescription;
-        }
-    
-        /// <returns> A human readable name for the Connect App. </returns> 
-        public string GetConnectAppFriendlyName() {
-            return this.connectAppFriendlyName;
-        }
-    
-        /// <returns> The public URL for this Connect App. </returns> 
-        public Uri GetConnectAppHomepageUrl() {
-            return this.connectAppHomepageUrl;
-        }
-    
-        /// <returns> A string that uniquely identifies this app </returns> 
-        public string GetConnectAppSid() {
-            return this.connectAppSid;
-        }
-    
-        /// <returns> The date this resource was created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date this resource was last updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> Permissions authorized to this app </returns> 
-        public List<AuthorizedConnectAppResource.Permission> GetPermissions() {
-            return this.permissions;
-        }
-    
-        /// <returns> The URI for this resource </returns> 
-        public string GetUri() {
-            return this.uri;
         }
     }
 }

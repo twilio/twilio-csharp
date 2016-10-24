@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account.Call {
 
-    public class NotificationResource : SidResource {
+    public class NotificationResource : Resource {
         /// <summary>
         /// fetch
         /// </summary>
@@ -94,40 +94,40 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("api_version")]
-        private readonly string apiVersion;
+        public string apiVersion { get; }
         [JsonProperty("call_sid")]
-        private readonly string callSid;
+        public string callSid { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("error_code")]
-        private readonly string errorCode;
+        public string errorCode { get; }
         [JsonProperty("log")]
-        private readonly string log;
+        public string log { get; }
         [JsonProperty("message_date")]
-        private readonly DateTime? messageDate;
+        public DateTime? messageDate { get; }
         [JsonProperty("message_text")]
-        private readonly string messageText;
+        public string messageText { get; }
         [JsonProperty("more_info")]
-        private readonly Uri moreInfo;
+        public Uri moreInfo { get; }
         [JsonProperty("request_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly Twilio.Http.HttpMethod requestMethod;
+        public Twilio.Http.HttpMethod requestMethod { get; }
         [JsonProperty("request_url")]
-        private readonly Uri requestUrl;
+        public Uri requestUrl { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
         [JsonProperty("request_variables")]
-        private readonly string requestVariables;
+        public string requestVariables { get; }
         [JsonProperty("response_body")]
-        private readonly string responseBody;
+        public string responseBody { get; }
         [JsonProperty("response_headers")]
-        private readonly string responseHeaders;
+        public string responseHeaders { get; }
     
         public NotificationResource() {
         
@@ -184,91 +184,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
             this.requestVariables = requestVariables;
             this.responseBody = responseBody;
             this.responseHeaders = responseHeaders;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The api_version </returns> 
-        public string GetApiVersion() {
-            return this.apiVersion;
-        }
-    
-        /// <returns> The call_sid </returns> 
-        public string GetCallSid() {
-            return this.callSid;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The error_code </returns> 
-        public string GetErrorCode() {
-            return this.errorCode;
-        }
-    
-        /// <returns> The log </returns> 
-        public string GetLog() {
-            return this.log;
-        }
-    
-        /// <returns> The message_date </returns> 
-        public DateTime? GetMessageDate() {
-            return this.messageDate;
-        }
-    
-        /// <returns> The message_text </returns> 
-        public string GetMessageText() {
-            return this.messageText;
-        }
-    
-        /// <returns> The more_info </returns> 
-        public Uri GetMoreInfo() {
-            return this.moreInfo;
-        }
-    
-        /// <returns> The request_method </returns> 
-        public Twilio.Http.HttpMethod GetRequestMethod() {
-            return this.requestMethod;
-        }
-    
-        /// <returns> The request_url </returns> 
-        public Uri GetRequestUrl() {
-            return this.requestUrl;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The uri </returns> 
-        public string GetUri() {
-            return this.uri;
-        }
-    
-        /// <returns> The request_variables </returns> 
-        public string GetRequestVariables() {
-            return this.requestVariables;
-        }
-    
-        /// <returns> The response_body </returns> 
-        public string GetResponseBody() {
-            return this.responseBody;
-        }
-    
-        /// <returns> The response_headers </returns> 
-        public string GetResponseHeaders() {
-            return this.responseHeaders;
         }
     }
 }

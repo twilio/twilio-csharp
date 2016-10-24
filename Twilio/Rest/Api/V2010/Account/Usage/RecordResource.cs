@@ -162,34 +162,34 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("api_version")]
-        private readonly string apiVersion;
+        public string apiVersion { get; }
         [JsonProperty("category")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly RecordResource.Category category;
+        public RecordResource.Category category { get; }
         [JsonProperty("count")]
-        private readonly string count;
+        public string count { get; }
         [JsonProperty("count_unit")]
-        private readonly string countUnit;
+        public string countUnit { get; }
         [JsonProperty("description")]
-        private readonly string description;
+        public string description { get; }
         [JsonProperty("end_date")]
-        private readonly DateTime? endDate;
+        public DateTime? endDate { get; }
         [JsonProperty("price")]
-        private readonly decimal? price;
+        public decimal? price { get; }
         [JsonProperty("price_unit")]
-        private readonly string priceUnit;
+        public string priceUnit { get; }
         [JsonProperty("start_date")]
-        private readonly DateTime? startDate;
+        public DateTime? startDate { get; }
         [JsonProperty("subresource_uris")]
-        private readonly Dictionary<string, string> subresourceUris;
+        public Dictionary<string, string> subresourceUris { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
         [JsonProperty("usage")]
-        private readonly string usage;
+        public string usage { get; }
         [JsonProperty("usage_unit")]
-        private readonly string usageUnit;
+        public string usageUnit { get; }
     
         public RecordResource() {
         
@@ -237,76 +237,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
             this.uri = uri;
             this.usage = usage;
             this.usageUnit = usageUnit;
-        }
-    
-        /// <returns> The Account that accrued the usage </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The api_version </returns> 
-        public string GetApiVersion() {
-            return this.apiVersion;
-        }
-    
-        /// <returns> The category of usage </returns> 
-        public RecordResource.Category GetCategory() {
-            return this.category;
-        }
-    
-        /// <returns> The number of usage events (e.g. the number of calls). </returns> 
-        public string GetCount() {
-            return this.count;
-        }
-    
-        /// <returns> The unit in which `Count` is measured </returns> 
-        public string GetCountUnit() {
-            return this.countUnit;
-        }
-    
-        /// <returns> A human-readable description of the usage category. </returns> 
-        public string GetDescription() {
-            return this.description;
-        }
-    
-        /// <returns> The last date usage is included in this record </returns> 
-        public DateTime? GetEndDate() {
-            return this.endDate;
-        }
-    
-        /// <returns> The total price of the usage </returns> 
-        public decimal? GetPrice() {
-            return this.price;
-        }
-    
-        /// <returns> The currency in which `Price` is measured </returns> 
-        public string GetPriceUnit() {
-            return this.priceUnit;
-        }
-    
-        /// <returns> The first date usage is included in this record </returns> 
-        public DateTime? GetStartDate() {
-            return this.startDate;
-        }
-    
-        /// <returns> Subresources Uris for this UsageRecord </returns> 
-        public Dictionary<string, string> GetSubresourceUris() {
-            return this.subresourceUris;
-        }
-    
-        /// <returns> The URI for this resource </returns> 
-        public string GetUri() {
-            return this.uri;
-        }
-    
-        /// <returns> The amount of usage </returns> 
-        public string GetUsage() {
-            return this.usage;
-        }
-    
-        /// <returns> The units in which `Usage` is measured </returns> 
-        public string GetUsageUnit() {
-            return this.usageUnit;
         }
     }
 }

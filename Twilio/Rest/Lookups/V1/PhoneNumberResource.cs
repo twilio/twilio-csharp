@@ -9,7 +9,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Lookups.V1 {
 
-    public class PhoneNumberResource : SidResource {
+    public class PhoneNumberResource : Resource {
         public sealed class Type : IStringEnum {
             public const string LANDLINE="landline";
             public const string MOBILE="mobile";
@@ -66,18 +66,18 @@ namespace Twilio.Rest.Lookups.V1 {
         }
     
         [JsonProperty("caller_name")]
-        private readonly Dictionary<string, string> callerName;
+        public Dictionary<string, string> callerName { get; }
         [JsonProperty("country_code")]
-        private readonly string countryCode;
+        public string countryCode { get; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        private readonly Twilio.Types.PhoneNumber phoneNumber;
+        public Twilio.Types.PhoneNumber phoneNumber { get; }
         [JsonProperty("national_format")]
-        private readonly string nationalFormat;
+        public string nationalFormat { get; }
         [JsonProperty("carrier")]
-        private readonly Dictionary<string, string> carrier;
+        public Dictionary<string, string> carrier { get; }
         [JsonProperty("add_ons")]
-        private readonly Object addOns;
+        public Object addOns { get; }
     
         public PhoneNumberResource() {
         
@@ -101,41 +101,6 @@ namespace Twilio.Rest.Lookups.V1 {
             this.nationalFormat = nationalFormat;
             this.carrier = carrier;
             this.addOns = addOns;
-        }
-    
-        /// <returns> The phone_number </returns> 
-        public override string GetSid() {
-            return this.GetPhoneNumber().ToString();
-        }
-    
-        /// <returns> The caller_name </returns> 
-        public Dictionary<string, string> GetCallerName() {
-            return this.callerName;
-        }
-    
-        /// <returns> The country_code </returns> 
-        public string GetCountryCode() {
-            return this.countryCode;
-        }
-    
-        /// <returns> The phone_number </returns> 
-        public Twilio.Types.PhoneNumber GetPhoneNumber() {
-            return this.phoneNumber;
-        }
-    
-        /// <returns> The national_format </returns> 
-        public string GetNationalFormat() {
-            return this.nationalFormat;
-        }
-    
-        /// <returns> The carrier </returns> 
-        public Dictionary<string, string> GetCarrier() {
-            return this.carrier;
-        }
-    
-        /// <returns> The add_ons </returns> 
-        public Object GetAddOns() {
-            return this.addOns;
         }
     }
 }

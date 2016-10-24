@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
-    public class TaskResource : SidResource {
+    public class TaskResource : Resource {
         public sealed class Status : IStringEnum {
             public const string PENDING="pending";
             public const string RESERVED="reserved";
@@ -112,36 +112,36 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("age")]
-        private readonly int? age;
+        public int? age { get; }
         [JsonProperty("assignment_status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly TaskResource.Status assignmentStatus;
+        public TaskResource.Status assignmentStatus { get; }
         [JsonProperty("attributes")]
-        private readonly string attributes;
+        public string attributes { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("priority")]
-        private readonly int? priority;
+        public int? priority { get; }
         [JsonProperty("reason")]
-        private readonly string reason;
+        public string reason { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("task_queue_sid")]
-        private readonly string taskQueueSid;
+        public string taskQueueSid { get; }
         [JsonProperty("task_channel_sid")]
-        private readonly string taskChannelSid;
+        public string taskChannelSid { get; }
         [JsonProperty("task_channel_unique_name")]
-        private readonly string taskChannelUniqueName;
+        public string taskChannelUniqueName { get; }
         [JsonProperty("timeout")]
-        private readonly int? timeout;
+        public int? timeout { get; }
         [JsonProperty("workflow_sid")]
-        private readonly string workflowSid;
+        public string workflowSid { get; }
         [JsonProperty("workspace_sid")]
-        private readonly string workspaceSid;
+        public string workspaceSid { get; }
     
         public TaskResource() {
         
@@ -192,81 +192,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             this.timeout = timeout;
             this.workflowSid = workflowSid;
             this.workspaceSid = workspaceSid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The age </returns> 
-        public int? GetAge() {
-            return this.age;
-        }
-    
-        /// <returns> The assignment_status </returns> 
-        public TaskResource.Status GetAssignmentStatus() {
-            return this.assignmentStatus;
-        }
-    
-        /// <returns> The attributes </returns> 
-        public string GetAttributes() {
-            return this.attributes;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The priority </returns> 
-        public int? GetPriority() {
-            return this.priority;
-        }
-    
-        /// <returns> The reason </returns> 
-        public string GetReason() {
-            return this.reason;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The task_queue_sid </returns> 
-        public string GetTaskQueueSid() {
-            return this.taskQueueSid;
-        }
-    
-        /// <returns> The task_channel_sid </returns> 
-        public string GetTaskChannelSid() {
-            return this.taskChannelSid;
-        }
-    
-        /// <returns> The task_channel_unique_name </returns> 
-        public string GetTaskChannelUniqueName() {
-            return this.taskChannelUniqueName;
-        }
-    
-        /// <returns> The timeout </returns> 
-        public int? GetTimeout() {
-            return this.timeout;
-        }
-    
-        /// <returns> The workflow_sid </returns> 
-        public string GetWorkflowSid() {
-            return this.workflowSid;
-        }
-    
-        /// <returns> The workspace_sid </returns> 
-        public string GetWorkspaceSid() {
-            return this.workspaceSid;
         }
     }
 }

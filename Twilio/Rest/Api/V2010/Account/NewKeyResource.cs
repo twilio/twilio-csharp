@@ -44,15 +44,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
     
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("secret")]
-        private readonly string secret;
+        public string secret { get; }
     
         public NewKeyResource() {
         
@@ -73,31 +73,6 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.secret = secret;
-        }
-    
-        /// <returns> The sid </returns> 
-        public string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The friendly_name </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The secret </returns> 
-        public string GetSecret() {
-            return this.secret;
         }
     }
 }

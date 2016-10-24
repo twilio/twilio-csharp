@@ -9,7 +9,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Preview.Wireless {
 
-    public class DeviceResource : SidResource {
+    public class DeviceResource : Resource {
         /// <summary>
         /// fetch
         /// </summary>
@@ -65,31 +65,31 @@ namespace Twilio.Rest.Preview.Wireless {
         }
     
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("alias")]
-        private readonly string alias;
+        public string alias { get; }
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("rate_plan_sid")]
-        private readonly string ratePlanSid;
+        public string ratePlanSid { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("sim_identifier")]
-        private readonly string simIdentifier;
+        public string simIdentifier { get; }
         [JsonProperty("status")]
-        private readonly string status;
+        public string status { get; }
         [JsonProperty("commands_callback_url")]
-        private readonly Uri commandsCallbackUrl;
+        public Uri commandsCallbackUrl { get; }
         [JsonProperty("commands_callback_method")]
-        private readonly string commandsCallbackMethod;
+        public string commandsCallbackMethod { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
         [JsonProperty("links")]
-        private readonly Dictionary<string, string> links;
+        public Dictionary<string, string> links { get; }
     
         public DeviceResource() {
         
@@ -134,71 +134,6 @@ namespace Twilio.Rest.Preview.Wireless {
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.url = url;
             this.links = links;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The alias </returns> 
-        public string GetAlias() {
-            return this.alias;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The rate_plan_sid </returns> 
-        public string GetRatePlanSid() {
-            return this.ratePlanSid;
-        }
-    
-        /// <returns> The friendly_name </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The sim_identifier </returns> 
-        public string GetSimIdentifier() {
-            return this.simIdentifier;
-        }
-    
-        /// <returns> The status </returns> 
-        public string GetStatus() {
-            return this.status;
-        }
-    
-        /// <returns> The commands_callback_url </returns> 
-        public Uri GetCommandsCallbackUrl() {
-            return this.commandsCallbackUrl;
-        }
-    
-        /// <returns> The commands_callback_method </returns> 
-        public string GetCommandsCallbackMethod() {
-            return this.commandsCallbackMethod;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
-        }
-    
-        /// <returns> The links </returns> 
-        public Dictionary<string, string> GetLinks() {
-            return this.links;
         }
     }
 }

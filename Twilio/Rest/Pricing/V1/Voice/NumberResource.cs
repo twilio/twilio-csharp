@@ -9,7 +9,7 @@ using Twilio.Types;
 
 namespace Twilio.Rest.Pricing.V1.Voice {
 
-    public class NumberResource : SidResource {
+    public class NumberResource : Resource {
         /// <summary>
         /// fetch
         /// </summary>
@@ -37,19 +37,19 @@ namespace Twilio.Rest.Pricing.V1.Voice {
     
         [JsonProperty("number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        private readonly Twilio.Types.PhoneNumber number;
+        public Twilio.Types.PhoneNumber number { get; }
         [JsonProperty("country")]
-        private readonly string country;
+        public string country { get; }
         [JsonProperty("iso_country")]
-        private readonly string isoCountry;
+        public string isoCountry { get; }
         [JsonProperty("outbound_call_price")]
-        private readonly OutboundCallPrice outboundCallPrice;
+        public OutboundCallPrice outboundCallPrice { get; }
         [JsonProperty("inbound_call_price")]
-        private readonly InboundCallPrice inboundCallPrice;
+        public InboundCallPrice inboundCallPrice { get; }
         [JsonProperty("price_unit")]
-        private readonly string priceUnit;
+        public string priceUnit { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
     
         public NumberResource() {
         
@@ -76,46 +76,6 @@ namespace Twilio.Rest.Pricing.V1.Voice {
             this.inboundCallPrice = inboundCallPrice;
             this.priceUnit = priceUnit;
             this.url = url;
-        }
-    
-        /// <returns> The number </returns> 
-        public override string GetSid() {
-            return this.GetNumber().ToString();
-        }
-    
-        /// <returns> The number </returns> 
-        public Twilio.Types.PhoneNumber GetNumber() {
-            return this.number;
-        }
-    
-        /// <returns> The country </returns> 
-        public string GetCountry() {
-            return this.country;
-        }
-    
-        /// <returns> The iso_country </returns> 
-        public string GetIsoCountry() {
-            return this.isoCountry;
-        }
-    
-        /// <returns> The outbound_call_price </returns> 
-        public OutboundCallPrice GetOutboundCallPrice() {
-            return this.outboundCallPrice;
-        }
-    
-        /// <returns> The inbound_call_price </returns> 
-        public InboundCallPrice GetInboundCallPrice() {
-            return this.inboundCallPrice;
-        }
-    
-        /// <returns> The price_unit </returns> 
-        public string GetPriceUnit() {
-            return this.priceUnit;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
         }
     }
 }

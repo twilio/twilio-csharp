@@ -9,7 +9,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Preview.Sync {
 
-    public class ServiceResource : SidResource {
+    public class ServiceResource : Resource {
         /// <summary>
         /// fetch
         /// </summary>
@@ -74,23 +74,23 @@ namespace Twilio.Rest.Preview.Sync {
         }
     
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
         [JsonProperty("webhook_url")]
-        private readonly Uri webhookUrl;
+        public Uri webhookUrl { get; }
         [JsonProperty("reachability_webhooks_enabled")]
-        private readonly bool? reachabilityWebhooksEnabled;
+        public bool? reachabilityWebhooksEnabled { get; }
         [JsonProperty("links")]
-        private readonly Dictionary<string, string> links;
+        public Dictionary<string, string> links { get; }
     
         public ServiceResource() {
         
@@ -123,51 +123,6 @@ namespace Twilio.Rest.Preview.Sync {
             this.webhookUrl = webhookUrl;
             this.reachabilityWebhooksEnabled = reachabilityWebhooksEnabled;
             this.links = links;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The friendly_name </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
-        }
-    
-        /// <returns> The webhook_url </returns> 
-        public Uri GetWebhookUrl() {
-            return this.webhookUrl;
-        }
-    
-        /// <returns> The reachability_webhooks_enabled </returns> 
-        public bool? GetReachabilityWebhooksEnabled() {
-            return this.reachabilityWebhooksEnabled;
-        }
-    
-        /// <returns> The links </returns> 
-        public Dictionary<string, string> GetLinks() {
-            return this.links;
         }
     }
 }

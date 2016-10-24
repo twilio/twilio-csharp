@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account {
 
-    public class KeyResource : SidResource {
+    public class KeyResource : Resource {
         /// <summary>
         /// fetch
         /// </summary>
@@ -107,13 +107,13 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
     
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
     
         public KeyResource() {
         
@@ -131,26 +131,6 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.friendlyName = friendlyName;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The friendly_name </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
         }
     }
 }

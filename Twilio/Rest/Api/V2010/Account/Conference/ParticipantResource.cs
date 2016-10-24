@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account.Conference {
 
-    public class ParticipantResource : SidResource {
+    public class ParticipantResource : Resource {
         /// <summary>
         /// Fetch an instance of a participant
         /// </summary>
@@ -118,25 +118,25 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("call_sid")]
-        private readonly string callSid;
+        public string callSid { get; }
         [JsonProperty("conference_sid")]
-        private readonly string conferenceSid;
+        public string conferenceSid { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("end_conference_on_exit")]
-        private readonly bool? endConferenceOnExit;
+        public bool? endConferenceOnExit { get; }
         [JsonProperty("muted")]
-        private readonly bool? muted;
+        public bool? muted { get; }
         [JsonProperty("hold")]
-        private readonly bool? hold;
+        public bool? hold { get; }
         [JsonProperty("start_conference_on_enter")]
-        private readonly bool? startConferenceOnEnter;
+        public bool? startConferenceOnEnter { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
     
         public ParticipantResource() {
         
@@ -172,61 +172,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
             this.hold = hold;
             this.startConferenceOnEnter = startConferenceOnEnter;
             this.uri = uri;
-        }
-    
-        /// <returns> A string that uniquely identifies this call </returns> 
-        public override string GetSid() {
-            return this.GetCallSid();
-        }
-    
-        /// <returns> The unique sid that identifies this account </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> A string that uniquely identifies this call </returns> 
-        public string GetCallSid() {
-            return this.callSid;
-        }
-    
-        /// <returns> A string that uniquely identifies this conference </returns> 
-        public string GetConferenceSid() {
-            return this.conferenceSid;
-        }
-    
-        /// <returns> The date this resource was created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date this resource was last updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> Indicates if the endConferenceOnExit was set </returns> 
-        public bool? GetEndConferenceOnExit() {
-            return this.endConferenceOnExit;
-        }
-    
-        /// <returns> Indicates if the participant is muted </returns> 
-        public bool? GetMuted() {
-            return this.muted;
-        }
-    
-        /// <returns> The hold </returns> 
-        public bool? GetHold() {
-            return this.hold;
-        }
-    
-        /// <returns> Indicates if the startConferenceOnEnter attribute was set </returns> 
-        public bool? GetStartConferenceOnEnter() {
-            return this.startConferenceOnEnter;
-        }
-    
-        /// <returns> The URI for this resource </returns> 
-        public string GetUri() {
-            return this.uri;
         }
     }
 }

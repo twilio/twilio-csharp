@@ -9,7 +9,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Preview.Sync.Service {
 
-    public class SyncListResource : SidResource {
+    public class SyncListResource : Resource {
         /// <summary>
         /// fetch
         /// </summary>
@@ -68,25 +68,25 @@ namespace Twilio.Rest.Preview.Sync.Service {
         }
     
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("unique_name")]
-        private readonly string uniqueName;
+        public string uniqueName { get; }
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("service_sid")]
-        private readonly string serviceSid;
+        public string serviceSid { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
         [JsonProperty("links")]
-        private readonly Dictionary<string, string> links;
+        public Dictionary<string, string> links { get; }
         [JsonProperty("revision")]
-        private readonly string revision;
+        public string revision { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("created_by")]
-        private readonly string createdBy;
+        public string createdBy { get; }
     
         public SyncListResource() {
         
@@ -122,56 +122,6 @@ namespace Twilio.Rest.Preview.Sync.Service {
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.createdBy = createdBy;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The unique_name </returns> 
-        public string GetUniqueName() {
-            return this.uniqueName;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The service_sid </returns> 
-        public string GetServiceSid() {
-            return this.serviceSid;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
-        }
-    
-        /// <returns> The links </returns> 
-        public Dictionary<string, string> GetLinks() {
-            return this.links;
-        }
-    
-        /// <returns> The revision </returns> 
-        public string GetRevision() {
-            return this.revision;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The created_by </returns> 
-        public string GetCreatedBy() {
-            return this.createdBy;
         }
     }
 }

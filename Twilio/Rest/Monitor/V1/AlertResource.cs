@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Monitor.V1 {
 
-    public class AlertResource : SidResource {
+    public class AlertResource : Resource {
         /// <summary>
         /// fetch
         /// </summary>
@@ -54,40 +54,40 @@ namespace Twilio.Rest.Monitor.V1 {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("alert_text")]
-        private readonly string alertText;
+        public string alertText { get; }
         [JsonProperty("api_version")]
-        private readonly string apiVersion;
+        public string apiVersion { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_generated")]
-        private readonly DateTime? dateGenerated;
+        public DateTime? dateGenerated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("error_code")]
-        private readonly string errorCode;
+        public string errorCode { get; }
         [JsonProperty("log_level")]
-        private readonly string logLevel;
+        public string logLevel { get; }
         [JsonProperty("more_info")]
-        private readonly string moreInfo;
+        public string moreInfo { get; }
         [JsonProperty("request_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly Twilio.Http.HttpMethod requestMethod;
+        public Twilio.Http.HttpMethod requestMethod { get; }
         [JsonProperty("request_url")]
-        private readonly string requestUrl;
+        public string requestUrl { get; }
         [JsonProperty("request_variables")]
-        private readonly string requestVariables;
+        public string requestVariables { get; }
         [JsonProperty("resource_sid")]
-        private readonly string resourceSid;
+        public string resourceSid { get; }
         [JsonProperty("response_body")]
-        private readonly string responseBody;
+        public string responseBody { get; }
         [JsonProperty("response_headers")]
-        private readonly string responseHeaders;
+        public string responseHeaders { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
     
         public AlertResource() {
         
@@ -144,91 +144,6 @@ namespace Twilio.Rest.Monitor.V1 {
             this.responseHeaders = responseHeaders;
             this.sid = sid;
             this.url = url;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The alert_text </returns> 
-        public string GetAlertText() {
-            return this.alertText;
-        }
-    
-        /// <returns> The api_version </returns> 
-        public string GetApiVersion() {
-            return this.apiVersion;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_generated </returns> 
-        public DateTime? GetDateGenerated() {
-            return this.dateGenerated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The error_code </returns> 
-        public string GetErrorCode() {
-            return this.errorCode;
-        }
-    
-        /// <returns> The log_level </returns> 
-        public string GetLogLevel() {
-            return this.logLevel;
-        }
-    
-        /// <returns> The more_info </returns> 
-        public string GetMoreInfo() {
-            return this.moreInfo;
-        }
-    
-        /// <returns> The request_method </returns> 
-        public Twilio.Http.HttpMethod GetRequestMethod() {
-            return this.requestMethod;
-        }
-    
-        /// <returns> The request_url </returns> 
-        public string GetRequestUrl() {
-            return this.requestUrl;
-        }
-    
-        /// <returns> The request_variables </returns> 
-        public string GetRequestVariables() {
-            return this.requestVariables;
-        }
-    
-        /// <returns> The resource_sid </returns> 
-        public string GetResourceSid() {
-            return this.resourceSid;
-        }
-    
-        /// <returns> The response_body </returns> 
-        public string GetResponseBody() {
-            return this.responseBody;
-        }
-    
-        /// <returns> The response_headers </returns> 
-        public string GetResponseHeaders() {
-            return this.responseHeaders;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
         }
     }
 }

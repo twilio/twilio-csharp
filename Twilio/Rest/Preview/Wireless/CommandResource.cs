@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Preview.Wireless {
 
-    public class CommandResource : SidResource {
+    public class CommandResource : Resource {
         /// <summary>
         /// fetch
         /// </summary>
@@ -55,23 +55,25 @@ namespace Twilio.Rest.Preview.Wireless {
         }
     
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("device_sid")]
-        private readonly string deviceSid;
+        public string deviceSid { get; }
         [JsonProperty("command")]
-        private readonly string command;
+        public string command { get; }
+        [JsonProperty("command_mode")]
+        public string commandMode { get; }
         [JsonProperty("status")]
-        private readonly string status;
+        public string status { get; }
         [JsonProperty("direction")]
-        private readonly string direction;
+        public string direction { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
     
         public CommandResource() {
         
@@ -85,6 +87,8 @@ namespace Twilio.Rest.Preview.Wireless {
                                 string deviceSid, 
                                 [JsonProperty("command")]
                                 string command, 
+                                [JsonProperty("command_mode")]
+                                string commandMode, 
                                 [JsonProperty("status")]
                                 string status, 
                                 [JsonProperty("direction")]
@@ -99,56 +103,12 @@ namespace Twilio.Rest.Preview.Wireless {
             this.accountSid = accountSid;
             this.deviceSid = deviceSid;
             this.command = command;
+            this.commandMode = commandMode;
             this.status = status;
             this.direction = direction;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.url = url;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The device_sid </returns> 
-        public string GetDeviceSid() {
-            return this.deviceSid;
-        }
-    
-        /// <returns> The command </returns> 
-        public string GetCommand() {
-            return this.command;
-        }
-    
-        /// <returns> The status </returns> 
-        public string GetStatus() {
-            return this.status;
-        }
-    
-        /// <returns> The direction </returns> 
-        public string GetDirection() {
-            return this.direction;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
         }
     }
 }

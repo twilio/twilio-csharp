@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account.Call {
 
-    public class RecordingResource : SidResource {
+    public class RecordingResource : Resource {
         /// <summary>
         /// fetch
         /// </summary>
@@ -94,21 +94,21 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("api_version")]
-        private readonly string apiVersion;
+        public string apiVersion { get; }
         [JsonProperty("call_sid")]
-        private readonly string callSid;
+        public string callSid { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("duration")]
-        private readonly string duration;
+        public string duration { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
     
         public RecordingResource() {
         
@@ -138,46 +138,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
             this.duration = duration;
             this.sid = sid;
             this.uri = uri;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The api_version </returns> 
-        public string GetApiVersion() {
-            return this.apiVersion;
-        }
-    
-        /// <returns> The call_sid </returns> 
-        public string GetCallSid() {
-            return this.callSid;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The duration </returns> 
-        public string GetDuration() {
-            return this.duration;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The uri </returns> 
-        public string GetUri() {
-            return this.uri;
         }
     }
 }

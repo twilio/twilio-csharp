@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account {
 
-    public class RecordingResource : SidResource {
+    public class RecordingResource : Resource {
         public sealed class Source : IStringEnum {
             public const string DIALVERB="DialVerb";
             public const string CONFERENCE="Conference";
@@ -147,33 +147,33 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("api_version")]
-        private readonly string apiVersion;
+        public string apiVersion { get; }
         [JsonProperty("call_sid")]
-        private readonly string callSid;
+        public string callSid { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("duration")]
-        private readonly string duration;
+        public string duration { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("price")]
-        private readonly string price;
+        public string price { get; }
         [JsonProperty("price_unit")]
-        private readonly string priceUnit;
+        public string priceUnit { get; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly RecordingResource.Status status;
+        public RecordingResource.Status status { get; }
         [JsonProperty("channels")]
-        private readonly int? channels;
+        public int? channels { get; }
         [JsonProperty("source")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly RecordingResource.Source source;
+        public RecordingResource.Source source { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
     
         public RecordingResource() {
         
@@ -218,71 +218,6 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.channels = channels;
             this.source = source;
             this.uri = uri;
-        }
-    
-        /// <returns> The unique sid that identifies this account </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The version of the API in use during the recording. </returns> 
-        public string GetApiVersion() {
-            return this.apiVersion;
-        }
-    
-        /// <returns> The call during which the recording was made. </returns> 
-        public string GetCallSid() {
-            return this.callSid;
-        }
-    
-        /// <returns> The date this resource was created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date this resource was last updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The length of the recording, in seconds. </returns> 
-        public string GetDuration() {
-            return this.duration;
-        }
-    
-        /// <returns> A string that uniquely identifies this recording </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The price </returns> 
-        public string GetPrice() {
-            return this.price;
-        }
-    
-        /// <returns> The price_unit </returns> 
-        public string GetPriceUnit() {
-            return this.priceUnit;
-        }
-    
-        /// <returns> The status </returns> 
-        public RecordingResource.Status GetStatus() {
-            return this.status;
-        }
-    
-        /// <returns> The channels </returns> 
-        public int? GetChannels() {
-            return this.channels;
-        }
-    
-        /// <returns> The source </returns> 
-        public RecordingResource.Source GetSource() {
-            return this.source;
-        }
-    
-        /// <returns> The URI for this resource </returns> 
-        public string GetUri() {
-            return this.uri;
         }
     }
 }

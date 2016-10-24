@@ -36,7 +36,6 @@
     <Compile Include="..\Twilio\Base\Page.cs"><Link>Base\Page.cs</Link></Compile>
     <Compile Include="..\Twilio\Base\Resource.cs"><Link>Base\Resource.cs</Link></Compile>
     <Compile Include="..\Twilio\Base\ResourceSet.cs"><Link>Base\ResourceSet.cs</Link></Compile>
-    <Compile Include="..\Twilio\Base\SidResource.cs"><Link>Base\SidResource.cs</Link></Compile>
     <Compile Include="..\Twilio\Clients\TwilioRestClient.cs"><Link>Clients\TwilioRestClient.cs</Link></Compile>
     <Compile Include="..\Twilio\Clients\ITwilioRestClient.cs"><Link>Clients\ITwilioRestClient.cs</Link></Compile>
     <Compile Include="..\Twilio\Converters\MarshalConverter.cs"><Link>Converters\MarshalConverter.cs</Link></Compile>

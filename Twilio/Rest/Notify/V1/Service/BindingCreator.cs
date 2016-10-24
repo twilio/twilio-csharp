@@ -19,6 +19,7 @@ namespace Twilio.Rest.Notify.V1.Service {
         private string address;
         private List<string> tag;
         private string notificationProtocolVersion;
+        private string credentialSid;
     
         /// <summary>
         /// Construct a new BindingCreator
@@ -66,6 +67,17 @@ namespace Twilio.Rest.Notify.V1.Service {
         /// <returns> this </returns> 
         public BindingCreator setNotificationProtocolVersion(string notificationProtocolVersion) {
             this.notificationProtocolVersion = notificationProtocolVersion;
+            return this;
+        }
+    
+        /// <summary>
+        /// The credential_sid
+        /// </summary>
+        ///
+        /// <param name="credentialSid"> The credential_sid </param>
+        /// <returns> this </returns> 
+        public BindingCreator setCredentialSid(string credentialSid) {
+            this.credentialSid = credentialSid;
             return this;
         }
     
@@ -177,6 +189,10 @@ namespace Twilio.Rest.Notify.V1.Service {
             
             if (notificationProtocolVersion != null) {
                 request.AddPostParam("NotificationProtocolVersion", notificationProtocolVersion);
+            }
+            
+            if (credentialSid != null) {
+                request.AddPostParam("CredentialSid", credentialSid);
             }
         }
     }

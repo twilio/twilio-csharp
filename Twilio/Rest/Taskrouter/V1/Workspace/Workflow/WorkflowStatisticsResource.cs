@@ -36,15 +36,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("cumulative")]
-        private readonly Object cumulative;
+        public Object cumulative { get; }
         [JsonProperty("realtime")]
-        private readonly Object realtime;
+        public Object realtime { get; }
         [JsonProperty("workflow_sid")]
-        private readonly string workflowSid;
+        public string workflowSid { get; }
         [JsonProperty("workspace_sid")]
-        private readonly string workspaceSid;
+        public string workspaceSid { get; }
     
         public WorkflowStatisticsResource() {
         
@@ -65,31 +65,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow {
             this.realtime = realtime;
             this.workflowSid = workflowSid;
             this.workspaceSid = workspaceSid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The cumulative </returns> 
-        public Object GetCumulative() {
-            return this.cumulative;
-        }
-    
-        /// <returns> The realtime </returns> 
-        public Object GetRealtime() {
-            return this.realtime;
-        }
-    
-        /// <returns> The workflow_sid </returns> 
-        public string GetWorkflowSid() {
-            return this.workflowSid;
-        }
-    
-        /// <returns> The workspace_sid </returns> 
-        public string GetWorkspaceSid() {
-            return this.workspaceSid;
         }
     }
 }

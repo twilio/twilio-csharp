@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Chat.V1 {
 
-    public class CredentialResource : SidResource {
+    public class CredentialResource : Resource {
         public sealed class PushService : IStringEnum {
             public const string GCM="gcm";
             public const string APN="apn";
@@ -103,22 +103,22 @@ namespace Twilio.Rest.Chat.V1 {
         }
     
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly CredentialResource.PushService type;
+        public CredentialResource.PushService type { get; }
         [JsonProperty("sandbox")]
-        private readonly string sandbox;
+        public string sandbox { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
     
         public CredentialResource() {
         
@@ -148,46 +148,6 @@ namespace Twilio.Rest.Chat.V1 {
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.url = url;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The friendly_name </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The type </returns> 
-        public CredentialResource.PushService GetCredentialType() {
-            return this.type;
-        }
-    
-        /// <returns> The sandbox </returns> 
-        public string GetSandbox() {
-            return this.sandbox;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
         }
     }
 }

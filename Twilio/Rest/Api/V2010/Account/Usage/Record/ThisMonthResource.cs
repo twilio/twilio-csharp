@@ -162,34 +162,34 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("api_version")]
-        private readonly string apiVersion;
+        public string apiVersion { get; }
         [JsonProperty("category")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly ThisMonthResource.Category category;
+        public ThisMonthResource.Category category { get; }
         [JsonProperty("count")]
-        private readonly string count;
+        public string count { get; }
         [JsonProperty("count_unit")]
-        private readonly string countUnit;
+        public string countUnit { get; }
         [JsonProperty("description")]
-        private readonly string description;
+        public string description { get; }
         [JsonProperty("end_date")]
-        private readonly DateTime? endDate;
+        public DateTime? endDate { get; }
         [JsonProperty("price")]
-        private readonly decimal? price;
+        public decimal? price { get; }
         [JsonProperty("price_unit")]
-        private readonly string priceUnit;
+        public string priceUnit { get; }
         [JsonProperty("start_date")]
-        private readonly DateTime? startDate;
+        public DateTime? startDate { get; }
         [JsonProperty("subresource_uris")]
-        private readonly Dictionary<string, string> subresourceUris;
+        public Dictionary<string, string> subresourceUris { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
         [JsonProperty("usage")]
-        private readonly string usage;
+        public string usage { get; }
         [JsonProperty("usage_unit")]
-        private readonly string usageUnit;
+        public string usageUnit { get; }
     
         public ThisMonthResource() {
         
@@ -237,76 +237,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
             this.uri = uri;
             this.usage = usage;
             this.usageUnit = usageUnit;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The api_version </returns> 
-        public string GetApiVersion() {
-            return this.apiVersion;
-        }
-    
-        /// <returns> The category </returns> 
-        public ThisMonthResource.Category GetCategory() {
-            return this.category;
-        }
-    
-        /// <returns> The count </returns> 
-        public string GetCount() {
-            return this.count;
-        }
-    
-        /// <returns> The count_unit </returns> 
-        public string GetCountUnit() {
-            return this.countUnit;
-        }
-    
-        /// <returns> The description </returns> 
-        public string GetDescription() {
-            return this.description;
-        }
-    
-        /// <returns> The end_date </returns> 
-        public DateTime? GetEndDate() {
-            return this.endDate;
-        }
-    
-        /// <returns> The price </returns> 
-        public decimal? GetPrice() {
-            return this.price;
-        }
-    
-        /// <returns> The price_unit </returns> 
-        public string GetPriceUnit() {
-            return this.priceUnit;
-        }
-    
-        /// <returns> The start_date </returns> 
-        public DateTime? GetStartDate() {
-            return this.startDate;
-        }
-    
-        /// <returns> The subresource_uris </returns> 
-        public Dictionary<string, string> GetSubresourceUris() {
-            return this.subresourceUris;
-        }
-    
-        /// <returns> The uri </returns> 
-        public string GetUri() {
-            return this.uri;
-        }
-    
-        /// <returns> The usage </returns> 
-        public string GetUsage() {
-            return this.usage;
-        }
-    
-        /// <returns> The usage_unit </returns> 
-        public string GetUsageUnit() {
-            return this.usageUnit;
         }
     }
 }

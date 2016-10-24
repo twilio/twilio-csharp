@@ -9,7 +9,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Notify.V1 {
 
-    public class ServiceResource : SidResource {
+    public class ServiceResource : Resource {
         /// <summary>
         /// create
         /// </summary>
@@ -74,31 +74,31 @@ namespace Twilio.Rest.Notify.V1 {
         }
     
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("apn_credential_sid")]
-        private readonly string apnCredentialSid;
+        public string apnCredentialSid { get; }
         [JsonProperty("gcm_credential_sid")]
-        private readonly string gcmCredentialSid;
+        public string gcmCredentialSid { get; }
         [JsonProperty("messaging_service_sid")]
-        private readonly string messagingServiceSid;
+        public string messagingServiceSid { get; }
         [JsonProperty("facebook_messenger_page_id")]
-        private readonly string facebookMessengerPageId;
+        public string facebookMessengerPageId { get; }
         [JsonProperty("default_apn_notification_protocol_version")]
-        private readonly string defaultApnNotificationProtocolVersion;
+        public string defaultApnNotificationProtocolVersion { get; }
         [JsonProperty("default_gcm_notification_protocol_version")]
-        private readonly string defaultGcmNotificationProtocolVersion;
+        public string defaultGcmNotificationProtocolVersion { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
         [JsonProperty("links")]
-        private readonly Dictionary<string, string> links;
+        public Dictionary<string, string> links { get; }
     
         public ServiceResource() {
         
@@ -143,71 +143,6 @@ namespace Twilio.Rest.Notify.V1 {
             this.defaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion;
             this.url = url;
             this.links = links;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The friendly_name </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The apn_credential_sid </returns> 
-        public string GetApnCredentialSid() {
-            return this.apnCredentialSid;
-        }
-    
-        /// <returns> The gcm_credential_sid </returns> 
-        public string GetGcmCredentialSid() {
-            return this.gcmCredentialSid;
-        }
-    
-        /// <returns> The messaging_service_sid </returns> 
-        public string GetMessagingServiceSid() {
-            return this.messagingServiceSid;
-        }
-    
-        /// <returns> The facebook_messenger_page_id </returns> 
-        public string GetFacebookMessengerPageId() {
-            return this.facebookMessengerPageId;
-        }
-    
-        /// <returns> The default_apn_notification_protocol_version </returns> 
-        public string GetDefaultApnNotificationProtocolVersion() {
-            return this.defaultApnNotificationProtocolVersion;
-        }
-    
-        /// <returns> The default_gcm_notification_protocol_version </returns> 
-        public string GetDefaultGcmNotificationProtocolVersion() {
-            return this.defaultGcmNotificationProtocolVersion;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
-        }
-    
-        /// <returns> The links </returns> 
-        public Dictionary<string, string> GetLinks() {
-            return this.links;
         }
     }
 }

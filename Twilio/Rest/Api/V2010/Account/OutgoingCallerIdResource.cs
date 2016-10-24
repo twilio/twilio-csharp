@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account {
 
-    public class OutgoingCallerIdResource : SidResource {
+    public class OutgoingCallerIdResource : Resource {
         /// <summary>
         /// Fetch an outgoing-caller-id belonging to the account used to make the request
         /// </summary>
@@ -107,20 +107,20 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
     
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        private readonly Twilio.Types.PhoneNumber phoneNumber;
+        public Twilio.Types.PhoneNumber phoneNumber { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
     
         public OutgoingCallerIdResource() {
         
@@ -147,41 +147,6 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.accountSid = accountSid;
             this.phoneNumber = phoneNumber;
             this.uri = uri;
-        }
-    
-        /// <returns> A string that uniquely identifies this outgoing-caller-ids </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The date this resource was created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date this resource was last updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> A human readable description for this resource </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The unique sid that identifies this account </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The incoming phone number </returns> 
-        public Twilio.Types.PhoneNumber GetPhoneNumber() {
-            return this.phoneNumber;
-        }
-    
-        /// <returns> The URI for this resource </returns> 
-        public string GetUri() {
-            return this.uri;
         }
     }
 }

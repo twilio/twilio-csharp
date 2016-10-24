@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account.Sip {
 
-    public class DomainResource : SidResource {
+    public class DomainResource : Resource {
         /// <summary>
         /// Retrieve a list of domains belonging to the account used to make the request
         /// </summary>
@@ -128,38 +128,38 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("api_version")]
-        private readonly string apiVersion;
+        public string apiVersion { get; }
         [JsonProperty("auth_type")]
-        private readonly string authType;
+        public string authType { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("domain_name")]
-        private readonly string domainName;
+        public string domainName { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
         [JsonProperty("voice_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly Twilio.Http.HttpMethod voiceFallbackMethod;
+        public Twilio.Http.HttpMethod voiceFallbackMethod { get; }
         [JsonProperty("voice_fallback_url")]
-        private readonly Uri voiceFallbackUrl;
+        public Uri voiceFallbackUrl { get; }
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly Twilio.Http.HttpMethod voiceMethod;
+        public Twilio.Http.HttpMethod voiceMethod { get; }
         [JsonProperty("voice_status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly Twilio.Http.HttpMethod voiceStatusCallbackMethod;
+        public Twilio.Http.HttpMethod voiceStatusCallbackMethod { get; }
         [JsonProperty("voice_status_callback_url")]
-        private readonly Uri voiceStatusCallbackUrl;
+        public Uri voiceStatusCallbackUrl { get; }
         [JsonProperty("voice_url")]
-        private readonly Uri voiceUrl;
+        public Uri voiceUrl { get; }
     
         public DomainResource() {
         
@@ -210,81 +210,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
             this.voiceStatusCallbackMethod = voiceStatusCallbackMethod;
             this.voiceStatusCallbackUrl = voiceStatusCallbackUrl;
             this.voiceUrl = voiceUrl;
-        }
-    
-        /// <returns> The unique id of the account that sent the message </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The Twilio API version used to process the message </returns> 
-        public string GetApiVersion() {
-            return this.apiVersion;
-        }
-    
-        /// <returns> The types of authentication mapped to the domain </returns> 
-        public string GetAuthType() {
-            return this.authType;
-        }
-    
-        /// <returns> The date this resource was created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date this resource was last updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The unique address on Twilio to route SIP traffic </returns> 
-        public string GetDomainName() {
-            return this.domainName;
-        }
-    
-        /// <returns> A user-specified, human-readable name for the trigger. </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> A string that uniquely identifies the SIP Domain </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The URI for this resource </returns> 
-        public string GetUri() {
-            return this.uri;
-        }
-    
-        /// <returns> HTTP method used with voice_fallback_url </returns> 
-        public Twilio.Http.HttpMethod GetVoiceFallbackMethod() {
-            return this.voiceFallbackMethod;
-        }
-    
-        /// <returns> URL Twilio will request if an error occurs in executing TwiML </returns> 
-        public Uri GetVoiceFallbackUrl() {
-            return this.voiceFallbackUrl;
-        }
-    
-        /// <returns> HTTP method to use with voice_url </returns> 
-        public Twilio.Http.HttpMethod GetVoiceMethod() {
-            return this.voiceMethod;
-        }
-    
-        /// <returns> The voice_status_callback_method </returns> 
-        public Twilio.Http.HttpMethod GetVoiceStatusCallbackMethod() {
-            return this.voiceStatusCallbackMethod;
-        }
-    
-        /// <returns> URL that Twilio will request with status updates </returns> 
-        public Uri GetVoiceStatusCallbackUrl() {
-            return this.voiceStatusCallbackUrl;
-        }
-    
-        /// <returns> URL Twilio will request when receiving a call </returns> 
-        public Uri GetVoiceUrl() {
-            return this.voiceUrl;
         }
     }
 }

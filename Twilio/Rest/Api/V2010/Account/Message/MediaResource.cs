@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account.Message {
 
-    public class MediaResource : SidResource {
+    public class MediaResource : Resource {
         /// <summary>
         /// Delete media from your account. Once delete, you will no longer be billed
         /// </summary>
@@ -94,19 +94,19 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("content_type")]
-        private readonly string contentType;
+        public string contentType { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("parent_sid")]
-        private readonly string parentSid;
+        public string parentSid { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
     
         public MediaResource() {
         
@@ -133,41 +133,6 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
             this.parentSid = parentSid;
             this.sid = sid;
             this.uri = uri;
-        }
-    
-        /// <returns> The unique sid that identifies this account </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The default mime-type of the media </returns> 
-        public string GetContentType() {
-            return this.contentType;
-        }
-    
-        /// <returns> The date this resource was created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date this resource was last updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The unique id of the resource that created the media. </returns> 
-        public string GetParentSid() {
-            return this.parentSid;
-        }
-    
-        /// <returns> A string that uniquely identifies this media </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The URI for this resource </returns> 
-        public string GetUri() {
-            return this.uri;
         }
     }
 }

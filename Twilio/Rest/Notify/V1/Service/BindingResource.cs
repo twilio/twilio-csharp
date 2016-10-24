@@ -9,7 +9,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Notify.V1.Service {
 
-    public class BindingResource : SidResource {
+    public class BindingResource : Resource {
         public sealed class BindingType : IStringEnum {
             public const string APN="apn";
             public const string GCM="gcm";
@@ -103,29 +103,31 @@ namespace Twilio.Rest.Notify.V1.Service {
         }
     
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("service_sid")]
-        private readonly string serviceSid;
+        public string serviceSid { get; }
+        [JsonProperty("credential_sid")]
+        public string credentialSid { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("notification_protocol_version")]
-        private readonly string notificationProtocolVersion;
+        public string notificationProtocolVersion { get; }
         [JsonProperty("endpoint")]
-        private readonly string endpoint;
+        public string endpoint { get; }
         [JsonProperty("identity")]
-        private readonly string identity;
+        public string identity { get; }
         [JsonProperty("binding_type")]
-        private readonly string bindingType;
+        public string bindingType { get; }
         [JsonProperty("address")]
-        private readonly string address;
+        public string address { get; }
         [JsonProperty("tags")]
-        private readonly List<string> tags;
+        public List<string> tags { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
     
         public BindingResource() {
         
@@ -137,6 +139,8 @@ namespace Twilio.Rest.Notify.V1.Service {
                                 string accountSid, 
                                 [JsonProperty("service_sid")]
                                 string serviceSid, 
+                                [JsonProperty("credential_sid")]
+                                string credentialSid, 
                                 [JsonProperty("date_created")]
                                 string dateCreated, 
                                 [JsonProperty("date_updated")]
@@ -158,6 +162,7 @@ namespace Twilio.Rest.Notify.V1.Service {
             this.sid = sid;
             this.accountSid = accountSid;
             this.serviceSid = serviceSid;
+            this.credentialSid = credentialSid;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.notificationProtocolVersion = notificationProtocolVersion;
@@ -167,66 +172,6 @@ namespace Twilio.Rest.Notify.V1.Service {
             this.address = address;
             this.tags = tags;
             this.url = url;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The service_sid </returns> 
-        public string GetServiceSid() {
-            return this.serviceSid;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The notification_protocol_version </returns> 
-        public string GetNotificationProtocolVersion() {
-            return this.notificationProtocolVersion;
-        }
-    
-        /// <returns> The endpoint </returns> 
-        public string GetEndpoint() {
-            return this.endpoint;
-        }
-    
-        /// <returns> The identity </returns> 
-        public string GetIdentity() {
-            return this.identity;
-        }
-    
-        /// <returns> The binding_type </returns> 
-        public string GetBindingType() {
-            return this.bindingType;
-        }
-    
-        /// <returns> The address </returns> 
-        public string GetAddress() {
-            return this.address;
-        }
-    
-        /// <returns> The tags </returns> 
-        public List<string> GetTags() {
-            return this.tags;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
         }
     }
 }

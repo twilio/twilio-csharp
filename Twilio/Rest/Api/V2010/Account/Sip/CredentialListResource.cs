@@ -9,7 +9,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account.Sip {
 
-    public class CredentialListResource : SidResource {
+    public class CredentialListResource : Resource {
         /// <summary>
         /// Retrieve a list of Credentials belonging to the account used to make the request
         /// </summary>
@@ -132,19 +132,19 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("subresource_uris")]
-        private readonly Dictionary<string, string> subresourceUris;
+        public Dictionary<string, string> subresourceUris { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
     
         public CredentialListResource() {
         
@@ -171,41 +171,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
             this.sid = sid;
             this.subresourceUris = subresourceUris;
             this.uri = uri;
-        }
-    
-        /// <returns> The unique sid that identifies this account </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The date this resource was created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date this resource was last updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The friendly_name </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> A string that uniquely identifies this credential </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The subresource_uris </returns> 
-        public Dictionary<string, string> GetSubresourceUris() {
-            return this.subresourceUris;
-        }
-    
-        /// <returns> The URI for this resource </returns> 
-        public string GetUri() {
-            return this.uri;
         }
     }
 }

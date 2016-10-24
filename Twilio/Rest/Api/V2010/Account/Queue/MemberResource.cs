@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account.Queue {
 
-    public class MemberResource : SidResource {
+    public class MemberResource : Resource {
         /// <summary>
         /// Fetch a specific members of the queue
         /// </summary>
@@ -100,15 +100,15 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         }
     
         [JsonProperty("call_sid")]
-        private readonly string callSid;
+        public string callSid { get; }
         [JsonProperty("date_enqueued")]
-        private readonly DateTime? dateEnqueued;
+        public DateTime? dateEnqueued { get; }
         [JsonProperty("position")]
-        private readonly int? position;
+        public int? position { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
         [JsonProperty("wait_time")]
-        private readonly int? waitTime;
+        public int? waitTime { get; }
     
         public MemberResource() {
         
@@ -129,36 +129,6 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
             this.position = position;
             this.uri = uri;
             this.waitTime = waitTime;
-        }
-    
-        /// <returns> Unique string that identifies this resource </returns> 
-        public override string GetSid() {
-            return this.GetCallSid();
-        }
-    
-        /// <returns> Unique string that identifies this resource </returns> 
-        public string GetCallSid() {
-            return this.callSid;
-        }
-    
-        /// <returns> The date the member was enqueued </returns> 
-        public DateTime? GetDateEnqueued() {
-            return this.dateEnqueued;
-        }
-    
-        /// <returns> This member's current position in the queue. </returns> 
-        public int? GetPosition() {
-            return this.position;
-        }
-    
-        /// <returns> The uri </returns> 
-        public string GetUri() {
-            return this.uri;
-        }
-    
-        /// <returns> The number of seconds the member has been in the queue. </returns> 
-        public int? GetWaitTime() {
-            return this.waitTime;
         }
     }
 }

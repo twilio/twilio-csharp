@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account {
 
-    public class AddressResource : SidResource {
+    public class AddressResource : Resource {
         /// <summary>
         /// create
         /// </summary>
@@ -143,29 +143,29 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("city")]
-        private readonly string city;
+        public string city { get; }
         [JsonProperty("customer_name")]
-        private readonly string customerName;
+        public string customerName { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("iso_country")]
-        private readonly string isoCountry;
+        public string isoCountry { get; }
         [JsonProperty("postal_code")]
-        private readonly string postalCode;
+        public string postalCode { get; }
         [JsonProperty("region")]
-        private readonly string region;
+        public string region { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("street")]
-        private readonly string street;
+        public string street { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
     
         public AddressResource() {
         
@@ -207,66 +207,6 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.sid = sid;
             this.street = street;
             this.uri = uri;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The city </returns> 
-        public string GetCity() {
-            return this.city;
-        }
-    
-        /// <returns> The customer_name </returns> 
-        public string GetCustomerName() {
-            return this.customerName;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The friendly_name </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The iso_country </returns> 
-        public string GetIsoCountry() {
-            return this.isoCountry;
-        }
-    
-        /// <returns> The postal_code </returns> 
-        public string GetPostalCode() {
-            return this.postalCode;
-        }
-    
-        /// <returns> The region </returns> 
-        public string GetRegion() {
-            return this.region;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The street </returns> 
-        public string GetStreet() {
-            return this.street;
-        }
-    
-        /// <returns> The uri </returns> 
-        public string GetUri() {
-            return this.uri;
         }
     }
 }

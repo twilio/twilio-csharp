@@ -9,7 +9,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account {
 
-    public class AvailablePhoneNumberCountryResource : SidResource {
+    public class AvailablePhoneNumberCountryResource : Resource {
         /// <summary>
         /// read
         /// </summary>
@@ -66,15 +66,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
     
         [JsonProperty("country_code")]
-        private readonly string countryCode;
+        public string countryCode { get; }
         [JsonProperty("country")]
-        private readonly string country;
+        public string country { get; }
         [JsonProperty("uri")]
-        private readonly Uri uri;
+        public Uri uri { get; }
         [JsonProperty("beta")]
-        private readonly bool? beta;
+        public bool? beta { get; }
         [JsonProperty("subresource_uris")]
-        private readonly Dictionary<string, string> subresourceUris;
+        public Dictionary<string, string> subresourceUris { get; }
     
         public AvailablePhoneNumberCountryResource() {
         
@@ -95,36 +95,6 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.uri = uri;
             this.beta = beta;
             this.subresourceUris = subresourceUris;
-        }
-    
-        /// <returns> The country_code </returns> 
-        public override string GetSid() {
-            return this.GetCountryCode();
-        }
-    
-        /// <returns> The country_code </returns> 
-        public string GetCountryCode() {
-            return this.countryCode;
-        }
-    
-        /// <returns> The country </returns> 
-        public string GetCountry() {
-            return this.country;
-        }
-    
-        /// <returns> The uri </returns> 
-        public Uri GetUri() {
-            return this.uri;
-        }
-    
-        /// <returns> The beta </returns> 
-        public bool? GetBeta() {
-            return this.beta;
-        }
-    
-        /// <returns> The subresource_uris </returns> 
-        public Dictionary<string, string> GetSubresourceUris() {
-            return this.subresourceUris;
         }
     }
 }

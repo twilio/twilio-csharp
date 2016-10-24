@@ -35,23 +35,23 @@ namespace Twilio.Rest.Preview.Wireless.Device {
         }
     
         [JsonProperty("device_sid")]
-        private readonly string deviceSid;
+        public string deviceSid { get; }
         [JsonProperty("device_alias")]
-        private readonly string deviceAlias;
+        public string deviceAlias { get; }
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("period")]
-        private readonly Object period;
+        public Object period { get; }
         [JsonProperty("commands_usage")]
-        private readonly Object commandsUsage;
+        public Object commandsUsage { get; }
         [JsonProperty("commands_costs")]
-        private readonly Object commandsCosts;
+        public Object commandsCosts { get; }
         [JsonProperty("data_usage")]
-        private readonly Object dataUsage;
+        public Object dataUsage { get; }
         [JsonProperty("data_costs")]
-        private readonly Object dataCosts;
+        public Object dataCosts { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
     
         public UsageResource() {
         
@@ -84,51 +84,6 @@ namespace Twilio.Rest.Preview.Wireless.Device {
             this.dataUsage = dataUsage;
             this.dataCosts = dataCosts;
             this.url = url;
-        }
-    
-        /// <returns> The device_sid </returns> 
-        public string GetDeviceSid() {
-            return this.deviceSid;
-        }
-    
-        /// <returns> The device_alias </returns> 
-        public string GetDeviceAlias() {
-            return this.deviceAlias;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The period </returns> 
-        public Object GetPeriod() {
-            return this.period;
-        }
-    
-        /// <returns> The commands_usage </returns> 
-        public Object GetCommandsUsage() {
-            return this.commandsUsage;
-        }
-    
-        /// <returns> The commands_costs </returns> 
-        public Object GetCommandsCosts() {
-            return this.commandsCosts;
-        }
-    
-        /// <returns> The data_usage </returns> 
-        public Object GetDataUsage() {
-            return this.dataUsage;
-        }
-    
-        /// <returns> The data_costs </returns> 
-        public Object GetDataCosts() {
-            return this.dataCosts;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
         }
     }
 }

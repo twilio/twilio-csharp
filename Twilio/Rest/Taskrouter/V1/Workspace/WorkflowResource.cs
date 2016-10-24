@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
-    public class WorkflowResource : SidResource {
+    public class WorkflowResource : Resource {
         /// <summary>
         /// fetch
         /// </summary>
@@ -80,27 +80,27 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("assignment_callback_url")]
-        private readonly Uri assignmentCallbackUrl;
+        public Uri assignmentCallbackUrl { get; }
         [JsonProperty("configuration")]
-        private readonly string configuration;
+        public string configuration { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("document_content_type")]
-        private readonly string documentContentType;
+        public string documentContentType { get; }
         [JsonProperty("fallback_assignment_callback_url")]
-        private readonly Uri fallbackAssignmentCallbackUrl;
+        public Uri fallbackAssignmentCallbackUrl { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("task_reservation_timeout")]
-        private readonly int? taskReservationTimeout;
+        public int? taskReservationTimeout { get; }
         [JsonProperty("workspace_sid")]
-        private readonly string workspaceSid;
+        public string workspaceSid { get; }
     
         public WorkflowResource() {
         
@@ -139,61 +139,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             this.sid = sid;
             this.taskReservationTimeout = taskReservationTimeout;
             this.workspaceSid = workspaceSid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The assignment_callback_url </returns> 
-        public Uri GetAssignmentCallbackUrl() {
-            return this.assignmentCallbackUrl;
-        }
-    
-        /// <returns> The configuration </returns> 
-        public string GetConfiguration() {
-            return this.configuration;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The document_content_type </returns> 
-        public string GetDocumentContentType() {
-            return this.documentContentType;
-        }
-    
-        /// <returns> The fallback_assignment_callback_url </returns> 
-        public Uri GetFallbackAssignmentCallbackUrl() {
-            return this.fallbackAssignmentCallbackUrl;
-        }
-    
-        /// <returns> The friendly_name </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The task_reservation_timeout </returns> 
-        public int? GetTaskReservationTimeout() {
-            return this.taskReservationTimeout;
-        }
-    
-        /// <returns> The workspace_sid </returns> 
-        public string GetWorkspaceSid() {
-            return this.workspaceSid;
         }
     }
 }

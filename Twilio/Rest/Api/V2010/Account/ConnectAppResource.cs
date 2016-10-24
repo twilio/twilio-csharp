@@ -9,7 +9,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account {
 
-    public class ConnectAppResource : SidResource {
+    public class ConnectAppResource : Resource {
         public sealed class Permission : IStringEnum {
             public const string GET_ALL="get-all";
             public const string POST_ALL="post-all";
@@ -116,29 +116,29 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("authorize_redirect_url")]
-        private readonly Uri authorizeRedirectUrl;
+        public Uri authorizeRedirectUrl { get; }
         [JsonProperty("company_name")]
-        private readonly string companyName;
+        public string companyName { get; }
         [JsonProperty("deauthorize_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly Twilio.Http.HttpMethod deauthorizeCallbackMethod;
+        public Twilio.Http.HttpMethod deauthorizeCallbackMethod { get; }
         [JsonProperty("deauthorize_callback_url")]
-        private readonly Uri deauthorizeCallbackUrl;
+        public Uri deauthorizeCallbackUrl { get; }
         [JsonProperty("description")]
-        private readonly string description;
+        public string description { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("homepage_url")]
-        private readonly Uri homepageUrl;
+        public Uri homepageUrl { get; }
         [JsonProperty("permissions")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly List<ConnectAppResource.Permission> permissions;
+        public List<ConnectAppResource.Permission> permissions { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
     
         public ConnectAppResource() {
         
@@ -177,61 +177,6 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.permissions = permissions;
             this.sid = sid;
             this.uri = uri;
-        }
-    
-        /// <returns> The unique sid that identifies this account </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> URIL Twilio sends requests when users authorize </returns> 
-        public Uri GetAuthorizeRedirectUrl() {
-            return this.authorizeRedirectUrl;
-        }
-    
-        /// <returns> The company name set for this Connect App. </returns> 
-        public string GetCompanyName() {
-            return this.companyName;
-        }
-    
-        /// <returns> HTTP method Twilio WIll use making requests to the url </returns> 
-        public Twilio.Http.HttpMethod GetDeauthorizeCallbackMethod() {
-            return this.deauthorizeCallbackMethod;
-        }
-    
-        /// <returns> URL Twilio will send a request when a user de-authorizes this app </returns> 
-        public Uri GetDeauthorizeCallbackUrl() {
-            return this.deauthorizeCallbackUrl;
-        }
-    
-        /// <returns> A more detailed human readable description </returns> 
-        public string GetDescription() {
-            return this.description;
-        }
-    
-        /// <returns> A human readable name for the Connect App. </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The URL users can obtain more information </returns> 
-        public Uri GetHomepageUrl() {
-            return this.homepageUrl;
-        }
-    
-        /// <returns> The set of permissions that your ConnectApp requests. </returns> 
-        public List<ConnectAppResource.Permission> GetPermissions() {
-            return this.permissions;
-        }
-    
-        /// <returns> A string that uniquely identifies this connect-apps </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The URI for this resource </returns> 
-        public string GetUri() {
-            return this.uri;
         }
     }
 }

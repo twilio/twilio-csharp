@@ -16,6 +16,8 @@ namespace Twilio.Rest.Preview.Wireless {
         private string command;
         private string callbackMethod;
         private Uri callbackUrl;
+        private string commandMode;
+        private string includeSid;
     
         /// <summary>
         /// Construct a new CommandCreator
@@ -58,6 +60,28 @@ namespace Twilio.Rest.Preview.Wireless {
         /// <returns> this </returns> 
         public CommandCreator setCallbackUrl(string callbackUrl) {
             return setCallbackUrl(Promoter.UriFromString(callbackUrl));
+        }
+    
+        /// <summary>
+        /// The command_mode
+        /// </summary>
+        ///
+        /// <param name="commandMode"> The command_mode </param>
+        /// <returns> this </returns> 
+        public CommandCreator setCommandMode(string commandMode) {
+            this.commandMode = commandMode;
+            return this;
+        }
+    
+        /// <summary>
+        /// The include_sid
+        /// </summary>
+        ///
+        /// <param name="includeSid"> The include_sid </param>
+        /// <returns> this </returns> 
+        public CommandCreator setIncludeSid(string includeSid) {
+            this.includeSid = includeSid;
+            return this;
         }
     
         #if NET40
@@ -160,6 +184,14 @@ namespace Twilio.Rest.Preview.Wireless {
             
             if (callbackUrl != null) {
                 request.AddPostParam("CallbackUrl", callbackUrl.ToString());
+            }
+            
+            if (commandMode != null) {
+                request.AddPostParam("CommandMode", commandMode);
+            }
+            
+            if (includeSid != null) {
+                request.AddPostParam("IncludeSid", includeSid);
             }
         }
     }

@@ -10,7 +10,7 @@ using Twilio.Types;
 
 namespace Twilio.Rest.Pricing.V1.Messaging {
 
-    public class CountryResource : SidResource {
+    public class CountryResource : Resource {
         /// <summary>
         /// read
         /// </summary>
@@ -46,17 +46,17 @@ namespace Twilio.Rest.Pricing.V1.Messaging {
         }
     
         [JsonProperty("country")]
-        private readonly string country;
+        public string country { get; }
         [JsonProperty("iso_country")]
-        private readonly string isoCountry;
+        public string isoCountry { get; }
         [JsonProperty("outbound_sms_prices")]
-        private readonly List<OutboundSmsPrice> outboundSmsPrices;
+        public List<OutboundSmsPrice> outboundSmsPrices { get; }
         [JsonProperty("inbound_sms_prices")]
-        private readonly List<InboundSmsPrice> inboundSmsPrices;
+        public List<InboundSmsPrice> inboundSmsPrices { get; }
         [JsonProperty("price_unit")]
-        private readonly string priceUnit;
+        public string priceUnit { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
     
         public CountryResource() {
         
@@ -80,41 +80,6 @@ namespace Twilio.Rest.Pricing.V1.Messaging {
             this.inboundSmsPrices = inboundSmsPrices;
             this.priceUnit = priceUnit;
             this.url = url;
-        }
-    
-        /// <returns> The iso_country </returns> 
-        public override string GetSid() {
-            return this.GetIsoCountry();
-        }
-    
-        /// <returns> The country </returns> 
-        public string GetCountry() {
-            return this.country;
-        }
-    
-        /// <returns> The iso_country </returns> 
-        public string GetIsoCountry() {
-            return this.isoCountry;
-        }
-    
-        /// <returns> The outbound_sms_prices </returns> 
-        public List<OutboundSmsPrice> GetOutboundSmsPrices() {
-            return this.outboundSmsPrices;
-        }
-    
-        /// <returns> The inbound_sms_prices </returns> 
-        public List<InboundSmsPrice> GetInboundSmsPrices() {
-            return this.inboundSmsPrices;
-        }
-    
-        /// <returns> The price_unit </returns> 
-        public string GetPriceUnit() {
-            return this.priceUnit;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
         }
     }
 }

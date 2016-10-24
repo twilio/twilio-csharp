@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
 
-    public class MessageResource : SidResource {
+    public class MessageResource : Resource {
         /// <summary>
         /// fetch
         /// </summary>
@@ -85,25 +85,25 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         }
     
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("service_sid")]
-        private readonly string serviceSid;
+        public string serviceSid { get; }
         [JsonProperty("to")]
-        private readonly string to;
+        public string to { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("was_edited")]
-        private readonly bool? wasEdited;
+        public bool? wasEdited { get; }
         [JsonProperty("from")]
-        private readonly string from;
+        public string from { get; }
         [JsonProperty("body")]
-        private readonly string body;
+        public string body { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
     
         public MessageResource() {
         
@@ -139,56 +139,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
             this.from = from;
             this.body = body;
             this.url = url;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The service_sid </returns> 
-        public string GetServiceSid() {
-            return this.serviceSid;
-        }
-    
-        /// <returns> The to </returns> 
-        public string GetTo() {
-            return this.to;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The was_edited </returns> 
-        public bool? GetWasEdited() {
-            return this.wasEdited;
-        }
-    
-        /// <returns> The from </returns> 
-        public string GetFrom() {
-            return this.from;
-        }
-    
-        /// <returns> The body </returns> 
-        public string GetBody() {
-            return this.body;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
         }
     }
 }

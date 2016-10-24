@@ -65,40 +65,40 @@ namespace Twilio.Rest.Notify.V1.Service {
         }
     
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("service_sid")]
-        private readonly string serviceSid;
+        public string serviceSid { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("identities")]
-        private readonly List<string> identities;
+        public List<string> identities { get; }
         [JsonProperty("tags")]
-        private readonly List<string> tags;
+        public List<string> tags { get; }
         [JsonProperty("priority")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly NotificationResource.Priority priority;
+        public NotificationResource.Priority priority { get; }
         [JsonProperty("ttl")]
-        private readonly int? ttl;
+        public int? ttl { get; }
         [JsonProperty("title")]
-        private readonly string title;
+        public string title { get; }
         [JsonProperty("body")]
-        private readonly string body;
+        public string body { get; }
         [JsonProperty("sound")]
-        private readonly string sound;
+        public string sound { get; }
         [JsonProperty("action")]
-        private readonly string action;
+        public string action { get; }
         [JsonProperty("data")]
-        private readonly Object data;
+        public Object data { get; }
         [JsonProperty("apn")]
-        private readonly Object apn;
+        public Object apn { get; }
         [JsonProperty("gcm")]
-        private readonly Object gcm;
+        public Object gcm { get; }
         [JsonProperty("sms")]
-        private readonly Object sms;
+        public Object sms { get; }
         [JsonProperty("facebook_messenger")]
-        private readonly Object facebookMessenger;
+        public Object facebookMessenger { get; }
     
         public NotificationResource() {
         
@@ -155,91 +155,6 @@ namespace Twilio.Rest.Notify.V1.Service {
             this.gcm = gcm;
             this.sms = sms;
             this.facebookMessenger = facebookMessenger;
-        }
-    
-        /// <returns> The sid </returns> 
-        public string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The service_sid </returns> 
-        public string GetServiceSid() {
-            return this.serviceSid;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The identities </returns> 
-        public List<string> GetIdentities() {
-            return this.identities;
-        }
-    
-        /// <returns> The tags </returns> 
-        public List<string> GetTags() {
-            return this.tags;
-        }
-    
-        /// <returns> The priority </returns> 
-        public NotificationResource.Priority GetPriority() {
-            return this.priority;
-        }
-    
-        /// <returns> The ttl </returns> 
-        public int? GetTtl() {
-            return this.ttl;
-        }
-    
-        /// <returns> The title </returns> 
-        public string GetTitle() {
-            return this.title;
-        }
-    
-        /// <returns> The body </returns> 
-        public string GetBody() {
-            return this.body;
-        }
-    
-        /// <returns> The sound </returns> 
-        public string GetSound() {
-            return this.sound;
-        }
-    
-        /// <returns> The action </returns> 
-        public string GetAction() {
-            return this.action;
-        }
-    
-        /// <returns> The data </returns> 
-        public Object GetData() {
-            return this.data;
-        }
-    
-        /// <returns> The apn </returns> 
-        public Object GetApn() {
-            return this.apn;
-        }
-    
-        /// <returns> The gcm </returns> 
-        public Object GetGcm() {
-            return this.gcm;
-        }
-    
-        /// <returns> The sms </returns> 
-        public Object GetSms() {
-            return this.sms;
-        }
-    
-        /// <returns> The facebook_messenger </returns> 
-        public Object GetFacebookMessenger() {
-            return this.facebookMessenger;
         }
     }
 }

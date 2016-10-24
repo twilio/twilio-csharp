@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account {
 
-    public class ShortCodeResource : SidResource {
+    public class ShortCodeResource : Resource {
         /// <summary>
         /// Fetch an instance of a short code
         /// </summary>
@@ -86,31 +86,31 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("api_version")]
-        private readonly string apiVersion;
+        public string apiVersion { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("short_code")]
-        private readonly string shortCode;
+        public string shortCode { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("sms_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly Twilio.Http.HttpMethod smsFallbackMethod;
+        public Twilio.Http.HttpMethod smsFallbackMethod { get; }
         [JsonProperty("sms_fallback_url")]
-        private readonly Uri smsFallbackUrl;
+        public Uri smsFallbackUrl { get; }
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly Twilio.Http.HttpMethod smsMethod;
+        public Twilio.Http.HttpMethod smsMethod { get; }
         [JsonProperty("sms_url")]
-        private readonly Uri smsUrl;
+        public Uri smsUrl { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
     
         public ShortCodeResource() {
         
@@ -152,66 +152,6 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.smsMethod = smsMethod;
             this.smsUrl = smsUrl;
             this.uri = uri;
-        }
-    
-        /// <returns> The unique sid that identifies this account </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The API version to use </returns> 
-        public string GetApiVersion() {
-            return this.apiVersion;
-        }
-    
-        /// <returns> The date this resource was created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date this resource was last updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> A human readable description of this resource </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The short code. e.g., 894546. </returns> 
-        public string GetShortCode() {
-            return this.shortCode;
-        }
-    
-        /// <returns> A string that uniquely identifies this short-codes </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> HTTP method Twilio will use with sms fallback url </returns> 
-        public Twilio.Http.HttpMethod GetSmsFallbackMethod() {
-            return this.smsFallbackMethod;
-        }
-    
-        /// <returns> URL Twilio will request if an error occurs in executing TwiML </returns> 
-        public Uri GetSmsFallbackUrl() {
-            return this.smsFallbackUrl;
-        }
-    
-        /// <returns> HTTP method to use when requesting the sms url </returns> 
-        public Twilio.Http.HttpMethod GetSmsMethod() {
-            return this.smsMethod;
-        }
-    
-        /// <returns> URL Twilio will request when receiving an SMS </returns> 
-        public Uri GetSmsUrl() {
-            return this.smsUrl;
-        }
-    
-        /// <returns> The URI for this resource </returns> 
-        public string GetUri() {
-            return this.uri;
         }
     }
 }

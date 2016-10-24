@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
 
-    public class ReservationResource : SidResource {
+    public class ReservationResource : Resource {
         public sealed class Status : IStringEnum {
             public const string PENDING="pending";
             public const string ACCEPTED="accepted";
@@ -93,24 +93,24 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("reservation_status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly ReservationResource.Status reservationStatus;
+        public ReservationResource.Status reservationStatus { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("task_sid")]
-        private readonly string taskSid;
+        public string taskSid { get; }
         [JsonProperty("worker_name")]
-        private readonly string workerName;
+        public string workerName { get; }
         [JsonProperty("worker_sid")]
-        private readonly string workerSid;
+        public string workerSid { get; }
         [JsonProperty("workspace_sid")]
-        private readonly string workspaceSid;
+        public string workspaceSid { get; }
     
         public ReservationResource() {
         
@@ -143,51 +143,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
             this.workerName = workerName;
             this.workerSid = workerSid;
             this.workspaceSid = workspaceSid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The reservation_status </returns> 
-        public ReservationResource.Status GetReservationStatus() {
-            return this.reservationStatus;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The task_sid </returns> 
-        public string GetTaskSid() {
-            return this.taskSid;
-        }
-    
-        /// <returns> The worker_name </returns> 
-        public string GetWorkerName() {
-            return this.workerName;
-        }
-    
-        /// <returns> The worker_sid </returns> 
-        public string GetWorkerSid() {
-            return this.workerSid;
-        }
-    
-        /// <returns> The workspace_sid </returns> 
-        public string GetWorkspaceSid() {
-            return this.workspaceSid;
         }
     }
 }

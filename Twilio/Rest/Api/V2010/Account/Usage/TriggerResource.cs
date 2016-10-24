@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account.Usage {
 
-    public class TriggerResource : SidResource {
+    public class TriggerResource : Resource {
         public sealed class UsageCategory : IStringEnum {
             public const string AUTHY_AUTHENTICATIONS="authy-authentications";
             public const string AUTHY_CALLS_OUTBOUND="authy-calls-outbound";
@@ -312,41 +312,41 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("api_version")]
-        private readonly string apiVersion;
+        public string apiVersion { get; }
         [JsonProperty("callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly Twilio.Http.HttpMethod callbackMethod;
+        public Twilio.Http.HttpMethod callbackMethod { get; }
         [JsonProperty("callback_url")]
-        private readonly Uri callbackUrl;
+        public Uri callbackUrl { get; }
         [JsonProperty("current_value")]
-        private readonly string currentValue;
+        public string currentValue { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_fired")]
-        private readonly DateTime? dateFired;
+        public DateTime? dateFired { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("recurring")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly TriggerResource.Recurring recurring;
+        public TriggerResource.Recurring recurring { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("trigger_by")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly TriggerResource.TriggerField triggerBy;
+        public TriggerResource.TriggerField triggerBy { get; }
         [JsonProperty("trigger_value")]
-        private readonly string triggerValue;
+        public string triggerValue { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
         [JsonProperty("usage_category")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly TriggerResource.UsageCategory usageCategory;
+        public TriggerResource.UsageCategory usageCategory { get; }
         [JsonProperty("usage_record_uri")]
-        private readonly string usageRecordUri;
+        public string usageRecordUri { get; }
     
         public TriggerResource() {
         
@@ -400,86 +400,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
             this.uri = uri;
             this.usageCategory = usageCategory;
             this.usageRecordUri = usageRecordUri;
-        }
-    
-        /// <returns> The account this trigger monitors. </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The api_version </returns> 
-        public string GetApiVersion() {
-            return this.apiVersion;
-        }
-    
-        /// <returns> HTTP method to use with callback_url </returns> 
-        public Twilio.Http.HttpMethod GetCallbackMethod() {
-            return this.callbackMethod;
-        }
-    
-        /// <returns> URL Twilio will request when the trigger fires </returns> 
-        public Uri GetCallbackUrl() {
-            return this.callbackUrl;
-        }
-    
-        /// <returns> The current value of the field the trigger is watching. </returns> 
-        public string GetCurrentValue() {
-            return this.currentValue;
-        }
-    
-        /// <returns> The date this resource was created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date the trigger was last fired </returns> 
-        public DateTime? GetDateFired() {
-            return this.dateFired;
-        }
-    
-        /// <returns> The date this resource was last updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> A user-specified, human-readable name for the trigger. </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> How this trigger recurs </returns> 
-        public TriggerResource.Recurring GetRecurring() {
-            return this.recurring;
-        }
-    
-        /// <returns> The trigger's unique Sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The field in the UsageRecord that fires the trigger </returns> 
-        public TriggerResource.TriggerField GetTriggerBy() {
-            return this.triggerBy;
-        }
-    
-        /// <returns> the value at which the trigger will fire </returns> 
-        public string GetTriggerValue() {
-            return this.triggerValue;
-        }
-    
-        /// <returns> The URI for this resource </returns> 
-        public string GetUri() {
-            return this.uri;
-        }
-    
-        /// <returns> The usage category the trigger watches </returns> 
-        public TriggerResource.UsageCategory GetUsageCategory() {
-            return this.usageCategory;
-        }
-    
-        /// <returns> The URI of the UsageRecord this trigger is watching </returns> 
-        public string GetUsageRecordUri() {
-            return this.usageRecordUri;
         }
     }
 }

@@ -37,15 +37,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("cumulative")]
-        private readonly Dictionary<string, string> cumulative;
+        public Dictionary<string, string> cumulative { get; }
         [JsonProperty("realtime")]
-        private readonly Object realtime;
+        public Object realtime { get; }
         [JsonProperty("task_queue_sid")]
-        private readonly string taskQueueSid;
+        public string taskQueueSid { get; }
         [JsonProperty("workspace_sid")]
-        private readonly string workspaceSid;
+        public string workspaceSid { get; }
     
         public TaskQueueStatisticsResource() {
         
@@ -66,31 +66,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
             this.realtime = realtime;
             this.taskQueueSid = taskQueueSid;
             this.workspaceSid = workspaceSid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The cumulative </returns> 
-        public Dictionary<string, string> GetCumulative() {
-            return this.cumulative;
-        }
-    
-        /// <returns> The realtime </returns> 
-        public Object GetRealtime() {
-            return this.realtime;
-        }
-    
-        /// <returns> The task_queue_sid </returns> 
-        public string GetTaskQueueSid() {
-            return this.taskQueueSid;
-        }
-    
-        /// <returns> The workspace_sid </returns> 
-        public string GetWorkspaceSid() {
-            return this.workspaceSid;
         }
     }
 }

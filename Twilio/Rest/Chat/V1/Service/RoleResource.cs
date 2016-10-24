@@ -9,7 +9,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Chat.V1.Service {
 
-    public class RoleResource : SidResource {
+    public class RoleResource : Resource {
         public sealed class RoleType : IStringEnum {
             public const string CHANNEL="channel";
             public const string DEPLOYMENT="deployment";
@@ -112,24 +112,24 @@ namespace Twilio.Rest.Chat.V1.Service {
         }
     
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("service_sid")]
-        private readonly string serviceSid;
+        public string serviceSid { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly RoleResource.RoleType type;
+        public RoleResource.RoleType type { get; }
         [JsonProperty("permissions")]
-        private readonly List<string> permissions;
+        public List<string> permissions { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
     
         public RoleResource() {
         
@@ -162,51 +162,6 @@ namespace Twilio.Rest.Chat.V1.Service {
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.url = url;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The service_sid </returns> 
-        public string GetServiceSid() {
-            return this.serviceSid;
-        }
-    
-        /// <returns> The friendly_name </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The type </returns> 
-        public RoleResource.RoleType GetRoleType() {
-            return this.type;
-        }
-    
-        /// <returns> The permissions </returns> 
-        public List<string> GetPermissions() {
-            return this.permissions;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
         }
     }
 }

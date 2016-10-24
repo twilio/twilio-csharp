@@ -10,7 +10,7 @@ using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account {
 
-    public class CallResource : SidResource {
+    public class CallResource : Resource {
         public sealed class Event : IStringEnum {
             public const string INITIATED="initiated";
             public const string RINGING="ringing";
@@ -229,56 +229,56 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("annotation")]
-        private readonly string annotation;
+        public string annotation { get; }
         [JsonProperty("answered_by")]
-        private readonly string answeredBy;
+        public string answeredBy { get; }
         [JsonProperty("api_version")]
-        private readonly string apiVersion;
+        public string apiVersion { get; }
         [JsonProperty("caller_name")]
-        private readonly string callerName;
+        public string callerName { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("direction")]
-        private readonly string direction;
+        public string direction { get; }
         [JsonProperty("duration")]
-        private readonly string duration;
+        public string duration { get; }
         [JsonProperty("end_time")]
-        private readonly DateTime? endTime;
+        public DateTime? endTime { get; }
         [JsonProperty("forwarded_from")]
-        private readonly string forwardedFrom;
+        public string forwardedFrom { get; }
         [JsonProperty("from")]
-        private readonly string from;
+        public string from { get; }
         [JsonProperty("from_formatted")]
-        private readonly string fromFormatted;
+        public string fromFormatted { get; }
         [JsonProperty("group_sid")]
-        private readonly string groupSid;
+        public string groupSid { get; }
         [JsonProperty("parent_call_sid")]
-        private readonly string parentCallSid;
+        public string parentCallSid { get; }
         [JsonProperty("phone_number_sid")]
-        private readonly string phoneNumberSid;
+        public string phoneNumberSid { get; }
         [JsonProperty("price")]
-        private readonly decimal? price;
+        public decimal? price { get; }
         [JsonProperty("price_unit")]
-        private readonly string priceUnit;
+        public string priceUnit { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("start_time")]
-        private readonly DateTime? startTime;
+        public DateTime? startTime { get; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly CallResource.Status status;
+        public CallResource.Status status { get; }
         [JsonProperty("subresource_uris")]
-        private readonly Dictionary<string, string> subresourceUris;
+        public Dictionary<string, string> subresourceUris { get; }
         [JsonProperty("to")]
-        private readonly string to;
+        public string to { get; }
         [JsonProperty("to_formatted")]
-        private readonly string toFormatted;
+        public string toFormatted { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
     
         public CallResource() {
         
@@ -359,143 +359,6 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.to = to;
             this.toFormatted = toFormatted;
             this.uri = uri;
-        }
-    
-        /// <returns> The unique id of the Account responsible for creating this Call </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The annotation provided for the Call </returns> 
-        public string GetAnnotation() {
-            return this.annotation;
-        }
-    
-        /// <returns> If this call was initiated with answering machine detection, either `human` or `machine`. Empty
-        ///         otherwise. </returns> 
-        public string GetAnsweredBy() {
-            return this.answeredBy;
-        }
-    
-        /// <returns> The API Version the Call was created through </returns> 
-        public string GetApiVersion() {
-            return this.apiVersion;
-        }
-    
-        /// <returns> If this call was an incoming call to a phone number with Caller ID Lookup enabled, the caller's name.
-        ///         Empty otherwise. </returns> 
-        public string GetCallerName() {
-            return this.callerName;
-        }
-    
-        /// <returns> The date that this resource was created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date that this resource was last updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> A string describing the direction of the call. `inbound` for inbound calls, `outbound-api` for calls
-        ///         initiated via the REST API or `outbound-dial` for calls initiated by a `Dial` verb. </returns> 
-        public string GetDirection() {
-            return this.direction;
-        }
-    
-        /// <returns> The duration </returns> 
-        public string GetDuration() {
-            return this.duration;
-        }
-    
-        /// <returns> The end time of the Call. Null if the call did not complete successfully. </returns> 
-        public DateTime? GetEndTime() {
-            return this.endTime;
-        }
-    
-        /// <returns> If this Call was an incoming call forwarded from another number, the forwarding phone number (depends on
-        ///         carrier supporting forwarding). Empty otherwise. </returns> 
-        public string GetForwardedFrom() {
-            return this.forwardedFrom;
-        }
-    
-        /// <returns> The phone number, SIP address or Client identifier that made this Call. Phone numbers are in E.164 format
-        ///         (e.g. +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are formatted
-        ///         `client:name`. </returns> 
-        public string GetFrom() {
-            return this.from;
-        }
-    
-        /// <returns> The phone number, SIP address or Client identifier that made this Call. Formatted for display. </returns> 
-        public string GetFromFormatted() {
-            return this.fromFormatted;
-        }
-    
-        /// <returns> A 34 character Group Sid associated with this Call. Empty if no Group is associated with the Call.
-        ///         </returns> 
-        public string GetGroupSid() {
-            return this.groupSid;
-        }
-    
-        /// <returns> A 34 character string that uniquely identifies the Call that created this leg. </returns> 
-        public string GetParentCallSid() {
-            return this.parentCallSid;
-        }
-    
-        /// <returns> If the call was inbound, this is the Sid of the IncomingPhoneNumber that received the call. If the call
-        ///         was outbound, it is the Sid of the OutgoingCallerId from which the call was placed. </returns> 
-        public string GetPhoneNumberSid() {
-            return this.phoneNumberSid;
-        }
-    
-        /// <returns> The charge for this call, in the currency associated with the account. Populated after the call is
-        ///         completed. May not be immediately available. </returns> 
-        public decimal? GetPrice() {
-            return this.price;
-        }
-    
-        /// <returns> The currency in which `Price` is measured. </returns> 
-        public string GetPriceUnit() {
-            return this.priceUnit;
-        }
-    
-        /// <returns> A 34 character string that uniquely identifies this resource. </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The start time of the Call. Null if the call has not yet been dialed. </returns> 
-        public DateTime? GetStartTime() {
-            return this.startTime;
-        }
-    
-        /// <returns> The status </returns> 
-        public CallResource.Status GetStatus() {
-            return this.status;
-        }
-    
-        /// <returns> Call Instance Subresources </returns> 
-        public Dictionary<string, string> GetSubresourceUris() {
-            return this.subresourceUris;
-        }
-    
-        /// <returns> The phone number, SIP address or Client identifier that received this Call. Phone numbers are in E.164
-        ///         format (e.g. +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are
-        ///         formatted `client:name`. </returns> 
-        public string GetTo() {
-            return this.to;
-        }
-    
-        /// <returns> The phone number, SIP address or Client identifier that received this Call. Formatted for display.
-        ///         </returns> 
-        public string GetToFormatted() {
-            return this.toFormatted;
-        }
-    
-        /// <returns> The URI for this resource, relative to `https://api.twilio.com` </returns> 
-        public string GetUri() {
-            return this.uri;
         }
     }
 }

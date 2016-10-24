@@ -46,16 +46,16 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        private readonly Twilio.Types.PhoneNumber phoneNumber;
+        public Twilio.Types.PhoneNumber phoneNumber { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("validation_code")]
-        private readonly int? validationCode;
+        public int? validationCode { get; }
         [JsonProperty("call_sid")]
-        private readonly string callSid;
+        public string callSid { get; }
     
         public ValidationRequestResource() {
         
@@ -76,31 +76,6 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.friendlyName = friendlyName;
             this.validationCode = validationCode;
             this.callSid = callSid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The phone_number </returns> 
-        public Twilio.Types.PhoneNumber GetPhoneNumber() {
-            return this.phoneNumber;
-        }
-    
-        /// <returns> The friendly_name </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The validation_code </returns> 
-        public int? GetValidationCode() {
-            return this.validationCode;
-        }
-    
-        /// <returns> The call_sid </returns> 
-        public string GetCallSid() {
-            return this.callSid;
         }
     }
 }

@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
-    public class WorkerResource : SidResource {
+    public class WorkerResource : Resource {
         /// <summary>
         /// read
         /// </summary>
@@ -79,27 +79,27 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("activity_name")]
-        private readonly string activityName;
+        public string activityName { get; }
         [JsonProperty("activity_sid")]
-        private readonly string activitySid;
+        public string activitySid { get; }
         [JsonProperty("attributes")]
-        private readonly string attributes;
+        public string attributes { get; }
         [JsonProperty("available")]
-        private readonly bool? available;
+        public bool? available { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_status_changed")]
-        private readonly DateTime? dateStatusChanged;
+        public DateTime? dateStatusChanged { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("workspace_sid")]
-        private readonly string workspaceSid;
+        public string workspaceSid { get; }
     
         public WorkerResource() {
         
@@ -138,61 +138,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             this.friendlyName = friendlyName;
             this.sid = sid;
             this.workspaceSid = workspaceSid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The activity_name </returns> 
-        public string GetActivityName() {
-            return this.activityName;
-        }
-    
-        /// <returns> The activity_sid </returns> 
-        public string GetActivitySid() {
-            return this.activitySid;
-        }
-    
-        /// <returns> The attributes </returns> 
-        public string GetAttributes() {
-            return this.attributes;
-        }
-    
-        /// <returns> The available </returns> 
-        public bool? GetAvailable() {
-            return this.available;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_status_changed </returns> 
-        public DateTime? GetDateStatusChanged() {
-            return this.dateStatusChanged;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The friendly_name </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The workspace_sid </returns> 
-        public string GetWorkspaceSid() {
-            return this.workspaceSid;
         }
     }
 }

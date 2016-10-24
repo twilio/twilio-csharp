@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
 
-    public class MemberResource : SidResource {
+    public class MemberResource : Resource {
         /// <summary>
         /// fetch
         /// </summary>
@@ -72,23 +72,23 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         }
     
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("channel_sid")]
-        private readonly string channelSid;
+        public string channelSid { get; }
         [JsonProperty("service_sid")]
-        private readonly string serviceSid;
+        public string serviceSid { get; }
         [JsonProperty("identity")]
-        private readonly string identity;
+        public string identity { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("role_sid")]
-        private readonly string roleSid;
+        public string roleSid { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
     
         public MemberResource() {
         
@@ -121,51 +121,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.roleSid = roleSid;
             this.url = url;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The channel_sid </returns> 
-        public string GetChannelSid() {
-            return this.channelSid;
-        }
-    
-        /// <returns> The service_sid </returns> 
-        public string GetServiceSid() {
-            return this.serviceSid;
-        }
-    
-        /// <returns> The identity </returns> 
-        public string GetIdentity() {
-            return this.identity;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The role_sid </returns> 
-        public string GetRoleSid() {
-            return this.roleSid;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
         }
     }
 }

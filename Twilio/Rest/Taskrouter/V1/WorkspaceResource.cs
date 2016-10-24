@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Taskrouter.V1 {
 
-    public class WorkspaceResource : SidResource {
+    public class WorkspaceResource : Resource {
         /// <summary>
         /// fetch
         /// </summary>
@@ -74,29 +74,29 @@ namespace Twilio.Rest.Taskrouter.V1 {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("default_activity_name")]
-        private readonly string defaultActivityName;
+        public string defaultActivityName { get; }
         [JsonProperty("default_activity_sid")]
-        private readonly string defaultActivitySid;
+        public string defaultActivitySid { get; }
         [JsonProperty("event_callback_url")]
-        private readonly Uri eventCallbackUrl;
+        public Uri eventCallbackUrl { get; }
         [JsonProperty("events_filter")]
-        private readonly string eventsFilter;
+        public string eventsFilter { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("multi_task_enabled")]
-        private readonly bool? multiTaskEnabled;
+        public bool? multiTaskEnabled { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("timeout_activity_name")]
-        private readonly string timeoutActivityName;
+        public string timeoutActivityName { get; }
         [JsonProperty("timeout_activity_sid")]
-        private readonly string timeoutActivitySid;
+        public string timeoutActivitySid { get; }
     
         public WorkspaceResource() {
         
@@ -138,66 +138,6 @@ namespace Twilio.Rest.Taskrouter.V1 {
             this.sid = sid;
             this.timeoutActivityName = timeoutActivityName;
             this.timeoutActivitySid = timeoutActivitySid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The default_activity_name </returns> 
-        public string GetDefaultActivityName() {
-            return this.defaultActivityName;
-        }
-    
-        /// <returns> The default_activity_sid </returns> 
-        public string GetDefaultActivitySid() {
-            return this.defaultActivitySid;
-        }
-    
-        /// <returns> The event_callback_url </returns> 
-        public Uri GetEventCallbackUrl() {
-            return this.eventCallbackUrl;
-        }
-    
-        /// <returns> The events_filter </returns> 
-        public string GetEventsFilter() {
-            return this.eventsFilter;
-        }
-    
-        /// <returns> The friendly_name </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The multi_task_enabled </returns> 
-        public bool? GetMultiTaskEnabled() {
-            return this.multiTaskEnabled;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The timeout_activity_name </returns> 
-        public string GetTimeoutActivityName() {
-            return this.timeoutActivityName;
-        }
-    
-        /// <returns> The timeout_activity_sid </returns> 
-        public string GetTimeoutActivitySid() {
-            return this.timeoutActivitySid;
         }
     }
 }

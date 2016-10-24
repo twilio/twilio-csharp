@@ -130,18 +130,18 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("issues")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly List<FeedbackResource.Issues> issues;
+        public List<FeedbackResource.Issues> issues { get; }
         [JsonProperty("quality_score")]
-        private readonly int? qualityScore;
+        public int? qualityScore { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
     
         public FeedbackResource() {
         
@@ -165,36 +165,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
             this.issues = issues;
             this.qualityScore = qualityScore;
             this.sid = sid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The issues </returns> 
-        public List<FeedbackResource.Issues> GetIssues() {
-            return this.issues;
-        }
-    
-        /// <returns> 1 to 5 quality score </returns> 
-        public int? GetQualityScore() {
-            return this.qualityScore;
-        }
-    
-        /// <returns> The sid </returns> 
-        public string GetSid() {
-            return this.sid;
         }
     }
 }

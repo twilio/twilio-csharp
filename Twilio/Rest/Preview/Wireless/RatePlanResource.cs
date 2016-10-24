@@ -8,7 +8,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Preview.Wireless {
 
-    public class RatePlanResource : SidResource {
+    public class RatePlanResource : Resource {
         /// <summary>
         /// read
         /// </summary>
@@ -44,35 +44,35 @@ namespace Twilio.Rest.Preview.Wireless {
         }
     
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("alias")]
-        private readonly string alias;
+        public string alias { get; }
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("data_metering")]
-        private readonly string dataMetering;
+        public string dataMetering { get; }
         [JsonProperty("capabilities")]
-        private readonly Object capabilities;
+        public Object capabilities { get; }
         [JsonProperty("voice_cap")]
-        private readonly int? voiceCap;
+        public int? voiceCap { get; }
         [JsonProperty("messaging_cap")]
-        private readonly int? messagingCap;
+        public int? messagingCap { get; }
         [JsonProperty("commands_cap")]
-        private readonly int? commandsCap;
+        public int? commandsCap { get; }
         [JsonProperty("data_cap")]
-        private readonly int? dataCap;
+        public int? dataCap { get; }
         [JsonProperty("cap_period")]
-        private readonly int? capPeriod;
+        public int? capPeriod { get; }
         [JsonProperty("cap_unit")]
-        private readonly string capUnit;
+        public string capUnit { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
     
         public RatePlanResource() {
         
@@ -123,81 +123,6 @@ namespace Twilio.Rest.Preview.Wireless {
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.url = url;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The alias </returns> 
-        public string GetAlias() {
-            return this.alias;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The friendly_name </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The data_metering </returns> 
-        public string GetDataMetering() {
-            return this.dataMetering;
-        }
-    
-        /// <returns> The capabilities </returns> 
-        public Object GetCapabilities() {
-            return this.capabilities;
-        }
-    
-        /// <returns> The voice_cap </returns> 
-        public int? GetVoiceCap() {
-            return this.voiceCap;
-        }
-    
-        /// <returns> The messaging_cap </returns> 
-        public int? GetMessagingCap() {
-            return this.messagingCap;
-        }
-    
-        /// <returns> The commands_cap </returns> 
-        public int? GetCommandsCap() {
-            return this.commandsCap;
-        }
-    
-        /// <returns> The data_cap </returns> 
-        public int? GetDataCap() {
-            return this.dataCap;
-        }
-    
-        /// <returns> The cap_period </returns> 
-        public int? GetCapPeriod() {
-            return this.capPeriod;
-        }
-    
-        /// <returns> The cap_unit </returns> 
-        public string GetCapUnit() {
-            return this.capUnit;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
         }
     }
 }

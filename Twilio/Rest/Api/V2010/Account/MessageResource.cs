@@ -9,7 +9,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account {
 
-    public class MessageResource : SidResource {
+    public class MessageResource : Resource {
         public sealed class Status : IStringEnum {
             public const string QUEUED="queued";
             public const string SENDING="sending";
@@ -282,46 +282,46 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("api_version")]
-        private readonly string apiVersion;
+        public string apiVersion { get; }
         [JsonProperty("body")]
-        private readonly string body;
+        public string body { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("date_sent")]
-        private readonly DateTime? dateSent;
+        public DateTime? dateSent { get; }
         [JsonProperty("direction")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly MessageResource.Direction direction;
+        public MessageResource.Direction direction { get; }
         [JsonProperty("error_code")]
-        private readonly int? errorCode;
+        public int? errorCode { get; }
         [JsonProperty("error_message")]
-        private readonly string errorMessage;
+        public string errorMessage { get; }
         [JsonProperty("from")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        private readonly Twilio.Types.PhoneNumber from;
+        public Twilio.Types.PhoneNumber from { get; }
         [JsonProperty("num_media")]
-        private readonly string numMedia;
+        public string numMedia { get; }
         [JsonProperty("num_segments")]
-        private readonly string numSegments;
+        public string numSegments { get; }
         [JsonProperty("price")]
-        private readonly decimal? price;
+        public decimal? price { get; }
         [JsonProperty("price_unit")]
-        private readonly string priceUnit;
+        public string priceUnit { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly MessageResource.Status status;
+        public MessageResource.Status status { get; }
         [JsonProperty("subresource_uris")]
-        private readonly Dictionary<string, string> subresourceUris;
+        public Dictionary<string, string> subresourceUris { get; }
         [JsonProperty("to")]
-        private readonly string to;
+        public string to { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
     
         public MessageResource() {
         
@@ -384,101 +384,6 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.subresourceUris = subresourceUris;
             this.to = to;
             this.uri = uri;
-        }
-    
-        /// <returns> The unique sid that identifies this account </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The version of the Twilio API used to process the message. </returns> 
-        public string GetApiVersion() {
-            return this.apiVersion;
-        }
-    
-        /// <returns> The text body of the message. Up to 1600 characters long. </returns> 
-        public string GetBody() {
-            return this.body;
-        }
-    
-        /// <returns> The date this resource was created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date this resource was last updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The date the message was sent </returns> 
-        public DateTime? GetDateSent() {
-            return this.dateSent;
-        }
-    
-        /// <returns> The direction of the message </returns> 
-        public MessageResource.Direction GetDirection() {
-            return this.direction;
-        }
-    
-        /// <returns> The error code associated with the message </returns> 
-        public int? GetErrorCode() {
-            return this.errorCode;
-        }
-    
-        /// <returns> Human readable description of the ErrorCode </returns> 
-        public string GetErrorMessage() {
-            return this.errorMessage;
-        }
-    
-        /// <returns> The phone number that initiated the message </returns> 
-        public Twilio.Types.PhoneNumber GetFrom() {
-            return this.from;
-        }
-    
-        /// <returns> Number of media files associated with the message </returns> 
-        public string GetNumMedia() {
-            return this.numMedia;
-        }
-    
-        /// <returns> Indicates number of messages used to delivery the body </returns> 
-        public string GetNumSegments() {
-            return this.numSegments;
-        }
-    
-        /// <returns> The amount billed for the message </returns> 
-        public decimal? GetPrice() {
-            return this.price;
-        }
-    
-        /// <returns> The currency in which Price is measured </returns> 
-        public string GetPriceUnit() {
-            return this.priceUnit;
-        }
-    
-        /// <returns> A string that uniquely identifies this message </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The status of this message </returns> 
-        public MessageResource.Status GetStatus() {
-            return this.status;
-        }
-    
-        /// <returns> The subresource_uris </returns> 
-        public Dictionary<string, string> GetSubresourceUris() {
-            return this.subresourceUris;
-        }
-    
-        /// <returns> The phone number that received the message </returns> 
-        public string GetTo() {
-            return this.to;
-        }
-    
-        /// <returns> The URI for this resource </returns> 
-        public string GetUri() {
-            return this.uri;
         }
     }
 }

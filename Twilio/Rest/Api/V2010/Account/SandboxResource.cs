@@ -63,37 +63,37 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
     
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("pin")]
-        private readonly int? pin;
+        public int? pin { get; }
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        private readonly Twilio.Types.PhoneNumber phoneNumber;
+        public Twilio.Types.PhoneNumber phoneNumber { get; }
         [JsonProperty("application_sid")]
-        private readonly string applicationSid;
+        public string applicationSid { get; }
         [JsonProperty("api_version")]
-        private readonly string apiVersion;
+        public string apiVersion { get; }
         [JsonProperty("voice_url")]
-        private readonly Uri voiceUrl;
+        public Uri voiceUrl { get; }
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly Twilio.Http.HttpMethod voiceMethod;
+        public Twilio.Http.HttpMethod voiceMethod { get; }
         [JsonProperty("sms_url")]
-        private readonly Uri smsUrl;
+        public Uri smsUrl { get; }
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly Twilio.Http.HttpMethod smsMethod;
+        public Twilio.Http.HttpMethod smsMethod { get; }
         [JsonProperty("status_callback")]
-        private readonly Uri statusCallback;
+        public Uri statusCallback { get; }
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly Twilio.Http.HttpMethod statusCallbackMethod;
+        public Twilio.Http.HttpMethod statusCallbackMethod { get; }
         [JsonProperty("uri")]
-        private readonly Uri uri;
+        public Uri uri { get; }
     
         public SandboxResource() {
         
@@ -141,76 +141,6 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.statusCallback = statusCallback;
             this.statusCallbackMethod = statusCallbackMethod;
             this.uri = uri;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The pin </returns> 
-        public int? GetPin() {
-            return this.pin;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The phone_number </returns> 
-        public Twilio.Types.PhoneNumber GetPhoneNumber() {
-            return this.phoneNumber;
-        }
-    
-        /// <returns> The application_sid </returns> 
-        public string GetApplicationSid() {
-            return this.applicationSid;
-        }
-    
-        /// <returns> The api_version </returns> 
-        public string GetApiVersion() {
-            return this.apiVersion;
-        }
-    
-        /// <returns> The voice_url </returns> 
-        public Uri GetVoiceUrl() {
-            return this.voiceUrl;
-        }
-    
-        /// <returns> The voice_method </returns> 
-        public Twilio.Http.HttpMethod GetVoiceMethod() {
-            return this.voiceMethod;
-        }
-    
-        /// <returns> The sms_url </returns> 
-        public Uri GetSmsUrl() {
-            return this.smsUrl;
-        }
-    
-        /// <returns> The sms_method </returns> 
-        public Twilio.Http.HttpMethod GetSmsMethod() {
-            return this.smsMethod;
-        }
-    
-        /// <returns> The status_callback </returns> 
-        public Uri GetStatusCallback() {
-            return this.statusCallback;
-        }
-    
-        /// <returns> The status_callback_method </returns> 
-        public Twilio.Http.HttpMethod GetStatusCallbackMethod() {
-            return this.statusCallbackMethod;
-        }
-    
-        /// <returns> The uri </returns> 
-        public Uri GetUri() {
-            return this.uri;
         }
     }
 }

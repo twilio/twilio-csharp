@@ -46,19 +46,19 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("ice_servers")]
-        private readonly List<IceServer> iceServers;
+        public List<IceServer> iceServers { get; }
         [JsonProperty("password")]
-        private readonly string password;
+        public string password { get; }
         [JsonProperty("ttl")]
-        private readonly string ttl;
+        public string ttl { get; }
         [JsonProperty("username")]
-        private readonly string username;
+        public string username { get; }
     
         public TokenResource() {
         
@@ -85,41 +85,6 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.password = password;
             this.ttl = ttl;
             this.username = username;
-        }
-    
-        /// <returns> The unique sid that identifies this account </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The date this resource was created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date this resource was last updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> An array representing the ephemeral credentials </returns> 
-        public List<IceServer> GetIceServers() {
-            return this.iceServers;
-        }
-    
-        /// <returns> The temporary password used for authenticating </returns> 
-        public string GetPassword() {
-            return this.password;
-        }
-    
-        /// <returns> The duration in seconds the credentials are valid </returns> 
-        public string GetTtl() {
-            return this.ttl;
-        }
-    
-        /// <returns> The temporary username that uniquely identifies a Token. </returns> 
-        public string GetUsername() {
-            return this.username;
         }
     }
 }

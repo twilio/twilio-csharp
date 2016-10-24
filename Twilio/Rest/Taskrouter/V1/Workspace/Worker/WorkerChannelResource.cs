@@ -9,7 +9,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
 
-    public class WorkerChannelResource : SidResource {
+    public class WorkerChannelResource : Resource {
         /// <summary>
         /// read
         /// </summary>
@@ -61,33 +61,33 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("assigned_tasks")]
-        private readonly int? assignedTasks;
+        public int? assignedTasks { get; }
         [JsonProperty("available")]
-        private readonly bool? available;
+        public bool? available { get; }
         [JsonProperty("available_capacity_percentage")]
-        private readonly int? availableCapacityPercentage;
+        public int? availableCapacityPercentage { get; }
         [JsonProperty("configured_capacity")]
-        private readonly int? configuredCapacity;
+        public int? configuredCapacity { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("task_channel_sid")]
-        private readonly string taskChannelSid;
+        public string taskChannelSid { get; }
         [JsonProperty("task_channel_unique_name")]
-        private readonly string taskChannelUniqueName;
+        public string taskChannelUniqueName { get; }
         [JsonProperty("worker_sid")]
-        private readonly string workerSid;
+        public string workerSid { get; }
         [JsonProperty("workspace_sid")]
-        private readonly string workspaceSid;
+        public string workspaceSid { get; }
         [JsonProperty("links")]
-        private readonly Dictionary<string, string> links;
+        public Dictionary<string, string> links { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
     
         public WorkerChannelResource() {
         
@@ -135,76 +135,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
             this.workspaceSid = workspaceSid;
             this.links = links;
             this.url = url;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The assigned_tasks </returns> 
-        public int? GetAssignedTasks() {
-            return this.assignedTasks;
-        }
-    
-        /// <returns> The available </returns> 
-        public bool? GetAvailable() {
-            return this.available;
-        }
-    
-        /// <returns> The available_capacity_percentage </returns> 
-        public int? GetAvailableCapacityPercentage() {
-            return this.availableCapacityPercentage;
-        }
-    
-        /// <returns> The configured_capacity </returns> 
-        public int? GetConfiguredCapacity() {
-            return this.configuredCapacity;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The task_channel_sid </returns> 
-        public string GetTaskChannelSid() {
-            return this.taskChannelSid;
-        }
-    
-        /// <returns> The task_channel_unique_name </returns> 
-        public string GetTaskChannelUniqueName() {
-            return this.taskChannelUniqueName;
-        }
-    
-        /// <returns> The worker_sid </returns> 
-        public string GetWorkerSid() {
-            return this.workerSid;
-        }
-    
-        /// <returns> The workspace_sid </returns> 
-        public string GetWorkspaceSid() {
-            return this.workspaceSid;
-        }
-    
-        /// <returns> The links </returns> 
-        public Dictionary<string, string> GetLinks() {
-            return this.links;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
         }
     }
 }

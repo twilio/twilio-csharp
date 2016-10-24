@@ -9,7 +9,7 @@ using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account {
 
-    public class IncomingPhoneNumberResource : SidResource {
+    public class IncomingPhoneNumberResource : Resource {
         public sealed class AddressRequirement : IStringEnum {
             public const string NONE="none";
             public const string ANY="any";
@@ -181,62 +181,62 @@ namespace Twilio.Rest.Api.V2010.Account {
         }
     
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("address_requirements")]
         [JsonConverter(typeof(StringEnumConverter))]
-        private readonly IncomingPhoneNumberResource.AddressRequirement addressRequirements;
+        public IncomingPhoneNumberResource.AddressRequirement addressRequirements { get; }
         [JsonProperty("api_version")]
-        private readonly string apiVersion;
+        public string apiVersion { get; }
         [JsonProperty("beta")]
-        private readonly bool? beta;
+        public bool? beta { get; }
         [JsonProperty("capabilities")]
-        private readonly PhoneNumberCapabilities capabilities;
+        public PhoneNumberCapabilities capabilities { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        private readonly Twilio.Types.PhoneNumber phoneNumber;
+        public Twilio.Types.PhoneNumber phoneNumber { get; }
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("sms_application_sid")]
-        private readonly string smsApplicationSid;
+        public string smsApplicationSid { get; }
         [JsonProperty("sms_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly Twilio.Http.HttpMethod smsFallbackMethod;
+        public Twilio.Http.HttpMethod smsFallbackMethod { get; }
         [JsonProperty("sms_fallback_url")]
-        private readonly Uri smsFallbackUrl;
+        public Uri smsFallbackUrl { get; }
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly Twilio.Http.HttpMethod smsMethod;
+        public Twilio.Http.HttpMethod smsMethod { get; }
         [JsonProperty("sms_url")]
-        private readonly Uri smsUrl;
+        public Uri smsUrl { get; }
         [JsonProperty("status_callback")]
-        private readonly Uri statusCallback;
+        public Uri statusCallback { get; }
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly Twilio.Http.HttpMethod statusCallbackMethod;
+        public Twilio.Http.HttpMethod statusCallbackMethod { get; }
         [JsonProperty("trunk_sid")]
-        private readonly string trunkSid;
+        public string trunkSid { get; }
         [JsonProperty("uri")]
-        private readonly string uri;
+        public string uri { get; }
         [JsonProperty("voice_application_sid")]
-        private readonly string voiceApplicationSid;
+        public string voiceApplicationSid { get; }
         [JsonProperty("voice_caller_id_lookup")]
-        private readonly bool? voiceCallerIdLookup;
+        public bool? voiceCallerIdLookup { get; }
         [JsonProperty("voice_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly Twilio.Http.HttpMethod voiceFallbackMethod;
+        public Twilio.Http.HttpMethod voiceFallbackMethod { get; }
         [JsonProperty("voice_fallback_url")]
-        private readonly Uri voiceFallbackUrl;
+        public Uri voiceFallbackUrl { get; }
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        private readonly Twilio.Http.HttpMethod voiceMethod;
+        public Twilio.Http.HttpMethod voiceMethod { get; }
         [JsonProperty("voice_url")]
-        private readonly Uri voiceUrl;
+        public Uri voiceUrl { get; }
     
         public IncomingPhoneNumberResource() {
         
@@ -317,131 +317,6 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.voiceFallbackUrl = voiceFallbackUrl;
             this.voiceMethod = voiceMethod;
             this.voiceUrl = voiceUrl;
-        }
-    
-        /// <returns> The unique sid that identifies this account </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> Indicates if the customer requires an address </returns> 
-        public IncomingPhoneNumberResource.AddressRequirement GetAddressRequirements() {
-            return this.addressRequirements;
-        }
-    
-        /// <returns> The Twilio REST API version to use </returns> 
-        public string GetApiVersion() {
-            return this.apiVersion;
-        }
-    
-        /// <returns> Indicates if the phone number is a beta number </returns> 
-        public bool? GetBeta() {
-            return this.beta;
-        }
-    
-        /// <returns> Indicate if a phone can receive calls or messages </returns> 
-        public PhoneNumberCapabilities GetCapabilities() {
-            return this.capabilities;
-        }
-    
-        /// <returns> The date this resource was created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date this resource was last updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> A human readable description of this resouce </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The incoming phone number </returns> 
-        public Twilio.Types.PhoneNumber GetPhoneNumber() {
-            return this.phoneNumber;
-        }
-    
-        /// <returns> A string that uniquely identifies this resource </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> Unique string that identifies the application </returns> 
-        public string GetSmsApplicationSid() {
-            return this.smsApplicationSid;
-        }
-    
-        /// <returns> HTTP method used with sms fallback url </returns> 
-        public Twilio.Http.HttpMethod GetSmsFallbackMethod() {
-            return this.smsFallbackMethod;
-        }
-    
-        /// <returns> URL Twilio will request if an error occurs in executing TwiML </returns> 
-        public Uri GetSmsFallbackUrl() {
-            return this.smsFallbackUrl;
-        }
-    
-        /// <returns> HTTP method to use with sms url </returns> 
-        public Twilio.Http.HttpMethod GetSmsMethod() {
-            return this.smsMethod;
-        }
-    
-        /// <returns> URL Twilio will request when receiving an SMS </returns> 
-        public Uri GetSmsUrl() {
-            return this.smsUrl;
-        }
-    
-        /// <returns> URL Twilio will use to pass status parameters </returns> 
-        public Uri GetStatusCallback() {
-            return this.statusCallback;
-        }
-    
-        /// <returns> HTTP method twilio will use with status callback </returns> 
-        public Twilio.Http.HttpMethod GetStatusCallbackMethod() {
-            return this.statusCallbackMethod;
-        }
-    
-        /// <returns> Unique string to identify the trunk </returns> 
-        public string GetTrunkSid() {
-            return this.trunkSid;
-        }
-    
-        /// <returns> The URI for this resource </returns> 
-        public string GetUri() {
-            return this.uri;
-        }
-    
-        /// <returns> The unique sid of the application to handle this number </returns> 
-        public string GetVoiceApplicationSid() {
-            return this.voiceApplicationSid;
-        }
-    
-        /// <returns> Look up the caller's caller-ID </returns> 
-        public bool? GetVoiceCallerIdLookup() {
-            return this.voiceCallerIdLookup;
-        }
-    
-        /// <returns> HTTP method used with fallback_url </returns> 
-        public Twilio.Http.HttpMethod GetVoiceFallbackMethod() {
-            return this.voiceFallbackMethod;
-        }
-    
-        /// <returns> URL Twilio will request when an error occurs in TwiML </returns> 
-        public Uri GetVoiceFallbackUrl() {
-            return this.voiceFallbackUrl;
-        }
-    
-        /// <returns> HTTP method used with the voice url </returns> 
-        public Twilio.Http.HttpMethod GetVoiceMethod() {
-            return this.voiceMethod;
-        }
-    
-        /// <returns> URL Twilio will request when receiving a call </returns> 
-        public Uri GetVoiceUrl() {
-            return this.voiceUrl;
         }
     }
 }

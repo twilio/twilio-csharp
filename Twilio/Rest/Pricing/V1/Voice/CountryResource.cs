@@ -10,7 +10,7 @@ using Twilio.Types;
 
 namespace Twilio.Rest.Pricing.V1.Voice {
 
-    public class CountryResource : SidResource {
+    public class CountryResource : Resource {
         /// <summary>
         /// read
         /// </summary>
@@ -46,17 +46,17 @@ namespace Twilio.Rest.Pricing.V1.Voice {
         }
     
         [JsonProperty("country")]
-        private readonly string country;
+        public string country { get; }
         [JsonProperty("iso_country")]
-        private readonly string isoCountry;
+        public string isoCountry { get; }
         [JsonProperty("outbound_prefix_prices")]
-        private readonly List<OutboundPrefixPrice> outboundPrefixPrices;
+        public List<OutboundPrefixPrice> outboundPrefixPrices { get; }
         [JsonProperty("inbound_call_prices")]
-        private readonly List<InboundCallPrice> inboundCallPrices;
+        public List<InboundCallPrice> inboundCallPrices { get; }
         [JsonProperty("price_unit")]
-        private readonly string priceUnit;
+        public string priceUnit { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
     
         public CountryResource() {
         
@@ -80,41 +80,6 @@ namespace Twilio.Rest.Pricing.V1.Voice {
             this.inboundCallPrices = inboundCallPrices;
             this.priceUnit = priceUnit;
             this.url = url;
-        }
-    
-        /// <returns> The iso_country </returns> 
-        public override string GetSid() {
-            return this.GetIsoCountry();
-        }
-    
-        /// <returns> The country </returns> 
-        public string GetCountry() {
-            return this.country;
-        }
-    
-        /// <returns> The iso_country </returns> 
-        public string GetIsoCountry() {
-            return this.isoCountry;
-        }
-    
-        /// <returns> The outbound_prefix_prices </returns> 
-        public List<OutboundPrefixPrice> GetOutboundPrefixPrices() {
-            return this.outboundPrefixPrices;
-        }
-    
-        /// <returns> The inbound_call_prices </returns> 
-        public List<InboundCallPrice> GetInboundCallPrices() {
-            return this.inboundCallPrices;
-        }
-    
-        /// <returns> The price_unit </returns> 
-        public string GetPriceUnit() {
-            return this.priceUnit;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
         }
     }
 }

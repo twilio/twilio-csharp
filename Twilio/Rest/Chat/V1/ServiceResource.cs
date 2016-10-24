@@ -9,7 +9,7 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Chat.V1 {
 
-    public class ServiceResource : SidResource {
+    public class ServiceResource : Resource {
         /// <summary>
         /// fetch
         /// </summary>
@@ -75,33 +75,33 @@ namespace Twilio.Rest.Chat.V1 {
         }
     
         [JsonProperty("sid")]
-        private readonly string sid;
+        public string sid { get; }
         [JsonProperty("account_sid")]
-        private readonly string accountSid;
+        public string accountSid { get; }
         [JsonProperty("friendly_name")]
-        private readonly string friendlyName;
+        public string friendlyName { get; }
         [JsonProperty("date_created")]
-        private readonly DateTime? dateCreated;
+        public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
-        private readonly DateTime? dateUpdated;
+        public DateTime? dateUpdated { get; }
         [JsonProperty("default_service_role_sid")]
-        private readonly string defaultServiceRoleSid;
+        public string defaultServiceRoleSid { get; }
         [JsonProperty("default_channel_role_sid")]
-        private readonly string defaultChannelRoleSid;
+        public string defaultChannelRoleSid { get; }
         [JsonProperty("default_channel_creator_role_sid")]
-        private readonly string defaultChannelCreatorRoleSid;
+        public string defaultChannelCreatorRoleSid { get; }
         [JsonProperty("read_status_enabled")]
-        private readonly bool? readStatusEnabled;
+        public bool? readStatusEnabled { get; }
         [JsonProperty("typing_indicator_timeout")]
-        private readonly int? typingIndicatorTimeout;
+        public int? typingIndicatorTimeout { get; }
         [JsonProperty("consumption_report_interval")]
-        private readonly int? consumptionReportInterval;
+        public int? consumptionReportInterval { get; }
         [JsonProperty("webhooks")]
-        private readonly Object webhooks;
+        public Object webhooks { get; }
         [JsonProperty("url")]
-        private readonly Uri url;
+        public Uri url { get; }
         [JsonProperty("links")]
-        private readonly Dictionary<string, string> links;
+        public Dictionary<string, string> links { get; }
     
         public ServiceResource() {
         
@@ -149,76 +149,6 @@ namespace Twilio.Rest.Chat.V1 {
             this.webhooks = webhooks;
             this.url = url;
             this.links = links;
-        }
-    
-        /// <returns> The sid </returns> 
-        public override string GetSid() {
-            return this.sid;
-        }
-    
-        /// <returns> The account_sid </returns> 
-        public string GetAccountSid() {
-            return this.accountSid;
-        }
-    
-        /// <returns> The friendly_name </returns> 
-        public string GetFriendlyName() {
-            return this.friendlyName;
-        }
-    
-        /// <returns> The date_created </returns> 
-        public DateTime? GetDateCreated() {
-            return this.dateCreated;
-        }
-    
-        /// <returns> The date_updated </returns> 
-        public DateTime? GetDateUpdated() {
-            return this.dateUpdated;
-        }
-    
-        /// <returns> The default_service_role_sid </returns> 
-        public string GetDefaultServiceRoleSid() {
-            return this.defaultServiceRoleSid;
-        }
-    
-        /// <returns> The default_channel_role_sid </returns> 
-        public string GetDefaultChannelRoleSid() {
-            return this.defaultChannelRoleSid;
-        }
-    
-        /// <returns> The default_channel_creator_role_sid </returns> 
-        public string GetDefaultChannelCreatorRoleSid() {
-            return this.defaultChannelCreatorRoleSid;
-        }
-    
-        /// <returns> The read_status_enabled </returns> 
-        public bool? GetReadStatusEnabled() {
-            return this.readStatusEnabled;
-        }
-    
-        /// <returns> The typing_indicator_timeout </returns> 
-        public int? GetTypingIndicatorTimeout() {
-            return this.typingIndicatorTimeout;
-        }
-    
-        /// <returns> The consumption_report_interval </returns> 
-        public int? GetConsumptionReportInterval() {
-            return this.consumptionReportInterval;
-        }
-    
-        /// <returns> The webhooks </returns> 
-        public Object GetWebhooks() {
-            return this.webhooks;
-        }
-    
-        /// <returns> The url </returns> 
-        public Uri GetUrl() {
-            return this.url;
-        }
-    
-        /// <returns> The links </returns> 
-        public Dictionary<string, string> GetLinks() {
-            return this.links;
         }
     }
 }
