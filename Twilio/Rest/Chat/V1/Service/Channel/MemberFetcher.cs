@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Chat.V1.Service.Channel {
 
     public class MemberFetcher : Fetcher<MemberResource> {
-        private string serviceSid;
-        private string channelSid;
-        private string sid;
+        public string serviceSid { get; }
+        public string channelSid { get; }
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new MemberFetcher

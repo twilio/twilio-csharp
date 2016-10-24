@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Trunking.V1.Trunk {
 
     public class IpAccessControlListReader : Reader<IpAccessControlListResource> {
-        private string trunkSid;
+        public string trunkSid { get; }
     
         /// <summary>
         /// Construct a new IpAccessControlListReader

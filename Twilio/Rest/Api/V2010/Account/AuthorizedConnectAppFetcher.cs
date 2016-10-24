@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class AuthorizedConnectAppFetcher : Fetcher<AuthorizedConnectAppResource> {
-        private string accountSid;
-        private string connectAppSid;
+        public string accountSid { get; }
+        public string connectAppSid { get; }
     
         /// <summary>
         /// Construct a new AuthorizedConnectAppFetcher.

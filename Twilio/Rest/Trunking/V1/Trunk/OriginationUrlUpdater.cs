@@ -12,13 +12,13 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Trunking.V1.Trunk {
 
     public class OriginationUrlUpdater : Updater<OriginationUrlResource> {
-        private string trunkSid;
-        private string sid;
-        private int? weight;
-        private int? priority;
-        private bool? enabled;
-        private string friendlyName;
-        private Uri sipUrl;
+        public string trunkSid { get; }
+        public string sid { get; }
+        public int? weight { get; set; }
+        public int? priority { get; set; }
+        public bool? enabled { get; set; }
+        public string friendlyName { get; set; }
+        public Uri sipUrl { get; set; }
     
         /// <summary>
         /// Construct a new OriginationUrlUpdater
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
                 Domains.TRUNKING,
                 "/v1/Trunks/" + this.trunkSid + "/OriginationUrls/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -149,7 +149,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
                 Domains.TRUNKING,
                 "/v1/Trunks/" + this.trunkSid + "/OriginationUrls/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -181,7 +181,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (weight != null) {
                 request.AddPostParam("Weight", weight.ToString());
             }

@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class AddressReader : Reader<AddressResource> {
-        private string accountSid;
-        private string customerName;
-        private string friendlyName;
-        private string isoCountry;
+        public string accountSid { get; }
+        public string customerName { get; set; }
+        public string friendlyName { get; set; }
+        public string isoCountry { get; set; }
     
         /// <summary>
         /// Construct a new AddressReader.

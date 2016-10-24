@@ -10,24 +10,24 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
 
     public class TollFreeReader : Reader<TollFreeResource> {
-        private string accountSid;
-        private string countryCode;
-        private int? areaCode;
-        private string contains;
-        private bool? smsEnabled;
-        private bool? mmsEnabled;
-        private bool? voiceEnabled;
-        private bool? excludeAllAddressRequired;
-        private bool? excludeLocalAddressRequired;
-        private bool? excludeForeignAddressRequired;
-        private bool? beta;
-        private Twilio.Types.PhoneNumber nearNumber;
-        private string nearLatLong;
-        private int? distance;
-        private string inPostalCode;
-        private string inRegion;
-        private string inRateCenter;
-        private string inLata;
+        public string accountSid { get; }
+        public string countryCode { get; }
+        public int? areaCode { get; set; }
+        public string contains { get; set; }
+        public bool? smsEnabled { get; set; }
+        public bool? mmsEnabled { get; set; }
+        public bool? voiceEnabled { get; set; }
+        public bool? excludeAllAddressRequired { get; set; }
+        public bool? excludeLocalAddressRequired { get; set; }
+        public bool? excludeForeignAddressRequired { get; set; }
+        public bool? beta { get; set; }
+        public Twilio.Types.PhoneNumber nearNumber { get; set; }
+        public string nearLatLong { get; set; }
+        public int? distance { get; set; }
+        public string inPostalCode { get; set; }
+        public string inRegion { get; set; }
+        public string inRateCenter { get; set; }
+        public string inLata { get; set; }
     
         /// <summary>
         /// Construct a new TollFreeReader.

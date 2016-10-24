@@ -12,16 +12,16 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
     public class EventReader : Reader<EventResource> {
-        private string workspaceSid;
-        private DateTime? endDate;
-        private string eventType;
-        private int? minutes;
-        private string reservationSid;
-        private DateTime? startDate;
-        private string taskQueueSid;
-        private string taskSid;
-        private string workerSid;
-        private string workflowSid;
+        public string workspaceSid { get; }
+        public DateTime? endDate { get; set; }
+        public string eventType { get; set; }
+        public int? minutes { get; set; }
+        public string reservationSid { get; set; }
+        public DateTime? startDate { get; set; }
+        public string taskQueueSid { get; set; }
+        public string taskSid { get; set; }
+        public string workerSid { get; set; }
+        public string workflowSid { get; set; }
     
         /// <summary>
         /// Construct a new EventReader

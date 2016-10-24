@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Recording {
 
     public class TranscriptionReader : Reader<TranscriptionResource> {
-        private string accountSid;
-        private string recordingSid;
+        public string accountSid { get; }
+        public string recordingSid { get; }
     
         /// <summary>
         /// Construct a new TranscriptionReader.

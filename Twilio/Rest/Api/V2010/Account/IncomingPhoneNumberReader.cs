@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class IncomingPhoneNumberReader : Reader<IncomingPhoneNumberResource> {
-        private string ownerAccountSid;
-        private bool? beta;
-        private string friendlyName;
-        private Twilio.Types.PhoneNumber phoneNumber;
+        public string ownerAccountSid { get; }
+        public bool? beta { get; set; }
+        public string friendlyName { get; set; }
+        public Twilio.Types.PhoneNumber phoneNumber { get; set; }
     
         /// <summary>
         /// Construct a new IncomingPhoneNumberReader.

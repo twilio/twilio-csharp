@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
 
     public class IpAddressFetcher : Fetcher<IpAddressResource> {
-        private string accountSid;
-        private string ipAccessControlListSid;
-        private string sid;
+        public string accountSid { get; }
+        public string ipAccessControlListSid { get; }
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new IpAddressFetcher.

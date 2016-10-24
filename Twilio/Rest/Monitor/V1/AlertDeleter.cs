@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Monitor.V1 {
 
     public class AlertDeleter : Deleter<AlertResource> {
-        private string sid;
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new AlertDeleter

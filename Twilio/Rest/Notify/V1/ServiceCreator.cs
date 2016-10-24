@@ -10,90 +10,13 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Notify.V1 {
 
     public class ServiceCreator : Creator<ServiceResource> {
-        private string friendlyName;
-        private string apnCredentialSid;
-        private string gcmCredentialSid;
-        private string messagingServiceSid;
-        private string facebookMessengerPageId;
-        private string defaultApnNotificationProtocolVersion;
-        private string defaultGcmNotificationProtocolVersion;
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public ServiceCreator setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The apn_credential_sid
-        /// </summary>
-        ///
-        /// <param name="apnCredentialSid"> The apn_credential_sid </param>
-        /// <returns> this </returns> 
-        public ServiceCreator setApnCredentialSid(string apnCredentialSid) {
-            this.apnCredentialSid = apnCredentialSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The gcm_credential_sid
-        /// </summary>
-        ///
-        /// <param name="gcmCredentialSid"> The gcm_credential_sid </param>
-        /// <returns> this </returns> 
-        public ServiceCreator setGcmCredentialSid(string gcmCredentialSid) {
-            this.gcmCredentialSid = gcmCredentialSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The messaging_service_sid
-        /// </summary>
-        ///
-        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
-        /// <returns> this </returns> 
-        public ServiceCreator setMessagingServiceSid(string messagingServiceSid) {
-            this.messagingServiceSid = messagingServiceSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The facebook_messenger_page_id
-        /// </summary>
-        ///
-        /// <param name="facebookMessengerPageId"> The facebook_messenger_page_id </param>
-        /// <returns> this </returns> 
-        public ServiceCreator setFacebookMessengerPageId(string facebookMessengerPageId) {
-            this.facebookMessengerPageId = facebookMessengerPageId;
-            return this;
-        }
-    
-        /// <summary>
-        /// The default_apn_notification_protocol_version
-        /// </summary>
-        ///
-        /// <param name="defaultApnNotificationProtocolVersion"> The default_apn_notification_protocol_version </param>
-        /// <returns> this </returns> 
-        public ServiceCreator setDefaultApnNotificationProtocolVersion(string defaultApnNotificationProtocolVersion) {
-            this.defaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion;
-            return this;
-        }
-    
-        /// <summary>
-        /// The default_gcm_notification_protocol_version
-        /// </summary>
-        ///
-        /// <param name="defaultGcmNotificationProtocolVersion"> The default_gcm_notification_protocol_version </param>
-        /// <returns> this </returns> 
-        public ServiceCreator setDefaultGcmNotificationProtocolVersion(string defaultGcmNotificationProtocolVersion) {
-            this.defaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion;
-            return this;
-        }
+        public string friendlyName { get; set; }
+        public string apnCredentialSid { get; set; }
+        public string gcmCredentialSid { get; set; }
+        public string messagingServiceSid { get; set; }
+        public string facebookMessengerPageId { get; set; }
+        public string defaultApnNotificationProtocolVersion { get; set; }
+        public string defaultGcmNotificationProtocolVersion { get; set; }
     
         #if NET40
         /// <summary>
@@ -104,12 +27,12 @@ namespace Twilio.Rest.Notify.V1 {
         /// <returns> Created ServiceResource </returns> 
         public override async Task<ServiceResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.NOTIFY,
                 "/v1/Services"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -144,12 +67,12 @@ namespace Twilio.Rest.Notify.V1 {
         /// <returns> Created ServiceResource </returns> 
         public override ServiceResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.NOTIFY,
                 "/v1/Services"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -180,7 +103,7 @@ namespace Twilio.Rest.Notify.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }

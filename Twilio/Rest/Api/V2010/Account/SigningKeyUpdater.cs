@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class SigningKeyUpdater : Updater<SigningKeyResource> {
-        private string accountSid;
-        private string sid;
-        private string friendlyName;
+        public string accountSid { get; }
+        public string sid { get; }
+        public string friendlyName { get; set; }
     
         /// <summary>
         /// Construct a new SigningKeyUpdater.
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SigningKeys/" + this.sid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Api.V2010.Account {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SigningKeys/" + this.sid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -130,7 +130,7 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }

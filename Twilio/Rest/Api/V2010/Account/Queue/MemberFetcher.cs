@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Queue {
 
     public class MemberFetcher : Fetcher<MemberResource> {
-        private string accountSid;
-        private string queueSid;
-        private string callSid;
+        public string accountSid { get; }
+        public string queueSid { get; }
+        public string callSid { get; }
     
         /// <summary>
         /// Construct a new MemberFetcher.

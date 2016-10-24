@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Preview.Wireless.Device {
 
     public class UsageFetcher : Fetcher<UsageResource> {
-        private string deviceSid;
-        private string end;
-        private string start;
+        public string deviceSid { get; }
+        public string end { get; set; }
+        public string start { get; set; }
     
         /// <summary>
         /// Construct a new UsageFetcher

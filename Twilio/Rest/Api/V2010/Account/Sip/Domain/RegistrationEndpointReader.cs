@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
 
     public class RegistrationEndpointReader : Reader<RegistrationEndpointResource> {
-        private string accountSid;
-        private string domainSid;
-        private string region;
-        private string registrant;
+        public string accountSid { get; }
+        public string domainSid { get; }
+        public string region { get; }
+        public string registrant { get; }
     
         /// <summary>
         /// Construct a new RegistrationEndpointReader.

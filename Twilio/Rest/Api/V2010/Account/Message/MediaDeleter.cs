@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Message {
 
     public class MediaDeleter : Deleter<MediaResource> {
-        private string accountSid;
-        private string messageSid;
-        private string sid;
+        public string accountSid { get; }
+        public string messageSid { get; }
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new MediaDeleter.

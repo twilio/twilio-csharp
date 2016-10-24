@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Message {
 
     public class FeedbackCreator : Creator<FeedbackResource> {
-        private string accountSid;
-        private string messageSid;
-        private FeedbackResource.Outcome outcome;
+        public string accountSid { get; }
+        public string messageSid { get; }
+        public FeedbackResource.Outcome outcome { get; set; }
     
         /// <summary>
         /// Construct a new FeedbackCreator.
@@ -34,17 +34,6 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
             this.messageSid = messageSid;
         }
     
-        /// <summary>
-        /// The outcome
-        /// </summary>
-        ///
-        /// <param name="outcome"> The outcome </param>
-        /// <returns> this </returns> 
-        public FeedbackCreator setOutcome(FeedbackResource.Outcome outcome) {
-            this.outcome = outcome;
-            return this;
-        }
-    
         #if NET40
         /// <summary>
         /// Make the request to the Twilio API to perform the create
@@ -54,12 +43,12 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
         /// <returns> Created FeedbackResource </returns> 
         public override async Task<FeedbackResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Messages/" + this.messageSid + "/Feedback.json"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -94,12 +83,12 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
         /// <returns> Created FeedbackResource </returns> 
         public override FeedbackResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Messages/" + this.messageSid + "/Feedback.json"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -130,7 +119,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (outcome != null) {
                 request.AddPostParam("Outcome", outcome.ToString());
             }

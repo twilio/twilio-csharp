@@ -12,13 +12,13 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Trunking.V1 {
 
     public class TrunkUpdater : Updater<TrunkResource> {
-        private string sid;
-        private string friendlyName;
-        private string domainName;
-        private Uri disasterRecoveryUrl;
-        private Twilio.Http.HttpMethod disasterRecoveryMethod;
-        private string recording;
-        private bool? secure;
+        public string sid { get; }
+        public string friendlyName { get; set; }
+        public string domainName { get; set; }
+        public Uri disasterRecoveryUrl { get; set; }
+        public Twilio.Http.HttpMethod disasterRecoveryMethod { get; set; }
+        public string recording { get; set; }
+        public bool? secure { get; set; }
     
         /// <summary>
         /// Construct a new TrunkUpdater
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Trunking.V1 {
                 Domains.TRUNKING,
                 "/v1/Trunks/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Trunking.V1 {
                 Domains.TRUNKING,
                 "/v1/Trunks/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -190,7 +190,7 @@ namespace Twilio.Rest.Trunking.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }

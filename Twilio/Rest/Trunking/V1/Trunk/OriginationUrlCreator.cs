@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Trunking.V1.Trunk {
 
     public class OriginationUrlCreator : Creator<OriginationUrlResource> {
-        private string trunkSid;
-        private int? weight;
-        private int? priority;
-        private bool? enabled;
-        private string friendlyName;
-        private Uri sipUrl;
+        public string trunkSid { get; }
+        public int? weight { get; }
+        public int? priority { get; }
+        public bool? enabled { get; }
+        public string friendlyName { get; }
+        public Uri sipUrl { get; }
     
         /// <summary>
         /// Construct a new OriginationUrlCreator
@@ -46,12 +46,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <returns> Created OriginationUrlResource </returns> 
         public override async Task<OriginationUrlResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.TRUNKING,
                 "/v1/Trunks/" + this.trunkSid + "/OriginationUrls"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -86,12 +86,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <returns> Created OriginationUrlResource </returns> 
         public override OriginationUrlResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.TRUNKING,
                 "/v1/Trunks/" + this.trunkSid + "/OriginationUrls"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -122,7 +122,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (weight != null) {
                 request.AddPostParam("Weight", weight.ToString());
             }

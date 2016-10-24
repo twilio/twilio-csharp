@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
-using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -13,16 +12,16 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class MessageCreator : Creator<MessageResource> {
-        private string accountSid;
-        private Twilio.Types.PhoneNumber to;
-        private Twilio.Types.PhoneNumber from;
-        private string messagingServiceSid;
-        private string body;
-        private List<Uri> mediaUrl;
-        private Uri statusCallback;
-        private string applicationSid;
-        private decimal? maxPrice;
-        private bool? provideFeedback;
+        public string accountSid { get; }
+        public Twilio.Types.PhoneNumber to { get; }
+        public Twilio.Types.PhoneNumber from { get; }
+        public string messagingServiceSid { get; }
+        public string body { get; }
+        public List<Uri> mediaUrl { get; }
+        public Uri statusCallback { get; set; }
+        public string applicationSid { get; set; }
+        public decimal? maxPrice { get; set; }
+        public bool? provideFeedback { get; set; }
     
         /// <summary>
         /// Construct a new MessageCreator.
@@ -136,61 +135,6 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.mediaUrl = mediaUrl;
         }
     
-        /// <summary>
-        /// The URL that Twilio will POST to each time your message status changes
-        /// </summary>
-        ///
-        /// <param name="statusCallback"> URL Twilio will request when the status changes </param>
-        /// <returns> this </returns> 
-        public MessageCreator setStatusCallback(Uri statusCallback) {
-            this.statusCallback = statusCallback;
-            return this;
-        }
-    
-        /// <summary>
-        /// The URL that Twilio will POST to each time your message status changes
-        /// </summary>
-        ///
-        /// <param name="statusCallback"> URL Twilio will request when the status changes </param>
-        /// <returns> this </returns> 
-        public MessageCreator setStatusCallback(string statusCallback) {
-            return setStatusCallback(Promoter.UriFromString(statusCallback));
-        }
-    
-        /// <summary>
-        /// Twilio the POST MessageSid as well as MessageStatus to the URL in the MessageStatusCallback property of this
-        /// Application
-        /// </summary>
-        ///
-        /// <param name="applicationSid"> The application to use for callbacks </param>
-        /// <returns> this </returns> 
-        public MessageCreator setApplicationSid(string applicationSid) {
-            this.applicationSid = applicationSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The max_price
-        /// </summary>
-        ///
-        /// <param name="maxPrice"> The max_price </param>
-        /// <returns> this </returns> 
-        public MessageCreator setMaxPrice(decimal? maxPrice) {
-            this.maxPrice = maxPrice;
-            return this;
-        }
-    
-        /// <summary>
-        /// The provide_feedback
-        /// </summary>
-        ///
-        /// <param name="provideFeedback"> The provide_feedback </param>
-        /// <returns> this </returns> 
-        public MessageCreator setProvideFeedback(bool? provideFeedback) {
-            this.provideFeedback = provideFeedback;
-            return this;
-        }
-    
         #if NET40
         /// <summary>
         /// Make the request to the Twilio API to perform the create
@@ -200,12 +144,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <returns> Created MessageResource </returns> 
         public override async Task<MessageResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Messages.json"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -240,12 +184,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <returns> Created MessageResource </returns> 
         public override MessageResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Messages.json"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -276,7 +220,7 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (to != null) {
                 request.AddPostParam("To", to.ToString());
             }

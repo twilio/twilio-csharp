@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Taskrouter.V1 {
 
     public class WorkspaceReader : Reader<WorkspaceResource> {
-        private string friendlyName;
+        public string friendlyName { get; set; }
     
         /// <summary>
         /// The friendly_name

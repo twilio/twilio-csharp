@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Call {
 
     public class FeedbackSummaryCreator : Creator<FeedbackSummaryResource> {
-        private string accountSid;
-        private DateTime? startDate;
-        private DateTime? endDate;
-        private bool? includeSubaccounts;
-        private Uri statusCallback;
-        private Twilio.Http.HttpMethod statusCallbackMethod;
+        public string accountSid { get; }
+        public DateTime? startDate { get; }
+        public DateTime? endDate { get; }
+        public bool? includeSubaccounts { get; set; }
+        public Uri statusCallback { get; set; }
+        public Twilio.Http.HttpMethod statusCallbackMethod { get; set; }
     
         /// <summary>
         /// Construct a new FeedbackSummaryCreator.
@@ -43,49 +43,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
             this.endDate = endDate;
         }
     
-        /// <summary>
-        /// The include_subaccounts
-        /// </summary>
-        ///
-        /// <param name="includeSubaccounts"> The include_subaccounts </param>
-        /// <returns> this </returns> 
-        public FeedbackSummaryCreator setIncludeSubaccounts(bool? includeSubaccounts) {
-            this.includeSubaccounts = includeSubaccounts;
-            return this;
-        }
-    
-        /// <summary>
-        /// The status_callback
-        /// </summary>
-        ///
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <returns> this </returns> 
-        public FeedbackSummaryCreator setStatusCallback(Uri statusCallback) {
-            this.statusCallback = statusCallback;
-            return this;
-        }
-    
-        /// <summary>
-        /// The status_callback
-        /// </summary>
-        ///
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <returns> this </returns> 
-        public FeedbackSummaryCreator setStatusCallback(string statusCallback) {
-            return setStatusCallback(Promoter.UriFromString(statusCallback));
-        }
-    
-        /// <summary>
-        /// The status_callback_method
-        /// </summary>
-        ///
-        /// <param name="statusCallbackMethod"> The status_callback_method </param>
-        /// <returns> this </returns> 
-        public FeedbackSummaryCreator setStatusCallbackMethod(Twilio.Http.HttpMethod statusCallbackMethod) {
-            this.statusCallbackMethod = statusCallbackMethod;
-            return this;
-        }
-    
         #if NET40
         /// <summary>
         /// Make the request to the Twilio API to perform the create
@@ -95,12 +52,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// <returns> Created FeedbackSummaryResource </returns> 
         public override async Task<FeedbackSummaryResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/FeedbackSummary.json"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -135,12 +92,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// <returns> Created FeedbackSummaryResource </returns> 
         public override FeedbackSummaryResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/FeedbackSummary.json"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -171,7 +128,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (startDate != null) {
                 request.AddPostParam("StartDate", startDate.ToString());
             }

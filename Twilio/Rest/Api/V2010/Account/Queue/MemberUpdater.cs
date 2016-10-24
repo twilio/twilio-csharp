@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Queue {
 
     public class MemberUpdater : Updater<MemberResource> {
-        private string accountSid;
-        private string queueSid;
-        private string callSid;
-        private Uri url;
-        private Twilio.Http.HttpMethod method;
+        public string accountSid { get; }
+        public string queueSid { get; }
+        public string callSid { get; }
+        public Uri url { get; }
+        public Twilio.Http.HttpMethod method { get; }
     
         /// <summary>
         /// Construct a new MemberUpdater.
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Queues/" + this.queueSid + "/Members/" + this.callSid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -102,7 +102,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Queues/" + this.queueSid + "/Members/" + this.callSid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (url != null) {
                 request.AddPostParam("Url", url.ToString());
             }

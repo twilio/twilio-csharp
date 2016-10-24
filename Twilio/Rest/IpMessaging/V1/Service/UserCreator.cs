@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.IpMessaging.V1.Service {
 
     public class UserCreator : Creator<UserResource> {
-        private string serviceSid;
-        private string identity;
-        private string roleSid;
-        private string attributes;
-        private string friendlyName;
+        public string serviceSid { get; }
+        public string identity { get; }
+        public string roleSid { get; set; }
+        public string attributes { get; set; }
+        public string friendlyName { get; set; }
     
         /// <summary>
         /// Construct a new UserCreator
@@ -27,39 +27,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
             this.identity = identity;
         }
     
-        /// <summary>
-        /// The role_sid
-        /// </summary>
-        ///
-        /// <param name="roleSid"> The role_sid </param>
-        /// <returns> this </returns> 
-        public UserCreator setRoleSid(string roleSid) {
-            this.roleSid = roleSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The attributes
-        /// </summary>
-        ///
-        /// <param name="attributes"> The attributes </param>
-        /// <returns> this </returns> 
-        public UserCreator setAttributes(string attributes) {
-            this.attributes = attributes;
-            return this;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public UserCreator setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
         #if NET40
         /// <summary>
         /// Make the request to the Twilio API to perform the create
@@ -69,12 +36,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// <returns> Created UserResource </returns> 
         public override async Task<UserResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Users"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -109,12 +76,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// <returns> Created UserResource </returns> 
         public override UserResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Users"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -145,7 +112,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (identity != null) {
                 request.AddPostParam("Identity", identity);
             }

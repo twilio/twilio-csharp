@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Message {
 
     public class MediaReader : Reader<MediaResource> {
-        private string accountSid;
-        private string messageSid;
-        private string dateCreated;
+        public string accountSid { get; }
+        public string messageSid { get; }
+        public string dateCreated { get; set; }
     
         /// <summary>
         /// Construct a new MediaReader.

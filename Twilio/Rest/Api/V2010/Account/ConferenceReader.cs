@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class ConferenceReader : Reader<ConferenceResource> {
-        private string accountSid;
-        private string dateCreated;
-        private string dateUpdated;
-        private string friendlyName;
-        private ConferenceResource.Status status;
+        public string accountSid { get; }
+        public string dateCreated { get; set; }
+        public string dateUpdated { get; set; }
+        public string friendlyName { get; set; }
+        public ConferenceResource.Status status { get; set; }
     
         /// <summary>
         /// Construct a new ConferenceReader.

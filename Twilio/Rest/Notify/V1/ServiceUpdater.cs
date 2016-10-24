@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Notify.V1 {
 
     public class ServiceUpdater : Updater<ServiceResource> {
-        private string sid;
-        private string friendlyName;
-        private string apnCredentialSid;
-        private string gcmCredentialSid;
-        private string messagingServiceSid;
-        private string facebookMessengerPageId;
-        private string defaultApnNotificationProtocolVersion;
-        private string defaultGcmNotificationProtocolVersion;
+        public string sid { get; }
+        public string friendlyName { get; set; }
+        public string apnCredentialSid { get; set; }
+        public string gcmCredentialSid { get; set; }
+        public string messagingServiceSid { get; set; }
+        public string facebookMessengerPageId { get; set; }
+        public string defaultApnNotificationProtocolVersion { get; set; }
+        public string defaultGcmNotificationProtocolVersion { get; set; }
     
         /// <summary>
         /// Construct a new ServiceUpdater
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Notify.V1 {
                 Domains.NOTIFY,
                 "/v1/Services/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Notify.V1 {
                 Domains.NOTIFY,
                 "/v1/Services/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -190,7 +190,7 @@ namespace Twilio.Rest.Notify.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }

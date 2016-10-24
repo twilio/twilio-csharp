@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Preview.Sync.Service {
 
     public class DocumentUpdater : Updater<DocumentResource> {
-        private string serviceSid;
-        private string sid;
-        private Object data;
+        public string serviceSid { get; }
+        public string sid { get; }
+        public Object data { get; }
     
         /// <summary>
         /// Construct a new DocumentUpdater
@@ -41,7 +41,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
                 Domains.PREVIEW,
                 "/Sync/Services/" + this.serviceSid + "/Documents/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
                 Domains.PREVIEW,
                 "/Sync/Services/" + this.serviceSid + "/Documents/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (data != null) {
                 request.AddPostParam("Data", data.ToString());
             }

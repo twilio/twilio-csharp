@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Trunking.V1.Trunk {
 
     public class OriginationUrlFetcher : Fetcher<OriginationUrlResource> {
-        private string trunkSid;
-        private string sid;
+        public string trunkSid { get; }
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new OriginationUrlFetcher

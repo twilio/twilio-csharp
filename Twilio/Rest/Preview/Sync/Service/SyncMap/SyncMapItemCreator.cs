@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
 
     public class SyncMapItemCreator : Creator<SyncMapItemResource> {
-        private string serviceSid;
-        private string mapSid;
-        private string key;
-        private Object data;
+        public string serviceSid { get; }
+        public string mapSid { get; }
+        public string key { get; }
+        public Object data { get; }
     
         /// <summary>
         /// Construct a new SyncMapItemCreator
@@ -40,12 +40,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         /// <returns> Created SyncMapItemResource </returns> 
         public override async Task<SyncMapItemResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.PREVIEW,
                 "/Sync/Services/" + this.serviceSid + "/Maps/" + this.mapSid + "/Items"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -80,12 +80,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         /// <returns> Created SyncMapItemResource </returns> 
         public override SyncMapItemResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.PREVIEW,
                 "/Sync/Services/" + this.serviceSid + "/Maps/" + this.mapSid + "/Items"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (key != null) {
                 request.AddPostParam("Key", key);
             }

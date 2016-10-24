@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.IpMessaging.V1.Service {
 
     public class ChannelCreator : Creator<ChannelResource> {
-        private string serviceSid;
-        private string friendlyName;
-        private string uniqueName;
-        private string attributes;
-        private ChannelResource.ChannelType type;
+        public string serviceSid { get; }
+        public string friendlyName { get; set; }
+        public string uniqueName { get; set; }
+        public string attributes { get; set; }
+        public ChannelResource.ChannelType type { get; set; }
     
         /// <summary>
         /// Construct a new ChannelCreator
@@ -23,50 +23,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// <param name="serviceSid"> The service_sid </param>
         public ChannelCreator(string serviceSid) {
             this.serviceSid = serviceSid;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public ChannelCreator setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The unique_name
-        /// </summary>
-        ///
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <returns> this </returns> 
-        public ChannelCreator setUniqueName(string uniqueName) {
-            this.uniqueName = uniqueName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The attributes
-        /// </summary>
-        ///
-        /// <param name="attributes"> The attributes </param>
-        /// <returns> this </returns> 
-        public ChannelCreator setAttributes(string attributes) {
-            this.attributes = attributes;
-            return this;
-        }
-    
-        /// <summary>
-        /// The type
-        /// </summary>
-        ///
-        /// <param name="type"> The type </param>
-        /// <returns> this </returns> 
-        public ChannelCreator setType(ChannelResource.ChannelType type) {
-            this.type = type;
-            return this;
         }
     
         #if NET40
@@ -78,12 +34,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// <returns> Created ChannelResource </returns> 
         public override async Task<ChannelResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Channels"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -118,12 +74,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// <returns> Created ChannelResource </returns> 
         public override ChannelResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Channels"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -154,7 +110,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }

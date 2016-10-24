@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Chat.V1.Service {
 
     public class ChannelUpdater : Updater<ChannelResource> {
-        private string serviceSid;
-        private string sid;
-        private string friendlyName;
-        private string uniqueName;
-        private string attributes;
-        private ChannelResource.ChannelType type;
+        public string serviceSid { get; }
+        public string sid { get; }
+        public string friendlyName { get; set; }
+        public string uniqueName { get; set; }
+        public string attributes { get; set; }
+        public ChannelResource.ChannelType type { get; set; }
     
         /// <summary>
         /// Construct a new ChannelUpdater
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Chat.V1.Service {
                 Domains.CHAT,
                 "/v1/Services/" + this.serviceSid + "/Channels/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -125,7 +125,7 @@ namespace Twilio.Rest.Chat.V1.Service {
                 Domains.CHAT,
                 "/v1/Services/" + this.serviceSid + "/Channels/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -157,7 +157,7 @@ namespace Twilio.Rest.Chat.V1.Service {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }

@@ -10,19 +10,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010 {
 
     public class AccountCreator : Creator<AccountResource> {
-        private string friendlyName;
-    
-        /// <summary>
-        /// A human readable description of the account to create, defaults to `SubAccount Created at {YYYY-MM-DD HH:MM
-        /// meridian}`
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> A human readable description of the account </param>
-        /// <returns> this </returns> 
-        public AccountCreator setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
+        public string friendlyName { get; set; }
     
         #if NET40
         /// <summary>
@@ -33,12 +21,12 @@ namespace Twilio.Rest.Api.V2010 {
         /// <returns> Created AccountResource </returns> 
         public override async Task<AccountResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts.json"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -73,12 +61,12 @@ namespace Twilio.Rest.Api.V2010 {
         /// <returns> Created AccountResource </returns> 
         public override AccountResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts.json"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -109,7 +97,7 @@ namespace Twilio.Rest.Api.V2010 {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }

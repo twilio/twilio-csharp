@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.IpMessaging.V1 {
 
     public class CredentialUpdater : Updater<CredentialResource> {
-        private string sid;
-        private string friendlyName;
-        private string certificate;
-        private string privateKey;
-        private bool? sandbox;
-        private string apiKey;
+        public string sid { get; }
+        public string friendlyName { get; set; }
+        public string certificate { get; set; }
+        public string privateKey { get; set; }
+        public bool? sandbox { get; set; }
+        public string apiKey { get; set; }
     
         /// <summary>
         /// Construct a new CredentialUpdater
@@ -94,7 +94,7 @@ namespace Twilio.Rest.IpMessaging.V1 {
                 Domains.IP_MESSAGING,
                 "/v1/Credentials/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -134,7 +134,7 @@ namespace Twilio.Rest.IpMessaging.V1 {
                 Domains.IP_MESSAGING,
                 "/v1/Credentials/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -166,7 +166,7 @@ namespace Twilio.Rest.IpMessaging.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }

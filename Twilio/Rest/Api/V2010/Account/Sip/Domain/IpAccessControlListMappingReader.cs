@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
 
     public class IpAccessControlListMappingReader : Reader<IpAccessControlListMappingResource> {
-        private string accountSid;
-        private string domainSid;
+        public string accountSid { get; }
+        public string domainSid { get; }
     
         /// <summary>
         /// Construct a new IpAccessControlListMappingReader.

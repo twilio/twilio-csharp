@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Chat.V1.Service {
 
     public class UserReader : Reader<UserResource> {
-        private string serviceSid;
+        public string serviceSid { get; }
     
         /// <summary>
         /// Construct a new UserReader

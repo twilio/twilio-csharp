@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Notify.V1 {
 
     public class ServiceReader : Reader<ServiceResource> {
-        private string friendlyName;
+        public string friendlyName { get; set; }
     
         /// <summary>
         /// The friendly_name

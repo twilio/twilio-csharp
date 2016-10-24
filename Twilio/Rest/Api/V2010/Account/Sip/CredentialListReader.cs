@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Sip {
 
     public class CredentialListReader : Reader<CredentialListResource> {
-        private string accountSid;
+        public string accountSid { get; }
     
         /// <summary>
         /// Construct a new CredentialListReader.

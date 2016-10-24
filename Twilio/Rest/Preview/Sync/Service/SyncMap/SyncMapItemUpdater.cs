@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
 
     public class SyncMapItemUpdater : Updater<SyncMapItemResource> {
-        private string serviceSid;
-        private string mapSid;
-        private string key;
-        private Object data;
+        public string serviceSid { get; }
+        public string mapSid { get; }
+        public string key { get; }
+        public Object data { get; }
     
         /// <summary>
         /// Construct a new SyncMapItemUpdater
@@ -44,7 +44,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
                 Domains.PREVIEW,
                 "/Sync/Services/" + this.serviceSid + "/Maps/" + this.mapSid + "/Items/" + this.key + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
                 Domains.PREVIEW,
                 "/Sync/Services/" + this.serviceSid + "/Maps/" + this.mapSid + "/Items/" + this.key + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (data != null) {
                 request.AddPostParam("Data", data.ToString());
             }

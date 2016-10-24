@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.IpMessaging.V1 {
 
     public class ServiceCreator : Creator<ServiceResource> {
-        private string friendlyName;
+        public string friendlyName { get; }
     
         /// <summary>
         /// Construct a new ServiceCreator
@@ -30,12 +30,12 @@ namespace Twilio.Rest.IpMessaging.V1 {
         /// <returns> Created ServiceResource </returns> 
         public override async Task<ServiceResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.IP_MESSAGING,
                 "/v1/Services"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -70,12 +70,12 @@ namespace Twilio.Rest.IpMessaging.V1 {
         /// <returns> Created ServiceResource </returns> 
         public override ServiceResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.IP_MESSAGING,
                 "/v1/Services"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -106,7 +106,7 @@ namespace Twilio.Rest.IpMessaging.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }

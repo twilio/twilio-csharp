@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class AvailablePhoneNumberCountryFetcher : Fetcher<AvailablePhoneNumberCountryResource> {
-        private string accountSid;
-        private string countryCode;
+        public string accountSid { get; }
+        public string countryCode { get; }
     
         /// <summary>
         /// Construct a new AvailablePhoneNumberCountryFetcher.

@@ -12,13 +12,13 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
     public class WorkflowUpdater : Updater<WorkflowResource> {
-        private string workspaceSid;
-        private string sid;
-        private string friendlyName;
-        private Uri assignmentCallbackUrl;
-        private Uri fallbackAssignmentCallbackUrl;
-        private string configuration;
-        private int? taskReservationTimeout;
+        public string workspaceSid { get; }
+        public string sid { get; }
+        public string friendlyName { get; set; }
+        public Uri assignmentCallbackUrl { get; set; }
+        public Uri fallbackAssignmentCallbackUrl { get; set; }
+        public string configuration { get; set; }
+        public int? taskReservationTimeout { get; set; }
     
         /// <summary>
         /// Construct a new WorkflowUpdater
@@ -119,7 +119,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Workflows/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -159,7 +159,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Workflows/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -191,7 +191,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }

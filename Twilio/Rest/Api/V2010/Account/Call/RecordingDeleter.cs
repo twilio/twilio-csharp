@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Call {
 
     public class RecordingDeleter : Deleter<RecordingResource> {
-        private string accountSid;
-        private string callSid;
-        private string sid;
+        public string accountSid { get; }
+        public string callSid { get; }
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new RecordingDeleter.

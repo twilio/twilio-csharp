@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Trunking.V1.Trunk {
 
     public class IpAccessControlListCreator : Creator<IpAccessControlListResource> {
-        private string trunkSid;
-        private string ipAccessControlListSid;
+        public string trunkSid { get; }
+        public string ipAccessControlListSid { get; }
     
         /// <summary>
         /// Construct a new IpAccessControlListCreator
@@ -33,12 +33,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <returns> Created IpAccessControlListResource </returns> 
         public override async Task<IpAccessControlListResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.TRUNKING,
                 "/v1/Trunks/" + this.trunkSid + "/IpAccessControlLists"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -73,12 +73,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <returns> Created IpAccessControlListResource </returns> 
         public override IpAccessControlListResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.TRUNKING,
                 "/v1/Trunks/" + this.trunkSid + "/IpAccessControlLists"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (ipAccessControlListSid != null) {
                 request.AddPostParam("IpAccessControlListSid", ipAccessControlListSid);
             }

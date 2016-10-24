@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class ApplicationReader : Reader<ApplicationResource> {
-        private string accountSid;
-        private string friendlyName;
+        public string accountSid { get; }
+        public string friendlyName { get; set; }
     
         /// <summary>
         /// Construct a new ApplicationReader.

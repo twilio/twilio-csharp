@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Sip {
 
     public class IpAccessControlListUpdater : Updater<IpAccessControlListResource> {
-        private string accountSid;
-        private string sid;
-        private string friendlyName;
+        public string accountSid { get; }
+        public string sid { get; }
+        public string friendlyName { get; }
     
         /// <summary>
         /// Construct a new IpAccessControlListUpdater.
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.sid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.sid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }

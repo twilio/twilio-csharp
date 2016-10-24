@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Preview.Wireless {
 
     public class CommandReader : Reader<CommandResource> {
-        private string device;
-        private string status;
-        private string direction;
+        public string device { get; set; }
+        public string status { get; set; }
+        public string direction { get; set; }
     
         /// <summary>
         /// The device

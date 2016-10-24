@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Preview.Sync.Service.SyncList {
 
     public class SyncListItemReader : Reader<SyncListItemResource> {
-        private string serviceSid;
-        private string listSid;
-        private SyncListItemResource.QueryResultOrder order;
-        private string from;
-        private SyncListItemResource.QueryFromBoundType bounds;
+        public string serviceSid { get; }
+        public string listSid { get; }
+        public SyncListItemResource.QueryResultOrder order { get; set; }
+        public string from { get; set; }
+        public SyncListItemResource.QueryFromBoundType bounds { get; set; }
     
         /// <summary>
         /// Construct a new SyncListItemReader

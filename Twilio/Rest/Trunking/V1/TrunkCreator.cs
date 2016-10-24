@@ -1,7 +1,6 @@
 using System;
 using Twilio.Base;
 using Twilio.Clients;
-using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -12,88 +11,12 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Trunking.V1 {
 
     public class TrunkCreator : Creator<TrunkResource> {
-        private string friendlyName;
-        private string domainName;
-        private Uri disasterRecoveryUrl;
-        private Twilio.Http.HttpMethod disasterRecoveryMethod;
-        private string recording;
-        private bool? secure;
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public TrunkCreator setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The domain_name
-        /// </summary>
-        ///
-        /// <param name="domainName"> The domain_name </param>
-        /// <returns> this </returns> 
-        public TrunkCreator setDomainName(string domainName) {
-            this.domainName = domainName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The disaster_recovery_url
-        /// </summary>
-        ///
-        /// <param name="disasterRecoveryUrl"> The disaster_recovery_url </param>
-        /// <returns> this </returns> 
-        public TrunkCreator setDisasterRecoveryUrl(Uri disasterRecoveryUrl) {
-            this.disasterRecoveryUrl = disasterRecoveryUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The disaster_recovery_url
-        /// </summary>
-        ///
-        /// <param name="disasterRecoveryUrl"> The disaster_recovery_url </param>
-        /// <returns> this </returns> 
-        public TrunkCreator setDisasterRecoveryUrl(string disasterRecoveryUrl) {
-            return setDisasterRecoveryUrl(Promoter.UriFromString(disasterRecoveryUrl));
-        }
-    
-        /// <summary>
-        /// The disaster_recovery_method
-        /// </summary>
-        ///
-        /// <param name="disasterRecoveryMethod"> The disaster_recovery_method </param>
-        /// <returns> this </returns> 
-        public TrunkCreator setDisasterRecoveryMethod(Twilio.Http.HttpMethod disasterRecoveryMethod) {
-            this.disasterRecoveryMethod = disasterRecoveryMethod;
-            return this;
-        }
-    
-        /// <summary>
-        /// The recording
-        /// </summary>
-        ///
-        /// <param name="recording"> The recording </param>
-        /// <returns> this </returns> 
-        public TrunkCreator setRecording(string recording) {
-            this.recording = recording;
-            return this;
-        }
-    
-        /// <summary>
-        /// The secure
-        /// </summary>
-        ///
-        /// <param name="secure"> The secure </param>
-        /// <returns> this </returns> 
-        public TrunkCreator setSecure(bool? secure) {
-            this.secure = secure;
-            return this;
-        }
+        public string friendlyName { get; set; }
+        public string domainName { get; set; }
+        public Uri disasterRecoveryUrl { get; set; }
+        public Twilio.Http.HttpMethod disasterRecoveryMethod { get; set; }
+        public string recording { get; set; }
+        public bool? secure { get; set; }
     
         #if NET40
         /// <summary>
@@ -104,12 +27,12 @@ namespace Twilio.Rest.Trunking.V1 {
         /// <returns> Created TrunkResource </returns> 
         public override async Task<TrunkResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.TRUNKING,
                 "/v1/Trunks"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -144,12 +67,12 @@ namespace Twilio.Rest.Trunking.V1 {
         /// <returns> Created TrunkResource </returns> 
         public override TrunkResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.TRUNKING,
                 "/v1/Trunks"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -180,7 +103,7 @@ namespace Twilio.Rest.Trunking.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }

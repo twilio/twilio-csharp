@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Preview.Sync {
 
     public class ServiceFetcher : Fetcher<ServiceResource> {
-        private string sid;
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new ServiceFetcher

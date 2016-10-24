@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
     public class WorkflowDeleter : Deleter<WorkflowResource> {
-        private string workspaceSid;
-        private string sid;
+        public string workspaceSid { get; }
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new WorkflowDeleter

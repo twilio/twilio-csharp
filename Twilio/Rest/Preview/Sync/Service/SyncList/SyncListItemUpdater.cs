@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Preview.Sync.Service.SyncList {
 
     public class SyncListItemUpdater : Updater<SyncListItemResource> {
-        private string serviceSid;
-        private string listSid;
-        private int? index;
-        private Object data;
+        public string serviceSid { get; }
+        public string listSid { get; }
+        public int? index { get; }
+        public Object data { get; }
     
         /// <summary>
         /// Construct a new SyncListItemUpdater
@@ -44,7 +44,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
                 Domains.PREVIEW,
                 "/Sync/Services/" + this.serviceSid + "/Lists/" + this.listSid + "/Items/" + this.index + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
                 Domains.PREVIEW,
                 "/Sync/Services/" + this.serviceSid + "/Lists/" + this.listSid + "/Items/" + this.index + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (data != null) {
                 request.AddPostParam("Data", data.ToString());
             }

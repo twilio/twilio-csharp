@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Address {
 
     public class DependentPhoneNumberReader : Reader<DependentPhoneNumberResource> {
-        private string accountSid;
-        private string addressSid;
+        public string accountSid { get; }
+        public string addressSid { get; }
     
         /// <summary>
         /// Construct a new DependentPhoneNumberReader.

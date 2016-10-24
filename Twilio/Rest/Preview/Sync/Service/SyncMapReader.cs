@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Preview.Sync.Service {
 
     public class SyncMapReader : Reader<SyncMapResource> {
-        private string serviceSid;
+        public string serviceSid { get; }
     
         /// <summary>
         /// Construct a new SyncMapReader

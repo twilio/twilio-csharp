@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.IpMessaging.V1 {
 
     public class CredentialDeleter : Deleter<CredentialResource> {
-        private string sid;
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new CredentialDeleter

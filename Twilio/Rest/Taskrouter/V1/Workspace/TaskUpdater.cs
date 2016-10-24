@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
     public class TaskUpdater : Updater<TaskResource> {
-        private string workspaceSid;
-        private string sid;
-        private string attributes;
-        private TaskResource.Status assignmentStatus;
-        private string reason;
-        private int? priority;
-        private string taskChannel;
+        public string workspaceSid { get; }
+        public string sid { get; }
+        public string attributes { get; set; }
+        public TaskResource.Status assignmentStatus { get; set; }
+        public string reason { get; set; }
+        public int? priority { get; set; }
+        public string taskChannel { get; set; }
     
         /// <summary>
         /// Construct a new TaskUpdater
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Tasks/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Tasks/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -169,7 +169,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (attributes != null) {
                 request.AddPostParam("Attributes", attributes);
             }

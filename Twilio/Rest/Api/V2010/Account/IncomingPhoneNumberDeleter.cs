@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class IncomingPhoneNumberDeleter : Deleter<IncomingPhoneNumberResource> {
-        private string ownerAccountSid;
-        private string sid;
+        public string ownerAccountSid { get; }
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new IncomingPhoneNumberDeleter.

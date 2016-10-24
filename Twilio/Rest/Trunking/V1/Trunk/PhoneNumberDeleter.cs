@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Trunking.V1.Trunk {
 
     public class PhoneNumberDeleter : Deleter<PhoneNumberResource> {
-        private string trunkSid;
-        private string sid;
+        public string trunkSid { get; }
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new PhoneNumberDeleter

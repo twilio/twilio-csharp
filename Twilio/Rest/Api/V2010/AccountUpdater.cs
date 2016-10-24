@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010 {
 
     public class AccountUpdater : Updater<AccountResource> {
-        private string sid;
-        private string friendlyName;
-        private AccountResource.Status status;
+        public string sid { get; }
+        public string friendlyName { get; set; }
+        public AccountResource.Status status { get; set; }
     
         /// <summary>
         /// Construct a new AccountUpdater.
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Api.V2010 {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (sid ?? client.GetAccountSid()) + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Api.V2010 {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (sid ?? client.GetAccountSid()) + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Api.V2010 {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }

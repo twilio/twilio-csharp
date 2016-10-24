@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
     public class TaskChannelReader : Reader<TaskChannelResource> {
-        private string workspaceSid;
+        public string workspaceSid { get; }
     
         /// <summary>
         /// Construct a new TaskChannelReader

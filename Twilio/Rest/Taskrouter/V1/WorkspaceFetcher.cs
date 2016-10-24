@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Taskrouter.V1 {
 
     public class WorkspaceFetcher : Fetcher<WorkspaceResource> {
-        private string sid;
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new WorkspaceFetcher

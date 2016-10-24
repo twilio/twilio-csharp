@@ -12,25 +12,25 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class IncomingPhoneNumberUpdater : Updater<IncomingPhoneNumberResource> {
-        private string ownerAccountSid;
-        private string sid;
-        private string accountSid;
-        private string apiVersion;
-        private string friendlyName;
-        private string smsApplicationSid;
-        private Twilio.Http.HttpMethod smsFallbackMethod;
-        private Uri smsFallbackUrl;
-        private Twilio.Http.HttpMethod smsMethod;
-        private Uri smsUrl;
-        private Uri statusCallback;
-        private Twilio.Http.HttpMethod statusCallbackMethod;
-        private string trunkSid;
-        private string voiceApplicationSid;
-        private bool? voiceCallerIdLookup;
-        private Twilio.Http.HttpMethod voiceFallbackMethod;
-        private Uri voiceFallbackUrl;
-        private Twilio.Http.HttpMethod voiceMethod;
-        private Uri voiceUrl;
+        public string ownerAccountSid { get; }
+        public string sid { get; }
+        public string accountSid { get; set; }
+        public string apiVersion { get; set; }
+        public string friendlyName { get; set; }
+        public string smsApplicationSid { get; set; }
+        public Twilio.Http.HttpMethod smsFallbackMethod { get; set; }
+        public Uri smsFallbackUrl { get; set; }
+        public Twilio.Http.HttpMethod smsMethod { get; set; }
+        public Uri smsUrl { get; set; }
+        public Uri statusCallback { get; set; }
+        public Twilio.Http.HttpMethod statusCallbackMethod { get; set; }
+        public string trunkSid { get; set; }
+        public string voiceApplicationSid { get; set; }
+        public bool? voiceCallerIdLookup { get; set; }
+        public Twilio.Http.HttpMethod voiceFallbackMethod { get; set; }
+        public Uri voiceFallbackUrl { get; set; }
+        public Twilio.Http.HttpMethod voiceMethod { get; set; }
+        public Uri voiceUrl { get; set; }
     
         /// <summary>
         /// Construct a new IncomingPhoneNumberUpdater.
@@ -310,7 +310,7 @@ namespace Twilio.Rest.Api.V2010.Account {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (ownerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/" + this.sid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -350,7 +350,7 @@ namespace Twilio.Rest.Api.V2010.Account {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (ownerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/" + this.sid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -382,7 +382,7 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (accountSid != null) {
                 request.AddPostParam("AccountSid", accountSid);
             }

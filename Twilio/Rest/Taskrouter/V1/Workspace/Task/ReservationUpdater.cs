@@ -12,28 +12,28 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
 
     public class ReservationUpdater : Updater<ReservationResource> {
-        private string workspaceSid;
-        private string taskSid;
-        private string sid;
-        private ReservationResource.Status reservationStatus;
-        private string workerActivitySid;
-        private string instruction;
-        private string dequeuePostWorkActivitySid;
-        private string dequeueFrom;
-        private string dequeueRecord;
-        private int? dequeueTimeout;
-        private string dequeueTo;
-        private Uri dequeueStatusCallbackUrl;
-        private string callFrom;
-        private string callRecord;
-        private int? callTimeout;
-        private string callTo;
-        private Uri callUrl;
-        private Uri callStatusCallbackUrl;
-        private bool? callAccept;
-        private string redirectCallSid;
-        private bool? redirectAccept;
-        private Uri redirectUrl;
+        public string workspaceSid { get; }
+        public string taskSid { get; }
+        public string sid { get; }
+        public ReservationResource.Status reservationStatus { get; set; }
+        public string workerActivitySid { get; set; }
+        public string instruction { get; set; }
+        public string dequeuePostWorkActivitySid { get; set; }
+        public string dequeueFrom { get; set; }
+        public string dequeueRecord { get; set; }
+        public int? dequeueTimeout { get; set; }
+        public string dequeueTo { get; set; }
+        public Uri dequeueStatusCallbackUrl { get; set; }
+        public string callFrom { get; set; }
+        public string callRecord { get; set; }
+        public int? callTimeout { get; set; }
+        public string callTo { get; set; }
+        public Uri callUrl { get; set; }
+        public Uri callStatusCallbackUrl { get; set; }
+        public bool? callAccept { get; set; }
+        public string redirectCallSid { get; set; }
+        public bool? redirectAccept { get; set; }
+        public Uri redirectUrl { get; set; }
     
         /// <summary>
         /// Construct a new ReservationUpdater
@@ -310,7 +310,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Tasks/" + this.taskSid + "/Reservations/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -350,7 +350,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Tasks/" + this.taskSid + "/Reservations/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -382,7 +382,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (reservationStatus != null) {
                 request.AddPostParam("ReservationStatus", reservationStatus.ToString());
             }

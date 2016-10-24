@@ -1,7 +1,6 @@
 using System;
 using Twilio.Base;
 using Twilio.Clients;
-using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -12,11 +11,11 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Taskrouter.V1 {
 
     public class WorkspaceCreator : Creator<WorkspaceResource> {
-        private string friendlyName;
-        private Uri eventCallbackUrl;
-        private string eventsFilter;
-        private bool? multiTaskEnabled;
-        private string template;
+        public string friendlyName { get; }
+        public Uri eventCallbackUrl { get; set; }
+        public string eventsFilter { get; set; }
+        public bool? multiTaskEnabled { get; set; }
+        public string template { get; set; }
     
         /// <summary>
         /// Construct a new WorkspaceCreator
@@ -25,60 +24,6 @@ namespace Twilio.Rest.Taskrouter.V1 {
         /// <param name="friendlyName"> The friendly_name </param>
         public WorkspaceCreator(string friendlyName) {
             this.friendlyName = friendlyName;
-        }
-    
-        /// <summary>
-        /// The event_callback_url
-        /// </summary>
-        ///
-        /// <param name="eventCallbackUrl"> The event_callback_url </param>
-        /// <returns> this </returns> 
-        public WorkspaceCreator setEventCallbackUrl(Uri eventCallbackUrl) {
-            this.eventCallbackUrl = eventCallbackUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The event_callback_url
-        /// </summary>
-        ///
-        /// <param name="eventCallbackUrl"> The event_callback_url </param>
-        /// <returns> this </returns> 
-        public WorkspaceCreator setEventCallbackUrl(string eventCallbackUrl) {
-            return setEventCallbackUrl(Promoter.UriFromString(eventCallbackUrl));
-        }
-    
-        /// <summary>
-        /// The events_filter
-        /// </summary>
-        ///
-        /// <param name="eventsFilter"> The events_filter </param>
-        /// <returns> this </returns> 
-        public WorkspaceCreator setEventsFilter(string eventsFilter) {
-            this.eventsFilter = eventsFilter;
-            return this;
-        }
-    
-        /// <summary>
-        /// The multi_task_enabled
-        /// </summary>
-        ///
-        /// <param name="multiTaskEnabled"> The multi_task_enabled </param>
-        /// <returns> this </returns> 
-        public WorkspaceCreator setMultiTaskEnabled(bool? multiTaskEnabled) {
-            this.multiTaskEnabled = multiTaskEnabled;
-            return this;
-        }
-    
-        /// <summary>
-        /// The template
-        /// </summary>
-        ///
-        /// <param name="template"> The template </param>
-        /// <returns> this </returns> 
-        public WorkspaceCreator setTemplate(string template) {
-            this.template = template;
-            return this;
         }
     
         #if NET40
@@ -90,12 +35,12 @@ namespace Twilio.Rest.Taskrouter.V1 {
         /// <returns> Created WorkspaceResource </returns> 
         public override async Task<WorkspaceResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.TASKROUTER,
                 "/v1/Workspaces"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -130,12 +75,12 @@ namespace Twilio.Rest.Taskrouter.V1 {
         /// <returns> Created WorkspaceResource </returns> 
         public override WorkspaceResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.TASKROUTER,
                 "/v1/Workspaces"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -166,7 +111,7 @@ namespace Twilio.Rest.Taskrouter.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }

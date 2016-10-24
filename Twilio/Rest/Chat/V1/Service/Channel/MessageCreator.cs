@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Chat.V1.Service.Channel {
 
     public class MessageCreator : Creator<MessageResource> {
-        private string serviceSid;
-        private string channelSid;
-        private string body;
-        private string from;
-        private string attributes;
+        public string serviceSid { get; }
+        public string channelSid { get; }
+        public string body { get; }
+        public string from { get; set; }
+        public string attributes { get; set; }
     
         /// <summary>
         /// Construct a new MessageCreator
@@ -29,28 +29,6 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
             this.body = body;
         }
     
-        /// <summary>
-        /// The from
-        /// </summary>
-        ///
-        /// <param name="from"> The from </param>
-        /// <returns> this </returns> 
-        public MessageCreator setFrom(string from) {
-            this.from = from;
-            return this;
-        }
-    
-        /// <summary>
-        /// The attributes
-        /// </summary>
-        ///
-        /// <param name="attributes"> The attributes </param>
-        /// <returns> this </returns> 
-        public MessageCreator setAttributes(string attributes) {
-            this.attributes = attributes;
-            return this;
-        }
-    
         #if NET40
         /// <summary>
         /// Make the request to the Twilio API to perform the create
@@ -60,12 +38,12 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         /// <returns> Created MessageResource </returns> 
         public override async Task<MessageResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.CHAT,
                 "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Messages"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -100,12 +78,12 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         /// <returns> Created MessageResource </returns> 
         public override MessageResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.CHAT,
                 "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Messages"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -136,7 +114,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (body != null) {
                 request.AddPostParam("Body", body);
             }

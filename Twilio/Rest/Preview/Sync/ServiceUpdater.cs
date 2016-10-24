@@ -12,10 +12,10 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Preview.Sync {
 
     public class ServiceUpdater : Updater<ServiceResource> {
-        private string sid;
-        private Uri webhookUrl;
-        private string friendlyName;
-        private bool? reachabilityWebhooksEnabled;
+        public string sid { get; }
+        public Uri webhookUrl { get; set; }
+        public string friendlyName { get; set; }
+        public bool? reachabilityWebhooksEnabled { get; set; }
     
         /// <summary>
         /// Construct a new ServiceUpdater
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Preview.Sync {
                 Domains.PREVIEW,
                 "/Sync/Services/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -122,7 +122,7 @@ namespace Twilio.Rest.Preview.Sync {
                 Domains.PREVIEW,
                 "/Sync/Services/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Preview.Sync {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (webhookUrl != null) {
                 request.AddPostParam("WebhookUrl", webhookUrl.ToString());
             }

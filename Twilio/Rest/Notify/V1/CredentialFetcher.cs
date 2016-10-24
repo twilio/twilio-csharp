@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Notify.V1 {
 
     public class CredentialFetcher : Fetcher<CredentialResource> {
-        private string sid;
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new CredentialFetcher

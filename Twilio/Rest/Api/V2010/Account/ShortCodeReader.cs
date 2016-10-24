@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class ShortCodeReader : Reader<ShortCodeResource> {
-        private string accountSid;
-        private string friendlyName;
-        private string shortCode;
+        public string accountSid { get; }
+        public string friendlyName { get; set; }
+        public string shortCode { get; set; }
     
         /// <summary>
         /// Construct a new ShortCodeReader.

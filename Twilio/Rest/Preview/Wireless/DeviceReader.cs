@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Preview.Wireless {
 
     public class DeviceReader : Reader<DeviceResource> {
-        private string status;
-        private string simIdentifier;
-        private string ratePlan;
+        public string status { get; set; }
+        public string simIdentifier { get; set; }
+        public string ratePlan { get; set; }
     
         /// <summary>
         /// The status

@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Chat.V1.Service.Channel {
 
     public class MemberCreator : Creator<MemberResource> {
-        private string serviceSid;
-        private string channelSid;
-        private string identity;
-        private string roleSid;
+        public string serviceSid { get; }
+        public string channelSid { get; }
+        public string identity { get; }
+        public string roleSid { get; set; }
     
         /// <summary>
         /// Construct a new MemberCreator
@@ -28,17 +28,6 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
             this.identity = identity;
         }
     
-        /// <summary>
-        /// The role_sid
-        /// </summary>
-        ///
-        /// <param name="roleSid"> The role_sid </param>
-        /// <returns> this </returns> 
-        public MemberCreator setRoleSid(string roleSid) {
-            this.roleSid = roleSid;
-            return this;
-        }
-    
         #if NET40
         /// <summary>
         /// Make the request to the Twilio API to perform the create
@@ -48,12 +37,12 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         /// <returns> Created MemberResource </returns> 
         public override async Task<MemberResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.CHAT,
                 "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Members"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -88,12 +77,12 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         /// <returns> Created MemberResource </returns> 
         public override MemberResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.CHAT,
                 "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Members"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -124,7 +113,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (identity != null) {
                 request.AddPostParam("Identity", identity);
             }

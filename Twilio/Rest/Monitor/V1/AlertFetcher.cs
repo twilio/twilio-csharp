@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Monitor.V1 {
 
     public class AlertFetcher : Fetcher<AlertResource> {
-        private string sid;
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new AlertFetcher

@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class RecordingReader : Reader<RecordingResource> {
-        private string accountSid;
-        private string dateCreated;
+        public string accountSid { get; }
+        public string dateCreated { get; set; }
     
         /// <summary>
         /// Construct a new RecordingReader.

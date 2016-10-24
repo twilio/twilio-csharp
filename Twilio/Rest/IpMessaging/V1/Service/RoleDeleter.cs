@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.IpMessaging.V1.Service {
 
     public class RoleDeleter : Deleter<RoleResource> {
-        private string serviceSid;
-        private string sid;
+        public string serviceSid { get; }
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new RoleDeleter

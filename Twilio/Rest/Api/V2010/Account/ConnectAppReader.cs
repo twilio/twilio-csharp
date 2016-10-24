@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class ConnectAppReader : Reader<ConnectAppResource> {
-        private string accountSid;
+        public string accountSid { get; }
     
         /// <summary>
         /// Construct a new ConnectAppReader.

@@ -12,15 +12,15 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class CallUpdater : Updater<CallResource> {
-        private string accountSid;
-        private string sid;
-        private Uri url;
-        private Twilio.Http.HttpMethod method;
-        private CallResource.Status status;
-        private Uri fallbackUrl;
-        private Twilio.Http.HttpMethod fallbackMethod;
-        private Uri statusCallback;
-        private Twilio.Http.HttpMethod statusCallbackMethod;
+        public string accountSid { get; }
+        public string sid { get; }
+        public Uri url { get; set; }
+        public Twilio.Http.HttpMethod method { get; set; }
+        public CallResource.Status status { get; set; }
+        public Uri fallbackUrl { get; set; }
+        public Twilio.Http.HttpMethod fallbackMethod { get; set; }
+        public Uri statusCallback { get; set; }
+        public Twilio.Http.HttpMethod statusCallbackMethod { get; set; }
     
         /// <summary>
         /// Construct a new CallUpdater.
@@ -165,7 +165,7 @@ namespace Twilio.Rest.Api.V2010.Account {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/" + this.sid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -205,7 +205,7 @@ namespace Twilio.Rest.Api.V2010.Account {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/" + this.sid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -237,7 +237,7 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (url != null) {
                 request.AddPostParam("Url", url.ToString());
             }

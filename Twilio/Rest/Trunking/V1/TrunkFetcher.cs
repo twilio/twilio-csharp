@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Trunking.V1 {
 
     public class TrunkFetcher : Fetcher<TrunkResource> {
-        private string sid;
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new TrunkFetcher

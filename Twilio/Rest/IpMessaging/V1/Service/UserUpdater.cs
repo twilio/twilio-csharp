@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.IpMessaging.V1.Service {
 
     public class UserUpdater : Updater<UserResource> {
-        private string serviceSid;
-        private string sid;
-        private string roleSid;
-        private Object attributes;
-        private string friendlyName;
+        public string serviceSid { get; }
+        public string sid { get; }
+        public string roleSid { get; set; }
+        public Object attributes { get; set; }
+        public string friendlyName { get; set; }
     
         /// <summary>
         /// Construct a new UserUpdater
@@ -74,7 +74,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
                 Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Users/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -114,7 +114,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
                 Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Users/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -146,7 +146,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (roleSid != null) {
                 request.AddPostParam("RoleSid", roleSid);
             }

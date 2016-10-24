@@ -1,7 +1,6 @@
 using System;
 using Twilio.Base;
 using Twilio.Clients;
-using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -12,15 +11,15 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Preview.Wireless {
 
     public class DeviceCreator : Creator<DeviceResource> {
-        private string ratePlan;
-        private string alias;
-        private string callbackMethod;
-        private Uri callbackUrl;
-        private string friendlyName;
-        private string simIdentifier;
-        private string status;
-        private string commandsCallbackMethod;
-        private Uri commandsCallbackUrl;
+        public string ratePlan { get; }
+        public string alias { get; set; }
+        public string callbackMethod { get; set; }
+        public Uri callbackUrl { get; set; }
+        public string friendlyName { get; set; }
+        public string simIdentifier { get; set; }
+        public string status { get; set; }
+        public string commandsCallbackMethod { get; set; }
+        public Uri commandsCallbackUrl { get; set; }
     
         /// <summary>
         /// Construct a new DeviceCreator
@@ -29,114 +28,6 @@ namespace Twilio.Rest.Preview.Wireless {
         /// <param name="ratePlan"> The rate_plan </param>
         public DeviceCreator(string ratePlan) {
             this.ratePlan = ratePlan;
-        }
-    
-        /// <summary>
-        /// The alias
-        /// </summary>
-        ///
-        /// <param name="alias"> The alias </param>
-        /// <returns> this </returns> 
-        public DeviceCreator setAlias(string alias) {
-            this.alias = alias;
-            return this;
-        }
-    
-        /// <summary>
-        /// The callback_method
-        /// </summary>
-        ///
-        /// <param name="callbackMethod"> The callback_method </param>
-        /// <returns> this </returns> 
-        public DeviceCreator setCallbackMethod(string callbackMethod) {
-            this.callbackMethod = callbackMethod;
-            return this;
-        }
-    
-        /// <summary>
-        /// The callback_url
-        /// </summary>
-        ///
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <returns> this </returns> 
-        public DeviceCreator setCallbackUrl(Uri callbackUrl) {
-            this.callbackUrl = callbackUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The callback_url
-        /// </summary>
-        ///
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <returns> this </returns> 
-        public DeviceCreator setCallbackUrl(string callbackUrl) {
-            return setCallbackUrl(Promoter.UriFromString(callbackUrl));
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public DeviceCreator setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The sim_identifier
-        /// </summary>
-        ///
-        /// <param name="simIdentifier"> The sim_identifier </param>
-        /// <returns> this </returns> 
-        public DeviceCreator setSimIdentifier(string simIdentifier) {
-            this.simIdentifier = simIdentifier;
-            return this;
-        }
-    
-        /// <summary>
-        /// The status
-        /// </summary>
-        ///
-        /// <param name="status"> The status </param>
-        /// <returns> this </returns> 
-        public DeviceCreator setStatus(string status) {
-            this.status = status;
-            return this;
-        }
-    
-        /// <summary>
-        /// The commands_callback_method
-        /// </summary>
-        ///
-        /// <param name="commandsCallbackMethod"> The commands_callback_method </param>
-        /// <returns> this </returns> 
-        public DeviceCreator setCommandsCallbackMethod(string commandsCallbackMethod) {
-            this.commandsCallbackMethod = commandsCallbackMethod;
-            return this;
-        }
-    
-        /// <summary>
-        /// The commands_callback_url
-        /// </summary>
-        ///
-        /// <param name="commandsCallbackUrl"> The commands_callback_url </param>
-        /// <returns> this </returns> 
-        public DeviceCreator setCommandsCallbackUrl(Uri commandsCallbackUrl) {
-            this.commandsCallbackUrl = commandsCallbackUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The commands_callback_url
-        /// </summary>
-        ///
-        /// <param name="commandsCallbackUrl"> The commands_callback_url </param>
-        /// <returns> this </returns> 
-        public DeviceCreator setCommandsCallbackUrl(string commandsCallbackUrl) {
-            return setCommandsCallbackUrl(Promoter.UriFromString(commandsCallbackUrl));
         }
     
         #if NET40
@@ -148,12 +39,12 @@ namespace Twilio.Rest.Preview.Wireless {
         /// <returns> Created DeviceResource </returns> 
         public override async Task<DeviceResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.PREVIEW,
                 "/wireless/Devices"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -188,12 +79,12 @@ namespace Twilio.Rest.Preview.Wireless {
         /// <returns> Created DeviceResource </returns> 
         public override DeviceResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.PREVIEW,
                 "/wireless/Devices"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -224,7 +115,7 @@ namespace Twilio.Rest.Preview.Wireless {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (ratePlan != null) {
                 request.AddPostParam("RatePlan", ratePlan);
             }

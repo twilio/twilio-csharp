@@ -12,10 +12,10 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Call {
 
     public class FeedbackUpdater : Updater<FeedbackResource> {
-        private string accountSid;
-        private string callSid;
-        private int? qualityScore;
-        private List<FeedbackResource.Issues> issue;
+        public string accountSid { get; }
+        public string callSid { get; }
+        public int? qualityScore { get; }
+        public List<FeedbackResource.Issues> issue { get; set; }
     
         /// <summary>
         /// Construct a new FeedbackUpdater.
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/" + this.callSid + "/Feedback.json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -115,7 +115,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/" + this.callSid + "/Feedback.json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -147,7 +147,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (qualityScore != null) {
                 request.AddPostParam("QualityScore", qualityScore.ToString());
             }

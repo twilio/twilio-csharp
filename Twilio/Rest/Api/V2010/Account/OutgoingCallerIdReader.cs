@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class OutgoingCallerIdReader : Reader<OutgoingCallerIdResource> {
-        private string accountSid;
-        private Twilio.Types.PhoneNumber phoneNumber;
-        private string friendlyName;
+        public string accountSid { get; }
+        public Twilio.Types.PhoneNumber phoneNumber { get; set; }
+        public string friendlyName { get; set; }
     
         /// <summary>
         /// Construct a new OutgoingCallerIdReader.

@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
 
     public class SyncMapItemFetcher : Fetcher<SyncMapItemResource> {
-        private string serviceSid;
-        private string mapSid;
-        private string key;
+        public string serviceSid { get; }
+        public string mapSid { get; }
+        public string key { get; }
     
         /// <summary>
         /// Construct a new SyncMapItemFetcher

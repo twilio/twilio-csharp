@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Lookups.V1 {
 
     public class PhoneNumberFetcher : Fetcher<PhoneNumberResource> {
-        private Twilio.Types.PhoneNumber phoneNumber;
-        private string countryCode;
-        private List<string> type;
-        private List<string> addOns;
-        private Dictionary<string, object> addOnsData;
+        public Twilio.Types.PhoneNumber phoneNumber { get; }
+        public string countryCode { get; set; }
+        public List<string> type { get; set; }
+        public List<string> addOns { get; set; }
+        public Dictionary<string, object> addOnsData { get; set; }
     
         /// <summary>
         /// Construct a new PhoneNumberFetcher

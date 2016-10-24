@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
     public class TaskReader : Reader<TaskResource> {
-        private string workspaceSid;
-        private int? priority;
-        private TaskResource.Status assignmentStatus;
-        private string workflowSid;
-        private string workflowName;
-        private string taskQueueSid;
-        private string taskQueueName;
-        private string taskChannel;
+        public string workspaceSid { get; }
+        public int? priority { get; set; }
+        public TaskResource.Status assignmentStatus { get; set; }
+        public string workflowSid { get; set; }
+        public string workflowName { get; set; }
+        public string taskQueueSid { get; set; }
+        public string taskQueueName { get; set; }
+        public string taskChannel { get; set; }
     
         /// <summary>
         /// Construct a new TaskReader

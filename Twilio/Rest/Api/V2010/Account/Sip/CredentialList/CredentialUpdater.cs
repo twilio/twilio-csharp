@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
 
     public class CredentialUpdater : Updater<CredentialResource> {
-        private string accountSid;
-        private string credentialListSid;
-        private string sid;
-        private string password;
+        public string accountSid { get; }
+        public string credentialListSid { get; }
+        public string sid { get; }
+        public string password { get; set; }
     
         /// <summary>
         /// Construct a new CredentialUpdater.
@@ -63,7 +63,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.credentialListSid + "/Credentials/" + this.sid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.credentialListSid + "/Credentials/" + this.sid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (password != null) {
                 request.AddPostParam("Password", password);
             }

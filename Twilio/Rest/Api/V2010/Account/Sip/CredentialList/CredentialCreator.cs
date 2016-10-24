@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
 
     public class CredentialCreator : Creator<CredentialResource> {
-        private string accountSid;
-        private string credentialListSid;
-        private string username;
-        private string password;
+        public string accountSid { get; }
+        public string credentialListSid { get; }
+        public string username { get; }
+        public string password { get; }
     
         /// <summary>
         /// Construct a new CredentialCreator.
@@ -52,12 +52,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         /// <returns> Created CredentialResource </returns> 
         public override async Task<CredentialResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.credentialListSid + "/Credentials.json"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -92,12 +92,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         /// <returns> Created CredentialResource </returns> 
         public override CredentialResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.credentialListSid + "/Credentials.json"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (username != null) {
                 request.AddPostParam("Username", username);
             }

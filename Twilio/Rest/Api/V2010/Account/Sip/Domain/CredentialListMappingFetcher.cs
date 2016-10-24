@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
 
     public class CredentialListMappingFetcher : Fetcher<CredentialListMappingResource> {
-        private string accountSid;
-        private string domainSid;
-        private string sid;
+        public string accountSid { get; }
+        public string domainSid { get; }
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new CredentialListMappingFetcher.

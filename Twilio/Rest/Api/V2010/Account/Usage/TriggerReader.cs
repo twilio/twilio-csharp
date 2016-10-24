@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Usage {
 
     public class TriggerReader : Reader<TriggerResource> {
-        private string accountSid;
-        private TriggerResource.Recurring recurring;
-        private TriggerResource.TriggerField triggerBy;
-        private TriggerResource.UsageCategory usageCategory;
+        public string accountSid { get; }
+        public TriggerResource.Recurring recurring { get; set; }
+        public TriggerResource.TriggerField triggerBy { get; set; }
+        public TriggerResource.UsageCategory usageCategory { get; set; }
     
         /// <summary>
         /// Construct a new TriggerReader.

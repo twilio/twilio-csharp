@@ -12,13 +12,13 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Taskrouter.V1 {
 
     public class WorkspaceUpdater : Updater<WorkspaceResource> {
-        private string sid;
-        private string defaultActivitySid;
-        private Uri eventCallbackUrl;
-        private string eventsFilter;
-        private string friendlyName;
-        private bool? multiTaskEnabled;
-        private string timeoutActivitySid;
+        public string sid { get; }
+        public string defaultActivitySid { get; set; }
+        public Uri eventCallbackUrl { get; set; }
+        public string eventsFilter { get; set; }
+        public string friendlyName { get; set; }
+        public bool? multiTaskEnabled { get; set; }
+        public string timeoutActivitySid { get; set; }
     
         /// <summary>
         /// Construct a new WorkspaceUpdater
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Taskrouter.V1 {
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Taskrouter.V1 {
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -190,7 +190,7 @@ namespace Twilio.Rest.Taskrouter.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (defaultActivitySid != null) {
                 request.AddPostParam("DefaultActivitySid", defaultActivitySid);
             }

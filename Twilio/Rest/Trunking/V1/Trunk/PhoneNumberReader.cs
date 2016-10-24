@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Trunking.V1.Trunk {
 
     public class PhoneNumberReader : Reader<PhoneNumberResource> {
-        private string trunkSid;
+        public string trunkSid { get; }
     
         /// <summary>
         /// Construct a new PhoneNumberReader

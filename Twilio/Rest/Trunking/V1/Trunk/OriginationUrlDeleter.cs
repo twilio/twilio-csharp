@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Trunking.V1.Trunk {
 
     public class OriginationUrlDeleter : Deleter<OriginationUrlResource> {
-        private string trunkSid;
-        private string sid;
+        public string trunkSid { get; }
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new OriginationUrlDeleter

@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
     public class EventFetcher : Fetcher<EventResource> {
-        private string workspaceSid;
-        private string sid;
+        public string workspaceSid { get; }
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new EventFetcher

@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Conference {
 
     public class ParticipantFetcher : Fetcher<ParticipantResource> {
-        private string accountSid;
-        private string conferenceSid;
-        private string callSid;
+        public string accountSid { get; }
+        public string conferenceSid { get; }
+        public string callSid { get; }
     
         /// <summary>
         /// Construct a new ParticipantFetcher.

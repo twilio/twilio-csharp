@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
     public class WorkerUpdater : Updater<WorkerResource> {
-        private string workspaceSid;
-        private string sid;
-        private string activitySid;
-        private string attributes;
-        private string friendlyName;
+        public string workspaceSid { get; }
+        public string sid { get; }
+        public string activitySid { get; set; }
+        public string attributes { get; set; }
+        public string friendlyName { get; set; }
     
         /// <summary>
         /// Construct a new WorkerUpdater
@@ -73,7 +73,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -145,7 +145,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (activitySid != null) {
                 request.AddPostParam("ActivitySid", activitySid);
             }

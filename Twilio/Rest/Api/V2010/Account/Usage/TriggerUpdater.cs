@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Usage {
 
     public class TriggerUpdater : Updater<TriggerResource> {
-        private string accountSid;
-        private string sid;
-        private Twilio.Http.HttpMethod callbackMethod;
-        private Uri callbackUrl;
-        private string friendlyName;
+        public string accountSid { get; }
+        public string sid { get; }
+        public Twilio.Http.HttpMethod callbackMethod { get; set; }
+        public Uri callbackUrl { get; set; }
+        public string friendlyName { get; set; }
     
         /// <summary>
         /// Construct a new TriggerUpdater.
@@ -94,7 +94,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Usage/Triggers/" + this.sid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Usage/Triggers/" + this.sid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (callbackMethod != null) {
                 request.AddPostParam("CallbackMethod", callbackMethod.ToString());
             }

@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Chat.V1.Service {
 
     public class RoleUpdater : Updater<RoleResource> {
-        private string serviceSid;
-        private string sid;
-        private List<string> permission;
+        public string serviceSid { get; }
+        public string sid { get; }
+        public List<string> permission { get; }
     
         /// <summary>
         /// Construct a new RoleUpdater
@@ -41,7 +41,7 @@ namespace Twilio.Rest.Chat.V1.Service {
                 Domains.CHAT,
                 "/v1/Services/" + this.serviceSid + "/Roles/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Chat.V1.Service {
                 Domains.CHAT,
                 "/v1/Services/" + this.serviceSid + "/Roles/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Chat.V1.Service {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (permission != null) {
                 request.AddPostParam("Permission", permission.ToString());
             }

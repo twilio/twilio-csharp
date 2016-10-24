@@ -12,10 +12,10 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
 
     public class MonthlyReader : Reader<MonthlyResource> {
-        private string accountSid;
-        private MonthlyResource.Category category;
-        private DateTime? startDate;
-        private DateTime? endDate;
+        public string accountSid { get; }
+        public MonthlyResource.Category category { get; set; }
+        public DateTime? startDate { get; set; }
+        public DateTime? endDate { get; set; }
     
         /// <summary>
         /// Construct a new MonthlyReader.

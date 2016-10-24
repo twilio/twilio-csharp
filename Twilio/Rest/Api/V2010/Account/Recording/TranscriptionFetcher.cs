@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Recording {
 
     public class TranscriptionFetcher : Fetcher<TranscriptionResource> {
-        private string accountSid;
-        private string recordingSid;
-        private string sid;
+        public string accountSid { get; }
+        public string recordingSid { get; }
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new TranscriptionFetcher.

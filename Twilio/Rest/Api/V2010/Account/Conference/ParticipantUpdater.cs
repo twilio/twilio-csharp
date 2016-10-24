@@ -12,13 +12,13 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Conference {
 
     public class ParticipantUpdater : Updater<ParticipantResource> {
-        private string accountSid;
-        private string conferenceSid;
-        private string callSid;
-        private bool? muted;
-        private bool? hold;
-        private Uri holdUrl;
-        private Twilio.Http.HttpMethod holdMethod;
+        public string accountSid { get; }
+        public string conferenceSid { get; }
+        public string callSid { get; }
+        public bool? muted { get; set; }
+        public bool? hold { get; set; }
+        public Uri holdUrl { get; set; }
+        public Twilio.Http.HttpMethod holdMethod { get; set; }
     
         /// <summary>
         /// Construct a new ParticipantUpdater.
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (muted != null) {
                 request.AddPostParam("Muted", muted.ToString());
             }

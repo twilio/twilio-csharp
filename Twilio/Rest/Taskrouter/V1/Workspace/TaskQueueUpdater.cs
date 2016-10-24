@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
     public class TaskQueueUpdater : Updater<TaskQueueResource> {
-        private string workspaceSid;
-        private string sid;
-        private string friendlyName;
-        private string targetWorkers;
-        private string reservationActivitySid;
-        private string assignmentActivitySid;
-        private int? maxReservedWorkers;
+        public string workspaceSid { get; }
+        public string sid { get; }
+        public string friendlyName { get; set; }
+        public string targetWorkers { get; set; }
+        public string reservationActivitySid { get; set; }
+        public string assignmentActivitySid { get; set; }
+        public int? maxReservedWorkers { get; set; }
     
         /// <summary>
         /// Construct a new TaskQueueUpdater
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/TaskQueues/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/TaskQueues/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -169,7 +169,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }

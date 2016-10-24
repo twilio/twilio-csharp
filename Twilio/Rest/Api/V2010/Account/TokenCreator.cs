@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class TokenCreator : Creator<TokenResource> {
-        private string accountSid;
-        private int? ttl;
+        public string accountSid { get; }
+        public int? ttl { get; set; }
     
         /// <summary>
         /// Construct a new TokenCreator.
@@ -28,17 +28,6 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.accountSid = accountSid;
         }
     
-        /// <summary>
-        /// The duration in seconds for which the generated credentials are valid
-        /// </summary>
-        ///
-        /// <param name="ttl"> The duration in seconds the credentials are valid </param>
-        /// <returns> this </returns> 
-        public TokenCreator setTtl(int? ttl) {
-            this.ttl = ttl;
-            return this;
-        }
-    
         #if NET40
         /// <summary>
         /// Make the request to the Twilio API to perform the create
@@ -48,12 +37,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <returns> Created TokenResource </returns> 
         public override async Task<TokenResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Tokens.json"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -88,12 +77,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <returns> Created TokenResource </returns> 
         public override TokenResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Tokens.json"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -124,7 +113,7 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (ttl != null) {
                 request.AddPostParam("Ttl", ttl.ToString());
             }

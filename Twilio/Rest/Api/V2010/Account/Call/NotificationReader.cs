@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Call {
 
     public class NotificationReader : Reader<NotificationResource> {
-        private string accountSid;
-        private string callSid;
-        private int? log;
-        private string messageDate;
+        public string accountSid { get; }
+        public string callSid { get; }
+        public int? log { get; set; }
+        public string messageDate { get; set; }
     
         /// <summary>
         /// Construct a new NotificationReader.

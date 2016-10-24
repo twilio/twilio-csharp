@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class MessageUpdater : Updater<MessageResource> {
-        private string accountSid;
-        private string sid;
-        private string body;
+        public string accountSid { get; }
+        public string sid { get; }
+        public string body { get; set; }
     
         /// <summary>
         /// Construct a new MessageUpdater.
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Messages/" + this.sid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Api.V2010.Account {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Messages/" + this.sid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -130,7 +130,7 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (body != null) {
                 request.AddPostParam("Body", body);
             }

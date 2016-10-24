@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Conference {
 
     public class ParticipantReader : Reader<ParticipantResource> {
-        private string accountSid;
-        private string conferenceSid;
-        private bool? muted;
-        private bool? hold;
+        public string accountSid { get; }
+        public string conferenceSid { get; }
+        public bool? muted { get; set; }
+        public bool? hold { get; set; }
     
         /// <summary>
         /// Construct a new ParticipantReader.

@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
     public class TaskCreator : Creator<TaskResource> {
-        private string workspaceSid;
-        private string attributes;
-        private string workflowSid;
-        private int? timeout;
-        private int? priority;
-        private string taskChannel;
+        public string workspaceSid { get; }
+        public string attributes { get; }
+        public string workflowSid { get; }
+        public int? timeout { get; set; }
+        public int? priority { get; set; }
+        public string taskChannel { get; set; }
     
         /// <summary>
         /// Construct a new TaskCreator
@@ -30,39 +30,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             this.workflowSid = workflowSid;
         }
     
-        /// <summary>
-        /// The timeout
-        /// </summary>
-        ///
-        /// <param name="timeout"> The timeout </param>
-        /// <returns> this </returns> 
-        public TaskCreator setTimeout(int? timeout) {
-            this.timeout = timeout;
-            return this;
-        }
-    
-        /// <summary>
-        /// The priority
-        /// </summary>
-        ///
-        /// <param name="priority"> The priority </param>
-        /// <returns> this </returns> 
-        public TaskCreator setPriority(int? priority) {
-            this.priority = priority;
-            return this;
-        }
-    
-        /// <summary>
-        /// The task_channel
-        /// </summary>
-        ///
-        /// <param name="taskChannel"> The task_channel </param>
-        /// <returns> this </returns> 
-        public TaskCreator setTaskChannel(string taskChannel) {
-            this.taskChannel = taskChannel;
-            return this;
-        }
-    
         #if NET40
         /// <summary>
         /// Make the request to the Twilio API to perform the create
@@ -72,12 +39,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <returns> Created TaskResource </returns> 
         public override async Task<TaskResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Tasks"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -112,12 +79,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <returns> Created TaskResource </returns> 
         public override TaskResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Tasks"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -148,7 +115,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (attributes != null) {
                 request.AddPostParam("Attributes", attributes);
             }

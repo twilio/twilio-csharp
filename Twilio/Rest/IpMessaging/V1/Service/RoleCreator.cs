@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.IpMessaging.V1.Service {
 
     public class RoleCreator : Creator<RoleResource> {
-        private string serviceSid;
-        private string friendlyName;
-        private RoleResource.RoleType type;
-        private List<string> permission;
+        public string serviceSid { get; }
+        public string friendlyName { get; }
+        public RoleResource.RoleType type { get; }
+        public List<string> permission { get; }
     
         /// <summary>
         /// Construct a new RoleCreator
@@ -40,12 +40,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// <returns> Created RoleResource </returns> 
         public override async Task<RoleResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Roles"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -80,12 +80,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// <returns> Created RoleResource </returns> 
         public override RoleResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Roles"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -116,7 +116,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }

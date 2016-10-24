@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Monitor.V1 {
 
     public class EventReader : Reader<EventResource> {
-        private string actorSid;
-        private string eventType;
-        private string resourceSid;
-        private string sourceIpAddress;
-        private DateTime? startDate;
-        private DateTime? endDate;
+        public string actorSid { get; set; }
+        public string eventType { get; set; }
+        public string resourceSid { get; set; }
+        public string sourceIpAddress { get; set; }
+        public DateTime? startDate { get; set; }
+        public DateTime? endDate { get; set; }
     
         /// <summary>
         /// The actor_sid

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010 {
 
     public class AccountFetcher : Fetcher<AccountResource> {
-        private string sid;
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new AccountFetcher.

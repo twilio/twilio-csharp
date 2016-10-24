@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Queue {
 
     public class MemberReader : Reader<MemberResource> {
-        private string accountSid;
-        private string queueSid;
+        public string accountSid { get; }
+        public string queueSid { get; }
     
         /// <summary>
         /// Construct a new MemberReader.

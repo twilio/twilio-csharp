@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Trunking.V1.Trunk {
 
     public class PhoneNumberCreator : Creator<PhoneNumberResource> {
-        private string trunkSid;
-        private string phoneNumberSid;
+        public string trunkSid { get; }
+        public string phoneNumberSid { get; }
     
         /// <summary>
         /// Construct a new PhoneNumberCreator
@@ -33,12 +33,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <returns> Created PhoneNumberResource </returns> 
         public override async Task<PhoneNumberResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.TRUNKING,
                 "/v1/Trunks/" + this.trunkSid + "/PhoneNumbers"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -73,12 +73,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <returns> Created PhoneNumberResource </returns> 
         public override PhoneNumberResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.TRUNKING,
                 "/v1/Trunks/" + this.trunkSid + "/PhoneNumbers"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (phoneNumberSid != null) {
                 request.AddPostParam("PhoneNumberSid", phoneNumberSid);
             }

@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Preview.Sync.Service.SyncList {
 
     public class SyncListItemFetcher : Fetcher<SyncListItemResource> {
-        private string serviceSid;
-        private string listSid;
-        private int? index;
+        public string serviceSid { get; }
+        public string listSid { get; }
+        public int? index { get; }
     
         /// <summary>
         /// Construct a new SyncListItemFetcher

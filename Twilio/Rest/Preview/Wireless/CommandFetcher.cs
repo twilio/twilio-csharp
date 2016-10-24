@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Preview.Wireless {
 
     public class CommandFetcher : Fetcher<CommandResource> {
-        private string sid;
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new CommandFetcher

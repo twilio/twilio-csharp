@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Pricing.V1.Voice {
 
     public class NumberFetcher : Fetcher<NumberResource> {
-        private Twilio.Types.PhoneNumber number;
+        public Twilio.Types.PhoneNumber number { get; }
     
         /// <summary>
         /// Construct a new NumberFetcher

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Pricing.V1.PhoneNumber {
 
     public class CountryFetcher : Fetcher<CountryResource> {
-        private string isoCountry;
+        public string isoCountry { get; }
     
         /// <summary>
         /// Construct a new CountryFetcher

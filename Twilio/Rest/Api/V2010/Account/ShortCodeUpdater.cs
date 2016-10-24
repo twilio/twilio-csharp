@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class ShortCodeUpdater : Updater<ShortCodeResource> {
-        private string accountSid;
-        private string sid;
-        private string friendlyName;
-        private string apiVersion;
-        private Uri smsUrl;
-        private Twilio.Http.HttpMethod smsMethod;
-        private Uri smsFallbackUrl;
-        private Twilio.Http.HttpMethod smsFallbackMethod;
+        public string accountSid { get; }
+        public string sid { get; }
+        public string friendlyName { get; set; }
+        public string apiVersion { get; set; }
+        public Uri smsUrl { get; set; }
+        public Twilio.Http.HttpMethod smsMethod { get; set; }
+        public Uri smsFallbackUrl { get; set; }
+        public Twilio.Http.HttpMethod smsFallbackMethod { get; set; }
     
         /// <summary>
         /// Construct a new ShortCodeUpdater.
@@ -141,7 +141,7 @@ namespace Twilio.Rest.Api.V2010.Account {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SMS/ShortCodes/" + this.sid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -181,7 +181,7 @@ namespace Twilio.Rest.Api.V2010.Account {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SMS/ShortCodes/" + this.sid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -213,7 +213,7 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }

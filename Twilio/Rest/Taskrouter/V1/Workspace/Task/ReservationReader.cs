@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
 
     public class ReservationReader : Reader<ReservationResource> {
-        private string workspaceSid;
-        private string taskSid;
-        private ReservationResource.Status reservationStatus;
+        public string workspaceSid { get; }
+        public string taskSid { get; }
+        public ReservationResource.Status reservationStatus { get; set; }
     
         /// <summary>
         /// Construct a new ReservationReader

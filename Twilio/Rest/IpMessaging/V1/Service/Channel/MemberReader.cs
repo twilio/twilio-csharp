@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
 
     public class MemberReader : Reader<MemberResource> {
-        private string serviceSid;
-        private string channelSid;
+        public string serviceSid { get; }
+        public string channelSid { get; }
     
         /// <summary>
         /// Construct a new MemberReader

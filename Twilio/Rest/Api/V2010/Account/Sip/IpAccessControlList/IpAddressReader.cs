@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
 
     public class IpAddressReader : Reader<IpAddressResource> {
-        private string accountSid;
-        private string ipAccessControlListSid;
+        public string accountSid { get; }
+        public string ipAccessControlListSid { get; }
     
         /// <summary>
         /// Construct a new IpAddressReader.

@@ -1,7 +1,6 @@
 using System;
 using Twilio.Base;
 using Twilio.Clients;
-using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -12,12 +11,12 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Preview.Wireless {
 
     public class CommandCreator : Creator<CommandResource> {
-        private string device;
-        private string command;
-        private string callbackMethod;
-        private Uri callbackUrl;
-        private string commandMode;
-        private string includeSid;
+        public string device { get; }
+        public string command { get; }
+        public string callbackMethod { get; set; }
+        public Uri callbackUrl { get; set; }
+        public string commandMode { get; set; }
+        public string includeSid { get; set; }
     
         /// <summary>
         /// Construct a new CommandCreator
@@ -30,60 +29,6 @@ namespace Twilio.Rest.Preview.Wireless {
             this.command = command;
         }
     
-        /// <summary>
-        /// The callback_method
-        /// </summary>
-        ///
-        /// <param name="callbackMethod"> The callback_method </param>
-        /// <returns> this </returns> 
-        public CommandCreator setCallbackMethod(string callbackMethod) {
-            this.callbackMethod = callbackMethod;
-            return this;
-        }
-    
-        /// <summary>
-        /// The callback_url
-        /// </summary>
-        ///
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <returns> this </returns> 
-        public CommandCreator setCallbackUrl(Uri callbackUrl) {
-            this.callbackUrl = callbackUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The callback_url
-        /// </summary>
-        ///
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <returns> this </returns> 
-        public CommandCreator setCallbackUrl(string callbackUrl) {
-            return setCallbackUrl(Promoter.UriFromString(callbackUrl));
-        }
-    
-        /// <summary>
-        /// The command_mode
-        /// </summary>
-        ///
-        /// <param name="commandMode"> The command_mode </param>
-        /// <returns> this </returns> 
-        public CommandCreator setCommandMode(string commandMode) {
-            this.commandMode = commandMode;
-            return this;
-        }
-    
-        /// <summary>
-        /// The include_sid
-        /// </summary>
-        ///
-        /// <param name="includeSid"> The include_sid </param>
-        /// <returns> this </returns> 
-        public CommandCreator setIncludeSid(string includeSid) {
-            this.includeSid = includeSid;
-            return this;
-        }
-    
         #if NET40
         /// <summary>
         /// Make the request to the Twilio API to perform the create
@@ -93,12 +38,12 @@ namespace Twilio.Rest.Preview.Wireless {
         /// <returns> Created CommandResource </returns> 
         public override async Task<CommandResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.PREVIEW,
                 "/wireless/Commands"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -133,12 +78,12 @@ namespace Twilio.Rest.Preview.Wireless {
         /// <returns> Created CommandResource </returns> 
         public override CommandResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.PREVIEW,
                 "/wireless/Commands"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -169,7 +114,7 @@ namespace Twilio.Rest.Preview.Wireless {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (device != null) {
                 request.AddPostParam("Device", device);
             }

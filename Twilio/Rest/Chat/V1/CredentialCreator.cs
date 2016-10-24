@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Chat.V1 {
 
     public class CredentialCreator : Creator<CredentialResource> {
-        private CredentialResource.PushService type;
-        private string friendlyName;
-        private string certificate;
-        private string privateKey;
-        private bool? sandbox;
-        private string apiKey;
+        public CredentialResource.PushService type { get; }
+        public string friendlyName { get; set; }
+        public string certificate { get; set; }
+        public string privateKey { get; set; }
+        public bool? sandbox { get; set; }
+        public string apiKey { get; set; }
     
         /// <summary>
         /// Construct a new CredentialCreator
@@ -24,61 +24,6 @@ namespace Twilio.Rest.Chat.V1 {
         /// <param name="type"> The type </param>
         public CredentialCreator(CredentialResource.PushService type) {
             this.type = type;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public CredentialCreator setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The certificate
-        /// </summary>
-        ///
-        /// <param name="certificate"> The certificate </param>
-        /// <returns> this </returns> 
-        public CredentialCreator setCertificate(string certificate) {
-            this.certificate = certificate;
-            return this;
-        }
-    
-        /// <summary>
-        /// The private_key
-        /// </summary>
-        ///
-        /// <param name="privateKey"> The private_key </param>
-        /// <returns> this </returns> 
-        public CredentialCreator setPrivateKey(string privateKey) {
-            this.privateKey = privateKey;
-            return this;
-        }
-    
-        /// <summary>
-        /// The sandbox
-        /// </summary>
-        ///
-        /// <param name="sandbox"> The sandbox </param>
-        /// <returns> this </returns> 
-        public CredentialCreator setSandbox(bool? sandbox) {
-            this.sandbox = sandbox;
-            return this;
-        }
-    
-        /// <summary>
-        /// The api_key
-        /// </summary>
-        ///
-        /// <param name="apiKey"> The api_key </param>
-        /// <returns> this </returns> 
-        public CredentialCreator setApiKey(string apiKey) {
-            this.apiKey = apiKey;
-            return this;
         }
     
         #if NET40
@@ -90,12 +35,12 @@ namespace Twilio.Rest.Chat.V1 {
         /// <returns> Created CredentialResource </returns> 
         public override async Task<CredentialResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.CHAT,
                 "/v1/Credentials"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -130,12 +75,12 @@ namespace Twilio.Rest.Chat.V1 {
         /// <returns> Created CredentialResource </returns> 
         public override CredentialResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.CHAT,
                 "/v1/Credentials"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -166,7 +111,7 @@ namespace Twilio.Rest.Chat.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (type != null) {
                 request.AddPostParam("Type", type.ToString());
             }

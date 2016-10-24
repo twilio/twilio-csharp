@@ -13,11 +13,11 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Notify.V1.Service {
 
     public class BindingReader : Reader<BindingResource> {
-        private string serviceSid;
-        private DateTime? startDate;
-        private DateTime? endDate;
-        private List<string> identity;
-        private List<string> tag;
+        public string serviceSid { get; }
+        public DateTime? startDate { get; set; }
+        public DateTime? endDate { get; set; }
+        public List<string> identity { get; set; }
+        public List<string> tag { get; set; }
     
         /// <summary>
         /// Construct a new BindingReader

@@ -11,15 +11,15 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.IpMessaging.V1 {
 
     public class ServiceUpdater : Updater<ServiceResource> {
-        private string sid;
-        private string friendlyName;
-        private string defaultServiceRoleSid;
-        private string defaultChannelRoleSid;
-        private string defaultChannelCreatorRoleSid;
-        private bool? readStatusEnabled;
-        private int? typingIndicatorTimeout;
-        private int? consumptionReportInterval;
-        private Object webhooks;
+        public string sid { get; }
+        public string friendlyName { get; set; }
+        public string defaultServiceRoleSid { get; set; }
+        public string defaultChannelRoleSid { get; set; }
+        public string defaultChannelCreatorRoleSid { get; set; }
+        public bool? readStatusEnabled { get; set; }
+        public int? typingIndicatorTimeout { get; set; }
+        public int? consumptionReportInterval { get; set; }
+        public Object webhooks { get; set; }
     
         /// <summary>
         /// Construct a new ServiceUpdater
@@ -131,7 +131,7 @@ namespace Twilio.Rest.IpMessaging.V1 {
                 Domains.IP_MESSAGING,
                 "/v1/Services/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -171,7 +171,7 @@ namespace Twilio.Rest.IpMessaging.V1 {
                 Domains.IP_MESSAGING,
                 "/v1/Services/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -203,7 +203,7 @@ namespace Twilio.Rest.IpMessaging.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }

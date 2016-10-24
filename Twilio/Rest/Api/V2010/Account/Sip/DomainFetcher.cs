@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Sip {
 
     public class DomainFetcher : Fetcher<DomainResource> {
-        private string accountSid;
-        private string sid;
+        public string accountSid { get; }
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new DomainFetcher.

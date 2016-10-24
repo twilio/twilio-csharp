@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Preview.Sync.Service.SyncList {
 
     public class SyncListItemCreator : Creator<SyncListItemResource> {
-        private string serviceSid;
-        private string listSid;
-        private Object data;
+        public string serviceSid { get; }
+        public string listSid { get; }
+        public Object data { get; }
     
         /// <summary>
         /// Construct a new SyncListItemCreator
@@ -37,12 +37,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         /// <returns> Created SyncListItemResource </returns> 
         public override async Task<SyncListItemResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.PREVIEW,
                 "/Sync/Services/" + this.serviceSid + "/Lists/" + this.listSid + "/Items"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -77,12 +77,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         /// <returns> Created SyncListItemResource </returns> 
         public override SyncListItemResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.PREVIEW,
                 "/Sync/Services/" + this.serviceSid + "/Lists/" + this.listSid + "/Items"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (data != null) {
                 request.AddPostParam("Data", data.ToString());
             }

@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
 
     public class IpAddressUpdater : Updater<IpAddressResource> {
-        private string accountSid;
-        private string ipAccessControlListSid;
-        private string sid;
-        private string ipAddress;
-        private string friendlyName;
+        public string accountSid { get; }
+        public string ipAccessControlListSid { get; }
+        public string sid { get; }
+        public string ipAddress { get; set; }
+        public string friendlyName { get; set; }
     
         /// <summary>
         /// Construct a new IpAddressUpdater.
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses/" + this.sid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -115,7 +115,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
                 Domains.API,
                 "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses/" + this.sid + ".json"
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -147,7 +147,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (ipAddress != null) {
                 request.AddPostParam("IpAddress", ipAddress);
             }

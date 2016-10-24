@@ -12,16 +12,16 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Preview.Wireless {
 
     public class DeviceUpdater : Updater<DeviceResource> {
-        private string sid;
-        private string alias;
-        private string callbackMethod;
-        private Uri callbackUrl;
-        private string friendlyName;
-        private string ratePlan;
-        private string simIdentifier;
-        private string status;
-        private string commandsCallbackMethod;
-        private Uri commandsCallbackUrl;
+        public string sid { get; }
+        public string alias { get; set; }
+        public string callbackMethod { get; set; }
+        public Uri callbackUrl { get; set; }
+        public string friendlyName { get; set; }
+        public string ratePlan { get; set; }
+        public string simIdentifier { get; set; }
+        public string status { get; set; }
+        public string commandsCallbackMethod { get; set; }
+        public Uri commandsCallbackUrl { get; set; }
     
         /// <summary>
         /// Construct a new DeviceUpdater
@@ -164,7 +164,7 @@ namespace Twilio.Rest.Preview.Wireless {
                 Domains.PREVIEW,
                 "/wireless/Devices/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -204,7 +204,7 @@ namespace Twilio.Rest.Preview.Wireless {
                 Domains.PREVIEW,
                 "/wireless/Devices/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -236,7 +236,7 @@ namespace Twilio.Rest.Preview.Wireless {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (alias != null) {
                 request.AddPostParam("Alias", alias);
             }

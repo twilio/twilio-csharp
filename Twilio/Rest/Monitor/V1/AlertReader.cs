@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Monitor.V1 {
 
     public class AlertReader : Reader<AlertResource> {
-        private string logLevel;
-        private DateTime? startDate;
-        private DateTime? endDate;
+        public string logLevel { get; set; }
+        public DateTime? startDate { get; set; }
+        public DateTime? endDate { get; set; }
     
         /// <summary>
         /// The log_level

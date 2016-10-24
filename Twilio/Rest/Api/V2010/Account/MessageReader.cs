@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class MessageReader : Reader<MessageResource> {
-        private string accountSid;
-        private Twilio.Types.PhoneNumber to;
-        private Twilio.Types.PhoneNumber from;
-        private string dateSent;
+        public string accountSid { get; }
+        public Twilio.Types.PhoneNumber to { get; set; }
+        public Twilio.Types.PhoneNumber from { get; set; }
+        public string dateSent { get; set; }
     
         /// <summary>
         /// Construct a new MessageReader.

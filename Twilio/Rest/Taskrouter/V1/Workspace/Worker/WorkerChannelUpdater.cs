@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
 
     public class WorkerChannelUpdater : Updater<WorkerChannelResource> {
-        private string workspaceSid;
-        private string workerSid;
-        private string sid;
-        private int? capacity;
-        private bool? available;
+        public string workspaceSid { get; }
+        public string workerSid { get; }
+        public string sid { get; }
+        public int? capacity { get; set; }
+        public bool? available { get; set; }
     
         /// <summary>
         /// Construct a new WorkerChannelUpdater
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.workerSid + "/Channels/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.workerSid + "/Channels/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (capacity != null) {
                 request.AddPostParam("Capacity", capacity.ToString());
             }

@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Preview.Sync.Service {
 
     public class SyncListDeleter : Deleter<SyncListResource> {
-        private string serviceSid;
-        private string sid;
+        public string serviceSid { get; }
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new SyncListDeleter

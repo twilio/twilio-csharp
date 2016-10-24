@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
     public class ActivityReader : Reader<ActivityResource> {
-        private string workspaceSid;
-        private string friendlyName;
-        private string available;
+        public string workspaceSid { get; }
+        public string friendlyName { get; set; }
+        public string available { get; set; }
     
         /// <summary>
         /// Construct a new ActivityReader

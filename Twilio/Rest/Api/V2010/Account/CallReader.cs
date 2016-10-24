@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class CallReader : Reader<CallResource> {
-        private string accountSid;
-        private Twilio.Types.PhoneNumber to;
-        private Twilio.Types.PhoneNumber from;
-        private string parentCallSid;
-        private CallResource.Status status;
-        private string startTime;
-        private string endTime;
+        public string accountSid { get; }
+        public Twilio.Types.PhoneNumber to { get; set; }
+        public Twilio.Types.PhoneNumber from { get; set; }
+        public string parentCallSid { get; set; }
+        public CallResource.Status status { get; set; }
+        public string startTime { get; set; }
+        public string endTime { get; set; }
     
         /// <summary>
         /// Construct a new CallReader.

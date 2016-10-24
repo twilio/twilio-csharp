@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010 {
 
     public class AccountReader : Reader<AccountResource> {
-        private string friendlyName;
-        private AccountResource.Status status;
+        public string friendlyName { get; set; }
+        public AccountResource.Status status { get; set; }
     
         /// <summary>
         /// Filter accounts where the friendly name exactly matches the desired FriendlyName

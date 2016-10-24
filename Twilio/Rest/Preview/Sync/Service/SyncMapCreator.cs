@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Preview.Sync.Service {
 
     public class SyncMapCreator : Creator<SyncMapResource> {
-        private string serviceSid;
-        private string uniqueName;
+        public string serviceSid { get; }
+        public string uniqueName { get; set; }
     
         /// <summary>
         /// Construct a new SyncMapCreator
@@ -20,17 +20,6 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// <param name="serviceSid"> The service_sid </param>
         public SyncMapCreator(string serviceSid) {
             this.serviceSid = serviceSid;
-        }
-    
-        /// <summary>
-        /// The unique_name
-        /// </summary>
-        ///
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <returns> this </returns> 
-        public SyncMapCreator setUniqueName(string uniqueName) {
-            this.uniqueName = uniqueName;
-            return this;
         }
     
         #if NET40
@@ -42,12 +31,12 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// <returns> Created SyncMapResource </returns> 
         public override async Task<SyncMapResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.PREVIEW,
                 "/Sync/Services/" + this.serviceSid + "/Maps"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -82,12 +71,12 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// <returns> Created SyncMapResource </returns> 
         public override SyncMapResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.PREVIEW,
                 "/Sync/Services/" + this.serviceSid + "/Maps"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -118,7 +107,7 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (uniqueName != null) {
                 request.AddPostParam("UniqueName", uniqueName);
             }

@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
     public class TaskQueueCreator : Creator<TaskQueueResource> {
-        private string workspaceSid;
-        private string friendlyName;
-        private string reservationActivitySid;
-        private string assignmentActivitySid;
-        private string targetWorkers;
-        private int? maxReservedWorkers;
+        public string workspaceSid { get; }
+        public string friendlyName { get; }
+        public string reservationActivitySid { get; }
+        public string assignmentActivitySid { get; }
+        public string targetWorkers { get; set; }
+        public int? maxReservedWorkers { get; set; }
     
         /// <summary>
         /// Construct a new TaskQueueCreator
@@ -32,28 +32,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             this.assignmentActivitySid = assignmentActivitySid;
         }
     
-        /// <summary>
-        /// The target_workers
-        /// </summary>
-        ///
-        /// <param name="targetWorkers"> The target_workers </param>
-        /// <returns> this </returns> 
-        public TaskQueueCreator setTargetWorkers(string targetWorkers) {
-            this.targetWorkers = targetWorkers;
-            return this;
-        }
-    
-        /// <summary>
-        /// The max_reserved_workers
-        /// </summary>
-        ///
-        /// <param name="maxReservedWorkers"> The max_reserved_workers </param>
-        /// <returns> this </returns> 
-        public TaskQueueCreator setMaxReservedWorkers(int? maxReservedWorkers) {
-            this.maxReservedWorkers = maxReservedWorkers;
-            return this;
-        }
-    
         #if NET40
         /// <summary>
         /// Make the request to the Twilio API to perform the create
@@ -63,12 +41,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <returns> Created TaskQueueResource </returns> 
         public override async Task<TaskQueueResource> CreateAsync(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/TaskQueues"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = await client.RequestAsync(request);
             if (response == null)
             {
@@ -103,12 +81,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <returns> Created TaskQueueResource </returns> 
         public override TaskQueueResource Create(ITwilioRestClient client) {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.TASKROUTER,
                 "/v1/Workspaces/" + this.workspaceSid + "/TaskQueues"
             );
             
-            addPostParams(request);
+            AddPostParams(request);
             var response = client.Request(request);
             if (response == null)
             {
@@ -139,7 +117,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (friendlyName != null) {
                 request.AddPostParam("FriendlyName", friendlyName);
             }

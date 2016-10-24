@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account {
 
     public class MessageDeleter : Deleter<MessageResource> {
-        private string accountSid;
-        private string sid;
+        public string accountSid { get; }
+        public string sid { get; }
     
         /// <summary>
         /// Construct a new MessageDeleter.

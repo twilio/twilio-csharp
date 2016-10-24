@@ -12,10 +12,10 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
 
     public class YesterdayReader : Reader<YesterdayResource> {
-        private string accountSid;
-        private YesterdayResource.Category category;
-        private DateTime? startDate;
-        private DateTime? endDate;
+        public string accountSid { get; }
+        public YesterdayResource.Category category { get; set; }
+        public DateTime? startDate { get; set; }
+        public DateTime? endDate { get; set; }
     
         /// <summary>
         /// Construct a new YesterdayReader.

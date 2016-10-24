@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
 
     public class MessageUpdater : Updater<MessageResource> {
-        private string serviceSid;
-        private string channelSid;
-        private string sid;
-        private string body;
-        private Object attributes;
+        public string serviceSid { get; }
+        public string channelSid { get; }
+        public string sid { get; }
+        public string body { get; }
+        public Object attributes { get; set; }
     
         /// <summary>
         /// Construct a new MessageUpdater
@@ -56,7 +56,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
                 Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Messages/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = await client.RequestAsync(request);
             if (response == null)
@@ -96,7 +96,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
                 Domains.IP_MESSAGING,
                 "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Messages/" + this.sid + ""
             );
-            addPostParams(request);
+            AddPostParams(request);
             
             var response = client.Request(request);
             if (response == null)
@@ -128,7 +128,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void addPostParams(Request request) {
+        private void AddPostParams(Request request) {
             if (body != null) {
                 request.AddPostParam("Body", body);
             }

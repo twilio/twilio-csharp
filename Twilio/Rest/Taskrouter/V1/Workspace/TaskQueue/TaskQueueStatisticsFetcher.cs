@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
 
     public class TaskQueueStatisticsFetcher : Fetcher<TaskQueueStatisticsResource> {
-        private string workspaceSid;
-        private string taskQueueSid;
-        private DateTime? endDate;
-        private string friendlyName;
-        private int? minutes;
-        private DateTime? startDate;
+        public string workspaceSid { get; }
+        public string taskQueueSid { get; }
+        public DateTime? endDate { get; set; }
+        public string friendlyName { get; set; }
+        public int? minutes { get; set; }
+        public DateTime? startDate { get; set; }
     
         /// <summary>
         /// Construct a new TaskQueueStatisticsFetcher
