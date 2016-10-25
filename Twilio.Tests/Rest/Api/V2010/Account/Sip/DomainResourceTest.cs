@@ -21,7 +21,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip {
         [Test]
         public void TestReadRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.GET,
+            var request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains.json");
             twilioRestClient.Request(request)
@@ -70,7 +70,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip {
         [Test]
         public void TestCreateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.POST,
+            var request = new Request(Twilio.Http.HttpMethod.POST,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains.json");
             request.AddPostParam("DomainName", Serialize("domainName"));
@@ -109,7 +109,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip {
         [Test]
         public void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.GET,
+            var request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
             twilioRestClient.Request(request)
@@ -147,7 +147,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip {
         [Test]
         public void TestUpdateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.POST,
+            var request = new Request(Twilio.Http.HttpMethod.POST,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
             twilioRestClient.Request(request)
@@ -185,7 +185,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip {
         [Test]
         public void TestDeleteRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.DELETE,
+            var request = new Request(Twilio.Http.HttpMethod.DELETE,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
             twilioRestClient.Request(request)

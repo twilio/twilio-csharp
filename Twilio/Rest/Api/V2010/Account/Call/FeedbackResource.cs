@@ -11,25 +11,25 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
 
     public class FeedbackResource : Resource {
         public sealed class Issues : IStringEnum {
-            public const string AUDIO_LATENCY="audio-latency";
-            public const string DIGITS_NOT_CAPTURED="digits-not-captured";
-            public const string DROPPED_CALL="dropped-call";
-            public const string IMPERFECT_AUDIO="imperfect-audio";
-            public const string INCORRECT_CALLER_ID="incorrect-caller-id";
-            public const string ONE_WAY_AUDIO="one-way-audio";
-            public const string POST_DIAL_DELAY="post-dial-delay";
-            public const string UNSOLICITED_CALL="unsolicited-call";
+            public const string AudioLatency = "audio-latency";
+            public const string DigitsNotCaptured = "digits-not-captured";
+            public const string DroppedCall = "dropped-call";
+            public const string ImperfectAudio = "imperfect-audio";
+            public const string IncorrectCallerId = "incorrect-caller-id";
+            public const string OneWayAudio = "one-way-audio";
+            public const string PostDialDelay = "post-dial-delay";
+            public const string UnsolicitedCall = "unsolicited-call";
         
-            private string value;
+            private string _value;
             
             public Issues() { }
             
             public Issues(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator Issues(string value) {
@@ -41,7 +41,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     

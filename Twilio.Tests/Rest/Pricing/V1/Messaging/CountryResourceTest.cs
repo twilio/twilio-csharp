@@ -21,7 +21,7 @@ namespace Twilio.Tests.Rest.Pricing.V1.Messaging {
         [Test]
         public void TestReadRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.GET,
+            var request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.PRICING,
                                           "/v1/Messaging/Countries");
             twilioRestClient.Request(request)
@@ -70,7 +70,7 @@ namespace Twilio.Tests.Rest.Pricing.V1.Messaging {
         [Test]
         public void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.GET,
+            var request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.PRICING,
                                           "/v1/Messaging/Countries/US");
             twilioRestClient.Request(request)

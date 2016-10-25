@@ -21,7 +21,7 @@ namespace Twilio.Tests.Rest.Monitor.V1 {
         [Test]
         public void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.GET,
+            var request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.MONITOR,
                                           "/v1/Events/AEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
@@ -59,7 +59,7 @@ namespace Twilio.Tests.Rest.Monitor.V1 {
         [Test]
         public void TestReadRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.GET,
+            var request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.MONITOR,
                                           "/v1/Events");
             twilioRestClient.Request(request)

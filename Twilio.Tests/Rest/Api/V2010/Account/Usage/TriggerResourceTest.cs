@@ -21,7 +21,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Usage {
         [Test]
         public void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.GET,
+            var request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage/Triggers/UTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
             twilioRestClient.Request(request)
@@ -59,7 +59,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Usage {
         [Test]
         public void TestUpdateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.POST,
+            var request = new Request(Twilio.Http.HttpMethod.POST,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage/Triggers/UTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
             twilioRestClient.Request(request)
@@ -97,7 +97,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Usage {
         [Test]
         public void TestDeleteRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.DELETE,
+            var request = new Request(Twilio.Http.HttpMethod.DELETE,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage/Triggers/UTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
             twilioRestClient.Request(request)
@@ -134,18 +134,18 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Usage {
         [Test]
         public void TestCreateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.POST,
+            var request = new Request(Twilio.Http.HttpMethod.POST,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage/Triggers.json");
             request.AddPostParam("CallbackUrl", Serialize(new Uri("https://example.com")));
             request.AddPostParam("TriggerValue", Serialize("triggerValue"));
-            request.AddPostParam("UsageCategory", Serialize(TriggerResource.UsageCategory.AUTHY_AUTHENTICATIONS));
+            request.AddPostParam("UsageCategory", Serialize(TriggerResource.UsageCategory.AuthyAuthentications));
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
             
             try {
-                TriggerResource.Creator(new Uri("https://example.com"), "triggerValue", TriggerResource.UsageCategory.AUTHY_AUTHENTICATIONS, accountSid: "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Create(twilioRestClient);
+                TriggerResource.Creator(new Uri("https://example.com"), "triggerValue", TriggerResource.UsageCategory.AuthyAuthentications, accountSid: "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -168,14 +168,14 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Usage {
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"api_version\": \"2010-04-01\",\"callback_method\": \"GET\",\"callback_url\": \"http://cap.com/streetfight\",\"current_value\": \"0\",\"date_created\": \"Sun, 06 Sep 2015 12:58:45 +0000\",\"date_fired\": null,\"date_updated\": \"Sun, 06 Sep 2015 12:58:45 +0000\",\"friendly_name\": \"raphael-cluster-1441544325.86\",\"recurring\": \"yearly\",\"sid\": \"UTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"trigger_by\": \"price\",\"trigger_value\": \"50\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage/Triggers/UTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"usage_category\": \"totalprice\",\"usage_record_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage/Records?Category=totalprice\"}"));
             
-            var response = TriggerResource.Creator(new Uri("https://example.com"), "triggerValue", TriggerResource.UsageCategory.AUTHY_AUTHENTICATIONS, accountSid: "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Create(twilioRestClient);
+            var response = TriggerResource.Creator(new Uri("https://example.com"), "triggerValue", TriggerResource.UsageCategory.AuthyAuthentications, accountSid: "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Create(twilioRestClient);
             Assert.NotNull(response);
         }
     
         [Test]
         public void TestReadRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.GET,
+            var request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage/Triggers.json");
             twilioRestClient.Request(request)

@@ -21,7 +21,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip.Domain {
         [Test]
         public void TestReadRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.GET,
+            var request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Registrations/region/registrant.json");
             twilioRestClient.Request(request)

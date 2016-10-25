@@ -10,22 +10,22 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
 
     public class TaskResource : Resource {
         public sealed class Status : IStringEnum {
-            public const string PENDING="pending";
-            public const string RESERVED="reserved";
-            public const string ASSIGNED="assigned";
-            public const string CANCELED="canceled";
-            public const string COMPLETED="completed";
+            public const string Pending = "pending";
+            public const string Reserved = "reserved";
+            public const string Assigned = "assigned";
+            public const string Canceled = "canceled";
+            public const string Completed = "completed";
         
-            private string value;
+            private string _value;
             
             public Status() { }
             
             public Status(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator Status(string value) {
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     

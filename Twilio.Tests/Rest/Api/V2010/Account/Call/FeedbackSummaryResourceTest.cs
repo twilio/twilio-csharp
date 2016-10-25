@@ -21,7 +21,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call {
         [Test]
         public void TestCreateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.POST,
+            var request = new Request(Twilio.Http.HttpMethod.POST,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/FeedbackSummary.json");
             request.AddPostParam("StartDate", Serialize(MarshalConverter.DateTimeFromString("2008-01-02")));
@@ -61,7 +61,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call {
         [Test]
         public void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.GET,
+            var request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/FeedbackSummary/FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
             twilioRestClient.Request(request)
@@ -99,7 +99,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call {
         [Test]
         public void TestDeleteRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.DELETE,
+            var request = new Request(Twilio.Http.HttpMethod.DELETE,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/FeedbackSummary/FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
             twilioRestClient.Request(request)

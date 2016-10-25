@@ -11,21 +11,21 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
 
     public class LocalResource : Resource {
         public sealed class AddressRequirement : IStringEnum {
-            public const string NONE="none";
-            public const string ANY="any";
-            public const string LOCAL="local";
-            public const string FOREIGN="foreign";
+            public const string None = "none";
+            public const string Any = "any";
+            public const string Local = "local";
+            public const string Foreign = "foreign";
         
-            private string value;
+            private string _value;
             
             public AddressRequirement() { }
             
             public AddressRequirement(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator AddressRequirement(string value) {
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     

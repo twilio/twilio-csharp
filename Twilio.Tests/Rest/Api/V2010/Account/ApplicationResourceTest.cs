@@ -21,7 +21,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account {
         [Test]
         public void TestCreateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.POST,
+            var request = new Request(Twilio.Http.HttpMethod.POST,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Applications.json");
             request.AddPostParam("FriendlyName", Serialize("friendlyName"));
@@ -60,7 +60,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account {
         [Test]
         public void TestDeleteRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.DELETE,
+            var request = new Request(Twilio.Http.HttpMethod.DELETE,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Applications/APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
             twilioRestClient.Request(request)
@@ -97,7 +97,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account {
         [Test]
         public void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.GET,
+            var request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Applications/APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
             twilioRestClient.Request(request)
@@ -135,7 +135,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account {
         [Test]
         public void TestReadRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.GET,
+            var request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Applications.json");
             twilioRestClient.Request(request)
@@ -184,7 +184,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account {
         [Test]
         public void TestUpdateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.POST,
+            var request = new Request(Twilio.Http.HttpMethod.POST,
                                           Domains.API,
                                           "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Applications/APaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
             twilioRestClient.Request(request)

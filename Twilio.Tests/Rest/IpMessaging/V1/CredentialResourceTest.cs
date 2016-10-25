@@ -21,7 +21,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1 {
         [Test]
         public void TestReadRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.GET,
+            var request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.IP_MESSAGING,
                                           "/v1/Credentials");
             twilioRestClient.Request(request)
@@ -70,16 +70,16 @@ namespace Twilio.Tests.Rest.IpMessaging.V1 {
         [Test]
         public void TestCreateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.POST,
+            var request = new Request(Twilio.Http.HttpMethod.POST,
                                           Domains.IP_MESSAGING,
                                           "/v1/Credentials");
-            request.AddPostParam("Type", Serialize(CredentialResource.PushService.GCM));
+            request.AddPostParam("Type", Serialize(CredentialResource.PushService.Gcm));
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
             
             try {
-                CredentialResource.Creator(CredentialResource.PushService.GCM).Create(twilioRestClient);
+                CredentialResource.Creator(CredentialResource.PushService.Gcm).Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -102,14 +102,14 @@ namespace Twilio.Tests.Rest.IpMessaging.V1 {
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"Test slow create\",\"type\": \"apn\",\"sandbox\": \"False\",\"date_created\": \"2015-10-07T17:50:01Z\",\"date_updated\": \"2015-10-07T17:50:01Z\",\"url\": \"https://ip-messaging.twilio.com/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = CredentialResource.Creator(CredentialResource.PushService.GCM).Create(twilioRestClient);
+            var response = CredentialResource.Creator(CredentialResource.PushService.Gcm).Create(twilioRestClient);
             Assert.NotNull(response);
         }
     
         [Test]
         public void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.GET,
+            var request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.IP_MESSAGING,
                                           "/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
@@ -147,7 +147,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1 {
         [Test]
         public void TestUpdateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.POST,
+            var request = new Request(Twilio.Http.HttpMethod.POST,
                                           Domains.IP_MESSAGING,
                                           "/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
@@ -185,7 +185,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1 {
         [Test]
         public void TestDeleteRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.DELETE,
+            var request = new Request(Twilio.Http.HttpMethod.DELETE,
                                           Domains.IP_MESSAGING,
                                           "/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)

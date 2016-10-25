@@ -10,22 +10,22 @@ namespace Twilio.Rest.Api.V2010.Account {
 
     public class RecordingResource : Resource {
         public sealed class Source : IStringEnum {
-            public const string DIALVERB="DialVerb";
-            public const string CONFERENCE="Conference";
-            public const string OUTBOUNDAPI="OutboundAPI";
-            public const string TRUNKING="Trunking";
-            public const string RECORDVERB="RecordVerb";
+            public const string Dialverb = "DialVerb";
+            public const string Conference = "Conference";
+            public const string Outboundapi = "OutboundAPI";
+            public const string Trunking = "Trunking";
+            public const string Recordverb = "RecordVerb";
         
-            private string value;
+            private string _value;
             
             public Source() { }
             
             public Source(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator Source(string value) {
@@ -37,24 +37,24 @@ namespace Twilio.Rest.Api.V2010.Account {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     
         public sealed class Status : IStringEnum {
-            public const string PROCESSING="processing";
-            public const string COMPLETED="completed";
+            public const string Processing = "processing";
+            public const string Completed = "completed";
         
-            private string value;
+            private string _value;
             
             public Status() { }
             
             public Status(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator Status(string value) {
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     

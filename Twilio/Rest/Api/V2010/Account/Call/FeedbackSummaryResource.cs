@@ -12,21 +12,21 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
 
     public class FeedbackSummaryResource : Resource {
         public sealed class Status : IStringEnum {
-            public const string QUEUED="queued";
-            public const string IN_PROGRESS="in-progress";
-            public const string COMPLETED="completed";
-            public const string FAILED="failed";
+            public const string Queued = "queued";
+            public const string InProgress = "in-progress";
+            public const string Completed = "completed";
+            public const string Failed = "failed";
         
-            private string value;
+            private string _value;
             
             public Status() { }
             
             public Status(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator Status(string value) {
@@ -38,7 +38,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     

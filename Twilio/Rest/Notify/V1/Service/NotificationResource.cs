@@ -11,19 +11,19 @@ namespace Twilio.Rest.Notify.V1.Service {
 
     public class NotificationResource : Resource {
         public sealed class Priority : IStringEnum {
-            public const string HIGH="high";
-            public const string LOW="low";
+            public const string High = "high";
+            public const string Low = "low";
         
-            private string value;
+            private string _value;
             
             public Priority() { }
             
             public Priority(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator Priority(string value) {
@@ -35,7 +35,7 @@ namespace Twilio.Rest.Notify.V1.Service {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     

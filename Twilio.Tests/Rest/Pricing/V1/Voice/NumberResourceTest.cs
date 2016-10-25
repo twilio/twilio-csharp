@@ -21,7 +21,7 @@ namespace Twilio.Tests.Rest.Pricing.V1.Voice {
         [Test]
         public void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.GET,
+            var request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.PRICING,
                                           "/v1/Voice/Numbers/+987654321");
             twilioRestClient.Request(request)

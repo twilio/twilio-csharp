@@ -11,20 +11,20 @@ namespace Twilio.Rest.Api.V2010 {
 
     public class AccountResource : Resource {
         public sealed class Status : IStringEnum {
-            public const string ACTIVE="active";
-            public const string SUSPENDED="suspended";
-            public const string CLOSED="closed";
+            public const string Active = "active";
+            public const string Suspended = "suspended";
+            public const string Closed = "closed";
         
-            private string value;
+            private string _value;
             
             public Status() { }
             
             public Status(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator Status(string value) {
@@ -36,24 +36,24 @@ namespace Twilio.Rest.Api.V2010 {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     
         public sealed class Type : IStringEnum {
-            public const string TRIAL="Trial";
-            public const string FULL="Full";
+            public const string Trial = "Trial";
+            public const string Full = "Full";
         
-            private string value;
+            private string _value;
             
             public Type() { }
             
             public Type(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator Type(string value) {
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Api.V2010 {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     

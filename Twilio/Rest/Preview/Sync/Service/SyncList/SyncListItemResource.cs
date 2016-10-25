@@ -10,19 +10,19 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
 
     public class SyncListItemResource : Resource {
         public sealed class QueryResultOrder : IStringEnum {
-            public const string ASC="asc";
-            public const string DESC="desc";
+            public const string Asc = "asc";
+            public const string Desc = "desc";
         
-            private string value;
+            private string _value;
             
             public QueryResultOrder() { }
             
             public QueryResultOrder(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator QueryResultOrder(string value) {
@@ -34,24 +34,24 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     
         public sealed class QueryFromBoundType : IStringEnum {
-            public const string INCLUSIVE="inclusive";
-            public const string EXCLUSIVE="exclusive";
+            public const string Inclusive = "inclusive";
+            public const string Exclusive = "exclusive";
         
-            private string value;
+            private string _value;
             
             public QueryFromBoundType() { }
             
             public QueryFromBoundType(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator QueryFromBoundType(string value) {
@@ -63,7 +63,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     

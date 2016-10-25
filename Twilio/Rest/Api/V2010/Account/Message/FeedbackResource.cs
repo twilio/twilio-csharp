@@ -10,19 +10,19 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
 
     public class FeedbackResource : Resource {
         public sealed class Outcome : IStringEnum {
-            public const string CONFIRMED="confirmed";
-            public const string UMCONFIRMED="umconfirmed";
+            public const string Confirmed = "confirmed";
+            public const string Umconfirmed = "umconfirmed";
         
-            private string value;
+            private string _value;
             
             public Outcome() { }
             
             public Outcome(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator Outcome(string value) {
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     

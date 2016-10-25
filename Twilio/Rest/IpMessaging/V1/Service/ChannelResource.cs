@@ -11,19 +11,19 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
 
     public class ChannelResource : Resource {
         public sealed class ChannelType : IStringEnum {
-            public const string PUBLIC="public";
-            public const string PRIVATE="private";
+            public const string Public = "public";
+            public const string Private = "private";
         
-            private string value;
+            private string _value;
             
             public ChannelType() { }
             
             public ChannelType(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator ChannelType(string value) {
@@ -35,7 +35,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     

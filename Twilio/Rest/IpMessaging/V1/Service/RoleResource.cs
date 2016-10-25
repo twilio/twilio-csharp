@@ -11,19 +11,19 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
 
     public class RoleResource : Resource {
         public sealed class RoleType : IStringEnum {
-            public const string CHANNEL="channel";
-            public const string DEPLOYMENT="deployment";
+            public const string Channel = "channel";
+            public const string Deployment = "deployment";
         
-            private string value;
+            private string _value;
             
             public RoleType() { }
             
             public RoleType(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator RoleType(string value) {
@@ -35,7 +35,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     

@@ -21,7 +21,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless.Device {
         [Test]
         public void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.GET,
+            var request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.PREVIEW,
                                           "/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage");
             twilioRestClient.Request(request)

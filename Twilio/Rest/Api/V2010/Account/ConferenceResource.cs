@@ -11,20 +11,20 @@ namespace Twilio.Rest.Api.V2010.Account {
 
     public class ConferenceResource : Resource {
         public sealed class Status : IStringEnum {
-            public const string INIT="init";
-            public const string IN_PROGRESS="in-progress";
-            public const string COMPLETED="completed";
+            public const string Init = "init";
+            public const string InProgress = "in-progress";
+            public const string Completed = "completed";
         
-            private string value;
+            private string _value;
             
             public Status() { }
             
             public Status(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator Status(string value) {
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Api.V2010.Account {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     

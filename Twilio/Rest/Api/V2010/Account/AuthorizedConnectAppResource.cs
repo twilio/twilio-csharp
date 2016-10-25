@@ -11,19 +11,19 @@ namespace Twilio.Rest.Api.V2010.Account {
 
     public class AuthorizedConnectAppResource : Resource {
         public sealed class Permission : IStringEnum {
-            public const string GET_ALL="get-all";
-            public const string POST_ALL="post-all";
+            public const string GetAll = "get-all";
+            public const string PostAll = "post-all";
         
-            private string value;
+            private string _value;
             
             public Permission() { }
             
             public Permission(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator Permission(string value) {
@@ -35,7 +35,7 @@ namespace Twilio.Rest.Api.V2010.Account {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     

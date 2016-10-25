@@ -11,21 +11,21 @@ namespace Twilio.Rest.Notify.V1.Service {
 
     public class BindingResource : Resource {
         public sealed class BindingType : IStringEnum {
-            public const string APN="apn";
-            public const string GCM="gcm";
-            public const string SMS="sms";
-            public const string FACEBOOK_MESSENGER="facebook-messenger";
+            public const string Apn = "apn";
+            public const string Gcm = "gcm";
+            public const string Sms = "sms";
+            public const string FacebookMessenger = "facebook-messenger";
         
-            private string value;
+            private string _value;
             
             public BindingType() { }
             
             public BindingType(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator BindingType(string value) {
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Notify.V1.Service {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     

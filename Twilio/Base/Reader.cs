@@ -103,6 +103,7 @@ namespace Twilio.Base
         /// </summary>
         ///
         /// <param name="page">Page of results</param>
+        /// <param name="client">Client used to make request</param>
         /// <returns>The next page of results</returns>
         public abstract Page<T> NextPage(Page<T> page, ITwilioRestClient client);
     }

@@ -10,19 +10,19 @@ namespace Twilio.Rest.Chat.V1 {
 
     public class CredentialResource : Resource {
         public sealed class PushService : IStringEnum {
-            public const string GCM="gcm";
-            public const string APN="apn";
+            public const string Gcm = "gcm";
+            public const string Apn = "apn";
         
-            private string value;
+            private string _value;
             
             public PushService() { }
             
             public PushService(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator PushService(string value) {
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Chat.V1 {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     

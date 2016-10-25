@@ -12,21 +12,21 @@ namespace Twilio.Rest.Api.V2010.Account {
 
     public class CallResource : Resource {
         public sealed class Event : IStringEnum {
-            public const string INITIATED="initiated";
-            public const string RINGING="ringing";
-            public const string ANSWERED="answered";
-            public const string COMPLETED="completed";
+            public const string Initiated = "initiated";
+            public const string Ringing = "ringing";
+            public const string Answered = "answered";
+            public const string Completed = "completed";
         
-            private string value;
+            private string _value;
             
             public Event() { }
             
             public Event(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator Event(string value) {
@@ -38,30 +38,30 @@ namespace Twilio.Rest.Api.V2010.Account {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     
         public sealed class Status : IStringEnum {
-            public const string QUEUED="queued";
-            public const string RINGING="ringing";
-            public const string IN_PROGRESS="in-progress";
-            public const string COMPLETED="completed";
-            public const string BUSY="busy";
-            public const string FAILED="failed";
-            public const string NO_ANSWER="no-answer";
-            public const string CANCELED="canceled";
+            public const string Queued = "queued";
+            public const string Ringing = "ringing";
+            public const string InProgress = "in-progress";
+            public const string Completed = "completed";
+            public const string Busy = "busy";
+            public const string Failed = "failed";
+            public const string NoAnswer = "no-answer";
+            public const string Canceled = "canceled";
         
-            private string value;
+            private string _value;
             
             public Status() { }
             
             public Status(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator Status(string value) {
@@ -73,7 +73,7 @@ namespace Twilio.Rest.Api.V2010.Account {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     

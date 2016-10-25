@@ -21,7 +21,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless {
         [Test]
         public void TestFetchRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.GET,
+            var request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.PREVIEW,
                                           "/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
@@ -59,7 +59,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless {
         [Test]
         public void TestReadRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.GET,
+            var request = new Request(Twilio.Http.HttpMethod.GET,
                                           Domains.PREVIEW,
                                           "/wireless/Devices");
             twilioRestClient.Request(request)
@@ -108,7 +108,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless {
         [Test]
         public void TestCreateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.POST,
+            var request = new Request(Twilio.Http.HttpMethod.POST,
                                           Domains.PREVIEW,
                                           "/wireless/Devices");
             request.AddPostParam("RatePlan", Serialize("ratePlan"));
@@ -147,7 +147,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless {
         [Test]
         public void TestUpdateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            Request request = new Request(Twilio.Http.HttpMethod.POST,
+            var request = new Request(Twilio.Http.HttpMethod.POST,
                                           Domains.PREVIEW,
                                           "/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)

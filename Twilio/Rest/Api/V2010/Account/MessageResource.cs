@@ -11,25 +11,25 @@ namespace Twilio.Rest.Api.V2010.Account {
 
     public class MessageResource : Resource {
         public sealed class Status : IStringEnum {
-            public const string QUEUED="queued";
-            public const string SENDING="sending";
-            public const string SENT="sent";
-            public const string FAILED="failed";
-            public const string DELIVERED="delivered";
-            public const string UNDELIVERED="undelivered";
-            public const string RECEIVING="receiving";
-            public const string RECEIVED="received";
+            public const string Queued = "queued";
+            public const string Sending = "sending";
+            public const string Sent = "sent";
+            public const string Failed = "failed";
+            public const string Delivered = "delivered";
+            public const string Undelivered = "undelivered";
+            public const string Receiving = "receiving";
+            public const string Received = "received";
         
-            private string value;
+            private string _value;
             
             public Status() { }
             
             public Status(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator Status(string value) {
@@ -41,26 +41,26 @@ namespace Twilio.Rest.Api.V2010.Account {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     
         public sealed class Direction : IStringEnum {
-            public const string INBOUND="inbound";
-            public const string OUTBOUND_API="outbound-api";
-            public const string OUTBOUND_CALL="outbound-call";
-            public const string OUTBOUND_REPLY="outbound-reply";
+            public const string Inbound = "inbound";
+            public const string OutboundApi = "outbound-api";
+            public const string OutboundCall = "outbound-call";
+            public const string OutboundReply = "outbound-reply";
         
-            private string value;
+            private string _value;
             
             public Direction() { }
             
             public Direction(string value) {
-                this.value = value;
+                _value = value;
             }
             
             public override string ToString() {
-                return value;
+                return _value;
             }
             
             public static implicit operator Direction(string value) {
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Api.V2010.Account {
             }
             
             public void FromString(string value) {
-                this.value = value;
+                _value = value;
             }
         }
     
