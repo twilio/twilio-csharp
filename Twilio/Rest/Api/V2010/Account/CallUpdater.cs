@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class CallUpdater : Updater<CallResource> {
+    public class CallUpdater : Updater<CallResource> 
+    {
         public string accountSid { get; }
         public string sid { get; }
         public Uri url { get; set; }
@@ -34,7 +36,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="fallbackMethod"> HTTP Method to use with FallbackUrl </param>
         /// <param name="statusCallback"> Status Callback URL </param>
         /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
-        public CallUpdater(string sid, string accountSid=null, Uri url=null, Twilio.Http.HttpMethod method=null, CallResource.Status status=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null) {
+        public CallUpdater(string sid, string accountSid=null, Uri url=null, Twilio.Http.HttpMethod method=null, CallResource.Status status=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null)
+        {
             this.sid = sid;
             this.url = url;
             this.statusCallbackMethod = statusCallbackMethod;
@@ -53,7 +56,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated CallResource </returns> 
-        public override async Task<CallResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<CallResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -93,7 +97,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated CallResource </returns> 
-        public override CallResource Update(ITwilioRestClient client) {
+        public override CallResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -131,32 +136,40 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (url != null) {
+        private void AddPostParams(Request request)
+        {
+            if (url != null)
+            {
                 request.AddPostParam("Url", url.ToString());
             }
             
-            if (method != null) {
+            if (method != null)
+            {
                 request.AddPostParam("Method", method.ToString());
             }
             
-            if (status != null) {
+            if (status != null)
+            {
                 request.AddPostParam("Status", status.ToString());
             }
             
-            if (fallbackUrl != null) {
+            if (fallbackUrl != null)
+            {
                 request.AddPostParam("FallbackUrl", fallbackUrl.ToString());
             }
             
-            if (fallbackMethod != null) {
+            if (fallbackMethod != null)
+            {
                 request.AddPostParam("FallbackMethod", fallbackMethod.ToString());
             }
             
-            if (statusCallback != null) {
+            if (statusCallback != null)
+            {
                 request.AddPostParam("StatusCallback", statusCallback.ToString());
             }
             
-            if (statusCallbackMethod != null) {
+            if (statusCallbackMethod != null)
+            {
                 request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
         }

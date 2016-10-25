@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.IpMessaging.V1.Service {
+namespace Twilio.Rest.IpMessaging.V1.Service 
+{
 
-    public class UserFetcher : Fetcher<UserResource> {
+    public class UserFetcher : Fetcher<UserResource> 
+    {
         public string serviceSid { get; }
         public string sid { get; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
-        public UserFetcher(string serviceSid, string sid) {
+        public UserFetcher(string serviceSid, string sid)
+        {
             this.serviceSid = serviceSid;
             this.sid = sid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched UserResource </returns> 
-        public override async Task<UserResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<UserResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.IP_MESSAGING,
@@ -70,7 +74,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched UserResource </returns> 
-        public override UserResource Fetch(ITwilioRestClient client) {
+        public override UserResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.IP_MESSAGING,

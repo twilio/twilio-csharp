@@ -7,34 +7,42 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Chat.V1.Service {
+namespace Twilio.Rest.Chat.V1.Service 
+{
 
-    public class RoleResource : Resource {
-        public sealed class RoleType : IStringEnum {
+    public class RoleResource : Resource 
+    {
+        public sealed class RoleType : IStringEnum 
+        {
             public const string Channel = "channel";
             public const string Deployment = "deployment";
         
             private string _value;
             
-            public RoleType() { }
+            public RoleType() {}
             
-            public RoleType(string value) {
+            public RoleType(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator RoleType(string value) {
+            public static implicit operator RoleType(string value)
+            {
                 return new RoleType(value);
             }
             
-            public static implicit operator string(RoleType value) {
+            public static implicit operator string(RoleType value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -46,7 +54,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> RoleFetcher capable of executing the fetch </returns> 
-        public static RoleFetcher Fetcher(string serviceSid, string sid) {
+        public static RoleFetcher Fetcher(string serviceSid, string sid)
+        {
             return new RoleFetcher(serviceSid, sid);
         }
     
@@ -57,7 +66,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> RoleDeleter capable of executing the delete </returns> 
-        public static RoleDeleter Deleter(string serviceSid, string sid) {
+        public static RoleDeleter Deleter(string serviceSid, string sid)
+        {
             return new RoleDeleter(serviceSid, sid);
         }
     
@@ -70,7 +80,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         /// <param name="type"> The type </param>
         /// <param name="permission"> The permission </param>
         /// <returns> RoleCreator capable of executing the create </returns> 
-        public static RoleCreator Creator(string serviceSid, string friendlyName, RoleResource.RoleType type, List<string> permission) {
+        public static RoleCreator Creator(string serviceSid, string friendlyName, RoleResource.RoleType type, List<string> permission)
+        {
             return new RoleCreator(serviceSid, friendlyName, type, permission);
         }
     
@@ -80,7 +91,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <returns> RoleReader capable of executing the read </returns> 
-        public static RoleReader Reader(string serviceSid) {
+        public static RoleReader Reader(string serviceSid)
+        {
             return new RoleReader(serviceSid);
         }
     
@@ -92,7 +104,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         /// <param name="sid"> The sid </param>
         /// <param name="permission"> The permission </param>
         /// <returns> RoleUpdater capable of executing the update </returns> 
-        public static RoleUpdater Updater(string serviceSid, string sid, List<string> permission) {
+        public static RoleUpdater Updater(string serviceSid, string sid, List<string> permission)
+        {
             return new RoleUpdater(serviceSid, sid, permission);
         }
     
@@ -102,11 +115,15 @@ namespace Twilio.Rest.Chat.V1.Service {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> RoleResource object represented by the provided JSON </returns> 
-        public static RoleResource FromJson(string json) {
+        public static RoleResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<RoleResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -131,7 +148,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         [JsonProperty("url")]
         public Uri url { get; }
     
-        public RoleResource() {
+        public RoleResource()
+        {
         
         }
     
@@ -152,7 +170,8 @@ namespace Twilio.Rest.Chat.V1.Service {
                              [JsonProperty("date_updated")]
                              string dateUpdated, 
                              [JsonProperty("url")]
-                             Uri url) {
+                             Uri url)
+                             {
             this.sid = sid;
             this.accountSid = accountSid;
             this.serviceSid = serviceSid;

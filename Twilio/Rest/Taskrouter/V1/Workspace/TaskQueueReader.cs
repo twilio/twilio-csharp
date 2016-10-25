@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace {
+namespace Twilio.Rest.Taskrouter.V1.Workspace 
+{
 
-    public class TaskQueueReader : Reader<TaskQueueResource> {
+    public class TaskQueueReader : Reader<TaskQueueResource> 
+    {
         public string workspaceSid { get; }
         public string friendlyName { get; set; }
         public string evaluateWorkerAttributes { get; set; }
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="evaluateWorkerAttributes"> The evaluate_worker_attributes </param>
-        public TaskQueueReader(string workspaceSid, string friendlyName=null, string evaluateWorkerAttributes=null) {
+        public TaskQueueReader(string workspaceSid, string friendlyName=null, string evaluateWorkerAttributes=null)
+        {
             this.workspaceSid = workspaceSid;
             this.evaluateWorkerAttributes = evaluateWorkerAttributes;
             this.friendlyName = friendlyName;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> TaskQueueResource ResourceSet </returns> 
-        public override Task<ResourceSet<TaskQueueResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<TaskQueueResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
@@ -54,7 +58,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> TaskQueueResource ResourceSet </returns> 
-        public override ResourceSet<TaskQueueResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<TaskQueueResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
@@ -74,7 +79,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<TaskQueueResource> NextPage(Page<TaskQueueResource> page, ITwilioRestClient client) {
+        public override Page<TaskQueueResource> NextPage(Page<TaskQueueResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -92,7 +98,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<TaskQueueResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<TaskQueueResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -123,12 +130,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (friendlyName != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (friendlyName != null)
+            {
                 request.AddQueryParam("FriendlyName", friendlyName);
             }
             
-            if (evaluateWorkerAttributes != null) {
+            if (evaluateWorkerAttributes != null)
+            {
                 request.AddQueryParam("EvaluateWorkerAttributes", evaluateWorkerAttributes);
             }
             

@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Usage {
+namespace Twilio.Rest.Api.V2010.Account.Usage 
+{
 
-    public class TriggerCreator : Creator<TriggerResource> {
+    public class TriggerCreator : Creator<TriggerResource> 
+    {
         public string accountSid { get; }
         public Uri callbackUrl { get; }
         public string triggerValue { get; }
@@ -32,7 +34,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
         /// <param name="recurring"> How this trigger recurs </param>
         /// <param name="triggerBy"> The field in the UsageRecord that fires the trigger </param>
-        public TriggerCreator(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory, string accountSid=null, Twilio.Http.HttpMethod callbackMethod=null, string friendlyName=null, TriggerResource.Recurring recurring=null, TriggerResource.TriggerField triggerBy=null) {
+        public TriggerCreator(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory, string accountSid=null, Twilio.Http.HttpMethod callbackMethod=null, string friendlyName=null, TriggerResource.Recurring recurring=null, TriggerResource.TriggerField triggerBy=null)
+        {
             this.callbackMethod = callbackMethod;
             this.triggerValue = triggerValue;
             this.callbackUrl = callbackUrl;
@@ -50,7 +53,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created TriggerResource </returns> 
-        public override async Task<TriggerResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<TriggerResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
@@ -90,7 +94,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created TriggerResource </returns> 
-        public override TriggerResource Create(ITwilioRestClient client) {
+        public override TriggerResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
@@ -128,32 +133,40 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (callbackUrl != null) {
+        private void AddPostParams(Request request)
+        {
+            if (callbackUrl != null)
+            {
                 request.AddPostParam("CallbackUrl", callbackUrl.ToString());
             }
             
-            if (triggerValue != null) {
+            if (triggerValue != null)
+            {
                 request.AddPostParam("TriggerValue", triggerValue);
             }
             
-            if (usageCategory != null) {
+            if (usageCategory != null)
+            {
                 request.AddPostParam("UsageCategory", usageCategory.ToString());
             }
             
-            if (callbackMethod != null) {
+            if (callbackMethod != null)
+            {
                 request.AddPostParam("CallbackMethod", callbackMethod.ToString());
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (recurring != null) {
+            if (recurring != null)
+            {
                 request.AddPostParam("Recurring", recurring.ToString());
             }
             
-            if (triggerBy != null) {
+            if (triggerBy != null)
+            {
                 request.AddPostParam("TriggerBy", triggerBy.ToString());
             }
         }

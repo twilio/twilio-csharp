@@ -6,63 +6,77 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
+namespace Twilio.Rest.Preview.Sync.Service.SyncMap 
+{
 
-    public class SyncMapItemResource : Resource {
-        public sealed class QueryResultOrder : IStringEnum {
+    public class SyncMapItemResource : Resource 
+    {
+        public sealed class QueryResultOrder : IStringEnum 
+        {
             public const string Asc = "asc";
             public const string Desc = "desc";
         
             private string _value;
             
-            public QueryResultOrder() { }
+            public QueryResultOrder() {}
             
-            public QueryResultOrder(string value) {
+            public QueryResultOrder(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator QueryResultOrder(string value) {
+            public static implicit operator QueryResultOrder(string value)
+            {
                 return new QueryResultOrder(value);
             }
             
-            public static implicit operator string(QueryResultOrder value) {
+            public static implicit operator string(QueryResultOrder value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
     
-        public sealed class QueryFromBoundType : IStringEnum {
+        public sealed class QueryFromBoundType : IStringEnum 
+        {
             public const string Inclusive = "inclusive";
             public const string Exclusive = "exclusive";
         
             private string _value;
             
-            public QueryFromBoundType() { }
+            public QueryFromBoundType() {}
             
-            public QueryFromBoundType(string value) {
+            public QueryFromBoundType(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator QueryFromBoundType(string value) {
+            public static implicit operator QueryFromBoundType(string value)
+            {
                 return new QueryFromBoundType(value);
             }
             
-            public static implicit operator string(QueryFromBoundType value) {
+            public static implicit operator string(QueryFromBoundType value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -75,7 +89,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         /// <param name="mapSid"> The map_sid </param>
         /// <param name="key"> The key </param>
         /// <returns> SyncMapItemFetcher capable of executing the fetch </returns> 
-        public static SyncMapItemFetcher Fetcher(string serviceSid, string mapSid, string key) {
+        public static SyncMapItemFetcher Fetcher(string serviceSid, string mapSid, string key)
+        {
             return new SyncMapItemFetcher(serviceSid, mapSid, key);
         }
     
@@ -87,7 +102,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         /// <param name="mapSid"> The map_sid </param>
         /// <param name="key"> The key </param>
         /// <returns> SyncMapItemDeleter capable of executing the delete </returns> 
-        public static SyncMapItemDeleter Deleter(string serviceSid, string mapSid, string key) {
+        public static SyncMapItemDeleter Deleter(string serviceSid, string mapSid, string key)
+        {
             return new SyncMapItemDeleter(serviceSid, mapSid, key);
         }
     
@@ -100,7 +116,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         /// <param name="key"> The key </param>
         /// <param name="data"> The data </param>
         /// <returns> SyncMapItemCreator capable of executing the create </returns> 
-        public static SyncMapItemCreator Creator(string serviceSid, string mapSid, string key, Object data) {
+        public static SyncMapItemCreator Creator(string serviceSid, string mapSid, string key, Object data)
+        {
             return new SyncMapItemCreator(serviceSid, mapSid, key, data);
         }
     
@@ -114,7 +131,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         /// <param name="from"> The from </param>
         /// <param name="bounds"> The bounds </param>
         /// <returns> SyncMapItemReader capable of executing the read </returns> 
-        public static SyncMapItemReader Reader(string serviceSid, string mapSid, SyncMapItemResource.QueryResultOrder order=null, string from=null, SyncMapItemResource.QueryFromBoundType bounds=null) {
+        public static SyncMapItemReader Reader(string serviceSid, string mapSid, SyncMapItemResource.QueryResultOrder order=null, string from=null, SyncMapItemResource.QueryFromBoundType bounds=null)
+        {
             return new SyncMapItemReader(serviceSid, mapSid, order:order, from:from, bounds:bounds);
         }
     
@@ -127,7 +145,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         /// <param name="key"> The key </param>
         /// <param name="data"> The data </param>
         /// <returns> SyncMapItemUpdater capable of executing the update </returns> 
-        public static SyncMapItemUpdater Updater(string serviceSid, string mapSid, string key, Object data) {
+        public static SyncMapItemUpdater Updater(string serviceSid, string mapSid, string key, Object data)
+        {
             return new SyncMapItemUpdater(serviceSid, mapSid, key, data);
         }
     
@@ -137,11 +156,15 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> SyncMapItemResource object represented by the provided JSON </returns> 
-        public static SyncMapItemResource FromJson(string json) {
+        public static SyncMapItemResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<SyncMapItemResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -167,7 +190,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         [JsonProperty("created_by")]
         public string createdBy { get; }
     
-        public SyncMapItemResource() {
+        public SyncMapItemResource()
+        {
         
         }
     
@@ -190,7 +214,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
                                     [JsonProperty("date_updated")]
                                     string dateUpdated, 
                                     [JsonProperty("created_by")]
-                                    string createdBy) {
+                                    string createdBy)
+                                    {
             this.key = key;
             this.accountSid = accountSid;
             this.serviceSid = serviceSid;

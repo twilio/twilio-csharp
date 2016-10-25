@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class MessageUpdater : Updater<MessageResource> {
+    public class MessageUpdater : Updater<MessageResource> 
+    {
         public string accountSid { get; }
         public string sid { get; }
         public string body { get; set; }
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="sid"> The message to redact </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <param name="body"> The body </param>
-        public MessageUpdater(string sid, string accountSid=null, string body=null) {
+        public MessageUpdater(string sid, string accountSid=null, string body=null)
+        {
             this.accountSid = accountSid;
             this.sid = sid;
             this.body = body;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated MessageResource </returns> 
-        public override async Task<MessageResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<MessageResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -74,7 +78,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated MessageResource </returns> 
-        public override MessageResource Update(ITwilioRestClient client) {
+        public override MessageResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -112,8 +117,10 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (body != null) {
+        private void AddPostParams(Request request)
+        {
+            if (body != null)
+            {
                 request.AddPostParam("Body", body);
             }
         }

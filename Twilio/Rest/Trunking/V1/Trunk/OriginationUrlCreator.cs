@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Trunking.V1.Trunk {
+namespace Twilio.Rest.Trunking.V1.Trunk 
+{
 
-    public class OriginationUrlCreator : Creator<OriginationUrlResource> {
+    public class OriginationUrlCreator : Creator<OriginationUrlResource> 
+    {
         public string trunkSid { get; }
         public int? weight { get; }
         public int? priority { get; }
@@ -28,7 +30,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <param name="enabled"> The enabled </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="sipUrl"> The sip_url </param>
-        public OriginationUrlCreator(string trunkSid, int? weight, int? priority, bool? enabled, string friendlyName, Uri sipUrl) {
+        public OriginationUrlCreator(string trunkSid, int? weight, int? priority, bool? enabled, string friendlyName, Uri sipUrl)
+        {
             this.enabled = enabled;
             this.trunkSid = trunkSid;
             this.sipUrl = sipUrl;
@@ -44,7 +47,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created OriginationUrlResource </returns> 
-        public override async Task<OriginationUrlResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<OriginationUrlResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TRUNKING,
@@ -84,7 +88,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created OriginationUrlResource </returns> 
-        public override OriginationUrlResource Create(ITwilioRestClient client) {
+        public override OriginationUrlResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TRUNKING,
@@ -122,24 +127,30 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (weight != null) {
+        private void AddPostParams(Request request)
+        {
+            if (weight != null)
+            {
                 request.AddPostParam("Weight", weight.ToString());
             }
             
-            if (priority != null) {
+            if (priority != null)
+            {
                 request.AddPostParam("Priority", priority.ToString());
             }
             
-            if (enabled != null) {
+            if (enabled != null)
+            {
                 request.AddPostParam("Enabled", enabled.ToString());
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (sipUrl != null) {
+            if (sipUrl != null)
+            {
                 request.AddPostParam("SipUrl", sipUrl.ToString());
             }
         }

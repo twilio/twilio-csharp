@@ -9,9 +9,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class ConnectAppUpdater : Updater<ConnectAppResource> {
+    public class ConnectAppUpdater : Updater<ConnectAppResource> 
+    {
         public string accountSid { get; }
         public string sid { get; }
         public Uri authorizeRedirectUrl { get; set; }
@@ -37,7 +39,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="friendlyName"> A human readable name for the Connect App. </param>
         /// <param name="homepageUrl"> The URL users can obtain more information </param>
         /// <param name="permissions"> The set of permissions that your ConnectApp requests. </param>
-        public ConnectAppUpdater(string sid, string accountSid=null, Uri authorizeRedirectUrl=null, string companyName=null, Twilio.Http.HttpMethod deauthorizeCallbackMethod=null, Uri deauthorizeCallbackUrl=null, string description=null, string friendlyName=null, Uri homepageUrl=null, List<ConnectAppResource.Permission> permissions=null) {
+        public ConnectAppUpdater(string sid, string accountSid=null, Uri authorizeRedirectUrl=null, string companyName=null, Twilio.Http.HttpMethod deauthorizeCallbackMethod=null, Uri deauthorizeCallbackUrl=null, string description=null, string friendlyName=null, Uri homepageUrl=null, List<ConnectAppResource.Permission> permissions=null)
+        {
             this.sid = sid;
             this.permissions = permissions;
             this.friendlyName = friendlyName;
@@ -57,7 +60,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated ConnectAppResource </returns> 
-        public override async Task<ConnectAppResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<ConnectAppResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -97,7 +101,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated ConnectAppResource </returns> 
-        public override ConnectAppResource Update(ITwilioRestClient client) {
+        public override ConnectAppResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -135,36 +140,45 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (authorizeRedirectUrl != null) {
+        private void AddPostParams(Request request)
+        {
+            if (authorizeRedirectUrl != null)
+            {
                 request.AddPostParam("AuthorizeRedirectUrl", authorizeRedirectUrl.ToString());
             }
             
-            if (companyName != null) {
+            if (companyName != null)
+            {
                 request.AddPostParam("CompanyName", companyName);
             }
             
-            if (deauthorizeCallbackMethod != null) {
+            if (deauthorizeCallbackMethod != null)
+            {
                 request.AddPostParam("DeauthorizeCallbackMethod", deauthorizeCallbackMethod.ToString());
             }
             
-            if (deauthorizeCallbackUrl != null) {
+            if (deauthorizeCallbackUrl != null)
+            {
                 request.AddPostParam("DeauthorizeCallbackUrl", deauthorizeCallbackUrl.ToString());
             }
             
-            if (description != null) {
+            if (description != null)
+            {
                 request.AddPostParam("Description", description);
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (homepageUrl != null) {
+            if (homepageUrl != null)
+            {
                 request.AddPostParam("HomepageUrl", homepageUrl.ToString());
             }
             
-            if (permissions != null) {
+            if (permissions != null)
+            {
                 request.AddPostParam("Permissions", permissions.ToString());
             }
         }

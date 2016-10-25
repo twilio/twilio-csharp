@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
+namespace Twilio.Rest.Taskrouter.V1.Workspace.Task 
+{
 
-    public class ReservationFetcher : Fetcher<ReservationResource> {
+    public class ReservationFetcher : Fetcher<ReservationResource> 
+    {
         public string workspaceSid { get; }
         public string taskSid { get; }
         public string sid { get; }
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="taskSid"> The task_sid </param>
         /// <param name="sid"> The sid </param>
-        public ReservationFetcher(string workspaceSid, string taskSid, string sid) {
+        public ReservationFetcher(string workspaceSid, string taskSid, string sid)
+        {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
             this.taskSid = taskSid;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched ReservationResource </returns> 
-        public override async Task<ReservationResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<ReservationResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
@@ -73,7 +77,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched ReservationResource </returns> 
-        public override ReservationResource Fetch(ITwilioRestClient client) {
+        public override ReservationResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,

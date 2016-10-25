@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class AvailablePhoneNumberCountryFetcher : Fetcher<AvailablePhoneNumberCountryResource> {
+    public class AvailablePhoneNumberCountryFetcher : Fetcher<AvailablePhoneNumberCountryResource> 
+    {
         public string accountSid { get; }
         public string countryCode { get; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="countryCode"> The country_code </param>
         /// <param name="accountSid"> The account_sid </param>
-        public AvailablePhoneNumberCountryFetcher(string countryCode, string accountSid=null) {
+        public AvailablePhoneNumberCountryFetcher(string countryCode, string accountSid=null)
+        {
             this.accountSid = accountSid;
             this.countryCode = countryCode;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched AvailablePhoneNumberCountryResource </returns> 
-        public override async Task<AvailablePhoneNumberCountryResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<AvailablePhoneNumberCountryResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -70,7 +74,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched AvailablePhoneNumberCountryResource </returns> 
-        public override AvailablePhoneNumberCountryResource Fetch(ITwilioRestClient client) {
+        public override AvailablePhoneNumberCountryResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

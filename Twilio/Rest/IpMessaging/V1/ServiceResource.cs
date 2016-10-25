@@ -7,16 +7,19 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.IpMessaging.V1 {
+namespace Twilio.Rest.IpMessaging.V1 
+{
 
-    public class ServiceResource : Resource {
+    public class ServiceResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
         /// <returns> ServiceFetcher capable of executing the fetch </returns> 
-        public static ServiceFetcher Fetcher(string sid) {
+        public static ServiceFetcher Fetcher(string sid)
+        {
             return new ServiceFetcher(sid);
         }
     
@@ -26,7 +29,8 @@ namespace Twilio.Rest.IpMessaging.V1 {
         ///
         /// <param name="sid"> The sid </param>
         /// <returns> ServiceDeleter capable of executing the delete </returns> 
-        public static ServiceDeleter Deleter(string sid) {
+        public static ServiceDeleter Deleter(string sid)
+        {
             return new ServiceDeleter(sid);
         }
     
@@ -36,7 +40,8 @@ namespace Twilio.Rest.IpMessaging.V1 {
         ///
         /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> ServiceCreator capable of executing the create </returns> 
-        public static ServiceCreator Creator(string friendlyName) {
+        public static ServiceCreator Creator(string friendlyName)
+        {
             return new ServiceCreator(friendlyName);
         }
     
@@ -45,7 +50,8 @@ namespace Twilio.Rest.IpMessaging.V1 {
         /// </summary>
         ///
         /// <returns> ServiceReader capable of executing the read </returns> 
-        public static ServiceReader Reader() {
+        public static ServiceReader Reader()
+        {
             return new ServiceReader();
         }
     
@@ -63,7 +69,8 @@ namespace Twilio.Rest.IpMessaging.V1 {
         /// <param name="consumptionReportInterval"> The consumption_report_interval </param>
         /// <param name="webhooks"> The webhooks </param>
         /// <returns> ServiceUpdater capable of executing the update </returns> 
-        public static ServiceUpdater Updater(string sid, string friendlyName=null, string defaultServiceRoleSid=null, string defaultChannelRoleSid=null, string defaultChannelCreatorRoleSid=null, bool? readStatusEnabled=null, int? typingIndicatorTimeout=null, int? consumptionReportInterval=null, Object webhooks=null) {
+        public static ServiceUpdater Updater(string sid, string friendlyName=null, string defaultServiceRoleSid=null, string defaultChannelRoleSid=null, string defaultChannelCreatorRoleSid=null, bool? readStatusEnabled=null, int? typingIndicatorTimeout=null, int? consumptionReportInterval=null, Object webhooks=null)
+        {
             return new ServiceUpdater(sid, friendlyName:friendlyName, defaultServiceRoleSid:defaultServiceRoleSid, defaultChannelRoleSid:defaultChannelRoleSid, defaultChannelCreatorRoleSid:defaultChannelCreatorRoleSid, readStatusEnabled:readStatusEnabled, typingIndicatorTimeout:typingIndicatorTimeout, consumptionReportInterval:consumptionReportInterval, webhooks:webhooks);
         }
     
@@ -73,11 +80,15 @@ namespace Twilio.Rest.IpMessaging.V1 {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> ServiceResource object represented by the provided JSON </returns> 
-        public static ServiceResource FromJson(string json) {
+        public static ServiceResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<ServiceResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -111,7 +122,8 @@ namespace Twilio.Rest.IpMessaging.V1 {
         [JsonProperty("links")]
         public Dictionary<string, string> links { get; }
     
-        public ServiceResource() {
+        public ServiceResource()
+        {
         
         }
     
@@ -142,7 +154,8 @@ namespace Twilio.Rest.IpMessaging.V1 {
                                 [JsonProperty("url")]
                                 Uri url, 
                                 [JsonProperty("links")]
-                                Dictionary<string, string> links) {
+                                Dictionary<string, string> links)
+                                {
             this.sid = sid;
             this.accountSid = accountSid;
             this.friendlyName = friendlyName;

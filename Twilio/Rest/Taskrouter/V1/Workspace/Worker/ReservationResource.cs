@@ -7,10 +7,13 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
+namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
+{
 
-    public class ReservationResource : Resource {
-        public sealed class Status : IStringEnum {
+    public class ReservationResource : Resource 
+    {
+        public sealed class Status : IStringEnum 
+        {
             public const string Pending = "pending";
             public const string Accepted = "accepted";
             public const string Rejected = "rejected";
@@ -20,25 +23,30 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         
             private string _value;
             
-            public Status() { }
+            public Status() {}
             
-            public Status(string value) {
+            public Status(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator Status(string value) {
+            public static implicit operator Status(string value)
+            {
                 return new Status(value);
             }
             
-            public static implicit operator string(Status value) {
+            public static implicit operator string(Status value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -51,7 +59,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         /// <param name="workerSid"> The worker_sid </param>
         /// <param name="reservationStatus"> The reservation_status </param>
         /// <returns> ReservationReader capable of executing the read </returns> 
-        public static ReservationReader Reader(string workspaceSid, string workerSid, ReservationResource.Status reservationStatus=null) {
+        public static ReservationReader Reader(string workspaceSid, string workerSid, ReservationResource.Status reservationStatus=null)
+        {
             return new ReservationReader(workspaceSid, workerSid, reservationStatus:reservationStatus);
         }
     
@@ -63,7 +72,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         /// <param name="workerSid"> The worker_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> ReservationFetcher capable of executing the fetch </returns> 
-        public static ReservationFetcher Fetcher(string workspaceSid, string workerSid, string sid) {
+        public static ReservationFetcher Fetcher(string workspaceSid, string workerSid, string sid)
+        {
             return new ReservationFetcher(workspaceSid, workerSid, sid);
         }
     
@@ -94,7 +104,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         /// <param name="redirectAccept"> The redirect_accept </param>
         /// <param name="redirectUrl"> The redirect_url </param>
         /// <returns> ReservationUpdater capable of executing the update </returns> 
-        public static ReservationUpdater Updater(string workspaceSid, string workerSid, string sid, ReservationResource.Status reservationStatus=null, string workerActivitySid=null, string instruction=null, string dequeuePostWorkActivitySid=null, string dequeueFrom=null, string dequeueRecord=null, int? dequeueTimeout=null, string dequeueTo=null, Uri dequeueStatusCallbackUrl=null, string callFrom=null, string callRecord=null, int? callTimeout=null, string callTo=null, Uri callUrl=null, Uri callStatusCallbackUrl=null, bool? callAccept=null, string redirectCallSid=null, bool? redirectAccept=null, Uri redirectUrl=null) {
+        public static ReservationUpdater Updater(string workspaceSid, string workerSid, string sid, ReservationResource.Status reservationStatus=null, string workerActivitySid=null, string instruction=null, string dequeuePostWorkActivitySid=null, string dequeueFrom=null, string dequeueRecord=null, int? dequeueTimeout=null, string dequeueTo=null, Uri dequeueStatusCallbackUrl=null, string callFrom=null, string callRecord=null, int? callTimeout=null, string callTo=null, Uri callUrl=null, Uri callStatusCallbackUrl=null, bool? callAccept=null, string redirectCallSid=null, bool? redirectAccept=null, Uri redirectUrl=null)
+        {
             return new ReservationUpdater(workspaceSid, workerSid, sid, reservationStatus:reservationStatus, workerActivitySid:workerActivitySid, instruction:instruction, dequeuePostWorkActivitySid:dequeuePostWorkActivitySid, dequeueFrom:dequeueFrom, dequeueRecord:dequeueRecord, dequeueTimeout:dequeueTimeout, dequeueTo:dequeueTo, dequeueStatusCallbackUrl:dequeueStatusCallbackUrl, callFrom:callFrom, callRecord:callRecord, callTimeout:callTimeout, callTo:callTo, callUrl:callUrl, callStatusCallbackUrl:callStatusCallbackUrl, callAccept:callAccept, redirectCallSid:redirectCallSid, redirectAccept:redirectAccept, redirectUrl:redirectUrl);
         }
     
@@ -104,11 +115,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> ReservationResource object represented by the provided JSON </returns> 
-        public static ReservationResource FromJson(string json) {
+        public static ReservationResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<ReservationResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -137,7 +152,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         [JsonProperty("links")]
         public Dictionary<string, string> links { get; }
     
-        public ReservationResource() {
+        public ReservationResource()
+        {
         
         }
     
@@ -162,7 +178,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
                                     [JsonProperty("url")]
                                     Uri url, 
                                     [JsonProperty("links")]
-                                    Dictionary<string, string> links) {
+                                    Dictionary<string, string> links)
+                                    {
             this.accountSid = accountSid;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);

@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Trunking.V1.Trunk {
+namespace Twilio.Rest.Trunking.V1.Trunk 
+{
 
-    public class OriginationUrlUpdater : Updater<OriginationUrlResource> {
+    public class OriginationUrlUpdater : Updater<OriginationUrlResource> 
+    {
         public string trunkSid { get; }
         public string sid { get; }
         public int? weight { get; set; }
@@ -30,7 +32,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <param name="enabled"> The enabled </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="sipUrl"> The sip_url </param>
-        public OriginationUrlUpdater(string trunkSid, string sid, int? weight=null, int? priority=null, bool? enabled=null, string friendlyName=null, Uri sipUrl=null) {
+        public OriginationUrlUpdater(string trunkSid, string sid, int? weight=null, int? priority=null, bool? enabled=null, string friendlyName=null, Uri sipUrl=null)
+        {
             this.sid = sid;
             this.enabled = enabled;
             this.trunkSid = trunkSid;
@@ -47,7 +50,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated OriginationUrlResource </returns> 
-        public override async Task<OriginationUrlResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<OriginationUrlResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TRUNKING,
@@ -87,7 +91,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated OriginationUrlResource </returns> 
-        public override OriginationUrlResource Update(ITwilioRestClient client) {
+        public override OriginationUrlResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TRUNKING,
@@ -125,24 +130,30 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (weight != null) {
+        private void AddPostParams(Request request)
+        {
+            if (weight != null)
+            {
                 request.AddPostParam("Weight", weight.ToString());
             }
             
-            if (priority != null) {
+            if (priority != null)
+            {
                 request.AddPostParam("Priority", priority.ToString());
             }
             
-            if (enabled != null) {
+            if (enabled != null)
+            {
                 request.AddPostParam("Enabled", enabled.ToString());
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (sipUrl != null) {
+            if (sipUrl != null)
+            {
                 request.AddPostParam("SipUrl", sipUrl.ToString());
             }
         }

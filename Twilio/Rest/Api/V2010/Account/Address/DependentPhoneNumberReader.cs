@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Address {
+namespace Twilio.Rest.Api.V2010.Account.Address 
+{
 
-    public class DependentPhoneNumberReader : Reader<DependentPhoneNumberResource> {
+    public class DependentPhoneNumberReader : Reader<DependentPhoneNumberResource> 
+    {
         public string accountSid { get; }
         public string addressSid { get; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account.Address {
         ///
         /// <param name="addressSid"> The address_sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        public DependentPhoneNumberReader(string addressSid, string accountSid=null) {
+        public DependentPhoneNumberReader(string addressSid, string accountSid=null)
+        {
             this.accountSid = accountSid;
             this.addressSid = addressSid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Api.V2010.Account.Address {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> DependentPhoneNumberResource ResourceSet </returns> 
-        public override Task<ResourceSet<DependentPhoneNumberResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<DependentPhoneNumberResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -51,7 +55,8 @@ namespace Twilio.Rest.Api.V2010.Account.Address {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> DependentPhoneNumberResource ResourceSet </returns> 
-        public override ResourceSet<DependentPhoneNumberResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<DependentPhoneNumberResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -71,7 +76,8 @@ namespace Twilio.Rest.Api.V2010.Account.Address {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<DependentPhoneNumberResource> NextPage(Page<DependentPhoneNumberResource> page, ITwilioRestClient client) {
+        public override Page<DependentPhoneNumberResource> NextPage(Page<DependentPhoneNumberResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -89,7 +95,8 @@ namespace Twilio.Rest.Api.V2010.Account.Address {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<DependentPhoneNumberResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<DependentPhoneNumberResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -120,7 +127,8 @@ namespace Twilio.Rest.Api.V2010.Account.Address {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
+        private void AddQueryParams(Request request)
+        {
             request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }

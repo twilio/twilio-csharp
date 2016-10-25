@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
+namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList 
+{
 
-    public class IpAddressResource : Resource {
+    public class IpAddressResource : Resource 
+    {
         /// <summary>
         /// read
         /// </summary>
@@ -16,7 +18,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAddressReader capable of executing the read </returns> 
-        public static IpAddressReader Reader(string ipAccessControlListSid, string accountSid=null) {
+        public static IpAddressReader Reader(string ipAccessControlListSid, string accountSid=null)
+        {
             return new IpAddressReader(ipAccessControlListSid, accountSid:accountSid);
         }
     
@@ -29,7 +32,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         /// <param name="ipAddress"> The ip_address </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAddressCreator capable of executing the create </returns> 
-        public static IpAddressCreator Creator(string ipAccessControlListSid, string friendlyName, string ipAddress, string accountSid=null) {
+        public static IpAddressCreator Creator(string ipAccessControlListSid, string friendlyName, string ipAddress, string accountSid=null)
+        {
             return new IpAddressCreator(ipAccessControlListSid, friendlyName, ipAddress, accountSid:accountSid);
         }
     
@@ -41,7 +45,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAddressFetcher capable of executing the fetch </returns> 
-        public static IpAddressFetcher Fetcher(string ipAccessControlListSid, string sid, string accountSid=null) {
+        public static IpAddressFetcher Fetcher(string ipAccessControlListSid, string sid, string accountSid=null)
+        {
             return new IpAddressFetcher(ipAccessControlListSid, sid, accountSid:accountSid);
         }
     
@@ -55,7 +60,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         /// <param name="ipAddress"> The ip_address </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> IpAddressUpdater capable of executing the update </returns> 
-        public static IpAddressUpdater Updater(string ipAccessControlListSid, string sid, string accountSid=null, string ipAddress=null, string friendlyName=null) {
+        public static IpAddressUpdater Updater(string ipAccessControlListSid, string sid, string accountSid=null, string ipAddress=null, string friendlyName=null)
+        {
             return new IpAddressUpdater(ipAccessControlListSid, sid, accountSid:accountSid, ipAddress:ipAddress, friendlyName:friendlyName);
         }
     
@@ -67,7 +73,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAddressDeleter capable of executing the delete </returns> 
-        public static IpAddressDeleter Deleter(string ipAccessControlListSid, string sid, string accountSid=null) {
+        public static IpAddressDeleter Deleter(string ipAccessControlListSid, string sid, string accountSid=null)
+        {
             return new IpAddressDeleter(ipAccessControlListSid, sid, accountSid:accountSid);
         }
     
@@ -77,11 +84,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> IpAddressResource object represented by the provided JSON </returns> 
-        public static IpAddressResource FromJson(string json) {
+        public static IpAddressResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<IpAddressResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -103,7 +114,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         [JsonProperty("uri")]
         public string uri { get; }
     
-        public IpAddressResource() {
+        public IpAddressResource()
+        {
         
         }
     
@@ -122,7 +134,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
                                   [JsonProperty("date_updated")]
                                   string dateUpdated, 
                                   [JsonProperty("uri")]
-                                  string uri) {
+                                  string uri)
+                                  {
             this.sid = sid;
             this.accountSid = accountSid;
             this.friendlyName = friendlyName;

@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace {
+namespace Twilio.Rest.Taskrouter.V1.Workspace 
+{
 
-    public class WorkflowResource : Resource {
+    public class WorkflowResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
@@ -16,7 +18,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> WorkflowFetcher capable of executing the fetch </returns> 
-        public static WorkflowFetcher Fetcher(string workspaceSid, string sid) {
+        public static WorkflowFetcher Fetcher(string workspaceSid, string sid)
+        {
             return new WorkflowFetcher(workspaceSid, sid);
         }
     
@@ -32,7 +35,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="configuration"> The configuration </param>
         /// <param name="taskReservationTimeout"> The task_reservation_timeout </param>
         /// <returns> WorkflowUpdater capable of executing the update </returns> 
-        public static WorkflowUpdater Updater(string workspaceSid, string sid, string friendlyName=null, Uri assignmentCallbackUrl=null, Uri fallbackAssignmentCallbackUrl=null, string configuration=null, int? taskReservationTimeout=null) {
+        public static WorkflowUpdater Updater(string workspaceSid, string sid, string friendlyName=null, Uri assignmentCallbackUrl=null, Uri fallbackAssignmentCallbackUrl=null, string configuration=null, int? taskReservationTimeout=null)
+        {
             return new WorkflowUpdater(workspaceSid, sid, friendlyName:friendlyName, assignmentCallbackUrl:assignmentCallbackUrl, fallbackAssignmentCallbackUrl:fallbackAssignmentCallbackUrl, configuration:configuration, taskReservationTimeout:taskReservationTimeout);
         }
     
@@ -43,7 +47,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> WorkflowDeleter capable of executing the delete </returns> 
-        public static WorkflowDeleter Deleter(string workspaceSid, string sid) {
+        public static WorkflowDeleter Deleter(string workspaceSid, string sid)
+        {
             return new WorkflowDeleter(workspaceSid, sid);
         }
     
@@ -54,7 +59,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> WorkflowReader capable of executing the read </returns> 
-        public static WorkflowReader Reader(string workspaceSid, string friendlyName=null) {
+        public static WorkflowReader Reader(string workspaceSid, string friendlyName=null)
+        {
             return new WorkflowReader(workspaceSid, friendlyName:friendlyName);
         }
     
@@ -69,7 +75,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="fallbackAssignmentCallbackUrl"> The fallback_assignment_callback_url </param>
         /// <param name="taskReservationTimeout"> The task_reservation_timeout </param>
         /// <returns> WorkflowCreator capable of executing the create </returns> 
-        public static WorkflowCreator Creator(string workspaceSid, string friendlyName, string configuration, Uri assignmentCallbackUrl=null, Uri fallbackAssignmentCallbackUrl=null, int? taskReservationTimeout=null) {
+        public static WorkflowCreator Creator(string workspaceSid, string friendlyName, string configuration, Uri assignmentCallbackUrl=null, Uri fallbackAssignmentCallbackUrl=null, int? taskReservationTimeout=null)
+        {
             return new WorkflowCreator(workspaceSid, friendlyName, configuration, assignmentCallbackUrl:assignmentCallbackUrl, fallbackAssignmentCallbackUrl:fallbackAssignmentCallbackUrl, taskReservationTimeout:taskReservationTimeout);
         }
     
@@ -79,11 +86,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> WorkflowResource object represented by the provided JSON </returns> 
-        public static WorkflowResource FromJson(string json) {
+        public static WorkflowResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<WorkflowResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -113,7 +124,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         [JsonProperty("url")]
         public Uri url { get; }
     
-        public WorkflowResource() {
+        public WorkflowResource()
+        {
         
         }
     
@@ -140,7 +152,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
                                  [JsonProperty("workspace_sid")]
                                  string workspaceSid, 
                                  [JsonProperty("url")]
-                                 Uri url) {
+                                 Uri url)
+                                 {
             this.accountSid = accountSid;
             this.assignmentCallbackUrl = assignmentCallbackUrl;
             this.configuration = configuration;

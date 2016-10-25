@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account.Conference {
+namespace Twilio.Rest.Api.V2010.Account.Conference 
+{
 
-    public class ParticipantResource : Resource {
+    public class ParticipantResource : Resource 
+    {
         /// <summary>
         /// Fetch an instance of a participant
         /// </summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         /// <param name="callSid"> The call_sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> ParticipantFetcher capable of executing the fetch </returns> 
-        public static ParticipantFetcher Fetcher(string conferenceSid, string callSid, string accountSid=null) {
+        public static ParticipantFetcher Fetcher(string conferenceSid, string callSid, string accountSid=null)
+        {
             return new ParticipantFetcher(conferenceSid, callSid, accountSid:accountSid);
         }
     
@@ -33,7 +36,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         /// <param name="holdUrl"> The hold_url </param>
         /// <param name="holdMethod"> The hold_method </param>
         /// <returns> ParticipantUpdater capable of executing the update </returns> 
-        public static ParticipantUpdater Updater(string conferenceSid, string callSid, string accountSid=null, bool? muted=null, bool? hold=null, Uri holdUrl=null, Twilio.Http.HttpMethod holdMethod=null) {
+        public static ParticipantUpdater Updater(string conferenceSid, string callSid, string accountSid=null, bool? muted=null, bool? hold=null, Uri holdUrl=null, Twilio.Http.HttpMethod holdMethod=null)
+        {
             return new ParticipantUpdater(conferenceSid, callSid, accountSid:accountSid, muted:muted, hold:hold, holdUrl:holdUrl, holdMethod:holdMethod);
         }
     
@@ -45,7 +49,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         /// <param name="callSid"> The call_sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> ParticipantDeleter capable of executing the delete </returns> 
-        public static ParticipantDeleter Deleter(string conferenceSid, string callSid, string accountSid=null) {
+        public static ParticipantDeleter Deleter(string conferenceSid, string callSid, string accountSid=null)
+        {
             return new ParticipantDeleter(conferenceSid, callSid, accountSid:accountSid);
         }
     
@@ -58,7 +63,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         /// <param name="muted"> Filter by muted participants </param>
         /// <param name="hold"> The hold </param>
         /// <returns> ParticipantReader capable of executing the read </returns> 
-        public static ParticipantReader Reader(string conferenceSid, string accountSid=null, bool? muted=null, bool? hold=null) {
+        public static ParticipantReader Reader(string conferenceSid, string accountSid=null, bool? muted=null, bool? hold=null)
+        {
             return new ParticipantReader(conferenceSid, accountSid:accountSid, muted:muted, hold:hold);
         }
     
@@ -68,11 +74,15 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> ParticipantResource object represented by the provided JSON </returns> 
-        public static ParticipantResource FromJson(string json) {
+        public static ParticipantResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<ParticipantResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -98,7 +108,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         [JsonProperty("uri")]
         public string uri { get; }
     
-        public ParticipantResource() {
+        public ParticipantResource()
+        {
         
         }
     
@@ -121,7 +132,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
                                     [JsonProperty("start_conference_on_enter")]
                                     bool? startConferenceOnEnter, 
                                     [JsonProperty("uri")]
-                                    string uri) {
+                                    string uri)
+                                    {
             this.accountSid = accountSid;
             this.callSid = callSid;
             this.conferenceSid = conferenceSid;

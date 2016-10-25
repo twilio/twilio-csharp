@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Preview.Sync.Service {
+namespace Twilio.Rest.Preview.Sync.Service 
+{
 
-    public class SyncListReader : Reader<SyncListResource> {
+    public class SyncListReader : Reader<SyncListResource> 
+    {
         public string serviceSid { get; }
     
         /// <summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// </summary>
         ///
         /// <param name="serviceSid"> The service_sid </param>
-        public SyncListReader(string serviceSid) {
+        public SyncListReader(string serviceSid)
+        {
             this.serviceSid = serviceSid;
         }
     
@@ -28,7 +31,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> SyncListResource ResourceSet </returns> 
-        public override Task<ResourceSet<SyncListResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<SyncListResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.PREVIEW,
@@ -48,7 +52,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> SyncListResource ResourceSet </returns> 
-        public override ResourceSet<SyncListResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<SyncListResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.PREVIEW,
@@ -68,7 +73,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<SyncListResource> NextPage(Page<SyncListResource> page, ITwilioRestClient client) {
+        public override Page<SyncListResource> NextPage(Page<SyncListResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -86,7 +92,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<SyncListResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<SyncListResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -117,7 +124,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
+        private void AddQueryParams(Request request)
+        {
             request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }

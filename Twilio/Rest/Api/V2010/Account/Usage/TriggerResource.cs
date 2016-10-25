@@ -6,10 +6,13 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account.Usage {
+namespace Twilio.Rest.Api.V2010.Account.Usage 
+{
 
-    public class TriggerResource : Resource {
-        public sealed class UsageCategory : IStringEnum {
+    public class TriggerResource : Resource 
+    {
+        public sealed class UsageCategory : IStringEnum 
+        {
             public const string AuthyAuthentications = "authy-authentications";
             public const string AuthyCallsOutbound = "authy-calls-outbound";
             public const string AuthyMonthlyFees = "authy-monthly-fees";
@@ -103,30 +106,36 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         
             private string _value;
             
-            public UsageCategory() { }
+            public UsageCategory() {}
             
-            public UsageCategory(string value) {
+            public UsageCategory(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator UsageCategory(string value) {
+            public static implicit operator UsageCategory(string value)
+            {
                 return new UsageCategory(value);
             }
             
-            public static implicit operator string(UsageCategory value) {
+            public static implicit operator string(UsageCategory value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
     
-        public sealed class Recurring : IStringEnum {
+        public sealed class Recurring : IStringEnum 
+        {
             public const string Daily = "daily";
             public const string Monthly = "monthly";
             public const string Yearly = "yearly";
@@ -134,55 +143,66 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         
             private string _value;
             
-            public Recurring() { }
+            public Recurring() {}
             
-            public Recurring(string value) {
+            public Recurring(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator Recurring(string value) {
+            public static implicit operator Recurring(string value)
+            {
                 return new Recurring(value);
             }
             
-            public static implicit operator string(Recurring value) {
+            public static implicit operator string(Recurring value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
     
-        public sealed class TriggerField : IStringEnum {
+        public sealed class TriggerField : IStringEnum 
+        {
             public const string Count = "count";
             public const string Usage = "usage";
             public const string Price = "price";
         
             private string _value;
             
-            public TriggerField() { }
+            public TriggerField() {}
             
-            public TriggerField(string value) {
+            public TriggerField(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator TriggerField(string value) {
+            public static implicit operator TriggerField(string value)
+            {
                 return new TriggerField(value);
             }
             
-            public static implicit operator string(TriggerField value) {
+            public static implicit operator string(TriggerField value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -194,7 +214,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// <param name="sid"> Fetch by unique usage-trigger Sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> TriggerFetcher capable of executing the fetch </returns> 
-        public static TriggerFetcher Fetcher(string sid, string accountSid=null) {
+        public static TriggerFetcher Fetcher(string sid, string accountSid=null)
+        {
             return new TriggerFetcher(sid, accountSid:accountSid);
         }
     
@@ -208,7 +229,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
         /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
         /// <returns> TriggerUpdater capable of executing the update </returns> 
-        public static TriggerUpdater Updater(string sid, string accountSid=null, Twilio.Http.HttpMethod callbackMethod=null, Uri callbackUrl=null, string friendlyName=null) {
+        public static TriggerUpdater Updater(string sid, string accountSid=null, Twilio.Http.HttpMethod callbackMethod=null, Uri callbackUrl=null, string friendlyName=null)
+        {
             return new TriggerUpdater(sid, accountSid:accountSid, callbackMethod:callbackMethod, callbackUrl:callbackUrl, friendlyName:friendlyName);
         }
     
@@ -219,7 +241,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> TriggerDeleter capable of executing the delete </returns> 
-        public static TriggerDeleter Deleter(string sid, string accountSid=null) {
+        public static TriggerDeleter Deleter(string sid, string accountSid=null)
+        {
             return new TriggerDeleter(sid, accountSid:accountSid);
         }
     
@@ -236,7 +259,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// <param name="recurring"> How this trigger recurs </param>
         /// <param name="triggerBy"> The field in the UsageRecord that fires the trigger </param>
         /// <returns> TriggerCreator capable of executing the create </returns> 
-        public static TriggerCreator Creator(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory, string accountSid=null, Twilio.Http.HttpMethod callbackMethod=null, string friendlyName=null, TriggerResource.Recurring recurring=null, TriggerResource.TriggerField triggerBy=null) {
+        public static TriggerCreator Creator(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory, string accountSid=null, Twilio.Http.HttpMethod callbackMethod=null, string friendlyName=null, TriggerResource.Recurring recurring=null, TriggerResource.TriggerField triggerBy=null)
+        {
             return new TriggerCreator(callbackUrl, triggerValue, usageCategory, accountSid:accountSid, callbackMethod:callbackMethod, friendlyName:friendlyName, recurring:recurring, triggerBy:triggerBy);
         }
     
@@ -249,7 +273,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// <param name="triggerBy"> Filter by trigger by </param>
         /// <param name="usageCategory"> Filter by Usage Category </param>
         /// <returns> TriggerReader capable of executing the read </returns> 
-        public static TriggerReader Reader(string accountSid=null, TriggerResource.Recurring recurring=null, TriggerResource.TriggerField triggerBy=null, TriggerResource.UsageCategory usageCategory=null) {
+        public static TriggerReader Reader(string accountSid=null, TriggerResource.Recurring recurring=null, TriggerResource.TriggerField triggerBy=null, TriggerResource.UsageCategory usageCategory=null)
+        {
             return new TriggerReader(accountSid:accountSid, recurring:recurring, triggerBy:triggerBy, usageCategory:usageCategory);
         }
     
@@ -259,11 +284,15 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> TriggerResource object represented by the provided JSON </returns> 
-        public static TriggerResource FromJson(string json) {
+        public static TriggerResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<TriggerResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -305,7 +334,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         [JsonProperty("usage_record_uri")]
         public string usageRecordUri { get; }
     
-        public TriggerResource() {
+        public TriggerResource()
+        {
         
         }
     
@@ -340,7 +370,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
                                 [JsonProperty("usage_category")]
                                 TriggerResource.UsageCategory usageCategory, 
                                 [JsonProperty("usage_record_uri")]
-                                string usageRecordUri) {
+                                string usageRecordUri)
+                                {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
             this.callbackMethod = callbackMethod;

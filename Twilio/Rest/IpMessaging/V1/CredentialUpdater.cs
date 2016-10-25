@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.IpMessaging.V1 {
+namespace Twilio.Rest.IpMessaging.V1 
+{
 
-    public class CredentialUpdater : Updater<CredentialResource> {
+    public class CredentialUpdater : Updater<CredentialResource> 
+    {
         public string sid { get; }
         public string friendlyName { get; set; }
         public string certificate { get; set; }
@@ -27,7 +29,8 @@ namespace Twilio.Rest.IpMessaging.V1 {
         /// <param name="privateKey"> The private_key </param>
         /// <param name="sandbox"> The sandbox </param>
         /// <param name="apiKey"> The api_key </param>
-        public CredentialUpdater(string sid, string friendlyName=null, string certificate=null, string privateKey=null, bool? sandbox=null, string apiKey=null) {
+        public CredentialUpdater(string sid, string friendlyName=null, string certificate=null, string privateKey=null, bool? sandbox=null, string apiKey=null)
+        {
             this.sid = sid;
             this.privateKey = privateKey;
             this.certificate = certificate;
@@ -43,7 +46,8 @@ namespace Twilio.Rest.IpMessaging.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated CredentialResource </returns> 
-        public override async Task<CredentialResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<CredentialResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.IP_MESSAGING,
@@ -83,7 +87,8 @@ namespace Twilio.Rest.IpMessaging.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated CredentialResource </returns> 
-        public override CredentialResource Update(ITwilioRestClient client) {
+        public override CredentialResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.IP_MESSAGING,
@@ -121,24 +126,30 @@ namespace Twilio.Rest.IpMessaging.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (friendlyName != null) {
+        private void AddPostParams(Request request)
+        {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (certificate != null) {
+            if (certificate != null)
+            {
                 request.AddPostParam("Certificate", certificate);
             }
             
-            if (privateKey != null) {
+            if (privateKey != null)
+            {
                 request.AddPostParam("PrivateKey", privateKey);
             }
             
-            if (sandbox != null) {
+            if (sandbox != null)
+            {
                 request.AddPostParam("Sandbox", sandbox.ToString());
             }
             
-            if (apiKey != null) {
+            if (apiKey != null)
+            {
                 request.AddPostParam("ApiKey", apiKey);
             }
         }

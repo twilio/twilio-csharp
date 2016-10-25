@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class AddressUpdater : Updater<AddressResource> {
+    public class AddressUpdater : Updater<AddressResource> 
+    {
         public string accountSid { get; }
         public string sid { get; }
         public string friendlyName { get; set; }
@@ -31,7 +33,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="city"> The city </param>
         /// <param name="region"> The region </param>
         /// <param name="postalCode"> The postal_code </param>
-        public AddressUpdater(string sid, string accountSid=null, string friendlyName=null, string customerName=null, string street=null, string city=null, string region=null, string postalCode=null) {
+        public AddressUpdater(string sid, string accountSid=null, string friendlyName=null, string customerName=null, string street=null, string city=null, string region=null, string postalCode=null)
+        {
             this.city = city;
             this.sid = sid;
             this.street = street;
@@ -49,7 +52,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated AddressResource </returns> 
-        public override async Task<AddressResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<AddressResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -89,7 +93,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated AddressResource </returns> 
-        public override AddressResource Update(ITwilioRestClient client) {
+        public override AddressResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -127,28 +132,35 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (friendlyName != null) {
+        private void AddPostParams(Request request)
+        {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (customerName != null) {
+            if (customerName != null)
+            {
                 request.AddPostParam("CustomerName", customerName);
             }
             
-            if (street != null) {
+            if (street != null)
+            {
                 request.AddPostParam("Street", street);
             }
             
-            if (city != null) {
+            if (city != null)
+            {
                 request.AddPostParam("City", city);
             }
             
-            if (region != null) {
+            if (region != null)
+            {
                 request.AddPostParam("Region", region);
             }
             
-            if (postalCode != null) {
+            if (postalCode != null)
+            {
                 request.AddPostParam("PostalCode", postalCode);
             }
         }

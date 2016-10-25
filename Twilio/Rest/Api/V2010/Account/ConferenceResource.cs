@@ -7,35 +7,43 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class ConferenceResource : Resource {
-        public sealed class Status : IStringEnum {
+    public class ConferenceResource : Resource 
+    {
+        public sealed class Status : IStringEnum 
+        {
             public const string Init = "init";
             public const string InProgress = "in-progress";
             public const string Completed = "completed";
         
             private string _value;
             
-            public Status() { }
+            public Status() {}
             
-            public Status(string value) {
+            public Status(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator Status(string value) {
+            public static implicit operator Status(string value)
+            {
                 return new Status(value);
             }
             
-            public static implicit operator string(Status value) {
+            public static implicit operator string(Status value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -47,7 +55,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="sid"> Fetch by unique conference Sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> ConferenceFetcher capable of executing the fetch </returns> 
-        public static ConferenceFetcher Fetcher(string sid, string accountSid=null) {
+        public static ConferenceFetcher Fetcher(string sid, string accountSid=null)
+        {
             return new ConferenceFetcher(sid, accountSid:accountSid);
         }
     
@@ -61,7 +70,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="friendlyName"> Filter by friendly name </param>
         /// <param name="status"> The status of the conference </param>
         /// <returns> ConferenceReader capable of executing the read </returns> 
-        public static ConferenceReader Reader(string accountSid=null, string dateCreated=null, string dateUpdated=null, string friendlyName=null, ConferenceResource.Status status=null) {
+        public static ConferenceReader Reader(string accountSid=null, string dateCreated=null, string dateUpdated=null, string friendlyName=null, ConferenceResource.Status status=null)
+        {
             return new ConferenceReader(accountSid:accountSid, dateCreated:dateCreated, dateUpdated:dateUpdated, friendlyName:friendlyName, status:status);
         }
     
@@ -71,11 +81,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> ConferenceResource object represented by the provided JSON </returns> 
-        public static ConferenceResource FromJson(string json) {
+        public static ConferenceResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<ConferenceResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -100,7 +114,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> subresourceUris { get; }
     
-        public ConferenceResource() {
+        public ConferenceResource()
+        {
         
         }
     
@@ -121,7 +136,8 @@ namespace Twilio.Rest.Api.V2010.Account {
                                    [JsonProperty("uri")]
                                    string uri, 
                                    [JsonProperty("subresource_uris")]
-                                   Dictionary<string, string> subresourceUris) {
+                                   Dictionary<string, string> subresourceUris)
+                                   {
             this.accountSid = accountSid;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);

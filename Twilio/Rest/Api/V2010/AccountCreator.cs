@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010 {
+namespace Twilio.Rest.Api.V2010 
+{
 
-    public class AccountCreator : Creator<AccountResource> {
+    public class AccountCreator : Creator<AccountResource> 
+    {
         public string friendlyName { get; set; }
     
         /// <summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Api.V2010 {
         /// </summary>
         ///
         /// <param name="friendlyName"> A human readable description of the account </param>
-        public AccountCreator(string friendlyName=null) {
+        public AccountCreator(string friendlyName=null)
+        {
             this.friendlyName = friendlyName;
         }
     
@@ -28,7 +31,8 @@ namespace Twilio.Rest.Api.V2010 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created AccountResource </returns> 
-        public override async Task<AccountResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<AccountResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
@@ -68,7 +72,8 @@ namespace Twilio.Rest.Api.V2010 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created AccountResource </returns> 
-        public override AccountResource Create(ITwilioRestClient client) {
+        public override AccountResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
@@ -106,8 +111,10 @@ namespace Twilio.Rest.Api.V2010 {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (friendlyName != null) {
+        private void AddPostParams(Request request)
+        {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

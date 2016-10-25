@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Pricing.V1.Voice {
+namespace Twilio.Rest.Pricing.V1.Voice 
+{
 
-    public class CountryFetcher : Fetcher<CountryResource> {
+    public class CountryFetcher : Fetcher<CountryResource> 
+    {
         public string isoCountry { get; }
     
         /// <summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Pricing.V1.Voice {
         /// </summary>
         ///
         /// <param name="isoCountry"> The iso_country </param>
-        public CountryFetcher(string isoCountry) {
+        public CountryFetcher(string isoCountry)
+        {
             this.isoCountry = isoCountry;
         }
     
@@ -28,7 +31,8 @@ namespace Twilio.Rest.Pricing.V1.Voice {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched CountryResource </returns> 
-        public override async Task<CountryResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<CountryResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PRICING,
@@ -67,7 +71,8 @@ namespace Twilio.Rest.Pricing.V1.Voice {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched CountryResource </returns> 
-        public override CountryResource Fetch(ITwilioRestClient client) {
+        public override CountryResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PRICING,

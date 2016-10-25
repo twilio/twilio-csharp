@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
+namespace Twilio.Rest.Api.V2010.Account.Sip.Domain 
+{
 
-    public class IpAccessControlListMappingFetcher : Fetcher<IpAccessControlListMappingResource> {
+    public class IpAccessControlListMappingFetcher : Fetcher<IpAccessControlListMappingResource> 
+    {
         public string accountSid { get; }
         public string domainSid { get; }
         public string sid { get; }
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         /// <param name="domainSid"> The domain_sid </param>
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        public IpAccessControlListMappingFetcher(string domainSid, string sid, string accountSid=null) {
+        public IpAccessControlListMappingFetcher(string domainSid, string sid, string accountSid=null)
+        {
             this.accountSid = accountSid;
             this.sid = sid;
             this.domainSid = domainSid;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched IpAccessControlListMappingResource </returns> 
-        public override async Task<IpAccessControlListMappingResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<IpAccessControlListMappingResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -73,7 +77,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched IpAccessControlListMappingResource </returns> 
-        public override IpAccessControlListMappingResource Fetch(ITwilioRestClient client) {
+        public override IpAccessControlListMappingResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

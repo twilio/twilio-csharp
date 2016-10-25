@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
+namespace Twilio.Rest.IpMessaging.V1.Service.Channel 
+{
 
-    public class MessageFetcher : Fetcher<MessageResource> {
+    public class MessageFetcher : Fetcher<MessageResource> 
+    {
         public string serviceSid { get; }
         public string channelSid { get; }
         public string sid { get; }
@@ -21,7 +23,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="channelSid"> The channel_sid </param>
         /// <param name="sid"> The sid </param>
-        public MessageFetcher(string serviceSid, string channelSid, string sid) {
+        public MessageFetcher(string serviceSid, string channelSid, string sid)
+        {
             this.serviceSid = serviceSid;
             this.sid = sid;
             this.channelSid = channelSid;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched MessageResource </returns> 
-        public override async Task<MessageResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<MessageResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.IP_MESSAGING,
@@ -73,7 +77,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched MessageResource </returns> 
-        public override MessageResource Fetch(ITwilioRestClient client) {
+        public override MessageResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.IP_MESSAGING,

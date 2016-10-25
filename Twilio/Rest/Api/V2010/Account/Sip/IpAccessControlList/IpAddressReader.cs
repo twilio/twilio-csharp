@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
+namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList 
+{
 
-    public class IpAddressReader : Reader<IpAddressResource> {
+    public class IpAddressReader : Reader<IpAddressResource> 
+    {
         public string accountSid { get; }
         public string ipAccessControlListSid { get; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         ///
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        public IpAddressReader(string ipAccessControlListSid, string accountSid=null) {
+        public IpAddressReader(string ipAccessControlListSid, string accountSid=null)
+        {
             this.accountSid = accountSid;
             this.ipAccessControlListSid = ipAccessControlListSid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> IpAddressResource ResourceSet </returns> 
-        public override Task<ResourceSet<IpAddressResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<IpAddressResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -51,7 +55,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> IpAddressResource ResourceSet </returns> 
-        public override ResourceSet<IpAddressResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<IpAddressResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -71,7 +76,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<IpAddressResource> NextPage(Page<IpAddressResource> page, ITwilioRestClient client) {
+        public override Page<IpAddressResource> NextPage(Page<IpAddressResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -89,7 +95,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<IpAddressResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<IpAddressResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -120,7 +127,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
+        private void AddQueryParams(Request request)
+        {
             request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }

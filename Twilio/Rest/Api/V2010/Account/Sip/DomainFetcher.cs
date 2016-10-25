@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Sip {
+namespace Twilio.Rest.Api.V2010.Account.Sip 
+{
 
-    public class DomainFetcher : Fetcher<DomainResource> {
+    public class DomainFetcher : Fetcher<DomainResource> 
+    {
         public string accountSid { get; }
         public string sid { get; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         ///
         /// <param name="sid"> Fetch by unique Domain Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        public DomainFetcher(string sid, string accountSid=null) {
+        public DomainFetcher(string sid, string accountSid=null)
+        {
             this.accountSid = accountSid;
             this.sid = sid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched DomainResource </returns> 
-        public override async Task<DomainResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<DomainResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -70,7 +74,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched DomainResource </returns> 
-        public override DomainResource Fetch(ITwilioRestClient client) {
+        public override DomainResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

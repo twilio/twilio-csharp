@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Chat.V1.Service {
+namespace Twilio.Rest.Chat.V1.Service 
+{
 
-    public class RoleUpdater : Updater<RoleResource> {
+    public class RoleUpdater : Updater<RoleResource> 
+    {
         public string serviceSid { get; }
         public string sid { get; }
         public List<string> permission { get; }
@@ -22,7 +24,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
         /// <param name="permission"> The permission </param>
-        public RoleUpdater(string serviceSid, string sid, List<string> permission) {
+        public RoleUpdater(string serviceSid, string sid, List<string> permission)
+        {
             this.serviceSid = serviceSid;
             this.sid = sid;
             this.permission = permission;
@@ -35,7 +38,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated RoleResource </returns> 
-        public override async Task<RoleResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<RoleResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.CHAT,
@@ -75,7 +79,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated RoleResource </returns> 
-        public override RoleResource Update(ITwilioRestClient client) {
+        public override RoleResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.CHAT,
@@ -113,8 +118,10 @@ namespace Twilio.Rest.Chat.V1.Service {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (permission != null) {
+        private void AddPostParams(Request request)
+        {
+            if (permission != null)
+            {
                 request.AddPostParam("Permission", permission.ToString());
             }
         }

@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace {
+namespace Twilio.Rest.Taskrouter.V1.Workspace 
+{
 
-    public class WorkerFetcher : Fetcher<WorkerResource> {
+    public class WorkerFetcher : Fetcher<WorkerResource> 
+    {
         public string workspaceSid { get; }
         public string sid { get; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
-        public WorkerFetcher(string workspaceSid, string sid) {
+        public WorkerFetcher(string workspaceSid, string sid)
+        {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched WorkerResource </returns> 
-        public override async Task<WorkerResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<WorkerResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
@@ -70,7 +74,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched WorkerResource </returns> 
-        public override WorkerResource Fetch(ITwilioRestClient client) {
+        public override WorkerResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,

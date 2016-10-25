@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Usage {
+namespace Twilio.Rest.Api.V2010.Account.Usage 
+{
 
-    public class TriggerFetcher : Fetcher<TriggerResource> {
+    public class TriggerFetcher : Fetcher<TriggerResource> 
+    {
         public string accountSid { get; }
         public string sid { get; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         ///
         /// <param name="sid"> Fetch by unique usage-trigger Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        public TriggerFetcher(string sid, string accountSid=null) {
+        public TriggerFetcher(string sid, string accountSid=null)
+        {
             this.accountSid = accountSid;
             this.sid = sid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched TriggerResource </returns> 
-        public override async Task<TriggerResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<TriggerResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -70,7 +74,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched TriggerResource </returns> 
-        public override TriggerResource Fetch(ITwilioRestClient client) {
+        public override TriggerResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

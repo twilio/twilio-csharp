@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Preview.Sync.Service.SyncList {
+namespace Twilio.Rest.Preview.Sync.Service.SyncList 
+{
 
-    public class SyncListItemUpdater : Updater<SyncListItemResource> {
+    public class SyncListItemUpdater : Updater<SyncListItemResource> 
+    {
         public string serviceSid { get; }
         public string listSid { get; }
         public int? index { get; }
@@ -24,7 +26,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         /// <param name="listSid"> The list_sid </param>
         /// <param name="index"> The index </param>
         /// <param name="data"> The data </param>
-        public SyncListItemUpdater(string serviceSid, string listSid, int? index, Object data) {
+        public SyncListItemUpdater(string serviceSid, string listSid, int? index, Object data)
+        {
             this.serviceSid = serviceSid;
             this.data = data;
             this.listSid = listSid;
@@ -38,7 +41,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated SyncListItemResource </returns> 
-        public override async Task<SyncListItemResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<SyncListItemResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.PREVIEW,
@@ -78,7 +82,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated SyncListItemResource </returns> 
-        public override SyncListItemResource Update(ITwilioRestClient client) {
+        public override SyncListItemResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.PREVIEW,
@@ -116,8 +121,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (data != null) {
+        private void AddPostParams(Request request)
+        {
+            if (data != null)
+            {
                 request.AddPostParam("Data", data.ToString());
             }
         }

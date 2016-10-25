@@ -10,43 +10,54 @@ using Twilio.Http;
 using Twilio.Rest;
 using Twilio.Rest.Preview.Sync.Service.SyncList;
 
-namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList {
+namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList 
+{
 
     [TestFixture]
-    public class SyncListItemTest : TwilioTest {
+    public class SyncListItemTest : TwilioTest 
+    {
         [SetUp]
-        public void SetUp() {
+        public void SetUp()
+        {
         }
     
         [Test]
-        public void TestFetchRequest() {
+        public void TestFetchRequest()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(Twilio.Http.HttpMethod.GET,
-                                          Domains.PREVIEW,
-                                          "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/1");
+            var request = new Request(HttpMethod.GET,
+                                      Domains.PREVIEW,
+                                      "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/1");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
             
-            try {
+            try
+            {
                 SyncListItemResource.Fetcher("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1).Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
-            } catch (AggregateException ae) {
+            }
+            catch (AggregateException ae)
+            {
                 ae.Handle((e) =>
                 {
-                    if (e.GetType() != typeof(ApiException)) {
+                    if (e.GetType() != typeof(ApiException))
+                    {
                         throw e;
                     }
             
                     return true;
                 });
-            } catch (ApiException) {
+            }
+            catch (ApiException)
+            {
             }
             twilioRestClient.Received().Request(request);
         }
     
         [Test]
-        public void TestFetchResponse() {
+        public void TestFetchResponse()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
@@ -57,34 +68,42 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList {
         }
     
         [Test]
-        public void TestDeleteRequest() {
+        public void TestDeleteRequest()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(Twilio.Http.HttpMethod.DELETE,
-                                          Domains.PREVIEW,
-                                          "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/1");
+            var request = new Request(HttpMethod.DELETE,
+                                      Domains.PREVIEW,
+                                      "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/1");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
             
-            try {
+            try
+            {
                 SyncListItemResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1).Delete(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
-            } catch (AggregateException ae) {
+            }
+            catch (AggregateException ae)
+            {
                 ae.Handle((e) =>
                 {
-                    if (e.GetType() != typeof(ApiException)) {
+                    if (e.GetType() != typeof(ApiException))
+                    {
                         throw e;
                     }
             
                     return true;
                 });
-            } catch (ApiException) {
+            }
+            catch (ApiException)
+            {
             }
             twilioRestClient.Received().Request(request);
         }
     
         [Test]
-        public void TestDeleteResponse() {
+        public void TestDeleteResponse()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.NoContent,
@@ -94,35 +113,43 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList {
         }
     
         [Test]
-        public void TestCreateRequest() {
+        public void TestCreateRequest()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(Twilio.Http.HttpMethod.POST,
-                                          Domains.PREVIEW,
-                                          "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items");
+            var request = new Request(HttpMethod.POST,
+                                      Domains.PREVIEW,
+                                      "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items");
             request.AddPostParam("Data", Serialize("{}"));
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
             
-            try {
+            try
+            {
                 SyncListItemResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "{}").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
-            } catch (AggregateException ae) {
+            }
+            catch (AggregateException ae)
+            {
                 ae.Handle((e) =>
                 {
-                    if (e.GetType() != typeof(ApiException)) {
+                    if (e.GetType() != typeof(ApiException))
+                    {
                         throw e;
                     }
             
                     return true;
                 });
-            } catch (ApiException) {
+            }
+            catch (ApiException)
+            {
             }
             twilioRestClient.Received().Request(request);
         }
     
         [Test]
-        public void TestCreateResponse() {
+        public void TestCreateResponse()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
@@ -133,34 +160,42 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList {
         }
     
         [Test]
-        public void TestReadRequest() {
+        public void TestReadRequest()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(Twilio.Http.HttpMethod.GET,
-                                          Domains.PREVIEW,
-                                          "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items");
+            var request = new Request(HttpMethod.GET,
+                                      Domains.PREVIEW,
+                                      "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
             
-            try {
+            try
+            {
                 SyncListItemResource.Reader("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Read(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
-            } catch (AggregateException ae) {
+            }
+            catch (AggregateException ae)
+            {
                 ae.Handle((e) =>
                 {
-                    if (e.GetType() != typeof(ApiException)) {
+                    if (e.GetType() != typeof(ApiException))
+                    {
                         throw e;
                     }
             
                     return true;
                 });
-            } catch (ApiException) {
+            }
+            catch (ApiException)
+            {
             }
             twilioRestClient.Received().Request(request);
         }
     
         [Test]
-        public void TestReadEmptyResponse() {
+        public void TestReadEmptyResponse()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
@@ -171,7 +206,8 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList {
         }
     
         [Test]
-        public void TestReadFullResponse() {
+        public void TestReadFullResponse()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
@@ -182,35 +218,43 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList {
         }
     
         [Test]
-        public void TestUpdateRequest() {
+        public void TestUpdateRequest()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(Twilio.Http.HttpMethod.POST,
-                                          Domains.PREVIEW,
-                                          "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/1");
+            var request = new Request(HttpMethod.POST,
+                                      Domains.PREVIEW,
+                                      "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/1");
             request.AddPostParam("Data", Serialize("{}"));
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
             
-            try {
+            try
+            {
                 SyncListItemResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1, "{}").Update(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
-            } catch (AggregateException ae) {
+            }
+            catch (AggregateException ae)
+            {
                 ae.Handle((e) =>
                 {
-                    if (e.GetType() != typeof(ApiException)) {
+                    if (e.GetType() != typeof(ApiException))
+                    {
                         throw e;
                     }
             
                     return true;
                 });
-            } catch (ApiException) {
+            }
+            catch (ApiException)
+            {
             }
             twilioRestClient.Received().Request(request);
         }
     
         [Test]
-        public void TestUpdateResponse() {
+        public void TestUpdateResponse()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,

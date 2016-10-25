@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Notify.V1 {
+namespace Twilio.Rest.Notify.V1 
+{
 
-    public class ServiceReader : Reader<ServiceResource> {
+    public class ServiceReader : Reader<ServiceResource> 
+    {
         public string friendlyName { get; set; }
     
         /// <summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Notify.V1 {
         /// </summary>
         ///
         /// <param name="friendlyName"> The friendly_name </param>
-        public ServiceReader(string friendlyName=null) {
+        public ServiceReader(string friendlyName=null)
+        {
             this.friendlyName = friendlyName;
         }
     
@@ -28,7 +31,8 @@ namespace Twilio.Rest.Notify.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> ServiceResource ResourceSet </returns> 
-        public override Task<ResourceSet<ServiceResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<ServiceResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.NOTIFY,
@@ -48,7 +52,8 @@ namespace Twilio.Rest.Notify.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> ServiceResource ResourceSet </returns> 
-        public override ResourceSet<ServiceResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<ServiceResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.NOTIFY,
@@ -68,7 +73,8 @@ namespace Twilio.Rest.Notify.V1 {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<ServiceResource> NextPage(Page<ServiceResource> page, ITwilioRestClient client) {
+        public override Page<ServiceResource> NextPage(Page<ServiceResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -86,7 +92,8 @@ namespace Twilio.Rest.Notify.V1 {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<ServiceResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<ServiceResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -117,8 +124,10 @@ namespace Twilio.Rest.Notify.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (friendlyName != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (friendlyName != null)
+            {
                 request.AddQueryParam("FriendlyName", friendlyName);
             }
             

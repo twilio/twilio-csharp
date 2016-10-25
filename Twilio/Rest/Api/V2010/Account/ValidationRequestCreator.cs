@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class ValidationRequestCreator : Creator<ValidationRequestResource> {
+    public class ValidationRequestCreator : Creator<ValidationRequestResource> 
+    {
         public string accountSid { get; }
         public Twilio.Types.PhoneNumber phoneNumber { get; }
         public string friendlyName { get; set; }
@@ -30,7 +32,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="extension"> The extension </param>
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
-        public ValidationRequestCreator(Twilio.Types.PhoneNumber phoneNumber, string accountSid=null, string friendlyName=null, int? callDelay=null, string extension=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null) {
+        public ValidationRequestCreator(Twilio.Types.PhoneNumber phoneNumber, string accountSid=null, string friendlyName=null, int? callDelay=null, string extension=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null)
+        {
             this.statusCallbackMethod = statusCallbackMethod;
             this.statusCallback = statusCallback;
             this.callDelay = callDelay;
@@ -47,7 +50,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created ValidationRequestResource </returns> 
-        public override async Task<ValidationRequestResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<ValidationRequestResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
@@ -87,7 +91,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created ValidationRequestResource </returns> 
-        public override ValidationRequestResource Create(ITwilioRestClient client) {
+        public override ValidationRequestResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
@@ -125,28 +130,35 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (phoneNumber != null) {
+        private void AddPostParams(Request request)
+        {
+            if (phoneNumber != null)
+            {
                 request.AddPostParam("PhoneNumber", phoneNumber.ToString());
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (callDelay != null) {
+            if (callDelay != null)
+            {
                 request.AddPostParam("CallDelay", callDelay.ToString());
             }
             
-            if (extension != null) {
+            if (extension != null)
+            {
                 request.AddPostParam("Extension", extension);
             }
             
-            if (statusCallback != null) {
+            if (statusCallback != null)
+            {
                 request.AddPostParam("StatusCallback", statusCallback.ToString());
             }
             
-            if (statusCallbackMethod != null) {
+            if (statusCallbackMethod != null)
+            {
                 request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
         }

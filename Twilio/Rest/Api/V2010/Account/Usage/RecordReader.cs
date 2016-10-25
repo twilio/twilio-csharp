@@ -9,9 +9,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Usage {
+namespace Twilio.Rest.Api.V2010.Account.Usage 
+{
 
-    public class RecordReader : Reader<RecordResource> {
+    public class RecordReader : Reader<RecordResource> 
+    {
         public string accountSid { get; }
         public RecordResource.Category category { get; set; }
         public DateTime? startDate { get; set; }
@@ -25,7 +27,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// <param name="category"> Only include usage of a given category </param>
         /// <param name="startDate"> Filter by start date </param>
         /// <param name="endDate"> Filter by end date </param>
-        public RecordReader(string accountSid=null, RecordResource.Category category=null, DateTime? startDate=null, DateTime? endDate=null) {
+        public RecordReader(string accountSid=null, RecordResource.Category category=null, DateTime? startDate=null, DateTime? endDate=null)
+        {
             this.accountSid = accountSid;
             this.category = category;
             this.startDate = startDate;
@@ -39,7 +42,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> RecordResource ResourceSet </returns> 
-        public override Task<ResourceSet<RecordResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<RecordResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -59,7 +63,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> RecordResource ResourceSet </returns> 
-        public override ResourceSet<RecordResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<RecordResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -79,7 +84,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<RecordResource> NextPage(Page<RecordResource> page, ITwilioRestClient client) {
+        public override Page<RecordResource> NextPage(Page<RecordResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -97,7 +103,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<RecordResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<RecordResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -128,16 +135,20 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (category != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (category != null)
+            {
                 request.AddQueryParam("Category", category.ToString());
             }
             
-            if (startDate != null) {
+            if (startDate != null)
+            {
                 request.AddQueryParam("StartDate", startDate.ToString());
             }
             
-            if (endDate != null) {
+            if (endDate != null)
+            {
                 request.AddQueryParam("EndDate", endDate.ToString());
             }
             

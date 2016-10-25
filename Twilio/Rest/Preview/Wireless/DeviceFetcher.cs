@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Preview.Wireless {
+namespace Twilio.Rest.Preview.Wireless 
+{
 
-    public class DeviceFetcher : Fetcher<DeviceResource> {
+    public class DeviceFetcher : Fetcher<DeviceResource> 
+    {
         public string sid { get; }
     
         /// <summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Preview.Wireless {
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        public DeviceFetcher(string sid) {
+        public DeviceFetcher(string sid)
+        {
             this.sid = sid;
         }
     
@@ -28,7 +31,8 @@ namespace Twilio.Rest.Preview.Wireless {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched DeviceResource </returns> 
-        public override async Task<DeviceResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<DeviceResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,
@@ -67,7 +71,8 @@ namespace Twilio.Rest.Preview.Wireless {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched DeviceResource </returns> 
-        public override DeviceResource Fetch(ITwilioRestClient client) {
+        public override DeviceResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,

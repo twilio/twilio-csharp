@@ -7,16 +7,19 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account.Sip {
+namespace Twilio.Rest.Api.V2010.Account.Sip 
+{
 
-    public class DomainResource : Resource {
+    public class DomainResource : Resource 
+    {
         /// <summary>
         /// Retrieve a list of domains belonging to the account used to make the request
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> DomainReader capable of executing the read </returns> 
-        public static DomainReader Reader(string accountSid=null) {
+        public static DomainReader Reader(string accountSid=null)
+        {
             return new DomainReader(accountSid:accountSid);
         }
     
@@ -35,7 +38,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         /// <param name="voiceStatusCallbackUrl"> URL that Twilio will request with status updates </param>
         /// <param name="voiceStatusCallbackMethod"> The voice_status_callback_method </param>
         /// <returns> DomainCreator capable of executing the create </returns> 
-        public static DomainCreator Creator(string domainName, string accountSid=null, string friendlyName=null, string authType=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri voiceStatusCallbackUrl=null, Twilio.Http.HttpMethod voiceStatusCallbackMethod=null) {
+        public static DomainCreator Creator(string domainName, string accountSid=null, string friendlyName=null, string authType=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri voiceStatusCallbackUrl=null, Twilio.Http.HttpMethod voiceStatusCallbackMethod=null)
+        {
             return new DomainCreator(domainName, accountSid:accountSid, friendlyName:friendlyName, authType:authType, voiceUrl:voiceUrl, voiceMethod:voiceMethod, voiceFallbackUrl:voiceFallbackUrl, voiceFallbackMethod:voiceFallbackMethod, voiceStatusCallbackUrl:voiceStatusCallbackUrl, voiceStatusCallbackMethod:voiceStatusCallbackMethod);
         }
     
@@ -46,7 +50,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         /// <param name="sid"> Fetch by unique Domain Sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> DomainFetcher capable of executing the fetch </returns> 
-        public static DomainFetcher Fetcher(string sid, string accountSid=null) {
+        public static DomainFetcher Fetcher(string sid, string accountSid=null)
+        {
             return new DomainFetcher(sid, accountSid:accountSid);
         }
     
@@ -65,7 +70,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         /// <param name="voiceStatusCallbackUrl"> The voice_status_callback_url </param>
         /// <param name="voiceUrl"> The voice_url </param>
         /// <returns> DomainUpdater capable of executing the update </returns> 
-        public static DomainUpdater Updater(string sid, string accountSid=null, string authType=null, string friendlyName=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Twilio.Http.HttpMethod voiceStatusCallbackMethod=null, Uri voiceStatusCallbackUrl=null, Uri voiceUrl=null) {
+        public static DomainUpdater Updater(string sid, string accountSid=null, string authType=null, string friendlyName=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Twilio.Http.HttpMethod voiceStatusCallbackMethod=null, Uri voiceStatusCallbackUrl=null, Uri voiceUrl=null)
+        {
             return new DomainUpdater(sid, accountSid:accountSid, authType:authType, friendlyName:friendlyName, voiceFallbackMethod:voiceFallbackMethod, voiceFallbackUrl:voiceFallbackUrl, voiceMethod:voiceMethod, voiceStatusCallbackMethod:voiceStatusCallbackMethod, voiceStatusCallbackUrl:voiceStatusCallbackUrl, voiceUrl:voiceUrl);
         }
     
@@ -76,7 +82,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> DomainDeleter capable of executing the delete </returns> 
-        public static DomainDeleter Deleter(string sid, string accountSid=null) {
+        public static DomainDeleter Deleter(string sid, string accountSid=null)
+        {
             return new DomainDeleter(sid, accountSid:accountSid);
         }
     
@@ -86,11 +93,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> DomainResource object represented by the provided JSON </returns> 
-        public static DomainResource FromJson(string json) {
+        public static DomainResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<DomainResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -131,7 +142,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> subresourceUris { get; }
     
-        public DomainResource() {
+        public DomainResource()
+        {
         
         }
     
@@ -166,7 +178,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
                                [JsonProperty("voice_url")]
                                Uri voiceUrl, 
                                [JsonProperty("subresource_uris")]
-                               Dictionary<string, string> subresourceUris) {
+                               Dictionary<string, string> subresourceUris)
+                               {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
             this.authType = authType;

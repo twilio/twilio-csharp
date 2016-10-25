@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class ShortCodeResource : Resource {
+    public class ShortCodeResource : Resource 
+    {
         /// <summary>
         /// Fetch an instance of a short code
         /// </summary>
@@ -16,7 +18,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="sid"> Fetch by unique short-code Sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> ShortCodeFetcher capable of executing the fetch </returns> 
-        public static ShortCodeFetcher Fetcher(string sid, string accountSid=null) {
+        public static ShortCodeFetcher Fetcher(string sid, string accountSid=null)
+        {
             return new ShortCodeFetcher(sid, accountSid:accountSid);
         }
     
@@ -33,7 +36,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="smsFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
         /// <param name="smsFallbackMethod"> HTTP method Twilio will use with sms fallback url </param>
         /// <returns> ShortCodeUpdater capable of executing the update </returns> 
-        public static ShortCodeUpdater Updater(string sid, string accountSid=null, string friendlyName=null, string apiVersion=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsFallbackMethod=null) {
+        public static ShortCodeUpdater Updater(string sid, string accountSid=null, string friendlyName=null, string apiVersion=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsFallbackMethod=null)
+        {
             return new ShortCodeUpdater(sid, accountSid:accountSid, friendlyName:friendlyName, apiVersion:apiVersion, smsUrl:smsUrl, smsMethod:smsMethod, smsFallbackUrl:smsFallbackUrl, smsFallbackMethod:smsFallbackMethod);
         }
     
@@ -45,7 +49,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="friendlyName"> Filter by friendly name </param>
         /// <param name="shortCode"> Filter by ShortCode </param>
         /// <returns> ShortCodeReader capable of executing the read </returns> 
-        public static ShortCodeReader Reader(string accountSid=null, string friendlyName=null, string shortCode=null) {
+        public static ShortCodeReader Reader(string accountSid=null, string friendlyName=null, string shortCode=null)
+        {
             return new ShortCodeReader(accountSid:accountSid, friendlyName:friendlyName, shortCode:shortCode);
         }
     
@@ -55,11 +60,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> ShortCodeResource object represented by the provided JSON </returns> 
-        public static ShortCodeResource FromJson(string json) {
+        public static ShortCodeResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<ShortCodeResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -91,7 +100,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         [JsonProperty("uri")]
         public string uri { get; }
     
-        public ShortCodeResource() {
+        public ShortCodeResource()
+        {
         
         }
     
@@ -118,7 +128,8 @@ namespace Twilio.Rest.Api.V2010.Account {
                                   [JsonProperty("sms_url")]
                                   Uri smsUrl, 
                                   [JsonProperty("uri")]
-                                  string uri) {
+                                  string uri)
+                                  {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);

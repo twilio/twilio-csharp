@@ -7,16 +7,19 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Sync {
+namespace Twilio.Rest.Preview.Sync 
+{
 
-    public class ServiceResource : Resource {
+    public class ServiceResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
         /// <returns> ServiceFetcher capable of executing the fetch </returns> 
-        public static ServiceFetcher Fetcher(string sid) {
+        public static ServiceFetcher Fetcher(string sid)
+        {
             return new ServiceFetcher(sid);
         }
     
@@ -26,7 +29,8 @@ namespace Twilio.Rest.Preview.Sync {
         ///
         /// <param name="sid"> The sid </param>
         /// <returns> ServiceDeleter capable of executing the delete </returns> 
-        public static ServiceDeleter Deleter(string sid) {
+        public static ServiceDeleter Deleter(string sid)
+        {
             return new ServiceDeleter(sid);
         }
     
@@ -38,7 +42,8 @@ namespace Twilio.Rest.Preview.Sync {
         /// <param name="webhookUrl"> The webhook_url </param>
         /// <param name="reachabilityWebhooksEnabled"> The reachability_webhooks_enabled </param>
         /// <returns> ServiceCreator capable of executing the create </returns> 
-        public static ServiceCreator Creator(string friendlyName=null, Uri webhookUrl=null, bool? reachabilityWebhooksEnabled=null) {
+        public static ServiceCreator Creator(string friendlyName=null, Uri webhookUrl=null, bool? reachabilityWebhooksEnabled=null)
+        {
             return new ServiceCreator(friendlyName:friendlyName, webhookUrl:webhookUrl, reachabilityWebhooksEnabled:reachabilityWebhooksEnabled);
         }
     
@@ -47,7 +52,8 @@ namespace Twilio.Rest.Preview.Sync {
         /// </summary>
         ///
         /// <returns> ServiceReader capable of executing the read </returns> 
-        public static ServiceReader Reader() {
+        public static ServiceReader Reader()
+        {
             return new ServiceReader();
         }
     
@@ -60,7 +66,8 @@ namespace Twilio.Rest.Preview.Sync {
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="reachabilityWebhooksEnabled"> The reachability_webhooks_enabled </param>
         /// <returns> ServiceUpdater capable of executing the update </returns> 
-        public static ServiceUpdater Updater(string sid, Uri webhookUrl=null, string friendlyName=null, bool? reachabilityWebhooksEnabled=null) {
+        public static ServiceUpdater Updater(string sid, Uri webhookUrl=null, string friendlyName=null, bool? reachabilityWebhooksEnabled=null)
+        {
             return new ServiceUpdater(sid, webhookUrl:webhookUrl, friendlyName:friendlyName, reachabilityWebhooksEnabled:reachabilityWebhooksEnabled);
         }
     
@@ -70,11 +77,15 @@ namespace Twilio.Rest.Preview.Sync {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> ServiceResource object represented by the provided JSON </returns> 
-        public static ServiceResource FromJson(string json) {
+        public static ServiceResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<ServiceResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -98,7 +109,8 @@ namespace Twilio.Rest.Preview.Sync {
         [JsonProperty("links")]
         public Dictionary<string, string> links { get; }
     
-        public ServiceResource() {
+        public ServiceResource()
+        {
         
         }
     
@@ -119,7 +131,8 @@ namespace Twilio.Rest.Preview.Sync {
                                 [JsonProperty("reachability_webhooks_enabled")]
                                 bool? reachabilityWebhooksEnabled, 
                                 [JsonProperty("links")]
-                                Dictionary<string, string> links) {
+                                Dictionary<string, string> links)
+                                {
             this.sid = sid;
             this.accountSid = accountSid;
             this.friendlyName = friendlyName;

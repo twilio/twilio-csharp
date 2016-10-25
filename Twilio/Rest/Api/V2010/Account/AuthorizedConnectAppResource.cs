@@ -7,34 +7,42 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class AuthorizedConnectAppResource : Resource {
-        public sealed class Permission : IStringEnum {
+    public class AuthorizedConnectAppResource : Resource 
+    {
+        public sealed class Permission : IStringEnum 
+        {
             public const string GetAll = "get-all";
             public const string PostAll = "post-all";
         
             private string _value;
             
-            public Permission() { }
+            public Permission() {}
             
-            public Permission(string value) {
+            public Permission(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator Permission(string value) {
+            public static implicit operator Permission(string value)
+            {
                 return new Permission(value);
             }
             
-            public static implicit operator string(Permission value) {
+            public static implicit operator string(Permission value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -46,7 +54,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="connectAppSid"> The connect_app_sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> AuthorizedConnectAppFetcher capable of executing the fetch </returns> 
-        public static AuthorizedConnectAppFetcher Fetcher(string connectAppSid, string accountSid=null) {
+        public static AuthorizedConnectAppFetcher Fetcher(string connectAppSid, string accountSid=null)
+        {
             return new AuthorizedConnectAppFetcher(connectAppSid, accountSid:accountSid);
         }
     
@@ -56,7 +65,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> AuthorizedConnectAppReader capable of executing the read </returns> 
-        public static AuthorizedConnectAppReader Reader(string accountSid=null) {
+        public static AuthorizedConnectAppReader Reader(string accountSid=null)
+        {
             return new AuthorizedConnectAppReader(accountSid:accountSid);
         }
     
@@ -66,11 +76,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> AuthorizedConnectAppResource object represented by the provided JSON </returns> 
-        public static AuthorizedConnectAppResource FromJson(string json) {
+        public static AuthorizedConnectAppResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<AuthorizedConnectAppResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -97,7 +111,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         [JsonProperty("uri")]
         public string uri { get; }
     
-        public AuthorizedConnectAppResource() {
+        public AuthorizedConnectAppResource()
+        {
         
         }
     
@@ -120,7 +135,8 @@ namespace Twilio.Rest.Api.V2010.Account {
                                              [JsonProperty("permissions")]
                                              List<AuthorizedConnectAppResource.Permission> permissions, 
                                              [JsonProperty("uri")]
-                                             string uri) {
+                                             string uri)
+                                             {
             this.accountSid = accountSid;
             this.connectAppCompanyName = connectAppCompanyName;
             this.connectAppDescription = connectAppDescription;

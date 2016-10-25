@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class MessageFetcher : Fetcher<MessageResource> {
+    public class MessageFetcher : Fetcher<MessageResource> 
+    {
         public string accountSid { get; }
         public string sid { get; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="sid"> Fetch by unique message Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        public MessageFetcher(string sid, string accountSid=null) {
+        public MessageFetcher(string sid, string accountSid=null)
+        {
             this.accountSid = accountSid;
             this.sid = sid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched MessageResource </returns> 
-        public override async Task<MessageResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<MessageResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -70,7 +74,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched MessageResource </returns> 
-        public override MessageResource Fetch(ITwilioRestClient client) {
+        public override MessageResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

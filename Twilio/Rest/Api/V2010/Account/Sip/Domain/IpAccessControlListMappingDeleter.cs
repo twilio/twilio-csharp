@@ -8,9 +8,11 @@ using Twilio.Rest.Api.V2010.Account.Sip.Domain;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
+namespace Twilio.Rest.Api.V2010.Account.Sip.Domain 
+{
 
-    public class IpAccessControlListMappingDeleter : Deleter<IpAccessControlListMappingResource> {
+    public class IpAccessControlListMappingDeleter : Deleter<IpAccessControlListMappingResource> 
+    {
         public string accountSid { get; }
         public string domainSid { get; }
         public string sid { get; }
@@ -22,7 +24,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         /// <param name="domainSid"> The domain_sid </param>
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        public IpAccessControlListMappingDeleter(string domainSid, string sid, string accountSid=null) {
+        public IpAccessControlListMappingDeleter(string domainSid, string sid, string accountSid=null)
+        {
             this.accountSid = accountSid;
             this.sid = sid;
             this.domainSid = domainSid;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         /// </summary>
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
-        public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client) {
+        public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
@@ -72,7 +76,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         /// </summary>
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
-        public override void Delete(ITwilioRestClient client) {
+        public override void Delete(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,

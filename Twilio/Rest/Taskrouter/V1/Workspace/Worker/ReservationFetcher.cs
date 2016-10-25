@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
+namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
+{
 
-    public class ReservationFetcher : Fetcher<ReservationResource> {
+    public class ReservationFetcher : Fetcher<ReservationResource> 
+    {
         public string workspaceSid { get; }
         public string workerSid { get; }
         public string sid { get; }
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="workerSid"> The worker_sid </param>
         /// <param name="sid"> The sid </param>
-        public ReservationFetcher(string workspaceSid, string workerSid, string sid) {
+        public ReservationFetcher(string workspaceSid, string workerSid, string sid)
+        {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
             this.workerSid = workerSid;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched ReservationResource </returns> 
-        public override async Task<ReservationResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<ReservationResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
@@ -73,7 +77,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched ReservationResource </returns> 
-        public override ReservationResource Fetch(ITwilioRestClient client) {
+        public override ReservationResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,

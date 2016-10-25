@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.IpMessaging.V1.Service {
+namespace Twilio.Rest.IpMessaging.V1.Service 
+{
 
-    public class UserReader : Reader<UserResource> {
+    public class UserReader : Reader<UserResource> 
+    {
         public string serviceSid { get; }
     
         /// <summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// </summary>
         ///
         /// <param name="serviceSid"> The service_sid </param>
-        public UserReader(string serviceSid) {
+        public UserReader(string serviceSid)
+        {
             this.serviceSid = serviceSid;
         }
     
@@ -28,7 +31,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> UserResource ResourceSet </returns> 
-        public override Task<ResourceSet<UserResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<UserResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.IP_MESSAGING,
@@ -48,7 +52,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> UserResource ResourceSet </returns> 
-        public override ResourceSet<UserResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<UserResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.IP_MESSAGING,
@@ -68,7 +73,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<UserResource> NextPage(Page<UserResource> page, ITwilioRestClient client) {
+        public override Page<UserResource> NextPage(Page<UserResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -86,7 +92,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<UserResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<UserResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -117,7 +124,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
+        private void AddQueryParams(Request request)
+        {
             request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }

@@ -10,43 +10,54 @@ using Twilio.Http;
 using Twilio.Rest;
 using Twilio.Rest.IpMessaging.V1.Service;
 
-namespace Twilio.Tests.Rest.IpMessaging.V1.Service {
+namespace Twilio.Tests.Rest.IpMessaging.V1.Service 
+{
 
     [TestFixture]
-    public class RoleTest : TwilioTest {
+    public class RoleTest : TwilioTest 
+    {
         [SetUp]
-        public void SetUp() {
+        public void SetUp()
+        {
         }
     
         [Test]
-        public void TestFetchRequest() {
+        public void TestFetchRequest()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(Twilio.Http.HttpMethod.GET,
-                                          Domains.IP_MESSAGING,
-                                          "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            var request = new Request(HttpMethod.GET,
+                                      Domains.IP_MESSAGING,
+                                      "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
             
-            try {
+            try
+            {
                 RoleResource.Fetcher("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
-            } catch (AggregateException ae) {
+            }
+            catch (AggregateException ae)
+            {
                 ae.Handle((e) =>
                 {
-                    if (e.GetType() != typeof(ApiException)) {
+                    if (e.GetType() != typeof(ApiException))
+                    {
                         throw e;
                     }
             
                     return true;
                 });
-            } catch (ApiException) {
+            }
+            catch (ApiException)
+            {
             }
             twilioRestClient.Received().Request(request);
         }
     
         [Test]
-        public void TestFetchResponse() {
+        public void TestFetchResponse()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
@@ -57,34 +68,42 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service {
         }
     
         [Test]
-        public void TestDeleteRequest() {
+        public void TestDeleteRequest()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(Twilio.Http.HttpMethod.DELETE,
-                                          Domains.IP_MESSAGING,
-                                          "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            var request = new Request(HttpMethod.DELETE,
+                                      Domains.IP_MESSAGING,
+                                      "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
             
-            try {
+            try
+            {
                 RoleResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Delete(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
-            } catch (AggregateException ae) {
+            }
+            catch (AggregateException ae)
+            {
                 ae.Handle((e) =>
                 {
-                    if (e.GetType() != typeof(ApiException)) {
+                    if (e.GetType() != typeof(ApiException))
+                    {
                         throw e;
                     }
             
                     return true;
                 });
-            } catch (ApiException) {
+            }
+            catch (ApiException)
+            {
             }
             twilioRestClient.Received().Request(request);
         }
     
         [Test]
-        public void TestDeleteResponse() {
+        public void TestDeleteResponse()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.NoContent,
@@ -94,11 +113,12 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service {
         }
     
         [Test]
-        public void TestCreateRequest() {
+        public void TestCreateRequest()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(Twilio.Http.HttpMethod.POST,
-                                          Domains.IP_MESSAGING,
-                                          "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles");
+            var request = new Request(HttpMethod.POST,
+                                      Domains.IP_MESSAGING,
+                                      "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles");
             request.AddPostParam("FriendlyName", Serialize("friendlyName"));
             request.AddPostParam("Type", Serialize(RoleResource.RoleType.Channel));
             request.AddPostParam("Permission", Serialize(new List<string> { "permission" }));
@@ -106,25 +126,32 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service {
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
             
-            try {
+            try
+            {
                 RoleResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName", RoleResource.RoleType.Channel, new List<string> { "permission" }).Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
-            } catch (AggregateException ae) {
+            }
+            catch (AggregateException ae)
+            {
                 ae.Handle((e) =>
                 {
-                    if (e.GetType() != typeof(ApiException)) {
+                    if (e.GetType() != typeof(ApiException))
+                    {
                         throw e;
                     }
             
                     return true;
                 });
-            } catch (ApiException) {
+            }
+            catch (ApiException)
+            {
             }
             twilioRestClient.Received().Request(request);
         }
     
         [Test]
-        public void TestCreateResponse() {
+        public void TestCreateResponse()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
@@ -135,34 +162,42 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service {
         }
     
         [Test]
-        public void TestReadRequest() {
+        public void TestReadRequest()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(Twilio.Http.HttpMethod.GET,
-                                          Domains.IP_MESSAGING,
-                                          "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles");
+            var request = new Request(HttpMethod.GET,
+                                      Domains.IP_MESSAGING,
+                                      "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
             
-            try {
+            try
+            {
                 RoleResource.Reader("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Read(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
-            } catch (AggregateException ae) {
+            }
+            catch (AggregateException ae)
+            {
                 ae.Handle((e) =>
                 {
-                    if (e.GetType() != typeof(ApiException)) {
+                    if (e.GetType() != typeof(ApiException))
+                    {
                         throw e;
                     }
             
                     return true;
                 });
-            } catch (ApiException) {
+            }
+            catch (ApiException)
+            {
             }
             twilioRestClient.Received().Request(request);
         }
     
         [Test]
-        public void TestReadFullResponse() {
+        public void TestReadFullResponse()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
@@ -173,7 +208,8 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service {
         }
     
         [Test]
-        public void TestReadEmptyResponse() {
+        public void TestReadEmptyResponse()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
@@ -184,35 +220,43 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service {
         }
     
         [Test]
-        public void TestUpdateRequest() {
+        public void TestUpdateRequest()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(Twilio.Http.HttpMethod.POST,
-                                          Domains.IP_MESSAGING,
-                                          "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            var request = new Request(HttpMethod.POST,
+                                      Domains.IP_MESSAGING,
+                                      "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             request.AddPostParam("Permission", Serialize(new List<string> { "permission" }));
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
             
-            try {
+            try
+            {
                 RoleResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new List<string> { "permission" }).Update(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
-            } catch (AggregateException ae) {
+            }
+            catch (AggregateException ae)
+            {
                 ae.Handle((e) =>
                 {
-                    if (e.GetType() != typeof(ApiException)) {
+                    if (e.GetType() != typeof(ApiException))
+                    {
                         throw e;
                     }
             
                     return true;
                 });
-            } catch (ApiException) {
+            }
+            catch (ApiException)
+            {
             }
             twilioRestClient.Received().Request(request);
         }
     
         [Test]
-        public void TestUpdateResponse() {
+        public void TestUpdateResponse()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,

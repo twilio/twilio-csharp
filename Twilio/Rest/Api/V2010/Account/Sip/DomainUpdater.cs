@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Sip {
+namespace Twilio.Rest.Api.V2010.Account.Sip 
+{
 
-    public class DomainUpdater : Updater<DomainResource> {
+    public class DomainUpdater : Updater<DomainResource> 
+    {
         public string accountSid { get; }
         public string sid { get; }
         public string authType { get; set; }
@@ -36,7 +38,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         /// <param name="voiceStatusCallbackMethod"> The voice_status_callback_method </param>
         /// <param name="voiceStatusCallbackUrl"> The voice_status_callback_url </param>
         /// <param name="voiceUrl"> The voice_url </param>
-        public DomainUpdater(string sid, string accountSid=null, string authType=null, string friendlyName=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Twilio.Http.HttpMethod voiceStatusCallbackMethod=null, Uri voiceStatusCallbackUrl=null, Uri voiceUrl=null) {
+        public DomainUpdater(string sid, string accountSid=null, string authType=null, string friendlyName=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Twilio.Http.HttpMethod voiceStatusCallbackMethod=null, Uri voiceStatusCallbackUrl=null, Uri voiceUrl=null)
+        {
             this.sid = sid;
             this.voiceFallbackUrl = voiceFallbackUrl;
             this.voiceFallbackMethod = voiceFallbackMethod;
@@ -56,7 +59,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated DomainResource </returns> 
-        public override async Task<DomainResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<DomainResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -96,7 +100,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated DomainResource </returns> 
-        public override DomainResource Update(ITwilioRestClient client) {
+        public override DomainResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -134,36 +139,45 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (authType != null) {
+        private void AddPostParams(Request request)
+        {
+            if (authType != null)
+            {
                 request.AddPostParam("AuthType", authType);
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (voiceFallbackMethod != null) {
+            if (voiceFallbackMethod != null)
+            {
                 request.AddPostParam("VoiceFallbackMethod", voiceFallbackMethod.ToString());
             }
             
-            if (voiceFallbackUrl != null) {
+            if (voiceFallbackUrl != null)
+            {
                 request.AddPostParam("VoiceFallbackUrl", voiceFallbackUrl.ToString());
             }
             
-            if (voiceMethod != null) {
+            if (voiceMethod != null)
+            {
                 request.AddPostParam("VoiceMethod", voiceMethod.ToString());
             }
             
-            if (voiceStatusCallbackMethod != null) {
+            if (voiceStatusCallbackMethod != null)
+            {
                 request.AddPostParam("VoiceStatusCallbackMethod", voiceStatusCallbackMethod.ToString());
             }
             
-            if (voiceStatusCallbackUrl != null) {
+            if (voiceStatusCallbackUrl != null)
+            {
                 request.AddPostParam("VoiceStatusCallbackUrl", voiceStatusCallbackUrl.ToString());
             }
             
-            if (voiceUrl != null) {
+            if (voiceUrl != null)
+            {
                 request.AddPostParam("VoiceUrl", voiceUrl.ToString());
             }
         }

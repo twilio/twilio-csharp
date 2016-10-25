@@ -7,10 +7,13 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Trunking.V1.Trunk {
+namespace Twilio.Rest.Trunking.V1.Trunk 
+{
 
-    public class PhoneNumberResource : Resource {
-        public sealed class AddressRequirement : IStringEnum {
+    public class PhoneNumberResource : Resource 
+    {
+        public sealed class AddressRequirement : IStringEnum 
+        {
             public const string None = "none";
             public const string Any = "any";
             public const string Local = "local";
@@ -18,25 +21,30 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         
             private string _value;
             
-            public AddressRequirement() { }
+            public AddressRequirement() {}
             
-            public AddressRequirement(string value) {
+            public AddressRequirement(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator AddressRequirement(string value) {
+            public static implicit operator AddressRequirement(string value)
+            {
                 return new AddressRequirement(value);
             }
             
-            public static implicit operator string(AddressRequirement value) {
+            public static implicit operator string(AddressRequirement value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -48,7 +56,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> PhoneNumberFetcher capable of executing the fetch </returns> 
-        public static PhoneNumberFetcher Fetcher(string trunkSid, string sid) {
+        public static PhoneNumberFetcher Fetcher(string trunkSid, string sid)
+        {
             return new PhoneNumberFetcher(trunkSid, sid);
         }
     
@@ -59,7 +68,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> PhoneNumberDeleter capable of executing the delete </returns> 
-        public static PhoneNumberDeleter Deleter(string trunkSid, string sid) {
+        public static PhoneNumberDeleter Deleter(string trunkSid, string sid)
+        {
             return new PhoneNumberDeleter(trunkSid, sid);
         }
     
@@ -70,7 +80,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <param name="phoneNumberSid"> The phone_number_sid </param>
         /// <returns> PhoneNumberCreator capable of executing the create </returns> 
-        public static PhoneNumberCreator Creator(string trunkSid, string phoneNumberSid) {
+        public static PhoneNumberCreator Creator(string trunkSid, string phoneNumberSid)
+        {
             return new PhoneNumberCreator(trunkSid, phoneNumberSid);
         }
     
@@ -80,7 +91,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <returns> PhoneNumberReader capable of executing the read </returns> 
-        public static PhoneNumberReader Reader(string trunkSid) {
+        public static PhoneNumberReader Reader(string trunkSid)
+        {
             return new PhoneNumberReader(trunkSid);
         }
     
@@ -90,11 +102,15 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> PhoneNumberResource object represented by the provided JSON </returns> 
-        public static PhoneNumberResource FromJson(string json) {
+        public static PhoneNumberResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<PhoneNumberResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -159,7 +175,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         [JsonProperty("voice_url")]
         public Uri voiceUrl { get; }
     
-        public PhoneNumberResource() {
+        public PhoneNumberResource()
+        {
         
         }
     
@@ -214,7 +231,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
                                     [JsonProperty("voice_method")]
                                     Twilio.Http.HttpMethod voiceMethod, 
                                     [JsonProperty("voice_url")]
-                                    Uri voiceUrl) {
+                                    Uri voiceUrl)
+                                    {
             this.accountSid = accountSid;
             this.addressRequirements = addressRequirements;
             this.apiVersion = apiVersion;

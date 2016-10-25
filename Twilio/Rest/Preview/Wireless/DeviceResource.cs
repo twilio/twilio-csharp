@@ -7,16 +7,19 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Wireless {
+namespace Twilio.Rest.Preview.Wireless 
+{
 
-    public class DeviceResource : Resource {
+    public class DeviceResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
         /// <returns> DeviceFetcher capable of executing the fetch </returns> 
-        public static DeviceFetcher Fetcher(string sid) {
+        public static DeviceFetcher Fetcher(string sid)
+        {
             return new DeviceFetcher(sid);
         }
     
@@ -28,7 +31,8 @@ namespace Twilio.Rest.Preview.Wireless {
         /// <param name="simIdentifier"> The sim_identifier </param>
         /// <param name="ratePlan"> The rate_plan </param>
         /// <returns> DeviceReader capable of executing the read </returns> 
-        public static DeviceReader Reader(string status=null, string simIdentifier=null, string ratePlan=null) {
+        public static DeviceReader Reader(string status=null, string simIdentifier=null, string ratePlan=null)
+        {
             return new DeviceReader(status:status, simIdentifier:simIdentifier, ratePlan:ratePlan);
         }
     
@@ -46,7 +50,8 @@ namespace Twilio.Rest.Preview.Wireless {
         /// <param name="commandsCallbackMethod"> The commands_callback_method </param>
         /// <param name="commandsCallbackUrl"> The commands_callback_url </param>
         /// <returns> DeviceCreator capable of executing the create </returns> 
-        public static DeviceCreator Creator(string ratePlan, string alias=null, string callbackMethod=null, Uri callbackUrl=null, string friendlyName=null, string simIdentifier=null, string status=null, string commandsCallbackMethod=null, Uri commandsCallbackUrl=null) {
+        public static DeviceCreator Creator(string ratePlan, string alias=null, string callbackMethod=null, Uri callbackUrl=null, string friendlyName=null, string simIdentifier=null, string status=null, string commandsCallbackMethod=null, Uri commandsCallbackUrl=null)
+        {
             return new DeviceCreator(ratePlan, alias:alias, callbackMethod:callbackMethod, callbackUrl:callbackUrl, friendlyName:friendlyName, simIdentifier:simIdentifier, status:status, commandsCallbackMethod:commandsCallbackMethod, commandsCallbackUrl:commandsCallbackUrl);
         }
     
@@ -65,7 +70,8 @@ namespace Twilio.Rest.Preview.Wireless {
         /// <param name="commandsCallbackMethod"> The commands_callback_method </param>
         /// <param name="commandsCallbackUrl"> The commands_callback_url </param>
         /// <returns> DeviceUpdater capable of executing the update </returns> 
-        public static DeviceUpdater Updater(string sid, string alias=null, string callbackMethod=null, Uri callbackUrl=null, string friendlyName=null, string ratePlan=null, string simIdentifier=null, string status=null, string commandsCallbackMethod=null, Uri commandsCallbackUrl=null) {
+        public static DeviceUpdater Updater(string sid, string alias=null, string callbackMethod=null, Uri callbackUrl=null, string friendlyName=null, string ratePlan=null, string simIdentifier=null, string status=null, string commandsCallbackMethod=null, Uri commandsCallbackUrl=null)
+        {
             return new DeviceUpdater(sid, alias:alias, callbackMethod:callbackMethod, callbackUrl:callbackUrl, friendlyName:friendlyName, ratePlan:ratePlan, simIdentifier:simIdentifier, status:status, commandsCallbackMethod:commandsCallbackMethod, commandsCallbackUrl:commandsCallbackUrl);
         }
     
@@ -75,11 +81,15 @@ namespace Twilio.Rest.Preview.Wireless {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> DeviceResource object represented by the provided JSON </returns> 
-        public static DeviceResource FromJson(string json) {
+        public static DeviceResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<DeviceResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -111,7 +121,8 @@ namespace Twilio.Rest.Preview.Wireless {
         [JsonProperty("links")]
         public Dictionary<string, string> links { get; }
     
-        public DeviceResource() {
+        public DeviceResource()
+        {
         
         }
     
@@ -140,7 +151,8 @@ namespace Twilio.Rest.Preview.Wireless {
                                [JsonProperty("url")]
                                Uri url, 
                                [JsonProperty("links")]
-                               Dictionary<string, string> links) {
+                               Dictionary<string, string> links)
+                               {
             this.sid = sid;
             this.alias = alias;
             this.accountSid = accountSid;

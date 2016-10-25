@@ -7,64 +7,78 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010 {
+namespace Twilio.Rest.Api.V2010 
+{
 
-    public class AccountResource : Resource {
-        public sealed class Status : IStringEnum {
+    public class AccountResource : Resource 
+    {
+        public sealed class Status : IStringEnum 
+        {
             public const string Active = "active";
             public const string Suspended = "suspended";
             public const string Closed = "closed";
         
             private string _value;
             
-            public Status() { }
+            public Status() {}
             
-            public Status(string value) {
+            public Status(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator Status(string value) {
+            public static implicit operator Status(string value)
+            {
                 return new Status(value);
             }
             
-            public static implicit operator string(Status value) {
+            public static implicit operator string(Status value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
     
-        public sealed class Type : IStringEnum {
+        public sealed class Type : IStringEnum 
+        {
             public const string Trial = "Trial";
             public const string Full = "Full";
         
             private string _value;
             
-            public Type() { }
+            public Type() {}
             
-            public Type(string value) {
+            public Type(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator Type(string value) {
+            public static implicit operator Type(string value)
+            {
                 return new Type(value);
             }
             
-            public static implicit operator string(Type value) {
+            public static implicit operator string(Type value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -75,7 +89,8 @@ namespace Twilio.Rest.Api.V2010 {
         ///
         /// <param name="friendlyName"> A human readable description of the account </param>
         /// <returns> AccountCreator capable of executing the create </returns> 
-        public static AccountCreator Creator(string friendlyName=null) {
+        public static AccountCreator Creator(string friendlyName=null)
+        {
             return new AccountCreator(friendlyName:friendlyName);
         }
     
@@ -85,7 +100,8 @@ namespace Twilio.Rest.Api.V2010 {
         ///
         /// <param name="sid"> Fetch by unique Account Sid </param>
         /// <returns> AccountFetcher capable of executing the fetch </returns> 
-        public static AccountFetcher Fetcher(string sid=null) {
+        public static AccountFetcher Fetcher(string sid=null)
+        {
             return new AccountFetcher(sid:sid);
         }
     
@@ -96,7 +112,8 @@ namespace Twilio.Rest.Api.V2010 {
         /// <param name="friendlyName"> FriendlyName to filter on </param>
         /// <param name="status"> Status to filter on </param>
         /// <returns> AccountReader capable of executing the read </returns> 
-        public static AccountReader Reader(string friendlyName=null, AccountResource.Status status=null) {
+        public static AccountReader Reader(string friendlyName=null, AccountResource.Status status=null)
+        {
             return new AccountReader(friendlyName:friendlyName, status:status);
         }
     
@@ -108,7 +125,8 @@ namespace Twilio.Rest.Api.V2010 {
         /// <param name="friendlyName"> FriendlyName to update </param>
         /// <param name="status"> Status to update the Account with </param>
         /// <returns> AccountUpdater capable of executing the update </returns> 
-        public static AccountUpdater Updater(string sid=null, string friendlyName=null, AccountResource.Status status=null) {
+        public static AccountUpdater Updater(string sid=null, string friendlyName=null, AccountResource.Status status=null)
+        {
             return new AccountUpdater(sid:sid, friendlyName:friendlyName, status:status);
         }
     
@@ -118,11 +136,15 @@ namespace Twilio.Rest.Api.V2010 {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> AccountResource object represented by the provided JSON </returns> 
-        public static AccountResource FromJson(string json) {
+        public static AccountResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<AccountResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -150,7 +172,8 @@ namespace Twilio.Rest.Api.V2010 {
         [JsonProperty("uri")]
         public string uri { get; }
     
-        public AccountResource() {
+        public AccountResource()
+        {
         
         }
     
@@ -173,7 +196,8 @@ namespace Twilio.Rest.Api.V2010 {
                                 [JsonProperty("type")]
                                 AccountResource.Type type, 
                                 [JsonProperty("uri")]
-                                string uri) {
+                                string uri)
+                                {
             this.authToken = authToken;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);

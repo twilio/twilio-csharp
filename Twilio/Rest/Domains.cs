@@ -1,6 +1,8 @@
 
-namespace Twilio.Rest {
-    public sealed class Domains {
+namespace Twilio.Rest 
+{
+    public sealed class Domains 
+    {
         public const string API = "api";
         public const string CHAT = "ip-messaging";
         public const string IP_MESSAGING = "ip-messaging";

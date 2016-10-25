@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class AddressResource : Resource {
+    public class AddressResource : Resource 
+    {
         /// <summary>
         /// create
         /// </summary>
@@ -22,7 +24,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="accountSid"> The account_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> AddressCreator capable of executing the create </returns> 
-        public static AddressCreator Creator(string customerName, string street, string city, string region, string postalCode, string isoCountry, string accountSid=null, string friendlyName=null) {
+        public static AddressCreator Creator(string customerName, string street, string city, string region, string postalCode, string isoCountry, string accountSid=null, string friendlyName=null)
+        {
             return new AddressCreator(customerName, street, city, region, postalCode, isoCountry, accountSid:accountSid, friendlyName:friendlyName);
         }
     
@@ -33,7 +36,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> AddressDeleter capable of executing the delete </returns> 
-        public static AddressDeleter Deleter(string sid, string accountSid=null) {
+        public static AddressDeleter Deleter(string sid, string accountSid=null)
+        {
             return new AddressDeleter(sid, accountSid:accountSid);
         }
     
@@ -44,7 +48,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> AddressFetcher capable of executing the fetch </returns> 
-        public static AddressFetcher Fetcher(string sid, string accountSid=null) {
+        public static AddressFetcher Fetcher(string sid, string accountSid=null)
+        {
             return new AddressFetcher(sid, accountSid:accountSid);
         }
     
@@ -61,7 +66,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="region"> The region </param>
         /// <param name="postalCode"> The postal_code </param>
         /// <returns> AddressUpdater capable of executing the update </returns> 
-        public static AddressUpdater Updater(string sid, string accountSid=null, string friendlyName=null, string customerName=null, string street=null, string city=null, string region=null, string postalCode=null) {
+        public static AddressUpdater Updater(string sid, string accountSid=null, string friendlyName=null, string customerName=null, string street=null, string city=null, string region=null, string postalCode=null)
+        {
             return new AddressUpdater(sid, accountSid:accountSid, friendlyName:friendlyName, customerName:customerName, street:street, city:city, region:region, postalCode:postalCode);
         }
     
@@ -74,7 +80,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="isoCountry"> The iso_country </param>
         /// <returns> AddressReader capable of executing the read </returns> 
-        public static AddressReader Reader(string accountSid=null, string customerName=null, string friendlyName=null, string isoCountry=null) {
+        public static AddressReader Reader(string accountSid=null, string customerName=null, string friendlyName=null, string isoCountry=null)
+        {
             return new AddressReader(accountSid:accountSid, customerName:customerName, friendlyName:friendlyName, isoCountry:isoCountry);
         }
     
@@ -84,11 +91,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> AddressResource object represented by the provided JSON </returns> 
-        public static AddressResource FromJson(string json) {
+        public static AddressResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<AddressResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -118,7 +129,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         [JsonProperty("uri")]
         public string uri { get; }
     
-        public AddressResource() {
+        public AddressResource()
+        {
         
         }
     
@@ -145,7 +157,8 @@ namespace Twilio.Rest.Api.V2010.Account {
                                 [JsonProperty("street")]
                                 string street, 
                                 [JsonProperty("uri")]
-                                string uri) {
+                                string uri)
+                                {
             this.accountSid = accountSid;
             this.city = city;
             this.customerName = customerName;

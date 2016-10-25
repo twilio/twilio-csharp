@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class ValidationRequestResource : Resource {
+    public class ValidationRequestResource : Resource 
+    {
         /// <summary>
         /// create
         /// </summary>
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <returns> ValidationRequestCreator capable of executing the create </returns> 
-        public static ValidationRequestCreator Creator(Twilio.Types.PhoneNumber phoneNumber, string accountSid=null, string friendlyName=null, int? callDelay=null, string extension=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null) {
+        public static ValidationRequestCreator Creator(Twilio.Types.PhoneNumber phoneNumber, string accountSid=null, string friendlyName=null, int? callDelay=null, string extension=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null)
+        {
             return new ValidationRequestCreator(phoneNumber, accountSid:accountSid, friendlyName:friendlyName, callDelay:callDelay, extension:extension, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod);
         }
     
@@ -31,11 +34,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> ValidationRequestResource object represented by the provided JSON </returns> 
-        public static ValidationRequestResource FromJson(string json) {
+        public static ValidationRequestResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<ValidationRequestResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -52,7 +59,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         [JsonProperty("call_sid")]
         public string callSid { get; }
     
-        public ValidationRequestResource() {
+        public ValidationRequestResource()
+        {
         
         }
     
@@ -65,7 +73,8 @@ namespace Twilio.Rest.Api.V2010.Account {
                                           [JsonProperty("validation_code")]
                                           int? validationCode, 
                                           [JsonProperty("call_sid")]
-                                          string callSid) {
+                                          string callSid)
+                                          {
             this.accountSid = accountSid;
             this.phoneNumber = phoneNumber;
             this.friendlyName = friendlyName;

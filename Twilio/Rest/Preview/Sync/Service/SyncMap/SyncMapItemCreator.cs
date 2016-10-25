@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
+namespace Twilio.Rest.Preview.Sync.Service.SyncMap 
+{
 
-    public class SyncMapItemCreator : Creator<SyncMapItemResource> {
+    public class SyncMapItemCreator : Creator<SyncMapItemResource> 
+    {
         public string serviceSid { get; }
         public string mapSid { get; }
         public string key { get; }
@@ -24,7 +26,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         /// <param name="mapSid"> The map_sid </param>
         /// <param name="key"> The key </param>
         /// <param name="data"> The data </param>
-        public SyncMapItemCreator(string serviceSid, string mapSid, string key, Object data) {
+        public SyncMapItemCreator(string serviceSid, string mapSid, string key, Object data)
+        {
             this.key = key;
             this.serviceSid = serviceSid;
             this.data = data;
@@ -38,7 +41,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created SyncMapItemResource </returns> 
-        public override async Task<SyncMapItemResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<SyncMapItemResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.PREVIEW,
@@ -78,7 +82,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created SyncMapItemResource </returns> 
-        public override SyncMapItemResource Create(ITwilioRestClient client) {
+        public override SyncMapItemResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.PREVIEW,
@@ -116,12 +121,15 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (key != null) {
+        private void AddPostParams(Request request)
+        {
+            if (key != null)
+            {
                 request.AddPostParam("Key", key);
             }
             
-            if (data != null) {
+            if (data != null)
+            {
                 request.AddPostParam("Data", data.ToString());
             }
         }

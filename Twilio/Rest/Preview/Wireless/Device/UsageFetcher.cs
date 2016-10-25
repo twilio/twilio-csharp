@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Preview.Wireless.Device {
+namespace Twilio.Rest.Preview.Wireless.Device 
+{
 
-    public class UsageFetcher : Fetcher<UsageResource> {
+    public class UsageFetcher : Fetcher<UsageResource> 
+    {
         public string deviceSid { get; }
         public string end { get; set; }
         public string start { get; set; }
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Preview.Wireless.Device {
         /// <param name="deviceSid"> The device_sid </param>
         /// <param name="end"> The end </param>
         /// <param name="start"> The start </param>
-        public UsageFetcher(string deviceSid, string end=null, string start=null) {
+        public UsageFetcher(string deviceSid, string end=null, string start=null)
+        {
             this.end = end;
             this.deviceSid = deviceSid;
             this.start = start;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Preview.Wireless.Device {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched UsageResource </returns> 
-        public override async Task<UsageResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<UsageResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,
@@ -76,7 +80,8 @@ namespace Twilio.Rest.Preview.Wireless.Device {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched UsageResource </returns> 
-        public override UsageResource Fetch(ITwilioRestClient client) {
+        public override UsageResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,
@@ -116,12 +121,15 @@ namespace Twilio.Rest.Preview.Wireless.Device {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (end != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (end != null)
+            {
                 request.AddQueryParam("End", end);
             }
             
-            if (start != null) {
+            if (start != null)
+            {
                 request.AddQueryParam("Start", start);
             }
         }

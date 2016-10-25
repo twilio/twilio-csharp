@@ -6,16 +6,19 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class SandboxResource : Resource {
+    public class SandboxResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> SandboxFetcher capable of executing the fetch </returns> 
-        public static SandboxFetcher Fetcher(string accountSid=null) {
+        public static SandboxFetcher Fetcher(string accountSid=null)
+        {
             return new SandboxFetcher(accountSid:accountSid);
         }
     
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <returns> SandboxUpdater capable of executing the update </returns> 
-        public static SandboxUpdater Updater(string accountSid=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null) {
+        public static SandboxUpdater Updater(string accountSid=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null)
+        {
             return new SandboxUpdater(accountSid:accountSid, voiceUrl:voiceUrl, voiceMethod:voiceMethod, smsUrl:smsUrl, smsMethod:smsMethod, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod);
         }
     
@@ -41,11 +45,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> SandboxResource object represented by the provided JSON </returns> 
-        public static SandboxResource FromJson(string json) {
+        public static SandboxResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<SandboxResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -83,7 +91,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         [JsonProperty("uri")]
         public Uri uri { get; }
     
-        public SandboxResource() {
+        public SandboxResource()
+        {
         
         }
     
@@ -114,7 +123,8 @@ namespace Twilio.Rest.Api.V2010.Account {
                                 [JsonProperty("status_callback_method")]
                                 Twilio.Http.HttpMethod statusCallbackMethod, 
                                 [JsonProperty("uri")]
-                                Uri uri) {
+                                Uri uri)
+                                {
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.pin = pin;

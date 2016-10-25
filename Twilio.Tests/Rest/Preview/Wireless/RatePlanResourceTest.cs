@@ -10,43 +10,54 @@ using Twilio.Http;
 using Twilio.Rest;
 using Twilio.Rest.Preview.Wireless;
 
-namespace Twilio.Tests.Rest.Preview.Wireless {
+namespace Twilio.Tests.Rest.Preview.Wireless 
+{
 
     [TestFixture]
-    public class RatePlanTest : TwilioTest {
+    public class RatePlanTest : TwilioTest 
+    {
         [SetUp]
-        public void SetUp() {
+        public void SetUp()
+        {
         }
     
         [Test]
-        public void TestReadRequest() {
+        public void TestReadRequest()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(Twilio.Http.HttpMethod.GET,
-                                          Domains.PREVIEW,
-                                          "/wireless/RatePlans");
+            var request = new Request(HttpMethod.GET,
+                                      Domains.PREVIEW,
+                                      "/wireless/RatePlans");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
             
-            try {
+            try
+            {
                 RatePlanResource.Reader().Read(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
-            } catch (AggregateException ae) {
+            }
+            catch (AggregateException ae)
+            {
                 ae.Handle((e) =>
                 {
-                    if (e.GetType() != typeof(ApiException)) {
+                    if (e.GetType() != typeof(ApiException))
+                    {
                         throw e;
                     }
             
                     return true;
                 });
-            } catch (ApiException) {
+            }
+            catch (ApiException)
+            {
             }
             twilioRestClient.Received().Request(request);
         }
     
         [Test]
-        public void TestReadEmptyResponse() {
+        public void TestReadEmptyResponse()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
@@ -57,7 +68,8 @@ namespace Twilio.Tests.Rest.Preview.Wireless {
         }
     
         [Test]
-        public void TestReadFullResponse() {
+        public void TestReadFullResponse()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
@@ -68,34 +80,42 @@ namespace Twilio.Tests.Rest.Preview.Wireless {
         }
     
         [Test]
-        public void TestFetchRequest() {
+        public void TestFetchRequest()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(Twilio.Http.HttpMethod.GET,
-                                          Domains.PREVIEW,
-                                          "/wireless/RatePlans/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            var request = new Request(HttpMethod.GET,
+                                      Domains.PREVIEW,
+                                      "/wireless/RatePlans/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
             
-            try {
+            try
+            {
                 RatePlanResource.Fetcher("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
-            } catch (AggregateException ae) {
+            }
+            catch (AggregateException ae)
+            {
                 ae.Handle((e) =>
                 {
-                    if (e.GetType() != typeof(ApiException)) {
+                    if (e.GetType() != typeof(ApiException))
+                    {
                         throw e;
                     }
             
                     return true;
                 });
-            } catch (ApiException) {
+            }
+            catch (ApiException)
+            {
             }
             twilioRestClient.Received().Request(request);
         }
     
         [Test]
-        public void TestFetchResponse() {
+        public void TestFetchResponse()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,

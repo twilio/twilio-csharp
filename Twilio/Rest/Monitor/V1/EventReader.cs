@@ -9,9 +9,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Monitor.V1 {
+namespace Twilio.Rest.Monitor.V1 
+{
 
-    public class EventReader : Reader<EventResource> {
+    public class EventReader : Reader<EventResource> 
+    {
         public string actorSid { get; set; }
         public string eventType { get; set; }
         public string resourceSid { get; set; }
@@ -29,7 +31,8 @@ namespace Twilio.Rest.Monitor.V1 {
         /// <param name="sourceIpAddress"> The source_ip_address </param>
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
-        public EventReader(string actorSid=null, string eventType=null, string resourceSid=null, string sourceIpAddress=null, DateTime? startDate=null, DateTime? endDate=null) {
+        public EventReader(string actorSid=null, string eventType=null, string resourceSid=null, string sourceIpAddress=null, DateTime? startDate=null, DateTime? endDate=null)
+        {
             this.eventType = eventType;
             this.endDate = endDate;
             this.resourceSid = resourceSid;
@@ -45,7 +48,8 @@ namespace Twilio.Rest.Monitor.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> EventResource ResourceSet </returns> 
-        public override Task<ResourceSet<EventResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<EventResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.MONITOR,
@@ -65,7 +69,8 @@ namespace Twilio.Rest.Monitor.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> EventResource ResourceSet </returns> 
-        public override ResourceSet<EventResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<EventResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.MONITOR,
@@ -85,7 +90,8 @@ namespace Twilio.Rest.Monitor.V1 {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<EventResource> NextPage(Page<EventResource> page, ITwilioRestClient client) {
+        public override Page<EventResource> NextPage(Page<EventResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -103,7 +109,8 @@ namespace Twilio.Rest.Monitor.V1 {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<EventResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<EventResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -134,28 +141,35 @@ namespace Twilio.Rest.Monitor.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (actorSid != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (actorSid != null)
+            {
                 request.AddQueryParam("ActorSid", actorSid);
             }
             
-            if (eventType != null) {
+            if (eventType != null)
+            {
                 request.AddQueryParam("EventType", eventType);
             }
             
-            if (resourceSid != null) {
+            if (resourceSid != null)
+            {
                 request.AddQueryParam("ResourceSid", resourceSid);
             }
             
-            if (sourceIpAddress != null) {
+            if (sourceIpAddress != null)
+            {
                 request.AddQueryParam("SourceIpAddress", sourceIpAddress);
             }
             
-            if (startDate != null) {
+            if (startDate != null)
+            {
                 request.AddQueryParam("StartDate", startDate.ToString());
             }
             
-            if (endDate != null) {
+            if (endDate != null)
+            {
                 request.AddQueryParam("EndDate", endDate.ToString());
             }
             

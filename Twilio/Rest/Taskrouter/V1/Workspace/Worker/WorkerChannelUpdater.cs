@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
+namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
+{
 
-    public class WorkerChannelUpdater : Updater<WorkerChannelResource> {
+    public class WorkerChannelUpdater : Updater<WorkerChannelResource> 
+    {
         public string workspaceSid { get; }
         public string workerSid { get; }
         public string sid { get; }
@@ -25,7 +27,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         /// <param name="sid"> The sid </param>
         /// <param name="capacity"> The capacity </param>
         /// <param name="available"> The available </param>
-        public WorkerChannelUpdater(string workspaceSid, string workerSid, string sid, int? capacity=null, bool? available=null) {
+        public WorkerChannelUpdater(string workspaceSid, string workerSid, string sid, int? capacity=null, bool? available=null)
+        {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
             this.available = available;
@@ -40,7 +43,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated WorkerChannelResource </returns> 
-        public override async Task<WorkerChannelResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<WorkerChannelResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
@@ -80,7 +84,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated WorkerChannelResource </returns> 
-        public override WorkerChannelResource Update(ITwilioRestClient client) {
+        public override WorkerChannelResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
@@ -118,12 +123,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (capacity != null) {
+        private void AddPostParams(Request request)
+        {
+            if (capacity != null)
+            {
                 request.AddPostParam("Capacity", capacity.ToString());
             }
             
-            if (available != null) {
+            if (available != null)
+            {
                 request.AddPostParam("Available", available.ToString());
             }
         }

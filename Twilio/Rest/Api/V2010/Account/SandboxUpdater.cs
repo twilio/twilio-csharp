@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class SandboxUpdater : Updater<SandboxResource> {
+    public class SandboxUpdater : Updater<SandboxResource> 
+    {
         public string accountSid { get; }
         public Uri voiceUrl { get; set; }
         public Twilio.Http.HttpMethod voiceMethod { get; set; }
@@ -30,7 +32,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="smsMethod"> The sms_method </param>
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
-        public SandboxUpdater(string accountSid=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null) {
+        public SandboxUpdater(string accountSid=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null)
+        {
             this.smsUrl = smsUrl;
             this.statusCallbackMethod = statusCallbackMethod;
             this.voiceMethod = voiceMethod;
@@ -47,7 +50,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated SandboxResource </returns> 
-        public override async Task<SandboxResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<SandboxResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -87,7 +91,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated SandboxResource </returns> 
-        public override SandboxResource Update(ITwilioRestClient client) {
+        public override SandboxResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -125,28 +130,35 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (voiceUrl != null) {
+        private void AddPostParams(Request request)
+        {
+            if (voiceUrl != null)
+            {
                 request.AddPostParam("VoiceUrl", voiceUrl.ToString());
             }
             
-            if (voiceMethod != null) {
+            if (voiceMethod != null)
+            {
                 request.AddPostParam("VoiceMethod", voiceMethod.ToString());
             }
             
-            if (smsUrl != null) {
+            if (smsUrl != null)
+            {
                 request.AddPostParam("SmsUrl", smsUrl.ToString());
             }
             
-            if (smsMethod != null) {
+            if (smsMethod != null)
+            {
                 request.AddPostParam("SmsMethod", smsMethod.ToString());
             }
             
-            if (statusCallback != null) {
+            if (statusCallback != null)
+            {
                 request.AddPostParam("StatusCallback", statusCallback.ToString());
             }
             
-            if (statusCallbackMethod != null) {
+            if (statusCallbackMethod != null)
+            {
                 request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
         }

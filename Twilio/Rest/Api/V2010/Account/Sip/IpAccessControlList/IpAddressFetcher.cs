@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
+namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList 
+{
 
-    public class IpAddressFetcher : Fetcher<IpAddressResource> {
+    public class IpAddressFetcher : Fetcher<IpAddressResource> 
+    {
         public string accountSid { get; }
         public string ipAccessControlListSid { get; }
         public string sid { get; }
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        public IpAddressFetcher(string ipAccessControlListSid, string sid, string accountSid=null) {
+        public IpAddressFetcher(string ipAccessControlListSid, string sid, string accountSid=null)
+        {
             this.accountSid = accountSid;
             this.ipAccessControlListSid = ipAccessControlListSid;
             this.sid = sid;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched IpAddressResource </returns> 
-        public override async Task<IpAddressResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<IpAddressResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -73,7 +77,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched IpAddressResource </returns> 
-        public override IpAddressResource Fetch(ITwilioRestClient client) {
+        public override IpAddressResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

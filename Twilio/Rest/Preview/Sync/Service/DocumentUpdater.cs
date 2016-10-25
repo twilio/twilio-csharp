@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Preview.Sync.Service {
+namespace Twilio.Rest.Preview.Sync.Service 
+{
 
-    public class DocumentUpdater : Updater<DocumentResource> {
+    public class DocumentUpdater : Updater<DocumentResource> 
+    {
         public string serviceSid { get; }
         public string sid { get; }
         public Object data { get; }
@@ -22,7 +24,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
         /// <param name="data"> The data </param>
-        public DocumentUpdater(string serviceSid, string sid, Object data) {
+        public DocumentUpdater(string serviceSid, string sid, Object data)
+        {
             this.serviceSid = serviceSid;
             this.sid = sid;
             this.data = data;
@@ -35,7 +38,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated DocumentResource </returns> 
-        public override async Task<DocumentResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<DocumentResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.PREVIEW,
@@ -75,7 +79,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated DocumentResource </returns> 
-        public override DocumentResource Update(ITwilioRestClient client) {
+        public override DocumentResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.PREVIEW,
@@ -113,8 +118,10 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (data != null) {
+        private void AddPostParams(Request request)
+        {
+            if (data != null)
+            {
                 request.AddPostParam("Data", data.ToString());
             }
         }

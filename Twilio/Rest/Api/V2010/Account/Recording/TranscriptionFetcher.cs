@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Recording {
+namespace Twilio.Rest.Api.V2010.Account.Recording 
+{
 
-    public class TranscriptionFetcher : Fetcher<TranscriptionResource> {
+    public class TranscriptionFetcher : Fetcher<TranscriptionResource> 
+    {
         public string accountSid { get; }
         public string recordingSid { get; }
         public string sid { get; }
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
         /// <param name="recordingSid"> The recording_sid </param>
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        public TranscriptionFetcher(string recordingSid, string sid, string accountSid=null) {
+        public TranscriptionFetcher(string recordingSid, string sid, string accountSid=null)
+        {
             this.accountSid = accountSid;
             this.sid = sid;
             this.recordingSid = recordingSid;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched TranscriptionResource </returns> 
-        public override async Task<TranscriptionResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<TranscriptionResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -73,7 +77,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched TranscriptionResource </returns> 
-        public override TranscriptionResource Fetch(ITwilioRestClient client) {
+        public override TranscriptionResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

@@ -9,9 +9,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Notify.V1.Service {
+namespace Twilio.Rest.Notify.V1.Service 
+{
 
-    public class NotificationCreator : Creator<NotificationResource> {
+    public class NotificationCreator : Creator<NotificationResource> 
+    {
         public string serviceSid { get; }
         public List<string> identity { get; set; }
         public List<string> tag { get; set; }
@@ -45,7 +47,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         /// <param name="gcm"> The gcm </param>
         /// <param name="sms"> The sms </param>
         /// <param name="facebookMessenger"> The facebook_messenger </param>
-        public NotificationCreator(string serviceSid, List<string> identity=null, List<string> tag=null, string body=null, NotificationResource.Priority priority=null, int? ttl=null, string title=null, string sound=null, string action=null, string data=null, string apn=null, string gcm=null, string sms=null, Object facebookMessenger=null) {
+        public NotificationCreator(string serviceSid, List<string> identity=null, List<string> tag=null, string body=null, NotificationResource.Priority priority=null, int? ttl=null, string title=null, string sound=null, string action=null, string data=null, string apn=null, string gcm=null, string sms=null, Object facebookMessenger=null)
+        {
             this.facebookMessenger = facebookMessenger;
             this.data = data;
             this.apn = apn;
@@ -69,7 +72,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created NotificationResource </returns> 
-        public override async Task<NotificationResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<NotificationResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.NOTIFY,
@@ -109,7 +113,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created NotificationResource </returns> 
-        public override NotificationResource Create(ITwilioRestClient client) {
+        public override NotificationResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.NOTIFY,
@@ -147,56 +152,70 @@ namespace Twilio.Rest.Notify.V1.Service {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (identity != null) {
+        private void AddPostParams(Request request)
+        {
+            if (identity != null)
+            {
                 request.AddPostParam("Identity", identity.ToString());
             }
             
-            if (tag != null) {
+            if (tag != null)
+            {
                 request.AddPostParam("Tag", tag.ToString());
             }
             
-            if (body != null) {
+            if (body != null)
+            {
                 request.AddPostParam("Body", body);
             }
             
-            if (priority != null) {
+            if (priority != null)
+            {
                 request.AddPostParam("Priority", priority.ToString());
             }
             
-            if (ttl != null) {
+            if (ttl != null)
+            {
                 request.AddPostParam("Ttl", ttl.ToString());
             }
             
-            if (title != null) {
+            if (title != null)
+            {
                 request.AddPostParam("Title", title);
             }
             
-            if (sound != null) {
+            if (sound != null)
+            {
                 request.AddPostParam("Sound", sound);
             }
             
-            if (action != null) {
+            if (action != null)
+            {
                 request.AddPostParam("Action", action);
             }
             
-            if (data != null) {
+            if (data != null)
+            {
                 request.AddPostParam("Data", data);
             }
             
-            if (apn != null) {
+            if (apn != null)
+            {
                 request.AddPostParam("Apn", apn);
             }
             
-            if (gcm != null) {
+            if (gcm != null)
+            {
                 request.AddPostParam("Gcm", gcm);
             }
             
-            if (sms != null) {
+            if (sms != null)
+            {
                 request.AddPostParam("Sms", sms);
             }
             
-            if (facebookMessenger != null) {
+            if (facebookMessenger != null)
+            {
                 request.AddPostParam("FacebookMessenger", facebookMessenger.ToString());
             }
         }

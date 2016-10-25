@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Trunking.V1.Trunk {
+namespace Twilio.Rest.Trunking.V1.Trunk 
+{
 
-    public class OriginationUrlResource : Resource {
+    public class OriginationUrlResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
@@ -16,7 +18,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> OriginationUrlFetcher capable of executing the fetch </returns> 
-        public static OriginationUrlFetcher Fetcher(string trunkSid, string sid) {
+        public static OriginationUrlFetcher Fetcher(string trunkSid, string sid)
+        {
             return new OriginationUrlFetcher(trunkSid, sid);
         }
     
@@ -27,7 +30,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> OriginationUrlDeleter capable of executing the delete </returns> 
-        public static OriginationUrlDeleter Deleter(string trunkSid, string sid) {
+        public static OriginationUrlDeleter Deleter(string trunkSid, string sid)
+        {
             return new OriginationUrlDeleter(trunkSid, sid);
         }
     
@@ -42,7 +46,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="sipUrl"> The sip_url </param>
         /// <returns> OriginationUrlCreator capable of executing the create </returns> 
-        public static OriginationUrlCreator Creator(string trunkSid, int? weight, int? priority, bool? enabled, string friendlyName, Uri sipUrl) {
+        public static OriginationUrlCreator Creator(string trunkSid, int? weight, int? priority, bool? enabled, string friendlyName, Uri sipUrl)
+        {
             return new OriginationUrlCreator(trunkSid, weight, priority, enabled, friendlyName, sipUrl);
         }
     
@@ -52,7 +57,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <returns> OriginationUrlReader capable of executing the read </returns> 
-        public static OriginationUrlReader Reader(string trunkSid) {
+        public static OriginationUrlReader Reader(string trunkSid)
+        {
             return new OriginationUrlReader(trunkSid);
         }
     
@@ -68,7 +74,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="sipUrl"> The sip_url </param>
         /// <returns> OriginationUrlUpdater capable of executing the update </returns> 
-        public static OriginationUrlUpdater Updater(string trunkSid, string sid, int? weight=null, int? priority=null, bool? enabled=null, string friendlyName=null, Uri sipUrl=null) {
+        public static OriginationUrlUpdater Updater(string trunkSid, string sid, int? weight=null, int? priority=null, bool? enabled=null, string friendlyName=null, Uri sipUrl=null)
+        {
             return new OriginationUrlUpdater(trunkSid, sid, weight:weight, priority:priority, enabled:enabled, friendlyName:friendlyName, sipUrl:sipUrl);
         }
     
@@ -78,11 +85,15 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> OriginationUrlResource object represented by the provided JSON </returns> 
-        public static OriginationUrlResource FromJson(string json) {
+        public static OriginationUrlResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<OriginationUrlResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -110,7 +121,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         [JsonProperty("url")]
         public Uri url { get; }
     
-        public OriginationUrlResource() {
+        public OriginationUrlResource()
+        {
         
         }
     
@@ -135,7 +147,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
                                        [JsonProperty("date_updated")]
                                        string dateUpdated, 
                                        [JsonProperty("url")]
-                                       Uri url) {
+                                       Uri url)
+                                       {
             this.accountSid = accountSid;
             this.sid = sid;
             this.trunkSid = trunkSid;

@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace {
+namespace Twilio.Rest.Taskrouter.V1.Workspace 
+{
 
-    public class TaskReader : Reader<TaskResource> {
+    public class TaskReader : Reader<TaskResource> 
+    {
         public string workspaceSid { get; }
         public int? priority { get; set; }
         public TaskResource.Status assignmentStatus { get; set; }
@@ -31,7 +33,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="taskQueueSid"> The task_queue_sid </param>
         /// <param name="taskQueueName"> The task_queue_name </param>
         /// <param name="taskChannel"> The task_channel </param>
-        public TaskReader(string workspaceSid, int? priority=null, TaskResource.Status assignmentStatus=null, string workflowSid=null, string workflowName=null, string taskQueueSid=null, string taskQueueName=null, string taskChannel=null) {
+        public TaskReader(string workspaceSid, int? priority=null, TaskResource.Status assignmentStatus=null, string workflowSid=null, string workflowName=null, string taskQueueSid=null, string taskQueueName=null, string taskChannel=null)
+        {
             this.workspaceSid = workspaceSid;
             this.taskQueueSid = taskQueueSid;
             this.workflowSid = workflowSid;
@@ -49,7 +52,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> TaskResource ResourceSet </returns> 
-        public override Task<ResourceSet<TaskResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<TaskResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
@@ -69,7 +73,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> TaskResource ResourceSet </returns> 
-        public override ResourceSet<TaskResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<TaskResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
@@ -89,7 +94,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<TaskResource> NextPage(Page<TaskResource> page, ITwilioRestClient client) {
+        public override Page<TaskResource> NextPage(Page<TaskResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -107,7 +113,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<TaskResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<TaskResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -138,32 +145,40 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (priority != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (priority != null)
+            {
                 request.AddQueryParam("Priority", priority.ToString());
             }
             
-            if (assignmentStatus != null) {
+            if (assignmentStatus != null)
+            {
                 request.AddQueryParam("AssignmentStatus", assignmentStatus.ToString());
             }
             
-            if (workflowSid != null) {
+            if (workflowSid != null)
+            {
                 request.AddQueryParam("WorkflowSid", workflowSid);
             }
             
-            if (workflowName != null) {
+            if (workflowName != null)
+            {
                 request.AddQueryParam("WorkflowName", workflowName);
             }
             
-            if (taskQueueSid != null) {
+            if (taskQueueSid != null)
+            {
                 request.AddQueryParam("TaskQueueSid", taskQueueSid);
             }
             
-            if (taskQueueName != null) {
+            if (taskQueueName != null)
+            {
                 request.AddQueryParam("TaskQueueName", taskQueueName);
             }
             
-            if (taskChannel != null) {
+            if (taskChannel != null)
+            {
                 request.AddQueryParam("TaskChannel", taskChannel);
             }
             

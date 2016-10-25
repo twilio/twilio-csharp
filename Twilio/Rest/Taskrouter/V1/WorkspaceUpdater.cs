@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Taskrouter.V1 {
+namespace Twilio.Rest.Taskrouter.V1 
+{
 
-    public class WorkspaceUpdater : Updater<WorkspaceResource> {
+    public class WorkspaceUpdater : Updater<WorkspaceResource> 
+    {
         public string sid { get; }
         public string defaultActivitySid { get; set; }
         public Uri eventCallbackUrl { get; set; }
@@ -30,7 +32,8 @@ namespace Twilio.Rest.Taskrouter.V1 {
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="multiTaskEnabled"> The multi_task_enabled </param>
         /// <param name="timeoutActivitySid"> The timeout_activity_sid </param>
-        public WorkspaceUpdater(string sid, string defaultActivitySid=null, Uri eventCallbackUrl=null, string eventsFilter=null, string friendlyName=null, bool? multiTaskEnabled=null, string timeoutActivitySid=null) {
+        public WorkspaceUpdater(string sid, string defaultActivitySid=null, Uri eventCallbackUrl=null, string eventsFilter=null, string friendlyName=null, bool? multiTaskEnabled=null, string timeoutActivitySid=null)
+        {
             this.sid = sid;
             this.defaultActivitySid = defaultActivitySid;
             this.multiTaskEnabled = multiTaskEnabled;
@@ -47,7 +50,8 @@ namespace Twilio.Rest.Taskrouter.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated WorkspaceResource </returns> 
-        public override async Task<WorkspaceResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<WorkspaceResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
@@ -87,7 +91,8 @@ namespace Twilio.Rest.Taskrouter.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated WorkspaceResource </returns> 
-        public override WorkspaceResource Update(ITwilioRestClient client) {
+        public override WorkspaceResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
@@ -125,28 +130,35 @@ namespace Twilio.Rest.Taskrouter.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (defaultActivitySid != null) {
+        private void AddPostParams(Request request)
+        {
+            if (defaultActivitySid != null)
+            {
                 request.AddPostParam("DefaultActivitySid", defaultActivitySid);
             }
             
-            if (eventCallbackUrl != null) {
+            if (eventCallbackUrl != null)
+            {
                 request.AddPostParam("EventCallbackUrl", eventCallbackUrl.ToString());
             }
             
-            if (eventsFilter != null) {
+            if (eventsFilter != null)
+            {
                 request.AddPostParam("EventsFilter", eventsFilter);
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (multiTaskEnabled != null) {
+            if (multiTaskEnabled != null)
+            {
                 request.AddPostParam("MultiTaskEnabled", multiTaskEnabled.ToString());
             }
             
-            if (timeoutActivitySid != null) {
+            if (timeoutActivitySid != null)
+            {
                 request.AddPostParam("TimeoutActivitySid", timeoutActivitySid);
             }
         }

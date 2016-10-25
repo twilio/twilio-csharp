@@ -7,10 +7,13 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
+namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber 
+{
 
-    public class LocalResource : Resource {
-        public sealed class AddressRequirement : IStringEnum {
+    public class LocalResource : Resource 
+    {
+        public sealed class AddressRequirement : IStringEnum 
+        {
             public const string None = "none";
             public const string Any = "any";
             public const string Local = "local";
@@ -18,25 +21,30 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
         
             private string _value;
             
-            public AddressRequirement() { }
+            public AddressRequirement() {}
             
-            public AddressRequirement(string value) {
+            public AddressRequirement(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator AddressRequirement(string value) {
+            public static implicit operator AddressRequirement(string value)
+            {
                 return new AddressRequirement(value);
             }
             
-            public static implicit operator string(AddressRequirement value) {
+            public static implicit operator string(AddressRequirement value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -50,7 +58,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="phoneNumber"> The phone_number </param>
         /// <returns> LocalReader capable of executing the read </returns> 
-        public static LocalReader Reader(string ownerAccountSid=null, bool? beta=null, string friendlyName=null, Twilio.Types.PhoneNumber phoneNumber=null) {
+        public static LocalReader Reader(string ownerAccountSid=null, bool? beta=null, string friendlyName=null, Twilio.Types.PhoneNumber phoneNumber=null)
+        {
             return new LocalReader(ownerAccountSid:ownerAccountSid, beta:beta, friendlyName:friendlyName, phoneNumber:phoneNumber);
         }
     
@@ -76,7 +85,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
         /// <param name="voiceMethod"> The voice_method </param>
         /// <param name="voiceUrl"> The voice_url </param>
         /// <returns> LocalCreator capable of executing the create </returns> 
-        public static LocalCreator Creator(Twilio.Types.PhoneNumber phoneNumber, string ownerAccountSid=null, string apiVersion=null, string friendlyName=null, string smsApplicationSid=null, Twilio.Http.HttpMethod smsFallbackMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsUrl=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null, string voiceApplicationSid=null, bool? voiceCallerIdLookup=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceUrl=null) {
+        public static LocalCreator Creator(Twilio.Types.PhoneNumber phoneNumber, string ownerAccountSid=null, string apiVersion=null, string friendlyName=null, string smsApplicationSid=null, Twilio.Http.HttpMethod smsFallbackMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsUrl=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null, string voiceApplicationSid=null, bool? voiceCallerIdLookup=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceUrl=null)
+        {
             return new LocalCreator(phoneNumber, ownerAccountSid:ownerAccountSid, apiVersion:apiVersion, friendlyName:friendlyName, smsApplicationSid:smsApplicationSid, smsFallbackMethod:smsFallbackMethod, smsFallbackUrl:smsFallbackUrl, smsMethod:smsMethod, smsUrl:smsUrl, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod, voiceApplicationSid:voiceApplicationSid, voiceCallerIdLookup:voiceCallerIdLookup, voiceFallbackMethod:voiceFallbackMethod, voiceFallbackUrl:voiceFallbackUrl, voiceMethod:voiceMethod, voiceUrl:voiceUrl);
         }
     
@@ -86,11 +96,15 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> LocalResource object represented by the provided JSON </returns> 
-        public static LocalResource FromJson(string json) {
+        public static LocalResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<LocalResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -153,7 +167,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
         [JsonProperty("voice_url")]
         public Uri voiceUrl { get; }
     
-        public LocalResource() {
+        public LocalResource()
+        {
         
         }
     
@@ -206,7 +221,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
                               [JsonProperty("voice_method")]
                               Twilio.Http.HttpMethod voiceMethod, 
                               [JsonProperty("voice_url")]
-                              Uri voiceUrl) {
+                              Uri voiceUrl)
+                              {
             this.accountSid = accountSid;
             this.addressRequirements = addressRequirements;
             this.apiVersion = apiVersion;

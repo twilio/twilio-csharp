@@ -7,9 +7,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account.Address {
+namespace Twilio.Rest.Api.V2010.Account.Address 
+{
 
-    public class DependentPhoneNumberResource : Resource {
+    public class DependentPhoneNumberResource : Resource 
+    {
         /// <summary>
         /// read
         /// </summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Api.V2010.Account.Address {
         /// <param name="addressSid"> The address_sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> DependentPhoneNumberReader capable of executing the read </returns> 
-        public static DependentPhoneNumberReader Reader(string addressSid, string accountSid=null) {
+        public static DependentPhoneNumberReader Reader(string addressSid, string accountSid=null)
+        {
             return new DependentPhoneNumberReader(addressSid, accountSid:accountSid);
         }
     
@@ -27,11 +30,15 @@ namespace Twilio.Rest.Api.V2010.Account.Address {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> DependentPhoneNumberResource object represented by the provided JSON </returns> 
-        public static DependentPhoneNumberResource FromJson(string json) {
+        public static DependentPhoneNumberResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<DependentPhoneNumberResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -61,7 +68,8 @@ namespace Twilio.Rest.Api.V2010.Account.Address {
         [JsonProperty("capabilities")]
         public Dictionary<string, string> capabilities { get; }
     
-        public DependentPhoneNumberResource() {
+        public DependentPhoneNumberResource()
+        {
         
         }
     
@@ -86,7 +94,8 @@ namespace Twilio.Rest.Api.V2010.Account.Address {
                                              [JsonProperty("address_requirements")]
                                              string addressRequirements, 
                                              [JsonProperty("capabilities")]
-                                             Dictionary<string, string> capabilities) {
+                                             Dictionary<string, string> capabilities)
+                                             {
             this.friendlyName = friendlyName;
             this.phoneNumber = phoneNumber;
             this.lata = lata;

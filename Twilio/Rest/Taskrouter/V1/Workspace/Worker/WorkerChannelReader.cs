@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
+namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
+{
 
-    public class WorkerChannelReader : Reader<WorkerChannelResource> {
+    public class WorkerChannelReader : Reader<WorkerChannelResource> 
+    {
         public string workspaceSid { get; }
         public string workerSid { get; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="workerSid"> The worker_sid </param>
-        public WorkerChannelReader(string workspaceSid, string workerSid) {
+        public WorkerChannelReader(string workspaceSid, string workerSid)
+        {
             this.workspaceSid = workspaceSid;
             this.workerSid = workerSid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> WorkerChannelResource ResourceSet </returns> 
-        public override Task<ResourceSet<WorkerChannelResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<WorkerChannelResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
@@ -51,7 +55,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> WorkerChannelResource ResourceSet </returns> 
-        public override ResourceSet<WorkerChannelResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<WorkerChannelResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
@@ -71,7 +76,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<WorkerChannelResource> NextPage(Page<WorkerChannelResource> page, ITwilioRestClient client) {
+        public override Page<WorkerChannelResource> NextPage(Page<WorkerChannelResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -89,7 +95,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<WorkerChannelResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<WorkerChannelResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -120,7 +127,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
+        private void AddQueryParams(Request request)
+        {
             request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }

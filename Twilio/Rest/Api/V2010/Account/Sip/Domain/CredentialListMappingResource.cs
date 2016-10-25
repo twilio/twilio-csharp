@@ -7,9 +7,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
+namespace Twilio.Rest.Api.V2010.Account.Sip.Domain 
+{
 
-    public class CredentialListMappingResource : Resource {
+    public class CredentialListMappingResource : Resource 
+    {
         /// <summary>
         /// create
         /// </summary>
@@ -18,7 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         /// <param name="credentialListSid"> The credential_list_sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialListMappingCreator capable of executing the create </returns> 
-        public static CredentialListMappingCreator Creator(string domainSid, string credentialListSid, string accountSid=null) {
+        public static CredentialListMappingCreator Creator(string domainSid, string credentialListSid, string accountSid=null)
+        {
             return new CredentialListMappingCreator(domainSid, credentialListSid, accountSid:accountSid);
         }
     
@@ -29,7 +32,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         /// <param name="domainSid"> The domain_sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialListMappingReader capable of executing the read </returns> 
-        public static CredentialListMappingReader Reader(string domainSid, string accountSid=null) {
+        public static CredentialListMappingReader Reader(string domainSid, string accountSid=null)
+        {
             return new CredentialListMappingReader(domainSid, accountSid:accountSid);
         }
     
@@ -41,7 +45,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialListMappingFetcher capable of executing the fetch </returns> 
-        public static CredentialListMappingFetcher Fetcher(string domainSid, string sid, string accountSid=null) {
+        public static CredentialListMappingFetcher Fetcher(string domainSid, string sid, string accountSid=null)
+        {
             return new CredentialListMappingFetcher(domainSid, sid, accountSid:accountSid);
         }
     
@@ -53,7 +58,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialListMappingDeleter capable of executing the delete </returns> 
-        public static CredentialListMappingDeleter Deleter(string domainSid, string sid, string accountSid=null) {
+        public static CredentialListMappingDeleter Deleter(string domainSid, string sid, string accountSid=null)
+        {
             return new CredentialListMappingDeleter(domainSid, sid, accountSid:accountSid);
         }
     
@@ -63,11 +69,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> CredentialListMappingResource object represented by the provided JSON </returns> 
-        public static CredentialListMappingResource FromJson(string json) {
+        public static CredentialListMappingResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<CredentialListMappingResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -87,7 +97,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> subresourceUris { get; }
     
-        public CredentialListMappingResource() {
+        public CredentialListMappingResource()
+        {
         
         }
     
@@ -104,7 +115,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
                                               [JsonProperty("uri")]
                                               string uri, 
                                               [JsonProperty("subresource_uris")]
-                                              Dictionary<string, string> subresourceUris) {
+                                              Dictionary<string, string> subresourceUris)
+                                              {
             this.accountSid = accountSid;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);

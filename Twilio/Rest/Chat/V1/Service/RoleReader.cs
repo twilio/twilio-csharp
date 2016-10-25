@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Chat.V1.Service {
+namespace Twilio.Rest.Chat.V1.Service 
+{
 
-    public class RoleReader : Reader<RoleResource> {
+    public class RoleReader : Reader<RoleResource> 
+    {
         public string serviceSid { get; }
     
         /// <summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         /// </summary>
         ///
         /// <param name="serviceSid"> The service_sid </param>
-        public RoleReader(string serviceSid) {
+        public RoleReader(string serviceSid)
+        {
             this.serviceSid = serviceSid;
         }
     
@@ -28,7 +31,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> RoleResource ResourceSet </returns> 
-        public override Task<ResourceSet<RoleResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<RoleResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.CHAT,
@@ -48,7 +52,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> RoleResource ResourceSet </returns> 
-        public override ResourceSet<RoleResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<RoleResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.CHAT,
@@ -68,7 +73,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<RoleResource> NextPage(Page<RoleResource> page, ITwilioRestClient client) {
+        public override Page<RoleResource> NextPage(Page<RoleResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -86,7 +92,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<RoleResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<RoleResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -117,7 +124,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
+        private void AddQueryParams(Request request)
+        {
             request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }

@@ -10,43 +10,54 @@ using Twilio.Http;
 using Twilio.Rest;
 using Twilio.Rest.Api.V2010.Account.Sip.Domain;
 
-namespace Twilio.Tests.Rest.Api.V2010.Account.Sip.Domain {
+namespace Twilio.Tests.Rest.Api.V2010.Account.Sip.Domain 
+{
 
     [TestFixture]
-    public class RegistrationEndpointTest : TwilioTest {
+    public class RegistrationEndpointTest : TwilioTest 
+    {
         [SetUp]
-        public void SetUp() {
+        public void SetUp()
+        {
         }
     
         [Test]
-        public void TestReadRequest() {
+        public void TestReadRequest()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(Twilio.Http.HttpMethod.GET,
-                                          Domains.API,
-                                          "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Registrations/region/registrant.json");
+            var request = new Request(HttpMethod.GET,
+                                      Domains.API,
+                                      "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Registrations/region/registrant.json");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
             
-            try {
+            try
+            {
                 RegistrationEndpointResource.Reader("SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "region", "registrant", accountSid: "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Read(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
-            } catch (AggregateException ae) {
+            }
+            catch (AggregateException ae)
+            {
                 ae.Handle((e) =>
                 {
-                    if (e.GetType() != typeof(ApiException)) {
+                    if (e.GetType() != typeof(ApiException))
+                    {
                         throw e;
                     }
             
                     return true;
                 });
-            } catch (ApiException) {
+            }
+            catch (ApiException)
+            {
             }
             twilioRestClient.Received().Request(request);
         }
     
         [Test]
-        public void TestReadEmptyResponse() {
+        public void TestReadEmptyResponse()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
@@ -57,7 +68,8 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip.Domain {
         }
     
         [Test]
-        public void TestReadFullResponse() {
+        public void TestReadFullResponse()
+        {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,

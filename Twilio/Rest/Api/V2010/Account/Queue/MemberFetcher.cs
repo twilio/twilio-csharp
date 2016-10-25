@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Queue {
+namespace Twilio.Rest.Api.V2010.Account.Queue 
+{
 
-    public class MemberFetcher : Fetcher<MemberResource> {
+    public class MemberFetcher : Fetcher<MemberResource> 
+    {
         public string accountSid { get; }
         public string queueSid { get; }
         public string callSid { get; }
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         /// <param name="queueSid"> The Queue in which to find the members </param>
         /// <param name="callSid"> The call_sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        public MemberFetcher(string queueSid, string callSid, string accountSid=null) {
+        public MemberFetcher(string queueSid, string callSid, string accountSid=null)
+        {
             this.accountSid = accountSid;
             this.callSid = callSid;
             this.queueSid = queueSid;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched MemberResource </returns> 
-        public override async Task<MemberResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<MemberResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -73,7 +77,8 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched MemberResource </returns> 
-        public override MemberResource Fetch(ITwilioRestClient client) {
+        public override MemberResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

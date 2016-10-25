@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Chat.V1.Service {
+namespace Twilio.Rest.Chat.V1.Service 
+{
 
-    public class ChannelCreator : Creator<ChannelResource> {
+    public class ChannelCreator : Creator<ChannelResource> 
+    {
         public string serviceSid { get; }
         public string friendlyName { get; set; }
         public string uniqueName { get; set; }
@@ -25,7 +27,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="attributes"> The attributes </param>
         /// <param name="type"> The type </param>
-        public ChannelCreator(string serviceSid, string friendlyName=null, string uniqueName=null, string attributes=null, ChannelResource.ChannelType type=null) {
+        public ChannelCreator(string serviceSid, string friendlyName=null, string uniqueName=null, string attributes=null, ChannelResource.ChannelType type=null)
+        {
             this.uniqueName = uniqueName;
             this.serviceSid = serviceSid;
             this.attributes = attributes;
@@ -40,7 +43,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created ChannelResource </returns> 
-        public override async Task<ChannelResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<ChannelResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.CHAT,
@@ -80,7 +84,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created ChannelResource </returns> 
-        public override ChannelResource Create(ITwilioRestClient client) {
+        public override ChannelResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.CHAT,
@@ -118,20 +123,25 @@ namespace Twilio.Rest.Chat.V1.Service {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (friendlyName != null) {
+        private void AddPostParams(Request request)
+        {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (uniqueName != null) {
+            if (uniqueName != null)
+            {
                 request.AddPostParam("UniqueName", uniqueName);
             }
             
-            if (attributes != null) {
+            if (attributes != null)
+            {
                 request.AddPostParam("Attributes", attributes);
             }
             
-            if (type != null) {
+            if (type != null)
+            {
                 request.AddPostParam("Type", type.ToString());
             }
         }

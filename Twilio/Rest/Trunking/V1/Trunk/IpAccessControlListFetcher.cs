@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Trunking.V1.Trunk {
+namespace Twilio.Rest.Trunking.V1.Trunk 
+{
 
-    public class IpAccessControlListFetcher : Fetcher<IpAccessControlListResource> {
+    public class IpAccessControlListFetcher : Fetcher<IpAccessControlListResource> 
+    {
         public string trunkSid { get; }
         public string sid { get; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <param name="sid"> The sid </param>
-        public IpAccessControlListFetcher(string trunkSid, string sid) {
+        public IpAccessControlListFetcher(string trunkSid, string sid)
+        {
             this.sid = sid;
             this.trunkSid = trunkSid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched IpAccessControlListResource </returns> 
-        public override async Task<IpAccessControlListResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<IpAccessControlListResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TRUNKING,
@@ -70,7 +74,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched IpAccessControlListResource </returns> 
-        public override IpAccessControlListResource Fetch(ITwilioRestClient client) {
+        public override IpAccessControlListResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TRUNKING,

@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace {
+namespace Twilio.Rest.Taskrouter.V1.Workspace 
+{
 
-    public class ActivityUpdater : Updater<ActivityResource> {
+    public class ActivityUpdater : Updater<ActivityResource> 
+    {
         public string workspaceSid { get; }
         public string sid { get; }
         public string friendlyName { get; }
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
-        public ActivityUpdater(string workspaceSid, string sid, string friendlyName) {
+        public ActivityUpdater(string workspaceSid, string sid, string friendlyName)
+        {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
             this.friendlyName = friendlyName;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated ActivityResource </returns> 
-        public override async Task<ActivityResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<ActivityResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
@@ -74,7 +78,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated ActivityResource </returns> 
-        public override ActivityResource Update(ITwilioRestClient client) {
+        public override ActivityResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
@@ -112,8 +117,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (friendlyName != null) {
+        private void AddPostParams(Request request)
+        {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Trunking.V1 {
+namespace Twilio.Rest.Trunking.V1 
+{
 
-    public class TrunkFetcher : Fetcher<TrunkResource> {
+    public class TrunkFetcher : Fetcher<TrunkResource> 
+    {
         public string sid { get; }
     
         /// <summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Trunking.V1 {
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        public TrunkFetcher(string sid) {
+        public TrunkFetcher(string sid)
+        {
             this.sid = sid;
         }
     
@@ -28,7 +31,8 @@ namespace Twilio.Rest.Trunking.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched TrunkResource </returns> 
-        public override async Task<TrunkResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<TrunkResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TRUNKING,
@@ -67,7 +71,8 @@ namespace Twilio.Rest.Trunking.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched TrunkResource </returns> 
-        public override TrunkResource Fetch(ITwilioRestClient client) {
+        public override TrunkResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TRUNKING,

@@ -6,34 +6,42 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Notify.V1 {
+namespace Twilio.Rest.Notify.V1 
+{
 
-    public class CredentialResource : Resource {
-        public sealed class PushService : IStringEnum {
+    public class CredentialResource : Resource 
+    {
+        public sealed class PushService : IStringEnum 
+        {
             public const string Gcm = "gcm";
             public const string Apn = "apn";
         
             private string _value;
             
-            public PushService() { }
+            public PushService() {}
             
-            public PushService(string value) {
+            public PushService(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator PushService(string value) {
+            public static implicit operator PushService(string value)
+            {
                 return new PushService(value);
             }
             
-            public static implicit operator string(PushService value) {
+            public static implicit operator string(PushService value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -43,7 +51,8 @@ namespace Twilio.Rest.Notify.V1 {
         /// </summary>
         ///
         /// <returns> CredentialReader capable of executing the read </returns> 
-        public static CredentialReader Reader() {
+        public static CredentialReader Reader()
+        {
             return new CredentialReader();
         }
     
@@ -58,7 +67,8 @@ namespace Twilio.Rest.Notify.V1 {
         /// <param name="sandbox"> The sandbox </param>
         /// <param name="apiKey"> The api_key </param>
         /// <returns> CredentialCreator capable of executing the create </returns> 
-        public static CredentialCreator Creator(CredentialResource.PushService type, string friendlyName=null, string certificate=null, string privateKey=null, bool? sandbox=null, string apiKey=null) {
+        public static CredentialCreator Creator(CredentialResource.PushService type, string friendlyName=null, string certificate=null, string privateKey=null, bool? sandbox=null, string apiKey=null)
+        {
             return new CredentialCreator(type, friendlyName:friendlyName, certificate:certificate, privateKey:privateKey, sandbox:sandbox, apiKey:apiKey);
         }
     
@@ -68,7 +78,8 @@ namespace Twilio.Rest.Notify.V1 {
         ///
         /// <param name="sid"> The sid </param>
         /// <returns> CredentialFetcher capable of executing the fetch </returns> 
-        public static CredentialFetcher Fetcher(string sid) {
+        public static CredentialFetcher Fetcher(string sid)
+        {
             return new CredentialFetcher(sid);
         }
     
@@ -83,7 +94,8 @@ namespace Twilio.Rest.Notify.V1 {
         /// <param name="sandbox"> The sandbox </param>
         /// <param name="apiKey"> The api_key </param>
         /// <returns> CredentialUpdater capable of executing the update </returns> 
-        public static CredentialUpdater Updater(string sid, string friendlyName=null, string certificate=null, string privateKey=null, bool? sandbox=null, string apiKey=null) {
+        public static CredentialUpdater Updater(string sid, string friendlyName=null, string certificate=null, string privateKey=null, bool? sandbox=null, string apiKey=null)
+        {
             return new CredentialUpdater(sid, friendlyName:friendlyName, certificate:certificate, privateKey:privateKey, sandbox:sandbox, apiKey:apiKey);
         }
     
@@ -93,7 +105,8 @@ namespace Twilio.Rest.Notify.V1 {
         ///
         /// <param name="sid"> The sid </param>
         /// <returns> CredentialDeleter capable of executing the delete </returns> 
-        public static CredentialDeleter Deleter(string sid) {
+        public static CredentialDeleter Deleter(string sid)
+        {
             return new CredentialDeleter(sid);
         }
     
@@ -103,11 +116,15 @@ namespace Twilio.Rest.Notify.V1 {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> CredentialResource object represented by the provided JSON </returns> 
-        public static CredentialResource FromJson(string json) {
+        public static CredentialResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<CredentialResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -130,7 +147,8 @@ namespace Twilio.Rest.Notify.V1 {
         [JsonProperty("url")]
         public Uri url { get; }
     
-        public CredentialResource() {
+        public CredentialResource()
+        {
         
         }
     
@@ -149,7 +167,8 @@ namespace Twilio.Rest.Notify.V1 {
                                    [JsonProperty("date_updated")]
                                    string dateUpdated, 
                                    [JsonProperty("url")]
-                                   Uri url) {
+                                   Uri url)
+                                   {
             this.sid = sid;
             this.accountSid = accountSid;
             this.friendlyName = friendlyName;

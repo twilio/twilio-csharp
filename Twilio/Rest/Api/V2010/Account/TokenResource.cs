@@ -8,9 +8,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class TokenResource : Resource {
+    public class TokenResource : Resource 
+    {
         /// <summary>
         /// Create a new token
         /// </summary>
@@ -18,7 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="accountSid"> The account_sid </param>
         /// <param name="ttl"> The duration in seconds the credentials are valid </param>
         /// <returns> TokenCreator capable of executing the create </returns> 
-        public static TokenCreator Creator(string accountSid=null, int? ttl=null) {
+        public static TokenCreator Creator(string accountSid=null, int? ttl=null)
+        {
             return new TokenCreator(accountSid:accountSid, ttl:ttl);
         }
     
@@ -28,11 +31,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> TokenResource object represented by the provided JSON </returns> 
-        public static TokenResource FromJson(string json) {
+        public static TokenResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<TokenResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -52,7 +59,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         [JsonProperty("username")]
         public string username { get; }
     
-        public TokenResource() {
+        public TokenResource()
+        {
         
         }
     
@@ -69,7 +77,8 @@ namespace Twilio.Rest.Api.V2010.Account {
                               [JsonProperty("ttl")]
                               string ttl, 
                               [JsonProperty("username")]
-                              string username) {
+                              string username)
+                              {
             this.accountSid = accountSid;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);

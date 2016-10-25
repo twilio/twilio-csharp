@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Preview.Sync.Service {
+namespace Twilio.Rest.Preview.Sync.Service 
+{
 
-    public class SyncListCreator : Creator<SyncListResource> {
+    public class SyncListCreator : Creator<SyncListResource> 
+    {
         public string serviceSid { get; }
         public string uniqueName { get; set; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="uniqueName"> The unique_name </param>
-        public SyncListCreator(string serviceSid, string uniqueName=null) {
+        public SyncListCreator(string serviceSid, string uniqueName=null)
+        {
             this.uniqueName = uniqueName;
             this.serviceSid = serviceSid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created SyncListResource </returns> 
-        public override async Task<SyncListResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<SyncListResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.PREVIEW,
@@ -71,7 +75,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created SyncListResource </returns> 
-        public override SyncListResource Create(ITwilioRestClient client) {
+        public override SyncListResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.PREVIEW,
@@ -109,8 +114,10 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (uniqueName != null) {
+        private void AddPostParams(Request request)
+        {
+            if (uniqueName != null)
+            {
                 request.AddPostParam("UniqueName", uniqueName);
             }
         }

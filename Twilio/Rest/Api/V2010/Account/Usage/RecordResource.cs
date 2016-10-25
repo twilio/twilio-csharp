@@ -7,10 +7,13 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account.Usage {
+namespace Twilio.Rest.Api.V2010.Account.Usage 
+{
 
-    public class RecordResource : Resource {
-        public sealed class Category : IStringEnum {
+    public class RecordResource : Resource 
+    {
+        public sealed class Category : IStringEnum 
+        {
             public const string AuthyAuthentications = "authy-authentications";
             public const string AuthyCallsOutbound = "authy-calls-outbound";
             public const string AuthyMonthlyFees = "authy-monthly-fees";
@@ -104,25 +107,30 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         
             private string _value;
             
-            public Category() { }
+            public Category() {}
             
-            public Category(string value) {
+            public Category(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator Category(string value) {
+            public static implicit operator Category(string value)
+            {
                 return new Category(value);
             }
             
-            public static implicit operator string(Category value) {
+            public static implicit operator string(Category value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -136,7 +144,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// <param name="startDate"> Filter by start date </param>
         /// <param name="endDate"> Filter by end date </param>
         /// <returns> RecordReader capable of executing the read </returns> 
-        public static RecordReader Reader(string accountSid=null, RecordResource.Category category=null, DateTime? startDate=null, DateTime? endDate=null) {
+        public static RecordReader Reader(string accountSid=null, RecordResource.Category category=null, DateTime? startDate=null, DateTime? endDate=null)
+        {
             return new RecordReader(accountSid:accountSid, category:category, startDate:startDate, endDate:endDate);
         }
     
@@ -146,11 +155,15 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> RecordResource object represented by the provided JSON </returns> 
-        public static RecordResource FromJson(string json) {
+        public static RecordResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<RecordResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -185,7 +198,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         [JsonProperty("usage_unit")]
         public string usageUnit { get; }
     
-        public RecordResource() {
+        public RecordResource()
+        {
         
         }
     
@@ -216,7 +230,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
                                [JsonProperty("usage")]
                                string usage, 
                                [JsonProperty("usage_unit")]
-                               string usageUnit) {
+                               string usageUnit)
+                               {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
             this.category = category;

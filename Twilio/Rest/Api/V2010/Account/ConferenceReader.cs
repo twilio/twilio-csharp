@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class ConferenceReader : Reader<ConferenceResource> {
+    public class ConferenceReader : Reader<ConferenceResource> 
+    {
         public string accountSid { get; }
         public string dateCreated { get; set; }
         public string dateUpdated { get; set; }
@@ -25,7 +27,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="dateUpdated"> Filter by date updated </param>
         /// <param name="friendlyName"> Filter by friendly name </param>
         /// <param name="status"> The status of the conference </param>
-        public ConferenceReader(string accountSid=null, string dateCreated=null, string dateUpdated=null, string friendlyName=null, ConferenceResource.Status status=null) {
+        public ConferenceReader(string accountSid=null, string dateCreated=null, string dateUpdated=null, string friendlyName=null, ConferenceResource.Status status=null)
+        {
             this.accountSid = accountSid;
             this.friendlyName = friendlyName;
             this.status = status;
@@ -40,7 +43,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> ConferenceResource ResourceSet </returns> 
-        public override Task<ResourceSet<ConferenceResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<ConferenceResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -60,7 +64,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> ConferenceResource ResourceSet </returns> 
-        public override ResourceSet<ConferenceResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<ConferenceResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -80,7 +85,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<ConferenceResource> NextPage(Page<ConferenceResource> page, ITwilioRestClient client) {
+        public override Page<ConferenceResource> NextPage(Page<ConferenceResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -98,7 +104,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<ConferenceResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<ConferenceResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -129,20 +136,25 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (dateCreated != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (dateCreated != null)
+            {
                 request.AddQueryParam("DateCreated", dateCreated);
             }
             
-            if (dateUpdated != null) {
+            if (dateUpdated != null)
+            {
                 request.AddQueryParam("DateUpdated", dateUpdated);
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != null)
+            {
                 request.AddQueryParam("FriendlyName", friendlyName);
             }
             
-            if (status != null) {
+            if (status != null)
+            {
                 request.AddQueryParam("Status", status.ToString());
             }
             

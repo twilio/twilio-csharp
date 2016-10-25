@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class IncomingPhoneNumberFetcher : Fetcher<IncomingPhoneNumberResource> {
+    public class IncomingPhoneNumberFetcher : Fetcher<IncomingPhoneNumberResource> 
+    {
         public string ownerAccountSid { get; }
         public string sid { get; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="sid"> Fetch by unique incoming-phone-number Sid </param>
         /// <param name="ownerAccountSid"> The owner_account_sid </param>
-        public IncomingPhoneNumberFetcher(string sid, string ownerAccountSid=null) {
+        public IncomingPhoneNumberFetcher(string sid, string ownerAccountSid=null)
+        {
             this.sid = sid;
             this.ownerAccountSid = ownerAccountSid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched IncomingPhoneNumberResource </returns> 
-        public override async Task<IncomingPhoneNumberResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<IncomingPhoneNumberResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -70,7 +74,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched IncomingPhoneNumberResource </returns> 
-        public override IncomingPhoneNumberResource Fetch(ITwilioRestClient client) {
+        public override IncomingPhoneNumberResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

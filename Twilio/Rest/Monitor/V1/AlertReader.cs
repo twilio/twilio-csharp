@@ -9,9 +9,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Monitor.V1 {
+namespace Twilio.Rest.Monitor.V1 
+{
 
-    public class AlertReader : Reader<AlertResource> {
+    public class AlertReader : Reader<AlertResource> 
+    {
         public string logLevel { get; set; }
         public DateTime? startDate { get; set; }
         public DateTime? endDate { get; set; }
@@ -23,7 +25,8 @@ namespace Twilio.Rest.Monitor.V1 {
         /// <param name="logLevel"> The log_level </param>
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
-        public AlertReader(string logLevel=null, DateTime? startDate=null, DateTime? endDate=null) {
+        public AlertReader(string logLevel=null, DateTime? startDate=null, DateTime? endDate=null)
+        {
             this.logLevel = logLevel;
             this.startDate = startDate;
             this.endDate = endDate;
@@ -36,7 +39,8 @@ namespace Twilio.Rest.Monitor.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> AlertResource ResourceSet </returns> 
-        public override Task<ResourceSet<AlertResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<AlertResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.MONITOR,
@@ -56,7 +60,8 @@ namespace Twilio.Rest.Monitor.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> AlertResource ResourceSet </returns> 
-        public override ResourceSet<AlertResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<AlertResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.MONITOR,
@@ -76,7 +81,8 @@ namespace Twilio.Rest.Monitor.V1 {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<AlertResource> NextPage(Page<AlertResource> page, ITwilioRestClient client) {
+        public override Page<AlertResource> NextPage(Page<AlertResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -94,7 +100,8 @@ namespace Twilio.Rest.Monitor.V1 {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<AlertResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<AlertResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -125,16 +132,20 @@ namespace Twilio.Rest.Monitor.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (logLevel != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (logLevel != null)
+            {
                 request.AddQueryParam("LogLevel", logLevel);
             }
             
-            if (startDate != null) {
+            if (startDate != null)
+            {
                 request.AddQueryParam("StartDate", startDate.ToString());
             }
             
-            if (endDate != null) {
+            if (endDate != null)
+            {
                 request.AddQueryParam("EndDate", endDate.ToString());
             }
             

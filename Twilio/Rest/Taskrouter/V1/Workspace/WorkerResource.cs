@@ -7,9 +7,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace {
+namespace Twilio.Rest.Taskrouter.V1.Workspace 
+{
 
-    public class WorkerResource : Resource {
+    public class WorkerResource : Resource 
+    {
         /// <summary>
         /// read
         /// </summary>
@@ -23,7 +25,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="taskQueueName"> The task_queue_name </param>
         /// <param name="taskQueueSid"> The task_queue_sid </param>
         /// <returns> WorkerReader capable of executing the read </returns> 
-        public static WorkerReader Reader(string workspaceSid, string activityName=null, string activitySid=null, string available=null, string friendlyName=null, string targetWorkersExpression=null, string taskQueueName=null, string taskQueueSid=null) {
+        public static WorkerReader Reader(string workspaceSid, string activityName=null, string activitySid=null, string available=null, string friendlyName=null, string targetWorkersExpression=null, string taskQueueName=null, string taskQueueSid=null)
+        {
             return new WorkerReader(workspaceSid, activityName:activityName, activitySid:activitySid, available:available, friendlyName:friendlyName, targetWorkersExpression:targetWorkersExpression, taskQueueName:taskQueueName, taskQueueSid:taskQueueSid);
         }
     
@@ -36,7 +39,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="activitySid"> The activity_sid </param>
         /// <param name="attributes"> The attributes </param>
         /// <returns> WorkerCreator capable of executing the create </returns> 
-        public static WorkerCreator Creator(string workspaceSid, string friendlyName, string activitySid=null, string attributes=null) {
+        public static WorkerCreator Creator(string workspaceSid, string friendlyName, string activitySid=null, string attributes=null)
+        {
             return new WorkerCreator(workspaceSid, friendlyName, activitySid:activitySid, attributes:attributes);
         }
     
@@ -47,7 +51,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> WorkerFetcher capable of executing the fetch </returns> 
-        public static WorkerFetcher Fetcher(string workspaceSid, string sid) {
+        public static WorkerFetcher Fetcher(string workspaceSid, string sid)
+        {
             return new WorkerFetcher(workspaceSid, sid);
         }
     
@@ -61,7 +66,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="attributes"> The attributes </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> WorkerUpdater capable of executing the update </returns> 
-        public static WorkerUpdater Updater(string workspaceSid, string sid, string activitySid=null, string attributes=null, string friendlyName=null) {
+        public static WorkerUpdater Updater(string workspaceSid, string sid, string activitySid=null, string attributes=null, string friendlyName=null)
+        {
             return new WorkerUpdater(workspaceSid, sid, activitySid:activitySid, attributes:attributes, friendlyName:friendlyName);
         }
     
@@ -72,7 +78,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> WorkerDeleter capable of executing the delete </returns> 
-        public static WorkerDeleter Deleter(string workspaceSid, string sid) {
+        public static WorkerDeleter Deleter(string workspaceSid, string sid)
+        {
             return new WorkerDeleter(workspaceSid, sid);
         }
     
@@ -82,11 +89,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> WorkerResource object represented by the provided JSON </returns> 
-        public static WorkerResource FromJson(string json) {
+        public static WorkerResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<WorkerResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -118,7 +129,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         [JsonProperty("links")]
         public Dictionary<string, string> links { get; }
     
-        public WorkerResource() {
+        public WorkerResource()
+        {
         
         }
     
@@ -147,7 +159,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
                                [JsonProperty("url")]
                                Uri url, 
                                [JsonProperty("links")]
-                               Dictionary<string, string> links) {
+                               Dictionary<string, string> links)
+                               {
             this.accountSid = accountSid;
             this.activityName = activityName;
             this.activitySid = activitySid;

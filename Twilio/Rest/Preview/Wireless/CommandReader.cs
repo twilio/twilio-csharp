@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Preview.Wireless {
+namespace Twilio.Rest.Preview.Wireless 
+{
 
-    public class CommandReader : Reader<CommandResource> {
+    public class CommandReader : Reader<CommandResource> 
+    {
         public string device { get; set; }
         public string status { get; set; }
         public string direction { get; set; }
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Preview.Wireless {
         /// <param name="device"> The device </param>
         /// <param name="status"> The status </param>
         /// <param name="direction"> The direction </param>
-        public CommandReader(string device=null, string status=null, string direction=null) {
+        public CommandReader(string device=null, string status=null, string direction=null)
+        {
             this.status = status;
             this.device = device;
             this.direction = direction;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Preview.Wireless {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> CommandResource ResourceSet </returns> 
-        public override Task<ResourceSet<CommandResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<CommandResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.PREVIEW,
@@ -54,7 +58,8 @@ namespace Twilio.Rest.Preview.Wireless {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> CommandResource ResourceSet </returns> 
-        public override ResourceSet<CommandResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<CommandResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.PREVIEW,
@@ -74,7 +79,8 @@ namespace Twilio.Rest.Preview.Wireless {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<CommandResource> NextPage(Page<CommandResource> page, ITwilioRestClient client) {
+        public override Page<CommandResource> NextPage(Page<CommandResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -92,7 +98,8 @@ namespace Twilio.Rest.Preview.Wireless {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<CommandResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<CommandResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -123,16 +130,20 @@ namespace Twilio.Rest.Preview.Wireless {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (device != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (device != null)
+            {
                 request.AddQueryParam("Device", device);
             }
             
-            if (status != null) {
+            if (status != null)
+            {
                 request.AddQueryParam("Status", status);
             }
             
-            if (direction != null) {
+            if (direction != null)
+            {
                 request.AddQueryParam("Direction", direction);
             }
             

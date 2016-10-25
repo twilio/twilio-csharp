@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace {
+namespace Twilio.Rest.Taskrouter.V1.Workspace 
+{
 
-    public class WorkspaceStatisticsResource : Resource {
+    public class WorkspaceStatisticsResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
@@ -18,7 +20,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
         /// <returns> WorkspaceStatisticsFetcher capable of executing the fetch </returns> 
-        public static WorkspaceStatisticsFetcher Fetcher(string workspaceSid, int? minutes=null, string startDate=null, string endDate=null) {
+        public static WorkspaceStatisticsFetcher Fetcher(string workspaceSid, int? minutes=null, string startDate=null, string endDate=null)
+        {
             return new WorkspaceStatisticsFetcher(workspaceSid, minutes:minutes, startDate:startDate, endDate:endDate);
         }
     
@@ -28,11 +31,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> WorkspaceStatisticsResource object represented by the provided JSON </returns> 
-        public static WorkspaceStatisticsResource FromJson(string json) {
+        public static WorkspaceStatisticsResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<WorkspaceStatisticsResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -46,7 +53,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         [JsonProperty("workspace_sid")]
         public string workspaceSid { get; }
     
-        public WorkspaceStatisticsResource() {
+        public WorkspaceStatisticsResource()
+        {
         
         }
     
@@ -57,7 +65,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
                                             [JsonProperty("account_sid")]
                                             string accountSid, 
                                             [JsonProperty("workspace_sid")]
-                                            string workspaceSid) {
+                                            string workspaceSid)
+                                            {
             this.realtime = realtime;
             this.cumulative = cumulative;
             this.accountSid = accountSid;

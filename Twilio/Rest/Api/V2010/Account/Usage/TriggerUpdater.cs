@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Usage {
+namespace Twilio.Rest.Api.V2010.Account.Usage 
+{
 
-    public class TriggerUpdater : Updater<TriggerResource> {
+    public class TriggerUpdater : Updater<TriggerResource> 
+    {
         public string accountSid { get; }
         public string sid { get; }
         public Twilio.Http.HttpMethod callbackMethod { get; set; }
@@ -26,7 +28,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// <param name="callbackMethod"> HTTP method to use with callback_url </param>
         /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
         /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
-        public TriggerUpdater(string sid, string accountSid=null, Twilio.Http.HttpMethod callbackMethod=null, Uri callbackUrl=null, string friendlyName=null) {
+        public TriggerUpdater(string sid, string accountSid=null, Twilio.Http.HttpMethod callbackMethod=null, Uri callbackUrl=null, string friendlyName=null)
+        {
             this.accountSid = accountSid;
             this.friendlyName = friendlyName;
             this.sid = sid;
@@ -41,7 +44,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated TriggerResource </returns> 
-        public override async Task<TriggerResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<TriggerResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -81,7 +85,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated TriggerResource </returns> 
-        public override TriggerResource Update(ITwilioRestClient client) {
+        public override TriggerResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -119,16 +124,20 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (callbackMethod != null) {
+        private void AddPostParams(Request request)
+        {
+            if (callbackMethod != null)
+            {
                 request.AddPostParam("CallbackMethod", callbackMethod.ToString());
             }
             
-            if (callbackUrl != null) {
+            if (callbackUrl != null)
+            {
                 request.AddPostParam("CallbackUrl", callbackUrl.ToString());
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

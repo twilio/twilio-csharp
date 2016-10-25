@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class ShortCodeReader : Reader<ShortCodeResource> {
+    public class ShortCodeReader : Reader<ShortCodeResource> 
+    {
         public string accountSid { get; }
         public string friendlyName { get; set; }
         public string shortCode { get; set; }
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="accountSid"> The account_sid </param>
         /// <param name="friendlyName"> Filter by friendly name </param>
         /// <param name="shortCode"> Filter by ShortCode </param>
-        public ShortCodeReader(string accountSid=null, string friendlyName=null, string shortCode=null) {
+        public ShortCodeReader(string accountSid=null, string friendlyName=null, string shortCode=null)
+        {
             this.accountSid = accountSid;
             this.friendlyName = friendlyName;
             this.shortCode = shortCode;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> ShortCodeResource ResourceSet </returns> 
-        public override Task<ResourceSet<ShortCodeResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<ShortCodeResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -54,7 +58,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> ShortCodeResource ResourceSet </returns> 
-        public override ResourceSet<ShortCodeResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<ShortCodeResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -74,7 +79,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<ShortCodeResource> NextPage(Page<ShortCodeResource> page, ITwilioRestClient client) {
+        public override Page<ShortCodeResource> NextPage(Page<ShortCodeResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -92,7 +98,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<ShortCodeResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<ShortCodeResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -123,12 +130,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (friendlyName != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (friendlyName != null)
+            {
                 request.AddQueryParam("FriendlyName", friendlyName);
             }
             
-            if (shortCode != null) {
+            if (shortCode != null)
+            {
                 request.AddQueryParam("ShortCode", shortCode);
             }
             

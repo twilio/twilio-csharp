@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Wireless.Device {
+namespace Twilio.Rest.Preview.Wireless.Device 
+{
 
-    public class UsageResource : Resource {
+    public class UsageResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Preview.Wireless.Device {
         /// <param name="end"> The end </param>
         /// <param name="start"> The start </param>
         /// <returns> UsageFetcher capable of executing the fetch </returns> 
-        public static UsageFetcher Fetcher(string deviceSid, string end=null, string start=null) {
+        public static UsageFetcher Fetcher(string deviceSid, string end=null, string start=null)
+        {
             return new UsageFetcher(deviceSid, end:end, start:start);
         }
     
@@ -27,11 +30,15 @@ namespace Twilio.Rest.Preview.Wireless.Device {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> UsageResource object represented by the provided JSON </returns> 
-        public static UsageResource FromJson(string json) {
+        public static UsageResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<UsageResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -55,7 +62,8 @@ namespace Twilio.Rest.Preview.Wireless.Device {
         [JsonProperty("url")]
         public Uri url { get; }
     
-        public UsageResource() {
+        public UsageResource()
+        {
         
         }
     
@@ -76,7 +84,8 @@ namespace Twilio.Rest.Preview.Wireless.Device {
                               [JsonProperty("data_costs")]
                               Object dataCosts, 
                               [JsonProperty("url")]
-                              Uri url) {
+                              Uri url)
+                              {
             this.deviceSid = deviceSid;
             this.deviceAlias = deviceAlias;
             this.accountSid = accountSid;

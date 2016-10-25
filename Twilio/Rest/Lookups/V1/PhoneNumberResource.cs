@@ -7,35 +7,43 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Lookups.V1 {
+namespace Twilio.Rest.Lookups.V1 
+{
 
-    public class PhoneNumberResource : Resource {
-        public sealed class Type : IStringEnum {
+    public class PhoneNumberResource : Resource 
+    {
+        public sealed class Type : IStringEnum 
+        {
             public const string Landline = "landline";
             public const string Mobile = "mobile";
             public const string Voip = "voip";
         
             private string _value;
             
-            public Type() { }
+            public Type() {}
             
-            public Type(string value) {
+            public Type(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator Type(string value) {
+            public static implicit operator Type(string value)
+            {
                 return new Type(value);
             }
             
-            public static implicit operator string(Type value) {
+            public static implicit operator string(Type value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -50,7 +58,8 @@ namespace Twilio.Rest.Lookups.V1 {
         /// <param name="addOns"> The add_ons </param>
         /// <param name="addOnsData"> The add_ons_data </param>
         /// <returns> PhoneNumberFetcher capable of executing the fetch </returns> 
-        public static PhoneNumberFetcher Fetcher(Twilio.Types.PhoneNumber phoneNumber, string countryCode=null, List<string> type=null, List<string> addOns=null, Dictionary<string, object> addOnsData=null) {
+        public static PhoneNumberFetcher Fetcher(Twilio.Types.PhoneNumber phoneNumber, string countryCode=null, List<string> type=null, List<string> addOns=null, Dictionary<string, object> addOnsData=null)
+        {
             return new PhoneNumberFetcher(phoneNumber, countryCode:countryCode, type:type, addOns:addOns, addOnsData:addOnsData);
         }
     
@@ -60,11 +69,15 @@ namespace Twilio.Rest.Lookups.V1 {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> PhoneNumberResource object represented by the provided JSON </returns> 
-        public static PhoneNumberResource FromJson(string json) {
+        public static PhoneNumberResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<PhoneNumberResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -85,7 +98,8 @@ namespace Twilio.Rest.Lookups.V1 {
         [JsonProperty("url")]
         public Uri url { get; }
     
-        public PhoneNumberResource() {
+        public PhoneNumberResource()
+        {
         
         }
     
@@ -102,7 +116,8 @@ namespace Twilio.Rest.Lookups.V1 {
                                     [JsonProperty("add_ons")]
                                     Object addOns, 
                                     [JsonProperty("url")]
-                                    Uri url) {
+                                    Uri url)
+                                    {
             this.callerName = callerName;
             this.countryCode = countryCode;
             this.phoneNumber = phoneNumber;

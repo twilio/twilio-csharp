@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Trunking.V1 {
+namespace Twilio.Rest.Trunking.V1 
+{
 
-    public class TrunkUpdater : Updater<TrunkResource> {
+    public class TrunkUpdater : Updater<TrunkResource> 
+    {
         public string sid { get; }
         public string friendlyName { get; set; }
         public string domainName { get; set; }
@@ -30,7 +32,8 @@ namespace Twilio.Rest.Trunking.V1 {
         /// <param name="disasterRecoveryMethod"> The disaster_recovery_method </param>
         /// <param name="recording"> The recording </param>
         /// <param name="secure"> The secure </param>
-        public TrunkUpdater(string sid, string friendlyName=null, string domainName=null, Uri disasterRecoveryUrl=null, Twilio.Http.HttpMethod disasterRecoveryMethod=null, string recording=null, bool? secure=null) {
+        public TrunkUpdater(string sid, string friendlyName=null, string domainName=null, Uri disasterRecoveryUrl=null, Twilio.Http.HttpMethod disasterRecoveryMethod=null, string recording=null, bool? secure=null)
+        {
             this.sid = sid;
             this.secure = secure;
             this.recording = recording;
@@ -47,7 +50,8 @@ namespace Twilio.Rest.Trunking.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated TrunkResource </returns> 
-        public override async Task<TrunkResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<TrunkResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TRUNKING,
@@ -87,7 +91,8 @@ namespace Twilio.Rest.Trunking.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated TrunkResource </returns> 
-        public override TrunkResource Update(ITwilioRestClient client) {
+        public override TrunkResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TRUNKING,
@@ -125,28 +130,35 @@ namespace Twilio.Rest.Trunking.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (friendlyName != null) {
+        private void AddPostParams(Request request)
+        {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (domainName != null) {
+            if (domainName != null)
+            {
                 request.AddPostParam("DomainName", domainName);
             }
             
-            if (disasterRecoveryUrl != null) {
+            if (disasterRecoveryUrl != null)
+            {
                 request.AddPostParam("DisasterRecoveryUrl", disasterRecoveryUrl.ToString());
             }
             
-            if (disasterRecoveryMethod != null) {
+            if (disasterRecoveryMethod != null)
+            {
                 request.AddPostParam("DisasterRecoveryMethod", disasterRecoveryMethod.ToString());
             }
             
-            if (recording != null) {
+            if (recording != null)
+            {
                 request.AddPostParam("Recording", recording);
             }
             
-            if (secure != null) {
+            if (secure != null)
+            {
                 request.AddPostParam("Secure", secure.ToString());
             }
         }

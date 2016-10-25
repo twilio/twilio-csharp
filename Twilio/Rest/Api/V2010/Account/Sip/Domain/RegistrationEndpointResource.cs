@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
+namespace Twilio.Rest.Api.V2010.Account.Sip.Domain 
+{
 
-    public class RegistrationEndpointResource : Resource {
+    public class RegistrationEndpointResource : Resource 
+    {
         /// <summary>
         /// read
         /// </summary>
@@ -18,7 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         /// <param name="registrant"> The registrant </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> RegistrationEndpointReader capable of executing the read </returns> 
-        public static RegistrationEndpointReader Reader(string domainSid, string region, string registrant, string accountSid=null) {
+        public static RegistrationEndpointReader Reader(string domainSid, string region, string registrant, string accountSid=null)
+        {
             return new RegistrationEndpointReader(domainSid, region, registrant, accountSid:accountSid);
         }
     
@@ -28,11 +31,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> RegistrationEndpointResource object represented by the provided JSON </returns> 
-        public static RegistrationEndpointResource FromJson(string json) {
+        public static RegistrationEndpointResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<RegistrationEndpointResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -62,7 +69,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         [JsonProperty("display_name")]
         public string displayName { get; }
     
-        public RegistrationEndpointResource() {
+        public RegistrationEndpointResource()
+        {
         
         }
     
@@ -89,7 +97,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
                                              [JsonProperty("channel_type")]
                                              string channelType, 
                                              [JsonProperty("display_name")]
-                                             string displayName) {
+                                             string displayName)
+                                             {
             this.addressOfRecord = addressOfRecord;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);

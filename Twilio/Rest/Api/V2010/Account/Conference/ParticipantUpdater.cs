@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Conference {
+namespace Twilio.Rest.Api.V2010.Account.Conference 
+{
 
-    public class ParticipantUpdater : Updater<ParticipantResource> {
+    public class ParticipantUpdater : Updater<ParticipantResource> 
+    {
         public string accountSid { get; }
         public string conferenceSid { get; }
         public string callSid { get; }
@@ -30,7 +32,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         /// <param name="hold"> The hold </param>
         /// <param name="holdUrl"> The hold_url </param>
         /// <param name="holdMethod"> The hold_method </param>
-        public ParticipantUpdater(string conferenceSid, string callSid, string accountSid=null, bool? muted=null, bool? hold=null, Uri holdUrl=null, Twilio.Http.HttpMethod holdMethod=null) {
+        public ParticipantUpdater(string conferenceSid, string callSid, string accountSid=null, bool? muted=null, bool? hold=null, Uri holdUrl=null, Twilio.Http.HttpMethod holdMethod=null)
+        {
             this.callSid = callSid;
             this.holdMethod = holdMethod;
             this.holdUrl = holdUrl;
@@ -47,7 +50,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated ParticipantResource </returns> 
-        public override async Task<ParticipantResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<ParticipantResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -87,7 +91,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated ParticipantResource </returns> 
-        public override ParticipantResource Update(ITwilioRestClient client) {
+        public override ParticipantResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -125,20 +130,25 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (muted != null) {
+        private void AddPostParams(Request request)
+        {
+            if (muted != null)
+            {
                 request.AddPostParam("Muted", muted.ToString());
             }
             
-            if (hold != null) {
+            if (hold != null)
+            {
                 request.AddPostParam("Hold", hold.ToString());
             }
             
-            if (holdUrl != null) {
+            if (holdUrl != null)
+            {
                 request.AddPostParam("HoldUrl", holdUrl.ToString());
             }
             
-            if (holdMethod != null) {
+            if (holdMethod != null)
+            {
                 request.AddPostParam("HoldMethod", holdMethod.ToString());
             }
         }

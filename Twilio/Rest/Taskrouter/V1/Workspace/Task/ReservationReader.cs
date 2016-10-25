@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
+namespace Twilio.Rest.Taskrouter.V1.Workspace.Task 
+{
 
-    public class ReservationReader : Reader<ReservationResource> {
+    public class ReservationReader : Reader<ReservationResource> 
+    {
         public string workspaceSid { get; }
         public string taskSid { get; }
         public ReservationResource.Status reservationStatus { get; set; }
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="taskSid"> The task_sid </param>
         /// <param name="reservationStatus"> The reservation_status </param>
-        public ReservationReader(string workspaceSid, string taskSid, ReservationResource.Status reservationStatus=null) {
+        public ReservationReader(string workspaceSid, string taskSid, ReservationResource.Status reservationStatus=null)
+        {
             this.workspaceSid = workspaceSid;
             this.reservationStatus = reservationStatus;
             this.taskSid = taskSid;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> ReservationResource ResourceSet </returns> 
-        public override Task<ResourceSet<ReservationResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<ReservationResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
@@ -54,7 +58,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> ReservationResource ResourceSet </returns> 
-        public override ResourceSet<ReservationResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<ReservationResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
@@ -74,7 +79,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<ReservationResource> NextPage(Page<ReservationResource> page, ITwilioRestClient client) {
+        public override Page<ReservationResource> NextPage(Page<ReservationResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -92,7 +98,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<ReservationResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<ReservationResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -123,8 +130,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (reservationStatus != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (reservationStatus != null)
+            {
                 request.AddQueryParam("ReservationStatus", reservationStatus.ToString());
             }
             

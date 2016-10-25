@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class ApplicationResource : Resource {
+    public class ApplicationResource : Resource 
+    {
         /// <summary>
         /// Create a new application within your account
         /// </summary>
@@ -30,7 +32,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="smsStatusCallback"> URL Twilio with request with status updates </param>
         /// <param name="messageStatusCallback"> URL to make requests to with status updates </param>
         /// <returns> ApplicationCreator capable of executing the create </returns> 
-        public static ApplicationCreator Creator(string friendlyName, string accountSid=null, string apiVersion=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null, bool? voiceCallerIdLookup=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsFallbackMethod=null, Uri smsStatusCallback=null, Uri messageStatusCallback=null) {
+        public static ApplicationCreator Creator(string friendlyName, string accountSid=null, string apiVersion=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null, bool? voiceCallerIdLookup=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsFallbackMethod=null, Uri smsStatusCallback=null, Uri messageStatusCallback=null)
+        {
             return new ApplicationCreator(friendlyName, accountSid:accountSid, apiVersion:apiVersion, voiceUrl:voiceUrl, voiceMethod:voiceMethod, voiceFallbackUrl:voiceFallbackUrl, voiceFallbackMethod:voiceFallbackMethod, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod, voiceCallerIdLookup:voiceCallerIdLookup, smsUrl:smsUrl, smsMethod:smsMethod, smsFallbackUrl:smsFallbackUrl, smsFallbackMethod:smsFallbackMethod, smsStatusCallback:smsStatusCallback, messageStatusCallback:messageStatusCallback);
         }
     
@@ -41,7 +44,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="sid"> The application sid to delete </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> ApplicationDeleter capable of executing the delete </returns> 
-        public static ApplicationDeleter Deleter(string sid, string accountSid=null) {
+        public static ApplicationDeleter Deleter(string sid, string accountSid=null)
+        {
             return new ApplicationDeleter(sid, accountSid:accountSid);
         }
     
@@ -52,7 +56,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="sid"> Fetch by unique Application Sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> ApplicationFetcher capable of executing the fetch </returns> 
-        public static ApplicationFetcher Fetcher(string sid, string accountSid=null) {
+        public static ApplicationFetcher Fetcher(string sid, string accountSid=null)
+        {
             return new ApplicationFetcher(sid, accountSid:accountSid);
         }
     
@@ -63,7 +68,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="accountSid"> The account_sid </param>
         /// <param name="friendlyName"> Filter by friendly name </param>
         /// <returns> ApplicationReader capable of executing the read </returns> 
-        public static ApplicationReader Reader(string accountSid=null, string friendlyName=null) {
+        public static ApplicationReader Reader(string accountSid=null, string friendlyName=null)
+        {
             return new ApplicationReader(accountSid:accountSid, friendlyName:friendlyName);
         }
     
@@ -89,7 +95,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="smsStatusCallback"> URL Twilio with request with status updates </param>
         /// <param name="messageStatusCallback"> URL to make requests to with status updates </param>
         /// <returns> ApplicationUpdater capable of executing the update </returns> 
-        public static ApplicationUpdater Updater(string sid, string accountSid=null, string friendlyName=null, string apiVersion=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null, bool? voiceCallerIdLookup=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsFallbackMethod=null, Uri smsStatusCallback=null, Uri messageStatusCallback=null) {
+        public static ApplicationUpdater Updater(string sid, string accountSid=null, string friendlyName=null, string apiVersion=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null, bool? voiceCallerIdLookup=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsFallbackMethod=null, Uri smsStatusCallback=null, Uri messageStatusCallback=null)
+        {
             return new ApplicationUpdater(sid, accountSid:accountSid, friendlyName:friendlyName, apiVersion:apiVersion, voiceUrl:voiceUrl, voiceMethod:voiceMethod, voiceFallbackUrl:voiceFallbackUrl, voiceFallbackMethod:voiceFallbackMethod, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod, voiceCallerIdLookup:voiceCallerIdLookup, smsUrl:smsUrl, smsMethod:smsMethod, smsFallbackUrl:smsFallbackUrl, smsFallbackMethod:smsFallbackMethod, smsStatusCallback:smsStatusCallback, messageStatusCallback:messageStatusCallback);
         }
     
@@ -99,11 +106,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> ApplicationResource object represented by the provided JSON </returns> 
-        public static ApplicationResource FromJson(string json) {
+        public static ApplicationResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<ApplicationResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -154,7 +165,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         [JsonProperty("voice_url")]
         public Uri voiceUrl { get; }
     
-        public ApplicationResource() {
+        public ApplicationResource()
+        {
         
         }
     
@@ -197,7 +209,8 @@ namespace Twilio.Rest.Api.V2010.Account {
                                     [JsonProperty("voice_method")]
                                     Twilio.Http.HttpMethod voiceMethod, 
                                     [JsonProperty("voice_url")]
-                                    Uri voiceUrl) {
+                                    Uri voiceUrl)
+                                    {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);

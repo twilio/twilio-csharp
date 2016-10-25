@@ -6,16 +6,19 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Wireless {
+namespace Twilio.Rest.Preview.Wireless 
+{
 
-    public class CommandResource : Resource {
+    public class CommandResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
         /// <returns> CommandFetcher capable of executing the fetch </returns> 
-        public static CommandFetcher Fetcher(string sid) {
+        public static CommandFetcher Fetcher(string sid)
+        {
             return new CommandFetcher(sid);
         }
     
@@ -27,7 +30,8 @@ namespace Twilio.Rest.Preview.Wireless {
         /// <param name="status"> The status </param>
         /// <param name="direction"> The direction </param>
         /// <returns> CommandReader capable of executing the read </returns> 
-        public static CommandReader Reader(string device=null, string status=null, string direction=null) {
+        public static CommandReader Reader(string device=null, string status=null, string direction=null)
+        {
             return new CommandReader(device:device, status:status, direction:direction);
         }
     
@@ -42,7 +46,8 @@ namespace Twilio.Rest.Preview.Wireless {
         /// <param name="commandMode"> The command_mode </param>
         /// <param name="includeSid"> The include_sid </param>
         /// <returns> CommandCreator capable of executing the create </returns> 
-        public static CommandCreator Creator(string device, string command, string callbackMethod=null, Uri callbackUrl=null, string commandMode=null, string includeSid=null) {
+        public static CommandCreator Creator(string device, string command, string callbackMethod=null, Uri callbackUrl=null, string commandMode=null, string includeSid=null)
+        {
             return new CommandCreator(device, command, callbackMethod:callbackMethod, callbackUrl:callbackUrl, commandMode:commandMode, includeSid:includeSid);
         }
     
@@ -52,11 +57,15 @@ namespace Twilio.Rest.Preview.Wireless {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> CommandResource object represented by the provided JSON </returns> 
-        public static CommandResource FromJson(string json) {
+        public static CommandResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<CommandResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -82,7 +91,8 @@ namespace Twilio.Rest.Preview.Wireless {
         [JsonProperty("url")]
         public Uri url { get; }
     
-        public CommandResource() {
+        public CommandResource()
+        {
         
         }
     
@@ -105,7 +115,8 @@ namespace Twilio.Rest.Preview.Wireless {
                                 [JsonProperty("date_updated")]
                                 string dateUpdated, 
                                 [JsonProperty("url")]
-                                Uri url) {
+                                Uri url)
+                                {
             this.sid = sid;
             this.accountSid = accountSid;
             this.deviceSid = deviceSid;

@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Trunking.V1.Trunk {
+namespace Twilio.Rest.Trunking.V1.Trunk 
+{
 
-    public class PhoneNumberFetcher : Fetcher<PhoneNumberResource> {
+    public class PhoneNumberFetcher : Fetcher<PhoneNumberResource> 
+    {
         public string trunkSid { get; }
         public string sid { get; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <param name="sid"> The sid </param>
-        public PhoneNumberFetcher(string trunkSid, string sid) {
+        public PhoneNumberFetcher(string trunkSid, string sid)
+        {
             this.sid = sid;
             this.trunkSid = trunkSid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched PhoneNumberResource </returns> 
-        public override async Task<PhoneNumberResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<PhoneNumberResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TRUNKING,
@@ -70,7 +74,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched PhoneNumberResource </returns> 
-        public override PhoneNumberResource Fetch(ITwilioRestClient client) {
+        public override PhoneNumberResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TRUNKING,

@@ -7,10 +7,13 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Notify.V1.Service {
+namespace Twilio.Rest.Notify.V1.Service 
+{
 
-    public class BindingResource : Resource {
-        public sealed class BindingType : IStringEnum {
+    public class BindingResource : Resource 
+    {
+        public sealed class BindingType : IStringEnum 
+        {
             public const string Apn = "apn";
             public const string Gcm = "gcm";
             public const string Sms = "sms";
@@ -18,25 +21,30 @@ namespace Twilio.Rest.Notify.V1.Service {
         
             private string _value;
             
-            public BindingType() { }
+            public BindingType() {}
             
-            public BindingType(string value) {
+            public BindingType(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator BindingType(string value) {
+            public static implicit operator BindingType(string value)
+            {
                 return new BindingType(value);
             }
             
-            public static implicit operator string(BindingType value) {
+            public static implicit operator string(BindingType value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -48,7 +56,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> BindingFetcher capable of executing the fetch </returns> 
-        public static BindingFetcher Fetcher(string serviceSid, string sid) {
+        public static BindingFetcher Fetcher(string serviceSid, string sid)
+        {
             return new BindingFetcher(serviceSid, sid);
         }
     
@@ -59,7 +68,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> BindingDeleter capable of executing the delete </returns> 
-        public static BindingDeleter Deleter(string serviceSid, string sid) {
+        public static BindingDeleter Deleter(string serviceSid, string sid)
+        {
             return new BindingDeleter(serviceSid, sid);
         }
     
@@ -76,7 +86,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         /// <param name="notificationProtocolVersion"> The notification_protocol_version </param>
         /// <param name="credentialSid"> The credential_sid </param>
         /// <returns> BindingCreator capable of executing the create </returns> 
-        public static BindingCreator Creator(string serviceSid, string endpoint, string identity, BindingResource.BindingType bindingType, string address, List<string> tag=null, string notificationProtocolVersion=null, string credentialSid=null) {
+        public static BindingCreator Creator(string serviceSid, string endpoint, string identity, BindingResource.BindingType bindingType, string address, List<string> tag=null, string notificationProtocolVersion=null, string credentialSid=null)
+        {
             return new BindingCreator(serviceSid, endpoint, identity, bindingType, address, tag:tag, notificationProtocolVersion:notificationProtocolVersion, credentialSid:credentialSid);
         }
     
@@ -90,7 +101,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         /// <param name="identity"> The identity </param>
         /// <param name="tag"> The tag </param>
         /// <returns> BindingReader capable of executing the read </returns> 
-        public static BindingReader Reader(string serviceSid, DateTime? startDate=null, DateTime? endDate=null, List<string> identity=null, List<string> tag=null) {
+        public static BindingReader Reader(string serviceSid, DateTime? startDate=null, DateTime? endDate=null, List<string> identity=null, List<string> tag=null)
+        {
             return new BindingReader(serviceSid, startDate:startDate, endDate:endDate, identity:identity, tag:tag);
         }
     
@@ -100,11 +112,15 @@ namespace Twilio.Rest.Notify.V1.Service {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> BindingResource object represented by the provided JSON </returns> 
-        public static BindingResource FromJson(string json) {
+        public static BindingResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<BindingResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -136,7 +152,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         [JsonProperty("url")]
         public Uri url { get; }
     
-        public BindingResource() {
+        public BindingResource()
+        {
         
         }
     
@@ -165,7 +182,8 @@ namespace Twilio.Rest.Notify.V1.Service {
                                 [JsonProperty("tags")]
                                 List<string> tags, 
                                 [JsonProperty("url")]
-                                Uri url) {
+                                Uri url)
+                                {
             this.sid = sid;
             this.accountSid = accountSid;
             this.serviceSid = serviceSid;

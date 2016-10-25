@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Queue {
+namespace Twilio.Rest.Api.V2010.Account.Queue 
+{
 
-    public class MemberUpdater : Updater<MemberResource> {
+    public class MemberUpdater : Updater<MemberResource> 
+    {
         public string accountSid { get; }
         public string queueSid { get; }
         public string callSid { get; }
@@ -26,7 +28,8 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         /// <param name="url"> The url </param>
         /// <param name="method"> The method </param>
         /// <param name="accountSid"> The account_sid </param>
-        public MemberUpdater(string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method, string accountSid=null) {
+        public MemberUpdater(string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method, string accountSid=null)
+        {
             this.accountSid = accountSid;
             this.url = url;
             this.method = method;
@@ -41,7 +44,8 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated MemberResource </returns> 
-        public override async Task<MemberResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<MemberResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -81,7 +85,8 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated MemberResource </returns> 
-        public override MemberResource Update(ITwilioRestClient client) {
+        public override MemberResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -119,12 +124,15 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (url != null) {
+        private void AddPostParams(Request request)
+        {
+            if (url != null)
+            {
                 request.AddPostParam("Url", url.ToString());
             }
             
-            if (method != null) {
+            if (method != null)
+            {
                 request.AddPostParam("Method", method.ToString());
             }
         }

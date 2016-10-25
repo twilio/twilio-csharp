@@ -8,9 +8,11 @@ using Twilio.Rest.Preview.Sync.Service.SyncList;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Preview.Sync.Service.SyncList {
+namespace Twilio.Rest.Preview.Sync.Service.SyncList 
+{
 
-    public class SyncListItemDeleter : Deleter<SyncListItemResource> {
+    public class SyncListItemDeleter : Deleter<SyncListItemResource> 
+    {
         public string serviceSid { get; }
         public string listSid { get; }
         public int? index { get; }
@@ -22,7 +24,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="listSid"> The list_sid </param>
         /// <param name="index"> The index </param>
-        public SyncListItemDeleter(string serviceSid, string listSid, int? index) {
+        public SyncListItemDeleter(string serviceSid, string listSid, int? index)
+        {
             this.serviceSid = serviceSid;
             this.listSid = listSid;
             this.index = index;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         /// </summary>
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
-        public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client) {
+        public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.PREVIEW,
@@ -72,7 +76,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         /// </summary>
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
-        public override void Delete(ITwilioRestClient client) {
+        public override void Delete(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.PREVIEW,

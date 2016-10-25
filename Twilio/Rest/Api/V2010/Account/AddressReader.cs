@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class AddressReader : Reader<AddressResource> {
+    public class AddressReader : Reader<AddressResource> 
+    {
         public string accountSid { get; }
         public string customerName { get; set; }
         public string friendlyName { get; set; }
@@ -23,7 +25,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="customerName"> The customer_name </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="isoCountry"> The iso_country </param>
-        public AddressReader(string accountSid=null, string customerName=null, string friendlyName=null, string isoCountry=null) {
+        public AddressReader(string accountSid=null, string customerName=null, string friendlyName=null, string isoCountry=null)
+        {
             this.accountSid = accountSid;
             this.friendlyName = friendlyName;
             this.customerName = customerName;
@@ -37,7 +40,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> AddressResource ResourceSet </returns> 
-        public override Task<ResourceSet<AddressResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<AddressResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -57,7 +61,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> AddressResource ResourceSet </returns> 
-        public override ResourceSet<AddressResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<AddressResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -77,7 +82,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<AddressResource> NextPage(Page<AddressResource> page, ITwilioRestClient client) {
+        public override Page<AddressResource> NextPage(Page<AddressResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -95,7 +101,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<AddressResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<AddressResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -126,16 +133,20 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (customerName != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (customerName != null)
+            {
                 request.AddQueryParam("CustomerName", customerName);
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != null)
+            {
                 request.AddQueryParam("FriendlyName", friendlyName);
             }
             
-            if (isoCountry != null) {
+            if (isoCountry != null)
+            {
                 request.AddQueryParam("IsoCountry", isoCountry);
             }
             

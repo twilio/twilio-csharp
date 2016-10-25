@@ -7,9 +7,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
+namespace Twilio.Rest.Api.V2010.Account.Sip.Domain 
+{
 
-    public class IpAccessControlListMappingResource : Resource {
+    public class IpAccessControlListMappingResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
@@ -18,7 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAccessControlListMappingFetcher capable of executing the fetch </returns> 
-        public static IpAccessControlListMappingFetcher Fetcher(string domainSid, string sid, string accountSid=null) {
+        public static IpAccessControlListMappingFetcher Fetcher(string domainSid, string sid, string accountSid=null)
+        {
             return new IpAccessControlListMappingFetcher(domainSid, sid, accountSid:accountSid);
         }
     
@@ -30,7 +33,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAccessControlListMappingCreator capable of executing the create </returns> 
-        public static IpAccessControlListMappingCreator Creator(string domainSid, string ipAccessControlListSid, string accountSid=null) {
+        public static IpAccessControlListMappingCreator Creator(string domainSid, string ipAccessControlListSid, string accountSid=null)
+        {
             return new IpAccessControlListMappingCreator(domainSid, ipAccessControlListSid, accountSid:accountSid);
         }
     
@@ -41,7 +45,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         /// <param name="domainSid"> The domain_sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAccessControlListMappingReader capable of executing the read </returns> 
-        public static IpAccessControlListMappingReader Reader(string domainSid, string accountSid=null) {
+        public static IpAccessControlListMappingReader Reader(string domainSid, string accountSid=null)
+        {
             return new IpAccessControlListMappingReader(domainSid, accountSid:accountSid);
         }
     
@@ -53,7 +58,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAccessControlListMappingDeleter capable of executing the delete </returns> 
-        public static IpAccessControlListMappingDeleter Deleter(string domainSid, string sid, string accountSid=null) {
+        public static IpAccessControlListMappingDeleter Deleter(string domainSid, string sid, string accountSid=null)
+        {
             return new IpAccessControlListMappingDeleter(domainSid, sid, accountSid:accountSid);
         }
     
@@ -63,11 +69,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> IpAccessControlListMappingResource object represented by the provided JSON </returns> 
-        public static IpAccessControlListMappingResource FromJson(string json) {
+        public static IpAccessControlListMappingResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<IpAccessControlListMappingResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -87,7 +97,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> subresourceUris { get; }
     
-        public IpAccessControlListMappingResource() {
+        public IpAccessControlListMappingResource()
+        {
         
         }
     
@@ -104,7 +115,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
                                                    [JsonProperty("uri")]
                                                    string uri, 
                                                    [JsonProperty("subresource_uris")]
-                                                   Dictionary<string, string> subresourceUris) {
+                                                   Dictionary<string, string> subresourceUris)
+                                                   {
             this.accountSid = accountSid;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);

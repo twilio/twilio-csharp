@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Chat.V1.Service.Channel {
+namespace Twilio.Rest.Chat.V1.Service.Channel 
+{
 
-    public class MessageResource : Resource {
+    public class MessageResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         /// <param name="channelSid"> The channel_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> MessageFetcher capable of executing the fetch </returns> 
-        public static MessageFetcher Fetcher(string serviceSid, string channelSid, string sid) {
+        public static MessageFetcher Fetcher(string serviceSid, string channelSid, string sid)
+        {
             return new MessageFetcher(serviceSid, channelSid, sid);
         }
     
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         /// <param name="from"> The from </param>
         /// <param name="attributes"> The attributes </param>
         /// <returns> MessageCreator capable of executing the create </returns> 
-        public static MessageCreator Creator(string serviceSid, string channelSid, string body, string from=null, string attributes=null) {
+        public static MessageCreator Creator(string serviceSid, string channelSid, string body, string from=null, string attributes=null)
+        {
             return new MessageCreator(serviceSid, channelSid, body, from:from, attributes:attributes);
         }
     
@@ -42,7 +46,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="channelSid"> The channel_sid </param>
         /// <returns> MessageReader capable of executing the read </returns> 
-        public static MessageReader Reader(string serviceSid, string channelSid) {
+        public static MessageReader Reader(string serviceSid, string channelSid)
+        {
             return new MessageReader(serviceSid, channelSid);
         }
     
@@ -54,7 +59,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         /// <param name="channelSid"> The channel_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> MessageDeleter capable of executing the delete </returns> 
-        public static MessageDeleter Deleter(string serviceSid, string channelSid, string sid) {
+        public static MessageDeleter Deleter(string serviceSid, string channelSid, string sid)
+        {
             return new MessageDeleter(serviceSid, channelSid, sid);
         }
     
@@ -68,7 +74,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         /// <param name="body"> The body </param>
         /// <param name="attributes"> The attributes </param>
         /// <returns> MessageUpdater capable of executing the update </returns> 
-        public static MessageUpdater Updater(string serviceSid, string channelSid, string sid, string body, Object attributes=null) {
+        public static MessageUpdater Updater(string serviceSid, string channelSid, string sid, string body, Object attributes=null)
+        {
             return new MessageUpdater(serviceSid, channelSid, sid, body, attributes:attributes);
         }
     
@@ -78,11 +85,15 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> MessageResource object represented by the provided JSON </returns> 
-        public static MessageResource FromJson(string json) {
+        public static MessageResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<MessageResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -110,7 +121,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         [JsonProperty("url")]
         public Uri url { get; }
     
-        public MessageResource() {
+        public MessageResource()
+        {
         
         }
     
@@ -135,7 +147,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
                                 [JsonProperty("index")]
                                 int? index, 
                                 [JsonProperty("url")]
-                                Uri url) {
+                                Uri url)
+                                {
             this.sid = sid;
             this.accountSid = accountSid;
             this.serviceSid = serviceSid;

@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Trunking.V1 {
+namespace Twilio.Rest.Trunking.V1 
+{
 
-    public class TrunkCreator : Creator<TrunkResource> {
+    public class TrunkCreator : Creator<TrunkResource> 
+    {
         public string friendlyName { get; set; }
         public string domainName { get; set; }
         public Uri disasterRecoveryUrl { get; set; }
@@ -28,7 +30,8 @@ namespace Twilio.Rest.Trunking.V1 {
         /// <param name="disasterRecoveryMethod"> The disaster_recovery_method </param>
         /// <param name="recording"> The recording </param>
         /// <param name="secure"> The secure </param>
-        public TrunkCreator(string friendlyName=null, string domainName=null, Uri disasterRecoveryUrl=null, Twilio.Http.HttpMethod disasterRecoveryMethod=null, string recording=null, bool? secure=null) {
+        public TrunkCreator(string friendlyName=null, string domainName=null, Uri disasterRecoveryUrl=null, Twilio.Http.HttpMethod disasterRecoveryMethod=null, string recording=null, bool? secure=null)
+        {
             this.secure = secure;
             this.recording = recording;
             this.disasterRecoveryUrl = disasterRecoveryUrl;
@@ -44,7 +47,8 @@ namespace Twilio.Rest.Trunking.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created TrunkResource </returns> 
-        public override async Task<TrunkResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<TrunkResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TRUNKING,
@@ -84,7 +88,8 @@ namespace Twilio.Rest.Trunking.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created TrunkResource </returns> 
-        public override TrunkResource Create(ITwilioRestClient client) {
+        public override TrunkResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TRUNKING,
@@ -122,28 +127,35 @@ namespace Twilio.Rest.Trunking.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (friendlyName != null) {
+        private void AddPostParams(Request request)
+        {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (domainName != null) {
+            if (domainName != null)
+            {
                 request.AddPostParam("DomainName", domainName);
             }
             
-            if (disasterRecoveryUrl != null) {
+            if (disasterRecoveryUrl != null)
+            {
                 request.AddPostParam("DisasterRecoveryUrl", disasterRecoveryUrl.ToString());
             }
             
-            if (disasterRecoveryMethod != null) {
+            if (disasterRecoveryMethod != null)
+            {
                 request.AddPostParam("DisasterRecoveryMethod", disasterRecoveryMethod.ToString());
             }
             
-            if (recording != null) {
+            if (recording != null)
+            {
                 request.AddPostParam("Recording", recording);
             }
             
-            if (secure != null) {
+            if (secure != null)
+            {
                 request.AddPostParam("Secure", secure.ToString());
             }
         }

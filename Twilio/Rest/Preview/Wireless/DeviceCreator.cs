@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Preview.Wireless {
+namespace Twilio.Rest.Preview.Wireless 
+{
 
-    public class DeviceCreator : Creator<DeviceResource> {
+    public class DeviceCreator : Creator<DeviceResource> 
+    {
         public string ratePlan { get; }
         public string alias { get; set; }
         public string callbackMethod { get; set; }
@@ -34,7 +36,8 @@ namespace Twilio.Rest.Preview.Wireless {
         /// <param name="status"> The status </param>
         /// <param name="commandsCallbackMethod"> The commands_callback_method </param>
         /// <param name="commandsCallbackUrl"> The commands_callback_url </param>
-        public DeviceCreator(string ratePlan, string alias=null, string callbackMethod=null, Uri callbackUrl=null, string friendlyName=null, string simIdentifier=null, string status=null, string commandsCallbackMethod=null, Uri commandsCallbackUrl=null) {
+        public DeviceCreator(string ratePlan, string alias=null, string callbackMethod=null, Uri callbackUrl=null, string friendlyName=null, string simIdentifier=null, string status=null, string commandsCallbackMethod=null, Uri commandsCallbackUrl=null)
+        {
             this.simIdentifier = simIdentifier;
             this.callbackMethod = callbackMethod;
             this.ratePlan = ratePlan;
@@ -53,7 +56,8 @@ namespace Twilio.Rest.Preview.Wireless {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created DeviceResource </returns> 
-        public override async Task<DeviceResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<DeviceResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.PREVIEW,
@@ -93,7 +97,8 @@ namespace Twilio.Rest.Preview.Wireless {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created DeviceResource </returns> 
-        public override DeviceResource Create(ITwilioRestClient client) {
+        public override DeviceResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.PREVIEW,
@@ -131,40 +136,50 @@ namespace Twilio.Rest.Preview.Wireless {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (ratePlan != null) {
+        private void AddPostParams(Request request)
+        {
+            if (ratePlan != null)
+            {
                 request.AddPostParam("RatePlan", ratePlan);
             }
             
-            if (alias != null) {
+            if (alias != null)
+            {
                 request.AddPostParam("Alias", alias);
             }
             
-            if (callbackMethod != null) {
+            if (callbackMethod != null)
+            {
                 request.AddPostParam("CallbackMethod", callbackMethod);
             }
             
-            if (callbackUrl != null) {
+            if (callbackUrl != null)
+            {
                 request.AddPostParam("CallbackUrl", callbackUrl.ToString());
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (simIdentifier != null) {
+            if (simIdentifier != null)
+            {
                 request.AddPostParam("SimIdentifier", simIdentifier);
             }
             
-            if (status != null) {
+            if (status != null)
+            {
                 request.AddPostParam("Status", status);
             }
             
-            if (commandsCallbackMethod != null) {
+            if (commandsCallbackMethod != null)
+            {
                 request.AddPostParam("CommandsCallbackMethod", commandsCallbackMethod);
             }
             
-            if (commandsCallbackUrl != null) {
+            if (commandsCallbackUrl != null)
+            {
                 request.AddPostParam("CommandsCallbackUrl", commandsCallbackUrl.ToString());
             }
         }

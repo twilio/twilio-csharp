@@ -10,9 +10,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Notify.V1.Service {
+namespace Twilio.Rest.Notify.V1.Service 
+{
 
-    public class BindingReader : Reader<BindingResource> {
+    public class BindingReader : Reader<BindingResource> 
+    {
         public string serviceSid { get; }
         public DateTime? startDate { get; set; }
         public DateTime? endDate { get; set; }
@@ -28,7 +30,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         /// <param name="endDate"> The end_date </param>
         /// <param name="identity"> The identity </param>
         /// <param name="tag"> The tag </param>
-        public BindingReader(string serviceSid, DateTime? startDate=null, DateTime? endDate=null, List<string> identity=null, List<string> tag=null) {
+        public BindingReader(string serviceSid, DateTime? startDate=null, DateTime? endDate=null, List<string> identity=null, List<string> tag=null)
+        {
             this.serviceSid = serviceSid;
             this.tag = tag;
             this.startDate = startDate;
@@ -43,7 +46,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> BindingResource ResourceSet </returns> 
-        public override Task<ResourceSet<BindingResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<BindingResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.NOTIFY,
@@ -63,7 +67,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> BindingResource ResourceSet </returns> 
-        public override ResourceSet<BindingResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<BindingResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.NOTIFY,
@@ -83,7 +88,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<BindingResource> NextPage(Page<BindingResource> page, ITwilioRestClient client) {
+        public override Page<BindingResource> NextPage(Page<BindingResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -101,7 +107,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<BindingResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<BindingResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -132,20 +139,25 @@ namespace Twilio.Rest.Notify.V1.Service {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (startDate != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (startDate != null)
+            {
                 request.AddQueryParam("StartDate", startDate.ToString());
             }
             
-            if (endDate != null) {
+            if (endDate != null)
+            {
                 request.AddQueryParam("EndDate", endDate.ToString());
             }
             
-            if (identity != null) {
+            if (identity != null)
+            {
                 request.AddQueryParam("Identity", identity.ToString());
             }
             
-            if (tag != null) {
+            if (tag != null)
+            {
                 request.AddQueryParam("Tag", tag.ToString());
             }
             

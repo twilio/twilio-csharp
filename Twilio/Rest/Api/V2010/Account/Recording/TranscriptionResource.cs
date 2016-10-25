@@ -6,35 +6,43 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account.Recording {
+namespace Twilio.Rest.Api.V2010.Account.Recording 
+{
 
-    public class TranscriptionResource : Resource {
-        public sealed class Status : IStringEnum {
+    public class TranscriptionResource : Resource 
+    {
+        public sealed class Status : IStringEnum 
+        {
             public const string InProgress = "in-progress";
             public const string Completed = "completed";
             public const string Failed = "failed";
         
             private string _value;
             
-            public Status() { }
+            public Status() {}
             
-            public Status(string value) {
+            public Status(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator Status(string value) {
+            public static implicit operator Status(string value)
+            {
                 return new Status(value);
             }
             
-            public static implicit operator string(Status value) {
+            public static implicit operator string(Status value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -47,7 +55,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> TranscriptionFetcher capable of executing the fetch </returns> 
-        public static TranscriptionFetcher Fetcher(string recordingSid, string sid, string accountSid=null) {
+        public static TranscriptionFetcher Fetcher(string recordingSid, string sid, string accountSid=null)
+        {
             return new TranscriptionFetcher(recordingSid, sid, accountSid:accountSid);
         }
     
@@ -59,7 +68,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> TranscriptionDeleter capable of executing the delete </returns> 
-        public static TranscriptionDeleter Deleter(string recordingSid, string sid, string accountSid=null) {
+        public static TranscriptionDeleter Deleter(string recordingSid, string sid, string accountSid=null)
+        {
             return new TranscriptionDeleter(recordingSid, sid, accountSid:accountSid);
         }
     
@@ -70,7 +80,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
         /// <param name="recordingSid"> The recording_sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> TranscriptionReader capable of executing the read </returns> 
-        public static TranscriptionReader Reader(string recordingSid, string accountSid=null) {
+        public static TranscriptionReader Reader(string recordingSid, string accountSid=null)
+        {
             return new TranscriptionReader(recordingSid, accountSid:accountSid);
         }
     
@@ -80,11 +91,15 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> TranscriptionResource object represented by the provided JSON </returns> 
-        public static TranscriptionResource FromJson(string json) {
+        public static TranscriptionResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<TranscriptionResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -117,7 +132,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
         [JsonProperty("uri")]
         public string uri { get; }
     
-        public TranscriptionResource() {
+        public TranscriptionResource()
+        {
         
         }
     
@@ -146,7 +162,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
                                       [JsonProperty("type")]
                                       string type, 
                                       [JsonProperty("uri")]
-                                      string uri) {
+                                      string uri)
+                                      {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);

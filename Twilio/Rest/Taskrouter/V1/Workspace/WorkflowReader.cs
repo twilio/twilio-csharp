@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace {
+namespace Twilio.Rest.Taskrouter.V1.Workspace 
+{
 
-    public class WorkflowReader : Reader<WorkflowResource> {
+    public class WorkflowReader : Reader<WorkflowResource> 
+    {
         public string workspaceSid { get; }
         public string friendlyName { get; set; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
-        public WorkflowReader(string workspaceSid, string friendlyName=null) {
+        public WorkflowReader(string workspaceSid, string friendlyName=null)
+        {
             this.workspaceSid = workspaceSid;
             this.friendlyName = friendlyName;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> WorkflowResource ResourceSet </returns> 
-        public override Task<ResourceSet<WorkflowResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<WorkflowResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
@@ -51,7 +55,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> WorkflowResource ResourceSet </returns> 
-        public override ResourceSet<WorkflowResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<WorkflowResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
@@ -71,7 +76,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<WorkflowResource> NextPage(Page<WorkflowResource> page, ITwilioRestClient client) {
+        public override Page<WorkflowResource> NextPage(Page<WorkflowResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -89,7 +95,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<WorkflowResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<WorkflowResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -120,8 +127,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (friendlyName != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (friendlyName != null)
+            {
                 request.AddQueryParam("FriendlyName", friendlyName);
             }
             

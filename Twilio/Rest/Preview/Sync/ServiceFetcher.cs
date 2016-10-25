@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Preview.Sync {
+namespace Twilio.Rest.Preview.Sync 
+{
 
-    public class ServiceFetcher : Fetcher<ServiceResource> {
+    public class ServiceFetcher : Fetcher<ServiceResource> 
+    {
         public string sid { get; }
     
         /// <summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Preview.Sync {
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        public ServiceFetcher(string sid) {
+        public ServiceFetcher(string sid)
+        {
             this.sid = sid;
         }
     
@@ -28,7 +31,8 @@ namespace Twilio.Rest.Preview.Sync {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched ServiceResource </returns> 
-        public override async Task<ServiceResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<ServiceResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,
@@ -67,7 +71,8 @@ namespace Twilio.Rest.Preview.Sync {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched ServiceResource </returns> 
-        public override ServiceResource Fetch(ITwilioRestClient client) {
+        public override ServiceResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,

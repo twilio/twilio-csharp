@@ -8,9 +8,11 @@ using Twilio.Rest.Trunking.V1.Trunk;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Trunking.V1.Trunk {
+namespace Twilio.Rest.Trunking.V1.Trunk 
+{
 
-    public class CredentialListDeleter : Deleter<CredentialListResource> {
+    public class CredentialListDeleter : Deleter<CredentialListResource> 
+    {
         public string trunkSid { get; }
         public string sid { get; }
     
@@ -20,7 +22,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <param name="sid"> The sid </param>
-        public CredentialListDeleter(string trunkSid, string sid) {
+        public CredentialListDeleter(string trunkSid, string sid)
+        {
             this.sid = sid;
             this.trunkSid = trunkSid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// </summary>
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
-        public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client) {
+        public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.TRUNKING,
@@ -69,7 +73,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// </summary>
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
-        public override void Delete(ITwilioRestClient client) {
+        public override void Delete(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.TRUNKING,

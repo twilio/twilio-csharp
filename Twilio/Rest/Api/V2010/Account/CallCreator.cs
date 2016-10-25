@@ -10,9 +10,11 @@ using Twilio.Types;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class CallCreator : Creator<CallResource> {
+    public class CallCreator : Creator<CallResource> 
+    {
         public string accountSid { get; }
         public IEndpoint to { get; }
         public Twilio.Types.PhoneNumber from { get; }
@@ -58,7 +60,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="recordingStatusCallbackMethod"> The recording_status_callback_method </param>
         /// <param name="sipAuthUsername"> The sip_auth_username </param>
         /// <param name="sipAuthPassword"> The sip_auth_password </param>
-        public CallCreator(IEndpoint to, Twilio.Types.PhoneNumber from, Uri url, string accountSid=null, string applicationSid=null, Twilio.Http.HttpMethod method=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, List<string> statusCallbackEvent=null, Twilio.Http.HttpMethod statusCallbackMethod=null, string sendDigits=null, string ifMachine=null, int? timeout=null, bool? record=null, string recordingChannels=null, string recordingStatusCallback=null, Twilio.Http.HttpMethod recordingStatusCallbackMethod=null, string sipAuthUsername=null, string sipAuthPassword=null) {
+        public CallCreator(IEndpoint to, Twilio.Types.PhoneNumber from, Uri url, string accountSid=null, string applicationSid=null, Twilio.Http.HttpMethod method=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, List<string> statusCallbackEvent=null, Twilio.Http.HttpMethod statusCallbackMethod=null, string sendDigits=null, string ifMachine=null, int? timeout=null, bool? record=null, string recordingChannels=null, string recordingStatusCallback=null, Twilio.Http.HttpMethod recordingStatusCallbackMethod=null, string sipAuthUsername=null, string sipAuthPassword=null)
+        {
             this.sipAuthUsername = sipAuthUsername;
             this.record = record;
             this.url = url;
@@ -105,7 +108,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="recordingStatusCallbackMethod"> The recording_status_callback_method </param>
         /// <param name="sipAuthUsername"> The sip_auth_username </param>
         /// <param name="sipAuthPassword"> The sip_auth_password </param>
-        public CallCreator(IEndpoint to, Twilio.Types.PhoneNumber from, string applicationSid, string accountSid=null, Uri url=null, Twilio.Http.HttpMethod method=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, List<string> statusCallbackEvent=null, Twilio.Http.HttpMethod statusCallbackMethod=null, string sendDigits=null, string ifMachine=null, int? timeout=null, bool? record=null, string recordingChannels=null, string recordingStatusCallback=null, Twilio.Http.HttpMethod recordingStatusCallbackMethod=null, string sipAuthUsername=null, string sipAuthPassword=null) {
+        public CallCreator(IEndpoint to, Twilio.Types.PhoneNumber from, string applicationSid, string accountSid=null, Uri url=null, Twilio.Http.HttpMethod method=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, List<string> statusCallbackEvent=null, Twilio.Http.HttpMethod statusCallbackMethod=null, string sendDigits=null, string ifMachine=null, int? timeout=null, bool? record=null, string recordingChannels=null, string recordingStatusCallback=null, Twilio.Http.HttpMethod recordingStatusCallbackMethod=null, string sipAuthUsername=null, string sipAuthPassword=null)
+        {
             this.sipAuthUsername = sipAuthUsername;
             this.record = record;
             this.url = url;
@@ -135,7 +139,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created CallResource </returns> 
-        public override async Task<CallResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<CallResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
@@ -175,7 +180,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created CallResource </returns> 
-        public override CallResource Create(ITwilioRestClient client) {
+        public override CallResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
@@ -213,80 +219,100 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (to != null) {
+        private void AddPostParams(Request request)
+        {
+            if (to != null)
+            {
                 request.AddPostParam("To", to.ToString());
             }
             
-            if (from != null) {
+            if (from != null)
+            {
                 request.AddPostParam("From", from.ToString());
             }
             
-            if (url != null) {
+            if (url != null)
+            {
                 request.AddPostParam("Url", url.ToString());
             }
             
-            if (applicationSid != null) {
+            if (applicationSid != null)
+            {
                 request.AddPostParam("ApplicationSid", applicationSid);
             }
             
-            if (method != null) {
+            if (method != null)
+            {
                 request.AddPostParam("Method", method.ToString());
             }
             
-            if (fallbackUrl != null) {
+            if (fallbackUrl != null)
+            {
                 request.AddPostParam("FallbackUrl", fallbackUrl.ToString());
             }
             
-            if (fallbackMethod != null) {
+            if (fallbackMethod != null)
+            {
                 request.AddPostParam("FallbackMethod", fallbackMethod.ToString());
             }
             
-            if (statusCallback != null) {
+            if (statusCallback != null)
+            {
                 request.AddPostParam("StatusCallback", statusCallback.ToString());
             }
             
-            if (statusCallbackEvent != null) {
+            if (statusCallbackEvent != null)
+            {
                 request.AddPostParam("StatusCallbackEvent", statusCallbackEvent.ToString());
             }
             
-            if (statusCallbackMethod != null) {
+            if (statusCallbackMethod != null)
+            {
                 request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
             
-            if (sendDigits != null) {
+            if (sendDigits != null)
+            {
                 request.AddPostParam("SendDigits", sendDigits);
             }
             
-            if (ifMachine != null) {
+            if (ifMachine != null)
+            {
                 request.AddPostParam("IfMachine", ifMachine);
             }
             
-            if (timeout != null) {
+            if (timeout != null)
+            {
                 request.AddPostParam("Timeout", timeout.ToString());
             }
             
-            if (record != null) {
+            if (record != null)
+            {
                 request.AddPostParam("Record", record.ToString());
             }
             
-            if (recordingChannels != null) {
+            if (recordingChannels != null)
+            {
                 request.AddPostParam("RecordingChannels", recordingChannels);
             }
             
-            if (recordingStatusCallback != null) {
+            if (recordingStatusCallback != null)
+            {
                 request.AddPostParam("RecordingStatusCallback", recordingStatusCallback);
             }
             
-            if (recordingStatusCallbackMethod != null) {
+            if (recordingStatusCallbackMethod != null)
+            {
                 request.AddPostParam("RecordingStatusCallbackMethod", recordingStatusCallbackMethod.ToString());
             }
             
-            if (sipAuthUsername != null) {
+            if (sipAuthUsername != null)
+            {
                 request.AddPostParam("SipAuthUsername", sipAuthUsername);
             }
             
-            if (sipAuthPassword != null) {
+            if (sipAuthPassword != null)
+            {
                 request.AddPostParam("SipAuthPassword", sipAuthPassword);
             }
         }

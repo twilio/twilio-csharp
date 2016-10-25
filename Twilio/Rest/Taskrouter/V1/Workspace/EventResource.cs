@@ -7,9 +7,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace {
+namespace Twilio.Rest.Taskrouter.V1.Workspace 
+{
 
-    public class EventResource : Resource {
+    public class EventResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> EventFetcher capable of executing the fetch </returns> 
-        public static EventFetcher Fetcher(string workspaceSid, string sid) {
+        public static EventFetcher Fetcher(string workspaceSid, string sid)
+        {
             return new EventFetcher(workspaceSid, sid);
         }
     
@@ -36,7 +39,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="workerSid"> The worker_sid </param>
         /// <param name="workflowSid"> The workflow_sid </param>
         /// <returns> EventReader capable of executing the read </returns> 
-        public static EventReader Reader(string workspaceSid, DateTime? endDate=null, string eventType=null, int? minutes=null, string reservationSid=null, DateTime? startDate=null, string taskQueueSid=null, string taskSid=null, string workerSid=null, string workflowSid=null) {
+        public static EventReader Reader(string workspaceSid, DateTime? endDate=null, string eventType=null, int? minutes=null, string reservationSid=null, DateTime? startDate=null, string taskQueueSid=null, string taskSid=null, string workerSid=null, string workflowSid=null)
+        {
             return new EventReader(workspaceSid, endDate:endDate, eventType:eventType, minutes:minutes, reservationSid:reservationSid, startDate:startDate, taskQueueSid:taskQueueSid, taskSid:taskSid, workerSid:workerSid, workflowSid:workflowSid);
         }
     
@@ -46,11 +50,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> EventResource object represented by the provided JSON </returns> 
-        public static EventResource FromJson(string json) {
+        public static EventResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<EventResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -86,7 +94,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         [JsonProperty("url")]
         public Uri url { get; }
     
-        public EventResource() {
+        public EventResource()
+        {
         
         }
     
@@ -119,7 +128,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
                               [JsonProperty("source_ip_address")]
                               string sourceIpAddress, 
                               [JsonProperty("url")]
-                              Uri url) {
+                              Uri url)
+                              {
             this.accountSid = accountSid;
             this.actorSid = actorSid;
             this.actorType = actorType;

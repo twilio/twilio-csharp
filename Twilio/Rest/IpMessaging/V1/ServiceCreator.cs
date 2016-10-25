@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.IpMessaging.V1 {
+namespace Twilio.Rest.IpMessaging.V1 
+{
 
-    public class ServiceCreator : Creator<ServiceResource> {
+    public class ServiceCreator : Creator<ServiceResource> 
+    {
         public string friendlyName { get; }
     
         /// <summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.IpMessaging.V1 {
         /// </summary>
         ///
         /// <param name="friendlyName"> The friendly_name </param>
-        public ServiceCreator(string friendlyName) {
+        public ServiceCreator(string friendlyName)
+        {
             this.friendlyName = friendlyName;
         }
     
@@ -28,7 +31,8 @@ namespace Twilio.Rest.IpMessaging.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created ServiceResource </returns> 
-        public override async Task<ServiceResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<ServiceResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.IP_MESSAGING,
@@ -68,7 +72,8 @@ namespace Twilio.Rest.IpMessaging.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created ServiceResource </returns> 
-        public override ServiceResource Create(ITwilioRestClient client) {
+        public override ServiceResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.IP_MESSAGING,
@@ -106,8 +111,10 @@ namespace Twilio.Rest.IpMessaging.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (friendlyName != null) {
+        private void AddPostParams(Request request)
+        {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

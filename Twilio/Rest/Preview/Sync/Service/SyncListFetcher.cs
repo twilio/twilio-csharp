@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Preview.Sync.Service {
+namespace Twilio.Rest.Preview.Sync.Service 
+{
 
-    public class SyncListFetcher : Fetcher<SyncListResource> {
+    public class SyncListFetcher : Fetcher<SyncListResource> 
+    {
         public string serviceSid { get; }
         public string sid { get; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
-        public SyncListFetcher(string serviceSid, string sid) {
+        public SyncListFetcher(string serviceSid, string sid)
+        {
             this.serviceSid = serviceSid;
             this.sid = sid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched SyncListResource </returns> 
-        public override async Task<SyncListResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<SyncListResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,
@@ -70,7 +74,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched SyncListResource </returns> 
-        public override SyncListResource Fetch(ITwilioRestClient client) {
+        public override SyncListResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,

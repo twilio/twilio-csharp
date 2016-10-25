@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
+namespace Twilio.Rest.Api.V2010.Account.Sip.Domain 
+{
 
-    public class IpAccessControlListMappingCreator : Creator<IpAccessControlListMappingResource> {
+    public class IpAccessControlListMappingCreator : Creator<IpAccessControlListMappingResource> 
+    {
         public string accountSid { get; }
         public string domainSid { get; }
         public string ipAccessControlListSid { get; }
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         /// <param name="domainSid"> The domain_sid </param>
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        public IpAccessControlListMappingCreator(string domainSid, string ipAccessControlListSid, string accountSid=null) {
+        public IpAccessControlListMappingCreator(string domainSid, string ipAccessControlListSid, string accountSid=null)
+        {
             this.accountSid = accountSid;
             this.ipAccessControlListSid = ipAccessControlListSid;
             this.domainSid = domainSid;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created IpAccessControlListMappingResource </returns> 
-        public override async Task<IpAccessControlListMappingResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<IpAccessControlListMappingResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
@@ -74,7 +78,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created IpAccessControlListMappingResource </returns> 
-        public override IpAccessControlListMappingResource Create(ITwilioRestClient client) {
+        public override IpAccessControlListMappingResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
@@ -112,8 +117,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (ipAccessControlListSid != null) {
+        private void AddPostParams(Request request)
+        {
+            if (ipAccessControlListSid != null)
+            {
                 request.AddPostParam("IpAccessControlListSid", ipAccessControlListSid);
             }
         }

@@ -6,63 +6,77 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Sync.Service.SyncList {
+namespace Twilio.Rest.Preview.Sync.Service.SyncList 
+{
 
-    public class SyncListItemResource : Resource {
-        public sealed class QueryResultOrder : IStringEnum {
+    public class SyncListItemResource : Resource 
+    {
+        public sealed class QueryResultOrder : IStringEnum 
+        {
             public const string Asc = "asc";
             public const string Desc = "desc";
         
             private string _value;
             
-            public QueryResultOrder() { }
+            public QueryResultOrder() {}
             
-            public QueryResultOrder(string value) {
+            public QueryResultOrder(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator QueryResultOrder(string value) {
+            public static implicit operator QueryResultOrder(string value)
+            {
                 return new QueryResultOrder(value);
             }
             
-            public static implicit operator string(QueryResultOrder value) {
+            public static implicit operator string(QueryResultOrder value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
     
-        public sealed class QueryFromBoundType : IStringEnum {
+        public sealed class QueryFromBoundType : IStringEnum 
+        {
             public const string Inclusive = "inclusive";
             public const string Exclusive = "exclusive";
         
             private string _value;
             
-            public QueryFromBoundType() { }
+            public QueryFromBoundType() {}
             
-            public QueryFromBoundType(string value) {
+            public QueryFromBoundType(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator QueryFromBoundType(string value) {
+            public static implicit operator QueryFromBoundType(string value)
+            {
                 return new QueryFromBoundType(value);
             }
             
-            public static implicit operator string(QueryFromBoundType value) {
+            public static implicit operator string(QueryFromBoundType value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -75,7 +89,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         /// <param name="listSid"> The list_sid </param>
         /// <param name="index"> The index </param>
         /// <returns> SyncListItemFetcher capable of executing the fetch </returns> 
-        public static SyncListItemFetcher Fetcher(string serviceSid, string listSid, int? index) {
+        public static SyncListItemFetcher Fetcher(string serviceSid, string listSid, int? index)
+        {
             return new SyncListItemFetcher(serviceSid, listSid, index);
         }
     
@@ -87,7 +102,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         /// <param name="listSid"> The list_sid </param>
         /// <param name="index"> The index </param>
         /// <returns> SyncListItemDeleter capable of executing the delete </returns> 
-        public static SyncListItemDeleter Deleter(string serviceSid, string listSid, int? index) {
+        public static SyncListItemDeleter Deleter(string serviceSid, string listSid, int? index)
+        {
             return new SyncListItemDeleter(serviceSid, listSid, index);
         }
     
@@ -99,7 +115,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         /// <param name="listSid"> The list_sid </param>
         /// <param name="data"> The data </param>
         /// <returns> SyncListItemCreator capable of executing the create </returns> 
-        public static SyncListItemCreator Creator(string serviceSid, string listSid, Object data) {
+        public static SyncListItemCreator Creator(string serviceSid, string listSid, Object data)
+        {
             return new SyncListItemCreator(serviceSid, listSid, data);
         }
     
@@ -113,7 +130,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         /// <param name="from"> The from </param>
         /// <param name="bounds"> The bounds </param>
         /// <returns> SyncListItemReader capable of executing the read </returns> 
-        public static SyncListItemReader Reader(string serviceSid, string listSid, SyncListItemResource.QueryResultOrder order=null, string from=null, SyncListItemResource.QueryFromBoundType bounds=null) {
+        public static SyncListItemReader Reader(string serviceSid, string listSid, SyncListItemResource.QueryResultOrder order=null, string from=null, SyncListItemResource.QueryFromBoundType bounds=null)
+        {
             return new SyncListItemReader(serviceSid, listSid, order:order, from:from, bounds:bounds);
         }
     
@@ -126,7 +144,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         /// <param name="index"> The index </param>
         /// <param name="data"> The data </param>
         /// <returns> SyncListItemUpdater capable of executing the update </returns> 
-        public static SyncListItemUpdater Updater(string serviceSid, string listSid, int? index, Object data) {
+        public static SyncListItemUpdater Updater(string serviceSid, string listSid, int? index, Object data)
+        {
             return new SyncListItemUpdater(serviceSid, listSid, index, data);
         }
     
@@ -136,11 +155,15 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> SyncListItemResource object represented by the provided JSON </returns> 
-        public static SyncListItemResource FromJson(string json) {
+        public static SyncListItemResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<SyncListItemResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -166,7 +189,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         [JsonProperty("created_by")]
         public string createdBy { get; }
     
-        public SyncListItemResource() {
+        public SyncListItemResource()
+        {
         
         }
     
@@ -189,7 +213,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
                                      [JsonProperty("date_updated")]
                                      string dateUpdated, 
                                      [JsonProperty("created_by")]
-                                     string createdBy) {
+                                     string createdBy)
+                                     {
             this.index = index;
             this.accountSid = accountSid;
             this.serviceSid = serviceSid;

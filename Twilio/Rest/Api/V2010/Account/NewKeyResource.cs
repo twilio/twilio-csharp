@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class NewKeyResource : Resource {
+    public class NewKeyResource : Resource 
+    {
         /// <summary>
         /// create
         /// </summary>
@@ -16,7 +18,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="accountSid"> The account_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> NewKeyCreator capable of executing the create </returns> 
-        public static NewKeyCreator Creator(string accountSid=null, string friendlyName=null) {
+        public static NewKeyCreator Creator(string accountSid=null, string friendlyName=null)
+        {
             return new NewKeyCreator(accountSid:accountSid, friendlyName:friendlyName);
         }
     
@@ -26,11 +29,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> NewKeyResource object represented by the provided JSON </returns> 
-        public static NewKeyResource FromJson(string json) {
+        public static NewKeyResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<NewKeyResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -46,7 +53,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         [JsonProperty("secret")]
         public string secret { get; }
     
-        public NewKeyResource() {
+        public NewKeyResource()
+        {
         
         }
     
@@ -59,7 +67,8 @@ namespace Twilio.Rest.Api.V2010.Account {
                                [JsonProperty("date_updated")]
                                string dateUpdated, 
                                [JsonProperty("secret")]
-                               string secret) {
+                               string secret)
+                               {
             this.sid = sid;
             this.friendlyName = friendlyName;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);

@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Notify.V1.Service {
+namespace Twilio.Rest.Notify.V1.Service 
+{
 
-    public class BindingCreator : Creator<BindingResource> {
+    public class BindingCreator : Creator<BindingResource> 
+    {
         public string serviceSid { get; }
         public string endpoint { get; }
         public string identity { get; }
@@ -32,7 +34,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         /// <param name="tag"> The tag </param>
         /// <param name="notificationProtocolVersion"> The notification_protocol_version </param>
         /// <param name="credentialSid"> The credential_sid </param>
-        public BindingCreator(string serviceSid, string endpoint, string identity, BindingResource.BindingType bindingType, string address, List<string> tag=null, string notificationProtocolVersion=null, string credentialSid=null) {
+        public BindingCreator(string serviceSid, string endpoint, string identity, BindingResource.BindingType bindingType, string address, List<string> tag=null, string notificationProtocolVersion=null, string credentialSid=null)
+        {
             this.serviceSid = serviceSid;
             this.endpoint = endpoint;
             this.bindingType = bindingType;
@@ -50,7 +53,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created BindingResource </returns> 
-        public override async Task<BindingResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<BindingResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.NOTIFY,
@@ -90,7 +94,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created BindingResource </returns> 
-        public override BindingResource Create(ITwilioRestClient client) {
+        public override BindingResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.NOTIFY,
@@ -128,32 +133,40 @@ namespace Twilio.Rest.Notify.V1.Service {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (endpoint != null) {
+        private void AddPostParams(Request request)
+        {
+            if (endpoint != null)
+            {
                 request.AddPostParam("Endpoint", endpoint);
             }
             
-            if (identity != null) {
+            if (identity != null)
+            {
                 request.AddPostParam("Identity", identity);
             }
             
-            if (bindingType != null) {
+            if (bindingType != null)
+            {
                 request.AddPostParam("BindingType", bindingType.ToString());
             }
             
-            if (address != null) {
+            if (address != null)
+            {
                 request.AddPostParam("Address", address);
             }
             
-            if (tag != null) {
+            if (tag != null)
+            {
                 request.AddPostParam("Tag", tag.ToString());
             }
             
-            if (notificationProtocolVersion != null) {
+            if (notificationProtocolVersion != null)
+            {
                 request.AddPostParam("NotificationProtocolVersion", notificationProtocolVersion);
             }
             
-            if (credentialSid != null) {
+            if (credentialSid != null)
+            {
                 request.AddPostParam("CredentialSid", credentialSid);
             }
         }

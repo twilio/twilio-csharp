@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Pricing.V1.Voice {
+namespace Twilio.Rest.Pricing.V1.Voice 
+{
 
-    public class NumberFetcher : Fetcher<NumberResource> {
+    public class NumberFetcher : Fetcher<NumberResource> 
+    {
         public Twilio.Types.PhoneNumber number { get; }
     
         /// <summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Pricing.V1.Voice {
         /// </summary>
         ///
         /// <param name="number"> The number </param>
-        public NumberFetcher(Twilio.Types.PhoneNumber number) {
+        public NumberFetcher(Twilio.Types.PhoneNumber number)
+        {
             this.number = number;
         }
     
@@ -28,7 +31,8 @@ namespace Twilio.Rest.Pricing.V1.Voice {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched NumberResource </returns> 
-        public override async Task<NumberResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<NumberResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PRICING,
@@ -67,7 +71,8 @@ namespace Twilio.Rest.Pricing.V1.Voice {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched NumberResource </returns> 
-        public override NumberResource Fetch(ITwilioRestClient client) {
+        public override NumberResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PRICING,

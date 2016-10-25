@@ -7,9 +7,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Sync.Service {
+namespace Twilio.Rest.Preview.Sync.Service 
+{
 
-    public class SyncListResource : Resource {
+    public class SyncListResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> SyncListFetcher capable of executing the fetch </returns> 
-        public static SyncListFetcher Fetcher(string serviceSid, string sid) {
+        public static SyncListFetcher Fetcher(string serviceSid, string sid)
+        {
             return new SyncListFetcher(serviceSid, sid);
         }
     
@@ -28,7 +31,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> SyncListDeleter capable of executing the delete </returns> 
-        public static SyncListDeleter Deleter(string serviceSid, string sid) {
+        public static SyncListDeleter Deleter(string serviceSid, string sid)
+        {
             return new SyncListDeleter(serviceSid, sid);
         }
     
@@ -39,7 +43,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="uniqueName"> The unique_name </param>
         /// <returns> SyncListCreator capable of executing the create </returns> 
-        public static SyncListCreator Creator(string serviceSid, string uniqueName=null) {
+        public static SyncListCreator Creator(string serviceSid, string uniqueName=null)
+        {
             return new SyncListCreator(serviceSid, uniqueName:uniqueName);
         }
     
@@ -49,7 +54,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <returns> SyncListReader capable of executing the read </returns> 
-        public static SyncListReader Reader(string serviceSid) {
+        public static SyncListReader Reader(string serviceSid)
+        {
             return new SyncListReader(serviceSid);
         }
     
@@ -59,11 +65,15 @@ namespace Twilio.Rest.Preview.Sync.Service {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> SyncListResource object represented by the provided JSON </returns> 
-        public static SyncListResource FromJson(string json) {
+        public static SyncListResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<SyncListResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -89,7 +99,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         [JsonProperty("created_by")]
         public string createdBy { get; }
     
-        public SyncListResource() {
+        public SyncListResource()
+        {
         
         }
     
@@ -112,7 +123,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
                                  [JsonProperty("date_updated")]
                                  string dateUpdated, 
                                  [JsonProperty("created_by")]
-                                 string createdBy) {
+                                 string createdBy)
+                                 {
             this.sid = sid;
             this.uniqueName = uniqueName;
             this.accountSid = accountSid;

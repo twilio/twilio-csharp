@@ -9,9 +9,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Lookups.V1 {
+namespace Twilio.Rest.Lookups.V1 
+{
 
-    public class PhoneNumberFetcher : Fetcher<PhoneNumberResource> {
+    public class PhoneNumberFetcher : Fetcher<PhoneNumberResource> 
+    {
         public Twilio.Types.PhoneNumber phoneNumber { get; }
         public string countryCode { get; set; }
         public List<string> type { get; set; }
@@ -27,7 +29,8 @@ namespace Twilio.Rest.Lookups.V1 {
         /// <param name="type"> The type </param>
         /// <param name="addOns"> The add_ons </param>
         /// <param name="addOnsData"> The add_ons_data </param>
-        public PhoneNumberFetcher(Twilio.Types.PhoneNumber phoneNumber, string countryCode=null, List<string> type=null, List<string> addOns=null, Dictionary<string, object> addOnsData=null) {
+        public PhoneNumberFetcher(Twilio.Types.PhoneNumber phoneNumber, string countryCode=null, List<string> type=null, List<string> addOns=null, Dictionary<string, object> addOnsData=null)
+        {
             this.phoneNumber = phoneNumber;
             this.addOns = addOns;
             this.addOnsData = addOnsData;
@@ -42,7 +45,8 @@ namespace Twilio.Rest.Lookups.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched PhoneNumberResource </returns> 
-        public override async Task<PhoneNumberResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<PhoneNumberResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.LOOKUPS,
@@ -84,7 +88,8 @@ namespace Twilio.Rest.Lookups.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched PhoneNumberResource </returns> 
-        public override PhoneNumberResource Fetch(ITwilioRestClient client) {
+        public override PhoneNumberResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.LOOKUPS,
@@ -124,24 +129,31 @@ namespace Twilio.Rest.Lookups.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (countryCode != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (countryCode != null)
+            {
                 request.AddQueryParam("CountryCode", countryCode);
             }
             
-            if (type != null) {
-                foreach (object prop in type) {
+            if (type != null)
+            {
+                foreach (object prop in type)
+                {
                     request.AddQueryParam("Type", prop.ToString());
                 }
             }
             
-            if (addOns != null) {
-                foreach (object prop in addOns) {
+            if (addOns != null)
+            {
+                foreach (object prop in addOns)
+                {
                     request.AddQueryParam("AddOns", prop.ToString());
                 }
             }
             
-            if (addOnsData != null) {
+            if (addOnsData != null)
+            {
                 Dictionary<string, string> dictParams = PrefixedCollapsibleMap.Serialize(addOnsData, "AddOns");
                 foreach (KeyValuePair<string, string> entry in dictParams) {
                     request.AddQueryParam(entry.Key, entry.Value);

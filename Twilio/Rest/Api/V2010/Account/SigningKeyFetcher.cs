@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class SigningKeyFetcher : Fetcher<SigningKeyResource> {
+    public class SigningKeyFetcher : Fetcher<SigningKeyResource> 
+    {
         public string accountSid { get; }
         public string sid { get; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        public SigningKeyFetcher(string sid, string accountSid=null) {
+        public SigningKeyFetcher(string sid, string accountSid=null)
+        {
             this.accountSid = accountSid;
             this.sid = sid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched SigningKeyResource </returns> 
-        public override async Task<SigningKeyResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<SigningKeyResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -70,7 +74,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched SigningKeyResource </returns> 
-        public override SigningKeyResource Fetch(ITwilioRestClient client) {
+        public override SigningKeyResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

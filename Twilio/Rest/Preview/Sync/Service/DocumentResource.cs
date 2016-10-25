@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Sync.Service {
+namespace Twilio.Rest.Preview.Sync.Service 
+{
 
-    public class DocumentResource : Resource {
+    public class DocumentResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
@@ -16,7 +18,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> DocumentFetcher capable of executing the fetch </returns> 
-        public static DocumentFetcher Fetcher(string serviceSid, string sid) {
+        public static DocumentFetcher Fetcher(string serviceSid, string sid)
+        {
             return new DocumentFetcher(serviceSid, sid);
         }
     
@@ -27,7 +30,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> DocumentDeleter capable of executing the delete </returns> 
-        public static DocumentDeleter Deleter(string serviceSid, string sid) {
+        public static DocumentDeleter Deleter(string serviceSid, string sid)
+        {
             return new DocumentDeleter(serviceSid, sid);
         }
     
@@ -39,7 +43,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="data"> The data </param>
         /// <returns> DocumentCreator capable of executing the create </returns> 
-        public static DocumentCreator Creator(string serviceSid, string uniqueName=null, Object data=null) {
+        public static DocumentCreator Creator(string serviceSid, string uniqueName=null, Object data=null)
+        {
             return new DocumentCreator(serviceSid, uniqueName:uniqueName, data:data);
         }
     
@@ -49,7 +54,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <returns> DocumentReader capable of executing the read </returns> 
-        public static DocumentReader Reader(string serviceSid) {
+        public static DocumentReader Reader(string serviceSid)
+        {
             return new DocumentReader(serviceSid);
         }
     
@@ -61,7 +67,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// <param name="sid"> The sid </param>
         /// <param name="data"> The data </param>
         /// <returns> DocumentUpdater capable of executing the update </returns> 
-        public static DocumentUpdater Updater(string serviceSid, string sid, Object data) {
+        public static DocumentUpdater Updater(string serviceSid, string sid, Object data)
+        {
             return new DocumentUpdater(serviceSid, sid, data);
         }
     
@@ -71,11 +78,15 @@ namespace Twilio.Rest.Preview.Sync.Service {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> DocumentResource object represented by the provided JSON </returns> 
-        public static DocumentResource FromJson(string json) {
+        public static DocumentResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<DocumentResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -101,7 +112,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         [JsonProperty("created_by")]
         public string createdBy { get; }
     
-        public DocumentResource() {
+        public DocumentResource()
+        {
         
         }
     
@@ -124,7 +136,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
                                  [JsonProperty("date_updated")]
                                  string dateUpdated, 
                                  [JsonProperty("created_by")]
-                                 string createdBy) {
+                                 string createdBy)
+                                 {
             this.sid = sid;
             this.uniqueName = uniqueName;
             this.accountSid = accountSid;

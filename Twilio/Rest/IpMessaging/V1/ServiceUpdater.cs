@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.IpMessaging.V1 {
+namespace Twilio.Rest.IpMessaging.V1 
+{
 
-    public class ServiceUpdater : Updater<ServiceResource> {
+    public class ServiceUpdater : Updater<ServiceResource> 
+    {
         public string sid { get; }
         public string friendlyName { get; set; }
         public string defaultServiceRoleSid { get; set; }
@@ -34,7 +36,8 @@ namespace Twilio.Rest.IpMessaging.V1 {
         /// <param name="typingIndicatorTimeout"> The typing_indicator_timeout </param>
         /// <param name="consumptionReportInterval"> The consumption_report_interval </param>
         /// <param name="webhooks"> The webhooks </param>
-        public ServiceUpdater(string sid, string friendlyName=null, string defaultServiceRoleSid=null, string defaultChannelRoleSid=null, string defaultChannelCreatorRoleSid=null, bool? readStatusEnabled=null, int? typingIndicatorTimeout=null, int? consumptionReportInterval=null, Object webhooks=null) {
+        public ServiceUpdater(string sid, string friendlyName=null, string defaultServiceRoleSid=null, string defaultChannelRoleSid=null, string defaultChannelCreatorRoleSid=null, bool? readStatusEnabled=null, int? typingIndicatorTimeout=null, int? consumptionReportInterval=null, Object webhooks=null)
+        {
             this.sid = sid;
             this.defaultServiceRoleSid = defaultServiceRoleSid;
             this.typingIndicatorTimeout = typingIndicatorTimeout;
@@ -53,7 +56,8 @@ namespace Twilio.Rest.IpMessaging.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated ServiceResource </returns> 
-        public override async Task<ServiceResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<ServiceResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.IP_MESSAGING,
@@ -93,7 +97,8 @@ namespace Twilio.Rest.IpMessaging.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated ServiceResource </returns> 
-        public override ServiceResource Update(ITwilioRestClient client) {
+        public override ServiceResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.IP_MESSAGING,
@@ -131,36 +136,45 @@ namespace Twilio.Rest.IpMessaging.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (friendlyName != null) {
+        private void AddPostParams(Request request)
+        {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (defaultServiceRoleSid != null) {
+            if (defaultServiceRoleSid != null)
+            {
                 request.AddPostParam("DefaultServiceRoleSid", defaultServiceRoleSid);
             }
             
-            if (defaultChannelRoleSid != null) {
+            if (defaultChannelRoleSid != null)
+            {
                 request.AddPostParam("DefaultChannelRoleSid", defaultChannelRoleSid);
             }
             
-            if (defaultChannelCreatorRoleSid != null) {
+            if (defaultChannelCreatorRoleSid != null)
+            {
                 request.AddPostParam("DefaultChannelCreatorRoleSid", defaultChannelCreatorRoleSid);
             }
             
-            if (readStatusEnabled != null) {
+            if (readStatusEnabled != null)
+            {
                 request.AddPostParam("ReadStatusEnabled", readStatusEnabled.ToString());
             }
             
-            if (typingIndicatorTimeout != null) {
+            if (typingIndicatorTimeout != null)
+            {
                 request.AddPostParam("TypingIndicatorTimeout", typingIndicatorTimeout.ToString());
             }
             
-            if (consumptionReportInterval != null) {
+            if (consumptionReportInterval != null)
+            {
                 request.AddPostParam("ConsumptionReportInterval", consumptionReportInterval.ToString());
             }
             
-            if (webhooks != null) {
+            if (webhooks != null)
+            {
                 request.AddPostParam("Webhooks", webhooks.ToString());
             }
         }

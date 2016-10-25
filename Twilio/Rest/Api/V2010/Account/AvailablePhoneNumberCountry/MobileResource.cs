@@ -7,9 +7,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
+namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry 
+{
 
-    public class MobileResource : Resource {
+    public class MobileResource : Resource 
+    {
         /// <summary>
         /// read
         /// </summary>
@@ -33,7 +35,8 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
         /// <param name="inRateCenter"> The in_rate_center </param>
         /// <param name="inLata"> The in_lata </param>
         /// <returns> MobileReader capable of executing the read </returns> 
-        public static MobileReader Reader(string countryCode, string accountSid=null, int? areaCode=null, string contains=null, bool? smsEnabled=null, bool? mmsEnabled=null, bool? voiceEnabled=null, bool? excludeAllAddressRequired=null, bool? excludeLocalAddressRequired=null, bool? excludeForeignAddressRequired=null, bool? beta=null, Twilio.Types.PhoneNumber nearNumber=null, string nearLatLong=null, int? distance=null, string inPostalCode=null, string inRegion=null, string inRateCenter=null, string inLata=null) {
+        public static MobileReader Reader(string countryCode, string accountSid=null, int? areaCode=null, string contains=null, bool? smsEnabled=null, bool? mmsEnabled=null, bool? voiceEnabled=null, bool? excludeAllAddressRequired=null, bool? excludeLocalAddressRequired=null, bool? excludeForeignAddressRequired=null, bool? beta=null, Twilio.Types.PhoneNumber nearNumber=null, string nearLatLong=null, int? distance=null, string inPostalCode=null, string inRegion=null, string inRateCenter=null, string inLata=null)
+        {
             return new MobileReader(countryCode, accountSid:accountSid, areaCode:areaCode, contains:contains, smsEnabled:smsEnabled, mmsEnabled:mmsEnabled, voiceEnabled:voiceEnabled, excludeAllAddressRequired:excludeAllAddressRequired, excludeLocalAddressRequired:excludeLocalAddressRequired, excludeForeignAddressRequired:excludeForeignAddressRequired, beta:beta, nearNumber:nearNumber, nearLatLong:nearLatLong, distance:distance, inPostalCode:inPostalCode, inRegion:inRegion, inRateCenter:inRateCenter, inLata:inLata);
         }
     
@@ -43,11 +46,15 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> MobileResource object represented by the provided JSON </returns> 
-        public static MobileResource FromJson(string json) {
+        public static MobileResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<MobileResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -79,7 +86,8 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
         [JsonProperty("capabilities")]
         public PhoneNumberCapabilities capabilities { get; }
     
-        public MobileResource() {
+        public MobileResource()
+        {
         
         }
     
@@ -106,7 +114,8 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
                                [JsonProperty("beta")]
                                bool? beta, 
                                [JsonProperty("capabilities")]
-                               PhoneNumberCapabilities capabilities) {
+                               PhoneNumberCapabilities capabilities)
+                               {
             this.friendlyName = friendlyName;
             this.phoneNumber = phoneNumber;
             this.lata = lata;

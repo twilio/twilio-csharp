@@ -8,10 +8,13 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class CallResource : Resource {
-        public sealed class Event : IStringEnum {
+    public class CallResource : Resource 
+    {
+        public sealed class Event : IStringEnum 
+        {
             public const string Initiated = "initiated";
             public const string Ringing = "ringing";
             public const string Answered = "answered";
@@ -19,30 +22,36 @@ namespace Twilio.Rest.Api.V2010.Account {
         
             private string _value;
             
-            public Event() { }
+            public Event() {}
             
-            public Event(string value) {
+            public Event(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator Event(string value) {
+            public static implicit operator Event(string value)
+            {
                 return new Event(value);
             }
             
-            public static implicit operator string(Event value) {
+            public static implicit operator string(Event value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
     
-        public sealed class Status : IStringEnum {
+        public sealed class Status : IStringEnum 
+        {
             public const string Queued = "queued";
             public const string Ringing = "ringing";
             public const string InProgress = "in-progress";
@@ -54,25 +63,30 @@ namespace Twilio.Rest.Api.V2010.Account {
         
             private string _value;
             
-            public Status() { }
+            public Status() {}
             
-            public Status(string value) {
+            public Status(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator Status(string value) {
+            public static implicit operator Status(string value)
+            {
                 return new Status(value);
             }
             
-            public static implicit operator string(Status value) {
+            public static implicit operator string(Status value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -102,7 +116,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="sipAuthUsername"> The sip_auth_username </param>
         /// <param name="sipAuthPassword"> The sip_auth_password </param>
         /// <returns> CallCreator capable of executing the create </returns> 
-        public static CallCreator Creator(IEndpoint to, Twilio.Types.PhoneNumber from, Uri url, string accountSid=null, string applicationSid=null, Twilio.Http.HttpMethod method=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, List<string> statusCallbackEvent=null, Twilio.Http.HttpMethod statusCallbackMethod=null, string sendDigits=null, string ifMachine=null, int? timeout=null, bool? record=null, string recordingChannels=null, string recordingStatusCallback=null, Twilio.Http.HttpMethod recordingStatusCallbackMethod=null, string sipAuthUsername=null, string sipAuthPassword=null) {
+        public static CallCreator Creator(IEndpoint to, Twilio.Types.PhoneNumber from, Uri url, string accountSid=null, string applicationSid=null, Twilio.Http.HttpMethod method=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, List<string> statusCallbackEvent=null, Twilio.Http.HttpMethod statusCallbackMethod=null, string sendDigits=null, string ifMachine=null, int? timeout=null, bool? record=null, string recordingChannels=null, string recordingStatusCallback=null, Twilio.Http.HttpMethod recordingStatusCallbackMethod=null, string sipAuthUsername=null, string sipAuthPassword=null)
+        {
             return new CallCreator(to, from, url, accountSid:accountSid, applicationSid:applicationSid, method:method, fallbackUrl:fallbackUrl, fallbackMethod:fallbackMethod, statusCallback:statusCallback, statusCallbackEvent:statusCallbackEvent, statusCallbackMethod:statusCallbackMethod, sendDigits:sendDigits, ifMachine:ifMachine, timeout:timeout, record:record, recordingChannels:recordingChannels, recordingStatusCallback:recordingStatusCallback, recordingStatusCallbackMethod:recordingStatusCallbackMethod, sipAuthUsername:sipAuthUsername, sipAuthPassword:sipAuthPassword);
         }
     
@@ -131,7 +146,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="sipAuthUsername"> The sip_auth_username </param>
         /// <param name="sipAuthPassword"> The sip_auth_password </param>
         /// <returns> CallCreator capable of executing the create </returns> 
-        public static CallCreator Creator(IEndpoint to, Twilio.Types.PhoneNumber from, string applicationSid, string accountSid=null, Uri url=null, Twilio.Http.HttpMethod method=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, List<string> statusCallbackEvent=null, Twilio.Http.HttpMethod statusCallbackMethod=null, string sendDigits=null, string ifMachine=null, int? timeout=null, bool? record=null, string recordingChannels=null, string recordingStatusCallback=null, Twilio.Http.HttpMethod recordingStatusCallbackMethod=null, string sipAuthUsername=null, string sipAuthPassword=null) {
+        public static CallCreator Creator(IEndpoint to, Twilio.Types.PhoneNumber from, string applicationSid, string accountSid=null, Uri url=null, Twilio.Http.HttpMethod method=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, List<string> statusCallbackEvent=null, Twilio.Http.HttpMethod statusCallbackMethod=null, string sendDigits=null, string ifMachine=null, int? timeout=null, bool? record=null, string recordingChannels=null, string recordingStatusCallback=null, Twilio.Http.HttpMethod recordingStatusCallbackMethod=null, string sipAuthUsername=null, string sipAuthPassword=null)
+        {
             return new CallCreator(to, from, applicationSid, accountSid:accountSid, url:url, method:method, fallbackUrl:fallbackUrl, fallbackMethod:fallbackMethod, statusCallback:statusCallback, statusCallbackEvent:statusCallbackEvent, statusCallbackMethod:statusCallbackMethod, sendDigits:sendDigits, ifMachine:ifMachine, timeout:timeout, record:record, recordingChannels:recordingChannels, recordingStatusCallback:recordingStatusCallback, recordingStatusCallbackMethod:recordingStatusCallbackMethod, sipAuthUsername:sipAuthUsername, sipAuthPassword:sipAuthPassword);
         }
     
@@ -142,7 +158,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="sid"> Call Sid that uniquely identifies the Call to delete </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> CallDeleter capable of executing the delete </returns> 
-        public static CallDeleter Deleter(string sid, string accountSid=null) {
+        public static CallDeleter Deleter(string sid, string accountSid=null)
+        {
             return new CallDeleter(sid, accountSid:accountSid);
         }
     
@@ -153,7 +170,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="sid"> Call Sid that uniquely identifies the Call to fetch </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> CallFetcher capable of executing the fetch </returns> 
-        public static CallFetcher Fetcher(string sid, string accountSid=null) {
+        public static CallFetcher Fetcher(string sid, string accountSid=null)
+        {
             return new CallFetcher(sid, accountSid:accountSid);
         }
     
@@ -169,7 +187,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="startTime"> StartTime to filter on </param>
         /// <param name="endTime"> EndTime to filter on </param>
         /// <returns> CallReader capable of executing the read </returns> 
-        public static CallReader Reader(string accountSid=null, Twilio.Types.PhoneNumber to=null, Twilio.Types.PhoneNumber from=null, string parentCallSid=null, CallResource.Status status=null, string startTime=null, string endTime=null) {
+        public static CallReader Reader(string accountSid=null, Twilio.Types.PhoneNumber to=null, Twilio.Types.PhoneNumber from=null, string parentCallSid=null, CallResource.Status status=null, string startTime=null, string endTime=null)
+        {
             return new CallReader(accountSid:accountSid, to:to, from:from, parentCallSid:parentCallSid, status:status, startTime:startTime, endTime:endTime);
         }
     
@@ -187,7 +206,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="statusCallback"> Status Callback URL </param>
         /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
         /// <returns> CallUpdater capable of executing the update </returns> 
-        public static CallUpdater Updater(string sid, string accountSid=null, Uri url=null, Twilio.Http.HttpMethod method=null, CallResource.Status status=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null) {
+        public static CallUpdater Updater(string sid, string accountSid=null, Uri url=null, Twilio.Http.HttpMethod method=null, CallResource.Status status=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null)
+        {
             return new CallUpdater(sid, accountSid:accountSid, url:url, method:method, status:status, fallbackUrl:fallbackUrl, fallbackMethod:fallbackMethod, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod);
         }
     
@@ -197,11 +217,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> CallResource object represented by the provided JSON </returns> 
-        public static CallResource FromJson(string json) {
+        public static CallResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<CallResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -258,7 +282,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         [JsonProperty("uri")]
         public string uri { get; }
     
-        public CallResource() {
+        public CallResource()
+        {
         
         }
     
@@ -311,7 +336,8 @@ namespace Twilio.Rest.Api.V2010.Account {
                              [JsonProperty("to_formatted")]
                              string toFormatted, 
                              [JsonProperty("uri")]
-                             string uri) {
+                             string uri)
+                             {
             this.accountSid = accountSid;
             this.annotation = annotation;
             this.answeredBy = answeredBy;

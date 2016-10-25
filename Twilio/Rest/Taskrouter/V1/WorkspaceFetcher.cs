@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Taskrouter.V1 {
+namespace Twilio.Rest.Taskrouter.V1 
+{
 
-    public class WorkspaceFetcher : Fetcher<WorkspaceResource> {
+    public class WorkspaceFetcher : Fetcher<WorkspaceResource> 
+    {
         public string sid { get; }
     
         /// <summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Taskrouter.V1 {
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        public WorkspaceFetcher(string sid) {
+        public WorkspaceFetcher(string sid)
+        {
             this.sid = sid;
         }
     
@@ -28,7 +31,8 @@ namespace Twilio.Rest.Taskrouter.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched WorkspaceResource </returns> 
-        public override async Task<WorkspaceResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<WorkspaceResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
@@ -67,7 +71,8 @@ namespace Twilio.Rest.Taskrouter.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched WorkspaceResource </returns> 
-        public override WorkspaceResource Fetch(ITwilioRestClient client) {
+        public override WorkspaceResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,

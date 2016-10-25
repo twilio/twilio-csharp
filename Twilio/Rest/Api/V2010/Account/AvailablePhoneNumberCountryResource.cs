@@ -7,16 +7,19 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class AvailablePhoneNumberCountryResource : Resource {
+    public class AvailablePhoneNumberCountryResource : Resource 
+    {
         /// <summary>
         /// read
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> AvailablePhoneNumberCountryReader capable of executing the read </returns> 
-        public static AvailablePhoneNumberCountryReader Reader(string accountSid=null) {
+        public static AvailablePhoneNumberCountryReader Reader(string accountSid=null)
+        {
             return new AvailablePhoneNumberCountryReader(accountSid:accountSid);
         }
     
@@ -27,7 +30,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="countryCode"> The country_code </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> AvailablePhoneNumberCountryFetcher capable of executing the fetch </returns> 
-        public static AvailablePhoneNumberCountryFetcher Fetcher(string countryCode, string accountSid=null) {
+        public static AvailablePhoneNumberCountryFetcher Fetcher(string countryCode, string accountSid=null)
+        {
             return new AvailablePhoneNumberCountryFetcher(countryCode, accountSid:accountSid);
         }
     
@@ -37,11 +41,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> AvailablePhoneNumberCountryResource object represented by the provided JSON </returns> 
-        public static AvailablePhoneNumberCountryResource FromJson(string json) {
+        public static AvailablePhoneNumberCountryResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<AvailablePhoneNumberCountryResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -57,7 +65,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> subresourceUris { get; }
     
-        public AvailablePhoneNumberCountryResource() {
+        public AvailablePhoneNumberCountryResource()
+        {
         
         }
     
@@ -70,7 +79,8 @@ namespace Twilio.Rest.Api.V2010.Account {
                                                     [JsonProperty("beta")]
                                                     bool? beta, 
                                                     [JsonProperty("subresource_uris")]
-                                                    Dictionary<string, string> subresourceUris) {
+                                                    Dictionary<string, string> subresourceUris)
+                                                    {
             this.countryCode = countryCode;
             this.country = country;
             this.uri = uri;

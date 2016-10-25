@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class SandboxFetcher : Fetcher<SandboxResource> {
+    public class SandboxFetcher : Fetcher<SandboxResource> 
+    {
         public string accountSid { get; }
     
         /// <summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public SandboxFetcher(string accountSid=null) {
+        public SandboxFetcher(string accountSid=null)
+        {
             this.accountSid = accountSid;
         }
     
@@ -28,7 +31,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched SandboxResource </returns> 
-        public override async Task<SandboxResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<SandboxResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -67,7 +71,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched SandboxResource </returns> 
-        public override SandboxResource Fetch(ITwilioRestClient client) {
+        public override SandboxResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

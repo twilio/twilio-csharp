@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class SigningKeyUpdater : Updater<SigningKeyResource> {
+    public class SigningKeyUpdater : Updater<SigningKeyResource> 
+    {
         public string accountSid { get; }
         public string sid { get; }
         public string friendlyName { get; set; }
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
-        public SigningKeyUpdater(string sid, string accountSid=null, string friendlyName=null) {
+        public SigningKeyUpdater(string sid, string accountSid=null, string friendlyName=null)
+        {
             this.accountSid = accountSid;
             this.friendlyName = friendlyName;
             this.sid = sid;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated SigningKeyResource </returns> 
-        public override async Task<SigningKeyResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<SigningKeyResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -74,7 +78,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated SigningKeyResource </returns> 
-        public override SigningKeyResource Update(ITwilioRestClient client) {
+        public override SigningKeyResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -112,8 +117,10 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (friendlyName != null) {
+        private void AddPostParams(Request request)
+        {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

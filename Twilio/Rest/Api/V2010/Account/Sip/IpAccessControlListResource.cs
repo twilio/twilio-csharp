@@ -7,16 +7,19 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account.Sip {
+namespace Twilio.Rest.Api.V2010.Account.Sip 
+{
 
-    public class IpAccessControlListResource : Resource {
+    public class IpAccessControlListResource : Resource 
+    {
         /// <summary>
         /// Retrieve a list of ip-access-control-lists belonging to the account used to make the request
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAccessControlListReader capable of executing the read </returns> 
-        public static IpAccessControlListReader Reader(string accountSid=null) {
+        public static IpAccessControlListReader Reader(string accountSid=null)
+        {
             return new IpAccessControlListReader(accountSid:accountSid);
         }
     
@@ -27,7 +30,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         /// <param name="friendlyName"> A human readable description of this resource </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAccessControlListCreator capable of executing the create </returns> 
-        public static IpAccessControlListCreator Creator(string friendlyName, string accountSid=null) {
+        public static IpAccessControlListCreator Creator(string friendlyName, string accountSid=null)
+        {
             return new IpAccessControlListCreator(friendlyName, accountSid:accountSid);
         }
     
@@ -38,7 +42,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         /// <param name="sid"> Fetch by unique ip-access-control-list Sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAccessControlListFetcher capable of executing the fetch </returns> 
-        public static IpAccessControlListFetcher Fetcher(string sid, string accountSid=null) {
+        public static IpAccessControlListFetcher Fetcher(string sid, string accountSid=null)
+        {
             return new IpAccessControlListFetcher(sid, accountSid:accountSid);
         }
     
@@ -50,7 +55,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         /// <param name="friendlyName"> A human readable description of this resource </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAccessControlListUpdater capable of executing the update </returns> 
-        public static IpAccessControlListUpdater Updater(string sid, string friendlyName, string accountSid=null) {
+        public static IpAccessControlListUpdater Updater(string sid, string friendlyName, string accountSid=null)
+        {
             return new IpAccessControlListUpdater(sid, friendlyName, accountSid:accountSid);
         }
     
@@ -61,7 +67,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         /// <param name="sid"> Delete by unique ip-access-control-list Sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAccessControlListDeleter capable of executing the delete </returns> 
-        public static IpAccessControlListDeleter Deleter(string sid, string accountSid=null) {
+        public static IpAccessControlListDeleter Deleter(string sid, string accountSid=null)
+        {
             return new IpAccessControlListDeleter(sid, accountSid:accountSid);
         }
     
@@ -71,11 +78,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> IpAccessControlListResource object represented by the provided JSON </returns> 
-        public static IpAccessControlListResource FromJson(string json) {
+        public static IpAccessControlListResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<IpAccessControlListResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -95,7 +106,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         [JsonProperty("uri")]
         public string uri { get; }
     
-        public IpAccessControlListResource() {
+        public IpAccessControlListResource()
+        {
         
         }
     
@@ -112,7 +124,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
                                             [JsonProperty("subresource_uris")]
                                             Dictionary<string, string> subresourceUris, 
                                             [JsonProperty("uri")]
-                                            string uri) {
+                                            string uri)
+                                            {
             this.sid = sid;
             this.accountSid = accountSid;
             this.friendlyName = friendlyName;

@@ -8,9 +8,11 @@ using Twilio.Rest.Api.V2010.Account.Call;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Call {
+namespace Twilio.Rest.Api.V2010.Account.Call 
+{
 
-    public class FeedbackSummaryDeleter : Deleter<FeedbackSummaryResource> {
+    public class FeedbackSummaryDeleter : Deleter<FeedbackSummaryResource> 
+    {
         public string accountSid { get; }
         public string sid { get; }
     
@@ -20,7 +22,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         ///
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        public FeedbackSummaryDeleter(string sid, string accountSid=null) {
+        public FeedbackSummaryDeleter(string sid, string accountSid=null)
+        {
             this.accountSid = accountSid;
             this.sid = sid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// </summary>
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
-        public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client) {
+        public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
@@ -69,7 +73,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// </summary>
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
-        public override void Delete(ITwilioRestClient client) {
+        public override void Delete(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,

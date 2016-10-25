@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
+namespace Twilio.Rest.IpMessaging.V1.Service.Channel 
+{
 
-    public class MemberResource : Resource {
+    public class MemberResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         /// <param name="channelSid"> The channel_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> MemberFetcher capable of executing the fetch </returns> 
-        public static MemberFetcher Fetcher(string serviceSid, string channelSid, string sid) {
+        public static MemberFetcher Fetcher(string serviceSid, string channelSid, string sid)
+        {
             return new MemberFetcher(serviceSid, channelSid, sid);
         }
     
@@ -30,7 +33,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         /// <param name="identity"> The identity </param>
         /// <param name="roleSid"> The role_sid </param>
         /// <returns> MemberCreator capable of executing the create </returns> 
-        public static MemberCreator Creator(string serviceSid, string channelSid, string identity, string roleSid=null) {
+        public static MemberCreator Creator(string serviceSid, string channelSid, string identity, string roleSid=null)
+        {
             return new MemberCreator(serviceSid, channelSid, identity, roleSid:roleSid);
         }
     
@@ -41,7 +45,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="channelSid"> The channel_sid </param>
         /// <returns> MemberReader capable of executing the read </returns> 
-        public static MemberReader Reader(string serviceSid, string channelSid) {
+        public static MemberReader Reader(string serviceSid, string channelSid)
+        {
             return new MemberReader(serviceSid, channelSid);
         }
     
@@ -53,7 +58,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         /// <param name="channelSid"> The channel_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> MemberDeleter capable of executing the delete </returns> 
-        public static MemberDeleter Deleter(string serviceSid, string channelSid, string sid) {
+        public static MemberDeleter Deleter(string serviceSid, string channelSid, string sid)
+        {
             return new MemberDeleter(serviceSid, channelSid, sid);
         }
     
@@ -63,11 +69,15 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> MemberResource object represented by the provided JSON </returns> 
-        public static MemberResource FromJson(string json) {
+        public static MemberResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<MemberResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -95,7 +105,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         [JsonProperty("url")]
         public Uri url { get; }
     
-        public MemberResource() {
+        public MemberResource()
+        {
         
         }
     
@@ -120,7 +131,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
                                [JsonProperty("role_sid")]
                                string roleSid, 
                                [JsonProperty("url")]
-                               Uri url) {
+                               Uri url)
+                               {
             this.sid = sid;
             this.accountSid = accountSid;
             this.channelSid = channelSid;

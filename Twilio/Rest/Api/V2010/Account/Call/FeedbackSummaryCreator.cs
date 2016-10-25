@@ -9,9 +9,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Call {
+namespace Twilio.Rest.Api.V2010.Account.Call 
+{
 
-    public class FeedbackSummaryCreator : Creator<FeedbackSummaryResource> {
+    public class FeedbackSummaryCreator : Creator<FeedbackSummaryResource> 
+    {
         public string accountSid { get; }
         public DateTime? startDate { get; }
         public DateTime? endDate { get; }
@@ -29,7 +31,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// <param name="includeSubaccounts"> The include_subaccounts </param>
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
-        public FeedbackSummaryCreator(DateTime? startDate, DateTime? endDate, string accountSid=null, bool? includeSubaccounts=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null) {
+        public FeedbackSummaryCreator(DateTime? startDate, DateTime? endDate, string accountSid=null, bool? includeSubaccounts=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null)
+        {
             this.endDate = endDate;
             this.statusCallbackMethod = statusCallbackMethod;
             this.statusCallback = statusCallback;
@@ -45,7 +48,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created FeedbackSummaryResource </returns> 
-        public override async Task<FeedbackSummaryResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<FeedbackSummaryResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
@@ -85,7 +89,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created FeedbackSummaryResource </returns> 
-        public override FeedbackSummaryResource Create(ITwilioRestClient client) {
+        public override FeedbackSummaryResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
@@ -123,24 +128,30 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (startDate != null) {
+        private void AddPostParams(Request request)
+        {
+            if (startDate != null)
+            {
                 request.AddPostParam("StartDate", startDate.ToString());
             }
             
-            if (endDate != null) {
+            if (endDate != null)
+            {
                 request.AddPostParam("EndDate", endDate.ToString());
             }
             
-            if (includeSubaccounts != null) {
+            if (includeSubaccounts != null)
+            {
                 request.AddPostParam("IncludeSubaccounts", includeSubaccounts.ToString());
             }
             
-            if (statusCallback != null) {
+            if (statusCallback != null)
+            {
                 request.AddPostParam("StatusCallback", statusCallback.ToString());
             }
             
-            if (statusCallbackMethod != null) {
+            if (statusCallbackMethod != null)
+            {
                 request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
         }

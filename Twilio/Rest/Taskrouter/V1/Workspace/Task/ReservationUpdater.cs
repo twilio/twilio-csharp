@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
+namespace Twilio.Rest.Taskrouter.V1.Workspace.Task 
+{
 
-    public class ReservationUpdater : Updater<ReservationResource> {
+    public class ReservationUpdater : Updater<ReservationResource> 
+    {
         public string workspaceSid { get; }
         public string taskSid { get; }
         public string sid { get; }
@@ -60,7 +62,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
         /// <param name="redirectCallSid"> The redirect_call_sid </param>
         /// <param name="redirectAccept"> The redirect_accept </param>
         /// <param name="redirectUrl"> The redirect_url </param>
-        public ReservationUpdater(string workspaceSid, string taskSid, string sid, ReservationResource.Status reservationStatus=null, string workerActivitySid=null, string instruction=null, string dequeuePostWorkActivitySid=null, string dequeueFrom=null, string dequeueRecord=null, int? dequeueTimeout=null, string dequeueTo=null, Uri dequeueStatusCallbackUrl=null, string callFrom=null, string callRecord=null, int? callTimeout=null, string callTo=null, Uri callUrl=null, Uri callStatusCallbackUrl=null, bool? callAccept=null, string redirectCallSid=null, bool? redirectAccept=null, Uri redirectUrl=null) {
+        public ReservationUpdater(string workspaceSid, string taskSid, string sid, ReservationResource.Status reservationStatus=null, string workerActivitySid=null, string instruction=null, string dequeuePostWorkActivitySid=null, string dequeueFrom=null, string dequeueRecord=null, int? dequeueTimeout=null, string dequeueTo=null, Uri dequeueStatusCallbackUrl=null, string callFrom=null, string callRecord=null, int? callTimeout=null, string callTo=null, Uri callUrl=null, Uri callStatusCallbackUrl=null, bool? callAccept=null, string redirectCallSid=null, bool? redirectAccept=null, Uri redirectUrl=null)
+        {
             this.dequeueRecord = dequeueRecord;
             this.instruction = instruction;
             this.dequeueFrom = dequeueFrom;
@@ -92,7 +95,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated ReservationResource </returns> 
-        public override async Task<ReservationResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<ReservationResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
@@ -132,7 +136,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated ReservationResource </returns> 
-        public override ReservationResource Update(ITwilioRestClient client) {
+        public override ReservationResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
@@ -170,80 +175,100 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (reservationStatus != null) {
+        private void AddPostParams(Request request)
+        {
+            if (reservationStatus != null)
+            {
                 request.AddPostParam("ReservationStatus", reservationStatus.ToString());
             }
             
-            if (workerActivitySid != null) {
+            if (workerActivitySid != null)
+            {
                 request.AddPostParam("WorkerActivitySid", workerActivitySid);
             }
             
-            if (instruction != null) {
+            if (instruction != null)
+            {
                 request.AddPostParam("Instruction", instruction);
             }
             
-            if (dequeuePostWorkActivitySid != null) {
+            if (dequeuePostWorkActivitySid != null)
+            {
                 request.AddPostParam("DequeuePostWorkActivitySid", dequeuePostWorkActivitySid);
             }
             
-            if (dequeueFrom != null) {
+            if (dequeueFrom != null)
+            {
                 request.AddPostParam("DequeueFrom", dequeueFrom);
             }
             
-            if (dequeueRecord != null) {
+            if (dequeueRecord != null)
+            {
                 request.AddPostParam("DequeueRecord", dequeueRecord);
             }
             
-            if (dequeueTimeout != null) {
+            if (dequeueTimeout != null)
+            {
                 request.AddPostParam("DequeueTimeout", dequeueTimeout.ToString());
             }
             
-            if (dequeueTo != null) {
+            if (dequeueTo != null)
+            {
                 request.AddPostParam("DequeueTo", dequeueTo);
             }
             
-            if (dequeueStatusCallbackUrl != null) {
+            if (dequeueStatusCallbackUrl != null)
+            {
                 request.AddPostParam("DequeueStatusCallbackUrl", dequeueStatusCallbackUrl.ToString());
             }
             
-            if (callFrom != null) {
+            if (callFrom != null)
+            {
                 request.AddPostParam("CallFrom", callFrom);
             }
             
-            if (callRecord != null) {
+            if (callRecord != null)
+            {
                 request.AddPostParam("CallRecord", callRecord);
             }
             
-            if (callTimeout != null) {
+            if (callTimeout != null)
+            {
                 request.AddPostParam("CallTimeout", callTimeout.ToString());
             }
             
-            if (callTo != null) {
+            if (callTo != null)
+            {
                 request.AddPostParam("CallTo", callTo);
             }
             
-            if (callUrl != null) {
+            if (callUrl != null)
+            {
                 request.AddPostParam("CallUrl", callUrl.ToString());
             }
             
-            if (callStatusCallbackUrl != null) {
+            if (callStatusCallbackUrl != null)
+            {
                 request.AddPostParam("CallStatusCallbackUrl", callStatusCallbackUrl.ToString());
             }
             
-            if (callAccept != null) {
+            if (callAccept != null)
+            {
                 request.AddPostParam("CallAccept", callAccept.ToString());
             }
             
-            if (redirectCallSid != null) {
+            if (redirectCallSid != null)
+            {
                 request.AddPostParam("RedirectCallSid", redirectCallSid);
             }
             
-            if (redirectAccept != null) {
+            if (redirectAccept != null)
+            {
                 request.AddPostParam("RedirectAccept", redirectAccept.ToString());
             }
             
-            if (redirectUrl != null) {
+            if (redirectUrl != null)
+            {
                 request.AddPostParam("RedirectUrl", redirectUrl.ToString());
             }
         }

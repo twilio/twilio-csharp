@@ -7,34 +7,42 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.IpMessaging.V1.Service {
+namespace Twilio.Rest.IpMessaging.V1.Service 
+{
 
-    public class ChannelResource : Resource {
-        public sealed class ChannelType : IStringEnum {
+    public class ChannelResource : Resource 
+    {
+        public sealed class ChannelType : IStringEnum 
+        {
             public const string Public = "public";
             public const string Private = "private";
         
             private string _value;
             
-            public ChannelType() { }
+            public ChannelType() {}
             
-            public ChannelType(string value) {
+            public ChannelType(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator ChannelType(string value) {
+            public static implicit operator ChannelType(string value)
+            {
                 return new ChannelType(value);
             }
             
-            public static implicit operator string(ChannelType value) {
+            public static implicit operator string(ChannelType value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -46,7 +54,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> ChannelFetcher capable of executing the fetch </returns> 
-        public static ChannelFetcher Fetcher(string serviceSid, string sid) {
+        public static ChannelFetcher Fetcher(string serviceSid, string sid)
+        {
             return new ChannelFetcher(serviceSid, sid);
         }
     
@@ -57,7 +66,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> ChannelDeleter capable of executing the delete </returns> 
-        public static ChannelDeleter Deleter(string serviceSid, string sid) {
+        public static ChannelDeleter Deleter(string serviceSid, string sid)
+        {
             return new ChannelDeleter(serviceSid, sid);
         }
     
@@ -71,7 +81,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// <param name="attributes"> The attributes </param>
         /// <param name="type"> The type </param>
         /// <returns> ChannelCreator capable of executing the create </returns> 
-        public static ChannelCreator Creator(string serviceSid, string friendlyName=null, string uniqueName=null, string attributes=null, ChannelResource.ChannelType type=null) {
+        public static ChannelCreator Creator(string serviceSid, string friendlyName=null, string uniqueName=null, string attributes=null, ChannelResource.ChannelType type=null)
+        {
             return new ChannelCreator(serviceSid, friendlyName:friendlyName, uniqueName:uniqueName, attributes:attributes, type:type);
         }
     
@@ -81,7 +92,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <returns> ChannelReader capable of executing the read </returns> 
-        public static ChannelReader Reader(string serviceSid) {
+        public static ChannelReader Reader(string serviceSid)
+        {
             return new ChannelReader(serviceSid);
         }
     
@@ -96,7 +108,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// <param name="attributes"> The attributes </param>
         /// <param name="type"> The type </param>
         /// <returns> ChannelUpdater capable of executing the update </returns> 
-        public static ChannelUpdater Updater(string serviceSid, string sid, string friendlyName=null, string uniqueName=null, string attributes=null, ChannelResource.ChannelType type=null) {
+        public static ChannelUpdater Updater(string serviceSid, string sid, string friendlyName=null, string uniqueName=null, string attributes=null, ChannelResource.ChannelType type=null)
+        {
             return new ChannelUpdater(serviceSid, sid, friendlyName:friendlyName, uniqueName:uniqueName, attributes:attributes, type:type);
         }
     
@@ -106,11 +119,15 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> ChannelResource object represented by the provided JSON </returns> 
-        public static ChannelResource FromJson(string json) {
+        public static ChannelResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<ChannelResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -141,7 +158,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         [JsonProperty("links")]
         public Dictionary<string, string> links { get; }
     
-        public ChannelResource() {
+        public ChannelResource()
+        {
         
         }
     
@@ -168,7 +186,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
                                 [JsonProperty("url")]
                                 Uri url, 
                                 [JsonProperty("links")]
-                                Dictionary<string, string> links) {
+                                Dictionary<string, string> links)
+                                {
             this.sid = sid;
             this.accountSid = accountSid;
             this.serviceSid = serviceSid;

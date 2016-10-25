@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
+namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList 
+{
 
-    public class IpAddressUpdater : Updater<IpAddressResource> {
+    public class IpAddressUpdater : Updater<IpAddressResource> 
+    {
         public string accountSid { get; }
         public string ipAccessControlListSid { get; }
         public string sid { get; }
@@ -25,7 +27,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         /// <param name="accountSid"> The account_sid </param>
         /// <param name="ipAddress"> The ip_address </param>
         /// <param name="friendlyName"> The friendly_name </param>
-        public IpAddressUpdater(string ipAccessControlListSid, string sid, string accountSid=null, string ipAddress=null, string friendlyName=null) {
+        public IpAddressUpdater(string ipAccessControlListSid, string sid, string accountSid=null, string ipAddress=null, string friendlyName=null)
+        {
             this.accountSid = accountSid;
             this.friendlyName = friendlyName;
             this.ipAccessControlListSid = ipAccessControlListSid;
@@ -40,7 +43,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated IpAddressResource </returns> 
-        public override async Task<IpAddressResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<IpAddressResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -80,7 +84,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated IpAddressResource </returns> 
-        public override IpAddressResource Update(ITwilioRestClient client) {
+        public override IpAddressResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -118,12 +123,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (ipAddress != null) {
+        private void AddPostParams(Request request)
+        {
+            if (ipAddress != null)
+            {
                 request.AddPostParam("IpAddress", ipAddress);
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
         }

@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Usage {
+namespace Twilio.Rest.Api.V2010.Account.Usage 
+{
 
-    public class TriggerReader : Reader<TriggerResource> {
+    public class TriggerReader : Reader<TriggerResource> 
+    {
         public string accountSid { get; }
         public TriggerResource.Recurring recurring { get; set; }
         public TriggerResource.TriggerField triggerBy { get; set; }
@@ -23,7 +25,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// <param name="recurring"> Filter by recurring </param>
         /// <param name="triggerBy"> Filter by trigger by </param>
         /// <param name="usageCategory"> Filter by Usage Category </param>
-        public TriggerReader(string accountSid=null, TriggerResource.Recurring recurring=null, TriggerResource.TriggerField triggerBy=null, TriggerResource.UsageCategory usageCategory=null) {
+        public TriggerReader(string accountSid=null, TriggerResource.Recurring recurring=null, TriggerResource.TriggerField triggerBy=null, TriggerResource.UsageCategory usageCategory=null)
+        {
             this.accountSid = accountSid;
             this.usageCategory = usageCategory;
             this.recurring = recurring;
@@ -37,7 +40,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> TriggerResource ResourceSet </returns> 
-        public override Task<ResourceSet<TriggerResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<TriggerResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -57,7 +61,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> TriggerResource ResourceSet </returns> 
-        public override ResourceSet<TriggerResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<TriggerResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -77,7 +82,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<TriggerResource> NextPage(Page<TriggerResource> page, ITwilioRestClient client) {
+        public override Page<TriggerResource> NextPage(Page<TriggerResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -95,7 +101,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<TriggerResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<TriggerResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -126,16 +133,20 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (recurring != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (recurring != null)
+            {
                 request.AddQueryParam("Recurring", recurring.ToString());
             }
             
-            if (triggerBy != null) {
+            if (triggerBy != null)
+            {
                 request.AddQueryParam("TriggerBy", triggerBy.ToString());
             }
             
-            if (usageCategory != null) {
+            if (usageCategory != null)
+            {
                 request.AddQueryParam("UsageCategory", usageCategory.ToString());
             }
             

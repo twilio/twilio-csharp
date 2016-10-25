@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Preview.Sync {
+namespace Twilio.Rest.Preview.Sync 
+{
 
-    public class ServiceUpdater : Updater<ServiceResource> {
+    public class ServiceUpdater : Updater<ServiceResource> 
+    {
         public string sid { get; }
         public Uri webhookUrl { get; set; }
         public string friendlyName { get; set; }
@@ -24,7 +26,8 @@ namespace Twilio.Rest.Preview.Sync {
         /// <param name="webhookUrl"> The webhook_url </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="reachabilityWebhooksEnabled"> The reachability_webhooks_enabled </param>
-        public ServiceUpdater(string sid, Uri webhookUrl=null, string friendlyName=null, bool? reachabilityWebhooksEnabled=null) {
+        public ServiceUpdater(string sid, Uri webhookUrl=null, string friendlyName=null, bool? reachabilityWebhooksEnabled=null)
+        {
             this.reachabilityWebhooksEnabled = reachabilityWebhooksEnabled;
             this.friendlyName = friendlyName;
             this.sid = sid;
@@ -38,7 +41,8 @@ namespace Twilio.Rest.Preview.Sync {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated ServiceResource </returns> 
-        public override async Task<ServiceResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<ServiceResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.PREVIEW,
@@ -78,7 +82,8 @@ namespace Twilio.Rest.Preview.Sync {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated ServiceResource </returns> 
-        public override ServiceResource Update(ITwilioRestClient client) {
+        public override ServiceResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.PREVIEW,
@@ -116,16 +121,20 @@ namespace Twilio.Rest.Preview.Sync {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (webhookUrl != null) {
+        private void AddPostParams(Request request)
+        {
+            if (webhookUrl != null)
+            {
                 request.AddPostParam("WebhookUrl", webhookUrl.ToString());
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (reachabilityWebhooksEnabled != null) {
+            if (reachabilityWebhooksEnabled != null)
+            {
                 request.AddPostParam("ReachabilityWebhooksEnabled", reachabilityWebhooksEnabled.ToString());
             }
         }

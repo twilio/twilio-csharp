@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace {
+namespace Twilio.Rest.Taskrouter.V1.Workspace 
+{
 
-    public class ActivityResource : Resource {
+    public class ActivityResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
@@ -16,7 +18,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> ActivityFetcher capable of executing the fetch </returns> 
-        public static ActivityFetcher Fetcher(string workspaceSid, string sid) {
+        public static ActivityFetcher Fetcher(string workspaceSid, string sid)
+        {
             return new ActivityFetcher(workspaceSid, sid);
         }
     
@@ -28,7 +31,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="sid"> The sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> ActivityUpdater capable of executing the update </returns> 
-        public static ActivityUpdater Updater(string workspaceSid, string sid, string friendlyName) {
+        public static ActivityUpdater Updater(string workspaceSid, string sid, string friendlyName)
+        {
             return new ActivityUpdater(workspaceSid, sid, friendlyName);
         }
     
@@ -39,7 +43,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> ActivityDeleter capable of executing the delete </returns> 
-        public static ActivityDeleter Deleter(string workspaceSid, string sid) {
+        public static ActivityDeleter Deleter(string workspaceSid, string sid)
+        {
             return new ActivityDeleter(workspaceSid, sid);
         }
     
@@ -51,7 +56,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="available"> The available </param>
         /// <returns> ActivityReader capable of executing the read </returns> 
-        public static ActivityReader Reader(string workspaceSid, string friendlyName=null, string available=null) {
+        public static ActivityReader Reader(string workspaceSid, string friendlyName=null, string available=null)
+        {
             return new ActivityReader(workspaceSid, friendlyName:friendlyName, available:available);
         }
     
@@ -63,7 +69,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="available"> The available </param>
         /// <returns> ActivityCreator capable of executing the create </returns> 
-        public static ActivityCreator Creator(string workspaceSid, string friendlyName, bool? available=null) {
+        public static ActivityCreator Creator(string workspaceSid, string friendlyName, bool? available=null)
+        {
             return new ActivityCreator(workspaceSid, friendlyName, available:available);
         }
     
@@ -73,11 +80,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> ActivityResource object represented by the provided JSON </returns> 
-        public static ActivityResource FromJson(string json) {
+        public static ActivityResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<ActivityResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -99,7 +110,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         [JsonProperty("url")]
         public Uri url { get; }
     
-        public ActivityResource() {
+        public ActivityResource()
+        {
         
         }
     
@@ -118,7 +130,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
                                  [JsonProperty("workspace_sid")]
                                  string workspaceSid, 
                                  [JsonProperty("url")]
-                                 Uri url) {
+                                 Uri url)
+                                 {
             this.accountSid = accountSid;
             this.available = available;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);

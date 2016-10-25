@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
+namespace Twilio.Rest.IpMessaging.V1.Service.Channel 
+{
 
-    public class MemberCreator : Creator<MemberResource> {
+    public class MemberCreator : Creator<MemberResource> 
+    {
         public string serviceSid { get; }
         public string channelSid { get; }
         public string identity { get; }
@@ -23,7 +25,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         /// <param name="channelSid"> The channel_sid </param>
         /// <param name="identity"> The identity </param>
         /// <param name="roleSid"> The role_sid </param>
-        public MemberCreator(string serviceSid, string channelSid, string identity, string roleSid=null) {
+        public MemberCreator(string serviceSid, string channelSid, string identity, string roleSid=null)
+        {
             this.serviceSid = serviceSid;
             this.identity = identity;
             this.roleSid = roleSid;
@@ -37,7 +40,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created MemberResource </returns> 
-        public override async Task<MemberResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<MemberResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.IP_MESSAGING,
@@ -77,7 +81,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created MemberResource </returns> 
-        public override MemberResource Create(ITwilioRestClient client) {
+        public override MemberResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.IP_MESSAGING,
@@ -115,12 +120,15 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (identity != null) {
+        private void AddPostParams(Request request)
+        {
+            if (identity != null)
+            {
                 request.AddPostParam("Identity", identity);
             }
             
-            if (roleSid != null) {
+            if (roleSid != null)
+            {
                 request.AddPostParam("RoleSid", roleSid);
             }
         }

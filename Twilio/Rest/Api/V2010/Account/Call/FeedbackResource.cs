@@ -7,10 +7,13 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account.Call {
+namespace Twilio.Rest.Api.V2010.Account.Call 
+{
 
-    public class FeedbackResource : Resource {
-        public sealed class Issues : IStringEnum {
+    public class FeedbackResource : Resource 
+    {
+        public sealed class Issues : IStringEnum 
+        {
             public const string AudioLatency = "audio-latency";
             public const string DigitsNotCaptured = "digits-not-captured";
             public const string DroppedCall = "dropped-call";
@@ -22,25 +25,30 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         
             private string _value;
             
-            public Issues() { }
+            public Issues() {}
             
-            public Issues(string value) {
+            public Issues(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator Issues(string value) {
+            public static implicit operator Issues(string value)
+            {
                 return new Issues(value);
             }
             
-            public static implicit operator string(Issues value) {
+            public static implicit operator string(Issues value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -54,7 +62,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// <param name="accountSid"> The account_sid </param>
         /// <param name="issue"> The issue </param>
         /// <returns> FeedbackCreator capable of executing the create </returns> 
-        public static FeedbackCreator Creator(string callSid, int? qualityScore, string accountSid=null, List<FeedbackResource.Issues> issue=null) {
+        public static FeedbackCreator Creator(string callSid, int? qualityScore, string accountSid=null, List<FeedbackResource.Issues> issue=null)
+        {
             return new FeedbackCreator(callSid, qualityScore, accountSid:accountSid, issue:issue);
         }
     
@@ -65,7 +74,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// <param name="callSid"> The call sid that uniquely identifies the call </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> FeedbackFetcher capable of executing the fetch </returns> 
-        public static FeedbackFetcher Fetcher(string callSid, string accountSid=null) {
+        public static FeedbackFetcher Fetcher(string callSid, string accountSid=null)
+        {
             return new FeedbackFetcher(callSid, accountSid:accountSid);
         }
     
@@ -78,7 +88,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// <param name="accountSid"> The account_sid </param>
         /// <param name="issue"> Issues experienced during the call </param>
         /// <returns> FeedbackUpdater capable of executing the update </returns> 
-        public static FeedbackUpdater Updater(string callSid, int? qualityScore, string accountSid=null, List<FeedbackResource.Issues> issue=null) {
+        public static FeedbackUpdater Updater(string callSid, int? qualityScore, string accountSid=null, List<FeedbackResource.Issues> issue=null)
+        {
             return new FeedbackUpdater(callSid, qualityScore, accountSid:accountSid, issue:issue);
         }
     
@@ -88,11 +99,15 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> FeedbackResource object represented by the provided JSON </returns> 
-        public static FeedbackResource FromJson(string json) {
+        public static FeedbackResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<FeedbackResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -111,7 +126,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         [JsonProperty("sid")]
         public string sid { get; }
     
-        public FeedbackResource() {
+        public FeedbackResource()
+        {
         
         }
     
@@ -126,7 +142,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
                                  [JsonProperty("quality_score")]
                                  int? qualityScore, 
                                  [JsonProperty("sid")]
-                                 string sid) {
+                                 string sid)
+                                 {
             this.accountSid = accountSid;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);

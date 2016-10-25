@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account.Call {
+namespace Twilio.Rest.Api.V2010.Account.Call 
+{
 
-    public class NotificationResource : Resource {
+    public class NotificationResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> NotificationFetcher capable of executing the fetch </returns> 
-        public static NotificationFetcher Fetcher(string callSid, string sid, string accountSid=null) {
+        public static NotificationFetcher Fetcher(string callSid, string sid, string accountSid=null)
+        {
             return new NotificationFetcher(callSid, sid, accountSid:accountSid);
         }
     
@@ -29,7 +32,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> NotificationDeleter capable of executing the delete </returns> 
-        public static NotificationDeleter Deleter(string callSid, string sid, string accountSid=null) {
+        public static NotificationDeleter Deleter(string callSid, string sid, string accountSid=null)
+        {
             return new NotificationDeleter(callSid, sid, accountSid:accountSid);
         }
     
@@ -42,7 +46,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// <param name="log"> The log </param>
         /// <param name="messageDate"> The message_date </param>
         /// <returns> NotificationReader capable of executing the read </returns> 
-        public static NotificationReader Reader(string callSid, string accountSid=null, int? log=null, string messageDate=null) {
+        public static NotificationReader Reader(string callSid, string accountSid=null, int? log=null, string messageDate=null)
+        {
             return new NotificationReader(callSid, accountSid:accountSid, log:log, messageDate:messageDate);
         }
     
@@ -52,11 +57,15 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> NotificationResource object represented by the provided JSON </returns> 
-        public static NotificationResource FromJson(string json) {
+        public static NotificationResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<NotificationResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -97,7 +106,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         [JsonProperty("uri")]
         public string uri { get; }
     
-        public NotificationResource() {
+        public NotificationResource()
+        {
         
         }
     
@@ -134,7 +144,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
                                      [JsonProperty("sid")]
                                      string sid, 
                                      [JsonProperty("uri")]
-                                     string uri) {
+                                     string uri)
+                                     {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
             this.callSid = callSid;

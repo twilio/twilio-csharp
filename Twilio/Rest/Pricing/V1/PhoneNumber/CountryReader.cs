@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Pricing.V1.PhoneNumber {
+namespace Twilio.Rest.Pricing.V1.PhoneNumber 
+{
 
-    public class CountryReader : Reader<CountryResource> {
+    public class CountryReader : Reader<CountryResource> 
+    {
         #if NET40
         /// <summary>
         /// Make the request to the Twilio API to perform the read
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> CountryResource ResourceSet </returns> 
-        public override Task<ResourceSet<CountryResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<CountryResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.PRICING,
@@ -37,7 +40,8 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> CountryResource ResourceSet </returns> 
-        public override ResourceSet<CountryResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<CountryResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.PRICING,
@@ -57,7 +61,8 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<CountryResource> NextPage(Page<CountryResource> page, ITwilioRestClient client) {
+        public override Page<CountryResource> NextPage(Page<CountryResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -75,7 +80,8 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<CountryResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<CountryResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -106,7 +112,8 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
+        private void AddQueryParams(Request request)
+        {
             request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }

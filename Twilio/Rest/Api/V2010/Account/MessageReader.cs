@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class MessageReader : Reader<MessageResource> {
+    public class MessageReader : Reader<MessageResource> 
+    {
         public string accountSid { get; }
         public Twilio.Types.PhoneNumber to { get; set; }
         public Twilio.Types.PhoneNumber from { get; set; }
@@ -23,7 +25,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="to"> Filter by messages to this number </param>
         /// <param name="from"> Filter by from number </param>
         /// <param name="dateSent"> Filter by date sent </param>
-        public MessageReader(string accountSid=null, Twilio.Types.PhoneNumber to=null, Twilio.Types.PhoneNumber from=null, string dateSent=null) {
+        public MessageReader(string accountSid=null, Twilio.Types.PhoneNumber to=null, Twilio.Types.PhoneNumber from=null, string dateSent=null)
+        {
             this.accountSid = accountSid;
             this.from = from;
             this.dateSent = dateSent;
@@ -37,7 +40,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> MessageResource ResourceSet </returns> 
-        public override Task<ResourceSet<MessageResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<MessageResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -57,7 +61,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> MessageResource ResourceSet </returns> 
-        public override ResourceSet<MessageResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<MessageResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -77,7 +82,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<MessageResource> NextPage(Page<MessageResource> page, ITwilioRestClient client) {
+        public override Page<MessageResource> NextPage(Page<MessageResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -95,7 +101,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<MessageResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<MessageResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -126,12 +133,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (to != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (to != null)
+            {
                 request.AddQueryParam("To", to.ToString());
             }
             
-            if (from != null) {
+            if (from != null)
+            {
                 request.AddQueryParam("From", from.ToString());
             }
             

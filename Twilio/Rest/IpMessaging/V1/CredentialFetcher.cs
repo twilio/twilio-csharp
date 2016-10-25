@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.IpMessaging.V1 {
+namespace Twilio.Rest.IpMessaging.V1 
+{
 
-    public class CredentialFetcher : Fetcher<CredentialResource> {
+    public class CredentialFetcher : Fetcher<CredentialResource> 
+    {
         public string sid { get; }
     
         /// <summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.IpMessaging.V1 {
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        public CredentialFetcher(string sid) {
+        public CredentialFetcher(string sid)
+        {
             this.sid = sid;
         }
     
@@ -28,7 +31,8 @@ namespace Twilio.Rest.IpMessaging.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched CredentialResource </returns> 
-        public override async Task<CredentialResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<CredentialResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.IP_MESSAGING,
@@ -67,7 +71,8 @@ namespace Twilio.Rest.IpMessaging.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched CredentialResource </returns> 
-        public override CredentialResource Fetch(ITwilioRestClient client) {
+        public override CredentialResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.IP_MESSAGING,

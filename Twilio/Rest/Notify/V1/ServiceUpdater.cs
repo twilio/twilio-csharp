@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Notify.V1 {
+namespace Twilio.Rest.Notify.V1 
+{
 
-    public class ServiceUpdater : Updater<ServiceResource> {
+    public class ServiceUpdater : Updater<ServiceResource> 
+    {
         public string sid { get; }
         public string friendlyName { get; set; }
         public string apnCredentialSid { get; set; }
@@ -31,7 +33,8 @@ namespace Twilio.Rest.Notify.V1 {
         /// <param name="facebookMessengerPageId"> The facebook_messenger_page_id </param>
         /// <param name="defaultApnNotificationProtocolVersion"> The default_apn_notification_protocol_version </param>
         /// <param name="defaultGcmNotificationProtocolVersion"> The default_gcm_notification_protocol_version </param>
-        public ServiceUpdater(string sid, string friendlyName=null, string apnCredentialSid=null, string gcmCredentialSid=null, string messagingServiceSid=null, string facebookMessengerPageId=null, string defaultApnNotificationProtocolVersion=null, string defaultGcmNotificationProtocolVersion=null) {
+        public ServiceUpdater(string sid, string friendlyName=null, string apnCredentialSid=null, string gcmCredentialSid=null, string messagingServiceSid=null, string facebookMessengerPageId=null, string defaultApnNotificationProtocolVersion=null, string defaultGcmNotificationProtocolVersion=null)
+        {
             this.facebookMessengerPageId = facebookMessengerPageId;
             this.sid = sid;
             this.gcmCredentialSid = gcmCredentialSid;
@@ -49,7 +52,8 @@ namespace Twilio.Rest.Notify.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated ServiceResource </returns> 
-        public override async Task<ServiceResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<ServiceResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.NOTIFY,
@@ -89,7 +93,8 @@ namespace Twilio.Rest.Notify.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated ServiceResource </returns> 
-        public override ServiceResource Update(ITwilioRestClient client) {
+        public override ServiceResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.NOTIFY,
@@ -127,32 +132,40 @@ namespace Twilio.Rest.Notify.V1 {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (friendlyName != null) {
+        private void AddPostParams(Request request)
+        {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (apnCredentialSid != null) {
+            if (apnCredentialSid != null)
+            {
                 request.AddPostParam("ApnCredentialSid", apnCredentialSid);
             }
             
-            if (gcmCredentialSid != null) {
+            if (gcmCredentialSid != null)
+            {
                 request.AddPostParam("GcmCredentialSid", gcmCredentialSid);
             }
             
-            if (messagingServiceSid != null) {
+            if (messagingServiceSid != null)
+            {
                 request.AddPostParam("MessagingServiceSid", messagingServiceSid);
             }
             
-            if (facebookMessengerPageId != null) {
+            if (facebookMessengerPageId != null)
+            {
                 request.AddPostParam("FacebookMessengerPageId", facebookMessengerPageId);
             }
             
-            if (defaultApnNotificationProtocolVersion != null) {
+            if (defaultApnNotificationProtocolVersion != null)
+            {
                 request.AddPostParam("DefaultApnNotificationProtocolVersion", defaultApnNotificationProtocolVersion);
             }
             
-            if (defaultGcmNotificationProtocolVersion != null) {
+            if (defaultGcmNotificationProtocolVersion != null)
+            {
                 request.AddPostParam("DefaultGcmNotificationProtocolVersion", defaultGcmNotificationProtocolVersion);
             }
         }

@@ -8,9 +8,11 @@ using Twilio.Rest.Api.V2010.Account.Message;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Message {
+namespace Twilio.Rest.Api.V2010.Account.Message 
+{
 
-    public class MediaDeleter : Deleter<MediaResource> {
+    public class MediaDeleter : Deleter<MediaResource> 
+    {
         public string accountSid { get; }
         public string messageSid { get; }
         public string sid { get; }
@@ -22,7 +24,8 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
         /// <param name="messageSid"> The message_sid </param>
         /// <param name="sid"> Delete by unique media Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        public MediaDeleter(string messageSid, string sid, string accountSid=null) {
+        public MediaDeleter(string messageSid, string sid, string accountSid=null)
+        {
             this.accountSid = accountSid;
             this.sid = sid;
             this.messageSid = messageSid;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
         /// </summary>
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
-        public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client) {
+        public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
@@ -72,7 +76,8 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
         /// </summary>
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
-        public override void Delete(ITwilioRestClient client) {
+        public override void Delete(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,

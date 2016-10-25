@@ -7,16 +7,19 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Monitor.V1 {
+namespace Twilio.Rest.Monitor.V1 
+{
 
-    public class EventResource : Resource {
+    public class EventResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
         /// <returns> EventFetcher capable of executing the fetch </returns> 
-        public static EventFetcher Fetcher(string sid) {
+        public static EventFetcher Fetcher(string sid)
+        {
             return new EventFetcher(sid);
         }
     
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Monitor.V1 {
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
         /// <returns> EventReader capable of executing the read </returns> 
-        public static EventReader Reader(string actorSid=null, string eventType=null, string resourceSid=null, string sourceIpAddress=null, DateTime? startDate=null, DateTime? endDate=null) {
+        public static EventReader Reader(string actorSid=null, string eventType=null, string resourceSid=null, string sourceIpAddress=null, DateTime? startDate=null, DateTime? endDate=null)
+        {
             return new EventReader(actorSid:actorSid, eventType:eventType, resourceSid:resourceSid, sourceIpAddress:sourceIpAddress, startDate:startDate, endDate:endDate);
         }
     
@@ -41,11 +45,15 @@ namespace Twilio.Rest.Monitor.V1 {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> EventResource object represented by the provided JSON </returns> 
-        public static EventResource FromJson(string json) {
+        public static EventResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<EventResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -79,7 +87,8 @@ namespace Twilio.Rest.Monitor.V1 {
         [JsonProperty("links")]
         public Dictionary<string, string> links { get; }
     
-        public EventResource() {
+        public EventResource()
+        {
         
         }
     
@@ -110,7 +119,8 @@ namespace Twilio.Rest.Monitor.V1 {
                               [JsonProperty("url")]
                               Uri url, 
                               [JsonProperty("links")]
-                              Dictionary<string, string> links) {
+                              Dictionary<string, string> links)
+                              {
             this.accountSid = accountSid;
             this.actorSid = actorSid;
             this.actorType = actorType;

@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Trunking.V1.Trunk {
+namespace Twilio.Rest.Trunking.V1.Trunk 
+{
 
-    public class IpAccessControlListResource : Resource {
+    public class IpAccessControlListResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
@@ -16,7 +18,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> IpAccessControlListFetcher capable of executing the fetch </returns> 
-        public static IpAccessControlListFetcher Fetcher(string trunkSid, string sid) {
+        public static IpAccessControlListFetcher Fetcher(string trunkSid, string sid)
+        {
             return new IpAccessControlListFetcher(trunkSid, sid);
         }
     
@@ -27,7 +30,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> IpAccessControlListDeleter capable of executing the delete </returns> 
-        public static IpAccessControlListDeleter Deleter(string trunkSid, string sid) {
+        public static IpAccessControlListDeleter Deleter(string trunkSid, string sid)
+        {
             return new IpAccessControlListDeleter(trunkSid, sid);
         }
     
@@ -38,7 +42,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         /// <returns> IpAccessControlListCreator capable of executing the create </returns> 
-        public static IpAccessControlListCreator Creator(string trunkSid, string ipAccessControlListSid) {
+        public static IpAccessControlListCreator Creator(string trunkSid, string ipAccessControlListSid)
+        {
             return new IpAccessControlListCreator(trunkSid, ipAccessControlListSid);
         }
     
@@ -48,7 +53,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <returns> IpAccessControlListReader capable of executing the read </returns> 
-        public static IpAccessControlListReader Reader(string trunkSid) {
+        public static IpAccessControlListReader Reader(string trunkSid)
+        {
             return new IpAccessControlListReader(trunkSid);
         }
     
@@ -58,11 +64,15 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> IpAccessControlListResource object represented by the provided JSON </returns> 
-        public static IpAccessControlListResource FromJson(string json) {
+        public static IpAccessControlListResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<IpAccessControlListResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -82,7 +92,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         [JsonProperty("url")]
         public Uri url { get; }
     
-        public IpAccessControlListResource() {
+        public IpAccessControlListResource()
+        {
         
         }
     
@@ -99,7 +110,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
                                             [JsonProperty("date_updated")]
                                             string dateUpdated, 
                                             [JsonProperty("url")]
-                                            Uri url) {
+                                            Uri url)
+                                            {
             this.accountSid = accountSid;
             this.sid = sid;
             this.trunkSid = trunkSid;

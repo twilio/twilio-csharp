@@ -7,16 +7,19 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Taskrouter.V1 {
+namespace Twilio.Rest.Taskrouter.V1 
+{
 
-    public class WorkspaceResource : Resource {
+    public class WorkspaceResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
         /// <returns> WorkspaceFetcher capable of executing the fetch </returns> 
-        public static WorkspaceFetcher Fetcher(string sid) {
+        public static WorkspaceFetcher Fetcher(string sid)
+        {
             return new WorkspaceFetcher(sid);
         }
     
@@ -32,7 +35,8 @@ namespace Twilio.Rest.Taskrouter.V1 {
         /// <param name="multiTaskEnabled"> The multi_task_enabled </param>
         /// <param name="timeoutActivitySid"> The timeout_activity_sid </param>
         /// <returns> WorkspaceUpdater capable of executing the update </returns> 
-        public static WorkspaceUpdater Updater(string sid, string defaultActivitySid=null, Uri eventCallbackUrl=null, string eventsFilter=null, string friendlyName=null, bool? multiTaskEnabled=null, string timeoutActivitySid=null) {
+        public static WorkspaceUpdater Updater(string sid, string defaultActivitySid=null, Uri eventCallbackUrl=null, string eventsFilter=null, string friendlyName=null, bool? multiTaskEnabled=null, string timeoutActivitySid=null)
+        {
             return new WorkspaceUpdater(sid, defaultActivitySid:defaultActivitySid, eventCallbackUrl:eventCallbackUrl, eventsFilter:eventsFilter, friendlyName:friendlyName, multiTaskEnabled:multiTaskEnabled, timeoutActivitySid:timeoutActivitySid);
         }
     
@@ -42,7 +46,8 @@ namespace Twilio.Rest.Taskrouter.V1 {
         ///
         /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> WorkspaceReader capable of executing the read </returns> 
-        public static WorkspaceReader Reader(string friendlyName=null) {
+        public static WorkspaceReader Reader(string friendlyName=null)
+        {
             return new WorkspaceReader(friendlyName:friendlyName);
         }
     
@@ -56,7 +61,8 @@ namespace Twilio.Rest.Taskrouter.V1 {
         /// <param name="multiTaskEnabled"> The multi_task_enabled </param>
         /// <param name="template"> The template </param>
         /// <returns> WorkspaceCreator capable of executing the create </returns> 
-        public static WorkspaceCreator Creator(string friendlyName, Uri eventCallbackUrl=null, string eventsFilter=null, bool? multiTaskEnabled=null, string template=null) {
+        public static WorkspaceCreator Creator(string friendlyName, Uri eventCallbackUrl=null, string eventsFilter=null, bool? multiTaskEnabled=null, string template=null)
+        {
             return new WorkspaceCreator(friendlyName, eventCallbackUrl:eventCallbackUrl, eventsFilter:eventsFilter, multiTaskEnabled:multiTaskEnabled, template:template);
         }
     
@@ -66,7 +72,8 @@ namespace Twilio.Rest.Taskrouter.V1 {
         ///
         /// <param name="sid"> The sid </param>
         /// <returns> WorkspaceDeleter capable of executing the delete </returns> 
-        public static WorkspaceDeleter Deleter(string sid) {
+        public static WorkspaceDeleter Deleter(string sid)
+        {
             return new WorkspaceDeleter(sid);
         }
     
@@ -76,11 +83,15 @@ namespace Twilio.Rest.Taskrouter.V1 {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> WorkspaceResource object represented by the provided JSON </returns> 
-        public static WorkspaceResource FromJson(string json) {
+        public static WorkspaceResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<WorkspaceResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -114,7 +125,8 @@ namespace Twilio.Rest.Taskrouter.V1 {
         [JsonProperty("links")]
         public Dictionary<string, string> links { get; }
     
-        public WorkspaceResource() {
+        public WorkspaceResource()
+        {
         
         }
     
@@ -145,7 +157,8 @@ namespace Twilio.Rest.Taskrouter.V1 {
                                   [JsonProperty("url")]
                                   Uri url, 
                                   [JsonProperty("links")]
-                                  Dictionary<string, string> links) {
+                                  Dictionary<string, string> links)
+                                  {
             this.accountSid = accountSid;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);

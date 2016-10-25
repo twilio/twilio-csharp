@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class QueueResource : Resource {
+    public class QueueResource : Resource 
+    {
         /// <summary>
         /// Fetch an instance of a queue identified by the QueueSid
         /// </summary>
@@ -16,7 +18,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="sid"> Fetch by unique queue Sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> QueueFetcher capable of executing the fetch </returns> 
-        public static QueueFetcher Fetcher(string sid, string accountSid=null) {
+        public static QueueFetcher Fetcher(string sid, string accountSid=null)
+        {
             return new QueueFetcher(sid, accountSid:accountSid);
         }
     
@@ -29,7 +32,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="friendlyName"> A human readable description of the queue </param>
         /// <param name="maxSize"> The max number of members allowed in the queue </param>
         /// <returns> QueueUpdater capable of executing the update </returns> 
-        public static QueueUpdater Updater(string sid, string accountSid=null, string friendlyName=null, int? maxSize=null) {
+        public static QueueUpdater Updater(string sid, string accountSid=null, string friendlyName=null, int? maxSize=null)
+        {
             return new QueueUpdater(sid, accountSid:accountSid, friendlyName:friendlyName, maxSize:maxSize);
         }
     
@@ -40,7 +44,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="sid"> Delete by unique queue Sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> QueueDeleter capable of executing the delete </returns> 
-        public static QueueDeleter Deleter(string sid, string accountSid=null) {
+        public static QueueDeleter Deleter(string sid, string accountSid=null)
+        {
             return new QueueDeleter(sid, accountSid:accountSid);
         }
     
@@ -50,7 +55,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> QueueReader capable of executing the read </returns> 
-        public static QueueReader Reader(string accountSid=null) {
+        public static QueueReader Reader(string accountSid=null)
+        {
             return new QueueReader(accountSid:accountSid);
         }
     
@@ -62,7 +68,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="friendlyName"> A user-provided string that identifies this queue. </param>
         /// <param name="maxSize"> The max number of calls allowed in the queue </param>
         /// <returns> QueueCreator capable of executing the create </returns> 
-        public static QueueCreator Creator(string accountSid=null, string friendlyName=null, int? maxSize=null) {
+        public static QueueCreator Creator(string accountSid=null, string friendlyName=null, int? maxSize=null)
+        {
             return new QueueCreator(accountSid:accountSid, friendlyName:friendlyName, maxSize:maxSize);
         }
     
@@ -72,11 +79,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> QueueResource object represented by the provided JSON </returns> 
-        public static QueueResource FromJson(string json) {
+        public static QueueResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<QueueResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -100,7 +111,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         [JsonProperty("uri")]
         public string uri { get; }
     
-        public QueueResource() {
+        public QueueResource()
+        {
         
         }
     
@@ -121,7 +133,8 @@ namespace Twilio.Rest.Api.V2010.Account {
                               [JsonProperty("sid")]
                               string sid, 
                               [JsonProperty("uri")]
-                              string uri) {
+                              string uri)
+                              {
             this.accountSid = accountSid;
             this.averageWaitTime = averageWaitTime;
             this.currentSize = currentSize;

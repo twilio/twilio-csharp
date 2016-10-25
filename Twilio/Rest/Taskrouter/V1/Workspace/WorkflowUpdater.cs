@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace {
+namespace Twilio.Rest.Taskrouter.V1.Workspace 
+{
 
-    public class WorkflowUpdater : Updater<WorkflowResource> {
+    public class WorkflowUpdater : Updater<WorkflowResource> 
+    {
         public string workspaceSid { get; }
         public string sid { get; }
         public string friendlyName { get; set; }
@@ -30,7 +32,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="fallbackAssignmentCallbackUrl"> The fallback_assignment_callback_url </param>
         /// <param name="configuration"> The configuration </param>
         /// <param name="taskReservationTimeout"> The task_reservation_timeout </param>
-        public WorkflowUpdater(string workspaceSid, string sid, string friendlyName=null, Uri assignmentCallbackUrl=null, Uri fallbackAssignmentCallbackUrl=null, string configuration=null, int? taskReservationTimeout=null) {
+        public WorkflowUpdater(string workspaceSid, string sid, string friendlyName=null, Uri assignmentCallbackUrl=null, Uri fallbackAssignmentCallbackUrl=null, string configuration=null, int? taskReservationTimeout=null)
+        {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
             this.configuration = configuration;
@@ -47,7 +50,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated WorkflowResource </returns> 
-        public override async Task<WorkflowResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<WorkflowResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
@@ -87,7 +91,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated WorkflowResource </returns> 
-        public override WorkflowResource Update(ITwilioRestClient client) {
+        public override WorkflowResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
@@ -125,24 +130,30 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (friendlyName != null) {
+        private void AddPostParams(Request request)
+        {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (assignmentCallbackUrl != null) {
+            if (assignmentCallbackUrl != null)
+            {
                 request.AddPostParam("AssignmentCallbackUrl", assignmentCallbackUrl.ToString());
             }
             
-            if (fallbackAssignmentCallbackUrl != null) {
+            if (fallbackAssignmentCallbackUrl != null)
+            {
                 request.AddPostParam("FallbackAssignmentCallbackUrl", fallbackAssignmentCallbackUrl.ToString());
             }
             
-            if (configuration != null) {
+            if (configuration != null)
+            {
                 request.AddPostParam("Configuration", configuration);
             }
             
-            if (taskReservationTimeout != null) {
+            if (taskReservationTimeout != null)
+            {
                 request.AddPostParam("TaskReservationTimeout", taskReservationTimeout.ToString());
             }
         }

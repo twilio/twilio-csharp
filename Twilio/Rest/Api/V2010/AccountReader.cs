@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010 {
+namespace Twilio.Rest.Api.V2010 
+{
 
-    public class AccountReader : Reader<AccountResource> {
+    public class AccountReader : Reader<AccountResource> 
+    {
         public string friendlyName { get; set; }
         public AccountResource.Status status { get; set; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Api.V2010 {
         ///
         /// <param name="friendlyName"> FriendlyName to filter on </param>
         /// <param name="status"> Status to filter on </param>
-        public AccountReader(string friendlyName=null, AccountResource.Status status=null) {
+        public AccountReader(string friendlyName=null, AccountResource.Status status=null)
+        {
             this.friendlyName = friendlyName;
             this.status = status;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Api.V2010 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> AccountResource ResourceSet </returns> 
-        public override Task<ResourceSet<AccountResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<AccountResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -51,7 +55,8 @@ namespace Twilio.Rest.Api.V2010 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> AccountResource ResourceSet </returns> 
-        public override ResourceSet<AccountResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<AccountResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -71,7 +76,8 @@ namespace Twilio.Rest.Api.V2010 {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<AccountResource> NextPage(Page<AccountResource> page, ITwilioRestClient client) {
+        public override Page<AccountResource> NextPage(Page<AccountResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -89,7 +95,8 @@ namespace Twilio.Rest.Api.V2010 {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<AccountResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<AccountResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -120,12 +127,15 @@ namespace Twilio.Rest.Api.V2010 {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (friendlyName != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (friendlyName != null)
+            {
                 request.AddQueryParam("FriendlyName", friendlyName);
             }
             
-            if (status != null) {
+            if (status != null)
+            {
                 request.AddQueryParam("Status", status.ToString());
             }
             

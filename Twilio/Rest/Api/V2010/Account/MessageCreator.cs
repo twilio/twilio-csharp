@@ -9,9 +9,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class MessageCreator : Creator<MessageResource> {
+    public class MessageCreator : Creator<MessageResource> 
+    {
         public string accountSid { get; }
         public Twilio.Types.PhoneNumber to { get; }
         public Twilio.Types.PhoneNumber from { get; }
@@ -37,7 +39,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="applicationSid"> The application to use for callbacks </param>
         /// <param name="maxPrice"> The max_price </param>
         /// <param name="provideFeedback"> The provide_feedback </param>
-        public MessageCreator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body, string accountSid=null, string messagingServiceSid=null, List<Uri> mediaUrl=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null) {
+        public MessageCreator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body, string accountSid=null, string messagingServiceSid=null, List<Uri> mediaUrl=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null)
+        {
             this.maxPrice = maxPrice;
             this.provideFeedback = provideFeedback;
             this.mediaUrl = mediaUrl;
@@ -64,7 +67,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="applicationSid"> The application to use for callbacks </param>
         /// <param name="maxPrice"> The max_price </param>
         /// <param name="provideFeedback"> The provide_feedback </param>
-        public MessageCreator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl, string accountSid=null, string messagingServiceSid=null, string body=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null) {
+        public MessageCreator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl, string accountSid=null, string messagingServiceSid=null, string body=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null)
+        {
             this.maxPrice = maxPrice;
             this.provideFeedback = provideFeedback;
             this.mediaUrl = mediaUrl;
@@ -91,7 +95,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="applicationSid"> The application to use for callbacks </param>
         /// <param name="maxPrice"> The max_price </param>
         /// <param name="provideFeedback"> The provide_feedback </param>
-        public MessageCreator(Twilio.Types.PhoneNumber to, string messagingServiceSid, string body, string accountSid=null, Twilio.Types.PhoneNumber from=null, List<Uri> mediaUrl=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null) {
+        public MessageCreator(Twilio.Types.PhoneNumber to, string messagingServiceSid, string body, string accountSid=null, Twilio.Types.PhoneNumber from=null, List<Uri> mediaUrl=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null)
+        {
             this.maxPrice = maxPrice;
             this.provideFeedback = provideFeedback;
             this.mediaUrl = mediaUrl;
@@ -118,7 +123,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="applicationSid"> The application to use for callbacks </param>
         /// <param name="maxPrice"> The max_price </param>
         /// <param name="provideFeedback"> The provide_feedback </param>
-        public MessageCreator(Twilio.Types.PhoneNumber to, string messagingServiceSid, List<Uri> mediaUrl, string accountSid=null, Twilio.Types.PhoneNumber from=null, string body=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null) {
+        public MessageCreator(Twilio.Types.PhoneNumber to, string messagingServiceSid, List<Uri> mediaUrl, string accountSid=null, Twilio.Types.PhoneNumber from=null, string body=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null)
+        {
             this.maxPrice = maxPrice;
             this.provideFeedback = provideFeedback;
             this.body = body;
@@ -138,7 +144,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created MessageResource </returns> 
-        public override async Task<MessageResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<MessageResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
@@ -178,7 +185,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created MessageResource </returns> 
-        public override MessageResource Create(ITwilioRestClient client) {
+        public override MessageResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
@@ -216,40 +224,50 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (to != null) {
+        private void AddPostParams(Request request)
+        {
+            if (to != null)
+            {
                 request.AddPostParam("To", to.ToString());
             }
             
-            if (from != null) {
+            if (from != null)
+            {
                 request.AddPostParam("From", from.ToString());
             }
             
-            if (messagingServiceSid != null) {
+            if (messagingServiceSid != null)
+            {
                 request.AddPostParam("MessagingServiceSid", messagingServiceSid);
             }
             
-            if (body != null) {
+            if (body != null)
+            {
                 request.AddPostParam("Body", body);
             }
             
-            if (mediaUrl != null) {
+            if (mediaUrl != null)
+            {
                 request.AddPostParam("MediaUrl", mediaUrl.ToString());
             }
             
-            if (statusCallback != null) {
+            if (statusCallback != null)
+            {
                 request.AddPostParam("StatusCallback", statusCallback.ToString());
             }
             
-            if (applicationSid != null) {
+            if (applicationSid != null)
+            {
                 request.AddPostParam("ApplicationSid", applicationSid);
             }
             
-            if (maxPrice != null) {
+            if (maxPrice != null)
+            {
                 request.AddPostParam("MaxPrice", maxPrice.ToString());
             }
             
-            if (provideFeedback != null) {
+            if (provideFeedback != null)
+            {
                 request.AddPostParam("ProvideFeedback", provideFeedback.ToString());
             }
         }

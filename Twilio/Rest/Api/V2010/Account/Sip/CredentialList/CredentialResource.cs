@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
+namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList 
+{
 
-    public class CredentialResource : Resource {
+    public class CredentialResource : Resource 
+    {
         /// <summary>
         /// read
         /// </summary>
@@ -16,7 +18,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         /// <param name="credentialListSid"> The credential_list_sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialReader capable of executing the read </returns> 
-        public static CredentialReader Reader(string credentialListSid, string accountSid=null) {
+        public static CredentialReader Reader(string credentialListSid, string accountSid=null)
+        {
             return new CredentialReader(credentialListSid, accountSid:accountSid);
         }
     
@@ -29,7 +32,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         /// <param name="password"> The password </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialCreator capable of executing the create </returns> 
-        public static CredentialCreator Creator(string credentialListSid, string username, string password, string accountSid=null) {
+        public static CredentialCreator Creator(string credentialListSid, string username, string password, string accountSid=null)
+        {
             return new CredentialCreator(credentialListSid, username, password, accountSid:accountSid);
         }
     
@@ -41,7 +45,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialFetcher capable of executing the fetch </returns> 
-        public static CredentialFetcher Fetcher(string credentialListSid, string sid, string accountSid=null) {
+        public static CredentialFetcher Fetcher(string credentialListSid, string sid, string accountSid=null)
+        {
             return new CredentialFetcher(credentialListSid, sid, accountSid:accountSid);
         }
     
@@ -54,7 +59,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         /// <param name="accountSid"> The account_sid </param>
         /// <param name="password"> The password </param>
         /// <returns> CredentialUpdater capable of executing the update </returns> 
-        public static CredentialUpdater Updater(string credentialListSid, string sid, string accountSid=null, string password=null) {
+        public static CredentialUpdater Updater(string credentialListSid, string sid, string accountSid=null, string password=null)
+        {
             return new CredentialUpdater(credentialListSid, sid, accountSid:accountSid, password:password);
         }
     
@@ -66,7 +72,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialDeleter capable of executing the delete </returns> 
-        public static CredentialDeleter Deleter(string credentialListSid, string sid, string accountSid=null) {
+        public static CredentialDeleter Deleter(string credentialListSid, string sid, string accountSid=null)
+        {
             return new CredentialDeleter(credentialListSid, sid, accountSid:accountSid);
         }
     
@@ -76,11 +83,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> CredentialResource object represented by the provided JSON </returns> 
-        public static CredentialResource FromJson(string json) {
+        public static CredentialResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<CredentialResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -100,7 +111,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         [JsonProperty("uri")]
         public string uri { get; }
     
-        public CredentialResource() {
+        public CredentialResource()
+        {
         
         }
     
@@ -117,7 +129,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
                                    [JsonProperty("date_updated")]
                                    string dateUpdated, 
                                    [JsonProperty("uri")]
-                                   string uri) {
+                                   string uri)
+                                   {
             this.sid = sid;
             this.accountSid = accountSid;
             this.credentialListSid = credentialListSid;

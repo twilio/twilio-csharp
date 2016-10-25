@@ -9,9 +9,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
+namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
+{
 
-    public class WorkerStatisticsFetcher : Fetcher<WorkerStatisticsResource> {
+    public class WorkerStatisticsFetcher : Fetcher<WorkerStatisticsResource> 
+    {
         public string workspaceSid { get; }
         public string workerSid { get; }
         public int? minutes { get; set; }
@@ -27,7 +29,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         /// <param name="minutes"> The minutes </param>
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
-        public WorkerStatisticsFetcher(string workspaceSid, string workerSid, int? minutes=null, DateTime? startDate=null, DateTime? endDate=null) {
+        public WorkerStatisticsFetcher(string workspaceSid, string workerSid, int? minutes=null, DateTime? startDate=null, DateTime? endDate=null)
+        {
             this.workspaceSid = workspaceSid;
             this.startDate = startDate;
             this.minutes = minutes;
@@ -42,7 +45,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched WorkerStatisticsResource </returns> 
-        public override async Task<WorkerStatisticsResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<WorkerStatisticsResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
@@ -84,7 +88,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched WorkerStatisticsResource </returns> 
-        public override WorkerStatisticsResource Fetch(ITwilioRestClient client) {
+        public override WorkerStatisticsResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
@@ -124,16 +129,20 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (minutes != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (minutes != null)
+            {
                 request.AddQueryParam("Minutes", minutes.ToString());
             }
             
-            if (startDate != null) {
+            if (startDate != null)
+            {
                 request.AddQueryParam("StartDate", startDate.ToString());
             }
             
-            if (endDate != null) {
+            if (endDate != null)
+            {
                 request.AddQueryParam("EndDate", endDate.ToString());
             }
         }

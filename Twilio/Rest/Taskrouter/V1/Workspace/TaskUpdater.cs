@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace {
+namespace Twilio.Rest.Taskrouter.V1.Workspace 
+{
 
-    public class TaskUpdater : Updater<TaskResource> {
+    public class TaskUpdater : Updater<TaskResource> 
+    {
         public string workspaceSid { get; }
         public string sid { get; }
         public string attributes { get; set; }
@@ -29,7 +31,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="reason"> The reason </param>
         /// <param name="priority"> The priority </param>
         /// <param name="taskChannel"> The task_channel </param>
-        public TaskUpdater(string workspaceSid, string sid, string attributes=null, TaskResource.Status assignmentStatus=null, string reason=null, int? priority=null, string taskChannel=null) {
+        public TaskUpdater(string workspaceSid, string sid, string attributes=null, TaskResource.Status assignmentStatus=null, string reason=null, int? priority=null, string taskChannel=null)
+        {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
             this.assignmentStatus = assignmentStatus;
@@ -46,7 +49,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated TaskResource </returns> 
-        public override async Task<TaskResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<TaskResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
@@ -86,7 +90,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated TaskResource </returns> 
-        public override TaskResource Update(ITwilioRestClient client) {
+        public override TaskResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
@@ -124,24 +129,30 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (attributes != null) {
+        private void AddPostParams(Request request)
+        {
+            if (attributes != null)
+            {
                 request.AddPostParam("Attributes", attributes);
             }
             
-            if (assignmentStatus != null) {
+            if (assignmentStatus != null)
+            {
                 request.AddPostParam("AssignmentStatus", assignmentStatus.ToString());
             }
             
-            if (reason != null) {
+            if (reason != null)
+            {
                 request.AddPostParam("Reason", reason);
             }
             
-            if (priority != null) {
+            if (priority != null)
+            {
                 request.AddPostParam("Priority", priority.ToString());
             }
             
-            if (taskChannel != null) {
+            if (taskChannel != null)
+            {
                 request.AddPostParam("TaskChannel", taskChannel);
             }
         }

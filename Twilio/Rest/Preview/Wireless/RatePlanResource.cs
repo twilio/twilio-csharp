@@ -6,15 +6,18 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Wireless {
+namespace Twilio.Rest.Preview.Wireless 
+{
 
-    public class RatePlanResource : Resource {
+    public class RatePlanResource : Resource 
+    {
         /// <summary>
         /// read
         /// </summary>
         ///
         /// <returns> RatePlanReader capable of executing the read </returns> 
-        public static RatePlanReader Reader() {
+        public static RatePlanReader Reader()
+        {
             return new RatePlanReader();
         }
     
@@ -24,7 +27,8 @@ namespace Twilio.Rest.Preview.Wireless {
         ///
         /// <param name="sid"> The sid </param>
         /// <returns> RatePlanFetcher capable of executing the fetch </returns> 
-        public static RatePlanFetcher Fetcher(string sid) {
+        public static RatePlanFetcher Fetcher(string sid)
+        {
             return new RatePlanFetcher(sid);
         }
     
@@ -34,11 +38,15 @@ namespace Twilio.Rest.Preview.Wireless {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> RatePlanResource object represented by the provided JSON </returns> 
-        public static RatePlanResource FromJson(string json) {
+        public static RatePlanResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<RatePlanResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -74,7 +82,8 @@ namespace Twilio.Rest.Preview.Wireless {
         [JsonProperty("url")]
         public Uri url { get; }
     
-        public RatePlanResource() {
+        public RatePlanResource()
+        {
         
         }
     
@@ -107,7 +116,8 @@ namespace Twilio.Rest.Preview.Wireless {
                                  [JsonProperty("date_updated")]
                                  string dateUpdated, 
                                  [JsonProperty("url")]
-                                 Uri url) {
+                                 Uri url)
+                                 {
             this.sid = sid;
             this.alias = alias;
             this.accountSid = accountSid;

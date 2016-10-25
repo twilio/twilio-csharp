@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class ApplicationCreator : Creator<ApplicationResource> {
+    public class ApplicationCreator : Creator<ApplicationResource> 
+    {
         public string accountSid { get; }
         public string friendlyName { get; }
         public string apiVersion { get; set; }
@@ -48,7 +50,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="smsFallbackMethod"> HTTP method to use with sms_fallback_method </param>
         /// <param name="smsStatusCallback"> URL Twilio with request with status updates </param>
         /// <param name="messageStatusCallback"> URL to make requests to with status updates </param>
-        public ApplicationCreator(string friendlyName, string accountSid=null, string apiVersion=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null, bool? voiceCallerIdLookup=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsFallbackMethod=null, Uri smsStatusCallback=null, Uri messageStatusCallback=null) {
+        public ApplicationCreator(string friendlyName, string accountSid=null, string apiVersion=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null, bool? voiceCallerIdLookup=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsFallbackMethod=null, Uri smsStatusCallback=null, Uri messageStatusCallback=null)
+        {
             this.apiVersion = apiVersion;
             this.smsUrl = smsUrl;
             this.smsFallbackUrl = smsFallbackUrl;
@@ -74,7 +77,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created ApplicationResource </returns> 
-        public override async Task<ApplicationResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<ApplicationResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
@@ -114,7 +118,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created ApplicationResource </returns> 
-        public override ApplicationResource Create(ITwilioRestClient client) {
+        public override ApplicationResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
@@ -152,64 +157,80 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (friendlyName != null) {
+        private void AddPostParams(Request request)
+        {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (apiVersion != null) {
+            if (apiVersion != null)
+            {
                 request.AddPostParam("ApiVersion", apiVersion);
             }
             
-            if (voiceUrl != null) {
+            if (voiceUrl != null)
+            {
                 request.AddPostParam("VoiceUrl", voiceUrl.ToString());
             }
             
-            if (voiceMethod != null) {
+            if (voiceMethod != null)
+            {
                 request.AddPostParam("VoiceMethod", voiceMethod.ToString());
             }
             
-            if (voiceFallbackUrl != null) {
+            if (voiceFallbackUrl != null)
+            {
                 request.AddPostParam("VoiceFallbackUrl", voiceFallbackUrl.ToString());
             }
             
-            if (voiceFallbackMethod != null) {
+            if (voiceFallbackMethod != null)
+            {
                 request.AddPostParam("VoiceFallbackMethod", voiceFallbackMethod.ToString());
             }
             
-            if (statusCallback != null) {
+            if (statusCallback != null)
+            {
                 request.AddPostParam("StatusCallback", statusCallback.ToString());
             }
             
-            if (statusCallbackMethod != null) {
+            if (statusCallbackMethod != null)
+            {
                 request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
             }
             
-            if (voiceCallerIdLookup != null) {
+            if (voiceCallerIdLookup != null)
+            {
                 request.AddPostParam("VoiceCallerIdLookup", voiceCallerIdLookup.ToString());
             }
             
-            if (smsUrl != null) {
+            if (smsUrl != null)
+            {
                 request.AddPostParam("SmsUrl", smsUrl.ToString());
             }
             
-            if (smsMethod != null) {
+            if (smsMethod != null)
+            {
                 request.AddPostParam("SmsMethod", smsMethod.ToString());
             }
             
-            if (smsFallbackUrl != null) {
+            if (smsFallbackUrl != null)
+            {
                 request.AddPostParam("SmsFallbackUrl", smsFallbackUrl.ToString());
             }
             
-            if (smsFallbackMethod != null) {
+            if (smsFallbackMethod != null)
+            {
                 request.AddPostParam("SmsFallbackMethod", smsFallbackMethod.ToString());
             }
             
-            if (smsStatusCallback != null) {
+            if (smsStatusCallback != null)
+            {
                 request.AddPostParam("SmsStatusCallback", smsStatusCallback.ToString());
             }
             
-            if (messageStatusCallback != null) {
+            if (messageStatusCallback != null)
+            {
                 request.AddPostParam("MessageStatusCallback", messageStatusCallback.ToString());
             }
         }

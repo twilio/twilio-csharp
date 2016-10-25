@@ -6,16 +6,19 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Monitor.V1 {
+namespace Twilio.Rest.Monitor.V1 
+{
 
-    public class AlertResource : Resource {
+    public class AlertResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
         /// <returns> AlertFetcher capable of executing the fetch </returns> 
-        public static AlertFetcher Fetcher(string sid) {
+        public static AlertFetcher Fetcher(string sid)
+        {
             return new AlertFetcher(sid);
         }
     
@@ -25,7 +28,8 @@ namespace Twilio.Rest.Monitor.V1 {
         ///
         /// <param name="sid"> The sid </param>
         /// <returns> AlertDeleter capable of executing the delete </returns> 
-        public static AlertDeleter Deleter(string sid) {
+        public static AlertDeleter Deleter(string sid)
+        {
             return new AlertDeleter(sid);
         }
     
@@ -37,7 +41,8 @@ namespace Twilio.Rest.Monitor.V1 {
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
         /// <returns> AlertReader capable of executing the read </returns> 
-        public static AlertReader Reader(string logLevel=null, DateTime? startDate=null, DateTime? endDate=null) {
+        public static AlertReader Reader(string logLevel=null, DateTime? startDate=null, DateTime? endDate=null)
+        {
             return new AlertReader(logLevel:logLevel, startDate:startDate, endDate:endDate);
         }
     
@@ -47,11 +52,15 @@ namespace Twilio.Rest.Monitor.V1 {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> AlertResource object represented by the provided JSON </returns> 
-        public static AlertResource FromJson(string json) {
+        public static AlertResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<AlertResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -92,7 +101,8 @@ namespace Twilio.Rest.Monitor.V1 {
         [JsonProperty("url")]
         public Uri url { get; }
     
-        public AlertResource() {
+        public AlertResource()
+        {
         
         }
     
@@ -129,7 +139,8 @@ namespace Twilio.Rest.Monitor.V1 {
                               [JsonProperty("sid")]
                               string sid, 
                               [JsonProperty("url")]
-                              Uri url) {
+                              Uri url)
+                              {
             this.accountSid = accountSid;
             this.alertText = alertText;
             this.apiVersion = apiVersion;

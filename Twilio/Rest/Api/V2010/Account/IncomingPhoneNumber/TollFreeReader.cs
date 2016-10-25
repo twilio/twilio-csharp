@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
+namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber 
+{
 
-    public class TollFreeReader : Reader<TollFreeResource> {
+    public class TollFreeReader : Reader<TollFreeResource> 
+    {
         public string ownerAccountSid { get; }
         public bool? beta { get; set; }
         public string friendlyName { get; set; }
@@ -23,7 +25,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
         /// <param name="beta"> The beta </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="phoneNumber"> The phone_number </param>
-        public TollFreeReader(string ownerAccountSid=null, bool? beta=null, string friendlyName=null, Twilio.Types.PhoneNumber phoneNumber=null) {
+        public TollFreeReader(string ownerAccountSid=null, bool? beta=null, string friendlyName=null, Twilio.Types.PhoneNumber phoneNumber=null)
+        {
             this.friendlyName = friendlyName;
             this.phoneNumber = phoneNumber;
             this.ownerAccountSid = ownerAccountSid;
@@ -37,7 +40,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> TollFreeResource ResourceSet </returns> 
-        public override Task<ResourceSet<TollFreeResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<TollFreeResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -57,7 +61,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> TollFreeResource ResourceSet </returns> 
-        public override ResourceSet<TollFreeResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<TollFreeResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -77,7 +82,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<TollFreeResource> NextPage(Page<TollFreeResource> page, ITwilioRestClient client) {
+        public override Page<TollFreeResource> NextPage(Page<TollFreeResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -95,7 +101,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<TollFreeResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<TollFreeResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -126,16 +133,20 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (beta != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (beta != null)
+            {
                 request.AddQueryParam("Beta", beta.ToString());
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != null)
+            {
                 request.AddQueryParam("FriendlyName", friendlyName);
             }
             
-            if (phoneNumber != null) {
+            if (phoneNumber != null)
+            {
                 request.AddQueryParam("PhoneNumber", phoneNumber.ToString());
             }
             

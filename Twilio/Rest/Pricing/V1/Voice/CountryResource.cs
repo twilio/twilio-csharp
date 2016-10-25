@@ -8,15 +8,18 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Pricing.V1.Voice {
+namespace Twilio.Rest.Pricing.V1.Voice 
+{
 
-    public class CountryResource : Resource {
+    public class CountryResource : Resource 
+    {
         /// <summary>
         /// read
         /// </summary>
         ///
         /// <returns> CountryReader capable of executing the read </returns> 
-        public static CountryReader Reader() {
+        public static CountryReader Reader()
+        {
             return new CountryReader();
         }
     
@@ -26,7 +29,8 @@ namespace Twilio.Rest.Pricing.V1.Voice {
         ///
         /// <param name="isoCountry"> The iso_country </param>
         /// <returns> CountryFetcher capable of executing the fetch </returns> 
-        public static CountryFetcher Fetcher(string isoCountry) {
+        public static CountryFetcher Fetcher(string isoCountry)
+        {
             return new CountryFetcher(isoCountry);
         }
     
@@ -36,11 +40,15 @@ namespace Twilio.Rest.Pricing.V1.Voice {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> CountryResource object represented by the provided JSON </returns> 
-        public static CountryResource FromJson(string json) {
+        public static CountryResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<CountryResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -58,7 +66,8 @@ namespace Twilio.Rest.Pricing.V1.Voice {
         [JsonProperty("url")]
         public Uri url { get; }
     
-        public CountryResource() {
+        public CountryResource()
+        {
         
         }
     
@@ -73,7 +82,8 @@ namespace Twilio.Rest.Pricing.V1.Voice {
                                 [JsonProperty("price_unit")]
                                 string priceUnit, 
                                 [JsonProperty("url")]
-                                Uri url) {
+                                Uri url)
+                                {
             this.country = country;
             this.isoCountry = isoCountry;
             this.outboundPrefixPrices = outboundPrefixPrices;

@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Call {
+namespace Twilio.Rest.Api.V2010.Account.Call 
+{
 
-    public class RecordingFetcher : Fetcher<RecordingResource> {
+    public class RecordingFetcher : Fetcher<RecordingResource> 
+    {
         public string accountSid { get; }
         public string callSid { get; }
         public string sid { get; }
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// <param name="callSid"> The call_sid </param>
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        public RecordingFetcher(string callSid, string sid, string accountSid=null) {
+        public RecordingFetcher(string callSid, string sid, string accountSid=null)
+        {
             this.accountSid = accountSid;
             this.sid = sid;
             this.callSid = callSid;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched RecordingResource </returns> 
-        public override async Task<RecordingResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<RecordingResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -73,7 +77,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched RecordingResource </returns> 
-        public override RecordingResource Fetch(ITwilioRestClient client) {
+        public override RecordingResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

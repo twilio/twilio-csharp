@@ -7,9 +7,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace {
+namespace Twilio.Rest.Taskrouter.V1.Workspace 
+{
 
-    public class TaskQueueResource : Resource {
+    public class TaskQueueResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> TaskQueueFetcher capable of executing the fetch </returns> 
-        public static TaskQueueFetcher Fetcher(string workspaceSid, string sid) {
+        public static TaskQueueFetcher Fetcher(string workspaceSid, string sid)
+        {
             return new TaskQueueFetcher(workspaceSid, sid);
         }
     
@@ -33,7 +36,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="assignmentActivitySid"> The assignment_activity_sid </param>
         /// <param name="maxReservedWorkers"> The max_reserved_workers </param>
         /// <returns> TaskQueueUpdater capable of executing the update </returns> 
-        public static TaskQueueUpdater Updater(string workspaceSid, string sid, string friendlyName=null, string targetWorkers=null, string reservationActivitySid=null, string assignmentActivitySid=null, int? maxReservedWorkers=null) {
+        public static TaskQueueUpdater Updater(string workspaceSid, string sid, string friendlyName=null, string targetWorkers=null, string reservationActivitySid=null, string assignmentActivitySid=null, int? maxReservedWorkers=null)
+        {
             return new TaskQueueUpdater(workspaceSid, sid, friendlyName:friendlyName, targetWorkers:targetWorkers, reservationActivitySid:reservationActivitySid, assignmentActivitySid:assignmentActivitySid, maxReservedWorkers:maxReservedWorkers);
         }
     
@@ -45,7 +49,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="evaluateWorkerAttributes"> The evaluate_worker_attributes </param>
         /// <returns> TaskQueueReader capable of executing the read </returns> 
-        public static TaskQueueReader Reader(string workspaceSid, string friendlyName=null, string evaluateWorkerAttributes=null) {
+        public static TaskQueueReader Reader(string workspaceSid, string friendlyName=null, string evaluateWorkerAttributes=null)
+        {
             return new TaskQueueReader(workspaceSid, friendlyName:friendlyName, evaluateWorkerAttributes:evaluateWorkerAttributes);
         }
     
@@ -60,7 +65,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="targetWorkers"> The target_workers </param>
         /// <param name="maxReservedWorkers"> The max_reserved_workers </param>
         /// <returns> TaskQueueCreator capable of executing the create </returns> 
-        public static TaskQueueCreator Creator(string workspaceSid, string friendlyName, string reservationActivitySid, string assignmentActivitySid, string targetWorkers=null, int? maxReservedWorkers=null) {
+        public static TaskQueueCreator Creator(string workspaceSid, string friendlyName, string reservationActivitySid, string assignmentActivitySid, string targetWorkers=null, int? maxReservedWorkers=null)
+        {
             return new TaskQueueCreator(workspaceSid, friendlyName, reservationActivitySid, assignmentActivitySid, targetWorkers:targetWorkers, maxReservedWorkers:maxReservedWorkers);
         }
     
@@ -71,7 +77,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> TaskQueueDeleter capable of executing the delete </returns> 
-        public static TaskQueueDeleter Deleter(string workspaceSid, string sid) {
+        public static TaskQueueDeleter Deleter(string workspaceSid, string sid)
+        {
             return new TaskQueueDeleter(workspaceSid, sid);
         }
     
@@ -81,11 +88,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> TaskQueueResource object represented by the provided JSON </returns> 
-        public static TaskQueueResource FromJson(string json) {
+        public static TaskQueueResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<TaskQueueResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -119,7 +130,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         [JsonProperty("links")]
         public Dictionary<string, string> links { get; }
     
-        public TaskQueueResource() {
+        public TaskQueueResource()
+        {
         
         }
     
@@ -150,7 +162,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
                                   [JsonProperty("workspace_sid")]
                                   string workspaceSid, 
                                   [JsonProperty("links")]
-                                  Dictionary<string, string> links) {
+                                  Dictionary<string, string> links)
+                                  {
             this.accountSid = accountSid;
             this.assignmentActivitySid = assignmentActivitySid;
             this.assignmentActivityName = assignmentActivityName;

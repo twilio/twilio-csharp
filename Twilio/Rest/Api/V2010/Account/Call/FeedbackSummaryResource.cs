@@ -8,10 +8,13 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Api.V2010.Account.Call {
+namespace Twilio.Rest.Api.V2010.Account.Call 
+{
 
-    public class FeedbackSummaryResource : Resource {
-        public sealed class Status : IStringEnum {
+    public class FeedbackSummaryResource : Resource 
+    {
+        public sealed class Status : IStringEnum 
+        {
             public const string Queued = "queued";
             public const string InProgress = "in-progress";
             public const string Completed = "completed";
@@ -19,25 +22,30 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         
             private string _value;
             
-            public Status() { }
+            public Status() {}
             
-            public Status(string value) {
+            public Status(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator Status(string value) {
+            public static implicit operator Status(string value)
+            {
                 return new Status(value);
             }
             
-            public static implicit operator string(Status value) {
+            public static implicit operator string(Status value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -53,7 +61,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <returns> FeedbackSummaryCreator capable of executing the create </returns> 
-        public static FeedbackSummaryCreator Creator(DateTime? startDate, DateTime? endDate, string accountSid=null, bool? includeSubaccounts=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null) {
+        public static FeedbackSummaryCreator Creator(DateTime? startDate, DateTime? endDate, string accountSid=null, bool? includeSubaccounts=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null)
+        {
             return new FeedbackSummaryCreator(startDate, endDate, accountSid:accountSid, includeSubaccounts:includeSubaccounts, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod);
         }
     
@@ -64,7 +73,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> FeedbackSummaryFetcher capable of executing the fetch </returns> 
-        public static FeedbackSummaryFetcher Fetcher(string sid, string accountSid=null) {
+        public static FeedbackSummaryFetcher Fetcher(string sid, string accountSid=null)
+        {
             return new FeedbackSummaryFetcher(sid, accountSid:accountSid);
         }
     
@@ -75,7 +85,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> FeedbackSummaryDeleter capable of executing the delete </returns> 
-        public static FeedbackSummaryDeleter Deleter(string sid, string accountSid=null) {
+        public static FeedbackSummaryDeleter Deleter(string sid, string accountSid=null)
+        {
             return new FeedbackSummaryDeleter(sid, accountSid:accountSid);
         }
     
@@ -85,11 +96,15 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> FeedbackSummaryResource object represented by the provided JSON </returns> 
-        public static FeedbackSummaryResource FromJson(string json) {
+        public static FeedbackSummaryResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<FeedbackSummaryResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -124,7 +139,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         [JsonConverter(typeof(StringEnumConverter))]
         public FeedbackSummaryResource.Status status { get; }
     
-        public FeedbackSummaryResource() {
+        public FeedbackSummaryResource()
+        {
         
         }
     
@@ -155,7 +171,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
                                         [JsonProperty("start_date")]
                                         string startDate, 
                                         [JsonProperty("status")]
-                                        FeedbackSummaryResource.Status status) {
+                                        FeedbackSummaryResource.Status status)
+                                        {
             this.accountSid = accountSid;
             this.callCount = callCount;
             this.callFeedbackCount = callFeedbackCount;

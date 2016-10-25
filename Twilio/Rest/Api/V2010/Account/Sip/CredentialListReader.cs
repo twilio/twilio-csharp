@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Sip {
+namespace Twilio.Rest.Api.V2010.Account.Sip 
+{
 
-    public class CredentialListReader : Reader<CredentialListResource> {
+    public class CredentialListReader : Reader<CredentialListResource> 
+    {
         public string accountSid { get; }
     
         /// <summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public CredentialListReader(string accountSid=null) {
+        public CredentialListReader(string accountSid=null)
+        {
             this.accountSid = accountSid;
         }
     
@@ -28,7 +31,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> CredentialListResource ResourceSet </returns> 
-        public override Task<ResourceSet<CredentialListResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<CredentialListResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -48,7 +52,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> CredentialListResource ResourceSet </returns> 
-        public override ResourceSet<CredentialListResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<CredentialListResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -68,7 +73,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<CredentialListResource> NextPage(Page<CredentialListResource> page, ITwilioRestClient client) {
+        public override Page<CredentialListResource> NextPage(Page<CredentialListResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -86,7 +92,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<CredentialListResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<CredentialListResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -117,7 +124,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
+        private void AddQueryParams(Request request)
+        {
             request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }

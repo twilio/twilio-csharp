@@ -7,9 +7,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
+namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue 
+{
 
-    public class TaskQueueStatisticsResource : Resource {
+    public class TaskQueueStatisticsResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
         /// <param name="minutes"> The minutes </param>
         /// <param name="startDate"> The start_date </param>
         /// <returns> TaskQueueStatisticsFetcher capable of executing the fetch </returns> 
-        public static TaskQueueStatisticsFetcher Fetcher(string workspaceSid, string taskQueueSid, DateTime? endDate=null, string friendlyName=null, int? minutes=null, DateTime? startDate=null) {
+        public static TaskQueueStatisticsFetcher Fetcher(string workspaceSid, string taskQueueSid, DateTime? endDate=null, string friendlyName=null, int? minutes=null, DateTime? startDate=null)
+        {
             return new TaskQueueStatisticsFetcher(workspaceSid, taskQueueSid, endDate:endDate, friendlyName:friendlyName, minutes:minutes, startDate:startDate);
         }
     
@@ -31,11 +34,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> TaskQueueStatisticsResource object represented by the provided JSON </returns> 
-        public static TaskQueueStatisticsResource FromJson(string json) {
+        public static TaskQueueStatisticsResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<TaskQueueStatisticsResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -51,7 +58,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
         [JsonProperty("workspace_sid")]
         public string workspaceSid { get; }
     
-        public TaskQueueStatisticsResource() {
+        public TaskQueueStatisticsResource()
+        {
         
         }
     
@@ -64,7 +72,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
                                             [JsonProperty("task_queue_sid")]
                                             string taskQueueSid, 
                                             [JsonProperty("workspace_sid")]
-                                            string workspaceSid) {
+                                            string workspaceSid)
+                                            {
             this.accountSid = accountSid;
             this.cumulative = cumulative;
             this.realtime = realtime;

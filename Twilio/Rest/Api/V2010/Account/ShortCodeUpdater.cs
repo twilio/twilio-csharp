@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class ShortCodeUpdater : Updater<ShortCodeResource> {
+    public class ShortCodeUpdater : Updater<ShortCodeResource> 
+    {
         public string accountSid { get; }
         public string sid { get; }
         public string friendlyName { get; set; }
@@ -32,7 +34,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="smsMethod"> HTTP method to use when requesting the sms url </param>
         /// <param name="smsFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
         /// <param name="smsFallbackMethod"> HTTP method Twilio will use with sms fallback url </param>
-        public ShortCodeUpdater(string sid, string accountSid=null, string friendlyName=null, string apiVersion=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsFallbackMethod=null) {
+        public ShortCodeUpdater(string sid, string accountSid=null, string friendlyName=null, string apiVersion=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsFallbackMethod=null)
+        {
             this.smsUrl = smsUrl;
             this.apiVersion = apiVersion;
             this.sid = sid;
@@ -50,7 +53,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated ShortCodeResource </returns> 
-        public override async Task<ShortCodeResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<ShortCodeResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -90,7 +94,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated ShortCodeResource </returns> 
-        public override ShortCodeResource Update(ITwilioRestClient client) {
+        public override ShortCodeResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -128,28 +133,35 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (friendlyName != null) {
+        private void AddPostParams(Request request)
+        {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (apiVersion != null) {
+            if (apiVersion != null)
+            {
                 request.AddPostParam("ApiVersion", apiVersion);
             }
             
-            if (smsUrl != null) {
+            if (smsUrl != null)
+            {
                 request.AddPostParam("SmsUrl", smsUrl.ToString());
             }
             
-            if (smsMethod != null) {
+            if (smsMethod != null)
+            {
                 request.AddPostParam("SmsMethod", smsMethod.ToString());
             }
             
-            if (smsFallbackUrl != null) {
+            if (smsFallbackUrl != null)
+            {
                 request.AddPostParam("SmsFallbackUrl", smsFallbackUrl.ToString());
             }
             
-            if (smsFallbackMethod != null) {
+            if (smsFallbackMethod != null)
+            {
                 request.AddPostParam("SmsFallbackMethod", smsFallbackMethod.ToString());
             }
         }

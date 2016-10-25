@@ -6,10 +6,13 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class RecordingResource : Resource {
-        public sealed class Source : IStringEnum {
+    public class RecordingResource : Resource 
+    {
+        public sealed class Source : IStringEnum 
+        {
             public const string Dialverb = "DialVerb";
             public const string Conference = "Conference";
             public const string Outboundapi = "OutboundAPI";
@@ -18,54 +21,65 @@ namespace Twilio.Rest.Api.V2010.Account {
         
             private string _value;
             
-            public Source() { }
+            public Source() {}
             
-            public Source(string value) {
+            public Source(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator Source(string value) {
+            public static implicit operator Source(string value)
+            {
                 return new Source(value);
             }
             
-            public static implicit operator string(Source value) {
+            public static implicit operator string(Source value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
     
-        public sealed class Status : IStringEnum {
+        public sealed class Status : IStringEnum 
+        {
             public const string Processing = "processing";
             public const string Completed = "completed";
         
             private string _value;
             
-            public Status() { }
+            public Status() {}
             
-            public Status(string value) {
+            public Status(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator Status(string value) {
+            public static implicit operator Status(string value)
+            {
                 return new Status(value);
             }
             
-            public static implicit operator string(Status value) {
+            public static implicit operator string(Status value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -77,7 +91,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="sid"> Fetch by unique recording Sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> RecordingFetcher capable of executing the fetch </returns> 
-        public static RecordingFetcher Fetcher(string sid, string accountSid=null) {
+        public static RecordingFetcher Fetcher(string sid, string accountSid=null)
+        {
             return new RecordingFetcher(sid, accountSid:accountSid);
         }
     
@@ -88,7 +103,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="sid"> Delete by unique recording Sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> RecordingDeleter capable of executing the delete </returns> 
-        public static RecordingDeleter Deleter(string sid, string accountSid=null) {
+        public static RecordingDeleter Deleter(string sid, string accountSid=null)
+        {
             return new RecordingDeleter(sid, accountSid:accountSid);
         }
     
@@ -99,7 +115,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="accountSid"> The account_sid </param>
         /// <param name="dateCreated"> Filter by date created </param>
         /// <returns> RecordingReader capable of executing the read </returns> 
-        public static RecordingReader Reader(string accountSid=null, string dateCreated=null) {
+        public static RecordingReader Reader(string accountSid=null, string dateCreated=null)
+        {
             return new RecordingReader(accountSid:accountSid, dateCreated:dateCreated);
         }
     
@@ -109,11 +126,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> RecordingResource object represented by the provided JSON </returns> 
-        public static RecordingResource FromJson(string json) {
+        public static RecordingResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<RecordingResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -147,7 +168,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         [JsonProperty("uri")]
         public string uri { get; }
     
-        public RecordingResource() {
+        public RecordingResource()
+        {
         
         }
     
@@ -176,7 +198,8 @@ namespace Twilio.Rest.Api.V2010.Account {
                                   [JsonProperty("source")]
                                   RecordingResource.Source source, 
                                   [JsonProperty("uri")]
-                                  string uri) {
+                                  string uri)
+                                  {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
             this.callSid = callSid;

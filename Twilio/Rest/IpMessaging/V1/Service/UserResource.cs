@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.IpMessaging.V1.Service {
+namespace Twilio.Rest.IpMessaging.V1.Service 
+{
 
-    public class UserResource : Resource {
+    public class UserResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
@@ -16,7 +18,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> UserFetcher capable of executing the fetch </returns> 
-        public static UserFetcher Fetcher(string serviceSid, string sid) {
+        public static UserFetcher Fetcher(string serviceSid, string sid)
+        {
             return new UserFetcher(serviceSid, sid);
         }
     
@@ -27,7 +30,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> UserDeleter capable of executing the delete </returns> 
-        public static UserDeleter Deleter(string serviceSid, string sid) {
+        public static UserDeleter Deleter(string serviceSid, string sid)
+        {
             return new UserDeleter(serviceSid, sid);
         }
     
@@ -41,7 +45,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// <param name="attributes"> The attributes </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> UserCreator capable of executing the create </returns> 
-        public static UserCreator Creator(string serviceSid, string identity, string roleSid=null, string attributes=null, string friendlyName=null) {
+        public static UserCreator Creator(string serviceSid, string identity, string roleSid=null, string attributes=null, string friendlyName=null)
+        {
             return new UserCreator(serviceSid, identity, roleSid:roleSid, attributes:attributes, friendlyName:friendlyName);
         }
     
@@ -51,7 +56,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <returns> UserReader capable of executing the read </returns> 
-        public static UserReader Reader(string serviceSid) {
+        public static UserReader Reader(string serviceSid)
+        {
             return new UserReader(serviceSid);
         }
     
@@ -65,7 +71,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// <param name="attributes"> The attributes </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> UserUpdater capable of executing the update </returns> 
-        public static UserUpdater Updater(string serviceSid, string sid, string roleSid=null, Object attributes=null, string friendlyName=null) {
+        public static UserUpdater Updater(string serviceSid, string sid, string roleSid=null, Object attributes=null, string friendlyName=null)
+        {
             return new UserUpdater(serviceSid, sid, roleSid:roleSid, attributes:attributes, friendlyName:friendlyName);
         }
     
@@ -75,11 +82,15 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> UserResource object represented by the provided JSON </returns> 
-        public static UserResource FromJson(string json) {
+        public static UserResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<UserResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -105,7 +116,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         [JsonProperty("url")]
         public Uri url { get; }
     
-        public UserResource() {
+        public UserResource()
+        {
         
         }
     
@@ -128,7 +140,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
                              [JsonProperty("date_updated")]
                              string dateUpdated, 
                              [JsonProperty("url")]
-                             Uri url) {
+                             Uri url)
+                             {
             this.sid = sid;
             this.accountSid = accountSid;
             this.serviceSid = serviceSid;

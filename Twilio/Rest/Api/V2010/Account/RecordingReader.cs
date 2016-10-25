@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class RecordingReader : Reader<RecordingResource> {
+    public class RecordingReader : Reader<RecordingResource> 
+    {
         public string accountSid { get; }
         public string dateCreated { get; set; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="accountSid"> The account_sid </param>
         /// <param name="dateCreated"> Filter by date created </param>
-        public RecordingReader(string accountSid=null, string dateCreated=null) {
+        public RecordingReader(string accountSid=null, string dateCreated=null)
+        {
             this.accountSid = accountSid;
             this.dateCreated = dateCreated;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> RecordingResource ResourceSet </returns> 
-        public override Task<ResourceSet<RecordingResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<RecordingResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -51,7 +55,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> RecordingResource ResourceSet </returns> 
-        public override ResourceSet<RecordingResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<RecordingResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -71,7 +76,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<RecordingResource> NextPage(Page<RecordingResource> page, ITwilioRestClient client) {
+        public override Page<RecordingResource> NextPage(Page<RecordingResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -89,7 +95,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<RecordingResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<RecordingResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -120,7 +127,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
+        private void AddQueryParams(Request request)
+        {
             request.AddQueryParam("PageSize", PageSize.ToString());
         }
     }

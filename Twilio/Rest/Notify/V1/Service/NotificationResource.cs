@@ -7,34 +7,42 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Notify.V1.Service {
+namespace Twilio.Rest.Notify.V1.Service 
+{
 
-    public class NotificationResource : Resource {
-        public sealed class Priority : IStringEnum {
+    public class NotificationResource : Resource 
+    {
+        public sealed class Priority : IStringEnum 
+        {
             public const string High = "high";
             public const string Low = "low";
         
             private string _value;
             
-            public Priority() { }
+            public Priority() {}
             
-            public Priority(string value) {
+            public Priority(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator Priority(string value) {
+            public static implicit operator Priority(string value)
+            {
                 return new Priority(value);
             }
             
-            public static implicit operator string(Priority value) {
+            public static implicit operator string(Priority value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -58,7 +66,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         /// <param name="sms"> The sms </param>
         /// <param name="facebookMessenger"> The facebook_messenger </param>
         /// <returns> NotificationCreator capable of executing the create </returns> 
-        public static NotificationCreator Creator(string serviceSid, List<string> identity=null, List<string> tag=null, string body=null, NotificationResource.Priority priority=null, int? ttl=null, string title=null, string sound=null, string action=null, string data=null, string apn=null, string gcm=null, string sms=null, Object facebookMessenger=null) {
+        public static NotificationCreator Creator(string serviceSid, List<string> identity=null, List<string> tag=null, string body=null, NotificationResource.Priority priority=null, int? ttl=null, string title=null, string sound=null, string action=null, string data=null, string apn=null, string gcm=null, string sms=null, Object facebookMessenger=null)
+        {
             return new NotificationCreator(serviceSid, identity:identity, tag:tag, body:body, priority:priority, ttl:ttl, title:title, sound:sound, action:action, data:data, apn:apn, gcm:gcm, sms:sms, facebookMessenger:facebookMessenger);
         }
     
@@ -68,11 +77,15 @@ namespace Twilio.Rest.Notify.V1.Service {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> NotificationResource object represented by the provided JSON </returns> 
-        public static NotificationResource FromJson(string json) {
+        public static NotificationResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<NotificationResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -113,7 +126,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         [JsonProperty("facebook_messenger")]
         public Object facebookMessenger { get; }
     
-        public NotificationResource() {
+        public NotificationResource()
+        {
         
         }
     
@@ -150,7 +164,8 @@ namespace Twilio.Rest.Notify.V1.Service {
                                      [JsonProperty("sms")]
                                      Object sms, 
                                      [JsonProperty("facebook_messenger")]
-                                     Object facebookMessenger) {
+                                     Object facebookMessenger)
+                                     {
             this.sid = sid;
             this.accountSid = accountSid;
             this.serviceSid = serviceSid;

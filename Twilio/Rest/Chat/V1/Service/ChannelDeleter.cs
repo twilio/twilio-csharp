@@ -8,9 +8,11 @@ using Twilio.Rest.Chat.V1.Service;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Chat.V1.Service {
+namespace Twilio.Rest.Chat.V1.Service 
+{
 
-    public class ChannelDeleter : Deleter<ChannelResource> {
+    public class ChannelDeleter : Deleter<ChannelResource> 
+    {
         public string serviceSid { get; }
         public string sid { get; }
     
@@ -20,7 +22,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
-        public ChannelDeleter(string serviceSid, string sid) {
+        public ChannelDeleter(string serviceSid, string sid)
+        {
             this.serviceSid = serviceSid;
             this.sid = sid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         /// </summary>
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
-        public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client) {
+        public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.CHAT,
@@ -69,7 +73,8 @@ namespace Twilio.Rest.Chat.V1.Service {
         /// </summary>
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
-        public override void Delete(ITwilioRestClient client) {
+        public override void Delete(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.CHAT,

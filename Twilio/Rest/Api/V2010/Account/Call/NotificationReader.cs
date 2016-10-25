@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Call {
+namespace Twilio.Rest.Api.V2010.Account.Call 
+{
 
-    public class NotificationReader : Reader<NotificationResource> {
+    public class NotificationReader : Reader<NotificationResource> 
+    {
         public string accountSid { get; }
         public string callSid { get; }
         public int? log { get; set; }
@@ -23,7 +25,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// <param name="accountSid"> The account_sid </param>
         /// <param name="log"> The log </param>
         /// <param name="messageDate"> The message_date </param>
-        public NotificationReader(string callSid, string accountSid=null, int? log=null, string messageDate=null) {
+        public NotificationReader(string callSid, string accountSid=null, int? log=null, string messageDate=null)
+        {
             this.accountSid = accountSid;
             this.callSid = callSid;
             this.log = log;
@@ -37,7 +40,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> NotificationResource ResourceSet </returns> 
-        public override Task<ResourceSet<NotificationResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<NotificationResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -57,7 +61,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> NotificationResource ResourceSet </returns> 
-        public override ResourceSet<NotificationResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<NotificationResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -77,7 +82,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<NotificationResource> NextPage(Page<NotificationResource> page, ITwilioRestClient client) {
+        public override Page<NotificationResource> NextPage(Page<NotificationResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -95,7 +101,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<NotificationResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<NotificationResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -126,12 +133,15 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (log != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (log != null)
+            {
                 request.AddQueryParam("Log", log.ToString());
             }
             
-            if (messageDate != null) {
+            if (messageDate != null)
+            {
                 request.AddQueryParam("MessageDate", messageDate);
             }
             

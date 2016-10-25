@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Trunking.V1.Trunk {
+namespace Twilio.Rest.Trunking.V1.Trunk 
+{
 
-    public class CredentialListCreator : Creator<CredentialListResource> {
+    public class CredentialListCreator : Creator<CredentialListResource> 
+    {
         public string trunkSid { get; }
         public string credentialListSid { get; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <param name="credentialListSid"> The credential_list_sid </param>
-        public CredentialListCreator(string trunkSid, string credentialListSid) {
+        public CredentialListCreator(string trunkSid, string credentialListSid)
+        {
             this.trunkSid = trunkSid;
             this.credentialListSid = credentialListSid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created CredentialListResource </returns> 
-        public override async Task<CredentialListResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<CredentialListResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TRUNKING,
@@ -71,7 +75,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created CredentialListResource </returns> 
-        public override CredentialListResource Create(ITwilioRestClient client) {
+        public override CredentialListResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TRUNKING,
@@ -109,8 +114,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (credentialListSid != null) {
+        private void AddPostParams(Request request)
+        {
+            if (credentialListSid != null)
+            {
                 request.AddPostParam("CredentialListSid", credentialListSid);
             }
         }

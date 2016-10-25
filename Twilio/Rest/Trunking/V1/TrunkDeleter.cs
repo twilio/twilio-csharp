@@ -8,9 +8,11 @@ using Twilio.Rest.Trunking.V1;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Trunking.V1 {
+namespace Twilio.Rest.Trunking.V1 
+{
 
-    public class TrunkDeleter : Deleter<TrunkResource> {
+    public class TrunkDeleter : Deleter<TrunkResource> 
+    {
         public string sid { get; }
     
         /// <summary>
@@ -18,7 +20,8 @@ namespace Twilio.Rest.Trunking.V1 {
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        public TrunkDeleter(string sid) {
+        public TrunkDeleter(string sid)
+        {
             this.sid = sid;
         }
     
@@ -28,7 +31,8 @@ namespace Twilio.Rest.Trunking.V1 {
         /// </summary>
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
-        public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client) {
+        public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.TRUNKING,
@@ -66,7 +70,8 @@ namespace Twilio.Rest.Trunking.V1 {
         /// </summary>
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
-        public override void Delete(ITwilioRestClient client) {
+        public override void Delete(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.TRUNKING,

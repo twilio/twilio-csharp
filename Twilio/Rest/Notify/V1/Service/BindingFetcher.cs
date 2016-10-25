@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Notify.V1.Service {
+namespace Twilio.Rest.Notify.V1.Service 
+{
 
-    public class BindingFetcher : Fetcher<BindingResource> {
+    public class BindingFetcher : Fetcher<BindingResource> 
+    {
         public string serviceSid { get; }
         public string sid { get; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
-        public BindingFetcher(string serviceSid, string sid) {
+        public BindingFetcher(string serviceSid, string sid)
+        {
             this.serviceSid = serviceSid;
             this.sid = sid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched BindingResource </returns> 
-        public override async Task<BindingResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<BindingResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.NOTIFY,
@@ -70,7 +74,8 @@ namespace Twilio.Rest.Notify.V1.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched BindingResource </returns> 
-        public override BindingResource Fetch(ITwilioRestClient client) {
+        public override BindingResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.NOTIFY,

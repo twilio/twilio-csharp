@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace {
+namespace Twilio.Rest.Taskrouter.V1.Workspace 
+{
 
-    public class TaskCreator : Creator<TaskResource> {
+    public class TaskCreator : Creator<TaskResource> 
+    {
         public string workspaceSid { get; }
         public string attributes { get; }
         public string workflowSid { get; }
@@ -27,7 +29,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="timeout"> The timeout </param>
         /// <param name="priority"> The priority </param>
         /// <param name="taskChannel"> The task_channel </param>
-        public TaskCreator(string workspaceSid, string attributes, string workflowSid, int? timeout=null, int? priority=null, string taskChannel=null) {
+        public TaskCreator(string workspaceSid, string attributes, string workflowSid, int? timeout=null, int? priority=null, string taskChannel=null)
+        {
             this.workspaceSid = workspaceSid;
             this.workflowSid = workflowSid;
             this.priority = priority;
@@ -43,7 +46,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created TaskResource </returns> 
-        public override async Task<TaskResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<TaskResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TASKROUTER,
@@ -83,7 +87,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created TaskResource </returns> 
-        public override TaskResource Create(ITwilioRestClient client) {
+        public override TaskResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TASKROUTER,
@@ -121,24 +126,30 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (attributes != null) {
+        private void AddPostParams(Request request)
+        {
+            if (attributes != null)
+            {
                 request.AddPostParam("Attributes", attributes);
             }
             
-            if (workflowSid != null) {
+            if (workflowSid != null)
+            {
                 request.AddPostParam("WorkflowSid", workflowSid);
             }
             
-            if (timeout != null) {
+            if (timeout != null)
+            {
                 request.AddPostParam("Timeout", timeout.ToString());
             }
             
-            if (priority != null) {
+            if (priority != null)
+            {
                 request.AddPostParam("Priority", priority.ToString());
             }
             
-            if (taskChannel != null) {
+            if (taskChannel != null)
+            {
                 request.AddPostParam("TaskChannel", taskChannel);
             }
         }

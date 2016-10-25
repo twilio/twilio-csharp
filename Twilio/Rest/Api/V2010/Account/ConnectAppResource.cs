@@ -7,34 +7,42 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class ConnectAppResource : Resource {
-        public sealed class Permission : IStringEnum {
+    public class ConnectAppResource : Resource 
+    {
+        public sealed class Permission : IStringEnum 
+        {
             public const string GetAll = "get-all";
             public const string PostAll = "post-all";
         
             private string _value;
             
-            public Permission() { }
+            public Permission() {}
             
-            public Permission(string value) {
+            public Permission(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator Permission(string value) {
+            public static implicit operator Permission(string value)
+            {
                 return new Permission(value);
             }
             
-            public static implicit operator string(Permission value) {
+            public static implicit operator string(Permission value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -46,7 +54,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="sid"> Fetch by unique connect-app Sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> ConnectAppFetcher capable of executing the fetch </returns> 
-        public static ConnectAppFetcher Fetcher(string sid, string accountSid=null) {
+        public static ConnectAppFetcher Fetcher(string sid, string accountSid=null)
+        {
             return new ConnectAppFetcher(sid, accountSid:accountSid);
         }
     
@@ -65,7 +74,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="homepageUrl"> The URL users can obtain more information </param>
         /// <param name="permissions"> The set of permissions that your ConnectApp requests. </param>
         /// <returns> ConnectAppUpdater capable of executing the update </returns> 
-        public static ConnectAppUpdater Updater(string sid, string accountSid=null, Uri authorizeRedirectUrl=null, string companyName=null, Twilio.Http.HttpMethod deauthorizeCallbackMethod=null, Uri deauthorizeCallbackUrl=null, string description=null, string friendlyName=null, Uri homepageUrl=null, List<ConnectAppResource.Permission> permissions=null) {
+        public static ConnectAppUpdater Updater(string sid, string accountSid=null, Uri authorizeRedirectUrl=null, string companyName=null, Twilio.Http.HttpMethod deauthorizeCallbackMethod=null, Uri deauthorizeCallbackUrl=null, string description=null, string friendlyName=null, Uri homepageUrl=null, List<ConnectAppResource.Permission> permissions=null)
+        {
             return new ConnectAppUpdater(sid, accountSid:accountSid, authorizeRedirectUrl:authorizeRedirectUrl, companyName:companyName, deauthorizeCallbackMethod:deauthorizeCallbackMethod, deauthorizeCallbackUrl:deauthorizeCallbackUrl, description:description, friendlyName:friendlyName, homepageUrl:homepageUrl, permissions:permissions);
         }
     
@@ -75,7 +85,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> ConnectAppReader capable of executing the read </returns> 
-        public static ConnectAppReader Reader(string accountSid=null) {
+        public static ConnectAppReader Reader(string accountSid=null)
+        {
             return new ConnectAppReader(accountSid:accountSid);
         }
     
@@ -85,11 +96,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> ConnectAppResource object represented by the provided JSON </returns> 
-        public static ConnectAppResource FromJson(string json) {
+        public static ConnectAppResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<ConnectAppResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -119,7 +134,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         [JsonProperty("uri")]
         public string uri { get; }
     
-        public ConnectAppResource() {
+        public ConnectAppResource()
+        {
         
         }
     
@@ -144,7 +160,8 @@ namespace Twilio.Rest.Api.V2010.Account {
                                    [JsonProperty("sid")]
                                    string sid, 
                                    [JsonProperty("uri")]
-                                   string uri) {
+                                   string uri)
+                                   {
             this.accountSid = accountSid;
             this.authorizeRedirectUrl = authorizeRedirectUrl;
             this.companyName = companyName;

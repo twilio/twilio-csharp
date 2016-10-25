@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class QueueCreator : Creator<QueueResource> {
+    public class QueueCreator : Creator<QueueResource> 
+    {
         public string accountSid { get; }
         public string friendlyName { get; set; }
         public int? maxSize { get; set; }
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="accountSid"> The account_sid </param>
         /// <param name="friendlyName"> A user-provided string that identifies this queue. </param>
         /// <param name="maxSize"> The max number of calls allowed in the queue </param>
-        public QueueCreator(string accountSid=null, string friendlyName=null, int? maxSize=null) {
+        public QueueCreator(string accountSid=null, string friendlyName=null, int? maxSize=null)
+        {
             this.accountSid = accountSid;
             this.friendlyName = friendlyName;
             this.maxSize = maxSize;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created QueueResource </returns> 
-        public override async Task<QueueResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<QueueResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
@@ -74,7 +78,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created QueueResource </returns> 
-        public override QueueResource Create(ITwilioRestClient client) {
+        public override QueueResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
@@ -112,12 +117,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (friendlyName != null) {
+        private void AddPostParams(Request request)
+        {
+            if (friendlyName != null)
+            {
                 request.AddPostParam("FriendlyName", friendlyName);
             }
             
-            if (maxSize != null) {
+            if (maxSize != null)
+            {
                 request.AddPostParam("MaxSize", maxSize.ToString());
             }
         }

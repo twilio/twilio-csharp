@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Trunking.V1.Trunk {
+namespace Twilio.Rest.Trunking.V1.Trunk 
+{
 
-    public class PhoneNumberCreator : Creator<PhoneNumberResource> {
+    public class PhoneNumberCreator : Creator<PhoneNumberResource> 
+    {
         public string trunkSid { get; }
         public string phoneNumberSid { get; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <param name="phoneNumberSid"> The phone_number_sid </param>
-        public PhoneNumberCreator(string trunkSid, string phoneNumberSid) {
+        public PhoneNumberCreator(string trunkSid, string phoneNumberSid)
+        {
             this.phoneNumberSid = phoneNumberSid;
             this.trunkSid = trunkSid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created PhoneNumberResource </returns> 
-        public override async Task<PhoneNumberResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<PhoneNumberResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TRUNKING,
@@ -71,7 +75,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created PhoneNumberResource </returns> 
-        public override PhoneNumberResource Create(ITwilioRestClient client) {
+        public override PhoneNumberResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TRUNKING,
@@ -109,8 +114,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (phoneNumberSid != null) {
+        private void AddPostParams(Request request)
+        {
+            if (phoneNumberSid != null)
+            {
                 request.AddPostParam("PhoneNumberSid", phoneNumberSid);
             }
         }

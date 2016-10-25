@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace {
+namespace Twilio.Rest.Taskrouter.V1.Workspace 
+{
 
-    public class TaskChannelResource : Resource {
+    public class TaskChannelResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
@@ -16,7 +18,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> TaskChannelFetcher capable of executing the fetch </returns> 
-        public static TaskChannelFetcher Fetcher(string workspaceSid, string sid) {
+        public static TaskChannelFetcher Fetcher(string workspaceSid, string sid)
+        {
             return new TaskChannelFetcher(workspaceSid, sid);
         }
     
@@ -26,7 +29,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <returns> TaskChannelReader capable of executing the read </returns> 
-        public static TaskChannelReader Reader(string workspaceSid) {
+        public static TaskChannelReader Reader(string workspaceSid)
+        {
             return new TaskChannelReader(workspaceSid);
         }
     
@@ -36,11 +40,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> TaskChannelResource object represented by the provided JSON </returns> 
-        public static TaskChannelResource FromJson(string json) {
+        public static TaskChannelResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<TaskChannelResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -62,7 +70,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         [JsonProperty("url")]
         public Uri url { get; }
     
-        public TaskChannelResource() {
+        public TaskChannelResource()
+        {
         
         }
     
@@ -81,7 +90,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
                                     [JsonProperty("workspace_sid")]
                                     string workspaceSid, 
                                     [JsonProperty("url")]
-                                    Uri url) {
+                                    Uri url)
+                                    {
             this.accountSid = accountSid;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);

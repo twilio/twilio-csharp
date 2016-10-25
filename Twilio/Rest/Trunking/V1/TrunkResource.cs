@@ -7,16 +7,19 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Trunking.V1 {
+namespace Twilio.Rest.Trunking.V1 
+{
 
-    public class TrunkResource : Resource {
+    public class TrunkResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
         /// <returns> TrunkFetcher capable of executing the fetch </returns> 
-        public static TrunkFetcher Fetcher(string sid) {
+        public static TrunkFetcher Fetcher(string sid)
+        {
             return new TrunkFetcher(sid);
         }
     
@@ -26,7 +29,8 @@ namespace Twilio.Rest.Trunking.V1 {
         ///
         /// <param name="sid"> The sid </param>
         /// <returns> TrunkDeleter capable of executing the delete </returns> 
-        public static TrunkDeleter Deleter(string sid) {
+        public static TrunkDeleter Deleter(string sid)
+        {
             return new TrunkDeleter(sid);
         }
     
@@ -41,7 +45,8 @@ namespace Twilio.Rest.Trunking.V1 {
         /// <param name="recording"> The recording </param>
         /// <param name="secure"> The secure </param>
         /// <returns> TrunkCreator capable of executing the create </returns> 
-        public static TrunkCreator Creator(string friendlyName=null, string domainName=null, Uri disasterRecoveryUrl=null, Twilio.Http.HttpMethod disasterRecoveryMethod=null, string recording=null, bool? secure=null) {
+        public static TrunkCreator Creator(string friendlyName=null, string domainName=null, Uri disasterRecoveryUrl=null, Twilio.Http.HttpMethod disasterRecoveryMethod=null, string recording=null, bool? secure=null)
+        {
             return new TrunkCreator(friendlyName:friendlyName, domainName:domainName, disasterRecoveryUrl:disasterRecoveryUrl, disasterRecoveryMethod:disasterRecoveryMethod, recording:recording, secure:secure);
         }
     
@@ -50,7 +55,8 @@ namespace Twilio.Rest.Trunking.V1 {
         /// </summary>
         ///
         /// <returns> TrunkReader capable of executing the read </returns> 
-        public static TrunkReader Reader() {
+        public static TrunkReader Reader()
+        {
             return new TrunkReader();
         }
     
@@ -66,7 +72,8 @@ namespace Twilio.Rest.Trunking.V1 {
         /// <param name="recording"> The recording </param>
         /// <param name="secure"> The secure </param>
         /// <returns> TrunkUpdater capable of executing the update </returns> 
-        public static TrunkUpdater Updater(string sid, string friendlyName=null, string domainName=null, Uri disasterRecoveryUrl=null, Twilio.Http.HttpMethod disasterRecoveryMethod=null, string recording=null, bool? secure=null) {
+        public static TrunkUpdater Updater(string sid, string friendlyName=null, string domainName=null, Uri disasterRecoveryUrl=null, Twilio.Http.HttpMethod disasterRecoveryMethod=null, string recording=null, bool? secure=null)
+        {
             return new TrunkUpdater(sid, friendlyName:friendlyName, domainName:domainName, disasterRecoveryUrl:disasterRecoveryUrl, disasterRecoveryMethod:disasterRecoveryMethod, recording:recording, secure:secure);
         }
     
@@ -76,11 +83,15 @@ namespace Twilio.Rest.Trunking.V1 {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> TrunkResource object represented by the provided JSON </returns> 
-        public static TrunkResource FromJson(string json) {
+        public static TrunkResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<TrunkResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -115,7 +126,8 @@ namespace Twilio.Rest.Trunking.V1 {
         [JsonProperty("links")]
         public Dictionary<string, string> links { get; }
     
-        public TrunkResource() {
+        public TrunkResource()
+        {
         
         }
     
@@ -146,7 +158,8 @@ namespace Twilio.Rest.Trunking.V1 {
                               [JsonProperty("url")]
                               Uri url, 
                               [JsonProperty("links")]
-                              Dictionary<string, string> links) {
+                              Dictionary<string, string> links)
+                              {
             this.accountSid = accountSid;
             this.domainName = domainName;
             this.disasterRecoveryMethod = disasterRecoveryMethod;

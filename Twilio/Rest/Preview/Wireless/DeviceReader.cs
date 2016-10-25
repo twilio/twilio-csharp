@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Preview.Wireless {
+namespace Twilio.Rest.Preview.Wireless 
+{
 
-    public class DeviceReader : Reader<DeviceResource> {
+    public class DeviceReader : Reader<DeviceResource> 
+    {
         public string status { get; set; }
         public string simIdentifier { get; set; }
         public string ratePlan { get; set; }
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Preview.Wireless {
         /// <param name="status"> The status </param>
         /// <param name="simIdentifier"> The sim_identifier </param>
         /// <param name="ratePlan"> The rate_plan </param>
-        public DeviceReader(string status=null, string simIdentifier=null, string ratePlan=null) {
+        public DeviceReader(string status=null, string simIdentifier=null, string ratePlan=null)
+        {
             this.status = status;
             this.simIdentifier = simIdentifier;
             this.ratePlan = ratePlan;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Preview.Wireless {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> DeviceResource ResourceSet </returns> 
-        public override Task<ResourceSet<DeviceResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<DeviceResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.PREVIEW,
@@ -54,7 +58,8 @@ namespace Twilio.Rest.Preview.Wireless {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> DeviceResource ResourceSet </returns> 
-        public override ResourceSet<DeviceResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<DeviceResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.PREVIEW,
@@ -74,7 +79,8 @@ namespace Twilio.Rest.Preview.Wireless {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<DeviceResource> NextPage(Page<DeviceResource> page, ITwilioRestClient client) {
+        public override Page<DeviceResource> NextPage(Page<DeviceResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -92,7 +98,8 @@ namespace Twilio.Rest.Preview.Wireless {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<DeviceResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<DeviceResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -123,16 +130,20 @@ namespace Twilio.Rest.Preview.Wireless {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (status != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (status != null)
+            {
                 request.AddQueryParam("Status", status);
             }
             
-            if (simIdentifier != null) {
+            if (simIdentifier != null)
+            {
                 request.AddQueryParam("SimIdentifier", simIdentifier);
             }
             
-            if (ratePlan != null) {
+            if (ratePlan != null)
+            {
                 request.AddQueryParam("RatePlan", ratePlan);
             }
             

@@ -8,9 +8,11 @@ using Twilio.Rest.Preview.Sync.Service.SyncMap;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
+namespace Twilio.Rest.Preview.Sync.Service.SyncMap 
+{
 
-    public class SyncMapItemDeleter : Deleter<SyncMapItemResource> {
+    public class SyncMapItemDeleter : Deleter<SyncMapItemResource> 
+    {
         public string serviceSid { get; }
         public string mapSid { get; }
         public string key { get; }
@@ -22,7 +24,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="mapSid"> The map_sid </param>
         /// <param name="key"> The key </param>
-        public SyncMapItemDeleter(string serviceSid, string mapSid, string key) {
+        public SyncMapItemDeleter(string serviceSid, string mapSid, string key)
+        {
             this.key = key;
             this.serviceSid = serviceSid;
             this.mapSid = mapSid;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         /// </summary>
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
-        public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client) {
+        public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.PREVIEW,
@@ -72,7 +76,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         /// </summary>
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
-        public override void Delete(ITwilioRestClient client) {
+        public override void Delete(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.PREVIEW,

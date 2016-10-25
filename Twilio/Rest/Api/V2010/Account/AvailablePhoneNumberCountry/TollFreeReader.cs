@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
+namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry 
+{
 
-    public class TollFreeReader : Reader<TollFreeResource> {
+    public class TollFreeReader : Reader<TollFreeResource> 
+    {
         public string accountSid { get; }
         public string countryCode { get; }
         public int? areaCode { get; set; }
@@ -51,7 +53,8 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
         /// <param name="inRegion"> The in_region </param>
         /// <param name="inRateCenter"> The in_rate_center </param>
         /// <param name="inLata"> The in_lata </param>
-        public TollFreeReader(string countryCode, string accountSid=null, int? areaCode=null, string contains=null, bool? smsEnabled=null, bool? mmsEnabled=null, bool? voiceEnabled=null, bool? excludeAllAddressRequired=null, bool? excludeLocalAddressRequired=null, bool? excludeForeignAddressRequired=null, bool? beta=null, Twilio.Types.PhoneNumber nearNumber=null, string nearLatLong=null, int? distance=null, string inPostalCode=null, string inRegion=null, string inRateCenter=null, string inLata=null) {
+        public TollFreeReader(string countryCode, string accountSid=null, int? areaCode=null, string contains=null, bool? smsEnabled=null, bool? mmsEnabled=null, bool? voiceEnabled=null, bool? excludeAllAddressRequired=null, bool? excludeLocalAddressRequired=null, bool? excludeForeignAddressRequired=null, bool? beta=null, Twilio.Types.PhoneNumber nearNumber=null, string nearLatLong=null, int? distance=null, string inPostalCode=null, string inRegion=null, string inRateCenter=null, string inLata=null)
+        {
             this.excludeAllAddressRequired = excludeAllAddressRequired;
             this.nearNumber = nearNumber;
             this.inLata = inLata;
@@ -79,7 +82,8 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> TollFreeResource ResourceSet </returns> 
-        public override Task<ResourceSet<TollFreeResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<TollFreeResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -99,7 +103,8 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> TollFreeResource ResourceSet </returns> 
-        public override ResourceSet<TollFreeResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<TollFreeResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -119,7 +124,8 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<TollFreeResource> NextPage(Page<TollFreeResource> page, ITwilioRestClient client) {
+        public override Page<TollFreeResource> NextPage(Page<TollFreeResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -137,7 +143,8 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<TollFreeResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<TollFreeResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -168,68 +175,85 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (areaCode != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (areaCode != null)
+            {
                 request.AddQueryParam("AreaCode", areaCode.ToString());
             }
             
-            if (contains != null) {
+            if (contains != null)
+            {
                 request.AddQueryParam("Contains", contains);
             }
             
-            if (smsEnabled != null) {
+            if (smsEnabled != null)
+            {
                 request.AddQueryParam("SmsEnabled", smsEnabled.ToString());
             }
             
-            if (mmsEnabled != null) {
+            if (mmsEnabled != null)
+            {
                 request.AddQueryParam("MmsEnabled", mmsEnabled.ToString());
             }
             
-            if (voiceEnabled != null) {
+            if (voiceEnabled != null)
+            {
                 request.AddQueryParam("VoiceEnabled", voiceEnabled.ToString());
             }
             
-            if (excludeAllAddressRequired != null) {
+            if (excludeAllAddressRequired != null)
+            {
                 request.AddQueryParam("ExcludeAllAddressRequired", excludeAllAddressRequired.ToString());
             }
             
-            if (excludeLocalAddressRequired != null) {
+            if (excludeLocalAddressRequired != null)
+            {
                 request.AddQueryParam("ExcludeLocalAddressRequired", excludeLocalAddressRequired.ToString());
             }
             
-            if (excludeForeignAddressRequired != null) {
+            if (excludeForeignAddressRequired != null)
+            {
                 request.AddQueryParam("ExcludeForeignAddressRequired", excludeForeignAddressRequired.ToString());
             }
             
-            if (beta != null) {
+            if (beta != null)
+            {
                 request.AddQueryParam("Beta", beta.ToString());
             }
             
-            if (nearNumber != null) {
+            if (nearNumber != null)
+            {
                 request.AddQueryParam("NearNumber", nearNumber.ToString());
             }
             
-            if (nearLatLong != null) {
+            if (nearLatLong != null)
+            {
                 request.AddQueryParam("NearLatLong", nearLatLong);
             }
             
-            if (distance != null) {
+            if (distance != null)
+            {
                 request.AddQueryParam("Distance", distance.ToString());
             }
             
-            if (inPostalCode != null) {
+            if (inPostalCode != null)
+            {
                 request.AddQueryParam("InPostalCode", inPostalCode);
             }
             
-            if (inRegion != null) {
+            if (inRegion != null)
+            {
                 request.AddQueryParam("InRegion", inRegion);
             }
             
-            if (inRateCenter != null) {
+            if (inRateCenter != null)
+            {
                 request.AddQueryParam("InRateCenter", inRateCenter);
             }
             
-            if (inLata != null) {
+            if (inLata != null)
+            {
                 request.AddQueryParam("InLata", inLata);
             }
             

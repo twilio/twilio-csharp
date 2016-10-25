@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Preview.Sync.Service.SyncList {
+namespace Twilio.Rest.Preview.Sync.Service.SyncList 
+{
 
-    public class SyncListItemFetcher : Fetcher<SyncListItemResource> {
+    public class SyncListItemFetcher : Fetcher<SyncListItemResource> 
+    {
         public string serviceSid { get; }
         public string listSid { get; }
         public int? index { get; }
@@ -21,7 +23,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="listSid"> The list_sid </param>
         /// <param name="index"> The index </param>
-        public SyncListItemFetcher(string serviceSid, string listSid, int? index) {
+        public SyncListItemFetcher(string serviceSid, string listSid, int? index)
+        {
             this.serviceSid = serviceSid;
             this.listSid = listSid;
             this.index = index;
@@ -34,7 +37,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched SyncListItemResource </returns> 
-        public override async Task<SyncListItemResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<SyncListItemResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,
@@ -73,7 +77,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched SyncListItemResource </returns> 
-        public override SyncListItemResource Fetch(ITwilioRestClient client) {
+        public override SyncListItemResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,

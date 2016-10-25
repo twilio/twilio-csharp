@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class AuthorizedConnectAppFetcher : Fetcher<AuthorizedConnectAppResource> {
+    public class AuthorizedConnectAppFetcher : Fetcher<AuthorizedConnectAppResource> 
+    {
         public string accountSid { get; }
         public string connectAppSid { get; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="connectAppSid"> The connect_app_sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        public AuthorizedConnectAppFetcher(string connectAppSid, string accountSid=null) {
+        public AuthorizedConnectAppFetcher(string connectAppSid, string accountSid=null)
+        {
             this.accountSid = accountSid;
             this.connectAppSid = connectAppSid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched AuthorizedConnectAppResource </returns> 
-        public override async Task<AuthorizedConnectAppResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<AuthorizedConnectAppResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -70,7 +74,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched AuthorizedConnectAppResource </returns> 
-        public override AuthorizedConnectAppResource Fetch(ITwilioRestClient client) {
+        public override AuthorizedConnectAppResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,

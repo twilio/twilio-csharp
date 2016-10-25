@@ -8,9 +8,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Preview.Sync.Service {
+namespace Twilio.Rest.Preview.Sync.Service 
+{
 
-    public class DocumentCreator : Creator<DocumentResource> {
+    public class DocumentCreator : Creator<DocumentResource> 
+    {
         public string serviceSid { get; }
         public string uniqueName { get; set; }
         public Object data { get; set; }
@@ -22,7 +24,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="data"> The data </param>
-        public DocumentCreator(string serviceSid, string uniqueName=null, Object data=null) {
+        public DocumentCreator(string serviceSid, string uniqueName=null, Object data=null)
+        {
             this.uniqueName = uniqueName;
             this.serviceSid = serviceSid;
             this.data = data;
@@ -35,7 +38,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created DocumentResource </returns> 
-        public override async Task<DocumentResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<DocumentResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.PREVIEW,
@@ -75,7 +79,8 @@ namespace Twilio.Rest.Preview.Sync.Service {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created DocumentResource </returns> 
-        public override DocumentResource Create(ITwilioRestClient client) {
+        public override DocumentResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.PREVIEW,
@@ -113,12 +118,15 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (uniqueName != null) {
+        private void AddPostParams(Request request)
+        {
+            if (uniqueName != null)
+            {
                 request.AddPostParam("UniqueName", uniqueName);
             }
             
-            if (data != null) {
+            if (data != null)
+            {
                 request.AddPostParam("Data", data.ToString());
             }
         }

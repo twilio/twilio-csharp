@@ -6,9 +6,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account.Call {
+namespace Twilio.Rest.Api.V2010.Account.Call 
+{
 
-    public class RecordingResource : Resource {
+    public class RecordingResource : Resource 
+    {
         /// <summary>
         /// fetch
         /// </summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> RecordingFetcher capable of executing the fetch </returns> 
-        public static RecordingFetcher Fetcher(string callSid, string sid, string accountSid=null) {
+        public static RecordingFetcher Fetcher(string callSid, string sid, string accountSid=null)
+        {
             return new RecordingFetcher(callSid, sid, accountSid:accountSid);
         }
     
@@ -29,7 +32,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> RecordingDeleter capable of executing the delete </returns> 
-        public static RecordingDeleter Deleter(string callSid, string sid, string accountSid=null) {
+        public static RecordingDeleter Deleter(string callSid, string sid, string accountSid=null)
+        {
             return new RecordingDeleter(callSid, sid, accountSid:accountSid);
         }
     
@@ -41,7 +45,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// <param name="accountSid"> The account_sid </param>
         /// <param name="dateCreated"> The date_created </param>
         /// <returns> RecordingReader capable of executing the read </returns> 
-        public static RecordingReader Reader(string callSid, string accountSid=null, string dateCreated=null) {
+        public static RecordingReader Reader(string callSid, string accountSid=null, string dateCreated=null)
+        {
             return new RecordingReader(callSid, accountSid:accountSid, dateCreated:dateCreated);
         }
     
@@ -51,11 +56,15 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> RecordingResource object represented by the provided JSON </returns> 
-        public static RecordingResource FromJson(string json) {
+        public static RecordingResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<RecordingResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -79,7 +88,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         [JsonProperty("uri")]
         public string uri { get; }
     
-        public RecordingResource() {
+        public RecordingResource()
+        {
         
         }
     
@@ -100,7 +110,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
                                   [JsonProperty("price")]
                                   decimal? price, 
                                   [JsonProperty("uri")]
-                                  string uri) {
+                                  string uri)
+                                  {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
             this.callSid = callSid;

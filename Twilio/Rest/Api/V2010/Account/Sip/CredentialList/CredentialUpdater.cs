@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
+namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList 
+{
 
-    public class CredentialUpdater : Updater<CredentialResource> {
+    public class CredentialUpdater : Updater<CredentialResource> 
+    {
         public string accountSid { get; }
         public string credentialListSid { get; }
         public string sid { get; }
@@ -23,7 +25,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <param name="password"> The password </param>
-        public CredentialUpdater(string credentialListSid, string sid, string accountSid=null, string password=null) {
+        public CredentialUpdater(string credentialListSid, string sid, string accountSid=null, string password=null)
+        {
             this.accountSid = accountSid;
             this.password = password;
             this.sid = sid;
@@ -37,7 +40,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated CredentialResource </returns> 
-        public override async Task<CredentialResource> UpdateAsync(ITwilioRestClient client) {
+        public override async Task<CredentialResource> UpdateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -77,7 +81,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated CredentialResource </returns> 
-        public override CredentialResource Update(ITwilioRestClient client) {
+        public override CredentialResource Update(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
@@ -115,8 +120,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (password != null) {
+        private void AddPostParams(Request request)
+        {
+            if (password != null)
+            {
                 request.AddPostParam("Password", password);
             }
         }

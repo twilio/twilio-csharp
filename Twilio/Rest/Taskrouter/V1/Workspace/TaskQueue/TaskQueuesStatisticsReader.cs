@@ -9,9 +9,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
+namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue 
+{
 
-    public class TaskQueuesStatisticsReader : Reader<TaskQueuesStatisticsResource> {
+    public class TaskQueuesStatisticsReader : Reader<TaskQueuesStatisticsResource> 
+    {
         public string workspaceSid { get; }
         public DateTime? endDate { get; set; }
         public string friendlyName { get; set; }
@@ -27,7 +29,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="minutes"> The minutes </param>
         /// <param name="startDate"> The start_date </param>
-        public TaskQueuesStatisticsReader(string workspaceSid, DateTime? endDate=null, string friendlyName=null, int? minutes=null, DateTime? startDate=null) {
+        public TaskQueuesStatisticsReader(string workspaceSid, DateTime? endDate=null, string friendlyName=null, int? minutes=null, DateTime? startDate=null)
+        {
             this.workspaceSid = workspaceSid;
             this.startDate = startDate;
             this.minutes = minutes;
@@ -42,7 +45,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> TaskQueuesStatisticsResource ResourceSet </returns> 
-        public override Task<ResourceSet<TaskQueuesStatisticsResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<TaskQueuesStatisticsResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
@@ -62,7 +66,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> TaskQueuesStatisticsResource ResourceSet </returns> 
-        public override ResourceSet<TaskQueuesStatisticsResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<TaskQueuesStatisticsResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
@@ -82,7 +87,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<TaskQueuesStatisticsResource> NextPage(Page<TaskQueuesStatisticsResource> page, ITwilioRestClient client) {
+        public override Page<TaskQueuesStatisticsResource> NextPage(Page<TaskQueuesStatisticsResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -100,7 +106,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<TaskQueuesStatisticsResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<TaskQueuesStatisticsResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -131,20 +138,25 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (endDate != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (endDate != null)
+            {
                 request.AddQueryParam("EndDate", endDate.ToString());
             }
             
-            if (friendlyName != null) {
+            if (friendlyName != null)
+            {
                 request.AddQueryParam("FriendlyName", friendlyName);
             }
             
-            if (minutes != null) {
+            if (minutes != null)
+            {
                 request.AddQueryParam("Minutes", minutes.ToString());
             }
             
-            if (startDate != null) {
+            if (startDate != null)
+            {
                 request.AddQueryParam("StartDate", startDate.ToString());
             }
             

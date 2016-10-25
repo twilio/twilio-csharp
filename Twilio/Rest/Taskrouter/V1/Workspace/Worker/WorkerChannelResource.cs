@@ -7,9 +7,11 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
+namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
+{
 
-    public class WorkerChannelResource : Resource {
+    public class WorkerChannelResource : Resource 
+    {
         /// <summary>
         /// read
         /// </summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="workerSid"> The worker_sid </param>
         /// <returns> WorkerChannelReader capable of executing the read </returns> 
-        public static WorkerChannelReader Reader(string workspaceSid, string workerSid) {
+        public static WorkerChannelReader Reader(string workspaceSid, string workerSid)
+        {
             return new WorkerChannelReader(workspaceSid, workerSid);
         }
     
@@ -29,7 +32,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         /// <param name="workerSid"> The worker_sid </param>
         /// <param name="sid"> The sid </param>
         /// <returns> WorkerChannelFetcher capable of executing the fetch </returns> 
-        public static WorkerChannelFetcher Fetcher(string workspaceSid, string workerSid, string sid) {
+        public static WorkerChannelFetcher Fetcher(string workspaceSid, string workerSid, string sid)
+        {
             return new WorkerChannelFetcher(workspaceSid, workerSid, sid);
         }
     
@@ -43,7 +47,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         /// <param name="capacity"> The capacity </param>
         /// <param name="available"> The available </param>
         /// <returns> WorkerChannelUpdater capable of executing the update </returns> 
-        public static WorkerChannelUpdater Updater(string workspaceSid, string workerSid, string sid, int? capacity=null, bool? available=null) {
+        public static WorkerChannelUpdater Updater(string workspaceSid, string workerSid, string sid, int? capacity=null, bool? available=null)
+        {
             return new WorkerChannelUpdater(workspaceSid, workerSid, sid, capacity:capacity, available:available);
         }
     
@@ -53,11 +58,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> WorkerChannelResource object represented by the provided JSON </returns> 
-        public static WorkerChannelResource FromJson(string json) {
+        public static WorkerChannelResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<WorkerChannelResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -91,7 +100,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         [JsonProperty("url")]
         public Uri url { get; }
     
-        public WorkerChannelResource() {
+        public WorkerChannelResource()
+        {
         
         }
     
@@ -122,7 +132,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
                                       [JsonProperty("links")]
                                       Dictionary<string, string> links, 
                                       [JsonProperty("url")]
-                                      Uri url) {
+                                      Uri url)
+                                      {
             this.accountSid = accountSid;
             this.assignedTasks = assignedTasks;
             this.available = available;

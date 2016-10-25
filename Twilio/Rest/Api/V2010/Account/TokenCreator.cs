@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class TokenCreator : Creator<TokenResource> {
+    public class TokenCreator : Creator<TokenResource> 
+    {
         public string accountSid { get; }
         public int? ttl { get; set; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="accountSid"> The account_sid </param>
         /// <param name="ttl"> The duration in seconds the credentials are valid </param>
-        public TokenCreator(string accountSid=null, int? ttl=null) {
+        public TokenCreator(string accountSid=null, int? ttl=null)
+        {
             this.accountSid = accountSid;
             this.ttl = ttl;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created TokenResource </returns> 
-        public override async Task<TokenResource> CreateAsync(ITwilioRestClient client) {
+        public override async Task<TokenResource> CreateAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
@@ -71,7 +75,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created TokenResource </returns> 
-        public override TokenResource Create(ITwilioRestClient client) {
+        public override TokenResource Create(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
@@ -109,8 +114,10 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="request"> Request to add post params to </param>
-        private void AddPostParams(Request request) {
-            if (ttl != null) {
+        private void AddPostParams(Request request)
+        {
+            if (ttl != null)
+            {
                 request.AddPostParam("Ttl", ttl.ToString());
             }
         }

@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Monitor.V1 {
+namespace Twilio.Rest.Monitor.V1 
+{
 
-    public class EventFetcher : Fetcher<EventResource> {
+    public class EventFetcher : Fetcher<EventResource> 
+    {
         public string sid { get; }
     
         /// <summary>
@@ -17,7 +19,8 @@ namespace Twilio.Rest.Monitor.V1 {
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        public EventFetcher(string sid) {
+        public EventFetcher(string sid)
+        {
             this.sid = sid;
         }
     
@@ -28,7 +31,8 @@ namespace Twilio.Rest.Monitor.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched EventResource </returns> 
-        public override async Task<EventResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<EventResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.MONITOR,
@@ -67,7 +71,8 @@ namespace Twilio.Rest.Monitor.V1 {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched EventResource </returns> 
-        public override EventResource Fetch(ITwilioRestClient client) {
+        public override EventResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.MONITOR,

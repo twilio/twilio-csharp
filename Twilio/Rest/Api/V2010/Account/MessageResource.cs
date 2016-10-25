@@ -7,10 +7,13 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account {
+namespace Twilio.Rest.Api.V2010.Account 
+{
 
-    public class MessageResource : Resource {
-        public sealed class Status : IStringEnum {
+    public class MessageResource : Resource 
+    {
+        public sealed class Status : IStringEnum 
+        {
             public const string Queued = "queued";
             public const string Sending = "sending";
             public const string Sent = "sent";
@@ -22,30 +25,36 @@ namespace Twilio.Rest.Api.V2010.Account {
         
             private string _value;
             
-            public Status() { }
+            public Status() {}
             
-            public Status(string value) {
+            public Status(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator Status(string value) {
+            public static implicit operator Status(string value)
+            {
                 return new Status(value);
             }
             
-            public static implicit operator string(Status value) {
+            public static implicit operator string(Status value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
     
-        public sealed class Direction : IStringEnum {
+        public sealed class Direction : IStringEnum 
+        {
             public const string Inbound = "inbound";
             public const string OutboundApi = "outbound-api";
             public const string OutboundCall = "outbound-call";
@@ -53,25 +62,30 @@ namespace Twilio.Rest.Api.V2010.Account {
         
             private string _value;
             
-            public Direction() { }
+            public Direction() {}
             
-            public Direction(string value) {
+            public Direction(string value)
+            {
                 _value = value;
             }
             
-            public override string ToString() {
+            public override string ToString()
+            {
                 return _value;
             }
             
-            public static implicit operator Direction(string value) {
+            public static implicit operator Direction(string value)
+            {
                 return new Direction(value);
             }
             
-            public static implicit operator string(Direction value) {
+            public static implicit operator string(Direction value)
+            {
                 return value.ToString();
             }
             
-            public void FromString(string value) {
+            public void FromString(string value)
+            {
                 _value = value;
             }
         }
@@ -91,7 +105,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="maxPrice"> The max_price </param>
         /// <param name="provideFeedback"> The provide_feedback </param>
         /// <returns> MessageCreator capable of executing the create </returns> 
-        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body, string accountSid=null, string messagingServiceSid=null, List<Uri> mediaUrl=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null) {
+        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body, string accountSid=null, string messagingServiceSid=null, List<Uri> mediaUrl=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null)
+        {
             return new MessageCreator(to, from, body, accountSid:accountSid, messagingServiceSid:messagingServiceSid, mediaUrl:mediaUrl, statusCallback:statusCallback, applicationSid:applicationSid, maxPrice:maxPrice, provideFeedback:provideFeedback);
         }
     
@@ -110,7 +125,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="maxPrice"> The max_price </param>
         /// <param name="provideFeedback"> The provide_feedback </param>
         /// <returns> MessageCreator capable of executing the create </returns> 
-        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl, string accountSid=null, string messagingServiceSid=null, string body=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null) {
+        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl, string accountSid=null, string messagingServiceSid=null, string body=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null)
+        {
             return new MessageCreator(to, from, mediaUrl, accountSid:accountSid, messagingServiceSid:messagingServiceSid, body:body, statusCallback:statusCallback, applicationSid:applicationSid, maxPrice:maxPrice, provideFeedback:provideFeedback);
         }
     
@@ -129,7 +145,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="maxPrice"> The max_price </param>
         /// <param name="provideFeedback"> The provide_feedback </param>
         /// <returns> MessageCreator capable of executing the create </returns> 
-        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, string messagingServiceSid, string body, string accountSid=null, Twilio.Types.PhoneNumber from=null, List<Uri> mediaUrl=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null) {
+        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, string messagingServiceSid, string body, string accountSid=null, Twilio.Types.PhoneNumber from=null, List<Uri> mediaUrl=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null)
+        {
             return new MessageCreator(to, messagingServiceSid, body, accountSid:accountSid, from:from, mediaUrl:mediaUrl, statusCallback:statusCallback, applicationSid:applicationSid, maxPrice:maxPrice, provideFeedback:provideFeedback);
         }
     
@@ -148,7 +165,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="maxPrice"> The max_price </param>
         /// <param name="provideFeedback"> The provide_feedback </param>
         /// <returns> MessageCreator capable of executing the create </returns> 
-        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, string messagingServiceSid, List<Uri> mediaUrl, string accountSid=null, Twilio.Types.PhoneNumber from=null, string body=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null) {
+        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, string messagingServiceSid, List<Uri> mediaUrl, string accountSid=null, Twilio.Types.PhoneNumber from=null, string body=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null)
+        {
             return new MessageCreator(to, messagingServiceSid, mediaUrl, accountSid:accountSid, from:from, body:body, statusCallback:statusCallback, applicationSid:applicationSid, maxPrice:maxPrice, provideFeedback:provideFeedback);
         }
     
@@ -159,7 +177,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="sid"> The message to delete </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> MessageDeleter capable of executing the delete </returns> 
-        public static MessageDeleter Deleter(string sid, string accountSid=null) {
+        public static MessageDeleter Deleter(string sid, string accountSid=null)
+        {
             return new MessageDeleter(sid, accountSid:accountSid);
         }
     
@@ -170,7 +189,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="sid"> Fetch by unique message Sid </param>
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> MessageFetcher capable of executing the fetch </returns> 
-        public static MessageFetcher Fetcher(string sid, string accountSid=null) {
+        public static MessageFetcher Fetcher(string sid, string accountSid=null)
+        {
             return new MessageFetcher(sid, accountSid:accountSid);
         }
     
@@ -183,7 +203,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="from"> Filter by from number </param>
         /// <param name="dateSent"> Filter by date sent </param>
         /// <returns> MessageReader capable of executing the read </returns> 
-        public static MessageReader Reader(string accountSid=null, Twilio.Types.PhoneNumber to=null, Twilio.Types.PhoneNumber from=null, string dateSent=null) {
+        public static MessageReader Reader(string accountSid=null, Twilio.Types.PhoneNumber to=null, Twilio.Types.PhoneNumber from=null, string dateSent=null)
+        {
             return new MessageReader(accountSid:accountSid, to:to, from:from, dateSent:dateSent);
         }
     
@@ -195,7 +216,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// <param name="accountSid"> The account_sid </param>
         /// <param name="body"> The body </param>
         /// <returns> MessageUpdater capable of executing the update </returns> 
-        public static MessageUpdater Updater(string sid, string accountSid=null, string body=null) {
+        public static MessageUpdater Updater(string sid, string accountSid=null, string body=null)
+        {
             return new MessageUpdater(sid, accountSid:accountSid, body:body);
         }
     
@@ -205,11 +227,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> MessageResource object represented by the provided JSON </returns> 
-        public static MessageResource FromJson(string json) {
+        public static MessageResource FromJson(string json)
+        {
             // Convert all checked exceptions to Runtime
-            try {
+            try
+            {
                 return JsonConvert.DeserializeObject<MessageResource>(json);
-            } catch (JsonException e) {
+            }
+            catch (JsonException e)
+            {
                 throw new ApiException(e.Message, e);
             }
         }
@@ -256,7 +282,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         [JsonProperty("uri")]
         public string uri { get; }
     
-        public MessageResource() {
+        public MessageResource()
+        {
         
         }
     
@@ -297,7 +324,8 @@ namespace Twilio.Rest.Api.V2010.Account {
                                 [JsonProperty("to")]
                                 string to, 
                                 [JsonProperty("uri")]
-                                string uri) {
+                                string uri)
+                                {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
             this.body = body;

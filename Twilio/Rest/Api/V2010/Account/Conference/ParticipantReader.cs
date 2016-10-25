@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Conference {
+namespace Twilio.Rest.Api.V2010.Account.Conference 
+{
 
-    public class ParticipantReader : Reader<ParticipantResource> {
+    public class ParticipantReader : Reader<ParticipantResource> 
+    {
         public string accountSid { get; }
         public string conferenceSid { get; }
         public bool? muted { get; set; }
@@ -23,7 +25,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         /// <param name="accountSid"> The account_sid </param>
         /// <param name="muted"> Filter by muted participants </param>
         /// <param name="hold"> The hold </param>
-        public ParticipantReader(string conferenceSid, string accountSid=null, bool? muted=null, bool? hold=null) {
+        public ParticipantReader(string conferenceSid, string accountSid=null, bool? muted=null, bool? hold=null)
+        {
             this.accountSid = accountSid;
             this.hold = hold;
             this.muted = muted;
@@ -37,7 +40,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> ParticipantResource ResourceSet </returns> 
-        public override Task<ResourceSet<ParticipantResource>> ReadAsync(ITwilioRestClient client) {
+        public override Task<ResourceSet<ParticipantResource>> ReadAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -57,7 +61,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> ParticipantResource ResourceSet </returns> 
-        public override ResourceSet<ParticipantResource> Read(ITwilioRestClient client) {
+        public override ResourceSet<ParticipantResource> Read(ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
@@ -77,7 +82,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
-        public override Page<ParticipantResource> NextPage(Page<ParticipantResource> page, ITwilioRestClient client) {
+        public override Page<ParticipantResource> NextPage(Page<ParticipantResource> page, ITwilioRestClient client)
+        {
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
@@ -95,7 +101,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <param name="request"> Request to generate a page for </param>
         /// <returns> Page for the Request </returns> 
-        protected Page<ParticipantResource> PageForRequest(ITwilioRestClient client, Request request) {
+        protected Page<ParticipantResource> PageForRequest(ITwilioRestClient client, Request request)
+        {
             var response = client.Request(request);
             if (response == null)
             {
@@ -126,12 +133,15 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         /// </summary>
         ///
         /// <param name="request"> Request to add query string arguments to </param>
-        private void AddQueryParams(Request request) {
-            if (muted != null) {
+        private void AddQueryParams(Request request)
+        {
+            if (muted != null)
+            {
                 request.AddQueryParam("Muted", muted.ToString());
             }
             
-            if (hold != null) {
+            if (hold != null)
+            {
                 request.AddQueryParam("Hold", hold.ToString());
             }
             

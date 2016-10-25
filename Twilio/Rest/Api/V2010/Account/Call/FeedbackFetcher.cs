@@ -7,9 +7,11 @@ using Twilio.Http;
 using System.Threading.Tasks;
 #endif
 
-namespace Twilio.Rest.Api.V2010.Account.Call {
+namespace Twilio.Rest.Api.V2010.Account.Call 
+{
 
-    public class FeedbackFetcher : Fetcher<FeedbackResource> {
+    public class FeedbackFetcher : Fetcher<FeedbackResource> 
+    {
         public string accountSid { get; }
         public string callSid { get; }
     
@@ -19,7 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         ///
         /// <param name="callSid"> The call sid that uniquely identifies the call </param>
         /// <param name="accountSid"> The account_sid </param>
-        public FeedbackFetcher(string callSid, string accountSid=null) {
+        public FeedbackFetcher(string callSid, string accountSid=null)
+        {
             this.accountSid = accountSid;
             this.callSid = callSid;
         }
@@ -31,7 +34,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched FeedbackResource </returns> 
-        public override async Task<FeedbackResource> FetchAsync(ITwilioRestClient client) {
+        public override async Task<FeedbackResource> FetchAsync(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
@@ -70,7 +74,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched FeedbackResource </returns> 
-        public override FeedbackResource Fetch(ITwilioRestClient client) {
+        public override FeedbackResource Fetch(ITwilioRestClient client)
+        {
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
