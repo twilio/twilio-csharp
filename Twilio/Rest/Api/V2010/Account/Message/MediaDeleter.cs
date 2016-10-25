@@ -16,27 +16,16 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
         public string sid { get; }
     
         /// <summary>
-        /// Construct a new MediaDeleter.
-        /// </summary>
-        ///
-        /// <param name="messageSid"> The message_sid </param>
-        /// <param name="sid"> Delete by unique media Sid </param>
-        public MediaDeleter(string messageSid, string sid) {
-            this.messageSid = messageSid;
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new MediaDeleter
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="messageSid"> The message_sid </param>
         /// <param name="sid"> Delete by unique media Sid </param>
-        public MediaDeleter(string accountSid, string messageSid, string sid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public MediaDeleter(string messageSid, string sid, string accountSid=null) {
             this.accountSid = accountSid;
-            this.messageSid = messageSid;
             this.sid = sid;
+            this.messageSid = messageSid;
         }
     
         #if NET40

@@ -23,42 +23,15 @@ namespace Twilio.Rest.Chat.V1.Service {
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
-        public UserUpdater(string serviceSid, string sid) {
+        /// <param name="roleSid"> The role_sid </param>
+        /// <param name="attributes"> The attributes </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        public UserUpdater(string serviceSid, string sid, string roleSid=null, Object attributes=null, string friendlyName=null) {
             this.serviceSid = serviceSid;
             this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The role_sid
-        /// </summary>
-        ///
-        /// <param name="roleSid"> The role_sid </param>
-        /// <returns> this </returns> 
-        public UserUpdater setRoleSid(string roleSid) {
             this.roleSid = roleSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The attributes
-        /// </summary>
-        ///
-        /// <param name="attributes"> The attributes </param>
-        /// <returns> this </returns> 
-        public UserUpdater setAttributes(Object attributes) {
             this.attributes = attributes;
-            return this;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public UserUpdater setFriendlyName(string friendlyName) {
             this.friendlyName = friendlyName;
-            return this;
         }
     
         #if NET40

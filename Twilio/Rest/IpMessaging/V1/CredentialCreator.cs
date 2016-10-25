@@ -22,8 +22,18 @@ namespace Twilio.Rest.IpMessaging.V1 {
         /// </summary>
         ///
         /// <param name="type"> The type </param>
-        public CredentialCreator(CredentialResource.PushService type) {
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="certificate"> The certificate </param>
+        /// <param name="privateKey"> The private_key </param>
+        /// <param name="sandbox"> The sandbox </param>
+        /// <param name="apiKey"> The api_key </param>
+        public CredentialCreator(CredentialResource.PushService type, string friendlyName=null, string certificate=null, string privateKey=null, bool? sandbox=null, string apiKey=null) {
             this.type = type;
+            this.privateKey = privateKey;
+            this.certificate = certificate;
+            this.sandbox = sandbox;
+            this.apiKey = apiKey;
+            this.friendlyName = friendlyName;
         }
     
         #if NET40

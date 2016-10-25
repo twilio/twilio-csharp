@@ -43,69 +43,35 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
         /// fetch
         /// </summary>
         ///
+        /// <param name="recordingSid"> The recording_sid </param>
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="recordingSid"> The recording_sid </param>
-        /// <param name="sid"> The sid </param>
         /// <returns> TranscriptionFetcher capable of executing the fetch </returns> 
-        public static TranscriptionFetcher Fetcher(string accountSid, string recordingSid, string sid) {
-            return new TranscriptionFetcher(accountSid, recordingSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a TranscriptionFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="recordingSid"> The recording_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> TranscriptionFetcher capable of executing the fetch </returns> 
-        public static TranscriptionFetcher Fetcher(string recordingSid, 
-                                                   string sid) {
-            return new TranscriptionFetcher(recordingSid, sid);
+        public static TranscriptionFetcher Fetcher(string recordingSid, string sid, string accountSid=null) {
+            return new TranscriptionFetcher(recordingSid, sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// delete
         /// </summary>
         ///
+        /// <param name="recordingSid"> The recording_sid </param>
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="recordingSid"> The recording_sid </param>
-        /// <param name="sid"> The sid </param>
         /// <returns> TranscriptionDeleter capable of executing the delete </returns> 
-        public static TranscriptionDeleter Deleter(string accountSid, string recordingSid, string sid) {
-            return new TranscriptionDeleter(accountSid, recordingSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a TranscriptionDeleter to execute delete.
-        /// </summary>
-        ///
-        /// <param name="recordingSid"> The recording_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> TranscriptionDeleter capable of executing the delete </returns> 
-        public static TranscriptionDeleter Deleter(string recordingSid, 
-                                                   string sid) {
-            return new TranscriptionDeleter(recordingSid, sid);
+        public static TranscriptionDeleter Deleter(string recordingSid, string sid, string accountSid=null) {
+            return new TranscriptionDeleter(recordingSid, sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// read
         /// </summary>
         ///
+        /// <param name="recordingSid"> The recording_sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="recordingSid"> The recording_sid </param>
         /// <returns> TranscriptionReader capable of executing the read </returns> 
-        public static TranscriptionReader Reader(string accountSid, string recordingSid) {
-            return new TranscriptionReader(accountSid, recordingSid);
-        }
-    
-        /// <summary>
-        /// Create a TranscriptionReader to execute read.
-        /// </summary>
-        ///
-        /// <param name="recordingSid"> The recording_sid </param>
-        /// <returns> TranscriptionReader capable of executing the read </returns> 
-        public static TranscriptionReader Reader(string recordingSid) {
-            return new TranscriptionReader(recordingSid);
+        public static TranscriptionReader Reader(string recordingSid, string accountSid=null) {
+            return new TranscriptionReader(recordingSid, accountSid:accountSid);
         }
     
         /// <summary>

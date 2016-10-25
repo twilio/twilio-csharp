@@ -20,89 +20,26 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string postalCode { get; set; }
     
         /// <summary>
-        /// Construct a new AddressUpdater.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        public AddressUpdater(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new AddressUpdater
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> The sid </param>
-        public AddressUpdater(string accountSid, string sid) {
-            this.accountSid = accountSid;
-            this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
+        /// <param name="accountSid"> The account_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public AddressUpdater setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The customer_name
-        /// </summary>
-        ///
         /// <param name="customerName"> The customer_name </param>
-        /// <returns> this </returns> 
-        public AddressUpdater setCustomerName(string customerName) {
-            this.customerName = customerName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The street
-        /// </summary>
-        ///
         /// <param name="street"> The street </param>
-        /// <returns> this </returns> 
-        public AddressUpdater setStreet(string street) {
-            this.street = street;
-            return this;
-        }
-    
-        /// <summary>
-        /// The city
-        /// </summary>
-        ///
         /// <param name="city"> The city </param>
-        /// <returns> this </returns> 
-        public AddressUpdater setCity(string city) {
-            this.city = city;
-            return this;
-        }
-    
-        /// <summary>
-        /// The region
-        /// </summary>
-        ///
         /// <param name="region"> The region </param>
-        /// <returns> this </returns> 
-        public AddressUpdater setRegion(string region) {
-            this.region = region;
-            return this;
-        }
-    
-        /// <summary>
-        /// The postal_code
-        /// </summary>
-        ///
         /// <param name="postalCode"> The postal_code </param>
-        /// <returns> this </returns> 
-        public AddressUpdater setPostalCode(string postalCode) {
+        public AddressUpdater(string sid, string accountSid=null, string friendlyName=null, string customerName=null, string street=null, string city=null, string region=null, string postalCode=null) {
+            this.city = city;
+            this.sid = sid;
+            this.street = street;
+            this.customerName = customerName;
+            this.accountSid = accountSid;
+            this.region = region;
+            this.friendlyName = friendlyName;
             this.postalCode = postalCode;
-            return this;
         }
     
         #if NET40

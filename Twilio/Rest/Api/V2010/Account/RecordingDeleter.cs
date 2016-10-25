@@ -15,21 +15,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string sid { get; }
     
         /// <summary>
-        /// Construct a new RecordingDeleter.
-        /// </summary>
-        ///
-        /// <param name="sid"> Delete by unique recording Sid </param>
-        public RecordingDeleter(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new RecordingDeleter
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> Delete by unique recording Sid </param>
-        public RecordingDeleter(string accountSid, string sid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public RecordingDeleter(string sid, string accountSid=null) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

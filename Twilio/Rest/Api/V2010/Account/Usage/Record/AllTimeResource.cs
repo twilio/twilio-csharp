@@ -132,18 +132,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
+        /// <param name="category"> The category </param>
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="endDate"> The end_date </param>
         /// <returns> AllTimeReader capable of executing the read </returns> 
-        public static AllTimeReader Reader(string accountSid) {
-            return new AllTimeReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a AllTimeReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> AllTimeReader capable of executing the read </returns> 
-        public static AllTimeReader Reader() {
-            return new AllTimeReader();
+        public static AllTimeReader Reader(string accountSid=null, AllTimeResource.Category category=null, DateTime? startDate=null, DateTime? endDate=null) {
+            return new AllTimeReader(accountSid:accountSid, category:category, startDate:startDate, endDate:endDate);
         }
     
         /// <summary>

@@ -43,42 +43,22 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// Fetch and instance of a Transcription
         /// </summary>
         ///
+        /// <param name="sid"> Fetch by unique transcription Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Fetch by unique transcription Sid </param>
         /// <returns> TranscriptionFetcher capable of executing the fetch </returns> 
-        public static TranscriptionFetcher Fetcher(string accountSid, string sid) {
-            return new TranscriptionFetcher(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a TranscriptionFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="sid"> Fetch by unique transcription Sid </param>
-        /// <returns> TranscriptionFetcher capable of executing the fetch </returns> 
-        public static TranscriptionFetcher Fetcher(string sid) {
-            return new TranscriptionFetcher(sid);
+        public static TranscriptionFetcher Fetcher(string sid, string accountSid=null) {
+            return new TranscriptionFetcher(sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// Delete a transcription from the account used to make the request
         /// </summary>
         ///
+        /// <param name="sid"> Delete by unique transcription Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Delete by unique transcription Sid </param>
         /// <returns> TranscriptionDeleter capable of executing the delete </returns> 
-        public static TranscriptionDeleter Deleter(string accountSid, string sid) {
-            return new TranscriptionDeleter(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a TranscriptionDeleter to execute delete.
-        /// </summary>
-        ///
-        /// <param name="sid"> Delete by unique transcription Sid </param>
-        /// <returns> TranscriptionDeleter capable of executing the delete </returns> 
-        public static TranscriptionDeleter Deleter(string sid) {
-            return new TranscriptionDeleter(sid);
+        public static TranscriptionDeleter Deleter(string sid, string accountSid=null) {
+            return new TranscriptionDeleter(sid, accountSid:accountSid);
         }
     
         /// <summary>
@@ -87,17 +67,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> TranscriptionReader capable of executing the read </returns> 
-        public static TranscriptionReader Reader(string accountSid) {
-            return new TranscriptionReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a TranscriptionReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> TranscriptionReader capable of executing the read </returns> 
-        public static TranscriptionReader Reader() {
-            return new TranscriptionReader();
+        public static TranscriptionReader Reader(string accountSid=null) {
+            return new TranscriptionReader(accountSid:accountSid);
         }
     
         /// <summary>

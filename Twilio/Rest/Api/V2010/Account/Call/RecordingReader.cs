@@ -15,34 +15,16 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         public string dateCreated { get; set; }
     
         /// <summary>
-        /// Construct a new RecordingReader.
-        /// </summary>
-        ///
-        /// <param name="callSid"> The call_sid </param>
-        public RecordingReader(string callSid) {
-            this.callSid = callSid;
-        }
-    
-        /// <summary>
         /// Construct a new RecordingReader
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="callSid"> The call_sid </param>
-        public RecordingReader(string accountSid, string callSid) {
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="dateCreated"> The date_created </param>
+        public RecordingReader(string callSid, string accountSid=null, string dateCreated=null) {
             this.accountSid = accountSid;
             this.callSid = callSid;
-        }
-    
-        /// <summary>
-        /// The date_created
-        /// </summary>
-        ///
-        /// <param name="dateCreated"> The date_created </param>
-        /// <returns> this </returns> 
-        public RecordingReader ByDateCreated(string dateCreated) {
             this.dateCreated = dateCreated;
-            return this;
         }
     
         #if NET40

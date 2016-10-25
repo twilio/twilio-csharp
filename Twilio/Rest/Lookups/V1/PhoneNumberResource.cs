@@ -45,9 +45,13 @@ namespace Twilio.Rest.Lookups.V1 {
         /// </summary>
         ///
         /// <param name="phoneNumber"> The phone_number </param>
+        /// <param name="countryCode"> The country_code </param>
+        /// <param name="type"> The type </param>
+        /// <param name="addOns"> The add_ons </param>
+        /// <param name="addOnsData"> The add_ons_data </param>
         /// <returns> PhoneNumberFetcher capable of executing the fetch </returns> 
-        public static PhoneNumberFetcher Fetcher(Twilio.Types.PhoneNumber phoneNumber) {
-            return new PhoneNumberFetcher(phoneNumber);
+        public static PhoneNumberFetcher Fetcher(Twilio.Types.PhoneNumber phoneNumber, string countryCode=null, List<string> type=null, List<string> addOns=null, Dictionary<string, object> addOnsData=null) {
+            return new PhoneNumberFetcher(phoneNumber, countryCode:countryCode, type:type, addOns:addOns, addOnsData:addOnsData);
         }
     
         /// <summary>
@@ -78,6 +82,8 @@ namespace Twilio.Rest.Lookups.V1 {
         public Dictionary<string, string> carrier { get; }
         [JsonProperty("add_ons")]
         public Object addOns { get; }
+        [JsonProperty("url")]
+        public Uri url { get; }
     
         public PhoneNumberResource() {
         
@@ -94,13 +100,16 @@ namespace Twilio.Rest.Lookups.V1 {
                                     [JsonProperty("carrier")]
                                     Dictionary<string, string> carrier, 
                                     [JsonProperty("add_ons")]
-                                    Object addOns) {
+                                    Object addOns, 
+                                    [JsonProperty("url")]
+                                    Uri url) {
             this.callerName = callerName;
             this.countryCode = countryCode;
             this.phoneNumber = phoneNumber;
             this.nationalFormat = nationalFormat;
             this.carrier = carrier;
             this.addOns = addOns;
+            this.url = url;
         }
     }
 }

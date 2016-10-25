@@ -19,84 +19,24 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string endTime { get; set; }
     
         /// <summary>
-        /// Construct a new CallReader.
-        /// </summary>
-        public CallReader() {
-        }
-    
-        /// <summary>
         /// Construct a new CallReader
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public CallReader(string accountSid) {
-            this.accountSid = accountSid;
-        }
-    
-        /// <summary>
-        /// Only show calls to this phone number or Client identifier
-        /// </summary>
-        ///
         /// <param name="to"> Phone number or Client identifier to filter `to` on </param>
-        /// <returns> this </returns> 
-        public CallReader ByTo(Twilio.Types.PhoneNumber to) {
-            this.to = to;
-            return this;
-        }
-    
-        /// <summary>
-        /// Only show calls from this phone number or Client identifier
-        /// </summary>
-        ///
         /// <param name="from"> Phone number or Client identifier to filter `from` on </param>
-        /// <returns> this </returns> 
-        public CallReader ByFrom(Twilio.Types.PhoneNumber from) {
-            this.from = from;
-            return this;
-        }
-    
-        /// <summary>
-        /// Only show calls spawned by the call with this Sid
-        /// </summary>
-        ///
         /// <param name="parentCallSid"> Parent Call Sid to filter on </param>
-        /// <returns> this </returns> 
-        public CallReader ByParentCallSid(string parentCallSid) {
-            this.parentCallSid = parentCallSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// Only show calls currently in this status
-        /// </summary>
-        ///
         /// <param name="status"> Status to filter on </param>
-        /// <returns> this </returns> 
-        public CallReader ByStatus(CallResource.Status status) {
-            this.status = status;
-            return this;
-        }
-    
-        /// <summary>
-        /// Only show calls that started on this date
-        /// </summary>
-        ///
         /// <param name="startTime"> StartTime to filter on </param>
-        /// <returns> this </returns> 
-        public CallReader ByStartTime(string startTime) {
-            this.startTime = startTime;
-            return this;
-        }
-    
-        /// <summary>
-        /// Only show call that ended on this date
-        /// </summary>
-        ///
         /// <param name="endTime"> EndTime to filter on </param>
-        /// <returns> this </returns> 
-        public CallReader ByEndTime(string endTime) {
+        public CallReader(string accountSid=null, Twilio.Types.PhoneNumber to=null, Twilio.Types.PhoneNumber from=null, string parentCallSid=null, CallResource.Status status=null, string startTime=null, string endTime=null) {
+            this.startTime = startTime;
+            this.parentCallSid = parentCallSid;
+            this.from = from;
+            this.accountSid = accountSid;
+            this.status = status;
             this.endTime = endTime;
-            return this;
+            this.to = to;
         }
     
         #if NET40

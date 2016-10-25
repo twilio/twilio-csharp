@@ -15,21 +15,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string sid { get; }
     
         /// <summary>
-        /// Construct a new TranscriptionDeleter.
-        /// </summary>
-        ///
-        /// <param name="sid"> Delete by unique transcription Sid </param>
-        public TranscriptionDeleter(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new TranscriptionDeleter
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> Delete by unique transcription Sid </param>
-        public TranscriptionDeleter(string accountSid, string sid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public TranscriptionDeleter(string sid, string accountSid=null) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

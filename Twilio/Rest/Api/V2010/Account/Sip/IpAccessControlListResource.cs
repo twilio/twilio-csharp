@@ -16,104 +16,53 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         ///
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAccessControlListReader capable of executing the read </returns> 
-        public static IpAccessControlListReader Reader(string accountSid) {
-            return new IpAccessControlListReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a IpAccessControlListReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> IpAccessControlListReader capable of executing the read </returns> 
-        public static IpAccessControlListReader Reader() {
-            return new IpAccessControlListReader();
+        public static IpAccessControlListReader Reader(string accountSid=null) {
+            return new IpAccessControlListReader(accountSid:accountSid);
         }
     
         /// <summary>
         /// Create a new IpAccessControlList resource
         /// </summary>
         ///
+        /// <param name="friendlyName"> A human readable description of this resource </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> A human readable description of this resource </param>
         /// <returns> IpAccessControlListCreator capable of executing the create </returns> 
-        public static IpAccessControlListCreator Creator(string accountSid, string friendlyName) {
-            return new IpAccessControlListCreator(accountSid, friendlyName);
-        }
-    
-        /// <summary>
-        /// Create a IpAccessControlListCreator to execute create.
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> A human readable description of this resource </param>
-        /// <returns> IpAccessControlListCreator capable of executing the create </returns> 
-        public static IpAccessControlListCreator Creator(string friendlyName) {
-            return new IpAccessControlListCreator(friendlyName);
+        public static IpAccessControlListCreator Creator(string friendlyName, string accountSid=null) {
+            return new IpAccessControlListCreator(friendlyName, accountSid:accountSid);
         }
     
         /// <summary>
         /// Fetch a specific instance of an IpAccessControlList
         /// </summary>
         ///
+        /// <param name="sid"> Fetch by unique ip-access-control-list Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Fetch by unique ip-access-control-list Sid </param>
         /// <returns> IpAccessControlListFetcher capable of executing the fetch </returns> 
-        public static IpAccessControlListFetcher Fetcher(string accountSid, string sid) {
-            return new IpAccessControlListFetcher(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a IpAccessControlListFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="sid"> Fetch by unique ip-access-control-list Sid </param>
-        /// <returns> IpAccessControlListFetcher capable of executing the fetch </returns> 
-        public static IpAccessControlListFetcher Fetcher(string sid) {
-            return new IpAccessControlListFetcher(sid);
+        public static IpAccessControlListFetcher Fetcher(string sid, string accountSid=null) {
+            return new IpAccessControlListFetcher(sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// Rename an IpAccessControlList
         /// </summary>
         ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> A human readable description of this resource </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> A human readable description of this resource </param>
         /// <returns> IpAccessControlListUpdater capable of executing the update </returns> 
-        public static IpAccessControlListUpdater Updater(string accountSid, string sid, string friendlyName) {
-            return new IpAccessControlListUpdater(accountSid, sid, friendlyName);
-        }
-    
-        /// <summary>
-        /// Create a IpAccessControlListUpdater to execute update.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> A human readable description of this resource </param>
-        /// <returns> IpAccessControlListUpdater capable of executing the update </returns> 
-        public static IpAccessControlListUpdater Updater(string sid, 
-                                                         string friendlyName) {
-            return new IpAccessControlListUpdater(sid, friendlyName);
+        public static IpAccessControlListUpdater Updater(string sid, string friendlyName, string accountSid=null) {
+            return new IpAccessControlListUpdater(sid, friendlyName, accountSid:accountSid);
         }
     
         /// <summary>
         /// Delete an IpAccessControlList from the requested account
         /// </summary>
         ///
+        /// <param name="sid"> Delete by unique ip-access-control-list Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Delete by unique ip-access-control-list Sid </param>
         /// <returns> IpAccessControlListDeleter capable of executing the delete </returns> 
-        public static IpAccessControlListDeleter Deleter(string accountSid, string sid) {
-            return new IpAccessControlListDeleter(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a IpAccessControlListDeleter to execute delete.
-        /// </summary>
-        ///
-        /// <param name="sid"> Delete by unique ip-access-control-list Sid </param>
-        /// <returns> IpAccessControlListDeleter capable of executing the delete </returns> 
-        public static IpAccessControlListDeleter Deleter(string sid) {
-            return new IpAccessControlListDeleter(sid);
+        public static IpAccessControlListDeleter Deleter(string sid, string accountSid=null) {
+            return new IpAccessControlListDeleter(sid, accountSid:accountSid);
         }
     
         /// <summary>

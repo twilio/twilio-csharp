@@ -15,18 +15,16 @@ namespace Twilio.Rest.Api.V2010.Account {
         public int? maxSize { get; set; }
     
         /// <summary>
-        /// Construct a new QueueCreator.
-        /// </summary>
-        public QueueCreator() {
-        }
-    
-        /// <summary>
         /// Construct a new QueueCreator
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public QueueCreator(string accountSid) {
+        /// <param name="friendlyName"> A user-provided string that identifies this queue. </param>
+        /// <param name="maxSize"> The max number of calls allowed in the queue </param>
+        public QueueCreator(string accountSid=null, string friendlyName=null, int? maxSize=null) {
             this.accountSid = accountSid;
+            this.friendlyName = friendlyName;
+            this.maxSize = maxSize;
         }
     
         #if NET40

@@ -14,21 +14,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string connectAppSid { get; }
     
         /// <summary>
-        /// Construct a new AuthorizedConnectAppFetcher.
-        /// </summary>
-        ///
-        /// <param name="connectAppSid"> The connect_app_sid </param>
-        public AuthorizedConnectAppFetcher(string connectAppSid) {
-            this.connectAppSid = connectAppSid;
-        }
-    
-        /// <summary>
         /// Construct a new AuthorizedConnectAppFetcher
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="connectAppSid"> The connect_app_sid </param>
-        public AuthorizedConnectAppFetcher(string accountSid, string connectAppSid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public AuthorizedConnectAppFetcher(string connectAppSid, string accountSid=null) {
             this.accountSid = accountSid;
             this.connectAppSid = connectAppSid;
         }

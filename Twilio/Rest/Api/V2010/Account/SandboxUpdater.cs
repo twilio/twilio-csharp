@@ -1,7 +1,6 @@
 using System;
 using Twilio.Base;
 using Twilio.Clients;
-using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -21,114 +20,24 @@ namespace Twilio.Rest.Api.V2010.Account {
         public Twilio.Http.HttpMethod statusCallbackMethod { get; set; }
     
         /// <summary>
-        /// Construct a new SandboxUpdater.
-        /// </summary>
-        public SandboxUpdater() {
-        }
-    
-        /// <summary>
         /// Construct a new SandboxUpdater
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public SandboxUpdater(string accountSid) {
-            this.accountSid = accountSid;
-        }
-    
-        /// <summary>
-        /// The voice_url
-        /// </summary>
-        ///
         /// <param name="voiceUrl"> The voice_url </param>
-        /// <returns> this </returns> 
-        public SandboxUpdater setVoiceUrl(Uri voiceUrl) {
-            this.voiceUrl = voiceUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The voice_url
-        /// </summary>
-        ///
-        /// <param name="voiceUrl"> The voice_url </param>
-        /// <returns> this </returns> 
-        public SandboxUpdater setVoiceUrl(string voiceUrl) {
-            return setVoiceUrl(Promoter.UriFromString(voiceUrl));
-        }
-    
-        /// <summary>
-        /// The voice_method
-        /// </summary>
-        ///
         /// <param name="voiceMethod"> The voice_method </param>
-        /// <returns> this </returns> 
-        public SandboxUpdater setVoiceMethod(Twilio.Http.HttpMethod voiceMethod) {
-            this.voiceMethod = voiceMethod;
-            return this;
-        }
-    
-        /// <summary>
-        /// The sms_url
-        /// </summary>
-        ///
         /// <param name="smsUrl"> The sms_url </param>
-        /// <returns> this </returns> 
-        public SandboxUpdater setSmsUrl(Uri smsUrl) {
-            this.smsUrl = smsUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The sms_url
-        /// </summary>
-        ///
-        /// <param name="smsUrl"> The sms_url </param>
-        /// <returns> this </returns> 
-        public SandboxUpdater setSmsUrl(string smsUrl) {
-            return setSmsUrl(Promoter.UriFromString(smsUrl));
-        }
-    
-        /// <summary>
-        /// The sms_method
-        /// </summary>
-        ///
         /// <param name="smsMethod"> The sms_method </param>
-        /// <returns> this </returns> 
-        public SandboxUpdater setSmsMethod(Twilio.Http.HttpMethod smsMethod) {
-            this.smsMethod = smsMethod;
-            return this;
-        }
-    
-        /// <summary>
-        /// The status_callback
-        /// </summary>
-        ///
         /// <param name="statusCallback"> The status_callback </param>
-        /// <returns> this </returns> 
-        public SandboxUpdater setStatusCallback(Uri statusCallback) {
-            this.statusCallback = statusCallback;
-            return this;
-        }
-    
-        /// <summary>
-        /// The status_callback
-        /// </summary>
-        ///
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <returns> this </returns> 
-        public SandboxUpdater setStatusCallback(string statusCallback) {
-            return setStatusCallback(Promoter.UriFromString(statusCallback));
-        }
-    
-        /// <summary>
-        /// The status_callback_method
-        /// </summary>
-        ///
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
-        /// <returns> this </returns> 
-        public SandboxUpdater setStatusCallbackMethod(Twilio.Http.HttpMethod statusCallbackMethod) {
+        public SandboxUpdater(string accountSid=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null) {
+            this.smsUrl = smsUrl;
             this.statusCallbackMethod = statusCallbackMethod;
-            return this;
+            this.voiceMethod = voiceMethod;
+            this.statusCallback = statusCallback;
+            this.smsMethod = smsMethod;
+            this.accountSid = accountSid;
+            this.voiceUrl = voiceUrl;
         }
     
         #if NET40

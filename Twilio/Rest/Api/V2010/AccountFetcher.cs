@@ -13,17 +13,11 @@ namespace Twilio.Rest.Api.V2010 {
         public string sid { get; }
     
         /// <summary>
-        /// Construct a new AccountFetcher.
-        /// </summary>
-        public AccountFetcher() {
-        }
-    
-        /// <summary>
         /// Construct a new AccountFetcher
         /// </summary>
         ///
         /// <param name="sid"> Fetch by unique Account Sid </param>
-        public AccountFetcher(string sid) {
+        public AccountFetcher(string sid=null) {
             this.sid = sid;
         }
     

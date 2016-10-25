@@ -23,53 +23,17 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
-        public ChannelUpdater(string serviceSid, string sid) {
-            this.serviceSid = serviceSid;
-            this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public ChannelUpdater setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The unique_name
-        /// </summary>
-        ///
         /// <param name="uniqueName"> The unique_name </param>
-        /// <returns> this </returns> 
-        public ChannelUpdater setUniqueName(string uniqueName) {
-            this.uniqueName = uniqueName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The attributes
-        /// </summary>
-        ///
         /// <param name="attributes"> The attributes </param>
-        /// <returns> this </returns> 
-        public ChannelUpdater setAttributes(string attributes) {
-            this.attributes = attributes;
-            return this;
-        }
-    
-        /// <summary>
-        /// The type
-        /// </summary>
-        ///
         /// <param name="type"> The type </param>
-        /// <returns> this </returns> 
-        public ChannelUpdater setType(ChannelResource.ChannelType type) {
+        public ChannelUpdater(string serviceSid, string sid, string friendlyName=null, string uniqueName=null, string attributes=null, ChannelResource.ChannelType type=null) {
+            this.sid = sid;
             this.type = type;
-            return this;
+            this.serviceSid = serviceSid;
+            this.uniqueName = uniqueName;
+            this.friendlyName = friendlyName;
+            this.attributes = attributes;
         }
     
         #if NET40

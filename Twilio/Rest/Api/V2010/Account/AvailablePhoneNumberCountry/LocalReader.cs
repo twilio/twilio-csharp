@@ -30,199 +30,46 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
         public string inLata { get; set; }
     
         /// <summary>
-        /// Construct a new LocalReader.
-        /// </summary>
-        ///
-        /// <param name="countryCode"> The country_code </param>
-        public LocalReader(string countryCode) {
-            this.countryCode = countryCode;
-        }
-    
-        /// <summary>
         /// Construct a new LocalReader
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="countryCode"> The country_code </param>
-        public LocalReader(string accountSid, string countryCode) {
-            this.accountSid = accountSid;
-            this.countryCode = countryCode;
-        }
-    
-        /// <summary>
-        /// The area_code
-        /// </summary>
-        ///
+        /// <param name="accountSid"> The account_sid </param>
         /// <param name="areaCode"> The area_code </param>
-        /// <returns> this </returns> 
-        public LocalReader ByAreaCode(int? areaCode) {
-            this.areaCode = areaCode;
-            return this;
-        }
-    
-        /// <summary>
-        /// The contains
-        /// </summary>
-        ///
         /// <param name="contains"> The contains </param>
-        /// <returns> this </returns> 
-        public LocalReader ByContains(string contains) {
-            this.contains = contains;
-            return this;
-        }
-    
-        /// <summary>
-        /// The sms_enabled
-        /// </summary>
-        ///
         /// <param name="smsEnabled"> The sms_enabled </param>
-        /// <returns> this </returns> 
-        public LocalReader BySmsEnabled(bool? smsEnabled) {
-            this.smsEnabled = smsEnabled;
-            return this;
-        }
-    
-        /// <summary>
-        /// The mms_enabled
-        /// </summary>
-        ///
         /// <param name="mmsEnabled"> The mms_enabled </param>
-        /// <returns> this </returns> 
-        public LocalReader ByMmsEnabled(bool? mmsEnabled) {
-            this.mmsEnabled = mmsEnabled;
-            return this;
-        }
-    
-        /// <summary>
-        /// The voice_enabled
-        /// </summary>
-        ///
         /// <param name="voiceEnabled"> The voice_enabled </param>
-        /// <returns> this </returns> 
-        public LocalReader ByVoiceEnabled(bool? voiceEnabled) {
-            this.voiceEnabled = voiceEnabled;
-            return this;
-        }
-    
-        /// <summary>
-        /// The exclude_all_address_required
-        /// </summary>
-        ///
         /// <param name="excludeAllAddressRequired"> The exclude_all_address_required </param>
-        /// <returns> this </returns> 
-        public LocalReader ByExcludeAllAddressRequired(bool? excludeAllAddressRequired) {
-            this.excludeAllAddressRequired = excludeAllAddressRequired;
-            return this;
-        }
-    
-        /// <summary>
-        /// The exclude_local_address_required
-        /// </summary>
-        ///
         /// <param name="excludeLocalAddressRequired"> The exclude_local_address_required </param>
-        /// <returns> this </returns> 
-        public LocalReader ByExcludeLocalAddressRequired(bool? excludeLocalAddressRequired) {
-            this.excludeLocalAddressRequired = excludeLocalAddressRequired;
-            return this;
-        }
-    
-        /// <summary>
-        /// The exclude_foreign_address_required
-        /// </summary>
-        ///
         /// <param name="excludeForeignAddressRequired"> The exclude_foreign_address_required </param>
-        /// <returns> this </returns> 
-        public LocalReader ByExcludeForeignAddressRequired(bool? excludeForeignAddressRequired) {
-            this.excludeForeignAddressRequired = excludeForeignAddressRequired;
-            return this;
-        }
-    
-        /// <summary>
-        /// The beta
-        /// </summary>
-        ///
         /// <param name="beta"> The beta </param>
-        /// <returns> this </returns> 
-        public LocalReader ByBeta(bool? beta) {
-            this.beta = beta;
-            return this;
-        }
-    
-        /// <summary>
-        /// The near_number
-        /// </summary>
-        ///
         /// <param name="nearNumber"> The near_number </param>
-        /// <returns> this </returns> 
-        public LocalReader ByNearNumber(Twilio.Types.PhoneNumber nearNumber) {
-            this.nearNumber = nearNumber;
-            return this;
-        }
-    
-        /// <summary>
-        /// The near_lat_long
-        /// </summary>
-        ///
         /// <param name="nearLatLong"> The near_lat_long </param>
-        /// <returns> this </returns> 
-        public LocalReader ByNearLatLong(string nearLatLong) {
-            this.nearLatLong = nearLatLong;
-            return this;
-        }
-    
-        /// <summary>
-        /// The distance
-        /// </summary>
-        ///
         /// <param name="distance"> The distance </param>
-        /// <returns> this </returns> 
-        public LocalReader ByDistance(int? distance) {
-            this.distance = distance;
-            return this;
-        }
-    
-        /// <summary>
-        /// The in_postal_code
-        /// </summary>
-        ///
         /// <param name="inPostalCode"> The in_postal_code </param>
-        /// <returns> this </returns> 
-        public LocalReader ByInPostalCode(string inPostalCode) {
-            this.inPostalCode = inPostalCode;
-            return this;
-        }
-    
-        /// <summary>
-        /// The in_region
-        /// </summary>
-        ///
         /// <param name="inRegion"> The in_region </param>
-        /// <returns> this </returns> 
-        public LocalReader ByInRegion(string inRegion) {
-            this.inRegion = inRegion;
-            return this;
-        }
-    
-        /// <summary>
-        /// The in_rate_center
-        /// </summary>
-        ///
         /// <param name="inRateCenter"> The in_rate_center </param>
-        /// <returns> this </returns> 
-        public LocalReader ByInRateCenter(string inRateCenter) {
-            this.inRateCenter = inRateCenter;
-            return this;
-        }
-    
-        /// <summary>
-        /// The in_lata
-        /// </summary>
-        ///
         /// <param name="inLata"> The in_lata </param>
-        /// <returns> this </returns> 
-        public LocalReader ByInLata(string inLata) {
+        public LocalReader(string countryCode, string accountSid=null, int? areaCode=null, string contains=null, bool? smsEnabled=null, bool? mmsEnabled=null, bool? voiceEnabled=null, bool? excludeAllAddressRequired=null, bool? excludeLocalAddressRequired=null, bool? excludeForeignAddressRequired=null, bool? beta=null, Twilio.Types.PhoneNumber nearNumber=null, string nearLatLong=null, int? distance=null, string inPostalCode=null, string inRegion=null, string inRateCenter=null, string inLata=null) {
+            this.excludeAllAddressRequired = excludeAllAddressRequired;
+            this.nearNumber = nearNumber;
             this.inLata = inLata;
-            return this;
+            this.excludeLocalAddressRequired = excludeLocalAddressRequired;
+            this.areaCode = areaCode;
+            this.contains = contains;
+            this.inRateCenter = inRateCenter;
+            this.smsEnabled = smsEnabled;
+            this.inPostalCode = inPostalCode;
+            this.beta = beta;
+            this.inRegion = inRegion;
+            this.accountSid = accountSid;
+            this.excludeForeignAddressRequired = excludeForeignAddressRequired;
+            this.mmsEnabled = mmsEnabled;
+            this.distance = distance;
+            this.nearLatLong = nearLatLong;
+            this.voiceEnabled = voiceEnabled;
+            this.countryCode = countryCode;
         }
     
         #if NET40

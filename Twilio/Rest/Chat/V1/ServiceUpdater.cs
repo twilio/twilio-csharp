@@ -26,96 +26,24 @@ namespace Twilio.Rest.Chat.V1 {
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        public ServiceUpdater(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public ServiceUpdater setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The default_service_role_sid
-        /// </summary>
-        ///
         /// <param name="defaultServiceRoleSid"> The default_service_role_sid </param>
-        /// <returns> this </returns> 
-        public ServiceUpdater setDefaultServiceRoleSid(string defaultServiceRoleSid) {
-            this.defaultServiceRoleSid = defaultServiceRoleSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The default_channel_role_sid
-        /// </summary>
-        ///
         /// <param name="defaultChannelRoleSid"> The default_channel_role_sid </param>
-        /// <returns> this </returns> 
-        public ServiceUpdater setDefaultChannelRoleSid(string defaultChannelRoleSid) {
-            this.defaultChannelRoleSid = defaultChannelRoleSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The default_channel_creator_role_sid
-        /// </summary>
-        ///
         /// <param name="defaultChannelCreatorRoleSid"> The default_channel_creator_role_sid </param>
-        /// <returns> this </returns> 
-        public ServiceUpdater setDefaultChannelCreatorRoleSid(string defaultChannelCreatorRoleSid) {
-            this.defaultChannelCreatorRoleSid = defaultChannelCreatorRoleSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The read_status_enabled
-        /// </summary>
-        ///
         /// <param name="readStatusEnabled"> The read_status_enabled </param>
-        /// <returns> this </returns> 
-        public ServiceUpdater setReadStatusEnabled(bool? readStatusEnabled) {
-            this.readStatusEnabled = readStatusEnabled;
-            return this;
-        }
-    
-        /// <summary>
-        /// The typing_indicator_timeout
-        /// </summary>
-        ///
         /// <param name="typingIndicatorTimeout"> The typing_indicator_timeout </param>
-        /// <returns> this </returns> 
-        public ServiceUpdater setTypingIndicatorTimeout(int? typingIndicatorTimeout) {
-            this.typingIndicatorTimeout = typingIndicatorTimeout;
-            return this;
-        }
-    
-        /// <summary>
-        /// The consumption_report_interval
-        /// </summary>
-        ///
         /// <param name="consumptionReportInterval"> The consumption_report_interval </param>
-        /// <returns> this </returns> 
-        public ServiceUpdater setConsumptionReportInterval(int? consumptionReportInterval) {
-            this.consumptionReportInterval = consumptionReportInterval;
-            return this;
-        }
-    
-        /// <summary>
-        /// The webhooks
-        /// </summary>
-        ///
         /// <param name="webhooks"> The webhooks </param>
-        /// <returns> this </returns> 
-        public ServiceUpdater setWebhooks(Object webhooks) {
+        public ServiceUpdater(string sid, string friendlyName=null, string defaultServiceRoleSid=null, string defaultChannelRoleSid=null, string defaultChannelCreatorRoleSid=null, bool? readStatusEnabled=null, int? typingIndicatorTimeout=null, int? consumptionReportInterval=null, Object webhooks=null) {
+            this.sid = sid;
+            this.defaultServiceRoleSid = defaultServiceRoleSid;
+            this.typingIndicatorTimeout = typingIndicatorTimeout;
+            this.defaultChannelRoleSid = defaultChannelRoleSid;
+            this.readStatusEnabled = readStatusEnabled;
             this.webhooks = webhooks;
-            return this;
+            this.defaultChannelCreatorRoleSid = defaultChannelCreatorRoleSid;
+            this.friendlyName = friendlyName;
+            this.consumptionReportInterval = consumptionReportInterval;
         }
     
         #if NET40

@@ -20,22 +20,23 @@ namespace Twilio.Rest.Api.V2010.Account {
         public Twilio.Http.HttpMethod statusCallbackMethod { get; set; }
     
         /// <summary>
-        /// Construct a new ValidationRequestCreator.
-        /// </summary>
-        ///
-        /// <param name="phoneNumber"> The phone_number </param>
-        public ValidationRequestCreator(Twilio.Types.PhoneNumber phoneNumber) {
-            this.phoneNumber = phoneNumber;
-        }
-    
-        /// <summary>
         /// Construct a new ValidationRequestCreator
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="phoneNumber"> The phone_number </param>
-        public ValidationRequestCreator(string accountSid, Twilio.Types.PhoneNumber phoneNumber) {
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="callDelay"> The call_delay </param>
+        /// <param name="extension"> The extension </param>
+        /// <param name="statusCallback"> The status_callback </param>
+        /// <param name="statusCallbackMethod"> The status_callback_method </param>
+        public ValidationRequestCreator(Twilio.Types.PhoneNumber phoneNumber, string accountSid=null, string friendlyName=null, int? callDelay=null, string extension=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null) {
+            this.statusCallbackMethod = statusCallbackMethod;
+            this.statusCallback = statusCallback;
+            this.callDelay = callDelay;
             this.accountSid = accountSid;
+            this.extension = extension;
+            this.friendlyName = friendlyName;
             this.phoneNumber = phoneNumber;
         }
     

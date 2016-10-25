@@ -74,42 +74,22 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// Fetch an instance of a recording
         /// </summary>
         ///
+        /// <param name="sid"> Fetch by unique recording Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Fetch by unique recording Sid </param>
         /// <returns> RecordingFetcher capable of executing the fetch </returns> 
-        public static RecordingFetcher Fetcher(string accountSid, string sid) {
-            return new RecordingFetcher(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a RecordingFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="sid"> Fetch by unique recording Sid </param>
-        /// <returns> RecordingFetcher capable of executing the fetch </returns> 
-        public static RecordingFetcher Fetcher(string sid) {
-            return new RecordingFetcher(sid);
+        public static RecordingFetcher Fetcher(string sid, string accountSid=null) {
+            return new RecordingFetcher(sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// Delete a recording from your account
         /// </summary>
         ///
+        /// <param name="sid"> Delete by unique recording Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Delete by unique recording Sid </param>
         /// <returns> RecordingDeleter capable of executing the delete </returns> 
-        public static RecordingDeleter Deleter(string accountSid, string sid) {
-            return new RecordingDeleter(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a RecordingDeleter to execute delete.
-        /// </summary>
-        ///
-        /// <param name="sid"> Delete by unique recording Sid </param>
-        /// <returns> RecordingDeleter capable of executing the delete </returns> 
-        public static RecordingDeleter Deleter(string sid) {
-            return new RecordingDeleter(sid);
+        public static RecordingDeleter Deleter(string sid, string accountSid=null) {
+            return new RecordingDeleter(sid, accountSid:accountSid);
         }
     
         /// <summary>
@@ -117,18 +97,10 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
+        /// <param name="dateCreated"> Filter by date created </param>
         /// <returns> RecordingReader capable of executing the read </returns> 
-        public static RecordingReader Reader(string accountSid) {
-            return new RecordingReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a RecordingReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> RecordingReader capable of executing the read </returns> 
-        public static RecordingReader Reader() {
-            return new RecordingReader();
+        public static RecordingReader Reader(string accountSid=null, string dateCreated=null) {
+            return new RecordingReader(accountSid:accountSid, dateCreated:dateCreated);
         }
     
         /// <summary>

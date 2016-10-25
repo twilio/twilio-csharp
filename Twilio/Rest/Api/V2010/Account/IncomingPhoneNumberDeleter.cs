@@ -15,23 +15,14 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string sid { get; }
     
         /// <summary>
-        /// Construct a new IncomingPhoneNumberDeleter.
-        /// </summary>
-        ///
-        /// <param name="sid"> Delete by unique phone-number Sid </param>
-        public IncomingPhoneNumberDeleter(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new IncomingPhoneNumberDeleter
         /// </summary>
         ///
-        /// <param name="ownerAccountSid"> The owner_account_sid </param>
         /// <param name="sid"> Delete by unique phone-number Sid </param>
-        public IncomingPhoneNumberDeleter(string ownerAccountSid, string sid) {
-            this.ownerAccountSid = ownerAccountSid;
+        /// <param name="ownerAccountSid"> The owner_account_sid </param>
+        public IncomingPhoneNumberDeleter(string sid, string ownerAccountSid=null) {
             this.sid = sid;
+            this.ownerAccountSid = ownerAccountSid;
         }
     
         #if NET40

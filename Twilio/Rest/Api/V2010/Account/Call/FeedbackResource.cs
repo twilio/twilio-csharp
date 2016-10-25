@@ -49,69 +49,37 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// create
         /// </summary>
         ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="qualityScore"> The quality_score </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="qualityScore"> The quality_score </param>
+        /// <param name="issue"> The issue </param>
         /// <returns> FeedbackCreator capable of executing the create </returns> 
-        public static FeedbackCreator Creator(string accountSid, string callSid, int? qualityScore) {
-            return new FeedbackCreator(accountSid, callSid, qualityScore);
-        }
-    
-        /// <summary>
-        /// Create a FeedbackCreator to execute create.
-        /// </summary>
-        ///
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="qualityScore"> The quality_score </param>
-        /// <returns> FeedbackCreator capable of executing the create </returns> 
-        public static FeedbackCreator Creator(string callSid, 
-                                              int? qualityScore) {
-            return new FeedbackCreator(callSid, qualityScore);
+        public static FeedbackCreator Creator(string callSid, int? qualityScore, string accountSid=null, List<FeedbackResource.Issues> issue=null) {
+            return new FeedbackCreator(callSid, qualityScore, accountSid:accountSid, issue:issue);
         }
     
         /// <summary>
         /// Fetch an instance of a feedback entry for a call
         /// </summary>
         ///
+        /// <param name="callSid"> The call sid that uniquely identifies the call </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="callSid"> The call sid that uniquely identifies the call </param>
         /// <returns> FeedbackFetcher capable of executing the fetch </returns> 
-        public static FeedbackFetcher Fetcher(string accountSid, string callSid) {
-            return new FeedbackFetcher(accountSid, callSid);
-        }
-    
-        /// <summary>
-        /// Create a FeedbackFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="callSid"> The call sid that uniquely identifies the call </param>
-        /// <returns> FeedbackFetcher capable of executing the fetch </returns> 
-        public static FeedbackFetcher Fetcher(string callSid) {
-            return new FeedbackFetcher(callSid);
+        public static FeedbackFetcher Fetcher(string callSid, string accountSid=null) {
+            return new FeedbackFetcher(callSid, accountSid:accountSid);
         }
     
         /// <summary>
         /// Create or update a feedback entry for a call
         /// </summary>
         ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="qualityScore"> An integer from 1 to 5 </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="qualityScore"> An integer from 1 to 5 </param>
+        /// <param name="issue"> Issues experienced during the call </param>
         /// <returns> FeedbackUpdater capable of executing the update </returns> 
-        public static FeedbackUpdater Updater(string accountSid, string callSid, int? qualityScore) {
-            return new FeedbackUpdater(accountSid, callSid, qualityScore);
-        }
-    
-        /// <summary>
-        /// Create a FeedbackUpdater to execute update.
-        /// </summary>
-        ///
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="qualityScore"> An integer from 1 to 5 </param>
-        /// <returns> FeedbackUpdater capable of executing the update </returns> 
-        public static FeedbackUpdater Updater(string callSid, 
-                                              int? qualityScore) {
-            return new FeedbackUpdater(callSid, qualityScore);
+        public static FeedbackUpdater Updater(string callSid, int? qualityScore, string accountSid=null, List<FeedbackResource.Issues> issue=null) {
+            return new FeedbackUpdater(callSid, qualityScore, accountSid:accountSid, issue:issue);
         }
     
         /// <summary>

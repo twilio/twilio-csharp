@@ -13,17 +13,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         public string accountSid { get; }
     
         /// <summary>
-        /// Construct a new IpAccessControlListReader.
-        /// </summary>
-        public IpAccessControlListReader() {
-        }
-    
-        /// <summary>
         /// Construct a new IpAccessControlListReader
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public IpAccessControlListReader(string accountSid) {
+        public IpAccessControlListReader(string accountSid=null) {
             this.accountSid = accountSid;
         }
     

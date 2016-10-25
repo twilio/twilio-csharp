@@ -15,23 +15,36 @@ namespace Twilio.Base
     {
         private const int MaxPageSize = 1000;
 
-        private int _pageSize;
-        public int PageSize
+        private int? _pageSize;
+        public int? PageSize
         {
             get { return _pageSize; }
-            set { _pageSize = Math.Min(value, MaxPageSize); }
+            set
+            {
+                if (value == null)
+                {
+                    return;
+                }
+
+                _pageSize = Math.Min(value.Value, MaxPageSize);
+            }
         }
 
-        private long _limit;
-        public long Limit
+        private long? _limit;
+        public long? Limit
         {
             get { return _limit;  }
             set
             {
+                if (value == null)
+                {
+                    return;
+                }
+
                 _limit = value;
                 if (_pageSize == null)
                 {
-                    _pageSize = (int) Math.Min(value, MaxPageSize);
+                    _pageSize = (int) Math.Min(value.Value, MaxPageSize);
                 }
             }
         }

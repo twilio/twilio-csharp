@@ -34,9 +34,12 @@ namespace Twilio.Rest.Preview.Sync {
         /// create
         /// </summary>
         ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="webhookUrl"> The webhook_url </param>
+        /// <param name="reachabilityWebhooksEnabled"> The reachability_webhooks_enabled </param>
         /// <returns> ServiceCreator capable of executing the create </returns> 
-        public static ServiceCreator Creator() {
-            return new ServiceCreator();
+        public static ServiceCreator Creator(string friendlyName=null, Uri webhookUrl=null, bool? reachabilityWebhooksEnabled=null) {
+            return new ServiceCreator(friendlyName:friendlyName, webhookUrl:webhookUrl, reachabilityWebhooksEnabled:reachabilityWebhooksEnabled);
         }
     
         /// <summary>
@@ -53,9 +56,12 @@ namespace Twilio.Rest.Preview.Sync {
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
+        /// <param name="webhookUrl"> The webhook_url </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="reachabilityWebhooksEnabled"> The reachability_webhooks_enabled </param>
         /// <returns> ServiceUpdater capable of executing the update </returns> 
-        public static ServiceUpdater Updater(string sid) {
-            return new ServiceUpdater(sid);
+        public static ServiceUpdater Updater(string sid, Uri webhookUrl=null, string friendlyName=null, bool? reachabilityWebhooksEnabled=null) {
+            return new ServiceUpdater(sid, webhookUrl:webhookUrl, friendlyName:friendlyName, reachabilityWebhooksEnabled:reachabilityWebhooksEnabled);
         }
     
         /// <summary>

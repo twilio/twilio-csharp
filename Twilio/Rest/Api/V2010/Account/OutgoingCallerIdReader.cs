@@ -15,40 +15,16 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string friendlyName { get; set; }
     
         /// <summary>
-        /// Construct a new OutgoingCallerIdReader.
-        /// </summary>
-        public OutgoingCallerIdReader() {
-        }
-    
-        /// <summary>
         /// Construct a new OutgoingCallerIdReader
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public OutgoingCallerIdReader(string accountSid) {
-            this.accountSid = accountSid;
-        }
-    
-        /// <summary>
-        /// Only show the caller id resource that exactly matches this phone number
-        /// </summary>
-        ///
         /// <param name="phoneNumber"> Filter by phone number </param>
-        /// <returns> this </returns> 
-        public OutgoingCallerIdReader ByPhoneNumber(Twilio.Types.PhoneNumber phoneNumber) {
-            this.phoneNumber = phoneNumber;
-            return this;
-        }
-    
-        /// <summary>
-        /// Only show the caller id resource that exactly matches this name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> Filter by friendly name </param>
-        /// <returns> this </returns> 
-        public OutgoingCallerIdReader ByFriendlyName(string friendlyName) {
+        public OutgoingCallerIdReader(string accountSid=null, Twilio.Types.PhoneNumber phoneNumber=null, string friendlyName=null) {
+            this.accountSid = accountSid;
             this.friendlyName = friendlyName;
-            return this;
+            this.phoneNumber = phoneNumber;
         }
     
         #if NET40

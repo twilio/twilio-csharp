@@ -14,18 +14,14 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string friendlyName { get; set; }
     
         /// <summary>
-        /// Construct a new NewKeyCreator.
-        /// </summary>
-        public NewKeyCreator() {
-        }
-    
-        /// <summary>
         /// Construct a new NewKeyCreator
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public NewKeyCreator(string accountSid) {
+        /// <param name="friendlyName"> The friendly_name </param>
+        public NewKeyCreator(string accountSid=null, string friendlyName=null) {
             this.accountSid = accountSid;
+            this.friendlyName = friendlyName;
         }
     
         #if NET40

@@ -54,9 +54,17 @@ namespace Twilio.Rest.Chat.V1 {
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="defaultServiceRoleSid"> The default_service_role_sid </param>
+        /// <param name="defaultChannelRoleSid"> The default_channel_role_sid </param>
+        /// <param name="defaultChannelCreatorRoleSid"> The default_channel_creator_role_sid </param>
+        /// <param name="readStatusEnabled"> The read_status_enabled </param>
+        /// <param name="typingIndicatorTimeout"> The typing_indicator_timeout </param>
+        /// <param name="consumptionReportInterval"> The consumption_report_interval </param>
+        /// <param name="webhooks"> The webhooks </param>
         /// <returns> ServiceUpdater capable of executing the update </returns> 
-        public static ServiceUpdater Updater(string sid) {
-            return new ServiceUpdater(sid);
+        public static ServiceUpdater Updater(string sid, string friendlyName=null, string defaultServiceRoleSid=null, string defaultChannelRoleSid=null, string defaultChannelCreatorRoleSid=null, bool? readStatusEnabled=null, int? typingIndicatorTimeout=null, int? consumptionReportInterval=null, Object webhooks=null) {
+            return new ServiceUpdater(sid, friendlyName:friendlyName, defaultServiceRoleSid:defaultServiceRoleSid, defaultChannelRoleSid:defaultChannelRoleSid, defaultChannelCreatorRoleSid:defaultChannelCreatorRoleSid, readStatusEnabled:readStatusEnabled, typingIndicatorTimeout:typingIndicatorTimeout, consumptionReportInterval:consumptionReportInterval, webhooks:webhooks);
         }
     
         /// <summary>

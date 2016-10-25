@@ -109,9 +109,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="listSid"> The list_sid </param>
+        /// <param name="order"> The order </param>
+        /// <param name="from"> The from </param>
+        /// <param name="bounds"> The bounds </param>
         /// <returns> SyncListItemReader capable of executing the read </returns> 
-        public static SyncListItemReader Reader(string serviceSid, string listSid) {
-            return new SyncListItemReader(serviceSid, listSid);
+        public static SyncListItemReader Reader(string serviceSid, string listSid, SyncListItemResource.QueryResultOrder order=null, string from=null, SyncListItemResource.QueryFromBoundType bounds=null) {
+            return new SyncListItemReader(serviceSid, listSid, order:order, from:from, bounds:bounds);
         }
     
         /// <summary>

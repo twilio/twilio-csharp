@@ -33,9 +33,12 @@ namespace Twilio.Rest.Monitor.V1 {
         /// read
         /// </summary>
         ///
+        /// <param name="logLevel"> The log_level </param>
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="endDate"> The end_date </param>
         /// <returns> AlertReader capable of executing the read </returns> 
-        public static AlertReader Reader() {
-            return new AlertReader();
+        public static AlertReader Reader(string logLevel=null, DateTime? startDate=null, DateTime? endDate=null) {
+            return new AlertReader(logLevel:logLevel, startDate:startDate, endDate:endDate);
         }
     
         /// <summary>

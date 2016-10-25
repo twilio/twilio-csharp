@@ -22,42 +22,15 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList {
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="listSid"> The list_sid </param>
-        public SyncListItemReader(string serviceSid, string listSid) {
+        /// <param name="order"> The order </param>
+        /// <param name="from"> The from </param>
+        /// <param name="bounds"> The bounds </param>
+        public SyncListItemReader(string serviceSid, string listSid, SyncListItemResource.QueryResultOrder order=null, string from=null, SyncListItemResource.QueryFromBoundType bounds=null) {
+            this.order = order;
             this.serviceSid = serviceSid;
             this.listSid = listSid;
-        }
-    
-        /// <summary>
-        /// The order
-        /// </summary>
-        ///
-        /// <param name="order"> The order </param>
-        /// <returns> this </returns> 
-        public SyncListItemReader ByOrder(SyncListItemResource.QueryResultOrder order) {
-            this.order = order;
-            return this;
-        }
-    
-        /// <summary>
-        /// The from
-        /// </summary>
-        ///
-        /// <param name="from"> The from </param>
-        /// <returns> this </returns> 
-        public SyncListItemReader ByFrom(string from) {
             this.from = from;
-            return this;
-        }
-    
-        /// <summary>
-        /// The bounds
-        /// </summary>
-        ///
-        /// <param name="bounds"> The bounds </param>
-        /// <returns> this </returns> 
-        public SyncListItemReader ByBounds(SyncListItemResource.QueryFromBoundType bounds) {
             this.bounds = bounds;
-            return this;
         }
     
         #if NET40

@@ -1,7 +1,6 @@
 using System;
 using Twilio.Base;
 using Twilio.Clients;
-using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -24,141 +23,30 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         public Uri voiceUrl { get; set; }
     
         /// <summary>
-        /// Construct a new DomainUpdater.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        public DomainUpdater(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new DomainUpdater
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> The sid </param>
-        public DomainUpdater(string accountSid, string sid) {
-            this.accountSid = accountSid;
-            this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The auth_type
-        /// </summary>
-        ///
+        /// <param name="accountSid"> The account_sid </param>
         /// <param name="authType"> The auth_type </param>
-        /// <returns> this </returns> 
-        public DomainUpdater setAuthType(string authType) {
-            this.authType = authType;
-            return this;
-        }
-    
-        /// <summary>
-        /// A user-specified, human-readable name for the trigger.
-        /// </summary>
-        ///
         /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
-        /// <returns> this </returns> 
-        public DomainUpdater setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The voice_fallback_method
-        /// </summary>
-        ///
         /// <param name="voiceFallbackMethod"> The voice_fallback_method </param>
-        /// <returns> this </returns> 
-        public DomainUpdater setVoiceFallbackMethod(Twilio.Http.HttpMethod voiceFallbackMethod) {
-            this.voiceFallbackMethod = voiceFallbackMethod;
-            return this;
-        }
-    
-        /// <summary>
-        /// The voice_fallback_url
-        /// </summary>
-        ///
         /// <param name="voiceFallbackUrl"> The voice_fallback_url </param>
-        /// <returns> this </returns> 
-        public DomainUpdater setVoiceFallbackUrl(Uri voiceFallbackUrl) {
-            this.voiceFallbackUrl = voiceFallbackUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The voice_fallback_url
-        /// </summary>
-        ///
-        /// <param name="voiceFallbackUrl"> The voice_fallback_url </param>
-        /// <returns> this </returns> 
-        public DomainUpdater setVoiceFallbackUrl(string voiceFallbackUrl) {
-            return setVoiceFallbackUrl(Promoter.UriFromString(voiceFallbackUrl));
-        }
-    
-        /// <summary>
-        /// The HTTP method to use with the voice_url
-        /// </summary>
-        ///
         /// <param name="voiceMethod"> HTTP method to use with voice_url </param>
-        /// <returns> this </returns> 
-        public DomainUpdater setVoiceMethod(Twilio.Http.HttpMethod voiceMethod) {
-            this.voiceMethod = voiceMethod;
-            return this;
-        }
-    
-        /// <summary>
-        /// The voice_status_callback_method
-        /// </summary>
-        ///
         /// <param name="voiceStatusCallbackMethod"> The voice_status_callback_method </param>
-        /// <returns> this </returns> 
-        public DomainUpdater setVoiceStatusCallbackMethod(Twilio.Http.HttpMethod voiceStatusCallbackMethod) {
-            this.voiceStatusCallbackMethod = voiceStatusCallbackMethod;
-            return this;
-        }
-    
-        /// <summary>
-        /// The voice_status_callback_url
-        /// </summary>
-        ///
         /// <param name="voiceStatusCallbackUrl"> The voice_status_callback_url </param>
-        /// <returns> this </returns> 
-        public DomainUpdater setVoiceStatusCallbackUrl(Uri voiceStatusCallbackUrl) {
+        /// <param name="voiceUrl"> The voice_url </param>
+        public DomainUpdater(string sid, string accountSid=null, string authType=null, string friendlyName=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Twilio.Http.HttpMethod voiceStatusCallbackMethod=null, Uri voiceStatusCallbackUrl=null, Uri voiceUrl=null) {
+            this.sid = sid;
+            this.voiceFallbackUrl = voiceFallbackUrl;
+            this.voiceFallbackMethod = voiceFallbackMethod;
+            this.voiceMethod = voiceMethod;
+            this.authType = authType;
             this.voiceStatusCallbackUrl = voiceStatusCallbackUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The voice_status_callback_url
-        /// </summary>
-        ///
-        /// <param name="voiceStatusCallbackUrl"> The voice_status_callback_url </param>
-        /// <returns> this </returns> 
-        public DomainUpdater setVoiceStatusCallbackUrl(string voiceStatusCallbackUrl) {
-            return setVoiceStatusCallbackUrl(Promoter.UriFromString(voiceStatusCallbackUrl));
-        }
-    
-        /// <summary>
-        /// The voice_url
-        /// </summary>
-        ///
-        /// <param name="voiceUrl"> The voice_url </param>
-        /// <returns> this </returns> 
-        public DomainUpdater setVoiceUrl(Uri voiceUrl) {
+            this.accountSid = accountSid;
             this.voiceUrl = voiceUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The voice_url
-        /// </summary>
-        ///
-        /// <param name="voiceUrl"> The voice_url </param>
-        /// <returns> this </returns> 
-        public DomainUpdater setVoiceUrl(string voiceUrl) {
-            return setVoiceUrl(Promoter.UriFromString(voiceUrl));
+            this.voiceStatusCallbackMethod = voiceStatusCallbackMethod;
+            this.friendlyName = friendlyName;
         }
     
         #if NET40

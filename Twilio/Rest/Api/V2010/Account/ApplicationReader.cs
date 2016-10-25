@@ -14,29 +14,14 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string friendlyName { get; set; }
     
         /// <summary>
-        /// Construct a new ApplicationReader.
-        /// </summary>
-        public ApplicationReader() {
-        }
-    
-        /// <summary>
         /// Construct a new ApplicationReader
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public ApplicationReader(string accountSid) {
-            this.accountSid = accountSid;
-        }
-    
-        /// <summary>
-        /// Only return application resources with friendly names that match exactly with this name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> Filter by friendly name </param>
-        /// <returns> this </returns> 
-        public ApplicationReader ByFriendlyName(string friendlyName) {
+        public ApplicationReader(string accountSid=null, string friendlyName=null) {
+            this.accountSid = accountSid;
             this.friendlyName = friendlyName;
-            return this;
         }
     
         #if NET40

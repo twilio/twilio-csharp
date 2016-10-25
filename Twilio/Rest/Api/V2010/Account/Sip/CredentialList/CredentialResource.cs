@@ -13,120 +13,61 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         /// read
         /// </summary>
         ///
+        /// <param name="credentialListSid"> The credential_list_sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="credentialListSid"> The credential_list_sid </param>
         /// <returns> CredentialReader capable of executing the read </returns> 
-        public static CredentialReader Reader(string accountSid, string credentialListSid) {
-            return new CredentialReader(accountSid, credentialListSid);
-        }
-    
-        /// <summary>
-        /// Create a CredentialReader to execute read.
-        /// </summary>
-        ///
-        /// <param name="credentialListSid"> The credential_list_sid </param>
-        /// <returns> CredentialReader capable of executing the read </returns> 
-        public static CredentialReader Reader(string credentialListSid) {
-            return new CredentialReader(credentialListSid);
+        public static CredentialReader Reader(string credentialListSid, string accountSid=null) {
+            return new CredentialReader(credentialListSid, accountSid:accountSid);
         }
     
         /// <summary>
         /// create
         /// </summary>
         ///
+        /// <param name="credentialListSid"> The credential_list_sid </param>
+        /// <param name="username"> The username </param>
+        /// <param name="password"> The password </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="credentialListSid"> The credential_list_sid </param>
-        /// <param name="username"> The username </param>
-        /// <param name="password"> The password </param>
         /// <returns> CredentialCreator capable of executing the create </returns> 
-        public static CredentialCreator Creator(string accountSid, string credentialListSid, string username, string password) {
-            return new CredentialCreator(accountSid, credentialListSid, username, password);
-        }
-    
-        /// <summary>
-        /// Create a CredentialCreator to execute create.
-        /// </summary>
-        ///
-        /// <param name="credentialListSid"> The credential_list_sid </param>
-        /// <param name="username"> The username </param>
-        /// <param name="password"> The password </param>
-        /// <returns> CredentialCreator capable of executing the create </returns> 
-        public static CredentialCreator Creator(string credentialListSid, 
-                                                string username, 
-                                                string password) {
-            return new CredentialCreator(credentialListSid, username, password);
+        public static CredentialCreator Creator(string credentialListSid, string username, string password, string accountSid=null) {
+            return new CredentialCreator(credentialListSid, username, password, accountSid:accountSid);
         }
     
         /// <summary>
         /// fetch
         /// </summary>
         ///
+        /// <param name="credentialListSid"> The credential_list_sid </param>
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="credentialListSid"> The credential_list_sid </param>
-        /// <param name="sid"> The sid </param>
         /// <returns> CredentialFetcher capable of executing the fetch </returns> 
-        public static CredentialFetcher Fetcher(string accountSid, string credentialListSid, string sid) {
-            return new CredentialFetcher(accountSid, credentialListSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a CredentialFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="credentialListSid"> The credential_list_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> CredentialFetcher capable of executing the fetch </returns> 
-        public static CredentialFetcher Fetcher(string credentialListSid, 
-                                                string sid) {
-            return new CredentialFetcher(credentialListSid, sid);
+        public static CredentialFetcher Fetcher(string credentialListSid, string sid, string accountSid=null) {
+            return new CredentialFetcher(credentialListSid, sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// update
         /// </summary>
         ///
+        /// <param name="credentialListSid"> The credential_list_sid </param>
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="credentialListSid"> The credential_list_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="password"> The password </param>
         /// <returns> CredentialUpdater capable of executing the update </returns> 
-        public static CredentialUpdater Updater(string accountSid, string credentialListSid, string sid) {
-            return new CredentialUpdater(accountSid, credentialListSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a CredentialUpdater to execute update.
-        /// </summary>
-        ///
-        /// <param name="credentialListSid"> The credential_list_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> CredentialUpdater capable of executing the update </returns> 
-        public static CredentialUpdater Updater(string credentialListSid, 
-                                                string sid) {
-            return new CredentialUpdater(credentialListSid, sid);
+        public static CredentialUpdater Updater(string credentialListSid, string sid, string accountSid=null, string password=null) {
+            return new CredentialUpdater(credentialListSid, sid, accountSid:accountSid, password:password);
         }
     
         /// <summary>
         /// delete
         /// </summary>
         ///
+        /// <param name="credentialListSid"> The credential_list_sid </param>
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="credentialListSid"> The credential_list_sid </param>
-        /// <param name="sid"> The sid </param>
         /// <returns> CredentialDeleter capable of executing the delete </returns> 
-        public static CredentialDeleter Deleter(string accountSid, string credentialListSid, string sid) {
-            return new CredentialDeleter(accountSid, credentialListSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a CredentialDeleter to execute delete.
-        /// </summary>
-        ///
-        /// <param name="credentialListSid"> The credential_list_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> CredentialDeleter capable of executing the delete </returns> 
-        public static CredentialDeleter Deleter(string credentialListSid, 
-                                                string sid) {
-            return new CredentialDeleter(credentialListSid, sid);
+        public static CredentialDeleter Deleter(string credentialListSid, string sid, string accountSid=null) {
+            return new CredentialDeleter(credentialListSid, sid, accountSid:accountSid);
         }
     
         /// <summary>

@@ -24,115 +24,111 @@ namespace Twilio.Rest.Api.V2010.Account {
         public bool? provideFeedback { get; set; }
     
         /// <summary>
-        /// Construct a new MessageCreator.
+        /// Construct a new MessageCreator
         /// </summary>
         ///
         /// <param name="to"> The phone number to receive the message </param>
         /// <param name="from"> The phone number that initiated the message </param>
         /// <param name="body"> The body </param>
-        public MessageCreator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body) {
-            this.to = to;
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
+        /// <param name="mediaUrl"> The media_url </param>
+        /// <param name="statusCallback"> URL Twilio will request when the status changes </param>
+        /// <param name="applicationSid"> The application to use for callbacks </param>
+        /// <param name="maxPrice"> The max_price </param>
+        /// <param name="provideFeedback"> The provide_feedback </param>
+        public MessageCreator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body, string accountSid=null, string messagingServiceSid=null, List<Uri> mediaUrl=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null) {
+            this.maxPrice = maxPrice;
+            this.provideFeedback = provideFeedback;
+            this.mediaUrl = mediaUrl;
             this.from = from;
             this.body = body;
+            this.statusCallback = statusCallback;
+            this.accountSid = accountSid;
+            this.applicationSid = applicationSid;
+            this.messagingServiceSid = messagingServiceSid;
+            this.to = to;
         }
     
         /// <summary>
         /// Construct a new MessageCreator
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="to"> The phone number to receive the message </param>
-        /// <param name="from"> The phone number that initiated the message </param>
-        /// <param name="body"> The body </param>
-        public MessageCreator(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body) {
-            this.accountSid = accountSid;
-            this.to = to;
-            this.from = from;
-            this.body = body;
-        }
-    
-        /// <summary>
-        /// Construct a new MessageCreator.
-        /// </summary>
-        ///
         /// <param name="to"> The phone number to receive the message </param>
         /// <param name="from"> The phone number that initiated the message </param>
         /// <param name="mediaUrl"> The media_url </param>
-        public MessageCreator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl) {
-            this.to = to;
-            this.from = from;
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
+        /// <param name="body"> The body </param>
+        /// <param name="statusCallback"> URL Twilio will request when the status changes </param>
+        /// <param name="applicationSid"> The application to use for callbacks </param>
+        /// <param name="maxPrice"> The max_price </param>
+        /// <param name="provideFeedback"> The provide_feedback </param>
+        public MessageCreator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl, string accountSid=null, string messagingServiceSid=null, string body=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null) {
+            this.maxPrice = maxPrice;
+            this.provideFeedback = provideFeedback;
             this.mediaUrl = mediaUrl;
+            this.from = from;
+            this.body = body;
+            this.statusCallback = statusCallback;
+            this.accountSid = accountSid;
+            this.applicationSid = applicationSid;
+            this.messagingServiceSid = messagingServiceSid;
+            this.to = to;
         }
     
         /// <summary>
         /// Construct a new MessageCreator
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="to"> The phone number to receive the message </param>
+        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
+        /// <param name="body"> The body </param>
+        /// <param name="accountSid"> The account_sid </param>
         /// <param name="from"> The phone number that initiated the message </param>
         /// <param name="mediaUrl"> The media_url </param>
-        public MessageCreator(string accountSid, Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl) {
+        /// <param name="statusCallback"> URL Twilio will request when the status changes </param>
+        /// <param name="applicationSid"> The application to use for callbacks </param>
+        /// <param name="maxPrice"> The max_price </param>
+        /// <param name="provideFeedback"> The provide_feedback </param>
+        public MessageCreator(Twilio.Types.PhoneNumber to, string messagingServiceSid, string body, string accountSid=null, Twilio.Types.PhoneNumber from=null, List<Uri> mediaUrl=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null) {
+            this.maxPrice = maxPrice;
+            this.provideFeedback = provideFeedback;
+            this.mediaUrl = mediaUrl;
+            this.from = from;
+            this.body = body;
+            this.statusCallback = statusCallback;
             this.accountSid = accountSid;
+            this.applicationSid = applicationSid;
+            this.messagingServiceSid = messagingServiceSid;
             this.to = to;
+        }
+    
+        /// <summary>
+        /// Construct a new MessageCreator
+        /// </summary>
+        ///
+        /// <param name="to"> The phone number to receive the message </param>
+        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
+        /// <param name="mediaUrl"> The media_url </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="from"> The phone number that initiated the message </param>
+        /// <param name="body"> The body </param>
+        /// <param name="statusCallback"> URL Twilio will request when the status changes </param>
+        /// <param name="applicationSid"> The application to use for callbacks </param>
+        /// <param name="maxPrice"> The max_price </param>
+        /// <param name="provideFeedback"> The provide_feedback </param>
+        public MessageCreator(Twilio.Types.PhoneNumber to, string messagingServiceSid, List<Uri> mediaUrl, string accountSid=null, Twilio.Types.PhoneNumber from=null, string body=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null) {
+            this.maxPrice = maxPrice;
+            this.provideFeedback = provideFeedback;
+            this.body = body;
             this.from = from;
             this.mediaUrl = mediaUrl;
-        }
-    
-        /// <summary>
-        /// Construct a new MessageCreator.
-        /// </summary>
-        ///
-        /// <param name="to"> The phone number to receive the message </param>
-        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
-        /// <param name="body"> The body </param>
-        public MessageCreator(Twilio.Types.PhoneNumber to, string messagingServiceSid, string body) {
-            this.to = to;
-            this.messagingServiceSid = messagingServiceSid;
-            this.body = body;
-        }
-    
-        /// <summary>
-        /// Construct a new MessageCreator
-        /// </summary>
-        ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="to"> The phone number to receive the message </param>
-        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
-        /// <param name="body"> The body </param>
-        public MessageCreator(string accountSid, Twilio.Types.PhoneNumber to, string messagingServiceSid, string body) {
+            this.statusCallback = statusCallback;
             this.accountSid = accountSid;
-            this.to = to;
+            this.applicationSid = applicationSid;
             this.messagingServiceSid = messagingServiceSid;
-            this.body = body;
-        }
-    
-        /// <summary>
-        /// Construct a new MessageCreator.
-        /// </summary>
-        ///
-        /// <param name="to"> The phone number to receive the message </param>
-        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
-        /// <param name="mediaUrl"> The media_url </param>
-        public MessageCreator(Twilio.Types.PhoneNumber to, string messagingServiceSid, List<Uri> mediaUrl) {
             this.to = to;
-            this.messagingServiceSid = messagingServiceSid;
-            this.mediaUrl = mediaUrl;
-        }
-    
-        /// <summary>
-        /// Construct a new MessageCreator
-        /// </summary>
-        ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="to"> The phone number to receive the message </param>
-        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
-        /// <param name="mediaUrl"> The media_url </param>
-        public MessageCreator(string accountSid, Twilio.Types.PhoneNumber to, string messagingServiceSid, List<Uri> mediaUrl) {
-            this.accountSid = accountSid;
-            this.to = to;
-            this.messagingServiceSid = messagingServiceSid;
-            this.mediaUrl = mediaUrl;
         }
     
         #if NET40

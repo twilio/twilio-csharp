@@ -132,18 +132,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
+        /// <param name="category"> The category </param>
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="endDate"> The end_date </param>
         /// <returns> DailyReader capable of executing the read </returns> 
-        public static DailyReader Reader(string accountSid) {
-            return new DailyReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a DailyReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> DailyReader capable of executing the read </returns> 
-        public static DailyReader Reader() {
-            return new DailyReader();
+        public static DailyReader Reader(string accountSid=null, DailyResource.Category category=null, DateTime? startDate=null, DateTime? endDate=null) {
+            return new DailyReader(accountSid:accountSid, category:category, startDate:startDate, endDate:endDate);
         }
     
         /// <summary>

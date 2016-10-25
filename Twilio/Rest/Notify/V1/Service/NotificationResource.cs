@@ -44,9 +44,22 @@ namespace Twilio.Rest.Notify.V1.Service {
         /// </summary>
         ///
         /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="identity"> The identity </param>
+        /// <param name="tag"> The tag </param>
+        /// <param name="body"> The body </param>
+        /// <param name="priority"> The priority </param>
+        /// <param name="ttl"> The ttl </param>
+        /// <param name="title"> The title </param>
+        /// <param name="sound"> The sound </param>
+        /// <param name="action"> The action </param>
+        /// <param name="data"> The data </param>
+        /// <param name="apn"> The apn </param>
+        /// <param name="gcm"> The gcm </param>
+        /// <param name="sms"> The sms </param>
+        /// <param name="facebookMessenger"> The facebook_messenger </param>
         /// <returns> NotificationCreator capable of executing the create </returns> 
-        public static NotificationCreator Creator(string serviceSid) {
-            return new NotificationCreator(serviceSid);
+        public static NotificationCreator Creator(string serviceSid, List<string> identity=null, List<string> tag=null, string body=null, NotificationResource.Priority priority=null, int? ttl=null, string title=null, string sound=null, string action=null, string data=null, string apn=null, string gcm=null, string sms=null, Object facebookMessenger=null) {
+            return new NotificationCreator(serviceSid, identity:identity, tag:tag, body:body, priority:priority, ttl:ttl, title:title, sound:sound, action:action, data:data, apn:apn, gcm:gcm, sms:sms, facebookMessenger:facebookMessenger);
         }
     
         /// <summary>

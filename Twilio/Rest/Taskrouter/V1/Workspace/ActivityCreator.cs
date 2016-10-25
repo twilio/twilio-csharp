@@ -20,8 +20,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
-        public ActivityCreator(string workspaceSid, string friendlyName) {
+        /// <param name="available"> The available </param>
+        public ActivityCreator(string workspaceSid, string friendlyName, bool? available=null) {
             this.workspaceSid = workspaceSid;
+            this.available = available;
             this.friendlyName = friendlyName;
         }
     

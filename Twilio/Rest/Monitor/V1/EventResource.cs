@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
 using Twilio.Converters;
@@ -23,9 +24,15 @@ namespace Twilio.Rest.Monitor.V1 {
         /// read
         /// </summary>
         ///
+        /// <param name="actorSid"> The actor_sid </param>
+        /// <param name="eventType"> The event_type </param>
+        /// <param name="resourceSid"> The resource_sid </param>
+        /// <param name="sourceIpAddress"> The source_ip_address </param>
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="endDate"> The end_date </param>
         /// <returns> EventReader capable of executing the read </returns> 
-        public static EventReader Reader() {
-            return new EventReader();
+        public static EventReader Reader(string actorSid=null, string eventType=null, string resourceSid=null, string sourceIpAddress=null, DateTime? startDate=null, DateTime? endDate=null) {
+            return new EventReader(actorSid:actorSid, eventType:eventType, resourceSid:resourceSid, sourceIpAddress:sourceIpAddress, startDate:startDate, endDate:endDate);
         }
     
         /// <summary>
@@ -67,6 +74,10 @@ namespace Twilio.Rest.Monitor.V1 {
         public string source { get; }
         [JsonProperty("source_ip_address")]
         public string sourceIpAddress { get; }
+        [JsonProperty("url")]
+        public Uri url { get; }
+        [JsonProperty("links")]
+        public Dictionary<string, string> links { get; }
     
         public EventResource() {
         
@@ -95,7 +106,11 @@ namespace Twilio.Rest.Monitor.V1 {
                               [JsonProperty("source")]
                               string source, 
                               [JsonProperty("source_ip_address")]
-                              string sourceIpAddress) {
+                              string sourceIpAddress, 
+                              [JsonProperty("url")]
+                              Uri url, 
+                              [JsonProperty("links")]
+                              Dictionary<string, string> links) {
             this.accountSid = accountSid;
             this.actorSid = actorSid;
             this.actorType = actorType;
@@ -108,6 +123,8 @@ namespace Twilio.Rest.Monitor.V1 {
             this.sid = sid;
             this.source = source;
             this.sourceIpAddress = sourceIpAddress;
+            this.url = url;
+            this.links = links;
         }
     }
 }

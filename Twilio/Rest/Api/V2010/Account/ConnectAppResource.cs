@@ -43,42 +43,30 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// Fetch an instance of a connect-app
         /// </summary>
         ///
+        /// <param name="sid"> Fetch by unique connect-app Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Fetch by unique connect-app Sid </param>
         /// <returns> ConnectAppFetcher capable of executing the fetch </returns> 
-        public static ConnectAppFetcher Fetcher(string accountSid, string sid) {
-            return new ConnectAppFetcher(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a ConnectAppFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="sid"> Fetch by unique connect-app Sid </param>
-        /// <returns> ConnectAppFetcher capable of executing the fetch </returns> 
-        public static ConnectAppFetcher Fetcher(string sid) {
-            return new ConnectAppFetcher(sid);
+        public static ConnectAppFetcher Fetcher(string sid, string accountSid=null) {
+            return new ConnectAppFetcher(sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// Update a connect-app with the specified parameters
         /// </summary>
         ///
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="authorizeRedirectUrl"> URIL Twilio sends requests when users authorize </param>
+        /// <param name="companyName"> The company name set for this Connect App. </param>
+        /// <param name="deauthorizeCallbackMethod"> HTTP method Twilio WIll use making requests to the url </param>
+        /// <param name="deauthorizeCallbackUrl"> URL Twilio will send a request when a user de-authorizes this app </param>
+        /// <param name="description"> A more detailed human readable description </param>
+        /// <param name="friendlyName"> A human readable name for the Connect App. </param>
+        /// <param name="homepageUrl"> The URL users can obtain more information </param>
+        /// <param name="permissions"> The set of permissions that your ConnectApp requests. </param>
         /// <returns> ConnectAppUpdater capable of executing the update </returns> 
-        public static ConnectAppUpdater Updater(string accountSid, string sid) {
-            return new ConnectAppUpdater(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a ConnectAppUpdater to execute update.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> ConnectAppUpdater capable of executing the update </returns> 
-        public static ConnectAppUpdater Updater(string sid) {
-            return new ConnectAppUpdater(sid);
+        public static ConnectAppUpdater Updater(string sid, string accountSid=null, Uri authorizeRedirectUrl=null, string companyName=null, Twilio.Http.HttpMethod deauthorizeCallbackMethod=null, Uri deauthorizeCallbackUrl=null, string description=null, string friendlyName=null, Uri homepageUrl=null, List<ConnectAppResource.Permission> permissions=null) {
+            return new ConnectAppUpdater(sid, accountSid:accountSid, authorizeRedirectUrl:authorizeRedirectUrl, companyName:companyName, deauthorizeCallbackMethod:deauthorizeCallbackMethod, deauthorizeCallbackUrl:deauthorizeCallbackUrl, description:description, friendlyName:friendlyName, homepageUrl:homepageUrl, permissions:permissions);
         }
     
         /// <summary>
@@ -87,17 +75,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> ConnectAppReader capable of executing the read </returns> 
-        public static ConnectAppReader Reader(string accountSid) {
-            return new ConnectAppReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a ConnectAppReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> ConnectAppReader capable of executing the read </returns> 
-        public static ConnectAppReader Reader() {
-            return new ConnectAppReader();
+        public static ConnectAppReader Reader(string accountSid=null) {
+            return new ConnectAppReader(accountSid:accountSid);
         }
     
         /// <summary>

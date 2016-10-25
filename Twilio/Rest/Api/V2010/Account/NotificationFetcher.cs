@@ -14,21 +14,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string sid { get; }
     
         /// <summary>
-        /// Construct a new NotificationFetcher.
-        /// </summary>
-        ///
-        /// <param name="sid"> Fetch by unique notification Sid </param>
-        public NotificationFetcher(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new NotificationFetcher
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> Fetch by unique notification Sid </param>
-        public NotificationFetcher(string accountSid, string sid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public NotificationFetcher(string sid, string accountSid=null) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

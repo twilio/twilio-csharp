@@ -15,34 +15,16 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string body { get; set; }
     
         /// <summary>
-        /// Construct a new MessageUpdater.
-        /// </summary>
-        ///
-        /// <param name="sid"> The message to redact </param>
-        public MessageUpdater(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new MessageUpdater
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> The message to redact </param>
-        public MessageUpdater(string accountSid, string sid) {
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="body"> The body </param>
+        public MessageUpdater(string sid, string accountSid=null, string body=null) {
             this.accountSid = accountSid;
             this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The body
-        /// </summary>
-        ///
-        /// <param name="body"> The body </param>
-        /// <returns> this </returns> 
-        public MessageUpdater setBody(string body) {
             this.body = body;
-            return this;
         }
     
         #if NET40

@@ -15,36 +15,16 @@ namespace Twilio.Rest.Preview.Wireless {
         public string direction { get; set; }
     
         /// <summary>
-        /// The device
+        /// Construct a new CommandReader
         /// </summary>
         ///
         /// <param name="device"> The device </param>
-        /// <returns> this </returns> 
-        public CommandReader ByDevice(string device) {
-            this.device = device;
-            return this;
-        }
-    
-        /// <summary>
-        /// The status
-        /// </summary>
-        ///
         /// <param name="status"> The status </param>
-        /// <returns> this </returns> 
-        public CommandReader ByStatus(string status) {
-            this.status = status;
-            return this;
-        }
-    
-        /// <summary>
-        /// The direction
-        /// </summary>
-        ///
         /// <param name="direction"> The direction </param>
-        /// <returns> this </returns> 
-        public CommandReader ByDirection(string direction) {
+        public CommandReader(string device=null, string status=null, string direction=null) {
+            this.status = status;
+            this.device = device;
             this.direction = direction;
-            return this;
         }
     
         #if NET40

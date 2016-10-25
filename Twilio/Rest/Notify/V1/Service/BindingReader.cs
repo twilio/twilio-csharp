@@ -24,72 +24,16 @@ namespace Twilio.Rest.Notify.V1.Service {
         /// </summary>
         ///
         /// <param name="serviceSid"> The service_sid </param>
-        public BindingReader(string serviceSid) {
-            this.serviceSid = serviceSid;
-        }
-    
-        /// <summary>
-        /// The start_date
-        /// </summary>
-        ///
         /// <param name="startDate"> The start_date </param>
-        /// <returns> this </returns> 
-        public BindingReader ByStartDate(DateTime? startDate) {
-            this.startDate = startDate;
-            return this;
-        }
-    
-        /// <summary>
-        /// The end_date
-        /// </summary>
-        ///
         /// <param name="endDate"> The end_date </param>
-        /// <returns> this </returns> 
-        public BindingReader ByEndDate(DateTime? endDate) {
-            this.endDate = endDate;
-            return this;
-        }
-    
-        /// <summary>
-        /// The identity
-        /// </summary>
-        ///
         /// <param name="identity"> The identity </param>
-        /// <returns> this </returns> 
-        public BindingReader ByIdentity(List<string> identity) {
-            this.identity = identity;
-            return this;
-        }
-    
-        /// <summary>
-        /// The identity
-        /// </summary>
-        ///
-        /// <param name="identity"> The identity </param>
-        /// <returns> this </returns> 
-        public BindingReader ByIdentity(string identity) {
-            return ByIdentity(Promoter.ListOfOne(identity));
-        }
-    
-        /// <summary>
-        /// The tag
-        /// </summary>
-        ///
         /// <param name="tag"> The tag </param>
-        /// <returns> this </returns> 
-        public BindingReader ByTag(List<string> tag) {
+        public BindingReader(string serviceSid, DateTime? startDate=null, DateTime? endDate=null, List<string> identity=null, List<string> tag=null) {
+            this.serviceSid = serviceSid;
             this.tag = tag;
-            return this;
-        }
-    
-        /// <summary>
-        /// The tag
-        /// </summary>
-        ///
-        /// <param name="tag"> The tag </param>
-        /// <returns> this </returns> 
-        public BindingReader ByTag(string tag) {
-            return ByTag(Promoter.ListOfOne(tag));
+            this.startDate = startDate;
+            this.endDate = endDate;
+            this.identity = identity;
         }
     
         #if NET40

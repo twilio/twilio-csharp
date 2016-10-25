@@ -46,6 +46,17 @@ namespace Twilio.Tests.Rest.Preview.Sync {
         }
     
         [Test]
+        public void TestFetchResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.OK,
+                                                  "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"friendly_name\": \"friendly_name\",\"links\": {},\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"http://www.example.com\",\"webhook_url\": \"http://www.example.com\",\"reachability_webhooks_enabled\": false}"));
+            
+            var response = ServiceResource.Fetcher("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
+            Assert.NotNull(response);
+        }
+    
+        [Test]
         public void TestDeleteRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(Twilio.Http.HttpMethod.DELETE,
@@ -70,6 +81,16 @@ namespace Twilio.Tests.Rest.Preview.Sync {
             } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
+        public void TestDeleteResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.NoContent,
+                                                  "null"));
+            
+            ServiceResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Delete(twilioRestClient);
         }
     
         [Test]
@@ -100,6 +121,17 @@ namespace Twilio.Tests.Rest.Preview.Sync {
         }
     
         [Test]
+        public void TestCreateResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.Created,
+                                                  "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"friendly_name\": \"friendly_name\",\"links\": {},\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"http://www.example.com\",\"webhook_url\": \"http://www.example.com\",\"reachability_webhooks_enabled\": false}"));
+            
+            var response = ServiceResource.Creator().Create(twilioRestClient);
+            Assert.NotNull(response);
+        }
+    
+        [Test]
         public void TestReadRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(Twilio.Http.HttpMethod.GET,
@@ -127,6 +159,28 @@ namespace Twilio.Tests.Rest.Preview.Sync {
         }
     
         [Test]
+        public void TestReadEmptyResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.OK,
+                                                  "{\"meta\": {\"first_page_url\": \"https://preview.twilio.com/Sync/Services?Page=0&PageSize=50\",\"key\": \"services\",\"next_page_url\": null,\"page\": 0,\"page_size\": 0,\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/Sync/Services\"},\"services\": []}"));
+            
+            var response = ServiceResource.Reader().Read(twilioRestClient);
+            Assert.NotNull(response);
+        }
+    
+        [Test]
+        public void TestReadFullResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.OK,
+                                                  "{\"meta\": {\"first_page_url\": \"https://preview.twilio.com/Sync/Services?Page=0&PageSize=50\",\"key\": \"services\",\"next_page_url\": null,\"page\": 0,\"page_size\": 1,\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/Sync/Services\"},\"services\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"friendly_name\": \"friendly_name\",\"links\": {},\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"http://www.example.com\",\"webhook_url\": \"http://www.example.com\",\"reachability_webhooks_enabled\": false}]}"));
+            
+            var response = ServiceResource.Reader().Read(twilioRestClient);
+            Assert.NotNull(response);
+        }
+    
+        [Test]
         public void TestUpdateRequest() {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             Request request = new Request(Twilio.Http.HttpMethod.POST,
@@ -151,6 +205,17 @@ namespace Twilio.Tests.Rest.Preview.Sync {
             } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
+        public void TestUpdateResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.OK,
+                                                  "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"friendly_name\": \"friendly_name\",\"links\": {},\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"http://www.example.com\",\"webhook_url\": \"http://www.example.com\",\"reachability_webhooks_enabled\": false}"));
+            
+            var response = ServiceResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Update(twilioRestClient);
+            Assert.NotNull(response);
         }
     }
 }

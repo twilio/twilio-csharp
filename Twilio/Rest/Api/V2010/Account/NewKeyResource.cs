@@ -14,18 +14,10 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> NewKeyCreator capable of executing the create </returns> 
-        public static NewKeyCreator Creator(string accountSid) {
-            return new NewKeyCreator(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a NewKeyCreator to execute create.
-        /// </summary>
-        ///
-        /// <returns> NewKeyCreator capable of executing the create </returns> 
-        public static NewKeyCreator Creator() {
-            return new NewKeyCreator();
+        public static NewKeyCreator Creator(string accountSid=null, string friendlyName=null) {
+            return new NewKeyCreator(accountSid:accountSid, friendlyName:friendlyName);
         }
     
         /// <summary>

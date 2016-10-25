@@ -26,9 +26,18 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="endDate"> The end_date </param>
+        /// <param name="eventType"> The event_type </param>
+        /// <param name="minutes"> The minutes </param>
+        /// <param name="reservationSid"> The reservation_sid </param>
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="taskQueueSid"> The task_queue_sid </param>
+        /// <param name="taskSid"> The task_sid </param>
+        /// <param name="workerSid"> The worker_sid </param>
+        /// <param name="workflowSid"> The workflow_sid </param>
         /// <returns> EventReader capable of executing the read </returns> 
-        public static EventReader Reader(string workspaceSid) {
-            return new EventReader(workspaceSid);
+        public static EventReader Reader(string workspaceSid, DateTime? endDate=null, string eventType=null, int? minutes=null, string reservationSid=null, DateTime? startDate=null, string taskQueueSid=null, string taskSid=null, string workerSid=null, string workflowSid=null) {
+            return new EventReader(workspaceSid, endDate:endDate, eventType:eventType, minutes:minutes, reservationSid:reservationSid, startDate:startDate, taskQueueSid:taskQueueSid, taskSid:taskSid, workerSid:workerSid, workflowSid:workflowSid);
         }
     
         /// <summary>

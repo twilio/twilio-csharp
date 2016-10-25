@@ -13,17 +13,11 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string accountSid { get; }
     
         /// <summary>
-        /// Construct a new AuthorizedConnectAppReader.
-        /// </summary>
-        public AuthorizedConnectAppReader() {
-        }
-    
-        /// <summary>
         /// Construct a new AuthorizedConnectAppReader
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public AuthorizedConnectAppReader(string accountSid) {
+        public AuthorizedConnectAppReader(string accountSid=null) {
             this.accountSid = accountSid;
         }
     

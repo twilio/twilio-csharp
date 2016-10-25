@@ -13,75 +13,37 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         /// Fetch a specific members of the queue
         /// </summary>
         ///
+        /// <param name="queueSid"> The Queue in which to find the members </param>
+        /// <param name="callSid"> The call_sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="queueSid"> The Queue in which to find the members </param>
-        /// <param name="callSid"> The call_sid </param>
         /// <returns> MemberFetcher capable of executing the fetch </returns> 
-        public static MemberFetcher Fetcher(string accountSid, string queueSid, string callSid) {
-            return new MemberFetcher(accountSid, queueSid, callSid);
-        }
-    
-        /// <summary>
-        /// Create a MemberFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="queueSid"> The Queue in which to find the members </param>
-        /// <param name="callSid"> The call_sid </param>
-        /// <returns> MemberFetcher capable of executing the fetch </returns> 
-        public static MemberFetcher Fetcher(string queueSid, 
-                                            string callSid) {
-            return new MemberFetcher(queueSid, callSid);
+        public static MemberFetcher Fetcher(string queueSid, string callSid, string accountSid=null) {
+            return new MemberFetcher(queueSid, callSid, accountSid:accountSid);
         }
     
         /// <summary>
         /// Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL
         /// </summary>
         ///
+        /// <param name="queueSid"> The Queue in which to find the members </param>
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="url"> The url </param>
+        /// <param name="method"> The method </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="queueSid"> The Queue in which to find the members </param>
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="url"> The url </param>
-        /// <param name="method"> The method </param>
         /// <returns> MemberUpdater capable of executing the update </returns> 
-        public static MemberUpdater Updater(string accountSid, string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method) {
-            return new MemberUpdater(accountSid, queueSid, callSid, url, method);
-        }
-    
-        /// <summary>
-        /// Create a MemberUpdater to execute update.
-        /// </summary>
-        ///
-        /// <param name="queueSid"> The Queue in which to find the members </param>
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="url"> The url </param>
-        /// <param name="method"> The method </param>
-        /// <returns> MemberUpdater capable of executing the update </returns> 
-        public static MemberUpdater Updater(string queueSid, 
-                                            string callSid, 
-                                            Uri url, 
-                                            Twilio.Http.HttpMethod method) {
-            return new MemberUpdater(queueSid, callSid, url, method);
+        public static MemberUpdater Updater(string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method, string accountSid=null) {
+            return new MemberUpdater(queueSid, callSid, url, method, accountSid:accountSid);
         }
     
         /// <summary>
         /// Retrieve a list of members in the queue
         /// </summary>
         ///
+        /// <param name="queueSid"> The Queue in which to find members </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="queueSid"> The Queue in which to find members </param>
         /// <returns> MemberReader capable of executing the read </returns> 
-        public static MemberReader Reader(string accountSid, string queueSid) {
-            return new MemberReader(accountSid, queueSid);
-        }
-    
-        /// <summary>
-        /// Create a MemberReader to execute read.
-        /// </summary>
-        ///
-        /// <param name="queueSid"> The Queue in which to find members </param>
-        /// <returns> MemberReader capable of executing the read </returns> 
-        public static MemberReader Reader(string queueSid) {
-            return new MemberReader(queueSid);
+        public static MemberReader Reader(string queueSid, string accountSid=null) {
+            return new MemberReader(queueSid, accountSid:accountSid);
         }
     
         /// <summary>

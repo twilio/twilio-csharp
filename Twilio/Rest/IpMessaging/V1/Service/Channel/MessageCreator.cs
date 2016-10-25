@@ -23,10 +23,14 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="channelSid"> The channel_sid </param>
         /// <param name="body"> The body </param>
-        public MessageCreator(string serviceSid, string channelSid, string body) {
-            this.serviceSid = serviceSid;
-            this.channelSid = channelSid;
+        /// <param name="from"> The from </param>
+        /// <param name="attributes"> The attributes </param>
+        public MessageCreator(string serviceSid, string channelSid, string body, string from=null, string attributes=null) {
             this.body = body;
+            this.serviceSid = serviceSid;
+            this.attributes = attributes;
+            this.from = from;
+            this.channelSid = channelSid;
         }
     
         #if NET40

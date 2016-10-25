@@ -29,7 +29,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
                                                   "null"));
             
             try {
-                TollFreeResource.Reader("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "US").Read(twilioRestClient);
+                TollFreeResource.Reader("US", accountSid: "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Read(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -52,7 +52,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"available_phone_numbers\": [{\"address_requirements\": \"none\",\"beta\": false,\"capabilities\": {\"mms\": true,\"sms\": true,\"voice\": true},\"friendly_name\": \"(800) 100-0052\",\"iso_country\": \"US\",\"lata\": null,\"latitude\": null,\"longitude\": null,\"phone_number\": \"+18001000052\",\"postal_code\": null,\"rate_center\": null,\"region\": null}],\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/US/TollFree.json?PageSize=50&Page=0\",\"last_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/US/TollFree.json?PageSize=50&Page=0\",\"next_page_uri\": null,\"num_pages\": 1,\"page\": 0,\"page_size\": 50,\"previous_page_uri\": null,\"start\": 0,\"total\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/US/TollFree.json?PageSize=1\"}"));
             
-            var response = TollFreeResource.Reader("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "US").Read(twilioRestClient);
+            var response = TollFreeResource.Reader("US", accountSid: "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Read(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -63,7 +63,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"available_phone_numbers\": [],\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/US/TollFree.json?PageSize=50&Page=0\",\"last_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/US/TollFree.json?PageSize=50&Page=0\",\"next_page_uri\": null,\"num_pages\": 1,\"page\": 0,\"page_size\": 50,\"previous_page_uri\": null,\"start\": 0,\"total\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/US/TollFree.json?PageSize=1\"}"));
             
-            var response = TollFreeResource.Reader("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "US").Read(twilioRestClient);
+            var response = TollFreeResource.Reader("US", accountSid: "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Read(twilioRestClient);
             Assert.NotNull(response);
         }
     }

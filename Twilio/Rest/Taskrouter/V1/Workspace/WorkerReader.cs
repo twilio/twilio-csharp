@@ -24,85 +24,22 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        public WorkerReader(string workspaceSid) {
-            this.workspaceSid = workspaceSid;
-        }
-    
-        /// <summary>
-        /// The activity_name
-        /// </summary>
-        ///
         /// <param name="activityName"> The activity_name </param>
-        /// <returns> this </returns> 
-        public WorkerReader ByActivityName(string activityName) {
-            this.activityName = activityName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The activity_sid
-        /// </summary>
-        ///
         /// <param name="activitySid"> The activity_sid </param>
-        /// <returns> this </returns> 
-        public WorkerReader ByActivitySid(string activitySid) {
-            this.activitySid = activitySid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The available
-        /// </summary>
-        ///
         /// <param name="available"> The available </param>
-        /// <returns> this </returns> 
-        public WorkerReader ByAvailable(string available) {
-            this.available = available;
-            return this;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public WorkerReader ByFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The target_workers_expression
-        /// </summary>
-        ///
         /// <param name="targetWorkersExpression"> The target_workers_expression </param>
-        /// <returns> this </returns> 
-        public WorkerReader ByTargetWorkersExpression(string targetWorkersExpression) {
-            this.targetWorkersExpression = targetWorkersExpression;
-            return this;
-        }
-    
-        /// <summary>
-        /// The task_queue_name
-        /// </summary>
-        ///
         /// <param name="taskQueueName"> The task_queue_name </param>
-        /// <returns> this </returns> 
-        public WorkerReader ByTaskQueueName(string taskQueueName) {
-            this.taskQueueName = taskQueueName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The task_queue_sid
-        /// </summary>
-        ///
         /// <param name="taskQueueSid"> The task_queue_sid </param>
-        /// <returns> this </returns> 
-        public WorkerReader ByTaskQueueSid(string taskQueueSid) {
+        public WorkerReader(string workspaceSid, string activityName=null, string activitySid=null, string available=null, string friendlyName=null, string targetWorkersExpression=null, string taskQueueName=null, string taskQueueSid=null) {
+            this.workspaceSid = workspaceSid;
             this.taskQueueSid = taskQueueSid;
-            return this;
+            this.activitySid = activitySid;
+            this.activityName = activityName;
+            this.available = available;
+            this.targetWorkersExpression = targetWorkersExpression;
+            this.friendlyName = friendlyName;
+            this.taskQueueName = taskQueueName;
         }
     
         #if NET40

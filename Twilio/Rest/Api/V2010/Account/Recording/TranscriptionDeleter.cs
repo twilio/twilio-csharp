@@ -16,27 +16,16 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
         public string sid { get; }
     
         /// <summary>
-        /// Construct a new TranscriptionDeleter.
-        /// </summary>
-        ///
-        /// <param name="recordingSid"> The recording_sid </param>
-        /// <param name="sid"> The sid </param>
-        public TranscriptionDeleter(string recordingSid, string sid) {
-            this.recordingSid = recordingSid;
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new TranscriptionDeleter
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="recordingSid"> The recording_sid </param>
         /// <param name="sid"> The sid </param>
-        public TranscriptionDeleter(string accountSid, string recordingSid, string sid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public TranscriptionDeleter(string recordingSid, string sid, string accountSid=null) {
             this.accountSid = accountSid;
-            this.recordingSid = recordingSid;
             this.sid = sid;
+            this.recordingSid = recordingSid;
         }
     
         #if NET40

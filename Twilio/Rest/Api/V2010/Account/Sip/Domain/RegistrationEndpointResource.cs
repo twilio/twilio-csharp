@@ -13,27 +13,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         /// read
         /// </summary>
         ///
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="region"> The region </param>
+        /// <param name="registrant"> The registrant </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="domainSid"> The domain_sid </param>
-        /// <param name="region"> The region </param>
-        /// <param name="registrant"> The registrant </param>
         /// <returns> RegistrationEndpointReader capable of executing the read </returns> 
-        public static RegistrationEndpointReader Reader(string accountSid, string domainSid, string region, string registrant) {
-            return new RegistrationEndpointReader(accountSid, domainSid, region, registrant);
-        }
-    
-        /// <summary>
-        /// Create a RegistrationEndpointReader to execute read.
-        /// </summary>
-        ///
-        /// <param name="domainSid"> The domain_sid </param>
-        /// <param name="region"> The region </param>
-        /// <param name="registrant"> The registrant </param>
-        /// <returns> RegistrationEndpointReader capable of executing the read </returns> 
-        public static RegistrationEndpointReader Reader(string domainSid, 
-                                                        string region, 
-                                                        string registrant) {
-            return new RegistrationEndpointReader(domainSid, region, registrant);
+        public static RegistrationEndpointReader Reader(string domainSid, string region, string registrant, string accountSid=null) {
+            return new RegistrationEndpointReader(domainSid, region, registrant, accountSid:accountSid);
         }
     
         /// <summary>

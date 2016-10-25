@@ -18,53 +18,18 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         public DateTime? endDate { get; set; }
     
         /// <summary>
-        /// Construct a new RecordReader.
-        /// </summary>
-        public RecordReader() {
-        }
-    
-        /// <summary>
         /// Construct a new RecordReader
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public RecordReader(string accountSid) {
-            this.accountSid = accountSid;
-        }
-    
-        /// <summary>
-        /// Only include usage of a given category
-        /// </summary>
-        ///
         /// <param name="category"> Only include usage of a given category </param>
-        /// <returns> this </returns> 
-        public RecordReader ByCategory(RecordResource.Category category) {
-            this.category = category;
-            return this;
-        }
-    
-        /// <summary>
-        /// Only include usage that has occurred on or after this date. Format is YYYY-MM-DD in GTM. As a convenience, you can
-        /// also specify offsets to today, for example, StartDate=-30days, which will make StartDate 30 days before today
-        /// </summary>
-        ///
         /// <param name="startDate"> Filter by start date </param>
-        /// <returns> this </returns> 
-        public RecordReader ByStartDate(DateTime? startDate) {
-            this.startDate = startDate;
-            return this;
-        }
-    
-        /// <summary>
-        /// Only include usage that has occurred on or after this date. Format is YYYY-MM-DD in GTM. As a convenience, you can
-        /// also specify offsets to today, for example, EndDate=+30days, which will make EndDate 30 days from today
-        /// </summary>
-        ///
         /// <param name="endDate"> Filter by end date </param>
-        /// <returns> this </returns> 
-        public RecordReader ByEndDate(DateTime? endDate) {
+        public RecordReader(string accountSid=null, RecordResource.Category category=null, DateTime? startDate=null, DateTime? endDate=null) {
+            this.accountSid = accountSid;
+            this.category = category;
+            this.startDate = startDate;
             this.endDate = endDate;
-            return this;
         }
     
         #if NET40

@@ -52,9 +52,14 @@ namespace Twilio.Rest.Notify.V1 {
         /// </summary>
         ///
         /// <param name="type"> The type </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="certificate"> The certificate </param>
+        /// <param name="privateKey"> The private_key </param>
+        /// <param name="sandbox"> The sandbox </param>
+        /// <param name="apiKey"> The api_key </param>
         /// <returns> CredentialCreator capable of executing the create </returns> 
-        public static CredentialCreator Creator(CredentialResource.PushService type) {
-            return new CredentialCreator(type);
+        public static CredentialCreator Creator(CredentialResource.PushService type, string friendlyName=null, string certificate=null, string privateKey=null, bool? sandbox=null, string apiKey=null) {
+            return new CredentialCreator(type, friendlyName:friendlyName, certificate:certificate, privateKey:privateKey, sandbox:sandbox, apiKey:apiKey);
         }
     
         /// <summary>
@@ -72,9 +77,14 @@ namespace Twilio.Rest.Notify.V1 {
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="certificate"> The certificate </param>
+        /// <param name="privateKey"> The private_key </param>
+        /// <param name="sandbox"> The sandbox </param>
+        /// <param name="apiKey"> The api_key </param>
         /// <returns> CredentialUpdater capable of executing the update </returns> 
-        public static CredentialUpdater Updater(string sid) {
-            return new CredentialUpdater(sid);
+        public static CredentialUpdater Updater(string sid, string friendlyName=null, string certificate=null, string privateKey=null, bool? sandbox=null, string apiKey=null) {
+            return new CredentialUpdater(sid, friendlyName:friendlyName, certificate:certificate, privateKey:privateKey, sandbox:sandbox, apiKey:apiKey);
         }
     
         /// <summary>

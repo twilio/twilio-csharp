@@ -14,21 +14,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string countryCode { get; }
     
         /// <summary>
-        /// Construct a new AvailablePhoneNumberCountryFetcher.
-        /// </summary>
-        ///
-        /// <param name="countryCode"> The country_code </param>
-        public AvailablePhoneNumberCountryFetcher(string countryCode) {
-            this.countryCode = countryCode;
-        }
-    
-        /// <summary>
         /// Construct a new AvailablePhoneNumberCountryFetcher
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="countryCode"> The country_code </param>
-        public AvailablePhoneNumberCountryFetcher(string accountSid, string countryCode) {
+        /// <param name="accountSid"> The account_sid </param>
+        public AvailablePhoneNumberCountryFetcher(string countryCode, string accountSid=null) {
             this.accountSid = accountSid;
             this.countryCode = countryCode;
         }

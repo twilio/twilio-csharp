@@ -14,21 +14,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         public string callSid { get; }
     
         /// <summary>
-        /// Construct a new FeedbackFetcher.
-        /// </summary>
-        ///
-        /// <param name="callSid"> The call sid that uniquely identifies the call </param>
-        public FeedbackFetcher(string callSid) {
-            this.callSid = callSid;
-        }
-    
-        /// <summary>
         /// Construct a new FeedbackFetcher
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="callSid"> The call sid that uniquely identifies the call </param>
-        public FeedbackFetcher(string accountSid, string callSid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public FeedbackFetcher(string callSid, string accountSid=null) {
             this.accountSid = accountSid;
             this.callSid = callSid;
         }

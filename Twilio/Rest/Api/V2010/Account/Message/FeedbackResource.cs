@@ -42,21 +42,12 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
         /// create
         /// </summary>
         ///
+        /// <param name="messageSid"> The message_sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="messageSid"> The message_sid </param>
+        /// <param name="outcome"> The outcome </param>
         /// <returns> FeedbackCreator capable of executing the create </returns> 
-        public static FeedbackCreator Creator(string accountSid, string messageSid) {
-            return new FeedbackCreator(accountSid, messageSid);
-        }
-    
-        /// <summary>
-        /// Create a FeedbackCreator to execute create.
-        /// </summary>
-        ///
-        /// <param name="messageSid"> The message_sid </param>
-        /// <returns> FeedbackCreator capable of executing the create </returns> 
-        public static FeedbackCreator Creator(string messageSid) {
-            return new FeedbackCreator(messageSid);
+        public static FeedbackCreator Creator(string messageSid, string accountSid=null, FeedbackResource.Outcome outcome=null) {
+            return new FeedbackCreator(messageSid, accountSid:accountSid, outcome:outcome);
         }
     
         /// <summary>

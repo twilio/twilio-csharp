@@ -1,7 +1,6 @@
 using System;
 using Twilio.Base;
 using Twilio.Clients;
-using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -26,74 +25,19 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <param name="sid"> The sid </param>
-        public OriginationUrlUpdater(string trunkSid, string sid) {
-            this.trunkSid = trunkSid;
-            this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The weight
-        /// </summary>
-        ///
         /// <param name="weight"> The weight </param>
-        /// <returns> this </returns> 
-        public OriginationUrlUpdater setWeight(int? weight) {
-            this.weight = weight;
-            return this;
-        }
-    
-        /// <summary>
-        /// The priority
-        /// </summary>
-        ///
         /// <param name="priority"> The priority </param>
-        /// <returns> this </returns> 
-        public OriginationUrlUpdater setPriority(int? priority) {
-            this.priority = priority;
-            return this;
-        }
-    
-        /// <summary>
-        /// The enabled
-        /// </summary>
-        ///
         /// <param name="enabled"> The enabled </param>
-        /// <returns> this </returns> 
-        public OriginationUrlUpdater setEnabled(bool? enabled) {
-            this.enabled = enabled;
-            return this;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public OriginationUrlUpdater setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The sip_url
-        /// </summary>
-        ///
         /// <param name="sipUrl"> The sip_url </param>
-        /// <returns> this </returns> 
-        public OriginationUrlUpdater setSipUrl(Uri sipUrl) {
+        public OriginationUrlUpdater(string trunkSid, string sid, int? weight=null, int? priority=null, bool? enabled=null, string friendlyName=null, Uri sipUrl=null) {
+            this.sid = sid;
+            this.enabled = enabled;
+            this.trunkSid = trunkSid;
             this.sipUrl = sipUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The sip_url
-        /// </summary>
-        ///
-        /// <param name="sipUrl"> The sip_url </param>
-        /// <returns> this </returns> 
-        public OriginationUrlUpdater setSipUrl(string sipUrl) {
-            return setSipUrl(Promoter.UriFromString(sipUrl));
+            this.weight = weight;
+            this.priority = priority;
+            this.friendlyName = friendlyName;
         }
     
         #if NET40

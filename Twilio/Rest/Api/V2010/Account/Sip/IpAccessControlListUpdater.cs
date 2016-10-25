@@ -15,27 +15,16 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         public string friendlyName { get; }
     
         /// <summary>
-        /// Construct a new IpAccessControlListUpdater.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> A human readable description of this resource </param>
-        public IpAccessControlListUpdater(string sid, string friendlyName) {
-            this.sid = sid;
-            this.friendlyName = friendlyName;
-        }
-    
-        /// <summary>
         /// Construct a new IpAccessControlListUpdater
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> The sid </param>
         /// <param name="friendlyName"> A human readable description of this resource </param>
-        public IpAccessControlListUpdater(string accountSid, string sid, string friendlyName) {
+        /// <param name="accountSid"> The account_sid </param>
+        public IpAccessControlListUpdater(string sid, string friendlyName, string accountSid=null) {
             this.accountSid = accountSid;
-            this.sid = sid;
             this.friendlyName = friendlyName;
+            this.sid = sid;
         }
     
         #if NET40

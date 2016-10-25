@@ -14,9 +14,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="minutes"> The minutes </param>
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="endDate"> The end_date </param>
         /// <returns> WorkspaceStatisticsFetcher capable of executing the fetch </returns> 
-        public static WorkspaceStatisticsFetcher Fetcher(string workspaceSid) {
-            return new WorkspaceStatisticsFetcher(workspaceSid);
+        public static WorkspaceStatisticsFetcher Fetcher(string workspaceSid, int? minutes=null, string startDate=null, string endDate=null) {
+            return new WorkspaceStatisticsFetcher(workspaceSid, minutes:minutes, startDate:startDate, endDate:endDate);
         }
     
         /// <summary>

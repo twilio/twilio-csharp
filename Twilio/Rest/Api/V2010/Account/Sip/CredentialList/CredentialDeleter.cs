@@ -16,27 +16,16 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         public string sid { get; }
     
         /// <summary>
-        /// Construct a new CredentialDeleter.
-        /// </summary>
-        ///
-        /// <param name="credentialListSid"> The credential_list_sid </param>
-        /// <param name="sid"> The sid </param>
-        public CredentialDeleter(string credentialListSid, string sid) {
-            this.credentialListSid = credentialListSid;
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new CredentialDeleter
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="credentialListSid"> The credential_list_sid </param>
         /// <param name="sid"> The sid </param>
-        public CredentialDeleter(string accountSid, string credentialListSid, string sid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public CredentialDeleter(string credentialListSid, string sid, string accountSid=null) {
             this.accountSid = accountSid;
-            this.credentialListSid = credentialListSid;
             this.sid = sid;
+            this.credentialListSid = credentialListSid;
         }
     
         #if NET40

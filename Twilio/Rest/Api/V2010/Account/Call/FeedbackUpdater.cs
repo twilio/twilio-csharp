@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
-using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -18,48 +17,18 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         public List<FeedbackResource.Issues> issue { get; set; }
     
         /// <summary>
-        /// Construct a new FeedbackUpdater.
-        /// </summary>
-        ///
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="qualityScore"> An integer from 1 to 5 </param>
-        public FeedbackUpdater(string callSid, int? qualityScore) {
-            this.callSid = callSid;
-            this.qualityScore = qualityScore;
-        }
-    
-        /// <summary>
         /// Construct a new FeedbackUpdater
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="callSid"> The call_sid </param>
         /// <param name="qualityScore"> An integer from 1 to 5 </param>
-        public FeedbackUpdater(string accountSid, string callSid, int? qualityScore) {
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="issue"> Issues experienced during the call </param>
+        public FeedbackUpdater(string callSid, int? qualityScore, string accountSid=null, List<FeedbackResource.Issues> issue=null) {
             this.accountSid = accountSid;
-            this.callSid = callSid;
             this.qualityScore = qualityScore;
-        }
-    
-        /// <summary>
-        /// One or more of the issues experienced during the call
-        /// </summary>
-        ///
-        /// <param name="issue"> Issues experienced during the call </param>
-        /// <returns> this </returns> 
-        public FeedbackUpdater setIssue(List<FeedbackResource.Issues> issue) {
             this.issue = issue;
-            return this;
-        }
-    
-        /// <summary>
-        /// One or more of the issues experienced during the call
-        /// </summary>
-        ///
-        /// <param name="issue"> Issues experienced during the call </param>
-        /// <returns> this </returns> 
-        public FeedbackUpdater setIssue(FeedbackResource.Issues issue) {
-            return setIssue(Promoter.ListOfOne(issue));
+            this.callSid = callSid;
         }
     
         #if NET40

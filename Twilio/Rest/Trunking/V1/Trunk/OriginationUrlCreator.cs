@@ -29,12 +29,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="sipUrl"> The sip_url </param>
         public OriginationUrlCreator(string trunkSid, int? weight, int? priority, bool? enabled, string friendlyName, Uri sipUrl) {
+            this.enabled = enabled;
             this.trunkSid = trunkSid;
+            this.sipUrl = sipUrl;
             this.weight = weight;
             this.priority = priority;
-            this.enabled = enabled;
             this.friendlyName = friendlyName;
-            this.sipUrl = sipUrl;
         }
     
         #if NET40

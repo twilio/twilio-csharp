@@ -25,74 +25,20 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        public WorkersStatisticsFetcher(string workspaceSid) {
-            this.workspaceSid = workspaceSid;
-        }
-    
-        /// <summary>
-        /// The minutes
-        /// </summary>
-        ///
         /// <param name="minutes"> The minutes </param>
-        /// <returns> this </returns> 
-        public WorkersStatisticsFetcher setMinutes(int? minutes) {
-            this.minutes = minutes;
-            return this;
-        }
-    
-        /// <summary>
-        /// The start_date
-        /// </summary>
-        ///
         /// <param name="startDate"> The start_date </param>
-        /// <returns> this </returns> 
-        public WorkersStatisticsFetcher setStartDate(DateTime? startDate) {
-            this.startDate = startDate;
-            return this;
-        }
-    
-        /// <summary>
-        /// The end_date
-        /// </summary>
-        ///
         /// <param name="endDate"> The end_date </param>
-        /// <returns> this </returns> 
-        public WorkersStatisticsFetcher setEndDate(DateTime? endDate) {
-            this.endDate = endDate;
-            return this;
-        }
-    
-        /// <summary>
-        /// The task_queue_sid
-        /// </summary>
-        ///
         /// <param name="taskQueueSid"> The task_queue_sid </param>
-        /// <returns> this </returns> 
-        public WorkersStatisticsFetcher setTaskQueueSid(string taskQueueSid) {
-            this.taskQueueSid = taskQueueSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The task_queue_name
-        /// </summary>
-        ///
         /// <param name="taskQueueName"> The task_queue_name </param>
-        /// <returns> this </returns> 
-        public WorkersStatisticsFetcher setTaskQueueName(string taskQueueName) {
-            this.taskQueueName = taskQueueName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public WorkersStatisticsFetcher setFriendlyName(string friendlyName) {
+        public WorkersStatisticsFetcher(string workspaceSid, int? minutes=null, DateTime? startDate=null, DateTime? endDate=null, string taskQueueSid=null, string taskQueueName=null, string friendlyName=null) {
+            this.workspaceSid = workspaceSid;
+            this.taskQueueSid = taskQueueSid;
+            this.endDate = endDate;
+            this.minutes = minutes;
             this.friendlyName = friendlyName;
-            return this;
+            this.startDate = startDate;
+            this.taskQueueName = taskQueueName;
         }
     
         #if NET40

@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
 using Twilio.Converters;
@@ -24,18 +25,25 @@ namespace Twilio.Rest.Taskrouter.V1 {
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
+        /// <param name="defaultActivitySid"> The default_activity_sid </param>
+        /// <param name="eventCallbackUrl"> The event_callback_url </param>
+        /// <param name="eventsFilter"> The events_filter </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="multiTaskEnabled"> The multi_task_enabled </param>
+        /// <param name="timeoutActivitySid"> The timeout_activity_sid </param>
         /// <returns> WorkspaceUpdater capable of executing the update </returns> 
-        public static WorkspaceUpdater Updater(string sid) {
-            return new WorkspaceUpdater(sid);
+        public static WorkspaceUpdater Updater(string sid, string defaultActivitySid=null, Uri eventCallbackUrl=null, string eventsFilter=null, string friendlyName=null, bool? multiTaskEnabled=null, string timeoutActivitySid=null) {
+            return new WorkspaceUpdater(sid, defaultActivitySid:defaultActivitySid, eventCallbackUrl:eventCallbackUrl, eventsFilter:eventsFilter, friendlyName:friendlyName, multiTaskEnabled:multiTaskEnabled, timeoutActivitySid:timeoutActivitySid);
         }
     
         /// <summary>
         /// read
         /// </summary>
         ///
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> WorkspaceReader capable of executing the read </returns> 
-        public static WorkspaceReader Reader() {
-            return new WorkspaceReader();
+        public static WorkspaceReader Reader(string friendlyName=null) {
+            return new WorkspaceReader(friendlyName:friendlyName);
         }
     
         /// <summary>
@@ -43,9 +51,13 @@ namespace Twilio.Rest.Taskrouter.V1 {
         /// </summary>
         ///
         /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="eventCallbackUrl"> The event_callback_url </param>
+        /// <param name="eventsFilter"> The events_filter </param>
+        /// <param name="multiTaskEnabled"> The multi_task_enabled </param>
+        /// <param name="template"> The template </param>
         /// <returns> WorkspaceCreator capable of executing the create </returns> 
-        public static WorkspaceCreator Creator(string friendlyName) {
-            return new WorkspaceCreator(friendlyName);
+        public static WorkspaceCreator Creator(string friendlyName, Uri eventCallbackUrl=null, string eventsFilter=null, bool? multiTaskEnabled=null, string template=null) {
+            return new WorkspaceCreator(friendlyName, eventCallbackUrl:eventCallbackUrl, eventsFilter:eventsFilter, multiTaskEnabled:multiTaskEnabled, template:template);
         }
     
         /// <summary>
@@ -97,6 +109,10 @@ namespace Twilio.Rest.Taskrouter.V1 {
         public string timeoutActivityName { get; }
         [JsonProperty("timeout_activity_sid")]
         public string timeoutActivitySid { get; }
+        [JsonProperty("url")]
+        public Uri url { get; }
+        [JsonProperty("links")]
+        public Dictionary<string, string> links { get; }
     
         public WorkspaceResource() {
         
@@ -125,7 +141,11 @@ namespace Twilio.Rest.Taskrouter.V1 {
                                   [JsonProperty("timeout_activity_name")]
                                   string timeoutActivityName, 
                                   [JsonProperty("timeout_activity_sid")]
-                                  string timeoutActivitySid) {
+                                  string timeoutActivitySid, 
+                                  [JsonProperty("url")]
+                                  Uri url, 
+                                  [JsonProperty("links")]
+                                  Dictionary<string, string> links) {
             this.accountSid = accountSid;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
@@ -138,6 +158,8 @@ namespace Twilio.Rest.Taskrouter.V1 {
             this.sid = sid;
             this.timeoutActivityName = timeoutActivityName;
             this.timeoutActivitySid = timeoutActivitySid;
+            this.url = url;
+            this.links = links;
         }
     }
 }

@@ -34,9 +34,15 @@ namespace Twilio.Rest.Trunking.V1 {
         /// create
         /// </summary>
         ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="domainName"> The domain_name </param>
+        /// <param name="disasterRecoveryUrl"> The disaster_recovery_url </param>
+        /// <param name="disasterRecoveryMethod"> The disaster_recovery_method </param>
+        /// <param name="recording"> The recording </param>
+        /// <param name="secure"> The secure </param>
         /// <returns> TrunkCreator capable of executing the create </returns> 
-        public static TrunkCreator Creator() {
-            return new TrunkCreator();
+        public static TrunkCreator Creator(string friendlyName=null, string domainName=null, Uri disasterRecoveryUrl=null, Twilio.Http.HttpMethod disasterRecoveryMethod=null, string recording=null, bool? secure=null) {
+            return new TrunkCreator(friendlyName:friendlyName, domainName:domainName, disasterRecoveryUrl:disasterRecoveryUrl, disasterRecoveryMethod:disasterRecoveryMethod, recording:recording, secure:secure);
         }
     
         /// <summary>
@@ -53,9 +59,15 @@ namespace Twilio.Rest.Trunking.V1 {
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="domainName"> The domain_name </param>
+        /// <param name="disasterRecoveryUrl"> The disaster_recovery_url </param>
+        /// <param name="disasterRecoveryMethod"> The disaster_recovery_method </param>
+        /// <param name="recording"> The recording </param>
+        /// <param name="secure"> The secure </param>
         /// <returns> TrunkUpdater capable of executing the update </returns> 
-        public static TrunkUpdater Updater(string sid) {
-            return new TrunkUpdater(sid);
+        public static TrunkUpdater Updater(string sid, string friendlyName=null, string domainName=null, Uri disasterRecoveryUrl=null, Twilio.Http.HttpMethod disasterRecoveryMethod=null, string recording=null, bool? secure=null) {
+            return new TrunkUpdater(sid, friendlyName:friendlyName, domainName:domainName, disasterRecoveryUrl:disasterRecoveryUrl, disasterRecoveryMethod:disasterRecoveryMethod, recording:recording, secure:secure);
         }
     
         /// <summary>

@@ -46,66 +46,37 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// create
         /// </summary>
         ///
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="endDate"> The end_date </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
+        /// <param name="includeSubaccounts"> The include_subaccounts </param>
+        /// <param name="statusCallback"> The status_callback </param>
+        /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <returns> FeedbackSummaryCreator capable of executing the create </returns> 
-        public static FeedbackSummaryCreator Creator(string accountSid, DateTime? startDate, DateTime? endDate) {
-            return new FeedbackSummaryCreator(accountSid, startDate, endDate);
-        }
-    
-        /// <summary>
-        /// Create a FeedbackSummaryCreator to execute create.
-        /// </summary>
-        ///
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <returns> FeedbackSummaryCreator capable of executing the create </returns> 
-        public static FeedbackSummaryCreator Creator(DateTime? startDate, 
-                                                     DateTime? endDate) {
-            return new FeedbackSummaryCreator(startDate, endDate);
+        public static FeedbackSummaryCreator Creator(DateTime? startDate, DateTime? endDate, string accountSid=null, bool? includeSubaccounts=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null) {
+            return new FeedbackSummaryCreator(startDate, endDate, accountSid:accountSid, includeSubaccounts:includeSubaccounts, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod);
         }
     
         /// <summary>
         /// fetch
         /// </summary>
         ///
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> The sid </param>
         /// <returns> FeedbackSummaryFetcher capable of executing the fetch </returns> 
-        public static FeedbackSummaryFetcher Fetcher(string accountSid, string sid) {
-            return new FeedbackSummaryFetcher(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a FeedbackSummaryFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> FeedbackSummaryFetcher capable of executing the fetch </returns> 
-        public static FeedbackSummaryFetcher Fetcher(string sid) {
-            return new FeedbackSummaryFetcher(sid);
+        public static FeedbackSummaryFetcher Fetcher(string sid, string accountSid=null) {
+            return new FeedbackSummaryFetcher(sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// delete
         /// </summary>
         ///
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> The sid </param>
         /// <returns> FeedbackSummaryDeleter capable of executing the delete </returns> 
-        public static FeedbackSummaryDeleter Deleter(string accountSid, string sid) {
-            return new FeedbackSummaryDeleter(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a FeedbackSummaryDeleter to execute delete.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> FeedbackSummaryDeleter capable of executing the delete </returns> 
-        public static FeedbackSummaryDeleter Deleter(string sid) {
-            return new FeedbackSummaryDeleter(sid);
+        public static FeedbackSummaryDeleter Deleter(string sid, string accountSid=null) {
+            return new FeedbackSummaryDeleter(sid, accountSid:accountSid);
         }
     
         /// <summary>

@@ -1,7 +1,6 @@
 using System;
 using Twilio.Base;
 using Twilio.Clients;
-using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -42,259 +41,48 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="taskSid"> The task_sid </param>
         /// <param name="sid"> The sid </param>
-        public ReservationUpdater(string workspaceSid, string taskSid, string sid) {
-            this.workspaceSid = workspaceSid;
-            this.taskSid = taskSid;
-            this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The reservation_status
-        /// </summary>
-        ///
         /// <param name="reservationStatus"> The reservation_status </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setReservationStatus(ReservationResource.Status reservationStatus) {
-            this.reservationStatus = reservationStatus;
-            return this;
-        }
-    
-        /// <summary>
-        /// The worker_activity_sid
-        /// </summary>
-        ///
         /// <param name="workerActivitySid"> The worker_activity_sid </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setWorkerActivitySid(string workerActivitySid) {
-            this.workerActivitySid = workerActivitySid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The instruction
-        /// </summary>
-        ///
         /// <param name="instruction"> The instruction </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setInstruction(string instruction) {
-            this.instruction = instruction;
-            return this;
-        }
-    
-        /// <summary>
-        /// The dequeue_post_work_activity_sid
-        /// </summary>
-        ///
         /// <param name="dequeuePostWorkActivitySid"> The dequeue_post_work_activity_sid </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setDequeuePostWorkActivitySid(string dequeuePostWorkActivitySid) {
-            this.dequeuePostWorkActivitySid = dequeuePostWorkActivitySid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The dequeue_from
-        /// </summary>
-        ///
         /// <param name="dequeueFrom"> The dequeue_from </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setDequeueFrom(string dequeueFrom) {
-            this.dequeueFrom = dequeueFrom;
-            return this;
-        }
-    
-        /// <summary>
-        /// The dequeue_record
-        /// </summary>
-        ///
         /// <param name="dequeueRecord"> The dequeue_record </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setDequeueRecord(string dequeueRecord) {
-            this.dequeueRecord = dequeueRecord;
-            return this;
-        }
-    
-        /// <summary>
-        /// The dequeue_timeout
-        /// </summary>
-        ///
         /// <param name="dequeueTimeout"> The dequeue_timeout </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setDequeueTimeout(int? dequeueTimeout) {
-            this.dequeueTimeout = dequeueTimeout;
-            return this;
-        }
-    
-        /// <summary>
-        /// The dequeue_to
-        /// </summary>
-        ///
         /// <param name="dequeueTo"> The dequeue_to </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setDequeueTo(string dequeueTo) {
-            this.dequeueTo = dequeueTo;
-            return this;
-        }
-    
-        /// <summary>
-        /// The dequeue_status_callback_url
-        /// </summary>
-        ///
         /// <param name="dequeueStatusCallbackUrl"> The dequeue_status_callback_url </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setDequeueStatusCallbackUrl(Uri dequeueStatusCallbackUrl) {
-            this.dequeueStatusCallbackUrl = dequeueStatusCallbackUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The dequeue_status_callback_url
-        /// </summary>
-        ///
-        /// <param name="dequeueStatusCallbackUrl"> The dequeue_status_callback_url </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setDequeueStatusCallbackUrl(string dequeueStatusCallbackUrl) {
-            return setDequeueStatusCallbackUrl(Promoter.UriFromString(dequeueStatusCallbackUrl));
-        }
-    
-        /// <summary>
-        /// The call_from
-        /// </summary>
-        ///
         /// <param name="callFrom"> The call_from </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setCallFrom(string callFrom) {
-            this.callFrom = callFrom;
-            return this;
-        }
-    
-        /// <summary>
-        /// The call_record
-        /// </summary>
-        ///
         /// <param name="callRecord"> The call_record </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setCallRecord(string callRecord) {
-            this.callRecord = callRecord;
-            return this;
-        }
-    
-        /// <summary>
-        /// The call_timeout
-        /// </summary>
-        ///
         /// <param name="callTimeout"> The call_timeout </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setCallTimeout(int? callTimeout) {
-            this.callTimeout = callTimeout;
-            return this;
-        }
-    
-        /// <summary>
-        /// The call_to
-        /// </summary>
-        ///
         /// <param name="callTo"> The call_to </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setCallTo(string callTo) {
-            this.callTo = callTo;
-            return this;
-        }
-    
-        /// <summary>
-        /// The call_url
-        /// </summary>
-        ///
         /// <param name="callUrl"> The call_url </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setCallUrl(Uri callUrl) {
-            this.callUrl = callUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The call_url
-        /// </summary>
-        ///
-        /// <param name="callUrl"> The call_url </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setCallUrl(string callUrl) {
-            return setCallUrl(Promoter.UriFromString(callUrl));
-        }
-    
-        /// <summary>
-        /// The call_status_callback_url
-        /// </summary>
-        ///
         /// <param name="callStatusCallbackUrl"> The call_status_callback_url </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setCallStatusCallbackUrl(Uri callStatusCallbackUrl) {
-            this.callStatusCallbackUrl = callStatusCallbackUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The call_status_callback_url
-        /// </summary>
-        ///
-        /// <param name="callStatusCallbackUrl"> The call_status_callback_url </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setCallStatusCallbackUrl(string callStatusCallbackUrl) {
-            return setCallStatusCallbackUrl(Promoter.UriFromString(callStatusCallbackUrl));
-        }
-    
-        /// <summary>
-        /// The call_accept
-        /// </summary>
-        ///
         /// <param name="callAccept"> The call_accept </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setCallAccept(bool? callAccept) {
-            this.callAccept = callAccept;
-            return this;
-        }
-    
-        /// <summary>
-        /// The redirect_call_sid
-        /// </summary>
-        ///
         /// <param name="redirectCallSid"> The redirect_call_sid </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setRedirectCallSid(string redirectCallSid) {
-            this.redirectCallSid = redirectCallSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The redirect_accept
-        /// </summary>
-        ///
         /// <param name="redirectAccept"> The redirect_accept </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setRedirectAccept(bool? redirectAccept) {
+        /// <param name="redirectUrl"> The redirect_url </param>
+        public ReservationUpdater(string workspaceSid, string taskSid, string sid, ReservationResource.Status reservationStatus=null, string workerActivitySid=null, string instruction=null, string dequeuePostWorkActivitySid=null, string dequeueFrom=null, string dequeueRecord=null, int? dequeueTimeout=null, string dequeueTo=null, Uri dequeueStatusCallbackUrl=null, string callFrom=null, string callRecord=null, int? callTimeout=null, string callTo=null, Uri callUrl=null, Uri callStatusCallbackUrl=null, bool? callAccept=null, string redirectCallSid=null, bool? redirectAccept=null, Uri redirectUrl=null) {
+            this.dequeueRecord = dequeueRecord;
+            this.instruction = instruction;
+            this.dequeueFrom = dequeueFrom;
+            this.taskSid = taskSid;
+            this.workspaceSid = workspaceSid;
+            this.callTo = callTo;
+            this.redirectCallSid = redirectCallSid;
+            this.dequeuePostWorkActivitySid = dequeuePostWorkActivitySid;
             this.redirectAccept = redirectAccept;
-            return this;
-        }
-    
-        /// <summary>
-        /// The redirect_url
-        /// </summary>
-        ///
-        /// <param name="redirectUrl"> The redirect_url </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setRedirectUrl(Uri redirectUrl) {
+            this.sid = sid;
+            this.callAccept = callAccept;
+            this.dequeueTo = dequeueTo;
+            this.callStatusCallbackUrl = callStatusCallbackUrl;
             this.redirectUrl = redirectUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The redirect_url
-        /// </summary>
-        ///
-        /// <param name="redirectUrl"> The redirect_url </param>
-        /// <returns> this </returns> 
-        public ReservationUpdater setRedirectUrl(string redirectUrl) {
-            return setRedirectUrl(Promoter.UriFromString(redirectUrl));
+            this.callTimeout = callTimeout;
+            this.workerActivitySid = workerActivitySid;
+            this.callUrl = callUrl;
+            this.callFrom = callFrom;
+            this.callRecord = callRecord;
+            this.reservationStatus = reservationStatus;
+            this.dequeueStatusCallbackUrl = dequeueStatusCallbackUrl;
+            this.dequeueTimeout = dequeueTimeout;
         }
     
         #if NET40

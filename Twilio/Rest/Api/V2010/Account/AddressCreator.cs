@@ -20,43 +20,26 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string friendlyName { get; set; }
     
         /// <summary>
-        /// Construct a new AddressCreator.
-        /// </summary>
-        ///
-        /// <param name="customerName"> The customer_name </param>
-        /// <param name="street"> The street </param>
-        /// <param name="city"> The city </param>
-        /// <param name="region"> The region </param>
-        /// <param name="postalCode"> The postal_code </param>
-        /// <param name="isoCountry"> The iso_country </param>
-        public AddressCreator(string customerName, string street, string city, string region, string postalCode, string isoCountry) {
-            this.customerName = customerName;
-            this.street = street;
-            this.city = city;
-            this.region = region;
-            this.postalCode = postalCode;
-            this.isoCountry = isoCountry;
-        }
-    
-        /// <summary>
         /// Construct a new AddressCreator
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="customerName"> The customer_name </param>
         /// <param name="street"> The street </param>
         /// <param name="city"> The city </param>
         /// <param name="region"> The region </param>
         /// <param name="postalCode"> The postal_code </param>
         /// <param name="isoCountry"> The iso_country </param>
-        public AddressCreator(string accountSid, string customerName, string street, string city, string region, string postalCode, string isoCountry) {
-            this.accountSid = accountSid;
-            this.customerName = customerName;
-            this.street = street;
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        public AddressCreator(string customerName, string street, string city, string region, string postalCode, string isoCountry, string accountSid=null, string friendlyName=null) {
             this.city = city;
+            this.street = street;
+            this.customerName = customerName;
+            this.accountSid = accountSid;
             this.region = region;
-            this.postalCode = postalCode;
             this.isoCountry = isoCountry;
+            this.friendlyName = friendlyName;
+            this.postalCode = postalCode;
         }
     
         #if NET40

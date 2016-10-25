@@ -30,7 +30,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account {
                                                   "null"));
             
             try {
-                ValidationRequestResource.Creator("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new Twilio.Types.PhoneNumber("+987654321")).Create(twilioRestClient);
+                ValidationRequestResource.Creator(new Twilio.Types.PhoneNumber("+987654321"), accountSid: "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -44,6 +44,17 @@ namespace Twilio.Tests.Rest.Api.V2010.Account {
             } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
+        public void TestCreateResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.Created,
+                                                  "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"phone_number\": \"+18001234567\",\"validation_code\": 100}"));
+            
+            var response = ValidationRequestResource.Creator(new Twilio.Types.PhoneNumber("+987654321"), accountSid: "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Create(twilioRestClient);
+            Assert.NotNull(response);
         }
     }
 }

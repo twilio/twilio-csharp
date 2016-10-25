@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
 using Twilio.Converters;
@@ -43,21 +44,11 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// Fetch an instance of a conference
         /// </summary>
         ///
+        /// <param name="sid"> Fetch by unique conference Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Fetch by unique conference Sid </param>
         /// <returns> ConferenceFetcher capable of executing the fetch </returns> 
-        public static ConferenceFetcher Fetcher(string accountSid, string sid) {
-            return new ConferenceFetcher(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a ConferenceFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="sid"> Fetch by unique conference Sid </param>
-        /// <returns> ConferenceFetcher capable of executing the fetch </returns> 
-        public static ConferenceFetcher Fetcher(string sid) {
-            return new ConferenceFetcher(sid);
+        public static ConferenceFetcher Fetcher(string sid, string accountSid=null) {
+            return new ConferenceFetcher(sid, accountSid:accountSid);
         }
     
         /// <summary>
@@ -65,18 +56,13 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
+        /// <param name="dateCreated"> Filter by date created </param>
+        /// <param name="dateUpdated"> Filter by date updated </param>
+        /// <param name="friendlyName"> Filter by friendly name </param>
+        /// <param name="status"> The status of the conference </param>
         /// <returns> ConferenceReader capable of executing the read </returns> 
-        public static ConferenceReader Reader(string accountSid) {
-            return new ConferenceReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a ConferenceReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> ConferenceReader capable of executing the read </returns> 
-        public static ConferenceReader Reader() {
-            return new ConferenceReader();
+        public static ConferenceReader Reader(string accountSid=null, string dateCreated=null, string dateUpdated=null, string friendlyName=null, ConferenceResource.Status status=null) {
+            return new ConferenceReader(accountSid:accountSid, dateCreated:dateCreated, dateUpdated:dateUpdated, friendlyName:friendlyName, status:status);
         }
     
         /// <summary>
@@ -111,6 +97,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         public ConferenceResource.Status status { get; }
         [JsonProperty("uri")]
         public string uri { get; }
+        [JsonProperty("subresource_uris")]
+        public Dictionary<string, string> subresourceUris { get; }
     
         public ConferenceResource() {
         
@@ -131,7 +119,9 @@ namespace Twilio.Rest.Api.V2010.Account {
                                    [JsonProperty("status")]
                                    ConferenceResource.Status status, 
                                    [JsonProperty("uri")]
-                                   string uri) {
+                                   string uri, 
+                                   [JsonProperty("subresource_uris")]
+                                   Dictionary<string, string> subresourceUris) {
             this.accountSid = accountSid;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
@@ -140,6 +130,7 @@ namespace Twilio.Rest.Api.V2010.Account {
             this.sid = sid;
             this.status = status;
             this.uri = uri;
+            this.subresourceUris = subresourceUris;
         }
     }
 }

@@ -15,21 +15,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string sid { get; }
     
         /// <summary>
-        /// Construct a new NotificationDeleter.
-        /// </summary>
-        ///
-        /// <param name="sid"> Delete by unique notification Sid </param>
-        public NotificationDeleter(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new NotificationDeleter
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> Delete by unique notification Sid </param>
-        public NotificationDeleter(string accountSid, string sid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public NotificationDeleter(string sid, string accountSid=null) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

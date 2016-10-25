@@ -81,96 +81,80 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client connections
         /// </summary>
         ///
+        /// <param name="to"> Phone number, SIP address or client identifier to call </param>
+        /// <param name="from"> Twilio number from which to originate the call </param>
+        /// <param name="url"> Url from which to fetch TwiML </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="to"> Phone number, SIP address or client identifier to call </param>
-        /// <param name="from"> Twilio number from which to originate the call </param>
-        /// <param name="url"> Url from which to fetch TwiML </param>
+        /// <param name="applicationSid"> ApplicationSid that configures from where to fetch TwiML </param>
+        /// <param name="method"> HTTP method to use to fetch TwiML </param>
+        /// <param name="fallbackUrl"> Fallback URL in case of error </param>
+        /// <param name="fallbackMethod"> HTTP Method to use with FallbackUrl </param>
+        /// <param name="statusCallback"> Status Callback URL </param>
+        /// <param name="statusCallbackEvent"> The status_callback_event </param>
+        /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
+        /// <param name="sendDigits"> Digits to send </param>
+        /// <param name="ifMachine"> Action to take if a machine has answered the call </param>
+        /// <param name="timeout"> Number of seconds to wait for an answer </param>
+        /// <param name="record"> Whether or not to record the Call </param>
+        /// <param name="recordingChannels"> The recording_channels </param>
+        /// <param name="recordingStatusCallback"> The recording_status_callback </param>
+        /// <param name="recordingStatusCallbackMethod"> The recording_status_callback_method </param>
+        /// <param name="sipAuthUsername"> The sip_auth_username </param>
+        /// <param name="sipAuthPassword"> The sip_auth_password </param>
         /// <returns> CallCreator capable of executing the create </returns> 
-        public static CallCreator Creator(string accountSid, IEndpoint to, Twilio.Types.PhoneNumber from, Uri url) {
-            return new CallCreator(accountSid, to, from, url);
-        }
-    
-        /// <summary>
-        /// Create a CallCreator to execute create.
-        /// </summary>
-        ///
-        /// <param name="to"> Phone number, SIP address or client identifier to call </param>
-        /// <param name="from"> Twilio number from which to originate the call </param>
-        /// <param name="url"> Url from which to fetch TwiML </param>
-        /// <returns> CallCreator capable of executing the create </returns> 
-        public static CallCreator Creator(IEndpoint to, 
-                                          Twilio.Types.PhoneNumber from, 
-                                          Uri url) {
-            return new CallCreator(to, from, url);
+        public static CallCreator Creator(IEndpoint to, Twilio.Types.PhoneNumber from, Uri url, string accountSid=null, string applicationSid=null, Twilio.Http.HttpMethod method=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, List<string> statusCallbackEvent=null, Twilio.Http.HttpMethod statusCallbackMethod=null, string sendDigits=null, string ifMachine=null, int? timeout=null, bool? record=null, string recordingChannels=null, string recordingStatusCallback=null, Twilio.Http.HttpMethod recordingStatusCallbackMethod=null, string sipAuthUsername=null, string sipAuthPassword=null) {
+            return new CallCreator(to, from, url, accountSid:accountSid, applicationSid:applicationSid, method:method, fallbackUrl:fallbackUrl, fallbackMethod:fallbackMethod, statusCallback:statusCallback, statusCallbackEvent:statusCallbackEvent, statusCallbackMethod:statusCallbackMethod, sendDigits:sendDigits, ifMachine:ifMachine, timeout:timeout, record:record, recordingChannels:recordingChannels, recordingStatusCallback:recordingStatusCallback, recordingStatusCallbackMethod:recordingStatusCallbackMethod, sipAuthUsername:sipAuthUsername, sipAuthPassword:sipAuthPassword);
         }
     
         /// <summary>
         /// Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client connections
         /// </summary>
         ///
+        /// <param name="to"> Phone number, SIP address or client identifier to call </param>
+        /// <param name="from"> Twilio number from which to originate the call </param>
+        /// <param name="applicationSid"> ApplicationSid that configures from where to fetch TwiML </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="to"> Phone number, SIP address or client identifier to call </param>
-        /// <param name="from"> Twilio number from which to originate the call </param>
-        /// <param name="applicationSid"> ApplicationSid that configures from where to fetch TwiML </param>
+        /// <param name="url"> Url from which to fetch TwiML </param>
+        /// <param name="method"> HTTP method to use to fetch TwiML </param>
+        /// <param name="fallbackUrl"> Fallback URL in case of error </param>
+        /// <param name="fallbackMethod"> HTTP Method to use with FallbackUrl </param>
+        /// <param name="statusCallback"> Status Callback URL </param>
+        /// <param name="statusCallbackEvent"> The status_callback_event </param>
+        /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
+        /// <param name="sendDigits"> Digits to send </param>
+        /// <param name="ifMachine"> Action to take if a machine has answered the call </param>
+        /// <param name="timeout"> Number of seconds to wait for an answer </param>
+        /// <param name="record"> Whether or not to record the Call </param>
+        /// <param name="recordingChannels"> The recording_channels </param>
+        /// <param name="recordingStatusCallback"> The recording_status_callback </param>
+        /// <param name="recordingStatusCallbackMethod"> The recording_status_callback_method </param>
+        /// <param name="sipAuthUsername"> The sip_auth_username </param>
+        /// <param name="sipAuthPassword"> The sip_auth_password </param>
         /// <returns> CallCreator capable of executing the create </returns> 
-        public static CallCreator Creator(string accountSid, IEndpoint to, Twilio.Types.PhoneNumber from, string applicationSid) {
-            return new CallCreator(accountSid, to, from, applicationSid);
-        }
-    
-        /// <summary>
-        /// Create a CallCreator to execute create.
-        /// </summary>
-        ///
-        /// <param name="to"> Phone number, SIP address or client identifier to call </param>
-        /// <param name="from"> Twilio number from which to originate the call </param>
-        /// <param name="applicationSid"> ApplicationSid that configures from where to fetch TwiML </param>
-        /// <returns> CallCreator capable of executing the create </returns> 
-        public static CallCreator Creator(IEndpoint to, 
-                                          Twilio.Types.PhoneNumber from, 
-                                          string applicationSid) {
-            return new CallCreator(to, from, applicationSid);
+        public static CallCreator Creator(IEndpoint to, Twilio.Types.PhoneNumber from, string applicationSid, string accountSid=null, Uri url=null, Twilio.Http.HttpMethod method=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, List<string> statusCallbackEvent=null, Twilio.Http.HttpMethod statusCallbackMethod=null, string sendDigits=null, string ifMachine=null, int? timeout=null, bool? record=null, string recordingChannels=null, string recordingStatusCallback=null, Twilio.Http.HttpMethod recordingStatusCallbackMethod=null, string sipAuthUsername=null, string sipAuthPassword=null) {
+            return new CallCreator(to, from, applicationSid, accountSid:accountSid, url:url, method:method, fallbackUrl:fallbackUrl, fallbackMethod:fallbackMethod, statusCallback:statusCallback, statusCallbackEvent:statusCallbackEvent, statusCallbackMethod:statusCallbackMethod, sendDigits:sendDigits, ifMachine:ifMachine, timeout:timeout, record:record, recordingChannels:recordingChannels, recordingStatusCallback:recordingStatusCallback, recordingStatusCallbackMethod:recordingStatusCallbackMethod, sipAuthUsername:sipAuthUsername, sipAuthPassword:sipAuthPassword);
         }
     
         /// <summary>
         /// Once the record is deleted, it will no longer appear in the API and Account Portal logs.
         /// </summary>
         ///
+        /// <param name="sid"> Call Sid that uniquely identifies the Call to delete </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to delete </param>
         /// <returns> CallDeleter capable of executing the delete </returns> 
-        public static CallDeleter Deleter(string accountSid, string sid) {
-            return new CallDeleter(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a CallDeleter to execute delete.
-        /// </summary>
-        ///
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to delete </param>
-        /// <returns> CallDeleter capable of executing the delete </returns> 
-        public static CallDeleter Deleter(string sid) {
-            return new CallDeleter(sid);
+        public static CallDeleter Deleter(string sid, string accountSid=null) {
+            return new CallDeleter(sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// Fetch the Call specified by the provided Call Sid
         /// </summary>
         ///
+        /// <param name="sid"> Call Sid that uniquely identifies the Call to fetch </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to fetch </param>
         /// <returns> CallFetcher capable of executing the fetch </returns> 
-        public static CallFetcher Fetcher(string accountSid, string sid) {
-            return new CallFetcher(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a CallFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to fetch </param>
-        /// <returns> CallFetcher capable of executing the fetch </returns> 
-        public static CallFetcher Fetcher(string sid) {
-            return new CallFetcher(sid);
+        public static CallFetcher Fetcher(string sid, string accountSid=null) {
+            return new CallFetcher(sid, accountSid:accountSid);
         }
     
         /// <summary>
@@ -178,39 +162,33 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
+        /// <param name="to"> Phone number or Client identifier to filter `to` on </param>
+        /// <param name="from"> Phone number or Client identifier to filter `from` on </param>
+        /// <param name="parentCallSid"> Parent Call Sid to filter on </param>
+        /// <param name="status"> Status to filter on </param>
+        /// <param name="startTime"> StartTime to filter on </param>
+        /// <param name="endTime"> EndTime to filter on </param>
         /// <returns> CallReader capable of executing the read </returns> 
-        public static CallReader Reader(string accountSid) {
-            return new CallReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a CallReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> CallReader capable of executing the read </returns> 
-        public static CallReader Reader() {
-            return new CallReader();
+        public static CallReader Reader(string accountSid=null, Twilio.Types.PhoneNumber to=null, Twilio.Types.PhoneNumber from=null, string parentCallSid=null, CallResource.Status status=null, string startTime=null, string endTime=null) {
+            return new CallReader(accountSid:accountSid, to:to, from:from, parentCallSid:parentCallSid, status:status, startTime:startTime, endTime:endTime);
         }
     
         /// <summary>
         /// Initiates a call redirect or terminates a call
         /// </summary>
         ///
+        /// <param name="sid"> Call Sid that uniquely identifies the Call to update </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to update </param>
+        /// <param name="url"> URL that returns TwiML </param>
+        /// <param name="method"> HTTP method to use to fetch TwiML </param>
+        /// <param name="status"> Status to update the Call with </param>
+        /// <param name="fallbackUrl"> Fallback URL in case of error </param>
+        /// <param name="fallbackMethod"> HTTP Method to use with FallbackUrl </param>
+        /// <param name="statusCallback"> Status Callback URL </param>
+        /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
         /// <returns> CallUpdater capable of executing the update </returns> 
-        public static CallUpdater Updater(string accountSid, string sid) {
-            return new CallUpdater(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a CallUpdater to execute update.
-        /// </summary>
-        ///
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to update </param>
-        /// <returns> CallUpdater capable of executing the update </returns> 
-        public static CallUpdater Updater(string sid) {
-            return new CallUpdater(sid);
+        public static CallUpdater Updater(string sid, string accountSid=null, Uri url=null, Twilio.Http.HttpMethod method=null, CallResource.Status status=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null) {
+            return new CallUpdater(sid, accountSid:accountSid, url:url, method:method, status:status, fallbackUrl:fallbackUrl, fallbackMethod:fallbackMethod, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod);
         }
     
         /// <summary>

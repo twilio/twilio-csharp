@@ -18,51 +18,18 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
         public DateTime? endDate { get; set; }
     
         /// <summary>
-        /// Construct a new YearlyReader.
-        /// </summary>
-        public YearlyReader() {
-        }
-    
-        /// <summary>
         /// Construct a new YearlyReader
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public YearlyReader(string accountSid) {
-            this.accountSid = accountSid;
-        }
-    
-        /// <summary>
-        /// The category
-        /// </summary>
-        ///
         /// <param name="category"> The category </param>
-        /// <returns> this </returns> 
-        public YearlyReader ByCategory(YearlyResource.Category category) {
-            this.category = category;
-            return this;
-        }
-    
-        /// <summary>
-        /// The start_date
-        /// </summary>
-        ///
         /// <param name="startDate"> The start_date </param>
-        /// <returns> this </returns> 
-        public YearlyReader ByStartDate(DateTime? startDate) {
-            this.startDate = startDate;
-            return this;
-        }
-    
-        /// <summary>
-        /// The end_date
-        /// </summary>
-        ///
         /// <param name="endDate"> The end_date </param>
-        /// <returns> this </returns> 
-        public YearlyReader ByEndDate(DateTime? endDate) {
+        public YearlyReader(string accountSid=null, YearlyResource.Category category=null, DateTime? startDate=null, DateTime? endDate=null) {
+            this.accountSid = accountSid;
+            this.category = category;
+            this.startDate = startDate;
             this.endDate = endDate;
-            return this;
         }
     
         #if NET40

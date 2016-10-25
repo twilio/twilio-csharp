@@ -15,27 +15,16 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
         public string sid { get; }
     
         /// <summary>
-        /// Construct a new MediaFetcher.
-        /// </summary>
-        ///
-        /// <param name="messageSid"> The message_sid </param>
-        /// <param name="sid"> Fetch by unique media Sid </param>
-        public MediaFetcher(string messageSid, string sid) {
-            this.messageSid = messageSid;
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new MediaFetcher
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="messageSid"> The message_sid </param>
         /// <param name="sid"> Fetch by unique media Sid </param>
-        public MediaFetcher(string accountSid, string messageSid, string sid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public MediaFetcher(string messageSid, string sid, string accountSid=null) {
             this.accountSid = accountSid;
-            this.messageSid = messageSid;
             this.sid = sid;
+            this.messageSid = messageSid;
         }
     
         #if NET40

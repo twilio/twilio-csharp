@@ -23,9 +23,12 @@ namespace Twilio.Rest.Preview.Wireless {
         /// read
         /// </summary>
         ///
+        /// <param name="device"> The device </param>
+        /// <param name="status"> The status </param>
+        /// <param name="direction"> The direction </param>
         /// <returns> CommandReader capable of executing the read </returns> 
-        public static CommandReader Reader() {
-            return new CommandReader();
+        public static CommandReader Reader(string device=null, string status=null, string direction=null) {
+            return new CommandReader(device:device, status:status, direction:direction);
         }
     
         /// <summary>
@@ -34,9 +37,13 @@ namespace Twilio.Rest.Preview.Wireless {
         ///
         /// <param name="device"> The device </param>
         /// <param name="command"> The command </param>
+        /// <param name="callbackMethod"> The callback_method </param>
+        /// <param name="callbackUrl"> The callback_url </param>
+        /// <param name="commandMode"> The command_mode </param>
+        /// <param name="includeSid"> The include_sid </param>
         /// <returns> CommandCreator capable of executing the create </returns> 
-        public static CommandCreator Creator(string device, string command) {
-            return new CommandCreator(device, command);
+        public static CommandCreator Creator(string device, string command, string callbackMethod=null, Uri callbackUrl=null, string commandMode=null, string includeSid=null) {
+            return new CommandCreator(device, command, callbackMethod:callbackMethod, callbackUrl:callbackUrl, commandMode:commandMode, includeSid:includeSid);
         }
     
         /// <summary>

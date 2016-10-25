@@ -1,7 +1,6 @@
 using System;
 using Twilio.Base;
 using Twilio.Clients;
-using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -22,110 +21,26 @@ namespace Twilio.Rest.Api.V2010.Account {
         public Twilio.Http.HttpMethod smsFallbackMethod { get; set; }
     
         /// <summary>
-        /// Construct a new ShortCodeUpdater.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        public ShortCodeUpdater(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new ShortCodeUpdater
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> The sid </param>
-        public ShortCodeUpdater(string accountSid, string sid) {
-            this.accountSid = accountSid;
-            this.sid = sid;
-        }
-    
-        /// <summary>
-        /// A human readable descriptive text for this resource, up to 64 characters long. By default, the `FriendlyName` is
-        /// just the short code.
-        /// </summary>
-        ///
+        /// <param name="accountSid"> The account_sid </param>
         /// <param name="friendlyName"> A human readable description of this resource </param>
-        /// <returns> this </returns> 
-        public ShortCodeUpdater setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// SMSs to this short code will start a new TwiML session with this API version.
-        /// </summary>
-        ///
         /// <param name="apiVersion"> The API version to use </param>
-        /// <returns> this </returns> 
-        public ShortCodeUpdater setApiVersion(string apiVersion) {
-            this.apiVersion = apiVersion;
-            return this;
-        }
-    
-        /// <summary>
-        /// The URL Twilio will request when receiving an incoming SMS message to this short code.
-        /// </summary>
-        ///
         /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
-        /// <returns> this </returns> 
-        public ShortCodeUpdater setSmsUrl(Uri smsUrl) {
-            this.smsUrl = smsUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The URL Twilio will request when receiving an incoming SMS message to this short code.
-        /// </summary>
-        ///
-        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
-        /// <returns> this </returns> 
-        public ShortCodeUpdater setSmsUrl(string smsUrl) {
-            return setSmsUrl(Promoter.UriFromString(smsUrl));
-        }
-    
-        /// <summary>
-        /// The HTTP method Twilio will use when making requests to the `SmsUrl`. Either `GET` or `POST`.
-        /// </summary>
-        ///
         /// <param name="smsMethod"> HTTP method to use when requesting the sms url </param>
-        /// <returns> this </returns> 
-        public ShortCodeUpdater setSmsMethod(Twilio.Http.HttpMethod smsMethod) {
-            this.smsMethod = smsMethod;
-            return this;
-        }
-    
-        /// <summary>
-        /// The URL that Twilio will request if an error occurs retrieving or executing the TwiML from `SmsUrl`.
-        /// </summary>
-        ///
         /// <param name="smsFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
-        /// <returns> this </returns> 
-        public ShortCodeUpdater setSmsFallbackUrl(Uri smsFallbackUrl) {
-            this.smsFallbackUrl = smsFallbackUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The URL that Twilio will request if an error occurs retrieving or executing the TwiML from `SmsUrl`.
-        /// </summary>
-        ///
-        /// <param name="smsFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
-        /// <returns> this </returns> 
-        public ShortCodeUpdater setSmsFallbackUrl(string smsFallbackUrl) {
-            return setSmsFallbackUrl(Promoter.UriFromString(smsFallbackUrl));
-        }
-    
-        /// <summary>
-        /// The HTTP method Twilio will use when requesting the above URL. Either `GET` or `POST`.
-        /// </summary>
-        ///
         /// <param name="smsFallbackMethod"> HTTP method Twilio will use with sms fallback url </param>
-        /// <returns> this </returns> 
-        public ShortCodeUpdater setSmsFallbackMethod(Twilio.Http.HttpMethod smsFallbackMethod) {
+        public ShortCodeUpdater(string sid, string accountSid=null, string friendlyName=null, string apiVersion=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsFallbackMethod=null) {
+            this.smsUrl = smsUrl;
+            this.apiVersion = apiVersion;
+            this.sid = sid;
+            this.smsFallbackUrl = smsFallbackUrl;
+            this.smsMethod = smsMethod;
+            this.accountSid = accountSid;
+            this.friendlyName = friendlyName;
             this.smsFallbackMethod = smsFallbackMethod;
-            return this;
         }
     
         #if NET40

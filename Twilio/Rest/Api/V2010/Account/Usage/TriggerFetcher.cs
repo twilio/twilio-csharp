@@ -14,21 +14,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         public string sid { get; }
     
         /// <summary>
-        /// Construct a new TriggerFetcher.
-        /// </summary>
-        ///
-        /// <param name="sid"> Fetch by unique usage-trigger Sid </param>
-        public TriggerFetcher(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new TriggerFetcher
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> Fetch by unique usage-trigger Sid </param>
-        public TriggerFetcher(string accountSid, string sid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public TriggerFetcher(string sid, string accountSid=null) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

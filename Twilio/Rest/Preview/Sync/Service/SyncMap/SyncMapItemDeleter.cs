@@ -23,9 +23,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         /// <param name="mapSid"> The map_sid </param>
         /// <param name="key"> The key </param>
         public SyncMapItemDeleter(string serviceSid, string mapSid, string key) {
+            this.key = key;
             this.serviceSid = serviceSid;
             this.mapSid = mapSid;
-            this.key = key;
         }
     
         #if NET40

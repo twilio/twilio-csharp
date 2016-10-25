@@ -24,64 +24,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
-        public TaskQueueUpdater(string workspaceSid, string sid) {
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="targetWorkers"> The target_workers </param>
+        /// <param name="reservationActivitySid"> The reservation_activity_sid </param>
+        /// <param name="assignmentActivitySid"> The assignment_activity_sid </param>
+        /// <param name="maxReservedWorkers"> The max_reserved_workers </param>
+        public TaskQueueUpdater(string workspaceSid, string sid, string friendlyName=null, string targetWorkers=null, string reservationActivitySid=null, string assignmentActivitySid=null, int? maxReservedWorkers=null) {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public TaskQueueUpdater setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The target_workers
-        /// </summary>
-        ///
-        /// <param name="targetWorkers"> The target_workers </param>
-        /// <returns> this </returns> 
-        public TaskQueueUpdater setTargetWorkers(string targetWorkers) {
-            this.targetWorkers = targetWorkers;
-            return this;
-        }
-    
-        /// <summary>
-        /// The reservation_activity_sid
-        /// </summary>
-        ///
-        /// <param name="reservationActivitySid"> The reservation_activity_sid </param>
-        /// <returns> this </returns> 
-        public TaskQueueUpdater setReservationActivitySid(string reservationActivitySid) {
-            this.reservationActivitySid = reservationActivitySid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The assignment_activity_sid
-        /// </summary>
-        ///
-        /// <param name="assignmentActivitySid"> The assignment_activity_sid </param>
-        /// <returns> this </returns> 
-        public TaskQueueUpdater setAssignmentActivitySid(string assignmentActivitySid) {
-            this.assignmentActivitySid = assignmentActivitySid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The max_reserved_workers
-        /// </summary>
-        ///
-        /// <param name="maxReservedWorkers"> The max_reserved_workers </param>
-        /// <returns> this </returns> 
-        public TaskQueueUpdater setMaxReservedWorkers(int? maxReservedWorkers) {
             this.maxReservedWorkers = maxReservedWorkers;
-            return this;
+            this.reservationActivitySid = reservationActivitySid;
+            this.targetWorkers = targetWorkers;
+            this.friendlyName = friendlyName;
+            this.assignmentActivitySid = assignmentActivitySid;
         }
     
         #if NET40

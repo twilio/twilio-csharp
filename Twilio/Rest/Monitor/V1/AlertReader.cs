@@ -17,36 +17,16 @@ namespace Twilio.Rest.Monitor.V1 {
         public DateTime? endDate { get; set; }
     
         /// <summary>
-        /// The log_level
+        /// Construct a new AlertReader
         /// </summary>
         ///
         /// <param name="logLevel"> The log_level </param>
-        /// <returns> this </returns> 
-        public AlertReader ByLogLevel(string logLevel) {
-            this.logLevel = logLevel;
-            return this;
-        }
-    
-        /// <summary>
-        /// The start_date
-        /// </summary>
-        ///
         /// <param name="startDate"> The start_date </param>
-        /// <returns> this </returns> 
-        public AlertReader ByStartDate(DateTime? startDate) {
-            this.startDate = startDate;
-            return this;
-        }
-    
-        /// <summary>
-        /// The end_date
-        /// </summary>
-        ///
         /// <param name="endDate"> The end_date </param>
-        /// <returns> this </returns> 
-        public AlertReader ByEndDate(DateTime? endDate) {
+        public AlertReader(string logLevel=null, DateTime? startDate=null, DateTime? endDate=null) {
+            this.logLevel = logLevel;
+            this.startDate = startDate;
             this.endDate = endDate;
-            return this;
         }
     
         #if NET40

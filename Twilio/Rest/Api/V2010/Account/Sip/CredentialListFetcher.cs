@@ -14,21 +14,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         public string sid { get; }
     
         /// <summary>
-        /// Construct a new CredentialListFetcher.
-        /// </summary>
-        ///
-        /// <param name="sid"> Fetch by unique credential Sid </param>
-        public CredentialListFetcher(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new CredentialListFetcher
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> Fetch by unique credential Sid </param>
-        public CredentialListFetcher(string accountSid, string sid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public CredentialListFetcher(string sid, string accountSid=null) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

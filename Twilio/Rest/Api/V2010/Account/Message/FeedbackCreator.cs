@@ -15,22 +15,15 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
         public FeedbackResource.Outcome outcome { get; set; }
     
         /// <summary>
-        /// Construct a new FeedbackCreator.
-        /// </summary>
-        ///
-        /// <param name="messageSid"> The message_sid </param>
-        public FeedbackCreator(string messageSid) {
-            this.messageSid = messageSid;
-        }
-    
-        /// <summary>
         /// Construct a new FeedbackCreator
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="messageSid"> The message_sid </param>
-        public FeedbackCreator(string accountSid, string messageSid) {
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="outcome"> The outcome </param>
+        public FeedbackCreator(string messageSid, string accountSid=null, FeedbackResource.Outcome outcome=null) {
             this.accountSid = accountSid;
+            this.outcome = outcome;
             this.messageSid = messageSid;
         }
     

@@ -15,34 +15,16 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string friendlyName { get; set; }
     
         /// <summary>
-        /// Construct a new OutgoingCallerIdUpdater.
-        /// </summary>
-        ///
-        /// <param name="sid"> Update by unique outgoing-caller-id Sid </param>
-        public OutgoingCallerIdUpdater(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new OutgoingCallerIdUpdater
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> Update by unique outgoing-caller-id Sid </param>
-        public OutgoingCallerIdUpdater(string accountSid, string sid) {
-            this.accountSid = accountSid;
-            this.sid = sid;
-        }
-    
-        /// <summary>
-        /// A human readable description of the caller ID
-        /// </summary>
-        ///
+        /// <param name="accountSid"> The account_sid </param>
         /// <param name="friendlyName"> A human readable description of the caller ID </param>
-        /// <returns> this </returns> 
-        public OutgoingCallerIdUpdater setFriendlyName(string friendlyName) {
+        public OutgoingCallerIdUpdater(string sid, string accountSid=null, string friendlyName=null) {
+            this.accountSid = accountSid;
             this.friendlyName = friendlyName;
-            return this;
+            this.sid = sid;
         }
     
         #if NET40

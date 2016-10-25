@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
 using Twilio.Converters;
@@ -14,9 +15,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="activityName"> The activity_name </param>
+        /// <param name="activitySid"> The activity_sid </param>
+        /// <param name="available"> The available </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="targetWorkersExpression"> The target_workers_expression </param>
+        /// <param name="taskQueueName"> The task_queue_name </param>
+        /// <param name="taskQueueSid"> The task_queue_sid </param>
         /// <returns> WorkerReader capable of executing the read </returns> 
-        public static WorkerReader Reader(string workspaceSid) {
-            return new WorkerReader(workspaceSid);
+        public static WorkerReader Reader(string workspaceSid, string activityName=null, string activitySid=null, string available=null, string friendlyName=null, string targetWorkersExpression=null, string taskQueueName=null, string taskQueueSid=null) {
+            return new WorkerReader(workspaceSid, activityName:activityName, activitySid:activitySid, available:available, friendlyName:friendlyName, targetWorkersExpression:targetWorkersExpression, taskQueueName:taskQueueName, taskQueueSid:taskQueueSid);
         }
     
         /// <summary>
@@ -25,9 +33,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="activitySid"> The activity_sid </param>
+        /// <param name="attributes"> The attributes </param>
         /// <returns> WorkerCreator capable of executing the create </returns> 
-        public static WorkerCreator Creator(string workspaceSid, string friendlyName) {
-            return new WorkerCreator(workspaceSid, friendlyName);
+        public static WorkerCreator Creator(string workspaceSid, string friendlyName, string activitySid=null, string attributes=null) {
+            return new WorkerCreator(workspaceSid, friendlyName, activitySid:activitySid, attributes:attributes);
         }
     
         /// <summary>
@@ -47,9 +57,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
+        /// <param name="activitySid"> The activity_sid </param>
+        /// <param name="attributes"> The attributes </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> WorkerUpdater capable of executing the update </returns> 
-        public static WorkerUpdater Updater(string workspaceSid, string sid) {
-            return new WorkerUpdater(workspaceSid, sid);
+        public static WorkerUpdater Updater(string workspaceSid, string sid, string activitySid=null, string attributes=null, string friendlyName=null) {
+            return new WorkerUpdater(workspaceSid, sid, activitySid:activitySid, attributes:attributes, friendlyName:friendlyName);
         }
     
         /// <summary>
@@ -100,6 +113,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         public string sid { get; }
         [JsonProperty("workspace_sid")]
         public string workspaceSid { get; }
+        [JsonProperty("url")]
+        public Uri url { get; }
+        [JsonProperty("links")]
+        public Dictionary<string, string> links { get; }
     
         public WorkerResource() {
         
@@ -126,7 +143,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
                                [JsonProperty("sid")]
                                string sid, 
                                [JsonProperty("workspace_sid")]
-                               string workspaceSid) {
+                               string workspaceSid, 
+                               [JsonProperty("url")]
+                               Uri url, 
+                               [JsonProperty("links")]
+                               Dictionary<string, string> links) {
             this.accountSid = accountSid;
             this.activityName = activityName;
             this.activitySid = activitySid;
@@ -138,6 +159,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             this.friendlyName = friendlyName;
             this.sid = sid;
             this.workspaceSid = workspaceSid;
+            this.url = url;
+            this.links = links;
         }
     }
 }

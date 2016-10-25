@@ -16,18 +16,10 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
+        /// <param name="ttl"> The duration in seconds the credentials are valid </param>
         /// <returns> TokenCreator capable of executing the create </returns> 
-        public static TokenCreator Creator(string accountSid) {
-            return new TokenCreator(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a TokenCreator to execute create.
-        /// </summary>
-        ///
-        /// <returns> TokenCreator capable of executing the create </returns> 
-        public static TokenCreator Creator() {
-            return new TokenCreator();
+        public static TokenCreator Creator(string accountSid=null, int? ttl=null) {
+            return new TokenCreator(accountSid:accountSid, ttl:ttl);
         }
     
         /// <summary>

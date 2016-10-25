@@ -22,42 +22,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
-        public WorkerUpdater(string workspaceSid, string sid) {
+        /// <param name="activitySid"> The activity_sid </param>
+        /// <param name="attributes"> The attributes </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        public WorkerUpdater(string workspaceSid, string sid, string activitySid=null, string attributes=null, string friendlyName=null) {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The activity_sid
-        /// </summary>
-        ///
-        /// <param name="activitySid"> The activity_sid </param>
-        /// <returns> this </returns> 
-        public WorkerUpdater setActivitySid(string activitySid) {
-            this.activitySid = activitySid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The attributes
-        /// </summary>
-        ///
-        /// <param name="attributes"> The attributes </param>
-        /// <returns> this </returns> 
-        public WorkerUpdater setAttributes(string attributes) {
             this.attributes = attributes;
-            return this;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public WorkerUpdater setFriendlyName(string friendlyName) {
+            this.activitySid = activitySid;
             this.friendlyName = friendlyName;
-            return this;
         }
     
         #if NET40

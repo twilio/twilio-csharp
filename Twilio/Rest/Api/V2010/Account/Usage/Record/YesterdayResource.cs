@@ -132,18 +132,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
+        /// <param name="category"> The category </param>
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="endDate"> The end_date </param>
         /// <returns> YesterdayReader capable of executing the read </returns> 
-        public static YesterdayReader Reader(string accountSid) {
-            return new YesterdayReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a YesterdayReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> YesterdayReader capable of executing the read </returns> 
-        public static YesterdayReader Reader() {
-            return new YesterdayReader();
+        public static YesterdayReader Reader(string accountSid=null, YesterdayResource.Category category=null, DateTime? startDate=null, DateTime? endDate=null) {
+            return new YesterdayReader(accountSid:accountSid, category:category, startDate:startDate, endDate:endDate);
         }
     
         /// <summary>

@@ -24,85 +24,22 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        public TaskReader(string workspaceSid) {
-            this.workspaceSid = workspaceSid;
-        }
-    
-        /// <summary>
-        /// The priority
-        /// </summary>
-        ///
         /// <param name="priority"> The priority </param>
-        /// <returns> this </returns> 
-        public TaskReader ByPriority(int? priority) {
-            this.priority = priority;
-            return this;
-        }
-    
-        /// <summary>
-        /// The assignment_status
-        /// </summary>
-        ///
         /// <param name="assignmentStatus"> The assignment_status </param>
-        /// <returns> this </returns> 
-        public TaskReader ByAssignmentStatus(TaskResource.Status assignmentStatus) {
-            this.assignmentStatus = assignmentStatus;
-            return this;
-        }
-    
-        /// <summary>
-        /// The workflow_sid
-        /// </summary>
-        ///
         /// <param name="workflowSid"> The workflow_sid </param>
-        /// <returns> this </returns> 
-        public TaskReader ByWorkflowSid(string workflowSid) {
-            this.workflowSid = workflowSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The workflow_name
-        /// </summary>
-        ///
         /// <param name="workflowName"> The workflow_name </param>
-        /// <returns> this </returns> 
-        public TaskReader ByWorkflowName(string workflowName) {
-            this.workflowName = workflowName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The task_queue_sid
-        /// </summary>
-        ///
         /// <param name="taskQueueSid"> The task_queue_sid </param>
-        /// <returns> this </returns> 
-        public TaskReader ByTaskQueueSid(string taskQueueSid) {
-            this.taskQueueSid = taskQueueSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The task_queue_name
-        /// </summary>
-        ///
         /// <param name="taskQueueName"> The task_queue_name </param>
-        /// <returns> this </returns> 
-        public TaskReader ByTaskQueueName(string taskQueueName) {
-            this.taskQueueName = taskQueueName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The task_channel
-        /// </summary>
-        ///
         /// <param name="taskChannel"> The task_channel </param>
-        /// <returns> this </returns> 
-        public TaskReader ByTaskChannel(string taskChannel) {
+        public TaskReader(string workspaceSid, int? priority=null, TaskResource.Status assignmentStatus=null, string workflowSid=null, string workflowName=null, string taskQueueSid=null, string taskQueueName=null, string taskChannel=null) {
+            this.workspaceSid = workspaceSid;
+            this.taskQueueSid = taskQueueSid;
+            this.workflowSid = workflowSid;
+            this.workflowName = workflowName;
+            this.assignmentStatus = assignmentStatus;
             this.taskChannel = taskChannel;
-            return this;
+            this.priority = priority;
+            this.taskQueueName = taskQueueName;
         }
     
         #if NET40

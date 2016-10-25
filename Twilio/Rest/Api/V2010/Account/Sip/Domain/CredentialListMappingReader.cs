@@ -14,21 +14,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         public string domainSid { get; }
     
         /// <summary>
-        /// Construct a new CredentialListMappingReader.
-        /// </summary>
-        ///
-        /// <param name="domainSid"> The domain_sid </param>
-        public CredentialListMappingReader(string domainSid) {
-            this.domainSid = domainSid;
-        }
-    
-        /// <summary>
         /// Construct a new CredentialListMappingReader
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="domainSid"> The domain_sid </param>
-        public CredentialListMappingReader(string accountSid, string domainSid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public CredentialListMappingReader(string domainSid, string accountSid=null) {
             this.accountSid = accountSid;
             this.domainSid = domainSid;
         }

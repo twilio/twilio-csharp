@@ -28,9 +28,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="channelSid"> The channel_sid </param>
         /// <param name="identity"> The identity </param>
+        /// <param name="roleSid"> The role_sid </param>
         /// <returns> MemberCreator capable of executing the create </returns> 
-        public static MemberCreator Creator(string serviceSid, string channelSid, string identity) {
-            return new MemberCreator(serviceSid, channelSid, identity);
+        public static MemberCreator Creator(string serviceSid, string channelSid, string identity, string roleSid=null) {
+            return new MemberCreator(serviceSid, channelSid, identity, roleSid:roleSid);
         }
     
         /// <summary>
@@ -81,6 +82,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         public string serviceSid { get; }
         [JsonProperty("identity")]
         public string identity { get; }
+        [JsonProperty("last_consumed_message_index")]
+        public int? lastConsumedMessageIndex { get; }
+        [JsonProperty("last_consumption_timestamp")]
+        public DateTime? lastConsumptionTimestamp { get; }
         [JsonProperty("date_created")]
         public DateTime? dateCreated { get; }
         [JsonProperty("date_updated")]
@@ -104,6 +109,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
                                string serviceSid, 
                                [JsonProperty("identity")]
                                string identity, 
+                               [JsonProperty("last_consumed_message_index")]
+                               int? lastConsumedMessageIndex, 
+                               [JsonProperty("last_consumption_timestamp")]
+                               string lastConsumptionTimestamp, 
                                [JsonProperty("date_created")]
                                string dateCreated, 
                                [JsonProperty("date_updated")]
@@ -117,6 +126,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
             this.channelSid = channelSid;
             this.serviceSid = serviceSid;
             this.identity = identity;
+            this.lastConsumedMessageIndex = lastConsumedMessageIndex;
+            this.lastConsumptionTimestamp = MarshalConverter.DateTimeFromString(lastConsumptionTimestamp);
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.roleSid = roleSid;

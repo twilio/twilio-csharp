@@ -15,40 +15,16 @@ namespace Twilio.Rest.Api.V2010 {
         public AccountResource.Status status { get; set; }
     
         /// <summary>
-        /// Construct a new AccountUpdater.
-        /// </summary>
-        public AccountUpdater() {
-        }
-    
-        /// <summary>
         /// Construct a new AccountUpdater
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        public AccountUpdater(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
-        /// Update the human-readable description of this Account
-        /// </summary>
-        ///
         /// <param name="friendlyName"> FriendlyName to update </param>
-        /// <returns> this </returns> 
-        public AccountUpdater setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// Alter the status of this account with a given Status
-        /// </summary>
-        ///
         /// <param name="status"> Status to update the Account with </param>
-        /// <returns> this </returns> 
-        public AccountUpdater setStatus(AccountResource.Status status) {
+        public AccountUpdater(string sid=null, string friendlyName=null, AccountResource.Status status=null) {
+            this.friendlyName = friendlyName;
+            this.sid = sid;
             this.status = status;
-            return this;
         }
     
         #if NET40

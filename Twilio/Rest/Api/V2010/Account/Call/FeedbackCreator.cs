@@ -17,27 +17,18 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         public List<FeedbackResource.Issues> issue { get; set; }
     
         /// <summary>
-        /// Construct a new FeedbackCreator.
-        /// </summary>
-        ///
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="qualityScore"> The quality_score </param>
-        public FeedbackCreator(string callSid, int? qualityScore) {
-            this.callSid = callSid;
-            this.qualityScore = qualityScore;
-        }
-    
-        /// <summary>
         /// Construct a new FeedbackCreator
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="callSid"> The call_sid </param>
         /// <param name="qualityScore"> The quality_score </param>
-        public FeedbackCreator(string accountSid, string callSid, int? qualityScore) {
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="issue"> The issue </param>
+        public FeedbackCreator(string callSid, int? qualityScore, string accountSid=null, List<FeedbackResource.Issues> issue=null) {
             this.accountSid = accountSid;
-            this.callSid = callSid;
             this.qualityScore = qualityScore;
+            this.issue = issue;
+            this.callSid = callSid;
         }
     
         #if NET40

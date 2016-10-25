@@ -28,9 +28,11 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="channelSid"> The channel_sid </param>
         /// <param name="body"> The body </param>
+        /// <param name="from"> The from </param>
+        /// <param name="attributes"> The attributes </param>
         /// <returns> MessageCreator capable of executing the create </returns> 
-        public static MessageCreator Creator(string serviceSid, string channelSid, string body) {
-            return new MessageCreator(serviceSid, channelSid, body);
+        public static MessageCreator Creator(string serviceSid, string channelSid, string body, string from=null, string attributes=null) {
+            return new MessageCreator(serviceSid, channelSid, body, from:from, attributes:attributes);
         }
     
         /// <summary>
@@ -64,9 +66,10 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         /// <param name="channelSid"> The channel_sid </param>
         /// <param name="sid"> The sid </param>
         /// <param name="body"> The body </param>
+        /// <param name="attributes"> The attributes </param>
         /// <returns> MessageUpdater capable of executing the update </returns> 
-        public static MessageUpdater Updater(string serviceSid, string channelSid, string sid, string body) {
-            return new MessageUpdater(serviceSid, channelSid, sid, body);
+        public static MessageUpdater Updater(string serviceSid, string channelSid, string sid, string body, Object attributes=null) {
+            return new MessageUpdater(serviceSid, channelSid, sid, body, attributes:attributes);
         }
     
         /// <summary>
@@ -102,6 +105,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         public string from { get; }
         [JsonProperty("body")]
         public string body { get; }
+        [JsonProperty("index")]
+        public int? index { get; }
         [JsonProperty("url")]
         public Uri url { get; }
     
@@ -127,6 +132,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
                                 string from, 
                                 [JsonProperty("body")]
                                 string body, 
+                                [JsonProperty("index")]
+                                int? index, 
                                 [JsonProperty("url")]
                                 Uri url) {
             this.sid = sid;
@@ -138,6 +145,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
             this.wasEdited = wasEdited;
             this.from = from;
             this.body = body;
+            this.index = index;
             this.url = url;
         }
     }

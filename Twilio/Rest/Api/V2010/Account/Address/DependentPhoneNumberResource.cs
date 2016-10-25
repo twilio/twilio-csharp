@@ -14,21 +14,11 @@ namespace Twilio.Rest.Api.V2010.Account.Address {
         /// read
         /// </summary>
         ///
+        /// <param name="addressSid"> The address_sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="addressSid"> The address_sid </param>
         /// <returns> DependentPhoneNumberReader capable of executing the read </returns> 
-        public static DependentPhoneNumberReader Reader(string accountSid, string addressSid) {
-            return new DependentPhoneNumberReader(accountSid, addressSid);
-        }
-    
-        /// <summary>
-        /// Create a DependentPhoneNumberReader to execute read.
-        /// </summary>
-        ///
-        /// <param name="addressSid"> The address_sid </param>
-        /// <returns> DependentPhoneNumberReader capable of executing the read </returns> 
-        public static DependentPhoneNumberReader Reader(string addressSid) {
-            return new DependentPhoneNumberReader(addressSid);
+        public static DependentPhoneNumberReader Reader(string addressSid, string accountSid=null) {
+            return new DependentPhoneNumberReader(addressSid, accountSid:accountSid);
         }
     
         /// <summary>

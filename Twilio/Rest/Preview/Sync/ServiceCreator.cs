@@ -15,6 +15,19 @@ namespace Twilio.Rest.Preview.Sync {
         public Uri webhookUrl { get; set; }
         public bool? reachabilityWebhooksEnabled { get; set; }
     
+        /// <summary>
+        /// Construct a new ServiceCreator
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="webhookUrl"> The webhook_url </param>
+        /// <param name="reachabilityWebhooksEnabled"> The reachability_webhooks_enabled </param>
+        public ServiceCreator(string friendlyName=null, Uri webhookUrl=null, bool? reachabilityWebhooksEnabled=null) {
+            this.friendlyName = friendlyName;
+            this.reachabilityWebhooksEnabled = reachabilityWebhooksEnabled;
+            this.webhookUrl = webhookUrl;
+        }
+    
         #if NET40
         /// <summary>
         /// Make the request to the Twilio API to perform the create

@@ -16,45 +16,18 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         public bool? hold { get; set; }
     
         /// <summary>
-        /// Construct a new ParticipantReader.
-        /// </summary>
-        ///
-        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
-        public ParticipantReader(string conferenceSid) {
-            this.conferenceSid = conferenceSid;
-        }
-    
-        /// <summary>
         /// Construct a new ParticipantReader
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
-        public ParticipantReader(string accountSid, string conferenceSid) {
-            this.accountSid = accountSid;
-            this.conferenceSid = conferenceSid;
-        }
-    
-        /// <summary>
-        /// Only show participants that are muted or unmuted
-        /// </summary>
-        ///
+        /// <param name="accountSid"> The account_sid </param>
         /// <param name="muted"> Filter by muted participants </param>
-        /// <returns> this </returns> 
-        public ParticipantReader ByMuted(bool? muted) {
-            this.muted = muted;
-            return this;
-        }
-    
-        /// <summary>
-        /// The hold
-        /// </summary>
-        ///
         /// <param name="hold"> The hold </param>
-        /// <returns> this </returns> 
-        public ParticipantReader ByHold(bool? hold) {
+        public ParticipantReader(string conferenceSid, string accountSid=null, bool? muted=null, bool? hold=null) {
+            this.accountSid = accountSid;
             this.hold = hold;
-            return this;
+            this.muted = muted;
+            this.conferenceSid = conferenceSid;
         }
     
         #if NET40

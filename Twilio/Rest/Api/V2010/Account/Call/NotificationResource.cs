@@ -13,69 +13,37 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// fetch
         /// </summary>
         ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="sid"> The sid </param>
         /// <returns> NotificationFetcher capable of executing the fetch </returns> 
-        public static NotificationFetcher Fetcher(string accountSid, string callSid, string sid) {
-            return new NotificationFetcher(accountSid, callSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a NotificationFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> NotificationFetcher capable of executing the fetch </returns> 
-        public static NotificationFetcher Fetcher(string callSid, 
-                                                  string sid) {
-            return new NotificationFetcher(callSid, sid);
+        public static NotificationFetcher Fetcher(string callSid, string sid, string accountSid=null) {
+            return new NotificationFetcher(callSid, sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// delete
         /// </summary>
         ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="sid"> The sid </param>
         /// <returns> NotificationDeleter capable of executing the delete </returns> 
-        public static NotificationDeleter Deleter(string accountSid, string callSid, string sid) {
-            return new NotificationDeleter(accountSid, callSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a NotificationDeleter to execute delete.
-        /// </summary>
-        ///
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> NotificationDeleter capable of executing the delete </returns> 
-        public static NotificationDeleter Deleter(string callSid, 
-                                                  string sid) {
-            return new NotificationDeleter(callSid, sid);
+        public static NotificationDeleter Deleter(string callSid, string sid, string accountSid=null) {
+            return new NotificationDeleter(callSid, sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// read
         /// </summary>
         ///
+        /// <param name="callSid"> The call_sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="callSid"> The call_sid </param>
+        /// <param name="log"> The log </param>
+        /// <param name="messageDate"> The message_date </param>
         /// <returns> NotificationReader capable of executing the read </returns> 
-        public static NotificationReader Reader(string accountSid, string callSid) {
-            return new NotificationReader(accountSid, callSid);
-        }
-    
-        /// <summary>
-        /// Create a NotificationReader to execute read.
-        /// </summary>
-        ///
-        /// <param name="callSid"> The call_sid </param>
-        /// <returns> NotificationReader capable of executing the read </returns> 
-        public static NotificationReader Reader(string callSid) {
-            return new NotificationReader(callSid);
+        public static NotificationReader Reader(string callSid, string accountSid=null, int? log=null, string messageDate=null) {
+            return new NotificationReader(callSid, accountSid:accountSid, log:log, messageDate:messageDate);
         }
     
         /// <summary>
@@ -118,16 +86,16 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         public Twilio.Http.HttpMethod requestMethod { get; }
         [JsonProperty("request_url")]
         public Uri requestUrl { get; }
-        [JsonProperty("sid")]
-        public string sid { get; }
-        [JsonProperty("uri")]
-        public string uri { get; }
         [JsonProperty("request_variables")]
         public string requestVariables { get; }
         [JsonProperty("response_body")]
         public string responseBody { get; }
         [JsonProperty("response_headers")]
         public string responseHeaders { get; }
+        [JsonProperty("sid")]
+        public string sid { get; }
+        [JsonProperty("uri")]
+        public string uri { get; }
     
         public NotificationResource() {
         
@@ -157,16 +125,16 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
                                      Twilio.Http.HttpMethod requestMethod, 
                                      [JsonProperty("request_url")]
                                      Uri requestUrl, 
-                                     [JsonProperty("sid")]
-                                     string sid, 
-                                     [JsonProperty("uri")]
-                                     string uri, 
                                      [JsonProperty("request_variables")]
                                      string requestVariables, 
                                      [JsonProperty("response_body")]
                                      string responseBody, 
                                      [JsonProperty("response_headers")]
-                                     string responseHeaders) {
+                                     string responseHeaders, 
+                                     [JsonProperty("sid")]
+                                     string sid, 
+                                     [JsonProperty("uri")]
+                                     string uri) {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
             this.callSid = callSid;
@@ -179,11 +147,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
             this.moreInfo = moreInfo;
             this.requestMethod = requestMethod;
             this.requestUrl = requestUrl;
-            this.sid = sid;
-            this.uri = uri;
             this.requestVariables = requestVariables;
             this.responseBody = responseBody;
             this.responseHeaders = responseHeaders;
+            this.sid = sid;
+            this.uri = uri;
         }
     }
 }

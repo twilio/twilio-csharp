@@ -73,9 +73,10 @@ namespace Twilio.Rest.Api.V2010 {
         /// Create a new Twilio Subaccount from the account making the request
         /// </summary>
         ///
+        /// <param name="friendlyName"> A human readable description of the account </param>
         /// <returns> AccountCreator capable of executing the create </returns> 
-        public static AccountCreator Creator() {
-            return new AccountCreator();
+        public static AccountCreator Creator(string friendlyName=null) {
+            return new AccountCreator(friendlyName:friendlyName);
         }
     
         /// <summary>
@@ -84,26 +85,19 @@ namespace Twilio.Rest.Api.V2010 {
         ///
         /// <param name="sid"> Fetch by unique Account Sid </param>
         /// <returns> AccountFetcher capable of executing the fetch </returns> 
-        public static AccountFetcher Fetcher(string sid) {
-            return new AccountFetcher(sid);
-        }
-    
-        /// <summary>
-        /// Create a AccountFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <returns> AccountFetcher capable of executing the fetch </returns> 
-        public static AccountFetcher Fetcher() {
-            return new AccountFetcher();
+        public static AccountFetcher Fetcher(string sid=null) {
+            return new AccountFetcher(sid:sid);
         }
     
         /// <summary>
         /// Retrieves a collection of Accounts belonging to the account used to make the request
         /// </summary>
         ///
+        /// <param name="friendlyName"> FriendlyName to filter on </param>
+        /// <param name="status"> Status to filter on </param>
         /// <returns> AccountReader capable of executing the read </returns> 
-        public static AccountReader Reader() {
-            return new AccountReader();
+        public static AccountReader Reader(string friendlyName=null, AccountResource.Status status=null) {
+            return new AccountReader(friendlyName:friendlyName, status:status);
         }
     
         /// <summary>
@@ -111,18 +105,11 @@ namespace Twilio.Rest.Api.V2010 {
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> FriendlyName to update </param>
+        /// <param name="status"> Status to update the Account with </param>
         /// <returns> AccountUpdater capable of executing the update </returns> 
-        public static AccountUpdater Updater(string sid) {
-            return new AccountUpdater(sid);
-        }
-    
-        /// <summary>
-        /// Create a AccountUpdater to execute update.
-        /// </summary>
-        ///
-        /// <returns> AccountUpdater capable of executing the update </returns> 
-        public static AccountUpdater Updater() {
-            return new AccountUpdater();
+        public static AccountUpdater Updater(string sid=null, string friendlyName=null, AccountResource.Status status=null) {
+            return new AccountUpdater(sid:sid, friendlyName:friendlyName, status:status);
         }
     
         /// <summary>

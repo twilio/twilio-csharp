@@ -13,17 +13,11 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string accountSid { get; }
     
         /// <summary>
-        /// Construct a new AvailablePhoneNumberCountryReader.
-        /// </summary>
-        public AvailablePhoneNumberCountryReader() {
-        }
-    
-        /// <summary>
         /// Construct a new AvailablePhoneNumberCountryReader
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public AvailablePhoneNumberCountryReader(string accountSid) {
+        public AvailablePhoneNumberCountryReader(string accountSid=null) {
             this.accountSid = accountSid;
         }
     

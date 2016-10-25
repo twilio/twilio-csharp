@@ -19,30 +19,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        public ActivityReader(string workspaceSid) {
-            this.workspaceSid = workspaceSid;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public ActivityReader ByFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The available
-        /// </summary>
-        ///
         /// <param name="available"> The available </param>
-        /// <returns> this </returns> 
-        public ActivityReader ByAvailable(string available) {
+        public ActivityReader(string workspaceSid, string friendlyName=null, string available=null) {
+            this.workspaceSid = workspaceSid;
             this.available = available;
-            return this;
+            this.friendlyName = friendlyName;
         }
     
         #if NET40

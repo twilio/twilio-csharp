@@ -132,18 +132,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
+        /// <param name="category"> The category </param>
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="endDate"> The end_date </param>
         /// <returns> ThisMonthReader capable of executing the read </returns> 
-        public static ThisMonthReader Reader(string accountSid) {
-            return new ThisMonthReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a ThisMonthReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> ThisMonthReader capable of executing the read </returns> 
-        public static ThisMonthReader Reader() {
-            return new ThisMonthReader();
+        public static ThisMonthReader Reader(string accountSid=null, ThisMonthResource.Category category=null, DateTime? startDate=null, DateTime? endDate=null) {
+            return new ThisMonthReader(accountSid:accountSid, category:category, startDate:startDate, endDate:endDate);
         }
     
         /// <summary>

@@ -13,63 +13,34 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// fetch
         /// </summary>
         ///
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> The sid </param>
         /// <returns> KeyFetcher capable of executing the fetch </returns> 
-        public static KeyFetcher Fetcher(string accountSid, string sid) {
-            return new KeyFetcher(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a KeyFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> KeyFetcher capable of executing the fetch </returns> 
-        public static KeyFetcher Fetcher(string sid) {
-            return new KeyFetcher(sid);
+        public static KeyFetcher Fetcher(string sid, string accountSid=null) {
+            return new KeyFetcher(sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// update
         /// </summary>
         ///
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> KeyUpdater capable of executing the update </returns> 
-        public static KeyUpdater Updater(string accountSid, string sid) {
-            return new KeyUpdater(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a KeyUpdater to execute update.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> KeyUpdater capable of executing the update </returns> 
-        public static KeyUpdater Updater(string sid) {
-            return new KeyUpdater(sid);
+        public static KeyUpdater Updater(string sid, string accountSid=null, string friendlyName=null) {
+            return new KeyUpdater(sid, accountSid:accountSid, friendlyName:friendlyName);
         }
     
         /// <summary>
         /// delete
         /// </summary>
         ///
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> The sid </param>
         /// <returns> KeyDeleter capable of executing the delete </returns> 
-        public static KeyDeleter Deleter(string accountSid, string sid) {
-            return new KeyDeleter(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a KeyDeleter to execute delete.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> KeyDeleter capable of executing the delete </returns> 
-        public static KeyDeleter Deleter(string sid) {
-            return new KeyDeleter(sid);
+        public static KeyDeleter Deleter(string sid, string accountSid=null) {
+            return new KeyDeleter(sid, accountSid:accountSid);
         }
     
         /// <summary>
@@ -78,17 +49,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> KeyReader capable of executing the read </returns> 
-        public static KeyReader Reader(string accountSid) {
-            return new KeyReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a KeyReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> KeyReader capable of executing the read </returns> 
-        public static KeyReader Reader() {
-            return new KeyReader();
+        public static KeyReader Reader(string accountSid=null) {
+            return new KeyReader(accountSid:accountSid);
         }
     
         /// <summary>

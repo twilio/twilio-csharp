@@ -24,42 +24,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="workerSid"> The worker_sid </param>
-        public WorkerStatisticsFetcher(string workspaceSid, string workerSid) {
-            this.workspaceSid = workspaceSid;
-            this.workerSid = workerSid;
-        }
-    
-        /// <summary>
-        /// The minutes
-        /// </summary>
-        ///
         /// <param name="minutes"> The minutes </param>
-        /// <returns> this </returns> 
-        public WorkerStatisticsFetcher setMinutes(int? minutes) {
-            this.minutes = minutes;
-            return this;
-        }
-    
-        /// <summary>
-        /// The start_date
-        /// </summary>
-        ///
         /// <param name="startDate"> The start_date </param>
-        /// <returns> this </returns> 
-        public WorkerStatisticsFetcher setStartDate(DateTime? startDate) {
-            this.startDate = startDate;
-            return this;
-        }
-    
-        /// <summary>
-        /// The end_date
-        /// </summary>
-        ///
         /// <param name="endDate"> The end_date </param>
-        /// <returns> this </returns> 
-        public WorkerStatisticsFetcher setEndDate(DateTime? endDate) {
+        public WorkerStatisticsFetcher(string workspaceSid, string workerSid, int? minutes=null, DateTime? startDate=null, DateTime? endDate=null) {
+            this.workspaceSid = workspaceSid;
+            this.startDate = startDate;
+            this.minutes = minutes;
             this.endDate = endDate;
-            return this;
+            this.workerSid = workerSid;
         }
     
         #if NET40

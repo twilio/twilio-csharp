@@ -15,17 +15,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> SandboxFetcher capable of executing the fetch </returns> 
-        public static SandboxFetcher Fetcher(string accountSid) {
-            return new SandboxFetcher(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a SandboxFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <returns> SandboxFetcher capable of executing the fetch </returns> 
-        public static SandboxFetcher Fetcher() {
-            return new SandboxFetcher();
+        public static SandboxFetcher Fetcher(string accountSid=null) {
+            return new SandboxFetcher(accountSid:accountSid);
         }
     
         /// <summary>
@@ -33,18 +24,15 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
+        /// <param name="voiceUrl"> The voice_url </param>
+        /// <param name="voiceMethod"> The voice_method </param>
+        /// <param name="smsUrl"> The sms_url </param>
+        /// <param name="smsMethod"> The sms_method </param>
+        /// <param name="statusCallback"> The status_callback </param>
+        /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <returns> SandboxUpdater capable of executing the update </returns> 
-        public static SandboxUpdater Updater(string accountSid) {
-            return new SandboxUpdater(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a SandboxUpdater to execute update.
-        /// </summary>
-        ///
-        /// <returns> SandboxUpdater capable of executing the update </returns> 
-        public static SandboxUpdater Updater() {
-            return new SandboxUpdater();
+        public static SandboxUpdater Updater(string accountSid=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null) {
+            return new SandboxUpdater(accountSid:accountSid, voiceUrl:voiceUrl, voiceMethod:voiceMethod, smsUrl:smsUrl, smsMethod:smsMethod, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod);
         }
     
         /// <summary>

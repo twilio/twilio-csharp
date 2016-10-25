@@ -132,18 +132,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
+        /// <param name="category"> Only include usage of a given category </param>
+        /// <param name="startDate"> Filter by start date </param>
+        /// <param name="endDate"> Filter by end date </param>
         /// <returns> RecordReader capable of executing the read </returns> 
-        public static RecordReader Reader(string accountSid) {
-            return new RecordReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a RecordReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> RecordReader capable of executing the read </returns> 
-        public static RecordReader Reader() {
-            return new RecordReader();
+        public static RecordReader Reader(string accountSid=null, RecordResource.Category category=null, DateTime? startDate=null, DateTime? endDate=null) {
+            return new RecordReader(accountSid:accountSid, category:category, startDate:startDate, endDate:endDate);
         }
     
         /// <summary>

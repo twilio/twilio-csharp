@@ -16,51 +16,18 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
         public Twilio.Types.PhoneNumber phoneNumber { get; set; }
     
         /// <summary>
-        /// Construct a new TollFreeReader.
-        /// </summary>
-        public TollFreeReader() {
-        }
-    
-        /// <summary>
         /// Construct a new TollFreeReader
         /// </summary>
         ///
         /// <param name="ownerAccountSid"> The owner_account_sid </param>
-        public TollFreeReader(string ownerAccountSid) {
-            this.ownerAccountSid = ownerAccountSid;
-        }
-    
-        /// <summary>
-        /// The beta
-        /// </summary>
-        ///
         /// <param name="beta"> The beta </param>
-        /// <returns> this </returns> 
-        public TollFreeReader ByBeta(bool? beta) {
-            this.beta = beta;
-            return this;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public TollFreeReader ByFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The phone_number
-        /// </summary>
-        ///
         /// <param name="phoneNumber"> The phone_number </param>
-        /// <returns> this </returns> 
-        public TollFreeReader ByPhoneNumber(Twilio.Types.PhoneNumber phoneNumber) {
+        public TollFreeReader(string ownerAccountSid=null, bool? beta=null, string friendlyName=null, Twilio.Types.PhoneNumber phoneNumber=null) {
+            this.friendlyName = friendlyName;
             this.phoneNumber = phoneNumber;
-            return this;
+            this.ownerAccountSid = ownerAccountSid;
+            this.beta = beta;
         }
     
         #if NET40

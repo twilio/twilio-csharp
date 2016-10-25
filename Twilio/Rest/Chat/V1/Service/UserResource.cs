@@ -37,9 +37,12 @@ namespace Twilio.Rest.Chat.V1.Service {
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="identity"> The identity </param>
+        /// <param name="roleSid"> The role_sid </param>
+        /// <param name="attributes"> The attributes </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> UserCreator capable of executing the create </returns> 
-        public static UserCreator Creator(string serviceSid, string identity) {
-            return new UserCreator(serviceSid, identity);
+        public static UserCreator Creator(string serviceSid, string identity, string roleSid=null, string attributes=null, string friendlyName=null) {
+            return new UserCreator(serviceSid, identity, roleSid:roleSid, attributes:attributes, friendlyName:friendlyName);
         }
     
         /// <summary>
@@ -58,9 +61,12 @@ namespace Twilio.Rest.Chat.V1.Service {
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
+        /// <param name="roleSid"> The role_sid </param>
+        /// <param name="attributes"> The attributes </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> UserUpdater capable of executing the update </returns> 
-        public static UserUpdater Updater(string serviceSid, string sid) {
-            return new UserUpdater(serviceSid, sid);
+        public static UserUpdater Updater(string serviceSid, string sid, string roleSid=null, Object attributes=null, string friendlyName=null) {
+            return new UserUpdater(serviceSid, sid, roleSid:roleSid, attributes:attributes, friendlyName:friendlyName);
         }
     
         /// <summary>
@@ -86,6 +92,10 @@ namespace Twilio.Rest.Chat.V1.Service {
         public string serviceSid { get; }
         [JsonProperty("role_sid")]
         public string roleSid { get; }
+        [JsonProperty("attributes")]
+        public string attributes { get; }
+        [JsonProperty("friendly_name")]
+        public string friendlyName { get; }
         [JsonProperty("identity")]
         public string identity { get; }
         [JsonProperty("date_created")]
@@ -107,6 +117,10 @@ namespace Twilio.Rest.Chat.V1.Service {
                              string serviceSid, 
                              [JsonProperty("role_sid")]
                              string roleSid, 
+                             [JsonProperty("attributes")]
+                             string attributes, 
+                             [JsonProperty("friendly_name")]
+                             string friendlyName, 
                              [JsonProperty("identity")]
                              string identity, 
                              [JsonProperty("date_created")]
@@ -119,6 +133,8 @@ namespace Twilio.Rest.Chat.V1.Service {
             this.accountSid = accountSid;
             this.serviceSid = serviceSid;
             this.roleSid = roleSid;
+            this.attributes = attributes;
+            this.friendlyName = friendlyName;
             this.identity = identity;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);

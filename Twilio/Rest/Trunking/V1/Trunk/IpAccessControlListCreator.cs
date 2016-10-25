@@ -20,8 +20,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         public IpAccessControlListCreator(string trunkSid, string ipAccessControlListSid) {
-            this.trunkSid = trunkSid;
             this.ipAccessControlListSid = ipAccessControlListSid;
+            this.trunkSid = trunkSid;
         }
     
         #if NET40

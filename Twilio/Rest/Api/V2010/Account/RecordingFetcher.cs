@@ -14,21 +14,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string sid { get; }
     
         /// <summary>
-        /// Construct a new RecordingFetcher.
-        /// </summary>
-        ///
-        /// <param name="sid"> Fetch by unique recording Sid </param>
-        public RecordingFetcher(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new RecordingFetcher
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> Fetch by unique recording Sid </param>
-        public RecordingFetcher(string accountSid, string sid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public RecordingFetcher(string sid, string accountSid=null) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

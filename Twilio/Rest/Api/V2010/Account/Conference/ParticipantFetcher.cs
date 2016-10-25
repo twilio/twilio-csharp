@@ -15,27 +15,16 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         public string callSid { get; }
     
         /// <summary>
-        /// Construct a new ParticipantFetcher.
-        /// </summary>
-        ///
-        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="callSid"> The call_sid </param>
-        public ParticipantFetcher(string conferenceSid, string callSid) {
-            this.conferenceSid = conferenceSid;
-            this.callSid = callSid;
-        }
-    
-        /// <summary>
         /// Construct a new ParticipantFetcher
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
         /// <param name="callSid"> The call_sid </param>
-        public ParticipantFetcher(string accountSid, string conferenceSid, string callSid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public ParticipantFetcher(string conferenceSid, string callSid, string accountSid=null) {
             this.accountSid = accountSid;
-            this.conferenceSid = conferenceSid;
             this.callSid = callSid;
+            this.conferenceSid = conferenceSid;
         }
     
         #if NET40

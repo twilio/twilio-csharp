@@ -15,27 +15,16 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         public string ipAccessControlListSid { get; }
     
         /// <summary>
-        /// Construct a new IpAccessControlListMappingCreator.
-        /// </summary>
-        ///
-        /// <param name="domainSid"> The domain_sid </param>
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
-        public IpAccessControlListMappingCreator(string domainSid, string ipAccessControlListSid) {
-            this.domainSid = domainSid;
-            this.ipAccessControlListSid = ipAccessControlListSid;
-        }
-    
-        /// <summary>
         /// Construct a new IpAccessControlListMappingCreator
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="domainSid"> The domain_sid </param>
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
-        public IpAccessControlListMappingCreator(string accountSid, string domainSid, string ipAccessControlListSid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public IpAccessControlListMappingCreator(string domainSid, string ipAccessControlListSid, string accountSid=null) {
             this.accountSid = accountSid;
-            this.domainSid = domainSid;
             this.ipAccessControlListSid = ipAccessControlListSid;
+            this.domainSid = domainSid;
         }
     
         #if NET40

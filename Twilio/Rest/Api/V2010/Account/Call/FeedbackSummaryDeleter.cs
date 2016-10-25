@@ -15,21 +15,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         public string sid { get; }
     
         /// <summary>
-        /// Construct a new FeedbackSummaryDeleter.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        public FeedbackSummaryDeleter(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new FeedbackSummaryDeleter
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> The sid </param>
-        public FeedbackSummaryDeleter(string accountSid, string sid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public FeedbackSummaryDeleter(string sid, string accountSid=null) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

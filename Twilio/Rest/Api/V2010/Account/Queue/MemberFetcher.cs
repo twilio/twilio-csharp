@@ -15,27 +15,16 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         public string callSid { get; }
     
         /// <summary>
-        /// Construct a new MemberFetcher.
-        /// </summary>
-        ///
-        /// <param name="queueSid"> The Queue in which to find the members </param>
-        /// <param name="callSid"> The call_sid </param>
-        public MemberFetcher(string queueSid, string callSid) {
-            this.queueSid = queueSid;
-            this.callSid = callSid;
-        }
-    
-        /// <summary>
         /// Construct a new MemberFetcher
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="queueSid"> The Queue in which to find the members </param>
         /// <param name="callSid"> The call_sid </param>
-        public MemberFetcher(string accountSid, string queueSid, string callSid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public MemberFetcher(string queueSid, string callSid, string accountSid=null) {
             this.accountSid = accountSid;
-            this.queueSid = queueSid;
             this.callSid = callSid;
+            this.queueSid = queueSid;
         }
     
         #if NET40

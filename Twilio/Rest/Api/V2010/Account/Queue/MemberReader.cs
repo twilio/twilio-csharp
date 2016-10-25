@@ -14,21 +14,12 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         public string queueSid { get; }
     
         /// <summary>
-        /// Construct a new MemberReader.
-        /// </summary>
-        ///
-        /// <param name="queueSid"> The Queue in which to find members </param>
-        public MemberReader(string queueSid) {
-            this.queueSid = queueSid;
-        }
-    
-        /// <summary>
         /// Construct a new MemberReader
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="queueSid"> The Queue in which to find members </param>
-        public MemberReader(string accountSid, string queueSid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public MemberReader(string queueSid, string accountSid=null) {
             this.accountSid = accountSid;
             this.queueSid = queueSid;
         }

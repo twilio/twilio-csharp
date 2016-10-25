@@ -1,7 +1,6 @@
 using System;
 using Twilio.Base;
 using Twilio.Clients;
-using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -22,51 +21,14 @@ namespace Twilio.Rest.Preview.Sync {
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        public ServiceUpdater(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The webhook_url
-        /// </summary>
-        ///
         /// <param name="webhookUrl"> The webhook_url </param>
-        /// <returns> this </returns> 
-        public ServiceUpdater setWebhookUrl(Uri webhookUrl) {
-            this.webhookUrl = webhookUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The webhook_url
-        /// </summary>
-        ///
-        /// <param name="webhookUrl"> The webhook_url </param>
-        /// <returns> this </returns> 
-        public ServiceUpdater setWebhookUrl(string webhookUrl) {
-            return setWebhookUrl(Promoter.UriFromString(webhookUrl));
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public ServiceUpdater setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The reachability_webhooks_enabled
-        /// </summary>
-        ///
         /// <param name="reachabilityWebhooksEnabled"> The reachability_webhooks_enabled </param>
-        /// <returns> this </returns> 
-        public ServiceUpdater setReachabilityWebhooksEnabled(bool? reachabilityWebhooksEnabled) {
+        public ServiceUpdater(string sid, Uri webhookUrl=null, string friendlyName=null, bool? reachabilityWebhooksEnabled=null) {
             this.reachabilityWebhooksEnabled = reachabilityWebhooksEnabled;
-            return this;
+            this.friendlyName = friendlyName;
+            this.sid = sid;
+            this.webhookUrl = webhookUrl;
         }
     
         #if NET40

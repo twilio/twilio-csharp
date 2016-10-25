@@ -43,21 +43,11 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// Fetch an instance of an authorized-connect-app
         /// </summary>
         ///
+        /// <param name="connectAppSid"> The connect_app_sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="connectAppSid"> The connect_app_sid </param>
         /// <returns> AuthorizedConnectAppFetcher capable of executing the fetch </returns> 
-        public static AuthorizedConnectAppFetcher Fetcher(string accountSid, string connectAppSid) {
-            return new AuthorizedConnectAppFetcher(accountSid, connectAppSid);
-        }
-    
-        /// <summary>
-        /// Create a AuthorizedConnectAppFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="connectAppSid"> The connect_app_sid </param>
-        /// <returns> AuthorizedConnectAppFetcher capable of executing the fetch </returns> 
-        public static AuthorizedConnectAppFetcher Fetcher(string connectAppSid) {
-            return new AuthorizedConnectAppFetcher(connectAppSid);
+        public static AuthorizedConnectAppFetcher Fetcher(string connectAppSid, string accountSid=null) {
+            return new AuthorizedConnectAppFetcher(connectAppSid, accountSid:accountSid);
         }
     
         /// <summary>
@@ -66,17 +56,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> AuthorizedConnectAppReader capable of executing the read </returns> 
-        public static AuthorizedConnectAppReader Reader(string accountSid) {
-            return new AuthorizedConnectAppReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a AuthorizedConnectAppReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> AuthorizedConnectAppReader capable of executing the read </returns> 
-        public static AuthorizedConnectAppReader Reader() {
-            return new AuthorizedConnectAppReader();
+        public static AuthorizedConnectAppReader Reader(string accountSid=null) {
+            return new AuthorizedConnectAppReader(accountSid:accountSid);
         }
     
         /// <summary>

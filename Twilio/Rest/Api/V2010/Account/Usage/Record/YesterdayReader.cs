@@ -18,51 +18,18 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
         public DateTime? endDate { get; set; }
     
         /// <summary>
-        /// Construct a new YesterdayReader.
-        /// </summary>
-        public YesterdayReader() {
-        }
-    
-        /// <summary>
         /// Construct a new YesterdayReader
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public YesterdayReader(string accountSid) {
-            this.accountSid = accountSid;
-        }
-    
-        /// <summary>
-        /// The category
-        /// </summary>
-        ///
         /// <param name="category"> The category </param>
-        /// <returns> this </returns> 
-        public YesterdayReader ByCategory(YesterdayResource.Category category) {
-            this.category = category;
-            return this;
-        }
-    
-        /// <summary>
-        /// The start_date
-        /// </summary>
-        ///
         /// <param name="startDate"> The start_date </param>
-        /// <returns> this </returns> 
-        public YesterdayReader ByStartDate(DateTime? startDate) {
-            this.startDate = startDate;
-            return this;
-        }
-    
-        /// <summary>
-        /// The end_date
-        /// </summary>
-        ///
         /// <param name="endDate"> The end_date </param>
-        /// <returns> this </returns> 
-        public YesterdayReader ByEndDate(DateTime? endDate) {
+        public YesterdayReader(string accountSid=null, YesterdayResource.Category category=null, DateTime? startDate=null, DateTime? endDate=null) {
+            this.accountSid = accountSid;
+            this.category = category;
+            this.startDate = startDate;
             this.endDate = endDate;
-            return this;
         }
     
         #if NET40

@@ -16,38 +16,19 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> AvailablePhoneNumberCountryReader capable of executing the read </returns> 
-        public static AvailablePhoneNumberCountryReader Reader(string accountSid) {
-            return new AvailablePhoneNumberCountryReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a AvailablePhoneNumberCountryReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> AvailablePhoneNumberCountryReader capable of executing the read </returns> 
-        public static AvailablePhoneNumberCountryReader Reader() {
-            return new AvailablePhoneNumberCountryReader();
+        public static AvailablePhoneNumberCountryReader Reader(string accountSid=null) {
+            return new AvailablePhoneNumberCountryReader(accountSid:accountSid);
         }
     
         /// <summary>
         /// fetch
         /// </summary>
         ///
+        /// <param name="countryCode"> The country_code </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="countryCode"> The country_code </param>
         /// <returns> AvailablePhoneNumberCountryFetcher capable of executing the fetch </returns> 
-        public static AvailablePhoneNumberCountryFetcher Fetcher(string accountSid, string countryCode) {
-            return new AvailablePhoneNumberCountryFetcher(accountSid, countryCode);
-        }
-    
-        /// <summary>
-        /// Create a AvailablePhoneNumberCountryFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="countryCode"> The country_code </param>
-        /// <returns> AvailablePhoneNumberCountryFetcher capable of executing the fetch </returns> 
-        public static AvailablePhoneNumberCountryFetcher Fetcher(string countryCode) {
-            return new AvailablePhoneNumberCountryFetcher(countryCode);
+        public static AvailablePhoneNumberCountryFetcher Fetcher(string countryCode, string accountSid=null) {
+            return new AvailablePhoneNumberCountryFetcher(countryCode, accountSid:accountSid);
         }
     
         /// <summary>

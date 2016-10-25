@@ -1,7 +1,6 @@
 using System;
 using Twilio.Base;
 using Twilio.Clients;
-using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -31,264 +30,44 @@ namespace Twilio.Rest.Api.V2010.Account {
         public Uri messageStatusCallback { get; set; }
     
         /// <summary>
-        /// Construct a new ApplicationUpdater.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        public ApplicationUpdater(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new ApplicationUpdater
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> The sid </param>
-        public ApplicationUpdater(string accountSid, string sid) {
-            this.accountSid = accountSid;
-            this.sid = sid;
-        }
-    
-        /// <summary>
-        /// A human readable descriptive text for this resource, up to 64 characters long.
-        /// </summary>
-        ///
+        /// <param name="accountSid"> The account_sid </param>
         /// <param name="friendlyName"> Human readable description of this resource </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// Requests to this application will start a new TwiML session with this API version.
-        /// </summary>
-        ///
         /// <param name="apiVersion"> The API version to use </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setApiVersion(string apiVersion) {
-            this.apiVersion = apiVersion;
-            return this;
-        }
-    
-        /// <summary>
-        /// The URL Twilio will request when a phone number assigned to this application receives a call.
-        /// </summary>
-        ///
         /// <param name="voiceUrl"> URL Twilio will make requests to when relieving a call </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setVoiceUrl(Uri voiceUrl) {
-            this.voiceUrl = voiceUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The URL Twilio will request when a phone number assigned to this application receives a call.
-        /// </summary>
-        ///
-        /// <param name="voiceUrl"> URL Twilio will make requests to when relieving a call </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setVoiceUrl(string voiceUrl) {
-            return setVoiceUrl(Promoter.UriFromString(voiceUrl));
-        }
-    
-        /// <summary>
-        /// The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`.
-        /// </summary>
-        ///
         /// <param name="voiceMethod"> HTTP method to use with the URL </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setVoiceMethod(Twilio.Http.HttpMethod voiceMethod) {
-            this.voiceMethod = voiceMethod;
-            return this;
-        }
-    
-        /// <summary>
-        /// The URL that Twilio will request if an error occurs retrieving or executing the TwiML requested by `Url`.
-        /// </summary>
-        ///
         /// <param name="voiceFallbackUrl"> Fallback URL </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setVoiceFallbackUrl(Uri voiceFallbackUrl) {
-            this.voiceFallbackUrl = voiceFallbackUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The URL that Twilio will request if an error occurs retrieving or executing the TwiML requested by `Url`.
-        /// </summary>
-        ///
-        /// <param name="voiceFallbackUrl"> Fallback URL </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setVoiceFallbackUrl(string voiceFallbackUrl) {
-            return setVoiceFallbackUrl(Promoter.UriFromString(voiceFallbackUrl));
-        }
-    
-        /// <summary>
-        /// The HTTP method Twilio will use when requesting the `VoiceFallbackUrl`. Either `GET` or `POST`.
-        /// </summary>
-        ///
         /// <param name="voiceFallbackMethod"> HTTP method to use with the fallback url </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setVoiceFallbackMethod(Twilio.Http.HttpMethod voiceFallbackMethod) {
-            this.voiceFallbackMethod = voiceFallbackMethod;
-            return this;
-        }
-    
-        /// <summary>
-        /// The URL that Twilio will request to pass status parameters (such as call ended) to your application.
-        /// </summary>
-        ///
         /// <param name="statusCallback"> URL to hit with status updates </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setStatusCallback(Uri statusCallback) {
-            this.statusCallback = statusCallback;
-            return this;
-        }
-    
-        /// <summary>
-        /// The URL that Twilio will request to pass status parameters (such as call ended) to your application.
-        /// </summary>
-        ///
-        /// <param name="statusCallback"> URL to hit with status updates </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setStatusCallback(string statusCallback) {
-            return setStatusCallback(Promoter.UriFromString(statusCallback));
-        }
-    
-        /// <summary>
-        /// The HTTP method Twilio will use to make requests to the `StatusCallback` URL. Either `GET` or `POST`.
-        /// </summary>
-        ///
         /// <param name="statusCallbackMethod"> HTTP method to use with the status callback </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setStatusCallbackMethod(Twilio.Http.HttpMethod statusCallbackMethod) {
-            this.statusCallbackMethod = statusCallbackMethod;
-            return this;
-        }
-    
-        /// <summary>
-        /// Look up the caller's caller-ID name from the CNAM database (additional charges apply). Either `true` or `false`.
-        /// </summary>
-        ///
         /// <param name="voiceCallerIdLookup"> True or False </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setVoiceCallerIdLookup(bool? voiceCallerIdLookup) {
-            this.voiceCallerIdLookup = voiceCallerIdLookup;
-            return this;
-        }
-    
-        /// <summary>
-        /// The URL Twilio will request when a phone number assigned to this application receives an incoming SMS message.
-        /// </summary>
-        ///
         /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setSmsUrl(Uri smsUrl) {
-            this.smsUrl = smsUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The URL Twilio will request when a phone number assigned to this application receives an incoming SMS message.
-        /// </summary>
-        ///
-        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setSmsUrl(string smsUrl) {
-            return setSmsUrl(Promoter.UriFromString(smsUrl));
-        }
-    
-        /// <summary>
-        /// The HTTP method Twilio will use when making requests to the `SmsUrl`. Either `GET` or `POST`.
-        /// </summary>
-        ///
         /// <param name="smsMethod"> HTTP method to use with sms_url </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setSmsMethod(Twilio.Http.HttpMethod smsMethod) {
-            this.smsMethod = smsMethod;
-            return this;
-        }
-    
-        /// <summary>
-        /// The URL that Twilio will request if an error occurs retrieving or executing the TwiML from `SmsUrl`.
-        /// </summary>
-        ///
         /// <param name="smsFallbackUrl"> Fallback URL if there's an error parsing TwiML </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setSmsFallbackUrl(Uri smsFallbackUrl) {
-            this.smsFallbackUrl = smsFallbackUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The URL that Twilio will request if an error occurs retrieving or executing the TwiML from `SmsUrl`.
-        /// </summary>
-        ///
-        /// <param name="smsFallbackUrl"> Fallback URL if there's an error parsing TwiML </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setSmsFallbackUrl(string smsFallbackUrl) {
-            return setSmsFallbackUrl(Promoter.UriFromString(smsFallbackUrl));
-        }
-    
-        /// <summary>
-        /// The HTTP method Twilio will use when requesting the above URL. Either `GET` or `POST`.
-        /// </summary>
-        ///
         /// <param name="smsFallbackMethod"> HTTP method to use with sms_fallback_method </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setSmsFallbackMethod(Twilio.Http.HttpMethod smsFallbackMethod) {
-            this.smsFallbackMethod = smsFallbackMethod;
-            return this;
-        }
-    
-        /// <summary>
-        /// The URL that Twilio will `POST` to when a message is sent via the `/SMS/Messages` endpoint if you specify the `Sid`
-        /// of this application on an outgoing SMS request.
-        /// </summary>
-        ///
         /// <param name="smsStatusCallback"> URL Twilio with request with status updates </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setSmsStatusCallback(Uri smsStatusCallback) {
-            this.smsStatusCallback = smsStatusCallback;
-            return this;
-        }
-    
-        /// <summary>
-        /// The URL that Twilio will `POST` to when a message is sent via the `/SMS/Messages` endpoint if you specify the `Sid`
-        /// of this application on an outgoing SMS request.
-        /// </summary>
-        ///
-        /// <param name="smsStatusCallback"> URL Twilio with request with status updates </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setSmsStatusCallback(string smsStatusCallback) {
-            return setSmsStatusCallback(Promoter.UriFromString(smsStatusCallback));
-        }
-    
-        /// <summary>
-        /// Twilio will make a `POST` request to this URL to pass status parameters (such as sent or failed) to your application
-        /// if you use the `/Messages` endpoint to send the message and specify this application's `Sid` as the `ApplicationSid`
-        /// on an outgoing SMS request.
-        /// </summary>
-        ///
         /// <param name="messageStatusCallback"> URL to make requests to with status updates </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setMessageStatusCallback(Uri messageStatusCallback) {
+        public ApplicationUpdater(string sid, string accountSid=null, string friendlyName=null, string apiVersion=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null, bool? voiceCallerIdLookup=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsFallbackMethod=null, Uri smsStatusCallback=null, Uri messageStatusCallback=null) {
+            this.apiVersion = apiVersion;
+            this.smsUrl = smsUrl;
+            this.sid = sid;
+            this.smsFallbackUrl = smsFallbackUrl;
+            this.voiceFallbackUrl = voiceFallbackUrl;
             this.messageStatusCallback = messageStatusCallback;
-            return this;
-        }
-    
-        /// <summary>
-        /// Twilio will make a `POST` request to this URL to pass status parameters (such as sent or failed) to your application
-        /// if you use the `/Messages` endpoint to send the message and specify this application's `Sid` as the `ApplicationSid`
-        /// on an outgoing SMS request.
-        /// </summary>
-        ///
-        /// <param name="messageStatusCallback"> URL to make requests to with status updates </param>
-        /// <returns> this </returns> 
-        public ApplicationUpdater setMessageStatusCallback(string messageStatusCallback) {
-            return setMessageStatusCallback(Promoter.UriFromString(messageStatusCallback));
+            this.statusCallbackMethod = statusCallbackMethod;
+            this.voiceFallbackMethod = voiceFallbackMethod;
+            this.voiceCallerIdLookup = voiceCallerIdLookup;
+            this.voiceMethod = voiceMethod;
+            this.statusCallback = statusCallback;
+            this.smsMethod = smsMethod;
+            this.accountSid = accountSid;
+            this.voiceUrl = voiceUrl;
+            this.smsStatusCallback = smsStatusCallback;
+            this.friendlyName = friendlyName;
+            this.smsFallbackMethod = smsFallbackMethod;
         }
     
         #if NET40

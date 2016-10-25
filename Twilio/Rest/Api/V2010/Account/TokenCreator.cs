@@ -14,18 +14,14 @@ namespace Twilio.Rest.Api.V2010.Account {
         public int? ttl { get; set; }
     
         /// <summary>
-        /// Construct a new TokenCreator.
-        /// </summary>
-        public TokenCreator() {
-        }
-    
-        /// <summary>
         /// Construct a new TokenCreator
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public TokenCreator(string accountSid) {
+        /// <param name="ttl"> The duration in seconds the credentials are valid </param>
+        public TokenCreator(string accountSid=null, int? ttl=null) {
             this.accountSid = accountSid;
+            this.ttl = ttl;
         }
     
         #if NET40

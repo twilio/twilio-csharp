@@ -16,31 +16,18 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         public string registrant { get; }
     
         /// <summary>
-        /// Construct a new RegistrationEndpointReader.
-        /// </summary>
-        ///
-        /// <param name="domainSid"> The domain_sid </param>
-        /// <param name="region"> The region </param>
-        /// <param name="registrant"> The registrant </param>
-        public RegistrationEndpointReader(string domainSid, string region, string registrant) {
-            this.domainSid = domainSid;
-            this.region = region;
-            this.registrant = registrant;
-        }
-    
-        /// <summary>
         /// Construct a new RegistrationEndpointReader
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="domainSid"> The domain_sid </param>
         /// <param name="region"> The region </param>
         /// <param name="registrant"> The registrant </param>
-        public RegistrationEndpointReader(string accountSid, string domainSid, string region, string registrant) {
+        /// <param name="accountSid"> The account_sid </param>
+        public RegistrationEndpointReader(string domainSid, string region, string registrant, string accountSid=null) {
             this.accountSid = accountSid;
-            this.domainSid = domainSid;
-            this.region = region;
             this.registrant = registrant;
+            this.region = region;
+            this.domainSid = domainSid;
         }
     
         #if NET40

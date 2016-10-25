@@ -18,35 +18,20 @@ namespace Twilio.Rest.Api.V2010.Account.Queue {
         public Twilio.Http.HttpMethod method { get; }
     
         /// <summary>
-        /// Construct a new MemberUpdater.
-        /// </summary>
-        ///
-        /// <param name="queueSid"> The Queue in which to find the members </param>
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="url"> The url </param>
-        /// <param name="method"> The method </param>
-        public MemberUpdater(string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method) {
-            this.queueSid = queueSid;
-            this.callSid = callSid;
-            this.url = url;
-            this.method = method;
-        }
-    
-        /// <summary>
         /// Construct a new MemberUpdater
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="queueSid"> The Queue in which to find the members </param>
         /// <param name="callSid"> The call_sid </param>
         /// <param name="url"> The url </param>
         /// <param name="method"> The method </param>
-        public MemberUpdater(string accountSid, string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method) {
+        /// <param name="accountSid"> The account_sid </param>
+        public MemberUpdater(string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method, string accountSid=null) {
             this.accountSid = accountSid;
-            this.queueSid = queueSid;
-            this.callSid = callSid;
             this.url = url;
             this.method = method;
+            this.callSid = callSid;
+            this.queueSid = queueSid;
         }
     
         #if NET40

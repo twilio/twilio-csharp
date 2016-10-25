@@ -40,9 +40,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="workerSid"> The worker_sid </param>
         /// <param name="sid"> The sid </param>
+        /// <param name="capacity"> The capacity </param>
+        /// <param name="available"> The available </param>
         /// <returns> WorkerChannelUpdater capable of executing the update </returns> 
-        public static WorkerChannelUpdater Updater(string workspaceSid, string workerSid, string sid) {
-            return new WorkerChannelUpdater(workspaceSid, workerSid, sid);
+        public static WorkerChannelUpdater Updater(string workspaceSid, string workerSid, string sid, int? capacity=null, bool? available=null) {
+            return new WorkerChannelUpdater(workspaceSid, workerSid, sid, capacity:capacity, available:available);
         }
     
         /// <summary>

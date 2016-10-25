@@ -36,9 +36,11 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// </summary>
         ///
         /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="data"> The data </param>
         /// <returns> DocumentCreator capable of executing the create </returns> 
-        public static DocumentCreator Creator(string serviceSid) {
-            return new DocumentCreator(serviceSid);
+        public static DocumentCreator Creator(string serviceSid, string uniqueName=null, Object data=null) {
+            return new DocumentCreator(serviceSid, uniqueName:uniqueName, data:data);
         }
     
         /// <summary>

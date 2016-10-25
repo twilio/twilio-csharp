@@ -20,8 +20,12 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// </summary>
         ///
         /// <param name="serviceSid"> The service_sid </param>
-        public DocumentCreator(string serviceSid) {
+        /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="data"> The data </param>
+        public DocumentCreator(string serviceSid, string uniqueName=null, Object data=null) {
+            this.uniqueName = uniqueName;
             this.serviceSid = serviceSid;
+            this.data = data;
         }
     
         #if NET40

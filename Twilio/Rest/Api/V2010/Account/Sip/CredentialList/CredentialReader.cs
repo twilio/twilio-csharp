@@ -14,21 +14,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         public string credentialListSid { get; }
     
         /// <summary>
-        /// Construct a new CredentialReader.
-        /// </summary>
-        ///
-        /// <param name="credentialListSid"> The credential_list_sid </param>
-        public CredentialReader(string credentialListSid) {
-            this.credentialListSid = credentialListSid;
-        }
-    
-        /// <summary>
         /// Construct a new CredentialReader
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="credentialListSid"> The credential_list_sid </param>
-        public CredentialReader(string accountSid, string credentialListSid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public CredentialReader(string credentialListSid, string accountSid=null) {
             this.accountSid = accountSid;
             this.credentialListSid = credentialListSid;
         }

@@ -16,9 +16,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="taskQueueSid"> The task_queue_sid </param>
+        /// <param name="endDate"> The end_date </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="minutes"> The minutes </param>
+        /// <param name="startDate"> The start_date </param>
         /// <returns> TaskQueueStatisticsFetcher capable of executing the fetch </returns> 
-        public static TaskQueueStatisticsFetcher Fetcher(string workspaceSid, string taskQueueSid) {
-            return new TaskQueueStatisticsFetcher(workspaceSid, taskQueueSid);
+        public static TaskQueueStatisticsFetcher Fetcher(string workspaceSid, string taskQueueSid, DateTime? endDate=null, string friendlyName=null, int? minutes=null, DateTime? startDate=null) {
+            return new TaskQueueStatisticsFetcher(workspaceSid, taskQueueSid, endDate:endDate, friendlyName:friendlyName, minutes:minutes, startDate:startDate);
         }
     
         /// <summary>

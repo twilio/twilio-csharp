@@ -32,8 +32,34 @@ namespace Twilio.Rest.Notify.V1.Service {
         /// </summary>
         ///
         /// <param name="serviceSid"> The service_sid </param>
-        public NotificationCreator(string serviceSid) {
+        /// <param name="identity"> The identity </param>
+        /// <param name="tag"> The tag </param>
+        /// <param name="body"> The body </param>
+        /// <param name="priority"> The priority </param>
+        /// <param name="ttl"> The ttl </param>
+        /// <param name="title"> The title </param>
+        /// <param name="sound"> The sound </param>
+        /// <param name="action"> The action </param>
+        /// <param name="data"> The data </param>
+        /// <param name="apn"> The apn </param>
+        /// <param name="gcm"> The gcm </param>
+        /// <param name="sms"> The sms </param>
+        /// <param name="facebookMessenger"> The facebook_messenger </param>
+        public NotificationCreator(string serviceSid, List<string> identity=null, List<string> tag=null, string body=null, NotificationResource.Priority priority=null, int? ttl=null, string title=null, string sound=null, string action=null, string data=null, string apn=null, string gcm=null, string sms=null, Object facebookMessenger=null) {
+            this.facebookMessenger = facebookMessenger;
+            this.data = data;
+            this.apn = apn;
+            this.sound = sound;
+            this.body = body;
             this.serviceSid = serviceSid;
+            this.action = action;
+            this.identity = identity;
+            this.sms = sms;
+            this.priority = priority;
+            this.ttl = ttl;
+            this.title = title;
+            this.gcm = gcm;
+            this.tag = tag;
         }
     
         #if NET40

@@ -15,21 +15,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         public string sid { get; }
     
         /// <summary>
-        /// Construct a new IpAccessControlListDeleter.
-        /// </summary>
-        ///
-        /// <param name="sid"> Delete by unique ip-access-control-list Sid </param>
-        public IpAccessControlListDeleter(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new IpAccessControlListDeleter
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> Delete by unique ip-access-control-list Sid </param>
-        public IpAccessControlListDeleter(string accountSid, string sid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public IpAccessControlListDeleter(string sid, string accountSid=null) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

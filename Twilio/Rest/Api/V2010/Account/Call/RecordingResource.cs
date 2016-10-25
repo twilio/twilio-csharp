@@ -13,69 +13,36 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         /// fetch
         /// </summary>
         ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="sid"> The sid </param>
         /// <returns> RecordingFetcher capable of executing the fetch </returns> 
-        public static RecordingFetcher Fetcher(string accountSid, string callSid, string sid) {
-            return new RecordingFetcher(accountSid, callSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a RecordingFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> RecordingFetcher capable of executing the fetch </returns> 
-        public static RecordingFetcher Fetcher(string callSid, 
-                                               string sid) {
-            return new RecordingFetcher(callSid, sid);
+        public static RecordingFetcher Fetcher(string callSid, string sid, string accountSid=null) {
+            return new RecordingFetcher(callSid, sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// delete
         /// </summary>
         ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="sid"> The sid </param>
         /// <returns> RecordingDeleter capable of executing the delete </returns> 
-        public static RecordingDeleter Deleter(string accountSid, string callSid, string sid) {
-            return new RecordingDeleter(accountSid, callSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a RecordingDeleter to execute delete.
-        /// </summary>
-        ///
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> RecordingDeleter capable of executing the delete </returns> 
-        public static RecordingDeleter Deleter(string callSid, 
-                                               string sid) {
-            return new RecordingDeleter(callSid, sid);
+        public static RecordingDeleter Deleter(string callSid, string sid, string accountSid=null) {
+            return new RecordingDeleter(callSid, sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// read
         /// </summary>
         ///
+        /// <param name="callSid"> The call_sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="callSid"> The call_sid </param>
+        /// <param name="dateCreated"> The date_created </param>
         /// <returns> RecordingReader capable of executing the read </returns> 
-        public static RecordingReader Reader(string accountSid, string callSid) {
-            return new RecordingReader(accountSid, callSid);
-        }
-    
-        /// <summary>
-        /// Create a RecordingReader to execute read.
-        /// </summary>
-        ///
-        /// <param name="callSid"> The call_sid </param>
-        /// <returns> RecordingReader capable of executing the read </returns> 
-        public static RecordingReader Reader(string callSid) {
-            return new RecordingReader(callSid);
+        public static RecordingReader Reader(string callSid, string accountSid=null, string dateCreated=null) {
+            return new RecordingReader(callSid, accountSid:accountSid, dateCreated:dateCreated);
         }
     
         /// <summary>
@@ -107,6 +74,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         public string duration { get; }
         [JsonProperty("sid")]
         public string sid { get; }
+        [JsonProperty("price")]
+        public decimal? price { get; }
         [JsonProperty("uri")]
         public string uri { get; }
     
@@ -128,6 +97,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
                                   string duration, 
                                   [JsonProperty("sid")]
                                   string sid, 
+                                  [JsonProperty("price")]
+                                  decimal? price, 
                                   [JsonProperty("uri")]
                                   string uri) {
             this.accountSid = accountSid;
@@ -137,6 +108,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
             this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             this.duration = duration;
             this.sid = sid;
+            this.price = price;
             this.uri = uri;
         }
     }

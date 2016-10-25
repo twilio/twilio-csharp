@@ -16,45 +16,18 @@ namespace Twilio.Rest.Api.V2010.Account {
         public int? maxSize { get; set; }
     
         /// <summary>
-        /// Construct a new QueueUpdater.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        public QueueUpdater(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new QueueUpdater
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> The sid </param>
-        public QueueUpdater(string accountSid, string sid) {
-            this.accountSid = accountSid;
-            this.sid = sid;
-        }
-    
-        /// <summary>
-        /// A human readable description of the queue
-        /// </summary>
-        ///
+        /// <param name="accountSid"> The account_sid </param>
         /// <param name="friendlyName"> A human readable description of the queue </param>
-        /// <returns> this </returns> 
-        public QueueUpdater setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The maximum number of members that can be in the queue at a time
-        /// </summary>
-        ///
         /// <param name="maxSize"> The max number of members allowed in the queue </param>
-        /// <returns> this </returns> 
-        public QueueUpdater setMaxSize(int? maxSize) {
+        public QueueUpdater(string sid, string accountSid=null, string friendlyName=null, int? maxSize=null) {
+            this.accountSid = accountSid;
+            this.friendlyName = friendlyName;
+            this.sid = sid;
             this.maxSize = maxSize;
-            return this;
         }
     
         #if NET40

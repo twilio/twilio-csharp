@@ -15,40 +15,16 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string messageDate { get; set; }
     
         /// <summary>
-        /// Construct a new NotificationReader.
-        /// </summary>
-        public NotificationReader() {
-        }
-    
-        /// <summary>
         /// Construct a new NotificationReader
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public NotificationReader(string accountSid) {
-            this.accountSid = accountSid;
-        }
-    
-        /// <summary>
-        /// Only show notifications for this log level
-        /// </summary>
-        ///
         /// <param name="log"> Filter by log level </param>
-        /// <returns> this </returns> 
-        public NotificationReader ByLog(int? log) {
-            this.log = log;
-            return this;
-        }
-    
-        /// <summary>
-        /// Only show notifications for this date. Should be formatted as YYYY-MM-DD. You can also specify inequalities.
-        /// </summary>
-        ///
         /// <param name="messageDate"> Filter by date </param>
-        /// <returns> this </returns> 
-        public NotificationReader ByMessageDate(string messageDate) {
+        public NotificationReader(string accountSid=null, int? log=null, string messageDate=null) {
+            this.accountSid = accountSid;
             this.messageDate = messageDate;
-            return this;
+            this.log = log;
         }
     
         #if NET40

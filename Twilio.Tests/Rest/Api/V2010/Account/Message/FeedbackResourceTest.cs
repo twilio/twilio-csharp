@@ -29,7 +29,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Message {
                                                   "null"));
             
             try {
-                FeedbackResource.Creator("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Create(twilioRestClient);
+                FeedbackResource.Creator("MMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", accountSid: "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             } catch (AggregateException ae) {
                 ae.Handle((e) =>
@@ -43,6 +43,17 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Message {
             } catch (ApiException) {
             }
             twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
+        public void TestCreateResponse() {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.Created,
+                                                  "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Thu, 30 Jul 2015 20:00:00 +0000\",\"date_updated\": \"Thu, 30 Jul 2015 20:00:00 +0000\",\"message_sid\": \"MMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"outcome\": \"confirmed\",\"uri\": \"uri\"}"));
+            
+            var response = FeedbackResource.Creator("MMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", accountSid: "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Create(twilioRestClient);
+            Assert.NotNull(response);
         }
     }
 }

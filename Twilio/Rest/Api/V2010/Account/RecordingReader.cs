@@ -14,29 +14,14 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string dateCreated { get; set; }
     
         /// <summary>
-        /// Construct a new RecordingReader.
-        /// </summary>
-        public RecordingReader() {
-        }
-    
-        /// <summary>
         /// Construct a new RecordingReader
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public RecordingReader(string accountSid) {
-            this.accountSid = accountSid;
-        }
-    
-        /// <summary>
-        /// Only show recordings on the given date. Should be formatted as YYYY-MM-DD. You can also specify inequalities
-        /// </summary>
-        ///
         /// <param name="dateCreated"> Filter by date created </param>
-        /// <returns> this </returns> 
-        public RecordingReader ByDateCreated(string dateCreated) {
+        public RecordingReader(string accountSid=null, string dateCreated=null) {
+            this.accountSid = accountSid;
             this.dateCreated = dateCreated;
-            return this;
         }
     
         #if NET40

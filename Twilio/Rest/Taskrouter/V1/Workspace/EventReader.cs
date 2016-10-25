@@ -28,107 +28,26 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        public EventReader(string workspaceSid) {
-            this.workspaceSid = workspaceSid;
-        }
-    
-        /// <summary>
-        /// The end_date
-        /// </summary>
-        ///
         /// <param name="endDate"> The end_date </param>
-        /// <returns> this </returns> 
-        public EventReader ByEndDate(DateTime? endDate) {
-            this.endDate = endDate;
-            return this;
-        }
-    
-        /// <summary>
-        /// The event_type
-        /// </summary>
-        ///
         /// <param name="eventType"> The event_type </param>
-        /// <returns> this </returns> 
-        public EventReader ByEventType(string eventType) {
-            this.eventType = eventType;
-            return this;
-        }
-    
-        /// <summary>
-        /// The minutes
-        /// </summary>
-        ///
         /// <param name="minutes"> The minutes </param>
-        /// <returns> this </returns> 
-        public EventReader ByMinutes(int? minutes) {
-            this.minutes = minutes;
-            return this;
-        }
-    
-        /// <summary>
-        /// The reservation_sid
-        /// </summary>
-        ///
         /// <param name="reservationSid"> The reservation_sid </param>
-        /// <returns> this </returns> 
-        public EventReader ByReservationSid(string reservationSid) {
-            this.reservationSid = reservationSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The start_date
-        /// </summary>
-        ///
         /// <param name="startDate"> The start_date </param>
-        /// <returns> this </returns> 
-        public EventReader ByStartDate(DateTime? startDate) {
-            this.startDate = startDate;
-            return this;
-        }
-    
-        /// <summary>
-        /// The task_queue_sid
-        /// </summary>
-        ///
         /// <param name="taskQueueSid"> The task_queue_sid </param>
-        /// <returns> this </returns> 
-        public EventReader ByTaskQueueSid(string taskQueueSid) {
-            this.taskQueueSid = taskQueueSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The task_sid
-        /// </summary>
-        ///
         /// <param name="taskSid"> The task_sid </param>
-        /// <returns> this </returns> 
-        public EventReader ByTaskSid(string taskSid) {
-            this.taskSid = taskSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The worker_sid
-        /// </summary>
-        ///
         /// <param name="workerSid"> The worker_sid </param>
-        /// <returns> this </returns> 
-        public EventReader ByWorkerSid(string workerSid) {
-            this.workerSid = workerSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The workflow_sid
-        /// </summary>
-        ///
         /// <param name="workflowSid"> The workflow_sid </param>
-        /// <returns> this </returns> 
-        public EventReader ByWorkflowSid(string workflowSid) {
+        public EventReader(string workspaceSid, DateTime? endDate=null, string eventType=null, int? minutes=null, string reservationSid=null, DateTime? startDate=null, string taskQueueSid=null, string taskSid=null, string workerSid=null, string workflowSid=null) {
+            this.eventType = eventType;
+            this.workspaceSid = workspaceSid;
+            this.taskQueueSid = taskQueueSid;
+            this.endDate = endDate;
             this.workflowSid = workflowSid;
-            return this;
+            this.taskSid = taskSid;
+            this.reservationSid = reservationSid;
+            this.minutes = minutes;
+            this.startDate = startDate;
+            this.workerSid = workerSid;
         }
     
         #if NET40

@@ -13,63 +13,34 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// Fetch an outgoing-caller-id belonging to the account used to make the request
         /// </summary>
         ///
+        /// <param name="sid"> Fetch by unique outgoing-caller-id Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Fetch by unique outgoing-caller-id Sid </param>
         /// <returns> OutgoingCallerIdFetcher capable of executing the fetch </returns> 
-        public static OutgoingCallerIdFetcher Fetcher(string accountSid, string sid) {
-            return new OutgoingCallerIdFetcher(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a OutgoingCallerIdFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="sid"> Fetch by unique outgoing-caller-id Sid </param>
-        /// <returns> OutgoingCallerIdFetcher capable of executing the fetch </returns> 
-        public static OutgoingCallerIdFetcher Fetcher(string sid) {
-            return new OutgoingCallerIdFetcher(sid);
+        public static OutgoingCallerIdFetcher Fetcher(string sid, string accountSid=null) {
+            return new OutgoingCallerIdFetcher(sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// Updates the caller-id
         /// </summary>
         ///
+        /// <param name="sid"> Update by unique outgoing-caller-id Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Update by unique outgoing-caller-id Sid </param>
+        /// <param name="friendlyName"> A human readable description of the caller ID </param>
         /// <returns> OutgoingCallerIdUpdater capable of executing the update </returns> 
-        public static OutgoingCallerIdUpdater Updater(string accountSid, string sid) {
-            return new OutgoingCallerIdUpdater(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a OutgoingCallerIdUpdater to execute update.
-        /// </summary>
-        ///
-        /// <param name="sid"> Update by unique outgoing-caller-id Sid </param>
-        /// <returns> OutgoingCallerIdUpdater capable of executing the update </returns> 
-        public static OutgoingCallerIdUpdater Updater(string sid) {
-            return new OutgoingCallerIdUpdater(sid);
+        public static OutgoingCallerIdUpdater Updater(string sid, string accountSid=null, string friendlyName=null) {
+            return new OutgoingCallerIdUpdater(sid, accountSid:accountSid, friendlyName:friendlyName);
         }
     
         /// <summary>
         /// Delete the caller-id specified from the account
         /// </summary>
         ///
+        /// <param name="sid"> Delete by unique outgoing-caller-id Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Delete by unique outgoing-caller-id Sid </param>
         /// <returns> OutgoingCallerIdDeleter capable of executing the delete </returns> 
-        public static OutgoingCallerIdDeleter Deleter(string accountSid, string sid) {
-            return new OutgoingCallerIdDeleter(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a OutgoingCallerIdDeleter to execute delete.
-        /// </summary>
-        ///
-        /// <param name="sid"> Delete by unique outgoing-caller-id Sid </param>
-        /// <returns> OutgoingCallerIdDeleter capable of executing the delete </returns> 
-        public static OutgoingCallerIdDeleter Deleter(string sid) {
-            return new OutgoingCallerIdDeleter(sid);
+        public static OutgoingCallerIdDeleter Deleter(string sid, string accountSid=null) {
+            return new OutgoingCallerIdDeleter(sid, accountSid:accountSid);
         }
     
         /// <summary>
@@ -77,18 +48,11 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
+        /// <param name="phoneNumber"> Filter by phone number </param>
+        /// <param name="friendlyName"> Filter by friendly name </param>
         /// <returns> OutgoingCallerIdReader capable of executing the read </returns> 
-        public static OutgoingCallerIdReader Reader(string accountSid) {
-            return new OutgoingCallerIdReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a OutgoingCallerIdReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> OutgoingCallerIdReader capable of executing the read </returns> 
-        public static OutgoingCallerIdReader Reader() {
-            return new OutgoingCallerIdReader();
+        public static OutgoingCallerIdReader Reader(string accountSid=null, Twilio.Types.PhoneNumber phoneNumber=null, string friendlyName=null) {
+            return new OutgoingCallerIdReader(accountSid:accountSid, phoneNumber:phoneNumber, friendlyName:friendlyName);
         }
     
         /// <summary>

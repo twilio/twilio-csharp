@@ -16,38 +16,18 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList {
         public string password { get; set; }
     
         /// <summary>
-        /// Construct a new CredentialUpdater.
-        /// </summary>
-        ///
-        /// <param name="credentialListSid"> The credential_list_sid </param>
-        /// <param name="sid"> The sid </param>
-        public CredentialUpdater(string credentialListSid, string sid) {
-            this.credentialListSid = credentialListSid;
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new CredentialUpdater
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="credentialListSid"> The credential_list_sid </param>
         /// <param name="sid"> The sid </param>
-        public CredentialUpdater(string accountSid, string credentialListSid, string sid) {
-            this.accountSid = accountSid;
-            this.credentialListSid = credentialListSid;
-            this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The password
-        /// </summary>
-        ///
+        /// <param name="accountSid"> The account_sid </param>
         /// <param name="password"> The password </param>
-        /// <returns> this </returns> 
-        public CredentialUpdater setPassword(string password) {
+        public CredentialUpdater(string credentialListSid, string sid, string accountSid=null, string password=null) {
+            this.accountSid = accountSid;
             this.password = password;
-            return this;
+            this.sid = sid;
+            this.credentialListSid = credentialListSid;
         }
     
         #if NET40

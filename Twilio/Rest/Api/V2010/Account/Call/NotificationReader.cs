@@ -16,45 +16,18 @@ namespace Twilio.Rest.Api.V2010.Account.Call {
         public string messageDate { get; set; }
     
         /// <summary>
-        /// Construct a new NotificationReader.
-        /// </summary>
-        ///
-        /// <param name="callSid"> The call_sid </param>
-        public NotificationReader(string callSid) {
-            this.callSid = callSid;
-        }
-    
-        /// <summary>
         /// Construct a new NotificationReader
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="callSid"> The call_sid </param>
-        public NotificationReader(string accountSid, string callSid) {
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="log"> The log </param>
+        /// <param name="messageDate"> The message_date </param>
+        public NotificationReader(string callSid, string accountSid=null, int? log=null, string messageDate=null) {
             this.accountSid = accountSid;
             this.callSid = callSid;
-        }
-    
-        /// <summary>
-        /// The log
-        /// </summary>
-        ///
-        /// <param name="log"> The log </param>
-        /// <returns> this </returns> 
-        public NotificationReader ByLog(int? log) {
             this.log = log;
-            return this;
-        }
-    
-        /// <summary>
-        /// The message_date
-        /// </summary>
-        ///
-        /// <param name="messageDate"> The message_date </param>
-        /// <returns> this </returns> 
-        public NotificationReader ByMessageDate(string messageDate) {
             this.messageDate = messageDate;
-            return this;
         }
     
         #if NET40

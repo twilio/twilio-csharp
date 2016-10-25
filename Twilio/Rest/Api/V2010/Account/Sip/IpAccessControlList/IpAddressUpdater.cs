@@ -17,49 +17,20 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         public string friendlyName { get; set; }
     
         /// <summary>
-        /// Construct a new IpAddressUpdater.
-        /// </summary>
-        ///
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="sid"> The sid </param>
-        public IpAddressUpdater(string ipAccessControlListSid, string sid) {
-            this.ipAccessControlListSid = ipAccessControlListSid;
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new IpAddressUpdater
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         /// <param name="sid"> The sid </param>
-        public IpAddressUpdater(string accountSid, string ipAccessControlListSid, string sid) {
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="ipAddress"> The ip_address </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        public IpAddressUpdater(string ipAccessControlListSid, string sid, string accountSid=null, string ipAddress=null, string friendlyName=null) {
             this.accountSid = accountSid;
+            this.friendlyName = friendlyName;
             this.ipAccessControlListSid = ipAccessControlListSid;
             this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The ip_address
-        /// </summary>
-        ///
-        /// <param name="ipAddress"> The ip_address </param>
-        /// <returns> this </returns> 
-        public IpAddressUpdater setIpAddress(string ipAddress) {
             this.ipAddress = ipAddress;
-            return this;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public IpAddressUpdater setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
         }
     
         #if NET40

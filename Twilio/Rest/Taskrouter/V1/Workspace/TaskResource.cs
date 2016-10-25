@@ -58,9 +58,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
+        /// <param name="attributes"> The attributes </param>
+        /// <param name="assignmentStatus"> The assignment_status </param>
+        /// <param name="reason"> The reason </param>
+        /// <param name="priority"> The priority </param>
+        /// <param name="taskChannel"> The task_channel </param>
         /// <returns> TaskUpdater capable of executing the update </returns> 
-        public static TaskUpdater Updater(string workspaceSid, string sid) {
-            return new TaskUpdater(workspaceSid, sid);
+        public static TaskUpdater Updater(string workspaceSid, string sid, string attributes=null, TaskResource.Status assignmentStatus=null, string reason=null, int? priority=null, string taskChannel=null) {
+            return new TaskUpdater(workspaceSid, sid, attributes:attributes, assignmentStatus:assignmentStatus, reason:reason, priority:priority, taskChannel:taskChannel);
         }
     
         /// <summary>
@@ -79,9 +84,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="priority"> The priority </param>
+        /// <param name="assignmentStatus"> The assignment_status </param>
+        /// <param name="workflowSid"> The workflow_sid </param>
+        /// <param name="workflowName"> The workflow_name </param>
+        /// <param name="taskQueueSid"> The task_queue_sid </param>
+        /// <param name="taskQueueName"> The task_queue_name </param>
+        /// <param name="taskChannel"> The task_channel </param>
         /// <returns> TaskReader capable of executing the read </returns> 
-        public static TaskReader Reader(string workspaceSid) {
-            return new TaskReader(workspaceSid);
+        public static TaskReader Reader(string workspaceSid, int? priority=null, TaskResource.Status assignmentStatus=null, string workflowSid=null, string workflowName=null, string taskQueueSid=null, string taskQueueName=null, string taskChannel=null) {
+            return new TaskReader(workspaceSid, priority:priority, assignmentStatus:assignmentStatus, workflowSid:workflowSid, workflowName:workflowName, taskQueueSid:taskQueueSid, taskQueueName:taskQueueName, taskChannel:taskChannel);
         }
     
         /// <summary>
@@ -91,9 +103,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="attributes"> The attributes </param>
         /// <param name="workflowSid"> The workflow_sid </param>
+        /// <param name="timeout"> The timeout </param>
+        /// <param name="priority"> The priority </param>
+        /// <param name="taskChannel"> The task_channel </param>
         /// <returns> TaskCreator capable of executing the create </returns> 
-        public static TaskCreator Creator(string workspaceSid, string attributes, string workflowSid) {
-            return new TaskCreator(workspaceSid, attributes, workflowSid);
+        public static TaskCreator Creator(string workspaceSid, string attributes, string workflowSid, int? timeout=null, int? priority=null, string taskChannel=null) {
+            return new TaskCreator(workspaceSid, attributes, workflowSid, timeout:timeout, priority:priority, taskChannel:taskChannel);
         }
     
         /// <summary>
@@ -142,6 +157,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         public string workflowSid { get; }
         [JsonProperty("workspace_sid")]
         public string workspaceSid { get; }
+        [JsonProperty("url")]
+        public Uri url { get; }
     
         public TaskResource() {
         
@@ -176,7 +193,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
                              [JsonProperty("workflow_sid")]
                              string workflowSid, 
                              [JsonProperty("workspace_sid")]
-                             string workspaceSid) {
+                             string workspaceSid, 
+                             [JsonProperty("url")]
+                             Uri url) {
             this.accountSid = accountSid;
             this.age = age;
             this.assignmentStatus = assignmentStatus;
@@ -192,6 +211,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             this.timeout = timeout;
             this.workflowSid = workflowSid;
             this.workspaceSid = workspaceSid;
+            this.url = url;
         }
     }
 }

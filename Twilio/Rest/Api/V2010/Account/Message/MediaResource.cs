@@ -13,69 +13,36 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
         /// Delete media from your account. Once delete, you will no longer be billed
         /// </summary>
         ///
+        /// <param name="messageSid"> The message_sid </param>
+        /// <param name="sid"> Delete by unique media Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="messageSid"> The message_sid </param>
-        /// <param name="sid"> Delete by unique media Sid </param>
         /// <returns> MediaDeleter capable of executing the delete </returns> 
-        public static MediaDeleter Deleter(string accountSid, string messageSid, string sid) {
-            return new MediaDeleter(accountSid, messageSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a MediaDeleter to execute delete.
-        /// </summary>
-        ///
-        /// <param name="messageSid"> The message_sid </param>
-        /// <param name="sid"> Delete by unique media Sid </param>
-        /// <returns> MediaDeleter capable of executing the delete </returns> 
-        public static MediaDeleter Deleter(string messageSid, 
-                                           string sid) {
-            return new MediaDeleter(messageSid, sid);
+        public static MediaDeleter Deleter(string messageSid, string sid, string accountSid=null) {
+            return new MediaDeleter(messageSid, sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// Fetch a single media instance belonging to the account used to make the request
         /// </summary>
         ///
+        /// <param name="messageSid"> The message_sid </param>
+        /// <param name="sid"> Fetch by unique media Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="messageSid"> The message_sid </param>
-        /// <param name="sid"> Fetch by unique media Sid </param>
         /// <returns> MediaFetcher capable of executing the fetch </returns> 
-        public static MediaFetcher Fetcher(string accountSid, string messageSid, string sid) {
-            return new MediaFetcher(accountSid, messageSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a MediaFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="messageSid"> The message_sid </param>
-        /// <param name="sid"> Fetch by unique media Sid </param>
-        /// <returns> MediaFetcher capable of executing the fetch </returns> 
-        public static MediaFetcher Fetcher(string messageSid, 
-                                           string sid) {
-            return new MediaFetcher(messageSid, sid);
+        public static MediaFetcher Fetcher(string messageSid, string sid, string accountSid=null) {
+            return new MediaFetcher(messageSid, sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// Retrieve a list of medias belonging to the account used to make the request
         /// </summary>
         ///
+        /// <param name="messageSid"> The message_sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="messageSid"> The message_sid </param>
+        /// <param name="dateCreated"> Filter by date created </param>
         /// <returns> MediaReader capable of executing the read </returns> 
-        public static MediaReader Reader(string accountSid, string messageSid) {
-            return new MediaReader(accountSid, messageSid);
-        }
-    
-        /// <summary>
-        /// Create a MediaReader to execute read.
-        /// </summary>
-        ///
-        /// <param name="messageSid"> The message_sid </param>
-        /// <returns> MediaReader capable of executing the read </returns> 
-        public static MediaReader Reader(string messageSid) {
-            return new MediaReader(messageSid);
+        public static MediaReader Reader(string messageSid, string accountSid=null, string dateCreated=null) {
+            return new MediaReader(messageSid, accountSid:accountSid, dateCreated:dateCreated);
         }
     
         /// <summary>

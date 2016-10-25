@@ -62,9 +62,14 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         ///
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <param name="sid"> The sid </param>
+        /// <param name="weight"> The weight </param>
+        /// <param name="priority"> The priority </param>
+        /// <param name="enabled"> The enabled </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="sipUrl"> The sip_url </param>
         /// <returns> OriginationUrlUpdater capable of executing the update </returns> 
-        public static OriginationUrlUpdater Updater(string trunkSid, string sid) {
-            return new OriginationUrlUpdater(trunkSid, sid);
+        public static OriginationUrlUpdater Updater(string trunkSid, string sid, int? weight=null, int? priority=null, bool? enabled=null, string friendlyName=null, Uri sipUrl=null) {
+            return new OriginationUrlUpdater(trunkSid, sid, weight:weight, priority:priority, enabled:enabled, friendlyName:friendlyName, sipUrl:sipUrl);
         }
     
         /// <summary>

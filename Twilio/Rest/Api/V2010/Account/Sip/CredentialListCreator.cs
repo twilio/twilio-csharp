@@ -14,21 +14,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         public string friendlyName { get; }
     
         /// <summary>
-        /// Construct a new CredentialListCreator.
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> The friendly_name </param>
-        public CredentialListCreator(string friendlyName) {
-            this.friendlyName = friendlyName;
-        }
-    
-        /// <summary>
         /// Construct a new CredentialListCreator
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
-        public CredentialListCreator(string accountSid, string friendlyName) {
+        /// <param name="accountSid"> The account_sid </param>
+        public CredentialListCreator(string friendlyName, string accountSid=null) {
             this.accountSid = accountSid;
             this.friendlyName = friendlyName;
         }

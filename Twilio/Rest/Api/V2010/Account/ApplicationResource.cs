@@ -13,63 +13,47 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// Create a new application within your account
         /// </summary>
         ///
+        /// <param name="friendlyName"> Human readable description of this resource </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> Human readable description of this resource </param>
+        /// <param name="apiVersion"> The API version to use </param>
+        /// <param name="voiceUrl"> URL Twilio will make requests to when relieving a call </param>
+        /// <param name="voiceMethod"> HTTP method to use with the URL </param>
+        /// <param name="voiceFallbackUrl"> Fallback URL </param>
+        /// <param name="voiceFallbackMethod"> HTTP method to use with the fallback url </param>
+        /// <param name="statusCallback"> URL to hit with status updates </param>
+        /// <param name="statusCallbackMethod"> HTTP method to use with the status callback </param>
+        /// <param name="voiceCallerIdLookup"> True or False </param>
+        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
+        /// <param name="smsMethod"> HTTP method to use with sms_url </param>
+        /// <param name="smsFallbackUrl"> Fallback URL if there's an error parsing TwiML </param>
+        /// <param name="smsFallbackMethod"> HTTP method to use with sms_fallback_method </param>
+        /// <param name="smsStatusCallback"> URL Twilio with request with status updates </param>
+        /// <param name="messageStatusCallback"> URL to make requests to with status updates </param>
         /// <returns> ApplicationCreator capable of executing the create </returns> 
-        public static ApplicationCreator Creator(string accountSid, string friendlyName) {
-            return new ApplicationCreator(accountSid, friendlyName);
-        }
-    
-        /// <summary>
-        /// Create a ApplicationCreator to execute create.
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> Human readable description of this resource </param>
-        /// <returns> ApplicationCreator capable of executing the create </returns> 
-        public static ApplicationCreator Creator(string friendlyName) {
-            return new ApplicationCreator(friendlyName);
+        public static ApplicationCreator Creator(string friendlyName, string accountSid=null, string apiVersion=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null, bool? voiceCallerIdLookup=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsFallbackMethod=null, Uri smsStatusCallback=null, Uri messageStatusCallback=null) {
+            return new ApplicationCreator(friendlyName, accountSid:accountSid, apiVersion:apiVersion, voiceUrl:voiceUrl, voiceMethod:voiceMethod, voiceFallbackUrl:voiceFallbackUrl, voiceFallbackMethod:voiceFallbackMethod, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod, voiceCallerIdLookup:voiceCallerIdLookup, smsUrl:smsUrl, smsMethod:smsMethod, smsFallbackUrl:smsFallbackUrl, smsFallbackMethod:smsFallbackMethod, smsStatusCallback:smsStatusCallback, messageStatusCallback:messageStatusCallback);
         }
     
         /// <summary>
         /// Delete the application by the specified application sid
         /// </summary>
         ///
+        /// <param name="sid"> The application sid to delete </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> The application sid to delete </param>
         /// <returns> ApplicationDeleter capable of executing the delete </returns> 
-        public static ApplicationDeleter Deleter(string accountSid, string sid) {
-            return new ApplicationDeleter(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a ApplicationDeleter to execute delete.
-        /// </summary>
-        ///
-        /// <param name="sid"> The application sid to delete </param>
-        /// <returns> ApplicationDeleter capable of executing the delete </returns> 
-        public static ApplicationDeleter Deleter(string sid) {
-            return new ApplicationDeleter(sid);
+        public static ApplicationDeleter Deleter(string sid, string accountSid=null) {
+            return new ApplicationDeleter(sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// Fetch the application specified by the provided sid
         /// </summary>
         ///
+        /// <param name="sid"> Fetch by unique Application Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Fetch by unique Application Sid </param>
         /// <returns> ApplicationFetcher capable of executing the fetch </returns> 
-        public static ApplicationFetcher Fetcher(string accountSid, string sid) {
-            return new ApplicationFetcher(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a ApplicationFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="sid"> Fetch by unique Application Sid </param>
-        /// <returns> ApplicationFetcher capable of executing the fetch </returns> 
-        public static ApplicationFetcher Fetcher(string sid) {
-            return new ApplicationFetcher(sid);
+        public static ApplicationFetcher Fetcher(string sid, string accountSid=null) {
+            return new ApplicationFetcher(sid, accountSid:accountSid);
         }
     
         /// <summary>
@@ -77,39 +61,36 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
+        /// <param name="friendlyName"> Filter by friendly name </param>
         /// <returns> ApplicationReader capable of executing the read </returns> 
-        public static ApplicationReader Reader(string accountSid) {
-            return new ApplicationReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a ApplicationReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> ApplicationReader capable of executing the read </returns> 
-        public static ApplicationReader Reader() {
-            return new ApplicationReader();
+        public static ApplicationReader Reader(string accountSid=null, string friendlyName=null) {
+            return new ApplicationReader(accountSid:accountSid, friendlyName:friendlyName);
         }
     
         /// <summary>
         /// Updates the application's properties
         /// </summary>
         ///
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> Human readable description of this resource </param>
+        /// <param name="apiVersion"> The API version to use </param>
+        /// <param name="voiceUrl"> URL Twilio will make requests to when relieving a call </param>
+        /// <param name="voiceMethod"> HTTP method to use with the URL </param>
+        /// <param name="voiceFallbackUrl"> Fallback URL </param>
+        /// <param name="voiceFallbackMethod"> HTTP method to use with the fallback url </param>
+        /// <param name="statusCallback"> URL to hit with status updates </param>
+        /// <param name="statusCallbackMethod"> HTTP method to use with the status callback </param>
+        /// <param name="voiceCallerIdLookup"> True or False </param>
+        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
+        /// <param name="smsMethod"> HTTP method to use with sms_url </param>
+        /// <param name="smsFallbackUrl"> Fallback URL if there's an error parsing TwiML </param>
+        /// <param name="smsFallbackMethod"> HTTP method to use with sms_fallback_method </param>
+        /// <param name="smsStatusCallback"> URL Twilio with request with status updates </param>
+        /// <param name="messageStatusCallback"> URL to make requests to with status updates </param>
         /// <returns> ApplicationUpdater capable of executing the update </returns> 
-        public static ApplicationUpdater Updater(string accountSid, string sid) {
-            return new ApplicationUpdater(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a ApplicationUpdater to execute update.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> ApplicationUpdater capable of executing the update </returns> 
-        public static ApplicationUpdater Updater(string sid) {
-            return new ApplicationUpdater(sid);
+        public static ApplicationUpdater Updater(string sid, string accountSid=null, string friendlyName=null, string apiVersion=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null, bool? voiceCallerIdLookup=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsFallbackMethod=null, Uri smsStatusCallback=null, Uri messageStatusCallback=null) {
+            return new ApplicationUpdater(sid, accountSid:accountSid, friendlyName:friendlyName, apiVersion:apiVersion, voiceUrl:voiceUrl, voiceMethod:voiceMethod, voiceFallbackUrl:voiceFallbackUrl, voiceFallbackMethod:voiceFallbackMethod, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod, voiceCallerIdLookup:voiceCallerIdLookup, smsUrl:smsUrl, smsMethod:smsMethod, smsFallbackUrl:smsFallbackUrl, smsFallbackMethod:smsFallbackMethod, smsStatusCallback:smsStatusCallback, messageStatusCallback:messageStatusCallback);
         }
     
         /// <summary>

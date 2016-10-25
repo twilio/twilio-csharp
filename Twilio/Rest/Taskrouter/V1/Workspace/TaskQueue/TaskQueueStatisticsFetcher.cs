@@ -25,53 +25,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="taskQueueSid"> The task_queue_sid </param>
-        public TaskQueueStatisticsFetcher(string workspaceSid, string taskQueueSid) {
+        /// <param name="endDate"> The end_date </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="minutes"> The minutes </param>
+        /// <param name="startDate"> The start_date </param>
+        public TaskQueueStatisticsFetcher(string workspaceSid, string taskQueueSid, DateTime? endDate=null, string friendlyName=null, int? minutes=null, DateTime? startDate=null) {
             this.workspaceSid = workspaceSid;
             this.taskQueueSid = taskQueueSid;
-        }
-    
-        /// <summary>
-        /// The end_date
-        /// </summary>
-        ///
-        /// <param name="endDate"> The end_date </param>
-        /// <returns> this </returns> 
-        public TaskQueueStatisticsFetcher setEndDate(DateTime? endDate) {
             this.endDate = endDate;
-            return this;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public TaskQueueStatisticsFetcher setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The minutes
-        /// </summary>
-        ///
-        /// <param name="minutes"> The minutes </param>
-        /// <returns> this </returns> 
-        public TaskQueueStatisticsFetcher setMinutes(int? minutes) {
             this.minutes = minutes;
-            return this;
-        }
-    
-        /// <summary>
-        /// The start_date
-        /// </summary>
-        ///
-        /// <param name="startDate"> The start_date </param>
-        /// <returns> this </returns> 
-        public TaskQueueStatisticsFetcher setStartDate(DateTime? startDate) {
+            this.friendlyName = friendlyName;
             this.startDate = startDate;
-            return this;
         }
     
         #if NET40

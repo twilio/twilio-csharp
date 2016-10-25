@@ -14,23 +14,14 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string sid { get; }
     
         /// <summary>
-        /// Construct a new IncomingPhoneNumberFetcher.
-        /// </summary>
-        ///
-        /// <param name="sid"> Fetch by unique incoming-phone-number Sid </param>
-        public IncomingPhoneNumberFetcher(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new IncomingPhoneNumberFetcher
         /// </summary>
         ///
-        /// <param name="ownerAccountSid"> The owner_account_sid </param>
         /// <param name="sid"> Fetch by unique incoming-phone-number Sid </param>
-        public IncomingPhoneNumberFetcher(string ownerAccountSid, string sid) {
-            this.ownerAccountSid = ownerAccountSid;
+        /// <param name="ownerAccountSid"> The owner_account_sid </param>
+        public IncomingPhoneNumberFetcher(string sid, string ownerAccountSid=null) {
             this.sid = sid;
+            this.ownerAccountSid = ownerAccountSid;
         }
     
         #if NET40

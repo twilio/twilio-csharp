@@ -13,14 +13,12 @@ namespace Twilio.Rest.Notify.V1 {
         public string friendlyName { get; set; }
     
         /// <summary>
-        /// The friendly_name
+        /// Construct a new ServiceReader
         /// </summary>
         ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public ServiceReader ByFriendlyName(string friendlyName) {
+        public ServiceReader(string friendlyName=null) {
             this.friendlyName = friendlyName;
-            return this;
         }
     
         #if NET40

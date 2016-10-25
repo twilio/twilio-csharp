@@ -20,20 +20,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker {
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="workerSid"> The worker_sid </param>
-        public ReservationReader(string workspaceSid, string workerSid) {
-            this.workspaceSid = workspaceSid;
-            this.workerSid = workerSid;
-        }
-    
-        /// <summary>
-        /// The reservation_status
-        /// </summary>
-        ///
         /// <param name="reservationStatus"> The reservation_status </param>
-        /// <returns> this </returns> 
-        public ReservationReader ByReservationStatus(ReservationResource.Status reservationStatus) {
+        public ReservationReader(string workspaceSid, string workerSid, ReservationResource.Status reservationStatus=null) {
+            this.workspaceSid = workspaceSid;
             this.reservationStatus = reservationStatus;
-            return this;
+            this.workerSid = workerSid;
         }
     
         #if NET40

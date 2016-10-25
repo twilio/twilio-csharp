@@ -13,17 +13,11 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string accountSid { get; }
     
         /// <summary>
-        /// Construct a new SigningKeyReader.
-        /// </summary>
-        public SigningKeyReader() {
-        }
-    
-        /// <summary>
         /// Construct a new SigningKeyReader
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public SigningKeyReader(string accountSid) {
+        public SigningKeyReader(string accountSid=null) {
             this.accountSid = accountSid;
         }
     

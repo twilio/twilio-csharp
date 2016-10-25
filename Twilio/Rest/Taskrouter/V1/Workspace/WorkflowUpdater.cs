@@ -1,7 +1,6 @@
 using System;
 using Twilio.Base;
 using Twilio.Clients;
-using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -26,84 +25,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
-        public WorkflowUpdater(string workspaceSid, string sid) {
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="assignmentCallbackUrl"> The assignment_callback_url </param>
+        /// <param name="fallbackAssignmentCallbackUrl"> The fallback_assignment_callback_url </param>
+        /// <param name="configuration"> The configuration </param>
+        /// <param name="taskReservationTimeout"> The task_reservation_timeout </param>
+        public WorkflowUpdater(string workspaceSid, string sid, string friendlyName=null, Uri assignmentCallbackUrl=null, Uri fallbackAssignmentCallbackUrl=null, string configuration=null, int? taskReservationTimeout=null) {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public WorkflowUpdater setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The assignment_callback_url
-        /// </summary>
-        ///
-        /// <param name="assignmentCallbackUrl"> The assignment_callback_url </param>
-        /// <returns> this </returns> 
-        public WorkflowUpdater setAssignmentCallbackUrl(Uri assignmentCallbackUrl) {
-            this.assignmentCallbackUrl = assignmentCallbackUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The assignment_callback_url
-        /// </summary>
-        ///
-        /// <param name="assignmentCallbackUrl"> The assignment_callback_url </param>
-        /// <returns> this </returns> 
-        public WorkflowUpdater setAssignmentCallbackUrl(string assignmentCallbackUrl) {
-            return setAssignmentCallbackUrl(Promoter.UriFromString(assignmentCallbackUrl));
-        }
-    
-        /// <summary>
-        /// The fallback_assignment_callback_url
-        /// </summary>
-        ///
-        /// <param name="fallbackAssignmentCallbackUrl"> The fallback_assignment_callback_url </param>
-        /// <returns> this </returns> 
-        public WorkflowUpdater setFallbackAssignmentCallbackUrl(Uri fallbackAssignmentCallbackUrl) {
-            this.fallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The fallback_assignment_callback_url
-        /// </summary>
-        ///
-        /// <param name="fallbackAssignmentCallbackUrl"> The fallback_assignment_callback_url </param>
-        /// <returns> this </returns> 
-        public WorkflowUpdater setFallbackAssignmentCallbackUrl(string fallbackAssignmentCallbackUrl) {
-            return setFallbackAssignmentCallbackUrl(Promoter.UriFromString(fallbackAssignmentCallbackUrl));
-        }
-    
-        /// <summary>
-        /// The configuration
-        /// </summary>
-        ///
-        /// <param name="configuration"> The configuration </param>
-        /// <returns> this </returns> 
-        public WorkflowUpdater setConfiguration(string configuration) {
             this.configuration = configuration;
-            return this;
-        }
-    
-        /// <summary>
-        /// The task_reservation_timeout
-        /// </summary>
-        ///
-        /// <param name="taskReservationTimeout"> The task_reservation_timeout </param>
-        /// <returns> this </returns> 
-        public WorkflowUpdater setTaskReservationTimeout(int? taskReservationTimeout) {
+            this.fallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl;
             this.taskReservationTimeout = taskReservationTimeout;
-            return this;
+            this.friendlyName = friendlyName;
+            this.assignmentCallbackUrl = assignmentCallbackUrl;
         }
     
         #if NET40

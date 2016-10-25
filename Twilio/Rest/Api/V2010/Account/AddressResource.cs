@@ -13,99 +13,56 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// create
         /// </summary>
         ///
+        /// <param name="customerName"> The customer_name </param>
+        /// <param name="street"> The street </param>
+        /// <param name="city"> The city </param>
+        /// <param name="region"> The region </param>
+        /// <param name="postalCode"> The postal_code </param>
+        /// <param name="isoCountry"> The iso_country </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="customerName"> The customer_name </param>
-        /// <param name="street"> The street </param>
-        /// <param name="city"> The city </param>
-        /// <param name="region"> The region </param>
-        /// <param name="postalCode"> The postal_code </param>
-        /// <param name="isoCountry"> The iso_country </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> AddressCreator capable of executing the create </returns> 
-        public static AddressCreator Creator(string accountSid, string customerName, string street, string city, string region, string postalCode, string isoCountry) {
-            return new AddressCreator(accountSid, customerName, street, city, region, postalCode, isoCountry);
-        }
-    
-        /// <summary>
-        /// Create a AddressCreator to execute create.
-        /// </summary>
-        ///
-        /// <param name="customerName"> The customer_name </param>
-        /// <param name="street"> The street </param>
-        /// <param name="city"> The city </param>
-        /// <param name="region"> The region </param>
-        /// <param name="postalCode"> The postal_code </param>
-        /// <param name="isoCountry"> The iso_country </param>
-        /// <returns> AddressCreator capable of executing the create </returns> 
-        public static AddressCreator Creator(string customerName, 
-                                             string street, 
-                                             string city, 
-                                             string region, 
-                                             string postalCode, 
-                                             string isoCountry) {
-            return new AddressCreator(customerName, street, city, region, postalCode, isoCountry);
+        public static AddressCreator Creator(string customerName, string street, string city, string region, string postalCode, string isoCountry, string accountSid=null, string friendlyName=null) {
+            return new AddressCreator(customerName, street, city, region, postalCode, isoCountry, accountSid:accountSid, friendlyName:friendlyName);
         }
     
         /// <summary>
         /// delete
         /// </summary>
         ///
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> The sid </param>
         /// <returns> AddressDeleter capable of executing the delete </returns> 
-        public static AddressDeleter Deleter(string accountSid, string sid) {
-            return new AddressDeleter(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a AddressDeleter to execute delete.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> AddressDeleter capable of executing the delete </returns> 
-        public static AddressDeleter Deleter(string sid) {
-            return new AddressDeleter(sid);
+        public static AddressDeleter Deleter(string sid, string accountSid=null) {
+            return new AddressDeleter(sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// fetch
         /// </summary>
         ///
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> The sid </param>
         /// <returns> AddressFetcher capable of executing the fetch </returns> 
-        public static AddressFetcher Fetcher(string accountSid, string sid) {
-            return new AddressFetcher(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a AddressFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> AddressFetcher capable of executing the fetch </returns> 
-        public static AddressFetcher Fetcher(string sid) {
-            return new AddressFetcher(sid);
+        public static AddressFetcher Fetcher(string sid, string accountSid=null) {
+            return new AddressFetcher(sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// update
         /// </summary>
         ///
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="customerName"> The customer_name </param>
+        /// <param name="street"> The street </param>
+        /// <param name="city"> The city </param>
+        /// <param name="region"> The region </param>
+        /// <param name="postalCode"> The postal_code </param>
         /// <returns> AddressUpdater capable of executing the update </returns> 
-        public static AddressUpdater Updater(string accountSid, string sid) {
-            return new AddressUpdater(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a AddressUpdater to execute update.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> AddressUpdater capable of executing the update </returns> 
-        public static AddressUpdater Updater(string sid) {
-            return new AddressUpdater(sid);
+        public static AddressUpdater Updater(string sid, string accountSid=null, string friendlyName=null, string customerName=null, string street=null, string city=null, string region=null, string postalCode=null) {
+            return new AddressUpdater(sid, accountSid:accountSid, friendlyName:friendlyName, customerName:customerName, street:street, city:city, region:region, postalCode:postalCode);
         }
     
         /// <summary>
@@ -113,18 +70,12 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
+        /// <param name="customerName"> The customer_name </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="isoCountry"> The iso_country </param>
         /// <returns> AddressReader capable of executing the read </returns> 
-        public static AddressReader Reader(string accountSid) {
-            return new AddressReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a AddressReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> AddressReader capable of executing the read </returns> 
-        public static AddressReader Reader() {
-            return new AddressReader();
+        public static AddressReader Reader(string accountSid=null, string customerName=null, string friendlyName=null, string isoCountry=null) {
+            return new AddressReader(accountSid:accountSid, customerName:customerName, friendlyName:friendlyName, isoCountry:isoCountry);
         }
     
         /// <summary>

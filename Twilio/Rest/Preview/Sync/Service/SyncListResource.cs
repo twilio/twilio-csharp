@@ -37,9 +37,10 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// </summary>
         ///
         /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="uniqueName"> The unique_name </param>
         /// <returns> SyncListCreator capable of executing the create </returns> 
-        public static SyncListCreator Creator(string serviceSid) {
-            return new SyncListCreator(serviceSid);
+        public static SyncListCreator Creator(string serviceSid, string uniqueName=null) {
+            return new SyncListCreator(serviceSid, uniqueName:uniqueName);
         }
     
         /// <summary>

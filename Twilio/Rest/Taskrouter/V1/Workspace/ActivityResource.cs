@@ -48,9 +48,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="available"> The available </param>
         /// <returns> ActivityReader capable of executing the read </returns> 
-        public static ActivityReader Reader(string workspaceSid) {
-            return new ActivityReader(workspaceSid);
+        public static ActivityReader Reader(string workspaceSid, string friendlyName=null, string available=null) {
+            return new ActivityReader(workspaceSid, friendlyName:friendlyName, available:available);
         }
     
         /// <summary>
@@ -59,9 +61,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="available"> The available </param>
         /// <returns> ActivityCreator capable of executing the create </returns> 
-        public static ActivityCreator Creator(string workspaceSid, string friendlyName) {
-            return new ActivityCreator(workspaceSid, friendlyName);
+        public static ActivityCreator Creator(string workspaceSid, string friendlyName, bool? available=null) {
+            return new ActivityCreator(workspaceSid, friendlyName, available:available);
         }
     
         /// <summary>
@@ -93,6 +96,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         public string sid { get; }
         [JsonProperty("workspace_sid")]
         public string workspaceSid { get; }
+        [JsonProperty("url")]
+        public Uri url { get; }
     
         public ActivityResource() {
         
@@ -111,7 +116,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
                                  [JsonProperty("sid")]
                                  string sid, 
                                  [JsonProperty("workspace_sid")]
-                                 string workspaceSid) {
+                                 string workspaceSid, 
+                                 [JsonProperty("url")]
+                                 Uri url) {
             this.accountSid = accountSid;
             this.available = available;
             this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
@@ -119,6 +126,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
             this.friendlyName = friendlyName;
             this.sid = sid;
             this.workspaceSid = workspaceSid;
+            this.url = url;
         }
     }
 }

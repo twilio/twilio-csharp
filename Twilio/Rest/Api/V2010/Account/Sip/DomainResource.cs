@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
 using Twilio.Converters;
@@ -15,101 +16,68 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         ///
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> DomainReader capable of executing the read </returns> 
-        public static DomainReader Reader(string accountSid) {
-            return new DomainReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a DomainReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> DomainReader capable of executing the read </returns> 
-        public static DomainReader Reader() {
-            return new DomainReader();
+        public static DomainReader Reader(string accountSid=null) {
+            return new DomainReader(accountSid:accountSid);
         }
     
         /// <summary>
         /// Create a new Domain
         /// </summary>
         ///
+        /// <param name="domainName"> The unique address on Twilio to route SIP traffic </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="domainName"> The unique address on Twilio to route SIP traffic </param>
+        /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
+        /// <param name="authType"> The types of authentication mapped to the domain </param>
+        /// <param name="voiceUrl"> URL Twilio will request when receiving a call </param>
+        /// <param name="voiceMethod"> HTTP method to use with voice_url </param>
+        /// <param name="voiceFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
+        /// <param name="voiceFallbackMethod"> HTTP method used with voice_fallback_url </param>
+        /// <param name="voiceStatusCallbackUrl"> URL that Twilio will request with status updates </param>
+        /// <param name="voiceStatusCallbackMethod"> The voice_status_callback_method </param>
         /// <returns> DomainCreator capable of executing the create </returns> 
-        public static DomainCreator Creator(string accountSid, string domainName) {
-            return new DomainCreator(accountSid, domainName);
-        }
-    
-        /// <summary>
-        /// Create a DomainCreator to execute create.
-        /// </summary>
-        ///
-        /// <param name="domainName"> The unique address on Twilio to route SIP traffic </param>
-        /// <returns> DomainCreator capable of executing the create </returns> 
-        public static DomainCreator Creator(string domainName) {
-            return new DomainCreator(domainName);
+        public static DomainCreator Creator(string domainName, string accountSid=null, string friendlyName=null, string authType=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri voiceStatusCallbackUrl=null, Twilio.Http.HttpMethod voiceStatusCallbackMethod=null) {
+            return new DomainCreator(domainName, accountSid:accountSid, friendlyName:friendlyName, authType:authType, voiceUrl:voiceUrl, voiceMethod:voiceMethod, voiceFallbackUrl:voiceFallbackUrl, voiceFallbackMethod:voiceFallbackMethod, voiceStatusCallbackUrl:voiceStatusCallbackUrl, voiceStatusCallbackMethod:voiceStatusCallbackMethod);
         }
     
         /// <summary>
         /// Fetch an instance of a Domain
         /// </summary>
         ///
+        /// <param name="sid"> Fetch by unique Domain Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Fetch by unique Domain Sid </param>
         /// <returns> DomainFetcher capable of executing the fetch </returns> 
-        public static DomainFetcher Fetcher(string accountSid, string sid) {
-            return new DomainFetcher(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a DomainFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="sid"> Fetch by unique Domain Sid </param>
-        /// <returns> DomainFetcher capable of executing the fetch </returns> 
-        public static DomainFetcher Fetcher(string sid) {
-            return new DomainFetcher(sid);
+        public static DomainFetcher Fetcher(string sid, string accountSid=null) {
+            return new DomainFetcher(sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// Update the attributes of a domain
         /// </summary>
         ///
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="authType"> The auth_type </param>
+        /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
+        /// <param name="voiceFallbackMethod"> The voice_fallback_method </param>
+        /// <param name="voiceFallbackUrl"> The voice_fallback_url </param>
+        /// <param name="voiceMethod"> HTTP method to use with voice_url </param>
+        /// <param name="voiceStatusCallbackMethod"> The voice_status_callback_method </param>
+        /// <param name="voiceStatusCallbackUrl"> The voice_status_callback_url </param>
+        /// <param name="voiceUrl"> The voice_url </param>
         /// <returns> DomainUpdater capable of executing the update </returns> 
-        public static DomainUpdater Updater(string accountSid, string sid) {
-            return new DomainUpdater(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a DomainUpdater to execute update.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> DomainUpdater capable of executing the update </returns> 
-        public static DomainUpdater Updater(string sid) {
-            return new DomainUpdater(sid);
+        public static DomainUpdater Updater(string sid, string accountSid=null, string authType=null, string friendlyName=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Twilio.Http.HttpMethod voiceStatusCallbackMethod=null, Uri voiceStatusCallbackUrl=null, Uri voiceUrl=null) {
+            return new DomainUpdater(sid, accountSid:accountSid, authType:authType, friendlyName:friendlyName, voiceFallbackMethod:voiceFallbackMethod, voiceFallbackUrl:voiceFallbackUrl, voiceMethod:voiceMethod, voiceStatusCallbackMethod:voiceStatusCallbackMethod, voiceStatusCallbackUrl:voiceStatusCallbackUrl, voiceUrl:voiceUrl);
         }
     
         /// <summary>
         /// delete
         /// </summary>
         ///
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> The sid </param>
         /// <returns> DomainDeleter capable of executing the delete </returns> 
-        public static DomainDeleter Deleter(string accountSid, string sid) {
-            return new DomainDeleter(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a DomainDeleter to execute delete.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> DomainDeleter capable of executing the delete </returns> 
-        public static DomainDeleter Deleter(string sid) {
-            return new DomainDeleter(sid);
+        public static DomainDeleter Deleter(string sid, string accountSid=null) {
+            return new DomainDeleter(sid, accountSid:accountSid);
         }
     
         /// <summary>
@@ -160,6 +128,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         public Uri voiceStatusCallbackUrl { get; }
         [JsonProperty("voice_url")]
         public Uri voiceUrl { get; }
+        [JsonProperty("subresource_uris")]
+        public Dictionary<string, string> subresourceUris { get; }
     
         public DomainResource() {
         
@@ -194,7 +164,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
                                [JsonProperty("voice_status_callback_url")]
                                Uri voiceStatusCallbackUrl, 
                                [JsonProperty("voice_url")]
-                               Uri voiceUrl) {
+                               Uri voiceUrl, 
+                               [JsonProperty("subresource_uris")]
+                               Dictionary<string, string> subresourceUris) {
             this.accountSid = accountSid;
             this.apiVersion = apiVersion;
             this.authType = authType;
@@ -210,6 +182,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
             this.voiceStatusCallbackMethod = voiceStatusCallbackMethod;
             this.voiceStatusCallbackUrl = voiceStatusCallbackUrl;
             this.voiceUrl = voiceUrl;
+            this.subresourceUris = subresourceUris;
         }
     }
 }

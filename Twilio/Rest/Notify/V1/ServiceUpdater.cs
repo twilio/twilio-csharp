@@ -24,85 +24,22 @@ namespace Twilio.Rest.Notify.V1 {
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        public ServiceUpdater(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public ServiceUpdater setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The apn_credential_sid
-        /// </summary>
-        ///
         /// <param name="apnCredentialSid"> The apn_credential_sid </param>
-        /// <returns> this </returns> 
-        public ServiceUpdater setApnCredentialSid(string apnCredentialSid) {
-            this.apnCredentialSid = apnCredentialSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The gcm_credential_sid
-        /// </summary>
-        ///
         /// <param name="gcmCredentialSid"> The gcm_credential_sid </param>
-        /// <returns> this </returns> 
-        public ServiceUpdater setGcmCredentialSid(string gcmCredentialSid) {
-            this.gcmCredentialSid = gcmCredentialSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The messaging_service_sid
-        /// </summary>
-        ///
         /// <param name="messagingServiceSid"> The messaging_service_sid </param>
-        /// <returns> this </returns> 
-        public ServiceUpdater setMessagingServiceSid(string messagingServiceSid) {
-            this.messagingServiceSid = messagingServiceSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The facebook_messenger_page_id
-        /// </summary>
-        ///
         /// <param name="facebookMessengerPageId"> The facebook_messenger_page_id </param>
-        /// <returns> this </returns> 
-        public ServiceUpdater setFacebookMessengerPageId(string facebookMessengerPageId) {
-            this.facebookMessengerPageId = facebookMessengerPageId;
-            return this;
-        }
-    
-        /// <summary>
-        /// The default_apn_notification_protocol_version
-        /// </summary>
-        ///
         /// <param name="defaultApnNotificationProtocolVersion"> The default_apn_notification_protocol_version </param>
-        /// <returns> this </returns> 
-        public ServiceUpdater setDefaultApnNotificationProtocolVersion(string defaultApnNotificationProtocolVersion) {
-            this.defaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion;
-            return this;
-        }
-    
-        /// <summary>
-        /// The default_gcm_notification_protocol_version
-        /// </summary>
-        ///
         /// <param name="defaultGcmNotificationProtocolVersion"> The default_gcm_notification_protocol_version </param>
-        /// <returns> this </returns> 
-        public ServiceUpdater setDefaultGcmNotificationProtocolVersion(string defaultGcmNotificationProtocolVersion) {
+        public ServiceUpdater(string sid, string friendlyName=null, string apnCredentialSid=null, string gcmCredentialSid=null, string messagingServiceSid=null, string facebookMessengerPageId=null, string defaultApnNotificationProtocolVersion=null, string defaultGcmNotificationProtocolVersion=null) {
+            this.facebookMessengerPageId = facebookMessengerPageId;
+            this.sid = sid;
+            this.gcmCredentialSid = gcmCredentialSid;
             this.defaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion;
-            return this;
+            this.apnCredentialSid = apnCredentialSid;
+            this.defaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion;
+            this.friendlyName = friendlyName;
+            this.messagingServiceSid = messagingServiceSid;
         }
     
         #if NET40

@@ -23,8 +23,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task {
         /// <param name="sid"> The sid </param>
         public ReservationFetcher(string workspaceSid, string taskSid, string sid) {
             this.workspaceSid = workspaceSid;
-            this.taskSid = taskSid;
             this.sid = sid;
+            this.taskSid = taskSid;
         }
     
         #if NET40

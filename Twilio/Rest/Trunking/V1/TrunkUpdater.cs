@@ -1,7 +1,6 @@
 using System;
 using Twilio.Base;
 using Twilio.Clients;
-using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -25,84 +24,20 @@ namespace Twilio.Rest.Trunking.V1 {
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        public TrunkUpdater(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public TrunkUpdater setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The domain_name
-        /// </summary>
-        ///
         /// <param name="domainName"> The domain_name </param>
-        /// <returns> this </returns> 
-        public TrunkUpdater setDomainName(string domainName) {
-            this.domainName = domainName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The disaster_recovery_url
-        /// </summary>
-        ///
         /// <param name="disasterRecoveryUrl"> The disaster_recovery_url </param>
-        /// <returns> this </returns> 
-        public TrunkUpdater setDisasterRecoveryUrl(Uri disasterRecoveryUrl) {
-            this.disasterRecoveryUrl = disasterRecoveryUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The disaster_recovery_url
-        /// </summary>
-        ///
-        /// <param name="disasterRecoveryUrl"> The disaster_recovery_url </param>
-        /// <returns> this </returns> 
-        public TrunkUpdater setDisasterRecoveryUrl(string disasterRecoveryUrl) {
-            return setDisasterRecoveryUrl(Promoter.UriFromString(disasterRecoveryUrl));
-        }
-    
-        /// <summary>
-        /// The disaster_recovery_method
-        /// </summary>
-        ///
         /// <param name="disasterRecoveryMethod"> The disaster_recovery_method </param>
-        /// <returns> this </returns> 
-        public TrunkUpdater setDisasterRecoveryMethod(Twilio.Http.HttpMethod disasterRecoveryMethod) {
-            this.disasterRecoveryMethod = disasterRecoveryMethod;
-            return this;
-        }
-    
-        /// <summary>
-        /// The recording
-        /// </summary>
-        ///
         /// <param name="recording"> The recording </param>
-        /// <returns> this </returns> 
-        public TrunkUpdater setRecording(string recording) {
-            this.recording = recording;
-            return this;
-        }
-    
-        /// <summary>
-        /// The secure
-        /// </summary>
-        ///
         /// <param name="secure"> The secure </param>
-        /// <returns> this </returns> 
-        public TrunkUpdater setSecure(bool? secure) {
+        public TrunkUpdater(string sid, string friendlyName=null, string domainName=null, Uri disasterRecoveryUrl=null, Twilio.Http.HttpMethod disasterRecoveryMethod=null, string recording=null, bool? secure=null) {
+            this.sid = sid;
             this.secure = secure;
-            return this;
+            this.recording = recording;
+            this.disasterRecoveryUrl = disasterRecoveryUrl;
+            this.friendlyName = friendlyName;
+            this.domainName = domainName;
+            this.disasterRecoveryMethod = disasterRecoveryMethod;
         }
     
         #if NET40

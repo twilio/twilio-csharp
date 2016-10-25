@@ -16,51 +16,18 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         public TriggerResource.UsageCategory usageCategory { get; set; }
     
         /// <summary>
-        /// Construct a new TriggerReader.
-        /// </summary>
-        public TriggerReader() {
-        }
-    
-        /// <summary>
         /// Construct a new TriggerReader
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public TriggerReader(string accountSid) {
-            this.accountSid = accountSid;
-        }
-    
-        /// <summary>
-        /// Only show UsageTriggers that count over this interval. One of daily, monthly, or yearly
-        /// </summary>
-        ///
         /// <param name="recurring"> Filter by recurring </param>
-        /// <returns> this </returns> 
-        public TriggerReader ByRecurring(TriggerResource.Recurring recurring) {
-            this.recurring = recurring;
-            return this;
-        }
-    
-        /// <summary>
-        /// Only show UsageTriggers that trigger by this field in the UsagRecord
-        /// </summary>
-        ///
         /// <param name="triggerBy"> Filter by trigger by </param>
-        /// <returns> this </returns> 
-        public TriggerReader ByTriggerBy(TriggerResource.TriggerField triggerBy) {
-            this.triggerBy = triggerBy;
-            return this;
-        }
-    
-        /// <summary>
-        /// Only show UsageTriggers that watch this usage category
-        /// </summary>
-        ///
         /// <param name="usageCategory"> Filter by Usage Category </param>
-        /// <returns> this </returns> 
-        public TriggerReader ByUsageCategory(TriggerResource.UsageCategory usageCategory) {
+        public TriggerReader(string accountSid=null, TriggerResource.Recurring recurring=null, TriggerResource.TriggerField triggerBy=null, TriggerResource.UsageCategory usageCategory=null) {
+            this.accountSid = accountSid;
             this.usageCategory = usageCategory;
-            return this;
+            this.recurring = recurring;
+            this.triggerBy = triggerBy;
         }
     
         #if NET40

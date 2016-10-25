@@ -15,9 +15,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="endDate"> The end_date </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="minutes"> The minutes </param>
+        /// <param name="startDate"> The start_date </param>
         /// <returns> TaskQueuesStatisticsReader capable of executing the read </returns> 
-        public static TaskQueuesStatisticsReader Reader(string workspaceSid) {
-            return new TaskQueuesStatisticsReader(workspaceSid);
+        public static TaskQueuesStatisticsReader Reader(string workspaceSid, DateTime? endDate=null, string friendlyName=null, int? minutes=null, DateTime? startDate=null) {
+            return new TaskQueuesStatisticsReader(workspaceSid, endDate:endDate, friendlyName:friendlyName, minutes:minutes, startDate:startDate);
         }
     
         /// <summary>

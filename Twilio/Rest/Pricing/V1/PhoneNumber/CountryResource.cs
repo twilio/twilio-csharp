@@ -53,8 +53,6 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber {
         public List<PhoneNumberPrice> phoneNumberPrices { get; }
         [JsonProperty("price_unit")]
         public string priceUnit { get; }
-        [JsonProperty("uri")]
-        public Uri uri { get; }
         [JsonProperty("url")]
         public Uri url { get; }
     
@@ -70,15 +68,12 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber {
                                 List<PhoneNumberPrice> phoneNumberPrices, 
                                 [JsonProperty("price_unit")]
                                 string priceUnit, 
-                                [JsonProperty("uri")]
-                                Uri uri, 
                                 [JsonProperty("url")]
                                 Uri url) {
             this.country = country;
             this.isoCountry = isoCountry;
             this.phoneNumberPrices = phoneNumberPrices;
             this.priceUnit = priceUnit;
-            this.uri = uri;
             this.url = url;
         }
     }

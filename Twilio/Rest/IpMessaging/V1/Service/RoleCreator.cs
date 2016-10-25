@@ -26,9 +26,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service {
         /// <param name="permission"> The permission </param>
         public RoleCreator(string serviceSid, string friendlyName, RoleResource.RoleType type, List<string> permission) {
             this.serviceSid = serviceSid;
-            this.friendlyName = friendlyName;
-            this.type = type;
             this.permission = permission;
+            this.type = type;
+            this.friendlyName = friendlyName;
         }
     
         #if NET40

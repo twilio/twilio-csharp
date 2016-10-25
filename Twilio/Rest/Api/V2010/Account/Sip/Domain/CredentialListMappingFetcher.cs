@@ -15,27 +15,16 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain {
         public string sid { get; }
     
         /// <summary>
-        /// Construct a new CredentialListMappingFetcher.
-        /// </summary>
-        ///
-        /// <param name="domainSid"> The domain_sid </param>
-        /// <param name="sid"> The sid </param>
-        public CredentialListMappingFetcher(string domainSid, string sid) {
-            this.domainSid = domainSid;
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new CredentialListMappingFetcher
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="domainSid"> The domain_sid </param>
         /// <param name="sid"> The sid </param>
-        public CredentialListMappingFetcher(string accountSid, string domainSid, string sid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public CredentialListMappingFetcher(string domainSid, string sid, string accountSid=null) {
             this.accountSid = accountSid;
-            this.domainSid = domainSid;
             this.sid = sid;
+            this.domainSid = domainSid;
         }
     
         #if NET40

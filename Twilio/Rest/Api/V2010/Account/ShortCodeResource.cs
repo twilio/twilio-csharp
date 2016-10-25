@@ -13,42 +13,28 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// Fetch an instance of a short code
         /// </summary>
         ///
+        /// <param name="sid"> Fetch by unique short-code Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Fetch by unique short-code Sid </param>
         /// <returns> ShortCodeFetcher capable of executing the fetch </returns> 
-        public static ShortCodeFetcher Fetcher(string accountSid, string sid) {
-            return new ShortCodeFetcher(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a ShortCodeFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="sid"> Fetch by unique short-code Sid </param>
-        /// <returns> ShortCodeFetcher capable of executing the fetch </returns> 
-        public static ShortCodeFetcher Fetcher(string sid) {
-            return new ShortCodeFetcher(sid);
+        public static ShortCodeFetcher Fetcher(string sid, string accountSid=null) {
+            return new ShortCodeFetcher(sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// Update a short code with the following parameters
         /// </summary>
         ///
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> A human readable description of this resource </param>
+        /// <param name="apiVersion"> The API version to use </param>
+        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
+        /// <param name="smsMethod"> HTTP method to use when requesting the sms url </param>
+        /// <param name="smsFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
+        /// <param name="smsFallbackMethod"> HTTP method Twilio will use with sms fallback url </param>
         /// <returns> ShortCodeUpdater capable of executing the update </returns> 
-        public static ShortCodeUpdater Updater(string accountSid, string sid) {
-            return new ShortCodeUpdater(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a ShortCodeUpdater to execute update.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> ShortCodeUpdater capable of executing the update </returns> 
-        public static ShortCodeUpdater Updater(string sid) {
-            return new ShortCodeUpdater(sid);
+        public static ShortCodeUpdater Updater(string sid, string accountSid=null, string friendlyName=null, string apiVersion=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsFallbackMethod=null) {
+            return new ShortCodeUpdater(sid, accountSid:accountSid, friendlyName:friendlyName, apiVersion:apiVersion, smsUrl:smsUrl, smsMethod:smsMethod, smsFallbackUrl:smsFallbackUrl, smsFallbackMethod:smsFallbackMethod);
         }
     
         /// <summary>
@@ -56,18 +42,11 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
+        /// <param name="friendlyName"> Filter by friendly name </param>
+        /// <param name="shortCode"> Filter by ShortCode </param>
         /// <returns> ShortCodeReader capable of executing the read </returns> 
-        public static ShortCodeReader Reader(string accountSid) {
-            return new ShortCodeReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a ShortCodeReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> ShortCodeReader capable of executing the read </returns> 
-        public static ShortCodeReader Reader() {
-            return new ShortCodeReader();
+        public static ShortCodeReader Reader(string accountSid=null, string friendlyName=null, string shortCode=null) {
+            return new ShortCodeReader(accountSid:accountSid, friendlyName:friendlyName, shortCode:shortCode);
         }
     
         /// <summary>

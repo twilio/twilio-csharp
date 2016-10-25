@@ -110,9 +110,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="mapSid"> The map_sid </param>
+        /// <param name="order"> The order </param>
+        /// <param name="from"> The from </param>
+        /// <param name="bounds"> The bounds </param>
         /// <returns> SyncMapItemReader capable of executing the read </returns> 
-        public static SyncMapItemReader Reader(string serviceSid, string mapSid) {
-            return new SyncMapItemReader(serviceSid, mapSid);
+        public static SyncMapItemReader Reader(string serviceSid, string mapSid, SyncMapItemResource.QueryResultOrder order=null, string from=null, SyncMapItemResource.QueryFromBoundType bounds=null) {
+            return new SyncMapItemReader(serviceSid, mapSid, order:order, from:from, bounds:bounds);
         }
     
         /// <summary>

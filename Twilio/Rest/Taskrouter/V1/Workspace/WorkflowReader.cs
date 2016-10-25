@@ -18,19 +18,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        public WorkflowReader(string workspaceSid) {
-            this.workspaceSid = workspaceSid;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public WorkflowReader ByFriendlyName(string friendlyName) {
+        public WorkflowReader(string workspaceSid, string friendlyName=null) {
+            this.workspaceSid = workspaceSid;
             this.friendlyName = friendlyName;
-            return this;
         }
     
         #if NET40

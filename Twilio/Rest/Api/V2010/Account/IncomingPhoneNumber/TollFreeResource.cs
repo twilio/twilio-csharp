@@ -46,39 +46,38 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
         /// </summary>
         ///
         /// <param name="ownerAccountSid"> The owner_account_sid </param>
+        /// <param name="beta"> The beta </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="phoneNumber"> The phone_number </param>
         /// <returns> TollFreeReader capable of executing the read </returns> 
-        public static TollFreeReader Reader(string ownerAccountSid) {
-            return new TollFreeReader(ownerAccountSid);
-        }
-    
-        /// <summary>
-        /// Create a TollFreeReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> TollFreeReader capable of executing the read </returns> 
-        public static TollFreeReader Reader() {
-            return new TollFreeReader();
+        public static TollFreeReader Reader(string ownerAccountSid=null, bool? beta=null, string friendlyName=null, Twilio.Types.PhoneNumber phoneNumber=null) {
+            return new TollFreeReader(ownerAccountSid:ownerAccountSid, beta:beta, friendlyName:friendlyName, phoneNumber:phoneNumber);
         }
     
         /// <summary>
         /// create
         /// </summary>
         ///
+        /// <param name="phoneNumber"> The phone_number </param>
         /// <param name="ownerAccountSid"> The owner_account_sid </param>
-        /// <param name="phoneNumber"> The phone_number </param>
+        /// <param name="apiVersion"> The api_version </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="smsApplicationSid"> The sms_application_sid </param>
+        /// <param name="smsFallbackMethod"> The sms_fallback_method </param>
+        /// <param name="smsFallbackUrl"> The sms_fallback_url </param>
+        /// <param name="smsMethod"> The sms_method </param>
+        /// <param name="smsUrl"> The sms_url </param>
+        /// <param name="statusCallback"> The status_callback </param>
+        /// <param name="statusCallbackMethod"> The status_callback_method </param>
+        /// <param name="voiceApplicationSid"> The voice_application_sid </param>
+        /// <param name="voiceCallerIdLookup"> The voice_caller_id_lookup </param>
+        /// <param name="voiceFallbackMethod"> The voice_fallback_method </param>
+        /// <param name="voiceFallbackUrl"> The voice_fallback_url </param>
+        /// <param name="voiceMethod"> The voice_method </param>
+        /// <param name="voiceUrl"> The voice_url </param>
         /// <returns> TollFreeCreator capable of executing the create </returns> 
-        public static TollFreeCreator Creator(string ownerAccountSid, Twilio.Types.PhoneNumber phoneNumber) {
-            return new TollFreeCreator(ownerAccountSid, phoneNumber);
-        }
-    
-        /// <summary>
-        /// Create a TollFreeCreator to execute create.
-        /// </summary>
-        ///
-        /// <param name="phoneNumber"> The phone_number </param>
-        /// <returns> TollFreeCreator capable of executing the create </returns> 
-        public static TollFreeCreator Creator(Twilio.Types.PhoneNumber phoneNumber) {
-            return new TollFreeCreator(phoneNumber);
+        public static TollFreeCreator Creator(Twilio.Types.PhoneNumber phoneNumber, string ownerAccountSid=null, string apiVersion=null, string friendlyName=null, string smsApplicationSid=null, Twilio.Http.HttpMethod smsFallbackMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsUrl=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null, string voiceApplicationSid=null, bool? voiceCallerIdLookup=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceUrl=null) {
+            return new TollFreeCreator(phoneNumber, ownerAccountSid:ownerAccountSid, apiVersion:apiVersion, friendlyName:friendlyName, smsApplicationSid:smsApplicationSid, smsFallbackMethod:smsFallbackMethod, smsFallbackUrl:smsFallbackUrl, smsMethod:smsMethod, smsUrl:smsUrl, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod, voiceApplicationSid:voiceApplicationSid, voiceCallerIdLookup:voiceCallerIdLookup, voiceFallbackMethod:voiceFallbackMethod, voiceFallbackUrl:voiceFallbackUrl, voiceMethod:voiceMethod, voiceUrl:voiceUrl);
         }
     
         /// <summary>
@@ -135,6 +134,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod statusCallbackMethod { get; }
+        [JsonProperty("trunk_sid")]
+        public string trunkSid { get; }
         [JsonProperty("uri")]
         public string uri { get; }
         [JsonProperty("voice_application_sid")]
@@ -190,6 +191,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
                                  Uri statusCallback, 
                                  [JsonProperty("status_callback_method")]
                                  Twilio.Http.HttpMethod statusCallbackMethod, 
+                                 [JsonProperty("trunk_sid")]
+                                 string trunkSid, 
                                  [JsonProperty("uri")]
                                  string uri, 
                                  [JsonProperty("voice_application_sid")]
@@ -221,6 +224,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber {
             this.smsUrl = smsUrl;
             this.statusCallback = statusCallback;
             this.statusCallbackMethod = statusCallbackMethod;
+            this.trunkSid = trunkSid;
             this.uri = uri;
             this.voiceApplicationSid = voiceApplicationSid;
             this.voiceCallerIdLookup = voiceCallerIdLookup;

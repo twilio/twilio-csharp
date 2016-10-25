@@ -18,51 +18,18 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record {
         public DateTime? endDate { get; set; }
     
         /// <summary>
-        /// Construct a new LastMonthReader.
-        /// </summary>
-        public LastMonthReader() {
-        }
-    
-        /// <summary>
         /// Construct a new LastMonthReader
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public LastMonthReader(string accountSid) {
-            this.accountSid = accountSid;
-        }
-    
-        /// <summary>
-        /// The category
-        /// </summary>
-        ///
         /// <param name="category"> The category </param>
-        /// <returns> this </returns> 
-        public LastMonthReader ByCategory(LastMonthResource.Category category) {
-            this.category = category;
-            return this;
-        }
-    
-        /// <summary>
-        /// The start_date
-        /// </summary>
-        ///
         /// <param name="startDate"> The start_date </param>
-        /// <returns> this </returns> 
-        public LastMonthReader ByStartDate(DateTime? startDate) {
-            this.startDate = startDate;
-            return this;
-        }
-    
-        /// <summary>
-        /// The end_date
-        /// </summary>
-        ///
         /// <param name="endDate"> The end_date </param>
-        /// <returns> this </returns> 
-        public LastMonthReader ByEndDate(DateTime? endDate) {
+        public LastMonthReader(string accountSid=null, LastMonthResource.Category category=null, DateTime? startDate=null, DateTime? endDate=null) {
+            this.accountSid = accountSid;
+            this.category = category;
+            this.startDate = startDate;
             this.endDate = endDate;
-            return this;
         }
     
         #if NET40

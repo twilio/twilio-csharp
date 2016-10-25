@@ -23,72 +23,16 @@ namespace Twilio.Rest.Lookups.V1 {
         /// </summary>
         ///
         /// <param name="phoneNumber"> The phone_number </param>
-        public PhoneNumberFetcher(Twilio.Types.PhoneNumber phoneNumber) {
-            this.phoneNumber = phoneNumber;
-        }
-    
-        /// <summary>
-        /// The country_code
-        /// </summary>
-        ///
         /// <param name="countryCode"> The country_code </param>
-        /// <returns> this </returns> 
-        public PhoneNumberFetcher setCountryCode(string countryCode) {
-            this.countryCode = countryCode;
-            return this;
-        }
-    
-        /// <summary>
-        /// The type
-        /// </summary>
-        ///
         /// <param name="type"> The type </param>
-        /// <returns> this </returns> 
-        public PhoneNumberFetcher setType(List<string> type) {
-            this.type = type;
-            return this;
-        }
-    
-        /// <summary>
-        /// The type
-        /// </summary>
-        ///
-        /// <param name="type"> The type </param>
-        /// <returns> this </returns> 
-        public PhoneNumberFetcher setType(string type) {
-            return setType(Promoter.ListOfOne(type));
-        }
-    
-        /// <summary>
-        /// The add_ons
-        /// </summary>
-        ///
         /// <param name="addOns"> The add_ons </param>
-        /// <returns> this </returns> 
-        public PhoneNumberFetcher setAddOns(List<string> addOns) {
-            this.addOns = addOns;
-            return this;
-        }
-    
-        /// <summary>
-        /// The add_ons
-        /// </summary>
-        ///
-        /// <param name="addOns"> The add_ons </param>
-        /// <returns> this </returns> 
-        public PhoneNumberFetcher setAddOns(string addOns) {
-            return setAddOns(Promoter.ListOfOne(addOns));
-        }
-    
-        /// <summary>
-        /// The add_ons_data
-        /// </summary>
-        ///
         /// <param name="addOnsData"> The add_ons_data </param>
-        /// <returns> this </returns> 
-        public PhoneNumberFetcher setAddOnsData(Dictionary<string, object> addOnsData) {
+        public PhoneNumberFetcher(Twilio.Types.PhoneNumber phoneNumber, string countryCode=null, List<string> type=null, List<string> addOns=null, Dictionary<string, object> addOnsData=null) {
+            this.phoneNumber = phoneNumber;
+            this.addOns = addOns;
             this.addOnsData = addOnsData;
-            return this;
+            this.type = type;
+            this.countryCode = countryCode;
         }
     
         #if NET40

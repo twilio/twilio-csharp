@@ -25,22 +25,13 @@ namespace Twilio.Rest.Chat.V1.Service.Channel {
         /// <param name="channelSid"> The channel_sid </param>
         /// <param name="sid"> The sid </param>
         /// <param name="body"> The body </param>
-        public MessageUpdater(string serviceSid, string channelSid, string sid, string body) {
-            this.serviceSid = serviceSid;
-            this.channelSid = channelSid;
-            this.sid = sid;
-            this.body = body;
-        }
-    
-        /// <summary>
-        /// The attributes
-        /// </summary>
-        ///
         /// <param name="attributes"> The attributes </param>
-        /// <returns> this </returns> 
-        public MessageUpdater setAttributes(Object attributes) {
+        public MessageUpdater(string serviceSid, string channelSid, string sid, string body, Object attributes=null) {
+            this.body = body;
+            this.serviceSid = serviceSid;
+            this.sid = sid;
             this.attributes = attributes;
-            return this;
+            this.channelSid = channelSid;
         }
     
         #if NET40

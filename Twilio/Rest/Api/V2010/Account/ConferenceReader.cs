@@ -17,64 +17,20 @@ namespace Twilio.Rest.Api.V2010.Account {
         public ConferenceResource.Status status { get; set; }
     
         /// <summary>
-        /// Construct a new ConferenceReader.
-        /// </summary>
-        public ConferenceReader() {
-        }
-    
-        /// <summary>
         /// Construct a new ConferenceReader
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public ConferenceReader(string accountSid) {
-            this.accountSid = accountSid;
-        }
-    
-        /// <summary>
-        /// Only show conferences that started on this date, given as YYYY-MM-DD. You can also specify inequality such as
-        /// DateCreated&lt;=YYYY-MM-DD
-        /// </summary>
-        ///
         /// <param name="dateCreated"> Filter by date created </param>
-        /// <returns> this </returns> 
-        public ConferenceReader ByDateCreated(string dateCreated) {
-            this.dateCreated = dateCreated;
-            return this;
-        }
-    
-        /// <summary>
-        /// Only show conferences that were last updated on this date, given as YYYY-MM-DD. You can also specify inequality such
-        /// as DateUpdated&gt;=YYYY-MM-DD
-        /// </summary>
-        ///
         /// <param name="dateUpdated"> Filter by date updated </param>
-        /// <returns> this </returns> 
-        public ConferenceReader ByDateUpdated(string dateUpdated) {
-            this.dateUpdated = dateUpdated;
-            return this;
-        }
-    
-        /// <summary>
-        /// Only show results who's friendly name exactly matches the string
-        /// </summary>
-        ///
         /// <param name="friendlyName"> Filter by friendly name </param>
-        /// <returns> this </returns> 
-        public ConferenceReader ByFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// A string representing the status of the conference. May be `init`, `in-progress`, or `completed`.
-        /// </summary>
-        ///
         /// <param name="status"> The status of the conference </param>
-        /// <returns> this </returns> 
-        public ConferenceReader ByStatus(ConferenceResource.Status status) {
+        public ConferenceReader(string accountSid=null, string dateCreated=null, string dateUpdated=null, string friendlyName=null, ConferenceResource.Status status=null) {
+            this.accountSid = accountSid;
+            this.friendlyName = friendlyName;
             this.status = status;
-            return this;
+            this.dateCreated = dateCreated;
+            this.dateUpdated = dateUpdated;
         }
     
         #if NET40

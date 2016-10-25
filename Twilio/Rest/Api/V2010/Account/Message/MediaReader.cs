@@ -15,34 +15,16 @@ namespace Twilio.Rest.Api.V2010.Account.Message {
         public string dateCreated { get; set; }
     
         /// <summary>
-        /// Construct a new MediaReader.
-        /// </summary>
-        ///
-        /// <param name="messageSid"> The message_sid </param>
-        public MediaReader(string messageSid) {
-            this.messageSid = messageSid;
-        }
-    
-        /// <summary>
         /// Construct a new MediaReader
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="messageSid"> The message_sid </param>
-        public MediaReader(string accountSid, string messageSid) {
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="dateCreated"> Filter by date created </param>
+        public MediaReader(string messageSid, string accountSid=null, string dateCreated=null) {
             this.accountSid = accountSid;
             this.messageSid = messageSid;
-        }
-    
-        /// <summary>
-        /// Only show media created on the given date, or before/after using date inequalities.
-        /// </summary>
-        ///
-        /// <param name="dateCreated"> Filter by date created </param>
-        /// <returns> this </returns> 
-        public MediaReader ByDateCreated(string dateCreated) {
             this.dateCreated = dateCreated;
-            return this;
         }
     
         #if NET40

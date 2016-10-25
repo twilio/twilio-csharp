@@ -37,9 +37,10 @@ namespace Twilio.Rest.Preview.Sync.Service {
         /// </summary>
         ///
         /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="uniqueName"> The unique_name </param>
         /// <returns> SyncMapCreator capable of executing the create </returns> 
-        public static SyncMapCreator Creator(string serviceSid) {
-            return new SyncMapCreator(serviceSid);
+        public static SyncMapCreator Creator(string serviceSid, string uniqueName=null) {
+            return new SyncMapCreator(serviceSid, uniqueName:uniqueName);
         }
     
         /// <summary>

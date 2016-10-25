@@ -16,51 +16,18 @@ namespace Twilio.Rest.Api.V2010.Account {
         public Twilio.Types.PhoneNumber phoneNumber { get; set; }
     
         /// <summary>
-        /// Construct a new IncomingPhoneNumberReader.
-        /// </summary>
-        public IncomingPhoneNumberReader() {
-        }
-    
-        /// <summary>
         /// Construct a new IncomingPhoneNumberReader
         /// </summary>
         ///
         /// <param name="ownerAccountSid"> The owner_account_sid </param>
-        public IncomingPhoneNumberReader(string ownerAccountSid) {
-            this.ownerAccountSid = ownerAccountSid;
-        }
-    
-        /// <summary>
-        /// Include phone numbers new to the Twilio platform
-        /// </summary>
-        ///
         /// <param name="beta"> Include new phone numbers </param>
-        /// <returns> this </returns> 
-        public IncomingPhoneNumberReader ByBeta(bool? beta) {
-            this.beta = beta;
-            return this;
-        }
-    
-        /// <summary>
-        /// Only show the incoming phone number resources with friendly names that exactly match this name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> Filter by friendly name </param>
-        /// <returns> this </returns> 
-        public IncomingPhoneNumberReader ByFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// Only show the incoming phone number resources that match this pattern
-        /// </summary>
-        ///
         /// <param name="phoneNumber"> Filter by incoming phone number </param>
-        /// <returns> this </returns> 
-        public IncomingPhoneNumberReader ByPhoneNumber(Twilio.Types.PhoneNumber phoneNumber) {
+        public IncomingPhoneNumberReader(string ownerAccountSid=null, bool? beta=null, string friendlyName=null, Twilio.Types.PhoneNumber phoneNumber=null) {
+            this.friendlyName = friendlyName;
             this.phoneNumber = phoneNumber;
-            return this;
+            this.ownerAccountSid = ownerAccountSid;
+            this.beta = beta;
         }
     
         #if NET40

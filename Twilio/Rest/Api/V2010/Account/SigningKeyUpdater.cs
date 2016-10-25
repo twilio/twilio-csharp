@@ -15,34 +15,16 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string friendlyName { get; set; }
     
         /// <summary>
-        /// Construct a new SigningKeyUpdater.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        public SigningKeyUpdater(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new SigningKeyUpdater
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> The sid </param>
-        public SigningKeyUpdater(string accountSid, string sid) {
-            this.accountSid = accountSid;
-            this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
+        /// <param name="accountSid"> The account_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public SigningKeyUpdater setFriendlyName(string friendlyName) {
+        public SigningKeyUpdater(string sid, string accountSid=null, string friendlyName=null) {
+            this.accountSid = accountSid;
             this.friendlyName = friendlyName;
-            return this;
+            this.sid = sid;
         }
     
         #if NET40

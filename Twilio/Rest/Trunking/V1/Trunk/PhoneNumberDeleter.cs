@@ -21,8 +21,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk {
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <param name="sid"> The sid </param>
         public PhoneNumberDeleter(string trunkSid, string sid) {
-            this.trunkSid = trunkSid;
             this.sid = sid;
+            this.trunkSid = trunkSid;
         }
     
         #if NET40

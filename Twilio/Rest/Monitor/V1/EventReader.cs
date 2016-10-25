@@ -20,69 +20,22 @@ namespace Twilio.Rest.Monitor.V1 {
         public DateTime? endDate { get; set; }
     
         /// <summary>
-        /// The actor_sid
+        /// Construct a new EventReader
         /// </summary>
         ///
         /// <param name="actorSid"> The actor_sid </param>
-        /// <returns> this </returns> 
-        public EventReader ByActorSid(string actorSid) {
-            this.actorSid = actorSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The event_type
-        /// </summary>
-        ///
         /// <param name="eventType"> The event_type </param>
-        /// <returns> this </returns> 
-        public EventReader ByEventType(string eventType) {
-            this.eventType = eventType;
-            return this;
-        }
-    
-        /// <summary>
-        /// The resource_sid
-        /// </summary>
-        ///
         /// <param name="resourceSid"> The resource_sid </param>
-        /// <returns> this </returns> 
-        public EventReader ByResourceSid(string resourceSid) {
-            this.resourceSid = resourceSid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The source_ip_address
-        /// </summary>
-        ///
         /// <param name="sourceIpAddress"> The source_ip_address </param>
-        /// <returns> this </returns> 
-        public EventReader BySourceIpAddress(string sourceIpAddress) {
-            this.sourceIpAddress = sourceIpAddress;
-            return this;
-        }
-    
-        /// <summary>
-        /// The start_date
-        /// </summary>
-        ///
         /// <param name="startDate"> The start_date </param>
-        /// <returns> this </returns> 
-        public EventReader ByStartDate(DateTime? startDate) {
-            this.startDate = startDate;
-            return this;
-        }
-    
-        /// <summary>
-        /// The end_date
-        /// </summary>
-        ///
         /// <param name="endDate"> The end_date </param>
-        /// <returns> this </returns> 
-        public EventReader ByEndDate(DateTime? endDate) {
+        public EventReader(string actorSid=null, string eventType=null, string resourceSid=null, string sourceIpAddress=null, DateTime? startDate=null, DateTime? endDate=null) {
+            this.eventType = eventType;
             this.endDate = endDate;
-            return this;
+            this.resourceSid = resourceSid;
+            this.sourceIpAddress = sourceIpAddress;
+            this.startDate = startDate;
+            this.actorSid = actorSid;
         }
     
         #if NET40

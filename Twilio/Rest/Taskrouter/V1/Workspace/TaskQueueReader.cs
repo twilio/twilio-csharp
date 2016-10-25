@@ -19,30 +19,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        public TaskQueueReader(string workspaceSid) {
-            this.workspaceSid = workspaceSid;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public TaskQueueReader ByFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The evaluate_worker_attributes
-        /// </summary>
-        ///
         /// <param name="evaluateWorkerAttributes"> The evaluate_worker_attributes </param>
-        /// <returns> this </returns> 
-        public TaskQueueReader ByEvaluateWorkerAttributes(string evaluateWorkerAttributes) {
+        public TaskQueueReader(string workspaceSid, string friendlyName=null, string evaluateWorkerAttributes=null) {
+            this.workspaceSid = workspaceSid;
             this.evaluateWorkerAttributes = evaluateWorkerAttributes;
-            return this;
+            this.friendlyName = friendlyName;
         }
     
         #if NET40

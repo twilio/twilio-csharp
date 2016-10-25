@@ -1,7 +1,6 @@
 using System;
 using Twilio.Base;
 using Twilio.Clients;
-using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -21,81 +20,24 @@ namespace Twilio.Rest.Api.V2010.Account.Conference {
         public Twilio.Http.HttpMethod holdMethod { get; set; }
     
         /// <summary>
-        /// Construct a new ParticipantUpdater.
-        /// </summary>
-        ///
-        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="callSid"> The call_sid </param>
-        public ParticipantUpdater(string conferenceSid, string callSid) {
-            this.conferenceSid = conferenceSid;
-            this.callSid = callSid;
-        }
-    
-        /// <summary>
         /// Construct a new ParticipantUpdater
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
         /// <param name="callSid"> The call_sid </param>
-        public ParticipantUpdater(string accountSid, string conferenceSid, string callSid) {
-            this.accountSid = accountSid;
-            this.conferenceSid = conferenceSid;
-            this.callSid = callSid;
-        }
-    
-        /// <summary>
-        /// Indicates if the participant should be muted
-        /// </summary>
-        ///
+        /// <param name="accountSid"> The account_sid </param>
         /// <param name="muted"> Indicates if the participant should be muted </param>
-        /// <returns> this </returns> 
-        public ParticipantUpdater setMuted(bool? muted) {
-            this.muted = muted;
-            return this;
-        }
-    
-        /// <summary>
-        /// The hold
-        /// </summary>
-        ///
         /// <param name="hold"> The hold </param>
-        /// <returns> this </returns> 
-        public ParticipantUpdater setHold(bool? hold) {
-            this.hold = hold;
-            return this;
-        }
-    
-        /// <summary>
-        /// The hold_url
-        /// </summary>
-        ///
         /// <param name="holdUrl"> The hold_url </param>
-        /// <returns> this </returns> 
-        public ParticipantUpdater setHoldUrl(Uri holdUrl) {
-            this.holdUrl = holdUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The hold_url
-        /// </summary>
-        ///
-        /// <param name="holdUrl"> The hold_url </param>
-        /// <returns> this </returns> 
-        public ParticipantUpdater setHoldUrl(string holdUrl) {
-            return setHoldUrl(Promoter.UriFromString(holdUrl));
-        }
-    
-        /// <summary>
-        /// The hold_method
-        /// </summary>
-        ///
         /// <param name="holdMethod"> The hold_method </param>
-        /// <returns> this </returns> 
-        public ParticipantUpdater setHoldMethod(Twilio.Http.HttpMethod holdMethod) {
+        public ParticipantUpdater(string conferenceSid, string callSid, string accountSid=null, bool? muted=null, bool? hold=null, Uri holdUrl=null, Twilio.Http.HttpMethod holdMethod=null) {
+            this.callSid = callSid;
             this.holdMethod = holdMethod;
-            return this;
+            this.holdUrl = holdUrl;
+            this.accountSid = accountSid;
+            this.hold = hold;
+            this.conferenceSid = conferenceSid;
+            this.muted = muted;
         }
     
         #if NET40

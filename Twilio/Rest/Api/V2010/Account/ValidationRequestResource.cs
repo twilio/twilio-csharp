@@ -13,21 +13,16 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// create
         /// </summary>
         ///
+        /// <param name="phoneNumber"> The phone_number </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="phoneNumber"> The phone_number </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="callDelay"> The call_delay </param>
+        /// <param name="extension"> The extension </param>
+        /// <param name="statusCallback"> The status_callback </param>
+        /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <returns> ValidationRequestCreator capable of executing the create </returns> 
-        public static ValidationRequestCreator Creator(string accountSid, Twilio.Types.PhoneNumber phoneNumber) {
-            return new ValidationRequestCreator(accountSid, phoneNumber);
-        }
-    
-        /// <summary>
-        /// Create a ValidationRequestCreator to execute create.
-        /// </summary>
-        ///
-        /// <param name="phoneNumber"> The phone_number </param>
-        /// <returns> ValidationRequestCreator capable of executing the create </returns> 
-        public static ValidationRequestCreator Creator(Twilio.Types.PhoneNumber phoneNumber) {
-            return new ValidationRequestCreator(phoneNumber);
+        public static ValidationRequestCreator Creator(Twilio.Types.PhoneNumber phoneNumber, string accountSid=null, string friendlyName=null, int? callDelay=null, string extension=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null) {
+            return new ValidationRequestCreator(phoneNumber, accountSid:accountSid, friendlyName:friendlyName, callDelay:callDelay, extension:extension, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod);
         }
     
         /// <summary>

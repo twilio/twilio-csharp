@@ -15,27 +15,16 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         public string friendlyName { get; }
     
         /// <summary>
-        /// Construct a new CredentialListUpdater.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        public CredentialListUpdater(string sid, string friendlyName) {
-            this.sid = sid;
-            this.friendlyName = friendlyName;
-        }
-    
-        /// <summary>
         /// Construct a new CredentialListUpdater
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> The sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
-        public CredentialListUpdater(string accountSid, string sid, string friendlyName) {
+        /// <param name="accountSid"> The account_sid </param>
+        public CredentialListUpdater(string sid, string friendlyName, string accountSid=null) {
             this.accountSid = accountSid;
-            this.sid = sid;
             this.friendlyName = friendlyName;
+            this.sid = sid;
         }
     
         #if NET40

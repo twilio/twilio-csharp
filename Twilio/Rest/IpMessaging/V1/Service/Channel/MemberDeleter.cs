@@ -24,8 +24,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         /// <param name="sid"> The sid </param>
         public MemberDeleter(string serviceSid, string channelSid, string sid) {
             this.serviceSid = serviceSid;
-            this.channelSid = channelSid;
             this.sid = sid;
+            this.channelSid = channelSid;
         }
     
         #if NET40

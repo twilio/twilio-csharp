@@ -13,14 +13,12 @@ namespace Twilio.Rest.Taskrouter.V1 {
         public string friendlyName { get; set; }
     
         /// <summary>
-        /// The friendly_name
+        /// Construct a new WorkspaceReader
         /// </summary>
         ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public WorkspaceReader ByFriendlyName(string friendlyName) {
+        public WorkspaceReader(string friendlyName=null) {
             this.friendlyName = friendlyName;
-            return this;
         }
     
         #if NET40

@@ -15,36 +15,16 @@ namespace Twilio.Rest.Preview.Wireless {
         public string ratePlan { get; set; }
     
         /// <summary>
-        /// The status
+        /// Construct a new DeviceReader
         /// </summary>
         ///
         /// <param name="status"> The status </param>
-        /// <returns> this </returns> 
-        public DeviceReader ByStatus(string status) {
-            this.status = status;
-            return this;
-        }
-    
-        /// <summary>
-        /// The sim_identifier
-        /// </summary>
-        ///
         /// <param name="simIdentifier"> The sim_identifier </param>
-        /// <returns> this </returns> 
-        public DeviceReader BySimIdentifier(string simIdentifier) {
-            this.simIdentifier = simIdentifier;
-            return this;
-        }
-    
-        /// <summary>
-        /// The rate_plan
-        /// </summary>
-        ///
         /// <param name="ratePlan"> The rate_plan </param>
-        /// <returns> this </returns> 
-        public DeviceReader ByRatePlan(string ratePlan) {
+        public DeviceReader(string status=null, string simIdentifier=null, string ratePlan=null) {
+            this.status = status;
+            this.simIdentifier = simIdentifier;
             this.ratePlan = ratePlan;
-            return this;
         }
     
         #if NET40

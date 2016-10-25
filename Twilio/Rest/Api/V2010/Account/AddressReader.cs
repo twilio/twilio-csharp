@@ -16,51 +16,18 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string isoCountry { get; set; }
     
         /// <summary>
-        /// Construct a new AddressReader.
-        /// </summary>
-        public AddressReader() {
-        }
-    
-        /// <summary>
         /// Construct a new AddressReader
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public AddressReader(string accountSid) {
-            this.accountSid = accountSid;
-        }
-    
-        /// <summary>
-        /// The customer_name
-        /// </summary>
-        ///
         /// <param name="customerName"> The customer_name </param>
-        /// <returns> this </returns> 
-        public AddressReader ByCustomerName(string customerName) {
-            this.customerName = customerName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public AddressReader ByFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The iso_country
-        /// </summary>
-        ///
         /// <param name="isoCountry"> The iso_country </param>
-        /// <returns> this </returns> 
-        public AddressReader ByIsoCountry(string isoCountry) {
+        public AddressReader(string accountSid=null, string customerName=null, string friendlyName=null, string isoCountry=null) {
+            this.accountSid = accountSid;
+            this.friendlyName = friendlyName;
+            this.customerName = customerName;
             this.isoCountry = isoCountry;
-            return this;
         }
     
         #if NET40

@@ -16,104 +16,53 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         ///
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialListReader capable of executing the read </returns> 
-        public static CredentialListReader Reader(string accountSid) {
-            return new CredentialListReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a CredentialListReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> CredentialListReader capable of executing the read </returns> 
-        public static CredentialListReader Reader() {
-            return new CredentialListReader();
+        public static CredentialListReader Reader(string accountSid=null) {
+            return new CredentialListReader(accountSid:accountSid);
         }
     
         /// <summary>
         /// Add a Credential to the list
         /// </summary>
         ///
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> CredentialListCreator capable of executing the create </returns> 
-        public static CredentialListCreator Creator(string accountSid, string friendlyName) {
-            return new CredentialListCreator(accountSid, friendlyName);
-        }
-    
-        /// <summary>
-        /// Create a CredentialListCreator to execute create.
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> CredentialListCreator capable of executing the create </returns> 
-        public static CredentialListCreator Creator(string friendlyName) {
-            return new CredentialListCreator(friendlyName);
+        public static CredentialListCreator Creator(string friendlyName, string accountSid=null) {
+            return new CredentialListCreator(friendlyName, accountSid:accountSid);
         }
     
         /// <summary>
         /// Retrieve a specific Credential in a list
         /// </summary>
         ///
+        /// <param name="sid"> Fetch by unique credential Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Fetch by unique credential Sid </param>
         /// <returns> CredentialListFetcher capable of executing the fetch </returns> 
-        public static CredentialListFetcher Fetcher(string accountSid, string sid) {
-            return new CredentialListFetcher(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a CredentialListFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="sid"> Fetch by unique credential Sid </param>
-        /// <returns> CredentialListFetcher capable of executing the fetch </returns> 
-        public static CredentialListFetcher Fetcher(string sid) {
-            return new CredentialListFetcher(sid);
+        public static CredentialListFetcher Fetcher(string sid, string accountSid=null) {
+            return new CredentialListFetcher(sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// Change the password of a Credential record
         /// </summary>
         ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> CredentialListUpdater capable of executing the update </returns> 
-        public static CredentialListUpdater Updater(string accountSid, string sid, string friendlyName) {
-            return new CredentialListUpdater(accountSid, sid, friendlyName);
-        }
-    
-        /// <summary>
-        /// Create a CredentialListUpdater to execute update.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> CredentialListUpdater capable of executing the update </returns> 
-        public static CredentialListUpdater Updater(string sid, 
-                                                    string friendlyName) {
-            return new CredentialListUpdater(sid, friendlyName);
+        public static CredentialListUpdater Updater(string sid, string friendlyName, string accountSid=null) {
+            return new CredentialListUpdater(sid, friendlyName, accountSid:accountSid);
         }
     
         /// <summary>
         /// Remove a credential from a CredentialList
         /// </summary>
         ///
+        /// <param name="sid"> Delete by unique credential Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Delete by unique credential Sid </param>
         /// <returns> CredentialListDeleter capable of executing the delete </returns> 
-        public static CredentialListDeleter Deleter(string accountSid, string sid) {
-            return new CredentialListDeleter(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a CredentialListDeleter to execute delete.
-        /// </summary>
-        ///
-        /// <param name="sid"> Delete by unique credential Sid </param>
-        /// <returns> CredentialListDeleter capable of executing the delete </returns> 
-        public static CredentialListDeleter Deleter(string sid) {
-            return new CredentialListDeleter(sid);
+        public static CredentialListDeleter Deleter(string sid, string accountSid=null) {
+            return new CredentialListDeleter(sid, accountSid:accountSid);
         }
     
         /// <summary>

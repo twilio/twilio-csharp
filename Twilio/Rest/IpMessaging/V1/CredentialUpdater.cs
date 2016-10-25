@@ -22,63 +22,18 @@ namespace Twilio.Rest.IpMessaging.V1 {
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        public CredentialUpdater(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public CredentialUpdater setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The certificate
-        /// </summary>
-        ///
         /// <param name="certificate"> The certificate </param>
-        /// <returns> this </returns> 
-        public CredentialUpdater setCertificate(string certificate) {
-            this.certificate = certificate;
-            return this;
-        }
-    
-        /// <summary>
-        /// The private_key
-        /// </summary>
-        ///
         /// <param name="privateKey"> The private_key </param>
-        /// <returns> this </returns> 
-        public CredentialUpdater setPrivateKey(string privateKey) {
-            this.privateKey = privateKey;
-            return this;
-        }
-    
-        /// <summary>
-        /// The sandbox
-        /// </summary>
-        ///
         /// <param name="sandbox"> The sandbox </param>
-        /// <returns> this </returns> 
-        public CredentialUpdater setSandbox(bool? sandbox) {
-            this.sandbox = sandbox;
-            return this;
-        }
-    
-        /// <summary>
-        /// The api_key
-        /// </summary>
-        ///
         /// <param name="apiKey"> The api_key </param>
-        /// <returns> this </returns> 
-        public CredentialUpdater setApiKey(string apiKey) {
+        public CredentialUpdater(string sid, string friendlyName=null, string certificate=null, string privateKey=null, bool? sandbox=null, string apiKey=null) {
+            this.sid = sid;
+            this.privateKey = privateKey;
+            this.certificate = certificate;
+            this.sandbox = sandbox;
             this.apiKey = apiKey;
-            return this;
+            this.friendlyName = friendlyName;
         }
     
         #if NET40

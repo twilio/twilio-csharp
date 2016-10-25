@@ -14,25 +14,14 @@ namespace Twilio.Rest.Api.V2010 {
         public AccountResource.Status status { get; set; }
     
         /// <summary>
-        /// Filter accounts where the friendly name exactly matches the desired FriendlyName
+        /// Construct a new AccountReader
         /// </summary>
         ///
         /// <param name="friendlyName"> FriendlyName to filter on </param>
-        /// <returns> this </returns> 
-        public AccountReader ByFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// Only show accounts with the given Status
-        /// </summary>
-        ///
         /// <param name="status"> Status to filter on </param>
-        /// <returns> this </returns> 
-        public AccountReader ByStatus(AccountResource.Status status) {
+        public AccountReader(string friendlyName=null, AccountResource.Status status=null) {
+            this.friendlyName = friendlyName;
             this.status = status;
-            return this;
         }
     
         #if NET40

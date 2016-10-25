@@ -15,24 +15,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         public string sid { get; }
     
         /// <summary>
-        /// Construct a new IpAddressFetcher.
-        /// </summary>
-        ///
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="sid"> The sid </param>
-        public IpAddressFetcher(string ipAccessControlListSid, string sid) {
-            this.ipAccessControlListSid = ipAccessControlListSid;
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new IpAddressFetcher
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         /// <param name="sid"> The sid </param>
-        public IpAddressFetcher(string accountSid, string ipAccessControlListSid, string sid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public IpAddressFetcher(string ipAccessControlListSid, string sid, string accountSid=null) {
             this.accountSid = accountSid;
             this.ipAccessControlListSid = ipAccessControlListSid;
             this.sid = sid;

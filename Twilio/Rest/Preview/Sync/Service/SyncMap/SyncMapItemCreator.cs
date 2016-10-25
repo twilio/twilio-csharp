@@ -25,10 +25,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap {
         /// <param name="key"> The key </param>
         /// <param name="data"> The data </param>
         public SyncMapItemCreator(string serviceSid, string mapSid, string key, Object data) {
-            this.serviceSid = serviceSid;
-            this.mapSid = mapSid;
             this.key = key;
+            this.serviceSid = serviceSid;
             this.data = data;
+            this.mapSid = mapSid;
         }
     
         #if NET40

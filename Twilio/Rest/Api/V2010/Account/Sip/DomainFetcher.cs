@@ -14,21 +14,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         public string sid { get; }
     
         /// <summary>
-        /// Construct a new DomainFetcher.
-        /// </summary>
-        ///
-        /// <param name="sid"> Fetch by unique Domain Sid </param>
-        public DomainFetcher(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new DomainFetcher
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> Fetch by unique Domain Sid </param>
-        public DomainFetcher(string accountSid, string sid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public DomainFetcher(string sid, string accountSid=null) {
             this.accountSid = accountSid;
             this.sid = sid;
         }

@@ -14,21 +14,27 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry {
         /// read
         /// </summary>
         ///
+        /// <param name="countryCode"> The country_code </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="countryCode"> The country_code </param>
+        /// <param name="areaCode"> The area_code </param>
+        /// <param name="contains"> The contains </param>
+        /// <param name="smsEnabled"> The sms_enabled </param>
+        /// <param name="mmsEnabled"> The mms_enabled </param>
+        /// <param name="voiceEnabled"> The voice_enabled </param>
+        /// <param name="excludeAllAddressRequired"> The exclude_all_address_required </param>
+        /// <param name="excludeLocalAddressRequired"> The exclude_local_address_required </param>
+        /// <param name="excludeForeignAddressRequired"> The exclude_foreign_address_required </param>
+        /// <param name="beta"> The beta </param>
+        /// <param name="nearNumber"> The near_number </param>
+        /// <param name="nearLatLong"> The near_lat_long </param>
+        /// <param name="distance"> The distance </param>
+        /// <param name="inPostalCode"> The in_postal_code </param>
+        /// <param name="inRegion"> The in_region </param>
+        /// <param name="inRateCenter"> The in_rate_center </param>
+        /// <param name="inLata"> The in_lata </param>
         /// <returns> LocalReader capable of executing the read </returns> 
-        public static LocalReader Reader(string accountSid, string countryCode) {
-            return new LocalReader(accountSid, countryCode);
-        }
-    
-        /// <summary>
-        /// Create a LocalReader to execute read.
-        /// </summary>
-        ///
-        /// <param name="countryCode"> The country_code </param>
-        /// <returns> LocalReader capable of executing the read </returns> 
-        public static LocalReader Reader(string countryCode) {
-            return new LocalReader(countryCode);
+        public static LocalReader Reader(string countryCode, string accountSid=null, int? areaCode=null, string contains=null, bool? smsEnabled=null, bool? mmsEnabled=null, bool? voiceEnabled=null, bool? excludeAllAddressRequired=null, bool? excludeLocalAddressRequired=null, bool? excludeForeignAddressRequired=null, bool? beta=null, Twilio.Types.PhoneNumber nearNumber=null, string nearLatLong=null, int? distance=null, string inPostalCode=null, string inRegion=null, string inRateCenter=null, string inLata=null) {
+            return new LocalReader(countryCode, accountSid:accountSid, areaCode:areaCode, contains:contains, smsEnabled:smsEnabled, mmsEnabled:mmsEnabled, voiceEnabled:voiceEnabled, excludeAllAddressRequired:excludeAllAddressRequired, excludeLocalAddressRequired:excludeLocalAddressRequired, excludeForeignAddressRequired:excludeForeignAddressRequired, beta:beta, nearNumber:nearNumber, nearLatLong:nearLatLong, distance:distance, inPostalCode:inPostalCode, inRegion:inRegion, inRateCenter:inRateCenter, inLata:inLata);
         }
     
         /// <summary>

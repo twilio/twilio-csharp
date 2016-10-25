@@ -13,17 +13,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip {
         public string accountSid { get; }
     
         /// <summary>
-        /// Construct a new DomainReader.
-        /// </summary>
-        public DomainReader() {
-        }
-    
-        /// <summary>
         /// Construct a new DomainReader
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public DomainReader(string accountSid) {
+        public DomainReader(string accountSid=null) {
             this.accountSid = accountSid;
         }
     

@@ -16,51 +16,18 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string dateSent { get; set; }
     
         /// <summary>
-        /// Construct a new MessageReader.
-        /// </summary>
-        public MessageReader() {
-        }
-    
-        /// <summary>
         /// Construct a new MessageReader
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public MessageReader(string accountSid) {
-            this.accountSid = accountSid;
-        }
-    
-        /// <summary>
-        /// Filter by messages to this number
-        /// </summary>
-        ///
         /// <param name="to"> Filter by messages to this number </param>
-        /// <returns> this </returns> 
-        public MessageReader ByTo(Twilio.Types.PhoneNumber to) {
-            this.to = to;
-            return this;
-        }
-    
-        /// <summary>
-        /// Only show messages from this phone number
-        /// </summary>
-        ///
         /// <param name="from"> Filter by from number </param>
-        /// <returns> this </returns> 
-        public MessageReader ByFrom(Twilio.Types.PhoneNumber from) {
-            this.from = from;
-            return this;
-        }
-    
-        /// <summary>
-        /// Filter messages sent by this date
-        /// </summary>
-        ///
         /// <param name="dateSent"> Filter by date sent </param>
-        /// <returns> this </returns> 
-        public MessageReader ByDateSent(string dateSent) {
+        public MessageReader(string accountSid=null, Twilio.Types.PhoneNumber to=null, Twilio.Types.PhoneNumber from=null, string dateSent=null) {
+            this.accountSid = accountSid;
+            this.from = from;
             this.dateSent = dateSent;
-            return this;
+            this.to = to;
         }
     
         #if NET40

@@ -14,21 +14,12 @@ namespace Twilio.Rest.Api.V2010.Account.Recording {
         public string recordingSid { get; }
     
         /// <summary>
-        /// Construct a new TranscriptionReader.
-        /// </summary>
-        ///
-        /// <param name="recordingSid"> The recording_sid </param>
-        public TranscriptionReader(string recordingSid) {
-            this.recordingSid = recordingSid;
-        }
-    
-        /// <summary>
         /// Construct a new TranscriptionReader
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="recordingSid"> The recording_sid </param>
-        public TranscriptionReader(string accountSid, string recordingSid) {
+        /// <param name="accountSid"> The account_sid </param>
+        public TranscriptionReader(string recordingSid, string accountSid=null) {
             this.accountSid = accountSid;
             this.recordingSid = recordingSid;
         }

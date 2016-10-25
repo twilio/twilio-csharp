@@ -15,41 +15,16 @@ namespace Twilio.Rest.Api.V2010.Account {
         public string shortCode { get; set; }
     
         /// <summary>
-        /// Construct a new ShortCodeReader.
-        /// </summary>
-        public ShortCodeReader() {
-        }
-    
-        /// <summary>
         /// Construct a new ShortCodeReader
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
-        public ShortCodeReader(string accountSid) {
-            this.accountSid = accountSid;
-        }
-    
-        /// <summary>
-        /// Only show the ShortCode resources with friendly names that exactly match this name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> Filter by friendly name </param>
-        /// <returns> this </returns> 
-        public ShortCodeReader ByFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// Only show the ShortCode resources that match this pattern. You can specify partial numbers and use '*' as a wildcard
-        /// for any digit
-        /// </summary>
-        ///
         /// <param name="shortCode"> Filter by ShortCode </param>
-        /// <returns> this </returns> 
-        public ShortCodeReader ByShortCode(string shortCode) {
+        public ShortCodeReader(string accountSid=null, string friendlyName=null, string shortCode=null) {
+            this.accountSid = accountSid;
+            this.friendlyName = friendlyName;
             this.shortCode = shortCode;
-            return this;
         }
     
         #if NET40

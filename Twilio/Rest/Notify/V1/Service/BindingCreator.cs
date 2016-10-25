@@ -29,12 +29,18 @@ namespace Twilio.Rest.Notify.V1.Service {
         /// <param name="identity"> The identity </param>
         /// <param name="bindingType"> The binding_type </param>
         /// <param name="address"> The address </param>
-        public BindingCreator(string serviceSid, string endpoint, string identity, BindingResource.BindingType bindingType, string address) {
+        /// <param name="tag"> The tag </param>
+        /// <param name="notificationProtocolVersion"> The notification_protocol_version </param>
+        /// <param name="credentialSid"> The credential_sid </param>
+        public BindingCreator(string serviceSid, string endpoint, string identity, BindingResource.BindingType bindingType, string address, List<string> tag=null, string notificationProtocolVersion=null, string credentialSid=null) {
             this.serviceSid = serviceSid;
             this.endpoint = endpoint;
-            this.identity = identity;
             this.bindingType = bindingType;
+            this.credentialSid = credentialSid;
+            this.identity = identity;
+            this.notificationProtocolVersion = notificationProtocolVersion;
             this.address = address;
+            this.tag = tag;
         }
     
         #if NET40

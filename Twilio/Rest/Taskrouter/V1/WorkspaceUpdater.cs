@@ -1,7 +1,6 @@
 using System;
 using Twilio.Base;
 using Twilio.Clients;
-using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -25,84 +24,20 @@ namespace Twilio.Rest.Taskrouter.V1 {
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        public WorkspaceUpdater(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The default_activity_sid
-        /// </summary>
-        ///
         /// <param name="defaultActivitySid"> The default_activity_sid </param>
-        /// <returns> this </returns> 
-        public WorkspaceUpdater setDefaultActivitySid(string defaultActivitySid) {
-            this.defaultActivitySid = defaultActivitySid;
-            return this;
-        }
-    
-        /// <summary>
-        /// The event_callback_url
-        /// </summary>
-        ///
         /// <param name="eventCallbackUrl"> The event_callback_url </param>
-        /// <returns> this </returns> 
-        public WorkspaceUpdater setEventCallbackUrl(Uri eventCallbackUrl) {
-            this.eventCallbackUrl = eventCallbackUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The event_callback_url
-        /// </summary>
-        ///
-        /// <param name="eventCallbackUrl"> The event_callback_url </param>
-        /// <returns> this </returns> 
-        public WorkspaceUpdater setEventCallbackUrl(string eventCallbackUrl) {
-            return setEventCallbackUrl(Promoter.UriFromString(eventCallbackUrl));
-        }
-    
-        /// <summary>
-        /// The events_filter
-        /// </summary>
-        ///
         /// <param name="eventsFilter"> The events_filter </param>
-        /// <returns> this </returns> 
-        public WorkspaceUpdater setEventsFilter(string eventsFilter) {
-            this.eventsFilter = eventsFilter;
-            return this;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public WorkspaceUpdater setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The multi_task_enabled
-        /// </summary>
-        ///
         /// <param name="multiTaskEnabled"> The multi_task_enabled </param>
-        /// <returns> this </returns> 
-        public WorkspaceUpdater setMultiTaskEnabled(bool? multiTaskEnabled) {
-            this.multiTaskEnabled = multiTaskEnabled;
-            return this;
-        }
-    
-        /// <summary>
-        /// The timeout_activity_sid
-        /// </summary>
-        ///
         /// <param name="timeoutActivitySid"> The timeout_activity_sid </param>
-        /// <returns> this </returns> 
-        public WorkspaceUpdater setTimeoutActivitySid(string timeoutActivitySid) {
+        public WorkspaceUpdater(string sid, string defaultActivitySid=null, Uri eventCallbackUrl=null, string eventsFilter=null, string friendlyName=null, bool? multiTaskEnabled=null, string timeoutActivitySid=null) {
+            this.sid = sid;
+            this.defaultActivitySid = defaultActivitySid;
+            this.multiTaskEnabled = multiTaskEnabled;
+            this.eventCallbackUrl = eventCallbackUrl;
             this.timeoutActivitySid = timeoutActivitySid;
-            return this;
+            this.friendlyName = friendlyName;
+            this.eventsFilter = eventsFilter;
         }
     
         #if NET40

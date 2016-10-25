@@ -22,10 +22,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel {
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="channelSid"> The channel_sid </param>
         /// <param name="identity"> The identity </param>
-        public MemberCreator(string serviceSid, string channelSid, string identity) {
+        /// <param name="roleSid"> The role_sid </param>
+        public MemberCreator(string serviceSid, string channelSid, string identity, string roleSid=null) {
             this.serviceSid = serviceSid;
-            this.channelSid = channelSid;
             this.identity = identity;
+            this.roleSid = roleSid;
+            this.channelSid = channelSid;
         }
     
         #if NET40

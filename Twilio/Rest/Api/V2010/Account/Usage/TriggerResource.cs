@@ -191,90 +191,53 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// Fetch and instance of a usage-trigger
         /// </summary>
         ///
+        /// <param name="sid"> Fetch by unique usage-trigger Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Fetch by unique usage-trigger Sid </param>
         /// <returns> TriggerFetcher capable of executing the fetch </returns> 
-        public static TriggerFetcher Fetcher(string accountSid, string sid) {
-            return new TriggerFetcher(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a TriggerFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="sid"> Fetch by unique usage-trigger Sid </param>
-        /// <returns> TriggerFetcher capable of executing the fetch </returns> 
-        public static TriggerFetcher Fetcher(string sid) {
-            return new TriggerFetcher(sid);
+        public static TriggerFetcher Fetcher(string sid, string accountSid=null) {
+            return new TriggerFetcher(sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// Update an instance of a usage trigger
         /// </summary>
         ///
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="callbackMethod"> HTTP method to use with callback_url </param>
+        /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
+        /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
         /// <returns> TriggerUpdater capable of executing the update </returns> 
-        public static TriggerUpdater Updater(string accountSid, string sid) {
-            return new TriggerUpdater(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a TriggerUpdater to execute update.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> TriggerUpdater capable of executing the update </returns> 
-        public static TriggerUpdater Updater(string sid) {
-            return new TriggerUpdater(sid);
+        public static TriggerUpdater Updater(string sid, string accountSid=null, Twilio.Http.HttpMethod callbackMethod=null, Uri callbackUrl=null, string friendlyName=null) {
+            return new TriggerUpdater(sid, accountSid:accountSid, callbackMethod:callbackMethod, callbackUrl:callbackUrl, friendlyName:friendlyName);
         }
     
         /// <summary>
         /// delete
         /// </summary>
         ///
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> The sid </param>
         /// <returns> TriggerDeleter capable of executing the delete </returns> 
-        public static TriggerDeleter Deleter(string accountSid, string sid) {
-            return new TriggerDeleter(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a TriggerDeleter to execute delete.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> TriggerDeleter capable of executing the delete </returns> 
-        public static TriggerDeleter Deleter(string sid) {
-            return new TriggerDeleter(sid);
+        public static TriggerDeleter Deleter(string sid, string accountSid=null) {
+            return new TriggerDeleter(sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// Create a new UsageTrigger
         /// </summary>
         ///
+        /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
+        /// <param name="triggerValue"> the value at which the trigger will fire </param>
+        /// <param name="usageCategory"> The usage category the trigger watches </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
-        /// <param name="triggerValue"> the value at which the trigger will fire </param>
-        /// <param name="usageCategory"> The usage category the trigger watches </param>
+        /// <param name="callbackMethod"> HTTP method to use with callback_url </param>
+        /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
+        /// <param name="recurring"> How this trigger recurs </param>
+        /// <param name="triggerBy"> The field in the UsageRecord that fires the trigger </param>
         /// <returns> TriggerCreator capable of executing the create </returns> 
-        public static TriggerCreator Creator(string accountSid, Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory) {
-            return new TriggerCreator(accountSid, callbackUrl, triggerValue, usageCategory);
-        }
-    
-        /// <summary>
-        /// Create a TriggerCreator to execute create.
-        /// </summary>
-        ///
-        /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
-        /// <param name="triggerValue"> the value at which the trigger will fire </param>
-        /// <param name="usageCategory"> The usage category the trigger watches </param>
-        /// <returns> TriggerCreator capable of executing the create </returns> 
-        public static TriggerCreator Creator(Uri callbackUrl, 
-                                             string triggerValue, 
-                                             TriggerResource.UsageCategory usageCategory) {
-            return new TriggerCreator(callbackUrl, triggerValue, usageCategory);
+        public static TriggerCreator Creator(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory, string accountSid=null, Twilio.Http.HttpMethod callbackMethod=null, string friendlyName=null, TriggerResource.Recurring recurring=null, TriggerResource.TriggerField triggerBy=null) {
+            return new TriggerCreator(callbackUrl, triggerValue, usageCategory, accountSid:accountSid, callbackMethod:callbackMethod, friendlyName:friendlyName, recurring:recurring, triggerBy:triggerBy);
         }
     
         /// <summary>
@@ -282,18 +245,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage {
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
+        /// <param name="recurring"> Filter by recurring </param>
+        /// <param name="triggerBy"> Filter by trigger by </param>
+        /// <param name="usageCategory"> Filter by Usage Category </param>
         /// <returns> TriggerReader capable of executing the read </returns> 
-        public static TriggerReader Reader(string accountSid) {
-            return new TriggerReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a TriggerReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> TriggerReader capable of executing the read </returns> 
-        public static TriggerReader Reader() {
-            return new TriggerReader();
+        public static TriggerReader Reader(string accountSid=null, TriggerResource.Recurring recurring=null, TriggerResource.TriggerField triggerBy=null, TriggerResource.UsageCategory usageCategory=null) {
+            return new TriggerReader(accountSid:accountSid, recurring:recurring, triggerBy:triggerBy, usageCategory:usageCategory);
         }
     
         /// <summary>

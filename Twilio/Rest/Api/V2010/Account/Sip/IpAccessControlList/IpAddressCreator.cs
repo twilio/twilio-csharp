@@ -16,30 +16,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList {
         public string ipAddress { get; }
     
         /// <summary>
-        /// Construct a new IpAddressCreator.
-        /// </summary>
-        ///
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="ipAddress"> The ip_address </param>
-        public IpAddressCreator(string ipAccessControlListSid, string friendlyName, string ipAddress) {
-            this.ipAccessControlListSid = ipAccessControlListSid;
-            this.friendlyName = friendlyName;
-            this.ipAddress = ipAddress;
-        }
-    
-        /// <summary>
         /// Construct a new IpAddressCreator
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="ipAddress"> The ip_address </param>
-        public IpAddressCreator(string accountSid, string ipAccessControlListSid, string friendlyName, string ipAddress) {
+        /// <param name="accountSid"> The account_sid </param>
+        public IpAddressCreator(string ipAccessControlListSid, string friendlyName, string ipAddress, string accountSid=null) {
             this.accountSid = accountSid;
-            this.ipAccessControlListSid = ipAccessControlListSid;
             this.friendlyName = friendlyName;
+            this.ipAccessControlListSid = ipAccessControlListSid;
             this.ipAddress = ipAddress;
         }
     

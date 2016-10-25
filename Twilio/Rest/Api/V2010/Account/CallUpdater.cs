@@ -1,7 +1,6 @@
 using System;
 using Twilio.Base;
 using Twilio.Clients;
-using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -23,133 +22,28 @@ namespace Twilio.Rest.Api.V2010.Account {
         public Twilio.Http.HttpMethod statusCallbackMethod { get; set; }
     
         /// <summary>
-        /// Construct a new CallUpdater.
-        /// </summary>
-        ///
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to update </param>
-        public CallUpdater(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
         /// Construct a new CallUpdater
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <param name="sid"> Call Sid that uniquely identifies the Call to update </param>
-        public CallUpdater(string accountSid, string sid) {
-            this.accountSid = accountSid;
-            this.sid = sid;
-        }
-    
-        /// <summary>
-        /// A valid URL that returns TwiML. Twilio will immediately redirect the call to the new TwiML upon execution.
-        /// </summary>
-        ///
+        /// <param name="accountSid"> The account_sid </param>
         /// <param name="url"> URL that returns TwiML </param>
-        /// <returns> this </returns> 
-        public CallUpdater setUrl(Uri url) {
-            this.url = url;
-            return this;
-        }
-    
-        /// <summary>
-        /// A valid URL that returns TwiML. Twilio will immediately redirect the call to the new TwiML upon execution.
-        /// </summary>
-        ///
-        /// <param name="url"> URL that returns TwiML </param>
-        /// <returns> this </returns> 
-        public CallUpdater setUrl(string url) {
-            return setUrl(Promoter.UriFromString(url));
-        }
-    
-        /// <summary>
-        /// The HTTP method Twilio should use when requesting the URL. Defaults to `POST`.
-        /// </summary>
-        ///
         /// <param name="method"> HTTP method to use to fetch TwiML </param>
-        /// <returns> this </returns> 
-        public CallUpdater setMethod(Twilio.Http.HttpMethod method) {
-            this.method = method;
-            return this;
-        }
-    
-        /// <summary>
-        /// Either `canceled` or `completed`. Specifying `canceled` will attempt to hangup calls that are queued or ringing but
-        /// not affect calls already in progress. Specifying `completed` will attempt to hang up a call even if it's already in
-        /// progress.
-        /// </summary>
-        ///
         /// <param name="status"> Status to update the Call with </param>
-        /// <returns> this </returns> 
-        public CallUpdater setStatus(CallResource.Status status) {
-            this.status = status;
-            return this;
-        }
-    
-        /// <summary>
-        /// A URL that Twilio will request if an error occurs requesting or executing the TwiML at `Url`.
-        /// </summary>
-        ///
         /// <param name="fallbackUrl"> Fallback URL in case of error </param>
-        /// <returns> this </returns> 
-        public CallUpdater setFallbackUrl(Uri fallbackUrl) {
-            this.fallbackUrl = fallbackUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// A URL that Twilio will request if an error occurs requesting or executing the TwiML at `Url`.
-        /// </summary>
-        ///
-        /// <param name="fallbackUrl"> Fallback URL in case of error </param>
-        /// <returns> this </returns> 
-        public CallUpdater setFallbackUrl(string fallbackUrl) {
-            return setFallbackUrl(Promoter.UriFromString(fallbackUrl));
-        }
-    
-        /// <summary>
-        /// The HTTP method that Twilio should use to request the `FallbackUrl`. Must be either `GET` or `POST`. Defaults to
-        /// `POST`.
-        /// </summary>
-        ///
         /// <param name="fallbackMethod"> HTTP Method to use with FallbackUrl </param>
-        /// <returns> this </returns> 
-        public CallUpdater setFallbackMethod(Twilio.Http.HttpMethod fallbackMethod) {
-            this.fallbackMethod = fallbackMethod;
-            return this;
-        }
-    
-        /// <summary>
-        /// A URL that Twilio will request when the call ends to notify your app.
-        /// </summary>
-        ///
         /// <param name="statusCallback"> Status Callback URL </param>
-        /// <returns> this </returns> 
-        public CallUpdater setStatusCallback(Uri statusCallback) {
-            this.statusCallback = statusCallback;
-            return this;
-        }
-    
-        /// <summary>
-        /// A URL that Twilio will request when the call ends to notify your app.
-        /// </summary>
-        ///
-        /// <param name="statusCallback"> Status Callback URL </param>
-        /// <returns> this </returns> 
-        public CallUpdater setStatusCallback(string statusCallback) {
-            return setStatusCallback(Promoter.UriFromString(statusCallback));
-        }
-    
-        /// <summary>
-        /// The HTTP method that Twilio should use to request the `StatusCallback`. Defaults to `POST`.
-        /// </summary>
-        ///
         /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
-        /// <returns> this </returns> 
-        public CallUpdater setStatusCallbackMethod(Twilio.Http.HttpMethod statusCallbackMethod) {
+        public CallUpdater(string sid, string accountSid=null, Uri url=null, Twilio.Http.HttpMethod method=null, CallResource.Status status=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null) {
+            this.sid = sid;
+            this.url = url;
             this.statusCallbackMethod = statusCallbackMethod;
-            return this;
+            this.statusCallback = statusCallback;
+            this.accountSid = accountSid;
+            this.status = status;
+            this.method = method;
+            this.fallbackMethod = fallbackMethod;
+            this.fallbackUrl = fallbackUrl;
         }
     
         #if NET40

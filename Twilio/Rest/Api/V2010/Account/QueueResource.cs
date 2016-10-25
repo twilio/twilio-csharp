@@ -13,63 +13,35 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// Fetch an instance of a queue identified by the QueueSid
         /// </summary>
         ///
+        /// <param name="sid"> Fetch by unique queue Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Fetch by unique queue Sid </param>
         /// <returns> QueueFetcher capable of executing the fetch </returns> 
-        public static QueueFetcher Fetcher(string accountSid, string sid) {
-            return new QueueFetcher(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a QueueFetcher to execute fetch.
-        /// </summary>
-        ///
-        /// <param name="sid"> Fetch by unique queue Sid </param>
-        /// <returns> QueueFetcher capable of executing the fetch </returns> 
-        public static QueueFetcher Fetcher(string sid) {
-            return new QueueFetcher(sid);
+        public static QueueFetcher Fetcher(string sid, string accountSid=null) {
+            return new QueueFetcher(sid, accountSid:accountSid);
         }
     
         /// <summary>
         /// Update the queue with the new parameters
         /// </summary>
         ///
+        /// <param name="sid"> The sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> A human readable description of the queue </param>
+        /// <param name="maxSize"> The max number of members allowed in the queue </param>
         /// <returns> QueueUpdater capable of executing the update </returns> 
-        public static QueueUpdater Updater(string accountSid, string sid) {
-            return new QueueUpdater(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a QueueUpdater to execute update.
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> QueueUpdater capable of executing the update </returns> 
-        public static QueueUpdater Updater(string sid) {
-            return new QueueUpdater(sid);
+        public static QueueUpdater Updater(string sid, string accountSid=null, string friendlyName=null, int? maxSize=null) {
+            return new QueueUpdater(sid, accountSid:accountSid, friendlyName:friendlyName, maxSize:maxSize);
         }
     
         /// <summary>
         /// Remove an empty queue
         /// </summary>
         ///
+        /// <param name="sid"> Delete by unique queue Sid </param>
         /// <param name="accountSid"> The account_sid </param>
-        /// <param name="sid"> Delete by unique queue Sid </param>
         /// <returns> QueueDeleter capable of executing the delete </returns> 
-        public static QueueDeleter Deleter(string accountSid, string sid) {
-            return new QueueDeleter(accountSid, sid);
-        }
-    
-        /// <summary>
-        /// Create a QueueDeleter to execute delete.
-        /// </summary>
-        ///
-        /// <param name="sid"> Delete by unique queue Sid </param>
-        /// <returns> QueueDeleter capable of executing the delete </returns> 
-        public static QueueDeleter Deleter(string sid) {
-            return new QueueDeleter(sid);
+        public static QueueDeleter Deleter(string sid, string accountSid=null) {
+            return new QueueDeleter(sid, accountSid:accountSid);
         }
     
         /// <summary>
@@ -78,17 +50,8 @@ namespace Twilio.Rest.Api.V2010.Account {
         ///
         /// <param name="accountSid"> The account_sid </param>
         /// <returns> QueueReader capable of executing the read </returns> 
-        public static QueueReader Reader(string accountSid) {
-            return new QueueReader(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a QueueReader to execute read.
-        /// </summary>
-        ///
-        /// <returns> QueueReader capable of executing the read </returns> 
-        public static QueueReader Reader() {
-            return new QueueReader();
+        public static QueueReader Reader(string accountSid=null) {
+            return new QueueReader(accountSid:accountSid);
         }
     
         /// <summary>
@@ -96,18 +59,11 @@ namespace Twilio.Rest.Api.V2010.Account {
         /// </summary>
         ///
         /// <param name="accountSid"> The account_sid </param>
+        /// <param name="friendlyName"> A user-provided string that identifies this queue. </param>
+        /// <param name="maxSize"> The max number of calls allowed in the queue </param>
         /// <returns> QueueCreator capable of executing the create </returns> 
-        public static QueueCreator Creator(string accountSid) {
-            return new QueueCreator(accountSid);
-        }
-    
-        /// <summary>
-        /// Create a QueueCreator to execute create.
-        /// </summary>
-        ///
-        /// <returns> QueueCreator capable of executing the create </returns> 
-        public static QueueCreator Creator() {
-            return new QueueCreator();
+        public static QueueCreator Creator(string accountSid=null, string friendlyName=null, int? maxSize=null) {
+            return new QueueCreator(accountSid:accountSid, friendlyName:friendlyName, maxSize:maxSize);
         }
     
         /// <summary>

@@ -24,64 +24,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace {
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
-        public TaskUpdater(string workspaceSid, string sid) {
+        /// <param name="attributes"> The attributes </param>
+        /// <param name="assignmentStatus"> The assignment_status </param>
+        /// <param name="reason"> The reason </param>
+        /// <param name="priority"> The priority </param>
+        /// <param name="taskChannel"> The task_channel </param>
+        public TaskUpdater(string workspaceSid, string sid, string attributes=null, TaskResource.Status assignmentStatus=null, string reason=null, int? priority=null, string taskChannel=null) {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The attributes
-        /// </summary>
-        ///
-        /// <param name="attributes"> The attributes </param>
-        /// <returns> this </returns> 
-        public TaskUpdater setAttributes(string attributes) {
-            this.attributes = attributes;
-            return this;
-        }
-    
-        /// <summary>
-        /// The assignment_status
-        /// </summary>
-        ///
-        /// <param name="assignmentStatus"> The assignment_status </param>
-        /// <returns> this </returns> 
-        public TaskUpdater setAssignmentStatus(TaskResource.Status assignmentStatus) {
             this.assignmentStatus = assignmentStatus;
-            return this;
-        }
-    
-        /// <summary>
-        /// The reason
-        /// </summary>
-        ///
-        /// <param name="reason"> The reason </param>
-        /// <returns> this </returns> 
-        public TaskUpdater setReason(string reason) {
             this.reason = reason;
-            return this;
-        }
-    
-        /// <summary>
-        /// The priority
-        /// </summary>
-        ///
-        /// <param name="priority"> The priority </param>
-        /// <returns> this </returns> 
-        public TaskUpdater setPriority(int? priority) {
-            this.priority = priority;
-            return this;
-        }
-    
-        /// <summary>
-        /// The task_channel
-        /// </summary>
-        ///
-        /// <param name="taskChannel"> The task_channel </param>
-        /// <returns> this </returns> 
-        public TaskUpdater setTaskChannel(string taskChannel) {
             this.taskChannel = taskChannel;
-            return this;
+            this.priority = priority;
+            this.attributes = attributes;
         }
     
         #if NET40

@@ -23,52 +23,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue {
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        public TaskQueuesStatisticsReader(string workspaceSid) {
-            this.workspaceSid = workspaceSid;
-        }
-    
-        /// <summary>
-        /// The end_date
-        /// </summary>
-        ///
         /// <param name="endDate"> The end_date </param>
-        /// <returns> this </returns> 
-        public TaskQueuesStatisticsReader ByEndDate(DateTime? endDate) {
-            this.endDate = endDate;
-            return this;
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public TaskQueuesStatisticsReader ByFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The minutes
-        /// </summary>
-        ///
         /// <param name="minutes"> The minutes </param>
-        /// <returns> this </returns> 
-        public TaskQueuesStatisticsReader ByMinutes(int? minutes) {
-            this.minutes = minutes;
-            return this;
-        }
-    
-        /// <summary>
-        /// The start_date
-        /// </summary>
-        ///
         /// <param name="startDate"> The start_date </param>
-        /// <returns> this </returns> 
-        public TaskQueuesStatisticsReader ByStartDate(DateTime? startDate) {
+        public TaskQueuesStatisticsReader(string workspaceSid, DateTime? endDate=null, string friendlyName=null, int? minutes=null, DateTime? startDate=null) {
+            this.workspaceSid = workspaceSid;
             this.startDate = startDate;
-            return this;
+            this.minutes = minutes;
+            this.endDate = endDate;
+            this.friendlyName = friendlyName;
         }
     
         #if NET40

@@ -1,7 +1,6 @@
 using System;
 using Twilio.Base;
 using Twilio.Clients;
-using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
@@ -28,127 +27,26 @@ namespace Twilio.Rest.Preview.Wireless {
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        public DeviceUpdater(string sid) {
-            this.sid = sid;
-        }
-    
-        /// <summary>
-        /// The alias
-        /// </summary>
-        ///
         /// <param name="alias"> The alias </param>
-        /// <returns> this </returns> 
-        public DeviceUpdater setAlias(string alias) {
-            this.alias = alias;
-            return this;
-        }
-    
-        /// <summary>
-        /// The callback_method
-        /// </summary>
-        ///
         /// <param name="callbackMethod"> The callback_method </param>
-        /// <returns> this </returns> 
-        public DeviceUpdater setCallbackMethod(string callbackMethod) {
-            this.callbackMethod = callbackMethod;
-            return this;
-        }
-    
-        /// <summary>
-        /// The callback_url
-        /// </summary>
-        ///
         /// <param name="callbackUrl"> The callback_url </param>
-        /// <returns> this </returns> 
-        public DeviceUpdater setCallbackUrl(Uri callbackUrl) {
-            this.callbackUrl = callbackUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The callback_url
-        /// </summary>
-        ///
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <returns> this </returns> 
-        public DeviceUpdater setCallbackUrl(string callbackUrl) {
-            return setCallbackUrl(Promoter.UriFromString(callbackUrl));
-        }
-    
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> this </returns> 
-        public DeviceUpdater setFriendlyName(string friendlyName) {
-            this.friendlyName = friendlyName;
-            return this;
-        }
-    
-        /// <summary>
-        /// The rate_plan
-        /// </summary>
-        ///
         /// <param name="ratePlan"> The rate_plan </param>
-        /// <returns> this </returns> 
-        public DeviceUpdater setRatePlan(string ratePlan) {
-            this.ratePlan = ratePlan;
-            return this;
-        }
-    
-        /// <summary>
-        /// The sim_identifier
-        /// </summary>
-        ///
         /// <param name="simIdentifier"> The sim_identifier </param>
-        /// <returns> this </returns> 
-        public DeviceUpdater setSimIdentifier(string simIdentifier) {
-            this.simIdentifier = simIdentifier;
-            return this;
-        }
-    
-        /// <summary>
-        /// The status
-        /// </summary>
-        ///
         /// <param name="status"> The status </param>
-        /// <returns> this </returns> 
-        public DeviceUpdater setStatus(string status) {
-            this.status = status;
-            return this;
-        }
-    
-        /// <summary>
-        /// The commands_callback_method
-        /// </summary>
-        ///
         /// <param name="commandsCallbackMethod"> The commands_callback_method </param>
-        /// <returns> this </returns> 
-        public DeviceUpdater setCommandsCallbackMethod(string commandsCallbackMethod) {
+        /// <param name="commandsCallbackUrl"> The commands_callback_url </param>
+        public DeviceUpdater(string sid, string alias=null, string callbackMethod=null, Uri callbackUrl=null, string friendlyName=null, string ratePlan=null, string simIdentifier=null, string status=null, string commandsCallbackMethod=null, Uri commandsCallbackUrl=null) {
+            this.sid = sid;
+            this.simIdentifier = simIdentifier;
+            this.callbackMethod = callbackMethod;
+            this.ratePlan = ratePlan;
+            this.callbackUrl = callbackUrl;
             this.commandsCallbackMethod = commandsCallbackMethod;
-            return this;
-        }
-    
-        /// <summary>
-        /// The commands_callback_url
-        /// </summary>
-        ///
-        /// <param name="commandsCallbackUrl"> The commands_callback_url </param>
-        /// <returns> this </returns> 
-        public DeviceUpdater setCommandsCallbackUrl(Uri commandsCallbackUrl) {
+            this.status = status;
             this.commandsCallbackUrl = commandsCallbackUrl;
-            return this;
-        }
-    
-        /// <summary>
-        /// The commands_callback_url
-        /// </summary>
-        ///
-        /// <param name="commandsCallbackUrl"> The commands_callback_url </param>
-        /// <returns> this </returns> 
-        public DeviceUpdater setCommandsCallbackUrl(string commandsCallbackUrl) {
-            return setCommandsCallbackUrl(Promoter.UriFromString(commandsCallbackUrl));
+            this.friendlyName = friendlyName;
+            this.alias = alias;
         }
     
         #if NET40
