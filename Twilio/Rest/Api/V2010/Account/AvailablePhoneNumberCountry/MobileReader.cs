@@ -257,7 +257,10 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
                 request.AddQueryParam("InLata", inLata);
             }
             
-            request.AddQueryParam("PageSize", PageSize.ToString());
+            if (PageSize != null)
+            {
+                request.AddQueryParam("PageSize", PageSize.ToString());
+            }
         }
     }
 }

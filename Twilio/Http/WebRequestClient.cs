@@ -35,7 +35,8 @@ namespace Twilio.Http
 	        }
 	    }
 
-	    public override Response MakeRequest(Request request) {
+	    public override Response MakeRequest(Request request)
+	    {
 			var httpRequest = (HttpWebRequest) WebRequest.Create(request.ConstructUrl());
 			httpRequest.Method = request.Method.ToString();
 			httpRequest.Accept = "application/json";
@@ -72,6 +73,7 @@ namespace Twilio.Http
 				    var e = (WebException) x;
 				    throw HandleErrorResponse((HttpWebResponse) e.Response);
 				});
+			    return null;
 			}
 			#else
             catch (WebException e)
@@ -79,8 +81,6 @@ namespace Twilio.Http
                 throw HandleErrorResponse((HttpWebResponse) e.Response);
 			}
 			#endif
-
-	        return null;
 	    }
 
 	    private static Stream GetStream(WebRequest request)

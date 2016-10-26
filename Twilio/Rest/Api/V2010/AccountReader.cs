@@ -139,7 +139,10 @@ namespace Twilio.Rest.Api.V2010
                 request.AddQueryParam("Status", status.ToString());
             }
             
-            request.AddQueryParam("PageSize", PageSize.ToString());
+            if (PageSize != null)
+            {
+                request.AddQueryParam("PageSize", PageSize.ToString());
+            }
         }
     }
 }

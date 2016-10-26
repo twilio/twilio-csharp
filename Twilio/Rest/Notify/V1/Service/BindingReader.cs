@@ -161,7 +161,10 @@ namespace Twilio.Rest.Notify.V1.Service
                 request.AddQueryParam("Tag", tag.ToString());
             }
             
-            request.AddQueryParam("PageSize", PageSize.ToString());
+            if (PageSize != null)
+            {
+                request.AddQueryParam("PageSize", PageSize.ToString());
+            }
         }
     }
 }

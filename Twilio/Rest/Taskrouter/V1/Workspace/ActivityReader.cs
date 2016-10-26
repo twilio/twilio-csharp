@@ -142,7 +142,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 request.AddQueryParam("Available", available);
             }
             
-            request.AddQueryParam("PageSize", PageSize.ToString());
+            if (PageSize != null)
+            {
+                request.AddQueryParam("PageSize", PageSize.ToString());
+            }
         }
     }
 }

@@ -145,7 +145,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 request.AddQueryParam("MessageDate", messageDate);
             }
             
-            request.AddQueryParam("PageSize", PageSize.ToString());
+            if (PageSize != null)
+            {
+                request.AddQueryParam("PageSize", PageSize.ToString());
+            }
         }
     }
 }

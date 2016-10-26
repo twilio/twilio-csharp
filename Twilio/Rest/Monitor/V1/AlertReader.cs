@@ -149,7 +149,10 @@ namespace Twilio.Rest.Monitor.V1
                 request.AddQueryParam("EndDate", endDate.ToString());
             }
             
-            request.AddQueryParam("PageSize", PageSize.ToString());
+            if (PageSize != null)
+            {
+                request.AddQueryParam("PageSize", PageSize.ToString());
+            }
         }
     }
 }

@@ -150,7 +150,10 @@ namespace Twilio.Rest.Api.V2010.Account
                 request.AddQueryParam("PhoneNumber", phoneNumber.ToString());
             }
             
-            request.AddQueryParam("PageSize", PageSize.ToString());
+            if (PageSize != null)
+            {
+                request.AddQueryParam("PageSize", PageSize.ToString());
+            }
         }
     }
 }

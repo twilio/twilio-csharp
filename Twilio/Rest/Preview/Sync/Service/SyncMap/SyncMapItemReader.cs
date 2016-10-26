@@ -153,7 +153,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                 request.AddQueryParam("Bounds", bounds.ToString());
             }
             
-            request.AddQueryParam("PageSize", PageSize.ToString());
+            if (PageSize != null)
+            {
+                request.AddQueryParam("PageSize", PageSize.ToString());
+            }
         }
     }
 }

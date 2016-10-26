@@ -200,7 +200,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 request.AddQueryParam("WorkflowSid", workflowSid);
             }
             
-            request.AddQueryParam("PageSize", PageSize.ToString());
+            if (PageSize != null)
+            {
+                request.AddQueryParam("PageSize", PageSize.ToString());
+            }
         }
     }
 }

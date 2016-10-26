@@ -1,6 +1,4 @@
 namespace Twilio.Base
 {
-    public abstract class Resource
-    {
-    }
+    public abstract class Resource {}
 }

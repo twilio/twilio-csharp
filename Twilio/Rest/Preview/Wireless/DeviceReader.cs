@@ -147,7 +147,10 @@ namespace Twilio.Rest.Preview.Wireless
                 request.AddQueryParam("RatePlan", ratePlan);
             }
             
-            request.AddQueryParam("PageSize", PageSize.ToString());
+            if (PageSize != null)
+            {
+                request.AddQueryParam("PageSize", PageSize.ToString());
+            }
         }
     }
 }

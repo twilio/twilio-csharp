@@ -142,7 +142,10 @@ namespace Twilio.Rest.Api.V2010.Account
                 request.AddQueryParam("ShortCode", shortCode);
             }
             
-            request.AddQueryParam("PageSize", PageSize.ToString());
+            if (PageSize != null)
+            {
+                request.AddQueryParam("PageSize", PageSize.ToString());
+            }
         }
     }
 }

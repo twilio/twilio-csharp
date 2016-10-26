@@ -137,7 +137,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                 request.AddQueryParam("ReservationStatus", reservationStatus.ToString());
             }
             
-            request.AddQueryParam("PageSize", PageSize.ToString());
+            if (PageSize != null)
+            {
+                request.AddQueryParam("PageSize", PageSize.ToString());
+            }
         }
     }
 }

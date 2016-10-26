@@ -145,7 +145,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                 request.AddQueryParam("Hold", hold.ToString());
             }
             
-            request.AddQueryParam("PageSize", PageSize.ToString());
+            if (PageSize != null)
+            {
+                request.AddQueryParam("PageSize", PageSize.ToString());
+            }
         }
     }
 }

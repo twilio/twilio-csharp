@@ -14,21 +14,25 @@ namespace Twilio.Rest
         public const string TASKROUTER = "taskrouter";
         public const string TRUNKING = "trunking";
         
-        private readonly string value;
+        private readonly string _value;
         
-        public Domains(string value) {
-            this.value = value;
+        public Domains(string value)
+        {
+            _value = value;
         }
         
-        public override string ToString() {
-            return value;
+        public override string ToString()
+        {
+            return _value;
         }
         
-        public static implicit operator Domains(string value) {
+        public static implicit operator Domains(string value)
+        {
             return new Domains(value);
         }
         
-        public static implicit operator string(Domains value) {
+        public static implicit operator string(Domains value)
+        {
             return value.ToString();
         }
     }
