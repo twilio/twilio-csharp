@@ -23,8 +23,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="sid"> The sid </param>
         public PhoneNumberFetcher(string trunkSid, string sid)
         {
-            this.sid = sid;
             this.trunkSid = trunkSid;
+            this.sid = sid;
         }
     
         #if NET40

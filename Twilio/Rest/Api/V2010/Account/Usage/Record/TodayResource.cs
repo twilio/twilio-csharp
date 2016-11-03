@@ -139,14 +139,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// read
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="category"> The category </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
         /// <returns> TodayReader capable of executing the read </returns> 
-        public static TodayReader Reader(string accountSid=null, TodayResource.Category category=null, DateTime? startDate=null, DateTime? endDate=null)
+        public static TodayReader Reader()
         {
-            return new TodayReader(accountSid:accountSid, category:category, startDate:startDate, endDate:endDate);
+            return new TodayReader();
         }
     
         /// <summary>
@@ -169,34 +165,34 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; }
+        public string apiVersion { get; set; }
         [JsonProperty("category")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TodayResource.Category category { get; }
+        public TodayResource.Category category { get; set; }
         [JsonProperty("count")]
-        public string count { get; }
+        public string count { get; set; }
         [JsonProperty("count_unit")]
-        public string countUnit { get; }
+        public string countUnit { get; set; }
         [JsonProperty("description")]
-        public string description { get; }
+        public string description { get; set; }
         [JsonProperty("end_date")]
-        public DateTime? endDate { get; }
+        public DateTime? endDate { get; set; }
         [JsonProperty("price")]
-        public decimal? price { get; }
+        public decimal? price { get; set; }
         [JsonProperty("price_unit")]
-        public string priceUnit { get; }
+        public string priceUnit { get; set; }
         [JsonProperty("start_date")]
-        public DateTime? startDate { get; }
+        public DateTime? startDate { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; }
+        public Dictionary<string, string> subresourceUris { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
         [JsonProperty("usage")]
-        public string usage { get; }
+        public string usage { get; set; }
         [JsonProperty("usage_unit")]
-        public string usageUnit { get; }
+        public string usageUnit { get; set; }
     
         public TodayResource()
         {

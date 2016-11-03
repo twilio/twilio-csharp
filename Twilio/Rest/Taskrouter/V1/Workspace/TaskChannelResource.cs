@@ -54,21 +54,21 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("unique_name")]
-        public string uniqueName { get; }
+        public string uniqueName { get; set; }
         [JsonProperty("workspace_sid")]
-        public string workspaceSid { get; }
+        public string workspaceSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
     
         public TaskChannelResource()
         {

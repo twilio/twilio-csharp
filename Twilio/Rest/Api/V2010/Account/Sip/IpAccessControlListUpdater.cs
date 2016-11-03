@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class IpAccessControlListUpdater : Updater<IpAccessControlListResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string sid { get; }
         public string friendlyName { get; }
     
@@ -22,12 +22,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         ///
         /// <param name="sid"> The sid </param>
         /// <param name="friendlyName"> A human readable description of this resource </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public IpAccessControlListUpdater(string sid, string friendlyName, string accountSid=null)
+        public IpAccessControlListUpdater(string sid, string friendlyName)
         {
-            this.accountSid = accountSid;
-            this.friendlyName = friendlyName;
             this.sid = sid;
+            this.friendlyName = friendlyName;
         }
     
         #if NET40

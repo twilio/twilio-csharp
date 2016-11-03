@@ -17,12 +17,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Create a new token
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="ttl"> The duration in seconds the credentials are valid </param>
         /// <returns> TokenCreator capable of executing the create </returns> 
-        public static TokenCreator Creator(string accountSid=null, int? ttl=null)
+        public static TokenCreator Creator()
         {
-            return new TokenCreator(accountSid:accountSid, ttl:ttl);
+            return new TokenCreator();
         }
     
         /// <summary>
@@ -45,19 +43,19 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("ice_servers")]
-        public List<IceServer> iceServers { get; }
+        public List<IceServer> iceServers { get; set; }
         [JsonProperty("password")]
-        public string password { get; }
+        public string password { get; set; }
         [JsonProperty("ttl")]
-        public string ttl { get; }
+        public string ttl { get; set; }
         [JsonProperty("username")]
-        public string username { get; }
+        public string username { get; set; }
     
         public TokenResource()
         {

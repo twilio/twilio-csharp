@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
     public class IpAddressUpdater : Updater<IpAddressResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string ipAccessControlListSid { get; }
         public string sid { get; }
         public string ipAddress { get; set; }
@@ -24,16 +24,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         ///
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="ipAddress"> The ip_address </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        public IpAddressUpdater(string ipAccessControlListSid, string sid, string accountSid=null, string ipAddress=null, string friendlyName=null)
+        public IpAddressUpdater(string ipAccessControlListSid, string sid)
         {
-            this.accountSid = accountSid;
-            this.friendlyName = friendlyName;
             this.ipAccessControlListSid = ipAccessControlListSid;
             this.sid = sid;
-            this.ipAddress = ipAddress;
         }
     
         #if NET40

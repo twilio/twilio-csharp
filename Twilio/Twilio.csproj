@@ -145,6 +145,7 @@
     <Compile Include="Rest\Api\V2010\Account\ConferenceFetcher.cs" />
     <Compile Include="Rest\Api\V2010\Account\ConferenceReader.cs" />
     <Compile Include="Rest\Api\V2010\Account\ConferenceResource.cs" />
+    <Compile Include="Rest\Api\V2010\Account\Conference\ParticipantCreator.cs" />
     <Compile Include="Rest\Api\V2010\Account\Conference\ParticipantDeleter.cs" />
     <Compile Include="Rest\Api\V2010\Account\Conference\ParticipantFetcher.cs" />
     <Compile Include="Rest\Api\V2010\Account\Conference\ParticipantReader.cs" />

@@ -14,16 +14,6 @@ namespace Twilio.Rest.Notify.V1
     {
         public string friendlyName { get; set; }
     
-        /// <summary>
-        /// Construct a new ServiceReader
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> The friendly_name </param>
-        public ServiceReader(string friendlyName=null)
-        {
-            this.friendlyName = friendlyName;
-        }
-    
         #if NET40
         /// <summary>
         /// Make the request to the Twilio API to perform the read
@@ -70,7 +60,7 @@ namespace Twilio.Rest.Notify.V1
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<ServiceResource> NextPage(Page<ServiceResource> page, ITwilioRestClient client)

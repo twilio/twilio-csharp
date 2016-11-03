@@ -12,20 +12,8 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class NewSigningKeyCreator : Creator<NewSigningKeyResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string friendlyName { get; set; }
-    
-        /// <summary>
-        /// Construct a new NewSigningKeyCreator
-        /// </summary>
-        ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        public NewSigningKeyCreator(string accountSid=null, string friendlyName=null)
-        {
-            this.accountSid = accountSid;
-            this.friendlyName = friendlyName;
-        }
     
         #if NET40
         /// <summary>

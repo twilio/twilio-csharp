@@ -16,11 +16,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// Retrieve a list of domains belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> DomainReader capable of executing the read </returns> 
-        public static DomainReader Reader(string accountSid=null)
+        public static DomainReader Reader()
         {
-            return new DomainReader(accountSid:accountSid);
+            return new DomainReader();
         }
     
         /// <summary>
@@ -28,19 +27,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         ///
         /// <param name="domainName"> The unique address on Twilio to route SIP traffic </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
-        /// <param name="authType"> The types of authentication mapped to the domain </param>
-        /// <param name="voiceUrl"> URL Twilio will request when receiving a call </param>
-        /// <param name="voiceMethod"> HTTP method to use with voice_url </param>
-        /// <param name="voiceFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
-        /// <param name="voiceFallbackMethod"> HTTP method used with voice_fallback_url </param>
-        /// <param name="voiceStatusCallbackUrl"> URL that Twilio will request with status updates </param>
-        /// <param name="voiceStatusCallbackMethod"> The voice_status_callback_method </param>
         /// <returns> DomainCreator capable of executing the create </returns> 
-        public static DomainCreator Creator(string domainName, string accountSid=null, string friendlyName=null, string authType=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri voiceStatusCallbackUrl=null, Twilio.Http.HttpMethod voiceStatusCallbackMethod=null)
+        public static DomainCreator Creator(string domainName)
         {
-            return new DomainCreator(domainName, accountSid:accountSid, friendlyName:friendlyName, authType:authType, voiceUrl:voiceUrl, voiceMethod:voiceMethod, voiceFallbackUrl:voiceFallbackUrl, voiceFallbackMethod:voiceFallbackMethod, voiceStatusCallbackUrl:voiceStatusCallbackUrl, voiceStatusCallbackMethod:voiceStatusCallbackMethod);
+            return new DomainCreator(domainName);
         }
     
         /// <summary>
@@ -48,11 +38,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         ///
         /// <param name="sid"> Fetch by unique Domain Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> DomainFetcher capable of executing the fetch </returns> 
-        public static DomainFetcher Fetcher(string sid, string accountSid=null)
+        public static DomainFetcher Fetcher(string sid)
         {
-            return new DomainFetcher(sid, accountSid:accountSid);
+            return new DomainFetcher(sid);
         }
     
         /// <summary>
@@ -60,19 +49,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="authType"> The auth_type </param>
-        /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
-        /// <param name="voiceFallbackMethod"> The voice_fallback_method </param>
-        /// <param name="voiceFallbackUrl"> The voice_fallback_url </param>
-        /// <param name="voiceMethod"> HTTP method to use with voice_url </param>
-        /// <param name="voiceStatusCallbackMethod"> The voice_status_callback_method </param>
-        /// <param name="voiceStatusCallbackUrl"> The voice_status_callback_url </param>
-        /// <param name="voiceUrl"> The voice_url </param>
         /// <returns> DomainUpdater capable of executing the update </returns> 
-        public static DomainUpdater Updater(string sid, string accountSid=null, string authType=null, string friendlyName=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Twilio.Http.HttpMethod voiceStatusCallbackMethod=null, Uri voiceStatusCallbackUrl=null, Uri voiceUrl=null)
+        public static DomainUpdater Updater(string sid)
         {
-            return new DomainUpdater(sid, accountSid:accountSid, authType:authType, friendlyName:friendlyName, voiceFallbackMethod:voiceFallbackMethod, voiceFallbackUrl:voiceFallbackUrl, voiceMethod:voiceMethod, voiceStatusCallbackMethod:voiceStatusCallbackMethod, voiceStatusCallbackUrl:voiceStatusCallbackUrl, voiceUrl:voiceUrl);
+            return new DomainUpdater(sid);
         }
     
         /// <summary>
@@ -80,11 +60,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> DomainDeleter capable of executing the delete </returns> 
-        public static DomainDeleter Deleter(string sid, string accountSid=null)
+        public static DomainDeleter Deleter(string sid)
         {
-            return new DomainDeleter(sid, accountSid:accountSid);
+            return new DomainDeleter(sid);
         }
     
         /// <summary>
@@ -107,40 +86,40 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; }
+        public string apiVersion { get; set; }
         [JsonProperty("auth_type")]
-        public string authType { get; }
+        public string authType { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("domain_name")]
-        public string domainName { get; }
+        public string domainName { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
         [JsonProperty("voice_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod voiceFallbackMethod { get; }
+        public Twilio.Http.HttpMethod voiceFallbackMethod { get; set; }
         [JsonProperty("voice_fallback_url")]
-        public Uri voiceFallbackUrl { get; }
+        public Uri voiceFallbackUrl { get; set; }
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod voiceMethod { get; }
+        public Twilio.Http.HttpMethod voiceMethod { get; set; }
         [JsonProperty("voice_status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod voiceStatusCallbackMethod { get; }
+        public Twilio.Http.HttpMethod voiceStatusCallbackMethod { get; set; }
         [JsonProperty("voice_status_callback_url")]
-        public Uri voiceStatusCallbackUrl { get; }
+        public Uri voiceStatusCallbackUrl { get; set; }
         [JsonProperty("voice_url")]
-        public Uri voiceUrl { get; }
+        public Uri voiceUrl { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; }
+        public Dictionary<string, string> subresourceUris { get; set; }
     
         public DomainResource()
         {

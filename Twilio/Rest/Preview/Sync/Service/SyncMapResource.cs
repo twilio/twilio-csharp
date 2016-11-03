@@ -41,11 +41,10 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// </summary>
         ///
         /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="uniqueName"> The unique_name </param>
         /// <returns> SyncMapCreator capable of executing the create </returns> 
-        public static SyncMapCreator Creator(string serviceSid, string uniqueName=null)
+        public static SyncMapCreator Creator(string serviceSid)
         {
-            return new SyncMapCreator(serviceSid, uniqueName:uniqueName);
+            return new SyncMapCreator(serviceSid);
         }
     
         /// <summary>
@@ -79,25 +78,25 @@ namespace Twilio.Rest.Preview.Sync.Service
         }
     
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("unique_name")]
-        public string uniqueName { get; }
+        public string uniqueName { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("service_sid")]
-        public string serviceSid { get; }
+        public string serviceSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; }
+        public Dictionary<string, string> links { get; set; }
         [JsonProperty("revision")]
-        public string revision { get; }
+        public string revision { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("created_by")]
-        public string createdBy { get; }
+        public string createdBy { get; set; }
     
         public SyncMapResource()
         {

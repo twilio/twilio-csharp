@@ -25,17 +25,9 @@ namespace Twilio.Rest.Lookups.V1
         /// </summary>
         ///
         /// <param name="phoneNumber"> The phone_number </param>
-        /// <param name="countryCode"> The country_code </param>
-        /// <param name="type"> The type </param>
-        /// <param name="addOns"> The add_ons </param>
-        /// <param name="addOnsData"> The add_ons_data </param>
-        public PhoneNumberFetcher(Twilio.Types.PhoneNumber phoneNumber, string countryCode=null, List<string> type=null, List<string> addOns=null, Dictionary<string, object> addOnsData=null)
+        public PhoneNumberFetcher(Twilio.Types.PhoneNumber phoneNumber)
         {
             this.phoneNumber = phoneNumber;
-            this.addOns = addOns;
-            this.addOnsData = addOnsData;
-            this.type = type;
-            this.countryCode = countryCode;
         }
     
         #if NET40

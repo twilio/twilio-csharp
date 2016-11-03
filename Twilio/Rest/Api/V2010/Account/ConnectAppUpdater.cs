@@ -14,7 +14,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ConnectAppUpdater : Updater<ConnectAppResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string sid { get; }
         public Uri authorizeRedirectUrl { get; set; }
         public string companyName { get; set; }
@@ -30,27 +30,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="authorizeRedirectUrl"> URIL Twilio sends requests when users authorize </param>
-        /// <param name="companyName"> The company name set for this Connect App. </param>
-        /// <param name="deauthorizeCallbackMethod"> HTTP method Twilio WIll use making requests to the url </param>
-        /// <param name="deauthorizeCallbackUrl"> URL Twilio will send a request when a user de-authorizes this app </param>
-        /// <param name="description"> A more detailed human readable description </param>
-        /// <param name="friendlyName"> A human readable name for the Connect App. </param>
-        /// <param name="homepageUrl"> The URL users can obtain more information </param>
-        /// <param name="permissions"> The set of permissions that your ConnectApp requests. </param>
-        public ConnectAppUpdater(string sid, string accountSid=null, Uri authorizeRedirectUrl=null, string companyName=null, Twilio.Http.HttpMethod deauthorizeCallbackMethod=null, Uri deauthorizeCallbackUrl=null, string description=null, string friendlyName=null, Uri homepageUrl=null, List<ConnectAppResource.Permission> permissions=null)
+        public ConnectAppUpdater(string sid)
         {
             this.sid = sid;
-            this.permissions = permissions;
-            this.friendlyName = friendlyName;
-            this.description = description;
-            this.companyName = companyName;
-            this.homepageUrl = homepageUrl;
-            this.deauthorizeCallbackUrl = deauthorizeCallbackUrl;
-            this.accountSid = accountSid;
-            this.authorizeRedirectUrl = authorizeRedirectUrl;
-            this.deauthorizeCallbackMethod = deauthorizeCallbackMethod;
         }
     
         #if NET40

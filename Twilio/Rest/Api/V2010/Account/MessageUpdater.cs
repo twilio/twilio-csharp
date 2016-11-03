@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class MessageUpdater : Updater<MessageResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string sid { get; }
         public string body { get; set; }
     
@@ -21,13 +21,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The message to redact </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="body"> The body </param>
-        public MessageUpdater(string sid, string accountSid=null, string body=null)
+        public MessageUpdater(string sid)
         {
-            this.accountSid = accountSid;
             this.sid = sid;
-            this.body = body;
         }
     
         #if NET40

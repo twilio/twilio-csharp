@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
     public class CredentialListMappingCreator : Creator<CredentialListMappingResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string domainSid { get; }
         public string credentialListSid { get; }
     
@@ -22,12 +22,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         ///
         /// <param name="domainSid"> The domain_sid </param>
         /// <param name="credentialListSid"> The credential_list_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public CredentialListMappingCreator(string domainSid, string credentialListSid, string accountSid=null)
+        public CredentialListMappingCreator(string domainSid, string credentialListSid)
         {
-            this.accountSid = accountSid;
-            this.credentialListSid = credentialListSid;
             this.domainSid = domainSid;
+            this.credentialListSid = credentialListSid;
         }
     
         #if NET40

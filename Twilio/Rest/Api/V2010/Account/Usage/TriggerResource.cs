@@ -212,11 +212,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// </summary>
         ///
         /// <param name="sid"> Fetch by unique usage-trigger Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> TriggerFetcher capable of executing the fetch </returns> 
-        public static TriggerFetcher Fetcher(string sid, string accountSid=null)
+        public static TriggerFetcher Fetcher(string sid)
         {
-            return new TriggerFetcher(sid, accountSid:accountSid);
+            return new TriggerFetcher(sid);
         }
     
         /// <summary>
@@ -224,14 +223,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="callbackMethod"> HTTP method to use with callback_url </param>
-        /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
-        /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
         /// <returns> TriggerUpdater capable of executing the update </returns> 
-        public static TriggerUpdater Updater(string sid, string accountSid=null, Twilio.Http.HttpMethod callbackMethod=null, Uri callbackUrl=null, string friendlyName=null)
+        public static TriggerUpdater Updater(string sid)
         {
-            return new TriggerUpdater(sid, accountSid:accountSid, callbackMethod:callbackMethod, callbackUrl:callbackUrl, friendlyName:friendlyName);
+            return new TriggerUpdater(sid);
         }
     
         /// <summary>
@@ -239,11 +234,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> TriggerDeleter capable of executing the delete </returns> 
-        public static TriggerDeleter Deleter(string sid, string accountSid=null)
+        public static TriggerDeleter Deleter(string sid)
         {
-            return new TriggerDeleter(sid, accountSid:accountSid);
+            return new TriggerDeleter(sid);
         }
     
         /// <summary>
@@ -253,29 +247,20 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
         /// <param name="triggerValue"> the value at which the trigger will fire </param>
         /// <param name="usageCategory"> The usage category the trigger watches </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="callbackMethod"> HTTP method to use with callback_url </param>
-        /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
-        /// <param name="recurring"> How this trigger recurs </param>
-        /// <param name="triggerBy"> The field in the UsageRecord that fires the trigger </param>
         /// <returns> TriggerCreator capable of executing the create </returns> 
-        public static TriggerCreator Creator(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory, string accountSid=null, Twilio.Http.HttpMethod callbackMethod=null, string friendlyName=null, TriggerResource.Recurring recurring=null, TriggerResource.TriggerField triggerBy=null)
+        public static TriggerCreator Creator(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory)
         {
-            return new TriggerCreator(callbackUrl, triggerValue, usageCategory, accountSid:accountSid, callbackMethod:callbackMethod, friendlyName:friendlyName, recurring:recurring, triggerBy:triggerBy);
+            return new TriggerCreator(callbackUrl, triggerValue, usageCategory);
         }
     
         /// <summary>
         /// Retrieve a list of usage-triggers belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="recurring"> Filter by recurring </param>
-        /// <param name="triggerBy"> Filter by trigger by </param>
-        /// <param name="usageCategory"> Filter by Usage Category </param>
         /// <returns> TriggerReader capable of executing the read </returns> 
-        public static TriggerReader Reader(string accountSid=null, TriggerResource.Recurring recurring=null, TriggerResource.TriggerField triggerBy=null, TriggerResource.UsageCategory usageCategory=null)
+        public static TriggerReader Reader()
         {
-            return new TriggerReader(accountSid:accountSid, recurring:recurring, triggerBy:triggerBy, usageCategory:usageCategory);
+            return new TriggerReader();
         }
     
         /// <summary>
@@ -298,41 +283,41 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; }
+        public string apiVersion { get; set; }
         [JsonProperty("callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod callbackMethod { get; }
+        public Twilio.Http.HttpMethod callbackMethod { get; set; }
         [JsonProperty("callback_url")]
-        public Uri callbackUrl { get; }
+        public Uri callbackUrl { get; set; }
         [JsonProperty("current_value")]
-        public string currentValue { get; }
+        public string currentValue { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_fired")]
-        public DateTime? dateFired { get; }
+        public DateTime? dateFired { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("recurring")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TriggerResource.Recurring recurring { get; }
+        public TriggerResource.Recurring recurring { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("trigger_by")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TriggerResource.TriggerField triggerBy { get; }
+        public TriggerResource.TriggerField triggerBy { get; set; }
         [JsonProperty("trigger_value")]
-        public string triggerValue { get; }
+        public string triggerValue { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
         [JsonProperty("usage_category")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TriggerResource.UsageCategory usageCategory { get; }
+        public TriggerResource.UsageCategory usageCategory { get; set; }
         [JsonProperty("usage_record_uri")]
-        public string usageRecordUri { get; }
+        public string usageRecordUri { get; set; }
     
         public TriggerResource()
         {

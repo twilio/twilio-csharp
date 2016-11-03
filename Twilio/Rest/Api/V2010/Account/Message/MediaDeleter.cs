@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
 
     public class MediaDeleter : Deleter<MediaResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string messageSid { get; }
         public string sid { get; }
     
@@ -23,12 +23,10 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         ///
         /// <param name="messageSid"> The message_sid </param>
         /// <param name="sid"> Delete by unique media Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public MediaDeleter(string messageSid, string sid, string accountSid=null)
+        public MediaDeleter(string messageSid, string sid)
         {
-            this.accountSid = accountSid;
-            this.sid = sid;
             this.messageSid = messageSid;
+            this.sid = sid;
         }
     
         #if NET40

@@ -15,7 +15,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class CallCreator : Creator<CallResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public IEndpoint to { get; }
         public Twilio.Types.PhoneNumber from { get; }
         public Uri url { get; }
@@ -43,45 +43,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="to"> Phone number, SIP address or client identifier to call </param>
         /// <param name="from"> Twilio number from which to originate the call </param>
         /// <param name="url"> Url from which to fetch TwiML </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="applicationSid"> ApplicationSid that configures from where to fetch TwiML </param>
-        /// <param name="method"> HTTP method to use to fetch TwiML </param>
-        /// <param name="fallbackUrl"> Fallback URL in case of error </param>
-        /// <param name="fallbackMethod"> HTTP Method to use with FallbackUrl </param>
-        /// <param name="statusCallback"> Status Callback URL </param>
-        /// <param name="statusCallbackEvent"> The status_callback_event </param>
-        /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
-        /// <param name="sendDigits"> Digits to send </param>
-        /// <param name="ifMachine"> Action to take if a machine has answered the call </param>
-        /// <param name="timeout"> Number of seconds to wait for an answer </param>
-        /// <param name="record"> Whether or not to record the Call </param>
-        /// <param name="recordingChannels"> The recording_channels </param>
-        /// <param name="recordingStatusCallback"> The recording_status_callback </param>
-        /// <param name="recordingStatusCallbackMethod"> The recording_status_callback_method </param>
-        /// <param name="sipAuthUsername"> The sip_auth_username </param>
-        /// <param name="sipAuthPassword"> The sip_auth_password </param>
-        public CallCreator(IEndpoint to, Twilio.Types.PhoneNumber from, Uri url, string accountSid=null, string applicationSid=null, Twilio.Http.HttpMethod method=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, List<string> statusCallbackEvent=null, Twilio.Http.HttpMethod statusCallbackMethod=null, string sendDigits=null, string ifMachine=null, int? timeout=null, bool? record=null, string recordingChannels=null, string recordingStatusCallback=null, Twilio.Http.HttpMethod recordingStatusCallbackMethod=null, string sipAuthUsername=null, string sipAuthPassword=null)
+        public CallCreator(IEndpoint to, Twilio.Types.PhoneNumber from, Uri url)
         {
-            this.sipAuthUsername = sipAuthUsername;
-            this.record = record;
-            this.url = url;
-            this.statusCallbackMethod = statusCallbackMethod;
-            this.sendDigits = sendDigits;
-            this.recordingStatusCallback = recordingStatusCallback;
-            this.from = from;
-            this.statusCallbackEvent = statusCallbackEvent;
-            this.ifMachine = ifMachine;
-            this.statusCallback = statusCallback;
-            this.accountSid = accountSid;
-            this.method = method;
-            this.applicationSid = applicationSid;
-            this.recordingChannels = recordingChannels;
-            this.recordingStatusCallbackMethod = recordingStatusCallbackMethod;
-            this.timeout = timeout;
-            this.sipAuthPassword = sipAuthPassword;
-            this.fallbackMethod = fallbackMethod;
-            this.fallbackUrl = fallbackUrl;
             this.to = to;
+            this.from = from;
+            this.url = url;
         }
     
         /// <summary>
@@ -91,45 +57,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="to"> Phone number, SIP address or client identifier to call </param>
         /// <param name="from"> Twilio number from which to originate the call </param>
         /// <param name="applicationSid"> ApplicationSid that configures from where to fetch TwiML </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="url"> Url from which to fetch TwiML </param>
-        /// <param name="method"> HTTP method to use to fetch TwiML </param>
-        /// <param name="fallbackUrl"> Fallback URL in case of error </param>
-        /// <param name="fallbackMethod"> HTTP Method to use with FallbackUrl </param>
-        /// <param name="statusCallback"> Status Callback URL </param>
-        /// <param name="statusCallbackEvent"> The status_callback_event </param>
-        /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
-        /// <param name="sendDigits"> Digits to send </param>
-        /// <param name="ifMachine"> Action to take if a machine has answered the call </param>
-        /// <param name="timeout"> Number of seconds to wait for an answer </param>
-        /// <param name="record"> Whether or not to record the Call </param>
-        /// <param name="recordingChannels"> The recording_channels </param>
-        /// <param name="recordingStatusCallback"> The recording_status_callback </param>
-        /// <param name="recordingStatusCallbackMethod"> The recording_status_callback_method </param>
-        /// <param name="sipAuthUsername"> The sip_auth_username </param>
-        /// <param name="sipAuthPassword"> The sip_auth_password </param>
-        public CallCreator(IEndpoint to, Twilio.Types.PhoneNumber from, string applicationSid, string accountSid=null, Uri url=null, Twilio.Http.HttpMethod method=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, List<string> statusCallbackEvent=null, Twilio.Http.HttpMethod statusCallbackMethod=null, string sendDigits=null, string ifMachine=null, int? timeout=null, bool? record=null, string recordingChannels=null, string recordingStatusCallback=null, Twilio.Http.HttpMethod recordingStatusCallbackMethod=null, string sipAuthUsername=null, string sipAuthPassword=null)
+        public CallCreator(IEndpoint to, Twilio.Types.PhoneNumber from, string applicationSid)
         {
-            this.sipAuthUsername = sipAuthUsername;
-            this.record = record;
-            this.url = url;
-            this.statusCallbackMethod = statusCallbackMethod;
-            this.sendDigits = sendDigits;
-            this.recordingStatusCallback = recordingStatusCallback;
-            this.from = from;
-            this.statusCallbackEvent = statusCallbackEvent;
-            this.ifMachine = ifMachine;
-            this.statusCallback = statusCallback;
-            this.accountSid = accountSid;
-            this.method = method;
-            this.applicationSid = applicationSid;
-            this.recordingChannels = recordingChannels;
-            this.recordingStatusCallbackMethod = recordingStatusCallbackMethod;
-            this.timeout = timeout;
-            this.sipAuthPassword = sipAuthPassword;
-            this.fallbackMethod = fallbackMethod;
-            this.fallbackUrl = fallbackUrl;
             this.to = to;
+            this.from = from;
+            this.applicationSid = applicationSid;
         }
     
         #if NET40

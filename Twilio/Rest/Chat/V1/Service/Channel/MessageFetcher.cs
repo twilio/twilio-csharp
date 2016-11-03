@@ -26,8 +26,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         public MessageFetcher(string serviceSid, string channelSid, string sid)
         {
             this.serviceSid = serviceSid;
-            this.sid = sid;
             this.channelSid = channelSid;
+            this.sid = sid;
         }
     
         #if NET40

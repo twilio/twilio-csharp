@@ -12,17 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class SigningKeyReader : Reader<SigningKeyResource> 
     {
-        public string accountSid { get; }
-    
-        /// <summary>
-        /// Construct a new SigningKeyReader
-        /// </summary>
-        ///
-        /// <param name="accountSid"> The account_sid </param>
-        public SigningKeyReader(string accountSid=null)
-        {
-            this.accountSid = accountSid;
-        }
+        public string accountSid { get; set; }
     
         #if NET40
         /// <summary>
@@ -70,7 +60,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<SigningKeyResource> NextPage(Page<SigningKeyResource> page, ITwilioRestClient client)

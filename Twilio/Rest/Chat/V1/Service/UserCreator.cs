@@ -24,16 +24,10 @@ namespace Twilio.Rest.Chat.V1.Service
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="identity"> The identity </param>
-        /// <param name="roleSid"> The role_sid </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        public UserCreator(string serviceSid, string identity, string roleSid=null, string attributes=null, string friendlyName=null)
+        public UserCreator(string serviceSid, string identity)
         {
             this.serviceSid = serviceSid;
             this.identity = identity;
-            this.attributes = attributes;
-            this.roleSid = roleSid;
-            this.friendlyName = friendlyName;
         }
     
         #if NET40

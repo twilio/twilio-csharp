@@ -26,23 +26,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="priority"> The priority </param>
-        /// <param name="assignmentStatus"> The assignment_status </param>
-        /// <param name="workflowSid"> The workflow_sid </param>
-        /// <param name="workflowName"> The workflow_name </param>
-        /// <param name="taskQueueSid"> The task_queue_sid </param>
-        /// <param name="taskQueueName"> The task_queue_name </param>
-        /// <param name="taskChannel"> The task_channel </param>
-        public TaskReader(string workspaceSid, int? priority=null, TaskResource.Status assignmentStatus=null, string workflowSid=null, string workflowName=null, string taskQueueSid=null, string taskQueueName=null, string taskChannel=null)
+        public TaskReader(string workspaceSid)
         {
             this.workspaceSid = workspaceSid;
-            this.taskQueueSid = taskQueueSid;
-            this.workflowSid = workflowSid;
-            this.workflowName = workflowName;
-            this.assignmentStatus = assignmentStatus;
-            this.taskChannel = taskChannel;
-            this.priority = priority;
-            this.taskQueueName = taskQueueName;
         }
     
         #if NET40
@@ -91,7 +77,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<TaskResource> NextPage(Page<TaskResource> page, ITwilioRestClient client)

@@ -16,12 +16,10 @@ namespace Twilio.Rest.Preview.Wireless.Device
         /// </summary>
         ///
         /// <param name="deviceSid"> The device_sid </param>
-        /// <param name="end"> The end </param>
-        /// <param name="start"> The start </param>
         /// <returns> UsageFetcher capable of executing the fetch </returns> 
-        public static UsageFetcher Fetcher(string deviceSid, string end=null, string start=null)
+        public static UsageFetcher Fetcher(string deviceSid)
         {
-            return new UsageFetcher(deviceSid, end:end, start:start);
+            return new UsageFetcher(deviceSid);
         }
     
         /// <summary>
@@ -44,23 +42,23 @@ namespace Twilio.Rest.Preview.Wireless.Device
         }
     
         [JsonProperty("device_sid")]
-        public string deviceSid { get; }
+        public string deviceSid { get; set; }
         [JsonProperty("device_alias")]
-        public string deviceAlias { get; }
+        public string deviceAlias { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("period")]
-        public Object period { get; }
+        public Object period { get; set; }
         [JsonProperty("commands_usage")]
-        public Object commandsUsage { get; }
+        public Object commandsUsage { get; set; }
         [JsonProperty("commands_costs")]
-        public Object commandsCosts { get; }
+        public Object commandsCosts { get; set; }
         [JsonProperty("data_usage")]
-        public Object dataUsage { get; }
+        public Object dataUsage { get; set; }
         [JsonProperty("data_costs")]
-        public Object dataCosts { get; }
+        public Object dataCosts { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
     
         public UsageResource()
         {

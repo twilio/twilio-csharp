@@ -53,14 +53,10 @@ namespace Twilio.Rest.Lookups.V1
         /// </summary>
         ///
         /// <param name="phoneNumber"> The phone_number </param>
-        /// <param name="countryCode"> The country_code </param>
-        /// <param name="type"> The type </param>
-        /// <param name="addOns"> The add_ons </param>
-        /// <param name="addOnsData"> The add_ons_data </param>
         /// <returns> PhoneNumberFetcher capable of executing the fetch </returns> 
-        public static PhoneNumberFetcher Fetcher(Twilio.Types.PhoneNumber phoneNumber, string countryCode=null, List<string> type=null, List<string> addOns=null, Dictionary<string, object> addOnsData=null)
+        public static PhoneNumberFetcher Fetcher(Twilio.Types.PhoneNumber phoneNumber)
         {
-            return new PhoneNumberFetcher(phoneNumber, countryCode:countryCode, type:type, addOns:addOns, addOnsData:addOnsData);
+            return new PhoneNumberFetcher(phoneNumber);
         }
     
         /// <summary>
@@ -83,20 +79,20 @@ namespace Twilio.Rest.Lookups.V1
         }
     
         [JsonProperty("caller_name")]
-        public Dictionary<string, string> callerName { get; }
+        public Dictionary<string, string> callerName { get; set; }
         [JsonProperty("country_code")]
-        public string countryCode { get; }
+        public string countryCode { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber phoneNumber { get; }
+        public Twilio.Types.PhoneNumber phoneNumber { get; set; }
         [JsonProperty("national_format")]
-        public string nationalFormat { get; }
+        public string nationalFormat { get; set; }
         [JsonProperty("carrier")]
-        public Dictionary<string, string> carrier { get; }
+        public Dictionary<string, string> carrier { get; set; }
         [JsonProperty("add_ons")]
-        public Object addOns { get; }
+        public Object addOns { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
     
         public PhoneNumberResource()
         {

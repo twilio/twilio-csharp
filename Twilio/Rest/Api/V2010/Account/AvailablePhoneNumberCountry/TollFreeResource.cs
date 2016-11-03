@@ -17,27 +17,10 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// </summary>
         ///
         /// <param name="countryCode"> The country_code </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="areaCode"> The area_code </param>
-        /// <param name="contains"> The contains </param>
-        /// <param name="smsEnabled"> The sms_enabled </param>
-        /// <param name="mmsEnabled"> The mms_enabled </param>
-        /// <param name="voiceEnabled"> The voice_enabled </param>
-        /// <param name="excludeAllAddressRequired"> The exclude_all_address_required </param>
-        /// <param name="excludeLocalAddressRequired"> The exclude_local_address_required </param>
-        /// <param name="excludeForeignAddressRequired"> The exclude_foreign_address_required </param>
-        /// <param name="beta"> The beta </param>
-        /// <param name="nearNumber"> The near_number </param>
-        /// <param name="nearLatLong"> The near_lat_long </param>
-        /// <param name="distance"> The distance </param>
-        /// <param name="inPostalCode"> The in_postal_code </param>
-        /// <param name="inRegion"> The in_region </param>
-        /// <param name="inRateCenter"> The in_rate_center </param>
-        /// <param name="inLata"> The in_lata </param>
         /// <returns> TollFreeReader capable of executing the read </returns> 
-        public static TollFreeReader Reader(string countryCode, string accountSid=null, int? areaCode=null, string contains=null, bool? smsEnabled=null, bool? mmsEnabled=null, bool? voiceEnabled=null, bool? excludeAllAddressRequired=null, bool? excludeLocalAddressRequired=null, bool? excludeForeignAddressRequired=null, bool? beta=null, Twilio.Types.PhoneNumber nearNumber=null, string nearLatLong=null, int? distance=null, string inPostalCode=null, string inRegion=null, string inRateCenter=null, string inLata=null)
+        public static TollFreeReader Reader(string countryCode)
         {
-            return new TollFreeReader(countryCode, accountSid:accountSid, areaCode:areaCode, contains:contains, smsEnabled:smsEnabled, mmsEnabled:mmsEnabled, voiceEnabled:voiceEnabled, excludeAllAddressRequired:excludeAllAddressRequired, excludeLocalAddressRequired:excludeLocalAddressRequired, excludeForeignAddressRequired:excludeForeignAddressRequired, beta:beta, nearNumber:nearNumber, nearLatLong:nearLatLong, distance:distance, inPostalCode:inPostalCode, inRegion:inRegion, inRateCenter:inRateCenter, inLata:inLata);
+            return new TollFreeReader(countryCode);
         }
     
         /// <summary>
@@ -61,30 +44,30 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
     
         [JsonProperty("friendly_name")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber friendlyName { get; }
+        public Twilio.Types.PhoneNumber friendlyName { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber phoneNumber { get; }
+        public Twilio.Types.PhoneNumber phoneNumber { get; set; }
         [JsonProperty("lata")]
-        public string lata { get; }
+        public string lata { get; set; }
         [JsonProperty("rate_center")]
-        public string rateCenter { get; }
+        public string rateCenter { get; set; }
         [JsonProperty("latitude")]
-        public decimal? latitude { get; }
+        public decimal? latitude { get; set; }
         [JsonProperty("longitude")]
-        public decimal? longitude { get; }
+        public decimal? longitude { get; set; }
         [JsonProperty("region")]
-        public string region { get; }
+        public string region { get; set; }
         [JsonProperty("postal_code")]
-        public string postalCode { get; }
+        public string postalCode { get; set; }
         [JsonProperty("iso_country")]
-        public string isoCountry { get; }
+        public string isoCountry { get; set; }
         [JsonProperty("address_requirements")]
-        public string addressRequirements { get; }
+        public string addressRequirements { get; set; }
         [JsonProperty("beta")]
-        public bool? beta { get; }
+        public bool? beta { get; set; }
         [JsonProperty("capabilities")]
-        public PhoneNumberCapabilities capabilities { get; }
+        public PhoneNumberCapabilities capabilities { get; set; }
     
         public TollFreeResource()
         {

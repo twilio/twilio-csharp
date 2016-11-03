@@ -53,26 +53,20 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Fetch by unique conference Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> ConferenceFetcher capable of executing the fetch </returns> 
-        public static ConferenceFetcher Fetcher(string sid, string accountSid=null)
+        public static ConferenceFetcher Fetcher(string sid)
         {
-            return new ConferenceFetcher(sid, accountSid:accountSid);
+            return new ConferenceFetcher(sid);
         }
     
         /// <summary>
         /// Retrieve a list of conferences belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="dateCreated"> Filter by date created </param>
-        /// <param name="dateUpdated"> Filter by date updated </param>
-        /// <param name="friendlyName"> Filter by friendly name </param>
-        /// <param name="status"> The status of the conference </param>
         /// <returns> ConferenceReader capable of executing the read </returns> 
-        public static ConferenceReader Reader(string accountSid=null, string dateCreated=null, string dateUpdated=null, string friendlyName=null, ConferenceResource.Status status=null)
+        public static ConferenceReader Reader()
         {
-            return new ConferenceReader(accountSid:accountSid, dateCreated:dateCreated, dateUpdated:dateUpdated, friendlyName:friendlyName, status:status);
+            return new ConferenceReader();
         }
     
         /// <summary>
@@ -95,24 +89,24 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; }
+        public string apiVersion { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ConferenceResource.Status status { get; }
+        public ConferenceResource.Status status { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; }
+        public Dictionary<string, string> subresourceUris { get; set; }
     
         public ConferenceResource()
         {

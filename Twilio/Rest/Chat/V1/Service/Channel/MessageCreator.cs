@@ -25,15 +25,11 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="channelSid"> The channel_sid </param>
         /// <param name="body"> The body </param>
-        /// <param name="from"> The from </param>
-        /// <param name="attributes"> The attributes </param>
-        public MessageCreator(string serviceSid, string channelSid, string body, string from=null, string attributes=null)
+        public MessageCreator(string serviceSid, string channelSid, string body)
         {
-            this.body = body;
             this.serviceSid = serviceSid;
-            this.attributes = attributes;
-            this.from = from;
             this.channelSid = channelSid;
+            this.body = body;
         }
     
         #if NET40

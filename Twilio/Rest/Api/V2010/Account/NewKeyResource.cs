@@ -15,12 +15,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// create
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> NewKeyCreator capable of executing the create </returns> 
-        public static NewKeyCreator Creator(string accountSid=null, string friendlyName=null)
+        public static NewKeyCreator Creator()
         {
-            return new NewKeyCreator(accountSid:accountSid, friendlyName:friendlyName);
+            return new NewKeyCreator();
         }
     
         /// <summary>
@@ -43,15 +41,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("secret")]
-        public string secret { get; }
+        public string secret { get; set; }
     
         public NewKeyResource()
         {

@@ -26,21 +26,9 @@ namespace Twilio.Rest.Taskrouter.V1
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="defaultActivitySid"> The default_activity_sid </param>
-        /// <param name="eventCallbackUrl"> The event_callback_url </param>
-        /// <param name="eventsFilter"> The events_filter </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="multiTaskEnabled"> The multi_task_enabled </param>
-        /// <param name="timeoutActivitySid"> The timeout_activity_sid </param>
-        public WorkspaceUpdater(string sid, string defaultActivitySid=null, Uri eventCallbackUrl=null, string eventsFilter=null, string friendlyName=null, bool? multiTaskEnabled=null, string timeoutActivitySid=null)
+        public WorkspaceUpdater(string sid)
         {
             this.sid = sid;
-            this.defaultActivitySid = defaultActivitySid;
-            this.multiTaskEnabled = multiTaskEnabled;
-            this.eventCallbackUrl = eventCallbackUrl;
-            this.timeoutActivitySid = timeoutActivitySid;
-            this.friendlyName = friendlyName;
-            this.eventsFilter = eventsFilter;
         }
     
         #if NET40

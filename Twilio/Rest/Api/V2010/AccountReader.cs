@@ -15,18 +15,6 @@ namespace Twilio.Rest.Api.V2010
         public string friendlyName { get; set; }
         public AccountResource.Status status { get; set; }
     
-        /// <summary>
-        /// Construct a new AccountReader
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> FriendlyName to filter on </param>
-        /// <param name="status"> Status to filter on </param>
-        public AccountReader(string friendlyName=null, AccountResource.Status status=null)
-        {
-            this.friendlyName = friendlyName;
-            this.status = status;
-        }
-    
         #if NET40
         /// <summary>
         /// Make the request to the Twilio API to perform the read
@@ -73,7 +61,7 @@ namespace Twilio.Rest.Api.V2010
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<AccountResource> NextPage(Page<AccountResource> page, ITwilioRestClient client)

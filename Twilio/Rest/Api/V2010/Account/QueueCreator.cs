@@ -12,23 +12,9 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class QueueCreator : Creator<QueueResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string friendlyName { get; set; }
         public int? maxSize { get; set; }
-    
-        /// <summary>
-        /// Construct a new QueueCreator
-        /// </summary>
-        ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> A user-provided string that identifies this queue. </param>
-        /// <param name="maxSize"> The max number of calls allowed in the queue </param>
-        public QueueCreator(string accountSid=null, string friendlyName=null, int? maxSize=null)
-        {
-            this.accountSid = accountSid;
-            this.friendlyName = friendlyName;
-            this.maxSize = maxSize;
-        }
     
         #if NET40
         /// <summary>

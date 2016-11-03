@@ -27,21 +27,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="minutes"> The minutes </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="taskQueueSid"> The task_queue_sid </param>
-        /// <param name="taskQueueName"> The task_queue_name </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        public WorkersStatisticsFetcher(string workspaceSid, int? minutes=null, DateTime? startDate=null, DateTime? endDate=null, string taskQueueSid=null, string taskQueueName=null, string friendlyName=null)
+        public WorkersStatisticsFetcher(string workspaceSid)
         {
             this.workspaceSid = workspaceSid;
-            this.taskQueueSid = taskQueueSid;
-            this.endDate = endDate;
-            this.minutes = minutes;
-            this.friendlyName = friendlyName;
-            this.startDate = startDate;
-            this.taskQueueName = taskQueueName;
         }
     
         #if NET40

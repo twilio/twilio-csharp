@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
 
     public class FeedbackCreator : Creator<FeedbackResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string messageSid { get; }
         public FeedbackResource.Outcome outcome { get; set; }
     
@@ -21,12 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// </summary>
         ///
         /// <param name="messageSid"> The message_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="outcome"> The outcome </param>
-        public FeedbackCreator(string messageSid, string accountSid=null, FeedbackResource.Outcome outcome=null)
+        public FeedbackCreator(string messageSid)
         {
-            this.accountSid = accountSid;
-            this.outcome = outcome;
             this.messageSid = messageSid;
         }
     

@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
 
     public class TranscriptionReader : Reader<TranscriptionResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string recordingSid { get; }
     
         /// <summary>
@@ -20,10 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// </summary>
         ///
         /// <param name="recordingSid"> The recording_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public TranscriptionReader(string recordingSid, string accountSid=null)
+        public TranscriptionReader(string recordingSid)
         {
-            this.accountSid = accountSid;
             this.recordingSid = recordingSid;
         }
     
@@ -73,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<TranscriptionResource> NextPage(Page<TranscriptionResource> page, ITwilioRestClient client)

@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
     public class IpAddressReader : Reader<IpAddressResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string ipAccessControlListSid { get; }
     
         /// <summary>
@@ -20,10 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// </summary>
         ///
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public IpAddressReader(string ipAccessControlListSid, string accountSid=null)
+        public IpAddressReader(string ipAccessControlListSid)
         {
-            this.accountSid = accountSid;
             this.ipAccessControlListSid = ipAccessControlListSid;
         }
     
@@ -73,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<IpAddressResource> NextPage(Page<IpAddressResource> page, ITwilioRestClient client)

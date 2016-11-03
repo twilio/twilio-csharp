@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class OutgoingCallerIdUpdater : Updater<OutgoingCallerIdResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string sid { get; }
         public string friendlyName { get; set; }
     
@@ -21,12 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Update by unique outgoing-caller-id Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> A human readable description of the caller ID </param>
-        public OutgoingCallerIdUpdater(string sid, string accountSid=null, string friendlyName=null)
+        public OutgoingCallerIdUpdater(string sid)
         {
-            this.accountSid = accountSid;
-            this.friendlyName = friendlyName;
             this.sid = sid;
         }
     

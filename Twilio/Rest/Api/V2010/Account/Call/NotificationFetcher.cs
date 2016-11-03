@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class NotificationFetcher : Fetcher<NotificationResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string callSid { get; }
         public string sid { get; }
     
@@ -22,12 +22,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         ///
         /// <param name="callSid"> The call_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public NotificationFetcher(string callSid, string sid, string accountSid=null)
+        public NotificationFetcher(string callSid, string sid)
         {
-            this.accountSid = accountSid;
-            this.sid = sid;
             this.callSid = callSid;
+            this.sid = sid;
         }
     
         #if NET40

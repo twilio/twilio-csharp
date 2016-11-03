@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class AddressUpdater : Updater<AddressResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string sid { get; }
         public string friendlyName { get; set; }
         public string customerName { get; set; }
@@ -26,23 +26,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="customerName"> The customer_name </param>
-        /// <param name="street"> The street </param>
-        /// <param name="city"> The city </param>
-        /// <param name="region"> The region </param>
-        /// <param name="postalCode"> The postal_code </param>
-        public AddressUpdater(string sid, string accountSid=null, string friendlyName=null, string customerName=null, string street=null, string city=null, string region=null, string postalCode=null)
+        public AddressUpdater(string sid)
         {
-            this.city = city;
             this.sid = sid;
-            this.street = street;
-            this.customerName = customerName;
-            this.accountSid = accountSid;
-            this.region = region;
-            this.friendlyName = friendlyName;
-            this.postalCode = postalCode;
         }
     
         #if NET40

@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
 
     public class MemberFetcher : Fetcher<MemberResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string queueSid { get; }
         public string callSid { get; }
     
@@ -22,12 +22,10 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         ///
         /// <param name="queueSid"> The Queue in which to find the members </param>
         /// <param name="callSid"> The call_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public MemberFetcher(string queueSid, string callSid, string accountSid=null)
+        public MemberFetcher(string queueSid, string callSid)
         {
-            this.accountSid = accountSid;
-            this.callSid = callSid;
             this.queueSid = queueSid;
+            this.callSid = callSid;
         }
     
         #if NET40

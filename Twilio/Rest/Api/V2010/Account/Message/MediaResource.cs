@@ -17,11 +17,10 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         ///
         /// <param name="messageSid"> The message_sid </param>
         /// <param name="sid"> Delete by unique media Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> MediaDeleter capable of executing the delete </returns> 
-        public static MediaDeleter Deleter(string messageSid, string sid, string accountSid=null)
+        public static MediaDeleter Deleter(string messageSid, string sid)
         {
-            return new MediaDeleter(messageSid, sid, accountSid:accountSid);
+            return new MediaDeleter(messageSid, sid);
         }
     
         /// <summary>
@@ -30,11 +29,10 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         ///
         /// <param name="messageSid"> The message_sid </param>
         /// <param name="sid"> Fetch by unique media Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> MediaFetcher capable of executing the fetch </returns> 
-        public static MediaFetcher Fetcher(string messageSid, string sid, string accountSid=null)
+        public static MediaFetcher Fetcher(string messageSid, string sid)
         {
-            return new MediaFetcher(messageSid, sid, accountSid:accountSid);
+            return new MediaFetcher(messageSid, sid);
         }
     
         /// <summary>
@@ -42,12 +40,10 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// </summary>
         ///
         /// <param name="messageSid"> The message_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="dateCreated"> Filter by date created </param>
         /// <returns> MediaReader capable of executing the read </returns> 
-        public static MediaReader Reader(string messageSid, string accountSid=null, string dateCreated=null)
+        public static MediaReader Reader(string messageSid)
         {
-            return new MediaReader(messageSid, accountSid:accountSid, dateCreated:dateCreated);
+            return new MediaReader(messageSid);
         }
     
         /// <summary>
@@ -70,19 +66,19 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("content_type")]
-        public string contentType { get; }
+        public string contentType { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("parent_sid")]
-        public string parentSid { get; }
+        public string parentSid { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
     
         public MediaResource()
         {

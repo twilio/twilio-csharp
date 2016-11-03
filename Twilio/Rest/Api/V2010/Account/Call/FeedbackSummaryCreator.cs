@@ -14,7 +14,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class FeedbackSummaryCreator : Creator<FeedbackSummaryResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public DateTime? startDate { get; }
         public DateTime? endDate { get; }
         public bool? includeSubaccounts { get; set; }
@@ -27,18 +27,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         ///
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="includeSubaccounts"> The include_subaccounts </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="statusCallbackMethod"> The status_callback_method </param>
-        public FeedbackSummaryCreator(DateTime? startDate, DateTime? endDate, string accountSid=null, bool? includeSubaccounts=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null)
+        public FeedbackSummaryCreator(DateTime? startDate, DateTime? endDate)
         {
-            this.endDate = endDate;
-            this.statusCallbackMethod = statusCallbackMethod;
-            this.statusCallback = statusCallback;
-            this.accountSid = accountSid;
-            this.includeSubaccounts = includeSubaccounts;
             this.startDate = startDate;
+            this.endDate = endDate;
         }
     
         #if NET40

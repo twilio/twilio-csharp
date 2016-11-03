@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class IncomingPhoneNumberFetcher : Fetcher<IncomingPhoneNumberResource> 
     {
-        public string ownerAccountSid { get; }
+        public string ownerAccountSid { get; set; }
         public string sid { get; }
     
         /// <summary>
@@ -20,11 +20,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Fetch by unique incoming-phone-number Sid </param>
-        /// <param name="ownerAccountSid"> The owner_account_sid </param>
-        public IncomingPhoneNumberFetcher(string sid, string ownerAccountSid=null)
+        public IncomingPhoneNumberFetcher(string sid)
         {
             this.sid = sid;
-            this.ownerAccountSid = ownerAccountSid;
         }
     
         #if NET40

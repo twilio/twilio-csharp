@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class QueueUpdater : Updater<QueueResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string sid { get; }
         public string friendlyName { get; set; }
         public int? maxSize { get; set; }
@@ -22,15 +22,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> A human readable description of the queue </param>
-        /// <param name="maxSize"> The max number of members allowed in the queue </param>
-        public QueueUpdater(string sid, string accountSid=null, string friendlyName=null, int? maxSize=null)
+        public QueueUpdater(string sid)
         {
-            this.accountSid = accountSid;
-            this.friendlyName = friendlyName;
             this.sid = sid;
-            this.maxSize = maxSize;
         }
     
         #if NET40

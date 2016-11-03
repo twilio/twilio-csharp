@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
     public class IpAccessControlListMappingFetcher : Fetcher<IpAccessControlListMappingResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string domainSid { get; }
         public string sid { get; }
     
@@ -22,12 +22,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         ///
         /// <param name="domainSid"> The domain_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public IpAccessControlListMappingFetcher(string domainSid, string sid, string accountSid=null)
+        public IpAccessControlListMappingFetcher(string domainSid, string sid)
         {
-            this.accountSid = accountSid;
-            this.sid = sid;
             this.domainSid = domainSid;
+            this.sid = sid;
         }
     
         #if NET40

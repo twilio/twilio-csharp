@@ -21,13 +21,9 @@ namespace Twilio.Rest.Preview.Wireless.Device
         /// </summary>
         ///
         /// <param name="deviceSid"> The device_sid </param>
-        /// <param name="end"> The end </param>
-        /// <param name="start"> The start </param>
-        public UsageFetcher(string deviceSid, string end=null, string start=null)
+        public UsageFetcher(string deviceSid)
         {
-            this.end = end;
             this.deviceSid = deviceSid;
-            this.start = start;
         }
     
         #if NET40

@@ -31,12 +31,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="channelSid"> The channel_sid </param>
         /// <param name="body"> The body </param>
-        /// <param name="from"> The from </param>
-        /// <param name="attributes"> The attributes </param>
         /// <returns> MessageCreator capable of executing the create </returns> 
-        public static MessageCreator Creator(string serviceSid, string channelSid, string body, string from=null, string attributes=null)
+        public static MessageCreator Creator(string serviceSid, string channelSid, string body)
         {
-            return new MessageCreator(serviceSid, channelSid, body, from:from, attributes:attributes);
+            return new MessageCreator(serviceSid, channelSid, body);
         }
     
         /// <summary>
@@ -72,11 +70,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="channelSid"> The channel_sid </param>
         /// <param name="sid"> The sid </param>
         /// <param name="body"> The body </param>
-        /// <param name="attributes"> The attributes </param>
         /// <returns> MessageUpdater capable of executing the update </returns> 
-        public static MessageUpdater Updater(string serviceSid, string channelSid, string sid, string body, Object attributes=null)
+        public static MessageUpdater Updater(string serviceSid, string channelSid, string sid, string body)
         {
-            return new MessageUpdater(serviceSid, channelSid, sid, body, attributes:attributes);
+            return new MessageUpdater(serviceSid, channelSid, sid, body);
         }
     
         /// <summary>
@@ -99,27 +96,27 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         }
     
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("service_sid")]
-        public string serviceSid { get; }
+        public string serviceSid { get; set; }
         [JsonProperty("to")]
-        public string to { get; }
+        public string to { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("was_edited")]
-        public bool? wasEdited { get; }
+        public bool? wasEdited { get; set; }
         [JsonProperty("from")]
-        public string from { get; }
+        public string from { get; set; }
         [JsonProperty("body")]
-        public string body { get; }
+        public string body { get; set; }
         [JsonProperty("index")]
-        public int? index { get; }
+        public int? index { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
     
         public MessageResource()
         {

@@ -15,7 +15,13 @@ namespace Twilio.Http
         private readonly List<KeyValuePair<string, string>> _queryParams;
         private readonly List<KeyValuePair<string, string>> _postParams;
 
-		public Request(HttpMethod method, string uri) : this(method, Domains.API, uri) {}
+	    public Request(HttpMethod method, string url)
+	    {
+	        Method = method;
+	        _uri = new Uri(url);
+	        _queryParams = new List<KeyValuePair<string, string>>();
+	        _postParams = new List<KeyValuePair<string, string>>();
+	    }
 
 		public Request(HttpMethod method, Domains domain, string uri)
 		{

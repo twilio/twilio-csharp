@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
     public class TriggerFetcher : Fetcher<TriggerResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string sid { get; }
     
         /// <summary>
@@ -20,10 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// </summary>
         ///
         /// <param name="sid"> Fetch by unique usage-trigger Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public TriggerFetcher(string sid, string accountSid=null)
+        public TriggerFetcher(string sid)
         {
-            this.accountSid = accountSid;
             this.sid = sid;
         }
     

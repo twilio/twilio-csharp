@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
     public class IpAccessControlListMappingCreator : Creator<IpAccessControlListMappingResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string domainSid { get; }
         public string ipAccessControlListSid { get; }
     
@@ -22,12 +22,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         ///
         /// <param name="domainSid"> The domain_sid </param>
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public IpAccessControlListMappingCreator(string domainSid, string ipAccessControlListSid, string accountSid=null)
+        public IpAccessControlListMappingCreator(string domainSid, string ipAccessControlListSid)
         {
-            this.accountSid = accountSid;
-            this.ipAccessControlListSid = ipAccessControlListSid;
             this.domainSid = domainSid;
+            this.ipAccessControlListSid = ipAccessControlListSid;
         }
     
         #if NET40

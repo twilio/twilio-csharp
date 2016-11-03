@@ -16,11 +16,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// Retrieve a list of Credentials belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialListReader capable of executing the read </returns> 
-        public static CredentialListReader Reader(string accountSid=null)
+        public static CredentialListReader Reader()
         {
-            return new CredentialListReader(accountSid:accountSid);
+            return new CredentialListReader();
         }
     
         /// <summary>
@@ -28,11 +27,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialListCreator capable of executing the create </returns> 
-        public static CredentialListCreator Creator(string friendlyName, string accountSid=null)
+        public static CredentialListCreator Creator(string friendlyName)
         {
-            return new CredentialListCreator(friendlyName, accountSid:accountSid);
+            return new CredentialListCreator(friendlyName);
         }
     
         /// <summary>
@@ -40,11 +38,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         ///
         /// <param name="sid"> Fetch by unique credential Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialListFetcher capable of executing the fetch </returns> 
-        public static CredentialListFetcher Fetcher(string sid, string accountSid=null)
+        public static CredentialListFetcher Fetcher(string sid)
         {
-            return new CredentialListFetcher(sid, accountSid:accountSid);
+            return new CredentialListFetcher(sid);
         }
     
         /// <summary>
@@ -53,11 +50,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         ///
         /// <param name="sid"> The sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialListUpdater capable of executing the update </returns> 
-        public static CredentialListUpdater Updater(string sid, string friendlyName, string accountSid=null)
+        public static CredentialListUpdater Updater(string sid, string friendlyName)
         {
-            return new CredentialListUpdater(sid, friendlyName, accountSid:accountSid);
+            return new CredentialListUpdater(sid, friendlyName);
         }
     
         /// <summary>
@@ -65,11 +61,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         ///
         /// <param name="sid"> Delete by unique credential Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialListDeleter capable of executing the delete </returns> 
-        public static CredentialListDeleter Deleter(string sid, string accountSid=null)
+        public static CredentialListDeleter Deleter(string sid)
         {
-            return new CredentialListDeleter(sid, accountSid:accountSid);
+            return new CredentialListDeleter(sid);
         }
     
         /// <summary>
@@ -92,19 +87,19 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; }
+        public Dictionary<string, string> subresourceUris { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
     
         public CredentialListResource()
         {

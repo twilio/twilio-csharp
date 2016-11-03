@@ -51,12 +51,10 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// </summary>
         ///
         /// <param name="messageSid"> The message_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="outcome"> The outcome </param>
         /// <returns> FeedbackCreator capable of executing the create </returns> 
-        public static FeedbackCreator Creator(string messageSid, string accountSid=null, FeedbackResource.Outcome outcome=null)
+        public static FeedbackCreator Creator(string messageSid)
         {
-            return new FeedbackCreator(messageSid, accountSid:accountSid, outcome:outcome);
+            return new FeedbackCreator(messageSid);
         }
     
         /// <summary>
@@ -79,18 +77,18 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("message_sid")]
-        public string messageSid { get; }
+        public string messageSid { get; set; }
         [JsonProperty("outcome")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public FeedbackResource.Outcome outcome { get; }
+        public FeedbackResource.Outcome outcome { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
     
         public FeedbackResource()
         {

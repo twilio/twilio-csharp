@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
 
     public class MemberUpdater : Updater<MemberResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string queueSid { get; }
         public string callSid { get; }
         public Uri url { get; }
@@ -27,14 +27,12 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <param name="callSid"> The call_sid </param>
         /// <param name="url"> The url </param>
         /// <param name="method"> The method </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public MemberUpdater(string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method, string accountSid=null)
+        public MemberUpdater(string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method)
         {
-            this.accountSid = accountSid;
+            this.queueSid = queueSid;
+            this.callSid = callSid;
             this.url = url;
             this.method = method;
-            this.callSid = callSid;
-            this.queueSid = queueSid;
         }
     
         #if NET40

@@ -54,15 +54,15 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
         }
     
         [JsonProperty("country")]
-        public string country { get; }
+        public string country { get; set; }
         [JsonProperty("iso_country")]
-        public string isoCountry { get; }
+        public string isoCountry { get; set; }
         [JsonProperty("phone_number_prices")]
-        public List<PhoneNumberPrice> phoneNumberPrices { get; }
+        public List<PhoneNumberPrice> phoneNumberPrices { get; set; }
         [JsonProperty("price_unit")]
-        public string priceUnit { get; }
+        public string priceUnit { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
     
         public CountryResource()
         {

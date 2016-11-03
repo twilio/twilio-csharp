@@ -23,13 +23,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="activitySid"> The activity_sid </param>
-        /// <param name="attributes"> The attributes </param>
-        public WorkerCreator(string workspaceSid, string friendlyName, string activitySid=null, string attributes=null)
+        public WorkerCreator(string workspaceSid, string friendlyName)
         {
             this.workspaceSid = workspaceSid;
-            this.attributes = attributes;
-            this.activitySid = activitySid;
             this.friendlyName = friendlyName;
         }
     

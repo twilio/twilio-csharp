@@ -1,3 +1,4 @@
+using System;
 using Twilio.Base;
 using Twilio.Clients;
 using Twilio.Exceptions;
@@ -12,22 +13,20 @@ namespace Twilio.Rest.Api.V2010.Account.Message
 
     public class MediaReader : Reader<MediaResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string messageSid { get; }
-        public string dateCreated { get; set; }
+        public DateTime? dateCreated { get; set; }
+        public DateTime? dateCreatedAfter { get; set; }
+        public DateTime? dateCreatedBefore { get; set; }
     
         /// <summary>
         /// Construct a new MediaReader
         /// </summary>
         ///
         /// <param name="messageSid"> The message_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="dateCreated"> Filter by date created </param>
-        public MediaReader(string messageSid, string accountSid=null, string dateCreated=null)
+        public MediaReader(string messageSid)
         {
-            this.accountSid = accountSid;
             this.messageSid = messageSid;
-            this.dateCreated = dateCreated;
         }
     
         #if NET40
@@ -76,7 +75,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<MediaResource> NextPage(Page<MediaResource> page, ITwilioRestClient client)
@@ -132,6 +131,22 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
+            if (dateCreated != null)
+            {
+                request.AddQueryParam("DateCreated", dateCreated.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+            }
+            else
+            {
+                if (dateCreatedBefore != null)
+                {
+                    request.AddQueryParam("DateCreated<", dateCreatedBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                }
+                if (dateCreatedAfter != null)
+                {
+                    request.AddQueryParam("DateCreated>", dateCreatedAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                }
+            }
+            
             if (PageSize != null)
             {
                 request.AddQueryParam("PageSize", PageSize.ToString());

@@ -61,15 +61,10 @@ namespace Twilio.Rest.Chat.V1
         /// </summary>
         ///
         /// <param name="type"> The type </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="certificate"> The certificate </param>
-        /// <param name="privateKey"> The private_key </param>
-        /// <param name="sandbox"> The sandbox </param>
-        /// <param name="apiKey"> The api_key </param>
         /// <returns> CredentialCreator capable of executing the create </returns> 
-        public static CredentialCreator Creator(CredentialResource.PushService type, string friendlyName=null, string certificate=null, string privateKey=null, bool? sandbox=null, string apiKey=null)
+        public static CredentialCreator Creator(CredentialResource.PushService type)
         {
-            return new CredentialCreator(type, friendlyName:friendlyName, certificate:certificate, privateKey:privateKey, sandbox:sandbox, apiKey:apiKey);
+            return new CredentialCreator(type);
         }
     
         /// <summary>
@@ -88,15 +83,10 @@ namespace Twilio.Rest.Chat.V1
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="certificate"> The certificate </param>
-        /// <param name="privateKey"> The private_key </param>
-        /// <param name="sandbox"> The sandbox </param>
-        /// <param name="apiKey"> The api_key </param>
         /// <returns> CredentialUpdater capable of executing the update </returns> 
-        public static CredentialUpdater Updater(string sid, string friendlyName=null, string certificate=null, string privateKey=null, bool? sandbox=null, string apiKey=null)
+        public static CredentialUpdater Updater(string sid)
         {
-            return new CredentialUpdater(sid, friendlyName:friendlyName, certificate:certificate, privateKey:privateKey, sandbox:sandbox, apiKey:apiKey);
+            return new CredentialUpdater(sid);
         }
     
         /// <summary>
@@ -130,22 +120,22 @@ namespace Twilio.Rest.Chat.V1
         }
     
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public CredentialResource.PushService type { get; }
+        public CredentialResource.PushService type { get; set; }
         [JsonProperty("sandbox")]
-        public string sandbox { get; }
+        public string sandbox { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
     
         public CredentialResource()
         {

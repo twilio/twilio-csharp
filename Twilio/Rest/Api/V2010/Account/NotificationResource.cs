@@ -16,11 +16,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Fetch by unique notification Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> NotificationFetcher capable of executing the fetch </returns> 
-        public static NotificationFetcher Fetcher(string sid, string accountSid=null)
+        public static NotificationFetcher Fetcher(string sid)
         {
-            return new NotificationFetcher(sid, accountSid:accountSid);
+            return new NotificationFetcher(sid);
         }
     
         /// <summary>
@@ -28,24 +27,20 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Delete by unique notification Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> NotificationDeleter capable of executing the delete </returns> 
-        public static NotificationDeleter Deleter(string sid, string accountSid=null)
+        public static NotificationDeleter Deleter(string sid)
         {
-            return new NotificationDeleter(sid, accountSid:accountSid);
+            return new NotificationDeleter(sid);
         }
     
         /// <summary>
         /// Retrieve a list of notifications belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="log"> Filter by log level </param>
-        /// <param name="messageDate"> Filter by date </param>
         /// <returns> NotificationReader capable of executing the read </returns> 
-        public static NotificationReader Reader(string accountSid=null, int? log=null, string messageDate=null)
+        public static NotificationReader Reader()
         {
-            return new NotificationReader(accountSid:accountSid, log:log, messageDate:messageDate);
+            return new NotificationReader();
         }
     
         /// <summary>
@@ -68,40 +63,40 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; }
+        public string apiVersion { get; set; }
         [JsonProperty("call_sid")]
-        public string callSid { get; }
+        public string callSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("error_code")]
-        public string errorCode { get; }
+        public string errorCode { get; set; }
         [JsonProperty("log")]
-        public string log { get; }
+        public string log { get; set; }
         [JsonProperty("message_date")]
-        public DateTime? messageDate { get; }
+        public DateTime? messageDate { get; set; }
         [JsonProperty("message_text")]
-        public string messageText { get; }
+        public string messageText { get; set; }
         [JsonProperty("more_info")]
-        public Uri moreInfo { get; }
+        public Uri moreInfo { get; set; }
         [JsonProperty("request_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod requestMethod { get; }
+        public Twilio.Http.HttpMethod requestMethod { get; set; }
         [JsonProperty("request_url")]
-        public Uri requestUrl { get; }
+        public Uri requestUrl { get; set; }
         [JsonProperty("request_variables")]
-        public string requestVariables { get; }
+        public string requestVariables { get; set; }
         [JsonProperty("response_body")]
-        public string responseBody { get; }
+        public string responseBody { get; set; }
         [JsonProperty("response_headers")]
-        public string responseHeaders { get; }
+        public string responseHeaders { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
     
         public NotificationResource()
         {

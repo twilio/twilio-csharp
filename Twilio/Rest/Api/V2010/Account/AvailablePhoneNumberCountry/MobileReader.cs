@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
 
     public class MobileReader : Reader<MobileResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string countryCode { get; }
         public int? areaCode { get; set; }
         public string contains { get; set; }
@@ -36,42 +36,8 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// </summary>
         ///
         /// <param name="countryCode"> The country_code </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="areaCode"> The area_code </param>
-        /// <param name="contains"> The contains </param>
-        /// <param name="smsEnabled"> The sms_enabled </param>
-        /// <param name="mmsEnabled"> The mms_enabled </param>
-        /// <param name="voiceEnabled"> The voice_enabled </param>
-        /// <param name="excludeAllAddressRequired"> The exclude_all_address_required </param>
-        /// <param name="excludeLocalAddressRequired"> The exclude_local_address_required </param>
-        /// <param name="excludeForeignAddressRequired"> The exclude_foreign_address_required </param>
-        /// <param name="beta"> The beta </param>
-        /// <param name="nearNumber"> The near_number </param>
-        /// <param name="nearLatLong"> The near_lat_long </param>
-        /// <param name="distance"> The distance </param>
-        /// <param name="inPostalCode"> The in_postal_code </param>
-        /// <param name="inRegion"> The in_region </param>
-        /// <param name="inRateCenter"> The in_rate_center </param>
-        /// <param name="inLata"> The in_lata </param>
-        public MobileReader(string countryCode, string accountSid=null, int? areaCode=null, string contains=null, bool? smsEnabled=null, bool? mmsEnabled=null, bool? voiceEnabled=null, bool? excludeAllAddressRequired=null, bool? excludeLocalAddressRequired=null, bool? excludeForeignAddressRequired=null, bool? beta=null, Twilio.Types.PhoneNumber nearNumber=null, string nearLatLong=null, int? distance=null, string inPostalCode=null, string inRegion=null, string inRateCenter=null, string inLata=null)
+        public MobileReader(string countryCode)
         {
-            this.excludeAllAddressRequired = excludeAllAddressRequired;
-            this.nearNumber = nearNumber;
-            this.inLata = inLata;
-            this.excludeLocalAddressRequired = excludeLocalAddressRequired;
-            this.areaCode = areaCode;
-            this.contains = contains;
-            this.inRateCenter = inRateCenter;
-            this.smsEnabled = smsEnabled;
-            this.inPostalCode = inPostalCode;
-            this.beta = beta;
-            this.inRegion = inRegion;
-            this.accountSid = accountSid;
-            this.excludeForeignAddressRequired = excludeForeignAddressRequired;
-            this.mmsEnabled = mmsEnabled;
-            this.distance = distance;
-            this.nearLatLong = nearLatLong;
-            this.voiceEnabled = voiceEnabled;
             this.countryCode = countryCode;
         }
     
@@ -121,7 +87,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<MobileResource> NextPage(Page<MobileResource> page, ITwilioRestClient client)

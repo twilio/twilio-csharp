@@ -127,13 +127,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="mapSid"> The map_sid </param>
-        /// <param name="order"> The order </param>
-        /// <param name="from"> The from </param>
-        /// <param name="bounds"> The bounds </param>
         /// <returns> SyncMapItemReader capable of executing the read </returns> 
-        public static SyncMapItemReader Reader(string serviceSid, string mapSid, SyncMapItemResource.QueryResultOrder order=null, string from=null, SyncMapItemResource.QueryFromBoundType bounds=null)
+        public static SyncMapItemReader Reader(string serviceSid, string mapSid)
         {
-            return new SyncMapItemReader(serviceSid, mapSid, order:order, from:from, bounds:bounds);
+            return new SyncMapItemReader(serviceSid, mapSid);
         }
     
         /// <summary>
@@ -170,25 +167,25 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         }
     
         [JsonProperty("key")]
-        public string key { get; }
+        public string key { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("service_sid")]
-        public string serviceSid { get; }
+        public string serviceSid { get; set; }
         [JsonProperty("map_sid")]
-        public string mapSid { get; }
+        public string mapSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
         [JsonProperty("revision")]
-        public string revision { get; }
+        public string revision { get; set; }
         [JsonProperty("data")]
-        public Object data { get; }
+        public Object data { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("created_by")]
-        public string createdBy { get; }
+        public string createdBy { get; set; }
     
         public SyncMapItemResource()
         {

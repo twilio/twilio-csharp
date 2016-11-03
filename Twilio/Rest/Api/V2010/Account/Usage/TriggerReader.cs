@@ -12,26 +12,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
     public class TriggerReader : Reader<TriggerResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public TriggerResource.Recurring recurring { get; set; }
         public TriggerResource.TriggerField triggerBy { get; set; }
         public TriggerResource.UsageCategory usageCategory { get; set; }
-    
-        /// <summary>
-        /// Construct a new TriggerReader
-        /// </summary>
-        ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="recurring"> Filter by recurring </param>
-        /// <param name="triggerBy"> Filter by trigger by </param>
-        /// <param name="usageCategory"> Filter by Usage Category </param>
-        public TriggerReader(string accountSid=null, TriggerResource.Recurring recurring=null, TriggerResource.TriggerField triggerBy=null, TriggerResource.UsageCategory usageCategory=null)
-        {
-            this.accountSid = accountSid;
-            this.usageCategory = usageCategory;
-            this.recurring = recurring;
-            this.triggerBy = triggerBy;
-        }
     
         #if NET40
         /// <summary>
@@ -79,7 +63,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<TriggerResource> NextPage(Page<TriggerResource> page, ITwilioRestClient client)

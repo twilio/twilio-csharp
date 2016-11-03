@@ -23,15 +23,9 @@ namespace Twilio.Rest.Preview.Sync
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="webhookUrl"> The webhook_url </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="reachabilityWebhooksEnabled"> The reachability_webhooks_enabled </param>
-        public ServiceUpdater(string sid, Uri webhookUrl=null, string friendlyName=null, bool? reachabilityWebhooksEnabled=null)
+        public ServiceUpdater(string sid)
         {
-            this.reachabilityWebhooksEnabled = reachabilityWebhooksEnabled;
-            this.friendlyName = friendlyName;
             this.sid = sid;
-            this.webhookUrl = webhookUrl;
         }
     
         #if NET40

@@ -52,22 +52,20 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="connectAppSid"> The connect_app_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> AuthorizedConnectAppFetcher capable of executing the fetch </returns> 
-        public static AuthorizedConnectAppFetcher Fetcher(string connectAppSid, string accountSid=null)
+        public static AuthorizedConnectAppFetcher Fetcher(string connectAppSid)
         {
-            return new AuthorizedConnectAppFetcher(connectAppSid, accountSid:accountSid);
+            return new AuthorizedConnectAppFetcher(connectAppSid);
         }
     
         /// <summary>
         /// Retrieve a list of authorized-connect-apps belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> AuthorizedConnectAppReader capable of executing the read </returns> 
-        public static AuthorizedConnectAppReader Reader(string accountSid=null)
+        public static AuthorizedConnectAppReader Reader()
         {
-            return new AuthorizedConnectAppReader(accountSid:accountSid);
+            return new AuthorizedConnectAppReader();
         }
     
         /// <summary>
@@ -90,26 +88,26 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("connect_app_company_name")]
-        public string connectAppCompanyName { get; }
+        public string connectAppCompanyName { get; set; }
         [JsonProperty("connect_app_description")]
-        public string connectAppDescription { get; }
+        public string connectAppDescription { get; set; }
         [JsonProperty("connect_app_friendly_name")]
-        public string connectAppFriendlyName { get; }
+        public string connectAppFriendlyName { get; set; }
         [JsonProperty("connect_app_homepage_url")]
-        public Uri connectAppHomepageUrl { get; }
+        public Uri connectAppHomepageUrl { get; set; }
         [JsonProperty("connect_app_sid")]
-        public string connectAppSid { get; }
+        public string connectAppSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("permissions")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public List<AuthorizedConnectAppResource.Permission> permissions { get; }
+        public List<AuthorizedConnectAppResource.Permission> permissions { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
     
         public AuthorizedConnectAppResource()
         {

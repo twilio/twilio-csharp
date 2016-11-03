@@ -12,26 +12,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 
     public class LocalReader : Reader<LocalResource> 
     {
-        public string ownerAccountSid { get; }
+        public string ownerAccountSid { get; set; }
         public bool? beta { get; set; }
         public string friendlyName { get; set; }
         public Twilio.Types.PhoneNumber phoneNumber { get; set; }
-    
-        /// <summary>
-        /// Construct a new LocalReader
-        /// </summary>
-        ///
-        /// <param name="ownerAccountSid"> The owner_account_sid </param>
-        /// <param name="beta"> The beta </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="phoneNumber"> The phone_number </param>
-        public LocalReader(string ownerAccountSid=null, bool? beta=null, string friendlyName=null, Twilio.Types.PhoneNumber phoneNumber=null)
-        {
-            this.friendlyName = friendlyName;
-            this.phoneNumber = phoneNumber;
-            this.ownerAccountSid = ownerAccountSid;
-            this.beta = beta;
-        }
     
         #if NET40
         /// <summary>
@@ -79,7 +63,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<LocalResource> NextPage(Page<LocalResource> page, ITwilioRestClient client)

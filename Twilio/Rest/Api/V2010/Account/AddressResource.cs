@@ -21,12 +21,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="region"> The region </param>
         /// <param name="postalCode"> The postal_code </param>
         /// <param name="isoCountry"> The iso_country </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> AddressCreator capable of executing the create </returns> 
-        public static AddressCreator Creator(string customerName, string street, string city, string region, string postalCode, string isoCountry, string accountSid=null, string friendlyName=null)
+        public static AddressCreator Creator(string customerName, string street, string city, string region, string postalCode, string isoCountry)
         {
-            return new AddressCreator(customerName, street, city, region, postalCode, isoCountry, accountSid:accountSid, friendlyName:friendlyName);
+            return new AddressCreator(customerName, street, city, region, postalCode, isoCountry);
         }
     
         /// <summary>
@@ -34,11 +32,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> AddressDeleter capable of executing the delete </returns> 
-        public static AddressDeleter Deleter(string sid, string accountSid=null)
+        public static AddressDeleter Deleter(string sid)
         {
-            return new AddressDeleter(sid, accountSid:accountSid);
+            return new AddressDeleter(sid);
         }
     
         /// <summary>
@@ -46,11 +43,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> AddressFetcher capable of executing the fetch </returns> 
-        public static AddressFetcher Fetcher(string sid, string accountSid=null)
+        public static AddressFetcher Fetcher(string sid)
         {
-            return new AddressFetcher(sid, accountSid:accountSid);
+            return new AddressFetcher(sid);
         }
     
         /// <summary>
@@ -58,31 +54,20 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="customerName"> The customer_name </param>
-        /// <param name="street"> The street </param>
-        /// <param name="city"> The city </param>
-        /// <param name="region"> The region </param>
-        /// <param name="postalCode"> The postal_code </param>
         /// <returns> AddressUpdater capable of executing the update </returns> 
-        public static AddressUpdater Updater(string sid, string accountSid=null, string friendlyName=null, string customerName=null, string street=null, string city=null, string region=null, string postalCode=null)
+        public static AddressUpdater Updater(string sid)
         {
-            return new AddressUpdater(sid, accountSid:accountSid, friendlyName:friendlyName, customerName:customerName, street:street, city:city, region:region, postalCode:postalCode);
+            return new AddressUpdater(sid);
         }
     
         /// <summary>
         /// read
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="customerName"> The customer_name </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="isoCountry"> The iso_country </param>
         /// <returns> AddressReader capable of executing the read </returns> 
-        public static AddressReader Reader(string accountSid=null, string customerName=null, string friendlyName=null, string isoCountry=null)
+        public static AddressReader Reader()
         {
-            return new AddressReader(accountSid:accountSid, customerName:customerName, friendlyName:friendlyName, isoCountry:isoCountry);
+            return new AddressReader();
         }
     
         /// <summary>
@@ -105,29 +90,29 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("city")]
-        public string city { get; }
+        public string city { get; set; }
         [JsonProperty("customer_name")]
-        public string customerName { get; }
+        public string customerName { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("iso_country")]
-        public string isoCountry { get; }
+        public string isoCountry { get; set; }
         [JsonProperty("postal_code")]
-        public string postalCode { get; }
+        public string postalCode { get; set; }
         [JsonProperty("region")]
-        public string region { get; }
+        public string region { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("street")]
-        public string street { get; }
+        public string street { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
     
         public AddressResource()
         {

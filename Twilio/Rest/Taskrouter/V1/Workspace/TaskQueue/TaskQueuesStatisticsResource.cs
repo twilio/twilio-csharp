@@ -17,14 +17,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="minutes"> The minutes </param>
-        /// <param name="startDate"> The start_date </param>
         /// <returns> TaskQueuesStatisticsReader capable of executing the read </returns> 
-        public static TaskQueuesStatisticsReader Reader(string workspaceSid, DateTime? endDate=null, string friendlyName=null, int? minutes=null, DateTime? startDate=null)
+        public static TaskQueuesStatisticsReader Reader(string workspaceSid)
         {
-            return new TaskQueuesStatisticsReader(workspaceSid, endDate:endDate, friendlyName:friendlyName, minutes:minutes, startDate:startDate);
+            return new TaskQueuesStatisticsReader(workspaceSid);
         }
     
         /// <summary>
@@ -47,15 +43,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("cumulative")]
-        public Dictionary<string, string> cumulative { get; }
+        public Dictionary<string, string> cumulative { get; set; }
         [JsonProperty("realtime")]
-        public Object realtime { get; }
+        public Object realtime { get; set; }
         [JsonProperty("task_queue_sid")]
-        public string taskQueueSid { get; }
+        public string taskQueueSid { get; set; }
         [JsonProperty("workspace_sid")]
-        public string workspaceSid { get; }
+        public string workspaceSid { get; set; }
     
         public TaskQueuesStatisticsResource()
         {

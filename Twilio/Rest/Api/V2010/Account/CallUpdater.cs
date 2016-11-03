@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class CallUpdater : Updater<CallResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string sid { get; }
         public Uri url { get; set; }
         public Twilio.Http.HttpMethod method { get; set; }
@@ -28,25 +28,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Call Sid that uniquely identifies the Call to update </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="url"> URL that returns TwiML </param>
-        /// <param name="method"> HTTP method to use to fetch TwiML </param>
-        /// <param name="status"> Status to update the Call with </param>
-        /// <param name="fallbackUrl"> Fallback URL in case of error </param>
-        /// <param name="fallbackMethod"> HTTP Method to use with FallbackUrl </param>
-        /// <param name="statusCallback"> Status Callback URL </param>
-        /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
-        public CallUpdater(string sid, string accountSid=null, Uri url=null, Twilio.Http.HttpMethod method=null, CallResource.Status status=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null)
+        public CallUpdater(string sid)
         {
             this.sid = sid;
-            this.url = url;
-            this.statusCallbackMethod = statusCallbackMethod;
-            this.statusCallback = statusCallback;
-            this.accountSid = accountSid;
-            this.status = status;
-            this.method = method;
-            this.fallbackMethod = fallbackMethod;
-            this.fallbackUrl = fallbackUrl;
         }
     
         #if NET40

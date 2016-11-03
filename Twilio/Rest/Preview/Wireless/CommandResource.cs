@@ -26,13 +26,10 @@ namespace Twilio.Rest.Preview.Wireless
         /// read
         /// </summary>
         ///
-        /// <param name="device"> The device </param>
-        /// <param name="status"> The status </param>
-        /// <param name="direction"> The direction </param>
         /// <returns> CommandReader capable of executing the read </returns> 
-        public static CommandReader Reader(string device=null, string status=null, string direction=null)
+        public static CommandReader Reader()
         {
-            return new CommandReader(device:device, status:status, direction:direction);
+            return new CommandReader();
         }
     
         /// <summary>
@@ -41,14 +38,10 @@ namespace Twilio.Rest.Preview.Wireless
         ///
         /// <param name="device"> The device </param>
         /// <param name="command"> The command </param>
-        /// <param name="callbackMethod"> The callback_method </param>
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="commandMode"> The command_mode </param>
-        /// <param name="includeSid"> The include_sid </param>
         /// <returns> CommandCreator capable of executing the create </returns> 
-        public static CommandCreator Creator(string device, string command, string callbackMethod=null, Uri callbackUrl=null, string commandMode=null, string includeSid=null)
+        public static CommandCreator Creator(string device, string command)
         {
-            return new CommandCreator(device, command, callbackMethod:callbackMethod, callbackUrl:callbackUrl, commandMode:commandMode, includeSid:includeSid);
+            return new CommandCreator(device, command);
         }
     
         /// <summary>
@@ -71,25 +64,25 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("device_sid")]
-        public string deviceSid { get; }
+        public string deviceSid { get; set; }
         [JsonProperty("command")]
-        public string command { get; }
+        public string command { get; set; }
         [JsonProperty("command_mode")]
-        public string commandMode { get; }
+        public string commandMode { get; set; }
         [JsonProperty("status")]
-        public string status { get; }
+        public string status { get; set; }
         [JsonProperty("direction")]
-        public string direction { get; }
+        public string direction { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
     
         public CommandResource()
         {

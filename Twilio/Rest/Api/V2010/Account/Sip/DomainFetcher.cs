@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class DomainFetcher : Fetcher<DomainResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string sid { get; }
     
         /// <summary>
@@ -20,10 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         ///
         /// <param name="sid"> Fetch by unique Domain Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public DomainFetcher(string sid, string accountSid=null)
+        public DomainFetcher(string sid)
         {
-            this.accountSid = accountSid;
             this.sid = sid;
         }
     

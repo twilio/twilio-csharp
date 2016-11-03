@@ -54,17 +54,17 @@ namespace Twilio.Rest.Pricing.V1.Voice
         }
     
         [JsonProperty("country")]
-        public string country { get; }
+        public string country { get; set; }
         [JsonProperty("iso_country")]
-        public string isoCountry { get; }
+        public string isoCountry { get; set; }
         [JsonProperty("outbound_prefix_prices")]
-        public List<OutboundPrefixPrice> outboundPrefixPrices { get; }
+        public List<OutboundPrefixPrice> outboundPrefixPrices { get; set; }
         [JsonProperty("inbound_call_prices")]
-        public List<InboundCallPrice> inboundCallPrices { get; }
+        public List<InboundCallPrice> inboundCallPrices { get; set; }
         [JsonProperty("price_unit")]
-        public string priceUnit { get; }
+        public string priceUnit { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
     
         public CountryResource()
         {

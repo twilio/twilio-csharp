@@ -23,17 +23,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// </summary>
         ///
         /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="type"> The type </param>
-        public ChannelCreator(string serviceSid, string friendlyName=null, string uniqueName=null, string attributes=null, ChannelResource.ChannelType type=null)
+        public ChannelCreator(string serviceSid)
         {
-            this.uniqueName = uniqueName;
             this.serviceSid = serviceSid;
-            this.attributes = attributes;
-            this.type = type;
-            this.friendlyName = friendlyName;
         }
     
         #if NET40

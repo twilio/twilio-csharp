@@ -16,20 +16,6 @@ namespace Twilio.Rest.Preview.Wireless
         public string status { get; set; }
         public string direction { get; set; }
     
-        /// <summary>
-        /// Construct a new CommandReader
-        /// </summary>
-        ///
-        /// <param name="device"> The device </param>
-        /// <param name="status"> The status </param>
-        /// <param name="direction"> The direction </param>
-        public CommandReader(string device=null, string status=null, string direction=null)
-        {
-            this.status = status;
-            this.device = device;
-            this.direction = direction;
-        }
-    
         #if NET40
         /// <summary>
         /// Make the request to the Twilio API to perform the read
@@ -76,7 +62,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<CommandResource> NextPage(Page<CommandResource> page, ITwilioRestClient client)

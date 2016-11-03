@@ -38,13 +38,10 @@ namespace Twilio.Rest.Preview.Sync
         /// create
         /// </summary>
         ///
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="webhookUrl"> The webhook_url </param>
-        /// <param name="reachabilityWebhooksEnabled"> The reachability_webhooks_enabled </param>
         /// <returns> ServiceCreator capable of executing the create </returns> 
-        public static ServiceCreator Creator(string friendlyName=null, Uri webhookUrl=null, bool? reachabilityWebhooksEnabled=null)
+        public static ServiceCreator Creator()
         {
-            return new ServiceCreator(friendlyName:friendlyName, webhookUrl:webhookUrl, reachabilityWebhooksEnabled:reachabilityWebhooksEnabled);
+            return new ServiceCreator();
         }
     
         /// <summary>
@@ -62,13 +59,10 @@ namespace Twilio.Rest.Preview.Sync
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="webhookUrl"> The webhook_url </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="reachabilityWebhooksEnabled"> The reachability_webhooks_enabled </param>
         /// <returns> ServiceUpdater capable of executing the update </returns> 
-        public static ServiceUpdater Updater(string sid, Uri webhookUrl=null, string friendlyName=null, bool? reachabilityWebhooksEnabled=null)
+        public static ServiceUpdater Updater(string sid)
         {
-            return new ServiceUpdater(sid, webhookUrl:webhookUrl, friendlyName:friendlyName, reachabilityWebhooksEnabled:reachabilityWebhooksEnabled);
+            return new ServiceUpdater(sid);
         }
     
         /// <summary>
@@ -91,23 +85,23 @@ namespace Twilio.Rest.Preview.Sync
         }
     
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
         [JsonProperty("webhook_url")]
-        public Uri webhookUrl { get; }
+        public Uri webhookUrl { get; set; }
         [JsonProperty("reachability_webhooks_enabled")]
-        public bool? reachabilityWebhooksEnabled { get; }
+        public bool? reachabilityWebhooksEnabled { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; }
+        public Dictionary<string, string> links { get; set; }
     
         public ServiceResource()
         {

@@ -25,9 +25,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="key"> The key </param>
         public SyncMapItemFetcher(string serviceSid, string mapSid, string key)
         {
-            this.key = key;
             this.serviceSid = serviceSid;
             this.mapSid = mapSid;
+            this.key = key;
         }
     
         #if NET40

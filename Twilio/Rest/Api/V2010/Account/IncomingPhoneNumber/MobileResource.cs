@@ -53,14 +53,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// read
         /// </summary>
         ///
-        /// <param name="ownerAccountSid"> The owner_account_sid </param>
-        /// <param name="beta"> The beta </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="phoneNumber"> The phone_number </param>
         /// <returns> MobileReader capable of executing the read </returns> 
-        public static MobileReader Reader(string ownerAccountSid=null, bool? beta=null, string friendlyName=null, Twilio.Types.PhoneNumber phoneNumber=null)
+        public static MobileReader Reader()
         {
-            return new MobileReader(ownerAccountSid:ownerAccountSid, beta:beta, friendlyName:friendlyName, phoneNumber:phoneNumber);
+            return new MobileReader();
         }
     
         /// <summary>
@@ -68,26 +64,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         ///
         /// <param name="phoneNumber"> The phone_number </param>
-        /// <param name="ownerAccountSid"> The owner_account_sid </param>
-        /// <param name="apiVersion"> The api_version </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="smsApplicationSid"> The sms_application_sid </param>
-        /// <param name="smsFallbackMethod"> The sms_fallback_method </param>
-        /// <param name="smsFallbackUrl"> The sms_fallback_url </param>
-        /// <param name="smsMethod"> The sms_method </param>
-        /// <param name="smsUrl"> The sms_url </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="statusCallbackMethod"> The status_callback_method </param>
-        /// <param name="voiceApplicationSid"> The voice_application_sid </param>
-        /// <param name="voiceCallerIdLookup"> The voice_caller_id_lookup </param>
-        /// <param name="voiceFallbackMethod"> The voice_fallback_method </param>
-        /// <param name="voiceFallbackUrl"> The voice_fallback_url </param>
-        /// <param name="voiceMethod"> The voice_method </param>
-        /// <param name="voiceUrl"> The voice_url </param>
         /// <returns> MobileCreator capable of executing the create </returns> 
-        public static MobileCreator Creator(Twilio.Types.PhoneNumber phoneNumber, string ownerAccountSid=null, string apiVersion=null, string friendlyName=null, string smsApplicationSid=null, Twilio.Http.HttpMethod smsFallbackMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsUrl=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null, string voiceApplicationSid=null, bool? voiceCallerIdLookup=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceUrl=null)
+        public static MobileCreator Creator(Twilio.Types.PhoneNumber phoneNumber)
         {
-            return new MobileCreator(phoneNumber, ownerAccountSid:ownerAccountSid, apiVersion:apiVersion, friendlyName:friendlyName, smsApplicationSid:smsApplicationSid, smsFallbackMethod:smsFallbackMethod, smsFallbackUrl:smsFallbackUrl, smsMethod:smsMethod, smsUrl:smsUrl, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod, voiceApplicationSid:voiceApplicationSid, voiceCallerIdLookup:voiceCallerIdLookup, voiceFallbackMethod:voiceFallbackMethod, voiceFallbackUrl:voiceFallbackUrl, voiceMethod:voiceMethod, voiceUrl:voiceUrl);
+            return new MobileCreator(phoneNumber);
         }
     
         /// <summary>
@@ -110,62 +90,62 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("address_requirements")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public MobileResource.AddressRequirement addressRequirements { get; }
+        public MobileResource.AddressRequirement addressRequirements { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; }
+        public string apiVersion { get; set; }
         [JsonProperty("beta")]
-        public bool? beta { get; }
+        public bool? beta { get; set; }
         [JsonProperty("capabilities")]
-        public PhoneNumberCapabilities capabilities { get; }
+        public PhoneNumberCapabilities capabilities { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber phoneNumber { get; }
+        public Twilio.Types.PhoneNumber phoneNumber { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("sms_application_sid")]
-        public string smsApplicationSid { get; }
+        public string smsApplicationSid { get; set; }
         [JsonProperty("sms_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod smsFallbackMethod { get; }
+        public Twilio.Http.HttpMethod smsFallbackMethod { get; set; }
         [JsonProperty("sms_fallback_url")]
-        public Uri smsFallbackUrl { get; }
+        public Uri smsFallbackUrl { get; set; }
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod smsMethod { get; }
+        public Twilio.Http.HttpMethod smsMethod { get; set; }
         [JsonProperty("sms_url")]
-        public Uri smsUrl { get; }
+        public Uri smsUrl { get; set; }
         [JsonProperty("status_callback")]
-        public Uri statusCallback { get; }
+        public Uri statusCallback { get; set; }
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod statusCallbackMethod { get; }
+        public Twilio.Http.HttpMethod statusCallbackMethod { get; set; }
         [JsonProperty("trunk_sid")]
-        public string trunkSid { get; }
+        public string trunkSid { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
         [JsonProperty("voice_application_sid")]
-        public string voiceApplicationSid { get; }
+        public string voiceApplicationSid { get; set; }
         [JsonProperty("voice_caller_id_lookup")]
-        public bool? voiceCallerIdLookup { get; }
+        public bool? voiceCallerIdLookup { get; set; }
         [JsonProperty("voice_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod voiceFallbackMethod { get; }
+        public Twilio.Http.HttpMethod voiceFallbackMethod { get; set; }
         [JsonProperty("voice_fallback_url")]
-        public Uri voiceFallbackUrl { get; }
+        public Uri voiceFallbackUrl { get; set; }
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod voiceMethod { get; }
+        public Twilio.Http.HttpMethod voiceMethod { get; set; }
         [JsonProperty("voice_url")]
-        public Uri voiceUrl { get; }
+        public Uri voiceUrl { get; set; }
     
         public MobileResource()
         {

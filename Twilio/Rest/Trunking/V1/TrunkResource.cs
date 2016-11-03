@@ -38,16 +38,10 @@ namespace Twilio.Rest.Trunking.V1
         /// create
         /// </summary>
         ///
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="domainName"> The domain_name </param>
-        /// <param name="disasterRecoveryUrl"> The disaster_recovery_url </param>
-        /// <param name="disasterRecoveryMethod"> The disaster_recovery_method </param>
-        /// <param name="recording"> The recording </param>
-        /// <param name="secure"> The secure </param>
         /// <returns> TrunkCreator capable of executing the create </returns> 
-        public static TrunkCreator Creator(string friendlyName=null, string domainName=null, Uri disasterRecoveryUrl=null, Twilio.Http.HttpMethod disasterRecoveryMethod=null, string recording=null, bool? secure=null)
+        public static TrunkCreator Creator()
         {
-            return new TrunkCreator(friendlyName:friendlyName, domainName:domainName, disasterRecoveryUrl:disasterRecoveryUrl, disasterRecoveryMethod:disasterRecoveryMethod, recording:recording, secure:secure);
+            return new TrunkCreator();
         }
     
         /// <summary>
@@ -65,16 +59,10 @@ namespace Twilio.Rest.Trunking.V1
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="domainName"> The domain_name </param>
-        /// <param name="disasterRecoveryUrl"> The disaster_recovery_url </param>
-        /// <param name="disasterRecoveryMethod"> The disaster_recovery_method </param>
-        /// <param name="recording"> The recording </param>
-        /// <param name="secure"> The secure </param>
         /// <returns> TrunkUpdater capable of executing the update </returns> 
-        public static TrunkUpdater Updater(string sid, string friendlyName=null, string domainName=null, Uri disasterRecoveryUrl=null, Twilio.Http.HttpMethod disasterRecoveryMethod=null, string recording=null, bool? secure=null)
+        public static TrunkUpdater Updater(string sid)
         {
-            return new TrunkUpdater(sid, friendlyName:friendlyName, domainName:domainName, disasterRecoveryUrl:disasterRecoveryUrl, disasterRecoveryMethod:disasterRecoveryMethod, recording:recording, secure:secure);
+            return new TrunkUpdater(sid);
         }
     
         /// <summary>
@@ -97,34 +85,34 @@ namespace Twilio.Rest.Trunking.V1
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("domain_name")]
-        public string domainName { get; }
+        public string domainName { get; set; }
         [JsonProperty("disaster_recovery_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod disasterRecoveryMethod { get; }
+        public Twilio.Http.HttpMethod disasterRecoveryMethod { get; set; }
         [JsonProperty("disaster_recovery_url")]
-        public Uri disasterRecoveryUrl { get; }
+        public Uri disasterRecoveryUrl { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("secure")]
-        public bool? secure { get; }
+        public bool? secure { get; set; }
         [JsonProperty("recording")]
-        public Object recording { get; }
+        public Object recording { get; set; }
         [JsonProperty("auth_type")]
-        public string authType { get; }
+        public string authType { get; set; }
         [JsonProperty("auth_type_set")]
-        public List<string> authTypeSet { get; }
+        public List<string> authTypeSet { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; }
+        public Dictionary<string, string> links { get; set; }
     
         public TrunkResource()
         {

@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class IpAccessControlListFetcher : Fetcher<IpAccessControlListResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string sid { get; }
     
         /// <summary>
@@ -20,10 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         ///
         /// <param name="sid"> Fetch by unique ip-access-control-list Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public IpAccessControlListFetcher(string sid, string accountSid=null)
+        public IpAccessControlListFetcher(string sid)
         {
-            this.accountSid = accountSid;
             this.sid = sid;
         }
     

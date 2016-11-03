@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class QueueDeleter : Deleter<QueueResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string sid { get; }
     
         /// <summary>
@@ -21,10 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Delete by unique queue Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public QueueDeleter(string sid, string accountSid=null)
+        public QueueDeleter(string sid)
         {
-            this.accountSid = accountSid;
             this.sid = sid;
         }
     

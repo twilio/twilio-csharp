@@ -16,11 +16,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// read
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> AvailablePhoneNumberCountryReader capable of executing the read </returns> 
-        public static AvailablePhoneNumberCountryReader Reader(string accountSid=null)
+        public static AvailablePhoneNumberCountryReader Reader()
         {
-            return new AvailablePhoneNumberCountryReader(accountSid:accountSid);
+            return new AvailablePhoneNumberCountryReader();
         }
     
         /// <summary>
@@ -28,11 +27,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="countryCode"> The country_code </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> AvailablePhoneNumberCountryFetcher capable of executing the fetch </returns> 
-        public static AvailablePhoneNumberCountryFetcher Fetcher(string countryCode, string accountSid=null)
+        public static AvailablePhoneNumberCountryFetcher Fetcher(string countryCode)
         {
-            return new AvailablePhoneNumberCountryFetcher(countryCode, accountSid:accountSid);
+            return new AvailablePhoneNumberCountryFetcher(countryCode);
         }
     
         /// <summary>
@@ -55,15 +53,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("country_code")]
-        public string countryCode { get; }
+        public string countryCode { get; set; }
         [JsonProperty("country")]
-        public string country { get; }
+        public string country { get; set; }
         [JsonProperty("uri")]
-        public Uri uri { get; }
+        public Uri uri { get; set; }
         [JsonProperty("beta")]
-        public bool? beta { get; }
+        public bool? beta { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; }
+        public Dictionary<string, string> subresourceUris { get; set; }
     
         public AvailablePhoneNumberCountryResource()
         {

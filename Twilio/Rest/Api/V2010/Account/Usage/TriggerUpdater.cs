@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
     public class TriggerUpdater : Updater<TriggerResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string sid { get; }
         public Twilio.Http.HttpMethod callbackMethod { get; set; }
         public Uri callbackUrl { get; set; }
@@ -24,17 +24,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="callbackMethod"> HTTP method to use with callback_url </param>
-        /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
-        /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
-        public TriggerUpdater(string sid, string accountSid=null, Twilio.Http.HttpMethod callbackMethod=null, Uri callbackUrl=null, string friendlyName=null)
+        public TriggerUpdater(string sid)
         {
-            this.accountSid = accountSid;
-            this.friendlyName = friendlyName;
             this.sid = sid;
-            this.callbackMethod = callbackMethod;
-            this.callbackUrl = callbackUrl;
         }
     
         #if NET40

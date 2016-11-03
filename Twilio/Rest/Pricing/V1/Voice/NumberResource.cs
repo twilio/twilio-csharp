@@ -44,19 +44,19 @@ namespace Twilio.Rest.Pricing.V1.Voice
     
         [JsonProperty("number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber number { get; }
+        public Twilio.Types.PhoneNumber number { get; set; }
         [JsonProperty("country")]
-        public string country { get; }
+        public string country { get; set; }
         [JsonProperty("iso_country")]
-        public string isoCountry { get; }
+        public string isoCountry { get; set; }
         [JsonProperty("outbound_call_price")]
-        public OutboundCallPrice outboundCallPrice { get; }
+        public OutboundCallPrice outboundCallPrice { get; set; }
         [JsonProperty("inbound_call_price")]
-        public InboundCallPrice inboundCallPrice { get; }
+        public InboundCallPrice inboundCallPrice { get; set; }
         [JsonProperty("price_unit")]
-        public string priceUnit { get; }
+        public string priceUnit { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
     
         public NumberResource()
         {

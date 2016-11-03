@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 
     public class MobileCreator : Creator<MobileResource> 
     {
-        public string ownerAccountSid { get; }
+        public string ownerAccountSid { get; set; }
         public Twilio.Types.PhoneNumber phoneNumber { get; }
         public string apiVersion { get; set; }
         public string friendlyName { get; set; }
@@ -36,41 +36,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         ///
         /// <param name="phoneNumber"> The phone_number </param>
-        /// <param name="ownerAccountSid"> The owner_account_sid </param>
-        /// <param name="apiVersion"> The api_version </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="smsApplicationSid"> The sms_application_sid </param>
-        /// <param name="smsFallbackMethod"> The sms_fallback_method </param>
-        /// <param name="smsFallbackUrl"> The sms_fallback_url </param>
-        /// <param name="smsMethod"> The sms_method </param>
-        /// <param name="smsUrl"> The sms_url </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="statusCallbackMethod"> The status_callback_method </param>
-        /// <param name="voiceApplicationSid"> The voice_application_sid </param>
-        /// <param name="voiceCallerIdLookup"> The voice_caller_id_lookup </param>
-        /// <param name="voiceFallbackMethod"> The voice_fallback_method </param>
-        /// <param name="voiceFallbackUrl"> The voice_fallback_url </param>
-        /// <param name="voiceMethod"> The voice_method </param>
-        /// <param name="voiceUrl"> The voice_url </param>
-        public MobileCreator(Twilio.Types.PhoneNumber phoneNumber, string ownerAccountSid=null, string apiVersion=null, string friendlyName=null, string smsApplicationSid=null, Twilio.Http.HttpMethod smsFallbackMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsUrl=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null, string voiceApplicationSid=null, bool? voiceCallerIdLookup=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceUrl=null)
+        public MobileCreator(Twilio.Types.PhoneNumber phoneNumber)
         {
-            this.apiVersion = apiVersion;
-            this.smsFallbackUrl = smsFallbackUrl;
-            this.smsUrl = smsUrl;
-            this.ownerAccountSid = ownerAccountSid;
-            this.voiceApplicationSid = voiceApplicationSid;
-            this.voiceFallbackUrl = voiceFallbackUrl;
-            this.statusCallbackMethod = statusCallbackMethod;
-            this.voiceFallbackMethod = voiceFallbackMethod;
-            this.voiceCallerIdLookup = voiceCallerIdLookup;
-            this.voiceMethod = voiceMethod;
-            this.statusCallback = statusCallback;
-            this.smsMethod = smsMethod;
-            this.voiceUrl = voiceUrl;
-            this.friendlyName = friendlyName;
             this.phoneNumber = phoneNumber;
-            this.smsFallbackMethod = smsFallbackMethod;
-            this.smsApplicationSid = smsApplicationSid;
         }
     
         #if NET40

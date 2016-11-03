@@ -57,11 +57,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="taskSid"> The task_sid </param>
-        /// <param name="reservationStatus"> The reservation_status </param>
         /// <returns> ReservationReader capable of executing the read </returns> 
-        public static ReservationReader Reader(string workspaceSid, string taskSid, ReservationResource.Status reservationStatus=null)
+        public static ReservationReader Reader(string workspaceSid, string taskSid)
         {
-            return new ReservationReader(workspaceSid, taskSid, reservationStatus:reservationStatus);
+            return new ReservationReader(workspaceSid, taskSid);
         }
     
         /// <summary>
@@ -84,29 +83,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="taskSid"> The task_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="reservationStatus"> The reservation_status </param>
-        /// <param name="workerActivitySid"> The worker_activity_sid </param>
-        /// <param name="instruction"> The instruction </param>
-        /// <param name="dequeuePostWorkActivitySid"> The dequeue_post_work_activity_sid </param>
-        /// <param name="dequeueFrom"> The dequeue_from </param>
-        /// <param name="dequeueRecord"> The dequeue_record </param>
-        /// <param name="dequeueTimeout"> The dequeue_timeout </param>
-        /// <param name="dequeueTo"> The dequeue_to </param>
-        /// <param name="dequeueStatusCallbackUrl"> The dequeue_status_callback_url </param>
-        /// <param name="callFrom"> The call_from </param>
-        /// <param name="callRecord"> The call_record </param>
-        /// <param name="callTimeout"> The call_timeout </param>
-        /// <param name="callTo"> The call_to </param>
-        /// <param name="callUrl"> The call_url </param>
-        /// <param name="callStatusCallbackUrl"> The call_status_callback_url </param>
-        /// <param name="callAccept"> The call_accept </param>
-        /// <param name="redirectCallSid"> The redirect_call_sid </param>
-        /// <param name="redirectAccept"> The redirect_accept </param>
-        /// <param name="redirectUrl"> The redirect_url </param>
         /// <returns> ReservationUpdater capable of executing the update </returns> 
-        public static ReservationUpdater Updater(string workspaceSid, string taskSid, string sid, ReservationResource.Status reservationStatus=null, string workerActivitySid=null, string instruction=null, string dequeuePostWorkActivitySid=null, string dequeueFrom=null, string dequeueRecord=null, int? dequeueTimeout=null, string dequeueTo=null, Uri dequeueStatusCallbackUrl=null, string callFrom=null, string callRecord=null, int? callTimeout=null, string callTo=null, Uri callUrl=null, Uri callStatusCallbackUrl=null, bool? callAccept=null, string redirectCallSid=null, bool? redirectAccept=null, Uri redirectUrl=null)
+        public static ReservationUpdater Updater(string workspaceSid, string taskSid, string sid)
         {
-            return new ReservationUpdater(workspaceSid, taskSid, sid, reservationStatus:reservationStatus, workerActivitySid:workerActivitySid, instruction:instruction, dequeuePostWorkActivitySid:dequeuePostWorkActivitySid, dequeueFrom:dequeueFrom, dequeueRecord:dequeueRecord, dequeueTimeout:dequeueTimeout, dequeueTo:dequeueTo, dequeueStatusCallbackUrl:dequeueStatusCallbackUrl, callFrom:callFrom, callRecord:callRecord, callTimeout:callTimeout, callTo:callTo, callUrl:callUrl, callStatusCallbackUrl:callStatusCallbackUrl, callAccept:callAccept, redirectCallSid:redirectCallSid, redirectAccept:redirectAccept, redirectUrl:redirectUrl);
+            return new ReservationUpdater(workspaceSid, taskSid, sid);
         }
     
         /// <summary>
@@ -129,28 +109,28 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("reservation_status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ReservationResource.Status reservationStatus { get; }
+        public ReservationResource.Status reservationStatus { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("task_sid")]
-        public string taskSid { get; }
+        public string taskSid { get; set; }
         [JsonProperty("worker_name")]
-        public string workerName { get; }
+        public string workerName { get; set; }
         [JsonProperty("worker_sid")]
-        public string workerSid { get; }
+        public string workerSid { get; set; }
         [JsonProperty("workspace_sid")]
-        public string workspaceSid { get; }
+        public string workspaceSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; }
+        public Dictionary<string, string> links { get; set; }
     
         public ReservationResource()
         {

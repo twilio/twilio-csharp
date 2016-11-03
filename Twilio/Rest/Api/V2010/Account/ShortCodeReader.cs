@@ -12,23 +12,9 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ShortCodeReader : Reader<ShortCodeResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string friendlyName { get; set; }
         public string shortCode { get; set; }
-    
-        /// <summary>
-        /// Construct a new ShortCodeReader
-        /// </summary>
-        ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> Filter by friendly name </param>
-        /// <param name="shortCode"> Filter by ShortCode </param>
-        public ShortCodeReader(string accountSid=null, string friendlyName=null, string shortCode=null)
-        {
-            this.accountSid = accountSid;
-            this.friendlyName = friendlyName;
-            this.shortCode = shortCode;
-        }
     
         #if NET40
         /// <summary>
@@ -76,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<ShortCodeResource> NextPage(Page<ShortCodeResource> page, ITwilioRestClient client)

@@ -44,12 +44,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="workerSid"> The worker_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="capacity"> The capacity </param>
-        /// <param name="available"> The available </param>
         /// <returns> WorkerChannelUpdater capable of executing the update </returns> 
-        public static WorkerChannelUpdater Updater(string workspaceSid, string workerSid, string sid, int? capacity=null, bool? available=null)
+        public static WorkerChannelUpdater Updater(string workspaceSid, string workerSid, string sid)
         {
-            return new WorkerChannelUpdater(workspaceSid, workerSid, sid, capacity:capacity, available:available);
+            return new WorkerChannelUpdater(workspaceSid, workerSid, sid);
         }
     
         /// <summary>
@@ -72,33 +70,33 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("assigned_tasks")]
-        public int? assignedTasks { get; }
+        public int? assignedTasks { get; set; }
         [JsonProperty("available")]
-        public bool? available { get; }
+        public bool? available { get; set; }
         [JsonProperty("available_capacity_percentage")]
-        public int? availableCapacityPercentage { get; }
+        public int? availableCapacityPercentage { get; set; }
         [JsonProperty("configured_capacity")]
-        public int? configuredCapacity { get; }
+        public int? configuredCapacity { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("task_channel_sid")]
-        public string taskChannelSid { get; }
+        public string taskChannelSid { get; set; }
         [JsonProperty("task_channel_unique_name")]
-        public string taskChannelUniqueName { get; }
+        public string taskChannelUniqueName { get; set; }
         [JsonProperty("worker_sid")]
-        public string workerSid { get; }
+        public string workerSid { get; set; }
         [JsonProperty("workspace_sid")]
-        public string workspaceSid { get; }
+        public string workspaceSid { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; }
+        public Dictionary<string, string> links { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
     
         public WorkerChannelResource()
         {

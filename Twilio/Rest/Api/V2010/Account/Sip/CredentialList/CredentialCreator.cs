@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
 
     public class CredentialCreator : Creator<CredentialResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string credentialListSid { get; }
         public string username { get; }
         public string password { get; }
@@ -24,13 +24,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// <param name="credentialListSid"> The credential_list_sid </param>
         /// <param name="username"> The username </param>
         /// <param name="password"> The password </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public CredentialCreator(string credentialListSid, string username, string password, string accountSid=null)
+        public CredentialCreator(string credentialListSid, string username, string password)
         {
-            this.accountSid = accountSid;
-            this.password = password;
             this.credentialListSid = credentialListSid;
             this.username = username;
+            this.password = password;
         }
     
         #if NET40

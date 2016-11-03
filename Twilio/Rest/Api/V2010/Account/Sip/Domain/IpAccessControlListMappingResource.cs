@@ -18,11 +18,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         ///
         /// <param name="domainSid"> The domain_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAccessControlListMappingFetcher capable of executing the fetch </returns> 
-        public static IpAccessControlListMappingFetcher Fetcher(string domainSid, string sid, string accountSid=null)
+        public static IpAccessControlListMappingFetcher Fetcher(string domainSid, string sid)
         {
-            return new IpAccessControlListMappingFetcher(domainSid, sid, accountSid:accountSid);
+            return new IpAccessControlListMappingFetcher(domainSid, sid);
         }
     
         /// <summary>
@@ -31,11 +30,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         ///
         /// <param name="domainSid"> The domain_sid </param>
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAccessControlListMappingCreator capable of executing the create </returns> 
-        public static IpAccessControlListMappingCreator Creator(string domainSid, string ipAccessControlListSid, string accountSid=null)
+        public static IpAccessControlListMappingCreator Creator(string domainSid, string ipAccessControlListSid)
         {
-            return new IpAccessControlListMappingCreator(domainSid, ipAccessControlListSid, accountSid:accountSid);
+            return new IpAccessControlListMappingCreator(domainSid, ipAccessControlListSid);
         }
     
         /// <summary>
@@ -43,11 +41,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// </summary>
         ///
         /// <param name="domainSid"> The domain_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAccessControlListMappingReader capable of executing the read </returns> 
-        public static IpAccessControlListMappingReader Reader(string domainSid, string accountSid=null)
+        public static IpAccessControlListMappingReader Reader(string domainSid)
         {
-            return new IpAccessControlListMappingReader(domainSid, accountSid:accountSid);
+            return new IpAccessControlListMappingReader(domainSid);
         }
     
         /// <summary>
@@ -56,11 +53,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         ///
         /// <param name="domainSid"> The domain_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAccessControlListMappingDeleter capable of executing the delete </returns> 
-        public static IpAccessControlListMappingDeleter Deleter(string domainSid, string sid, string accountSid=null)
+        public static IpAccessControlListMappingDeleter Deleter(string domainSid, string sid)
         {
-            return new IpAccessControlListMappingDeleter(domainSid, sid, accountSid:accountSid);
+            return new IpAccessControlListMappingDeleter(domainSid, sid);
         }
     
         /// <summary>
@@ -83,19 +79,19 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; }
+        public Dictionary<string, string> subresourceUris { get; set; }
     
         public IpAccessControlListMappingResource()
         {

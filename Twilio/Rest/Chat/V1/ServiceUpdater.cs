@@ -28,25 +28,9 @@ namespace Twilio.Rest.Chat.V1
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="defaultServiceRoleSid"> The default_service_role_sid </param>
-        /// <param name="defaultChannelRoleSid"> The default_channel_role_sid </param>
-        /// <param name="defaultChannelCreatorRoleSid"> The default_channel_creator_role_sid </param>
-        /// <param name="readStatusEnabled"> The read_status_enabled </param>
-        /// <param name="typingIndicatorTimeout"> The typing_indicator_timeout </param>
-        /// <param name="consumptionReportInterval"> The consumption_report_interval </param>
-        /// <param name="webhooks"> The webhooks </param>
-        public ServiceUpdater(string sid, string friendlyName=null, string defaultServiceRoleSid=null, string defaultChannelRoleSid=null, string defaultChannelCreatorRoleSid=null, bool? readStatusEnabled=null, int? typingIndicatorTimeout=null, int? consumptionReportInterval=null, Object webhooks=null)
+        public ServiceUpdater(string sid)
         {
             this.sid = sid;
-            this.defaultServiceRoleSid = defaultServiceRoleSid;
-            this.typingIndicatorTimeout = typingIndicatorTimeout;
-            this.defaultChannelRoleSid = defaultChannelRoleSid;
-            this.readStatusEnabled = readStatusEnabled;
-            this.webhooks = webhooks;
-            this.defaultChannelCreatorRoleSid = defaultChannelCreatorRoleSid;
-            this.friendlyName = friendlyName;
-            this.consumptionReportInterval = consumptionReportInterval;
         }
     
         #if NET40

@@ -26,21 +26,9 @@ namespace Twilio.Rest.Trunking.V1
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="domainName"> The domain_name </param>
-        /// <param name="disasterRecoveryUrl"> The disaster_recovery_url </param>
-        /// <param name="disasterRecoveryMethod"> The disaster_recovery_method </param>
-        /// <param name="recording"> The recording </param>
-        /// <param name="secure"> The secure </param>
-        public TrunkUpdater(string sid, string friendlyName=null, string domainName=null, Uri disasterRecoveryUrl=null, Twilio.Http.HttpMethod disasterRecoveryMethod=null, string recording=null, bool? secure=null)
+        public TrunkUpdater(string sid)
         {
             this.sid = sid;
-            this.secure = secure;
-            this.recording = recording;
-            this.disasterRecoveryUrl = disasterRecoveryUrl;
-            this.friendlyName = friendlyName;
-            this.domainName = domainName;
-            this.disasterRecoveryMethod = disasterRecoveryMethod;
         }
     
         #if NET40

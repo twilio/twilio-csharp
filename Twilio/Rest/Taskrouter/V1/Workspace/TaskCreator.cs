@@ -26,17 +26,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="attributes"> The attributes </param>
         /// <param name="workflowSid"> The workflow_sid </param>
-        /// <param name="timeout"> The timeout </param>
-        /// <param name="priority"> The priority </param>
-        /// <param name="taskChannel"> The task_channel </param>
-        public TaskCreator(string workspaceSid, string attributes, string workflowSid, int? timeout=null, int? priority=null, string taskChannel=null)
+        public TaskCreator(string workspaceSid, string attributes, string workflowSid)
         {
             this.workspaceSid = workspaceSid;
-            this.workflowSid = workflowSid;
-            this.priority = priority;
             this.attributes = attributes;
-            this.timeout = timeout;
-            this.taskChannel = taskChannel;
+            this.workflowSid = workflowSid;
         }
     
         #if NET40

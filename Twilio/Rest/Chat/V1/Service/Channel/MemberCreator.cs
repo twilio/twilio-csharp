@@ -24,13 +24,11 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="channelSid"> The channel_sid </param>
         /// <param name="identity"> The identity </param>
-        /// <param name="roleSid"> The role_sid </param>
-        public MemberCreator(string serviceSid, string channelSid, string identity, string roleSid=null)
+        public MemberCreator(string serviceSid, string channelSid, string identity)
         {
             this.serviceSid = serviceSid;
-            this.identity = identity;
-            this.roleSid = roleSid;
             this.channelSid = channelSid;
+            this.identity = identity;
         }
     
         #if NET40

@@ -139,14 +139,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// Retrieve a list of usage-records belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="category"> Only include usage of a given category </param>
-        /// <param name="startDate"> Filter by start date </param>
-        /// <param name="endDate"> Filter by end date </param>
         /// <returns> RecordReader capable of executing the read </returns> 
-        public static RecordReader Reader(string accountSid=null, RecordResource.Category category=null, DateTime? startDate=null, DateTime? endDate=null)
+        public static RecordReader Reader()
         {
-            return new RecordReader(accountSid:accountSid, category:category, startDate:startDate, endDate:endDate);
+            return new RecordReader();
         }
     
         /// <summary>
@@ -169,34 +165,34 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; }
+        public string apiVersion { get; set; }
         [JsonProperty("category")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public RecordResource.Category category { get; }
+        public RecordResource.Category category { get; set; }
         [JsonProperty("count")]
-        public string count { get; }
+        public string count { get; set; }
         [JsonProperty("count_unit")]
-        public string countUnit { get; }
+        public string countUnit { get; set; }
         [JsonProperty("description")]
-        public string description { get; }
+        public string description { get; set; }
         [JsonProperty("end_date")]
-        public DateTime? endDate { get; }
+        public DateTime? endDate { get; set; }
         [JsonProperty("price")]
-        public decimal? price { get; }
+        public decimal? price { get; set; }
         [JsonProperty("price_unit")]
-        public string priceUnit { get; }
+        public string priceUnit { get; set; }
         [JsonProperty("start_date")]
-        public DateTime? startDate { get; }
+        public DateTime? startDate { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; }
+        public Dictionary<string, string> subresourceUris { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
         [JsonProperty("usage")]
-        public string usage { get; }
+        public string usage { get; set; }
         [JsonProperty("usage_unit")]
-        public string usageUnit { get; }
+        public string usageUnit { get; set; }
     
         public RecordResource()
         {

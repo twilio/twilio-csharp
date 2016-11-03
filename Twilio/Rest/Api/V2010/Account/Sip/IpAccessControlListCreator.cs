@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class IpAccessControlListCreator : Creator<IpAccessControlListResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string friendlyName { get; }
     
         /// <summary>
@@ -20,10 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         ///
         /// <param name="friendlyName"> A human readable description of this resource </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public IpAccessControlListCreator(string friendlyName, string accountSid=null)
+        public IpAccessControlListCreator(string friendlyName)
         {
-            this.accountSid = accountSid;
             this.friendlyName = friendlyName;
         }
     

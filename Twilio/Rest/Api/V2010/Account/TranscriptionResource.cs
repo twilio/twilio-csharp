@@ -52,11 +52,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Fetch by unique transcription Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> TranscriptionFetcher capable of executing the fetch </returns> 
-        public static TranscriptionFetcher Fetcher(string sid, string accountSid=null)
+        public static TranscriptionFetcher Fetcher(string sid)
         {
-            return new TranscriptionFetcher(sid, accountSid:accountSid);
+            return new TranscriptionFetcher(sid);
         }
     
         /// <summary>
@@ -64,22 +63,20 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Delete by unique transcription Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> TranscriptionDeleter capable of executing the delete </returns> 
-        public static TranscriptionDeleter Deleter(string sid, string accountSid=null)
+        public static TranscriptionDeleter Deleter(string sid)
         {
-            return new TranscriptionDeleter(sid, accountSid:accountSid);
+            return new TranscriptionDeleter(sid);
         }
     
         /// <summary>
         /// Retrieve a list of transcriptions belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> TranscriptionReader capable of executing the read </returns> 
-        public static TranscriptionReader Reader(string accountSid=null)
+        public static TranscriptionReader Reader()
         {
-            return new TranscriptionReader(accountSid:accountSid);
+            return new TranscriptionReader();
         }
     
         /// <summary>
@@ -102,32 +99,32 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; }
+        public string apiVersion { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("duration")]
-        public string duration { get; }
+        public string duration { get; set; }
         [JsonProperty("price")]
-        public decimal? price { get; }
+        public decimal? price { get; set; }
         [JsonProperty("price_unit")]
-        public string priceUnit { get; }
+        public string priceUnit { get; set; }
         [JsonProperty("recording_sid")]
-        public string recordingSid { get; }
+        public string recordingSid { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TranscriptionResource.Status status { get; }
+        public TranscriptionResource.Status status { get; set; }
         [JsonProperty("transcription_text")]
-        public string transcriptionText { get; }
+        public string transcriptionText { get; set; }
         [JsonProperty("type")]
-        public string type { get; }
+        public string type { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
     
         public TranscriptionResource()
         {

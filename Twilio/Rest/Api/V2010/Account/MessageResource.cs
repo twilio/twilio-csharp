@@ -97,17 +97,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="to"> The phone number to receive the message </param>
         /// <param name="from"> The phone number that initiated the message </param>
         /// <param name="body"> The body </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
-        /// <param name="mediaUrl"> The media_url </param>
-        /// <param name="statusCallback"> URL Twilio will request when the status changes </param>
-        /// <param name="applicationSid"> The application to use for callbacks </param>
-        /// <param name="maxPrice"> The max_price </param>
-        /// <param name="provideFeedback"> The provide_feedback </param>
         /// <returns> MessageCreator capable of executing the create </returns> 
-        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body, string accountSid=null, string messagingServiceSid=null, List<Uri> mediaUrl=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null)
+        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body)
         {
-            return new MessageCreator(to, from, body, accountSid:accountSid, messagingServiceSid:messagingServiceSid, mediaUrl:mediaUrl, statusCallback:statusCallback, applicationSid:applicationSid, maxPrice:maxPrice, provideFeedback:provideFeedback);
+            return new MessageCreator(to, from, body);
         }
     
         /// <summary>
@@ -117,17 +110,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="to"> The phone number to receive the message </param>
         /// <param name="from"> The phone number that initiated the message </param>
         /// <param name="mediaUrl"> The media_url </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
-        /// <param name="body"> The body </param>
-        /// <param name="statusCallback"> URL Twilio will request when the status changes </param>
-        /// <param name="applicationSid"> The application to use for callbacks </param>
-        /// <param name="maxPrice"> The max_price </param>
-        /// <param name="provideFeedback"> The provide_feedback </param>
         /// <returns> MessageCreator capable of executing the create </returns> 
-        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl, string accountSid=null, string messagingServiceSid=null, string body=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null)
+        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl)
         {
-            return new MessageCreator(to, from, mediaUrl, accountSid:accountSid, messagingServiceSid:messagingServiceSid, body:body, statusCallback:statusCallback, applicationSid:applicationSid, maxPrice:maxPrice, provideFeedback:provideFeedback);
+            return new MessageCreator(to, from, mediaUrl);
         }
     
         /// <summary>
@@ -137,17 +123,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="to"> The phone number to receive the message </param>
         /// <param name="messagingServiceSid"> The messaging_service_sid </param>
         /// <param name="body"> The body </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="from"> The phone number that initiated the message </param>
-        /// <param name="mediaUrl"> The media_url </param>
-        /// <param name="statusCallback"> URL Twilio will request when the status changes </param>
-        /// <param name="applicationSid"> The application to use for callbacks </param>
-        /// <param name="maxPrice"> The max_price </param>
-        /// <param name="provideFeedback"> The provide_feedback </param>
         /// <returns> MessageCreator capable of executing the create </returns> 
-        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, string messagingServiceSid, string body, string accountSid=null, Twilio.Types.PhoneNumber from=null, List<Uri> mediaUrl=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null)
+        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, string messagingServiceSid, string body)
         {
-            return new MessageCreator(to, messagingServiceSid, body, accountSid:accountSid, from:from, mediaUrl:mediaUrl, statusCallback:statusCallback, applicationSid:applicationSid, maxPrice:maxPrice, provideFeedback:provideFeedback);
+            return new MessageCreator(to, messagingServiceSid, body);
         }
     
         /// <summary>
@@ -157,17 +136,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="to"> The phone number to receive the message </param>
         /// <param name="messagingServiceSid"> The messaging_service_sid </param>
         /// <param name="mediaUrl"> The media_url </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="from"> The phone number that initiated the message </param>
-        /// <param name="body"> The body </param>
-        /// <param name="statusCallback"> URL Twilio will request when the status changes </param>
-        /// <param name="applicationSid"> The application to use for callbacks </param>
-        /// <param name="maxPrice"> The max_price </param>
-        /// <param name="provideFeedback"> The provide_feedback </param>
         /// <returns> MessageCreator capable of executing the create </returns> 
-        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, string messagingServiceSid, List<Uri> mediaUrl, string accountSid=null, Twilio.Types.PhoneNumber from=null, string body=null, Uri statusCallback=null, string applicationSid=null, decimal? maxPrice=null, bool? provideFeedback=null)
+        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, string messagingServiceSid, List<Uri> mediaUrl)
         {
-            return new MessageCreator(to, messagingServiceSid, mediaUrl, accountSid:accountSid, from:from, body:body, statusCallback:statusCallback, applicationSid:applicationSid, maxPrice:maxPrice, provideFeedback:provideFeedback);
+            return new MessageCreator(to, messagingServiceSid, mediaUrl);
         }
     
         /// <summary>
@@ -175,11 +147,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The message to delete </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> MessageDeleter capable of executing the delete </returns> 
-        public static MessageDeleter Deleter(string sid, string accountSid=null)
+        public static MessageDeleter Deleter(string sid)
         {
-            return new MessageDeleter(sid, accountSid:accountSid);
+            return new MessageDeleter(sid);
         }
     
         /// <summary>
@@ -187,25 +158,20 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Fetch by unique message Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> MessageFetcher capable of executing the fetch </returns> 
-        public static MessageFetcher Fetcher(string sid, string accountSid=null)
+        public static MessageFetcher Fetcher(string sid)
         {
-            return new MessageFetcher(sid, accountSid:accountSid);
+            return new MessageFetcher(sid);
         }
     
         /// <summary>
         /// Retrieve a list of messages belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="to"> Filter by messages to this number </param>
-        /// <param name="from"> Filter by from number </param>
-        /// <param name="dateSent"> Filter by date sent </param>
         /// <returns> MessageReader capable of executing the read </returns> 
-        public static MessageReader Reader(string accountSid=null, Twilio.Types.PhoneNumber to=null, Twilio.Types.PhoneNumber from=null, string dateSent=null)
+        public static MessageReader Reader()
         {
-            return new MessageReader(accountSid:accountSid, to:to, from:from, dateSent:dateSent);
+            return new MessageReader();
         }
     
         /// <summary>
@@ -213,12 +179,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The message to redact </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="body"> The body </param>
         /// <returns> MessageUpdater capable of executing the update </returns> 
-        public static MessageUpdater Updater(string sid, string accountSid=null, string body=null)
+        public static MessageUpdater Updater(string sid)
         {
-            return new MessageUpdater(sid, accountSid:accountSid, body:body);
+            return new MessageUpdater(sid);
         }
     
         /// <summary>
@@ -241,46 +205,46 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; }
+        public string apiVersion { get; set; }
         [JsonProperty("body")]
-        public string body { get; }
+        public string body { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("date_sent")]
-        public DateTime? dateSent { get; }
+        public DateTime? dateSent { get; set; }
         [JsonProperty("direction")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public MessageResource.Direction direction { get; }
+        public MessageResource.Direction direction { get; set; }
         [JsonProperty("error_code")]
-        public int? errorCode { get; }
+        public int? errorCode { get; set; }
         [JsonProperty("error_message")]
-        public string errorMessage { get; }
+        public string errorMessage { get; set; }
         [JsonProperty("from")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber from { get; }
+        public Twilio.Types.PhoneNumber from { get; set; }
         [JsonProperty("num_media")]
-        public string numMedia { get; }
+        public string numMedia { get; set; }
         [JsonProperty("num_segments")]
-        public string numSegments { get; }
+        public string numSegments { get; set; }
         [JsonProperty("price")]
-        public decimal? price { get; }
+        public decimal? price { get; set; }
         [JsonProperty("price_unit")]
-        public string priceUnit { get; }
+        public string priceUnit { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public MessageResource.Status status { get; }
+        public MessageResource.Status status { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; }
+        public Dictionary<string, string> subresourceUris { get; set; }
         [JsonProperty("to")]
-        public string to { get; }
+        public string to { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
     
         public MessageResource()
         {

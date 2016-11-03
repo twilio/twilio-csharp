@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class KeyUpdater : Updater<KeyResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string sid { get; }
         public string friendlyName { get; set; }
     
@@ -21,12 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        public KeyUpdater(string sid, string accountSid=null, string friendlyName=null)
+        public KeyUpdater(string sid)
         {
-            this.accountSid = accountSid;
-            this.friendlyName = friendlyName;
             this.sid = sid;
         }
     

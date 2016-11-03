@@ -12,26 +12,10 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class AddressReader : Reader<AddressResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string customerName { get; set; }
         public string friendlyName { get; set; }
         public string isoCountry { get; set; }
-    
-        /// <summary>
-        /// Construct a new AddressReader
-        /// </summary>
-        ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="customerName"> The customer_name </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="isoCountry"> The iso_country </param>
-        public AddressReader(string accountSid=null, string customerName=null, string friendlyName=null, string isoCountry=null)
-        {
-            this.accountSid = accountSid;
-            this.friendlyName = friendlyName;
-            this.customerName = customerName;
-            this.isoCountry = isoCountry;
-        }
     
         #if NET40
         /// <summary>
@@ -79,7 +63,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<AddressResource> NextPage(Page<AddressResource> page, ITwilioRestClient client)

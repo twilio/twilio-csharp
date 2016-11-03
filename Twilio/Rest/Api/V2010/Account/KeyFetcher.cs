@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class KeyFetcher : Fetcher<KeyResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string sid { get; }
     
         /// <summary>
@@ -20,10 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public KeyFetcher(string sid, string accountSid=null)
+        public KeyFetcher(string sid)
         {
-            this.accountSid = accountSid;
             this.sid = sid;
         }
     

@@ -16,25 +16,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="friendlyName"> Human readable description of this resource </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="apiVersion"> The API version to use </param>
-        /// <param name="voiceUrl"> URL Twilio will make requests to when relieving a call </param>
-        /// <param name="voiceMethod"> HTTP method to use with the URL </param>
-        /// <param name="voiceFallbackUrl"> Fallback URL </param>
-        /// <param name="voiceFallbackMethod"> HTTP method to use with the fallback url </param>
-        /// <param name="statusCallback"> URL to hit with status updates </param>
-        /// <param name="statusCallbackMethod"> HTTP method to use with the status callback </param>
-        /// <param name="voiceCallerIdLookup"> True or False </param>
-        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
-        /// <param name="smsMethod"> HTTP method to use with sms_url </param>
-        /// <param name="smsFallbackUrl"> Fallback URL if there's an error parsing TwiML </param>
-        /// <param name="smsFallbackMethod"> HTTP method to use with sms_fallback_method </param>
-        /// <param name="smsStatusCallback"> URL Twilio with request with status updates </param>
-        /// <param name="messageStatusCallback"> URL to make requests to with status updates </param>
         /// <returns> ApplicationCreator capable of executing the create </returns> 
-        public static ApplicationCreator Creator(string friendlyName, string accountSid=null, string apiVersion=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null, bool? voiceCallerIdLookup=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsFallbackMethod=null, Uri smsStatusCallback=null, Uri messageStatusCallback=null)
+        public static ApplicationCreator Creator(string friendlyName)
         {
-            return new ApplicationCreator(friendlyName, accountSid:accountSid, apiVersion:apiVersion, voiceUrl:voiceUrl, voiceMethod:voiceMethod, voiceFallbackUrl:voiceFallbackUrl, voiceFallbackMethod:voiceFallbackMethod, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod, voiceCallerIdLookup:voiceCallerIdLookup, smsUrl:smsUrl, smsMethod:smsMethod, smsFallbackUrl:smsFallbackUrl, smsFallbackMethod:smsFallbackMethod, smsStatusCallback:smsStatusCallback, messageStatusCallback:messageStatusCallback);
+            return new ApplicationCreator(friendlyName);
         }
     
         /// <summary>
@@ -42,11 +27,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The application sid to delete </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> ApplicationDeleter capable of executing the delete </returns> 
-        public static ApplicationDeleter Deleter(string sid, string accountSid=null)
+        public static ApplicationDeleter Deleter(string sid)
         {
-            return new ApplicationDeleter(sid, accountSid:accountSid);
+            return new ApplicationDeleter(sid);
         }
     
         /// <summary>
@@ -54,23 +38,20 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Fetch by unique Application Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> ApplicationFetcher capable of executing the fetch </returns> 
-        public static ApplicationFetcher Fetcher(string sid, string accountSid=null)
+        public static ApplicationFetcher Fetcher(string sid)
         {
-            return new ApplicationFetcher(sid, accountSid:accountSid);
+            return new ApplicationFetcher(sid);
         }
     
         /// <summary>
         /// Retrieve a list of applications representing an application within the requesting account
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> Filter by friendly name </param>
         /// <returns> ApplicationReader capable of executing the read </returns> 
-        public static ApplicationReader Reader(string accountSid=null, string friendlyName=null)
+        public static ApplicationReader Reader()
         {
-            return new ApplicationReader(accountSid:accountSid, friendlyName:friendlyName);
+            return new ApplicationReader();
         }
     
         /// <summary>
@@ -78,26 +59,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> Human readable description of this resource </param>
-        /// <param name="apiVersion"> The API version to use </param>
-        /// <param name="voiceUrl"> URL Twilio will make requests to when relieving a call </param>
-        /// <param name="voiceMethod"> HTTP method to use with the URL </param>
-        /// <param name="voiceFallbackUrl"> Fallback URL </param>
-        /// <param name="voiceFallbackMethod"> HTTP method to use with the fallback url </param>
-        /// <param name="statusCallback"> URL to hit with status updates </param>
-        /// <param name="statusCallbackMethod"> HTTP method to use with the status callback </param>
-        /// <param name="voiceCallerIdLookup"> True or False </param>
-        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
-        /// <param name="smsMethod"> HTTP method to use with sms_url </param>
-        /// <param name="smsFallbackUrl"> Fallback URL if there's an error parsing TwiML </param>
-        /// <param name="smsFallbackMethod"> HTTP method to use with sms_fallback_method </param>
-        /// <param name="smsStatusCallback"> URL Twilio with request with status updates </param>
-        /// <param name="messageStatusCallback"> URL to make requests to with status updates </param>
         /// <returns> ApplicationUpdater capable of executing the update </returns> 
-        public static ApplicationUpdater Updater(string sid, string accountSid=null, string friendlyName=null, string apiVersion=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null, bool? voiceCallerIdLookup=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsFallbackMethod=null, Uri smsStatusCallback=null, Uri messageStatusCallback=null)
+        public static ApplicationUpdater Updater(string sid)
         {
-            return new ApplicationUpdater(sid, accountSid:accountSid, friendlyName:friendlyName, apiVersion:apiVersion, voiceUrl:voiceUrl, voiceMethod:voiceMethod, voiceFallbackUrl:voiceFallbackUrl, voiceFallbackMethod:voiceFallbackMethod, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod, voiceCallerIdLookup:voiceCallerIdLookup, smsUrl:smsUrl, smsMethod:smsMethod, smsFallbackUrl:smsFallbackUrl, smsFallbackMethod:smsFallbackMethod, smsStatusCallback:smsStatusCallback, messageStatusCallback:messageStatusCallback);
+            return new ApplicationUpdater(sid);
         }
     
         /// <summary>
@@ -120,50 +85,50 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; }
+        public string apiVersion { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("message_status_callback")]
-        public Uri messageStatusCallback { get; }
+        public Uri messageStatusCallback { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("sms_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod smsFallbackMethod { get; }
+        public Twilio.Http.HttpMethod smsFallbackMethod { get; set; }
         [JsonProperty("sms_fallback_url")]
-        public Uri smsFallbackUrl { get; }
+        public Uri smsFallbackUrl { get; set; }
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod smsMethod { get; }
+        public Twilio.Http.HttpMethod smsMethod { get; set; }
         [JsonProperty("sms_status_callback")]
-        public Uri smsStatusCallback { get; }
+        public Uri smsStatusCallback { get; set; }
         [JsonProperty("sms_url")]
-        public Uri smsUrl { get; }
+        public Uri smsUrl { get; set; }
         [JsonProperty("status_callback")]
-        public Uri statusCallback { get; }
+        public Uri statusCallback { get; set; }
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod statusCallbackMethod { get; }
+        public Twilio.Http.HttpMethod statusCallbackMethod { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
         [JsonProperty("voice_caller_id_lookup")]
-        public bool? voiceCallerIdLookup { get; }
+        public bool? voiceCallerIdLookup { get; set; }
         [JsonProperty("voice_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod voiceFallbackMethod { get; }
+        public Twilio.Http.HttpMethod voiceFallbackMethod { get; set; }
         [JsonProperty("voice_fallback_url")]
-        public Uri voiceFallbackUrl { get; }
+        public Uri voiceFallbackUrl { get; set; }
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod voiceMethod { get; }
+        public Twilio.Http.HttpMethod voiceMethod { get; set; }
         [JsonProperty("voice_url")]
-        public Uri voiceUrl { get; }
+        public Uri voiceUrl { get; set; }
     
         public ApplicationResource()
         {

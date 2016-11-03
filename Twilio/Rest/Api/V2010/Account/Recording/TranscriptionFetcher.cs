@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
 
     public class TranscriptionFetcher : Fetcher<TranscriptionResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string recordingSid { get; }
         public string sid { get; }
     
@@ -22,12 +22,10 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         ///
         /// <param name="recordingSid"> The recording_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public TranscriptionFetcher(string recordingSid, string sid, string accountSid=null)
+        public TranscriptionFetcher(string recordingSid, string sid)
         {
-            this.accountSid = accountSid;
-            this.sid = sid;
             this.recordingSid = recordingSid;
+            this.sid = sid;
         }
     
         #if NET40

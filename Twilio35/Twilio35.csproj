@@ -142,6 +142,7 @@
     <Compile Include="..\Twilio\Rest\Api\V2010\Account\ConferenceFetcher.cs"><Link>Rest\Api\V2010\Account\ConferenceFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Rest\Api\V2010\Account\ConferenceReader.cs"><Link>Rest\Api\V2010\Account\ConferenceReader.cs</Link></Compile>
     <Compile Include="..\Twilio\Rest\Api\V2010\Account\ConferenceResource.cs"><Link>Rest\Api\V2010\Account\ConferenceResource.cs</Link></Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Conference\ParticipantCreator.cs"><Link>Rest\Api\V2010\Account\Conference\ParticipantCreator.cs</Link></Compile>
     <Compile Include="..\Twilio\Rest\Api\V2010\Account\Conference\ParticipantDeleter.cs"><Link>Rest\Api\V2010\Account\Conference\ParticipantDeleter.cs</Link></Compile>
     <Compile Include="..\Twilio\Rest\Api\V2010\Account\Conference\ParticipantFetcher.cs"><Link>Rest\Api\V2010\Account\Conference\ParticipantFetcher.cs</Link></Compile>
     <Compile Include="..\Twilio\Rest\Api\V2010\Account\Conference\ParticipantReader.cs"><Link>Rest\Api\V2010\Account\Conference\ParticipantReader.cs</Link></Compile>

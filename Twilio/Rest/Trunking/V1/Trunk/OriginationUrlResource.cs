@@ -68,15 +68,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         ///
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="weight"> The weight </param>
-        /// <param name="priority"> The priority </param>
-        /// <param name="enabled"> The enabled </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="sipUrl"> The sip_url </param>
         /// <returns> OriginationUrlUpdater capable of executing the update </returns> 
-        public static OriginationUrlUpdater Updater(string trunkSid, string sid, int? weight=null, int? priority=null, bool? enabled=null, string friendlyName=null, Uri sipUrl=null)
+        public static OriginationUrlUpdater Updater(string trunkSid, string sid)
         {
-            return new OriginationUrlUpdater(trunkSid, sid, weight:weight, priority:priority, enabled:enabled, friendlyName:friendlyName, sipUrl:sipUrl);
+            return new OriginationUrlUpdater(trunkSid, sid);
         }
     
         /// <summary>
@@ -99,27 +94,27 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("trunk_sid")]
-        public string trunkSid { get; }
+        public string trunkSid { get; set; }
         [JsonProperty("weight")]
-        public int? weight { get; }
+        public int? weight { get; set; }
         [JsonProperty("enabled")]
-        public bool? enabled { get; }
+        public bool? enabled { get; set; }
         [JsonProperty("sip_url")]
-        public Uri sipUrl { get; }
+        public Uri sipUrl { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("priority")]
-        public int? priority { get; }
+        public int? priority { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
     
         public OriginationUrlResource()
         {

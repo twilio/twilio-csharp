@@ -1,3 +1,4 @@
+using System;
 using Twilio.Base;
 using Twilio.Clients;
 using Twilio.Exceptions;
@@ -12,25 +13,21 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class NotificationReader : Reader<NotificationResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string callSid { get; }
         public int? log { get; set; }
-        public string messageDate { get; set; }
+        public DateTime? messageDate { get; set; }
+        public DateTime? messageDateAfter { get; set; }
+        public DateTime? messageDateBefore { get; set; }
     
         /// <summary>
         /// Construct a new NotificationReader
         /// </summary>
         ///
         /// <param name="callSid"> The call_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="log"> The log </param>
-        /// <param name="messageDate"> The message_date </param>
-        public NotificationReader(string callSid, string accountSid=null, int? log=null, string messageDate=null)
+        public NotificationReader(string callSid)
         {
-            this.accountSid = accountSid;
             this.callSid = callSid;
-            this.log = log;
-            this.messageDate = messageDate;
         }
     
         #if NET40
@@ -79,7 +76,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<NotificationResource> NextPage(Page<NotificationResource> page, ITwilioRestClient client)
@@ -142,7 +139,18 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             
             if (messageDate != null)
             {
-                request.AddQueryParam("MessageDate", messageDate);
+                request.AddQueryParam("MessageDate", messageDate.Value.ToString("yyyy-MM-dd"));
+            }
+            else
+            {
+                if (messageDateBefore != null)
+                {
+                    request.AddQueryParam("MessageDate<", messageDateBefore.Value.ToString("yyyy-MM-dd"));
+                }
+                if (messageDateAfter != null)
+                {
+                    request.AddQueryParam("MessageDate>", messageDateAfter.Value.ToString("yyyy-MM-dd"));
+                }
             }
             
             if (PageSize != null)

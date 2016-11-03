@@ -24,16 +24,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="mapSid"> The map_sid </param>
-        /// <param name="order"> The order </param>
-        /// <param name="from"> The from </param>
-        /// <param name="bounds"> The bounds </param>
-        public SyncMapItemReader(string serviceSid, string mapSid, SyncMapItemResource.QueryResultOrder order=null, string from=null, SyncMapItemResource.QueryFromBoundType bounds=null)
+        public SyncMapItemReader(string serviceSid, string mapSid)
         {
-            this.order = order;
             this.serviceSid = serviceSid;
             this.mapSid = mapSid;
-            this.from = from;
-            this.bounds = bounds;
         }
     
         #if NET40
@@ -82,7 +76,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<SyncMapItemResource> NextPage(Page<SyncMapItemResource> page, ITwilioRestClient client)

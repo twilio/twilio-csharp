@@ -16,16 +16,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="minutes"> The minutes </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="taskQueueSid"> The task_queue_sid </param>
-        /// <param name="taskQueueName"> The task_queue_name </param>
-        /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> WorkersStatisticsFetcher capable of executing the fetch </returns> 
-        public static WorkersStatisticsFetcher Fetcher(string workspaceSid, int? minutes=null, DateTime? startDate=null, DateTime? endDate=null, string taskQueueSid=null, string taskQueueName=null, string friendlyName=null)
+        public static WorkersStatisticsFetcher Fetcher(string workspaceSid)
         {
-            return new WorkersStatisticsFetcher(workspaceSid, minutes:minutes, startDate:startDate, endDate:endDate, taskQueueSid:taskQueueSid, taskQueueName:taskQueueName, friendlyName:friendlyName);
+            return new WorkersStatisticsFetcher(workspaceSid);
         }
     
         /// <summary>
@@ -48,13 +42,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("cumulative")]
-        public Object cumulative { get; }
+        public Object cumulative { get; set; }
         [JsonProperty("realtime")]
-        public Object realtime { get; }
+        public Object realtime { get; set; }
         [JsonProperty("workspace_sid")]
-        public string workspaceSid { get; }
+        public string workspaceSid { get; set; }
     
         public WorkersStatisticsResource()
         {

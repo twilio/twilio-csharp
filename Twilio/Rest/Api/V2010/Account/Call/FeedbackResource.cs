@@ -59,12 +59,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         ///
         /// <param name="callSid"> The call_sid </param>
         /// <param name="qualityScore"> The quality_score </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="issue"> The issue </param>
         /// <returns> FeedbackCreator capable of executing the create </returns> 
-        public static FeedbackCreator Creator(string callSid, int? qualityScore, string accountSid=null, List<FeedbackResource.Issues> issue=null)
+        public static FeedbackCreator Creator(string callSid, int? qualityScore)
         {
-            return new FeedbackCreator(callSid, qualityScore, accountSid:accountSid, issue:issue);
+            return new FeedbackCreator(callSid, qualityScore);
         }
     
         /// <summary>
@@ -72,11 +70,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         ///
         /// <param name="callSid"> The call sid that uniquely identifies the call </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> FeedbackFetcher capable of executing the fetch </returns> 
-        public static FeedbackFetcher Fetcher(string callSid, string accountSid=null)
+        public static FeedbackFetcher Fetcher(string callSid)
         {
-            return new FeedbackFetcher(callSid, accountSid:accountSid);
+            return new FeedbackFetcher(callSid);
         }
     
         /// <summary>
@@ -85,12 +82,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         ///
         /// <param name="callSid"> The call_sid </param>
         /// <param name="qualityScore"> An integer from 1 to 5 </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="issue"> Issues experienced during the call </param>
         /// <returns> FeedbackUpdater capable of executing the update </returns> 
-        public static FeedbackUpdater Updater(string callSid, int? qualityScore, string accountSid=null, List<FeedbackResource.Issues> issue=null)
+        public static FeedbackUpdater Updater(string callSid, int? qualityScore)
         {
-            return new FeedbackUpdater(callSid, qualityScore, accountSid:accountSid, issue:issue);
+            return new FeedbackUpdater(callSid, qualityScore);
         }
     
         /// <summary>
@@ -113,18 +108,18 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("issues")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public List<FeedbackResource.Issues> issues { get; }
+        public List<FeedbackResource.Issues> issues { get; set; }
         [JsonProperty("quality_score")]
-        public int? qualityScore { get; }
+        public int? qualityScore { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
     
         public FeedbackResource()
         {

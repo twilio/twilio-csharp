@@ -16,20 +16,6 @@ namespace Twilio.Rest.Preview.Wireless
         public string simIdentifier { get; set; }
         public string ratePlan { get; set; }
     
-        /// <summary>
-        /// Construct a new DeviceReader
-        /// </summary>
-        ///
-        /// <param name="status"> The status </param>
-        /// <param name="simIdentifier"> The sim_identifier </param>
-        /// <param name="ratePlan"> The rate_plan </param>
-        public DeviceReader(string status=null, string simIdentifier=null, string ratePlan=null)
-        {
-            this.status = status;
-            this.simIdentifier = simIdentifier;
-            this.ratePlan = ratePlan;
-        }
-    
         #if NET40
         /// <summary>
         /// Make the request to the Twilio API to perform the read
@@ -76,7 +62,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<DeviceResource> NextPage(Page<DeviceResource> page, ITwilioRestClient client)

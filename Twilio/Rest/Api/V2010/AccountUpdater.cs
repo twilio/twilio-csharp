@@ -12,23 +12,9 @@ namespace Twilio.Rest.Api.V2010
 
     public class AccountUpdater : Updater<AccountResource> 
     {
-        public string sid { get; }
+        public string sid { get; set; }
         public string friendlyName { get; set; }
         public AccountResource.Status status { get; set; }
-    
-        /// <summary>
-        /// Construct a new AccountUpdater
-        /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> FriendlyName to update </param>
-        /// <param name="status"> Status to update the Account with </param>
-        public AccountUpdater(string sid=null, string friendlyName=null, AccountResource.Status status=null)
-        {
-            this.friendlyName = friendlyName;
-            this.sid = sid;
-            this.status = status;
-        }
     
         #if NET40
         /// <summary>

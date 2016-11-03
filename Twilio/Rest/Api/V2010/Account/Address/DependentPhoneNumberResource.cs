@@ -17,11 +17,10 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// </summary>
         ///
         /// <param name="addressSid"> The address_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> DependentPhoneNumberReader capable of executing the read </returns> 
-        public static DependentPhoneNumberReader Reader(string addressSid, string accountSid=null)
+        public static DependentPhoneNumberReader Reader(string addressSid)
         {
-            return new DependentPhoneNumberReader(addressSid, accountSid:accountSid);
+            return new DependentPhoneNumberReader(addressSid);
         }
     
         /// <summary>
@@ -45,28 +44,28 @@ namespace Twilio.Rest.Api.V2010.Account.Address
     
         [JsonProperty("friendly_name")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber friendlyName { get; }
+        public Twilio.Types.PhoneNumber friendlyName { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber phoneNumber { get; }
+        public Twilio.Types.PhoneNumber phoneNumber { get; set; }
         [JsonProperty("lata")]
-        public string lata { get; }
+        public string lata { get; set; }
         [JsonProperty("rate_center")]
-        public string rateCenter { get; }
+        public string rateCenter { get; set; }
         [JsonProperty("latitude")]
-        public decimal? latitude { get; }
+        public decimal? latitude { get; set; }
         [JsonProperty("longitude")]
-        public decimal? longitude { get; }
+        public decimal? longitude { get; set; }
         [JsonProperty("region")]
-        public string region { get; }
+        public string region { get; set; }
         [JsonProperty("postal_code")]
-        public string postalCode { get; }
+        public string postalCode { get; set; }
         [JsonProperty("iso_country")]
-        public string isoCountry { get; }
+        public string isoCountry { get; set; }
         [JsonProperty("address_requirements")]
-        public string addressRequirements { get; }
+        public string addressRequirements { get; set; }
         [JsonProperty("capabilities")]
-        public Dictionary<string, string> capabilities { get; }
+        public Dictionary<string, string> capabilities { get; set; }
     
         public DependentPhoneNumberResource()
         {

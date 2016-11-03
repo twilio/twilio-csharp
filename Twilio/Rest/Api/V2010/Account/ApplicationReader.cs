@@ -12,20 +12,8 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ApplicationReader : Reader<ApplicationResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string friendlyName { get; set; }
-    
-        /// <summary>
-        /// Construct a new ApplicationReader
-        /// </summary>
-        ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> Filter by friendly name </param>
-        public ApplicationReader(string accountSid=null, string friendlyName=null)
-        {
-            this.accountSid = accountSid;
-            this.friendlyName = friendlyName;
-        }
     
         #if NET40
         /// <summary>
@@ -73,7 +61,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<ApplicationResource> NextPage(Page<ApplicationResource> page, ITwilioRestClient client)

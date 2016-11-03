@@ -16,16 +16,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="phoneNumber"> The phone_number </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="callDelay"> The call_delay </param>
-        /// <param name="extension"> The extension </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <returns> ValidationRequestCreator capable of executing the create </returns> 
-        public static ValidationRequestCreator Creator(Twilio.Types.PhoneNumber phoneNumber, string accountSid=null, string friendlyName=null, int? callDelay=null, string extension=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null)
+        public static ValidationRequestCreator Creator(Twilio.Types.PhoneNumber phoneNumber)
         {
-            return new ValidationRequestCreator(phoneNumber, accountSid:accountSid, friendlyName:friendlyName, callDelay:callDelay, extension:extension, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod);
+            return new ValidationRequestCreator(phoneNumber);
         }
     
         /// <summary>
@@ -48,16 +42,16 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber phoneNumber { get; }
+        public Twilio.Types.PhoneNumber phoneNumber { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("validation_code")]
-        public int? validationCode { get; }
+        public int? validationCode { get; set; }
         [JsonProperty("call_sid")]
-        public string callSid { get; }
+        public string callSid { get; set; }
     
         public ValidationRequestResource()
         {

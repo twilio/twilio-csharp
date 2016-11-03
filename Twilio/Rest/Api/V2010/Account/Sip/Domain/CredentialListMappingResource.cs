@@ -18,11 +18,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         ///
         /// <param name="domainSid"> The domain_sid </param>
         /// <param name="credentialListSid"> The credential_list_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialListMappingCreator capable of executing the create </returns> 
-        public static CredentialListMappingCreator Creator(string domainSid, string credentialListSid, string accountSid=null)
+        public static CredentialListMappingCreator Creator(string domainSid, string credentialListSid)
         {
-            return new CredentialListMappingCreator(domainSid, credentialListSid, accountSid:accountSid);
+            return new CredentialListMappingCreator(domainSid, credentialListSid);
         }
     
         /// <summary>
@@ -30,11 +29,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// </summary>
         ///
         /// <param name="domainSid"> The domain_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialListMappingReader capable of executing the read </returns> 
-        public static CredentialListMappingReader Reader(string domainSid, string accountSid=null)
+        public static CredentialListMappingReader Reader(string domainSid)
         {
-            return new CredentialListMappingReader(domainSid, accountSid:accountSid);
+            return new CredentialListMappingReader(domainSid);
         }
     
         /// <summary>
@@ -43,11 +41,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         ///
         /// <param name="domainSid"> The domain_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialListMappingFetcher capable of executing the fetch </returns> 
-        public static CredentialListMappingFetcher Fetcher(string domainSid, string sid, string accountSid=null)
+        public static CredentialListMappingFetcher Fetcher(string domainSid, string sid)
         {
-            return new CredentialListMappingFetcher(domainSid, sid, accountSid:accountSid);
+            return new CredentialListMappingFetcher(domainSid, sid);
         }
     
         /// <summary>
@@ -56,11 +53,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         ///
         /// <param name="domainSid"> The domain_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialListMappingDeleter capable of executing the delete </returns> 
-        public static CredentialListMappingDeleter Deleter(string domainSid, string sid, string accountSid=null)
+        public static CredentialListMappingDeleter Deleter(string domainSid, string sid)
         {
-            return new CredentialListMappingDeleter(domainSid, sid, accountSid:accountSid);
+            return new CredentialListMappingDeleter(domainSid, sid);
         }
     
         /// <summary>
@@ -83,19 +79,19 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; }
+        public Dictionary<string, string> subresourceUris { get; set; }
     
         public CredentialListMappingResource()
         {

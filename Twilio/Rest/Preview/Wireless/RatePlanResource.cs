@@ -52,35 +52,35 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("alias")]
-        public string alias { get; }
+        public string alias { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("data_metering")]
-        public string dataMetering { get; }
+        public string dataMetering { get; set; }
         [JsonProperty("capabilities")]
-        public Object capabilities { get; }
+        public Object capabilities { get; set; }
         [JsonProperty("voice_cap")]
-        public int? voiceCap { get; }
+        public int? voiceCap { get; set; }
         [JsonProperty("messaging_cap")]
-        public int? messagingCap { get; }
+        public int? messagingCap { get; set; }
         [JsonProperty("commands_cap")]
-        public int? commandsCap { get; }
+        public int? commandsCap { get; set; }
         [JsonProperty("data_cap")]
-        public int? dataCap { get; }
+        public int? dataCap { get; set; }
         [JsonProperty("cap_period")]
-        public int? capPeriod { get; }
+        public int? capPeriod { get; set; }
         [JsonProperty("cap_unit")]
-        public string capUnit { get; }
+        public string capUnit { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
     
         public RatePlanResource()
         {

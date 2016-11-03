@@ -89,11 +89,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Fetch by unique recording Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> RecordingFetcher capable of executing the fetch </returns> 
-        public static RecordingFetcher Fetcher(string sid, string accountSid=null)
+        public static RecordingFetcher Fetcher(string sid)
         {
-            return new RecordingFetcher(sid, accountSid:accountSid);
+            return new RecordingFetcher(sid);
         }
     
         /// <summary>
@@ -101,23 +100,20 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Delete by unique recording Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> RecordingDeleter capable of executing the delete </returns> 
-        public static RecordingDeleter Deleter(string sid, string accountSid=null)
+        public static RecordingDeleter Deleter(string sid)
         {
-            return new RecordingDeleter(sid, accountSid:accountSid);
+            return new RecordingDeleter(sid);
         }
     
         /// <summary>
         /// Retrieve a list of recordings belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="dateCreated"> Filter by date created </param>
         /// <returns> RecordingReader capable of executing the read </returns> 
-        public static RecordingReader Reader(string accountSid=null, string dateCreated=null)
+        public static RecordingReader Reader()
         {
-            return new RecordingReader(accountSid:accountSid, dateCreated:dateCreated);
+            return new RecordingReader();
         }
     
         /// <summary>
@@ -140,33 +136,33 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; }
+        public string apiVersion { get; set; }
         [JsonProperty("call_sid")]
-        public string callSid { get; }
+        public string callSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("duration")]
-        public string duration { get; }
+        public string duration { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("price")]
-        public string price { get; }
+        public string price { get; set; }
         [JsonProperty("price_unit")]
-        public string priceUnit { get; }
+        public string priceUnit { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public RecordingResource.Status status { get; }
+        public RecordingResource.Status status { get; set; }
         [JsonProperty("channels")]
-        public int? channels { get; }
+        public int? channels { get; set; }
         [JsonProperty("source")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public RecordingResource.Source source { get; }
+        public RecordingResource.Source source { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
     
         public RecordingResource()
         {

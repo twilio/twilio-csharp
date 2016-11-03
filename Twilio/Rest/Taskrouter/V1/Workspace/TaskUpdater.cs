@@ -26,20 +26,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="assignmentStatus"> The assignment_status </param>
-        /// <param name="reason"> The reason </param>
-        /// <param name="priority"> The priority </param>
-        /// <param name="taskChannel"> The task_channel </param>
-        public TaskUpdater(string workspaceSid, string sid, string attributes=null, TaskResource.Status assignmentStatus=null, string reason=null, int? priority=null, string taskChannel=null)
+        public TaskUpdater(string workspaceSid, string sid)
         {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
-            this.assignmentStatus = assignmentStatus;
-            this.reason = reason;
-            this.taskChannel = taskChannel;
-            this.priority = priority;
-            this.attributes = attributes;
         }
     
         #if NET40

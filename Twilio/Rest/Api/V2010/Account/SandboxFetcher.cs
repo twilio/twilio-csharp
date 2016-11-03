@@ -12,17 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class SandboxFetcher : Fetcher<SandboxResource> 
     {
-        public string accountSid { get; }
-    
-        /// <summary>
-        /// Construct a new SandboxFetcher
-        /// </summary>
-        ///
-        /// <param name="accountSid"> The account_sid </param>
-        public SandboxFetcher(string accountSid=null)
-        {
-            this.accountSid = accountSid;
-        }
+        public string accountSid { get; set; }
     
         #if NET40
         /// <summary>

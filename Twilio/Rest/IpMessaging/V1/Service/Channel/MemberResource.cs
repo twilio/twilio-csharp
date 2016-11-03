@@ -31,11 +31,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="channelSid"> The channel_sid </param>
         /// <param name="identity"> The identity </param>
-        /// <param name="roleSid"> The role_sid </param>
         /// <returns> MemberCreator capable of executing the create </returns> 
-        public static MemberCreator Creator(string serviceSid, string channelSid, string identity, string roleSid=null)
+        public static MemberCreator Creator(string serviceSid, string channelSid, string identity)
         {
-            return new MemberCreator(serviceSid, channelSid, identity, roleSid:roleSid);
+            return new MemberCreator(serviceSid, channelSid, identity);
         }
     
         /// <summary>
@@ -83,27 +82,27 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         }
     
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("channel_sid")]
-        public string channelSid { get; }
+        public string channelSid { get; set; }
         [JsonProperty("service_sid")]
-        public string serviceSid { get; }
+        public string serviceSid { get; set; }
         [JsonProperty("identity")]
-        public string identity { get; }
+        public string identity { get; set; }
         [JsonProperty("last_consumed_message_index")]
-        public int? lastConsumedMessageIndex { get; }
+        public int? lastConsumedMessageIndex { get; set; }
         [JsonProperty("last_consumption_timestamp")]
-        public DateTime? lastConsumptionTimestamp { get; }
+        public DateTime? lastConsumptionTimestamp { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("role_sid")]
-        public string roleSid { get; }
+        public string roleSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
     
         public MemberResource()
         {

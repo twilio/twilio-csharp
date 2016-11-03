@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
     public class RegistrationEndpointReader : Reader<RegistrationEndpointResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string domainSid { get; }
         public string region { get; }
         public string registrant { get; }
@@ -24,13 +24,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="domainSid"> The domain_sid </param>
         /// <param name="region"> The region </param>
         /// <param name="registrant"> The registrant </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public RegistrationEndpointReader(string domainSid, string region, string registrant, string accountSid=null)
+        public RegistrationEndpointReader(string domainSid, string region, string registrant)
         {
-            this.accountSid = accountSid;
-            this.registrant = registrant;
-            this.region = region;
             this.domainSid = domainSid;
+            this.region = region;
+            this.registrant = registrant;
         }
     
         #if NET40
@@ -79,7 +77,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<RegistrationEndpointResource> NextPage(Page<RegistrationEndpointResource> page, ITwilioRestClient client)

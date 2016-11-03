@@ -53,12 +53,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="available"> The available </param>
         /// <returns> ActivityReader capable of executing the read </returns> 
-        public static ActivityReader Reader(string workspaceSid, string friendlyName=null, string available=null)
+        public static ActivityReader Reader(string workspaceSid)
         {
-            return new ActivityReader(workspaceSid, friendlyName:friendlyName, available:available);
+            return new ActivityReader(workspaceSid);
         }
     
         /// <summary>
@@ -67,11 +65,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="available"> The available </param>
         /// <returns> ActivityCreator capable of executing the create </returns> 
-        public static ActivityCreator Creator(string workspaceSid, string friendlyName, bool? available=null)
+        public static ActivityCreator Creator(string workspaceSid, string friendlyName)
         {
-            return new ActivityCreator(workspaceSid, friendlyName, available:available);
+            return new ActivityCreator(workspaceSid, friendlyName);
         }
     
         /// <summary>
@@ -94,21 +91,21 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("available")]
-        public bool? available { get; }
+        public bool? available { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("workspace_sid")]
-        public string workspaceSid { get; }
+        public string workspaceSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
     
         public ActivityResource()
         {

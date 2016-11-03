@@ -21,26 +21,6 @@ namespace Twilio.Rest.Monitor.V1
         public DateTime? startDate { get; set; }
         public DateTime? endDate { get; set; }
     
-        /// <summary>
-        /// Construct a new EventReader
-        /// </summary>
-        ///
-        /// <param name="actorSid"> The actor_sid </param>
-        /// <param name="eventType"> The event_type </param>
-        /// <param name="resourceSid"> The resource_sid </param>
-        /// <param name="sourceIpAddress"> The source_ip_address </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
-        public EventReader(string actorSid=null, string eventType=null, string resourceSid=null, string sourceIpAddress=null, DateTime? startDate=null, DateTime? endDate=null)
-        {
-            this.eventType = eventType;
-            this.endDate = endDate;
-            this.resourceSid = resourceSid;
-            this.sourceIpAddress = sourceIpAddress;
-            this.startDate = startDate;
-            this.actorSid = actorSid;
-        }
-    
         #if NET40
         /// <summary>
         /// Make the request to the Twilio API to perform the read
@@ -87,7 +67,7 @@ namespace Twilio.Rest.Monitor.V1
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<EventResource> NextPage(Page<EventResource> page, ITwilioRestClient client)

@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
     public class TriggerCreator : Creator<TriggerResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public Uri callbackUrl { get; }
         public string triggerValue { get; }
         public TriggerResource.UsageCategory usageCategory { get; }
@@ -29,20 +29,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
         /// <param name="triggerValue"> the value at which the trigger will fire </param>
         /// <param name="usageCategory"> The usage category the trigger watches </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="callbackMethod"> HTTP method to use with callback_url </param>
-        /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
-        /// <param name="recurring"> How this trigger recurs </param>
-        /// <param name="triggerBy"> The field in the UsageRecord that fires the trigger </param>
-        public TriggerCreator(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory, string accountSid=null, Twilio.Http.HttpMethod callbackMethod=null, string friendlyName=null, TriggerResource.Recurring recurring=null, TriggerResource.TriggerField triggerBy=null)
+        public TriggerCreator(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory)
         {
-            this.callbackMethod = callbackMethod;
-            this.triggerValue = triggerValue;
             this.callbackUrl = callbackUrl;
-            this.triggerBy = triggerBy;
-            this.accountSid = accountSid;
-            this.recurring = recurring;
-            this.friendlyName = friendlyName;
+            this.triggerValue = triggerValue;
             this.usageCategory = usageCategory;
         }
     

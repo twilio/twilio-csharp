@@ -1,3 +1,4 @@
+using System;
 using Twilio.Base;
 using Twilio.Clients;
 using Twilio.Exceptions;
@@ -12,20 +13,11 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class RecordingReader : Reader<RecordingResource> 
     {
-        public string accountSid { get; }
-        public string dateCreated { get; set; }
-    
-        /// <summary>
-        /// Construct a new RecordingReader
-        /// </summary>
-        ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="dateCreated"> Filter by date created </param>
-        public RecordingReader(string accountSid=null, string dateCreated=null)
-        {
-            this.accountSid = accountSid;
-            this.dateCreated = dateCreated;
-        }
+        public string accountSid { get; set; }
+        public DateTime? dateCreated { get; set; }
+        public DateTime? dateCreatedAfter { get; set; }
+        public DateTime? dateCreatedBefore { get; set; }
+        public string callSid { get; set; }
     
         #if NET40
         /// <summary>
@@ -73,7 +65,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<RecordingResource> NextPage(Page<RecordingResource> page, ITwilioRestClient client)
@@ -129,6 +121,27 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
+            if (dateCreated != null)
+            {
+                request.AddQueryParam("DateCreated", dateCreated.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+            }
+            else
+            {
+                if (dateCreatedBefore != null)
+                {
+                    request.AddQueryParam("DateCreated<", dateCreatedBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                }
+                if (dateCreatedAfter != null)
+                {
+                    request.AddQueryParam("DateCreated>", dateCreatedAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                }
+            }
+            
+            if (callSid != null)
+            {
+                request.AddQueryParam("CallSid", callSid);
+            }
+            
             if (PageSize != null)
             {
                 request.AddQueryParam("PageSize", PageSize.ToString());

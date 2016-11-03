@@ -56,14 +56,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         ///
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="includeSubaccounts"> The include_subaccounts </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <returns> FeedbackSummaryCreator capable of executing the create </returns> 
-        public static FeedbackSummaryCreator Creator(DateTime? startDate, DateTime? endDate, string accountSid=null, bool? includeSubaccounts=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null)
+        public static FeedbackSummaryCreator Creator(DateTime? startDate, DateTime? endDate)
         {
-            return new FeedbackSummaryCreator(startDate, endDate, accountSid:accountSid, includeSubaccounts:includeSubaccounts, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod);
+            return new FeedbackSummaryCreator(startDate, endDate);
         }
     
         /// <summary>
@@ -71,11 +67,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> FeedbackSummaryFetcher capable of executing the fetch </returns> 
-        public static FeedbackSummaryFetcher Fetcher(string sid, string accountSid=null)
+        public static FeedbackSummaryFetcher Fetcher(string sid)
         {
-            return new FeedbackSummaryFetcher(sid, accountSid:accountSid);
+            return new FeedbackSummaryFetcher(sid);
         }
     
         /// <summary>
@@ -83,11 +78,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> FeedbackSummaryDeleter capable of executing the delete </returns> 
-        public static FeedbackSummaryDeleter Deleter(string sid, string accountSid=null)
+        public static FeedbackSummaryDeleter Deleter(string sid)
         {
-            return new FeedbackSummaryDeleter(sid, accountSid:accountSid);
+            return new FeedbackSummaryDeleter(sid);
         }
     
         /// <summary>
@@ -110,34 +104,34 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("call_count")]
-        public int? callCount { get; }
+        public int? callCount { get; set; }
         [JsonProperty("call_feedback_count")]
-        public int? callFeedbackCount { get; }
+        public int? callFeedbackCount { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("end_date")]
-        public DateTime? endDate { get; }
+        public DateTime? endDate { get; set; }
         [JsonProperty("include_subaccounts")]
-        public bool? includeSubaccounts { get; }
+        public bool? includeSubaccounts { get; set; }
         [JsonProperty("issues")]
-        public List<FeedbackIssue> issues { get; }
+        public List<FeedbackIssue> issues { get; set; }
         [JsonProperty("quality_score_average")]
-        public decimal? qualityScoreAverage { get; }
+        public decimal? qualityScoreAverage { get; set; }
         [JsonProperty("quality_score_median")]
-        public decimal? qualityScoreMedian { get; }
+        public decimal? qualityScoreMedian { get; set; }
         [JsonProperty("quality_score_standard_deviation")]
-        public decimal? qualityScoreStandardDeviation { get; }
+        public decimal? qualityScoreStandardDeviation { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("start_date")]
-        public DateTime? startDate { get; }
+        public DateTime? startDate { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public FeedbackSummaryResource.Status status { get; }
+        public FeedbackSummaryResource.Status status { get; set; }
     
         public FeedbackSummaryResource()
         {

@@ -24,19 +24,9 @@ namespace Twilio.Rest.Chat.V1
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="certificate"> The certificate </param>
-        /// <param name="privateKey"> The private_key </param>
-        /// <param name="sandbox"> The sandbox </param>
-        /// <param name="apiKey"> The api_key </param>
-        public CredentialUpdater(string sid, string friendlyName=null, string certificate=null, string privateKey=null, bool? sandbox=null, string apiKey=null)
+        public CredentialUpdater(string sid)
         {
             this.sid = sid;
-            this.privateKey = privateKey;
-            this.certificate = certificate;
-            this.sandbox = sandbox;
-            this.apiKey = apiKey;
-            this.friendlyName = friendlyName;
         }
     
         #if NET40

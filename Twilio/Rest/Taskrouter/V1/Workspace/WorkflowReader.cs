@@ -20,11 +20,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        public WorkflowReader(string workspaceSid, string friendlyName=null)
+        public WorkflowReader(string workspaceSid)
         {
             this.workspaceSid = workspaceSid;
-            this.friendlyName = friendlyName;
         }
     
         #if NET40
@@ -73,7 +71,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<WorkflowResource> NextPage(Page<WorkflowResource> page, ITwilioRestClient client)

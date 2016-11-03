@@ -76,14 +76,10 @@ namespace Twilio.Rest.Chat.V1.Service
         /// </summary>
         ///
         /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="type"> The type </param>
         /// <returns> ChannelCreator capable of executing the create </returns> 
-        public static ChannelCreator Creator(string serviceSid, string friendlyName=null, string uniqueName=null, string attributes=null, ChannelResource.ChannelType type=null)
+        public static ChannelCreator Creator(string serviceSid)
         {
-            return new ChannelCreator(serviceSid, friendlyName:friendlyName, uniqueName:uniqueName, attributes:attributes, type:type);
+            return new ChannelCreator(serviceSid);
         }
     
         /// <summary>
@@ -103,14 +99,10 @@ namespace Twilio.Rest.Chat.V1.Service
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="type"> The type </param>
         /// <returns> ChannelUpdater capable of executing the update </returns> 
-        public static ChannelUpdater Updater(string serviceSid, string sid, string friendlyName=null, string uniqueName=null, string attributes=null, ChannelResource.ChannelType type=null)
+        public static ChannelUpdater Updater(string serviceSid, string sid)
         {
-            return new ChannelUpdater(serviceSid, sid, friendlyName:friendlyName, uniqueName:uniqueName, attributes:attributes, type:type);
+            return new ChannelUpdater(serviceSid, sid);
         }
     
         /// <summary>
@@ -133,30 +125,30 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("service_sid")]
-        public string serviceSid { get; }
+        public string serviceSid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("unique_name")]
-        public string uniqueName { get; }
+        public string uniqueName { get; set; }
         [JsonProperty("attributes")]
-        public string attributes { get; }
+        public string attributes { get; set; }
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ChannelResource.ChannelType type { get; }
+        public ChannelResource.ChannelType type { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("created_by")]
-        public string createdBy { get; }
+        public string createdBy { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; }
+        public Dictionary<string, string> links { get; set; }
     
         public ChannelResource()
         {

@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
 
     public class MemberReader : Reader<MemberResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string queueSid { get; }
     
         /// <summary>
@@ -20,10 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// </summary>
         ///
         /// <param name="queueSid"> The Queue in which to find members </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public MemberReader(string queueSid, string accountSid=null)
+        public MemberReader(string queueSid)
         {
-            this.accountSid = accountSid;
             this.queueSid = queueSid;
         }
     
@@ -73,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<MemberResource> NextPage(Page<MemberResource> page, ITwilioRestClient client)

@@ -27,20 +27,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         ///
         /// <param name="trunkSid"> The trunk_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="weight"> The weight </param>
-        /// <param name="priority"> The priority </param>
-        /// <param name="enabled"> The enabled </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="sipUrl"> The sip_url </param>
-        public OriginationUrlUpdater(string trunkSid, string sid, int? weight=null, int? priority=null, bool? enabled=null, string friendlyName=null, Uri sipUrl=null)
+        public OriginationUrlUpdater(string trunkSid, string sid)
         {
-            this.sid = sid;
-            this.enabled = enabled;
             this.trunkSid = trunkSid;
-            this.sipUrl = sipUrl;
-            this.weight = weight;
-            this.priority = priority;
-            this.friendlyName = friendlyName;
+            this.sid = sid;
         }
     
         #if NET40

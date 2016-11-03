@@ -12,20 +12,8 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class TokenCreator : Creator<TokenResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public int? ttl { get; set; }
-    
-        /// <summary>
-        /// Construct a new TokenCreator
-        /// </summary>
-        ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="ttl"> The duration in seconds the credentials are valid </param>
-        public TokenCreator(string accountSid=null, int? ttl=null)
-        {
-            this.accountSid = accountSid;
-            this.ttl = ttl;
-        }
     
         #if NET40
         /// <summary>

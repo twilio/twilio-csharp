@@ -70,7 +70,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<UserResource> NextPage(Page<UserResource> page, ITwilioRestClient client)

@@ -37,13 +37,10 @@ namespace Twilio.Rest.Monitor.V1
         /// read
         /// </summary>
         ///
-        /// <param name="logLevel"> The log_level </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
         /// <returns> AlertReader capable of executing the read </returns> 
-        public static AlertReader Reader(string logLevel=null, DateTime? startDate=null, DateTime? endDate=null)
+        public static AlertReader Reader()
         {
-            return new AlertReader(logLevel:logLevel, startDate:startDate, endDate:endDate);
+            return new AlertReader();
         }
     
         /// <summary>
@@ -66,40 +63,40 @@ namespace Twilio.Rest.Monitor.V1
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("alert_text")]
-        public string alertText { get; }
+        public string alertText { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; }
+        public string apiVersion { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_generated")]
-        public DateTime? dateGenerated { get; }
+        public DateTime? dateGenerated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("error_code")]
-        public string errorCode { get; }
+        public string errorCode { get; set; }
         [JsonProperty("log_level")]
-        public string logLevel { get; }
+        public string logLevel { get; set; }
         [JsonProperty("more_info")]
-        public string moreInfo { get; }
+        public string moreInfo { get; set; }
         [JsonProperty("request_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod requestMethod { get; }
+        public Twilio.Http.HttpMethod requestMethod { get; set; }
         [JsonProperty("request_url")]
-        public string requestUrl { get; }
+        public string requestUrl { get; set; }
         [JsonProperty("request_variables")]
-        public string requestVariables { get; }
+        public string requestVariables { get; set; }
         [JsonProperty("resource_sid")]
-        public string resourceSid { get; }
+        public string resourceSid { get; set; }
         [JsonProperty("response_body")]
-        public string responseBody { get; }
+        public string responseBody { get; set; }
         [JsonProperty("response_headers")]
-        public string responseHeaders { get; }
+        public string responseHeaders { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
     
         public AlertResource()
         {

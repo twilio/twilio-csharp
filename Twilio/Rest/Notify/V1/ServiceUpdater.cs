@@ -26,23 +26,9 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="apnCredentialSid"> The apn_credential_sid </param>
-        /// <param name="gcmCredentialSid"> The gcm_credential_sid </param>
-        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
-        /// <param name="facebookMessengerPageId"> The facebook_messenger_page_id </param>
-        /// <param name="defaultApnNotificationProtocolVersion"> The default_apn_notification_protocol_version </param>
-        /// <param name="defaultGcmNotificationProtocolVersion"> The default_gcm_notification_protocol_version </param>
-        public ServiceUpdater(string sid, string friendlyName=null, string apnCredentialSid=null, string gcmCredentialSid=null, string messagingServiceSid=null, string facebookMessengerPageId=null, string defaultApnNotificationProtocolVersion=null, string defaultGcmNotificationProtocolVersion=null)
+        public ServiceUpdater(string sid)
         {
-            this.facebookMessengerPageId = facebookMessengerPageId;
             this.sid = sid;
-            this.gcmCredentialSid = gcmCredentialSid;
-            this.defaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion;
-            this.apnCredentialSid = apnCredentialSid;
-            this.defaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion;
-            this.friendlyName = friendlyName;
-            this.messagingServiceSid = messagingServiceSid;
         }
     
         #if NET40

@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
     public class ParticipantUpdater : Updater<ParticipantResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string conferenceSid { get; }
         public string callSid { get; }
         public bool? muted { get; set; }
@@ -27,20 +27,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         ///
         /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
         /// <param name="callSid"> The call_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="muted"> Indicates if the participant should be muted </param>
-        /// <param name="hold"> The hold </param>
-        /// <param name="holdUrl"> The hold_url </param>
-        /// <param name="holdMethod"> The hold_method </param>
-        public ParticipantUpdater(string conferenceSid, string callSid, string accountSid=null, bool? muted=null, bool? hold=null, Uri holdUrl=null, Twilio.Http.HttpMethod holdMethod=null)
+        public ParticipantUpdater(string conferenceSid, string callSid)
         {
-            this.callSid = callSid;
-            this.holdMethod = holdMethod;
-            this.holdUrl = holdUrl;
-            this.accountSid = accountSid;
-            this.hold = hold;
             this.conferenceSid = conferenceSid;
-            this.muted = muted;
+            this.callSid = callSid;
         }
     
         #if NET40

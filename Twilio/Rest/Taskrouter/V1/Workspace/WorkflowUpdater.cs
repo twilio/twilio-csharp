@@ -27,20 +27,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="assignmentCallbackUrl"> The assignment_callback_url </param>
-        /// <param name="fallbackAssignmentCallbackUrl"> The fallback_assignment_callback_url </param>
-        /// <param name="configuration"> The configuration </param>
-        /// <param name="taskReservationTimeout"> The task_reservation_timeout </param>
-        public WorkflowUpdater(string workspaceSid, string sid, string friendlyName=null, Uri assignmentCallbackUrl=null, Uri fallbackAssignmentCallbackUrl=null, string configuration=null, int? taskReservationTimeout=null)
+        public WorkflowUpdater(string workspaceSid, string sid)
         {
             this.workspaceSid = workspaceSid;
             this.sid = sid;
-            this.configuration = configuration;
-            this.fallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl;
-            this.taskReservationTimeout = taskReservationTimeout;
-            this.friendlyName = friendlyName;
-            this.assignmentCallbackUrl = assignmentCallbackUrl;
         }
     
         #if NET40

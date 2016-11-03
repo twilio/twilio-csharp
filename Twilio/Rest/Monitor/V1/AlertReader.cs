@@ -18,20 +18,6 @@ namespace Twilio.Rest.Monitor.V1
         public DateTime? startDate { get; set; }
         public DateTime? endDate { get; set; }
     
-        /// <summary>
-        /// Construct a new AlertReader
-        /// </summary>
-        ///
-        /// <param name="logLevel"> The log_level </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
-        public AlertReader(string logLevel=null, DateTime? startDate=null, DateTime? endDate=null)
-        {
-            this.logLevel = logLevel;
-            this.startDate = startDate;
-            this.endDate = endDate;
-        }
-    
         #if NET40
         /// <summary>
         /// Make the request to the Twilio API to perform the read
@@ -78,7 +64,7 @@ namespace Twilio.Rest.Monitor.V1
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<AlertResource> NextPage(Page<AlertResource> page, ITwilioRestClient client)

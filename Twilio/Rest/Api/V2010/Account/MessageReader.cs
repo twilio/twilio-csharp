@@ -1,3 +1,4 @@
+using System;
 using Twilio.Base;
 using Twilio.Clients;
 using Twilio.Exceptions;
@@ -12,26 +13,12 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class MessageReader : Reader<MessageResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public Twilio.Types.PhoneNumber to { get; set; }
         public Twilio.Types.PhoneNumber from { get; set; }
-        public string dateSent { get; set; }
-    
-        /// <summary>
-        /// Construct a new MessageReader
-        /// </summary>
-        ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="to"> Filter by messages to this number </param>
-        /// <param name="from"> Filter by from number </param>
-        /// <param name="dateSent"> Filter by date sent </param>
-        public MessageReader(string accountSid=null, Twilio.Types.PhoneNumber to=null, Twilio.Types.PhoneNumber from=null, string dateSent=null)
-        {
-            this.accountSid = accountSid;
-            this.from = from;
-            this.dateSent = dateSent;
-            this.to = to;
-        }
+        public DateTime? dateSent { get; set; }
+        public DateTime? dateSentAfter { get; set; }
+        public DateTime? dateSentBefore { get; set; }
     
         #if NET40
         /// <summary>
@@ -79,7 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<MessageResource> NextPage(Page<MessageResource> page, ITwilioRestClient client)
@@ -145,6 +132,21 @@ namespace Twilio.Rest.Api.V2010.Account
                 request.AddQueryParam("From", from.ToString());
             }
             
+            if (dateSent != null)
+            {
+                request.AddQueryParam("DateSent", dateSent.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+            }
+            else
+            {
+                if (dateSentBefore != null)
+                {
+                    request.AddQueryParam("DateSent<", dateSentBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                }
+                if (dateSentAfter != null)
+                {
+                    request.AddQueryParam("DateSent>", dateSentAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                }
+            }
             
             if (PageSize != null)
             {

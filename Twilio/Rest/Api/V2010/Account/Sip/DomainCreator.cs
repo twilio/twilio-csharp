@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class DomainCreator : Creator<DomainResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string domainName { get; }
         public string friendlyName { get; set; }
         public string authType { get; set; }
@@ -29,26 +29,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         ///
         /// <param name="domainName"> The unique address on Twilio to route SIP traffic </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
-        /// <param name="authType"> The types of authentication mapped to the domain </param>
-        /// <param name="voiceUrl"> URL Twilio will request when receiving a call </param>
-        /// <param name="voiceMethod"> HTTP method to use with voice_url </param>
-        /// <param name="voiceFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
-        /// <param name="voiceFallbackMethod"> HTTP method used with voice_fallback_url </param>
-        /// <param name="voiceStatusCallbackUrl"> URL that Twilio will request with status updates </param>
-        /// <param name="voiceStatusCallbackMethod"> The voice_status_callback_method </param>
-        public DomainCreator(string domainName, string accountSid=null, string friendlyName=null, string authType=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri voiceStatusCallbackUrl=null, Twilio.Http.HttpMethod voiceStatusCallbackMethod=null)
+        public DomainCreator(string domainName)
         {
-            this.voiceFallbackUrl = voiceFallbackUrl;
-            this.voiceFallbackMethod = voiceFallbackMethod;
-            this.voiceMethod = voiceMethod;
-            this.authType = authType;
-            this.voiceStatusCallbackUrl = voiceStatusCallbackUrl;
-            this.accountSid = accountSid;
-            this.voiceUrl = voiceUrl;
-            this.voiceStatusCallbackMethod = voiceStatusCallbackMethod;
-            this.friendlyName = friendlyName;
             this.domainName = domainName;
         }
     

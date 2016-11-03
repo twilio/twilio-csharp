@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class FeedbackFetcher : Fetcher<FeedbackResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string callSid { get; }
     
         /// <summary>
@@ -20,10 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         ///
         /// <param name="callSid"> The call sid that uniquely identifies the call </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public FeedbackFetcher(string callSid, string accountSid=null)
+        public FeedbackFetcher(string callSid)
         {
-            this.accountSid = accountSid;
             this.callSid = callSid;
         }
     

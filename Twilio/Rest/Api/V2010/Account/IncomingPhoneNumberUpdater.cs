@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class IncomingPhoneNumberUpdater : Updater<IncomingPhoneNumberResource> 
     {
-        public string ownerAccountSid { get; }
+        public string ownerAccountSid { get; set; }
         public string sid { get; }
         public string accountSid { get; set; }
         public string apiVersion { get; set; }
@@ -38,45 +38,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="ownerAccountSid"> The owner_account_sid </param>
-        /// <param name="accountSid"> The new owner of the phone number </param>
-        /// <param name="apiVersion"> The Twilio REST API version to use </param>
-        /// <param name="friendlyName"> A human readable description of this resource </param>
-        /// <param name="smsApplicationSid"> Unique string that identifies the application </param>
-        /// <param name="smsFallbackMethod"> HTTP method used with sms fallback url </param>
-        /// <param name="smsFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
-        /// <param name="smsMethod"> HTTP method to use with sms url </param>
-        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
-        /// <param name="statusCallback"> URL Twilio will use to pass status parameters </param>
-        /// <param name="statusCallbackMethod"> HTTP method twilio will use with status callback </param>
-        /// <param name="trunkSid"> Unique string to identify the trunk </param>
-        /// <param name="voiceApplicationSid"> The unique sid of the application to handle this number </param>
-        /// <param name="voiceCallerIdLookup"> Look up the caller's caller-ID </param>
-        /// <param name="voiceFallbackMethod"> HTTP method used with fallback_url </param>
-        /// <param name="voiceFallbackUrl"> URL Twilio will request when an error occurs in TwiML </param>
-        /// <param name="voiceMethod"> HTTP method used with the voice url </param>
-        /// <param name="voiceUrl"> URL Twilio will request when receiving a call </param>
-        public IncomingPhoneNumberUpdater(string sid, string ownerAccountSid=null, string accountSid=null, string apiVersion=null, string friendlyName=null, string smsApplicationSid=null, Twilio.Http.HttpMethod smsFallbackMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsUrl=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null, string trunkSid=null, string voiceApplicationSid=null, bool? voiceCallerIdLookup=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri voiceUrl=null)
+        public IncomingPhoneNumberUpdater(string sid)
         {
-            this.apiVersion = apiVersion;
-            this.smsFallbackUrl = smsFallbackUrl;
             this.sid = sid;
-            this.ownerAccountSid = ownerAccountSid;
-            this.smsUrl = smsUrl;
-            this.trunkSid = trunkSid;
-            this.statusCallbackMethod = statusCallbackMethod;
-            this.voiceApplicationSid = voiceApplicationSid;
-            this.voiceFallbackMethod = voiceFallbackMethod;
-            this.voiceFallbackUrl = voiceFallbackUrl;
-            this.voiceCallerIdLookup = voiceCallerIdLookup;
-            this.voiceMethod = voiceMethod;
-            this.statusCallback = statusCallback;
-            this.smsMethod = smsMethod;
-            this.accountSid = accountSid;
-            this.voiceUrl = voiceUrl;
-            this.friendlyName = friendlyName;
-            this.smsFallbackMethod = smsFallbackMethod;
-            this.smsApplicationSid = smsApplicationSid;
         }
     
         #if NET40

@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class FeedbackCreator : Creator<FeedbackResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string callSid { get; }
         public int? qualityScore { get; }
         public List<FeedbackResource.Issues> issue { get; set; }
@@ -24,14 +24,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         ///
         /// <param name="callSid"> The call_sid </param>
         /// <param name="qualityScore"> The quality_score </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="issue"> The issue </param>
-        public FeedbackCreator(string callSid, int? qualityScore, string accountSid=null, List<FeedbackResource.Issues> issue=null)
+        public FeedbackCreator(string callSid, int? qualityScore)
         {
-            this.accountSid = accountSid;
-            this.qualityScore = qualityScore;
-            this.issue = issue;
             this.callSid = callSid;
+            this.qualityScore = qualityScore;
         }
     
         #if NET40

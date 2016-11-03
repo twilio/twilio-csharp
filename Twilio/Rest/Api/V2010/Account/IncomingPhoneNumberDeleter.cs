@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class IncomingPhoneNumberDeleter : Deleter<IncomingPhoneNumberResource> 
     {
-        public string ownerAccountSid { get; }
+        public string ownerAccountSid { get; set; }
         public string sid { get; }
     
         /// <summary>
@@ -21,11 +21,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Delete by unique phone-number Sid </param>
-        /// <param name="ownerAccountSid"> The owner_account_sid </param>
-        public IncomingPhoneNumberDeleter(string sid, string ownerAccountSid=null)
+        public IncomingPhoneNumberDeleter(string sid)
         {
             this.sid = sid;
-            this.ownerAccountSid = ownerAccountSid;
         }
     
         #if NET40

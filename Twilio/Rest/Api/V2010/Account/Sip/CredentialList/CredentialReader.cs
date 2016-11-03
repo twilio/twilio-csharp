@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
 
     public class CredentialReader : Reader<CredentialResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string credentialListSid { get; }
     
         /// <summary>
@@ -20,10 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// </summary>
         ///
         /// <param name="credentialListSid"> The credential_list_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public CredentialReader(string credentialListSid, string accountSid=null)
+        public CredentialReader(string credentialListSid)
         {
-            this.accountSid = accountSid;
             this.credentialListSid = credentialListSid;
         }
     
@@ -73,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<CredentialResource> NextPage(Page<CredentialResource> page, ITwilioRestClient client)

@@ -60,18 +60,10 @@ namespace Twilio.Rest.Chat.V1
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="defaultServiceRoleSid"> The default_service_role_sid </param>
-        /// <param name="defaultChannelRoleSid"> The default_channel_role_sid </param>
-        /// <param name="defaultChannelCreatorRoleSid"> The default_channel_creator_role_sid </param>
-        /// <param name="readStatusEnabled"> The read_status_enabled </param>
-        /// <param name="typingIndicatorTimeout"> The typing_indicator_timeout </param>
-        /// <param name="consumptionReportInterval"> The consumption_report_interval </param>
-        /// <param name="webhooks"> The webhooks </param>
         /// <returns> ServiceUpdater capable of executing the update </returns> 
-        public static ServiceUpdater Updater(string sid, string friendlyName=null, string defaultServiceRoleSid=null, string defaultChannelRoleSid=null, string defaultChannelCreatorRoleSid=null, bool? readStatusEnabled=null, int? typingIndicatorTimeout=null, int? consumptionReportInterval=null, Object webhooks=null)
+        public static ServiceUpdater Updater(string sid)
         {
-            return new ServiceUpdater(sid, friendlyName:friendlyName, defaultServiceRoleSid:defaultServiceRoleSid, defaultChannelRoleSid:defaultChannelRoleSid, defaultChannelCreatorRoleSid:defaultChannelCreatorRoleSid, readStatusEnabled:readStatusEnabled, typingIndicatorTimeout:typingIndicatorTimeout, consumptionReportInterval:consumptionReportInterval, webhooks:webhooks);
+            return new ServiceUpdater(sid);
         }
     
         /// <summary>
@@ -94,33 +86,33 @@ namespace Twilio.Rest.Chat.V1
         }
     
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("default_service_role_sid")]
-        public string defaultServiceRoleSid { get; }
+        public string defaultServiceRoleSid { get; set; }
         [JsonProperty("default_channel_role_sid")]
-        public string defaultChannelRoleSid { get; }
+        public string defaultChannelRoleSid { get; set; }
         [JsonProperty("default_channel_creator_role_sid")]
-        public string defaultChannelCreatorRoleSid { get; }
+        public string defaultChannelCreatorRoleSid { get; set; }
         [JsonProperty("read_status_enabled")]
-        public bool? readStatusEnabled { get; }
+        public bool? readStatusEnabled { get; set; }
         [JsonProperty("typing_indicator_timeout")]
-        public int? typingIndicatorTimeout { get; }
+        public int? typingIndicatorTimeout { get; set; }
         [JsonProperty("consumption_report_interval")]
-        public int? consumptionReportInterval { get; }
+        public int? consumptionReportInterval { get; set; }
         [JsonProperty("webhooks")]
-        public Object webhooks { get; }
+        public Object webhooks { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; }
+        public Dictionary<string, string> links { get; set; }
     
         public ServiceResource()
         {

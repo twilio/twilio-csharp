@@ -27,15 +27,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="reservationActivitySid"> The reservation_activity_sid </param>
         /// <param name="assignmentActivitySid"> The assignment_activity_sid </param>
-        /// <param name="targetWorkers"> The target_workers </param>
-        /// <param name="maxReservedWorkers"> The max_reserved_workers </param>
-        public TaskQueueCreator(string workspaceSid, string friendlyName, string reservationActivitySid, string assignmentActivitySid, string targetWorkers=null, int? maxReservedWorkers=null)
+        public TaskQueueCreator(string workspaceSid, string friendlyName, string reservationActivitySid, string assignmentActivitySid)
         {
             this.workspaceSid = workspaceSid;
-            this.maxReservedWorkers = maxReservedWorkers;
-            this.reservationActivitySid = reservationActivitySid;
-            this.targetWorkers = targetWorkers;
             this.friendlyName = friendlyName;
+            this.reservationActivitySid = reservationActivitySid;
             this.assignmentActivitySid = assignmentActivitySid;
         }
     

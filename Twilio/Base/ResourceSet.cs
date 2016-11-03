@@ -49,6 +49,8 @@ namespace Twilio.Base
 	        {
 	            _pageLimit = (long) (Math.Ceiling((double) reader.Limit.Value / page.PageSize));
 	        }
+
+	        AutoPaging = true;
 	    }
 
 	    private void FetchNextPage()
@@ -90,6 +92,10 @@ namespace Twilio.Base
 				if (AutoPaging && _page.HasNextPage())
 				{
 					FetchNextPage();
+				}
+				else
+				{
+				    break;
 				}
 			}
 		}

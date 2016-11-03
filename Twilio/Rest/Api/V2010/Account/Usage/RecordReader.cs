@@ -14,26 +14,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
     public class RecordReader : Reader<RecordResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public RecordResource.Category category { get; set; }
         public DateTime? startDate { get; set; }
         public DateTime? endDate { get; set; }
-    
-        /// <summary>
-        /// Construct a new RecordReader
-        /// </summary>
-        ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="category"> Only include usage of a given category </param>
-        /// <param name="startDate"> Filter by start date </param>
-        /// <param name="endDate"> Filter by end date </param>
-        public RecordReader(string accountSid=null, RecordResource.Category category=null, DateTime? startDate=null, DateTime? endDate=null)
-        {
-            this.accountSid = accountSid;
-            this.category = category;
-            this.startDate = startDate;
-            this.endDate = endDate;
-        }
     
         #if NET40
         /// <summary>
@@ -81,7 +65,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<RecordResource> NextPage(Page<RecordResource> page, ITwilioRestClient client)

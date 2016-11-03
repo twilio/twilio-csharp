@@ -13,35 +13,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class SandboxUpdater : Updater<SandboxResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public Uri voiceUrl { get; set; }
         public Twilio.Http.HttpMethod voiceMethod { get; set; }
         public Uri smsUrl { get; set; }
         public Twilio.Http.HttpMethod smsMethod { get; set; }
         public Uri statusCallback { get; set; }
         public Twilio.Http.HttpMethod statusCallbackMethod { get; set; }
-    
-        /// <summary>
-        /// Construct a new SandboxUpdater
-        /// </summary>
-        ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="voiceUrl"> The voice_url </param>
-        /// <param name="voiceMethod"> The voice_method </param>
-        /// <param name="smsUrl"> The sms_url </param>
-        /// <param name="smsMethod"> The sms_method </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="statusCallbackMethod"> The status_callback_method </param>
-        public SandboxUpdater(string accountSid=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null)
-        {
-            this.smsUrl = smsUrl;
-            this.statusCallbackMethod = statusCallbackMethod;
-            this.voiceMethod = voiceMethod;
-            this.statusCallback = statusCallback;
-            this.smsMethod = smsMethod;
-            this.accountSid = accountSid;
-            this.voiceUrl = voiceUrl;
-        }
     
         #if NET40
         /// <summary>

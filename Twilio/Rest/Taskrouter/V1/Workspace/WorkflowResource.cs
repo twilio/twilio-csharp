@@ -29,15 +29,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="assignmentCallbackUrl"> The assignment_callback_url </param>
-        /// <param name="fallbackAssignmentCallbackUrl"> The fallback_assignment_callback_url </param>
-        /// <param name="configuration"> The configuration </param>
-        /// <param name="taskReservationTimeout"> The task_reservation_timeout </param>
         /// <returns> WorkflowUpdater capable of executing the update </returns> 
-        public static WorkflowUpdater Updater(string workspaceSid, string sid, string friendlyName=null, Uri assignmentCallbackUrl=null, Uri fallbackAssignmentCallbackUrl=null, string configuration=null, int? taskReservationTimeout=null)
+        public static WorkflowUpdater Updater(string workspaceSid, string sid)
         {
-            return new WorkflowUpdater(workspaceSid, sid, friendlyName:friendlyName, assignmentCallbackUrl:assignmentCallbackUrl, fallbackAssignmentCallbackUrl:fallbackAssignmentCallbackUrl, configuration:configuration, taskReservationTimeout:taskReservationTimeout);
+            return new WorkflowUpdater(workspaceSid, sid);
         }
     
         /// <summary>
@@ -57,11 +52,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> WorkflowReader capable of executing the read </returns> 
-        public static WorkflowReader Reader(string workspaceSid, string friendlyName=null)
+        public static WorkflowReader Reader(string workspaceSid)
         {
-            return new WorkflowReader(workspaceSid, friendlyName:friendlyName);
+            return new WorkflowReader(workspaceSid);
         }
     
         /// <summary>
@@ -71,13 +65,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="configuration"> The configuration </param>
-        /// <param name="assignmentCallbackUrl"> The assignment_callback_url </param>
-        /// <param name="fallbackAssignmentCallbackUrl"> The fallback_assignment_callback_url </param>
-        /// <param name="taskReservationTimeout"> The task_reservation_timeout </param>
         /// <returns> WorkflowCreator capable of executing the create </returns> 
-        public static WorkflowCreator Creator(string workspaceSid, string friendlyName, string configuration, Uri assignmentCallbackUrl=null, Uri fallbackAssignmentCallbackUrl=null, int? taskReservationTimeout=null)
+        public static WorkflowCreator Creator(string workspaceSid, string friendlyName, string configuration)
         {
-            return new WorkflowCreator(workspaceSid, friendlyName, configuration, assignmentCallbackUrl:assignmentCallbackUrl, fallbackAssignmentCallbackUrl:fallbackAssignmentCallbackUrl, taskReservationTimeout:taskReservationTimeout);
+            return new WorkflowCreator(workspaceSid, friendlyName, configuration);
         }
     
         /// <summary>
@@ -100,29 +91,29 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("assignment_callback_url")]
-        public Uri assignmentCallbackUrl { get; }
+        public Uri assignmentCallbackUrl { get; set; }
         [JsonProperty("configuration")]
-        public string configuration { get; }
+        public string configuration { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("document_content_type")]
-        public string documentContentType { get; }
+        public string documentContentType { get; set; }
         [JsonProperty("fallback_assignment_callback_url")]
-        public Uri fallbackAssignmentCallbackUrl { get; }
+        public Uri fallbackAssignmentCallbackUrl { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("task_reservation_timeout")]
-        public int? taskReservationTimeout { get; }
+        public int? taskReservationTimeout { get; set; }
         [JsonProperty("workspace_sid")]
-        public string workspaceSid { get; }
+        public string workspaceSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
     
         public WorkflowResource()
         {

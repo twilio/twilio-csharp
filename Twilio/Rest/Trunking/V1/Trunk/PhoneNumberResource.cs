@@ -116,64 +116,64 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("address_requirements")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public PhoneNumberResource.AddressRequirement addressRequirements { get; }
+        public PhoneNumberResource.AddressRequirement addressRequirements { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; }
+        public string apiVersion { get; set; }
         [JsonProperty("beta")]
-        public bool? beta { get; }
+        public bool? beta { get; set; }
         [JsonProperty("capabilities")]
-        public Dictionary<string, string> capabilities { get; }
+        public Dictionary<string, string> capabilities { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; }
+        public Dictionary<string, string> links { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber phoneNumber { get; }
+        public Twilio.Types.PhoneNumber phoneNumber { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("sms_application_sid")]
-        public string smsApplicationSid { get; }
+        public string smsApplicationSid { get; set; }
         [JsonProperty("sms_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod smsFallbackMethod { get; }
+        public Twilio.Http.HttpMethod smsFallbackMethod { get; set; }
         [JsonProperty("sms_fallback_url")]
-        public Uri smsFallbackUrl { get; }
+        public Uri smsFallbackUrl { get; set; }
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod smsMethod { get; }
+        public Twilio.Http.HttpMethod smsMethod { get; set; }
         [JsonProperty("sms_url")]
-        public Uri smsUrl { get; }
+        public Uri smsUrl { get; set; }
         [JsonProperty("status_callback")]
-        public Uri statusCallback { get; }
+        public Uri statusCallback { get; set; }
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod statusCallbackMethod { get; }
+        public Twilio.Http.HttpMethod statusCallbackMethod { get; set; }
         [JsonProperty("trunk_sid")]
-        public string trunkSid { get; }
+        public string trunkSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
         [JsonProperty("voice_application_sid")]
-        public string voiceApplicationSid { get; }
+        public string voiceApplicationSid { get; set; }
         [JsonProperty("voice_caller_id_lookup")]
-        public bool? voiceCallerIdLookup { get; }
+        public bool? voiceCallerIdLookup { get; set; }
         [JsonProperty("voice_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod voiceFallbackMethod { get; }
+        public Twilio.Http.HttpMethod voiceFallbackMethod { get; set; }
         [JsonProperty("voice_fallback_url")]
-        public Uri voiceFallbackUrl { get; }
+        public Uri voiceFallbackUrl { get; set; }
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod voiceMethod { get; }
+        public Twilio.Http.HttpMethod voiceMethod { get; set; }
         [JsonProperty("voice_url")]
-        public Uri voiceUrl { get; }
+        public Uri voiceUrl { get; set; }
     
         public PhoneNumberResource()
         {

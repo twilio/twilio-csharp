@@ -25,17 +25,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="minutes"> The minutes </param>
-        /// <param name="startDate"> The start_date </param>
-        public TaskQueuesStatisticsReader(string workspaceSid, DateTime? endDate=null, string friendlyName=null, int? minutes=null, DateTime? startDate=null)
+        public TaskQueuesStatisticsReader(string workspaceSid)
         {
             this.workspaceSid = workspaceSid;
-            this.startDate = startDate;
-            this.minutes = minutes;
-            this.endDate = endDate;
-            this.friendlyName = friendlyName;
         }
     
         #if NET40
@@ -84,7 +76,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<TaskQueuesStatisticsResource> NextPage(Page<TaskQueuesStatisticsResource> page, ITwilioRestClient client)

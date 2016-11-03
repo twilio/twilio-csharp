@@ -27,16 +27,10 @@ namespace Twilio.Rest.Monitor.V1
         /// read
         /// </summary>
         ///
-        /// <param name="actorSid"> The actor_sid </param>
-        /// <param name="eventType"> The event_type </param>
-        /// <param name="resourceSid"> The resource_sid </param>
-        /// <param name="sourceIpAddress"> The source_ip_address </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
         /// <returns> EventReader capable of executing the read </returns> 
-        public static EventReader Reader(string actorSid=null, string eventType=null, string resourceSid=null, string sourceIpAddress=null, DateTime? startDate=null, DateTime? endDate=null)
+        public static EventReader Reader()
         {
-            return new EventReader(actorSid:actorSid, eventType:eventType, resourceSid:resourceSid, sourceIpAddress:sourceIpAddress, startDate:startDate, endDate:endDate);
+            return new EventReader();
         }
     
         /// <summary>
@@ -59,33 +53,33 @@ namespace Twilio.Rest.Monitor.V1
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("actor_sid")]
-        public string actorSid { get; }
+        public string actorSid { get; set; }
         [JsonProperty("actor_type")]
-        public string actorType { get; }
+        public string actorType { get; set; }
         [JsonProperty("description")]
-        public string description { get; }
+        public string description { get; set; }
         [JsonProperty("event_data")]
-        public Object eventData { get; }
+        public Object eventData { get; set; }
         [JsonProperty("event_date")]
-        public DateTime? eventDate { get; }
+        public DateTime? eventDate { get; set; }
         [JsonProperty("event_type")]
-        public string eventType { get; }
+        public string eventType { get; set; }
         [JsonProperty("resource_sid")]
-        public string resourceSid { get; }
+        public string resourceSid { get; set; }
         [JsonProperty("resource_type")]
-        public string resourceType { get; }
+        public string resourceType { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("source")]
-        public string source { get; }
+        public string source { get; set; }
         [JsonProperty("source_ip_address")]
-        public string sourceIpAddress { get; }
+        public string sourceIpAddress { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; }
+        public Dictionary<string, string> links { get; set; }
     
         public EventResource()
         {

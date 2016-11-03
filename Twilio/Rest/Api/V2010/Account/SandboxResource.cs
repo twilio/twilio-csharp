@@ -15,28 +15,20 @@ namespace Twilio.Rest.Api.V2010.Account
         /// fetch
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> SandboxFetcher capable of executing the fetch </returns> 
-        public static SandboxFetcher Fetcher(string accountSid=null)
+        public static SandboxFetcher Fetcher()
         {
-            return new SandboxFetcher(accountSid:accountSid);
+            return new SandboxFetcher();
         }
     
         /// <summary>
         /// update
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="voiceUrl"> The voice_url </param>
-        /// <param name="voiceMethod"> The voice_method </param>
-        /// <param name="smsUrl"> The sms_url </param>
-        /// <param name="smsMethod"> The sms_method </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <returns> SandboxUpdater capable of executing the update </returns> 
-        public static SandboxUpdater Updater(string accountSid=null, Uri voiceUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null)
+        public static SandboxUpdater Updater()
         {
-            return new SandboxUpdater(accountSid:accountSid, voiceUrl:voiceUrl, voiceMethod:voiceMethod, smsUrl:smsUrl, smsMethod:smsMethod, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod);
+            return new SandboxUpdater();
         }
     
         /// <summary>
@@ -59,37 +51,37 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("pin")]
-        public int? pin { get; }
+        public int? pin { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber phoneNumber { get; }
+        public Twilio.Types.PhoneNumber phoneNumber { get; set; }
         [JsonProperty("application_sid")]
-        public string applicationSid { get; }
+        public string applicationSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; }
+        public string apiVersion { get; set; }
         [JsonProperty("voice_url")]
-        public Uri voiceUrl { get; }
+        public Uri voiceUrl { get; set; }
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod voiceMethod { get; }
+        public Twilio.Http.HttpMethod voiceMethod { get; set; }
         [JsonProperty("sms_url")]
-        public Uri smsUrl { get; }
+        public Uri smsUrl { get; set; }
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod smsMethod { get; }
+        public Twilio.Http.HttpMethod smsMethod { get; set; }
         [JsonProperty("status_callback")]
-        public Uri statusCallback { get; }
+        public Uri statusCallback { get; set; }
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod statusCallbackMethod { get; }
+        public Twilio.Http.HttpMethod statusCallbackMethod { get; set; }
         [JsonProperty("uri")]
-        public Uri uri { get; }
+        public Uri uri { get; set; }
     
         public SandboxResource()
         {

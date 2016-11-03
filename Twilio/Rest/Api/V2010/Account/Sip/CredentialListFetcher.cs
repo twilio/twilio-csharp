@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class CredentialListFetcher : Fetcher<CredentialListResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string sid { get; }
     
         /// <summary>
@@ -20,10 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         ///
         /// <param name="sid"> Fetch by unique credential Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public CredentialListFetcher(string sid, string accountSid=null)
+        public CredentialListFetcher(string sid)
         {
-            this.accountSid = accountSid;
             this.sid = sid;
         }
     

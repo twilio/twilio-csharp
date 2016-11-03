@@ -14,26 +14,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
 
     public class AllTimeReader : Reader<AllTimeResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public AllTimeResource.Category category { get; set; }
         public DateTime? startDate { get; set; }
         public DateTime? endDate { get; set; }
-    
-        /// <summary>
-        /// Construct a new AllTimeReader
-        /// </summary>
-        ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="category"> The category </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
-        public AllTimeReader(string accountSid=null, AllTimeResource.Category category=null, DateTime? startDate=null, DateTime? endDate=null)
-        {
-            this.accountSid = accountSid;
-            this.category = category;
-            this.startDate = startDate;
-            this.endDate = endDate;
-        }
     
         #if NET40
         /// <summary>
@@ -81,7 +65,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<AllTimeResource> NextPage(Page<AllTimeResource> page, ITwilioRestClient client)

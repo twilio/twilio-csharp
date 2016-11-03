@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
     public class ParticipantReader : Reader<ParticipantResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string conferenceSid { get; }
         public bool? muted { get; set; }
         public bool? hold { get; set; }
@@ -22,14 +22,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         ///
         /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="muted"> Filter by muted participants </param>
-        /// <param name="hold"> The hold </param>
-        public ParticipantReader(string conferenceSid, string accountSid=null, bool? muted=null, bool? hold=null)
+        public ParticipantReader(string conferenceSid)
         {
-            this.accountSid = accountSid;
-            this.hold = hold;
-            this.muted = muted;
             this.conferenceSid = conferenceSid;
         }
     
@@ -79,7 +73,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<ParticipantResource> NextPage(Page<ParticipantResource> page, ITwilioRestClient client)

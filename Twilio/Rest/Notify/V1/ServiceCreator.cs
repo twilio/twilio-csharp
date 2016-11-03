@@ -20,28 +20,6 @@ namespace Twilio.Rest.Notify.V1
         public string defaultApnNotificationProtocolVersion { get; set; }
         public string defaultGcmNotificationProtocolVersion { get; set; }
     
-        /// <summary>
-        /// Construct a new ServiceCreator
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="apnCredentialSid"> The apn_credential_sid </param>
-        /// <param name="gcmCredentialSid"> The gcm_credential_sid </param>
-        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
-        /// <param name="facebookMessengerPageId"> The facebook_messenger_page_id </param>
-        /// <param name="defaultApnNotificationProtocolVersion"> The default_apn_notification_protocol_version </param>
-        /// <param name="defaultGcmNotificationProtocolVersion"> The default_gcm_notification_protocol_version </param>
-        public ServiceCreator(string friendlyName=null, string apnCredentialSid=null, string gcmCredentialSid=null, string messagingServiceSid=null, string facebookMessengerPageId=null, string defaultApnNotificationProtocolVersion=null, string defaultGcmNotificationProtocolVersion=null)
-        {
-            this.facebookMessengerPageId = facebookMessengerPageId;
-            this.gcmCredentialSid = gcmCredentialSid;
-            this.defaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion;
-            this.apnCredentialSid = apnCredentialSid;
-            this.defaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion;
-            this.friendlyName = friendlyName;
-            this.messagingServiceSid = messagingServiceSid;
-        }
-    
         #if NET40
         /// <summary>
         /// Make the request to the Twilio API to perform the create

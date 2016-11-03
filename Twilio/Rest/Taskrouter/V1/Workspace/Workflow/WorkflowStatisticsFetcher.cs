@@ -26,16 +26,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="workflowSid"> The workflow_sid </param>
-        /// <param name="minutes"> The minutes </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
-        public WorkflowStatisticsFetcher(string workspaceSid, string workflowSid, int? minutes=null, DateTime? startDate=null, DateTime? endDate=null)
+        public WorkflowStatisticsFetcher(string workspaceSid, string workflowSid)
         {
             this.workspaceSid = workspaceSid;
-            this.startDate = startDate;
             this.workflowSid = workflowSid;
-            this.endDate = endDate;
-            this.minutes = minutes;
         }
     
         #if NET40

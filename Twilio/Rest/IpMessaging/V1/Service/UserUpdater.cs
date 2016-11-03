@@ -25,16 +25,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="roleSid"> The role_sid </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        public UserUpdater(string serviceSid, string sid, string roleSid=null, Object attributes=null, string friendlyName=null)
+        public UserUpdater(string serviceSid, string sid)
         {
             this.serviceSid = serviceSid;
             this.sid = sid;
-            this.roleSid = roleSid;
-            this.attributes = attributes;
-            this.friendlyName = friendlyName;
         }
     
         #if NET40

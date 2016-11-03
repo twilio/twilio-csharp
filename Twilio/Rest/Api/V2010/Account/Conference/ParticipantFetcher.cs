@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
     public class ParticipantFetcher : Fetcher<ParticipantResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string conferenceSid { get; }
         public string callSid { get; }
     
@@ -22,12 +22,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         ///
         /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
         /// <param name="callSid"> The call_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public ParticipantFetcher(string conferenceSid, string callSid, string accountSid=null)
+        public ParticipantFetcher(string conferenceSid, string callSid)
         {
-            this.accountSid = accountSid;
-            this.callSid = callSid;
             this.conferenceSid = conferenceSid;
+            this.callSid = callSid;
         }
     
         #if NET40

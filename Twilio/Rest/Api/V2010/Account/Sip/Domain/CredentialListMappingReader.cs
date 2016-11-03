@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
     public class CredentialListMappingReader : Reader<CredentialListMappingResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string domainSid { get; }
     
         /// <summary>
@@ -20,10 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// </summary>
         ///
         /// <param name="domainSid"> The domain_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public CredentialListMappingReader(string domainSid, string accountSid=null)
+        public CredentialListMappingReader(string domainSid)
         {
-            this.accountSid = accountSid;
             this.domainSid = domainSid;
         }
     
@@ -73,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<CredentialListMappingResource> NextPage(Page<CredentialListMappingResource> page, ITwilioRestClient client)

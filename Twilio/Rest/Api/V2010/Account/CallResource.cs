@@ -98,27 +98,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="to"> Phone number, SIP address or client identifier to call </param>
         /// <param name="from"> Twilio number from which to originate the call </param>
         /// <param name="url"> Url from which to fetch TwiML </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="applicationSid"> ApplicationSid that configures from where to fetch TwiML </param>
-        /// <param name="method"> HTTP method to use to fetch TwiML </param>
-        /// <param name="fallbackUrl"> Fallback URL in case of error </param>
-        /// <param name="fallbackMethod"> HTTP Method to use with FallbackUrl </param>
-        /// <param name="statusCallback"> Status Callback URL </param>
-        /// <param name="statusCallbackEvent"> The status_callback_event </param>
-        /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
-        /// <param name="sendDigits"> Digits to send </param>
-        /// <param name="ifMachine"> Action to take if a machine has answered the call </param>
-        /// <param name="timeout"> Number of seconds to wait for an answer </param>
-        /// <param name="record"> Whether or not to record the Call </param>
-        /// <param name="recordingChannels"> The recording_channels </param>
-        /// <param name="recordingStatusCallback"> The recording_status_callback </param>
-        /// <param name="recordingStatusCallbackMethod"> The recording_status_callback_method </param>
-        /// <param name="sipAuthUsername"> The sip_auth_username </param>
-        /// <param name="sipAuthPassword"> The sip_auth_password </param>
         /// <returns> CallCreator capable of executing the create </returns> 
-        public static CallCreator Creator(IEndpoint to, Twilio.Types.PhoneNumber from, Uri url, string accountSid=null, string applicationSid=null, Twilio.Http.HttpMethod method=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, List<string> statusCallbackEvent=null, Twilio.Http.HttpMethod statusCallbackMethod=null, string sendDigits=null, string ifMachine=null, int? timeout=null, bool? record=null, string recordingChannels=null, string recordingStatusCallback=null, Twilio.Http.HttpMethod recordingStatusCallbackMethod=null, string sipAuthUsername=null, string sipAuthPassword=null)
+        public static CallCreator Creator(IEndpoint to, Twilio.Types.PhoneNumber from, Uri url)
         {
-            return new CallCreator(to, from, url, accountSid:accountSid, applicationSid:applicationSid, method:method, fallbackUrl:fallbackUrl, fallbackMethod:fallbackMethod, statusCallback:statusCallback, statusCallbackEvent:statusCallbackEvent, statusCallbackMethod:statusCallbackMethod, sendDigits:sendDigits, ifMachine:ifMachine, timeout:timeout, record:record, recordingChannels:recordingChannels, recordingStatusCallback:recordingStatusCallback, recordingStatusCallbackMethod:recordingStatusCallbackMethod, sipAuthUsername:sipAuthUsername, sipAuthPassword:sipAuthPassword);
+            return new CallCreator(to, from, url);
         }
     
         /// <summary>
@@ -128,27 +111,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="to"> Phone number, SIP address or client identifier to call </param>
         /// <param name="from"> Twilio number from which to originate the call </param>
         /// <param name="applicationSid"> ApplicationSid that configures from where to fetch TwiML </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="url"> Url from which to fetch TwiML </param>
-        /// <param name="method"> HTTP method to use to fetch TwiML </param>
-        /// <param name="fallbackUrl"> Fallback URL in case of error </param>
-        /// <param name="fallbackMethod"> HTTP Method to use with FallbackUrl </param>
-        /// <param name="statusCallback"> Status Callback URL </param>
-        /// <param name="statusCallbackEvent"> The status_callback_event </param>
-        /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
-        /// <param name="sendDigits"> Digits to send </param>
-        /// <param name="ifMachine"> Action to take if a machine has answered the call </param>
-        /// <param name="timeout"> Number of seconds to wait for an answer </param>
-        /// <param name="record"> Whether or not to record the Call </param>
-        /// <param name="recordingChannels"> The recording_channels </param>
-        /// <param name="recordingStatusCallback"> The recording_status_callback </param>
-        /// <param name="recordingStatusCallbackMethod"> The recording_status_callback_method </param>
-        /// <param name="sipAuthUsername"> The sip_auth_username </param>
-        /// <param name="sipAuthPassword"> The sip_auth_password </param>
         /// <returns> CallCreator capable of executing the create </returns> 
-        public static CallCreator Creator(IEndpoint to, Twilio.Types.PhoneNumber from, string applicationSid, string accountSid=null, Uri url=null, Twilio.Http.HttpMethod method=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, List<string> statusCallbackEvent=null, Twilio.Http.HttpMethod statusCallbackMethod=null, string sendDigits=null, string ifMachine=null, int? timeout=null, bool? record=null, string recordingChannels=null, string recordingStatusCallback=null, Twilio.Http.HttpMethod recordingStatusCallbackMethod=null, string sipAuthUsername=null, string sipAuthPassword=null)
+        public static CallCreator Creator(IEndpoint to, Twilio.Types.PhoneNumber from, string applicationSid)
         {
-            return new CallCreator(to, from, applicationSid, accountSid:accountSid, url:url, method:method, fallbackUrl:fallbackUrl, fallbackMethod:fallbackMethod, statusCallback:statusCallback, statusCallbackEvent:statusCallbackEvent, statusCallbackMethod:statusCallbackMethod, sendDigits:sendDigits, ifMachine:ifMachine, timeout:timeout, record:record, recordingChannels:recordingChannels, recordingStatusCallback:recordingStatusCallback, recordingStatusCallbackMethod:recordingStatusCallbackMethod, sipAuthUsername:sipAuthUsername, sipAuthPassword:sipAuthPassword);
+            return new CallCreator(to, from, applicationSid);
         }
     
         /// <summary>
@@ -156,11 +122,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Call Sid that uniquely identifies the Call to delete </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> CallDeleter capable of executing the delete </returns> 
-        public static CallDeleter Deleter(string sid, string accountSid=null)
+        public static CallDeleter Deleter(string sid)
         {
-            return new CallDeleter(sid, accountSid:accountSid);
+            return new CallDeleter(sid);
         }
     
         /// <summary>
@@ -168,28 +133,20 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Call Sid that uniquely identifies the Call to fetch </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> CallFetcher capable of executing the fetch </returns> 
-        public static CallFetcher Fetcher(string sid, string accountSid=null)
+        public static CallFetcher Fetcher(string sid)
         {
-            return new CallFetcher(sid, accountSid:accountSid);
+            return new CallFetcher(sid);
         }
     
         /// <summary>
         /// Retrieves a collection of Calls made to and from your account
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="to"> Phone number or Client identifier to filter `to` on </param>
-        /// <param name="from"> Phone number or Client identifier to filter `from` on </param>
-        /// <param name="parentCallSid"> Parent Call Sid to filter on </param>
-        /// <param name="status"> Status to filter on </param>
-        /// <param name="startTime"> StartTime to filter on </param>
-        /// <param name="endTime"> EndTime to filter on </param>
         /// <returns> CallReader capable of executing the read </returns> 
-        public static CallReader Reader(string accountSid=null, Twilio.Types.PhoneNumber to=null, Twilio.Types.PhoneNumber from=null, string parentCallSid=null, CallResource.Status status=null, string startTime=null, string endTime=null)
+        public static CallReader Reader()
         {
-            return new CallReader(accountSid:accountSid, to:to, from:from, parentCallSid:parentCallSid, status:status, startTime:startTime, endTime:endTime);
+            return new CallReader();
         }
     
         /// <summary>
@@ -197,18 +154,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Call Sid that uniquely identifies the Call to update </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="url"> URL that returns TwiML </param>
-        /// <param name="method"> HTTP method to use to fetch TwiML </param>
-        /// <param name="status"> Status to update the Call with </param>
-        /// <param name="fallbackUrl"> Fallback URL in case of error </param>
-        /// <param name="fallbackMethod"> HTTP Method to use with FallbackUrl </param>
-        /// <param name="statusCallback"> Status Callback URL </param>
-        /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
         /// <returns> CallUpdater capable of executing the update </returns> 
-        public static CallUpdater Updater(string sid, string accountSid=null, Uri url=null, Twilio.Http.HttpMethod method=null, CallResource.Status status=null, Uri fallbackUrl=null, Twilio.Http.HttpMethod fallbackMethod=null, Uri statusCallback=null, Twilio.Http.HttpMethod statusCallbackMethod=null)
+        public static CallUpdater Updater(string sid)
         {
-            return new CallUpdater(sid, accountSid:accountSid, url:url, method:method, status:status, fallbackUrl:fallbackUrl, fallbackMethod:fallbackMethod, statusCallback:statusCallback, statusCallbackMethod:statusCallbackMethod);
+            return new CallUpdater(sid);
         }
     
         /// <summary>
@@ -231,56 +180,56 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("annotation")]
-        public string annotation { get; }
+        public string annotation { get; set; }
         [JsonProperty("answered_by")]
-        public string answeredBy { get; }
+        public string answeredBy { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; }
+        public string apiVersion { get; set; }
         [JsonProperty("caller_name")]
-        public string callerName { get; }
+        public string callerName { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("direction")]
-        public string direction { get; }
+        public string direction { get; set; }
         [JsonProperty("duration")]
-        public string duration { get; }
+        public string duration { get; set; }
         [JsonProperty("end_time")]
-        public DateTime? endTime { get; }
+        public DateTime? endTime { get; set; }
         [JsonProperty("forwarded_from")]
-        public string forwardedFrom { get; }
+        public string forwardedFrom { get; set; }
         [JsonProperty("from")]
-        public string from { get; }
+        public string from { get; set; }
         [JsonProperty("from_formatted")]
-        public string fromFormatted { get; }
+        public string fromFormatted { get; set; }
         [JsonProperty("group_sid")]
-        public string groupSid { get; }
+        public string groupSid { get; set; }
         [JsonProperty("parent_call_sid")]
-        public string parentCallSid { get; }
+        public string parentCallSid { get; set; }
         [JsonProperty("phone_number_sid")]
-        public string phoneNumberSid { get; }
+        public string phoneNumberSid { get; set; }
         [JsonProperty("price")]
-        public decimal? price { get; }
+        public decimal? price { get; set; }
         [JsonProperty("price_unit")]
-        public string priceUnit { get; }
+        public string priceUnit { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("start_time")]
-        public DateTime? startTime { get; }
+        public DateTime? startTime { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public CallResource.Status status { get; }
+        public CallResource.Status status { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; }
+        public Dictionary<string, string> subresourceUris { get; set; }
         [JsonProperty("to")]
-        public string to { get; }
+        public string to { get; set; }
         [JsonProperty("to_formatted")]
-        public string toFormatted { get; }
+        public string toFormatted { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
     
         public CallResource()
         {

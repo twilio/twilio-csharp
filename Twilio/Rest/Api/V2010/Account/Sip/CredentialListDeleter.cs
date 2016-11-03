@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class CredentialListDeleter : Deleter<CredentialListResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string sid { get; }
     
         /// <summary>
@@ -21,10 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         ///
         /// <param name="sid"> Delete by unique credential Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public CredentialListDeleter(string sid, string accountSid=null)
+        public CredentialListDeleter(string sid)
         {
-            this.accountSid = accountSid;
             this.sid = sid;
         }
     

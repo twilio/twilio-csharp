@@ -12,26 +12,10 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class IncomingPhoneNumberReader : Reader<IncomingPhoneNumberResource> 
     {
-        public string ownerAccountSid { get; }
+        public string ownerAccountSid { get; set; }
         public bool? beta { get; set; }
         public string friendlyName { get; set; }
         public Twilio.Types.PhoneNumber phoneNumber { get; set; }
-    
-        /// <summary>
-        /// Construct a new IncomingPhoneNumberReader
-        /// </summary>
-        ///
-        /// <param name="ownerAccountSid"> The owner_account_sid </param>
-        /// <param name="beta"> Include new phone numbers </param>
-        /// <param name="friendlyName"> Filter by friendly name </param>
-        /// <param name="phoneNumber"> Filter by incoming phone number </param>
-        public IncomingPhoneNumberReader(string ownerAccountSid=null, bool? beta=null, string friendlyName=null, Twilio.Types.PhoneNumber phoneNumber=null)
-        {
-            this.friendlyName = friendlyName;
-            this.phoneNumber = phoneNumber;
-            this.ownerAccountSid = ownerAccountSid;
-            this.beta = beta;
-        }
     
         #if NET40
         /// <summary>
@@ -79,7 +63,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<IncomingPhoneNumberResource> NextPage(Page<IncomingPhoneNumberResource> page, ITwilioRestClient client)

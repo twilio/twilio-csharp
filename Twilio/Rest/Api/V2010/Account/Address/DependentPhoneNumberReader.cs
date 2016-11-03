@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
 
     public class DependentPhoneNumberReader : Reader<DependentPhoneNumberResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string addressSid { get; }
     
         /// <summary>
@@ -20,10 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// </summary>
         ///
         /// <param name="addressSid"> The address_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public DependentPhoneNumberReader(string addressSid, string accountSid=null)
+        public DependentPhoneNumberReader(string addressSid)
         {
-            this.accountSid = accountSid;
             this.addressSid = addressSid;
         }
     
@@ -73,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<DependentPhoneNumberResource> NextPage(Page<DependentPhoneNumberResource> page, ITwilioRestClient client)

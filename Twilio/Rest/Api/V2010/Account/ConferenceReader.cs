@@ -1,3 +1,4 @@
+using System;
 using Twilio.Base;
 using Twilio.Clients;
 using Twilio.Exceptions;
@@ -12,29 +13,15 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ConferenceReader : Reader<ConferenceResource> 
     {
-        public string accountSid { get; }
-        public string dateCreated { get; set; }
-        public string dateUpdated { get; set; }
+        public string accountSid { get; set; }
+        public DateTime? dateCreated { get; set; }
+        public DateTime? dateCreatedAfter { get; set; }
+        public DateTime? dateCreatedBefore { get; set; }
+        public DateTime? dateUpdated { get; set; }
+        public DateTime? dateUpdatedAfter { get; set; }
+        public DateTime? dateUpdatedBefore { get; set; }
         public string friendlyName { get; set; }
         public ConferenceResource.Status status { get; set; }
-    
-        /// <summary>
-        /// Construct a new ConferenceReader
-        /// </summary>
-        ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="dateCreated"> Filter by date created </param>
-        /// <param name="dateUpdated"> Filter by date updated </param>
-        /// <param name="friendlyName"> Filter by friendly name </param>
-        /// <param name="status"> The status of the conference </param>
-        public ConferenceReader(string accountSid=null, string dateCreated=null, string dateUpdated=null, string friendlyName=null, ConferenceResource.Status status=null)
-        {
-            this.accountSid = accountSid;
-            this.friendlyName = friendlyName;
-            this.status = status;
-            this.dateCreated = dateCreated;
-            this.dateUpdated = dateUpdated;
-        }
     
         #if NET40
         /// <summary>
@@ -82,7 +69,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<ConferenceResource> NextPage(Page<ConferenceResource> page, ITwilioRestClient client)
@@ -140,12 +127,34 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             if (dateCreated != null)
             {
-                request.AddQueryParam("DateCreated", dateCreated);
+                request.AddQueryParam("DateCreated", dateCreated.Value.ToString("yyyy-MM-dd"));
+            }
+            else
+            {
+                if (dateCreatedBefore != null)
+                {
+                    request.AddQueryParam("DateCreated<", dateCreatedBefore.Value.ToString("yyyy-MM-dd"));
+                }
+                if (dateCreatedAfter != null)
+                {
+                    request.AddQueryParam("DateCreated>", dateCreatedAfter.Value.ToString("yyyy-MM-dd"));
+                }
             }
             
             if (dateUpdated != null)
             {
-                request.AddQueryParam("DateUpdated", dateUpdated);
+                request.AddQueryParam("DateUpdated", dateUpdated.Value.ToString("yyyy-MM-dd"));
+            }
+            else
+            {
+                if (dateUpdatedBefore != null)
+                {
+                    request.AddQueryParam("DateUpdated<", dateUpdatedBefore.Value.ToString("yyyy-MM-dd"));
+                }
+                if (dateUpdatedAfter != null)
+                {
+                    request.AddQueryParam("DateUpdated>", dateUpdatedAfter.Value.ToString("yyyy-MM-dd"));
+                }
             }
             
             if (friendlyName != null)

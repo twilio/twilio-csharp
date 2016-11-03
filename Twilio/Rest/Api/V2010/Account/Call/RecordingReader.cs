@@ -1,3 +1,4 @@
+using System;
 using Twilio.Base;
 using Twilio.Clients;
 using Twilio.Exceptions;
@@ -12,22 +13,20 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class RecordingReader : Reader<RecordingResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string callSid { get; }
-        public string dateCreated { get; set; }
+        public DateTime? dateCreated { get; set; }
+        public DateTime? dateCreatedAfter { get; set; }
+        public DateTime? dateCreatedBefore { get; set; }
     
         /// <summary>
         /// Construct a new RecordingReader
         /// </summary>
         ///
         /// <param name="callSid"> The call_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="dateCreated"> The date_created </param>
-        public RecordingReader(string callSid, string accountSid=null, string dateCreated=null)
+        public RecordingReader(string callSid)
         {
-            this.accountSid = accountSid;
             this.callSid = callSid;
-            this.dateCreated = dateCreated;
         }
     
         #if NET40
@@ -76,7 +75,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<RecordingResource> NextPage(Page<RecordingResource> page, ITwilioRestClient client)
@@ -134,7 +133,18 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         {
             if (dateCreated != null)
             {
-                request.AddQueryParam("DateCreated", dateCreated);
+                request.AddQueryParam("DateCreated", dateCreated.Value.ToString("yyyy-MM-dd"));
+            }
+            else
+            {
+                if (dateCreatedBefore != null)
+                {
+                    request.AddQueryParam("DateCreated<", dateCreatedBefore.Value.ToString("yyyy-MM-dd"));
+                }
+                if (dateCreatedAfter != null)
+                {
+                    request.AddQueryParam("DateCreated>", dateCreatedAfter.Value.ToString("yyyy-MM-dd"));
+                }
             }
             
             if (PageSize != null)

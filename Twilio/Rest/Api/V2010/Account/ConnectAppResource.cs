@@ -52,11 +52,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Fetch by unique connect-app Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> ConnectAppFetcher capable of executing the fetch </returns> 
-        public static ConnectAppFetcher Fetcher(string sid, string accountSid=null)
+        public static ConnectAppFetcher Fetcher(string sid)
         {
-            return new ConnectAppFetcher(sid, accountSid:accountSid);
+            return new ConnectAppFetcher(sid);
         }
     
         /// <summary>
@@ -64,30 +63,20 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="authorizeRedirectUrl"> URIL Twilio sends requests when users authorize </param>
-        /// <param name="companyName"> The company name set for this Connect App. </param>
-        /// <param name="deauthorizeCallbackMethod"> HTTP method Twilio WIll use making requests to the url </param>
-        /// <param name="deauthorizeCallbackUrl"> URL Twilio will send a request when a user de-authorizes this app </param>
-        /// <param name="description"> A more detailed human readable description </param>
-        /// <param name="friendlyName"> A human readable name for the Connect App. </param>
-        /// <param name="homepageUrl"> The URL users can obtain more information </param>
-        /// <param name="permissions"> The set of permissions that your ConnectApp requests. </param>
         /// <returns> ConnectAppUpdater capable of executing the update </returns> 
-        public static ConnectAppUpdater Updater(string sid, string accountSid=null, Uri authorizeRedirectUrl=null, string companyName=null, Twilio.Http.HttpMethod deauthorizeCallbackMethod=null, Uri deauthorizeCallbackUrl=null, string description=null, string friendlyName=null, Uri homepageUrl=null, List<ConnectAppResource.Permission> permissions=null)
+        public static ConnectAppUpdater Updater(string sid)
         {
-            return new ConnectAppUpdater(sid, accountSid:accountSid, authorizeRedirectUrl:authorizeRedirectUrl, companyName:companyName, deauthorizeCallbackMethod:deauthorizeCallbackMethod, deauthorizeCallbackUrl:deauthorizeCallbackUrl, description:description, friendlyName:friendlyName, homepageUrl:homepageUrl, permissions:permissions);
+            return new ConnectAppUpdater(sid);
         }
     
         /// <summary>
         /// Retrieve a list of connect-apps belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> ConnectAppReader capable of executing the read </returns> 
-        public static ConnectAppReader Reader(string accountSid=null)
+        public static ConnectAppReader Reader()
         {
-            return new ConnectAppReader(accountSid:accountSid);
+            return new ConnectAppReader();
         }
     
         /// <summary>
@@ -110,29 +99,29 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("authorize_redirect_url")]
-        public Uri authorizeRedirectUrl { get; }
+        public Uri authorizeRedirectUrl { get; set; }
         [JsonProperty("company_name")]
-        public string companyName { get; }
+        public string companyName { get; set; }
         [JsonProperty("deauthorize_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod deauthorizeCallbackMethod { get; }
+        public Twilio.Http.HttpMethod deauthorizeCallbackMethod { get; set; }
         [JsonProperty("deauthorize_callback_url")]
-        public Uri deauthorizeCallbackUrl { get; }
+        public Uri deauthorizeCallbackUrl { get; set; }
         [JsonProperty("description")]
-        public string description { get; }
+        public string description { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("homepage_url")]
-        public Uri homepageUrl { get; }
+        public Uri homepageUrl { get; set; }
         [JsonProperty("permissions")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public List<ConnectAppResource.Permission> permissions { get; }
+        public List<ConnectAppResource.Permission> permissions { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
     
         public ConnectAppResource()
         {

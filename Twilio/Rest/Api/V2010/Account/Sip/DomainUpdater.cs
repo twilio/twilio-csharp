@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class DomainUpdater : Updater<DomainResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string sid { get; }
         public string authType { get; set; }
         public string friendlyName { get; set; }
@@ -29,27 +29,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="authType"> The auth_type </param>
-        /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
-        /// <param name="voiceFallbackMethod"> The voice_fallback_method </param>
-        /// <param name="voiceFallbackUrl"> The voice_fallback_url </param>
-        /// <param name="voiceMethod"> HTTP method to use with voice_url </param>
-        /// <param name="voiceStatusCallbackMethod"> The voice_status_callback_method </param>
-        /// <param name="voiceStatusCallbackUrl"> The voice_status_callback_url </param>
-        /// <param name="voiceUrl"> The voice_url </param>
-        public DomainUpdater(string sid, string accountSid=null, string authType=null, string friendlyName=null, Twilio.Http.HttpMethod voiceFallbackMethod=null, Uri voiceFallbackUrl=null, Twilio.Http.HttpMethod voiceMethod=null, Twilio.Http.HttpMethod voiceStatusCallbackMethod=null, Uri voiceStatusCallbackUrl=null, Uri voiceUrl=null)
+        public DomainUpdater(string sid)
         {
             this.sid = sid;
-            this.voiceFallbackUrl = voiceFallbackUrl;
-            this.voiceFallbackMethod = voiceFallbackMethod;
-            this.voiceMethod = voiceMethod;
-            this.authType = authType;
-            this.voiceStatusCallbackUrl = voiceStatusCallbackUrl;
-            this.accountSid = accountSid;
-            this.voiceUrl = voiceUrl;
-            this.voiceStatusCallbackMethod = voiceStatusCallbackMethod;
-            this.friendlyName = friendlyName;
         }
     
         #if NET40

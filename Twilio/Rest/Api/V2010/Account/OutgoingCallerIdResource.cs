@@ -16,11 +16,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Fetch by unique outgoing-caller-id Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> OutgoingCallerIdFetcher capable of executing the fetch </returns> 
-        public static OutgoingCallerIdFetcher Fetcher(string sid, string accountSid=null)
+        public static OutgoingCallerIdFetcher Fetcher(string sid)
         {
-            return new OutgoingCallerIdFetcher(sid, accountSid:accountSid);
+            return new OutgoingCallerIdFetcher(sid);
         }
     
         /// <summary>
@@ -28,12 +27,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Update by unique outgoing-caller-id Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> A human readable description of the caller ID </param>
         /// <returns> OutgoingCallerIdUpdater capable of executing the update </returns> 
-        public static OutgoingCallerIdUpdater Updater(string sid, string accountSid=null, string friendlyName=null)
+        public static OutgoingCallerIdUpdater Updater(string sid)
         {
-            return new OutgoingCallerIdUpdater(sid, accountSid:accountSid, friendlyName:friendlyName);
+            return new OutgoingCallerIdUpdater(sid);
         }
     
         /// <summary>
@@ -41,24 +38,20 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Delete by unique outgoing-caller-id Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> OutgoingCallerIdDeleter capable of executing the delete </returns> 
-        public static OutgoingCallerIdDeleter Deleter(string sid, string accountSid=null)
+        public static OutgoingCallerIdDeleter Deleter(string sid)
         {
-            return new OutgoingCallerIdDeleter(sid, accountSid:accountSid);
+            return new OutgoingCallerIdDeleter(sid);
         }
     
         /// <summary>
         /// Retrieve a list of outgoing-caller-ids belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="phoneNumber"> Filter by phone number </param>
-        /// <param name="friendlyName"> Filter by friendly name </param>
         /// <returns> OutgoingCallerIdReader capable of executing the read </returns> 
-        public static OutgoingCallerIdReader Reader(string accountSid=null, Twilio.Types.PhoneNumber phoneNumber=null, string friendlyName=null)
+        public static OutgoingCallerIdReader Reader()
         {
-            return new OutgoingCallerIdReader(accountSid:accountSid, phoneNumber:phoneNumber, friendlyName:friendlyName);
+            return new OutgoingCallerIdReader();
         }
     
         /// <summary>
@@ -81,20 +74,20 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber phoneNumber { get; }
+        public Twilio.Types.PhoneNumber phoneNumber { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
     
         public OutgoingCallerIdResource()
         {

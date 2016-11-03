@@ -30,15 +30,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="targetWorkers"> The target_workers </param>
-        /// <param name="reservationActivitySid"> The reservation_activity_sid </param>
-        /// <param name="assignmentActivitySid"> The assignment_activity_sid </param>
-        /// <param name="maxReservedWorkers"> The max_reserved_workers </param>
         /// <returns> TaskQueueUpdater capable of executing the update </returns> 
-        public static TaskQueueUpdater Updater(string workspaceSid, string sid, string friendlyName=null, string targetWorkers=null, string reservationActivitySid=null, string assignmentActivitySid=null, int? maxReservedWorkers=null)
+        public static TaskQueueUpdater Updater(string workspaceSid, string sid)
         {
-            return new TaskQueueUpdater(workspaceSid, sid, friendlyName:friendlyName, targetWorkers:targetWorkers, reservationActivitySid:reservationActivitySid, assignmentActivitySid:assignmentActivitySid, maxReservedWorkers:maxReservedWorkers);
+            return new TaskQueueUpdater(workspaceSid, sid);
         }
     
         /// <summary>
@@ -46,12 +41,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="evaluateWorkerAttributes"> The evaluate_worker_attributes </param>
         /// <returns> TaskQueueReader capable of executing the read </returns> 
-        public static TaskQueueReader Reader(string workspaceSid, string friendlyName=null, string evaluateWorkerAttributes=null)
+        public static TaskQueueReader Reader(string workspaceSid)
         {
-            return new TaskQueueReader(workspaceSid, friendlyName:friendlyName, evaluateWorkerAttributes:evaluateWorkerAttributes);
+            return new TaskQueueReader(workspaceSid);
         }
     
         /// <summary>
@@ -62,12 +55,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="reservationActivitySid"> The reservation_activity_sid </param>
         /// <param name="assignmentActivitySid"> The assignment_activity_sid </param>
-        /// <param name="targetWorkers"> The target_workers </param>
-        /// <param name="maxReservedWorkers"> The max_reserved_workers </param>
         /// <returns> TaskQueueCreator capable of executing the create </returns> 
-        public static TaskQueueCreator Creator(string workspaceSid, string friendlyName, string reservationActivitySid, string assignmentActivitySid, string targetWorkers=null, int? maxReservedWorkers=null)
+        public static TaskQueueCreator Creator(string workspaceSid, string friendlyName, string reservationActivitySid, string assignmentActivitySid)
         {
-            return new TaskQueueCreator(workspaceSid, friendlyName, reservationActivitySid, assignmentActivitySid, targetWorkers:targetWorkers, maxReservedWorkers:maxReservedWorkers);
+            return new TaskQueueCreator(workspaceSid, friendlyName, reservationActivitySid, assignmentActivitySid);
         }
     
         /// <summary>
@@ -102,33 +93,33 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("assignment_activity_sid")]
-        public string assignmentActivitySid { get; }
+        public string assignmentActivitySid { get; set; }
         [JsonProperty("assignment_activity_name")]
-        public string assignmentActivityName { get; }
+        public string assignmentActivityName { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("max_reserved_workers")]
-        public int? maxReservedWorkers { get; }
+        public int? maxReservedWorkers { get; set; }
         [JsonProperty("reservation_activity_sid")]
-        public string reservationActivitySid { get; }
+        public string reservationActivitySid { get; set; }
         [JsonProperty("reservation_activity_name")]
-        public string reservationActivityName { get; }
+        public string reservationActivityName { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("target_workers")]
-        public string targetWorkers { get; }
+        public string targetWorkers { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
         [JsonProperty("workspace_sid")]
-        public string workspaceSid { get; }
+        public string workspaceSid { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; }
+        public Dictionary<string, string> links { get; set; }
     
         public TaskQueueResource()
         {

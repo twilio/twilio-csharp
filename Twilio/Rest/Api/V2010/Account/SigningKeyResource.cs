@@ -16,11 +16,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> SigningKeyFetcher capable of executing the fetch </returns> 
-        public static SigningKeyFetcher Fetcher(string sid, string accountSid=null)
+        public static SigningKeyFetcher Fetcher(string sid)
         {
-            return new SigningKeyFetcher(sid, accountSid:accountSid);
+            return new SigningKeyFetcher(sid);
         }
     
         /// <summary>
@@ -28,12 +27,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> SigningKeyUpdater capable of executing the update </returns> 
-        public static SigningKeyUpdater Updater(string sid, string accountSid=null, string friendlyName=null)
+        public static SigningKeyUpdater Updater(string sid)
         {
-            return new SigningKeyUpdater(sid, accountSid:accountSid, friendlyName:friendlyName);
+            return new SigningKeyUpdater(sid);
         }
     
         /// <summary>
@@ -41,22 +38,20 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> SigningKeyDeleter capable of executing the delete </returns> 
-        public static SigningKeyDeleter Deleter(string sid, string accountSid=null)
+        public static SigningKeyDeleter Deleter(string sid)
         {
-            return new SigningKeyDeleter(sid, accountSid:accountSid);
+            return new SigningKeyDeleter(sid);
         }
     
         /// <summary>
         /// read
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> SigningKeyReader capable of executing the read </returns> 
-        public static SigningKeyReader Reader(string accountSid=null)
+        public static SigningKeyReader Reader()
         {
-            return new SigningKeyReader(accountSid:accountSid);
+            return new SigningKeyReader();
         }
     
         /// <summary>
@@ -79,13 +74,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
     
         public SigningKeyResource()
         {

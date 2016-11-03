@@ -54,17 +54,17 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         }
     
         [JsonProperty("country")]
-        public string country { get; }
+        public string country { get; set; }
         [JsonProperty("iso_country")]
-        public string isoCountry { get; }
+        public string isoCountry { get; set; }
         [JsonProperty("outbound_sms_prices")]
-        public List<OutboundSmsPrice> outboundSmsPrices { get; }
+        public List<OutboundSmsPrice> outboundSmsPrices { get; set; }
         [JsonProperty("inbound_sms_prices")]
-        public List<InboundSmsPrice> inboundSmsPrices { get; }
+        public List<InboundSmsPrice> inboundSmsPrices { get; set; }
         [JsonProperty("price_unit")]
-        public string priceUnit { get; }
+        public string priceUnit { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
     
         public CountryResource()
         {

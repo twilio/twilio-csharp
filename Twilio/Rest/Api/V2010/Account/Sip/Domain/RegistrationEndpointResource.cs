@@ -18,11 +18,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="domainSid"> The domain_sid </param>
         /// <param name="region"> The region </param>
         /// <param name="registrant"> The registrant </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> RegistrationEndpointReader capable of executing the read </returns> 
-        public static RegistrationEndpointReader Reader(string domainSid, string region, string registrant, string accountSid=null)
+        public static RegistrationEndpointReader Reader(string domainSid, string region, string registrant)
         {
-            return new RegistrationEndpointReader(domainSid, region, registrant, accountSid:accountSid);
+            return new RegistrationEndpointReader(domainSid, region, registrant);
         }
     
         /// <summary>
@@ -45,29 +44,29 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
     
         [JsonProperty("address_of_record")]
-        public string addressOfRecord { get; }
+        public string addressOfRecord { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("date_expires")]
-        public DateTime? dateExpires { get; }
+        public DateTime? dateExpires { get; set; }
         [JsonProperty("sip_call_id")]
-        public string sipCallId { get; }
+        public string sipCallId { get; set; }
         [JsonProperty("sip_contact")]
-        public string sipContact { get; }
+        public string sipContact { get; set; }
         [JsonProperty("sip_cseq")]
-        public int? sipCseq { get; }
+        public int? sipCseq { get; set; }
         [JsonProperty("sip_path")]
-        public string sipPath { get; }
+        public string sipPath { get; set; }
         [JsonProperty("sip_via")]
-        public string sipVia { get; }
+        public string sipVia { get; set; }
         [JsonProperty("user_agent")]
-        public string userAgent { get; }
+        public string userAgent { get; set; }
         [JsonProperty("channel_type")]
-        public string channelType { get; }
+        public string channelType { get; set; }
         [JsonProperty("display_name")]
-        public string displayName { get; }
+        public string displayName { get; set; }
     
         public RegistrationEndpointResource()
         {

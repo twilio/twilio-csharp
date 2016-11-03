@@ -16,11 +16,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// Retrieve a list of ip-access-control-lists belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAccessControlListReader capable of executing the read </returns> 
-        public static IpAccessControlListReader Reader(string accountSid=null)
+        public static IpAccessControlListReader Reader()
         {
-            return new IpAccessControlListReader(accountSid:accountSid);
+            return new IpAccessControlListReader();
         }
     
         /// <summary>
@@ -28,11 +27,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         ///
         /// <param name="friendlyName"> A human readable description of this resource </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAccessControlListCreator capable of executing the create </returns> 
-        public static IpAccessControlListCreator Creator(string friendlyName, string accountSid=null)
+        public static IpAccessControlListCreator Creator(string friendlyName)
         {
-            return new IpAccessControlListCreator(friendlyName, accountSid:accountSid);
+            return new IpAccessControlListCreator(friendlyName);
         }
     
         /// <summary>
@@ -40,11 +38,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         ///
         /// <param name="sid"> Fetch by unique ip-access-control-list Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAccessControlListFetcher capable of executing the fetch </returns> 
-        public static IpAccessControlListFetcher Fetcher(string sid, string accountSid=null)
+        public static IpAccessControlListFetcher Fetcher(string sid)
         {
-            return new IpAccessControlListFetcher(sid, accountSid:accountSid);
+            return new IpAccessControlListFetcher(sid);
         }
     
         /// <summary>
@@ -53,11 +50,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         ///
         /// <param name="sid"> The sid </param>
         /// <param name="friendlyName"> A human readable description of this resource </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAccessControlListUpdater capable of executing the update </returns> 
-        public static IpAccessControlListUpdater Updater(string sid, string friendlyName, string accountSid=null)
+        public static IpAccessControlListUpdater Updater(string sid, string friendlyName)
         {
-            return new IpAccessControlListUpdater(sid, friendlyName, accountSid:accountSid);
+            return new IpAccessControlListUpdater(sid, friendlyName);
         }
     
         /// <summary>
@@ -65,11 +61,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         ///
         /// <param name="sid"> Delete by unique ip-access-control-list Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> IpAccessControlListDeleter capable of executing the delete </returns> 
-        public static IpAccessControlListDeleter Deleter(string sid, string accountSid=null)
+        public static IpAccessControlListDeleter Deleter(string sid)
         {
-            return new IpAccessControlListDeleter(sid, accountSid:accountSid);
+            return new IpAccessControlListDeleter(sid);
         }
     
         /// <summary>
@@ -92,19 +87,19 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; }
+        public Dictionary<string, string> subresourceUris { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
     
         public IpAccessControlListResource()
         {

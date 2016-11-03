@@ -41,13 +41,10 @@ namespace Twilio.Rest.Chat.V1.Service
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="identity"> The identity </param>
-        /// <param name="roleSid"> The role_sid </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> UserCreator capable of executing the create </returns> 
-        public static UserCreator Creator(string serviceSid, string identity, string roleSid=null, string attributes=null, string friendlyName=null)
+        public static UserCreator Creator(string serviceSid, string identity)
         {
-            return new UserCreator(serviceSid, identity, roleSid:roleSid, attributes:attributes, friendlyName:friendlyName);
+            return new UserCreator(serviceSid, identity);
         }
     
         /// <summary>
@@ -67,13 +64,10 @@ namespace Twilio.Rest.Chat.V1.Service
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="roleSid"> The role_sid </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> UserUpdater capable of executing the update </returns> 
-        public static UserUpdater Updater(string serviceSid, string sid, string roleSid=null, Object attributes=null, string friendlyName=null)
+        public static UserUpdater Updater(string serviceSid, string sid)
         {
-            return new UserUpdater(serviceSid, sid, roleSid:roleSid, attributes:attributes, friendlyName:friendlyName);
+            return new UserUpdater(serviceSid, sid);
         }
     
         /// <summary>
@@ -96,25 +90,25 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("service_sid")]
-        public string serviceSid { get; }
+        public string serviceSid { get; set; }
         [JsonProperty("role_sid")]
-        public string roleSid { get; }
+        public string roleSid { get; set; }
         [JsonProperty("attributes")]
-        public string attributes { get; }
+        public string attributes { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("identity")]
-        public string identity { get; }
+        public string identity { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
     
         public UserResource()
         {

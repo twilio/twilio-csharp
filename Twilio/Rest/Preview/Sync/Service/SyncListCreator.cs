@@ -20,10 +20,8 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// </summary>
         ///
         /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        public SyncListCreator(string serviceSid, string uniqueName=null)
+        public SyncListCreator(string serviceSid)
         {
-            this.uniqueName = uniqueName;
             this.serviceSid = serviceSid;
         }
     

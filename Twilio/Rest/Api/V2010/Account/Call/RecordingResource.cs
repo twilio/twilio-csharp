@@ -17,11 +17,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         ///
         /// <param name="callSid"> The call_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> RecordingFetcher capable of executing the fetch </returns> 
-        public static RecordingFetcher Fetcher(string callSid, string sid, string accountSid=null)
+        public static RecordingFetcher Fetcher(string callSid, string sid)
         {
-            return new RecordingFetcher(callSid, sid, accountSid:accountSid);
+            return new RecordingFetcher(callSid, sid);
         }
     
         /// <summary>
@@ -30,11 +29,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         ///
         /// <param name="callSid"> The call_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> RecordingDeleter capable of executing the delete </returns> 
-        public static RecordingDeleter Deleter(string callSid, string sid, string accountSid=null)
+        public static RecordingDeleter Deleter(string callSid, string sid)
         {
-            return new RecordingDeleter(callSid, sid, accountSid:accountSid);
+            return new RecordingDeleter(callSid, sid);
         }
     
         /// <summary>
@@ -42,12 +40,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         ///
         /// <param name="callSid"> The call_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="dateCreated"> The date_created </param>
         /// <returns> RecordingReader capable of executing the read </returns> 
-        public static RecordingReader Reader(string callSid, string accountSid=null, string dateCreated=null)
+        public static RecordingReader Reader(string callSid)
         {
-            return new RecordingReader(callSid, accountSid:accountSid, dateCreated:dateCreated);
+            return new RecordingReader(callSid);
         }
     
         /// <summary>
@@ -70,23 +66,23 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; }
+        public string apiVersion { get; set; }
         [JsonProperty("call_sid")]
-        public string callSid { get; }
+        public string callSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("duration")]
-        public string duration { get; }
+        public string duration { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("price")]
-        public decimal? price { get; }
+        public decimal? price { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
     
         public RecordingResource()
         {

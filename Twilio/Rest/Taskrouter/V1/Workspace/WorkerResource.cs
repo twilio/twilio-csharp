@@ -17,17 +17,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="activityName"> The activity_name </param>
-        /// <param name="activitySid"> The activity_sid </param>
-        /// <param name="available"> The available </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="targetWorkersExpression"> The target_workers_expression </param>
-        /// <param name="taskQueueName"> The task_queue_name </param>
-        /// <param name="taskQueueSid"> The task_queue_sid </param>
         /// <returns> WorkerReader capable of executing the read </returns> 
-        public static WorkerReader Reader(string workspaceSid, string activityName=null, string activitySid=null, string available=null, string friendlyName=null, string targetWorkersExpression=null, string taskQueueName=null, string taskQueueSid=null)
+        public static WorkerReader Reader(string workspaceSid)
         {
-            return new WorkerReader(workspaceSid, activityName:activityName, activitySid:activitySid, available:available, friendlyName:friendlyName, targetWorkersExpression:targetWorkersExpression, taskQueueName:taskQueueName, taskQueueSid:taskQueueSid);
+            return new WorkerReader(workspaceSid);
         }
     
         /// <summary>
@@ -36,12 +29,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="activitySid"> The activity_sid </param>
-        /// <param name="attributes"> The attributes </param>
         /// <returns> WorkerCreator capable of executing the create </returns> 
-        public static WorkerCreator Creator(string workspaceSid, string friendlyName, string activitySid=null, string attributes=null)
+        public static WorkerCreator Creator(string workspaceSid, string friendlyName)
         {
-            return new WorkerCreator(workspaceSid, friendlyName, activitySid:activitySid, attributes:attributes);
+            return new WorkerCreator(workspaceSid, friendlyName);
         }
     
         /// <summary>
@@ -62,13 +53,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="activitySid"> The activity_sid </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> WorkerUpdater capable of executing the update </returns> 
-        public static WorkerUpdater Updater(string workspaceSid, string sid, string activitySid=null, string attributes=null, string friendlyName=null)
+        public static WorkerUpdater Updater(string workspaceSid, string sid)
         {
-            return new WorkerUpdater(workspaceSid, sid, activitySid:activitySid, attributes:attributes, friendlyName:friendlyName);
+            return new WorkerUpdater(workspaceSid, sid);
         }
     
         /// <summary>
@@ -103,31 +91,31 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("activity_name")]
-        public string activityName { get; }
+        public string activityName { get; set; }
         [JsonProperty("activity_sid")]
-        public string activitySid { get; }
+        public string activitySid { get; set; }
         [JsonProperty("attributes")]
-        public string attributes { get; }
+        public string attributes { get; set; }
         [JsonProperty("available")]
-        public bool? available { get; }
+        public bool? available { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_status_changed")]
-        public DateTime? dateStatusChanged { get; }
+        public DateTime? dateStatusChanged { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("workspace_sid")]
-        public string workspaceSid { get; }
+        public string workspaceSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; }
+        public Dictionary<string, string> links { get; set; }
     
         public WorkerResource()
         {

@@ -29,19 +29,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="eventType"> The event_type </param>
-        /// <param name="minutes"> The minutes </param>
-        /// <param name="reservationSid"> The reservation_sid </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="taskQueueSid"> The task_queue_sid </param>
-        /// <param name="taskSid"> The task_sid </param>
-        /// <param name="workerSid"> The worker_sid </param>
-        /// <param name="workflowSid"> The workflow_sid </param>
         /// <returns> EventReader capable of executing the read </returns> 
-        public static EventReader Reader(string workspaceSid, DateTime? endDate=null, string eventType=null, int? minutes=null, string reservationSid=null, DateTime? startDate=null, string taskQueueSid=null, string taskSid=null, string workerSid=null, string workflowSid=null)
+        public static EventReader Reader(string workspaceSid)
         {
-            return new EventReader(workspaceSid, endDate:endDate, eventType:eventType, minutes:minutes, reservationSid:reservationSid, startDate:startDate, taskQueueSid:taskQueueSid, taskSid:taskSid, workerSid:workerSid, workflowSid:workflowSid);
+            return new EventReader(workspaceSid);
         }
     
         /// <summary>
@@ -64,35 +55,35 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("actor_sid")]
-        public string actorSid { get; }
+        public string actorSid { get; set; }
         [JsonProperty("actor_type")]
-        public string actorType { get; }
+        public string actorType { get; set; }
         [JsonProperty("actor_url")]
-        public Uri actorUrl { get; }
+        public Uri actorUrl { get; set; }
         [JsonProperty("description")]
-        public string description { get; }
+        public string description { get; set; }
         [JsonProperty("event_data")]
-        public Dictionary<string, string> eventData { get; }
+        public Dictionary<string, string> eventData { get; set; }
         [JsonProperty("event_date")]
-        public DateTime? eventDate { get; }
+        public DateTime? eventDate { get; set; }
         [JsonProperty("event_type")]
-        public string eventType { get; }
+        public string eventType { get; set; }
         [JsonProperty("resource_sid")]
-        public string resourceSid { get; }
+        public string resourceSid { get; set; }
         [JsonProperty("resource_type")]
-        public string resourceType { get; }
+        public string resourceType { get; set; }
         [JsonProperty("resource_url")]
-        public Uri resourceUrl { get; }
+        public Uri resourceUrl { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("source")]
-        public string source { get; }
+        public string source { get; set; }
         [JsonProperty("source_ip_address")]
-        public string sourceIpAddress { get; }
+        public string sourceIpAddress { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
     
         public EventResource()
         {

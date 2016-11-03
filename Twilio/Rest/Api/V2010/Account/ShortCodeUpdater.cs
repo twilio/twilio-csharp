@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ShortCodeUpdater : Updater<ShortCodeResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string sid { get; }
         public string friendlyName { get; set; }
         public string apiVersion { get; set; }
@@ -27,23 +27,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> A human readable description of this resource </param>
-        /// <param name="apiVersion"> The API version to use </param>
-        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
-        /// <param name="smsMethod"> HTTP method to use when requesting the sms url </param>
-        /// <param name="smsFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
-        /// <param name="smsFallbackMethod"> HTTP method Twilio will use with sms fallback url </param>
-        public ShortCodeUpdater(string sid, string accountSid=null, string friendlyName=null, string apiVersion=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsFallbackMethod=null)
+        public ShortCodeUpdater(string sid)
         {
-            this.smsUrl = smsUrl;
-            this.apiVersion = apiVersion;
             this.sid = sid;
-            this.smsFallbackUrl = smsFallbackUrl;
-            this.smsMethod = smsMethod;
-            this.accountSid = accountSid;
-            this.friendlyName = friendlyName;
-            this.smsFallbackMethod = smsFallbackMethod;
         }
     
         #if NET40

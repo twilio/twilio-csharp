@@ -16,17 +16,10 @@ namespace Twilio.Rest.Notify.V1
         /// create
         /// </summary>
         ///
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="apnCredentialSid"> The apn_credential_sid </param>
-        /// <param name="gcmCredentialSid"> The gcm_credential_sid </param>
-        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
-        /// <param name="facebookMessengerPageId"> The facebook_messenger_page_id </param>
-        /// <param name="defaultApnNotificationProtocolVersion"> The default_apn_notification_protocol_version </param>
-        /// <param name="defaultGcmNotificationProtocolVersion"> The default_gcm_notification_protocol_version </param>
         /// <returns> ServiceCreator capable of executing the create </returns> 
-        public static ServiceCreator Creator(string friendlyName=null, string apnCredentialSid=null, string gcmCredentialSid=null, string messagingServiceSid=null, string facebookMessengerPageId=null, string defaultApnNotificationProtocolVersion=null, string defaultGcmNotificationProtocolVersion=null)
+        public static ServiceCreator Creator()
         {
-            return new ServiceCreator(friendlyName:friendlyName, apnCredentialSid:apnCredentialSid, gcmCredentialSid:gcmCredentialSid, messagingServiceSid:messagingServiceSid, facebookMessengerPageId:facebookMessengerPageId, defaultApnNotificationProtocolVersion:defaultApnNotificationProtocolVersion, defaultGcmNotificationProtocolVersion:defaultGcmNotificationProtocolVersion);
+            return new ServiceCreator();
         }
     
         /// <summary>
@@ -55,11 +48,10 @@ namespace Twilio.Rest.Notify.V1
         /// read
         /// </summary>
         ///
-        /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> ServiceReader capable of executing the read </returns> 
-        public static ServiceReader Reader(string friendlyName=null)
+        public static ServiceReader Reader()
         {
-            return new ServiceReader(friendlyName:friendlyName);
+            return new ServiceReader();
         }
     
         /// <summary>
@@ -67,17 +59,10 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="apnCredentialSid"> The apn_credential_sid </param>
-        /// <param name="gcmCredentialSid"> The gcm_credential_sid </param>
-        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
-        /// <param name="facebookMessengerPageId"> The facebook_messenger_page_id </param>
-        /// <param name="defaultApnNotificationProtocolVersion"> The default_apn_notification_protocol_version </param>
-        /// <param name="defaultGcmNotificationProtocolVersion"> The default_gcm_notification_protocol_version </param>
         /// <returns> ServiceUpdater capable of executing the update </returns> 
-        public static ServiceUpdater Updater(string sid, string friendlyName=null, string apnCredentialSid=null, string gcmCredentialSid=null, string messagingServiceSid=null, string facebookMessengerPageId=null, string defaultApnNotificationProtocolVersion=null, string defaultGcmNotificationProtocolVersion=null)
+        public static ServiceUpdater Updater(string sid)
         {
-            return new ServiceUpdater(sid, friendlyName:friendlyName, apnCredentialSid:apnCredentialSid, gcmCredentialSid:gcmCredentialSid, messagingServiceSid:messagingServiceSid, facebookMessengerPageId:facebookMessengerPageId, defaultApnNotificationProtocolVersion:defaultApnNotificationProtocolVersion, defaultGcmNotificationProtocolVersion:defaultGcmNotificationProtocolVersion);
+            return new ServiceUpdater(sid);
         }
     
         /// <summary>
@@ -100,31 +85,31 @@ namespace Twilio.Rest.Notify.V1
         }
     
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("apn_credential_sid")]
-        public string apnCredentialSid { get; }
+        public string apnCredentialSid { get; set; }
         [JsonProperty("gcm_credential_sid")]
-        public string gcmCredentialSid { get; }
+        public string gcmCredentialSid { get; set; }
         [JsonProperty("messaging_service_sid")]
-        public string messagingServiceSid { get; }
+        public string messagingServiceSid { get; set; }
         [JsonProperty("facebook_messenger_page_id")]
-        public string facebookMessengerPageId { get; }
+        public string facebookMessengerPageId { get; set; }
         [JsonProperty("default_apn_notification_protocol_version")]
-        public string defaultApnNotificationProtocolVersion { get; }
+        public string defaultApnNotificationProtocolVersion { get; set; }
         [JsonProperty("default_gcm_notification_protocol_version")]
-        public string defaultGcmNotificationProtocolVersion { get; }
+        public string defaultGcmNotificationProtocolVersion { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; }
+        public Dictionary<string, string> links { get; set; }
     
         public ServiceResource()
         {

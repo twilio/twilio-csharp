@@ -22,11 +22,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="workerSid"> The worker_sid </param>
-        /// <param name="reservationStatus"> The reservation_status </param>
-        public ReservationReader(string workspaceSid, string workerSid, ReservationResource.Status reservationStatus=null)
+        public ReservationReader(string workspaceSid, string workerSid)
         {
             this.workspaceSid = workspaceSid;
-            this.reservationStatus = reservationStatus;
             this.workerSid = workerSid;
         }
     
@@ -76,7 +74,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<ReservationResource> NextPage(Page<ReservationResource> page, ITwilioRestClient client)

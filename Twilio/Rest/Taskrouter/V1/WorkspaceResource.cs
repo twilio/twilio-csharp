@@ -28,27 +28,20 @@ namespace Twilio.Rest.Taskrouter.V1
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="defaultActivitySid"> The default_activity_sid </param>
-        /// <param name="eventCallbackUrl"> The event_callback_url </param>
-        /// <param name="eventsFilter"> The events_filter </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="multiTaskEnabled"> The multi_task_enabled </param>
-        /// <param name="timeoutActivitySid"> The timeout_activity_sid </param>
         /// <returns> WorkspaceUpdater capable of executing the update </returns> 
-        public static WorkspaceUpdater Updater(string sid, string defaultActivitySid=null, Uri eventCallbackUrl=null, string eventsFilter=null, string friendlyName=null, bool? multiTaskEnabled=null, string timeoutActivitySid=null)
+        public static WorkspaceUpdater Updater(string sid)
         {
-            return new WorkspaceUpdater(sid, defaultActivitySid:defaultActivitySid, eventCallbackUrl:eventCallbackUrl, eventsFilter:eventsFilter, friendlyName:friendlyName, multiTaskEnabled:multiTaskEnabled, timeoutActivitySid:timeoutActivitySid);
+            return new WorkspaceUpdater(sid);
         }
     
         /// <summary>
         /// read
         /// </summary>
         ///
-        /// <param name="friendlyName"> The friendly_name </param>
         /// <returns> WorkspaceReader capable of executing the read </returns> 
-        public static WorkspaceReader Reader(string friendlyName=null)
+        public static WorkspaceReader Reader()
         {
-            return new WorkspaceReader(friendlyName:friendlyName);
+            return new WorkspaceReader();
         }
     
         /// <summary>
@@ -56,14 +49,10 @@ namespace Twilio.Rest.Taskrouter.V1
         /// </summary>
         ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="eventCallbackUrl"> The event_callback_url </param>
-        /// <param name="eventsFilter"> The events_filter </param>
-        /// <param name="multiTaskEnabled"> The multi_task_enabled </param>
-        /// <param name="template"> The template </param>
         /// <returns> WorkspaceCreator capable of executing the create </returns> 
-        public static WorkspaceCreator Creator(string friendlyName, Uri eventCallbackUrl=null, string eventsFilter=null, bool? multiTaskEnabled=null, string template=null)
+        public static WorkspaceCreator Creator(string friendlyName)
         {
-            return new WorkspaceCreator(friendlyName, eventCallbackUrl:eventCallbackUrl, eventsFilter:eventsFilter, multiTaskEnabled:multiTaskEnabled, template:template);
+            return new WorkspaceCreator(friendlyName);
         }
     
         /// <summary>
@@ -97,33 +86,33 @@ namespace Twilio.Rest.Taskrouter.V1
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("default_activity_name")]
-        public string defaultActivityName { get; }
+        public string defaultActivityName { get; set; }
         [JsonProperty("default_activity_sid")]
-        public string defaultActivitySid { get; }
+        public string defaultActivitySid { get; set; }
         [JsonProperty("event_callback_url")]
-        public Uri eventCallbackUrl { get; }
+        public Uri eventCallbackUrl { get; set; }
         [JsonProperty("events_filter")]
-        public string eventsFilter { get; }
+        public string eventsFilter { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("multi_task_enabled")]
-        public bool? multiTaskEnabled { get; }
+        public bool? multiTaskEnabled { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("timeout_activity_name")]
-        public string timeoutActivityName { get; }
+        public string timeoutActivityName { get; set; }
         [JsonProperty("timeout_activity_sid")]
-        public string timeoutActivitySid { get; }
+        public string timeoutActivitySid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; }
+        public Dictionary<string, string> links { get; set; }
     
         public WorkspaceResource()
         {

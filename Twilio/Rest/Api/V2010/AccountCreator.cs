@@ -14,16 +14,6 @@ namespace Twilio.Rest.Api.V2010
     {
         public string friendlyName { get; set; }
     
-        /// <summary>
-        /// Construct a new AccountCreator
-        /// </summary>
-        ///
-        /// <param name="friendlyName"> A human readable description of the account </param>
-        public AccountCreator(string friendlyName=null)
-        {
-            this.friendlyName = friendlyName;
-        }
-    
         #if NET40
         /// <summary>
         /// Make the request to the Twilio API to perform the create

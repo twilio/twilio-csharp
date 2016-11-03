@@ -25,18 +25,10 @@ namespace Twilio.Rest.Chat.V1.Service
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="type"> The type </param>
-        public ChannelUpdater(string serviceSid, string sid, string friendlyName=null, string uniqueName=null, string attributes=null, ChannelResource.ChannelType type=null)
+        public ChannelUpdater(string serviceSid, string sid)
         {
-            this.sid = sid;
-            this.type = type;
             this.serviceSid = serviceSid;
-            this.uniqueName = uniqueName;
-            this.friendlyName = friendlyName;
-            this.attributes = attributes;
+            this.sid = sid;
         }
     
         #if NET40

@@ -16,11 +16,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> Fetch by unique short-code Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> ShortCodeFetcher capable of executing the fetch </returns> 
-        public static ShortCodeFetcher Fetcher(string sid, string accountSid=null)
+        public static ShortCodeFetcher Fetcher(string sid)
         {
-            return new ShortCodeFetcher(sid, accountSid:accountSid);
+            return new ShortCodeFetcher(sid);
         }
     
         /// <summary>
@@ -28,30 +27,20 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> A human readable description of this resource </param>
-        /// <param name="apiVersion"> The API version to use </param>
-        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
-        /// <param name="smsMethod"> HTTP method to use when requesting the sms url </param>
-        /// <param name="smsFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
-        /// <param name="smsFallbackMethod"> HTTP method Twilio will use with sms fallback url </param>
         /// <returns> ShortCodeUpdater capable of executing the update </returns> 
-        public static ShortCodeUpdater Updater(string sid, string accountSid=null, string friendlyName=null, string apiVersion=null, Uri smsUrl=null, Twilio.Http.HttpMethod smsMethod=null, Uri smsFallbackUrl=null, Twilio.Http.HttpMethod smsFallbackMethod=null)
+        public static ShortCodeUpdater Updater(string sid)
         {
-            return new ShortCodeUpdater(sid, accountSid:accountSid, friendlyName:friendlyName, apiVersion:apiVersion, smsUrl:smsUrl, smsMethod:smsMethod, smsFallbackUrl:smsFallbackUrl, smsFallbackMethod:smsFallbackMethod);
+            return new ShortCodeUpdater(sid);
         }
     
         /// <summary>
         /// Retrieve a list of short-codes belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> Filter by friendly name </param>
-        /// <param name="shortCode"> Filter by ShortCode </param>
         /// <returns> ShortCodeReader capable of executing the read </returns> 
-        public static ShortCodeReader Reader(string accountSid=null, string friendlyName=null, string shortCode=null)
+        public static ShortCodeReader Reader()
         {
-            return new ShortCodeReader(accountSid:accountSid, friendlyName:friendlyName, shortCode:shortCode);
+            return new ShortCodeReader();
         }
     
         /// <summary>
@@ -74,31 +63,31 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; }
+        public string apiVersion { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("short_code")]
-        public string shortCode { get; }
+        public string shortCode { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("sms_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod smsFallbackMethod { get; }
+        public Twilio.Http.HttpMethod smsFallbackMethod { get; set; }
         [JsonProperty("sms_fallback_url")]
-        public Uri smsFallbackUrl { get; }
+        public Uri smsFallbackUrl { get; set; }
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod smsMethod { get; }
+        public Twilio.Http.HttpMethod smsMethod { get; set; }
         [JsonProperty("sms_url")]
-        public Uri smsUrl { get; }
+        public Uri smsUrl { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
     
         public ShortCodeResource()
         {

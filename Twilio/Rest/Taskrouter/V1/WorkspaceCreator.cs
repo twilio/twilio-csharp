@@ -24,17 +24,9 @@ namespace Twilio.Rest.Taskrouter.V1
         /// </summary>
         ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="eventCallbackUrl"> The event_callback_url </param>
-        /// <param name="eventsFilter"> The events_filter </param>
-        /// <param name="multiTaskEnabled"> The multi_task_enabled </param>
-        /// <param name="template"> The template </param>
-        public WorkspaceCreator(string friendlyName, Uri eventCallbackUrl=null, string eventsFilter=null, bool? multiTaskEnabled=null, string template=null)
+        public WorkspaceCreator(string friendlyName)
         {
             this.friendlyName = friendlyName;
-            this.eventCallbackUrl = eventCallbackUrl;
-            this.multiTaskEnabled = multiTaskEnabled;
-            this.template = template;
-            this.eventsFilter = eventsFilter;
         }
     
         #if NET40

@@ -17,11 +17,10 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         ///
         /// <param name="queueSid"> The Queue in which to find the members </param>
         /// <param name="callSid"> The call_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> MemberFetcher capable of executing the fetch </returns> 
-        public static MemberFetcher Fetcher(string queueSid, string callSid, string accountSid=null)
+        public static MemberFetcher Fetcher(string queueSid, string callSid)
         {
-            return new MemberFetcher(queueSid, callSid, accountSid:accountSid);
+            return new MemberFetcher(queueSid, callSid);
         }
     
         /// <summary>
@@ -32,11 +31,10 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <param name="callSid"> The call_sid </param>
         /// <param name="url"> The url </param>
         /// <param name="method"> The method </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> MemberUpdater capable of executing the update </returns> 
-        public static MemberUpdater Updater(string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method, string accountSid=null)
+        public static MemberUpdater Updater(string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method)
         {
-            return new MemberUpdater(queueSid, callSid, url, method, accountSid:accountSid);
+            return new MemberUpdater(queueSid, callSid, url, method);
         }
     
         /// <summary>
@@ -44,11 +42,10 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// </summary>
         ///
         /// <param name="queueSid"> The Queue in which to find members </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> MemberReader capable of executing the read </returns> 
-        public static MemberReader Reader(string queueSid, string accountSid=null)
+        public static MemberReader Reader(string queueSid)
         {
-            return new MemberReader(queueSid, accountSid:accountSid);
+            return new MemberReader(queueSid);
         }
     
         /// <summary>
@@ -71,15 +68,15 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         }
     
         [JsonProperty("call_sid")]
-        public string callSid { get; }
+        public string callSid { get; set; }
         [JsonProperty("date_enqueued")]
-        public DateTime? dateEnqueued { get; }
+        public DateTime? dateEnqueued { get; set; }
         [JsonProperty("position")]
-        public int? position { get; }
+        public int? position { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
         [JsonProperty("wait_time")]
-        public int? waitTime { get; }
+        public int? waitTime { get; set; }
     
         public MemberResource()
         {

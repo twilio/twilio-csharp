@@ -1,3 +1,4 @@
+using System;
 using Twilio.Base;
 using Twilio.Clients;
 using Twilio.Exceptions;
@@ -12,35 +13,17 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class CallReader : Reader<CallResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public Twilio.Types.PhoneNumber to { get; set; }
         public Twilio.Types.PhoneNumber from { get; set; }
         public string parentCallSid { get; set; }
         public CallResource.Status status { get; set; }
-        public string startTime { get; set; }
-        public string endTime { get; set; }
-    
-        /// <summary>
-        /// Construct a new CallReader
-        /// </summary>
-        ///
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="to"> Phone number or Client identifier to filter `to` on </param>
-        /// <param name="from"> Phone number or Client identifier to filter `from` on </param>
-        /// <param name="parentCallSid"> Parent Call Sid to filter on </param>
-        /// <param name="status"> Status to filter on </param>
-        /// <param name="startTime"> StartTime to filter on </param>
-        /// <param name="endTime"> EndTime to filter on </param>
-        public CallReader(string accountSid=null, Twilio.Types.PhoneNumber to=null, Twilio.Types.PhoneNumber from=null, string parentCallSid=null, CallResource.Status status=null, string startTime=null, string endTime=null)
-        {
-            this.startTime = startTime;
-            this.parentCallSid = parentCallSid;
-            this.from = from;
-            this.accountSid = accountSid;
-            this.status = status;
-            this.endTime = endTime;
-            this.to = to;
-        }
+        public DateTime? startTime { get; set; }
+        public DateTime? startTimeAfter { get; set; }
+        public DateTime? startTimeBefore { get; set; }
+        public DateTime? endTime { get; set; }
+        public DateTime? endTimeAfter { get; set; }
+        public DateTime? endTimeBefore { get; set; }
     
         #if NET40
         /// <summary>
@@ -88,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<CallResource> NextPage(Page<CallResource> page, ITwilioRestClient client)
@@ -164,7 +147,37 @@ namespace Twilio.Rest.Api.V2010.Account
                 request.AddQueryParam("Status", status.ToString());
             }
             
+            if (startTime != null)
+            {
+                request.AddQueryParam("StartTime", startTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+            }
+            else
+            {
+                if (startTimeBefore != null)
+                {
+                    request.AddQueryParam("StartTime<", startTimeBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                }
+                if (startTimeAfter != null)
+                {
+                    request.AddQueryParam("StartTime>", startTimeAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                }
+            }
             
+            if (endTime != null)
+            {
+                request.AddQueryParam("EndTime", endTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+            }
+            else
+            {
+                if (endTimeBefore != null)
+                {
+                    request.AddQueryParam("EndTime<", endTimeBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                }
+                if (endTimeAfter != null)
+                {
+                    request.AddQueryParam("EndTime>", endTimeAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                }
+            }
             
             if (PageSize != null)
             {

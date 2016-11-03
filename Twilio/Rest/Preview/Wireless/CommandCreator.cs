@@ -26,18 +26,10 @@ namespace Twilio.Rest.Preview.Wireless
         ///
         /// <param name="device"> The device </param>
         /// <param name="command"> The command </param>
-        /// <param name="callbackMethod"> The callback_method </param>
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="commandMode"> The command_mode </param>
-        /// <param name="includeSid"> The include_sid </param>
-        public CommandCreator(string device, string command, string callbackMethod=null, Uri callbackUrl=null, string commandMode=null, string includeSid=null)
+        public CommandCreator(string device, string command)
         {
-            this.callbackMethod = callbackMethod;
             this.device = device;
-            this.callbackUrl = callbackUrl;
             this.command = command;
-            this.includeSid = includeSid;
-            this.commandMode = commandMode;
         }
     
         #if NET40

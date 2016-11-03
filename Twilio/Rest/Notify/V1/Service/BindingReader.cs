@@ -26,17 +26,9 @@ namespace Twilio.Rest.Notify.V1.Service
         /// </summary>
         ///
         /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="identity"> The identity </param>
-        /// <param name="tag"> The tag </param>
-        public BindingReader(string serviceSid, DateTime? startDate=null, DateTime? endDate=null, List<string> identity=null, List<string> tag=null)
+        public BindingReader(string serviceSid)
         {
             this.serviceSid = serviceSid;
-            this.tag = tag;
-            this.startDate = startDate;
-            this.endDate = endDate;
-            this.identity = identity;
         }
     
         #if NET40
@@ -85,7 +77,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// Retrieve the next page from the Twilio API
         /// </summary>
         ///
-        /// <param name="nextPageUri"> URI from which to retrieve the next page </param>
+        /// <param name="page"> current page of results </param>
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Next Page </returns> 
         public override Page<BindingResource> NextPage(Page<BindingResource> page, ITwilioRestClient client)

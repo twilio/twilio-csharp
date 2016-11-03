@@ -29,27 +29,9 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="alias"> The alias </param>
-        /// <param name="callbackMethod"> The callback_method </param>
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="ratePlan"> The rate_plan </param>
-        /// <param name="simIdentifier"> The sim_identifier </param>
-        /// <param name="status"> The status </param>
-        /// <param name="commandsCallbackMethod"> The commands_callback_method </param>
-        /// <param name="commandsCallbackUrl"> The commands_callback_url </param>
-        public DeviceUpdater(string sid, string alias=null, string callbackMethod=null, Uri callbackUrl=null, string friendlyName=null, string ratePlan=null, string simIdentifier=null, string status=null, string commandsCallbackMethod=null, Uri commandsCallbackUrl=null)
+        public DeviceUpdater(string sid)
         {
             this.sid = sid;
-            this.simIdentifier = simIdentifier;
-            this.callbackMethod = callbackMethod;
-            this.ratePlan = ratePlan;
-            this.callbackUrl = callbackUrl;
-            this.commandsCallbackMethod = commandsCallbackMethod;
-            this.status = status;
-            this.commandsCallbackUrl = commandsCallbackUrl;
-            this.friendlyName = friendlyName;
-            this.alias = alias;
         }
     
         #if NET40

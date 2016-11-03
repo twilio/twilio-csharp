@@ -126,13 +126,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="listSid"> The list_sid </param>
-        /// <param name="order"> The order </param>
-        /// <param name="from"> The from </param>
-        /// <param name="bounds"> The bounds </param>
         /// <returns> SyncListItemReader capable of executing the read </returns> 
-        public static SyncListItemReader Reader(string serviceSid, string listSid, SyncListItemResource.QueryResultOrder order=null, string from=null, SyncListItemResource.QueryFromBoundType bounds=null)
+        public static SyncListItemReader Reader(string serviceSid, string listSid)
         {
-            return new SyncListItemReader(serviceSid, listSid, order:order, from:from, bounds:bounds);
+            return new SyncListItemReader(serviceSid, listSid);
         }
     
         /// <summary>
@@ -169,25 +166,25 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     
         [JsonProperty("index")]
-        public int? index { get; }
+        public int? index { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("service_sid")]
-        public string serviceSid { get; }
+        public string serviceSid { get; set; }
         [JsonProperty("list_sid")]
-        public string listSid { get; }
+        public string listSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
         [JsonProperty("revision")]
-        public string revision { get; }
+        public string revision { get; set; }
         [JsonProperty("data")]
-        public Object data { get; }
+        public Object data { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("created_by")]
-        public string createdBy { get; }
+        public string createdBy { get; set; }
     
         public SyncListItemResource()
         {

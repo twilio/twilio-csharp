@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class AvailablePhoneNumberCountryFetcher : Fetcher<AvailablePhoneNumberCountryResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string countryCode { get; }
     
         /// <summary>
@@ -20,10 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="countryCode"> The country_code </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public AvailablePhoneNumberCountryFetcher(string countryCode, string accountSid=null)
+        public AvailablePhoneNumberCountryFetcher(string countryCode)
         {
-            this.accountSid = accountSid;
             this.countryCode = countryCode;
         }
     

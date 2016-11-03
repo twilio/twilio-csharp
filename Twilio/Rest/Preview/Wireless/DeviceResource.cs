@@ -27,13 +27,10 @@ namespace Twilio.Rest.Preview.Wireless
         /// read
         /// </summary>
         ///
-        /// <param name="status"> The status </param>
-        /// <param name="simIdentifier"> The sim_identifier </param>
-        /// <param name="ratePlan"> The rate_plan </param>
         /// <returns> DeviceReader capable of executing the read </returns> 
-        public static DeviceReader Reader(string status=null, string simIdentifier=null, string ratePlan=null)
+        public static DeviceReader Reader()
         {
-            return new DeviceReader(status:status, simIdentifier:simIdentifier, ratePlan:ratePlan);
+            return new DeviceReader();
         }
     
         /// <summary>
@@ -41,18 +38,10 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         ///
         /// <param name="ratePlan"> The rate_plan </param>
-        /// <param name="alias"> The alias </param>
-        /// <param name="callbackMethod"> The callback_method </param>
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="simIdentifier"> The sim_identifier </param>
-        /// <param name="status"> The status </param>
-        /// <param name="commandsCallbackMethod"> The commands_callback_method </param>
-        /// <param name="commandsCallbackUrl"> The commands_callback_url </param>
         /// <returns> DeviceCreator capable of executing the create </returns> 
-        public static DeviceCreator Creator(string ratePlan, string alias=null, string callbackMethod=null, Uri callbackUrl=null, string friendlyName=null, string simIdentifier=null, string status=null, string commandsCallbackMethod=null, Uri commandsCallbackUrl=null)
+        public static DeviceCreator Creator(string ratePlan)
         {
-            return new DeviceCreator(ratePlan, alias:alias, callbackMethod:callbackMethod, callbackUrl:callbackUrl, friendlyName:friendlyName, simIdentifier:simIdentifier, status:status, commandsCallbackMethod:commandsCallbackMethod, commandsCallbackUrl:commandsCallbackUrl);
+            return new DeviceCreator(ratePlan);
         }
     
         /// <summary>
@@ -60,19 +49,10 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="alias"> The alias </param>
-        /// <param name="callbackMethod"> The callback_method </param>
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="ratePlan"> The rate_plan </param>
-        /// <param name="simIdentifier"> The sim_identifier </param>
-        /// <param name="status"> The status </param>
-        /// <param name="commandsCallbackMethod"> The commands_callback_method </param>
-        /// <param name="commandsCallbackUrl"> The commands_callback_url </param>
         /// <returns> DeviceUpdater capable of executing the update </returns> 
-        public static DeviceUpdater Updater(string sid, string alias=null, string callbackMethod=null, Uri callbackUrl=null, string friendlyName=null, string ratePlan=null, string simIdentifier=null, string status=null, string commandsCallbackMethod=null, Uri commandsCallbackUrl=null)
+        public static DeviceUpdater Updater(string sid)
         {
-            return new DeviceUpdater(sid, alias:alias, callbackMethod:callbackMethod, callbackUrl:callbackUrl, friendlyName:friendlyName, ratePlan:ratePlan, simIdentifier:simIdentifier, status:status, commandsCallbackMethod:commandsCallbackMethod, commandsCallbackUrl:commandsCallbackUrl);
+            return new DeviceUpdater(sid);
         }
     
         /// <summary>
@@ -95,31 +75,31 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("alias")]
-        public string alias { get; }
+        public string alias { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("rate_plan_sid")]
-        public string ratePlanSid { get; }
+        public string ratePlanSid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("sim_identifier")]
-        public string simIdentifier { get; }
+        public string simIdentifier { get; set; }
         [JsonProperty("status")]
-        public string status { get; }
+        public string status { get; set; }
         [JsonProperty("commands_callback_url")]
-        public Uri commandsCallbackUrl { get; }
+        public Uri commandsCallbackUrl { get; set; }
         [JsonProperty("commands_callback_method")]
-        public string commandsCallbackMethod { get; }
+        public string commandsCallbackMethod { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; }
+        public Dictionary<string, string> links { get; set; }
     
         public DeviceResource()
         {

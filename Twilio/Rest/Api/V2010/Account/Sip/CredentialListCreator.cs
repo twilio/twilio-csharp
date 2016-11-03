@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class CredentialListCreator : Creator<CredentialListResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string friendlyName { get; }
     
         /// <summary>
@@ -20,10 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         ///
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public CredentialListCreator(string friendlyName, string accountSid=null)
+        public CredentialListCreator(string friendlyName)
         {
-            this.accountSid = accountSid;
             this.friendlyName = friendlyName;
         }
     

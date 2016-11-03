@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class MessageDeleter : Deleter<MessageResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string sid { get; }
     
         /// <summary>
@@ -21,10 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The message to delete </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public MessageDeleter(string sid, string accountSid=null)
+        public MessageDeleter(string sid)
         {
-            this.accountSid = accountSid;
             this.sid = sid;
         }
     

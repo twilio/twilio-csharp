@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class DomainDeleter : Deleter<DomainResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string sid { get; }
     
         /// <summary>
@@ -21,10 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         ///
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public DomainDeleter(string sid, string accountSid=null)
+        public DomainDeleter(string sid)
         {
-            this.accountSid = accountSid;
             this.sid = sid;
         }
     

@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class AuthorizedConnectAppFetcher : Fetcher<AuthorizedConnectAppResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string connectAppSid { get; }
     
         /// <summary>
@@ -20,10 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="connectAppSid"> The connect_app_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        public AuthorizedConnectAppFetcher(string connectAppSid, string accountSid=null)
+        public AuthorizedConnectAppFetcher(string connectAppSid)
         {
-            this.accountSid = accountSid;
             this.connectAppSid = connectAppSid;
         }
     

@@ -29,9 +29,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public SyncListItemUpdater(string serviceSid, string listSid, int? index, Object data)
         {
             this.serviceSid = serviceSid;
-            this.data = data;
             this.listSid = listSid;
             this.index = index;
+            this.data = data;
         }
     
         #if NET40

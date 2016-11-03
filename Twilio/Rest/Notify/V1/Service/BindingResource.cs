@@ -82,13 +82,10 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="identity"> The identity </param>
         /// <param name="bindingType"> The binding_type </param>
         /// <param name="address"> The address </param>
-        /// <param name="tag"> The tag </param>
-        /// <param name="notificationProtocolVersion"> The notification_protocol_version </param>
-        /// <param name="credentialSid"> The credential_sid </param>
         /// <returns> BindingCreator capable of executing the create </returns> 
-        public static BindingCreator Creator(string serviceSid, string endpoint, string identity, BindingResource.BindingType bindingType, string address, List<string> tag=null, string notificationProtocolVersion=null, string credentialSid=null)
+        public static BindingCreator Creator(string serviceSid, string endpoint, string identity, BindingResource.BindingType bindingType, string address)
         {
-            return new BindingCreator(serviceSid, endpoint, identity, bindingType, address, tag:tag, notificationProtocolVersion:notificationProtocolVersion, credentialSid:credentialSid);
+            return new BindingCreator(serviceSid, endpoint, identity, bindingType, address);
         }
     
         /// <summary>
@@ -96,14 +93,10 @@ namespace Twilio.Rest.Notify.V1.Service
         /// </summary>
         ///
         /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="identity"> The identity </param>
-        /// <param name="tag"> The tag </param>
         /// <returns> BindingReader capable of executing the read </returns> 
-        public static BindingReader Reader(string serviceSid, DateTime? startDate=null, DateTime? endDate=null, List<string> identity=null, List<string> tag=null)
+        public static BindingReader Reader(string serviceSid)
         {
-            return new BindingReader(serviceSid, startDate:startDate, endDate:endDate, identity:identity, tag:tag);
+            return new BindingReader(serviceSid);
         }
     
         /// <summary>
@@ -126,31 +119,31 @@ namespace Twilio.Rest.Notify.V1.Service
         }
     
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("service_sid")]
-        public string serviceSid { get; }
+        public string serviceSid { get; set; }
         [JsonProperty("credential_sid")]
-        public string credentialSid { get; }
+        public string credentialSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("notification_protocol_version")]
-        public string notificationProtocolVersion { get; }
+        public string notificationProtocolVersion { get; set; }
         [JsonProperty("endpoint")]
-        public string endpoint { get; }
+        public string endpoint { get; set; }
         [JsonProperty("identity")]
-        public string identity { get; }
+        public string identity { get; set; }
         [JsonProperty("binding_type")]
-        public string bindingType { get; }
+        public string bindingType { get; set; }
         [JsonProperty("address")]
-        public string address { get; }
+        public string address { get; set; }
         [JsonProperty("tags")]
-        public List<string> tags { get; }
+        public List<string> tags { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; }
+        public Uri url { get; set; }
     
         public BindingResource()
         {

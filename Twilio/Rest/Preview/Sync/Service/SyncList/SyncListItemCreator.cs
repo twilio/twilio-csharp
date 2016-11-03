@@ -27,8 +27,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public SyncListItemCreator(string serviceSid, string listSid, Object data)
         {
             this.serviceSid = serviceSid;
-            this.data = data;
             this.listSid = listSid;
+            this.data = data;
         }
     
         #if NET40

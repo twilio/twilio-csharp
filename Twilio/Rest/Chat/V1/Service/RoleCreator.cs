@@ -29,9 +29,9 @@ namespace Twilio.Rest.Chat.V1.Service
         public RoleCreator(string serviceSid, string friendlyName, RoleResource.RoleType type, List<string> permission)
         {
             this.serviceSid = serviceSid;
-            this.permission = permission;
-            this.type = type;
             this.friendlyName = friendlyName;
+            this.type = type;
+            this.permission = permission;
         }
     
         #if NET40

@@ -16,11 +16,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// </summary>
         ///
         /// <param name="credentialListSid"> The credential_list_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialReader capable of executing the read </returns> 
-        public static CredentialReader Reader(string credentialListSid, string accountSid=null)
+        public static CredentialReader Reader(string credentialListSid)
         {
-            return new CredentialReader(credentialListSid, accountSid:accountSid);
+            return new CredentialReader(credentialListSid);
         }
     
         /// <summary>
@@ -30,11 +29,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// <param name="credentialListSid"> The credential_list_sid </param>
         /// <param name="username"> The username </param>
         /// <param name="password"> The password </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialCreator capable of executing the create </returns> 
-        public static CredentialCreator Creator(string credentialListSid, string username, string password, string accountSid=null)
+        public static CredentialCreator Creator(string credentialListSid, string username, string password)
         {
-            return new CredentialCreator(credentialListSid, username, password, accountSid:accountSid);
+            return new CredentialCreator(credentialListSid, username, password);
         }
     
         /// <summary>
@@ -43,11 +41,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         ///
         /// <param name="credentialListSid"> The credential_list_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialFetcher capable of executing the fetch </returns> 
-        public static CredentialFetcher Fetcher(string credentialListSid, string sid, string accountSid=null)
+        public static CredentialFetcher Fetcher(string credentialListSid, string sid)
         {
-            return new CredentialFetcher(credentialListSid, sid, accountSid:accountSid);
+            return new CredentialFetcher(credentialListSid, sid);
         }
     
         /// <summary>
@@ -56,12 +53,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         ///
         /// <param name="credentialListSid"> The credential_list_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="password"> The password </param>
         /// <returns> CredentialUpdater capable of executing the update </returns> 
-        public static CredentialUpdater Updater(string credentialListSid, string sid, string accountSid=null, string password=null)
+        public static CredentialUpdater Updater(string credentialListSid, string sid)
         {
-            return new CredentialUpdater(credentialListSid, sid, accountSid:accountSid, password:password);
+            return new CredentialUpdater(credentialListSid, sid);
         }
     
         /// <summary>
@@ -70,11 +65,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         ///
         /// <param name="credentialListSid"> The credential_list_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
         /// <returns> CredentialDeleter capable of executing the delete </returns> 
-        public static CredentialDeleter Deleter(string credentialListSid, string sid, string accountSid=null)
+        public static CredentialDeleter Deleter(string credentialListSid, string sid)
         {
-            return new CredentialDeleter(credentialListSid, sid, accountSid:accountSid);
+            return new CredentialDeleter(credentialListSid, sid);
         }
     
         /// <summary>
@@ -97,19 +91,19 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         }
     
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         [JsonProperty("credential_list_sid")]
-        public string credentialListSid { get; }
+        public string credentialListSid { get; set; }
         [JsonProperty("username")]
-        public string username { get; }
+        public string username { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
     
         public CredentialResource()
         {

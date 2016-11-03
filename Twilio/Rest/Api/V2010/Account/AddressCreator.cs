@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class AddressCreator : Creator<AddressResource> 
     {
-        public string accountSid { get; }
+        public string accountSid { get; set; }
         public string customerName { get; }
         public string street { get; }
         public string city { get; }
@@ -31,18 +31,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="region"> The region </param>
         /// <param name="postalCode"> The postal_code </param>
         /// <param name="isoCountry"> The iso_country </param>
-        /// <param name="accountSid"> The account_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        public AddressCreator(string customerName, string street, string city, string region, string postalCode, string isoCountry, string accountSid=null, string friendlyName=null)
+        public AddressCreator(string customerName, string street, string city, string region, string postalCode, string isoCountry)
         {
-            this.city = city;
-            this.street = street;
             this.customerName = customerName;
-            this.accountSid = accountSid;
+            this.street = street;
+            this.city = city;
             this.region = region;
-            this.isoCountry = isoCountry;
-            this.friendlyName = friendlyName;
             this.postalCode = postalCode;
+            this.isoCountry = isoCountry;
         }
     
         #if NET40

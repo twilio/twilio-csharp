@@ -87,47 +87,40 @@ namespace Twilio.Rest.Api.V2010
         /// Create a new Twilio Subaccount from the account making the request
         /// </summary>
         ///
-        /// <param name="friendlyName"> A human readable description of the account </param>
         /// <returns> AccountCreator capable of executing the create </returns> 
-        public static AccountCreator Creator(string friendlyName=null)
+        public static AccountCreator Creator()
         {
-            return new AccountCreator(friendlyName:friendlyName);
+            return new AccountCreator();
         }
     
         /// <summary>
         /// Fetch the account specified by the provided Account Sid
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique Account Sid </param>
         /// <returns> AccountFetcher capable of executing the fetch </returns> 
-        public static AccountFetcher Fetcher(string sid=null)
+        public static AccountFetcher Fetcher()
         {
-            return new AccountFetcher(sid:sid);
+            return new AccountFetcher();
         }
     
         /// <summary>
         /// Retrieves a collection of Accounts belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="friendlyName"> FriendlyName to filter on </param>
-        /// <param name="status"> Status to filter on </param>
         /// <returns> AccountReader capable of executing the read </returns> 
-        public static AccountReader Reader(string friendlyName=null, AccountResource.Status status=null)
+        public static AccountReader Reader()
         {
-            return new AccountReader(friendlyName:friendlyName, status:status);
+            return new AccountReader();
         }
     
         /// <summary>
         /// Modify the properties of a given Account
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> FriendlyName to update </param>
-        /// <param name="status"> Status to update the Account with </param>
         /// <returns> AccountUpdater capable of executing the update </returns> 
-        public static AccountUpdater Updater(string sid=null, string friendlyName=null, AccountResource.Status status=null)
+        public static AccountUpdater Updater()
         {
-            return new AccountUpdater(sid:sid, friendlyName:friendlyName, status:status);
+            return new AccountUpdater();
         }
     
         /// <summary>
@@ -150,27 +143,27 @@ namespace Twilio.Rest.Api.V2010
         }
     
         [JsonProperty("auth_token")]
-        public string authToken { get; }
+        public string authToken { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; }
+        public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; }
+        public DateTime? dateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; }
+        public string friendlyName { get; set; }
         [JsonProperty("owner_account_sid")]
-        public string ownerAccountSid { get; }
+        public string ownerAccountSid { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; }
+        public string sid { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public AccountResource.Status status { get; }
+        public AccountResource.Status status { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; }
+        public Dictionary<string, string> subresourceUris { get; set; }
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public AccountResource.Type type { get; }
+        public AccountResource.Type type { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; }
+        public string uri { get; set; }
     
         public AccountResource()
         {
