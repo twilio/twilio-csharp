@@ -23,6 +23,7 @@
       </group>
     </dependencies>
     <releaseNotes>
+      * 5.0.0-rc9 - Update library to use C# conventions
       * 5.0.0-rc8 - Add Grant for Sync 
       * 5.0.0-rc7 - Update Sync, Wireless
       * 5.0.0-rc6 - Add Voice Grant
