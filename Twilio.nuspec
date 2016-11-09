@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Twilio</id>
-    <version>5.0.0-rc10</version>
+    <version>5.0.0-rca1</version>
     <authors>Twilio</authors>
     <description>Twilio REST API helper library</description>
     <language>en-US</language>
@@ -23,6 +23,7 @@
       </group>
     </dependencies>
     <releaseNotes>
+      * 5.0.0-rca1 - Use new versioning to avoid lexicographical sort 
       * 5.0.0-rc10 - Fix exception handling
       * 5.0.0-rc9 - Update library to use C# conventions
       * 5.0.0-rc8 - Add Grant for Sync 
