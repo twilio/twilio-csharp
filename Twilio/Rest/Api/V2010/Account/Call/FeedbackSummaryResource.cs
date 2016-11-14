@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class FeedbackSummaryResource : Resource 
     {
-        public sealed class Status : IStringEnum 
+        public sealed class FeedbackSummaryStatus : IStringEnum 
         {
             public const string Queued = "queued";
             public const string InProgress = "in-progress";
@@ -22,9 +22,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         
             private string _value;
             
-            public Status() {}
+            public FeedbackSummaryStatus() {}
             
-            public Status(string value)
+            public FeedbackSummaryStatus(string value)
             {
                 _value = value;
             }
@@ -34,12 +34,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 return _value;
             }
             
-            public static implicit operator Status(string value)
+            public static implicit operator FeedbackSummaryStatus(string value)
             {
-                return new Status(value);
+                return new FeedbackSummaryStatus(value);
             }
             
-            public static implicit operator string(Status value)
+            public static implicit operator string(FeedbackSummaryStatus value)
             {
                 return value.ToString();
             }
@@ -131,7 +131,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public DateTime? startDate { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public FeedbackSummaryResource.Status status { get; set; }
+        public FeedbackSummaryResource.FeedbackSummaryStatus status { get; set; }
     
         public FeedbackSummaryResource()
         {
@@ -165,7 +165,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                         [JsonProperty("start_date")]
                                         string startDate, 
                                         [JsonProperty("status")]
-                                        FeedbackSummaryResource.Status status)
+                                        FeedbackSummaryResource.FeedbackSummaryStatus status)
                                         {
             this.accountSid = accountSid;
             this.callCount = callCount;

@@ -18,7 +18,7 @@ namespace Twilio.Rest.Notify.V1.Service
         public List<string> identity { get; set; }
         public List<string> tag { get; set; }
         public string body { get; set; }
-        public NotificationResource.Priority priority { get; set; }
+        public NotificationResource.NotificationPriority priority { get; set; }
         public int? ttl { get; set; }
         public string title { get; set; }
         public string sound { get; set; }

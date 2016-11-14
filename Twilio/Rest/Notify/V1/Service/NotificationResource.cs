@@ -12,16 +12,16 @@ namespace Twilio.Rest.Notify.V1.Service
 
     public class NotificationResource : Resource 
     {
-        public sealed class Priority : IStringEnum 
+        public sealed class NotificationPriority : IStringEnum 
         {
             public const string High = "high";
             public const string Low = "low";
         
             private string _value;
             
-            public Priority() {}
+            public NotificationPriority() {}
             
-            public Priority(string value)
+            public NotificationPriority(string value)
             {
                 _value = value;
             }
@@ -31,12 +31,12 @@ namespace Twilio.Rest.Notify.V1.Service
                 return _value;
             }
             
-            public static implicit operator Priority(string value)
+            public static implicit operator NotificationPriority(string value)
             {
-                return new Priority(value);
+                return new NotificationPriority(value);
             }
             
-            public static implicit operator string(Priority value)
+            public static implicit operator string(NotificationPriority value)
             {
                 return value.ToString();
             }
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Notify.V1.Service
         public List<string> tags { get; set; }
         [JsonProperty("priority")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public NotificationResource.Priority priority { get; set; }
+        public NotificationResource.NotificationPriority priority { get; set; }
         [JsonProperty("ttl")]
         public int? ttl { get; set; }
         [JsonProperty("title")]
@@ -131,7 +131,7 @@ namespace Twilio.Rest.Notify.V1.Service
                                      [JsonProperty("tags")]
                                      List<string> tags, 
                                      [JsonProperty("priority")]
-                                     NotificationResource.Priority priority, 
+                                     NotificationResource.NotificationPriority priority, 
                                      [JsonProperty("ttl")]
                                      int? ttl, 
                                      [JsonProperty("title")]

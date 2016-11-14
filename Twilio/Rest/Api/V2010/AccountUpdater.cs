@@ -14,7 +14,7 @@ namespace Twilio.Rest.Api.V2010
     {
         public string sid { get; set; }
         public string friendlyName { get; set; }
-        public AccountResource.Status status { get; set; }
+        public AccountResource.AccountStatus status { get; set; }
     
         #if NET40
         /// <summary>

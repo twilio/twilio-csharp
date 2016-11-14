@@ -12,16 +12,16 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ConnectAppResource : Resource 
     {
-        public sealed class Permission : IStringEnum 
+        public sealed class ConnectAppPermission : IStringEnum 
         {
             public const string GetAll = "get-all";
             public const string PostAll = "post-all";
         
             private string _value;
             
-            public Permission() {}
+            public ConnectAppPermission() {}
             
-            public Permission(string value)
+            public ConnectAppPermission(string value)
             {
                 _value = value;
             }
@@ -31,12 +31,12 @@ namespace Twilio.Rest.Api.V2010.Account
                 return _value;
             }
             
-            public static implicit operator Permission(string value)
+            public static implicit operator ConnectAppPermission(string value)
             {
-                return new Permission(value);
+                return new ConnectAppPermission(value);
             }
             
-            public static implicit operator string(Permission value)
+            public static implicit operator string(ConnectAppPermission value)
             {
                 return value.ToString();
             }
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public Uri homepageUrl { get; set; }
         [JsonProperty("permissions")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public List<ConnectAppResource.Permission> permissions { get; set; }
+        public List<ConnectAppResource.ConnectAppPermission> permissions { get; set; }
         [JsonProperty("sid")]
         public string sid { get; set; }
         [JsonProperty("uri")]
@@ -145,7 +145,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                    [JsonProperty("homepage_url")]
                                    Uri homepageUrl, 
                                    [JsonProperty("permissions")]
-                                   List<ConnectAppResource.Permission> permissions, 
+                                   List<ConnectAppResource.ConnectAppPermission> permissions, 
                                    [JsonProperty("sid")]
                                    string sid, 
                                    [JsonProperty("uri")]

@@ -11,16 +11,16 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
 
     public class SyncListItemResource : Resource 
     {
-        public sealed class QueryResultOrder : IStringEnum 
+        public sealed class SyncListItemQueryResultOrder : IStringEnum 
         {
             public const string Asc = "asc";
             public const string Desc = "desc";
         
             private string _value;
             
-            public QueryResultOrder() {}
+            public SyncListItemQueryResultOrder() {}
             
-            public QueryResultOrder(string value)
+            public SyncListItemQueryResultOrder(string value)
             {
                 _value = value;
             }
@@ -30,12 +30,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
                 return _value;
             }
             
-            public static implicit operator QueryResultOrder(string value)
+            public static implicit operator SyncListItemQueryResultOrder(string value)
             {
-                return new QueryResultOrder(value);
+                return new SyncListItemQueryResultOrder(value);
             }
             
-            public static implicit operator string(QueryResultOrder value)
+            public static implicit operator string(SyncListItemQueryResultOrder value)
             {
                 return value.ToString();
             }
@@ -46,16 +46,16 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             }
         }
     
-        public sealed class QueryFromBoundType : IStringEnum 
+        public sealed class SyncListItemQueryFromBoundType : IStringEnum 
         {
             public const string Inclusive = "inclusive";
             public const string Exclusive = "exclusive";
         
             private string _value;
             
-            public QueryFromBoundType() {}
+            public SyncListItemQueryFromBoundType() {}
             
-            public QueryFromBoundType(string value)
+            public SyncListItemQueryFromBoundType(string value)
             {
                 _value = value;
             }
@@ -65,12 +65,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
                 return _value;
             }
             
-            public static implicit operator QueryFromBoundType(string value)
+            public static implicit operator SyncListItemQueryFromBoundType(string value)
             {
-                return new QueryFromBoundType(value);
+                return new SyncListItemQueryFromBoundType(value);
             }
             
-            public static implicit operator string(QueryFromBoundType value)
+            public static implicit operator string(SyncListItemQueryFromBoundType value)
             {
                 return value.ToString();
             }

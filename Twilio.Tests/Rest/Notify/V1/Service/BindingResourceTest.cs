@@ -125,7 +125,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service
                                       "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings");
             request.AddPostParam("Endpoint", Serialize("endpoint"));
             request.AddPostParam("Identity", Serialize("identity"));
-            request.AddPostParam("BindingType", Serialize(BindingResource.BindingType.Apn));
+            request.AddPostParam("BindingType", Serialize(BindingResource.BindingBindingType.Apn));
             request.AddPostParam("Address", Serialize("address"));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
@@ -134,7 +134,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service
             
             try
             {
-                BindingResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "endpoint", "identity", BindingResource.BindingType.Apn, "address").Create(twilioRestClient);
+                BindingResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "endpoint", "identity", BindingResource.BindingBindingType.Apn, "address").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -164,7 +164,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address\": \"address\",\"binding_type\": \"binding_type\",\"credential_sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"endpoint\": \"endpoint\",\"identity\": \"identity\",\"notification_protocol_version\": \"notification_protocol_version\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"tags\": [\"tags\"],\"url\": \"http://www.example.com\"}"));
             
-            var response = BindingResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "endpoint", "identity", BindingResource.BindingType.Apn, "address").Create(twilioRestClient);
+            var response = BindingResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "endpoint", "identity", BindingResource.BindingBindingType.Apn, "address").Create(twilioRestClient);
             Assert.NotNull(response);
         }
     

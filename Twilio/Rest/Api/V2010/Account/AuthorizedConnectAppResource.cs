@@ -12,16 +12,16 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class AuthorizedConnectAppResource : Resource 
     {
-        public sealed class Permission : IStringEnum 
+        public sealed class AuthorizedConnectAppPermission : IStringEnum 
         {
             public const string GetAll = "get-all";
             public const string PostAll = "post-all";
         
             private string _value;
             
-            public Permission() {}
+            public AuthorizedConnectAppPermission() {}
             
-            public Permission(string value)
+            public AuthorizedConnectAppPermission(string value)
             {
                 _value = value;
             }
@@ -31,12 +31,12 @@ namespace Twilio.Rest.Api.V2010.Account
                 return _value;
             }
             
-            public static implicit operator Permission(string value)
+            public static implicit operator AuthorizedConnectAppPermission(string value)
             {
-                return new Permission(value);
+                return new AuthorizedConnectAppPermission(value);
             }
             
-            public static implicit operator string(Permission value)
+            public static implicit operator string(AuthorizedConnectAppPermission value)
             {
                 return value.ToString();
             }
@@ -105,7 +105,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public DateTime? dateUpdated { get; set; }
         [JsonProperty("permissions")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public List<AuthorizedConnectAppResource.Permission> permissions { get; set; }
+        public List<AuthorizedConnectAppResource.AuthorizedConnectAppPermission> permissions { get; set; }
         [JsonProperty("uri")]
         public string uri { get; set; }
     
@@ -131,7 +131,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                              [JsonProperty("date_updated")]
                                              string dateUpdated, 
                                              [JsonProperty("permissions")]
-                                             List<AuthorizedConnectAppResource.Permission> permissions, 
+                                             List<AuthorizedConnectAppResource.AuthorizedConnectAppPermission> permissions, 
                                              [JsonProperty("uri")]
                                              string uri)
                                              {

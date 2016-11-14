@@ -15,7 +15,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
     public class ThisMonthReader : Reader<ThisMonthResource> 
     {
         public string accountSid { get; set; }
-        public ThisMonthResource.Category category { get; set; }
+        public ThisMonthResource.ThisMonthCategory category { get; set; }
         public DateTime? startDate { get; set; }
         public DateTime? endDate { get; set; }
     

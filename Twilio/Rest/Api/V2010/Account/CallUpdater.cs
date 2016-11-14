@@ -17,7 +17,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public string sid { get; }
         public Uri url { get; set; }
         public Twilio.Http.HttpMethod method { get; set; }
-        public CallResource.Status status { get; set; }
+        public CallResource.CallStatus status { get; set; }
         public Uri fallbackUrl { get; set; }
         public Twilio.Http.HttpMethod fallbackMethod { get; set; }
         public Uri statusCallback { get; set; }

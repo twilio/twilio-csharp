@@ -17,7 +17,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public Twilio.Types.PhoneNumber to { get; set; }
         public Twilio.Types.PhoneNumber from { get; set; }
         public string parentCallSid { get; set; }
-        public CallResource.Status status { get; set; }
+        public CallResource.CallStatus status { get; set; }
         public DateTime? startTime { get; set; }
         public DateTime? startTimeAfter { get; set; }
         public DateTime? startTimeBefore { get; set; }

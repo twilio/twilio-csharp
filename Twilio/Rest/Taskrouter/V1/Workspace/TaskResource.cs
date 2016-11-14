@@ -11,7 +11,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class TaskResource : Resource 
     {
-        public sealed class Status : IStringEnum 
+        public sealed class TaskStatus : IStringEnum 
         {
             public const string Pending = "pending";
             public const string Reserved = "reserved";
@@ -21,9 +21,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         
             private string _value;
             
-            public Status() {}
+            public TaskStatus() {}
             
-            public Status(string value)
+            public TaskStatus(string value)
             {
                 _value = value;
             }
@@ -33,12 +33,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 return _value;
             }
             
-            public static implicit operator Status(string value)
+            public static implicit operator TaskStatus(string value)
             {
-                return new Status(value);
+                return new TaskStatus(value);
             }
             
-            public static implicit operator string(Status value)
+            public static implicit operator string(TaskStatus value)
             {
                 return value.ToString();
             }
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public int? age { get; set; }
         [JsonProperty("assignment_status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TaskResource.Status assignmentStatus { get; set; }
+        public TaskResource.TaskStatus assignmentStatus { get; set; }
         [JsonProperty("attributes")]
         public string attributes { get; set; }
         [JsonProperty("date_created")]
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                              [JsonProperty("age")]
                              int? age, 
                              [JsonProperty("assignment_status")]
-                             TaskResource.Status assignmentStatus, 
+                             TaskResource.TaskStatus assignmentStatus, 
                              [JsonProperty("attributes")]
                              string attributes, 
                              [JsonProperty("date_created")]

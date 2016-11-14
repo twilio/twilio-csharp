@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
 
     public class MonthlyResource : Resource 
     {
-        public sealed class Category : IStringEnum 
+        public sealed class MonthlyCategory : IStringEnum 
         {
             public const string AuthyAuthentications = "authy-authentications";
             public const string AuthyCallsOutbound = "authy-calls-outbound";
@@ -107,9 +107,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         
             private string _value;
             
-            public Category() {}
+            public MonthlyCategory() {}
             
-            public Category(string value)
+            public MonthlyCategory(string value)
             {
                 _value = value;
             }
@@ -119,12 +119,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
                 return _value;
             }
             
-            public static implicit operator Category(string value)
+            public static implicit operator MonthlyCategory(string value)
             {
-                return new Category(value);
+                return new MonthlyCategory(value);
             }
             
-            public static implicit operator string(Category value)
+            public static implicit operator string(MonthlyCategory value)
             {
                 return value.ToString();
             }
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         public string apiVersion { get; set; }
         [JsonProperty("category")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public MonthlyResource.Category category { get; set; }
+        public MonthlyResource.MonthlyCategory category { get; set; }
         [JsonProperty("count")]
         public string count { get; set; }
         [JsonProperty("count_unit")]
@@ -204,7 +204,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
                                 [JsonProperty("api_version")]
                                 string apiVersion, 
                                 [JsonProperty("category")]
-                                MonthlyResource.Category category, 
+                                MonthlyResource.MonthlyCategory category, 
                                 [JsonProperty("count")]
                                 string count, 
                                 [JsonProperty("count_unit")]

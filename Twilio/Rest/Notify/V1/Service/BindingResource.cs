@@ -12,7 +12,7 @@ namespace Twilio.Rest.Notify.V1.Service
 
     public class BindingResource : Resource 
     {
-        public sealed class BindingType : IStringEnum 
+        public sealed class BindingBindingType : IStringEnum 
         {
             public const string Apn = "apn";
             public const string Gcm = "gcm";
@@ -21,9 +21,9 @@ namespace Twilio.Rest.Notify.V1.Service
         
             private string _value;
             
-            public BindingType() {}
+            public BindingBindingType() {}
             
-            public BindingType(string value)
+            public BindingBindingType(string value)
             {
                 _value = value;
             }
@@ -33,12 +33,12 @@ namespace Twilio.Rest.Notify.V1.Service
                 return _value;
             }
             
-            public static implicit operator BindingType(string value)
+            public static implicit operator BindingBindingType(string value)
             {
-                return new BindingType(value);
+                return new BindingBindingType(value);
             }
             
-            public static implicit operator string(BindingType value)
+            public static implicit operator string(BindingBindingType value)
             {
                 return value.ToString();
             }
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="bindingType"> The binding_type </param>
         /// <param name="address"> The address </param>
         /// <returns> BindingCreator capable of executing the create </returns> 
-        public static BindingCreator Creator(string serviceSid, string endpoint, string identity, BindingResource.BindingType bindingType, string address)
+        public static BindingCreator Creator(string serviceSid, string endpoint, string identity, BindingResource.BindingBindingType bindingType, string address)
         {
             return new BindingCreator(serviceSid, endpoint, identity, bindingType, address);
         }

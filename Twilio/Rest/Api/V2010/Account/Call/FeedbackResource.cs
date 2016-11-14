@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class FeedbackResource : Resource 
     {
-        public sealed class Issues : IStringEnum 
+        public sealed class FeedbackIssues : IStringEnum 
         {
             public const string AudioLatency = "audio-latency";
             public const string DigitsNotCaptured = "digits-not-captured";
@@ -25,9 +25,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         
             private string _value;
             
-            public Issues() {}
+            public FeedbackIssues() {}
             
-            public Issues(string value)
+            public FeedbackIssues(string value)
             {
                 _value = value;
             }
@@ -37,12 +37,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 return _value;
             }
             
-            public static implicit operator Issues(string value)
+            public static implicit operator FeedbackIssues(string value)
             {
-                return new Issues(value);
+                return new FeedbackIssues(value);
             }
             
-            public static implicit operator string(Issues value)
+            public static implicit operator string(FeedbackIssues value)
             {
                 return value.ToString();
             }
@@ -115,7 +115,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public DateTime? dateUpdated { get; set; }
         [JsonProperty("issues")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public List<FeedbackResource.Issues> issues { get; set; }
+        public List<FeedbackResource.FeedbackIssues> issues { get; set; }
         [JsonProperty("quality_score")]
         public int? qualityScore { get; set; }
         [JsonProperty("sid")]
@@ -133,7 +133,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                  [JsonProperty("date_updated")]
                                  string dateUpdated, 
                                  [JsonProperty("issues")]
-                                 List<FeedbackResource.Issues> issues, 
+                                 List<FeedbackResource.FeedbackIssues> issues, 
                                  [JsonProperty("quality_score")]
                                  int? qualityScore, 
                                  [JsonProperty("sid")]

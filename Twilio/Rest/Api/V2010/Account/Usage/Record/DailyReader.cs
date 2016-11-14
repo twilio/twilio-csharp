@@ -15,7 +15,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
     public class DailyReader : Reader<DailyResource> 
     {
         public string accountSid { get; set; }
-        public DailyResource.Category category { get; set; }
+        public DailyResource.DailyCategory category { get; set; }
         public DateTime? startDate { get; set; }
         public DateTime? endDate { get; set; }
     

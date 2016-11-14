@@ -15,7 +15,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
     public class AllTimeReader : Reader<AllTimeResource> 
     {
         public string accountSid { get; set; }
-        public AllTimeResource.Category category { get; set; }
+        public AllTimeResource.AllTimeCategory category { get; set; }
         public DateTime? startDate { get; set; }
         public DateTime? endDate { get; set; }
     

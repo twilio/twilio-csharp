@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010
 
     public class AccountResource : Resource 
     {
-        public sealed class Status : IStringEnum 
+        public sealed class AccountStatus : IStringEnum 
         {
             public const string Active = "active";
             public const string Suspended = "suspended";
@@ -20,9 +20,9 @@ namespace Twilio.Rest.Api.V2010
         
             private string _value;
             
-            public Status() {}
+            public AccountStatus() {}
             
-            public Status(string value)
+            public AccountStatus(string value)
             {
                 _value = value;
             }
@@ -32,12 +32,12 @@ namespace Twilio.Rest.Api.V2010
                 return _value;
             }
             
-            public static implicit operator Status(string value)
+            public static implicit operator AccountStatus(string value)
             {
-                return new Status(value);
+                return new AccountStatus(value);
             }
             
-            public static implicit operator string(Status value)
+            public static implicit operator string(AccountStatus value)
             {
                 return value.ToString();
             }
@@ -48,16 +48,16 @@ namespace Twilio.Rest.Api.V2010
             }
         }
     
-        public sealed class Type : IStringEnum 
+        public sealed class AccountType : IStringEnum 
         {
             public const string Trial = "Trial";
             public const string Full = "Full";
         
             private string _value;
             
-            public Type() {}
+            public AccountType() {}
             
-            public Type(string value)
+            public AccountType(string value)
             {
                 _value = value;
             }
@@ -67,12 +67,12 @@ namespace Twilio.Rest.Api.V2010
                 return _value;
             }
             
-            public static implicit operator Type(string value)
+            public static implicit operator AccountType(string value)
             {
-                return new Type(value);
+                return new AccountType(value);
             }
             
-            public static implicit operator string(Type value)
+            public static implicit operator string(AccountType value)
             {
                 return value.ToString();
             }
@@ -156,12 +156,12 @@ namespace Twilio.Rest.Api.V2010
         public string sid { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public AccountResource.Status status { get; set; }
+        public AccountResource.AccountStatus status { get; set; }
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> subresourceUris { get; set; }
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public AccountResource.Type type { get; set; }
+        public AccountResource.AccountType type { get; set; }
         [JsonProperty("uri")]
         public string uri { get; set; }
     
@@ -183,11 +183,11 @@ namespace Twilio.Rest.Api.V2010
                                 [JsonProperty("sid")]
                                 string sid, 
                                 [JsonProperty("status")]
-                                AccountResource.Status status, 
+                                AccountResource.AccountStatus status, 
                                 [JsonProperty("subresource_uris")]
                                 Dictionary<string, string> subresourceUris, 
                                 [JsonProperty("type")]
-                                AccountResource.Type type, 
+                                AccountResource.AccountType type, 
                                 [JsonProperty("uri")]
                                 string uri)
                                 {

@@ -15,7 +15,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public string workspaceSid { get; }
         public string sid { get; }
         public string attributes { get; set; }
-        public TaskResource.Status assignmentStatus { get; set; }
+        public TaskResource.TaskStatus assignmentStatus { get; set; }
         public string reason { get; set; }
         public int? priority { get; set; }
         public string taskChannel { get; set; }

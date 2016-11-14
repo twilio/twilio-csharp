@@ -14,7 +14,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
     {
         public string accountSid { get; set; }
         public string messageSid { get; }
-        public FeedbackResource.Outcome outcome { get; set; }
+        public FeedbackResource.FeedbackOutcome outcome { get; set; }
     
         /// <summary>
         /// Construct a new FeedbackCreator

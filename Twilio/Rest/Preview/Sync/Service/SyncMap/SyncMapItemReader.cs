@@ -14,9 +14,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
     {
         public string serviceSid { get; }
         public string mapSid { get; }
-        public SyncMapItemResource.QueryResultOrder order { get; set; }
+        public SyncMapItemResource.SyncMapItemQueryResultOrder order { get; set; }
         public string from { get; set; }
-        public SyncMapItemResource.QueryFromBoundType bounds { get; set; }
+        public SyncMapItemResource.SyncMapItemQueryFromBoundType bounds { get; set; }
     
         /// <summary>
         /// Construct a new SyncMapItemReader

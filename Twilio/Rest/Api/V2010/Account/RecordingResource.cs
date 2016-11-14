@@ -11,7 +11,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class RecordingResource : Resource 
     {
-        public sealed class Source : IStringEnum 
+        public sealed class RecordingSource : IStringEnum 
         {
             public const string Dialverb = "DialVerb";
             public const string Conference = "Conference";
@@ -21,9 +21,9 @@ namespace Twilio.Rest.Api.V2010.Account
         
             private string _value;
             
-            public Source() {}
+            public RecordingSource() {}
             
-            public Source(string value)
+            public RecordingSource(string value)
             {
                 _value = value;
             }
@@ -33,12 +33,12 @@ namespace Twilio.Rest.Api.V2010.Account
                 return _value;
             }
             
-            public static implicit operator Source(string value)
+            public static implicit operator RecordingSource(string value)
             {
-                return new Source(value);
+                return new RecordingSource(value);
             }
             
-            public static implicit operator string(Source value)
+            public static implicit operator string(RecordingSource value)
             {
                 return value.ToString();
             }
@@ -49,16 +49,16 @@ namespace Twilio.Rest.Api.V2010.Account
             }
         }
     
-        public sealed class Status : IStringEnum 
+        public sealed class RecordingStatus : IStringEnum 
         {
             public const string Processing = "processing";
             public const string Completed = "completed";
         
             private string _value;
             
-            public Status() {}
+            public RecordingStatus() {}
             
-            public Status(string value)
+            public RecordingStatus(string value)
             {
                 _value = value;
             }
@@ -68,12 +68,12 @@ namespace Twilio.Rest.Api.V2010.Account
                 return _value;
             }
             
-            public static implicit operator Status(string value)
+            public static implicit operator RecordingStatus(string value)
             {
-                return new Status(value);
+                return new RecordingStatus(value);
             }
             
-            public static implicit operator string(Status value)
+            public static implicit operator string(RecordingStatus value)
             {
                 return value.ToString();
             }
@@ -155,12 +155,12 @@ namespace Twilio.Rest.Api.V2010.Account
         public string priceUnit { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public RecordingResource.Status status { get; set; }
+        public RecordingResource.RecordingStatus status { get; set; }
         [JsonProperty("channels")]
         public int? channels { get; set; }
         [JsonProperty("source")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public RecordingResource.Source source { get; set; }
+        public RecordingResource.RecordingSource source { get; set; }
         [JsonProperty("uri")]
         public string uri { get; set; }
     
@@ -188,11 +188,11 @@ namespace Twilio.Rest.Api.V2010.Account
                                   [JsonProperty("price_unit")]
                                   string priceUnit, 
                                   [JsonProperty("status")]
-                                  RecordingResource.Status status, 
+                                  RecordingResource.RecordingStatus status, 
                                   [JsonProperty("channels")]
                                   int? channels, 
                                   [JsonProperty("source")]
-                                  RecordingResource.Source source, 
+                                  RecordingResource.RecordingSource source, 
                                   [JsonProperty("uri")]
                                   string uri)
                                   {

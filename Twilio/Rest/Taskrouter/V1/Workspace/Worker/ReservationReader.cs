@@ -14,7 +14,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
     {
         public string workspaceSid { get; }
         public string workerSid { get; }
-        public ReservationResource.Status reservationStatus { get; set; }
+        public ReservationResource.ReservationStatus reservationStatus { get; set; }
     
         /// <summary>
         /// Construct a new ReservationReader

@@ -12,7 +12,7 @@ namespace Twilio.Rest.Lookups.V1
 
     public class PhoneNumberResource : Resource 
     {
-        public sealed class Type : IStringEnum 
+        public sealed class PhoneNumberType : IStringEnum 
         {
             public const string Landline = "landline";
             public const string Mobile = "mobile";
@@ -20,9 +20,9 @@ namespace Twilio.Rest.Lookups.V1
         
             private string _value;
             
-            public Type() {}
+            public PhoneNumberType() {}
             
-            public Type(string value)
+            public PhoneNumberType(string value)
             {
                 _value = value;
             }
@@ -32,12 +32,12 @@ namespace Twilio.Rest.Lookups.V1
                 return _value;
             }
             
-            public static implicit operator Type(string value)
+            public static implicit operator PhoneNumberType(string value)
             {
-                return new Type(value);
+                return new PhoneNumberType(value);
             }
             
-            public static implicit operator string(Type value)
+            public static implicit operator string(PhoneNumberType value)
             {
                 return value.ToString();
             }

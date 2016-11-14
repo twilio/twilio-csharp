@@ -23,7 +23,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public string description { get; set; }
         public string friendlyName { get; set; }
         public Uri homepageUrl { get; set; }
-        public List<ConnectAppResource.Permission> permissions { get; set; }
+        public List<ConnectAppResource.ConnectAppPermission> permissions { get; set; }
     
         /// <summary>
         /// Construct a new ConnectAppUpdater

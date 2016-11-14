@@ -11,7 +11,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
     public class ParticipantResource : Resource 
     {
-        public sealed class Status : IStringEnum 
+        public sealed class ParticipantStatus : IStringEnum 
         {
             public const string Queued = "queued";
             public const string Connecting = "connecting";
@@ -22,9 +22,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         
             private string _value;
             
-            public Status() {}
+            public ParticipantStatus() {}
             
-            public Status(string value)
+            public ParticipantStatus(string value)
             {
                 _value = value;
             }
@@ -34,12 +34,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                 return _value;
             }
             
-            public static implicit operator Status(string value)
+            public static implicit operator ParticipantStatus(string value)
             {
-                return new Status(value);
+                return new ParticipantStatus(value);
             }
             
-            public static implicit operator string(Status value)
+            public static implicit operator string(ParticipantStatus value)
             {
                 return value.ToString();
             }
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             }
         }
     
-        public sealed class Beep : IStringEnum 
+        public sealed class ParticipantBeep : IStringEnum 
         {
             public const string True = "true";
             public const string False = "false";
@@ -59,9 +59,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         
             private string _value;
             
-            public Beep() {}
+            public ParticipantBeep() {}
             
-            public Beep(string value)
+            public ParticipantBeep(string value)
             {
                 _value = value;
             }
@@ -71,12 +71,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                 return _value;
             }
             
-            public static implicit operator Beep(string value)
+            public static implicit operator ParticipantBeep(string value)
             {
-                return new Beep(value);
+                return new ParticipantBeep(value);
             }
             
-            public static implicit operator string(Beep value)
+            public static implicit operator string(ParticipantBeep value)
             {
                 return value.ToString();
             }
@@ -87,16 +87,16 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             }
         }
     
-        public sealed class ConferenceRecord : IStringEnum 
+        public sealed class ParticipantConferenceRecord : IStringEnum 
         {
             public const string DoNotRecord = "do-not-record";
             public const string RecordFromStart = "record-from-start";
         
             private string _value;
             
-            public ConferenceRecord() {}
+            public ParticipantConferenceRecord() {}
             
-            public ConferenceRecord(string value)
+            public ParticipantConferenceRecord(string value)
             {
                 _value = value;
             }
@@ -106,12 +106,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                 return _value;
             }
             
-            public static implicit operator ConferenceRecord(string value)
+            public static implicit operator ParticipantConferenceRecord(string value)
             {
-                return new ConferenceRecord(value);
+                return new ParticipantConferenceRecord(value);
             }
             
-            public static implicit operator string(ConferenceRecord value)
+            public static implicit operator string(ParticipantConferenceRecord value)
             {
                 return value.ToString();
             }
@@ -221,7 +221,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         public bool? startConferenceOnEnter { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ParticipantResource.Status status { get; set; }
+        public ParticipantResource.ParticipantStatus status { get; set; }
         [JsonProperty("uri")]
         public string uri { get; set; }
     
@@ -249,7 +249,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                                     [JsonProperty("start_conference_on_enter")]
                                     bool? startConferenceOnEnter, 
                                     [JsonProperty("status")]
-                                    ParticipantResource.Status status, 
+                                    ParticipantResource.ParticipantStatus status, 
                                     [JsonProperty("uri")]
                                     string uri)
                                     {

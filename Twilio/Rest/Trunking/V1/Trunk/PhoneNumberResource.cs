@@ -12,7 +12,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class PhoneNumberResource : Resource 
     {
-        public sealed class AddressRequirement : IStringEnum 
+        public sealed class PhoneNumberAddressRequirement : IStringEnum 
         {
             public const string None = "none";
             public const string Any = "any";
@@ -21,9 +21,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         
             private string _value;
             
-            public AddressRequirement() {}
+            public PhoneNumberAddressRequirement() {}
             
-            public AddressRequirement(string value)
+            public PhoneNumberAddressRequirement(string value)
             {
                 _value = value;
             }
@@ -33,12 +33,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 return _value;
             }
             
-            public static implicit operator AddressRequirement(string value)
+            public static implicit operator PhoneNumberAddressRequirement(string value)
             {
-                return new AddressRequirement(value);
+                return new PhoneNumberAddressRequirement(value);
             }
             
-            public static implicit operator string(AddressRequirement value)
+            public static implicit operator string(PhoneNumberAddressRequirement value)
             {
                 return value.ToString();
             }
@@ -119,7 +119,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public string accountSid { get; set; }
         [JsonProperty("address_requirements")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public PhoneNumberResource.AddressRequirement addressRequirements { get; set; }
+        public PhoneNumberResource.PhoneNumberAddressRequirement addressRequirements { get; set; }
         [JsonProperty("api_version")]
         public string apiVersion { get; set; }
         [JsonProperty("beta")]
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         private PhoneNumberResource([JsonProperty("account_sid")]
                                     string accountSid, 
                                     [JsonProperty("address_requirements")]
-                                    PhoneNumberResource.AddressRequirement addressRequirements, 
+                                    PhoneNumberResource.PhoneNumberAddressRequirement addressRequirements, 
                                     [JsonProperty("api_version")]
                                     string apiVersion, 
                                     [JsonProperty("beta")]

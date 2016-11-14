@@ -14,9 +14,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
     {
         public string serviceSid { get; }
         public string listSid { get; }
-        public SyncListItemResource.QueryResultOrder order { get; set; }
+        public SyncListItemResource.SyncListItemQueryResultOrder order { get; set; }
         public string from { get; set; }
-        public SyncListItemResource.QueryFromBoundType bounds { get; set; }
+        public SyncListItemResource.SyncListItemQueryFromBoundType bounds { get; set; }
     
         /// <summary>
         /// Construct a new SyncListItemReader

@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ConferenceResource : Resource 
     {
-        public sealed class Status : IStringEnum 
+        public sealed class ConferenceStatus : IStringEnum 
         {
             public const string Init = "init";
             public const string InProgress = "in-progress";
@@ -20,9 +20,9 @@ namespace Twilio.Rest.Api.V2010.Account
         
             private string _value;
             
-            public Status() {}
+            public ConferenceStatus() {}
             
-            public Status(string value)
+            public ConferenceStatus(string value)
             {
                 _value = value;
             }
@@ -32,12 +32,12 @@ namespace Twilio.Rest.Api.V2010.Account
                 return _value;
             }
             
-            public static implicit operator Status(string value)
+            public static implicit operator ConferenceStatus(string value)
             {
-                return new Status(value);
+                return new ConferenceStatus(value);
             }
             
-            public static implicit operator string(Status value)
+            public static implicit operator string(ConferenceStatus value)
             {
                 return value.ToString();
             }
@@ -102,7 +102,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public string sid { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ConferenceResource.Status status { get; set; }
+        public ConferenceResource.ConferenceStatus status { get; set; }
         [JsonProperty("uri")]
         public string uri { get; set; }
         [JsonProperty("subresource_uris")]
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                    [JsonProperty("sid")]
                                    string sid, 
                                    [JsonProperty("status")]
-                                   ConferenceResource.Status status, 
+                                   ConferenceResource.ConferenceStatus status, 
                                    [JsonProperty("uri")]
                                    string uri, 
                                    [JsonProperty("subresource_uris")]

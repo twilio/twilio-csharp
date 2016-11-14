@@ -16,11 +16,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         public string accountSid { get; set; }
         public Uri callbackUrl { get; }
         public string triggerValue { get; }
-        public TriggerResource.UsageCategory usageCategory { get; }
+        public TriggerResource.TriggerUsageCategory usageCategory { get; }
         public Twilio.Http.HttpMethod callbackMethod { get; set; }
         public string friendlyName { get; set; }
-        public TriggerResource.Recurring recurring { get; set; }
-        public TriggerResource.TriggerField triggerBy { get; set; }
+        public TriggerResource.TriggerRecurring recurring { get; set; }
+        public TriggerResource.TriggerTriggerField triggerBy { get; set; }
     
         /// <summary>
         /// Construct a new TriggerCreator
@@ -29,7 +29,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
         /// <param name="triggerValue"> the value at which the trigger will fire </param>
         /// <param name="usageCategory"> The usage category the trigger watches </param>
-        public TriggerCreator(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory)
+        public TriggerCreator(Uri callbackUrl, string triggerValue, TriggerResource.TriggerUsageCategory usageCategory)
         {
             this.callbackUrl = callbackUrl;
             this.triggerValue = triggerValue;

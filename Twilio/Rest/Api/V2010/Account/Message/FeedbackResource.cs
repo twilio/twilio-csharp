@@ -11,16 +11,16 @@ namespace Twilio.Rest.Api.V2010.Account.Message
 
     public class FeedbackResource : Resource 
     {
-        public sealed class Outcome : IStringEnum 
+        public sealed class FeedbackOutcome : IStringEnum 
         {
             public const string Confirmed = "confirmed";
             public const string Umconfirmed = "umconfirmed";
         
             private string _value;
             
-            public Outcome() {}
+            public FeedbackOutcome() {}
             
-            public Outcome(string value)
+            public FeedbackOutcome(string value)
             {
                 _value = value;
             }
@@ -30,12 +30,12 @@ namespace Twilio.Rest.Api.V2010.Account.Message
                 return _value;
             }
             
-            public static implicit operator Outcome(string value)
+            public static implicit operator FeedbackOutcome(string value)
             {
-                return new Outcome(value);
+                return new FeedbackOutcome(value);
             }
             
-            public static implicit operator string(Outcome value)
+            public static implicit operator string(FeedbackOutcome value)
             {
                 return value.ToString();
             }
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         public string messageSid { get; set; }
         [JsonProperty("outcome")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public FeedbackResource.Outcome outcome { get; set; }
+        public FeedbackResource.FeedbackOutcome outcome { get; set; }
         [JsonProperty("date_created")]
         public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
@@ -100,7 +100,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
                                  [JsonProperty("message_sid")]
                                  string messageSid, 
                                  [JsonProperty("outcome")]
-                                 FeedbackResource.Outcome outcome, 
+                                 FeedbackResource.FeedbackOutcome outcome, 
                                  [JsonProperty("date_created")]
                                  string dateCreated, 
                                  [JsonProperty("date_updated")]

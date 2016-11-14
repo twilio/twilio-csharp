@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class MessageResource : Resource 
     {
-        public sealed class Status : IStringEnum 
+        public sealed class MessageStatus : IStringEnum 
         {
             public const string Queued = "queued";
             public const string Sending = "sending";
@@ -25,9 +25,9 @@ namespace Twilio.Rest.Api.V2010.Account
         
             private string _value;
             
-            public Status() {}
+            public MessageStatus() {}
             
-            public Status(string value)
+            public MessageStatus(string value)
             {
                 _value = value;
             }
@@ -37,12 +37,12 @@ namespace Twilio.Rest.Api.V2010.Account
                 return _value;
             }
             
-            public static implicit operator Status(string value)
+            public static implicit operator MessageStatus(string value)
             {
-                return new Status(value);
+                return new MessageStatus(value);
             }
             
-            public static implicit operator string(Status value)
+            public static implicit operator string(MessageStatus value)
             {
                 return value.ToString();
             }
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Api.V2010.Account
             }
         }
     
-        public sealed class Direction : IStringEnum 
+        public sealed class MessageDirection : IStringEnum 
         {
             public const string Inbound = "inbound";
             public const string OutboundApi = "outbound-api";
@@ -62,9 +62,9 @@ namespace Twilio.Rest.Api.V2010.Account
         
             private string _value;
             
-            public Direction() {}
+            public MessageDirection() {}
             
-            public Direction(string value)
+            public MessageDirection(string value)
             {
                 _value = value;
             }
@@ -74,12 +74,12 @@ namespace Twilio.Rest.Api.V2010.Account
                 return _value;
             }
             
-            public static implicit operator Direction(string value)
+            public static implicit operator MessageDirection(string value)
             {
-                return new Direction(value);
+                return new MessageDirection(value);
             }
             
-            public static implicit operator string(Direction value)
+            public static implicit operator string(MessageDirection value)
             {
                 return value.ToString();
             }
@@ -218,7 +218,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public DateTime? dateSent { get; set; }
         [JsonProperty("direction")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public MessageResource.Direction direction { get; set; }
+        public MessageResource.MessageDirection direction { get; set; }
         [JsonProperty("error_code")]
         public int? errorCode { get; set; }
         [JsonProperty("error_message")]
@@ -238,7 +238,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public string sid { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public MessageResource.Status status { get; set; }
+        public MessageResource.MessageStatus status { get; set; }
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> subresourceUris { get; set; }
         [JsonProperty("to")]
@@ -264,7 +264,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                 [JsonProperty("date_sent")]
                                 string dateSent, 
                                 [JsonProperty("direction")]
-                                MessageResource.Direction direction, 
+                                MessageResource.MessageDirection direction, 
                                 [JsonProperty("error_code")]
                                 int? errorCode, 
                                 [JsonProperty("error_message")]
@@ -282,7 +282,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                 [JsonProperty("sid")]
                                 string sid, 
                                 [JsonProperty("status")]
-                                MessageResource.Status status, 
+                                MessageResource.MessageStatus status, 
                                 [JsonProperty("subresource_uris")]
                                 Dictionary<string, string> subresourceUris, 
                                 [JsonProperty("to")]

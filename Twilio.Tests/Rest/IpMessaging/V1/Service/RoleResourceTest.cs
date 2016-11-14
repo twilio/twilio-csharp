@@ -124,7 +124,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
                                       Domains.IP_MESSAGING,
                                       "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles");
             request.AddPostParam("FriendlyName", Serialize("friendlyName"));
-            request.AddPostParam("Type", Serialize(RoleResource.RoleType.Channel));
+            request.AddPostParam("Type", Serialize(RoleResource.RoleRoleType.Channel));
             request.AddPostParam("Permission", Serialize(new List<string> { "permission" }));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
@@ -133,7 +133,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
             
             try
             {
-                RoleResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName", RoleResource.RoleType.Channel, new List<string> { "permission" }).Create(twilioRestClient);
+                RoleResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName", RoleResource.RoleRoleType.Channel, new List<string> { "permission" }).Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -163,7 +163,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"channel user\",\"type\": \"channel\",\"permissions\": [\"sendMessage\",\"leaveChannel\",\"editOwnMessage\",\"deleteOwnMessage\"],\"date_created\": \"2016-03-03T19:47:15Z\",\"date_updated\": \"2016-03-03T19:47:15Z\",\"url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = RoleResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName", RoleResource.RoleType.Channel, new List<string> { "permission" }).Create(twilioRestClient);
+            var response = RoleResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName", RoleResource.RoleRoleType.Channel, new List<string> { "permission" }).Create(twilioRestClient);
             Assert.NotNull(response);
         }
     

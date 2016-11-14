@@ -13,9 +13,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
     public class TriggerReader : Reader<TriggerResource> 
     {
         public string accountSid { get; set; }
-        public TriggerResource.Recurring recurring { get; set; }
-        public TriggerResource.TriggerField triggerBy { get; set; }
-        public TriggerResource.UsageCategory usageCategory { get; set; }
+        public TriggerResource.TriggerRecurring recurring { get; set; }
+        public TriggerResource.TriggerTriggerField triggerBy { get; set; }
+        public TriggerResource.TriggerUsageCategory usageCategory { get; set; }
     
         #if NET40
         /// <summary>

@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 
     public class LocalResource : Resource 
     {
-        public sealed class AddressRequirement : IStringEnum 
+        public sealed class LocalAddressRequirement : IStringEnum 
         {
             public const string None = "none";
             public const string Any = "any";
@@ -21,9 +21,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         
             private string _value;
             
-            public AddressRequirement() {}
+            public LocalAddressRequirement() {}
             
-            public AddressRequirement(string value)
+            public LocalAddressRequirement(string value)
             {
                 _value = value;
             }
@@ -33,12 +33,12 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                 return _value;
             }
             
-            public static implicit operator AddressRequirement(string value)
+            public static implicit operator LocalAddressRequirement(string value)
             {
-                return new AddressRequirement(value);
+                return new LocalAddressRequirement(value);
             }
             
-            public static implicit operator string(AddressRequirement value)
+            public static implicit operator string(LocalAddressRequirement value)
             {
                 return value.ToString();
             }
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         public string accountSid { get; set; }
         [JsonProperty("address_requirements")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public LocalResource.AddressRequirement addressRequirements { get; set; }
+        public LocalResource.LocalAddressRequirement addressRequirements { get; set; }
         [JsonProperty("api_version")]
         public string apiVersion { get; set; }
         [JsonProperty("beta")]
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         private LocalResource([JsonProperty("account_sid")]
                               string accountSid, 
                               [JsonProperty("address_requirements")]
-                              LocalResource.AddressRequirement addressRequirements, 
+                              LocalResource.LocalAddressRequirement addressRequirements, 
                               [JsonProperty("api_version")]
                               string apiVersion, 
                               [JsonProperty("beta")]

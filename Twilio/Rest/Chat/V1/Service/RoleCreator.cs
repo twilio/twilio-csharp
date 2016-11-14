@@ -15,7 +15,7 @@ namespace Twilio.Rest.Chat.V1.Service
     {
         public string serviceSid { get; }
         public string friendlyName { get; }
-        public RoleResource.RoleType type { get; }
+        public RoleResource.RoleRoleType type { get; }
         public List<string> permission { get; }
     
         /// <summary>
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="type"> The type </param>
         /// <param name="permission"> The permission </param>
-        public RoleCreator(string serviceSid, string friendlyName, RoleResource.RoleType type, List<string> permission)
+        public RoleCreator(string serviceSid, string friendlyName, RoleResource.RoleRoleType type, List<string> permission)
         {
             this.serviceSid = serviceSid;
             this.friendlyName = friendlyName;

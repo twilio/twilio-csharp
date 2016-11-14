@@ -11,7 +11,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class TranscriptionResource : Resource 
     {
-        public sealed class Status : IStringEnum 
+        public sealed class TranscriptionStatus : IStringEnum 
         {
             public const string InProgress = "in-progress";
             public const string Completed = "completed";
@@ -19,9 +19,9 @@ namespace Twilio.Rest.Api.V2010.Account
         
             private string _value;
             
-            public Status() {}
+            public TranscriptionStatus() {}
             
-            public Status(string value)
+            public TranscriptionStatus(string value)
             {
                 _value = value;
             }
@@ -31,12 +31,12 @@ namespace Twilio.Rest.Api.V2010.Account
                 return _value;
             }
             
-            public static implicit operator Status(string value)
+            public static implicit operator TranscriptionStatus(string value)
             {
-                return new Status(value);
+                return new TranscriptionStatus(value);
             }
             
-            public static implicit operator string(Status value)
+            public static implicit operator string(TranscriptionStatus value)
             {
                 return value.ToString();
             }
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public string sid { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TranscriptionResource.Status status { get; set; }
+        public TranscriptionResource.TranscriptionStatus status { get; set; }
         [JsonProperty("transcription_text")]
         public string transcriptionText { get; set; }
         [JsonProperty("type")]
@@ -150,7 +150,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                       [JsonProperty("sid")]
                                       string sid, 
                                       [JsonProperty("status")]
-                                      TranscriptionResource.Status status, 
+                                      TranscriptionResource.TranscriptionStatus status, 
                                       [JsonProperty("transcription_text")]
                                       string transcriptionText, 
                                       [JsonProperty("type")]

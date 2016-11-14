@@ -12,7 +12,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
 
     public class ReservationResource : Resource 
     {
-        public sealed class Status : IStringEnum 
+        public sealed class ReservationStatus : IStringEnum 
         {
             public const string Pending = "pending";
             public const string Accepted = "accepted";
@@ -23,9 +23,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         
             private string _value;
             
-            public Status() {}
+            public ReservationStatus() {}
             
-            public Status(string value)
+            public ReservationStatus(string value)
             {
                 _value = value;
             }
@@ -35,12 +35,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                 return _value;
             }
             
-            public static implicit operator Status(string value)
+            public static implicit operator ReservationStatus(string value)
             {
-                return new Status(value);
+                return new ReservationStatus(value);
             }
             
-            public static implicit operator string(Status value)
+            public static implicit operator string(ReservationStatus value)
             {
                 return value.ToString();
             }
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         public DateTime? dateUpdated { get; set; }
         [JsonProperty("reservation_status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ReservationResource.Status reservationStatus { get; set; }
+        public ReservationResource.ReservationStatus reservationStatus { get; set; }
         [JsonProperty("sid")]
         public string sid { get; set; }
         [JsonProperty("task_sid")]
@@ -144,7 +144,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                                     [JsonProperty("date_updated")]
                                     string dateUpdated, 
                                     [JsonProperty("reservation_status")]
-                                    ReservationResource.Status reservationStatus, 
+                                    ReservationResource.ReservationStatus reservationStatus, 
                                     [JsonProperty("sid")]
                                     string sid, 
                                     [JsonProperty("task_sid")]

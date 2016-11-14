@@ -11,16 +11,16 @@ namespace Twilio.Rest.IpMessaging.V1
 
     public class CredentialResource : Resource 
     {
-        public sealed class PushService : IStringEnum 
+        public sealed class CredentialPushService : IStringEnum 
         {
             public const string Gcm = "gcm";
             public const string Apn = "apn";
         
             private string _value;
             
-            public PushService() {}
+            public CredentialPushService() {}
             
-            public PushService(string value)
+            public CredentialPushService(string value)
             {
                 _value = value;
             }
@@ -30,12 +30,12 @@ namespace Twilio.Rest.IpMessaging.V1
                 return _value;
             }
             
-            public static implicit operator PushService(string value)
+            public static implicit operator CredentialPushService(string value)
             {
-                return new PushService(value);
+                return new CredentialPushService(value);
             }
             
-            public static implicit operator string(PushService value)
+            public static implicit operator string(CredentialPushService value)
             {
                 return value.ToString();
             }
@@ -62,7 +62,7 @@ namespace Twilio.Rest.IpMessaging.V1
         ///
         /// <param name="type"> The type </param>
         /// <returns> CredentialCreator capable of executing the create </returns> 
-        public static CredentialCreator Creator(CredentialResource.PushService type)
+        public static CredentialCreator Creator(CredentialResource.CredentialPushService type)
         {
             return new CredentialCreator(type);
         }
@@ -127,7 +127,7 @@ namespace Twilio.Rest.IpMessaging.V1
         public string friendlyName { get; set; }
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public CredentialResource.PushService type { get; set; }
+        public CredentialResource.CredentialPushService type { get; set; }
         [JsonProperty("sandbox")]
         public string sandbox { get; set; }
         [JsonProperty("date_created")]
@@ -149,7 +149,7 @@ namespace Twilio.Rest.IpMessaging.V1
                                    [JsonProperty("friendly_name")]
                                    string friendlyName, 
                                    [JsonProperty("type")]
-                                   CredentialResource.PushService type, 
+                                   CredentialResource.CredentialPushService type, 
                                    [JsonProperty("sandbox")]
                                    string sandbox, 
                                    [JsonProperty("date_created")]

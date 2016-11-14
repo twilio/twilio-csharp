@@ -12,16 +12,16 @@ namespace Twilio.Rest.IpMessaging.V1.Service
 
     public class ChannelResource : Resource 
     {
-        public sealed class ChannelType : IStringEnum 
+        public sealed class ChannelChannelType : IStringEnum 
         {
             public const string Public = "public";
             public const string Private = "private";
         
             private string _value;
             
-            public ChannelType() {}
+            public ChannelChannelType() {}
             
-            public ChannelType(string value)
+            public ChannelChannelType(string value)
             {
                 _value = value;
             }
@@ -31,12 +31,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service
                 return _value;
             }
             
-            public static implicit operator ChannelType(string value)
+            public static implicit operator ChannelChannelType(string value)
             {
-                return new ChannelType(value);
+                return new ChannelChannelType(value);
             }
             
-            public static implicit operator string(ChannelType value)
+            public static implicit operator string(ChannelChannelType value)
             {
                 return value.ToString();
             }
@@ -138,7 +138,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public string attributes { get; set; }
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ChannelResource.ChannelType type { get; set; }
+        public ChannelResource.ChannelChannelType type { get; set; }
         [JsonProperty("date_created")]
         public DateTime? dateCreated { get; set; }
         [JsonProperty("date_updated")]
@@ -168,7 +168,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
                                 [JsonProperty("attributes")]
                                 string attributes, 
                                 [JsonProperty("type")]
-                                ChannelResource.ChannelType type, 
+                                ChannelResource.ChannelChannelType type, 
                                 [JsonProperty("date_created")]
                                 string dateCreated, 
                                 [JsonProperty("date_updated")]

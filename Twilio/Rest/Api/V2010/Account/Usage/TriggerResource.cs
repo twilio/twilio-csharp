@@ -11,7 +11,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
     public class TriggerResource : Resource 
     {
-        public sealed class UsageCategory : IStringEnum 
+        public sealed class TriggerUsageCategory : IStringEnum 
         {
             public const string AuthyAuthentications = "authy-authentications";
             public const string AuthyCallsOutbound = "authy-calls-outbound";
@@ -106,9 +106,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         
             private string _value;
             
-            public UsageCategory() {}
+            public TriggerUsageCategory() {}
             
-            public UsageCategory(string value)
+            public TriggerUsageCategory(string value)
             {
                 _value = value;
             }
@@ -118,12 +118,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                 return _value;
             }
             
-            public static implicit operator UsageCategory(string value)
+            public static implicit operator TriggerUsageCategory(string value)
             {
-                return new UsageCategory(value);
+                return new TriggerUsageCategory(value);
             }
             
-            public static implicit operator string(UsageCategory value)
+            public static implicit operator string(TriggerUsageCategory value)
             {
                 return value.ToString();
             }
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             }
         }
     
-        public sealed class Recurring : IStringEnum 
+        public sealed class TriggerRecurring : IStringEnum 
         {
             public const string Daily = "daily";
             public const string Monthly = "monthly";
@@ -143,9 +143,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         
             private string _value;
             
-            public Recurring() {}
+            public TriggerRecurring() {}
             
-            public Recurring(string value)
+            public TriggerRecurring(string value)
             {
                 _value = value;
             }
@@ -155,12 +155,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                 return _value;
             }
             
-            public static implicit operator Recurring(string value)
+            public static implicit operator TriggerRecurring(string value)
             {
-                return new Recurring(value);
+                return new TriggerRecurring(value);
             }
             
-            public static implicit operator string(Recurring value)
+            public static implicit operator string(TriggerRecurring value)
             {
                 return value.ToString();
             }
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             }
         }
     
-        public sealed class TriggerField : IStringEnum 
+        public sealed class TriggerTriggerField : IStringEnum 
         {
             public const string Count = "count";
             public const string Usage = "usage";
@@ -179,9 +179,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         
             private string _value;
             
-            public TriggerField() {}
+            public TriggerTriggerField() {}
             
-            public TriggerField(string value)
+            public TriggerTriggerField(string value)
             {
                 _value = value;
             }
@@ -191,12 +191,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                 return _value;
             }
             
-            public static implicit operator TriggerField(string value)
+            public static implicit operator TriggerTriggerField(string value)
             {
-                return new TriggerField(value);
+                return new TriggerTriggerField(value);
             }
             
-            public static implicit operator string(TriggerField value)
+            public static implicit operator string(TriggerTriggerField value)
             {
                 return value.ToString();
             }
@@ -248,7 +248,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="triggerValue"> the value at which the trigger will fire </param>
         /// <param name="usageCategory"> The usage category the trigger watches </param>
         /// <returns> TriggerCreator capable of executing the create </returns> 
-        public static TriggerCreator Creator(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory)
+        public static TriggerCreator Creator(Uri callbackUrl, string triggerValue, TriggerResource.TriggerUsageCategory usageCategory)
         {
             return new TriggerCreator(callbackUrl, triggerValue, usageCategory);
         }
@@ -303,19 +303,19 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         public string friendlyName { get; set; }
         [JsonProperty("recurring")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TriggerResource.Recurring recurring { get; set; }
+        public TriggerResource.TriggerRecurring recurring { get; set; }
         [JsonProperty("sid")]
         public string sid { get; set; }
         [JsonProperty("trigger_by")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TriggerResource.TriggerField triggerBy { get; set; }
+        public TriggerResource.TriggerTriggerField triggerBy { get; set; }
         [JsonProperty("trigger_value")]
         public string triggerValue { get; set; }
         [JsonProperty("uri")]
         public string uri { get; set; }
         [JsonProperty("usage_category")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TriggerResource.UsageCategory usageCategory { get; set; }
+        public TriggerResource.TriggerUsageCategory usageCategory { get; set; }
         [JsonProperty("usage_record_uri")]
         public string usageRecordUri { get; set; }
     
@@ -343,17 +343,17 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                                 [JsonProperty("friendly_name")]
                                 string friendlyName, 
                                 [JsonProperty("recurring")]
-                                TriggerResource.Recurring recurring, 
+                                TriggerResource.TriggerRecurring recurring, 
                                 [JsonProperty("sid")]
                                 string sid, 
                                 [JsonProperty("trigger_by")]
-                                TriggerResource.TriggerField triggerBy, 
+                                TriggerResource.TriggerTriggerField triggerBy, 
                                 [JsonProperty("trigger_value")]
                                 string triggerValue, 
                                 [JsonProperty("uri")]
                                 string uri, 
                                 [JsonProperty("usage_category")]
-                                TriggerResource.UsageCategory usageCategory, 
+                                TriggerResource.TriggerUsageCategory usageCategory, 
                                 [JsonProperty("usage_record_uri")]
                                 string usageRecordUri)
                                 {

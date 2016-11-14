@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010
     public class AccountReader : Reader<AccountResource> 
     {
         public string friendlyName { get; set; }
-        public AccountResource.Status status { get; set; }
+        public AccountResource.AccountStatus status { get; set; }
     
         #if NET40
         /// <summary>

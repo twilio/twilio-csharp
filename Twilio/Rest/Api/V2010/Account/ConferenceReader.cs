@@ -21,7 +21,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public DateTime? dateUpdatedAfter { get; set; }
         public DateTime? dateUpdatedBefore { get; set; }
         public string friendlyName { get; set; }
-        public ConferenceResource.Status status { get; set; }
+        public ConferenceResource.ConferenceStatus status { get; set; }
     
         #if NET40
         /// <summary>

@@ -15,7 +15,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
     public class RecordReader : Reader<RecordResource> 
     {
         public string accountSid { get; set; }
-        public RecordResource.Category category { get; set; }
+        public RecordResource.RecordCategory category { get; set; }
         public DateTime? startDate { get; set; }
         public DateTime? endDate { get; set; }
     

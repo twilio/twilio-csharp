@@ -16,7 +16,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public string friendlyName { get; set; }
         public string uniqueName { get; set; }
         public string attributes { get; set; }
-        public ChannelResource.ChannelType type { get; set; }
+        public ChannelResource.ChannelChannelType type { get; set; }
     
         /// <summary>
         /// Construct a new ChannelCreator

@@ -16,7 +16,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public string accountSid { get; set; }
         public string callSid { get; }
         public int? qualityScore { get; }
-        public List<FeedbackResource.Issues> issue { get; set; }
+        public List<FeedbackResource.FeedbackIssues> issue { get; set; }
     
         /// <summary>
         /// Construct a new FeedbackUpdater

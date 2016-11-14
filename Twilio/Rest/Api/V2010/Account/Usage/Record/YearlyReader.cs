@@ -15,7 +15,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
     public class YearlyReader : Reader<YearlyResource> 
     {
         public string accountSid { get; set; }
-        public YearlyResource.Category category { get; set; }
+        public YearlyResource.YearlyCategory category { get; set; }
         public DateTime? startDate { get; set; }
         public DateTime? endDate { get; set; }
     

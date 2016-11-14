@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class IncomingPhoneNumberResource : Resource 
     {
-        public sealed class AddressRequirement : IStringEnum 
+        public sealed class IncomingPhoneNumberAddressRequirement : IStringEnum 
         {
             public const string None = "none";
             public const string Any = "any";
@@ -21,9 +21,9 @@ namespace Twilio.Rest.Api.V2010.Account
         
             private string _value;
             
-            public AddressRequirement() {}
+            public IncomingPhoneNumberAddressRequirement() {}
             
-            public AddressRequirement(string value)
+            public IncomingPhoneNumberAddressRequirement(string value)
             {
                 _value = value;
             }
@@ -33,12 +33,12 @@ namespace Twilio.Rest.Api.V2010.Account
                 return _value;
             }
             
-            public static implicit operator AddressRequirement(string value)
+            public static implicit operator IncomingPhoneNumberAddressRequirement(string value)
             {
-                return new AddressRequirement(value);
+                return new IncomingPhoneNumberAddressRequirement(value);
             }
             
-            public static implicit operator string(AddressRequirement value)
+            public static implicit operator string(IncomingPhoneNumberAddressRequirement value)
             {
                 return value.ToString();
             }
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public string accountSid { get; set; }
         [JsonProperty("address_requirements")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public IncomingPhoneNumberResource.AddressRequirement addressRequirements { get; set; }
+        public IncomingPhoneNumberResource.IncomingPhoneNumberAddressRequirement addressRequirements { get; set; }
         [JsonProperty("api_version")]
         public string apiVersion { get; set; }
         [JsonProperty("beta")]
@@ -199,7 +199,7 @@ namespace Twilio.Rest.Api.V2010.Account
         private IncomingPhoneNumberResource([JsonProperty("account_sid")]
                                             string accountSid, 
                                             [JsonProperty("address_requirements")]
-                                            IncomingPhoneNumberResource.AddressRequirement addressRequirements, 
+                                            IncomingPhoneNumberResource.IncomingPhoneNumberAddressRequirement addressRequirements, 
                                             [JsonProperty("api_version")]
                                             string apiVersion, 
                                             [JsonProperty("beta")]

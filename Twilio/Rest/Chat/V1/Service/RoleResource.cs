@@ -12,16 +12,16 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class RoleResource : Resource 
     {
-        public sealed class RoleType : IStringEnum 
+        public sealed class RoleRoleType : IStringEnum 
         {
             public const string Channel = "channel";
             public const string Deployment = "deployment";
         
             private string _value;
             
-            public RoleType() {}
+            public RoleRoleType() {}
             
-            public RoleType(string value)
+            public RoleRoleType(string value)
             {
                 _value = value;
             }
@@ -31,12 +31,12 @@ namespace Twilio.Rest.Chat.V1.Service
                 return _value;
             }
             
-            public static implicit operator RoleType(string value)
+            public static implicit operator RoleRoleType(string value)
             {
-                return new RoleType(value);
+                return new RoleRoleType(value);
             }
             
-            public static implicit operator string(RoleType value)
+            public static implicit operator string(RoleRoleType value)
             {
                 return value.ToString();
             }
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="type"> The type </param>
         /// <param name="permission"> The permission </param>
         /// <returns> RoleCreator capable of executing the create </returns> 
-        public static RoleCreator Creator(string serviceSid, string friendlyName, RoleResource.RoleType type, List<string> permission)
+        public static RoleCreator Creator(string serviceSid, string friendlyName, RoleResource.RoleRoleType type, List<string> permission)
         {
             return new RoleCreator(serviceSid, friendlyName, type, permission);
         }
@@ -138,7 +138,7 @@ namespace Twilio.Rest.Chat.V1.Service
         public string friendlyName { get; set; }
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public RoleResource.RoleType type { get; set; }
+        public RoleResource.RoleRoleType type { get; set; }
         [JsonProperty("permissions")]
         public List<string> permissions { get; set; }
         [JsonProperty("date_created")]
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Chat.V1.Service
                              [JsonProperty("friendly_name")]
                              string friendlyName, 
                              [JsonProperty("type")]
-                             RoleResource.RoleType type, 
+                             RoleResource.RoleRoleType type, 
                              [JsonProperty("permissions")]
                              List<string> permissions, 
                              [JsonProperty("date_created")]

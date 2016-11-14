@@ -24,14 +24,14 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         public int? timeout { get; set; }
         public bool? record { get; set; }
         public bool? muted { get; set; }
-        public ParticipantResource.Beep beep { get; set; }
+        public ParticipantResource.ParticipantBeep beep { get; set; }
         public bool? startConferenceOnEnter { get; set; }
         public bool? endConferenceOnExit { get; set; }
         public Uri waitUrl { get; set; }
         public Twilio.Http.HttpMethod waitMethod { get; set; }
         public bool? earlyMedia { get; set; }
         public int? maxParticipants { get; set; }
-        public ParticipantResource.ConferenceRecord conferenceRecord { get; set; }
+        public ParticipantResource.ParticipantConferenceRecord conferenceRecord { get; set; }
         public string conferenceTrim { get; set; }
         public Uri conferenceStatusCallback { get; set; }
         public Twilio.Http.HttpMethod conferenceStatusCallbackMethod { get; set; }

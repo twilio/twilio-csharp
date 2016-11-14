@@ -12,7 +12,7 @@ namespace Twilio.Rest.IpMessaging.V1
 
     public class CredentialCreator : Creator<CredentialResource> 
     {
-        public CredentialResource.PushService type { get; }
+        public CredentialResource.CredentialPushService type { get; }
         public string friendlyName { get; set; }
         public string certificate { get; set; }
         public string privateKey { get; set; }
@@ -24,7 +24,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// </summary>
         ///
         /// <param name="type"> The type </param>
-        public CredentialCreator(CredentialResource.PushService type)
+        public CredentialCreator(CredentialResource.CredentialPushService type)
         {
             this.type = type;
         }

@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 
     public class TollFreeResource : Resource 
     {
-        public sealed class AddressRequirement : IStringEnum 
+        public sealed class TollFreeAddressRequirement : IStringEnum 
         {
             public const string None = "none";
             public const string Any = "any";
@@ -21,9 +21,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         
             private string _value;
             
-            public AddressRequirement() {}
+            public TollFreeAddressRequirement() {}
             
-            public AddressRequirement(string value)
+            public TollFreeAddressRequirement(string value)
             {
                 _value = value;
             }
@@ -33,12 +33,12 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                 return _value;
             }
             
-            public static implicit operator AddressRequirement(string value)
+            public static implicit operator TollFreeAddressRequirement(string value)
             {
-                return new AddressRequirement(value);
+                return new TollFreeAddressRequirement(value);
             }
             
-            public static implicit operator string(AddressRequirement value)
+            public static implicit operator string(TollFreeAddressRequirement value)
             {
                 return value.ToString();
             }
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         public string accountSid { get; set; }
         [JsonProperty("address_requirements")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TollFreeResource.AddressRequirement addressRequirements { get; set; }
+        public TollFreeResource.TollFreeAddressRequirement addressRequirements { get; set; }
         [JsonProperty("api_version")]
         public string apiVersion { get; set; }
         [JsonProperty("beta")]
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         private TollFreeResource([JsonProperty("account_sid")]
                                  string accountSid, 
                                  [JsonProperty("address_requirements")]
-                                 TollFreeResource.AddressRequirement addressRequirements, 
+                                 TollFreeResource.TollFreeAddressRequirement addressRequirements, 
                                  [JsonProperty("api_version")]
                                  string apiVersion, 
                                  [JsonProperty("beta")]

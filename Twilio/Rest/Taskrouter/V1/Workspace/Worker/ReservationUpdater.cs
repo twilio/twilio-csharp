@@ -16,7 +16,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         public string workspaceSid { get; }
         public string workerSid { get; }
         public string sid { get; }
-        public ReservationResource.Status reservationStatus { get; set; }
+        public ReservationResource.ReservationStatus reservationStatus { get; set; }
         public string workerActivitySid { get; set; }
         public string instruction { get; set; }
         public string dequeuePostWorkActivitySid { get; set; }

@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class CallResource : Resource 
     {
-        public sealed class Event : IStringEnum 
+        public sealed class CallEvent : IStringEnum 
         {
             public const string Initiated = "initiated";
             public const string Ringing = "ringing";
@@ -22,9 +22,9 @@ namespace Twilio.Rest.Api.V2010.Account
         
             private string _value;
             
-            public Event() {}
+            public CallEvent() {}
             
-            public Event(string value)
+            public CallEvent(string value)
             {
                 _value = value;
             }
@@ -34,12 +34,12 @@ namespace Twilio.Rest.Api.V2010.Account
                 return _value;
             }
             
-            public static implicit operator Event(string value)
+            public static implicit operator CallEvent(string value)
             {
-                return new Event(value);
+                return new CallEvent(value);
             }
             
-            public static implicit operator string(Event value)
+            public static implicit operator string(CallEvent value)
             {
                 return value.ToString();
             }
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Api.V2010.Account
             }
         }
     
-        public sealed class Status : IStringEnum 
+        public sealed class CallStatus : IStringEnum 
         {
             public const string Queued = "queued";
             public const string Ringing = "ringing";
@@ -63,9 +63,9 @@ namespace Twilio.Rest.Api.V2010.Account
         
             private string _value;
             
-            public Status() {}
+            public CallStatus() {}
             
-            public Status(string value)
+            public CallStatus(string value)
             {
                 _value = value;
             }
@@ -75,12 +75,12 @@ namespace Twilio.Rest.Api.V2010.Account
                 return _value;
             }
             
-            public static implicit operator Status(string value)
+            public static implicit operator CallStatus(string value)
             {
-                return new Status(value);
+                return new CallStatus(value);
             }
             
-            public static implicit operator string(Status value)
+            public static implicit operator string(CallStatus value)
             {
                 return value.ToString();
             }
@@ -221,7 +221,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public DateTime? startTime { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public CallResource.Status status { get; set; }
+        public CallResource.CallStatus status { get; set; }
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> subresourceUris { get; set; }
         [JsonProperty("to")]
@@ -277,7 +277,7 @@ namespace Twilio.Rest.Api.V2010.Account
                              [JsonProperty("start_time")]
                              string startTime, 
                              [JsonProperty("status")]
-                             CallResource.Status status, 
+                             CallResource.CallStatus status, 
                              [JsonProperty("subresource_uris")]
                              Dictionary<string, string> subresourceUris, 
                              [JsonProperty("to")]

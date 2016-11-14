@@ -16,7 +16,7 @@ namespace Twilio.Rest.Notify.V1.Service
         public string serviceSid { get; }
         public string endpoint { get; }
         public string identity { get; }
-        public BindingResource.BindingType bindingType { get; }
+        public BindingResource.BindingBindingType bindingType { get; }
         public string address { get; }
         public List<string> tag { get; set; }
         public string notificationProtocolVersion { get; set; }
@@ -31,7 +31,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="identity"> The identity </param>
         /// <param name="bindingType"> The binding_type </param>
         /// <param name="address"> The address </param>
-        public BindingCreator(string serviceSid, string endpoint, string identity, BindingResource.BindingType bindingType, string address)
+        public BindingCreator(string serviceSid, string endpoint, string identity, BindingResource.BindingBindingType bindingType, string address)
         {
             this.serviceSid = serviceSid;
             this.endpoint = endpoint;
