@@ -40,11 +40,13 @@ namespace Twilio.Http
 	    public override Response MakeRequest(Request request)
 	    {
 			HttpWebRequest httpRequest = (HttpWebRequest) WebRequest.Create(request.ConstructUrl());
-			PropertyInfo property = typeof(HttpWebRequest).GetRuntimeProperty("UserAgent");
 
-			var version = typeof(WebRequestClient).GetType().GetTypeInfo().Assembly.GetName().Version;
-			String libraryVersion = "twilio-csharp/" + version + "(.NET "; // + Environment.Version.ToString() + ")";
-			property.SetValue(httpRequest, libraryVersion, null);
+			#if !__MonoCS__
+				PropertyInfo property = typeof(HttpWebRequest).GetRuntimeProperty("UserAgent");
+				var version = typeof(WebRequestClient).GetType().GetTypeInfo().Assembly.GetName().Version;
+				String libraryVersion = "twilio-csharp/" + version + "(.NET " + Environment.Version.ToString() + ")";
+				property.SetValue(httpRequest, libraryVersion, null);
+			#endif
 
 			httpRequest.Method = request.Method.ToString();
 			httpRequest.Accept = "application/json";
@@ -54,8 +56,6 @@ namespace Twilio.Http
 			var authBytes = Authentication(request.Username, request.Password);
 			httpRequest.Headers["Authorization"] = "Basic " + authBytes;
 			httpRequest.ContentType = "application/x-www-form-urlencoded";
-
-			Debug.WriteLine(httpRequest.Headers.ToString());
 
 			if (!Equals(request.Method, HttpMethod.GET))
 			{
