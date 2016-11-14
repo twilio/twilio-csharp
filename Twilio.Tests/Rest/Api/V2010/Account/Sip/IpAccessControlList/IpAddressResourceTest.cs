@@ -89,8 +89,8 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip.IpAccessControlList
             var request = new Request(HttpMethod.POST,
                                       Domains.API,
                                       "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAddresses.json");
-            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
-            request.AddPostParam("IpAddress", Serialize("ipAddress"));
+            request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
+            request.AddPostParam("IpAddress", Serialize("IpAddress"));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -98,7 +98,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip.IpAccessControlList
             
             try
             {
-                IpAddressResource.Creator("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName", "ipAddress").Create(twilioRestClient);
+                IpAddressResource.Creator("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "FriendlyName", "IpAddress").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -128,7 +128,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip.IpAccessControlList
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Mon, 20 Jul 2015 17:27:10 +0000\",\"date_updated\": \"Mon, 20 Jul 2015 17:27:10 +0000\",\"friendly_name\": \"aaa\",\"ip_access_control_list_sid\": \"ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"ip_address\": \"192.1.1.2\",\"sid\": \"IPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAddresses/IPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"));
             
-            var response = IpAddressResource.Creator("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName", "ipAddress").Create(twilioRestClient);
+            var response = IpAddressResource.Creator("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "FriendlyName", "IpAddress").Create(twilioRestClient);
             Assert.NotNull(response);
         }
     

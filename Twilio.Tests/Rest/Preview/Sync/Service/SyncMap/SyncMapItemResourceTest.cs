@@ -27,7 +27,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.GET,
                                       Domains.PREVIEW,
-                                      "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/key");
+                                      "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/Key");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -35,7 +35,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
             
             try
             {
-                SyncMapItemResource.Fetcher("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "key").Fetch(twilioRestClient);
+                SyncMapItemResource.Fetcher("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Key").Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -65,7 +65,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"created_by\": \"created_by\",\"data\": {},\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"key\": \"key\",\"map_sid\": \"MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"revision\": \"revision\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"http://www.example.com\"}"));
             
-            var response = SyncMapItemResource.Fetcher("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "key").Fetch(twilioRestClient);
+            var response = SyncMapItemResource.Fetcher("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Key").Fetch(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -75,7 +75,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.DELETE,
                                       Domains.PREVIEW,
-                                      "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/key");
+                                      "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/Key");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -83,7 +83,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
             
             try
             {
-                SyncMapItemResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "key").Delete(twilioRestClient);
+                SyncMapItemResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Key").Delete(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -113,7 +113,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
                             .Returns(new Response(System.Net.HttpStatusCode.NoContent,
                                                   "null"));
             
-            SyncMapItemResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "key").Delete(twilioRestClient);
+            SyncMapItemResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Key").Delete(twilioRestClient);
         }
     
         [Test]
@@ -123,7 +123,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
             var request = new Request(HttpMethod.POST,
                                       Domains.PREVIEW,
                                       "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items");
-            request.AddPostParam("Key", Serialize("key"));
+            request.AddPostParam("Key", Serialize("Key"));
             request.AddPostParam("Data", Serialize("{}"));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
@@ -132,7 +132,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
             
             try
             {
-                SyncMapItemResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "key", "{}").Create(twilioRestClient);
+                SyncMapItemResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Key", "{}").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -162,7 +162,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"created_by\": \"created_by\",\"data\": {},\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"key\": \"key\",\"map_sid\": \"MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"revision\": \"revision\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"http://www.example.com\"}"));
             
-            var response = SyncMapItemResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "key", "{}").Create(twilioRestClient);
+            var response = SyncMapItemResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Key", "{}").Create(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -233,7 +233,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.POST,
                                       Domains.PREVIEW,
-                                      "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/key");
+                                      "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/Key");
             request.AddPostParam("Data", Serialize("{}"));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
@@ -242,7 +242,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
             
             try
             {
-                SyncMapItemResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "key", "{}").Update(twilioRestClient);
+                SyncMapItemResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Key", "{}").Update(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -272,7 +272,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"created_by\": \"created_by\",\"data\": {},\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"key\": \"key\",\"map_sid\": \"MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"revision\": \"revision\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"http://www.example.com\"}"));
             
-            var response = SyncMapItemResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "key", "{}").Update(twilioRestClient);
+            var response = SyncMapItemResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Key", "{}").Update(twilioRestClient);
             Assert.NotNull(response);
         }
     }

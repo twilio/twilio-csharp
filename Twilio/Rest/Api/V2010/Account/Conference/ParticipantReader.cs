@@ -12,10 +12,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
     public class ParticipantReader : Reader<ParticipantResource> 
     {
-        public string accountSid { get; set; }
-        public string conferenceSid { get; }
-        public bool? muted { get; set; }
-        public bool? hold { get; set; }
+        public string AccountSid { get; set; }
+        public string ConferenceSid { get; }
+        public bool? Muted { get; set; }
+        public bool? Hold { get; set; }
     
         /// <summary>
         /// Construct a new ParticipantReader
@@ -24,7 +24,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
         public ParticipantReader(string conferenceSid)
         {
-            this.conferenceSid = conferenceSid;
+            ConferenceSid = conferenceSid;
         }
     
         #if NET40
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + this.ConferenceSid + "/Participants.json"
             );
             AddQueryParams(request);
             
@@ -60,7 +60,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + this.ConferenceSid + "/Participants.json"
             );
             
             AddQueryParams(request);
@@ -129,14 +129,14 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (muted != null)
+            if (Muted != null)
             {
-                request.AddQueryParam("Muted", muted.ToString());
+                request.AddQueryParam("Muted", Muted.ToString());
             }
             
-            if (hold != null)
+            if (Hold != null)
             {
-                request.AddQueryParam("Hold", hold.ToString());
+                request.AddQueryParam("Hold", Hold.ToString());
             }
             
             if (PageSize != null)

@@ -13,13 +13,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ValidationRequestCreator : Creator<ValidationRequestResource> 
     {
-        public string accountSid { get; set; }
-        public Twilio.Types.PhoneNumber phoneNumber { get; }
-        public string friendlyName { get; set; }
-        public int? callDelay { get; set; }
-        public string extension { get; set; }
-        public Uri statusCallback { get; set; }
-        public Twilio.Http.HttpMethod statusCallbackMethod { get; set; }
+        public string AccountSid { get; set; }
+        public Twilio.Types.PhoneNumber PhoneNumber { get; }
+        public string FriendlyName { get; set; }
+        public int? CallDelay { get; set; }
+        public string Extension { get; set; }
+        public Uri StatusCallback { get; set; }
+        public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
     
         /// <summary>
         /// Construct a new ValidationRequestCreator
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="phoneNumber"> The phone_number </param>
         public ValidationRequestCreator(Twilio.Types.PhoneNumber phoneNumber)
         {
-            this.phoneNumber = phoneNumber;
+            PhoneNumber = phoneNumber;
         }
     
         #if NET40
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/OutgoingCallerIds.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/OutgoingCallerIds.json"
             );
             
             AddPostParams(request);
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/OutgoingCallerIds.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/OutgoingCallerIds.json"
             );
             
             AddPostParams(request);
@@ -120,34 +120,34 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (phoneNumber != null)
+            if (PhoneNumber != null)
             {
-                request.AddPostParam("PhoneNumber", phoneNumber.ToString());
+                request.AddPostParam("PhoneNumber", PhoneNumber.ToString());
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (callDelay != null)
+            if (CallDelay != null)
             {
-                request.AddPostParam("CallDelay", callDelay.ToString());
+                request.AddPostParam("CallDelay", CallDelay.ToString());
             }
             
-            if (extension != null)
+            if (Extension != null)
             {
-                request.AddPostParam("Extension", extension);
+                request.AddPostParam("Extension", Extension);
             }
             
-            if (statusCallback != null)
+            if (StatusCallback != null)
             {
-                request.AddPostParam("StatusCallback", statusCallback.ToString());
+                request.AddPostParam("StatusCallback", StatusCallback.ToString());
             }
             
-            if (statusCallbackMethod != null)
+            if (StatusCallbackMethod != null)
             {
-                request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
+                request.AddPostParam("StatusCallbackMethod", StatusCallbackMethod.ToString());
             }
         }
     }

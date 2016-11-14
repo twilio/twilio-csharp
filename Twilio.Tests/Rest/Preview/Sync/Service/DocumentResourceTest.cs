@@ -27,7 +27,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.GET,
                                       Domains.PREVIEW,
-                                      "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/sid");
+                                      "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/Sid");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -35,7 +35,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service
             
             try
             {
-                DocumentResource.Fetcher("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "sid").Fetch(twilioRestClient);
+                DocumentResource.Fetcher("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Sid").Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -65,7 +65,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"created_by\": \"created_by\",\"data\": {},\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"revision\": \"revision\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"unique_name\": \"unique_name\",\"url\": \"http://www.example.com\"}"));
             
-            var response = DocumentResource.Fetcher("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "sid").Fetch(twilioRestClient);
+            var response = DocumentResource.Fetcher("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Sid").Fetch(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -75,7 +75,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.DELETE,
                                       Domains.PREVIEW,
-                                      "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/sid");
+                                      "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/Sid");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -83,7 +83,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service
             
             try
             {
-                DocumentResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "sid").Delete(twilioRestClient);
+                DocumentResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Sid").Delete(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -113,7 +113,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service
                             .Returns(new Response(System.Net.HttpStatusCode.NoContent,
                                                   "null"));
             
-            DocumentResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "sid").Delete(twilioRestClient);
+            DocumentResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Sid").Delete(twilioRestClient);
         }
     
         [Test]
@@ -231,7 +231,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.POST,
                                       Domains.PREVIEW,
-                                      "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/sid");
+                                      "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/Sid");
             request.AddPostParam("Data", Serialize("{}"));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
@@ -240,7 +240,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service
             
             try
             {
-                DocumentResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "sid", "{}").Update(twilioRestClient);
+                DocumentResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Sid", "{}").Update(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -270,7 +270,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"created_by\": \"created_by\",\"data\": {},\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"revision\": \"revision\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"unique_name\": \"unique_name\",\"url\": \"http://www.example.com\"}"));
             
-            var response = DocumentResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "sid", "{}").Update(twilioRestClient);
+            var response = DocumentResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Sid", "{}").Update(twilioRestClient);
             Assert.NotNull(response);
         }
     }

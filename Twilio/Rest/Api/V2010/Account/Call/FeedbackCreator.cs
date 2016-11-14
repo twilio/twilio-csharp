@@ -13,10 +13,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class FeedbackCreator : Creator<FeedbackResource> 
     {
-        public string accountSid { get; set; }
-        public string callSid { get; }
-        public int? qualityScore { get; }
-        public List<FeedbackResource.FeedbackIssues> issue { get; set; }
+        public string AccountSid { get; set; }
+        public string CallSid { get; }
+        public int? QualityScore { get; }
+        public List<FeedbackResource.IssuesEnum> Issue { get; set; }
     
         /// <summary>
         /// Construct a new FeedbackCreator
@@ -26,8 +26,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="qualityScore"> The quality_score </param>
         public FeedbackCreator(string callSid, int? qualityScore)
         {
-            this.callSid = callSid;
-            this.qualityScore = qualityScore;
+            CallSid = callSid;
+            QualityScore = qualityScore;
         }
     
         #if NET40
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/" + this.callSid + "/Feedback.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + this.CallSid + "/Feedback.json"
             );
             
             AddPostParams(request);
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/" + this.callSid + "/Feedback.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + this.CallSid + "/Feedback.json"
             );
             
             AddPostParams(request);
@@ -119,14 +119,14 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (qualityScore != null)
+            if (QualityScore != null)
             {
-                request.AddPostParam("QualityScore", qualityScore.ToString());
+                request.AddPostParam("QualityScore", QualityScore.ToString());
             }
             
-            if (issue != null)
+            if (Issue != null)
             {
-                request.AddPostParam("Issue", issue.ToString());
+                request.AddPostParam("Issue", Issue.ToString());
             }
         }
     }

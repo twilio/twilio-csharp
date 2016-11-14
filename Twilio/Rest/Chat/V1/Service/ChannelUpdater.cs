@@ -12,12 +12,12 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class ChannelUpdater : Updater<ChannelResource> 
     {
-        public string serviceSid { get; }
-        public string sid { get; }
-        public string friendlyName { get; set; }
-        public string uniqueName { get; set; }
-        public string attributes { get; set; }
-        public ChannelResource.ChannelChannelType type { get; set; }
+        public string ServiceSid { get; }
+        public string Sid { get; }
+        public string FriendlyName { get; set; }
+        public string UniqueName { get; set; }
+        public string Attributes { get; set; }
+        public ChannelResource.ChannelTypeEnum Type { get; set; }
     
         /// <summary>
         /// Construct a new ChannelUpdater
@@ -27,8 +27,8 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="sid"> The sid </param>
         public ChannelUpdater(string serviceSid, string sid)
         {
-            this.serviceSid = serviceSid;
-            this.sid = sid;
+            ServiceSid = serviceSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.CHAT,
-                "/v1/Services/" + this.serviceSid + "/Channels/" + this.sid + ""
+                "/v1/Services/" + this.ServiceSid + "/Channels/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.CHAT,
-                "/v1/Services/" + this.serviceSid + "/Channels/" + this.sid + ""
+                "/v1/Services/" + this.ServiceSid + "/Channels/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -120,24 +120,24 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (uniqueName != null)
+            if (UniqueName != null)
             {
-                request.AddPostParam("UniqueName", uniqueName);
+                request.AddPostParam("UniqueName", UniqueName);
             }
             
-            if (attributes != null)
+            if (Attributes != null)
             {
-                request.AddPostParam("Attributes", attributes);
+                request.AddPostParam("Attributes", Attributes);
             }
             
-            if (type != null)
+            if (Type != null)
             {
-                request.AddPostParam("Type", type.ToString());
+                request.AddPostParam("Type", Type.ToString());
             }
         }
     }

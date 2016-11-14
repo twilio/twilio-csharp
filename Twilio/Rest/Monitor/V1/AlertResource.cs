@@ -63,40 +63,40 @@ namespace Twilio.Rest.Monitor.V1
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("alert_text")]
-        public string alertText { get; set; }
+        public string AlertText { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; set; }
+        public string ApiVersion { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_generated")]
-        public DateTime? dateGenerated { get; set; }
+        public DateTime? DateGenerated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("error_code")]
-        public string errorCode { get; set; }
+        public string ErrorCode { get; set; }
         [JsonProperty("log_level")]
-        public string logLevel { get; set; }
+        public string LogLevel { get; set; }
         [JsonProperty("more_info")]
-        public string moreInfo { get; set; }
+        public string MoreInfo { get; set; }
         [JsonProperty("request_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod requestMethod { get; set; }
+        public Twilio.Http.HttpMethod RequestMethod { get; set; }
         [JsonProperty("request_url")]
-        public string requestUrl { get; set; }
+        public string RequestUrl { get; set; }
         [JsonProperty("request_variables")]
-        public string requestVariables { get; set; }
+        public string RequestVariables { get; set; }
         [JsonProperty("resource_sid")]
-        public string resourceSid { get; set; }
+        public string ResourceSid { get; set; }
         [JsonProperty("response_body")]
-        public string responseBody { get; set; }
+        public string ResponseBody { get; set; }
         [JsonProperty("response_headers")]
-        public string responseHeaders { get; set; }
+        public string ResponseHeaders { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public AlertResource()
         {
@@ -138,23 +138,23 @@ namespace Twilio.Rest.Monitor.V1
                               [JsonProperty("url")]
                               Uri url)
                               {
-            this.accountSid = accountSid;
-            this.alertText = alertText;
-            this.apiVersion = apiVersion;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateGenerated = MarshalConverter.DateTimeFromString(dateGenerated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.errorCode = errorCode;
-            this.logLevel = logLevel;
-            this.moreInfo = moreInfo;
-            this.requestMethod = requestMethod;
-            this.requestUrl = requestUrl;
-            this.requestVariables = requestVariables;
-            this.resourceSid = resourceSid;
-            this.responseBody = responseBody;
-            this.responseHeaders = responseHeaders;
-            this.sid = sid;
-            this.url = url;
+            AccountSid = accountSid;
+            AlertText = alertText;
+            ApiVersion = apiVersion;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateGenerated = MarshalConverter.DateTimeFromString(dateGenerated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            ErrorCode = errorCode;
+            LogLevel = logLevel;
+            MoreInfo = moreInfo;
+            RequestMethod = requestMethod;
+            RequestUrl = requestUrl;
+            RequestVariables = requestVariables;
+            ResourceSid = resourceSid;
+            ResponseBody = responseBody;
+            ResponseHeaders = responseHeaders;
+            Sid = sid;
+            Url = url;
         }
     }
 }

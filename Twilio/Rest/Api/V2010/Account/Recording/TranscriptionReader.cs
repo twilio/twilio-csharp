@@ -12,8 +12,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
 
     public class TranscriptionReader : Reader<TranscriptionResource> 
     {
-        public string accountSid { get; set; }
-        public string recordingSid { get; }
+        public string AccountSid { get; set; }
+        public string RecordingSid { get; }
     
         /// <summary>
         /// Construct a new TranscriptionReader
@@ -22,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <param name="recordingSid"> The recording_sid </param>
         public TranscriptionReader(string recordingSid)
         {
-            this.recordingSid = recordingSid;
+            RecordingSid = recordingSid;
         }
     
         #if NET40
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Recordings/" + this.recordingSid + "/Transcriptions.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Recordings/" + this.RecordingSid + "/Transcriptions.json"
             );
             AddQueryParams(request);
             
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Recordings/" + this.recordingSid + "/Transcriptions.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Recordings/" + this.RecordingSid + "/Transcriptions.json"
             );
             
             AddQueryParams(request);

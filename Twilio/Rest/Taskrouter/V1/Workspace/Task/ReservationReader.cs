@@ -12,9 +12,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
 
     public class ReservationReader : Reader<ReservationResource> 
     {
-        public string workspaceSid { get; }
-        public string taskSid { get; }
-        public ReservationResource.ReservationStatus reservationStatus { get; set; }
+        public string WorkspaceSid { get; }
+        public string TaskSid { get; }
+        public ReservationResource.StatusEnum ReservationStatus { get; set; }
     
         /// <summary>
         /// Construct a new ReservationReader
@@ -24,8 +24,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="taskSid"> The task_sid </param>
         public ReservationReader(string workspaceSid, string taskSid)
         {
-            this.workspaceSid = workspaceSid;
-            this.taskSid = taskSid;
+            WorkspaceSid = workspaceSid;
+            TaskSid = taskSid;
         }
     
         #if NET40
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Tasks/" + this.taskSid + "/Reservations"
+                "/v1/Workspaces/" + this.WorkspaceSid + "/Tasks/" + this.TaskSid + "/Reservations"
             );
             AddQueryParams(request);
             
@@ -61,7 +61,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Tasks/" + this.taskSid + "/Reservations"
+                "/v1/Workspaces/" + this.WorkspaceSid + "/Tasks/" + this.TaskSid + "/Reservations"
             );
             
             AddQueryParams(request);
@@ -130,9 +130,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (reservationStatus != null)
+            if (ReservationStatus != null)
             {
-                request.AddQueryParam("ReservationStatus", reservationStatus.ToString());
+                request.AddQueryParam("ReservationStatus", ReservationStatus.ToString());
             }
             
             if (PageSize != null)

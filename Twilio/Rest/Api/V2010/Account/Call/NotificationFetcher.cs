@@ -12,9 +12,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class NotificationFetcher : Fetcher<NotificationResource> 
     {
-        public string accountSid { get; set; }
-        public string callSid { get; }
-        public string sid { get; }
+        public string AccountSid { get; set; }
+        public string CallSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new NotificationFetcher
@@ -24,8 +24,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="sid"> The sid </param>
         public NotificationFetcher(string callSid, string sid)
         {
-            this.callSid = callSid;
-            this.sid = sid;
+            CallSid = callSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/" + this.callSid + "/Notifications/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + this.CallSid + "/Notifications/" + this.Sid + ".json"
             );
             
             var response = await client.RequestAsync(request);
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/" + this.callSid + "/Notifications/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + this.CallSid + "/Notifications/" + this.Sid + ".json"
             );
             
             var response = client.Request(request);

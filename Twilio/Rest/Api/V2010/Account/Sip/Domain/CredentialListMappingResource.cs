@@ -79,19 +79,19 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; set; }
+        public Dictionary<string, string> SubresourceUris { get; set; }
     
         public CredentialListMappingResource()
         {
@@ -113,13 +113,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
                                               [JsonProperty("subresource_uris")]
                                               Dictionary<string, string> subresourceUris)
                                               {
-            this.accountSid = accountSid;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.friendlyName = friendlyName;
-            this.sid = sid;
-            this.uri = uri;
-            this.subresourceUris = subresourceUris;
+            AccountSid = accountSid;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            FriendlyName = friendlyName;
+            Sid = sid;
+            Uri = uri;
+            SubresourceUris = subresourceUris;
         }
     }
 }

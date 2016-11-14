@@ -12,7 +12,7 @@ namespace Twilio.Rest.IpMessaging.V1
 
     public class ServiceCreator : Creator<ServiceResource> 
     {
-        public string friendlyName { get; }
+        public string FriendlyName { get; }
     
         /// <summary>
         /// Construct a new ServiceCreator
@@ -21,7 +21,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <param name="friendlyName"> The friendly_name </param>
         public ServiceCreator(string friendlyName)
         {
-            this.friendlyName = friendlyName;
+            FriendlyName = friendlyName;
         }
     
         #if NET40
@@ -113,9 +113,9 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
         }
     }

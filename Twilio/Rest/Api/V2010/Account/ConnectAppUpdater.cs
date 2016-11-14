@@ -14,16 +14,16 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ConnectAppUpdater : Updater<ConnectAppResource> 
     {
-        public string accountSid { get; set; }
-        public string sid { get; }
-        public Uri authorizeRedirectUrl { get; set; }
-        public string companyName { get; set; }
-        public Twilio.Http.HttpMethod deauthorizeCallbackMethod { get; set; }
-        public Uri deauthorizeCallbackUrl { get; set; }
-        public string description { get; set; }
-        public string friendlyName { get; set; }
-        public Uri homepageUrl { get; set; }
-        public List<ConnectAppResource.ConnectAppPermission> permissions { get; set; }
+        public string AccountSid { get; set; }
+        public string Sid { get; }
+        public Uri AuthorizeRedirectUrl { get; set; }
+        public string CompanyName { get; set; }
+        public Twilio.Http.HttpMethod DeauthorizeCallbackMethod { get; set; }
+        public Uri DeauthorizeCallbackUrl { get; set; }
+        public string Description { get; set; }
+        public string FriendlyName { get; set; }
+        public Uri HomepageUrl { get; set; }
+        public List<ConnectAppResource.PermissionEnum> Permissions { get; set; }
     
         /// <summary>
         /// Construct a new ConnectAppUpdater
@@ -32,7 +32,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sid"> The sid </param>
         public ConnectAppUpdater(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/ConnectApps/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/ConnectApps/" + this.Sid + ".json"
             );
             AddPostParams(request);
             
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/ConnectApps/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/ConnectApps/" + this.Sid + ".json"
             );
             AddPostParams(request);
             
@@ -124,44 +124,44 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (authorizeRedirectUrl != null)
+            if (AuthorizeRedirectUrl != null)
             {
-                request.AddPostParam("AuthorizeRedirectUrl", authorizeRedirectUrl.ToString());
+                request.AddPostParam("AuthorizeRedirectUrl", AuthorizeRedirectUrl.ToString());
             }
             
-            if (companyName != null)
+            if (CompanyName != null)
             {
-                request.AddPostParam("CompanyName", companyName);
+                request.AddPostParam("CompanyName", CompanyName);
             }
             
-            if (deauthorizeCallbackMethod != null)
+            if (DeauthorizeCallbackMethod != null)
             {
-                request.AddPostParam("DeauthorizeCallbackMethod", deauthorizeCallbackMethod.ToString());
+                request.AddPostParam("DeauthorizeCallbackMethod", DeauthorizeCallbackMethod.ToString());
             }
             
-            if (deauthorizeCallbackUrl != null)
+            if (DeauthorizeCallbackUrl != null)
             {
-                request.AddPostParam("DeauthorizeCallbackUrl", deauthorizeCallbackUrl.ToString());
+                request.AddPostParam("DeauthorizeCallbackUrl", DeauthorizeCallbackUrl.ToString());
             }
             
-            if (description != null)
+            if (Description != null)
             {
-                request.AddPostParam("Description", description);
+                request.AddPostParam("Description", Description);
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (homepageUrl != null)
+            if (HomepageUrl != null)
             {
-                request.AddPostParam("HomepageUrl", homepageUrl.ToString());
+                request.AddPostParam("HomepageUrl", HomepageUrl.ToString());
             }
             
-            if (permissions != null)
+            if (Permissions != null)
             {
-                request.AddPostParam("Permissions", permissions.ToString());
+                request.AddPostParam("Permissions", Permissions.ToString());
             }
         }
     }

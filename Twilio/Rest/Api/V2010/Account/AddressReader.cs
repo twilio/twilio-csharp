@@ -12,10 +12,10 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class AddressReader : Reader<AddressResource> 
     {
-        public string accountSid { get; set; }
-        public string customerName { get; set; }
-        public string friendlyName { get; set; }
-        public string isoCountry { get; set; }
+        public string AccountSid { get; set; }
+        public string CustomerName { get; set; }
+        public string FriendlyName { get; set; }
+        public string IsoCountry { get; set; }
     
         #if NET40
         /// <summary>
@@ -29,7 +29,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Addresses.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Addresses.json"
             );
             AddQueryParams(request);
             
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Addresses.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Addresses.json"
             );
             
             AddQueryParams(request);
@@ -119,19 +119,19 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (customerName != null)
+            if (CustomerName != null)
             {
-                request.AddQueryParam("CustomerName", customerName);
+                request.AddQueryParam("CustomerName", CustomerName);
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddQueryParam("FriendlyName", friendlyName);
+                request.AddQueryParam("FriendlyName", FriendlyName);
             }
             
-            if (isoCountry != null)
+            if (IsoCountry != null)
             {
-                request.AddQueryParam("IsoCountry", isoCountry);
+                request.AddQueryParam("IsoCountry", IsoCountry);
             }
             
             if (PageSize != null)

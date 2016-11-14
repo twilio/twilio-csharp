@@ -12,9 +12,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
 
     public class SyncMapItemFetcher : Fetcher<SyncMapItemResource> 
     {
-        public string serviceSid { get; }
-        public string mapSid { get; }
-        public string key { get; }
+        public string ServiceSid { get; }
+        public string MapSid { get; }
+        public string Key { get; }
     
         /// <summary>
         /// Construct a new SyncMapItemFetcher
@@ -25,9 +25,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="key"> The key </param>
         public SyncMapItemFetcher(string serviceSid, string mapSid, string key)
         {
-            this.serviceSid = serviceSid;
-            this.mapSid = mapSid;
-            this.key = key;
+            ServiceSid = serviceSid;
+            MapSid = mapSid;
+            Key = key;
         }
     
         #if NET40
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps/" + this.mapSid + "/Items/" + this.key + ""
+                "/Sync/Services/" + this.ServiceSid + "/Maps/" + this.MapSid + "/Items/" + this.Key + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps/" + this.mapSid + "/Items/" + this.key + ""
+                "/Sync/Services/" + this.ServiceSid + "/Maps/" + this.MapSid + "/Items/" + this.Key + ""
             );
             
             var response = client.Request(request);

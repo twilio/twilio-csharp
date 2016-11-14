@@ -13,12 +13,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class OriginationUrlCreator : Creator<OriginationUrlResource> 
     {
-        public string trunkSid { get; }
-        public int? weight { get; }
-        public int? priority { get; }
-        public bool? enabled { get; }
-        public string friendlyName { get; }
-        public Uri sipUrl { get; }
+        public string TrunkSid { get; }
+        public int? Weight { get; }
+        public int? Priority { get; }
+        public bool? Enabled { get; }
+        public string FriendlyName { get; }
+        public Uri SipUrl { get; }
     
         /// <summary>
         /// Construct a new OriginationUrlCreator
@@ -32,12 +32,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="sipUrl"> The sip_url </param>
         public OriginationUrlCreator(string trunkSid, int? weight, int? priority, bool? enabled, string friendlyName, Uri sipUrl)
         {
-            this.trunkSid = trunkSid;
-            this.weight = weight;
-            this.priority = priority;
-            this.enabled = enabled;
-            this.friendlyName = friendlyName;
-            this.sipUrl = sipUrl;
+            TrunkSid = trunkSid;
+            Weight = weight;
+            Priority = priority;
+            Enabled = enabled;
+            FriendlyName = friendlyName;
+            SipUrl = sipUrl;
         }
     
         #if NET40
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/OriginationUrls"
+                "/v1/Trunks/" + this.TrunkSid + "/OriginationUrls"
             );
             
             AddPostParams(request);
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/OriginationUrls"
+                "/v1/Trunks/" + this.TrunkSid + "/OriginationUrls"
             );
             
             AddPostParams(request);
@@ -129,29 +129,29 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (weight != null)
+            if (Weight != null)
             {
-                request.AddPostParam("Weight", weight.ToString());
+                request.AddPostParam("Weight", Weight.ToString());
             }
             
-            if (priority != null)
+            if (Priority != null)
             {
-                request.AddPostParam("Priority", priority.ToString());
+                request.AddPostParam("Priority", Priority.ToString());
             }
             
-            if (enabled != null)
+            if (Enabled != null)
             {
-                request.AddPostParam("Enabled", enabled.ToString());
+                request.AddPostParam("Enabled", Enabled.ToString());
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (sipUrl != null)
+            if (SipUrl != null)
             {
-                request.AddPostParam("SipUrl", sipUrl.ToString());
+                request.AddPostParam("SipUrl", SipUrl.ToString());
             }
         }
     }

@@ -12,9 +12,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
     public class WorkerChannelFetcher : Fetcher<WorkerChannelResource> 
     {
-        public string workspaceSid { get; }
-        public string workerSid { get; }
-        public string sid { get; }
+        public string WorkspaceSid { get; }
+        public string WorkerSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new WorkerChannelFetcher
@@ -25,9 +25,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="sid"> The sid </param>
         public WorkerChannelFetcher(string workspaceSid, string workerSid, string sid)
         {
-            this.workspaceSid = workspaceSid;
-            this.workerSid = workerSid;
-            this.sid = sid;
+            WorkspaceSid = workspaceSid;
+            WorkerSid = workerSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.workerSid + "/Channels/" + this.sid + ""
+                "/v1/Workspaces/" + this.WorkspaceSid + "/Workers/" + this.WorkerSid + "/Channels/" + this.Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.workerSid + "/Channels/" + this.sid + ""
+                "/v1/Workspaces/" + this.WorkspaceSid + "/Workers/" + this.WorkerSid + "/Channels/" + this.Sid + ""
             );
             
             var response = client.Request(request);

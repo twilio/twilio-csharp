@@ -11,7 +11,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
     public class ParticipantResource : Resource 
     {
-        public sealed class ParticipantStatus : IStringEnum 
+        public sealed class StatusEnum : IStringEnum 
         {
             public const string Queued = "queued";
             public const string Connecting = "connecting";
@@ -22,9 +22,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         
             private string _value;
             
-            public ParticipantStatus() {}
+            public StatusEnum() {}
             
-            public ParticipantStatus(string value)
+            public StatusEnum(string value)
             {
                 _value = value;
             }
@@ -34,12 +34,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                 return _value;
             }
             
-            public static implicit operator ParticipantStatus(string value)
+            public static implicit operator StatusEnum(string value)
             {
-                return new ParticipantStatus(value);
+                return new StatusEnum(value);
             }
             
-            public static implicit operator string(ParticipantStatus value)
+            public static implicit operator string(StatusEnum value)
             {
                 return value.ToString();
             }
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             }
         }
     
-        public sealed class ParticipantBeep : IStringEnum 
+        public sealed class BeepEnum : IStringEnum 
         {
             public const string True = "true";
             public const string False = "false";
@@ -59,9 +59,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         
             private string _value;
             
-            public ParticipantBeep() {}
+            public BeepEnum() {}
             
-            public ParticipantBeep(string value)
+            public BeepEnum(string value)
             {
                 _value = value;
             }
@@ -71,12 +71,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                 return _value;
             }
             
-            public static implicit operator ParticipantBeep(string value)
+            public static implicit operator BeepEnum(string value)
             {
-                return new ParticipantBeep(value);
+                return new BeepEnum(value);
             }
             
-            public static implicit operator string(ParticipantBeep value)
+            public static implicit operator string(BeepEnum value)
             {
                 return value.ToString();
             }
@@ -87,16 +87,16 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             }
         }
     
-        public sealed class ParticipantConferenceRecord : IStringEnum 
+        public sealed class ConferenceRecordEnum : IStringEnum 
         {
             public const string DoNotRecord = "do-not-record";
             public const string RecordFromStart = "record-from-start";
         
             private string _value;
             
-            public ParticipantConferenceRecord() {}
+            public ConferenceRecordEnum() {}
             
-            public ParticipantConferenceRecord(string value)
+            public ConferenceRecordEnum(string value)
             {
                 _value = value;
             }
@@ -106,12 +106,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                 return _value;
             }
             
-            public static implicit operator ParticipantConferenceRecord(string value)
+            public static implicit operator ConferenceRecordEnum(string value)
             {
-                return new ParticipantConferenceRecord(value);
+                return new ConferenceRecordEnum(value);
             }
             
-            public static implicit operator string(ParticipantConferenceRecord value)
+            public static implicit operator string(ConferenceRecordEnum value)
             {
                 return value.ToString();
             }
@@ -202,28 +202,28 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("call_sid")]
-        public string callSid { get; set; }
+        public string CallSid { get; set; }
         [JsonProperty("conference_sid")]
-        public string conferenceSid { get; set; }
+        public string ConferenceSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("end_conference_on_exit")]
-        public bool? endConferenceOnExit { get; set; }
+        public bool? EndConferenceOnExit { get; set; }
         [JsonProperty("muted")]
-        public bool? muted { get; set; }
+        public bool? Muted { get; set; }
         [JsonProperty("hold")]
-        public bool? hold { get; set; }
+        public bool? Hold { get; set; }
         [JsonProperty("start_conference_on_enter")]
-        public bool? startConferenceOnEnter { get; set; }
+        public bool? StartConferenceOnEnter { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ParticipantResource.ParticipantStatus status { get; set; }
+        public ParticipantResource.StatusEnum Status { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public ParticipantResource()
         {
@@ -249,21 +249,21 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                                     [JsonProperty("start_conference_on_enter")]
                                     bool? startConferenceOnEnter, 
                                     [JsonProperty("status")]
-                                    ParticipantResource.ParticipantStatus status, 
+                                    ParticipantResource.StatusEnum status, 
                                     [JsonProperty("uri")]
                                     string uri)
                                     {
-            this.accountSid = accountSid;
-            this.callSid = callSid;
-            this.conferenceSid = conferenceSid;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.endConferenceOnExit = endConferenceOnExit;
-            this.muted = muted;
-            this.hold = hold;
-            this.startConferenceOnEnter = startConferenceOnEnter;
-            this.status = status;
-            this.uri = uri;
+            AccountSid = accountSid;
+            CallSid = callSid;
+            ConferenceSid = conferenceSid;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            EndConferenceOnExit = endConferenceOnExit;
+            Muted = muted;
+            Hold = hold;
+            StartConferenceOnEnter = startConferenceOnEnter;
+            Status = status;
+            Uri = uri;
         }
     }
 }

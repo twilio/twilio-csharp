@@ -14,28 +14,28 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
     public class ParticipantCreator : Creator<ParticipantResource> 
     {
-        public string accountSid { get; set; }
-        public string conferenceSid { get; }
-        public Twilio.Types.PhoneNumber from { get; }
-        public Twilio.Types.PhoneNumber to { get; }
-        public Uri statusCallback { get; set; }
-        public Twilio.Http.HttpMethod statusCallbackMethod { get; set; }
-        public List<string> statusCallbackEvent { get; set; }
-        public int? timeout { get; set; }
-        public bool? record { get; set; }
-        public bool? muted { get; set; }
-        public ParticipantResource.ParticipantBeep beep { get; set; }
-        public bool? startConferenceOnEnter { get; set; }
-        public bool? endConferenceOnExit { get; set; }
-        public Uri waitUrl { get; set; }
-        public Twilio.Http.HttpMethod waitMethod { get; set; }
-        public bool? earlyMedia { get; set; }
-        public int? maxParticipants { get; set; }
-        public ParticipantResource.ParticipantConferenceRecord conferenceRecord { get; set; }
-        public string conferenceTrim { get; set; }
-        public Uri conferenceStatusCallback { get; set; }
-        public Twilio.Http.HttpMethod conferenceStatusCallbackMethod { get; set; }
-        public string conferenceStatusCallbackEvent { get; set; }
+        public string AccountSid { get; set; }
+        public string ConferenceSid { get; }
+        public Twilio.Types.PhoneNumber From { get; }
+        public Twilio.Types.PhoneNumber To { get; }
+        public Uri StatusCallback { get; set; }
+        public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
+        public List<string> StatusCallbackEvent { get; set; }
+        public int? Timeout { get; set; }
+        public bool? Record { get; set; }
+        public bool? Muted { get; set; }
+        public ParticipantResource.BeepEnum Beep { get; set; }
+        public bool? StartConferenceOnEnter { get; set; }
+        public bool? EndConferenceOnExit { get; set; }
+        public Uri WaitUrl { get; set; }
+        public Twilio.Http.HttpMethod WaitMethod { get; set; }
+        public bool? EarlyMedia { get; set; }
+        public int? MaxParticipants { get; set; }
+        public ParticipantResource.ConferenceRecordEnum ConferenceRecord { get; set; }
+        public string ConferenceTrim { get; set; }
+        public Uri ConferenceStatusCallback { get; set; }
+        public Twilio.Http.HttpMethod ConferenceStatusCallbackMethod { get; set; }
+        public string ConferenceStatusCallbackEvent { get; set; }
     
         /// <summary>
         /// Construct a new ParticipantCreator
@@ -46,9 +46,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="to"> The to </param>
         public ParticipantCreator(string conferenceSid, Twilio.Types.PhoneNumber from, Twilio.Types.PhoneNumber to)
         {
-            this.conferenceSid = conferenceSid;
-            this.from = from;
-            this.to = to;
+            ConferenceSid = conferenceSid;
+            From = from;
+            To = to;
         }
     
         #if NET40
@@ -63,7 +63,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + this.ConferenceSid + "/Participants.json"
             );
             
             AddPostParams(request);
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + this.ConferenceSid + "/Participants.json"
             );
             
             AddPostParams(request);
@@ -140,104 +140,104 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (from != null)
+            if (From != null)
             {
-                request.AddPostParam("From", from.ToString());
+                request.AddPostParam("From", From.ToString());
             }
             
-            if (to != null)
+            if (To != null)
             {
-                request.AddPostParam("To", to.ToString());
+                request.AddPostParam("To", To.ToString());
             }
             
-            if (statusCallback != null)
+            if (StatusCallback != null)
             {
-                request.AddPostParam("StatusCallback", statusCallback.ToString());
+                request.AddPostParam("StatusCallback", StatusCallback.ToString());
             }
             
-            if (statusCallbackMethod != null)
+            if (StatusCallbackMethod != null)
             {
-                request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
+                request.AddPostParam("StatusCallbackMethod", StatusCallbackMethod.ToString());
             }
             
-            if (statusCallbackEvent != null)
+            if (StatusCallbackEvent != null)
             {
-                request.AddPostParam("StatusCallbackEvent", statusCallbackEvent.ToString());
+                request.AddPostParam("StatusCallbackEvent", StatusCallbackEvent.ToString());
             }
             
-            if (timeout != null)
+            if (Timeout != null)
             {
-                request.AddPostParam("Timeout", timeout.ToString());
+                request.AddPostParam("Timeout", Timeout.ToString());
             }
             
-            if (record != null)
+            if (Record != null)
             {
-                request.AddPostParam("Record", record.ToString());
+                request.AddPostParam("Record", Record.ToString());
             }
             
-            if (muted != null)
+            if (Muted != null)
             {
-                request.AddPostParam("Muted", muted.ToString());
+                request.AddPostParam("Muted", Muted.ToString());
             }
             
-            if (beep != null)
+            if (Beep != null)
             {
-                request.AddPostParam("Beep", beep.ToString());
+                request.AddPostParam("Beep", Beep.ToString());
             }
             
-            if (startConferenceOnEnter != null)
+            if (StartConferenceOnEnter != null)
             {
-                request.AddPostParam("StartConferenceOnEnter", startConferenceOnEnter.ToString());
+                request.AddPostParam("StartConferenceOnEnter", StartConferenceOnEnter.ToString());
             }
             
-            if (endConferenceOnExit != null)
+            if (EndConferenceOnExit != null)
             {
-                request.AddPostParam("EndConferenceOnExit", endConferenceOnExit.ToString());
+                request.AddPostParam("EndConferenceOnExit", EndConferenceOnExit.ToString());
             }
             
-            if (waitUrl != null)
+            if (WaitUrl != null)
             {
-                request.AddPostParam("WaitUrl", waitUrl.ToString());
+                request.AddPostParam("WaitUrl", WaitUrl.ToString());
             }
             
-            if (waitMethod != null)
+            if (WaitMethod != null)
             {
-                request.AddPostParam("WaitMethod", waitMethod.ToString());
+                request.AddPostParam("WaitMethod", WaitMethod.ToString());
             }
             
-            if (earlyMedia != null)
+            if (EarlyMedia != null)
             {
-                request.AddPostParam("EarlyMedia", earlyMedia.ToString());
+                request.AddPostParam("EarlyMedia", EarlyMedia.ToString());
             }
             
-            if (maxParticipants != null)
+            if (MaxParticipants != null)
             {
-                request.AddPostParam("MaxParticipants", maxParticipants.ToString());
+                request.AddPostParam("MaxParticipants", MaxParticipants.ToString());
             }
             
-            if (conferenceRecord != null)
+            if (ConferenceRecord != null)
             {
-                request.AddPostParam("ConferenceRecord", conferenceRecord.ToString());
+                request.AddPostParam("ConferenceRecord", ConferenceRecord.ToString());
             }
             
-            if (conferenceTrim != null)
+            if (ConferenceTrim != null)
             {
-                request.AddPostParam("ConferenceTrim", conferenceTrim);
+                request.AddPostParam("ConferenceTrim", ConferenceTrim);
             }
             
-            if (conferenceStatusCallback != null)
+            if (ConferenceStatusCallback != null)
             {
-                request.AddPostParam("ConferenceStatusCallback", conferenceStatusCallback.ToString());
+                request.AddPostParam("ConferenceStatusCallback", ConferenceStatusCallback.ToString());
             }
             
-            if (conferenceStatusCallbackMethod != null)
+            if (ConferenceStatusCallbackMethod != null)
             {
-                request.AddPostParam("ConferenceStatusCallbackMethod", conferenceStatusCallbackMethod.ToString());
+                request.AddPostParam("ConferenceStatusCallbackMethod", ConferenceStatusCallbackMethod.ToString());
             }
             
-            if (conferenceStatusCallbackEvent != null)
+            if (ConferenceStatusCallbackEvent != null)
             {
-                request.AddPostParam("ConferenceStatusCallbackEvent", conferenceStatusCallbackEvent);
+                request.AddPostParam("ConferenceStatusCallbackEvent", ConferenceStatusCallbackEvent);
             }
         }
     }

@@ -14,10 +14,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
     public class RecordReader : Reader<RecordResource> 
     {
-        public string accountSid { get; set; }
-        public RecordResource.RecordCategory category { get; set; }
-        public DateTime? startDate { get; set; }
-        public DateTime? endDate { get; set; }
+        public string AccountSid { get; set; }
+        public RecordResource.CategoryEnum Category { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
     
         #if NET40
         /// <summary>
@@ -31,7 +31,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Usage/Records.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Usage/Records.json"
             );
             AddQueryParams(request);
             
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Usage/Records.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Usage/Records.json"
             );
             
             AddQueryParams(request);
@@ -121,19 +121,19 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (category != null)
+            if (Category != null)
             {
-                request.AddQueryParam("Category", category.ToString());
+                request.AddQueryParam("Category", Category.ToString());
             }
             
-            if (startDate != null)
+            if (StartDate != null)
             {
-                request.AddQueryParam("StartDate", startDate.ToString());
+                request.AddQueryParam("StartDate", StartDate.ToString());
             }
             
-            if (endDate != null)
+            if (EndDate != null)
             {
-                request.AddQueryParam("EndDate", endDate.ToString());
+                request.AddQueryParam("EndDate", EndDate.ToString());
             }
             
             if (PageSize != null)

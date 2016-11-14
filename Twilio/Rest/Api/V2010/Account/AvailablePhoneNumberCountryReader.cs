@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class AvailablePhoneNumberCountryReader : Reader<AvailablePhoneNumberCountryResource> 
     {
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
     
         #if NET40
         /// <summary>
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/AvailablePhoneNumbers.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/AvailablePhoneNumbers.json"
             );
             AddQueryParams(request);
             
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/AvailablePhoneNumbers.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/AvailablePhoneNumbers.json"
             );
             
             AddQueryParams(request);

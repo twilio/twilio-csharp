@@ -13,8 +13,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class CredentialListDeleter : Deleter<CredentialListResource> 
     {
-        public string accountSid { get; set; }
-        public string sid { get; }
+        public string AccountSid { get; set; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new CredentialListDeleter
@@ -23,7 +23,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="sid"> Delete by unique credential Sid </param>
         public CredentialListDeleter(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.Sid + ".json"
             );
             
             var response = await client.RequestAsync(request);
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.Sid + ".json"
             );
             
             var response = client.Request(request);

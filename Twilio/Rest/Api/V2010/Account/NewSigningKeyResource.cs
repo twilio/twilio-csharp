@@ -41,15 +41,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("secret")]
-        public string secret { get; set; }
+        public string Secret { get; set; }
     
         public NewSigningKeyResource()
         {
@@ -67,11 +67,11 @@ namespace Twilio.Rest.Api.V2010.Account
                                       [JsonProperty("secret")]
                                       string secret)
                                       {
-            this.sid = sid;
-            this.friendlyName = friendlyName;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.secret = secret;
+            Sid = sid;
+            FriendlyName = friendlyName;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Secret = secret;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010
 
     public class AccountResource : Resource 
     {
-        public sealed class AccountStatus : IStringEnum 
+        public sealed class StatusEnum : IStringEnum 
         {
             public const string Active = "active";
             public const string Suspended = "suspended";
@@ -20,9 +20,9 @@ namespace Twilio.Rest.Api.V2010
         
             private string _value;
             
-            public AccountStatus() {}
+            public StatusEnum() {}
             
-            public AccountStatus(string value)
+            public StatusEnum(string value)
             {
                 _value = value;
             }
@@ -32,12 +32,12 @@ namespace Twilio.Rest.Api.V2010
                 return _value;
             }
             
-            public static implicit operator AccountStatus(string value)
+            public static implicit operator StatusEnum(string value)
             {
-                return new AccountStatus(value);
+                return new StatusEnum(value);
             }
             
-            public static implicit operator string(AccountStatus value)
+            public static implicit operator string(StatusEnum value)
             {
                 return value.ToString();
             }
@@ -48,16 +48,16 @@ namespace Twilio.Rest.Api.V2010
             }
         }
     
-        public sealed class AccountType : IStringEnum 
+        public sealed class TypeEnum : IStringEnum 
         {
             public const string Trial = "Trial";
             public const string Full = "Full";
         
             private string _value;
             
-            public AccountType() {}
+            public TypeEnum() {}
             
-            public AccountType(string value)
+            public TypeEnum(string value)
             {
                 _value = value;
             }
@@ -67,12 +67,12 @@ namespace Twilio.Rest.Api.V2010
                 return _value;
             }
             
-            public static implicit operator AccountType(string value)
+            public static implicit operator TypeEnum(string value)
             {
-                return new AccountType(value);
+                return new TypeEnum(value);
             }
             
-            public static implicit operator string(AccountType value)
+            public static implicit operator string(TypeEnum value)
             {
                 return value.ToString();
             }
@@ -143,27 +143,27 @@ namespace Twilio.Rest.Api.V2010
         }
     
         [JsonProperty("auth_token")]
-        public string authToken { get; set; }
+        public string AuthToken { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("owner_account_sid")]
-        public string ownerAccountSid { get; set; }
+        public string OwnerAccountSid { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public AccountResource.AccountStatus status { get; set; }
+        public AccountResource.StatusEnum Status { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; set; }
+        public Dictionary<string, string> SubresourceUris { get; set; }
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public AccountResource.AccountType type { get; set; }
+        public AccountResource.TypeEnum Type { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public AccountResource()
         {
@@ -183,24 +183,24 @@ namespace Twilio.Rest.Api.V2010
                                 [JsonProperty("sid")]
                                 string sid, 
                                 [JsonProperty("status")]
-                                AccountResource.AccountStatus status, 
+                                AccountResource.StatusEnum status, 
                                 [JsonProperty("subresource_uris")]
                                 Dictionary<string, string> subresourceUris, 
                                 [JsonProperty("type")]
-                                AccountResource.AccountType type, 
+                                AccountResource.TypeEnum type, 
                                 [JsonProperty("uri")]
                                 string uri)
                                 {
-            this.authToken = authToken;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.friendlyName = friendlyName;
-            this.ownerAccountSid = ownerAccountSid;
-            this.sid = sid;
-            this.status = status;
-            this.subresourceUris = subresourceUris;
-            this.type = type;
-            this.uri = uri;
+            AuthToken = authToken;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            FriendlyName = friendlyName;
+            OwnerAccountSid = ownerAccountSid;
+            Sid = sid;
+            Status = status;
+            SubresourceUris = subresourceUris;
+            Type = type;
+            Uri = uri;
         }
     }
 }

@@ -15,11 +15,11 @@ namespace Twilio.Rest.Notify.V1.Service
 
     public class BindingReader : Reader<BindingResource> 
     {
-        public string serviceSid { get; }
-        public DateTime? startDate { get; set; }
-        public DateTime? endDate { get; set; }
-        public List<string> identity { get; set; }
-        public List<string> tag { get; set; }
+        public string ServiceSid { get; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public List<string> Identity { get; set; }
+        public List<string> Tag { get; set; }
     
         /// <summary>
         /// Construct a new BindingReader
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="serviceSid"> The service_sid </param>
         public BindingReader(string serviceSid)
         {
-            this.serviceSid = serviceSid;
+            ServiceSid = serviceSid;
         }
     
         #if NET40
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Notify.V1.Service
             var request = new Request(
                 HttpMethod.GET,
                 Domains.NOTIFY,
-                "/v1/Services/" + this.serviceSid + "/Bindings"
+                "/v1/Services/" + this.ServiceSid + "/Bindings"
             );
             AddQueryParams(request);
             
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Notify.V1.Service
             var request = new Request(
                 HttpMethod.GET,
                 Domains.NOTIFY,
-                "/v1/Services/" + this.serviceSid + "/Bindings"
+                "/v1/Services/" + this.ServiceSid + "/Bindings"
             );
             
             AddQueryParams(request);
@@ -133,24 +133,24 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (startDate != null)
+            if (StartDate != null)
             {
-                request.AddQueryParam("StartDate", startDate.ToString());
+                request.AddQueryParam("StartDate", StartDate.ToString());
             }
             
-            if (endDate != null)
+            if (EndDate != null)
             {
-                request.AddQueryParam("EndDate", endDate.ToString());
+                request.AddQueryParam("EndDate", EndDate.ToString());
             }
             
-            if (identity != null)
+            if (Identity != null)
             {
-                request.AddQueryParam("Identity", identity.ToString());
+                request.AddQueryParam("Identity", Identity.ToString());
             }
             
-            if (tag != null)
+            if (Tag != null)
             {
-                request.AddQueryParam("Tag", tag.ToString());
+                request.AddQueryParam("Tag", Tag.ToString());
             }
             
             if (PageSize != null)

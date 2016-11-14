@@ -12,8 +12,8 @@ namespace Twilio.Rest.Preview.Sync.Service
 
     public class SyncMapCreator : Creator<SyncMapResource> 
     {
-        public string serviceSid { get; }
-        public string uniqueName { get; set; }
+        public string ServiceSid { get; }
+        public string UniqueName { get; set; }
     
         /// <summary>
         /// Construct a new SyncMapCreator
@@ -22,7 +22,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <param name="serviceSid"> The service_sid </param>
         public SyncMapCreator(string serviceSid)
         {
-            this.serviceSid = serviceSid;
+            ServiceSid = serviceSid;
         }
     
         #if NET40
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Preview.Sync.Service
             var request = new Request(
                 HttpMethod.POST,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps"
+                "/Sync/Services/" + this.ServiceSid + "/Maps"
             );
             
             AddPostParams(request);
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Preview.Sync.Service
             var request = new Request(
                 HttpMethod.POST,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps"
+                "/Sync/Services/" + this.ServiceSid + "/Maps"
             );
             
             AddPostParams(request);
@@ -114,9 +114,9 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (uniqueName != null)
+            if (UniqueName != null)
             {
-                request.AddPostParam("UniqueName", uniqueName);
+                request.AddPostParam("UniqueName", UniqueName);
             }
         }
     }

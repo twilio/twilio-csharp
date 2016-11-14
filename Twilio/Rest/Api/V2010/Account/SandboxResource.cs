@@ -51,37 +51,37 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("pin")]
-        public int? pin { get; set; }
+        public int? Pin { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber phoneNumber { get; set; }
+        public Twilio.Types.PhoneNumber PhoneNumber { get; set; }
         [JsonProperty("application_sid")]
-        public string applicationSid { get; set; }
+        public string ApplicationSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; set; }
+        public string ApiVersion { get; set; }
         [JsonProperty("voice_url")]
-        public Uri voiceUrl { get; set; }
+        public Uri VoiceUrl { get; set; }
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod voiceMethod { get; set; }
+        public Twilio.Http.HttpMethod VoiceMethod { get; set; }
         [JsonProperty("sms_url")]
-        public Uri smsUrl { get; set; }
+        public Uri SmsUrl { get; set; }
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod smsMethod { get; set; }
+        public Twilio.Http.HttpMethod SmsMethod { get; set; }
         [JsonProperty("status_callback")]
-        public Uri statusCallback { get; set; }
+        public Uri StatusCallback { get; set; }
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod statusCallbackMethod { get; set; }
+        public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
         [JsonProperty("uri")]
-        public Uri uri { get; set; }
+        public Uri Uri { get; set; }
     
         public SandboxResource()
         {
@@ -117,20 +117,20 @@ namespace Twilio.Rest.Api.V2010.Account
                                 [JsonProperty("uri")]
                                 Uri uri)
                                 {
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.pin = pin;
-            this.accountSid = accountSid;
-            this.phoneNumber = phoneNumber;
-            this.applicationSid = applicationSid;
-            this.apiVersion = apiVersion;
-            this.voiceUrl = voiceUrl;
-            this.voiceMethod = voiceMethod;
-            this.smsUrl = smsUrl;
-            this.smsMethod = smsMethod;
-            this.statusCallback = statusCallback;
-            this.statusCallbackMethod = statusCallbackMethod;
-            this.uri = uri;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Pin = pin;
+            AccountSid = accountSid;
+            PhoneNumber = phoneNumber;
+            ApplicationSid = applicationSid;
+            ApiVersion = apiVersion;
+            VoiceUrl = voiceUrl;
+            VoiceMethod = voiceMethod;
+            SmsUrl = smsUrl;
+            SmsMethod = smsMethod;
+            StatusCallback = statusCallback;
+            StatusCallbackMethod = statusCallbackMethod;
+            Uri = uri;
         }
     }
 }

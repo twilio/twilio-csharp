@@ -11,16 +11,16 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
 
     public class SyncMapItemResource : Resource 
     {
-        public sealed class SyncMapItemQueryResultOrder : IStringEnum 
+        public sealed class QueryResultOrderEnum : IStringEnum 
         {
             public const string Asc = "asc";
             public const string Desc = "desc";
         
             private string _value;
             
-            public SyncMapItemQueryResultOrder() {}
+            public QueryResultOrderEnum() {}
             
-            public SyncMapItemQueryResultOrder(string value)
+            public QueryResultOrderEnum(string value)
             {
                 _value = value;
             }
@@ -30,12 +30,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                 return _value;
             }
             
-            public static implicit operator SyncMapItemQueryResultOrder(string value)
+            public static implicit operator QueryResultOrderEnum(string value)
             {
-                return new SyncMapItemQueryResultOrder(value);
+                return new QueryResultOrderEnum(value);
             }
             
-            public static implicit operator string(SyncMapItemQueryResultOrder value)
+            public static implicit operator string(QueryResultOrderEnum value)
             {
                 return value.ToString();
             }
@@ -46,16 +46,16 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             }
         }
     
-        public sealed class SyncMapItemQueryFromBoundType : IStringEnum 
+        public sealed class QueryFromBoundTypeEnum : IStringEnum 
         {
             public const string Inclusive = "inclusive";
             public const string Exclusive = "exclusive";
         
             private string _value;
             
-            public SyncMapItemQueryFromBoundType() {}
+            public QueryFromBoundTypeEnum() {}
             
-            public SyncMapItemQueryFromBoundType(string value)
+            public QueryFromBoundTypeEnum(string value)
             {
                 _value = value;
             }
@@ -65,12 +65,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                 return _value;
             }
             
-            public static implicit operator SyncMapItemQueryFromBoundType(string value)
+            public static implicit operator QueryFromBoundTypeEnum(string value)
             {
-                return new SyncMapItemQueryFromBoundType(value);
+                return new QueryFromBoundTypeEnum(value);
             }
             
-            public static implicit operator string(SyncMapItemQueryFromBoundType value)
+            public static implicit operator string(QueryFromBoundTypeEnum value)
             {
                 return value.ToString();
             }
@@ -167,25 +167,25 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         }
     
         [JsonProperty("key")]
-        public string key { get; set; }
+        public string Key { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("service_sid")]
-        public string serviceSid { get; set; }
+        public string ServiceSid { get; set; }
         [JsonProperty("map_sid")]
-        public string mapSid { get; set; }
+        public string MapSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
         [JsonProperty("revision")]
-        public string revision { get; set; }
+        public string Revision { get; set; }
         [JsonProperty("data")]
-        public Object data { get; set; }
+        public Object Data { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("created_by")]
-        public string createdBy { get; set; }
+        public string CreatedBy { get; set; }
     
         public SyncMapItemResource()
         {
@@ -213,16 +213,16 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                                     [JsonProperty("created_by")]
                                     string createdBy)
                                     {
-            this.key = key;
-            this.accountSid = accountSid;
-            this.serviceSid = serviceSid;
-            this.mapSid = mapSid;
-            this.url = url;
-            this.revision = revision;
-            this.data = data;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.createdBy = createdBy;
+            Key = key;
+            AccountSid = accountSid;
+            ServiceSid = serviceSid;
+            MapSid = mapSid;
+            Url = url;
+            Revision = revision;
+            Data = data;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            CreatedBy = createdBy;
         }
     }
 }

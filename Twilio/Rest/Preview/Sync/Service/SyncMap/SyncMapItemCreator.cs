@@ -13,10 +13,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
 
     public class SyncMapItemCreator : Creator<SyncMapItemResource> 
     {
-        public string serviceSid { get; }
-        public string mapSid { get; }
-        public string key { get; }
-        public Object data { get; }
+        public string ServiceSid { get; }
+        public string MapSid { get; }
+        public string Key { get; }
+        public Object Data { get; }
     
         /// <summary>
         /// Construct a new SyncMapItemCreator
@@ -28,10 +28,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="data"> The data </param>
         public SyncMapItemCreator(string serviceSid, string mapSid, string key, Object data)
         {
-            this.serviceSid = serviceSid;
-            this.mapSid = mapSid;
-            this.key = key;
-            this.data = data;
+            ServiceSid = serviceSid;
+            MapSid = mapSid;
+            Key = key;
+            Data = data;
         }
     
         #if NET40
@@ -46,7 +46,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var request = new Request(
                 HttpMethod.POST,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps/" + this.mapSid + "/Items"
+                "/Sync/Services/" + this.ServiceSid + "/Maps/" + this.MapSid + "/Items"
             );
             
             AddPostParams(request);
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var request = new Request(
                 HttpMethod.POST,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps/" + this.mapSid + "/Items"
+                "/Sync/Services/" + this.ServiceSid + "/Maps/" + this.MapSid + "/Items"
             );
             
             AddPostParams(request);
@@ -123,14 +123,14 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (key != null)
+            if (Key != null)
             {
-                request.AddPostParam("Key", key);
+                request.AddPostParam("Key", Key);
             }
             
-            if (data != null)
+            if (Data != null)
             {
-                request.AddPostParam("Data", data.ToString());
+                request.AddPostParam("Data", Data.ToString());
             }
         }
     }

@@ -12,11 +12,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
     public class IpAddressUpdater : Updater<IpAddressResource> 
     {
-        public string accountSid { get; set; }
-        public string ipAccessControlListSid { get; }
-        public string sid { get; }
-        public string ipAddress { get; set; }
-        public string friendlyName { get; set; }
+        public string AccountSid { get; set; }
+        public string IpAccessControlListSid { get; }
+        public string Sid { get; }
+        public string IpAddress { get; set; }
+        public string FriendlyName { get; set; }
     
         /// <summary>
         /// Construct a new IpAddressUpdater
@@ -26,8 +26,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <param name="sid"> The sid </param>
         public IpAddressUpdater(string ipAccessControlListSid, string sid)
         {
-            this.ipAccessControlListSid = ipAccessControlListSid;
-            this.sid = sid;
+            IpAccessControlListSid = ipAccessControlListSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.IpAccessControlListSid + "/IpAddresses/" + this.Sid + ".json"
             );
             AddPostParams(request);
             
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.IpAccessControlListSid + "/IpAddresses/" + this.Sid + ".json"
             );
             AddPostParams(request);
             
@@ -119,14 +119,14 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (ipAddress != null)
+            if (IpAddress != null)
             {
-                request.AddPostParam("IpAddress", ipAddress);
+                request.AddPostParam("IpAddress", IpAddress);
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
         }
     }

@@ -12,9 +12,9 @@ namespace Twilio.Rest.Preview.Wireless
 
     public class DeviceReader : Reader<DeviceResource> 
     {
-        public string status { get; set; }
-        public string simIdentifier { get; set; }
-        public string ratePlan { get; set; }
+        public string Status { get; set; }
+        public string SimIdentifier { get; set; }
+        public string RatePlan { get; set; }
     
         #if NET40
         /// <summary>
@@ -118,19 +118,19 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (status != null)
+            if (Status != null)
             {
-                request.AddQueryParam("Status", status);
+                request.AddQueryParam("Status", Status);
             }
             
-            if (simIdentifier != null)
+            if (SimIdentifier != null)
             {
-                request.AddQueryParam("SimIdentifier", simIdentifier);
+                request.AddQueryParam("SimIdentifier", SimIdentifier);
             }
             
-            if (ratePlan != null)
+            if (RatePlan != null)
             {
-                request.AddQueryParam("RatePlan", ratePlan);
+                request.AddQueryParam("RatePlan", RatePlan);
             }
             
             if (PageSize != null)

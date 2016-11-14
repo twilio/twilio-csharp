@@ -44,19 +44,19 @@ namespace Twilio.Rest.Pricing.V1.Voice
     
         [JsonProperty("number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber number { get; set; }
+        public Twilio.Types.PhoneNumber Number { get; set; }
         [JsonProperty("country")]
-        public string country { get; set; }
+        public string Country { get; set; }
         [JsonProperty("iso_country")]
-        public string isoCountry { get; set; }
+        public string IsoCountry { get; set; }
         [JsonProperty("outbound_call_price")]
-        public OutboundCallPrice outboundCallPrice { get; set; }
+        public OutboundCallPrice OutboundCallPrice { get; set; }
         [JsonProperty("inbound_call_price")]
-        public InboundCallPrice inboundCallPrice { get; set; }
+        public InboundCallPrice InboundCallPrice { get; set; }
         [JsonProperty("price_unit")]
-        public string priceUnit { get; set; }
+        public string PriceUnit { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public NumberResource()
         {
@@ -78,13 +78,13 @@ namespace Twilio.Rest.Pricing.V1.Voice
                                [JsonProperty("url")]
                                Uri url)
                                {
-            this.number = number;
-            this.country = country;
-            this.isoCountry = isoCountry;
-            this.outboundCallPrice = outboundCallPrice;
-            this.inboundCallPrice = inboundCallPrice;
-            this.priceUnit = priceUnit;
-            this.url = url;
+            Number = number;
+            Country = country;
+            IsoCountry = isoCountry;
+            OutboundCallPrice = outboundCallPrice;
+            InboundCallPrice = inboundCallPrice;
+            PriceUnit = priceUnit;
+            Url = url;
         }
     }
 }

@@ -13,10 +13,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service
 
     public class RoleCreator : Creator<RoleResource> 
     {
-        public string serviceSid { get; }
-        public string friendlyName { get; }
-        public RoleResource.RoleRoleType type { get; }
-        public List<string> permission { get; }
+        public string ServiceSid { get; }
+        public string FriendlyName { get; }
+        public RoleResource.RoleTypeEnum Type { get; }
+        public List<string> Permission { get; }
     
         /// <summary>
         /// Construct a new RoleCreator
@@ -26,12 +26,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="type"> The type </param>
         /// <param name="permission"> The permission </param>
-        public RoleCreator(string serviceSid, string friendlyName, RoleResource.RoleRoleType type, List<string> permission)
+        public RoleCreator(string serviceSid, string friendlyName, RoleResource.RoleTypeEnum type, List<string> permission)
         {
-            this.serviceSid = serviceSid;
-            this.friendlyName = friendlyName;
-            this.type = type;
-            this.permission = permission;
+            ServiceSid = serviceSid;
+            FriendlyName = friendlyName;
+            Type = type;
+            Permission = permission;
         }
     
         #if NET40
@@ -46,7 +46,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             var request = new Request(
                 HttpMethod.POST,
                 Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Roles"
+                "/v1/Services/" + this.ServiceSid + "/Roles"
             );
             
             AddPostParams(request);
@@ -87,7 +87,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             var request = new Request(
                 HttpMethod.POST,
                 Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Roles"
+                "/v1/Services/" + this.ServiceSid + "/Roles"
             );
             
             AddPostParams(request);
@@ -123,19 +123,19 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (type != null)
+            if (Type != null)
             {
-                request.AddPostParam("Type", type.ToString());
+                request.AddPostParam("Type", Type.ToString());
             }
             
-            if (permission != null)
+            if (Permission != null)
             {
-                request.AddPostParam("Permission", permission.ToString());
+                request.AddPostParam("Permission", Permission.ToString());
             }
         }
     }

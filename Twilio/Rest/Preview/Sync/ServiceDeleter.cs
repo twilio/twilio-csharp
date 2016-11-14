@@ -13,7 +13,7 @@ namespace Twilio.Rest.Preview.Sync
 
     public class ServiceDeleter : Deleter<ServiceResource> 
     {
-        public string sid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new ServiceDeleter
@@ -22,7 +22,7 @@ namespace Twilio.Rest.Preview.Sync
         /// <param name="sid"> The sid </param>
         public ServiceDeleter(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Preview.Sync
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.sid + ""
+                "/Sync/Services/" + this.Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Preview.Sync
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.sid + ""
+                "/Sync/Services/" + this.Sid + ""
             );
             
             var response = client.Request(request);

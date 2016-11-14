@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ConferenceResource : Resource 
     {
-        public sealed class ConferenceStatus : IStringEnum 
+        public sealed class StatusEnum : IStringEnum 
         {
             public const string Init = "init";
             public const string InProgress = "in-progress";
@@ -20,9 +20,9 @@ namespace Twilio.Rest.Api.V2010.Account
         
             private string _value;
             
-            public ConferenceStatus() {}
+            public StatusEnum() {}
             
-            public ConferenceStatus(string value)
+            public StatusEnum(string value)
             {
                 _value = value;
             }
@@ -32,12 +32,12 @@ namespace Twilio.Rest.Api.V2010.Account
                 return _value;
             }
             
-            public static implicit operator ConferenceStatus(string value)
+            public static implicit operator StatusEnum(string value)
             {
-                return new ConferenceStatus(value);
+                return new StatusEnum(value);
             }
             
-            public static implicit operator string(ConferenceStatus value)
+            public static implicit operator string(StatusEnum value)
             {
                 return value.ToString();
             }
@@ -89,24 +89,24 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; set; }
+        public string ApiVersion { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ConferenceResource.ConferenceStatus status { get; set; }
+        public ConferenceResource.StatusEnum Status { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; set; }
+        public Dictionary<string, string> SubresourceUris { get; set; }
     
         public ConferenceResource()
         {
@@ -126,21 +126,21 @@ namespace Twilio.Rest.Api.V2010.Account
                                    [JsonProperty("sid")]
                                    string sid, 
                                    [JsonProperty("status")]
-                                   ConferenceResource.ConferenceStatus status, 
+                                   ConferenceResource.StatusEnum status, 
                                    [JsonProperty("uri")]
                                    string uri, 
                                    [JsonProperty("subresource_uris")]
                                    Dictionary<string, string> subresourceUris)
                                    {
-            this.accountSid = accountSid;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.apiVersion = apiVersion;
-            this.friendlyName = friendlyName;
-            this.sid = sid;
-            this.status = status;
-            this.uri = uri;
-            this.subresourceUris = subresourceUris;
+            AccountSid = accountSid;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            ApiVersion = apiVersion;
+            FriendlyName = friendlyName;
+            Sid = sid;
+            Status = status;
+            Uri = uri;
+            SubresourceUris = subresourceUris;
         }
     }
 }

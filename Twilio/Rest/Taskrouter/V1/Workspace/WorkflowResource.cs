@@ -91,29 +91,29 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("assignment_callback_url")]
-        public Uri assignmentCallbackUrl { get; set; }
+        public Uri AssignmentCallbackUrl { get; set; }
         [JsonProperty("configuration")]
-        public string configuration { get; set; }
+        public string Configuration { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("document_content_type")]
-        public string documentContentType { get; set; }
+        public string DocumentContentType { get; set; }
         [JsonProperty("fallback_assignment_callback_url")]
-        public Uri fallbackAssignmentCallbackUrl { get; set; }
+        public Uri FallbackAssignmentCallbackUrl { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("task_reservation_timeout")]
-        public int? taskReservationTimeout { get; set; }
+        public int? TaskReservationTimeout { get; set; }
         [JsonProperty("workspace_sid")]
-        public string workspaceSid { get; set; }
+        public string WorkspaceSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public WorkflowResource()
         {
@@ -145,18 +145,18 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                  [JsonProperty("url")]
                                  Uri url)
                                  {
-            this.accountSid = accountSid;
-            this.assignmentCallbackUrl = assignmentCallbackUrl;
-            this.configuration = configuration;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.documentContentType = documentContentType;
-            this.fallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl;
-            this.friendlyName = friendlyName;
-            this.sid = sid;
-            this.taskReservationTimeout = taskReservationTimeout;
-            this.workspaceSid = workspaceSid;
-            this.url = url;
+            AccountSid = accountSid;
+            AssignmentCallbackUrl = assignmentCallbackUrl;
+            Configuration = configuration;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            DocumentContentType = documentContentType;
+            FallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl;
+            FriendlyName = friendlyName;
+            Sid = sid;
+            TaskReservationTimeout = taskReservationTimeout;
+            WorkspaceSid = workspaceSid;
+            Url = url;
         }
     }
 }

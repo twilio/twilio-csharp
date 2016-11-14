@@ -12,9 +12,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
 
     public class ReservationFetcher : Fetcher<ReservationResource> 
     {
-        public string workspaceSid { get; }
-        public string taskSid { get; }
-        public string sid { get; }
+        public string WorkspaceSid { get; }
+        public string TaskSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new ReservationFetcher
@@ -25,9 +25,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="sid"> The sid </param>
         public ReservationFetcher(string workspaceSid, string taskSid, string sid)
         {
-            this.workspaceSid = workspaceSid;
-            this.taskSid = taskSid;
-            this.sid = sid;
+            WorkspaceSid = workspaceSid;
+            TaskSid = taskSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Tasks/" + this.taskSid + "/Reservations/" + this.sid + ""
+                "/v1/Workspaces/" + this.WorkspaceSid + "/Tasks/" + this.TaskSid + "/Reservations/" + this.Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Tasks/" + this.taskSid + "/Reservations/" + this.sid + ""
+                "/v1/Workspaces/" + this.WorkspaceSid + "/Tasks/" + this.TaskSid + "/Reservations/" + this.Sid + ""
             );
             
             var response = client.Request(request);

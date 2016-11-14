@@ -12,13 +12,13 @@ namespace Twilio.Rest.Notify.V1
 
     public class ServiceCreator : Creator<ServiceResource> 
     {
-        public string friendlyName { get; set; }
-        public string apnCredentialSid { get; set; }
-        public string gcmCredentialSid { get; set; }
-        public string messagingServiceSid { get; set; }
-        public string facebookMessengerPageId { get; set; }
-        public string defaultApnNotificationProtocolVersion { get; set; }
-        public string defaultGcmNotificationProtocolVersion { get; set; }
+        public string FriendlyName { get; set; }
+        public string ApnCredentialSid { get; set; }
+        public string GcmCredentialSid { get; set; }
+        public string MessagingServiceSid { get; set; }
+        public string FacebookMessengerPageId { get; set; }
+        public string DefaultApnNotificationProtocolVersion { get; set; }
+        public string DefaultGcmNotificationProtocolVersion { get; set; }
     
         #if NET40
         /// <summary>
@@ -109,39 +109,39 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (apnCredentialSid != null)
+            if (ApnCredentialSid != null)
             {
-                request.AddPostParam("ApnCredentialSid", apnCredentialSid);
+                request.AddPostParam("ApnCredentialSid", ApnCredentialSid);
             }
             
-            if (gcmCredentialSid != null)
+            if (GcmCredentialSid != null)
             {
-                request.AddPostParam("GcmCredentialSid", gcmCredentialSid);
+                request.AddPostParam("GcmCredentialSid", GcmCredentialSid);
             }
             
-            if (messagingServiceSid != null)
+            if (MessagingServiceSid != null)
             {
-                request.AddPostParam("MessagingServiceSid", messagingServiceSid);
+                request.AddPostParam("MessagingServiceSid", MessagingServiceSid);
             }
             
-            if (facebookMessengerPageId != null)
+            if (FacebookMessengerPageId != null)
             {
-                request.AddPostParam("FacebookMessengerPageId", facebookMessengerPageId);
+                request.AddPostParam("FacebookMessengerPageId", FacebookMessengerPageId);
             }
             
-            if (defaultApnNotificationProtocolVersion != null)
+            if (DefaultApnNotificationProtocolVersion != null)
             {
-                request.AddPostParam("DefaultApnNotificationProtocolVersion", defaultApnNotificationProtocolVersion);
+                request.AddPostParam("DefaultApnNotificationProtocolVersion", DefaultApnNotificationProtocolVersion);
             }
             
-            if (defaultGcmNotificationProtocolVersion != null)
+            if (DefaultGcmNotificationProtocolVersion != null)
             {
-                request.AddPostParam("DefaultGcmNotificationProtocolVersion", defaultGcmNotificationProtocolVersion);
+                request.AddPostParam("DefaultGcmNotificationProtocolVersion", DefaultGcmNotificationProtocolVersion);
             }
         }
     }

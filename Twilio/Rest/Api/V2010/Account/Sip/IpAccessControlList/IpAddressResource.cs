@@ -91,21 +91,21 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         }
     
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("ip_address")]
-        public string ipAddress { get; set; }
+        public string IpAddress { get; set; }
         [JsonProperty("ip_access_control_list_sid")]
-        public string ipAccessControlListSid { get; set; }
+        public string IpAccessControlListSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public IpAddressResource()
         {
@@ -129,14 +129,14 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
                                   [JsonProperty("uri")]
                                   string uri)
                                   {
-            this.sid = sid;
-            this.accountSid = accountSid;
-            this.friendlyName = friendlyName;
-            this.ipAddress = ipAddress;
-            this.ipAccessControlListSid = ipAccessControlListSid;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.uri = uri;
+            Sid = sid;
+            AccountSid = accountSid;
+            FriendlyName = friendlyName;
+            IpAddress = ipAddress;
+            IpAccessControlListSid = ipAccessControlListSid;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Uri = uri;
         }
     }
 }

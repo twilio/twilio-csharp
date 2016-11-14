@@ -13,13 +13,13 @@ namespace Twilio.Rest.Taskrouter.V1
 
     public class WorkspaceUpdater : Updater<WorkspaceResource> 
     {
-        public string sid { get; }
-        public string defaultActivitySid { get; set; }
-        public Uri eventCallbackUrl { get; set; }
-        public string eventsFilter { get; set; }
-        public string friendlyName { get; set; }
-        public bool? multiTaskEnabled { get; set; }
-        public string timeoutActivitySid { get; set; }
+        public string Sid { get; }
+        public string DefaultActivitySid { get; set; }
+        public Uri EventCallbackUrl { get; set; }
+        public string EventsFilter { get; set; }
+        public string FriendlyName { get; set; }
+        public bool? MultiTaskEnabled { get; set; }
+        public string TimeoutActivitySid { get; set; }
     
         /// <summary>
         /// Construct a new WorkspaceUpdater
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <param name="sid"> The sid </param>
         public WorkspaceUpdater(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Taskrouter.V1
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.sid + ""
+                "/v1/Workspaces/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Taskrouter.V1
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.sid + ""
+                "/v1/Workspaces/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -120,34 +120,34 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (defaultActivitySid != null)
+            if (DefaultActivitySid != null)
             {
-                request.AddPostParam("DefaultActivitySid", defaultActivitySid);
+                request.AddPostParam("DefaultActivitySid", DefaultActivitySid);
             }
             
-            if (eventCallbackUrl != null)
+            if (EventCallbackUrl != null)
             {
-                request.AddPostParam("EventCallbackUrl", eventCallbackUrl.ToString());
+                request.AddPostParam("EventCallbackUrl", EventCallbackUrl.ToString());
             }
             
-            if (eventsFilter != null)
+            if (EventsFilter != null)
             {
-                request.AddPostParam("EventsFilter", eventsFilter);
+                request.AddPostParam("EventsFilter", EventsFilter);
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (multiTaskEnabled != null)
+            if (MultiTaskEnabled != null)
             {
-                request.AddPostParam("MultiTaskEnabled", multiTaskEnabled.ToString());
+                request.AddPostParam("MultiTaskEnabled", MultiTaskEnabled.ToString());
             }
             
-            if (timeoutActivitySid != null)
+            if (TimeoutActivitySid != null)
             {
-                request.AddPostParam("TimeoutActivitySid", timeoutActivitySid);
+                request.AddPostParam("TimeoutActivitySid", TimeoutActivitySid);
             }
         }
     }

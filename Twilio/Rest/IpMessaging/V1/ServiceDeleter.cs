@@ -13,7 +13,7 @@ namespace Twilio.Rest.IpMessaging.V1
 
     public class ServiceDeleter : Deleter<ServiceResource> 
     {
-        public string sid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new ServiceDeleter
@@ -22,7 +22,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <param name="sid"> The sid </param>
         public ServiceDeleter(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -36,7 +36,7 @@ namespace Twilio.Rest.IpMessaging.V1
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.IP_MESSAGING,
-                "/v1/Services/" + this.sid + ""
+                "/v1/Services/" + this.Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -75,7 +75,7 @@ namespace Twilio.Rest.IpMessaging.V1
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.IP_MESSAGING,
-                "/v1/Services/" + this.sid + ""
+                "/v1/Services/" + this.Sid + ""
             );
             
             var response = client.Request(request);

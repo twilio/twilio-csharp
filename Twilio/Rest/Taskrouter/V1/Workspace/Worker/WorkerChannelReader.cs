@@ -12,8 +12,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
     public class WorkerChannelReader : Reader<WorkerChannelResource> 
     {
-        public string workspaceSid { get; }
-        public string workerSid { get; }
+        public string WorkspaceSid { get; }
+        public string WorkerSid { get; }
     
         /// <summary>
         /// Construct a new WorkerChannelReader
@@ -23,8 +23,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="workerSid"> The worker_sid </param>
         public WorkerChannelReader(string workspaceSid, string workerSid)
         {
-            this.workspaceSid = workspaceSid;
-            this.workerSid = workerSid;
+            WorkspaceSid = workspaceSid;
+            WorkerSid = workerSid;
         }
     
         #if NET40
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.workerSid + "/Channels"
+                "/v1/Workspaces/" + this.WorkspaceSid + "/Workers/" + this.WorkerSid + "/Channels"
             );
             AddQueryParams(request);
             
@@ -60,7 +60,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.workerSid + "/Channels"
+                "/v1/Workspaces/" + this.WorkspaceSid + "/Workers/" + this.WorkerSid + "/Channels"
             );
             
             AddQueryParams(request);

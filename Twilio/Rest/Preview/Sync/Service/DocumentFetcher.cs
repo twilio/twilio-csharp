@@ -12,8 +12,8 @@ namespace Twilio.Rest.Preview.Sync.Service
 
     public class DocumentFetcher : Fetcher<DocumentResource> 
     {
-        public string serviceSid { get; }
-        public string sid { get; }
+        public string ServiceSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new DocumentFetcher
@@ -23,8 +23,8 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <param name="sid"> The sid </param>
         public DocumentFetcher(string serviceSid, string sid)
         {
-            this.serviceSid = serviceSid;
-            this.sid = sid;
+            ServiceSid = serviceSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.Sync.Service
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Documents/" + this.sid + ""
+                "/Sync/Services/" + this.ServiceSid + "/Documents/" + this.Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Preview.Sync.Service
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Documents/" + this.sid + ""
+                "/Sync/Services/" + this.ServiceSid + "/Documents/" + this.Sid + ""
             );
             
             var response = client.Request(request);

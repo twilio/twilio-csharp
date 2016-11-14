@@ -11,7 +11,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
 
     public class TranscriptionResource : Resource 
     {
-        public sealed class TranscriptionStatus : IStringEnum 
+        public sealed class StatusEnum : IStringEnum 
         {
             public const string InProgress = "in-progress";
             public const string Completed = "completed";
@@ -19,9 +19,9 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         
             private string _value;
             
-            public TranscriptionStatus() {}
+            public StatusEnum() {}
             
-            public TranscriptionStatus(string value)
+            public StatusEnum(string value)
             {
                 _value = value;
             }
@@ -31,12 +31,12 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
                 return _value;
             }
             
-            public static implicit operator TranscriptionStatus(string value)
+            public static implicit operator StatusEnum(string value)
             {
-                return new TranscriptionStatus(value);
+                return new StatusEnum(value);
             }
             
-            public static implicit operator string(TranscriptionStatus value)
+            public static implicit operator string(StatusEnum value)
             {
                 return value.ToString();
             }
@@ -102,32 +102,32 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; set; }
+        public string ApiVersion { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("duration")]
-        public string duration { get; set; }
+        public string Duration { get; set; }
         [JsonProperty("price")]
-        public decimal? price { get; set; }
+        public decimal? Price { get; set; }
         [JsonProperty("price_unit")]
-        public string priceUnit { get; set; }
+        public string PriceUnit { get; set; }
         [JsonProperty("recording_sid")]
-        public string recordingSid { get; set; }
+        public string RecordingSid { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TranscriptionResource.TranscriptionStatus status { get; set; }
+        public TranscriptionResource.StatusEnum Status { get; set; }
         [JsonProperty("transcription_text")]
-        public string transcriptionText { get; set; }
+        public string TranscriptionText { get; set; }
         [JsonProperty("type")]
-        public string type { get; set; }
+        public string Type { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public TranscriptionResource()
         {
@@ -153,7 +153,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
                                       [JsonProperty("sid")]
                                       string sid, 
                                       [JsonProperty("status")]
-                                      TranscriptionResource.TranscriptionStatus status, 
+                                      TranscriptionResource.StatusEnum status, 
                                       [JsonProperty("transcription_text")]
                                       string transcriptionText, 
                                       [JsonProperty("type")]
@@ -161,19 +161,19 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
                                       [JsonProperty("uri")]
                                       string uri)
                                       {
-            this.accountSid = accountSid;
-            this.apiVersion = apiVersion;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.duration = duration;
-            this.price = price;
-            this.priceUnit = priceUnit;
-            this.recordingSid = recordingSid;
-            this.sid = sid;
-            this.status = status;
-            this.transcriptionText = transcriptionText;
-            this.type = type;
-            this.uri = uri;
+            AccountSid = accountSid;
+            ApiVersion = apiVersion;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Duration = duration;
+            Price = price;
+            PriceUnit = priceUnit;
+            RecordingSid = recordingSid;
+            Sid = sid;
+            Status = status;
+            TranscriptionText = transcriptionText;
+            Type = type;
+            Uri = uri;
         }
     }
 }

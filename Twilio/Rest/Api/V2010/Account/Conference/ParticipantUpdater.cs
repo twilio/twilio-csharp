@@ -13,13 +13,13 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
     public class ParticipantUpdater : Updater<ParticipantResource> 
     {
-        public string accountSid { get; set; }
-        public string conferenceSid { get; }
-        public string callSid { get; }
-        public bool? muted { get; set; }
-        public bool? hold { get; set; }
-        public Uri holdUrl { get; set; }
-        public Twilio.Http.HttpMethod holdMethod { get; set; }
+        public string AccountSid { get; set; }
+        public string ConferenceSid { get; }
+        public string CallSid { get; }
+        public bool? Muted { get; set; }
+        public bool? Hold { get; set; }
+        public Uri HoldUrl { get; set; }
+        public Twilio.Http.HttpMethod HoldMethod { get; set; }
     
         /// <summary>
         /// Construct a new ParticipantUpdater
@@ -29,8 +29,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="callSid"> The call_sid </param>
         public ParticipantUpdater(string conferenceSid, string callSid)
         {
-            this.conferenceSid = conferenceSid;
-            this.callSid = callSid;
+            ConferenceSid = conferenceSid;
+            CallSid = callSid;
         }
     
         #if NET40
@@ -45,7 +45,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + this.ConferenceSid + "/Participants/" + this.CallSid + ".json"
             );
             AddPostParams(request);
             
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + this.ConferenceSid + "/Participants/" + this.CallSid + ".json"
             );
             AddPostParams(request);
             
@@ -122,24 +122,24 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (muted != null)
+            if (Muted != null)
             {
-                request.AddPostParam("Muted", muted.ToString());
+                request.AddPostParam("Muted", Muted.ToString());
             }
             
-            if (hold != null)
+            if (Hold != null)
             {
-                request.AddPostParam("Hold", hold.ToString());
+                request.AddPostParam("Hold", Hold.ToString());
             }
             
-            if (holdUrl != null)
+            if (HoldUrl != null)
             {
-                request.AddPostParam("HoldUrl", holdUrl.ToString());
+                request.AddPostParam("HoldUrl", HoldUrl.ToString());
             }
             
-            if (holdMethod != null)
+            if (HoldMethod != null)
             {
-                request.AddPostParam("HoldMethod", holdMethod.ToString());
+                request.AddPostParam("HoldMethod", HoldMethod.ToString());
             }
         }
     }

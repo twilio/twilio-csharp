@@ -13,11 +13,11 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
 
     public class MemberUpdater : Updater<MemberResource> 
     {
-        public string accountSid { get; set; }
-        public string queueSid { get; }
-        public string callSid { get; }
-        public Uri url { get; }
-        public Twilio.Http.HttpMethod method { get; }
+        public string AccountSid { get; set; }
+        public string QueueSid { get; }
+        public string CallSid { get; }
+        public Uri Url { get; }
+        public Twilio.Http.HttpMethod Method { get; }
     
         /// <summary>
         /// Construct a new MemberUpdater
@@ -29,10 +29,10 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <param name="method"> The method </param>
         public MemberUpdater(string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method)
         {
-            this.queueSid = queueSid;
-            this.callSid = callSid;
-            this.url = url;
-            this.method = method;
+            QueueSid = queueSid;
+            CallSid = callSid;
+            Url = url;
+            Method = method;
         }
     
         #if NET40
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Queues/" + this.queueSid + "/Members/" + this.callSid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Queues/" + this.QueueSid + "/Members/" + this.CallSid + ".json"
             );
             AddPostParams(request);
             
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Queues/" + this.queueSid + "/Members/" + this.callSid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Queues/" + this.QueueSid + "/Members/" + this.CallSid + ".json"
             );
             AddPostParams(request);
             
@@ -124,14 +124,14 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (url != null)
+            if (Url != null)
             {
-                request.AddPostParam("Url", url.ToString());
+                request.AddPostParam("Url", Url.ToString());
             }
             
-            if (method != null)
+            if (Method != null)
             {
-                request.AddPostParam("Method", method.ToString());
+                request.AddPostParam("Method", Method.ToString());
             }
         }
     }

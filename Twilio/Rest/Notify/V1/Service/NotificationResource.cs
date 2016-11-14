@@ -12,16 +12,16 @@ namespace Twilio.Rest.Notify.V1.Service
 
     public class NotificationResource : Resource 
     {
-        public sealed class NotificationPriority : IStringEnum 
+        public sealed class PriorityEnum : IStringEnum 
         {
             public const string High = "high";
             public const string Low = "low";
         
             private string _value;
             
-            public NotificationPriority() {}
+            public PriorityEnum() {}
             
-            public NotificationPriority(string value)
+            public PriorityEnum(string value)
             {
                 _value = value;
             }
@@ -31,12 +31,12 @@ namespace Twilio.Rest.Notify.V1.Service
                 return _value;
             }
             
-            public static implicit operator NotificationPriority(string value)
+            public static implicit operator PriorityEnum(string value)
             {
-                return new NotificationPriority(value);
+                return new PriorityEnum(value);
             }
             
-            public static implicit operator string(NotificationPriority value)
+            public static implicit operator string(PriorityEnum value)
             {
                 return value.ToString();
             }
@@ -78,40 +78,40 @@ namespace Twilio.Rest.Notify.V1.Service
         }
     
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("service_sid")]
-        public string serviceSid { get; set; }
+        public string ServiceSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("identities")]
-        public List<string> identities { get; set; }
+        public List<string> Identities { get; set; }
         [JsonProperty("tags")]
-        public List<string> tags { get; set; }
+        public List<string> Tags { get; set; }
         [JsonProperty("priority")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public NotificationResource.NotificationPriority priority { get; set; }
+        public NotificationResource.PriorityEnum Priority { get; set; }
         [JsonProperty("ttl")]
-        public int? ttl { get; set; }
+        public int? Ttl { get; set; }
         [JsonProperty("title")]
-        public string title { get; set; }
+        public string Title { get; set; }
         [JsonProperty("body")]
-        public string body { get; set; }
+        public string Body { get; set; }
         [JsonProperty("sound")]
-        public string sound { get; set; }
+        public string Sound { get; set; }
         [JsonProperty("action")]
-        public string action { get; set; }
+        public string Action { get; set; }
         [JsonProperty("data")]
-        public Object data { get; set; }
+        public Object Data { get; set; }
         [JsonProperty("apn")]
-        public Object apn { get; set; }
+        public Object Apn { get; set; }
         [JsonProperty("gcm")]
-        public Object gcm { get; set; }
+        public Object Gcm { get; set; }
         [JsonProperty("sms")]
-        public Object sms { get; set; }
+        public Object Sms { get; set; }
         [JsonProperty("facebook_messenger")]
-        public Object facebookMessenger { get; set; }
+        public Object FacebookMessenger { get; set; }
     
         public NotificationResource()
         {
@@ -131,7 +131,7 @@ namespace Twilio.Rest.Notify.V1.Service
                                      [JsonProperty("tags")]
                                      List<string> tags, 
                                      [JsonProperty("priority")]
-                                     NotificationResource.NotificationPriority priority, 
+                                     NotificationResource.PriorityEnum priority, 
                                      [JsonProperty("ttl")]
                                      int? ttl, 
                                      [JsonProperty("title")]
@@ -153,23 +153,23 @@ namespace Twilio.Rest.Notify.V1.Service
                                      [JsonProperty("facebook_messenger")]
                                      Object facebookMessenger)
                                      {
-            this.sid = sid;
-            this.accountSid = accountSid;
-            this.serviceSid = serviceSid;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.identities = identities;
-            this.tags = tags;
-            this.priority = priority;
-            this.ttl = ttl;
-            this.title = title;
-            this.body = body;
-            this.sound = sound;
-            this.action = action;
-            this.data = data;
-            this.apn = apn;
-            this.gcm = gcm;
-            this.sms = sms;
-            this.facebookMessenger = facebookMessenger;
+            Sid = sid;
+            AccountSid = accountSid;
+            ServiceSid = serviceSid;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            Identities = identities;
+            Tags = tags;
+            Priority = priority;
+            Ttl = ttl;
+            Title = title;
+            Body = body;
+            Sound = sound;
+            Action = action;
+            Data = data;
+            Apn = apn;
+            Gcm = gcm;
+            Sms = sms;
+            FacebookMessenger = facebookMessenger;
         }
     }
 }

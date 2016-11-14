@@ -123,7 +123,7 @@ namespace Twilio.Tests.Rest.Chat.V1
             var request = new Request(HttpMethod.POST,
                                       Domains.CHAT,
                                       "/v1/Services");
-            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
+            request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -131,7 +131,7 @@ namespace Twilio.Tests.Rest.Chat.V1
             
             try
             {
-                ServiceResource.Creator("friendlyName").Create(twilioRestClient);
+                ServiceResource.Creator("FriendlyName").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -161,7 +161,7 @@ namespace Twilio.Tests.Rest.Chat.V1
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"216d4a5b-654a-4b60-acea-cf4e42604fb3\",\"date_created\": \"2015-12-16T17:53:05Z\",\"date_updated\": \"2015-12-16T17:53:05Z\",\"default_service_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_channel_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_channel_creator_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"read_status_enabled\": true,\"typing_indicator_timeout\": 5,\"consumption_report_interval\": 10,\"webhooks\": {},\"url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"channels\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels\",\"roles\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles\",\"users\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users\"}}"));
             
-            var response = ServiceResource.Creator("friendlyName").Create(twilioRestClient);
+            var response = ServiceResource.Creator("FriendlyName").Create(twilioRestClient);
             Assert.NotNull(response);
         }
     

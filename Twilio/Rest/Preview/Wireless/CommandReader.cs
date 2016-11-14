@@ -12,9 +12,9 @@ namespace Twilio.Rest.Preview.Wireless
 
     public class CommandReader : Reader<CommandResource> 
     {
-        public string device { get; set; }
-        public string status { get; set; }
-        public string direction { get; set; }
+        public string Device { get; set; }
+        public string Status { get; set; }
+        public string Direction { get; set; }
     
         #if NET40
         /// <summary>
@@ -118,19 +118,19 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (device != null)
+            if (Device != null)
             {
-                request.AddQueryParam("Device", device);
+                request.AddQueryParam("Device", Device);
             }
             
-            if (status != null)
+            if (Status != null)
             {
-                request.AddQueryParam("Status", status);
+                request.AddQueryParam("Status", Status);
             }
             
-            if (direction != null)
+            if (Direction != null)
             {
-                request.AddQueryParam("Direction", direction);
+                request.AddQueryParam("Direction", Direction);
             }
             
             if (PageSize != null)

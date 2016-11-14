@@ -13,14 +13,14 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
     public class TriggerCreator : Creator<TriggerResource> 
     {
-        public string accountSid { get; set; }
-        public Uri callbackUrl { get; }
-        public string triggerValue { get; }
-        public TriggerResource.TriggerUsageCategory usageCategory { get; }
-        public Twilio.Http.HttpMethod callbackMethod { get; set; }
-        public string friendlyName { get; set; }
-        public TriggerResource.TriggerRecurring recurring { get; set; }
-        public TriggerResource.TriggerTriggerField triggerBy { get; set; }
+        public string AccountSid { get; set; }
+        public Uri CallbackUrl { get; }
+        public string TriggerValue { get; }
+        public TriggerResource.UsageCategoryEnum UsageCategory { get; }
+        public Twilio.Http.HttpMethod CallbackMethod { get; set; }
+        public string FriendlyName { get; set; }
+        public TriggerResource.RecurringEnum Recurring { get; set; }
+        public TriggerResource.TriggerFieldEnum TriggerBy { get; set; }
     
         /// <summary>
         /// Construct a new TriggerCreator
@@ -29,11 +29,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
         /// <param name="triggerValue"> the value at which the trigger will fire </param>
         /// <param name="usageCategory"> The usage category the trigger watches </param>
-        public TriggerCreator(Uri callbackUrl, string triggerValue, TriggerResource.TriggerUsageCategory usageCategory)
+        public TriggerCreator(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategoryEnum usageCategory)
         {
-            this.callbackUrl = callbackUrl;
-            this.triggerValue = triggerValue;
-            this.usageCategory = usageCategory;
+            CallbackUrl = callbackUrl;
+            TriggerValue = triggerValue;
+            UsageCategory = usageCategory;
         }
     
         #if NET40
@@ -48,7 +48,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Usage/Triggers.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Usage/Triggers.json"
             );
             
             AddPostParams(request);
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Usage/Triggers.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Usage/Triggers.json"
             );
             
             AddPostParams(request);
@@ -125,39 +125,39 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (callbackUrl != null)
+            if (CallbackUrl != null)
             {
-                request.AddPostParam("CallbackUrl", callbackUrl.ToString());
+                request.AddPostParam("CallbackUrl", CallbackUrl.ToString());
             }
             
-            if (triggerValue != null)
+            if (TriggerValue != null)
             {
-                request.AddPostParam("TriggerValue", triggerValue);
+                request.AddPostParam("TriggerValue", TriggerValue);
             }
             
-            if (usageCategory != null)
+            if (UsageCategory != null)
             {
-                request.AddPostParam("UsageCategory", usageCategory.ToString());
+                request.AddPostParam("UsageCategory", UsageCategory.ToString());
             }
             
-            if (callbackMethod != null)
+            if (CallbackMethod != null)
             {
-                request.AddPostParam("CallbackMethod", callbackMethod.ToString());
+                request.AddPostParam("CallbackMethod", CallbackMethod.ToString());
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (recurring != null)
+            if (Recurring != null)
             {
-                request.AddPostParam("Recurring", recurring.ToString());
+                request.AddPostParam("Recurring", Recurring.ToString());
             }
             
-            if (triggerBy != null)
+            if (TriggerBy != null)
             {
-                request.AddPostParam("TriggerBy", triggerBy.ToString());
+                request.AddPostParam("TriggerBy", TriggerBy.ToString());
             }
         }
     }

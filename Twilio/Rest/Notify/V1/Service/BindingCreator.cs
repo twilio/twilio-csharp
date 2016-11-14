@@ -13,14 +13,14 @@ namespace Twilio.Rest.Notify.V1.Service
 
     public class BindingCreator : Creator<BindingResource> 
     {
-        public string serviceSid { get; }
-        public string endpoint { get; }
-        public string identity { get; }
-        public BindingResource.BindingBindingType bindingType { get; }
-        public string address { get; }
-        public List<string> tag { get; set; }
-        public string notificationProtocolVersion { get; set; }
-        public string credentialSid { get; set; }
+        public string ServiceSid { get; }
+        public string Endpoint { get; }
+        public string Identity { get; }
+        public BindingResource.BindingTypeEnum BindingType { get; }
+        public string Address { get; }
+        public List<string> Tag { get; set; }
+        public string NotificationProtocolVersion { get; set; }
+        public string CredentialSid { get; set; }
     
         /// <summary>
         /// Construct a new BindingCreator
@@ -31,13 +31,13 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="identity"> The identity </param>
         /// <param name="bindingType"> The binding_type </param>
         /// <param name="address"> The address </param>
-        public BindingCreator(string serviceSid, string endpoint, string identity, BindingResource.BindingBindingType bindingType, string address)
+        public BindingCreator(string serviceSid, string endpoint, string identity, BindingResource.BindingTypeEnum bindingType, string address)
         {
-            this.serviceSid = serviceSid;
-            this.endpoint = endpoint;
-            this.identity = identity;
-            this.bindingType = bindingType;
-            this.address = address;
+            ServiceSid = serviceSid;
+            Endpoint = endpoint;
+            Identity = identity;
+            BindingType = bindingType;
+            Address = address;
         }
     
         #if NET40
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Notify.V1.Service
             var request = new Request(
                 HttpMethod.POST,
                 Domains.NOTIFY,
-                "/v1/Services/" + this.serviceSid + "/Bindings"
+                "/v1/Services/" + this.ServiceSid + "/Bindings"
             );
             
             AddPostParams(request);
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Notify.V1.Service
             var request = new Request(
                 HttpMethod.POST,
                 Domains.NOTIFY,
-                "/v1/Services/" + this.serviceSid + "/Bindings"
+                "/v1/Services/" + this.ServiceSid + "/Bindings"
             );
             
             AddPostParams(request);
@@ -129,39 +129,39 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (endpoint != null)
+            if (Endpoint != null)
             {
-                request.AddPostParam("Endpoint", endpoint);
+                request.AddPostParam("Endpoint", Endpoint);
             }
             
-            if (identity != null)
+            if (Identity != null)
             {
-                request.AddPostParam("Identity", identity);
+                request.AddPostParam("Identity", Identity);
             }
             
-            if (bindingType != null)
+            if (BindingType != null)
             {
-                request.AddPostParam("BindingType", bindingType.ToString());
+                request.AddPostParam("BindingType", BindingType.ToString());
             }
             
-            if (address != null)
+            if (Address != null)
             {
-                request.AddPostParam("Address", address);
+                request.AddPostParam("Address", Address);
             }
             
-            if (tag != null)
+            if (Tag != null)
             {
-                request.AddPostParam("Tag", tag.ToString());
+                request.AddPostParam("Tag", Tag.ToString());
             }
             
-            if (notificationProtocolVersion != null)
+            if (NotificationProtocolVersion != null)
             {
-                request.AddPostParam("NotificationProtocolVersion", notificationProtocolVersion);
+                request.AddPostParam("NotificationProtocolVersion", NotificationProtocolVersion);
             }
             
-            if (credentialSid != null)
+            if (CredentialSid != null)
             {
-                request.AddPostParam("CredentialSid", credentialSid);
+                request.AddPostParam("CredentialSid", CredentialSid);
             }
         }
     }

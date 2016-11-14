@@ -12,9 +12,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
     public class CredentialListMappingCreator : Creator<CredentialListMappingResource> 
     {
-        public string accountSid { get; set; }
-        public string domainSid { get; }
-        public string credentialListSid { get; }
+        public string AccountSid { get; set; }
+        public string DomainSid { get; }
+        public string CredentialListSid { get; }
     
         /// <summary>
         /// Construct a new CredentialListMappingCreator
@@ -24,8 +24,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="credentialListSid"> The credential_list_sid </param>
         public CredentialListMappingCreator(string domainSid, string credentialListSid)
         {
-            this.domainSid = domainSid;
-            this.credentialListSid = credentialListSid;
+            DomainSid = domainSid;
+            CredentialListSid = credentialListSid;
         }
     
         #if NET40
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/CredentialListMappings.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.DomainSid + "/CredentialListMappings.json"
             );
             
             AddPostParams(request);
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/CredentialListMappings.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.DomainSid + "/CredentialListMappings.json"
             );
             
             AddPostParams(request);
@@ -117,9 +117,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (credentialListSid != null)
+            if (CredentialListSid != null)
             {
-                request.AddPostParam("CredentialListSid", credentialListSid);
+                request.AddPostParam("CredentialListSid", CredentialListSid);
             }
         }
     }

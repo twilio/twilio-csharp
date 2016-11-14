@@ -12,7 +12,7 @@ namespace Twilio.Rest.Chat.V1
 
     public class CredentialFetcher : Fetcher<CredentialResource> 
     {
-        public string sid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new CredentialFetcher
@@ -21,7 +21,7 @@ namespace Twilio.Rest.Chat.V1
         /// <param name="sid"> The sid </param>
         public CredentialFetcher(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Chat.V1
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.CHAT,
-                "/v1/Credentials/" + this.sid + ""
+                "/v1/Credentials/" + this.Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Chat.V1
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.CHAT,
-                "/v1/Credentials/" + this.sid + ""
+                "/v1/Credentials/" + this.Sid + ""
             );
             
             var response = client.Request(request);

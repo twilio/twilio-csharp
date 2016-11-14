@@ -12,11 +12,11 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class UserCreator : Creator<UserResource> 
     {
-        public string serviceSid { get; }
-        public string identity { get; }
-        public string roleSid { get; set; }
-        public string attributes { get; set; }
-        public string friendlyName { get; set; }
+        public string ServiceSid { get; }
+        public string Identity { get; }
+        public string RoleSid { get; set; }
+        public string Attributes { get; set; }
+        public string FriendlyName { get; set; }
     
         /// <summary>
         /// Construct a new UserCreator
@@ -26,8 +26,8 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="identity"> The identity </param>
         public UserCreator(string serviceSid, string identity)
         {
-            this.serviceSid = serviceSid;
-            this.identity = identity;
+            ServiceSid = serviceSid;
+            Identity = identity;
         }
     
         #if NET40
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var request = new Request(
                 HttpMethod.POST,
                 Domains.CHAT,
-                "/v1/Services/" + this.serviceSid + "/Users"
+                "/v1/Services/" + this.ServiceSid + "/Users"
             );
             
             AddPostParams(request);
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var request = new Request(
                 HttpMethod.POST,
                 Domains.CHAT,
-                "/v1/Services/" + this.serviceSid + "/Users"
+                "/v1/Services/" + this.ServiceSid + "/Users"
             );
             
             AddPostParams(request);
@@ -119,24 +119,24 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (identity != null)
+            if (Identity != null)
             {
-                request.AddPostParam("Identity", identity);
+                request.AddPostParam("Identity", Identity);
             }
             
-            if (roleSid != null)
+            if (RoleSid != null)
             {
-                request.AddPostParam("RoleSid", roleSid);
+                request.AddPostParam("RoleSid", RoleSid);
             }
             
-            if (attributes != null)
+            if (Attributes != null)
             {
-                request.AddPostParam("Attributes", attributes);
+                request.AddPostParam("Attributes", Attributes);
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
         }
     }

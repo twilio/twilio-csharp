@@ -13,13 +13,13 @@ namespace Twilio.Rest.Trunking.V1
 
     public class TrunkUpdater : Updater<TrunkResource> 
     {
-        public string sid { get; }
-        public string friendlyName { get; set; }
-        public string domainName { get; set; }
-        public Uri disasterRecoveryUrl { get; set; }
-        public Twilio.Http.HttpMethod disasterRecoveryMethod { get; set; }
-        public string recording { get; set; }
-        public bool? secure { get; set; }
+        public string Sid { get; }
+        public string FriendlyName { get; set; }
+        public string DomainName { get; set; }
+        public Uri DisasterRecoveryUrl { get; set; }
+        public Twilio.Http.HttpMethod DisasterRecoveryMethod { get; set; }
+        public string Recording { get; set; }
+        public bool? Secure { get; set; }
     
         /// <summary>
         /// Construct a new TrunkUpdater
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="sid"> The sid </param>
         public TrunkUpdater(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Trunking.V1
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.sid + ""
+                "/v1/Trunks/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Trunking.V1
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.sid + ""
+                "/v1/Trunks/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -120,34 +120,34 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (domainName != null)
+            if (DomainName != null)
             {
-                request.AddPostParam("DomainName", domainName);
+                request.AddPostParam("DomainName", DomainName);
             }
             
-            if (disasterRecoveryUrl != null)
+            if (DisasterRecoveryUrl != null)
             {
-                request.AddPostParam("DisasterRecoveryUrl", disasterRecoveryUrl.ToString());
+                request.AddPostParam("DisasterRecoveryUrl", DisasterRecoveryUrl.ToString());
             }
             
-            if (disasterRecoveryMethod != null)
+            if (DisasterRecoveryMethod != null)
             {
-                request.AddPostParam("DisasterRecoveryMethod", disasterRecoveryMethod.ToString());
+                request.AddPostParam("DisasterRecoveryMethod", DisasterRecoveryMethod.ToString());
             }
             
-            if (recording != null)
+            if (Recording != null)
             {
-                request.AddPostParam("Recording", recording);
+                request.AddPostParam("Recording", Recording);
             }
             
-            if (secure != null)
+            if (Secure != null)
             {
-                request.AddPostParam("Secure", secure.ToString());
+                request.AddPostParam("Secure", Secure.ToString());
             }
         }
     }

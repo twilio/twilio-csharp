@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class QueueReader : Reader<QueueResource> 
     {
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
     
         #if NET40
         /// <summary>
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Queues.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Queues.json"
             );
             AddQueryParams(request);
             
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Queues.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Queues.json"
             );
             
             AddQueryParams(request);

@@ -232,8 +232,8 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
             var request = new Request(HttpMethod.POST,
                                       Domains.TASKROUTER,
                                       "/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows");
-            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
-            request.AddPostParam("Configuration", Serialize("configuration"));
+            request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
+            request.AddPostParam("Configuration", Serialize("Configuration"));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -241,7 +241,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
             
             try
             {
-                WorkflowResource.Creator("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName", "configuration").Create(twilioRestClient);
+                WorkflowResource.Creator("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "FriendlyName", "Configuration").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -271,7 +271,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"assignment_callback_url\": \"http://example.com\",\"configuration\": \"task-routing:\\\\n- filter: \\\\n- 1 == 1\\\\ntarget:\\\\n- queue: WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\\\nset-priority: 0\\\\n\",\"date_created\": \"2014-05-14T10:50:02Z\",\"date_updated\": \"2014-05-14T23:26:06Z\",\"document_content_type\": \"application/json\",\"fallback_assignment_callback_url\": null,\"friendly_name\": \"Default Fifo Workflow\",\"sid\": \"WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"task_reservation_timeout\": 120,\"url\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows/WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"workspace_sid\": \"WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = WorkflowResource.Creator("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName", "configuration").Create(twilioRestClient);
+            var response = WorkflowResource.Creator("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "FriendlyName", "Configuration").Create(twilioRestClient);
             Assert.NotNull(response);
         }
     }

@@ -12,7 +12,7 @@ namespace Twilio.Rest.Preview.Wireless
 
     public class CommandFetcher : Fetcher<CommandResource> 
     {
-        public string sid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new CommandFetcher
@@ -21,7 +21,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="sid"> The sid </param>
         public CommandFetcher(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Preview.Wireless
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,
-                "/wireless/Commands/" + this.sid + ""
+                "/wireless/Commands/" + this.Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Preview.Wireless
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,
-                "/wireless/Commands/" + this.sid + ""
+                "/wireless/Commands/" + this.Sid + ""
             );
             
             var response = client.Request(request);

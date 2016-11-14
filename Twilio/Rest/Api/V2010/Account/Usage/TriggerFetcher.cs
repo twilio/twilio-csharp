@@ -12,8 +12,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
     public class TriggerFetcher : Fetcher<TriggerResource> 
     {
-        public string accountSid { get; set; }
-        public string sid { get; }
+        public string AccountSid { get; set; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new TriggerFetcher
@@ -22,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="sid"> Fetch by unique usage-trigger Sid </param>
         public TriggerFetcher(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Usage/Triggers/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Usage/Triggers/" + this.Sid + ".json"
             );
             
             var response = await client.RequestAsync(request);
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Usage/Triggers/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Usage/Triggers/" + this.Sid + ".json"
             );
             
             var response = client.Request(request);

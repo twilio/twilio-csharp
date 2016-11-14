@@ -14,12 +14,12 @@ namespace Twilio.Rest.Monitor.V1
 
     public class EventReader : Reader<EventResource> 
     {
-        public string actorSid { get; set; }
-        public string eventType { get; set; }
-        public string resourceSid { get; set; }
-        public string sourceIpAddress { get; set; }
-        public DateTime? startDate { get; set; }
-        public DateTime? endDate { get; set; }
+        public string ActorSid { get; set; }
+        public string EventType { get; set; }
+        public string ResourceSid { get; set; }
+        public string SourceIpAddress { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
     
         #if NET40
         /// <summary>
@@ -123,34 +123,34 @@ namespace Twilio.Rest.Monitor.V1
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (actorSid != null)
+            if (ActorSid != null)
             {
-                request.AddQueryParam("ActorSid", actorSid);
+                request.AddQueryParam("ActorSid", ActorSid);
             }
             
-            if (eventType != null)
+            if (EventType != null)
             {
-                request.AddQueryParam("EventType", eventType);
+                request.AddQueryParam("EventType", EventType);
             }
             
-            if (resourceSid != null)
+            if (ResourceSid != null)
             {
-                request.AddQueryParam("ResourceSid", resourceSid);
+                request.AddQueryParam("ResourceSid", ResourceSid);
             }
             
-            if (sourceIpAddress != null)
+            if (SourceIpAddress != null)
             {
-                request.AddQueryParam("SourceIpAddress", sourceIpAddress);
+                request.AddQueryParam("SourceIpAddress", SourceIpAddress);
             }
             
-            if (startDate != null)
+            if (StartDate != null)
             {
-                request.AddQueryParam("StartDate", startDate.ToString());
+                request.AddQueryParam("StartDate", StartDate.ToString());
             }
             
-            if (endDate != null)
+            if (EndDate != null)
             {
-                request.AddQueryParam("EndDate", endDate.ToString());
+                request.AddQueryParam("EndDate", EndDate.ToString());
             }
             
             if (PageSize != null)

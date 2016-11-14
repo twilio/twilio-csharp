@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010
 
     public class AccountCreator : Creator<AccountResource> 
     {
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
     
         #if NET40
         /// <summary>
@@ -103,9 +103,9 @@ namespace Twilio.Rest.Api.V2010
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
         }
     }

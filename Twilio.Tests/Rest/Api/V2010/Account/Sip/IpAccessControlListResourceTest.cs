@@ -89,7 +89,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip
             var request = new Request(HttpMethod.POST,
                                       Domains.API,
                                       "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists.json");
-            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
+            request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -97,7 +97,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip
             
             try
             {
-                IpAccessControlListResource.Creator("friendlyName").Create(twilioRestClient);
+                IpAccessControlListResource.Creator("FriendlyName").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -127,7 +127,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Fri, 17 Jul 2015 21:25:15 +0000\",\"date_updated\": \"Fri, 17 Jul 2015 21:25:15 +0000\",\"friendly_name\": \"aaaa\",\"sid\": \"ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"subresource_uris\": {\"ip_addresses\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAddresses.json\"},\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"));
             
-            var response = IpAccessControlListResource.Creator("friendlyName").Create(twilioRestClient);
+            var response = IpAccessControlListResource.Creator("FriendlyName").Create(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -186,7 +186,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip
             var request = new Request(HttpMethod.POST,
                                       Domains.API,
                                       "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json");
-            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
+            request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -194,7 +194,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip
             
             try
             {
-                IpAccessControlListResource.Updater("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName").Update(twilioRestClient);
+                IpAccessControlListResource.Updater("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "FriendlyName").Update(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -224,7 +224,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Fri, 17 Jul 2015 21:25:15 +0000\",\"date_updated\": \"Fri, 17 Jul 2015 21:25:15 +0000\",\"friendly_name\": \"aaaa\",\"sid\": \"ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"subresource_uris\": {\"ip_addresses\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAddresses.json\"},\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"));
             
-            var response = IpAccessControlListResource.Updater("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName").Update(twilioRestClient);
+            var response = IpAccessControlListResource.Updater("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "FriendlyName").Update(twilioRestClient);
             Assert.NotNull(response);
         }
     

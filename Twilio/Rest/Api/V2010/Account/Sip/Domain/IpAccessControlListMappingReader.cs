@@ -12,8 +12,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
     public class IpAccessControlListMappingReader : Reader<IpAccessControlListMappingResource> 
     {
-        public string accountSid { get; set; }
-        public string domainSid { get; }
+        public string AccountSid { get; set; }
+        public string DomainSid { get; }
     
         /// <summary>
         /// Construct a new IpAccessControlListMappingReader
@@ -22,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="domainSid"> The domain_sid </param>
         public IpAccessControlListMappingReader(string domainSid)
         {
-            this.domainSid = domainSid;
+            DomainSid = domainSid;
         }
     
         #if NET40
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.DomainSid + "/IpAccessControlListMappings.json"
             );
             AddQueryParams(request);
             
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.DomainSid + "/IpAccessControlListMappings.json"
             );
             
             AddQueryParams(request);

@@ -12,7 +12,7 @@ namespace Twilio.Rest.Taskrouter.V1
 
     public class WorkspaceFetcher : Fetcher<WorkspaceResource> 
     {
-        public string sid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new WorkspaceFetcher
@@ -21,7 +21,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <param name="sid"> The sid </param>
         public WorkspaceFetcher(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Taskrouter.V1
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.sid + ""
+                "/v1/Workspaces/" + this.Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Taskrouter.V1
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.sid + ""
+                "/v1/Workspaces/" + this.Sid + ""
             );
             
             var response = client.Request(request);

@@ -185,7 +185,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1
             var request = new Request(HttpMethod.POST,
                                       Domains.TASKROUTER,
                                       "/v1/Workspaces");
-            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
+            request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -193,7 +193,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1
             
             try
             {
-                WorkspaceResource.Creator("friendlyName").Create(twilioRestClient);
+                WorkspaceResource.Creator("FriendlyName").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -223,7 +223,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-08-03T17:31:38Z\",\"date_updated\": \"2015-08-03T17:31:38Z\",\"default_activity_name\": \"Offline\",\"default_activity_sid\": \"WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"event_callback_url\": \"\",\"events_filter\": \"\",\"friendly_name\": \"8064de33-3a05-11e5-8bae-98e0d9a1eb73\",\"links\": {\"activities\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Activities\",\"statistics\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Statistics\",\"task_queues\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskQueues\",\"tasks\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks\",\"workers\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workers\",\"workflows\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows\"},\"multi_task_enabled\": \"false\",\"sid\": \"WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"timeout_activity_name\": \"Offline\",\"timeout_activity_sid\": \"WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = WorkspaceResource.Creator("friendlyName").Create(twilioRestClient);
+            var response = WorkspaceResource.Creator("FriendlyName").Create(twilioRestClient);
             Assert.NotNull(response);
         }
     

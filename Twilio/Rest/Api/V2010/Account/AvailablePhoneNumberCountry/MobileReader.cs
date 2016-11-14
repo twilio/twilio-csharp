@@ -12,24 +12,24 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
 
     public class MobileReader : Reader<MobileResource> 
     {
-        public string accountSid { get; set; }
-        public string countryCode { get; }
-        public int? areaCode { get; set; }
-        public string contains { get; set; }
-        public bool? smsEnabled { get; set; }
-        public bool? mmsEnabled { get; set; }
-        public bool? voiceEnabled { get; set; }
-        public bool? excludeAllAddressRequired { get; set; }
-        public bool? excludeLocalAddressRequired { get; set; }
-        public bool? excludeForeignAddressRequired { get; set; }
-        public bool? beta { get; set; }
-        public Twilio.Types.PhoneNumber nearNumber { get; set; }
-        public string nearLatLong { get; set; }
-        public int? distance { get; set; }
-        public string inPostalCode { get; set; }
-        public string inRegion { get; set; }
-        public string inRateCenter { get; set; }
-        public string inLata { get; set; }
+        public string AccountSid { get; set; }
+        public string CountryCode { get; }
+        public int? AreaCode { get; set; }
+        public string Contains { get; set; }
+        public bool? SmsEnabled { get; set; }
+        public bool? MmsEnabled { get; set; }
+        public bool? VoiceEnabled { get; set; }
+        public bool? ExcludeAllAddressRequired { get; set; }
+        public bool? ExcludeLocalAddressRequired { get; set; }
+        public bool? ExcludeForeignAddressRequired { get; set; }
+        public bool? Beta { get; set; }
+        public Twilio.Types.PhoneNumber NearNumber { get; set; }
+        public string NearLatLong { get; set; }
+        public int? Distance { get; set; }
+        public string InPostalCode { get; set; }
+        public string InRegion { get; set; }
+        public string InRateCenter { get; set; }
+        public string InLata { get; set; }
     
         /// <summary>
         /// Construct a new MobileReader
@@ -38,7 +38,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <param name="countryCode"> The country_code </param>
         public MobileReader(string countryCode)
         {
-            this.countryCode = countryCode;
+            CountryCode = countryCode;
         }
     
         #if NET40
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/AvailablePhoneNumbers/" + this.countryCode + "/Mobile.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/AvailablePhoneNumbers/" + this.CountryCode + "/Mobile.json"
             );
             AddQueryParams(request);
             
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/AvailablePhoneNumbers/" + this.countryCode + "/Mobile.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/AvailablePhoneNumbers/" + this.CountryCode + "/Mobile.json"
             );
             
             AddQueryParams(request);
@@ -143,84 +143,84 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (areaCode != null)
+            if (AreaCode != null)
             {
-                request.AddQueryParam("AreaCode", areaCode.ToString());
+                request.AddQueryParam("AreaCode", AreaCode.ToString());
             }
             
-            if (contains != null)
+            if (Contains != null)
             {
-                request.AddQueryParam("Contains", contains);
+                request.AddQueryParam("Contains", Contains);
             }
             
-            if (smsEnabled != null)
+            if (SmsEnabled != null)
             {
-                request.AddQueryParam("SmsEnabled", smsEnabled.ToString());
+                request.AddQueryParam("SmsEnabled", SmsEnabled.ToString());
             }
             
-            if (mmsEnabled != null)
+            if (MmsEnabled != null)
             {
-                request.AddQueryParam("MmsEnabled", mmsEnabled.ToString());
+                request.AddQueryParam("MmsEnabled", MmsEnabled.ToString());
             }
             
-            if (voiceEnabled != null)
+            if (VoiceEnabled != null)
             {
-                request.AddQueryParam("VoiceEnabled", voiceEnabled.ToString());
+                request.AddQueryParam("VoiceEnabled", VoiceEnabled.ToString());
             }
             
-            if (excludeAllAddressRequired != null)
+            if (ExcludeAllAddressRequired != null)
             {
-                request.AddQueryParam("ExcludeAllAddressRequired", excludeAllAddressRequired.ToString());
+                request.AddQueryParam("ExcludeAllAddressRequired", ExcludeAllAddressRequired.ToString());
             }
             
-            if (excludeLocalAddressRequired != null)
+            if (ExcludeLocalAddressRequired != null)
             {
-                request.AddQueryParam("ExcludeLocalAddressRequired", excludeLocalAddressRequired.ToString());
+                request.AddQueryParam("ExcludeLocalAddressRequired", ExcludeLocalAddressRequired.ToString());
             }
             
-            if (excludeForeignAddressRequired != null)
+            if (ExcludeForeignAddressRequired != null)
             {
-                request.AddQueryParam("ExcludeForeignAddressRequired", excludeForeignAddressRequired.ToString());
+                request.AddQueryParam("ExcludeForeignAddressRequired", ExcludeForeignAddressRequired.ToString());
             }
             
-            if (beta != null)
+            if (Beta != null)
             {
-                request.AddQueryParam("Beta", beta.ToString());
+                request.AddQueryParam("Beta", Beta.ToString());
             }
             
-            if (nearNumber != null)
+            if (NearNumber != null)
             {
-                request.AddQueryParam("NearNumber", nearNumber.ToString());
+                request.AddQueryParam("NearNumber", NearNumber.ToString());
             }
             
-            if (nearLatLong != null)
+            if (NearLatLong != null)
             {
-                request.AddQueryParam("NearLatLong", nearLatLong);
+                request.AddQueryParam("NearLatLong", NearLatLong);
             }
             
-            if (distance != null)
+            if (Distance != null)
             {
-                request.AddQueryParam("Distance", distance.ToString());
+                request.AddQueryParam("Distance", Distance.ToString());
             }
             
-            if (inPostalCode != null)
+            if (InPostalCode != null)
             {
-                request.AddQueryParam("InPostalCode", inPostalCode);
+                request.AddQueryParam("InPostalCode", InPostalCode);
             }
             
-            if (inRegion != null)
+            if (InRegion != null)
             {
-                request.AddQueryParam("InRegion", inRegion);
+                request.AddQueryParam("InRegion", InRegion);
             }
             
-            if (inRateCenter != null)
+            if (InRateCenter != null)
             {
-                request.AddQueryParam("InRateCenter", inRateCenter);
+                request.AddQueryParam("InRateCenter", InRateCenter);
             }
             
-            if (inLata != null)
+            if (InLata != null)
             {
-                request.AddQueryParam("InLata", inLata);
+                request.AddQueryParam("InLata", InLata);
             }
             
             if (PageSize != null)

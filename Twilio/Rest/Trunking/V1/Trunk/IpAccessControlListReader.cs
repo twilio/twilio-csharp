@@ -12,7 +12,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class IpAccessControlListReader : Reader<IpAccessControlListResource> 
     {
-        public string trunkSid { get; }
+        public string TrunkSid { get; }
     
         /// <summary>
         /// Construct a new IpAccessControlListReader
@@ -21,7 +21,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="trunkSid"> The trunk_sid </param>
         public IpAccessControlListReader(string trunkSid)
         {
-            this.trunkSid = trunkSid;
+            TrunkSid = trunkSid;
         }
     
         #if NET40
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/IpAccessControlLists"
+                "/v1/Trunks/" + this.TrunkSid + "/IpAccessControlLists"
             );
             AddQueryParams(request);
             
@@ -57,7 +57,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/IpAccessControlLists"
+                "/v1/Trunks/" + this.TrunkSid + "/IpAccessControlLists"
             );
             
             AddQueryParams(request);

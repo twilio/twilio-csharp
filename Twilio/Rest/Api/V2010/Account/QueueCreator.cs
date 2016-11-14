@@ -12,9 +12,9 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class QueueCreator : Creator<QueueResource> 
     {
-        public string accountSid { get; set; }
-        public string friendlyName { get; set; }
-        public int? maxSize { get; set; }
+        public string AccountSid { get; set; }
+        public string FriendlyName { get; set; }
+        public int? MaxSize { get; set; }
     
         #if NET40
         /// <summary>
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Queues.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Queues.json"
             );
             
             AddPostParams(request);
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Queues.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Queues.json"
             );
             
             AddPostParams(request);
@@ -105,14 +105,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (maxSize != null)
+            if (MaxSize != null)
             {
-                request.AddPostParam("MaxSize", maxSize.ToString());
+                request.AddPostParam("MaxSize", MaxSize.ToString());
             }
         }
     }

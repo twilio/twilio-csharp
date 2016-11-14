@@ -13,16 +13,16 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class DomainCreator : Creator<DomainResource> 
     {
-        public string accountSid { get; set; }
-        public string domainName { get; }
-        public string friendlyName { get; set; }
-        public string authType { get; set; }
-        public Uri voiceUrl { get; set; }
-        public Twilio.Http.HttpMethod voiceMethod { get; set; }
-        public Uri voiceFallbackUrl { get; set; }
-        public Twilio.Http.HttpMethod voiceFallbackMethod { get; set; }
-        public Uri voiceStatusCallbackUrl { get; set; }
-        public Twilio.Http.HttpMethod voiceStatusCallbackMethod { get; set; }
+        public string AccountSid { get; set; }
+        public string DomainName { get; }
+        public string FriendlyName { get; set; }
+        public string AuthType { get; set; }
+        public Uri VoiceUrl { get; set; }
+        public Twilio.Http.HttpMethod VoiceMethod { get; set; }
+        public Uri VoiceFallbackUrl { get; set; }
+        public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
+        public Uri VoiceStatusCallbackUrl { get; set; }
+        public Twilio.Http.HttpMethod VoiceStatusCallbackMethod { get; set; }
     
         /// <summary>
         /// Construct a new DomainCreator
@@ -31,7 +31,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="domainName"> The unique address on Twilio to route SIP traffic </param>
         public DomainCreator(string domainName)
         {
-            this.domainName = domainName;
+            DomainName = domainName;
         }
     
         #if NET40
@@ -46,7 +46,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/Domains.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains.json"
             );
             
             AddPostParams(request);
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/Domains.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains.json"
             );
             
             AddPostParams(request);
@@ -123,49 +123,49 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (domainName != null)
+            if (DomainName != null)
             {
-                request.AddPostParam("DomainName", domainName);
+                request.AddPostParam("DomainName", DomainName);
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (authType != null)
+            if (AuthType != null)
             {
-                request.AddPostParam("AuthType", authType);
+                request.AddPostParam("AuthType", AuthType);
             }
             
-            if (voiceUrl != null)
+            if (VoiceUrl != null)
             {
-                request.AddPostParam("VoiceUrl", voiceUrl.ToString());
+                request.AddPostParam("VoiceUrl", VoiceUrl.ToString());
             }
             
-            if (voiceMethod != null)
+            if (VoiceMethod != null)
             {
-                request.AddPostParam("VoiceMethod", voiceMethod.ToString());
+                request.AddPostParam("VoiceMethod", VoiceMethod.ToString());
             }
             
-            if (voiceFallbackUrl != null)
+            if (VoiceFallbackUrl != null)
             {
-                request.AddPostParam("VoiceFallbackUrl", voiceFallbackUrl.ToString());
+                request.AddPostParam("VoiceFallbackUrl", VoiceFallbackUrl.ToString());
             }
             
-            if (voiceFallbackMethod != null)
+            if (VoiceFallbackMethod != null)
             {
-                request.AddPostParam("VoiceFallbackMethod", voiceFallbackMethod.ToString());
+                request.AddPostParam("VoiceFallbackMethod", VoiceFallbackMethod.ToString());
             }
             
-            if (voiceStatusCallbackUrl != null)
+            if (VoiceStatusCallbackUrl != null)
             {
-                request.AddPostParam("VoiceStatusCallbackUrl", voiceStatusCallbackUrl.ToString());
+                request.AddPostParam("VoiceStatusCallbackUrl", VoiceStatusCallbackUrl.ToString());
             }
             
-            if (voiceStatusCallbackMethod != null)
+            if (VoiceStatusCallbackMethod != null)
             {
-                request.AddPostParam("VoiceStatusCallbackMethod", voiceStatusCallbackMethod.ToString());
+                request.AddPostParam("VoiceStatusCallbackMethod", VoiceStatusCallbackMethod.ToString());
             }
         }
     }

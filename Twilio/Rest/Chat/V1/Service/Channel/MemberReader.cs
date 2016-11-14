@@ -12,8 +12,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
 
     public class MemberReader : Reader<MemberResource> 
     {
-        public string serviceSid { get; }
-        public string channelSid { get; }
+        public string ServiceSid { get; }
+        public string ChannelSid { get; }
     
         /// <summary>
         /// Construct a new MemberReader
@@ -23,8 +23,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <param name="channelSid"> The channel_sid </param>
         public MemberReader(string serviceSid, string channelSid)
         {
-            this.serviceSid = serviceSid;
-            this.channelSid = channelSid;
+            ServiceSid = serviceSid;
+            ChannelSid = channelSid;
         }
     
         #if NET40
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             var request = new Request(
                 HttpMethod.GET,
                 Domains.CHAT,
-                "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Members"
+                "/v1/Services/" + this.ServiceSid + "/Channels/" + this.ChannelSid + "/Members"
             );
             AddQueryParams(request);
             
@@ -60,7 +60,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             var request = new Request(
                 HttpMethod.GET,
                 Domains.CHAT,
-                "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Members"
+                "/v1/Services/" + this.ServiceSid + "/Channels/" + this.ChannelSid + "/Members"
             );
             
             AddQueryParams(request);

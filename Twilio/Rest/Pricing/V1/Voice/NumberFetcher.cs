@@ -12,7 +12,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
 
     public class NumberFetcher : Fetcher<NumberResource> 
     {
-        public Twilio.Types.PhoneNumber number { get; }
+        public Twilio.Types.PhoneNumber Number { get; }
     
         /// <summary>
         /// Construct a new NumberFetcher
@@ -21,7 +21,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// <param name="number"> The number </param>
         public NumberFetcher(Twilio.Types.PhoneNumber number)
         {
-            this.number = number;
+            Number = number;
         }
     
         #if NET40
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PRICING,
-                "/v1/Voice/Numbers/" + this.number + ""
+                "/v1/Voice/Numbers/" + this.Number + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PRICING,
-                "/v1/Voice/Numbers/" + this.number + ""
+                "/v1/Voice/Numbers/" + this.Number + ""
             );
             
             var response = client.Request(request);

@@ -13,15 +13,15 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class CallUpdater : Updater<CallResource> 
     {
-        public string accountSid { get; set; }
-        public string sid { get; }
-        public Uri url { get; set; }
-        public Twilio.Http.HttpMethod method { get; set; }
-        public CallResource.CallStatus status { get; set; }
-        public Uri fallbackUrl { get; set; }
-        public Twilio.Http.HttpMethod fallbackMethod { get; set; }
-        public Uri statusCallback { get; set; }
-        public Twilio.Http.HttpMethod statusCallbackMethod { get; set; }
+        public string AccountSid { get; set; }
+        public string Sid { get; }
+        public Uri Url { get; set; }
+        public Twilio.Http.HttpMethod Method { get; set; }
+        public CallResource.StatusEnum Status { get; set; }
+        public Uri FallbackUrl { get; set; }
+        public Twilio.Http.HttpMethod FallbackMethod { get; set; }
+        public Uri StatusCallback { get; set; }
+        public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
     
         /// <summary>
         /// Construct a new CallUpdater
@@ -30,7 +30,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sid"> Call Sid that uniquely identifies the Call to update </param>
         public CallUpdater(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -45,7 +45,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + this.Sid + ".json"
             );
             AddPostParams(request);
             
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + this.Sid + ".json"
             );
             AddPostParams(request);
             
@@ -122,39 +122,39 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (url != null)
+            if (Url != null)
             {
-                request.AddPostParam("Url", url.ToString());
+                request.AddPostParam("Url", Url.ToString());
             }
             
-            if (method != null)
+            if (Method != null)
             {
-                request.AddPostParam("Method", method.ToString());
+                request.AddPostParam("Method", Method.ToString());
             }
             
-            if (status != null)
+            if (Status != null)
             {
-                request.AddPostParam("Status", status.ToString());
+                request.AddPostParam("Status", Status.ToString());
             }
             
-            if (fallbackUrl != null)
+            if (FallbackUrl != null)
             {
-                request.AddPostParam("FallbackUrl", fallbackUrl.ToString());
+                request.AddPostParam("FallbackUrl", FallbackUrl.ToString());
             }
             
-            if (fallbackMethod != null)
+            if (FallbackMethod != null)
             {
-                request.AddPostParam("FallbackMethod", fallbackMethod.ToString());
+                request.AddPostParam("FallbackMethod", FallbackMethod.ToString());
             }
             
-            if (statusCallback != null)
+            if (StatusCallback != null)
             {
-                request.AddPostParam("StatusCallback", statusCallback.ToString());
+                request.AddPostParam("StatusCallback", StatusCallback.ToString());
             }
             
-            if (statusCallbackMethod != null)
+            if (StatusCallbackMethod != null)
             {
-                request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
+                request.AddPostParam("StatusCallbackMethod", StatusCallbackMethod.ToString());
             }
         }
     }

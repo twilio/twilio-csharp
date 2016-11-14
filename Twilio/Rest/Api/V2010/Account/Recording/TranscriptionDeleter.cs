@@ -13,9 +13,9 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
 
     public class TranscriptionDeleter : Deleter<TranscriptionResource> 
     {
-        public string accountSid { get; set; }
-        public string recordingSid { get; }
-        public string sid { get; }
+        public string AccountSid { get; set; }
+        public string RecordingSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new TranscriptionDeleter
@@ -25,8 +25,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <param name="sid"> The sid </param>
         public TranscriptionDeleter(string recordingSid, string sid)
         {
-            this.recordingSid = recordingSid;
-            this.sid = sid;
+            RecordingSid = recordingSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Recordings/" + this.recordingSid + "/Transcriptions/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Recordings/" + this.RecordingSid + "/Transcriptions/" + this.Sid + ".json"
             );
             
             var response = await client.RequestAsync(request);
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Recordings/" + this.recordingSid + "/Transcriptions/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Recordings/" + this.RecordingSid + "/Transcriptions/" + this.Sid + ".json"
             );
             
             var response = client.Request(request);

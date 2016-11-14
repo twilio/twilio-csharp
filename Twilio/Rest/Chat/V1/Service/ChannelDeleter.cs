@@ -13,8 +13,8 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class ChannelDeleter : Deleter<ChannelResource> 
     {
-        public string serviceSid { get; }
-        public string sid { get; }
+        public string ServiceSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new ChannelDeleter
@@ -24,8 +24,8 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="sid"> The sid </param>
         public ChannelDeleter(string serviceSid, string sid)
         {
-            this.serviceSid = serviceSid;
-            this.sid = sid;
+            ServiceSid = serviceSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.CHAT,
-                "/v1/Services/" + this.serviceSid + "/Channels/" + this.sid + ""
+                "/v1/Services/" + this.ServiceSid + "/Channels/" + this.Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.CHAT,
-                "/v1/Services/" + this.serviceSid + "/Channels/" + this.sid + ""
+                "/v1/Services/" + this.ServiceSid + "/Channels/" + this.Sid + ""
             );
             
             var response = client.Request(request);

@@ -12,7 +12,7 @@ namespace Twilio.Rest.Preview.Sync.Service
 
     public class SyncMapReader : Reader<SyncMapResource> 
     {
-        public string serviceSid { get; }
+        public string ServiceSid { get; }
     
         /// <summary>
         /// Construct a new SyncMapReader
@@ -21,7 +21,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <param name="serviceSid"> The service_sid </param>
         public SyncMapReader(string serviceSid)
         {
-            this.serviceSid = serviceSid;
+            ServiceSid = serviceSid;
         }
     
         #if NET40
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Preview.Sync.Service
             var request = new Request(
                 HttpMethod.GET,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps"
+                "/Sync/Services/" + this.ServiceSid + "/Maps"
             );
             AddQueryParams(request);
             
@@ -57,7 +57,7 @@ namespace Twilio.Rest.Preview.Sync.Service
             var request = new Request(
                 HttpMethod.GET,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps"
+                "/Sync/Services/" + this.ServiceSid + "/Maps"
             );
             
             AddQueryParams(request);

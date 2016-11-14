@@ -172,8 +172,8 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Usage
                                       Domains.API,
                                       "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage/Triggers.json");
             request.AddPostParam("CallbackUrl", Serialize(new Uri("https://example.com")));
-            request.AddPostParam("TriggerValue", Serialize("triggerValue"));
-            request.AddPostParam("UsageCategory", Serialize(TriggerResource.TriggerUsageCategory.AuthyAuthentications));
+            request.AddPostParam("TriggerValue", Serialize("TriggerValue"));
+            request.AddPostParam("UsageCategory", Serialize(TriggerResource.UsageCategoryEnum.AuthyAuthentications));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -181,7 +181,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Usage
             
             try
             {
-                TriggerResource.Creator(new Uri("https://example.com"), "triggerValue", TriggerResource.TriggerUsageCategory.AuthyAuthentications).Create(twilioRestClient);
+                TriggerResource.Creator(new Uri("https://example.com"), "TriggerValue", TriggerResource.UsageCategoryEnum.AuthyAuthentications).Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -211,7 +211,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Usage
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"api_version\": \"2010-04-01\",\"callback_method\": \"GET\",\"callback_url\": \"http://cap.com/streetfight\",\"current_value\": \"0\",\"date_created\": \"Sun, 06 Sep 2015 12:58:45 +0000\",\"date_fired\": null,\"date_updated\": \"Sun, 06 Sep 2015 12:58:45 +0000\",\"friendly_name\": \"raphael-cluster-1441544325.86\",\"recurring\": \"yearly\",\"sid\": \"UTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"trigger_by\": \"price\",\"trigger_value\": \"50\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage/Triggers/UTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"usage_category\": \"totalprice\",\"usage_record_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage/Records?Category=totalprice\"}"));
             
-            var response = TriggerResource.Creator(new Uri("https://example.com"), "triggerValue", TriggerResource.TriggerUsageCategory.AuthyAuthentications).Create(twilioRestClient);
+            var response = TriggerResource.Creator(new Uri("https://example.com"), "TriggerValue", TriggerResource.UsageCategoryEnum.AuthyAuthentications).Create(twilioRestClient);
             Assert.NotNull(response);
         }
     

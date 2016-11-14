@@ -12,8 +12,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class IpAccessControlListCreator : Creator<IpAccessControlListResource> 
     {
-        public string trunkSid { get; }
-        public string ipAccessControlListSid { get; }
+        public string TrunkSid { get; }
+        public string IpAccessControlListSid { get; }
     
         /// <summary>
         /// Construct a new IpAccessControlListCreator
@@ -23,8 +23,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         public IpAccessControlListCreator(string trunkSid, string ipAccessControlListSid)
         {
-            this.trunkSid = trunkSid;
-            this.ipAccessControlListSid = ipAccessControlListSid;
+            TrunkSid = trunkSid;
+            IpAccessControlListSid = ipAccessControlListSid;
         }
     
         #if NET40
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/IpAccessControlLists"
+                "/v1/Trunks/" + this.TrunkSid + "/IpAccessControlLists"
             );
             
             AddPostParams(request);
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/IpAccessControlLists"
+                "/v1/Trunks/" + this.TrunkSid + "/IpAccessControlLists"
             );
             
             AddPostParams(request);
@@ -116,9 +116,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (ipAccessControlListSid != null)
+            if (IpAccessControlListSid != null)
             {
-                request.AddPostParam("IpAccessControlListSid", ipAccessControlListSid);
+                request.AddPostParam("IpAccessControlListSid", IpAccessControlListSid);
             }
         }
     }

@@ -15,26 +15,26 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class CallCreator : Creator<CallResource> 
     {
-        public string accountSid { get; set; }
-        public IEndpoint to { get; }
-        public Twilio.Types.PhoneNumber from { get; }
-        public Uri url { get; }
-        public string applicationSid { get; }
-        public Twilio.Http.HttpMethod method { get; set; }
-        public Uri fallbackUrl { get; set; }
-        public Twilio.Http.HttpMethod fallbackMethod { get; set; }
-        public Uri statusCallback { get; set; }
-        public List<string> statusCallbackEvent { get; set; }
-        public Twilio.Http.HttpMethod statusCallbackMethod { get; set; }
-        public string sendDigits { get; set; }
-        public string ifMachine { get; set; }
-        public int? timeout { get; set; }
-        public bool? record { get; set; }
-        public string recordingChannels { get; set; }
-        public string recordingStatusCallback { get; set; }
-        public Twilio.Http.HttpMethod recordingStatusCallbackMethod { get; set; }
-        public string sipAuthUsername { get; set; }
-        public string sipAuthPassword { get; set; }
+        public string AccountSid { get; set; }
+        public IEndpoint To { get; }
+        public Twilio.Types.PhoneNumber From { get; }
+        public Uri Url { get; }
+        public string ApplicationSid { get; }
+        public Twilio.Http.HttpMethod Method { get; set; }
+        public Uri FallbackUrl { get; set; }
+        public Twilio.Http.HttpMethod FallbackMethod { get; set; }
+        public Uri StatusCallback { get; set; }
+        public List<string> StatusCallbackEvent { get; set; }
+        public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
+        public string SendDigits { get; set; }
+        public string IfMachine { get; set; }
+        public int? Timeout { get; set; }
+        public bool? Record { get; set; }
+        public string RecordingChannels { get; set; }
+        public string RecordingStatusCallback { get; set; }
+        public Twilio.Http.HttpMethod RecordingStatusCallbackMethod { get; set; }
+        public string SipAuthUsername { get; set; }
+        public string SipAuthPassword { get; set; }
     
         /// <summary>
         /// Construct a new CallCreator
@@ -45,9 +45,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="url"> Url from which to fetch TwiML </param>
         public CallCreator(IEndpoint to, Twilio.Types.PhoneNumber from, Uri url)
         {
-            this.to = to;
-            this.from = from;
-            this.url = url;
+            To = to;
+            From = from;
+            Url = url;
         }
     
         /// <summary>
@@ -59,9 +59,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="applicationSid"> ApplicationSid that configures from where to fetch TwiML </param>
         public CallCreator(IEndpoint to, Twilio.Types.PhoneNumber from, string applicationSid)
         {
-            this.to = to;
-            this.from = from;
-            this.applicationSid = applicationSid;
+            To = to;
+            From = from;
+            ApplicationSid = applicationSid;
         }
     
         #if NET40
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls.json"
             );
             
             AddPostParams(request);
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls.json"
             );
             
             AddPostParams(request);
@@ -153,99 +153,99 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (to != null)
+            if (To != null)
             {
-                request.AddPostParam("To", to.ToString());
+                request.AddPostParam("To", To.ToString());
             }
             
-            if (from != null)
+            if (From != null)
             {
-                request.AddPostParam("From", from.ToString());
+                request.AddPostParam("From", From.ToString());
             }
             
-            if (url != null)
+            if (Url != null)
             {
-                request.AddPostParam("Url", url.ToString());
+                request.AddPostParam("Url", Url.ToString());
             }
             
-            if (applicationSid != null)
+            if (ApplicationSid != null)
             {
-                request.AddPostParam("ApplicationSid", applicationSid);
+                request.AddPostParam("ApplicationSid", ApplicationSid);
             }
             
-            if (method != null)
+            if (Method != null)
             {
-                request.AddPostParam("Method", method.ToString());
+                request.AddPostParam("Method", Method.ToString());
             }
             
-            if (fallbackUrl != null)
+            if (FallbackUrl != null)
             {
-                request.AddPostParam("FallbackUrl", fallbackUrl.ToString());
+                request.AddPostParam("FallbackUrl", FallbackUrl.ToString());
             }
             
-            if (fallbackMethod != null)
+            if (FallbackMethod != null)
             {
-                request.AddPostParam("FallbackMethod", fallbackMethod.ToString());
+                request.AddPostParam("FallbackMethod", FallbackMethod.ToString());
             }
             
-            if (statusCallback != null)
+            if (StatusCallback != null)
             {
-                request.AddPostParam("StatusCallback", statusCallback.ToString());
+                request.AddPostParam("StatusCallback", StatusCallback.ToString());
             }
             
-            if (statusCallbackEvent != null)
+            if (StatusCallbackEvent != null)
             {
-                request.AddPostParam("StatusCallbackEvent", statusCallbackEvent.ToString());
+                request.AddPostParam("StatusCallbackEvent", StatusCallbackEvent.ToString());
             }
             
-            if (statusCallbackMethod != null)
+            if (StatusCallbackMethod != null)
             {
-                request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
+                request.AddPostParam("StatusCallbackMethod", StatusCallbackMethod.ToString());
             }
             
-            if (sendDigits != null)
+            if (SendDigits != null)
             {
-                request.AddPostParam("SendDigits", sendDigits);
+                request.AddPostParam("SendDigits", SendDigits);
             }
             
-            if (ifMachine != null)
+            if (IfMachine != null)
             {
-                request.AddPostParam("IfMachine", ifMachine);
+                request.AddPostParam("IfMachine", IfMachine);
             }
             
-            if (timeout != null)
+            if (Timeout != null)
             {
-                request.AddPostParam("Timeout", timeout.ToString());
+                request.AddPostParam("Timeout", Timeout.ToString());
             }
             
-            if (record != null)
+            if (Record != null)
             {
-                request.AddPostParam("Record", record.ToString());
+                request.AddPostParam("Record", Record.ToString());
             }
             
-            if (recordingChannels != null)
+            if (RecordingChannels != null)
             {
-                request.AddPostParam("RecordingChannels", recordingChannels);
+                request.AddPostParam("RecordingChannels", RecordingChannels);
             }
             
-            if (recordingStatusCallback != null)
+            if (RecordingStatusCallback != null)
             {
-                request.AddPostParam("RecordingStatusCallback", recordingStatusCallback);
+                request.AddPostParam("RecordingStatusCallback", RecordingStatusCallback);
             }
             
-            if (recordingStatusCallbackMethod != null)
+            if (RecordingStatusCallbackMethod != null)
             {
-                request.AddPostParam("RecordingStatusCallbackMethod", recordingStatusCallbackMethod.ToString());
+                request.AddPostParam("RecordingStatusCallbackMethod", RecordingStatusCallbackMethod.ToString());
             }
             
-            if (sipAuthUsername != null)
+            if (SipAuthUsername != null)
             {
-                request.AddPostParam("SipAuthUsername", sipAuthUsername);
+                request.AddPostParam("SipAuthUsername", SipAuthUsername);
             }
             
-            if (sipAuthPassword != null)
+            if (SipAuthPassword != null)
             {
-                request.AddPostParam("SipAuthPassword", sipAuthPassword);
+                request.AddPostParam("SipAuthPassword", SipAuthPassword);
             }
         }
     }

@@ -12,9 +12,9 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class OutgoingCallerIdUpdater : Updater<OutgoingCallerIdResource> 
     {
-        public string accountSid { get; set; }
-        public string sid { get; }
-        public string friendlyName { get; set; }
+        public string AccountSid { get; set; }
+        public string Sid { get; }
+        public string FriendlyName { get; set; }
     
         /// <summary>
         /// Construct a new OutgoingCallerIdUpdater
@@ -23,7 +23,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sid"> Update by unique outgoing-caller-id Sid </param>
         public OutgoingCallerIdUpdater(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -38,7 +38,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/OutgoingCallerIds/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/OutgoingCallerIds/" + this.Sid + ".json"
             );
             AddPostParams(request);
             
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/OutgoingCallerIds/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/OutgoingCallerIds/" + this.Sid + ".json"
             );
             AddPostParams(request);
             
@@ -115,9 +115,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
         }
     }

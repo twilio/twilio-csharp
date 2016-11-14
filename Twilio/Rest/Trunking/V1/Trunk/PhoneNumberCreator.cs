@@ -12,8 +12,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class PhoneNumberCreator : Creator<PhoneNumberResource> 
     {
-        public string trunkSid { get; }
-        public string phoneNumberSid { get; }
+        public string TrunkSid { get; }
+        public string PhoneNumberSid { get; }
     
         /// <summary>
         /// Construct a new PhoneNumberCreator
@@ -23,8 +23,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="phoneNumberSid"> The phone_number_sid </param>
         public PhoneNumberCreator(string trunkSid, string phoneNumberSid)
         {
-            this.trunkSid = trunkSid;
-            this.phoneNumberSid = phoneNumberSid;
+            TrunkSid = trunkSid;
+            PhoneNumberSid = phoneNumberSid;
         }
     
         #if NET40
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/PhoneNumbers"
+                "/v1/Trunks/" + this.TrunkSid + "/PhoneNumbers"
             );
             
             AddPostParams(request);
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/PhoneNumbers"
+                "/v1/Trunks/" + this.TrunkSid + "/PhoneNumbers"
             );
             
             AddPostParams(request);
@@ -116,9 +116,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (phoneNumberSid != null)
+            if (PhoneNumberSid != null)
             {
-                request.AddPostParam("PhoneNumberSid", phoneNumberSid);
+                request.AddPostParam("PhoneNumberSid", PhoneNumberSid);
             }
         }
     }

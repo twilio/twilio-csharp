@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class MessageResource : Resource 
     {
-        public sealed class MessageStatus : IStringEnum 
+        public sealed class StatusEnum : IStringEnum 
         {
             public const string Queued = "queued";
             public const string Sending = "sending";
@@ -25,9 +25,9 @@ namespace Twilio.Rest.Api.V2010.Account
         
             private string _value;
             
-            public MessageStatus() {}
+            public StatusEnum() {}
             
-            public MessageStatus(string value)
+            public StatusEnum(string value)
             {
                 _value = value;
             }
@@ -37,12 +37,12 @@ namespace Twilio.Rest.Api.V2010.Account
                 return _value;
             }
             
-            public static implicit operator MessageStatus(string value)
+            public static implicit operator StatusEnum(string value)
             {
-                return new MessageStatus(value);
+                return new StatusEnum(value);
             }
             
-            public static implicit operator string(MessageStatus value)
+            public static implicit operator string(StatusEnum value)
             {
                 return value.ToString();
             }
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Api.V2010.Account
             }
         }
     
-        public sealed class MessageDirection : IStringEnum 
+        public sealed class DirectionEnum : IStringEnum 
         {
             public const string Inbound = "inbound";
             public const string OutboundApi = "outbound-api";
@@ -62,9 +62,9 @@ namespace Twilio.Rest.Api.V2010.Account
         
             private string _value;
             
-            public MessageDirection() {}
+            public DirectionEnum() {}
             
-            public MessageDirection(string value)
+            public DirectionEnum(string value)
             {
                 _value = value;
             }
@@ -74,12 +74,12 @@ namespace Twilio.Rest.Api.V2010.Account
                 return _value;
             }
             
-            public static implicit operator MessageDirection(string value)
+            public static implicit operator DirectionEnum(string value)
             {
-                return new MessageDirection(value);
+                return new DirectionEnum(value);
             }
             
-            public static implicit operator string(MessageDirection value)
+            public static implicit operator string(DirectionEnum value)
             {
                 return value.ToString();
             }
@@ -205,46 +205,46 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; set; }
+        public string ApiVersion { get; set; }
         [JsonProperty("body")]
-        public string body { get; set; }
+        public string Body { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("date_sent")]
-        public DateTime? dateSent { get; set; }
+        public DateTime? DateSent { get; set; }
         [JsonProperty("direction")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public MessageResource.MessageDirection direction { get; set; }
+        public MessageResource.DirectionEnum Direction { get; set; }
         [JsonProperty("error_code")]
-        public int? errorCode { get; set; }
+        public int? ErrorCode { get; set; }
         [JsonProperty("error_message")]
-        public string errorMessage { get; set; }
+        public string ErrorMessage { get; set; }
         [JsonProperty("from")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber from { get; set; }
+        public Twilio.Types.PhoneNumber From { get; set; }
         [JsonProperty("num_media")]
-        public string numMedia { get; set; }
+        public string NumMedia { get; set; }
         [JsonProperty("num_segments")]
-        public string numSegments { get; set; }
+        public string NumSegments { get; set; }
         [JsonProperty("price")]
-        public decimal? price { get; set; }
+        public decimal? Price { get; set; }
         [JsonProperty("price_unit")]
-        public string priceUnit { get; set; }
+        public string PriceUnit { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public MessageResource.MessageStatus status { get; set; }
+        public MessageResource.StatusEnum Status { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; set; }
+        public Dictionary<string, string> SubresourceUris { get; set; }
         [JsonProperty("to")]
-        public string to { get; set; }
+        public string To { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public MessageResource()
         {
@@ -264,7 +264,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                 [JsonProperty("date_sent")]
                                 string dateSent, 
                                 [JsonProperty("direction")]
-                                MessageResource.MessageDirection direction, 
+                                MessageResource.DirectionEnum direction, 
                                 [JsonProperty("error_code")]
                                 int? errorCode, 
                                 [JsonProperty("error_message")]
@@ -282,7 +282,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                 [JsonProperty("sid")]
                                 string sid, 
                                 [JsonProperty("status")]
-                                MessageResource.MessageStatus status, 
+                                MessageResource.StatusEnum status, 
                                 [JsonProperty("subresource_uris")]
                                 Dictionary<string, string> subresourceUris, 
                                 [JsonProperty("to")]
@@ -290,25 +290,25 @@ namespace Twilio.Rest.Api.V2010.Account
                                 [JsonProperty("uri")]
                                 string uri)
                                 {
-            this.accountSid = accountSid;
-            this.apiVersion = apiVersion;
-            this.body = body;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.dateSent = MarshalConverter.DateTimeFromString(dateSent);
-            this.direction = direction;
-            this.errorCode = errorCode;
-            this.errorMessage = errorMessage;
-            this.from = from;
-            this.numMedia = numMedia;
-            this.numSegments = numSegments;
-            this.price = price;
-            this.priceUnit = priceUnit;
-            this.sid = sid;
-            this.status = status;
-            this.subresourceUris = subresourceUris;
-            this.to = to;
-            this.uri = uri;
+            AccountSid = accountSid;
+            ApiVersion = apiVersion;
+            Body = body;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            DateSent = MarshalConverter.DateTimeFromString(dateSent);
+            Direction = direction;
+            ErrorCode = errorCode;
+            ErrorMessage = errorMessage;
+            From = from;
+            NumMedia = numMedia;
+            NumSegments = numSegments;
+            Price = price;
+            PriceUnit = priceUnit;
+            Sid = sid;
+            Status = status;
+            SubresourceUris = subresourceUris;
+            To = to;
+            Uri = uri;
         }
     }
 }

@@ -12,9 +12,9 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
 
     public class MemberFetcher : Fetcher<MemberResource> 
     {
-        public string accountSid { get; set; }
-        public string queueSid { get; }
-        public string callSid { get; }
+        public string AccountSid { get; set; }
+        public string QueueSid { get; }
+        public string CallSid { get; }
     
         /// <summary>
         /// Construct a new MemberFetcher
@@ -24,8 +24,8 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <param name="callSid"> The call_sid </param>
         public MemberFetcher(string queueSid, string callSid)
         {
-            this.queueSid = queueSid;
-            this.callSid = callSid;
+            QueueSid = queueSid;
+            CallSid = callSid;
         }
     
         #if NET40
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Queues/" + this.queueSid + "/Members/" + this.callSid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Queues/" + this.QueueSid + "/Members/" + this.CallSid + ".json"
             );
             
             var response = await client.RequestAsync(request);
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Queues/" + this.queueSid + "/Members/" + this.callSid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Queues/" + this.QueueSid + "/Members/" + this.CallSid + ".json"
             );
             
             var response = client.Request(request);

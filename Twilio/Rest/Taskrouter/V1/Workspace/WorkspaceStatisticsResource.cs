@@ -42,13 +42,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         [JsonProperty("realtime")]
-        public Object realtime { get; set; }
+        public Object Realtime { get; set; }
         [JsonProperty("cumulative")]
-        public Object cumulative { get; set; }
+        public Object Cumulative { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("workspace_sid")]
-        public string workspaceSid { get; set; }
+        public string WorkspaceSid { get; set; }
     
         public WorkspaceStatisticsResource()
         {
@@ -64,10 +64,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                             [JsonProperty("workspace_sid")]
                                             string workspaceSid)
                                             {
-            this.realtime = realtime;
-            this.cumulative = cumulative;
-            this.accountSid = accountSid;
-            this.workspaceSid = workspaceSid;
+            Realtime = realtime;
+            Cumulative = cumulative;
+            AccountSid = accountSid;
+            WorkspaceSid = workspaceSid;
         }
     }
 }

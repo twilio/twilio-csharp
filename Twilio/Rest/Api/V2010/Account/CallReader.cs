@@ -13,17 +13,17 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class CallReader : Reader<CallResource> 
     {
-        public string accountSid { get; set; }
-        public Twilio.Types.PhoneNumber to { get; set; }
-        public Twilio.Types.PhoneNumber from { get; set; }
-        public string parentCallSid { get; set; }
-        public CallResource.CallStatus status { get; set; }
-        public DateTime? startTime { get; set; }
-        public DateTime? startTimeAfter { get; set; }
-        public DateTime? startTimeBefore { get; set; }
-        public DateTime? endTime { get; set; }
-        public DateTime? endTimeAfter { get; set; }
-        public DateTime? endTimeBefore { get; set; }
+        public string AccountSid { get; set; }
+        public Twilio.Types.PhoneNumber To { get; set; }
+        public Twilio.Types.PhoneNumber From { get; set; }
+        public string ParentCallSid { get; set; }
+        public CallResource.StatusEnum Status { get; set; }
+        public DateTime? StartTime { get; set; }
+        public DateTime? StartTimeAfter { get; set; }
+        public DateTime? StartTimeBefore { get; set; }
+        public DateTime? EndTime { get; set; }
+        public DateTime? EndTimeAfter { get; set; }
+        public DateTime? EndTimeBefore { get; set; }
     
         #if NET40
         /// <summary>
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls.json"
             );
             AddQueryParams(request);
             
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls.json"
             );
             
             AddQueryParams(request);
@@ -127,55 +127,55 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (to != null)
+            if (To != null)
             {
-                request.AddQueryParam("To", to.ToString());
+                request.AddQueryParam("To", To.ToString());
             }
             
-            if (from != null)
+            if (From != null)
             {
-                request.AddQueryParam("From", from.ToString());
+                request.AddQueryParam("From", From.ToString());
             }
             
-            if (parentCallSid != null)
+            if (ParentCallSid != null)
             {
-                request.AddQueryParam("ParentCallSid", parentCallSid);
+                request.AddQueryParam("ParentCallSid", ParentCallSid);
             }
             
-            if (status != null)
+            if (Status != null)
             {
-                request.AddQueryParam("Status", status.ToString());
+                request.AddQueryParam("Status", Status.ToString());
             }
             
-            if (startTime != null)
+            if (StartTime != null)
             {
-                request.AddQueryParam("StartTime", startTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                request.AddQueryParam("StartTime", StartTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
             }
             else
             {
-                if (startTimeBefore != null)
+                if (StartTimeBefore != null)
                 {
-                    request.AddQueryParam("StartTime<", startTimeBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                    request.AddQueryParam("StartTime<", StartTimeBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
                 }
-                if (startTimeAfter != null)
+                if (StartTimeAfter != null)
                 {
-                    request.AddQueryParam("StartTime>", startTimeAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                    request.AddQueryParam("StartTime>", StartTimeAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
                 }
             }
             
-            if (endTime != null)
+            if (EndTime != null)
             {
-                request.AddQueryParam("EndTime", endTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                request.AddQueryParam("EndTime", EndTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
             }
             else
             {
-                if (endTimeBefore != null)
+                if (EndTimeBefore != null)
                 {
-                    request.AddQueryParam("EndTime<", endTimeBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                    request.AddQueryParam("EndTime<", EndTimeBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
                 }
-                if (endTimeAfter != null)
+                if (EndTimeAfter != null)
                 {
-                    request.AddQueryParam("EndTime>", endTimeAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                    request.AddQueryParam("EndTime>", EndTimeAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
                 }
             }
             

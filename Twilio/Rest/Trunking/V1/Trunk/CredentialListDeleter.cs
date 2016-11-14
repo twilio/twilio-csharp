@@ -13,8 +13,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class CredentialListDeleter : Deleter<CredentialListResource> 
     {
-        public string trunkSid { get; }
-        public string sid { get; }
+        public string TrunkSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new CredentialListDeleter
@@ -24,8 +24,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="sid"> The sid </param>
         public CredentialListDeleter(string trunkSid, string sid)
         {
-            this.trunkSid = trunkSid;
-            this.sid = sid;
+            TrunkSid = trunkSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/CredentialLists/" + this.sid + ""
+                "/v1/Trunks/" + this.TrunkSid + "/CredentialLists/" + this.Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/CredentialLists/" + this.sid + ""
+                "/v1/Trunks/" + this.TrunkSid + "/CredentialLists/" + this.Sid + ""
             );
             
             var response = client.Request(request);

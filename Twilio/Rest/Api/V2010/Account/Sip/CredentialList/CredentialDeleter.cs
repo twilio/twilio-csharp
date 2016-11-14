@@ -13,9 +13,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
 
     public class CredentialDeleter : Deleter<CredentialResource> 
     {
-        public string accountSid { get; set; }
-        public string credentialListSid { get; }
-        public string sid { get; }
+        public string AccountSid { get; set; }
+        public string CredentialListSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new CredentialDeleter
@@ -25,8 +25,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// <param name="sid"> The sid </param>
         public CredentialDeleter(string credentialListSid, string sid)
         {
-            this.credentialListSid = credentialListSid;
-            this.sid = sid;
+            CredentialListSid = credentialListSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.credentialListSid + "/Credentials/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.CredentialListSid + "/Credentials/" + this.Sid + ".json"
             );
             
             var response = await client.RequestAsync(request);
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.credentialListSid + "/Credentials/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.CredentialListSid + "/Credentials/" + this.Sid + ".json"
             );
             
             var response = client.Request(request);

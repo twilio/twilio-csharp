@@ -12,13 +12,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class TaskQueueUpdater : Updater<TaskQueueResource> 
     {
-        public string workspaceSid { get; }
-        public string sid { get; }
-        public string friendlyName { get; set; }
-        public string targetWorkers { get; set; }
-        public string reservationActivitySid { get; set; }
-        public string assignmentActivitySid { get; set; }
-        public int? maxReservedWorkers { get; set; }
+        public string WorkspaceSid { get; }
+        public string Sid { get; }
+        public string FriendlyName { get; set; }
+        public string TargetWorkers { get; set; }
+        public string ReservationActivitySid { get; set; }
+        public string AssignmentActivitySid { get; set; }
+        public int? MaxReservedWorkers { get; set; }
     
         /// <summary>
         /// Construct a new TaskQueueUpdater
@@ -28,8 +28,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="sid"> The sid </param>
         public TaskQueueUpdater(string workspaceSid, string sid)
         {
-            this.workspaceSid = workspaceSid;
-            this.sid = sid;
+            WorkspaceSid = workspaceSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -44,7 +44,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/TaskQueues/" + this.sid + ""
+                "/v1/Workspaces/" + this.WorkspaceSid + "/TaskQueues/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/TaskQueues/" + this.sid + ""
+                "/v1/Workspaces/" + this.WorkspaceSid + "/TaskQueues/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -121,29 +121,29 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (targetWorkers != null)
+            if (TargetWorkers != null)
             {
-                request.AddPostParam("TargetWorkers", targetWorkers);
+                request.AddPostParam("TargetWorkers", TargetWorkers);
             }
             
-            if (reservationActivitySid != null)
+            if (ReservationActivitySid != null)
             {
-                request.AddPostParam("ReservationActivitySid", reservationActivitySid);
+                request.AddPostParam("ReservationActivitySid", ReservationActivitySid);
             }
             
-            if (assignmentActivitySid != null)
+            if (AssignmentActivitySid != null)
             {
-                request.AddPostParam("AssignmentActivitySid", assignmentActivitySid);
+                request.AddPostParam("AssignmentActivitySid", AssignmentActivitySid);
             }
             
-            if (maxReservedWorkers != null)
+            if (MaxReservedWorkers != null)
             {
-                request.AddPostParam("MaxReservedWorkers", maxReservedWorkers.ToString());
+                request.AddPostParam("MaxReservedWorkers", MaxReservedWorkers.ToString());
             }
         }
     }

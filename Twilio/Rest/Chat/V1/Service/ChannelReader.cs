@@ -12,7 +12,7 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class ChannelReader : Reader<ChannelResource> 
     {
-        public string serviceSid { get; }
+        public string ServiceSid { get; }
     
         /// <summary>
         /// Construct a new ChannelReader
@@ -21,7 +21,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="serviceSid"> The service_sid </param>
         public ChannelReader(string serviceSid)
         {
-            this.serviceSid = serviceSid;
+            ServiceSid = serviceSid;
         }
     
         #if NET40
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var request = new Request(
                 HttpMethod.GET,
                 Domains.CHAT,
-                "/v1/Services/" + this.serviceSid + "/Channels"
+                "/v1/Services/" + this.ServiceSid + "/Channels"
             );
             AddQueryParams(request);
             
@@ -57,7 +57,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var request = new Request(
                 HttpMethod.GET,
                 Domains.CHAT,
-                "/v1/Services/" + this.serviceSid + "/Channels"
+                "/v1/Services/" + this.ServiceSid + "/Channels"
             );
             
             AddQueryParams(request);

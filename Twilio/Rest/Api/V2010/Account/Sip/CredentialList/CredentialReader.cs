@@ -12,8 +12,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
 
     public class CredentialReader : Reader<CredentialResource> 
     {
-        public string accountSid { get; set; }
-        public string credentialListSid { get; }
+        public string AccountSid { get; set; }
+        public string CredentialListSid { get; }
     
         /// <summary>
         /// Construct a new CredentialReader
@@ -22,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// <param name="credentialListSid"> The credential_list_sid </param>
         public CredentialReader(string credentialListSid)
         {
-            this.credentialListSid = credentialListSid;
+            CredentialListSid = credentialListSid;
         }
     
         #if NET40
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.credentialListSid + "/Credentials.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.CredentialListSid + "/Credentials.json"
             );
             AddQueryParams(request);
             
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.credentialListSid + "/Credentials.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.CredentialListSid + "/Credentials.json"
             );
             
             AddQueryParams(request);

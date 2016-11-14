@@ -89,7 +89,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
             var request = new Request(HttpMethod.POST,
                                       Domains.TASKROUTER,
                                       "/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workers");
-            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
+            request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -97,7 +97,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
             
             try
             {
-                WorkerResource.Creator("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName").Create(twilioRestClient);
+                WorkerResource.Creator("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "FriendlyName").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -127,7 +127,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"activity_name\": \"available\",\"activity_sid\": \"WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"attributes\": \"{\\\"email\\\": \\\"test@twilio.com\\\", \\\"phone\\\": \\\"8675309\\\"}\",\"available\": true,\"date_created\": \"2014-05-14T10:50:02Z\",\"date_status_changed\": \"2014-05-14T23:26:06Z\",\"date_updated\": \"2014-05-14T23:26:06Z\",\"friendly_name\": \"Test Worker\",\"sid\": \"WKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workers/WKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"workspace_sid\": \"WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"activity\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Activities/WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"workspace\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}"));
             
-            var response = WorkerResource.Creator("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName").Create(twilioRestClient);
+            var response = WorkerResource.Creator("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "FriendlyName").Create(twilioRestClient);
             Assert.NotNull(response);
         }
     

@@ -12,9 +12,9 @@ namespace Twilio.Rest.Api.V2010
 
     public class AccountUpdater : Updater<AccountResource> 
     {
-        public string sid { get; set; }
-        public string friendlyName { get; set; }
-        public AccountResource.AccountStatus status { get; set; }
+        public string Sid { get; set; }
+        public string FriendlyName { get; set; }
+        public AccountResource.StatusEnum Status { get; set; }
     
         #if NET40
         /// <summary>
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Api.V2010
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (sid ?? client.GetAccountSid()) + ".json"
+                "/2010-04-01/Accounts/" + (Sid ?? client.GetAccountSid()) + ".json"
             );
             AddPostParams(request);
             
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Api.V2010
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (sid ?? client.GetAccountSid()) + ".json"
+                "/2010-04-01/Accounts/" + (Sid ?? client.GetAccountSid()) + ".json"
             );
             AddPostParams(request);
             
@@ -105,14 +105,14 @@ namespace Twilio.Rest.Api.V2010
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (status != null)
+            if (Status != null)
             {
-                request.AddPostParam("Status", status.ToString());
+                request.AddPostParam("Status", Status.ToString());
             }
         }
     }

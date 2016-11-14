@@ -90,25 +90,25 @@ namespace Twilio.Rest.Preview.Sync.Service
         }
     
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("unique_name")]
-        public string uniqueName { get; set; }
+        public string UniqueName { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("service_sid")]
-        public string serviceSid { get; set; }
+        public string ServiceSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
         [JsonProperty("revision")]
-        public string revision { get; set; }
+        public string Revision { get; set; }
         [JsonProperty("data")]
-        public Object data { get; set; }
+        public Object Data { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("created_by")]
-        public string createdBy { get; set; }
+        public string CreatedBy { get; set; }
     
         public DocumentResource()
         {
@@ -136,16 +136,16 @@ namespace Twilio.Rest.Preview.Sync.Service
                                  [JsonProperty("created_by")]
                                  string createdBy)
                                  {
-            this.sid = sid;
-            this.uniqueName = uniqueName;
-            this.accountSid = accountSid;
-            this.serviceSid = serviceSid;
-            this.url = url;
-            this.revision = revision;
-            this.data = data;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.createdBy = createdBy;
+            Sid = sid;
+            UniqueName = uniqueName;
+            AccountSid = accountSid;
+            ServiceSid = serviceSid;
+            Url = url;
+            Revision = revision;
+            Data = data;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            CreatedBy = createdBy;
         }
     }
 }

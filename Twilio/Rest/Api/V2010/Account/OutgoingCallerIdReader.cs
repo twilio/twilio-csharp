@@ -12,9 +12,9 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class OutgoingCallerIdReader : Reader<OutgoingCallerIdResource> 
     {
-        public string accountSid { get; set; }
-        public Twilio.Types.PhoneNumber phoneNumber { get; set; }
-        public string friendlyName { get; set; }
+        public string AccountSid { get; set; }
+        public Twilio.Types.PhoneNumber PhoneNumber { get; set; }
+        public string FriendlyName { get; set; }
     
         #if NET40
         /// <summary>
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/OutgoingCallerIds.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/OutgoingCallerIds.json"
             );
             AddQueryParams(request);
             
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/OutgoingCallerIds.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/OutgoingCallerIds.json"
             );
             
             AddQueryParams(request);
@@ -118,14 +118,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (phoneNumber != null)
+            if (PhoneNumber != null)
             {
-                request.AddQueryParam("PhoneNumber", phoneNumber.ToString());
+                request.AddQueryParam("PhoneNumber", PhoneNumber.ToString());
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddQueryParam("FriendlyName", friendlyName);
+                request.AddQueryParam("FriendlyName", FriendlyName);
             }
             
             if (PageSize != null)

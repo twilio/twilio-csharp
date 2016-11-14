@@ -13,9 +13,9 @@ namespace Twilio.Rest.Preview.Sync.Service
 
     public class DocumentUpdater : Updater<DocumentResource> 
     {
-        public string serviceSid { get; }
-        public string sid { get; }
-        public Object data { get; }
+        public string ServiceSid { get; }
+        public string Sid { get; }
+        public Object Data { get; }
     
         /// <summary>
         /// Construct a new DocumentUpdater
@@ -26,9 +26,9 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <param name="data"> The data </param>
         public DocumentUpdater(string serviceSid, string sid, Object data)
         {
-            this.serviceSid = serviceSid;
-            this.sid = sid;
-            this.data = data;
+            ServiceSid = serviceSid;
+            Sid = sid;
+            Data = data;
         }
     
         #if NET40
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Preview.Sync.Service
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Documents/" + this.sid + ""
+                "/Sync/Services/" + this.ServiceSid + "/Documents/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Preview.Sync.Service
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Documents/" + this.sid + ""
+                "/Sync/Services/" + this.ServiceSid + "/Documents/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -120,9 +120,9 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (data != null)
+            if (Data != null)
             {
-                request.AddPostParam("Data", data.ToString());
+                request.AddPostParam("Data", Data.ToString());
             }
         }
     }

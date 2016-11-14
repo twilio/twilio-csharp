@@ -12,8 +12,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class CredentialListCreator : Creator<CredentialListResource> 
     {
-        public string trunkSid { get; }
-        public string credentialListSid { get; }
+        public string TrunkSid { get; }
+        public string CredentialListSid { get; }
     
         /// <summary>
         /// Construct a new CredentialListCreator
@@ -23,8 +23,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="credentialListSid"> The credential_list_sid </param>
         public CredentialListCreator(string trunkSid, string credentialListSid)
         {
-            this.trunkSid = trunkSid;
-            this.credentialListSid = credentialListSid;
+            TrunkSid = trunkSid;
+            CredentialListSid = credentialListSid;
         }
     
         #if NET40
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/CredentialLists"
+                "/v1/Trunks/" + this.TrunkSid + "/CredentialLists"
             );
             
             AddPostParams(request);
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/CredentialLists"
+                "/v1/Trunks/" + this.TrunkSid + "/CredentialLists"
             );
             
             AddPostParams(request);
@@ -116,9 +116,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (credentialListSid != null)
+            if (CredentialListSid != null)
             {
-                request.AddPostParam("CredentialListSid", credentialListSid);
+                request.AddPostParam("CredentialListSid", CredentialListSid);
             }
         }
     }

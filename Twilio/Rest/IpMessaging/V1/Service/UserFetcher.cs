@@ -12,8 +12,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
 
     public class UserFetcher : Fetcher<UserResource> 
     {
-        public string serviceSid { get; }
-        public string sid { get; }
+        public string ServiceSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new UserFetcher
@@ -23,8 +23,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// <param name="sid"> The sid </param>
         public UserFetcher(string serviceSid, string sid)
         {
-            this.serviceSid = serviceSid;
-            this.sid = sid;
+            ServiceSid = serviceSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -39,7 +39,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Users/" + this.sid + ""
+                "/v1/Services/" + this.ServiceSid + "/Users/" + this.Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -79,7 +79,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Users/" + this.sid + ""
+                "/v1/Services/" + this.ServiceSid + "/Users/" + this.Sid + ""
             );
             
             var response = client.Request(request);

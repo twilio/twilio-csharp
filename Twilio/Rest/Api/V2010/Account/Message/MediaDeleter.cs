@@ -13,9 +13,9 @@ namespace Twilio.Rest.Api.V2010.Account.Message
 
     public class MediaDeleter : Deleter<MediaResource> 
     {
-        public string accountSid { get; set; }
-        public string messageSid { get; }
-        public string sid { get; }
+        public string AccountSid { get; set; }
+        public string MessageSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new MediaDeleter
@@ -25,8 +25,8 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <param name="sid"> Delete by unique media Sid </param>
         public MediaDeleter(string messageSid, string sid)
         {
-            this.messageSid = messageSid;
-            this.sid = sid;
+            MessageSid = messageSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Messages/" + this.messageSid + "/Media/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Messages/" + this.MessageSid + "/Media/" + this.Sid + ".json"
             );
             
             var response = await client.RequestAsync(request);
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Messages/" + this.messageSid + "/Media/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Messages/" + this.MessageSid + "/Media/" + this.Sid + ".json"
             );
             
             var response = client.Request(request);

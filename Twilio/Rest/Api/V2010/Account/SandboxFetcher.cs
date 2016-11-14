@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class SandboxFetcher : Fetcher<SandboxResource> 
     {
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
     
         #if NET40
         /// <summary>
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Sandbox.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Sandbox.json"
             );
             
             var response = await client.RequestAsync(request);
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Sandbox.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Sandbox.json"
             );
             
             var response = client.Request(request);

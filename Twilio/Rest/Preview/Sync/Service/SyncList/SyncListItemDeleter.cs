@@ -13,9 +13,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
 
     public class SyncListItemDeleter : Deleter<SyncListItemResource> 
     {
-        public string serviceSid { get; }
-        public string listSid { get; }
-        public int? index { get; }
+        public string ServiceSid { get; }
+        public string ListSid { get; }
+        public int? Index { get; }
     
         /// <summary>
         /// Construct a new SyncListItemDeleter
@@ -26,9 +26,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <param name="index"> The index </param>
         public SyncListItemDeleter(string serviceSid, string listSid, int? index)
         {
-            this.serviceSid = serviceSid;
-            this.listSid = listSid;
-            this.index = index;
+            ServiceSid = serviceSid;
+            ListSid = listSid;
+            Index = index;
         }
     
         #if NET40
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Lists/" + this.listSid + "/Items/" + this.index + ""
+                "/Sync/Services/" + this.ServiceSid + "/Lists/" + this.ListSid + "/Items/" + this.Index + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Lists/" + this.listSid + "/Items/" + this.index + ""
+                "/Sync/Services/" + this.ServiceSid + "/Lists/" + this.ListSid + "/Items/" + this.Index + ""
             );
             
             var response = client.Request(request);

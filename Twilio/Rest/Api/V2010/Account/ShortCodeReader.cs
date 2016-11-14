@@ -12,9 +12,9 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ShortCodeReader : Reader<ShortCodeResource> 
     {
-        public string accountSid { get; set; }
-        public string friendlyName { get; set; }
-        public string shortCode { get; set; }
+        public string AccountSid { get; set; }
+        public string FriendlyName { get; set; }
+        public string ShortCode { get; set; }
     
         #if NET40
         /// <summary>
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SMS/ShortCodes.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SMS/ShortCodes.json"
             );
             AddQueryParams(request);
             
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SMS/ShortCodes.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SMS/ShortCodes.json"
             );
             
             AddQueryParams(request);
@@ -118,14 +118,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddQueryParam("FriendlyName", friendlyName);
+                request.AddQueryParam("FriendlyName", FriendlyName);
             }
             
-            if (shortCode != null)
+            if (ShortCode != null)
             {
-                request.AddQueryParam("ShortCode", shortCode);
+                request.AddQueryParam("ShortCode", ShortCode);
             }
             
             if (PageSize != null)

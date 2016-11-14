@@ -12,8 +12,8 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class IncomingPhoneNumberFetcher : Fetcher<IncomingPhoneNumberResource> 
     {
-        public string ownerAccountSid { get; set; }
-        public string sid { get; }
+        public string OwnerAccountSid { get; set; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new IncomingPhoneNumberFetcher
@@ -22,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sid"> Fetch by unique incoming-phone-number Sid </param>
         public IncomingPhoneNumberFetcher(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (ownerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (OwnerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/" + this.Sid + ".json"
             );
             
             var response = await client.RequestAsync(request);
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (ownerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (OwnerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/" + this.Sid + ".json"
             );
             
             var response = client.Request(request);

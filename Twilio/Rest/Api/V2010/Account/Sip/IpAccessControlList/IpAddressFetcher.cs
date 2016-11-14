@@ -12,9 +12,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
     public class IpAddressFetcher : Fetcher<IpAddressResource> 
     {
-        public string accountSid { get; set; }
-        public string ipAccessControlListSid { get; }
-        public string sid { get; }
+        public string AccountSid { get; set; }
+        public string IpAccessControlListSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new IpAddressFetcher
@@ -24,8 +24,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <param name="sid"> The sid </param>
         public IpAddressFetcher(string ipAccessControlListSid, string sid)
         {
-            this.ipAccessControlListSid = ipAccessControlListSid;
-            this.sid = sid;
+            IpAccessControlListSid = ipAccessControlListSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.IpAccessControlListSid + "/IpAddresses/" + this.Sid + ".json"
             );
             
             var response = await client.RequestAsync(request);
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.IpAccessControlListSid + "/IpAddresses/" + this.Sid + ".json"
             );
             
             var response = client.Request(request);

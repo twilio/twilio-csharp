@@ -54,21 +54,21 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("unique_name")]
-        public string uniqueName { get; set; }
+        public string UniqueName { get; set; }
         [JsonProperty("workspace_sid")]
-        public string workspaceSid { get; set; }
+        public string WorkspaceSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public TaskChannelResource()
         {
@@ -92,14 +92,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                     [JsonProperty("url")]
                                     Uri url)
                                     {
-            this.accountSid = accountSid;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.friendlyName = friendlyName;
-            this.sid = sid;
-            this.uniqueName = uniqueName;
-            this.workspaceSid = workspaceSid;
-            this.url = url;
+            AccountSid = accountSid;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            FriendlyName = friendlyName;
+            Sid = sid;
+            UniqueName = uniqueName;
+            WorkspaceSid = workspaceSid;
+            Url = url;
         }
     }
 }

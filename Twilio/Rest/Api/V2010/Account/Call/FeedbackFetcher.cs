@@ -12,8 +12,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class FeedbackFetcher : Fetcher<FeedbackResource> 
     {
-        public string accountSid { get; set; }
-        public string callSid { get; }
+        public string AccountSid { get; set; }
+        public string CallSid { get; }
     
         /// <summary>
         /// Construct a new FeedbackFetcher
@@ -22,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="callSid"> The call sid that uniquely identifies the call </param>
         public FeedbackFetcher(string callSid)
         {
-            this.callSid = callSid;
+            CallSid = callSid;
         }
     
         #if NET40
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/" + this.callSid + "/Feedback.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + this.CallSid + "/Feedback.json"
             );
             
             var response = await client.RequestAsync(request);
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/" + this.callSid + "/Feedback.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + this.CallSid + "/Feedback.json"
             );
             
             var response = client.Request(request);

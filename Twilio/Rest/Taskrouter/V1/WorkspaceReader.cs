@@ -12,7 +12,7 @@ namespace Twilio.Rest.Taskrouter.V1
 
     public class WorkspaceReader : Reader<WorkspaceResource> 
     {
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
     
         #if NET40
         /// <summary>
@@ -116,9 +116,9 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddQueryParam("FriendlyName", friendlyName);
+                request.AddQueryParam("FriendlyName", FriendlyName);
             }
             
             if (PageSize != null)

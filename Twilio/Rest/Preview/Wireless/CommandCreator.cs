@@ -13,12 +13,12 @@ namespace Twilio.Rest.Preview.Wireless
 
     public class CommandCreator : Creator<CommandResource> 
     {
-        public string device { get; }
-        public string command { get; }
-        public string callbackMethod { get; set; }
-        public Uri callbackUrl { get; set; }
-        public string commandMode { get; set; }
-        public string includeSid { get; set; }
+        public string Device { get; }
+        public string Command { get; }
+        public string CallbackMethod { get; set; }
+        public Uri CallbackUrl { get; set; }
+        public string CommandMode { get; set; }
+        public string IncludeSid { get; set; }
     
         /// <summary>
         /// Construct a new CommandCreator
@@ -28,8 +28,8 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="command"> The command </param>
         public CommandCreator(string device, string command)
         {
-            this.device = device;
-            this.command = command;
+            Device = device;
+            Command = command;
         }
     
         #if NET40
@@ -121,34 +121,34 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (device != null)
+            if (Device != null)
             {
-                request.AddPostParam("Device", device);
+                request.AddPostParam("Device", Device);
             }
             
-            if (command != null)
+            if (Command != null)
             {
-                request.AddPostParam("Command", command);
+                request.AddPostParam("Command", Command);
             }
             
-            if (callbackMethod != null)
+            if (CallbackMethod != null)
             {
-                request.AddPostParam("CallbackMethod", callbackMethod);
+                request.AddPostParam("CallbackMethod", CallbackMethod);
             }
             
-            if (callbackUrl != null)
+            if (CallbackUrl != null)
             {
-                request.AddPostParam("CallbackUrl", callbackUrl.ToString());
+                request.AddPostParam("CallbackUrl", CallbackUrl.ToString());
             }
             
-            if (commandMode != null)
+            if (CommandMode != null)
             {
-                request.AddPostParam("CommandMode", commandMode);
+                request.AddPostParam("CommandMode", CommandMode);
             }
             
-            if (includeSid != null)
+            if (IncludeSid != null)
             {
-                request.AddPostParam("IncludeSid", includeSid);
+                request.AddPostParam("IncludeSid", IncludeSid);
             }
         }
     }

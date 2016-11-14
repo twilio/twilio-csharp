@@ -13,9 +13,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
     public class ParticipantDeleter : Deleter<ParticipantResource> 
     {
-        public string accountSid { get; set; }
-        public string conferenceSid { get; }
-        public string callSid { get; }
+        public string AccountSid { get; set; }
+        public string ConferenceSid { get; }
+        public string CallSid { get; }
     
         /// <summary>
         /// Construct a new ParticipantDeleter
@@ -25,8 +25,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="callSid"> The call_sid </param>
         public ParticipantDeleter(string conferenceSid, string callSid)
         {
-            this.conferenceSid = conferenceSid;
-            this.callSid = callSid;
+            ConferenceSid = conferenceSid;
+            CallSid = callSid;
         }
     
         #if NET40
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + this.ConferenceSid + "/Participants/" + this.CallSid + ".json"
             );
             
             var response = await client.RequestAsync(request);
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + this.ConferenceSid + "/Participants/" + this.CallSid + ".json"
             );
             
             var response = client.Request(request);

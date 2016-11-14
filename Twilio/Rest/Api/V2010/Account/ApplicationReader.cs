@@ -12,8 +12,8 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ApplicationReader : Reader<ApplicationResource> 
     {
-        public string accountSid { get; set; }
-        public string friendlyName { get; set; }
+        public string AccountSid { get; set; }
+        public string FriendlyName { get; set; }
     
         #if NET40
         /// <summary>
@@ -27,7 +27,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Applications.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Applications.json"
             );
             AddQueryParams(request);
             
@@ -48,7 +48,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Applications.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Applications.json"
             );
             
             AddQueryParams(request);
@@ -117,9 +117,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddQueryParam("FriendlyName", friendlyName);
+                request.AddQueryParam("FriendlyName", FriendlyName);
             }
             
             if (PageSize != null)

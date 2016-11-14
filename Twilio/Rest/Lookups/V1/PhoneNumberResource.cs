@@ -12,7 +12,7 @@ namespace Twilio.Rest.Lookups.V1
 
     public class PhoneNumberResource : Resource 
     {
-        public sealed class PhoneNumberType : IStringEnum 
+        public sealed class TypeEnum : IStringEnum 
         {
             public const string Landline = "landline";
             public const string Mobile = "mobile";
@@ -20,9 +20,9 @@ namespace Twilio.Rest.Lookups.V1
         
             private string _value;
             
-            public PhoneNumberType() {}
+            public TypeEnum() {}
             
-            public PhoneNumberType(string value)
+            public TypeEnum(string value)
             {
                 _value = value;
             }
@@ -32,12 +32,12 @@ namespace Twilio.Rest.Lookups.V1
                 return _value;
             }
             
-            public static implicit operator PhoneNumberType(string value)
+            public static implicit operator TypeEnum(string value)
             {
-                return new PhoneNumberType(value);
+                return new TypeEnum(value);
             }
             
-            public static implicit operator string(PhoneNumberType value)
+            public static implicit operator string(TypeEnum value)
             {
                 return value.ToString();
             }
@@ -79,20 +79,20 @@ namespace Twilio.Rest.Lookups.V1
         }
     
         [JsonProperty("caller_name")]
-        public Dictionary<string, string> callerName { get; set; }
+        public Dictionary<string, string> CallerName { get; set; }
         [JsonProperty("country_code")]
-        public string countryCode { get; set; }
+        public string CountryCode { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber phoneNumber { get; set; }
+        public Twilio.Types.PhoneNumber PhoneNumber { get; set; }
         [JsonProperty("national_format")]
-        public string nationalFormat { get; set; }
+        public string NationalFormat { get; set; }
         [JsonProperty("carrier")]
-        public Dictionary<string, string> carrier { get; set; }
+        public Dictionary<string, string> Carrier { get; set; }
         [JsonProperty("add_ons")]
-        public Object addOns { get; set; }
+        public Object AddOns { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public PhoneNumberResource()
         {
@@ -114,13 +114,13 @@ namespace Twilio.Rest.Lookups.V1
                                     [JsonProperty("url")]
                                     Uri url)
                                     {
-            this.callerName = callerName;
-            this.countryCode = countryCode;
-            this.phoneNumber = phoneNumber;
-            this.nationalFormat = nationalFormat;
-            this.carrier = carrier;
-            this.addOns = addOns;
-            this.url = url;
+            CallerName = callerName;
+            CountryCode = countryCode;
+            PhoneNumber = phoneNumber;
+            NationalFormat = nationalFormat;
+            Carrier = carrier;
+            AddOns = addOns;
+            Url = url;
         }
     }
 }

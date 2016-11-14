@@ -44,30 +44,30 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
     
         [JsonProperty("friendly_name")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber friendlyName { get; set; }
+        public Twilio.Types.PhoneNumber FriendlyName { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber phoneNumber { get; set; }
+        public Twilio.Types.PhoneNumber PhoneNumber { get; set; }
         [JsonProperty("lata")]
-        public string lata { get; set; }
+        public string Lata { get; set; }
         [JsonProperty("rate_center")]
-        public string rateCenter { get; set; }
+        public string RateCenter { get; set; }
         [JsonProperty("latitude")]
-        public decimal? latitude { get; set; }
+        public decimal? Latitude { get; set; }
         [JsonProperty("longitude")]
-        public decimal? longitude { get; set; }
+        public decimal? Longitude { get; set; }
         [JsonProperty("region")]
-        public string region { get; set; }
+        public string Region { get; set; }
         [JsonProperty("postal_code")]
-        public string postalCode { get; set; }
+        public string PostalCode { get; set; }
         [JsonProperty("iso_country")]
-        public string isoCountry { get; set; }
+        public string IsoCountry { get; set; }
         [JsonProperty("address_requirements")]
-        public string addressRequirements { get; set; }
+        public string AddressRequirements { get; set; }
         [JsonProperty("beta")]
-        public bool? beta { get; set; }
+        public bool? Beta { get; set; }
         [JsonProperty("capabilities")]
-        public PhoneNumberCapabilities capabilities { get; set; }
+        public PhoneNumberCapabilities Capabilities { get; set; }
     
         public TollFreeResource()
         {
@@ -99,18 +99,18 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
                                  [JsonProperty("capabilities")]
                                  PhoneNumberCapabilities capabilities)
                                  {
-            this.friendlyName = friendlyName;
-            this.phoneNumber = phoneNumber;
-            this.lata = lata;
-            this.rateCenter = rateCenter;
-            this.latitude = latitude;
-            this.longitude = longitude;
-            this.region = region;
-            this.postalCode = postalCode;
-            this.isoCountry = isoCountry;
-            this.addressRequirements = addressRequirements;
-            this.beta = beta;
-            this.capabilities = capabilities;
+            FriendlyName = friendlyName;
+            PhoneNumber = phoneNumber;
+            Lata = lata;
+            RateCenter = rateCenter;
+            Latitude = latitude;
+            Longitude = longitude;
+            Region = region;
+            PostalCode = postalCode;
+            IsoCountry = isoCountry;
+            AddressRequirements = addressRequirements;
+            Beta = beta;
+            Capabilities = capabilities;
         }
     }
 }

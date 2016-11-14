@@ -13,9 +13,9 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class RoleUpdater : Updater<RoleResource> 
     {
-        public string serviceSid { get; }
-        public string sid { get; }
-        public List<string> permission { get; }
+        public string ServiceSid { get; }
+        public string Sid { get; }
+        public List<string> Permission { get; }
     
         /// <summary>
         /// Construct a new RoleUpdater
@@ -26,9 +26,9 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="permission"> The permission </param>
         public RoleUpdater(string serviceSid, string sid, List<string> permission)
         {
-            this.serviceSid = serviceSid;
-            this.sid = sid;
-            this.permission = permission;
+            ServiceSid = serviceSid;
+            Sid = sid;
+            Permission = permission;
         }
     
         #if NET40
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.CHAT,
-                "/v1/Services/" + this.serviceSid + "/Roles/" + this.sid + ""
+                "/v1/Services/" + this.ServiceSid + "/Roles/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.CHAT,
-                "/v1/Services/" + this.serviceSid + "/Roles/" + this.sid + ""
+                "/v1/Services/" + this.ServiceSid + "/Roles/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -120,9 +120,9 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (permission != null)
+            if (Permission != null)
             {
-                request.AddPostParam("Permission", permission.ToString());
+                request.AddPostParam("Permission", Permission.ToString());
             }
         }
     }

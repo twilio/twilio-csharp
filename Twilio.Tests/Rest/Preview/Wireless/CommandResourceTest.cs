@@ -137,8 +137,8 @@ namespace Twilio.Tests.Rest.Preview.Wireless
             var request = new Request(HttpMethod.POST,
                                       Domains.PREVIEW,
                                       "/wireless/Commands");
-            request.AddPostParam("Device", Serialize("device"));
-            request.AddPostParam("Command", Serialize("command"));
+            request.AddPostParam("Device", Serialize("Device"));
+            request.AddPostParam("Command", Serialize("Command"));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -146,7 +146,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
             
             try
             {
-                CommandResource.Creator("device", "command").Create(twilioRestClient);
+                CommandResource.Creator("Device", "Command").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -176,7 +176,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"command\": \"command\",\"command_mode\": \"command_mode\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"device_sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"direction\": \"direction\",\"sid\": \"DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"status\",\"url\": \"http://www.example.com\"}"));
             
-            var response = CommandResource.Creator("device", "command").Create(twilioRestClient);
+            var response = CommandResource.Creator("Device", "Command").Create(twilioRestClient);
             Assert.NotNull(response);
         }
     }

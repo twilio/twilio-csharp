@@ -13,11 +13,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class RecordingReader : Reader<RecordingResource> 
     {
-        public string accountSid { get; set; }
-        public string callSid { get; }
-        public DateTime? dateCreated { get; set; }
-        public DateTime? dateCreatedAfter { get; set; }
-        public DateTime? dateCreatedBefore { get; set; }
+        public string AccountSid { get; set; }
+        public string CallSid { get; }
+        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreatedAfter { get; set; }
+        public DateTime? DateCreatedBefore { get; set; }
     
         /// <summary>
         /// Construct a new RecordingReader
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="callSid"> The call_sid </param>
         public RecordingReader(string callSid)
         {
-            this.callSid = callSid;
+            CallSid = callSid;
         }
     
         #if NET40
@@ -41,7 +41,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/" + this.callSid + "/Recordings.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + this.CallSid + "/Recordings.json"
             );
             AddQueryParams(request);
             
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/" + this.callSid + "/Recordings.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + this.CallSid + "/Recordings.json"
             );
             
             AddQueryParams(request);
@@ -131,19 +131,19 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (dateCreated != null)
+            if (DateCreated != null)
             {
-                request.AddQueryParam("DateCreated", dateCreated.Value.ToString("yyyy-MM-dd"));
+                request.AddQueryParam("DateCreated", DateCreated.Value.ToString("yyyy-MM-dd"));
             }
             else
             {
-                if (dateCreatedBefore != null)
+                if (DateCreatedBefore != null)
                 {
-                    request.AddQueryParam("DateCreated<", dateCreatedBefore.Value.ToString("yyyy-MM-dd"));
+                    request.AddQueryParam("DateCreated<", DateCreatedBefore.Value.ToString("yyyy-MM-dd"));
                 }
-                if (dateCreatedAfter != null)
+                if (DateCreatedAfter != null)
                 {
-                    request.AddQueryParam("DateCreated>", dateCreatedAfter.Value.ToString("yyyy-MM-dd"));
+                    request.AddQueryParam("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-dd"));
                 }
             }
             

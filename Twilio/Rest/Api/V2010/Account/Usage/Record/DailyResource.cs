@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
 
     public class DailyResource : Resource 
     {
-        public sealed class DailyCategory : IStringEnum 
+        public sealed class CategoryEnum : IStringEnum 
         {
             public const string AuthyAuthentications = "authy-authentications";
             public const string AuthyCallsOutbound = "authy-calls-outbound";
@@ -107,9 +107,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         
             private string _value;
             
-            public DailyCategory() {}
+            public CategoryEnum() {}
             
-            public DailyCategory(string value)
+            public CategoryEnum(string value)
             {
                 _value = value;
             }
@@ -119,12 +119,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
                 return _value;
             }
             
-            public static implicit operator DailyCategory(string value)
+            public static implicit operator CategoryEnum(string value)
             {
-                return new DailyCategory(value);
+                return new CategoryEnum(value);
             }
             
-            public static implicit operator string(DailyCategory value)
+            public static implicit operator string(CategoryEnum value)
             {
                 return value.ToString();
             }
@@ -165,34 +165,34 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; set; }
+        public string ApiVersion { get; set; }
         [JsonProperty("category")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public DailyResource.DailyCategory category { get; set; }
+        public DailyResource.CategoryEnum Category { get; set; }
         [JsonProperty("count")]
-        public string count { get; set; }
+        public string Count { get; set; }
         [JsonProperty("count_unit")]
-        public string countUnit { get; set; }
+        public string CountUnit { get; set; }
         [JsonProperty("description")]
-        public string description { get; set; }
+        public string Description { get; set; }
         [JsonProperty("end_date")]
-        public DateTime? endDate { get; set; }
+        public DateTime? EndDate { get; set; }
         [JsonProperty("price")]
-        public decimal? price { get; set; }
+        public decimal? Price { get; set; }
         [JsonProperty("price_unit")]
-        public string priceUnit { get; set; }
+        public string PriceUnit { get; set; }
         [JsonProperty("start_date")]
-        public DateTime? startDate { get; set; }
+        public DateTime? StartDate { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; set; }
+        public Dictionary<string, string> SubresourceUris { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
         [JsonProperty("usage")]
-        public string usage { get; set; }
+        public string Usage { get; set; }
         [JsonProperty("usage_unit")]
-        public string usageUnit { get; set; }
+        public string UsageUnit { get; set; }
     
         public DailyResource()
         {
@@ -204,7 +204,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
                               [JsonProperty("api_version")]
                               string apiVersion, 
                               [JsonProperty("category")]
-                              DailyResource.DailyCategory category, 
+                              DailyResource.CategoryEnum category, 
                               [JsonProperty("count")]
                               string count, 
                               [JsonProperty("count_unit")]
@@ -228,20 +228,20 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
                               [JsonProperty("usage_unit")]
                               string usageUnit)
                               {
-            this.accountSid = accountSid;
-            this.apiVersion = apiVersion;
-            this.category = category;
-            this.count = count;
-            this.countUnit = countUnit;
-            this.description = description;
-            this.endDate = MarshalConverter.DateTimeFromString(endDate);
-            this.price = price;
-            this.priceUnit = priceUnit;
-            this.startDate = MarshalConverter.DateTimeFromString(startDate);
-            this.subresourceUris = subresourceUris;
-            this.uri = uri;
-            this.usage = usage;
-            this.usageUnit = usageUnit;
+            AccountSid = accountSid;
+            ApiVersion = apiVersion;
+            Category = category;
+            Count = count;
+            CountUnit = countUnit;
+            Description = description;
+            EndDate = MarshalConverter.DateTimeFromString(endDate);
+            Price = price;
+            PriceUnit = priceUnit;
+            StartDate = MarshalConverter.DateTimeFromString(startDate);
+            SubresourceUris = subresourceUris;
+            Uri = uri;
+            Usage = usage;
+            UsageUnit = usageUnit;
         }
     }
 }

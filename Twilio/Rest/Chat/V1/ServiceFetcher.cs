@@ -12,7 +12,7 @@ namespace Twilio.Rest.Chat.V1
 
     public class ServiceFetcher : Fetcher<ServiceResource> 
     {
-        public string sid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new ServiceFetcher
@@ -21,7 +21,7 @@ namespace Twilio.Rest.Chat.V1
         /// <param name="sid"> The sid </param>
         public ServiceFetcher(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Chat.V1
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.CHAT,
-                "/v1/Services/" + this.sid + ""
+                "/v1/Services/" + this.Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Chat.V1
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.CHAT,
-                "/v1/Services/" + this.sid + ""
+                "/v1/Services/" + this.Sid + ""
             );
             
             var response = client.Request(request);

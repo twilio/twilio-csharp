@@ -12,7 +12,7 @@ namespace Twilio.Rest.Monitor.V1
 
     public class EventFetcher : Fetcher<EventResource> 
     {
-        public string sid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new EventFetcher
@@ -21,7 +21,7 @@ namespace Twilio.Rest.Monitor.V1
         /// <param name="sid"> The sid </param>
         public EventFetcher(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Monitor.V1
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.MONITOR,
-                "/v1/Events/" + this.sid + ""
+                "/v1/Events/" + this.Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Monitor.V1
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.MONITOR,
-                "/v1/Events/" + this.sid + ""
+                "/v1/Events/" + this.Sid + ""
             );
             
             var response = client.Request(request);

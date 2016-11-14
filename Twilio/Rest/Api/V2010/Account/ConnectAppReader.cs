@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ConnectAppReader : Reader<ConnectAppResource> 
     {
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
     
         #if NET40
         /// <summary>
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/ConnectApps.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/ConnectApps.json"
             );
             AddQueryParams(request);
             
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/ConnectApps.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/ConnectApps.json"
             );
             
             AddQueryParams(request);

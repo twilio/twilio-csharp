@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class FeedbackResource : Resource 
     {
-        public sealed class FeedbackIssues : IStringEnum 
+        public sealed class IssuesEnum : IStringEnum 
         {
             public const string AudioLatency = "audio-latency";
             public const string DigitsNotCaptured = "digits-not-captured";
@@ -25,9 +25,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         
             private string _value;
             
-            public FeedbackIssues() {}
+            public IssuesEnum() {}
             
-            public FeedbackIssues(string value)
+            public IssuesEnum(string value)
             {
                 _value = value;
             }
@@ -37,12 +37,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 return _value;
             }
             
-            public static implicit operator FeedbackIssues(string value)
+            public static implicit operator IssuesEnum(string value)
             {
-                return new FeedbackIssues(value);
+                return new IssuesEnum(value);
             }
             
-            public static implicit operator string(FeedbackIssues value)
+            public static implicit operator string(IssuesEnum value)
             {
                 return value.ToString();
             }
@@ -108,18 +108,18 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("issues")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public List<FeedbackResource.FeedbackIssues> issues { get; set; }
+        public List<FeedbackResource.IssuesEnum> Issues { get; set; }
         [JsonProperty("quality_score")]
-        public int? qualityScore { get; set; }
+        public int? QualityScore { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
     
         public FeedbackResource()
         {
@@ -133,18 +133,18 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                  [JsonProperty("date_updated")]
                                  string dateUpdated, 
                                  [JsonProperty("issues")]
-                                 List<FeedbackResource.FeedbackIssues> issues, 
+                                 List<FeedbackResource.IssuesEnum> issues, 
                                  [JsonProperty("quality_score")]
                                  int? qualityScore, 
                                  [JsonProperty("sid")]
                                  string sid)
                                  {
-            this.accountSid = accountSid;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.issues = issues;
-            this.qualityScore = qualityScore;
-            this.sid = sid;
+            AccountSid = accountSid;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Issues = issues;
+            QualityScore = qualityScore;
+            Sid = sid;
         }
     }
 }

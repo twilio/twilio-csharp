@@ -12,8 +12,8 @@ namespace Twilio.Rest.Api.V2010.Account.Address
 
     public class DependentPhoneNumberReader : Reader<DependentPhoneNumberResource> 
     {
-        public string accountSid { get; set; }
-        public string addressSid { get; }
+        public string AccountSid { get; set; }
+        public string AddressSid { get; }
     
         /// <summary>
         /// Construct a new DependentPhoneNumberReader
@@ -22,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// <param name="addressSid"> The address_sid </param>
         public DependentPhoneNumberReader(string addressSid)
         {
-            this.addressSid = addressSid;
+            AddressSid = addressSid;
         }
     
         #if NET40
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Addresses/" + this.addressSid + "/DependentPhoneNumbers.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Addresses/" + this.AddressSid + "/DependentPhoneNumbers.json"
             );
             AddQueryParams(request);
             
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Addresses/" + this.addressSid + "/DependentPhoneNumbers.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Addresses/" + this.AddressSid + "/DependentPhoneNumbers.json"
             );
             
             AddQueryParams(request);

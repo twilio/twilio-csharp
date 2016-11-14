@@ -86,33 +86,33 @@ namespace Twilio.Rest.Taskrouter.V1
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("default_activity_name")]
-        public string defaultActivityName { get; set; }
+        public string DefaultActivityName { get; set; }
         [JsonProperty("default_activity_sid")]
-        public string defaultActivitySid { get; set; }
+        public string DefaultActivitySid { get; set; }
         [JsonProperty("event_callback_url")]
-        public Uri eventCallbackUrl { get; set; }
+        public Uri EventCallbackUrl { get; set; }
         [JsonProperty("events_filter")]
-        public string eventsFilter { get; set; }
+        public string EventsFilter { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("multi_task_enabled")]
-        public bool? multiTaskEnabled { get; set; }
+        public bool? MultiTaskEnabled { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("timeout_activity_name")]
-        public string timeoutActivityName { get; set; }
+        public string TimeoutActivityName { get; set; }
         [JsonProperty("timeout_activity_sid")]
-        public string timeoutActivitySid { get; set; }
+        public string TimeoutActivitySid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; set; }
+        public Dictionary<string, string> Links { get; set; }
     
         public WorkspaceResource()
         {
@@ -148,20 +148,20 @@ namespace Twilio.Rest.Taskrouter.V1
                                   [JsonProperty("links")]
                                   Dictionary<string, string> links)
                                   {
-            this.accountSid = accountSid;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.defaultActivityName = defaultActivityName;
-            this.defaultActivitySid = defaultActivitySid;
-            this.eventCallbackUrl = eventCallbackUrl;
-            this.eventsFilter = eventsFilter;
-            this.friendlyName = friendlyName;
-            this.multiTaskEnabled = multiTaskEnabled;
-            this.sid = sid;
-            this.timeoutActivityName = timeoutActivityName;
-            this.timeoutActivitySid = timeoutActivitySid;
-            this.url = url;
-            this.links = links;
+            AccountSid = accountSid;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            DefaultActivityName = defaultActivityName;
+            DefaultActivitySid = defaultActivitySid;
+            EventCallbackUrl = eventCallbackUrl;
+            EventsFilter = eventsFilter;
+            FriendlyName = friendlyName;
+            MultiTaskEnabled = multiTaskEnabled;
+            Sid = sid;
+            TimeoutActivityName = timeoutActivityName;
+            TimeoutActivitySid = timeoutActivitySid;
+            Url = url;
+            Links = links;
         }
     }
 }

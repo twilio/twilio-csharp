@@ -13,12 +13,12 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class MessageReader : Reader<MessageResource> 
     {
-        public string accountSid { get; set; }
-        public Twilio.Types.PhoneNumber to { get; set; }
-        public Twilio.Types.PhoneNumber from { get; set; }
-        public DateTime? dateSent { get; set; }
-        public DateTime? dateSentAfter { get; set; }
-        public DateTime? dateSentBefore { get; set; }
+        public string AccountSid { get; set; }
+        public Twilio.Types.PhoneNumber To { get; set; }
+        public Twilio.Types.PhoneNumber From { get; set; }
+        public DateTime? DateSent { get; set; }
+        public DateTime? DateSentAfter { get; set; }
+        public DateTime? DateSentBefore { get; set; }
     
         #if NET40
         /// <summary>
@@ -32,7 +32,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Messages.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Messages.json"
             );
             AddQueryParams(request);
             
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Messages.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Messages.json"
             );
             
             AddQueryParams(request);
@@ -122,29 +122,29 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (to != null)
+            if (To != null)
             {
-                request.AddQueryParam("To", to.ToString());
+                request.AddQueryParam("To", To.ToString());
             }
             
-            if (from != null)
+            if (From != null)
             {
-                request.AddQueryParam("From", from.ToString());
+                request.AddQueryParam("From", From.ToString());
             }
             
-            if (dateSent != null)
+            if (DateSent != null)
             {
-                request.AddQueryParam("DateSent", dateSent.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                request.AddQueryParam("DateSent", DateSent.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
             }
             else
             {
-                if (dateSentBefore != null)
+                if (DateSentBefore != null)
                 {
-                    request.AddQueryParam("DateSent<", dateSentBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                    request.AddQueryParam("DateSent<", DateSentBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
                 }
-                if (dateSentAfter != null)
+                if (DateSentAfter != null)
                 {
-                    request.AddQueryParam("DateSent>", dateSentAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                    request.AddQueryParam("DateSent>", DateSentAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
                 }
             }
             

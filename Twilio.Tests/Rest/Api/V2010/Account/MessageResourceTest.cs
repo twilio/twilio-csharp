@@ -28,9 +28,9 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
             var request = new Request(HttpMethod.POST,
                                       Domains.API,
                                       "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages.json");
-            request.AddPostParam("To", Serialize(new Twilio.Types.PhoneNumber("+123456789")));
+            request.AddPostParam("To", Serialize(new Twilio.Types.PhoneNumber("+987654321")));
             request.AddPostParam("From", Serialize(new Twilio.Types.PhoneNumber("+987654321")));
-            request.AddPostParam("Body", Serialize("body"));
+            request.AddPostParam("Body", Serialize("Body"));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -38,7 +38,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
             
             try
             {
-                MessageResource.Creator(new Twilio.Types.PhoneNumber("+123456789"), new Twilio.Types.PhoneNumber("+987654321"), "body").Create(twilioRestClient);
+                MessageResource.Creator(new Twilio.Types.PhoneNumber("+987654321"), new Twilio.Types.PhoneNumber("+987654321"), "Body").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -68,7 +68,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"api_version\": \"2010-04-01\",\"body\": \"O Slash: \\u00d8, PoP: \\ud83d\\udca9\",\"date_created\": \"Thu, 30 Jul 2015 20:12:31 +0000\",\"date_sent\": \"Thu, 30 Jul 2015 20:12:33 +0000\",\"date_updated\": \"Thu, 30 Jul 2015 20:12:33 +0000\",\"direction\": \"outbound-api\",\"error_code\": null,\"error_message\": null,\"from\": \"+14155552345\",\"num_media\": \"0\",\"num_segments\": \"1\",\"price\": \"-0.00750\",\"price_unit\": \"USD\",\"sid\": \"SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"sent\",\"subresource_uris\": {\"media\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media.json\"},\"to\": \"+14155552345\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"));
             
-            var response = MessageResource.Creator(new Twilio.Types.PhoneNumber("+123456789"), new Twilio.Types.PhoneNumber("+987654321"), "body").Create(twilioRestClient);
+            var response = MessageResource.Creator(new Twilio.Types.PhoneNumber("+987654321"), new Twilio.Types.PhoneNumber("+987654321"), "Body").Create(twilioRestClient);
             Assert.NotNull(response);
         }
     

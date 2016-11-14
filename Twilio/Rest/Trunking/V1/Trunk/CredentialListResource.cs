@@ -78,19 +78,19 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("trunk_sid")]
-        public string trunkSid { get; set; }
+        public string TrunkSid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public CredentialListResource()
         {
@@ -112,13 +112,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                                        [JsonProperty("url")]
                                        Uri url)
                                        {
-            this.accountSid = accountSid;
-            this.sid = sid;
-            this.trunkSid = trunkSid;
-            this.friendlyName = friendlyName;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.url = url;
+            AccountSid = accountSid;
+            Sid = sid;
+            TrunkSid = trunkSid;
+            FriendlyName = friendlyName;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Url = url;
         }
     }
 }

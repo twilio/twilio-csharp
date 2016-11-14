@@ -123,7 +123,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
             var request = new Request(HttpMethod.POST,
                                       Domains.IP_MESSAGING,
                                       "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users");
-            request.AddPostParam("Identity", Serialize("identity"));
+            request.AddPostParam("Identity", Serialize("Identity"));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -131,7 +131,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
             
             try
             {
-                UserResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "identity").Create(twilioRestClient);
+                UserResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Identity").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -161,7 +161,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"sid\": \"USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"jing\",\"attributes\": null,\"friendly_name\": null,\"date_created\": \"2016-03-24T21:05:19Z\",\"date_updated\": \"2016-03-24T21:05:19Z\",\"url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = UserResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "identity").Create(twilioRestClient);
+            var response = UserResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Identity").Create(twilioRestClient);
             Assert.NotNull(response);
         }
     

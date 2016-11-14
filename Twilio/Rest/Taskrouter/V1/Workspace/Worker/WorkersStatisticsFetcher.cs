@@ -14,13 +14,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
     public class WorkersStatisticsFetcher : Fetcher<WorkersStatisticsResource> 
     {
-        public string workspaceSid { get; }
-        public int? minutes { get; set; }
-        public DateTime? startDate { get; set; }
-        public DateTime? endDate { get; set; }
-        public string taskQueueSid { get; set; }
-        public string taskQueueName { get; set; }
-        public string friendlyName { get; set; }
+        public string WorkspaceSid { get; }
+        public int? Minutes { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string TaskQueueSid { get; set; }
+        public string TaskQueueName { get; set; }
+        public string FriendlyName { get; set; }
     
         /// <summary>
         /// Construct a new WorkersStatisticsFetcher
@@ -29,7 +29,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="workspaceSid"> The workspace_sid </param>
         public WorkersStatisticsFetcher(string workspaceSid)
         {
-            this.workspaceSid = workspaceSid;
+            WorkspaceSid = workspaceSid;
         }
     
         #if NET40
@@ -44,7 +44,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workers/Statistics"
+                "/v1/Workspaces/" + this.WorkspaceSid + "/Workers/Statistics"
             );
             
                 AddQueryParams(request);
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workers/Statistics"
+                "/v1/Workspaces/" + this.WorkspaceSid + "/Workers/Statistics"
             );
             
                 AddQueryParams(request);
@@ -125,34 +125,34 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (minutes != null)
+            if (Minutes != null)
             {
-                request.AddQueryParam("Minutes", minutes.ToString());
+                request.AddQueryParam("Minutes", Minutes.ToString());
             }
             
-            if (startDate != null)
+            if (StartDate != null)
             {
-                request.AddQueryParam("StartDate", startDate.ToString());
+                request.AddQueryParam("StartDate", StartDate.ToString());
             }
             
-            if (endDate != null)
+            if (EndDate != null)
             {
-                request.AddQueryParam("EndDate", endDate.ToString());
+                request.AddQueryParam("EndDate", EndDate.ToString());
             }
             
-            if (taskQueueSid != null)
+            if (TaskQueueSid != null)
             {
-                request.AddQueryParam("TaskQueueSid", taskQueueSid);
+                request.AddQueryParam("TaskQueueSid", TaskQueueSid);
             }
             
-            if (taskQueueName != null)
+            if (TaskQueueName != null)
             {
-                request.AddQueryParam("TaskQueueName", taskQueueName);
+                request.AddQueryParam("TaskQueueName", TaskQueueName);
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddQueryParam("FriendlyName", friendlyName);
+                request.AddQueryParam("FriendlyName", FriendlyName);
             }
         }
     }

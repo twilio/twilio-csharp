@@ -13,13 +13,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class SandboxUpdater : Updater<SandboxResource> 
     {
-        public string accountSid { get; set; }
-        public Uri voiceUrl { get; set; }
-        public Twilio.Http.HttpMethod voiceMethod { get; set; }
-        public Uri smsUrl { get; set; }
-        public Twilio.Http.HttpMethod smsMethod { get; set; }
-        public Uri statusCallback { get; set; }
-        public Twilio.Http.HttpMethod statusCallbackMethod { get; set; }
+        public string AccountSid { get; set; }
+        public Uri VoiceUrl { get; set; }
+        public Twilio.Http.HttpMethod VoiceMethod { get; set; }
+        public Uri SmsUrl { get; set; }
+        public Twilio.Http.HttpMethod SmsMethod { get; set; }
+        public Uri StatusCallback { get; set; }
+        public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
     
         #if NET40
         /// <summary>
@@ -33,7 +33,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Sandbox.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Sandbox.json"
             );
             AddPostParams(request);
             
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Sandbox.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Sandbox.json"
             );
             AddPostParams(request);
             
@@ -110,34 +110,34 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (voiceUrl != null)
+            if (VoiceUrl != null)
             {
-                request.AddPostParam("VoiceUrl", voiceUrl.ToString());
+                request.AddPostParam("VoiceUrl", VoiceUrl.ToString());
             }
             
-            if (voiceMethod != null)
+            if (VoiceMethod != null)
             {
-                request.AddPostParam("VoiceMethod", voiceMethod.ToString());
+                request.AddPostParam("VoiceMethod", VoiceMethod.ToString());
             }
             
-            if (smsUrl != null)
+            if (SmsUrl != null)
             {
-                request.AddPostParam("SmsUrl", smsUrl.ToString());
+                request.AddPostParam("SmsUrl", SmsUrl.ToString());
             }
             
-            if (smsMethod != null)
+            if (SmsMethod != null)
             {
-                request.AddPostParam("SmsMethod", smsMethod.ToString());
+                request.AddPostParam("SmsMethod", SmsMethod.ToString());
             }
             
-            if (statusCallback != null)
+            if (StatusCallback != null)
             {
-                request.AddPostParam("StatusCallback", statusCallback.ToString());
+                request.AddPostParam("StatusCallback", StatusCallback.ToString());
             }
             
-            if (statusCallbackMethod != null)
+            if (StatusCallbackMethod != null)
             {
-                request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
+                request.AddPostParam("StatusCallbackMethod", StatusCallbackMethod.ToString());
             }
         }
     }

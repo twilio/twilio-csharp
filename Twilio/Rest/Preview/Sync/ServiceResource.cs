@@ -85,23 +85,23 @@ namespace Twilio.Rest.Preview.Sync
         }
     
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
         [JsonProperty("webhook_url")]
-        public Uri webhookUrl { get; set; }
+        public Uri WebhookUrl { get; set; }
         [JsonProperty("reachability_webhooks_enabled")]
-        public bool? reachabilityWebhooksEnabled { get; set; }
+        public bool? ReachabilityWebhooksEnabled { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; set; }
+        public Dictionary<string, string> Links { get; set; }
     
         public ServiceResource()
         {
@@ -127,15 +127,15 @@ namespace Twilio.Rest.Preview.Sync
                                 [JsonProperty("links")]
                                 Dictionary<string, string> links)
                                 {
-            this.sid = sid;
-            this.accountSid = accountSid;
-            this.friendlyName = friendlyName;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.url = url;
-            this.webhookUrl = webhookUrl;
-            this.reachabilityWebhooksEnabled = reachabilityWebhooksEnabled;
-            this.links = links;
+            Sid = sid;
+            AccountSid = accountSid;
+            FriendlyName = friendlyName;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Url = url;
+            WebhookUrl = webhookUrl;
+            ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled;
+            Links = links;
         }
     }
 }

@@ -68,15 +68,15 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         }
     
         [JsonProperty("call_sid")]
-        public string callSid { get; set; }
+        public string CallSid { get; set; }
         [JsonProperty("date_enqueued")]
-        public DateTime? dateEnqueued { get; set; }
+        public DateTime? DateEnqueued { get; set; }
         [JsonProperty("position")]
-        public int? position { get; set; }
+        public int? Position { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
         [JsonProperty("wait_time")]
-        public int? waitTime { get; set; }
+        public int? WaitTime { get; set; }
     
         public MemberResource()
         {
@@ -94,11 +94,11 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
                                [JsonProperty("wait_time")]
                                int? waitTime)
                                {
-            this.callSid = callSid;
-            this.dateEnqueued = MarshalConverter.DateTimeFromString(dateEnqueued);
-            this.position = position;
-            this.uri = uri;
-            this.waitTime = waitTime;
+            CallSid = callSid;
+            DateEnqueued = MarshalConverter.DateTimeFromString(dateEnqueued);
+            Position = position;
+            Uri = uri;
+            WaitTime = waitTime;
         }
     }
 }

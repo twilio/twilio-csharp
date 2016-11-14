@@ -12,9 +12,9 @@ namespace Twilio.Rest.Api.V2010.Account.Message
 
     public class FeedbackCreator : Creator<FeedbackResource> 
     {
-        public string accountSid { get; set; }
-        public string messageSid { get; }
-        public FeedbackResource.FeedbackOutcome outcome { get; set; }
+        public string AccountSid { get; set; }
+        public string MessageSid { get; }
+        public FeedbackResource.OutcomeEnum Outcome { get; set; }
     
         /// <summary>
         /// Construct a new FeedbackCreator
@@ -23,7 +23,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <param name="messageSid"> The message_sid </param>
         public FeedbackCreator(string messageSid)
         {
-            this.messageSid = messageSid;
+            MessageSid = messageSid;
         }
     
         #if NET40
@@ -38,7 +38,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Messages/" + this.messageSid + "/Feedback.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Messages/" + this.MessageSid + "/Feedback.json"
             );
             
             AddPostParams(request);
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Messages/" + this.messageSid + "/Feedback.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Messages/" + this.MessageSid + "/Feedback.json"
             );
             
             AddPostParams(request);
@@ -115,9 +115,9 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (outcome != null)
+            if (Outcome != null)
             {
-                request.AddPostParam("Outcome", outcome.ToString());
+                request.AddPostParam("Outcome", Outcome.ToString());
             }
         }
     }

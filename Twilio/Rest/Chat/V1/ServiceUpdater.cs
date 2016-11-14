@@ -13,15 +13,15 @@ namespace Twilio.Rest.Chat.V1
 
     public class ServiceUpdater : Updater<ServiceResource> 
     {
-        public string sid { get; }
-        public string friendlyName { get; set; }
-        public string defaultServiceRoleSid { get; set; }
-        public string defaultChannelRoleSid { get; set; }
-        public string defaultChannelCreatorRoleSid { get; set; }
-        public bool? readStatusEnabled { get; set; }
-        public int? typingIndicatorTimeout { get; set; }
-        public int? consumptionReportInterval { get; set; }
-        public Object webhooks { get; set; }
+        public string Sid { get; }
+        public string FriendlyName { get; set; }
+        public string DefaultServiceRoleSid { get; set; }
+        public string DefaultChannelRoleSid { get; set; }
+        public string DefaultChannelCreatorRoleSid { get; set; }
+        public bool? ReadStatusEnabled { get; set; }
+        public int? TypingIndicatorTimeout { get; set; }
+        public int? ConsumptionReportInterval { get; set; }
+        public Object Webhooks { get; set; }
     
         /// <summary>
         /// Construct a new ServiceUpdater
@@ -30,7 +30,7 @@ namespace Twilio.Rest.Chat.V1
         /// <param name="sid"> The sid </param>
         public ServiceUpdater(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -45,7 +45,7 @@ namespace Twilio.Rest.Chat.V1
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.CHAT,
-                "/v1/Services/" + this.sid + ""
+                "/v1/Services/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Chat.V1
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.CHAT,
-                "/v1/Services/" + this.sid + ""
+                "/v1/Services/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -122,44 +122,44 @@ namespace Twilio.Rest.Chat.V1
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (defaultServiceRoleSid != null)
+            if (DefaultServiceRoleSid != null)
             {
-                request.AddPostParam("DefaultServiceRoleSid", defaultServiceRoleSid);
+                request.AddPostParam("DefaultServiceRoleSid", DefaultServiceRoleSid);
             }
             
-            if (defaultChannelRoleSid != null)
+            if (DefaultChannelRoleSid != null)
             {
-                request.AddPostParam("DefaultChannelRoleSid", defaultChannelRoleSid);
+                request.AddPostParam("DefaultChannelRoleSid", DefaultChannelRoleSid);
             }
             
-            if (defaultChannelCreatorRoleSid != null)
+            if (DefaultChannelCreatorRoleSid != null)
             {
-                request.AddPostParam("DefaultChannelCreatorRoleSid", defaultChannelCreatorRoleSid);
+                request.AddPostParam("DefaultChannelCreatorRoleSid", DefaultChannelCreatorRoleSid);
             }
             
-            if (readStatusEnabled != null)
+            if (ReadStatusEnabled != null)
             {
-                request.AddPostParam("ReadStatusEnabled", readStatusEnabled.ToString());
+                request.AddPostParam("ReadStatusEnabled", ReadStatusEnabled.ToString());
             }
             
-            if (typingIndicatorTimeout != null)
+            if (TypingIndicatorTimeout != null)
             {
-                request.AddPostParam("TypingIndicatorTimeout", typingIndicatorTimeout.ToString());
+                request.AddPostParam("TypingIndicatorTimeout", TypingIndicatorTimeout.ToString());
             }
             
-            if (consumptionReportInterval != null)
+            if (ConsumptionReportInterval != null)
             {
-                request.AddPostParam("ConsumptionReportInterval", consumptionReportInterval.ToString());
+                request.AddPostParam("ConsumptionReportInterval", ConsumptionReportInterval.ToString());
             }
             
-            if (webhooks != null)
+            if (Webhooks != null)
             {
-                request.AddPostParam("Webhooks", webhooks.ToString());
+                request.AddPostParam("Webhooks", Webhooks.ToString());
             }
         }
     }

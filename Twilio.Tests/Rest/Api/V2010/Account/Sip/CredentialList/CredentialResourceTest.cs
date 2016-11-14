@@ -89,8 +89,8 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip.CredentialList
             var request = new Request(HttpMethod.POST,
                                       Domains.API,
                                       "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Credentials.json");
-            request.AddPostParam("Username", Serialize("username"));
-            request.AddPostParam("Password", Serialize("password"));
+            request.AddPostParam("Username", Serialize("Username"));
+            request.AddPostParam("Password", Serialize("Password"));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -98,7 +98,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip.CredentialList
             
             try
             {
-                CredentialResource.Creator("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "username", "password").Create(twilioRestClient);
+                CredentialResource.Creator("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Username", "Password").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -128,7 +128,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip.CredentialList
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"credential_list_sid\": \"CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Wed, 19 Aug 2015 19:48:45 +0000\",\"date_updated\": \"Wed, 19 Aug 2015 19:48:45 +0000\",\"sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\",\"username\": \"1440013725.28\"}"));
             
-            var response = CredentialResource.Creator("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "username", "password").Create(twilioRestClient);
+            var response = CredentialResource.Creator("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Username", "Password").Create(twilioRestClient);
             Assert.NotNull(response);
         }
     

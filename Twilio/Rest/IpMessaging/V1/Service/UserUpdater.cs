@@ -13,11 +13,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service
 
     public class UserUpdater : Updater<UserResource> 
     {
-        public string serviceSid { get; }
-        public string sid { get; }
-        public string roleSid { get; set; }
-        public Object attributes { get; set; }
-        public string friendlyName { get; set; }
+        public string ServiceSid { get; }
+        public string Sid { get; }
+        public string RoleSid { get; set; }
+        public Object Attributes { get; set; }
+        public string FriendlyName { get; set; }
     
         /// <summary>
         /// Construct a new UserUpdater
@@ -27,8 +27,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// <param name="sid"> The sid </param>
         public UserUpdater(string serviceSid, string sid)
         {
-            this.serviceSid = serviceSid;
-            this.sid = sid;
+            ServiceSid = serviceSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -43,7 +43,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Users/" + this.sid + ""
+                "/v1/Services/" + this.ServiceSid + "/Users/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -84,7 +84,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Users/" + this.sid + ""
+                "/v1/Services/" + this.ServiceSid + "/Users/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -120,19 +120,19 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (roleSid != null)
+            if (RoleSid != null)
             {
-                request.AddPostParam("RoleSid", roleSid);
+                request.AddPostParam("RoleSid", RoleSid);
             }
             
-            if (attributes != null)
+            if (Attributes != null)
             {
-                request.AddPostParam("Attributes", attributes.ToString());
+                request.AddPostParam("Attributes", Attributes.ToString());
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
         }
     }

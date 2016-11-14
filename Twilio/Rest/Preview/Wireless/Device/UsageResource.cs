@@ -42,23 +42,23 @@ namespace Twilio.Rest.Preview.Wireless.Device
         }
     
         [JsonProperty("device_sid")]
-        public string deviceSid { get; set; }
+        public string DeviceSid { get; set; }
         [JsonProperty("device_alias")]
-        public string deviceAlias { get; set; }
+        public string DeviceAlias { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("period")]
-        public Object period { get; set; }
+        public Object Period { get; set; }
         [JsonProperty("commands_usage")]
-        public Object commandsUsage { get; set; }
+        public Object CommandsUsage { get; set; }
         [JsonProperty("commands_costs")]
-        public Object commandsCosts { get; set; }
+        public Object CommandsCosts { get; set; }
         [JsonProperty("data_usage")]
-        public Object dataUsage { get; set; }
+        public Object DataUsage { get; set; }
         [JsonProperty("data_costs")]
-        public Object dataCosts { get; set; }
+        public Object DataCosts { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public UsageResource()
         {
@@ -84,15 +84,15 @@ namespace Twilio.Rest.Preview.Wireless.Device
                               [JsonProperty("url")]
                               Uri url)
                               {
-            this.deviceSid = deviceSid;
-            this.deviceAlias = deviceAlias;
-            this.accountSid = accountSid;
-            this.period = period;
-            this.commandsUsage = commandsUsage;
-            this.commandsCosts = commandsCosts;
-            this.dataUsage = dataUsage;
-            this.dataCosts = dataCosts;
-            this.url = url;
+            DeviceSid = deviceSid;
+            DeviceAlias = deviceAlias;
+            AccountSid = accountSid;
+            Period = period;
+            CommandsUsage = commandsUsage;
+            CommandsCosts = commandsCosts;
+            DataUsage = dataUsage;
+            DataCosts = dataCosts;
+            Url = url;
         }
     }
 }

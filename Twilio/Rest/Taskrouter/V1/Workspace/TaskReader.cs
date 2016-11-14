@@ -12,14 +12,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class TaskReader : Reader<TaskResource> 
     {
-        public string workspaceSid { get; }
-        public int? priority { get; set; }
-        public TaskResource.TaskStatus assignmentStatus { get; set; }
-        public string workflowSid { get; set; }
-        public string workflowName { get; set; }
-        public string taskQueueSid { get; set; }
-        public string taskQueueName { get; set; }
-        public string taskChannel { get; set; }
+        public string WorkspaceSid { get; }
+        public int? Priority { get; set; }
+        public TaskResource.StatusEnum AssignmentStatus { get; set; }
+        public string WorkflowSid { get; set; }
+        public string WorkflowName { get; set; }
+        public string TaskQueueSid { get; set; }
+        public string TaskQueueName { get; set; }
+        public string TaskChannel { get; set; }
     
         /// <summary>
         /// Construct a new TaskReader
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="workspaceSid"> The workspace_sid </param>
         public TaskReader(string workspaceSid)
         {
-            this.workspaceSid = workspaceSid;
+            WorkspaceSid = workspaceSid;
         }
     
         #if NET40
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Tasks"
+                "/v1/Workspaces/" + this.WorkspaceSid + "/Tasks"
             );
             AddQueryParams(request);
             
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Tasks"
+                "/v1/Workspaces/" + this.WorkspaceSid + "/Tasks"
             );
             
             AddQueryParams(request);
@@ -133,39 +133,39 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (priority != null)
+            if (Priority != null)
             {
-                request.AddQueryParam("Priority", priority.ToString());
+                request.AddQueryParam("Priority", Priority.ToString());
             }
             
-            if (assignmentStatus != null)
+            if (AssignmentStatus != null)
             {
-                request.AddQueryParam("AssignmentStatus", assignmentStatus.ToString());
+                request.AddQueryParam("AssignmentStatus", AssignmentStatus.ToString());
             }
             
-            if (workflowSid != null)
+            if (WorkflowSid != null)
             {
-                request.AddQueryParam("WorkflowSid", workflowSid);
+                request.AddQueryParam("WorkflowSid", WorkflowSid);
             }
             
-            if (workflowName != null)
+            if (WorkflowName != null)
             {
-                request.AddQueryParam("WorkflowName", workflowName);
+                request.AddQueryParam("WorkflowName", WorkflowName);
             }
             
-            if (taskQueueSid != null)
+            if (TaskQueueSid != null)
             {
-                request.AddQueryParam("TaskQueueSid", taskQueueSid);
+                request.AddQueryParam("TaskQueueSid", TaskQueueSid);
             }
             
-            if (taskQueueName != null)
+            if (TaskQueueName != null)
             {
-                request.AddQueryParam("TaskQueueName", taskQueueName);
+                request.AddQueryParam("TaskQueueName", TaskQueueName);
             }
             
-            if (taskChannel != null)
+            if (TaskChannel != null)
             {
-                request.AddQueryParam("TaskChannel", taskChannel);
+                request.AddQueryParam("TaskChannel", TaskChannel);
             }
             
             if (PageSize != null)

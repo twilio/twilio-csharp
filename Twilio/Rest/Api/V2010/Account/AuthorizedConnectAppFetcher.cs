@@ -12,8 +12,8 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class AuthorizedConnectAppFetcher : Fetcher<AuthorizedConnectAppResource> 
     {
-        public string accountSid { get; set; }
-        public string connectAppSid { get; }
+        public string AccountSid { get; set; }
+        public string ConnectAppSid { get; }
     
         /// <summary>
         /// Construct a new AuthorizedConnectAppFetcher
@@ -22,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="connectAppSid"> The connect_app_sid </param>
         public AuthorizedConnectAppFetcher(string connectAppSid)
         {
-            this.connectAppSid = connectAppSid;
+            ConnectAppSid = connectAppSid;
         }
     
         #if NET40
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/AuthorizedConnectApps/" + this.connectAppSid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/AuthorizedConnectApps/" + this.ConnectAppSid + ".json"
             );
             
             var response = await client.RequestAsync(request);
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/AuthorizedConnectApps/" + this.connectAppSid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/AuthorizedConnectApps/" + this.ConnectAppSid + ".json"
             );
             
             var response = client.Request(request);

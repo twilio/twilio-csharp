@@ -12,9 +12,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
     public class IpAccessControlListMappingCreator : Creator<IpAccessControlListMappingResource> 
     {
-        public string accountSid { get; set; }
-        public string domainSid { get; }
-        public string ipAccessControlListSid { get; }
+        public string AccountSid { get; set; }
+        public string DomainSid { get; }
+        public string IpAccessControlListSid { get; }
     
         /// <summary>
         /// Construct a new IpAccessControlListMappingCreator
@@ -24,8 +24,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         public IpAccessControlListMappingCreator(string domainSid, string ipAccessControlListSid)
         {
-            this.domainSid = domainSid;
-            this.ipAccessControlListSid = ipAccessControlListSid;
+            DomainSid = domainSid;
+            IpAccessControlListSid = ipAccessControlListSid;
         }
     
         #if NET40
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.DomainSid + "/IpAccessControlListMappings.json"
             );
             
             AddPostParams(request);
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.DomainSid + "/IpAccessControlListMappings.json"
             );
             
             AddPostParams(request);
@@ -117,9 +117,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (ipAccessControlListSid != null)
+            if (IpAccessControlListSid != null)
             {
-                request.AddPostParam("IpAccessControlListSid", ipAccessControlListSid);
+                request.AddPostParam("IpAccessControlListSid", IpAccessControlListSid);
             }
         }
     }

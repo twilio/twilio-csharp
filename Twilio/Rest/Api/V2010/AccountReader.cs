@@ -12,8 +12,8 @@ namespace Twilio.Rest.Api.V2010
 
     public class AccountReader : Reader<AccountResource> 
     {
-        public string friendlyName { get; set; }
-        public AccountResource.AccountStatus status { get; set; }
+        public string FriendlyName { get; set; }
+        public AccountResource.StatusEnum Status { get; set; }
     
         #if NET40
         /// <summary>
@@ -117,14 +117,14 @@ namespace Twilio.Rest.Api.V2010
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddQueryParam("FriendlyName", friendlyName);
+                request.AddQueryParam("FriendlyName", FriendlyName);
             }
             
-            if (status != null)
+            if (Status != null)
             {
-                request.AddQueryParam("Status", status.ToString());
+                request.AddQueryParam("Status", Status.ToString());
             }
             
             if (PageSize != null)

@@ -13,10 +13,10 @@ namespace Twilio.Rest.Preview.Sync
 
     public class ServiceUpdater : Updater<ServiceResource> 
     {
-        public string sid { get; }
-        public Uri webhookUrl { get; set; }
-        public string friendlyName { get; set; }
-        public bool? reachabilityWebhooksEnabled { get; set; }
+        public string Sid { get; }
+        public Uri WebhookUrl { get; set; }
+        public string FriendlyName { get; set; }
+        public bool? ReachabilityWebhooksEnabled { get; set; }
     
         /// <summary>
         /// Construct a new ServiceUpdater
@@ -25,7 +25,7 @@ namespace Twilio.Rest.Preview.Sync
         /// <param name="sid"> The sid </param>
         public ServiceUpdater(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Preview.Sync
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.sid + ""
+                "/Sync/Services/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Preview.Sync
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.sid + ""
+                "/Sync/Services/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -117,19 +117,19 @@ namespace Twilio.Rest.Preview.Sync
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (webhookUrl != null)
+            if (WebhookUrl != null)
             {
-                request.AddPostParam("WebhookUrl", webhookUrl.ToString());
+                request.AddPostParam("WebhookUrl", WebhookUrl.ToString());
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (reachabilityWebhooksEnabled != null)
+            if (ReachabilityWebhooksEnabled != null)
             {
-                request.AddPostParam("ReachabilityWebhooksEnabled", reachabilityWebhooksEnabled.ToString());
+                request.AddPostParam("ReachabilityWebhooksEnabled", ReachabilityWebhooksEnabled.ToString());
             }
         }
     }

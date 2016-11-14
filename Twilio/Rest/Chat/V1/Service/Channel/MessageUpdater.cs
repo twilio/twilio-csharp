@@ -13,11 +13,11 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
 
     public class MessageUpdater : Updater<MessageResource> 
     {
-        public string serviceSid { get; }
-        public string channelSid { get; }
-        public string sid { get; }
-        public string body { get; }
-        public Object attributes { get; set; }
+        public string ServiceSid { get; }
+        public string ChannelSid { get; }
+        public string Sid { get; }
+        public string Body { get; }
+        public Object Attributes { get; set; }
     
         /// <summary>
         /// Construct a new MessageUpdater
@@ -29,10 +29,10 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <param name="body"> The body </param>
         public MessageUpdater(string serviceSid, string channelSid, string sid, string body)
         {
-            this.serviceSid = serviceSid;
-            this.channelSid = channelSid;
-            this.sid = sid;
-            this.body = body;
+            ServiceSid = serviceSid;
+            ChannelSid = channelSid;
+            Sid = sid;
+            Body = body;
         }
     
         #if NET40
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.CHAT,
-                "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Messages/" + this.sid + ""
+                "/v1/Services/" + this.ServiceSid + "/Channels/" + this.ChannelSid + "/Messages/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.CHAT,
-                "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Messages/" + this.sid + ""
+                "/v1/Services/" + this.ServiceSid + "/Channels/" + this.ChannelSid + "/Messages/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -124,14 +124,14 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (body != null)
+            if (Body != null)
             {
-                request.AddPostParam("Body", body);
+                request.AddPostParam("Body", Body);
             }
             
-            if (attributes != null)
+            if (Attributes != null)
             {
-                request.AddPostParam("Attributes", attributes.ToString());
+                request.AddPostParam("Attributes", Attributes.ToString());
             }
         }
     }

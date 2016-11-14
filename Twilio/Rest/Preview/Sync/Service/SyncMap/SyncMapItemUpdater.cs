@@ -13,10 +13,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
 
     public class SyncMapItemUpdater : Updater<SyncMapItemResource> 
     {
-        public string serviceSid { get; }
-        public string mapSid { get; }
-        public string key { get; }
-        public Object data { get; }
+        public string ServiceSid { get; }
+        public string MapSid { get; }
+        public string Key { get; }
+        public Object Data { get; }
     
         /// <summary>
         /// Construct a new SyncMapItemUpdater
@@ -28,10 +28,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="data"> The data </param>
         public SyncMapItemUpdater(string serviceSid, string mapSid, string key, Object data)
         {
-            this.serviceSid = serviceSid;
-            this.mapSid = mapSid;
-            this.key = key;
-            this.data = data;
+            ServiceSid = serviceSid;
+            MapSid = mapSid;
+            Key = key;
+            Data = data;
         }
     
         #if NET40
@@ -46,7 +46,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps/" + this.mapSid + "/Items/" + this.key + ""
+                "/Sync/Services/" + this.ServiceSid + "/Maps/" + this.MapSid + "/Items/" + this.Key + ""
             );
             AddPostParams(request);
             
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps/" + this.mapSid + "/Items/" + this.key + ""
+                "/Sync/Services/" + this.ServiceSid + "/Maps/" + this.MapSid + "/Items/" + this.Key + ""
             );
             AddPostParams(request);
             
@@ -123,9 +123,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (data != null)
+            if (Data != null)
             {
-                request.AddPostParam("Data", data.ToString());
+                request.AddPostParam("Data", Data.ToString());
             }
         }
     }

@@ -12,10 +12,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
     public class TriggerReader : Reader<TriggerResource> 
     {
-        public string accountSid { get; set; }
-        public TriggerResource.TriggerRecurring recurring { get; set; }
-        public TriggerResource.TriggerTriggerField triggerBy { get; set; }
-        public TriggerResource.TriggerUsageCategory usageCategory { get; set; }
+        public string AccountSid { get; set; }
+        public TriggerResource.RecurringEnum Recurring { get; set; }
+        public TriggerResource.TriggerFieldEnum TriggerBy { get; set; }
+        public TriggerResource.UsageCategoryEnum UsageCategory { get; set; }
     
         #if NET40
         /// <summary>
@@ -29,7 +29,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Usage/Triggers.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Usage/Triggers.json"
             );
             AddQueryParams(request);
             
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Usage/Triggers.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Usage/Triggers.json"
             );
             
             AddQueryParams(request);
@@ -119,19 +119,19 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (recurring != null)
+            if (Recurring != null)
             {
-                request.AddQueryParam("Recurring", recurring.ToString());
+                request.AddQueryParam("Recurring", Recurring.ToString());
             }
             
-            if (triggerBy != null)
+            if (TriggerBy != null)
             {
-                request.AddQueryParam("TriggerBy", triggerBy.ToString());
+                request.AddQueryParam("TriggerBy", TriggerBy.ToString());
             }
             
-            if (usageCategory != null)
+            if (UsageCategory != null)
             {
-                request.AddQueryParam("UsageCategory", usageCategory.ToString());
+                request.AddQueryParam("UsageCategory", UsageCategory.ToString());
             }
             
             if (PageSize != null)

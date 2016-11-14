@@ -13,12 +13,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class WorkflowCreator : Creator<WorkflowResource> 
     {
-        public string workspaceSid { get; }
-        public string friendlyName { get; }
-        public string configuration { get; }
-        public Uri assignmentCallbackUrl { get; set; }
-        public Uri fallbackAssignmentCallbackUrl { get; set; }
-        public int? taskReservationTimeout { get; set; }
+        public string WorkspaceSid { get; }
+        public string FriendlyName { get; }
+        public string Configuration { get; }
+        public Uri AssignmentCallbackUrl { get; set; }
+        public Uri FallbackAssignmentCallbackUrl { get; set; }
+        public int? TaskReservationTimeout { get; set; }
     
         /// <summary>
         /// Construct a new WorkflowCreator
@@ -29,9 +29,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="configuration"> The configuration </param>
         public WorkflowCreator(string workspaceSid, string friendlyName, string configuration)
         {
-            this.workspaceSid = workspaceSid;
-            this.friendlyName = friendlyName;
-            this.configuration = configuration;
+            WorkspaceSid = workspaceSid;
+            FriendlyName = friendlyName;
+            Configuration = configuration;
         }
     
         #if NET40
@@ -46,7 +46,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workflows"
+                "/v1/Workspaces/" + this.WorkspaceSid + "/Workflows"
             );
             
             AddPostParams(request);
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workflows"
+                "/v1/Workspaces/" + this.WorkspaceSid + "/Workflows"
             );
             
             AddPostParams(request);
@@ -123,29 +123,29 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (configuration != null)
+            if (Configuration != null)
             {
-                request.AddPostParam("Configuration", configuration);
+                request.AddPostParam("Configuration", Configuration);
             }
             
-            if (assignmentCallbackUrl != null)
+            if (AssignmentCallbackUrl != null)
             {
-                request.AddPostParam("AssignmentCallbackUrl", assignmentCallbackUrl.ToString());
+                request.AddPostParam("AssignmentCallbackUrl", AssignmentCallbackUrl.ToString());
             }
             
-            if (fallbackAssignmentCallbackUrl != null)
+            if (FallbackAssignmentCallbackUrl != null)
             {
-                request.AddPostParam("FallbackAssignmentCallbackUrl", fallbackAssignmentCallbackUrl.ToString());
+                request.AddPostParam("FallbackAssignmentCallbackUrl", FallbackAssignmentCallbackUrl.ToString());
             }
             
-            if (taskReservationTimeout != null)
+            if (TaskReservationTimeout != null)
             {
-                request.AddPostParam("TaskReservationTimeout", taskReservationTimeout.ToString());
+                request.AddPostParam("TaskReservationTimeout", TaskReservationTimeout.ToString());
             }
         }
     }

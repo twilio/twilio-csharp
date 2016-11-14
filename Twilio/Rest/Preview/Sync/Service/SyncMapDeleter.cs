@@ -13,8 +13,8 @@ namespace Twilio.Rest.Preview.Sync.Service
 
     public class SyncMapDeleter : Deleter<SyncMapResource> 
     {
-        public string serviceSid { get; }
-        public string sid { get; }
+        public string ServiceSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new SyncMapDeleter
@@ -24,8 +24,8 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <param name="sid"> The sid </param>
         public SyncMapDeleter(string serviceSid, string sid)
         {
-            this.serviceSid = serviceSid;
-            this.sid = sid;
+            ServiceSid = serviceSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.Sync.Service
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps/" + this.sid + ""
+                "/Sync/Services/" + this.ServiceSid + "/Maps/" + this.Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Preview.Sync.Service
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps/" + this.sid + ""
+                "/Sync/Services/" + this.ServiceSid + "/Maps/" + this.Sid + ""
             );
             
             var response = client.Request(request);

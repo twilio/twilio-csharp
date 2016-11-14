@@ -74,20 +74,20 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber phoneNumber { get; set; }
+        public Twilio.Types.PhoneNumber PhoneNumber { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public OutgoingCallerIdResource()
         {
@@ -109,13 +109,13 @@ namespace Twilio.Rest.Api.V2010.Account
                                          [JsonProperty("uri")]
                                          string uri)
                                          {
-            this.sid = sid;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.friendlyName = friendlyName;
-            this.accountSid = accountSid;
-            this.phoneNumber = phoneNumber;
-            this.uri = uri;
+            Sid = sid;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            FriendlyName = friendlyName;
+            AccountSid = accountSid;
+            PhoneNumber = phoneNumber;
+            Uri = uri;
         }
     }
 }

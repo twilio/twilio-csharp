@@ -13,11 +13,11 @@ namespace Twilio.Rest.Taskrouter.V1
 
     public class WorkspaceCreator : Creator<WorkspaceResource> 
     {
-        public string friendlyName { get; }
-        public Uri eventCallbackUrl { get; set; }
-        public string eventsFilter { get; set; }
-        public bool? multiTaskEnabled { get; set; }
-        public string template { get; set; }
+        public string FriendlyName { get; }
+        public Uri EventCallbackUrl { get; set; }
+        public string EventsFilter { get; set; }
+        public bool? MultiTaskEnabled { get; set; }
+        public string Template { get; set; }
     
         /// <summary>
         /// Construct a new WorkspaceCreator
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <param name="friendlyName"> The friendly_name </param>
         public WorkspaceCreator(string friendlyName)
         {
-            this.friendlyName = friendlyName;
+            FriendlyName = friendlyName;
         }
     
         #if NET40
@@ -118,29 +118,29 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (eventCallbackUrl != null)
+            if (EventCallbackUrl != null)
             {
-                request.AddPostParam("EventCallbackUrl", eventCallbackUrl.ToString());
+                request.AddPostParam("EventCallbackUrl", EventCallbackUrl.ToString());
             }
             
-            if (eventsFilter != null)
+            if (EventsFilter != null)
             {
-                request.AddPostParam("EventsFilter", eventsFilter);
+                request.AddPostParam("EventsFilter", EventsFilter);
             }
             
-            if (multiTaskEnabled != null)
+            if (MultiTaskEnabled != null)
             {
-                request.AddPostParam("MultiTaskEnabled", multiTaskEnabled.ToString());
+                request.AddPostParam("MultiTaskEnabled", MultiTaskEnabled.ToString());
             }
             
-            if (template != null)
+            if (Template != null)
             {
-                request.AddPostParam("Template", template);
+                request.AddPostParam("Template", Template);
             }
         }
     }

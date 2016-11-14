@@ -12,9 +12,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class ActivityUpdater : Updater<ActivityResource> 
     {
-        public string workspaceSid { get; }
-        public string sid { get; }
-        public string friendlyName { get; }
+        public string WorkspaceSid { get; }
+        public string Sid { get; }
+        public string FriendlyName { get; }
     
         /// <summary>
         /// Construct a new ActivityUpdater
@@ -25,9 +25,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="friendlyName"> The friendly_name </param>
         public ActivityUpdater(string workspaceSid, string sid, string friendlyName)
         {
-            this.workspaceSid = workspaceSid;
-            this.sid = sid;
-            this.friendlyName = friendlyName;
+            WorkspaceSid = workspaceSid;
+            Sid = sid;
+            FriendlyName = friendlyName;
         }
     
         #if NET40
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Activities/" + this.sid + ""
+                "/v1/Workspaces/" + this.WorkspaceSid + "/Activities/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var request = new Request(
                 Twilio.Http.HttpMethod.POST,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Activities/" + this.sid + ""
+                "/v1/Workspaces/" + this.WorkspaceSid + "/Activities/" + this.Sid + ""
             );
             AddPostParams(request);
             
@@ -119,9 +119,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
         }
     }

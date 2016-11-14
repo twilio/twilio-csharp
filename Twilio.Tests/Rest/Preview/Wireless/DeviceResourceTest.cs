@@ -137,7 +137,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
             var request = new Request(HttpMethod.POST,
                                       Domains.PREVIEW,
                                       "/wireless/Devices");
-            request.AddPostParam("RatePlan", Serialize("ratePlan"));
+            request.AddPostParam("RatePlan", Serialize("RatePlan"));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -145,7 +145,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
             
             try
             {
-                DeviceResource.Creator("ratePlan").Create(twilioRestClient);
+                DeviceResource.Creator("RatePlan").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -175,7 +175,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"alias\": \"alias\",\"commands_callback_method\": \"commands_callback_method\",\"commands_callback_url\": \"http://www.example.com\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"friendly_name\": \"friendly_name\",\"links\": {},\"rate_plan_sid\": \"WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sim_identifier\": \"sim_identifier\",\"status\": \"status\",\"url\": \"http://www.example.com\"}"));
             
-            var response = DeviceResource.Creator("ratePlan").Create(twilioRestClient);
+            var response = DeviceResource.Creator("RatePlan").Create(twilioRestClient);
             Assert.NotNull(response);
         }
     

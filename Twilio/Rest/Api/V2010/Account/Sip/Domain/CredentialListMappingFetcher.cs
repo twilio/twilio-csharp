@@ -12,9 +12,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
     public class CredentialListMappingFetcher : Fetcher<CredentialListMappingResource> 
     {
-        public string accountSid { get; set; }
-        public string domainSid { get; }
-        public string sid { get; }
+        public string AccountSid { get; set; }
+        public string DomainSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new CredentialListMappingFetcher
@@ -24,8 +24,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="sid"> The sid </param>
         public CredentialListMappingFetcher(string domainSid, string sid)
         {
-            this.domainSid = domainSid;
-            this.sid = sid;
+            DomainSid = domainSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/CredentialListMappings/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.DomainSid + "/CredentialListMappings/" + this.Sid + ".json"
             );
             
             var response = await client.RequestAsync(request);
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/CredentialListMappings/" + this.sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.DomainSid + "/CredentialListMappings/" + this.Sid + ".json"
             );
             
             var response = client.Request(request);

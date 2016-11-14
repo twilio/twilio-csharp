@@ -12,8 +12,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
     public class IpAddressReader : Reader<IpAddressResource> 
     {
-        public string accountSid { get; set; }
-        public string ipAccessControlListSid { get; }
+        public string AccountSid { get; set; }
+        public string IpAccessControlListSid { get; }
     
         /// <summary>
         /// Construct a new IpAddressReader
@@ -22,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         public IpAddressReader(string ipAccessControlListSid)
         {
-            this.ipAccessControlListSid = ipAccessControlListSid;
+            IpAccessControlListSid = ipAccessControlListSid;
         }
     
         #if NET40
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.IpAccessControlListSid + "/IpAddresses.json"
             );
             AddQueryParams(request);
             
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.IpAccessControlListSid + "/IpAddresses.json"
             );
             
             AddQueryParams(request);

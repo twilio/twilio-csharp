@@ -94,27 +94,27 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("trunk_sid")]
-        public string trunkSid { get; set; }
+        public string TrunkSid { get; set; }
         [JsonProperty("weight")]
-        public int? weight { get; set; }
+        public int? Weight { get; set; }
         [JsonProperty("enabled")]
-        public bool? enabled { get; set; }
+        public bool? Enabled { get; set; }
         [JsonProperty("sip_url")]
-        public Uri sipUrl { get; set; }
+        public Uri SipUrl { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("priority")]
-        public int? priority { get; set; }
+        public int? Priority { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public OriginationUrlResource()
         {
@@ -144,17 +144,17 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                                        [JsonProperty("url")]
                                        Uri url)
                                        {
-            this.accountSid = accountSid;
-            this.sid = sid;
-            this.trunkSid = trunkSid;
-            this.weight = weight;
-            this.enabled = enabled;
-            this.sipUrl = sipUrl;
-            this.friendlyName = friendlyName;
-            this.priority = priority;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.url = url;
+            AccountSid = accountSid;
+            Sid = sid;
+            TrunkSid = trunkSid;
+            Weight = weight;
+            Enabled = enabled;
+            SipUrl = sipUrl;
+            FriendlyName = friendlyName;
+            Priority = priority;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Url = url;
         }
     }
 }

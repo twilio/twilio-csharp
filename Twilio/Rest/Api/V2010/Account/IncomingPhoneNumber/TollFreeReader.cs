@@ -12,10 +12,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 
     public class TollFreeReader : Reader<TollFreeResource> 
     {
-        public string ownerAccountSid { get; set; }
-        public bool? beta { get; set; }
-        public string friendlyName { get; set; }
-        public Twilio.Types.PhoneNumber phoneNumber { get; set; }
+        public string OwnerAccountSid { get; set; }
+        public bool? Beta { get; set; }
+        public string FriendlyName { get; set; }
+        public Twilio.Types.PhoneNumber PhoneNumber { get; set; }
     
         #if NET40
         /// <summary>
@@ -29,7 +29,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (ownerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/TollFree.json"
+                "/2010-04-01/Accounts/" + (OwnerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/TollFree.json"
             );
             AddQueryParams(request);
             
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (ownerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/TollFree.json"
+                "/2010-04-01/Accounts/" + (OwnerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/TollFree.json"
             );
             
             AddQueryParams(request);
@@ -119,19 +119,19 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (beta != null)
+            if (Beta != null)
             {
-                request.AddQueryParam("Beta", beta.ToString());
+                request.AddQueryParam("Beta", Beta.ToString());
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddQueryParam("FriendlyName", friendlyName);
+                request.AddQueryParam("FriendlyName", FriendlyName);
             }
             
-            if (phoneNumber != null)
+            if (PhoneNumber != null)
             {
-                request.AddQueryParam("PhoneNumber", phoneNumber.ToString());
+                request.AddQueryParam("PhoneNumber", PhoneNumber.ToString());
             }
             
             if (PageSize != null)

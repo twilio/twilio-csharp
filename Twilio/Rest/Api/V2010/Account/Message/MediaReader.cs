@@ -13,11 +13,11 @@ namespace Twilio.Rest.Api.V2010.Account.Message
 
     public class MediaReader : Reader<MediaResource> 
     {
-        public string accountSid { get; set; }
-        public string messageSid { get; }
-        public DateTime? dateCreated { get; set; }
-        public DateTime? dateCreatedAfter { get; set; }
-        public DateTime? dateCreatedBefore { get; set; }
+        public string AccountSid { get; set; }
+        public string MessageSid { get; }
+        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreatedAfter { get; set; }
+        public DateTime? DateCreatedBefore { get; set; }
     
         /// <summary>
         /// Construct a new MediaReader
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <param name="messageSid"> The message_sid </param>
         public MediaReader(string messageSid)
         {
-            this.messageSid = messageSid;
+            MessageSid = messageSid;
         }
     
         #if NET40
@@ -41,7 +41,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Messages/" + this.messageSid + "/Media.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Messages/" + this.MessageSid + "/Media.json"
             );
             AddQueryParams(request);
             
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Messages/" + this.messageSid + "/Media.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Messages/" + this.MessageSid + "/Media.json"
             );
             
             AddQueryParams(request);
@@ -131,19 +131,19 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (dateCreated != null)
+            if (DateCreated != null)
             {
-                request.AddQueryParam("DateCreated", dateCreated.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                request.AddQueryParam("DateCreated", DateCreated.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
             }
             else
             {
-                if (dateCreatedBefore != null)
+                if (DateCreatedBefore != null)
                 {
-                    request.AddQueryParam("DateCreated<", dateCreatedBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                    request.AddQueryParam("DateCreated<", DateCreatedBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
                 }
-                if (dateCreatedAfter != null)
+                if (DateCreatedAfter != null)
                 {
-                    request.AddQueryParam("DateCreated>", dateCreatedAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                    request.AddQueryParam("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
                 }
             }
             

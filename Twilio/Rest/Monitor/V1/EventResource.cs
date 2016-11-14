@@ -53,33 +53,33 @@ namespace Twilio.Rest.Monitor.V1
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("actor_sid")]
-        public string actorSid { get; set; }
+        public string ActorSid { get; set; }
         [JsonProperty("actor_type")]
-        public string actorType { get; set; }
+        public string ActorType { get; set; }
         [JsonProperty("description")]
-        public string description { get; set; }
+        public string Description { get; set; }
         [JsonProperty("event_data")]
-        public Object eventData { get; set; }
+        public Object EventData { get; set; }
         [JsonProperty("event_date")]
-        public DateTime? eventDate { get; set; }
+        public DateTime? EventDate { get; set; }
         [JsonProperty("event_type")]
-        public string eventType { get; set; }
+        public string EventType { get; set; }
         [JsonProperty("resource_sid")]
-        public string resourceSid { get; set; }
+        public string ResourceSid { get; set; }
         [JsonProperty("resource_type")]
-        public string resourceType { get; set; }
+        public string ResourceType { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("source")]
-        public string source { get; set; }
+        public string Source { get; set; }
         [JsonProperty("source_ip_address")]
-        public string sourceIpAddress { get; set; }
+        public string SourceIpAddress { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; set; }
+        public Dictionary<string, string> Links { get; set; }
     
         public EventResource()
         {
@@ -115,20 +115,20 @@ namespace Twilio.Rest.Monitor.V1
                               [JsonProperty("links")]
                               Dictionary<string, string> links)
                               {
-            this.accountSid = accountSid;
-            this.actorSid = actorSid;
-            this.actorType = actorType;
-            this.description = description;
-            this.eventData = eventData;
-            this.eventDate = MarshalConverter.DateTimeFromString(eventDate);
-            this.eventType = eventType;
-            this.resourceSid = resourceSid;
-            this.resourceType = resourceType;
-            this.sid = sid;
-            this.source = source;
-            this.sourceIpAddress = sourceIpAddress;
-            this.url = url;
-            this.links = links;
+            AccountSid = accountSid;
+            ActorSid = actorSid;
+            ActorType = actorType;
+            Description = description;
+            EventData = eventData;
+            EventDate = MarshalConverter.DateTimeFromString(eventDate);
+            EventType = eventType;
+            ResourceSid = resourceSid;
+            ResourceType = resourceType;
+            Sid = sid;
+            Source = source;
+            SourceIpAddress = sourceIpAddress;
+            Url = url;
+            Links = links;
         }
     }
 }

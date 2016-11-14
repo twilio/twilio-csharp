@@ -12,7 +12,7 @@ namespace Twilio.Rest.Notify.V1.Service
 
     public class BindingResource : Resource 
     {
-        public sealed class BindingBindingType : IStringEnum 
+        public sealed class BindingTypeEnum : IStringEnum 
         {
             public const string Apn = "apn";
             public const string Gcm = "gcm";
@@ -21,9 +21,9 @@ namespace Twilio.Rest.Notify.V1.Service
         
             private string _value;
             
-            public BindingBindingType() {}
+            public BindingTypeEnum() {}
             
-            public BindingBindingType(string value)
+            public BindingTypeEnum(string value)
             {
                 _value = value;
             }
@@ -33,12 +33,12 @@ namespace Twilio.Rest.Notify.V1.Service
                 return _value;
             }
             
-            public static implicit operator BindingBindingType(string value)
+            public static implicit operator BindingTypeEnum(string value)
             {
-                return new BindingBindingType(value);
+                return new BindingTypeEnum(value);
             }
             
-            public static implicit operator string(BindingBindingType value)
+            public static implicit operator string(BindingTypeEnum value)
             {
                 return value.ToString();
             }
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="bindingType"> The binding_type </param>
         /// <param name="address"> The address </param>
         /// <returns> BindingCreator capable of executing the create </returns> 
-        public static BindingCreator Creator(string serviceSid, string endpoint, string identity, BindingResource.BindingBindingType bindingType, string address)
+        public static BindingCreator Creator(string serviceSid, string endpoint, string identity, BindingResource.BindingTypeEnum bindingType, string address)
         {
             return new BindingCreator(serviceSid, endpoint, identity, bindingType, address);
         }
@@ -119,31 +119,31 @@ namespace Twilio.Rest.Notify.V1.Service
         }
     
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("service_sid")]
-        public string serviceSid { get; set; }
+        public string ServiceSid { get; set; }
         [JsonProperty("credential_sid")]
-        public string credentialSid { get; set; }
+        public string CredentialSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("notification_protocol_version")]
-        public string notificationProtocolVersion { get; set; }
+        public string NotificationProtocolVersion { get; set; }
         [JsonProperty("endpoint")]
-        public string endpoint { get; set; }
+        public string Endpoint { get; set; }
         [JsonProperty("identity")]
-        public string identity { get; set; }
+        public string Identity { get; set; }
         [JsonProperty("binding_type")]
-        public string bindingType { get; set; }
+        public string BindingType { get; set; }
         [JsonProperty("address")]
-        public string address { get; set; }
+        public string Address { get; set; }
         [JsonProperty("tags")]
-        public List<string> tags { get; set; }
+        public List<string> Tags { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public BindingResource()
         {
@@ -177,19 +177,19 @@ namespace Twilio.Rest.Notify.V1.Service
                                 [JsonProperty("url")]
                                 Uri url)
                                 {
-            this.sid = sid;
-            this.accountSid = accountSid;
-            this.serviceSid = serviceSid;
-            this.credentialSid = credentialSid;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.notificationProtocolVersion = notificationProtocolVersion;
-            this.endpoint = endpoint;
-            this.identity = identity;
-            this.bindingType = bindingType;
-            this.address = address;
-            this.tags = tags;
-            this.url = url;
+            Sid = sid;
+            AccountSid = accountSid;
+            ServiceSid = serviceSid;
+            CredentialSid = credentialSid;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            NotificationProtocolVersion = notificationProtocolVersion;
+            Endpoint = endpoint;
+            Identity = identity;
+            BindingType = bindingType;
+            Address = address;
+            Tags = tags;
+            Url = url;
         }
     }
 }

@@ -89,7 +89,7 @@ namespace Twilio.Tests.Rest.Chat.V1
             var request = new Request(HttpMethod.POST,
                                       Domains.CHAT,
                                       "/v1/Credentials");
-            request.AddPostParam("Type", Serialize(CredentialResource.CredentialPushService.Gcm));
+            request.AddPostParam("Type", Serialize(CredentialResource.PushServiceEnum.Gcm));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -97,7 +97,7 @@ namespace Twilio.Tests.Rest.Chat.V1
             
             try
             {
-                CredentialResource.Creator(CredentialResource.CredentialPushService.Gcm).Create(twilioRestClient);
+                CredentialResource.Creator(CredentialResource.PushServiceEnum.Gcm).Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -127,7 +127,7 @@ namespace Twilio.Tests.Rest.Chat.V1
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"Test slow create\",\"type\": \"apn\",\"sandbox\": \"False\",\"date_created\": \"2015-10-07T17:50:01Z\",\"date_updated\": \"2015-10-07T17:50:01Z\",\"url\": \"https://ip-messaging.twilio.com/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = CredentialResource.Creator(CredentialResource.CredentialPushService.Gcm).Create(twilioRestClient);
+            var response = CredentialResource.Creator(CredentialResource.PushServiceEnum.Gcm).Create(twilioRestClient);
             Assert.NotNull(response);
         }
     

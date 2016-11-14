@@ -12,8 +12,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class IpAccessControlListCreator : Creator<IpAccessControlListResource> 
     {
-        public string accountSid { get; set; }
-        public string friendlyName { get; }
+        public string AccountSid { get; set; }
+        public string FriendlyName { get; }
     
         /// <summary>
         /// Construct a new IpAccessControlListCreator
@@ -22,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="friendlyName"> A human readable description of this resource </param>
         public IpAccessControlListCreator(string friendlyName)
         {
-            this.friendlyName = friendlyName;
+            FriendlyName = friendlyName;
         }
     
         #if NET40
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists.json"
             );
             
             AddPostParams(request);
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists.json"
             );
             
             AddPostParams(request);
@@ -114,9 +114,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
         }
     }

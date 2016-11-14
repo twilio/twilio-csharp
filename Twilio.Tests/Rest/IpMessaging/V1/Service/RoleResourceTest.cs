@@ -123,9 +123,9 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
             var request = new Request(HttpMethod.POST,
                                       Domains.IP_MESSAGING,
                                       "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles");
-            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
-            request.AddPostParam("Type", Serialize(RoleResource.RoleRoleType.Channel));
-            request.AddPostParam("Permission", Serialize(new List<string> { "permission" }));
+            request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
+            request.AddPostParam("Type", Serialize(RoleResource.RoleTypeEnum.Channel));
+            request.AddPostParam("Permission", Serialize(new List<string> { "Permission" }));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -133,7 +133,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
             
             try
             {
-                RoleResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName", RoleResource.RoleRoleType.Channel, new List<string> { "permission" }).Create(twilioRestClient);
+                RoleResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "FriendlyName", RoleResource.RoleTypeEnum.Channel, new List<string> { "Permission" }).Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -163,7 +163,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"channel user\",\"type\": \"channel\",\"permissions\": [\"sendMessage\",\"leaveChannel\",\"editOwnMessage\",\"deleteOwnMessage\"],\"date_created\": \"2016-03-03T19:47:15Z\",\"date_updated\": \"2016-03-03T19:47:15Z\",\"url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = RoleResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "friendlyName", RoleResource.RoleRoleType.Channel, new List<string> { "permission" }).Create(twilioRestClient);
+            var response = RoleResource.Creator("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "FriendlyName", RoleResource.RoleTypeEnum.Channel, new List<string> { "Permission" }).Create(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -235,7 +235,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
             var request = new Request(HttpMethod.POST,
                                       Domains.IP_MESSAGING,
                                       "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            request.AddPostParam("Permission", Serialize(new List<string> { "permission" }));
+            request.AddPostParam("Permission", Serialize(new List<string> { "Permission" }));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -243,7 +243,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
             
             try
             {
-                RoleResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new List<string> { "permission" }).Update(twilioRestClient);
+                RoleResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new List<string> { "Permission" }).Update(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -273,7 +273,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"channel user\",\"type\": \"channel\",\"permissions\": [\"sendMessage\",\"leaveChannel\",\"editOwnMessage\",\"deleteOwnMessage\"],\"date_created\": \"2016-03-03T19:47:15Z\",\"date_updated\": \"2016-03-03T19:47:15Z\",\"url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = RoleResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new List<string> { "permission" }).Update(twilioRestClient);
+            var response = RoleResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new List<string> { "Permission" }).Update(twilioRestClient);
             Assert.NotNull(response);
         }
     }

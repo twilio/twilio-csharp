@@ -12,8 +12,8 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
 
     public class MemberReader : Reader<MemberResource> 
     {
-        public string accountSid { get; set; }
-        public string queueSid { get; }
+        public string AccountSid { get; set; }
+        public string QueueSid { get; }
     
         /// <summary>
         /// Construct a new MemberReader
@@ -22,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <param name="queueSid"> The Queue in which to find members </param>
         public MemberReader(string queueSid)
         {
-            this.queueSid = queueSid;
+            QueueSid = queueSid;
         }
     
         #if NET40
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Queues/" + this.queueSid + "/Members.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Queues/" + this.QueueSid + "/Members.json"
             );
             AddQueryParams(request);
             
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Queues/" + this.queueSid + "/Members.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Queues/" + this.QueueSid + "/Members.json"
             );
             
             AddQueryParams(request);

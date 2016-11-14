@@ -12,7 +12,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
 
     public class CountryFetcher : Fetcher<CountryResource> 
     {
-        public string isoCountry { get; }
+        public string IsoCountry { get; }
     
         /// <summary>
         /// Construct a new CountryFetcher
@@ -21,7 +21,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// <param name="isoCountry"> The iso_country </param>
         public CountryFetcher(string isoCountry)
         {
-            this.isoCountry = isoCountry;
+            IsoCountry = isoCountry;
         }
     
         #if NET40
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PRICING,
-                "/v1/Messaging/Countries/" + this.isoCountry + ""
+                "/v1/Messaging/Countries/" + this.IsoCountry + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PRICING,
-                "/v1/Messaging/Countries/" + this.isoCountry + ""
+                "/v1/Messaging/Countries/" + this.IsoCountry + ""
             );
             
             var response = client.Request(request);

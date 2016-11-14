@@ -93,33 +93,33 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("assignment_activity_sid")]
-        public string assignmentActivitySid { get; set; }
+        public string AssignmentActivitySid { get; set; }
         [JsonProperty("assignment_activity_name")]
-        public string assignmentActivityName { get; set; }
+        public string AssignmentActivityName { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("max_reserved_workers")]
-        public int? maxReservedWorkers { get; set; }
+        public int? MaxReservedWorkers { get; set; }
         [JsonProperty("reservation_activity_sid")]
-        public string reservationActivitySid { get; set; }
+        public string ReservationActivitySid { get; set; }
         [JsonProperty("reservation_activity_name")]
-        public string reservationActivityName { get; set; }
+        public string ReservationActivityName { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("target_workers")]
-        public string targetWorkers { get; set; }
+        public string TargetWorkers { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
         [JsonProperty("workspace_sid")]
-        public string workspaceSid { get; set; }
+        public string WorkspaceSid { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; set; }
+        public Dictionary<string, string> Links { get; set; }
     
         public TaskQueueResource()
         {
@@ -155,20 +155,20 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                   [JsonProperty("links")]
                                   Dictionary<string, string> links)
                                   {
-            this.accountSid = accountSid;
-            this.assignmentActivitySid = assignmentActivitySid;
-            this.assignmentActivityName = assignmentActivityName;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.friendlyName = friendlyName;
-            this.maxReservedWorkers = maxReservedWorkers;
-            this.reservationActivitySid = reservationActivitySid;
-            this.reservationActivityName = reservationActivityName;
-            this.sid = sid;
-            this.targetWorkers = targetWorkers;
-            this.url = url;
-            this.workspaceSid = workspaceSid;
-            this.links = links;
+            AccountSid = accountSid;
+            AssignmentActivitySid = assignmentActivitySid;
+            AssignmentActivityName = assignmentActivityName;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            FriendlyName = friendlyName;
+            MaxReservedWorkers = maxReservedWorkers;
+            ReservationActivitySid = reservationActivitySid;
+            ReservationActivityName = reservationActivityName;
+            Sid = sid;
+            TargetWorkers = targetWorkers;
+            Url = url;
+            WorkspaceSid = workspaceSid;
+            Links = links;
         }
     }
 }

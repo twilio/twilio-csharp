@@ -13,7 +13,7 @@ namespace Twilio.Rest.Trunking.V1
 
     public class TrunkDeleter : Deleter<TrunkResource> 
     {
-        public string sid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new TrunkDeleter
@@ -22,7 +22,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="sid"> The sid </param>
         public TrunkDeleter(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Trunking.V1
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.sid + ""
+                "/v1/Trunks/" + this.Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Trunking.V1
             var request = new Request(
                 Twilio.Http.HttpMethod.DELETE,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.sid + ""
+                "/v1/Trunks/" + this.Sid + ""
             );
             
             var response = client.Request(request);

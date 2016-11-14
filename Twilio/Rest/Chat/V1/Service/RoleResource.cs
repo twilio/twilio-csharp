@@ -12,16 +12,16 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class RoleResource : Resource 
     {
-        public sealed class RoleRoleType : IStringEnum 
+        public sealed class RoleTypeEnum : IStringEnum 
         {
             public const string Channel = "channel";
             public const string Deployment = "deployment";
         
             private string _value;
             
-            public RoleRoleType() {}
+            public RoleTypeEnum() {}
             
-            public RoleRoleType(string value)
+            public RoleTypeEnum(string value)
             {
                 _value = value;
             }
@@ -31,12 +31,12 @@ namespace Twilio.Rest.Chat.V1.Service
                 return _value;
             }
             
-            public static implicit operator RoleRoleType(string value)
+            public static implicit operator RoleTypeEnum(string value)
             {
-                return new RoleRoleType(value);
+                return new RoleTypeEnum(value);
             }
             
-            public static implicit operator string(RoleRoleType value)
+            public static implicit operator string(RoleTypeEnum value)
             {
                 return value.ToString();
             }
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="type"> The type </param>
         /// <param name="permission"> The permission </param>
         /// <returns> RoleCreator capable of executing the create </returns> 
-        public static RoleCreator Creator(string serviceSid, string friendlyName, RoleResource.RoleRoleType type, List<string> permission)
+        public static RoleCreator Creator(string serviceSid, string friendlyName, RoleResource.RoleTypeEnum type, List<string> permission)
         {
             return new RoleCreator(serviceSid, friendlyName, type, permission);
         }
@@ -129,24 +129,24 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("service_sid")]
-        public string serviceSid { get; set; }
+        public string ServiceSid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public RoleResource.RoleRoleType type { get; set; }
+        public RoleResource.RoleTypeEnum Type { get; set; }
         [JsonProperty("permissions")]
-        public List<string> permissions { get; set; }
+        public List<string> Permissions { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public RoleResource()
         {
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Chat.V1.Service
                              [JsonProperty("friendly_name")]
                              string friendlyName, 
                              [JsonProperty("type")]
-                             RoleResource.RoleRoleType type, 
+                             RoleResource.RoleTypeEnum type, 
                              [JsonProperty("permissions")]
                              List<string> permissions, 
                              [JsonProperty("date_created")]
@@ -172,15 +172,15 @@ namespace Twilio.Rest.Chat.V1.Service
                              [JsonProperty("url")]
                              Uri url)
                              {
-            this.sid = sid;
-            this.accountSid = accountSid;
-            this.serviceSid = serviceSid;
-            this.friendlyName = friendlyName;
-            this.type = type;
-            this.permissions = permissions;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.url = url;
+            Sid = sid;
+            AccountSid = accountSid;
+            ServiceSid = serviceSid;
+            FriendlyName = friendlyName;
+            Type = type;
+            Permissions = permissions;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Url = url;
         }
     }
 }

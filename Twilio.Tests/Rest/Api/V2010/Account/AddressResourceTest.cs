@@ -28,11 +28,11 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
             var request = new Request(HttpMethod.POST,
                                       Domains.API,
                                       "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses.json");
-            request.AddPostParam("CustomerName", Serialize("customerName"));
-            request.AddPostParam("Street", Serialize("street"));
-            request.AddPostParam("City", Serialize("city"));
-            request.AddPostParam("Region", Serialize("region"));
-            request.AddPostParam("PostalCode", Serialize("postalCode"));
+            request.AddPostParam("CustomerName", Serialize("CustomerName"));
+            request.AddPostParam("Street", Serialize("Street"));
+            request.AddPostParam("City", Serialize("City"));
+            request.AddPostParam("Region", Serialize("Region"));
+            request.AddPostParam("PostalCode", Serialize("PostalCode"));
             request.AddPostParam("IsoCountry", Serialize("US"));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
@@ -41,7 +41,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
             
             try
             {
-                AddressResource.Creator("customerName", "street", "city", "region", "postalCode", "US").Create(twilioRestClient);
+                AddressResource.Creator("CustomerName", "Street", "City", "Region", "PostalCode", "US").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -71,7 +71,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"city\": \"SF\",\"customer_name\": \"name\",\"date_created\": \"Tue, 18 Aug 2015 17:07:30 +0000\",\"date_updated\": \"Tue, 18 Aug 2015 17:07:30 +0000\",\"friendly_name\": null,\"iso_country\": \"US\",\"postal_code\": \"94019\",\"region\": \"CA\",\"sid\": \"ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"street\": \"4th\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses/ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"));
             
-            var response = AddressResource.Creator("customerName", "street", "city", "region", "postalCode", "US").Create(twilioRestClient);
+            var response = AddressResource.Creator("CustomerName", "Street", "City", "Region", "PostalCode", "US").Create(twilioRestClient);
             Assert.NotNull(response);
         }
     

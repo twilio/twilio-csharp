@@ -12,7 +12,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
 
     public class UserReader : Reader<UserResource> 
     {
-        public string serviceSid { get; }
+        public string ServiceSid { get; }
     
         /// <summary>
         /// Construct a new UserReader
@@ -21,7 +21,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// <param name="serviceSid"> The service_sid </param>
         public UserReader(string serviceSid)
         {
-            this.serviceSid = serviceSid;
+            ServiceSid = serviceSid;
         }
     
         #if NET40
@@ -36,7 +36,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             var request = new Request(
                 HttpMethod.GET,
                 Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Users"
+                "/v1/Services/" + this.ServiceSid + "/Users"
             );
             AddQueryParams(request);
             
@@ -57,7 +57,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             var request = new Request(
                 HttpMethod.GET,
                 Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Users"
+                "/v1/Services/" + this.ServiceSid + "/Users"
             );
             
             AddQueryParams(request);

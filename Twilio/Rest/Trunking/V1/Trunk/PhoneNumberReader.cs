@@ -12,7 +12,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class PhoneNumberReader : Reader<PhoneNumberResource> 
     {
-        public string trunkSid { get; }
+        public string TrunkSid { get; }
     
         /// <summary>
         /// Construct a new PhoneNumberReader
@@ -21,7 +21,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="trunkSid"> The trunk_sid </param>
         public PhoneNumberReader(string trunkSid)
         {
-            this.trunkSid = trunkSid;
+            TrunkSid = trunkSid;
         }
     
         #if NET40
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/PhoneNumbers"
+                "/v1/Trunks/" + this.TrunkSid + "/PhoneNumbers"
             );
             AddQueryParams(request);
             
@@ -57,7 +57,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/PhoneNumbers"
+                "/v1/Trunks/" + this.TrunkSid + "/PhoneNumbers"
             );
             
             AddQueryParams(request);

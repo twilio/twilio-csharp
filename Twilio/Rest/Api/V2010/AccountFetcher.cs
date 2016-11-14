@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010
 
     public class AccountFetcher : Fetcher<AccountResource> 
     {
-        public string sid { get; set; }
+        public string Sid { get; set; }
     
         #if NET40
         /// <summary>
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (sid ?? client.GetAccountSid()) + ".json"
+                "/2010-04-01/Accounts/" + (Sid ?? client.GetAccountSid()) + ".json"
             );
             
             var response = await client.RequestAsync(request);
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Api.V2010
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (sid ?? client.GetAccountSid()) + ".json"
+                "/2010-04-01/Accounts/" + (Sid ?? client.GetAccountSid()) + ".json"
             );
             
             var response = client.Request(request);

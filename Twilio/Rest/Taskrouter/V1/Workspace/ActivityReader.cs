@@ -12,9 +12,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class ActivityReader : Reader<ActivityResource> 
     {
-        public string workspaceSid { get; }
-        public string friendlyName { get; set; }
-        public string available { get; set; }
+        public string WorkspaceSid { get; }
+        public string FriendlyName { get; set; }
+        public string Available { get; set; }
     
         /// <summary>
         /// Construct a new ActivityReader
@@ -23,7 +23,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="workspaceSid"> The workspace_sid </param>
         public ActivityReader(string workspaceSid)
         {
-            this.workspaceSid = workspaceSid;
+            WorkspaceSid = workspaceSid;
         }
     
         #if NET40
@@ -38,7 +38,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Activities"
+                "/v1/Workspaces/" + this.WorkspaceSid + "/Activities"
             );
             AddQueryParams(request);
             
@@ -59,7 +59,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Activities"
+                "/v1/Workspaces/" + this.WorkspaceSid + "/Activities"
             );
             
             AddQueryParams(request);
@@ -128,14 +128,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddQueryParam("FriendlyName", friendlyName);
+                request.AddQueryParam("FriendlyName", FriendlyName);
             }
             
-            if (available != null)
+            if (Available != null)
             {
-                request.AddQueryParam("Available", available);
+                request.AddQueryParam("Available", Available);
             }
             
             if (PageSize != null)

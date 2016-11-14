@@ -86,33 +86,33 @@ namespace Twilio.Rest.Chat.V1
         }
     
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("default_service_role_sid")]
-        public string defaultServiceRoleSid { get; set; }
+        public string DefaultServiceRoleSid { get; set; }
         [JsonProperty("default_channel_role_sid")]
-        public string defaultChannelRoleSid { get; set; }
+        public string DefaultChannelRoleSid { get; set; }
         [JsonProperty("default_channel_creator_role_sid")]
-        public string defaultChannelCreatorRoleSid { get; set; }
+        public string DefaultChannelCreatorRoleSid { get; set; }
         [JsonProperty("read_status_enabled")]
-        public bool? readStatusEnabled { get; set; }
+        public bool? ReadStatusEnabled { get; set; }
         [JsonProperty("typing_indicator_timeout")]
-        public int? typingIndicatorTimeout { get; set; }
+        public int? TypingIndicatorTimeout { get; set; }
         [JsonProperty("consumption_report_interval")]
-        public int? consumptionReportInterval { get; set; }
+        public int? ConsumptionReportInterval { get; set; }
         [JsonProperty("webhooks")]
-        public Object webhooks { get; set; }
+        public Object Webhooks { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; set; }
+        public Dictionary<string, string> Links { get; set; }
     
         public ServiceResource()
         {
@@ -148,20 +148,20 @@ namespace Twilio.Rest.Chat.V1
                                 [JsonProperty("links")]
                                 Dictionary<string, string> links)
                                 {
-            this.sid = sid;
-            this.accountSid = accountSid;
-            this.friendlyName = friendlyName;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.defaultServiceRoleSid = defaultServiceRoleSid;
-            this.defaultChannelRoleSid = defaultChannelRoleSid;
-            this.defaultChannelCreatorRoleSid = defaultChannelCreatorRoleSid;
-            this.readStatusEnabled = readStatusEnabled;
-            this.typingIndicatorTimeout = typingIndicatorTimeout;
-            this.consumptionReportInterval = consumptionReportInterval;
-            this.webhooks = webhooks;
-            this.url = url;
-            this.links = links;
+            Sid = sid;
+            AccountSid = accountSid;
+            FriendlyName = friendlyName;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            DefaultServiceRoleSid = defaultServiceRoleSid;
+            DefaultChannelRoleSid = defaultChannelRoleSid;
+            DefaultChannelCreatorRoleSid = defaultChannelCreatorRoleSid;
+            ReadStatusEnabled = readStatusEnabled;
+            TypingIndicatorTimeout = typingIndicatorTimeout;
+            ConsumptionReportInterval = consumptionReportInterval;
+            Webhooks = webhooks;
+            Url = url;
+            Links = links;
         }
     }
 }

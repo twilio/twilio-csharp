@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class FeedbackSummaryResource : Resource 
     {
-        public sealed class FeedbackSummaryStatus : IStringEnum 
+        public sealed class StatusEnum : IStringEnum 
         {
             public const string Queued = "queued";
             public const string InProgress = "in-progress";
@@ -22,9 +22,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         
             private string _value;
             
-            public FeedbackSummaryStatus() {}
+            public StatusEnum() {}
             
-            public FeedbackSummaryStatus(string value)
+            public StatusEnum(string value)
             {
                 _value = value;
             }
@@ -34,12 +34,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 return _value;
             }
             
-            public static implicit operator FeedbackSummaryStatus(string value)
+            public static implicit operator StatusEnum(string value)
             {
-                return new FeedbackSummaryStatus(value);
+                return new StatusEnum(value);
             }
             
-            public static implicit operator string(FeedbackSummaryStatus value)
+            public static implicit operator string(StatusEnum value)
             {
                 return value.ToString();
             }
@@ -104,34 +104,34 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("call_count")]
-        public int? callCount { get; set; }
+        public int? CallCount { get; set; }
         [JsonProperty("call_feedback_count")]
-        public int? callFeedbackCount { get; set; }
+        public int? CallFeedbackCount { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("end_date")]
-        public DateTime? endDate { get; set; }
+        public DateTime? EndDate { get; set; }
         [JsonProperty("include_subaccounts")]
-        public bool? includeSubaccounts { get; set; }
+        public bool? IncludeSubaccounts { get; set; }
         [JsonProperty("issues")]
-        public List<FeedbackIssue> issues { get; set; }
+        public List<FeedbackIssue> Issues { get; set; }
         [JsonProperty("quality_score_average")]
-        public decimal? qualityScoreAverage { get; set; }
+        public decimal? QualityScoreAverage { get; set; }
         [JsonProperty("quality_score_median")]
-        public decimal? qualityScoreMedian { get; set; }
+        public decimal? QualityScoreMedian { get; set; }
         [JsonProperty("quality_score_standard_deviation")]
-        public decimal? qualityScoreStandardDeviation { get; set; }
+        public decimal? QualityScoreStandardDeviation { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("start_date")]
-        public DateTime? startDate { get; set; }
+        public DateTime? StartDate { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public FeedbackSummaryResource.FeedbackSummaryStatus status { get; set; }
+        public FeedbackSummaryResource.StatusEnum Status { get; set; }
     
         public FeedbackSummaryResource()
         {
@@ -165,22 +165,22 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                         [JsonProperty("start_date")]
                                         string startDate, 
                                         [JsonProperty("status")]
-                                        FeedbackSummaryResource.FeedbackSummaryStatus status)
+                                        FeedbackSummaryResource.StatusEnum status)
                                         {
-            this.accountSid = accountSid;
-            this.callCount = callCount;
-            this.callFeedbackCount = callFeedbackCount;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.endDate = MarshalConverter.DateTimeFromString(endDate);
-            this.includeSubaccounts = includeSubaccounts;
-            this.issues = issues;
-            this.qualityScoreAverage = qualityScoreAverage;
-            this.qualityScoreMedian = qualityScoreMedian;
-            this.qualityScoreStandardDeviation = qualityScoreStandardDeviation;
-            this.sid = sid;
-            this.startDate = MarshalConverter.DateTimeFromString(startDate);
-            this.status = status;
+            AccountSid = accountSid;
+            CallCount = callCount;
+            CallFeedbackCount = callFeedbackCount;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            EndDate = MarshalConverter.DateTimeFromString(endDate);
+            IncludeSubaccounts = includeSubaccounts;
+            Issues = issues;
+            QualityScoreAverage = qualityScoreAverage;
+            QualityScoreMedian = qualityScoreMedian;
+            QualityScoreStandardDeviation = qualityScoreStandardDeviation;
+            Sid = sid;
+            StartDate = MarshalConverter.DateTimeFromString(startDate);
+            Status = status;
         }
     }
 }

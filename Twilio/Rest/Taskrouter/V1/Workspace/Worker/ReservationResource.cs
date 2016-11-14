@@ -12,7 +12,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
     public class ReservationResource : Resource 
     {
-        public sealed class ReservationStatus : IStringEnum 
+        public sealed class StatusEnum : IStringEnum 
         {
             public const string Pending = "pending";
             public const string Accepted = "accepted";
@@ -23,9 +23,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         
             private string _value;
             
-            public ReservationStatus() {}
+            public StatusEnum() {}
             
-            public ReservationStatus(string value)
+            public StatusEnum(string value)
             {
                 _value = value;
             }
@@ -35,12 +35,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                 return _value;
             }
             
-            public static implicit operator ReservationStatus(string value)
+            public static implicit operator StatusEnum(string value)
             {
-                return new ReservationStatus(value);
+                return new StatusEnum(value);
             }
             
-            public static implicit operator string(ReservationStatus value)
+            public static implicit operator string(StatusEnum value)
             {
                 return value.ToString();
             }
@@ -109,28 +109,28 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("reservation_status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ReservationResource.ReservationStatus reservationStatus { get; set; }
+        public ReservationResource.StatusEnum ReservationStatus { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("task_sid")]
-        public string taskSid { get; set; }
+        public string TaskSid { get; set; }
         [JsonProperty("worker_name")]
-        public string workerName { get; set; }
+        public string WorkerName { get; set; }
         [JsonProperty("worker_sid")]
-        public string workerSid { get; set; }
+        public string WorkerSid { get; set; }
         [JsonProperty("workspace_sid")]
-        public string workspaceSid { get; set; }
+        public string WorkspaceSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; set; }
+        public Dictionary<string, string> Links { get; set; }
     
         public ReservationResource()
         {
@@ -144,7 +144,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                                     [JsonProperty("date_updated")]
                                     string dateUpdated, 
                                     [JsonProperty("reservation_status")]
-                                    ReservationResource.ReservationStatus reservationStatus, 
+                                    ReservationResource.StatusEnum reservationStatus, 
                                     [JsonProperty("sid")]
                                     string sid, 
                                     [JsonProperty("task_sid")]
@@ -160,17 +160,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                                     [JsonProperty("links")]
                                     Dictionary<string, string> links)
                                     {
-            this.accountSid = accountSid;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.reservationStatus = reservationStatus;
-            this.sid = sid;
-            this.taskSid = taskSid;
-            this.workerName = workerName;
-            this.workerSid = workerSid;
-            this.workspaceSid = workspaceSid;
-            this.url = url;
-            this.links = links;
+            AccountSid = accountSid;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            ReservationStatus = reservationStatus;
+            Sid = sid;
+            TaskSid = taskSid;
+            WorkerName = workerName;
+            WorkerSid = workerSid;
+            WorkspaceSid = workspaceSid;
+            Url = url;
+            Links = links;
         }
     }
 }

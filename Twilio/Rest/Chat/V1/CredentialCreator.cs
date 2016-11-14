@@ -12,21 +12,21 @@ namespace Twilio.Rest.Chat.V1
 
     public class CredentialCreator : Creator<CredentialResource> 
     {
-        public CredentialResource.CredentialPushService type { get; }
-        public string friendlyName { get; set; }
-        public string certificate { get; set; }
-        public string privateKey { get; set; }
-        public bool? sandbox { get; set; }
-        public string apiKey { get; set; }
+        public CredentialResource.PushServiceEnum Type { get; }
+        public string FriendlyName { get; set; }
+        public string Certificate { get; set; }
+        public string PrivateKey { get; set; }
+        public bool? Sandbox { get; set; }
+        public string ApiKey { get; set; }
     
         /// <summary>
         /// Construct a new CredentialCreator
         /// </summary>
         ///
         /// <param name="type"> The type </param>
-        public CredentialCreator(CredentialResource.CredentialPushService type)
+        public CredentialCreator(CredentialResource.PushServiceEnum type)
         {
-            this.type = type;
+            Type = type;
         }
     
         #if NET40
@@ -118,34 +118,34 @@ namespace Twilio.Rest.Chat.V1
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (type != null)
+            if (Type != null)
             {
-                request.AddPostParam("Type", type.ToString());
+                request.AddPostParam("Type", Type.ToString());
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (certificate != null)
+            if (Certificate != null)
             {
-                request.AddPostParam("Certificate", certificate);
+                request.AddPostParam("Certificate", Certificate);
             }
             
-            if (privateKey != null)
+            if (PrivateKey != null)
             {
-                request.AddPostParam("PrivateKey", privateKey);
+                request.AddPostParam("PrivateKey", PrivateKey);
             }
             
-            if (sandbox != null)
+            if (Sandbox != null)
             {
-                request.AddPostParam("Sandbox", sandbox.ToString());
+                request.AddPostParam("Sandbox", Sandbox.ToString());
             }
             
-            if (apiKey != null)
+            if (ApiKey != null)
             {
-                request.AddPostParam("ApiKey", apiKey);
+                request.AddPostParam("ApiKey", ApiKey);
             }
         }
     }

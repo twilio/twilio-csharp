@@ -12,7 +12,7 @@ namespace Twilio.Rest.Preview.Wireless
 
     public class DeviceFetcher : Fetcher<DeviceResource> 
     {
-        public string sid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new DeviceFetcher
@@ -21,7 +21,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="sid"> The sid </param>
         public DeviceFetcher(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Preview.Wireless
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,
-                "/wireless/Devices/" + this.sid + ""
+                "/wireless/Devices/" + this.Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Preview.Wireless
             var request = new Request(
                 Twilio.Http.HttpMethod.GET,
                 Domains.PREVIEW,
-                "/wireless/Devices/" + this.sid + ""
+                "/wireless/Devices/" + this.Sid + ""
             );
             
             var response = client.Request(request);

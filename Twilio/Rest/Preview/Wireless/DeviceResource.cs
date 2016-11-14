@@ -75,31 +75,31 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("alias")]
-        public string alias { get; set; }
+        public string Alias { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("rate_plan_sid")]
-        public string ratePlanSid { get; set; }
+        public string RatePlanSid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("sim_identifier")]
-        public string simIdentifier { get; set; }
+        public string SimIdentifier { get; set; }
         [JsonProperty("status")]
-        public string status { get; set; }
+        public string Status { get; set; }
         [JsonProperty("commands_callback_url")]
-        public Uri commandsCallbackUrl { get; set; }
+        public Uri CommandsCallbackUrl { get; set; }
         [JsonProperty("commands_callback_method")]
-        public string commandsCallbackMethod { get; set; }
+        public string CommandsCallbackMethod { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; set; }
+        public Dictionary<string, string> Links { get; set; }
     
         public DeviceResource()
         {
@@ -133,19 +133,19 @@ namespace Twilio.Rest.Preview.Wireless
                                [JsonProperty("links")]
                                Dictionary<string, string> links)
                                {
-            this.sid = sid;
-            this.alias = alias;
-            this.accountSid = accountSid;
-            this.ratePlanSid = ratePlanSid;
-            this.friendlyName = friendlyName;
-            this.simIdentifier = simIdentifier;
-            this.status = status;
-            this.commandsCallbackUrl = commandsCallbackUrl;
-            this.commandsCallbackMethod = commandsCallbackMethod;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.url = url;
-            this.links = links;
+            Sid = sid;
+            Alias = alias;
+            AccountSid = accountSid;
+            RatePlanSid = ratePlanSid;
+            FriendlyName = friendlyName;
+            SimIdentifier = simIdentifier;
+            Status = status;
+            CommandsCallbackUrl = commandsCallbackUrl;
+            CommandsCallbackMethod = commandsCallbackMethod;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Url = url;
+            Links = links;
         }
     }
 }

@@ -126,7 +126,7 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
             request.AddPostParam("Weight", Serialize(1));
             request.AddPostParam("Priority", Serialize(1));
             request.AddPostParam("Enabled", Serialize(true));
-            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
+            request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
             request.AddPostParam("SipUrl", Serialize(new Uri("https://example.com")));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
@@ -135,7 +135,7 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
             
             try
             {
-                OriginationUrlResource.Creator("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1, 1, true, "friendlyName", new Uri("https://example.com")).Create(twilioRestClient);
+                OriginationUrlResource.Creator("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1, 1, true, "FriendlyName", new Uri("https://example.com")).Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -165,7 +165,7 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"weight\": 1,\"date_updated\": \"2015-01-02T11:23:45Z\",\"enabled\": true,\"friendly_name\": \"friendly_name\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"priority\": 1,\"sip_url\": \"sip://sip-box.com:1234\",\"sid\": \"OUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-01-02T11:23:45Z\",\"trunk_sid\": \"TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OriginationUrls/OUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = OriginationUrlResource.Creator("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1, 1, true, "friendlyName", new Uri("https://example.com")).Create(twilioRestClient);
+            var response = OriginationUrlResource.Creator("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1, 1, true, "FriendlyName", new Uri("https://example.com")).Create(twilioRestClient);
             Assert.NotNull(response);
         }
     
