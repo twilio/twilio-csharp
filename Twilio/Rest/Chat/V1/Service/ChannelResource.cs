@@ -4,45 +4,20 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Types;
 
 namespace Twilio.Rest.Chat.V1.Service 
 {
 
     public class ChannelResource : Resource 
     {
-        public sealed class ChannelTypeEnum : IStringEnum 
+        public sealed class ChannelTypeEnum : StringEnum 
         {
-            public const string Public = "public";
-            public const string Private = "private";
-        
-            private string _value;
-            
+            private ChannelTypeEnum(string value) : base(value) {}
             public ChannelTypeEnum() {}
-            
-            public ChannelTypeEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator ChannelTypeEnum(string value)
-            {
-                return new ChannelTypeEnum(value);
-            }
-            
-            public static implicit operator string(ChannelTypeEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static ChannelTypeEnum Public = new ChannelTypeEnum("public");
+            public static ChannelTypeEnum Private = new ChannelTypeEnum("private");
         }
     
         /// <summary>

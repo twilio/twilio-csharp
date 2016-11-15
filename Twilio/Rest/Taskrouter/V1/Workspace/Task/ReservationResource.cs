@@ -4,49 +4,24 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Types;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Task 
 {
 
     public class ReservationResource : Resource 
     {
-        public sealed class StatusEnum : IStringEnum 
+        public sealed class StatusEnum : StringEnum 
         {
-            public const string Pending = "pending";
-            public const string Accepted = "accepted";
-            public const string Rejected = "rejected";
-            public const string Timeout = "timeout";
-            public const string Canceled = "canceled";
-            public const string Rescinded = "rescinded";
-        
-            private string _value;
-            
+            private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
-            
-            public StatusEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator StatusEnum(string value)
-            {
-                return new StatusEnum(value);
-            }
-            
-            public static implicit operator string(StatusEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static StatusEnum Pending = new StatusEnum("pending");
+            public static StatusEnum Accepted = new StatusEnum("accepted");
+            public static StatusEnum Rejected = new StatusEnum("rejected");
+            public static StatusEnum Timeout = new StatusEnum("timeout");
+            public static StatusEnum Canceled = new StatusEnum("canceled");
+            public static StatusEnum Rescinded = new StatusEnum("rescinded");
         }
     
         /// <summary>

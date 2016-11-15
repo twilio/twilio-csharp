@@ -26,7 +26,7 @@ namespace Twilio.Tests.Rest.Notify.V1
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.POST,
-                                      Domains.NOTIFY,
+                                      Domains.Notify,
                                       "/v1/Services");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
@@ -74,7 +74,7 @@ namespace Twilio.Tests.Rest.Notify.V1
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.DELETE,
-                                      Domains.NOTIFY,
+                                      Domains.Notify,
                                       "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
@@ -121,7 +121,7 @@ namespace Twilio.Tests.Rest.Notify.V1
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.GET,
-                                      Domains.NOTIFY,
+                                      Domains.Notify,
                                       "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
@@ -169,7 +169,7 @@ namespace Twilio.Tests.Rest.Notify.V1
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.GET,
-                                      Domains.NOTIFY,
+                                      Domains.Notify,
                                       "/v1/Services");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
@@ -230,7 +230,7 @@ namespace Twilio.Tests.Rest.Notify.V1
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.POST,
-                                      Domains.NOTIFY,
+                                      Domains.Notify,
                                       "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)

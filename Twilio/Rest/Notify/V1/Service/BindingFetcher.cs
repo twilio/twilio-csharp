@@ -34,7 +34,7 @@ namespace Twilio.Rest.Notify.V1.Service
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.NOTIFY,
+                Domains.Notify,
                 "/v1/Services/" + ServiceSid + "/Bindings/" + Sid + ""
             );
             
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Notify.V1.Service
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.NOTIFY,
+                Domains.Notify,
                 "/v1/Services/" + ServiceSid + "/Bindings/" + Sid + ""
             );
             

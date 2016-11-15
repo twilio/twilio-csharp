@@ -11,82 +11,30 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class CallResource : Resource 
     {
-        public sealed class EventEnum : IStringEnum 
+        public sealed class EventEnum : StringEnum 
         {
-            public const string Initiated = "initiated";
-            public const string Ringing = "ringing";
-            public const string Answered = "answered";
-            public const string Completed = "completed";
-        
-            private string _value;
-            
+            private EventEnum(string value) : base(value) {}
             public EventEnum() {}
-            
-            public EventEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator EventEnum(string value)
-            {
-                return new EventEnum(value);
-            }
-            
-            public static implicit operator string(EventEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static EventEnum Initiated = new EventEnum("initiated");
+            public static EventEnum Ringing = new EventEnum("ringing");
+            public static EventEnum Answered = new EventEnum("answered");
+            public static EventEnum Completed = new EventEnum("completed");
         }
     
-        public sealed class StatusEnum : IStringEnum 
+        public sealed class StatusEnum : StringEnum 
         {
-            public const string Queued = "queued";
-            public const string Ringing = "ringing";
-            public const string InProgress = "in-progress";
-            public const string Completed = "completed";
-            public const string Busy = "busy";
-            public const string Failed = "failed";
-            public const string NoAnswer = "no-answer";
-            public const string Canceled = "canceled";
-        
-            private string _value;
-            
+            private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
-            
-            public StatusEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator StatusEnum(string value)
-            {
-                return new StatusEnum(value);
-            }
-            
-            public static implicit operator string(StatusEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static StatusEnum Queued = new StatusEnum("queued");
+            public static StatusEnum Ringing = new StatusEnum("ringing");
+            public static StatusEnum InProgress = new StatusEnum("in-progress");
+            public static StatusEnum Completed = new StatusEnum("completed");
+            public static StatusEnum Busy = new StatusEnum("busy");
+            public static StatusEnum Failed = new StatusEnum("failed");
+            public static StatusEnum NoAnswer = new StatusEnum("no-answer");
+            public static StatusEnum Canceled = new StatusEnum("canceled");
         }
     
         /// <summary>

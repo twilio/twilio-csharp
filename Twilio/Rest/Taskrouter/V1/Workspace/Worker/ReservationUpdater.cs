@@ -57,7 +57,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.TASKROUTER,
+                Domains.Taskrouter,
                 "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + WorkerSid + "/Reservations/" + Sid + ""
             );
             AddPostParams(request);
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.TASKROUTER,
+                Domains.Taskrouter,
                 "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + WorkerSid + "/Reservations/" + Sid + ""
             );
             AddPostParams(request);

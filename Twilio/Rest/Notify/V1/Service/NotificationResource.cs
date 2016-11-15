@@ -4,45 +4,20 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Types;
 
 namespace Twilio.Rest.Notify.V1.Service 
 {
 
     public class NotificationResource : Resource 
     {
-        public sealed class PriorityEnum : IStringEnum 
+        public sealed class PriorityEnum : StringEnum 
         {
-            public const string High = "high";
-            public const string Low = "low";
-        
-            private string _value;
-            
+            private PriorityEnum(string value) : base(value) {}
             public PriorityEnum() {}
-            
-            public PriorityEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator PriorityEnum(string value)
-            {
-                return new PriorityEnum(value);
-            }
-            
-            public static implicit operator string(PriorityEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static PriorityEnum High = new PriorityEnum("high");
+            public static PriorityEnum Low = new PriorityEnum("low");
         }
     
         /// <summary>

@@ -37,7 +37,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         {
             var request = new Request(
                 HttpMethod.DELETE,
-                Domains.CHAT,
+                Domains.Chat,
                 "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Messages/" + Sid + ""
             );
             
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         {
             var request = new Request(
                 HttpMethod.DELETE,
-                Domains.CHAT,
+                Domains.Chat,
                 "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Messages/" + Sid + ""
             );
             

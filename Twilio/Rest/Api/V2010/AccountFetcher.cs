@@ -21,7 +21,7 @@ namespace Twilio.Rest.Api.V2010
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.API,
+                Domains.Api,
                 "/2010-04-01/Accounts/" + (Sid ?? client.GetAccountSid()) + ".json"
             );
             
@@ -61,7 +61,7 @@ namespace Twilio.Rest.Api.V2010
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.API,
+                Domains.Api,
                 "/2010-04-01/Accounts/" + (Sid ?? client.GetAccountSid()) + ".json"
             );
             

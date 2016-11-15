@@ -31,7 +31,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.TRUNKING,
+                Domains.Trunking,
                 "/v1/Trunks/" + TrunkSid + "/CredentialLists"
             );
             AddQueryParams(request);
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.TRUNKING,
+                Domains.Trunking,
                 "/v1/Trunks/" + TrunkSid + "/CredentialLists"
             );
             
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
-                    Domains.TRUNKING
+                    Domains.Trunking
                 )
             );
             

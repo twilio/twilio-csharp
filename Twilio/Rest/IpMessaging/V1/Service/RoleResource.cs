@@ -4,45 +4,20 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Types;
 
 namespace Twilio.Rest.IpMessaging.V1.Service 
 {
 
     public class RoleResource : Resource 
     {
-        public sealed class RoleTypeEnum : IStringEnum 
+        public sealed class RoleTypeEnum : StringEnum 
         {
-            public const string Channel = "channel";
-            public const string Deployment = "deployment";
-        
-            private string _value;
-            
+            private RoleTypeEnum(string value) : base(value) {}
             public RoleTypeEnum() {}
-            
-            public RoleTypeEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator RoleTypeEnum(string value)
-            {
-                return new RoleTypeEnum(value);
-            }
-            
-            public static implicit operator string(RoleTypeEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static RoleTypeEnum Channel = new RoleTypeEnum("channel");
+            public static RoleTypeEnum Deployment = new RoleTypeEnum("deployment");
         }
     
         /// <summary>

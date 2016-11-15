@@ -78,7 +78,7 @@
     <Compile Include="..\Twilio\Types\OutboundSmsPrice.cs"><Link>Types\OutboundSmsPrice.cs</Link></Compile>
     <Compile Include="..\Twilio\Types\PhoneNumberCapabilities.cs"><Link>Types\PhoneNumberCapabilities.cs</Link></Compile>
     <Compile Include="..\Twilio\Types\PhoneNumberPrice.cs"><Link>Types\PhoneNumberPrice.cs</Link></Compile>
-    <Compile Include="..\Twilio\Types\IStringEnum.cs"><Link>Types\IStringEnum.cs</Link></Compile>
+    <Compile Include="..\Twilio\Types\StringEnum.cs"><Link>Types\StringEnum.cs</Link></Compile>
     <Compile Include="..\Twilio\TwiML\VoiceResponse.cs"><Link>TwiML\VoiceResponse.cs</Link></Compile>
     <Compile Include="..\Twilio\TwiML\MessagingResponse.cs"><Link>TwiML\MessagingResponse.cs</Link></Compile>
     <Compile Include="..\Twilio\TwiML\Message.cs"><Link>TwiML\Message.cs</Link></Compile>

@@ -31,7 +31,7 @@ namespace Twilio.Rest.Preview.Wireless
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.PREVIEW,
+                Domains.Preview,
                 "/wireless/RatePlans/" + Sid + ""
             );
             
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Preview.Wireless
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.PREVIEW,
+                Domains.Preview,
                 "/wireless/RatePlans/" + Sid + ""
             );
             

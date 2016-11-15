@@ -3,45 +3,20 @@ using System;
 using Twilio.Base;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.Message 
 {
 
     public class FeedbackResource : Resource 
     {
-        public sealed class OutcomeEnum : IStringEnum 
+        public sealed class OutcomeEnum : StringEnum 
         {
-            public const string Confirmed = "confirmed";
-            public const string Umconfirmed = "umconfirmed";
-        
-            private string _value;
-            
+            private OutcomeEnum(string value) : base(value) {}
             public OutcomeEnum() {}
-            
-            public OutcomeEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator OutcomeEnum(string value)
-            {
-                return new OutcomeEnum(value);
-            }
-            
-            public static implicit operator string(OutcomeEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static OutcomeEnum Confirmed = new OutcomeEnum("confirmed");
+            public static OutcomeEnum Umconfirmed = new OutcomeEnum("umconfirmed");
         }
     
         /// <summary>

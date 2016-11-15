@@ -35,7 +35,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         {
             var request = new Request(
                 HttpMethod.DELETE,
-                Domains.API,
+                Domains.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Recordings/" + RecordingSid + "/Transcriptions/" + Sid + ".json"
             );
             
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         {
             var request = new Request(
                 HttpMethod.DELETE,
-                Domains.API,
+                Domains.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Recordings/" + RecordingSid + "/Transcriptions/" + Sid + ".json"
             );
             

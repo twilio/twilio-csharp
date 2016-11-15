@@ -21,7 +21,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.API,
+                Domains.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Sandbox.json"
             );
             
@@ -61,7 +61,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.API,
+                Domains.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Sandbox.json"
             );
             

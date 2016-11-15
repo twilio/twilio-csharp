@@ -3,80 +3,29 @@ using System;
 using Twilio.Base;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Types;
 
 namespace Twilio.Rest.Preview.Sync.Service.SyncMap 
 {
 
     public class SyncMapItemResource : Resource 
     {
-        public sealed class QueryResultOrderEnum : IStringEnum 
+        public sealed class QueryResultOrderEnum : StringEnum 
         {
-            public const string Asc = "asc";
-            public const string Desc = "desc";
-        
-            private string _value;
-            
+            private QueryResultOrderEnum(string value) : base(value) {}
             public QueryResultOrderEnum() {}
-            
-            public QueryResultOrderEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator QueryResultOrderEnum(string value)
-            {
-                return new QueryResultOrderEnum(value);
-            }
-            
-            public static implicit operator string(QueryResultOrderEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static QueryResultOrderEnum Asc = new QueryResultOrderEnum("asc");
+            public static QueryResultOrderEnum Desc = new QueryResultOrderEnum("desc");
         }
     
-        public sealed class QueryFromBoundTypeEnum : IStringEnum 
+        public sealed class QueryFromBoundTypeEnum : StringEnum 
         {
-            public const string Inclusive = "inclusive";
-            public const string Exclusive = "exclusive";
-        
-            private string _value;
-            
+            private QueryFromBoundTypeEnum(string value) : base(value) {}
             public QueryFromBoundTypeEnum() {}
-            
-            public QueryFromBoundTypeEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator QueryFromBoundTypeEnum(string value)
-            {
-                return new QueryFromBoundTypeEnum(value);
-            }
-            
-            public static implicit operator string(QueryFromBoundTypeEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static QueryFromBoundTypeEnum Inclusive = new QueryFromBoundTypeEnum("inclusive");
+            public static QueryFromBoundTypeEnum Exclusive = new QueryFromBoundTypeEnum("exclusive");
         }
     
         /// <summary>

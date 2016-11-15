@@ -48,7 +48,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.API,
+                Domains.Api,
                 "/2010-04-01/Accounts/" + (OwnerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/Local.json"
             );
             
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.API,
+                Domains.Api,
                 "/2010-04-01/Accounts/" + (OwnerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/Local.json"
             );
             

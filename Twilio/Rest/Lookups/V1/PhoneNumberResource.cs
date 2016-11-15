@@ -4,46 +4,21 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Types;
 
 namespace Twilio.Rest.Lookups.V1 
 {
 
     public class PhoneNumberResource : Resource 
     {
-        public sealed class TypeEnum : IStringEnum 
+        public sealed class TypeEnum : StringEnum 
         {
-            public const string Landline = "landline";
-            public const string Mobile = "mobile";
-            public const string Voip = "voip";
-        
-            private string _value;
-            
+            private TypeEnum(string value) : base(value) {}
             public TypeEnum() {}
-            
-            public TypeEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator TypeEnum(string value)
-            {
-                return new TypeEnum(value);
-            }
-            
-            public static implicit operator string(TypeEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static TypeEnum Landline = new TypeEnum("landline");
+            public static TypeEnum Mobile = new TypeEnum("mobile");
+            public static TypeEnum Voip = new TypeEnum("voip");
         }
     
         /// <summary>

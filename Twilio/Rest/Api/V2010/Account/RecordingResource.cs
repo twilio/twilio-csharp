@@ -3,83 +3,32 @@ using System;
 using Twilio.Base;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class RecordingResource : Resource 
     {
-        public sealed class SourceEnum : IStringEnum 
+        public sealed class SourceEnum : StringEnum 
         {
-            public const string Dialverb = "DialVerb";
-            public const string Conference = "Conference";
-            public const string Outboundapi = "OutboundAPI";
-            public const string Trunking = "Trunking";
-            public const string Recordverb = "RecordVerb";
-        
-            private string _value;
-            
+            private SourceEnum(string value) : base(value) {}
             public SourceEnum() {}
-            
-            public SourceEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator SourceEnum(string value)
-            {
-                return new SourceEnum(value);
-            }
-            
-            public static implicit operator string(SourceEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static SourceEnum Dialverb = new SourceEnum("DialVerb");
+            public static SourceEnum Conference = new SourceEnum("Conference");
+            public static SourceEnum Outboundapi = new SourceEnum("OutboundAPI");
+            public static SourceEnum Trunking = new SourceEnum("Trunking");
+            public static SourceEnum Recordverb = new SourceEnum("RecordVerb");
         }
     
-        public sealed class StatusEnum : IStringEnum 
+        public sealed class StatusEnum : StringEnum 
         {
-            public const string Processing = "processing";
-            public const string Completed = "completed";
-        
-            private string _value;
-            
+            private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
-            
-            public StatusEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator StatusEnum(string value)
-            {
-                return new StatusEnum(value);
-            }
-            
-            public static implicit operator string(StatusEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static StatusEnum Processing = new StatusEnum("processing");
+            public static StatusEnum Completed = new StatusEnum("completed");
         }
     
         /// <summary>

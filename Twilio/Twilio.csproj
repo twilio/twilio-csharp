@@ -81,7 +81,7 @@
     <Compile Include="Types\OutboundSmsPrice.cs" />
     <Compile Include="Types\PhoneNumberCapabilities.cs" />
     <Compile Include="Types\PhoneNumberPrice.cs" />
-    <Compile Include="Types\IStringEnum.cs" />
+    <Compile Include="Types\StringEnum.cs" />
     <Compile Include="TwiML\VoiceResponse.cs" />
     <Compile Include="TwiML\MessagingResponse.cs" />
     <Compile Include="TwiML\Message.cs" />

@@ -31,7 +31,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.PRICING,
+                Domains.Pricing,
                 "/v1/Messaging/Countries/" + IsoCountry + ""
             );
             
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.PRICING,
+                Domains.Pricing,
                 "/v1/Messaging/Countries/" + IsoCountry + ""
             );
             

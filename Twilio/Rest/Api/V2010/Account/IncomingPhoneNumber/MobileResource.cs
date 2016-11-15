@@ -10,41 +10,15 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 
     public class MobileResource : Resource 
     {
-        public sealed class AddressRequirementEnum : IStringEnum 
+        public sealed class AddressRequirementEnum : StringEnum 
         {
-            public const string None = "none";
-            public const string Any = "any";
-            public const string Local = "local";
-            public const string Foreign = "foreign";
-        
-            private string _value;
-            
+            private AddressRequirementEnum(string value) : base(value) {}
             public AddressRequirementEnum() {}
-            
-            public AddressRequirementEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator AddressRequirementEnum(string value)
-            {
-                return new AddressRequirementEnum(value);
-            }
-            
-            public static implicit operator string(AddressRequirementEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static AddressRequirementEnum None = new AddressRequirementEnum("none");
+            public static AddressRequirementEnum Any = new AddressRequirementEnum("any");
+            public static AddressRequirementEnum Local = new AddressRequirementEnum("local");
+            public static AddressRequirementEnum Foreign = new AddressRequirementEnum("foreign");
         }
     
         /// <summary>

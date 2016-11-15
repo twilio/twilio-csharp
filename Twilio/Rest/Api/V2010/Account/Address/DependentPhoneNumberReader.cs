@@ -32,7 +32,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.API,
+                Domains.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Addresses/" + AddressSid + "/DependentPhoneNumbers.json"
             );
             AddQueryParams(request);
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.API,
+                Domains.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Addresses/" + AddressSid + "/DependentPhoneNumbers.json"
             );
             
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
-                    Domains.API
+                    Domains.Api
                 )
             );
             

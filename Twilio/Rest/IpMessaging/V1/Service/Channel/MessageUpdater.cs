@@ -42,7 +42,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.IP_MESSAGING,
+                Domains.IpMessaging,
                 "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Messages/" + Sid + ""
             );
             AddPostParams(request);
@@ -83,7 +83,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.IP_MESSAGING,
+                Domains.IpMessaging,
                 "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Messages/" + Sid + ""
             );
             AddPostParams(request);

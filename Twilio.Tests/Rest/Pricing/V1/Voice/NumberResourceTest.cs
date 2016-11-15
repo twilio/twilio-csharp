@@ -26,7 +26,7 @@ namespace Twilio.Tests.Rest.Pricing.V1.Voice
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.GET,
-                                      Domains.PRICING,
+                                      Domains.Pricing,
                                       "/v1/Voice/Numbers/+987654321");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)

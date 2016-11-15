@@ -4,88 +4,37 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class MessageResource : Resource 
     {
-        public sealed class StatusEnum : IStringEnum 
+        public sealed class StatusEnum : StringEnum 
         {
-            public const string Queued = "queued";
-            public const string Sending = "sending";
-            public const string Sent = "sent";
-            public const string Failed = "failed";
-            public const string Delivered = "delivered";
-            public const string Undelivered = "undelivered";
-            public const string Receiving = "receiving";
-            public const string Received = "received";
-        
-            private string _value;
-            
+            private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
-            
-            public StatusEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator StatusEnum(string value)
-            {
-                return new StatusEnum(value);
-            }
-            
-            public static implicit operator string(StatusEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static StatusEnum Queued = new StatusEnum("queued");
+            public static StatusEnum Sending = new StatusEnum("sending");
+            public static StatusEnum Sent = new StatusEnum("sent");
+            public static StatusEnum Failed = new StatusEnum("failed");
+            public static StatusEnum Delivered = new StatusEnum("delivered");
+            public static StatusEnum Undelivered = new StatusEnum("undelivered");
+            public static StatusEnum Receiving = new StatusEnum("receiving");
+            public static StatusEnum Received = new StatusEnum("received");
         }
     
-        public sealed class DirectionEnum : IStringEnum 
+        public sealed class DirectionEnum : StringEnum 
         {
-            public const string Inbound = "inbound";
-            public const string OutboundApi = "outbound-api";
-            public const string OutboundCall = "outbound-call";
-            public const string OutboundReply = "outbound-reply";
-        
-            private string _value;
-            
+            private DirectionEnum(string value) : base(value) {}
             public DirectionEnum() {}
-            
-            public DirectionEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator DirectionEnum(string value)
-            {
-                return new DirectionEnum(value);
-            }
-            
-            public static implicit operator string(DirectionEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static DirectionEnum Inbound = new DirectionEnum("inbound");
+            public static DirectionEnum OutboundApi = new DirectionEnum("outbound-api");
+            public static DirectionEnum OutboundCall = new DirectionEnum("outbound-call");
+            public static DirectionEnum OutboundReply = new DirectionEnum("outbound-reply");
         }
     
         /// <summary>

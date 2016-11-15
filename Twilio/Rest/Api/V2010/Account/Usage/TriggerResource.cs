@@ -3,206 +3,129 @@ using System;
 using Twilio.Base;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.Usage 
 {
 
     public class TriggerResource : Resource 
     {
-        public sealed class UsageCategoryEnum : IStringEnum 
+        public sealed class UsageCategoryEnum : StringEnum 
         {
-            public const string AuthyAuthentications = "authy-authentications";
-            public const string AuthyCallsOutbound = "authy-calls-outbound";
-            public const string AuthyMonthlyFees = "authy-monthly-fees";
-            public const string AuthyPhoneIntelligence = "authy-phone-intelligence";
-            public const string AuthyPhoneVerifications = "authy-phone-verifications";
-            public const string AuthySmsOutbound = "authy-sms-outbound";
-            public const string CallProgessEvents = "call-progess-events";
-            public const string Calleridlookups = "calleridlookups";
-            public const string Calls = "calls";
-            public const string CallsClient = "calls-client";
-            public const string CallsGlobalconference = "calls-globalconference";
-            public const string CallsInbound = "calls-inbound";
-            public const string CallsInboundLocal = "calls-inbound-local";
-            public const string CallsInboundMobile = "calls-inbound-mobile";
-            public const string CallsInboundTollfree = "calls-inbound-tollfree";
-            public const string CallsOutbound = "calls-outbound";
-            public const string CallsRecordings = "calls-recordings";
-            public const string CallsSip = "calls-sip";
-            public const string CallsSipInbound = "calls-sip-inbound";
-            public const string CallsSipOutbound = "calls-sip-outbound";
-            public const string CarrierLookups = "carrier-lookups";
-            public const string Conversations = "conversations";
-            public const string ConversationsApiRequests = "conversations-api-requests";
-            public const string ConversationsConversationEvents = "conversations-conversation-events";
-            public const string ConversationsEndpointConnectivity = "conversations-endpoint-connectivity";
-            public const string ConversationsEvents = "conversations-events";
-            public const string ConversationsParticipantEvents = "conversations-participant-events";
-            public const string ConversationsParticipants = "conversations-participants";
-            public const string IpMessaging = "ip-messaging";
-            public const string IpMessagingCommands = "ip-messaging-commands";
-            public const string IpMessagingDataStorage = "ip-messaging-data-storage";
-            public const string IpMessagingDataTransfer = "ip-messaging-data-transfer";
-            public const string IpMessagingEndpointConnectivity = "ip-messaging-endpoint-connectivity";
-            public const string Lookups = "lookups";
-            public const string Mediastorage = "mediastorage";
-            public const string Mms = "mms";
-            public const string MmsInbound = "mms-inbound";
-            public const string MmsInboundLongcode = "mms-inbound-longcode";
-            public const string MmsInboundShortcode = "mms-inbound-shortcode";
-            public const string MmsOutbound = "mms-outbound";
-            public const string MmsOutboundLongcode = "mms-outbound-longcode";
-            public const string MmsOutboundShortcode = "mms-outbound-shortcode";
-            public const string MonitorReads = "monitor-reads";
-            public const string MonitorStorage = "monitor-storage";
-            public const string MonitorWrites = "monitor-writes";
-            public const string NumberFormatLookups = "number-format-lookups";
-            public const string Phonenumbers = "phonenumbers";
-            public const string PhonenumbersCps = "phonenumbers-cps";
-            public const string PhonenumbersEmergency = "phonenumbers-emergency";
-            public const string PhonenumbersLocal = "phonenumbers-local";
-            public const string PhonenumbersMobile = "phonenumbers-mobile";
-            public const string PhonenumbersSetups = "phonenumbers-setups";
-            public const string PhonenumbersTollfree = "phonenumbers-tollfree";
-            public const string Premiumsupport = "premiumsupport";
-            public const string Recordings = "recordings";
-            public const string Recordingstorage = "recordingstorage";
-            public const string Shortcodes = "shortcodes";
-            public const string ShortcodesCustomerowned = "shortcodes-customerowned";
-            public const string ShortcodesMmsEnablement = "shortcodes-mms-enablement";
-            public const string ShortcodesMps = "shortcodes-mps";
-            public const string ShortcodesRandom = "shortcodes-random";
-            public const string ShortcodesUk = "shortcodes-uk";
-            public const string ShortcodesVanity = "shortcodes-vanity";
-            public const string Sms = "sms";
-            public const string SmsInbound = "sms-inbound";
-            public const string SmsInboundLongcode = "sms-inbound-longcode";
-            public const string SmsInboundShortcode = "sms-inbound-shortcode";
-            public const string SmsOutbound = "sms-outbound";
-            public const string SmsOutboundLongcode = "sms-outbound-longcode";
-            public const string SmsOutboundShortcode = "sms-outbound-shortcode";
-            public const string TaskrouterTasks = "taskrouter-tasks";
-            public const string Totalprice = "totalprice";
-            public const string Transcriptions = "transcriptions";
-            public const string TrunkingCps = "trunking-cps";
-            public const string TrunkingEmergencyCalls = "trunking-emergency-calls";
-            public const string TrunkingOrigination = "trunking-origination";
-            public const string TrunkingOriginationLocal = "trunking-origination-local";
-            public const string TrunkingOriginationMobile = "trunking-origination-mobile";
-            public const string TrunkingOriginationTollfree = "trunking-origination-tollfree";
-            public const string TrunkingRecordings = "trunking-recordings";
-            public const string TrunkingSecure = "trunking-secure";
-            public const string TrunkingTermination = "trunking-termination";
-            public const string Turnmegabytes = "turnmegabytes";
-            public const string TurnmegabytesAustralia = "turnmegabytes-australia";
-            public const string TurnmegabytesBrasil = "turnmegabytes-brasil";
-            public const string TurnmegabytesIreland = "turnmegabytes-ireland";
-            public const string TurnmegabytesJapan = "turnmegabytes-japan";
-            public const string TurnmegabytesSingapore = "turnmegabytes-singapore";
-            public const string TurnmegabytesUseast = "turnmegabytes-useast";
-            public const string TurnmegabytesUswest = "turnmegabytes-uswest";
-        
-            private string _value;
-            
+            private UsageCategoryEnum(string value) : base(value) {}
             public UsageCategoryEnum() {}
-            
-            public UsageCategoryEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator UsageCategoryEnum(string value)
-            {
-                return new UsageCategoryEnum(value);
-            }
-            
-            public static implicit operator string(UsageCategoryEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static UsageCategoryEnum AuthyAuthentications = new UsageCategoryEnum("authy-authentications");
+            public static UsageCategoryEnum AuthyCallsOutbound = new UsageCategoryEnum("authy-calls-outbound");
+            public static UsageCategoryEnum AuthyMonthlyFees = new UsageCategoryEnum("authy-monthly-fees");
+            public static UsageCategoryEnum AuthyPhoneIntelligence = new UsageCategoryEnum("authy-phone-intelligence");
+            public static UsageCategoryEnum AuthyPhoneVerifications = new UsageCategoryEnum("authy-phone-verifications");
+            public static UsageCategoryEnum AuthySmsOutbound = new UsageCategoryEnum("authy-sms-outbound");
+            public static UsageCategoryEnum CallProgessEvents = new UsageCategoryEnum("call-progess-events");
+            public static UsageCategoryEnum Calleridlookups = new UsageCategoryEnum("calleridlookups");
+            public static UsageCategoryEnum Calls = new UsageCategoryEnum("calls");
+            public static UsageCategoryEnum CallsClient = new UsageCategoryEnum("calls-client");
+            public static UsageCategoryEnum CallsGlobalconference = new UsageCategoryEnum("calls-globalconference");
+            public static UsageCategoryEnum CallsInbound = new UsageCategoryEnum("calls-inbound");
+            public static UsageCategoryEnum CallsInboundLocal = new UsageCategoryEnum("calls-inbound-local");
+            public static UsageCategoryEnum CallsInboundMobile = new UsageCategoryEnum("calls-inbound-mobile");
+            public static UsageCategoryEnum CallsInboundTollfree = new UsageCategoryEnum("calls-inbound-tollfree");
+            public static UsageCategoryEnum CallsOutbound = new UsageCategoryEnum("calls-outbound");
+            public static UsageCategoryEnum CallsRecordings = new UsageCategoryEnum("calls-recordings");
+            public static UsageCategoryEnum CallsSip = new UsageCategoryEnum("calls-sip");
+            public static UsageCategoryEnum CallsSipInbound = new UsageCategoryEnum("calls-sip-inbound");
+            public static UsageCategoryEnum CallsSipOutbound = new UsageCategoryEnum("calls-sip-outbound");
+            public static UsageCategoryEnum CarrierLookups = new UsageCategoryEnum("carrier-lookups");
+            public static UsageCategoryEnum Conversations = new UsageCategoryEnum("conversations");
+            public static UsageCategoryEnum ConversationsApiRequests = new UsageCategoryEnum("conversations-api-requests");
+            public static UsageCategoryEnum ConversationsConversationEvents = new UsageCategoryEnum("conversations-conversation-events");
+            public static UsageCategoryEnum ConversationsEndpointConnectivity = new UsageCategoryEnum("conversations-endpoint-connectivity");
+            public static UsageCategoryEnum ConversationsEvents = new UsageCategoryEnum("conversations-events");
+            public static UsageCategoryEnum ConversationsParticipantEvents = new UsageCategoryEnum("conversations-participant-events");
+            public static UsageCategoryEnum ConversationsParticipants = new UsageCategoryEnum("conversations-participants");
+            public static UsageCategoryEnum IpMessaging = new UsageCategoryEnum("ip-messaging");
+            public static UsageCategoryEnum IpMessagingCommands = new UsageCategoryEnum("ip-messaging-commands");
+            public static UsageCategoryEnum IpMessagingDataStorage = new UsageCategoryEnum("ip-messaging-data-storage");
+            public static UsageCategoryEnum IpMessagingDataTransfer = new UsageCategoryEnum("ip-messaging-data-transfer");
+            public static UsageCategoryEnum IpMessagingEndpointConnectivity = new UsageCategoryEnum("ip-messaging-endpoint-connectivity");
+            public static UsageCategoryEnum Lookups = new UsageCategoryEnum("lookups");
+            public static UsageCategoryEnum Mediastorage = new UsageCategoryEnum("mediastorage");
+            public static UsageCategoryEnum Mms = new UsageCategoryEnum("mms");
+            public static UsageCategoryEnum MmsInbound = new UsageCategoryEnum("mms-inbound");
+            public static UsageCategoryEnum MmsInboundLongcode = new UsageCategoryEnum("mms-inbound-longcode");
+            public static UsageCategoryEnum MmsInboundShortcode = new UsageCategoryEnum("mms-inbound-shortcode");
+            public static UsageCategoryEnum MmsOutbound = new UsageCategoryEnum("mms-outbound");
+            public static UsageCategoryEnum MmsOutboundLongcode = new UsageCategoryEnum("mms-outbound-longcode");
+            public static UsageCategoryEnum MmsOutboundShortcode = new UsageCategoryEnum("mms-outbound-shortcode");
+            public static UsageCategoryEnum MonitorReads = new UsageCategoryEnum("monitor-reads");
+            public static UsageCategoryEnum MonitorStorage = new UsageCategoryEnum("monitor-storage");
+            public static UsageCategoryEnum MonitorWrites = new UsageCategoryEnum("monitor-writes");
+            public static UsageCategoryEnum NumberFormatLookups = new UsageCategoryEnum("number-format-lookups");
+            public static UsageCategoryEnum Phonenumbers = new UsageCategoryEnum("phonenumbers");
+            public static UsageCategoryEnum PhonenumbersCps = new UsageCategoryEnum("phonenumbers-cps");
+            public static UsageCategoryEnum PhonenumbersEmergency = new UsageCategoryEnum("phonenumbers-emergency");
+            public static UsageCategoryEnum PhonenumbersLocal = new UsageCategoryEnum("phonenumbers-local");
+            public static UsageCategoryEnum PhonenumbersMobile = new UsageCategoryEnum("phonenumbers-mobile");
+            public static UsageCategoryEnum PhonenumbersSetups = new UsageCategoryEnum("phonenumbers-setups");
+            public static UsageCategoryEnum PhonenumbersTollfree = new UsageCategoryEnum("phonenumbers-tollfree");
+            public static UsageCategoryEnum Premiumsupport = new UsageCategoryEnum("premiumsupport");
+            public static UsageCategoryEnum Recordings = new UsageCategoryEnum("recordings");
+            public static UsageCategoryEnum Recordingstorage = new UsageCategoryEnum("recordingstorage");
+            public static UsageCategoryEnum Shortcodes = new UsageCategoryEnum("shortcodes");
+            public static UsageCategoryEnum ShortcodesCustomerowned = new UsageCategoryEnum("shortcodes-customerowned");
+            public static UsageCategoryEnum ShortcodesMmsEnablement = new UsageCategoryEnum("shortcodes-mms-enablement");
+            public static UsageCategoryEnum ShortcodesMps = new UsageCategoryEnum("shortcodes-mps");
+            public static UsageCategoryEnum ShortcodesRandom = new UsageCategoryEnum("shortcodes-random");
+            public static UsageCategoryEnum ShortcodesUk = new UsageCategoryEnum("shortcodes-uk");
+            public static UsageCategoryEnum ShortcodesVanity = new UsageCategoryEnum("shortcodes-vanity");
+            public static UsageCategoryEnum Sms = new UsageCategoryEnum("sms");
+            public static UsageCategoryEnum SmsInbound = new UsageCategoryEnum("sms-inbound");
+            public static UsageCategoryEnum SmsInboundLongcode = new UsageCategoryEnum("sms-inbound-longcode");
+            public static UsageCategoryEnum SmsInboundShortcode = new UsageCategoryEnum("sms-inbound-shortcode");
+            public static UsageCategoryEnum SmsOutbound = new UsageCategoryEnum("sms-outbound");
+            public static UsageCategoryEnum SmsOutboundLongcode = new UsageCategoryEnum("sms-outbound-longcode");
+            public static UsageCategoryEnum SmsOutboundShortcode = new UsageCategoryEnum("sms-outbound-shortcode");
+            public static UsageCategoryEnum TaskrouterTasks = new UsageCategoryEnum("taskrouter-tasks");
+            public static UsageCategoryEnum Totalprice = new UsageCategoryEnum("totalprice");
+            public static UsageCategoryEnum Transcriptions = new UsageCategoryEnum("transcriptions");
+            public static UsageCategoryEnum TrunkingCps = new UsageCategoryEnum("trunking-cps");
+            public static UsageCategoryEnum TrunkingEmergencyCalls = new UsageCategoryEnum("trunking-emergency-calls");
+            public static UsageCategoryEnum TrunkingOrigination = new UsageCategoryEnum("trunking-origination");
+            public static UsageCategoryEnum TrunkingOriginationLocal = new UsageCategoryEnum("trunking-origination-local");
+            public static UsageCategoryEnum TrunkingOriginationMobile = new UsageCategoryEnum("trunking-origination-mobile");
+            public static UsageCategoryEnum TrunkingOriginationTollfree = new UsageCategoryEnum("trunking-origination-tollfree");
+            public static UsageCategoryEnum TrunkingRecordings = new UsageCategoryEnum("trunking-recordings");
+            public static UsageCategoryEnum TrunkingSecure = new UsageCategoryEnum("trunking-secure");
+            public static UsageCategoryEnum TrunkingTermination = new UsageCategoryEnum("trunking-termination");
+            public static UsageCategoryEnum Turnmegabytes = new UsageCategoryEnum("turnmegabytes");
+            public static UsageCategoryEnum TurnmegabytesAustralia = new UsageCategoryEnum("turnmegabytes-australia");
+            public static UsageCategoryEnum TurnmegabytesBrasil = new UsageCategoryEnum("turnmegabytes-brasil");
+            public static UsageCategoryEnum TurnmegabytesIreland = new UsageCategoryEnum("turnmegabytes-ireland");
+            public static UsageCategoryEnum TurnmegabytesJapan = new UsageCategoryEnum("turnmegabytes-japan");
+            public static UsageCategoryEnum TurnmegabytesSingapore = new UsageCategoryEnum("turnmegabytes-singapore");
+            public static UsageCategoryEnum TurnmegabytesUseast = new UsageCategoryEnum("turnmegabytes-useast");
+            public static UsageCategoryEnum TurnmegabytesUswest = new UsageCategoryEnum("turnmegabytes-uswest");
         }
     
-        public sealed class RecurringEnum : IStringEnum 
+        public sealed class RecurringEnum : StringEnum 
         {
-            public const string Daily = "daily";
-            public const string Monthly = "monthly";
-            public const string Yearly = "yearly";
-            public const string Alltime = "alltime";
-        
-            private string _value;
-            
+            private RecurringEnum(string value) : base(value) {}
             public RecurringEnum() {}
-            
-            public RecurringEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator RecurringEnum(string value)
-            {
-                return new RecurringEnum(value);
-            }
-            
-            public static implicit operator string(RecurringEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static RecurringEnum Daily = new RecurringEnum("daily");
+            public static RecurringEnum Monthly = new RecurringEnum("monthly");
+            public static RecurringEnum Yearly = new RecurringEnum("yearly");
+            public static RecurringEnum Alltime = new RecurringEnum("alltime");
         }
     
-        public sealed class TriggerFieldEnum : IStringEnum 
+        public sealed class TriggerFieldEnum : StringEnum 
         {
-            public const string Count = "count";
-            public const string Usage = "usage";
-            public const string Price = "price";
-        
-            private string _value;
-            
+            private TriggerFieldEnum(string value) : base(value) {}
             public TriggerFieldEnum() {}
-            
-            public TriggerFieldEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator TriggerFieldEnum(string value)
-            {
-                return new TriggerFieldEnum(value);
-            }
-            
-            public static implicit operator string(TriggerFieldEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static TriggerFieldEnum Count = new TriggerFieldEnum("count");
+            public static TriggerFieldEnum Usage = new TriggerFieldEnum("usage");
+            public static TriggerFieldEnum Price = new TriggerFieldEnum("price");
         }
     
         /// <summary>

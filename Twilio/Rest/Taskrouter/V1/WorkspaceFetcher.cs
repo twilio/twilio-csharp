@@ -31,7 +31,7 @@ namespace Twilio.Rest.Taskrouter.V1
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.TASKROUTER,
+                Domains.Taskrouter,
                 "/v1/Workspaces/" + Sid + ""
             );
             
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Taskrouter.V1
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.TASKROUTER,
+                Domains.Taskrouter,
                 "/v1/Workspaces/" + Sid + ""
             );
             

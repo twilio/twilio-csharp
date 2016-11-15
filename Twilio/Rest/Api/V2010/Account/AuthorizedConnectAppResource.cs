@@ -4,45 +4,20 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class AuthorizedConnectAppResource : Resource 
     {
-        public sealed class PermissionEnum : IStringEnum 
+        public sealed class PermissionEnum : StringEnum 
         {
-            public const string GetAll = "get-all";
-            public const string PostAll = "post-all";
-        
-            private string _value;
-            
+            private PermissionEnum(string value) : base(value) {}
             public PermissionEnum() {}
-            
-            public PermissionEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator PermissionEnum(string value)
-            {
-                return new PermissionEnum(value);
-            }
-            
-            public static implicit operator string(PermissionEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static PermissionEnum GetAll = new PermissionEnum("get-all");
+            public static PermissionEnum PostAll = new PermissionEnum("post-all");
         }
     
         /// <summary>

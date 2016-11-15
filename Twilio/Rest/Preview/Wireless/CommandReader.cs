@@ -23,7 +23,7 @@ namespace Twilio.Rest.Preview.Wireless
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.PREVIEW,
+                Domains.Preview,
                 "/wireless/Commands"
             );
             AddQueryParams(request);
@@ -44,7 +44,7 @@ namespace Twilio.Rest.Preview.Wireless
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.PREVIEW,
+                Domains.Preview,
                 "/wireless/Commands"
             );
             
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Preview.Wireless
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
-                    Domains.PREVIEW
+                    Domains.Preview
                 )
             );
             

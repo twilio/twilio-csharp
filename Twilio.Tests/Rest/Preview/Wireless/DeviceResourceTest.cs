@@ -26,7 +26,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.GET,
-                                      Domains.PREVIEW,
+                                      Domains.Preview,
                                       "/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
@@ -74,7 +74,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.GET,
-                                      Domains.PREVIEW,
+                                      Domains.Preview,
                                       "/wireless/Devices");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
@@ -135,7 +135,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.POST,
-                                      Domains.PREVIEW,
+                                      Domains.Preview,
                                       "/wireless/Devices");
             request.AddPostParam("RatePlan", Serialize("RatePlan"));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -184,7 +184,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.POST,
-                                      Domains.PREVIEW,
+                                      Domains.Preview,
                                       "/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)

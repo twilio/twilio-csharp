@@ -4,47 +4,22 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Types;
 
 namespace Twilio.Rest.Notify.V1.Service 
 {
 
     public class BindingResource : Resource 
     {
-        public sealed class BindingTypeEnum : IStringEnum 
+        public sealed class BindingTypeEnum : StringEnum 
         {
-            public const string Apn = "apn";
-            public const string Gcm = "gcm";
-            public const string Sms = "sms";
-            public const string FacebookMessenger = "facebook-messenger";
-        
-            private string _value;
-            
+            private BindingTypeEnum(string value) : base(value) {}
             public BindingTypeEnum() {}
-            
-            public BindingTypeEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator BindingTypeEnum(string value)
-            {
-                return new BindingTypeEnum(value);
-            }
-            
-            public static implicit operator string(BindingTypeEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static BindingTypeEnum Apn = new BindingTypeEnum("apn");
+            public static BindingTypeEnum Gcm = new BindingTypeEnum("gcm");
+            public static BindingTypeEnum Sms = new BindingTypeEnum("sms");
+            public static BindingTypeEnum FacebookMessenger = new BindingTypeEnum("facebook-messenger");
         }
     
         /// <summary>

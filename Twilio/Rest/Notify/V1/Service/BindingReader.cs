@@ -38,7 +38,7 @@ namespace Twilio.Rest.Notify.V1.Service
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.NOTIFY,
+                Domains.Notify,
                 "/v1/Services/" + ServiceSid + "/Bindings"
             );
             AddQueryParams(request);
@@ -59,7 +59,7 @@ namespace Twilio.Rest.Notify.V1.Service
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.NOTIFY,
+                Domains.Notify,
                 "/v1/Services/" + ServiceSid + "/Bindings"
             );
             
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Notify.V1.Service
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
-                    Domains.NOTIFY
+                    Domains.Notify
                 )
             );
             

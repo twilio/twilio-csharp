@@ -3,45 +3,20 @@ using System;
 using Twilio.Base;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Types;
 
 namespace Twilio.Rest.Chat.V1 
 {
 
     public class CredentialResource : Resource 
     {
-        public sealed class PushServiceEnum : IStringEnum 
+        public sealed class PushServiceEnum : StringEnum 
         {
-            public const string Gcm = "gcm";
-            public const string Apn = "apn";
-        
-            private string _value;
-            
+            private PushServiceEnum(string value) : base(value) {}
             public PushServiceEnum() {}
-            
-            public PushServiceEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator PushServiceEnum(string value)
-            {
-                return new PushServiceEnum(value);
-            }
-            
-            public static implicit operator string(PushServiceEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static PushServiceEnum Gcm = new PushServiceEnum("gcm");
+            public static PushServiceEnum Apn = new PushServiceEnum("apn");
         }
     
         /// <summary>

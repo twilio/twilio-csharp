@@ -40,7 +40,7 @@ namespace Twilio.Rest.Preview.Wireless
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.PREVIEW,
+                Domains.Preview,
                 "/wireless/Devices"
             );
             
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Preview.Wireless
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.PREVIEW,
+                Domains.Preview,
                 "/wireless/Devices"
             );
             

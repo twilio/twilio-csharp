@@ -26,7 +26,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.GET,
-                                      Domains.PREVIEW,
+                                      Domains.Preview,
                                       "/wireless/Commands/DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
@@ -74,7 +74,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.GET,
-                                      Domains.PREVIEW,
+                                      Domains.Preview,
                                       "/wireless/Commands");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
@@ -135,7 +135,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.POST,
-                                      Domains.PREVIEW,
+                                      Domains.Preview,
                                       "/wireless/Commands");
             request.AddPostParam("Device", Serialize("Device"));
             request.AddPostParam("Command", Serialize("Command"));

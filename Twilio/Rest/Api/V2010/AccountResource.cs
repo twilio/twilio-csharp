@@ -4,81 +4,30 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010 
 {
 
     public class AccountResource : Resource 
     {
-        public sealed class StatusEnum : IStringEnum 
+        public sealed class StatusEnum : StringEnum 
         {
-            public const string Active = "active";
-            public const string Suspended = "suspended";
-            public const string Closed = "closed";
-        
-            private string _value;
-            
+            private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
-            
-            public StatusEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator StatusEnum(string value)
-            {
-                return new StatusEnum(value);
-            }
-            
-            public static implicit operator string(StatusEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static StatusEnum Active = new StatusEnum("active");
+            public static StatusEnum Suspended = new StatusEnum("suspended");
+            public static StatusEnum Closed = new StatusEnum("closed");
         }
     
-        public sealed class TypeEnum : IStringEnum 
+        public sealed class TypeEnum : StringEnum 
         {
-            public const string Trial = "Trial";
-            public const string Full = "Full";
-        
-            private string _value;
-            
+            private TypeEnum(string value) : base(value) {}
             public TypeEnum() {}
-            
-            public TypeEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator TypeEnum(string value)
-            {
-                return new TypeEnum(value);
-            }
-            
-            public static implicit operator string(TypeEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static TypeEnum Trial = new TypeEnum("Trial");
+            public static TypeEnum Full = new TypeEnum("Full");
         }
     
         /// <summary>

@@ -3,121 +3,44 @@ using System;
 using Twilio.Base;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.Conference 
 {
 
     public class ParticipantResource : Resource 
     {
-        public sealed class StatusEnum : IStringEnum 
+        public sealed class StatusEnum : StringEnum 
         {
-            public const string Queued = "queued";
-            public const string Connecting = "connecting";
-            public const string Ringing = "ringing";
-            public const string Connected = "connected";
-            public const string Complete = "complete";
-            public const string Failed = "failed";
-        
-            private string _value;
-            
+            private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
-            
-            public StatusEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator StatusEnum(string value)
-            {
-                return new StatusEnum(value);
-            }
-            
-            public static implicit operator string(StatusEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static StatusEnum Queued = new StatusEnum("queued");
+            public static StatusEnum Connecting = new StatusEnum("connecting");
+            public static StatusEnum Ringing = new StatusEnum("ringing");
+            public static StatusEnum Connected = new StatusEnum("connected");
+            public static StatusEnum Complete = new StatusEnum("complete");
+            public static StatusEnum Failed = new StatusEnum("failed");
         }
     
-        public sealed class BeepEnum : IStringEnum 
+        public sealed class BeepEnum : StringEnum 
         {
-            public const string True = "true";
-            public const string False = "false";
-            public const string Onenter = "onEnter";
-            public const string Onexit = "onExit";
-        
-            private string _value;
-            
+            private BeepEnum(string value) : base(value) {}
             public BeepEnum() {}
-            
-            public BeepEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator BeepEnum(string value)
-            {
-                return new BeepEnum(value);
-            }
-            
-            public static implicit operator string(BeepEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static BeepEnum True = new BeepEnum("true");
+            public static BeepEnum False = new BeepEnum("false");
+            public static BeepEnum Onenter = new BeepEnum("onEnter");
+            public static BeepEnum Onexit = new BeepEnum("onExit");
         }
     
-        public sealed class ConferenceRecordEnum : IStringEnum 
+        public sealed class ConferenceRecordEnum : StringEnum 
         {
-            public const string DoNotRecord = "do-not-record";
-            public const string RecordFromStart = "record-from-start";
-        
-            private string _value;
-            
+            private ConferenceRecordEnum(string value) : base(value) {}
             public ConferenceRecordEnum() {}
-            
-            public ConferenceRecordEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator ConferenceRecordEnum(string value)
-            {
-                return new ConferenceRecordEnum(value);
-            }
-            
-            public static implicit operator string(ConferenceRecordEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static ConferenceRecordEnum DoNotRecord = new ConferenceRecordEnum("do-not-record");
+            public static ConferenceRecordEnum RecordFromStart = new ConferenceRecordEnum("record-from-start");
         }
     
         /// <summary>

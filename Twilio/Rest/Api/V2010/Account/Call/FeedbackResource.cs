@@ -4,51 +4,26 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.Call 
 {
 
     public class FeedbackResource : Resource 
     {
-        public sealed class IssuesEnum : IStringEnum 
+        public sealed class IssuesEnum : StringEnum 
         {
-            public const string AudioLatency = "audio-latency";
-            public const string DigitsNotCaptured = "digits-not-captured";
-            public const string DroppedCall = "dropped-call";
-            public const string ImperfectAudio = "imperfect-audio";
-            public const string IncorrectCallerId = "incorrect-caller-id";
-            public const string OneWayAudio = "one-way-audio";
-            public const string PostDialDelay = "post-dial-delay";
-            public const string UnsolicitedCall = "unsolicited-call";
-        
-            private string _value;
-            
+            private IssuesEnum(string value) : base(value) {}
             public IssuesEnum() {}
-            
-            public IssuesEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator IssuesEnum(string value)
-            {
-                return new IssuesEnum(value);
-            }
-            
-            public static implicit operator string(IssuesEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static IssuesEnum AudioLatency = new IssuesEnum("audio-latency");
+            public static IssuesEnum DigitsNotCaptured = new IssuesEnum("digits-not-captured");
+            public static IssuesEnum DroppedCall = new IssuesEnum("dropped-call");
+            public static IssuesEnum ImperfectAudio = new IssuesEnum("imperfect-audio");
+            public static IssuesEnum IncorrectCallerId = new IssuesEnum("incorrect-caller-id");
+            public static IssuesEnum OneWayAudio = new IssuesEnum("one-way-audio");
+            public static IssuesEnum PostDialDelay = new IssuesEnum("post-dial-delay");
+            public static IssuesEnum UnsolicitedCall = new IssuesEnum("unsolicited-call");
         }
     
         /// <summary>

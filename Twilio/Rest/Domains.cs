@@ -1,39 +1,22 @@
+using Twilio.Types;
 
 namespace Twilio.Rest 
 {
-    public sealed class Domains 
+
+    public sealed class Domains : StringEnum 
     {
-        public const string API = "api";
-        public const string CHAT = "ip-messaging";
-        public const string IP_MESSAGING = "ip-messaging";
-        public const string LOOKUPS = "lookups";
-        public const string MONITOR = "monitor";
-        public const string NOTIFY = "notify";
-        public const string PREVIEW = "preview";
-        public const string PRICING = "pricing";
-        public const string TASKROUTER = "taskrouter";
-        public const string TRUNKING = "trunking";
-        
-        private readonly string _value;
-        
-        public Domains(string value)
-        {
-            _value = value;
-        }
-        
-        public override string ToString()
-        {
-            return _value;
-        }
-        
-        public static implicit operator Domains(string value)
-        {
-            return new Domains(value);
-        }
-        
-        public static implicit operator string(Domains value)
-        {
-            return value.ToString();
-        }
+        private Domains(string value) : base(value) {}
+        public Domains() {}
+    
+        public static Domains Api = new Domains("api");
+        public static Domains Chat = new Domains("ip-messaging");
+        public static Domains IpMessaging = new Domains("ip-messaging");
+        public static Domains Lookups = new Domains("lookups");
+        public static Domains Monitor = new Domains("monitor");
+        public static Domains Notify = new Domains("notify");
+        public static Domains Preview = new Domains("preview");
+        public static Domains Pricing = new Domains("pricing");
+        public static Domains Taskrouter = new Domains("taskrouter");
+        public static Domains Trunking = new Domains("trunking");
     }
 }

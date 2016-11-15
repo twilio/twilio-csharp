@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.API,
+                Domains.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + ConferenceSid + "/Participants/" + CallSid + ".json"
             );
             AddPostParams(request);
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.API,
+                Domains.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + ConferenceSid + "/Participants/" + CallSid + ".json"
             );
             AddPostParams(request);

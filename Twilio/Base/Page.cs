@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Twilio.Rest;
 using static System.String;
 
 namespace Twilio.Base
@@ -44,27 +45,27 @@ namespace Twilio.Base
 	        _previousPageUrl = previousPageUrl;
 	    }
 
-	    private static string UrlFromUri(string domain, string uri)
+	    private static string UrlFromUri(Domains domain, string uri)
 	    {
 	        return "https://" + domain + ".twilio.com" + uri;
 	    }
 
-	    public string GetFirstPageUrl(string domain)
+	    public string GetFirstPageUrl(Domains domain)
 	    {
 	        return _firstPageUrl ?? UrlFromUri(domain, _firstPageUri);
 	    }
 
-	    public string GetNextPageUrl(string domain)
+	    public string GetNextPageUrl(Domains domain)
 	    {
 	        return _nextPageUrl ?? UrlFromUri(domain, _nextPageUri);
 	    }
 
-	    public string GetPreviousPageUrl(string domain)
+	    public string GetPreviousPageUrl(Domains domain)
 	    {
 	        return _previousPageUrl ?? UrlFromUri(domain, _previousPageUri);
 	    }
 
-	    public string GetUrl(string domain)
+	    public string GetUrl(Domains domain)
 	    {
 	        return _url ?? UrlFromUri(domain, _uri);
 	    }

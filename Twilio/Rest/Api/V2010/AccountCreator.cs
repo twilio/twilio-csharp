@@ -21,7 +21,7 @@ namespace Twilio.Rest.Api.V2010
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.API,
+                Domains.Api,
                 "/2010-04-01/Accounts.json"
             );
             
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.API,
+                Domains.Api,
                 "/2010-04-01/Accounts.json"
             );
             

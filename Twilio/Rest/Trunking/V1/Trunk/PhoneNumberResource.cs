@@ -4,47 +4,22 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Types;
 
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
     public class PhoneNumberResource : Resource 
     {
-        public sealed class AddressRequirementEnum : IStringEnum 
+        public sealed class AddressRequirementEnum : StringEnum 
         {
-            public const string None = "none";
-            public const string Any = "any";
-            public const string Local = "local";
-            public const string Foreign = "foreign";
-        
-            private string _value;
-            
+            private AddressRequirementEnum(string value) : base(value) {}
             public AddressRequirementEnum() {}
-            
-            public AddressRequirementEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator AddressRequirementEnum(string value)
-            {
-                return new AddressRequirementEnum(value);
-            }
-            
-            public static implicit operator string(AddressRequirementEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static AddressRequirementEnum None = new AddressRequirementEnum("none");
+            public static AddressRequirementEnum Any = new AddressRequirementEnum("any");
+            public static AddressRequirementEnum Local = new AddressRequirementEnum("local");
+            public static AddressRequirementEnum Foreign = new AddressRequirementEnum("foreign");
         }
     
         /// <summary>

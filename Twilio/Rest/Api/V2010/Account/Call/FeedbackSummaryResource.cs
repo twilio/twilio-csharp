@@ -11,41 +11,15 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class FeedbackSummaryResource : Resource 
     {
-        public sealed class StatusEnum : IStringEnum 
+        public sealed class StatusEnum : StringEnum 
         {
-            public const string Queued = "queued";
-            public const string InProgress = "in-progress";
-            public const string Completed = "completed";
-            public const string Failed = "failed";
-        
-            private string _value;
-            
+            private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
-            
-            public StatusEnum(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator StatusEnum(string value)
-            {
-                return new StatusEnum(value);
-            }
-            
-            public static implicit operator string(StatusEnum value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+        
+            public static StatusEnum Queued = new StatusEnum("queued");
+            public static StatusEnum InProgress = new StatusEnum("in-progress");
+            public static StatusEnum Completed = new StatusEnum("completed");
+            public static StatusEnum Failed = new StatusEnum("failed");
         }
     
         /// <summary>
