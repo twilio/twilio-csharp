@@ -41,7 +41,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public override async System.Threading.Tasks.Task<ConnectAppResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/ConnectApps/" + Sid + ".json"
             );
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public override ConnectAppResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/ConnectApps/" + Sid + ".json"
             );

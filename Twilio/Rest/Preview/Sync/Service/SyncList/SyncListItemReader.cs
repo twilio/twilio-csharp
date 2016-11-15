@@ -36,7 +36,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public override System.Threading.Tasks.Task<ResourceSet<SyncListItemResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + ServiceSid + "/Lists/" + ListSid + "/Items"
             );
@@ -57,7 +57,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public override ResourceSet<SyncListItemResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + ServiceSid + "/Lists/" + ListSid + "/Items"
             );
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public override Page<SyncListItemResource> NextPage(Page<SyncListItemResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Preview
                 )

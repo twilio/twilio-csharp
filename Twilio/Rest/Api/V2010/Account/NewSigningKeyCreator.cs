@@ -21,7 +21,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public override async System.Threading.Tasks.Task<NewSigningKeyResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SigningKeys.json"
             );
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public override NewSigningKeyResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SigningKeys.json"
             );

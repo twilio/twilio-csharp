@@ -31,7 +31,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         public override System.Threading.Tasks.Task<ResourceSet<CredentialResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + CredentialListSid + "/Credentials.json"
             );
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         public override ResourceSet<CredentialResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + CredentialListSid + "/Credentials.json"
             );
@@ -73,7 +73,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         public override Page<CredentialResource> NextPage(Page<CredentialResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Api
                 )

@@ -34,7 +34,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         public override async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + ConferenceSid + "/Participants/" + CallSid + ".json"
             );
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         public override ParticipantResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + ConferenceSid + "/Participants/" + CallSid + ".json"
             );

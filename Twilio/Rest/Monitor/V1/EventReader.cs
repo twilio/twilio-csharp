@@ -27,7 +27,7 @@ namespace Twilio.Rest.Monitor.V1
         public override System.Threading.Tasks.Task<ResourceSet<EventResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Monitor,
                 "/v1/Events"
             );
@@ -48,7 +48,7 @@ namespace Twilio.Rest.Monitor.V1
         public override ResourceSet<EventResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Monitor,
                 "/v1/Events"
             );
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Monitor.V1
         public override Page<EventResource> NextPage(Page<EventResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Monitor
                 )

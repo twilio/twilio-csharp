@@ -25,7 +25,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
         public void TestReadRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(HttpMethod.GET,
+            var request = new Request(HttpMethod.Get,
                                       Twilio.Rest.Domain.Preview,
                                       "/wireless/RatePlans");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -86,7 +86,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
         public void TestFetchRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(HttpMethod.GET,
+            var request = new Request(HttpMethod.Get,
                                       Twilio.Rest.Domain.Preview,
                                       "/wireless/RatePlans/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");

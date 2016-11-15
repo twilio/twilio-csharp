@@ -33,7 +33,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override async System.Threading.Tasks.Task<CredentialListResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + TrunkSid + "/CredentialLists"
             );
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override CredentialListResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + TrunkSid + "/CredentialLists"
             );

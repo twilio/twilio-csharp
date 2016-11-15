@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         public override System.Threading.Tasks.Task<ResourceSet<TollFreeResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/AvailablePhoneNumbers/" + CountryCode + "/TollFree.json"
             );
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         public override ResourceSet<TollFreeResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/AvailablePhoneNumbers/" + CountryCode + "/TollFree.json"
             );
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         public override Page<TollFreeResource> NextPage(Page<TollFreeResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Api
                 )

@@ -36,7 +36,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public override System.Threading.Tasks.Task<ResourceSet<NotificationResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + CallSid + "/Notifications.json"
             );
@@ -57,7 +57,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public override ResourceSet<NotificationResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + CallSid + "/Notifications.json"
             );
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public override Page<NotificationResource> NextPage(Page<NotificationResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Api
                 )

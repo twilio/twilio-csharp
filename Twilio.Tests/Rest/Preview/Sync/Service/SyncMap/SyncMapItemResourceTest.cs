@@ -25,7 +25,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
         public void TestFetchRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(HttpMethod.GET,
+            var request = new Request(HttpMethod.Get,
                                       Twilio.Rest.Domain.Preview,
                                       "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/Key");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -73,7 +73,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
         public void TestDeleteRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(HttpMethod.DELETE,
+            var request = new Request(HttpMethod.Delete,
                                       Twilio.Rest.Domain.Preview,
                                       "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/Key");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -120,7 +120,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
         public void TestCreateRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(HttpMethod.POST,
+            var request = new Request(HttpMethod.Post,
                                       Twilio.Rest.Domain.Preview,
                                       "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items");
             request.AddPostParam("Key", Serialize("Key"));
@@ -170,7 +170,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
         public void TestReadRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(HttpMethod.GET,
+            var request = new Request(HttpMethod.Get,
                                       Twilio.Rest.Domain.Preview,
                                       "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -231,7 +231,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
         public void TestUpdateRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(HttpMethod.POST,
+            var request = new Request(HttpMethod.Post,
                                       Twilio.Rest.Domain.Preview,
                                       "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/Key");
             request.AddPostParam("Data", Serialize("{}"));

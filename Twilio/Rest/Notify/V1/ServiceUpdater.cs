@@ -37,7 +37,7 @@ namespace Twilio.Rest.Notify.V1
         public override async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Notify,
                 "/v1/Services/" + Sid + ""
             );
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Notify.V1
         public override ServiceResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Notify,
                 "/v1/Services/" + Sid + ""
             );

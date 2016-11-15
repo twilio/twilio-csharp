@@ -18,7 +18,7 @@ namespace Twilio.Rest.IpMessaging.V1
         public override System.Threading.Tasks.Task<ResourceSet<CredentialResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v1/Credentials"
             );
@@ -39,7 +39,7 @@ namespace Twilio.Rest.IpMessaging.V1
         public override ResourceSet<CredentialResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v1/Credentials"
             );
@@ -60,7 +60,7 @@ namespace Twilio.Rest.IpMessaging.V1
         public override Page<CredentialResource> NextPage(Page<CredentialResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.IpMessaging
                 )

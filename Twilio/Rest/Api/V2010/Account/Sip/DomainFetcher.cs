@@ -31,7 +31,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public override async System.Threading.Tasks.Task<DomainResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + Sid + ".json"
             );
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public override DomainResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + Sid + ".json"
             );

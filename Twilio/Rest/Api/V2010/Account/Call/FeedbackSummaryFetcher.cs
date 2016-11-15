@@ -31,7 +31,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public override async System.Threading.Tasks.Task<FeedbackSummaryResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/FeedbackSummary/" + Sid + ".json"
             );
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public override FeedbackSummaryResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/FeedbackSummary/" + Sid + ".json"
             );

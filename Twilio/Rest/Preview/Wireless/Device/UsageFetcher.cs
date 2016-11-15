@@ -32,7 +32,7 @@ namespace Twilio.Rest.Preview.Wireless.Device
         public override async System.Threading.Tasks.Task<UsageResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/wireless/Devices/" + DeviceSid + "/Usage"
             );
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Preview.Wireless.Device
         public override UsageResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/wireless/Devices/" + DeviceSid + "/Usage"
             );

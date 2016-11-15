@@ -34,7 +34,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         public override async System.Threading.Tasks.Task<TranscriptionResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Recordings/" + RecordingSid + "/Transcriptions/" + Sid + ".json"
             );
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         public override TranscriptionResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Recordings/" + RecordingSid + "/Transcriptions/" + Sid + ".json"
             );

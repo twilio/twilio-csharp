@@ -30,7 +30,7 @@ namespace Twilio.Rest.Taskrouter.V1
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.DELETE,
+                HttpMethod.Delete,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + Sid + ""
             );
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Taskrouter.V1
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.DELETE,
+                HttpMethod.Delete,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + Sid + ""
             );

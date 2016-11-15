@@ -31,7 +31,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public override async System.Threading.Tasks.Task<KeyResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Keys/" + Sid + ".json"
             );
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public override KeyResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Keys/" + Sid + ".json"
             );

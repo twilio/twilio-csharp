@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public override async System.Threading.Tasks.Task<AddressResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Addresses/" + Sid + ".json"
             );
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public override AddressResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Addresses/" + Sid + ".json"
             );

@@ -33,7 +33,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public override async System.Threading.Tasks.Task<EventResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + WorkspaceSid + "/Events/" + Sid + ""
             );
@@ -73,7 +73,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public override EventResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + WorkspaceSid + "/Events/" + Sid + ""
             );

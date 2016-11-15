@@ -33,7 +33,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         public override System.Threading.Tasks.Task<ResourceSet<WorkerChannelResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + WorkerSid + "/Channels"
             );
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         public override ResourceSet<WorkerChannelResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + WorkerSid + "/Channels"
             );
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         public override Page<WorkerChannelResource> NextPage(Page<WorkerChannelResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Taskrouter
                 )

@@ -46,7 +46,7 @@ namespace Twilio.Rest.Notify.V1.Service
         public override async System.Threading.Tasks.Task<BindingResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Notify,
                 "/v1/Services/" + ServiceSid + "/Bindings"
             );
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Notify.V1.Service
         public override BindingResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Notify,
                 "/v1/Services/" + ServiceSid + "/Bindings"
             );

@@ -36,7 +36,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.DELETE,
+                HttpMethod.Delete,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + ServiceSid + "/Lists/" + ListSid + "/Items/" + Index + ""
             );
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.DELETE,
+                HttpMethod.Delete,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + ServiceSid + "/Lists/" + ListSid + "/Items/" + Index + ""
             );

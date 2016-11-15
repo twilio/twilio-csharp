@@ -40,7 +40,7 @@ namespace Twilio.Rest.Chat.V1.Service
         public override async System.Threading.Tasks.Task<RoleResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Chat,
                 "/v1/Services/" + ServiceSid + "/Roles"
             );
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Chat.V1.Service
         public override RoleResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Chat,
                 "/v1/Services/" + ServiceSid + "/Roles"
             );

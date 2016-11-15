@@ -34,7 +34,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public override async System.Threading.Tasks.Task<NotificationResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + CallSid + "/Notifications/" + Sid + ".json"
             );
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public override NotificationResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + CallSid + "/Notifications/" + Sid + ".json"
             );

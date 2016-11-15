@@ -25,7 +25,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace.Workflow
         public void TestFetchRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(HttpMethod.GET,
+            var request = new Request(HttpMethod.Get,
                                       Twilio.Rest.Domain.Taskrouter,
                                       "/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows/WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Statistics");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");

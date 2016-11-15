@@ -38,7 +38,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public override async System.Threading.Tasks.Task<ShortCodeResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SMS/ShortCodes/" + Sid + ".json"
             );
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public override ShortCodeResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SMS/ShortCodes/" + Sid + ".json"
             );

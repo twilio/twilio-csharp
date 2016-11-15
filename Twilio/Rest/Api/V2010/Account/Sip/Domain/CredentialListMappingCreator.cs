@@ -34,7 +34,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         public override async System.Threading.Tasks.Task<CredentialListMappingResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + DomainSid + "/CredentialListMappings.json"
             );
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         public override CredentialListMappingResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + DomainSid + "/CredentialListMappings.json"
             );

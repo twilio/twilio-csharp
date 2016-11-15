@@ -31,7 +31,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         public override async System.Threading.Tasks.Task<TriggerResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Usage/Triggers/" + Sid + ".json"
             );
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         public override TriggerResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Usage/Triggers/" + Sid + ".json"
             );

@@ -21,7 +21,7 @@ namespace Twilio.Rest.Api.V2010
         public override System.Threading.Tasks.Task<ResourceSet<AccountResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts.json"
             );
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Api.V2010
         public override ResourceSet<AccountResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts.json"
             );
@@ -63,7 +63,7 @@ namespace Twilio.Rest.Api.V2010
         public override Page<AccountResource> NextPage(Page<AccountResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Api
                 )

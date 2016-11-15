@@ -38,7 +38,7 @@ namespace Twilio.Rest.Preview.Wireless
         public override async System.Threading.Tasks.Task<CommandResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/wireless/Commands"
             );
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Preview.Wireless
         public override CommandResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/wireless/Commands"
             );

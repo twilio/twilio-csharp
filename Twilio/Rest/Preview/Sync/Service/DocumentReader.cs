@@ -30,7 +30,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         public override System.Threading.Tasks.Task<ResourceSet<DocumentResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + ServiceSid + "/Documents"
             );
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         public override ResourceSet<DocumentResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + ServiceSid + "/Documents"
             );
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         public override Page<DocumentResource> NextPage(Page<DocumentResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Preview
                 )

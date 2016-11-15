@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.Wireless
         public override async System.Threading.Tasks.Task<DeviceResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/wireless/Devices"
             );
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Preview.Wireless
         public override DeviceResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/wireless/Devices"
             );

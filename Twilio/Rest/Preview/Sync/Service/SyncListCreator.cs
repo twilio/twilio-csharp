@@ -31,7 +31,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         public override async System.Threading.Tasks.Task<SyncListResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + ServiceSid + "/Lists"
             );
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         public override SyncListResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + ServiceSid + "/Lists"
             );

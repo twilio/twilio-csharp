@@ -30,7 +30,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         public override async System.Threading.Tasks.Task<CountryResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Pricing,
                 "/v1/Voice/Countries/" + IsoCountry + ""
             );
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         public override CountryResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Pricing,
                 "/v1/Voice/Countries/" + IsoCountry + ""
             );

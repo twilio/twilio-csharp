@@ -36,7 +36,7 @@ namespace Twilio.Rest.Lookups.V1
         public override async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Lookups,
                 "/v1/PhoneNumbers/" + PhoneNumber + ""
             );
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Lookups.V1
         public override PhoneNumberResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Lookups,
                 "/v1/PhoneNumbers/" + PhoneNumber + ""
             );

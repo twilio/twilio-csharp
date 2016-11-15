@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public override System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Recordings.json"
             );
@@ -46,7 +46,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public override ResourceSet<RecordingResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Recordings.json"
             );
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public override Page<RecordingResource> NextPage(Page<RecordingResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Api
                 )

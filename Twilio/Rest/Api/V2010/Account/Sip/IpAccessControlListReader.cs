@@ -20,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public override System.Threading.Tasks.Task<ResourceSet<IpAccessControlListResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists.json"
             );
@@ -41,7 +41,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public override ResourceSet<IpAccessControlListResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists.json"
             );
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public override Page<IpAccessControlListResource> NextPage(Page<IpAccessControlListResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Api
                 )

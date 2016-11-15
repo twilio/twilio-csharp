@@ -20,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public override System.Threading.Tasks.Task<ResourceSet<ConnectAppResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/ConnectApps.json"
             );
@@ -41,7 +41,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public override ResourceSet<ConnectAppResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/ConnectApps.json"
             );
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public override Page<ConnectAppResource> NextPage(Page<ConnectAppResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Api
                 )

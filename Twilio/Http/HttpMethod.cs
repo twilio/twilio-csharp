@@ -2,10 +2,10 @@
 {
 	public class HttpMethod
 	{
-		public static readonly HttpMethod GET = new HttpMethod("GET");
-		public static readonly HttpMethod POST = new HttpMethod("POST");
-		public static readonly HttpMethod PUT = new HttpMethod("PUT");
-		public static readonly HttpMethod DELETE = new HttpMethod("DELETE");
+		public static readonly HttpMethod Get = new HttpMethod("GET");
+		public static readonly HttpMethod Post = new HttpMethod("POST");
+		public static readonly HttpMethod Put = new HttpMethod("PUT");
+		public static readonly HttpMethod Delete = new HttpMethod("DELETE");
 
 		private readonly string _value;
 

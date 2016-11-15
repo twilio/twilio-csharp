@@ -37,7 +37,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public override async System.Threading.Tasks.Task<UserResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + ServiceSid + "/Users/" + Sid + ""
             );
@@ -78,7 +78,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public override UserResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + ServiceSid + "/Users/" + Sid + ""
             );

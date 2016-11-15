@@ -35,7 +35,7 @@ namespace Twilio.Rest.Chat.V1
         public override async System.Threading.Tasks.Task<CredentialResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Chat,
                 "/v1/Credentials"
             );
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Chat.V1
         public override CredentialResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Chat,
                 "/v1/Credentials"
             );

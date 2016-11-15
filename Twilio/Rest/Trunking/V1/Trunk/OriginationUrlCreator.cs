@@ -46,7 +46,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override async System.Threading.Tasks.Task<OriginationUrlResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + TrunkSid + "/OriginationUrls"
             );
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override OriginationUrlResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + TrunkSid + "/OriginationUrls"
             );

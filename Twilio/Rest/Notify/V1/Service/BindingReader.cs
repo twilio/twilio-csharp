@@ -37,7 +37,7 @@ namespace Twilio.Rest.Notify.V1.Service
         public override System.Threading.Tasks.Task<ResourceSet<BindingResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Notify,
                 "/v1/Services/" + ServiceSid + "/Bindings"
             );
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Notify.V1.Service
         public override ResourceSet<BindingResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Notify,
                 "/v1/Services/" + ServiceSid + "/Bindings"
             );
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Notify.V1.Service
         public override Page<BindingResource> NextPage(Page<BindingResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Notify
                 )

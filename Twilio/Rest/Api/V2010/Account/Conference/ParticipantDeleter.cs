@@ -34,7 +34,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.DELETE,
+                HttpMethod.Delete,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + ConferenceSid + "/Participants/" + CallSid + ".json"
             );
@@ -73,7 +73,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.DELETE,
+                HttpMethod.Delete,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + ConferenceSid + "/Participants/" + CallSid + ".json"
             );

@@ -34,7 +34,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.DELETE,
+                HttpMethod.Delete,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + CredentialListSid + "/Credentials/" + Sid + ".json"
             );
@@ -73,7 +73,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.DELETE,
+                HttpMethod.Delete,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + CredentialListSid + "/Credentials/" + Sid + ".json"
             );

@@ -33,7 +33,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.DELETE,
+                HttpMethod.Delete,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + TrunkSid + "/CredentialLists/" + Sid + ""
             );
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.DELETE,
+                HttpMethod.Delete,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + TrunkSid + "/CredentialLists/" + Sid + ""
             );

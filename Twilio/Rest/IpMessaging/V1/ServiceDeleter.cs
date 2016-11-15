@@ -30,7 +30,7 @@ namespace Twilio.Rest.IpMessaging.V1
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.DELETE,
+                HttpMethod.Delete,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + Sid + ""
             );
@@ -69,7 +69,7 @@ namespace Twilio.Rest.IpMessaging.V1
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.DELETE,
+                HttpMethod.Delete,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + Sid + ""
             );

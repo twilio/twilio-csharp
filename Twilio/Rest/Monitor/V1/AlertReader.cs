@@ -24,7 +24,7 @@ namespace Twilio.Rest.Monitor.V1
         public override System.Threading.Tasks.Task<ResourceSet<AlertResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Monitor,
                 "/v1/Alerts"
             );
@@ -45,7 +45,7 @@ namespace Twilio.Rest.Monitor.V1
         public override ResourceSet<AlertResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Monitor,
                 "/v1/Alerts"
             );
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Monitor.V1
         public override Page<AlertResource> NextPage(Page<AlertResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Monitor
                 )

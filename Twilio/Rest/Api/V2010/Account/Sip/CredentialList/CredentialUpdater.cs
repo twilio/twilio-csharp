@@ -35,7 +35,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         public override async System.Threading.Tasks.Task<CredentialResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + CredentialListSid + "/Credentials/" + Sid + ".json"
             );
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         public override CredentialResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + CredentialListSid + "/Credentials/" + Sid + ".json"
             );

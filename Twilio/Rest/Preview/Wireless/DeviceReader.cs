@@ -22,7 +22,7 @@ namespace Twilio.Rest.Preview.Wireless
         public override System.Threading.Tasks.Task<ResourceSet<DeviceResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/wireless/Devices"
             );
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Preview.Wireless
         public override ResourceSet<DeviceResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/wireless/Devices"
             );
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Preview.Wireless
         public override Page<DeviceResource> NextPage(Page<DeviceResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Preview
                 )

@@ -18,7 +18,7 @@ namespace Twilio.Rest.Trunking.V1
         public override System.Threading.Tasks.Task<ResourceSet<TrunkResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Trunking,
                 "/v1/Trunks"
             );
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Trunking.V1
         public override ResourceSet<TrunkResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Trunking,
                 "/v1/Trunks"
             );
@@ -60,7 +60,7 @@ namespace Twilio.Rest.Trunking.V1
         public override Page<TrunkResource> NextPage(Page<TrunkResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Trunking
                 )

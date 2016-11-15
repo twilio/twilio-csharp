@@ -33,7 +33,7 @@ namespace Twilio.Rest.Notify.V1.Service
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.DELETE,
+                HttpMethod.Delete,
                 Rest.Domain.Notify,
                 "/v1/Services/" + ServiceSid + "/Bindings/" + Sid + ""
             );
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Notify.V1.Service
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.DELETE,
+                HttpMethod.Delete,
                 Rest.Domain.Notify,
                 "/v1/Services/" + ServiceSid + "/Bindings/" + Sid + ""
             );

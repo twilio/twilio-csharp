@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         public override async System.Threading.Tasks.Task<MobileResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (OwnerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/Mobile.json"
             );
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         public override MobileResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (OwnerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/Mobile.json"
             );

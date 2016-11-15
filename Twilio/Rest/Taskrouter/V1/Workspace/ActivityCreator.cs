@@ -34,7 +34,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public override async System.Threading.Tasks.Task<ActivityResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + WorkspaceSid + "/Activities"
             );
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public override ActivityResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + WorkspaceSid + "/Activities"
             );

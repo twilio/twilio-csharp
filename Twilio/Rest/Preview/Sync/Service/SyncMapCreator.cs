@@ -31,7 +31,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         public override async System.Threading.Tasks.Task<SyncMapResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + ServiceSid + "/Maps"
             );
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         public override SyncMapResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + ServiceSid + "/Maps"
             );

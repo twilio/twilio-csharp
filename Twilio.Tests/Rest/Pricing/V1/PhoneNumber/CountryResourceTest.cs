@@ -25,7 +25,7 @@ namespace Twilio.Tests.Rest.Pricing.V1.PhoneNumber
         public void TestReadRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(HttpMethod.GET,
+            var request = new Request(HttpMethod.Get,
                                       Twilio.Rest.Domain.Pricing,
                                       "/v1/PhoneNumbers/Countries");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -86,7 +86,7 @@ namespace Twilio.Tests.Rest.Pricing.V1.PhoneNumber
         public void TestFetchRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(HttpMethod.GET,
+            var request = new Request(HttpMethod.Get,
                                       Twilio.Rest.Domain.Pricing,
                                       "/v1/PhoneNumbers/Countries/US");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");

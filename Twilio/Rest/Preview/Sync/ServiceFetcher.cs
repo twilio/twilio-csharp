@@ -30,7 +30,7 @@ namespace Twilio.Rest.Preview.Sync
         public override async System.Threading.Tasks.Task<ServiceResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + Sid + ""
             );
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Preview.Sync
         public override ServiceResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + Sid + ""
             );

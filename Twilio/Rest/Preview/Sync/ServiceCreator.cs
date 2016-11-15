@@ -23,7 +23,7 @@ namespace Twilio.Rest.Preview.Sync
         public override async System.Threading.Tasks.Task<ServiceResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/Sync/Services"
             );
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Preview.Sync
         public override ServiceResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/Sync/Services"
             );

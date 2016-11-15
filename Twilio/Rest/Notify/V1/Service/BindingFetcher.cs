@@ -33,7 +33,7 @@ namespace Twilio.Rest.Notify.V1.Service
         public override async System.Threading.Tasks.Task<BindingResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Notify,
                 "/v1/Services/" + ServiceSid + "/Bindings/" + Sid + ""
             );
@@ -73,7 +73,7 @@ namespace Twilio.Rest.Notify.V1.Service
         public override BindingResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Notify,
                 "/v1/Services/" + ServiceSid + "/Bindings/" + Sid + ""
             );

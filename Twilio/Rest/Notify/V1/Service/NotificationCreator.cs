@@ -45,7 +45,7 @@ namespace Twilio.Rest.Notify.V1.Service
         public override async System.Threading.Tasks.Task<NotificationResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Notify,
                 "/v1/Services/" + ServiceSid + "/Notifications"
             );
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Notify.V1.Service
         public override NotificationResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Notify,
                 "/v1/Services/" + ServiceSid + "/Notifications"
             );

@@ -41,7 +41,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         public override async System.Threading.Tasks.Task<MemberResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Queues/" + QueueSid + "/Members/" + CallSid + ".json"
             );
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         public override MemberResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Queues/" + QueueSid + "/Members/" + CallSid + ".json"
             );

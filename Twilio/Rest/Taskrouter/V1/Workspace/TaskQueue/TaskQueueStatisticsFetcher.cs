@@ -39,7 +39,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         public override async System.Threading.Tasks.Task<TaskQueueStatisticsResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + WorkspaceSid + "/TaskQueues/" + TaskQueueSid + "/Statistics"
             );
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         public override TaskQueueStatisticsResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + WorkspaceSid + "/TaskQueues/" + TaskQueueSid + "/Statistics"
             );

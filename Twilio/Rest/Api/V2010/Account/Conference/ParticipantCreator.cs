@@ -57,7 +57,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         public override async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + ConferenceSid + "/Participants.json"
             );
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         public override ParticipantResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + ConferenceSid + "/Participants.json"
             );

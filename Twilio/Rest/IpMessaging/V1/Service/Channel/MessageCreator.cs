@@ -38,7 +38,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         public override async System.Threading.Tasks.Task<MessageResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Messages"
             );
@@ -79,7 +79,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         public override MessageResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Messages"
             );

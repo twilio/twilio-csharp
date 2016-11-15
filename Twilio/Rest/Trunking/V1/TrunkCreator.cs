@@ -26,7 +26,7 @@ namespace Twilio.Rest.Trunking.V1
         public override async System.Threading.Tasks.Task<TrunkResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Trunking,
                 "/v1/Trunks"
             );
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Trunking.V1
         public override TrunkResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Trunking,
                 "/v1/Trunks"
             );

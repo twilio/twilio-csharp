@@ -36,7 +36,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         public override async System.Threading.Tasks.Task<MessageResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Chat,
                 "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Messages/" + Sid + ""
             );
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         public override MessageResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Chat,
                 "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Messages/" + Sid + ""
             );

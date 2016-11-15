@@ -30,7 +30,7 @@ namespace Twilio.Rest.IpMessaging.V1
         public override async System.Threading.Tasks.Task<ServiceResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v1/Services"
             );
@@ -71,7 +71,7 @@ namespace Twilio.Rest.IpMessaging.V1
         public override ServiceResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v1/Services"
             );

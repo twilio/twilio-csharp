@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         public override System.Threading.Tasks.Task<ResourceSet<LocalResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/AvailablePhoneNumbers/" + CountryCode + "/Local.json"
             );
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         public override ResourceSet<LocalResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/AvailablePhoneNumbers/" + CountryCode + "/Local.json"
             );
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         public override Page<LocalResource> NextPage(Page<LocalResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Api
                 )

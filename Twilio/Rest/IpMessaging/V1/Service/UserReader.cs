@@ -30,7 +30,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public override System.Threading.Tasks.Task<ResourceSet<UserResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + ServiceSid + "/Users"
             );
@@ -51,7 +51,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public override ResourceSet<UserResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + ServiceSid + "/Users"
             );
@@ -72,7 +72,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public override Page<UserResource> NextPage(Page<UserResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.IpMessaging
                 )

@@ -30,7 +30,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         public override System.Threading.Tasks.Task<ResourceSet<SyncMapResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + ServiceSid + "/Maps"
             );
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         public override ResourceSet<SyncMapResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + ServiceSid + "/Maps"
             );
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         public override Page<SyncMapResource> NextPage(Page<SyncMapResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Preview
                 )

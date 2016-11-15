@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         public override System.Threading.Tasks.Task<ResourceSet<YearlyResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Usage/Records/Yearly.json"
             );
@@ -46,7 +46,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         public override ResourceSet<YearlyResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Usage/Records/Yearly.json"
             );
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         public override Page<YearlyResource> NextPage(Page<YearlyResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Api
                 )

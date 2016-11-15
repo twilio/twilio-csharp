@@ -36,7 +36,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public override async System.Threading.Tasks.Task<SyncListItemResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + ServiceSid + "/Lists/" + ListSid + "/Items/" + Index + ""
             );
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public override SyncListItemResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + ServiceSid + "/Lists/" + ListSid + "/Items/" + Index + ""
             );

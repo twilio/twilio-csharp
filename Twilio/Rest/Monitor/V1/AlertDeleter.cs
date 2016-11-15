@@ -30,7 +30,7 @@ namespace Twilio.Rest.Monitor.V1
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.DELETE,
+                HttpMethod.Delete,
                 Rest.Domain.Monitor,
                 "/v1/Alerts/" + Sid + ""
             );
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Monitor.V1
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.DELETE,
+                HttpMethod.Delete,
                 Rest.Domain.Monitor,
                 "/v1/Alerts/" + Sid + ""
             );

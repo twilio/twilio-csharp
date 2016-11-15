@@ -33,7 +33,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override async System.Threading.Tasks.Task<PhoneNumberResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + TrunkSid + "/PhoneNumbers"
             );
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override PhoneNumberResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + TrunkSid + "/PhoneNumbers"
             );

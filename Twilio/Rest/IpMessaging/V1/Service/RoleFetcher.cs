@@ -33,7 +33,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public override async System.Threading.Tasks.Task<RoleResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + ServiceSid + "/Roles/" + Sid + ""
             );
@@ -73,7 +73,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public override RoleResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + ServiceSid + "/Roles/" + Sid + ""
             );

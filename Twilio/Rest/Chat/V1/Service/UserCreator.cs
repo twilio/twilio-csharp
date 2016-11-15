@@ -36,7 +36,7 @@ namespace Twilio.Rest.Chat.V1.Service
         public override async System.Threading.Tasks.Task<UserResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Chat,
                 "/v1/Services/" + ServiceSid + "/Users"
             );
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Chat.V1.Service
         public override UserResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Chat,
                 "/v1/Services/" + ServiceSid + "/Users"
             );

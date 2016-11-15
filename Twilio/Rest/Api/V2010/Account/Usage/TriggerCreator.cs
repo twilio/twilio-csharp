@@ -42,7 +42,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         public override async System.Threading.Tasks.Task<TriggerResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Usage/Triggers.json"
             );
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         public override TriggerResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Usage/Triggers.json"
             );

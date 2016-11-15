@@ -30,7 +30,7 @@ namespace Twilio.Rest.Chat.V1
         public override async System.Threading.Tasks.Task<CredentialResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Chat,
                 "/v1/Credentials/" + Sid + ""
             );
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Chat.V1
         public override CredentialResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Chat,
                 "/v1/Credentials/" + Sid + ""
             );

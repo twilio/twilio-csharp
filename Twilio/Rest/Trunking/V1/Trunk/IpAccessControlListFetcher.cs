@@ -33,7 +33,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override async System.Threading.Tasks.Task<IpAccessControlListResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + TrunkSid + "/IpAccessControlLists/" + Sid + ""
             );
@@ -73,7 +73,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override IpAccessControlListResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + TrunkSid + "/IpAccessControlLists/" + Sid + ""
             );

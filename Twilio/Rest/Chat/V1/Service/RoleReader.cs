@@ -30,7 +30,7 @@ namespace Twilio.Rest.Chat.V1.Service
         public override System.Threading.Tasks.Task<ResourceSet<RoleResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Chat,
                 "/v1/Services/" + ServiceSid + "/Roles"
             );
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Chat.V1.Service
         public override ResourceSet<RoleResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Chat,
                 "/v1/Services/" + ServiceSid + "/Roles"
             );
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Chat.V1.Service
         public override Page<RoleResource> NextPage(Page<RoleResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Chat
                 )

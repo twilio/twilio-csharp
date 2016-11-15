@@ -30,7 +30,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override System.Threading.Tasks.Task<ResourceSet<CredentialListResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + TrunkSid + "/CredentialLists"
             );
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override ResourceSet<CredentialListResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + TrunkSid + "/CredentialLists"
             );
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override Page<CredentialListResource> NextPage(Page<CredentialListResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Trunking
                 )

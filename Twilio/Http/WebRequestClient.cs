@@ -49,7 +49,7 @@ namespace Twilio.Http
 //		    var version = Assembly.GetExecutingAssembly().GetName().Version;
 //		    httpRequest.UserAgent = "twilio-csharp/" + version + " (.NET " + Environment.Version.ToString() + ")";
 
-			if (!Equals(request.Method, HttpMethod.GET))
+			if (!Equals(request.Method, HttpMethod.Get))
 			{
 			    var stream = GetStream(httpRequest);
 			    stream.Write(request.EncodePostParams(), 0, request.EncodePostParams().Length);

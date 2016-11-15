@@ -37,7 +37,7 @@ namespace Twilio.Rest.Trunking.V1
         public override async System.Threading.Tasks.Task<TrunkResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + Sid + ""
             );
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Trunking.V1
         public override TrunkResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + Sid + ""
             );

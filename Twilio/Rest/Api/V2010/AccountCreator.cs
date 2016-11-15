@@ -20,7 +20,7 @@ namespace Twilio.Rest.Api.V2010
         public override async System.Threading.Tasks.Task<AccountResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts.json"
             );
@@ -61,7 +61,7 @@ namespace Twilio.Rest.Api.V2010
         public override AccountResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts.json"
             );

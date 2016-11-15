@@ -37,7 +37,7 @@ namespace Twilio.Rest.Taskrouter.V1
         public override async System.Threading.Tasks.Task<WorkspaceResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + Sid + ""
             );
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Taskrouter.V1
         public override WorkspaceResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + Sid + ""
             );

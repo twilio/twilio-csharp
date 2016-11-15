@@ -23,7 +23,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         public override System.Threading.Tasks.Task<ResourceSet<TriggerResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Usage/Triggers.json"
             );
@@ -44,7 +44,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         public override ResourceSet<TriggerResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Usage/Triggers.json"
             );
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         public override Page<TriggerResource> NextPage(Page<TriggerResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Api
                 )

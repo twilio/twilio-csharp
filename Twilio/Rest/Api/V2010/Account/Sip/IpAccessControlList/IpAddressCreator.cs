@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         public override async System.Threading.Tasks.Task<IpAddressResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + IpAccessControlListSid + "/IpAddresses.json"
             );
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         public override IpAddressResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + IpAccessControlListSid + "/IpAddresses.json"
             );

@@ -18,7 +18,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         public override System.Threading.Tasks.Task<ResourceSet<CountryResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Pricing,
                 "/v1/Voice/Countries"
             );
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         public override ResourceSet<CountryResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Pricing,
                 "/v1/Voice/Countries"
             );
@@ -60,7 +60,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         public override Page<CountryResource> NextPage(Page<CountryResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
                     Rest.Domain.Pricing
                 )

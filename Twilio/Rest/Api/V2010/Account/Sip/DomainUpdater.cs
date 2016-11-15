@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public override async System.Threading.Tasks.Task<DomainResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + Sid + ".json"
             );
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public override DomainResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
+                HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + Sid + ".json"
             );

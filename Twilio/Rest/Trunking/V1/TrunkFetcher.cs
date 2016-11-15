@@ -30,7 +30,7 @@ namespace Twilio.Rest.Trunking.V1
         public override async System.Threading.Tasks.Task<TrunkResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + Sid + ""
             );
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Trunking.V1
         public override TrunkResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + Sid + ""
             );

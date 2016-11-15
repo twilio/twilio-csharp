@@ -30,7 +30,7 @@ namespace Twilio.Rest.Monitor.V1
         public override async System.Threading.Tasks.Task<AlertResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Monitor,
                 "/v1/Alerts/" + Sid + ""
             );
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Monitor.V1
         public override AlertResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 Rest.Domain.Monitor,
                 "/v1/Alerts/" + Sid + ""
             );
