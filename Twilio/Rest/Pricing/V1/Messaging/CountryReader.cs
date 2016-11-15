@@ -19,7 +19,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Pricing,
+                Rest.Domain.Pricing,
                 "/v1/Messaging/Countries"
             );
             AddQueryParams(request);
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Pricing,
+                Rest.Domain.Pricing,
                 "/v1/Messaging/Countries"
             );
             
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
-                    Domains.Pricing
+                    Rest.Domain.Pricing
                 )
             );
             

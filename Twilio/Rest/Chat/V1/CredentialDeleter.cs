@@ -31,7 +31,7 @@ namespace Twilio.Rest.Chat.V1
         {
             var request = new Request(
                 HttpMethod.DELETE,
-                Domains.Chat,
+                Rest.Domain.Chat,
                 "/v1/Credentials/" + Sid + ""
             );
             
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Chat.V1
         {
             var request = new Request(
                 HttpMethod.DELETE,
-                Domains.Chat,
+                Rest.Domain.Chat,
                 "/v1/Credentials/" + Sid + ""
             );
             

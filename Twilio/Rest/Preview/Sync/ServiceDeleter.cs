@@ -31,7 +31,7 @@ namespace Twilio.Rest.Preview.Sync
         {
             var request = new Request(
                 HttpMethod.DELETE,
-                Domains.Preview,
+                Rest.Domain.Preview,
                 "/Sync/Services/" + Sid + ""
             );
             
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Preview.Sync
         {
             var request = new Request(
                 HttpMethod.DELETE,
-                Domains.Preview,
+                Rest.Domain.Preview,
                 "/Sync/Services/" + Sid + ""
             );
             

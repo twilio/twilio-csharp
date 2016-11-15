@@ -31,7 +31,7 @@ namespace Twilio.Rest.Monitor.V1
         {
             var request = new Request(
                 HttpMethod.DELETE,
-                Domains.Monitor,
+                Rest.Domain.Monitor,
                 "/v1/Alerts/" + Sid + ""
             );
             
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Monitor.V1
         {
             var request = new Request(
                 HttpMethod.DELETE,
-                Domains.Monitor,
+                Rest.Domain.Monitor,
                 "/v1/Alerts/" + Sid + ""
             );
             

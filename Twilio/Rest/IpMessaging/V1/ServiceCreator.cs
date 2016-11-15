@@ -31,7 +31,7 @@ namespace Twilio.Rest.IpMessaging.V1
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.IpMessaging,
+                Rest.Domain.IpMessaging,
                 "/v1/Services"
             );
             
@@ -72,7 +72,7 @@ namespace Twilio.Rest.IpMessaging.V1
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.IpMessaging,
+                Rest.Domain.IpMessaging,
                 "/v1/Services"
             );
             

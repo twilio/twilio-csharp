@@ -34,7 +34,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         {
             var request = new Request(
                 HttpMethod.DELETE,
-                Domains.IpMessaging,
+                Rest.Domain.IpMessaging,
                 "/v1/Services/" + ServiceSid + "/Users/" + Sid + ""
             );
             
@@ -73,7 +73,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         {
             var request = new Request(
                 HttpMethod.DELETE,
-                Domains.IpMessaging,
+                Rest.Domain.IpMessaging,
                 "/v1/Services/" + ServiceSid + "/Users/" + Sid + ""
             );
             

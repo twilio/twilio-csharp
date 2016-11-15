@@ -21,7 +21,7 @@ namespace Twilio.Rest.Notify.V1
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Notify,
+                Rest.Domain.Notify,
                 "/v1/Services"
             );
             AddQueryParams(request);
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Notify.V1
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Notify,
+                Rest.Domain.Notify,
                 "/v1/Services"
             );
             
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Notify.V1
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
-                    Domains.Notify
+                    Rest.Domain.Notify
                 )
             );
             

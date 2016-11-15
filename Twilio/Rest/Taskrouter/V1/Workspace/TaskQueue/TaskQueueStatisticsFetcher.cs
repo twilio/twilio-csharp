@@ -40,7 +40,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Taskrouter,
+                Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + WorkspaceSid + "/TaskQueues/" + TaskQueueSid + "/Statistics"
             );
             
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Taskrouter,
+                Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + WorkspaceSid + "/TaskQueues/" + TaskQueueSid + "/Statistics"
             );
             

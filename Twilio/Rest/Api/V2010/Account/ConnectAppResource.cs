@@ -16,8 +16,8 @@ namespace Twilio.Rest.Api.V2010.Account
             private PermissionEnum(string value) : base(value) {}
             public PermissionEnum() {}
         
-            public static PermissionEnum GetAll = new PermissionEnum("get-all");
-            public static PermissionEnum PostAll = new PermissionEnum("post-all");
+            public static readonly PermissionEnum GetAll = new PermissionEnum("get-all");
+            public static readonly PermissionEnum PostAll = new PermissionEnum("post-all");
         }
     
         /// <summary>

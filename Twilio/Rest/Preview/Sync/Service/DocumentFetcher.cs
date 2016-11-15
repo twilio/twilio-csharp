@@ -34,7 +34,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Preview,
+                Rest.Domain.Preview,
                 "/Sync/Services/" + ServiceSid + "/Documents/" + Sid + ""
             );
             
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Preview,
+                Rest.Domain.Preview,
                 "/Sync/Services/" + ServiceSid + "/Documents/" + Sid + ""
             );
             

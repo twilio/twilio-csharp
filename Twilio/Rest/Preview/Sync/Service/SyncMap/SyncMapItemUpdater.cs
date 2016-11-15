@@ -41,7 +41,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.Preview,
+                Rest.Domain.Preview,
                 "/Sync/Services/" + ServiceSid + "/Maps/" + MapSid + "/Items/" + Key + ""
             );
             AddPostParams(request);
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.Preview,
+                Rest.Domain.Preview,
                 "/Sync/Services/" + ServiceSid + "/Maps/" + MapSid + "/Items/" + Key + ""
             );
             AddPostParams(request);

@@ -36,7 +36,7 @@ namespace Twilio.Rest.Chat.V1
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.Chat,
+                Rest.Domain.Chat,
                 "/v1/Credentials"
             );
             
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Chat.V1
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.Chat,
+                Rest.Domain.Chat,
                 "/v1/Credentials"
             );
             

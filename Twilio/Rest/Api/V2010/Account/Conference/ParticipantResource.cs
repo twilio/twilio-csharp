@@ -15,12 +15,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
         
-            public static StatusEnum Queued = new StatusEnum("queued");
-            public static StatusEnum Connecting = new StatusEnum("connecting");
-            public static StatusEnum Ringing = new StatusEnum("ringing");
-            public static StatusEnum Connected = new StatusEnum("connected");
-            public static StatusEnum Complete = new StatusEnum("complete");
-            public static StatusEnum Failed = new StatusEnum("failed");
+            public static readonly StatusEnum Queued = new StatusEnum("queued");
+            public static readonly StatusEnum Connecting = new StatusEnum("connecting");
+            public static readonly StatusEnum Ringing = new StatusEnum("ringing");
+            public static readonly StatusEnum Connected = new StatusEnum("connected");
+            public static readonly StatusEnum Complete = new StatusEnum("complete");
+            public static readonly StatusEnum Failed = new StatusEnum("failed");
         }
     
         public sealed class BeepEnum : StringEnum 
@@ -28,10 +28,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             private BeepEnum(string value) : base(value) {}
             public BeepEnum() {}
         
-            public static BeepEnum True = new BeepEnum("true");
-            public static BeepEnum False = new BeepEnum("false");
-            public static BeepEnum Onenter = new BeepEnum("onEnter");
-            public static BeepEnum Onexit = new BeepEnum("onExit");
+            public static readonly BeepEnum True = new BeepEnum("true");
+            public static readonly BeepEnum False = new BeepEnum("false");
+            public static readonly BeepEnum Onenter = new BeepEnum("onEnter");
+            public static readonly BeepEnum Onexit = new BeepEnum("onExit");
         }
     
         public sealed class ConferenceRecordEnum : StringEnum 
@@ -39,8 +39,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             private ConferenceRecordEnum(string value) : base(value) {}
             public ConferenceRecordEnum() {}
         
-            public static ConferenceRecordEnum DoNotRecord = new ConferenceRecordEnum("do-not-record");
-            public static ConferenceRecordEnum RecordFromStart = new ConferenceRecordEnum("record-from-start");
+            public static readonly ConferenceRecordEnum DoNotRecord = new ConferenceRecordEnum("do-not-record");
+            public static readonly ConferenceRecordEnum RecordFromStart = new ConferenceRecordEnum("record-from-start");
         }
     
         /// <summary>

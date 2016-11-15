@@ -16,10 +16,10 @@ namespace Twilio.Rest.Notify.V1.Service
             private BindingTypeEnum(string value) : base(value) {}
             public BindingTypeEnum() {}
         
-            public static BindingTypeEnum Apn = new BindingTypeEnum("apn");
-            public static BindingTypeEnum Gcm = new BindingTypeEnum("gcm");
-            public static BindingTypeEnum Sms = new BindingTypeEnum("sms");
-            public static BindingTypeEnum FacebookMessenger = new BindingTypeEnum("facebook-messenger");
+            public static readonly BindingTypeEnum Apn = new BindingTypeEnum("apn");
+            public static readonly BindingTypeEnum Gcm = new BindingTypeEnum("gcm");
+            public static readonly BindingTypeEnum Sms = new BindingTypeEnum("sms");
+            public static readonly BindingTypeEnum FacebookMessenger = new BindingTypeEnum("facebook-messenger");
         }
     
         /// <summary>

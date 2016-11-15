@@ -15,8 +15,8 @@ namespace Twilio.Rest.Chat.V1
             private PushServiceEnum(string value) : base(value) {}
             public PushServiceEnum() {}
         
-            public static PushServiceEnum Gcm = new PushServiceEnum("gcm");
-            public static PushServiceEnum Apn = new PushServiceEnum("apn");
+            public static readonly PushServiceEnum Gcm = new PushServiceEnum("gcm");
+            public static readonly PushServiceEnum Apn = new PushServiceEnum("apn");
         }
     
         /// <summary>

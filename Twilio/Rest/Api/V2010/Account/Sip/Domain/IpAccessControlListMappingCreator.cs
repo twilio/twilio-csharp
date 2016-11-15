@@ -35,7 +35,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.Api,
+                Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + DomainSid + "/IpAccessControlListMappings.json"
             );
             
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.Api,
+                Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + DomainSid + "/IpAccessControlListMappings.json"
             );
             

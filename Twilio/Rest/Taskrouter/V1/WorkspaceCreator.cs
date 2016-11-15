@@ -36,7 +36,7 @@ namespace Twilio.Rest.Taskrouter.V1
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.Taskrouter,
+                Rest.Domain.Taskrouter,
                 "/v1/Workspaces"
             );
             
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Taskrouter.V1
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.Taskrouter,
+                Rest.Domain.Taskrouter,
                 "/v1/Workspaces"
             );
             

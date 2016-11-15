@@ -24,7 +24,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Api,
+                Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (OwnerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/Local.json"
             );
             AddQueryParams(request);
@@ -45,7 +45,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Api,
+                Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (OwnerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/Local.json"
             );
             
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
-                    Domains.Api
+                    Rest.Domain.Api
                 )
             );
             

@@ -33,7 +33,7 @@ namespace Twilio.Rest.Preview.Wireless.Device
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Preview,
+                Rest.Domain.Preview,
                 "/wireless/Devices/" + DeviceSid + "/Usage"
             );
             
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Preview.Wireless.Device
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Preview,
+                Rest.Domain.Preview,
                 "/wireless/Devices/" + DeviceSid + "/Usage"
             );
             

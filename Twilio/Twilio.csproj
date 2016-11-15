@@ -68,7 +68,7 @@
     <Compile Include="JWT\TaskRouterCapability.cs" />
     <Compile Include="JWT\TwilioCapability.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rest\Domains.cs" />
+    <Compile Include="Rest\Domain.cs" />
     <Compile Include="Types\IEndpoint.cs" />
     <Compile Include="Types\Client.cs" />
     <Compile Include="Types\PhoneNumber.cs" />

@@ -16,8 +16,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             private ChannelTypeEnum(string value) : base(value) {}
             public ChannelTypeEnum() {}
         
-            public static ChannelTypeEnum Public = new ChannelTypeEnum("public");
-            public static ChannelTypeEnum Private = new ChannelTypeEnum("private");
+            public static readonly ChannelTypeEnum Public = new ChannelTypeEnum("public");
+            public static readonly ChannelTypeEnum Private = new ChannelTypeEnum("private");
         }
     
         /// <summary>

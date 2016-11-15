@@ -16,9 +16,9 @@ namespace Twilio.Rest.Lookups.V1
             private TypeEnum(string value) : base(value) {}
             public TypeEnum() {}
         
-            public static TypeEnum Landline = new TypeEnum("landline");
-            public static TypeEnum Mobile = new TypeEnum("mobile");
-            public static TypeEnum Voip = new TypeEnum("voip");
+            public static readonly TypeEnum Landline = new TypeEnum("landline");
+            public static readonly TypeEnum Mobile = new TypeEnum("mobile");
+            public static readonly TypeEnum Voip = new TypeEnum("voip");
         }
     
         /// <summary>

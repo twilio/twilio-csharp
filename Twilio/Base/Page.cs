@@ -45,27 +45,27 @@ namespace Twilio.Base
 	        _previousPageUrl = previousPageUrl;
 	    }
 
-	    private static string UrlFromUri(Domains domain, string uri)
+	    private static string UrlFromUri(Domain domain, string uri)
 	    {
 	        return "https://" + domain + ".twilio.com" + uri;
 	    }
 
-	    public string GetFirstPageUrl(Domains domain)
+	    public string GetFirstPageUrl(Domain domain)
 	    {
 	        return _firstPageUrl ?? UrlFromUri(domain, _firstPageUri);
 	    }
 
-	    public string GetNextPageUrl(Domains domain)
+	    public string GetNextPageUrl(Domain domain)
 	    {
 	        return _nextPageUrl ?? UrlFromUri(domain, _nextPageUri);
 	    }
 
-	    public string GetPreviousPageUrl(Domains domain)
+	    public string GetPreviousPageUrl(Domain domain)
 	    {
 	        return _previousPageUrl ?? UrlFromUri(domain, _previousPageUri);
 	    }
 
-	    public string GetUrl(Domains domain)
+	    public string GetUrl(Domain domain)
 	    {
 	        return _url ?? UrlFromUri(domain, _uri);
 	    }

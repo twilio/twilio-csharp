@@ -27,7 +27,7 @@ namespace Twilio.Rest.Trunking.V1
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.Trunking,
+                Rest.Domain.Trunking,
                 "/v1/Trunks"
             );
             
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Trunking.V1
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.Trunking,
+                Rest.Domain.Trunking,
                 "/v1/Trunks"
             );
             

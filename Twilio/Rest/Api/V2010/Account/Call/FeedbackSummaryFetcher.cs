@@ -32,7 +32,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Api,
+                Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/FeedbackSummary/" + Sid + ".json"
             );
             
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Api,
+                Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/FeedbackSummary/" + Sid + ".json"
             );
             

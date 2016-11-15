@@ -16,8 +16,8 @@ namespace Twilio.Rest.Notify.V1.Service
             private PriorityEnum(string value) : base(value) {}
             public PriorityEnum() {}
         
-            public static PriorityEnum High = new PriorityEnum("high");
-            public static PriorityEnum Low = new PriorityEnum("low");
+            public static readonly PriorityEnum High = new PriorityEnum("high");
+            public static readonly PriorityEnum Low = new PriorityEnum("low");
         }
     
         /// <summary>

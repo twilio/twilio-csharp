@@ -15,8 +15,8 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             private OutcomeEnum(string value) : base(value) {}
             public OutcomeEnum() {}
         
-            public static OutcomeEnum Confirmed = new OutcomeEnum("confirmed");
-            public static OutcomeEnum Umconfirmed = new OutcomeEnum("umconfirmed");
+            public static readonly OutcomeEnum Confirmed = new OutcomeEnum("confirmed");
+            public static readonly OutcomeEnum Umconfirmed = new OutcomeEnum("umconfirmed");
         }
     
         /// <summary>

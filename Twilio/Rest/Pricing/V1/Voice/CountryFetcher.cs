@@ -31,7 +31,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Pricing,
+                Rest.Domain.Pricing,
                 "/v1/Voice/Countries/" + IsoCountry + ""
             );
             
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Pricing,
+                Rest.Domain.Pricing,
                 "/v1/Voice/Countries/" + IsoCountry + ""
             );
             

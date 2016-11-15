@@ -35,7 +35,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Api,
+                Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Queues/" + QueueSid + "/Members/" + CallSid + ".json"
             );
             
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Api,
+                Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Queues/" + QueueSid + "/Members/" + CallSid + ".json"
             );
             

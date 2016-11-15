@@ -31,7 +31,7 @@ namespace Twilio.Rest.Chat.V1.Service
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Chat,
+                Rest.Domain.Chat,
                 "/v1/Services/" + ServiceSid + "/Users"
             );
             AddQueryParams(request);
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Chat.V1.Service
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Chat,
+                Rest.Domain.Chat,
                 "/v1/Services/" + ServiceSid + "/Users"
             );
             
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
-                    Domains.Chat
+                    Rest.Domain.Chat
                 )
             );
             

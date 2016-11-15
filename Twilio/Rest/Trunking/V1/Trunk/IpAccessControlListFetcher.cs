@@ -34,7 +34,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Trunking,
+                Rest.Domain.Trunking,
                 "/v1/Trunks/" + TrunkSid + "/IpAccessControlLists/" + Sid + ""
             );
             
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Trunking,
+                Rest.Domain.Trunking,
                 "/v1/Trunks/" + TrunkSid + "/IpAccessControlLists/" + Sid + ""
             );
             

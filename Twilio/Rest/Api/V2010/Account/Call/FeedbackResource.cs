@@ -16,14 +16,14 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             private IssuesEnum(string value) : base(value) {}
             public IssuesEnum() {}
         
-            public static IssuesEnum AudioLatency = new IssuesEnum("audio-latency");
-            public static IssuesEnum DigitsNotCaptured = new IssuesEnum("digits-not-captured");
-            public static IssuesEnum DroppedCall = new IssuesEnum("dropped-call");
-            public static IssuesEnum ImperfectAudio = new IssuesEnum("imperfect-audio");
-            public static IssuesEnum IncorrectCallerId = new IssuesEnum("incorrect-caller-id");
-            public static IssuesEnum OneWayAudio = new IssuesEnum("one-way-audio");
-            public static IssuesEnum PostDialDelay = new IssuesEnum("post-dial-delay");
-            public static IssuesEnum UnsolicitedCall = new IssuesEnum("unsolicited-call");
+            public static readonly IssuesEnum AudioLatency = new IssuesEnum("audio-latency");
+            public static readonly IssuesEnum DigitsNotCaptured = new IssuesEnum("digits-not-captured");
+            public static readonly IssuesEnum DroppedCall = new IssuesEnum("dropped-call");
+            public static readonly IssuesEnum ImperfectAudio = new IssuesEnum("imperfect-audio");
+            public static readonly IssuesEnum IncorrectCallerId = new IssuesEnum("incorrect-caller-id");
+            public static readonly IssuesEnum OneWayAudio = new IssuesEnum("one-way-audio");
+            public static readonly IssuesEnum PostDialDelay = new IssuesEnum("post-dial-delay");
+            public static readonly IssuesEnum UnsolicitedCall = new IssuesEnum("unsolicited-call");
         }
     
         /// <summary>

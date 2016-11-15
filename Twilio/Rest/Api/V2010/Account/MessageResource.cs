@@ -16,14 +16,14 @@ namespace Twilio.Rest.Api.V2010.Account
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
         
-            public static StatusEnum Queued = new StatusEnum("queued");
-            public static StatusEnum Sending = new StatusEnum("sending");
-            public static StatusEnum Sent = new StatusEnum("sent");
-            public static StatusEnum Failed = new StatusEnum("failed");
-            public static StatusEnum Delivered = new StatusEnum("delivered");
-            public static StatusEnum Undelivered = new StatusEnum("undelivered");
-            public static StatusEnum Receiving = new StatusEnum("receiving");
-            public static StatusEnum Received = new StatusEnum("received");
+            public static readonly StatusEnum Queued = new StatusEnum("queued");
+            public static readonly StatusEnum Sending = new StatusEnum("sending");
+            public static readonly StatusEnum Sent = new StatusEnum("sent");
+            public static readonly StatusEnum Failed = new StatusEnum("failed");
+            public static readonly StatusEnum Delivered = new StatusEnum("delivered");
+            public static readonly StatusEnum Undelivered = new StatusEnum("undelivered");
+            public static readonly StatusEnum Receiving = new StatusEnum("receiving");
+            public static readonly StatusEnum Received = new StatusEnum("received");
         }
     
         public sealed class DirectionEnum : StringEnum 
@@ -31,10 +31,10 @@ namespace Twilio.Rest.Api.V2010.Account
             private DirectionEnum(string value) : base(value) {}
             public DirectionEnum() {}
         
-            public static DirectionEnum Inbound = new DirectionEnum("inbound");
-            public static DirectionEnum OutboundApi = new DirectionEnum("outbound-api");
-            public static DirectionEnum OutboundCall = new DirectionEnum("outbound-call");
-            public static DirectionEnum OutboundReply = new DirectionEnum("outbound-reply");
+            public static readonly DirectionEnum Inbound = new DirectionEnum("inbound");
+            public static readonly DirectionEnum OutboundApi = new DirectionEnum("outbound-api");
+            public static readonly DirectionEnum OutboundCall = new DirectionEnum("outbound-call");
+            public static readonly DirectionEnum OutboundReply = new DirectionEnum("outbound-reply");
         }
     
         /// <summary>

@@ -16,9 +16,9 @@ namespace Twilio.Rest.Api.V2010.Account
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
         
-            public static StatusEnum Init = new StatusEnum("init");
-            public static StatusEnum InProgress = new StatusEnum("in-progress");
-            public static StatusEnum Completed = new StatusEnum("completed");
+            public static readonly StatusEnum Init = new StatusEnum("init");
+            public static readonly StatusEnum InProgress = new StatusEnum("in-progress");
+            public static readonly StatusEnum Completed = new StatusEnum("completed");
         }
     
         /// <summary>

@@ -15,8 +15,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             private QueryResultOrderEnum(string value) : base(value) {}
             public QueryResultOrderEnum() {}
         
-            public static QueryResultOrderEnum Asc = new QueryResultOrderEnum("asc");
-            public static QueryResultOrderEnum Desc = new QueryResultOrderEnum("desc");
+            public static readonly QueryResultOrderEnum Asc = new QueryResultOrderEnum("asc");
+            public static readonly QueryResultOrderEnum Desc = new QueryResultOrderEnum("desc");
         }
     
         public sealed class QueryFromBoundTypeEnum : StringEnum 
@@ -24,8 +24,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             private QueryFromBoundTypeEnum(string value) : base(value) {}
             public QueryFromBoundTypeEnum() {}
         
-            public static QueryFromBoundTypeEnum Inclusive = new QueryFromBoundTypeEnum("inclusive");
-            public static QueryFromBoundTypeEnum Exclusive = new QueryFromBoundTypeEnum("exclusive");
+            public static readonly QueryFromBoundTypeEnum Inclusive = new QueryFromBoundTypeEnum("inclusive");
+            public static readonly QueryFromBoundTypeEnum Exclusive = new QueryFromBoundTypeEnum("exclusive");
         }
     
         /// <summary>

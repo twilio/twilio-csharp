@@ -31,7 +31,7 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Pricing,
+                Rest.Domain.Pricing,
                 "/v1/PhoneNumbers/Countries/" + IsoCountry + ""
             );
             
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Pricing,
+                Rest.Domain.Pricing,
                 "/v1/PhoneNumbers/Countries/" + IsoCountry + ""
             );
             

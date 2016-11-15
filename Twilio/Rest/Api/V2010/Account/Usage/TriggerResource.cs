@@ -15,96 +15,96 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             private UsageCategoryEnum(string value) : base(value) {}
             public UsageCategoryEnum() {}
         
-            public static UsageCategoryEnum AuthyAuthentications = new UsageCategoryEnum("authy-authentications");
-            public static UsageCategoryEnum AuthyCallsOutbound = new UsageCategoryEnum("authy-calls-outbound");
-            public static UsageCategoryEnum AuthyMonthlyFees = new UsageCategoryEnum("authy-monthly-fees");
-            public static UsageCategoryEnum AuthyPhoneIntelligence = new UsageCategoryEnum("authy-phone-intelligence");
-            public static UsageCategoryEnum AuthyPhoneVerifications = new UsageCategoryEnum("authy-phone-verifications");
-            public static UsageCategoryEnum AuthySmsOutbound = new UsageCategoryEnum("authy-sms-outbound");
-            public static UsageCategoryEnum CallProgessEvents = new UsageCategoryEnum("call-progess-events");
-            public static UsageCategoryEnum Calleridlookups = new UsageCategoryEnum("calleridlookups");
-            public static UsageCategoryEnum Calls = new UsageCategoryEnum("calls");
-            public static UsageCategoryEnum CallsClient = new UsageCategoryEnum("calls-client");
-            public static UsageCategoryEnum CallsGlobalconference = new UsageCategoryEnum("calls-globalconference");
-            public static UsageCategoryEnum CallsInbound = new UsageCategoryEnum("calls-inbound");
-            public static UsageCategoryEnum CallsInboundLocal = new UsageCategoryEnum("calls-inbound-local");
-            public static UsageCategoryEnum CallsInboundMobile = new UsageCategoryEnum("calls-inbound-mobile");
-            public static UsageCategoryEnum CallsInboundTollfree = new UsageCategoryEnum("calls-inbound-tollfree");
-            public static UsageCategoryEnum CallsOutbound = new UsageCategoryEnum("calls-outbound");
-            public static UsageCategoryEnum CallsRecordings = new UsageCategoryEnum("calls-recordings");
-            public static UsageCategoryEnum CallsSip = new UsageCategoryEnum("calls-sip");
-            public static UsageCategoryEnum CallsSipInbound = new UsageCategoryEnum("calls-sip-inbound");
-            public static UsageCategoryEnum CallsSipOutbound = new UsageCategoryEnum("calls-sip-outbound");
-            public static UsageCategoryEnum CarrierLookups = new UsageCategoryEnum("carrier-lookups");
-            public static UsageCategoryEnum Conversations = new UsageCategoryEnum("conversations");
-            public static UsageCategoryEnum ConversationsApiRequests = new UsageCategoryEnum("conversations-api-requests");
-            public static UsageCategoryEnum ConversationsConversationEvents = new UsageCategoryEnum("conversations-conversation-events");
-            public static UsageCategoryEnum ConversationsEndpointConnectivity = new UsageCategoryEnum("conversations-endpoint-connectivity");
-            public static UsageCategoryEnum ConversationsEvents = new UsageCategoryEnum("conversations-events");
-            public static UsageCategoryEnum ConversationsParticipantEvents = new UsageCategoryEnum("conversations-participant-events");
-            public static UsageCategoryEnum ConversationsParticipants = new UsageCategoryEnum("conversations-participants");
-            public static UsageCategoryEnum IpMessaging = new UsageCategoryEnum("ip-messaging");
-            public static UsageCategoryEnum IpMessagingCommands = new UsageCategoryEnum("ip-messaging-commands");
-            public static UsageCategoryEnum IpMessagingDataStorage = new UsageCategoryEnum("ip-messaging-data-storage");
-            public static UsageCategoryEnum IpMessagingDataTransfer = new UsageCategoryEnum("ip-messaging-data-transfer");
-            public static UsageCategoryEnum IpMessagingEndpointConnectivity = new UsageCategoryEnum("ip-messaging-endpoint-connectivity");
-            public static UsageCategoryEnum Lookups = new UsageCategoryEnum("lookups");
-            public static UsageCategoryEnum Mediastorage = new UsageCategoryEnum("mediastorage");
-            public static UsageCategoryEnum Mms = new UsageCategoryEnum("mms");
-            public static UsageCategoryEnum MmsInbound = new UsageCategoryEnum("mms-inbound");
-            public static UsageCategoryEnum MmsInboundLongcode = new UsageCategoryEnum("mms-inbound-longcode");
-            public static UsageCategoryEnum MmsInboundShortcode = new UsageCategoryEnum("mms-inbound-shortcode");
-            public static UsageCategoryEnum MmsOutbound = new UsageCategoryEnum("mms-outbound");
-            public static UsageCategoryEnum MmsOutboundLongcode = new UsageCategoryEnum("mms-outbound-longcode");
-            public static UsageCategoryEnum MmsOutboundShortcode = new UsageCategoryEnum("mms-outbound-shortcode");
-            public static UsageCategoryEnum MonitorReads = new UsageCategoryEnum("monitor-reads");
-            public static UsageCategoryEnum MonitorStorage = new UsageCategoryEnum("monitor-storage");
-            public static UsageCategoryEnum MonitorWrites = new UsageCategoryEnum("monitor-writes");
-            public static UsageCategoryEnum NumberFormatLookups = new UsageCategoryEnum("number-format-lookups");
-            public static UsageCategoryEnum Phonenumbers = new UsageCategoryEnum("phonenumbers");
-            public static UsageCategoryEnum PhonenumbersCps = new UsageCategoryEnum("phonenumbers-cps");
-            public static UsageCategoryEnum PhonenumbersEmergency = new UsageCategoryEnum("phonenumbers-emergency");
-            public static UsageCategoryEnum PhonenumbersLocal = new UsageCategoryEnum("phonenumbers-local");
-            public static UsageCategoryEnum PhonenumbersMobile = new UsageCategoryEnum("phonenumbers-mobile");
-            public static UsageCategoryEnum PhonenumbersSetups = new UsageCategoryEnum("phonenumbers-setups");
-            public static UsageCategoryEnum PhonenumbersTollfree = new UsageCategoryEnum("phonenumbers-tollfree");
-            public static UsageCategoryEnum Premiumsupport = new UsageCategoryEnum("premiumsupport");
-            public static UsageCategoryEnum Recordings = new UsageCategoryEnum("recordings");
-            public static UsageCategoryEnum Recordingstorage = new UsageCategoryEnum("recordingstorage");
-            public static UsageCategoryEnum Shortcodes = new UsageCategoryEnum("shortcodes");
-            public static UsageCategoryEnum ShortcodesCustomerowned = new UsageCategoryEnum("shortcodes-customerowned");
-            public static UsageCategoryEnum ShortcodesMmsEnablement = new UsageCategoryEnum("shortcodes-mms-enablement");
-            public static UsageCategoryEnum ShortcodesMps = new UsageCategoryEnum("shortcodes-mps");
-            public static UsageCategoryEnum ShortcodesRandom = new UsageCategoryEnum("shortcodes-random");
-            public static UsageCategoryEnum ShortcodesUk = new UsageCategoryEnum("shortcodes-uk");
-            public static UsageCategoryEnum ShortcodesVanity = new UsageCategoryEnum("shortcodes-vanity");
-            public static UsageCategoryEnum Sms = new UsageCategoryEnum("sms");
-            public static UsageCategoryEnum SmsInbound = new UsageCategoryEnum("sms-inbound");
-            public static UsageCategoryEnum SmsInboundLongcode = new UsageCategoryEnum("sms-inbound-longcode");
-            public static UsageCategoryEnum SmsInboundShortcode = new UsageCategoryEnum("sms-inbound-shortcode");
-            public static UsageCategoryEnum SmsOutbound = new UsageCategoryEnum("sms-outbound");
-            public static UsageCategoryEnum SmsOutboundLongcode = new UsageCategoryEnum("sms-outbound-longcode");
-            public static UsageCategoryEnum SmsOutboundShortcode = new UsageCategoryEnum("sms-outbound-shortcode");
-            public static UsageCategoryEnum TaskrouterTasks = new UsageCategoryEnum("taskrouter-tasks");
-            public static UsageCategoryEnum Totalprice = new UsageCategoryEnum("totalprice");
-            public static UsageCategoryEnum Transcriptions = new UsageCategoryEnum("transcriptions");
-            public static UsageCategoryEnum TrunkingCps = new UsageCategoryEnum("trunking-cps");
-            public static UsageCategoryEnum TrunkingEmergencyCalls = new UsageCategoryEnum("trunking-emergency-calls");
-            public static UsageCategoryEnum TrunkingOrigination = new UsageCategoryEnum("trunking-origination");
-            public static UsageCategoryEnum TrunkingOriginationLocal = new UsageCategoryEnum("trunking-origination-local");
-            public static UsageCategoryEnum TrunkingOriginationMobile = new UsageCategoryEnum("trunking-origination-mobile");
-            public static UsageCategoryEnum TrunkingOriginationTollfree = new UsageCategoryEnum("trunking-origination-tollfree");
-            public static UsageCategoryEnum TrunkingRecordings = new UsageCategoryEnum("trunking-recordings");
-            public static UsageCategoryEnum TrunkingSecure = new UsageCategoryEnum("trunking-secure");
-            public static UsageCategoryEnum TrunkingTermination = new UsageCategoryEnum("trunking-termination");
-            public static UsageCategoryEnum Turnmegabytes = new UsageCategoryEnum("turnmegabytes");
-            public static UsageCategoryEnum TurnmegabytesAustralia = new UsageCategoryEnum("turnmegabytes-australia");
-            public static UsageCategoryEnum TurnmegabytesBrasil = new UsageCategoryEnum("turnmegabytes-brasil");
-            public static UsageCategoryEnum TurnmegabytesIreland = new UsageCategoryEnum("turnmegabytes-ireland");
-            public static UsageCategoryEnum TurnmegabytesJapan = new UsageCategoryEnum("turnmegabytes-japan");
-            public static UsageCategoryEnum TurnmegabytesSingapore = new UsageCategoryEnum("turnmegabytes-singapore");
-            public static UsageCategoryEnum TurnmegabytesUseast = new UsageCategoryEnum("turnmegabytes-useast");
-            public static UsageCategoryEnum TurnmegabytesUswest = new UsageCategoryEnum("turnmegabytes-uswest");
+            public static readonly UsageCategoryEnum AuthyAuthentications = new UsageCategoryEnum("authy-authentications");
+            public static readonly UsageCategoryEnum AuthyCallsOutbound = new UsageCategoryEnum("authy-calls-outbound");
+            public static readonly UsageCategoryEnum AuthyMonthlyFees = new UsageCategoryEnum("authy-monthly-fees");
+            public static readonly UsageCategoryEnum AuthyPhoneIntelligence = new UsageCategoryEnum("authy-phone-intelligence");
+            public static readonly UsageCategoryEnum AuthyPhoneVerifications = new UsageCategoryEnum("authy-phone-verifications");
+            public static readonly UsageCategoryEnum AuthySmsOutbound = new UsageCategoryEnum("authy-sms-outbound");
+            public static readonly UsageCategoryEnum CallProgessEvents = new UsageCategoryEnum("call-progess-events");
+            public static readonly UsageCategoryEnum Calleridlookups = new UsageCategoryEnum("calleridlookups");
+            public static readonly UsageCategoryEnum Calls = new UsageCategoryEnum("calls");
+            public static readonly UsageCategoryEnum CallsClient = new UsageCategoryEnum("calls-client");
+            public static readonly UsageCategoryEnum CallsGlobalconference = new UsageCategoryEnum("calls-globalconference");
+            public static readonly UsageCategoryEnum CallsInbound = new UsageCategoryEnum("calls-inbound");
+            public static readonly UsageCategoryEnum CallsInboundLocal = new UsageCategoryEnum("calls-inbound-local");
+            public static readonly UsageCategoryEnum CallsInboundMobile = new UsageCategoryEnum("calls-inbound-mobile");
+            public static readonly UsageCategoryEnum CallsInboundTollfree = new UsageCategoryEnum("calls-inbound-tollfree");
+            public static readonly UsageCategoryEnum CallsOutbound = new UsageCategoryEnum("calls-outbound");
+            public static readonly UsageCategoryEnum CallsRecordings = new UsageCategoryEnum("calls-recordings");
+            public static readonly UsageCategoryEnum CallsSip = new UsageCategoryEnum("calls-sip");
+            public static readonly UsageCategoryEnum CallsSipInbound = new UsageCategoryEnum("calls-sip-inbound");
+            public static readonly UsageCategoryEnum CallsSipOutbound = new UsageCategoryEnum("calls-sip-outbound");
+            public static readonly UsageCategoryEnum CarrierLookups = new UsageCategoryEnum("carrier-lookups");
+            public static readonly UsageCategoryEnum Conversations = new UsageCategoryEnum("conversations");
+            public static readonly UsageCategoryEnum ConversationsApiRequests = new UsageCategoryEnum("conversations-api-requests");
+            public static readonly UsageCategoryEnum ConversationsConversationEvents = new UsageCategoryEnum("conversations-conversation-events");
+            public static readonly UsageCategoryEnum ConversationsEndpointConnectivity = new UsageCategoryEnum("conversations-endpoint-connectivity");
+            public static readonly UsageCategoryEnum ConversationsEvents = new UsageCategoryEnum("conversations-events");
+            public static readonly UsageCategoryEnum ConversationsParticipantEvents = new UsageCategoryEnum("conversations-participant-events");
+            public static readonly UsageCategoryEnum ConversationsParticipants = new UsageCategoryEnum("conversations-participants");
+            public static readonly UsageCategoryEnum IpMessaging = new UsageCategoryEnum("ip-messaging");
+            public static readonly UsageCategoryEnum IpMessagingCommands = new UsageCategoryEnum("ip-messaging-commands");
+            public static readonly UsageCategoryEnum IpMessagingDataStorage = new UsageCategoryEnum("ip-messaging-data-storage");
+            public static readonly UsageCategoryEnum IpMessagingDataTransfer = new UsageCategoryEnum("ip-messaging-data-transfer");
+            public static readonly UsageCategoryEnum IpMessagingEndpointConnectivity = new UsageCategoryEnum("ip-messaging-endpoint-connectivity");
+            public static readonly UsageCategoryEnum Lookups = new UsageCategoryEnum("lookups");
+            public static readonly UsageCategoryEnum Mediastorage = new UsageCategoryEnum("mediastorage");
+            public static readonly UsageCategoryEnum Mms = new UsageCategoryEnum("mms");
+            public static readonly UsageCategoryEnum MmsInbound = new UsageCategoryEnum("mms-inbound");
+            public static readonly UsageCategoryEnum MmsInboundLongcode = new UsageCategoryEnum("mms-inbound-longcode");
+            public static readonly UsageCategoryEnum MmsInboundShortcode = new UsageCategoryEnum("mms-inbound-shortcode");
+            public static readonly UsageCategoryEnum MmsOutbound = new UsageCategoryEnum("mms-outbound");
+            public static readonly UsageCategoryEnum MmsOutboundLongcode = new UsageCategoryEnum("mms-outbound-longcode");
+            public static readonly UsageCategoryEnum MmsOutboundShortcode = new UsageCategoryEnum("mms-outbound-shortcode");
+            public static readonly UsageCategoryEnum MonitorReads = new UsageCategoryEnum("monitor-reads");
+            public static readonly UsageCategoryEnum MonitorStorage = new UsageCategoryEnum("monitor-storage");
+            public static readonly UsageCategoryEnum MonitorWrites = new UsageCategoryEnum("monitor-writes");
+            public static readonly UsageCategoryEnum NumberFormatLookups = new UsageCategoryEnum("number-format-lookups");
+            public static readonly UsageCategoryEnum Phonenumbers = new UsageCategoryEnum("phonenumbers");
+            public static readonly UsageCategoryEnum PhonenumbersCps = new UsageCategoryEnum("phonenumbers-cps");
+            public static readonly UsageCategoryEnum PhonenumbersEmergency = new UsageCategoryEnum("phonenumbers-emergency");
+            public static readonly UsageCategoryEnum PhonenumbersLocal = new UsageCategoryEnum("phonenumbers-local");
+            public static readonly UsageCategoryEnum PhonenumbersMobile = new UsageCategoryEnum("phonenumbers-mobile");
+            public static readonly UsageCategoryEnum PhonenumbersSetups = new UsageCategoryEnum("phonenumbers-setups");
+            public static readonly UsageCategoryEnum PhonenumbersTollfree = new UsageCategoryEnum("phonenumbers-tollfree");
+            public static readonly UsageCategoryEnum Premiumsupport = new UsageCategoryEnum("premiumsupport");
+            public static readonly UsageCategoryEnum Recordings = new UsageCategoryEnum("recordings");
+            public static readonly UsageCategoryEnum Recordingstorage = new UsageCategoryEnum("recordingstorage");
+            public static readonly UsageCategoryEnum Shortcodes = new UsageCategoryEnum("shortcodes");
+            public static readonly UsageCategoryEnum ShortcodesCustomerowned = new UsageCategoryEnum("shortcodes-customerowned");
+            public static readonly UsageCategoryEnum ShortcodesMmsEnablement = new UsageCategoryEnum("shortcodes-mms-enablement");
+            public static readonly UsageCategoryEnum ShortcodesMps = new UsageCategoryEnum("shortcodes-mps");
+            public static readonly UsageCategoryEnum ShortcodesRandom = new UsageCategoryEnum("shortcodes-random");
+            public static readonly UsageCategoryEnum ShortcodesUk = new UsageCategoryEnum("shortcodes-uk");
+            public static readonly UsageCategoryEnum ShortcodesVanity = new UsageCategoryEnum("shortcodes-vanity");
+            public static readonly UsageCategoryEnum Sms = new UsageCategoryEnum("sms");
+            public static readonly UsageCategoryEnum SmsInbound = new UsageCategoryEnum("sms-inbound");
+            public static readonly UsageCategoryEnum SmsInboundLongcode = new UsageCategoryEnum("sms-inbound-longcode");
+            public static readonly UsageCategoryEnum SmsInboundShortcode = new UsageCategoryEnum("sms-inbound-shortcode");
+            public static readonly UsageCategoryEnum SmsOutbound = new UsageCategoryEnum("sms-outbound");
+            public static readonly UsageCategoryEnum SmsOutboundLongcode = new UsageCategoryEnum("sms-outbound-longcode");
+            public static readonly UsageCategoryEnum SmsOutboundShortcode = new UsageCategoryEnum("sms-outbound-shortcode");
+            public static readonly UsageCategoryEnum TaskrouterTasks = new UsageCategoryEnum("taskrouter-tasks");
+            public static readonly UsageCategoryEnum Totalprice = new UsageCategoryEnum("totalprice");
+            public static readonly UsageCategoryEnum Transcriptions = new UsageCategoryEnum("transcriptions");
+            public static readonly UsageCategoryEnum TrunkingCps = new UsageCategoryEnum("trunking-cps");
+            public static readonly UsageCategoryEnum TrunkingEmergencyCalls = new UsageCategoryEnum("trunking-emergency-calls");
+            public static readonly UsageCategoryEnum TrunkingOrigination = new UsageCategoryEnum("trunking-origination");
+            public static readonly UsageCategoryEnum TrunkingOriginationLocal = new UsageCategoryEnum("trunking-origination-local");
+            public static readonly UsageCategoryEnum TrunkingOriginationMobile = new UsageCategoryEnum("trunking-origination-mobile");
+            public static readonly UsageCategoryEnum TrunkingOriginationTollfree = new UsageCategoryEnum("trunking-origination-tollfree");
+            public static readonly UsageCategoryEnum TrunkingRecordings = new UsageCategoryEnum("trunking-recordings");
+            public static readonly UsageCategoryEnum TrunkingSecure = new UsageCategoryEnum("trunking-secure");
+            public static readonly UsageCategoryEnum TrunkingTermination = new UsageCategoryEnum("trunking-termination");
+            public static readonly UsageCategoryEnum Turnmegabytes = new UsageCategoryEnum("turnmegabytes");
+            public static readonly UsageCategoryEnum TurnmegabytesAustralia = new UsageCategoryEnum("turnmegabytes-australia");
+            public static readonly UsageCategoryEnum TurnmegabytesBrasil = new UsageCategoryEnum("turnmegabytes-brasil");
+            public static readonly UsageCategoryEnum TurnmegabytesIreland = new UsageCategoryEnum("turnmegabytes-ireland");
+            public static readonly UsageCategoryEnum TurnmegabytesJapan = new UsageCategoryEnum("turnmegabytes-japan");
+            public static readonly UsageCategoryEnum TurnmegabytesSingapore = new UsageCategoryEnum("turnmegabytes-singapore");
+            public static readonly UsageCategoryEnum TurnmegabytesUseast = new UsageCategoryEnum("turnmegabytes-useast");
+            public static readonly UsageCategoryEnum TurnmegabytesUswest = new UsageCategoryEnum("turnmegabytes-uswest");
         }
     
         public sealed class RecurringEnum : StringEnum 
@@ -112,10 +112,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             private RecurringEnum(string value) : base(value) {}
             public RecurringEnum() {}
         
-            public static RecurringEnum Daily = new RecurringEnum("daily");
-            public static RecurringEnum Monthly = new RecurringEnum("monthly");
-            public static RecurringEnum Yearly = new RecurringEnum("yearly");
-            public static RecurringEnum Alltime = new RecurringEnum("alltime");
+            public static readonly RecurringEnum Daily = new RecurringEnum("daily");
+            public static readonly RecurringEnum Monthly = new RecurringEnum("monthly");
+            public static readonly RecurringEnum Yearly = new RecurringEnum("yearly");
+            public static readonly RecurringEnum Alltime = new RecurringEnum("alltime");
         }
     
         public sealed class TriggerFieldEnum : StringEnum 
@@ -123,9 +123,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             private TriggerFieldEnum(string value) : base(value) {}
             public TriggerFieldEnum() {}
         
-            public static TriggerFieldEnum Count = new TriggerFieldEnum("count");
-            public static TriggerFieldEnum Usage = new TriggerFieldEnum("usage");
-            public static TriggerFieldEnum Price = new TriggerFieldEnum("price");
+            public static readonly TriggerFieldEnum Count = new TriggerFieldEnum("count");
+            public static readonly TriggerFieldEnum Usage = new TriggerFieldEnum("usage");
+            public static readonly TriggerFieldEnum Price = new TriggerFieldEnum("price");
         }
     
         /// <summary>

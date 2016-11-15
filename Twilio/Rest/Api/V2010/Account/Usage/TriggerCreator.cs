@@ -43,7 +43,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.Api,
+                Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Usage/Triggers.json"
             );
             
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.Api,
+                Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Usage/Triggers.json"
             );
             

@@ -19,7 +19,7 @@ namespace Twilio.Rest.IpMessaging.V1
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.IpMessaging,
+                Rest.Domain.IpMessaging,
                 "/v1/Credentials"
             );
             AddQueryParams(request);
@@ -40,7 +40,7 @@ namespace Twilio.Rest.IpMessaging.V1
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.IpMessaging,
+                Rest.Domain.IpMessaging,
                 "/v1/Credentials"
             );
             
@@ -62,7 +62,7 @@ namespace Twilio.Rest.IpMessaging.V1
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
-                    Domains.IpMessaging
+                    Rest.Domain.IpMessaging
                 )
             );
             

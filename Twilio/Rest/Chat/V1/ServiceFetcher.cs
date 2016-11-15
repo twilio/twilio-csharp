@@ -31,7 +31,7 @@ namespace Twilio.Rest.Chat.V1
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Chat,
+                Rest.Domain.Chat,
                 "/v1/Services/" + Sid + ""
             );
             
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Chat.V1
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Chat,
+                Rest.Domain.Chat,
                 "/v1/Services/" + Sid + ""
             );
             

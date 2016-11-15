@@ -38,7 +38,7 @@ namespace Twilio.Rest.Notify.V1
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.Notify,
+                Rest.Domain.Notify,
                 "/v1/Services/" + Sid + ""
             );
             AddPostParams(request);
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Notify.V1
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.Notify,
+                Rest.Domain.Notify,
                 "/v1/Services/" + Sid + ""
             );
             AddPostParams(request);

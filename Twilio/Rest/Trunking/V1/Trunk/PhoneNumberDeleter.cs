@@ -34,7 +34,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             var request = new Request(
                 HttpMethod.DELETE,
-                Domains.Trunking,
+                Rest.Domain.Trunking,
                 "/v1/Trunks/" + TrunkSid + "/PhoneNumbers/" + Sid + ""
             );
             
@@ -73,7 +73,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             var request = new Request(
                 HttpMethod.DELETE,
-                Domains.Trunking,
+                Rest.Domain.Trunking,
                 "/v1/Trunks/" + TrunkSid + "/PhoneNumbers/" + Sid + ""
             );
             

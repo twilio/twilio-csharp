@@ -16,10 +16,10 @@ namespace Twilio.Rest.Api.V2010.Account
             private EventEnum(string value) : base(value) {}
             public EventEnum() {}
         
-            public static EventEnum Initiated = new EventEnum("initiated");
-            public static EventEnum Ringing = new EventEnum("ringing");
-            public static EventEnum Answered = new EventEnum("answered");
-            public static EventEnum Completed = new EventEnum("completed");
+            public static readonly EventEnum Initiated = new EventEnum("initiated");
+            public static readonly EventEnum Ringing = new EventEnum("ringing");
+            public static readonly EventEnum Answered = new EventEnum("answered");
+            public static readonly EventEnum Completed = new EventEnum("completed");
         }
     
         public sealed class StatusEnum : StringEnum 
@@ -27,14 +27,14 @@ namespace Twilio.Rest.Api.V2010.Account
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
         
-            public static StatusEnum Queued = new StatusEnum("queued");
-            public static StatusEnum Ringing = new StatusEnum("ringing");
-            public static StatusEnum InProgress = new StatusEnum("in-progress");
-            public static StatusEnum Completed = new StatusEnum("completed");
-            public static StatusEnum Busy = new StatusEnum("busy");
-            public static StatusEnum Failed = new StatusEnum("failed");
-            public static StatusEnum NoAnswer = new StatusEnum("no-answer");
-            public static StatusEnum Canceled = new StatusEnum("canceled");
+            public static readonly StatusEnum Queued = new StatusEnum("queued");
+            public static readonly StatusEnum Ringing = new StatusEnum("ringing");
+            public static readonly StatusEnum InProgress = new StatusEnum("in-progress");
+            public static readonly StatusEnum Completed = new StatusEnum("completed");
+            public static readonly StatusEnum Busy = new StatusEnum("busy");
+            public static readonly StatusEnum Failed = new StatusEnum("failed");
+            public static readonly StatusEnum NoAnswer = new StatusEnum("no-answer");
+            public static readonly StatusEnum Canceled = new StatusEnum("canceled");
         }
     
         /// <summary>

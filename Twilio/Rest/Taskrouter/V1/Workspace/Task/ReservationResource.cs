@@ -16,12 +16,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
         
-            public static StatusEnum Pending = new StatusEnum("pending");
-            public static StatusEnum Accepted = new StatusEnum("accepted");
-            public static StatusEnum Rejected = new StatusEnum("rejected");
-            public static StatusEnum Timeout = new StatusEnum("timeout");
-            public static StatusEnum Canceled = new StatusEnum("canceled");
-            public static StatusEnum Rescinded = new StatusEnum("rescinded");
+            public static readonly StatusEnum Pending = new StatusEnum("pending");
+            public static readonly StatusEnum Accepted = new StatusEnum("accepted");
+            public static readonly StatusEnum Rejected = new StatusEnum("rejected");
+            public static readonly StatusEnum Timeout = new StatusEnum("timeout");
+            public static readonly StatusEnum Canceled = new StatusEnum("canceled");
+            public static readonly StatusEnum Rescinded = new StatusEnum("rescinded");
         }
     
         /// <summary>

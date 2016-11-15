@@ -34,7 +34,7 @@ namespace Twilio.Rest.Notify.V1.Service
         {
             var request = new Request(
                 HttpMethod.DELETE,
-                Domains.Notify,
+                Rest.Domain.Notify,
                 "/v1/Services/" + ServiceSid + "/Bindings/" + Sid + ""
             );
             
@@ -73,7 +73,7 @@ namespace Twilio.Rest.Notify.V1.Service
         {
             var request = new Request(
                 HttpMethod.DELETE,
-                Domains.Notify,
+                Rest.Domain.Notify,
                 "/v1/Services/" + ServiceSid + "/Bindings/" + Sid + ""
             );
             

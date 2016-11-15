@@ -37,7 +37,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         {
             var request = new Request(
                 HttpMethod.DELETE,
-                Domains.Preview,
+                Rest.Domain.Preview,
                 "/Sync/Services/" + ServiceSid + "/Maps/" + MapSid + "/Items/" + Key + ""
             );
             
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         {
             var request = new Request(
                 HttpMethod.DELETE,
-                Domains.Preview,
+                Rest.Domain.Preview,
                 "/Sync/Services/" + ServiceSid + "/Maps/" + MapSid + "/Items/" + Key + ""
             );
             

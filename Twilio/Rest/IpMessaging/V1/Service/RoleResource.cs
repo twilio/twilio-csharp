@@ -16,8 +16,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             private RoleTypeEnum(string value) : base(value) {}
             public RoleTypeEnum() {}
         
-            public static RoleTypeEnum Channel = new RoleTypeEnum("channel");
-            public static RoleTypeEnum Deployment = new RoleTypeEnum("deployment");
+            public static readonly RoleTypeEnum Channel = new RoleTypeEnum("channel");
+            public static readonly RoleTypeEnum Deployment = new RoleTypeEnum("deployment");
         }
     
         /// <summary>

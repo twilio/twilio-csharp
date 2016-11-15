@@ -38,7 +38,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.Chat,
+                Rest.Domain.Chat,
                 "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Members"
             );
             
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         {
             var request = new Request(
                 HttpMethod.POST,
-                Domains.Chat,
+                Rest.Domain.Chat,
                 "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Members"
             );
             

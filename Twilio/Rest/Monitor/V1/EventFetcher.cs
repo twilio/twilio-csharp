@@ -31,7 +31,7 @@ namespace Twilio.Rest.Monitor.V1
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Monitor,
+                Rest.Domain.Monitor,
                 "/v1/Events/" + Sid + ""
             );
             
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Monitor.V1
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Monitor,
+                Rest.Domain.Monitor,
                 "/v1/Events/" + Sid + ""
             );
             

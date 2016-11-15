@@ -16,9 +16,9 @@ namespace Twilio.Rest.Api.V2010
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
         
-            public static StatusEnum Active = new StatusEnum("active");
-            public static StatusEnum Suspended = new StatusEnum("suspended");
-            public static StatusEnum Closed = new StatusEnum("closed");
+            public static readonly StatusEnum Active = new StatusEnum("active");
+            public static readonly StatusEnum Suspended = new StatusEnum("suspended");
+            public static readonly StatusEnum Closed = new StatusEnum("closed");
         }
     
         public sealed class TypeEnum : StringEnum 
@@ -26,8 +26,8 @@ namespace Twilio.Rest.Api.V2010
             private TypeEnum(string value) : base(value) {}
             public TypeEnum() {}
         
-            public static TypeEnum Trial = new TypeEnum("Trial");
-            public static TypeEnum Full = new TypeEnum("Full");
+            public static readonly TypeEnum Trial = new TypeEnum("Trial");
+            public static readonly TypeEnum Full = new TypeEnum("Full");
         }
     
         /// <summary>

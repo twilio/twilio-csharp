@@ -37,7 +37,7 @@ namespace Twilio.Rest.Lookups.V1
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Lookups,
+                Rest.Domain.Lookups,
                 "/v1/PhoneNumbers/" + PhoneNumber + ""
             );
             
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Lookups.V1
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Lookups,
+                Rest.Domain.Lookups,
                 "/v1/PhoneNumbers/" + PhoneNumber + ""
             );
             

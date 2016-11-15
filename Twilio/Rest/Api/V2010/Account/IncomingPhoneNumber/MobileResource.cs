@@ -15,10 +15,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             private AddressRequirementEnum(string value) : base(value) {}
             public AddressRequirementEnum() {}
         
-            public static AddressRequirementEnum None = new AddressRequirementEnum("none");
-            public static AddressRequirementEnum Any = new AddressRequirementEnum("any");
-            public static AddressRequirementEnum Local = new AddressRequirementEnum("local");
-            public static AddressRequirementEnum Foreign = new AddressRequirementEnum("foreign");
+            public static readonly AddressRequirementEnum None = new AddressRequirementEnum("none");
+            public static readonly AddressRequirementEnum Any = new AddressRequirementEnum("any");
+            public static readonly AddressRequirementEnum Local = new AddressRequirementEnum("local");
+            public static readonly AddressRequirementEnum Foreign = new AddressRequirementEnum("foreign");
         }
     
         /// <summary>

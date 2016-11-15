@@ -15,11 +15,11 @@ namespace Twilio.Rest.Api.V2010.Account
             private SourceEnum(string value) : base(value) {}
             public SourceEnum() {}
         
-            public static SourceEnum Dialverb = new SourceEnum("DialVerb");
-            public static SourceEnum Conference = new SourceEnum("Conference");
-            public static SourceEnum Outboundapi = new SourceEnum("OutboundAPI");
-            public static SourceEnum Trunking = new SourceEnum("Trunking");
-            public static SourceEnum Recordverb = new SourceEnum("RecordVerb");
+            public static readonly SourceEnum Dialverb = new SourceEnum("DialVerb");
+            public static readonly SourceEnum Conference = new SourceEnum("Conference");
+            public static readonly SourceEnum Outboundapi = new SourceEnum("OutboundAPI");
+            public static readonly SourceEnum Trunking = new SourceEnum("Trunking");
+            public static readonly SourceEnum Recordverb = new SourceEnum("RecordVerb");
         }
     
         public sealed class StatusEnum : StringEnum 
@@ -27,8 +27,8 @@ namespace Twilio.Rest.Api.V2010.Account
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
         
-            public static StatusEnum Processing = new StatusEnum("processing");
-            public static StatusEnum Completed = new StatusEnum("completed");
+            public static readonly StatusEnum Processing = new StatusEnum("processing");
+            public static readonly StatusEnum Completed = new StatusEnum("completed");
         }
     
         /// <summary>

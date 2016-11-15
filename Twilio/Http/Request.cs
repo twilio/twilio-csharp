@@ -23,7 +23,7 @@ namespace Twilio.Http
 	        _postParams = new List<KeyValuePair<string, string>>();
 	    }
 
-		public Request(HttpMethod method, Domains domain, string uri)
+		public Request(HttpMethod method, Domain domain, string uri)
 		{
 			Method = method;
 

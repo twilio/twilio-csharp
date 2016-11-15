@@ -23,7 +23,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Api,
+                Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SMS/ShortCodes.json"
             );
             AddQueryParams(request);
@@ -44,7 +44,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             var request = new Request(
                 HttpMethod.GET,
-                Domains.Api,
+                Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SMS/ShortCodes.json"
             );
             
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.GET,
                 page.GetNextPageUrl(
-                    Domains.Api
+                    Rest.Domain.Api
                 )
             );
             
