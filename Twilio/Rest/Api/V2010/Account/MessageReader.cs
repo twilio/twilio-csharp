@@ -4,18 +4,14 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class MessageReader : Reader<MessageResource> 
     {
         public string AccountSid { get; set; }
-        public Twilio.Types.PhoneNumber To { get; set; }
-        public Twilio.Types.PhoneNumber From { get; set; }
+        public Types.PhoneNumber To { get; set; }
+        public Types.PhoneNumber From { get; set; }
         public DateTime? DateSent { get; set; }
         public DateTime? DateSentAfter { get; set; }
         public DateTime? DateSentBefore { get; set; }
@@ -27,7 +23,7 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> MessageResource ResourceSet </returns> 
-        public override Task<ResourceSet<MessageResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.GET,

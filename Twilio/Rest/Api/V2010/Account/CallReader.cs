@@ -4,18 +4,14 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class CallReader : Reader<CallResource> 
     {
         public string AccountSid { get; set; }
-        public Twilio.Types.PhoneNumber To { get; set; }
-        public Twilio.Types.PhoneNumber From { get; set; }
+        public Types.PhoneNumber To { get; set; }
+        public Types.PhoneNumber From { get; set; }
         public string ParentCallSid { get; set; }
         public CallResource.StatusEnum Status { get; set; }
         public DateTime? StartTime { get; set; }
@@ -32,7 +28,7 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> CallResource ResourceSet </returns> 
-        public override Task<ResourceSet<CallResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<CallResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.GET,

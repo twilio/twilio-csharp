@@ -2,10 +2,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account 
@@ -99,7 +97,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="from"> Twilio number from which to originate the call </param>
         /// <param name="url"> Url from which to fetch TwiML </param>
         /// <returns> CallCreator capable of executing the create </returns> 
-        public static CallCreator Creator(IEndpoint to, Twilio.Types.PhoneNumber from, Uri url)
+        public static CallCreator Creator(IEndpoint to, Types.PhoneNumber from, Uri url)
         {
             return new CallCreator(to, from, url);
         }
@@ -112,7 +110,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="from"> Twilio number from which to originate the call </param>
         /// <param name="applicationSid"> ApplicationSid that configures from where to fetch TwiML </param>
         /// <returns> CallCreator capable of executing the create </returns> 
-        public static CallCreator Creator(IEndpoint to, Twilio.Types.PhoneNumber from, string applicationSid)
+        public static CallCreator Creator(IEndpoint to, Types.PhoneNumber from, string applicationSid)
         {
             return new CallCreator(to, from, applicationSid);
         }

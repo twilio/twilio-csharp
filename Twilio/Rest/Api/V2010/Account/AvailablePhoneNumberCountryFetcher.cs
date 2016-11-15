@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
@@ -32,12 +28,12 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched AvailablePhoneNumberCountryResource </returns> 
-        public override async Task<AvailablePhoneNumberCountryResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<AvailablePhoneNumberCountryResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/AvailablePhoneNumbers/" + this.CountryCode + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/AvailablePhoneNumbers/" + CountryCode + ".json"
             );
             
             var response = await client.RequestAsync(request);
@@ -75,9 +71,9 @@ namespace Twilio.Rest.Api.V2010.Account
         public override AvailablePhoneNumberCountryResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/AvailablePhoneNumbers/" + this.CountryCode + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/AvailablePhoneNumbers/" + CountryCode + ".json"
             );
             
             var response = client.Request(request);

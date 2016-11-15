@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Trunking.V1 
 {
 
@@ -31,12 +27,12 @@ namespace Twilio.Rest.Trunking.V1
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched TrunkResource </returns> 
-        public override async Task<TrunkResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<TrunkResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.Sid + ""
+                "/v1/Trunks/" + Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -74,9 +70,9 @@ namespace Twilio.Rest.Trunking.V1
         public override TrunkResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.Sid + ""
+                "/v1/Trunks/" + Sid + ""
             );
             
             var response = client.Request(request);

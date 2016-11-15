@@ -4,10 +4,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Call 
 {
 
@@ -36,12 +32,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> RecordingResource ResourceSet </returns> 
-        public override Task<ResourceSet<RecordingResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + this.CallSid + "/Recordings.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + CallSid + "/Recordings.json"
             );
             AddQueryParams(request);
             
@@ -62,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + this.CallSid + "/Recordings.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + CallSid + "/Recordings.json"
             );
             
             AddQueryParams(request);

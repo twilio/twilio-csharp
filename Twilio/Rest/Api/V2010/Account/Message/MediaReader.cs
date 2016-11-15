@@ -4,10 +4,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Message 
 {
 
@@ -36,12 +32,12 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> MediaResource ResourceSet </returns> 
-        public override Task<ResourceSet<MediaResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<MediaResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Messages/" + this.MessageSid + "/Media.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Messages/" + MessageSid + "/Media.json"
             );
             AddQueryParams(request);
             
@@ -62,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Messages/" + this.MessageSid + "/Media.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Messages/" + MessageSid + "/Media.json"
             );
             
             AddQueryParams(request);

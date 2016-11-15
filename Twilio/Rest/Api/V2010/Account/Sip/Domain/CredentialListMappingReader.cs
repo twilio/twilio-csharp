@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Sip.Domain 
 {
 
@@ -32,12 +28,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> CredentialListMappingResource ResourceSet </returns> 
-        public override Task<ResourceSet<CredentialListMappingResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<CredentialListMappingResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.DomainSid + "/CredentialListMappings.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + DomainSid + "/CredentialListMappings.json"
             );
             AddQueryParams(request);
             
@@ -58,7 +54,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.DomainSid + "/CredentialListMappings.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + DomainSid + "/CredentialListMappings.json"
             );
             
             AddQueryParams(request);

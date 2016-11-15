@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account.Message 
 {

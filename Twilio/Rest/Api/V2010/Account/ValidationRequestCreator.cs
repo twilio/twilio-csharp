@@ -4,17 +4,13 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class ValidationRequestCreator : Creator<ValidationRequestResource> 
     {
         public string AccountSid { get; set; }
-        public Twilio.Types.PhoneNumber PhoneNumber { get; }
+        public Types.PhoneNumber PhoneNumber { get; }
         public string FriendlyName { get; set; }
         public int? CallDelay { get; set; }
         public string Extension { get; set; }
@@ -26,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="phoneNumber"> The phone_number </param>
-        public ValidationRequestCreator(Twilio.Types.PhoneNumber phoneNumber)
+        public ValidationRequestCreator(Types.PhoneNumber phoneNumber)
         {
             PhoneNumber = phoneNumber;
         }
@@ -38,7 +34,7 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created ValidationRequestResource </returns> 
-        public override async Task<ValidationRequestResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<ValidationRequestResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.POST,

@@ -4,10 +4,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Sync 
 {
 
@@ -35,12 +31,12 @@ namespace Twilio.Rest.Preview.Sync
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated ServiceResource </returns> 
-        public override async Task<ServiceResource> UpdateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.Sid + ""
+                "/Sync/Services/" + Sid + ""
             );
             AddPostParams(request);
             
@@ -79,9 +75,9 @@ namespace Twilio.Rest.Preview.Sync
         public override ServiceResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.Sid + ""
+                "/Sync/Services/" + Sid + ""
             );
             AddPostParams(request);
             

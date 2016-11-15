@@ -4,10 +4,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Sync.Service.SyncList 
 {
 
@@ -41,12 +37,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated SyncListItemResource </returns> 
-        public override async Task<SyncListItemResource> UpdateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<SyncListItemResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.ServiceSid + "/Lists/" + this.ListSid + "/Items/" + this.Index + ""
+                "/Sync/Services/" + ServiceSid + "/Lists/" + ListSid + "/Items/" + Index + ""
             );
             AddPostParams(request);
             
@@ -85,9 +81,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public override SyncListItemResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.ServiceSid + "/Lists/" + this.ListSid + "/Items/" + this.Index + ""
+                "/Sync/Services/" + ServiceSid + "/Lists/" + ListSid + "/Items/" + Index + ""
             );
             AddPostParams(request);
             

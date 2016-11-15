@@ -5,10 +5,6 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Monitor.V1 
 {
 
@@ -25,7 +21,7 @@ namespace Twilio.Rest.Monitor.V1
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> AlertResource ResourceSet </returns> 
-        public override Task<ResourceSet<AlertResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<AlertResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.GET,

@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Chat.V1.Service 
 {
 
@@ -34,12 +30,12 @@ namespace Twilio.Rest.Chat.V1.Service
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched ChannelResource </returns> 
-        public override async Task<ChannelResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<ChannelResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.CHAT,
-                "/v1/Services/" + this.ServiceSid + "/Channels/" + this.Sid + ""
+                "/v1/Services/" + ServiceSid + "/Channels/" + Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -77,9 +73,9 @@ namespace Twilio.Rest.Chat.V1.Service
         public override ChannelResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.CHAT,
-                "/v1/Services/" + this.ServiceSid + "/Channels/" + this.Sid + ""
+                "/v1/Services/" + ServiceSid + "/Channels/" + Sid + ""
             );
             
             var response = client.Request(request);

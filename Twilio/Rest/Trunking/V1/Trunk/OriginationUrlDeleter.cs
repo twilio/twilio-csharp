@@ -4,10 +4,6 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Trunking.V1.Trunk;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
@@ -37,9 +33,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
+                HttpMethod.DELETE,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.TrunkSid + "/OriginationUrls/" + this.Sid + ""
+                "/v1/Trunks/" + TrunkSid + "/OriginationUrls/" + Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -76,9 +72,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
+                HttpMethod.DELETE,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.TrunkSid + "/OriginationUrls/" + this.Sid + ""
+                "/v1/Trunks/" + TrunkSid + "/OriginationUrls/" + Sid + ""
             );
             
             var response = client.Request(request);

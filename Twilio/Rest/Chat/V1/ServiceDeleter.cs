@@ -4,10 +4,6 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Chat.V1;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Chat.V1 
 {
 
@@ -34,9 +30,9 @@ namespace Twilio.Rest.Chat.V1
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
+                HttpMethod.DELETE,
                 Domains.CHAT,
-                "/v1/Services/" + this.Sid + ""
+                "/v1/Services/" + Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -73,9 +69,9 @@ namespace Twilio.Rest.Chat.V1
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
+                HttpMethod.DELETE,
                 Domains.CHAT,
-                "/v1/Services/" + this.Sid + ""
+                "/v1/Services/" + Sid + ""
             );
             
             var response = client.Request(request);

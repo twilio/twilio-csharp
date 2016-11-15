@@ -5,16 +5,12 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Lookups.V1 
 {
 
     public class PhoneNumberFetcher : Fetcher<PhoneNumberResource> 
     {
-        public Twilio.Types.PhoneNumber PhoneNumber { get; }
+        public Types.PhoneNumber PhoneNumber { get; }
         public string CountryCode { get; set; }
         public List<string> Type { get; set; }
         public List<string> AddOns { get; set; }
@@ -25,7 +21,7 @@ namespace Twilio.Rest.Lookups.V1
         /// </summary>
         ///
         /// <param name="phoneNumber"> The phone_number </param>
-        public PhoneNumberFetcher(Twilio.Types.PhoneNumber phoneNumber)
+        public PhoneNumberFetcher(Types.PhoneNumber phoneNumber)
         {
             PhoneNumber = phoneNumber;
         }
@@ -37,12 +33,12 @@ namespace Twilio.Rest.Lookups.V1
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched PhoneNumberResource </returns> 
-        public override async Task<PhoneNumberResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.LOOKUPS,
-                "/v1/PhoneNumbers/" + this.PhoneNumber + ""
+                "/v1/PhoneNumbers/" + PhoneNumber + ""
             );
             
                 AddQueryParams(request);
@@ -83,9 +79,9 @@ namespace Twilio.Rest.Lookups.V1
         public override PhoneNumberResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.LOOKUPS,
-                "/v1/PhoneNumbers/" + this.PhoneNumber + ""
+                "/v1/PhoneNumbers/" + PhoneNumber + ""
             );
             
                 AddQueryParams(request);

@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010 
 {
 
@@ -23,10 +19,10 @@ namespace Twilio.Rest.Api.V2010
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated AccountResource </returns> 
-        public override async Task<AccountResource> UpdateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<AccountResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (Sid ?? client.GetAccountSid()) + ".json"
             );
@@ -67,7 +63,7 @@ namespace Twilio.Rest.Api.V2010
         public override AccountResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.API,
                 "/2010-04-01/Accounts/" + (Sid ?? client.GetAccountSid()) + ".json"
             );

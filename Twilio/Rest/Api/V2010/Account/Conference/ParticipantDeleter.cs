@@ -4,10 +4,6 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Api.V2010.Account.Conference;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Conference 
 {
 
@@ -38,9 +34,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
+                HttpMethod.DELETE,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + this.ConferenceSid + "/Participants/" + this.CallSid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + ConferenceSid + "/Participants/" + CallSid + ".json"
             );
             
             var response = await client.RequestAsync(request);
@@ -77,9 +73,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
+                HttpMethod.DELETE,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + this.ConferenceSid + "/Participants/" + this.CallSid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + ConferenceSid + "/Participants/" + CallSid + ".json"
             );
             
             var response = client.Request(request);

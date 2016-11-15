@@ -2,10 +2,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Lookups.V1 
 {
@@ -54,7 +52,7 @@ namespace Twilio.Rest.Lookups.V1
         ///
         /// <param name="phoneNumber"> The phone_number </param>
         /// <returns> PhoneNumberFetcher capable of executing the fetch </returns> 
-        public static PhoneNumberFetcher Fetcher(Twilio.Types.PhoneNumber phoneNumber)
+        public static PhoneNumberFetcher Fetcher(Types.PhoneNumber phoneNumber)
         {
             return new PhoneNumberFetcher(phoneNumber);
         }
@@ -84,7 +82,7 @@ namespace Twilio.Rest.Lookups.V1
         public string CountryCode { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber PhoneNumber { get; set; }
+        public Types.PhoneNumber PhoneNumber { get; set; }
         [JsonProperty("national_format")]
         public string NationalFormat { get; set; }
         [JsonProperty("carrier")]
@@ -104,7 +102,7 @@ namespace Twilio.Rest.Lookups.V1
                                     [JsonProperty("country_code")]
                                     string countryCode, 
                                     [JsonProperty("phone_number")]
-                                    Twilio.Types.PhoneNumber phoneNumber, 
+                                    Types.PhoneNumber phoneNumber, 
                                     [JsonProperty("national_format")]
                                     string nationalFormat, 
                                     [JsonProperty("carrier")]

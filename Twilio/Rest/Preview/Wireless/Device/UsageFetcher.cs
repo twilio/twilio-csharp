@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Wireless.Device 
 {
 
@@ -33,12 +29,12 @@ namespace Twilio.Rest.Preview.Wireless.Device
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched UsageResource </returns> 
-        public override async Task<UsageResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<UsageResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.PREVIEW,
-                "/wireless/Devices/" + this.DeviceSid + "/Usage"
+                "/wireless/Devices/" + DeviceSid + "/Usage"
             );
             
                 AddQueryParams(request);
@@ -79,9 +75,9 @@ namespace Twilio.Rest.Preview.Wireless.Device
         public override UsageResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.PREVIEW,
-                "/wireless/Devices/" + this.DeviceSid + "/Usage"
+                "/wireless/Devices/" + DeviceSid + "/Usage"
             );
             
                 AddQueryParams(request);

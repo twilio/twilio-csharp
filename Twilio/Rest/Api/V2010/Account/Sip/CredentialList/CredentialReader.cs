@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList 
 {
 
@@ -32,12 +28,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> CredentialResource ResourceSet </returns> 
-        public override Task<ResourceSet<CredentialResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<CredentialResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.CredentialListSid + "/Credentials.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + CredentialListSid + "/Credentials.json"
             );
             AddQueryParams(request);
             
@@ -58,7 +54,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.CredentialListSid + "/Credentials.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + CredentialListSid + "/Credentials.json"
             );
             
             AddQueryParams(request);

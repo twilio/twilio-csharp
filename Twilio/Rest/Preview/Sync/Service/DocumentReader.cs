@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Sync.Service 
 {
 
@@ -31,12 +27,12 @@ namespace Twilio.Rest.Preview.Sync.Service
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> DocumentResource ResourceSet </returns> 
-        public override Task<ResourceSet<DocumentResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<DocumentResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.ServiceSid + "/Documents"
+                "/Sync/Services/" + ServiceSid + "/Documents"
             );
             AddQueryParams(request);
             
@@ -57,7 +53,7 @@ namespace Twilio.Rest.Preview.Sync.Service
             var request = new Request(
                 HttpMethod.GET,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.ServiceSid + "/Documents"
+                "/Sync/Services/" + ServiceSid + "/Documents"
             );
             
             AddQueryParams(request);

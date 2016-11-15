@@ -3,23 +3,19 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Pricing.V1.Voice 
 {
 
     public class NumberFetcher : Fetcher<NumberResource> 
     {
-        public Twilio.Types.PhoneNumber Number { get; }
+        public Types.PhoneNumber Number { get; }
     
         /// <summary>
         /// Construct a new NumberFetcher
         /// </summary>
         ///
         /// <param name="number"> The number </param>
-        public NumberFetcher(Twilio.Types.PhoneNumber number)
+        public NumberFetcher(Types.PhoneNumber number)
         {
             Number = number;
         }
@@ -31,12 +27,12 @@ namespace Twilio.Rest.Pricing.V1.Voice
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched NumberResource </returns> 
-        public override async Task<NumberResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<NumberResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.PRICING,
-                "/v1/Voice/Numbers/" + this.Number + ""
+                "/v1/Voice/Numbers/" + Number + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -74,9 +70,9 @@ namespace Twilio.Rest.Pricing.V1.Voice
         public override NumberResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.PRICING,
-                "/v1/Voice/Numbers/" + this.Number + ""
+                "/v1/Voice/Numbers/" + Number + ""
             );
             
             var response = client.Request(request);

@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry 
 {
 
@@ -23,7 +19,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         public bool? ExcludeLocalAddressRequired { get; set; }
         public bool? ExcludeForeignAddressRequired { get; set; }
         public bool? Beta { get; set; }
-        public Twilio.Types.PhoneNumber NearNumber { get; set; }
+        public Types.PhoneNumber NearNumber { get; set; }
         public string NearLatLong { get; set; }
         public int? Distance { get; set; }
         public string InPostalCode { get; set; }
@@ -48,12 +44,12 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> LocalResource ResourceSet </returns> 
-        public override Task<ResourceSet<LocalResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<LocalResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/AvailablePhoneNumbers/" + this.CountryCode + "/Local.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/AvailablePhoneNumbers/" + CountryCode + "/Local.json"
             );
             AddQueryParams(request);
             
@@ -74,7 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/AvailablePhoneNumbers/" + this.CountryCode + "/Local.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/AvailablePhoneNumbers/" + CountryCode + "/Local.json"
             );
             
             AddQueryParams(request);

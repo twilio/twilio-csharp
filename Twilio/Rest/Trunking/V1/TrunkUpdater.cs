@@ -4,10 +4,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Trunking.V1 
 {
 
@@ -38,12 +34,12 @@ namespace Twilio.Rest.Trunking.V1
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated TrunkResource </returns> 
-        public override async Task<TrunkResource> UpdateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<TrunkResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.Sid + ""
+                "/v1/Trunks/" + Sid + ""
             );
             AddPostParams(request);
             
@@ -82,9 +78,9 @@ namespace Twilio.Rest.Trunking.V1
         public override TrunkResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.Sid + ""
+                "/v1/Trunks/" + Sid + ""
             );
             AddPostParams(request);
             

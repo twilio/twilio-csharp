@@ -4,10 +4,6 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Api.V2010.Account.Call;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Call 
 {
 
@@ -38,9 +34,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
+                HttpMethod.DELETE,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + this.CallSid + "/Notifications/" + this.Sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + CallSid + "/Notifications/" + Sid + ".json"
             );
             
             var response = await client.RequestAsync(request);
@@ -77,9 +73,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
+                HttpMethod.DELETE,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + this.CallSid + "/Notifications/" + this.Sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + CallSid + "/Notifications/" + Sid + ".json"
             );
             
             var response = client.Request(request);

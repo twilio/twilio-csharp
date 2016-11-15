@@ -4,10 +4,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Sync.Service.SyncList 
 {
 
@@ -38,12 +34,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created SyncListItemResource </returns> 
-        public override async Task<SyncListItemResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<SyncListItemResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.ServiceSid + "/Lists/" + this.ListSid + "/Items"
+                "/Sync/Services/" + ServiceSid + "/Lists/" + ListSid + "/Items"
             );
             
             AddPostParams(request);
@@ -84,7 +80,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             var request = new Request(
                 HttpMethod.POST,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.ServiceSid + "/Lists/" + this.ListSid + "/Items"
+                "/Sync/Services/" + ServiceSid + "/Lists/" + ListSid + "/Items"
             );
             
             AddPostParams(request);

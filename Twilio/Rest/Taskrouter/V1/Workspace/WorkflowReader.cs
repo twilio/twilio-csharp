@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
@@ -32,12 +28,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> WorkflowResource ResourceSet </returns> 
-        public override Task<ResourceSet<WorkflowResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<WorkflowResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.WorkspaceSid + "/Workflows"
+                "/v1/Workspaces/" + WorkspaceSid + "/Workflows"
             );
             AddQueryParams(request);
             
@@ -58,7 +54,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.WorkspaceSid + "/Workflows"
+                "/v1/Workspaces/" + WorkspaceSid + "/Workflows"
             );
             
             AddQueryParams(request);

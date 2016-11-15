@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
@@ -31,12 +27,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> PhoneNumberResource ResourceSet </returns> 
-        public override Task<ResourceSet<PhoneNumberResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<PhoneNumberResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.TrunkSid + "/PhoneNumbers"
+                "/v1/Trunks/" + TrunkSid + "/PhoneNumbers"
             );
             AddQueryParams(request);
             
@@ -57,7 +53,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.TrunkSid + "/PhoneNumbers"
+                "/v1/Trunks/" + TrunkSid + "/PhoneNumbers"
             );
             
             AddQueryParams(request);

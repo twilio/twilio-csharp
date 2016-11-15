@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList 
 {
 
@@ -36,12 +32,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated CredentialResource </returns> 
-        public override async Task<CredentialResource> UpdateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<CredentialResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.CredentialListSid + "/Credentials/" + this.Sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + CredentialListSid + "/Credentials/" + Sid + ".json"
             );
             AddPostParams(request);
             
@@ -80,9 +76,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         public override CredentialResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.CredentialListSid + "/Credentials/" + this.Sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + CredentialListSid + "/Credentials/" + Sid + ".json"
             );
             AddPostParams(request);
             

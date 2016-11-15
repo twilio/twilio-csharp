@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Notify.V1.Service 
 {
 
@@ -34,12 +30,12 @@ namespace Twilio.Rest.Notify.V1.Service
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched BindingResource </returns> 
-        public override async Task<BindingResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<BindingResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.NOTIFY,
-                "/v1/Services/" + this.ServiceSid + "/Bindings/" + this.Sid + ""
+                "/v1/Services/" + ServiceSid + "/Bindings/" + Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -77,9 +73,9 @@ namespace Twilio.Rest.Notify.V1.Service
         public override BindingResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.NOTIFY,
-                "/v1/Services/" + this.ServiceSid + "/Bindings/" + this.Sid + ""
+                "/v1/Services/" + ServiceSid + "/Bindings/" + Sid + ""
             );
             
             var response = client.Request(request);

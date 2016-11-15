@@ -4,17 +4,13 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber 
 {
 
     public class MobileCreator : Creator<MobileResource> 
     {
         public string OwnerAccountSid { get; set; }
-        public Twilio.Types.PhoneNumber PhoneNumber { get; }
+        public Types.PhoneNumber PhoneNumber { get; }
         public string ApiVersion { get; set; }
         public string FriendlyName { get; set; }
         public string SmsApplicationSid { get; set; }
@@ -36,7 +32,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         ///
         /// <param name="phoneNumber"> The phone_number </param>
-        public MobileCreator(Twilio.Types.PhoneNumber phoneNumber)
+        public MobileCreator(Types.PhoneNumber phoneNumber)
         {
             PhoneNumber = phoneNumber;
         }
@@ -48,7 +44,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created MobileResource </returns> 
-        public override async Task<MobileResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<MobileResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.POST,

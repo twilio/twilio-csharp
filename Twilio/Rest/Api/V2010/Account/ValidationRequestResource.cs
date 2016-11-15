@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account 
 {
@@ -17,7 +15,7 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="phoneNumber"> The phone_number </param>
         /// <returns> ValidationRequestCreator capable of executing the create </returns> 
-        public static ValidationRequestCreator Creator(Twilio.Types.PhoneNumber phoneNumber)
+        public static ValidationRequestCreator Creator(Types.PhoneNumber phoneNumber)
         {
             return new ValidationRequestCreator(phoneNumber);
         }
@@ -45,7 +43,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public string AccountSid { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber PhoneNumber { get; set; }
+        public Types.PhoneNumber PhoneNumber { get; set; }
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; set; }
         [JsonProperty("validation_code")]
@@ -61,7 +59,7 @@ namespace Twilio.Rest.Api.V2010.Account
         private ValidationRequestResource([JsonProperty("account_sid")]
                                           string accountSid, 
                                           [JsonProperty("phone_number")]
-                                          Twilio.Types.PhoneNumber phoneNumber, 
+                                          Types.PhoneNumber phoneNumber, 
                                           [JsonProperty("friendly_name")]
                                           string friendlyName, 
                                           [JsonProperty("validation_code")]

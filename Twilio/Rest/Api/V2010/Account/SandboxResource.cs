@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account 
 {
@@ -60,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public string AccountSid { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber PhoneNumber { get; set; }
+        public Types.PhoneNumber PhoneNumber { get; set; }
         [JsonProperty("application_sid")]
         public string ApplicationSid { get; set; }
         [JsonProperty("api_version")]
@@ -97,7 +95,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                 [JsonProperty("account_sid")]
                                 string accountSid, 
                                 [JsonProperty("phone_number")]
-                                Twilio.Types.PhoneNumber phoneNumber, 
+                                Types.PhoneNumber phoneNumber, 
                                 [JsonProperty("application_sid")]
                                 string applicationSid, 
                                 [JsonProperty("api_version")]

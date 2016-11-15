@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Sync.Service 
 {
 
@@ -34,12 +30,12 @@ namespace Twilio.Rest.Preview.Sync.Service
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched SyncListResource </returns> 
-        public override async Task<SyncListResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<SyncListResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.ServiceSid + "/Lists/" + this.Sid + ""
+                "/Sync/Services/" + ServiceSid + "/Lists/" + Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -77,9 +73,9 @@ namespace Twilio.Rest.Preview.Sync.Service
         public override SyncListResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.ServiceSid + "/Lists/" + this.Sid + ""
+                "/Sync/Services/" + ServiceSid + "/Lists/" + Sid + ""
             );
             
             var response = client.Request(request);

@@ -2,10 +2,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account.Address 
 {
@@ -44,10 +42,10 @@ namespace Twilio.Rest.Api.V2010.Account.Address
     
         [JsonProperty("friendly_name")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber FriendlyName { get; set; }
+        public Types.PhoneNumber FriendlyName { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber PhoneNumber { get; set; }
+        public Types.PhoneNumber PhoneNumber { get; set; }
         [JsonProperty("lata")]
         public string Lata { get; set; }
         [JsonProperty("rate_center")]
@@ -73,9 +71,9 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         }
     
         private DependentPhoneNumberResource([JsonProperty("friendly_name")]
-                                             Twilio.Types.PhoneNumber friendlyName, 
+                                             Types.PhoneNumber friendlyName, 
                                              [JsonProperty("phone_number")]
-                                             Twilio.Types.PhoneNumber phoneNumber, 
+                                             Types.PhoneNumber phoneNumber, 
                                              [JsonProperty("lata")]
                                              string lata, 
                                              [JsonProperty("rate_center")]

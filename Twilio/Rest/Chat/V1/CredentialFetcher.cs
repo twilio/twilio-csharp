@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Chat.V1 
 {
 
@@ -31,12 +27,12 @@ namespace Twilio.Rest.Chat.V1
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched CredentialResource </returns> 
-        public override async Task<CredentialResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<CredentialResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.CHAT,
-                "/v1/Credentials/" + this.Sid + ""
+                "/v1/Credentials/" + Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -74,9 +70,9 @@ namespace Twilio.Rest.Chat.V1
         public override CredentialResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.CHAT,
-                "/v1/Credentials/" + this.Sid + ""
+                "/v1/Credentials/" + Sid + ""
             );
             
             var response = client.Request(request);

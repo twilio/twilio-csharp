@@ -5,10 +5,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Notify.V1.Service 
 {
 
@@ -46,12 +42,12 @@ namespace Twilio.Rest.Notify.V1.Service
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created NotificationResource </returns> 
-        public override async Task<NotificationResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<NotificationResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.NOTIFY,
-                "/v1/Services/" + this.ServiceSid + "/Notifications"
+                "/v1/Services/" + ServiceSid + "/Notifications"
             );
             
             AddPostParams(request);
@@ -92,7 +88,7 @@ namespace Twilio.Rest.Notify.V1.Service
             var request = new Request(
                 HttpMethod.POST,
                 Domains.NOTIFY,
-                "/v1/Services/" + this.ServiceSid + "/Notifications"
+                "/v1/Services/" + ServiceSid + "/Notifications"
             );
             
             AddPostParams(request);

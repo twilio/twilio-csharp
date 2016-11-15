@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Monitor.V1 
 {
 
@@ -31,12 +27,12 @@ namespace Twilio.Rest.Monitor.V1
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched EventResource </returns> 
-        public override async Task<EventResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<EventResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.MONITOR,
-                "/v1/Events/" + this.Sid + ""
+                "/v1/Events/" + Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -74,9 +70,9 @@ namespace Twilio.Rest.Monitor.V1
         public override EventResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.MONITOR,
-                "/v1/Events/" + this.Sid + ""
+                "/v1/Events/" + Sid + ""
             );
             
             var response = client.Request(request);

@@ -2,10 +2,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
@@ -136,7 +134,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public Dictionary<string, string> Links { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber PhoneNumber { get; set; }
+        public Types.PhoneNumber PhoneNumber { get; set; }
         [JsonProperty("sid")]
         public string Sid { get; set; }
         [JsonProperty("sms_application_sid")]
@@ -199,7 +197,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                                     [JsonProperty("links")]
                                     Dictionary<string, string> links, 
                                     [JsonProperty("phone_number")]
-                                    Twilio.Types.PhoneNumber phoneNumber, 
+                                    Types.PhoneNumber phoneNumber, 
                                     [JsonProperty("sid")]
                                     string sid, 
                                     [JsonProperty("sms_application_sid")]

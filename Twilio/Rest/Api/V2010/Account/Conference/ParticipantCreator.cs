@@ -5,10 +5,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Conference 
 {
 
@@ -16,8 +12,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
     {
         public string AccountSid { get; set; }
         public string ConferenceSid { get; }
-        public Twilio.Types.PhoneNumber From { get; }
-        public Twilio.Types.PhoneNumber To { get; }
+        public Types.PhoneNumber From { get; }
+        public Types.PhoneNumber To { get; }
         public Uri StatusCallback { get; set; }
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
         public List<string> StatusCallbackEvent { get; set; }
@@ -44,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="conferenceSid"> The conference_sid </param>
         /// <param name="from"> The from </param>
         /// <param name="to"> The to </param>
-        public ParticipantCreator(string conferenceSid, Twilio.Types.PhoneNumber from, Twilio.Types.PhoneNumber to)
+        public ParticipantCreator(string conferenceSid, Types.PhoneNumber from, Types.PhoneNumber to)
         {
             ConferenceSid = conferenceSid;
             From = from;
@@ -58,12 +54,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created ParticipantResource </returns> 
-        public override async Task<ParticipantResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + this.ConferenceSid + "/Participants.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + ConferenceSid + "/Participants.json"
             );
             
             AddPostParams(request);
@@ -104,7 +100,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + this.ConferenceSid + "/Participants.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Conferences/" + ConferenceSid + "/Participants.json"
             );
             
             AddPostParams(request);

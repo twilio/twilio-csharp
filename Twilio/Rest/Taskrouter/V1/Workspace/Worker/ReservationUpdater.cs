@@ -4,10 +4,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
 {
 
@@ -57,12 +53,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated ReservationResource </returns> 
-        public override async Task<ReservationResource> UpdateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<ReservationResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.WorkspaceSid + "/Workers/" + this.WorkerSid + "/Reservations/" + this.Sid + ""
+                "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + WorkerSid + "/Reservations/" + Sid + ""
             );
             AddPostParams(request);
             
@@ -101,9 +97,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         public override ReservationResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.WorkspaceSid + "/Workers/" + this.WorkerSid + "/Reservations/" + this.Sid + ""
+                "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + WorkerSid + "/Reservations/" + Sid + ""
             );
             AddPostParams(request);
             

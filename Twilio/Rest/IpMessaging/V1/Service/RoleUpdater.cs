@@ -4,10 +4,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.IpMessaging.V1.Service 
 {
 
@@ -38,12 +34,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated RoleResource </returns> 
-        public override async Task<RoleResource> UpdateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<RoleResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.IP_MESSAGING,
-                "/v1/Services/" + this.ServiceSid + "/Roles/" + this.Sid + ""
+                "/v1/Services/" + ServiceSid + "/Roles/" + Sid + ""
             );
             AddPostParams(request);
             
@@ -82,9 +78,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public override RoleResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.IP_MESSAGING,
-                "/v1/Services/" + this.ServiceSid + "/Roles/" + this.Sid + ""
+                "/v1/Services/" + ServiceSid + "/Roles/" + Sid + ""
             );
             AddPostParams(request);
             

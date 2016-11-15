@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList 
 {
 
@@ -38,12 +34,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created IpAddressResource </returns> 
-        public override async Task<IpAddressResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<IpAddressResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.IpAccessControlListSid + "/IpAddresses.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + IpAccessControlListSid + "/IpAddresses.json"
             );
             
             AddPostParams(request);
@@ -84,7 +80,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             var request = new Request(
                 HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.IpAccessControlListSid + "/IpAddresses.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + IpAccessControlListSid + "/IpAddresses.json"
             );
             
             AddPostParams(request);

@@ -5,18 +5,14 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class MessageCreator : Creator<MessageResource> 
     {
         public string AccountSid { get; set; }
-        public Twilio.Types.PhoneNumber To { get; }
-        public Twilio.Types.PhoneNumber From { get; }
+        public Types.PhoneNumber To { get; }
+        public Types.PhoneNumber From { get; }
         public string MessagingServiceSid { get; }
         public string Body { get; }
         public List<Uri> MediaUrl { get; }
@@ -32,7 +28,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="to"> The phone number to receive the message </param>
         /// <param name="from"> The phone number that initiated the message </param>
         /// <param name="body"> The body </param>
-        public MessageCreator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body)
+        public MessageCreator(Types.PhoneNumber to, Types.PhoneNumber from, string body)
         {
             To = to;
             From = from;
@@ -46,7 +42,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="to"> The phone number to receive the message </param>
         /// <param name="from"> The phone number that initiated the message </param>
         /// <param name="mediaUrl"> The media_url </param>
-        public MessageCreator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl)
+        public MessageCreator(Types.PhoneNumber to, Types.PhoneNumber from, List<Uri> mediaUrl)
         {
             To = to;
             From = from;
@@ -60,7 +56,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="to"> The phone number to receive the message </param>
         /// <param name="messagingServiceSid"> The messaging_service_sid </param>
         /// <param name="body"> The body </param>
-        public MessageCreator(Twilio.Types.PhoneNumber to, string messagingServiceSid, string body)
+        public MessageCreator(Types.PhoneNumber to, string messagingServiceSid, string body)
         {
             To = to;
             MessagingServiceSid = messagingServiceSid;
@@ -74,7 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="to"> The phone number to receive the message </param>
         /// <param name="messagingServiceSid"> The messaging_service_sid </param>
         /// <param name="mediaUrl"> The media_url </param>
-        public MessageCreator(Twilio.Types.PhoneNumber to, string messagingServiceSid, List<Uri> mediaUrl)
+        public MessageCreator(Types.PhoneNumber to, string messagingServiceSid, List<Uri> mediaUrl)
         {
             To = to;
             MessagingServiceSid = messagingServiceSid;
@@ -88,7 +84,7 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created MessageResource </returns> 
-        public override async Task<MessageResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<MessageResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.POST,

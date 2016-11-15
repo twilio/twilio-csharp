@@ -4,10 +4,6 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Preview.Sync.Service.SyncList;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Sync.Service.SyncList 
 {
 
@@ -40,9 +36,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
+                HttpMethod.DELETE,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.ServiceSid + "/Lists/" + this.ListSid + "/Items/" + this.Index + ""
+                "/Sync/Services/" + ServiceSid + "/Lists/" + ListSid + "/Items/" + Index + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -79,9 +75,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
+                HttpMethod.DELETE,
                 Domains.PREVIEW,
-                "/Sync/Services/" + this.ServiceSid + "/Lists/" + this.ListSid + "/Items/" + this.Index + ""
+                "/Sync/Services/" + ServiceSid + "/Lists/" + ListSid + "/Items/" + Index + ""
             );
             
             var response = client.Request(request);

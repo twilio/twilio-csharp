@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Pricing.V1.Voice 
 {
 
@@ -31,12 +27,12 @@ namespace Twilio.Rest.Pricing.V1.Voice
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched CountryResource </returns> 
-        public override async Task<CountryResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<CountryResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.PRICING,
-                "/v1/Voice/Countries/" + this.IsoCountry + ""
+                "/v1/Voice/Countries/" + IsoCountry + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -74,9 +70,9 @@ namespace Twilio.Rest.Pricing.V1.Voice
         public override CountryResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.PRICING,
-                "/v1/Voice/Countries/" + this.IsoCountry + ""
+                "/v1/Voice/Countries/" + IsoCountry + ""
             );
             
             var response = client.Request(request);

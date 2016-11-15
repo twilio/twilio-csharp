@@ -4,10 +4,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Chat.V1.Service 
 {
 
@@ -41,12 +37,12 @@ namespace Twilio.Rest.Chat.V1.Service
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created RoleResource </returns> 
-        public override async Task<RoleResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<RoleResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.CHAT,
-                "/v1/Services/" + this.ServiceSid + "/Roles"
+                "/v1/Services/" + ServiceSid + "/Roles"
             );
             
             AddPostParams(request);
@@ -87,7 +83,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var request = new Request(
                 HttpMethod.POST,
                 Domains.CHAT,
-                "/v1/Services/" + this.ServiceSid + "/Roles"
+                "/v1/Services/" + ServiceSid + "/Roles"
             );
             
             AddPostParams(request);

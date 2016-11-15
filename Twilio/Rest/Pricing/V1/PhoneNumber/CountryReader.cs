@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Pricing.V1.PhoneNumber 
 {
 
@@ -19,7 +15,7 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> CountryResource ResourceSet </returns> 
-        public override Task<ResourceSet<CountryResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<CountryResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.GET,

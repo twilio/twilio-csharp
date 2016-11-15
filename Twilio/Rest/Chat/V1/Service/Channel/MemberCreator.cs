@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Chat.V1.Service.Channel 
 {
 
@@ -38,12 +34,12 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created MemberResource </returns> 
-        public override async Task<MemberResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<MemberResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.CHAT,
-                "/v1/Services/" + this.ServiceSid + "/Channels/" + this.ChannelSid + "/Members"
+                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Members"
             );
             
             AddPostParams(request);
@@ -84,7 +80,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             var request = new Request(
                 HttpMethod.POST,
                 Domains.CHAT,
-                "/v1/Services/" + this.ServiceSid + "/Channels/" + this.ChannelSid + "/Members"
+                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Members"
             );
             
             AddPostParams(request);

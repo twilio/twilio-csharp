@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
@@ -34,12 +30,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched EventResource </returns> 
-        public override async Task<EventResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<EventResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.WorkspaceSid + "/Events/" + this.Sid + ""
+                "/v1/Workspaces/" + WorkspaceSid + "/Events/" + Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -77,9 +73,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public override EventResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.WorkspaceSid + "/Events/" + this.Sid + ""
+                "/v1/Workspaces/" + WorkspaceSid + "/Events/" + Sid + ""
             );
             
             var response = client.Request(request);

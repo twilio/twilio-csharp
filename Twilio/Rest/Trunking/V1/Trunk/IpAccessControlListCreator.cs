@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
@@ -34,12 +30,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created IpAccessControlListResource </returns> 
-        public override async Task<IpAccessControlListResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<IpAccessControlListResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.TrunkSid + "/IpAccessControlLists"
+                "/v1/Trunks/" + TrunkSid + "/IpAccessControlLists"
             );
             
             AddPostParams(request);
@@ -80,7 +76,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.POST,
                 Domains.TRUNKING,
-                "/v1/Trunks/" + this.TrunkSid + "/IpAccessControlLists"
+                "/v1/Trunks/" + TrunkSid + "/IpAccessControlLists"
             );
             
             AddPostParams(request);

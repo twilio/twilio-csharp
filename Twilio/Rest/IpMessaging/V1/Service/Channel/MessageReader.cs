@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.IpMessaging.V1.Service.Channel 
 {
 
@@ -34,12 +30,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> MessageResource ResourceSet </returns> 
-        public override Task<ResourceSet<MessageResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.IP_MESSAGING,
-                "/v1/Services/" + this.ServiceSid + "/Channels/" + this.ChannelSid + "/Messages"
+                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Messages"
             );
             AddQueryParams(request);
             
@@ -60,7 +56,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             var request = new Request(
                 HttpMethod.GET,
                 Domains.IP_MESSAGING,
-                "/v1/Services/" + this.ServiceSid + "/Channels/" + this.ChannelSid + "/Messages"
+                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Messages"
             );
             
             AddQueryParams(request);

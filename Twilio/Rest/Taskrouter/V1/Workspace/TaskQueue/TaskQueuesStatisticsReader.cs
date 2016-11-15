@@ -5,10 +5,6 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue 
 {
 
@@ -37,12 +33,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> TaskQueuesStatisticsResource ResourceSet </returns> 
-        public override Task<ResourceSet<TaskQueuesStatisticsResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<TaskQueuesStatisticsResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.WorkspaceSid + "/TaskQueues/Statistics"
+                "/v1/Workspaces/" + WorkspaceSid + "/TaskQueues/Statistics"
             );
             AddQueryParams(request);
             
@@ -63,7 +59,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             var request = new Request(
                 HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.WorkspaceSid + "/TaskQueues/Statistics"
+                "/v1/Workspaces/" + WorkspaceSid + "/TaskQueues/Statistics"
             );
             
             AddQueryParams(request);

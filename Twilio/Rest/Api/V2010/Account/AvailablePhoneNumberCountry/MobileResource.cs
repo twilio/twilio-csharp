@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry 
@@ -44,10 +42,10 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
     
         [JsonProperty("friendly_name")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber FriendlyName { get; set; }
+        public Types.PhoneNumber FriendlyName { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber PhoneNumber { get; set; }
+        public Types.PhoneNumber PhoneNumber { get; set; }
         [JsonProperty("lata")]
         public string Lata { get; set; }
         [JsonProperty("rate_center")]
@@ -75,9 +73,9 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         }
     
         private MobileResource([JsonProperty("friendly_name")]
-                               Twilio.Types.PhoneNumber friendlyName, 
+                               Types.PhoneNumber friendlyName, 
                                [JsonProperty("phone_number")]
-                               Twilio.Types.PhoneNumber phoneNumber, 
+                               Types.PhoneNumber phoneNumber, 
                                [JsonProperty("lata")]
                                string lata, 
                                [JsonProperty("rate_center")]

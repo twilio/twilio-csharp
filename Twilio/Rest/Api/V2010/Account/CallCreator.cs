@@ -6,10 +6,6 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
@@ -17,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account
     {
         public string AccountSid { get; set; }
         public IEndpoint To { get; }
-        public Twilio.Types.PhoneNumber From { get; }
+        public Types.PhoneNumber From { get; }
         public Uri Url { get; }
         public string ApplicationSid { get; }
         public Twilio.Http.HttpMethod Method { get; set; }
@@ -43,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="to"> Phone number, SIP address or client identifier to call </param>
         /// <param name="from"> Twilio number from which to originate the call </param>
         /// <param name="url"> Url from which to fetch TwiML </param>
-        public CallCreator(IEndpoint to, Twilio.Types.PhoneNumber from, Uri url)
+        public CallCreator(IEndpoint to, Types.PhoneNumber from, Uri url)
         {
             To = to;
             From = from;
@@ -57,7 +53,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="to"> Phone number, SIP address or client identifier to call </param>
         /// <param name="from"> Twilio number from which to originate the call </param>
         /// <param name="applicationSid"> ApplicationSid that configures from where to fetch TwiML </param>
-        public CallCreator(IEndpoint to, Twilio.Types.PhoneNumber from, string applicationSid)
+        public CallCreator(IEndpoint to, Types.PhoneNumber from, string applicationSid)
         {
             To = to;
             From = from;
@@ -71,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created CallResource </returns> 
-        public override async Task<CallResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<CallResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.POST,

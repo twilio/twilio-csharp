@@ -4,10 +4,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Queue 
 {
 
@@ -42,12 +38,12 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated MemberResource </returns> 
-        public override async Task<MemberResource> UpdateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<MemberResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Queues/" + this.QueueSid + "/Members/" + this.CallSid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Queues/" + QueueSid + "/Members/" + CallSid + ".json"
             );
             AddPostParams(request);
             
@@ -86,9 +82,9 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         public override MemberResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
+                HttpMethod.POST,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Queues/" + this.QueueSid + "/Members/" + this.CallSid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Queues/" + QueueSid + "/Members/" + CallSid + ".json"
             );
             AddPostParams(request);
             

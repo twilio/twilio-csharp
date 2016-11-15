@@ -2,10 +2,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account 
 {
@@ -98,7 +96,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="from"> The phone number that initiated the message </param>
         /// <param name="body"> The body </param>
         /// <returns> MessageCreator capable of executing the create </returns> 
-        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body)
+        public static MessageCreator Creator(Types.PhoneNumber to, Types.PhoneNumber from, string body)
         {
             return new MessageCreator(to, from, body);
         }
@@ -111,7 +109,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="from"> The phone number that initiated the message </param>
         /// <param name="mediaUrl"> The media_url </param>
         /// <returns> MessageCreator capable of executing the create </returns> 
-        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl)
+        public static MessageCreator Creator(Types.PhoneNumber to, Types.PhoneNumber from, List<Uri> mediaUrl)
         {
             return new MessageCreator(to, from, mediaUrl);
         }
@@ -124,7 +122,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="messagingServiceSid"> The messaging_service_sid </param>
         /// <param name="body"> The body </param>
         /// <returns> MessageCreator capable of executing the create </returns> 
-        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, string messagingServiceSid, string body)
+        public static MessageCreator Creator(Types.PhoneNumber to, string messagingServiceSid, string body)
         {
             return new MessageCreator(to, messagingServiceSid, body);
         }
@@ -137,7 +135,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="messagingServiceSid"> The messaging_service_sid </param>
         /// <param name="mediaUrl"> The media_url </param>
         /// <returns> MessageCreator capable of executing the create </returns> 
-        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, string messagingServiceSid, List<Uri> mediaUrl)
+        public static MessageCreator Creator(Types.PhoneNumber to, string messagingServiceSid, List<Uri> mediaUrl)
         {
             return new MessageCreator(to, messagingServiceSid, mediaUrl);
         }
@@ -225,7 +223,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public string ErrorMessage { get; set; }
         [JsonProperty("from")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber From { get; set; }
+        public Types.PhoneNumber From { get; set; }
         [JsonProperty("num_media")]
         public string NumMedia { get; set; }
         [JsonProperty("num_segments")]
@@ -270,7 +268,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                 [JsonProperty("error_message")]
                                 string errorMessage, 
                                 [JsonProperty("from")]
-                                Twilio.Types.PhoneNumber from, 
+                                Types.PhoneNumber from, 
                                 [JsonProperty("num_media")]
                                 string numMedia, 
                                 [JsonProperty("num_segments")]

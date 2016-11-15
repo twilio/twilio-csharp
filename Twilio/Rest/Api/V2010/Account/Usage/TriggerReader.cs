@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Usage 
 {
 
@@ -24,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> TriggerResource ResourceSet </returns> 
-        public override Task<ResourceSet<TriggerResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<TriggerResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.GET,

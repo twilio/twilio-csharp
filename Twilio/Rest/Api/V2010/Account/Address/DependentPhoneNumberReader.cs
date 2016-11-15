@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Address 
 {
 
@@ -32,12 +28,12 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> DependentPhoneNumberResource ResourceSet </returns> 
-        public override Task<ResourceSet<DependentPhoneNumberResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<DependentPhoneNumberResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Addresses/" + this.AddressSid + "/DependentPhoneNumbers.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Addresses/" + AddressSid + "/DependentPhoneNumbers.json"
             );
             AddQueryParams(request);
             
@@ -58,7 +54,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
             var request = new Request(
                 HttpMethod.GET,
                 Domains.API,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Addresses/" + this.AddressSid + "/DependentPhoneNumbers.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Addresses/" + AddressSid + "/DependentPhoneNumbers.json"
             );
             
             AddQueryParams(request);

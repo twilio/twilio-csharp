@@ -5,10 +5,6 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
 {
 
@@ -39,12 +35,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched WorkerStatisticsResource </returns> 
-        public override async Task<WorkerStatisticsResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<WorkerStatisticsResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.WorkspaceSid + "/Workers/" + this.WorkerSid + "/Statistics"
+                "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + WorkerSid + "/Statistics"
             );
             
                 AddQueryParams(request);
@@ -85,9 +81,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         public override WorkerStatisticsResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.WorkspaceSid + "/Workers/" + this.WorkerSid + "/Statistics"
+                "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + WorkerSid + "/Statistics"
             );
             
                 AddQueryParams(request);

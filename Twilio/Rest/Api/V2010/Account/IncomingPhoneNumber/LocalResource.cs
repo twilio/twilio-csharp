@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber 
@@ -65,7 +63,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         ///
         /// <param name="phoneNumber"> The phone_number </param>
         /// <returns> LocalCreator capable of executing the create </returns> 
-        public static LocalCreator Creator(Twilio.Types.PhoneNumber phoneNumber)
+        public static LocalCreator Creator(Types.PhoneNumber phoneNumber)
         {
             return new LocalCreator(phoneNumber);
         }
@@ -108,7 +106,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         public string FriendlyName { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber PhoneNumber { get; set; }
+        public Types.PhoneNumber PhoneNumber { get; set; }
         [JsonProperty("sid")]
         public string Sid { get; set; }
         [JsonProperty("sms_application_sid")]
@@ -169,7 +167,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                               [JsonProperty("friendly_name")]
                               string friendlyName, 
                               [JsonProperty("phone_number")]
-                              Twilio.Types.PhoneNumber phoneNumber, 
+                              Types.PhoneNumber phoneNumber, 
                               [JsonProperty("sid")]
                               string sid, 
                               [JsonProperty("sms_application_sid")]

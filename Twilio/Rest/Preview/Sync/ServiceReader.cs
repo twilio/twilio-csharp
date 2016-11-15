@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Sync 
 {
 
@@ -19,7 +15,7 @@ namespace Twilio.Rest.Preview.Sync
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> ServiceResource ResourceSet </returns> 
-        public override Task<ResourceSet<ServiceResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.GET,

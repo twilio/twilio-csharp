@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Wireless 
 {
 
@@ -31,12 +27,12 @@ namespace Twilio.Rest.Preview.Wireless
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched RatePlanResource </returns> 
-        public override async Task<RatePlanResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<RatePlanResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.PREVIEW,
-                "/wireless/RatePlans/" + this.Sid + ""
+                "/wireless/RatePlans/" + Sid + ""
             );
             
             var response = await client.RequestAsync(request);
@@ -74,9 +70,9 @@ namespace Twilio.Rest.Preview.Wireless
         public override RatePlanResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
+                HttpMethod.GET,
                 Domains.PREVIEW,
-                "/wireless/RatePlans/" + this.Sid + ""
+                "/wireless/RatePlans/" + Sid + ""
             );
             
             var response = client.Request(request);

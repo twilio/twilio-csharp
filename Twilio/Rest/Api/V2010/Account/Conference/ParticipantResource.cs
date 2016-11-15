@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account.Conference 
 {
@@ -154,7 +152,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="from"> The from </param>
         /// <param name="to"> The to </param>
         /// <returns> ParticipantCreator capable of executing the create </returns> 
-        public static ParticipantCreator Creator(string conferenceSid, Twilio.Types.PhoneNumber from, Twilio.Types.PhoneNumber to)
+        public static ParticipantCreator Creator(string conferenceSid, Types.PhoneNumber from, Types.PhoneNumber to)
         {
             return new ParticipantCreator(conferenceSid, from, to);
         }
