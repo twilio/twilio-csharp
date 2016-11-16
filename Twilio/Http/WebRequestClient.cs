@@ -50,7 +50,7 @@ namespace Twilio.Http
 #elif NET35
 			platVersion = " (.NET 3.5)";
 #endif
-			String libraryVersion = "twilio-csharp/" + version + platVersion;
+			string libraryVersion = "twilio-csharp/" + version + platVersion;
 			property.SetValue(httpRequest, libraryVersion, null);
 #endif
 
