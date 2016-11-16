@@ -2,7 +2,8 @@
 <package>
   <metadata>
     <id>Twilio</id>
-    <version>5.0.0-rca1</version>
+    <!--Version is determined by AssemblyInformationalVersion in Properties/AssemblyInfo.cs -->
+    <version>$version$</version>
     <authors>Twilio</authors>
     <description>Twilio REST API helper library</description>
     <language>en-US</language>
