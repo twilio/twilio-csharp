@@ -63,8 +63,6 @@ namespace Twilio.Http
 			httpRequest.Headers["Authorization"] = "Basic " + authBytes;
 			httpRequest.ContentType = "application/x-www-form-urlencoded";
 
-			Debug.WriteLine(httpRequest.Headers);
-
 			if (!Equals(request.Method, HttpMethod.GET))
 			{
 			    var stream = GetStream(httpRequest);
