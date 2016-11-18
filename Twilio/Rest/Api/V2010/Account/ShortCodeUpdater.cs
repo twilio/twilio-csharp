@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SMS/ShortCodes/" + Sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SMS/ShortCodes/" + Sid + ".json"
             );
             AddPostParams(request);
             
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SMS/ShortCodes/" + Sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SMS/ShortCodes/" + Sid + ".json"
             );
             AddPostParams(request);
             

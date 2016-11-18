@@ -28,7 +28,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
             var request = new Request(HttpMethod.Get,
                                       Twilio.Rest.Domain.IpMessaging,
                                       "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -60,7 +60,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
         public void TestFetchResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"sid\": \"USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"jing\",\"attributes\": null,\"is_online\": true,\"is_notifiable\": true,\"friendly_name\": null,\"date_created\": \"2016-03-24T21:05:19Z\",\"date_updated\": \"2016-03-24T21:05:19Z\",\"url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
@@ -76,7 +76,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
             var request = new Request(HttpMethod.Delete,
                                       Twilio.Rest.Domain.IpMessaging,
                                       "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -108,7 +108,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
         public void TestDeleteResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.NoContent,
                                                   "null"));
@@ -124,7 +124,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
                                       Twilio.Rest.Domain.IpMessaging,
                                       "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users");
             request.AddPostParam("Identity", Serialize("Identity"));
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -156,7 +156,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
         public void TestCreateResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"sid\": \"USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"jing\",\"attributes\": null,\"is_online\": true,\"is_notifiable\": true,\"friendly_name\": null,\"date_created\": \"2016-03-24T21:05:19Z\",\"date_updated\": \"2016-03-24T21:05:19Z\",\"url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
@@ -172,7 +172,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
             var request = new Request(HttpMethod.Get,
                                       Twilio.Rest.Domain.IpMessaging,
                                       "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users");
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -204,7 +204,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
         public void TestReadFullResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"meta\": {\"page\": 0,\"page_size\": 1,\"first_page_url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users?PageSize=1&Page=0\",\"previous_page_url\": null,\"url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users?PageSize=1&Page=0\",\"next_page_url\": null,\"key\": \"users\"},\"users\": [{\"sid\": \"USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"jing\",\"attributes\": null,\"is_online\": true,\"is_notifiable\": true,\"friendly_name\": null,\"date_created\": \"2016-03-24T21:05:19Z\",\"date_updated\": \"2016-03-24T21:05:19Z\",\"url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}]}"));
@@ -217,7 +217,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
         public void TestReadEmptyResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"meta\": {\"page\": 0,\"page_size\": 1,\"first_page_url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users?PageSize=1&Page=0\",\"previous_page_url\": null,\"url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users?PageSize=1&Page=0\",\"next_page_url\": null,\"key\": \"users\"},\"users\": []}"));
@@ -233,7 +233,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
             var request = new Request(HttpMethod.Post,
                                       Twilio.Rest.Domain.IpMessaging,
                                       "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -265,7 +265,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service
         public void TestUpdateResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"sid\": \"USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"jing\",\"attributes\": null,\"is_online\": true,\"is_notifiable\": true,\"friendly_name\": null,\"date_created\": \"2016-03-24T21:05:19Z\",\"date_updated\": \"2016-03-24T21:05:19Z\",\"url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));

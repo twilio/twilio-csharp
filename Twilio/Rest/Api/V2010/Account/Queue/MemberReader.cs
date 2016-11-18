@@ -33,7 +33,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Queues/" + QueueSid + "/Members.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Queues/" + QueueSid + "/Members.json"
             );
             AddQueryParams(request);
             
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Queues/" + QueueSid + "/Members.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Queues/" + QueueSid + "/Members.json"
             );
             
             AddQueryParams(request);

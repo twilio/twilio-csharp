@@ -36,7 +36,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             var request = new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Recordings/" + RecordingSid + "/Transcriptions/" + Sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Recordings/" + RecordingSid + "/Transcriptions/" + Sid + ".json"
             );
             
             var response = await client.RequestAsync(request);
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             var request = new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Recordings/" + RecordingSid + "/Transcriptions/" + Sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Recordings/" + RecordingSid + "/Transcriptions/" + Sid + ".json"
             );
             
             var response = client.Request(request);

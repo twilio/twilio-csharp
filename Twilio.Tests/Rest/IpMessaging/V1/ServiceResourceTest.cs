@@ -28,7 +28,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1
             var request = new Request(HttpMethod.Get,
                                       Twilio.Rest.Domain.IpMessaging,
                                       "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -60,7 +60,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1
         public void TestFetchResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"consumption_report_interval\": 100,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"default_channel_creator_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_channel_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_service_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"links\": {},\"notifications\": {},\"post_webhook_url\": \"post_webhook_url\",\"pre_webhook_url\": \"pre_webhook_url\",\"reachability_enabled\": false,\"read_status_enabled\": false,\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"typing_indicator_timeout\": 100,\"url\": \"http://www.example.com\",\"webhook_filters\": [\"webhook_filters\"],\"webhook_method\": \"webhook_method\",\"webhooks\": {}}"));
@@ -76,7 +76,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1
             var request = new Request(HttpMethod.Delete,
                                       Twilio.Rest.Domain.IpMessaging,
                                       "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -108,7 +108,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1
         public void TestDeleteResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.NoContent,
                                                   "null"));
@@ -124,7 +124,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1
                                       Twilio.Rest.Domain.IpMessaging,
                                       "/v1/Services");
             request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -156,7 +156,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1
         public void TestCreateResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"consumption_report_interval\": 100,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"default_channel_creator_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_channel_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_service_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"links\": {},\"notifications\": {},\"post_webhook_url\": \"post_webhook_url\",\"pre_webhook_url\": \"pre_webhook_url\",\"reachability_enabled\": false,\"read_status_enabled\": false,\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"typing_indicator_timeout\": 100,\"url\": \"http://www.example.com\",\"webhook_filters\": [\"webhook_filters\"],\"webhook_method\": \"webhook_method\",\"webhooks\": {}}"));
@@ -172,7 +172,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1
             var request = new Request(HttpMethod.Get,
                                       Twilio.Rest.Domain.IpMessaging,
                                       "/v1/Services");
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -204,7 +204,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1
         public void TestReadEmptyResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"meta\": {\"first_page_url\": \"https://ip-messaging.twilio.com/v1/Services?Page=0&PageSize=50\",\"key\": \"services\",\"next_page_url\": null,\"page\": 0,\"page_size\": 0,\"previous_page_url\": null,\"url\": \"https://ip-messaging.twilio.com/v1/Services\"},\"services\": []}"));
@@ -217,7 +217,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1
         public void TestReadFullResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"meta\": {\"first_page_url\": \"https://ip-messaging.twilio.com/v1/Services?Page=0&PageSize=50\",\"key\": \"services\",\"next_page_url\": null,\"page\": 0,\"page_size\": 1,\"previous_page_url\": null,\"url\": \"https://ip-messaging.twilio.com/v1/Services\"},\"services\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"consumption_report_interval\": 100,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"default_channel_creator_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_channel_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_service_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"links\": {},\"notifications\": {},\"post_webhook_url\": \"post_webhook_url\",\"pre_webhook_url\": \"pre_webhook_url\",\"reachability_enabled\": false,\"read_status_enabled\": false,\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"typing_indicator_timeout\": 100,\"url\": \"http://www.example.com\",\"webhook_filters\": [\"webhook_filters\"],\"webhook_method\": \"webhook_method\",\"webhooks\": {}}]}"));
@@ -233,7 +233,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1
             var request = new Request(HttpMethod.Post,
                                       Twilio.Rest.Domain.IpMessaging,
                                       "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -265,7 +265,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V1
         public void TestUpdateResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"consumption_report_interval\": 100,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"default_channel_creator_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_channel_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_service_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"links\": {},\"notifications\": {},\"post_webhook_url\": \"post_webhook_url\",\"pre_webhook_url\": \"pre_webhook_url\",\"reachability_enabled\": false,\"read_status_enabled\": false,\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"typing_indicator_timeout\": 100,\"url\": \"http://www.example.com\",\"webhook_filters\": [\"webhook_filters\"],\"webhook_method\": \"webhook_method\",\"webhooks\": {}}"));

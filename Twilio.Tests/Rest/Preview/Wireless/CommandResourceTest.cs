@@ -28,7 +28,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
             var request = new Request(HttpMethod.Get,
                                       Twilio.Rest.Domain.Preview,
                                       "/wireless/Commands/DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -60,7 +60,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
         public void TestFetchResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"command\": \"command\",\"command_mode\": \"command_mode\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"device_sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"direction\": \"direction\",\"sid\": \"DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"status\",\"url\": \"http://www.example.com\"}"));
@@ -76,7 +76,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
             var request = new Request(HttpMethod.Get,
                                       Twilio.Rest.Domain.Preview,
                                       "/wireless/Commands");
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -108,7 +108,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
         public void TestReadEmptyResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"commands\": [],\"meta\": {\"first_page_url\": \"https://preview.twilio.com/wireless/Commands?Page=0&PageSize=50\",\"key\": \"commands\",\"next_page_url\": null,\"page\": 0,\"page_size\": 0,\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/wireless/Commands\"}}"));
@@ -121,7 +121,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
         public void TestReadFullResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"commands\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"command\": \"command\",\"command_mode\": \"command_mode\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"device_sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"direction\": \"direction\",\"sid\": \"DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"status\",\"url\": \"http://www.example.com\"}],\"meta\": {\"first_page_url\": \"https://preview.twilio.com/wireless/Commands?Page=0&PageSize=50\",\"key\": \"commands\",\"next_page_url\": null,\"page\": 0,\"page_size\": 1,\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/wireless/Commands\"}}"));
@@ -139,7 +139,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
                                       "/wireless/Commands");
             request.AddPostParam("Device", Serialize("Device"));
             request.AddPostParam("Command", Serialize("Command"));
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -171,7 +171,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
         public void TestCreateResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"command\": \"command\",\"command_mode\": \"command_mode\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"device_sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"direction\": \"direction\",\"sid\": \"DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"status\",\"url\": \"http://www.example.com\"}"));

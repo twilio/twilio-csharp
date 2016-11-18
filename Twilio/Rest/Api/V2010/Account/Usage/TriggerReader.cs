@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Usage/Triggers.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Usage/Triggers.json"
             );
             AddQueryParams(request);
             
@@ -46,7 +46,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Usage/Triggers.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Usage/Triggers.json"
             );
             
             AddQueryParams(request);

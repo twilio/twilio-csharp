@@ -28,7 +28,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
             var request = new Request(HttpMethod.Get,
                                       Twilio.Rest.Domain.Preview,
                                       "/wireless/RatePlans");
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -60,7 +60,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
         public void TestReadEmptyResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"meta\": {\"first_page_url\": \"https://preview.twilio.com/wireless/RatePlans?Page=0&PageSize=50\",\"key\": \"rate_plans\",\"next_page_url\": null,\"page\": 0,\"page_size\": 0,\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/wireless/RatePlans\"},\"rate_plans\": []}"));
@@ -73,7 +73,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
         public void TestReadFullResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"meta\": {\"first_page_url\": \"https://preview.twilio.com/wireless/RatePlans?Page=0&PageSize=50\",\"key\": \"rate_plans\",\"next_page_url\": null,\"page\": 0,\"page_size\": 1,\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/wireless/RatePlans\"},\"rate_plans\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"alias\": \"alias\",\"commands\": {\"enabled\": true},\"data\": {\"limit\": 1000,\"metering\": \"pooled\"},\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"friendly_name\": \"friendly_name\",\"renewal\": {\"period\": 10,\"units\": \"days\"},\"roaming\": [\"National\"],\"sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://preview.twilio.com/wireless/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}]}"));
@@ -89,7 +89,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
             var request = new Request(HttpMethod.Get,
                                       Twilio.Rest.Domain.Preview,
                                       "/wireless/RatePlans/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -121,7 +121,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
         public void TestFetchResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"alias\": \"alias\",\"commands\": {\"enabled\": true},\"data\": {\"limit\": 1000,\"metering\": \"pooled\"},\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"friendly_name\": \"friendly_name\",\"renewal\": {\"period\": 10,\"units\": \"days\"},\"roaming\": [\"National\"],\"sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://preview.twilio.com/wireless/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
@@ -137,7 +137,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
             var request = new Request(HttpMethod.Post,
                                       Twilio.Rest.Domain.Preview,
                                       "/wireless/RatePlans");
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -169,7 +169,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
         public void TestCreateResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"alias\": \"alias\",\"commands\": {\"enabled\": true},\"data\": {\"limit\": 1000,\"metering\": \"pooled\"},\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"friendly_name\": \"friendly_name\",\"renewal\": {\"period\": 10,\"units\": \"days\"},\"roaming\": [\"National\"],\"sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://preview.twilio.com/wireless/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
@@ -185,7 +185,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
             var request = new Request(HttpMethod.Post,
                                       Twilio.Rest.Domain.Preview,
                                       "/wireless/RatePlans/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
                                                   "null"));
@@ -217,7 +217,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
         public void TestUpdateResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"alias\": \"alias\",\"commands\": {\"enabled\": true},\"data\": {\"limit\": 1000,\"metering\": \"pooled\"},\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"friendly_name\": \"friendly_name\",\"renewal\": {\"period\": 10,\"units\": \"days\"},\"roaming\": [\"National\"],\"sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://preview.twilio.com/wireless/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));

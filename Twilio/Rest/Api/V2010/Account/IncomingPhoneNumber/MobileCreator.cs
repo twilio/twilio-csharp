@@ -49,7 +49,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (OwnerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/Mobile.json"
+                "/2010-04-01/Accounts/" + (OwnerAccountSid ?? client.AccountSid) + "/IncomingPhoneNumbers/Mobile.json"
             );
             
             AddPostParams(request);
@@ -90,7 +90,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (OwnerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/Mobile.json"
+                "/2010-04-01/Accounts/" + (OwnerAccountSid ?? client.AccountSid) + "/IncomingPhoneNumbers/Mobile.json"
             );
             
             AddPostParams(request);

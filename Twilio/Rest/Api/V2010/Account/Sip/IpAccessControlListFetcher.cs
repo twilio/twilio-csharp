@@ -33,7 +33,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + Sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/IpAccessControlLists/" + Sid + ".json"
             );
             
             var response = await client.RequestAsync(request);
@@ -73,7 +73,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + Sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/IpAccessControlLists/" + Sid + ".json"
             );
             
             var response = client.Request(request);

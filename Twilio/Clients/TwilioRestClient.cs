@@ -11,10 +11,12 @@ namespace Twilio.Clients
     /// </summary>
 	public class TwilioRestClient : ITwilioRestClient
 	{
-		private readonly HttpClient _httpClient;
-		private readonly string _username;
+		public HttpClient HttpClient { get; }
+	    public string AccountSid { get; }
+        public string Region { get; }
+
+	    private readonly string _username;
 		private readonly string _password;
-		private readonly string _accountSid;
 
 	    /// <summary>
 	    /// Constructor for a TwilioRestClient
@@ -23,19 +25,23 @@ namespace Twilio.Clients
 	    /// <param name="username">username for requests</param>
 	    /// <param name="password">password for requests</param>
 	    /// <param name="accountSid">account sid to make requests for</param>
+	    /// <param name="region">region to make requests for</param>
 	    /// <param name="httpClient">http client used to make the requests</param>
 		public TwilioRestClient(
 	        string username,
 	        string password,
 	        string accountSid = null,
+	        string region = null,
 	        HttpClient httpClient = null
 	    )
 	    {
 			_username = username;
 			_password = password;
-			_accountSid = accountSid ?? username;
-			_httpClient = httpClient ?? new WebRequestClient();
-		}
+
+	        AccountSid = accountSid ?? username;
+	        HttpClient = httpClient ?? new WebRequestClient();
+	        Region = region;
+	    }
 
 		#if NET40
 	    /// <summary>
@@ -46,7 +52,7 @@ namespace Twilio.Clients
 	    /// <returns>Task that resolves to the request response</returns>
 		public Task<Response> RequestAsync(Request request) {
 			request.SetAuth(_username, _password);
-			return Task.FromResult(_httpClient.MakeRequest(request));
+			return Task.FromResult(HttpClient.MakeRequest(request));
 		}
 		#endif
 
@@ -58,25 +64,7 @@ namespace Twilio.Clients
 	    /// <returns>response of the request</returns>
 		public Response Request(Request request) {
 			request.SetAuth(_username, _password);
-			return _httpClient.MakeRequest(request);
-		}
-
-	    /// <summary>
-	    /// Get the account sid
-	    /// </summary>
-	    ///
-	    /// <returns>the account sid that request are made for</returns>
-		public string GetAccountSid() {
-			return _accountSid;
-		}
-
-	    /// <summary>
-	    /// Get the http client
-	    /// </summary>
-	    ///
-	    /// <returns>the client responsible for http requests</returns>
-		public HttpClient GetHttpClient() {
-			return _httpClient;
+			return HttpClient.MakeRequest(request);
 		}
 	}
 }

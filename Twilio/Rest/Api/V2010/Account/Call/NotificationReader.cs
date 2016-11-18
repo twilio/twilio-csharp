@@ -38,7 +38,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + CallSid + "/Notifications.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Calls/" + CallSid + "/Notifications.json"
             );
             AddQueryParams(request);
             
@@ -59,7 +59,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/" + CallSid + "/Notifications.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Calls/" + CallSid + "/Notifications.json"
             );
             
             AddQueryParams(request);

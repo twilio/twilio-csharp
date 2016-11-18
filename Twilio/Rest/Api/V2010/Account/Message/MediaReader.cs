@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Messages/" + MessageSid + "/Media.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Messages/" + MessageSid + "/Media.json"
             );
             AddQueryParams(request);
             
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Messages/" + MessageSid + "/Media.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Messages/" + MessageSid + "/Media.json"
             );
             
             AddQueryParams(request);

@@ -33,7 +33,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + IpAccessControlListSid + "/IpAddresses.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/IpAccessControlLists/" + IpAccessControlListSid + "/IpAddresses.json"
             );
             AddQueryParams(request);
             
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + IpAccessControlListSid + "/IpAddresses.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/IpAccessControlLists/" + IpAccessControlListSid + "/IpAddresses.json"
             );
             
             AddQueryParams(request);

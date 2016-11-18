@@ -41,7 +41,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/FeedbackSummary.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Calls/FeedbackSummary.json"
             );
             
             AddPostParams(request);
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.GetAccountSid()) + "/Calls/FeedbackSummary.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Calls/FeedbackSummary.json"
             );
             
             AddPostParams(request);

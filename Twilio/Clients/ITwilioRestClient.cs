@@ -1,8 +1,4 @@
-﻿#if NET40
-using System.Threading.Tasks;
-#endif
-
-using Twilio.Http;
+﻿using Twilio.Http;
 
 namespace Twilio.Clients
 {
@@ -11,16 +7,15 @@ namespace Twilio.Clients
     /// </summary>
 	public interface ITwilioRestClient
 	{
-
-		#if NET40
 	    /// <summary>
-	    /// Make an async request to Twilio
+	    /// Get the account sid all requests are made against
 	    /// </summary>
-	    ///
-	    /// <param name="request">Request to make</param>
-	    /// <returns>Task that resolves to response</returns>
-		Task<Response> RequestAsync(Request request);
-		#endif
+	    string AccountSid { get; }
+
+	    /// <summary>
+	    /// Get the http client that makes requests
+	    /// </summary>
+	    HttpClient HttpClient { get; }
 
 	    /// <summary>
 	    /// Make a request to Twilio
@@ -30,19 +25,15 @@ namespace Twilio.Clients
 	    /// <returns>response of the request</returns>
 		Response Request(Request request);
 
+        #if NET40
 	    /// <summary>
-	    /// Get the account sid all requests are made against
+	    /// Make an async request to Twilio
 	    /// </summary>
 	    ///
-	    /// <returns>the account sid</returns>
-		string GetAccountSid();
-
-	    /// <summary>
-	    /// Get the http client that makes requests
-	    /// </summary>
-	    ///
-	    /// <returns>the client that makes http requests</returns>
-		HttpClient GetHttpClient();
+	    /// <param name="request">Request to make</param>
+	    /// <returns>Task that resolves to response</returns>
+	    System.Threading.Tasks.Task<Response> RequestAsync(Request request);
+        #endif
 	}
 }
 
