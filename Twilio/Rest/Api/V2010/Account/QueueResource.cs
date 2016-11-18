@@ -56,10 +56,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Create a queue
         /// </summary>
         ///
+        /// <param name="friendlyName"> A user-provided string that identifies this queue. </param>
         /// <returns> QueueCreator capable of executing the create </returns> 
-        public static QueueCreator Creator()
+        public static QueueCreator Creator(string friendlyName)
         {
-            return new QueueCreator();
+            return new QueueCreator(friendlyName);
         }
     
         /// <summary>

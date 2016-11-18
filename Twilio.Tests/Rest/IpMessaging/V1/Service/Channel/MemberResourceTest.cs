@@ -225,5 +225,66 @@ namespace Twilio.Tests.Rest.IpMessaging.V1.Service.Channel
             
             MemberResource.Deleter("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Delete(twilioRestClient);
         }
+    
+        [Test]
+        public void TestUpdateRequest()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            var request = new Request(HttpMethod.Post,
+                                      Twilio.Rest.Domain.IpMessaging,
+                                      "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.Request(request)
+                            .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
+                                                  "null"));
+            
+            try
+            {
+                MemberResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Update(twilioRestClient);
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            }
+            catch (AggregateException ae)
+            {
+                ae.Handle((e) =>
+                {
+                    if (e.GetType() != typeof(ApiException))
+                    {
+                        throw e;
+                    }
+            
+                    return true;
+                });
+            }
+            catch (ApiException)
+            {
+            }
+            twilioRestClient.Received().Request(request);
+        }
+    
+        [Test]
+        public void TestUpdateRoleSidResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.OK,
+                                                  "{\"sid\": \"MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"channel_sid\": \"CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"jing\",\"role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"last_consumed_message_index\": null,\"last_consumption_timestamp\": null,\"date_created\": \"2016-03-24T21:05:50Z\",\"date_updated\": \"2016-03-24T21:05:50Z\",\"url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
+            
+            var response = MemberResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Update(twilioRestClient);
+            Assert.NotNull(response);
+        }
+    
+        [Test]
+        public void TestUpdateLastConsumedMessageIndexResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(System.Net.HttpStatusCode.OK,
+                                                  "{\"sid\": \"MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"channel_sid\": \"CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"jing\",\"role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"last_consumed_message_index\": 666,\"last_consumption_timestamp\": null,\"date_created\": \"2016-03-24T21:05:50Z\",\"date_updated\": \"2016-03-24T21:05:50Z\",\"url\": \"https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
+            
+            var response = MemberResource.Updater("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Update(twilioRestClient);
+            Assert.NotNull(response);
+        }
     }
 }

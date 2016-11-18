@@ -24,7 +24,7 @@ namespace Twilio.Types
 		    Mcc = mcc;
 		    Mnc = mnc;
 		    Carrier = carrier;
-		    Prices = Prices;
+		    Prices = prices;
 		}
 	}
 }

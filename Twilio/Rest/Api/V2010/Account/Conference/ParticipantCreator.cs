@@ -31,7 +31,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         public string ConferenceTrim { get; set; }
         public Uri ConferenceStatusCallback { get; set; }
         public Twilio.Http.HttpMethod ConferenceStatusCallbackMethod { get; set; }
-        public string ConferenceStatusCallbackEvent { get; set; }
+        public List<string> ConferenceStatusCallbackEvent { get; set; }
     
         /// <summary>
         /// Construct a new ParticipantCreator
@@ -233,7 +233,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             
             if (ConferenceStatusCallbackEvent != null)
             {
-                request.AddPostParam("ConferenceStatusCallbackEvent", ConferenceStatusCallbackEvent);
+                request.AddPostParam("ConferenceStatusCallbackEvent", ConferenceStatusCallbackEvent.ToString());
             }
         }
     }

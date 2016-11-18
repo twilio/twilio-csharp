@@ -101,12 +101,24 @@ namespace Twilio.Rest.IpMessaging.V1
         public string DefaultChannelCreatorRoleSid { get; set; }
         [JsonProperty("read_status_enabled")]
         public bool? ReadStatusEnabled { get; set; }
+        [JsonProperty("reachability_enabled")]
+        public bool? ReachabilityEnabled { get; set; }
         [JsonProperty("typing_indicator_timeout")]
         public int? TypingIndicatorTimeout { get; set; }
         [JsonProperty("consumption_report_interval")]
         public int? ConsumptionReportInterval { get; set; }
         [JsonProperty("webhooks")]
         public Object Webhooks { get; set; }
+        [JsonProperty("pre_webhook_url")]
+        public string PreWebhookUrl { get; set; }
+        [JsonProperty("post_webhook_url")]
+        public string PostWebhookUrl { get; set; }
+        [JsonProperty("webhook_method")]
+        public string WebhookMethod { get; set; }
+        [JsonProperty("webhook_filters")]
+        public List<string> WebhookFilters { get; set; }
+        [JsonProperty("notifications")]
+        public Object Notifications { get; set; }
         [JsonProperty("url")]
         public Uri Url { get; set; }
         [JsonProperty("links")]
@@ -135,12 +147,24 @@ namespace Twilio.Rest.IpMessaging.V1
                                 string defaultChannelCreatorRoleSid, 
                                 [JsonProperty("read_status_enabled")]
                                 bool? readStatusEnabled, 
+                                [JsonProperty("reachability_enabled")]
+                                bool? reachabilityEnabled, 
                                 [JsonProperty("typing_indicator_timeout")]
                                 int? typingIndicatorTimeout, 
                                 [JsonProperty("consumption_report_interval")]
                                 int? consumptionReportInterval, 
                                 [JsonProperty("webhooks")]
                                 Object webhooks, 
+                                [JsonProperty("pre_webhook_url")]
+                                string preWebhookUrl, 
+                                [JsonProperty("post_webhook_url")]
+                                string postWebhookUrl, 
+                                [JsonProperty("webhook_method")]
+                                string webhookMethod, 
+                                [JsonProperty("webhook_filters")]
+                                List<string> webhookFilters, 
+                                [JsonProperty("notifications")]
+                                Object notifications, 
                                 [JsonProperty("url")]
                                 Uri url, 
                                 [JsonProperty("links")]
@@ -155,9 +179,15 @@ namespace Twilio.Rest.IpMessaging.V1
             DefaultChannelRoleSid = defaultChannelRoleSid;
             DefaultChannelCreatorRoleSid = defaultChannelCreatorRoleSid;
             ReadStatusEnabled = readStatusEnabled;
+            ReachabilityEnabled = reachabilityEnabled;
             TypingIndicatorTimeout = typingIndicatorTimeout;
             ConsumptionReportInterval = consumptionReportInterval;
             Webhooks = webhooks;
+            PreWebhookUrl = preWebhookUrl;
+            PostWebhookUrl = postWebhookUrl;
+            WebhookMethod = webhookMethod;
+            WebhookFilters = webhookFilters;
+            Notifications = notifications;
             Url = url;
             Links = links;
         }

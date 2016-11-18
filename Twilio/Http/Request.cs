@@ -49,10 +49,14 @@ namespace Twilio.Http
         {
 			var result = "";
 			var first = true;
-			foreach (var pair in data) {
-				if (first) {
+			foreach (var pair in data)
+			{
+				if (first)
+				{
 					first = false;
-				} else {
+				}
+				else
+				{
 					result += "&";
 				}
 

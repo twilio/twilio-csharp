@@ -1,4 +1,3 @@
-using System;
 using Twilio.Base;
 using Twilio.Clients;
 using Twilio.Exceptions;
@@ -13,7 +12,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         public string ChannelSid { get; }
         public string Sid { get; }
         public string Body { get; }
-        public Object Attributes { get; set; }
+        public string Attributes { get; set; }
     
         /// <summary>
         /// Construct a new MessageUpdater
@@ -127,7 +126,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             
             if (Attributes != null)
             {
-                request.AddPostParam("Attributes", Attributes.ToString());
+                request.AddPostParam("Attributes", Attributes);
             }
         }
     }

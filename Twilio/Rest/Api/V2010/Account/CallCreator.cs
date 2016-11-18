@@ -14,8 +14,8 @@ namespace Twilio.Rest.Api.V2010.Account
         public string AccountSid { get; set; }
         public IEndpoint To { get; }
         public Types.PhoneNumber From { get; }
-        public Uri Url { get; }
-        public string ApplicationSid { get; }
+        public Uri Url { get; set; }
+        public string ApplicationSid { get; set; }
         public Twilio.Http.HttpMethod Method { get; set; }
         public Uri FallbackUrl { get; set; }
         public Twilio.Http.HttpMethod FallbackMethod { get; set; }

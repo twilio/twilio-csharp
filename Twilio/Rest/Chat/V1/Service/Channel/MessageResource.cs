@@ -97,6 +97,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         public string Sid { get; set; }
         [JsonProperty("account_sid")]
         public string AccountSid { get; set; }
+        [JsonProperty("attributes")]
+        public string Attributes { get; set; }
         [JsonProperty("service_sid")]
         public string ServiceSid { get; set; }
         [JsonProperty("to")]
@@ -125,6 +127,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                                 string sid, 
                                 [JsonProperty("account_sid")]
                                 string accountSid, 
+                                [JsonProperty("attributes")]
+                                string attributes, 
                                 [JsonProperty("service_sid")]
                                 string serviceSid, 
                                 [JsonProperty("to")]
@@ -146,6 +150,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                                 {
             Sid = sid;
             AccountSid = accountSid;
+            Attributes = attributes;
             ServiceSid = serviceSid;
             To = to;
             DateCreated = MarshalConverter.DateTimeFromString(dateCreated);

@@ -37,6 +37,15 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly StatusEnum Canceled = new StatusEnum("canceled");
         }
     
+        public sealed class UpdateStatusEnum : StringEnum 
+        {
+            private UpdateStatusEnum(string value) : base(value) {}
+            public UpdateStatusEnum() {}
+        
+            public static readonly UpdateStatusEnum Canceled = new UpdateStatusEnum("canceled");
+            public static readonly UpdateStatusEnum Completed = new UpdateStatusEnum("completed");
+        }
+    
         /// <summary>
         /// Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client connections
         /// </summary>

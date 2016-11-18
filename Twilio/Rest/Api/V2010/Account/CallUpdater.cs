@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public string Sid { get; }
         public Uri Url { get; set; }
         public Twilio.Http.HttpMethod Method { get; set; }
-        public CallResource.StatusEnum Status { get; set; }
+        public CallResource.UpdateStatusEnum Status { get; set; }
         public Uri FallbackUrl { get; set; }
         public Twilio.Http.HttpMethod FallbackMethod { get; set; }
         public Uri StatusCallback { get; set; }

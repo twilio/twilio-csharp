@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
 using Twilio.Exceptions;
@@ -10,6 +11,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
     {
         public string ServiceSid { get; }
         public string ChannelSid { get; }
+        public List<string> Identity { get; set; }
     
         /// <summary>
         /// Construct a new MemberReader
@@ -125,6 +127,11 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
+            if (Identity != null)
+            {
+                request.AddQueryParam("Identity", Identity.ToString());
+            }
+            
             if (PageSize != null)
             {
                 request.AddQueryParam("PageSize", PageSize.ToString());

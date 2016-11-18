@@ -24,7 +24,13 @@ namespace Twilio.Clients
 	    /// <param name="password">password for requests</param>
 	    /// <param name="accountSid">account sid to make requests for</param>
 	    /// <param name="httpClient">http client used to make the requests</param>
-		public TwilioRestClient(string username, string password, string accountSid = null, HttpClient httpClient = null) {
+		public TwilioRestClient(
+	        string username,
+	        string password,
+	        string accountSid = null,
+	        HttpClient httpClient = null
+	    )
+	    {
 			_username = username;
 			_password = password;
 			_accountSid = accountSid ?? username;

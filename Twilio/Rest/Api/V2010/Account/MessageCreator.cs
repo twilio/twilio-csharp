@@ -12,10 +12,10 @@ namespace Twilio.Rest.Api.V2010.Account
     {
         public string AccountSid { get; set; }
         public Types.PhoneNumber To { get; }
-        public Types.PhoneNumber From { get; }
-        public string MessagingServiceSid { get; }
-        public string Body { get; }
-        public List<Uri> MediaUrl { get; }
+        public Types.PhoneNumber From { get; set; }
+        public string MessagingServiceSid { get; set; }
+        public string Body { get; set; }
+        public List<Uri> MediaUrl { get; set; }
         public Uri StatusCallback { get; set; }
         public string ApplicationSid { get; set; }
         public decimal? MaxPrice { get; set; }

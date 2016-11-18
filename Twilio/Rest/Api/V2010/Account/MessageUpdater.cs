@@ -10,16 +10,18 @@ namespace Twilio.Rest.Api.V2010.Account
     {
         public string AccountSid { get; set; }
         public string Sid { get; }
-        public string Body { get; set; }
+        public string Body { get; }
     
         /// <summary>
         /// Construct a new MessageUpdater
         /// </summary>
         ///
         /// <param name="sid"> The message to redact </param>
-        public MessageUpdater(string sid)
+        /// <param name="body"> The body </param>
+        public MessageUpdater(string sid, string body)
         {
             Sid = sid;
+            Body = body;
         }
     
         #if NET40

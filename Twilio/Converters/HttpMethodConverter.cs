@@ -6,7 +6,6 @@ namespace Twilio.Converters
 {
 	public class HttpMethodConverter : JsonConverter
 	{
-
 		public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
 		{
 			var t = JToken.FromObject(value.ToString());
@@ -44,7 +43,6 @@ namespace Twilio.Converters
 		{
 			return objectType == typeof(Http.HttpMethod);
 		}
-
 	}
 }
 

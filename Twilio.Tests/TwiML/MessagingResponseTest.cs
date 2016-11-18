@@ -12,7 +12,7 @@ namespace Twilio.Tests.TwiML
             var mr = new MessagingResponse();
             Assert.AreEqual(
                 mr.ToString(), 
-                "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<Response />"
             );
         }
@@ -24,7 +24,7 @@ namespace Twilio.Tests.TwiML
             mr.Message("foobar", to: "+11234567890", method: "GET");
             Assert.AreEqual(
                 mr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<Response>\n" +
                 "  <Message to=\"+11234567890\" method=\"GET\">foobar</Message>\n" +
                 "</Response>" 
@@ -45,7 +45,7 @@ namespace Twilio.Tests.TwiML
             mr.Message(m1).Message(m2);
             Assert.AreEqual(
                 mr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<Response>\n" +
                 "  <Message to=\"+11111111111\" from=\"+12222222222\">\n" +
                 "    <Body>foobar</Body>\n" + 
@@ -66,7 +66,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 mr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<Response>\n" +
                 "  <Redirect method=\"GET\" url=\"http://www.twilio.com\" />\n" +
                 "</Response>" 

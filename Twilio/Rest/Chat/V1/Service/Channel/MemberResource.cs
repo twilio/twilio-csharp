@@ -61,6 +61,19 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         }
     
         /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> MemberUpdater capable of executing the update </returns> 
+        public static MemberUpdater Updater(string serviceSid, string channelSid, string sid)
+        {
+            return new MemberUpdater(serviceSid, channelSid, sid);
+        }
+    
+        /// <summary>
         /// Converts a JSON string into a MemberResource object
         /// </summary>
         ///

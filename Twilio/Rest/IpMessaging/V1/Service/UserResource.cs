@@ -93,14 +93,18 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public string AccountSid { get; set; }
         [JsonProperty("service_sid")]
         public string ServiceSid { get; set; }
-        [JsonProperty("role_sid")]
-        public string RoleSid { get; set; }
         [JsonProperty("attributes")]
         public string Attributes { get; set; }
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; set; }
+        [JsonProperty("role_sid")]
+        public string RoleSid { get; set; }
         [JsonProperty("identity")]
         public string Identity { get; set; }
+        [JsonProperty("is_online")]
+        public bool? IsOnline { get; set; }
+        [JsonProperty("is_notifiable")]
+        public bool? IsNotifiable { get; set; }
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
@@ -119,14 +123,18 @@ namespace Twilio.Rest.IpMessaging.V1.Service
                              string accountSid, 
                              [JsonProperty("service_sid")]
                              string serviceSid, 
-                             [JsonProperty("role_sid")]
-                             string roleSid, 
                              [JsonProperty("attributes")]
                              string attributes, 
                              [JsonProperty("friendly_name")]
                              string friendlyName, 
+                             [JsonProperty("role_sid")]
+                             string roleSid, 
                              [JsonProperty("identity")]
                              string identity, 
+                             [JsonProperty("is_online")]
+                             bool? isOnline, 
+                             [JsonProperty("is_notifiable")]
+                             bool? isNotifiable, 
                              [JsonProperty("date_created")]
                              string dateCreated, 
                              [JsonProperty("date_updated")]
@@ -137,10 +145,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             Sid = sid;
             AccountSid = accountSid;
             ServiceSid = serviceSid;
-            RoleSid = roleSid;
             Attributes = attributes;
             FriendlyName = friendlyName;
+            RoleSid = roleSid;
             Identity = identity;
+            IsOnline = isOnline;
+            IsNotifiable = isNotifiable;
             DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             Url = url;

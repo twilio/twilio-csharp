@@ -1,6 +1,3 @@
-#if NET40
-using System.Threading.Tasks;
-#endif
 using Twilio.Clients;
 
 namespace Twilio.Base
@@ -16,7 +13,7 @@ namespace Twilio.Base
         /// Execute an async request using the default client.
         /// </summary>
         /// <returns>Task that resolves to requested object</returns>
-        public Task DeleteAsync() {
+        public System.Threading.Tasks.Task DeleteAsync() {
             return DeleteAsync(TwilioClient.GetRestClient());
         }
 
@@ -25,7 +22,7 @@ namespace Twilio.Base
         /// </summary>
         /// <param name="client">Custom client to use</param>
         /// <returns>Task that resolves to requested object</returns>
-        public abstract Task DeleteAsync(ITwilioRestClient client);
+        public abstract System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client);
         #endif
 
         /// <summary>

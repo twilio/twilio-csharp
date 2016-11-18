@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
 <!-- Yoyodyne Generated Artifacts -->
+    <Compile Include="Rest\Accounts\V1\Credential\PublicKeyResourceTest.cs" />
     <Compile Include="Rest\Api\V2010\AccountResourceTest.cs" />
     <Compile Include="Rest\Api\V2010\Account\AddressResourceTest.cs" />
     <Compile Include="Rest\Api\V2010\Account\Address\DependentPhoneNumberResourceTest.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Rest\Chat\V1\CredentialResourceTest.cs" />
     <Compile Include="Rest\Chat\V1\ServiceResourceTest.cs" />
     <Compile Include="Rest\Chat\V1\Service\ChannelResourceTest.cs" />
+    <Compile Include="Rest\Chat\V1\Service\Channel\InviteResourceTest.cs" />
     <Compile Include="Rest\Chat\V1\Service\Channel\MemberResourceTest.cs" />
     <Compile Include="Rest\Chat\V1\Service\Channel\MessageResourceTest.cs" />
     <Compile Include="Rest\Chat\V1\Service\RoleResourceTest.cs" />
@@ -124,6 +126,7 @@
     <Compile Include="Rest\IpMessaging\V1\CredentialResourceTest.cs" />
     <Compile Include="Rest\IpMessaging\V1\ServiceResourceTest.cs" />
     <Compile Include="Rest\IpMessaging\V1\Service\ChannelResourceTest.cs" />
+    <Compile Include="Rest\IpMessaging\V1\Service\Channel\InviteResourceTest.cs" />
     <Compile Include="Rest\IpMessaging\V1\Service\Channel\MemberResourceTest.cs" />
     <Compile Include="Rest\IpMessaging\V1\Service\Channel\MessageResourceTest.cs" />
     <Compile Include="Rest\IpMessaging\V1\Service\RoleResourceTest.cs" />

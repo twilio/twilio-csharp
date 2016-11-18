@@ -232,6 +232,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
             var request = new Request(HttpMethod.Post,
                                       Twilio.Rest.Domain.Api,
                                       "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues.json");
+            request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -239,7 +240,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
             
             try
             {
-                QueueResource.Creator().Create(twilioRestClient);
+                QueueResource.Creator("FriendlyName").Create(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -269,7 +270,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
                             .Returns(new Response(System.Net.HttpStatusCode.Created,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"average_wait_time\": 0,\"current_size\": 0,\"date_created\": \"Tue, 04 Aug 2015 18:39:09 +0000\",\"date_updated\": \"Tue, 04 Aug 2015 18:39:09 +0000\",\"friendly_name\": \"0.361280134646222\",\"max_size\": 100,\"sid\": \"QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"));
             
-            var response = QueueResource.Creator().Create(twilioRestClient);
+            var response = QueueResource.Creator("FriendlyName").Create(twilioRestClient);
             Assert.NotNull(response);
         }
     }

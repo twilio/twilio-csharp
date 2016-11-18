@@ -9,8 +9,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class QueueCreator : Creator<QueueResource> 
     {
         public string AccountSid { get; set; }
-        public string FriendlyName { get; set; }
+        public string FriendlyName { get; }
         public int? MaxSize { get; set; }
+    
+        /// <summary>
+        /// Construct a new QueueCreator
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> A user-provided string that identifies this queue. </param>
+        public QueueCreator(string friendlyName)
+        {
+            FriendlyName = friendlyName;
+        }
     
         #if NET40
         /// <summary>

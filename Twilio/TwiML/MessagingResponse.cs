@@ -69,8 +69,11 @@ namespace Twilio.TwiML
 
         public override string ToString()
         {
-            var wr = new StringWriter();
-            _response.Save(wr);
+            var declaration = new XDeclaration("1.0", "utf-8", null);
+            var document = new XDocument(declaration, _response);
+
+            var wr = new Utf8StringWriter();
+            document.Save(wr);
             return wr.GetStringBuilder().ToString();
         }
     }

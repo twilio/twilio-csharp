@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 using Twilio.Exceptions;
@@ -31,6 +32,27 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <returns> RatePlanCreator capable of executing the create </returns> 
+        public static RatePlanCreator Creator()
+        {
+            return new RatePlanCreator();
+        }
+    
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> RatePlanUpdater capable of executing the update </returns> 
+        public static RatePlanUpdater Updater(string sid)
+        {
+            return new RatePlanUpdater(sid);
+        }
+    
+        /// <summary>
         /// Converts a JSON string into a RatePlanResource object
         /// </summary>
         ///
@@ -57,22 +79,14 @@ namespace Twilio.Rest.Preview.Wireless
         public string AccountSid { get; set; }
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; set; }
-        [JsonProperty("data_metering")]
-        public string DataMetering { get; set; }
-        [JsonProperty("capabilities")]
-        public Object Capabilities { get; set; }
-        [JsonProperty("voice_cap")]
-        public int? VoiceCap { get; set; }
-        [JsonProperty("messaging_cap")]
-        public int? MessagingCap { get; set; }
-        [JsonProperty("commands_cap")]
-        public int? CommandsCap { get; set; }
-        [JsonProperty("data_cap")]
-        public int? DataCap { get; set; }
-        [JsonProperty("cap_period")]
-        public int? CapPeriod { get; set; }
-        [JsonProperty("cap_unit")]
-        public string CapUnit { get; set; }
+        [JsonProperty("roaming")]
+        public List<string> Roaming { get; set; }
+        [JsonProperty("data")]
+        public Object Data { get; set; }
+        [JsonProperty("commands")]
+        public Object Commands { get; set; }
+        [JsonProperty("renewal")]
+        public Object Renewal { get; set; }
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
@@ -93,22 +107,14 @@ namespace Twilio.Rest.Preview.Wireless
                                  string accountSid, 
                                  [JsonProperty("friendly_name")]
                                  string friendlyName, 
-                                 [JsonProperty("data_metering")]
-                                 string dataMetering, 
-                                 [JsonProperty("capabilities")]
-                                 Object capabilities, 
-                                 [JsonProperty("voice_cap")]
-                                 int? voiceCap, 
-                                 [JsonProperty("messaging_cap")]
-                                 int? messagingCap, 
-                                 [JsonProperty("commands_cap")]
-                                 int? commandsCap, 
-                                 [JsonProperty("data_cap")]
-                                 int? dataCap, 
-                                 [JsonProperty("cap_period")]
-                                 int? capPeriod, 
-                                 [JsonProperty("cap_unit")]
-                                 string capUnit, 
+                                 [JsonProperty("roaming")]
+                                 List<string> roaming, 
+                                 [JsonProperty("data")]
+                                 Object data, 
+                                 [JsonProperty("commands")]
+                                 Object commands, 
+                                 [JsonProperty("renewal")]
+                                 Object renewal, 
                                  [JsonProperty("date_created")]
                                  string dateCreated, 
                                  [JsonProperty("date_updated")]
@@ -120,14 +126,10 @@ namespace Twilio.Rest.Preview.Wireless
             Alias = alias;
             AccountSid = accountSid;
             FriendlyName = friendlyName;
-            DataMetering = dataMetering;
-            Capabilities = capabilities;
-            VoiceCap = voiceCap;
-            MessagingCap = messagingCap;
-            CommandsCap = commandsCap;
-            DataCap = dataCap;
-            CapPeriod = capPeriod;
-            CapUnit = capUnit;
+            Roaming = roaming;
+            Data = data;
+            Commands = commands;
+            Renewal = renewal;
             DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
             DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
             Url = url;

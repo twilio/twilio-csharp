@@ -27,7 +27,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.Get,
                                       Twilio.Rest.Domain.Taskrouter,
-                                      "/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows/WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                                      "/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows/WWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -35,7 +35,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
             
             try
             {
-                WorkflowResource.Fetcher("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
+                WorkflowResource.Fetcher("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -65,7 +65,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"assignment_callback_url\": \"http://example.com\",\"configuration\": \"task-routing:\\\\n- filter: \\\\n- 1 == 1\\\\ntarget:\\\\n- queue: WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\\\nset-priority: 0\\\\n\",\"date_created\": \"2014-05-14T10:50:02Z\",\"date_updated\": \"2014-05-14T23:26:06Z\",\"document_content_type\": \"application/json\",\"fallback_assignment_callback_url\": null,\"friendly_name\": \"Default Fifo Workflow\",\"sid\": \"WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"task_reservation_timeout\": 120,\"url\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows/WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"workspace_sid\": \"WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = WorkflowResource.Fetcher("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
+            var response = WorkflowResource.Fetcher("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -75,7 +75,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.Post,
                                       Twilio.Rest.Domain.Taskrouter,
-                                      "/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows/WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                                      "/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows/WWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -83,7 +83,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
             
             try
             {
-                WorkflowResource.Updater("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Update(twilioRestClient);
+                WorkflowResource.Updater("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Update(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -113,7 +113,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
                             .Returns(new Response(System.Net.HttpStatusCode.OK,
                                                   "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"assignment_callback_url\": \"http://example.com\",\"configuration\": \"task-routing:\\\\n- filter: \\\\n- 1 == 1\\\\ntarget:\\\\n- queue: WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\\\nset-priority: 0\\\\n\",\"date_created\": \"2014-05-14T10:50:02Z\",\"date_updated\": \"2014-05-14T23:26:06Z\",\"document_content_type\": \"application/json\",\"fallback_assignment_callback_url\": null,\"friendly_name\": \"Default Fifo Workflow\",\"sid\": \"WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"task_reservation_timeout\": 120,\"url\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows/WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"workspace_sid\": \"WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"));
             
-            var response = WorkflowResource.Updater("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Update(twilioRestClient);
+            var response = WorkflowResource.Updater("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Update(twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -123,7 +123,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.Delete,
                                       Twilio.Rest.Domain.Taskrouter,
-                                      "/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows/WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                                      "/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows/WWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.GetAccountSid().Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -131,7 +131,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
             
             try
             {
-                WorkflowResource.Deleter("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Delete(twilioRestClient);
+                WorkflowResource.Deleter("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Delete(twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (AggregateException ae)
@@ -161,7 +161,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
                             .Returns(new Response(System.Net.HttpStatusCode.NoContent,
                                                   "null"));
             
-            WorkflowResource.Deleter("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Delete(twilioRestClient);
+            WorkflowResource.Deleter("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Delete(twilioRestClient);
         }
     
         [Test]

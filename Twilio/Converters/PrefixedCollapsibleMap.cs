@@ -9,10 +9,11 @@ namespace Twilio.Converters
             Dictionary<string, object> dict, 
             Dictionary<string, string> result,
             List<string> previous
-        ) {
+        )
+        {
             foreach (var entry in dict)
             {
-                var next = new List<string>(previous) {entry.Key};
+                var next = new List<string>(previous) { entry.Key };
 
                 if (entry.Value.GetType() == typeof(Dictionary<string, object>))
                 {

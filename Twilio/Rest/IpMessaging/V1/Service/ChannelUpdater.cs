@@ -13,7 +13,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public string FriendlyName { get; set; }
         public string UniqueName { get; set; }
         public string Attributes { get; set; }
-        public ChannelResource.ChannelTypeEnum Type { get; set; }
     
         /// <summary>
         /// Construct a new ChannelUpdater
@@ -129,11 +128,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             if (Attributes != null)
             {
                 request.AddPostParam("Attributes", Attributes);
-            }
-            
-            if (Type != null)
-            {
-                request.AddPostParam("Type", Type.ToString());
             }
         }
     }

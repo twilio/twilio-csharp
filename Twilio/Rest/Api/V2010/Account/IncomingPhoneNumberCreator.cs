@@ -10,8 +10,8 @@ namespace Twilio.Rest.Api.V2010.Account
     public class IncomingPhoneNumberCreator : Creator<IncomingPhoneNumberResource> 
     {
         public string OwnerAccountSid { get; set; }
-        public Types.PhoneNumber PhoneNumber { get; }
-        public string AreaCode { get; }
+        public Types.PhoneNumber PhoneNumber { get; set; }
+        public string AreaCode { get; set; }
         public string ApiVersion { get; set; }
         public string FriendlyName { get; set; }
         public string SmsApplicationSid { get; set; }

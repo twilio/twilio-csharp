@@ -126,10 +126,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The message to redact </param>
+        /// <param name="body"> The body </param>
         /// <returns> MessageUpdater capable of executing the update </returns> 
-        public static MessageUpdater Updater(string sid)
+        public static MessageUpdater Updater(string sid, string body)
         {
-            return new MessageUpdater(sid);
+            return new MessageUpdater(sid, body);
         }
     
         /// <summary>
@@ -173,6 +174,8 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("from")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber From { get; set; }
+        [JsonProperty("messaging_service_sid")]
+        public string MessagingServiceSid { get; set; }
         [JsonProperty("num_media")]
         public string NumMedia { get; set; }
         [JsonProperty("num_segments")]
@@ -218,6 +221,8 @@ namespace Twilio.Rest.Api.V2010.Account
                                 string errorMessage, 
                                 [JsonProperty("from")]
                                 Types.PhoneNumber from, 
+                                [JsonProperty("messaging_service_sid")]
+                                string messagingServiceSid, 
                                 [JsonProperty("num_media")]
                                 string numMedia, 
                                 [JsonProperty("num_segments")]
@@ -247,6 +252,7 @@ namespace Twilio.Rest.Api.V2010.Account
             ErrorCode = errorCode;
             ErrorMessage = errorMessage;
             From = from;
+            MessagingServiceSid = messagingServiceSid;
             NumMedia = numMedia;
             NumSegments = numSegments;
             Price = price;
